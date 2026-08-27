@@ -1,56 +1,32 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class cwo extends cuc {
-   public cwo(cuc.a $$0) {
-      super($$0);
-   }
+public record cwo(Optional<iw> c, boolean d) {
+   public static final Codec<cwo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iw.b.optionalFieldOf("target").forGetter(cwo::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cwo::b)).apply($$0, cwo::new)
+   );
+   public static final yv<ByteBuf, cwo> b = yv.a(iw.c.a(yt::a), cwo::a, yt.b, cwo::b, cwo::new);
 
-   @Override
-   public xe o(cuh $$0) {
-      cya $$1 = $$0.a(ke.H);
-      if ($$1 != null) {
-         String $$2 = $$1.d().a();
-         if (!azh.h($$2)) {
-            return xe.b($$2);
+   public cwo a(aqn $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ae()) {
+            return this;
+         } else {
+            io $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.y().a(cdy.s, $$1) ? this : new cwo(Optional.empty(), true);
          }
-      }
-
-      return super.o($$0);
-   }
-
-   @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      cya $$4 = $$0.a(ke.H);
-      if ($$4 != null) {
-         if (!azh.h($$4.e())) {
-            $$2.add(xe.a("book.byAuthor", $$4.e()).a(n.h));
-         }
-
-         $$2.add(xe.c("book.generation." + $$4.f()).a(n.h));
+      } else {
+         return this;
       }
    }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avz.c.b(this));
-      return bqb.a($$3, $$0.x_());
+   public Optional<iw> a() {
+      return this.c;
    }
 
-   public static boolean a(cuh $$0, eh $$1, @Nullable cly $$2) {
-      cya $$3 = $$0.a(ke.H);
-      if ($$3 != null && !$$3.g()) {
-         cya $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(ke.H, $$4);
-            return true;
-         }
-
-         $$0.b(ke.H, $$3.c());
-      }
-
-      return false;
+   public boolean b() {
+      return this.d;
    }
 }

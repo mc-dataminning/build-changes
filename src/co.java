@@ -1,44 +1,31 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class co extends dh<co.a> {
-   @Override
-   public Codec<co.a> a() {
-      return co.a.a;
+public record co(ct.d b) {
+   public static final Codec<co> a = RecordCodecBuilder.create($$0 -> $$0.group(ct.d.d.optionalFieldOf("light", ct.d.c).forGetter(co::a)).apply($$0, co::new));
+
+   public boolean a(aqn $$0, io $$1) {
+      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
    }
 
-   public void a(aqu $$0, ewu $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public ct.d a() {
+      return this.b;
    }
 
-   public static record a(Optional<bd> b, Optional<bj> c, cu.d d) implements dh.a {
-      public static final Codec<co.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axu.a(bs.b, "player").forGetter(co.a::a), axu.a(bj.a, "distance").forGetter(co.a::b), axu.a(cu.d.d, "duration", cu.d.c).forGetter(co.a::c)
-               )
-               .apply($$0, co.a::new)
-      );
+   public static class a {
+      private ct.d a = ct.d.c;
 
-      public static ao<co.a> a(bj $$0) {
-         return an.v.a(new co.a(Optional.empty(), Optional.of($$0), cu.d.c));
+      public static co.a a() {
+         return new co.a();
       }
 
-      public boolean a(aqu $$0, ewu $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dz(), $$0.dB(), $$0.dF()) ? false : this.d.d($$2);
+      public co.a a(ct.d $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public Optional<bd> a() {
-         return this.b;
-      }
-
-      public Optional<bj> b() {
-         return this.c;
-      }
-
-      public cu.d c() {
-         return this.d;
+      public co b() {
+         return new co(this.a);
       }
    }
 }

@@ -1,70 +1,110 @@
+import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record dsg(int c, int d, float e, float f, float g, float h, int i, int j, bok<dcr> k, bok<aks<eru>> l) {
-   public static final dsg a = new dsg(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bok.b(), bok.<aks<eru>>a().a(ern.bk).a(ern.bj).a());
-   public static final MapCodec<dsg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dsg::a),
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dsg::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dsg::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dsg::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dsg::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dsg::f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dsg::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dsg::h),
-               dcr.c.optionalFieldOf("spawn_potentials", bok.b()).forGetter(dsg::i),
-               bok.a(aks.a(li.aU)).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dsg::j)
-            )
-            .apply($$0, dsg::new)
-   );
+public abstract class dsg<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<dsg.a<T>> e = this.d.xmap(this::b, dsg.a::b);
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   protected dsg(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   public dsg.a<T> b(T $$0) {
+      return new dsg.a<>(this, $$0);
    }
 
-   public int a() {
+   public dsg.a<T> a(drf<?, ?> $$0) {
+      return new dsg.a<>(this, $$0.c(this));
+   }
+
+   public Stream<dsg.a<T>> c() {
+      return this.a().stream().map(this::b);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<dsg.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dsg<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
       return this.c;
    }
 
    public int b() {
-      return this.d;
+      return 31 * this.a.hashCode() + this.b.hashCode();
    }
 
-   public float c() {
-      return this.e;
+   public <U, S extends drf<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
    }
 
-   public float d() {
-      return this.f;
-   }
+   public static record a<T extends Comparable<T>>(dsg<T> a, T b) {
+      public a(dsg<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
 
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public int h() {
-      return this.j;
-   }
-
-   public bok<dcr> i() {
-      return this.k;
-   }
-
-   public bok<aks<eru>> j() {
-      return this.l;
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
+      }
    }
 }

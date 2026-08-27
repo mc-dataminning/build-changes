@@ -1,78 +1,24 @@
-public class afz implements zl<abw> {
-   public static final zc<we, afz> a = zl.a(afz::a, afz::new);
-   private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
-   private final boolean h;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public afz(brv $$0) {
-      this.b = $$0.al();
-      ewu $$1 = $$0.dt();
-      this.c = $$1.c;
-      this.d = $$1.d;
-      this.e = $$1.e;
-      this.f = (byte)((int)($$0.dK() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dM() * 256.0F / 360.0F));
-      this.h = $$0.aE();
+public record afz(ix<duv> a, akm<daz> b, long c, daw d, @Nullable daw e, boolean f, boolean g, Optional<iw> h, int i) {
+   private static final yv<wi, ix<duv>> j = yt.b(lf.aE);
+
+   public afz(wi $$0) {
+      this(
+         j.decode($$0), $$0.a(lf.aS), $$0.readLong(), daw.a($$0.readByte()), daw.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(vx::h), $$0.l()
+      );
    }
 
-   private afz(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
-      this.h = $$0.readBoolean();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
-      $$0.a(this.h);
-   }
-
-   @Override
-   public zn<afz> a() {
-      return agj.bb;
-   }
-
-   public void a(abw $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public double g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public byte i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
+   public void a(wi $$0) {
+      j.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(daw.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, vx::a);
+      $$0.c(this.i);
    }
 }

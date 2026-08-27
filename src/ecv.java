@@ -1,12 +1,10 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecv extends eca<eer> {
-   public ecv(Codec<eer> $$0) {
-      super($$0);
-   }
+public record ecv(eee b) implements ecd {
+   public static final Codec<ecv> a = RecordCodecBuilder.create($$0 -> $$0.group(eee.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, ecv::new));
 
-   @Override
-   public boolean a(ecc<eer> $$0) {
-      return true;
+   public eee a() {
+      return this.b;
    }
 }

@@ -1,29 +1,51 @@
-public class aaf implements zl<aac> {
-   public static final zc<we, aaf> a = zl.a(aaf::a, aaf::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   public aaf(long $$0) {
-      this.b = $$0;
+public interface aaf {
+   aaf.b<? extends aaf> a();
+
+   static <B extends ByteBuf, T extends aaf> yv<B, T> a(yy<B, T> $$0, yw<B, T> $$1) {
+      return yv.a($$0, $$1);
    }
 
-   private aaf(we $$0) {
-      this.b = $$0.readLong();
+   static <T extends aaf> aaf.b<T> a(String $$0) {
+      return new aaf.b<>(new akn($$0));
    }
 
-   private void a(we $$0) {
-      $$0.b(this.b);
+   static <B extends vx> yv<B, aaf> a(final aaf.a<B> $$0, List<aaf.c<? super B, ?>> $$1) {
+      final Map<akn, yv<? super B, ? extends aaf>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aaf.c::b));
+      return new yv<B, aaf>() {
+         private yv<? super B, ? extends aaf> a(akn $$0x) {
+            yv<? super B, ? extends aaf> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends aaf> void a(B $$0x, aaf.b<T> $$1, aaf $$2x) {
+            $$0.a($$1.a());
+            yv<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, aaf $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public aaf a(B $$0x) {
+            akn $$1 = $$0.q();
+            return (aaf)this.a($$1).decode($$0);
+         }
+      };
    }
 
-   @Override
-   public zn<aaf> a() {
-      return aab.l;
+   public interface a<B extends vx> {
+      yv<B, ? extends aaf> create(akn var1);
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
+   public static record b<T extends aaf>(akn a) {
    }
 
-   public long b() {
-      return this.b;
+   public static record c<B extends vx, T extends aaf>(aaf.b<T> a, yv<B, T> b) {
    }
 }

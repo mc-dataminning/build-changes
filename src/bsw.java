@@ -1,83 +1,118 @@
-public abstract class bsw extends bsq {
-   protected static final float cg = 0.0F;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected bsw(bsb<? extends bsw> $$0, dca $$1) {
-      super($$0, $$1);
+public interface bsw {
+   String b_ = "AngerTime";
+   String c_ = "AngryAt";
+
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void c(ud $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
+      }
    }
 
-   public float d(ir $$0) {
-      return this.a($$0, this.dU());
+   default void a(daz $$0, ud $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof aqn) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            brw $$3 = ((aqn)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bss) {
+                  this.a((bss)$$3);
+               }
+
+               if ($$3.ak() == bsc.by) {
+                  this.c((cly)$$3);
+               }
+            }
+         }
+      }
    }
 
-   public float a(ir $$0, dcd $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(dcb $$0, bss $$1) {
-      return this.a(this.du(), $$0) >= 0.0F;
-   }
-
-   public boolean gu() {
-      return !this.J().l();
-   }
-
-   public boolean gv() {
-      if (this.bO.a(cbr.Z)) {
-         return this.bO.c(cbr.Z).isPresent();
+   default void a(aqn $$0, boolean $$1) {
+      bsq $$2 = this.p();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eB()) && $$3 != null && $$0.a($$3) instanceof bss) {
+         this.V_();
       } else {
-         for (caz $$0 : this.cb.b()) {
-            if ($$0.h() && $$0.k() instanceof cae) {
-               return true;
-            }
+         if ($$2 != null && !Objects.equals($$3, $$2.cz())) {
+            this.a($$2.cz());
+            this.c();
          }
 
+         if (this.a() > 0 && ($$2 == null || $$2.ak() != bsc.by || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.V_();
+            }
+         }
+      }
+   }
+
+   default boolean a_(bsq $$0) {
+      if (!this.c($$0)) {
          return false;
+      } else {
+         return $$0.ak() == bsc.by && this.a_($$0.dP()) ? true : $$0.cz().equals(this.b());
       }
    }
 
-   @Override
-   protected void gk() {
-      super.gk();
-      brv $$0 = this.gn();
-      if ($$0 != null && $$0.dU() == this.dU()) {
-         this.a($$0.du(), 5);
-         float $$1 = this.f($$0);
-         if (this instanceof btk && ((btk)this).x()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
+   default boolean a_(daz $$0) {
+      return $$0.aa().b(dav.O) && this.Z_() && this.b() == null;
+   }
 
-            return;
-         }
+   default boolean Z_() {
+      return this.a() > 0;
+   }
 
-         this.F($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.cb.a(bzl.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dz() - this.dz()) / (double)$$1;
-            double $$3 = ($$0.dB() - this.dB()) / (double)$$1;
-            double $$4 = ($$0.dF() - this.dF()) / (double)$$1;
-            this.g(this.dx().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cv();
-         } else if (this.gw() && !this.gv()) {
-            this.cb.b(bzl.a.a);
-            float $$5 = 2.0F;
-            ewu $$6 = new ewu($$0.dz() - this.dz(), $$0.dB() - this.dB(), $$0.dF() - this.dF()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.J().a(this.dz() + $$6.c, this.dB() + $$6.d, this.dF() + $$6.e, this.gx());
+   default void a_(cly $$0) {
+      if ($$0.dP().aa().b(dav.N)) {
+         if ($$0.cz().equals(this.b())) {
+            this.V_();
          }
       }
    }
 
-   protected boolean gw() {
-      return true;
+   default void aa_() {
+      this.V_();
+      this.c();
    }
 
-   protected double gx() {
-      return 1.0;
+   default void V_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
    }
 
-   protected void F(float $$0) {
-   }
+   @Nullable
+   bsq em();
+
+   void a(@Nullable bsq var1);
+
+   void c(@Nullable cly var1);
+
+   void h(@Nullable bsq var1);
+
+   boolean c(bsq var1);
+
+   @Nullable
+   bsq p();
 }

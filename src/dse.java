@@ -1,51 +1,62 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+public enum dse implements ayz {
+   a("harp", avi.rV, dse.a.a),
+   b("basedrum", avi.rP, dse.a.a),
+   c("snare", avi.rY, dse.a.a),
+   d("hat", avi.rW, dse.a.a),
+   e("bass", avi.rQ, dse.a.a),
+   f("flute", avi.rT, dse.a.a),
+   g("bell", avi.rR, dse.a.a),
+   h("guitar", avi.rU, dse.a.a),
+   i("chime", avi.rS, dse.a.a),
+   j("xylophone", avi.rZ, dse.a.a),
+   k("iron_xylophone", avi.sa, dse.a.a),
+   l("cow_bell", avi.sb, dse.a.a),
+   m("didgeridoo", avi.sc, dse.a.a),
+   n("bit", avi.sd, dse.a.a),
+   o("banjo", avi.se, dse.a.a),
+   p("pling", avi.rX, dse.a.a),
+   q("zombie", avi.sf, dse.a.b),
+   r("skeleton", avi.sg, dse.a.b),
+   s("creeper", avi.sh, dse.a.b),
+   t("dragon", avi.si, dse.a.b),
+   u("wither_skeleton", avi.sj, dse.a.b),
+   v("piglin", avi.sk, dse.a.b),
+   w("custom_head", avi.Ao, dse.a.c);
 
-public interface dse {
-   dse a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.du().a($$2, $$3) && !$$2x.f() && !$$2x.O_()).stream().map(brv::cE).toList();
-   dse b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.du().a($$2, $$3) && !$$2x.O_()).stream().map(brv::cE).toList();
-   dse c = ($$0, $$1, $$2, $$3) -> {
-      ewp $$4 = new ewp($$2).g($$3);
-      return $$1.a($$0, bsb.aL, $$4, bso::bI).stream().map(brv::cE).toList();
-   };
+   private final String x;
+   private final ix<avh> y;
+   private final dse.a z;
 
-   List<UUID> detect(aqt var1, dse.a var2, ir var3, double var4);
+   private dse(String $$0, ix<avh> $$1, dse.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
+   }
 
-   public interface a {
-      dse.a a = new dse.a() {
-         @Override
-         public List<aqu> a(aqt $$0, Predicate<? super cly> $$1) {
-            return $$0.a($$1);
-         }
+   @Override
+   public String c() {
+      return this.x;
+   }
 
-         @Override
-         public <T extends brv> List<T> a(aqt $$0, dxj<brv, T> $$1, ewp $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
+   public ix<avh> a() {
+      return this.y;
+   }
 
-      List<? extends cly> a(aqt var1, Predicate<? super cly> var2);
+   public boolean b() {
+      return this.z == dse.a.a;
+   }
 
-      <T extends brv> List<T> a(aqt var1, dxj<brv, T> var2, ewp var3, Predicate<? super T> var4);
+   public boolean d() {
+      return this.z == dse.a.c;
+   }
 
-      static dse.a a(cly $$0) {
-         return a(List.of($$0));
-      }
+   public boolean e() {
+      return this.z != dse.a.a;
+   }
 
-      static dse.a a(final List<cly> $$0) {
-         return new dse.a() {
-            @Override
-            public List<cly> a(aqt $$0x, Predicate<? super cly> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
-
-            @Override
-            public <T extends brv> List<T> a(aqt $$0x, dxj<brv, T> $$1, ewp $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

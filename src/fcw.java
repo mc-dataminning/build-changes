@@ -1,40 +1,53 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fcw extends fcy {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fcw.a c = fcw.a.a;
+public class fcw extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.configure.world.closing");
+   private final fab d;
+   private final fbk e;
 
-   public static fcw a(String $$0) {
-      fcw $$1 = new fcw();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fev.a("startDate", $$3, 0L);
-         $$1.b = fev.a("daysLeft", $$3, 0);
-         $$1.c = b(fev.b("subscriptionType", $$3, fcw.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   public fcw(fab $$0, fbk $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static fcw.a b(String $$0) {
-      try {
-         return fcw.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fcw.a.a;
+   @Override
+   public void run() {
+      ezk $$0 = ezk.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = fab.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fay var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public wx a() {
+      return c;
    }
 }

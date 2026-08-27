@@ -1,19 +1,13 @@
-public class cvn extends cud {
-   private final aqu a;
-
-   public cvn(aqu $$0) {
-      this.a = $$0;
+public class cvn extends ctl {
+   public cvn(ctl.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(cuc $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.d.b(new acv($$0, $$1));
-   }
-
-   @Override
-   protected void c(cuc $$0) {
-      super.c($$0);
-      this.a.d.b(new acv($$0, 0));
+   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
+      ctq $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(avs.c.b(this));
+      return bpx.a($$3, $$0.x_());
    }
 }

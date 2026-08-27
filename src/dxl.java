@@ -1,55 +1,40 @@
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class dxl implements dwk {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dwx i = new dwx(this);
 
-public interface dxl<T extends dxc> {
-   dxl<?> a = new dxl<dxc>() {
-      @Nullable
-      @Override
-      public dxc a(int $$0) {
-         return null;
-      }
-
-      @Nullable
-      @Override
-      public dxc a(UUID $$0) {
-         return null;
-      }
-
-      @Override
-      public Iterable<dxc> b() {
-         return List.of();
-      }
-
-      @Override
-      public <U extends dxc> void a(dxj<dxc, U> $$0, awz<U> $$1) {
-      }
-
-      @Override
-      public void a(ewp $$0, Consumer<dxc> $$1) {
-      }
-
-      @Override
-      public <U extends dxc> void a(dxj<dxc, U> $$0, ewp $$1, awz<U> $$2) {
-      }
-   };
-
-   static <T extends dxc> dxl<T> a() {
-      return (dxl<T>)a;
+   public dxl(long $$0) {
+      this.b($$0);
    }
 
-   @Nullable
-   T a(int var1);
+   @Override
+   public aym d() {
+      return new dxl(this.g());
+   }
 
-   @Nullable
-   T a(UUID var1);
+   @Override
+   public dxi e() {
+      return new dww.a(this.g());
+   }
 
-   Iterable<T> b();
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
 
-   <U extends T> void a(dxj<T, U> var1, awz<U> var2);
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
 
-   void a(ewp var1, Consumer<T> var2);
-
-   <U extends T> void a(dxj<T, U> var1, ewp var2, awz<U> var3);
+   @Override
+   public double k() {
+      return this.i.b();
+   }
 }

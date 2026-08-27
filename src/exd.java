@@ -1,219 +1,140 @@
-public abstract class exd {
-   private static final iw.a[] d = iw.a.values();
-   protected final int a;
-   protected final int b;
-   protected final int c;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Objects;
 
-   protected exd(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+public class exd extends exg {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final exd.b l = new exd.b(854, 480);
+
+   public exd(int $$0, int $$1) {
+      super(true);
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+      } else {
+         this.b($$0, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      exd.b $$2 = this.c($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   private exd.b c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      exd.a $$2 = exd.a.a;
+
+      for (exd.b $$3 : exd.b.a($$0, $$1)) {
+         $$2 = exd.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(exd.a.b);
+         }
+
+         if (this.b($$3)) {
+            $$2 = $$2.a(exd.a.c);
+         }
+
+         if ($$2 == exd.a.d) {
+            return $$3;
+         }
+      }
+
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   }
+
+   private boolean a(exd.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   private boolean b(exd.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final exd.a[] e = values();
+
+      exd.a a(exd.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final int b;
+
+      b(int $$0, int $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
-      } else {
-         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
-   }
 
-   public boolean a(io $$0, int $$1, int $$2, int $$3) {
-      return this.e($$0.a($$1, $$2, $$3, iw.a.a), $$0.a($$1, $$2, $$3, iw.a.b), $$0.a($$1, $$2, $$3, iw.a.c));
-   }
-
-   public boolean e(int $$0, int $$1, int $$2) {
-      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
-         return false;
-      } else {
-         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      static List<exd.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new exd.b($$0, $$1), exd.l) : ImmutableList.of(exd.l);
       }
-   }
 
-   public boolean b(io $$0, int $$1, int $$2, int $$3) {
-      return this.b($$0.a($$1, $$2, $$3, iw.a.a), $$0.a($$1, $$2, $$3, iw.a.b), $$0.a($$1, $$2, $$3, iw.a.c));
-   }
-
-   public abstract boolean b(int var1, int var2, int var3);
-
-   public abstract void c(int var1, int var2, int var3);
-
-   public boolean a() {
-      for (iw.a $$0 : d) {
-         if (this.a($$0) >= this.b($$0)) {
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
             return true;
-         }
-      }
-
-      return false;
-   }
-
-   public abstract int a(iw.a var1);
-
-   public abstract int b(iw.a var1);
-
-   public int a(iw.a $$0, int $$1, int $$2) {
-      int $$3 = this.c($$0);
-      if ($$1 >= 0 && $$2 >= 0) {
-         iw.a $$4 = io.b.a($$0);
-         iw.a $$5 = io.c.a($$0);
-         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
-            io $$6 = io.a(iw.a.a, $$0);
-
-            for (int $$7 = 0; $$7 < $$3; $$7++) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7;
-               }
-            }
-
-            return $$3;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            exd.b $$1 = (exd.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
          } else {
-            return $$3;
-         }
-      } else {
-         return $$3;
-      }
-   }
-
-   public int b(iw.a $$0, int $$1, int $$2) {
-      if ($$1 >= 0 && $$2 >= 0) {
-         iw.a $$3 = io.b.a($$0);
-         iw.a $$4 = io.c.a($$0);
-         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
-            int $$5 = this.c($$0);
-            io $$6 = io.a(iw.a.a, $$0);
-
-            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7 + 1;
-               }
-            }
-
-            return 0;
-         } else {
-            return 0;
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   public int c(iw.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   public int b() {
-      return this.c(iw.a.a);
-   }
-
-   public int c() {
-      return this.c(iw.a.b);
-   }
-
-   public int d() {
-      return this.c(iw.a.c);
-   }
-
-   public void a(exd.b $$0, boolean $$1) {
-      this.a($$0, io.a, $$1);
-      this.a($$0, io.b, $$1);
-      this.a($$0, io.c, $$1);
-   }
-
-   private void a(exd.b $$0, io $$1, boolean $$2) {
-      io $$3 = $$1.a();
-      int $$4 = this.c($$3.a(iw.a.a));
-      int $$5 = this.c($$3.a(iw.a.b));
-      int $$6 = this.c($$3.a(iw.a.c));
-
-      for (int $$7 = 0; $$7 <= $$4; $$7++) {
-         for (int $$8 = 0; $$8 <= $$5; $$8++) {
-            int $$9 = -1;
-
-            for (int $$10 = 0; $$10 <= $$6; $$10++) {
-               int $$11 = 0;
-               int $$12 = 0;
-
-               for (int $$13 = 0; $$13 <= 1; $$13++) {
-                  for (int $$14 = 0; $$14 <= 1; $$14++) {
-                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
-                        $$11++;
-                        $$12 ^= $$13 ^ $$14;
-                     }
-                  }
-               }
-
-               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
-                  if ($$2) {
-                     if ($$9 == -1) {
-                        $$9 = $$10;
-                     }
-                  } else {
-                     $$0.consume(
-                        $$3.a($$7, $$8, $$10, iw.a.a),
-                        $$3.a($$7, $$8, $$10, iw.a.b),
-                        $$3.a($$7, $$8, $$10, iw.a.c),
-                        $$3.a($$7, $$8, $$10 + 1, iw.a.a),
-                        $$3.a($$7, $$8, $$10 + 1, iw.a.b),
-                        $$3.a($$7, $$8, $$10 + 1, iw.a.c)
-                     );
-                  }
-               } else if ($$9 != -1) {
-                  $$0.consume(
-                     $$3.a($$7, $$8, $$9, iw.a.a),
-                     $$3.a($$7, $$8, $$9, iw.a.b),
-                     $$3.a($$7, $$8, $$9, iw.a.c),
-                     $$3.a($$7, $$8, $$10, iw.a.a),
-                     $$3.a($$7, $$8, $$10, iw.a.b),
-                     $$3.a($$7, $$8, $$10, iw.a.c)
-                  );
-                  $$9 = -1;
-               }
-            }
+            return false;
          }
       }
-   }
 
-   public void b(exd.b $$0, boolean $$1) {
-      ewx.a(this, $$0, $$1);
-   }
-
-   public void a(exd.a $$0) {
-      this.a($$0, io.a);
-      this.a($$0, io.b);
-      this.a($$0, io.c);
-   }
-
-   private void a(exd.a $$0, io $$1) {
-      io $$2 = $$1.a();
-      iw.a $$3 = $$2.a(iw.a.c);
-      int $$4 = this.c($$2.a(iw.a.a));
-      int $$5 = this.c($$2.a(iw.a.b));
-      int $$6 = this.c($$3);
-      iw $$7 = iw.a($$3, iw.b.b);
-      iw $$8 = iw.a($$3, iw.b.a);
-
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            boolean $$11 = false;
-
-            for (int $$12 = 0; $$12 <= $$6; $$12++) {
-               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
-               if (!$$11 && $$13) {
-                  $$0.consume($$7, $$2.a($$9, $$10, $$12, iw.a.a), $$2.a($$9, $$10, $$12, iw.a.b), $$2.a($$9, $$10, $$12, iw.a.c));
-               }
-
-               if ($$11 && !$$13) {
-                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, iw.a.a), $$2.a($$9, $$10, $$12 - 1, iw.a.b), $$2.a($$9, $$10, $$12 - 1, iw.a.c));
-               }
-
-               $$11 = $$13;
-            }
-         }
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
       }
-   }
 
-   public interface a {
-      void consume(iw var1, int var2, int var3, int var4);
-   }
-
-   public interface b {
-      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
+      }
    }
 }

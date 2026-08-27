@@ -1,20 +1,29 @@
-public record acz(xq.a b) implements zl<abw> {
-   public static final zc<we, acz> a = zl.a(acz::a, acz::new);
+public record acz(int b, float c) implements ze<abq> {
+   public static final yv<vx, acz> a = ze.a(acz::a, acz::new);
 
-   private acz(we $$0) {
-      this(xq.a.a($$0));
+   public acz(bsq $$0) {
+      this($$0.al(), $$0.eJ());
    }
 
-   private void a(we $$0) {
-      xq.a.a($$0, this.b);
+   private acz(vx $$0) {
+      this($$0.l(), $$0.readFloat());
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<acz> a() {
-      return agj.C;
+   public zg<acz> a() {
+      return agc.I;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   public float e() {
+      return this.c;
    }
 }

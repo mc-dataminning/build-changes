@@ -1,142 +1,139 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dor extends dmq {
-   public static final MapCodec<dor> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmq::c), u()).apply($$0, dor::new));
-   public static final dtw b = djc.aE;
-   public static final exn c = dfc.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final exn d = dfc.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final exn e = exk.a(c, dfc.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final exn i = exk.a(d, dfc.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<iw, exn> j = Maps.newEnumMap(ImmutableMap.of(iw.c, e, iw.d, e, iw.f, i, iw.e, i));
+public class dor extends doi implements bpp {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jg<ctq> d = jg.a(6, ctq.i);
+   private int e = -1;
 
-   @Override
-   public MapCodec<dor> a() {
-      return a;
+   public dor(io $$0, drd $$1) {
+      super(dok.M, $$0, $$1);
    }
 
-   public dor(dup $$0, dtb.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, iw.c).a(f, Boolean.valueOf(false)));
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         drd $$1 = this.n();
 
-   @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      if ($$2.c_($$3) instanceof drr $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
-         return bqc.e;
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(dtc $$0, cly $$1, ewq $$2, drr $$3, cuh $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.f() instanceof ctt && !this.a($$2, $$0);
-   }
-
-   private boolean a(ewq $$0, dtc $$1) {
-      return $$0.b().o() == $$1.c(b).o();
-   }
-
-   @Override
-   public String g() {
-      return this.q().a();
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return j.get($$0.c(b));
-   }
-
-   @Override
-   protected exn b_(dtc $$0, dbg $$1, ir $$2) {
-      return this.a($$0, $$1, $$2, ewz.a());
-   }
-
-   @Override
-   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      switch ((iw)$$0.c(b)) {
-         case f:
-         case e:
-            return d;
-         default:
-            return c;
-      }
-   }
-
-   public boolean b(dtc $$0, dcd $$1, ir $$2) {
-      iw $$3 = $$0.c(b).h();
-      iw $$4 = $$0.c(b).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
-   }
-
-   public boolean a(dcd $$0, dtc $$1, ir $$2, iw $$3) {
-      dtc $$4 = $$0.a_($$2);
-      return $$4.a(awe.aA) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dns.a);
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.n();
-      epe $$2 = $$0.q().b_($$0.a());
-      dcd $$3 = $$0.q();
-      ir $$4 = $$0.a();
-
-      for (iw $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            iw $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == epf.c));
-            }
+         for (int $$2 = 0; $$2 < dfe.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).e();
+            dru $$4 = dfe.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(dvw.c, this.o, dvw.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
+   }
+
+   @Override
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bpq.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      bpq.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(ctq::e)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(ctq::e);
+   }
+
+   @Override
+   public ctq a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public ctq a(int $$0, int $$1) {
+      ctq $$2 = Objects.requireNonNullElse(this.d.get($$0), ctq.i);
+      this.d.set($$0, ctq.i);
+      if (!$$2.e()) {
+         this.c($$0);
       }
 
-      return null;
+      return $$2;
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ctq b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public float g(dtc $$0) {
-      return $$0.c(b).p();
+   public void a(int $$0, ctq $$1) {
+      if ($$1.a(awf.aW)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.e()) {
+         this.a($$0, 1);
+      }
    }
 
    @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public boolean a(bpp $$0, int $$1, ctq $$2) {
+      return $$0.a_($$2x -> $$2x.e() ? true : ctq.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
    }
 
    @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public int ai_() {
+      return 1;
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b, f);
+   public boolean a(cly $$0) {
+      return bpp.a(this, $$0);
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dra($$0, $$1);
+   public boolean b(int $$0, ctq $$1) {
+      return $$1.a(awf.aW) && this.a($$0).e() && $$1.I() == this.ai_();
+   }
+
+   public int j() {
+      return this.e;
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   protected void a(doi.b $$0) {
+      super.a($$0);
+      $$0.a(kb.Z, cwm.a).a(this.d);
    }
 
-   @Nullable
    @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return a($$2, dqe.j, drr::a);
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.Z, cwm.a(this.d));
+   }
+
+   @Override
+   public void a(ud $$0) {
+      $$0.r("Items");
    }
 }

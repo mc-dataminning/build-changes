@@ -1,174 +1,181 @@
 import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class gge {
-   private static final boolean f = false;
-   private static final float g = -16.0F;
-   private static final float h = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<iw, ggf> c;
-   public final ggg d;
-   public final boolean e;
+public class gge implements gfw.a {
+   private final Map<Integer, enk> a = Maps.newHashMap();
+   private final Map<Integer, Float> b = Maps.newHashMap();
+   private final Map<Integer, Long> c = Maps.newHashMap();
+   private static final long d = 5000L;
+   private static final float e = 80.0F;
+   private static final boolean f = true;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final float k = 0.02F;
 
-   public gge(Vector3f $$0, Vector3f $$1, Map<iw, ggf> $$2, @Nullable ggg $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.a();
+   public void a(int $$0, enk $$1, float $$2) {
+      this.a.put($$0, $$1);
+      this.c.put($$0, ac.c());
+      this.b.put($$0, $$2);
    }
 
-   private void a() {
-      for (Entry<iw, ggf> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().e.a($$1);
-      }
-   }
+   @Override
+   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
+      if (!this.a.isEmpty()) {
+         long $$5 = ac.c();
 
-   private float[] a(iw $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gge> {
-      private static final boolean a = true;
-
-      public gge a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         ggg $$6 = this.a($$3);
-         Map<iw, ggf> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !ayc.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = ayc.a($$3, "shade", true);
-            return new gge($$4, $$5, $$7, $$6, $$8);
-         }
-      }
-
-      @Nullable
-      private ggg a(JsonObject $$0) {
-         ggg $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = ayc.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            iw.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = ayc.a($$2, "rescale", false);
-            $$1 = new ggg($$3, $$4, $$5, $$6);
+         for (Integer $$6 : this.a.keySet()) {
+            enk $$7 = this.a.get($$6);
+            float $$8 = this.b.get($$6);
+            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
          }
 
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = ayc.m($$0, "angle");
-         if ($$1 != 0.0F && aym.e($$1) != 22.5F && aym.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private iw.a c(JsonObject $$0) {
-         String $$1 = ayc.i($$0, "axis");
-         iw.a $$2 = iw.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<iw, ggf> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<iw, ggf> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<iw, ggf> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<iw, ggf> $$2 = Maps.newEnumMap(iw.class);
-         JsonObject $$3 = ayc.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            iw $$5 = this.a($$4.getKey());
-            $$2.put($$5, (ggf)$$0.deserialize($$4.getValue(), ggf.class));
-         }
-
-         return $$2;
-      }
-
-      private iw a(String $$0) {
-         iw $$1 = iw.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = ayc.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = ayc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
+            if ($$5 - this.c.get($$9) > 5000L) {
+               this.a.remove($$9);
+               this.c.remove($$9);
             }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
          }
       }
+   }
+
+   public static void a(eyu $$0, gck $$1, enk $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
+      a($$0, $$1.getBuffer(gcs.a(6.0)), $$2, $$6, $$7, $$8);
+      io $$9 = $$2.l();
+      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
+         gfw.a(
+            $$0,
+            $$1,
+            new euh(
+                  (double)((float)$$9.u() + 0.25F),
+                  (double)((float)$$9.v() + 0.25F),
+                  (double)$$9.w() + 0.25,
+                  (double)((float)$$9.u() + 0.75F),
+                  (double)((float)$$9.v() + 0.75F),
+                  (double)((float)$$9.w() + 0.75F)
+               )
+               .d(-$$6, -$$7, -$$8),
+            0.0F,
+            1.0F,
+            0.0F,
+            0.5F
+         );
+
+         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
+            eni $$11 = $$2.a($$10);
+            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
+               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
+               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
+               gfw.a(
+                  $$0,
+                  $$1,
+                  new euh(
+                        (double)((float)$$11.a + 0.5F - $$3),
+                        (double)((float)$$11.b + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F - $$3),
+                        (double)((float)$$11.a + 0.5F + $$3),
+                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F + $$3)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  $$12,
+                  0.0F,
+                  $$13,
+                  0.5F
+               );
+            }
+         }
+      }
+
+      enk.a $$14 = $$2.k();
+      if ($$4 && $$14 != null) {
+         for (eni $$15 : $$14.b()) {
+            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
+               gfw.a(
+                  $$0,
+                  $$1,
+                  new euh(
+                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.b + 0.01F),
+                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
+                        (double)$$15.b + 0.1,
+                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  1.0F,
+                  0.8F,
+                  0.8F,
+                  0.5F
+               );
+            }
+         }
+
+         for (eni $$16 : $$14.a()) {
+            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
+               gfw.a(
+                  $$0,
+                  $$1,
+                  new euh(
+                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.b + 0.01F),
+                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
+                        (double)$$16.b + 0.1,
+                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  0.8F,
+                  1.0F,
+                  1.0F,
+                  0.5F
+               );
+            }
+         }
+      }
+
+      if ($$5) {
+         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
+            eni $$18 = $$2.a($$17);
+            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
+               gfw.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
+               gfw.a(
+                  $$0,
+                  $$1,
+                  String.format(Locale.ROOT, "%.2f", $$18.k),
+                  (double)$$18.a + 0.5,
+                  (double)$$18.b + 0.25,
+                  (double)$$18.c + 0.5,
+                  -1,
+                  0.02F,
+                  true,
+                  0.0F,
+                  true
+               );
+            }
+         }
+      }
+   }
+
+   public static void a(eyu $$0, eyy $$1, enk $$2, double $$3, double $$4, double $$5) {
+      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
+         eni $$7 = $$2.a($$6);
+         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
+            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
+            int $$9 = $$6 == 0 ? 0 : ayf.h($$8, 0.9F, 0.9F);
+            int $$10 = $$9 >> 16 & 0xFF;
+            int $$11 = $$9 >> 8 & 0xFF;
+            int $$12 = $$9 & 0xFF;
+            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5))
+               .a($$10, $$11, $$12, 255)
+               .e();
+         }
+      }
+   }
+
+   private static float a(io $$0, double $$1, double $$2, double $$3) {
+      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

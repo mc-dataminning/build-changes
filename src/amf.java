@@ -1,132 +1,216 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import javax.annotation.Nullable;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class amf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, aks<dca>> a = ImmutableBiMap.of("o", dca.h, "n", dca.i, "e", dca.j);
-   @Nullable
-   private static alx g;
-   @Nullable
-   private static alw h;
+   static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.debug.alreadyRunning"));
+   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.debug.function.noRecursion"));
+   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.debug.function.noReturnRun"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ei.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ei.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ei.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (eh)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((eh)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ei.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)ei.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 ei.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (eh)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((eh)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(ei.a("stop").executes($$0x -> a((eh)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(ef.a("start").executes($$0x -> a((ee)$$0x.getSource()))))
+               .then(ef.a("stop").executes($$0x -> b((ee)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)ef.a("function").requires($$0x -> $$0x.c(3))).then(ef.a("name", gm.a()).suggests(amt.b).executes(new amf.a())))
       );
    }
 
-   private static int a(eh $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> xe.b("You have now stopped chasing"), false);
-         h = null;
+   private static int a(ee $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.bi()) {
+         throw c.create();
+      } else {
+         $$1.bj();
+         $$0.a(() -> wx.c("commands.debug.started"), true);
+         return 0;
       }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> xe.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
    }
 
-   private static boolean b(eh $$0) {
-      if (g != null) {
-         $$0.b(xe.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(xe.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static int b(ee $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.bi()) {
+         throw b.create();
       } else {
+         bmj $$2 = $$1.bk();
+         double $$3 = (double)$$2.g() / (double)aze.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> wx.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
+   }
+
+   static class a extends ha.b<ee> implements ha.a<ee> {
+      public void a(ee $$0, ContextChain<ee> $$1, gy $$2, he<ee> $$3) throws CommandSyntaxException {
+         if ($$2.c()) {
+            throw amf.e.create();
+         } else if ($$3.a() != null) {
+            throw amf.d.create();
+         } else {
+            CommandContext<ee> $$4 = $$1.getTopContext();
+            Collection<hq<ee>> $$5 = gm.a($$4, "name");
+            MinecraftServer $$6 = $$0.l();
+            String $$7 = "debug-trace-" + ac.f() + ".txt";
+            CommandDispatcher<ee> $$8 = $$0.l().aF().a();
+            int $$9 = 0;
+
+            try {
+               Path $$10 = $$6.c("debug").toPath();
+               Files.createDirectories($$10);
+               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
+               amf.b $$12 = new amf.b($$11);
+               $$3.a($$12);
+
+               for (final hq<ee> $$13 : $$5) {
+                  try {
+                     ee $$14 = $$0.a($$12).b(2);
+                     hs<ee> $$15 = $$13.a(null, $$8);
+                     $$3.a((new hk<ee>($$15, eb.a, false) {
+                        public void a(ee $$0, hd<ee> $$1, hf $$2) {
+                           $$11.println($$13.a());
+                           super.a($$0, $$1, $$2);
+                        }
+                     }).bind($$14));
+                     $$9 += $$15.b().size();
+                  } catch (eh var18) {
+                     $$0.b(var18.a());
+                  }
+               }
+            } catch (IOException | UncheckedIOException var19) {
+               amf.a.warn("Tracing failed", var19);
+               $$0.b(wx.c("commands.debug.function.traceFailed"));
+            }
+
+            int $$18 = $$9;
+            $$3.a(($$4x, $$5x) -> {
+               if ($$5.size() == 1) {
+                  $$0.a(() -> wx.a("commands.debug.function.success.single", $$18, wx.a($$5.iterator().next().a()), $$7), true);
+               } else {
+                  $$0.a(() -> wx.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+               }
+            });
+         }
+      }
+   }
+
+   static class b implements ed, hg {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      b(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, akn $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.e();
+         this.a(this.d + 1);
+         this.c.print("[E] ");
+         this.c.print($$0);
+      }
+
+      @Override
+      public void a(wx $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean l_() {
+         return true;
+      }
+
+      @Override
+      public boolean w_() {
+         return true;
+      }
+
+      @Override
+      public boolean U_() {
          return false;
       }
-   }
 
-   private static int a(eh $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new alx($$1, $$2, $$0.l().ah(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> xe.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(xe.b("Failed to start chase server on port " + $$2));
-            g = null;
-         }
-
-         return 0;
+      @Override
+      public boolean m_() {
+         return true;
       }
-   }
 
-   private static int b(eh $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new alw($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> xe.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+      @Override
+      public void close() {
+         IOUtils.closeQuietly(this.c);
       }
    }
 }

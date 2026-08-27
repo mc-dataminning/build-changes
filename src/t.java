@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.UUID;
 import org.slf4j.Logger;
 
-public class t implements ae {
+public class t implements ad {
    private static final Logger b = LogUtils.getLogger();
-   public static final ae a = new t();
+   public static final ad a = new t();
    private final String c;
    private final String d;
    private final boolean e;
-   private final eqx f;
+   private final eop f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,28 +23,28 @@ public class t implements ae {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w14potato";
+      this.d = "24w14a";
       this.e = false;
-      this.f = new eqx(3824, "april2024");
-      this.g = ab.c();
-      this.h = 30;
-      this.i = 36;
+      this.f = new eop(3827, "main");
+      this.g = aa.c();
+      this.h = 31;
+      this.i = 38;
       this.j = new Date();
    }
 
    private t(JsonObject $$0) {
-      this.c = ayc.i($$0, "id");
-      this.d = ayc.i($$0, "name");
-      this.e = ayc.k($$0, "stable");
-      this.f = new eqx(ayc.o($$0, "world_version"), ayc.a($$0, "series_id", eqx.a));
-      this.g = ayc.o($$0, "protocol_version");
-      JsonObject $$1 = ayc.u($$0, "pack_version");
-      this.h = ayc.o($$1, "resource");
-      this.i = ayc.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(ayc.i($$0, "build_time")).toInstant());
+      this.c = axv.i($$0, "id");
+      this.d = axv.i($$0, "name");
+      this.e = axv.k($$0, "stable");
+      this.f = new eop(axv.o($$0, "world_version"), axv.a($$0, "series_id", eop.a));
+      this.g = axv.o($$0, "protocol_version");
+      JsonObject $$1 = axv.u($$0, "pack_version");
+      this.h = axv.o($$1, "resource");
+      this.i = axv.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(axv.i($$0, "build_time")).toInstant());
    }
 
-   public static ae a() {
+   public static ad a() {
       try {
          t var2;
          try (InputStream $$0 = t.class.getResourceAsStream("/version.json")) {
@@ -54,7 +54,7 @@ public class t implements ae {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new t(ayc.a($$1));
+               var2 = new t(axv.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class t implements ae {
    }
 
    @Override
-   public eqx d() {
+   public eop d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements ae {
    }
 
    @Override
-   public int a(asr $$0) {
-      return $$0 == asr.b ? this.i : this.h;
+   public int a(asl $$0) {
+      return $$0 == asl.b ? this.i : this.h;
    }
 
    @Override

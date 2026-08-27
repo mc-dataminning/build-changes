@@ -1,18 +1,46 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class evk {
-   private static final Codec<evj> d = lh.J.q().dispatch(evj::a, evi::a);
-   public static final Codec<evj> a = axu.a(
-      (Supplier<Codec<evj>>)(() -> Codec.either(evh.c, d)
-            .xmap($$0 -> (evj)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof evh $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final evi b = a("storage", evl.a);
-   public static final evi c = a("context", evh.b);
+class evk {
+   private final Reference2ObjectOpenHashMap<evi, evn> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   private static evi a(String $$0, Codec<? extends evj> $$1) {
-      return jn.a(lh.J, new akt($$0), new evi($$1));
+   @Nullable
+   public evn a(evi $$0) {
+      return (evn)this.a.get($$0);
+   }
+
+   public evn a(evi $$0, Consumer<evn> $$1) {
+      return (evn)this.a.computeIfAbsent($$0, $$1x -> {
+         evn $$2 = new evn();
+         $$1.accept($$2);
+         return $$2;
+      });
+   }
+
+   public boolean b(evi $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<evi> b() {
+      Object2IntMap<evi> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(evi $$0, evn $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<evi, evn> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

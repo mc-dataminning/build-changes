@@ -1,99 +1,169 @@
-public class fxf extends fvz<cjj> {
-   private final fys a;
-   private final fys b;
-   private final fys f;
-   private final fys g;
-   private final fys h;
-   private final fys i;
-   private final fys j;
-   private final fys k;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fxf(fys $$0) {
+public class fxf {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public wx c;
+   public wx d;
+   @Nullable
+   public ajm.b e;
+   public long f;
+   public int g = aa.b().e();
+   public wx h = wx.b(aa.b().c());
+   public List<wx> i = Collections.emptyList();
+   private fxf.a l = fxf.a.c;
+   @Nullable
+   private byte[] m;
+   private fxf.c n;
+   private fxf.b o = fxf.b.a;
+
+   public fxf(String $$0, String $$1, fxf.c $$2) {
       this.a = $$0;
-      this.k = $$0.b("neck");
-      this.b = this.k.b("head");
-      this.f = this.b.b("mouth");
-      this.g = $$0.b("right_hind_leg");
-      this.h = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.j = $$0.b("left_front_leg");
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public static fyy b() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      int $$2 = 16;
-      fzb $$3 = $$1.a("neck", fyx.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), fyu.a(0.0F, -7.0F, 5.5F));
-      fzb $$4 = $$3.a(
-         "head", fyx.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), fyu.a(0.0F, 16.0F, -17.0F)
-      );
-      $$4.a("right_horn", fyx.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fyu.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("left_horn", fyx.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fyu.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("mouth", fyx.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), fyu.a(0.0F, -2.0F, 2.0F));
-      $$1.a(
-         "body",
-         fyx.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
-         fyu.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("right_hind_leg", fyx.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fyu.a(-8.0F, -13.0F, 18.0F));
-      $$1.a("left_hind_leg", fyx.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fyu.a(8.0F, -13.0F, 18.0F));
-      $$1.a("right_front_leg", fyx.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fyu.a(-8.0F, -13.0F, -5.0F));
-      $$1.a("left_front_leg", fyx.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fyu.a(8.0F, -13.0F, -5.0F));
-      return fyy.a($$0, 128, 128);
+   public ud a() {
+      ud $$0 = new ud();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == fxf.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fxf.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   @Override
-   public fys a() {
-      return this.a;
+   public fxf.a b() {
+      return this.l;
    }
 
-   public void a(cjj $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      float $$6 = 0.4F * $$2;
-      this.g.e = aym.b($$1 * 0.6662F) * $$6;
-      this.h.e = aym.b($$1 * 0.6662F + (float) Math.PI) * $$6;
-      this.i.e = aym.b($$1 * 0.6662F + (float) Math.PI) * $$6;
-      this.j.e = aym.b($$1 * 0.6662F) * $$6;
+   public void a(fxf.a $$0) {
+      this.l = $$0;
    }
 
-   public void a(cjj $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = $$0.gy();
-      int $$5 = $$0.gI();
-      int $$6 = 20;
-      int $$7 = $$0.t();
-      int $$8 = 10;
-      if ($$7 > 0) {
-         float $$9 = aym.e((float)$$7 - $$3, 10.0F);
-         float $$10 = (1.0F + $$9) * 0.5F;
-         float $$11 = $$10 * $$10 * $$10 * 12.0F;
-         float $$12 = $$11 * aym.a(this.k.e);
-         this.k.d = -6.5F + $$11;
-         this.k.c = -7.0F - $$12;
-         float $$13 = aym.a(((float)$$7 - $$3) / 10.0F * (float) Math.PI * 0.25F);
-         this.f.e = (float) (Math.PI / 2) * $$13;
-         if ($$7 > 5) {
-            this.f.e = aym.a(((float)(-4 + $$7) - $$3) / 4.0F) * (float) Math.PI * 0.4F;
-         } else {
-            this.f.e = (float) (Math.PI / 20) * aym.a((float) Math.PI * ((float)$$7 - $$3) / 10.0F);
-         }
-      } else {
-         float $$14 = -1.0F;
-         float $$15 = -1.0F * aym.a(this.k.e);
-         this.k.b = 0.0F;
-         this.k.c = -7.0F - $$15;
-         this.k.d = 5.5F;
-         boolean $$16 = $$4 > 0;
-         this.k.e = $$16 ? 0.21991149F : 0.0F;
-         this.f.e = (float) Math.PI * ($$16 ? 0.05F : 0.01F);
-         if ($$16) {
-            double $$17 = (double)$$4 / 40.0;
-            this.k.b = (float)Math.sin($$17 * 10.0) * 3.0F;
-         } else if ($$5 > 0) {
-            float $$18 = aym.a(((float)(20 - $$5) - $$3) / 20.0F * (float) Math.PI * 0.25F);
-            this.f.e = (float) (Math.PI / 2) * $$18;
+   public static fxf a(ud $$0) {
+      fxf $$1 = new fxf($$0.l("name"), $$0.l("ip"), fxf.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fxf.a.a);
+         } else {
+            $$1.a(fxf.a.b);
+         }
+      } else {
+         $$1.a(fxf.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fxf.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fxf.c.b;
+   }
+
+   public fxf.c f() {
+      return this.n;
+   }
+
+   public void a(fxf $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fxf $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fxf.b g() {
+      return this.o;
+   }
+
+   public void a(fxf.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            ayj $$1 = ayj.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final wx d;
+
+      private a(String $$0) {
+         this.d = wx.c("addServer.resourcePack." + $$0);
+      }
+
+      public wx a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

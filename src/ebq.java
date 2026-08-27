@@ -1,44 +1,43 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ebq extends ebo {
-   public ebq(Codec<eer> $$0) {
+public class ebq extends dzz<eck> {
+   private static final io a = new io(8, 3, 8);
+   private static final dag b = new dag(a);
+   private static final int c = 16;
+   private static final int d = 1;
+
+   public ebq(Codec<eck> $$0) {
       super($$0);
    }
 
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
    @Override
-   protected boolean a(dcb $$0, ayt $$1, ir $$2, dtc $$3) {
-      ir.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(eab<eck> $$0) {
+      dbu $$1 = $$0.b();
+      dag $$2 = new dag($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         io $$3 = a.h($$0.e().v() + a.v());
+         io.a $$4 = new io.a();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.d(iw.b);
-      }
-
-      ir $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<iw> $$9 = iw.c.a.c($$1);
-
-      for (iw $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.d($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.d(iw.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.d($$11);
-               $$13 = 0;
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dec.m.n(), 2);
+                  } else {
+                     $$1.a($$4, dec.b.n(), 2);
+                  }
+               }
             }
          }
-      }
 
-      return true;
+         return true;
+      }
    }
 }

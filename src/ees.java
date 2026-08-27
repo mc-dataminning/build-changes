@@ -1,53 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ees implements eek {
-   public static final Codec<ees> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ees.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ees::new)
-   );
-   public final List<ees.a> b;
-   public final int c;
-   public final float d;
+public class ees extends eev {
+   public static final MapCodec<ees> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ees::new, $$0 -> $$0.d);
+   private static final it b = it.d;
+   private static final it[] c = it.c.a.a().filter($$0 -> $$0 != b.g()).toArray(it[]::new);
+   private final float d;
 
-   public ees(List<ees.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
+   public ees(float $$0) {
+      this.d = $$0;
    }
 
-   public ees(List<ees.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
+   @Override
+   protected eew<?> a() {
+      return eew.d;
    }
 
-   public ees(enn $$0, dtc $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new ees.a($$0, $$1)), $$2, $$3);
-   }
+   @Override
+   public void a(eev.a $$0) {
+      aym $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<io> $$2 = $$0.d();
+         List<io> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<io> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<io> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dec.pe.n().a(ddu.b, b));
+               $$0.a().a($$6.get(), dok.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-   public ees(enn $$0, dtc $$1, int $$2) {
-      this(ImmutableList.of(new ees.a($$0, $$1)), $$2, 0.0F);
-   }
-
-   public static ees.a a(enn $$0, dtc $$1) {
-      return new ees.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<ees.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(enn.c.fieldOf("target").forGetter($$0x -> $$0x.b), dtc.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ees.a::new)
-      );
-      public final enn b;
-      public final dtc c;
-
-      a(enn $$0, dtc $$1) {
-         this.b = $$0;
-         this.c = $$1;
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dof.c.a($$1.a(599)));
+                  }
+               });
+            }
+         }
       }
    }
 }

@@ -1,36 +1,46 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+public final class eve extends euv {
+   private final euv d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public record eve(evq b, ero c) implements euu {
-   public static final Codec<eve> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(evr.a.fieldOf("value").forGetter(eve::c), ero.a.fieldOf("range").forGetter(eve::d)).apply($$0, eve::new)
-   );
-
-   @Override
-   public euv b() {
-      return euw.t;
+   protected eve(euv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
    @Override
-   public Set<eud<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public boolean a(erp $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public static euu.a a(evq $$0, ero $$1) {
-      return () -> new eve($$0, $$1);
+   @Override
+   public int a(it.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public evq c() {
-      return this.b;
+   @Override
+   public int b(it.a $$0) {
+      return this.a($$0, this.d.b($$0));
    }
 
-   public ero d() {
-      return this.c;
+   private int a(it.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return ayf.a($$1, $$2, $$3) - $$2;
    }
 }

@@ -1,48 +1,74 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public class emb extends ejt {
-   public static final Codec<emb> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), ehz.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, emb::new)
-   );
-   public final ehz e;
+public class emb {
+   private final emc[] a;
+   private final double b;
+   private final double c;
 
-   public emb(ejt.d $$0, ehz $$1) {
-      super($$0);
-      this.e = $$1;
+   public emb(aym $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      dzt $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dzr $$5 = new dzr($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dcm $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      ir.a $$8 = new ir.a($$2, $$6, $$3);
+   private emb(aym $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            emc $$5 = new emc($$0);
+            int $$6 = $$3;
+            this.a = new emc[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
 
-      while ($$6 > $$4) {
-         dtc $$9 = $$7.a($$6);
-         dtc $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dfe.eK) || $$10.d(dbp.a, $$8.q($$6), iw.b))) {
-            break;
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new emc($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               aym $$9 = new dxu(new dww($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new emc($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         ir $$11 = new ir($$2, $$6, $$3);
-         return Optional.of(new ejt.c($$11, (Consumer<ekl>)($$3x -> ema.a($$0.e(), $$3x, $$1, $$11))));
-      }
    }
 
-   @Override
-   public ekc<?> f() {
-      return ekc.i;
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
+
+      for (emc $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
+
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
+
+      return $$3;
    }
 }

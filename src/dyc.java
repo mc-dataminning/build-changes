@@ -1,70 +1,119 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public record dyc(ja<dxv> b, float c, ewu d, @Nullable UUID e, @Nullable UUID f, @Nullable brv g) {
-   public static final Codec<dyc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lh.a.r().fieldOf("game_event").forGetter(dyc::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dyc::b),
-               ewu.a.fieldOf("pos").forGetter(dyc::c),
-               ju.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               ju.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dyc($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public interface dyc extends BiPredicate<dbu, io> {
+   Codec<dyc> b = le.O.q().dispatch(dyc::a, dyd::codec);
+   dyc c = a(dec.a);
+   dyc d = a(dec.a, dec.G);
 
-   public dyc(ja<dxv> $$0, float $$1, ewu $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
+   dyd<?> a();
+
+   static dyc a(List<dyc> $$0) {
+      return new dya($$0);
    }
 
-   public dyc(ja<dxv> $$0, float $$1, ewu $$2, @Nullable brv $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cE(), a($$3), $$3);
+   static dyc a(dyc... $$0) {
+      return a(List.of($$0));
    }
 
-   @Nullable
-   private static UUID a(@Nullable brv $$0) {
-      if ($$0 instanceof cms $$1 && $$1.t() != null) {
-         return $$1.t().cE();
-      }
-
-      return null;
+   static dyc a(dyc $$0, dyc $$1) {
+      return a(List.of($$0, $$1));
    }
 
-   public Optional<brv> a(aqt $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   static dyc b(List<dyc> $$0) {
+      return new dyb($$0);
    }
 
-   public Optional<brv> b(aqt $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof cms).map($$0x -> (cms)$$0x).map(cms::t).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   static dyc b(dyc... $$0) {
+      return b(List.of($$0));
    }
 
-   public ja<dxv> a() {
-      return this.b;
+   static dyc b(dyc $$0, dyc $$1) {
+      return b(List.of($$0, $$1));
    }
 
-   public float b() {
-      return this.c;
+   static dyc a(js $$0, List<dea> $$1) {
+      return new dyi($$0, jb.a(dea::q, $$1));
    }
 
-   public ewu c() {
-      return this.d;
+   static dyc c(List<dea> $$0) {
+      return a(js.g, $$0);
    }
 
-   @Nullable
-   public UUID d() {
-      return this.e;
+   static dyc a(js $$0, dea... $$1) {
+      return a($$0, List.of($$1));
    }
 
-   @Nullable
-   public UUID e() {
-      return this.f;
+   static dyc a(dea... $$0) {
+      return a(js.g, $$0);
    }
 
-   @Nullable
-   public brv f() {
-      return this.g;
+   static dyc a(js $$0, awm<dea> $$1) {
+      return new dyh($$0, $$1);
+   }
+
+   static dyc a(awm<dea> $$0) {
+      return a(js.g, $$0);
+   }
+
+   static dyc b(js $$0, List<emv> $$1) {
+      return new dyj($$0, jb.a(emv::k, $$1));
+   }
+
+   static dyc a(js $$0, emv... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static dyc a(emv... $$0) {
+      return a(js.g, $$0);
+   }
+
+   static dyc a(dyc $$0) {
+      return new dyk($$0);
+   }
+
+   static dyc a(js $$0) {
+      return new dyl($$0);
+   }
+
+   static dyc b() {
+      return a(js.g);
+   }
+
+   static dyc a(drd $$0, js $$1) {
+      return new dyp($$1, $$0);
+   }
+
+   static dyc a(js $$0, it $$1) {
+      return new dyf($$0, $$1);
+   }
+
+   static dyc a(it $$0) {
+      return a(js.g, $$0);
+   }
+
+   static dyc b(js $$0) {
+      return new dym($$0);
+   }
+
+   static dyc c() {
+      return b(js.g);
+   }
+
+   static dyc d() {
+      return c(js.g);
+   }
+
+   static dyc c(js $$0) {
+      return a($$0, emx.a);
+   }
+
+   static dyc d(js $$0) {
+      return new dyg($$0);
+   }
+
+   static dyc e() {
+      return dyo.a;
    }
 }

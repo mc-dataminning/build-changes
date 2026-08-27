@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface frv {
+public interface frv {
+   void a(bsk var1, eyu var2);
 }

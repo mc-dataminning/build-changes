@@ -1,46 +1,69 @@
-public class goz extends gpi<cgl, fwj<cgl>> {
-   private static final akt[] a = new akt[]{
-      new akt("textures/entity/llama/decor/white.png"),
-      new akt("textures/entity/llama/decor/orange.png"),
-      new akt("textures/entity/llama/decor/magenta.png"),
-      new akt("textures/entity/llama/decor/light_blue.png"),
-      new akt("textures/entity/llama/decor/yellow.png"),
-      new akt("textures/entity/llama/decor/lime.png"),
-      new akt("textures/entity/llama/decor/pink.png"),
-      new akt("textures/entity/llama/decor/gray.png"),
-      new akt("textures/entity/llama/decor/light_gray.png"),
-      new akt("textures/entity/llama/decor/cyan.png"),
-      new akt("textures/entity/llama/decor/purple.png"),
-      new akt("textures/entity/llama/decor/blue.png"),
-      new akt("textures/entity/llama/decor/brown.png"),
-      new akt("textures/entity/llama/decor/green.png"),
-      new akt("textures/entity/llama/decor/red.png"),
-      new akt("textures/entity/llama/decor/black.png")
-   };
-   private static final akt b = new akt("textures/entity/llama/decor/trader_llama.png");
-   private final fwj<cgl> c;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-   public goz(gmp<cgl, fwj<cgl>> $$0, fyo $$1) {
-      super($$0);
-      this.c = new fwj<>($$1.a(fyr.aC));
+public class goz extends ty {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
+
+   private goz(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, cgl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      csy $$10 = $$3.gL();
-      akt $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gH()) {
-            return;
-         }
+   public static goz a(atx $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
 
-         $$11 = b;
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               akn $$7 = new akn($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
       }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      fbg $$14 = $$1.getBuffer(gfo.e($$11));
-      this.c.a($$0, $$14, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      return new goz(ImmutableMap.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<atv> $$1, Map<String, String> $$2) {
+      for (atv $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            ty.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
+   }
+
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public axr a(xc $$0) {
+      return gpa.a($$0, this.d);
    }
 }

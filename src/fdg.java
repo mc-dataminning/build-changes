@@ -1,13 +1,59 @@
-public class fdg extends fdf {
-   public static final int b = 5;
-   public final int c;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fdg(int $$0, int $$1) {
-      super(fbu.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
+public abstract class fdg extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final wx d;
+   private final Runnable e;
+
+   public fdg(long $$0, wx $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   protected abstract void a(ezk var1, long var2) throws fax;
+
+   @Override
+   public void run() {
+      ezk $$0 = ezk.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fay var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
       }
+   }
+
+   @Override
+   public wx a() {
+      return this.d;
    }
 }

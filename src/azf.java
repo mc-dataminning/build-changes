@@ -1,144 +1,50 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public class azf {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(azo.a);
+public interface azf<C> {
+   azf<Float> a = a($$0 -> $$0);
 
-   private static boolean a(yb $$0, axz $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
-   }
+   float a(C var1);
 
-   public static boolean a(String $$0, yb $$1, axz $$2) {
-      int $$3 = $$0.length();
+   float b();
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
+   float c();
 
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
-               }
-
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
+   static azf<Float> a(final Float2FloatFunction $$0) {
+      return new azf<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
          }
-      }
 
-      return true;
-   }
-
-   public static boolean b(String $$0, yb $$1, axz $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
          }
-      }
 
-      return true;
-   }
-
-   public static boolean c(String $$0, yb $$1, axz $$2) {
-      return a($$0, 0, $$1, $$2);
-   }
-
-   public static boolean a(String $$0, int $$1, yb $$2, axz $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public static boolean a(String $$0, int $$1, yb $$2, yb $$3, axz $$4) {
-      int $$5 = $$0.length();
-      yb $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
          }
-      }
-
-      return true;
+      };
    }
 
-   public static boolean a(xj $$0, yb $$1, axz $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
-   }
+   default <C2> azf<C2> a(final Function<C2, C> $$0) {
+      final azf<C> $$1 = this;
+      return new azf<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yb.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   public static String a(xj $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yb.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

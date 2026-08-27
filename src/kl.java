@@ -1,45 +1,43 @@
-public class kl implements km {
+public class kl extends kj {
    @Override
-   public final cuh dispense(kj $$0, cuh $$1) {
-      cuh $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(dhi.b));
-      return $$2;
-   }
+   protected ctq a(kf $$0, ctq $$1) {
+      aqn $$2 = $$0.b();
+      if (!$$2.x_()) {
+         io $$3 = $$0.c().a($$0.d().c(dgf.b));
+         this.a(a($$2, $$3) || b($$2, $$3));
+         if (this.b()) {
+            $$1.a(1, $$2.E_(), null, () -> $$1.e(0));
+         }
+      }
 
-   protected cuh a(kj $$0, cuh $$1) {
-      iw $$2 = $$0.d().c(dhi.b);
-      jk $$3 = dhi.a($$0);
-      cuh $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(dca $$0, cuh $$1, int $$2, iw $$3, jk $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == iw.a.b) {
-         $$6 -= 0.125;
-      } else {
-         $$6 -= 0.15625;
+   private static boolean a(aqn $$0, io $$1) {
+      drd $$2 = $$0.a_($$1);
+      if ($$2.a(avx.aG, $$0x -> $$0x.b(ddu.c) && $$0x.b() instanceof ddu)) {
+         int $$3 = $$2.c(ddu.c);
+         if ($$3 >= 5) {
+            $$0.a(null, $$1, avi.bX, avj.e, 1.0F, 1.0F);
+            ddu.a($$0, $$1);
+            ((ddu)$$2.b()).a($$0, $$2, $$1, null, dof.b.b);
+            $$0.a(null, dvw.M, $$1);
+            return true;
+         }
       }
 
-      cig $$8 = new cig($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.A.j() * 0.1 + 0.2;
-      $$8.o(
-         $$0.A.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.A.a(0.2, 0.0172275 * (double)$$2),
-         $$0.A.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
+      return false;
    }
 
-   protected void a(kj $$0) {
-      $$0.b().c(1000, $$0.c(), 0);
-   }
+   private static boolean b(aqn $$0, io $$1) {
+      for (bsq $$3 : $$0.a(bsq.class, new euh($$1), bsb.f)) {
+         if ($$3 instanceof bth $$4 && $$4.a()) {
+            $$4.a(avj.e);
+            $$0.a(null, dvw.M, $$1);
+            return true;
+         }
+      }
 
-   protected void a(kj $$0, iw $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
+      return false;
    }
 }

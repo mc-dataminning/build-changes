@@ -1,63 +1,62 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class apb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.transfer.error.no_players"));
+public class apb implements apc {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.data.block.invalid"));
+   public static final Function<String, apd.c> a = $$0 -> new apd.c() {
+         @Override
+         public apc a(CommandContext<ee> $$0x) throws CommandSyntaxException {
+            io $$1 = ga.a($$0, $$0 + "Pos");
+            doi $$2 = ((ee)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw apb.b.create();
+            } else {
+               return new apb($$2, $$1);
+            }
+         }
 
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("transfer").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ei.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((eh)$$0x.getSource()).h()))))
-                  .then(
-                     ((RequiredArgumentBuilder)ei.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (eh)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((eh)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           ei.a("players", eu.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (eh)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       eu.f($$0x, "players")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+         @Override
+         public ArgumentBuilder<ee, ?> a(ArgumentBuilder<ee, ?> $$0x, Function<ArgumentBuilder<ee, ?>, ArgumentBuilder<ee, ?>> $$1) {
+            return $$0.then(ef.a("block").then($$1.apply(ef.a($$0 + "Pos", ga.a()))));
+         }
+      };
+   private final doi c;
+   private final io d;
+
+   public apb(doi $$0, io $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static int a(eh $$0, String $$1, int $$2, Collection<aqu> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (aqu $$4 : $$3) {
-            $$4.d.b(new zz($$1, $$2));
-         }
+   @Override
+   public void a(ud $$0) {
+      drd $$1 = this.c.i().a_(this.d);
+      this.c.c($$0, this.c.i().H_());
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
+   }
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> xe.a("commands.transfer.success.single", $$3.iterator().next().P_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xe.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
+   @Override
+   public ud a() {
+      return this.c.b(this.c.i().H_());
+   }
 
-         return $$3.size();
-      }
+   @Override
+   public wx b() {
+      return wx.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   }
+
+   @Override
+   public wx a(va $$0) {
+      return wx.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), us.c($$0));
+   }
+
+   @Override
+   public wx a(ew.g $$0, double $$1, int $$2) {
+      return wx.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

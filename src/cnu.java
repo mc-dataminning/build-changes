@@ -1,59 +1,151 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cnu {
-   private final List<cnr> a = Lists.newArrayList();
-   private int b;
+public abstract class cnu extends cnt implements cnx {
+   private jg<ctq> c = jg.a(36, ctq.i);
+   @Nullable
+   private akm<epm> d;
+   private long e;
 
-   public ImmutableList<cnr> a() {
-      return ImmutableList.copyOf(this.a);
+   protected cnu(bsc<?> $$0, daz $$1) {
+      super($$0, $$1);
    }
 
-   public cnu a(int $$0, float $$1) {
-      this.a.add(new cnr($$0, $$1));
-      this.b();
-      return this;
+   protected cnu(bsc<?> $$0, double $$1, double $$2, double $$3, daz $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
-   public cnu a(Collection<cnr> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   @Override
+   public void a(bqp $$0) {
+      super.a($$0);
+      this.a($$0, this.dP(), this);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cnr> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   public ctq a(int $$0) {
+      return this.f_($$0);
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cnr $$1 = this.a.get(this.b);
-         cnr $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   public ctq a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cnr $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
+   @Override
+   public ctq b(int $$0) {
+      return this.e_($$0);
+   }
 
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
+   @Override
+   public void a(int $$0, ctq $$1) {
+      this.c($$0, $$1);
+   }
 
-         return $$5;
+   @Override
+   public bti a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(brw.c $$0) {
+      if (!this.dP().B && $$0.a()) {
+         bps.a(this.dP(), this, this);
       }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected void b(ud $$0) {
+      super.b($$0);
+      this.a($$0, this.dR());
+   }
+
+   @Override
+   protected void a(ud $$0) {
+      super.a($$0);
+      this.b($$0, this.dR());
+   }
+
+   @Override
+   public bpw a(cly $$0, bpv $$1) {
+      return this.c_($$0);
+   }
+
+   @Override
+   protected void u() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cov.b(this);
+         $$0 += (float)$$1 * 0.001F;
+      }
+
+      if (this.be()) {
+         $$0 *= 0.95F;
+      }
+
+      this.g(this.ds().d((double)$$0, 0.0, (double)$$0));
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(akm<epm> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cov createMenu(int $$0, clx $$1, cly $$2) {
+      if (this.d != null && $$2.N_()) {
+         return null;
+      } else {
+         this.f($$1.l);
+         return this.a($$0, $$1);
+      }
+   }
+
+   protected abstract cov a(int var1, clx var2);
+
+   @Nullable
+   @Override
+   public akm<epm> B() {
+      return this.d;
+   }
+
+   @Override
+   public void a(@Nullable akm<epm> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public long C() {
+      return this.e;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public jg<ctq> D() {
+      return this.c;
+   }
+
+   @Override
+   public void E() {
+      this.c = jg.a(this.b(), ctq.i);
    }
 }

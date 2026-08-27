@@ -1,252 +1,56 @@
-public class frz extends fjj<frz.a> {
-   static final akt a = new akt("transferable_list/select_highlighted");
-   static final akt m = new akt("transferable_list/select");
-   static final akt n = new akt("transferable_list/unselect_highlighted");
-   static final akt o = new akt("transferable_list/unselect");
-   static final akt p = new akt("transferable_list/move_up_highlighted");
-   static final akt q = new akt("transferable_list/move_up");
-   static final akt r = new akt("transferable_list/move_down_highlighted");
-   static final akt s = new akt("transferable_list/move_down");
-   static final xe u = xe.c("pack.incompatible");
-   static final xe v = xe.c("pack.incompatible.confirm.title");
-   private final xe w;
-   final fry x;
+public class frz extends ftf<ceb> {
+   private final fvw a;
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+   private final fvw i;
+   private final fvw j;
+   private final fvw k;
 
-   public frz(fgj $$0, fry $$1, int $$2, int $$3, xe $$4) {
-      super($$0, $$2, $$3, 33, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
-      this.a(true, (int)(9.0F * 1.5F));
+   public frz(fvw $$0) {
+      super(gcs::d);
+      this.a = $$0;
+      this.f = $$0.b("body");
+      this.b = $$0.b("head");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
+      this.k = this.f.b("feet");
+   }
+
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      fwf $$2 = $$1.a("body", fwb.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fvy.a(0.0F, 17.0F, 0.0F));
+      fwf $$3 = $$1.a("head", fwb.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fvy.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", fwb.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fvy.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", fwb.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fvy.a(1.1F, -3.0F, 0.0F));
+      fwf $$4 = $$2.a("right_wing", fwb.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fvy.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", fwb.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fvy.a(-2.0F, 0.0F, 0.0F));
+      fwf $$5 = $$2.a("left_wing", fwb.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fvy.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", fwb.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fvy.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", fwb.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fvy.a(0.0F, 5.0F, 0.0F));
+      return fwc.a($$0, 32, 32);
    }
 
    @Override
-   protected void a(fia $$0, int $$1, int $$2) {
-      xe $$3 = xe.i().a(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.D() + 3, $$2), -1, false);
+   public fvw a() {
+      return this.a;
    }
 
-   @Override
-   public int b() {
-      return this.g;
+   public void a(ceb $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fvw::c);
+      if ($$0.u()) {
+         this.a($$4);
+      }
+
+      this.a($$0.d, fev.b, $$3, 1.0F);
+      this.a($$0.e, fev.a, $$3, 1.0F);
    }
 
-   @Override
-   protected int p() {
-      return this.E() - 6;
-   }
-
-   @Override
-   protected void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.m()) {
-         int $$6 = 2;
-         int $$7 = this.r() - 2;
-         int $$8 = this.E() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.h() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.h().c();
-               return true;
-            default:
-               if (fon.s()) {
-                  switch ($$0) {
-                     case 264:
-                        this.h().f();
-                        return true;
-                     case 265:
-                        this.h().e();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public static class a extends fjj.a<frz.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final frz e;
-      protected final fgj a;
-      private final frx.a f;
-      private final axy g;
-      private final fjg h;
-      private final axy i;
-      private final fjg j;
-
-      public a(fgj $$0, frz $$1, frx.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, frz.u);
-         this.j = b($$0, $$2.b().b());
-      }
-
-      private static axy a(fgj $$0, xe $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            xj $$3 = xj.a($$0.h.a($$1, 157 - $$0.h.b("...")), xj.e("..."));
-            return uf.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
-
-      private static fjg b(fgj $$0, xe $$1) {
-         return fjg.a($$0.h, $$1, 157, 2);
-      }
-
-      @Override
-      public xe a() {
-         return xe.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         atm $$10 = this.f.b();
-         if (!$$10.a()) {
-            int $$11 = $$3 + $$4 - 3 - (this.e.m() ? 7 : 0);
-            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         axy $$12 = this.g;
-         fjg $$13 = this.h;
-         if (this.d() && (this.a.m.Z().c() || $$8 || this.e.h() == this && this.e.aI_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            int $$15 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$12 = this.i;
-               $$13 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$14 < 32) {
-                  $$0.a(frz.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(frz.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$14 < 16) {
-                     $$0.a(frz.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(frz.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
-                     $$0.a(frz.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(frz.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
-                     $$0.a(frz.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(frz.s, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void f() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            xe $$0 = this.f.b().c();
-            this.a.a(new fne($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, frz.v, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.r();
-         double $$4 = $$1 - (double)this.e.g(this.e.aE_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.B();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
-
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
+   private void a(float $$0) {
+      this.b.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

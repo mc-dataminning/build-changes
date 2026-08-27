@@ -1,20 +1,14 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
-
-public record ais(GameProfile b) implements zl<aiq> {
-   public static final zc<ByteBuf, ais> a = za.u.a(ais::new, ais::b);
-
+public interface ais extends abn, agf {
    @Override
-   public zn<ais> a() {
-      return aiw.b;
+   default vw b() {
+      return vw.d;
    }
 
-   public void a(aiq $$0) {
-      $$0.a(this);
-   }
+   void a(aiu var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(aiv var1);
+
+   void a(ait var1);
+
+   void a(aiw var1);
 }

@@ -1,111 +1,91 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class btw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bsb<? extends bso>, btu> b = ImmutableMap.builder()
-      .put(bsb.a, cfk.r().a())
-      .put(bsb.c, cfn.r().a())
-      .put(bsb.d, chw.r().a())
-      .put(bsb.g, cfq.gF().a())
-      .put(bsb.h, cdy.r().a())
-      .put(bsb.i, cdy.r().a())
-      .put(bsb.j, cef.gK().a())
-      .put(bsb.k, cil.r().a())
-      .put(bsb.n, cim.gB().a())
-      .put(bsb.r, ceh.gJ().a())
-      .put(bsb.q, cfv.r().a())
-      .put(bsb.s, cin.r().a())
-      .put(bsb.v, cej.r().a())
-      .put(bsb.w, ceb.r().a())
-      .put(bsb.y, cel.r().a())
-      .put(bsb.z, cio.r().a())
-      .put(bsb.A, cem.gy().a())
-      .put(bsb.B, cgh.r().a())
-      .put(bsb.D, ciq.r().a())
-      .put(bsb.F, cir.r().a())
-      .put(bsb.J, cis.r().a())
-      .put(bsb.K, cit.r().a())
-      .put(bsb.H, cha.t().a())
-      .put(bsb.L, civ.t().a())
-      .put(bsb.o, cka.r().a())
-      .put(bsb.S, ceo.r().a())
-      .put(bsb.T, cfy.gy().a())
-      .put(bsb.V, ciw.x().a())
-      .put(bsb.W, cix.r().a())
-      .put(bsb.Y, bsg.gy().a())
-      .put(bsb.Z, cge.t().a())
-      .put(bsb.aa, ciy.gA().a())
-      .put(bsb.ab, cki.r().a())
-      .put(bsb.ad, cgi.gX().a())
-      .put(bsb.ae, cjx.gD().a())
-      .put(bsb.af, cja.t().a())
-      .put(bsb.ah, ceq.r().a())
-      .put(bsb.ao, cgl.gJ().a())
-      .put(bsb.aq, cjb.r().a())
-      .put(bsb.aS, cjc.r().a())
-      .put(bsb.at, cel.r().a())
-      .put(bsb.au, cgh.r().a())
-      .put(bsb.av, ces.r().a())
-      .put(bsb.ax, cet.gJ().a())
-      .put(bsb.ay, ceu.gE().a())
-      .put(bsb.az, cjd.gG().a())
-      .put(bsb.aA, cev.r().a())
-      .put(bsb.aB, cko.gD().a())
-      .put(bsb.aC, ckr.x().a())
-      .put(bsb.aD, cjg.t().a())
-      .put(bsb.aE, cir.r().a())
-      .put(bsb.bE, cly.fZ().a())
-      .put(bsb.aF, cew.r().a())
-      .put(bsb.bz, cjh.gC().a())
-      .put(bsb.aH, ceb.r().a())
-      .put(bsb.aI, cey.t().a())
-      .put(bsb.aJ, cjj.r().a())
-      .put(bsb.aK, ceb.r().a())
-      .put(bsb.aL, cfa.r().a())
-      .put(bsb.aM, cjk.r().a())
-      .put(bsb.aO, cjl.r().a())
-      .put(bsb.aP, cik.r().a())
-      .put(bsb.aQ, cgo.r().a())
-      .put(bsb.aR, cjd.gG().a())
-      .put(bsb.aU, cgv.r().a())
-      .put(bsb.aV, cfc.r().a())
-      .put(bsb.aZ, cjp.t().a())
-      .put(bsb.ba, cfd.gy().a())
-      .put(bsb.bb, cik.r().a())
-      .put(bsb.bc, cjr.t().a())
-      .put(bsb.bd, cgb.gA().a())
-      .put(bsb.bh, ciy.gA().a())
-      .put(bsb.bi, cgl.gJ().a())
-      .put(bsb.bk, ceb.r().a())
-      .put(bsb.bl, cff.x().a())
-      .put(bsb.bm, cjs.r().a())
-      .put(bsb.bn, cll.gH().a())
-      .put(bsb.bo, cjt.t().a())
-      .put(bsb.bq, clc.r().a())
-      .put(bsb.bp, bsq.A().a())
-      .put(bsb.bs, cju.t().a())
-      .put(bsb.bt, chu.t().a())
-      .put(bsb.bu, cik.r().a())
-      .put(bsb.bw, cfh.gG().a())
-      .put(bsb.bx, cjw.r().a())
-      .put(bsb.by, cjx.gD().a())
-      .put(bsb.bA, cgs.r().a())
-      .put(bsb.bB, cjx.gD().a())
-      .put(bsb.bC, cjz.gC().a())
-      .build();
+public record btw(UUID d, String e, double f, btw.a g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final MapCodec<btw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jr.a.fieldOf("uuid").forGetter(btw::b),
+               Codec.STRING.fieldOf("name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("amount").forGetter(btw::d),
+               btw.a.f.fieldOf("operation").forGetter(btw::e)
+            )
+            .apply($$0, btw::new)
+   );
+   public static final Codec<btw> b = a.codec();
+   public static final yv<ByteBuf, btw> c = yv.a(jr.g, btw::b, yt.k, $$0 -> $$0.e, yt.i, btw::d, btw.a.e, btw::e, btw::new);
 
-   public static btu a(bsb<? extends bso> $$0) {
-      return b.get($$0);
+   public btw(String $$0, double $$1, btw.a $$2) {
+      this(ayf.a(aym.c()), $$0, $$1, $$2);
    }
 
-   public static boolean b(bsb<?> $$0) {
-      return b.containsKey($$0);
+   public ud a() {
+      ud $$0 = new ud();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.f);
+      $$0.a("Operation", this.g.a());
+      $$0.a("UUID", this.d);
+      return $$0;
    }
 
-   public static void a() {
-      lh.g.s().filter($$0 -> $$0.f() != bsr.h).filter($$0 -> !b((bsb<?>)$$0)).map(lh.g::b).forEach($$0 -> ad.a("Entity " + $$0 + " has no attributes"));
+   @Nullable
+   public static btw a(ud $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         btw.a $$2 = btw.a.d.apply($$0.h("Operation"));
+         return new btw($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         h.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
+      }
+   }
+
+   public UUID b() {
+      return this.d;
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
+   }
+
+   public btw.a e() {
+      return this.g;
+   }
+
+   public static enum a implements ayz {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<btw.a> d = aww.a(btw.a::a, values(), aww.a.a);
+      public static final yv<ByteBuf, btw.a> e = yt.a(d, btw.a::a);
+      public static final Codec<btw.a> f = ayz.a(btw.a::values);
+      private final String g;
+      private final int h;
+
+      private a(String $$0, int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

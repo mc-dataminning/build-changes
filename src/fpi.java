@@ -1,85 +1,60 @@
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class fpi extends foe {
-   private static final xe s = xe.c("controls.keybinds.title");
+public abstract class fpi extends fpm {
+   private static final fhn i = new fhn(
+      new akn("recipe_book/furnace_filter_enabled"),
+      new akn("recipe_book/furnace_filter_disabled"),
+      new akn("recipe_book/furnace_filter_enabled_highlighted"),
+      new akn("recipe_book/furnace_filter_disabled_highlighted")
+   );
    @Nullable
-   public fgh a;
-   public long r;
-   private fph u;
-   private fin v;
+   private cxt j;
 
-   public fpi(fon $$0, fgn $$1) {
-      super($$0, $$1, s);
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
    @Override
-   protected void aN_() {
-      this.u = this.c(new fph(this, this.m));
-      this.v = fin.a(xe.c("controls.resetAll"), $$0 -> {
-         for (fgh $$1 : this.c.Y) {
-            $$1.b($$1.i());
-         }
-
-         this.u.d();
-      }).a();
-      super.aN_();
-   }
-
-   @Override
-   protected void h() {
-      fme $$0 = this.d.b(fme.e().a(8));
-      $$0.a(this.v);
-      $$0.a(fin.a(xd.d, $$0x -> this.d()).a());
-   }
-
-   @Override
-   protected void c() {
-      this.d.a();
-      this.u.a(this.n, this.d);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, ezx.b.c.a($$2));
-         this.a = null;
-         this.u.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void a(@Nullable cqq $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.d < this.g.p()) {
+         this.e.a();
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, ezx.bv);
-         } else {
-            this.c.a(this.a, ezx.a($$0, $$1));
+   public void a(cxy<?> $$0, List<cqq> $$1) {
+      ctq $$2 = $$0.b().a(this.h.r.H_());
+      this.e.a($$0);
+      this.e.a(cxt.a($$2), $$1.get(2).e, $$1.get(2).f);
+      jg<cxt> $$3 = $$0.b().a();
+      cqq $$4 = $$1.get(1);
+      if ($$4.g().e()) {
+         if (this.j == null) {
+            this.j = cxt.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.J())).map(ctq::new));
          }
 
-         this.a = null;
-         this.r = ad.b();
-         this.u.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+         this.e.a(this.j, $$4.e, $$4.f);
+      }
+
+      Iterator<cxt> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
+         }
+
+         cxt $$7 = $$5.next();
+         if (!$$7.c()) {
+            cqq $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.e, $$8.f);
+         }
       }
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (fgh $$5 : this.c.Y) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.v.j = $$4;
-   }
+   protected abstract Set<ctl> b();
 }

@@ -1,28 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public class cwh extends crx {
-   public cwh(cuc.a $$0) {
-      super($$0);
+public record cwh(Map<ix<dea>, dsg<?>> c) {
+   public static final cwh a = new cwh(Map.of());
+   public static final Codec<cwh> b = Codec.dispatchedMap(le.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dsg<?> $$2 = ((dea)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dsg::f)).xmap(cwh::new, cwh::a);
+
+   public cwh a(ix<dea> $$0, dsg<?> $$1) {
+      return new cwh(ac.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public cuh v() {
-      cuh $$0 = super.v();
-      $$0.b(ke.E, new cwr(cws.E));
-      return $$0;
-   }
-
-   @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      cwr $$4 = $$0.a(ke.E);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
-      }
-   }
-
-   @Override
-   public String i(cuh $$0) {
-      return cwp.a($$0.a(ke.E, cwr.a).f(), this.a() + ".effect.");
+   public Map<ix<dea>, dsg<?>> a() {
+      return this.c;
    }
 }

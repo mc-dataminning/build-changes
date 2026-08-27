@@ -1,37 +1,24 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public abstract class fop extends foe {
-   protected final fgm<?>[] r;
-   @Nullable
-   private fil a;
-   protected fjk s;
+public class fop implements foq {
+   private final axr a;
 
-   public fop(fon $$0, fgn $$1, xe $$2, fgm<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.r = $$3;
+   public fop(axr $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void aN_() {
-      this.s = this.c(new fjk(this.m, this.n, this.o, this));
-      this.s.a(this.r);
-      this.a = this.s.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.m.aZ().a();
-      }
-
-      super.aN_();
+   public int a(ffl $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public int a() {
+      return 10;
    }
 
-   public void B() {
-      if (this.a instanceof fiu) {
-         ((fiu)this.a).a(this.c.as().c());
-      }
+   @Override
+   public void a(ffl $$0, int $$1, int $$2, Matrix4f $$3, gck.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, ffl.a.a, 0, 15728880);
    }
 }

@@ -1,185 +1,133 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class drt extends dqc {
-   private static final String b = "profile";
-   private static final String c = "note_block_sound";
-   private static final String d = "custom_name";
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private static Executor f;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> g;
-   public static final Executor a = $$0 -> {
-      Executor $$1 = f;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private cxs h;
-   @Nullable
-   private akt i;
-   private int j;
-   private boolean k;
-   @Nullable
-   private xe l;
-
-   public drt(ir $$0, dtc $$1) {
-      super(dqe.q, $$0, $$1);
-   }
-
-   public static void a(final aln $$0, Executor $$1) {
-      f = $$1;
-      final BooleanSupplier $$2 = () -> g == null;
-      g = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : drt.a($$0, $$0, $$2);
-            }
-         });
-   }
-
-   public static void b() {
-      f = null;
-      g = null;
-   }
-
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, aln $$1, BooleanSupplier $$2) {
-      return $$1.f().b($$0).thenApplyAsync($$2x -> {
-         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
-            UUID $$3 = ((GameProfile)$$2x.get()).getId();
-            ProfileResult $$4 = $$1.c().fetchProfile($$3, true);
-            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
-         } else {
-            return Optional.empty();
-         }
-      }, ad.f());
-   }
-
-   @Override
-   protected void b(uk $$0, jc.a $$1) {
-      super.b($$0, $$1);
-      if (this.h != null) {
-         $$0.a("profile", ad.a(cxs.a.encodeStart(uy.a, this.h), IllegalStateException::new));
-      }
-
-      if (this.i != null) {
-         $$0.a("note_block_sound", this.i.toString());
-      }
-
-      if (this.l != null) {
-         $$0.a("custom_name", xe.a.a(this.l, $$1));
-      }
-   }
-
-   @Override
-   public void a(uk $$0, jc.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("profile")) {
-         cxs.a.parse(uy.a, $$0.c("profile")).resultOrPartial($$0x -> e.error("Failed to load profile from player head: {}", $$0x)).ifPresent(this::a);
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.i = akt.a($$0.l("note_block_sound"));
-      }
-
-      if ($$0.b("custom_name", 8)) {
-         this.l = xe.a.a($$0.l("custom_name"), $$1);
-      } else {
-         this.l = null;
-      }
-   }
-
-   public static void a(dca $$0, ir $$1, dtc $$2, drt $$3) {
-      if ($$2.b(dms.a) && $$2.c(dms.a)) {
-         $$3.k = true;
-         $$3.j++;
-      } else {
-         $$3.k = false;
-      }
-   }
-
-   public float a(float $$0) {
-      return this.k ? (float)this.j + $$0 : (float)this.j;
-   }
-
-   @Nullable
-   public cxs c() {
-      return this.h;
-   }
-
-   @Nullable
-   public akt d() {
-      return this.i;
-   }
-
-   public ace f() {
-      return ace.a(this);
-   }
-
-   @Override
-   public uk a(jc.a $$0) {
-      return this.d($$0);
-   }
-
-   public void a(@Nullable cxs $$0) {
-      synchronized (this) {
-         this.h = $$0;
-      }
-
-      this.j();
-   }
-
-   private void j() {
-      if (this.h != null && !this.h.b()) {
-         this.h.a().thenAcceptAsync($$0 -> {
-            this.h = $$0;
-            this.e();
-         }, a);
-      } else {
-         this.e();
-      }
-   }
-
-   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = g;
-      return $$1 != null && azh.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   @Override
-   public void a(ka $$0) {
-      this.a($$0.a(ke.U));
-      this.i = $$0.a(ke.V);
-      this.l = $$0.a(ke.f);
-   }
-
-   @Override
-   public void a(ka.a $$0) {
-      $$0.a(ke.U, this.h);
-      $$0.a(ke.V, this.i);
-      $$0.a(ke.f, this.l);
-   }
-
-   @Override
-   public void a(uk $$0) {
-      super.a($$0);
-      $$0.r("profile");
-      $$0.r("note_block_sound");
-      $$0.r("custom_name");
-   }
+public class drt {
+   public static final dru a = dru.a("attached");
+   public static final dru b = dru.a("bottom");
+   public static final dru c = dru.a("conditional");
+   public static final dru d = dru.a("disarmed");
+   public static final dru e = dru.a("drag");
+   public static final dru f = dru.a("enabled");
+   public static final dru g = dru.a("extended");
+   public static final dru h = dru.a("eye");
+   public static final dru i = dru.a("falling");
+   public static final dru j = dru.a("hanging");
+   public static final dru k = dru.a("has_bottle_0");
+   public static final dru l = dru.a("has_bottle_1");
+   public static final dru m = dru.a("has_bottle_2");
+   public static final dru n = dru.a("has_record");
+   public static final dru o = dru.a("has_book");
+   public static final dru p = dru.a("inverted");
+   public static final dru q = dru.a("in_wall");
+   public static final dru r = dru.a("lit");
+   public static final dru s = dru.a("locked");
+   public static final dru t = dru.a("occupied");
+   public static final dru u = dru.a("open");
+   public static final dru v = dru.a("persistent");
+   public static final dru w = dru.a("powered");
+   public static final dru x = dru.a("short");
+   public static final dru y = dru.a("signal_fire");
+   public static final dru z = dru.a("snowy");
+   public static final dru A = dru.a("triggered");
+   public static final dru B = dru.a("unstable");
+   public static final dru C = dru.a("waterlogged");
+   public static final dru D = dru.a("berries");
+   public static final dru E = dru.a("bloom");
+   public static final dru F = dru.a("shrieking");
+   public static final dru G = dru.a("can_summon");
+   public static final dsb<it.a> H = dsb.a("axis", it.a.class, it.a.a, it.a.c);
+   public static final dsb<it.a> I = dsb.a("axis", it.a.class);
+   public static final dru J = dru.a("up");
+   public static final dru K = dru.a("down");
+   public static final dru L = dru.a("north");
+   public static final dru M = dru.a("east");
+   public static final dru N = dru.a("south");
+   public static final dru O = dru.a("west");
+   public static final drx P = drx.a("facing", it.c, it.f, it.d, it.e, it.b, it.a);
+   public static final drx Q = drx.a("facing", $$0 -> $$0 != it.b);
+   public static final drx R = drx.a("facing", it.c.a);
+   public static final dsd S = dsd.a("flower_amount", 1, 4);
+   public static final dsb<iv> T = dsb.a("orientation", iv.class);
+   public static final dsb<dro> U = dsb.a("face", dro.class);
+   public static final dsb<drr> V = dsb.a("attachment", drr.class);
+   public static final dsb<dsp> W = dsb.a("east", dsp.class);
+   public static final dsb<dsp> X = dsb.a("north", dsp.class);
+   public static final dsb<dsp> Y = dsb.a("south", dsp.class);
+   public static final dsb<dsp> Z = dsb.a("west", dsp.class);
+   public static final dsb<dsi> aa = dsb.a("east", dsi.class);
+   public static final dsb<dsi> ab = dsb.a("north", dsi.class);
+   public static final dsb<dsi> ac = dsb.a("south", dsi.class);
+   public static final dsb<dsi> ad = dsb.a("west", dsi.class);
+   public static final dsb<drz> ae = dsb.a("half", drz.class);
+   public static final dsb<dsc> af = dsb.a("half", dsc.class);
+   public static final dsb<dsh> ag = dsb.a("shape", dsh.class);
+   public static final dsb<dsh> ah = dsb.a("shape", dsh.class, $$0 -> $$0 != dsh.j && $$0 != dsh.i && $$0 != dsh.g && $$0 != dsh.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dsd aq = dsd.a("age", 0, 1);
+   public static final dsd ar = dsd.a("age", 0, 2);
+   public static final dsd as = dsd.a("age", 0, 3);
+   public static final dsd at = dsd.a("age", 0, 4);
+   public static final dsd au = dsd.a("age", 0, 5);
+   public static final dsd av = dsd.a("age", 0, 7);
+   public static final dsd aw = dsd.a("age", 0, 15);
+   public static final dsd ax = dsd.a("age", 0, 25);
+   public static final dsd ay = dsd.a("bites", 0, 6);
+   public static final dsd az = dsd.a("candles", 1, 4);
+   public static final dsd aA = dsd.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dsd aC = dsd.a("distance", 1, 7);
+   public static final dsd aD = dsd.a("eggs", 1, 4);
+   public static final dsd aE = dsd.a("hatch", 0, 2);
+   public static final dsd aF = dsd.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dsd aK = dsd.a("level", 1, 3);
+   public static final dsd aL = dsd.a("level", 0, 8);
+   public static final dsd aM = dsd.a("level", 1, 8);
+   public static final dsd aN = dsd.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dsd aP = dsd.a("level", 0, 15);
+   public static final dsd aQ = dsd.a("moisture", 0, 7);
+   public static final dsd aR = dsd.a("note", 0, 24);
+   public static final dsd aS = dsd.a("pickles", 1, 4);
+   public static final dsd aT = dsd.a("power", 0, 15);
+   public static final dsd aU = dsd.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dsd aW = dsd.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dsd aZ = dsd.a("charges", 0, 4);
+   public static final dsd ba = dsd.a("rotation", 0, dsj.a());
+   public static final dsb<drq> bb = dsb.a("part", drq.class);
+   public static final dsb<drv> bc = dsb.a("type", drv.class);
+   public static final dsb<drw> bd = dsb.a("mode", drw.class);
+   public static final dsb<dry> be = dsb.a("hinge", dry.class);
+   public static final dsb<dse> bf = dsb.a("instrument", dse.class);
+   public static final dsb<dsf> bg = dsb.a("type", dsf.class);
+   public static final dsb<dsl> bh = dsb.a("type", dsl.class);
+   public static final dsb<dsm> bi = dsb.a("shape", dsm.class);
+   public static final dsb<dsn> bj = dsb.a("mode", dsn.class);
+   public static final dsb<drp> bk = dsb.a("leaves", drp.class);
+   public static final dsb<dso> bl = dsb.a("tilt", dso.class);
+   public static final drx bm = drx.a("vertical_direction", it.b, it.a);
+   public static final dsb<dsa> bn = dsb.a("thickness", dsa.class);
+   public static final dsb<dsk> bo = dsb.a("sculk_sensor_phase", dsk.class);
+   public static final dru bp = dru.a("slot_0_occupied");
+   public static final dru bq = dru.a("slot_1_occupied");
+   public static final dru br = dru.a("slot_2_occupied");
+   public static final dru bs = dru.a("slot_3_occupied");
+   public static final dru bt = dru.a("slot_4_occupied");
+   public static final dru bu = dru.a("slot_5_occupied");
+   public static final dsd bv = dsd.a("dusted", 0, 3);
+   public static final dru bw = dru.a("cracked");
+   public static final dru bx = dru.a("crafting");
+   public static final dsb<dqj> by = dsb.a("trial_spawner_state", dqj.class);
+   public static final dsb<dqq> bz = dsb.a("vault_state", dqq.class);
+   public static final dru bA = dru.a("ominous");
 }

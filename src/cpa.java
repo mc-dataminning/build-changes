@@ -1,111 +1,179 @@
-import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cpa implements dbg, dbk {
-   protected final dca a;
-   protected final coz b;
-   private cpb d = new cpb(0, 0, 0);
-   protected ja<dcz> c;
-   private ewp e = new ewp(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+public class cpa extends cov {
+   private static final int k = 0;
+   private static final int l = 2;
+   private static final int m = 3;
+   private static final int n = 4;
+   private static final int o = 5;
+   private static final int p = 2;
+   private static final int q = 5;
+   private static final int r = 32;
+   private static final int s = 32;
+   private static final int t = 41;
+   private final bpp u;
+   private final cpf v;
+   private final cqq w;
 
-   public cpa(dca $$0, coz $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$0.I_().d(li.az).g(ddg.b);
-      this.a($$1.dz(), $$1.dB(), $$1.dF());
+   public cpa(int $$0, clx $$1) {
+      this($$0, $$1, new bqf(5), new cqp(2));
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = new ewp($$0, $$1, $$2, $$0 + (double)this.d.a() + 1.0, $$1 + (double)this.d.b() + 1.0, $$2 + (double)this.d.c() + 1.0);
-   }
+   public cpa(int $$0, clx $$1, bpp $$2, cpf $$3) {
+      super(cqc.l, $$0);
+      a($$2, 5);
+      a($$3, 2);
+      this.u = $$2;
+      this.v = $$3;
+      this.a(new cpa.c($$2, 0, 56, 51));
+      this.a(new cpa.c($$2, 1, 79, 58));
+      this.a(new cpa.c($$2, 2, 102, 51));
+      this.w = this.a(new cpa.b($$2, 3, 79, 17));
+      this.a(new cpa.a($$2, 4, 17, 17));
+      this.a($$3);
 
-   public void a(cpb $$0) {
-      this.d = $$0;
-      this.a(this.b.dz(), this.b.dB(), this.b.dF());
-   }
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         for (int $$5 = 0; $$5 < 9; $$5++) {
+            this.a(new cqq($$1, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
+         }
+      }
 
-   public void a(ja<dcz> $$0) {
-      this.c = $$0;
-   }
-
-   public dca a() {
-      return this.a;
-   }
-
-   @Override
-   public dtc a_(ir $$0) {
-      return this.d.b($$0);
-   }
-
-   @Override
-   public epe b_(ir $$0) {
-      return this.a_($$0).u();
-   }
-
-   @Override
-   public boolean z_() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public dqc c_(ir $$0) {
-      return null;
+      for (int $$6 = 0; $$6 < 9; $$6++) {
+         this.a(new cqq($$1, $$6, 8 + $$6 * 18, 142));
+      }
    }
 
    @Override
-   public int K_() {
-      return this.d.b();
+   public boolean a(cly $$0) {
+      return this.u.a($$0);
    }
 
    @Override
-   public int J_() {
-      return 0;
+   public ctq a(cly $$0, int $$1) {
+      ctq $$2 = ctq.i;
+      cqq $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         ctq $$4 = $$3.g();
+         $$2 = $$4.s();
+         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
+            if (cpa.a.b($$2)) {
+               if (this.a($$4, 4, 5, false) || this.w.a($$4) && !this.a($$4, 3, 4, false)) {
+                  return ctq.i;
+               }
+            } else if (this.w.a($$4)) {
+               if (!this.a($$4, 3, 4, false)) {
+                  return ctq.i;
+               }
+            } else if (cpa.c.b($$2) && $$2.I() == 1) {
+               if (!this.a($$4, 0, 3, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 5 && $$1 < 32) {
+               if (!this.a($$4, 32, 41, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 32 && $$1 < 41) {
+               if (!this.a($$4, 5, 32, false)) {
+                  return ctq.i;
+               }
+            } else if (!this.a($$4, 5, 41, false)) {
+               return ctq.i;
+            }
+         } else {
+            if (!this.a($$4, 5, 41, true)) {
+               return ctq.i;
+            }
+
+            $$3.b($$4, $$2);
+         }
+
+         if ($$4.e()) {
+            $$3.e(ctq.i);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.I() == $$2.I()) {
+            return ctq.i;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
-   public UUID c() {
-      return this.b.cE();
+   public int l() {
+      return this.v.a(1);
    }
 
-   public coz d() {
-      return this.b;
+   public int m() {
+      return this.v.a(0);
    }
 
-   public cpb e() {
-      return this.d;
+   static class a extends cqq {
+      public a(bpp $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(ctq $$0) {
+         return b($$0);
+      }
+
+      public static boolean b(ctq $$0) {
+         return $$0.a(ctt.so);
+      }
+
+      @Override
+      public int a() {
+         return 64;
+      }
    }
 
-   public ja<dcz> g() {
-      return this.c;
+   static class b extends cqq {
+      public b(bpp $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(ctq $$0) {
+         return cvq.a($$0);
+      }
+
+      @Override
+      public int a() {
+         return 64;
+      }
    }
 
-   public ewp h() {
-      return this.e;
-   }
+   static class c extends cqq {
+      public c(bpp $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
 
-   public ewp i() {
-      ewu $$0 = this.j();
-      return this.e.d(-$$0.c, -$$0.d, -$$0.e);
-   }
+      @Override
+      public boolean a(ctq $$0) {
+         return b($$0);
+      }
 
-   @Override
-   public dut D_() {
-      return this.a.D_();
-   }
+      @Override
+      public int a() {
+         return 1;
+      }
 
-   @Nullable
-   @Override
-   public dbg a(int $$0, int $$1) {
-      return this;
-   }
+      @Override
+      public void a(cly $$0, ctq $$1) {
+         Optional<ix<cvp>> $$2 = $$1.a(kb.F, cvr.a).f();
+         if ($$2.isPresent() && $$0 instanceof aqo $$3) {
+            am.l.a($$3, $$2.get());
+         }
 
-   @Override
-   public List<exn> a(@Nullable brv $$0, ewp $$1) {
-      return List.of();
-   }
+         super.a($$0, $$1);
+      }
 
-   public ewu j() {
-      return new ewu(this.b.dz() - this.b.ae, this.b.dB() - this.b.af, this.b.dF() - this.b.ag);
+      public static boolean b(ctq $$0) {
+         return $$0.a(ctt.sk) || $$0.a(ctt.vo) || $$0.a(ctt.vr) || $$0.a(ctt.sl);
+      }
    }
 }

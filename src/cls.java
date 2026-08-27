@@ -1,7 +1,7 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cls implements dbn {
+public class cls implements dam {
    private static final int b = 1200;
    public static final int a = 24000;
    private static final int c = 25;
@@ -9,13 +9,13 @@ public class cls implements dbn {
    private static final int e = 25;
    private static final int f = 10;
    private static final int g = 10;
-   private final ayt h = ayt.a();
-   private final erk i;
+   private final aym h = aym.a();
+   private final epc i;
    private int j;
    private int k;
    private int l;
 
-   public cls(erk $$0) {
+   public cls(epc $$0) {
       this.i = $$0;
       this.j = 1200;
       this.k = $$0.t();
@@ -29,8 +29,8 @@ public class cls implements dbn {
    }
 
    @Override
-   public int a(aqt $$0, boolean $$1, boolean $$2) {
-      if (!$$0.ab().b(dbw.M)) {
+   public int a(aqn $$0, boolean $$1, boolean $$2) {
+      if (!$$0.aa().b(dav.L)) {
          return 0;
       } else if (--this.j > 0) {
          return 0;
@@ -42,11 +42,11 @@ public class cls implements dbn {
             return 0;
          } else {
             this.k = 24000;
-            if (!$$0.ab().b(dbw.e)) {
+            if (!$$0.aa().b(dav.e)) {
                return 0;
             } else {
                int $$3 = this.l;
-               this.l = aym.a(this.l + 25, 25, 75);
+               this.l = ayf.a(this.l + 25, 25, 75);
                this.i.e(this.l);
                if (this.h.a(100) > $$3) {
                   return 0;
@@ -61,33 +61,33 @@ public class cls implements dbn {
       }
    }
 
-   private boolean a(aqt $$0) {
+   private boolean a(aqn $$0) {
       cly $$1 = $$0.j();
       if ($$1 == null) {
          return true;
       } else if (this.h.a(10) != 0) {
          return false;
       } else {
-         ir $$2 = $$1.du();
+         io $$2 = $$1.dp();
          int $$3 = 48;
-         cdr $$4 = $$0.y();
-         Optional<ir> $$5 = $$4.d($$0x -> $$0x.a(cdv.o), $$0x -> true, $$2, 48, cdr.b.c);
-         ir $$6 = $$5.orElse($$2);
-         ir $$7 = this.a($$0, $$6, 48);
+         cdu $$4 = $$0.y();
+         Optional<io> $$5 = $$4.d($$0x -> $$0x.a(cdy.o), $$0x -> true, $$2, 48, cdu.b.c);
+         io $$6 = $$5.orElse($$2);
+         io $$7 = this.a($$0, $$6, 48);
          if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(awd.al)) {
+            if ($$0.t($$7).a(avw.ah)) {
                return false;
             }
 
-            clr $$8 = bsb.bp.a($$0, $$7, bss.h);
+            clr $$8 = bsc.bl.a($$0, $$7, bsu.h);
             if ($$8 != null) {
                for (int $$9 = 0; $$9 < 2; $$9++) {
                   this.a($$0, $$8, 4);
                }
 
-               this.i.a($$8.cE());
-               $$8.w(48000);
-               $$8.e($$6);
+               this.i.a($$8.cz());
+               $$8.v(48000);
+               $$8.i($$6);
                $$8.a($$6, 16);
                return true;
             }
@@ -97,10 +97,10 @@ public class cls implements dbn {
       }
    }
 
-   private void a(aqt $$0, clr $$1, int $$2) {
-      ir $$3 = this.a($$0, $$1.du(), $$2);
+   private void a(aqn $$0, clr $$1, int $$2) {
+      io $$3 = this.a($$0, $$1.dp(), $$2);
       if ($$3 != null) {
-         cgq $$4 = bsb.bi.a($$0, $$3, bss.h);
+         cgs $$4 = bsc.be.a($$0, $$3, bsu.h);
          if ($$4 != null) {
             $$4.b($$1, true);
          }
@@ -108,16 +108,16 @@ public class cls implements dbn {
    }
 
    @Nullable
-   private ir a(dcd $$0, ir $$1, int $$2) {
-      ir $$3 = null;
-      bth $$4 = btj.a(bsb.bp);
+   private io a(dbc $$0, io $$1, int $$2) {
+      io $$3 = null;
+      btk $$4 = btm.a(bsc.bl);
 
       for (int $$5 = 0; $$5 < 10; $$5++) {
          int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
          int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(dyu.a.b, $$6, $$7);
-         ir $$9 = new ir($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bsb.bp)) {
+         int $$8 = $$0.a(dwv.a.b, $$6, $$7);
+         io $$9 = new io($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bsc.bl)) {
             $$3 = $$9;
             break;
          }
@@ -126,8 +126,8 @@ public class cls implements dbn {
       return $$3;
    }
 
-   private boolean a(dbg $$0, ir $$1) {
-      for (ir $$2 : ir.c($$1, $$1.b(1, 2, 1))) {
+   private boolean a(daf $$0, io $$1) {
+      for (io $$2 : io.c($$1, $$1.b(1, 2, 1))) {
          if (!$$0.a_($$2).k($$0, $$2).c()) {
             return false;
          }

@@ -1,97 +1,32 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class etw extends eta {
-   private static final Codec<List<etw.b>> b = axu.b(etw.b.a.listOf(), (Function<List<etw.b>, DataResult<List<etw.b>>>)($$0 -> {
-      Set<ja<brf>> $$1 = new ObjectOpenHashSet();
+public class etw implements etx<MinecraftServer> {
+   final akn a;
 
-      for (etw.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   }));
-   public static final Codec<etw> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(axu.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, etw::new)
-   );
-   private final List<etw.b> c;
-
-   etw(List<euu> $$0, List<etw.b> $$1) {
-      super($$0);
-      this.c = $$1;
+   public etw(akn $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public etc b() {
-      return etd.q;
-   }
+   public void a(MinecraftServer $$0, etz<MinecraftServer> $$1, long $$2) {
+      alc $$3 = $$0.aF();
 
-   @Override
-   public Set<eud<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cuh a(cuh $$0, erp $$1) {
-      if ($$0.a(cuk.xF) && !this.c.isEmpty()) {
-         etw.b $$2 = ad.a(this.c, $$1.b());
-         ja<brf> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
-
-         cxv.a $$5 = new cxv.a($$3, $$4);
-         $$0.a(ke.F, cxv.a, $$5, cxv::a);
-         return $$0;
-      } else {
-         return $$0;
+      for (hq<ee> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
       }
    }
 
-   public static etw.a c() {
-      return new etw.a();
-   }
-
-   public static class a extends eta.a<etw.a> {
-      private final Builder<etw.b> a = ImmutableList.builder();
-
-      protected etw.a a() {
-         return this;
+   public static class a extends etx.a<MinecraftServer, etw> {
+      public a() {
+         super(new akn("function_tag"), etw.class);
       }
 
-      public etw.a a(ja<brf> $$0, evq $$1) {
-         this.a.add(new etw.b($$0, $$1));
-         return this;
+      public void a(ud $$0, etw $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      @Override
-      public etb b() {
-         return new etw(this.g(), this.a.build());
-      }
-   }
-
-   static record b(ja<brf> b, evq c) {
-      public static final Codec<etw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(lh.d.r().fieldOf("type").forGetter(etw.b::a), evr.a.fieldOf("duration").forGetter(etw.b::b)).apply($$0, etw.b::new)
-      );
-
-      public ja<brf> a() {
-         return this.b;
-      }
-
-      public evq b() {
-         return this.c;
+      public etw a(ud $$0) {
+         akn $$1 = new akn($$0.l("Name"));
+         return new etw($$1);
       }
    }
 }

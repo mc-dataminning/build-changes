@@ -1,43 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-
-public class axp<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
-
-   public axp(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
-   }
-
-   public void a(T $$0) {
-      int $$1 = this.a.length();
-
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
-
-      this.a.set($$3, $$0);
-   }
-
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
-
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
-         }
+public class axp {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
       }
 
-      return $$1.build();
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
+   }
+
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
+
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1, int $$2) {
+         return a(255, $$0, $$1, $$2);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = ayf.a($$0, a($$1), a($$2));
+         int $$4 = ayf.a($$0, b($$1), b($$2));
+         int $$5 = ayf.a($$0, c($$1), c($$2));
+         int $$6 = ayf.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
+
+      public static int e(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int b(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 }

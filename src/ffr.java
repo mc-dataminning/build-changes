@@ -1,52 +1,46 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class ffr extends ffj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+public abstract class ffr extends ffy {
+   protected static final int e = 2;
+   private static final fhn a = new fhn(new akn("widget/button"), new akn("widget/button_disabled"), new akn("widget/button_highlighted"));
 
-   public ffr(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public ffr(int $$0, int $$1, int $$2, int $$3, wx $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public abstract void b();
+
+   @Override
+   protected void b(ffn $$0, int $$1, int $$2, float $$3) {
+      feb $$4 = feb.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.A()), this.C(), this.D(), this.x(), this.v());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | ayf.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(ffn $$0, ffl $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   public void run() {
-      fbs $$0 = fbs.a();
+   public void a(double $$0, double $$1) {
+      this.b();
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fdg var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fkb.a($$0)) {
+         this.a(feb.Q().aj());
+         this.b();
+         return true;
+      } else {
+         return false;
       }
-   }
-
-   @Override
-   public xe a() {
-      return c;
    }
 }

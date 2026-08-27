@@ -1,77 +1,88 @@
-public class cpz extends cpg {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bpt p;
+public class cpz extends cov {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bpp q;
+   private final cpf r;
 
-   public cpz(int $$0, clx $$1) {
-      this($$0, $$1, new bqj(9));
+   public cpz(int $$0) {
+      this($$0, new bqf(1), new cqp(1));
    }
 
-   public cpz(int $$0, clx $$1, bpt $$2) {
-      super(cqo.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.l);
+   public cpz(int $$0, bpp $$1, cpf $$2) {
+      super(cqc.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cqq($$1, 0, 0, 0) {
+         @Override
+         public void b() {
+            super.b();
+            cpz.this.a(this.c);
+         }
+      });
+      this.a($$2);
+   }
 
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new cre($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+   @Override
+   public boolean b(cly $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.go()) {
+                  return false;
+               }
+
+               ctq $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.gc().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
+   }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cre($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
-         }
-      }
+   @Override
+   public ctq a(cly $$0, int $$1) {
+      return ctq.i;
+   }
 
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cre($$1, $$7, 8 + $$7 * 18, 142));
-      }
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
    }
 
    @Override
    public boolean a(cly $$0) {
-      return this.p.a($$0);
+      return this.q.a($$0);
    }
 
-   @Override
-   public cuh a(cly $$0, int $$1) {
-      cuh $$2 = cuh.i;
-      cre $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuh $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cuh.i;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cuh.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(cuh.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.G() == $$2.G()) {
-            return cuh.i;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
+   public ctq l() {
+      return this.q.a(0);
    }
 
-   @Override
-   public void b(cly $$0) {
-      super.b($$0);
-      this.p.c($$0);
+   public int m() {
+      return this.r.a(0);
    }
 }

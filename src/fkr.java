@@ -1,208 +1,102 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class fkr extends fkh implements fjq, fmh {
-   private static final int a = -1;
-   private static final int b = 400;
-   private static final int c = 24;
-   private static final int d = 14;
-   private static final xe e = xe.c("narration.tab_navigation.usage");
-   private final fme f = fme.e();
-   private int g;
-   private final fkq h;
-   private final ImmutableList<fkp> i;
-   private final ImmutableList<fjw> j;
+public class fkr extends flz {
+   private static final int d = 20;
+   private final wx r;
+   private fgt s = fgt.a;
+   protected wx a;
+   protected wx b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<fga> v = Lists.newArrayList();
 
-   fkr(int $$0, fkq $$1, Iterable<fkp> $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = ImmutableList.copyOf($$2);
-      this.f.c().b();
-      Builder<fjw> $$3 = ImmutableList.builder();
-
-      for (fkp $$4 : $$2) {
-         $$3.add(this.f.a(new fjw($$1, $$4, 0, 24)));
-      }
-
-      this.j = $$3.build();
+   public fkr(BooleanConsumer $$0, wx $$1, wx $$2) {
+      this($$0, $$1, $$2, ww.f, ww.g);
    }
 
-   public static fkr.a a(fkq $$0, int $$1) {
-      return new fkr.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
+   public fkr(BooleanConsumer $$0, wx $$1, wx $$2, wx $$3, wx $$4) {
+      super($$1);
+      this.c = $$0;
+      this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (this.aH_() != null) {
-         this.aH_().a($$0);
-      }
+   public wx i() {
+      return ww.a(super.i(), this.r);
    }
 
    @Override
-   public void a(@Nullable fkj $$0) {
-      super.a($$0);
-      if ($$0 instanceof fjw $$1) {
-         this.h.a($$1.a(), true);
-      }
+   protected void aN_() {
+      super.aN_();
+      this.s = fgt.a(this.p, this.r, this.n - 50);
+      int $$0 = ayf.a(this.C() + this.D() + 20, this.o / 6 + 96, this.o - 24);
+      this.v.clear();
+      this.a($$0);
    }
 
-   @Nullable
-   @Override
-   public fhx a(fmp $$0) {
-      if (!this.aI_()) {
-         fjw $$1 = this.d();
-         if ($$1 != null) {
-            return fhx.a(this, fhx.a($$1));
-         }
-      }
+   protected void a(int $$0) {
+      this.a(fga.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fga.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
 
-      return $$0 instanceof fmp.c ? null : super.a($$0);
+   protected void a(fga $$0) {
+      this.v.add(this.c($$0));
    }
 
    @Override
-   public List<? extends fkj> aE_() {
-      return this.j;
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.s.a($$0, this.n / 2, this.C());
    }
 
-   @Override
-   public fmh.a t() {
-      return this.j.stream().map(fil::t).max(Comparator.naturalOrder()).orElse(fmh.a.a);
+   private int m() {
+      int $$0 = (this.o - this.D()) / 2;
+      return ayf.a($$0 - 20 - 9, 10, 80);
    }
 
-   @Override
-   public void b(fmj $$0) {
-      Optional<fjw> $$1 = this.j.stream().filter(fil::z).findFirst().or(() -> Optional.ofNullable(this.d()));
-      $$1.ifPresent($$1x -> {
-         this.a($$0.a(), $$1x);
-         $$1x.b($$0);
-      });
-      if (this.aI_()) {
-         $$0.a(fmi.d, e);
+   private int C() {
+      return this.m() + 20;
+   }
+
+   private int D() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (fga $$1 : this.v) {
+         $$1.j = false;
       }
    }
 
-   protected void a(fmj $$0, fjw $$1) {
-      if (this.i.size() > 1) {
-         int $$2 = this.j.indexOf($$1);
-         if ($$2 != -1) {
-            $$0.a(fmi.b, xe.a("narrator.position.tab", $$2 + 1, this.i.size()));
+   @Override
+   public void e() {
+      super.e();
+      if (--this.u == 0) {
+         for (fga $$0 : this.v) {
+            $$0.j = true;
          }
       }
    }
 
    @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(fon.h, 0, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, ((fjw)this.j.get(0)).C(), 2, 32, 2);
-      int $$4 = ((fjw)this.j.get(this.j.size() - 1)).E();
-      $$0.a(fon.h, $$4, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
-      RenderSystem.disableBlend();
-      UnmodifiableIterator var6 = this.j.iterator();
-
-      while (var6.hasNext()) {
-         fjw $$5 = (fjw)var6.next();
-         $$5.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public fmt G() {
-      return this.f.G();
-   }
-
-   public void b() {
-      int $$0 = Math.min(400, this.g) - 28;
-      int $$1 = aym.d($$0 / this.i.size(), 2);
-      UnmodifiableIterator var3 = this.j.iterator();
-
-      while (var3.hasNext()) {
-         fjw $$2 = (fjw)var3.next();
-         $$2.k($$1);
-      }
-
-      this.f.a();
-      this.f.m(aym.d((this.g - $$0) / 2, 2));
-      this.f.n(0);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.aI_()) {
-         this.a((fkj)this.j.get($$0));
-      } else {
-         this.h.a((fkp)this.i.get($$0), $$1);
-      }
-   }
-
-   public boolean b(int $$0) {
-      if (fon.r()) {
-         int $$1 = this.c($$0);
-         if ($$1 != -1) {
-            this.a(aym.a($$1, 0, this.i.size() - 1), true);
-            return true;
-         }
-      }
-
+   public boolean aE_() {
       return false;
    }
 
-   private int c(int $$0) {
-      if ($$0 >= 49 && $$0 <= 57) {
-         return $$0 - 49;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
       } else {
-         if ($$0 == 258) {
-            int $$1 = this.c();
-            if ($$1 != -1) {
-               int $$2 = fon.s() ? $$1 - 1 : $$1 + 1;
-               return Math.floorMod($$2, this.i.size());
-            }
-         }
-
-         return -1;
-      }
-   }
-
-   private int c() {
-      fkp $$0 = this.h.a();
-      int $$1 = this.i.indexOf($$0);
-      return $$1 != -1 ? $$1 : -1;
-   }
-
-   @Nullable
-   private fjw d() {
-      int $$0 = this.c();
-      return $$0 != -1 ? (fjw)this.j.get($$0) : null;
-   }
-
-   public static class a {
-      private final int a;
-      private final fkq b;
-      private final List<fkp> c = new ArrayList<>();
-
-      a(fkq $$0, int $$1) {
-         this.b = $$0;
-         this.a = $$1;
-      }
-
-      public fkr.a a(fkp... $$0) {
-         Collections.addAll(this.c, $$0);
-         return this;
-      }
-
-      public fkr a() {
-         return new fkr(this.a, this.b, this.c);
+         return super.a($$0, $$1, $$2);
       }
    }
 }

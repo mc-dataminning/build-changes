@@ -1,71 +1,175 @@
-public class cow {
-   public static final cov a = new cov.a().a(4).a(0.3F).c();
-   public static final cov b = new cov.a().a(5).a(0.6F).c();
-   public static final cov c = new cov.a().a(5).a(0.6F).a().c();
-   public static final cov d = new cov.a().a(1).a(0.6F).a(avo.ih).c();
-   public static final cov e = new cov.a().a(1).a(0.6F).a(avo.ih).c();
-   public static final cov f = new cov.a().a(10).a(0.6F).a(avo.ih).c();
-   public static final cov g = new cov.a().a(8).a(0.6F).a(avo.ih).c();
-   public static final cov h = new cov.a().a(3).a(0.3F).c();
-   public static final cov i = new cov.a().a(1).a(0.6F).c();
-   public static final cov j = a(6).c();
-   public static final cov k = new cov.a().a(5).a(0.6F).c();
-   public static final cov l = new cov.a().a(3).a(0.6F).c();
-   public static final cov m = new cov.a().a(2).a(0.3F).a(new brh(brj.q, 600, 0), 0.3F).c();
-   public static final cov n = new cov.a().a(4).a(0.3F).a().c();
-   public static final cov o = new cov.a().a(2).a(0.1F).c();
-   public static final cov p = new cov.a().a(8).a(0.8F).c();
-   public static final cov q = new cov.a().a(6).a(0.6F).c();
-   public static final cov r = new cov.a().a(5).a(0.6F).c();
-   public static final cov s = new cov.a().a(6).a(0.8F).c();
-   public static final cov t = new cov.a().a(8).a(0.8F).c();
-   public static final cov u = new cov.a().a(5).a(0.6F).c();
-   public static final cov v = new cov.a().a(6).a(0.8F).c();
-   public static final cov w = new cov.a().a(2).a(0.1F).c();
-   public static final cov x = new cov.a().a(1).a(0.3F).b().c();
-   public static final cov y = new cov.a()
-      .a(4)
-      .a(1.2F)
-      .a(new brh(brj.j, 400, 1), 1.0F)
-      .a(new brh(brj.k, 6000, 0), 1.0F)
-      .a(new brh(brj.l, 6000, 0), 1.0F)
-      .a(new brh(brj.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cov z = new cov.a().a(4).a(1.2F).a(new brh(brj.j, 100, 1), 1.0F).a(new brh(brj.v, 2400, 0), 1.0F).a().c();
-   public static final cov A = new cov.a().a(2).a(1.2F).a(new brh(brj.s, 100, 1), 1.0F).a(new brh(brj.v, 2400, 0), 1.0F).a().c();
-   public static final cov B = new cov.a()
-      .a(2)
-      .a(1.2F)
-      .a(new brh(brj.s, 400, 7), 1.0F)
-      .a(new brh(brj.z, 6000, 4), 1.0F)
-      .a(new brh(brj.A, 6000, 4), 1.0F)
-      .a(new brh(brj.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cov C = new cov.a().a(6).a(1.2F).c();
-   public static final cov D = new cov.a().a(6).a(0.1F).a(avo.mT).c();
-   public static final cov E = new cov.a().a(2).a(0.3F).c();
-   public static final cov F = a(6).c();
-   public static final cov G = new cov.a().a(2).a(0.3F).c();
-   public static final cov H = new cov.a().a(2).a(0.3F).a(new brh(brj.s, 100, 0), 0.6F).c();
-   public static final cov I = new cov.a().a(6).a(1.2F).a(new brh(brj.s, 40, 0), 1.0F).c();
-   public static final cov J = new cov.a().a(3).a(0.3F).c();
-   public static final cov K = new cov.a().a(1).a(0.3F).c();
-   public static final cov L = new cov.a().a(1).a(0.1F).a(new brh(brj.s, 1200, 1), 1.0F).a(new brh(brj.q, 300, 2), 1.0F).a(new brh(brj.i, 300, 0), 1.0F).c();
-   public static final cov M = new cov.a().a(8).a(0.3F).c();
-   public static final cov N = new cov.a().a(3).a(0.3F).c();
-   public static final cov O = a(10).c();
-   public static final cov P = new cov.a().a(4).a(0.1F).a(new brh(brj.q, 600, 0), 0.8F).c();
-   public static final cov Q = new cov.a().a(2).a(0.1F).c();
-   public static final cov R = new cov.a().a(2).a(0.8F).a(new brh(brj.s, 100, 0), 1.0F).c();
-   public static final cov S = a(6).a().c();
-   public static final cov T = new cov.a().a(2).a(0.1F).c();
-   public static final cov U = new cov.a().a(2).a(0.1F).c();
-   public static final cov V = new cov.a().a(1).a(0.1F).c();
-   public static final cov W = new cov.a().a(2).a(0.6F).c();
+public abstract class cow extends cqi<bpp> {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   public static final int n = 3;
+   public static final int o = 4;
+   private static final int q = 3;
+   private static final int r = 30;
+   private static final int s = 30;
+   private static final int t = 39;
+   private final bpp u;
+   private final cpf v;
+   protected final daz p;
+   private final cyb<? extends cxf> w;
+   private final cqj x;
 
-   private static cov.a a(int $$0) {
-      return new cov.a().a($$0).a(0.6F);
+   protected cow(cqc<?> $$0, cyb<? extends cxf> $$1, cqj $$2, int $$3, clx $$4) {
+      this($$0, $$1, $$2, $$3, $$4, new bqf(3), new cqp(4));
+   }
+
+   protected cow(cqc<?> $$0, cyb<? extends cxf> $$1, cqj $$2, int $$3, clx $$4, bpp $$5, cpf $$6) {
+      super($$0, $$3);
+      this.w = $$1;
+      this.x = $$2;
+      a($$5, 3);
+      a($$6, 4);
+      this.u = $$5;
+      this.v = $$6;
+      this.p = $$4.l.dP();
+      this.a(new cqq($$5, 0, 56, 17));
+      this.a(new cpq(this, $$5, 1, 56, 53));
+      this.a(new cps($$4.l, $$5, 2, 116, 35));
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cqq($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cqq($$4, $$9, 8 + $$9 * 18, 142));
+      }
+
+      this.a($$6);
+   }
+
+   @Override
+   public void a(cmc $$0) {
+      if (this.u instanceof cqv) {
+         ((cqv)this.u).a($$0);
+      }
+   }
+
+   @Override
+   public void l() {
+      this.b(0).f(ctq.i);
+      this.b(2).f(ctq.i);
+   }
+
+   @Override
+   public boolean a(cxy<? extends cxw<bpp>> $$0) {
+      return $$0.b().a(this.u, this.p);
+   }
+
+   @Override
+   public int m() {
+      return 2;
+   }
+
+   @Override
+   public int n() {
+      return 1;
+   }
+
+   @Override
+   public int o() {
+      return 1;
+   }
+
+   @Override
+   public int p() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return this.u.a($$0);
+   }
+
+   @Override
+   public ctq a(cly $$0, int $$1) {
+      ctq $$2 = ctq.i;
+      cqq $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         ctq $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return ctq.i;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return ctq.i;
+               }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return ctq.i;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return ctq.i;
+         }
+
+         if ($$4.e()) {
+            $$3.e(ctq.i);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.I() == $$2.I()) {
+            return ctq.i;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   protected boolean c(ctq $$0) {
+      return this.p.r().a(this.w, new bqf($$0), this.p).isPresent();
+   }
+
+   protected boolean d(ctq $$0) {
+      return dnw.c($$0);
+   }
+
+   public float q() {
+      int $$0 = this.v.a(2);
+      int $$1 = this.v.a(3);
+      return $$1 != 0 && $$0 != 0 ? ayf.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
+   }
+
+   public float r() {
+      int $$0 = this.v.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
+      }
+
+      return ayf.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
+   }
+
+   public boolean s() {
+      return this.v.a(0) > 0;
+   }
+
+   @Override
+   public cqj t() {
+      return this.x;
+   }
+
+   @Override
+   public boolean e(int $$0) {
+      return $$0 != 1;
    }
 }

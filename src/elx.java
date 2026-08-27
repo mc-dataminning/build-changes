@@ -1,97 +1,194 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.google.common.annotations.VisibleForTesting;
 
-public class elx extends ejt {
-   public static final Codec<elx> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), elx.a.d.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, elx::new)
-   );
-   private final elx.a e;
+public final class elx {
+   private static final float d = 1.0E-7F;
+   private final byte[] e;
+   public final double a;
+   public final double b;
+   public final double c;
 
-   public elx(ejt.d $$0, elx.a $$1) {
-      super($$0);
-      this.e = $$1;
+   public elx(aym $$0) {
+      this.a = $$0.j() * 256.0;
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.e = new byte[256];
+
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         this.e[$$1] = (byte)$$1;
+      }
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         byte $$4 = this.e[$$2];
+         this.e[$$2] = this.e[$$2 + $$3];
+         this.e[$$2 + $$3] = $$4;
+      }
    }
 
-   @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      $$0.f().j();
-      dbh $$1 = $$0.h();
-      ir $$2 = new ir($$1.b(), 50, $$1.e());
-      ekl $$3 = new ekl();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new ejt.c($$2.b(0, $$4, 0), Either.right($$3)));
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0);
    }
 
-   private int a(ekl $$0, ejt.b $$1) {
-      dbh $$2 = $$1.h();
-      dzt $$3 = $$1.f();
-      duz $$4 = $$1.b();
-      elw.d $$5 = new elw.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.e();
-      if (this.e == elx.a.b) {
-         ir $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), dyu.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : aym.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$0 + this.a;
+      double $$6 = $$1 + this.b;
+      double $$7 = $$2 + this.c;
+      int $$8 = ayf.a($$5);
+      int $$9 = ayf.a($$6);
+      int $$10 = ayf.a($$7);
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      double $$13 = $$7 - (double)$$10;
+      double $$16;
+      if ($$3 != 0.0) {
+         double $$14;
+         if ($$4 >= 0.0 && $$4 < $$12) {
+            $$14 = $$4;
+         } else {
+            $$14 = $$12;
+         }
+
+         $$16 = (double)ayf.a($$14 / $$3 + 1.0E-7F) * $$3;
       } else {
-         return $$0.a($$6, $$4.f(), $$3, 10);
+         $$16 = 0.0;
       }
+
+      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   @Override
-   public ekc<?> f() {
-      return ekc.h;
+   public double a(double $$0, double $$1, double $$2, double[] $$3) {
+      double $$4 = $$0 + this.a;
+      double $$5 = $$1 + this.b;
+      double $$6 = $$2 + this.c;
+      int $$7 = ayf.a($$4);
+      int $$8 = ayf.a($$5);
+      int $$9 = ayf.a($$6);
+      double $$10 = $$4 - (double)$$7;
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
    }
 
-   public static enum a implements azg {
-      a("normal", dfe.aC, dfe.S, dfe.eI),
-      b("mesa", dfe.aI, dfe.Y, dfe.lc),
-      c("potato", dfe.tG, dfe.pG, dfe.pP);
+   private static double a(int $$0, double $$1, double $$2, double $$3) {
+      return emc.a(emc.a[$$0 & 15], $$1, $$2, $$3);
+   }
 
-      public static final Codec<elx.a> d = azg.a(elx.a::values);
-      private static final IntFunction<elx.a> e = axd.a(Enum::ordinal, values(), axd.a.a);
-      private final String f;
-      private final dtc g;
-      private final dtc h;
-      private final dtc i;
+   private int a(int $$0) {
+      return this.e[$$0 & 0xFF] & 0xFF;
+   }
 
-      private a(String $$0, dfc $$1, dfc $$2, dfc $$3) {
-         this.f = $$0;
-         this.g = $$1.n();
-         this.h = $$2.n();
-         this.i = $$3.n();
-      }
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
+      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
+      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
+      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
+      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$21 = ayf.h($$3);
+      double $$22 = ayf.h($$6);
+      double $$23 = ayf.h($$5);
+      return ayf.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
+   }
 
-      public String a() {
-         return this.f;
-      }
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      int $$13 = this.a($$9 + $$2);
+      int $$14 = this.a($$11 + $$2);
+      int $$15 = this.a($$10 + $$2);
+      int $$16 = this.a($$12 + $$2);
+      int $$17 = this.a($$9 + $$2 + 1);
+      int $$18 = this.a($$11 + $$2 + 1);
+      int $$19 = this.a($$10 + $$2 + 1);
+      int $$20 = this.a($$12 + $$2 + 1);
+      int[] $$21 = emc.a[$$13 & 15];
+      int[] $$22 = emc.a[$$14 & 15];
+      int[] $$23 = emc.a[$$15 & 15];
+      int[] $$24 = emc.a[$$16 & 15];
+      int[] $$25 = emc.a[$$17 & 15];
+      int[] $$26 = emc.a[$$18 & 15];
+      int[] $$27 = emc.a[$$19 & 15];
+      int[] $$28 = emc.a[$$20 & 15];
+      double $$29 = emc.a($$21, $$3, $$4, $$5);
+      double $$30 = emc.a($$22, $$3 - 1.0, $$4, $$5);
+      double $$31 = emc.a($$23, $$3, $$4 - 1.0, $$5);
+      double $$32 = emc.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$33 = emc.a($$25, $$3, $$4, $$5 - 1.0);
+      double $$34 = emc.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$35 = emc.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$36 = emc.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$37 = ayf.h($$3);
+      double $$38 = ayf.h($$4);
+      double $$39 = ayf.h($$5);
+      double $$40 = ayf.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[0],
+         (double)$$22[0],
+         (double)$$23[0],
+         (double)$$24[0],
+         (double)$$25[0],
+         (double)$$26[0],
+         (double)$$27[0],
+         (double)$$28[0]
+      );
+      double $$41 = ayf.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[1],
+         (double)$$22[1],
+         (double)$$23[1],
+         (double)$$24[1],
+         (double)$$25[1],
+         (double)$$26[1],
+         (double)$$27[1],
+         (double)$$28[1]
+      );
+      double $$42 = ayf.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[2],
+         (double)$$22[2],
+         (double)$$23[2],
+         (double)$$24[2],
+         (double)$$25[2],
+         (double)$$26[2],
+         (double)$$27[2],
+         (double)$$28[2]
+      );
+      double $$43 = ayf.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
+      double $$44 = ayf.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
+      double $$45 = ayf.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
+      double $$46 = ayf.i($$3);
+      double $$47 = ayf.i($$4);
+      double $$48 = ayf.i($$5);
+      double $$49 = $$40 + $$46 * $$43;
+      double $$50 = $$41 + $$47 * $$44;
+      double $$51 = $$42 + $$48 * $$45;
+      $$6[0] += $$49;
+      $$6[1] += $$50;
+      $$6[2] += $$51;
+      return ayf.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
+   }
 
-      public static elx.a a(int $$0) {
-         return e.apply($$0);
-      }
-
-      public dtc b() {
-         return this.g;
-      }
-
-      public dtc d() {
-         return this.h;
-      }
-
-      public dtc e() {
-         return this.i;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      ely.a($$0, this.a, this.b, this.c, this.e);
    }
 }

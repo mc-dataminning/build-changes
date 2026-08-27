@@ -1,56 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dfb extends ddw {
-   public static final MapCodec<dfb> c = b(dfb::new);
+public interface dfb<T extends Enum<T>> {
+   int v_ = 4;
 
-   @Override
-   public MapCodec<dfb> a() {
-      return c;
-   }
+   Optional<drd> i_(drd var1);
 
-   protected dfb(dtb.d $$0) {
-      super($$0);
-   }
+   float av_();
 
-   @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dqb($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return a($$0, $$2, dqe.D);
-   }
-
-   @Override
-   protected void a(dca $$0, ir $$1, cly $$2) {
-      dqc $$3 = $$0.c_($$1);
-      if ($$3 instanceof dqb) {
-         $$2.a((bqe)$$3);
-         $$2.a(avz.at);
+   default void a_(drd $$0, aqn $$1, io $$2, aym $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avo.cF, avq.e, 1.0F, 1.0F, false);
+   T c();
+
+   default Optional<drd> c(drd $$0, aqn $$1, io $$2, aym $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (io $$7 : io.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
          }
 
-         iw $$7 = $$0.c(a);
-         iw.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == iw.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == iw.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lb.ac, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dfb<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
+         }
       }
+
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.av_();
+      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
    }
 }

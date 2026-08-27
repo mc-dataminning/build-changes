@@ -12,7 +12,7 @@ public enum i {
    private final int[] g;
    private final Matrix3f h;
    private static final int i = 3;
-   private static final i[][] j = ad.a(new i[values().length][values().length], $$0 -> {
+   private static final i[][] j = ac.a(new i[values().length][values().length], $$0 -> {
       for (i $$1 : values()) {
          for (i $$2 : values()) {
             int[] $$3 = new int[3];

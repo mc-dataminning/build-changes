@@ -1,110 +1,204 @@
-public class fwq<T extends cet> extends fxc<T> {
-   private float j;
-   private float k;
-   private float l;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-   public fwq(fys $$0) {
-      super($$0, true, 23.0F, 4.8F, 2.7F, 3.0F, 49);
+public class fwq implements aik {
+   private static final Logger a = LogUtils.getLogger();
+   private final feb b;
+   @Nullable
+   private final fxf c;
+   @Nullable
+   private final flz d;
+   private final Consumer<wx> e;
+   private final vv f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<akn, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<fwq.a> l = new AtomicReference<>(fwq.a.a);
+
+   public fwq(vv $$0, feb $$1, @Nullable fxf $$2, @Nullable flz $$3, boolean $$4, @Nullable Duration $$5, Consumer<wx> $$6, @Nullable fxj $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   public static fyy c() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fyx.c()
-            .a(0, 6)
-            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
-            .a(45, 16)
-            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
-            .a(52, 25)
-            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
-            .a(52, 25)
-            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
-         fyu.a(0.0F, 11.5F, -17.0F)
-      );
-      $$1.a("body", fyx.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), fyu.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 9;
-      int $$3 = 6;
-      fyx $$4 = fyx.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
-      $$1.a("right_hind_leg", $$4, fyu.a(-5.5F, 15.0F, 9.0F));
-      $$1.a("left_hind_leg", $$4, fyu.a(5.5F, 15.0F, 9.0F));
-      $$1.a("right_front_leg", $$4, fyu.a(-5.5F, 15.0F, -9.0F));
-      $$1.a("left_front_leg", $$4, fyu.a(5.5F, 15.0F, -9.0F));
-      return fyy.a($$0, 64, 64);
+   private void a(fwq.a $$0) {
+      fwq.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.j = $$0.G($$3);
-      this.k = $$0.H($$3);
-      this.l = $$0.o_() ? 0.0F : $$0.I($$3);
-   }
+   @Override
+   public void a(ain $$0) {
+      this.a(fwq.a.b);
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      boolean $$6 = $$0.r() > 0;
-      boolean $$7 = $$0.t();
-      int $$8 = $$0.gF();
-      boolean $$9 = $$0.gE();
-      boolean $$10 = $$0.gQ();
-      if ($$6) {
-         this.a.f = 0.35F * aym.a(0.6F * $$3);
-         this.a.g = 0.35F * aym.a(0.6F * $$3);
-         this.h.e = -0.75F * aym.a(0.3F * $$3);
-         this.i.e = 0.75F * aym.a(0.3F * $$3);
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      aiv $$7;
+      try {
+         SecretKey $$1 = axd.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(axd.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = axd.a(2, $$1);
+         $$5 = axd.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new aiv($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      if ($$0.g()) {
+         ac.h().submit(() -> {
+            wx $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
+
+               a.warn($$4x.getString());
+            }
+
+            this.a($$7, $$4, $$5);
+         });
       } else {
-         this.a.g = 0.0F;
+         this.a($$7, $$4, $$5);
       }
+   }
 
-      if ($$7) {
-         if ($$8 < 15) {
-            this.a.e = (float) (-Math.PI / 4) * (float)$$8 / 14.0F;
-         } else if ($$8 < 20) {
-            float $$11 = (float)(($$8 - 15) / 5);
-            this.a.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$11;
-         }
+   private void a(aiv $$0, Cipher $$1, Cipher $$2) {
+      this.a(fwq.a.c);
+      this.f.a($$0, we.a(() -> this.f.a($$1, $$2)));
+   }
+
+   @Nullable
+   private wx b(String $$0) {
+      try {
+         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return wx.a("disconnect.loginFailedInfo", wx.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return wx.a("disconnect.loginFailedInfo", wx.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return wx.a("disconnect.loginFailedInfo", wx.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return wx.a("disconnect.loginFailedInfo", wx.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return wx.a("disconnect.loginFailedInfo", var7.getMessage());
       }
+   }
 
-      if (this.j > 0.0F) {
-         this.b.e = fwo.a(this.b.e, 1.7407963F, this.j);
-         this.a.e = fwo.a(this.a.e, (float) (Math.PI / 2), this.j);
-         this.h.g = -0.27079642F;
-         this.i.g = 0.27079642F;
-         this.f.g = 0.5707964F;
-         this.g.g = -0.5707964F;
-         if ($$9) {
-            this.a.e = (float) (Math.PI / 2) + 0.2F * aym.a($$3 * 0.6F);
-            this.h.e = -0.4F - 0.2F * aym.a($$3 * 0.6F);
-            this.i.e = -0.4F - 0.2F * aym.a($$3 * 0.6F);
-         }
+   private MinecraftSessionService e() {
+      return this.b.al();
+   }
 
-         if ($$10) {
-            this.a.e = 2.1707964F;
-            this.h.e = -0.9F;
-            this.i.e = -0.9F;
-         }
+   @Override
+   public void a(aim $$0) {
+      this.a(fwq.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f.a(abf.b, new fwp(this.b, this.f, new fwv($$1, this.b.u().a(this.g, this.h, this.i), fwt.a().a(), coo.h, null, this.c, this.d, this.j, null)));
+      this.f.a(aiw.a);
+      this.f.a(abf.a);
+      this.f.a(new zx(new aad(ClientBrandRetriever.getClientModName())));
+      this.f.a(new zw(this.b.m.aw()));
+   }
+
+   @Override
+   public void a(wx $$0) {
+      wx $$1 = this.k ? ww.q : ww.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new gtu(this.d, $$1, $$0));
       } else {
-         this.f.g = 0.0F;
-         this.g.g = 0.0F;
-         this.h.g = 0.0F;
-         this.i.g = 0.0F;
+         this.b.a(new fla(this.d, $$1, $$0));
       }
+   }
 
-      if (this.k > 0.0F) {
-         this.f.e = -0.6F * aym.a($$3 * 0.15F);
-         this.g.e = 0.6F * aym.a($$3 * 0.15F);
-         this.h.e = 0.3F * aym.a($$3 * 0.25F);
-         this.i.e = -0.3F * aym.a($$3 * 0.25F);
-         this.a.e = fwo.a(this.a.e, (float) (Math.PI / 2), this.k);
+   @Override
+   public boolean c() {
+      return this.f.i();
+   }
+
+   @Override
+   public void a(aip $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(aio $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
       }
+   }
 
-      if (this.l > 0.0F) {
-         this.a.e = fwo.a(this.a.e, 2.0561945F, this.l);
-         this.f.e = -0.5F * aym.a($$3 * 0.5F);
-         this.g.e = 0.5F * aym.a($$3 * 0.5F);
-         this.h.e = 0.5F * aym.a($$3 * 0.5F);
-         this.i.e = -0.5F * aym.a($$3 * 0.5F);
+   @Override
+   public void a(ail $$0) {
+      this.e.accept(wx.c("connect.negotiating"));
+      this.f.a(new ait($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(abl $$0) {
+      this.f.a(new abo($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$0.a("Login phase", () -> this.l.get().toString());
+   }
+
+   static enum a {
+      a(wx.c("connect.connecting"), Set.of()),
+      b(wx.c("connect.authorizing"), Set.of(a)),
+      c(wx.c("connect.encrypting"), Set.of(b)),
+      d(wx.c("connect.joining"), Set.of(c, a));
+
+      final wx e;
+      final Set<fwq.a> f;
+
+      private a(wx $$0, Set<fwq.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
    }
 }

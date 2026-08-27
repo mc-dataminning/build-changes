@@ -1,44 +1,36 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class bpb extends bpd {
-   public static final bpb a = new bpb(0.0F);
-   public static final Codec<bpb> b = axu.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bpb::new, bpb::d);
-   private final float d;
+public abstract class bpb {
+   private static final Codec<Either<Integer, bpb>> a = Codec.either(Codec.INT, le.M.q().dispatch(bpb::c, bpc::codec));
+   public static final Codec<bpb> c = a.xmap(
+      $$0 -> (bpb)$$0.map(boy::a, $$0x -> $$0x), $$0 -> $$0.c() == bpc.a ? Either.left(((boy)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bpb> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bpb> e = b(1, Integer.MAX_VALUE);
 
-   public static bpb a(float $$0) {
-      return $$0 == 0.0F ? a : new bpb($$0);
+   public static Codec<bpb> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   private bpb(float $$0) {
-      this.d = $$0;
+   public static <T extends bpb> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
    }
 
-   public float d() {
-      return this.d;
+   private static <T extends bpb> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+      }
    }
 
-   @Override
-   public float a(ayt $$0) {
-      return this.d;
-   }
+   public abstract int a(aym var1);
 
-   @Override
-   public float a() {
-      return this.d;
-   }
+   public abstract int a();
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
+   public abstract int b();
 
-   @Override
-   public bpe<?> c() {
-      return bpe.a;
-   }
-
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
-   }
+   public abstract bpc<?> c();
 }

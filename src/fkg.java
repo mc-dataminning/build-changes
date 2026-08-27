@@ -1,61 +1,101 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fkg extends fkc {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = -6745839;
-   private static final int j = -4548257;
-   private static final int k = -10547572;
-   private final Supplier<Float> l;
+public record fkg(fkf a, int b, int c) {
+   private static final fkg d = new fkg(0, 0, 0, 0);
 
-   public fkg(fhy $$0, ble $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.l = $$2;
+   public fkg(int $$0, int $$1, int $$2, int $$3) {
+      this(new fkf($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void d(fia $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)azl.c / this.l.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public static fkg a() {
+      return d;
    }
 
-   @Override
-   protected void c(fia $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, blf.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(gfo.F(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, blf.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(gfo.F(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, blf.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(gfo.F(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   public static fkg a(fkd $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fkg($$1, $$2, $$3, $$4);
+         case b -> new fkg($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, blf.d.ordinal());
+   public fkg a(fke $$0) {
+      return new fkg(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public int a(fkd $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.l.get().floatValue());
+   public int b(fke $$0) {
+      fkd $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.l.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
+   public fkg c(fke $$0) {
+      int $$1 = this.b($$0);
+      fkd $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public boolean a(fkg $$0) {
+      return this.a($$0, fkd.a) && this.a($$0, fkd.b);
+   }
+
+   public boolean a(fkg $$0, fkd $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fkd $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fkg b(fkg $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fkg($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fkf f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

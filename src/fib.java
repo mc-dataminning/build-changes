@@ -1,22 +1,26 @@
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class fib extends gsb {
-   private static final Set<atc<?>> a = Set.of(gsj.a, gsp.c);
+public class fib implements fic {
+   private final wx b;
+   protected final fjm a = new fjm();
 
-   public fib(gqz $$0) {
-      super($$0, new akt("textures/atlas/gui.png"), new akt("gui"), a);
+   public fib(wx $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public gqy a(akt $$0) {
-      return super.a($$0);
+   public wx a() {
+      return this.b;
    }
 
-   public gsq a(gqy $$0) {
-      return this.b($$0).a();
+   @Override
+   public void a(Consumer<ffy> $$0) {
+      this.a.a($$0);
    }
 
-   private gsp b(gqy $$0) {
-      return $$0.e().f().a(gsp.c).orElse(gsp.a);
+   @Override
+   public void a(fkg $$0) {
+      this.a.a();
+      fjl.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

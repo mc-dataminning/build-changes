@@ -1,52 +1,45 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.Date;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class auy extends aul<GameProfile> {
-   public auy(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
+public class auy implements ed {
+   private static final String b = "Rcon";
+   private static final wx c = wx.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
+
+   public auy(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public auy(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public auy(JsonObject $$0) {
-      super(b($$0), $$0);
+   public String f() {
+      return this.d.toString();
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         super.a($$0);
-      }
+   public ee g() {
+      aqn $$0 = this.e.I();
+      return new ee(this, eum.a($$0.U()), eul.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override
-   public xe e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? xe.b($$0.getName()) : xe.c("commands.banlist.entry.unknown");
+   public void a(wx $$0) {
+      this.d.append($$0.getString());
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   @Override
+   public boolean l_() {
+      return true;
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
+   @Override
+   public boolean w_() {
+      return true;
+   }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   @Override
+   public boolean U_() {
+      return this.e.m();
    }
 }

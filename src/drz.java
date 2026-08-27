@@ -1,9 +1,28 @@
-public interface drz {
-   void a();
+public enum drz implements ayz {
+   a(it.a),
+   b(it.b);
 
-   boolean b();
+   private final it c;
 
-   ir c();
+   private drz(it $$0) {
+      this.c = $$0;
+   }
 
-   String d();
+   public it a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this == a ? "upper" : "lower";
+   }
+
+   public drz b() {
+      return this == a ? b : a;
+   }
 }

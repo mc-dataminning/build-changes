@@ -1,61 +1,61 @@
-public class ahj implements zl<agl> {
-   public static final zc<we, ahj> a = zl.a(ahj::a, ahj::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class ahj implements ze<age> {
+   public static final yv<vx, ahj> a = ze.a(ahj::a, ahj::new);
+   private final int b;
+   private final ahj.a c;
+   private final int d;
 
-   public ahj(brv $$0) {
-      this.b = $$0.dz();
-      this.c = $$0.dB();
-      this.d = $$0.dF();
-      this.e = $$0.dK();
-      this.f = $$0.dM();
+   public ahj(brw $$0, ahj.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   private ahj(we $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   public ahj(brw $$0, ahj.a $$1, int $$2) {
+      this.b = $$0.al();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private ahj(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(ahj.a.class);
+      this.d = $$0.l();
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.c(this.d);
    }
 
    @Override
-   public zn<ahj> a() {
-      return agj.bF;
+   public zg<ahj> a() {
+      return agc.bL;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public ahj.a e() {
       return this.c;
    }
 
-   public double f() {
+   public int f() {
       return this.d;
    }
 
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

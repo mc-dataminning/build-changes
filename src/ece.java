@@ -1,58 +1,53 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ece extends eca<ecf> {
-   public ece(Codec<ecf> $$0) {
-      super($$0);
-   }
+public class ece implements ecd {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<ece> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dws.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dwu.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dwt.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bpb.b(1, 20).fieldOf("outer_wall_distance").orElse(bph.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bpb.b(1, 20).fieldOf("distribution_points").orElse(bph.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bpb.b(0, 10).fieldOf("point_offset").orElse(bph.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
+            )
+            .apply($$0, ece::new)
+   );
+   public final dws c;
+   public final dwu d;
+   public final dwt e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bpb i;
+   public final bpb j;
+   public final bpb k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   @Override
-   public boolean a(ecc<ecf> $$0) {
-      ayt $$1 = $$0.d();
-      dcv $$2 = $$0.b();
-      ir $$3 = $$0.e();
-      dmd $$4 = dmd.a($$1);
-      ecf $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      enu $$7 = $$2.E().o().ba();
-      ent $$8 = $$7.a($$5.b.get($$6));
-      ent $$9 = $$7.a($$5.c.get($$6));
-      dbh $$10 = new dbh($$3);
-      ejl $$11 = new ejl($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.am(), $$10.g() + 16);
-      enp $$12 = new enp().a($$4).a($$11).a($$1);
-      jv $$13 = $$8.a($$4);
-      ir $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dyu.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
-      ir $$19 = $$8.a($$14.h($$18), dke.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
-   }
-
-   private static int a(dcv $$0, ejl $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dtc $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(dfe.am) || $$3.a(dfe.al)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   public ece(dws $$0, dwu $$1, dwt $$2, double $$3, double $$4, boolean $$5, bpb $$6, bpb $$7, bpb $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

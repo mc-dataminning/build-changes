@@ -1,263 +1,202 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import org.apache.commons.lang3.tuple.Triple;
+import com.google.common.collect.ImmutableList.Builder;
 
 public class rb {
-   public static final aks<elc> a = ra.a("village/potato/town_centers");
-   private static final aks<elc> b = ra.a("village/potato/terminators");
+   private static final dxm.o a = a(dec.a);
+   private static final dxm.o b = a(dec.F);
+   private static final dxm.o c = a(dec.hj);
+   private static final dxm.o d = a(dec.hk);
+   private static final dxm.o e = a(dec.iA);
+   private static final dxm.o f = a(dec.K);
+   private static final dxm.o g = a(dec.jp);
+   private static final dxm.o h = a(dec.b);
+   private static final dxm.o i = a(dec.sJ);
+   private static final dxm.o j = a(dec.j);
+   private static final dxm.o k = a(dec.l);
+   private static final dxm.o l = a(dec.k);
+   private static final dxm.o m = a(dec.fl);
+   private static final dxm.o n = a(dec.i);
+   private static final dxm.o o = a(dec.qN);
+   private static final dxm.o p = a(dec.L);
+   private static final dxm.o q = a(dec.I);
+   private static final dxm.o r = a(dec.aV);
+   private static final dxm.o s = a(dec.iC);
+   private static final dxm.o t = a(dec.dP);
+   private static final dxm.o u = a(dec.sI);
+   private static final dxm.o v = a(dec.qP);
+   private static final dxm.o w = a(dec.dO);
+   private static final dxm.o x = a(dec.G);
+   private static final dxm.o y = a(dec.H);
+   private static final dxm.o z = a(dec.dV);
+   private static final dxm.o A = a(dec.dW);
+   private static final dxm.o B = a(dec.dX);
+   private static final dxm.o C = a(dec.dY);
+   private static final dxm.o D = a(dec.pr);
+   private static final dxm.o E = a(dec.op);
+   private static final dxm.o F = a(dec.on);
+   private static final dxm.o G = a(dec.kK);
+   private static final dxm.o H = a(dec.ow);
+   private static final dxm.o I = a(dec.fz);
 
-   public static void a(qq<elc> $$0) {
-      jb<eix> $$1 = $$0.a(li.aI);
-      ja<eix> $$2 = $$1.b(ss.h);
-      ja<eix> $$3 = $$1.b(ss.m);
-      ja<eix> $$4 = $$1.b(ss.c);
-      jb<enr> $$5 = $$0.a(li.aK);
-      ja<enr> $$6 = $$5.b(rc.k);
-      ja<enr> $$7 = $$5.b(rc.l);
-      ja<enr> $$8 = $$5.b(rc.m);
-      ja<enr> $$9 = $$5.b(rc.b);
-      ja<enr> $$10 = $$5.b(rc.n);
-      ja<enr> $$11 = $$5.b(rc.r);
-      jb<elc> $$12 = $$0.a(li.aM);
-      ja<elc> $$13 = $$12.b(ra.a);
-      ja<elc> $$14 = $$12.b(b);
-      $$0.a(
-         a,
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/town_centers/plains_fountain_01", $$7), 50),
-               Pair.of(ela.a("village/potato/town_centers/plains_meeting_point_1", $$7), 50),
-               Pair.of(ela.a("village/potato/town_centers/plains_meeting_point_2"), 50),
-               Pair.of(ela.a("village/potato/town_centers/plains_meeting_point_3", $$8), 50),
-               Pair.of(ela.a("village/potato/zombie/town_centers/plains_fountain_01", $$9), 1),
-               Pair.of(ela.a("village/potato/zombie/town_centers/plains_meeting_point_1", $$9), 1),
-               Pair.of(ela.a("village/potato/zombie/town_centers/plains_meeting_point_2", $$9), 1),
-               Pair.of(ela.a("village/potato/zombie/town_centers/plains_meeting_point_3", $$9), 1)
-            ),
-            elc.a.b
-         )
+   private static dxm.o a(dea $$0) {
+      return dxm.a($$0.n());
+   }
+
+   public static dxm.o a() {
+      return a(true, false, true);
+   }
+
+   public static dxm.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dxm.f $$3 = dxm.a(dxp.a(97), 2);
+      dxm.f $$4 = dxm.a(dxp.a(256), 0);
+      dxm.f $$5 = dxm.b(dxp.a(63), -1);
+      dxm.f $$6 = dxm.b(dxp.a(74), 1);
+      dxm.f $$7 = dxm.a(dxp.a(60), 0);
+      dxm.f $$8 = dxm.a(dxp.a(62), 0);
+      dxm.f $$9 = dxm.a(dxp.a(63), 0);
+      dxm.f $$10 = dxm.a(-1, 0);
+      dxm.f $$11 = dxm.a(0, 0);
+      dxm.f $$12 = dxm.b(-6, -1);
+      dxm.f $$13 = dxm.b();
+      dxm.f $$14 = dxm.a(dcf.W, dcf.X);
+      dxm.f $$15 = dxm.a();
+      dxm.o $$16 = dxm.a(dxm.a($$11, n), j);
+      dxm.o $$17 = dxm.a(dxm.a(dxm.e, r), q);
+      dxm.o $$18 = dxm.a(dxm.a(dxm.e, h), p);
+      dxm.f $$19 = dxm.a(dcf.P, dcf.M, dcf.N);
+      dxm.f $$20 = dxm.a(dcf.f);
+      dxm.o $$21 = dxm.a(
+         dxm.a(dxm.a(dcf.J), dxm.a(dxm.a(dxm.a(dxe.X, -0.0125, 0.0125), o), h)),
+         dxm.a(dxm.a(dcf.O), dxm.a(dxm.a(dxm.a(dxe.Y, -0.05, 0.05), $$18), h)),
+         dxm.a(dxm.a(dcf.t), dxm.a(a(1.0), h)),
+         dxm.a($$19, $$17),
+         dxm.a($$20, $$17),
+         dxm.a(dxm.a(dcf.Z), h)
       );
-      ra.a(
-         $$0,
-         "village/potato/streets",
-         new elc(
-            ImmutableList.of(
-               Triple.of(ela.a("village/potato/streets/corner_01", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/corner_02", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/corner_03", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_01", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_02", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_03", $$10), 7, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_04", $$10), 7, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_05", $$10), 3, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/straight_06", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/crossroad_01", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/crossroad_02", $$10), 1, elc.a.a),
-               Triple.of(ela.a("village/potato/streets/crossroad_03", $$10), 2, elc.a.a),
-               new Triple[]{
-                  Triple.of(ela.a("village/potato/streets/crossroad_04", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/streets/crossroad_05", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/streets/crossroad_06", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/streets/turn_01", $$10), 3, elc.a.a),
-                  Triple.of(ela.a("village/potato/houses/potato_maze"), 2, elc.a.b)
-               }
-            ),
-            $$14
-         )
+      dxm.o $$22 = dxm.a(dxm.a(dxe.Z, 0.45, 0.58), dxm.a($$11, v));
+      dxm.o $$23 = dxm.a(dxm.a(dxe.Z, 0.35, 0.6), dxm.a($$11, v));
+      dxm.o $$24 = dxm.a(
+         dxm.a(dxm.a(dcf.H), dxm.a(dxm.a($$15, s), dxm.a(dxm.a(dxe.aa, -0.5, 0.2), s), dxm.a(dxm.a(dxe.ab, -0.0625, 0.025), w), dxm.a($$11, t))),
+         dxm.a(dxm.a(dcf.G), dxm.a(dxm.a($$15, h), $$22, dxm.a($$11, t))),
+         dxm.a(dxm.a(dcf.I), h),
+         dxm.a(dxm.a(dcf.F), dxm.a($$22, j)),
+         $$21,
+         dxm.a(dxm.a(dcf.w), dxm.a(a(1.75), h)),
+         dxm.a(dxm.a(dcf.u), dxm.a(dxm.a(a(2.0), $$18), dxm.a(a(1.0), h), dxm.a(a(-1.0), j), $$18)),
+         dxm.a(dxm.a(dcf.h), u),
+         j
       );
-      ra.a(
-         $$0,
-         "village/potato/zombie/streets",
-         new elc(
-            ImmutableList.of(
-               Triple.of(ela.a("village/potato/zombie/streets/corner_01", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/corner_02", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/corner_03", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_01", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_02", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_03", $$10), 7, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_04", $$10), 7, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_05", $$10), 3, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/straight_06", $$10), 4, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/crossroad_01", $$10), 2, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/crossroad_02", $$10), 1, elc.a.a),
-               Triple.of(ela.a("village/potato/zombie/streets/crossroad_03", $$10), 2, elc.a.a),
-               new Triple[]{
-                  Triple.of(ela.a("village/potato/zombie/streets/crossroad_04", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/zombie/streets/crossroad_05", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/zombie/streets/crossroad_06", $$10), 2, elc.a.a),
-                  Triple.of(ela.a("village/potato/zombie/streets/turn_01", $$10), 3, elc.a.a),
-                  Triple.of(ela.a("village/potato/houses/potato_maze"), 1, elc.a.b)
-               }
-            ),
-            $$14
-         )
+      dxm.o $$25 = dxm.a(
+         dxm.a(dxm.a(dcf.H), dxm.a(dxm.a($$15, s), dxm.a(dxm.a(dxe.aa, 0.0, 0.2), s), dxm.a(dxm.a(dxe.ab, 0.0, 0.025), w), dxm.a($$11, t))),
+         dxm.a(dxm.a(dcf.G), dxm.a(dxm.a($$15, h), $$23, dxm.a($$11, t))),
+         dxm.a(dxm.a(dcf.I), dxm.a(dxm.a($$15, h), dxm.a($$11, t))),
+         dxm.a(dxm.a(dcf.F), dxm.a($$23, dxm.a($$11, t))),
+         $$21,
+         dxm.a(dxm.a(dcf.w), dxm.a(dxm.a(a(1.75), h), dxm.a(a(-0.5), l))),
+         dxm.a(dxm.a(dcf.u), dxm.a(dxm.a(a(2.0), $$18), dxm.a(a(1.0), h), dxm.a(a(-1.0), $$16), $$18)),
+         dxm.a(dxm.a(dcf.n, dcf.o), dxm.a(dxm.a(a(1.75), l), dxm.a(a(-0.95), k))),
+         dxm.a(dxm.a(dcf.e), dxm.a($$11, t)),
+         dxm.a(dxm.a(dcf.h), u),
+         dxm.a(dxm.a(dcf.Y), m),
+         $$16
       );
-      ra.a(
-         $$0,
-         "village/potato/houses",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/houses/plains_small_house_1", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_2", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_3", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_4", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_5", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_6", $$6), 1),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_7", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_small_house_8", $$6), 3),
-               Pair.of(ela.a("village/potato/houses/plains_medium_house_1", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_medium_house_2", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_big_house_1", $$6), 2),
-               Pair.of(ela.a("village/potato/houses/plains_butcher_shop_1", $$6), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/potato/houses/plains_butcher_shop_2", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_tool_smith_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_fletcher_house_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_shepherds_house_1"), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_armorer_house_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_fisher_cottage_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_tannery_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_cartographer_1", $$6), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_library_1", $$6), 5),
-                  Pair.of(ela.a("village/potato/houses/plains_library_2", $$6), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_masons_house_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_weaponsmith_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_temple_3", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_temple_4", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_stable_1", $$6), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_stable_2"), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_large_farm_1", $$11), 4),
-                  Pair.of(ela.a("village/potato/houses/plains_small_farm_1", $$11), 4),
-                  Pair.of(ela.a("village/potato/houses/plains_animal_pen_1"), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_animal_pen_2"), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_animal_pen_3"), 5),
-                  Pair.of(ela.a("village/potato/houses/plains_accessory_1"), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_meeting_point_4", $$8), 3),
-                  Pair.of(ela.a("village/potato/houses/plains_meeting_point_5"), 1),
-                  Pair.of(ela.g(), 10)
-               }
-            ),
-            elc.a.b
-         )
+      dxm.f $$26 = dxm.a(dxe.N, -0.909, -0.5454);
+      dxm.f $$27 = dxm.a(dxe.N, -0.1818, 0.1818);
+      dxm.f $$28 = dxm.a(dxe.N, 0.5454, 0.909);
+      dxm.o $$29 = dxm.a(
+         dxm.a(
+            dxm.a,
+            dxm.a(
+               dxm.a(dxm.a(dcf.C), dxm.a($$3, dxm.a(dxm.a($$26, l), dxm.a($$27, l), dxm.a($$28, l), $$16))),
+               dxm.a(dxm.a(dcf.g), dxm.a($$8, dxm.a(dxm.a($$9), dxm.a(dxm.a(dxe.W, 0.0), x)))),
+               dxm.a(dxm.a(dcf.h), dxm.a($$7, dxm.a(dxm.a($$9), dxm.a(dxm.a(dxe.W, 0.0), x))))
+            )
+         ),
+         dxm.a(
+            dxm.a(dcf.A, dcf.B, dcf.C),
+            dxm.a(
+               dxm.a(
+                  dxm.a,
+                  dxm.a(
+                     dxm.a($$4, d),
+                     dxm.a($$6, dxm.a(dxm.a($$26, e), dxm.a($$27, e), dxm.a($$28, e), dxm.e())),
+                     dxm.a($$10, dxm.a(dxm.a(dxm.e, g), f)),
+                     dxm.a(dxm.a($$13), d),
+                     dxm.a($$12, c),
+                     $$18
+                  )
+               ),
+               dxm.a($$5, dxm.a(dxm.a($$9, dxm.a(dxm.a($$6), d)), dxm.e())),
+               dxm.a(dxm.b, dxm.a($$12, c))
+            )
+         ),
+         dxm.a(dxm.a, dxm.a($$10, dxm.a(dxm.a($$14, dxm.a($$13, dxm.a(dxm.a($$11, a), dxm.a(dxm.d(), w), x))), $$25))),
+         dxm.a($$12, dxm.a(dxm.a(dxm.a, dxm.a($$14, dxm.a($$13, x))), dxm.a(dxm.b, $$24), dxm.a($$19, dxm.a(dxm.c, r)), dxm.a($$20, dxm.a(dxm.d, r)))),
+         dxm.a(dxm.a, dxm.a(dxm.a(dxm.a(dcf.H, dcf.I), h), dxm.a(dxm.a(dcf.P, dcf.Q, dcf.R), $$17), $$18))
       );
-      ra.a(
-         $$0,
-         "village/potato/zombie/houses",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_1", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_2", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_3", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_4", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_5", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_6", $$9), 1),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_7", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_small_house_8", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_medium_house_1", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_medium_house_2", $$9), 2),
-               Pair.of(ela.a("village/potato/zombie/houses/plains_big_house_1", $$9), 2),
-               Pair.of(ela.a("village/potato/houses/plains_butcher_shop_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_butcher_shop_2", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_tool_smith_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_fletcher_house_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_shepherds_house_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_armorer_house_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_fisher_cottage_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_tannery_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_cartographer_1", $$9), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_library_1", $$9), 3),
-                  Pair.of(ela.a("village/potato/houses/plains_library_2", $$9), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_masons_house_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_weaponsmith_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_temple_3", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_temple_4", $$9), 2),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_stable_1", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_stable_2", $$9), 2),
-                  Pair.of(ela.a("village/potato/houses/plains_large_farm_1", $$9), 4),
-                  Pair.of(ela.a("village/potato/houses/plains_small_farm_1", $$9), 4),
-                  Pair.of(ela.a("village/potato/houses/plains_animal_pen_1", $$9), 1),
-                  Pair.of(ela.a("village/potato/houses/plains_animal_pen_2", $$9), 1),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_animal_pen_3", $$9), 5),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_meeting_point_4", $$9), 3),
-                  Pair.of(ela.a("village/potato/zombie/houses/plains_meeting_point_5", $$9), 1),
-                  Pair.of(ela.g(), 10)
-               }
-            ),
-            elc.a.b
-         )
+      Builder<dxm.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dxm.a(dxm.a(dxm.a("bedrock_roof", dxp.c(5), dxp.b())), b));
+      }
+
+      if ($$2) {
+         $$30.add(dxm.a(dxm.a("bedrock_floor", dxp.a(), dxp.b(5)), b));
+      }
+
+      dxm.o $$31 = dxm.a(dxm.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dxm.a(dxm.a("deepslate", dxp.a(0), dxp.a(8)), i));
+      return dxm.a((dxm.o[])$$30.build().toArray(dxm.o[]::new));
+   }
+
+   public static dxm.o b() {
+      dxm.f $$0 = dxm.a(dxp.a(31), 0);
+      dxm.f $$1 = dxm.a(dxp.a(32), 0);
+      dxm.f $$2 = dxm.b(dxp.a(30), 0);
+      dxm.f $$3 = dxm.a(dxm.b(dxp.a(35), 0));
+      dxm.f $$4 = dxm.a(dxp.c(5), 0);
+      dxm.f $$5 = dxm.b();
+      dxm.f $$6 = dxm.a(dxe.ac, -0.012);
+      dxm.f $$7 = dxm.a(dxe.ad, -0.012);
+      dxm.f $$8 = dxm.a(dxe.ae, -0.012);
+      dxm.f $$9 = dxm.a(dxe.af, 0.54);
+      dxm.f $$10 = dxm.a(dxe.ag, 1.17);
+      dxm.f $$11 = dxm.a(dxe.ah, 0.0);
+      dxm.o $$12 = dxm.a($$8, dxm.a($$2, dxm.a($$3, p)));
+      return dxm.a(
+         dxm.a(dxm.a("bedrock_floor", dxp.a(), dxp.b(5)), b),
+         dxm.a(dxm.a(dxm.a("bedrock_roof", dxp.c(5), dxp.b())), b),
+         dxm.a($$4, z),
+         dxm.a(dxm.a(dcf.ag), dxm.a(dxm.a(dxm.f, C), dxm.a(dxm.b, dxm.a($$12, dxm.a($$11, C), D)))),
+         dxm.a(dxm.a(dcf.af), dxm.a(dxm.a(dxm.f, dxm.a(dxm.a($$11, A), B)), dxm.a(dxm.b, dxm.a($$12, dxm.a($$11, A), B)))),
+         dxm.a(
+            dxm.a,
+            dxm.a(
+               dxm.a(dxm.a($$1), dxm.a($$5, y)),
+               dxm.a(dxm.a(dcf.ad), dxm.a(dxm.a($$9), dxm.a($$0, dxm.a(dxm.a($$10, E), F)))),
+               dxm.a(dxm.a(dcf.ae), dxm.a(dxm.a($$9), dxm.a($$0, dxm.a(dxm.a($$10, G), H))))
+            )
+         ),
+         dxm.a(
+            dxm.a(dcf.ac),
+            dxm.a(
+               dxm.a(dxm.b, dxm.a($$6, dxm.a(dxm.a(dxm.a($$5), dxm.a($$2, dxm.a($$3, A))), z))),
+               dxm.a(dxm.a, dxm.a($$0, dxm.a($$3, dxm.a($$7, dxm.a(dxm.a($$1, p), dxm.a(dxm.a($$5), p))))))
+            )
+         ),
+         z
       );
-      $$0.a(
-         b,
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/terminators/terminator_01", $$10), 1),
-               Pair.of(ela.a("village/potato/terminators/terminator_02", $$10), 1),
-               Pair.of(ela.a("village/potato/terminators/terminator_03", $$10), 1),
-               Pair.of(ela.a("village/potato/terminators/terminator_04", $$10), 1)
-            ),
-            elc.a.a
-         )
-      );
-      ra.a($$0, "village/potato/trees", new elc($$13, ImmutableList.of(Pair.of(ela.a($$2), 1)), elc.a.b));
-      ra.a(
-         $$0,
-         "village/potato/decor",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/plains_lamp_1"), 3),
-               Pair.of(ela.a($$2), 1),
-               Pair.of(ela.a($$3), 1),
-               Pair.of(ela.a($$4), 1),
-               Pair.of(ela.a("village/potato/frying_table_1"), 1),
-               Pair.of(ela.g(), 2)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/potato/zombie/decor",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/plains_lamp_1", $$9), 1),
-               Pair.of(ela.a($$2), 1),
-               Pair.of(ela.a($$3), 1),
-               Pair.of(ela.a($$4), 1),
-               Pair.of(ela.g(), 2)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/potato/villagers",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/potato/villagers/nitwit"), 1),
-               Pair.of(ela.a("village/potato/villagers/baby"), 1),
-               Pair.of(ela.a("village/potato/villagers/unemployed"), 10)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/potato/zombie/villagers",
-         new elc(
-            $$13,
-            ImmutableList.of(Pair.of(ela.a("village/potato/zombie/villagers/nitwit"), 1), Pair.of(ela.a("village/potato/zombie/villagers/unemployed"), 10)),
-            elc.a.b
-         )
-      );
-      ra.a($$0, "village/potato/well_bottoms", new elc($$13, ImmutableList.of(Pair.of(ela.a("village/potato/well_bottom"), 1)), elc.a.b));
+   }
+
+   public static dxm.o c() {
+      return I;
+   }
+
+   public static dxm.o d() {
+      return a;
+   }
+
+   private static dxm.f a(double $$0) {
+      return dxm.a(dxe.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

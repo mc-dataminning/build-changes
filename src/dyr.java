@@ -1,38 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dyr {
-   public final egl a;
-   public final egl b;
-   public final egl c;
-   public final egl d;
-   public final egl e;
-   public final List<dtc> f;
-   public final awt<dfc> g;
-   public final awt<dfc> h;
-   public static final Codec<dyr> i = RecordCodecBuilder.create(
+public class dyr extends dyt {
+   public static final Codec<dyr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               egl.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               egl.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               egl.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               egl.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               egl.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               dtc.b.listOf().fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               awt.b(li.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               awt.b(li.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+               dyt.d.forGetter($$0x -> $$0x), boz.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dyr.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, dyr::new)
    );
+   public final boz b;
+   public final dyr.a c;
 
-   public dyr(egl $$0, egl $$1, egl $$2, egl $$3, egl $$4, List<dtc> $$5, awt<dfc> $$6, awt<dfc> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dyr(float $$0, efs $$1, boz $$2, dxp $$3, dyu $$4, jb<dea> $$5, boz $$6, dyr.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+   }
+
+   public dyr(dyt $$0, boz $$1, dyr.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
+
+   public static class a {
+      public static final Codec<dyr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  boz.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  boz.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  axn.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  boz.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dyr.a::new)
+      );
+      public final boz b;
+      public final boz c;
+      public final int d;
+      public final boz e;
+      public final float f;
+      public final float g;
+
+      public a(boz $$0, boz $$1, int $$2, boz $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

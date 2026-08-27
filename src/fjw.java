@@ -1,70 +1,19 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
 
-public class fjw extends fil {
-   private static final fka a = new fka(
-      new akt("widget/tab_selected"), new akt("widget/tab"), new akt("widget/tab_selected_highlighted"), new akt("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fkq m;
-   private final fkp n;
-
-   public fjw(fkq $$0, fkp $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public interface fjw {
+   default void a(fjv $$0, wx $$1) {
+      this.a($$0, fjy.a($$1.getString()));
    }
 
-   @Override
-   public void b(fia $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
-      RenderSystem.disableBlend();
-      fhy $$4 = fgj.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
-         this.b($$0, $$4, $$5);
-      }
+   default void a(fjv $$0, String $$1) {
+      this.a($$0, fjy.a($$1));
    }
 
-   protected void a(fia $$0, int $$1, int $$2, int $$3, int $$4) {
-      fon.a($$0, fon.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   default void a(fjv $$0, wx... $$1) {
+      this.a($$0, fjy.a(ImmutableList.copyOf($$1)));
    }
 
-   public void a(fia $$0, fhy $$1, int $$2) {
-      int $$3 = this.C() + 1;
-      int $$4 = this.D() + (this.b() ? 0 : 3);
-      int $$5 = this.C() + this.x() - 1;
-      int $$6 = this.D() + this.v();
-      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
-   }
+   void a(fjv var1, fjy<?> var2);
 
-   private void b(fia $$0, fhy $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
-      int $$4 = this.C() + (this.x() - $$3) / 2;
-      int $$5 = this.D() + this.v() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fmj $$0) {
-      $$0.a(fmi.a, xe.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(gvq $$0) {
-   }
-
-   public fkp a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
-   }
+   fjw a();
 }

@@ -1,6 +1,11 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-@FunctionalInterface
 public interface dwa {
-   CompletableFuture<duy> apply(duy var1);
+   Codec<dwa> c = le.v.q().dispatch(dwa::a, dwb::a);
+   yv<wi, dwa> d = yt.a(lf.W).b(dwa::a, dwb::b);
+
+   Optional<eum> a(daz var1);
+
+   dwb<? extends dwa> a();
 }

@@ -1,20 +1,47 @@
-public class dru extends dpp {
-   public dru(ir $$0, dtc $$1) {
-      super(dqe.C, $$0, $$1, czf.d);
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
+
+public class dru extends dsg<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+
+   protected dru(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   protected xe k() {
-      return xe.c("container.smoker");
+   public Collection<Boolean> a() {
+      return this.a;
+   }
+
+   public static dru a(String $$0) {
+      return new dru($$0);
    }
 
    @Override
-   protected int b(cuh $$0) {
-      return super.b($$0) / 2;
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
    @Override
-   protected cpg a(int $$0, clx $$1) {
-      return new cri($$0, $$1, this, this.m);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dru $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

@@ -1,39 +1,80 @@
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class asc implements arj {
-   public static final arj.a a = new arj.a("synchronize_registries");
-   private final List<atk> b;
-   private final jh<alc> c;
+public class asc implements asj {
+   private final asj c;
+   private final List<asj> d;
 
-   public asc(List<atk> $$0, jh<alc> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public asc(asj $$0, List<asj> $$1) {
+      this.c = $$0;
+      List<asj> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
+   @Nullable
    @Override
-   public void a(Consumer<zl<?>> $$0) {
-      $$0.accept(new abi(this.b));
+   public atp<InputStream> a(String... $$0) {
+      return this.c.a($$0);
    }
 
-   private void a(Consumer<zl<?>> $$0, Set<atk> $$1) {
-      DynamicOps<vh> $$2 = this.c.a().a(uy.a);
-      jr.a($$2, this.c.c(alc.b), $$1, ($$1x, $$2x) -> $$0.accept(new abh($$1x, $$2x)));
-      $$0.accept(new aaa(aww.a(this.c)));
-   }
-
-   public void a(List<atk> $$0, Consumer<zl<?>> $$1) {
-      if ($$0.equals(this.b)) {
-         this.a($$1, Set.copyOf(this.b));
-      } else {
-         this.a($$1, Set.of());
+   @Nullable
+   @Override
+   public atp<InputStream> a(asl $$0, akn $$1) {
+      for (asj $$2 : this.d) {
+         atp<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
+         }
       }
+
+      return null;
    }
 
    @Override
-   public arj.a a() {
-      return a;
+   public void a(asl $$0, String $$1, String $$2, asj.a $$3) {
+      Map<akn, atp<InputStream>> $$4 = new HashMap<>();
+
+      for (asj $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(asl $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (asj $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(asw<T> $$0) throws IOException {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public asi a() {
+      return this.c.a();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(asj::close);
    }
 }

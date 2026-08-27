@@ -1,21 +1,5 @@
-public enum bnu {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import java.util.List;
 
-   private final String j;
-
-   private bnu(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
-   }
+public interface bnu {
+   List<bnr> bu();
 }

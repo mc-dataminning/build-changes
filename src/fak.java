@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eyv
-@eyu
-interface fak {
+public interface fak {
 }

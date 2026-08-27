@@ -2,7 +2,7 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class clx implements bpt, bqf {
+public class clx implements bpp, bqb {
    public static final int b = 5;
    public static final int c = 36;
    private static final int m = 9;
@@ -10,10 +10,10 @@ public class clx implements bpt, bqf {
    public static final int e = -1;
    public static final int[] f = new int[]{0, 1, 2, 3};
    public static final int[] g = new int[]{3};
-   public final jj<cuh> h = jj.a(36, cuh.i);
-   public final jj<cuh> i = jj.a(4, cuh.i);
-   public final jj<cuh> j = jj.a(1, cuh.i);
-   private final List<jj<cuh>> n = ImmutableList.of(this.h, this.i, this.j);
+   public final jg<ctq> h = jg.a(36, ctq.i);
+   public final jg<ctq> i = jg.a(4, ctq.i);
+   public final jg<ctq> j = jg.a(1, ctq.i);
+   private final List<jg<ctq>> n = ImmutableList.of(this.h, this.i, this.j);
    public int k;
    public final cly l;
    private int o;
@@ -22,21 +22,21 @@ public class clx implements bpt, bqf {
       this.l = $$0;
    }
 
-   public cuh f() {
-      return d(this.k) ? this.h.get(this.k) : cuh.i;
+   public ctq f() {
+      return d(this.k) ? this.h.get(this.k) : ctq.i;
    }
 
    public static int g() {
       return 9;
    }
 
-   private boolean a(cuh $$0, cuh $$1) {
-      return !$$0.d() && cuh.c($$0, $$1) && $$0.j() && $$0.G() < this.a($$0);
+   private boolean a(ctq $$0, ctq $$1) {
+      return !$$0.e() && ctq.c($$0, $$1) && $$0.k() && $$0.I() < this.e_($$0);
    }
 
    public int h() {
       for (int $$0 = 0; $$0 < this.h.size(); $$0++) {
-         if (this.h.get($$0).d()) {
+         if (this.h.get($$0).e()) {
             return $$0;
          }
       }
@@ -44,14 +44,14 @@ public class clx implements bpt, bqf {
       return -1;
    }
 
-   public void b(cuh $$0) {
+   public void b(ctq $$0) {
       int $$1 = this.c($$0);
       if (d($$1)) {
          this.k = $$1;
       } else {
          if ($$1 == -1) {
             this.k = this.i();
-            if (!this.h.get(this.k).d()) {
+            if (!this.h.get(this.k).e()) {
                int $$2 = this.h();
                if ($$2 != -1) {
                   this.h.set($$2, this.h.get(this.k));
@@ -67,7 +67,7 @@ public class clx implements bpt, bqf {
 
    public void c(int $$0) {
       this.k = this.i();
-      cuh $$1 = this.h.get(this.k);
+      ctq $$1 = this.h.get(this.k);
       this.h.set(this.k, this.h.get($$0));
       this.h.set($$0, $$1);
    }
@@ -76,9 +76,9 @@ public class clx implements bpt, bqf {
       return $$0 >= 0 && $$0 < 9;
    }
 
-   public int c(cuh $$0) {
+   public int c(ctq $$0) {
       for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         if (!this.h.get($$1).d() && cuh.c($$0, this.h.get($$1))) {
+         if (!this.h.get($$1).e() && ctq.c($$0, this.h.get($$1))) {
             return $$1;
          }
       }
@@ -86,14 +86,10 @@ public class clx implements bpt, bqf {
       return -1;
    }
 
-   public int d(cuh $$0) {
+   public int d(ctq $$0) {
       for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         cuh $$2 = this.h.get($$1);
-         if (!this.h.get($$1).d()
-            && (cuh.c($$0, this.h.get($$1)) || $$0.a(cuk.vK) && this.h.get($$1).a(cuk.vK))
-            && !this.h.get($$1).l()
-            && !$$2.A()
-            && !$$2.b(ke.f)) {
+         ctq $$2 = this.h.get($$1);
+         if (!this.h.get($$1).e() && ctq.c($$0, this.h.get($$1)) && !this.h.get($$1).m() && !$$2.B() && !$$2.b(kb.f)) {
             return $$1;
          }
       }
@@ -104,14 +100,14 @@ public class clx implements bpt, bqf {
    public int i() {
       for (int $$0 = 0; $$0 < 9; $$0++) {
          int $$1 = (this.k + $$0) % 9;
-         if (this.h.get($$1).d()) {
+         if (this.h.get($$1).e()) {
             return $$1;
          }
       }
 
       for (int $$2 = 0; $$2 < 9; $$2++) {
          int $$3 = (this.k + $$2) % 9;
-         if (!this.h.get($$3).A()) {
+         if (!this.h.get($$3).B()) {
             return $$3;
          }
       }
@@ -132,38 +128,38 @@ public class clx implements bpt, bqf {
       }
    }
 
-   public int a(Predicate<cuh> $$0, int $$1, bpt $$2) {
+   public int a(Predicate<ctq> $$0, int $$1, bpp $$2) {
       int $$3 = 0;
       boolean $$4 = $$1 == 0;
-      $$3 += bpu.a(this, $$0, $$1 - $$3, $$4);
-      $$3 += bpu.a($$2, $$0, $$1 - $$3, $$4);
-      cuh $$5 = this.l.cq.g();
-      $$3 += bpu.a($$5, $$0, $$1 - $$3, $$4);
-      if ($$5.d()) {
-         this.l.cq.b(cuh.i);
+      $$3 += bpq.a(this, $$0, $$1 - $$3, $$4);
+      $$3 += bpq.a($$2, $$0, $$1 - $$3, $$4);
+      ctq $$5 = this.l.cb.g();
+      $$3 += bpq.a($$5, $$0, $$1 - $$3, $$4);
+      if ($$5.e()) {
+         this.l.cb.b(ctq.i);
       }
 
       return $$3;
    }
 
-   private int j(cuh $$0) {
+   private int j(ctq $$0) {
       int $$1 = this.e($$0);
       if ($$1 == -1) {
          $$1 = this.h();
       }
 
-      return $$1 == -1 ? $$0.G() : this.d($$1, $$0);
+      return $$1 == -1 ? $$0.I() : this.d($$1, $$0);
    }
 
-   private int d(int $$0, cuh $$1) {
-      int $$2 = $$1.G();
-      cuh $$3 = this.a($$0);
-      if ($$3.d()) {
+   private int d(int $$0, ctq $$1) {
+      int $$2 = $$1.I();
+      ctq $$3 = this.a($$0);
+      if ($$3.e()) {
          $$3 = $$1.c(0);
          this.a($$0, $$3);
       }
 
-      int $$4 = this.a($$3) - $$3.G();
+      int $$4 = this.e_($$3) - $$3.I();
       int $$5 = Math.min($$2, $$4);
       if ($$5 == 0) {
          return $$2;
@@ -175,7 +171,7 @@ public class clx implements bpt, bqf {
       }
    }
 
-   public int e(cuh $$0) {
+   public int e(ctq $$0) {
       if (this.a(this.a(this.k), $$0)) {
          return this.k;
       } else if (this.a(this.a(40), $$0)) {
@@ -192,37 +188,34 @@ public class clx implements bpt, bqf {
    }
 
    public void j() {
-      int $$0 = 0;
-
-      for (jj<cuh> $$1 : this.n) {
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            $$0++;
-            if (!$$1.get($$2).d()) {
-               $$1.get($$2).a(this.l.dU(), this.l, $$0, this.k == $$2);
+      for (jg<ctq> $$0 : this.n) {
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            if (!$$0.get($$1).e()) {
+               $$0.get($$1).a(this.l.dP(), this.l, $$1, this.k == $$1);
             }
          }
       }
    }
 
-   public boolean f(cuh $$0) {
+   public boolean f(ctq $$0) {
       return this.c(-1, $$0);
    }
 
-   public boolean c(int $$0, cuh $$1) {
-      if ($$1.d()) {
+   public boolean c(int $$0, ctq $$1) {
+      if ($$1.e()) {
          return false;
       } else {
          try {
-            if ($$1.l()) {
+            if ($$1.m()) {
                if ($$0 == -1) {
                   $$0 = this.h();
                }
 
                if ($$0 >= 0) {
-                  this.h.set($$0, $$1.e());
+                  this.h.set($$0, $$1.f());
                   this.h.get($$0).d(5);
                   return true;
-               } else if (this.l.fY()) {
+               } else if (this.l.fP()) {
                   $$1.e(0);
                   return true;
                } else {
@@ -231,38 +224,38 @@ public class clx implements bpt, bqf {
             } else {
                int $$2;
                do {
-                  $$2 = $$1.G();
+                  $$2 = $$1.I();
                   if ($$0 == -1) {
                      $$1.e(this.j($$1));
                   } else {
                      $$1.e(this.d($$0, $$1));
                   }
-               } while (!$$1.d() && $$1.G() < $$2);
+               } while (!$$1.e() && $$1.I() < $$2);
 
-               if ($$1.G() == $$2 && this.l.fY()) {
+               if ($$1.I() == $$2 && this.l.fP()) {
                   $$1.e(0);
                   return true;
                } else {
-                  return $$1.G() < $$2;
+                  return $$1.I() < $$2;
                }
             }
          } catch (Throwable var6) {
             o $$4 = o.a(var6, "Adding item to inventory");
             p $$5 = $$4.a("Item being added");
-            $$5.a("Item ID", cuc.a($$1.f()));
-            $$5.a("Item data", $$1.m());
-            $$5.a("Item name", () -> $$1.w().getString());
-            throw new z($$4);
+            $$5.a("Item ID", ctl.a($$1.g()));
+            $$5.a("Item data", $$1.n());
+            $$5.a("Item name", () -> $$1.x().getString());
+            throw new y($$4);
          }
       }
    }
 
-   public void g(cuh $$0) {
+   public void g(ctq $$0) {
       this.a($$0, true);
    }
 
-   public void a(cuh $$0, boolean $$1) {
-      while (!$$0.d()) {
+   public void a(ctq $$0, boolean $$1) {
+      while (!$$0.e()) {
          int $$2 = this.e($$0);
          if ($$2 == -1) {
             $$2 = this.h();
@@ -273,18 +266,18 @@ public class clx implements bpt, bqf {
             break;
          }
 
-         int $$3 = $$0.i() - this.a($$2).G();
-         if (this.c($$2, $$0.a($$3)) && $$1 && this.l instanceof aqu) {
-            ((aqu)this.l).d.b(new acu(-2, 0, $$2, this.a($$2)));
+         int $$3 = $$0.j() - this.a($$2).I();
+         if (this.c($$2, $$0.a($$3)) && $$1 && this.l instanceof aqo) {
+            ((aqo)this.l).c.b(new acn(-2, 0, $$2, this.a($$2)));
          }
       }
    }
 
    @Override
-   public cuh a(int $$0, int $$1) {
-      List<cuh> $$2 = null;
+   public ctq a(int $$0, int $$1) {
+      List<ctq> $$2 = null;
 
-      for (jj<cuh> $$3 : this.n) {
+      for (jg<ctq> $$3 : this.n) {
          if ($$0 < $$3.size()) {
             $$2 = $$3;
             break;
@@ -293,14 +286,14 @@ public class clx implements bpt, bqf {
          $$0 -= $$3.size();
       }
 
-      return $$2 != null && !$$2.get($$0).d() ? bpu.a($$2, $$0, $$1) : cuh.i;
+      return $$2 != null && !$$2.get($$0).e() ? bpq.a($$2, $$0, $$1) : ctq.i;
    }
 
-   public void h(cuh $$0) {
-      for (jj<cuh> $$1 : this.n) {
+   public void h(ctq $$0) {
+      for (jg<ctq> $$1 : this.n) {
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
             if ($$1.get($$2) == $$0) {
-               $$1.set($$2, cuh.i);
+               $$1.set($$2, ctq.i);
                break;
             }
          }
@@ -308,10 +301,10 @@ public class clx implements bpt, bqf {
    }
 
    @Override
-   public cuh b(int $$0) {
-      jj<cuh> $$1 = null;
+   public ctq b(int $$0) {
+      jg<ctq> $$1 = null;
 
-      for (jj<cuh> $$2 : this.n) {
+      for (jg<ctq> $$2 : this.n) {
          if ($$0 < $$2.size()) {
             $$1 = $$2;
             break;
@@ -320,20 +313,20 @@ public class clx implements bpt, bqf {
          $$0 -= $$2.size();
       }
 
-      if ($$1 != null && !$$1.get($$0).d()) {
-         cuh $$3 = $$1.get($$0);
-         $$1.set($$0, cuh.i);
+      if ($$1 != null && !$$1.get($$0).e()) {
+         ctq $$3 = $$1.get($$0);
+         $$1.set($$0, ctq.i);
          return $$3;
       } else {
-         return cuh.i;
+         return ctq.i;
       }
    }
 
    @Override
-   public void a(int $$0, cuh $$1) {
-      jj<cuh> $$2 = null;
+   public void a(int $$0, ctq $$1) {
+      jg<ctq> $$2 = null;
 
-      for (jj<cuh> $$3 : this.n) {
+      for (jg<ctq> $$3 : this.n) {
          if ($$0 < $$3.size()) {
             $$2 = $$3;
             break;
@@ -347,47 +340,47 @@ public class clx implements bpt, bqf {
       }
    }
 
-   public float a(dtc $$0) {
+   public float a(drd $$0) {
       return this.h.get(this.k).a($$0);
    }
 
-   public uq a(uq $$0) {
+   public uj a(uj $$0) {
       for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         if (!this.h.get($$1).d()) {
-            uk $$2 = new uk();
+         if (!this.h.get($$1).e()) {
+            ud $$2 = new ud();
             $$2.a("Slot", (byte)$$1);
-            $$0.add(this.h.get($$1).b(this.l.dY(), $$2));
+            $$0.add(this.h.get($$1).b(this.l.dR(), $$2));
          }
       }
 
       for (int $$3 = 0; $$3 < this.i.size(); $$3++) {
-         if (!this.i.get($$3).d()) {
-            uk $$4 = new uk();
+         if (!this.i.get($$3).e()) {
+            ud $$4 = new ud();
             $$4.a("Slot", (byte)($$3 + 100));
-            $$0.add(this.i.get($$3).b(this.l.dY(), $$4));
+            $$0.add(this.i.get($$3).b(this.l.dR(), $$4));
          }
       }
 
       for (int $$5 = 0; $$5 < this.j.size(); $$5++) {
-         if (!this.j.get($$5).d()) {
-            uk $$6 = new uk();
+         if (!this.j.get($$5).e()) {
+            ud $$6 = new ud();
             $$6.a("Slot", (byte)($$5 + 150));
-            $$0.add(this.j.get($$5).b(this.l.dY(), $$6));
+            $$0.add(this.j.get($$5).b(this.l.dR(), $$6));
          }
       }
 
       return $$0;
    }
 
-   public void b(uq $$0) {
+   public void b(uj $$0) {
       this.h.clear();
       this.i.clear();
       this.j.clear();
 
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         uk $$2 = $$0.a($$1);
+         ud $$2 = $$0.a($$1);
          int $$3 = $$2.f("Slot") & 255;
-         cuh $$4 = cuh.a(this.l.dY(), (vh)$$2).orElse(cuh.i);
+         ctq $$4 = ctq.a(this.l.dR(), (va)$$2).orElse(ctq.i);
          if ($$3 >= 0 && $$3 < this.h.size()) {
             this.h.set($$3, $$4);
          } else if ($$3 >= 100 && $$3 < this.i.size() + 100) {
@@ -405,20 +398,20 @@ public class clx implements bpt, bqf {
 
    @Override
    public boolean c() {
-      for (cuh $$0 : this.h) {
-         if (!$$0.d()) {
+      for (ctq $$0 : this.h) {
+         if (!$$0.e()) {
             return false;
          }
       }
 
-      for (cuh $$1 : this.i) {
-         if (!$$1.d()) {
+      for (ctq $$1 : this.i) {
+         if (!$$1.e()) {
             return false;
          }
       }
 
-      for (cuh $$2 : this.j) {
-         if (!$$2.d()) {
+      for (ctq $$2 : this.j) {
+         if (!$$2.e()) {
             return false;
          }
       }
@@ -427,10 +420,10 @@ public class clx implements bpt, bqf {
    }
 
    @Override
-   public cuh a(int $$0) {
-      List<cuh> $$1 = null;
+   public ctq a(int $$0) {
+      List<ctq> $$1 = null;
 
-      for (jj<cuh> $$2 : this.n) {
+      for (jg<ctq> $$2 : this.n) {
          if ($$0 < $$2.size()) {
             $$1 = $$2;
             break;
@@ -439,25 +432,25 @@ public class clx implements bpt, bqf {
          $$0 -= $$2.size();
       }
 
-      return $$1 == null ? cuh.i : $$1.get($$0);
+      return $$1 == null ? ctq.i : $$1.get($$0);
    }
 
    @Override
-   public xe af() {
-      return xe.c("container.inventory");
+   public wx af() {
+      return wx.c("container.inventory");
    }
 
-   public cuh e(int $$0) {
+   public ctq e(int $$0) {
       return this.i.get($$0);
    }
 
    public void k() {
-      for (List<cuh> $$0 : this.n) {
+      for (List<ctq> $$0 : this.n) {
          for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-            cuh $$2 = $$0.get($$1);
-            if (!$$2.d()) {
+            ctq $$2 = $$0.get($$1);
+            if (!$$2.e()) {
                this.l.a($$2, true, false);
-               $$0.set($$1, cuh.i);
+               $$0.set($$1, ctq.i);
             }
          }
       }
@@ -477,10 +470,10 @@ public class clx implements bpt, bqf {
       return $$0.b(this.l, 4.0);
    }
 
-   public boolean i(cuh $$0) {
-      for (List<cuh> $$1 : this.n) {
-         for (cuh $$2 : $$1) {
-            if (!$$2.d() && cuh.c($$2, $$0)) {
+   public boolean i(ctq $$0) {
+      for (List<ctq> $$1 : this.n) {
+         for (ctq $$2 : $$1) {
+            if (!$$2.e() && ctq.c($$2, $$0)) {
                return true;
             }
          }
@@ -489,10 +482,10 @@ public class clx implements bpt, bqf {
       return false;
    }
 
-   public boolean a(awt<cuc> $$0) {
-      for (List<cuh> $$1 : this.n) {
-         for (cuh $$2 : $$1) {
-            if (!$$2.d() && $$2.a($$0)) {
+   public boolean a(awm<ctl> $$0) {
+      for (List<ctq> $$1 : this.n) {
+         for (ctq $$2 : $$1) {
+            if (!$$2.e() && $$2.a($$0)) {
                return true;
             }
          }
@@ -501,9 +494,9 @@ public class clx implements bpt, bqf {
       return false;
    }
 
-   public boolean c(Predicate<cuh> $$0) {
-      for (List<cuh> $$1 : this.n) {
-         for (cuh $$2 : $$1) {
+   public boolean b(Predicate<ctq> $$0) {
+      for (List<ctq> $$1 : this.n) {
+         for (ctq $$2 : $$1) {
             if ($$0.test($$2)) {
                return true;
             }
@@ -523,19 +516,19 @@ public class clx implements bpt, bqf {
 
    @Override
    public void a() {
-      for (List<cuh> $$0 : this.n) {
+      for (List<ctq> $$0 : this.n) {
          $$0.clear();
       }
    }
 
    public void a(cmc $$0) {
-      for (cuh $$1 : this.h) {
+      for (ctq $$1 : this.h) {
          $$0.a($$1);
       }
    }
 
-   public cuh a(boolean $$0) {
-      cuh $$1 = this.f();
-      return $$1.d() ? cuh.i : this.a(this.k, $$0 ? $$1.G() : 1);
+   public ctq a(boolean $$0) {
+      ctq $$1 = this.f();
+      return $$1.e() ? ctq.i : this.a(this.k, $$0 ? $$1.I() : 1);
    }
 }

@@ -1,60 +1,37 @@
-import javax.annotation.Nullable;
+public class ahu implements ze<age> {
+   public static final yv<wi, ahu> a = ze.a(ahu::a, ahu::new);
+   private final int b;
+   private final ctq c;
 
-public class ahu implements zl<agl> {
-   public static final zc<we, ahu> a = zl.a(ahu::a, ahu::new);
-   private final ahu.a b;
-   @Nullable
-   private final akt c;
-
-   public ahu(ahu.a $$0, @Nullable akt $$1) {
+   public ahu(int $$0, ctq $$1) {
       this.b = $$0;
-      this.c = $$1;
+      this.c = $$1.s();
    }
 
-   public static ahu a(ag $$0) {
-      return new ahu(ahu.a.a, $$0.a());
+   private ahu(wi $$0) {
+      this.b = $$0.readShort();
+      this.c = ctq.e.decode($$0);
    }
 
-   public static ahu b() {
-      return new ahu(ahu.a.b, null);
-   }
-
-   private ahu(we $$0) {
-      this.b = $$0.b(ahu.a.class);
-      if (this.b == ahu.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      if (this.b == ahu.a.a) {
-         $$0.a(this.c);
-      }
+   private void a(wi $$0) {
+      $$0.l(this.b);
+      ctq.e.encode($$0, this.c);
    }
 
    @Override
-   public zn<ahu> a() {
-      return agj.bQ;
+   public zg<ahu> a() {
+      return agc.bW;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public ahu.a e() {
+   public int b() {
       return this.b;
    }
 
-   @Nullable
-   public akt f() {
+   public ctq e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

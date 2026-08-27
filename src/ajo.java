@@ -1,29 +1,18 @@
-public class ajo implements zl<ajn> {
-   public static final zc<we, ajo> a = zl.a(ajo::a, ajo::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public ajo(long $$0) {
-      this.b = $$0;
-   }
+public class ajo implements ze<ajn> {
+   public static final ajo a = new ajo();
+   public static final yv<ByteBuf, ajo> b = yv.a(a);
 
-   private ajo(we $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(we $$0) {
-      $$0.b(this.b);
+   private ajo() {
    }
 
    @Override
-   public zn<ajo> a() {
-      return ajm.b;
+   public zg<ajo> a() {
+      return ajp.b;
    }
 
    public void a(ajn $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

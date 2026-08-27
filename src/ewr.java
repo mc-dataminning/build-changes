@@ -1,21 +1,7 @@
-public class ewr extends ews {
-   private final brv b;
+public record ewr(eum b, eum c, eum d) {
+   public static final ewr a = new ewr(eum.b, new eum(0.0, 0.0, -1.0), new eum(0.0, 1.0, 0.0));
 
-   public ewr(brv $$0) {
-      this($$0, $$0.ds());
-   }
-
-   public ewr(brv $$0, ewu $$1) {
-      super($$1);
-      this.b = $$0;
-   }
-
-   public brv a() {
-      return this.b;
-   }
-
-   @Override
-   public ews.a c() {
-      return ews.a.c;
+   public eum a() {
+      return this.c.c(this.d);
    }
 }

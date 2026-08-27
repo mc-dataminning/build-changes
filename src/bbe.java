@@ -1,26 +1,21 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
 
 public class bbe extends DataFix {
-   public bbe(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
+   public bbe(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bgf.u), $$0 -> $$0.update(DSL.remainderFinder(), bbe::a));
+      Type<?> $$0 = this.getInputSchema().getType(bga.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
+         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
+         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+      });
    }
 }

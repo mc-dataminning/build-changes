@@ -1,34 +1,9 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-
-public interface cpr {
-   cpr a = new cpr() {
-      @Override
-      public <T> Optional<T> a(BiFunction<dca, ir, T> $$0) {
-         return Optional.empty();
-      }
-   };
-
-   static cpr a(final dca $$0, final ir $$1) {
-      return new cpr() {
-         @Override
-         public <T> Optional<T> a(BiFunction<dca, ir, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
-         }
-      };
+public class cpr extends cow {
+   public cpr(int $$0, clx $$1) {
+      super(cqc.o, cyb.b, cqj.b, $$0, $$1);
    }
 
-   <T> Optional<T> a(BiFunction<dca, ir, T> var1);
-
-   default <T> T a(BiFunction<dca, ir, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
-   }
-
-   default void a(BiConsumer<dca, ir> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   public cpr(int $$0, clx $$1, bpp $$2, cpf $$3) {
+      super(cqc.o, cyb.b, cqj.b, $$0, $$1, $$2, $$3);
    }
 }

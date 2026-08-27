@@ -1,110 +1,80 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class flb<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class flb extends flz {
+   private static final wx a = wx.c("addServer.enterName");
+   private static final wx b = wx.c("addServer.enterIp");
+   private fga c;
+   private final BooleanConsumer d;
+   private final fxf r;
+   private fgj s;
+   private fgj u;
+   private final flz v;
 
-   public flb(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   public flb(flz $$0, BooleanConsumer $$1, fxf $$2) {
+      super(wx.c("addServer.title"));
+      this.v = $$0;
+      this.d = $$1;
+      this.r = $$2;
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   @Override
+   protected void aN_() {
+      this.u = new fgj(this.p, this.n / 2 - 100, 66, 200, 20, wx.c("addServer.enterName"));
+      this.u.a(this.r.a);
+      this.u.b($$0 -> this.C());
+      this.d(this.u);
+      this.s = new fgj(this.p, this.n / 2 - 100, 106, 200, 20, wx.c("addServer.enterIp"));
+      this.s.f(128);
+      this.s.a(this.r.b);
+      this.s.b($$0 -> this.C());
+      this.d(this.s);
+      this.c(
+         fgh.a(fxf.a::a)
+            .a(fxf.a.values())
+            .a(this.r.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, wx.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+      );
+      this.c = this.c(fga.a(wx.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fga.a(ww.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.C();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   @Override
+   protected void aD_() {
+      this.b(this.u);
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
-      } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
-      }
+   @Override
+   public void a(feb $$0, int $$1, int $$2) {
+      String $$3 = this.s.a();
+      String $$4 = this.u.a();
+      this.b($$0, $$1, $$2);
+      this.s.a($$3);
+      this.u.a($$4);
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
-         }
-
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
-      }
+   private void m() {
+      this.r.a = this.u.a();
+      this.r.b = this.s.a();
+      this.d.accept(true);
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
+   @Override
+   public void d() {
+      this.m.a(this.v);
    }
 
-   public void a(flb.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
-            }
-         }
-      }
+   private void C() {
+      this.c.j = fyi.b(this.s.a()) && !this.u.a().isEmpty();
    }
 
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
+   @Override
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.u.a($$0, $$1, $$2, $$3);
+      this.s.a($$0, $$1, $$2, $$3);
    }
 }

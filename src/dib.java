@@ -1,54 +1,82 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dib extends dfc implements dia {
-   public dib(dtb.d $$0) {
-      super($$0);
+public class dib extends dfw {
+   public static final MapCodec<dib> i = b(dib::new);
+
+   @Override
+   public MapCodec<? extends dib> a() {
+      return i;
+   }
+
+   protected dib(drc.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected abstract MapCodec<? extends dib> a();
-
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public drd a(cxb $$0) {
+      daf $$1 = $$0.q();
+      io $$2 = $$0.a();
+      emw $$3 = $$0.q().b_($$0.a());
+      io $$4 = $$2.e();
+      io $$5 = $$2.f();
+      io $$6 = $$2.g();
+      io $$7 = $$2.h();
+      drd $$8 = $$1.a_($$4);
+      drd $$9 = $$1.a_($$5);
+      drd $$10 = $$1.a_($$6);
+      drd $$11 = $$1.a_($$7);
+      return this.n()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, it.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, it.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, it.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, it.e))))
+         .a(e, Boolean.valueOf($$3.a() == emx.c));
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cif $$4 = cif.a($$1, $$2, $$0);
-         this.a($$4);
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
       }
-   }
 
-   protected void a(cif $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean m(dtc $$0) {
-      return $$0.i() || $$0.a(awe.aM) || $$0.k() || $$0.r();
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      if ($$3.a(16) == 0) {
-         ir $$4 = $$2.d();
-         if (m($$1.a_($$4))) {
-            ayp.a($$1, $$2, $$3, new ks(lb.B, $$0));
+   protected evf c(drd $$0, daf $$1, io $$2, eur $$3) {
+      return evc.a();
+   }
+
+   @Override
+   protected boolean a(drd $$0, drd $$1, it $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   public int b(dtc $$0, dbg $$1, ir $$2) {
-      return -16777216;
+   public final boolean a(drd $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof dib || $$0.a(avx.L);
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

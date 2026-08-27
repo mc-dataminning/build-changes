@@ -1,22 +1,33 @@
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bme implements blu<StringReader, vh> {
-   public static final blu<StringReader, vh> a = new bme();
+public class bme {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bmi c = bmh.a;
 
-   private bme() {
+   public bme(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public Optional<vh> a(blt<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
+   public boolean a() {
+      return this.c != bmh.a;
+   }
 
-      try {
-         return Optional.of(new vi($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   public void b() {
+      this.c = bmh.a;
+   }
+
+   public void c() {
+      this.c = new bmd(this.a, this.b, true);
+   }
+
+   public bmk d() {
+      return this.c;
+   }
+
+   public bmj e() {
+      return this.c.d();
    }
 }

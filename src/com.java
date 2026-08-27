@@ -1,9 +1,12 @@
 public class com {
-   final coq a;
-   final long b;
+   private final String a;
 
-   com(coq $$0, int $$1) {
+   public com(String $$0) {
       this.a = $$0;
-      this.b = 1L << $$1;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
    }
 }

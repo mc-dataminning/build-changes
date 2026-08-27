@@ -1,66 +1,21 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public final class blv {
-   private final Object2ObjectMap<blo<?>, Object> a = new Object2ObjectArrayMap();
+public class blv implements blq<StringReader, akn> {
+   public static final blq<StringReader, akn> a = new blv();
 
-   public <T> void a(blo<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
+   private blv() {
    }
 
-   @Nullable
-   public <T> T a(blo<T> $$0) {
-      return (T)this.a.get($$0);
-   }
+   @Override
+   public Optional<akn> a(blp<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   public <T> T b(blo<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   public <T> T b(blo<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
-   }
-
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(blo<T>... $$0) {
-      for (blo<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
+      try {
+         return Optional.of(akn.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
       }
-
-      return null;
-   }
-
-   @SafeVarargs
-   public final <T> T b(blo<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public void a(blv $$0) {
-      this.a.putAll($$0.a);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof blv $$1 ? this.a.equals($$1.a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

@@ -1,20 +1,18 @@
-public enum dtv implements azg {
-   a("compare"),
-   b("subtract");
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   private final String c;
+public interface dtv {
+   @Nullable
+   eht a(ehl var1);
 
-   private dtv(String $$0) {
-      this.c = $$0;
-   }
+   void a(ehl var1, eht var2);
 
-   @Override
-   public String toString() {
-      return this.c;
-   }
+   LongSet b(ehl var1);
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+   void a(ehl var1, long var2);
+
+   Map<ehl, LongSet> h();
+
+   void b(Map<ehl, LongSet> var1);
 }

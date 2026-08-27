@@ -1,10 +1,29 @@
-public abstract class cdx extends bsq {
-   protected cdx(bsb<? extends cdx> $$0, dca $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cdx(Set<drd> b, int c, int d) {
+   public static final Predicate<ix<cdx>> a = $$0 -> false;
+
+   public cdx(Set<drd> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public boolean a(cly $$0) {
-      return false;
+   public boolean a(drd $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<drd> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

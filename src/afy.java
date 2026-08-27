@@ -1,45 +1,24 @@
-public class afy implements zl<abw> {
-   public static final zc<we, afy> a = zl.a(afy::a, afy::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import java.util.Collection;
+import java.util.List;
 
-   public afy(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public class afy implements ze<abq> {
+   public static final yv<wi, afy> a = yv.a(cxy.a.a(yt.a()), $$0 -> $$0.b, afy::new);
+   private final List<cxy<?>> b;
 
-   private afy(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   public afy(Collection<cxy<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
    @Override
-   public zn<afy> a() {
-      return agj.ba;
+   public zg<afy> a() {
+      return agc.bd;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public List<cxy<?>> b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

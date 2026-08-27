@@ -1,73 +1,114 @@
-import org.joml.Matrix4f;
+public class fli extends flr {
+   private static final wx a = wx.c("options.languageAccuracyWarning").a(n.h);
+   private static final int r = 53;
+   private fli.a s;
+   final gpd u;
 
-public class fli {
-   private final flg a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
-
-   public fli(flg $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public fli(flz $$0, fef $$1, gpd $$2) {
+      super($$0, $$1, wx.c("options.language.title"));
+      this.u = $$2;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fbg $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      float $$10 = $$1 + this.f;
-      float $$11 = $$1 + this.g;
-      float $$12 = $$2 + this.h;
-      float $$13 = $$2 + this.i;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
+   @Override
+   protected void aN_() {
+      this.s = this.c(new fli.a(this.m));
+      this.d.a(53);
+      super.aN_();
    }
 
-   public void a(fli.a $$0, Matrix4f $$1, fbg $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
+   @Override
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.d);
    }
 
-   public gfo a(fhy.a $$0) {
-      return this.a.a($$0);
+   @Override
+   protected void h() {
+      fjr $$0 = this.d.b(fjr.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fhh(a, this.p));
+      fjr $$1 = $$0.a(fjr.e().a(8));
+      $$1.a(fga.a(wx.c("options.font"), $$0x -> this.m.a(new fle(this, this.c))).a());
+      $$1.a(fga.a(ww.d, $$0x -> this.C()).a());
    }
 
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
+   void C() {
+      fli.a.a $$0 = this.s.h();
+      if ($$0 != null && !$$0.b.equals(this.u.a())) {
+         this.u.a($$0.b);
+         this.c.ac = $$0.b;
+         this.m.l();
+      }
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+      this.m.a(this.b);
+   }
+
+   class a extends fgw<fli.a.a> {
+      public a(feb $$0) {
+         super($$0, fli.this.n, fli.this.o - 33 - 53, 33, 18);
+         String $$1 = fli.this.u.a();
+         fli.this.u.b().forEach(($$1x, $$2) -> {
+            fli.a.a $$3 = new fli.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.h() != null) {
+            this.e(this.h());
+         }
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends fgw.a<fli.a.a> {
+         final String b;
+         private final wx c;
+         private long d;
+
+         public a(String $$1, gpc $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fli.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fkb.a($$0)) {
+               this.b();
+               fli.this.C();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.c() - this.d < 250L) {
+               fli.this.C();
+            }
+
+            this.d = ac.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public wx a() {
+            return wx.a("narrator.select", this.c);
+         }
       }
    }
 }

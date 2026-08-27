@@ -1,36 +1,16 @@
-import java.util.HashMap;
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public record vr(int a, Map<String, vj<?>> b, Map<String, vr> c) {
-   private vr(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+public class vr extends MessageToByteEncoder<ByteBuf> {
+   private final vp a;
+
+   public vr(Cipher $$0) {
+      this.a = new vp($$0);
    }
 
-   public static vr a() {
-      return new vr(1);
-   }
-
-   public void a(vq $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vr(this.a + 1)).a($$0);
-      } else {
-         this.b.put($$0.c(), $$0.b());
-      }
-   }
-
-   public boolean a(vj<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
-   }
-
-   public int b() {
-      return this.a;
-   }
-
-   public Map<String, vj<?>> c() {
-      return this.b;
-   }
-
-   public Map<String, vr> d() {
-      return this.c;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

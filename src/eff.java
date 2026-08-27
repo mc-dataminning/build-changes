@@ -1,28 +1,41 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eff implements eek {
-   public static final Codec<eff> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               epe.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               jp.a(li.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eff::new)
-   );
-   public final epe b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final je<dfc> f;
+public class eff extends efe {
+   public static final MapCodec<eff> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eff::new));
 
-   public eff(epe $$0, boolean $$1, int $$2, int $$3, je<dfc> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public eff(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected efi<?> a() {
+      return efi.d;
+   }
+
+   @Override
+   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
+      List<edp.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + ayf.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + ayf.a($$8) * (float)$$11);
+            io $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new edp.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
    }
 }

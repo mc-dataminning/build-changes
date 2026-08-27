@@ -1,119 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
-
 public class cdm {
-   private static final int a = 10;
-
-   public static ir a(ayt $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new ir($$3, $$4, $$5);
+   public static boolean a(bss $$0) {
+      return $$0.K() instanceof ccb;
    }
 
-   @Nullable
-   public static ir a(ayt $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = aym.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)aym.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return ir.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
+   public static boolean a(bsz $$0, int $$1) {
+      return $$0.ga() && $$0.fX().a($$0.dn(), (double)($$0.fY() + (float)$$1) + 1.0);
    }
 
-   @VisibleForTesting
-   public static ir a(ir $$0, int $$1, Predicate<ir> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         ir $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
+   public static boolean a(io $$0, bsz $$1) {
+      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().al();
    }
 
-   @VisibleForTesting
-   public static ir a(ir $$0, int $$1, int $$2, Predicate<ir> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         ir $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         ir $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            ir $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
+   public static boolean a(boolean $$0, bsz $$1, io $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   @Nullable
-   public static ewu a(bsw $$0, Supplier<ir> $$1) {
-      return a($$1, $$0::d);
+   public static boolean a(ccc $$0, io $$1) {
+      return !$$0.a($$1);
    }
 
-   @Nullable
-   public static ewu a(Supplier<ir> $$0, ToDoubleFunction<ir> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      ir $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ir $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? ewu.c($$3) : null;
+   public static boolean a(bsz $$0, io $$1) {
+      return $$0.dP().b_($$1).a(awc.a);
    }
 
-   public static ir a(bsw $$0, int $$1, ayt $$2, ir $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.gj() && $$1 > 1) {
-         ir $$6 = $$0.gg();
-         if ($$0.dz() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
+   public static boolean b(bsz $$0, io $$1) {
+      return $$0.a(ens.b($$0, $$1)) != 0.0F;
+   }
 
-         if ($$0.dF() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return ir.a((double)$$4 + $$0.dz(), (double)$$3.v() + $$0.dB(), (double)$$5 + $$0.dF());
+   public static boolean c(bsz $$0, io $$1) {
+      return $$0.dP().a_($$1).e();
    }
 }

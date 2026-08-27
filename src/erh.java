@@ -1,54 +1,45 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class erh {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final eqx d;
-   private final boolean e;
+public class erh extends eqs {
+   public static final MapCodec<erh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cwj.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter($$0x -> $$0x.c),
+                  eqr.a(256).forGetter($$0x -> $$0x.d),
+                  axn.h.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, erh::new)
+   );
+   public static final cwk b = new cwk(0, List.of());
+   private final List<cwj> c;
+   private final eqr d;
+   private final Optional<Integer> e;
 
-   private erh(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new eqx($$3, $$4);
-      this.e = $$5;
+   protected erh(List<esn> $$0, List<cwj> $$1, eqr $$2, Optional<Integer> $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static erh a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new erh(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(ab.b().c()),
-            $$3.get("Id").asInt(ab.b().d().c()),
-            $$3.get("Series").asString(eqx.a),
-            $$3.get("Snapshot").asBoolean(!ab.b().g())
-         )
-         : new erh($$1, $$2, "", 0, eqx.a, false);
+   @Override
+   protected ctq a(ctq $$0, eph $$1) {
+      $$0.a(kb.T, b, this::a);
+      return $$0;
    }
 
-   public int a() {
-      return this.a;
+   private cwk a(cwk $$0) {
+      List<cwj> $$1 = this.d.a($$0.b(), this.c, 256);
+      return new cwk(this.e.orElseGet($$0::a), $$1);
    }
 
-   public long b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.c;
-   }
-
-   public eqx d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+   @Override
+   public equ b() {
+      return eqv.H;
    }
 }

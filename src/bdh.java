@@ -1,19 +1,14 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bdh extends bfe {
-   public bdh(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bgf.z, "minecraft:wolf");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
+public class bdh extends bez {
+   public bdh(Schema $$0) {
+      super($$0, false, "Remove filtered text from signs", bga.s, "minecraft:sign");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
    }
 }

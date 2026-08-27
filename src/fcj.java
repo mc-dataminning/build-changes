@@ -1,383 +1,167 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.util.Comparator;
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.Map.Entry;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.slf4j.Logger;
 
-public class fcj extends fcy {
-   private static final Logger w = LogUtils.getLogger();
-   private static final int x = -1;
-   public long a;
-   public String b;
-   public String c;
-   public String d;
-   public fcj.c e;
-   public String f;
-   public UUID g = ad.e;
-   public List<fcf> h;
-   public Map<Integer, fcq> i;
-   public boolean j;
-   public boolean k;
-   public int l;
-   public fcj.d m;
-   public int n;
-   @Nullable
-   public String o;
-   public int p;
-   public String q;
-   public long r = -1L;
-   @Nullable
-   public String s;
-   public String t = "";
-   public fcj.a u = fcj.a.a;
-   public fcm v = new fcm();
+public class fcj {
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final azd d;
 
-   public String a() {
-      return this.d;
+   public fcj(Executor $$0, TimeUnit $$1, azd $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   @Nullable
-   public String c() {
-      return this.o;
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-   }
-
-   public void b(String $$0) {
-      this.d = $$0;
-   }
-
-   public void a(fcn $$0) {
-      List<String> $$1 = Lists.newArrayList();
-      int $$2 = 0;
-      MinecraftSessionService $$3 = fgj.Q().am();
-
-      for (UUID $$4 : $$0.b) {
-         if (!fgj.Q().b($$4)) {
-            try {
-               ProfileResult $$5 = $$3.fetchProfile($$4, false);
-               if ($$5 != null) {
-                  $$1.add($$5.profile().getName());
-               }
-
-               $$2++;
-            } catch (Exception var8) {
-               w.error("Could not get name for {}", $$4, var8);
-            }
-         }
-      }
-
-      this.v.a = String.valueOf($$2);
-      this.v.b = Joiner.on('\n').join($$1);
-   }
-
-   public static fcj a(JsonObject $$0) {
-      fcj $$1 = new fcj();
-
-      try {
-         $$1.a = fev.a("id", $$0, -1L);
-         $$1.b = fev.b("remoteSubscriptionId", $$0, null);
-         $$1.c = fev.b("name", $$0, null);
-         $$1.d = fev.b("motd", $$0, null);
-         $$1.e = f(fev.b("state", $$0, fcj.c.a.name()));
-         $$1.f = fev.b("owner", $$0, null);
-         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
-            $$1.h = a($$0.get("players").getAsJsonArray());
-            a($$1);
-         } else {
-            $$1.h = Lists.newArrayList();
-         }
-
-         $$1.l = fev.a("daysLeft", $$0, 0);
-         $$1.j = fev.a("expired", $$0, false);
-         $$1.k = fev.a("expiredTrial", $$0, false);
-         $$1.m = g(fev.b("worldType", $$0, fcj.d.a.name()));
-         $$1.g = fev.a("ownerUUID", $$0, ad.e);
-         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
-            $$1.i = b($$0.get("slots").getAsJsonArray());
-         } else {
-            $$1.i = i();
-         }
-
-         $$1.o = fev.b("minigameName", $$0, null);
-         $$1.n = fev.a("activeSlot", $$0, -1);
-         $$1.p = fev.a("minigameId", $$0, -1);
-         $$1.q = fev.b("minigameImage", $$0, null);
-         $$1.r = fev.a("parentWorldId", $$0, -1L);
-         $$1.s = fev.b("parentWorldName", $$0, null);
-         $$1.t = fev.b("activeVersion", $$0, "");
-         $$1.u = d(fev.b("compatibility", $$0, fcj.a.a.name()));
-      } catch (Exception var3) {
-         w.error("Could not parse McoServer: {}", var3.getMessage());
-      }
-
-      return $$1;
-   }
-
-   private static void a(fcj $$0) {
-      $$0.h
-         .sort(
-            ($$0x, $$1) -> ComparisonChain.start()
-                  .compareFalseFirst($$1.d(), $$0x.d())
-                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
-                  .result()
-         );
-   }
-
-   private static List<fcf> a(JsonArray $$0) {
-      List<fcf> $$1 = Lists.newArrayList();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            fcf $$4 = new fcf();
-            $$4.a(fev.b("name", $$3, null));
-            $$4.a(fev.a("uuid", $$3, ad.e));
-            $$4.a(fev.a("operator", $$3, false));
-            $$4.b(fev.a("accepted", $$3, false));
-            $$4.c(fev.a("online", $$3, false));
-            $$1.add($$4);
-         } catch (Exception var6) {
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fcq> b(JsonArray $$0) {
-      Map<Integer, fcq> $$1 = Maps.newHashMap();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            JsonParser $$4 = new JsonParser();
-            JsonElement $$5 = $$4.parse($$3.get("options").getAsString());
-            fcq $$6;
-            if ($$5 == null) {
-               $$6 = fcq.a();
-            } else {
-               $$6 = fcq.a($$5.getAsJsonObject());
-            }
-
-            int $$8 = fev.a("slotId", $$3, -1);
-            $$1.put($$8, $$6);
-         } catch (Exception var9) {
-         }
-      }
-
-      for (int $$9 = 1; $$9 <= 3; $$9++) {
-         if (!$$1.containsKey($$9)) {
-            $$1.put($$9, fcq.b());
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fcq> i() {
-      Map<Integer, fcq> $$0 = Maps.newHashMap();
-      $$0.put(1, fcq.b());
-      $$0.put(2, fcq.b());
-      $$0.put(3, fcq.b());
-      return $$0;
-   }
-
-   public static fcj c(String $$0) {
-      try {
-         return a(new JsonParser().parse($$0).getAsJsonObject());
-      } catch (Exception var2) {
-         w.error("Could not parse McoServer: {}", var2.getMessage());
-         return new fcj();
-      }
-   }
-
-   private static fcj.c f(String $$0) {
-      try {
-         return fcj.c.valueOf($$0);
-      } catch (Exception var2) {
-         return fcj.c.a;
-      }
-   }
-
-   private static fcj.d g(String $$0) {
-      try {
-         return fcj.d.valueOf($$0);
-      } catch (Exception var2) {
-         return fcj.d.a;
-      }
-   }
-
-   public static fcj.a d(@Nullable String $$0) {
-      try {
-         return fcj.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fcj.a.a;
-      }
-   }
-
-   public boolean d() {
-      return this.u.a();
-   }
-
-   public boolean e() {
-      return this.u.b();
-   }
-
-   public boolean f() {
-      return this.u.c();
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0 == this) {
-         return true;
-      } else if ($$0.getClass() != this.getClass()) {
-         return false;
+   public <T> fcj.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fck $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         fcj $$1 = (fcj)$$0;
-         return new EqualsBuilder()
-            .append(this.a, $$1.a)
-            .append(this.c, $$1.c)
-            .append(this.d, $$1.d)
-            .append(this.e, $$1.e)
-            .append(this.f, $$1.f)
-            .append(this.j, $$1.j)
-            .append(this.m, this.m)
-            .isEquals();
+         return new fcj.e<>($$0, $$1, $$4, $$3);
       }
    }
 
-   public fcj g() {
-      fcj $$0 = new fcj();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.h = this.h;
-      $$0.i = this.a(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      $$0.l = this.l;
-      $$0.v = new fcm();
-      $$0.v.a = this.v.a;
-      $$0.v.b = this.v.b;
-      $$0.m = this.m;
-      $$0.g = this.g;
-      $$0.o = this.o;
-      $$0.n = this.n;
-      $$0.p = this.p;
-      $$0.q = this.q;
-      $$0.s = this.s;
-      $$0.r = this.r;
-      $$0.t = this.t;
-      $$0.u = this.u;
-      return $$0;
+   public fcj.c a() {
+      return new fcj.c();
    }
 
-   public Map<Integer, fcq> a(Map<Integer, fcq> $$0) {
-      Map<Integer, fcq> $$1 = Maps.newHashMap();
-
-      for (Entry<Integer, fcq> $$2 : $$0.entrySet()) {
-         $$1.put($$2.getKey(), $$2.getValue().d());
-      }
-
-      return $$1;
+   static record a<T>(Either<T, Exception> a, long b) {
    }
 
-   public boolean h() {
-      return this.r != -1L;
-   }
+   class b<T> {
+      private final fcj.e<T> a;
+      private final Consumer<T> b;
+      private long c = -1L;
 
-   public String a(int $$0) {
-      return this.c + " (" + this.i.get($$0).a($$0) + ")";
-   }
-
-   public gab e(String $$0) {
-      return new gab(this.c, $$0, gab.c.b);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-
-      public boolean a() {
-         return this == e;
-      }
-
-      public boolean b() {
-         return this == d;
-      }
-
-      public boolean c() {
-         return this == c;
-      }
-   }
-
-   public static class b implements Comparator<fcj> {
-      private final String a;
-
-      public b(String $$0) {
+      b(fcj.e<T> $$0, Consumer<T> $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      public int a(fcj $$0, fcj $$1) {
-         return ComparisonChain.start()
-            .compareTrueFirst($$0.h(), $$1.h())
-            .compareTrueFirst($$0.e == fcj.c.c, $$1.e == fcj.c.c)
-            .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst($$0.f.equals(this.a), $$1.f.equals(this.a))
-            .compareFalseFirst($$0.j, $$1.j)
-            .compareTrueFirst($$0.e == fcj.c.b, $$1.e == fcj.c.b)
-            .compare($$0.a, $$1.a)
-            .result();
+      void a(long $$0) {
+         this.a.a($$0);
+         this.a();
+      }
+
+      void a() {
+         fcj.d<T> $$0 = this.a.g;
+         if ($$0 != null && this.c < $$0.b) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void b() {
+         fcj.d<T> $$0 = this.a.g;
+         if ($$0 != null) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void c() {
+         this.a.a();
+         this.c = -1L;
       }
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
+   public class c {
+      private final List<fcj.b<?>> b = new ArrayList<>();
+
+      public <T> void a(fcj.e<T> $$0, Consumer<T> $$1) {
+         fcj.b<T> $$2 = fcj.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (fcj.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (fcj.b<?> $$0 : this.b) {
+            $$0.a(fcj.this.d.get(fcj.this.c));
+         }
+      }
+
+      public void c() {
+         for (fcj.b<?> $$0 : this.b) {
+            $$0.c();
+         }
+      }
    }
 
-   public static enum d {
-      a,
-      b,
-      c,
-      d,
-      e;
+   static record d<T>(T a, long b) {
+   }
+
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final fck e;
+      @Nullable
+      private CompletableFuture<fcj.a<T>> f;
+      @Nullable
+      fcj.d<T> g;
+      private long h = -1L;
+
+      e(String $$1, Callable<T> $$2, long $$3, fck $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      void a(long $$0) {
+         if (this.f != null) {
+            fcj.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new fcj.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               fcj.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = fcj.this.d.get(fcj.this.c);
+                  return new fcj.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = fcj.this.d.get(fcj.this.c);
+                  return new fcj.a<>(Either.right(var4x), $$3);
+               }
+            }, fcj.this.b);
+         }
+      }
+
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
+      }
    }
 }

@@ -1,18 +1,12 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aok {
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(ei.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((eh)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
-      );
-   }
-
-   private static int a(eh $$0, int $$1) {
-      $$0.l().c($$1);
-      $$0.a(() -> xe.a("commands.setidletimeout.success", $$1), true);
-      return $$1;
+   public static void a(CommandDispatcher<ee> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("stop").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ((ee)$$0x.getSource()).a(() -> wx.c("commands.stop.stopping"), true);
+         ((ee)$$0x.getSource()).l().a(false);
+         return 1;
+      }));
    }
 }

@@ -1,208 +1,93 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.function.Function;
+import java.util.Map;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public interface je<T> extends Iterable<ja<T>> {
-   Stream<ja<T>> a();
+public class je<T> {
+   private final List<T> a;
+   private final List<jl.b> b;
+   private final jl.b c;
 
-   int b();
-
-   Either<awt<T>, List<ja<T>>> c();
-
-   Optional<ja<T>> a(ayt var1);
-
-   ja<T> a(int var1);
-
-   boolean a(ja<T> var1);
-
-   boolean a(jd<T> var1);
-
-   Optional<awt<T>> d();
-
-   @Deprecated
-   @VisibleForTesting
-   static <T> je.c<T> a(jd<T> $$0, awt<T> $$1) {
-      return new je.c<T>($$0, $$1) {
-         @Override
-         protected List<ja<T>> f() {
-            throw new UnsupportedOperationException("Tag " + this.g() + " can't be dereferenced during construction");
-         }
-      };
+   public je(List<T> $$0) {
+      this($$0, ac.a(() -> {
+         jl.b[] $$1 = new jl.b[$$0.size()];
+         Arrays.fill($$1, jl.b);
+         return Arrays.asList($$1);
+      }));
    }
 
-   static <T> je<T> e() {
-      return (je<T>)je.a.a;
+   private je(List<T> $$0, List<jl.b> $$1) {
+      this.a = List.copyOf($$0);
+      this.b = List.copyOf($$1);
+      this.c = new jl.c(a($$1.stream())).d();
    }
 
-   @SafeVarargs
-   static <T> je.a<T> a(ja<T>... $$0) {
-      return new je.a<>(List.of($$0));
-   }
-
-   static <T> je.a<T> a(List<? extends ja<T>> $$0) {
-      return new je.a<>(List.copyOf($$0));
-   }
-
-   @SafeVarargs
-   static <E, T> je.a<T> a(Function<E, ja<T>> $$0, E... $$1) {
-      return a(Stream.of($$1).map($$0).toList());
-   }
-
-   static <E, T> je.a<T> a(Function<E, ja<T>> $$0, Collection<E> $$1) {
-      return a($$1.stream().map($$0).toList());
-   }
-
-   public static final class a<T> extends je.b<T> {
-      static final je.a<?> a = new je.a(List.of());
-      private final List<ja<T>> b;
-      @Nullable
-      private Set<ja<T>> c;
-
-      a(List<ja<T>> $$0) {
-         this.b = $$0;
+   private int d(T $$0) {
+      int $$1 = this.a.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
+      } else {
+         return $$1;
       }
+   }
 
-      @Override
-      protected List<ja<T>> f() {
-         return this.b;
-      }
+   public jl.b a(T $$0) {
+      int $$1 = this.d($$0);
+      return this.b.get($$1);
+   }
 
-      @Override
-      public Either<awt<T>, List<ja<T>>> c() {
-         return Either.right(this.b);
-      }
+   public jl.b b(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a(0, $$1);
+   }
 
-      @Override
-      public Optional<awt<T>> d() {
-         return Optional.empty();
-      }
+   public jl.b c(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a($$1, this.b.size());
+   }
 
-      @Override
-      public boolean a(ja<T> $$0) {
-         if (this.c == null) {
-            this.c = Set.copyOf(this.b);
+   private jl.b a(int $$0, int $$1) {
+      return new jl.c(a(this.b.subList($$0, $$1).stream())).d();
+   }
+
+   public je<T> a(T $$0, jl.b... $$1) {
+      return this.a($$0, Arrays.asList($$1));
+   }
+
+   public je<T> a(T $$0, List<jl.b> $$1) {
+      int $$2 = this.d($$0);
+      if ($$1.size() > this.b.size() - $$2) {
+         throw new IllegalStateException("Too many values to replace");
+      } else {
+         List<jl.b> $$3 = new ArrayList<>();
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(this.b.get($$4));
          }
 
-         return this.c.contains($$0);
-      }
+         $$3.addAll($$1);
 
-      @Override
-      public String toString() {
-         return "DirectSet[" + this.b + "]";
-      }
+         while ($$3.size() < this.b.size()) {
+            $$3.add(jl.b);
+         }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof je.a<?> $$1 && this.b.equals($$1.b)) {
-               return true;
+         return new je<>(this.a, $$3);
+      }
+   }
+
+   public jl.b a() {
+      return this.c;
+   }
+
+   private static Map<akm<? extends jk<?>>, jk<?>> a(Stream<? extends jl> $$0) {
+      Map<akm<? extends jk<?>>, jk<?>> $$1 = new HashMap<>();
+      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
+            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
+               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
             }
-
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return this.b.hashCode();
-      }
-   }
-
-   public abstract static class b<T> implements je<T> {
-      protected abstract List<ja<T>> f();
-
-      @Override
-      public int b() {
-         return this.f().size();
-      }
-
-      @Override
-      public Spliterator<ja<T>> spliterator() {
-         return this.f().spliterator();
-      }
-
-      @Override
-      public Iterator<ja<T>> iterator() {
-         return this.f().iterator();
-      }
-
-      @Override
-      public Stream<ja<T>> a() {
-         return this.f().stream();
-      }
-
-      @Override
-      public Optional<ja<T>> a(ayt $$0) {
-         return ad.b(this.f(), $$0);
-      }
-
-      @Override
-      public ja<T> a(int $$0) {
-         return this.f().get($$0);
-      }
-
-      @Override
-      public boolean a(jd<T> $$0) {
-         return true;
-      }
-   }
-
-   public static class c<T> extends je.b<T> {
-      private final jd<T> a;
-      private final awt<T> b;
-      private List<ja<T>> c = List.of();
-
-      c(jd<T> $$0, awt<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void b(List<ja<T>> $$0) {
-         this.c = List.copyOf($$0);
-      }
-
-      public awt<T> g() {
-         return this.b;
-      }
-
-      @Override
-      protected List<ja<T>> f() {
-         return this.c;
-      }
-
-      @Override
-      public Either<awt<T>, List<ja<T>>> c() {
-         return Either.left(this.b);
-      }
-
-      @Override
-      public Optional<awt<T>> d() {
-         return Optional.of(this.b);
-      }
-
-      @Override
-      public boolean a(ja<T> $$0) {
-         return $$0.a(this.b);
-      }
-
-      @Override
-      public String toString() {
-         return "NamedSet(" + this.b + ")[" + this.c + "]";
-      }
-
-      @Override
-      public boolean a(jd<T> $$0) {
-         return this.a.a($$0);
-      }
+         }));
+      return $$1;
    }
 }

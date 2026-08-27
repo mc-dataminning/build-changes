@@ -1,36 +1,21 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class euj extends euk {
+   private final brw b;
 
-public class euj extends eul {
-   public static final Codec<euj> a = a(euj::new);
+   public euj(brw $$0) {
+      this($$0, $$0.dn());
+   }
 
-   euj(List<euu> $$0) {
-      super($$0, ad.b($$0));
+   public euj(brw $$0, eum $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public brw a() {
+      return this.b;
    }
 
    @Override
-   public euv b() {
-      return euw.d;
-   }
-
-   public static euj.a a(euu.a... $$0) {
-      return new euj.a($$0);
-   }
-
-   public static class a extends eul.a {
-      public a(euu.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public euj.a or(euu.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected euu a(List<euu> $$0) {
-         return new euj($$0);
-      }
+   public euk.a c() {
+      return euk.a.c;
    }
 }

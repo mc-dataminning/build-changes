@@ -1,42 +1,26 @@
-import java.util.UUID;
+public record aah(akm<dvw> c, eum d) implements aaf {
+   public static final yv<vx, aah> a = aaf.a(aah::a, aah::new);
+   public static final aaf.b<aah> b = aaf.a("debug/game_event");
 
-public record aah(UUID b, aah.a c) implements zl<aac> {
-   public static final zc<we, aah> a = zl.a(aah::a, aah::new);
-
-   private aah(we $$0) {
-      this($$0.n(), $$0.b(aah.a.class));
+   private aah(vx $$0) {
+      this($$0.a(lf.C), $$0.k());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vx $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<aah> a() {
-      return aab.n;
+   public aaf.b<aah> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
-   }
-
-   public aah.a e() {
+   public akm<dvw> b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public eum c() {
+      return this.d;
    }
 }

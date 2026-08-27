@@ -1,96 +1,262 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 
-public class dti {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dtg>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public class dti extends dtt {
+   private final dtj n;
+   private final boolean o;
 
-   private dti() {
-      this.c.put(' ', $$0 -> true);
+   public dti(dtj $$0, boolean $$1) {
+      super($$0.f(), dtw.a, $$0.l, $$0.F().H_().d(lf.az), $$0.t());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public dti a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
+   @Nullable
+   @Override
+   public doi c_(io $$0) {
+      return this.n.c_($$0);
+   }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+   @Override
+   public drd a_(io $$0) {
+      return this.n.a_($$0);
+   }
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
+   @Override
+   public emw b_(io $$0) {
+      return this.n.b_($$0);
+   }
 
-            this.b.add($$0);
-            return this;
-         }
+   @Override
+   public int P() {
+      return this.n.P();
+   }
+
+   @Override
+   public dtk b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
+
+   @Nullable
+   @Override
+   public drd a(io $$0, drd $$1, boolean $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
+   }
+
+   @Override
+   public void a(doi $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(brw $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(dty $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public dtk[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(dwv.a $$0, long[] $$1) {
+   }
+
+   private dwv.a c(dwv.a $$0) {
+      if ($$0 == dwv.a.a) {
+         return dwv.a.b;
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         return $$0 == dwv.a.c ? dwv.a.d : $$0;
       }
    }
 
-   public static dti a() {
-      return new dti();
+   @Override
+   public dwv a(dwv.a $$0) {
+      return this.n.a($$0);
    }
 
-   public dti a(char $$0, Predicate<dtg> $$1) {
-      this.c.put($$0, $$1);
-      return this;
+   @Override
+   public int a(dwv.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
    }
 
-   public dth b() {
-      return new dth(this.c());
+   @Override
+   public ix<dby> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
    }
 
-   private Predicate<dtg>[][][] c() {
-      this.d();
-      Predicate<dtg>[][][] $$0 = (Predicate<dtg>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+   @Override
+   public dag f() {
+      return this.n.f();
+   }
 
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
+   @Nullable
+   @Override
+   public eht a(ehl $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(ehl $$0, eht $$1) {
+   }
+
+   @Override
+   public Map<ehl, eht> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<ehl, eht> $$0) {
+   }
+
+   @Override
+   public LongSet b(ehl $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(ehl $$0, long $$1) {
+   }
+
+   @Override
+   public Map<ehl, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<ehl, LongSet> $$0) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public dty j() {
+      return this.n.j();
+   }
+
+   @Override
+   public void d(io $$0) {
+   }
+
+   @Override
+   public void e(io $$0) {
+   }
+
+   @Override
+   public void a(ud $$0) {
+   }
+
+   @Nullable
+   @Override
+   public ud f(io $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public ud a(io $$0, iz.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<drd> $$0, BiConsumer<io, drd> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public ewg<dea> o() {
+      return this.o ? this.n.o() : evw.a();
+   }
+
+   @Override
+   public ewg<emv> p() {
+      return this.o ? this.n.p() : evw.a();
+   }
+
+   @Override
+   public dsz.a q() {
+      return this.n.q();
+   }
+
+   @Nullable
+   @Override
+   public dxy t() {
+      return this.n.t();
+   }
+
+   @Override
+   public void a(dxy $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public dsy a(dwr.a $$0) {
+      if (this.o) {
+         return super.a($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
-
-      return $$0;
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
-
-      for (Entry<Character, Predicate<dtg>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
+   @Override
+   public dsy b(dwr.a $$0) {
+      if (this.o) {
+         return super.b($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+   public dtj C() {
+      return this.n;
+   }
+
+   @Override
+   public boolean v() {
+      return this.n.v();
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public void a(dcb $$0, dch.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
+   }
+
+   @Override
+   public void A() {
+      this.n.A();
+   }
+
+   @Override
+   public emg B() {
+      return this.n.B();
    }
 }

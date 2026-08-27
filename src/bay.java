@@ -2,27 +2,25 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bay extends DataFix {
    public bay(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.A);
-      Type<?> $$1 = this.getOutputSchema().getType(bgf.A);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bgf.A.typeName(), DSL.or(DSL.intType(), bhp.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bgf.A.typeName(), bhp.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bbb::a, $$0xxxx -> bbb.a(bhp.a($$0xxxx))))
-         );
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
+         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
+         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
       } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
+         return $$0;
       }
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bga.u), $$0 -> $$0.update(DSL.remainderFinder(), bay::a));
    }
 }

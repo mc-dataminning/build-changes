@@ -1,441 +1,521 @@
-import com.google.common.collect.Maps;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ContiguousSet;
+import com.google.common.collect.DiscreteDomain;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Range;
 import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.UUID;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class duy implements dbg, ddb.a, dvk, dvu {
-   public static final int a = -1;
-   private static final Logger n = LogUtils.getLogger();
-   private static final LongSet o = new LongOpenHashSet();
-   protected final ShortList[] b;
-   protected volatile boolean c;
-   private volatile boolean p;
-   protected final dbh d;
-   private long q;
+public class duy {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 1200;
+   private static final int f = 100;
+   public static final int a = 20;
+   private static final int g = 8;
+   public static final int b = 9;
+   private static final int h = 20;
+   private static final int i = 96;
+   public static final int c = 128;
+   private final Predicate<brw> j;
+   private final aqk k = (aqk)new aqk(wx.c("entity.minecraft.ender_dragon"), bpm.a.a, bpm.b.a).b(true).c(true);
+   private final aqn l;
+   private final io m;
+   private final ObjectArrayList<Integer> n = new ObjectArrayList();
+   private final dri o;
+   private int p;
+   private int q;
+   private int r;
+   private int s = 21;
+   private boolean t;
+   private boolean u;
+   private boolean v = false;
    @Nullable
+   private UUID w;
+   private boolean x = true;
+   @Nullable
+   private io y;
+   @Nullable
+   private dux z;
+   private int A;
+   @Nullable
+   private List<chb> B;
+
+   public duy(aqn $$0, long $$1, duy.a $$2) {
+      this($$0, $$1, $$2, io.c);
+   }
+
+   public duy(aqn $$0, long $$1, duy.a $$2, io $$3) {
+      this.l = $$0;
+      this.m = $$3;
+      this.j = bsb.a.and(bsb.a((double)$$3.u(), (double)(128 + $$3.v()), (double)$$3.w(), 192.0));
+      this.x = $$2.c;
+      this.w = $$2.g.orElse(null);
+      this.t = $$2.d;
+      this.u = $$2.e;
+      if ($$2.f) {
+         this.z = dux.a;
+      }
+
+      this.y = $$2.h.orElse(null);
+      this.n.addAll($$2.i.orElseGet(() -> {
+         ObjectArrayList<Integer> $$1x = new ObjectArrayList(ContiguousSet.create(Range.closedOpen(0, 20), DiscreteDomain.integers()));
+         ac.c($$1x, aym.a($$1));
+         return $$1x;
+      }));
+      this.o = drj.a()
+         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
+         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
+         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
+         .a("  ###  ", " #   # ", "#     #", "#  #  #", "#     #", " #   # ", "  ###  ")
+         .a("       ", "  ###  ", " ##### ", " ##### ", " ##### ", "  ###  ", "       ")
+         .a('#', drh.a(drl.a(dec.F)))
+         .b();
+   }
+
    @Deprecated
-   private dda r;
-   @Nullable
-   protected dyy e;
-   protected final dvv f;
-   @Nullable
-   protected dzx g;
-   protected final Map<dyu.a, dyu> h = Maps.newEnumMap(dyu.a.class);
-   protected eoo i;
-   private final Map<ejt, ekb> s = Maps.newHashMap();
-   private final Map<ejt, LongSet> t = Maps.newHashMap();
-   protected final Map<ir, uk> j = Maps.newHashMap();
-   protected final Map<ir, dqc> k = new Object2ObjectOpenHashMap();
-   protected final dcc l;
-   protected final dvj[] m;
-   private final boolean u;
+   @VisibleForTesting
+   public void a() {
+      this.v = true;
+   }
 
-   public duy(dbh $$0, dvv $$1, dcc $$2, jn<dcz> $$3, long $$4, @Nullable dvj[] $$5, @Nullable dzx $$6) {
-      this.d = $$0;
-      this.f = $$1;
-      this.l = $$2;
-      if ($$2 instanceof dca $$7) {
-         this.u = $$7.z_();
+   public duy.a b() {
+      return new duy.a(this.x, this.t, this.u, false, Optional.ofNullable(this.w), Optional.ofNullable(this.y), Optional.of(this.n));
+   }
+
+   public void c() {
+      this.k.d(!this.t);
+      if (++this.s >= 20) {
+         this.o();
+         this.s = 0;
+      }
+
+      if (!this.k.g().isEmpty()) {
+         this.l.l().a(aqs.b, new dag(0, 0), 9, azh.a);
+         boolean $$0 = this.n();
+         if (this.x && $$0) {
+            this.j();
+            this.x = false;
+         }
+
+         if (this.z != null) {
+            if (this.B == null && $$0) {
+               this.z = null;
+               this.g();
+            }
+
+            this.z.a(this.l, this, this.B, this.A++, this.y);
+         }
+
+         if (!this.t) {
+            if ((this.w == null || ++this.p >= 1200) && $$0) {
+               this.k();
+               this.p = 0;
+            }
+
+            if (++this.r >= 100 && $$0) {
+               this.p();
+               this.r = 0;
+            }
+         }
       } else {
+         this.l.l().b(aqs.b, new dag(0, 0), 9, azh.a);
+      }
+   }
+
+   private void j() {
+      d.info("Scanning for legacy world dragon fight...");
+      boolean $$0 = this.l();
+      if ($$0) {
+         d.info("Found that the dragon has been killed in this world already.");
+         this.u = true;
+      } else {
+         d.info("Found that the dragon has not yet been killed in this world.");
          this.u = false;
-      }
-
-      this.m = new dvj[$$2.an()];
-      this.q = $$4;
-      this.b = new ShortList[$$2.an()];
-      this.g = $$6;
-      this.i = new eoo($$2);
-      if ($$5 != null) {
-         if (this.m.length == $$5.length) {
-            System.arraycopy($$5, 0, this.m, 0, this.m.length);
-         } else {
-            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
+         if (this.m() == null) {
+            this.a(false);
          }
       }
 
-      a($$3, this.m);
-   }
-
-   @Override
-   public boolean z_() {
-      return this.u;
-   }
-
-   private static void a(jn<dcz> $$0, dvj[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$1[$$2] == null) {
-            $$1[$$2] = new dvj($$0);
-         }
-      }
-   }
-
-   public dxy a(int $$0) {
-      return dxy.a;
-   }
-
-   @Nullable
-   public abstract dtc a(ir var1, dtc var2, boolean var3);
-
-   public abstract void a(dqc var1);
-
-   public abstract void a(brv var1);
-
-   public int a() {
-      dvj[] $$0 = this.e();
-
-      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
-         dvj $$2 = $$0[$$1];
-         if (!$$2.c()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   public int c() {
-      int $$0 = this.a();
-      return $$0 == -1 ? this.J_() : jt.c(this.g($$0));
-   }
-
-   public Set<ir> d() {
-      Set<ir> $$0 = Sets.newHashSet(this.j.keySet());
-      $$0.addAll(this.k.keySet());
-      return $$0;
-   }
-
-   public dvj[] e() {
-      return this.m;
-   }
-
-   public dvj b(int $$0) {
-      return this.e()[$$0];
-   }
-
-   public Collection<Entry<dyu.a, dyu>> f() {
-      return Collections.unmodifiableSet(this.h.entrySet());
-   }
-
-   public void a(dyu.a $$0, long[] $$1) {
-      this.a($$0).a(this, $$0, $$1);
-   }
-
-   public dyu a(dyu.a $$0) {
-      return this.h.computeIfAbsent($$0, $$0x -> new dyu(this, $$0x));
-   }
-
-   public boolean b(dyu.a $$0) {
-      return this.h.get($$0) != null;
-   }
-
-   public int a(dyu.a $$0, int $$1, int $$2) {
-      dyu $$3 = this.h.get($$0);
-      if ($$3 == null) {
-         if (ab.aX && this instanceof dvi) {
-            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
-         }
-
-         dyu.a(this, EnumSet.of($$0));
-         $$3 = this.h.get($$0);
-      }
-
-      return $$3.a($$1 & 15, $$2 & 15) - 1;
-   }
-
-   public dbh g() {
-      return this.d;
-   }
-
-   @Nullable
-   @Override
-   public ekb a(ejt $$0) {
-      return this.s.get($$0);
-   }
-
-   @Override
-   public void a(ejt $$0, ekb $$1) {
-      this.s.put($$0, $$1);
-      this.c = true;
-   }
-
-   public Map<ejt, ekb> h() {
-      return Collections.unmodifiableMap(this.s);
-   }
-
-   public void a(Map<ejt, ekb> $$0) {
-      this.s.clear();
-      this.s.putAll($$0);
-      this.c = true;
-   }
-
-   @Override
-   public LongSet b(ejt $$0) {
-      return this.t.getOrDefault($$0, o);
-   }
-
-   @Override
-   public void a(ejt $$0, long $$1) {
-      this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
-      this.c = true;
-   }
-
-   @Override
-   public Map<ejt, LongSet> i() {
-      return Collections.unmodifiableMap(this.t);
-   }
-
-   @Override
-   public void b(Map<ejt, LongSet> $$0) {
-      this.t.clear();
-      this.t.putAll($$0);
-      this.c = true;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      if ($$0 < this.J_()) {
-         $$0 = this.J_();
-      }
-
-      if ($$1 >= this.am()) {
-         $$1 = this.am() - 1;
-      }
-
-      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
-         if (!this.b(this.e($$2)).c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean j() {
-      return this.c;
-   }
-
-   public abstract dvx k();
-
-   public dvx l() {
-      dvx $$0 = this.k();
-      dyi $$1 = this.y();
-      if ($$1 != null) {
-         dvx $$2 = $$1.a();
-         return $$2.b($$0) ? $$2 : $$0;
+      List<? extends chc> $$1 = this.l.i();
+      if ($$1.isEmpty()) {
+         this.t = true;
       } else {
-         return $$0;
+         chc $$2 = $$1.get(0);
+         this.w = $$2.cz();
+         d.info("Found that there's a dragon still alive ({})", $$2);
+         this.t = false;
+         if (!$$0) {
+            d.info("But we didn't have a portal, let's remove it.");
+            $$2.ao();
+            this.w = null;
+         }
+      }
+
+      if (!this.u && this.t) {
+         this.t = false;
       }
    }
 
-   public abstract void d(ir var1);
-
-   public void e(ir $$0) {
-      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
+   private void k() {
+      List<? extends chc> $$0 = this.l.i();
+      if ($$0.isEmpty()) {
+         d.debug("Haven't seen the dragon, respawning it");
+         this.r();
+      } else {
+         d.debug("Haven't seen our dragon, but found another one to use.");
+         this.w = $$0.get(0).cz();
+      }
    }
 
-   public ShortList[] o() {
-      return this.b;
+   protected void a(dux $$0) {
+      if (this.z == null) {
+         throw new IllegalStateException("Dragon respawn isn't in progress, can't skip ahead in the animation.");
+      } else {
+         this.A = 0;
+         if ($$0 == dux.e) {
+            this.z = null;
+            this.t = false;
+            chc $$1 = this.r();
+            if ($$1 != null) {
+               for (aqo $$2 : this.k.g()) {
+                  am.o.a($$2, $$1);
+               }
+            }
+         } else {
+            this.z = $$0;
+         }
+      }
    }
 
-   public void a(short $$0, int $$1) {
-      a(this.o(), $$1).add($$0);
-   }
+   private boolean l() {
+      for (int $$0 = -8; $$0 <= 8; $$0++) {
+         for (int $$1 = -8; $$1 <= 8; $$1++) {
+            dtj $$2 = this.l.d($$0, $$1);
 
-   public void a(uk $$0) {
-      this.j.put(dqc.b($$0), $$0);
+            for (doi $$3 : $$2.G().values()) {
+               if ($$3 instanceof dpz) {
+                  return true;
+               }
+            }
+         }
+      }
+
+      return false;
    }
 
    @Nullable
-   public uk f(ir $$0) {
-      return this.j.get($$0);
-   }
+   private dri.b m() {
+      dag $$0 = new dag(this.m);
 
-   @Nullable
-   public abstract uk a(ir var1, jc.a var2);
+      for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
+         for (int $$2 = -8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
+            dtj $$3 = this.l.d($$1, $$2);
 
-   @Override
-   public final void a(BiConsumer<ir, dtc> $$0) {
-      this.a($$0x -> $$0x.h() != 0, $$0);
-   }
-
-   public void a(Predicate<dtc> $$0, BiConsumer<ir, dtc> $$1) {
-      ir.a $$2 = new ir.a();
-
-      for (int $$3 = this.ao(); $$3 < this.ap(); $$3++) {
-         dvj $$4 = this.b(this.f($$3));
-         if ($$4.a($$0)) {
-            ir $$5 = jt.a(this.d, $$3).j();
-
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               for (int $$7 = 0; $$7 < 16; $$7++) {
-                  for (int $$8 = 0; $$8 < 16; $$8++) {
-                     dtc $$9 = $$4.a($$8, $$6, $$7);
-                     if ($$0.test($$9)) {
-                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
+            for (doi $$4 : $$3.G().values()) {
+               if ($$4 instanceof dpz) {
+                  dri.b $$5 = this.o.a(this.l, $$4.aA_());
+                  if ($$5 != null) {
+                     io $$6 = $$5.a(3, 3, 3).d();
+                     if (this.y == null) {
+                        this.y = $$6;
                      }
+
+                     return $$5;
                   }
                }
             }
          }
       }
-   }
 
-   public abstract eyo<dfc> p();
+      io $$7 = dzy.a(this.m);
+      int $$8 = this.l.a(dwv.a.e, $$7).v();
 
-   public abstract eyo<epd> q();
+      for (int $$9 = $$8; $$9 >= this.l.I_(); $$9--) {
+         dri.b $$10 = this.o.a(this.l, new io($$7.u(), $$9, $$7.w()));
+         if ($$10 != null) {
+            if (this.y == null) {
+               this.y = $$10.a(3, 3, 3).d();
+            }
 
-   public abstract duy.a r();
-
-   public dvv s() {
-      return this.f;
-   }
-
-   public boolean t() {
-      return this.g != null;
-   }
-
-   @Nullable
-   public dzx u() {
-      return this.g;
-   }
-
-   public void a(dzx $$0) {
-      this.g = $$0;
-   }
-
-   public long v() {
-      return this.q;
-   }
-
-   public void a(long $$0) {
-      this.q += $$0;
-   }
-
-   public void b(long $$0) {
-      this.q = $$0;
-   }
-
-   public static ShortList a(ShortList[] $$0, int $$1) {
-      if ($$0[$$1] == null) {
-         $$0[$$1] = new ShortArrayList();
+            return $$10;
+         }
       }
 
-      return $$0[$$1];
-   }
-
-   public boolean w() {
-      return this.p;
-   }
-
-   public void b(boolean $$0) {
-      this.p = $$0;
-      this.a(true);
-   }
-
-   @Override
-   public int J_() {
-      return this.l.J_();
-   }
-
-   @Override
-   public int K_() {
-      return this.l.K_();
-   }
-
-   public dyy a(Function<duy, dyy> $$0) {
-      if (this.e == null) {
-         this.e = $$0.apply(this);
-      }
-
-      return this.e;
-   }
-
-   @Deprecated
-   public dda a(Supplier<dda> $$0) {
-      if (this.r == null) {
-         this.r = $$0.get();
-      }
-
-      return this.r;
-   }
-
-   @Override
-   public ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2) {
-      try {
-         int $$3 = jl.a(this.J_());
-         int $$4 = $$3 + jl.a(this.K_()) - 1;
-         int $$5 = aym.a($$1, $$3, $$4);
-         int $$6 = this.e(jl.c($$5));
-         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
-      } catch (Throwable var8) {
-         o $$8 = o.a(var8, "Getting biome");
-         p $$9 = $$8.a("Biome being got");
-         $$9.a("Location", () -> p.a(this, $$0, $$1, $$2));
-         throw new z($$8);
-      }
-   }
-
-   public void a(ddc $$0, ddi.f $$1) {
-      dbh $$2 = this.g();
-      int $$3 = jl.a($$2.d());
-      int $$4 = jl.a($$2.e());
-      dcc $$5 = this.A();
-
-      for (int $$6 = $$5.ao(); $$6 < $$5.ap(); $$6++) {
-         dvj $$7 = this.b(this.f($$6));
-         int $$8 = jl.d($$6);
-         $$7.a($$0, $$1, $$3, $$8, $$4);
-      }
-   }
-
-   public boolean x() {
-      return !this.i().isEmpty();
-   }
-
-   @Nullable
-   public dyi y() {
       return null;
    }
 
-   public boolean z() {
-      return this.y() != null;
+   private boolean n() {
+      if (this.v) {
+         return true;
+      } else {
+         dag $$0 = new dag(this.m);
+
+         for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
+            for (int $$2 = 8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
+               dsz $$3 = this.l.a($$1, $$2, dty.n, false);
+               if (!($$3 instanceof dtj)) {
+                  return false;
+               }
+
+               aqg $$4 = ((dtj)$$3).D();
+               if (!$$4.a(aqg.c)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
    }
 
-   public dcc A() {
-      return this;
+   private void o() {
+      Set<aqo> $$0 = Sets.newHashSet();
+
+      for (aqo $$1 : this.l.a(this.j)) {
+         this.k.a($$1);
+         $$0.add($$1);
+      }
+
+      Set<aqo> $$2 = Sets.newHashSet(this.k.g());
+      $$2.removeAll($$0);
+
+      for (aqo $$3 : $$2) {
+         this.k.b($$3);
+      }
    }
 
-   public void B() {
-      this.i.a(this);
+   private void p() {
+      this.r = 0;
+      this.q = 0;
+
+      for (ebj.a $$0 : ebj.a(this.l)) {
+         this.q = this.q + this.l.a(chb.class, $$0.f()).size();
+      }
+
+      d.debug("Found {} end crystals still alive", this.q);
    }
 
-   @Override
-   public eoo C() {
-      return this.i;
+   public void a(chc $$0) {
+      if ($$0.cz().equals(this.w)) {
+         this.k.a(0.0F);
+         this.k.d(false);
+         this.a(true);
+         this.q();
+         if (!this.u) {
+            this.l.b(this.l.a(dwv.a.e, dzy.a(this.m)), dec.fA.n());
+         }
+
+         this.u = true;
+         this.t = true;
+      }
    }
 
-   public static record a(eym<dfc> a, eym<epd> b) {
+   @Deprecated
+   @VisibleForTesting
+   public void d() {
+      this.n.clear();
+   }
+
+   private void q() {
+      if (!this.n.isEmpty()) {
+         int $$0 = (Integer)this.n.remove(this.n.size() - 1);
+         int $$1 = ayf.a(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
+         int $$2 = ayf.a(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
+         this.a(new io($$1, 75, $$2));
+      }
+   }
+
+   private void a(io $$0) {
+      this.l.c(3000, $$0, 0);
+      this.l.H_().c(lf.aC).flatMap($$0x -> $$0x.b(rs.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.l().g(), aym.a(), $$0));
+   }
+
+   private void a(boolean $$0) {
+      dzy $$1 = new dzy($$0);
+      if (this.y == null) {
+         this.y = this.l.a(dwv.a.f, dzy.a(this.m)).d();
+
+         while (this.l.a_(this.y).a(dec.F) && this.y.v() > this.l.z_()) {
+            this.y = this.y.d();
+         }
+      }
+
+      if ($$1.a(ecd.m, this.l, this.l.l().g(), aym.a(), this.y)) {
+         int $$2 = ayf.e(4, 16);
+         this.l.l().a.a(new dag(this.y), $$2);
+      }
+   }
+
+   @Nullable
+   private chc r() {
+      this.l.m(new io(this.m.u(), 128 + this.m.v(), this.m.w()));
+      chc $$0 = bsc.F.a((daz)this.l);
+      if ($$0 != null) {
+         $$0.a(this);
+         $$0.d(this.m);
+         $$0.gm().a(chs.a);
+         $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.z.i() * 360.0F, 0.0F);
+         this.l.b($$0);
+         this.w = $$0.cz();
+      }
+
+      return $$0;
+   }
+
+   public void b(chc $$0) {
+      if ($$0.cz().equals(this.w)) {
+         this.k.a($$0.eA() / $$0.eR());
+         this.p = 0;
+         if ($$0.ag()) {
+            this.k.a($$0.O_());
+         }
+      }
+   }
+
+   public int e() {
+      return this.q;
+   }
+
+   public void a(chb $$0, bqp $$1) {
+      if (this.z != null && this.B.contains($$0)) {
+         d.debug("Aborting respawn sequence");
+         this.z = null;
+         this.A = 0;
+         this.h();
+         this.a(true);
+      } else {
+         this.p();
+         brw $$2 = this.l.a(this.w);
+         if ($$2 instanceof chc) {
+            ((chc)$$2).a($$0, $$0.dp(), $$1);
+         }
+      }
+   }
+
+   public boolean f() {
+      return this.u;
+   }
+
+   public void g() {
+      if (this.t && this.z == null) {
+         io $$0 = this.y;
+         if ($$0 == null) {
+            d.debug("Tried to respawn, but need to find the portal first.");
+            dri.b $$1 = this.m();
+            if ($$1 == null) {
+               d.debug("Couldn't find a portal, so we made one.");
+               this.a(true);
+            } else {
+               d.debug("Found the exit portal & saved its location for next time.");
+            }
+
+            $$0 = this.y;
+         }
+
+         List<chb> $$2 = Lists.newArrayList();
+         io $$3 = $$0.b(1);
+
+         for (it $$4 : it.c.a) {
+            List<chb> $$5 = this.l.a(chb.class, new euh($$3.a($$4, 2)));
+            if ($$5.isEmpty()) {
+               return;
+            }
+
+            $$2.addAll($$5);
+         }
+
+         d.debug("Found all crystals, respawning dragon.");
+         this.a($$2);
+      }
+   }
+
+   private void a(List<chb> $$0) {
+      if (this.t && this.z == null) {
+         for (dri.b $$1 = this.m(); $$1 != null; $$1 = this.m()) {
+            for (int $$2 = 0; $$2 < this.o.c(); $$2++) {
+               for (int $$3 = 0; $$3 < this.o.b(); $$3++) {
+                  for (int $$4 = 0; $$4 < this.o.a(); $$4++) {
+                     drh $$5 = $$1.a($$2, $$3, $$4);
+                     if ($$5.a().a(dec.F) || $$5.a().a(dec.fx)) {
+                        this.l.b($$5.d(), dec.fz.n());
+                     }
+                  }
+               }
+            }
+         }
+
+         this.z = dux.a;
+         this.A = 0;
+         this.a(false);
+         this.B = $$0;
+      }
+   }
+
+   public void h() {
+      for (ebj.a $$0 : ebj.a(this.l)) {
+         for (chb $$2 : this.l.a(chb.class, $$0.f())) {
+            $$2.n(false);
+            $$2.a(null);
+         }
+      }
+   }
+
+   @Nullable
+   public UUID i() {
+      return this.w;
+   }
+
+   public static record a(boolean c, boolean d, boolean e, boolean f, Optional<UUID> g, Optional<io> h, Optional<List<Integer>> i) {
+      public static final Codec<duy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("NeedsStateScanning").orElse(true).forGetter(duy.a::a),
+                  Codec.BOOL.fieldOf("DragonKilled").orElse(false).forGetter(duy.a::b),
+                  Codec.BOOL.fieldOf("PreviouslyKilled").orElse(false).forGetter(duy.a::c),
+                  Codec.BOOL.lenientOptionalFieldOf("IsRespawning", false).forGetter(duy.a::d),
+                  jr.a.lenientOptionalFieldOf("Dragon").forGetter(duy.a::e),
+                  io.a.lenientOptionalFieldOf("ExitPortalLocation").forGetter(duy.a::f),
+                  Codec.list(Codec.INT).lenientOptionalFieldOf("Gateways").forGetter(duy.a::g)
+               )
+               .apply($$0, duy.a::new)
+      );
+      public static final duy.a b = new duy.a(true, false, false, false, Optional.empty(), Optional.empty(), Optional.empty());
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public boolean b() {
+         return this.d;
+      }
+
+      public boolean c() {
+         return this.e;
+      }
+
+      public boolean d() {
+         return this.f;
+      }
+
+      public Optional<UUID> e() {
+         return this.g;
+      }
+
+      public Optional<io> f() {
+         return this.h;
+      }
+
+      public Optional<List<Integer>> g() {
+         return this.i;
+      }
    }
 }

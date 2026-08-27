@@ -1,132 +1,125 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
+import java.util.Locale;
 
-public interface fbg {
-   fbg a(double var1, double var3, double var5);
+public class fbg extends gty {
+   private static final wx a = wx.c("mco.backup.info.title");
+   private static final wx b = wx.c("mco.backup.unknown");
+   private final flz c;
+   final ezq B;
+   final fjn C = new fjn(this);
+   private fbg.a D;
 
-   fbg a(int var1, int var2, int var3, int var4);
-
-   fbg a(float var1, float var2);
-
-   fbg a(int var1, int var2);
-
-   fbg b(int var1, int var2);
-
-   fbg a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
+   public fbg(flz $$0, ezq $$1) {
+      super(a);
+      this.c = $$0;
+      this.B = $$1;
    }
 
-   void b(int var1, int var2, int var3, int var4);
-
-   void l();
-
-   default fbg a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   @Override
+   public void aN_() {
+      this.C.a(a, this.p);
+      this.D = this.C.c(new fbg.a(this.m));
+      this.C.b(fga.a(ww.k, $$0 -> this.d()).a());
+      this.c();
+      this.C.a($$1 -> {
+         ffy var10000 = this.c($$1);
+      });
    }
 
-   default fbg a(int $$0) {
-      return this.a(axw.b.b($$0), axw.b.c($$0), axw.b.d($$0), axw.b.a($$0));
+   @Override
+   protected void c() {
+      this.D.b(this.n, this.C.d());
+      this.C.a();
    }
 
-   default fbg b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   @Override
+   public void d() {
+      this.m.a(this.c);
    }
 
-   default fbg c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   wx a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (wx)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wx.b($$1));
+      }
    }
 
-   default void a(fbc.a $$0, ggd $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(fbc.a $$0, ggd $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
-      int[] $$12 = $$1.b();
-      jv $$13 = $$1.e().q();
-      Matrix4f $$14 = $$0.a();
-      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
-      int $$16 = 8;
-      int $$17 = $$12.length / 8;
-      MemoryStack $$18 = MemoryStack.stackPush();
-
+   private wx a(String $$0) {
       try {
-         ByteBuffer $$19 = $$18.malloc(fba.j.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$17; $$21++) {
-            $$20.clear();
-            $$20.put($$12, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
-               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
-               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
-               $$28 = $$25 * $$10[$$21] * $$3;
-               $$29 = $$26 * $$10[$$21] * $$4;
-               $$30 = $$27 * $$10[$$21] * $$5;
-            } else {
-               $$28 = $$10[$$21] * $$3;
-               $$29 = $$10[$$21] * $$4;
-               $$30 = $$10[$$21] * $$5;
-            }
-
-            int $$34 = $$11[$$21];
-            float $$35 = $$19.getFloat(16);
-            float $$36 = $$19.getFloat(20);
-            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
-            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
-         }
-      } catch (Throwable var34) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var33) {
-               var34.addSuppressed(var33);
-            }
-         }
-
-         throw var34;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
+         return fcd.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   default fbg a(fbc.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   private wx b(String $$0) {
+      try {
+         return fcd.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
    }
 
-   default fbg a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   class a extends fgw<fbg.b> {
+      public a(feb $$0) {
+         super($$0, fbg.this.n, fbg.this.C.d(), fbg.this.C.c(), 36);
+         if (fbg.this.B.e != null) {
+            fbg.this.B.e.forEach(($$0x, $$1) -> this.b(fbg.this.new b($$0x, $$1)));
+         }
+      }
    }
 
-   default fbg b(fbc.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   class b extends fgw.a<fbg.b> {
+      private static final wx b = wx.c("mco.backup.entry.templateName");
+      private static final wx c = wx.c("mco.backup.entry.gameDifficulty");
+      private static final wx d = wx.c("mco.backup.entry.name");
+      private static final wx e = wx.c("mco.backup.entry.gameServerVersion");
+      private static final wx f = wx.c("mco.backup.entry.uploaded");
+      private static final wx g = wx.c("mco.backup.entry.enabledPack");
+      private static final wx h = wx.c("mco.backup.entry.description");
+      private static final wx i = wx.c("mco.backup.entry.gameMode");
+      private static final wx j = wx.c("mco.backup.entry.seed");
+      private static final wx k = wx.c("mco.backup.entry.worldType");
+      private static final wx l = wx.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fbg.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fbg.this.p, fbg.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wx a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public wx a() {
+         return wx.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

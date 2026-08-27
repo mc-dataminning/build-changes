@@ -1,45 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class anf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("commands.jfr.dump.failed", $$0));
+   public static void a(CommandDispatcher<ee> $$0) {
+      LiteralCommandNode<ee> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ef.a("msg").then(ef.a("targets", er.d()).then(ef.a("message", ev.a()).executes($$0x -> {
+            Collection<aqo> $$1x = er.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               ev.a($$0x, "message", $$2 -> a((ee)$$0x.getSource(), $$1x, $$2));
+            }
 
-   private anf() {
-   }
-
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(ei.a("start").executes($$0x -> a((eh)$$0x.getSource()))))
-            .then(ei.a("stop").executes($$0x -> b((eh)$$0x.getSource())))
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)ef.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ef.a("w").redirect($$1));
    }
 
-   private static int a(eh $$0) throws CommandSyntaxException {
-      bms $$1 = bms.a($$0.l());
-      if (!bmu.f.a($$1)) {
-         throw a.create();
-      } else {
-         $$0.a(() -> xe.c("commands.jfr.started"), false);
-         return 1;
+   private static void a(ee $$0, Collection<aqo> $$1, xn $$2) {
+      wt.a $$3 = wt.a(wt.e, $$0);
+      xm $$4 = xm.a($$2);
+      boolean $$5 = false;
+
+      for (aqo $$6 : $$1) {
+         wt.a $$7 = wt.a(wt.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
-   }
 
-   private static int b(eh $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bmu.f.b().normalize());
-         Path $$2 = $$0.l().r() && !ab.aX ? $$1 : $$1.toAbsolutePath();
-         xe $$3 = xe.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xc(xc.a.f, $$2.toString())).a(new xk(xk.a.a, xe.c("chat.copy.click"))));
-         $$0.a(() -> xe.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
+      if ($$5) {
+         $$0.a(auk.e);
       }
    }
 }

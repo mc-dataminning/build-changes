@@ -1,111 +1,124 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
 
-public class dik extends dfc {
-   public static final MapCodec<dik> a = b(dik::new);
-   private static final int c = 2;
-   private static final int d = 5;
-   private static final int e = 3600;
-   private static final int f = 12000;
-   protected static final exn b = dfc.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
-   private static int g = 3600;
-   private static int h = 12000;
-
-   @Override
-   public MapCodec<dik> a() {
-      return a;
-   }
-
-   public dik(dtb.d $$0) {
-      super($$0);
-   }
+public class dik extends dea implements dlb {
+   public static final MapCodec<dik> b = b(dik::new);
+   public static final int c = 7;
+   public static final dsd d = drt.aC;
+   public static final dru e = drt.v;
+   public static final dru f = drt.C;
+   private static final int a = 1;
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+   public MapCodec<? extends dik> a() {
       return b;
    }
 
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return a($$1, $$2.d());
+   public dik(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      $$1.a($$2, this, a($$1.F_()));
-   }
-
-   private static int a(ayt $$0) {
-      return $$0.b(g, h);
+   protected evf b_(drd $$0, daf $$1, io $$2) {
+      return evc.a();
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return !this.a($$0, $$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d_(drd $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
    }
 
    @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if (!this.a($$0, $$1, $$2)) {
-         this.a((dca)$$1, $$2);
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if (this.m($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean m(drd $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
+   }
+
+   @Override
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int g(drd $$0, daf $$1, io $$2) {
+      return 1;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(d) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static drd a(drd $$0, dba $$1, io $$2) {
+      int $$3 = 7;
+      io.a $$4 = new io.a();
+
+      for (it $$5 : it.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(d, Integer.valueOf($$3));
+   }
+
+   private static int o(drd $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(drd $$0) {
+      if ($$0.a(avx.t)) {
+         return OptionalInt.of(0);
       } else {
-         this.a($$1, $$2, $$3);
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
       }
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
-      if ($$3.ak().equals(bsb.Q)) {
-         this.a($$1, $$2);
-      }
+   protected emw b_(drd $$0) {
+      return $$0.c(f) ? emx.c.a(false) : super.b_($$0);
    }
 
-   private static boolean a(dbg $$0, ir $$1) {
-      epe $$2 = $$0.b_($$1);
-      epe $$3 = $$0.b_($$1.c());
-      return $$2.a() == epf.c && $$3.a() == epf.a;
-   }
-
-   private void a(aqt $$0, ir $$1, ayt $$2) {
-      this.a((dca)$$0, $$1);
-      $$0.a(null, $$1, avo.jV, avq.e, 1.0F, 1.0F);
-      this.b($$0, $$1, $$2);
-   }
-
-   private void a(dca $$0, ir $$1) {
-      $$0.b($$1, false);
-   }
-
-   private void b(aqt $$0, ir $$1, ayt $$2) {
-      int $$3 = $$2.b(2, 6);
-
-      for (int $$4 = 1; $$4 <= $$3; $$4++) {
-         cgb $$5 = bsb.bd.a((dca)$$0);
-         if ($$5 != null) {
-            double $$6 = (double)$$1.u() + this.b($$2);
-            double $$7 = (double)$$1.w() + this.b($$2);
-            int $$8 = $$2.b(1, 361);
-            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
-            $$5.gc();
-            $$0.b($$5);
+   @Override
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      if ($$1.r($$2.c())) {
+         if ($$3.a(15) == 1) {
+            io $$4 = $$2.d();
+            drd $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, it.b)) {
+               ayi.a($$1, $$2, $$3, ky.l);
+            }
          }
       }
    }
 
-   private double b(ayt $$0) {
-      double $$1 = (double)(cgb.c / 2.0F);
-      return aym.a($$0.j(), $$1, 1.0 - $$1);
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(d, e, f);
    }
 
-   @VisibleForTesting
-   public static void a(int $$0, int $$1) {
-      g = $$0;
-      h = $$1;
-   }
-
-   @VisibleForTesting
-   public static void b() {
-      g = 3600;
-      h = 12000;
+   @Override
+   public drd a(cxb $$0) {
+      emw $$1 = $$0.q().b_($$0.a());
+      drd $$2 = this.n().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == emx.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

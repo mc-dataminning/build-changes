@@ -1,54 +1,35 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class eqq {
-   private final ir a;
-   private final int b;
-   private final int c;
+public class eqq extends eqs {
+   public static final MapCodec<eqq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(epg.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eqq::new));
+   private final epg b;
 
-   public eqq(ir $$0, int $$1, int $$2) {
-      this.a = $$0;
+   private eqq(List<esn> $$0, epg $$1) {
+      super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
-   @Nullable
-   public static eqq a(uk $$0) {
-      Optional<ir> $$1 = uz.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new eqq($$1.get(), $$2, $$3);
-      }
+   @Override
+   public equ b() {
+      return eqv.t;
    }
 
-   public uk a() {
-      uk $$0 = new uk();
-      $$0.a("pos", uz.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
+   @Override
+   public Set<erw<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      int $$2 = this.b.a($$1, $$0.I());
+      $$0.e($$2);
       return $$0;
    }
 
-   public ir b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(ir $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public static eqs.a<?> a(epg $$0) {
+      return a($$1 -> new eqq($$1, $$0));
    }
 }

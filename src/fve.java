@@ -1,33 +1,78 @@
-public class fve<T extends cgh> extends fwb<T> {
-   private final fys g = this.b.b("left_chest");
-   private final fys h = this.b.b("right_chest");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-   public fve(fys $$0) {
-      super($$0);
+public class fve<T extends cfh> extends fug<T> {
+   private static final String j = "egg_belly";
+   private final fvw k;
+
+   public fve(fvw $$0) {
+      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
+      this.k = $$0.b("egg_belly");
    }
 
-   public static fyy c() {
-      fza $$0 = fwb.a(fyw.a);
-      fzb $$1 = $$0.a();
-      fzb $$2 = $$1.a("body");
-      fyx $$3 = fyx.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fyu.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fyu.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fzb $$4 = $$1.a("head_parts").a("head");
-      fyx $$5 = fyx.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fyu.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fyu.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fyy.a($$0, 64, 64);
+   public static fwc c() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("head", fwb.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fvy.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         fwb.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         fvy.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", fwb.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fvy.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", fwb.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fvy.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", fwb.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fvy.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", fwb.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fvy.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", fwb.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fvy.a(5.0F, 21.0F, -4.0F));
+      return fwc.a($$0, 128, 64);
+   }
+
+   @Override
+   protected Iterable<fvw> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.k));
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.t()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
+      this.f.e = ayf.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.g.e = ayf.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.h.g = ayf.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.i.g = ayf.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.h.e = 0.0F;
+      this.i.e = 0.0F;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+      this.f.f = 0.0F;
+      this.g.f = 0.0F;
+      if (!$$0.be() && $$0.aE()) {
+         float $$6 = $$0.u() ? 4.0F : 1.0F;
+         float $$7 = $$0.u() ? 2.0F : 1.0F;
+         float $$8 = 5.0F;
+         this.h.f = ayf.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
+         this.h.g = 0.0F;
+         this.i.f = ayf.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
+         this.i.g = 0.0F;
+         this.f.f = ayf.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
+         this.f.e = 0.0F;
+         this.g.f = ayf.b($$1 * 5.0F) * 3.0F * $$2;
+         this.g.e = 0.0F;
+      }
+
+      this.k.k = !this.e && $$0.s();
+   }
+
+   @Override
+   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      boolean $$8 = this.k.k;
+      if ($$8) {
+         $$0.a();
+         $$0.a(0.0F, -0.08F, 0.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$8) {
+         $$0.b();
       }
    }
 }

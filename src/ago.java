@@ -1,37 +1,20 @@
-public class ago implements zl<agl> {
-   public static final zc<we, ago> a = zl.a(ago::a, ago::new);
-   private final int b;
-   private final ir c;
+public record ago(float b) implements ze<age> {
+   public static final yv<vx, ago> a = ze.a(ago::a, ago::new);
 
-   public ago(int $$0, ir $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ago(vx $$0) {
+      this($$0.readFloat());
    }
 
-   private ago(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<ago> a() {
-      return agj.bh;
+   public zg<ago> a() {
+      return agc.bn;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public ir e() {
-      return this.c;
    }
 }

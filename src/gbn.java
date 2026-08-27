@@ -1,25 +1,87 @@
-public class gbn extends gdu {
-   gbn(fzn $$0, double $$1, double $$2, double $$3, dtc $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(fgj.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+import com.mojang.authlib.GameProfile;
+
+public class gbn extends gbj {
+   private eum g = eum.b;
+   private int cz;
+
+   public gbn(fwr $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
    @Override
-   public gcy b() {
-      return gcy.a;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
-
-   public static class a implements gcx<ks> {
-      public gcu a(ks $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbn($$1, $$2, $$3, $$4, $$0.b());
+   public boolean a(double $$0) {
+      double $$1 = this.cK().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
+
+      $$1 *= 64.0 * cD();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(bqp $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.r(false);
+   }
+
+   @Override
+   public void n_() {
+      if (this.br > 0) {
+         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
+         this.br--;
+      }
+
+      if (this.by > 0) {
+         this.a(this.by, this.bx);
+         this.by--;
+      }
+
+      if (this.cz > 0) {
+         this.h(new eum((this.g.c - this.ds().c) / (double)this.cz, (this.g.d - this.ds().d) / (double)this.cz, (this.g.e - this.ds().e) / (double)this.cz));
+         this.cz--;
+      }
+
+      this.ce = this.cf;
+      this.eV();
+      float $$1;
+      if (this.aE() && !this.eB()) {
+         $$1 = (float)Math.min(0.1, this.ds().h());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.cf = this.cf + ($$1 - this.cf) * 0.4F;
+      this.dP().af().a("push");
+      this.q();
+      this.dP().af().c();
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new eum($$0, $$1, $$2);
+      this.cz = this.ak().p() + 1;
+   }
+
+   @Override
+   protected void fV() {
+   }
+
+   @Override
+   public void a(wx $$0) {
+      feb $$1 = feb.Q();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(abr $$0) {
+      super.a($$0);
+      this.bu();
    }
 }

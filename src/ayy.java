@@ -1,54 +1,144 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public interface ayy {
-   ayy a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+public class ayy {
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(azh.a);
 
-   boolean validate(ayx var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   private static boolean a(xu $$0, axs $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   private static boolean a(ayx $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
-   }
+   public static boolean a(String $$0, xu $$1, axs $$2) {
+      int $$3 = $$0.length();
 
-   static ayy a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
-   }
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
 
-   @Nullable
-   static ayy a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
                return false;
             }
-         });
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean b(String $$0, xu $$1, axs $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean c(String $$0, xu $$1, axs $$2) {
+      return a($$0, 0, $$1, $$2);
+   }
+
+   public static boolean a(String $$0, int $$1, xu $$2, axs $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, xu $$2, xu $$3, axs $$4) {
+      int $$5 = $$0.length();
+      xu $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(xc $$0, xu $$1, axs $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   }
+
+   public static String a(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, xu.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
+   }
+
+   public static String a(xc $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, xu.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

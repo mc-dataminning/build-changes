@@ -1,146 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ert {
-   public static final Codec<ert> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               esd.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               axu.a(euw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               axu.a(etd.c.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               evr.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               evr.a.fieldOf("bonus_rolls").orElse(evo.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ert::new)
+public class ert extends eqs {
+   private static final Map<ka<?>, ert.a<?>> b = Stream.of(
+         new ert.a<>(kb.J, cvu::a),
+         new ert.a<>(kb.y, cwi::a),
+         new ert.a<>(kb.j, czg::a),
+         new ert.a<>(kb.x, czg::a),
+         new ert.a<>(kb.e, cwx::a),
+         new ert.a<>(kb.l, crc::a),
+         new ert.a<>(kb.k, crc::a),
+         new ert.a<>(kb.m, cwl::a)
+      )
+      .collect(Collectors.toMap(ert.a::a, $$0 -> (ert.a<?>)$$0));
+   private static final Codec<ert.a<?>> c = le.as.q().comapFlatMap($$0 -> {
+      ert.a<?> $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + le.as.b($$0));
+   }, ert.a::a);
+   public static final MapCodec<ert> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, ert::new)
    );
-   private final List<esf> b;
-   private final List<euu> c;
-   private final Predicate<erp> d;
-   private final List<etb> e;
-   private final BiFunction<cuh, erp, cuh> f;
-   private final evq g;
-   private final evq h;
+   private final Map<ert.a<?>, Boolean> d;
 
-   ert(List<esf> $$0, List<euu> $$1, List<etb> $$2, evq $$3, evq $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ad.a($$1);
-      this.e = $$2;
-      this.f = etd.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private ert(List<esn> $$0, Map<ert.a<?>, Boolean> $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
-   private void b(Consumer<cuh> $$0, erp $$1) {
-      ayt $$2 = $$1.b();
-      List<ese> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   @Override
+   protected ctq a(ctq $$0, eph $$1) {
+      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+      return $$0;
+   }
 
-      for (esf $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
+   @Override
+   public equ b() {
+      return eqv.M;
+   }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (ese $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+   static record a<T>(ka<T> a, ert.b<T> b) {
+      public void a(ctq $$0, boolean $$1) {
+         T $$2 = $$0.a(this.a);
+         if ($$2 != null) {
+            $$0.b(this.a, this.b.withTooltip($$2, $$1));
          }
       }
    }
 
-   public void a(Consumer<cuh> $$0, erp $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cuh> $$2 = etb.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + aym.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(erv $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ert.a a() {
-      return new ert.a();
-   }
-
-   public static class a implements esx<ert.a>, eun<ert.a> {
-      private final Builder<esf> a = ImmutableList.builder();
-      private final Builder<euu> b = ImmutableList.builder();
-      private final Builder<etb> c = ImmutableList.builder();
-      private evq d = evo.a(1.0F);
-      private evq e = evo.a(0.0F);
-
-      public ert.a a(evq $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ert.a a() {
-         return this;
-      }
-
-      public ert.a b(evq $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ert.a a(esf.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ert.a a(euu.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ert.a a(etb.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ert b() {
-         return new ert(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   interface b<T> {
+      T withTooltip(T var1, boolean var2);
    }
 }

@@ -7,13 +7,13 @@ public class clm {
    private static final int[] e = new int[]{0, 10, 70, 150, 250};
    public static final Codec<clm> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               lh.y.q().fieldOf("type").orElseGet(() -> clq.c).forGetter($$0x -> $$0x.f),
-               lh.z.q().fieldOf("profession").orElseGet(() -> clo.b).forGetter($$0x -> $$0x.g),
+               le.y.q().fieldOf("type").orElseGet(() -> clq.c).forGetter($$0x -> $$0x.f),
+               le.z.q().fieldOf("profession").orElseGet(() -> clo.b).forGetter($$0x -> $$0x.g),
                Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
             )
             .apply($$0, clm::new)
    );
-   public static final zc<wp, clm> d = zc.a(za.a(li.ar), $$0 -> $$0.f, za.a(li.aq), $$0 -> $$0.g, za.g, $$0 -> $$0.h, clm::new);
+   public static final yv<wi, clm> d = yv.a(yt.a(lf.ar), $$0 -> $$0.f, yt.a(lf.aq), $$0 -> $$0.g, yt.f, $$0 -> $$0.h, clm::new);
    private final clq f;
    private final clo g;
    private final int h;

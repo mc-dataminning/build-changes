@@ -1,7 +1,7 @@
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 
-public class cke extends bug<cka> {
+public class cke extends buj<cka> {
    private static final int c = 4;
    private static final int d = 256;
    private static final int e = 5;
@@ -13,52 +13,52 @@ public class cke extends bug<cka> {
 
    @VisibleForTesting
    public cke() {
-      super(ImmutableMap.of(cbr.o, cbs.a, cbr.aY, cbs.b, cbr.aW, cbs.b, cbr.aX, cbs.b, cbr.aV, cbs.a, cbr.m, cbs.b, cbr.ba, cbs.b), h + 1 + i);
+      super(ImmutableMap.of(cbu.o, cbv.a, cbu.aY, cbv.b, cbu.aW, cbv.b, cbu.aX, cbv.b, cbu.aV, cbv.a, cbu.m, cbv.b, cbu.ba, cbv.b), h + 1 + i);
    }
 
-   protected boolean a(aqt $$0, cka $$1) {
-      return $$1.ar() != bsz.a ? false : $$1.dZ().c(cbr.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
+   protected boolean a(aqn $$0, cka $$1) {
+      return $$1.ar() != btc.a ? false : $$1.dS().c(cbu.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
          if (!$$1x) {
-            $$1.dZ().b(cbr.aV);
+            $$1.dS().b(cbu.aV);
          }
 
          return $$1x;
       }).orElse(false);
    }
 
-   protected boolean a(aqt $$0, cka $$1, long $$2) {
-      return $$1.dZ().a(cbr.o) && $$1.dZ().a(cbr.aV);
+   protected boolean a(aqn $$0, cka $$1, long $$2) {
+      return $$1.dS().a(cbu.o) && $$1.dS().a(cbu.aV);
    }
 
-   protected void b(aqt $$0, cka $$1, long $$2) {
-      $$1.dZ().c(cbr.o).ifPresent($$1x -> $$1.b(bsz.q));
-      $$1.dZ().a(cbr.aW, azo.a, (long)h);
-      $$1.a(avo.cL, 1.0F, 1.0F);
+   protected void b(aqn $$0, cka $$1, long $$2) {
+      $$1.dS().c(cbu.o).ifPresent($$1x -> $$1.b(btc.q));
+      $$1.dS().a(cbu.aW, azh.a, (long)h);
+      $$1.a(avi.cG, 1.0F, 1.0F);
    }
 
-   protected void c(aqt $$0, cka $$1, long $$2) {
-      if ($$1.ar() == bsz.q) {
-         $$1.b(bsz.a);
+   protected void c(aqn $$0, cka $$1, long $$2) {
+      if ($$1.ar() == btc.q) {
+         $$1.b(btc.a);
       }
 
-      $$1.dZ().a(cbr.aY, azo.a, (long)j);
-      $$1.dZ().b(cbr.aV);
+      $$1.dS().a(cbu.aY, azh.a, (long)j);
+      $$1.dS().b(cbu.aV);
    }
 
-   protected void d(aqt $$0, cka $$1, long $$2) {
-      btp<cka> $$3 = $$1.dZ();
-      bso $$4 = $$3.c(cbr.o).orElse(null);
+   protected void d(aqn $$0, cka $$1, long $$2) {
+      bts<cka> $$3 = $$1.dS();
+      bsq $$4 = $$3.c(cbu.o).orElse(null);
       if ($$4 != null) {
-         $$1.a(et.a.b, $$4.ds());
-         if (!$$3.c(cbr.aW).isPresent() && !$$3.c(cbr.aX).isPresent()) {
-            $$3.a(cbr.aX, azo.a, (long)i);
+         $$1.a(eq.a.b, $$4.dn());
+         if (!$$3.c(cbu.aW).isPresent() && !$$3.c(cbu.aX).isPresent()) {
+            $$3.a(cbu.aX, azh.a, (long)i);
             if (a($$1, $$4)) {
-               double $$5 = $$4.dz() - $$1.dz();
+               double $$5 = $$4.du() - $$1.du();
                double $$6 = $$4.e(0.3) - $$1.e(0.5);
-               double $$7 = $$4.dF() - $$1.dF();
-               cnk $$8 = new cnk($$1, $$0);
-               $$1.a(avo.cO, 1.5F, 1.0F);
-               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.al().a() * 4));
+               double $$7 = $$4.dA() - $$1.dA();
+               cnh $$8 = new cnh($$1, $$0);
+               $$1.a(avi.cJ, 1.5F, 1.0F);
+               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.ak().a() * 4));
                $$0.b($$8);
             }
          }
@@ -66,14 +66,14 @@ public class cke extends bug<cka> {
    }
 
    @VisibleForTesting
-   public static boolean a(cka $$0, bso $$1) {
-      ewu $$2 = $$0.f(1.0F);
-      ewu $$3 = $$1.ds().d($$0.ds()).d();
+   public static boolean a(cka $$0, bsq $$1) {
+      eum $$2 = $$0.f(1.0F);
+      eum $$3 = $$1.dn().d($$0.dn()).d();
       return $$2.b($$3) > 0.5;
    }
 
-   private static boolean b(cka $$0, bso $$1) {
-      double $$2 = $$0.ds().g($$1.ds());
+   private static boolean b(cka $$0, bsq $$1) {
+      double $$2 = $$0.dn().g($$1.dn());
       return $$2 > 4.0 && $$2 < 256.0;
    }
 }

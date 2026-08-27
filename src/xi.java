@@ -1,159 +1,23 @@
-import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.UUID;
 
-public class xi {
-   public static final Codec<xi> a = azg.a(xi.a::values).dispatch(xi::c, xi.a::a);
-   public static final xi b = new xi(new BitSet(0), xi.a.b);
-   public static final xi c = new xi(new BitSet(0), xi.a.a);
-   public static final yb d = yb.a.a(n.i).a(new xk(xk.a.a, xe.c("chat.filtered")));
-   static final Codec<xi> e = Codec.unit(c);
-   static final Codec<xi> f = Codec.unit(b);
-   static final Codec<xi> g = axu.s.xmap(xi::new, xi::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final xi.a j;
-
-   private xi(BitSet $$0, xi.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public record xi(UUID a, cma b) {
+   public static xi a(cma $$0) {
+      return new xi(UUID.randomUUID(), $$0);
    }
 
-   private xi(BitSet $$0) {
-      this.i = $$0;
-      this.j = xi.a.c;
+   public xr.c a(UUID $$0) {
+      return new xr($$0, this.a).a(ays.a(this.b.b(), "SHA256withRSA"));
    }
 
-   public xi(int $$0) {
-      this(new BitSet($$0), xi.a.c);
+   public xo a() {
+      return new xo(this.a, this.b.c());
    }
 
-   private xi.a c() {
-      return this.j;
+   public UUID b() {
+      return this.a;
    }
 
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static xi a(we $$0) {
-      xi.a $$1 = $$0.b(xi.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new xi($$0.w(), xi.a.c);
-      };
-   }
-
-   public static void a(we $$0, xi $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == xi.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public xe b(String $$0) {
-      return switch (this.j) {
-         case a -> xe.b($$0);
-         case b -> null;
-         case c -> {
-            xs $$1 = xe.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.a(xe.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == xi.a.a;
-   }
-
-   public boolean b() {
-      return this.j == xi.a.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xi $$1 = (xi)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
-   }
-
-   static enum a implements azg {
-      a("pass_through", () -> xi.e),
-      b("fully_filtered", () -> xi.f),
-      c("partially_filtered", () -> xi.g);
-
-      private final String d;
-      private final Supplier<Codec<xi>> e;
-
-      private a(String $$0, Supplier<Codec<xi>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      private Codec<xi> a() {
-         return this.e.get();
-      }
+   public cma c() {
+      return this.b;
    }
 }

@@ -1,8 +1,32 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ggz extends giz<cka, fsf<cka>> {
+   private static final akn a = new akn("textures/entity/breeze/breeze.png");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface ggz {
+   public ggz(ght.a $$0) {
+      super($$0, new fsf<>($$0.a(fvv.s)), 0.5F);
+      this.a(new gle(this));
+      this.a(new gld(this));
+   }
+
+   public void a(cka $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      fsf<cka> $$6 = this.a();
+      a($$6, $$6.b(), $$6.d());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akn a(cka $$0) {
+      return a;
+   }
+
+   public static fsf<cka> a(fsf<cka> $$0, fvw... $$1) {
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+      $$0.e().k = false;
+
+      for (fvw $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
+   }
 }

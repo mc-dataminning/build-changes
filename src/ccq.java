@@ -1,29 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class ccq<T extends bso> extends ccx<T> {
-   @Override
-   protected void a(aqt $$0, T $$1) {
-      ewp $$2 = $$1.cP().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bso> $$3 = $$0.a(bso.class, $$2, $$1x -> $$1x != $$1 && $$1x.bI());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      btp<?> $$4 = $$1.dZ();
-      $$4.a(cbr.g, $$3);
-      $$4.a(cbr.h, new cbt($$1, $$3));
-   }
+public class ccq<T extends bsq> extends cda<T> {
+   private final BiPredicate<T, bsq> a;
+   private final Predicate<T> c;
+   private final cbu<Boolean> d;
+   private final int e;
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public ccq(int $$0, BiPredicate<T, bsq> $$1, Predicate<T> $$2, cbu<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.g, cbr.h);
+   protected void a(aqn $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<cbu<?>> a() {
+      return Set.of(cbu.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<bsq>> $$1 = $$0.dS().c(cbu.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dS().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dS().b(this.d);
    }
 }

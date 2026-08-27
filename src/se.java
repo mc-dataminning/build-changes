@@ -1,17 +1,18 @@
 public class se {
-   public static final aks<ebm<?, ?>> a = sa.a("pile_hay");
-   public static final aks<ebm<?, ?>> b = sa.a("pile_potato_fruit");
-   public static final aks<ebm<?, ?>> c = sa.a("pile_melon");
-   public static final aks<ebm<?, ?>> d = sa.a("pile_snow");
-   public static final aks<ebm<?, ?>> e = sa.a("pile_ice");
-   public static final aks<ebm<?, ?>> f = sa.a("pile_pumpkin");
+   public static final akm<egp> a = si.a("end_spike");
+   public static final akm<egp> b = si.a("end_gateway_return");
+   public static final akm<egp> c = si.a("chorus_plant");
+   public static final akm<egp> d = si.a("end_island_decorated");
 
-   public static void a(qq<ebm<?, ?>> $$0) {
-      sa.a($$0, a, eca.j, new eec(new egs(dfe.jd)));
-      sa.a($$0, b, eca.j, new eec(egl.a(dfe.tI)));
-      sa.a($$0, c, eca.j, new eec(egl.a(dfe.fS)));
-      sa.a($$0, d, eca.j, new eec(egl.a(dfe.eB)));
-      sa.a($$0, e, eca.j, new eec(new egv(bok.<dtc>a().a(dfe.nU.n(), 1).a(dfe.jw.n(), 5))));
-      sa.a($$0, f, eca.j, new eec(new egv(bok.<dtc>a().a(dfe.fR.n(), 19).a(dfe.eX.n(), 1))));
+   public static void a(qo<egp> $$0) {
+      iy<dzm<?, ?>> $$1 = $$0.a(lf.aC);
+      ix<dzm<?, ?>> $$2 = $$1.b(rs.a);
+      ix<dzm<?, ?>> $$3 = $$1.b(rs.b);
+      ix<dzm<?, ?>> $$4 = $$1.b(rs.d);
+      ix<dzm<?, ?>> $$5 = $$1.b(rs.e);
+      si.a($$0, a, $$2, egd.a());
+      si.a($$0, b, $$3, egv.a(700), egm.a(), si.a, egu.a(bph.a(3, 9)), egd.a());
+      si.a($$0, c, $$4, egi.a(bph.a(0, 4)), egm.a(), si.a, egd.a());
+      si.a($$0, d, $$5, egv.a(14), si.a(1, 0.25F, 1), egm.a(), egk.a(dxp.a(55), dxp.a(70)), egd.a());
    }
 }

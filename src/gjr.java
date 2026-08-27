@@ -1,11 +1,12 @@
-public class gjr extends glz<cdz, fut> {
-   private static final akt a = new akt("textures/entity/batato.png");
+public class gjr extends giz<cfc, fum<cfc>> {
+   private static final akn a = new akn("textures/entity/sheep/sheep.png");
 
-   public gjr(gkq.a $$0) {
-      super($$0, new fut($$0.a(fyr.h)), 0.25F);
+   public gjr(ght.a $$0) {
+      super($$0, new fum<>($$0.a(fvv.bh)), 0.7F);
+      this.a(new gmh(this, $$0.f()));
    }
 
-   public akt a(cdz $$0) {
+   public akn a(cfc $$0) {
       return a;
    }
 }

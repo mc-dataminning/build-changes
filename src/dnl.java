@@ -1,53 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnl extends dmq {
-   public static final MapCodec<dnl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmq::c), u()).apply($$0, dnl::new));
-   public static final duc b = dts.ba;
+public class dnl extends dlu implements dnf {
+   public static final MapCodec<dnl> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dnf.a.e.fieldOf("weathering_state").forGetter(dfb::c), drd.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dnl::new)
+   );
+   private final dnf.a J;
 
    @Override
    public MapCodec<dnl> a() {
-      return a;
+      return I;
    }
 
-   public dnl(dup $$0, dtb.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return $$1.a_($$2.d()).e();
+   public dnl(dnf.a $$0, drd $$1, drc.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, Integer.valueOf(dui.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == epf.c));
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1 == iw.a && !this.a($$0, $$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d_(drd $$0) {
+      return dnf.c($$0.b()).isPresent();
    }
 
-   @Override
-   public float g(dtc $$0) {
-      return dui.b($$0.c(b));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b, f);
+   public dnf.a m() {
+      return this.J;
    }
 }

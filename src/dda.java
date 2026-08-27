@@ -1,111 +1,110 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class dda {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dda a = new dda(ImmutableMap.of(), ImmutableList.of());
-   public static final MapCodec<dda> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.simpleMap(dyq.a.c, eax.c.promotePartial(ad.a("Carver: ", c::error)), azg.a(dyq.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               eix.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dda::new)
-   );
-   private final Map<dyq.a, je<eax<?>>> d;
-   private final List<je<eix>> e;
-   private final Supplier<List<ebm<?, ?>>> f;
-   private final Supplier<Set<eix>> g;
+public class dda extends dgw {
+   public static final MapCodec<dda> a = b(dda::new);
+   public static final drx b = dhw.aE;
+   private static final evf c = dea.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final evf d = dea.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final evf e = dea.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final evf f = dea.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final evf g = dea.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final evf h = dea.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final evf i = dea.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final evf j = evc.a(c, d, e, f);
+   private static final evf k = evc.a(c, g, h, i);
+   private static final wx l = wx.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
-   dda(Map<dyq.a, je<eax<?>>> $$0, List<je<eix>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(je::a).map(ja::a).flatMap(eix::a).filter($$0xx -> $$0xx.b() == eca.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(je::a).map(ja::a).collect(Collectors.toSet()));
+   @Override
+   public MapCodec<dda> a() {
+      return a;
    }
 
-   public Iterable<ja<eax<?>>> a(dyq.a $$0) {
-      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   public dda(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, it.c));
    }
 
-   public List<ebm<?, ?>> a() {
-      return this.f.get();
+   @Override
+   public drd a(cxb $$0) {
+      return this.n().a(b, $$0.g().h());
    }
 
-   public List<je<eix>> b() {
-      return this.e;
-   }
-
-   public boolean a(eix $$0) {
-      return this.g.get().contains($$0);
-   }
-
-   public static class a extends dda.b {
-      private final jb<eix> a;
-      private final jb<eax<?>> b;
-
-      public a(jb<eix> $$0, jb<eax<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dda.a a(dyq.b $$0, aks<eix> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public dda.a a(dyq.a $$0, aks<eax<?>> $$1) {
-         this.a($$0, this.b.b($$1));
-         return this;
+   @Override
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$1.B) {
+         return bpw.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avs.aC);
+         return bpw.b;
       }
    }
 
-   public static class b {
-      private final Map<dyq.a, List<ja<eax<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<ja<eix>>> b = Lists.newArrayList();
+   @Nullable
+   @Override
+   protected bqa b(drd $$0, daz $$1, io $$2) {
+      return new bqg(($$2x, $$3, $$4) -> new cox($$2x, $$3, cpg.a($$1, $$2)), l);
+   }
 
-      public dda.b a(dyq.b $$0, ja<eix> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      it $$4 = $$0.c(b);
+      return $$4.o() == it.a.a ? j : k;
+   }
 
-      public dda.b a(int $$0, ja<eix> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
+   @Override
+   protected void a(cih $$0) {
+      $$0.b(2.0F, 40);
+   }
 
-      public dda.b a(dyq.a $$0, ja<eax<?>> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
+   @Override
+   public void a(daz $$0, io $$1, drd $$2, drd $$3, cih $$4) {
+      if (!$$4.aW()) {
+         $$0.c(1031, $$1, 0);
       }
+   }
 
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
-         }
+   @Override
+   public void a(daz $$0, io $$1, cih $$2) {
+      if (!$$2.aW()) {
+         $$0.c(1029, $$1, 0);
       }
+   }
 
-      public dda a() {
-         return new dda(
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> je.a((List)$$0.getValue()))),
-            this.b.stream().map(je::a).collect(ImmutableList.toImmutableList())
-         );
+   @Override
+   public bqp a(brw $$0) {
+      return $$0.dQ().b($$0);
+   }
+
+   @Nullable
+   public static drd e(drd $$0) {
+      if ($$0.a(dec.gS)) {
+         return dec.gT.n().a(b, $$0.c(b));
+      } else {
+         return $$0.a(dec.gT) ? dec.gU.n().a(b, $$0.c(b)) : null;
       }
+   }
+
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
+   }
+
+   @Override
+   public int b(drd $$0, daf $$1, io $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

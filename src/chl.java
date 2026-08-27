@@ -1,30 +1,69 @@
-public class chl extends chd {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public chl(cha $$0) {
+public class chl extends che {
+   @Nullable
+   private eum b;
+
+   public chl(chc $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      this.a.dU().a(this.a.dz(), this.a.dB(), this.a.dF(), avo.ir, this.a.dj(), 2.5F, 0.8F + this.a.et().i() * 0.3F, false);
-   }
+      eum $$0 = this.a.F(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.du();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dA();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gv().a(chq.f);
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         aym $$5 = this.a.el();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         eum $$9 = this.a.ds();
+         this.a.dP().a(ky.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   public void d() {
-      this.c = 0;
+   public void c() {
+      if (this.b == null) {
+         this.b = eum.c(this.a.dP().a(dwv.a.f, dzy.a(this.a.s())));
+      }
+
+      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
+         this.a.gm().b(chs.f).j();
+         this.a.gm().a(chs.g);
+      }
    }
 
    @Override
-   public chq<chl> i() {
-      return chq.h;
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public eum g() {
+      return this.b;
+   }
+
+   @Override
+   public chs<chl> i() {
+      return chs.d;
    }
 }

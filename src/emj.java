@@ -1,32 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class emj extends ejt {
-   public static final Codec<emj> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, emj::new)
-   );
-   public final boolean e;
+public interface emj extends emo {
+   @Nullable
+   dte a(jq var1);
 
-   public emj(ejt.d $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   int b(io var1);
 
-   @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      dyu.a $$1 = this.e ? dyu.a.a : dyu.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
+   public static enum a implements emj {
+      a;
 
-   private void a(ekl $$0, ejt.b $$1) {
-      dmd $$2 = dmd.a($$1.f());
-      ir $$3 = new ir($$1.h().d(), 90, $$1.h().e());
-      emi.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-   }
+      @Nullable
+      @Override
+      public dte a(jq $$0) {
+         return null;
+      }
 
-   @Override
-   public ekc<?> f() {
-      return ekc.m;
+      @Override
+      public int b(io $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(io $$0) {
+      }
+
+      @Override
+      public boolean K_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(jq $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(dag $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(dag $$0) {
+      }
    }
 }

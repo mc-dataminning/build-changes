@@ -1,41 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class eui extends euk {
+   private final it b;
+   private final io c;
+   private final boolean d;
+   private final boolean e;
 
-public class eui extends eul {
-   public static final Codec<eui> a = a(eui::new);
-   public static final Codec<eui> b = b(eui::new);
-
-   eui(List<euu> $$0) {
-      super($$0, ad.a($$0));
+   public static eui a(eum $$0, it $$1, io $$2) {
+      return new eui(true, $$0, $$1, $$2, false);
    }
 
-   public static eui a(List<euu> $$0) {
-      return new eui(List.copyOf($$0));
+   public eui(eum $$0, it $$1, io $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
+   }
+
+   private eui(boolean $$0, eum $$1, it $$2, io $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+   }
+
+   public eui a(it $$0) {
+      return new eui(this.d, this.a, $$0, this.c, this.e);
+   }
+
+   public eui a(io $$0) {
+      return new eui(this.d, this.a, this.b, $$0, this.e);
+   }
+
+   public io a() {
+      return this.c;
+   }
+
+   public it b() {
+      return this.b;
    }
 
    @Override
-   public euv b() {
-      return euw.e;
+   public euk.a c() {
+      return this.d ? euk.a.a : euk.a.b;
    }
 
-   public static eui.a a(euu.a... $$0) {
-      return new eui.a($$0);
-   }
-
-   public static class a extends eul.a {
-      public a(euu.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eui.a and(euu.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected euu a(List<euu> $$0) {
-         return new eui($$0);
-      }
+   public boolean d() {
+      return this.e;
    }
 }

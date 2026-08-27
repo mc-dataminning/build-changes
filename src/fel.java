@@ -1,224 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fel extends gxb {
-   private static final int B = 2;
-   public static final List<bpx> a = ImmutableList.of(bpx.a, bpx.b, bpx.c, bpx.d);
-   private static final int C = 0;
-   public static final List<dbx> b = ImmutableList.of(dbx.a, dbx.b, dbx.c);
-   private static final xe D = xe.c("mco.configure.world.edit.slot.name");
-   static final xe E = xe.c("mco.configure.world.spawnProtection");
-   private static final xe F = xe.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
-   private fiw G;
-   protected final fds c;
-   private int H;
-   private int I;
-   private final fcq J;
-   private final fcj.d K;
-   private bpx L;
-   private dbx M;
-   private final String N;
-   private String O;
-   private boolean P;
-   private boolean Q;
-   private boolean R;
-   private boolean S;
-   int T;
-   private boolean U;
-   private boolean V;
-   fel.a W;
+public class fel {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
+   private int c;
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
 
-   public fel(fds $$0, fcq $$1, fcj.d $$2, int $$3) {
-      super(xe.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.J = $$1;
-      this.K = $$2;
-      this.L = a(a, $$1.h, 2);
-      this.M = a(b, $$1.i, 0);
-      this.N = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == fcj.d.a) {
-         this.P = $$1.a;
-         this.T = $$1.e;
-         this.V = $$1.g;
-         this.R = $$1.b;
-         this.S = $$1.c;
-         this.Q = $$1.d;
-         this.U = $$1.f;
+   public static void a(File $$0, exg $$1, Consumer<wx> $$2) {
+      a($$0, null, $$1, $$2);
+   }
+
+   public static void a(File $$0, @Nullable String $$1, exg $$2, Consumer<wx> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
       } else {
-         this.P = true;
-         this.T = 0;
-         this.V = false;
-         this.R = true;
-         this.S = true;
-         this.Q = true;
-         this.U = true;
+         b($$0, $$1, $$2, $$3);
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.c);
-         return true;
+   private static void b(File $$0, @Nullable String $$1, exg $$2, Consumer<wx> $$3) {
+      exv $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
       } else {
-         return super.a($$0, $$1, $$2);
+         $$6 = new File($$5, $$1);
       }
+
+      ac.h().execute(() -> {
+         try {
+            $$4.a($$6);
+            wx $$3x = wx.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new wv(wv.a.b, $$6.getAbsolutePath())));
+            $$3.accept(wx.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(wx.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
+         }
+      });
    }
 
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
-      try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
-      }
+   public static exv a(exg $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      exv $$3 = new exv($$1, $$2, false);
+      RenderSystem.bindTexture($$0.f());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
    }
 
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
-   }
+   private static File a(File $$0) {
+      String $$1 = ac.f();
+      int $$2 = 1;
 
-   @Override
-   public void aN_() {
-      this.I = 170;
-      this.H = this.n / 2 - this.I;
-      int $$0 = this.n / 2 + 10;
-      if (this.K != fcj.d.a) {
-         xe $$1;
-         if (this.K == fcj.d.c) {
-            $$1 = xe.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.K == fcj.d.e) {
-            $$1 = xe.c("mco.configure.world.edit.subscreen.inspiration");
-         } else {
-            $$1 = xe.c("mco.configure.world.edit.subscreen.experience");
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
          }
 
-         this.a(new gwz($$1, this.n / 2, 26, 16711680));
-      }
-
-      this.G = this.d(new fiw(this.m.h, this.H, g(1), this.I, 20, null, xe.c("mco.configure.world.edit.slot.name")));
-      this.G.f(10);
-      this.G.a(this.O);
-      this.G.b(this::a);
-      fiu<Boolean> $$4 = this.c(fiu.b(this.P).a($$0, g(1), this.I, 20, xe.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.P = $$1));
-      this.c(fiu.a(dbx::e).a(b).a(this.M).a(this.H, g(3), this.I, 20, xe.c("selectWorld.gameMode"), ($$0x, $$1) -> this.M = $$1));
-      xe $$5 = xe.c("mco.configure.world.spawn_toggle.message");
-      fiu<Boolean> $$6 = this.c(fiu.b(this.R).a($$0, g(3), this.I, 20, xe.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.R = $$0x)));
-      fiu<Boolean> $$7 = fiu.b(this.L != bpx.a && this.S)
-         .a($$0, g(5), this.I, 20, xe.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.S = $$0x));
-      this.c(fiu.a(bpx::b).a(a).a(this.L).a(this.H, g(5), this.I, 20, xe.c("options.difficulty"), ($$1, $$2) -> {
-         this.L = $$2;
-         if (this.K == fcj.d.a) {
-            boolean $$3 = this.L != bpx.a;
-            $$7.j = $$3;
-            $$7.a($$3 && this.S);
-         }
-      }));
-      this.c($$7);
-      this.W = this.c(new fel.a(this.H, g(7), this.I, this.T, 0.0F, 16.0F));
-      fiu<Boolean> $$8 = this.c(
-         fiu.b(this.Q)
-            .a(
-               $$0,
-               g(7),
-               this.I,
-               20,
-               xe.c("mco.configure.world.spawnNPCs"),
-               this.a(xe.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.Q = $$0x)
-            )
-      );
-      fiu<Boolean> $$9 = this.c(fiu.b(this.V).a(this.H, g(9), this.I, 20, xe.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.V = $$1));
-      fiu<Boolean> $$10 = this.c(fiu.b(this.U).a($$0, g(9), this.I, 20, xe.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.U = $$1));
-      if (this.K != fcj.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         $$8.j = false;
-         $$7.j = false;
-         this.W.j = false;
-         $$10.j = false;
-         $$9.j = false;
-      }
-
-      if (this.L == bpx.a) {
-         $$7.j = false;
-      }
-
-      this.c(fin.a(xe.c("mco.configure.world.buttons.done"), $$0x -> this.C()).a(this.H, g(13), this.I, 20).a());
-      this.c(fin.a(xd.e, $$0x -> this.m.a(this.c)).a($$0, g(13), this.I, 20).a());
-   }
-
-   private fiu.b<Boolean> a(xe $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.m.a(new fne($$1xx -> {
-               if ($$1xx) {
-                  $$1.accept(false);
-               }
-
-               this.m.a(this);
-            }, F, $$0, xd.i, xd.e));
-         }
-      };
-   }
-
-   @Override
-   public xe i() {
-      return xd.a(this.n(), this.B());
-   }
-
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.a(this.p, D, this.H + this.I / 2 - this.p.a(D) / 2, g(0) - 5, -1, false);
-      this.G.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(String $$0) {
-      if ($$0.equals(this.N)) {
-         this.O = "";
-      } else {
-         this.O = $$0;
+         $$2++;
       }
    }
 
-   private void C() {
-      int $$0 = a(a, this.L, 2);
-      int $$1 = a(b, this.M, 0);
-      if (this.K != fcj.d.c && this.K != fcj.d.d && this.K != fcj.d.e) {
-         boolean $$2 = this.K == fcj.d.a && this.L != bpx.a && this.S;
-         this.c.a(new fcq(this.P, this.R, $$2, this.Q, this.T, this.U, $$0, $$1, this.V, this.O, this.J.j, this.J.k));
-      } else {
-         this.c.a(new fcq(this.J.a, this.J.b, this.J.c, this.J.d, this.J.e, this.J.f, $$0, $$1, this.J.g, this.O, this.J.j, this.J.k));
+   public fel(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ac.f();
+      int $$6 = 1;
+
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
+      }
+
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
+   }
+
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
+      }
+
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
+      }
+
+      this.c = $$6;
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
       }
    }
 
-   class a extends fij {
-      private final double d;
-      private final double e;
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
 
-      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
-         super($$0, $$1, $$2, 20, xd.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((aym.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
-         this.b();
-      }
-
-      @Override
-      public void a() {
-         if (fel.this.W.j) {
-            fel.this.T = (int)aym.d(aym.a(this.c, 0.0, 1.0), this.d, this.e);
-         }
-      }
-
-      @Override
-      protected void b() {
-         this.b(xd.a(fel.E, (xe)(fel.this.T == 0 ? xd.c : xe.b(String.valueOf(fel.this.T)))));
-      }
+   public File b() throws IOException {
+      this.d.close();
+      return this.h;
    }
 }

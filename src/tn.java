@@ -1,5 +1,6 @@
-public class tn extends RuntimeException {
-   public tn(String $$0) {
-      super($$0);
-   }
+import java.util.stream.Stream;
+
+@FunctionalInterface
+public interface tn {
+   Stream<io> findStructureBlockPos();
 }

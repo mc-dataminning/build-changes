@@ -1,24 +1,56 @@
-public class gox extends gpi<ceq, fwf<ceq>> {
-   private final gga a;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public gox(gmp<ceq, fwf<ceq>> $$0, gga $$1) {
-      super($$0);
-      this.a = $$1;
+public class gox extends auc<List<String>> {
+   private static final akn a = new akn("texts/splashes.txt");
+   private static final aym b = aym.a();
+   private final List<String> c = Lists.newArrayList();
+   private final fep d;
+
+   public gox(fep $$0) {
+      this.d = $$0;
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, ceq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gy() != 0) {
-         $$0.a();
-         fys $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dfe.cD.n(), $$0, $$1, $$2, gqp.d);
-         $$0.b();
+   protected List<String> a(atx $$0, bmk $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = feb.Q().ab().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
+   }
+
+   protected void a(List<String> $$0, atx $$1, bmk $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
+   }
+
+   @Nullable
+   public fhe a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fhe.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fhe.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fhe.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fhe(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fhe(this.c.get(b.a(this.c.size())));
       }
    }
 }

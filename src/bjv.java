@@ -1,19 +1,17 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjv extends bhp {
+public class bjv extends bhl {
    public bjv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bgf.t.in($$0)));
-      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bgf.u.in($$0)));
-      $$0.registerSimple($$1, "minecraft:text_display");
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.put("minecraft:brushable_block", $$1.remove("minecraft:suspicious_sand"));
+      $$0.registerSimple($$1, "minecraft:calibrated_sculk_sensor");
       return $$1;
    }
 }

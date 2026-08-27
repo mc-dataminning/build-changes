@@ -1,53 +1,80 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public class axr<K, V extends axr.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
+@FunctionalInterface
+public interface axr {
+   axr a = $$0 -> true;
 
-   public axr<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
+   boolean accept(axs var1);
+
+   static axr codepoint(int $$0, xu $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
-         if ($$4 != null) {
-            $$3.accept($$2, $$4);
+   static axr forward(String $$0, xu $$1) {
+      return $$0.isEmpty() ? a : $$2 -> ayy.a($$0, $$1, $$2);
+   }
+
+   static axr forward(String $$0, xu $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> ayy.a($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static axr backward(String $$0, xu $$1) {
+      return $$0.isEmpty() ? a : $$2 -> ayy.b($$0, $$1, $$2);
+   }
+
+   static axr backward(String $$0, xu $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> ayy.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static axs decorateOutput(axs $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static axr composite() {
+      return a;
+   }
+
+   static axr composite(axr $$0) {
+      return $$0;
+   }
+
+   static axr composite(axr $$0, axr $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static axr composite(axr... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static axr composite(List<axr> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
+      }
+   }
+
+   static axr fromPair(axr $$0, axr $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static axr fromList(List<axr> $$0) {
+      return $$1 -> {
+         for (axr $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
+            }
          }
-      }
-   }
 
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
-   }
-
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
+         return true;
+      };
    }
 }

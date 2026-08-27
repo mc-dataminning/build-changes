@@ -1,20 +1,6 @@
-public enum dub implements azg {
-   a("top"),
-   b("bottom");
+import java.util.concurrent.CompletableFuture;
 
-   private final String c;
-
-   private dub(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+@FunctionalInterface
+public interface dub {
+   CompletableFuture<dsz> apply(dsz var1);
 }

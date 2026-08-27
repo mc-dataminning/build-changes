@@ -1,21 +1,21 @@
-public class dsl {
-   public static final float a = 10.0F;
-   private float b;
-   private float c;
+public enum dsl implements ayz {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   dsl() {
+   private final String d;
+
+   private dsl(String $$0) {
+      this.d = $$0;
    }
 
-   public float a() {
-      return this.b;
+   @Override
+   public String toString() {
+      return this.d;
    }
 
-   public float b() {
-      return this.c;
-   }
-
-   void c() {
-      this.c = this.b;
-      this.b = aym.g(this.b + 10.0F);
+   @Override
+   public String c() {
+      return this.d;
    }
 }

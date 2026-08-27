@@ -1,121 +1,41 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
+import java.io.InputStream;
+import java.util.Optional;
 import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class asj {
-   private static final Logger a = LogUtils.getLogger();
+public interface asj extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   public static void a(Path $$0, int $$1) {
-      try {
-         List<asj.b> $$2 = a($$0);
-         int $$3 = $$2.size() - $$1;
-         if ($$3 <= 0) {
-            return;
-         }
+   @Nullable
+   atp<InputStream> a(String... var1);
 
-         $$2.sort(asj.b.a);
-         List<asj.a> $$4 = a($$2);
-         Collections.reverse($$4);
-         $$4.sort(asj.a.a);
-         Set<Path> $$5 = new HashSet<>();
+   @Nullable
+   atp<InputStream> a(asl var1, akn var2);
 
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            asj.a $$7 = $$4.get($$6);
-            Path $$8 = $$7.b;
+   void a(asl var1, String var2, String var3, asj.a var4);
 
-            try {
-               Files.delete($$8);
-               if ($$7.c == 0) {
-                  $$5.add($$8.getParent());
-               }
-            } catch (IOException var12) {
-               a.warn("Failed to delete cache file {}", $$8, var12);
-            }
-         }
+   Set<String> a(asl var1);
 
-         $$5.remove($$0);
+   @Nullable
+   <T> T a(asw<T> var1) throws IOException;
 
-         for (Path $$10 : $$5) {
-            try {
-               Files.delete($$10);
-            } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
-            }
-         }
-      } catch (UncheckedIOException | IOException var13) {
-         a.error("Failed to vacuum cache dir {}", $$0, var13);
-      }
+   asi a();
+
+   default String b() {
+      return this.a().a();
    }
 
-   private static List<asj.b> a(final Path $$0) throws IOException {
-      try {
-         final List<asj.b> $$1 = new ArrayList<>();
-         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
-               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
-                  FileTime $$2 = $$1.lastModifiedTime();
-                  $$1.add(new asj.b($$0, $$2));
-               }
-
-               return FileVisitResult.CONTINUE;
-            }
-         });
-         return $$1;
-      } catch (NoSuchFileException var2) {
-         return List.of();
-      }
+   default Optional<ate> c() {
+      return this.a().d();
    }
 
-   private static List<asj.a> a(List<asj.b> $$0) {
-      List<asj.a> $$1 = new ArrayList<>();
-      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
+   @Override
+   void close();
 
-      for (asj.b $$3 : $$0) {
-         int $$4 = $$2.addTo($$3.b.getParent(), 1);
-         $$1.add(new asj.a($$3.b, $$4));
-      }
-
-      return $$1;
-   }
-
-   static record a(Path b, int c) {
-      public static final Comparator<asj.a> a = Comparator.comparing(asj.a::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   static record b(Path b, FileTime c) {
-      public static final Comparator<asj.b> a = Comparator.comparing(asj.b::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public FileTime b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   public interface a extends BiConsumer<akn, atp<InputStream>> {
    }
 }

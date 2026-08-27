@@ -1,89 +1,73 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class crg {
-   private static final List<crf> b = ad.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bsc.a.a(98);
-      int $$2 = bsc.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bsc.f.a(100);
-      $$2 = bsc.e.a(100);
-      int $$5 = bsc.d.a(100);
-      int $$6 = bsc.c.a(100);
-      int $$7 = bsc.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<crf> a = azg.b(() -> b.toArray(new crf[0]));
-   private static final Function<String, crf> c = azg.a(b.toArray(new crf[0]), $$0 -> $$0);
+public record crg(Map<crf.a, Integer> b, int c, ix<avh> d, Supplier<cxt> e, List<crg.a> f, float g, float h) {
+   public static final Codec<ix<crg>> a = le.ar.r();
 
-   private static crf a(String $$0, int $$1) {
-      return crf.a($$0, IntLists.singleton($$1));
+   public int a(crf.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   private static crf a(String $$0, IntList $$1) {
-      return crf.a($$0, IntLists.unmodifiable($$1));
+   public Map<crf.a, Integer> a() {
+      return this.b;
    }
 
-   private static crf a(String $$0, int... $$1) {
-      return crf.a($$0, IntList.of($$1));
+   public int b() {
+      return this.c;
    }
 
-   private static void a(List<crf> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
+   public ix<avh> c() {
+      return this.d;
    }
 
-   private static void a(List<crf> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
+   public Supplier<cxt> d() {
+      return this.e;
+   }
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   public List<crg.a> e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public static final class a {
+      private final akn a;
+      private final String b;
+      private final boolean c;
+      private final akn d;
+      private final akn e;
+
+      public a(akn $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
       }
 
-      $$0.add(a($$1 + "*", $$4));
-   }
+      public a(akn $$0) {
+         this($$0, "", false);
+      }
 
-   private static void a(List<crf> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
-   }
+      private akn b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
 
-   @Nullable
-   public static crf a(String $$0) {
-      return c.apply($$0);
-   }
+      public akn a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
 
-   public static Stream<String> a() {
-      return b.stream().map(azg::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(azg::c);
+      public boolean a() {
+         return this.c;
+      }
    }
 }

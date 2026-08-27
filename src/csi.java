@@ -1,15 +1,14 @@
-public class csi extends cuc {
-   public csi(cuc.a $$0) {
-      super($$0);
+public class csi extends cro {
+   public csi(dea $$0, ctl.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public cuh a(cuh $$0, dca $$1, bso $$2) {
-      cuh $$3 = super.a($$0, $$1, $$2);
-      if ($$2 instanceof cly $$4 && $$4.fY()) {
-         return $$3;
-      }
-
-      return new cuh(cuk.qJ);
+   protected boolean a(cxb $$0, drd $$1) {
+      daz $$2 = $$0.q();
+      io $$3 = $$0.a().c();
+      drd $$4 = $$2.z($$3) ? dec.G.n() : dec.a.n();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

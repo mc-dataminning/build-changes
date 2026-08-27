@@ -1,48 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dmc extends dfc {
-   public static final MapCodec<dmc> h = b(dmc::new);
-   public static final dua<iw.a> i = dts.I;
+public interface dmc {
+   cwu b();
 
-   @Override
-   public MapCodec<? extends dmc> a() {
-      return h;
+   static List<dmc> c() {
+      return le.h.s().map(dmc::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public dmc(dtb.d $$0) {
-      super($$0);
-      this.k(this.n().a(i, iw.a.b));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dtc b(dtc $$0, dmd $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((iw.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, iw.a.c);
-               case c:
-                  return $$0.a(i, iw.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
+   @Nullable
+   static dmc a(day $$0) {
+      if ($$0.r() instanceof cro $$1) {
+         dea var6 = $$1.d();
+         if (var6 instanceof dmc) {
+            return (dmc)var6;
+         }
       }
-   }
 
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      return this.n().a(i, $$0.k().o());
+      ctl $$2 = $$0.r();
+      return $$2 instanceof dmc ? (dmc)$$2 : null;
    }
 }

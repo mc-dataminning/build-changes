@@ -1,13 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class caj extends cai {
-   public caj(bsw $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class caj extends bzo {
+   private final bss a;
+   private double b;
+   private double c;
+   private int d;
+
+   public caj(bss $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bzo.a.a, bzo.a.b));
    }
 
-   @Nullable
    @Override
-   protected ewu h() {
-      return bui.a(this.b, 10, 7);
+   public boolean a() {
+      return this.a.el().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = (Math.PI * 2) * this.a.el().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.el().a(20);
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
    }
 }

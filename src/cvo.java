@@ -1,54 +1,56 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cvo extends cuc {
-   public cvo(cuc.a $$0) {
+public class cvo extends ctl {
+   public cvo(ctl.a $$0) {
       super($$0);
    }
 
-   public static cxw d() {
-      return new cxw(List.of(cxw.a.a(List.of(dfe.cc), 15.0F), cxw.a.b(awe.O, 15.0F), cxw.a.b(awe.a, 5.0F), cxw.a.b(List.of(dfe.fX, dfe.fY), 2.0F)), 1.0F, 1);
+   @Override
+   public wx o(ctq $$0) {
+      cwz $$1 = $$0.a(kb.I);
+      if ($$1 != null) {
+         String $$2 = $$1.d().a();
+         if (!aza.h($$2)) {
+            return wx.b($$2);
+         }
+      }
+
+      return super.o($$0);
    }
 
    @Override
-   public boolean a(cuh $$0, dca $$1, dtc $$2, ir $$3, bso $$4) {
-      if (!$$1.C && !$$2.a(awe.aM)) {
-         $$0.a(1, $$4, bsc.a);
-      }
+   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
+      cwz $$4 = $$0.a(kb.I);
+      if ($$4 != null) {
+         if (!aza.h($$4.e())) {
+            $$2.add(wx.a("book.byAuthor", $$4.e()).a(n.h));
+         }
 
-      return $$2.a(awe.O)
-         || $$2.a(dfe.cc)
-         || $$2.a(dfe.cd)
-         || $$2.a(dfe.ce)
-         || $$2.a(dfe.cf)
-         || $$2.a(dfe.ud)
-         || $$2.a(dfe.fX)
-         || $$2.a(dfe.gA)
-         || $$2.a(awe.a);
+         $$2.add(wx.c("book.generation." + $$4.f()).a(n.h));
+      }
    }
 
    @Override
-   public bqa a(cyf $$0) {
-      dca $$1 = $$0.q();
-      ir $$2 = $$0.a();
-      dtc $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof div $$5 && !$$5.o($$3)) {
-         cly $$6 = $$0.o();
-         cuh $$7 = $$0.n();
-         if ($$6 instanceof aqu) {
-            an.N.a((aqu)$$6, $$2, $$7);
+   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
+      ctq $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(avs.c.b(this));
+      return bpx.a($$3, $$0.x_());
+   }
+
+   public static boolean a(ctq $$0, ee $$1, @Nullable cly $$2) {
+      cwz $$3 = $$0.a(kb.I);
+      if ($$3 != null && !$$3.g()) {
+         cwz $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(kb.I, $$4);
+            return true;
          }
 
-         $$1.a($$6, $$2, avo.lC, avq.e, 1.0F, 1.0F);
-         dtc $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(dxv.c, $$2, dxv.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bso.d($$0.p()));
-         }
-
-         return bqa.a($$1.C);
+         $$0.b(kb.I, $$3.c());
       }
 
-      return super.a($$0);
+      return false;
    }
 }

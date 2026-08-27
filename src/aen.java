@@ -1,33 +1,29 @@
-import javax.annotation.Nullable;
+public class aen implements ze<abq> {
+   public static final yv<vx, aen> a = ze.a(aen::a, aen::new);
+   private final int b;
 
-public class aen implements zl<abw> {
-   public static final zc<we, aen> a = zl.a(aen::a, aen::new);
-   @Nullable
-   private final akt b;
-
-   public aen(@Nullable akt $$0) {
-      this.b = $$0;
+   public aen(dsu $$0) {
+      this.b = $$0.q();
    }
 
-   private aen(we $$0) {
-      this.b = $$0.c(we::q);
+   private aen(vx $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, we::a);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zn<aen> a() {
-      return agj.ap;
+   public zg<aen> a() {
+      return agc.au;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akt b() {
+   public int b() {
       return this.b;
    }
 }

@@ -1,19 +1,15 @@
-import com.mojang.serialization.MapCodec;
+public interface dpg extends bpp {
+   euh p_ = dea.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
 
-public class dpg extends dfc {
-   public static final MapCodec<dpg> a = b(dpg::new);
-
-   @Override
-   public MapCodec<dpg> a() {
-      return a;
+   default euh aj_() {
+      return p_;
    }
 
-   public dpg(dtb.d $$0) {
-      super($$0);
-   }
+   double H();
 
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
-      $$3.a($$0, new ewu(0.25, 0.05F, 0.25));
-   }
+   double I();
+
+   double J();
+
+   boolean K();
 }

@@ -1,10 +1,4 @@
-public class dak extends dad {
-   public dak(dad.b $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a() {
-      return true;
-   }
+@FunctionalInterface
+public interface dak {
+   int getColor(dby var1, double var2, double var4);
 }

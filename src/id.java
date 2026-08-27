@@ -1,123 +1,57 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Set;
-import org.slf4j.Logger;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class id {
-   private static final Logger a = LogUtils.getLogger();
-   private static final byte b = 1;
-   private static final byte c = 2;
-
-   public static int a(boolean $$0, boolean $$1) {
-      int $$2 = 0;
-      if ($$0) {
-         $$2 |= 1;
+public class id implements hy<DoubleArgumentType, id.a> {
+   public void a(id.a $$0, vx $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(ia.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
       }
 
-      if ($$1) {
-         $$2 |= 2;
-      }
-
-      return $$2;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 1) != 0;
-   }
-
-   public static boolean b(byte $$0) {
-      return ($$0 & 2) != 0;
-   }
-
-   private static <A extends ArgumentType<?>> void a(JsonObject $$0, ib.a<A> $$1) {
-      a($$0, $$1.a(), $$1);
-   }
-
-   private static <A extends ArgumentType<?>, T extends ib.a<A>> void a(JsonObject $$0, ib<A, T> $$1, ib.a<A> $$2) {
-      $$1.a((T)$$2, $$0);
-   }
-
-   private static <T extends ArgumentType<?>> void a(JsonObject $$0, T $$1) {
-      ib.a<T> $$2 = ic.b($$1);
-      $$0.addProperty("type", "argument");
-      $$0.addProperty("parser", lh.w.b($$2.a()).toString());
-      JsonObject $$3 = new JsonObject();
-      a($$3, $$2);
-      if ($$3.size() > 0) {
-         $$0.add("properties", $$3);
+      if ($$3) {
+         $$1.a($$0.c);
       }
    }
 
-   public static <S> JsonObject a(CommandDispatcher<S> $$0, CommandNode<S> $$1) {
-      JsonObject $$2 = new JsonObject();
-      if ($$1 instanceof RootCommandNode) {
-         $$2.addProperty("type", "root");
-      } else if ($$1 instanceof LiteralCommandNode) {
-         $$2.addProperty("type", "literal");
-      } else if ($$1 instanceof ArgumentCommandNode<?, ?> $$3) {
-         a($$2, $$3.getType());
-      } else {
-         a.error("Could not serialize node {} ({})!", $$1, $$1.getClass());
-         $$2.addProperty("type", "unknown");
-      }
-
-      JsonObject $$4 = new JsonObject();
-
-      for (CommandNode<S> $$5 : $$1.getChildren()) {
-         $$4.add($$5.getName(), a($$0, $$5));
-      }
-
-      if ($$4.size() > 0) {
-         $$2.add("children", $$4);
-      }
-
-      if ($$1.getCommand() != null) {
-         $$2.addProperty("executable", true);
-      }
-
-      if ($$1.getRedirect() != null) {
-         Collection<String> $$6 = $$0.getPath($$1.getRedirect());
-         if (!$$6.isEmpty()) {
-            JsonArray $$7 = new JsonArray();
-
-            for (String $$8 : $$6) {
-               $$7.add($$8);
-            }
-
-            $$2.add("redirect", $$7);
-         }
-      }
-
-      return $$2;
+   public id.a a(vx $$0) {
+      byte $$1 = $$0.readByte();
+      double $$2 = ia.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = ia.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      return new id.a($$2, $$3);
    }
 
-   public static <T> Set<ArgumentType<?>> a(CommandNode<T> $$0) {
-      Set<CommandNode<T>> $$1 = Sets.newIdentityHashSet();
-      Set<ArgumentType<?>> $$2 = Sets.newHashSet();
-      a($$0, $$2, $$1);
-      return $$2;
+   public void a(id.a $$0, JsonObject $$1) {
+      if ($$0.b != -Double.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Double.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   private static <T> void a(CommandNode<T> $$0, Set<ArgumentType<?>> $$1, Set<CommandNode<T>> $$2) {
-      if ($$2.add($$0)) {
-         if ($$0 instanceof ArgumentCommandNode<?, ?> $$3) {
-            $$1.add($$3.getType());
-         }
+   public id.a a(DoubleArgumentType $$0) {
+      return new id.a($$0.getMinimum(), $$0.getMaximum());
+   }
 
-         $$0.getChildren().forEach($$2x -> a($$2x, $$1, $$2));
-         CommandNode<T> $$4 = $$0.getRedirect();
-         if ($$4 != null) {
-            a($$4, $$1, $$2);
-         }
+   public final class a implements hy.a<DoubleArgumentType> {
+      final double b;
+      final double c;
+
+      a(double $$1, double $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public DoubleArgumentType a(ea $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
+      }
+
+      @Override
+      public hy<DoubleArgumentType, ?> a() {
+         return id.this;
       }
    }
 }

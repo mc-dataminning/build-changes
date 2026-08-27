@@ -1,105 +1,55 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dks extends dhg {
-   public static final MapCodec<dks> b = b(dks::new);
-   public static final dtt c = dts.w;
+public class dks extends ddm {
+   public static final MapCodec<dks> a = b(dks::new);
+   public static final dru b = drt.E;
+   private final bpb c = boy.a(5);
 
    @Override
    public MapCodec<dks> a() {
-      return b;
+      return a;
    }
 
-   public dks(dtb.d $$0) {
+   public dks(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(a, iw.d).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(a, c);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if ($$0.c(c)) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
-      } else {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         $$1.a($$2, this, 2);
-      }
-
-      this.a($$1, $$2, $$0);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.c(a) == $$1 && !$$0.c(c)) {
-         this.a($$3, $$4);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private void a(dcb $$0, ir $$1) {
-      if (!$$0.x_() && !$$0.P().a($$1, this)) {
-         $$0.a($$1, this, 2);
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
    }
 
-   protected void a(dca $$0, ir $$1, dtc $$2) {
-      iw $$3 = $$2.c(a);
-      ir $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
+   @Nullable
+   @Override
+   public doi a(io $$0, drd $$1) {
+      return new dpo($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return $$0.B ? null : a($$2, dok.K, dpo::a);
    }
 
    @Override
-   protected boolean e_(dtc $$0) {
-      return true;
+   protected dkg a_(drd $$0) {
+      return dkg.c;
    }
 
    @Override
-   protected int b(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return $$0.b($$1, $$2, $$3);
-   }
-
-   @Override
-   protected int a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.x_() && $$0.c(c) && !$$1.P().a($$2, this)) {
-            dtc $$5 = $$0.a(c, Boolean.valueOf(false));
-            $$1.a($$2, $$5, 18);
-            this.a($$1, $$2, $$5);
-         }
+   protected void a(drd $$0, aqn $$1, io $$2, ctq $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
       }
-   }
-
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.C && $$0.c(c) && $$1.P().a($$2, this)) {
-            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
-         }
-      }
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      return this.n().a(a, $$0.d().g().g());
    }
 }

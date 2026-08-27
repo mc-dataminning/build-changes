@@ -1,93 +1,37 @@
-import java.util.UUID;
+public class agh implements ze<age> {
+   public static final yv<vx, agh> a = ze.a(agh::a, agh::new);
+   private final int b;
+   private final io c;
 
-public class agh {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(brv $$0) {
-      if ($$0 instanceof cly) {
-         return $$0.af().getString();
-      } else {
-         xe $$1 = $$0.ah();
-         return $$1 != null ? $$1.getString() : a($$0.cE());
-      }
+   public agh(int $$0, io $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static String a(UUID $$0) {
-      ayt $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private agh(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private static String a(ayt $$0, String[] $$1) {
-      return ad.a($$1, $$0);
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   private static ayt b(UUID $$0) {
-      return ayt.a((long)($$0.hashCode() >> 2));
+   @Override
+   public zg<agh> a() {
+      return agc.bg;
+   }
+
+   public void a(age $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public io e() {
+      return this.c;
    }
 }

@@ -1,60 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.serialization.MapCodec;
 
-public class dyd {
-   public static final Codec<dyd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyc.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, dyd::new)
-   );
-   private Optional<Pair<dyc, Long>> b;
+public interface dyd<P extends dyc> {
+   dyd<dyi> a = a("matching_blocks", dyi.a);
+   dyd<dyh> b = a("matching_block_tag", dyh.e);
+   dyd<dyj> c = a("matching_fluids", dyj.a);
+   dyd<dyf> d = a("has_sturdy_face", dyf.a);
+   dyd<dym> e = a("solid", dym.a);
+   dyd<dyl> f = a("replaceable", dyl.a);
+   dyd<dyp> g = a("would_survive", dyp.a);
+   dyd<dyg> h = a("inside_world_bounds", dyg.a);
+   dyd<dyb> i = a("any_of", dyb.a);
+   dyd<dya> j = a("all_of", dya.a);
+   dyd<dyk> k = a("not", dyk.a);
+   dyd<dyo> l = a("true", dyo.e);
 
-   public dyd(Optional<dyc> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
-   }
+   MapCodec<P> codec();
 
-   public dyd() {
-      this.b = Optional.empty();
-   }
-
-   public void a(dyc $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
-      }
-   }
-
-   private boolean b(dyc $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dyc, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dyc $$4 = (dyc)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dye.a_($$0.a()) > dye.a_($$4.a());
-            }
-         }
-      }
-   }
-
-   public Optional<dyc> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dyc)this.b.get().getLeft()) : Optional.empty();
-      }
-   }
-
-   public void a() {
-      this.b = Optional.empty();
+   private static <P extends dyc> dyd<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.O, $$0, () -> $$1);
    }
 }

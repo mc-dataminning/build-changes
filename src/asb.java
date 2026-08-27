@@ -1,22 +1,26 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
 
-public class asb implements arj {
-   public static final arj.a a = new arj.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public class asb {
+   private static final asb a = new asb(Map.of());
+   private final Map<asw<?>, ?> b;
 
-   public asb(MinecraftServer.b $$0) {
+   private asb(Map<asw<?>, ?> $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public void a(Consumer<zl<?>> $$0) {
-      $$0.accept(new zx(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   public <T> T a(asw<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Override
-   public arj.a a() {
+   public static asb a() {
       return a;
+   }
+
+   public static <T> asb a(asw<T> $$0, T $$1) {
+      return new asb(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> asb a(asw<T1> $$0, T1 $$1, asw<T2> $$2, T2 $$3) {
+      return new asb(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

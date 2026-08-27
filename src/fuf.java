@@ -1,96 +1,35 @@
-import com.mojang.authlib.properties.PropertyMap;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+public class fuf<T extends brw> extends ftf<T> {
+   private final fvw a;
+   private final fvw b;
+   private final fvw f;
 
-public class fuf {
-   public final fuf.d a;
-   public final ezt b;
-   public final fuf.a c;
-   public final fuf.b d;
-   public final fuf.c e;
-
-   public fuf(fuf.d $$0, ezt $$1, fuf.a $$2, fuf.b $$3, fuf.c $$4) {
+   public fuf(fvw $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static class a {
-      public final File a;
-      public final File b;
-      public final File c;
-      @Nullable
-      public final String d;
-
-      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public Path a() {
-         return this.d == null ? this.c.toPath() : grt.a(this.c.toPath(), this.d);
-      }
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fwb.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fvy.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fwb.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fvy.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fwb.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fvy.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fwb.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fvy.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fwb.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fvy.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fwb.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fvy.a(1.5F, 22.0F, -1.5F));
+      return fwc.a($$0, 32, 32);
    }
 
-   public static class b {
-      public final boolean a;
-      public final String b;
-      public final String c;
-      public final boolean d;
-      public final boolean e;
-
-      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
+   @Override
+   public fvw a() {
+      return this.a;
    }
 
-   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
-      public boolean a() {
-         return !azh.h(this.b) || !azh.h(this.c) || !azh.h(this.d);
-      }
-
-      @Nullable
-      public String b() {
-         return this.a;
-      }
-
-      @Nullable
-      public String c() {
-         return this.b;
-      }
-
-      @Nullable
-      public String d() {
-         return this.c;
-      }
-
-      @Nullable
-      public String e() {
-         return this.d;
-      }
-   }
-
-   public static class d {
-      public final fgy a;
-      public final PropertyMap b;
-      public final PropertyMap c;
-      public final Proxy d;
-
-      public d(fgy $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * ayf.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayf.a($$3 * 0.2F);
    }
 }

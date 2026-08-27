@@ -1,10 +1,8 @@
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.List;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record hx<T>(akt a, List<hk<T>> b) implements ht<T>, hv<T> {
-   @Override
-   public hv<T> a(@Nullable uk $$0, CommandDispatcher<T> $$1) throws ek {
-      return this;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hx {
 }

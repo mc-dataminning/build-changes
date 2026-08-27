@@ -1,70 +1,99 @@
-public class fek extends gxb {
-   private static final int a = 212;
-   private static final xe b = xe.c("mco.configure.world.name");
-   private static final xe c = xe.c("mco.configure.world.description");
-   private final fds B;
-   private final fcj C;
-   private fiw D;
-   private fiw E;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fek(fds $$0, fcj $$1) {
-      super(xe.c("mco.configure.world.settings.title"));
-      this.B = $$0;
-      this.C = $$1;
+public class fek {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fek.c b;
+   private int c;
+
+   public void a(fek.b $$0, List<asj> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new fek.c($$0, $$1.stream().map(asj::b).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   public void aN_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.C.e == fcj.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fin $$2 = fin.a(xe.c($$1), $$0x -> {
-         if (this.C.e == fcj.c.b) {
-            xe $$1x = xe.c("mco.configure.world.close.question.line1");
-            xe $$2x = xe.c("mco.configure.world.close.question.line2");
-            this.m.a(new fdy($$0xx -> {
-               if ($$0xx) {
-                  this.B.a(this);
-               } else {
-                  this.m.a(this);
-               }
-            }, fdy.a.b, $$1x, $$2x, true));
-         } else {
-            this.B.a(false, this);
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fek.c(fek.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new fek.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
+   }
+
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final fek.b a;
+      private final List<String> b;
+      @Nullable
+      fek.a c;
+      boolean d;
+
+      c(fek.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
          }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.E = new fiw(this.m.h, $$0, g(4), 212, 20, xe.c("mco.configure.world.name"));
-      this.E.f(32);
-      this.E.a(this.C.b());
-      this.c(this.E);
-      this.D = new fiw(this.m.h, $$0, g(8), 212, 20, xe.c("mco.configure.world.description"));
-      this.D.f(32);
-      this.D.a(this.C.a());
-      this.c(this.D);
-      fin $$3 = this.c(fin.a(xe.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.E.b($$1x -> $$3.j = !azh.h($$1x));
-      this.c(fin.a(xd.e, $$0x -> this.d()).a(this.n / 2 + 2, g(12), 106, 20).a());
-   }
-
-   @Override
-   protected void aC_() {
-      this.b(this.E);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.B);
-   }
-
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.a(this.p, b, this.n / 2 - 106, g(3), -1, false);
-      $$0.a(this.p, c, this.n / 2 - 106, g(7), -1, false);
-   }
-
-   public void g() {
-      this.B.a(this.E.a(), this.D.a());
+      }
    }
 }

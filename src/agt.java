@@ -1,20 +1,83 @@
-public record agt(xv.a b) implements zl<agl> {
-   public static final zc<we, agt> a = zl.a(agt::a, agt::new);
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   private agt(we $$0) {
-      this(xv.a.a($$0));
+public class agt implements ze<age> {
+   public static final yv<wi, agt> a = ze.a(agt::a, agt::new);
+   private static final int b = 128;
+   private static final yv<wi, Int2ObjectMap<ctq>> c = yt.a(Int2ObjectOpenHashMap::new, yt.d.a(Short::intValue, Integer::shortValue), ctq.e, 128);
+   private final int d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final cpe h;
+   private final ctq i;
+   private final Int2ObjectMap<ctq> j;
+
+   public agt(int $$0, int $$1, int $$2, int $$3, cpe $$4, ctq $$5, Int2ObjectMap<ctq> $$6) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = Int2ObjectMaps.unmodifiable($$6);
    }
 
-   private void a(we $$0) {
-      xv.a.a($$0, this.b);
+   private agt(wi $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = $$0.readByte();
+      this.h = $$0.b(cpe.class);
+      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
+      this.i = ctq.e.decode($$0);
+   }
+
+   private void a(wi $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
+      c.encode($$0, this.j);
+      ctq.e.encode($$0, this.i);
    }
 
    @Override
-   public zn<agt> a() {
-      return agj.bm;
+   public zg<agt> a() {
+      return agc.bs;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   public ctq g() {
+      return this.i;
+   }
+
+   public Int2ObjectMap<ctq> h() {
+      return this.j;
+   }
+
+   public cpe i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.e;
    }
 }

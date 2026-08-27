@@ -1,164 +1,80 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public class dad {
-   private final dad.b b;
+public class dad<T> extends AbstractIterator<T> {
+   private final euh a;
+   private final eur b;
+   private final iq c;
+   private final io.a d;
+   private final evf e;
+   private final daj f;
+   private final boolean g;
    @Nullable
-   protected String a;
-   private final ja.c<dad> c = lh.f.f(this);
+   private daf h;
+   private long i;
+   private final BiFunction<io.a, evf, T> j;
 
-   public static dad.a a(int $$0) {
-      return new dad.a($$0, 0);
-   }
-
-   public static dad.a a(int $$0, int $$1) {
-      return new dad.a($$0, $$1);
-   }
-
-   public static dad.b a(awt<cuc> $$0, awt<cuc> $$1, int $$2, int $$3, dad.a $$4, dad.a $$5, int $$6, bsc... $$7) {
-      return new dad.b($$0, Optional.of($$1), $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public static dad.b a(awt<cuc> $$0, int $$1, int $$2, dad.a $$3, dad.a $$4, int $$5, bsc... $$6) {
-      return new dad.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, $$6);
+   public dad(daj $$0, @Nullable brw $$1, euh $$2, boolean $$3, BiFunction<io.a, evf, T> $$4) {
+      this.b = $$1 == null ? eur.a() : eur.a($$1);
+      this.d = new io.a();
+      this.e = evc.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = ayf.a($$2.a - 1.0E-7) - 1;
+      int $$6 = ayf.a($$2.d + 1.0E-7) + 1;
+      int $$7 = ayf.a($$2.b - 1.0E-7) - 1;
+      int $$8 = ayf.a($$2.e + 1.0E-7) + 1;
+      int $$9 = ayf.a($$2.c - 1.0E-7) - 1;
+      int $$10 = ayf.a($$2.f + 1.0E-7) + 1;
+      this.c = new iq($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
    @Nullable
-   public static dad b(int $$0) {
-      return lh.f.a($$0);
+   private daf a(int $$0, int $$1) {
+      int $$2 = jq.a($$0);
+      int $$3 = jq.a($$1);
+      long $$4 = dag.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
+      } else {
+         daf $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
+      }
    }
 
-   public dad(dad.b $$0) {
-      this.b = $$0;
-   }
-
-   public Map<bsc, cuh> a(bso $$0) {
-      Map<bsc, cuh> $$1 = Maps.newEnumMap(bsc.class);
-
-      for (bsc $$2 : this.b.h()) {
-         cuh $$3 = $$0.d($$2);
-         if (!$$3.d()) {
-            $$1.put($$2, $$3);
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            daf $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               drd $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dec.bQ))) {
+                  evf $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == evc.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     evf $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && evc.c($$7, this.e, euq.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
          }
       }
 
-      return $$1;
-   }
-
-   public final awt<cuc> c() {
-      return this.b.a();
-   }
-
-   public final boolean a(cuh $$0) {
-      return this.b.b.isEmpty() || $$0.a(this.b.b.get());
-   }
-
-   public final int d() {
-      return this.b.c();
-   }
-
-   public final int e() {
-      return this.b.g();
-   }
-
-   public final int f() {
-      return 1;
-   }
-
-   public final int g() {
-      return this.b.d();
-   }
-
-   public final int c(int $$0) {
-      return this.b.e().a($$0);
-   }
-
-   public final int d(int $$0) {
-      return this.b.f().a($$0);
-   }
-
-   public int a(int $$0, bqt $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, @Nullable bsb<?> $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(dad $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(dad $$0) {
-      return this != $$0;
-   }
-
-   protected String h() {
-      if (this.a == null) {
-         this.a = ad.a("enchantment", lh.f.b(this));
-      }
-
-      return this.a;
-   }
-
-   public String i() {
-      return this.h();
-   }
-
-   public xe e(int $$0) {
-      xs $$1 = xe.c(this.i());
-      if (this.b()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.g() != 1) {
-         $$1.a(xd.v).a(xe.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cuh $$0) {
-      return $$0.f().n().a(this.b.a());
-   }
-
-   public void a(bso $$0, brv $$1, int $$2) {
-   }
-
-   public void b(bso $$0, brv $$1, int $$2) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean j() {
-      return true;
-   }
-
-   public boolean k() {
-      return true;
-   }
-
-   @Deprecated
-   public ja.c<dad> l() {
-      return this.c;
-   }
-
-   public static record a(int a, int b) {
-      public int a(int $$0) {
-         return this.a + this.b * ($$0 - 1);
-      }
-   }
-
-   public static record b(awt<cuc> a, Optional<awt<cuc>> b, int c, int d, dad.a e, dad.a f, int g, bsc[] h) {
+      return (T)this.endOfData();
    }
 }

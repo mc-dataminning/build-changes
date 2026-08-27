@@ -1,186 +1,158 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class feh extends gxb {
-   static final Logger c = LogUtils.getLogger();
-   private static final xe B = xe.c("mco.selectServer.create");
-   private static final xe C = xe.c("mco.selectServer.create.subtitle");
-   private static final xe D = xe.c("mco.configure.world.switch.slot");
-   private static final xe E = xe.c("mco.configure.world.switch.slot.subtitle");
-   private static final xe F = xe.c("mco.reset.world.title");
-   private static final xe G = xe.c("mco.reset.world.warning");
-   public static final xe a = xe.c("mco.create.world.reset.title");
-   private static final xe H = xe.c("mco.reset.world.resetting.screen.title");
-   private static final xe I = xe.c("mco.reset.world.template");
-   private static final xe J = xe.c("mco.reset.world.adventure");
-   private static final xe K = xe.c("mco.reset.world.experience");
-   private static final xe L = xe.c("mco.reset.world.inspiration");
-   private final fon M;
-   private final fcj N;
-   private final xe O;
-   private final int P;
-   private final xe Q;
-   private static final akt R = new akt("textures/gui/realms/upload.png");
-   private static final akt S = new akt("textures/gui/realms/adventure.png");
-   private static final akt T = new akt("textures/gui/realms/survival_spawn.png");
-   private static final akt U = new akt("textures/gui/realms/new_world.png");
-   private static final akt V = new akt("textures/gui/realms/experience.png");
-   private static final akt W = new akt("textures/gui/realms/inspiration.png");
-   fdb X;
-   fdb Y;
-   fdb Z;
-   fdb aa;
-   public final int b;
+public class feh extends auc<Map<String, List<feh.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<feh.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(feh.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(feh.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(feh.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(feh.a::d)
+                  )
+                  .apply($$0, feh.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final akn c;
+   private final Object2BooleanFunction<String> d;
    @Nullable
-   private final ffl ab;
-   private final Runnable ac;
-   private final fma ad = new fma(this);
+   private Timer e;
+   @Nullable
+   private feh.b f;
 
-   private feh(fon $$0, fcj $$1, int $$2, xe $$3, xe $$4, int $$5, xe $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   public feh(akn $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public feh(fon $$0, fcj $$1, int $$2, xe $$3, xe $$4, int $$5, xe $$6, @Nullable ffl $$7, Runnable $$8) {
-      super($$3);
-      this.M = $$0;
-      this.N = $$1;
-      this.b = $$2;
-      this.O = $$4;
-      this.P = $$5;
-      this.Q = $$6;
-      this.ab = $$7;
-      this.ac = $$8;
-   }
-
-   public static feh a(fon $$0, fcj $$1, ffl $$2, Runnable $$3) {
-      return new feh($$0, $$1, $$1.n, B, C, -6250336, a, $$2, $$3);
-   }
-
-   public static feh a(fon $$0, int $$1, fcj $$2, Runnable $$3) {
-      return new feh($$0, $$2, $$1, D, E, -6250336, a, $$3);
-   }
-
-   public static feh a(fon $$0, fcj $$1, Runnable $$2) {
-      return new feh($$0, $$1, $$1.n, F, G, -65536, H, $$2);
-   }
-
-   @Override
-   public void aN_() {
-      fme $$0 = this.ad.a(fme.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fju(this.l, this.p), fmd::b);
-      $$0.a(new fju(this.O, this.p).b(this.P), fmd::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            fbs $$0 = fbs.a();
-
-            try {
-               fdb $$1 = $$0.a(1, 10, fcj.d.a);
-               fdb $$2 = $$0.a(1, 10, fcj.d.c);
-               fdb $$3 = $$0.a(1, 10, fcj.d.d);
-               fdb $$4 = $$0.a(1, 10, fcj.d.e);
-               feh.this.m.execute(() -> {
-                  feh.this.X = $$1;
-                  feh.this.Y = $$2;
-                  feh.this.Z = $$3;
-                  feh.this.aa = $$4;
-               });
-            } catch (fdf var6) {
-               feh.c.error("Couldn't fetch templates in reset world", var6);
-            }
+   protected Map<String, List<feh.a>> a(atx $$0, bmk $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
          }
-      }).start();
-      flz $$1 = this.ad.c(new flz());
-      flz.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new feh.a(this.m.h, feg.a, U, $$0x -> this.m.a(new feg(this::a, this.l))));
-      $$2.a(new feh.a(this.m.h, fei.a, R, $$0x -> this.m.a(new fei(this.ab, this.N.a, this.b, this))));
-      $$2.a(new feh.a(this.m.h, I, T, $$0x -> this.m.a(new fej(I, this::a, fcj.d.a, this.X))));
-      $$2.a(fmf.b(16), 3);
-      $$2.a(new feh.a(this.m.h, J, S, $$0x -> this.m.a(new fej(J, this::a, fcj.d.c, this.Y))));
-      $$2.a(new feh.a(this.m.h, K, V, $$0x -> this.m.a(new fej(K, this::a, fcj.d.d, this.Z))));
-      $$2.a(new feh.a(this.m.h, L, W, $$0x -> this.m.a(new fej(L, this::a, fcj.d.e, this.aa))));
-      this.ad.b(fin.a(xd.k, $$0x -> this.d()).a());
-      this.ad.a($$1x -> {
-         fil var10000 = this.c($$1x);
-      });
-      this.c();
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
+   }
+
+   protected void a(Map<String, List<feh.a>> $$0, atx $$1, bmk $$2) {
+      List<feh.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new feh.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
    }
 
    @Override
-   protected void c() {
-      this.ad.a();
+   public void close() {
+      this.a();
    }
 
-   @Override
-   public xe i() {
-      return xd.a(this.n(), this.O);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.M);
-   }
-
-   private void a(@Nullable fda $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new ffn($$0, this.N.a, this.Q, this.ac));
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
       }
    }
 
-   private void a(@Nullable ffc $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new ffm($$0, this.N.a, this.Q, this.ac));
+   private long a(List<feh.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<feh.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(long a, long b, String c, String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
       }
    }
 
-   private void a(ffj $$0) {
-      List<ffj> $$1 = new ArrayList<>();
-      if (this.ab != null) {
-         $$1.add(this.ab);
+   static class b extends TimerTask {
+      private final feb a = feb.Q();
+      private final List<feh.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<feh.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
       }
 
-      if (this.b != this.N.n) {
-         $$1.add(new ffr(this.N.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.m.a(new fdz(this.M, $$1.toArray(new ffj[0])));
-   }
-
-   class a extends fin {
-      private static final akt b = new akt("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final akt v;
-
-      a(fhy $$0, xe $$1, akt $$2, fin.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
+      public feh.b a(List<feh.a> $$0, long $$1) {
+         this.cancel();
+         return new feh.b($$0, this.d.get(), $$1);
       }
 
       @Override
-      public void b(fia $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.A();
-         if ($$4) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
 
-         int $$5 = this.C();
-         int $$6 = this.D();
-         $$0.a(this.v, $$5 + 2, $$6 + 2, 0.0F, 0.0F, 56, 56, 56, 56);
-         $$0.a(b, $$5, $$6, 60, 60);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         int $$7 = $$4 ? -6250336 : -1;
-         $$0.a(feh.this.p, this.y(), $$5 + 28, $$6 - 14, $$7);
+         for (feh.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fii.a(feb.Q().ax(), fii.a.f, wx.a($$2.c, $$3), wx.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
       }
    }
 }

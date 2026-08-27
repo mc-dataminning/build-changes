@@ -1,165 +1,84 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
+public abstract class ehj extends ehp {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class ehj extends eho {
-   public static final Codec<ehj> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ehj::new));
-   private static final double b = 0.618;
-   private static final double h = 1.382;
-   private static final double i = 0.381;
-   private static final double j = 0.328;
+   protected ehj(eic $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, it $$7) {
+      super($$0, 0, ehp.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
+   }
 
-   public ehj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected ehj(eic $$0, ud $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   protected ehp<?> a() {
-      return ehp.f;
+   protected void a(eib $$0, ud $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   @Override
-   public List<efw.a> a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5) {
-      int $$6 = 5;
-      int $$7 = $$3 + 2;
-      int $$8 = aym.a((double)$$7 * 0.618);
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      double $$9 = 1.0;
-      int $$10 = Math.min(1, aym.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
-      int $$11 = $$4.v() + $$8;
-      int $$12 = $$7 - 5;
-      List<ehj.a> $$13 = Lists.newArrayList();
-      $$13.add(new ehj.a($$4.b($$12), $$11));
+   protected boolean a(dba $$0, ehd $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         io.a $$5 = new io.a();
 
-      for (; $$12 >= 0; $$12--) {
-         float $$14 = b($$7, $$12);
-         if (!($$14 < 0.0F)) {
-            for (int $$15 = 0; $$15 < $$10; $$15++) {
-               double $$16 = 1.0;
-               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
-               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
-               double $$19 = $$17 * Math.sin($$18) + 0.5;
-               double $$20 = $$17 * Math.cos($$18) + 0.5;
-               ir $$21 = $$4.b(aym.a($$19), $$12 - 1, aym.a($$20));
-               ir $$22 = $$21.b(5);
-               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
-                  int $$23 = $$4.u() - $$21.u();
-                  int $$24 = $$4.w() - $$21.w();
-                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
-                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
-                  ir $$27 = new ir($$4.u(), $$26, $$4.w());
-                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
-                     $$13.add(new ehj.a($$21, $$27.v()));
-                  }
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dwv.a.f, $$5).v();
+                  $$4++;
                }
             }
          }
-      }
 
-      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
-      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
-      List<efw.a> $$28 = Lists.newArrayList();
-
-      for (ehj.a $$29 : $$13) {
-         if (this.a($$7, $$29.a() - $$4.v())) {
-            $$28.add($$29.a);
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
          }
       }
-
-      return $$28;
    }
 
-   private boolean a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, ir $$4, boolean $$5, efg $$6) {
-      if (!$$5 && Objects.equals($$3, $$4)) {
+   protected boolean a(dba $$0, int $$1) {
+      if (this.d >= 0) {
          return true;
       } else {
-         ir $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
-         int $$8 = this.a($$7);
-         float $$9 = (float)$$7.u() / (float)$$8;
-         float $$10 = (float)$$7.v() / (float)$$8;
-         float $$11 = (float)$$7.w() / (float)$$8;
+         int $$2 = $$0.al();
+         boolean $$3 = false;
+         io.a $$4 = new io.a();
 
-         for (int $$12 = 0; $$12 <= $$8; $$12++) {
-            ir $$13 = $$3.b(aym.d(0.5F + (float)$$12 * $$9), aym.d(0.5F + (float)$$12 * $$10), aym.d(0.5F + (float)$$12 * $$11));
-            if ($$5) {
-               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(dmc.i, this.a($$3, $$13)));
-            } else if (!this.b($$0, $$13)) {
-               return false;
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dwv.a.f, $$4).v());
+               $$3 = true;
             }
          }
 
-         return true;
-      }
-   }
-
-   private int a(ir $$0) {
-      int $$1 = aym.a($$0.u());
-      int $$2 = aym.a($$0.v());
-      int $$3 = aym.a($$0.w());
-      return Math.max($$1, Math.max($$2, $$3));
-   }
-
-   private iw.a a(ir $$0, ir $$1) {
-      iw.a $$2 = iw.a.b;
-      int $$3 = Math.abs($$1.u() - $$0.u());
-      int $$4 = Math.abs($$1.w() - $$0.w());
-      int $$5 = Math.max($$3, $$4);
-      if ($$5 > 0) {
-         if ($$3 == $$5) {
-            $$2 = iw.a.a;
+         if (!$$3) {
+            return false;
          } else {
-            $$2 = iw.a.c;
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
          }
-      }
-
-      return $$2;
-   }
-
-   private boolean a(int $$0, int $$1) {
-      return (double)$$1 >= (double)$$0 * 0.2;
-   }
-
-   private void a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, List<ehj.a> $$5, efg $$6) {
-      for (ehj.a $$7 : $$5) {
-         int $$8 = $$7.a();
-         ir $$9 = new ir($$4.u(), $$8, $$4.w());
-         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
-            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
-         }
-      }
-   }
-
-   private static float b(int $$0, int $$1) {
-      if ((float)$$1 < (float)$$0 * 0.3F) {
-         return -1.0F;
-      } else {
-         float $$2 = (float)$$0 / 2.0F;
-         float $$3 = $$2 - (float)$$1;
-         float $$4 = aym.c($$2 * $$2 - $$3 * $$3);
-         if ($$3 == 0.0F) {
-            $$4 = $$2;
-         } else if (Math.abs($$3) >= $$2) {
-            return 0.0F;
-         }
-
-         return $$4 * 0.5F;
-      }
-   }
-
-   static class a {
-      final efw.a a;
-      private final int b;
-
-      public a(ir $$0, int $$1) {
-         this.a = new efw.a($$0, 0, false);
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.b;
       }
    }
 }

@@ -1,16 +1,26 @@
-public class gmk extends gjk<cjx, fwx<cjx>> {
-   private static final akt a = new akt("textures/entity/zombie/poisonous_potato_zombie.png");
+public class gmk<T extends bsq> extends gmf<T, fuu<T>> {
+   private final fsw<T> a;
 
-   public gmk(gkq.a $$0) {
-      this($$0, fyr.cl, fyr.co, fyr.cp);
+   public gmk(gjp<T, fuu<T>> $$0, fvs $$1) {
+      super($$0);
+      this.a = new fuu<>($$1.a(fvv.bt));
    }
 
-   @Override
-   public akt a(cjx $$0) {
-      return a;
-   }
+   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      feb $$10 = feb.Q();
+      boolean $$11 = $$10.b($$3) && $$3.ch();
+      if (!$$3.ch() || $$11) {
+         eyy $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(gcs.r(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(gcs.i(this.a($$3)));
+         }
 
-   public gmk(gkq.a $$0, fyq $$1, fyq $$2, fyq $$3) {
-      super($$0, new fwx<>($$0.a($$1)), new fwx<>($$0.a($$2)), new fwx<>($$0.a($$3)));
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

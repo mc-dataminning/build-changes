@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface ddr {
+public interface ddr {
+   csj b();
 }

@@ -1,36 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.Set;
+public interface euq {
+   euq a = ($$0, $$1) -> false;
+   euq b = ($$0, $$1) -> !$$0 && !$$1;
+   euq c = ($$0, $$1) -> $$1 && !$$0;
+   euq d = ($$0, $$1) -> !$$0;
+   euq e = ($$0, $$1) -> $$0 && !$$1;
+   euq f = ($$0, $$1) -> !$$1;
+   euq g = ($$0, $$1) -> $$0 != $$1;
+   euq h = ($$0, $$1) -> !$$0 || !$$1;
+   euq i = ($$0, $$1) -> $$0 && $$1;
+   euq j = ($$0, $$1) -> $$0 == $$1;
+   euq k = ($$0, $$1) -> $$1;
+   euq l = ($$0, $$1) -> !$$0 || $$1;
+   euq m = ($$0, $$1) -> $$0;
+   euq n = ($$0, $$1) -> $$0 || !$$1;
+   euq o = ($$0, $$1) -> $$0 || $$1;
+   euq p = ($$0, $$1) -> true;
 
-public class euq implements euu {
-   private static final euq b = new euq();
-   public static final Codec<euq> a = Codec.unit(b);
-
-   private euq() {
-   }
-
-   @Override
-   public euv b() {
-      return euw.n;
-   }
-
-   @Override
-   public Set<eud<?>> a() {
-      return ImmutableSet.of(eug.j);
-   }
-
-   public boolean a(erp $$0) {
-      Float $$1 = $$0.c(eug.j);
-      if ($$1 != null) {
-         ayt $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
-   }
-
-   public static euu.a c() {
-      return () -> b;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

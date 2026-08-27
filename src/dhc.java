@@ -1,26 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dhc extends dfl {
-   public static final MapCodec<dhc> a = b(dhc::new);
-   protected static final float b = 6.0F;
-   protected static final exn c = dfc.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   @Override
-   public MapCodec<dhc> a() {
-      return a;
-   }
-
-   protected dhc(dtb.d $$0) {
-      super($$0);
-   }
+public class dhc extends dej implements dmc {
+   protected static final MapCodec<cwu> a = cwu.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dhc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dhc::b), u()).apply($$0, dhc::new));
+   protected static final float c = 3.0F;
+   protected static final evf d = dea.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final cwu e;
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c;
+   public MapCodec<? extends dhc> a() {
+      return b;
+   }
+
+   public dhc(ix<brc> $$0, float $$1, drc.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dhc(cwu $$0, drc.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static cwu a(ix<brc> $$0, float $$1) {
+      return new cwu(List.of(new cwu.a($$0, ayf.d($$1 * 20.0F))));
    }
 
    @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.a(awe.co);
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      eum $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   public cwu b() {
+      return this.e;
    }
 }

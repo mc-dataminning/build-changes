@@ -1,29 +1,66 @@
-import java.util.function.Function;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class eyq<T> implements eyh<T> {
-   private final Function<ir, eyo<T>> a;
+public class eyq {
+   @Nullable
+   private static eyx a;
 
-   public eyq(Function<ir, eyo<T>> $$0) {
-      this.a = $$0;
+   public static void a() {
+      if (a != null) {
+         b();
+         eyx.b();
+      }
    }
 
-   @Override
-   public boolean a(ir $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public static void b() {
+      a = null;
    }
 
-   @Override
-   public void a(eyl<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
+   public static void a(eyp.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
    }
 
-   @Override
-   public boolean b(ir $$0, T $$1) {
-      return false;
+   private static void c(eyp.b $$0) {
+      eyx $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public static void b(eyp.b $$0) {
+      eyx $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static eyx d(eyp.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         eyx $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static eyx a(eyz $$0) {
+      eyx $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(eyx $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

@@ -1,24 +1,28 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
 
-public record eax<WC extends eas>(eaz<WC> d, WC e) {
-   public static final Codec<eax<?>> a = lh.P.q().dispatch($$0 -> $$0.d, eaz::c);
-   public static final Codec<ja<eax<?>>> b = akp.a(li.aB, a);
-   public static final Codec<je<eax<?>>> c = jp.a(li.aB, a);
-
-   public boolean a(ayt $$0) {
-      return this.d.a(this.e, $$0);
+public class eax extends dzz<ecq> {
+   public eax(Codec<ecq> $$0) {
+      super($$0);
    }
 
-   public boolean a(eau $$0, duy $$1, Function<ir, ja<dcz>> $$2, ayt $$3, dyg $$4, dbh $$5, dux $$6) {
-      return ab.a($$1.g()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   @Override
+   public boolean a(eab<ecq> $$0) {
+      ecq $$1 = $$0.f();
+      aym $$2 = $$0.d();
+      io $$3 = $$0.e();
+      dbu $$4 = $$0.b();
+      int $$5 = 0;
+      io.a $$6 = new io.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public eaz<WC> a() {
-      return this.d;
-   }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
 
-   public WC b() {
-      return this.e;
+      return $$5 > 0;
    }
 }

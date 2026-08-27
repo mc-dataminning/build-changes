@@ -1,34 +1,22 @@
 import com.google.gson.JsonObject;
-import java.util.Date;
 import javax.annotation.Nullable;
 
-public class auo extends aul<String> {
-   public auo(String $$0) {
-      this($$0, null, null, null, null);
+public abstract class auo<T> {
+   @Nullable
+   private final T a;
+
+   public auo(@Nullable T $$0) {
+      this.a = $$0;
    }
 
-   public auo(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   @Nullable
+   T g() {
+      return this.a;
    }
 
-   @Override
-   public xe e() {
-      return xe.b(String.valueOf(this.g()));
+   boolean f() {
+      return false;
    }
 
-   public auo(JsonObject $$0) {
-      super(b($$0), $$0);
-   }
-
-   private static String b(JsonObject $$0) {
-      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("ip", this.g());
-         super.a($$0);
-      }
-   }
+   protected abstract void a(JsonObject var1);
 }

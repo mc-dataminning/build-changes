@@ -1,50 +1,92 @@
-public class ghs implements ghg<dsy> {
-   private final gga a;
+import org.joml.Matrix4f;
 
-   public ghs(ghh.a $$0) {
-      this.a = $$0.b();
+public abstract class ghs<T extends brw> {
+   protected static final float b = 0.025F;
+   protected final ghr c;
+   private final ffl a;
+   protected float d;
+   protected float e = 1.0F;
+
+   protected ghs(ght.a $$0) {
+      this.c = $$0.a();
+      this.a = $$0.h();
    }
 
-   public void a(dsy $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
-      dca $$6 = $$0.i();
-      if ($$6 != null) {
-         ir $$7 = $$0.az_().a($$0.f().g());
-         dtc $$8 = $$0.j();
-         if (!$$8.i()) {
-            ggc.a();
+   public final int b(T $$0, float $$1) {
+      io $$2 = io.a($$0.k($$1));
+      return gcj.a(this.a($$0, $$2), this.b($$0, $$2));
+   }
+
+   protected int b(T $$0, io $$1) {
+      return $$0.dP().a(dbi.a, $$1);
+   }
+
+   protected int a(T $$0, io $$1) {
+      return $$0.bQ() ? 15 : $$0.dP().a(dbi.b, $$1);
+   }
+
+   public boolean a(T $$0, gfo $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if ($$0.au) {
+         return true;
+      } else {
+         euh $$5 = $$0.h_().g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new euh($$0.du() - 2.0, $$0.dw() - 2.0, $$0.dA() - 2.0, $$0.du() + 2.0, $$0.dw() + 2.0, $$0.dA() + 2.0);
+         }
+
+         return $$1.a($$5);
+      }
+   }
+
+   public eum a(T $$0, float $$1) {
+      return eum.b;
+   }
+
+   public void a(T $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      if (this.b($$0)) {
+         this.a($$0, $$0.O_(), $$3, $$4, $$5, $$2);
+      }
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.cF() || $$0.ag() && $$0 == this.c.c;
+   }
+
+   public abstract akn a(T var1);
+
+   public ffl b() {
+      return this.a;
+   }
+
+   protected void a(T $$0, wx $$1, eyu $$2, gck $$3, int $$4, float $$5) {
+      double $$6 = this.c.b($$0);
+      if (!($$6 > 4096.0)) {
+         eum $$7 = $$0.dm().a(brx.c, 0, $$0.h($$5));
+         if ($$7 != null) {
+            boolean $$8 = !$$0.bY();
+            int $$9 = "deadmau5".equals($$1.getString()) ? -10 : 0;
             $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dfe.cj) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dsw.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               due $$9 = $$8.a(dfe.cb) ? due.b : due.a;
-               dtc $$10 = dfe.cj.n().a(dsw.c, $$9).a(dsw.a, $$8.c(dsv.a));
-               $$10 = $$10.a(dsw.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               ir $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dsv.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            $$2.a($$7.c, $$7.d + 0.5, $$7.e);
+            $$2.a(this.c.b());
+            $$2.b(-0.025F, -0.025F, 0.025F);
+            Matrix4f $$10 = $$2.c().a();
+            float $$11 = feb.Q().m.a(0.25F);
+            int $$12 = (int)($$11 * 255.0F) << 24;
+            ffl $$13 = this.b();
+            float $$14 = (float)(-$$13.a($$1) / 2);
+            $$13.a($$1, $$14, (float)$$9, 553648127, false, $$10, $$3, $$8 ? ffl.a.b : ffl.a.a, $$12, $$4);
+            if ($$8) {
+               $$13.a($$1, $$14, (float)$$9, -1, false, $$10, $$3, ffl.a.a, 0, $$4);
             }
 
             $$2.b();
-            ggc.b();
          }
       }
    }
 
-   private void a(ir $$0, dtc $$1, fbc $$2, gfg $$3, dca $$4, boolean $$5, int $$6) {
-      gfo $$7 = gfb.b($$1);
-      fbg $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, ayt.a(), $$1.a($$0), $$6);
-   }
-
-   @Override
-   public int aQ_() {
-      return 68;
+   protected float c(T $$0) {
+      return this.d;
    }
 }

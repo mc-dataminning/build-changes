@@ -1,26 +1,30 @@
-import java.util.function.Consumer;
+public class fko extends fmb {
+   private static final wx a = wx.c("options.chat.title");
 
-public class fko implements fkp {
-   private final xe b;
-   protected final flz a = new flz();
-
-   public fko(xe $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public xe a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(Consumer<fil> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public void a(fmt $$0) {
-      this.a.a();
-      fly.a(this.a, $$0, 0.5F, 0.16666667F);
+   public fko(flz $$0, fef $$1) {
+      super(
+         $$0,
+         $$1,
+         a,
+         new fee[]{
+            $$1.m(),
+            $$1.K(),
+            $$1.L(),
+            $$1.M(),
+            $$1.n(),
+            $$1.r(),
+            $$1.w(),
+            $$1.o(),
+            $$1.A(),
+            $$1.x(),
+            $$1.z(),
+            $$1.y(),
+            $$1.as(),
+            $$1.J(),
+            $$1.ae(),
+            $$1.V(),
+            $$1.ag()
+         }
+      );
    }
 }

@@ -1,172 +1,274 @@
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqx extends fpn<cqu> {
-   private static final akt D = new akt("container/stonecutter/scroller");
-   private static final akt E = new akt("container/stonecutter/scroller_disabled");
-   private static final akt F = new akt("container/stonecutter/recipe_selected");
-   private static final akt G = new akt("container/stonecutter/recipe_highlighted");
-   private static final akt H = new akt("container/stonecutter/recipe");
-   private static final akt I = new akt("textures/gui/container/stonecutter.png");
-   private static final int J = 12;
-   private static final int K = 15;
-   private static final int L = 4;
-   private static final int M = 3;
-   private static final int N = 16;
-   private static final int O = 18;
-   private static final int P = 54;
-   private static final int Q = 52;
-   private static final int R = 14;
-   private float S;
-   private boolean T;
-   private int U;
-   private boolean V;
+public class fqx {
+   private static final wx a = wx.c("selectWorld.newWorld");
+   private final List<Consumer<fqx>> b = new ArrayList<>();
+   private String c = a.getString();
+   private fqx.a d = fqx.a.a;
+   private bpt e = bpt.c;
+   @Nullable
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private fqw l;
+   private fqx.b m;
+   private final List<fqx.b> n = new ArrayList<>();
+   private final List<fqx.b> o = new ArrayList<>();
+   private dav p = new dav();
 
-   public fqx(cqu $$0, clx $$1, xe $$2) {
-      super($$0, $$1, $$2);
-      $$0.a(this::I);
-      this.s--;
+   public fqx(Path $$0, fqw $$1, Optional<akm<eha>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new fqx.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.b().c();
+      this.i = $$1.b().d();
+      this.k = this.c(this.c);
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(Consumer<fqx> $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   protected void a(fia $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
-      int $$6 = (int)(41.0F * this.S);
-      akt $$7 = this.F() ? D : E;
-      $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
-      int $$8 = this.z + 52;
-      int $$9 = this.A + 14;
-      int $$10 = this.U + 12;
-      this.a($$0, $$2, $$3, $$8, $$9, $$10);
-      this.b($$0, $$8, $$9, $$10);
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.b().d()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
+      }
+
+      boolean $$1 = this.i();
+      if ($$1 != this.l.b().c()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
+      }
+
+      for (Consumer<fqx> $$2 : this.b) {
+         $$2.accept(this);
+      }
    }
 
-   @Override
-   protected void a(fia $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.V) {
-         int $$3 = this.z + 52;
-         int $$4 = this.A + 14;
-         int $$5 = this.U + 12;
-         List<czc<cyy>> $$6 = this.w.m();
+   public void a(String $$0) {
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
+   }
 
-         for (int $$7 = this.U; $$7 < $$5 && $$7 < this.w.n(); $$7++) {
-            int $$8 = $$7 - this.U;
-            int $$9 = $$3 + $$8 % 4 * 16;
-            int $$10 = $$4 + $$8 / 4 * 18 + 2;
-            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
-               $$0.b(this.p, $$6.get($$7).b().a(this.m.r.I_()), $$1, $$2);
-            }
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
+      try {
+         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return v.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
          }
       }
    }
 
-   private void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = this.U; $$6 < $$5 && $$6 < this.w.n(); $$6++) {
-         int $$7 = $$6 - this.U;
-         int $$8 = $$3 + $$7 % 4 * 16;
-         int $$9 = $$7 / 4;
-         int $$10 = $$4 + $$9 * 18 + 2;
-         akt $$11;
-         if ($$6 == this.w.l()) {
-            $$11 = F;
-         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
-            $$11 = G;
-         } else {
-            $$11 = H;
-         }
+   public String b() {
+      return this.c;
+   }
 
-         $$0.a($$11, $$8, $$10 - 1, 16, 18);
+   public String c() {
+      return this.k;
+   }
+
+   public void a(fqx.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public fqx.a d() {
+      return this.l() ? fqx.a.d : this.d;
+   }
+
+   public void a(bpt $$0) {
+      this.e = $$0;
+      this.a();
+   }
+
+   public bpt e() {
+      return this.f() ? bpt.d : this.e;
+   }
+
+   public boolean f() {
+      return this.d() == fqx.a.b;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
+   }
+
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
+      } else {
+         return this.f == null ? this.d() == fqx.a.c : this.f;
       }
    }
 
-   private void b(fia $$0, int $$1, int $$2, int $$3) {
-      List<czc<cyy>> $$4 = this.w.m();
-
-      for (int $$5 = this.U; $$5 < $$3 && $$5 < this.w.n(); $$5++) {
-         int $$6 = $$5 - this.U;
-         int $$7 = $$1 + $$6 % 4 * 16;
-         int $$8 = $$6 / 4;
-         int $$9 = $$2 + $$8 * 18 + 2;
-         $$0.a($$4.get($$5).b().a(this.m.r.I_()), $$7, $$9);
-      }
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(dxt.a(this.h())));
+      this.a();
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      this.T = false;
-      if (this.V) {
-         int $$3 = this.z + 52;
-         int $$4 = this.A + 14;
-         int $$5 = this.U + 12;
-
-         for (int $$6 = this.U; $$6 < $$5; $$6++) {
-            int $$7 = $$6 - this.U;
-            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
-            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
-            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.w.b(this.m.s, $$6)) {
-               fgj.Q().ak().a(guh.a(avo.AR, 1.0F));
-               this.m.q.a(this.w.j, $$6);
-               return true;
-            }
-         }
-
-         $$3 = this.z + 119;
-         $$4 = this.A + 9;
-         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
-            this.T = true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+   public String h() {
+      return this.g;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.T && this.F()) {
-         int $$5 = this.A + 14;
-         int $$6 = $$5 + 54;
-         this.S = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
-         this.S = aym.a(this.S, 0.0F, 1.0F);
-         this.U = (int)((double)(this.S * (float)this.E()) + 0.5) * 4;
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
+   }
+
+   public boolean i() {
+      return this.l() ? false : this.h;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
+   }
+
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
+   }
+
+   public void a(fqw $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
+   }
+
+   public fqw k() {
+      return this.l;
+   }
+
+   public void a(fqw.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
+   }
+
+   protected boolean a(dbt $$0) {
+      dbt $$1 = this.l.g();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new fqw(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
          return true;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+         return false;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.F()) {
-         int $$4 = this.E();
-         float $$5 = (float)$$3 / (float)$$4;
-         this.S = aym.a(this.S - $$5, 0.0F, 1.0F);
-         this.U = (int)((double)(this.S * (float)$$4) + 0.5) * 4;
+   public boolean l() {
+      return this.l.d().c();
+   }
+
+   public void a(fqx.b $$0) {
+      this.m = $$0;
+      ix<eha> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
+      }
+   }
+
+   public fqx.b m() {
+      return this.m;
+   }
+
+   @Nullable
+   public fqt n() {
+      ix<eha> $$0 = this.m().c();
+      return $$0 != null ? fqt.a.get($$0.e()) : null;
+   }
+
+   public List<fqx.b> o() {
+      return this.n;
+   }
+
+   public List<fqx.b> p() {
+      return this.o;
+   }
+
+   private void r() {
+      jk<eha> $$0 = this.k().a().d(lf.aQ);
+      this.n.clear();
+      this.n.addAll(a($$0, awq.a).orElseGet(() -> $$0.h().map(fqx.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, awq.b).orElse(this.n));
+      ix<eha> $$1 = this.m.c();
+      if ($$1 != null) {
+         this.m = a(this.k(), $$1.e()).map(fqx.b::new).orElse(this.n.get(0));
+      }
+   }
+
+   private static Optional<ix<eha>> a(fqw $$0, Optional<akm<eha>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().d(lf.aQ).b($$1x));
+   }
+
+   private static Optional<List<fqx.b>> a(jk<eha> $$0, awm<eha> $$1) {
+      return $$0.b($$1).map($$0x -> $$0x.a().map(fqx.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(dav $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public dav q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", daw.a),
+      b("hardcore", daw.a),
+      c("creative", daw.b),
+      d("spectator", daw.d);
+
+      public final daw e;
+      public final wx f;
+      private final wx g;
+
+      private a(String $$0, daw $$1) {
+         this.e = $$1;
+         this.f = wx.c("selectWorld.gameMode." + $$0);
+         this.g = wx.c("selectWorld.gameMode." + $$0 + ".info");
       }
 
-      return true;
+      public wx a() {
+         return this.g;
+      }
    }
 
-   private boolean F() {
-      return this.V && this.w.n() > 12;
-   }
+   public static record b(@Nullable ix<eha> a) {
+      private static final wx b = wx.c("generator.custom");
 
-   protected int E() {
-      return (this.w.n() + 4 - 1) / 4 - 3;
-   }
+      public wx a() {
+         return Optional.ofNullable(this.a).flatMap(ix::e).map($$0 -> wx.c($$0.a().f("generator"))).orElse(b);
+      }
 
-   private void I() {
-      this.V = this.w.o();
-      if (!this.V) {
-         this.S = 0.0F;
-         this.U = 0;
+      public boolean b() {
+         return Optional.ofNullable(this.a).flatMap(ix::e).filter($$0 -> $$0.equals(ehb.d)).isPresent();
+      }
+
+      @Nullable
+      public ix<eha> c() {
+         return this.a;
       }
    }
 }

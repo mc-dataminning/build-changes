@@ -1,21 +1,31 @@
-public enum duj implements azg {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import org.apache.commons.io.FileUtils;
 
-   private final String d;
+public class duj extends dug {
+   private final dui a;
+   private final Path b;
 
-   private duj(String $$0) {
-      this.d = $$0;
+   public duj(dup $$0, Path $$1, dup $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new dui($$2, $$3, $$5);
    }
 
    @Override
-   public String toString() {
-      return this.d;
+   public CompletableFuture<Void> a(dag $$0, ud $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

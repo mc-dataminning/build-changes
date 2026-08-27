@@ -1,45 +1,32 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class etp extends eta {
-   public static final Codec<etp> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axu.a(axu.a(cxj.c.listOf(), 256), "explosions", List.of()).forGetter($$0x -> $$0x.c),
-                  esz.a(256).forGetter($$0x -> $$0x.d),
-                  axu.a(axu.h, "flight_duration").forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, etp::new)
-   );
-   public static final cxk b = new cxk(0, List.of());
-   private final List<cxj> c;
-   private final esz d;
-   private final Optional<Integer> e;
+public record etp(String b) implements etr {
+   public static final MapCodec<etp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(etp::c)).apply($$0, etp::new));
 
-   protected etp(List<euu> $$0, List<cxj> $$1, esz $$2, Optional<Integer> $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public static etr a(String $$0) {
+      return new etp($$0);
    }
 
    @Override
-   protected cuh a(cuh $$0, erp $$1) {
-      $$0.a(ke.T, b, this::a);
-      return $$0;
-   }
-
-   private cxk a(cxk $$0) {
-      List<cxj> $$1 = this.d.a($$0.b(), this.c, 256);
-      return new cxk(this.e.orElseGet($$0::a), $$1);
+   public etq a() {
+      return ets.b;
    }
 
    @Override
-   public etc b() {
-      return etd.H;
+   public evp a(eph $$0) {
+      return evp.c(this.b);
+   }
+
+   @Override
+   public Set<erw<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

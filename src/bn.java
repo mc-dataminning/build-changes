@@ -1,46 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bn(Optional<ja<dad>> b, cu.d c) {
-   public static final Codec<bn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(lh.f.r(), "enchantment").forGetter(bn::a), axu.a(cu.d.d, "levels", cu.d.c).forGetter(bn::b)).apply($$0, bn::new)
-   );
-
-   public bn(dad $$0, cu.d $$1) {
-      this(Optional.of($$0.l()), $$1);
+public class bn extends df<bn.a> {
+   @Override
+   public Codec<bn.a> a() {
+      return bn.a.a;
    }
 
-   public boolean a(dai $$0) {
-      if (this.b.isPresent()) {
-         dad $$1 = this.b.get().a();
-         int $$2 = $$0.a($$1);
-         if ($$2 == 0) {
-            return false;
-         }
+   public void a(aqo $$0, drd $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
 
-         if (this.c != cu.d.c && !this.c.d($$2)) {
-            return false;
-         }
-      } else if (this.c != cu.d.c) {
-         for (Entry<ja<dad>> $$3 : $$0.b()) {
-            if (this.c.d($$3.getIntValue())) {
-               return true;
-            }
-         }
+   public static record a(Optional<bc> b, Optional<ix<dea>> c, Optional<dl> d) implements df.a {
+      public static final Codec<bn.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     br.b.optionalFieldOf("player").forGetter(bn.a::a),
+                     le.e.r().optionalFieldOf("block").forGetter(bn.a::b),
+                     dl.a.optionalFieldOf("state").forGetter(bn.a::c)
+                  )
+                  .apply($$0, bn.a::new)
+         )
+         .validate(bn.a::a);
 
-         return false;
+      private static DataResult<bn.a> a(bn.a $$0) {
+         return $$0.c
+            .<DataResult<bn.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dea)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      return true;
-   }
+      public static an<bn.a> a(dea $$0) {
+         return am.e.a(new bn.a(Optional.empty(), Optional.of($$0.q()), Optional.empty()));
+      }
 
-   public Optional<ja<dad>> a() {
-      return this.b;
-   }
+      public boolean a(drd $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      }
 
-   public cu.d b() {
-      return this.c;
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<ix<dea>> b() {
+         return this.c;
+      }
+
+      public Optional<dl> c() {
+         return this.d;
+      }
    }
 }

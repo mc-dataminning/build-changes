@@ -1,28 +1,33 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.nio.charset.StandardCharsets;
 
-public class auw extends auv<GameProfile, auy> {
-   public auw(File $$0) {
-      super($$0);
+public class auw {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
+
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
+      }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   @Override
-   protected auu<GameProfile> a(JsonObject $$0) {
-      return new auy($$0);
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(auu::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

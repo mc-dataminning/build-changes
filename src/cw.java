@@ -1,39 +1,58 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record cw(uk e) {
-   public static final Codec<cw> a = vi.i.xmap(cw::new, cw::a);
-   public static final Codec<cw> b = uk.a.xmap(cw::new, cw::a);
-   public static final Codec<cw> c = axu.e(a, b);
-   public static final zc<ByteBuf, cw> d = za.o.a(cw::new, cw::a);
-
-   public boolean a(cuh $$0) {
-      cxf $$1 = $$0.a(ke.a, cxf.a);
-      return $$1.b(this.e);
+public class cw extends df<cw.a> {
+   @Override
+   public Codec<cw.a> a() {
+      return cw.a.a;
    }
 
-   public boolean a(brv $$0) {
-      return this.a(b($$0));
+   public void a(aqo $$0, ctq $$1, @Nullable brw $$2) {
+      eph $$3 = br.b($$0, $$2);
+      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
-   public boolean a(@Nullable vh $$0) {
-      return $$0 != null && uz.a(this.e, $$0, true);
-   }
+   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d) implements df.a {
+      public static final Codec<cw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(cw.a::a),
+                  ch.a.optionalFieldOf("item").forGetter(cw.a::b),
+                  br.b.optionalFieldOf("entity").forGetter(cw.a::c)
+               )
+               .apply($$0, cw.a::new)
+      );
 
-   public static uk b(brv $$0) {
-      uk $$1 = $$0.f(new uk());
-      if ($$0 instanceof cly) {
-         cuh $$2 = ((cly)$$0).gl().f();
-         if (!$$2.d()) {
-            $$1.a("SelectedItem", $$2.a($$0.dY()));
-         }
+      public static an<cw.a> a(bc $$0, Optional<ch> $$1, Optional<bc> $$2) {
+         return am.R.a(new cw.a(Optional.of($$0), $$1, $$2));
       }
 
-      return $$1;
-   }
+      public static an<cw.a> a(Optional<bc> $$0, Optional<ch> $$1, Optional<bc> $$2) {
+         return am.S.a(new cw.a($$0, $$1, $$2));
+      }
 
-   public uk a() {
-      return this.e;
+      public boolean a(aqo $$0, ctq $$1, eph $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
+      }
+
+      @Override
+      public void a(bd $$0) {
+         df.a.super.a($$0);
+         $$0.a(this.d, ".entity");
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<ch> b() {
+         return this.c;
+      }
+
+      public Optional<bc> c() {
+         return this.d;
+      }
    }
 }

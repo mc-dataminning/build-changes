@@ -1,67 +1,19 @@
-import javax.annotation.Nullable;
+public class gie extends giz<ciz, ftj<ciz>> {
+   private static final akn a = new akn("textures/entity/zombie/zombie.png");
+   private final float i;
 
-public class gie implements dbd {
-   private final int c;
-   private final int d;
-   protected final gid[][] a;
-   protected final dca b;
-
-   gie(dca $$0, int $$1, int $$2, gid[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
+   public gie(ght.a $$0, float $$1) {
+      super($$0, new ftb($$0.a(fvv.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gly<>(this, $$0.d()));
+      this.a(new glv<>(this, new ftb($$0.a(fvv.ai)), new ftb($$0.a(fvv.aj)), $$0.g()));
    }
 
-   @Override
-   public dtc a_(ir $$0) {
-      int $$1 = jt.a($$0.u()) - this.c;
-      int $$2 = jt.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
+   protected void a(ciz $$0, eyu $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
    }
 
-   @Override
-   public epe b_(ir $$0) {
-      int $$1 = jt.a($$0.u()) - this.c;
-      int $$2 = jt.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
-   }
-
-   @Override
-   public float a(iw $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public eot y_() {
-      return this.b.y_();
-   }
-
-   @Nullable
-   @Override
-   public dqc c_(ir $$0) {
-      int $$1 = jt.a($$0.u()) - this.c;
-      int $$2 = jt.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
-   }
-
-   @Override
-   public int a(ir $$0, dbl $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public int J_() {
-      return this.b.J_();
-   }
-
-   @Override
-   public int K_() {
-      return this.b.K_();
-   }
-
-   @Override
-   public boolean z_() {
-      return this.b.z_();
+   public akn a(ciz $$0) {
+      return a;
    }
 }

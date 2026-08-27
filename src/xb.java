@@ -1,88 +1,160 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import java.util.BitSet;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record xb(String b, List<xb.a> c, yb d) {
-   public static final Codec<xb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xb::a),
-               xb.a.d.listOf().fieldOf("parameters").forGetter(xb::b),
-               yb.b.b.optionalFieldOf("style", yb.a).forGetter(xb::c)
-            )
-            .apply($$0, xb::new)
-   );
+public class xb {
+   public static final Codec<xb> a = ayz.a(xb.a::values).dispatch(xb::c, xb.a::a);
+   public static final xb b = new xb(new BitSet(0), xb.a.b);
+   public static final xb c = new xb(new BitSet(0), xb.a.a);
+   public static final xu d = xu.a.a(n.i).a(new xd(xd.a.a, wx.c("chat.filtered")));
+   static final MapCodec<xb> e = MapCodec.unit(c);
+   static final MapCodec<xb> f = MapCodec.unit(b);
+   static final MapCodec<xb> g = axn.s.xmap(xb::new, xb::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xb.a j;
 
-   public static xb a(String $$0) {
-      return new xb($$0, List.of(xb.a.a, xb.a.c), yb.a);
+   private xb(BitSet $$0, xb.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public static xb b(String $$0) {
-      yb $$1 = yb.a.a(n.h).b(true);
-      return new xb($$0, List.of(xb.a.a, xb.a.c), $$1);
+   private xb(BitSet $$0) {
+      this.i = $$0;
+      this.j = xb.a.c;
    }
 
-   public static xb c(String $$0) {
-      yb $$1 = yb.a.a(n.h).b(true);
-      return new xb($$0, List.of(xb.a.b, xb.a.c), $$1);
+   public xb(int $$0) {
+      this(new BitSet($$0), xb.a.c);
    }
 
-   public static xb d(String $$0) {
-      return new xb($$0, List.of(xb.a.b, xb.a.a, xb.a.c), yb.a);
+   private xb.a c() {
+      return this.j;
    }
 
-   public xe a(xe $$0, xa.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xe.a(this.b, $$2).c(this.d);
+   private BitSet d() {
+      return this.i;
    }
 
-   private xe[] b(xe $$0, xa.a $$1) {
-      xe[] $$2 = new xe[this.c.size()];
+   public static xb a(vx $$0) {
+      xb.a $$1 = $$0.b(xb.a.class);
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xb.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xb($$0.w(), xb.a.c);
+      };
+   }
+
+   public static void a(vx $$0, xb $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xb.a.c) {
+         $$0.a($$1.i);
       }
-
-      return $$2;
    }
 
-   public String a() {
-      return this.b;
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   public List<xb.a> b() {
-      return this.c;
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
    }
 
-   public yb c() {
-      return this.d;
+   @Nullable
+   public wx b(String $$0) {
+      return switch (this.j) {
+         case a -> wx.b($$0);
+         case b -> null;
+         case c -> {
+            xl $$1 = wx.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(wx.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public static enum a implements azg {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c().orElse(xd.a)),
-      c("content", ($$0, $$1) -> $$0);
+   public boolean a() {
+      return this.j == xb.a.a;
+   }
 
-      public static final Codec<xb.a> d = azg.a(xb.a::values);
-      private final String e;
-      private final xb.a.a f;
+   public boolean b() {
+      return this.j == xb.a.b;
+   }
 
-      private a(String $$0, xb.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xb $$1 = (xb)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
       }
+   }
 
-      public xe a(xe $$0, xa.a $$1) {
-         return this.f.select($$0, $$1);
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements ayz {
+      a("pass_through", () -> xb.e),
+      b("fully_filtered", () -> xb.f),
+      c("partially_filtered", () -> xb.g);
+
+      private final String d;
+      private final Supplier<MapCodec<xb>> e;
+
+      private a(String $$0, Supplier<MapCodec<xb>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
       @Override
       public String c() {
-         return this.e;
+         return this.d;
       }
 
-      public interface a {
-         xe select(xe var1, xa.a var2);
+      private MapCodec<xb> a() {
+         return this.e.get();
       }
    }
 }

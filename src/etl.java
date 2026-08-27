@@ -1,58 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class etl extends eta {
-   public static final Codec<etl> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aks.a(li.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  axu.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  lh.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, etl::new)
+public record etl(akn b, ew.g c) implements eti {
+   public static final MapCodec<etl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akn.a.fieldOf("storage").forGetter(etl::c), ew.g.a.fieldOf("path").forGetter(etl::d)).apply($$0, etl::new)
    );
-   private final aks<eru> b;
-   private final long c;
-   private final ja<dqe<?>> d;
-
-   private etl(List<euu> $$0, aks<eru> $$1, long $$2, ja<dqe<?>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
 
    @Override
-   public etc b() {
-      return etd.v;
+   public eth b() {
+      return etj.f;
    }
 
-   @Override
-   public cuh a(cuh $$0, erp $$1) {
-      if ($$0.d()) {
-         return $$0;
-      } else {
-         $$0.b(ke.ad, new cxt(this.b, this.c));
-         return $$0;
+   private Optional<ut> c(eph $$0) {
+      ud $$1 = $$0.d().o().aL().a(this.b);
+
+      try {
+         List<va> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof ut $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
       }
+
+      return Optional.empty();
    }
 
    @Override
-   public void a(erv $$0) {
-      super.a($$0);
-      if ($$0.a().a(li.aU, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
-      }
+   public float b(eph $$0) {
+      return this.c($$0).map(ut::k).orElse(0.0F);
    }
 
-   public static eta.a<?> a(dqe<?> $$0, aks<eru> $$1) {
-      return a($$2 -> new etl($$2, $$1, 0L, $$0.a()));
+   @Override
+   public int a(eph $$0) {
+      return this.c($$0).map(ut::g).orElse(0);
    }
 
-   public static eta.a<?> a(dqe<?> $$0, aks<eru> $$1, long $$2) {
-      return a($$3 -> new etl($$3, $$1, $$2, $$0.a()));
+   public akn c() {
+      return this.b;
+   }
+
+   public ew.g d() {
+      return this.c;
    }
 }

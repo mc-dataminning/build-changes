@@ -1,57 +1,38 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record err<T>(aks<jn<T>> d, Codec<T> e, String f, err.a<T> g) {
-   private static final Logger h = LogUtils.getLogger();
-   public static final err<euu> a = new err<>(li.aW, euw.a, "predicates", f());
-   public static final err<etb> b = new err<>(li.aV, etd.c, "item_modifiers", f());
-   public static final err<eru> c = new err<>(li.aU, eru.d, "loot_tables", g());
+public class err extends eqs {
+   public static final Codec<wx> a = wz.a.validate($$0 -> cwz.h.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<err> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cwz.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eqr.a(100).forGetter($$0x -> $$0x.d))).apply($$0, err::new)
+   );
+   private final List<are<wx>> c;
+   private final eqr d;
 
-   public void a(erv $$0, aks<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   protected err(List<esn> $$0, List<are<wx>> $$1, eqr $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public <V> Optional<T> a(akt $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
+   @Override
+   protected ctq a(ctq $$0, eph $$1) {
+      $$0.a(kb.I, cwz.a, this::a);
+      return $$0;
    }
 
-   public static Stream<err<?>> a() {
-      return Stream.of(a, b, c);
+   @VisibleForTesting
+   public cwz a(cwz $$0) {
+      List<are<wx>> $$1 = this.d.a($$0.a(), this.c, 100);
+      return $$0.b($$1);
    }
 
-   private static <T extends erq> err.a<T> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
-
-   private static err.a<eru> g() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
-
-   public aks<jn<T>> b() {
-      return this.d;
-   }
-
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   public err.a<T> e() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(erv var1, aks<T> var2, T var3);
+   @Override
+   public equ b() {
+      return eqv.K;
    }
 }

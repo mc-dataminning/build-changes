@@ -1,21 +1,10 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class egs extends egl {
-   public static final Codec<egs> b = dtc.b.fieldOf("state").xmap(dtb.a::b, dfc::n).xmap(egs::new, $$0 -> $$0.c).codec();
-   private final dfc c;
+public abstract class egs {
+   public static final Codec<egs> b = le.U.q().dispatch(egs::b, egt::codec);
 
-   public egs(dfc $$0) {
-      this.c = $$0;
-   }
+   public abstract Stream<io> a_(egq var1, aym var2, io var3);
 
-   @Override
-   protected egm<?> a() {
-      return egm.f;
-   }
-
-   @Override
-   public dtc a(ayt $$0, ir $$1) {
-      iw.a $$2 = iw.a.a($$0);
-      return this.c.n().a(dmc.i, $$2);
-   }
+   public abstract egt<?> b();
 }

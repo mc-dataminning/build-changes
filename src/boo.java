@@ -1,48 +1,50 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class boo<E extends bom> {
-   private final int a;
-   private final ImmutableList<E> b;
+public interface boo<Msg> extends AutoCloseable {
+   String bx();
 
-   boo(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bon.a($$0);
+   void a(Msg var1);
+
+   @Override
+   default void close() {
    }
 
-   public static <E extends bom> boo<E> c() {
-      return new boo<>(ImmutableList.of());
+   default <Source> CompletableFuture<Source> b(Function<? super boo<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   @SafeVarargs
-   public static <E extends bom> boo<E> a(E... $$0) {
-      return new boo<>(ImmutableList.copyOf($$0));
+   default <Source> CompletableFuture<Source> c(Function<? super boo<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   public static <E extends bom> boo<E> a(List<E> $$0) {
-      return new boo<>($$0);
-   }
+   static <Msg> boo<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new boo<Msg>() {
+         @Override
+         public String bx() {
+            return $$0;
+         }
 
-   public boolean d() {
-      return this.b.isEmpty();
-   }
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
 
-   public Optional<E> b(ayt $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bon.a(this.b, $$1);
-      }
-   }
-
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bom> Codec<boo<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(boo::a, boo::e);
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

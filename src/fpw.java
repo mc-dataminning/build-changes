@@ -1,94 +1,152 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fpw extends fpn<cpm> {
-   private static final akt D = new akt("container/cartography_table/error");
-   private static final akt E = new akt("container/cartography_table/scaled_map");
-   private static final akt F = new akt("container/cartography_table/duplicated_map");
-   private static final akt G = new akt("container/cartography_table/map");
-   private static final akt H = new akt("container/cartography_table/locked");
-   private static final akt I = new akt("textures/gui/container/cartography_table.png");
+public abstract class fpw<B extends fxv.a<?>> extends flz {
+   private static final wx y = wx.c("gui.abuseReport.report_sent_msg");
+   private static final wx z = wx.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wx A = wx.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wx B = wx.c("gui.abuseReport.error.title").a(n.r);
+   private static final wx C = wx.c("gui.abuseReport.send.generic_error");
+   protected static final wx a = wx.c("gui.abuseReport.send");
+   protected static final wx b = wx.c("gui.abuseReport.observed_what");
+   protected static final wx c = wx.c("gui.abuseReport.select_reason");
+   private static final wx D = wx.c("gui.abuseReport.describe");
+   protected static final wx d = wx.c("gui.abuseReport.more_comments");
+   private static final wx E = wx.c("gui.abuseReport.comments");
+   protected static final int r = 20;
+   protected static final int s = 280;
+   protected static final int u = 8;
+   private static final Logger F = LogUtils.getLogger();
+   protected final flz v;
+   protected final fxz w;
+   protected B x;
 
-   public fpw(cpm $$0, clx $$1, xe $$2) {
-      super($$0, $$1, $$2);
-      this.s -= 2;
+   protected fpw(wx $$0, flz $$1, fxz $$2, B $$3) {
+      super($$0);
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected fgs a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.w.a().b();
+      fgs $$4 = new fgs(this.p, 0, 0, $$0, $$1, D, E);
+      $$4.a(this.x.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   @Override
-   protected void a(fia $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
-      cuh $$6 = this.w.b(1).g();
-      boolean $$7 = $$6.a(cuk.vU);
-      boolean $$8 = $$6.a(cuk.sl);
-      boolean $$9 = $$6.a(cuk.hg);
-      cuh $$10 = this.w.b(0).g();
-      eqr $$11 = $$10.a(ke.z);
-      boolean $$12 = false;
-      eqt $$13;
-      if ($$11 != null) {
-         $$13 = cuq.a($$11, this.m.r);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+   protected void m() {
+      this.x.a(this.w).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(flg.a(z, ww.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
                }
+
+               this.a($$1x);
             }
 
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
-            }
-         }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
-   private void a(fia $$0, @Nullable eqr $$1, @Nullable eqt $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.z;
-      int $$8 = this.A;
-      if ($$4 && !$$6) {
-         $$0.a(E, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(F, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(F, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(H, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
+   private void C() {
+      this.E();
+      this.m.a(flg.a(A, y, ww.d, () -> this.m.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      F.error("Encountered error while sending abuse report", $$0);
+      wx $$2;
+      if ($$0.getCause() instanceof xx $$1) {
+         $$2 = $$1.a();
       } else {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$2 = C;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(wx $$0) {
+      wx $$1 = $$0.f().a(n.m);
+      this.m.a(flg.a(B, $$1, ww.k, () -> this.m.a(this)));
+   }
+
+   void D() {
+      if (this.x.b()) {
+         this.w.a(this.x.e().b());
       }
    }
 
-   private void a(fia $$0, @Nullable eqr $$1, @Nullable eqt $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         this.m.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
-         $$0.e();
+   void E() {
+      this.w.a(null);
+   }
+
+   @Override
+   public void d() {
+      if (this.x.b()) {
+         this.m.a(new fpw.a());
+      } else {
+         this.m.a(this.v);
+      }
+   }
+
+   @Override
+   public void j() {
+      this.D();
+      super.j();
+   }
+
+   class a extends fpb {
+      private static final wx c = wx.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wx d = wx.c("gui.abuseReport.discard.content");
+      private static final wx r = wx.c("gui.abuseReport.discard.return");
+      private static final wx s = wx.c("gui.abuseReport.discard.draft");
+      private static final wx u = wx.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(c, d, d);
+      }
+
+      @Override
+      protected fjo m() {
+         fjr $$0 = fjr.d().a(8);
          $$0.c().b();
+         fjr $$1 = $$0.a(fjr.e().a(8));
+         $$1.a(fga.a(r, $$0x -> this.d()).a());
+         $$1.a(fga.a(s, $$0x -> {
+            fpw.this.D();
+            this.m.a(fpw.this.v);
+         }).a());
+         $$0.a(fga.a(u, $$0x -> {
+            fpw.this.E();
+            this.m.a(fpw.this.v);
+         }).a());
+         return $$0;
+      }
+
+      @Override
+      public void d() {
+         this.m.a(fpw.this);
+      }
+
+      @Override
+      public boolean aE_() {
+         return false;
       }
    }
 }

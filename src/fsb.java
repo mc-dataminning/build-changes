@@ -1,60 +1,94 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public abstract class fsb extends fsf {
-   private static final fka i = new fka(
-      new akt("recipe_book/furnace_filter_enabled"),
-      new akt("recipe_book/furnace_filter_disabled"),
-      new akt("recipe_book/furnace_filter_enabled_highlighted"),
-      new akt("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   @Nullable
-   private cyv j;
+public class fsb<T extends brw> extends ftf<T> {
+   private final fvw a;
+   private final fvw[] b;
+   private final fvw f;
 
-   @Override
-   protected void a() {
-      this.f.a(i);
+   public fsb(fvw $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fvw[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   }
+
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("head", fwb.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvy.a);
+      float $$2 = 0.0F;
+      fwb $$3 = fwb.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = ayf.b($$2) * 9.0F;
+         float $$6 = -2.0F + ayf.b((float)($$4 * 2) * 0.25F);
+         float $$7 = ayf.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fvy.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = ayf.b($$2) * 7.0F;
+         float $$10 = 2.0F + ayf.b((float)($$8 * 2) * 0.25F);
+         float $$11 = ayf.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fvy.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = ayf.b($$2) * 5.0F;
+         float $$14 = 11.0F + ayf.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = ayf.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fvy.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fwc.a($$0, 64, 32);
    }
 
    @Override
-   public void a(@Nullable cre $$0) {
-      super.a($$0);
-      if ($$0 != null && $$0.e < this.g.p()) {
-         this.e.a();
-      }
+   public fvw a() {
+      return this.a;
    }
 
    @Override
-   public void a(czc<?> $$0, List<cre> $$1) {
-      cuh $$2 = $$0.b().a(this.h.r.I_());
-      this.e.a($$0);
-      this.e.a(cyv.a($$2), $$1.get(2).f, $$1.get(2).g);
-      jj<cyv> $$3 = $$0.b().a();
-      cre $$4 = $$1.get(1);
-      if ($$4.g().d()) {
-         if (this.j == null) {
-            this.j = cyv.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.K())).map(cuh::new));
-         }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-         this.e.a(this.j, $$4.f, $$4.g);
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + ayf.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = ayf.b($$6) * 9.0F;
+         this.b[$$7].d = ayf.a($$6) * 9.0F;
+         $$6++;
       }
 
-      Iterator<cyv> $$5 = $$3.iterator();
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
 
-      for (int $$6 = 0; $$6 < 2; $$6++) {
-         if (!$$5.hasNext()) {
-            return;
-         }
-
-         cyv $$7 = $$5.next();
-         if (!$$7.c()) {
-            cre $$8 = $$1.get($$6);
-            this.e.a($$7, $$8.f, $$8.g);
-         }
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + ayf.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = ayf.b($$6) * 7.0F;
+         this.b[$$8].d = ayf.a($$6) * 7.0F;
+         $$6++;
       }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + ayf.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = ayf.b($$6) * 5.0F;
+         this.b[$$9].d = ayf.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
-
-   protected abstract Set<cuc> b();
 }

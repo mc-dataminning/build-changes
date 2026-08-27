@@ -1,16 +1,9 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-public class dtc extends dtb.a {
-   public static final Codec<dtc> b = a(lh.e.q(), dfc::n).stable();
-
-   public dtc(dfc $$0, Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$1, MapCodec<dtc> $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dtc x() {
-      return this;
+public class dtc {
+   public static MapCodec<? extends dta> a(jk<MapCodec<? extends dta>> $$0) {
+      jk.a($$0, "noise", dwy.c);
+      jk.a($$0, "flat", dwq.c);
+      return jk.a($$0, "debug", dwm.c);
    }
 }

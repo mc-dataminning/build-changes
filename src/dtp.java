@@ -1,20 +1,24 @@
-public enum dtp implements azg {
-   a("head"),
-   b("foot");
+import java.util.List;
+import java.util.function.Predicate;
 
-   private final String c;
+public interface dtp<T> {
+   int a(T var1);
 
-   private dtp(String $$0) {
-      this.c = $$0;
-   }
+   boolean a(Predicate<T> var1);
 
-   @Override
-   public String toString() {
-      return this.c;
-   }
+   T a(int var1);
 
-   @Override
-   public String c() {
-      return this.c;
+   void a(vx var1);
+
+   void b(vx var1);
+
+   int a();
+
+   int b();
+
+   dtp<T> c();
+
+   public interface a {
+      <A> dtp<A> create(int var1, jc<A> var2, dtq<A> var3, List<A> var4);
    }
 }

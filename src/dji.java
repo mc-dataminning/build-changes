@@ -1,78 +1,68 @@
 import com.mojang.serialization.MapCodec;
 
-public class dji extends dfc implements dhw, dio {
+public class dji extends dea implements ded {
    public static final MapCodec<dji> a = b(dji::new);
-   public static final dua<iy> b = dts.T;
 
    @Override
    public MapCodec<dji> a() {
       return a;
    }
 
-   protected dji(dtb.d $$0) {
+   public dji(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, iy.k));
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      iw $$1 = $$0.k();
-      iw $$2;
-      if ($$1.o() == iw.a.b) {
-         $$2 = $$0.g().g();
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      if (!$$0.a_($$1.c()).a((daf)$$0, $$1)) {
+         return false;
       } else {
-         $$2 = iw.b;
-      }
+         for (io $$3 : io.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(avx.aL)) {
+               return true;
+            }
+         }
 
-      return this.n().a(b, iy.a($$1, $$2));
-   }
-
-   @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dre($$0, $$1);
-   }
-
-   @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      dqc $$5 = $$1.c_($$2);
-      if ($$5 instanceof dre && $$3.gK()) {
-         $$3.a((dre)$$5);
-         return bqa.a($$1.C);
-      } else {
-         return bqa.d;
+         return false;
       }
    }
 
-   public static boolean a(ent.c $$0, ent.c $$1) {
-      iw $$2 = m($$0.b());
-      iw $$3 = m($$1.b());
-      iw $$4 = n($$0.b());
-      iw $$5 = n($$1.b());
-      dre.a $$6 = dre.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dre.a.b : dre.a.a);
-      boolean $$7 = $$6 == dre.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
    }
 
-   public static iw m(dtc $$0) {
-      return $$0.c(b).a();
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (io $$6 : io.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         drd $$7 = $$0.a_($$6);
+         if ($$7.a(dec.on)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dec.ow)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dec.on.n() : dec.ow.n(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dec.on.n(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dec.ow.n(), 3);
+      }
    }
 
-   public static iw n(dtc $$0) {
-      return $$0.c(b).b();
+   @Override
+   public ded.a ar_() {
+      return ded.a.a;
    }
 }

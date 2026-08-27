@@ -8,11 +8,11 @@ import net.minecraft.obfuscate.DontObfuscate;
 @Name("minecraft.ChunkRegionWrite")
 @Label("Region File Write")
 @DontObfuscate
-public class ChunkRegionWriteEvent extends bmz {
+public class ChunkRegionWriteEvent extends bmv {
    public static final String EVENT_NAME = "minecraft.ChunkRegionWrite";
    public static final EventType TYPE = EventType.getEventType(ChunkRegionWriteEvent.class);
 
-   public ChunkRegionWriteEvent(dwo $$0, dbh $$1, dwn $$2, int $$3) {
+   public ChunkRegionWriteEvent(dup $$0, dag $$1, duo $$2, int $$3) {
       super($$0, $$1, $$2, $$3);
    }
 }

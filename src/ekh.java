@@ -1,26 +1,55 @@
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-@FunctionalInterface
-public interface ekh<C extends eek> {
-   Optional<ekg<C>> createGenerator(ekh.a<C> var1);
+public class ekh extends ehl {
+   public static final MapCodec<ekh> d = a(ekh::new);
 
-   static <C extends eek> ekh<C> simple(Predicate<ekh.a<C>> $$0, ekg<C> $$1) {
-      Optional<ekg<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public ekh(ehl.c $$0) {
+      super($$0);
    }
 
-   static <C extends eek> Predicate<ekh.a<C>> checkForBiomeOnTop(dyu.a $$0) {
-      return $$1 -> $$1.a($$0);
+   @Override
+   public Optional<ehl.b> a(ehl.a $$0) {
+      dkn $$1 = dkn.a($$0.f());
+      io $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ehl.b($$2, (Consumer<eid>)($$3 -> this.a($$3, $$0, $$2, $$1))));
    }
 
-   public static record a<C extends eek>(duz a, ddd b, dzi c, long d, dbh e, C f, dcc g, Predicate<ja<dcz>> h, enu i, jo j) {
-      public boolean a(dyu.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ja<dcz> $$4 = this.a.c().getNoiseBiome(jl.a($$1), jl.a($$3), jl.a($$2), this.c.b());
-         return this.h.test($$4);
+   private void a(eid $$0, ehl.a $$1, io $$2, dkn $$3) {
+      List<ekg.i> $$4 = Lists.newLinkedList();
+      ekg.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(dbu $$0, dbs $$1, dta $$2, aym $$3, ehd $$4, dag $$5, eia $$6) {
+      io.a $$7 = new io.a();
+      int $$8 = $$0.I_();
+      ehd $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.u($$7) && !$$0.a_($$7).k()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dec.m.n(), 2);
+               }
+            }
+         }
       }
+   }
+
+   @Override
+   public ehu<?> e() {
+      return ehu.p;
    }
 }

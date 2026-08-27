@@ -1,66 +1,82 @@
-public class geb extends gdu {
-   protected geb(fzn $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-   }
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   @Override
-   public gcy b() {
-      return gcy.b;
-   }
+public class geb {
+   private final gdx a;
+   private final gdu b;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   public geb(gdx $$0, gdu $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         ir $$0 = ir.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(iw.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((dbg)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public static class a implements gcx<le> {
-      private final gdp a;
+   public gdu a() {
+      return this.b;
+   }
 
-      public a(gdp $$0) {
-         this.a = $$0;
+   public Predicate<drd> a(dre<dea, drd> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<geb> {
+      public geb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new geb(this.b($$3), (gdu)$$2.deserialize($$3.get("apply"), gdu.class));
       }
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         geb $$8 = new geb($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         if ($$1.z_()) {
-            $$8.a(1.0F, 1.0F, 0.0F);
-         }
+      private gdx b(JsonObject $$0) {
+         return $$0.has("when") ? a(axv.u($$0, "when")) : gdx.b;
+      }
 
-         return $$8;
+      @VisibleForTesting
+      static gdx a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gdx> $$2 = Streams.stream(axv.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gea($$2);
+            } else if ($$0.has("AND")) {
+               List<gdx> $$3 = Streams.stream(axv.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gdw($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gdw($$1.stream().map(geb.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static gdx a(Entry<String, JsonElement> $$0) {
+         return new gdy($$0.getKey(), $$0.getValue().getAsString());
       }
    }
 }

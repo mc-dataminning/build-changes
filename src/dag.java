@@ -1,49 +1,205 @@
-import java.util.Optional;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class dag {
-   private static final bsc[] O = new bsc[]{bsc.f, bsc.e, bsc.d, bsc.c};
-   public static final dad a = a("protection", new dam(dad.a(awm.bF, 10, 4, dad.a(1, 11), dad.a(12, 11), 1, O), dam.a.a));
-   public static final dad b = a("fire_protection", new dam(dad.a(awm.bF, 5, 4, dad.a(10, 8), dad.a(18, 8), 2, O), dam.a.b));
-   public static final dad c = a("feather_falling", new dam(dad.a(awm.bB, 5, 4, dad.a(5, 6), dad.a(11, 6), 2, O), dam.a.c));
-   public static final dad d = a("blast_protection", new dam(dad.a(awm.bF, 2, 4, dad.a(5, 8), dad.a(13, 8), 4, O), dam.a.d));
-   public static final dad e = a("projectile_protection", new dam(dad.a(awm.bF, 5, 4, dad.a(3, 6), dad.a(9, 6), 2, O), dam.a.e));
-   public static final dad f = a("respiration", new dad(dad.a(awm.bE, 2, 3, dad.a(10, 10), dad.a(40, 10), 4, O)));
-   public static final dad g = a("aqua_affinity", new dad(dad.a(awm.bE, 2, 1, dad.a(1), dad.a(41), 4, O)));
-   public static final dad h = a("thorns", new dap(dad.a(awm.bF, awm.bD, 1, 3, dad.a(10, 20), dad.a(60, 20), 8, O)));
-   public static final dad i = a("depth_strider", new dat(dad.a(awm.bB, 2, 3, dad.a(10, 10), dad.a(25, 10), 4, O)));
-   public static final dad j = a("frost_walker", new dah(dad.a(awm.bB, 2, 2, dad.a(10, 10), dad.a(25, 10), 4, bsc.c)));
-   public static final dad k = a("binding_curse", new daa(dad.a(awm.bO, 1, 1, dad.a(25), dad.a(50), 8, O)));
-   public static final dad l = a("soul_speed", new dan(dad.a(awm.bB, 1, 3, dad.a(10, 10), dad.a(25, 10), 8, bsc.c)));
-   public static final dad m = a("swift_sneak", new dao(dad.a(awm.bC, 1, 3, dad.a(25, 25), dad.a(75, 25), 8, bsc.d)));
-   public static final dad n = a("sharpness", new dab(dad.a(awm.bH, awm.bG, 10, 5, dad.a(1, 11), dad.a(21, 11), 1, bsc.a), Optional.empty()));
-   public static final dad o = a("smite", new dab(dad.a(awm.bH, awm.bG, 5, 5, dad.a(5, 8), dad.a(25, 8), 2, bsc.a), Optional.of(awh.D)));
-   public static final dad p = a("bane_of_arthropods", new dab(dad.a(awm.bH, awm.bG, 5, 5, dad.a(5, 8), dad.a(25, 8), 2, bsc.a), Optional.of(awh.C)));
-   public static final dad q = a("knockback", new dad(dad.a(awm.bG, 5, 2, dad.a(5, 20), dad.a(55, 20), 2, bsc.a)));
-   public static final dad r = a("fire_aspect", new dad(dad.a(awm.bG, 2, 2, dad.a(10, 20), dad.a(60, 20), 4, bsc.a)));
-   public static final dad s = a("looting", new daj(dad.a(awm.bG, 2, 3, dad.a(15, 9), dad.a(65, 9), 4, bsc.a)));
-   public static final dad t = a("sweeping_edge", new dad(dad.a(awm.bG, 2, 3, dad.a(5, 9), dad.a(20, 9), 4, bsc.a)));
-   public static final dad u = a("efficiency", new dad(dad.a(awm.bI, 10, 5, dad.a(1, 10), dad.a(51, 10), 1, bsc.a)));
-   public static final dad v = a("silk_touch", new dar(dad.a(awm.bJ, 1, 1, dad.a(15), dad.a(65), 8, bsc.a)));
-   public static final dad w = a("unbreaking", new dac(dad.a(awm.bM, 5, 3, dad.a(5, 8), dad.a(55, 8), 2, bsc.a)));
-   public static final dad x = a("fortune", new daj(dad.a(awm.bJ, 2, 3, dad.a(15, 9), dad.a(65, 9), 4, bsc.a)));
-   public static final dad y = a("potatofication", new dad(dad.a(awm.bI, 10, 5, dad.a(1, 10), dad.a(16, 10), 1, bsc.a)));
-   public static final dad z = a("power", new dad(dad.a(awm.bN, 10, 5, dad.a(1, 10), dad.a(16, 10), 1, bsc.a)));
-   public static final dad A = a("punch", new dad(dad.a(awm.bN, 2, 2, dad.a(12, 20), dad.a(37, 20), 4, bsc.a)));
-   public static final dad B = a("flame", new dad(dad.a(awm.bN, 2, 1, dad.a(20), dad.a(50), 4, bsc.a)));
-   public static final dad C = a("infinity", new czy(dad.a(awm.bN, 1, 1, dad.a(20), dad.a(50), 8, bsc.a)));
-   public static final dad D = a("luck_of_the_sea", new daj(dad.a(awm.bK, 2, 3, dad.a(15, 9), dad.a(65, 9), 4, bsc.a)));
-   public static final dad E = a("lure", new dad(dad.a(awm.bK, 2, 3, dad.a(15, 9), dad.a(65, 9), 4, bsc.a)));
-   public static final dad F = a("loyalty", new dad(dad.a(awm.bL, 5, 3, dad.a(12, 7), dad.a(50), 2, bsc.a)));
-   public static final dad G = a("impaling", new dab(dad.a(awm.bL, 2, 5, dad.a(1, 8), dad.a(21, 8), 4, bsc.a), Optional.of(awh.B)));
-   public static final dad H = a("riptide", new daq(dad.a(awm.bL, 2, 3, dad.a(17, 7), dad.a(50), 4, bsc.a)));
-   public static final dad I = a("channeling", new dad(dad.a(awm.bL, 1, 1, dad.a(25), dad.a(50), 8, bsc.a)));
-   public static final dad J = a("multishot", new dal(dad.a(awm.bP, 2, 1, dad.a(20), dad.a(50), 4, bsc.a)));
-   public static final dad K = a("quick_charge", new dad(dad.a(awm.bP, 5, 3, dad.a(12, 20), dad.a(50), 2, bsc.a)));
-   public static final dad L = a("piercing", new czz(dad.a(awm.bP, 10, 4, dad.a(1, 10), dad.a(50), 1, bsc.a)));
-   public static final dad M = a("mending", new dak(dad.a(awm.bM, 2, 1, dad.a(25, 25), dad.a(75, 25), 4, bsc.values())));
-   public static final dad N = a("vanishing_curse", new das(dad.a(awm.bQ, 1, 1, dad.a(25), dad.a(50), 8, bsc.values())));
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final dag b = new dag(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   private static dad a(String $$0, dad $$1) {
-      return jn.a(lh.f, $$0, $$1);
+   public dag(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public dag(io $$0) {
+      this.e = jq.a($$0.u());
+      this.f = jq.a($$0.w());
+   }
+
+   public dag(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
+   }
+
+   public static dag a(int $$0, int $$1) {
+      return new dag($$0 << 5, $$1 << 5);
+   }
+
+   public static dag b(int $$0, int $$1) {
+      return new dag(($$0 << 5) + 31, ($$1 << 5) + 31);
+   }
+
+   public long a() {
+      return c(this.e, this.f);
+   }
+
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static long a(io $$0) {
+      return c(jq.a($$0.u()), jq.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dag $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+      }
+   }
+
+   public int b() {
+      return this.a(8);
+   }
+
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return jq.c(this.e);
+   }
+
+   public int e() {
+      return jq.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public io a(int $$0, int $$1, int $$2) {
+      return new io(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return jq.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return jq.a(this.f, $$0);
+   }
+
+   public io c(int $$0) {
+      return new io(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public io l() {
+      return new io(this.d(), 0, this.e());
+   }
+
+   public int a(dag $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(dag $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<dag> a(dag $$0, int $$1) {
+      return a(new dag($$0.e - $$1, $$0.f - $$1), new dag($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<dag> a(final dag $$0, final dag $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dag>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dag e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super dag> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new dag($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new dag($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

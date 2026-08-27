@@ -1,48 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bxr extends bug<cll> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
+public class bxr extends buj<cll> {
    public bxr() {
-      super(ImmutableMap.of(cbr.c, cbs.a, cbr.n, cbs.c));
+      super(ImmutableMap.of());
    }
 
-   protected boolean b(aqt $$0, cll $$1) {
-      if ($$0.Z() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.Z();
-         iz $$2 = $$1.dZ().c(cbr.c).get();
-         return $$2.a() == $$0.af() && $$2.b().a($$1.ds(), 1.73);
+   protected boolean a(aqn $$0, cll $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(aqn $$0, cll $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bts<?> $$3 = $$1.dS();
+         if (!$$3.c(cnn.g)) {
+            $$3.b(cbu.t);
+            $$3.b(cbu.m);
+            $$3.b(cbu.n);
+            $$3.b(cbu.r);
+            $$3.b(cbu.q);
+         }
+
+         $$3.a(cnn.g);
       }
    }
 
-   protected void a(aqt $$0, cll $$1, long $$2) {
-      btp<cll> $$3 = $$1.dZ();
-      $$3.a(cbr.J, $$2);
-      $$3.c(cbr.c).ifPresent($$1x -> $$3.a(cbr.n, new buj($$1x.b())));
-      $$1.gN();
-      this.a($$0, $$1);
-      if ($$1.gM()) {
-         $$1.gK();
+   protected void c(aqn $$0, cll $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void a(aqt $$0, cll $$1) {
+   public static boolean b(bsq $$0) {
+      return $$0.dS().a(cbu.A);
    }
 
-   protected boolean b(aqt $$0, cll $$1, long $$2) {
-      Optional<iz> $$3 = $$1.dZ().c(cbr.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iz $$4 = $$3.get();
-         return $$4.a() == $$0.af() && $$4.b().a($$1.ds(), 1.73);
-      }
+   public static boolean c(bsq $$0) {
+      return $$0.dS().a(cbu.x);
    }
 }

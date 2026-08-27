@@ -1,69 +1,88 @@
-public class adq implements zl<abw> {
-   public static final zc<wp, adq> a = zl.a(adq::a, adq::new);
-   private final int b;
-   private final daz c;
-   private final int d;
-   private final int e;
+public class adq implements ze<abq> {
+   public static final yv<vx, adq> a = ze.a(adq::a, adq::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
    private final boolean f;
    private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-   public adq(int $$0, daz $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public adq(clv $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
    }
 
-   private adq(wp $$0) {
-      this.b = $$0.l();
-      this.c = daz.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   private adq(vx $$0) {
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
    }
 
-   private void a(wp $$0) {
-      $$0.c(this.b);
-      daz.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   private void a(vx $$0) {
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
    }
 
    @Override
-   public zn<adq> a() {
-      return agj.R;
+   public zg<adq> a() {
+      return agc.Z;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public daz e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
+   public boolean b() {
       return this.f;
    }
 
-   public boolean i() {
+   public boolean e() {
       return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
+   }
+
+   public float i() {
+      return this.k;
    }
 }

@@ -1,104 +1,107 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+public class giq<T extends cib> extends ghs<T> {
+   private static final gqd g = gqd.c("item_frame", "map=false");
+   private static final gqd h = gqd.c("item_frame", "map=true");
+   private static final gqd i = gqd.c("glow_item_frame", "map=false");
+   private static final gqd j = gqd.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final gir k;
+   private final gde l;
 
-public class giq implements gis.a {
-   final fgj a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private giq.a d;
-
-   public giq(fgj $$0) {
-      this.a = $$0;
+   public giq(ght.a $$0) {
+      super($$0);
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   @Override
-   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ad.c();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gvd $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new giq.a($$6, $$2, $$4);
+   protected int a(T $$0, io $$1) {
+      return $$0.ak() == bsc.V ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
+
+   public void a(T $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      it $$6 = $$0.cH();
+      eum $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dH()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dF()));
+      boolean $$9 = $$0.ch();
+      ctq $$10 = $$0.E();
+      if (!$$9) {
+         gqc $$11 = this.l.a().a();
+         gqd $$12 = this.a($$0, $$10);
+         $$3.a();
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(gcz.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, gnm.d);
+         $$3.b();
+      }
+
+      if (!$$10.e()) {
+         eoj $$13 = $$0.G();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
          } else {
-            this.d = null;
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
+
+         int $$14 = $$13 != null ? $$0.I() % 4 * 2 : $$0.I();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13 != null) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            eol $$16 = cty.a($$13, $$0.dP());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               feb.Q().j.j().a($$3, $$4, $$13, $$16, true, $$17);
+            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, ctn.i, $$18, gnm.d, $$3, $$4, $$0.dP(), $$0.al());
          }
       }
 
-      if (this.d != null) {
-         Map<dbh, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.m().b().d * 0.85;
+      $$3.b();
+   }
 
-         for (Entry<dbh, String> $$9 : this.d.b.entrySet()) {
-            dbh $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ak() == bsc.V ? $$1 : $$2;
+   }
 
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gis.a($$0, $$1, $$14, (double)jt.a($$10.e, 8), $$8 + (double)$$13, (double)jt.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
+   private gqd a(T $$0, ctq $$1) {
+      boolean $$2 = $$0.ak() == bsc.V;
+      if ($$1.a(ctt.rU)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
       }
    }
 
-   final class a {
-      final Map<dbh, String> b;
-      final CompletableFuture<Map<dbh, String>> c;
+   public eum a(T $$0, float $$1) {
+      return new eum((double)((float)$$0.cH().j() * 0.3F), -0.25, (double)((float)$$0.cH().l() * 0.3F));
+   }
 
-      a(gvd $$0, double $$1, double $$2) {
-         fzn $$3 = giq.this.a.r;
-         aks<dca> $$4 = $$3.af();
-         int $$5 = jt.a($$1);
-         int $$6 = jt.a($$2);
-         Builder<dbh, String> $$7 = ImmutableMap.builder();
-         fzj $$8 = $$3.i();
+   public akn a(T $$0) {
+      return gnu.e;
+   }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dbh $$11 = new dbh($$9, $$10);
-               String $$12 = "";
-               dvi $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.D() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            aqt $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dbh, String> $$5x = ImmutableMap.builder();
-               aqr $$6x = $$4x.l();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dbh $$9x = new dbh($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+   protected boolean b(T $$0) {
+      if (feb.M() && !$$0.E().e() && $$0.E().b(kb.f) && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bY() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
       }
+   }
+
+   protected void a(T $$0, wx $$1, eyu $$2, gck $$3, int $$4, float $$5) {
+      super.a($$0, $$0.E().x(), $$2, $$3, $$4, $$5);
    }
 }

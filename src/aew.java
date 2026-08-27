@@ -1,29 +1,39 @@
-public class aew implements zl<abw> {
-   public static final zc<we, aew> a = zl.a(aew::a, aew::new);
+import javax.annotation.Nullable;
+
+public class aew implements ze<abq> {
+   public static final yv<vx, aew> a = ze.a(aew::a, aew::new);
    private final int b;
+   private final int c;
 
-   public aew(int $$0) {
-      this.b = $$0;
+   public aew(brw $$0, @Nullable brw $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
-   private aew(we $$0) {
-      this.b = $$0.readByte();
+   private aew(vx $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(we $$0) {
-      $$0.k(this.b);
+   private void a(vx $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zn<aew> a() {
-      return agj.ay;
+   public zg<aew> a() {
+      return agc.aD;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

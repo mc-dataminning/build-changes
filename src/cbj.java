@@ -1,40 +1,37 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cbj extends cbl {
-   private final btk a;
-   private bso b;
-   private int c;
+public class cbj<T extends bsq> extends cbh<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cbj(btk $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bzl.a.d));
+   public cbj(cnk $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bsq> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      if (this.a.r() && !this.a.gy()) {
-         bso $$0 = this.a.Q_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ew();
-            int $$1 = $$0.ex();
-            return $$1 != this.c && this.a(this.b, cde.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.el().h()) {
          return false;
+      } else if (!((cnk)this.e).gG()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      bso $$0 = this.a.Q_();
-      if ($$0 != null) {
-         this.c = $$0.ex();
-      }
-
+      this.j = b(200);
       super.c();
    }
 }

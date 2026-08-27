@@ -1,25 +1,115 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fis {
-   private static final axy a = axy.codepoint(32, yb.a);
+public class fis extends gng implements gnh {
+   private static final int e = 256;
+   private final fit f;
+   private final boolean g;
+   private final fis.a h;
 
-   private static String a(String $$0) {
-      return fgj.Q().m.K().c() ? $$0 : n.a($$0);
+   public fis(fit $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new fis.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? exv.b.a : exv.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
-   public static List<axy> a(xj $$0, int $$1, fhy $$2) {
-      ffz $$3 = new ffz();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(xj.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, yb.a);
-      List<axy> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, yb.a, ($$1x, $$2x) -> {
-         axy $$3x = uf.a().a($$1x);
-         $$4.add($$2x ? axy.composite(a, $$3x) : $$3x);
-      });
-      return (List<axy>)($$4.isEmpty() ? Lists.newArrayList(new axy[]{axy.a}) : $$4);
+   @Override
+   public void a(atx $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fiv a(ewy $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         fis.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fiv(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public void a(akn $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
+
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fis.a e;
+      @Nullable
+      private fis.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      fis.a a(ewy $$0) {
+         if (this.e != null && this.f != null) {
+            fis.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fis.a(this.a, this.b, $$2, this.d);
+                  this.f = new fis.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fis.a(this.a, this.b, this.c, $$3);
+                  this.f = new fis.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

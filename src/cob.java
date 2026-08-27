@@ -1,89 +1,118 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class cob extends cnt {
+   static final ajs<String> c = ajw.a(cob.class, aju.e);
+   static final ajs<wx> d = ajw.a(cob.class, aju.f);
+   private final daa e = new cob.a();
+   private static final int i = 4;
+   private int j;
 
-public class cob {
-   public static int[][] a(iw $$0) {
-      iw $$1 = $$0.h();
-      iw $$2 = $$1.g();
-      iw $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+   public cob(bsc<? extends cob> $$0, daz $$1) {
+      super($$0, $$1);
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   public cob(daz $$0, double $$1, double $$2, double $$3) {
+      super(bsc.v, $$0, $$1, $$2, $$3);
    }
 
-   public static boolean a(dbk $$0, bso $$1, ewp $$2) {
-      for (exn $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
+   @Override
+   protected ctl ah_() {
+      return ctt.nM;
+   }
+
+   @Override
+   protected void a(ajw.a $$0) {
+      super.a($$0);
+      $$0.a(c, "");
+      $$0.a(d, ww.a);
+   }
+
+   @Override
+   protected void a(ud $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dR());
+      this.ap().a(c, this.B().m());
+      this.ap().a(d, this.B().l());
+   }
+
+   @Override
+   protected void b(ud $$0) {
+      super.b($$0);
+      this.e.a($$0, this.dR());
+   }
+
+   @Override
+   public cnt.a v() {
+      return cnt.a.g;
+   }
+
+   @Override
+   public drd x() {
+      return dec.fN.n();
+   }
+
+   public daa B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ai - this.j >= 4) {
+         this.B().a(this.dP());
+         this.j = this.ai;
+      }
+   }
+
+   @Override
+   public bpw a(cly $$0, bpv $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(ajs<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ap().a(d));
+         } catch (Throwable var3) {
          }
+      } else if (c.equals($$0)) {
+         this.e.a(this.ap().a(c));
+      }
+   }
+
+   @Override
+   public boolean cP() {
+      return true;
+   }
+
+   public class a extends daa {
+      @Override
+      public aqn e() {
+         return (aqn)cob.this.dP();
       }
 
-      return $$0.D_().a($$2);
-   }
-
-   public static boolean a(dbk $$0, ewu $$1, bso $$2, bsz $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
-   }
-
-   public static exn a(dbg $$0, ir $$1) {
-      dtc $$2 = $$0.a_($$1);
-      return !$$2.a(awe.aR) && (!($$2.b() instanceof doe) || !$$2.c(doe.b)) ? $$2.k($$0, $$1) : exk.a();
-   }
-
-   public static double a(ir $$0, int $$1, Function<ir, exn> $$2) {
-      ir.a $$3 = $$0.j();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         exn $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(iw.a.b);
-         }
-
-         $$4++;
-         $$3.d(iw.b);
+      @Override
+      public void f() {
+         cob.this.ap().a(cob.c, this.m());
+         cob.this.ap().a(cob.d, this.l());
       }
 
-      return Double.POSITIVE_INFINITY;
-   }
+      @Override
+      public eum g() {
+         return cob.this.dn();
+      }
 
-   @Nullable
-   public static ewu a(bsb<?> $$0, dbk $$1, ir $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
-      } else {
-         double $$4 = $$1.a(a((dbg)$$1, $$2), () -> a((dbg)$$1, $$2.d()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
-            return null;
-         } else {
-            ewu $$5 = ewu.a($$2, $$4);
-            ewp $$6 = $$0.n().a($$5);
+      public cob h() {
+         return cob.this;
+      }
 
-            for (exn $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
+      @Override
+      public ee i() {
+         return new ee(this, cob.this.dn(), cob.this.bM(), this.e(), 2, this.n().getString(), cob.this.O_(), this.e().o(), cob.this);
+      }
 
-            if ($$0 != bsb.bE || !$$1.a_($$2).a(awe.ct) && !$$1.a_($$2.c()).a(awe.ct)) {
-               return !$$1.D_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+      @Override
+      public boolean j() {
+         return !cob.this.dK();
       }
    }
 }

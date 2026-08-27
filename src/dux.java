@@ -1,51 +1,91 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dux {
-   private final int a;
-   private final BitSet b;
-   private dux.a c = ($$0x, $$1x, $$2) -> false;
+public enum dux {
+   a {
+      @Override
+      public void a(aqn $$0, duy $$1, List<chb> $$2, int $$3, io $$4) {
+         io $$5 = new io(0, 128, 0);
 
-   public dux(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
-   }
+         for (chb $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   public void a(dux.a $$0) {
-      this.c = $$0;
-   }
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(aqn $$0, duy $$1, List<chb> $$2, int $$3, io $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new io(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(aqn $$0, duy $$1, List<chb> $$2, int $$3, io $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<ebj.a> $$8 = ebj.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               ebj.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (chb $$11 : $$2) {
+                     $$11.a(new io($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   public dux(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
-   }
+                  for (io $$13 : io.c(new io($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new io($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
-   }
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, daz.a.b);
+                  ecx $$14 = new ecx(true, ImmutableList.of($$10), new io(0, 128, 0));
+                  dzz.J.a($$14, $$0, $$0.l().g(), aym.a(), new io($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
+      }
+   },
+   d {
+      @Override
+      public void a(aqn $$0, duy $$1, List<chb> $$2, int $$3, io $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
-   }
+            for (chb $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.du(), $$5.dw(), $$5.dA(), 6.0F, daz.a.a);
+               $$5.ao();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new io(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (chb $$6 : $$2) {
+               $$6.a(new io(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new io(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(aqn $$0, duy $$1, List<chb> $$2, int $$3, io $$4) {
+      }
+   };
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
-   }
-
-   public Stream<ir> a(dbh $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
-
-   public long[] a() {
-      return this.b.toLongArray();
-   }
-
-   public interface a {
-      boolean test(int var1, int var2, int var3);
-   }
+   public abstract void a(aqn var1, duy var2, List<chb> var3, int var4, io var5);
 }

@@ -1,15 +1,22 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface elb<P extends ela> {
-   elb<ekz> a = a("single_pool_element", ekz.b);
-   elb<eky> b = a("list_pool_element", eky.a);
-   elb<eku> c = a("feature_pool_element", eku.a);
-   elb<ekt> d = a("empty_pool_element", ekt.a);
-   elb<ekx> e = a("legacy_single_pool_element", ekx.a);
+public class elb extends eli {
+   public final awm<dea> a;
+   public static final MapCodec<elb> b = awm.b(lf.f).xmap(elb::new, $$0 -> $$0.a).fieldOf("value");
 
-   Codec<P> codec();
+   public elb(awm<dea> $$0) {
+      this.a = $$0;
+   }
 
-   static <P extends ela> elb<P> a(String $$0, Codec<P> $$1) {
-      return jn.a(lh.ai, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
+      return dzz.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected elk<?> a() {
+      return elk.n;
    }
 }

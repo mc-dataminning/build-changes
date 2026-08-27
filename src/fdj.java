@@ -1,40 +1,52 @@
-public class fdj {
-   private final fex a;
-   private boolean b;
-   private String c;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fdj(fex $$0) {
-      this.a = $$0;
-      fex.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+public class fdj extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
+
+   public fdj(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean a() {
-      return this.b;
-   }
+   @Override
+   public void run() {
+      ezk $$0 = ezk.a();
 
-   public String b() {
-      return this.c;
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
 
-   public void a(fch $$0) {
-      fex.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fay var4) {
+            if (this.d()) {
+               return;
+            }
 
-   private fex.a b(fch $$0) {
-      fex.a $$1 = new fex.a();
-      $$1.a = $$0.a;
-      fex.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
       }
+   }
+
+   @Override
+   public wx a() {
+      return c;
    }
 }

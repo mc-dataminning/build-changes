@@ -1,34 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public class bm extends dh<bm.a> {
-   @Override
-   public Codec<bm.a> a() {
-      return bm.a.a;
+public record bm(Optional<ix<czb>> b, ct.d c) {
+   public static final Codec<bm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(le.f.r().optionalFieldOf("enchantment").forGetter(bm::a), ct.d.d.optionalFieldOf("levels", ct.d.c).forGetter(bm::b)).apply($$0, bm::new)
+   );
+
+   public bm(czb $$0, ct.d $$1) {
+      this(Optional.of($$0.m()), $$1);
    }
 
-   public void a(aqu $$0, cuh $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public boolean a(czg $$0) {
+      if (this.b.isPresent()) {
+         czb $$1 = this.b.get().a();
+         int $$2 = $$0.a($$1);
+         if ($$2 == 0) {
+            return false;
+         }
+
+         if (this.c != ct.d.c && !this.c.d($$2)) {
+            return false;
+         }
+      } else if (this.c != ct.d.c) {
+         for (Entry<ix<czb>> $$3 : $$0.b()) {
+            if (this.c.d($$3.getIntValue())) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      return true;
    }
 
-   public static record a(Optional<bd> b, Optional<ci> c, cu.d d) implements dh.a {
-      public static final Codec<bm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(bm.a::a), axu.a(ci.a, "item").forGetter(bm.a::c), axu.a(cu.d.d, "levels", cu.d.c).forGetter(bm.a::d))
-               .apply($$0, bm.a::new)
-      );
+   public Optional<ix<czb>> a() {
+      return this.b;
+   }
 
-      public static ao<bm.a> b() {
-         return an.j.a(new bm.a(Optional.empty(), Optional.empty(), cu.d.c));
-      }
-
-      public boolean a(cuh $$0, int $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
-      }
-
-      @Override
-      public Optional<bd> a() {
-         return this.b;
-      }
+   public ct.d b() {
+      return this.c;
    }
 }

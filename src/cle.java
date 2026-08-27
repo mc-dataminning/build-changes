@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 public class cle {
    public static final Codec<cle> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axu.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               axu.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               axu.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+               axn.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               axn.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               axn.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
             )
             .apply($$0, cle::new)
    );
@@ -49,23 +49,23 @@ public class cle {
       this.i = 0;
    }
 
-   public static OptionalInt a(aqt $$0, ir $$1, aqu $$2) {
+   public static OptionalInt a(aqn $$0, io $$1, aqo $$2) {
       if (a($$0, $$1)) {
          return OptionalInt.empty();
       } else {
-         List<aqu> $$3 = b($$0, $$1);
+         List<aqo> $$3 = b($$0, $$1);
          if (!$$3.contains($$2)) {
             $$3.add($$2);
          }
 
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cle::d).orElse(false))) {
+         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(cle::d).orElse(false))) {
             return OptionalInt.empty();
          } else {
-            Optional<cle> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cle::c));
+            Optional<cle> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(cle::c));
             if ($$4.isPresent()) {
                cle $$5 = $$4.get();
                $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
+               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
                return OptionalInt.of($$5.h);
             } else {
                return OptionalInt.empty();
@@ -78,15 +78,15 @@ public class cle {
       return this.i > 0;
    }
 
-   private static boolean a(aqt $$0, ir $$1) {
-      ewp $$2 = ewp.a(ewu.b($$1), 48.0, 48.0, 48.0);
+   private static boolean a(aqn $$0, io $$1) {
+      euh $$2 = euh.a(eum.b($$1), 48.0, 48.0, 48.0);
       return !$$0.a(clc.class, $$2).isEmpty();
    }
 
-   private static List<aqu> b(aqt $$0, ir $$1) {
-      ewu $$2 = ewu.b($$1);
-      Predicate<aqu> $$3 = $$1x -> $$1x.ds().a((jk)$$2, 16.0);
-      return $$0.a($$3.and(bso::bI).and(bsa.f));
+   private static List<aqo> b(aqn $$0, io $$1) {
+      eum $$2 = eum.b($$1);
+      Predicate<aqo> $$3 = $$1x -> $$1x.dn().a((jh)$$2, 16.0);
+      return $$0.a($$3.and(bsq::bD).and(bsb.f));
    }
 
    private void e() {
@@ -102,7 +102,7 @@ public class cle {
    }
 
    public void a(int $$0) {
-      this.h = aym.a($$0, 0, 4);
+      this.h = ayf.a($$0, 0, 4);
    }
 
    public int c() {

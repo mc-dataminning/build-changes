@@ -2,42 +2,93 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bf extends dh<bf.a> {
-   @Override
-   public Codec<bf.a> a() {
-      return bf.a.a;
+public record bf(ct.c b, ct.c c, Optional<br> d, Optional<Boolean> e, Optional<bg> f) {
+   public static final Codec<bf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ct.c.d.optionalFieldOf("dealt", ct.c.c).forGetter(bf::a),
+               ct.c.d.optionalFieldOf("taken", ct.c.c).forGetter(bf::b),
+               br.a.optionalFieldOf("source_entity").forGetter(bf::c),
+               Codec.BOOL.optionalFieldOf("blocked").forGetter(bf::d),
+               bg.a.optionalFieldOf("type").forGetter(bf::e)
+            )
+            .apply($$0, bf::new)
+   );
+
+   public boolean a(aqo $$0, bqp $$1, float $$2, float $$3, boolean $$4) {
+      if (!this.b.d((double)$$2)) {
+         return false;
+      } else if (!this.c.d((double)$$3)) {
+         return false;
+      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
+         return false;
+      } else {
+         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
+      }
    }
 
-   public void a(aqu $$0, cjx $$1, cll $$2) {
-      erp $$3 = bs.b($$0, $$1);
-      erp $$4 = bs.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public ct.c a() {
+      return this.b;
    }
 
-   public static record a(Optional<bd> b, Optional<bd> c, Optional<bd> d) implements dh.a {
-      public static final Codec<bf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(bf.a::a), axu.a(bs.b, "zombie").forGetter(bf.a::c), axu.a(bs.b, "villager").forGetter(bf.a::d))
-               .apply($$0, bf.a::new)
-      );
+   public ct.c b() {
+      return this.c;
+   }
 
-      public static ao<bf.a> b() {
-         return an.s.a(new bf.a(Optional.empty(), Optional.empty(), Optional.empty()));
+   public Optional<br> c() {
+      return this.d;
+   }
+
+   public Optional<Boolean> d() {
+      return this.e;
+   }
+
+   public Optional<bg> e() {
+      return this.f;
+   }
+
+   public static class a {
+      private ct.c a = ct.c.c;
+      private ct.c b = ct.c.c;
+      private Optional<br> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<bg> e = Optional.empty();
+
+      public static bf.a a() {
+         return new bf.a();
       }
 
-      public boolean a(erp $$0, erp $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public bf.a a(ct.c $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public void a(be $$0) {
-         dh.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
+      public bf.a b(ct.c $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      @Override
-      public Optional<bd> a() {
-         return this.b;
+      public bf.a a(br $$0) {
+         this.c = Optional.of($$0);
+         return this;
+      }
+
+      public bf.a a(Boolean $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public bf.a a(bg $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public bf.a a(bg.a $$0) {
+         this.e = Optional.of($$0.b());
+         return this;
+      }
+
+      public bf b() {
+         return new bf(this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

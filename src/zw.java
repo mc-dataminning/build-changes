@@ -1,23 +1,20 @@
-import java.util.Optional;
-import java.util.UUID;
+public record zw(aqc b) implements ze<zv> {
+   public static final yv<vx, zw> a = ze.a(zw::a, zw::new);
 
-public record zw(Optional<UUID> b) implements zl<zr> {
-   public static final zc<we, zw> a = zl.a(zw::a, zw::new);
-
-   private zw(we $$0) {
-      this($$0.b(ju.g));
+   private zw(vx $$0) {
+      this(new aqc($$0));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, ju.g);
+   private void a(vx $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zn<zw> a() {
-      return aab.e;
+   public zg<zw> a() {
+      return zu.j;
    }
 
-   public void a(zr $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
    }
 }

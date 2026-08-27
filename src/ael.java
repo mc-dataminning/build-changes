@@ -1,37 +1,45 @@
-public class ael implements zl<abw> {
-   public static final zc<we, ael> a = zl.a(ael::a, ael::new);
-   private final int b;
-   private final byte c;
+public class ael implements ze<abq> {
+   public static final yv<vx, ael> a = ze.a(ael::a, ael::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public ael(brv $$0, byte $$1) {
-      this.b = $$0.al();
-      this.c = $$1;
+   public ael(dsu $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private ael(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   private ael(vx $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<ael> a() {
-      return agj.an;
+   public zg<ael> a() {
+      return agc.as;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public brv a(dca $$0) {
-      return $$0.a(this.b);
+   public double b() {
+      return this.b;
    }
 
-   public byte b() {
+   public double e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

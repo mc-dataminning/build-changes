@@ -1,86 +1,44 @@
-public class bps implements bpt {
-   private final bpt b;
-   private final bpt c;
-
-   public bps(bpt $$0, bpt $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class bps {
+   public static void a(daz $$0, io $$1, bpp $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
+   public static void a(daz $$0, brw $$1, bpp $$2) {
+      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
    }
 
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bpt $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cuh a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cuh a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cuh b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cuh $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
+   private static void a(daz $$0, double $$1, double $$2, double $$3, bpp $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   @Override
-   public int ai_() {
-      return this.b.ai_();
+   public static void a(daz $$0, io $$1, jg<ctq> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
+   public static void a(daz $$0, double $$1, double $$2, double $$3, ctq $$4) {
+      double $$5 = (double)bsc.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.e()) {
+         cii $$11 = new cii($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 
-   @Override
-   public boolean a(cly $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
-
-   @Override
-   public void d_(cly $$0) {
-      this.b.d_($$0);
-      this.c.d_($$0);
-   }
-
-   @Override
-   public void c(cly $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cuh $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public static void a(drd $$0, drd $$1, daz $$2, io $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bpp $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

@@ -1,161 +1,171 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import java.util.List;
+public class ftw extends ftf<cew> {
+   private static final String a = "feather";
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+   private final fvw i;
+   private final fvw j;
+   private final fvw k;
+   private final fvw l;
+   private final fvw m;
 
-public class ftw {
-   static final akt b = new akt("spectator/close");
-   static final akt c = new akt("spectator/scroll_left");
-   static final akt d = new akt("spectator/scroll_right");
-   private static final fty e = new ftw.a();
-   private static final fty f = new ftw.b(-1, true);
-   private static final fty g = new ftw.b(1, true);
-   private static final fty h = new ftw.b(1, false);
-   private static final int i = 8;
-   static final xe j = xe.c("spectatorMenu.close");
-   static final xe k = xe.c("spectatorMenu.previous_page");
-   static final xe l = xe.c("spectatorMenu.next_page");
-   public static final fty a = new fty() {
-      @Override
-      public void a(ftw $$0) {
-      }
-
-      @Override
-      public xe aO_() {
-         return xd.a;
-      }
-
-      @Override
-      public void a(fia $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aP_() {
-         return false;
-      }
-   };
-   private final ftz m;
-   private ftx n;
-   private int o = -1;
-   int p;
-
-   public ftw(ftz $$0) {
-      this.n = new ftv();
-      this.m = $$0;
+   public ftw(fvw $$0) {
+      this.b = $$0;
+      this.f = $$0.b("body");
+      this.g = $$0.b("tail");
+      this.h = $$0.b("left_wing");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("head");
+      this.k = this.j.b("feather");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("right_leg");
    }
 
-   public fty a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("body", fwb.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), fvy.a(0.0F, 16.5F, -3.0F));
+      $$1.a("tail", fwb.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), fvy.a(0.0F, 21.07F, 1.16F));
+      $$1.a("left_wing", fwb.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fvy.a(1.5F, 16.94F, -2.76F));
+      $$1.a("right_wing", fwb.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fvy.a(-1.5F, 16.94F, -2.76F));
+      fwf $$2 = $$1.a("head", fwb.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), fvy.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", fwb.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), fvy.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", fwb.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), fvy.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", fwb.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), fvy.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", fwb.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), fvy.a(0.0F, -2.15F, 0.15F));
+      fwb $$3 = fwb.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, fvy.a(1.0F, 22.0F, -1.05F));
+      $$1.a("right_leg", $$3, fvy.a(-1.0F, 22.0F, -1.05F));
+      return fwc.a($$0, 32, 32);
+   }
+
+   @Override
+   public fvw a() {
+      return this.b;
+   }
+
+   public void a(cew $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a(a($$0), $$0.ai, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(cew $$0, float $$1, float $$2, float $$3) {
+      this.a(a($$0));
+   }
+
+   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8) {
+      this.a(ftw.a.e);
+      this.a(ftw.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
+      this.b.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(ftw.a $$0, int $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.j.e = $$6 * (float) (Math.PI / 180.0);
+      this.j.f = $$5 * (float) (Math.PI / 180.0);
+      this.j.g = 0.0F;
+      this.j.b = 0.0F;
+      this.f.b = 0.0F;
+      this.g.b = 0.0F;
+      this.i.b = -1.5F;
+      this.h.b = 1.5F;
+      switch ($$0) {
+         case b:
+            this.l.e = this.l.e + ayf.b($$2 * 0.6662F) * 1.4F * $$3;
+            this.m.e = this.m.e + ayf.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
+         case a:
+         case e:
+         default:
+            float $$9 = $$4 * 0.3F;
+            this.j.c = 15.69F + $$9;
+            this.g.e = 1.015F + ayf.b($$2 * 0.6662F) * 0.3F * $$3;
+            this.g.c = 21.07F + $$9;
+            this.f.c = 16.5F + $$9;
+            this.h.g = -0.0873F - $$4;
+            this.h.c = 16.94F + $$9;
+            this.i.g = 0.0873F + $$4;
+            this.i.c = 16.94F + $$9;
+            this.l.c = 22.0F + $$9;
+            this.m.c = 22.0F + $$9;
+         case c:
+            break;
+         case d:
+            float $$7 = ayf.b((float)$$1);
+            float $$8 = ayf.a((float)$$1);
+            this.j.b = $$7;
+            this.j.c = 15.69F + $$8;
+            this.j.e = 0.0F;
+            this.j.f = 0.0F;
+            this.j.g = ayf.a((float)$$1) * 0.4F;
+            this.f.b = $$7;
+            this.f.c = 16.5F + $$8;
+            this.h.g = -0.0873F - $$4;
+            this.h.b = 1.5F + $$7;
+            this.h.c = 16.94F + $$8;
+            this.i.g = 0.0873F + $$4;
+            this.i.b = -1.5F + $$7;
+            this.i.c = 16.94F + $$8;
+            this.g.b = $$7;
+            this.g.c = 21.07F + $$8;
+      }
+   }
+
+   private void a(ftw.a $$0) {
+      this.k.e = -0.2214F;
+      this.f.e = 0.4937F;
+      this.h.e = -0.6981F;
+      this.h.f = (float) -Math.PI;
+      this.i.e = -0.6981F;
+      this.i.f = (float) -Math.PI;
+      this.l.e = -0.0299F;
+      this.m.e = -0.0299F;
+      this.l.c = 22.0F;
+      this.m.c = 22.0F;
+      this.l.g = 0.0F;
+      this.m.g = 0.0F;
+      switch ($$0) {
+         case a:
+            this.l.e += (float) (Math.PI * 2.0 / 9.0);
+            this.m.e += (float) (Math.PI * 2.0 / 9.0);
+         case b:
+         case e:
+         default:
+            break;
+         case c:
+            float $$1 = 1.9F;
+            this.j.c = 17.59F;
+            this.g.e = 1.5388988F;
+            this.g.c = 22.97F;
+            this.f.c = 18.4F;
+            this.h.g = -0.0873F;
+            this.h.c = 18.84F;
+            this.i.g = 0.0873F;
+            this.i.c = 18.84F;
+            this.l.c++;
+            this.m.c++;
+            this.l.e++;
+            this.m.e++;
+            break;
+         case d:
+            this.l.g = (float) (-Math.PI / 9);
+            this.m.g = (float) (Math.PI / 9);
+      }
+   }
+
+   private static ftw.a a(cew $$0) {
+      if ($$0.gw()) {
+         return ftw.a.d;
+      } else if ($$0.y()) {
+         return ftw.a.c;
       } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fty)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+         return $$0.gC() ? ftw.a.a : ftw.a.b;
       }
    }
 
-   public List<fty> a() {
-      List<fty> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
-      }
-
-      return $$0;
-   }
-
-   public fty b() {
-      return this.a(this.o);
-   }
-
-   public ftx c() {
-      return this.n;
-   }
-
-   public void b(int $$0) {
-      fty $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aP_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
-         }
-      }
-   }
-
-   public void d() {
-      this.m.a(this);
-   }
-
-   public int e() {
-      return this.o;
-   }
-
-   public void a(ftx $$0) {
-      this.n = $$0;
-      this.o = -1;
-      this.p = 0;
-   }
-
-   public fua f() {
-      return new fua(this.a(), this.o);
-   }
-
-   static class a implements fty {
-      @Override
-      public void a(ftw $$0) {
-         $$0.d();
-      }
-
-      @Override
-      public xe aO_() {
-         return ftw.j;
-      }
-
-      @Override
-      public void a(fia $$0, float $$1, int $$2) {
-         $$0.a(ftw.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aP_() {
-         return true;
-      }
-   }
-
-   static class b implements fty {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(ftw $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public xe aO_() {
-         return this.a < 0 ? ftw.k : ftw.l;
-      }
-
-      @Override
-      public void a(fia $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(ftw.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(ftw.d, 0, 0, 16, 16);
-         }
-      }
-
-      @Override
-      public boolean aP_() {
-         return this.b;
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

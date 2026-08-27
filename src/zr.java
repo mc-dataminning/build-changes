@@ -1,19 +1,33 @@
-public interface zr extends abq, vz {
-   void a(zu var1);
+import io.netty.buffer.ByteBuf;
 
-   void a(zv var1);
+public record zr(akn c, byte[] d) implements ze<zk> {
+   public static final yv<vx, zr> a = ze.a(zr::a, zr::new);
+   private static final int e = 5120;
+   public static final yv<ByteBuf, byte[]> b = yt.a(5120);
 
-   void a(zs var1);
+   private zr(vx $$0) {
+      this($$0.q(), b.decode($$0));
+   }
 
-   void a(zt var1);
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
+   }
 
-   void a(zx var1);
+   @Override
+   public zg<zr> a() {
+      return zu.g;
+   }
 
-   void a(zw var1);
+   public void a(zk $$0) {
+      $$0.a(this);
+   }
 
-   void a(aaa var1);
+   public akn b() {
+      return this.c;
+   }
 
-   void a(zy var1);
-
-   void a(zz var1);
+   public byte[] e() {
+      return this.d;
+   }
 }

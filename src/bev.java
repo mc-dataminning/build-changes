@@ -1,36 +1,37 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
 
-public class bev extends DataFix {
-   private static final String a = "WorldGenSettings";
-   private static final List<String> b = List.of(
-      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-   );
-
-   public bev(Schema $$0) {
-      super($$0, false);
+public class bev extends bez {
+   public bev(Schema $$0, String $$1) {
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bga.z, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bgf.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 
-               for (String $$2 : b) {
-                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
-                  if ($$3.isPresent()) {
-                     $$0x = $$0x.remove($$2);
-                     $$1 = $$1.set($$2, $$3.get());
-                  }
-               }
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Brain", this::b);
+   }
 
-               return $$0x.set("WorldGenSettings", $$1);
-            })
-      );
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("memories", this::c);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.updateMapValues(this::a);
+   }
+
+   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      return $$0.mapSecond(this::d);
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
    }
 }

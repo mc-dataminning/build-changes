@@ -1,21 +1,26 @@
-public class cti extends cuc {
-   public cti(cuc.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cti(ix<avh> e, int f, float g) {
+   public static final Codec<cti> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avh.b.fieldOf("sound_event").forGetter(cti::a), axn.j.fieldOf("use_duration").forGetter(cti::b), axn.k.fieldOf("range").forGetter(cti::c)
+            )
+            .apply($$0, cti::new)
+   );
+   public static final yv<wi, cti> b = yv.a(avh.d, cti::a, yt.f, cti::b, yt.h, cti::c, cti::new);
+   public static final Codec<ix<cti>> c = akj.a(lf.E, a);
+   public static final yv<wi, ix<cti>> d = yt.a(lf.E, b);
+
+   public ix<avh> a() {
+      return this.e;
    }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.iT, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.C) {
-         cnd $$4 = new cnd($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dM(), $$1.dK(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
+   public int b() {
+      return this.f;
+   }
 
-      $$1.b(avz.c.b(this));
-      $$3.a(1, $$1);
-      return bqb.a($$3, $$0.x_());
+   public float c() {
+      return this.g;
    }
 }

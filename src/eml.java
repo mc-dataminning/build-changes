@@ -1,45 +1,154 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eml extends ejt {
-   public static final Codec<eml> d = a(eml::new);
+public class eml implements emo {
+   public static final int b = 1;
+   protected final dbb c;
+   @Nullable
+   private final emn<?, ?> a;
+   @Nullable
+   private final emn<?, ?> d;
 
-   public eml(ejt.d $$0) {
-      super($$0);
+   public eml(dtm $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new eme($$0) : null;
+      this.d = $$2 ? new emp($$0) : null;
    }
 
    @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      return Optional.of(new ejt.c($$0.h().l(), (Consumer<ekl>)($$1 -> a($$1, $$0))));
+   public void a(io $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
-   private static void a(ekl $$0, ejt.b $$1) {
-      int $$2 = 0;
+   @Override
+   public boolean K_() {
+      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
+   }
 
-      emk.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         emk.a();
-         $$3 = new emk.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<ejx> $$4 = $$3.c;
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            ejx $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(jq $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(dag $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(dag $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public emj a(dbi $$0) {
+      if ($$0 == dbi.b) {
+         return (emj)(this.a == null ? emj.a.a : this.a);
+      } else {
+         return (emj)(this.d == null ? emj.a.a : this.d);
+      }
+   }
+
+   public String a(dbi $$0, jq $$1) {
+      if ($$0 == dbi.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
 
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+      return "n/a";
    }
 
-   @Override
-   public ekc<?> f() {
-      return ekc.n;
+   public emk.b b(dbi $$0, jq $$1) {
+      if ($$0 == dbi.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
+      }
+
+      return emk.b.a;
+   }
+
+   public void a(dbi $$0, jq $$1, @Nullable dte $$2) {
+      if ($$0 == dbi.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dag $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(io $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(jq $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.am() + 2;
+   }
+
+   public int d() {
+      return this.c.an() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

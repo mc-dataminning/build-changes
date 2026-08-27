@@ -1,76 +1,50 @@
-import java.util.function.Predicate;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class dbj {
-   private final ewu a;
-   private final ewu b;
-   private final dbj.a c;
-   private final dbj.b d;
-   private final ewz e;
+   private final Long2ObjectMap<List<aqo>> a = new Long2ObjectOpenHashMap();
+   private final Map<aqo, dbj.a> b = Maps.newHashMap();
+   private final apw c;
 
-   public dbj(ewu $$0, ewu $$1, dbj.a $$2, dbj.b $$3, brv $$4) {
-      this($$0, $$1, $$2, $$3, ewz.a($$4));
+   public dbj(apw $$0) {
+      this.c = $$0;
    }
 
-   public dbj(ewu $$0, ewu $$1, dbj.a $$2, dbj.b $$3, ewz $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private List<aqo> a(dag $$0) {
+      return (List<aqo>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
    }
 
-   public ewu a() {
-      return this.b;
-   }
-
-   public ewu b() {
-      return this.a;
-   }
-
-   public exn a(dtc $$0, dbg $$1, ir $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
-   }
-
-   public exn a(epe $$0, dbg $$1, ir $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : exk.a();
-   }
-
-   public static enum a implements dbj.c {
-      a(dtb.a::b),
-      b(dtb.a::a),
-      c(dtb.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(awe.aS) ? exk.b() : exk.a());
-
-      private final dbj.c e;
-
-      private a(dbj.c $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public exn get(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
+   public void a(dag $$0, bst $$1) {
+      for (aqo $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dbj.a()).a($$1);
       }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(epe::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(awj.a));
-
-      private final Predicate<epe> e;
-
-      private b(Predicate<epe> $$0) {
-         this.e = $$0;
+   public boolean a(bst $$0, dag $$1) {
+      for (aqo $$2 : this.a($$1)) {
+         dbj.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
       }
 
-      public boolean a(epe $$0) {
-         return this.e.test($$0);
-      }
+      return false;
    }
 
-   public interface c {
-      exn get(dtc var1, dbg var2, ir var3, ewz var4);
+   static class a {
+      private final Object2IntMap<bst> a = new Object2IntOpenHashMap(bst.values().length);
+
+      public void a(bst $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bst $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

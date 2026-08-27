@@ -1,50 +1,60 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cun extends cuc {
-   public cun(cuc.a $$0) {
-      super($$0);
+public class cun extends cro {
+   public cun(dea $$0, ctl.a $$1) {
+      super($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public cxb b(cxb $$0) {
+      io $$1 = $$0.a();
+      daz $$2 = $$0.q();
+      drd $$3 = $$2.a_($$1);
+      dea $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dkp.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         it $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == it.b ? $$0.g() : it.b;
+         }
+
+         int $$7 = 0;
+         io.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.k($$8)) {
+               cly $$9 = $$0.o();
+               int $$10 = $$2.al();
+               if ($$9 instanceof aqo && $$8.v() >= $$10) {
+                  ((aqo)$$9).b(wx.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return cxb.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public bqa a(cyf $$0) {
-      dca $$1 = $$0.q();
-      ir $$2 = $$0.a();
-      dtc $$3 = $$1.a_($$2);
-      if ($$3.a(awe.S)) {
-         cly $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bqa.a($$1.C);
-      } else {
-         return bqa.d;
-      }
-   }
-
-   public static bqa a(cly $$0, dca $$1, ir $$2) {
-      cia $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      ewp $$8 = new ewp((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<bsq> $$9 = $$1.a(bsq.class, $$8, $$1x -> $$1x.gn() == $$0);
-
-      for (bsq $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cia.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
-      }
-
-      if (!$$9.isEmpty()) {
-         $$1.a(dxv.b, $$2, dxv.a.a($$0));
-         return bqa.a;
-      } else {
-         return bqa.d;
-      }
+   protected boolean c() {
+      return false;
    }
 }

@@ -1,178 +1,50 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public interface fbu {
-   xe a = xe.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public class fbu extends gty {
+   private static final wx a = wx.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fjr c = fjr.d();
+   private final flz B;
+   @Nullable
+   private fgu C;
 
-   int a();
-
-   xe b();
-
-   String c();
-
-   static fbu a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fbu.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fbu.b.b($$0);
-      } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = ayc.a($$2, "reason", null);
-            String $$4 = ayc.a($$2, "errorMsg", null);
-            int $$5 = ayc.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fbu.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
-
-         return new fbu.d($$0, $$1);
-      }
+   public fbu(flz $$0) {
+      super(fdt.a);
+      this.B = $$0;
    }
 
-   public static record a(String d) implements fbu {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public xe b() {
-         return xe.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
-      }
+   @Override
+   public void aN_() {
+      this.c.a(15).c().b();
+      this.C = new fgu(a, this.p).b(true);
+      this.c.a(this.C);
+      fjr $$0 = this.c.a(fjr.e().a(8));
+      wx $$1 = wx.c("mco.account.privacy.info.button");
+      $$0.a(fga.a($$1, fkq.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(fga.a(ww.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         ffy var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static record b(int e, @Nullable xe f) implements fbu {
-      public static final fbu.b c = new fbu.b(429, xe.c("mco.errorMessage.serviceBusy"));
-      public static final xe d = xe.c("mco.errorMessage.retry");
-
-      public static fbu.b a(String $$0) {
-         return new fbu.b(500, xe.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static fbu.b a(fde $$0) {
-         return new fbu.b(500, xe.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fbu.b a(int $$0) {
-         return new fbu.b($$0, d);
-      }
-
-      public static fbu.b b(int $$0) {
-         return new fbu.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public xe b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public xe e() {
-         return this.f;
-      }
+   @Override
+   public void d() {
+      this.m.a(this.B);
    }
 
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fbu {
-      @Override
-      public int a() {
-         return this.d;
+   @Override
+   protected void c() {
+      if (this.C != null) {
+         this.C.d(this.n - 15);
       }
 
-      @Override
-      public xe b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (gse.a($$0)) {
-            return xe.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (gse.a($$1)) {
-                  return xe.c($$1);
-               }
-            }
-
-            return (xe)(this.f != null ? xe.b(this.f) : a);
-         }
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
-      }
+      this.c.a();
+      fjl.a(this.c, this.G());
    }
 
-   public static record d(int c, String d) implements fbu {
-      @Override
-      public int a() {
-         return this.c;
-      }
-
-      @Override
-      public xe b() {
-         return xe.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public String e() {
-         return this.d;
-      }
+   @Override
+   public wx i() {
+      return a;
    }
 }

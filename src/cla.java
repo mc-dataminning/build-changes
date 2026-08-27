@@ -1,16 +1,16 @@
 import java.util.Arrays;
 
 public enum cla {
-   a(0, avo.Cb, avo.Cj),
-   b(40, avo.Ca, avo.Ck),
-   c(80, avo.Cc, avo.Ck);
+   a(0, avi.BD, avi.BL),
+   b(40, avi.BC, avi.BM),
+   c(80, avi.BE, avi.BM);
 
-   private static final cla[] d = ad.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private static final cla[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
    private final int e;
-   private final avn f;
-   private final avn g;
+   private final avh f;
+   private final avh g;
 
-   private cla(int $$0, avn $$1, avn $$2) {
+   private cla(int $$0, avh $$1, avh $$2) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$2;
@@ -20,11 +20,11 @@ public enum cla {
       return this.e;
    }
 
-   public avn b() {
+   public avh b() {
       return this.f;
    }
 
-   public avn c() {
+   public avh c() {
       return this.g;
    }
 

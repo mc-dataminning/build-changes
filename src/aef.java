@@ -1,79 +1,37 @@
-import java.util.Set;
+public class aef implements ze<abq> {
+   public static final yv<vx, aef> a = ze.a(aef::a, aef::new);
+   private final int b;
+   private final byte c;
 
-public class aef implements zl<abw> {
-   public static final zc<we, aef> a = zl.a(aef::a, aef::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final Set<btb> g;
-   private final int h;
-
-   public aef(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btb> $$5, int $$6) {
-      this.b = $$0;
+   public aef(brw $$0, byte $$1) {
+      this.b = $$0.al();
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
    }
 
-   private aef(we $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = btb.a($$0.readUnsignedByte());
-      this.h = $$0.l();
+   private aef(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.k(btb.a(this.g));
-      $$0.c(this.h);
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zn<aef> a() {
-      return agj.ai;
+   public zg<aef> a() {
+      return agc.am;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public brw a(daz $$0) {
+      return $$0.a(this.b);
    }
 
-   public double e() {
+   public byte b() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public Set<btb> j() {
-      return this.g;
    }
 }

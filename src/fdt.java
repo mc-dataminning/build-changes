@@ -1,27 +1,104 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
-public class fdt extends gxb {
-   protected BooleanConsumer a;
-   private final xe b;
-   private final xe c;
+public class fdt {
+   public static final wx a = ww.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final feb c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public fdt(BooleanConsumer $$0, xe $$1, xe $$2) {
-      super(fgb.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fdt(feb $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void aN_() {
-      this.c(fin.a(xd.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fin.a(xd.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public void a(wx $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
+      }
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public void b(wx $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
+      }
+   }
+
+   public void c(wx $$0) {
+      this.a($$0.getString());
+   }
+
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
+         }
+      }
+   }
+
+   private fed d() {
+      return this.c.m.as().c();
+   }
+
+   private void b(String $$0) {
+      if (aa.aX) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+      }
+   }
+
+   public void a(fed $$0) {
+      this.b();
+      this.d.say(wx.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fik $$1 = feb.Q().ax();
+      if (this.d.active()) {
+         if ($$0 == fed.a) {
+            fii.b($$1, fii.a.a, wx.c("narrator.toast.disabled"), null);
+         } else {
+            fii.b($$1, fii.a.a, wx.c("narrator.toast.enabled"), $$0.b());
+         }
+      } else {
+         fii.b($$1, fii.a.a, wx.c("narrator.toast.disabled"), wx.c("options.narrator.notavailable"));
+      }
+   }
+
+   public boolean a() {
+      return this.d.active();
+   }
+
+   public void b() {
+      if (this.d() != fed.a && this.d.active()) {
+         this.d.clear();
+      }
+   }
+
+   public void c() {
+      this.d.destroy();
+   }
+
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new fdt.a("Narrator library is not active");
+      }
+   }
+
+   public static class a extends frn {
+      public a(String $$0) {
+         super($$0);
+      }
    }
 }

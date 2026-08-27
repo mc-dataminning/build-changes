@@ -1,36 +1,31 @@
-public class ghp implements ghg<dqw> {
-   public static final gtc a = new gtc(gqx.e, new akt("entity/enchanting_table_book"));
-   private final fuy b;
+public class ghp extends giz<ciu, fsu<ciu>> {
+   private static final akn a = new akn("textures/entity/enderman/enderman.png");
+   private final aym i = aym.a();
 
-   public ghp(ghh.a $$0) {
-      this.b = new fuy($$0.a(fyr.s));
+   public ghp(ght.a $$0) {
+      super($$0, new fsu<>($$0.a(fvv.X)), 0.5F);
+      this.a(new glp<>(this));
+      this.a(new glg(this, $$0.c()));
    }
 
-   public void a(dqw $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + aym.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public void a(ciu $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      drd $$6 = $$0.gp();
+      fsu<ciu> $$7 = this.a();
+      $$7.a = $$6 != null;
+      $$7.b = $$0.gq();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   public eum a(ciu $$0, float $$1) {
+      if ($$0.gq()) {
+         double $$2 = 0.02 * (double)$$0.ee();
+         return new eum(this.i.k() * $$2, 0.0, this.i.k() * $$2);
+      } else {
+         return super.a($$0, $$1);
       }
+   }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = aym.i($$1, $$0.c, $$0.b);
-      float $$10 = aym.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = aym.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = aym.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, aym.a($$10, 0.0F, 1.0F), aym.a($$11, 0.0F, 1.0F), $$12);
-      fbg $$13 = a.a($$3, gfo::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   public akn a(ciu $$0) {
+      return a;
    }
 }

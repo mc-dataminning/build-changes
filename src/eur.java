@@ -1,36 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-
-public record eur(euu b) implements euu {
-   public static final Codec<eur> a = RecordCodecBuilder.create($$0 -> $$0.group(euw.a.fieldOf("term").forGetter(eur::c)).apply($$0, eur::new));
-
-   @Override
-   public euv b() {
-      return euw.c;
+public interface eur {
+   static eur a() {
+      return euw.a;
    }
 
-   public boolean a(erp $$0) {
-      return !this.b.test($$0);
+   static eur a(brw $$0) {
+      return new euw($$0);
    }
 
-   @Override
-   public Set<eud<?>> a() {
-      return this.b.a();
-   }
+   boolean b();
 
-   @Override
-   public void a(erv $$0) {
-      euu.super.a($$0);
-      this.b.a($$0);
-   }
+   boolean a(evf var1, io var2, boolean var3);
 
-   public static euu.a a(euu.a $$0) {
-      eur $$1 = new eur($$0.build());
-      return () -> $$1;
-   }
+   boolean a(ctl var1);
 
-   public euu c() {
-      return this.b;
-   }
+   boolean a(emw var1, emw var2);
 }

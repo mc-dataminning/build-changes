@@ -1,29 +1,45 @@
-public class aeu implements zl<abw> {
-   public static final zc<we, aeu> a = zl.a(aeu::a, aeu::new);
-   private final int b;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aeu(dut $$0) {
-      this.b = $$0.r();
+public class aeu implements ze<abq> {
+   public static final yv<vx, aeu> a = ze.a(aeu::a, aeu::new);
+   private final evh b;
+   private final String c;
+
+   public aeu(evh $$0, @Nullable evi $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private aeu(we $$0) {
-      this.b = $$0.l();
+   private aeu(vx $$0) {
+      this.b = $$0.a(evh.u);
+      this.c = $$0.p();
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
+      $$0.a(evh::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aeu> a() {
-      return agj.aw;
+   public zg<aeu> a() {
+      return agc.aB;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public evh b() {
       return this.b;
+   }
+
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

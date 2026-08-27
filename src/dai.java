@@ -1,127 +1,76 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class dai implements cxx {
-   public static final dai a = new dai(new Object2IntLinkedOpenHashMap(), true);
-   public static final int b = 255;
-   private static final Codec<Integer> e = Codec.intRange(0, 255);
-   private static final Codec<Object2IntLinkedOpenHashMap<ja<dad>>> f = Codec.unboundedMap(lh.f.r(), e)
-      .xmap(Object2IntLinkedOpenHashMap::new, Function.identity());
-   private static final Codec<dai> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(f.fieldOf("levels").forGetter($$0x -> $$0x.h), axu.a(Codec.BOOL, "show_in_tooltip", true).forGetter($$0x -> $$0x.i))
-            .apply($$0, dai::new)
-   );
-   public static final Codec<dai> c = axu.a(g, f, $$0 -> new dai($$0, true));
-   public static final zc<wp, dai> d = zc.a(za.a(Object2IntLinkedOpenHashMap::new, za.b(li.u), za.g), $$0 -> $$0.h, za.b, $$0 -> $$0.i, dai::new);
-   final Object2IntLinkedOpenHashMap<ja<dad>> h;
-   final boolean i;
+public class dai {
+   private final eum a;
+   private final eum b;
+   private final dai.a c;
+   private final dai.b d;
+   private final eur e;
 
-   dai(Object2IntLinkedOpenHashMap<ja<dad>> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public dai(eum $$0, eum $$1, dai.a $$2, dai.b $$3, brw $$4) {
+      this($$0, $$1, $$2, $$3, eur.a($$4));
    }
 
-   public int a(dad $$0) {
-      return this.h.getInt($$0.l());
+   public dai(eum $$0, eum $$1, dai.a $$2, dai.b $$3, eur $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public void a(Consumer<xe> $$0, cwi $$1) {
-      if (this.i) {
-         ObjectBidirectionalIterator var3 = this.h.object2IntEntrySet().iterator();
+   public eum a() {
+      return this.b;
+   }
 
-         while (var3.hasNext()) {
-            Entry<ja<dad>> $$2 = (Entry<ja<dad>>)var3.next();
-            $$0.accept(((dad)((ja)$$2.getKey()).a()).e($$2.getIntValue()));
-         }
+   public eum b() {
+      return this.a;
+   }
+
+   public evf a(drd $$0, daf $$1, io $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
+   }
+
+   public evf a(emw $$0, daf $$1, io $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : evc.a();
+   }
+
+   public static enum a implements dai.c {
+      a(drc.a::b),
+      b(drc.a::a),
+      c(drc.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(avx.aQ) ? evc.b() : evc.a());
+
+      private final dai.c e;
+
+      private a(dai.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public evf get(drd $$0, daf $$1, io $$2, eur $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
       }
    }
 
-   public dai a(boolean $$0) {
-      return new dai(this.h, $$0);
-   }
+   public static enum b {
+      a($$0 -> false),
+      b(emw::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(awc.a));
 
-   public Set<ja<dad>> a() {
-      return Collections.unmodifiableSet(this.h.keySet());
-   }
+      private final Predicate<emw> e;
 
-   public Set<Entry<ja<dad>>> b() {
-      return Collections.unmodifiableSet(this.h.object2IntEntrySet());
-   }
+      private b(Predicate<emw> $$0) {
+         this.e = $$0;
+      }
 
-   public int c() {
-      return this.h.size();
-   }
-
-   public boolean d() {
-      return this.h.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dai $$1) ? false : this.i == $$1.i && this.h.equals($$1.h);
+      public boolean a(emw $$0) {
+         return this.e.test($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.h.hashCode();
-      return 31 * $$0 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.h + ", showInTooltip=" + this.i + "}";
-   }
-
-   public static class a {
-      private final Object2IntLinkedOpenHashMap<ja<dad>> a = new Object2IntLinkedOpenHashMap();
-      private final boolean b;
-
-      public a(dai $$0) {
-         this.a.putAll($$0.h);
-         this.b = $$0.i;
-      }
-
-      public void a(dad $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0.l());
-         } else {
-            this.a.put($$0.l(), $$1);
-         }
-      }
-
-      public void b(dad $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0.l(), $$1, Integer::max);
-         }
-      }
-
-      public void a(Predicate<ja<dad>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(dad $$0) {
-         return this.a.getOrDefault($$0.l(), 0);
-      }
-
-      public Set<ja<dad>> a() {
-         return this.a.keySet();
-      }
-
-      public dai b() {
-         return new dai(this.a, this.b);
-      }
+   public interface c {
+      evf get(drd var1, daf var2, io var3, eur var4);
    }
 }

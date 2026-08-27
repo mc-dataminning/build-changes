@@ -1,61 +1,53 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 public class baf extends DataFix {
    private final String a;
-   private final UnaryOperator<String> b;
+   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
 
-   public baf(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+   public baf(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bgf.z), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bgf.b), this::b)
+      Type<?> $$0 = this.getOutputSchema().getType(bga.c);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      $$0 = $$0.remove("blending_data");
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
+      if ($$2 && $$3.isPresent()) {
+         String $$4 = bhl.a($$3.get().asString("empty"));
+         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
+         if (!b.contains($$4)) {
+            $$0 = a($$0, 384, -64);
+         } else if ($$5.isPresent()) {
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+            String $$7 = bhl.a($$6.get("target_status").asString("empty"));
+            if (!b.contains($$7)) {
+               $$0 = a($$0, 256, 0);
+            }
          }
-      );
+      }
+
+      return $$0;
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
-   }
-
-   private Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
-   }
-
-   private Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      return $$0.set(
+         "blending_data",
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(jq.a($$2)), $$0.createString("max_section"), $$0.createInt(jq.a($$2 + $$1))))
       );
    }
 }

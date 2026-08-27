@@ -1,200 +1,111 @@
-public class fhf {
-   public static final fha a = fha.a.a(1.125F)
-      .a(
-         "head",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.b(-12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.b(-12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.9167F, fhc.b(5.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.a(0.0F, -2.0F, 0.0F), fgz.b.a),
-            new fhb(0.7917F, fhc.a(0.0F, -1.0F, 2.0F), fgz.b.a),
-            new fhb(0.9583F, fhc.a(0.0F, -1.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a("wind_bottom", new fgz(fgz.d.b, new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)))
-      .a(
-         "wind_mid",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.b(12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.b(12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.9167F, fhc.b(-10.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.a(0.0F, 0.0F, 5.0F), fgz.b.a),
-            new fhb(0.75F, fhc.a(0.0F, 0.0F, 6.0F), fgz.b.a),
-            new fhb(0.9167F, fhc.a(0.0F, 0.0F, -2.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.b(15.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.b(15.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.9167F, fhc.b(-10.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.a(0.0F, 0.0F, 3.0F), fgz.b.a),
-            new fhb(0.8333F, fhc.a(0.0F, 0.0F, 4.0F), fgz.b.a),
-            new fhb(0.9583F, fhc.a(0.0F, 0.0F, -2.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.b(12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.b(12.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.9167F, fhc.b(-2.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.25F, fhc.a(0.0F, 3.0F, 5.0F), fgz.b.a),
-            new fhb(0.8333F, fhc.a(0.0F, 3.0F, 6.0F), fgz.b.a),
-            new fhb(0.9583F, fhc.a(0.0F, 3.0F, -1.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a("rods", new fgz(fgz.d.b, new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a), new fhb(1.0F, fhc.b(0.0F, 360.0F, 0.0F), fgz.b.a)))
-      .b();
-   public static final fha b = fha.a.a(1.125F)
-      .a(
-         "body",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.5F, fhc.a(0.0F, -10.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.a(0.0F, -10.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.a(0.0F, 11.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.5F, fhc.b(22.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.b(22.5F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.8333F, fhc.b(-19.25F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fgz(
-            fgz.d.c,
-            new fhb(0.0F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.5F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.625F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.75F, fhc.a(1.0, 1.3F, 1.0), fgz.b.a),
-            new fhb(1.125F, fhc.a(1.0, 1.0, 1.0), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.b(0.0F, 90.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 360.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new fgz(
-            fgz.d.c,
-            new fhb(0.0F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.5F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.625F, fhc.a(1.0, 1.0, 1.0), fgz.b.a),
-            new fhb(0.75F, fhc.a(1.0, 1.1F, 1.0), fgz.b.a),
-            new fhb(1.125F, fhc.a(1.0, 1.0, 1.0), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 180.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.5F, fhc.a(0.0F, -6.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.a(0.0F, -6.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.a(0.0F, 2.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgz(
-            fgz.d.b,
-            new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.b(0.0F, 90.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgz(
-            fgz.d.a,
-            new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a),
-            new fhb(0.5F, fhc.a(0.0F, -5.0F, 0.0F), fgz.b.a),
-            new fhb(0.625F, fhc.a(0.0F, -5.0F, 0.0F), fgz.b.a),
-            new fhb(0.75F, fhc.a(0.0F, 2.0F, 0.0F), fgz.b.a),
-            new fhb(1.125F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)
-         )
-      )
-      .a("rods", new fgz(fgz.d.b, new fhb(0.0F, fhc.b(0.0F, 0.0F, 0.0F), fgz.b.a), new fhb(0.8333F, fhc.b(0.0F, 360.0F, 0.0F), fgz.b.a)))
-      .b();
-   public static final fha c = fha.a.a(0.2F)
-      .a("body", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a), new fhb(0.2F, fhc.a(0.0F, 0.0F, -6.0F), fgz.b.a)))
-      .a("wind_mid", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a), new fhb(0.2F, fhc.a(0.0F, 0.0F, -3.0F), fgz.b.a)))
-      .a("wind_top", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a), new fhb(0.2F, fhc.a(0.0F, 0.0F, -2.0F), fgz.b.a)))
-      .b();
-   public static final fha d = fha.a.a(0.1F)
-      .a("body", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, -6.0F), fgz.b.a), new fhb(0.1F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)))
-      .a("wind_mid", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, -3.0F), fgz.b.a), new fhb(0.1F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)))
-      .a("wind_top", new fgz(fgz.d.a, new fhb(0.0F, fhc.a(0.0F, 0.0F, -2.0F), fgz.b.a), new fhb(0.1F, fhc.a(0.0F, 0.0F, 0.0F), fgz.b.a)))
-      .b();
+import javax.annotation.Nullable;
+
+public abstract class fhf extends fga {
+   protected final akn a;
+   protected final int b;
+   protected final int c;
+
+   fhf(int $$0, int $$1, wx $$2, int $$3, int $$4, akn $$5, fga.c $$6, @Nullable fga.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
+   }
+
+   public static fhf.a a(wx $$0, fga.c $$1, boolean $$2) {
+      return new fhf.a($$0, $$1, $$2);
+   }
+
+   public static class a {
+      private final wx b;
+      private final fga.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private akn g;
+      private int h;
+      private int i;
+      @Nullable
+      fga.b a;
+
+      public a(wx $$0, fga.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public fhf.a a(int $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fhf.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fhf.a a(akn $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public fhf.a a(fga.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fhf a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (fhf)(this.d
+               ? new fhf.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new fhf.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
+      }
+   }
+
+   public static class b extends fhf {
+      protected b(int $$0, int $$1, wx $$2, int $$3, int $$4, akn $$5, fga.c $$6, @Nullable fga.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(ffn $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() / 2 - this.b / 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(ffn $$0, ffl $$1, int $$2) {
+      }
+   }
+
+   public static class c extends fhf {
+      protected c(int $$0, int $$1, wx $$2, int $$3, int $$4, akn $$5, fga.c $$6, @Nullable fga.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(ffn $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() - this.b - 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(ffn $$0, ffl $$1, int $$2) {
+         int $$3 = this.C() + 2;
+         int $$4 = this.C() + this.x() - this.b - 4;
+         int $$5 = this.C() + this.x() / 2;
+         a($$0, $$1, this.y(), $$5, $$3, this.D(), $$4, this.D() + this.v(), $$2);
+      }
+   }
 }

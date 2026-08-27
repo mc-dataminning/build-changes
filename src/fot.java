@@ -1,49 +1,27 @@
-public class fot extends fon {
-   private static final xe a = xe.b("potato");
-   private int b;
-   private final int c = 20;
-   private int d;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fot() {
-      super(a);
+public class fot implements fos {
+   public static final fos a = new fot();
+
+   private fot() {
    }
 
    @Override
-   protected void aN_() {
-      if (this.m.s != null) {
-         this.m.s.b(avo.ie);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
+
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
-   }
 
-   @Override
-   public void e() {
-      this.d++;
-      if (this.d >= 20) {
-         this.d();
-      }
-   }
-
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(0, 0, this.n, this.o, -16777216);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(fia $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void d() {
-      this.B();
-   }
-
-   private void B() {
-      this.m.a(null);
-      if (this.m.s != null) {
-         this.m.s.h.b(new agv(agv.a.b));
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
    }
 }

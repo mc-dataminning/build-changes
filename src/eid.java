@@ -1,53 +1,70 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class eid extends ehz {
-   public static final Codec<eid> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzo.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dzo.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eid::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dzo d;
-   private final dzo e;
-   private final int f;
-
-   private eid(dzo $$0, dzo $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static eid a(dzo $$0, dzo $$1, int $$2) {
-      return new eid($$0, $$1, $$2);
-   }
+public class eid implements ehq {
+   private final List<ehp> a = Lists.newArrayList();
 
    @Override
-   public int a(ayt $$0, dzr $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = aym.a($$0, $$2 + this.f, $$3);
-         int $$5 = aym.a($$0, $$2, $$4 - 1);
-         return aym.a($$0, $$2, $$5 - 1 + this.f);
+   public void a(ehp $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   @Override
+   public ehp a(ehd $$0) {
+      return ehp.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (ehp $$1 : this.a) {
+         $$1.a(0, $$0, 0);
       }
    }
 
-   @Override
-   public eia<?> a() {
-      return eia.d;
+   @Deprecated
+   public int a(int $$0, int $$1, aym $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      ehd $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
    }
 
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   /** @deprecated */
+   public void a(aym $$0, int $$1, int $$2) {
+      ehd $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public eia a() {
+      return new eia(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public ehd d() {
+      return ehp.a(this.a.stream());
    }
 }

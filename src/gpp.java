@@ -1,12 +1,12 @@
-public class gpp<T extends brv, M extends fxt<T>> extends gor<T, M> {
-   private static final gfo a = gfo.p(new akt("textures/entity/spider_eyes.png"));
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-   public gpp(gmp<T, M> $$0) {
-      super($$0);
-   }
+public record gpp(Map<String, gpc> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gpp> b = Codec.unboundedMap(a, gpc.a).xmap(gpp::new, gpp::a);
+   public static final asx<gpp> c = asx.a("language", b);
 
-   @Override
-   public gfo a() {
-      return a;
+   public Map<String, gpc> a() {
+      return this.d;
    }
 }

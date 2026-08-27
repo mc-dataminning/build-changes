@@ -1,15 +1,36 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
 
-public class yq extends IllegalArgumentException {
-   public yq(yp $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public class yq implements yn {
+   public static final yo<yq> a = new yo<yq>() {
+      private static final MapCodec<yq> a = xu.b.a.xmap(yq::new, $$0 -> $$0.e);
+      private static final yv<wi, yq> b = yv.a(xu.b.c, $$0 -> $$0.e, yq::new);
+
+      @Override
+      public MapCodec<yq> a() {
+         return a;
+      }
+
+      @Override
+      public yv<wi, yq> b() {
+         return b;
+      }
+   };
+   public static final yq b = new yq(xu.a);
+   public static final yq c = new yq(xu.a.a(n.m));
+   public static final yq d = new yq(xu.a.a(n.o));
+   final xu e;
+
+   public yq(xu $$0) {
+      this.e = $$0;
    }
 
-   public yq(yp $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   @Override
+   public xl a(int $$0) {
+      return wx.b(Integer.toString($$0)).c(this.e);
    }
 
-   public yq(yp $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   @Override
+   public yo<yq> a() {
+      return a;
    }
 }

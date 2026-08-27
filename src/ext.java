@@ -1,177 +1,93 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class ext extends eya {
-   private static final int a = 0;
-   private static final int b = 1;
-   private final exy c;
-   private final String d;
-   private final Set<String> e = Sets.newHashSet();
-   private xe f;
-   private xe g = xd.a;
-   private xe h = xd.a;
-   private boolean i = true;
-   private boolean j = true;
-   private eya.b k = eya.b.a;
-   private eya.b l = eya.b.a;
-   private n m = n.v;
-   private eya.a n = eya.a.a;
-   private final yb o;
+public final class ext {
+   private final long a;
+   private final List<exx> b;
+   private exx c;
+   private int d;
+   private int e;
 
-   public ext(exy $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = xe.b($$1);
-      this.o = yb.a.a($$1).a(new xk(xk.a.a, xe.b($$1)));
+   public ext(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   public exy a() {
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         exx $$2 = new exx($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new exx($$5);
+   }
+
+   public exx a(Optional<exx> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         exx $$1 = $$0.get();
+
+         for (exx $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
+   }
+
+   public int a(exx $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
+   }
+
+   public exx b() {
       return this.c;
    }
 
-   @Override
-   public String b() {
+   public int c() {
       return this.d;
    }
 
-   public xe c() {
-      return this.f;
-   }
-
-   public xs d() {
-      xs $$0 = xh.a((xe)this.f.f().c(this.o));
-      n $$1 = this.n();
-      if ($$1 != n.v) {
-         $$0.a($$1);
-      }
-
-      return $$0;
-   }
-
-   public void a(xe $$0) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Name cannot be null");
-      } else {
-         this.f = $$0;
-         this.c.b(this);
-      }
-   }
-
-   public void b(@Nullable xe $$0) {
-      this.g = $$0 == null ? xd.a : $$0;
-      this.c.b(this);
-   }
-
-   public xe e() {
-      return this.g;
-   }
-
-   public void c(@Nullable xe $$0) {
-      this.h = $$0 == null ? xd.a : $$0;
-      this.c.b(this);
-   }
-
-   public xe f() {
-      return this.h;
-   }
-
-   @Override
-   public Collection<String> g() {
+   public int d() {
       return this.e;
    }
 
-   @Override
-   public xs d(xe $$0) {
-      xs $$1 = xe.i().a(this.g).a($$0).a(this.h);
-      n $$2 = this.n();
-      if ($$2 != n.v) {
-         $$1.a($$2);
-      }
-
-      return $$1;
+   public exx a(int $$0) {
+      return this.b.get($$0);
    }
 
-   public static xs a(@Nullable eya $$0, xe $$1) {
-      return $$0 == null ? $$1.f() : $$0.d($$1);
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
    }
 
    @Override
-   public boolean h() {
-      return this.i;
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public boolean i() {
-      return this.j;
-   }
-
-   public void b(boolean $$0) {
-      this.j = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eya.b j() {
-      return this.k;
-   }
-
-   @Override
-   public eya.b k() {
-      return this.l;
-   }
-
-   public void a(eya.b $$0) {
-      this.k = $$0;
-      this.c.b(this);
-   }
-
-   public void b(eya.b $$0) {
-      this.l = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eya.a l() {
-      return this.n;
-   }
-
-   public void a(eya.a $$0) {
-      this.n = $$0;
-      this.c.b(this);
-   }
-
-   public int m() {
-      int $$0 = 0;
-      if (this.h()) {
-         $$0 |= 1;
-      }
-
-      if (this.i()) {
-         $$0 |= 2;
-      }
-
-      return $$0;
-   }
-
-   public void a(int $$0) {
-      this.a(($$0 & 1) > 0);
-      this.b(($$0 & 2) > 0);
-   }
-
-   public void a(n $$0) {
-      this.m = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public n n() {
-      return this.m;
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

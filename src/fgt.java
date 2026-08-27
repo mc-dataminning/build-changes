@@ -1,99 +1,146 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fgt {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private fgt.c b;
-   private int c;
-
-   public void a(fgt.b $$0, List<asp> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
+public interface fgt {
+   fgt a = new fgt() {
+      @Override
+      public int a(ffn $$0, int $$1, int $$2) {
+         return $$2;
       }
 
-      this.b = new fgt.c($$0, $$1.stream().map(asp::b).collect(ImmutableList.toImmutableList()));
+      @Override
+      public int a(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fgt a(ffl $$0, xc $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fgt.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new fgt.c(fgt.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new fgt.a($$0);
+   static fgt a(ffl $$0, xc $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fgt.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
+   static fgt a(ffl $$0, wx... $$1) {
+      return b($$0, Arrays.stream($$1).map(wx::g).map($$1x -> new fgt.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
+   static fgt a(ffl $$0, List<wx> $$1) {
+      return b($$0, $$1.stream().map(wx::g).map($$1x -> new fgt.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static class a {
-      private final Throwable a;
+   static fgt b(final ffl $$0, final List<fgt.a> $$1) {
+      return $$1.isEmpty() ? a : new fgt() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
 
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
+         @Override
+         public int a(ffn $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
 
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
+         @Override
+         public int a(ffn $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fgt.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(ffn $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fgt.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(ffn $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fgt.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(ffn $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
    }
 
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
+   int a(ffn var1, int var2, int var3);
 
-      final String d;
+   int a(ffn var1, int var2, int var3, int var4, int var5);
 
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
+   int b(ffn var1, int var2, int var3, int var4, int var5);
 
-   static class c {
-      private final fgt.b a;
-      private final List<String> b;
-      @Nullable
-      fgt.a c;
-      boolean d;
+   int c(ffn var1, int var2, int var3, int var4, int var5);
 
-      c(fgt.b $$0, List<String> $$1) {
+   void a(ffn var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final axr a;
+      final int b;
+
+      a(axr $$0, int $$1) {
          this.a = $$0;
          this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
       }
    }
 }

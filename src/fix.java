@@ -1,72 +1,73 @@
-public class fix extends fih {
-   private final fhy a;
-   private final fjh b;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-   public fix(int $$0, int $$1, int $$2, int $$3, xe $$4, fhy $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new fjh($$4, $$5).d(this.x() - this.b());
-   }
+public enum fix implements eww {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public fix a(int $$0) {
-      this.b.c($$0);
-      return this;
-   }
+   final exv c;
 
-   @Override
-   public void k(int $$0) {
-      super.k($$0);
-      this.b.d(this.x() - this.b());
-   }
+   private static exv a(int $$0, int $$1, fix.a $$2) {
+      exv $$3 = new exv(exv.a.a, $$0, $$1, false);
 
-   @Override
-   protected int h() {
-      return this.b.v();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(fia $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aI_()) {
-         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
-      }
-   }
-
-   @Override
-   public void b(fia $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
          }
       }
+
+      $$3.i();
+      return $$3;
    }
 
-   public boolean j() {
-      return super.e();
-   }
-
-   @Override
-   protected void c(fia $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
+   private fix(Supplier<exv> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   protected void a(fmj $$0) {
-      $$0.a(fmi.a, this.y());
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public fiv bake(Function<ewy, fiv> $$0) {
+      return $$0.apply(new ewy() {
+         @Override
+         public int a() {
+            return fix.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fix.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fix.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

@@ -1,9 +1,38 @@
-import com.mojang.serialization.Codec;
+public enum enn {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public abstract class enn {
-   public static final Codec<enn> c = lh.o.q().dispatch("predicate_type", enn::a, eno::codec);
+   private final float A;
 
-   public abstract boolean a(dtc var1, ayt var2);
+   private enn(float $$0) {
+      this.A = $$0;
+   }
 
-   protected abstract eno<?> a();
+   public float a() {
+      return this.A;
+   }
 }

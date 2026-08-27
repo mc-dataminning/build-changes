@@ -1,47 +1,57 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-@Deprecated
-public class dzn implements dyj {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dyw i = new dyw(this);
-
-   public dzn(long $$0) {
-      this.b($$0);
+public class dzn extends dzo {
+   public dzn(Codec<eck> $$0) {
+      super($$0);
    }
 
    @Override
-   public ayt d() {
-      return new dzn(this.g());
-   }
+   protected boolean a(dba $$0, aym $$1, io $$2, drd $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         it $$4 = it.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<it> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   @Override
-   public dzh e() {
-      return new dyv.a(this.g());
-   }
+         for (it $$8 : $$6.subList(0, $$5)) {
+            io.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            it $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(it.b);
+               it[] $$13 = new it[]{$$8, it.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
+            $$9.c($$11.g());
+            $$9.c(it.b);
 
-      return (int)($$2 >>> 48 - $$0);
-   }
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
 
-   @Override
-   public double k() {
-      return this.i.b();
+               if ($$1.i() < 0.25F) {
+                  $$9.c(it.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

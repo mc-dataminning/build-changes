@@ -1,330 +1,668 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.bytes.ByteList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.nio.ByteBuffer;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ayf implements DynamicOps<Object> {
-   public static final ayf a = new ayf();
-
-   private ayf() {
-   }
-
-   public Object empty() {
-      return null;
-   }
-
-   public Object emptyMap() {
-      return Map.of();
-   }
-
-   public Object emptyList() {
-      return List.of();
-   }
-
-   public <U> U convertTo(DynamicOps<U> $$0, Object $$1) {
-      if ($$1 == null) {
-         return (U)$$0.empty();
-      } else if ($$1 instanceof Map) {
-         return (U)this.convertMap($$0, $$1);
-      } else if ($$1 instanceof ByteList $$2) {
-         return (U)$$0.createByteList(ByteBuffer.wrap($$2.toByteArray()));
-      } else if ($$1 instanceof IntList $$3) {
-         return (U)$$0.createIntList($$3.intStream());
-      } else if ($$1 instanceof LongList $$4) {
-         return (U)$$0.createLongList($$4.longStream());
-      } else if ($$1 instanceof List) {
-         return (U)this.convertList($$0, $$1);
-      } else if ($$1 instanceof String $$5) {
-         return (U)$$0.createString($$5);
-      } else if ($$1 instanceof Boolean $$6) {
-         return (U)$$0.createBoolean($$6);
-      } else if ($$1 instanceof Byte $$7) {
-         return (U)$$0.createByte($$7);
-      } else if ($$1 instanceof Short $$8) {
-         return (U)$$0.createShort($$8);
-      } else if ($$1 instanceof Integer $$9) {
-         return (U)$$0.createInt($$9);
-      } else if ($$1 instanceof Long $$10) {
-         return (U)$$0.createLong($$10);
-      } else if ($$1 instanceof Float $$11) {
-         return (U)$$0.createFloat($$11);
-      } else if ($$1 instanceof Double $$12) {
-         return (U)$$0.createDouble($$12);
-      } else if ($$1 instanceof Number $$13) {
-         return (U)$$0.createNumeric($$13);
-      } else {
-         throw new IllegalStateException("Don't know how to convert " + $$1);
+public class ayf {
+   private static final long k = 61440L;
+   private static final long l = 16384L;
+   private static final long m = -4611686018427387904L;
+   private static final long n = Long.MIN_VALUE;
+   public static final float a = (float) Math.PI;
+   public static final float b = (float) (Math.PI / 2);
+   public static final float c = (float) (Math.PI * 2);
+   public static final float d = (float) (Math.PI / 180.0);
+   public static final float e = 180.0F / (float)Math.PI;
+   public static final float f = 1.0E-5F;
+   public static final float g = c(2.0F);
+   private static final float o = 10430.378F;
+   public static final Vector3f h = new Vector3f(0.0F, 1.0F, 0.0F);
+   public static final Vector3f i = new Vector3f(1.0F, 0.0F, 0.0F);
+   public static final Vector3f j = new Vector3f(0.0F, 0.0F, 1.0F);
+   private static final float[] p = ac.a(new float[65536], $$0x -> {
+      for (int $$1x = 0; $$1x < $$0x.length; $$1x++) {
+         $$0x[$$1x] = (float)Math.sin((double)$$1x * Math.PI * 2.0 / 65536.0);
       }
+   });
+   private static final aym q = aym.b();
+   private static final int[] r = new int[]{
+      0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
+   };
+   private static final double s = 0.16666666666666666;
+   private static final int t = 8;
+   private static final int u = 257;
+   private static final double v = Double.longBitsToDouble(4805340802404319232L);
+   private static final double[] w = new double[257];
+   private static final double[] x = new double[257];
+
+   public static float a(float $$0) {
+      return p[(int)($$0 * 10430.378F) & 65535];
    }
 
-   public DataResult<Number> getNumberValue(Object $$0) {
-      return $$0 instanceof Number $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a number: " + $$0);
+   public static float b(float $$0) {
+      return p[(int)($$0 * 10430.378F + 16384.0F) & 65535];
    }
 
-   public Object createNumeric(Number $$0) {
-      return $$0;
+   public static float c(float $$0) {
+      return (float)Math.sqrt((double)$$0);
    }
 
-   public Object createByte(byte $$0) {
-      return $$0;
+   public static int d(float $$0) {
+      int $$1 = (int)$$0;
+      return $$0 < (float)$$1 ? $$1 - 1 : $$1;
    }
 
-   public Object createShort(short $$0) {
-      return $$0;
+   public static int a(double $$0) {
+      int $$1 = (int)$$0;
+      return $$0 < (double)$$1 ? $$1 - 1 : $$1;
    }
 
-   public Object createInt(int $$0) {
-      return $$0;
+   public static long b(double $$0) {
+      long $$1 = (long)$$0;
+      return $$0 < (double)$$1 ? $$1 - 1L : $$1;
    }
 
-   public Object createLong(long $$0) {
-      return $$0;
+   public static float e(float $$0) {
+      return Math.abs($$0);
    }
 
-   public Object createFloat(float $$0) {
-      return $$0;
+   public static int a(int $$0) {
+      return Math.abs($$0);
    }
 
-   public Object createDouble(double $$0) {
-      return $$0;
+   public static int f(float $$0) {
+      int $$1 = (int)$$0;
+      return $$0 > (float)$$1 ? $$1 + 1 : $$1;
    }
 
-   public DataResult<Boolean> getBooleanValue(Object $$0) {
-      return $$0 instanceof Boolean $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a boolean: " + $$0);
+   public static int c(double $$0) {
+      int $$1 = (int)$$0;
+      return $$0 > (double)$$1 ? $$1 + 1 : $$1;
    }
 
-   public Object createBoolean(boolean $$0) {
-      return $$0;
+   public static int a(int $$0, int $$1, int $$2) {
+      return Math.min(Math.max($$0, $$1), $$2);
    }
 
-   public DataResult<String> getStringValue(Object $$0) {
-      return $$0 instanceof String $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a string: " + $$0);
+   public static long a(long $$0, long $$1, long $$2) {
+      return Math.min(Math.max($$0, $$1), $$2);
    }
 
-   public Object createString(String $$0) {
-      return $$0;
+   public static float a(float $$0, float $$1, float $$2) {
+      return $$0 < $$1 ? $$1 : Math.min($$0, $$2);
    }
 
-   public DataResult<Object> mergeToList(Object $$0, Object $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(List.of($$1));
-      } else if ($$0 instanceof List<?> $$2) {
-         return $$2.isEmpty() ? DataResult.success(List.of($$1)) : DataResult.success(ImmutableList.builder().addAll($$2).add($$1).build());
-      } else {
-         return DataResult.error(() -> "Not a list: " + $$0);
-      }
+   public static double a(double $$0, double $$1, double $$2) {
+      return $$0 < $$1 ? $$1 : Math.min($$0, $$2);
    }
 
-   public DataResult<Object> mergeToList(Object $$0, List<Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success($$1);
-      } else if ($$0 instanceof List<?> $$2) {
-         return $$2.isEmpty() ? DataResult.success($$1) : DataResult.success(ImmutableList.builder().addAll($$2).addAll($$1).build());
-      } else {
-         return DataResult.error(() -> "Not a list: " + $$0);
-      }
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, Object $$1, Object $$2) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(Map.of($$1, $$2));
-      } else if ($$0 instanceof Map<?, ?> $$3) {
-         if ($$3.isEmpty()) {
-            return DataResult.success(Map.of($$1, $$2));
-         } else {
-            Builder<Object, Object> $$4 = ImmutableMap.builderWithExpectedSize($$3.size() + 1);
-            $$4.putAll($$3);
-            $$4.put($$1, $$2);
-            return DataResult.success($$4.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, Map<Object, Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success($$1);
-      } else if ($$0 instanceof Map<?, ?> $$2) {
-         if ($$2.isEmpty()) {
-            return DataResult.success($$1);
-         } else {
-            Builder<Object, Object> $$3 = ImmutableMap.builderWithExpectedSize($$2.size() + $$1.size());
-            $$3.putAll($$2);
-            $$3.putAll($$1);
-            return DataResult.success($$3.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   private static Map<Object, Object> a(MapLike<Object> $$0) {
-      return $$0.entries().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, MapLike<Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(a($$1));
-      } else if ($$0 instanceof Map<?, ?> $$2) {
-         if ($$2.isEmpty()) {
-            return DataResult.success(a($$1));
-         } else {
-            Builder<Object, Object> $$3 = ImmutableMap.builderWithExpectedSize($$2.size());
-            $$3.putAll($$2);
-            $$1.entries().forEach($$1x -> $$3.put($$1x.getFirst(), $$1x.getSecond()));
-            return DataResult.success($$3.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   static Stream<Pair<Object, Object>> a(Map<?, ?> $$0) {
-      return $$0.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), $$0x.getValue()));
-   }
-
-   public DataResult<Stream<Pair<Object, Object>>> getMapValues(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success(a($$1)) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<Object, Object>>> getMapEntries(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success($$1::forEach) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public Object createMap(Stream<Pair<Object, Object>> $$0) {
-      return $$0.collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-   }
-
-   public DataResult<MapLike<Object>> getMap(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success(new MapLike<Object>() {
-         @Nullable
-         public Object get(Object $$0) {
-            return $$1.get($$0);
-         }
-
-         @Nullable
-         public Object get(String $$0) {
-            return $$1.get($$0);
-         }
-
-         public Stream<Pair<Object, Object>> entries() {
-            return ayf.a($$1);
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public Object createMap(Map<Object, Object> $$0) {
-      return $$0;
-   }
-
-   public DataResult<Stream<Object>> getStream(Object $$0) {
-      return $$0 instanceof List<?> $$1 ? DataResult.success($$1.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not an list: " + $$0);
-   }
-
-   public DataResult<Consumer<Consumer<Object>>> getList(Object $$0) {
-      return $$0 instanceof List<?> $$1 ? DataResult.success($$1::forEach) : DataResult.error(() -> "Not an list: " + $$0);
-   }
-
-   public Object createList(Stream<Object> $$0) {
-      return $$0.toList();
-   }
-
-   public DataResult<ByteBuffer> getByteBuffer(Object $$0) {
-      return $$0 instanceof ByteList $$1 ? DataResult.success(ByteBuffer.wrap($$1.toByteArray())) : DataResult.error(() -> "Not a byte list: " + $$0);
-   }
-
-   public Object createByteList(ByteBuffer $$0) {
-      ByteBuffer $$1 = $$0.duplicate().clear();
-      ByteArrayList $$2 = new ByteArrayList();
-      $$2.size($$1.capacity());
-      $$1.get(0, $$2.elements(), 0, $$2.size());
-      return $$2;
-   }
-
-   public DataResult<IntStream> getIntStream(Object $$0) {
-      return $$0 instanceof IntList $$1 ? DataResult.success($$1.intStream()) : DataResult.error(() -> "Not an int list: " + $$0);
-   }
-
-   public Object createIntList(IntStream $$0) {
-      return IntArrayList.toList($$0);
-   }
-
-   public DataResult<LongStream> getLongStream(Object $$0) {
-      return $$0 instanceof LongList $$1 ? DataResult.success($$1.longStream()) : DataResult.error(() -> "Not a long list: " + $$0);
-   }
-
-   public Object createLongList(LongStream $$0) {
-      return LongArrayList.toList($$0);
-   }
-
-   public Object remove(Object $$0, String $$1) {
-      if ($$0 instanceof Map<?, ?> $$2) {
-         Map<Object, Object> $$3 = new LinkedHashMap<>((Map<? extends Object, ? extends Object>)$$2);
-         $$3.remove($$1);
-         return Map.copyOf($$3);
-      } else {
+   public static double b(double $$0, double $$1, double $$2) {
+      if ($$2 < 0.0) {
          return $$0;
+      } else {
+         return $$2 > 1.0 ? $$1 : d($$2, $$0, $$1);
       }
    }
 
-   public RecordBuilder<Object> mapBuilder() {
-      return new ayf.a<Object>(this);
+   public static float b(float $$0, float $$1, float $$2) {
+      if ($$2 < 0.0F) {
+         return $$0;
+      } else {
+         return $$2 > 1.0F ? $$1 : i($$2, $$0, $$1);
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Java";
+   public static double a(double $$0, double $$1) {
+      if ($$0 < 0.0) {
+         $$0 = -$$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$1 = -$$1;
+      }
+
+      return Math.max($$0, $$1);
    }
 
-   static final class a<T> extends AbstractUniversalBuilder<T, Builder<T, T>> {
-      public a(DynamicOps<T> $$0) {
-         super($$0);
+   public static int a(int $$0, int $$1) {
+      return Math.floorDiv($$0, $$1);
+   }
+
+   public static int a(aym $$0, int $$1, int $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.a($$2 - $$1 + 1) + $$1;
+   }
+
+   public static float a(aym $$0, float $$1, float $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.i() * ($$2 - $$1) + $$1;
+   }
+
+   public static double a(aym $$0, double $$1, double $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.j() * ($$2 - $$1) + $$1;
+   }
+
+   public static boolean a(float $$0, float $$1) {
+      return Math.abs($$1 - $$0) < 1.0E-5F;
+   }
+
+   public static boolean b(double $$0, double $$1) {
+      return Math.abs($$1 - $$0) < 1.0E-5F;
+   }
+
+   public static int b(int $$0, int $$1) {
+      return Math.floorMod($$0, $$1);
+   }
+
+   public static float b(float $$0, float $$1) {
+      return ($$0 % $$1 + $$1) % $$1;
+   }
+
+   public static double c(double $$0, double $$1) {
+      return ($$0 % $$1 + $$1) % $$1;
+   }
+
+   public static boolean c(int $$0, int $$1) {
+      return $$0 % $$1 == 0;
+   }
+
+   public static int b(int $$0) {
+      int $$1 = $$0 % 360;
+      if ($$1 >= 180) {
+         $$1 -= 360;
       }
 
-      protected Builder<T, T> a() {
-         return ImmutableMap.builder();
+      if ($$1 < -180) {
+         $$1 += 360;
       }
 
-      protected Builder<T, T> a(T $$0, T $$1, Builder<T, T> $$2) {
-         return $$2.put($$0, $$1);
+      return $$1;
+   }
+
+   public static float g(float $$0) {
+      float $$1 = $$0 % 360.0F;
+      if ($$1 >= 180.0F) {
+         $$1 -= 360.0F;
       }
 
-      protected DataResult<T> a(Builder<T, T> $$0, T $$1) {
-         ImmutableMap<T, T> $$2;
-         try {
-            $$2 = $$0.buildOrThrow();
-         } catch (IllegalArgumentException var5) {
-            return DataResult.error(() -> "Can't build map: " + var5.getMessage());
+      if ($$1 < -180.0F) {
+         $$1 += 360.0F;
+      }
+
+      return $$1;
+   }
+
+   public static double d(double $$0) {
+      double $$1 = $$0 % 360.0;
+      if ($$1 >= 180.0) {
+         $$1 -= 360.0;
+      }
+
+      if ($$1 < -180.0) {
+         $$1 += 360.0;
+      }
+
+      return $$1;
+   }
+
+   public static float c(float $$0, float $$1) {
+      return g($$1 - $$0);
+   }
+
+   public static float d(float $$0, float $$1) {
+      return e(c($$0, $$1));
+   }
+
+   public static float c(float $$0, float $$1, float $$2) {
+      float $$3 = c($$0, $$1);
+      float $$4 = a($$3, -$$2, $$2);
+      return $$1 - $$4;
+   }
+
+   public static float d(float $$0, float $$1, float $$2) {
+      $$2 = e($$2);
+      return $$0 < $$1 ? a($$0 + $$2, $$0, $$1) : a($$0 - $$2, $$1, $$0);
+   }
+
+   public static float e(float $$0, float $$1, float $$2) {
+      float $$3 = c($$0, $$1);
+      return d($$0, $$0 + $$3, $$2);
+   }
+
+   public static int a(String $$0, int $$1) {
+      return NumberUtils.toInt($$0, $$1);
+   }
+
+   public static int c(int $$0) {
+      int $$1 = $$0 - 1;
+      $$1 |= $$1 >> 1;
+      $$1 |= $$1 >> 2;
+      $$1 |= $$1 >> 4;
+      $$1 |= $$1 >> 8;
+      $$1 |= $$1 >> 16;
+      return $$1 + 1;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 != 0 && ($$0 & $$0 - 1) == 0;
+   }
+
+   public static int e(int $$0) {
+      $$0 = d($$0) ? $$0 : c($$0);
+      return r[(int)((long)$$0 * 125613361L >> 27) & 31];
+   }
+
+   public static int f(int $$0) {
+      return e($$0) - (d($$0) ? 0 : 1);
+   }
+
+   public static int f(float $$0, float $$1, float $$2) {
+      return axp.b.a(0, d($$0 * 255.0F), d($$1 * 255.0F), d($$2 * 255.0F));
+   }
+
+   public static float h(float $$0) {
+      return $$0 - (float)d($$0);
+   }
+
+   public static double e(double $$0) {
+      return $$0 - (double)b($$0);
+   }
+
+   @Deprecated
+   public static long a(js $$0) {
+      return b($$0.u(), $$0.v(), $$0.w());
+   }
+
+   @Deprecated
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = (long)($$0 * 3129871) ^ (long)$$2 * 116129781L ^ (long)$$1;
+      $$3 = $$3 * $$3 * 42317861L + $$3 * 11L;
+      return $$3 >> 16;
+   }
+
+   public static UUID a(aym $$0) {
+      long $$1 = $$0.g() & -61441L | 16384L;
+      long $$2 = $$0.g() & 4611686018427387903L | Long.MIN_VALUE;
+      return new UUID($$1, $$2);
+   }
+
+   public static UUID a() {
+      return a(q);
+   }
+
+   public static double c(double $$0, double $$1, double $$2) {
+      return ($$0 - $$1) / ($$2 - $$1);
+   }
+
+   public static float g(float $$0, float $$1, float $$2) {
+      return ($$0 - $$1) / ($$2 - $$1);
+   }
+
+   public static boolean a(eum $$0, eum $$1, euh $$2) {
+      double $$3 = ($$2.a + $$2.d) * 0.5;
+      double $$4 = ($$2.d - $$2.a) * 0.5;
+      double $$5 = $$0.c - $$3;
+      if (Math.abs($$5) > $$4 && $$5 * $$1.c >= 0.0) {
+         return false;
+      } else {
+         double $$6 = ($$2.b + $$2.e) * 0.5;
+         double $$7 = ($$2.e - $$2.b) * 0.5;
+         double $$8 = $$0.d - $$6;
+         if (Math.abs($$8) > $$7 && $$8 * $$1.d >= 0.0) {
+            return false;
+         } else {
+            double $$9 = ($$2.c + $$2.f) * 0.5;
+            double $$10 = ($$2.f - $$2.c) * 0.5;
+            double $$11 = $$0.e - $$9;
+            if (Math.abs($$11) > $$10 && $$11 * $$1.e >= 0.0) {
+               return false;
+            } else {
+               double $$12 = Math.abs($$1.c);
+               double $$13 = Math.abs($$1.d);
+               double $$14 = Math.abs($$1.e);
+               double $$15 = $$1.d * $$11 - $$1.e * $$8;
+               if (Math.abs($$15) > $$7 * $$14 + $$10 * $$13) {
+                  return false;
+               } else {
+                  $$15 = $$1.e * $$5 - $$1.c * $$11;
+                  if (Math.abs($$15) > $$4 * $$14 + $$10 * $$12) {
+                     return false;
+                  } else {
+                     $$15 = $$1.c * $$8 - $$1.d * $$5;
+                     return Math.abs($$15) < $$4 * $$13 + $$7 * $$12;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static double d(double $$0, double $$1) {
+      double $$2 = $$1 * $$1 + $$0 * $$0;
+      if (Double.isNaN($$2)) {
+         return Double.NaN;
+      } else {
+         boolean $$3 = $$0 < 0.0;
+         if ($$3) {
+            $$0 = -$$0;
          }
 
-         return this.ops().mergeToMap($$1, $$2);
+         boolean $$4 = $$1 < 0.0;
+         if ($$4) {
+            $$1 = -$$1;
+         }
+
+         boolean $$5 = $$0 > $$1;
+         if ($$5) {
+            double $$6 = $$1;
+            $$1 = $$0;
+            $$0 = $$6;
+         }
+
+         double $$7 = g($$2);
+         $$1 *= $$7;
+         $$0 *= $$7;
+         double $$8 = v + $$0;
+         int $$9 = (int)Double.doubleToRawLongBits($$8);
+         double $$10 = w[$$9];
+         double $$11 = x[$$9];
+         double $$12 = $$8 - v;
+         double $$13 = $$0 * $$11 - $$1 * $$12;
+         double $$14 = (6.0 + $$13 * $$13) * $$13 * 0.16666666666666666;
+         double $$15 = $$10 + $$14;
+         if ($$5) {
+            $$15 = (Math.PI / 2) - $$15;
+         }
+
+         if ($$4) {
+            $$15 = Math.PI - $$15;
+         }
+
+         if ($$3) {
+            $$15 = -$$15;
+         }
+
+         return $$15;
+      }
+   }
+
+   public static float i(float $$0) {
+      return org.joml.Math.invsqrt($$0);
+   }
+
+   public static double f(double $$0) {
+      return org.joml.Math.invsqrt($$0);
+   }
+
+   @Deprecated
+   public static double g(double $$0) {
+      double $$1 = 0.5 * $$0;
+      long $$2 = Double.doubleToRawLongBits($$0);
+      $$2 = 6910469410427058090L - ($$2 >> 1);
+      $$0 = Double.longBitsToDouble($$2);
+      return $$0 * (1.5 - $$1 * $$0 * $$0);
+   }
+
+   public static float j(float $$0) {
+      int $$1 = Float.floatToIntBits($$0);
+      $$1 = 1419967116 - $$1 / 3;
+      float $$2 = Float.intBitsToFloat($$1);
+      $$2 = 0.6666667F * $$2 + 1.0F / (3.0F * $$2 * $$2 * $$0);
+      return 0.6666667F * $$2 + 1.0F / (3.0F * $$2 * $$2 * $$0);
+   }
+
+   public static int h(float $$0, float $$1, float $$2) {
+      int $$3 = (int)($$0 * 6.0F) % 6;
+      float $$4 = $$0 * 6.0F - (float)$$3;
+      float $$5 = $$2 * (1.0F - $$1);
+      float $$6 = $$2 * (1.0F - $$4 * $$1);
+      float $$7 = $$2 * (1.0F - (1.0F - $$4) * $$1);
+      float $$8;
+      float $$9;
+      float $$10;
+      switch ($$3) {
+         case 0:
+            $$8 = $$2;
+            $$9 = $$7;
+            $$10 = $$5;
+            break;
+         case 1:
+            $$8 = $$6;
+            $$9 = $$2;
+            $$10 = $$5;
+            break;
+         case 2:
+            $$8 = $$5;
+            $$9 = $$2;
+            $$10 = $$7;
+            break;
+         case 3:
+            $$8 = $$5;
+            $$9 = $$6;
+            $$10 = $$2;
+            break;
+         case 4:
+            $$8 = $$7;
+            $$9 = $$5;
+            $$10 = $$2;
+            break;
+         case 5:
+            $$8 = $$2;
+            $$9 = $$5;
+            $$10 = $$6;
+            break;
+         default:
+            throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + $$0 + ", " + $$1 + ", " + $$2);
+      }
+
+      return axp.b.a(0, a((int)($$8 * 255.0F), 0, 255), a((int)($$9 * 255.0F), 0, 255), a((int)($$10 * 255.0F), 0, 255));
+   }
+
+   public static int g(int $$0) {
+      $$0 ^= $$0 >>> 16;
+      $$0 *= -2048144789;
+      $$0 ^= $$0 >>> 13;
+      $$0 *= -1028477387;
+      return $$0 ^ $$0 >>> 16;
+   }
+
+   public static int a(int $$0, int $$1, IntPredicate $$2) {
+      int $$3 = $$1 - $$0;
+
+      while ($$3 > 0) {
+         int $$4 = $$3 / 2;
+         int $$5 = $$0 + $$4;
+         if ($$2.test($$5)) {
+            $$3 = $$4;
+         } else {
+            $$0 = $$5 + 1;
+            $$3 -= $$4 + 1;
+         }
+      }
+
+      return $$0;
+   }
+
+   public static int a(float $$0, int $$1, int $$2) {
+      return $$1 + d($$0 * (float)($$2 - $$1));
+   }
+
+   public static int b(float $$0, int $$1, int $$2) {
+      int $$3 = $$2 - $$1;
+      return $$1 + d($$0 * (float)($$3 - 1)) + ($$0 > 0.0F ? 1 : 0);
+   }
+
+   public static float i(float $$0, float $$1, float $$2) {
+      return $$1 + $$0 * ($$2 - $$1);
+   }
+
+   public static double d(double $$0, double $$1, double $$2) {
+      return $$1 + $$0 * ($$2 - $$1);
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return d($$1, d($$0, $$2, $$3), d($$0, $$4, $$5));
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, double $$9, double $$10) {
+      return d($$2, a($$0, $$1, $$3, $$4, $$5, $$6), a($$0, $$1, $$7, $$8, $$9, $$10));
+   }
+
+   public static float a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return 0.5F
+         * (2.0F * $$2 + ($$3 - $$1) * $$0 + (2.0F * $$1 - 5.0F * $$2 + 4.0F * $$3 - $$4) * $$0 * $$0 + (3.0F * $$2 - $$1 - 3.0F * $$3 + $$4) * $$0 * $$0 * $$0);
+   }
+
+   public static double h(double $$0) {
+      return $$0 * $$0 * $$0 * ($$0 * ($$0 * 6.0 - 15.0) + 10.0);
+   }
+
+   public static double i(double $$0) {
+      return 30.0 * $$0 * $$0 * ($$0 - 1.0) * ($$0 - 1.0);
+   }
+
+   public static int j(double $$0) {
+      if ($$0 == 0.0) {
+         return 0;
+      } else {
+         return $$0 > 0.0 ? 1 : -1;
+      }
+   }
+
+   public static float j(float $$0, float $$1, float $$2) {
+      return $$1 + $$0 * g($$2 - $$1);
+   }
+
+   public static double e(double $$0, double $$1, double $$2) {
+      return $$1 + $$0 * d($$2 - $$1);
+   }
+
+   public static float e(float $$0, float $$1) {
+      return (Math.abs($$0 % $$1 - $$1 * 0.5F) - $$1 * 0.25F) / ($$1 * 0.25F);
+   }
+
+   public static float k(float $$0) {
+      return $$0 * $$0;
+   }
+
+   public static double k(double $$0) {
+      return $$0 * $$0;
+   }
+
+   public static int h(int $$0) {
+      return $$0 * $$0;
+   }
+
+   public static long a(long $$0) {
+      return $$0 * $$0;
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return b($$3, $$4, c($$0, $$1, $$2));
+   }
+
+   public static float b(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return b($$3, $$4, g($$0, $$1, $$2));
+   }
+
+   public static double b(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return d(c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   public static float c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return i(g($$0, $$1, $$2), $$3, $$4);
+   }
+
+   public static double l(double $$0) {
+      return $$0 + (2.0 * aym.a((long)a($$0 * 3000.0)).j() - 1.0) * 1.0E-7 / 2.0;
+   }
+
+   public static int d(int $$0, int $$1) {
+      return e($$0, $$1) * $$1;
+   }
+
+   public static int e(int $$0, int $$1) {
+      return -Math.floorDiv(-$$0, $$1);
+   }
+
+   public static int b(aym $$0, int $$1, int $$2) {
+      return $$0.a($$2 - $$1 + 1) + $$1;
+   }
+
+   public static float b(aym $$0, float $$1, float $$2) {
+      return $$0.i() * ($$2 - $$1) + $$1;
+   }
+
+   public static float c(aym $$0, float $$1, float $$2) {
+      return $$1 + (float)$$0.k() * $$2;
+   }
+
+   public static double e(double $$0, double $$1) {
+      return $$0 * $$0 + $$1 * $$1;
+   }
+
+   public static double f(double $$0, double $$1) {
+      return Math.sqrt(e($$0, $$1));
+   }
+
+   public static double f(double $$0, double $$1, double $$2) {
+      return $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+   }
+
+   public static double g(double $$0, double $$1, double $$2) {
+      return Math.sqrt(f($$0, $$1, $$2));
+   }
+
+   public static int a(double $$0, int $$1) {
+      return a($$0 / (double)$$1) * $$1;
+   }
+
+   public static IntStream c(int $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 1);
+   }
+
+   public static IntStream a(int $$0, int $$1, int $$2, int $$3) {
+      if ($$1 > $$2) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "upperbound %d expected to be > lowerBound %d", $$2, $$1));
+      } else if ($$3 < 1) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "steps expected to be >= 1, was %d", $$3));
+      } else {
+         return $$0 >= $$1 && $$0 <= $$2 ? IntStream.iterate($$0, $$3x -> {
+            int $$4 = Math.abs($$0 - $$3x);
+            return $$0 - $$4 >= $$1 || $$0 + $$4 <= $$2;
+         }, $$4 -> {
+            boolean $$5 = $$4 <= $$0;
+            int $$6 = Math.abs($$0 - $$4);
+            boolean $$7 = $$0 + $$6 + $$3 <= $$2;
+            if (!$$5 || !$$7) {
+               int $$8 = $$0 - $$6 - ($$5 ? $$3 : 0);
+               if ($$8 >= $$1) {
+                  return $$8;
+               }
+            }
+
+            return $$0 + $$6 + $$3;
+         }) : IntStream.empty();
+      }
+   }
+
+   public static Quaternionf a(Vector3f $$0, Quaternionf $$1, Quaternionf $$2) {
+      float $$3 = $$0.dot($$1.x, $$1.y, $$1.z);
+      return $$2.set($$0.x * $$3, $$0.y * $$3, $$0.z * $$3, $$1.w).normalize();
+   }
+
+   public static int a(Fraction $$0, int $$1) {
+      return $$0.getNumerator() * $$1 / $$0.getDenominator();
+   }
+
+   static {
+      for (int $$0 = 0; $$0 < 257; $$0++) {
+         double $$1 = (double)$$0 / 256.0;
+         double $$2 = Math.asin($$1);
+         x[$$0] = Math.cos($$2);
+         w[$$0] = $$2;
       }
    }
 }

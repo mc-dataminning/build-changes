@@ -1,36 +1,22 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+public enum fco {
+   a(0, ehb.a),
+   b(1, ehb.b),
+   c(2, ehb.c),
+   d(3, ehb.d);
 
-public class fco extends fcy {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fcn> a;
+   private final int e;
+   private final wx f;
 
-   public static fco a(String $$0) {
-      fco $$1 = new fco();
-      $$1.a = Lists.newArrayList();
+   private fco(int $$0, akm<eha> $$1) {
+      this.e = $$0;
+      this.f = wx.c($$1.a().f("generator"));
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public wx a() {
+      return this.f;
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(fcn.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
-      }
-
-      return $$1;
+   public int b() {
+      return this.e;
    }
 }

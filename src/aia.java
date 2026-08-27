@@ -1,37 +1,45 @@
-public class aia implements zl<agl> {
-   public static final zc<wp, aia> a = zl.a(aia::a, aia::new);
-   private final int b;
-   private final cuh c;
+public class aia implements ze<age> {
+   public static final yv<vx, aia> a = ze.a(aia::a, aia::new);
+   private final eui b;
+   private final bpv c;
+   private final int d;
 
-   public aia(int $$0, cuh $$1) {
-      this.b = $$0;
-      this.c = $$1.r();
+   public aia(bpv $$0, eui $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private aia(wp $$0) {
-      this.b = $$0.readShort();
-      this.c = cuh.e.decode($$0);
+   private aia(vx $$0) {
+      this.c = $$0.b(bpv.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(wp $$0) {
-      $$0.l(this.b);
-      cuh.e.encode($$0, this.c);
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
-   public zn<aia> a() {
-      return agj.bW;
+   public zg<aia> a() {
+      return agc.cc;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bpv b() {
+      return this.c;
+   }
+
+   public eui e() {
       return this.b;
    }
 
-   public cuh e() {
-      return this.c;
+   public int f() {
+      return this.d;
    }
 }

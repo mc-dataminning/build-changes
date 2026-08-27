@@ -1,63 +1,58 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
 
-public final class dzj {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
-
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+public class dzj extends dzz<eck> {
+   public dzj(Codec<eck> $$0) {
+      super($$0);
    }
 
-   public static dzj.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dzj.a($$1, $$2);
-   }
+   @Override
+   public boolean a(eab<eck> $$0) {
+      io $$1 = $$0.e();
+      dbu $$2 = $$0.b();
+      aym $$3 = $$0.d();
+      if ($$1.v() > $$2.z_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dec.G) && !$$2.a_($$1.d()).a(dec.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-   public static dzj.a c(long $$0) {
-      return b($$0).a();
-   }
+         for (it $$5 : it.values()) {
+            if ($$5 != it.a && $$2.a_($$1.a($$5)).a(dec.iC)) {
+               $$4 = true;
+               break;
+            }
+         }
 
-   public static dzj.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dzj.a($$2, $$3);
-   }
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dec.mW.n(), 2);
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
 
-   public static record a(long a, long b) {
-      public dzj.a a(long $$0, long $$1) {
-         return new dzj.a(this.a ^ $$0, this.b ^ $$1);
-      }
+               if ($$8 >= 1) {
+                  io $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  drd $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(dec.G) || $$10.a(dec.iC) || $$10.a(dec.dO)) {
+                     for (it $$11 : it.values()) {
+                        drd $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dec.mW)) {
+                           $$2.a($$9, dec.mW.n(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
 
-      public dzj.a a(dzj.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
-
-      public dzj.a a() {
-         return new dzj.a(dzj.a(this.a), dzj.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
+            return true;
+         }
       }
    }
 }

@@ -1,69 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gsc extends uf {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class gsc {
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   private gsc(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static class a extends Thread {
+      private final gsc.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
+
+      public a(gsc.b $$0) throws IOException {
+         super("LanServerDetector #" + gsc.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(gsc.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
+
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               gsc.b.error("Couldn't ping server", var6);
+               break;
+            }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            gsc.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
+      }
    }
 
-   public static gsc a(aud $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
+   public static class b {
+      private final List<gsb> a = Lists.newArrayList();
+      private boolean b;
 
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+      @Nullable
+      public synchronized List<gsb> a() {
+         if (this.b) {
+            List<gsb> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
 
-         for (String $$6 : $$0.a()) {
-            try {
-               akt $$7 = new akt($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = gsd.a($$0);
+         String $$3 = gsd.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (gsb $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new gsb($$2, $$3));
+               this.b = true;
             }
          }
       }
-
-      return new gsc(ImmutableMap.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<aub> $$1, Map<String, String> $$2) {
-      for (aub $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            uf.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
-   }
-
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public axy a(xj $$0) {
-      return gsd.a($$0, this.d);
    }
 }

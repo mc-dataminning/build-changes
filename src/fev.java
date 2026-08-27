@@ -1,98 +1,113 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
 public class fev {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
-   @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
-      }
-   }
-
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
-   }
+   public static final fer a = fer.a.a(0.5F)
+      .a()
+      .a("head", new feq(feq.d.b, new fes(0.0F, fet.b(180.0F, 0.0F, 0.0F), feq.b.a)))
+      .a("head", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.5F, 0.0F), feq.b.a)))
+      .a("body", new feq(feq.d.b, new fes(0.0F, fet.b(180.0F, 0.0F, 0.0F), feq.b.a)))
+      .a("body", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.5F, 0.0F), feq.b.a)))
+      .a("feet", new feq(feq.d.b, new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)))
+      .a("right_wing", new feq(feq.d.b, new fes(0.0F, fet.b(0.0F, -10.0F, 0.0F), feq.b.a)))
+      .a("right_wing", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.a)))
+      .a("right_wing_tip", new feq(feq.d.b, new fes(0.0F, fet.b(0.0F, -120.0F, 0.0F), feq.b.a)))
+      .a("left_wing", new feq(feq.d.b, new fes(0.0F, fet.b(0.0F, 10.0F, 0.0F), feq.b.a)))
+      .a("left_wing", new feq(feq.d.a, new fes(0.0F, fet.a(0.0F, 0.0F, 1.0F), feq.b.a)))
+      .a("left_wing_tip", new feq(feq.d.b, new fes(0.0F, fet.b(0.0F, 120.0F, 0.0F), feq.b.a)))
+      .b();
+   public static final fer b = fer.a.a(0.5F)
+      .a()
+      .a(
+         "head",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.b(20.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(0.0F, 0.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "head",
+         new feq(
+            feq.d.a,
+            new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.a(0.0F, 2.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a),
+            new fes(0.375F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.4583F, fet.a(0.0F, -1.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "body",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(40.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.b(52.5F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(40.0F, 0.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "body",
+         new feq(
+            feq.d.a,
+            new fes(0.0F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.a(0.0F, 2.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.a(0.0F, 1.0F, 0.0F), feq.b.a),
+            new fes(0.375F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.4583F, fet.a(0.0F, -1.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.a(0.0F, 0.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "feet",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(10.0F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.b(-21.25F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.b(-12.5F, 0.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(10.0F, 0.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "right_wing",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(0.0F, 85.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.b(0.0F, -55.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.b(0.0F, 50.0F, 0.0F), feq.b.a),
+            new fes(0.375F, fet.b(0.0F, 70.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(0.0F, 85.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "right_wing_tip",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(0.0F, 10.5F, 0.0F), feq.b.a),
+            new fes(0.0417F, fet.b(0.0F, 65.5F, 0.0F), feq.b.a),
+            new fes(0.2083F, fet.b(0.0F, -135.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(0.0F, 10.5F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "left_wing",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(0.0F, -85.0F, 0.0F), feq.b.a),
+            new fes(0.125F, fet.b(0.0F, 55.0F, 0.0F), feq.b.a),
+            new fes(0.25F, fet.b(0.0F, -50.0F, 0.0F), feq.b.a),
+            new fes(0.375F, fet.b(0.0F, -70.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(0.0F, -85.0F, 0.0F), feq.b.a)
+         )
+      )
+      .a(
+         "left_wing_tip",
+         new feq(
+            feq.d.b,
+            new fes(0.0F, fet.b(0.0F, -10.5F, 0.0F), feq.b.a),
+            new fes(0.0417F, fet.b(0.0F, -65.5F, 0.0F), feq.b.a),
+            new fes(0.2083F, fet.b(0.0F, 135.0F, 0.0F), feq.b.a),
+            new fes(0.5F, fet.b(0.0F, -10.5F, 0.0F), feq.b.a)
+         )
+      )
+      .b();
 }

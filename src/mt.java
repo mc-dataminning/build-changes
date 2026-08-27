@@ -1,17 +1,143 @@
-public class mt extends ml {
-   protected mt() {
-      super(cop.a(cor.c));
-   }
+import java.util.function.BiConsumer;
 
+public class mt implements mj {
    @Override
-   public void a() {
-      this.a(bsb.o, eru.b().a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.Ao).a(etr.a(evu.a(1.0F, 2.0F))).a(ete.a(evu.a(1.0F, 2.0F)))).a(euy.c())));
-      this.a(
-         bsb.n,
-         eru.b()
-            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.pL).a(etr.a(evu.a(0.0F, 2.0F))).a(ete.a(evu.a(0.0F, 1.0F)))))
-            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.sW).a(etr.a(evu.a(0.0F, 2.0F))).a(ete.a(evu.a(0.0F, 1.0F)))))
-            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.xb).a(etr.a(evu.a(0.0F, 1.0F))).a(ete.a(evu.a(0.0F, 1.0F)).a(1)).a(etv.a(cws.E))).a(euy.c()))
+   public void generate(iz.a $$0, BiConsumer<akm<epm>, epm.a> $$1) {
+      $$1.accept(
+         epf.bb,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.xN).a(2))
+                  .a(epu.a(ctt.xP).a(2))
+                  .a(epu.a(ctt.qL))
+                  .a(epu.a(ctt.oz))
+                  .a(epu.a(ctt.pp))
+                  .a(
+                     epu.a(ctt.vU)
+                        .a(
+                           erp.c()
+                              .a(brg.p, etm.a(7.0F, 10.0F))
+                              .a(brg.h, etm.a(7.0F, 10.0F))
+                              .a(brg.r, etm.a(6.0F, 8.0F))
+                              .a(brg.o, etm.a(5.0F, 7.0F))
+                              .a(brg.s, etm.a(10.0F, 20.0F))
+                              .a(brg.w, etm.a(7.0F, 10.0F))
+                        )
+                  )
+            )
+      );
+      $$1.accept(
+         epf.bc,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.xM))
+                  .a(epu.a(ctt.xZ))
+                  .a(epu.a(ctt.yc))
+                  .a(epu.a(ctt.yg))
+                  .a(epu.a(ctt.oy))
+                  .a(epu.a(ctt.md))
+                  .a(epu.a(ctt.pu))
+                  .a(epu.a(ctt.oz))
+            )
+      );
+      $$1.accept(
+         epf.bd,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.oz).a(2))
+                  .a(epu.a(ctt.pw).a(2))
+                  .a(epu.a(ctt.oP).a(2))
+                  .a(epu.a(ctt.eX).a(2))
+                  .a(epu.a(ctt.qL).a(2))
+                  .a(epu.a(ctt.rm).a(2))
+                  .a(epu.a(ctt.rt).a(2))
+                  .a(epu.a(ctt.rl).a(2))
+                  .a(epu.a(ctt.ri).a(2))
+                  .a(epu.a(ctt.rj).a(2))
+                  .a(epu.a(ctt.xf).a(2))
+                  .a(epu.a(ctt.xe).a(2))
+                  .a(epu.a(ctt.xb).a(2))
+                  .a(epu.a(ctt.xd).a(2))
+                  .a(epu.a(ctt.iv))
+                  .a(epu.a(ctt.iz))
+                  .a(epu.a(ctt.iE))
+                  .a(epu.a(ctt.iw))
+                  .a(epu.a(ctt.iH))
+                  .a(epu.a(ctt.ix))
+                  .a(epu.a(ctt.iD))
+                  .a(epu.a(ctt.qo))
+                  .a(epu.a(ctt.qn))
+                  .a(epu.a(ctt.si))
+                  .a(epu.a(ctt.ow))
+                  .a(epu.a(ctt.pv))
+                  .a(epu.a(ctt.vl))
+                  .a(epu.a(ctt.cR))
+                  .a(epu.a(ctt.ue))
+                  .a(epu.a(ctt.ps))
+                  .a(epu.a(ctt.uK))
+            )
+      );
+      $$1.accept(
+         epf.be,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.xQ))
+                  .a(epu.a(ctt.xR))
+                  .a(epu.a(ctt.xU))
+                  .a(epu.a(ctt.xW))
+                  .a(epu.a(ctt.xX))
+                  .a(epu.a(ctt.xY))
+                  .a(epu.a(ctt.ye))
+                  .a(epu.a(ctt.xE))
+                  .a(epu.a(ctt.xH))
+                  .a(epu.a(ctt.xF))
+                  .a(epu.a(ctt.xI))
+                  .a(epu.a(ctt.vL))
+            )
+      );
+      $$1.accept(
+         epf.bf,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.xL))
+                  .a(epu.a(ctt.yf))
+                  .a(epu.a(ctt.yh))
+                  .a(epu.a(ctt.kq))
+                  .a(epu.a(ctt.pd))
+                  .a(epu.a(ctt.oz).a(2))
+                  .a(epu.a(ctt.pw).a(2))
+                  .a(epu.a(ctt.oP).a(2))
+                  .a(epu.a(ctt.ow).a(2))
+                  .a(epu.a(ctt.si).a(2))
+            )
+      );
+      $$1.accept(
+         epf.bg,
+         epm.b()
+            .a(
+               epl.a()
+                  .a(etg.a(1.0F))
+                  .a(epu.a(ctt.xO))
+                  .a(epu.a(ctt.xS))
+                  .a(epu.a(ctt.ya))
+                  .a(epu.a(ctt.yb))
+                  .a(epu.a(ctt.pd))
+                  .a(epu.a(ctt.oz).a(2))
+                  .a(epu.a(ctt.pw).a(2))
+                  .a(epu.a(ctt.oP).a(2))
+                  .a(epu.a(ctt.ow).a(2))
+                  .a(epu.a(ctt.si).a(2))
+            )
       );
    }
 }

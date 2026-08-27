@@ -1,53 +1,81 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record evn(evq b, evq c) implements evq {
-   public static final Codec<evn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(evr.a.fieldOf("n").forGetter(evn::c), evr.a.fieldOf("p").forGetter(evn::d)).apply($$0, evn::new)
-   );
+public class evn implements evm {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private wx g;
+   @Nullable
+   private yn h;
 
    @Override
-   public evp b() {
-      return evr.d;
+   public int a() {
+      return this.e;
+   }
+
+   public void a(int $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public int a(erp $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ayt $$3 = $$0.b();
-      int $$4 = 0;
+   public boolean b() {
+      return this.f;
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public wx d() {
+      return this.g;
+   }
+
+   public void a(@Nullable wx $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   @Override
+   public yn c() {
+      return this.h;
+   }
+
+   public void b(@Nullable yn $$0) {
+      this.h = $$0;
+   }
+
+   public ud a(iz.a $$0) {
+      ud $$1 = new ud();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", wx.a.a(this.g, $$0));
       }
 
-      return $$4;
+      if (this.h != null) {
+         yp.b.encodeStart($$0.a(ur.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
+      }
+
+      return $$1;
    }
 
-   @Override
-   public float b(erp $$0) {
-      return (float)this.a($$0);
-   }
+   public static evn a(ud $$0, iz.a $$1) {
+      evn $$2 = new evn();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = wx.a.a($$0.l("display"), $$1);
+      }
 
-   public static evn a(int $$0, float $$1) {
-      return new evn(evo.a((float)$$0), evo.a($$1));
-   }
+      if ($$0.b("format", 10)) {
+         yp.b.parse($$1.a(ur.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
+      }
 
-   @Override
-   public Set<eud<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public evq c() {
-      return this.b;
-   }
-
-   public evq d() {
-      return this.c;
+      return $$2;
    }
 }

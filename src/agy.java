@@ -1,5 +1,5 @@
-public class agy implements zl<agl> {
-   public static final zc<we, agy> a = zl.a(agy::a, agy::new);
+public class agy implements ze<age> {
+   public static final yv<vx, agy> a = ze.a(agy::a, agy::new);
    private final int b;
    private final int c;
 
@@ -8,22 +8,22 @@ public class agy implements zl<agl> {
       this.c = $$1;
    }
 
-   private agy(we $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
+   private agy(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(we $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zn<agy> a() {
-      return agj.br;
+   public zg<agy> a() {
+      return agc.bx;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 

@@ -1,67 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gah extends gay {
+   private final gat a;
 
-public class gah {
-   private final gaj[] a;
-   private int b;
-
-   public static Codec<gah> a(int $$0) {
-      return Codec.list(gaj.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new gah($$0, $$1));
-            },
-            gah::c
-         );
+   gah(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public gah(int $$0) {
-      this.a = new gaj[$$0];
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   private gah(int $$0, List<gaj> $$1) {
-      this.a = $$1.toArray(gaj[]::new);
-      this.b = $$1.size();
+   @Override
+   public gac b() {
+      return gac.c;
    }
 
-   private List<gaj> c() {
-      List<gaj> $$0 = new ArrayList<>(this.d());
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+   public static record a(gat a) implements gab<kz> {
+      public fzy a(kz $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gah $$8 = new gah($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
-
-      return $$0;
-   }
-
-   public void a(gaj $$0) {
-      this.a[this.c(this.b++)] = $$0;
-   }
-
-   @Nullable
-   public gaj b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
-   }
-
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
    }
 }

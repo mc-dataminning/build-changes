@@ -1,111 +1,61 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface bov<T, F> {
-   @Nullable
-   F a();
+public class bov extends boz {
+   public static final MapCodec<bov> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bov::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   boolean a(T var1);
-
-   boolean b();
-
-   int c();
-
-   public static final class a implements bov<bov.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean a(bov.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
-      }
+   public static bov a(float $$0, float $$1, float $$2, float $$3) {
+      return new bov($$0, $$1, $$2, $$3);
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
-
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
-      }
+   private bov(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static final class c<T> implements bov<T, T> {
-      private final Queue<T> a;
+   @Override
+   public float a(aym $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
 
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
+   public static float a(aym $$0, float $$1, float $$2, float $$3, float $$4) {
+      return ayf.a(ayf.c($$0, $$1, $$2), $$3, $$4);
+   }
 
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
+   @Override
+   public float a() {
+      return this.e;
+   }
 
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
+   @Override
+   public float b() {
+      return this.f;
+   }
 
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
+   @Override
+   public bpa<?> c() {
+      return bpa.c;
+   }
 
-      @Override
-      public int c() {
-         return this.a.size();
-      }
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

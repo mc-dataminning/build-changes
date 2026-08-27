@@ -1,84 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
+import java.util.Collections;
 
 public class anq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.recipe.take.failed"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ei.a("start").executes($$0x -> a((eh)$$0x.getSource()))))
-            .then(ei.a("stop").executes($$0x -> b((eh)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ef.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ef.a("targets", er.d())
+                              .then(
+                                 ef.a("recipe", ff.a())
+                                    .suggests(ic.b)
+                                    .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), Collections.singleton(ff.b($$0x, "recipe"))))
+                              ))
+                           .then(ef.a("*").executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), ((ee)$$0x.getSource()).l().aJ().b())))
+                     )
+               ))
+            .then(
+               ef.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ef.a("targets", er.d())
+                           .then(
+                              ef.a("recipe", ff.a())
+                                 .suggests(ic.b)
+                                 .executes($$0x -> b((ee)$$0x.getSource(), er.f($$0x, "targets"), Collections.singleton(ff.b($$0x, "recipe"))))
+                           ))
+                        .then(ef.a("*").executes($$0x -> b((ee)$$0x.getSource(), er.f($$0x, "targets"), ((ee)$$0x.getSource()).l().aJ().b())))
+                  )
+            )
       );
    }
 
-   private static int a(eh $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aV()) {
-         throw c.create();
+   private static int a(ee $$0, Collection<aqo> $$1, Collection<cxy<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (aqo $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         Consumer<bmn> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> xe.c("commands.perf.started"), false);
-         return 0;
+         if ($$1.size() == 1) {
+            $$0.a(() -> wx.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wx.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   private static int b(eh $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aV()) {
+   private static int b(ee $$0, Collection<aqo> $$1, Collection<cxy<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (aqo $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
          throw b.create();
       } else {
-         $$1.aX();
-         return 0;
-      }
-   }
+         if ($$1.size() == 1) {
+            $$0.a(() -> wx.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wx.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
 
-   private static void a(eh $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ad.e(), $$2.bb().e(), ab.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bog.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(xe.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (axx $$7 = new axx(bog.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> xe.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(eh $$0, bmn $$1) {
-      if ($$1 != bmj.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)azl.a;
-         $$0.a(() -> xe.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$3;
       }
    }
 }

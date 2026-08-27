@@ -1,60 +1,91 @@
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
+
 public class ewt {
-   public static final ewt a = new ewt(0.0F, 0.0F);
-   public static final ewt b = new ewt(1.0F, 1.0F);
-   public static final ewt c = new ewt(1.0F, 0.0F);
-   public static final ewt d = new ewt(-1.0F, 0.0F);
-   public static final ewt e = new ewt(0.0F, 1.0F);
-   public static final ewt f = new ewt(0.0F, -1.0F);
-   public static final ewt g = new ewt(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final ewt h = new ewt(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+   private static final Logger a = LogUtils.getLogger();
 
-   public ewt(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
    }
 
-   public ewt a(float $$0) {
-      return new ewt(this.i * $$0, this.j * $$0);
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public float a(ewt $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
    }
 
-   public ewt b(ewt $$0) {
-      return new ewt(this.i + $$0.i, this.j + $$0.j);
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public ewt b(float $$0) {
-      return new ewt(this.i + $$0, this.j + $$0);
-   }
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
 
-   public boolean c(ewt $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
 
-   public ewt a() {
-      float $$0 = aym.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new ewt(this.i / $$0, this.j / $$0);
-   }
+            if ($$3 == 16) {
+               return 4355;
+            }
+         }
+      }
 
-   public float b() {
-      return aym.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(ewt $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public ewt d() {
-      return new ewt(-this.i, -this.j);
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

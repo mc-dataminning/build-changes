@@ -1,175 +1,240 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gt implements ArgumentType<gt.d> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
-   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("argument.item.id.invalid", $$0));
-   static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xe.b("arguments.item.tag.unknown", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xe.b("arguments.item.component.unknown", $$0));
-   static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("arguments.item.component.malformed", $$0, $$1));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xe.b("arguments.item.predicate.unknown", $$0));
-   static final Dynamic2CommandExceptionType g = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("arguments.item.predicate.malformed", $$0, $$1));
-   private static final akt h = new akt("count");
-   static final Map<akt, gt.a> i = Stream.of(new gt.a(h, $$0 -> true, cu.d.d.map($$0 -> $$1 -> $$0.d($$1.G()))))
-      .collect(Collectors.toUnmodifiableMap(gt.a::a, $$0 -> (gt.a)$$0));
-   static final Map<akt, gt.c> j = Stream.of(new gt.c(h, cu.d.d.map($$0 -> $$1 -> $$0.d($$1.G()))))
-      .collect(Collectors.toUnmodifiableMap(gt.c::a, $$0 -> (gt.c)$$0));
-   private final bly<List<Predicate<cuh>>> k;
+public class gt {
+   public static final int a = Integer.MAX_VALUE;
+   public static final BiConsumer<eum, List<? extends brw>> b = ($$0, $$1) -> {
+   };
+   private static final dvk<brw, ?> c = new dvk<brw, brw>() {
+      public brw a(brw $$0) {
+         return $$0;
+      }
 
-   public gt(ed $$0) {
-      gt.b $$1 = new gt.b($$0);
-      this.k = go.a($$1);
+      @Override
+      public Class<? extends brw> a() {
+         return brw.class;
+      }
+   };
+   private final int d;
+   private final boolean e;
+   private final boolean f;
+   private final Predicate<brw> g;
+   private final ct.c h;
+   private final Function<eum, eum> i;
+   @Nullable
+   private final euh j;
+   private final BiConsumer<eum, List<? extends brw>> k;
+   private final boolean l;
+   @Nullable
+   private final String m;
+   @Nullable
+   private final UUID n;
+   private final dvk<brw, ?> o;
+   private final boolean p;
+
+   public gt(
+      int $$0,
+      boolean $$1,
+      boolean $$2,
+      Predicate<brw> $$3,
+      ct.c $$4,
+      Function<eum, eum> $$5,
+      @Nullable euh $$6,
+      BiConsumer<eum, List<? extends brw>> $$7,
+      boolean $$8,
+      @Nullable String $$9,
+      @Nullable UUID $$10,
+      @Nullable bsc<?> $$11,
+      boolean $$12
+   ) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$8;
+      this.m = $$9;
+      this.n = $$10;
+      this.o = (dvk<brw, ?>)($$11 == null ? c : $$11);
+      this.p = $$12;
    }
 
-   public static gt a(ed $$0) {
-      return new gt($$0);
+   public int a() {
+      return this.d;
    }
 
-   public gt.d a(StringReader $$0) throws CommandSyntaxException {
-      return ad.a(this.k.a($$0))::test;
+   public boolean b() {
+      return this.e;
    }
 
-   public static gt.d a(CommandContext<eh> $$0, String $$1) {
-      return (gt.d)$$0.getArgument($$1, gt.d.class);
+   public boolean c() {
+      return this.l;
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return this.k.a($$1);
+   public boolean d() {
+      return this.f;
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public boolean e() {
+      return this.p;
    }
 
-   static record a(akt a, Predicate<cuh> b, Decoder<? extends Predicate<cuh>> c) {
+   private void e(ee $$0) throws CommandSyntaxException {
+      if (this.p && !$$0.c(2)) {
+         throw er.f.create();
+      }
+   }
 
-      public static <T> gt.a a(ImmutableStringReader $$0, akt $$1, kd<T> $$2) throws CommandSyntaxException {
-         Codec<T> $$3 = $$2.b();
-         if ($$3 == null) {
-            throw gt.d.createWithContext($$0, $$1);
+   public brw a(ee $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<? extends brw> $$1 = this.b($$0);
+      if ($$1.isEmpty()) {
+         throw er.d.create();
+      } else if ($$1.size() > 1) {
+         throw er.a.create();
+      } else {
+         return $$1.get(0);
+      }
+   }
+
+   public List<? extends brw> b(ee $$0) throws CommandSyntaxException {
+      return this.f($$0).stream().filter($$1 -> $$1.ak().a($$0.w())).toList();
+   }
+
+   private List<? extends brw> f(ee $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (!this.e) {
+         return this.d($$0);
+      } else if (this.m != null) {
+         aqo $$1 = $$0.l().ah().a(this.m);
+         return (List<? extends brw>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqo[]{$$1}));
+      } else if (this.n != null) {
+         for (aqn $$2 : $$0.l().K()) {
+            brw $$3 = $$2.a(this.n);
+            if ($$3 != null) {
+               return Lists.newArrayList(new brw[]{$$3});
+            }
+         }
+
+         return Collections.emptyList();
+      } else {
+         eum $$4 = this.i.apply($$0.d());
+         Predicate<brw> $$5 = this.a($$4);
+         if (this.l) {
+            return (List<? extends brw>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new brw[]{$$0.f()}) : Collections.emptyList());
          } else {
-            return new gt.a($$1, $$1x -> $$1x.b($$2), $$3.map($$1x -> $$2x -> {
-                  T $$3x = $$2x.a($$2);
-                  return Objects.equals($$1x, $$3x);
-               }));
+            List<brw> $$6 = Lists.newArrayList();
+            if (this.d()) {
+               this.a($$6, $$0.e(), $$4, $$5);
+            } else {
+               for (aqn $$7 : $$0.l().K()) {
+                  this.a($$6, $$7, $$4, $$5);
+               }
+            }
+
+            return this.a($$4, $$6);
          }
       }
-
-      public Predicate<cuh> a(ImmutableStringReader $$0, akr<vh> $$1, vh $$2) throws CommandSyntaxException {
-         DataResult<? extends Predicate<cuh>> $$3 = this.c.parse($$1, $$2);
-         return ad.a((DataResult<Predicate<cuh>>)$$3, $$1x -> gt.e.createWithContext($$0, this.a.toString(), $$1x));
-      }
    }
 
-   static class b implements go.b<Predicate<cuh>, gt.a, gt.c> {
-      private final jc.b<cuc> a;
-      private final jc.b<kd<?>> b;
-      private final jc.b<cj.a<?>> c;
-      private final akr<vh> d;
-
-      b(jc.a $$0) {
-         this.a = $$0.b(li.G);
-         this.b = $$0.b(li.av);
-         this.c = $$0.b(li.ax);
-         this.d = $$0.a(uy.a);
-      }
-
-      public Predicate<cuh> e(ImmutableStringReader $$0, akt $$1) throws CommandSyntaxException {
-         ja.c<cuc> $$2 = this.a.a(aks.a(li.G, $$1)).orElseThrow(() -> gt.b.createWithContext($$0, $$1));
-         return $$1x -> $$1x.a($$2);
-      }
-
-      public Predicate<cuh> f(ImmutableStringReader $$0, akt $$1) throws CommandSyntaxException {
-         je<cuc> $$2 = this.a.a(awt.a(li.G, $$1)).orElseThrow(() -> gt.c.createWithContext($$0, $$1));
-         return $$1x -> $$1x.a($$2);
-      }
-
-      public gt.a g(ImmutableStringReader $$0, akt $$1) throws CommandSyntaxException {
-         gt.a $$2 = gt.i.get($$1);
-         if ($$2 != null) {
-            return $$2;
+   private void a(List<brw> $$0, aqn $$1, eum $$2, Predicate<brw> $$3) {
+      int $$4 = this.f();
+      if ($$0.size() < $$4) {
+         if (this.j != null) {
+            $$1.a(this.o, this.j.c($$2), $$3, $$0, $$4);
          } else {
-            kd<?> $$3 = this.b.a(aks.a(li.av, $$1)).map(ja::a).orElseThrow(() -> gt.d.createWithContext($$0, $$1));
-            return gt.a.a($$0, $$1, $$3);
+            $$1.a(this.o, $$3, $$0, $$4);
          }
       }
+   }
 
-      public Predicate<cuh> a(ImmutableStringReader $$0, gt.a $$1, vh $$2) throws CommandSyntaxException {
-         return $$1.a($$0, this.d, $$2);
-      }
+   private int f() {
+      return this.k == b ? this.d : Integer.MAX_VALUE;
+   }
 
-      public Predicate<cuh> a(ImmutableStringReader $$0, gt.a $$1) {
-         return $$1.b;
-      }
-
-      public gt.c h(ImmutableStringReader $$0, akt $$1) throws CommandSyntaxException {
-         gt.c $$2 = gt.j.get($$1);
-         return $$2 != null ? $$2 : this.c.a(aks.a(li.ax, $$1)).map(gt.c::new).orElseThrow(() -> gt.f.createWithContext($$0, $$1));
-      }
-
-      public Predicate<cuh> a(ImmutableStringReader $$0, gt.c $$1, vh $$2) throws CommandSyntaxException {
-         return $$1.a($$0, this.d, $$2);
-      }
-
-      @Override
-      public Stream<akt> a() {
-         return this.a.c().map(aks::a);
-      }
-
-      @Override
-      public Stream<akt> b() {
-         return this.a.e().map(awt::b);
-      }
-
-      @Override
-      public Stream<akt> c() {
-         return Stream.concat(gt.i.keySet().stream(), this.b.b().filter($$0 -> !$$0.a().d()).map($$0 -> $$0.h().a()));
-      }
-
-      @Override
-      public Stream<akt> d() {
-         return Stream.concat(gt.j.keySet().stream(), this.c.c().map(aks::a));
-      }
-
-      public Predicate<cuh> a(Predicate<cuh> $$0) {
-         return $$0.negate();
-      }
-
-      public Predicate<cuh> b(List<Predicate<cuh>> $$0) {
-         return ad.b($$0);
+   public aqo c(ee $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<aqo> $$1 = this.d($$0);
+      if ($$1.size() != 1) {
+         throw er.e.create();
+      } else {
+         return $$1.get(0);
       }
    }
 
-   static record c(akt a, Decoder<? extends Predicate<cuh>> b) {
-      public c(ja.c<cj.a<?>> $$0) {
-         this($$0.h().a(), $$0.a().a().map($$0x -> $$0x::a));
-      }
+   public List<aqo> d(ee $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (this.m != null) {
+         aqo $$1 = $$0.l().ah().a(this.m);
+         return (List<aqo>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqo[]{$$1}));
+      } else if (this.n != null) {
+         aqo $$2 = $$0.l().ah().a(this.n);
+         return (List<aqo>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new aqo[]{$$2}));
+      } else {
+         eum $$3 = this.i.apply($$0.d());
+         Predicate<brw> $$4 = this.a($$3);
+         if (this.l) {
+            if ($$0.f() instanceof aqo $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new aqo[]{$$5});
+            }
 
-      public Predicate<cuh> a(ImmutableStringReader $$0, akr<vh> $$1, vh $$2) throws CommandSyntaxException {
-         DataResult<? extends Predicate<cuh>> $$3 = this.b.parse($$1, $$2);
-         return ad.a((DataResult<Predicate<cuh>>)$$3, $$1x -> gt.g.createWithContext($$0, this.a.toString(), $$1x));
+            return Collections.emptyList();
+         } else {
+            int $$6 = this.f();
+            List<aqo> $$7;
+            if (this.d()) {
+               $$7 = $$0.e().a($$4, $$6);
+            } else {
+               $$7 = Lists.newArrayList();
+
+               for (aqo $$9 : $$0.l().ah().t()) {
+                  if ($$4.test($$9)) {
+                     $$7.add($$9);
+                     if ($$7.size() >= $$6) {
+                        return $$7;
+                     }
+                  }
+               }
+            }
+
+            return this.a($$3, $$7);
+         }
       }
    }
 
-   public interface d extends Predicate<cuh> {
+   private Predicate<brw> a(eum $$0) {
+      Predicate<brw> $$1 = this.g;
+      if (this.j != null) {
+         euh $$2 = this.j.c($$0);
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cK()));
+      }
+
+      if (!this.h.c()) {
+         $$1 = $$1.and($$1x -> this.h.e($$1x.f($$0)));
+      }
+
+      return $$1;
+   }
+
+   private <T extends brw> List<T> a(eum $$0, List<T> $$1) {
+      if ($$1.size() > 1) {
+         this.k.accept($$0, $$1);
+      }
+
+      return $$1.subList(0, Math.min(this.d, $$1.size()));
+   }
+
+   public static wx a(List<? extends brw> $$0) {
+      return xa.b($$0, brw::O_);
    }
 }

@@ -1,70 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class aua implements aud, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private att c;
-   private final List<atx> d = Lists.newArrayList();
-   private final asr e;
+@FunctionalInterface
+public interface aua {
+   aua b = $$0 -> Optional.empty();
 
-   public aua(asr $$0) {
-      this.e = $$0;
-      this.c = new atw($$0, List.of());
+   Optional<atv> getResource(akn var1);
+
+   default atv getResourceOrThrow(akn $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   default InputStream open(akn $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
    }
 
-   public void a(atx $$0) {
-      this.d.add($$0);
+   default BufferedReader openAsReader(akn $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
    }
 
-   public atz a(Executor $$0, Executor $$1, CompletableFuture<azo> $$2, List<asp> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(asp::b).collect(Collectors.joining(", "))));
-      this.c.close();
-      this.c = new atw(this.e, $$3);
-      return auj.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
-   }
-
-   @Override
-   public Optional<aub> getResource(akt $$0) {
-      return this.c.getResource($$0);
-   }
-
-   @Override
-   public Set<String> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public List<aub> a(akt $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public Map<akt, aub> b(String $$0, Predicate<akt> $$1) {
-      return this.c.b($$0, $$1);
-   }
-
-   @Override
-   public Map<akt, List<aub>> c(String $$0, Predicate<akt> $$1) {
-      return this.c.c($$0, $$1);
-   }
-
-   @Override
-   public Stream<asp> b() {
-      return this.c.b();
+   static aua fromMap(Map<akn, atv> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

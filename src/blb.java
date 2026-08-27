@@ -1,3 +1,6 @@
 public enum blb {
-   a;
+   a,
+   b,
+   c,
+   d;
 }

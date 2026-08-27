@@ -1,67 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public class ffp extends ffj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.backup.restoring");
-   private final fby d;
-   private final long e;
-   private final fds f;
+public class ffp {
+   public static final float a = 200.0F;
+   private final List<ffp.a> b = new ArrayList<>();
 
-   public ffp(fby $$0, long $$1, fds $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public ffp a(ffp.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   @Override
-   public void run() {
-      fbs $$0 = fbs.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (fdg var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fdf var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fdw(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+   public ffp a(ffp $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
          }
+      });
+   }
+
+   public void a(ffn $$0, float $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
+   }
+
+   private void b(ffn $$0, float $$1) {
+      for (ffp.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
    }
 
-   @Override
-   public xe a() {
-      return c;
+   public interface a {
+      void render(ffn var1, float var2);
    }
 }

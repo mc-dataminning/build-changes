@@ -1,146 +1,194 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URI;
+import java.nio.channels.SeekableByteChannel;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.AccessMode;
+import java.nio.file.CopyOption;
+import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.NotDirectoryException;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.nio.file.ProviderMismatchException;
+import java.nio.file.ReadOnlyFileSystemException;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.DirectoryStream.Filter;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ass extends asg {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+class ass extends FileSystemProvider {
+   public static final String a = "x-mc-link";
 
-   public ass(aso $$0, Path $$1) {
-      super($$0);
-      this.e = $$1;
-   }
-
-   @Nullable
    @Override
-   public atv<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? atv.create($$1) : null;
-   }
-
-   public static boolean a(Path $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public atv<InputStream> a(asr $$0, akt $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
-   }
-
-   public static atv<InputStream> a(akt $$0, Path $$1) {
-      return (atv<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
-      });
-   }
-
-   @Nullable
-   private static atv<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? atv.create($$0) : null;
+   public String getScheme() {
+      return "x-mc-link";
    }
 
    @Override
-   public void a(asr $$0, String $$1, String $$2, asp.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   public static void a(String $$0, Path $$1, List<String> $$2, asp.a $$3) {
-      Path $$4 = v.a($$1, $$2);
-
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            akt $$5x = akt.a($$0, $$4x);
-            if ($$5x == null) {
-               ad.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, atv.create($$3x));
-            }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
-      }
+   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
+      throw new UnsupportedOperationException();
    }
 
    @Override
-   public Set<String> a(asr $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (akt.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
-            }
-         }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
-      }
-
-      return $$1;
+   public FileSystem getFileSystem(URI $$0) {
+      throw new UnsupportedOperationException();
    }
 
    @Override
-   public void close() {
+   public Path getPath(URI $$0) {
+      throw new UnsupportedOperationException();
    }
 
-   public static class a implements atl.c {
-      private final Path a;
-
-      public a(Path $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public asp a(aso $$0) {
-         return new ass($$0, this.a);
-      }
-
-      @Override
-      public asp a(aso $$0, atl.a $$1) {
-         asp $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
+   @Override
+   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
+      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
+         && !$$1.contains(StandardOpenOption.CREATE)
+         && !$$1.contains(StandardOpenOption.APPEND)
+         && !$$1.contains(StandardOpenOption.WRITE)) {
+         Path $$3 = a($$0).f().h();
+         if ($$3 == null) {
+            throw new NoSuchFileException($$0.toString());
          } else {
-            List<asp> $$4 = new ArrayList<>($$3.size());
+            return Files.newByteChannel($$3, $$1, $$2);
+         }
+      } else {
+         throw new UnsupportedOperationException();
+      }
+   }
 
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new ass($$0, $$6));
+   @Override
+   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
+      final asu.a $$2 = a($$0).f().i();
+      if ($$2 == null) {
+         throw new NotDirectoryException($$0.toString());
+      } else {
+         return new DirectoryStream<Path>() {
+            @Override
+            public Iterator<Path> iterator() {
+               return $$2.a().values().stream().filter($$1xx -> {
+                  try {
+                     return $$1.accept($$1xx);
+                  } catch (IOException var3) {
+                     throw new DirectoryIteratorException(var3);
+                  }
+               }).map($$0 -> (Path)$$0).iterator();
             }
 
-            return new asi($$2, $$4);
+            @Override
+            public void close() {
+            }
+         };
+      }
+   }
+
+   @Override
+   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void delete(Path $$0) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void move(Path $$0, Path $$1, CopyOption... $$2) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public boolean isSameFile(Path $$0, Path $$1) {
+      return $$0 instanceof asr && $$1 instanceof asr && $$0.equals($$1);
+   }
+
+   @Override
+   public boolean isHidden(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public FileStore getFileStore(Path $$0) {
+      return a($$0).a().a();
+   }
+
+   @Override
+   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
+      if ($$1.length == 0 && !a($$0).g()) {
+         throw new NoSuchFileException($$0.toString());
+      } else {
+         AccessMode[] var3 = $$1;
+         int var4 = $$1.length;
+         int var5 = 0;
+
+         while (var5 < var4) {
+            AccessMode $$2 = var3[var5];
+            switch ($$2) {
+               case READ:
+                  if (!a($$0).g()) {
+                     throw new NoSuchFileException($$0.toString());
+                  }
+               default:
+                  var5++;
+                  break;
+               case EXECUTE:
+               case WRITE:
+                  throw new AccessDeniedException($$2.toString());
+            }
          }
+      }
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
+      asr $$3 = a($$0);
+      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
+   }
+
+   @Override
+   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
+      asr $$3 = a($$0).f();
+      if ($$1 == BasicFileAttributes.class) {
+         return (A)$$3.k();
+      } else {
+         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+      }
+   }
+
+   @Override
+   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   private static asr a(@Nullable Path $$0) {
+      if ($$0 == null) {
+         throw new NullPointerException();
+      } else if ($$0 instanceof asr) {
+         return (asr)$$0;
+      } else {
+         throw new ProviderMismatchException();
       }
    }
 }

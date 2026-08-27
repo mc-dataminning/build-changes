@@ -1,22 +1,13 @@
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bfy extends azy {
-   private final Predicate<String> a;
-
-   public bfy(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2.negate();
-   }
-
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.filter(this::a);
-   }
-
-   private <T> boolean a(Dynamic<T> $$0) {
-      return $$0.get("type").asString().result().filter(this.a).isPresent();
-   }
+public class bfy {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

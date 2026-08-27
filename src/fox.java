@@ -1,286 +1,256 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fox extends fon {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akt b = new akt("textures/misc/credits_vignette.png");
-   private static final xe c = xe.b("============").a(n.p);
-   private static final String d = "           ";
-   private static final String r = "" + n.p + n.q + n.k + n.l;
-   private static final float s = 5.0F;
-   private static final float u = 15.0F;
-   private final boolean v;
-   private final Runnable w;
-   private float x;
-   private List<axy> y;
-   private IntSet z;
-   private int A;
-   private boolean B;
-   private final IntSet C = new IntOpenHashSet();
-   private float D;
-   private final float E;
-   private int F;
-   private final fje G = new fje(false);
+public class fox extends flz {
+   public static final int a = 308;
+   public static final int b = 100;
+   public static final int c = 74;
+   public static final int d = 64;
+   private static final Logger s = LogUtils.getLogger();
+   private final fxh u = new fxh();
+   private final flz v;
+   protected fpa r;
+   private fxg w;
+   private fga x;
+   private fga y;
+   private fga z;
+   private fxf A;
+   private gsc.b B;
+   @Nullable
+   private gsc.a C;
+   private boolean D;
 
-   public fox(boolean $$0, Runnable $$1) {
-      super(fgb.a);
+   public fox(flz $$0) {
+      super(wx.c("multiplayer.title"));
       this.v = $$0;
-      this.w = $$1;
-      if (!$$0) {
-         this.E = 0.75F;
-      } else {
-         this.E = 0.5F;
-      }
-
-      this.F = 1;
-      this.D = this.E;
    }
 
-   private float B() {
-      return this.B ? this.E * (5.0F + (float)this.C.size() * 15.0F) * (float)this.F : this.E * (float)this.F;
+   @Override
+   protected void aN_() {
+      if (this.D) {
+         this.r.a(this.n, this.o - 64 - 32, 0, 32);
+      } else {
+         this.D = true;
+         this.w = new fxg(this.m);
+         this.w.a();
+         this.B = new gsc.b();
+
+         try {
+            this.C = new gsc.a(this.B);
+            this.C.start();
+         } catch (Exception var8) {
+            s.warn("Unable to start LAN server detection: {}", var8.getMessage());
+         }
+
+         this.r = new fpa(this, this.m, this.n, this.o - 64 - 32, 32, 36);
+         this.r.a(this.w);
+      }
+
+      this.c(this.r);
+      this.y = this.c(fga.a(wx.c("selectServer.select"), $$0 -> this.m()).a(100).a());
+      fga $$1 = this.c(fga.a(wx.c("selectServer.direct"), $$0 -> {
+         this.A = new fxf(gpb.a("selectServer.defaultName"), "", fxf.c.c);
+         this.m.a(new fkz(this, this::g, this.A));
+      }).a(100).a());
+      fga $$2 = this.c(fga.a(wx.c("selectServer.add"), $$0 -> {
+         this.A = new fxf(gpb.a("selectServer.defaultName"), "", fxf.c.c);
+         this.m.a(new flb(this, this::f, this.A));
+      }).a(100).a());
+      this.x = this.c(fga.a(wx.c("selectServer.edit"), $$0 -> {
+         fpa.a $$1x = this.r.h();
+         if ($$1x instanceof fpa.d) {
+            fxf $$2x = ((fpa.d)$$1x).c();
+            this.A = new fxf($$2x.a, $$2x.b, fxf.c.c);
+            this.A.b($$2x);
+            this.m.a(new flb(this, this::e, this.A));
+         }
+      }).a(74).a());
+      this.z = this.c(fga.a(wx.c("selectServer.delete"), $$0 -> {
+         fpa.a $$1x = this.r.h();
+         if ($$1x instanceof fpa.d) {
+            String $$2x = ((fpa.d)$$1x).c().a;
+            if ($$2x != null) {
+               wx $$3x = wx.c("selectServer.deleteQuestion");
+               wx $$4x = wx.a("selectServer.deleteWarning", $$2x);
+               wx $$5x = wx.c("selectServer.deleteButton");
+               wx $$6x = ww.e;
+               this.m.a(new fkr(this::c, $$3x, $$4x, $$5x, $$6x));
+            }
+         }
+      }).a(74).a());
+      fga $$3 = this.c(fga.a(wx.c("selectServer.refresh"), $$0 -> this.F()).a(74).a());
+      fga $$4 = this.c(fga.a(ww.k, $$0 -> this.d()).a(74).a());
+      fjr $$5 = fjr.d();
+      fjk $$6 = $$5.a(new fjk(308, 20, fjk.b.a));
+      $$6.a(this.y);
+      $$6.a($$1);
+      $$6.a($$2);
+      $$5.a(fjs.b(4));
+      fjk $$7 = $$5.a(new fjk(308, 20, fjk.b.a));
+      $$7.a(this.x);
+      $$7.a(this.z);
+      $$7.a($$3);
+      $$7.a($$4);
+      $$5.a();
+      fjl.a($$5, 0, this.o - 64, this.n, 64);
+      this.C();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.v);
    }
 
    @Override
    public void e() {
-      this.m.s().a();
-      this.m.ak().a(false);
-      float $$0 = (float)(this.A + this.o + this.o + 24);
-      if (this.x > $$0) {
-         this.C();
+      super.e();
+      List<gsb> $$0 = this.B.a();
+      if ($$0 != null) {
+         this.r.a($$0);
+      }
+
+      this.u.a();
+   }
+
+   @Override
+   public void j() {
+      if (this.C != null) {
+         this.C.interrupt();
+         this.C = null;
+      }
+
+      this.u.b();
+      this.r.d();
+   }
+
+   private void F() {
+      this.m.a(new fox(this.v));
+   }
+
+   private void c(boolean $$0) {
+      fpa.a $$1 = this.r.h();
+      if ($$0 && $$1 instanceof fpa.d) {
+         this.w.a(((fpa.d)$$1).c());
+         this.w.b();
+         this.r.a(null);
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void e(boolean $$0) {
+      fpa.a $$1 = this.r.h();
+      if ($$0 && $$1 instanceof fpa.d) {
+         fxf $$2 = ((fpa.d)$$1).c();
+         $$2.a = this.A.a;
+         $$2.b = this.A.b;
+         $$2.b(this.A);
+         this.w.b();
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void f(boolean $$0) {
+      if ($$0) {
+         fxf $$1 = this.w.b(this.A.b);
+         if ($$1 != null) {
+            $$1.a(this.A);
+            this.w.b();
+         } else {
+            this.w.a(this.A, false);
+            this.w.b();
+         }
+
+         this.r.a(null);
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void g(boolean $$0) {
+      if ($$0) {
+         fxf $$1 = this.w.a(this.A.b);
+         if ($$1 == null) {
+            this.w.a(this.A, true);
+            this.w.b();
+            this.a(this.A);
+         } else {
+            this.a($$1);
+         }
+      } else {
+         this.m.a(this);
       }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.F = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.C.add($$0);
-      } else if ($$0 == 32) {
-         this.B = true;
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 294) {
+         this.F();
+         return true;
+      } else if (this.r.h() != null) {
+         if (fkb.a($$0)) {
+            this.m();
+            return true;
+         } else {
+            return this.r.a($$0, $$1, $$2);
+         }
+      } else {
+         return false;
       }
-
-      this.D = this.B();
-      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.F = 1;
-      }
-
-      if ($$0 == 32) {
-         this.B = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.C.remove($$0);
-      }
-
-      this.D = this.B();
-      return super.c($$0, $$1, $$2);
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
    }
 
-   @Override
-   public void d() {
+   public void m() {
+      fpa.a $$0 = this.r.h();
+      if ($$0 instanceof fpa.d) {
+         this.a(((fpa.d)$$0).c());
+      } else if ($$0 instanceof fpa.c) {
+         gsb $$1 = ((fpa.c)$$0).b();
+         this.a(new fxf($$1.a(), $$1.b(), fxf.c.a));
+      }
+   }
+
+   private void a(fxf $$0) {
+      fks.a(this, this.m, fyi.a($$0.b), $$0, false, null);
+   }
+
+   public void a(fpa.a $$0) {
+      this.r.a($$0);
       this.C();
    }
 
-   private void C() {
-      this.w.run();
-   }
-
-   @Override
-   protected void aN_() {
-      if (this.y == null) {
-         this.y = Lists.newArrayList();
-         this.z = new IntOpenHashSet();
-         if (this.v) {
-            this.a("texts/end.txt", this::a);
-         }
-
-         this.a("texts/credits.json", this::b);
-         if (this.v) {
-            this.a("texts/postcredits.txt", this::a);
-         }
-
-         this.A = this.y.size() * 12;
-      }
-   }
-
-   private void a(String $$0, fox.a $$1) {
-      try (Reader $$2 = this.m.ab().openAsReader(new akt($$0))) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits", var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      ayt $$2 = ayt.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.m.X().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(r)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + r.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.D();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.D();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : ayc.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(xe.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.D();
-         this.D();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(xe.b($$8).a(n.o), true);
-               this.D();
-               this.D();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(xe.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(xe.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.D();
-               this.D();
-            }
+   protected void C() {
+      this.y.j = false;
+      this.x.j = false;
+      this.z.j = false;
+      fpa.a $$0 = this.r.h();
+      if ($$0 != null && !($$0 instanceof fpa.b)) {
+         this.y.j = true;
+         if ($$0 instanceof fpa.d) {
+            this.x.j = true;
+            this.z.j = true;
          }
       }
    }
 
-   private void D() {
-      this.y.add(axy.a);
+   public fxh D() {
+      return this.u;
    }
 
-   private void a(String $$0) {
-      this.y.addAll(this.m.h.c(xe.b($$0), 256));
-   }
-
-   private void a(xe $$0, boolean $$1) {
-      if ($$1) {
-         this.z.add(this.y.size());
-      }
-
-      this.y.add($$0.g());
-   }
-
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.x = Math.max(0.0F, this.x + $$3 * this.D);
-      int $$4 = this.n / 2 - 128;
-      int $$5 = this.o + 50;
-      float $$6 = -this.x;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.G.a($$0, this.n, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.y.size(); $$8++) {
-         if ($$8 == this.y.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.o / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.o) {
-            axy $$10 = this.y.get($$8);
-            if (this.z.contains($$8)) {
-               $$0.a(this.p, $$10, $$4 + 128, $$7, -1);
-            } else {
-               $$0.b(this.p, $$10, $$4, $$7, -1);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-   }
-
-   private void c(fia $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.n, this.o, this.n, this.o);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   }
-
-   @Override
-   public void b(fia $$0, int $$1, int $$2, float $$3) {
-      if (this.v) {
-         $$0.b(gfo.u(), 0, 0, this.n, this.o, 0);
-      } else {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected void a(fia $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = this.x * 0.5F;
-      fon.a($$0, fon.g, 0, 0, 0.0F, $$5, $$3, $$4);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public void j() {
-      this.m.s().b(avm.c);
-   }
-
-   @Override
-   public avl aL_() {
-      return avm.c;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+   public fxg E() {
+      return this.w;
    }
 }

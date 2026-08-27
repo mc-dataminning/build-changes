@@ -1,52 +1,43 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class ccn<T extends bso> extends ccx<T> {
-   private final BiPredicate<T, bso> a;
-   private final Predicate<T> c;
-   private final cbr<Boolean> d;
-   private final int e;
-
-   public ccn(int $$0, BiPredicate<T, bso> $$1, Predicate<T> $$2, cbr<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
+public class ccn extends cda<cki> {
    @Override
-   protected void a(aqt $$0, T $$1) {
-      if (!this.c.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   public Set<cbu<?>> a() {
+      return ImmutableSet.of(cbu.h, cbu.aw, cbu.aq, cbu.ap, cbu.as, cbu.at, new cbu[0]);
    }
 
-   @Override
-   public Set<cbr<?>> a() {
-      return Set.of(cbr.g);
-   }
+   protected void a(aqn $$0, cki $$1) {
+      bts<?> $$2 = $$1.dS();
+      $$2.a(cbu.aw, this.b($$0, $$1));
+      Optional<cko> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cki> $$5 = Lists.newArrayList();
+      cbw $$6 = $$2.c(cbu.h).orElse(cbw.a());
 
-   public void a(T $$0) {
-      Optional<List<bso>> $$1 = $$0.dZ().c(cbr.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+      for (bsq $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cko || $$0x instanceof cki))) {
+         if ($$7 instanceof cko $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cki $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(cbu.aq, $$3);
+      $$2.a(cbu.ap, $$5);
+      $$2.a(cbu.as, $$4);
+      $$2.a(cbu.at, $$5.size());
    }
 
-   public void b(T $$0) {
-      $$0.dZ().a(this.d, true, (long)this.e);
-   }
-
-   public void c(T $$0) {
-      $$0.dZ().b(this.d);
+   private Optional<io> b(aqn $$0, cki $$1) {
+      return io.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(avx.aS));
    }
 }

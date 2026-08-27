@@ -1,120 +1,60 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ebd extends eca<eee> {
-   private static final ImmutableList<dfc> a = ImmutableList.of(
-      dfe.am, dfe.al, dfe.ak, dfe.lH, dfe.iP, dfe.eK, dfe.gf, dfe.gg, dfe.gh, dfe.gi, dfe.dg, dfe.de, new dfc[0]
-   );
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int au = 15;
-
-   public ebd(Codec<eee> $$0) {
+public class ebd extends dzz<ecu> {
+   public ebd(Codec<ecu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eee> $$0) {
-      int $$1 = $$0.c().e();
-      ir $$2 = $$0.e();
-      dcv $$3 = $$0.b();
-      ayt $$4 = $$0.d();
-      eee $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
+   public boolean a(eab<ecu> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
          return false;
       } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+         ecu $$3 = $$0.f();
+         aym $$4 = $$0.d();
+         dkv $$5 = dkv.b();
+         int $$6 = $$3.f() + $$3.d();
 
-         for (ir $$11 : ir.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4), $$5.c());
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         io $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dec.qU.n(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            io $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), it.b)) {
+               $$1.a($$14, dec.qV.n().a(dku.d, Boolean.valueOf(true)), 3);
             }
          }
 
-         return $$10;
+         return true;
       }
    }
 
-   private boolean a(dcb $$0, int $$1, ir $$2, int $$3, int $$4, dtc $$5) {
-      boolean $$6 = false;
-
-      for (ir $$7 : ir.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$8 = $$7.k($$2);
-         ir $$9 = a($$0, $$1, $$7) ? a($$0, $$1, $$7.j(), $$8) : a($$0, $$7.j(), $$8);
-         if ($$9 != null) {
-            int $$10 = $$3 - $$8 / 2;
-
-            for (ir.a $$11 = $$9.j(); $$10 >= 0; $$10--) {
-               if (a($$0, $$1, (ir)$$11)) {
-                  this.a($$0, $$11, $$5);
-                  $$11.d(iw.b);
-                  $$6 = true;
-               } else {
-                  if (!$$0.a_($$11).a(dfe.eM) && !$$0.a_($$11).a(dfe.qu)) {
-                     break;
-                  }
-
-                  $$11.d(iw.b);
-               }
-            }
-         }
-      }
-
-      return $$6;
-   }
-
-   @Nullable
-   private static ir a(dcb $$0, int $$1, ir.a $$2, int $$3) {
-      while ($$2.v() > $$0.J_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.d(iw.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(dcb $$0, int $$1, ir.a $$2) {
-      if (!a($$0, $$1, (ir)$$2)) {
-         return false;
+   private boolean a(dba $$0, io $$1) {
+      drd $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dkq) {
+         return true;
       } else {
-         dtc $$3 = $$0.a_($$2.d(iw.a));
-         $$2.d(iw.b);
-         return !$$3.i() && !a.contains($$3.b());
+         return !$$2.i() && (!$$2.a(dec.G) || !$$2.u().b()) ? false : it.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
-   }
-
-   @Nullable
-   private static ir a(dcb $$0, ir.a $$1, int $$2) {
-      while ($$1.v() < $$0.am() && $$2 > 0) {
-         $$2--;
-         dtc $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.d(iw.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(dcb $$0, int $$1, ir $$2) {
-      dtc $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(dfe.am) && $$2.v() <= $$1;
    }
 }

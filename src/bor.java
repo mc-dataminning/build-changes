@@ -1,31 +1,111 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class bor implements ThreadFactory {
-   private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+public interface bor<T, F> {
+   @Nullable
+   F a();
 
-   public bor(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
-   }
+   boolean a(T var1);
 
-   @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
+   boolean b();
+
+   int c();
+
+   public static final class a implements bor<bor.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
       }
 
-      return $$1;
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bor.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
+   }
+
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
+
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
+   }
+
+   public static final class c<T> implements bor<T, T> {
+      private final Queue<T> a;
+
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 }

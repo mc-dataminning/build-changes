@@ -1,34 +1,136 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.OptionalBox.Mu;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class bvh extends bug<bsq> {
-   public static final int c = 100;
-   private final bpl d;
-   private final avn e;
+public class bvh {
+   private static final int a = 20;
+   private static final double b = 3.0;
+   private static final double c = 2.0;
 
-   public bvh(bpl $$0, avn $$1) {
-      super(ImmutableMap.of(cbr.n, cbs.c, cbr.T, cbs.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public static buk<bsq> a() {
+      MutableObject<eni> $$0 = new MutableObject(null);
+      MutableInt $$1 = new MutableInt(0);
+      return bxw.a(
+         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$2 -> $$2.group($$2.b(cbu.t), $$2.a(cbu.v), $$2.a(cbu.g))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     enk $$9 = $$2.b($$3);
+                     Optional<Set<iw>> $$10 = $$2.a($$4);
+                     if (!$$9.b() && !$$9.c()) {
+                        if (Objects.equals($$0.getValue(), $$9.h())) {
+                           $$1.setValue(20);
+                        } else if ($$1.decrementAndGet() > 0) {
+                           return false;
+                        }
+
+                        $$0.setValue($$9.h());
+                        eni $$11 = $$9.i();
+                        eni $$12 = $$9.h();
+                        io $$13 = $$11.a();
+                        drd $$14 = $$6.a_($$13);
+                        if ($$14.a(avx.h, $$0xxxx -> $$0xxxx.b() instanceof dgg)) {
+                           dgg $$15 = (dgg)$$14.b();
+                           if (!$$15.m($$14)) {
+                              $$15.a($$7, $$6, $$14, $$13, true);
+                           }
+
+                           $$10 = a($$4, $$10, $$6, $$13);
+                        }
+
+                        io $$16 = $$12.a();
+                        drd $$17 = $$6.a_($$16);
+                        if ($$17.a(avx.h, $$0xxxx -> $$0xxxx.b() instanceof dgg)) {
+                           dgg $$18 = (dgg)$$17.b();
+                           if (!$$18.m($$17)) {
+                              $$18.a($$7, $$6, $$17, $$16, true);
+                              $$10 = a($$4, $$10, $$6, $$16);
+                           }
+                        }
+
+                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   protected boolean a(aqt $$0, bsq $$1, long $$2) {
-      return !$$1.aE();
-   }
+   public static void a(aqn $$0, bsq $$1, @Nullable eni $$2, @Nullable eni $$3, Set<iw> $$4, Optional<List<bsq>> $$5) {
+      Iterator<iw> $$6 = $$4.iterator();
 
-   protected void b(aqt $$0, bsq $$1, long $$2) {
-      $$1.q(true);
-      $$1.b(bsz.g);
-   }
-
-   protected void c(aqt $$0, bsq $$1, long $$2) {
-      if ($$1.aE()) {
-         $$1.g($$1.dx().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, avq.g, 2.0F, 1.0F);
+      while ($$6.hasNext()) {
+         iw $$7 = $$6.next();
+         io $$8 = $$7.b();
+         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
+            if (a($$0, $$1, $$7)) {
+               $$6.remove();
+            } else {
+               drd $$9 = $$0.a_($$8);
+               if (!$$9.a(avx.h, $$0x -> $$0x.b() instanceof dgg)) {
+                  $$6.remove();
+               } else {
+                  dgg $$10 = (dgg)$$9.b();
+                  if (!$$10.m($$9)) {
+                     $$6.remove();
+                  } else if (a($$1, $$8, $$5)) {
+                     $$6.remove();
+                  } else {
+                     $$10.a($$1, $$0, $$9, $$8, false);
+                     $$6.remove();
+                  }
+               }
+            }
+         }
       }
+   }
 
-      $$1.q(false);
-      $$1.b(bsz.a);
-      $$1.dZ().b(cbr.T);
-      $$1.dZ().a(cbr.S, this.d.a($$0.A));
+   private static boolean a(bsq $$0, io $$1, Optional<List<bsq>> $$2) {
+      return $$2.isEmpty()
+         ? false
+         : $$2.get().stream().filter($$1x -> $$1x.ak() == $$0.ak()).filter($$1x -> $$1.a($$1x.dn(), 2.0)).anyMatch($$1x -> a($$1x.dS(), $$1));
+   }
+
+   private static boolean a(bts<?> $$0, io $$1) {
+      if (!$$0.a(cbu.t)) {
+         return false;
+      } else {
+         enk $$2 = $$0.c(cbu.t).get();
+         if ($$2.c()) {
+            return false;
+         } else {
+            eni $$3 = $$2.i();
+            if ($$3 == null) {
+               return false;
+            } else {
+               eni $$4 = $$2.h();
+               return $$1.equals($$3.a()) || $$1.equals($$4.a());
+            }
+         }
+      }
+   }
+
+   private static boolean a(aqn $$0, bsq $$1, iw $$2) {
+      return $$2.a() != $$0.ae() || !$$2.b().a($$1.dn(), 3.0);
+   }
+
+   private static Optional<Set<iw>> a(bxx<Mu, Set<iw>> $$0, Optional<Set<iw>> $$1, aqn $$2, io $$3) {
+      iw $$4 = iw.a($$2.ae(), $$3);
+      return Optional.of($$1.<Set<iw>>map($$1x -> {
+         $$1x.add($$4);
+         return $$1x;
+      }).orElseGet(() -> {
+         Set<iw> $$2x = Sets.newHashSet(new iw[]{$$4});
+         $$0.a($$2x);
+         return $$2x;
+      }));
    }
 }

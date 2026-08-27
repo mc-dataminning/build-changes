@@ -1,78 +1,54 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public abstract class eho {
-   public static final Codec<eho> c = lh.X.q().dispatch(eho::a, ehp::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class eho extends eod {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   protected static <P extends eho> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public static eod.a<eho> a() {
+      return new eod.a<>(eho::new, eho::b, azl.o);
    }
 
-   public eho(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private eho(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   protected abstract ehp<?> a();
-
-   public abstract List<efw.a> a(dcg var1, BiConsumer<ir, dtc> var2, ayt var3, int var4, ir var5, efg var6);
-
-   public int a(ayt $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   public eho() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   private static boolean c(dcg $$0, ir $$1) {
-      return $$0.a($$1, $$0x -> eca.b($$0x) && !$$0x.a(dfe.j) && !$$0x.a(dfe.k) && !$$0x.a(dfe.l) && !$$0x.a(dfe.gd));
+   public static eho b(ud $$0, iz.a $$1) {
+      return new eho(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
-   protected static void a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, efg $$4) {
-      if (!$$0.z_()) {
-         if ($$4.k || !c($$0, $$3)) {
-            $$1.accept($$3, $$4.c.a($$2, $$3));
-         }
-      }
+   @Override
+   public ud a(ud $$0, iz.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   protected boolean b(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, efg $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   protected boolean a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, efg $$4, Function<dtc, dtc> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
-      }
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
    }
 
-   protected void a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir.a $$3, efg $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
    }
 
-   protected boolean a(dcg $$0, ir $$1) {
-      return edr.c($$0, $$1);
+   public void d(long $$0) {
+      this.d.remove($$0);
    }
 
-   public boolean b(dcg $$0, ir $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awe.t));
+   public LongSet b() {
+      return this.c;
    }
 }

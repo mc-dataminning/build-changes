@@ -1,104 +1,84 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.LongFunction;
 
-public class dxu implements dxy {
-   private final List<dxx> b = Lists.newArrayList();
-   private final Set<dxx> c = Sets.newHashSet();
-   private final List<dxx> d = Lists.newArrayList();
-   private boolean e;
-   private final aqt f;
-   private final int g;
-   private final dxu.a h;
+public class dxu extends dww {
+   private final aym d;
+   private int e;
 
-   public dxu(aqt $$0, int $$1, dxu.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public dxu(aym $$0) {
+      super(0L);
+      this.d = $$0;
+   }
+
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public boolean a() {
-      return this.b.isEmpty();
+   public aym d() {
+      return this.d.d();
    }
 
    @Override
-   public void a(dxx $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
-
-      agi.a(this.f, $$0);
+   public dxi e() {
+      return this.d.e();
    }
 
    @Override
-   public void b(dxx $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dww $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
    }
 
    @Override
-   public boolean a(ja<dxv> $$0, ewu $$1, dxv.a $$2, dxy.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<dxx> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            dxx $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<ewu> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
-         }
-      } finally {
-         this.e = false;
-      }
-
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
-      }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<ewu> a(aqt $$0, ewu $$1, dxx $$2) {
-      Optional<ewu> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = ir.a($$3.get()).j(ir.a($$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
       }
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static aym a(int $$0, int $$1, long $$2, long $$3) {
+      return aym.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dww::new),
+      b(dxw::new);
+
+      private final LongFunction<aym> c;
+
+      private a(LongFunction<aym> $$0) {
+         this.c = $$0;
+      }
+
+      public aym a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

@@ -3,84 +3,84 @@ import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
 public class ckr extends ckn {
-   private static final int ci = 50;
-   private static final float cj = 0.35F;
-   private static final int ck = 7;
-   protected static final ImmutableList<ccy<? extends ccx<? super ckr>>> e = ImmutableList.of(ccy.c, ccy.d, ccy.b, ccy.f, ccy.m);
-   protected static final ImmutableList<cbr<?>> ch = ImmutableList.of(
-      cbr.n, cbr.v, cbr.g, cbr.h, cbr.k, cbr.l, cbr.ao, cbr.an, cbr.x, cbr.y, cbr.m, cbr.E, new cbr[]{cbr.o, cbr.p, cbr.q, cbr.t, cbr.ab, cbr.M, cbr.b}
+   private static final int bZ = 50;
+   private static final float ca = 0.35F;
+   private static final int cb = 7;
+   protected static final ImmutableList<cdb<? extends cda<? super ckr>>> e = ImmutableList.of(cdb.c, cdb.d, cdb.b, cdb.f, cdb.m);
+   protected static final ImmutableList<cbu<?>> bY = ImmutableList.of(
+      cbu.n, cbu.v, cbu.g, cbu.h, cbu.k, cbu.l, cbu.ao, cbu.an, cbu.x, cbu.y, cbu.m, cbu.E, new cbu[]{cbu.o, cbu.p, cbu.q, cbu.t, cbu.ab, cbu.M, cbu.b}
    );
 
-   public ckr(bsb<? extends ckr> $$0, dca $$1) {
+   public ckr(bsc<? extends ckr> $$0, daz $$1) {
       super($$0, $$1);
-      this.bW = 20;
+      this.bN = 20;
    }
 
-   public static btu.a x() {
-      return cjd.gG().a(btv.q, 50.0).a(btv.r, 0.35F).a(btv.c, 7.0);
+   public static btx.a y() {
+      return cje.gv().a(bty.q, 50.0).a(bty.r, 0.35F).a(bty.c, 7.0);
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
       cks.a(this);
-      this.a($$0.F_(), $$1);
+      this.a($$0.E_(), $$1);
       return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(ayt $$0, bpy $$1) {
-      this.a(bsc.a, new cuh(cuk.qr));
+   protected void a(aym $$0, bpu $$1) {
+      this.a(bsd.a, new ctq(ctt.oY));
    }
 
    @Override
-   protected btp.b<ckr> ea() {
-      return btp.a(ch, e);
+   protected bts.b<ckr> dT() {
+      return bts.a(bY, e);
    }
 
    @Override
-   protected btp<?> a(Dynamic<?> $$0) {
-      return cks.a(this, this.ea().a($$0));
+   protected bts<?> a(Dynamic<?> $$0) {
+      return cks.a(this, this.dT().a($$0));
    }
 
    @Override
-   public btp<ckr> dZ() {
-      return (btp<ckr>)super.dZ();
+   public bts<ckr> dS() {
+      return (bts<ckr>)super.dS();
    }
 
    @Override
-   public boolean r() {
+   public boolean s() {
       return false;
    }
 
    @Override
-   public boolean k(cuh $$0) {
-      return $$0.a(cuk.qr) ? super.k($$0) : false;
+   public boolean k(ctq $$0) {
+      return $$0.a(ctt.oY) ? super.k($$0) : false;
    }
 
    @Override
    protected void Y() {
-      this.dU().ag().a("piglinBruteBrain");
-      this.dZ().a((aqt)this.dU(), this);
-      this.dU().ag().c();
+      this.dP().af().a("piglinBruteBrain");
+      this.dS().a((aqn)this.dP(), this);
+      this.dP().af().c();
       cks.b(this);
       cks.c(this);
       super.Y();
    }
 
    @Override
-   public ckq gA() {
-      return this.gq() && this.gB() ? ckq.a : ckq.f;
+   public ckq gr() {
+      return this.gh() && this.gs() ? ckq.a : ckq.f;
    }
 
    @Override
-   public boolean a(bqt $$0, float $$1) {
+   public boolean a(bqp $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dU().C) {
+      if (this.dP().B) {
          return false;
       } else {
-         if ($$2 && $$0.d() instanceof bso) {
-            cks.a(this, (bso)$$0.d());
+         if ($$2 && $$0.d() instanceof bsq) {
+            cks.a(this, (bsq)$$0.d());
          }
 
          return $$2;
@@ -88,31 +88,31 @@ public class ckr extends ckn {
    }
 
    @Override
-   protected avn u() {
-      return avo.uk;
+   protected avh v() {
+      return avi.tM;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.un;
+   protected avh d(bqp $$0) {
+      return avi.tP;
    }
 
    @Override
-   protected avn n_() {
-      return avo.um;
+   protected avh o_() {
+      return avi.tO;
    }
 
    @Override
-   protected void b(ir $$0, dtc $$1) {
-      this.a(avo.uo, 0.15F, 1.0F);
+   protected void b(io $$0, drd $$1) {
+      this.a(avi.tQ, 0.15F, 1.0F);
    }
 
-   protected void gD() {
-      this.b(avo.ul);
+   protected void gw() {
+      this.b(avi.tN);
    }
 
    @Override
-   protected void gC() {
-      this.b(avo.up);
+   protected void gt() {
+      this.b(avi.tR);
    }
 }

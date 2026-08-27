@@ -1,41 +1,34 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Stream;
 
-public class bdz extends DataFix {
-   public bdz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bdz extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
+
+   public bdz(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
+   public bdz(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bga.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "display",
-                           $$0xxxx -> $$0xxxx.update(
-                                 "Lore",
-                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(bdz::a).map($$0xxxxx::createList).result(), $$0xxxxx)
-                              )
-                        )
-                  )
-            )
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
       );
    }
 
-   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map(azr::a);
-   }
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

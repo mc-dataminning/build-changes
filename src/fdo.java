@@ -1,125 +1,113 @@
-import java.util.Locale;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class fdo extends gxb {
-   private static final xe a = xe.c("mco.backup.info.title");
-   private static final xe b = xe.c("mco.backup.unknown");
-   private final fon c;
-   final fby B;
-   final fma C = new fma(this);
-   private fdo.a D;
+public class fdo extends avl {
+   private static final Logger c = LogUtils.getLogger();
+   private Map<fej, List<fpq>> d = ImmutableMap.of();
+   private List<fpq> e = ImmutableList.of();
 
-   public fdo(fon $$0, fby $$1) {
-      super(a);
-      this.c = $$0;
-      this.B = $$1;
+   public void a(Iterable<cxy<?>> $$0, jl $$1) {
+      Map<fej, List<List<cxy<?>>>> $$2 = a($$0);
+      Map<fej, List<fpq>> $$3 = Maps.newHashMap();
+      Builder<fpq> $$4 = ImmutableList.builder();
+      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fpq($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
+      fej.w
+         .forEach(
+            ($$1x, $$2x) -> $$3.put(
+                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
+               )
+         );
+      this.d = ImmutableMap.copyOf($$3);
+      this.e = $$4.build();
    }
 
-   @Override
-   public void aN_() {
-      this.C.a(a, this.p);
-      this.D = this.C.c(new fdo.a(this.m));
-      this.C.b(fin.a(xd.k, $$0 -> this.d()).a());
-      this.c();
-      this.C.a($$1 -> {
-         fil var10000 = this.c($$1);
-      });
+   private static Map<fej, List<List<cxy<?>>>> a(Iterable<cxy<?>> $$0) {
+      Map<fej, List<List<cxy<?>>>> $$1 = Maps.newHashMap();
+      Table<fej, String, List<cxy<?>>> $$2 = HashBasedTable.create();
+
+      for (cxy<?> $$3 : $$0) {
+         cxw<?> $$4 = $$3.b();
+         if (!$$4.ao_() && !$$4.i()) {
+            fej $$5 = g($$3);
+            String $$6 = $$4.c();
+            if ($$6.isEmpty()) {
+               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
+            } else {
+               List<cxy<?>> $$7 = (List<cxy<?>>)$$2.get($$5, $$6);
+               if ($$7 == null) {
+                  $$7 = Lists.newArrayList();
+                  $$2.put($$5, $$6, $$7);
+                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
+               }
+
+               $$7.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   protected void c() {
-      this.D.b(this.n, this.C.d());
-      this.C.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.c);
-   }
-
-   xe a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
+   private static fej g(cxy<?> $$0) {
+      cxw<?> $$1 = $$0.b();
+      if ($$1 instanceof cxn $$2) {
+         return switch ($$2.d()) {
+            case a -> fej.b;
+            case c -> fej.d;
+            case b -> fej.c;
+            case d -> fej.e;
+         };
       } else {
-         return (xe)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xe.b($$1));
-      }
-   }
+         cyb<?> $$3 = $$1.e();
+         if ($$1 instanceof cxf $$4) {
+            cxl $$5 = $$4.f();
+            if ($$3 == cyb.b) {
+               return switch ($$5) {
+                  case b -> fej.h;
+                  case a -> fej.g;
+                  case c -> fej.i;
+               };
+            }
 
-   private xe a(String $$0) {
-      try {
-         return fel.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
+            if ($$3 == cyb.c) {
+               return $$5 == cxl.b ? fej.k : fej.l;
+            }
 
-   private xe b(String $$0) {
-      try {
-         return fel.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
+            if ($$3 == cyb.d) {
+               return fej.n;
+            }
 
-   class a extends fjj<fdo.b> {
-      public a(fgj $$0) {
-         super($$0, fdo.this.n, fdo.this.C.d(), fdo.this.C.c(), 36);
-         if (fdo.this.B.e != null) {
-            fdo.this.B.e.forEach(($$0x, $$1) -> this.b(fdo.this.new b($$0x, $$1)));
+            if ($$3 == cyb.e) {
+               return fej.q;
+            }
+         }
+
+         if ($$3 == cyb.f) {
+            return fej.o;
+         } else if ($$3 == cyb.g) {
+            return fej.p;
+         } else {
+            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> le.s.b($$1.e())), LogUtils.defer($$0::a));
+            return fej.r;
          }
       }
    }
 
-   class b extends fjj.a<fdo.b> {
-      private static final xe b = xe.c("mco.backup.entry.templateName");
-      private static final xe c = xe.c("mco.backup.entry.gameDifficulty");
-      private static final xe d = xe.c("mco.backup.entry.name");
-      private static final xe e = xe.c("mco.backup.entry.gameServerVersion");
-      private static final xe f = xe.c("mco.backup.entry.uploaded");
-      private static final xe g = xe.c("mco.backup.entry.enabledPack");
-      private static final xe h = xe.c("mco.backup.entry.description");
-      private static final xe i = xe.c("mco.backup.entry.gameMode");
-      private static final xe j = xe.c("mco.backup.entry.seed");
-      private static final xe k = xe.c("mco.backup.entry.worldType");
-      private static final xe l = xe.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
+   public List<fpq> b() {
+      return this.e;
+   }
 
-      public b(String $$0, String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fdo.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fdo.this.p, fdo.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private xe a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public xe a() {
-         return xe.a("narrator.select", this.m + " " + this.n);
-      }
+   public List<fpq> a(fej $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

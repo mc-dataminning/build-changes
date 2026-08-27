@@ -1,143 +1,159 @@
-import java.util.Arrays;
-import java.util.Optional;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dre extends dqc {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private akt h = new akt("empty");
-   private akt i = new akt("empty");
-   private aks<elc> j = aks.a(li.aM, new akt("empty"));
-   private dre.a k = dre.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int q;
+public class dre<O, S extends drf<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dsg<?>> c;
+   private final ImmutableList<S> d;
 
-   public dre(ir $$0, dtc $$1) {
-      super(dqe.G, $$0, $$1);
+   protected dre(Function<O, S> $$0, O $$1, dre.b<O, S> $$2, Map<String, dsg<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, dsg<?>> $$6 = (Entry<String, dsg<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dsg<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dsg<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dsg<?> $$11 = (dsg<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dsg<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dsg<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dsg<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dsg)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public akt b() {
-      return this.h;
+   private static <S extends drf<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dsg<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (drf)((drf)$$1x.getFirst()).a($$3, ((dsg.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
    }
 
-   public akt c() {
-      return this.i;
+   public ImmutableList<S> a() {
+      return this.d;
    }
 
-   public aks<elc> d() {
-      return this.j;
+   public S b() {
+      return (S)this.d.get(0);
    }
 
-   public String f() {
-      return this.l;
+   public O c() {
+      return this.b;
    }
 
-   public dre.a j() {
-      return this.k;
-   }
-
-   public int k() {
-      return this.m;
-   }
-
-   public int l() {
-      return this.q;
-   }
-
-   public void a(akt $$0) {
-      this.h = $$0;
-   }
-
-   public void b(akt $$0) {
-      this.i = $$0;
-   }
-
-   public void a(aks<elc> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dre.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.q = $$0;
+   public Collection<dsg<?>> d() {
+      return this.c.values();
    }
 
    @Override
-   protected void b(uk $$0, jc.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.q);
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dsg::f).collect(Collectors.toList()))
+         .toString();
    }
 
-   @Override
-   public void a(uk $$0, jc.a $$1) {
-      super.a($$0, $$1);
-      this.h = new akt($$0.l("name"));
-      this.i = new akt($$0.l("target"));
-      this.j = aks.a(li.aM, new akt($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = dre.a.a($$0.l("joint")).orElseGet(() -> dji.m(this.n()).o().d() ? dre.a.b : dre.a.a);
-      this.m = $$0.h("placement_priority");
-      this.q = $$0.h("selection_priority");
+   @Nullable
+   public dsg<?> a(String $$0) {
+      return (dsg<?>)this.c.get($$0);
    }
 
-   public ace t() {
-      return ace.a(this);
-   }
+   public static class a<O, S extends drf<O, S>> {
+      private final O a;
+      private final Map<String, dsg<?>> b = Maps.newHashMap();
 
-   @Override
-   public uk a(jc.a $$0) {
-      return this.d($$0);
-   }
-
-   public void a(aqt $$0, int $$1, boolean $$2) {
-      ir $$3 = this.az_().a(this.n().c(dji.b).a());
-      jn<elc> $$4 = $$0.I_().d(li.aM);
-      ja<elc> $$5 = $$4.g(this.j);
-      ekw.a($$0, $$5, this.i, $$1, $$3, $$2);
-   }
-
-   public static enum a implements azg {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
+      public a(O $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      public dre.a<O, S> a(dsg<?>... $$0) {
+         for (dsg<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
       }
 
-      public static Optional<dre.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      private <T extends Comparable<T>> void a(dsg<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dre.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dre.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
+         }
       }
 
-      public xe a() {
-         return xe.c("jigsaw_block.joint." + this.c);
+      public dre<O, S> a(Function<O, S> $$0, dre.b<O, S> $$1) {
+         return new dre<>($$0, this.a, $$1, this.b);
       }
+   }
+
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dsg<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

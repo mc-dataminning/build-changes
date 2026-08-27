@@ -1,32 +1,69 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fcy {
+public class fcy extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.snapshot.creating");
+   private final long d;
+   private final fcu e;
+   private final String f;
+   private final String g;
+   private final ezf h;
+   @Nullable
+   private fdd i;
+   @Nullable
+   private fde j;
+
+   public fcy(ezf $$0, long $$1, fcu $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
+   }
+
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+   public void run() {
+      ezk $$0 = ezk.a();
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
+      try {
+         fab $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fdd($$1.a, this.f, this.g);
+         this.j = new fde(this.e, $$1.a, fbz.a, () -> feb.Q().execute(() -> ezf.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
          }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (fax var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
+      }
+   }
+
+   @Override
+   public wx a() {
+      return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
-   }
-
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

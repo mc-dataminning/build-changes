@@ -1,100 +1,21 @@
-public interface bqw {
-   aks<bqv> a = aks.a(li.s, new akt("in_fire"));
-   aks<bqv> b = aks.a(li.s, new akt("lightning_bolt"));
-   aks<bqv> c = aks.a(li.s, new akt("on_fire"));
-   aks<bqv> d = aks.a(li.s, new akt("lava"));
-   aks<bqv> e = aks.a(li.s, new akt("potato_heat"));
-   aks<bqv> f = aks.a(li.s, new akt("hot_floor"));
-   aks<bqv> g = aks.a(li.s, new akt("in_wall"));
-   aks<bqv> h = aks.a(li.s, new akt("cramming"));
-   aks<bqv> i = aks.a(li.s, new akt("drown"));
-   aks<bqv> j = aks.a(li.s, new akt("starve"));
-   aks<bqv> k = aks.a(li.s, new akt("cactus"));
-   aks<bqv> l = aks.a(li.s, new akt("fall"));
-   aks<bqv> m = aks.a(li.s, new akt("fly_into_wall"));
-   aks<bqv> n = aks.a(li.s, new akt("out_of_world"));
-   aks<bqv> o = aks.a(li.s, new akt("generic"));
-   aks<bqv> p = aks.a(li.s, new akt("magic"));
-   aks<bqv> q = aks.a(li.s, new akt("wither"));
-   aks<bqv> r = aks.a(li.s, new akt("dragon_breath"));
-   aks<bqv> s = aks.a(li.s, new akt("dry_out"));
-   aks<bqv> t = aks.a(li.s, new akt("sweet_berry_bush"));
-   aks<bqv> u = aks.a(li.s, new akt("freeze"));
-   aks<bqv> v = aks.a(li.s, new akt("stalagmite"));
-   aks<bqv> w = aks.a(li.s, new akt("falling_block"));
-   aks<bqv> x = aks.a(li.s, new akt("falling_anvil"));
-   aks<bqv> y = aks.a(li.s, new akt("falling_stalactite"));
-   aks<bqv> z = aks.a(li.s, new akt("sting"));
-   aks<bqv> A = aks.a(li.s, new akt("mob_attack"));
-   aks<bqv> B = aks.a(li.s, new akt("mob_attack_no_aggro"));
-   aks<bqv> C = aks.a(li.s, new akt("player_attack"));
-   aks<bqv> D = aks.a(li.s, new akt("arrow"));
-   aks<bqv> E = aks.a(li.s, new akt("trident"));
-   aks<bqv> F = aks.a(li.s, new akt("mob_projectile"));
-   aks<bqv> G = aks.a(li.s, new akt("spit"));
-   aks<bqv> H = aks.a(li.s, new akt("wind_charge"));
-   aks<bqv> I = aks.a(li.s, new akt("fireworks"));
-   aks<bqv> J = aks.a(li.s, new akt("fireball"));
-   aks<bqv> K = aks.a(li.s, new akt("unattributed_fireball"));
-   aks<bqv> L = aks.a(li.s, new akt("wither_skull"));
-   aks<bqv> M = aks.a(li.s, new akt("thrown"));
-   aks<bqv> N = aks.a(li.s, new akt("indirect_magic"));
-   aks<bqv> O = aks.a(li.s, new akt("thorns"));
-   aks<bqv> P = aks.a(li.s, new akt("explosion"));
-   aks<bqv> Q = aks.a(li.s, new akt("player_explosion"));
-   aks<bqv> R = aks.a(li.s, new akt("sonic_boom"));
-   aks<bqv> S = aks.a(li.s, new akt("bad_respawn_point"));
-   aks<bqv> T = aks.a(li.s, new akt("outside_border"));
-   aks<bqv> U = aks.a(li.s, new akt("generic_kill"));
-   aks<bqv> V = aks.a(li.s, new akt("potato_magic"));
+class bqw extends brc {
+   protected bqw(brd $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-   static void a(qq<bqv> $$0) {
-      $$0.a(a, new bqv("inFire", 0.1F, bqr.d));
-      $$0.a(b, new bqv("lightningBolt", 0.1F));
-      $$0.a(c, new bqv("onFire", 0.0F, bqr.d));
-      $$0.a(d, new bqv("lava", 0.1F, bqr.d));
-      $$0.a(e, new bqv("potato_heat", 0.1F, bqr.d));
-      $$0.a(f, new bqv("hotFloor", 0.1F, bqr.d));
-      $$0.a(g, new bqv("inWall", 0.0F));
-      $$0.a(h, new bqv("cramming", 0.0F));
-      $$0.a(i, new bqv("drown", 0.0F, bqr.c));
-      $$0.a(j, new bqv("starve", 0.0F));
-      $$0.a(k, new bqv("cactus", 0.1F));
-      $$0.a(l, new bqv("fall", bqs.b, 0.0F, bqr.a, bqx.b));
-      $$0.a(m, new bqv("flyIntoWall", 0.0F));
-      $$0.a(n, new bqv("outOfWorld", 0.0F));
-      $$0.a(o, new bqv("generic", 0.0F));
-      $$0.a(p, new bqv("magic", 0.0F));
-      $$0.a(q, new bqv("wither", 0.0F));
-      $$0.a(r, new bqv("dragonBreath", 0.0F));
-      $$0.a(s, new bqv("dryout", 0.1F));
-      $$0.a(t, new bqv("sweetBerryBush", 0.1F, bqr.e));
-      $$0.a(u, new bqv("freeze", 0.0F, bqr.f));
-      $$0.a(v, new bqv("stalagmite", 0.0F));
-      $$0.a(w, new bqv("fallingBlock", 0.1F));
-      $$0.a(x, new bqv("anvil", 0.1F));
-      $$0.a(y, new bqv("fallingStalactite", 0.1F));
-      $$0.a(z, new bqv("sting", 0.1F));
-      $$0.a(A, new bqv("mob", 0.1F));
-      $$0.a(B, new bqv("mob", 0.1F));
-      $$0.a(C, new bqv("player", 0.1F));
-      $$0.a(D, new bqv("arrow", 0.1F));
-      $$0.a(E, new bqv("trident", 0.1F));
-      $$0.a(F, new bqv("mob", 0.1F));
-      $$0.a(G, new bqv("mob", 0.1F));
-      $$0.a(I, new bqv("fireworks", 0.1F));
-      $$0.a(K, new bqv("onFire", 0.1F, bqr.d));
-      $$0.a(J, new bqv("fireball", 0.1F, bqr.d));
-      $$0.a(L, new bqv("witherSkull", 0.1F));
-      $$0.a(M, new bqv("thrown", 0.1F));
-      $$0.a(N, new bqv("indirectMagic", 0.0F));
-      $$0.a(O, new bqv("thorns", 0.1F, bqr.b));
-      $$0.a(P, new bqv("explosion", bqs.c, 0.1F));
-      $$0.a(Q, new bqv("explosion.player", bqs.c, 0.1F));
-      $$0.a(R, new bqv("sonic_boom", bqs.c, 0.0F));
-      $$0.a(S, new bqv("badRespawnPoint", bqs.c, 0.1F, bqr.a, bqx.c));
-      $$0.a(T, new bqv("outsideBorder", 0.0F));
-      $$0.a(U, new bqv("genericKill", 0.0F));
-      $$0.a(V, new bqv("potato_magic", bqs.c, 0.2F));
+   @Override
+   public boolean a(bsq $$0, int $$1) {
+      return $$0.fs() > 0.0F || $$0.dP().B;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public void b(bsq $$0, int $$1) {
+      super.b($$0, $$1);
+      $$0.A(Math.max($$0.fs(), (float)(4 * (1 + $$1))));
    }
 }

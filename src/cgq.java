@@ -1,135 +1,141 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cgq extends cgl {
-   private int ci = 47999;
+public class cgq extends cgk {
+   private final cgr bY = new cgr(this);
+   private static final int bZ = 18000;
+   private static final brz cb = bsc.aO.n().a(bry.a().a(brx.a, 0.0F, bsc.aO.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cc;
+   private int cd;
 
-   public cgq(bsb<? extends cgq> $$0, dca $$1) {
+   public cgq(bsc<? extends cgq> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean gH() {
-      return true;
+   public static btx.a s() {
+      return gO().a(bty.q, 15.0).a(bty.r, 0.2F);
    }
 
-   @Nullable
-   @Override
-   protected cgl gM() {
-      return bsb.bi.a(this.dU());
+   public static boolean c(bsc<? extends ceg> $$0, dba $$1, bsu $$2, io $$3, aym $$4) {
+      return !bsu.a($$2) ? ceg.b($$0, $$1, $$2, $$3, $$4) : bsu.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public void b(uk $$0) {
+   protected void a(aym $$0) {
+      this.f(bty.m).a(a($$0::j));
+   }
+
+   @Override
+   protected void gF() {
+   }
+
+   @Override
+   protected avh v() {
+      return this.a(awc.a) ? avi.xf : avi.xb;
+   }
+
+   @Override
+   protected avh o_() {
+      return avi.xc;
+   }
+
+   @Override
+   protected avh d(bqp $$0) {
+      return avi.xd;
+   }
+
+   @Override
+   protected avh aP() {
+      if (this.aE()) {
+         if (!this.bS()) {
+            return avi.xi;
+         }
+
+         this.cx++;
+         if (this.cx > 5 && this.cx % 3 == 0) {
+            return avi.xg;
+         }
+
+         if (this.cx <= 5) {
+            return avi.xi;
+         }
+      }
+
+      return avi.xe;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aE()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
+      }
+   }
+
+   @Override
+   protected void gV() {
+      if (this.be()) {
+         this.a(avi.xh, 0.4F, 1.0F);
+      } else {
+         super.gV();
+      }
+   }
+
+   @Override
+   public brz e(btc $$0) {
+      return this.p_() ? cb : super.e($$0);
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (this.u() && this.cd++ >= 18000) {
+         this.ao();
+      }
+   }
+
+   @Override
+   public void b(ud $$0) {
       super.b($$0);
-      $$0.a("DespawnDelay", this.ci);
+      $$0.a("SkeletonTrap", this.u());
+      $$0.a("SkeletonTrapTime", this.cd);
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(ud $$0) {
       super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.ci = $$0.h("DespawnDelay");
-      }
+      this.w($$0.q("SkeletonTrap"));
+      this.cd = $$0.h("SkeletonTrapTime");
    }
 
    @Override
-   protected void y() {
-      super.y();
-      this.cb.a(1, new cae(this, 2.0));
-      this.cc.a(1, new cgq.a(this));
+   protected float fl() {
+      return 0.96F;
    }
 
-   @Override
-   public void y(int $$0) {
-      this.ci = $$0;
+   public boolean u() {
+      return this.cc;
    }
 
-   @Override
-   protected void f(cly $$0) {
-      brv $$1 = this.gn();
-      if (!($$1 instanceof clr)) {
-         super.f($$0);
-      }
-   }
-
-   @Override
-   public void m_() {
-      super.m_();
-      if (!this.dU().C) {
-         this.hn();
-      }
-   }
-
-   private void hn() {
-      if (this.ho()) {
-         this.ci = this.hp() ? ((clr)this.gn()).gH() - 1 : this.ci - 1;
-         if (this.ci <= 0) {
-            this.a(true, false);
-            this.ao();
+   public void w(boolean $$0) {
+      if ($$0 != this.cc) {
+         this.cc = $$0;
+         if ($$0) {
+            this.bS.a(1, this.bY);
+         } else {
+            this.bS.a(this.bY);
          }
       }
-   }
-
-   private boolean ho() {
-      return !this.gN() && !this.hq() && !this.dd();
-   }
-
-   private boolean hp() {
-      return this.gn() instanceof clr;
-   }
-
-   private boolean hq() {
-      return this.gl() && !this.hp();
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
-      if ($$2 == bss.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new brp.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   public brq a(aqn $$0, brq $$1) {
+      return bsc.aO.a((daz)$$0);
    }
 
-   protected static class a extends cbl {
-      private final cgl a;
-      private bso b;
-      private int c;
-
-      public a(cgl $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(bzl.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.gl()) {
-            return false;
-         } else if (!(this.a.gn() instanceof clr $$1)) {
-            return false;
-         } else {
-            this.b = $$1.eu();
-            int $$2 = $$1.ev();
-            return $$2 != this.c && this.a(this.b, cde.a);
-         }
-      }
-
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         brv $$0 = this.a.gn();
-         if ($$0 instanceof clr) {
-            this.c = ((clr)$$0).ev();
-         }
-
-         super.c();
-      }
+   @Override
+   public bpw b(cly $$0, bpv $$1) {
+      return !this.gE() ? bpw.d : super.b($$0, $$1);
    }
 }

@@ -1,29 +1,29 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.Arrays;
-import java.util.Locale;
+import java.util.Collection;
 
-public class ex extends fr<dyu.a> {
-   private static final Codec<dyu.a> a = azg.a(ex::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
-
-   private static dyu.a[] b() {
-      return Arrays.stream(dyu.a.values()).filter(dyu.a::d).toArray(dyu.a[]::new);
-   }
+public class ex implements ArgumentType<va> {
+   private static final Collection<String> a = Arrays.asList("0", "0b", "0l", "0.0", "\"foo\"", "{foo=bar}", "[0]");
 
    private ex() {
-      super(a, ex::b);
    }
 
    public static ex a() {
       return new ex();
    }
 
-   public static dyu.a a(CommandContext<eh> $$0, String $$1) {
-      return (dyu.a)$$0.getArgument($$1, dyu.a.class);
+   public static <S> va a(CommandContext<S> $$0, String $$1) {
+      return (va)$$0.getArgument($$1, va.class);
    }
 
-   @Override
-   protected String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
+   public va a(StringReader $$0) throws CommandSyntaxException {
+      return new vb($$0).d();
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

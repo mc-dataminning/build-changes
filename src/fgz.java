@@ -1,37 +1,39 @@
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public record fgz(fgz.c a, fhb... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fhb[] var3, int var4, int var5, float var6);
+public class fgz {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
+
+   public static void a(ffn $$0, gov $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   public static class b {
-      public static final fgz.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fgz.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            aym.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            aym.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            aym.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
    }
 
-   public interface c {
-      void apply(fys var1, Vector3f var2);
+   public static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
+      }
    }
 
-   public static class d {
-      public static final fgz.c a = fys::a;
-      public static final fgz.c b = fys::b;
-      public static final fgz.c c = fys::c;
+   private static void a(ffn $$0, akn $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

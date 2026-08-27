@@ -1,62 +1,57 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import java.util.BitSet;
+import java.util.Set;
 
 public class gfm {
-   private final gfr a = new gfr();
-   private final gfs b;
-   private final gfg.a c;
-   private final gfg.a d;
-   private final gfh e;
+   private static final int a = it.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public gfm(int $$0) {
-      this.b = gfs.a($$0);
-      SortedMap<gfo, fax> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gfv.h(), this.a.a(gfo.c()));
-         $$0x.put(gfv.i(), this.a.a(gfo.e()));
-         $$0x.put(gfv.a(), this.a.a(gfo.d()));
-         $$0x.put(gfv.k(), this.a.a(gfo.f()));
-         a($$0x, gfv.b());
-         a($$0x, gfv.c());
-         a($$0x, gfv.d());
-         a($$0x, gfv.e());
-         a($$0x, gfv.f());
-         $$0x.put(gfv.g(), new fax(786432));
-         a($$0x, gfo.j());
-         a($$0x, gfo.k());
-         a($$0x, gfo.m());
-         a($$0x, gfo.n());
-         a($$0x, gfo.l());
-         a($$0x, gfo.o());
-         a($$0x, gfo.p());
-         a($$0x, gfo.i());
-         gte.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gfg.a(new fax(1536));
-      this.c = gfg.a($$1, new fax(786432));
-      this.e = new gfh(this.c);
+   public void a(Set<it> $$0) {
+      for (it $$1 : $$0) {
+         for (it $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gfo, fax> $$0, gfo $$1) {
-      $$0.put($$1, new fax($$1.J()));
+   public void a(it $$0, it $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
    }
 
-   public gfr a() {
-      return this.a;
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
    }
 
-   public gfs b() {
-      return this.b;
+   public boolean a(it $$0, it $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
-   public gfg.a c() {
-      return this.c;
-   }
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-   public gfg.a d() {
-      return this.d;
-   }
+      for (it $$1 : it.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+      }
 
-   public gfh e() {
-      return this.e;
+      $$0.append('\n');
+
+      for (it $$2 : it.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (it $$3 : it.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
+      }
+
+      return $$0.toString();
    }
 }

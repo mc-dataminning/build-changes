@@ -1,68 +1,74 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface ya {
-   Logger a = LogUtils.getLogger();
-   ya b = xu::b;
-   ya c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public record ya(String d, @Nullable gt e) implements xz {
+   public static final MapCodec<ya> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(ya::b)).apply($$0, ya::new));
+   public static final xz.a<ya> b = new xz.a<>(a, "entity");
+
+   public ya(String $$0) {
+      this($$0, a($$0));
+   }
 
    @Nullable
-   xu updateAndValidate(xu var1);
-
-   public static class a implements ya {
-      private final ayy d;
-      private final BooleanSupplier e;
-      @Nullable
-      private xu f;
-      private boolean g = true;
-
-      public a(ayy $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   private static gt a(String $$0) {
+      try {
+         gu $$1 = new gu(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
 
-      private boolean a(xu $$0) {
-         if ($$0.equals(this.f)) {
+   @Override
+   public Stream<ud> a(ee $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends brw> $$1 = this.e.b($$0);
+         return $$1.stream().map(cv::b);
+      } else {
+         return Stream.empty();
+      }
+   }
+
+   @Override
+   public xz.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ya $$1 && this.d.equals($$1.d)) {
             return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
          }
-      }
 
-      private boolean b(xu $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
+         return false;
       }
+   }
 
-      @Nullable
-      @Override
-      public xu updateAndValidate(xu $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
-      }
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gt c() {
+      return this.e;
    }
 }

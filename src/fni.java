@@ -1,42 +1,27 @@
-public class fni extends fon {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final xe c = xe.c("credits_and_attribution.screen.title");
-   private static final xe d = xe.c("credits_and_attribution.button.credits");
-   private static final xe r = xe.c("credits_and_attribution.button.attribution");
-   private static final xe s = xe.c("credits_and_attribution.button.licenses");
-   private final fon u;
-   private final fma v = new fma(this);
+public class fni extends fmx<cpc> implements foc<cpc> {
+   private static final akn D = new akn("textures/gui/container/generic_54.png");
+   private final int E;
 
-   public fni(fon $$0) {
-      super(c);
-      this.u = $$0;
+   public fni(cpc $$0, clx $$1, wx $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.E = $$0.m();
+      this.d = 114 + this.E * 18;
+      this.v = this.d - 94;
    }
 
    @Override
-   protected void aN_() {
-      this.v.a(c, this.p);
-      fme $$0 = this.v.c(fme.d()).a(8);
-      $$0.c().b();
-      $$0.a(fin.a(d, $$0x -> this.B()).a(210).a());
-      $$0.a(fin.a(r, fnd.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(fin.a(s, fnd.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.v.b(fin.a(xd.d, $$0x -> this.d()).a(200).a());
-      this.v.a();
-      this.v.a(this::c);
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void c() {
-      this.v.a();
-   }
-
-   private void B() {
-      this.m.a(new fox(false, () -> this.m.a(this)));
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.u);
+   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
+      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
    }
 }

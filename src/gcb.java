@@ -1,30 +1,51 @@
-public class gcb extends gdg {
-   gcb(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public enum gcb {
+   a(new gcb.b(gcb.a.f, gcb.a.e, gcb.a.a), new gcb.b(gcb.a.f, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.a)),
+   b(new gcb.b(gcb.a.f, gcb.a.b, gcb.a.d), new gcb.b(gcb.a.f, gcb.a.b, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.b, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.b, gcb.a.d)),
+   c(new gcb.b(gcb.a.c, gcb.a.b, gcb.a.d), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.f, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.f, gcb.a.b, gcb.a.d)),
+   d(new gcb.b(gcb.a.f, gcb.a.b, gcb.a.a), new gcb.b(gcb.a.f, gcb.a.e, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.b, gcb.a.a)),
+   e(new gcb.b(gcb.a.f, gcb.a.b, gcb.a.d), new gcb.b(gcb.a.f, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.f, gcb.a.e, gcb.a.a), new gcb.b(gcb.a.f, gcb.a.b, gcb.a.a)),
+   f(new gcb.b(gcb.a.c, gcb.a.b, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.a), new gcb.b(gcb.a.c, gcb.a.e, gcb.a.d), new gcb.b(gcb.a.c, gcb.a.b, gcb.a.d));
+
+   private static final gcb[] g = ac.a(new gcb[6], $$0 -> {
+      $$0[gcb.a.e] = a;
+      $$0[gcb.a.b] = b;
+      $$0[gcb.a.d] = c;
+      $$0[gcb.a.a] = d;
+      $$0[gcb.a.f] = e;
+      $$0[gcb.a.c] = f;
+   });
+   private final gcb.b[] h;
+
+   public static gcb a(it $$0) {
+      return g[$$0.d()];
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   private gcb(gcb.b... $$0) {
+      this.h = $$0;
    }
 
-   public static class a implements gcx<le> {
-      private final gdp a;
+   public gcb.b a(int $$0) {
+      return this.h[$$0];
+   }
 
-      public a(gdp $$0) {
+   public static final class a {
+      public static final int a = it.d.d();
+      public static final int b = it.b.d();
+      public static final int c = it.f.d();
+      public static final int d = it.c.d();
+      public static final int e = it.a.d();
+      public static final int f = it.e.d();
+   }
+
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+
+      b(int $$0, int $$1, int $$2) {
          this.a = $$0;
-      }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

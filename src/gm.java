@@ -1,113 +1,98 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
-public class gm implements gf {
-   private final gl a;
-   private final gl b;
-   private final gl c;
+public class gm implements ArgumentType<gm.a> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("arguments.function.unknown", $$0));
 
-   public gm(gl $$0, gl $$1, gl $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static gm a() {
+      return new gm();
    }
 
-   @Override
-   public ewu a(eh $$0) {
-      ewu $$1 = $$0.d();
-      return new ewu(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
-   }
-
-   @Override
-   public ewt b(eh $$0) {
-      ewt $$1 = $$0.k();
-      return new ewt((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gm $$1)) {
-         return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
-      } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
-      }
-   }
-
-   public static gm a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      gl $$2 = gl.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
+   public gm.a a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
          $$0.skip();
-         gl $$3 = gl.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gl $$4 = gl.a($$0);
-            return new gm($$2, $$3, $$4);
-         } else {
-            $$0.setCursor($$1);
-            throw gk.a.createWithContext($$0);
-         }
+         final akn $$1 = akn.a($$0);
+         return new gm.a() {
+            @Override
+            public Collection<hq<ee>> a(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return gm.b($$0, $$1);
+            }
+
+            @Override
+            public Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, Either.right(gm.b($$0, $$1)));
+            }
+
+            @Override
+            public Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, gm.b($$0, $$1));
+            }
+         };
       } else {
-         $$0.setCursor($$1);
-         throw gk.a.createWithContext($$0);
+         final akn $$2 = akn.a($$0);
+         return new gm.a() {
+            @Override
+            public Collection<hq<ee>> a(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return Collections.singleton(gm.a($$0, $$2));
+            }
+
+            @Override
+            public Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Either.left(gm.a($$0, $$2)));
+            }
+
+            @Override
+            public Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Collections.singleton(gm.a($$0, $$2)));
+            }
+         };
       }
    }
 
-   public static gm a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      gl $$3 = gl.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gl $$4 = gl.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gl $$5 = gl.a($$0, $$1);
-            return new gm($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw gk.a.createWithContext($$0);
-         }
+   static hq<ee> a(CommandContext<ee> $$0, akn $$1) throws CommandSyntaxException {
+      return ((ee)$$0.getSource()).l().aF().a($$1).orElseThrow(() -> c.create($$1.toString()));
+   }
+
+   static Collection<hq<ee>> b(CommandContext<ee> $$0, akn $$1) throws CommandSyntaxException {
+      Collection<hq<ee>> $$2 = ((ee)$$0.getSource()).l().aF().b($$1);
+      if ($$2 == null) {
+         throw b.create($$1.toString());
       } else {
-         $$0.setCursor($$2);
-         throw gk.a.createWithContext($$0);
+         return $$2;
       }
    }
 
-   public static gm a(double $$0, double $$1, double $$2) {
-      return new gm(new gl(false, $$0), new gl(false, $$1), new gl(false, $$2));
+   public static Collection<hq<ee>> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return ((gm.a)$$0.getArgument($$1, gm.a.class)).a($$0);
    }
 
-   public static gm a(ewt $$0) {
-      return new gm(new gl(false, (double)$$0.i), new gl(false, (double)$$0.j), new gl(true, 0.0));
+   public static Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return ((gm.a)$$0.getArgument($$1, gm.a.class)).b($$0);
    }
 
-   public static gm d() {
-      return new gm(new gl(true, 0.0), new gl(true, 0.0), new gl(true, 0.0));
+   public static Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return ((gm.a)$$0.getArgument($$1, gm.a.class)).c($$0);
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public interface a {
+      Collection<hq<ee>> a(CommandContext<ee> var1) throws CommandSyntaxException;
+
+      Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> b(CommandContext<ee> var1) throws CommandSyntaxException;
+
+      Pair<akn, Collection<hq<ee>>> c(CommandContext<ee> var1) throws CommandSyntaxException;
    }
 }

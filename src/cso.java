@@ -1,17 +1,16 @@
-import javax.annotation.Nullable;
-
-public class cso extends cuc {
-   public cso(cuc.a $$0) {
+public class cso extends ctl {
+   public cso(ctl.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean ak_() {
-      return true;
+   public boolean a(ctq $$0) {
+      return false;
    }
 
-   @Nullable
-   public zl<?> a(cuh $$0, dca $$1, cly $$2) {
-      return null;
+   public static ctq a(czd $$0) {
+      ctq $$1 = new ctq(ctt.uw);
+      $$1.a($$0.a, $$0.b);
+      return $$1;
    }
 }

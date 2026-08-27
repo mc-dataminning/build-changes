@@ -1,33 +1,12 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class bmi {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bmm c = bml.a;
+public interface bmi extends bmk {
+   bmj d();
 
-   public bmi(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   @Nullable
+   bmd.a c(String var1);
 
-   public boolean a() {
-      return this.c != bml.a;
-   }
-
-   public void b() {
-      this.c = bml.a;
-   }
-
-   public void c() {
-      this.c = new bmh(this.a, this.b, true);
-   }
-
-   public bmo d() {
-      return this.c;
-   }
-
-   public bmn e() {
-      return this.c.d();
-   }
+   Set<Pair<String, bnq>> e();
 }

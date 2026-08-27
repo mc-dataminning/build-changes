@@ -1,82 +1,84 @@
-public class fpx extends fpm {
-   private final dqm s;
-   private fiu<dqm.a> u;
-   private fiu<Boolean> v;
-   private fiu<Boolean> w;
-   private dqm.a x = dqm.a.c;
-   private boolean y;
-   private boolean z;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-   public fpx(dqm $$0) {
-      this.s = $$0;
+public class fpx extends fpw<fxs.a> {
+   private static final int y = 120;
+   private static final wx z = wx.c("gui.chatReport.title");
+   private static final wx A = wx.c("gui.chatReport.select_chat");
+   private final fjr B = fjr.d().a(8);
+   private fgs C;
+   private fga D;
+   private fga E;
+   private fga F;
+
+   private fpx(flz $$0, fxz $$1, fxs.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   @Override
-   dbb B() {
-      return this.s.b();
+   public fpx(flz $$0, fxz $$1, UUID $$2) {
+      this($$0, $$1, new fxs.a($$2, $$1.a().b()));
    }
 
-   @Override
-   int C() {
-      return 135;
+   public fpx(flz $$0, fxz $$1, fxs $$2) {
+      this($$0, $$1, new fxs.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.u = this.c(fiu.<dqm.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xe.c("advMode.mode.sequence");
-            case b -> xe.c("advMode.mode.auto");
-            case c -> xe.c("advMode.mode.redstone");
-         };
-      }).a(dqm.a.values()).a().a(this.x).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xe.c("advMode.mode"), ($$0, $$1) -> this.x = $$1));
-      this.v = this.c(
-         fiu.a(xe.c("advMode.mode.conditional"), xe.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.y)
-            .a(this.n / 2 - 50, 165, 100, 20, xe.c("advMode.type"), ($$0, $$1) -> this.y = $$1)
-      );
-      this.w = this.c(
-         fiu.a(xe.c("advMode.mode.autoexec.bat"), xe.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xe.c("advMode.triggering"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.r.j = $$0;
-      this.u.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-   }
-
-   public void E() {
-      dbb $$0 = this.s.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.x = this.s.l();
-      this.y = this.s.t();
-      this.z = this.s.d();
-      this.r.a($$1);
-      this.u.a(this.x);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.c($$1);
-      this.e(true);
+      this.B.c().b();
+      this.B.a(new fhh(this.l, this.p));
+      this.E = this.B.a(fga.a(A, $$0x -> this.m.a(new fpz(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.F = fga.a(c, $$0x -> this.m.a(new fqc(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.B.a(fjj.a(this.p, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.B.a(fjj.a(this.p, this.C, d, $$0x -> $$0x.e(12)));
+      fjr $$0 = this.B.a(fjr.e().a(8));
+      $$0.a(fga.a(ww.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(fga.a(a, $$0x -> this.m()).a(120).a());
+      this.B.a($$1 -> {
+         ffy var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public void a(fgj $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   protected void c() {
+      this.B.a();
+      fjl.a(this.B, this.G());
+   }
+
+   private void C() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(wx.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      fxx $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
+      }
+
+      fxv.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(x.a($$2, fxv.b::a));
    }
 
    @Override
-   protected void a(dbb $$0) {
-      this.m.L().b(new ahy(ir.a($$0.g()), this.a.a(), this.x, $$0.p(), this.y, this.z));
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

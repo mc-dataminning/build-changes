@@ -1,35 +1,64 @@
-import java.util.UUID;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fjb extends bpq {
-   private static final long l = 100L;
-   protected float j;
-   protected long k;
+public class fjb {
+   private static long a = 0L;
 
-   public fjb(UUID $$0, xe $$1, float $$2, bpq.a $$3, bpq.b $$4, boolean $$5, boolean $$6, boolean $$7, ewu $$8, int $$9) {
-      super($$0, $$1, $$3, $$4, $$8, $$9);
-      this.j = $$2;
-      this.b = $$2;
-      this.k = ad.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public static long a() {
+      if (a == 0L) {
+         MemoryStack $$0 = MemoryStack.stackPush();
+
+         try {
+            PointerBuffer $$1 = $$0.mallocPointer(1);
+            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+            a = $$1.get();
+         } catch (Throwable var4) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var3) {
+                  var4.addSuppressed(var3);
+               }
+            }
+
+            throw var4;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+      }
+
+      return a;
    }
 
-   @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.j = $$0;
-      this.k = ad.b();
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
    }
 
-   @Override
-   public float j() {
-      long $$0 = ad.b() - this.k;
-      float $$1 = aym.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return aym.i($$1, this.b, this.j);
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
    }
 
-   public boolean a(ewu $$0) {
-      return this.f > 0 ? this.e.g($$0) < (double)(this.f * this.f) : this.f >= 0;
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      if (a != 0L) {
+         FreeType.FT_Done_Library(a);
+         a = 0L;
+      }
    }
 }

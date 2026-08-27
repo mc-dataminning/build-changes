@@ -1,104 +1,85 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class amr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.effect.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.effect.clear.everything.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("commands.effect.clear.specific.failed"));
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.fill.toobig", $$0, $$1));
+   static final fv b = new fv(dec.a.n(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.fill.failed"));
 
-   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("effect").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)ei.a("clear").executes($$0x -> a((eh)$$0x.getSource(), ImmutableList.of(((eh)$$0x.getSource()).g()))))
-                     .then(
-                        ((RequiredArgumentBuilder)ei.a("targets", eu.b()).executes($$0x -> a((eh)$$0x.getSource(), eu.b($$0x, "targets"))))
-                           .then(ei.a("effect", fg.a($$1, li.R)).executes($$0x -> a((eh)$$0x.getSource(), eu.b($$0x, "targets"), fg.f($$0x, "effect"))))
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("fill").requires($$0x -> $$0x.c(2)))
             .then(
-               ei.a("give")
+               ef.a("from", ga.a())
                   .then(
-                     ei.a("targets", eu.b())
+                     ef.a("to", ga.a())
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ei.a("effect", fg.a($$1, li.R))
-                                    .executes($$0x -> a((eh)$$0x.getSource(), eu.b($$0x, "targets"), fg.f($$0x, "effect"), null, 0, true)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)ei.a("seconds", IntegerArgumentType.integer(1, 1000000))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (eh)$$0x.getSource(),
-                                                   eu.b($$0x, "targets"),
-                                                   fg.f($$0x, "effect"),
-                                                   IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                   0,
-                                                   true
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a(
+                                                "block", fx.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ef.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ee)$$0x.getSource(),
+                                                            ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
+                                                            fx.a($$0x, "block"),
+                                                            amr.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ef.a("filter", fw.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ee)$$0x.getSource(),
+                                                               ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
+                                                               fx.a($$0x, "block"),
+                                                               amr.a.a,
+                                                               fw.a($$0x, "filter")
+                                                            )
+                                                      )
                                                 )
                                           ))
                                        .then(
-                                          ((RequiredArgumentBuilder)ei.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (eh)$$0x.getSource(),
-                                                         eu.b($$0x, "targets"),
-                                                         fg.f($$0x, "effect"),
-                                                         IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         true
-                                                      )
-                                                ))
-                                             .then(
-                                                ei.a("hideParticles", BoolArgumentType.bool())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (eh)$$0x.getSource(),
-                                                            eu.b($$0x, "targets"),
-                                                            fg.f($$0x, "effect"),
-                                                            IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                            IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                            !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                         )
+                                          ef.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ee)$$0x.getSource(),
+                                                      ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
+                                                      fx.a($$0x, "block"),
+                                                      amr.a.a,
+                                                      $$0xx -> $$0xx.c().u($$0xx.d())
                                                    )
                                              )
+                                       ))
+                                    .then(
+                                       ef.a("outline")
+                                          .executes(
+                                             $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    ef.a("hollow")
+                                       .executes(
+                                          $$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.c, null)
                                        )
                                  ))
                               .then(
-                                 ((LiteralArgumentBuilder)ei.a("infinite")
-                                       .executes($$0x -> a((eh)$$0x.getSource(), eu.b($$0x, "targets"), fg.f($$0x, "effect"), -1, 0, true)))
-                                    .then(
-                                       ((RequiredArgumentBuilder)ei.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eh)$$0x.getSource(),
-                                                      eu.b($$0x, "targets"),
-                                                      fg.f($$0x, "effect"),
-                                                      -1,
-                                                      IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                      true
-                                                   )
-                                             ))
-                                          .then(
-                                             ei.a("hideParticles", BoolArgumentType.bool())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (eh)$$0x.getSource(),
-                                                         eu.b($$0x, "targets"),
-                                                         fg.f($$0x, "effect"),
-                                                         -1,
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                      )
-                                                )
-                                          )
-                                    )
+                                 ef.a("destroy")
+                                    .executes($$0x -> a((ee)$$0x.getSource(), ehd.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amr.a.d, null))
                               )
                         )
                   )
@@ -106,88 +87,76 @@ public class amr {
       );
    }
 
-   private static int a(eh $$0, Collection<? extends brv> $$1, ja<brf> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      brf $$6 = $$2.a();
-      int $$7 = 0;
-      int $$8;
-      if ($$3 != null) {
-         if ($$6.a()) {
-            $$8 = $$3;
-         } else if ($$3 == -1) {
-            $$8 = -1;
-         } else {
-            $$8 = $$3 * 20;
-         }
-      } else if ($$6.a()) {
-         $$8 = 1;
+   private static int a(ee $$0, ehd $$1, fv $$2, amr.a $$3, @Nullable Predicate<drh> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().aa().c(dav.z);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         $$8 = 600;
-      }
+         List<io> $$7 = Lists.newArrayList();
+         aqn $$8 = $$0.e();
+         int $$9 = 0;
 
-      for (brv $$13 : $$1) {
-         if ($$13 instanceof bso) {
-            brh $$14 = new brh($$2, $$8, $$4, false, $$5);
-            if (((bso)$$13).b($$14, $$0.f())) {
-               $$7++;
+         for (io $$10 : io.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new drh($$8, $$10, true))) {
+               fv $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  doi $$12 = $$8.c_($$10);
+                  bpn.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
             }
          }
-      }
 
-      if ($$7 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xe.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().P_(), $$8 / 20), true);
-         } else {
-            $$0.a(() -> xe.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
+         for (io $$13 : $$7) {
+            dea $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
          }
 
-         return $$7;
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> wx.a("commands.fill.success", $$15), true);
+            return $$9;
+         }
       }
    }
 
-   private static int a(eh $$0, Collection<? extends brv> $$1) throws CommandSyntaxException {
-      int $$2 = 0;
-
-      for (brv $$3 : $$1) {
-         if ($$3 instanceof bso && ((bso)$$3).eE()) {
-            $$2++;
-         }
-      }
-
-      if ($$2 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xe.a("commands.effect.clear.everything.success.single", $$1.iterator().next().P_()), true);
-         } else {
-            $$0.a(() -> xe.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
-         }
-
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? amr.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
          return $$2;
-      }
-   }
+      });
 
-   private static int a(eh $$0, Collection<? extends brv> $$1, ja<brf> $$2) throws CommandSyntaxException {
-      brf $$3 = $$2.a();
-      int $$4 = 0;
+      public final aod.a e;
 
-      for (brv $$5 : $$1) {
-         if ($$5 instanceof bso && ((bso)$$5).e($$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw c.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xe.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().P_()), true);
-         } else {
-            $$0.a(() -> xe.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
-         }
-
-         return $$4;
+      private a(aod.a $$0) {
+         this.e = $$0;
       }
    }
 }

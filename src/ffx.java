@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
+public abstract class ffx extends ffy {
+   private final ffl a;
+   private int b = 16777215;
 
-public enum ffx implements ayo, azg {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<ffx> d = azg.a(ffx::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private ffx(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ffx(int $$0, int $$1, int $$2, int $$3, wx $$4, ffl $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected void a(fjw $$0) {
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public ffx a(int $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   protected final ffl a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

@@ -1,62 +1,74 @@
-public class fdw extends gxb {
-   private final fon a;
-   private final fdw.a b;
-   private fjg c = fjg.a;
+import javax.annotation.Nullable;
 
-   public fdw(fdf $$0, fon $$1) {
-      super(fgb.a);
-      this.a = $$1;
-      this.b = a($$0);
+public record fdw(int a, @Nullable fdw.a b, @Nullable wx c, @Nullable String d) {
+   private static final wx e = wx.c("chat.tag.system");
+   private static final wx f = wx.c("chat.tag.system_single_player");
+   private static final wx g = wx.c("chat.tag.not_secure");
+   private static final wx h = wx.c("chat.tag.modified");
+   private static final wx i = wx.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fdw l = new fdw(13684944, null, e, "System");
+   private static final fdw m = new fdw(13684944, null, f, "System");
+   private static final fdw n = new fdw(13684944, null, g, "Not Secure");
+   private static final fdw o = new fdw(16733525, null, i, "Chat Error");
+
+   public static fdw a() {
+      return l;
    }
 
-   public fdw(xe $$0, fon $$1) {
-      super(fgb.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public static fdw b() {
+      return m;
    }
 
-   public fdw(xe $$0, xe $$1, fon $$2) {
-      super(fgb.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   public static fdw c() {
+      return n;
    }
 
-   private static fdw.a a(fdf $$0) {
-      fbu $$1 = $$0.a;
-      return a(xe.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   public static fdw a(String $$0) {
+      wx $$1 = wx.b($$0).a(n.h);
+      wx $$2 = wx.i().b(h).b(ww.s).b($$1);
+      return new fdw(6316128, fdw.a.a, $$2, "Modified");
    }
 
-   private static fdw.a a(xe $$0) {
-      return a(xe.c("mco.errorMessage.generic"), $$0);
+   public static fdw d() {
+      return o;
    }
 
-   private static fdw.a a(xe $$0, xe $$1) {
-      return new fdw.a($$0, $$1);
+   public int e() {
+      return this.a;
    }
 
-   @Override
-   public void aN_() {
-      this.c(fin.a(xd.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fjg.a(this.p, this.b.b, this.n * 3 / 4);
+   @Nullable
+   public fdw.a f() {
+      return this.b;
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.a);
+   @Nullable
+   public wx g() {
+      return this.c;
    }
 
-   @Override
-   public xe i() {
-      return xe.i().a(this.b.a).f(": ").a(this.b.b);
+   @Nullable
+   public String h() {
+      return this.d;
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
+   public static enum a {
+      a(new akn("icon/chat_modified"), 9, 9);
 
-   static record a(xe a, xe b) {
+      public final akn b;
+      public final int c;
+      public final int d;
+
+      private a(akn $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(ffn $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

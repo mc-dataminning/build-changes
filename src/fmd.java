@@ -1,143 +1,34 @@
-public interface fmd {
-   fmd a(int var1);
+import java.util.Arrays;
 
-   fmd a(int var1, int var2);
+public class fmd extends flr {
+   private static final wx a = wx.c("options.sounds.title");
+   private fgx r;
 
-   fmd a(int var1, int var2, int var3, int var4);
-
-   fmd b(int var1);
-
-   fmd c(int var1);
-
-   fmd d(int var1);
-
-   fmd e(int var1);
-
-   fmd f(int var1);
-
-   fmd g(int var1);
-
-   fmd a(float var1, float var2);
-
-   fmd a(float var1);
-
-   fmd b(float var1);
-
-   default fmd a() {
-      return this.a(0.0F);
+   private static fee<?>[] a(fef $$0) {
+      return new fee[]{$$0.W(), $$0.X()};
    }
 
-   default fmd b() {
-      return this.a(0.5F);
+   public fmd(flz $$0, fef $$1) {
+      super($$0, $$1, a);
    }
 
-   default fmd c() {
-      return this.a(1.0F);
+   @Override
+   protected void aN_() {
+      this.r = this.c(new fgx(this.m, this.n, this.o, this));
+      this.r.a(this.c.b(avj.a));
+      this.r.a(this.C());
+      this.r.a(this.c.at());
+      this.r.a(a(this.c));
+      super.aN_();
    }
 
-   default fmd d() {
-      return this.b(0.0F);
+   @Override
+   protected void c() {
+      super.c();
+      this.r.a(this.n, this.d);
    }
 
-   default fmd e() {
-      return this.b(0.5F);
-   }
-
-   default fmd f() {
-      return this.b(1.0F);
-   }
-
-   fmd g();
-
-   fmd.a h();
-
-   static fmd i() {
-      return new fmd.a();
-   }
-
-   public static class a implements fmd {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
-      }
-
-      public a(fmd.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fmd.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fmd.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fmd.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fmd.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fmd.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fmd.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fmd.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fmd.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fmd.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fmd.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fmd.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fmd.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fmd.a j() {
-         return new fmd.a(this);
-      }
-
-      @Override
-      public fmd.a h() {
-         return this;
-      }
+   private fee<?>[] C() {
+      return Arrays.stream(avj.values()).filter($$0 -> $$0 != avj.a).map($$0 -> this.c.b($$0)).toArray(fee[]::new);
    }
 }

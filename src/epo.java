@@ -1,145 +1,81 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public class epo {
-   private epq[] a = new epq[128];
-   private int b;
+public class epo extends epq {
+   public static final MapCodec<epo> a = a(epo::new);
 
-   public epq a(epq $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            epq[] $$1 = new epq[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
+   epo(List<epx> $$0, List<esn> $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
-      this.b = 0;
+   @Override
+   public epy a() {
+      return epv.g;
    }
 
-   public epq b() {
-      return this.a[0];
-   }
-
-   public epq c() {
-      epq $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(epq $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
-      }
-
-      $$0.d = -1;
-   }
-
-   public void a(epq $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      epq $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         epq $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      epq $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         epq $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         epq $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
+   @Override
+   protected epp a(List<? extends epp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (epp)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (epp $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
             }
+         }
 
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
+         return false;
+      };
+      };
+   }
 
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
+   @Override
+   public void a(epn $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static epo.a a(epx.a<?>... $$0) {
+      return new epo.a($$0);
+   }
+
+   public static <E> epo.a a(Collection<E> $$0, Function<E, epx.a<?>> $$1) {
+      return new epo.a($$0.stream().map($$1::apply).toArray(epx.a[]::new));
+   }
+
+   public static class a extends epx.a<epo.a> {
+      private final Builder<epx> a = ImmutableList.builder();
+
+      public a(epx.a<?>... $$0) {
+         for (epx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
 
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
+      protected epo.a a() {
+         return this;
+      }
 
-   public boolean e() {
-      return this.b == 0;
-   }
+      @Override
+      public epo.a a(epx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public epq[] f() {
-      return Arrays.copyOf(this.a, this.b);
+      @Override
+      public epx b() {
+         return new epo(this.a.build(), this.f());
+      }
    }
 }

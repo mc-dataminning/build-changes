@@ -1,196 +1,210 @@
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Objects;
-import java.util.function.Function;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.Args;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
 
-public class ezi implements ezf {
+public class ezi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private static final String c = "/upload";
+   private final File d;
+   private final long e;
+   private final int f;
+   private final fap g;
+   private final String h;
+   private final String i;
+   private final String j;
+   private final String k;
+   private final ezo l;
+   private final AtomicBoolean m = new AtomicBoolean(false);
    @Nullable
-   private ByteBuffer b;
-   @Nullable
-   private FT_Face c;
-   final float d;
-   private final IntSet e = new IntArraySet();
+   private CompletableFuture<fch> n;
+   private final RequestConfig o = RequestConfig.custom()
+      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
+      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
+      .build();
 
-   public ezi(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      $$6.codePoints().forEach(this.e::add);
-      int $$7 = Math.round($$2 * $$3);
-      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
-      float $$8 = $$4 * $$3;
-      float $$9 = -$$5 * $$3;
-      MemoryStack $$10 = MemoryStack.stackPush();
+   public ezi(File $$0, long $$1, int $$2, fap $$3, fep $$4, String $$5, String $$6, ezo $$7) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4.a();
+      this.i = $$4.c();
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+   }
 
-      try {
-         FT_Vector $$11 = flo.a(FT_Vector.malloc($$10), $$8, $$9);
-         FreeType.FT_Set_Transform($$1, null, $$11);
-      } catch (Throwable var15) {
-         if ($$10 != null) {
-            try {
-               $$10.close();
-            } catch (Throwable var14) {
-               var15.addSuppressed(var14);
-            }
-         }
-
-         throw var15;
-      }
-
-      if ($$10 != null) {
-         $$10.close();
+   public void a(Consumer<fch> $$0) {
+      if (this.n == null) {
+         this.n = CompletableFuture.supplyAsync(() -> this.a(0));
+         this.n.thenAccept($$0);
       }
    }
 
-   @Nullable
-   @Override
-   public eze a(int $$0) {
-      FT_Face $$1 = this.b();
-      if (this.e.contains($$0)) {
-         return null;
+   public void a() {
+      this.m.set(true);
+      if (this.n != null) {
+         this.n.cancel(false);
+         this.n = null;
+      }
+   }
+
+   private fch a(int $$0) {
+      fch.a $$1 = new fch.a();
+      if (this.m.get()) {
+         return $$1.a();
       } else {
-         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
-         if ($$2 == 0) {
-            return null;
-         } else {
-            flo.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
-            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
-            float $$4 = flo.a($$3.advance());
-            FT_Bitmap $$5 = $$3.bitmap();
-            int $$6 = $$3.bitmap_left();
-            int $$7 = $$3.bitmap_top();
-            int $$8 = $$5.width();
-            int $$9 = $$5.rows();
-            return (eze)($$8 > 0 && $$9 > 0 ? new ezi.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
+         this.l.b = this.d.length();
+         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
+         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
+
+         fch var8;
+         try {
+            this.a($$2);
+            HttpResponse $$4 = $$3.execute($$2);
+            long $$5 = this.a($$4);
+            if (!this.a($$5, $$0)) {
+               this.a($$4, $$1);
+               return $$1.a();
+            }
+
+            var8 = this.b($$5, $$0);
+         } catch (Exception var12) {
+            if (!this.m.get()) {
+               a.error("Caught exception while uploading: ", var12);
+            }
+
+            return $$1.a();
+         } finally {
+            this.a($$2, $$3);
+         }
+
+         return var8;
+      }
+   }
+
+   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
+      $$0.releaseConnection();
+      if ($$1 != null) {
+         try {
+            $$1.close();
+         } catch (IOException var4) {
+            a.error("Failed to close Realms upload client");
          }
       }
    }
 
-   FT_Face b() {
-      if (this.b != null && this.c != null) {
-         return this.c;
-      } else {
-         throw new IllegalStateException("Provider already closed");
-      }
+   private void a(HttpPost $$0) throws FileNotFoundException {
+      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
+      ezi.a $$1 = new ezi.a(new FileInputStream(this.d), this.d.length(), this.l);
+      $$1.setContentType("application/octet-stream");
+      $$0.setEntity($$1);
    }
 
-   @Override
-   public void close() {
-      if (this.c != null) {
-         flo.a(FreeType.FT_Done_Face(this.c), "Deleting face");
-         this.c = null;
+   private void a(HttpResponse $$0, fch.a $$1) throws IOException {
+      int $$2 = $$0.getStatusLine().getStatusCode();
+      if ($$2 == 401) {
+         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
       }
 
-      MemoryUtil.memFree(this.b);
-      this.b = null;
-   }
-
-   @Override
-   public IntSet a() {
-      FT_Face $$0 = this.b();
-      IntSet $$1 = new IntOpenHashSet();
-      MemoryStack $$2 = MemoryStack.stackPush();
-
-      try {
-         IntBuffer $$3 = $$2.mallocInt(1);
-
-         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
-            $$1.add((int)$$4);
-         }
-      } catch (Throwable var8) {
-         if ($$2 != null) {
+      $$1.a($$2);
+      if ($$0.getEntity() != null) {
+         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
+         if ($$3 != null) {
             try {
-               $$2.close();
-            } catch (Throwable var7) {
-               var8.addSuppressed(var7);
+               JsonParser $$4 = new JsonParser();
+               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
+               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
+               $$1.a($$6.orElse(null));
+            } catch (Exception var8) {
             }
          }
-
-         throw var8;
       }
-
-      if ($$2 != null) {
-         $$2.close();
-      }
-
-      $$1.removeAll(this.e);
-      return $$1;
    }
 
-   class a implements eze {
-      final int b;
-      final int c;
-      final float d;
-      final float e;
-      private final float f;
-      final int g;
+   private boolean a(long $$0, int $$1) {
+      return $$0 > 0L && $$1 + 1 < 5;
+   }
 
-      a(float $$0, float $$1, int $$2, int $$3, float $$4, int $$5) {
-         this.b = $$2;
-         this.c = $$3;
-         this.f = $$4 / ezi.this.d;
-         this.d = $$0 / ezi.this.d;
-         this.e = $$1 / ezi.this.d;
-         this.g = $$5;
+   private fch b(long $$0, int $$1) throws InterruptedException {
+      Thread.sleep(Duration.ofSeconds($$0).toMillis());
+      return this.a($$1 + 1);
+   }
+
+   private long a(HttpResponse $$0) {
+      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
+   }
+
+   public boolean b() {
+      return this.n.isDone() || this.n.isCancelled();
+   }
+
+   static class a extends InputStreamEntity {
+      private final long a;
+      private final InputStream b;
+      private final ezo c;
+
+      public a(InputStream $$0, long $$1, ezo $$2) {
+         super($$0);
+         this.b = $$0;
+         this.a = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public float getAdvance() {
-         return this.f;
-      }
+      public void writeTo(OutputStream $$0) throws IOException {
+         Args.notNull($$0, "Output stream");
+         InputStream $$1 = this.b;
 
-      @Override
-      public fli bake(Function<ezg, fli> $$0) {
-         return $$0.apply(new ezg() {
-            @Override
-            public int a() {
-               return a.this.b;
-            }
+         try {
+            byte[] $$2 = new byte[4096];
+            int $$3;
+            if (this.a < 0L) {
+               while (($$3 = $$1.read($$2)) != -1) {
+                  $$0.write($$2, 0, $$3);
+                  this.c.a += (long)$$3;
+               }
+            } else {
+               long $$4 = this.a;
 
-            @Override
-            public int b() {
-               return a.this.c;
-            }
+               while ($$4 > 0L) {
+                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
+                  if ($$3 == -1) {
+                     break;
+                  }
 
-            @Override
-            public float d() {
-               return ezi.this.d;
+                  $$0.write($$2, 0, $$3);
+                  this.c.a += (long)$$3;
+                  $$4 -= (long)$$3;
+                  $$0.flush();
+               }
             }
-
-            @Override
-            public float i() {
-               return a.this.d;
-            }
-
-            @Override
-            public float j() {
-               return a.this.e;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               FT_Face $$2 = ezi.this.b();
-               fad $$3 = new fad(fad.a.d, a.this.b, a.this.c, false);
-               $$3.a($$2, a.this.g);
-               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
-            }
-
-            @Override
-            public boolean c() {
-               return false;
-            }
-         });
+         } finally {
+            $$1.close();
+         }
       }
    }
 }

@@ -1,15 +1,22 @@
-public class cym extends cyh {
-   public cym(String $$0, cyn $$1, cyv $$2, cuh $$3, float $$4, int $$5) {
-      super(czf.e, $$0, $$1, $$2, $$3, $$4, $$5);
+public interface cym extends cxw<bpp> {
+   @Override
+   default cyb<?> e() {
+      return cyb.g;
    }
 
    @Override
-   public cuh g() {
-      return new cuh(dfe.pf);
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public cze<?> ao_() {
-      return cze.t;
+   default ctq g() {
+      return new ctq(dec.ob);
    }
+
+   boolean a(ctq var1);
+
+   boolean b(ctq var1);
+
+   boolean c(ctq var1);
 }

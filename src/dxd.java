@@ -1,15 +1,70 @@
-public interface dxd {
-   dxd a = new dxd() {
-      @Override
-      public void a() {
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+
+public record dxd(int g, int h, int i, int j) {
+   public static final Codec<dxd> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(duv.e, duv.d).fieldOf("min_y").forGetter(dxd::c),
+                  Codec.intRange(0, duv.c).fieldOf("height").forGetter(dxd::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dxd::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dxd::f)
+               )
+               .apply($$0, dxd::new)
+      )
+      .comapFlatMap(dxd::a, Function.identity());
+   protected static final dxd b = a(-64, 384, 1, 2);
+   protected static final dxd c = a(0, 128, 1, 2);
+   protected static final dxd d = a(0, 128, 2, 1);
+   protected static final dxd e = a(-64, 192, 1, 2);
+   protected static final dxd f = a(0, 256, 2, 1);
+
+   private static DataResult<dxd> a(dxd $$0) {
+      if ($$0.c() + $$0.d() > duv.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (duv.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
 
-      @Override
-      public void a(brv.d $$0) {
-      }
-   };
+   public static dxd a(int $$0, int $$1, int $$2, int $$3) {
+      dxd $$4 = new dxd($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
 
-   void a();
+   public int a() {
+      return ji.c(this.f());
+   }
 
-   void a(brv.d var1);
+   public int b() {
+      return ji.c(this.e());
+   }
+
+   public dxd a(dbb $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
+      return new dxd($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
+   }
 }

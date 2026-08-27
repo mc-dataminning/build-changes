@@ -1,52 +1,117 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class efa implements eek {
-   public static final Codec<efa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eix.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               awt.b(li.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               egl.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               egl.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               eab.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+public class efa extends efh {
+   private static final Codec<bph> b = bph.a
+      .codec()
+      .validate(
+         $$0 -> $$0.b() - $$0.a() < 1
+               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+               : DataResult.success($$0)
+      );
+   public static final MapCodec<efa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bpb.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  bpb.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  bpb.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  bpb.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
+               )
             )
             .apply($$0, efa::new)
    );
-   public final ja<eix> b;
-   public final int c;
-   public final int d;
-   public final awt<dfc> e;
-   public final egl f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final egl k;
-   public final int l;
-   public final int n;
-   public final eab o;
+   private final bpb h;
+   private final bpb i;
+   private final bph j;
+   private final bph k;
+   private final bpb l;
 
-   public efa(ja<eix> $$0, int $$1, int $$2, awt<dfc> $$3, egl $$4, int $$5, int $$6, int $$7, int $$8, egl $$9, int $$10, int $$11, eab $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   public efa(int $$0, int $$1, int $$2, bpb $$3, bpb $$4, bph $$5, bpb $$6) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = bph.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
+   }
+
+   @Override
+   protected efi<?> a() {
+      return efi.i;
+   }
+
+   @Override
+   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
+      }
+
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
+      } else {
+         $$11 = $$6 + 1;
+      }
+
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
+      }
+
+      List<edp.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new edp.a($$4.b($$11), 0, false));
+      }
+
+      io.a $$16 = new io.a();
+      it $$17 = it.c.a.a($$2);
+      Function<drd, drd> $$18 = $$1x -> $$1x.b(dkm.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
+   }
+
+   private edp.a a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5, Function<drd, drd> $$6, it $$7, int $$8, boolean $$9, io.a $$10) {
+      $$10.g($$4).c(it.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      io $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
+
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      }
+
+      it $$17 = $$14.v() > $$10.v() ? it.b : it.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new edp.a($$14.c(), 0, false);
+         }
+
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.c($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+      }
    }
 }

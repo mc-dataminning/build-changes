@@ -1,24 +1,45 @@
-public abstract class goq<T extends brv & bta, M extends fvq<T>> extends gpi<T, M> {
-   public goq(gmp<T, M> $$0) {
-      super($$0);
-   }
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-   @Override
-   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.am + $$6;
-         fvq<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         fbg $$12 = $$1.getBuffer(gfo.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gqp.d, 0.5F, 0.5F, 0.5F, 1.0F);
+public class goq {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
+
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      ast.a $$3 = ast.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = axv.a($$5);
+         JsonObject $$7 = axv.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = axv.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
+            }
+         }
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
+
+      return $$3.a("index-" + $$1).getPath("/");
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract akt a();
-
-   protected abstract fvq<T> b();
 }

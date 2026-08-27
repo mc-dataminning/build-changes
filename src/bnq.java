@@ -1,9 +1,21 @@
-import java.time.Duration;
-import java.time.Instant;
-import jdk.jfr.consumer.RecordedEvent;
+public enum bnq {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public record bnq(Instant a, Duration b) {
-   public static bnq a(RecordedEvent $$0) {
-      return new bnq($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+   private final String j;
+
+   private bnq(String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
    }
 }

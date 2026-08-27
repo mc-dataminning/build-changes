@@ -1,71 +1,73 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public record dzc(int h, int i, int j, int k) {
-   public static final Codec<dzc> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dwu.e, dwu.d).fieldOf("min_y").forGetter(dzc::c),
-                  Codec.intRange(0, dwu.c).fieldOf("height").forGetter(dzc::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dzc::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dzc::f)
-               )
-               .apply($$0, dzc::new)
-      )
-      .comapFlatMap(dzc::a, Function.identity());
-   protected static final dzc b = a(-64, 384, 1, 2);
-   protected static final dzc c = a(0, 128, 1, 2);
-   protected static final dzc d = a(0, 128, 2, 1);
-   protected static final dzc e = a(-64, 192, 1, 2);
-   protected static final dzc f = a(0, 256, 2, 1);
-   protected static final dzc g = a(0, 256, 4, 1);
+public abstract class dzc extends dzz<ecf> {
+   public dzc(Codec<ecf> $$0) {
+      super($$0);
+   }
 
-   private static DataResult<dzc> a(dzc $$0) {
-      if ($$0.c() + $$0.d() > dwu.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dwu.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   protected void a(dba $$0, aym $$1, io $$2, ecf $$3, int $$4, io.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(it.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
       }
    }
 
-   public static dzc a(int $$0, int $$1, int $$2, int $$3) {
-      dzc $$4 = new dzc($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   protected int a(aym $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
    }
 
-   public int a() {
-      return jl.c(this.f());
+   protected boolean a(dba $$0, io $$1, int $$2, io.a $$3, ecf $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.al()) {
+         drd $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(avx.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     drd $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(avx.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   public int b() {
-      return jl.c(this.e());
+   @Override
+   public boolean a(eab<ecf> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      aym $$3 = $$0.d();
+      ecf $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      io.a $$6 = new io.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
    }
 
-   public dzc a(dcc $$0) {
-      int $$1 = Math.max(this.h, $$0.J_());
-      int $$2 = Math.min(this.h + this.i, $$0.am()) - $$1;
-      return new dzc($$1, $$2, this.j, this.k);
-   }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-   public int c() {
-      return this.h;
-   }
-
-   public int d() {
-      return this.i;
-   }
-
-   public int e() {
-      return this.j;
-   }
-
-   public int f() {
-      return this.k;
-   }
+   protected abstract void a(dba var1, aym var2, io var3, int var4, io.a var5, ecf var6);
 }

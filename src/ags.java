@@ -1,44 +1,37 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class ags implements ze<age> {
+   public static final yv<vx, ags> a = ze.a(ags::a, ags::new);
+   private final int b;
+   private final int c;
 
-public record ags(String b, Instant c, long d, @Nullable xq e, xl.b f) implements zl<agl> {
-   public static final zc<we, ags> a = zl.a(ags::a, ags::new);
-
-   private ags(we $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xq::a), new xl.b($$0));
+   public ags(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, xq::a);
-      this.f.a($$0);
+   private ags(vx $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vx $$0) {
+      $$0.k(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zn<ags> a() {
-      return agj.bl;
+   public zg<ags> a() {
+      return agc.br;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   @Nullable
-   public xq g() {
-      return this.e;
-   }
-
-   public xl.b h() {
-      return this.f;
    }
 }

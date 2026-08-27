@@ -1,34 +1,32 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bgz extends bff {
+public class bgz extends bez {
+   private static final double a = 16.0;
+   private static final double b = 48.0;
+
    public bgz(Schema $$0) {
-      super($$0, false, "TippedArrowPotionToItemFix", bgf.z, "minecraft:arrow");
+      super($$0, false, "Villager Follow Range Fix", bga.z, "minecraft:villager");
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
-      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
-         ? $$0
-         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
-            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
-            if ($$1.isPresent()) {
-               $$4 = $$4.set("Potion", $$1.get());
-            }
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bgz::a);
+   }
 
-            if ($$2.isPresent()) {
-               $$4 = $$4.set("custom_potion_effects", $$2.get());
-            }
-
-            if ($$3.isPresent()) {
-               $$4 = $$4.set("CustomPotionColor", $$3.get());
-            }
-
-            return $$3x.set("tag", $$4);
-         });
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
+      );
    }
 }

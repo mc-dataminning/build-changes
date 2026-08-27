@@ -1,45 +1,80 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class chr {
-   private static final Logger a = LogUtils.getLogger();
-   private final cha b;
-   private final chk[] c = new chk[chq.c()];
+public class chr extends che {
+   private boolean b;
    @Nullable
-   private chk d;
+   private enk c;
+   @Nullable
+   private eum d;
 
-   public chr(cha $$0) {
-      this.b = $$0;
-      this.a(chq.k);
+   public chr(chc $$0) {
+      super($$0);
    }
 
-   public void a(chq<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
+   @Override
+   public void c() {
+      if (!this.b && this.c != null) {
+         io $$0 = this.a.dP().a(dwv.a.f, dzy.a(this.a.s()));
+         if (!$$0.a(this.a.dn(), 10.0)) {
+            this.a.gm().a(chs.a);
          }
-
-         this.d = this.b((chq<chk>)$$0);
-         if (!this.b.dU().C) {
-            this.b.ap().a(cha.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dU().C ? "client" : "server");
-         this.d.d();
+      } else {
+         this.b = false;
+         this.j();
       }
    }
 
-   public chk a() {
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void j() {
+      int $$0 = this.a.y();
+      eum $$1 = this.a.F(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.gn() != null && this.a.gn().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
+   }
+
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            js $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new eum((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public eum g() {
       return this.d;
    }
 
-   public <T extends chk> T b(chq<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public chs<chr> i() {
+      return chs.e;
    }
 }

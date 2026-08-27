@@ -1,38 +1,23 @@
-public class gms extends gkp<cmv> {
-   private static final akt a = new akt("textures/entity/shulker/spark.png");
-   private static final gfo b = gfo.i(a);
-   private final fxk<cmv> g;
-
-   public gms(gkq.a $$0) {
-      super($$0);
-      this.g = new fxk<>($$0.a(fyr.bp));
+public class gms<T extends bsq> extends glj<T, fvl<T>> {
+   public gms(gjp<T, fvl<T>> $$0, gcg $$1) {
+      super($$0, $$1);
    }
 
-   protected int a(cmv $$0, ir $$1) {
-      return 15;
-   }
+   @Override
+   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ctq $$10 = $$3.eX();
+      $$0.a();
+      if ($$10.a(ctt.sk)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
 
-   public void a(cmv $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
-      $$3.a();
-      float $$6 = aym.j($$2, $$0.P, $$0.dK());
-      float $$7 = aym.i($$2, $$0.Q, $$0.dM());
-      float $$8 = (float)$$0.am + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(aym.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(aym.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(aym.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      fbg $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      fbg $$10 = $$4.getBuffer(b);
-      this.g.a($$3, $$10, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akt a(cmv $$0) {
-      return a;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

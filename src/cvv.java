@@ -1,47 +1,46 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public class cvv extends csc implements csw {
-   private final avn a;
+public record cvv(String e, ix<ctl> f, float g, Map<ix<crg>, String> h, wx i) {
+   public static final Codec<cvv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axn.y.fieldOf("asset_name").forGetter(cvv::a),
+               akk.a(lf.G).fieldOf("ingredient").forGetter(cvv::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cvv::c),
+               Codec.unboundedMap(crg.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cvv::d),
+               wz.a.fieldOf("description").forGetter(cvv::e)
+            )
+            .apply($$0, cvv::new)
+   );
+   public static final yv<wi, cvv> b = yv.a(
+      yt.k, cvv::a, yt.b(lf.G), cvv::b, yt.h, cvv::c, yt.a(Object2ObjectOpenHashMap::new, yt.b(lf.au), yt.k), cvv::d, wz.b, cvv::e, cvv::new
+   );
+   public static final Codec<ix<cvv>> c = akj.a(lf.aO, a);
+   public static final yv<wi, ix<cvv>> d = yt.a(lf.aO, b);
 
-   public cvv(dfc $$0, avn $$1, cuc.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public static cvv a(String $$0, ctl $$1, float $$2, wx $$3, Map<ix<crg>, String> $$4) {
+      return new cvv($$0, le.h.e($$1), $$2, $$4, $$3);
    }
 
-   @Override
-   public bqa a(cyf $$0) {
-      bqa $$1 = super.a($$0);
-      cly $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bpz $$3 = $$0.p();
-         $$2.a($$3, cuk.rV.v());
-      }
-
-      return $$1;
-   }
-
-   @Override
    public String a() {
-      return this.s();
+      return this.e;
    }
 
-   @Override
-   protected avn a(dtc $$0) {
-      return this.a;
+   public ix<ctl> b() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(@Nullable cly $$0, dca $$1, ir $$2, @Nullable ewq $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.C) {
-            $$1.a($$2, this.d().n(), 3);
-         }
+   public float c() {
+      return this.g;
+   }
 
-         $$1.a($$0, dxv.z, $$2);
-         $$1.a($$0, $$2, this.a, avq.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public Map<ix<crg>, String> d() {
+      return this.h;
+   }
+
+   public wx e() {
+      return this.i;
    }
 }

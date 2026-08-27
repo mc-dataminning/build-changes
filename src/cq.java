@@ -1,32 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
-public record cq(cu.d c, Optional<bs> d) implements bt {
-   public static final MapCodec<cq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axu.a(cu.d.d, "blocks_set_on_fire", cu.d.c).forGetter(cq::b), axu.a(bs.a, "entity_struck").forGetter(cq::c)).apply($$0, cq::new)
-   );
-
-   public static cq a(cu.d $$0) {
-      return new cq($$0, Optional.empty());
-   }
-
+public class cq extends df<cq.a> {
    @Override
-   public MapCodec<cq> a() {
-      return bu.a;
+   public Codec<cq.a> a() {
+      return cq.a.a;
    }
 
-   @Override
-   public boolean a(brv $$0, aqt $$1, @Nullable ewu $$2) {
-      return !($$0 instanceof bsn $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public void a(aqo $$0, bsp $$1, List<brw> $$2) {
+      List<eph> $$3 = $$2.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+      eph $$4 = br.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public cu.d b() {
-      return this.c;
-   }
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements df.a {
+      public static final Codec<cq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(cq.a::a),
+                  br.b.optionalFieldOf("lightning").forGetter(cq.a::b),
+                  br.b.optionalFieldOf("bystander").forGetter(cq.a::c)
+               )
+               .apply($$0, cq.a::new)
+      );
 
-   public Optional<bs> c() {
-      return this.d;
+      public static an<cq.a> a(Optional<br> $$0, Optional<br> $$1) {
+         return am.V.a(new cq.a(Optional.empty(), br.a($$0), br.a($$1)));
+      }
+
+      public boolean a(eph $$0, List<eph> $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
+      }
+
+      @Override
+      public void a(bd $$0) {
+         df.a.super.a($$0);
+         $$0.a(this.c, ".lightning");
+         $$0.a(this.d, ".bystander");
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<bc> b() {
+         return this.c;
+      }
+
+      public Optional<bc> c() {
+         return this.d;
+      }
    }
 }

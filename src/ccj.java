@@ -1,41 +1,36 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class ccj extends ccx<bso> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class ccj extends cct<cka> {
+   public static final int a = 24;
 
-   public ccj() {
-      this(200);
+   @Override
+   public Set<cbu<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cbu.B)));
    }
 
-   public ccj(int $$0) {
-      super($$0);
+   protected void a(aqn $$0, cka $$1) {
+      super.a($$0, $$1);
+      $$1.dS()
+         .c(cbu.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bsb.e)
+         .filter($$1x -> cda.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dS().a(cbu.B, $$1x), () -> $$1.dS().b(cbu.B));
    }
 
    @Override
-   protected void a(aqt $$0, bso $$1) {
-      a($$1);
+   protected int b() {
+      return 24;
    }
 
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.g);
-   }
-
-   public static void a(bso $$0) {
-      Optional<List<bso>> $$1 = $$0.dZ().c(cbr.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(bsb.ah));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bso $$0) {
-      $$0.dZ().a(cbr.F, true, 599L);
+   protected int c() {
+      return 24;
    }
 }

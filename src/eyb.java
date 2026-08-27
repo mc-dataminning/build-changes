@@ -1,136 +1,119 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 
-public class eyb {
-   private static final Map<String, eyb> a = Maps.newHashMap();
-   private static final Map<String, eyb> o = Maps.newHashMap();
-   public static final eyb b = b("dummy");
-   public static final eyb c = b("trigger");
-   public static final eyb d = b("deathCount");
-   public static final eyb e = b("playerKillCount");
-   public static final eyb f = b("totalKillCount");
-   public static final eyb g = a("health", true, eyb.a.b);
-   public static final eyb h = a("food", true, eyb.a.a);
-   public static final eyb i = a("air", true, eyb.a.a);
-   public static final eyb j = a("armor", true, eyb.a.a);
-   public static final eyb k = a("xp", true, eyb.a.a);
-   public static final eyb l = a("level", true, eyb.a.a);
-   public static final eyb[] m = new eyb[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final eyb[] n = new eyb[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final eyb.a r;
+public abstract class eyb {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   private static eyb a(String $$0, boolean $$1, eyb.a $$2) {
-      eyb $$3 = new eyb($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public List<String> a(String $$0) {
+      eyb.a $$1 = new eyb.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   private static eyb b(String $$0) {
-      return a($$0, false, eyb.a.a);
+   private List<String> a(String $$0, eyb.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
+
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
+            }
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!aza.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!aza.h($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = aza.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
+         }
+      }
+
+      String $$17 = $$0.substring($$4);
+      if (!aza.h($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
    }
 
-   protected eyb(String $$0) {
-      this($$0, false, eyb.a.a);
-   }
-
-   protected eyb(String $$0, boolean $$1, eyb.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
-   }
-
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
-
-   public static Optional<eyb> a(String $$0) {
-      eyb $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
+   private String a(String $$0, eyb.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : lh.x.b(akt.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akt.a($$0.substring($$2 + 1), '.')));
+         return $$0;
       }
    }
 
-   private static <T> Optional<eyb> a(avy<T> $$0, akt $$1) {
-      return $$0.b().b($$1).map($$0::b);
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
    }
 
-   public String d() {
-      return this.p;
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
    }
 
-   public boolean e() {
-      return this.q;
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
+      } else {
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
+      }
    }
 
-   public eyb.a f() {
-      return this.r;
-   }
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-   public static enum a implements azg {
-      a("integer"),
-      b("hearts");
-
-      private final String d;
-      public static final azg.a<eyb.a> c = azg.a(eyb.a::values);
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public static eyb.a a(String $$0) {
-         return c.a($$0, a);
-      }
+   static final class a {
+      int a;
+      int b;
    }
 }

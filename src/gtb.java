@@ -1,57 +1,51 @@
-import java.util.Collections;
-import java.util.List;
+import java.time.Duration;
+import java.time.Instant;
 import javax.annotation.Nullable;
 
-public class gtb implements gsz {
-   private final ggp a;
-   private final ggn b;
-   private final gqy c;
-   private final boolean d;
+public abstract class gtb {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   public gtb(ggp $$0, ggn $$1, gqy $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   @Override
-   public List<ggd> a(@Nullable dtc $$0, @Nullable iw $$1, ayt $$2) {
-      return Collections.emptyList();
+   public void a(gsv $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
 
-   @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
    public boolean b() {
-      return true;
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   @Override
    public boolean c() {
-      return this.d;
+      return this.c >= 10;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public void d() {
+      this.d = false;
    }
 
-   @Override
-   public gqy e() {
+   protected int e() {
       return this.c;
    }
 
-   @Override
-   public ggp f() {
-      return this.a;
-   }
+   public abstract void f();
 
-   @Override
-   public ggn g() {
-      return this.b;
-   }
+   public abstract void b(gsv var1);
 }

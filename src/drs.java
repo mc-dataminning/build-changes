@@ -1,127 +1,101 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class drs {
-   private static final Codec<xe[]> c = xg.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ad.a($$0, 4).map($$0x -> new xe[]{(xe)$$0x.get(0), (xe)$$0x.get(1), (xe)$$0x.get(2), (xe)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<drs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(drs::d),
-               csy.q.fieldOf("color").orElse(csy.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, drs::a)
+public record drs(String r, boolean s, boolean t, boolean u, drs.a v, dln w, avh x, avh y, avh z, avh A, avh B, avh C, avh D, avh E) {
+   private static final Map<String, drs> F = new Object2ObjectArrayMap();
+   public static final Codec<drs> a = Codec.stringResolver(drs::b, F::get);
+   public static final drs b = a(new drs("iron", false, false, false, drs.a.a, dln.g, avi.nm, avi.nn, avi.nu, avi.nv, avi.oI, avi.oJ, avi.zb, avi.zc));
+   public static final drs c = a(new drs("copper", true, true, false, drs.a.a, dln.aj, avi.fN, avi.fO, avi.fU, avi.fV, avi.oI, avi.oJ, avi.zb, avi.zc));
+   public static final drs d = a(new drs("gold", false, true, false, drs.a.a, dln.g, avi.nm, avi.nn, avi.nu, avi.nv, avi.oI, avi.oJ, avi.zb, avi.zc));
+   public static final drs e = a(new drs("stone", true, true, false, drs.a.b, dln.f, avi.nm, avi.nn, avi.nu, avi.nv, avi.zg, avi.zh, avi.zb, avi.zc));
+   public static final drs f = a(
+      new drs("polished_blackstone", true, true, false, drs.a.b, dln.f, avi.nm, avi.nn, avi.nu, avi.nv, avi.zg, avi.zh, avi.zb, avi.zc)
    );
-   public static final int b = 4;
-   private final xe[] d;
-   private final xe[] e;
-   private final csy f;
-   private final boolean g;
-   @Nullable
-   private axy[] h;
-   private boolean i;
+   public static final drs g = a(new drs("oak"));
+   public static final drs h = a(new drs("spruce"));
+   public static final drs i = a(new drs("birch"));
+   public static final drs j = a(new drs("acacia"));
+   public static final drs k = a(new drs("cherry", true, true, true, drs.a.a, dln.aU, avi.eE, avi.eF, avi.eG, avi.eH, avi.eK, avi.eL, avi.eI, avi.eJ));
+   public static final drs l = a(new drs("jungle"));
+   public static final drs m = a(new drs("dark_oak"));
+   public static final drs n = a(new drs("crimson", true, true, true, drs.a.a, dln.aT, avi.qL, avi.qM, avi.qN, avi.qO, avi.qR, avi.qS, avi.qP, avi.qQ));
+   public static final drs o = a(new drs("warped", true, true, true, drs.a.a, dln.aT, avi.qL, avi.qM, avi.qN, avi.qO, avi.qR, avi.qS, avi.qP, avi.qQ));
+   public static final drs p = a(new drs("mangrove"));
+   public static final drs q = a(new drs("bamboo", true, true, true, drs.a.a, dln.aS, avi.bo, avi.bp, avi.bq, avi.br, avi.bu, avi.bv, avi.bs, avi.bt));
 
-   public drs() {
-      this(c(), c(), csy.p, false);
+   public drs(String $$0) {
+      this($$0, true, true, true, drs.a.a, dln.b, avi.CR, avi.CS, avi.CT, avi.CU, avi.CX, avi.CY, avi.CV, avi.CW);
    }
 
-   public drs(xe[] $$0, xe[] $$1, csy $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private static drs a(drs $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   private static xe[] c() {
-      return new xe[]{xd.a, xd.a, xd.a, xd.a};
+   public static Stream<drs> a() {
+      return F.values().stream();
    }
 
-   private static drs a(xe[] $$0, Optional<xe[]> $$1, csy $$2, boolean $$3) {
-      return new drs($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public String b() {
+      return this.r;
    }
 
-   public boolean a() {
-      return this.g;
+   public boolean c() {
+      return this.s;
    }
 
-   public drs a(boolean $$0) {
-      return $$0 == this.g ? this : new drs(this.d, this.e, this.f, $$0);
+   public boolean d() {
+      return this.t;
    }
 
-   public csy b() {
-      return this.f;
+   public boolean e() {
+      return this.u;
    }
 
-   public drs a(csy $$0) {
-      return $$0 == this.b() ? this : new drs(this.d, this.e, $$0, this.g);
+   public drs.a f() {
+      return this.v;
    }
 
-   public xe a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public dln g() {
+      return this.w;
    }
 
-   public drs a(int $$0, xe $$1) {
-      return this.a($$0, $$1, $$1);
+   public avh h() {
+      return this.x;
    }
 
-   public drs a(int $$0, xe $$1, xe $$2) {
-      xe[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xe[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new drs($$3, $$4, this.f, this.g);
+   public avh i() {
+      return this.y;
    }
 
-   public boolean a(cly $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   public avh j() {
+      return this.z;
    }
 
-   public xe[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
+   public avh k() {
+      return this.A;
    }
 
-   public axy[] a(boolean $$0, Function<xe, axy> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new axy[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
-      }
-
-      return this.h;
+   public avh l() {
+      return this.B;
    }
 
-   private Optional<xe[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   public avh m() {
+      return this.C;
    }
 
-   public boolean b(cly $$0) {
-      for (xe $$1 : this.b($$0.aa())) {
-         yb $$2 = $$1.a();
-         xc $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == xc.a.c) {
-            return true;
-         }
-      }
+   public avh n() {
+      return this.D;
+   }
 
-      return false;
+   public avh o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

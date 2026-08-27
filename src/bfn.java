@@ -1,9 +1,9 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Optional;
 
 public class bfn extends DataFix {
    public bfn(Schema $$0, boolean $$1) {
@@ -12,23 +12,10 @@ public class bfn extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bgf.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
-            )
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bga.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<String> $$1 = $$0x.get("lang").asString().result();
+               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
+            })
       );
-   }
-
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
    }
 }

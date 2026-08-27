@@ -1,87 +1,159 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+public class dop extends dpn implements dpl {
+   private static final int d = 1;
+   private jg<ctq> e = jg.a(27, ctq.i);
+   private final dov f = new dov() {
+      @Override
+      protected void a(daz $$0, io $$1, drd $$2) {
+         dop.a($$0, $$1, $$2, avi.eQ);
+      }
 
-public class dop extends dds {
-   public static final MapCodec<dop> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csy.q.fieldOf("color").forGetter(dds::b), u()).apply($$0, dop::new));
-   public static final dtw b = djc.aE;
-   private static final Map<iw, exn> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         iw.c,
-         dfc.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         iw.d,
-         dfc.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         iw.e,
-         dfc.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         iw.f,
-         dfc.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
+      @Override
+      protected void b(daz $$0, io $$1, drd $$2) {
+         dop.a($$0, $$1, $$2, avi.eO);
+      }
 
-   @Override
-   public MapCodec<dop> a() {
-      return a;
+      @Override
+      protected void a(daz $$0, io $$1, drd $$2, int $$3, int $$4) {
+         dop.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cly $$0) {
+         if (!($$0.cb instanceof cpc)) {
+            return false;
+         } else {
+            bpp $$1 = ((cpc)$$0.cb).l();
+            return $$1 == dop.this || $$1 instanceof bpo && ((bpo)$$1).a(dop.this);
+         }
+      }
+   };
+   private final doq g = new doq();
+
+   protected dop(dok<?> $$0, io $$1, drd $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public dop(csy $$0, dtb.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, iw.c));
-   }
-
-   @Override
-   public String g() {
-      return this.q().a();
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+   public dop(io $$0, drd $$1) {
+      this(dok.b, $$0, $$1);
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c.get($$0.c(b));
+   protected wx k() {
+      return wx.c("container.chest");
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.n();
-      dcd $$2 = $$0.q();
-      ir $$3 = $$0.a();
-      iw[] $$4 = $$0.f();
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.e = jg.a(this.b(), ctq.i);
+      if (!this.a_($$0)) {
+         bpq.b($$0, this.e, $$1);
+      }
+   }
 
-      for (iw $$5 : $$4) {
-         if ($$5.o().d()) {
-            iw $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bpq.a($$0, this.e, $$1);
+      }
+   }
+
+   public static void a(daz $$0, io $$1, drd $$2, dop $$3) {
+      $$3.g.a();
+   }
+
+   static void a(daz $$0, io $$1, drd $$2, avh $$3) {
+      drv $$4 = $$2.c(dfd.d);
+      if ($$4 != drv.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == drv.c) {
+            it $$8 = dfd.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, avj.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void d_(cly $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   public void c(cly $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   protected jg<ctq> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jg<ctq> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(daf $$0, io $$1) {
+      drd $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         doi $$3 = $$0.c_($$1);
+         if ($$3 instanceof dop) {
+            return ((dop)$$3).f.a();
          }
       }
 
-      return null;
+      return 0;
+   }
+
+   public static void a(dop $$0, dop $$1) {
+      jg<ctq> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
    }
 
    @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected cov a(int $$0, clx $$1) {
+      return cpc.a($$0, $$1, this);
    }
 
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public void l() {
+      if (!this.p) {
+         this.f.c(this.i(), this.aA_(), this.n());
+      }
    }
 
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
+   protected void a(daz $$0, io $$1, drd $$2, int $$3, int $$4) {
+      dea $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

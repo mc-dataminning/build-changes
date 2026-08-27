@@ -1,49 +1,80 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
-
-public class il implements ib<StringArgumentType, il.a> {
-   public void a(il.a $$0, we $$1) {
-      $$1.a((Enum<?>)$$0.b);
-   }
-
-   public il.a a(we $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new il.a($$1);
-   }
-
-   public void a(il.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new IncompatibleClassChangeError();
-      });
-   }
-
-   public il.a a(StringArgumentType $$0) {
-      return new il.a($$0.getType());
-   }
-
-   public final class a implements ib.a<StringArgumentType> {
-      final StringType b;
-
-      public a(StringType $$1) {
-         this.b = $$1;
-      }
-
-      public StringArgumentType a(ed $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new IncompatibleClassChangeError();
-         };
+public enum il {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, it.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
       @Override
-      public ib<StringArgumentType, ?> a() {
-         return il.this;
+      public double a(double $$0, double $$1, double $$2, it.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
+
+      @Override
+      public it.a a(it.a $$0) {
+         return $$0;
+      }
+
+      @Override
+      public il a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, it.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, it.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public it.a a(it.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
+
+      @Override
+      public il a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, it.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, it.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public it.a a(it.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public il a() {
+         return b;
+      }
+   };
+
+   public static final it.a[] d = it.a.values();
+   public static final il[] e = values();
+
+   public abstract int a(int var1, int var2, int var3, it.a var4);
+
+   public abstract double a(double var1, double var3, double var5, it.a var7);
+
+   public abstract it.a a(it.a var1);
+
+   public abstract il a();
+
+   public static il a(it.a $$0, it.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

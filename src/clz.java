@@ -10,13 +10,13 @@ public enum clz {
    private final int h;
    private final int i;
    private final String j;
-   private final xe k;
+   private final wx k;
 
    private clz(int $$0, String $$1) {
       this.h = $$0;
       this.i = 1 << $$0;
       this.j = $$1;
-      this.k = xe.c("options.modelPart." + $$1);
+      this.k = wx.c("options.modelPart." + $$1);
    }
 
    public int a() {
@@ -31,7 +31,7 @@ public enum clz {
       return this.j;
    }
 
-   public xe d() {
+   public wx d() {
       return this.k;
    }
 }

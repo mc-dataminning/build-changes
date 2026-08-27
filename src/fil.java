@@ -1,306 +1,84 @@
-import java.time.Duration;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public abstract class fil implements fjq, fkj, fmc, fmh {
-   private static final double a = 0.5;
-   private static final double b = 3.0;
-   protected int g;
-   protected int h;
-   private int c;
-   private int d;
-   private xe e;
-   protected boolean i;
-   public boolean j = true;
-   public boolean k = true;
-   protected float l = 1.0F;
-   private int f;
-   private boolean m;
-   private final fkb n = new fkb();
-
-   public fil(int $$0, int $$1, int $$2, int $$3, xe $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.e = $$4;
-   }
-
-   @Override
-   public int v() {
-      return this.h;
-   }
-
-   @Override
-   public final void a(fia $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.i = $$0.a($$1, $$2) && $$1 >= this.C() && $$2 >= this.D() && $$1 < this.C() + this.g && $$2 < this.D() + this.h;
-         this.b($$0, $$1, $$2, $$3);
-         this.n.a(this.z(), this.aI_(), this.G());
-      }
-   }
-
-   public void a(@Nullable fjy $$0) {
-      this.n.a($$0);
-   }
-
+public class fil implements fij {
+   private static final akn g = new akn("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fil.a h;
+   private final wx i;
    @Nullable
-   public fjy w() {
-      return this.n.a();
-   }
+   private final wx j;
+   private fij.a k = fij.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public void a(Duration $$0) {
-      this.n.a($$0);
-   }
-
-   protected xs aK_() {
-      return a_(this.y());
-   }
-
-   public static xs a_(xe $$0) {
-      return xe.a("gui.narrate.button", $$0);
-   }
-
-   protected abstract void b(fia var1, int var2, int var3, float var4);
-
-   protected static void a(fia $$0, fhy $$1, xe $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static void a(fia $$0, fhy $$1, xe $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$1.a($$2);
-      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
-      int $$11 = $$6 - $$4;
-      if ($$9 > $$11) {
-         int $$12 = $$9 - $$11;
-         double $$13 = (double)ad.b() / 1000.0;
-         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
-         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
-         double $$16 = aym.d($$15, 0.0, (double)$$12);
-         $$0.c($$4, $$5, $$6, $$7);
-         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
-         $$0.f();
-      } else {
-         int $$17 = aym.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
-         $$0.a($$1, $$2, $$17, $$10, $$8);
-      }
-   }
-
-   protected void a(fia $$0, fhy $$1, int $$2, int $$3) {
-      int $$4 = this.C() + $$2;
-      int $$5 = this.C() + this.x() - $$2;
-      a($$0, $$1, this.y(), $$4, this.D(), $$5, this.D() + this.v(), $$3);
-   }
-
-   public void a(double $$0, double $$1) {
-   }
-
-   public void a_(double $$0, double $$1) {
-   }
-
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   public fil(fil.a $$0, wx $$1, @Nullable wx $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.j && this.k) {
-         if (this.j($$2)) {
-            boolean $$3 = this.d($$0, $$1);
-            if ($$3) {
-               this.a(fgj.Q().ak());
-               this.a($$0, $$1);
-               return true;
-            }
+   public fij.a a(ffn $$0, fik $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+      }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = ayf.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
          }
 
-         return false;
-      } else {
-         return false;
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
+
+      return this.k;
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.j($$2)) {
-         this.a_($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean j(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.j($$2)) {
-         this.b($$0, $$1, $$3, $$4);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean d(double $$0, double $$1) {
-      return this.j
-         && this.k
-         && $$0 >= (double)this.C()
-         && $$1 >= (double)this.D()
-         && $$0 < (double)(this.C() + this.x())
-         && $$1 < (double)(this.D() + this.v());
-   }
-
-   @Nullable
-   @Override
-   public fhx a(fmp $$0) {
-      if (!this.j || !this.k) {
-         return null;
-      } else {
-         return !this.aI_() ? fhx.a(this) : null;
-      }
-   }
-
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.C() && $$1 >= (double)this.D() && $$0 < (double)(this.C() + this.g) && $$1 < (double)(this.D() + this.h);
-   }
-
-   public void a(gvq $$0) {
-      $$0.a(guh.a(avo.AM, 1.0F));
-   }
-
-   @Override
-   public int x() {
-      return this.g;
-   }
-
-   public void k(int $$0) {
-      this.g = $$0;
-   }
-
-   public void l(int $$0) {
-      this.h = $$0;
+   public void c() {
+      this.k = fij.a.b;
    }
 
    public void a(float $$0) {
-      this.l = $$0;
+      this.n = $$0;
    }
 
-   public void b(xe $$0) {
-      this.e = $$0;
-   }
+   public static enum a {
+      a(new akn("toast/movement_keys")),
+      b(new akn("toast/mouse")),
+      c(new akn("toast/tree")),
+      d(new akn("toast/recipe_book")),
+      e(new akn("toast/wooden_planks")),
+      f(new akn("toast/social_interactions")),
+      g(new akn("toast/right_click"));
 
-   public xe y() {
-      return this.e;
-   }
+      private final akn h;
 
-   @Override
-   public boolean aI_() {
-      return this.m;
-   }
-
-   public boolean z() {
-      return this.i;
-   }
-
-   public boolean A() {
-      return this.z() || this.aI_();
-   }
-
-   @Override
-   public boolean B() {
-      return this.k && this.j;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public fmh.a t() {
-      if (this.aI_()) {
-         return fmh.a.c;
-      } else {
-         return this.i ? fmh.a.b : fmh.a.a;
+      private a(akn $$0) {
+         this.h = $$0;
       }
-   }
 
-   @Override
-   public final void b(fmj $$0) {
-      this.a($$0);
-      this.n.a($$0);
-   }
-
-   protected abstract void a(fmj var1);
-
-   protected void c(fmj $$0) {
-      $$0.a(fmi.a, this.aK_());
-      if (this.j) {
-         if (this.aI_()) {
-            $$0.a(fmi.d, xe.c("narration.button.usage.focused"));
-         } else {
-            $$0.a(fmi.d, xe.c("narration.button.usage.hovered"));
-         }
+      public void a(ffn $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
-   }
-
-   @Override
-   public int C() {
-      return this.c;
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public int D() {
-      return this.d;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.d = $$0;
-   }
-
-   public int E() {
-      return this.C() + this.x();
-   }
-
-   public int F() {
-      return this.D() + this.v();
-   }
-
-   @Override
-   public void a(Consumer<fil> $$0) {
-      $$0.accept(this);
-   }
-
-   public void b(int $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public fmt G() {
-      return fmc.super.G();
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1);
-      this.c($$2, $$3);
-   }
-
-   @Override
-   public int H() {
-      return this.f;
-   }
-
-   public void o(int $$0) {
-      this.f = $$0;
    }
 }

@@ -1,73 +1,95 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fbr {
-   public static List<fct> a(fbr.a... $$0) {
-      for (fbr.a $$1 : $$0) {
-         a($$1.j);
+public class fbr extends gty {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gtz b = new gtz(Duration.ofSeconds(5L));
+   private final List<fdb> c;
+   private final flz B;
+   private final fjr C = fjr.d();
+   private volatile wx D;
+   @Nullable
+   private fgp E;
+
+   public fbr(flz $$0, fdb... $$1) {
+      super(fdt.a);
+      this.B = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.D = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (fdb $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
+               }
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new fav(a));
+         $$3.start();
       }
-
-      List<fct> $$2 = Lists.newArrayList();
-
-      for (fbr.a $$3 : $$0) {
-         $$2.add(new fct($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fct::a));
-      return $$2;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   @Override
+   public void e() {
+      super.e();
+      if (this.E != null) {
+         b.a(this.m.aX(), this.E.y());
+      }
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void aN_() {
+      this.C.c().b();
+      this.E = new fgp(this.p, this.D);
+      this.C.a(this.E, $$0 -> $$0.e(30));
+      this.C.a(fga.a(ww.e, $$0 -> this.f()).a());
+      this.C.a($$1 -> {
+         ffy var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
+      fjl.a(this.C, this.G());
+   }
+
+   protected void f() {
+      for (fdb $$0 : this.c) {
+         $$0.b();
       }
 
-      return (int)((double)$$2 / 5.0);
+      this.m.a(this.B);
    }
 
-   private static long b() {
-      return ad.b();
-   }
-
-   public static List<fct> a() {
-      return a(fbr.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+   public void a(wx $$0) {
+      if (this.E != null) {
+         this.E.b($$0);
       }
+
+      this.D = $$0;
    }
 }

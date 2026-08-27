@@ -1,37 +1,37 @@
-public class ahe implements zl<agl> {
-   public static final zc<we, ahe> a = zl.a(ahe::a, ahe::new);
-   private final int b;
-   private final int c;
+public class ahe implements ze<age> {
+   public static final yv<vx, ahe> a = ze.a(ahe::a, ahe::new);
+   private final boolean b;
+   private final boolean c;
 
-   public ahe(int $$0, int $$1) {
+   public ahe(boolean $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private ahe(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
+   private ahe(vx $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   @Override
-   public zn<ahe> a() {
-      return agj.bx;
-   }
-
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Override
+   public zg<ahe> a() {
+      return agc.bG;
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
    }
 }

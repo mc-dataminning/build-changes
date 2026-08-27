@@ -1,97 +1,81 @@
-import java.util.Objects;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fqr extends fpu implements fqt<cql> {
-   private final cql x;
-   private final cps y = new cps() {
-      @Override
-      public void a(cpg $$0, int $$1, cuh $$2) {
-         fqr.this.K();
-      }
+public class fqr extends flz {
+   private static final wx a = wx.c("selectWorld.experiments");
+   private static final wx b = wx.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final fjn d = new fjn(this);
+   private final flz r;
+   private final ati s;
+   private final Consumer<ati> u;
+   private final Object2BooleanMap<atf> v = new Object2BooleanLinkedOpenHashMap();
 
-      @Override
-      public void a(cpg $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fqr.this.L();
+   public fqr(flz $$0, ati $$1, Consumer<ati> $$2) {
+      super(a);
+      this.r = $$0;
+      this.s = $$1;
+      this.u = $$2;
+
+      for (atf $$3 : $$1.c()) {
+         if ($$3.l() == atj.d) {
+            this.v.put($$3, $$1.f().contains($$3));
          }
       }
-   };
-
-   public fqr(cql $$0, clx $$1, xe $$2) {
-      this.x = $$0;
-   }
-
-   public cql J() {
-      return this.x;
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.x.a(this.y);
+      this.d.a(a, this.p);
+      fjr $$0 = this.d.c(fjr.d());
+      $$0.a(new fgu(b, this.p).d(310), $$0x -> $$0x.e(15));
+      fqv.a $$1 = fqv.a(310).a(2, true).b(4);
+      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      fjr $$2 = this.d.b(fjr.e().a(8));
+      $$2.a(fga.a(ww.d, $$0x -> this.m()).a());
+      $$2.a(fga.a(ww.e, $$0x -> this.d()).a());
+      this.d.a($$1x -> {
+         ffy var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   private static wx a(atf $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (wx)(gpb.a($$1) ? wx.c($$1) : $$0.b());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+   }
+
+   @Override
+   public wx i() {
+      return ww.a(super.i(), b);
    }
 
    @Override
    public void d() {
-      this.m.s.t();
-      super.d();
+      this.m.a(this.r);
    }
 
-   @Override
-   public void j() {
-      super.j();
-      this.x.b(this.y);
-   }
-
-   @Override
-   protected void B() {
-      if (this.m.s.gz()) {
-         this.c(fin.a(xd.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fin.a(xe.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.B();
-      }
-   }
-
-   @Override
-   protected void E() {
-      this.g(1);
-   }
-
-   @Override
-   protected void F() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.x.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.q.a(this.x.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void K() {
-      cuh $$0 = this.x.l();
-      this.a(Objects.requireNonNullElse(fpu.a.a($$0), fpu.d));
-   }
-
-   void L() {
-      this.a(this.x.m());
-   }
-
-   @Override
-   protected void I() {
-      this.m.s.t();
+   private void m() {
+      List<atf> $$0 = new ArrayList<>(this.s.f());
+      List<atf> $$1 = new ArrayList<>();
+      this.v.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.s.a($$0.stream().map(atf::g).toList());
+      this.u.accept(this.s);
    }
 }

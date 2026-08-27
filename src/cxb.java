@@ -1,52 +1,77 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cxb(Map<String, String> d) {
-   public static final cxb a = new cxb(Map.of());
-   public static final Codec<cxb> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cxb::new, cxb::b);
-   private static final zc<ByteBuf, Map<String, String>> e = za.a(Object2ObjectOpenHashMap::new, za.l, za.l);
-   public static final zc<ByteBuf, cxb> c = e.a(cxb::new, cxb::b);
+public class cxb extends cxd {
+   private final io b;
+   protected boolean a = true;
 
-   public <T extends Comparable<T>> cxb a(duf<T> $$0, T $$1) {
-      return new cxb(ad.a(this.d, $$0.f(), $$0.a($$1)));
+   public cxb(cly $$0, bpv $$1, ctq $$2, eui $$3) {
+      this($$0.dP(), $$0, $$1, $$2, $$3);
    }
 
-   public <T extends Comparable<T>> cxb a(duf<T> $$0, dtc $$1) {
-      return this.a($$0, $$1.c($$0));
+   public cxb(cxd $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T a(duf<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   protected cxb(daz $$0, @Nullable cly $$1, bpv $$2, ctq $$3, eui $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
    }
 
-   public dtc a(dtc $$0) {
-      dtd<dfc, dtc> $$1 = $$0.b().l();
+   public static cxb a(cxb $$0, io $$1, it $$2) {
+      return new cxb(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new eui(
+            new eum((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
+   }
 
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         duf<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
+   @Override
+   public io a() {
+      return this.a ? super.a() : this.b;
+   }
+
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public it d() {
+      return it.a(this.o())[0];
+   }
+
+   public it e() {
+      return it.a(this.o(), it.a.b);
+   }
+
+   public it[] f() {
+      it[] $$0 = it.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         it $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-
-      return $$0;
-   }
-
-   private static <T extends Comparable<T>> dtc a(dtc $$0, duf<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Map<String, String> b() {
-      return this.d;
    }
 }

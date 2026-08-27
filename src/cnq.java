@@ -1,65 +1,45 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class cnq {
-   public static final cnq a = a("core");
-   public static final cnq b = a("idle");
-   public static final cnq c = a("work");
-   public static final cnq d = a("play");
-   public static final cnq e = a("rest");
-   public static final cnq f = a("meet");
-   public static final cnq g = a("panic");
-   public static final cnq h = a("raid");
-   public static final cnq i = a("pre_raid");
-   public static final cnq j = a("hide");
-   public static final cnq k = a("fight");
-   public static final cnq l = a("celebrate");
-   public static final cnq m = a("admire_item");
-   public static final cnq n = a("avoid");
-   public static final cnq o = a("ride");
-   public static final cnq p = a("play_dead");
-   public static final cnq q = a("long_jump");
-   public static final cnq r = a("ram");
-   public static final cnq s = a("tongue");
-   public static final cnq t = a("swim");
-   public static final cnq u = a("lay_spawn");
-   public static final cnq v = a("sniff");
-   public static final cnq w = a("investigate");
-   public static final cnq x = a("roar");
-   public static final cnq y = a("emerge");
-   public static final cnq z = a("dig");
-   private final String A;
-   private final int B;
+   private final cnp a;
+   private final List<cnq.a> b = Lists.newArrayList();
 
-   private cnq(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+   public cnq(cnp $$0) {
+      this.a = $$0;
    }
 
-   public String a() {
-      return this.A;
+   public cnq a(int $$0, cnn $$1) {
+      this.b.add(new cnq.a($$0, $$1));
+      return this;
    }
 
-   private static cnq a(String $$0) {
-      return jn.a(lh.E, $$0, new cnq($$0));
+   public cnp a() {
+      this.b.stream().map(cnq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cnn $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cnq $$1 = (cnq)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   static class a {
+      private final int a;
+      private final cnn b;
+
+      public a(int $$0, cnn $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.B;
-   }
+      public int a() {
+         return this.a;
+      }
 
-   @Override
-   public String toString() {
-      return this.a();
+      public cnn b() {
+         return this.b;
+      }
    }
 }

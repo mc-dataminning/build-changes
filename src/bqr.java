@@ -1,28 +1,51 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum bqr implements azg {
-   a("hurt", avo.uG),
-   b("thorns", avo.zS),
-   c("drowning", avo.uH),
-   d("burning", avo.uJ),
-   e("poking", avo.uK),
-   f("freezing", avo.uI);
+public record bqr(String b, bqo c, float d, bqn e, bqt f) {
+   public static final Codec<bqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bqr::a),
+               bqo.d.fieldOf("scaling").forGetter(bqr::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bqr::c),
+               bqn.g.optionalFieldOf("effects", bqn.a).forGetter(bqr::d),
+               bqt.d.optionalFieldOf("death_message_type", bqt.a).forGetter(bqr::e)
+            )
+            .apply($$0, bqr::new)
+   );
 
-   public static final Codec<bqr> g = azg.a(bqr::values);
-   private final String h;
-   private final avn i;
-
-   private bqr(String $$0, avn $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public bqr(String $$0, bqo $$1, float $$2) {
+      this($$0, $$1, $$2, bqn.a, bqt.a);
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public bqr(String $$0, bqo $$1, float $$2, bqn $$3) {
+      this($$0, $$1, $$2, $$3, bqt.a);
    }
 
-   public avn a() {
-      return this.i;
+   public bqr(String $$0, float $$1, bqn $$2) {
+      this($$0, bqo.b, $$1, $$2);
+   }
+
+   public bqr(String $$0, float $$1) {
+      this($$0, bqo.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public bqo b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bqn d() {
+      return this.e;
+   }
+
+   public bqt e() {
+      return this.f;
    }
 }

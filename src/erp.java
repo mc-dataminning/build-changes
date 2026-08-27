@@ -1,142 +1,97 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class erp {
-   private final ers a;
-   private final ayt b;
-   private final jb.a c;
-   private final Set<erp.c<?>> d = Sets.newLinkedHashSet();
+public class erp extends eqs {
+   private static final Codec<List<erp.b>> b = erp.b.a.listOf().validate($$0 -> {
+      Set<ix<brc>> $$1 = new ObjectOpenHashSet();
 
-   erp(ers $$0, ayt $$1, jb.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(eud<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(eud<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(akt $$0, Consumer<cuh> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Nullable
-   public <T> T c(eud<T> $$0) {
-      return this.a.d($$0);
-   }
-
-   public boolean a(erp.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(erp.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(erp.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public jb.a a() {
-      return this.c;
-   }
-
-   public ayt b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public aqt d() {
-      return this.a.a();
-   }
-
-   public static erp.c<eru> a(eru $$0) {
-      return new erp.c<>(err.c, $$0);
-   }
-
-   public static erp.c<euu> a(euu $$0) {
-      return new erp.c<>(err.a, $$0);
-   }
-
-   public static erp.c<etb> a(etb $$0) {
-      return new erp.c<>(err.b, $$0);
-   }
-
-   public static class a {
-      private final ers a;
-      @Nullable
-      private ayt b;
-
-      public a(ers $$0) {
-         this.a = $$0;
+      for (erp.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
+         }
       }
 
-      public erp.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = ayt.a($$0);
+      return DataResult.success($$0);
+   });
+   public static final MapCodec<erp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, erp::new)
+   );
+   private final List<erp.b> c;
+
+   erp(List<esn> $$0, List<erp.b> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   @Override
+   public equ b() {
+      return eqv.q;
+   }
+
+   @Override
+   public Set<erw<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      if ($$0.a(ctt.vU) && !this.c.isEmpty()) {
+         erp.b $$2 = ac.a(this.c, $$1.b());
+         ix<brc> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
          }
 
+         cwu.a $$5 = new cwu.a($$3, $$4);
+         $$0.a(kb.G, cwu.a, $$5, cwu::a);
+         return $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public static erp.a c() {
+      return new erp.a();
+   }
+
+   public static class a extends eqs.a<erp.a> {
+      private final Builder<erp.b> a = ImmutableList.builder();
+
+      protected erp.a a() {
          return this;
       }
 
-      public aqt a() {
-         return this.a.a();
-      }
-
-      public erp a(Optional<akt> $$0) {
-         aqt $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         ayt $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::F_);
-         return new erp(this.a, $$3, $$2.be().b());
-      }
-   }
-
-   public static enum b implements azg {
-      a("this", eug.a),
-      b("killer", eug.d),
-      c("direct_killer", eug.e),
-      d("killer_player", eug.b);
-
-      public static final azg.a<erp.b> e = azg.a(erp.b::values);
-      private final String f;
-      private final eud<? extends brv> g;
-
-      private b(String $$0, eud<? extends brv> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public eud<? extends brv> a() {
-         return this.g;
-      }
-
-      public static erp.b a(String $$0) {
-         erp.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
+      public erp.a a(ix<brc> $$0, eti $$1) {
+         this.a.add(new erp.b($$0, $$1));
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public eqt b() {
+         return new erp(this.g(), this.a.build());
       }
    }
 
-   public static record c<T>(err<T> a, T b) {
+   static record b(ix<brc> b, eti c) {
+      public static final Codec<erp.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(le.d.r().fieldOf("type").forGetter(erp.b::a), etj.a.fieldOf("duration").forGetter(erp.b::b)).apply($$0, erp.b::new)
+      );
+
+      public ix<brc> a() {
+         return this.b;
+      }
+
+      public eti b() {
+         return this.c;
+      }
    }
 }

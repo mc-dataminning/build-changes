@@ -1,208 +1,48 @@
-import java.io.BufferedOutputStream;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UTFDataFormatException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
+public interface ux {
+   ux.b a();
 
-public class ux {
-   private static final OpenOption[] a = new OpenOption[]{
-      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
-   };
+   ux.b a(String var1);
 
-   public static uk a(Path $$0, ut $$1) throws IOException {
-      uk var4;
-      try (
-         InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new axv($$2);
-      ) {
-         var4 = a($$3, $$1);
-      }
+   ux.b a(byte var1);
 
-      return var4;
+   ux.b a(short var1);
+
+   ux.b a(int var1);
+
+   ux.b a(long var1);
+
+   ux.b a(float var1);
+
+   ux.b a(double var1);
+
+   ux.b a(byte[] var1);
+
+   ux.b a(int[] var1);
+
+   ux.b a(long[] var1);
+
+   ux.b a(vc<?> var1, int var2);
+
+   ux.a a(vc<?> var1);
+
+   ux.a a(vc<?> var1, String var2);
+
+   ux.a b(vc<?> var1, int var2);
+
+   ux.b b();
+
+   ux.b b(vc<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new axv(new GZIPInputStream($$0)));
-   }
-
-   private static DataOutputStream a(OutputStream $$0) throws IOException {
-      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
-   }
-
-   public static uk a(InputStream $$0, ut $$1) throws IOException {
-      uk var3;
-      try (DataInputStream $$2 = a($$0)) {
-         var3 = a((DataInput)$$2, $$1);
-      }
-
-      return var3;
-   }
-
-   public static void a(Path $$0, ve $$1, ut $$2) throws IOException {
-      try (
-         InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new axv($$3);
-      ) {
-         a($$4, $$1, $$2);
-      }
-   }
-
-   public static void a(InputStream $$0, ve $$1, ut $$2) throws IOException {
-      try (DataInputStream $$3 = a($$0)) {
-         a((DataInput)$$3, $$1, $$2);
-      }
-   }
-
-   public static void a(uk $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-      ) {
-         a($$0, $$3);
-      }
-   }
-
-   public static void a(uk $$0, OutputStream $$1) throws IOException {
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-   }
-
-   public static void b(uk $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-         DataOutputStream $$4 = new DataOutputStream($$3);
-      ) {
-         a($$0, (DataOutput)$$4);
-      }
-   }
-
-   @Nullable
-   public static uk a(Path $$0) throws IOException {
-      if (!Files.exists($$0)) {
-         return null;
-      } else {
-         uk var3;
-         try (
-            InputStream $$1 = Files.newInputStream($$0);
-            DataInputStream $$2 = new DataInputStream($$1);
-         ) {
-            var3 = a((DataInput)$$2, ut.a());
-         }
-
-         return var3;
-      }
-   }
-
-   public static uk a(DataInput $$0) throws IOException {
-      return a($$0, ut.a());
-   }
-
-   public static uk a(DataInput $$0, ut $$1) throws IOException {
-      vh $$2 = c($$0, $$1);
-      if ($$2 instanceof uk) {
-         return (uk)$$2;
-      } else {
-         throw new IOException("Root tag must be a named compound tag");
-      }
-   }
-
-   public static void a(uk $$0, DataOutput $$1) throws IOException {
-      c($$0, $$1);
-   }
-
-   public static void a(DataInput $$0, ve $$1, ut $$2) throws IOException {
-      vj<?> $$3 = vk.a($$0.readByte());
-      if ($$3 == um.a) {
-         if ($$1.b(um.a) == ve.b.a) {
-            $$1.a();
-         }
-      } else {
-         switch ($$1.b($$3)) {
-            case c:
-            default:
-               break;
-            case b:
-               vf.a($$0);
-               $$3.b($$0, $$2);
-               break;
-            case a:
-               vf.a($$0);
-               $$3.a($$0, $$1, $$2);
-         }
-      }
-   }
-
-   public static vh b(DataInput $$0, ut $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      return (vh)($$2 == 0 ? um.b : a($$0, $$1, $$2));
-   }
-
-   public static void a(vh $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$0.a($$1);
-      }
-   }
-
-   public static void b(vh $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$1.writeUTF("");
-         $$0.a($$1);
-      }
-   }
-
-   public static void c(vh $$0, DataOutput $$1) throws IOException {
-      b($$0, new ux.a($$1));
-   }
-
-   private static vh c(DataInput $$0, ut $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      if ($$2 == 0) {
-         return um.b;
-      } else {
-         vf.a($$0);
-         return a($$0, $$1, $$2);
-      }
-   }
-
-   private static vh a(DataInput $$0, ut $$1, byte $$2) {
-      try {
-         return vk.a($$2).c($$0, $$1);
-      } catch (IOException var6) {
-         o $$4 = o.a(var6, "Loading NBT data");
-         p $$5 = $$4.a("NBT Tag");
-         $$5.a("Tag type", $$2);
-         throw new vb($$4);
-      }
-   }
-
-   public static class a extends axq {
-      public a(DataOutput $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void writeUTF(String $$0) throws IOException {
-         try {
-            super.writeUTF($$0);
-         } catch (UTFDataFormatException var3) {
-            ad.a("Failed to write NBT String", var3);
-            super.writeUTF("");
-         }
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

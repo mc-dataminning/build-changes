@@ -1,66 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public record aye<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<aye<Integer>> a = a(Codec.INT);
-
-   public aye(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+public record aye(aye.a a, String b) {
+   public static aye a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new aye(aye.a.c, $$2 + " brand changed to '" + $$4 + "'");
       } else {
-         this.b = b;
-         this.c = c;
+         return $$3.getSigners() == null
+            ? new aye(aye.a.b, $$2 + " jar signature invalidated")
+            : new aye(aye.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   public aye(T $$0) {
-      this($$0, $$0);
+   public boolean a() {
+      return this.a.e;
    }
 
-   public static <T extends Comparable<T>> Codec<aye<T>> a(Codec<T> $$0) {
-      return axu.a($$0, "min_inclusive", "max_inclusive", aye::a, aye::a, aye::b);
+   public aye a(aye $$0) {
+      return new aye((aye.a)ObjectUtils.max(new aye.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   public static <T extends Comparable<T>> Codec<aye<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return axu.b(
-         a($$0),
-         (Function<aye<T>, DataResult<aye<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
+   public String b() {
+      return this.a.d + " " + this.b;
    }
 
-   public static <T extends Comparable<T>> DataResult<aye<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new aye($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   public aye.a c() {
+      return this.a;
    }
 
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(aye<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
+   public String d() {
       return this.b;
    }
 
-   public T b() {
-      return this.c;
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

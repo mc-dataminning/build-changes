@@ -1,71 +1,71 @@
 import javax.annotation.Nullable;
 
-public class cjv extends cik {
-   public cjv(bsb<? extends cjv> $$0, dca $$1) {
+public class cjv extends cim {
+   public cjv(bsc<? extends cjv> $$0, daz $$1) {
       super($$0, $$1);
-      this.a(epv.i, 8.0F);
+      this.a(enn.i, 8.0F);
    }
 
    @Override
-   protected void y() {
-      this.cc.a(3, new cbe<>(this, ckn.class, true));
-      super.y();
+   protected void z() {
+      this.bT.a(3, new cbh<>(this, ckn.class, true));
+      super.z();
    }
 
    @Override
-   protected avn u() {
-      return avo.CX;
+   protected avh v() {
+      return avi.Cz;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.CZ;
+   protected avh d(bqp $$0) {
+      return avi.CB;
    }
 
    @Override
-   protected avn n_() {
-      return avo.CY;
+   protected avh o_() {
+      return avi.CA;
    }
 
    @Override
-   avn t() {
-      return avo.Da;
+   avh u() {
+      return avi.CC;
    }
 
    @Override
-   protected void a(bqt $$0, int $$1, boolean $$2) {
+   protected void a(bqp $$0, int $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cio $$4 && $$4.gz()) {
-         $$4.gA();
-         this.a((dbz)cuk.vX);
+      if ($$0.d() instanceof ciq $$4 && $$4.gq()) {
+         $$4.gr();
+         this.a((day)ctt.um);
       }
    }
 
    @Override
-   protected void a(ayt $$0, bpy $$1) {
-      this.a(bsc.a, new cuh(cuk.qj));
+   protected void a(aym $$0, bpu $$1) {
+      this.a(bsd.a, new ctq(ctt.oQ));
    }
 
    @Override
-   protected void b(ayt $$0, bpy $$1) {
+   protected void b(aym $$0, bpu $$1) {
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
-      btg $$4 = super.a($$0, $$1, $$2, $$3);
-      this.f(btv.c).a(4.0);
-      this.x();
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
+      btj $$4 = super.a($$0, $$1, $$2, $$3);
+      this.f(bty.c).a(4.0);
+      this.y();
       return $$4;
    }
 
    @Override
-   public boolean C(brv $$0) {
+   public boolean C(brw $$0) {
       if (!super.C($$0)) {
          return false;
       } else {
-         if ($$0 instanceof bso) {
-            ((bso)$$0).b(new brh(brj.t, 200), this);
+         if ($$0 instanceof bsq) {
+            ((bsq)$$0).b(new bre(brg.t, 200), this);
          }
 
          return true;
@@ -73,14 +73,14 @@ public class cjv extends cik {
    }
 
    @Override
-   protected cme b(cuh $$0, float $$1) {
+   protected cme b(ctq $$0, float $$1) {
       cme $$2 = super.b($$0, $$1);
       $$2.g(100);
       return $$2;
    }
 
    @Override
-   public boolean c(brh $$0) {
-      return $$0.a(brj.t) ? false : super.c($$0);
+   public boolean c(bre $$0) {
+      return $$0.a(brg.t) ? false : super.c($$0);
    }
 }

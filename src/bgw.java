@@ -1,36 +1,42 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class bgw extends DataFix {
+public class bgw extends bfa {
    public bgw(Schema $$0) {
-      super($$0, false);
+      super($$0, true, "Trial Spawner config tag fixer", bga.s, "minecraft:trial_spawner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.K);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ad.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bgw::a)))
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
       );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bgw::a))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

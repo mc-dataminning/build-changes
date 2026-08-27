@@ -1,27 +1,41 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fck extends fcy {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-
-   public static fck a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fck $$2 = new fck();
-
-      try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fev.b("address", $$3, null);
-         $$2.b = fev.b("resourcePackUrl", $$3, null);
-         $$2.c = fev.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+public interface fck {
+   fck a = new fck() {
+      @Override
+      public long a() {
+         return 1L;
       }
 
-      return $$2;
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fck a(final int $$0) {
+      return new fck() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

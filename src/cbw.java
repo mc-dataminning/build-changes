@@ -1,41 +1,60 @@
-public class cbw extends cbz {
-   public cbw(bsq $$0, dca $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+public class cbw {
+   private static final cbw a = new cbw();
+   private final List<bsq> b;
+   private final Predicate<bsq> c;
+
+   private cbw() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   protected epu a(int $$0) {
-      this.o = new epn(false);
-      this.o.a(true);
-      return new epu(this.o, $$0);
+   public cbw(bsq $$0, List<bsq> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bsq> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bsq> $$3 = $$1x -> cda.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   public static cbw a() {
+      return a;
    }
 
-   @Override
-   protected ewu b() {
-      return new ewu(this.a.dz(), this.a.e(0.5), this.a.dF());
+   public Optional<bsq> a(Predicate<bsq> $$0) {
+      for (bsq $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   protected double a(ewu $$0) {
-      return $$0.d;
+   public Iterable<bsq> b(Predicate<bsq> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   @Override
-   protected boolean a(ewu $$0, ewu $$1) {
-      return this.a.bm() ? a(this.a, $$0, $$1, false) : false;
+   public Stream<bsq> c(Predicate<bsq> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   @Override
-   public boolean a(ir $$0) {
-      return !this.b.a_($$0.d()).i();
+   public boolean a(bsq $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
    }
 
-   @Override
-   public void a(boolean $$0) {
+   public boolean d(Predicate<bsq> $$0) {
+      for (bsq $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

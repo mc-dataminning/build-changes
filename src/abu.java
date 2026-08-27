@@ -1,28 +1,16 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public record abu(akt b, @Nullable byte[] c) implements zl<abt> {
-   public static final zc<we, abu> a = zl.a(abu::a, abu::new);
-
-   private abu(we $$0) {
-      this($$0.q(), $$0.c(zy.b));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, zy.b);
-   }
+public record abu(Object2IntMap<avp<?>> b) implements ze<abq> {
+   private static final yv<wi, Object2IntMap<avp<?>>> c = yt.a(Object2IntOpenHashMap::new, avp.a, yt.f);
+   public static final yv<wi, abu> a = c.a(abu::new, abu::b);
 
    @Override
-   public zn<abu> a() {
-      return abs.b;
+   public zg<abu> a() {
+      return agc.f;
    }
 
-   public void a(abt $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
    }
 }

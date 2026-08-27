@@ -1,93 +1,153 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fbd extends fbb {
-   private final fbg f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class fbd extends fga {
+   private static final akn u = new akn("widget/slot_frame");
+   private static final akn v = new akn("icon/checkmark");
+   public static final akn a = new akn("textures/gui/realms/empty_frame.png");
+   public static final akn b = new akn("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final akn c = new akn("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final akn d = new akn("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final wx w = wx.c("mco.configure.world.slot.tooltip.active");
+   private static final wx x = wx.c("mco.configure.world.slot.tooltip.minigame");
+   private static final wx y = wx.c("mco.configure.world.slot.tooltip");
+   static final wx z = wx.c("mco.worldSlot.minigame");
+   private final int A;
+   @Nullable
+   private fbd.b B;
 
-   public fbd(fbg $$0, fbc.a $$1, float $$2) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1.a()).invert();
-      this.h = new Matrix3f($$1.b()).invert();
-      this.i = $$2;
-      this.a();
+   public fbd(int $$0, int $$1, int $$2, int $$3, int $$4, fga.c $$5) {
+      super($$0, $$1, $$2, $$3, ww.a, $$5, q);
+      this.A = $$4;
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   @Nullable
+   public fbd.b a() {
+      return this.B;
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      iw $$1 = iw.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public void a(fab $$0) {
+      this.B = new fbd.b($$0, this.A);
+      this.a(this.B, $$0.o);
    }
 
-   @Override
-   public fbg a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   private void a(fbd.b $$0, @Nullable String $$1) {
+      wx $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fhl.a($$2));
+      }
+
+      xl $$3 = wx.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(ww.v).f($$1);
+      }
+
+      this.b($$3);
+   }
+
+   static fbd.a a(fab $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fab.c.c) {
+         return fbd.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? fbd.a.a : fbd.a.b;
+      }
    }
 
    @Override
-   public fbg a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   public void b(ffn $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.C();
+         int $$5 = this.D();
+         boolean $$6 = this.A();
+         akn $$7;
+         if (this.B.b) {
+            $$7 = fcq.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fcq.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         if (this.B.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.B.c != fbd.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.B.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(u, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.B.d) {
+            RenderSystem.enableBlend();
+            $$0.a(v, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         ffl $$15 = feb.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, ezf.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
    }
 
-   @Override
-   public fbg a(float $$0, float $$1) {
-      return this;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public fbg a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final fab.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final fbd.a c;
 
-   @Override
-   public fbg b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
+      public b(fab $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == fab.d.b;
+            this.e = fbd.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = fab.a.a;
+         } else {
+            fai $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != fab.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
 
-   @Override
-   public fbg a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+         this.c = fbd.a($$0, this.d, this.b);
+      }
    }
 }

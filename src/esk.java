@@ -1,60 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Set;
 
-public class esk extends esh {
-   public static final Codec<esk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awt.a(li.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, esk::new)
-   );
-   private final awt<cuc> j;
-   private final boolean k;
+public record esk(esn b) implements esn {
+   public static final MapCodec<esk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(esp.a.fieldOf("term").forGetter(esk::c)).apply($$0, esk::new));
 
-   private esk(awt<cuc> $$0, boolean $$1, int $$2, int $$3, List<euu> $$4, List<etb> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   @Override
+   public eso b() {
+      return esp.c;
+   }
+
+   public boolean a(eph $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public esg a() {
-      return esd.f;
+   public Set<erw<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public void a(Consumer<cuh> $$0, erp $$1) {
-      lh.h.c(this.j).forEach($$1x -> $$0.accept(new cuh($$1x)));
+   public void a(epn $$0) {
+      esn.super.a($$0);
+      this.b.a($$0);
    }
 
-   private boolean a(erp $$0, Consumer<ese> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ja<cuc> $$2 : lh.h.c(this.j)) {
-            $$1.accept(new esh.c() {
-               @Override
-               public void a(Consumer<cuh> $$0, erp $$1) {
-                  $$0.accept(new cuh($$2));
-               }
-            });
-         }
-
-         return true;
-      }
+   public static esn.a a(esn.a $$0) {
+      esk $$1 = new esk($$0.build());
+      return () -> $$1;
    }
 
-   @Override
-   public boolean expand(erp $$0, Consumer<ese> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
-
-   public static esh.a<?> a(awt<cuc> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esk($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static esh.a<?> b(awt<cuc> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esk($$0, true, $$1, $$2, $$3, $$4));
+   public esn c() {
+      return this.b;
    }
 }

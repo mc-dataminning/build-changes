@@ -1,21 +1,58 @@
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
 public class ow {
-   public static CompletableFuture<jq.g> a(CompletableFuture<jc.a> $$0, jq $$1) {
-      return $$0.thenApply($$1x -> {
-         jo.b $$2 = jo.a(lh.aw);
-         is.a $$3 = new is.a();
-         ako.a.forEach($$1xx -> $$1xx.a($$3::a));
-         jq.g $$4 = $$1.a($$2, $$1x, $$3);
-         jc.a $$5 = $$4.a();
-         Optional<jc.b<dcz>> $$6 = $$5.a(li.az);
-         Optional<jc.b<eix>> $$7 = $$5.a(li.aI);
-         if ($$6.isPresent() || $$7.isPresent()) {
-            oy.a($$7.orElseGet(() -> $$1x.b(li.aI)), $$6.orElseGet(() -> $$1x.b(li.az)));
-         }
+   private static final jn a = new jn()
+      .a(lf.aE, qr::a)
+      .a(lf.aB, qp::a)
+      .a(lf.aC, rt::a)
+      .a(lf.aI, si::a)
+      .a(lf.aJ, ra::a)
+      .a(lf.aL, qz::a)
+      .a(lf.aK, qw::a)
+      .a(lf.aM, qv::a)
+      .a(lf.az, rl::a)
+      .a(lf.aR, dcn::a)
+      .a(lf.aH, qs::a)
+      .a(lf.aD, dxc::a)
+      .a(lf.aG, dxa::a)
+      .a(lf.aQ, ehb::a)
+      .a(lf.aF, efn::a)
+      .a(lf.aA, wt::a)
+      .a(lf.aP, cvy::a)
+      .a(lf.aO, cvw::a)
+      .a(lf.m, cfl::a)
+      .a(lf.s, bqs::a)
+      .a(lf.d, doa::a);
 
-         return $$4;
+   private static void a(iz.a $$0) {
+      a($$0.b(lf.aI), $$0.b(lf.az));
+   }
+
+   public static void a(iy<egp> $$0, iz<dby> $$1) {
+      $$1.b().forEach($$1x -> {
+         akn $$2 = $$1x.h().a();
+         List<jb<egp>> $$3 = ((dby)$$1x.a()).d().b();
+         $$3.stream().flatMap(jb::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
+               ix.c<egp> $$3xx = $$0.b($$2xx);
+               if (!a($$3xx.a())) {
+                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
+               }
+            }).ifRight($$1xxx -> {
+               if (!a($$1xxx)) {
+                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
+               }
+            }));
       });
+   }
+
+   private static boolean a(egp $$0) {
+      return $$0.c().contains(egd.a());
+   }
+
+   public static iz.a a() {
+      jl.b $$0 = jl.a(le.aw);
+      iz.a $$1 = a.a($$0);
+      a($$1);
+      return $$1;
    }
 }

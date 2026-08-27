@@ -1,80 +1,46 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aqt, ecb.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aqt, ecb.b>() {
-         public ecb.b a(aqt $$0) {
-            return new ecb.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
+public class ecb implements ecd {
+   public static final Codec<ecb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bpb.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bpb.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bpb.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               boz.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               boz.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, ecb::new)
+   );
+   public final int b;
+   public final bpb c;
+   public final bpb d;
+   public final int e;
+   public final int f;
+   public final bpb g;
+   public final boz h;
+   public final boz i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public static void a(aqt $$0) {
-      try {
-         ((ecb.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
-   }
-
-   public static void a(aqt $$0, ebm<?, ?> $$1, Optional<eix> $$2) {
-      try {
-         ((ecb.b)b.get($$0)).a().computeInt(new ecb.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
-
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.af().a().toString();
-               boolean $$3 = $$0.o().x();
-               jn<eix> $$4 = $$0.I_().d(li.aI);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<akt>map(aks::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
-   }
-
-   static record a(ebm<?, ?> a, Optional<eix> b) {
-   }
-
-   static record b(Object2IntMap<ecb.a> a, MutableInt b) {
+   public ecb(int $$0, bpb $$1, bpb $$2, int $$3, int $$4, bpb $$5, boz $$6, boz $$7, float $$8, int $$9, int $$10) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

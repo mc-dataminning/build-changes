@@ -1,43 +1,17 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class nt<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class nt implements Supplier<JsonElement> {
+   private final akn a;
 
-   public nt(String $$0, Function<T, JsonElement> $$1) {
+   public nt(akn $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public nt<T>.a a(T $$0) {
-      return new nt.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(T $$1) {
-         this.b = $$1;
-      }
-
-      public nt<T> a() {
-         return nt.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(nt.this.a, nt.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return nt.this.a + "=" + this.b;
-      }
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

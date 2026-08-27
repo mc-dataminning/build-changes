@@ -1,61 +1,63 @@
+import java.util.Arrays;
 import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gpx extends gpi<cfh, fyj<cfh>> {
-   private final fyj<cfh> a;
-   private static final Map<brt.a, akt> b = Map.of(
-      brt.a.b,
-      new akt("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      brt.a.c,
-      new akt("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      brt.a.d,
-      new akt("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
+public enum gpx implements gqe {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gpx(gmp<cfh, fyj<cfh>> $$0, fyo $$1) {
-      super($$0);
-      this.a = new fyj<>($$1.a(fyr.cj));
+   private static final int q = 360;
+   private static final Map<Integer, gpx> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gpx)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, cfh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gK()) {
-         cuh $$10 = $$3.fZ();
-         if ($$10.f() instanceof crs $$11) {
-            this.c().a(this.a);
-            this.a.a($$3, $$4, $$5, $$6);
-            this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-            fbg var14 = $$1.getBuffer(gfo.e($$11.b()));
-            this.a.a($$0, var14, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-            this.a($$0, $$1, $$2, $$10, $$11);
-            this.a($$0, $$1, $$2, $$10);
-         }
+   private gpx(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
-   private void a(fbc $$0, gfg $$1, int $$2, cuh $$3, crs $$4) {
-      if ($$3.a(awm.bA)) {
-         int $$5 = cxi.a($$3, 0);
-         if (axw.b.a($$5) == 0) {
-            return;
-         }
-
-         akt $$6 = $$4.c();
-         if ($$6 == null) {
-            return;
-         }
-
-         float $$7 = (float)axw.b.b($$5) / 255.0F;
-         float $$8 = (float)axw.b.c($$5) / 255.0F;
-         float $$9 = (float)axw.b.d($$5) / 255.0F;
-         this.a.a($$0, $$1.getBuffer(gfo.e($$6)), $$2, gqp.d, $$7, $$8, $$9, 1.0F);
-      }
+   @Override
+   public j b() {
+      return this.s;
    }
 
-   private void a(fbc $$0, gfg $$1, int $$2, cuh $$3) {
-      brt.a $$4 = brt.b.a($$3);
-      if ($$4 != brt.a.a) {
-         akt $$5 = b.get($$4);
-         fbg $$6 = $$1.getBuffer(gfo.i($$5));
-         this.a.a($$0, $$6, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public static gpx a(int $$0, int $$1) {
+      return r.get(b(ayf.b($$0, 360), ayf.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

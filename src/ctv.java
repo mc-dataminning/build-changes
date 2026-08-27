@@ -1,53 +1,50 @@
-public class ctv extends cuc {
-   private static final int a = 40;
+import java.util.List;
 
-   public ctv(cuc.a $$0) {
+public class ctv extends ctl {
+   public ctv(ctl.a $$0) {
       super($$0);
    }
 
    @Override
-   public cuh a(cuh $$0, dca $$1, bso $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof aqu $$3) {
-         an.A.a($$3, $$0);
-         $$3.b(avz.c.b(this));
-      }
-
-      if (!$$1.C) {
-         $$2.e(brj.s);
-      }
-
-      if ($$0.d()) {
-         return new cuh(cuk.tI);
-      } else {
-         if ($$2 instanceof cly $$4 && !$$4.fY()) {
-            cuh $$5 = new cuh(cuk.tI);
-            if (!$$4.gl().f($$5)) {
-               $$4.a($$5, false);
-            }
+   public bpw a(cxd $$0) {
+      daz $$1 = $$0.q();
+      io $$2 = $$0.a();
+      drd $$3 = $$1.a_($$2);
+      if ($$3.a(avx.S)) {
+         cly $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
          }
 
-         return $$0;
+         return bpw.a($$1.B);
+      } else {
+         return bpw.d;
       }
    }
 
-   @Override
-   public int b(cuh $$0) {
-      return 40;
-   }
+   public static bpw a(cly $$0, daz $$1, io $$2) {
+      cic $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      euh $$8 = new euh((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<bss> $$9 = $$1.a(bss.class, $$8, $$1x -> $$1x.ge() == $$0);
 
-   @Override
-   public cwk c(cuh $$0) {
-      return cwk.c;
-   }
+      for (bss $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cic.b($$1, $$2);
+            $$3.C();
+         }
 
-   @Override
-   public avn al_() {
-      return avo.mT.a();
-   }
+         $$10.b($$3, true);
+      }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      return cuj.a($$0, $$1, $$2);
+      if (!$$9.isEmpty()) {
+         $$1.a(dvw.b, $$2, dvw.a.a($$0));
+         return bpw.a;
+      } else {
+         return bpw.d;
+      }
    }
 }

@@ -1,49 +1,31 @@
-public class gbl extends gdu {
-   private final gdp a;
+public class gbl extends gbk {
+   private final fef i;
 
-   gbl(fzn $$0, double $$1, double $$2, double $$3, double $$4, gdp $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+   public gbl(fef $$0) {
+      this.i = $$0;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
       } else {
-         this.b(this.a);
+         return $$0 ? 1.0F : -1.0F;
       }
    }
 
    @Override
-   public gcy b() {
-      return gcy.d;
-   }
-
-   public static class a implements gcx<le> {
-      private final gdp a;
-
-      public a(gdp $$0) {
-         this.a = $$0;
-      }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbl($$1, $$2, $$3, $$4, $$5, this.a);
+   public void a(boolean $$0, float $$1) {
+      this.c = this.i.w.e();
+      this.d = this.i.y.e();
+      this.e = this.i.x.e();
+      this.f = this.i.z.e();
+      this.b = a(this.c, this.d);
+      this.a = a(this.e, this.f);
+      this.g = this.i.A.e();
+      this.h = this.i.B.e();
+      if ($$0) {
+         this.a *= $$1;
+         this.b *= $$1;
       }
    }
 }

@@ -1,44 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.Optional;
 
-public class bgl extends DataFix {
-   public bgl(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bgl extends DataFix {
+   private final String a;
+
+   public bgl(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bgf.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bgf.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bga.z);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bga.z);
+      Type<Pair<String, String>> $$2 = DSL.named(bga.x.typeName(), bhl.a());
+      if (!Objects.equals(this.getOutputSchema().getType(bga.x), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
       } else {
-         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bgl::a));
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
       }
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
-
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         String $$3 = String.valueOf($$2);
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
-         if ($$4.isPresent()) {
-            Dynamic<T> $$5 = $$4.get();
-            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
-            $$1.put($$0.createInt($$2), $$6);
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$0.set("Sections", $$0.createMap($$1));
-   }
+   protected abstract String a(String var1);
 }

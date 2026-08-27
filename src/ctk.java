@@ -1,51 +1,27 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface ctk {
+   int a = 256;
+   int b = 140;
+   akm<cti> c = a("ponder_goat_horn");
+   akm<cti> d = a("sing_goat_horn");
+   akm<cti> e = a("seek_goat_horn");
+   akm<cti> f = a("feel_goat_horn");
+   akm<cti> g = a("admire_goat_horn");
+   akm<cti> h = a("call_goat_horn");
+   akm<cti> i = a("yearn_goat_horn");
+   akm<cti> j = a("dream_goat_horn");
 
-public class ctk extends cuc {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public ctk(cuc.a $$0) {
-      super($$0);
+   private static akm<cti> a(String $$0) {
+      return akm.a(lf.E, new akn($$0));
    }
 
-   @Override
-   public bqa a(cyf $$0) {
-      dca $$1 = $$0.q();
-      if (!$$1.C) {
-         cuh $$2 = $$0.n();
-         ewu $$3 = $$0.l();
-         iw $$4 = $$0.k();
-         cmm $$5 = new cmm($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bqa.a($$1.C);
-   }
-
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      if ($$1.fN()) {
-         cuh $$3 = $$1.b($$2);
-         if (!$$0.C) {
-            cmm $$4 = new cmm($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(avz.c.b(this));
-         }
-
-         return bqb.a($$1.b($$2), $$0.x_());
-      } else {
-         return bqb.c($$1.b($$2));
-      }
-   }
-
-   @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      cxk $$4 = $$0.a(ke.T);
-      if ($$4 != null) {
-         $$4.a($$2::add, $$3);
-      }
+   static cti a(jk<cti> $$0) {
+      jk.a($$0, c, new cti((ix<avh>)avi.mF.get(0), 140, 256.0F));
+      jk.a($$0, d, new cti((ix<avh>)avi.mF.get(1), 140, 256.0F));
+      jk.a($$0, e, new cti((ix<avh>)avi.mF.get(2), 140, 256.0F));
+      jk.a($$0, f, new cti((ix<avh>)avi.mF.get(3), 140, 256.0F));
+      jk.a($$0, g, new cti((ix<avh>)avi.mF.get(4), 140, 256.0F));
+      jk.a($$0, h, new cti((ix<avh>)avi.mF.get(5), 140, 256.0F));
+      jk.a($$0, i, new cti((ix<avh>)avi.mF.get(6), 140, 256.0F));
+      return jk.a($$0, j, new cti((ix<avh>)avi.mF.get(7), 140, 256.0F));
    }
 }

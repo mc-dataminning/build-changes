@@ -1,51 +1,63 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class efu extends efw {
-   public static final Codec<efu> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, efu::new));
+public class efu extends efs {
+   public static final MapCodec<efu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dxp.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dxp.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, efu::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dxp d;
+   private final dxp e;
+   private final int f;
 
-   public efu(bpf $$0, bpf $$1) {
-      super($$0, $$1);
+   private efu(dxp $$0, dxp $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static efu a(dxp $$0, dxp $$1, int $$2) {
+      return new efu($$0, $$1, $$2);
+   }
+
+   public static efu a(dxp $$0, dxp $$1) {
+      return a($$0, $$1, 0);
    }
 
    @Override
-   protected efx<?> a() {
-      return efx.i;
-   }
-
-   @Override
-   protected void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, int $$4, efw.a $$5, int $$6, int $$7, int $$8) {
-      ir $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+   public int a(aym $$0, dxs $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return ayf.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + ayf.b($$0, 0, $$6) + ayf.b($$0, 0, $$5);
          }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(ayt $$0, int $$1, efg $$2) {
-      return 4;
+   public eft<?> a() {
+      return eft.e;
    }
 
    @Override
-   protected boolean b(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

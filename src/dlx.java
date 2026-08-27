@@ -1,81 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlx extends dhf {
+public class dlx extends dea {
    public static final MapCodec<dlx> a = b(dlx::new);
-   public static final dtt b = dts.s;
-   public static final duc e = dts.aA;
+   private static final wx d = wx.c("container.stonecutter");
+   public static final drx b = dhw.aE;
+   protected static final evf c = dea.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dlx> a() {
       return a;
    }
 
-   protected dlx(dtb.d $$0) {
+   public dlx(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, iw.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, it.c));
    }
 
    @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      if (!$$3.gm().e) {
-         return bqa.d;
+   public drd a(cxb $$0) {
+      return this.n().a(b, $$0.g().g());
+   }
+
+   @Override
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$1.B) {
+         return bpw.a;
       } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bqa.a($$1.C);
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avs.ay);
+         return bpw.b;
       }
    }
 
+   @Nullable
    @Override
-   protected int g(dtc $$0) {
-      return $$0.c(e) * 2;
+   protected bqa b(drd $$0, daz $$1, io $$2) {
+      return new bqg(($$2x, $$3, $$4) -> new cqw($$2x, $$3, cpg.a($$1, $$2)), d);
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return c;
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$1 == iw.a && !this.b($$3, $$5, $$2)) {
-         return dfe.a.n();
-      } else {
-         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean c(dcd $$0, ir $$1, dtc $$2) {
-      return this.a((dcq)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
+   protected boolean f_(drd $$0) {
       return true;
    }
 
    @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      if ($$0.c(d)) {
-         iw $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(kv.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
+   protected dkg a_(drd $$0) {
+      return dkg.c;
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(aE, e, b, d);
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
    }
 }

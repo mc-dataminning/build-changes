@@ -1,42 +1,30 @@
-public class foe extends fon {
-   protected final fon b;
-   protected final fgn c;
-   public final fma d = new fma(this);
+public class foe extends fmw {
+   private final daa s;
 
-   public foe(fon $$0, fgn $$1, xe $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public foe(daa $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public daa m() {
+      return this.s;
+   }
+
+   @Override
+   int C() {
+      return 150;
    }
 
    @Override
    protected void aN_() {
-      this.m();
-      this.h();
-      this.d.a(this::c);
-      this.c();
-   }
-
-   protected void m() {
-      this.d.a(this.l, this.p);
-   }
-
-   protected void h() {
-      this.d.b(fin.a(xd.d, $$0 -> this.d()).a(200).a());
+      super.aN_();
+      this.a.a(this.m().m());
    }
 
    @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public void j() {
-      this.m.m.av();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.b);
+   protected void a(daa $$0) {
+      if ($$0 instanceof cob.a $$1) {
+         this.m.L().b(new aht($$1.h().al(), this.a.a(), $$0.p()));
+      }
    }
 }

@@ -1,73 +1,96 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class dnf extends dfc {
-   public static final MapCodec<dnf> a = b(dnf::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final iw[] d = iw.values();
+public interface dnf extends dfb<dnf.a> {
+   Supplier<BiMap<dea, dea>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dec.qW, dec.qX)
+            .put(dec.qX, dec.qY)
+            .put(dec.qY, dec.qZ)
+            .put(dec.rf, dec.re)
+            .put(dec.re, dec.rd)
+            .put(dec.rd, dec.rc)
+            .put(dec.rj, dec.ri)
+            .put(dec.ri, dec.rh)
+            .put(dec.rh, dec.rg)
+            .put(dec.rv, dec.ru)
+            .put(dec.ru, dec.rt)
+            .put(dec.rt, dec.rs)
+            .put(dec.rr, dec.rq)
+            .put(dec.rq, dec.rp)
+            .put(dec.rp, dec.ro)
+            .put(dec.rM, dec.rN)
+            .put(dec.rN, dec.rP)
+            .put(dec.rP, dec.rO)
+            .put(dec.rU, dec.rV)
+            .put(dec.rV, dec.rX)
+            .put(dec.rX, dec.rW)
+            .put(dec.sc, dec.sd)
+            .put(dec.sd, dec.se)
+            .put(dec.se, dec.sf)
+            .put(dec.sk, dec.sl)
+            .put(dec.sl, dec.sm)
+            .put(dec.sm, dec.sn)
+            .build()
+   );
+   Supplier<BiMap<dea, dea>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   @Override
-   public MapCodec<dnf> a() {
-      return a;
+   static Optional<dea> a(dea $$0) {
+      return Optional.ofNullable((dea)u_.get().get($$0));
    }
 
-   protected dnf(dtb.d $$0) {
-      super($$0);
-   }
+   static dea b(dea $$0) {
+      dea $$1 = $$0;
 
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+      for (dea $$2 = (dea)u_.get().get($$0); $$2 != null; $$2 = (dea)u_.get().get($$2)) {
+         $$1 = $$2;
       }
+
+      return $$1;
+   }
+
+   static Optional<drd> b(drd $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<dea> c(dea $$0) {
+      return Optional.ofNullable((dea)t_.get().get($$0));
+   }
+
+   static drd c(drd $$0) {
+      return b($$0.b()).l($$0);
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default Optional<drd> i_(drd $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
    }
 
-   protected void a(dca $$0, ir $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dfe.bx.n(), 2);
-         $$0.a(null, $$1, avo.zr, avq.e, 1.0F, 1.0F);
+   @Override
+   default float av_() {
+      return this.c() == dnf.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements ayz {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<dnf.a> e = ayz.a(dnf.a::values);
+      private final String f;
+
+      private a(String $$0) {
+         this.f = $$0;
       }
-   }
 
-   private boolean b(dca $$0, ir $$1) {
-      return ir.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (iw $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dtc $$3 = $$0.a_($$2);
-            epe $$4 = $$0.b_($$2);
-            if (!$$4.a(awj.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof dfj $$6 && !$$6.a(null, $$0, $$2, $$3).d()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof djw) {
-                  $$0.a($$2, dfe.a.n(), 3);
-               } else {
-                  if (!$$3.a(dfe.na) && !$$3.a(dfe.nb) && !$$3.a(dfe.cg) && !$$3.a(dfe.ch)) {
-                     return false;
-                  }
-
-                  dqc $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dfe.a.n(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

@@ -1,84 +1,47 @@
-import java.util.function.LongFunction;
+import com.mojang.serialization.Codec;
 
-public class dzt extends dyv {
-   private final ayt d;
-   private int e;
-
-   public dzt(ayt $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
+public class dzt extends dzz<eca> {
+   public dzt(Codec<eca> $$0) {
+      super($$0);
    }
 
    @Override
-   public ayt d() {
-      return this.d.d();
-   }
+   public boolean a(eab<eca> $$0) {
+      eca $$1 = $$0.f();
+      io $$2 = $$0.e();
+      dbu $$3 = $$0.b();
+      aym $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      io.a $$10 = new io.a();
 
-   @Override
-   public dzh e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dyv $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+      for (io $$11 : io.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+         }
       }
-   }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
       return $$5;
    }
 
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
+   protected boolean a(eca $$0, dbu $$1, aym $$2, int $$3, int $$4, io.a $$5) {
+      boolean $$6 = false;
 
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ayt a(int $$0, int $$1, long $$2, long $$3) {
-      return ayt.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dyv::new),
-      b(dzv::new);
-
-      private final LongFunction<ayt> c;
-
-      private a(LongFunction<ayt> $$0) {
-         this.c = $$0;
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            drd $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
       }
 
-      public ayt a(long $$0) {
-         return this.c.apply($$0);
-      }
+      return $$6;
    }
 }

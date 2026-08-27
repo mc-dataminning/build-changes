@@ -1,37 +1,38 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class eiw extends eje {
-   public static final Codec<eiw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eiw::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public interface eiw {
+   Codec<eiw> b = le.aj.q().dispatch(eiw::b, Function.identity());
 
-   private eiw(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   void a(aym var1, BiConsumer<akm<eiu>, akm<eiu>> var2);
+
+   Stream<akm<eiu>> a();
+
+   static eiv a(String $$0, String $$1) {
+      return a(qv.a($$0), qv.a($$1));
    }
 
-   public static eiw a(double $$0, int $$1, int $$2) {
-      return new eiw($$0, $$1, $$2);
+   static eiv a(akm<eiu> $$0, akm<eiu> $$1) {
+      return new eiv($$0, $$1);
    }
 
-   @Override
-   protected int a(ayt $$0, ir $$1) {
-      double $$2 = dcz.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   static eiz a(String $$0, bog<String> $$1) {
+      bog.a<akm<eiu>> $$2 = bog.a();
+      $$1.e().forEach($$1x -> $$2.a(qv.a((String)$$1x.b()), $$1x.a().a()));
+      return a(qv.a($$0), $$2.a());
    }
 
-   @Override
-   public ejb<?> b() {
-      return ejb.h;
+   static eiz a(akm<eiu> $$0, bog<akm<eiu>> $$1) {
+      return new eiz($$0, $$1);
    }
+
+   static eja a(bog<List<eiw>> $$0) {
+      return new eja($$0);
+   }
+
+   MapCodec<? extends eiw> b();
 }

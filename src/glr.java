@@ -1,23 +1,13 @@
-public class glr extends gkp<cia> {
-   private static final akt a = new akt("textures/entity/lead_knot.png");
-   private final fwh<cia> b;
-
-   public glr(gkq.a $$0) {
+public abstract class glr<T extends brw, M extends fsw<T>> extends gmf<T, M> {
+   public glr(gjp<T, M> $$0) {
       super($$0);
-      this.b = new fwh<>($$0.a(fyr.aA));
    }
 
-   public void a(cia $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.b.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      fbg $$6 = $$4.getBuffer(this.b.a(a));
-      this.b.a($$3, $$6, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(eyu $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eyy $$10 = $$1.getBuffer(this.a());
+      this.c().a($$0, $$10, 15728640, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 
-   public akt a(cia $$0) {
-      return a;
-   }
+   public abstract gcs a();
 }

@@ -1,37 +1,31 @@
-public interface fkw {
-   Object b = new Object();
-   int c = 32;
+public class fkw extends flz {
+   private fgt a;
+   private final Runnable b;
+   private final Runnable c;
 
-   fkw.a a(fia var1, fkx var2, long var3);
-
-   default Object e() {
-      return b;
+   public fkw(Runnable $$0, Runnable $$1) {
+      super(wx.c("datapackFailure.title"));
+      this.a = fgt.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default int a() {
-      return 160;
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.a = fgt.a(this.p, this.n(), this.n - 50);
+      this.c(fga.a(wx.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(fga.a(ww.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
-   default int b() {
-      return 32;
+   @Override
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
    }
 
-   default int f() {
-      return aym.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(avo.AT),
-      b(avo.AU);
-
-      private final avn c;
-
-      private a(avn $$0) {
-         this.c = $$0;
-      }
-
-      public void a(gvq $$0) {
-         $$0.a(guh.a(this.c, 1.0F, 1.0F));
-      }
+   @Override
+   public boolean aE_() {
+      return false;
    }
 }

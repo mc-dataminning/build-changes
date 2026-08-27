@@ -1,25 +1,20 @@
-public class azn<A, B> {
-   private A a;
-   private B b;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-   public azn(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class azn {
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
+         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
+         : $$0;
    }
 
-   public A a() {
-      return this.a;
-   }
-
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
    }
 }

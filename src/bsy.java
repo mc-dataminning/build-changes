@@ -1,13 +1,15 @@
-public interface bsy extends bsx {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bsy {
+   @Nullable
+   UUID W_();
 
-   void c(int var1);
+   daq e();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default bsq P_() {
+      UUID $$0 = this.W_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

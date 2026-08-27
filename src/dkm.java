@@ -1,25 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkm extends dfl {
-   public static final MapCodec<dkm> a = b(dkm::new);
-   protected static final exn b = dfc.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+public class dkm extends dea {
+   public static final MapCodec<dkm> h = b(dkm::new);
+   public static final dsb<it.a> i = drt.I;
 
    @Override
-   public MapCodec<dkm> a() {
-      return a;
+   public MapCodec<? extends dkm> a() {
+      return h;
    }
 
-   public dkm(dtb.d $$0) {
+   public dkm(drc.d $$0) {
       super($$0);
+      this.k(this.n().a(i, it.a.b));
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return b;
+   protected drd a(drd $$0, dkn $$1) {
+      return b($$0, $$1);
+   }
+
+   public static drd b(drd $$0, dkn $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((it.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, it.a.c);
+               case c:
+                  return $$0.a(i, it.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.a(awe.aN) || $$0.a(dfe.eL) || super.b($$0, $$1, $$2);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(i);
+   }
+
+   @Override
+   public drd a(cxb $$0) {
+      return this.n().a(i, $$0.k().o());
    }
 }

@@ -1,125 +1,106 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
 public class btz {
-   public static final int a = 48;
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bsc<? extends bsq>, btx> b = ImmutableMap.builder()
+      .put(bsc.a, cfm.s().a())
+      .put(bsc.c, cfp.s().a())
+      .put(bsc.d, chy.s().a())
+      .put(bsc.f, cfs.gw().a())
+      .put(bsc.g, ceb.s().a())
+      .put(bsc.h, ceh.gB().a())
+      .put(bsc.i, cin.s().a())
+      .put(bsc.l, cio.gs().a())
+      .put(bsc.p, cej.gA().a())
+      .put(bsc.o, cfx.s().a())
+      .put(bsc.q, cip.s().a())
+      .put(bsc.t, cel.s().a())
+      .put(bsc.u, ced.s().a())
+      .put(bsc.w, cen.s().a())
+      .put(bsc.x, ciq.s().a())
+      .put(bsc.y, ceo.gp().a())
+      .put(bsc.z, cgj.s().a())
+      .put(bsc.B, cis.s().a())
+      .put(bsc.D, cit.s().a())
+      .put(bsc.H, ciu.s().a())
+      .put(bsc.I, civ.s().a())
+      .put(bsc.F, chc.u().a())
+      .put(bsc.J, cix.u().a())
+      .put(bsc.m, cka.s().a())
+      .put(bsc.Q, ceq.s().a())
+      .put(bsc.R, cga.gp().a())
+      .put(bsc.T, ciy.y().a())
+      .put(bsc.U, ciz.s().a())
+      .put(bsc.W, bsi.gp().a())
+      .put(bsc.X, cgg.u().a())
+      .put(bsc.Y, cja.gp().a())
+      .put(bsc.Z, cki.s().a())
+      .put(bsc.ab, cgk.gO().a())
+      .put(bsc.ac, cjx.gt().a())
+      .put(bsc.ad, cjc.u().a())
+      .put(bsc.af, ces.s().a())
+      .put(bsc.an, cgn.gA().a())
+      .put(bsc.ap, cjd.s().a())
+      .put(bsc.as, cen.s().a())
+      .put(bsc.at, cgj.s().a())
+      .put(bsc.au, ceu.s().a())
+      .put(bsc.aw, cev.gA().a())
+      .put(bsc.ax, cew.gv().a())
+      .put(bsc.ay, cje.gv().a())
+      .put(bsc.az, cex.s().a())
+      .put(bsc.aA, cko.gw().a())
+      .put(bsc.aB, ckr.y().a())
+      .put(bsc.aC, cjh.u().a())
+      .put(bsc.by, cly.fQ().a())
+      .put(bsc.aD, cey.s().a())
+      .put(bsc.aF, ced.s().a())
+      .put(bsc.aG, cfa.u().a())
+      .put(bsc.aH, cjj.s().a())
+      .put(bsc.aI, ced.s().a())
+      .put(bsc.aJ, cfc.s().a())
+      .put(bsc.aK, cjk.s().a())
+      .put(bsc.aM, cjl.s().a())
+      .put(bsc.aN, cim.s().a())
+      .put(bsc.aO, cgq.s().a())
+      .put(bsc.aP, cje.gv().a())
+      .put(bsc.aR, cgx.s().a())
+      .put(bsc.aS, cfe.s().a())
+      .put(bsc.aW, cjp.u().a())
+      .put(bsc.aX, cff.gp().a())
+      .put(bsc.aY, cim.s().a())
+      .put(bsc.aZ, cjr.u().a())
+      .put(bsc.ba, cgd.gr().a())
+      .put(bsc.be, cgn.gA().a())
+      .put(bsc.bg, ced.s().a())
+      .put(bsc.bh, cfh.y().a())
+      .put(bsc.bi, cjs.u().a())
+      .put(bsc.bj, cll.gy().a())
+      .put(bsc.bk, cjt.u().a())
+      .put(bsc.bm, clc.s().a())
+      .put(bsc.bl, bss.A().a())
+      .put(bsc.bo, cju.u().a())
+      .put(bsc.bp, chw.u().a())
+      .put(bsc.bq, cim.s().a())
+      .put(bsc.bs, cfj.gx().a())
+      .put(bsc.bt, cjw.s().a())
+      .put(bsc.bu, cjx.gt().a())
+      .put(bsc.bv, cgu.s().a())
+      .put(bsc.bw, cjx.gt().a())
+      .put(bsc.bx, cjz.gz().a())
+      .build();
 
-   public static buh<bsw> a(Predicate<ja<cdu>> $$0, cbr<iz> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public static btx a(bsc<? extends bsq> $$0) {
+      return b.get($$0);
    }
 
-   public static buh<bsw> a(Predicate<ja<cdu>> $$0, cbr<iz> $$1, cbr<iz> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<btz.a> $$8 = new Long2ObjectOpenHashMap();
-      bvr<bsw> $$9 = bxt.a(
-         (Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.o_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.Z() + (long)$$6xx.A.a(20));
-                     return false;
-                  } else if ($$6xx.Z() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.F_().a(20));
-                     cdr $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((btz.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<ir> $$10 = $$2xxxx -> {
-                        btz.a $$3xxxx = (btz.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ja<cdu>, ir>> $$11 = $$9x.c($$0, $$10, $$7x.du(), 48, cdr.b.a).limit(5L).collect(Collectors.toSet());
-                     eps $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        ir $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(iz.a($$6xx.af(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           agi.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ja<cdu>, ir> $$14 : $$11) {
-                           $$8.computeIfAbsent(((ir)$$14.getSecond()).a(), $$2xxxx -> new btz.a($$6xx.A, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : bxt.a((Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public static boolean b(bsc<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   @Nullable
-   public static eps a(bsq $$0, Set<Pair<ja<cdu>, ir>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<ir> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ja<cdu>, ir> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cdu)((ja)$$4.getFirst()).a()).c());
-            $$2.add((ir)$$4.getSecond());
-         }
-
-         return $$0.J().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final ayt d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(ayt $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public static void a() {
+      le.g.s().filter($$0 -> $$0.f() != bst.h).filter($$0 -> !b((bsc<?>)$$0)).map(le.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

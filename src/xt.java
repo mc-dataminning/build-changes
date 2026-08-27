@@ -1,35 +1,68 @@
+import com.mojang.logging.LogUtils;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+@FunctionalInterface
 public interface xt {
-   xe a();
+   Logger a = LogUtils.getLogger();
+   xt b = xn::b;
+   xt c = $$0 -> {
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
+   };
 
-   void a(aqu var1, boolean var2, xa.a var3);
+   @Nullable
+   xn updateAndValidate(xn var1);
 
-   static xt a(xu $$0) {
-      return (xt)($$0.h() ? new xt.a($$0.d()) : new xt.b($$0));
-   }
+   public static class a implements xt {
+      private final ayr d;
+      private final BooleanSupplier e;
+      @Nullable
+      private xn f;
+      private boolean g = true;
 
-   public static record a(xe a) implements xt {
-      @Override
-      public void a(aqu $$0, boolean $$1, xa.a $$2) {
-         $$0.d.a(this.a, $$2);
+      public a(ayr $$0, BooleanSupplier $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
 
-   public static record b(xu a) implements xt {
-      @Override
-      public xe a() {
-         return this.a.d();
-      }
-
-      @Override
-      public void a(aqu $$0, boolean $$1, xa.a $$2) {
-         xu $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.d.a($$3, $$2);
+      private boolean a(xn $$0) {
+         if ($$0.equals(this.f)) {
+            return true;
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
+            a.error(
+               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
+            );
+            return false;
+         } else {
+            return true;
          }
       }
 
-      public xu b() {
-         return this.a;
+      private boolean b(xn $$0) {
+         if (this.e.getAsBoolean()) {
+            a.error("Received message from player with expired profile public key: {}", $$0);
+            return false;
+         } else if (!$$0.a(this.d)) {
+            a.error("Received message with invalid signature from {}", $$0.g());
+            return false;
+         } else {
+            return this.a($$0);
+         }
+      }
+
+      @Nullable
+      @Override
+      public xn updateAndValidate(xn $$0) {
+         this.g = this.g && this.b($$0);
+         if (!this.g) {
+            return null;
+         } else {
+            this.f = $$0;
+            return $$0;
+         }
       }
    }
 }

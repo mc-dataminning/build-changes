@@ -1,52 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
-public record afb(int c, List<akc.c<?>> d) implements zl<abw> {
-   public static final zc<wp, afb> a = zl.a(afb::b, afb::new);
-   public static final int b = 255;
+public class afb implements ze<abq> {
+   public static final yv<wi, afb> a = ze.a(afb::a, afb::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final wx f;
+   private final evt.a g;
+   private final Optional<yn> h;
+   private final int i;
 
-   private afb(wp $$0) {
-      this($$0.l(), a($$0));
+   public afb(evi $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
    }
 
-   private static void a(List<akc.c<?>> $$0, wp $$1) {
-      for (akc.c<?> $$2 : $$0) {
-         $$2.a($$1);
+   private afb(wi $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = ww.a;
+         this.g = evt.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = wz.d.decode($$0);
+         this.g = $$0.b(evt.a.class);
+         this.h = yp.d.decode($$0);
       }
-
-      $$1.k(255);
    }
 
-   private static List<akc.c<?>> a(wp $$0) {
-      List<akc.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(akc.c.a($$0, $$2));
+   private void a(wi $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         wz.d.encode($$0, this.f);
+         $$0.a(this.g);
+         yp.d.encode($$0, this.h);
       }
-
-      return $$1;
-   }
-
-   private void b(wp $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
    }
 
    @Override
-   public zn<afb> a() {
-      return agj.aD;
+   public zg<afb> a() {
+      return agc.aI;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public String b() {
+      return this.e;
    }
 
-   public List<akc.c<?>> e() {
-      return this.d;
+   public wx e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public evt.a g() {
+      return this.g;
+   }
+
+   public Optional<yn> h() {
+      return this.h;
    }
 }

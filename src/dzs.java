@@ -1,83 +1,99 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
 
-public class dzs {
-   public static final MapCodec<dzs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dzs::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dzs::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dzs::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dzs::new))
-   );
-   public static final dzs b = new dzs((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+public class dzs extends dzz<eck> {
+   private static final drm a = drm.a(dec.I);
+   private final drd b = dec.I.n();
+   private final drd c = dec.jF.n();
+   private final drd d = dec.aV.n();
+   private final drd an = dec.G.n();
 
-   public dzs(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public dzs(Codec<eck> $$0) {
+      super($$0);
    }
 
-   public static dzs a() {
-      return new dzs(f(), true, false);
-   }
+   @Override
+   public boolean a(eab<eck> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      $$2 = $$2.c();
 
-   private dzs(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
+         $$2 = $$2.d();
+      }
 
-   public long b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dzs a(boolean $$0) {
-      return new dzs(this.c, this.d, $$0, this.f);
-   }
-
-   public dzs b(boolean $$0) {
-      return new dzs(this.c, $$0, this.e, this.f);
-   }
-
-   public dzs a(OptionalLong $$0) {
-      return new dzs($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
+      if (!a.a($$1.a_($$2))) {
+         return false;
       } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
          }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (it $$8 : it.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         io $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (it $$10 : it.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<io> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         aym $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
       }
    }
 
-   public static long f() {
-      return ayt.a().g();
+   private static void b(dbu $$0, io $$1) {
+      $$0.a($$1, dec.J.n(), 3);
+      $$0.a($$1, dok.N).ifPresent($$1x -> $$1x.a(epf.bb, $$1.a()));
    }
 }

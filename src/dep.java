@@ -1,125 +1,137 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public abstract class dep extends dfc {
-   protected static final exn a = dfc.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final exn b = dfc.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final ewp c = new ewp(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dtr d;
+public class dep extends dcs implements dlb {
+   public static final MapCodec<dep> c = b(dep::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dsd f = drt.az;
+   public static final dru g = dcs.b;
+   public static final dru h = drt.C;
+   public static final ToIntFunction<drd> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<eum>> j = ac.a(() -> {
+      Int2ObjectMap<List<eum>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new eum(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new eum(0.375, 0.44, 0.5), new eum(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new eum(0.5, 0.313, 0.625), new eum(0.375, 0.44, 0.5), new eum(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new eum(0.44, 0.313, 0.56), new eum(0.625, 0.44, 0.56), new eum(0.375, 0.44, 0.375), new eum(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final evf k = dea.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final evf l = dea.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final evf m = dea.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final evf n = dea.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
-   protected dep(dtb.d $$0, dtr $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   @Override
+   public MapCodec<dep> a() {
+      return c;
+   }
+
+   public dep(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dep> a();
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return this.g($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
-   }
-
-   @Override
-   public boolean a(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1 == iw.a && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.d();
-      return c($$1, $$3) || a($$1, $$3, iw.b);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      int $$4 = this.g($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
+   protected bpy a(ctq $$0, drd $$1, daz $$2, io $$3, cly $$4, bpv $$5, eui $$6) {
+      if ($$0.e() && $$4.gd().e && $$1.c(g)) {
+         a($$4, $$1, $$2, $$3);
+         return bpy.a($$2.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
-      if (!$$1.C) {
-         int $$4 = this.g($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
+   protected boolean a(drd $$0, cxb $$1) {
+      return !$$1.h() && $$1.n().g() == this.r() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public drd a(cxb $$0) {
+      drd $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         emw $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == emx.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
+      }
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected emw b_(drd $$0) {
+      return $$0.c(h) ? emx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
+      }
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(f, g, h);
+   }
+
+   @Override
+   public boolean a(dba $$0, io $$1, drd $$2, emw $$3) {
+      if (!$$2.c(h) && $$3.a() == emx.c) {
+         drd $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
          }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void a(@Nullable brv $$0, dca $$1, ir $$2, dtc $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         dtc $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), avq.e);
-         $$1.a($$0, dxv.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), avq.e);
-         $$1.a($$0, dxv.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new ir($$2), this, this.b());
-      }
+   public static boolean g(drd $$0) {
+      return $$0.a(avx.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.g($$0) > 0) {
-            this.a($$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected void a(dca $$0, ir $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.d(), this);
+   protected Iterable<eum> b(drd $$0) {
+      return (Iterable<eum>)j.get($$0.c(f));
    }
 
    @Override
-   protected int a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return this.g($$0);
+   protected boolean d(drd $$0) {
+      return !$$0.c(h) && super.d($$0);
    }
 
    @Override
-   protected int b(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return $$3 == iw.b ? this.g($$0) : 0;
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      return dea.a($$1, $$2.d(), it.b);
    }
-
-   @Override
-   protected boolean e_(dtc $$0) {
-      return true;
-   }
-
-   protected static int a(dca $$0, ewp $$1, Class<? extends brv> $$2) {
-      return $$0.a($$2, $$1, bsa.f.and($$0x -> !$$0x.r_())).size();
-   }
-
-   protected abstract int b(dca var1, ir var2);
-
-   protected abstract int g(dtc var1);
-
-   protected abstract dtc a(dtc var1, int var2);
 }

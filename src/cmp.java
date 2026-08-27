@@ -1,56 +1,77 @@
-public class cmp extends cml {
-   private final boolean e;
-   private int g = 1;
-
-   public cmp(bsb<? extends cmp> $$0, dca $$1) {
+public class cmp extends cmq {
+   public cmp(bsc<? extends cmp> $$0, daz $$1) {
       super($$0, $$1);
-      this.e = true;
    }
 
-   public cmp(dca $$0, bso $$1, double $$2, double $$3, double $$4, int $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, true);
-   }
-
-   public cmp(dca $$0, bso $$1, double $$2, double $$3, double $$4, int $$5, boolean $$6) {
-      super(bsb.al, $$1, $$2, $$3, $$4, $$0);
-      this.g = $$5;
-      this.e = $$6;
+   public cmp(daz $$0, cgn $$1) {
+      this(bsc.ao, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.du() - (double)($$1.dj() + 1.0F) * 0.5 * (double)ayf.a($$1.aY * (float) (Math.PI / 180.0)),
+         $$1.dy() - 0.1F,
+         $$1.dA() + (double)($$1.dj() + 1.0F) * 0.5 * (double)ayf.b($$1.aY * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   protected void a(ews $$0) {
+   protected double aY() {
+      return 0.06;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      eum $$0 = this.ds();
+      euk $$1 = cms.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.du() + $$0.c;
+      double $$3 = this.dw() + $$0.d;
+      double $$4 = this.dA() + $$0.e;
+      this.J();
+      float $$5 = 0.99F;
+      if (this.dP().a(this.cK()).noneMatch(drc.a::i)) {
+         this.ao();
+      } else if (this.bh()) {
+         this.ao();
+      } else {
+         this.g($$0.a(0.99F));
+         this.ba();
+         this.a_($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(euj $$0) {
       super.a($$0);
-      if (!this.dU().C) {
-         boolean $$1 = this.dU().ab().b(dbw.c);
-         this.dU().a(this, this.dz(), this.dB(), this.dF(), (float)this.g, this.e && $$1, dca.a.c);
+      if (this.s() instanceof bsq $$1) {
+         $$0.a().a(this.dQ().b(this, $$1), 1.0F);
+      }
+   }
+
+   @Override
+   protected void a(eui $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
          this.ao();
       }
    }
 
    @Override
-   protected void a(ewr $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         brv $$1 = $$0.a();
-         brv $$2 = this.t();
-         $$1.a(this.dX().a((cml)this, $$2), 6.0F);
-         if ($$2 instanceof bso) {
-            this.a((bso)$$2, $$1);
-         }
-      }
+   protected void a(ajw.a $$0) {
    }
 
    @Override
-   public void b(uk $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.g);
-   }
-
-   @Override
-   public void a(uk $$0) {
+   public void a(abr $$0) {
       super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.g = $$0.f("ExplosionPower");
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dP().a(ky.ah, this.du(), this.dw(), this.dA(), $$1 * $$5, $$2, $$3 * $$5);
       }
+
+      this.o($$1, $$2, $$3);
    }
 }

@@ -1,90 +1,263 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class akn<E> implements Codec<je<E>> {
-   private final aks<? extends jn<E>> a;
-   private final Codec<ja<E>> b;
-   private final Codec<List<ja<E>>> c;
-   private final Codec<Either<awt<E>, List<ja<E>>>> d;
+public class akn implements Comparable<akn> {
+   public static final Codec<akn> a = Codec.STRING.comapFlatMap(akn::b, akn::toString).stable();
+   public static final yv<ByteBuf, akn> b = yt.k.a(akn::new, akn::toString);
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("argument.id.invalid"));
+   public static final char d = ':';
+   public static final String e = "minecraft";
+   public static final String f = "realms";
+   private final String g;
+   private final String h;
 
-   private static <E> Codec<List<ja<E>>> a(Codec<ja<E>> $$0, boolean $$1) {
-      Codec<List<ja<E>>> $$2 = axu.b($$0.listOf(), axu.b(ja::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ja)$$0x.get(0)) : Either.left($$0x));
+   protected akn(String $$0, String $$1, @Nullable akn.a $$2) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static <E> Codec<je<E>> a(aks<? extends jn<E>> $$0, Codec<ja<E>> $$1, boolean $$2) {
-      return new akn<>($$0, $$1, $$2);
+   public akn(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
    }
 
-   private akn(aks<? extends jn<E>> $$0, Codec<ja<E>> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(awt.b($$0), this.c);
+   private akn(String[] $$0) {
+      this($$0[0], $$0[1]);
    }
 
-   public <T> DataResult<Pair<je<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof akr<T> $$2) {
-         Optional<jb<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            jb<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<je<E>> $$2x = (DataResult<je<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(je.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
+   public akn(String $$0) {
+      this(b($$0, ':'));
+   }
+
+   public static akn a(String $$0, char $$1) {
+      return new akn(b($$0, $$1));
+   }
+
+   @Nullable
+   public static akn a(String $$0) {
+      try {
+         return new akn($$0);
+      } catch (z var2) {
+         return null;
+      }
+   }
+
+   @Nullable
+   public static akn a(String $$0, String $$1) {
+      try {
+         return new akn($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
+   }
+
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
          }
       }
 
-      return this.a($$0, $$1);
+      return $$2;
    }
 
-   private static <E> DataResult<je<E>> a(jb<E> $$0, awt<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<je<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
+   public static DataResult<akn> b(String $$0) {
+      try {
+         return DataResult.success(new akn($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
    }
 
-   public <T> DataResult<T> a(je<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof akr<T> $$3) {
-         Optional<jd<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
-            }
+   public String a() {
+      return this.h;
+   }
 
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+   public String b() {
+      return this.g;
+   }
+
+   public akn c(String $$0) {
+      return new akn(this.g, d(this.g, $$0), null);
+   }
+
+   public akn a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.h));
+   }
+
+   public akn d(String $$0) {
+      return this.c($$0 + this.h);
+   }
+
+   public akn e(String $$0) {
+      return this.c(this.h + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.g + ":" + this.h;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof akn $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.g.hashCode() + this.h.hashCode();
+   }
+
+   public int a(akn $$0) {
+      int $$1 = this.h.compareTo($$0.h);
+      if ($$1 == 0) {
+         $$1 = this.g.compareTo($$0.g);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.g + "." + this.h;
+   }
+
+   public String e() {
+      return this.g.equals("minecraft") ? this.h : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   private static String c(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$1, $$0.getCursor());
+   }
+
+   public static akn a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+
+      try {
+         return new akn($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw c.createWithContext($$0);
+      }
+   }
+
+   public static akn b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+      if ($$2.isEmpty()) {
+         throw c.createWithContext($$0);
+      } else {
+         try {
+            return new akn($$2);
+         } catch (z var4) {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
          }
       }
 
-      return this.b($$0, $$1, $$2);
+      return true;
    }
 
-   private <T> DataResult<Pair<je<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<ja.a<E>> $$1x = new ArrayList<>();
-
-         for (ja<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof ja.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
          }
+      }
 
-         return DataResult.success(new Pair(je.a($$1x), $$0x.getSecond()));
-      });
+      return true;
    }
 
-   private <T> DataResult<T> b(je<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<akn>, JsonSerializer<akn> {
+      public akn a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new akn(axv.a($$0, "location"));
+      }
+
+      public JsonElement a(akn $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
+      }
    }
 }

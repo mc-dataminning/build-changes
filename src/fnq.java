@@ -1,74 +1,96 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public class fnq {
+   private static final akn a = new akn("minecraft", "alt");
+   private static final xu b = xu.a.a(a);
+   private static final fnq c = new fnq();
+   private final aym d = aym.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class fnq implements AutoCloseable {
-   private static final akt a = new akt("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gqz d;
-   private final akt e;
-   @Nullable
-   private gql f;
-   private boolean g;
-
-   private fnq(gqz $$0, akt $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private fnq() {
    }
 
-   public static fnq a(gqz $$0, String $$1) {
-      return new fnq($$0, new akt("minecraft", "worlds/" + ad.a($$1, akt::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public static fnq a() {
+      return c;
    }
 
-   public static fnq b(gqz $$0, String $$1) {
-      return new fnq($$0, new akt("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
+   public xc a(ffl $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   public void a(fad $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gql($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
          }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(wx.b($$2.toString()).c(b), $$1, xu.a);
    }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public akt b() {
-      return this.f != null ? this.e : a;
-   }
-
-   @Override
-   public void close() {
-      this.a();
-      this.g = true;
-   }
-
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

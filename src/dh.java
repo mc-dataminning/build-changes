@@ -1,71 +1,56 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public abstract class dh<T extends dh.a> implements aq<T> {
-   private final Map<alb, Set<aq.a<T>>> a = Maps.newIdentityHashMap();
-
+public class dh extends df<dh.a> {
    @Override
-   public final void a(alb $$0, aq.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public Codec<dh.a> a() {
+      return dh.a.a;
    }
 
-   @Override
-   public final void b(alb $$0, aq.a<T> $$1) {
-      Set<aq.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
-         }
+   public void a(aqo $$0, drd $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static record a(Optional<bc> b, Optional<ix<dea>> c, Optional<dl> d) implements df.a {
+      public static final Codec<dh.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     br.b.optionalFieldOf("player").forGetter(dh.a::a),
+                     le.e.r().optionalFieldOf("block").forGetter(dh.a::b),
+                     dl.a.optionalFieldOf("state").forGetter(dh.a::c)
+                  )
+                  .apply($$0, dh.a::new)
+         )
+         .validate(dh.a::a);
+
+      private static DataResult<dh.a> a(dh.a $$0) {
+         return $$0.c
+            .<DataResult<dh.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dea)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
-   }
 
-   @Override
-   public final void a(alb $$0) {
-      this.a.remove($$0);
-   }
-
-   protected void a(aqu $$0, Predicate<T> $$1) {
-      alb $$2 = $$0.S();
-      Set<aq.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         erp $$4 = bs.b($$0, $$0);
-         List<aq.a<T>> $$5 = null;
-
-         for (aq.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bd> $$8 = $$7.a();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
-                  }
-
-                  $$5.add($$6);
-               }
-            }
-         }
-
-         if ($$5 != null) {
-            for (aq.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
-         }
+      public static an<dh.a> a(dea $$0) {
+         return am.K.a(new dh.a(Optional.empty(), Optional.of($$0.q()), Optional.empty()));
       }
-   }
 
-   public interface a extends ar {
+      public boolean a(drd $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      }
+
       @Override
-      default void a(be $$0) {
-         $$0.a(this.a(), ".player");
+      public Optional<bc> a() {
+         return this.b;
       }
 
-      Optional<bd> a();
+      public Optional<ix<dea>> b() {
+         return this.c;
+      }
+
+      public Optional<dl> c() {
+         return this.d;
+      }
    }
 }

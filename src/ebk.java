@@ -1,20 +1,75 @@
 import com.mojang.serialization.Codec;
 
-public class ebk extends eca<eer> {
-   public ebk(Codec<eer> $$0) {
+public class ebk extends dzz<ecy> {
+   public ebk(Codec<ecy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eer> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      ayt $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.d()).a(dfe.gr)) {
-         dgh.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
+   public boolean a(eab<ecy> $$0) {
+      ecy $$1 = $$0.f();
+      dbu $$2 = $$0.b();
+      io $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
          return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         drd $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
       }
    }
 }

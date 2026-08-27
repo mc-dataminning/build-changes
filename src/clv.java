@@ -7,8 +7,8 @@ public class clv {
    private float f = 0.05F;
    private float g = 0.1F;
 
-   public void a(uk $$0) {
-      uk $$1 = new uk();
+   public void a(ud $$0) {
+      ud $$1 = new ud();
       $$1.a("invulnerable", this.a);
       $$1.a("flying", this.b);
       $$1.a("mayfly", this.c);
@@ -19,9 +19,9 @@ public class clv {
       $$0.a("abilities", $$1);
    }
 
-   public void b(uk $$0) {
+   public void b(ud $$0) {
       if ($$0.b("abilities", 10)) {
-         uk $$1 = $$0.p("abilities");
+         ud $$1 = $$0.p("abilities");
          this.a = $$1.q("invulnerable");
          this.b = $$1.q("flying");
          this.c = $$1.q("mayfly");

@@ -1,35 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class foq extends foe {
-   private static final xe a = xe.c("options.skinCustomisation.title");
-   @Nullable
-   private fjk r;
-
-   public foq(fon $$0, fgn $$1) {
-      super($$0, $$1, a);
+public interface foq {
+   static foq a(axr $$0) {
+      return new fop($$0);
    }
 
-   @Override
-   protected void aN_() {
-      this.r = this.c(new fjk(this.m, this.n, this.o, this));
-      List<fil> $$0 = new ArrayList<>();
-
-      for (clz $$1 : clz.values()) {
-         $$0.add(fiu.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   static foq a(cra $$0) {
+      if ($$0 instanceof cqz $$1) {
+         return new foo($$1.a());
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
       }
-
-      $$0.add(this.c.v().a(this.c));
-      this.r.a($$0);
-      super.aN_();
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      if (this.r != null) {
-         this.r.a(this.n, this.d);
-      }
+   int a();
+
+   int a(ffl var1);
+
+   default void a(ffl $$0, int $$1, int $$2, Matrix4f $$3, gck.a $$4) {
+   }
+
+   default void a(ffl $$0, int $$1, int $$2, ffn $$3) {
    }
 }

@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class diy extends dmc {
+public class diy extends dea implements ded {
    public static final MapCodec<diy> a = b(diy::new);
 
    @Override
@@ -8,13 +8,27 @@ public class diy extends dmc {
       return a;
    }
 
-   public diy(dtb.d $$0) {
+   public diy(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, iw.a.b));
    }
 
    @Override
-   public void a(dca $$0, dtc $$1, ir $$2, brv $$3, float $$4) {
-      $$3.a($$4, 0.2F, $$0.aj().l());
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      $$0.H_().c(lf.aC).flatMap($$0x -> $$0x.b(rr.n)).ifPresent($$3x -> ((dzm)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   }
+
+   @Override
+   public ded.a ar_() {
+      return ded.a.a;
    }
 }

@@ -1,31 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record cp(cu.d b) {
-   public static final Codec<cp> a = RecordCodecBuilder.create($$0 -> $$0.group(axu.a(cu.d.d, "light", cu.d.c).forGetter(cp::a)).apply($$0, cp::new));
+public record cp(ct.d c, Optional<br> d) implements bs {
+   public static final MapCodec<cp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ct.d.d.optionalFieldOf("blocks_set_on_fire", ct.d.c).forGetter(cp::b), br.a.optionalFieldOf("entity_struck").forGetter(cp::c))
+            .apply($$0, cp::new)
+   );
 
-   public boolean a(aqt $$0, ir $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+   public static cp a(ct.d $$0) {
+      return new cp($$0, Optional.empty());
    }
 
-   public cu.d a() {
-      return this.b;
+   @Override
+   public MapCodec<cp> a() {
+      return bt.a;
    }
 
-   public static class a {
-      private cu.d a = cu.d.c;
+   @Override
+   public boolean a(brw $$0, aqn $$1, @Nullable eum $$2) {
+      return !($$0 instanceof bsp $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   }
 
-      public static cp.a a() {
-         return new cp.a();
-      }
+   public ct.d b() {
+      return this.c;
+   }
 
-      public cp.a a(cu.d $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cp b() {
-         return new cp(this.a);
-      }
+   public Optional<br> c() {
+      return this.d;
    }
 }

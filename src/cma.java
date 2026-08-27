@@ -6,9 +6,9 @@ import java.time.Instant;
 public record cma(PrivateKey b, cmb c, Instant d) {
    public static final Codec<cma> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axk.g.fieldOf("private_key").forGetter(cma::b),
+               axd.g.fieldOf("private_key").forGetter(cma::b),
                cmb.c.fieldOf("public_key").forGetter(cma::c),
-               axu.m.fieldOf("refreshed_after").forGetter(cma::d)
+               axn.m.fieldOf("refreshed_after").forGetter(cma::d)
             )
             .apply($$0, cma::new)
    );

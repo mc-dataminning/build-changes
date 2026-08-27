@@ -1,38 +1,61 @@
-import java.util.List;
-import java.util.Optional;
+public class ahd implements ze<age> {
+   public static final yv<vx, ahd> a = ze.a(ahd::a, ahd::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-public record ahd(int c, List<String> d, Optional<String> e) implements zl<agl> {
-   public static final int a = 4;
-   private static final int f = 128;
-   private static final int g = 8192;
-   private static final int h = 200;
-   public static final zc<we, ahd> b = zc.a(za.g, ahd::b, za.b(8192).a(za.c(200)), ahd::e, za.b(128).a(za::a), ahd::f, ahd::new);
+   public ahd(brw $$0) {
+      this.b = $$0.du();
+      this.c = $$0.dw();
+      this.d = $$0.dA();
+      this.e = $$0.dF();
+      this.f = $$0.dH();
+   }
 
-   public ahd(int c, List<String> d, Optional<String> e) {
-      d = List.copyOf(d);
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private ahd(vx $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zn<ahd> a() {
-      return agj.bw;
+   public zg<ahd> a() {
+      return agc.bF;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public List<String> e() {
+   public double f() {
       return this.d;
    }
 
-   public Optional<String> f() {
+   public float g() {
       return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

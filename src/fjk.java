@@ -1,129 +1,163 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fjk extends fit<fjk.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final foe n;
+public class fjk extends fji {
+   private final fjk.b c;
+   private final List<fjk.a> d = new ArrayList<>();
+   private final fjq e = fjq.i();
 
-   public fjk(fgj $$0, int $$1, int $$2, foe $$3) {
-      super($$0, $$1, $$3.d.d(), $$3.d.c(), 25);
-      this.e = false;
-      this.n = $$3;
+   public fjk(int $$0, int $$1, fjk.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public void a(fgm<?> $$0) {
-      this.b(fjk.b.a(this.c.m, $$0, this.n));
-   }
-
-   public void a(fgm<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         fgm<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fjk.b.a(this.c.m, $$0[$$1], $$2, this.n));
-      }
-   }
-
-   public void a(List<fil> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
-      }
-   }
-
-   public void a(fil $$0, @Nullable fil $$1) {
-      this.b(fjk.a.a($$0, $$1, this.n));
+   public fjk(int $$0, int $$1, int $$2, int $$3, fjk.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   public int b() {
-      return 310;
-   }
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-   @Nullable
-   public fil b(fgm<?> $$0) {
-      for (fjk.a $$1 : this.aE_()) {
-         if ($$1 instanceof fjk.b $$2) {
-            fil $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
+         for (fjk.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fjk.a> $$5 = this.d.iterator();
+         fjk.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fjk.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
             }
          }
-      }
 
-      return null;
+         int $$9 = this.c.d(this);
+
+         for (fjk.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
-   public Optional<fkj> e(double $$0, double $$1) {
-      for (fjk.a $$2 : this.aE_()) {
-         for (fkj $$3 : $$2.aE_()) {
-            if ($$3.c($$0, $$1)) {
-               return Optional.of($$3);
-            }
+   @Override
+   public void b(Consumer<fjp> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public fjq b() {
+      return this.e.g();
+   }
+
+   public fjq c() {
+      return this.e;
+   }
+
+   public <T extends fjp> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fjp> T a(T $$0, fjq $$1) {
+      this.d.add(new fjk.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fjp> T a(T $$0, Consumer<fjq> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends fji.a {
+      protected a(fjp $$0, fjq $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fjp $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
+
+      int a(fjk.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fjp $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
+
+      int b(fjk.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fjk.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
          }
       }
 
-      return Optional.empty();
-   }
-
-   protected static class a extends fit.a<fjk.a> {
-      private final List<fil> a;
-      private final fon b;
-      private static final int c = 160;
-
-      a(List<fil> $$0, fon $$1) {
-         this.a = ImmutableList.copyOf($$0);
-         this.b = $$1;
-      }
-
-      public static fjk.a a(List<fil> $$0, fon $$1) {
-         return new fjk.a($$0, $$1);
-      }
-
-      public static fjk.a a(fil $$0, @Nullable fil $$1, fon $$2) {
-         return $$1 == null ? new fjk.a(ImmutableList.of($$0), $$2) : new fjk.a(ImmutableList.of($$0, $$1), $$2);
-      }
-
-      @Override
-      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.n / 2 - 155;
-
-         for (fil $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
+      void a(fjk.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
          }
       }
 
-      @Override
-      public List<? extends fkj> aE_() {
-         return this.a;
+      int c(fjp $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
       }
 
-      @Override
-      public List<? extends fmh> b() {
-         return this.a;
-      }
-   }
-
-   protected static class b extends fjk.a {
-      final Map<fgm<?>, fil> a;
-
-      private b(Map<fgm<?>, fil> $$0, foe $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
-      }
-
-      public static fjk.b a(fgn $$0, fgm<?> $$1, foe $$2) {
-         return new fjk.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
-
-      public static fjk.b a(fgn $$0, fgm<?> $$1, @Nullable fgm<?> $$2, foe $$3) {
-         fil $$4 = $$1.a($$0);
-         return $$2 == null ? new fjk.b(ImmutableMap.of($$1, $$4), $$3) : new fjk.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+      int d(fjp $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
       }
    }
 }

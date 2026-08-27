@@ -1,104 +1,71 @@
-import com.google.common.base.Preconditions;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record xq(byte[] c) {
-   public static final Codec<xq> a = axu.n.xmap(xq::new, xq::b);
-   public static final int b = 256;
+public record xq(String b, Instant c, long d, xe e) {
+   public static final MapCodec<xq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xq::a),
+               axn.m.fieldOf("time_stamp").forGetter(xq::b),
+               Codec.LONG.fieldOf("salt").forGetter(xq::c),
+               xe.a.optionalFieldOf("last_seen", xe.b).forGetter(xq::d)
+            )
+            .apply($$0, xq::new)
+   );
 
-   public xq(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+   public static xq a(String $$0) {
+      return new xq($$0, Instant.now(), 0L, xe.b);
    }
 
-   public static xq a(we $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new xq($$1);
+   public void a(ayq.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public static void a(we $$0, xq $$1) {
-      $$0.c($$1.c);
+   public xq.a a(xk $$0) {
+      return new xq.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public boolean a(ayy $$0, ayx $$1) {
-      return $$0.validate($$1, this.c);
+   public String a() {
+      return this.b;
    }
 
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xq $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
-
-   public xq.a a(xr $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new xq.a($$1) : new xq.a(this);
-   }
-
-   public byte[] b() {
+   public Instant b() {
       return this.c;
    }
 
-   public static record a(int b, @Nullable xq c) {
-      public static final int a = -1;
+   public long c() {
+      return this.d;
+   }
 
-      public a(xq $$0) {
-         this(-1, $$0);
+   public xe d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xe.a d) {
+      public a(vx $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xe.a($$0));
       }
 
-      public a(int $$0) {
-         this($$0, null);
+      public void a(vx $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      public static xq.a a(we $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new xq.a(xq.a($$0)) : new xq.a($$1);
-      }
-
-      public static void a(we $$0, xq.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            xq.a($$0, $$1.b());
-         }
-      }
-
-      public Optional<xq> a(xr $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public xq b() {
-         return this.c;
+      public Optional<xq> a(xk $$0) {
+         return this.d.a($$0).map($$0x -> new xq(this.a, this.b, this.c, $$0x));
       }
    }
 }

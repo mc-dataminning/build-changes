@@ -1,13 +1,53 @@
-import java.util.List;
+public class fzp extends gay {
+   fzp(fwr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
+   }
 
-public enum fzp {
-   a,
-   b;
+   @Override
+   public gac b() {
+      return gac.b;
+   }
 
-   private static final List<fzp> c = List.of(values());
-   private static final jo.b d = jo.a(lh.aw);
+   @Override
+   public float b(float $$0) {
+      return this.D * ayf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-   public static jh<fzp> a() {
-      return new jh<>(c).a(a, d);
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzp $$8 = new fzp($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gab<lb> {
+      private final gat a;
+
+      public b(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzp $$8 = new fzp($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

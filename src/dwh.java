@@ -1,231 +1,420 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Arrays;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.mutable.MutableDouble;
 
-public class dwh implements dwd, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bot<bov.b> c;
-   private final dwm d;
-   private final Map<dbh, dwh.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
-
-   protected dwh(dwo $$0, Path $$1, boolean $$2) {
-      this.d = new dwm($$0, $$1, $$2);
-      this.c = new bot<>(new bov.a(dwh.b.values().length), ad.g(), "IOWorker-" + $$0.c());
+public interface dwh {
+   static dwh a(dwz $$0, dag $$1, dxb $$2, dxi $$3, int $$4, int $$5, dwh.a $$6) {
+      return new dwh.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public boolean a(dbh $$0, int $$1) {
-      dbh $$2 = new dbh($$0.e - $$1, $$0.f - $$1);
-      dbh $$3 = new dbh($$0.e + $$1, $$0.f + $$1);
+   static dwh a(final dwh.a $$0) {
+      return new dwh() {
+         @Nullable
+         @Override
+         public drd a(dwo.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
+         }
 
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               dbh $$7 = dbh.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
+         @Override
+         public boolean a() {
+            return false;
+         }
+      };
+   }
 
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
+   @Nullable
+   drd a(dwo.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dwh.b computeFluid(int var1, int var2, int var3);
+   }
+
+   public static final class b {
+      final int a;
+      final drd b;
+
+      public b(int $$0, drd $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public drd a(int $$0) {
+         return $$0 < this.a ? this.b : dec.a.n();
+      }
+   }
+
+   public static class c implements dwh {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(ayf.h(10), ayf.h(12));
+      private final dwz l;
+      private final dwo m;
+      private final dwo n;
+      private final dwo o;
+      private final dwo p;
+      private final dxi q;
+      private final dwh.b[] r;
+      private final long[] s;
+      private final dwh.a t;
+      private final dwo u;
+      private final dwo v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
+
+      c(dwz $$0, dag $$1, dxb $$2, dxi $$3, int $$4, int $$5, dwh.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dwh.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
+
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
+
+      @Nullable
+      @Override
+      public drd a(dwo.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dwh.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(dec.H)) {
+               this.w = false;
+               return dec.H.n();
+            } else {
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               long $$12 = 0L;
+               long $$13 = 0L;
+               long $$14 = 0L;
+
+               for (int $$15 = 0; $$15 <= 1; $$15++) {
+                  for (int $$16 = -1; $$16 <= 1; $$16++) {
+                     for (int $$17 = 0; $$17 <= 1; $$17++) {
+                        int $$18 = $$6 + $$15;
+                        int $$19 = $$7 + $$16;
+                        int $$20 = $$8 + $$17;
+                        int $$21 = this.a($$18, $$19, $$20);
+                        long $$22 = this.s[$$21];
+                        long $$23;
+                        if ($$22 != Long.MAX_VALUE) {
+                           $$23 = $$22;
+                        } else {
+                           aym $$24 = this.q.a($$18, $$19, $$20);
+                           $$23 = io.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
+                           this.s[$$21] = $$23;
+                        }
+
+                        int $$26 = io.a($$23) - $$2;
+                        int $$27 = io.b($$23) - $$3;
+                        int $$28 = io.c($$23) - $$4;
+                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
+                        if ($$9 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$12;
+                           $$12 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$29;
+                        } else if ($$10 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$29;
+                        } else if ($$11 >= $$29) {
+                           $$14 = $$23;
+                           $$11 = $$29;
+                        }
                      }
+                  }
+               }
+
+               dwh.b $$30 = this.a($$12);
+               double $$31 = a($$9, $$10);
+               drd $$32 = $$30.a($$3);
+               if ($$31 <= 0.0) {
+                  this.w = $$31 >= k;
+                  return $$32;
+               } else if ($$32.a(dec.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(dec.H)) {
+                  this.w = true;
+                  return $$32;
+               } else {
+                  MutableDouble $$34 = new MutableDouble(Double.NaN);
+                  dwh.b $$35 = this.a($$13);
+                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
+                  if ($$1 + $$36 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dwh.b $$37 = this.a($$14);
+                     double $$38 = a($$9, $$11);
+                     if ($$38 > 0.0) {
+                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
+                        if ($$1 + $$39 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     double $$40 = a($$10, $$11);
+                     if ($$40 > 0.0) {
+                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
+                        if ($$1 + $$41 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     this.w = true;
+                     return $$32;
                   }
                }
             }
          }
       }
 
-      return false;
-   }
-
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = dbh.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
+      @Override
+      public boolean a() {
+         return this.w;
       }
-   }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         dbh $$2 = dbh.a($$0, $$1);
-         dbh $$3 = dbh.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         dbh.a($$2, $$3).forEach($$1xx -> {
-            vo $$2x = new vo(new vq(up.a, "DataVersion"), new vq(uk.b, "blending_data"));
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      }
 
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof uk $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ad.f());
-   }
-
-   private boolean a(uk $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(dbh $$0, @Nullable uk $$1) {
-      return this.a(() -> {
-         dwh.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dwh.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<uk>> a(dbh $$0) {
-      return this.a(() -> {
-         dwh.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               uk $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(dbh $$0, ve $$1) {
-      return this.a(() -> {
-         try {
-            dwh.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
+      private double a(dwo.b $$0, MutableDouble $$1, dwh.b $$2, dwh.b $$3) {
+         int $$4 = $$0.b();
+         drd $$5 = $$2.a($$4);
+         drd $$6 = $$3.a($$4);
+         if ((!$$5.a(dec.H) || !$$6.a(dec.G)) && (!$$5.a(dec.G) || !$$6.a(dec.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
             } else {
-               this.d.a($$0, $$1);
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
+
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
+
+               return 2.0 * ($$28 + $$19);
             }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new bov.b(dwh.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<dbh, dwh.a>> $$0 = this.e.entrySet().iterator();
-         Entry<dbh, dwh.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.c.a(new bov.b(dwh.b.b.ordinal(), this::a));
-   }
-
-   private void a(dbh $$0, dwh.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new bov.b(dwh.b.c.ordinal(), () -> $$0.a(azo.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
+         } else {
+            return 2.0;
          }
       }
-   }
 
-   static class a {
-      @Nullable
-      uk a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable uk $$0) {
-         this.a = $$0;
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
       }
-   }
 
-   static enum b {
-      a,
-      b,
-      c;
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
+
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dwh.b a(long $$0) {
+         int $$1 = io.a($$0);
+         int $$2 = io.b($$0);
+         int $$3 = io.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dwh.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dwh.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dwh.b b(int $$0, int $$1, int $$2) {
+         dwh.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + jq.c($$8[0]);
+            int $$10 = $$2 + jq.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dwh.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).i()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
+               }
+            }
+
+            $$4 = Math.min($$4, $$11);
+         }
+
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dwh.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
+      }
+
+      private int a(int $$0, int $$1, int $$2, dwh.b $$3, int $$4, boolean $$5) {
+         dwo.e $$6 = new dwo.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (dco.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? ayf.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = ayf.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = ayf.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = ayf.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = duv.g;
+         }
+
+         return $$17;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new dwo.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = ayf.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
+      }
+
+      private drd a(int $$0, int $$1, int $$2, dwh.b $$3, int $$4) {
+         drd $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != duv.g && $$3.b != dec.H.n()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new dwo.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = dec.H.n();
+            }
+         }
+
+         return $$5;
+      }
    }
 }

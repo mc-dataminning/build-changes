@@ -1,98 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlr extends dfc {
-   public static final MapCodec<dlr> a = b(dlr::new);
-   public static final dtt b = dlu.d;
-
-   @Override
-   public MapCodec<dlr> a() {
-      return a;
-   }
-
-   public dlr(dtb.d $$0) {
+public abstract class dlr extends dlk {
+   protected dlr(drc.d $$0) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, cly $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dca $$0, ir $$1, dtc $$2, brv $$3) {
-      if (!$$3.cb()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
+   private static boolean b(drd $$0, dbc $$1, io $$2) {
+      io $$3 = $$2.c();
+      drd $$4 = $$1.a_($$3);
+      if ($$4.a(dec.dN) && $$4.c(dlj.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
       } else {
-         d($$1, $$2, $$3);
-      }
-
-      return $$0.f() instanceof csc && new cyd($$4, $$5, $$0, $$6).b() ? bqc.e : bqc.a;
-   }
-
-   private static void d(dtc $$0, dca $$1, ir $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+         int $$5 = emn.a($$1, $$0, $$2, $$4, $$3, it.b, $$4.b($$1, $$3));
+         return $$5 < $$1.P();
       }
    }
 
    @Override
-   protected boolean d_(dtc $$0) {
-      return $$0.c(b);
+   protected abstract MapCodec<? extends dlr> a();
+
+   private static boolean c(drd $$0, dbc $$1, io $$2) {
+      io $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awc.a);
    }
 
    @Override
-   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dec.j.n());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            drd $$4 = this.n();
 
-   @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, cuh $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && dae.a(dag.v, $$3) == 0) {
-         int $$5 = 1 + $$1.A.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dca $$0, ir $$1) {
-      double $$2 = 0.5625;
-      ayt $$3 = $$0.A;
-
-      for (iw $$4 : iw.values()) {
-         ir $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            iw.a $$6 = $$4.o();
-            double $$7 = $$6 == iw.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == iw.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == iw.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(kv.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               io $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dec.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dec.dN))));
+               }
+            }
          }
       }
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
    }
 }

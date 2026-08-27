@@ -1,121 +1,116 @@
-public class fpq extends fqp<cpi> {
-   private static final akt D = new akt("container/anvil/text_field");
-   private static final akt E = new akt("container/anvil/text_field_disabled");
-   private static final akt F = new akt("container/anvil/error");
-   private static final akt G = new akt("textures/gui/container/anvil.png");
-   private static final xe H = xe.c("container.repair.expensive");
-   private fiw I;
-   private final cly J;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-   public fpq(cpi $$0, clx $$1, xe $$2) {
-      super($$0, $$1, $$2, G);
-      this.J = $$1.l;
-      this.r = 60;
+public class fpq {
+   private final jl a;
+   private final List<cxy<?>> b;
+   private final boolean c;
+   private final Set<cxy<?>> d = Sets.newHashSet();
+   private final Set<cxy<?>> e = Sets.newHashSet();
+   private final Set<cxy<?>> f = Sets.newHashSet();
+
+   public fpq(jl $$0, List<cxy<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
+      }
    }
 
-   @Override
-   protected void E() {
-      int $$0 = (this.n - this.c) / 2;
-      int $$1 = (this.o - this.d) / 2;
-      this.I = new fiw(this.p, $$0 + 62, $$1 + 24, 103, 12, xe.c("container.repair"));
-      this.I.f(false);
-      this.I.g(-1);
-      this.I.h(-1);
-      this.I.d(false);
-      this.I.f(50);
-      this.I.b(this::a);
-      this.I.a("");
-      this.d(this.I);
-      this.I.e(this.w.b(0).h());
-   }
+   private static boolean a(jl $$0, List<cxy<?>> $$1) {
+      int $$2 = $$1.size();
+      ctq $$3 = $$1.get(0).b().a($$0);
 
-   @Override
-   protected void aC_() {
-      this.b(this.I);
-   }
-
-   @Override
-   public void a(fgj $$0, int $$1, int $$2) {
-      String $$3 = this.I.a();
-      this.b($$0, $$1, $$2);
-      this.I.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.s.t();
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         ctq $$5 = $$1.get($$4).b().a($$0);
+         if (!ctq.c($$3, $$5)) {
+            return false;
+         }
       }
 
-      return !this.I.a($$0, $$1, $$2) && !this.I.d() ? super.a($$0, $$1, $$2) : true;
+      return true;
    }
 
-   private void a(String $$0) {
-      cre $$1 = this.w.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(ke.f) && $$0.equals($$1.g().w().getString())) {
-            $$2 = "";
-         }
+   public jl a() {
+      return this.a;
+   }
 
-         if (this.w.a($$2)) {
-            this.m.s.h.b(new aht($$2));
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(avl $$0) {
+      for (cxy<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
          }
       }
    }
 
-   @Override
-   protected void b(fia $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.w.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         xe $$5;
-         if ($$3 >= 40 && !this.m.s.gm().d) {
-            $$5 = H;
-            $$4 = 16736352;
-         } else if (!this.w.b(2).h()) {
-            $$5 = null;
+   public void a(cmc $$0, int $$1, int $$2, avl $$3) {
+      for (cxy<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
          } else {
-            $$5 = xe.a("container.repair.cost", $$3);
-            if (!this.w.b(2).a(this.J)) {
-               $$4 = 16736352;
-            }
+            this.e.remove($$4);
          }
 
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
          }
       }
    }
 
-   @Override
-   protected void a(fia $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
+   public boolean a(cxy<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public void d(fia $$0, int $$1, int $$2, float $$3) {
-      this.I.a($$0, $$1, $$2, $$3);
+   public boolean c() {
+      return !this.d.isEmpty();
    }
 
-   @Override
-   protected void c(fia $$0, int $$1, int $$2) {
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
-         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<cxy<?>> e() {
+      return this.b;
+   }
+
+   public List<cxy<?>> a(boolean $$0) {
+      List<cxy<?>> $$1 = Lists.newArrayList();
+      Set<cxy<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (cxy<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
       }
+
+      return $$1;
    }
 
-   @Override
-   public void a(cpg $$0, int $$1, cuh $$2) {
-      if ($$1 == 0) {
-         this.I.a($$2.d() ? "" : $$2.w().getString());
-         this.I.e(!$$2.d());
-         this.a(this.I);
+   public List<cxy<?>> b(boolean $$0) {
+      List<cxy<?>> $$1 = Lists.newArrayList();
+
+      for (cxy<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
       }
+
+      return $$1;
+   }
+
+   public boolean f() {
+      return this.c;
    }
 }

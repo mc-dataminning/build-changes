@@ -1,17 +1,47 @@
-public interface ewz {
-   static ewz a() {
-      return exe.a;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class ewz implements ewx {
+   private final Int2ObjectMap<eww.a> b;
+
+   public ewz(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (eww.a)() -> $$1));
    }
 
-   static ewz a(brv $$0) {
-      return new exe($$0);
+   @Nullable
+   @Override
+   public eww a(int $$0) {
+      return (eww)this.b.get($$0);
    }
 
-   boolean b();
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
 
-   boolean a(exn var1, ir var2, boolean var3);
+   public static record a(Map<Integer, Float> c) implements fjc {
+      public static final MapCodec<ewz.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(axn.x, Codec.FLOAT).fieldOf("advances").forGetter(ewz.a::c)).apply($$0, ewz.a::new)
+      );
 
-   boolean a(cuc var1);
+      @Override
+      public fjd a() {
+         return fjd.c;
+      }
 
-   boolean a(epe var1, epe var2);
+      @Override
+      public Either<fjc.b, fjc.c> b() {
+         fjc.b $$0 = $$0x -> new ewz(this.c);
+         return Either.left($$0);
+      }
+   }
 }

@@ -1,30 +1,48 @@
-public class cav extends bzl {
-   private final bsw a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cav(bsw $$0) {
+public class cav extends bzo {
+   private final ciq a;
+   @Nullable
+   private bsq b;
+
+   public cav(ciq $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bzo.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dU().b_(this.a.du()).a(awj.a);
+      bsq $$0 = this.a.p();
+      return this.a.u() > 0 || $$0 != null && this.a.g((brw)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      ir $$0 = null;
+      this.a.K().n();
+      this.b = this.a.p();
+   }
 
-      for (ir $$2 : ir.b(
-         aym.a(this.a.dz() - 2.0), aym.a(this.a.dB() - 2.0), aym.a(this.a.dF() - 2.0), aym.a(this.a.dz() + 2.0), this.a.dA(), aym.a(this.a.dF() + 2.0)
-      )) {
-         if (this.a.dU().b_($$2).a(awj.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.G().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((brw)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

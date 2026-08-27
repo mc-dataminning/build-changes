@@ -1,65 +1,29 @@
-public abstract class gtz extends gtv {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cef n;
-   private boolean r;
+import com.google.common.util.concurrent.RateLimiter;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
-   public gtz(cef $$0, avn $$1, avq $$2) {
-      super($$1, $$2, gum.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dz());
-      this.g = (double)((float)$$0.dB());
-      this.h = (double)((float)$$0.dF());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class gtz {
+   private final float a;
+   private final AtomicReference<gtz.a> b = new AtomicReference<>();
+
+   public gtz(Duration $$0) {
+      this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         fgj.Q().ak().a((gun)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dP() && !this.r) {
-         this.f = (double)((float)this.n.dz());
-         this.g = (double)((float)this.n.dB());
-         this.h = (double)((float)this.n.dF());
-         float $$1 = (float)this.n.dx().h();
-         if ($$1 >= 0.01F) {
-            this.e = aym.i(aym.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = aym.i(aym.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
-      } else {
-         this.n();
+   public void a(fdt $$0, wx $$1) {
+      gtz.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gtz.a($$1, RateLimiter.create((double)this.a)));
+      if ($$2.b.tryAcquire(1)) {
+         $$0.c($$1);
       }
    }
 
-   private float u() {
-      return this.n.o_() ? 1.1F : 0.7F;
+   static class a {
+      final wx a;
+      final RateLimiter b;
+
+      a(wx $$0, RateLimiter $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
-
-   private float v() {
-      return this.n.o_() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.ba();
-   }
-
-   protected abstract gtv o();
-
-   protected abstract boolean p();
 }

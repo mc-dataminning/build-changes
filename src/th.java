@@ -1,9 +1,19 @@
-public interface th {
-   void a(tg var1);
+public class th {
+   private static tw a = new tj();
 
-   void a(tg var1, tj var2);
+   public static void a(tw $$0) {
+      a = $$0;
+   }
 
-   void b(tg var1, tj var2);
+   public static void a(sz $$0) {
+      a.a($$0);
+   }
 
-   void a(tg var1, tg var2, tj var3);
+   public static void b(sz $$0) {
+      a.b($$0);
+   }
+
+   public static void a() {
+      a.a();
+   }
 }

@@ -1,88 +1,72 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dhk {
-   public static <S extends dqc> dhk.c<S> a(
-      dqe<S> $$0, Function<dtc, dhk.a> $$1, Function<dtc, iw> $$2, dtw $$3, dtc $$4, dcb $$5, ir $$6, BiPredicate<dcb, ir> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return dhk.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return dhk.b::b;
-      } else {
-         dhk.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == dhk.a.a;
-         boolean $$11 = $$9 == dhk.a.b;
-         if ($$10) {
-            return new dhk.c.b<>($$8);
-         } else {
-            ir $$12 = $$6.a($$2.apply($$4));
-            dtc $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               dhk.a $$14 = $$1.apply($$13);
-               if ($$14 != dhk.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return dhk.b::b;
-                  }
+public class dhk extends dja implements ded, dlb {
+   public static final MapCodec<dhk> a = b(dhk::new);
+   private static final dru c = drt.C;
+   private final djb d = new djb(this);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new dhk.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new dhk.c.b<>($$8);
-         }
-      }
+   @Override
+   public MapCodec<dhk> a() {
+      return a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public dhk(drc.d $$0) {
+      super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   public static ToIntFunction<drd> b(int $$0) {
+      return $$1 -> dja.n($$1) ? $$0 : 0;
    }
 
-   public interface c<S> {
-      <T> T apply(dhk.b<? super S, T> var1);
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      super.a($$0);
+      $$0.a(c);
+   }
 
-      public static final class a<S> implements dhk.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(dhk.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
       }
 
-      public static final class b<S> implements dhk.c<S> {
-         private final S a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   @Override
+   protected boolean a(drd $$0, cxb $$1) {
+      return !$$1.n().a(ctt.fW) || super.a($$0, $$1);
+   }
 
-         @Override
-         public <T> T apply(dhk.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return it.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected emw b_(drd $$0) {
+      return $$0.c(c) ? emx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(drd $$0, daf $$1, io $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public djb c() {
+      return this.d;
    }
 }

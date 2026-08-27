@@ -9,59 +9,53 @@ public final class clq {
    public static final clq e = a("snow");
    public static final clq f = a("swamp");
    public static final clq g = a("taiga");
-   public static final clq h = a("potato");
-   private final String i;
-   private static final Map<aks<dcz>, clq> j = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ddg.F, a);
-      $$0.put(ddg.k, a);
-      $$0.put(ddg.G, a);
-      $$0.put(ddg.H, a);
-      $$0.put(ddg.E, b);
-      $$0.put(ddg.C, b);
-      $$0.put(ddg.D, b);
-      $$0.put(ddg.x, d);
-      $$0.put(ddg.w, d);
-      $$0.put(ddg.B, d);
-      $$0.put(ddg.ac, e);
-      $$0.put(ddg.ab, e);
-      $$0.put(ddg.Q, e);
-      $$0.put(ddg.j, e);
-      $$0.put(ddg.S, e);
-      $$0.put(ddg.v, e);
-      $$0.put(ddg.i, e);
-      $$0.put(ddg.K, e);
-      $$0.put(ddg.L, e);
-      $$0.put(ddg.M, e);
-      $$0.put(ddg.N, e);
-      $$0.put(ddg.l, f);
-      $$0.put(ddg.m, f);
-      $$0.put(ddg.t, g);
-      $$0.put(ddg.s, g);
-      $$0.put(ddg.z, g);
-      $$0.put(ddg.y, g);
-      $$0.put(ddg.u, g);
-      $$0.put(ddg.A, g);
-      $$0.put(ddg.f, h);
-      $$0.put(ddg.d, h);
-      $$0.put(ddg.e, h);
-      $$0.put(ddg.h, h);
-      $$0.put(ddg.g, h);
+   private final String h;
+   private static final Map<akm<dby>, clq> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dcf.A, a);
+      $$0.put(dcf.f, a);
+      $$0.put(dcf.B, a);
+      $$0.put(dcf.C, a);
+      $$0.put(dcf.z, b);
+      $$0.put(dcf.x, b);
+      $$0.put(dcf.y, b);
+      $$0.put(dcf.s, d);
+      $$0.put(dcf.r, d);
+      $$0.put(dcf.w, d);
+      $$0.put(dcf.X, e);
+      $$0.put(dcf.W, e);
+      $$0.put(dcf.L, e);
+      $$0.put(dcf.e, e);
+      $$0.put(dcf.N, e);
+      $$0.put(dcf.q, e);
+      $$0.put(dcf.d, e);
+      $$0.put(dcf.F, e);
+      $$0.put(dcf.G, e);
+      $$0.put(dcf.H, e);
+      $$0.put(dcf.I, e);
+      $$0.put(dcf.g, f);
+      $$0.put(dcf.h, f);
+      $$0.put(dcf.o, g);
+      $$0.put(dcf.n, g);
+      $$0.put(dcf.u, g);
+      $$0.put(dcf.t, g);
+      $$0.put(dcf.p, g);
+      $$0.put(dcf.v, g);
    });
 
    private clq(String $$0) {
-      this.i = $$0;
+      this.h = $$0;
    }
 
    @Override
    public String toString() {
-      return this.i;
+      return this.h;
    }
 
    private static clq a(String $$0) {
-      return jn.a(lh.y, new akt($$0), new clq($$0));
+      return jk.a(le.y, new akn($$0), new clq($$0));
    }
 
-   public static clq a(ja<dcz> $$0) {
-      return $$0.e().map(j::get).orElse(c);
+   public static clq a(ix<dby> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

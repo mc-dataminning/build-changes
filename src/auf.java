@@ -1,71 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public interface auf {
-   auf a = new auf() {
-      @Override
-      public <T> Optional<T> a(atc<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   atv<auf> b = () -> a;
+public abstract class auf<T> extends auo<T> {
+   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   public static final String b = "forever";
+   protected final Date c;
+   protected final String d;
+   @Nullable
+   protected final Date e;
+   protected final String f;
 
-   static auf a(InputStream $$0) throws IOException {
-      auf var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = ayc.a($$1);
-         var3 = new auf() {
-            @Override
-            public <T> Optional<T> a(atc<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(ayc.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public auf(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0);
+      this.c = $$1 == null ? new Date() : $$1;
+      this.d = $$2 == null ? "(Unknown)" : $$2;
+      this.e = $$3;
+      this.f = $$4 == null ? "Banned by an operator." : $$4;
    }
 
-   <T> Optional<T> a(atc<T> var1);
+   protected auf(@Nullable T $$0, JsonObject $$1) {
+      super($$0);
 
-   default auf a(Collection<atc<?>> $$0) {
-      auf.a $$1 = new auf.a();
-
-      for (atc<?> $$2 : $$0) {
-         this.a($$1, $$2);
+      Date $$2;
+      try {
+         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
+      } catch (ParseException var7) {
+         $$2 = new Date();
       }
 
-      return $$1.a();
+      this.c = $$2;
+      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
+
+      Date $$5;
+      try {
+         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
+      } catch (ParseException var6) {
+         $$5 = null;
+      }
+
+      this.e = $$5;
+      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
    }
 
-   private <T> void a(auf.a $$0, atc<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   public Date a() {
+      return this.c;
    }
 
-   public static class a {
-      private final Builder<atc<?>, Object> a = ImmutableMap.builder();
+   public String b() {
+      return this.d;
+   }
 
-      public <T> auf.a a(atc<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+   @Nullable
+   public Date c() {
+      return this.e;
+   }
 
-      public auf a() {
-         final ImmutableMap<atc<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? auf.a : new auf() {
-            @Override
-            public <T> Optional<T> a(atc<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   public String d() {
+      return this.f;
+   }
+
+   public abstract wx e();
+
+   @Override
+   boolean f() {
+      return this.e == null ? false : this.e.before(new Date());
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      $$0.addProperty("created", a.format(this.c));
+      $$0.addProperty("source", this.d);
+      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
+      $$0.addProperty("reason", this.f);
    }
 }

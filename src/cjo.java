@@ -2,53 +2,53 @@ import java.util.EnumSet;
 import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public abstract class cjo extends cij {
-   private static final ajy<Byte> e = akc.a(cjo.class, aka.a);
+public abstract class cjo extends cil {
+   private static final ajs<Byte> e = ajw.a(cjo.class, aju.a);
    protected int b;
-   private cjo.a ch = cjo.a.a;
+   private cjo.a bY = cjo.a.a;
 
-   protected cjo(bsb<? extends cjo> $$0, dca $$1) {
+   protected cjo(bsc<? extends cjo> $$0, daz $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   protected void a(ajw.a $$0) {
       super.a($$0);
       $$0.a(e, (byte)0);
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(ud $$0) {
       super.a($$0);
       this.b = $$0.h("SpellTicks");
    }
 
    @Override
-   public void b(uk $$0) {
+   public void b(ud $$0) {
       super.b($$0);
       $$0.a("SpellTicks", this.b);
    }
 
    @Override
-   public cij.a r() {
-      if (this.gI()) {
-         return cij.a.c;
+   public cil.a s() {
+      if (this.gz()) {
+         return cil.a.c;
       } else {
-         return this.gP() ? cij.a.g : cij.a.a;
+         return this.gI() ? cil.a.g : cil.a.a;
       }
    }
 
-   public boolean gI() {
-      return this.dU().C ? this.as.a(e) > 0 : this.b > 0;
+   public boolean gz() {
+      return this.dP().B ? this.ao.a(e) > 0 : this.b > 0;
    }
 
    public void a(cjo.a $$0) {
-      this.ch = $$0;
-      this.as.a(e, (byte)$$0.h);
+      this.bY = $$0;
+      this.ao.a(e, (byte)$$0.h);
    }
 
-   protected cjo.a gJ() {
-      return !this.dU().C ? this.ch : cjo.a.a(this.as.a(e));
+   protected cjo.a gA() {
+      return !this.dP().B ? this.bY : cjo.a.a(this.ao.a(e));
    }
 
    @Override
@@ -62,26 +62,26 @@ public abstract class cjo extends cij {
    @Override
    public void l() {
       super.l();
-      if (this.dU().C && this.gI()) {
-         cjo.a $$0 = this.gJ();
+      if (this.dP().B && this.gz()) {
+         cjo.a $$0 = this.gA();
          float $$1 = (float)$$0.i[0];
          float $$2 = (float)$$0.i[1];
          float $$3 = (float)$$0.i[2];
-         float $$4 = this.bj * (float) (Math.PI / 180.0) + aym.b((float)this.am * 0.6662F) * 0.25F;
-         float $$5 = aym.b($$4);
-         float $$6 = aym.a($$4);
-         double $$7 = 0.6 * (double)this.em();
-         double $$8 = 1.8 * (double)this.em();
-         this.dU().a(kt.a(lb.u, $$1, $$2, $$3), this.dz() + (double)$$5 * $$7, this.dB() + $$8, this.dF() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
-         this.dU().a(kt.a(lb.u, $$1, $$2, $$3), this.dz() - (double)$$5 * $$7, this.dB() + $$8, this.dF() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         float $$4 = this.aY * (float) (Math.PI / 180.0) + ayf.b((float)this.ai * 0.6662F) * 0.25F;
+         float $$5 = ayf.b($$4);
+         float $$6 = ayf.a($$4);
+         double $$7 = 0.6 * (double)this.ee();
+         double $$8 = 1.8 * (double)this.ee();
+         this.dP().a(kq.a(ky.u, $$1, $$2, $$3), this.du() + (double)$$5 * $$7, this.dw() + $$8, this.dA() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         this.dP().a(kq.a(ky.u, $$1, $$2, $$3), this.du() - (double)$$5 * $$7, this.dw() + $$8, this.dA() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
       }
    }
 
-   protected int gK() {
+   protected int gB() {
       return this.b;
    }
 
-   protected abstract avn gy();
+   protected abstract avh gp();
 
    protected static enum a {
       a(0, 0.0, 0.0, 0.0),
@@ -91,7 +91,7 @@ public abstract class cjo extends cij {
       e(4, 0.3, 0.3, 0.8),
       f(5, 0.1, 0.1, 0.2);
 
-      private static final IntFunction<cjo.a> g = axd.a($$0 -> $$0.h, values(), axd.a.a);
+      private static final IntFunction<cjo.a> g = aww.a($$0 -> $$0.h, values(), aww.a.a);
       final int h;
       final double[] i;
 
@@ -105,20 +105,20 @@ public abstract class cjo extends cij {
       }
    }
 
-   protected class b extends bzl {
+   protected class b extends bzo {
       public b() {
-         this.a(EnumSet.of(bzl.a.a, bzl.a.b));
+         this.a(EnumSet.of(bzo.a.a, bzo.a.b));
       }
 
       @Override
       public boolean a() {
-         return cjo.this.gK() > 0;
+         return cjo.this.gB() > 0;
       }
 
       @Override
       public void c() {
          super.c();
-         cjo.this.ca.n();
+         cjo.this.bR.n();
       }
 
       @Override
@@ -130,37 +130,37 @@ public abstract class cjo extends cij {
       @Override
       public void e() {
          if (cjo.this.p() != null) {
-            cjo.this.F().a(cjo.this.p(), (float)cjo.this.aa(), (float)cjo.this.Z());
+            cjo.this.G().a(cjo.this.p(), (float)cjo.this.aa(), (float)cjo.this.Z());
          }
       }
    }
 
-   protected abstract class c extends bzl {
+   protected abstract class c extends bzo {
       protected int b;
       protected int c;
 
       @Override
       public boolean a() {
-         bso $$0 = cjo.this.p();
-         if ($$0 == null || !$$0.bI()) {
+         bsq $$0 = cjo.this.p();
+         if ($$0 == null || !$$0.bD()) {
             return false;
          } else {
-            return cjo.this.gI() ? false : cjo.this.am >= this.c;
+            return cjo.this.gz() ? false : cjo.this.ai >= this.c;
          }
       }
 
       @Override
       public boolean b() {
-         bso $$0 = cjo.this.p();
-         return $$0 != null && $$0.bI() && this.b > 0;
+         bsq $$0 = cjo.this.p();
+         return $$0 != null && $$0.bD() && this.b > 0;
       }
 
       @Override
       public void c() {
          this.b = this.a(this.n());
          cjo.this.b = this.h();
-         this.c = cjo.this.am + this.i();
-         avn $$0 = this.l();
+         this.c = cjo.this.ai + this.i();
+         avh $$0 = this.l();
          if ($$0 != null) {
             cjo.this.a($$0, 1.0F, 1.0F);
          }
@@ -173,7 +173,7 @@ public abstract class cjo extends cij {
          this.b--;
          if (this.b == 0) {
             this.k();
-            cjo.this.a(cjo.this.gy(), 1.0F, 1.0F);
+            cjo.this.a(cjo.this.gp(), 1.0F, 1.0F);
          }
       }
 
@@ -188,7 +188,7 @@ public abstract class cjo extends cij {
       protected abstract int i();
 
       @Nullable
-      protected abstract avn l();
+      protected abstract avh l();
 
       protected abstract cjo.a m();
    }

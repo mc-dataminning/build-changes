@@ -1,27 +1,31 @@
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class blq<S> {
-   private final Map<blo<?>, blu<S, ?>> a = new HashMap<>();
+public interface blq<S, T> {
+   Optional<T> a(blp<S> var1);
 
-   public <T> void a(blo<T> $$0, blu<S, T> $$1) {
-      blu<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalArgumentException("Trying to override rule: " + $$0);
+   static <S, T> blq<S, T> a(blt<S> $$0, blq.a<S, T> $$1) {
+      return new blq.c<>($$1, $$0);
+   }
+
+   static <S, T> blq<S, T> a(blt<S> $$0, blq.b<T> $$1) {
+      return new blq.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   }
+
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(blp<S> var1, blr var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      T run(blr var1);
+   }
+
+   public static record c<S, T>(blq.a<S, T> a, blt<S> b) implements blq<S, T> {
+      @Override
+      public Optional<T> a(blp<S> $$0) {
+         blr $$1 = new blr();
+         return this.b.a($$0, $$1, bll.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
-   }
-
-   public <T> void a(blo<T> $$0, blx<S> $$1, blu.a<S, T> $$2) {
-      this.a($$0, blu.a($$1, $$2));
-   }
-
-   public <T> void a(blo<T> $$0, blx<S> $$1, blu.b<T> $$2) {
-      this.a($$0, blu.a($$1, $$2));
-   }
-
-   @Nullable
-   public <T> blu<S, T> a(blo<T> $$0) {
-      return (blu<S, T>)this.a.get($$0);
    }
 }

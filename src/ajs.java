@@ -1,100 +1,23 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-
-public record ajs(xe b, Optional<ajs.b> c, Optional<ajs.c> d, Optional<ajs.a> e, boolean f) {
-   public static final Codec<ajs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               xg.a.optionalFieldOf("description", xd.a).forGetter(ajs::a),
-               ajs.b.a.optionalFieldOf("players").forGetter(ajs::b),
-               ajs.c.a.optionalFieldOf("version").forGetter(ajs::c),
-               ajs.a.a.optionalFieldOf("favicon").forGetter(ajs::d),
-               Codec.BOOL.optionalFieldOf("enforcesSecureChat", false).forGetter(ajs::e)
-            )
-            .apply($$0, ajs::new)
-   );
-
-   public xe a() {
-      return this.b;
-   }
-
-   public Optional<ajs.b> b() {
-      return this.c;
-   }
-
-   public Optional<ajs.c> c() {
-      return this.d;
-   }
-
-   public Optional<ajs.a> d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public static record a(byte[] b) {
-      private static final String c = "data:image/png;base64,";
-      public static final Codec<ajs.a> a = Codec.STRING.comapFlatMap($$0 -> {
-         if (!$$0.startsWith("data:image/png;base64,")) {
-            return DataResult.error(() -> "Unknown format");
-         } else {
-            try {
-               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
-               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
-               return DataResult.success(new ajs.a($$2));
-            } catch (IllegalArgumentException var3) {
-               return DataResult.error(() -> "Malformed base64 server icon");
-            }
-         }
-      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
-
-      public byte[] a() {
-         return this.b;
+public record ajs<T>(int a, ajt<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ajs<?> $$1 = (ajs<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
       }
    }
 
-   public static record b(int b, int c, List<GameProfile> d) {
-      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ju.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
-               .apply($$0, GameProfile::new)
-      );
-      public static final Codec<ajs.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("max").forGetter(ajs.b::a),
-                  Codec.INT.fieldOf("online").forGetter(ajs.b::b),
-                  e.listOf().optionalFieldOf("sample", List.of()).forGetter(ajs.b::c)
-               )
-               .apply($$0, ajs.b::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public List<GameProfile> c() {
-         return this.d;
-      }
+   @Override
+   public int hashCode() {
+      return this.a;
    }
 
-   public static record c(String b, int c) {
-      public static final Codec<ajs.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ajs.c::b), Codec.INT.fieldOf("protocol").forGetter(ajs.c::c)).apply($$0, ajs.c::new)
-      );
-
-      public static ajs.c a() {
-         ae $$0 = ab.b();
-         return new ajs.c($$0.c(), $$0.e());
-      }
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

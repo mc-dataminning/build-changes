@@ -1,500 +1,511 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMaps;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.DataFixer;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class aql {
-   static final Logger a = LogUtils.getLogger();
-   static final int b = aqb.a(aqm.d);
-   private static final int c = 4;
-   final Long2ObjectMap<ObjectSet<aqu>> d = new Long2ObjectOpenHashMap();
-   final Long2ObjectOpenHashMap<azd<aqx<?>>> e = new Long2ObjectOpenHashMap();
-   private final aql.a f = new aql.a();
-   private final aql.b g = new aql.b(8);
-   private final aqz h = new aqz();
-   private final aql.c i = new aql.c(32);
-   final Set<aqa> j = Sets.newHashSet();
-   final aqf k;
-   final bos<aqf.a<Runnable>> l;
-   final bos<aqf.b> m;
-   final LongSet n = new LongOpenHashSet();
-   final Executor o;
-   private long p;
-   private int q = 10;
+public class aql extends dtd {
+   private static final List<dty> b = dty.a();
+   private final aqf c;
+   final aqn d;
+   final Thread e;
+   final aqq f;
+   private final aql.b g;
+   public final apw a;
+   private final eor h;
+   private long i;
+   private boolean j = true;
+   private boolean k = true;
+   private static final int l = 4;
+   private final long[] m = new long[4];
+   private final dty[] n = new dty[4];
+   private final dsz[] o = new dsz[4];
+   @Nullable
+   @azi
+   private dbk.d p;
 
-   protected aql(Executor $$0, Executor $$1) {
-      bos<Runnable> $$2 = bos.a("player ticket throttler", $$1::execute);
-      aqf $$3 = new aqf(ImmutableList.of($$2), $$0, 4);
-      this.k = $$3;
-      this.l = $$3.a($$2, true);
-      this.m = $$3.a($$2);
-      this.o = $$1;
+   public aql(aqn $$0, eox.c $$1, DataFixer $$2, elm $$3, Executor $$4, dta $$5, int $$6, int $$7, boolean $$8, aqw $$9, dvc $$10, Supplier<eor> $$11) {
+      this.d = $$0;
+      this.g = new aql.b($$0);
+      this.e = Thread.currentThread();
+      File $$12 = $$1.a($$0.ae()).resolve("data").toFile();
+      $$12.mkdirs();
+      this.h = new eor($$12, $$2, $$0.H_());
+      this.a = new apw($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
+      this.f = this.a.e();
+      this.c = this.a.j();
+      this.c.b($$7);
+      this.r();
    }
 
-   protected void a() {
-      this.p++;
-      ObjectIterator<Entry<azd<aqx<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
-
-      while ($$0.hasNext()) {
-         Entry<azd<aqx<?>>> $$1 = (Entry<azd<aqx<?>>>)$$0.next();
-         Iterator<aqx<?>> $$2 = ((azd)$$1.getValue()).iterator();
-         boolean $$3 = false;
-
-         while ($$2.hasNext()) {
-            aqx<?> $$4 = $$2.next();
-            if ($$4.b(this.p)) {
-               $$2.remove();
-               $$3 = true;
-               this.h.b($$1.getLongKey(), $$4);
-            }
-         }
-
-         if ($$3) {
-            this.f.b($$1.getLongKey(), a((azd<aqx<?>>)$$1.getValue()), false);
-         }
-
-         if (((azd)$$1.getValue()).isEmpty()) {
-            $$0.remove();
-         }
-      }
+   public aqq a() {
+      return this.f;
    }
-
-   private static int a(azd<aqx<?>> $$0) {
-      return !$$0.isEmpty() ? $$0.b().b() : aqb.a + 1;
-   }
-
-   protected abstract boolean a(long var1);
 
    @Nullable
-   protected abstract aqa b(long var1);
-
-   @Nullable
-   protected abstract aqa a(long var1, int var3, @Nullable aqa var4, int var5);
-
-   public boolean a(aqc $$0) {
-      this.g.a();
-      this.h.a();
-      this.i.a();
-      int $$1 = Integer.MAX_VALUE - this.f.a(Integer.MAX_VALUE);
-      boolean $$2 = $$1 != 0;
-      if ($$2) {
-      }
-
-      if (!this.j.isEmpty()) {
-         this.j.forEach($$1x -> $$1x.a($$0, this.o));
-         this.j.clear();
-         return true;
-      } else {
-         if (!this.n.isEmpty()) {
-            LongIterator $$3 = this.n.iterator();
-
-            while ($$3.hasNext()) {
-               long $$4 = $$3.nextLong();
-               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqy.c)) {
-                  aqa $$5 = $$0.a($$4);
-                  if ($$5 == null) {
-                     throw new IllegalStateException();
-                  }
-
-                  CompletableFuture<aqd<dvi>> $$6 = $$5.b();
-                  $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(aqf.a(() -> {
-                        }, $$4, false))));
-               }
-            }
-
-            this.n.clear();
-         }
-
-         return $$2;
-      }
-   }
-
-   void a(long $$0, aqx<?> $$1) {
-      azd<aqx<?>> $$2 = this.g($$0);
-      int $$3 = a($$2);
-      aqx<?> $$4 = $$2.a($$1);
-      $$4.a(this.p);
-      if ($$1.b() < $$3) {
-         this.f.b($$0, $$1.b(), true);
-      }
-   }
-
-   void b(long $$0, aqx<?> $$1) {
-      azd<aqx<?>> $$2 = this.g($$0);
-      if ($$2.remove($$1)) {
-      }
-
-      if ($$2.isEmpty()) {
-         this.e.remove($$0);
-      }
-
-      this.f.b($$0, a($$2), false);
-   }
-
-   public <T> void a(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      this.a($$1.a(), new aqx<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      aqx<T> $$4 = new aqx<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public <T> void c(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      aqx<T> $$4 = new aqx<>($$0, aqb.a(aqm.b) - $$2, $$3);
-      long $$5 = $$1.a();
-      this.a($$5, $$4);
-      this.h.a($$5, $$4);
-   }
-
-   public <T> void d(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      aqx<T> $$4 = new aqx<>($$0, aqb.a(aqm.b) - $$2, $$3);
-      long $$5 = $$1.a();
-      this.b($$5, $$4);
-      this.h.b($$5, $$4);
-   }
-
-   private azd<aqx<?>> g(long $$0) {
-      return (azd<aqx<?>>)this.e.computeIfAbsent($$0, $$0x -> azd.a(4));
-   }
-
-   protected void a(dbh $$0, boolean $$1) {
-      aqx<dbh> $$2 = new aqx<>(aqy.d, aqc.c, $$0);
-      long $$3 = $$0.a();
-      if ($$1) {
-         this.a($$3, $$2);
-         this.h.a($$3, $$2);
-      } else {
-         this.b($$3, $$2);
-         this.h.b($$3, $$2);
-      }
-   }
-
-   public void a(jt $$0, aqu $$1) {
-      dbh $$2 = $$0.r();
-      long $$3 = $$2.a();
-      ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
-      this.g.b($$3, 0, true);
-      this.i.b($$3, 0, true);
-      this.h.a(aqy.c, $$2, this.g(), $$2);
-   }
-
-   public void b(jt $$0, aqu $$1) {
-      dbh $$2 = $$0.r();
-      long $$3 = $$2.a();
-      ObjectSet<aqu> $$4 = (ObjectSet<aqu>)this.d.get($$3);
-      $$4.remove($$1);
-      if ($$4.isEmpty()) {
-         this.d.remove($$3);
-         this.g.b($$3, Integer.MAX_VALUE, false);
-         this.i.b($$3, Integer.MAX_VALUE, false);
-         this.h.b(aqy.c, $$2, this.g(), $$2);
-      }
-   }
-
-   private int g() {
-      return Math.max(0, aqb.a(aqm.d) - this.q);
-   }
-
-   public boolean c(long $$0) {
-      return aqb.c(this.h.c($$0));
-   }
-
-   public boolean d(long $$0) {
-      return aqb.d(this.h.c($$0));
-   }
-
-   protected String e(long $$0) {
-      azd<aqx<?>> $$1 = (azd<aqx<?>>)this.e.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
-   }
-
-   protected void a(int $$0) {
-      this.i.a($$0);
-   }
-
-   public void b(int $$0) {
-      if ($$0 != this.q) {
-         this.q = $$0;
-         this.h.a(this.g());
-      }
+   private apu b(long $$0) {
+      return this.a.b($$0);
    }
 
    public int b() {
-      this.g.a();
-      return this.g.a.size();
+      return this.a.h();
    }
 
-   public boolean f(long $$0) {
-      this.g.a();
-      return this.g.a.containsKey($$0);
-   }
-
-   public String c() {
-      return this.k.b();
-   }
-
-   private void a(String $$0) {
-      try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
-         ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<azd<aqx<?>>> $$2 = (Entry<azd<aqx<?>>>)var3.next();
-            dbh $$3 = new dbh($$2.getLongKey());
-
-            for (aqx<?> $$4 : (azd)$$2.getValue()) {
-               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
-            }
-         }
-      } catch (IOException var10) {
-         a.error("Failed to dump tickets to {}", $$0, var10);
+   private void a(long $$0, @Nullable dsz $$1, dty $$2) {
+      for (int $$3 = 3; $$3 > 0; $$3--) {
+         this.m[$$3] = this.m[$$3 - 1];
+         this.n[$$3] = this.n[$$3 - 1];
+         this.o[$$3] = this.o[$$3 - 1];
       }
+
+      this.m[0] = $$0;
+      this.n[0] = $$2;
+      this.o[0] = $$1;
    }
 
-   @VisibleForTesting
-   aqz d() {
-      return this.h;
-   }
+   @Nullable
+   @Override
+   public dsz a(int $$0, int $$1, dty $$2, boolean $$3) {
+      if (Thread.currentThread() != this.e) {
+         return CompletableFuture.<dsz>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+      } else {
+         bmk $$4 = this.d.af();
+         $$4.d("getChunk");
+         long $$5 = dag.c($$0, $$1);
 
-   public void e() {
-      ImmutableSet<aqy<?>> $$0 = ImmutableSet.of(aqy.h, aqy.g, aqy.e);
-      ObjectIterator<Entry<azd<aqx<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
-
-      while ($$1.hasNext()) {
-         Entry<azd<aqx<?>>> $$2 = (Entry<azd<aqx<?>>>)$$1.next();
-         Iterator<aqx<?>> $$3 = ((azd)$$2.getValue()).iterator();
-         boolean $$4 = false;
-
-         while ($$3.hasNext()) {
-            aqx<?> $$5 = $$3.next();
-            if (!$$0.contains($$5.a())) {
-               $$3.remove();
-               $$4 = true;
-               this.h.b($$2.getLongKey(), $$5);
+         for (int $$6 = 0; $$6 < 4; $$6++) {
+            if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
+               dsz $$7 = this.o[$$6];
+               if ($$7 != null || !$$3) {
+                  return $$7;
+               }
             }
          }
 
-         if ($$4) {
-            this.f.b($$2.getLongKey(), a((azd<aqx<?>>)$$2.getValue()), false);
-         }
-
-         if (((azd)$$2.getValue()).isEmpty()) {
-            $$1.remove();
-         }
-      }
-   }
-
-   public boolean f() {
-      return !this.e.isEmpty();
-   }
-
-   class a extends aqg {
-      private static final int b = aqb.a + 1;
-
-      public a() {
-         super(b + 1, 16, 256);
-      }
-
-      @Override
-      protected int b(long $$0) {
-         azd<aqx<?>> $$1 = (azd<aqx<?>>)aql.this.e.get($$0);
-         if ($$1 == null) {
-            return Integer.MAX_VALUE;
+         $$4.d("getChunkCacheMiss");
+         CompletableFuture<apx<dsz>> $$8 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$8::isDone);
+         apx<dsz> $$9 = $$8.join();
+         dsz $$10 = $$9.b(null);
+         if ($$10 == null && $$3) {
+            throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
          } else {
-            return $$1.isEmpty() ? Integer.MAX_VALUE : $$1.b().b();
+            this.a($$5, $$10, $$2);
+            return $$10;
          }
-      }
-
-      @Override
-      protected int c(long $$0) {
-         if (!aql.this.a($$0)) {
-            aqa $$1 = aql.this.b($$0);
-            if ($$1 != null) {
-               return $$1.l();
-            }
-         }
-
-         return b;
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         aqa $$2 = aql.this.b($$0);
-         int $$3 = $$2 == null ? b : $$2.l();
-         if ($$3 != $$1) {
-            $$2 = aql.this.a($$0, $$1, $$2, $$3);
-            if ($$2 != null) {
-               aql.this.j.add($$2);
-            }
-         }
-      }
-
-      public int a(int $$0) {
-         return this.b($$0);
       }
    }
 
-   class b extends aqg {
-      protected final Long2ByteMap a = new Long2ByteOpenHashMap();
-      protected final int b;
+   @Nullable
+   @Override
+   public dtj a(int $$0, int $$1) {
+      if (Thread.currentThread() != this.e) {
+         return null;
+      } else {
+         this.d.af().d("getChunkNow");
+         long $$2 = dag.c($$0, $$1);
 
-      protected b(int $$0) {
-         super($$0 + 2, 16, 256);
-         this.b = $$0;
-         this.a.defaultReturnValue((byte)($$0 + 2));
-      }
+         for (int $$3 = 0; $$3 < 4; $$3++) {
+            if ($$2 == this.m[$$3] && this.n[$$3] == dty.n) {
+               dsz $$4 = this.o[$$3];
+               return $$4 instanceof dtj ? (dtj)$$4 : null;
+            }
+         }
 
-      @Override
-      protected int c(long $$0) {
-         return this.a.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         byte $$2;
-         if ($$1 > this.b) {
-            $$2 = this.a.remove($$0);
+         apu $$5 = this.b($$2);
+         if ($$5 == null) {
+            return null;
          } else {
-            $$2 = this.a.put($$0, (byte)$$1);
-         }
-
-         this.a($$0, $$2, $$1);
-      }
-
-      protected void a(long $$0, int $$1, int $$2) {
-      }
-
-      @Override
-      protected int b(long $$0) {
-         return this.d($$0) ? 0 : Integer.MAX_VALUE;
-      }
-
-      private boolean d(long $$0) {
-         ObjectSet<aqu> $$1 = (ObjectSet<aqu>)aql.this.d.get($$0);
-         return $$1 != null && !$$1.isEmpty();
-      }
-
-      public void a() {
-         this.b(Integer.MAX_VALUE);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
-            ObjectIterator var3 = this.a.long2ByteEntrySet().iterator();
-
-            while (var3.hasNext()) {
-               it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dbh $$3 = new dbh($$2.getLongKey());
-               String $$4 = Byte.toString($$2.getByteValue());
-               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
-            }
-         } catch (IOException var9) {
-            aql.a.error("Failed to dump chunks to {}", $$0, var9);
-         }
-      }
-   }
-
-   class c extends aql.b {
-      private int g;
-      private final Long2IntMap h = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
-      private final LongSet i = new LongOpenHashSet();
-
-      protected c(int $$0) {
-         super($$0);
-         this.g = 0;
-         this.h.defaultReturnValue($$0 + 2);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1, int $$2) {
-         this.i.add($$0);
-      }
-
-      public void a(int $$0) {
-         ObjectIterator var2 = this.a.long2ByteEntrySet().iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$1 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var2.next();
-            byte $$2 = $$1.getByteValue();
-            long $$3 = $$1.getLongKey();
-            this.a($$3, $$2, this.c($$2), $$2 <= $$0);
-         }
-
-         this.g = $$0;
-      }
-
-      private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
-         if ($$2 != $$3) {
-            aqx<?> $$4 = new aqx<>(aqy.c, aql.b, new dbh($$0));
-            if ($$3) {
-               aql.this.l.a(aqf.a(() -> aql.this.o.execute(() -> {
-                     if (this.c(this.c($$0))) {
-                        aql.this.a($$0, $$4);
-                        aql.this.n.add($$0);
-                     } else {
-                        aql.this.m.a(aqf.a(() -> {
-                        }, $$0, false));
-                     }
-                  }), $$0, () -> $$1));
+            apx<dsz> $$6 = $$5.b(dty.n).getNow(null);
+            if ($$6 == null) {
+               return null;
             } else {
-               aql.this.m.a(aqf.a(() -> aql.this.o.execute(() -> aql.this.b($$0, $$4)), $$0, true));
+               dsz $$7 = $$6.b(null);
+               if ($$7 != null) {
+                  this.a($$2, $$7, dty.n);
+                  if ($$7 instanceof dtj) {
+                     return (dtj)$$7;
+                  }
+               }
+
+               return null;
+            }
+         }
+      }
+   }
+
+   private void r() {
+      Arrays.fill(this.m, dag.a);
+      Arrays.fill(this.n, null);
+      Arrays.fill(this.o, null);
+   }
+
+   public CompletableFuture<apx<dsz>> b(int $$0, int $$1, dty $$2, boolean $$3) {
+      boolean $$4 = Thread.currentThread() == this.e;
+      CompletableFuture<apx<dsz>> $$5;
+      if ($$4) {
+         $$5 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$5::isDone);
+      } else {
+         $$5 = CompletableFuture.<CompletableFuture<apx<dsz>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+      }
+
+      return $$5;
+   }
+
+   private CompletableFuture<apx<dsz>> c(int $$0, int $$1, dty $$2, boolean $$3) {
+      dag $$4 = new dag($$0, $$1);
+      long $$5 = $$4.a();
+      int $$6 = apv.a($$2);
+      apu $$7 = this.b($$5);
+      if ($$3) {
+         this.c.a(aqs.h, $$4, $$6, $$4);
+         if (this.a($$7, $$6)) {
+            bmk $$8 = this.d.af();
+            $$8.a("chunkLoad");
+            this.s();
+            $$7 = this.b($$5);
+            $$8.c();
+            if (this.a($$7, $$6)) {
+               throw (IllegalStateException)ac.b(new IllegalStateException("No chunk holder after ticket has been added"));
             }
          }
       }
 
-      @Override
-      public void a() {
-         super.a();
-         if (!this.i.isEmpty()) {
-            LongIterator $$0 = this.i.iterator();
+      return this.a($$7, $$6) ? apu.b : $$7.a($$2, this.a);
+   }
 
-            while ($$0.hasNext()) {
-               long $$1 = $$0.nextLong();
-               int $$2 = this.h.get($$1);
-               int $$3 = this.c($$1);
-               if ($$2 != $$3) {
-                  aql.this.k.onLevelChange(new dbh($$1), () -> this.h.get($$1), $$3, $$1x -> {
-                     if ($$1x >= this.h.defaultReturnValue()) {
-                        this.h.remove($$1);
-                     } else {
-                        this.h.put($$1, $$1x);
-                     }
-                  });
-                  this.a($$1, $$3, this.c($$2), this.c($$3));
+   private boolean a(@Nullable apu $$0, int $$1) {
+      return $$0 == null || $$0.l() > $$1;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1) {
+      apu $$2 = this.b(new dag($$0, $$1).a());
+      int $$3 = apv.a(dty.n);
+      return !this.a($$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dtl c(int $$0, int $$1) {
+      long $$2 = dag.c($$0, $$1);
+      apu $$3 = this.b($$2);
+      if ($$3 == null) {
+         return null;
+      } else {
+         int $$4 = b.size() - 1;
+
+         while (true) {
+            dty $$5 = b.get($$4);
+            dsz $$6 = $$3.a($$5).getNow(apu.a).b(null);
+            if ($$6 != null) {
+               return $$6;
+            }
+
+            if ($$5 == dty.k.d()) {
+               return null;
+            }
+
+            $$4--;
+         }
+      }
+   }
+
+   public daz c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.g.A();
+   }
+
+   boolean s() {
+      boolean $$0 = this.c.a(this.a);
+      boolean $$1 = this.a.g();
+      if (!$$0 && !$$1) {
+         return false;
+      } else {
+         this.r();
+         return true;
+      }
+   }
+
+   public boolean a(long $$0) {
+      apu $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         return !this.d.a($$0) ? false : $$1.a().getNow(apu.c).a();
+      }
+   }
+
+   public void a(boolean $$0) {
+      this.s();
+      this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a(true);
+      this.f.close();
+      this.a.close();
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+      this.d.af().a("purge");
+      if (this.d.s().i() || !$$1) {
+         this.c.a();
+      }
+
+      this.s();
+      this.d.af().b("chunks");
+      if ($$1) {
+         this.t();
+         this.a.l();
+      }
+
+      this.d.af().b("unload");
+      this.a.a($$0);
+      this.d.af().c();
+      this.r();
+   }
+
+   private void t() {
+      long $$0 = this.d.Y();
+      long $$1 = $$0 - this.i;
+      this.i = $$0;
+      if (!this.d.ah()) {
+         bmk $$2 = this.d.af();
+         $$2.a("pollingChunks");
+         $$2.a("filteringLoadedChunks");
+         List<aql.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
+
+         for (apu $$4 : this.a.k()) {
+            dtj $$5 = $$4.d();
+            if ($$5 != null) {
+               $$3.add(new aql.a($$5, $$4));
+            }
+         }
+
+         if (this.d.s().i()) {
+            $$2.b("naturalSpawnCount");
+            int $$6 = this.c.b();
+            dbk.d $$7 = dbk.a($$6, this.d.A(), this::a, new dbj(this.a));
+            this.p = $$7;
+            $$2.b("spawnAndTick");
+            boolean $$8 = this.d.aa().b(dav.e);
+            ac.c($$3, this.d.z);
+            int $$9 = this.d.aa().c(dav.o);
+            boolean $$10 = this.d.A_().c() % 400L == 0L;
+
+            for (aql.a $$11 : $$3) {
+               dtj $$12 = $$11.a;
+               dag $$13 = $$12.f();
+               if (this.d.a($$13) && this.a.c($$13)) {
+                  $$12.a($$1);
+                  if ($$8 && (this.j || this.k) && this.d.C_().a($$13)) {
+                     dbk.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                  }
+
+                  if (this.d.a($$13.a())) {
+                     this.d.a($$12, $$9);
+                  }
                }
             }
 
-            this.i.clear();
+            $$2.b("customSpawners");
+            if ($$8) {
+               this.d.a(this.j, this.k);
+            }
          }
+
+         $$2.b("broadcast");
+         $$3.forEach($$0x -> $$0x.b.a($$0x.a));
+         $$2.c();
+         $$2.c();
+      }
+   }
+
+   private void a(long $$0, Consumer<dtj> $$1) {
+      apu $$2 = this.b($$0);
+      if ($$2 != null) {
+         $$2.c().getNow(apu.c).a($$1);
+      }
+   }
+
+   @Override
+   public String e() {
+      return Integer.toString(this.j());
+   }
+
+   @VisibleForTesting
+   public int f() {
+      return this.g.bw();
+   }
+
+   public dta g() {
+      return this.a.a();
+   }
+
+   public dtb h() {
+      return this.a.b();
+   }
+
+   public dxj i() {
+      return this.a.c();
+   }
+
+   @Override
+   public int j() {
+      return this.a.i();
+   }
+
+   public void a(io $$0) {
+      int $$1 = jq.a($$0.u());
+      int $$2 = jq.a($$0.w());
+      apu $$3 = this.b(dag.c($$1, $$2));
+      if ($$3 != null) {
+         $$3.a($$0);
+      }
+   }
+
+   @Override
+   public void a(dbi $$0, jq $$1) {
+      this.g.execute(() -> {
+         apu $$2 = this.b($$1.r().a());
+         if ($$2 != null) {
+            $$2.a($$0, $$1.b());
+         }
+      });
+   }
+
+   public <T> void a(aqs<T> $$0, dag $$1, int $$2, T $$3) {
+      this.c.c($$0, $$1, $$2, $$3);
+   }
+
+   public <T> void b(aqs<T> $$0, dag $$1, int $$2, T $$3) {
+      this.c.d($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dag $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public void a(aqo $$0) {
+      if (!$$0.dK()) {
+         this.a.a($$0);
+      }
+   }
+
+   public void a(brw $$0) {
+      this.a.b($$0);
+   }
+
+   public void b(brw $$0) {
+      this.a.a($$0);
+   }
+
+   public void a(brw $$0, ze<?> $$1) {
+      this.a.b($$0, $$1);
+   }
+
+   public void b(brw $$0, ze<?> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.a.a($$0);
+   }
+
+   public void b(int $$0) {
+      this.c.b($$0);
+   }
+
+   @Override
+   public void a(boolean $$0, boolean $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public String a(dag $$0) {
+      return this.a.a($$0);
+   }
+
+   public eor k() {
+      return this.h;
+   }
+
+   public cdu l() {
+      return this.a.m();
+   }
+
+   public due m() {
+      return this.a.p();
+   }
+
+   @Nullable
+   @azi
+   public dbk.d n() {
+      return this.p;
+   }
+
+   public void o() {
+      this.c.e();
+   }
+
+   static record a(dtj a, apu b) {
+   }
+
+   final class b extends bom<Runnable> {
+      b(daz $$0) {
+         super("Chunk source main thread executor for " + $$0.ae().a());
       }
 
-      private boolean c(int $$0) {
-         return $$0 <= this.g;
+      @Override
+      protected Runnable f(Runnable $$0) {
+         return $$0;
+      }
+
+      @Override
+      protected boolean e(Runnable $$0) {
+         return true;
+      }
+
+      @Override
+      protected boolean ay() {
+         return true;
+      }
+
+      @Override
+      protected Thread az() {
+         return aql.this.e;
+      }
+
+      @Override
+      protected void d(Runnable $$0) {
+         aql.this.d.af().d("runTask");
+         super.d($$0);
+      }
+
+      @Override
+      protected boolean A() {
+         if (aql.this.s()) {
+            return true;
+         } else {
+            aql.this.f.b();
+            return super.A();
+         }
       }
    }
 }

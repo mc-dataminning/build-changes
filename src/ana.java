@@ -1,47 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ana {
-   public static final int a = 2;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.kick.singleplayer.failed"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("gamemode").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("kick").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)ei.a("gamemode", ev.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((eh)$$0x.getSource()).h()), ev.a($$0x, "gamemode"))))
-                  .then(ei.a("target", eu.d()).executes($$0x -> a($$0x, eu.f($$0x, "target"), ev.a($$0x, "gamemode"))))
+               ((RequiredArgumentBuilder)ef.a("targets", er.d())
+                     .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), wx.c("multiplayer.disconnect.kicked"))))
+                  .then(ef.a("reason", ev.a()).executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), ev.a($$0x, "reason"))))
             )
       );
    }
 
-   private static void a(eh $$0, aqu $$1, dbx $$2) {
-      xe $$3 = xe.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> xe.a("commands.gamemode.success.self", $$3), true);
+   private static int a(ee $$0, Collection<aqo> $$1, wx $$2) throws CommandSyntaxException {
+      if (!$$0.l().r()) {
+         throw b.create();
       } else {
-         if ($$0.e().ab().b(dbw.p)) {
-            $$1.a(xe.a("gameMode.changed", $$3));
+         int $$3 = 0;
+
+         for (aqo $$4 : $$1) {
+            if (!$$0.l().a($$4.gb())) {
+               $$4.c.b($$2);
+               $$0.a(() -> wx.a("commands.kick.success", $$4.O_(), $$2), true);
+               $$3++;
+            }
          }
 
-         $$0.a(() -> xe.a("commands.gamemode.success.other", $$1.P_(), $$3), true);
-      }
-   }
-
-   private static int a(CommandContext<eh> $$0, Collection<aqu> $$1, dbx $$2) {
-      int $$3 = 0;
-
-      for (aqu $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((eh)$$0.getSource(), $$4, $$2);
-            $$3++;
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
          }
       }
-
-      return $$3;
    }
 }

@@ -1,54 +1,27 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class cwy {
-   public static final aks<cwx> a = a("sentry");
-   public static final aks<cwx> b = a("dune");
-   public static final aks<cwx> c = a("coast");
-   public static final aks<cwx> d = a("wild");
-   public static final aks<cwx> e = a("ward");
-   public static final aks<cwx> f = a("eye");
-   public static final aks<cwx> g = a("vex");
-   public static final aks<cwx> h = a("tide");
-   public static final aks<cwx> i = a("snout");
-   public static final aks<cwx> j = a("rib");
-   public static final aks<cwx> k = a("spire");
-   public static final aks<cwx> l = a("wayfinder");
-   public static final aks<cwx> m = a("shaper");
-   public static final aks<cwx> n = a("silence");
-   public static final aks<cwx> o = a("raiser");
-   public static final aks<cwx> p = a("host");
-   public static final aks<cwx> q = a("flow");
-   public static final aks<cwx> r = a("bolt");
+public record cwy(List<are<String>> f) implements cwc<String, cwy> {
+   public static final cwy a = new cwy(List.of());
+   public static final int b = 1024;
+   private static final Codec<are<String>> g = are.a(Codec.string(0, 1024));
+   public static final Codec<List<are<String>>> c = g.sizeLimitedListOf(100);
+   public static final Codec<cwy> d = RecordCodecBuilder.create($$0 -> $$0.group(c.optionalFieldOf("pages", List.of()).forGetter(cwy::a)).apply($$0, cwy::new));
+   public static final yv<ByteBuf, cwy> e = are.a(yt.b(1024)).a(yt.c(100)).a(cwy::new, cwy::a);
 
-   public static void a(qq<cwx> $$0) {
-      a($$0, cuk.zg, a);
-      a($$0, cuk.zh, b);
-      a($$0, cuk.zi, c);
-      a($$0, cuk.zj, d);
-      a($$0, cuk.zk, e);
-      a($$0, cuk.zl, f);
-      a($$0, cuk.zm, g);
-      a($$0, cuk.zn, h);
-      a($$0, cuk.zo, i);
-      a($$0, cuk.zp, j);
-      a($$0, cuk.zq, k);
-      a($$0, cuk.zr, l);
-      a($$0, cuk.zs, m);
-      a($$0, cuk.zt, n);
-      a($$0, cuk.zu, o);
-      a($$0, cuk.zv, p);
+   public Stream<String> a(boolean $$0) {
+      return this.f.stream().map($$1 -> $$1.a($$0));
    }
 
-   public static Optional<ja.c<cwx>> a(jc.a $$0, cuh $$1) {
-      return $$0.b(li.aP).b().filter($$1x -> $$1.a(((cwx)$$1x.a()).b())).findFirst();
+   public cwy b(List<are<String>> $$0) {
+      return new cwy($$0);
    }
 
-   public static void a(qq<cwx> $$0, cuc $$1, aks<cwx> $$2) {
-      cwx $$3 = new cwx($$2.a(), lh.h.e($$1), xe.c(ad.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
-   }
-
-   private static aks<cwx> a(String $$0) {
-      return aks.a(li.aP, new akt($$0));
+   @Override
+   public List<are<String>> a() {
+      return this.f;
    }
 }

@@ -1,31 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+public interface evx extends bpp {
+   ctq f();
 
-public record evx(String b) implements evz {
-   public static final Codec<evx> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(evx::c)).apply($$0, evx::new));
+   default ctq c(int $$0) {
+      return this.f().a($$0);
+   }
 
-   public static evz a(String $$0) {
-      return new evx($$0);
+   void b(ctq var1);
+
+   default ctq h() {
+      return this.c(this.ai_());
    }
 
    @Override
-   public evy a() {
-      return ewa.b;
+   default int b() {
+      return 1;
    }
 
    @Override
-   public exx a(erp $$0) {
-      return exx.e(this.b);
+   default boolean c() {
+      return this.f().e();
    }
 
    @Override
-   public Set<eud<?>> b() {
-      return ImmutableSet.of();
+   default void a() {
+      this.h();
    }
 
-   public String c() {
-      return this.b;
+   @Override
+   default ctq b(int $$0) {
+      return this.a($$0, this.ai_());
+   }
+
+   @Override
+   default ctq a(int $$0) {
+      return $$0 == 0 ? this.f() : ctq.i;
+   }
+
+   @Override
+   default ctq a(int $$0, int $$1) {
+      return $$0 != 0 ? ctq.i : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, ctq $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
+      }
+   }
+
+   public interface a extends evx {
+      doi v();
+
+      @Override
+      default boolean a(cly $$0) {
+         return bpp.a(this.v(), $$0);
+      }
    }
 }

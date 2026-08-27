@@ -1,38 +1,52 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class cwb extends cuc {
-   public static final int a = 160;
+public record cwb(Map<String, String> d) {
+   public static final cwb a = new cwb(Map.of());
+   public static final Codec<cwb> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cwb::new, cwb::b);
+   private static final yv<ByteBuf, Map<String, String>> e = yt.a(Object2ObjectOpenHashMap::new, yt.k, yt.k);
+   public static final yv<ByteBuf, cwb> c = e.a(cwb::new, cwb::b);
 
-   public cwb(cuc.a $$0) {
-      super($$0);
+   public <T extends Comparable<T>> cwb a(dsg<T> $$0, T $$1) {
+      return new cwb(ac.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<brh> $$4 = new ArrayList<>();
-         cxv $$5 = $$0.a(ke.F, cxv.a);
+   public <T extends Comparable<T>> cwb a(dsg<T> $$0, drd $$1) {
+      return this.a($$0, $$1.c($$0));
+   }
 
-         for (cxv.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
+   @Nullable
+   public <T extends Comparable<T>> T a(dsg<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   }
+
+   public drd a(drd $$0) {
+      dre<dea, drd> $$1 = $$0.b().l();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dsg<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
-
-         cwr.a($$4, $$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
       }
+
+      return $$0;
    }
 
-   @Override
-   public cuh a(cuh $$0, dca $$1, bso $$2) {
-      cxv $$3 = $$0.a(ke.F, cxv.a);
+   private static <T extends Comparable<T>> drd a(drd $$0, dsg<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
 
-      for (cxv.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
+   public boolean a() {
+      return this.d.isEmpty();
+   }
 
-      super.a($$0, $$1, $$2);
-      return $$2.fY() ? $$0 : new cuh(cuk.qJ);
+   public Map<String, String> b() {
+      return this.d;
    }
 }

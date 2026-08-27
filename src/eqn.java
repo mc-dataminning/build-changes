@@ -1,42 +1,40 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public record eqn(ja<eqo> b, byte c, byte d, byte e, Optional<xe> f) {
-   public static final zc<wp, eqn> a = zc.a(eqo.c, eqn::c, za.c, eqn::d, za.c, eqn::e, za.c, eqn::f, xg.c, eqn::g, eqn::new);
+public class eqn extends eqs {
+   public static final MapCodec<eqn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eph.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eqn::new)
+   );
+   private final eph.b b;
 
-   public eqn(ja<eqo> b, byte c, byte d, byte e, Optional<xe> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public eqn(List<esn> $$0, eph.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public akt a() {
-      return this.b.a().b();
+   @Override
+   public equ b() {
+      return eqv.y;
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   @Override
+   public Set<erw<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
-   public ja<eqo> c() {
-      return this.b;
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      if ($$0.a(ctt.un) && $$1.c(this.b.a()) instanceof cly $$2) {
+         $$0.b(kb.U, new cws($$2.gb()));
+      }
+
+      return $$0;
    }
 
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<xe> g() {
-      return this.f;
+   public static eqs.a<?> a(eph.b $$0) {
+      return a($$1 -> new eqn($$1, $$0));
    }
 }

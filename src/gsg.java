@@ -1,74 +1,87 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gsg implements aue {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gsf b = new gsf("US", "English", false);
-   private Map<String, gsf> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gsg {
+   private final Set<gsg.a> a = Sets.newIdentityHashSet();
+   final ewp b;
+   final Executor c;
 
-   public gsg(String $$0) {
-      this.d = $$0;
+   public gsg(ewp $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static Map<String, gsf> a(Stream<asp> $$0) {
-      Map<String, gsf> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gss $$2 = $$1x.a(gss.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+   public CompletableFuture<gsg.a> a(ewp.c $$0) {
+      CompletableFuture<gsg.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         ewo $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gsg.a $$3 = new gsg.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
       });
-      return ImmutableMap.copyOf($$1);
+      return $$1;
    }
 
-   @Override
-   public void a(aud $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gsf $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
+   public void a(Consumer<Stream<ewo>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gsg.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gsg.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
          }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gsg.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      ewo b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      gsc $$4 = gsc.a($$0, $$1, $$2);
-      gse.a($$4);
-      uf.a($$4);
-   }
+      public a(ewo $$1) {
+         this.b = $$1;
+      }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
+      public void a(Consumer<ewo> $$0) {
+         gsg.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
 
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gsf> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gsf b(String $$0) {
-      return this.c.get($$0);
+      public void b() {
+         this.c = true;
+         gsg.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

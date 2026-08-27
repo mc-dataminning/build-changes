@@ -1,10 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class eed implements eek {
-   public static final Codec<eed> a = dtc.b.fieldOf("state").xmap(eed::new, $$0 -> $$0.b).codec();
-   public final dtc b;
-
-   public eed(dtc $$0) {
-      this.b = $$0;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eed {
 }

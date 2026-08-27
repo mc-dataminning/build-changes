@@ -1,37 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public final class bqg implements bqa {
+   private final wx a;
+   private final cqb b;
 
-public class bqg {
-   public static final Codec<bqg> a = RecordCodecBuilder.create($$0 -> $$0.group(dzv.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bqg::new));
-   private final dzv b;
-
-   public bqg(dzv $$0) {
+   public bqg(cqb $$0, wx $$1) {
       this.b = $$0;
+      this.a = $$1;
    }
 
-   public bqg(long $$0, akt $$1) {
-      this(a($$0, Optional.of($$1)));
+   @Override
+   public wx O_() {
+      return this.a;
    }
 
-   public bqg(long $$0, Optional<akt> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static dzv a(long $$0, Optional<akt> $$1) {
-      dzj.a $$2 = dzj.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
-      }
-
-      return new dzv($$2.a());
-   }
-
-   public static dzj.a a(akt $$0) {
-      return dzj.a($$0.toString());
-   }
-
-   public ayt a() {
-      return this.b;
+   @Override
+   public cov createMenu(int $$0, clx $$1, cly $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

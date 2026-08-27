@@ -1,56 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cco extends ccx<bsq> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
-
-   public cco() {
-      super(20);
+public class cco extends cda<bsq> {
+   @Override
+   public Set<cbu<?>> a() {
+      return ImmutableSet.of(cbu.x, cbu.y);
    }
 
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.w);
-   }
-
-   protected void a(aqt $$0, bsq $$1) {
-      if ($$1.o_()) {
-         this.f = 0;
-         this.g = $$0.Z() + (long)$$0.F_().a(20);
-         cdr $$2 = $$0.y();
-         Predicate<ir> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<ja<cdu>, ir>> $$4 = $$2.b($$0x -> $$0x.a(cdv.n), $$3, $$1.du(), 48, cdr.b.c).collect(Collectors.toSet());
-         eps $$5 = btz.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ir $$6 = $$5.l();
-            Optional<ja<cdu>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dZ().a(cbr.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+   protected void a(aqn $$0, bsq $$1) {
+      bts<?> $$2 = $$1.dS();
+      bqp $$3 = $$1.eC();
+      if ($$3 != null) {
+         $$2.a(cbu.x, $$1.eC());
+         brw $$4 = $$3.d();
+         if ($$4 instanceof bsq) {
+            $$2.a(cbu.y, (bsq)$$4);
          }
+      } else {
+         $$2.b(cbu.x);
       }
+
+      $$2.c(cbu.y).ifPresent($$2x -> {
+         if (!$$2x.bD() || $$2x.dP() != $$0) {
+            $$2.b(cbu.y);
+         }
+      });
    }
 }

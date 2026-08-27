@@ -1,20 +1,29 @@
-public record agu(float b) implements zl<agl> {
-   public static final zc<we, agu> a = zl.a(agu::a, agu::new);
+public class agu implements ze<age> {
+   public static final yv<vx, agu> a = ze.a(agu::a, agu::new);
+   private final int b;
 
-   private agu(we $$0) {
-      this($$0.readFloat());
+   public agu(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private agu(vx $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(vx $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zn<agu> a() {
-      return agj.bn;
+   public zg<agu> a() {
+      return agc.bt;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

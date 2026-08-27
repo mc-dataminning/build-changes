@@ -1,24 +1,20 @@
-public class gpw extends goq<chu, fyi<chu>> {
-   private static final akt a = new akt("textures/entity/wither/wither_armor.png");
-   private final fyi<chu> b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gpw(gmp<chu, fyi<chu>> $$0, fyo $$1) {
-      super($$0);
-      this.b = new fyi<>($$1.a(fyr.cc));
-   }
+public interface gpw {
+   List<gdh> a(@Nullable drd var1, @Nullable it var2, aym var3);
 
-   @Override
-   protected float a(float $$0) {
-      return aym.b($$0 * 0.02F) * 3.0F;
-   }
+   boolean a();
 
-   @Override
-   protected akt a() {
-      return a;
-   }
+   boolean b();
 
-   @Override
-   protected fvq<chu> b() {
-      return this.b;
-   }
+   boolean c();
+
+   boolean d();
+
+   gnv e();
+
+   gdt f();
+
+   gdr g();
 }

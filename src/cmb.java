@@ -9,12 +9,12 @@ import java.util.Arrays;
 import java.util.UUID;
 
 public record cmb(cmb.a d) {
-   public static final xe a = xe.c("multiplayer.disconnect.expired_public_key");
-   private static final xe e = xe.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final wx a = wx.c("multiplayer.disconnect.expired_public_key");
+   private static final wx e = wx.c("multiplayer.disconnect.invalid_public_key_signature.new");
    public static final Duration b = Duration.ofHours(8L);
    public static final Codec<cmb> c = cmb.a.a.xmap(cmb::new, cmb::b);
 
-   public static cmb a(ayy $$0, UUID $$1, cmb.a $$2) throws cmb.b {
+   public static cmb a(ayr $$0, UUID $$1, cmb.a $$2) throws cmb.b {
       if (!$$2.a($$0, $$1)) {
          throw new cmb.b(e);
       } else {
@@ -22,8 +22,8 @@ public record cmb(cmb.a d) {
       }
    }
 
-   public ayy a() {
-      return ayy.a(this.d.c, "SHA256withRSA");
+   public ayr a() {
+      return ayr.a(this.d.c, "SHA256withRSA");
    }
 
    public cmb.a b() {
@@ -34,22 +34,22 @@ public record cmb(cmb.a d) {
       private static final int e = 4096;
       public static final Codec<cmb.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axu.m.fieldOf("expires_at").forGetter(cmb.a::b), axk.f.fieldOf("key").forGetter(cmb.a::c), axu.n.fieldOf("signature_v2").forGetter(cmb.a::d)
+                  axn.m.fieldOf("expires_at").forGetter(cmb.a::b), axd.f.fieldOf("key").forGetter(cmb.a::c), axn.n.fieldOf("signature_v2").forGetter(cmb.a::d)
                )
                .apply($$0, cmb.a::new)
       );
 
-      public a(we $$0) {
+      public a(vx $$0) {
          this($$0.t(), $$0.u(), $$0.a(4096));
       }
 
-      public void a(we $$0) {
+      public void a(vx $$0) {
          $$0.a(this.b);
          $$0.a(this.c);
          $$0.a(this.d);
       }
 
-      boolean a(ayy $$0, UUID $$1) {
+      boolean a(ayr $$0, UUID $$1) {
          return $$0.a(this.a($$1), this.d);
       }
 
@@ -75,8 +75,8 @@ public record cmb(cmb.a d) {
       }
    }
 
-   public static class b extends ye {
-      public b(xe $$0) {
+   public static class b extends xx {
+      public b(wx $$0) {
          super($$0);
       }
    }

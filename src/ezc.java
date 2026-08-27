@@ -1,61 +1,36 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class ezc {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+public interface ezc {
+   ezc a = a(0.0F, 0.0F, 0.0F);
+   ezc b = a((ezc.a)($$0 -> -$$0.z()));
 
-   public ezc(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   static ezc a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = ezb.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (ezb.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (ezb.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
+   static ezc a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (ezb.a("Deleting stream buffers")) {
-            return;
-         }
-      }
+   static ezc a(ezc.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-      this.c = false;
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

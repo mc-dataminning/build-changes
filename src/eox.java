@@ -1,331 +1,601 @@
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import org.slf4j.Logger;
 
-public final class eox extends eov<eoy.a, eoy> {
-   private static final long g = eov.a.a(15);
-   private static final long h = eov.a.a(15, iw.b);
-   private static final long i = eov.a.a(15, false, iw.b);
-   private final ir.a j = new ir.a();
-   private final eoo k;
+public class eox {
+   static final Logger b = LogUtils.getLogger();
+   static final DateTimeFormatter c = eos.a();
+   private static final String d = "Data";
+   private static final PathMatcher e = $$0 -> false;
+   public static final String a = "allowed_symlinks.txt";
+   private static final int f = 104857600;
+   private static final int g = 67108864;
+   private final Path h;
+   private final Path i;
+   final DataFixer j;
+   private final euc k;
 
-   public eox(dvl $$0) {
-      this($$0, new eoy($$0));
+   public eox(Path $$0, Path $$1, euc $$2, DataFixer $$3) {
+      this.j = $$3;
+
+      try {
+         v.c($$0);
+      } catch (IOException var6) {
+         throw new UncheckedIOException(var6);
+      }
+
+      this.h = $$0;
+      this.i = $$1;
+      this.k = $$2;
    }
 
-   @VisibleForTesting
-   protected eox(dvl $$0, eoy $$1) {
-      super($$0, $$1);
-      this.k = new eoo($$0.q());
+   public static euc a(Path $$0) {
+      if (Files.exists($$0)) {
+         try {
+            euc var2;
+            try (BufferedReader $$1 = Files.newBufferedReader($$0)) {
+               var2 = new euc(eue.a($$1));
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
+         }
+      }
+
+      return new euc(e);
    }
 
-   private static boolean a(int $$0) {
-      return $$0 == 15;
+   public static eox b(Path $$0) {
+      euc $$1 = a($$0.resolve("allowed_symlinks.txt"));
+      return new eox($$0, $$0.resolve("../backups"), $$1, azm.a());
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      eoo $$3 = this.b(jt.a($$0), jt.a($$1));
-      return $$3 == null ? $$2 : $$3.a(jt.b($$0), jt.b($$1));
+   public static dbt a(Dynamic<?> $$0) {
+      return dbt.b.parse($$0).resultOrPartial(b::error).orElse(dbt.c);
+   }
+
+   public static alj.d a(Dynamic<?> $$0, ati $$1, boolean $$2) {
+      return new alj.d($$1, a($$0), $$2, false);
+   }
+
+   public static eou a(Dynamic<?> $$0, dbt $$1, jk<duw> $$2, jl.b $$3) {
+      Dynamic<?> $$4 = akl.a($$0, $$3);
+      Dynamic<?> $$5 = $$4.get("WorldGenSettings").orElseEmptyMap();
+      dxr $$6 = (dxr)dxr.a.parse($$5).getOrThrow();
+      dbd $$7 = dbd.a($$4, $$1);
+      dxq.b $$8 = $$6.b().a($$2);
+      Lifecycle $$9 = $$8.a().add($$3.e());
+      epb $$10 = epb.a($$4, $$7, $$8.d(), $$6.a(), $$9);
+      return new eou($$10, $$8);
+   }
+
+   public String a() {
+      return "Anvil";
+   }
+
+   public eox.a b() throws eow {
+      if (!Files.isDirectory(this.h)) {
+         throw new eow(wx.c("selectWorld.load_folder_access"));
+      } else {
+         try {
+            eox.a var3;
+            try (Stream<Path> $$0 = Files.list(this.h)) {
+               List<eox.b> $$1 = $$0.filter($$0x -> Files.isDirectory($$0x))
+                  .map(eox.b::new)
+                  .filter($$0x -> Files.isRegularFile($$0x.b()) || Files.isRegularFile($$0x.c()))
+                  .toList();
+               var3 = new eox.a($$1);
+            }
+
+            return var3;
+         } catch (IOException var6) {
+            throw new eow(wx.c("selectWorld.load_folder_access"));
+         }
+      }
+   }
+
+   public CompletableFuture<List<eoy>> a(eox.a $$0) {
+      List<CompletableFuture<eoy>> $$1 = new ArrayList<>($$0.a.size());
+
+      for (eox.b $$2 : $$0.a) {
+         $$1.add(CompletableFuture.supplyAsync(() -> {
+            boolean $$1x;
+            try {
+               $$1x = axl.b($$2.f());
+            } catch (Exception var13) {
+               b.warn("Failed to read {} lock", $$2.f(), var13);
+               return null;
+            }
+
+            try {
+               return this.a($$2, $$1x);
+            } catch (OutOfMemoryError var12) {
+               ayd.b();
+               System.gc();
+               String $$5 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
+               b.error(LogUtils.FATAL_MARKER, $$5);
+               OutOfMemoryError $$6 = new OutOfMemoryError("Ran out of memory reading level data");
+               $$6.initCause(var12);
+               o $$7 = o.a($$6, $$5);
+               p $$8 = $$7.a("World details");
+               $$8.a("Folder Name", $$2.a());
+
+               try {
+                  long $$9 = Files.size($$2.b());
+                  $$8.a("level.dat size", $$9);
+               } catch (IOException var11) {
+                  $$8.a("level.dat size", (Throwable)var11);
+               }
+
+               throw new y($$7);
+            }
+         }, ac.g()));
+      }
+
+      return ac.f($$1).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).sorted().toList());
+   }
+
+   private int f() {
+      return 19133;
+   }
+
+   static ud c(Path $$0) throws IOException {
+      return uq.a($$0, um.a(104857600L));
+   }
+
+   static Dynamic<?> a(Path $$0, DataFixer $$1) throws IOException {
+      ud $$2 = c($$0);
+      ud $$3 = $$2.p("Data");
+      int $$4 = us.b($$3, -1);
+      Dynamic<?> $$5 = azl.a.a($$1, new Dynamic(ur.a, $$3), $$4);
+      Dynamic<?> $$6 = $$5.get("Player").orElseEmptyMap();
+      Dynamic<?> $$7 = azl.b.a($$1, $$6, $$4);
+      $$5 = $$5.set("Player", $$7);
+      Dynamic<?> $$8 = $$5.get("WorldGenSettings").orElseEmptyMap();
+      Dynamic<?> $$9 = azl.r.a($$1, $$8, $$4);
+      return $$5.set("WorldGenSettings", $$9);
+   }
+
+   private eoy a(eox.b $$0, boolean $$1) {
+      Path $$2 = $$0.b();
+      if (Files.exists($$2)) {
+         try {
+            if (Files.isSymbolicLink($$2)) {
+               List<eud> $$3 = this.k.a($$2);
+               if (!$$3.isEmpty()) {
+                  b.warn("{}", eub.a($$2, $$3));
+                  return new eoy.c($$0.a(), $$0.d());
+               }
+            }
+
+            if (e($$2) instanceof ud $$5) {
+               ud $$6 = $$5.p("Data");
+               int $$7 = us.b($$6, -1);
+               Dynamic<?> $$8 = azl.a.a(this.j, new Dynamic(ur.a, $$6), $$7);
+               return this.a($$8, $$0, $$1);
+            }
+
+            b.warn("Invalid root tag in {}", $$2);
+         } catch (Exception var9) {
+            b.error("Exception reading {}", $$2, var9);
+         }
+      }
+
+      return new eoy.b($$0.a(), $$0.d(), a($$0));
+   }
+
+   private static long a(eox.b $$0) {
+      Instant $$1 = d($$0.b());
+      if ($$1 == null) {
+         $$1 = d($$0.c());
+      }
+
+      return $$1 == null ? -1L : $$1.toEpochMilli();
    }
 
    @Nullable
-   private eoo b(int $$0, int $$1) {
-      dvk $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.C() : null;
-   }
-
-   @Override
-   protected void a(long $$0) {
-      int $$1 = ir.a($$0);
-      int $$2 = ir.b($$0);
-      int $$3 = ir.c($$0);
-      long $$4 = jt.e($$0);
-      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-      if ($$5 != Integer.MAX_VALUE) {
-         this.b($$1, $$3, $$5);
-      }
-
-      if (this.f.b($$4)) {
-         boolean $$6 = $$2 >= $$5;
-         if ($$6) {
-            this.b($$0, h);
-            this.c($$0, i);
-         } else {
-            int $$7 = this.f.e($$0);
-            if ($$7 > 0) {
-               this.f.a($$0, 0);
-               this.b($$0, eov.a.a($$7));
-            } else {
-               this.b($$0, c);
-            }
-         }
+   static Instant d(Path $$0) {
+      try {
+         return Files.getLastModifiedTime($$0).toInstant();
+      } catch (IOException var2) {
+         return null;
       }
    }
 
-   private void b(int $$0, int $$1, int $$2) {
-      int $$3 = jt.c(this.f.c());
-      this.a($$0, $$1, $$2, $$3);
-      this.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3) {
-      if ($$2 > $$3) {
-         int $$4 = jt.a($$0);
-         int $$5 = jt.a($$1);
-         int $$6 = $$2 - 1;
-
-         for (int $$7 = jt.a($$6); this.f.a($$7); $$7--) {
-            if (this.f.b(jt.b($$4, $$7, $$5))) {
-               int $$8 = jt.c($$7);
-               int $$9 = $$8 + 15;
-
-               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
-                  long $$11 = ir.a($$0, $$10, $$1);
-                  if (!a(this.f.e($$11))) {
-                     return;
-                  }
-
-                  this.f.a($$11, 0);
-                  this.b($$11, $$10 == $$2 - 1 ? g : h);
-               }
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = jt.a($$0);
-      int $$5 = jt.a($$1);
-      int $$6 = Math.max(
-         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
-         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
-      );
-      int $$7 = Math.max($$2, $$3);
-
-      for (long $$8 = jt.b($$4, jt.a($$7), $$5); !this.f.l($$8); $$8 = jt.a($$8, iw.b)) {
-         if (this.f.b($$8)) {
-            int $$9 = jt.c(jt.c($$8));
-            int $$10 = $$9 + 15;
-
-            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
-               long $$12 = ir.a($$0, $$11, $$1);
-               if (a(this.f.e($$12))) {
-                  return;
-               }
-
-               this.f.a($$12, 15);
-               if ($$11 < $$6 || $$11 == $$2) {
-                  this.c($$12, i);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dtc $$3 = null;
-      int $$4 = this.d($$0);
-
-      for (iw $$5 : d) {
-         if (eov.a.a($$1, $$5)) {
-            long $$6 = ir.a($$0, $$5);
-            if (this.f.b(jt.e($$6))) {
-               int $$7 = this.f.e($$6);
-               int $$8 = $$2 - 1;
-               if ($$8 > $$7) {
-                  this.j.f($$6);
-                  dtc $$9 = this.c(this.j);
-                  int $$10 = $$2 - this.a($$9, this.j);
-                  if ($$10 > $$7) {
-                     if ($$3 == null) {
-                        $$3 = eov.a.b($$1) ? dfe.a.n() : this.c(this.j.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$6, $$9, $$5)) {
-                        this.f.a($$6, $$10);
-                        if ($$10 > 1) {
-                           this.c($$6, eov.a.a($$10, a($$9), $$5.g()));
-                        }
-
-                        this.a($$6, $$5, $$10, true, $$4);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = this.d($$0);
-      int $$3 = eov.a.a($$1);
-
-      for (iw $$4 : d) {
-         if (eov.a.a($$1, $$4)) {
-            long $$5 = ir.a($$0, $$4);
-            if (this.f.b(jt.e($$5))) {
-               int $$6 = this.f.e($$5);
-               if ($$6 != 0) {
-                  if ($$6 <= $$3 - 1) {
-                     this.f.a($$5, 0);
-                     this.b($$5, eov.a.a($$6, $$4.g()));
-                     this.a($$5, $$4, $$6, false, $$2);
-                  } else {
-                     this.c($$5, eov.a.b($$6, false, $$4.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int d(long $$0) {
-      int $$1 = ir.b($$0);
-      int $$2 = jt.b($$1);
-      if ($$2 != 0) {
-         return 0;
+   eoy a(Dynamic<?> $$0, eox.b $$1, boolean $$2) {
+      eoz $$3 = eoz.a($$0);
+      int $$4 = $$3.a();
+      if ($$4 != 19132 && $$4 != 19133) {
+         throw new up("Unknown data version: " + Integer.toHexString($$4));
       } else {
-         int $$3 = ir.a($$0);
-         int $$4 = ir.c($$0);
-         int $$5 = jt.b($$3);
-         int $$6 = jt.b($$4);
-         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
-            return 0;
-         } else {
-            int $$7 = jt.a($$3);
-            int $$8 = jt.a($$1);
-            int $$9 = jt.a($$4);
-            int $$10 = 0;
-
-            while (!this.f.b(jt.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
-               $$10++;
-            }
-
-            return $$10;
-         }
+         boolean $$5 = $$4 != this.f();
+         Path $$6 = $$1.d();
+         dbt $$7 = a($$0);
+         dbd $$8 = dbd.a($$0, $$7);
+         col $$9 = b($$0);
+         boolean $$10 = coo.a($$9);
+         return new eoy($$8, $$3, $$1.a(), $$5, $$2, $$10, $$6);
       }
    }
 
-   private void a(long $$0, iw $$1, int $$2, boolean $$3, int $$4) {
-      if ($$4 != 0) {
-         int $$5 = ir.a($$0);
-         int $$6 = ir.c($$0);
-         if (a($$1, jt.b($$5), jt.b($$6))) {
-            int $$7 = ir.b($$0);
-            int $$8 = jt.a($$5);
-            int $$9 = jt.a($$6);
-            int $$10 = jt.a($$7) - 1;
-            int $$11 = $$10 - $$4 + 1;
+   private static col b(Dynamic<?> $$0) {
+      Set<akn> $$1 = $$0.get("enabled_features").asStream().flatMap($$0x -> $$0x.asString().result().map(akn::a).stream()).collect(Collectors.toSet());
+      return coo.e.a($$1, $$0x -> {
+      });
+   }
 
-            while ($$10 >= $$11) {
-               if (!this.f.b(jt.b($$8, $$10, $$9))) {
-                  $$10--;
-               } else {
-                  int $$12 = jt.c($$10);
+   @Nullable
+   private static va e(Path $$0) throws IOException {
+      vm $$1 = new vm(new vj("Data", ud.b, "Player"), new vj("Data", ud.b, "WorldGenSettings"));
+      uq.a($$0, $$1, um.a(104857600L));
+      return $$1.d();
+   }
 
-                  for (int $$13 = 15; $$13 >= 0; $$13--) {
-                     long $$14 = ir.a($$5, $$12 + $$13, $$6);
-                     if ($$3) {
-                        this.f.a($$14, $$2);
-                        if ($$2 > 1) {
-                           this.c($$14, eov.a.a($$2, true, $$1.g()));
-                        }
+   public boolean a(String $$0) {
+      try {
+         Path $$1 = this.c($$0);
+         Files.createDirectory($$1);
+         Files.deleteIfExists($$1);
+         return true;
+      } catch (IOException var3) {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      try {
+         return Files.isDirectory(this.c($$0));
+      } catch (InvalidPathException var3) {
+         return false;
+      }
+   }
+
+   public Path c(String $$0) {
+      return this.h.resolve($$0);
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public Path d() {
+      return this.i;
+   }
+
+   public eox.c d(String $$0) throws IOException, eub {
+      Path $$1 = this.c($$0);
+      List<eud> $$2 = this.k.a($$1, true);
+      if (!$$2.isEmpty()) {
+         throw new eub($$1, $$2);
+      } else {
+         return new eox.c($$0, $$1);
+      }
+   }
+
+   public eox.c e(String $$0) throws IOException {
+      Path $$1 = this.c($$0);
+      return new eox.c($$0, $$1);
+   }
+
+   public euc e() {
+      return this.k;
+   }
+
+   public static record a(List<eox.b> a) implements Iterable<eox.b> {
+
+      public boolean a() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public Iterator<eox.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public List<eox.b> b() {
+         return this.a;
+      }
+   }
+
+   public static record b(Path a) {
+
+      public String a() {
+         return this.a.getFileName().toString();
+      }
+
+      public Path b() {
+         return this.a(eov.e);
+      }
+
+      public Path c() {
+         return this.a(eov.f);
+      }
+
+      public Path a(LocalDateTime $$0) {
+         return this.a.resolve(eov.e.a() + "_corrupted_" + $$0.format(eox.c));
+      }
+
+      public Path b(LocalDateTime $$0) {
+         return this.a.resolve(eov.e.a() + "_raw_" + $$0.format(eox.c));
+      }
+
+      public Path d() {
+         return this.a(eov.g);
+      }
+
+      public Path e() {
+         return this.a(eov.h);
+      }
+
+      public Path a(eov $$0) {
+         return this.a.resolve($$0.a());
+      }
+
+      public Path f() {
+         return this.a;
+      }
+   }
+
+   public class c implements AutoCloseable {
+      final axl b;
+      final eox.b c;
+      private final String d;
+      private final Map<eov, Path> e = Maps.newHashMap();
+
+      c(String $$1, Path $$2) throws IOException {
+         this.d = $$1;
+         this.c = new eox.b($$2);
+         this.b = axl.a($$2);
+      }
+
+      public long a() {
+         try {
+            return Files.getFileStore(this.c.a).getUsableSpace();
+         } catch (Exception var2) {
+            return Long.MAX_VALUE;
+         }
+      }
+
+      public boolean b() {
+         return this.a() < 67108864L;
+      }
+
+      public void c() {
+         try {
+            this.close();
+         } catch (IOException var2) {
+            eox.b.warn("Failed to unlock access to level {}", this.f(), var2);
+         }
+      }
+
+      public eox d() {
+         return eox.this;
+      }
+
+      public eox.b e() {
+         return this.c;
+      }
+
+      public String f() {
+         return this.d;
+      }
+
+      public Path a(eov $$0) {
+         return this.e.computeIfAbsent($$0, this.c::a);
+      }
+
+      public Path a(akm<daz> $$0) {
+         return duv.a($$0, this.c.f());
+      }
+
+      private void o() {
+         if (!this.b.a()) {
+            throw new IllegalStateException("Lock is no longer valid");
+         }
+      }
+
+      public epa g() {
+         this.o();
+         return new epa(this, eox.this.j);
+      }
+
+      public eoy a(Dynamic<?> $$0) {
+         this.o();
+         return eox.this.a($$0, this.c, false);
+      }
+
+      public Dynamic<?> h() throws IOException {
+         return this.b(false);
+      }
+
+      public Dynamic<?> i() throws IOException {
+         return this.b(true);
+      }
+
+      private Dynamic<?> b(boolean $$0) throws IOException {
+         this.o();
+         return eox.a($$0 ? this.c.c() : this.c.b(), eox.this.j);
+      }
+
+      public void a(jl $$0, epd $$1) {
+         this.a($$0, $$1, null);
+      }
+
+      public void a(jl $$0, epd $$1, @Nullable ud $$2) {
+         ud $$3 = $$1.a($$0, $$2);
+         ud $$4 = new ud();
+         $$4.a("Data", $$3);
+         this.a($$4);
+      }
+
+      private void a(ud $$0) {
+         Path $$1 = this.c.f();
+
+         try {
+            Path $$2 = Files.createTempFile($$1, "level", ".dat");
+            uq.a($$0, $$2);
+            Path $$3 = this.c.c();
+            Path $$4 = this.c.b();
+            ac.a($$4, $$2, $$3);
+         } catch (Exception var6) {
+            eox.b.error("Failed to save level {}", $$1, var6);
+         }
+      }
+
+      public Optional<Path> j() {
+         return !this.b.a() ? Optional.empty() : Optional.of(this.c.d());
+      }
+
+      public void k() throws IOException {
+         this.o();
+         final Path $$0 = this.c.e();
+         eox.b.info("Deleting level {}", this.d);
+
+         for (int $$1 = 1; $$1 <= 5; $$1++) {
+            eox.b.info("Attempt {}...", $$1);
+
+            try {
+               Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+                  public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) throws IOException {
+                     if (!$$0.equals($$0)) {
+                        eox.b.debug("Deleting {}", $$0);
+                        Files.delete($$0);
+                     }
+
+                     return FileVisitResult.CONTINUE;
+                  }
+
+                  public FileVisitResult a(Path $$0x, @Nullable IOException $$1) throws IOException {
+                     if ($$1 != null) {
+                        throw $$1;
                      } else {
-                        this.f.a($$14, 0);
-                        this.b($$14, eov.a.a($$2, $$1.g()));
-                     }
-                  }
-
-                  $$10--;
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean a(iw $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case c -> $$2 == 15;
-         case d -> $$2 == 0;
-         case e -> $$1 == 15;
-         case f -> $$1 == 0;
-         default -> false;
-      };
-   }
-
-   @Override
-   public void a(dbh $$0, boolean $$1) {
-      super.a($$0, $$1);
-      if ($$1) {
-         eoo $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-         int $$3 = $$2.a() - 1;
-         int $$4 = jt.a($$3) + 1;
-         long $$5 = jt.b($$0.e, $$0.f);
-         int $$6 = this.f.m($$5);
-         int $$7 = Math.max(this.f.c(), $$4);
-
-         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            dvd $$9 = this.f.c(jt.b($$0.e, $$8, $$0.f));
-            if ($$9 != null && $$9.d()) {
-               $$9.a(15);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(dbh $$0) {
-      long $$1 = jt.b($$0.e, $$0.f);
-      this.f.b($$1, true);
-      eoo $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-      eoo $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
-      eoo $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
-      eoo $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
-      eoo $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
-      int $$7 = this.f.m($$1);
-      int $$8 = this.f.c();
-      int $$9 = jt.c($$0.e);
-      int $$10 = jt.c($$0.f);
-
-      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = jt.b($$0.e, $$11, $$0.f);
-         dvd $$13 = this.f.c($$12);
-         if ($$13 != null) {
-            int $$14 = jt.c($$11);
-            int $$15 = $$14 + 15;
-            boolean $$16 = false;
-
-            for (int $$17 = 0; $$17 < 16; $$17++) {
-               for (int $$18 = 0; $$18 < 16; $$18++) {
-                  int $$19 = $$2.a($$18, $$17);
-                  if ($$19 <= $$15) {
-                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
-                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
-                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
-                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
-                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
-
-                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
-                        $$13.a($$18, jt.b($$25), $$17, 15);
-                        if ($$25 == $$19 || $$25 < $$24) {
-                           long $$26 = ir.a($$9 + $$18, $$25, $$10 + $$17);
-                           this.c($$26, eov.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
+                        if ($$0.equals(c.this.c.f())) {
+                           c.this.b.close();
+                           Files.deleteIfExists($$0);
                         }
-                     }
 
-                     if ($$19 < $$14) {
-                        $$16 = true;
+                        Files.delete($$0);
+                        return FileVisitResult.CONTINUE;
                      }
                   }
+               });
+               break;
+            } catch (IOException var6) {
+               if ($$1 >= 5) {
+                  throw var6;
+               }
+
+               eox.b.warn("Failed to delete {}", this.c.f(), var6);
+
+               try {
+                  Thread.sleep(500L);
+               } catch (InterruptedException var5) {
                }
             }
-
-            if (!$$16) {
-               break;
-            }
          }
+      }
+
+      public void a(String $$0) throws IOException {
+         this.a((Consumer<ud>)($$1 -> $$1.a("LevelName", $$0.trim())));
+      }
+
+      public void b(String $$0) throws IOException {
+         this.a((Consumer<ud>)($$1 -> {
+            $$1.a("LevelName", $$0.trim());
+            $$1.r("Player");
+         }));
+      }
+
+      private void a(Consumer<ud> $$0) throws IOException {
+         this.o();
+         ud $$1 = eox.c(this.c.b());
+         $$0.accept($$1.p("Data"));
+         this.a($$1);
+      }
+
+      public long l() throws IOException {
+         this.o();
+         String $$0 = LocalDateTime.now().format(eox.c) + "_" + this.d;
+         Path $$1 = eox.this.d();
+
+         try {
+            v.c($$1);
+         } catch (IOException var9) {
+            throw new RuntimeException(var9);
+         }
+
+         Path $$3 = $$1.resolve(v.a($$1, $$0, ".zip"));
+
+         try (final ZipOutputStream $$4 = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream($$3)))) {
+            final Path $$5 = Paths.get(this.d);
+            Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+               public FileVisitResult a(Path $$0, BasicFileAttributes $$1) throws IOException {
+                  if ($$0.endsWith("session.lock")) {
+                     return FileVisitResult.CONTINUE;
+                  } else {
+                     String $$2 = $$5.resolve(c.this.c.f().relativize($$0)).toString().replace('\\', '/');
+                     ZipEntry $$3 = new ZipEntry($$2);
+                     $$4.putNextEntry($$3);
+                     com.google.common.io.Files.asByteSource($$0.toFile()).copyTo($$4);
+                     $$4.closeEntry();
+                     return FileVisitResult.CONTINUE;
+                  }
+               }
+            });
+         }
+
+         return Files.size($$3);
+      }
+
+      public boolean m() {
+         return Files.exists(this.c.b()) || Files.exists(this.c.c());
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.b.close();
+      }
+
+      public boolean n() {
+         return ac.a(this.c.b(), this.c.c(), this.c.a(LocalDateTime.now()), true);
+      }
+
+      @Nullable
+      public Instant a(boolean $$0) {
+         return eox.d($$0 ? this.c.c() : this.c.b());
       }
    }
 }

@@ -1,46 +1,44 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cwp {
-   @Nullable
-   private final String a;
-   private final List<brh> b;
+public record cwp(Map<String, cwp.a> c) {
+   public static final cwp a = new cwp(Map.of());
+   public static final Codec<cwp> b = Codec.unboundedMap(Codec.STRING, cwp.a.a).xmap(cwp::new, cwp::a);
 
-   public cwp(brh... $$0) {
-      this(null, $$0);
+   public cwp a(String $$0, cwp.a $$1) {
+      return new cwp(ac.a(this.c, $$0, $$1));
    }
 
-   public cwp(@Nullable String $$0, brh... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
+   public Map<String, cwp.a> a() {
+      return this.c;
    }
 
-   public static String a(Optional<ja<cwp>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   public static record a(ix<eog> b, double c, double d, float e) {
+      public static final Codec<cwp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eog.b.fieldOf("type").forGetter(cwp.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cwp.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cwp.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cwp.a::d)
+               )
+               .apply($$0, cwp.a::new)
+      );
+
+      public ix<eog> a() {
+         return this.b;
       }
 
-      String $$3 = $$0.flatMap(ja::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<brh> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (brh $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
+      public double b() {
+         return this.c;
       }
 
-      return false;
+      public double c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 }

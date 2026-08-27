@@ -1,29 +1,27 @@
-public class aiu implements zl<aiq> {
-   public static final zc<we, aiu> a = zl.a(aiu::a, aiu::new);
-   private final int b;
+import java.util.UUID;
 
-   public aiu(int $$0) {
-      this.b = $$0;
+public record aiu(String b, UUID c) implements ze<ais> {
+   public static final yv<vx, aiu> a = ze.a(aiu::a, aiu::new);
+
+   private aiu(vx $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   private aiu(we $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aiu> a() {
-      return aiw.d;
+   public zg<aiu> a() {
+      return aiq.g;
    }
 
-   public void a(aiq $$0) {
+   public void a(ais $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public UUID e() {
+      return this.c;
    }
 }

@@ -1,39 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
-public abstract class bek extends DataFix {
-   private final String a;
-   private final Predicate<String> b;
-
-   public bek(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bek extends bez {
+   public bek(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", bga.s, "minecraft:jigsaw");
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
    }
 
-   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgf.B.typeName(), bhp.a()));
-      OpticFinder<?> $$4 = $$0.findField("tag");
-      return $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
-         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
-      };
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bek::a);
    }
-
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

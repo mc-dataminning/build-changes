@@ -1,126 +1,194 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
 
 public class apa {
-   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wx.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wx.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wx.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wx.c("commands.worldborder.damage.amount.failed"));
+
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ei.a(
-                                    "targets", eu.d()
-                                 )
-                                 .then(ei.a("clear").executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets")))))
-                              .then(ei.a("reset").executes($$0x -> b((eh)$$0x.getSource(), eu.f($$0x, "targets")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a(
+                                 "worldborder"
+                              )
+                              .requires($$0x -> $$0x.c(2)))
                            .then(
-                              ei.a("title")
+                              ef.a("add")
                                  .then(
-                                    ei.a("title", eq.a($$1))
-                                       .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "title", afo::new))
+                                    ((RequiredArgumentBuilder)ef.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ee)$$0x.getSource(),
+                                                   ((ee)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
+                                       .then(
+                                          ef.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ee)$$0x.getSource(),
+                                                      ((ee)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ee)$$0x.getSource()).e().C_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                   )
+                                             )
+                                       )
                                  )
                            ))
                         .then(
-                           ei.a("subtitle")
+                           ef.a("set")
                               .then(
-                                 ei.a("title", eq.a($$1))
-                                    .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "subtitle", afm::new))
-                              )
-                        ))
-                     .then(
-                        ei.a("actionbar")
-                           .then(
-                              ei.a("title", eq.a($$1))
-                                 .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "actionbar", aep::new))
-                           )
-                     ))
-                  .then(
-                     ei.a("times")
-                        .then(
-                           ei.a("fadeIn", fw.a())
-                              .then(
-                                 ei.a("stay", fw.a())
+                                 ((RequiredArgumentBuilder)ef.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ee)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
                                     .then(
-                                       ei.a("fadeOut", fw.a())
+                                       ef.a("time", IntegerArgumentType.integer(0))
                                           .executes(
                                              $$0x -> a(
-                                                   (eh)$$0x.getSource(),
-                                                   eu.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                   (ee)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
                                                 )
                                           )
                                     )
                               )
+                        ))
+                     .then(ef.a("center").then(ef.a("pos", gg.a()).executes($$0x -> a((ee)$$0x.getSource(), gg.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)ef.a("damage")
+                           .then(
+                              ef.a("amount")
+                                 .then(
+                                    ef.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ee)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           ef.a("buffer")
+                              .then(
+                                 ef.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ee)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
+                        )
+                  ))
+               .then(ef.a("get").executes($$0x -> a((ee)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)ef.a("warning")
+                     .then(
+                        ef.a("distance")
+                           .then(
+                              ef.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     ef.a("time")
+                        .then(
+                           ef.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                         )
                   )
             )
       );
    }
 
-   private static int a(eh $$0, Collection<aqu> $$1) {
-      aco $$2 = new aco(false);
-
-      for (aqu $$3 : $$1) {
-         $$3.d.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xe.a("commands.title.cleared.single", $$1.iterator().next().P_()), true);
+   private static int a(ee $$0, float $$1) throws CommandSyntaxException {
+      dsu $$2 = $$0.l().I().C_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
       } else {
-         $$0.a(() -> xe.a("commands.title.cleared.multiple", $$1.size()), true);
+         $$2.b((double)$$1);
+         $$0.a(() -> wx.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
-
-      return $$1.size();
    }
 
-   private static int b(eh $$0, Collection<aqu> $$1) {
-      aco $$2 = new aco(true);
-
-      for (aqu $$3 : $$1) {
-         $$3.d.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xe.a("commands.title.reset.single", $$1.iterator().next().P_()), true);
+   private static int b(ee $$0, float $$1) throws CommandSyntaxException {
+      dsu $$2 = $$0.l().I().C_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
       } else {
-         $$0.a(() -> xe.a("commands.title.reset.multiple", $$1.size()), true);
+         $$2.c((double)$$1);
+         $$0.a(() -> wx.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
-
-      return $$1.size();
    }
 
-   private static int a(eh $$0, Collection<aqu> $$1, xe $$2, String $$3, Function<xe, zl<?>> $$4) throws CommandSyntaxException {
-      for (aqu $$5 : $$1) {
-         $$5.d.b($$4.apply(xh.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().P_()), true);
+   private static int a(ee $$0, int $$1) throws CommandSyntaxException {
+      dsu $$2 = $$0.l().I().C_();
+      if ($$2.q() == $$1) {
+         throw f.create();
       } else {
-         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+         $$2.b($$1);
+         $$0.a(() -> wx.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
       }
-
-      return $$1.size();
    }
 
-   private static int a(eh $$0, Collection<aqu> $$1, int $$2, int $$3, int $$4) {
-      afp $$5 = new afp($$2, $$3, $$4);
-
-      for (aqu $$6 : $$1) {
-         $$6.d.b($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xe.a("commands.title.times.single", $$1.iterator().next().P_()), true);
+   private static int b(ee $$0, int $$1) throws CommandSyntaxException {
+      dsu $$2 = $$0.l().I().C_();
+      if ($$2.r() == $$1) {
+         throw g.create();
       } else {
-         $$0.a(() -> xe.a("commands.title.times.multiple", $$1.size()), true);
+         $$2.c($$1);
+         $$0.a(() -> wx.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
       }
+   }
 
-      return $$1.size();
+   private static int a(ee $$0) {
+      double $$1 = $$0.l().I().C_().i();
+      $$0.a(() -> wx.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return ayf.a($$1 + 0.5);
+   }
+
+   private static int a(ee $$0, eul $$1) throws CommandSyntaxException {
+      dsu $$2 = $$0.l().I().C_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> wx.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
+      } else {
+         throw e.create();
+      }
+   }
+
+   private static int a(ee $$0, double $$1, long $$2) throws CommandSyntaxException {
+      dsu $$3 = $$0.l().I().C_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
+      } else {
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> wx.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            } else {
+               $$0.a(() -> wx.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            }
+         } else {
+            $$3.a($$1);
+            $$0.a(() -> wx.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
+         }
+
+         return (int)($$1 - $$4);
+      }
    }
 }

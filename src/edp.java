@@ -1,172 +1,146 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class edp extends eca<efe> {
-   public static final int a = 10;
-   private static final int b = 42;
-   private static final LoadingCache<Long, List<edp.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new edp.b());
+public abstract class edp {
+   public static final Codec<edp> d = le.W.q().dispatch(edp::a, edq::a);
+   protected final bpb e;
+   protected final bpb f;
 
-   public edp(Codec<efe> $$0) {
-      super($$0);
+   protected static <P extends edp> P2<Mu<P>, bpb, bpb> b(Instance<P> $$0) {
+      return $$0.group(bpb.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), bpb.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   public static List<edp.a> a(dcv $$0) {
-      ayt $$1 = ayt.a($$0.C());
-      long $$2 = $$1.g() & 65535L;
-      return (List<edp.a>)c.getUnchecked($$2);
+   public edp(bpb $$0, bpb $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   public boolean a(ecc<efe> $$0) {
-      efe $$1 = $$0.f();
-      dcv $$2 = $$0.b();
-      ayt $$3 = $$0.d();
-      ir $$4 = $$0.e();
-      List<edp.a> $$5 = $$1.b();
-      if ($$5.isEmpty()) {
-         $$5 = a($$2);
-      }
+   protected abstract edq<?> a();
 
-      for (edp.a $$6 : $$5) {
-         if ($$6.a($$4)) {
-            this.a($$2, $$3, $$1, $$6);
-         }
-      }
-
-      return true;
+   public void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
    }
 
-   private void a(dcp $$0, ayt $$1, efe $$2, edp.a $$3) {
-      int $$4 = $$3.c();
+   protected abstract void a(dbf var1, edp.b var2, aym var3, ecz var4, int var5, edp.a var6, int var7, int var8, int var9);
 
-      for (ir $$5 : ir.c(new ir($$3.a() - $$4, $$0.J_(), $$3.b() - $$4), new ir($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
-         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
-            this.a($$0, $$5, dfe.cZ.n());
-         } else if ($$5.v() > 65) {
-            this.a($$0, $$5, dfe.a.n());
-         }
+   public abstract int a(aym var1, int var2, ecz var3);
+
+   public int a(aym $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(aym $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(aym var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
       }
 
-      if ($$3.e()) {
-         int $$6 = -2;
-         int $$7 = 2;
-         int $$8 = 3;
-         ir.a $$9 = new ir.a();
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
 
-         for (int $$10 = -2; $$10 <= 2; $$10++) {
-            for (int $$11 = -2; $$11 <= 2; $$11++) {
-               for (int $$12 = 0; $$12 <= 3; $$12++) {
-                  boolean $$13 = aym.a($$10) == 2;
-                  boolean $$14 = aym.a($$11) == 2;
-                  boolean $$15 = $$12 == 3;
-                  if ($$13 || $$14 || $$15) {
-                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
-                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
-                     dtc $$18 = dfe.fO
-                        .n()
-                        .a(djh.a, Boolean.valueOf($$16 && $$11 != -2))
-                        .a(djh.c, Boolean.valueOf($$16 && $$11 != 2))
-                        .a(djh.d, Boolean.valueOf($$17 && $$10 != -2))
-                        .a(djh.b, Boolean.valueOf($$17 && $$10 != 2));
-                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
-                  }
-               }
+   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, io $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      io.a $$9 = new io.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
             }
          }
       }
+   }
 
-      cgz $$19 = bsb.G.a((dca)$$0.E());
-      if ($$19 != null) {
-         $$19.a($$2.c());
-         $$19.n($$2.a());
-         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
-         $$0.b($$19);
-         ir $$20 = $$19.du();
-         this.a($$0, $$20.d(), dfe.ak.n());
-         this.a($$0, $$20, dif.a($$0, $$20));
+   protected final void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, io $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      io $$11 = $$4.d();
+      io.a $$12 = new io.a();
+
+      for (it $$13 : it.c.a) {
+         it $$14 = $$13.h();
+         int $$15 = $$14.f() == it.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(it.b));
+            $$12.c(it.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(it.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(it.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
       }
    }
 
-   public static class a {
-      public static final Codec<edp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
-                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
-                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, edp.a::new)
-      );
+   private static boolean a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, float $$4, io $$5, io.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
+   }
+
+   protected static boolean a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, io $$4) {
+      if (!ebl.c($$0, $$4)) {
+         return false;
+      } else {
+         drd $$5 = $$3.e.a($$2, $$4);
+         if ($$5.b(drt.C)) {
+            $$5 = $$5.a(drt.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(emx.c))));
+         }
+
+         $$1.a($$4, $$5);
+         return true;
+      }
+   }
+
+   public static final class a {
+      private final io a;
       private final int b;
-      private final int c;
-      private final int d;
-      private final int e;
-      private final boolean f;
-      private final ewp g;
+      private final boolean c;
 
-      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = new ewp((double)($$0 - $$2), (double)dwu.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)dwu.d, (double)($$1 + $$2));
+      public a(io $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public boolean a(ir $$0) {
-         return jt.a($$0.u()) == jt.a(this.b) && jt.a($$0.w()) == jt.a(this.c);
-      }
-
-      public int a() {
-         return this.b;
+      public io a() {
+         return this.a;
       }
 
       public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
          return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public ewp f() {
-         return this.g;
       }
    }
 
-   static class b extends CacheLoader<Long, List<edp.a>> {
-      public List<edp.a> a(Long $$0) {
-         IntArrayList $$1 = ad.a(IntStream.range(0, 10), ayt.a($$0));
-         List<edp.a> $$2 = Lists.newArrayList();
+   public interface b {
+      void a(io var1, drd var2);
 
-         for (int $$3 = 0; $$3 < 10; $$3++) {
-            int $$4 = aym.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$5 = aym.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$6 = $$1.get($$3);
-            int $$7 = 2 + $$6 / 3;
-            int $$8 = 76 + $$6 * 3;
-            boolean $$9 = $$6 == 1 || $$6 == 2;
-            $$2.add(new edp.a($$4, $$5, $$7, $$8, $$9));
-         }
-
-         return $$2;
-      }
+      boolean a(io var1);
    }
 }

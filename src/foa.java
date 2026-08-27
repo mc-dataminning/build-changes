@@ -1,34 +1,97 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.Objects;
 
-public class foa extends foe {
-   private static final xe a = xe.c("options.mouse_settings.title");
-   private final fma r = new fma(this);
-   private fjk s;
+public class foa extends fne implements foc<cpz> {
+   private final cpz x;
+   private final cph y = new cph() {
+      @Override
+      public void a(cov $$0, int $$1, ctq $$2) {
+         foa.this.K();
+      }
 
-   private static fgm<?>[] a(fgn $$0) {
-      return new fgm[]{$$0.d(), $$0.R(), $$0.F(), $$0.S(), $$0.Z()};
+      @Override
+      public void a(cov $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            foa.this.L();
+         }
+      }
+   };
+
+   public foa(cpz $$0, clx $$1, wx $$2) {
+      this.x = $$0;
    }
 
-   public foa(fon $$0, fgn $$1) {
-      super($$0, $$1, a);
+   public cpz J() {
+      return this.x;
    }
 
    @Override
    protected void aN_() {
-      this.s = this.c(new fjk(this.m, this.n, this.o, this));
-      if (ezx.a()) {
-         this.s.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.G())).toArray(fgm[]::new));
-      } else {
-         this.s.a(a(this.c));
-      }
-
       super.aN_();
+      this.x.a(this.y);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.r);
+   public void d() {
+      this.m.s.r();
+      super.d();
+   }
+
+   @Override
+   public void j() {
+      super.j();
+      this.x.b(this.y);
+   }
+
+   @Override
+   protected void m() {
+      if (this.m.s.go()) {
+         this.c(fga.a(ww.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fga.a(wx.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
+      }
+   }
+
+   @Override
+   protected void E() {
+      this.g(1);
+   }
+
+   @Override
+   protected void F() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.x.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.m.q.a(this.x.j, $$0);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   void K() {
+      ctq $$0 = this.x.l();
+      this.a(Objects.requireNonNullElse(fne.a.a($$0), fne.d));
+   }
+
+   void L() {
+      this.a(this.x.m());
+   }
+
+   @Override
+   protected void I() {
+      this.m.s.r();
    }
 }

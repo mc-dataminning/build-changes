@@ -1,67 +1,92 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public class cl extends dh<cl.a> {
+public class cl extends df<cl.a> {
    @Override
    public Codec<cl.a> a() {
       return cl.a.a;
    }
 
-   public void a(aqu $$0, ir $$1, cuh $$2) {
-      aqt $$3 = $$0.B();
-      dtc $$4 = $$3.a_($$1);
-      ers $$5 = new ers.a($$3).a(eug.f, $$1.b()).a(eug.a, $$0).a(eug.g, $$4).a(eug.i, $$2).a(euf.n);
-      erp $$6 = new erp.a($$5).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$6));
+   public void a(aqo $$0, Collection<brw> $$1) {
+      List<eph> $$2 = Lists.newArrayList();
+      Set<bsc<?>> $$3 = Sets.newHashSet();
+
+      for (brw $$4 : $$1) {
+         $$3.add($$4.ak());
+         $$2.add(br.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bd> b, Optional<bd> c) implements dh.a {
+   public static record a(Optional<bc> b, List<bc> c, ct.d d) implements df.a {
       public static final Codec<cl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(cl.a::a), axu.a(bd.a, "location").forGetter(cl.a::b)).apply($$0, cl.a::new)
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(cl.a::a),
+                  br.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cl.a::b),
+                  ct.d.d.optionalFieldOf("unique_entity_types", ct.d.c).forGetter(cl.a::c)
+               )
+               .apply($$0, cl.a::new)
       );
 
-      public static ao<cl.a> a(dfc $$0) {
-         bd $$1 = bd.a(eut.a($$0).build());
-         return an.z.a(new cl.a(Optional.empty(), Optional.of($$1)));
+      public static an<cl.a> a(br.a... $$0) {
+         return am.H.a(new cl.a(Optional.empty(), br.a($$0), ct.d.c));
       }
 
-      public static ao<cl.a> a(euu.a... $$0) {
-         bd $$1 = bd.a(Arrays.stream($$0).map(euu.a::build).toArray(euu[]::new));
-         return an.z.a(new cl.a(Optional.empty(), Optional.of($$1)));
+      public static an<cl.a> a(ct.d $$0) {
+         return am.H.a(new cl.a(Optional.empty(), List.of(), $$0));
       }
 
-      private static cl.a c(cs.a $$0, ci.a $$1) {
-         bd $$2 = bd.a(eus.a($$0).build(), evc.a($$1).build());
-         return new cl.a(Optional.empty(), Optional.of($$2));
-      }
+      public boolean a(Collection<eph> $$0, int $$1) {
+         if (!this.c.isEmpty()) {
+            List<eph> $$2 = Lists.newArrayList($$0);
 
-      public static ao<cl.a> a(cs.a $$0, ci.a $$1) {
-         return an.N.a(c($$0, $$1));
-      }
+            for (bc $$3 : this.c) {
+               boolean $$4 = false;
+               Iterator<eph> $$5 = $$2.iterator();
 
-      public static ao<cl.a> b(cs.a $$0, ci.a $$1) {
-         return an.aa.a(c($$0, $$1));
-      }
+               while ($$5.hasNext()) {
+                  eph $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
 
-      public boolean a(erp $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
+
+         return this.d.d($$1);
       }
 
       @Override
-      public void a(be $$0) {
-         dh.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, euf.n, ".location"));
+      public void a(bd $$0) {
+         df.a.super.a($$0);
+         $$0.a(this.c, ".victims");
       }
 
       @Override
-      public Optional<bd> a() {
+      public Optional<bc> a() {
          return this.b;
       }
 
-      public Optional<bd> b() {
+      public List<bc> b() {
          return this.c;
+      }
+
+      public ct.d c() {
+         return this.d;
       }
    }
 }

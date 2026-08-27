@@ -1,38 +1,58 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ava extends auu<GameProfile> {
-   public ava(GameProfile $$0) {
-      super($$0);
+public abstract class ava implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
+
+   protected ava(String $$0) {
+      this.b = $$0;
    }
 
-   public ava(JsonObject $$0) {
-      super(b($$0));
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
       }
    }
 
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
          }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
       }
+   }
+
+   public boolean c() {
+      return this.a;
    }
 }

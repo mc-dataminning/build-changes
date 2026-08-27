@@ -1,44 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public abstract class eql {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
+public class eql extends eqs {
+   public static final MapCodec<eql> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(etj.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, eql::new)
+   );
+   private final eti b;
+   private final boolean c;
 
-   public abstract uk a(uk var1, jc.a var2);
-
-   public void c() {
-      this.a(true);
+   eql(List<esn> $$0, eti $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(boolean $$0) {
-      this.b = $$0;
+   @Override
+   public equ b() {
+      return eqv.f;
    }
 
-   public boolean d() {
-      return this.b;
+   @Override
+   public Set<erw<?>> a() {
+      return this.b.a();
    }
 
-   public void a(File $$0, jc.a $$1) {
-      if (this.d()) {
-         uk $$2 = new uk();
-         $$2.a("data", this.a(new uk(), $$1));
-         uz.e($$2);
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      aym $$2 = $$1.b();
+      return czc.a($$1.d().J(), $$2, $$0, this.b.a($$1), this.c);
+   }
 
-         try {
-            ux.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
-         }
+   public static eql.a a(eti $$0) {
+      return new eql.a($$0);
+   }
 
-         this.a(false);
+   public static class a extends eqs.a<eql.a> {
+      private final eti a;
+      private boolean b;
+
+      public a(eti $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static record a<T extends eql>(Supplier<T> a, BiFunction<uk, jc.a, T> b, azs c) {
+      protected eql.a a() {
+         return this;
+      }
+
+      public eql.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public eqt b() {
+         return new eql(this.g(), this.a, this.b);
+      }
    }
 }

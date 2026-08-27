@@ -1,67 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ebr extends eca<eeg> {
-   private static final ImmutableList<dfc> a = ImmutableList.of(dfe.ak, dfe.gf, dfe.gg, dfe.gh, dfe.gi, dfe.dg, dfe.de);
-   private static final iw[] b = iw.values();
-   private static final double c = 0.9;
-
-   public ebr(Codec<eeg> $$0) {
+public class ebr extends ebo {
+   public ebr(Codec<edc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eeg> $$0) {
-      boolean $$1 = false;
-      ayt $$2 = $$0.d();
-      dcv $$3 = $$0.b();
-      eeg $$4 = $$0.f();
-      ir $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   protected Set<io> a(dbu $$0, edc $$1, aym $$2, io $$3, Predicate<drd> $$4, int $$5, int $$6) {
+      Set<io> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<io> $$8 = new HashSet<>();
+      io.a $$9 = new io.a();
 
-      for (ir $$13 : ir.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ir $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
+      for (io $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
          }
       }
 
-      return $$1;
+      for (io $$11 : $$8) {
+         $$0.a($$11, dec.G.n(), 2);
+      }
+
+      return $$8;
    }
 
-   private static boolean a(dcb $$0, ir $$1, eeg $$2) {
-      dtc $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (iw $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != iw.b || !$$5 && $$4 == iw.b) {
-               return false;
-            }
+   private static boolean a(dbu $$0, Set<io> $$1, io $$2, io.a $$3) {
+      return a($$0, $$2, $$3, it.c) || a($$0, $$2, $$3, it.f) || a($$0, $$2, $$3, it.d) || a($$0, $$2, $$3, it.e) || a($$0, $$2, $$3, it.a);
+   }
+
+   private static boolean a(dbu $$0, io $$1, io.a $$2, it $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dbu $$0, edc $$1, dta $$2, aym $$3, io $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         drd $$5 = $$0.a_($$4);
+         if ($$5.b(drt.C) && !$$5.c(drt.C)) {
+            $$0.a($$4, $$5.a(drt.C, Boolean.valueOf(true)), 2);
          }
 
          return true;
+      } else {
+         return false;
       }
    }
 }

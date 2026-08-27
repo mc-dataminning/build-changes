@@ -1,43 +1,45 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class aun extends auv<String, auo> {
-   public aun(File $$0) {
-      super($$0);
+public class aun {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   @Override
-   protected auu<String> a(JsonObject $$0) {
-      return new auo($$0);
+   public boolean a(int $$0, List<aqo> $$1) {
+      int $$2 = (int)$$1.stream().filter(cly::gf).count();
+      return $$2 >= this.b($$0);
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
+   public int b(int $$0) {
+      return Math.max(1, ayf.f((float)(this.a * $$0) / 100.0F));
    }
 
-   public boolean a(String $$0) {
-      return this.d($$0);
+   public void a() {
+      this.b = 0;
    }
 
-   @Nullable
-   public auo b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
+   public int b() {
+      return this.b;
    }
 
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+   public boolean a(List<aqo> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (aqo $$3 : $$0) {
+         if (!$$3.N_()) {
+            this.a++;
+            if ($$3.fL()) {
+               this.b++;
+            }
+         }
       }
 
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

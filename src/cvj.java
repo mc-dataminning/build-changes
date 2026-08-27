@@ -1,33 +1,32 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public interface cvj {
+   cvj.a a = new cvj.a(false, false);
+   cvj.a b = new cvj.a(true, false);
 
-public enum cvj implements azg {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n),
-   e(4, "potato", n.k);
+   boolean a();
 
-   public static final Codec<cvj> f = azg.b(cvj::values);
-   public static final IntFunction<cvj> g = axd.a($$0 -> $$0.i, values(), axd.a.a);
-   public static final zc<ByteBuf, cvj> h = za.a(g, $$0 -> $$0.i);
-   private final int i;
-   private final String j;
-   private final n k;
+   boolean b();
 
-   private cvj(int $$0, String $$1, n $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-   }
+   public static record a(boolean c, boolean d) implements cvj {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
 
-   public n a() {
-      return this.k;
-   }
+      @Override
+      public boolean b() {
+         return this.d;
+      }
 
-   @Override
-   public String c() {
-      return this.j;
+      public cvj.a c() {
+         return new cvj.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

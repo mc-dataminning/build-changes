@@ -1,61 +1,47 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class are implements arc {
-   private static final Logger a = LogUtils.getLogger();
-   private final int b;
-   private int c;
-   private long d;
-   private long e = Long.MAX_VALUE;
-
-   private are(int $$0) {
-      this.b = $$0;
+public record are<T>(T a, Optional<T> b) {
+   public static <T> Codec<are<T>> a(Codec<T> $$0) {
+      Codec<are<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(are::a), $$0.optionalFieldOf("filtered").forGetter(are::b)).apply($$1x, are::new)
+      );
+      Codec<are<T>> $$2 = $$0.xmap(are::a, are::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public static are b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
+   public static <B extends ByteBuf, T> yv<B, are<T>> a(yv<B, T> $$0) {
+      return yv.a($$0, are::a, $$0.a(yt::a), are::b, are::new);
    }
 
-   public static are c(int $$0) {
-      int $$1 = arc.a($$0);
-      return new are($$1 * $$1);
+   public static <T> are<T> a(T $$0) {
+      return new are<>($$0, Optional.empty());
    }
 
-   public static are c() {
-      return new are(0);
+   public static are<String> a(arf $$0) {
+      return new are<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   @Override
-   public void a(dbh $$0) {
-      this.e = ad.b();
-      this.d = this.e;
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   @Override
-   public void a(dbh $$0, @Nullable dvx $$1) {
-      if ($$1 == dvx.n) {
-         this.c++;
+   public <U> are<U> a(Function<T, U> $$0) {
+      return new are<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<are<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new are<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new are<>($$1.get(), Optional.empty()));
       }
-
-      int $$2 = this.d();
-      if (ad.b() > this.e) {
-         this.e += 500L;
-         a.info(xe.a("menu.preparingSpawn", aym.a($$2, 0, 100)).getString());
-      }
-   }
-
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ad.b() - this.d);
-      this.e = Long.MAX_VALUE;
-   }
-
-   public int d() {
-      return this.b == 0 ? 100 : aym.d((float)this.c * 100.0F / (float)this.b);
    }
 }

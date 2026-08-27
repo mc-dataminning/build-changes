@@ -1,50 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class dck {
-   private final Long2ObjectMap<List<aqu>> a = new Long2ObjectOpenHashMap();
-   private final Map<aqu, dck.a> b = Maps.newHashMap();
-   private final aqc c;
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bok<dck.c> a = bok.c();
+   public static final dck b = new dck.a().a();
+   public static final MapCodec<dck> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bst.i, bok.c(dck.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ayz.a(bst.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(le.g.q(), dck.b.a, le.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dck::new)
+   );
+   private final float f;
+   private final Map<bst, bok<dck.c>> g;
+   private final Map<bsc<?>, dck.b> h;
 
-   public dck(aqc $$0) {
-      this.c = $$0;
+   dck(float $$0, Map<bst, bok<dck.c>> $$1, Map<bsc<?>, dck.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   private List<aqu> a(dbh $$0) {
-      return (List<aqu>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   public bok<dck.c> a(bst $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   public void a(dbh $$0, bsr $$1) {
-      for (aqu $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dck.a()).a($$1);
+   @Nullable
+   public dck.b a(bsc<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bst, List<dck.c>> a = Stream.of(bst.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bsc<?>, dck.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dck.a a(bst $$0, dck.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dck.a a(bsc<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dck.b($$2, $$1));
+         return this;
+      }
+
+      public dck.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dck a() {
+         return new dck(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bok.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   public boolean a(bsr $$0, dbh $$1) {
-      for (aqu $$2 : this.a($$1)) {
-         dck.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
+   public static record b(double b, double c) {
+      public static final Codec<dck.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dck.b::new)
+      );
+
+      public double a() {
+         return this.b;
       }
 
-      return false;
+      public double b() {
+         return this.c;
+      }
    }
 
-   static class a {
-      private final Object2IntMap<bsr> a = new Object2IntOpenHashMap(bsr.values().length);
+   public static class c extends boi.a {
+      public static final Codec<dck.c> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     le.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     boh.a.fieldOf("weight").forGetter(boi.a::a),
+                     axn.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     axn.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dck.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+      public final bsc<?> b;
+      public final int c;
+      public final int d;
 
-      public void a(bsr $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      public c(bsc<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, boh.a($$1), $$2, $$3);
       }
 
-      public boolean b(bsr $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
+      public c(bsc<?> $$0, boh $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bst.h ? bsc.az : $$0;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return bsc.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
    }
 }

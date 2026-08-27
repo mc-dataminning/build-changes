@@ -1,23 +1,23 @@
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public record aaz(List<ir> c) implements aam {
-   public static final zc<we, aaz> a = aam.a(aaz::a, aaz::new);
-   public static final aam.b<aaz> b = aam.a("debug/raids");
+public class aaz implements ze<aay> {
+   public static final aaz a = new aaz();
+   public static final yv<ByteBuf, aaz> b = yv.a(a);
 
-   private aaz(we $$0) {
-      this($$0.a(ir.b));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.c, ir.b);
+   private aaz() {
    }
 
    @Override
-   public aam.b<aaz> a() {
-      return b;
+   public zg<aaz> a() {
+      return abe.a;
    }
 
-   public List<ir> b() {
-      return this.c;
+   public void a(aay $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

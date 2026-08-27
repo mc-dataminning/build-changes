@@ -1,130 +1,57 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class fkm extends flz {
+   private final Runnable c;
+   protected final fkm.a a;
+   private final wx d;
+   private final boolean r;
+   private fgt s = fgt.a;
+   protected int b;
+   private fgc u;
 
-public class fkm implements ftz {
-   private static final akt a = new akt("hud/hotbar");
-   private static final akt b = new akt("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final fgj e;
-   private long f;
-   @Nullable
-   private ftw g;
-
-   public fkm(fgj $$0) {
-      this.e = $$0;
+   public fkm(Runnable $$0, fkm.a $$1, wx $$2, wx $$3, boolean $$4) {
+      super($$2);
+      this.c = $$0;
+      this.a = $$1;
+      this.d = $$3;
+      this.r = $$4;
    }
 
-   public void a(int $$0) {
-      this.f = ad.b();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new ftw(this);
-      }
-   }
-
-   private float c() {
-      long $$0 = this.f - ad.b() + 5000L;
-      return aym.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void a(fia $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = aym.d((float)$$0.b() - 22.0F * $$1);
-            fua $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
-   }
-
-   protected void a(fia $$0, float $$1, int $$2, int $$3, fua $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
-      }
-
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
-      }
-
-      RenderSystem.disableBlend();
-   }
-
-   private void a(fia $$0, int $$1, int $$2, float $$3, float $$4, fty $$5) {
-      if ($$5 != ftw.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aP_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aP_()) {
-            xe $$8 = this.e.m.V[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
-   }
-
-   public void b(fia $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fty $$2 = this.g.b();
-         xe $$3 = $$2 == ftw.a ? this.g.c().b() : $$2.aO_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.s = fgt.a(this.p, this.d, this.n - 50);
+      int $$0 = (this.s.a() + 1) * 9;
+      this.c(fga.a(wx.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fga.a(wx.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fga.a(ww.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.u = fgc.a(wx.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.r) {
+         this.c(this.u);
       }
    }
 
    @Override
-   public void a(ftw $$0) {
-      this.g = null;
-      this.f = 0L;
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.s.a($$0, this.n / 2, 70);
    }
 
-   public boolean a() {
-      return this.g != null;
+   @Override
+   public boolean aE_() {
+      return false;
    }
 
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == ftw.a || !this.g.a($$1).aP_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ad.b();
-      }
-   }
-
-   public void b() {
-      this.f = ad.b();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
       } else {
-         this.g = new ftw(this);
+         return super.a($$0, $$1, $$2);
       }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

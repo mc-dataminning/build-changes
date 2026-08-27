@@ -1,25 +1,27 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record dk(cu.d c) implements bt {
-   public static final MapCodec<dk> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axu.a(cu.d.d, "size", cu.d.c).forGetter(dk::b)).apply($$0, dk::new));
-
-   public static dk a(cu.d $$0) {
-      return new dk($$0);
-   }
-
+public class dk extends df<dk.a> {
    @Override
-   public boolean a(brv $$0, aqt $$1, @Nullable ewu $$2) {
-      return $$0 instanceof cjn $$3 ? this.c.d($$3.gz()) : false;
+   public Codec<dk.a> a() {
+      return dk.a.a;
    }
 
-   @Override
-   public MapCodec<dk> a() {
-      return bu.d;
+   public void a(aqo $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public cu.d b() {
-      return this.c;
+   public static record a(Optional<bc> b) implements df.a {
+      public static final Codec<dk.a> a = RecordCodecBuilder.create($$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(dk.a::a)).apply($$0, dk.a::new));
+
+      public static an<dk.a> a(br.a $$0) {
+         return am.U.a(new dk.a(Optional.of(br.a($$0))));
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
    }
 }

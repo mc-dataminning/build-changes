@@ -1,66 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class esf implements erx {
-   protected final List<euu> e;
-   private final Predicate<erp> a;
+public record esf(akm<esn> b) implements esn {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akm.a(lf.aW).fieldOf("name").forGetter(esf::c)).apply($$0, esf::new));
 
-   protected esf(List<euu> $$0) {
-      this.e = $$0;
-      this.a = ad.a($$0);
+   @Override
+   public eso b() {
+      return esp.r;
    }
 
-   protected static <T extends esf> P1<Mu<T>, List<euu>> a(Instance<T> $$0) {
-      return $$0.group(axu.a(euw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
-
-   public void a(erv $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   @Override
+   public void a(epn $$0) {
+      if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         esn.super.a($$0);
+         $$0.a()
+            .a(lf.aW, this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
       }
    }
 
-   protected final boolean a(erp $$0) {
-      return this.a.test($$0);
+   public boolean a(eph $$0) {
+      esn $$1 = $$0.a().a(lf.aW, this.b).map(ix.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         eph.c<?> $$2 = eph.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
    }
 
-   public abstract esg a();
+   public static esn.a a(akm<esn> $$0) {
+      return () -> new esf($$0);
+   }
 
-   public abstract static class a<T extends esf.a<T>> implements eun<T> {
-      private final Builder<euu> a = ImmutableList.builder();
-
-      protected abstract T aB_();
-
-      public T a(euu.a $$0) {
-         this.a.add($$0.build());
-         return this.aB_();
-      }
-
-      public final T e() {
-         return this.aB_();
-      }
-
-      protected List<euu> f() {
-         return this.a.build();
-      }
-
-      public erw.a a(esf.a<?> $$0) {
-         return new erw.a(this, $$0);
-      }
-
-      public esb.a b(esf.a<?> $$0) {
-         return new esb.a(this, $$0);
-      }
-
-      public esj.a c(esf.a<?> $$0) {
-         return new esj.a(this, $$0);
-      }
-
-      public abstract esf b();
+   public akm<esn> c() {
+      return this.b;
    }
 }

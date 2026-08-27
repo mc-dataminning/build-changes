@@ -1,109 +1,94 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fng extends fon {
-   private static final xe a = xe.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final fma c = new fma(this);
-   private final fon d;
-   private final Consumer<ja<dcz>> r;
-   final jn<dcz> s;
-   private fng.a u;
-   ja<dcz> v;
-   private fin w;
+public class fng extends fmx<cpb> {
+   private static final akn D = new akn("container/cartography_table/error");
+   private static final akn E = new akn("container/cartography_table/scaled_map");
+   private static final akn F = new akn("container/cartography_table/duplicated_map");
+   private static final akn G = new akn("container/cartography_table/map");
+   private static final akn H = new akn("container/cartography_table/locked");
+   private static final akn I = new akn("textures/gui/container/cartography_table.png");
 
-   public fng(fon $$0, ftp $$1, Consumer<ja<dcz>> $$2) {
-      super(xe.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.r = $$2;
-      this.s = $$1.a().d(li.az);
-      ja<dcz> $$3 = this.s.b(ddg.b).or(() -> this.s.h().findAny()).orElseThrow();
-      this.v = $$1.d().a().c().c().stream().findFirst().orElse($$3);
+   public fng(cpb $$0, clx $$1, wx $$2) {
+      super($$0, $$1, $$2);
+      this.s -= 2;
    }
 
    @Override
-   public void d() {
-      this.m.a(this.d);
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void aN_() {
-      fme $$0 = this.c.a(fme.d().a(8));
-      $$0.c().b();
-      $$0.a(new fju(this.n(), this.p));
-      $$0.a(new fju(a, this.p));
-      this.u = this.c.c(new fng.a());
-      fme $$1 = this.c.b(fme.e().a(8));
-      this.w = $$1.a(fin.a(xd.d, $$0x -> {
-         this.r.accept(this.v);
-         this.d();
-      }).a());
-      $$1.a(fin.a(xd.e, $$0x -> this.d()).a());
-      this.u.a(this.u.aE_().stream().filter($$0x -> Objects.equals($$0x.b, this.v)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
-   }
+   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = this.A;
+      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
+      ctq $$6 = this.w.b(1).g();
+      boolean $$7 = $$6.a(ctt.uj);
+      boolean $$8 = $$6.a(ctt.qO);
+      boolean $$9 = $$6.a(ctt.fT);
+      ctq $$10 = this.w.b(0).g();
+      eoj $$11 = $$10.a(kb.A);
+      boolean $$12 = false;
+      eol $$13;
+      if ($$11 != null) {
+         $$13 = cty.a($$11, this.m.r);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$12 = true;
+               if ($$8 || $$9) {
+                  $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
 
-   @Override
-   protected void c() {
-      this.c.a();
-      this.u.a(this.n, this.c);
-   }
-
-   void B() {
-      this.w.j = this.u.h() != null;
-   }
-
-   class a extends fjj<fng.a.a> {
-      a() {
-         super(fng.this.m, fng.this.n, fng.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fng.this.s.h().map($$0x -> new fng.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable fng.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fng.this.v = $$0.b;
-         }
-
-         fng.this.B();
-      }
-
-      class a extends fjj.a<fng.a.a> {
-         final ja.c<dcz> b;
-         final xe c;
-
-         public a(ja.c<dcz> $$0) {
-            this.b = $$0;
-            akt $$1 = $$0.h().a();
-            String $$2 = $$1.f("biome");
-            if (uf.a().b($$2)) {
-               this.c = xe.c($$2);
-            } else {
-               this.c = xe.b($$1.toString());
+            if ($$8 && $$13.f >= 4) {
+               $$12 = true;
+               $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
             }
          }
+      } else {
+         $$13 = null;
+      }
 
-         @Override
-         public xe a() {
-            return xe.a("narrator.select", this.c);
-         }
+      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+   }
 
-         @Override
-         public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fng.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
+   private void a(ffn $$0, @Nullable eoj $$1, @Nullable eol $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.z;
+      int $$8 = this.A;
+      if ($$4 && !$$6) {
+         $$0.a(E, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(F, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(F, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(H, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      }
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   private void a(ffn $$0, @Nullable eoj $$1, @Nullable eol $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         this.m.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
+         $$0.e();
+         $$0.c().b();
       }
    }
 }

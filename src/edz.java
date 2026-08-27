@@ -1,96 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edz extends eca<eer> {
-   private static final iw[] a = iw.values();
+public record edz(jb<dea> b, jb<dea> c, eee d, int e, int f, float g) {
+   public static final Codec<edz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jm.a(lf.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jm.a(lf.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eee.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, edz::new)
+   );
 
-   public edz(Codec<eer> $$0) {
-      super($$0);
+   public jb<dea> a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(ecc<eer> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      ayt $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dtc $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dfe.eJ) && !$$4.a(dfe.lI)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
-      }
+   public jb<dea> b() {
+      return this.c;
    }
 
-   private void a(dcb $$0, ayt $$1, ir $$2) {
-      $$0.a($$2, dfe.lI.n(), 2);
-      ir.a $$3 = new ir.a();
-      ir.a $$4 = new ir.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (iw $$7 : a) {
-               dtc $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dfe.eJ) || $$8.a(dfe.lI)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dfe.lI.n(), 2);
-            }
-         }
-      }
+   public eee c() {
+      return this.d;
    }
 
-   private void b(dcb $$0, ayt $$1, ir $$2) {
-      ir.a $$3 = new ir.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            dtc $$5 = $$0.a_($$3.c());
-            if ($$5.a(dfe.eJ) || $$5.a(dfe.lI)) {
-               int $$6 = aym.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
+   public int d() {
+      return this.e;
    }
 
-   public static void a(dcb $$0, ayt $$1, ir.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.d())) {
-               $$0.a($$2, dfe.pz.n().a(div.e, Integer.valueOf(aym.a($$1, $$4, $$5))), 2);
-               break;
-            }
+   public int e() {
+      return this.f;
+   }
 
-            $$0.a($$2, dfe.pA.n(), 2);
-         }
-
-         $$2.d(iw.a);
-      }
+   public float f() {
+      return this.g;
    }
 }

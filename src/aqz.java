@@ -1,113 +1,43 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class aqz extends aqg {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azd<aqx<?>>> d = new Long2ObjectOpenHashMap();
+public class aqz implements aqw {
+   private final aqw a;
+   private final bop<Runnable> b;
+   private boolean c;
 
-   public aqz() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   private aqz(aqw $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = bop.a($$1, "progressListener");
    }
 
-   private azd<aqx<?>> g(long $$0) {
-      return (azd<aqx<?>>)this.d.computeIfAbsent($$0, $$0x -> azd.a(4));
+   public static aqz a(aqw $$0, Executor $$1) {
+      aqz $$2 = new aqz($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
-   private int a(azd<aqx<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
+   @Override
+   public void a(dag $$0) {
+      this.b.a(() -> this.a.a($$0));
    }
 
-   public void a(long $$0, aqx<?> $$1) {
-      azd<aqx<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, aqx<?> $$1) {
-      azd<aqx<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      this.a($$1.a(), new aqx<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
-      aqx<T> $$4 = new aqx<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<aqx<dbh>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<azd<aqx<?>>> $$2 = (Entry<azd<aqx<?>>>)var3.next();
-
-         for (aqx<?> $$3 : (azd)$$2.getValue()) {
-            if ($$3.a() == aqy.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<aqx<dbh>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         aqx<dbh> $$6 = (aqx<dbh>)$$4.getFirst();
-         this.b($$5, $$6);
-         dbh $$7 = new dbh($$5);
-         aqy<dbh> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
+   @Override
+   public void a(dag $$0, @Nullable dty $$1) {
+      if (this.c) {
+         this.b.a(() -> this.a.a($$0, $$1));
       }
    }
 
    @Override
-   protected int b(long $$0) {
-      azd<aqx<?>> $$1 = (azd<aqx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(dbh $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
    public void a() {
-      this.b(Integer.MAX_VALUE);
+      this.c = true;
+      this.b.a(this.a::a);
    }
 
-   public String d(long $$0) {
-      azd<aqx<?>> $$1 = (azd<aqx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a(this.a::b);
    }
 }

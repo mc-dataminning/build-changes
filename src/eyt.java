@@ -1,9 +1,21 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+public abstract class eyt implements eyy {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface eyt {
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
+   }
+
+   @Override
+   public void l() {
+      this.a = false;
+   }
 }

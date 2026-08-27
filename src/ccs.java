@@ -1,30 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class ccs extends ccx<bso> {
+public class ccs extends cda<bss> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.h, cbr.M, cbr.an);
+   public Set<cbu<?>> a() {
+      return ImmutableSet.of(cbu.L);
    }
 
-   @Override
-   protected void a(aqt $$0, bso $$1) {
-      btp<?> $$2 = $$1.dZ();
-      List<ckn> $$3 = Lists.newArrayList();
-      cbt $$4 = $$2.c(cbr.h).orElse(cbt.a());
-      Optional<bsq> $$5 = $$4.a($$0x -> $$0x instanceof cjv || $$0x instanceof chu).map(bsq.class::cast);
-
-      for (bso $$7 : $$2.c(cbr.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof ckn && ((ckn)$$7).gz()) {
-            $$3.add((ckn)$$7);
-         }
-      }
-
-      $$2.a(cbr.M, $$5);
-      $$2.a(cbr.an, $$3);
+   protected void a(aqn $$0, bss $$1) {
+      bts<?> $$2 = $$1.dS();
+      List<cii> $$3 = $$0.a(cii.class, $$1.cK().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cii> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cbu.L, $$4);
    }
 }

@@ -1,46 +1,28 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.serialization.OptionalDynamic;
 
 public class ben extends DataFix {
-   public ben(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public ben(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgf.B.typeName(), bhp.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWaterPotionFix",
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            if ($$3.isPresent()) {
-               String $$4 = (String)$$3.get().getSecond();
-               if ("minecraft:potion".equals($$4)
-                  || "minecraft:splash_potion".equals($$4)
-                  || "minecraft:lingering_potion".equals($$4)
-                  || "minecraft:tipped_arrow".equals($$4)) {
-                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-                  if ($$6.get("Potion").asString().result().isEmpty()) {
-                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
-                  }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("ExitPortalLocation", azn::a);
+   }
 
-                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-               }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bga.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", a($$2));
             }
-
-            return $$2x;
-         }
-      );
+         }));
    }
 }

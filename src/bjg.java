@@ -1,16 +1,22 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjg extends bhp {
+public class bjg extends bhl {
    public bjg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:axolotl", () -> bhq.a($$0));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bga.D,
+         () -> DSL.optionalFields(
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bga.y.in($$0)))), "SpawnData", DSL.fields("entity", bga.y.in($$0))
+            )
+      );
    }
 }

@@ -1,36 +1,37 @@
-public record aek(agg e, byte f) implements zl<abw> {
-   public static final zc<wp, aek> a = zl.a(aek::a, aek::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+public class aek implements ze<abq> {
+   public static final yv<vx, aek> a = ze.a(aek::a, aek::new);
+   private final double b;
+   private final double c;
 
-   private aek(wp $$0) {
-      this(new agg($$0), $$0.readByte());
+   public aek(dsu $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private void a(wp $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   private aek(vx $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aek> a() {
-      return agj.am;
+   public zg<aek> a() {
+      return agc.ar;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public double b() {
+      return this.c;
    }
 
-   public agg b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public double e() {
+      return this.b;
    }
 }

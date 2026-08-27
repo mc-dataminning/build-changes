@@ -1,28 +1,20 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class etj extends eta {
-   public static final Codec<etj> a = RecordCodecBuilder.create($$0 -> a($$0).and(kb.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, etj::new));
-   private final kb b;
+public class etj {
+   private static final Codec<eti> g = le.I.q().dispatch(eti::b, eth::a);
+   public static final Codec<eti> a = Codec.lazyInitialized(() -> {
+      Codec<eti> $$0 = Codec.withAlternative(g, etm.a.codec());
+      return Codec.either(etg.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof etg $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final eth b = a("constant", etg.a);
+   public static final eth c = a("uniform", etm.a);
+   public static final eth d = a("binomial", etf.a);
+   public static final eth e = a("score", etk.a);
+   public static final eth f = a("storage", etl.a);
 
-   private etj(List<euu> $$0, kb $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   @Override
-   public etc b() {
-      return etd.j;
-   }
-
-   @Override
-   public cuh a(cuh $$0, erp $$1) {
-      $$0.a(this.b);
-      return $$0;
-   }
-
-   public static <T> eta.a<?> a(kd<T> $$0, T $$1) {
-      return a($$2 -> new etj($$2, kb.a().a($$0, $$1).a()));
+   private static eth a(String $$0, MapCodec<? extends eti> $$1) {
+      return jk.a(le.I, new akn($$0), new eth($$1));
    }
 }

@@ -1,30 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-public record drd(@Nullable UUID c, int d, int e) {
-   public static final Codec<drd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ju.a.fieldOf("owner").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("slot").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("heat").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drd::new)
-   );
-   public static final zc<ByteBuf, drd> b = za.b(a);
+public class drd extends drc.a {
+   public static final Codec<drd> b = a(le.e.q(), dea::n).stable();
 
-   @Nullable
-   public UUID a() {
-      return this.c;
+   public drd(dea $$0, Reference2ObjectArrayMap<dsg<?>, Comparable<?>> $$1, MapCodec<drd> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
+   @Override
+   protected drd x() {
+      return this;
    }
 }

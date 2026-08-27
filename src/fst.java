@@ -1,59 +1,80 @@
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
 
-public class fst extends fsp<gaq.a> {
-   private static final int y = 120;
-   private static final xe z = xe.c("gui.abuseReport.name.title");
-   private final fme A = fme.d().a(8);
-   private fjf B;
-   private fin C;
+public class fst<T extends bsq> extends frr<T> {
+   private final fvw a;
+   private final fvw b;
 
-   private fst(fon $$0, gav $$1, gaq.a $$2) {
-      super(z, $$0, $$1, $$2);
+   public fst(fvw $$0) {
+      this.b = $$0.b("left_wing");
+      this.a = $$0.b("right_wing");
    }
 
-   public fst(fon $$0, gav $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new gaq.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fst(fon $$0, gav $$1, gaq $$2) {
-      this($$0, $$1, new gaq.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void aN_() {
-      this.A.c().b();
-      this.A.a(new fju(this.l, this.p));
-      xe $$0 = xe.b(this.x.e().a()).a(n.o);
-      this.A.a(new fju(xe.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.a().a(0, 8));
-      this.B = this.a(280, 9 * 8, $$0x -> {
-         this.x.a($$0x);
-         this.C();
-      });
-      this.A.a(flw.a(this.p, this.B, d, $$0x -> $$0x.e(12)));
-      fme $$1 = this.A.a(fme.e().a(8));
-      $$1.a(fin.a(xd.k, $$0x -> this.d()).a(120).a());
-      this.C = $$1.a(fin.a(a, $$0x -> this.B()).a(120).a());
-      this.C();
-      this.A.a($$1x -> {
-         fil var10000 = this.c($$1x);
-      });
-      this.c();
+   public static fwc c() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      fwa $$2 = new fwa(1.0F);
+      $$1.a(
+         "left_wing",
+         fwb.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fvy.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         fwb.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fvy.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return fwc.a($$0, 64, 32);
    }
 
    @Override
-   protected void c() {
-      this.A.a();
-      fly.a(this.A, this.G());
-   }
-
-   private void C() {
-      gar.b $$0 = this.x.c();
-      this.C.j = $$0 == null;
-      this.C.a(y.a($$0, gar.b::a));
+   protected Iterable<fvw> a() {
+      return ImmutableList.of();
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.B.b($$0, $$1, $$2);
+   protected Iterable<fvw> b() {
+      return ImmutableList.of(this.b, this.a);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = (float) (Math.PI / 12);
+      float $$7 = (float) (-Math.PI / 12);
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      if ($$0.fE()) {
+         float $$10 = 1.0F;
+         eum $$11 = $$0.ds();
+         if ($$11.d < 0.0) {
+            eum $$12 = $$11.d();
+            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
+         }
+
+         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
+         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
+      } else if ($$0.ca()) {
+         $$6 = (float) (Math.PI * 2.0 / 9.0);
+         $$7 = (float) (-Math.PI / 4);
+         $$8 = 3.0F;
+         $$9 = 0.08726646F;
+      }
+
+      this.b.c = $$8;
+      if ($$0 instanceof gbj $$13) {
+         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
+         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
+         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
+         this.b.e = $$13.c;
+         this.b.f = $$13.d;
+         this.b.g = $$13.e;
+      } else {
+         this.b.e = $$6;
+         this.b.g = $$7;
+         this.b.f = $$9;
+      }
+
+      this.a.f = -this.b.f;
+      this.a.c = this.b.c;
+      this.a.e = this.b.e;
+      this.a.g = -this.b.g;
    }
 }

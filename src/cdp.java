@@ -1,122 +1,119 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cdp implements dbn {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cdp.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class cdp {
+   private static final int a = 10;
 
-   public cdp() {
-      this.c = cdp.a.c;
+   public static io a(aym $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new io($$3, $$4, $$5);
    }
 
-   @Override
-   public int a(aqt $$0, boolean $$1, boolean $$2) {
-      if (!$$0.R() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? cdp.a.b : cdp.a.c;
-         }
-
-         if (this.c == cdp.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cdp.a.c;
-               }
-
-               return 1;
-            }
-         }
+   @Nullable
+   public static io a(aym $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = ayf.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)ayf.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return io.a($$10, (double)$$12, $$11);
       } else {
-         this.c = cdp.a.c;
-         this.b = false;
-         return 0;
+         return null;
       }
    }
 
-   private boolean a(aqt $$0) {
-      for (cly $$1 : $$0.x()) {
-         if (!$$1.O_()) {
-            ir $$2 = $$1.du();
-            if ($$0.c($$2) && !$$0.t($$2).a(awd.aj)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + aym.d(aym.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + aym.d(aym.a($$4) * 32.0F);
-                  if (this.a($$0, new ir(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static io a(io $$0, int $$1, Predicate<io> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         io $$3 = $$0.c();
 
-               return true;
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static io a(io $$0, int $$1, int $$2, Predicate<io> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         io $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         io $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            io $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
-         }
-      }
 
-      return false;
-   }
-
-   private void b(aqt $$0) {
-      ewu $$1 = this.a($$0, new ir(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cjx $$2;
-         try {
-            $$2 = new cjx($$0);
-            $$2.a($$0, $$0.d_($$2.du()), bss.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
+            $$5 = $$6;
          }
 
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$5;
       }
    }
 
    @Nullable
-   private ewu a(aqt $$0, ir $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(dyu.a.b, $$3, $$4);
-         ir $$6 = new ir($$3, $$5, $$4);
-         if ($$0.c($$6) && cjd.b(bsb.by, $$0, bss.h, $$6, $$0.A)) {
-            return ewu.c($$6);
+   public static eum a(bsz $$0, Supplier<io> $$1) {
+      return a($$1, $$0::d);
+   }
+
+   @Nullable
+   public static eum a(Supplier<io> $$0, ToDoubleFunction<io> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      io $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         io $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? eum.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static io a(bsz $$0, int $$1, aym $$2, io $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.ga() && $$1 > 1) {
+         io $$6 = $$0.fX();
+         if ($$0.du() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dA() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return io.a((double)$$4 + $$0.du(), (double)$$3.v() + $$0.dw(), (double)$$5 + $$0.dA());
    }
 }

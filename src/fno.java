@@ -1,80 +1,26 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fno extends fmx<cpo> {
+   private static final akn D = new akn("textures/gui/container/dispenser.png");
 
-public class fno extends fon {
-   private static final xe a = xe.c("addServer.enterName");
-   private static final xe b = xe.c("addServer.enterIp");
-   private fin c;
-   private final BooleanConsumer d;
-   private final gab r;
-   private fiw s;
-   private fiw u;
-   private final fon v;
-
-   public fno(fon $$0, BooleanConsumer $$1, gab $$2) {
-      super(xe.c("addServer.title"));
-      this.v = $$0;
-      this.d = $$1;
-      this.r = $$2;
+   public fno(cpo $$0, clx $$1, wx $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    protected void aN_() {
-      this.u = new fiw(this.p, this.n / 2 - 100, 66, 200, 20, xe.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.C());
-      this.d(this.u);
-      this.s = new fiw(this.p, this.n / 2 - 100, 106, 200, 20, xe.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.C());
-      this.d(this.s);
-      this.c(
-         fiu.a(gab.a::a)
-            .a(gab.a.values())
-            .a(this.r.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xe.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
-      );
-      this.c = this.c(fin.a(xe.c("addServer.add"), $$0 -> this.B()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fin.a(xd.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.C();
+      super.aN_();
+      this.r = (this.c - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.u);
-   }
-
-   @Override
-   public void a(fgj $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
-   }
-
-   private void B() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.d.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.v);
-   }
-
-   private void C() {
-      this.c.j = gbe.b(this.s.a()) && !this.u.a().isEmpty();
-   }
-
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

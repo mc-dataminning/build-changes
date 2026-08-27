@@ -1,108 +1,78 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class egh extends egi {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<egh> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(egg.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, egh::new)
-   );
-   private final egg h;
+@Deprecated
+public class egh extends egs {
+   public static final MapCodec<egh> a = bpb.b(0, 256).fieldOf("count").xmap(egh::new, $$0 -> $$0.c);
+   private final bpb c;
 
-   public egh(bpf $$0, egl $$1, Optional<egf> $$2, egg $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   private egh(bpb $$0) {
+      this.c = $$0;
+   }
+
+   public static egh a(bpb $$0) {
+      return new egh($$0);
+   }
+
+   public static egh a(int $$0) {
+      return a(boy.a($$0));
    }
 
    @Override
-   public boolean a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, ir $$4, efg $$5) {
-      List<ir> $$6 = Lists.newArrayList();
-      ir.a $$7 = $$3.j();
+   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
+      Builder<io> $$3 = Stream.builder();
+      int $$4 = 0;
 
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
+      boolean $$5;
+      do {
+         $$5 = false;
 
-         $$7.d(iw.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (iw $$8 : iw.c.a) {
-         ir $$9 = $$4.a($$8);
-         List<ir> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (ir $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
-   }
-
-   private boolean a(dcg $$0, ayt $$1, ir $$2, iw $$3, ir $$4, List<ir> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (ir $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(dwv.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new io($$7, $$10, $$8));
+               $$5 = true;
             }
          }
 
-         return true;
-      } else {
-         return false;
-      }
-   }
+         $$4++;
+      } while ($$5);
 
-   protected List<ir> a(ir $$0, iw $$1, ayt $$2, ir $$3) {
-      ir $$4 = $$0.d();
-      ir $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
+      return $$3.build();
    }
 
    @Override
-   protected boolean a(dcg $$0, ir $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public egt<?> b() {
+      return egt.i;
    }
 
-   @Override
-   protected void a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, efg $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dtc $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+   private static int a(egq $$0, int $$1, int $$2, int $$3, int $$4) {
+      io.a $$5 = new io.a($$1, $$2, $$3);
+      int $$6 = 0;
+      drd $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         drd $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(dec.F)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
       }
+
+      return Integer.MAX_VALUE;
    }
 
-   @Override
-   protected egj<?> a() {
-      return egj.a;
+   private static boolean a(drd $$0) {
+      return $$0.i() || $$0.a(dec.G) || $$0.a(dec.H);
    }
 }

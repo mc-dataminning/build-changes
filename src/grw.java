@@ -1,9 +1,5 @@
-public class grw extends gsb {
-   public grw(gqz $$0) {
-      super($$0, new akt("textures/atlas/mob_effects.png"), new akt("mob_effects"));
-   }
+import java.util.List;
 
-   public gqy a(ja<brf> $$0) {
-      return this.a($$0.e().map(aks::a).orElseGet(gqo::b));
-   }
+public interface grw<T> {
+   List<T> search(String var1);
 }

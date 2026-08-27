@@ -1,2 +1,8 @@
-public interface eyo<T> extends eyn<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ewn
+@ewm
+interface eyo {
 }

@@ -1,41 +1,45 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adj implements zl<abw> {
-   public static final zc<wp, adj> a = zl.a(adj::a, adj::new);
+public class adj implements ze<abq> {
+   public static final yv<wi, adj> a = ze.a(adj::a, adj::new);
    private final int b;
-   private final int c;
-   private final adi d;
-   private final adn e;
+   private final czy c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-   public adj(dvi $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      dbh $$4 = $$0.g();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new adi($$0);
-      this.e = new adn($$4, $$1, $$2, $$3);
+   public adj(int $$0, czy $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private adj(wp $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adi($$0, this.b, this.c);
-      this.e = new adn($$0, this.b, this.c);
+   private adj(wi $$0) {
+      this.b = $$0.l();
+      this.c = czy.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private void a(wp $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      czy.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public zn<adj> a() {
-      return agj.L;
+   public zg<adj> a() {
+      return agc.Q;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
@@ -43,15 +47,23 @@ public class adj implements zl<abw> {
       return this.b;
    }
 
-   public int e() {
+   public czy e() {
       return this.c;
    }
 
-   public adi f() {
+   public int f() {
       return this.d;
    }
 
-   public adn g() {
+   public int g() {
       return this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

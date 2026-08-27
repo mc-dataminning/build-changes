@@ -1,29 +1,8 @@
-public class bob implements boc {
-   public static final boc a = new bob();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bmo f() {
-      return bml.a;
-   }
-
-   @Override
-   public void d() {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bob {
 }

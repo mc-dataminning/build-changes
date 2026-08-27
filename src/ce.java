@@ -1,29 +1,59 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ce(cu.d c, cu.d d) implements di<Integer> {
-   public static final Codec<ce> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(cu.d.d, "durability", cu.d.c).forGetter(ce::b), axu.a(cu.d.d, "damage", cu.d.c).forGetter(ce::c)).apply($$0, ce::new)
-   );
-
+public class ce extends df<ce.a> {
    @Override
-   public kd<Integer> a() {
-      return ke.d;
+   public Codec<ce.a> a() {
+      return ce.a.a;
    }
 
-   public boolean a(cuh $$0, Integer $$1) {
-      return !this.c.d($$0.n() - $$1) ? false : this.d.d($$1);
+   public void a(aqo $$0, ctq $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public static ce a(cu.d $$0) {
-      return new ce($$0, cu.d.c);
-   }
+   public static record a(Optional<bc> b, Optional<ch> c, ct.d d, ct.d e) implements df.a {
+      public static final Codec<ce.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(ce.a::a),
+                  ch.a.optionalFieldOf("item").forGetter(ce.a::b),
+                  ct.d.d.optionalFieldOf("durability", ct.d.c).forGetter(ce.a::c),
+                  ct.d.d.optionalFieldOf("delta", ct.d.c).forGetter(ce.a::d)
+               )
+               .apply($$0, ce.a::new)
+      );
 
-   public cu.d b() {
-      return this.c;
-   }
+      public static an<ce.a> a(Optional<ch> $$0, ct.d $$1) {
+         return a(Optional.empty(), $$0, $$1);
+      }
 
-   public cu.d c() {
-      return this.d;
+      public static an<ce.a> a(Optional<bc> $$0, Optional<ch> $$1, ct.d $$2) {
+         return am.u.a(new ce.a($$0, $$1, $$2, ct.d.c));
+      }
+
+      public boolean a(ctq $$0, int $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else {
+            return !this.d.d($$0.o() - $$1) ? false : this.e.d($$0.n() - $$1);
+         }
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<ch> b() {
+         return this.c;
+      }
+
+      public ct.d c() {
+         return this.d;
+      }
+
+      public ct.d d() {
+         return this.e;
+      }
    }
 }

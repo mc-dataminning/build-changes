@@ -1,40 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edl extends eca<eeu> {
-   public edl(Codec<eeu> $$0) {
-      super($$0);
+public class edl extends edk {
+   public static final MapCodec<edl> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edl::new));
+
+   public edl(bpb $$0, bpb $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(ecc<eeu> $$0) {
-      boolean $$1 = false;
-      ayt $$2 = $$0.d();
-      dcv $$3 = $$0.b();
-      ir $$4 = $$0.e();
-      eeu $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dyu.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ir $$9 = new ir($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dfe.al)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dtc $$11 = $$10 ? dfe.ch.n() : dfe.cg.n();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dtc $$12 = $$11.a(dnx.d, dty.a);
-               ir $$13 = $$9.c();
-               if ($$3.a_($$13).a(dfe.al)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   protected edq<?> a() {
+      return edq.e;
+   }
 
-            $$1 = true;
-         }
+   @Override
+   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
+   }
 
-      return $$1;
+   @Override
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

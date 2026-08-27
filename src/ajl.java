@@ -1,17 +1,17 @@
-public record ajl(long b) implements zl<ajk> {
-   public static final zc<we, ajl> a = zl.a(ajl::a, ajl::new);
+public record ajl(ajm b) implements ze<ajk> {
+   public static final yv<vx, ajl> a = ze.a(ajl::a, ajl::new);
 
-   private ajl(we $$0) {
-      this($$0.readLong());
+   private ajl(vx $$0) {
+      this($$0.a(ajm.a));
    }
 
-   private void a(we $$0) {
-      $$0.b(this.b);
+   private void a(vx $$0) {
+      $$0.a(ajm.a, this.b);
    }
 
    @Override
-   public zn<ajl> a() {
-      return ajm.a;
+   public zg<ajl> a() {
+      return ajp.a;
    }
 
    public void a(ajk $$0) {

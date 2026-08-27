@@ -1,55 +1,76 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fcf extends fcy implements fcs {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class fcf extends gty {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wx b = wx.c("mco.terms.title");
+   private static final wx c = wx.c("mco.terms.sentence.1");
+   private static final wx B = ww.a().b(wx.c("mco.terms.sentence.2").c(xu.a.c(true)));
+   private final flz C;
+   private final fab D;
+   private boolean E;
 
-   public String a() {
-      return this.a;
+   public fcf(flz $$0, fab $$1) {
+      super(b);
+      this.C = $$0;
+      this.D = $$1;
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   @Override
+   public void aN_() {
+      int $$0 = this.n / 4 - 2;
+      this.c(fga.a(wx.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.n / 4, g(12), $$0, 20).a());
+      this.c(fga.a(wx.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.C)).a(this.n / 2 + 4, g(12), $$0, 20).a());
    }
 
-   public UUID b() {
-      return this.b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.C);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   private void C() {
+      ezk $$0 = ezk.a();
+
+      try {
+         $$0.j();
+         this.m.a(new fbr(this.C, new fda(this.C, this.D)));
+      } catch (fax var3) {
+         a.error("Couldn't agree to TOS", var3);
+      }
    }
 
-   public boolean c() {
-      return this.c;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E) {
+         this.m.o.a("https://aka.ms/MinecraftRealmsTerms");
+         ac.k().a("https://aka.ms/MinecraftRealmsTerms");
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
+   @Override
+   public wx i() {
+      return ww.a(super.i(), c).b(ww.v).b(B);
    }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   @Override
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, c, this.n / 2 - 120, g(5), -1, false);
+      int $$4 = this.p.a(c);
+      int $$5 = this.n / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.p.a(B) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.E = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.p, B, this.n / 2 - 120 + $$4, g(5), this.E ? 7107012 : 3368635, false);
    }
 }

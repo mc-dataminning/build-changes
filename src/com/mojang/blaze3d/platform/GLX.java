@@ -13,15 +13,13 @@ import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.glfw.GLFWNativeGLX;
 import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@eyt
+@ewl
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -33,7 +31,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(fag $$0) {
+   public static int _getRefreshRate(exy $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
       if ($$1 == 0L) {
@@ -51,8 +49,7 @@ public class GLX {
 
    public static LongSupplier _initGlfw() {
       RenderSystem.assertInInitPhase();
-      GLFWNativeGLX.setPath(GL.getFunctionProvider());
-      fag.a(($$0x, $$1x) -> {
+      exy.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -82,7 +79,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fag $$0) {
+   public static boolean _shouldClose(exy $$0) {
       return GLFW.glfwWindowShouldClose($$0.i());
    }
 
@@ -95,7 +92,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      ezu.a($$0, $$1);
+      exm.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -106,11 +103,11 @@ public class GLX {
       RenderSystem.assertOnRenderThread();
       GlStateManager._depthMask(false);
       GlStateManager._disableCull();
-      RenderSystem.setShader(gez::ap);
-      fbe $$4 = RenderSystem.renderThreadTesselator();
-      fax $$5 = $$4.d();
+      RenderSystem.setShader(gcd::ap);
+      eyw $$4 = RenderSystem.renderThreadTesselator();
+      eyp $$5 = $$4.d();
       RenderSystem.lineWidth(4.0F);
-      $$5.a(fbh.b.a, fba.o);
+      $$5.a(eyz.b.a, eys.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
@@ -128,7 +125,7 @@ public class GLX {
 
       $$4.c();
       RenderSystem.lineWidth(2.0F);
-      $$5.a(fbh.b.a, fba.o);
+      $$5.a(eyz.b.a, eys.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();

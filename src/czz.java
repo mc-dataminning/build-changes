@@ -1,10 +1,8 @@
-public class czz extends dad {
-   public czz(dad.b $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(dad $$0) {
-      return super.a($$0) && $$0 != dag.J;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface czz {
 }

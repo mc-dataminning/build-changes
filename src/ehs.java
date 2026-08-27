@@ -1,29 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehs {
+public record ehs(ehs.a b, bok<dck.c> c) {
    public static final Codec<ehs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dwu.c).fieldOf("height").forGetter(ehs::a), lh.e.q().fieldOf("block").orElse(dfe.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, ehs::new)
+      $$0 -> $$0.group(ehs.a.c.fieldOf("bounding_box").forGetter(ehs::a), bok.c(dck.c.a).fieldOf("spawns").forGetter(ehs::b)).apply($$0, ehs::new)
    );
-   private final dfc b;
-   private final int c;
 
-   public ehs(int $$0, dfc $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   public ehs.a a() {
+      return this.b;
    }
 
-   public int a() {
+   public bok<dck.c> b() {
       return this.c;
    }
 
-   public dtc b() {
-      return this.b.n();
-   }
+   public static enum a implements ayz {
+      a("piece"),
+      b("full");
 
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lh.e.b(this.b);
+      public static final Codec<ehs.a> c = ayz.a(ehs.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

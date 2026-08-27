@@ -1,111 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DynamicOps;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public interface jo extends jc.a {
-   Logger a = LogUtils.getLogger();
-   jo.b b = new jo.c(Map.of()).d();
+public class jo {
+   public static final Set<akm<? extends jk<?>>> a = aki.c.stream().map(aki.c::a).collect(Collectors.toUnmodifiableSet());
 
-   <E> Optional<jn<E>> c(aks<? extends jn<? extends E>> var1);
-
-   @Override
-   default <T> Optional<jc.b<T>> a(aks<? extends jn<? extends T>> $$0) {
-      return this.c($$0).map(jn::p);
+   public static void a(DynamicOps<va> $$0, jl $$1, Set<ate> $$2, BiConsumer<akm<? extends jk<?>>, List<jo.a>> $$3) {
+      aki.c.forEach($$4 -> a($$0, (aki.c<?>)$$4, $$1, $$2, $$3));
    }
 
-   default <E> jn<E> d(aks<? extends jn<? extends E>> $$0) {
-      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   private static <T> void a(DynamicOps<va> $$0, aki.c<T> $$1, jl $$2, Set<ate> $$3, BiConsumer<akm<? extends jk<?>>, List<jo.a>> $$4) {
+      $$2.c($$1.a())
+         .ifPresent(
+            $$4x -> {
+               List<jo.a> $$5 = new ArrayList<>($$4x.b());
+               $$4x.h()
+                  .forEach(
+                     $$5x -> {
+                        boolean $$6 = $$4x.c($$5x.h()).flatMap(jj::a).filter($$3::contains).isPresent();
+                        Optional<va> $$7;
+                        if ($$6) {
+                           $$7 = Optional.empty();
+                        } else {
+                           va $$8 = (va)$$1.b()
+                              .encodeStart($$0, $$5x.a())
+                              .getOrThrow($$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
+                           $$7 = Optional.of($$8);
+                        }
+
+                        $$5.add(new jo.a($$5x.h().a(), $$7));
+                     }
+                  );
+               $$4.accept($$4x.c(), $$5);
+            }
+         );
    }
 
-   Stream<jo.d<?>> c();
-
-   @Override
-   default Stream<aks<? extends jn<?>>> a() {
-      return this.c().map(jo.d::a);
+   private static Stream<jl.d<?>> a(jl $$0) {
+      return $$0.c().filter($$0x -> a.contains($$0x.a()));
    }
 
-   static jo.b a(final jn<? extends jn<?>> $$0) {
-      return new jo.b() {
-         @Override
-         public <T> Optional<jn<T>> c(aks<? extends jn<? extends T>> $$0x) {
-            jn<jn<T>> $$1 = (jn<jn<T>>)$$0;
-            return $$1.e((aks<jn<T>>)$$0);
-         }
-
-         @Override
-         public Stream<jo.d<?>> c() {
-            return $$0.g().stream().map(jo.d::a);
-         }
-
-         @Override
-         public jo.b d() {
-            return this;
-         }
-      };
+   public static Stream<jl.d<?>> a(je<akw> $$0) {
+      return a($$0.c(akw.b));
    }
 
-   default jo.b d() {
-      class a extends jo.c implements jo.b {
-         protected a(Stream<jo.d<?>> $$1) {
-            super($$1);
-         }
-      }
-
-      return new a(this.c().map(jo.d::c));
+   public static Stream<jl.d<?>> b(je<akw> $$0) {
+      Stream<jl.d<?>> $$1 = $$0.a(akw.a).c();
+      Stream<jl.d<?>> $$2 = a($$0);
+      return Stream.concat($$2, $$1);
    }
 
-   default Lifecycle e() {
-      return this.c().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
-   }
+   public static record a(akn b, Optional<va> c) {
+      public static final yv<ByteBuf, jo.a> a = yv.a(akn.b, jo.a::a, yt.l.a(yt::a), jo.a::b, jo.a::new);
 
-   public interface b extends jo {
-   }
-
-   public static class c implements jo {
-      private final Map<? extends aks<? extends jn<?>>, ? extends jn<?>> c;
-
-      public c(List<? extends jn<?>> $$0) {
-         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(jn::c, $$0x -> $$0x));
+      public akn a() {
+         return this.b;
       }
 
-      public c(Map<? extends aks<? extends jn<?>>, ? extends jn<?>> $$0) {
-         this.c = Map.copyOf($$0);
-      }
-
-      public c(Stream<jo.d<?>> $$0) {
-         this.c = $$0.collect(ImmutableMap.toImmutableMap(jo.d::a, jo.d::b));
-      }
-
-      @Override
-      public <E> Optional<jn<E>> c(aks<? extends jn<? extends E>> $$0) {
-         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
-      }
-
-      @Override
-      public Stream<jo.d<?>> c() {
-         return this.c.entrySet().stream().map(jo.d::a);
-      }
-   }
-
-   public static record d<T>(aks<? extends jn<T>> a, jn<T> b) {
-
-      private static <T, R extends jn<? extends T>> jo.d<T> a(Entry<? extends aks<? extends jn<?>>, R> $$0) {
-         return a((aks<? extends jn<?>>)$$0.getKey(), $$0.getValue());
-      }
-
-      private static <T> jo.d<T> a(aks<? extends jn<?>> $$0, jn<?> $$1) {
-         return new jo.d<>((aks<? extends jn<T>>)$$0, (jn<T>)$$1);
-      }
-
-      private jo.d<T> c() {
-         return new jo.d<>(this.a, this.b.l());
+      public Optional<va> b() {
+         return this.c;
       }
    }
 }

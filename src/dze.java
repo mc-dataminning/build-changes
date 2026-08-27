@@ -1,68 +1,118 @@
-public final class dze {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   private dze() {
+public class dze extends dzz<ebx> {
+   private static final ImmutableList<dea> a = ImmutableList.of(dec.H, dec.F, dec.kJ, dec.dW, dec.fn, dec.fo, dec.fp, dec.fq, dec.cv, dec.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
+
+   public dze(Codec<ebx> $$0) {
+      super($$0);
    }
 
-   protected static dyy.c a(dyn $$0, dyn $$1, dyn $$2, dzh $$3) {
-      dtc $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dze.a $$8 = $$6 > 0.0 ? dze.a.a : dze.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = aym.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               ayt $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
+   @Override
+   public boolean a(eab<ebx> $$0) {
+      int $$1 = $$0.c().e();
+      io $$2 = $$0.e();
+      dbu $$3 = $$0.b();
+      aym $$4 = $$0.d();
+      ebx $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
+
+         for (io $$11 : io.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   private boolean a(dba $$0, int $$1, io $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (io $$6 : io.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         io $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (io.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (io)$$10)) {
+                  this.a($$0, $$10, dec.dY.n());
+                  $$10.c(it.b);
+                  $$5 = true;
                } else {
-                  double $$15 = aym.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
+                  if (!$$0.a_($$10).a(dec.dY)) {
+                     break;
                   }
+
+                  $$10.c(it.b);
                }
             }
-         } else {
-            return $$4;
          }
-      };
+      }
+
+      return $$5;
    }
 
-   protected static enum a {
-      a(dfe.sl.n(), dfe.uE.n(), dfe.d.n(), 0, 50),
-      b(dfe.aw.n(), dfe.uD.n(), dfe.rK.n(), -60, -8);
+   @Nullable
+   private static io a(dba $$0, int $$1, io.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
 
-      final dtc e;
-      final dtc f;
-      final dtc g;
-      protected final int c;
-      protected final int d;
-
-      private a(dtc $$0, dtc $$1, dtc $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+         $$2.c(it.a);
       }
+
+      return null;
+   }
+
+   private static boolean a(dba $$0, int $$1, io.a $$2) {
+      if (!a($$0, $$1, (io)$$2)) {
+         return false;
+      } else {
+         drd $$3 = $$0.a_($$2.c(it.a));
+         $$2.c(it.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static io a(dba $$0, io.a $$1, int $$2) {
+      while ($$1.v() < $$0.al() && $$2 > 0) {
+         $$2--;
+         drd $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(it.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dba $$0, int $$1, io $$2) {
+      drd $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(dec.H) && $$2.v() <= $$1;
    }
 }

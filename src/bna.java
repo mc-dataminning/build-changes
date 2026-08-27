@@ -1,49 +1,100 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bna extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
-
-   public bna(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+public record bna(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bnm> e,
+   List<bng> f,
+   bni.a g,
+   bnl.a h,
+   bnj<bnk> i,
+   bnj<bnk> j,
+   bnj<bnf> k,
+   bnj<bnf> l,
+   bnh.a m,
+   bnh.a n,
+   List<bne> o
+) {
+   public List<Pair<dty, bno<bne>>> a() {
+      Map<dty, List<bne>> $$0 = this.o.stream().collect(Collectors.groupingBy(bne::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dty)$$0x.getKey(), bno.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dty, bno<bne>>, Duration>comparing($$0x -> ((bno)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   public String b() {
+      return new bnc().a(this);
+   }
 
-      private a() {
-      }
+   public Instant c() {
+      return this.a;
+   }
+
+   public Instant d() {
+      return this.b;
+   }
+
+   public Duration e() {
+      return this.c;
+   }
+
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bnm> g() {
+      return this.e;
+   }
+
+   public List<bng> h() {
+      return this.f;
+   }
+
+   public bni.a i() {
+      return this.g;
+   }
+
+   public bnl.a j() {
+      return this.h;
+   }
+
+   public bnj<bnk> k() {
+      return this.i;
+   }
+
+   public bnj<bnk> l() {
+      return this.j;
+   }
+
+   public bnj<bnf> m() {
+      return this.k;
+   }
+
+   public bnj<bnf> n() {
+      return this.l;
+   }
+
+   public bnh.a o() {
+      return this.m;
+   }
+
+   public bnh.a p() {
+      return this.n;
+   }
+
+   public List<bne> q() {
+      return this.o;
    }
 }

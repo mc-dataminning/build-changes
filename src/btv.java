@@ -1,32 +1,101 @@
-public class btv {
-   public static final ja<btq> a = a("generic.armor", new btx("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final ja<btq> b = a("generic.armor_toughness", new btx("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final ja<btq> c = a("generic.attack_damage", new btx("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final ja<btq> d = a("generic.attack_knockback", new btx("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final ja<btq> e = a("generic.attack_speed", new btx("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final ja<btq> f = a("player.block_break_speed", new btx("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final ja<btq> g = a("player.block_interaction_range", new btx("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final ja<btq> h = a("player.entity_interaction_range", new btx("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final ja<btq> i = a("generic.fall_damage_multiplier", new btx("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
-   public static final ja<btq> j = a("generic.flying_speed", new btx("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final ja<btq> k = a("generic.follow_range", new btx("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final ja<btq> l = a("generic.gravity", new btx("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
-   public static final ja<btq> m = a("generic.jump_strength", new btx("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final ja<btq> n = a("generic.knockback_resistance", new btx("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final ja<btq> o = a("generic.luck", new btx("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final ja<btq> p = a("generic.max_absorption", new btx("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final ja<btq> q = a("generic.max_health", new btx("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final ja<btq> r = a("generic.movement_speed", new btx("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final ja<btq> s = a("generic.safe_fall_distance", new btx("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final ja<btq> t = a("generic.scale", new btx("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
-   public static final ja<btq> u = a("zombie.spawn_reinforcements", new btx("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final ja<btq> v = a("generic.step_height", new btx("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static ja<btq> a(String $$0, btq $$1) {
-      return jn.b(lh.u, new akt($$0), $$1);
+public class btv {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<ix<btt>, btu> b = new Object2ObjectOpenHashMap();
+   private final Set<btu> c = new ObjectOpenHashSet();
+   private final btx d;
+
+   public btv(btx $$0) {
+      this.d = $$0;
    }
 
-   public static ja<btq> a(jn<btq> $$0) {
-      return q;
+   private void a(btu $$0) {
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<btu> a() {
+      return this.c;
+   }
+
+   public Collection<btu> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   }
+
+   @Nullable
+   public btu a(ix<btt> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   }
+
+   public boolean b(ix<btt> $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
+   }
+
+   public boolean a(ix<btt> $$0, UUID $$1) {
+      btu $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
+
+   public double c(ix<btt> $$0) {
+      btu $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
+   }
+
+   public double d(ix<btt> $$0) {
+      btu $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(ix<btt> $$0, UUID $$1) {
+      btu $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).d() : this.d.a($$0, $$1);
+   }
+
+   public void a(btv $$0) {
+      $$0.b.values().forEach($$0x -> {
+         btu $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public uj c() {
+      uj $$0 = new uj();
+
+      for (btu $$1 : this.b.values()) {
+         $$0.add($$1.g());
+      }
+
+      return $$0;
+   }
+
+   public void a(uj $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ud $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         akn $$4 = akn.a($$3);
+         if ($$4 != null) {
+            ac.a(le.u.c($$4), $$1x -> {
+               btu $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
+      }
    }
 }

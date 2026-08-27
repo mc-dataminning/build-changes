@@ -1,110 +1,97 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public class doa {
+   public static final akm<dny> a = a("base");
+   public static final akm<dny> b = a("square_bottom_left");
+   public static final akm<dny> c = a("square_bottom_right");
+   public static final akm<dny> d = a("square_top_left");
+   public static final akm<dny> e = a("square_top_right");
+   public static final akm<dny> f = a("stripe_bottom");
+   public static final akm<dny> g = a("stripe_top");
+   public static final akm<dny> h = a("stripe_left");
+   public static final akm<dny> i = a("stripe_right");
+   public static final akm<dny> j = a("stripe_center");
+   public static final akm<dny> k = a("stripe_middle");
+   public static final akm<dny> l = a("stripe_downright");
+   public static final akm<dny> m = a("stripe_downleft");
+   public static final akm<dny> n = a("small_stripes");
+   public static final akm<dny> o = a("cross");
+   public static final akm<dny> p = a("straight_cross");
+   public static final akm<dny> q = a("triangle_bottom");
+   public static final akm<dny> r = a("triangle_top");
+   public static final akm<dny> s = a("triangles_bottom");
+   public static final akm<dny> t = a("triangles_top");
+   public static final akm<dny> u = a("diagonal_left");
+   public static final akm<dny> v = a("diagonal_up_right");
+   public static final akm<dny> w = a("diagonal_up_left");
+   public static final akm<dny> x = a("diagonal_right");
+   public static final akm<dny> y = a("circle");
+   public static final akm<dny> z = a("rhombus");
+   public static final akm<dny> A = a("half_vertical");
+   public static final akm<dny> B = a("half_horizontal");
+   public static final akm<dny> C = a("half_vertical_right");
+   public static final akm<dny> D = a("half_horizontal_bottom");
+   public static final akm<dny> E = a("border");
+   public static final akm<dny> F = a("curly_border");
+   public static final akm<dny> G = a("gradient");
+   public static final akm<dny> H = a("gradient_up");
+   public static final akm<dny> I = a("bricks");
+   public static final akm<dny> J = a("globe");
+   public static final akm<dny> K = a("creeper");
+   public static final akm<dny> L = a("skull");
+   public static final akm<dny> M = a("flower");
+   public static final akm<dny> N = a("mojang");
+   public static final akm<dny> O = a("piglin");
+   public static final akm<dny> P = a("flow");
+   public static final akm<dny> Q = a("guster");
 
-public class doa extends dfc {
-   public static final MapCodec<doa> a = b(doa::new);
-   public static final dtt b = dts.B;
-
-   @Override
-   public MapCodec<doa> a() {
-      return a;
+   private static akm<dny> a(String $$0) {
+      return akm.a(lf.d, new akn($$0));
    }
 
-   public doa(dtb.d $$0) {
-      super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
+   public static void a(qo<dny> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
    }
 
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if ($$1.C($$2)) {
-            a($$1, $$2);
-            $$1.a($$2, false);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      if ($$1.C($$2)) {
-         a($$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   public dtc a(dca $$0, ir $$1, dtc $$2, cly $$3) {
-      if (!$$0.x_() && !$$3.f() && $$2.c(b)) {
-         a($$0, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dca $$0, ir $$1, dbs $$2) {
-      if (!$$0.C) {
-         cih $$3 = new cih($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
-         int $$4 = $$3.r();
-         $$3.b((short)($$0.A.a($$4 / 4) + $$4 / 8));
-         $$0.b($$3);
-      }
-   }
-
-   public static void a(dca $$0, ir $$1) {
-      a($$0, $$1, null);
-   }
-
-   private static void a(dca $$0, ir $$1, @Nullable bso $$2) {
-      if (!$$0.C) {
-         cih $$3 = new cih($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
-         $$0.b($$3);
-         $$0.a(null, $$3.dz(), $$3.dB(), $$3.dF(), avo.zT, avq.e, 1.0F, 1.0F);
-         $$0.a($$2, dxv.I, $$1);
-      }
-   }
-
-   @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      if (!$$0.a(cuk.pI) && !$$0.a(cuk.vz)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else {
-         a($$2, $$3, $$4);
-         $$2.a($$3, dfe.a.n(), 11);
-         cuc $$7 = $$0.f();
-         if (!$$4.f()) {
-            if ($$0.a(cuk.pI)) {
-               $$0.a(1, $$4, bso.d($$5));
-            } else {
-               $$0.h(1);
-            }
-         }
-
-         $$4.b(avz.c.b($$7));
-         return bqc.a($$2.C);
-      }
-   }
-
-   @Override
-   protected void a(dca $$0, dtc $$1, ewq $$2, cms $$3) {
-      if (!$$0.C) {
-         ir $$4 = $$2.a();
-         brv $$5 = $$3.t();
-         if ($$3.bV() && $$3.a($$0, $$4)) {
-            a($$0, $$4, $$5 instanceof bso ? (bso)$$5 : null);
-            $$0.a($$4, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(dbs $$0) {
-      return false;
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
+   public static void a(qo<dny> $$0, akm<dny> $$1) {
+      $$0.a($$1, new dny($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

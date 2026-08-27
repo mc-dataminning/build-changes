@@ -1,48 +1,74 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public enum fld implements azg {
-   a("uniform"),
-   b("jp");
+public class fld implements AutoCloseable {
+   private static final akn a = new akn("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gnw d;
+   private final akn e;
+   @Nullable
+   private gni f;
+   private boolean g;
 
-   public static final Codec<fld> c = azg.a(fld::values);
-   private final String d;
-
-   private fld(String $$0) {
+   private fld(gnw $$0, akn $$1) {
       this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static fld a(gnw $$0, String $$1) {
+      return new fld($$0, new akn("minecraft", "worlds/" + ac.a($$1, akn::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fld b(gnw $$0, String $$1) {
+      return new fld($$0, new akn("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(exv $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gni($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public akn b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   public static class a {
-      private final Map<fld, Boolean> c;
-      public static final Codec<fld.a> a = Codec.unboundedMap(fld.c, Codec.BOOL).xmap(fld.a::new, $$0 -> $$0.c);
-      public static final fld.a b = new fld.a(Map.of());
-
-      public a(Map<fld, Boolean> $$0) {
-         this.c = $$0;
-      }
-
-      public boolean a(Set<fld> $$0) {
-         for (Entry<fld, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public fld.a a(fld.a $$0) {
-         Map<fld, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fld.a(Map.copyOf($$1));
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
       }
    }
 }

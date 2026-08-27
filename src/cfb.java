@@ -1,30 +1,35 @@
-public abstract class cfb extends btk {
-   private static final int ck = 100;
-   private int cl;
-
-   protected cfb(bsb<? extends cfb> $$0, dca $$1) {
+public class cfb extends cef {
+   public cfb(bsc<? extends cfb> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(aqu $$0) {
-      uk $$1 = new uk();
-      $$1.a("id", this.bH());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.ao();
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int gr() {
+      return 5;
    }
 
    @Override
-   public void l() {
-      this.cl++;
-      super.l();
+   public ctq b() {
+      return new ctq(ctt.qG);
    }
 
-   public boolean gH() {
-      return this.cl > 100;
+   @Override
+   protected avh v() {
+      return avi.vC;
+   }
+
+   @Override
+   protected avh o_() {
+      return avi.vD;
+   }
+
+   @Override
+   protected avh d(bqp $$0) {
+      return avi.vF;
+   }
+
+   @Override
+   protected avh gq() {
+      return avi.vE;
    }
 }

@@ -1,46 +1,51 @@
-public abstract class bsf extends bsq {
-   protected bsf(bsb<? extends bsf> $$0, dca $$1) {
-      super($$0, $$1);
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public interface bsf {
+   void a(bsd var1, ctq var2);
+
+   ctq a(bsd var1);
+
+   void a(bsd var1, float var2);
+
+   default void a(akn $$0, epk $$1) {
+      this.a($$0, $$1, 0L);
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dtc $$2, ir $$3) {
-   }
+   default void a(akn $$0, epk $$1, long $$2) {
+      akm<epm> $$3 = akm.a(lf.aU, $$0);
+      if (!$$3.equals(epf.a)) {
+         epm $$4 = $$1.a().o().be().b($$3);
+         if ($$4 != epm.a) {
+            List<ctq> $$5 = $$4.a($$1, $$2);
+            List<bsd> $$6 = new ArrayList<>();
 
-   @Override
-   public void a(ewu $$0) {
-      if (this.df()) {
-         if (this.bi()) {
-            this.a(0.02F, $$0);
-            this.a(bst.a, this.dx());
-            this.g(this.dx().a(0.8F));
-         } else if (this.bx()) {
-            this.a(0.02F, $$0);
-            this.a(bst.a, this.dx());
-            this.g(this.dx().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dU().a_(this.aN()).b().h() * 0.91F;
+            for (ctq $$7 : $$5) {
+               bsd $$8 = this.a($$7, $$6);
+               if ($$8 != null) {
+                  ctq $$9 = $$8.f() ? $$7.c(1) : $$7;
+                  this.a($$8, $$9);
+                  this.a($$8, 0.085F);
+                  $$6.add($$8);
+               }
             }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dU().a_(this.aN()).b().h() * 0.91F;
-            }
-
-            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bst.a, this.dx());
-            this.g(this.dx().a((double)$$1));
          }
       }
-
-      this.r(false);
    }
 
-   @Override
-   public boolean p_() {
-      return false;
+   @Nullable
+   default bsd a(ctq $$0, List<bsd> $$1) {
+      css $$2 = css.c_($$0);
+      if ($$2 != null) {
+         bsd $$3 = $$2.m();
+         if (!$$1.contains($$3)) {
+            return $$3;
+         }
+      } else if (!$$1.contains(bsd.a)) {
+         return bsd.a;
+      }
+
+      return null;
    }
 }

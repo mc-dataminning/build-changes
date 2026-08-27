@@ -1,33 +1,77 @@
-public class gni extends gly<coi> {
-   private final gga b;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gni(gkq.a $$0) {
-      super($$0, fyr.bM);
-      this.b = $$0.c();
-   }
+public class gni extends gng implements gnh {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private exv f;
 
-   protected void a(coi $$0, float $$1, dtc $$2, fbc $$3, gfg $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = aym.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.b, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
-   }
-
-   public static void a(gga $$0, dtc $$1, fbc $$2, gfg $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gqp.a(gqp.a(1.0F), 10);
+   public gni(exv $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
       } else {
-         $$6 = gqp.d;
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
+
+   public gni(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new exv($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   }
+
+   @Override
+   public void a(atx $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public exv e() {
+      return this.f;
+   }
+
+   public void a(exv $$0) {
+      if (this.f != null) {
+         this.f.close();
       }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+      this.f = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
+   }
+
+   @Override
+   public void a(akn $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

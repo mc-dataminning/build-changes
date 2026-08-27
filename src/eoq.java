@@ -1,166 +1,184 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.util.function.LongPredicate;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class eoq {
-   public static final long e = Long.MAX_VALUE;
-   private static final int a = 255;
-   protected final int f;
-   private final eou b;
-   private final Long2ByteMap c;
-   private volatile boolean d;
+public class eoq implements epc {
+   private final epd a;
+   private final epc b;
 
-   protected eoq(int $$0, int $$1, final int $$2) {
-      if ($$0 >= 254) {
-         throw new IllegalArgumentException("Level count must be < 254.");
-      } else {
-         this.f = $$0;
-         this.b = new eou($$0, $$1);
-         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$2) {
-                  super.rehash($$0);
-               }
-            }
-         };
-         this.c.defaultReturnValue((byte)-1);
-      }
+   public eoq(epd $$0, epc $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void e(long $$0) {
-      int $$1 = this.c.remove($$0) & 255;
-      if ($$1 != 255) {
-         int $$2 = this.c($$0);
-         int $$3 = this.a($$2, $$1);
-         this.b.a($$0, $$3, this.f);
-         this.d = !this.b.b();
-      }
+   @Override
+   public io a() {
+      return this.b.a();
    }
 
-   public void a(LongPredicate $$0) {
-      LongList $$1 = new LongArrayList();
-      this.c.keySet().forEach($$2 -> {
-         if ($$0.test($$2)) {
-            $$1.add($$2);
-         }
-      });
-      $$1.forEach(this::e);
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   private int a(int $$0, int $$1) {
-      return Math.min(Math.min($$0, $$1), this.f - 1);
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   protected void f(long $$0) {
-      this.a($$0, $$0, this.f - 1, false);
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
-      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
-      this.d = !this.b.b();
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if (!this.a($$1)) {
-         $$2 = aym.a($$2, 0, this.f - 1);
-         $$3 = aym.a($$3, 0, this.f - 1);
-         boolean $$6 = $$4 == 255;
-         if ($$6) {
-            $$4 = $$3;
-         }
-
-         int $$7;
-         if ($$5) {
-            $$7 = Math.min($$4, $$2);
-         } else {
-            $$7 = aym.a(this.a($$1, $$0, $$2), 0, this.f - 1);
-         }
-
-         int $$9 = this.a($$3, $$4);
-         if ($$3 != $$7) {
-            int $$10 = this.a($$3, $$7);
-            if ($$9 != $$10 && !$$6) {
-               this.b.a($$1, $$9, $$10);
-            }
-
-            this.b.a($$1, $$10);
-            this.c.put($$1, (byte)$$7);
-         } else if (!$$6) {
-            this.b.a($$1, $$9, this.f);
-            this.c.remove($$1);
-         }
-      }
+   @Override
+   public int f() {
+      return this.b.f();
    }
 
-   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
-      int $$4 = this.c.get($$1) & 255;
-      int $$5 = aym.a(this.b($$0, $$1, $$2), 0, this.f - 1);
-      if ($$3) {
-         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
-      } else {
-         boolean $$6 = $$4 == 255;
-         int $$7;
-         if ($$6) {
-            $$7 = aym.a(this.c($$1), 0, this.f - 1);
-         } else {
-            $$7 = $$4;
-         }
-
-         if ($$5 == $$7) {
-            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
-         }
-      }
+   @Override
+   public void a(int $$0) {
    }
 
-   protected final boolean b() {
-      return this.d;
+   @Override
+   public boolean g() {
+      return this.b.g();
    }
 
-   protected final int b(int $$0) {
-      if (this.b.b()) {
-         return $$0;
-      } else {
-         while (!this.b.b() && $$0 > 0) {
-            $$0--;
-            long $$1 = this.b.a();
-            int $$2 = aym.a(this.c($$1), 0, this.f - 1);
-            int $$3 = this.c.remove($$1) & 255;
-            if ($$3 < $$2) {
-               this.a($$1, $$3);
-               this.a($$1, $$3, true);
-            } else if ($$3 > $$2) {
-               this.a($$1, this.f - 1);
-               if ($$3 != this.f - 1) {
-                  this.b.a($$1, this.a(this.f - 1, $$3));
-                  this.c.put($$1, (byte)$$3);
-               }
-
-               this.a($$1, $$2, false);
-            }
-         }
-
-         this.d = !this.b.b();
-         return $$0;
-      }
+   @Override
+   public int h() {
+      return this.b.h();
    }
 
-   public int c() {
-      return this.c.size();
+   @Override
+   public boolean i() {
+      return this.b.i();
    }
 
-   protected boolean a(long $$0) {
-      return $$0 == Long.MAX_VALUE;
+   @Override
+   public int j() {
+      return this.b.j();
    }
 
-   protected abstract int a(long var1, long var3, int var5);
+   @Override
+   public daw k() {
+      return this.a.k();
+   }
 
-   protected abstract void a(long var1, int var3, boolean var4);
+   @Override
+   public void a(long $$0) {
+   }
 
-   protected abstract int c(long var1);
+   @Override
+   public void b(long $$0) {
+   }
 
-   protected abstract void a(long var1, int var3);
+   @Override
+   public void a(io $$0, float $$1) {
+   }
 
-   protected abstract int b(long var1, long var3, int var5);
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(daw $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dav o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dsu.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dsu.c $$0) {
+   }
+
+   @Override
+   public bpt q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public etz<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dbb $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
+   }
 }

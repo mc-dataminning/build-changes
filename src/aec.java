@@ -1,23 +1,23 @@
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aec(List<UUID> b) implements zl<abw> {
-   public static final zc<we, aec> a = zl.a(aec::a, aec::new);
-
-   private aec(we $$0) {
-      this($$0.a(ju.g));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b, ju.g);
-   }
+public record aec(int b, ix<brc> c) implements ze<abq> {
+   public static final yv<wi, aec> a = yv.a(yt.f, $$0 -> $$0.b, yt.b(lf.R), aec::e, aec::new);
 
    @Override
-   public zn<aec> a() {
-      return agj.af;
+   public zg<aec> a() {
+      return agc.ak;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public brw a(daz $$0) {
+      return $$0.a(this.b);
+   }
+
+   public ix<brc> e() {
+      return this.c;
    }
 }

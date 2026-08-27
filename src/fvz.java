@@ -1,45 +1,61 @@
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Set;
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public abstract class fvz<E extends brv> extends fvq<E> {
-   private static final Vector3f a = new Vector3f();
+public final class fvz {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fwa d;
+   private final boolean e;
+   private final fwg f;
+   private final fwg g;
+   private final Set<it> h;
 
-   public fvz() {
-      this(gfo::e);
+   protected fvz(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fwa $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<it> $$13
+   ) {
+      this.a = $$0;
+      this.f = new fwg($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fwg($$11, $$12);
+      this.h = $$13;
    }
 
-   public fvz(Function<akt, gfo> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(fbc $$0, fbg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public abstract fys a();
-
-   public Optional<fys> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(brq $$0, fha $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fha $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fhc.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(brq $$0, fha $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> fhc.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(fha $$0) {
-      fhc.a(this, $$0, 0L, 1.0F, a);
+   public fvw.a a(int $$0, int $$1) {
+      return new fvw.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

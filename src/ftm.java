@@ -1,32 +1,57 @@
-import java.util.Map;
-import java.util.Optional;
+import java.util.Arrays;
 
-public interface ftm {
-   Map<Optional<aks<eji>>, ftm> a = Map.of(Optional.of(ejj.b), ($$0, $$1) -> {
-      duz $$2 = $$1.d().a();
-      jo $$3 = $$1.a();
-      jb<dcz> $$4 = $$3.b(li.az);
-      jb<ejz> $$5 = $$3.b(li.aL);
-      jb<eix> $$6 = $$3.b(li.aI);
-      return new fnh($$0, $$1x -> $$0.B().a(a($$1x)), $$2 instanceof dyp ? ((dyp)$$2).g() : ehv.a($$4, $$5, $$6));
-   }, Optional.of(ejj.e), ($$0, $$1) -> new fng($$0, $$1, $$1x -> $$0.B().a(a($$1x))));
+public class ftm<T extends cjn> extends ftf<T> {
+   private static final int a = 8;
+   private final fvw b;
+   private final fvw[] f = new fvw[8];
 
-   fon createEditScreen(fth var1, ftp var2);
-
-   private static ftp.a a(ehv $$0) {
-      return ($$1, $$2) -> {
-         duz $$3 = new dyp($$0);
-         return $$2.a($$1, $$3);
-      };
+   public ftm(fvw $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
    }
 
-   private static ftp.a a(ja<dcz> $$0) {
-      return ($$1, $$2) -> {
-         jn<dyz> $$3 = $$1.d(li.aG);
-         ja<dyz> $$4 = $$3.g(dyz.c);
-         ddd $$5 = new ddk($$0);
-         duz $$6 = new dyx($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   private static String a(int $$0) {
+      return "cube" + $$0;
+   }
+
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), fwb.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fvy.a);
+      }
+
+      $$1.a("inside_cube", fwb.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fvy.a);
+      return fwc.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = ayf.i($$3, $$0.bY, $$0.bX);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
+      }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public fvw a() {
+      return this.b;
    }
 }

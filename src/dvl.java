@@ -1,11 +1,15 @@
-import javax.annotation.Nullable;
+public interface dvl<T> {
+   void g(T var1);
 
-public interface dvl {
-   @Nullable
-   dvk c(int var1, int var2);
+   void f(T var1);
 
-   default void a(dcj $$0, jt $$1) {
-   }
+   void e(T var1);
 
-   dbg q();
+   void d(T var1);
+
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

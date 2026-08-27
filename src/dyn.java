@@ -1,105 +1,21 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public interface dyn {
-   Codec<dyn> b = dyo.b;
-   Codec<ja<dyn>> c = akp.a(li.aD, b);
-   Codec<dyn> d = c.xmap(dyo.j::new, $$0 -> (ja)($$0 instanceof dyo.j $$1 ? $$1.j() : new ja.a<>($$0)));
+public abstract class dyn implements dyc {
+   protected final js f;
 
-   double a(dyn.b var1);
-
-   void a(double[] var1, dyn.a var2);
-
-   dyn a(dyn.f var1);
-
-   double a();
-
-   double b();
-
-   ayg<? extends dyn> c();
-
-   default dyn a(double $$0, double $$1) {
-      return new dyo.g(this, $$0, $$1);
+   protected static <P extends dyn> P1<Mu<P>, js> a(Instance<P> $$0) {
+      return $$0.group(js.v(16).optionalFieldOf("offset", js.g).forGetter($$0x -> $$0x.f));
    }
 
-   default dyn d() {
-      return dyo.a(this, dyo.k.a.a);
+   protected dyn(js $$0) {
+      this.f = $$0;
    }
 
-   default dyn e() {
-      return dyo.a(this, dyo.k.a.b);
+   public final boolean a(dbu $$0, io $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
 
-   default dyn f() {
-      return dyo.a(this, dyo.k.a.c);
-   }
-
-   default dyn g() {
-      return dyo.a(this, dyo.k.a.d);
-   }
-
-   default dyn h() {
-      return dyo.a(this, dyo.k.a.e);
-   }
-
-   default dyn i() {
-      return dyo.a(this, dyo.k.a.f);
-   }
-
-   public interface a {
-      dyn.b a(int var1);
-
-      void a(double[] var1, dyn var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dzw d() {
-         return dzw.a();
-      }
-   }
-
-   public static record c(ja<eoh.a> b, @Nullable eoh c) {
-      public static final Codec<dyn.c> a = eoh.a.b.xmap($$0 -> new dyn.c($$0, null), dyn.c::b);
-
-      public c(ja<eoh.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends dyn {
-      @Override
-      default void a(double[] $$0, dyn.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dyn a(dyn.f $$0) {
-         return $$0.apply(this);
-      }
-   }
-
-   public static record e(int a, int b, int c) implements dyn.b {
-   }
-
-   public interface f {
-      dyn apply(dyn var1);
-
-      default dyn.c a(dyn.c $$0) {
-         return $$0;
-      }
-   }
+   protected abstract boolean a(drd var1);
 }

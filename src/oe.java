@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum oe {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface oe {
+   private final String j;
+
+   private oe(String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

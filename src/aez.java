@@ -1,37 +1,45 @@
-public class aez implements zl<abw> {
-   public static final zc<we, aez> a = zl.a(aez::a, aez::new);
-   private final ir b;
-   private final float c;
+public class aez implements ze<abq> {
+   public static final yv<vx, aez> a = ze.a(aez::a, aez::new);
+   private final float b;
+   private final int c;
+   private final int d;
 
-   public aez(ir $$0, float $$1) {
+   public aez(float $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private aez(we $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aez(vx $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(we $$0) {
+   private void a(vx $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zn<aez> a() {
-      return agj.aB;
+   public zg<aez> a() {
+      return agc.aG;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public ir b() {
+   public float b() {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

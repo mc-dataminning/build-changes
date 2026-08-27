@@ -1,57 +1,56 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class ebn extends ebo {
-   public ebn(Codec<eer> $$0) {
+public class ebn extends dzz<edb> {
+   public ebn(Codec<edb> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dcb $$0, ayt $$1, ir $$2, dtc $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(eab<edb> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      edb $$3 = $$0.f();
+      aym $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         iw $$4 = iw.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<iw> $$6 = ad.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         io $$6 = $$2.h($$5.getAsInt());
+         js $$7 = new js($$3.c, $$3.c, $$3.c);
+         ehd $$8 = ehd.a($$6.b($$7), $$6.a($$7));
+         return io.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dec.kJ.n(), 2);
+            return 1;
+         }).sum() > 0;
+      }
+   }
 
-         for (iw $$8 : $$6.subList(0, $$5)) {
-            ir.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.d($$8);
-            int $$12;
-            iw $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.d(iw.b);
-               iw[] $$13 = new iw[]{$$8, iw.b};
-               $$11 = ad.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+   private static OptionalInt a(dbu $$0, io $$1, edb $$2) {
+      Predicate<drd> $$3 = $$0x -> $$0x.a(dec.G);
+      Predicate<drd> $$4 = $$0x -> !$$0x.a(dec.G);
+      Optional<dwl> $$5 = dwl.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dwl::c).orElseGet(OptionalInt::empty);
+   }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.d($$11);
-            }
-
-            $$9.d($$11.g());
-            $$9.d(iw.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.d($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.d(iw.b);
-               }
+   private boolean b(dbu $$0, io $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (it $$2 : it.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
          }
 
          return true;
+      } else {
+         return false;
       }
+   }
+
+   private boolean a(dba $$0, io $$1) {
+      drd $$2 = $$0.a_($$1);
+      return $$2.a(dec.G) || $$2.i();
    }
 }

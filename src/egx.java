@@ -1,75 +1,40 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egx extends ehc {
-   public static final Codec<egx> a = egl.a.fieldOf("provider").xmap(egx::new, $$0 -> $$0.b).codec();
-   private final egl b;
+public class egx extends egr {
+   public static final MapCodec<egx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dwv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, egx::new)
+   );
+   private final dwv.a c;
+   private final int d;
+   private final int e;
 
-   public egx(egl $$0) {
-      this.b = $$0;
+   private egx(dwv.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static egx a(dwv.a $$0, int $$1, int $$2) {
+      return new egx($$0, $$1, $$2);
    }
 
    @Override
-   protected ehd<?> a() {
-      return ehd.e;
+   protected boolean a(egq $$0, aym $$1, io $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
    }
 
    @Override
-   public void a(ehc.a $$0) {
-      List<ir> $$1 = Lists.newArrayList();
-      List<ir> $$2 = $$0.e();
-      List<ir> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(ehc.a $$0, ir $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(ehc.a $$0, ir $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         ir $$3 = $$1.b($$2);
-         if (eca.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public egt<?> b() {
+      return egt.c;
    }
 }

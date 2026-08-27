@@ -2,151 +2,151 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cjt extends cij {
+public class cjt extends cil {
    private static final String b = "Johnny";
-   static final Predicate<bpx> e = $$0 -> $$0 == bpx.c || $$0 == bpx.d;
-   boolean ch;
+   static final Predicate<bpt> e = $$0 -> $$0 == bpt.c || $$0 == bpt.d;
+   boolean bY;
 
-   public cjt(bsb<? extends cjt> $$0, dca $$1) {
+   public cjt(bsc<? extends cjt> $$0, daz $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void y() {
-      super.y();
-      this.cb.a(0, new bzf(this));
-      this.cb.a(1, new cjt.a(this));
-      this.cb.a(2, new cij.b(this));
-      this.cb.a(3, new cnn.a(this, 10.0F));
-      this.cb.a(4, new bzv(this, 1.0, false));
-      this.cc.a(1, new cbd(this, cnn.class).a());
-      this.cc.a(2, new cbe<>(this, cly.class, true));
-      this.cc.a(3, new cbe<>(this, clg.class, true));
-      this.cc.a(3, new cbe<>(this, ceq.class, true));
-      this.cc.a(4, new cjt.b(this));
-      this.cb.a(8, new cai(this, 0.6));
-      this.cb.a(9, new bzt(this, cly.class, 3.0F, 1.0F));
-      this.cb.a(10, new bzt(this, bsq.class, 8.0F));
+   protected void z() {
+      super.z();
+      this.bS.a(0, new bzi(this));
+      this.bS.a(1, new cjt.a(this));
+      this.bS.a(2, new cil.b(this));
+      this.bS.a(3, new cnk.a(this, 10.0F));
+      this.bS.a(4, new bzy(this, 1.0, false));
+      this.bT.a(1, new cbg(this, cnk.class).a());
+      this.bT.a(2, new cbh<>(this, cly.class, true));
+      this.bT.a(3, new cbh<>(this, clg.class, true));
+      this.bT.a(3, new cbh<>(this, ces.class, true));
+      this.bT.a(4, new cjt.b(this));
+      this.bS.a(8, new cal(this, 0.6));
+      this.bS.a(9, new bzw(this, cly.class, 3.0F, 1.0F));
+      this.bS.a(10, new bzw(this, bss.class, 8.0F));
    }
 
    @Override
    protected void Y() {
-      if (!this.go() && cdj.a(this)) {
-         boolean $$0 = ((aqt)this.dU()).e(this.du());
-         ((cby)this.J()).b($$0);
+      if (!this.gf() && cdm.a(this)) {
+         boolean $$0 = ((aqn)this.dP()).e(this.dp());
+         ((ccb)this.K()).b($$0);
       }
 
       super.Y();
    }
 
-   public static btu.a t() {
-      return cjd.gG().a(btv.r, 0.35F).a(btv.k, 12.0).a(btv.q, 24.0).a(btv.c, 5.0);
+   public static btx.a u() {
+      return cje.gv().a(bty.r, 0.35F).a(bty.k, 12.0).a(bty.q, 24.0).a(bty.c, 5.0);
    }
 
    @Override
-   public void b(uk $$0) {
+   public void b(ud $$0) {
       super.b($$0);
-      if (this.ch) {
+      if (this.bY) {
          $$0.a("Johnny", true);
       }
    }
 
    @Override
-   public cij.a r() {
-      if (this.gq()) {
-         return cij.a.b;
+   public cil.a s() {
+      if (this.gh()) {
+         return cil.a.b;
       } else {
-         return this.gP() ? cij.a.g : cij.a.a;
+         return this.gI() ? cil.a.g : cil.a.a;
       }
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(ud $$0) {
       super.a($$0);
       if ($$0.b("Johnny", 99)) {
-         this.ch = $$0.q("Johnny");
+         this.bY = $$0.q("Johnny");
       }
    }
 
    @Override
-   public avn af_() {
-      return avo.BH;
+   public avh ae_() {
+      return avi.Bj;
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
-      btg $$4 = super.a($$0, $$1, $$2, $$3);
-      ((cby)this.J()).b(true);
-      ayt $$5 = $$0.F_();
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
+      btj $$4 = super.a($$0, $$1, $$2, $$3);
+      ((ccb)this.K()).b(true);
+      aym $$5 = $$0.E_();
       this.a($$5, $$1);
       this.b($$5, $$1);
       return $$4;
    }
 
    @Override
-   protected void a(ayt $$0, bpy $$1) {
-      if (this.gM() == null) {
-         this.a(bsc.a, new cuh(cuk.qw));
+   protected void a(aym $$0, bpu $$1) {
+      if (this.gD() == null) {
+         this.a(bsd.a, new ctq(ctt.pd));
       }
    }
 
    @Override
-   public void b(@Nullable xe $$0) {
+   public void b(@Nullable wx $$0) {
       super.b($$0);
-      if (!this.ch && $$0 != null && $$0.getString().equals("Johnny")) {
-         this.ch = true;
+      if (!this.bY && $$0 != null && $$0.getString().equals("Johnny")) {
+         this.bY = true;
       }
    }
 
    @Override
-   protected avn u() {
-      return avo.BG;
+   protected avh v() {
+      return avi.Bi;
    }
 
    @Override
-   protected avn n_() {
-      return avo.BI;
+   protected avh o_() {
+      return avi.Bk;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.BJ;
+   protected avh d(bqp $$0) {
+      return avi.Bl;
    }
 
    @Override
    public void a(int $$0, boolean $$1) {
-      cuh $$2 = new cuh(cuk.qw);
-      cnm $$3 = this.gM();
+      ctq $$2 = new ctq(ctt.pd);
+      cnj $$3 = this.gD();
       int $$4 = 1;
-      if ($$0 > $$3.a(bpx.c)) {
+      if ($$0 > $$3.a(bpt.c)) {
          $$4 = 2;
       }
 
-      boolean $$5 = this.al.i() <= $$3.v();
+      boolean $$5 = this.ah.i() <= $$3.v();
       if ($$5) {
-         $$2.a(dag.n, $$4);
+         $$2.a(cze.n, $$4);
       }
 
-      this.a(bsc.a, $$2);
+      this.a(bsd.a, $$2);
    }
 
-   static class a extends byv {
-      public a(bsq $$0) {
+   static class a extends byy {
+      public a(bss $$0) {
          super($$0, 6, cjt.e);
-         this.a(EnumSet.of(bzl.a.a));
+         this.a(EnumSet.of(bzo.a.a));
       }
 
       @Override
       public boolean b() {
          cjt $$0 = (cjt)this.d;
-         return $$0.gN() && super.b();
+         return $$0.gG() && super.b();
       }
 
       @Override
       public boolean a() {
          cjt $$0 = (cjt)this.d;
-         return $$0.gN() && $$0.al.a(b(10)) == 0 && super.a();
+         return $$0.gG() && $$0.ah.a(b(10)) == 0 && super.a();
       }
 
       @Override
@@ -156,14 +156,14 @@ public class cjt extends cij {
       }
    }
 
-   static class b extends cbe<bso> {
+   static class b extends cbh<bsq> {
       public b(cjt $$0) {
-         super($$0, bso.class, 0, true, true, bso::fQ);
+         super($$0, bsq.class, 0, true, true, bsq::fH);
       }
 
       @Override
       public boolean a() {
-         return ((cjt)this.e).ch && super.a();
+         return ((cjt)this.e).bY && super.a();
       }
 
       @Override

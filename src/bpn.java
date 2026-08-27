@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface bpn {
+public interface bpn {
+   void a();
+
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bpn) {
+         ((bpn)$$0).a();
+      }
+   }
 }

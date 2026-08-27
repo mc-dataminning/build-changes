@@ -1,53 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class box extends bpf {
-   public static final Codec<box> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, box::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
+public class box extends boz {
+   public static final box a = new box(0.0F);
+   public static final MapCodec<box> b = Codec.FLOAT.fieldOf("value").xmap(box::a, box::d);
+   private final float d;
 
-   private box(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public static box a(float $$0) {
+      return $$0 == 0.0F ? a : new box($$0);
    }
 
-   public static box a(int $$0, int $$1) {
-      return new box($$0, $$1);
+   private box(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a(ayt $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   public float a(aym $$0) {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.b;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float b() {
+      return this.d + 1.0F;
    }
 
    @Override
-   public bpg<?> c() {
-      return bpg.c;
+   public bpa<?> c() {
+      return bpa.a;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+      return Float.toString(this.d);
    }
 }

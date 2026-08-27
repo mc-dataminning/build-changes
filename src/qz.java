@@ -1,318 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-public class qz {
-   public static final aks<elc> a = ra.a("village/plains/town_centers");
-   private static final aks<elc> b = ra.a("village/plains/terminators");
-
-   public static void a(qq<elc> $$0) {
-      jb<eix> $$1 = $$0.a(li.aI);
-      ja<eix> $$2 = $$1.b(ss.g);
-      ja<eix> $$3 = $$1.b(ss.m);
-      ja<eix> $$4 = $$1.b(ss.a);
-      jb<enr> $$5 = $$0.a(li.aK);
-      ja<enr> $$6 = $$5.b(rc.g);
-      ja<enr> $$7 = $$5.b(rc.h);
-      ja<enr> $$8 = $$5.b(rc.i);
-      ja<enr> $$9 = $$5.b(rc.a);
-      ja<enr> $$10 = $$5.b(rc.j);
-      ja<enr> $$11 = $$5.b(rc.q);
-      jb<elc> $$12 = $$0.a(li.aM);
-      ja<elc> $$13 = $$12.b(ra.a);
-      ja<elc> $$14 = $$12.b(b);
+public interface qz {
+   static void a(qo<ehr> $$0) {
+      iy<ehl> $$1 = $$0.a(lf.aJ);
+      iy<dby> $$2 = $$0.a(lf.az);
+      ix.c<ehr> $$3 = $$0.a(
+         ehe.a,
+         new ehr(
+            List.of(ehr.a($$1.b(ehf.t)), ehr.a($$1.b(ehf.u)), ehr.a($$1.b(ehf.v)), ehr.a($$1.b(ehf.w)), ehr.a($$1.b(ehf.x))), new eig(34, 8, eih.a, 10387312)
+         )
+      );
+      $$0.a(ehe.b, new ehr($$1.b(ehf.f), new eig(32, 8, eih.a, 14357617)));
+      $$0.a(ehe.c, new ehr($$1.b(ehf.g), new eig(32, 8, eih.a, 14357618)));
+      $$0.a(ehe.d, new ehr($$1.b(ehf.e), new eig(32, 8, eih.a, 14357619)));
+      $$0.a(ehe.e, new ehr($$1.b(ehf.j), new eig(32, 8, eih.a, 14357620)));
+      $$0.a(ehe.f, new ehr($$1.b(ehf.a), new eig(js.g, eii.c.b, 0.2F, 165745296, Optional.of(new eii.a($$3, 10)), 32, 8, eih.a)));
+      $$0.a(ehe.q, new ehr($$1.b(ehf.F), new eig(24, 8, eih.a, 20083232)));
+      $$0.a(ehe.g, new ehr($$1.b(ehf.l), new eig(32, 5, eih.b, 10387313)));
+      $$0.a(ehe.h, new ehr($$1.b(ehf.d), new eig(80, 20, eih.b, 10387319)));
+      $$0.a(ehe.i, new ehr($$1.b(ehf.r), new eig(new js(9, 0, 9), eii.c.c, 0.01F, 0, Optional.empty(), 1, 0, eih.a)));
+      $$0.a(ehe.j, new ehr(List.of(ehr.a($$1.b(ehf.b)), ehr.a($$1.b(ehf.c))), new eig(js.g, eii.c.d, 0.004F, 0, Optional.empty(), 1, 0, eih.a)));
       $$0.a(
-         a,
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
-               Pair.of(ela.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
-               Pair.of(ela.a("village/plains/town_centers/plains_meeting_point_2"), 50),
-               Pair.of(ela.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
-               Pair.of(ela.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
-               Pair.of(ela.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
-               Pair.of(ela.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
-               Pair.of(ela.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+         ehe.k,
+         new ehr(
+            List.of(
+               ehr.a($$1.b(ehf.y)),
+               ehr.a($$1.b(ehf.z)),
+               ehr.a($$1.b(ehf.A)),
+               ehr.a($$1.b(ehf.B)),
+               ehr.a($$1.b(ehf.C)),
+               ehr.a($$1.b(ehf.D)),
+               ehr.a($$1.b(ehf.E))
             ),
-            elc.a.b
+            new eig(40, 15, eih.a, 34222645)
          )
       );
-      ra.a(
-         $$0,
-         "village/plains/streets",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/streets/corner_01", $$10), 2),
-               Pair.of(ela.a("village/plains/streets/corner_02", $$10), 2),
-               Pair.of(ela.a("village/plains/streets/corner_03", $$10), 2),
-               Pair.of(ela.a("village/plains/streets/straight_01", $$10), 4),
-               Pair.of(ela.a("village/plains/streets/straight_02", $$10), 4),
-               Pair.of(ela.a("village/plains/streets/straight_03", $$10), 7),
-               Pair.of(ela.a("village/plains/streets/straight_04", $$10), 7),
-               Pair.of(ela.a("village/plains/streets/straight_05", $$10), 3),
-               Pair.of(ela.a("village/plains/streets/straight_06", $$10), 4),
-               Pair.of(ela.a("village/plains/streets/crossroad_01", $$10), 2),
-               Pair.of(ela.a("village/plains/streets/crossroad_02", $$10), 1),
-               Pair.of(ela.a("village/plains/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/plains/streets/crossroad_04", $$10), 2),
-                  Pair.of(ela.a("village/plains/streets/crossroad_05", $$10), 2),
-                  Pair.of(ela.a("village/plains/streets/crossroad_06", $$10), 2),
-                  Pair.of(ela.a("village/plains/streets/turn_01", $$10), 3)
-               }
-            ),
-            elc.a.a
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/zombie/streets",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/zombie/streets/corner_01", $$10), 2),
-               Pair.of(ela.a("village/plains/zombie/streets/corner_02", $$10), 2),
-               Pair.of(ela.a("village/plains/zombie/streets/corner_03", $$10), 2),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_01", $$10), 4),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_02", $$10), 4),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_03", $$10), 7),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_04", $$10), 7),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_05", $$10), 3),
-               Pair.of(ela.a("village/plains/zombie/streets/straight_06", $$10), 4),
-               Pair.of(ela.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
-               Pair.of(ela.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(ela.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(ela.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(ela.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(ela.a("village/plains/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            elc.a.a
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/houses",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/houses/plains_small_house_1", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_2", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_3", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_4", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_5", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_6", $$6), 1),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_7", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_small_house_8", $$6), 3),
-               Pair.of(ela.a("village/plains/houses/plains_medium_house_1", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_medium_house_2", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_big_house_1", $$6), 2),
-               Pair.of(ela.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_shepherds_house_1"), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_tannery_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_cartographer_1", $$6), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_library_1", $$6), 5),
-                  Pair.of(ela.a("village/plains/houses/plains_library_2", $$6), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_masons_house_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_temple_3", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_temple_4", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_stable_1", $$6), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_stable_2"), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_large_farm_1", $$11), 4),
-                  Pair.of(ela.a("village/plains/houses/plains_small_farm_1", $$11), 4),
-                  Pair.of(ela.a("village/plains/houses/plains_animal_pen_1"), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_animal_pen_2"), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_animal_pen_3"), 5),
-                  Pair.of(ela.a("village/plains/houses/plains_accessory_1"), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
-                  Pair.of(ela.a("village/plains/houses/plains_meeting_point_5"), 1),
-                  Pair.of(ela.g(), 10)
-               }
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/zombie/houses",
-         new elc(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
-               Pair.of(ela.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
-               Pair.of(ela.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_tannery_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_cartographer_1", $$9), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_library_1", $$9), 3),
-                  Pair.of(ela.a("village/plains/houses/plains_library_2", $$9), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_masons_house_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_temple_3", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_temple_4", $$9), 2),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_stable_2", $$9), 2),
-                  Pair.of(ela.a("village/plains/houses/plains_large_farm_1", $$9), 4),
-                  Pair.of(ela.a("village/plains/houses/plains_small_farm_1", $$9), 4),
-                  Pair.of(ela.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
-                  Pair.of(ela.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
-                  Pair.of(ela.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
-                  Pair.of(ela.g(), 10)
-               }
-            ),
-            elc.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(ela.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(ela.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(ela.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            elc.a.a
-         )
-      );
-      ra.a($$0, "village/plains/trees", new elc($$13, ImmutableList.of(Pair.of(ela.a($$2), 1)), elc.a.b));
-      ra.a(
-         $$0,
-         "village/plains/decor",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/plains_lamp_1"), 2), Pair.of(ela.a($$2), 1), Pair.of(ela.a($$3), 1), Pair.of(ela.a($$4), 1), Pair.of(ela.g(), 2)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/zombie/decor",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/plains_lamp_1", $$9), 1),
-               Pair.of(ela.a($$2), 1),
-               Pair.of(ela.a($$3), 1),
-               Pair.of(ela.a($$4), 1),
-               Pair.of(ela.g(), 2)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/villagers",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/plains/villagers/nitwit"), 1),
-               Pair.of(ela.a("village/plains/villagers/baby"), 1),
-               Pair.of(ela.a("village/plains/villagers/unemployed"), 10)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/plains/zombie/villagers",
-         new elc(
-            $$13,
-            ImmutableList.of(Pair.of(ela.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(ela.a("village/plains/zombie/villagers/unemployed"), 10)),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/common/animals",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/common/animals/cows_1"), 7),
-               Pair.of(ela.a("village/common/animals/pigs_1"), 7),
-               Pair.of(ela.a("village/common/animals/horses_1"), 1),
-               Pair.of(ela.a("village/common/animals/horses_2"), 1),
-               Pair.of(ela.a("village/common/animals/horses_3"), 1),
-               Pair.of(ela.a("village/common/animals/horses_4"), 1),
-               Pair.of(ela.a("village/common/animals/horses_5"), 1),
-               Pair.of(ela.a("village/common/animals/sheep_1"), 1),
-               Pair.of(ela.a("village/common/animals/sheep_2"), 1),
-               Pair.of(ela.g(), 5)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/common/sheep",
-         new elc($$13, ImmutableList.of(Pair.of(ela.a("village/common/animals/sheep_1"), 1), Pair.of(ela.a("village/common/animals/sheep_2"), 1)), elc.a.b)
-      );
-      ra.a(
-         $$0,
-         "village/common/cats",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/common/animals/cat_black"), 1),
-               Pair.of(ela.a("village/common/animals/cat_british"), 1),
-               Pair.of(ela.a("village/common/animals/cat_calico"), 1),
-               Pair.of(ela.a("village/common/animals/cat_persian"), 1),
-               Pair.of(ela.a("village/common/animals/cat_ragdoll"), 1),
-               Pair.of(ela.a("village/common/animals/cat_red"), 1),
-               Pair.of(ela.a("village/common/animals/cat_siamese"), 1),
-               Pair.of(ela.a("village/common/animals/cat_tabby"), 1),
-               Pair.of(ela.a("village/common/animals/cat_white"), 1),
-               Pair.of(ela.a("village/common/animals/cat_jellie"), 1),
-               Pair.of(ela.g(), 3)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "village/common/butcher_animals",
-         new elc(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ela.a("village/common/animals/cows_1"), 3),
-               Pair.of(ela.a("village/common/animals/pigs_1"), 3),
-               Pair.of(ela.a("village/common/animals/sheep_1"), 1),
-               Pair.of(ela.a("village/common/animals/sheep_2"), 1)
-            ),
-            elc.a.b
-         )
-      );
-      ra.a($$0, "village/common/iron_golem", new elc($$13, ImmutableList.of(Pair.of(ela.a("village/common/iron_golem"), 1)), elc.a.b));
-      ra.a($$0, "village/common/well_bottoms", new elc($$13, ImmutableList.of(Pair.of(ela.a("village/common/well_bottom"), 1)), elc.a.b));
+      $$0.a(ehe.l, new ehr(List.of(ehr.a($$1.b(ehf.h)), ehr.a($$1.b(ehf.i))), new eig(24, 4, eih.a, 165745295)));
+      $$0.a(ehe.m, new ehr(List.of(ehr.a($$1.b(ehf.m)), ehr.a($$1.b(ehf.n))), new eig(20, 8, eih.a, 14357621)));
+      $$0.a(ehe.n, new ehr(List.of(ehr.a($$1.b(ehf.o), 2), ehr.a($$1.b(ehf.s), 3)), new eig(27, 4, eih.a, 30084232)));
+      $$0.a(ehe.o, new ehr($$1.b(ehf.p), new eig(2, 1, eih.a, 14357921)));
+      $$0.a(ehe.p, new ehr($$1.b(ehf.q), new eig(20, 11, eih.b, 10387313)));
+      $$0.a(ehe.r, new ehr($$1.b(ehf.k), new eif(32, 3, 128, $$2.b(avw.o))));
+      $$0.a(ehe.s, new ehr($$1.b(ehf.G), new eig(34, 8, eih.a, 83469867)));
    }
 }

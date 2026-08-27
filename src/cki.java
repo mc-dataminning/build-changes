@@ -2,78 +2,78 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public class cki extends cee implements ciu, ckk {
-   private static final ajy<Boolean> ck = akc.a(cki.class, aka.k);
-   private static final float cl = 0.2F;
-   private static final int cm = 40;
-   private static final float cn = 0.3F;
-   private static final int co = 1;
-   private static final float cp = 0.6F;
-   private static final int cq = 6;
-   private static final float cr = 0.5F;
-   private static final int cs = 300;
-   private int ct;
-   private int cu;
-   private boolean cv;
-   protected static final ImmutableList<? extends ccy<? extends ccx<? super cki>>> ch = ImmutableList.of(ccy.c, ccy.d, ccy.o, ccy.n);
-   protected static final ImmutableList<? extends cbr<?>> ci = ImmutableList.of(
-      cbr.r,
-      cbr.g,
-      cbr.h,
-      cbr.k,
-      cbr.l,
-      cbr.n,
-      cbr.m,
-      cbr.E,
-      cbr.t,
-      cbr.o,
-      cbr.p,
-      cbr.aq,
-      new cbr[]{cbr.z, cbr.as, cbr.at, cbr.ap, cbr.K, cbr.aw, cbr.ax, cbr.Z}
+public class cki extends ceg implements ciw, ckk {
+   private static final ajs<Boolean> cb = ajw.a(cki.class, aju.k);
+   private static final float cc = 0.2F;
+   private static final int cd = 40;
+   private static final float ce = 0.3F;
+   private static final int cf = 1;
+   private static final float cg = 0.6F;
+   private static final int ch = 6;
+   private static final float ci = 0.5F;
+   private static final int cj = 300;
+   private int ck;
+   private int cl;
+   private boolean cm;
+   protected static final ImmutableList<? extends cdb<? extends cda<? super cki>>> bY = ImmutableList.of(cdb.c, cdb.d, cdb.o, cdb.n);
+   protected static final ImmutableList<? extends cbu<?>> bZ = ImmutableList.of(
+      cbu.r,
+      cbu.g,
+      cbu.h,
+      cbu.k,
+      cbu.l,
+      cbu.n,
+      cbu.m,
+      cbu.E,
+      cbu.t,
+      cbu.o,
+      cbu.p,
+      cbu.aq,
+      new cbu[]{cbu.z, cbu.as, cbu.at, cbu.ap, cbu.K, cbu.aw, cbu.ax, cbu.Z}
    );
 
-   public cki(bsb<? extends cki> $$0, dca $$1) {
+   public cki(bsc<? extends cki> $$0, daz $$1) {
       super($$0, $$1);
-      this.bW = 5;
+      this.bN = 5;
    }
 
    @Override
    public boolean a(cly $$0) {
-      return !this.gl();
+      return !this.gc();
    }
 
-   public static btu.a r() {
-      return cjd.gG().a(btv.q, 40.0).a(btv.r, 0.3F).a(btv.n, 0.6F).a(btv.d, 1.0).a(btv.c, 6.0);
+   public static btx.a s() {
+      return cje.gv().a(bty.q, 40.0).a(bty.r, 0.3F).a(bty.n, 0.6F).a(bty.d, 1.0).a(bty.c, 6.0);
    }
 
    @Override
-   public boolean C(brv $$0) {
-      if (!($$0 instanceof bso)) {
+   public boolean C(brw $$0) {
+      if (!($$0 instanceof bsq)) {
          return false;
       } else {
-         this.ct = 10;
-         this.dU().a(this, (byte)4);
-         this.b(avo.mG);
-         ckj.a(this, (bso)$$0);
-         return ckk.a(this, (bso)$$0);
+         this.ck = 10;
+         this.dP().a(this, (byte)4);
+         this.b(avi.mq);
+         ckj.a(this, (bsq)$$0);
+         return ckk.a(this, (bsq)$$0);
       }
    }
 
    @Override
-   protected void e(bso $$0) {
-      if (this.t()) {
+   protected void e(bsq $$0) {
+      if (this.u()) {
          ckk.b(this, $$0);
       }
    }
 
    @Override
-   public boolean a(bqt $$0, float $$1) {
+   public boolean a(bqp $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dU().C) {
+      if (this.dP().B) {
          return false;
       } else {
-         if ($$2 && $$0.d() instanceof bso) {
-            ckj.b(this, (bso)$$0.d());
+         if ($$2 && $$0.d() instanceof bsq) {
+            ckj.b(this, (bsq)$$0.d());
          }
 
          return $$2;
@@ -81,65 +81,65 @@ public class cki extends cee implements ciu, ckk {
    }
 
    @Override
-   protected btp.b<cki> ea() {
-      return btp.a(ci, ch);
+   protected bts.b<cki> dT() {
+      return bts.a(bZ, bY);
    }
 
    @Override
-   protected btp<?> a(Dynamic<?> $$0) {
-      return ckj.a(this.ea().a($$0));
+   protected bts<?> a(Dynamic<?> $$0) {
+      return ckj.a(this.dT().a($$0));
    }
 
    @Override
-   public btp<cki> dZ() {
-      return (btp<cki>)super.dZ();
+   public bts<cki> dS() {
+      return (bts<cki>)super.dS();
    }
 
    @Override
    protected void Y() {
-      this.dU().ag().a("hoglinBrain");
-      this.dZ().a((aqt)this.dU(), this);
-      this.dU().ag().c();
+      this.dP().af().a("hoglinBrain");
+      this.dS().a((aqn)this.dP(), this);
+      this.dP().af().c();
       ckj.a(this);
-      if (this.x()) {
-         this.cu++;
-         if (this.cu > 300) {
-            this.b(avo.mH);
-            this.a((aqt)this.dU());
+      if (this.y()) {
+         this.cl++;
+         if (this.cl > 300) {
+            this.b(avi.mr);
+            this.c((aqn)this.dP());
          }
       } else {
-         this.cu = 0;
+         this.cl = 0;
       }
    }
 
    @Override
-   public void m_() {
-      if (this.ct > 0) {
-         this.ct--;
+   public void n_() {
+      if (this.ck > 0) {
+         this.ck--;
       }
 
-      super.m_();
+      super.n_();
    }
 
    @Override
    protected void k() {
-      if (this.o_()) {
-         this.bW = 3;
-         this.f(btv.c).a(0.5);
+      if (this.p_()) {
+         this.bN = 3;
+         this.f(bty.c).a(0.5);
       } else {
-         this.bW = 5;
-         this.f(btv.c).a(6.0);
+         this.bN = 5;
+         this.f(bty.c).a(6.0);
       }
    }
 
-   public static boolean c(bsb<cki> $$0, dcb $$1, bss $$2, ir $$3, ayt $$4) {
-      return !$$1.a_($$3.d()).a(dfe.lI);
+   public static boolean c(bsc<cki> $$0, dba $$1, bsu $$2, io $$3, aym $$4) {
+      return !$$1.a_($$3.d()).a(dec.kK);
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
-      if ($$0.F_().i() < 0.2F) {
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
+      if ($$0.E_().i() < 0.2F) {
          this.a(true);
       }
 
@@ -148,23 +148,23 @@ public class cki extends cee implements ciu, ckk {
 
    @Override
    public boolean h(double $$0) {
-      return !this.ge();
+      return !this.fV();
    }
 
    @Override
-   public float a(ir $$0, dcd $$1) {
+   public float a(io $$0, dbc $$1) {
       if (ckj.a(this, $$0)) {
          return -1.0F;
       } else {
-         return $$1.a_($$0.d()).a(dfe.pw) ? 10.0F : 0.0F;
+         return $$1.a_($$0.d()).a(dec.ow) ? 10.0F : 0.0F;
       }
    }
 
    @Override
-   public bqa b(cly $$0, bpz $$1) {
-      bqa $$2 = super.b($$0, $$1);
+   public bpw b(cly $$0, bpv $$1) {
+      bpw $$2 = super.b($$0, $$1);
       if ($$2.a()) {
-         this.gc();
+         this.fT();
       }
 
       return $$2;
@@ -173,145 +173,145 @@ public class cki extends cee implements ciu, ckk {
    @Override
    public void b(byte $$0) {
       if ($$0 == 4) {
-         this.ct = 10;
-         this.b(avo.mG);
+         this.ck = 10;
+         this.b(avi.mq);
       } else {
          super.b($$0);
       }
    }
 
    @Override
-   public int gy() {
-      return this.ct;
+   public int gp() {
+      return this.ck;
    }
 
    @Override
-   public boolean ep() {
+   public boolean eh() {
       return true;
    }
 
    @Override
-   public int er() {
-      return this.bW;
+   public int ej() {
+      return this.bN;
    }
 
-   private void a(aqt $$0) {
-      cjw $$1 = this.a(bsb.bx, true);
+   private void c(aqn $$0) {
+      cjw $$1 = this.a(bsc.bt, true);
       if ($$1 != null) {
-         $$1.b(new brh(brj.i, 200, 0));
+         $$1.b(new bre(brg.i, 200, 0));
       }
    }
 
    @Override
-   public boolean o(cuh $$0) {
-      return $$0.a(awm.am);
+   public boolean o(ctq $$0) {
+      return $$0.a(awf.am);
    }
 
-   public boolean t() {
-      return !this.o_();
+   public boolean u() {
+      return !this.p_();
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   protected void a(ajw.a $$0) {
       super.a($$0);
-      $$0.a(ck, false);
+      $$0.a(cb, false);
    }
 
    @Override
-   public void b(uk $$0) {
+   public void b(ud $$0) {
       super.b($$0);
-      if (this.gF()) {
+      if (this.gw()) {
          $$0.a("IsImmuneToZombification", true);
       }
 
-      $$0.a("TimeInOverworld", this.cu);
-      if (this.cv) {
+      $$0.a("TimeInOverworld", this.cl);
+      if (this.cm) {
          $$0.a("CannotBeHunted", true);
       }
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(ud $$0) {
       super.a($$0);
       this.w($$0.q("IsImmuneToZombification"));
-      this.cu = $$0.h("TimeInOverworld");
+      this.cl = $$0.h("TimeInOverworld");
       this.x($$0.q("CannotBeHunted"));
    }
 
    public void w(boolean $$0) {
-      this.ap().a(ck, $$0);
+      this.ap().a(cb, $$0);
    }
 
-   private boolean gF() {
-      return this.ap().a(ck);
+   private boolean gw() {
+      return this.ap().a(cb);
    }
 
-   public boolean x() {
-      return !this.dU().E_().b() && !this.gF() && !this.go();
+   public boolean y() {
+      return !this.dP().D_().b() && !this.gw() && !this.gf();
    }
 
    private void x(boolean $$0) {
-      this.cv = $$0;
+      this.cm = $$0;
    }
 
-   public boolean gE() {
-      return this.t() && !this.cv;
+   public boolean gv() {
+      return this.u() && !this.cm;
    }
 
    @Nullable
    @Override
-   public brp a(aqt $$0, brp $$1) {
-      cki $$2 = bsb.ab.a((dca)$$0);
+   public brq a(aqn $$0, brq $$1) {
+      cki $$2 = bsc.Z.a((daz)$$0);
       if ($$2 != null) {
-         $$2.gc();
+         $$2.fT();
       }
 
       return $$2;
    }
 
    @Override
-   public boolean gz() {
-      return !ckj.c(this) && super.gz();
+   public boolean gq() {
+      return !ckj.c(this) && super.gq();
    }
 
    @Override
-   public avq dj() {
-      return avq.f;
+   public avj de() {
+      return avj.f;
    }
 
    @Override
-   protected avn u() {
-      return this.dU().C ? null : ckj.b(this).orElse(null);
+   protected avh v() {
+      return this.dP().B ? null : ckj.b(this).orElse(null);
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.mJ;
+   protected avh d(bqp $$0) {
+      return avi.mt;
    }
 
    @Override
-   protected avn n_() {
-      return avo.mI;
+   protected avh o_() {
+      return avi.ms;
    }
 
    @Override
-   protected avn aT() {
-      return avo.no;
+   protected avh aP() {
+      return avi.mY;
    }
 
    @Override
-   protected avn aU() {
-      return avo.nn;
+   protected avh aQ() {
+      return avi.mX;
    }
 
    @Override
-   protected void b(ir $$0, dtc $$1) {
-      this.a(avo.mL, 0.15F, 1.0F);
+   protected void b(io $$0, drd $$1) {
+      this.a(avi.mv, 0.15F, 1.0F);
    }
 
    @Override
    protected void X() {
       super.X();
-      agi.a(this);
+      agb.a(this);
    }
 }

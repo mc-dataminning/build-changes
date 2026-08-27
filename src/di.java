@@ -1,11 +1,27 @@
-public interface di<T> extends cj {
-   @Override
-   default boolean a(cuh $$0) {
-      T $$1 = $$0.a(this.a());
-      return $$1 != null && this.a($$0, $$1);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+
+public record di(ct.d c) implements bs {
+   public static final MapCodec<di> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ct.d.d.optionalFieldOf("size", ct.d.c).forGetter(di::b)).apply($$0, di::new)
+   );
+
+   public static di a(ct.d $$0) {
+      return new di($$0);
    }
 
-   kd<T> a();
+   @Override
+   public boolean a(brw $$0, aqn $$1, @Nullable eum $$2) {
+      return $$0 instanceof cjn $$3 ? this.c.d($$3.gq()) : false;
+   }
 
-   boolean a(cuh var1, T var2);
+   @Override
+   public MapCodec<di> a() {
+      return bt.d;
+   }
+
+   public ct.d b() {
+      return this.c;
+   }
 }

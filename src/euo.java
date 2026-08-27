@@ -1,33 +1,46 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public record euo(Optional<bh> b) implements euu {
-   public static final Codec<euo> a = RecordCodecBuilder.create($$0 -> $$0.group(axu.a(bh.a, "predicate").forGetter(euo::c)).apply($$0, euo::new));
+public class euo extends evf {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   @Override
-   public euv b() {
-      return euw.o;
+   protected euo(euv $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
+   }
+
+   euo(euv $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
    }
 
    @Override
-   public Set<eud<?>> a() {
-      return ImmutableSet.of(eug.f, eug.c);
-   }
-
-   public boolean a(erp $$0) {
-      bqt $$1 = $$0.c(eug.c);
-      ewu $$2 = $$0.c(eug.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static euu.a a(bh.a $$0) {
-      return () -> new euo(Optional.of($$0.b()));
-   }
-
-   public Optional<bh> c() {
-      return this.b;
+   protected DoubleList a(it.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

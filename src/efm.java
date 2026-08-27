@@ -1,19 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efm<P extends efl> {
-   public static final efm<efo> a = a("two_layers_feature_size", efo.d);
-   public static final efm<efn> b = a("three_layers_feature_size", efn.d);
-   private final Codec<P> c;
+public record efm(ix<ctl> c, efo d) {
+   public static final Codec<efm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akk.a(lf.G).fieldOf("display").forGetter($$0x -> $$0x.c), efo.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, efm::new)
+   );
+   public static final Codec<ix<efm>> b = akj.a(lf.aF, a);
 
-   private static <P extends efl> efm<P> a(String $$0, Codec<P> $$1) {
-      return jn.a(lh.aa, $$0, new efm<>($$1));
-   }
-
-   private efm(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
+   public ix<ctl> a() {
       return this.c;
+   }
+
+   public efo b() {
+      return this.d;
    }
 }

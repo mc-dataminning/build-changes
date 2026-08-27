@@ -1,16 +1,22 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dhw {
-   @Nullable
-   dqc a(ir var1, dtc var2);
+public abstract class dhw extends dea {
+   public static final drx aE = drt.R;
 
-   @Nullable
-   default <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return null;
+   protected dhw(drc.d $$0) {
+      super($$0);
    }
 
-   @Nullable
-   default <T extends dqc> dxx a(aqt $$0, T $$1) {
-      return $$1 instanceof dxx.b<?> $$2 ? $$2.c() : null;
+   @Override
+   protected abstract MapCodec<? extends dhw> a();
+
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
    }
 }

@@ -1,81 +1,63 @@
-import com.mojang.logging.LogUtils;
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class azj {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile z f;
+public class azj implements awu {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   public azj(String $$0) {
+   public azj(int $$0) {
       this.b = $$0;
    }
 
-   public void a() {
-      boolean $$0 = false;
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
+   }
 
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
 
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
 
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
-      }
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
    }
 
-   public static z a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azj::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+   @Override
+   public awu d() {
+      return this;
    }
 }

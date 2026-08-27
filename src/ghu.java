@@ -1,176 +1,185 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
+import org.slf4j.Logger;
 
-public class ghu implements ghg<drr> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = aym.h(16);
-   private static final float d = 0.6666667F;
-   private static final ewu e = new ewu(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dup, ghu.a> f;
-   private final fhy g;
+public class ghu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bsc<?>, ght<?>> b = new Object2ObjectOpenHashMap();
+   private static final Map<gov.a, ght<gbj>> c = Map.of(gov.a.b, $$0 -> new gmy($$0, false), gov.a.a, $$0 -> new gmy($$0, true));
 
-   public ghu(ghh.a $$0) {
-      this.f = dup.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new ghu.a($$0.a(fyr.a($$1)))));
-      this.g = $$0.f();
+   private static <T extends brw> void a(bsc<? extends T> $$0, ght<T> $$1) {
+      b.put($$0, $$1);
    }
 
-   public void a(drr $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
-      dtc $$6 = $$0.n();
-      dmq $$7 = (dmq)$$6.b();
-      dup $$8 = dmq.a($$7);
-      ghu.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof dnl;
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(drr $$0, fbc $$1, gfg $$2, int $$3, int $$4, dtc $$5, dmq $$6, dup $$7, fwn $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.az_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.az_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(fbc $$0, float $$1, dtc $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dnl)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   void a(fbc $$0, gfg $$1, int $$2, int $$3, dup $$4, fwn $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      gtc $$7 = this.a($$4);
-      fbg $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(fbc $$0, int $$1, int $$2, fwn $$3, fbg $$4) {
-      ghu.a $$5 = (ghu.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   gtc a(dup $$0) {
-      return gfv.a($$0);
-   }
-
-   void a(ir $$0, drs $$1, fbc $$2, gfg $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      axy[] $$10 = $$1.a(fgj.Q().aT(), $$1x -> {
-         List<axy> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? axy.a : $$2x.get(0);
+   public static Map<bsc<?>, ghs<?>> a(ght.a $$0) {
+      Builder<bsc<?>, ghs<?>> $$1 = ImmutableMap.builder();
+      b.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create model for " + le.g.b((bsc<?>)$$2), var5);
+         }
       });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
+      return $$1.build();
+   }
 
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         axy $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fhy.a.c, 0, $$13);
+   public static Map<gov.a, ghs<? extends cly>> b(ght.a $$0) {
+      Builder<gov.a, ghs<? extends cly>> $$1 = ImmutableMap.builder();
+      c.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
+         }
+      });
+      return $$1.build();
+   }
+
+   public static boolean a() {
+      boolean $$0 = true;
+
+      for (bsc<?> $$1 : le.g) {
+         if ($$1 != bsc.by && !b.containsKey($$1)) {
+            a.warn("No renderer registered for {}", le.g.b($$1));
+            $$0 = false;
          }
       }
 
-      $$2.b();
+      return !$$0;
    }
 
-   private void a(fbc $$0, boolean $$1, ewu $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
-   }
-
-   ewu d() {
-      return e;
-   }
-
-   static boolean a(ir $$0, int $$1) {
-      if ($$1 == csy.p.g()) {
-         return true;
-      } else {
-         fgj $$2 = fgj.Q();
-         gei $$3 = $$2.s;
-         if ($$3 != null && $$2.m.aA().a() && $$3.gL()) {
-            return true;
-         } else {
-            brv $$4 = $$2.ao();
-            return $$4 != null && $$4.f(ewu.b($$0)) < (double)c;
-         }
-      }
-   }
-
-   public static int a(drs $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == csy.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axw.b.b($$1) * 0.4);
-         int $$4 = (int)((double)axw.b.c($$1) * 0.4);
-         int $$5 = (int)((double)axw.b.d($$1) * 0.4);
-         return axw.b.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static ghu.a a(fyo $$0, dup $$1) {
-      return new ghu.a($$0.a(fyr.a($$1)));
-   }
-
-   public static fyy f() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a("sign", fyx.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fyu.a);
-      $$1.a("stick", fyx.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fyu.a);
-      return fyy.a($$0, 64, 32);
-   }
-
-   public static final class a extends fwn {
-      public final fys a;
-      public final fys b;
-
-      public a(fys $$0) {
-         super(gfo::e);
-         this.a = $$0;
-         this.b = $$0.b("stick");
-      }
-
-      @Override
-      public void a(fbc $$0, fbg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   static {
+      a(bsc.a, ggp::new);
+      a(bsc.b, gjb::new);
+      a(bsc.c, ggq::new);
+      a(bsc.d, ggr::new);
+      a(bsc.e, gkh::new);
+      a(bsc.f, ggt::new);
+      a(bsc.g, ggu::new);
+      a(bsc.h, ggv::new);
+      a(bsc.i, ggw::new);
+      a(bsc.j, ghi.a::new);
+      a(bsc.k, $$0 -> new ggx($$0, false));
+      a(bsc.l, ggy::new);
+      a(bsc.m, ggz::new);
+      a(bsc.n, gks::new);
+      a(bsc.p, ghb::new);
+      a(bsc.o, $$0 -> new gha($$0, fvv.v));
+      a(bsc.q, ghc::new);
+      a(bsc.r, $$0 -> new ggx($$0, true));
+      a(bsc.s, $$0 -> new giy<>($$0, fvv.y));
+      a(bsc.t, ghe::new);
+      a(bsc.u, ghf::new);
+      a(bsc.v, $$0 -> new giy<>($$0, fvv.B));
+      a(bsc.w, ghg::new);
+      a(bsc.x, ghh::new);
+      a(bsc.y, ghj::new);
+      a(bsc.z, $$0 -> new ghd<>($$0, 0.87F, fvv.N));
+      a(bsc.A, ghk::new);
+      a(bsc.B, ghl::new);
+      a(bsc.C, gkf::new);
+      a(bsc.D, ghm::new);
+      a(bsc.H, ghp::new);
+      a(bsc.I, ghq::new);
+      a(bsc.F, gho::new);
+      a(bsc.G, gkf::new);
+      a(bsc.E, ghn::new);
+      a(bsc.J, ghw::new);
+      a(bsc.K, ghv::new);
+      a(bsc.L, gkf::new);
+      a(bsc.M, ghx::new);
+      a(bsc.N, $$0 -> new gkf<>($$0, 1.0F, true));
+      a(bsc.O, ghy::new);
+      a(bsc.ak, $$0 -> new gkf<>($$0, 3.0F, true));
+      a(bsc.P, ghz::new);
+      a(bsc.bz, gia::new);
+      a(bsc.Q, gib::new);
+      a(bsc.R, gic::new);
+      a(bsc.S, $$0 -> new giy<>($$0, fvv.af));
+      a(bsc.T, gid::new);
+      a(bsc.U, $$0 -> new gie($$0, 6.0F));
+      a(bsc.V, giq::new);
+      a(bsc.W, $$0 -> new gif($$0, new fuy<>($$0.a(fvv.ak))));
+      a(bsc.X, gig::new);
+      a(bsc.Y, gih::new);
+      a(bsc.Z, gii::new);
+      a(bsc.aa, $$0 -> new giy<>($$0, fvv.ao));
+      a(bsc.ab, gij::new);
+      a(bsc.ac, gil::new);
+      a(bsc.ad, gin::new);
+      a(bsc.ae, gjb::new);
+      a(bsc.af, gio::new);
+      a(bsc.ag, gip::new);
+      a(bsc.ah, ghi.b::new);
+      a(bsc.ai, giq::new);
+      a(bsc.aj, gjd::new);
+      a(bsc.al, gis::new);
+      a(bsc.am, git::new);
+      a(bsc.an, $$0 -> new giv($$0, fvv.ax));
+      a(bsc.ao, giw::new);
+      a(bsc.ap, gix::new);
+      a(bsc.aq, gjb::new);
+      a(bsc.ar, $$0 -> new giy<>($$0, fvv.aB));
+      a(bsc.as, gja::new);
+      a(bsc.at, $$0 -> new ghd<>($$0, 0.92F, fvv.aD));
+      a(bsc.au, gjc::new);
+      a(bsc.av, gje::new);
+      a(bsc.aw, gjf::new);
+      a(bsc.ax, gjg::new);
+      a(bsc.ay, gjh::new);
+      a(bsc.az, gji::new);
+      a(bsc.aA, $$0 -> new gjj($$0, fvv.aJ, fvv.aO, fvv.aP, false));
+      a(bsc.aB, $$0 -> new gjj($$0, fvv.aK, fvv.aL, fvv.aM, false));
+      a(bsc.aC, gjk::new);
+      a(bsc.aD, gjl::new);
+      a(bsc.aE, gkf::new);
+      a(bsc.aF, gjm::new);
+      a(bsc.aG, gjn::new);
+      a(bsc.aH, gjo::new);
+      a(bsc.aI, gjq::new);
+      a(bsc.aJ, gjr::new);
+      a(bsc.aK, gjt::new);
+      a(bsc.aL, gjs::new);
+      a(bsc.aM, gju::new);
+      a(bsc.aN, gjv::new);
+      a(bsc.aO, $$0 -> new gkm($$0, fvv.bo));
+      a(bsc.aP, gjw::new);
+      a(bsc.aQ, $$0 -> new gkf<>($$0, 0.75F, true));
+      a(bsc.aR, gjx::new);
+      a(bsc.aT, gkf::new);
+      a(bsc.aS, gjy::new);
+      a(bsc.aU, $$0 -> new giy<>($$0, fvv.bw));
+      a(bsc.aV, gjz::new);
+      a(bsc.aW, gka::new);
+      a(bsc.aX, $$0 -> new gkb<>($$0, new fuy<>($$0.a(fvv.by))));
+      a(bsc.aY, gkc::new);
+      a(bsc.aZ, gkd::new);
+      a(bsc.ba, gke::new);
+      a(bsc.bb, ghi.c::new);
+      a(bsc.bc, gkj::new);
+      a(bsc.bd, gki::new);
+      a(bsc.be, $$0 -> new giv($$0, fvv.bH));
+      a(bsc.bf, gkg::new);
+      a(bsc.bg, gkk::new);
+      a(bsc.bh, gkl::new);
+      a(bsc.bi, gkn::new);
+      a(bsc.bj, gko::new);
+      a(bsc.bk, gkp::new);
+      a(bsc.bm, gkr::new);
+      a(bsc.bl, gkq::new);
+      a(bsc.bn, gks::new);
+      a(bsc.bo, gkt::new);
+      a(bsc.bp, gku::new);
+      a(bsc.bq, gkv::new);
+      a(bsc.br, gkw::new);
+      a(bsc.bs, gkx::new);
+      a(bsc.bt, gky::new);
+      a(bsc.bu, gkz::new);
+      a(bsc.bv, $$0 -> new gkm($$0, fvv.ch));
+      a(bsc.bw, gla::new);
+      a(bsc.bx, $$0 -> new gjj($$0, fvv.cn, fvv.co, fvv.cp, true));
    }
 }

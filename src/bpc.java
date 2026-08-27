@@ -1,44 +1,16 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class bpc extends bpf {
-   public static final bpc a = new bpc(0);
-   public static final Codec<bpc> b = axu.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bpc::new, bpc::d);
-   private final int f;
+public interface bpc<P extends bpb> {
+   bpc<boy> a = a("constant", boy.b);
+   bpc<bph> b = a("uniform", bph.a);
+   bpc<bot> c = a("biased_to_bottom", bot.a);
+   bpc<bou> d = a("clamped", bou.a);
+   bpc<bpi> e = a("weighted_list", bpi.a);
+   bpc<bow> f = a("clamped_normal", bow.a);
 
-   public static bpc a(int $$0) {
-      return $$0 == 0 ? a : new bpc($$0);
-   }
+   MapCodec<P> codec();
 
-   private bpc(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(ayt $$0) {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bpg<?> c() {
-      return bpg.a;
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+   static <P extends bpb> bpc<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.M, $$0, () -> $$1);
    }
 }

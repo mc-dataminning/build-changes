@@ -1,37 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ayu {
-   public static final Codec<ayu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), axu.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, ayu::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<akt> f;
+public class ayu<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   @Nullable
+   private V c;
 
-   private ayu(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   public ayu(Function<K, V> $$0) {
+      this.a = $$0;
    }
 
-   public Predicate<String> a() {
+   public V a(K $$0) {
+      if (this.c == null || !Objects.equals(this.b, $$0)) {
+         this.c = this.a.apply($$0);
+         this.b = $$0;
+      }
+
       return this.c;
-   }
-
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<akt> c() {
-      return this.f;
    }
 }

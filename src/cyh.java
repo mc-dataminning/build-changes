@@ -1,72 +1,61 @@
-public abstract class cyh implements cza<bpt> {
-   protected final czf<?> a;
-   protected final cyn b;
-   protected final String c;
-   protected final cyv d;
-   protected final cuh e;
-   protected final float f;
-   protected final int g;
-
-   public cyh(czf<?> $$0, String $$1, cyn $$2, cyv $$3, cuh $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public class cyh extends cxo {
+   public cyh(cxm $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(bpt $$0, dca $$1) {
-      return this.d.a($$0.a(0));
+   public boolean a(cpl $$0, daz $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ctq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (dea.a($$5.g()) instanceof dkz) {
+               $$2++;
+            } else {
+               if (!($$5.g() instanceof csk)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
    }
 
-   @Override
-   public cuh a(bpt $$0, jc.a $$1) {
-      return this.e.r();
+   public ctq a(cpl $$0, iz.a $$1) {
+      ctq $$2 = ctq.i;
+      csk $$3 = (csk)ctt.ri;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ctq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            ctl $$6 = $$5.g();
+            if (dea.a($$6) instanceof dkz) {
+               $$2 = $$5;
+            } else if ($$6 instanceof csk) {
+               $$3 = (csk)$$6;
+            }
+         }
+      }
+
+      dea $$7 = dkz.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public jj<cyv> a() {
-      jj<cyv> $$0 = jj.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cuh a(jc.a $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public czf<?> e() {
-      return this.a;
-   }
-
-   public cyn f() {
-      return this.b;
-   }
-
-   public interface a<T extends cyh> {
-      T create(String var1, cyn var2, cyv var3, cuh var4, float var5, int var6);
+   public cya<?> ap_() {
+      return cya.m;
    }
 }

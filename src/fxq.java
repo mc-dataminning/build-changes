@@ -1,33 +1,85 @@
-public class fxq<T extends brv> extends fvz<T> {
-   private final fys a;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   public fxq(fys $$0) {
-      this.a = $$0;
+public interface fxq {
+   static fxq a(fxw $$0, UserApiService $$1) {
+      return new fxq.b($$0, $$1);
    }
 
-   public static fyy b() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a("cube", fyx.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyu.a);
-      return fyy.a($$0, 64, 32);
+   CompletableFuture<Unit> a(UUID var1, fxy var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public static fyy c() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a("cube", fyx.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyu.a);
-      $$1.a("right_eye", fyx.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fyu.a);
-      $$1.a("left_eye", fyx.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fyu.a);
-      $$1.a("mouth", fyx.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fyu.a);
-      return fyy.a($$0, 64, 32);
+   public static class a extends xx {
+      public a(wx $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
+   public static record b(fxw a, UserApiService b) implements fxq {
+      private static final wx c = wx.c("gui.abuseReport.send.service_unavailable");
+      private static final wx d = wx.c("gui.abuseReport.send.http_error");
+      private static final wx e = wx.c("gui.abuseReport.send.json_error");
 
-   @Override
-   public fys a() {
-      return this.a;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fxy $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wx $$5 = this.a(var7);
+               throw new CompletionException(new fxq.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wx $$7 = this.a(var8);
+               throw new CompletionException(new fxq.a($$7, var8));
+            }
+         }, ac.h());
+      }
+
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private wx a(MinecraftClientHttpException $$0) {
+         return wx.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wx a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fxw c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

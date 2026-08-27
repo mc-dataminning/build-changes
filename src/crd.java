@@ -1,22 +1,21 @@
-public class crd implements cpq {
-   private final int[] a;
+import java.util.List;
 
-   public crd(int $$0) {
-      this.a = new int[$$0];
+public class crd extends ctl {
+   private final dea a;
+
+   public crd(dea $$0, ctl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public String a() {
+      return this.a.g();
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
+   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

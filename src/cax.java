@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cax extends cay {
-   public cax(bsw $$0, double $$1) {
-      super($$0, $$1);
+public class cax extends bzo {
+   private final clg a;
+
+   public cax(clg $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bzo.a.c, bzo.a.a));
    }
 
-   @Nullable
    @Override
-   protected ewu h() {
-      ewu $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      ewu $$2 = cdk.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cdg.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cly $$0 = this.a.gp();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cb != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.K().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

@@ -1,22 +1,32 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface awz<T> {
-   awz.a accept(T var1);
+public record awz(int b) {
+   private static final String c = "#";
+   public static final Codec<awz> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new awz($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
+      }
+   }, awz::b);
 
-   static <T> awz<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return awz.a.a;
-      };
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public String toString() {
+      return this.b();
+   }
 
-      public boolean a() {
-         return this == b;
-      }
+   public int a() {
+      return this.b;
    }
 }

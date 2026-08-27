@@ -1,35 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record evo(float c) implements evq {
-   public static final Codec<evo> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(evo::c)).apply($$0, evo::new));
-   public static final Codec<evo> b = Codec.FLOAT.xmap(evo::new, evo::c);
+public interface evo {
+   int a();
 
-   @Override
-   public evp b() {
-      return evr.b;
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   @Override
-   public float b(erp $$0) {
-      return this.c;
+   default int b() {
+      return this.b(1);
    }
 
-   public static evo a(float $$0) {
-      return new evo($$0);
+   default void c() {
+      this.a(0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((evo)$$0).c, this.c) == 0 : false;
-      }
-   }
+   boolean d();
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
-   }
+   void e();
+
+   void f();
+
+   @Nullable
+   wx g();
+
+   void a(@Nullable wx var1);
+
+   void a(@Nullable yn var1);
 }

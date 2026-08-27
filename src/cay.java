@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cay extends bzo {
+   private final bsz a;
 
-public class cay extends cai {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cay(bsw $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cay(bsz $$0) {
+      this.a = $$0;
    }
 
-   public cay(bsw $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ewu h() {
-      if (this.b.bl()) {
-         ewu $$0 = cdl.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.et().i() >= this.j ? cdl.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awc.a);
+   }
+
+   @Override
+   public void c() {
+      io $$0 = null;
+
+      for (io $$2 : io.b(
+         ayf.a(this.a.du() - 2.0), ayf.a(this.a.dw() - 2.0), ayf.a(this.a.dA() - 2.0), ayf.a(this.a.du() + 2.0), this.a.dv(), ayf.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awc.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

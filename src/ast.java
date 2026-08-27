@@ -1,144 +1,181 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ast implements asp {
-   private static final Logger c = LogUtils.getLogger();
-   private final aso d;
-   private final ash e;
-   private final Set<String> f;
-   private final List<Path> g;
-   private final Map<asr, List<Path>> h;
+public class ast extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new ass();
+   private final asr f;
 
-   ast(aso $$0, ash $$1, Set<String> $$2, List<Path> $$3, Map<asr, List<Path>> $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   ast(String $$0, ast.b $$1) {
+      this.d = new asq($$0);
+      this.f = a($$1, this, "", null);
    }
 
-   @Nullable
-   @Override
-   public atv<InputStream> a(String... $$0) {
-      v.a($$0);
-      List<String> $$1 = List.of($$0);
-
-      for (Path $$2 : this.g) {
-         Path $$3 = v.a($$2, $$1);
-         if (Files.exists($$3) && ass.a($$3)) {
-            return atv.create($$3);
-         }
-      }
-
-      return null;
-   }
-
-   public void a(asr $$0, akt $$1, Consumer<Path> $$2) {
-      v.c($$1.a()).get().ifLeft($$3 -> {
-         String $$4 = $$1.b();
-
-         for (Path $$5 : this.h.get($$0)) {
-            Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   private static asr a(ast.b $$0, ast $$1, String $$2, @Nullable asr $$3) {
+      Object2ObjectOpenHashMap<String, asr> $$4 = new Object2ObjectOpenHashMap();
+      asr $$5 = new asr($$1, $$2, $$3, new asu.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new asr($$1, $$3x, $$5, new asu.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
    }
 
    @Override
-   public void a(asr $$0, String $$1, String $$2, asp.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         List<Path> $$4 = this.h.get($$0);
-         int $$5 = $$4.size();
-         if ($$5 == 1) {
-            a($$3, $$1, $$4.get(0), $$3x);
-         } else if ($$5 > 1) {
-            Map<akt, atv<InputStream>> $$6 = new HashMap<>();
-
-            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
-               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
-            }
-
-            Path $$8 = $$4.get($$5 - 1);
-            if ($$6.isEmpty()) {
-               a($$3, $$1, $$8, $$3x);
-            } else {
-               a($$6::putIfAbsent, $$1, $$8, $$3x);
-               $$6.forEach($$3);
-            }
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   private static void a(asp.a $$0, String $$1, Path $$2, List<String> $$3) {
-      Path $$4 = $$2.resolve($$1);
-      ass.a($$1, $$4, $$3, $$0);
-   }
-
-   @Nullable
-   @Override
-   public atv<InputStream> a(asr $$0, akt $$1) {
-      return (atv<InputStream>)v.c($$1.a()).get().map($$2 -> {
-         String $$3 = $$1.b();
-
-         for (Path $$4 : this.h.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
-            if (Files.exists($$5) && ass.a($$5)) {
-               return atv.create($$5);
-            }
-         }
-
-         return null;
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$1, $$1x.message());
-         return null;
-      });
-   }
-
-   @Override
-   public Set<String> a(asr $$0) {
-      return this.f;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(atc<T> $$0) {
-      atv<InputStream> $$1 = this.a("pack.mcmeta");
-      if ($$1 != null) {
-         try (InputStream $$2 = $$1.get()) {
-            T $$3 = asg.a($$0, $$2);
-            if ($$3 != null) {
-               return $$3;
-            }
-
-            return this.e.a($$0);
-         } catch (IOException var8) {
-         }
-      }
-
-      return this.e.a($$0);
-   }
-
-   @Override
-   public aso a() {
-      return this.d;
+   public FileSystemProvider provider() {
+      return this.e;
    }
 
    @Override
    public void close() {
    }
 
-   public aug d() {
-      return $$0 -> Optional.ofNullable(this.a(asr.a, $$0)).map($$0x -> new aub(this, $$0x));
+   @Override
+   public boolean isOpen() {
+      return true;
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public String getSeparator() {
+      return "/";
+   }
+
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
+      }
+
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         asr $$4 = this.f;
+
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$4 = $$4.a($$5);
+         }
+
+         return $$4;
+      } else {
+         asr $$6 = null;
+
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$6 = new asr(this, $$7, $$6, asu.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
+         } else {
+            return $$6;
+         }
+      }
+   }
+
+   @Override
+   public PathMatcher getPathMatcher(String $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
+      return this.d;
+   }
+
+   public asr b() {
+      return this.f;
+   }
+
+   public static ast.a c() {
+      return new ast.a();
+   }
+
+   public static class a {
+      private final ast.b a = new ast.b();
+
+      public ast.a a(List<String> $$0, String $$1, Path $$2) {
+         ast.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new ast.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public ast.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
+         }
+      }
+
+      public FileSystem a(String $$0) {
+         return new ast($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, ast.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
+      }
    }
 }

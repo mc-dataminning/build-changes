@@ -1,50 +1,57 @@
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cvp extends cuc implements cth {
-   public static final int a = 5;
-   public static final float b = 3.0F;
+public class cvp implements coi {
+   @Nullable
+   private final String a;
+   private final List<bre> b;
+   private col c = coo.g;
 
-   public cvp(cuc.a $$0) {
-      super($$0);
-      dhi.a(this, crt.a);
+   public cvp(bre... $$0) {
+      this(null, $$0);
+   }
+
+   public cvp(@Nullable String $$0, bre... $$1) {
+      this.a = $$0;
+      this.b = List.of($$1);
+   }
+
+   public cvp a(coj... $$0) {
+      this.c = coo.e.a($$0);
+      return this;
    }
 
    @Override
-   public String i(cuh $$0) {
-      csy $$1 = $$0.a(ke.X);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   public col i() {
+      return this.c;
    }
 
-   @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      crz.a($$0, $$2);
+   public static String a(Optional<ix<cvp>> $$0, String $$1) {
+      if ($$0.isPresent()) {
+         String $$2 = $$0.get().a().a;
+         if ($$2 != null) {
+            return $$1 + $$2;
+         }
+      }
+
+      String $$3 = $$0.flatMap(ix::e).map($$0x -> $$0x.a().a()).orElse("empty");
+      return $$1 + $$3;
    }
 
-   @Override
-   public cwk c(cuh $$0) {
-      return cwk.d;
+   public List<bre> a() {
+      return this.b;
    }
 
-   @Override
-   public int b(cuh $$0) {
-      return 72000;
-   }
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         for (bre $$0 : this.b) {
+            if ($$0.c().a().a()) {
+               return true;
+            }
+         }
+      }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqb.b($$3);
-   }
-
-   @Override
-   public boolean a(cuh $$0, cuh $$1) {
-      return $$1.a(awm.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bsc k() {
-      return bsc.b;
+      return false;
    }
 }

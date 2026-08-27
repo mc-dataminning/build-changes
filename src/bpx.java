@@ -1,49 +1,37 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class bpx<T> {
+   private final bpw a;
+   private final T b;
 
-public enum bpx implements azg {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final azg.a<bpx> e = azg.a(bpx::values);
-   private static final IntFunction<bpx> f = axd.a(bpx::a, values(), axd.a.b);
-   private final int g;
-   private final String h;
-
-   private bpx(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public bpx(bpw $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int a() {
-      return this.g;
+   public bpw a() {
+      return this.a;
    }
 
-   public xe b() {
-      return xe.c("options.difficulty." + this.h);
+   public T b() {
+      return this.b;
    }
 
-   public xe d() {
-      return xe.c("options.difficulty." + this.h + ".info");
+   public static <T> bpx<T> a(T $$0) {
+      return new bpx<>(bpw.a, $$0);
    }
 
-   public static bpx a(int $$0) {
-      return f.apply($$0);
+   public static <T> bpx<T> b(T $$0) {
+      return new bpx<>(bpw.b, $$0);
    }
 
-   @Nullable
-   public static bpx a(String $$0) {
-      return e.a($$0);
+   public static <T> bpx<T> c(T $$0) {
+      return new bpx<>(bpw.d, $$0);
    }
 
-   public String e() {
-      return this.h;
+   public static <T> bpx<T> d(T $$0) {
+      return new bpx<>(bpw.e, $$0);
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public static <T> bpx<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

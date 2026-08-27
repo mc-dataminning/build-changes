@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cpf {
+   int a(int var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface cpf {
+   void a(int var1, int var2);
+
+   int a();
 }

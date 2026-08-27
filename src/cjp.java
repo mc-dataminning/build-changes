@@ -1,39 +1,34 @@
 import javax.annotation.Nullable;
 
-public class cjp extends cjd {
-   private static final ajy<Byte> b = akc.a(cjp.class, aka.a);
+public class cjp extends cje {
+   private static final ajs<Byte> b = ajw.a(cjp.class, aju.a);
    private static final float c = 0.1F;
 
-   public cjp(bsb<? extends cjp> $$0, dca $$1) {
+   public cjp(bsc<? extends cjp> $$0, daz $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean dW() {
-      return true;
+   protected void z() {
+      this.bS.a(1, new bzi(this));
+      this.bS.a(2, new byv<>(this, cfp.class, 6.0F, 1.0, 1.2, $$0 -> !((cfp)$$0).u()));
+      this.bS.a(3, new bzu(this, 0.4F));
+      this.bS.a(4, new cjp.a(this));
+      this.bS.a(5, new cbb(this, 0.8));
+      this.bS.a(6, new bzw(this, cly.class, 8.0F));
+      this.bS.a(6, new caj(this));
+      this.bT.a(1, new cbg(this));
+      this.bT.a(2, new cjp.c<>(this, cly.class));
+      this.bT.a(3, new cjp.c<>(this, ces.class));
    }
 
    @Override
-   protected void y() {
-      this.cb.a(1, new bzf(this));
-      this.cb.a(2, new bys<>(this, cfn.class, 6.0F, 1.0, 1.2, $$0 -> !((cfn)$$0).t()));
-      this.cb.a(3, new bzr(this, 0.4F));
-      this.cb.a(4, new cjp.a(this));
-      this.cb.a(5, new cay(this, 0.8));
-      this.cb.a(6, new bzt(this, cly.class, 8.0F));
-      this.cb.a(6, new cag(this));
-      this.cc.a(1, new cbd(this));
-      this.cc.a(2, new cjp.c<>(this, cly.class));
-      this.cc.a(3, new cjp.c<>(this, ceq.class));
+   protected ccc b(daz $$0) {
+      return new ccd(this, $$0);
    }
 
    @Override
-   protected cbz b(dca $$0) {
-      return new cca(this, $$0);
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
+   protected void a(ajw.a $$0) {
       super.a($$0);
       $$0.a(b, (byte)0);
    }
@@ -41,76 +36,76 @@ public class cjp extends cjd {
    @Override
    public void l() {
       super.l();
-      if (!this.dU().C) {
-         this.w(this.R);
+      if (!this.dP().B) {
+         this.w(this.Q);
       }
    }
 
-   public static btu.a t() {
-      return cjd.gG().a(btv.q, 16.0).a(btv.r, 0.3F);
+   public static btx.a u() {
+      return cje.gv().a(bty.q, 16.0).a(bty.r, 0.3F);
    }
 
    @Override
-   protected avn u() {
-      return avo.zg;
+   protected avh v() {
+      return avi.yI;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.zi;
+   protected avh d(bqp $$0) {
+      return avi.yK;
    }
 
    @Override
-   protected avn n_() {
-      return avo.zh;
+   protected avh o_() {
+      return avi.yJ;
    }
 
    @Override
-   protected void b(ir $$0, dtc $$1) {
-      this.a(avo.zj, 0.15F, 1.0F);
+   protected void b(io $$0, drd $$1) {
+      this.a(avi.yL, 0.15F, 1.0F);
    }
 
    @Override
-   public boolean p_() {
-      return this.x();
+   public boolean q_() {
+      return this.y();
    }
 
    @Override
-   public void a(dtc $$0, ewu $$1) {
-      if (!$$0.a(dfe.cc)) {
+   public void a(drd $$0, eum $$1) {
+      if (!$$0.a(dec.bs)) {
          super.a($$0, $$1);
       }
    }
 
    @Override
-   public boolean c(brh $$0) {
-      return $$0.a(brj.s) ? false : super.c($$0);
+   public boolean c(bre $$0) {
+      return $$0.a(brg.s) ? false : super.c($$0);
    }
 
-   public boolean x() {
-      return (this.as.a(b) & 1) != 0;
+   public boolean y() {
+      return (this.ao.a(b) & 1) != 0;
    }
 
    public void w(boolean $$0) {
-      byte $$1 = this.as.a(b);
+      byte $$1 = this.ao.a(b);
       if ($$0) {
          $$1 = (byte)($$1 | 1);
       } else {
          $$1 = (byte)($$1 & -2);
       }
 
-      this.as.a(b, $$1);
+      this.ao.a(b, $$1);
    }
 
    @Nullable
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
       $$3 = super.a($$0, $$1, $$2, $$3);
-      ayt $$4 = $$0.F_();
+      aym $$4 = $$0.E_();
       if ($$4.a(100) == 0) {
-         cjm $$5 = bsb.aP.a(this.dU());
+         cjm $$5 = bsc.aN.a(this.dP());
          if ($$5 != null) {
-            $$5.b(this.dz(), this.dB(), this.dF(), this.dK(), 0.0F);
+            $$5.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
             $$5.a($$0, $$1, $$2, null);
             $$5.n(this);
          }
@@ -118,15 +113,15 @@ public class cjp extends cjd {
 
       if ($$3 == null) {
          $$3 = new cjp.b();
-         if ($$0.al() == bpx.d && $$4.i() < 0.1F * $$1.d()) {
+         if ($$0.ak() == bpt.d && $$4.i() < 0.1F * $$1.d()) {
             ((cjp.b)$$3).a($$4);
          }
       }
 
       if ($$3 instanceof cjp.b $$6) {
-         ja<brf> $$7 = $$6.a;
+         ix<brc> $$7 = $$6.a;
          if ($$7 != null) {
-            this.b(new brh($$7, -1));
+            this.b(new bre($$7, -1));
          }
       }
 
@@ -134,24 +129,24 @@ public class cjp extends cjd {
    }
 
    @Override
-   public ewu l(brv $$0) {
-      return $$0.do() <= this.do() ? new ewu(0.0, 0.3125 * (double)this.em(), 0.0) : super.l($$0);
+   public eum l(brw $$0) {
+      return $$0.dj() <= this.dj() ? new eum(0.0, 0.3125 * (double)this.ee(), 0.0) : super.l($$0);
    }
 
-   static class a extends bzv {
+   static class a extends bzy {
       public a(cjp $$0) {
          super($$0, 1.0, true);
       }
 
       @Override
       public boolean a() {
-         return super.a() && !this.a.bX();
+         return super.a() && !this.a.bS();
       }
 
       @Override
       public boolean b() {
-         float $$0 = this.a.by();
-         if ($$0 >= 0.5F && this.a.et().a(100) == 0) {
+         float $$0 = this.a.bt();
+         if ($$0 >= 0.5F && this.a.el().a(100) == 0) {
             this.a.h(null);
             return false;
          } else {
@@ -160,32 +155,32 @@ public class cjp extends cjd {
       }
    }
 
-   public static class b implements btg {
+   public static class b implements btj {
       @Nullable
-      public ja<brf> a;
+      public ix<brc> a;
 
-      public void a(ayt $$0) {
+      public void a(aym $$0) {
          int $$1 = $$0.a(5);
          if ($$1 <= 1) {
-            this.a = brj.a;
+            this.a = brg.a;
          } else if ($$1 <= 2) {
-            this.a = brj.e;
+            this.a = brg.e;
          } else if ($$1 <= 3) {
-            this.a = brj.j;
+            this.a = brg.j;
          } else if ($$1 <= 4) {
-            this.a = brj.n;
+            this.a = brg.n;
          }
       }
    }
 
-   static class c<T extends bso> extends cbe<T> {
+   static class c<T extends bsq> extends cbh<T> {
       public c(cjp $$0, Class<T> $$1) {
          super($$0, $$1, true);
       }
 
       @Override
       public boolean a() {
-         float $$0 = this.e.by();
+         float $$0 = this.e.bt();
          return $$0 >= 0.5F ? false : super.a();
       }
    }

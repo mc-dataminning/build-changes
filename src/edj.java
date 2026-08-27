@@ -1,60 +1,34 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edj extends eca<efb> {
-   public edj(Codec<efb> $$0) {
-      super($$0);
+public class edj extends edp {
+   public static final MapCodec<edj> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, edj::new));
+
+   public edj(bpb $$0, bpb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a(ecc<efb> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         efb $$3 = $$0.f();
-         ayt $$4 = $$0.d();
-         dml $$5 = dml.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         ir $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, dfe.sf.n(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ir $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), iw.b)) {
-               $$1.a($$14, dfe.sg.n().a(dmk.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
-      }
+   protected edq<?> a() {
+      return edq.d;
    }
 
-   private boolean a(dcb $$0, ir $$1) {
-      dtc $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dmg) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(dfe.al) || !$$2.u().b()) ? false : iw.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
-      }
+   @Override
+   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      io $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(aym $$0, int $$1, ecz $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,71 +1,59 @@
-public class dzd {
-   public static final aks<eoh.a> a = a("temperature");
-   public static final aks<eoh.a> b = a("vegetation");
-   public static final aks<eoh.a> c = a("continentalness");
-   public static final aks<eoh.a> d = a("erosion");
-   public static final aks<eoh.a> e = a("temperature_large");
-   public static final aks<eoh.a> f = a("vegetation_large");
-   public static final aks<eoh.a> g = a("continentalness_large");
-   public static final aks<eoh.a> h = a("erosion_large");
-   public static final aks<eoh.a> i = a("ridge");
-   public static final aks<eoh.a> j = a("offset");
-   public static final aks<eoh.a> k = a("aquifer_barrier");
-   public static final aks<eoh.a> l = a("aquifer_fluid_level_floodedness");
-   public static final aks<eoh.a> m = a("aquifer_lava");
-   public static final aks<eoh.a> n = a("aquifer_fluid_level_spread");
-   public static final aks<eoh.a> o = a("pillar");
-   public static final aks<eoh.a> p = a("pillar_rareness");
-   public static final aks<eoh.a> q = a("pillar_thickness");
-   public static final aks<eoh.a> r = a("spaghetti_2d");
-   public static final aks<eoh.a> s = a("spaghetti_2d_elevation");
-   public static final aks<eoh.a> t = a("spaghetti_2d_modulator");
-   public static final aks<eoh.a> u = a("spaghetti_2d_thickness");
-   public static final aks<eoh.a> v = a("spaghetti_3d_1");
-   public static final aks<eoh.a> w = a("spaghetti_3d_2");
-   public static final aks<eoh.a> x = a("spaghetti_3d_rarity");
-   public static final aks<eoh.a> y = a("spaghetti_3d_thickness");
-   public static final aks<eoh.a> z = a("spaghetti_roughness");
-   public static final aks<eoh.a> A = a("spaghetti_roughness_modulator");
-   public static final aks<eoh.a> B = a("cave_entrance");
-   public static final aks<eoh.a> C = a("cave_layer");
-   public static final aks<eoh.a> D = a("cave_cheese");
-   public static final aks<eoh.a> E = a("ore_veininess");
-   public static final aks<eoh.a> F = a("ore_vein_a");
-   public static final aks<eoh.a> G = a("ore_vein_b");
-   public static final aks<eoh.a> H = a("ore_gap");
-   public static final aks<eoh.a> I = a("noodle");
-   public static final aks<eoh.a> J = a("noodle_thickness");
-   public static final aks<eoh.a> K = a("noodle_ridge_a");
-   public static final aks<eoh.a> L = a("noodle_ridge_b");
-   public static final aks<eoh.a> M = a("jagged");
-   public static final aks<eoh.a> N = a("surface");
-   public static final aks<eoh.a> O = a("surface_secondary");
-   public static final aks<eoh.a> P = a("clay_bands_offset");
-   public static final aks<eoh.a> Q = a("badlands_pillar");
-   public static final aks<eoh.a> R = a("badlands_pillar_roof");
-   public static final aks<eoh.a> S = a("badlands_surface");
-   public static final aks<eoh.a> T = a("iceberg_pillar");
-   public static final aks<eoh.a> U = a("iceberg_pillar_roof");
-   public static final aks<eoh.a> V = a("iceberg_surface");
-   public static final aks<eoh.a> W = a("surface_swamp");
-   public static final aks<eoh.a> X = a("calcite");
-   public static final aks<eoh.a> Y = a("gravel");
-   public static final aks<eoh.a> Z = a("powder_snow");
-   public static final aks<eoh.a> aa = a("packed_ice");
-   public static final aks<eoh.a> ab = a("ice");
-   public static final aks<eoh.a> ac = a("soul_sand_layer");
-   public static final aks<eoh.a> ad = a("gravel_layer");
-   public static final aks<eoh.a> ae = a("patch");
-   public static final aks<eoh.a> af = a("netherrack");
-   public static final aks<eoh.a> ag = a("nether_wart");
-   public static final aks<eoh.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
 
-   private static aks<eoh.a> a(String $$0) {
-      return aks.a(li.aH, new akt($$0));
+public class dzd extends dzz<ecn> {
+   private static final drd a = dec.mZ.n().a(dde.h, Integer.valueOf(1)).a(dde.i, drp.a).a(dde.j, Integer.valueOf(0));
+   private static final drd b = a.a(dde.i, drp.c).a(dde.j, Integer.valueOf(1));
+   private static final drd c = a.a(dde.i, drp.c);
+   private static final drd d = a.a(dde.i, drp.b);
+
+   public dzd(Codec<ecn> $$0) {
+      super($$0);
    }
 
-   public static eoh a(jb<eoh.a> $$0, dzh $$1, aks<eoh.a> $$2) {
-      ja<eoh.a> $$3 = $$0.b($$2);
-      return eoh.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @Override
+   public boolean a(eab<ecn> $$0) {
+      int $$1 = 0;
+      io $$2 = $$0.e();
+      dbu $$3 = $$0.b();
+      aym $$4 = $$0.d();
+      ecn $$5 = $$0.f();
+      io.a $$6 = $$2.j();
+      io.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (dec.mZ.n().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
+
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dwv.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dec.l.n(), 2);
+                        }
+                     }
+                  }
+               }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(it.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(it.a, 1), c, 2);
+               $$3.a($$6.c(it.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
+      }
+
+      return $$1 > 0;
    }
 }

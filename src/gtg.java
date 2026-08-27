@@ -1,57 +1,37 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public class gtg extends akt {
-   @VisibleForTesting
-   static final char g = '#';
-   private final String h;
+public class gtg {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   private gtg(String $$0, String $$1, String $$2, @Nullable akt.a $$3) {
-      super($$0, $$1, $$3);
-      this.h = $$2;
-   }
-
-   public gtg(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.h = j($$2);
-   }
-
-   public gtg(akt $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static gtg c(String $$0, String $$1) {
-      return new gtg("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof gtg && super.equals($$0)) {
-         gtg $$1 = (gtg)$$0;
-         return this.h.equals($$1.h);
-      } else {
-         return false;
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.h.hashCode();
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.h;
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(gsv $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gsw.e, $$1x -> {
+            $$1x.a(gsy.p, this.a($$1));
+            $$1x.a(gsy.q, (int)this.c);
+         }));
    }
 }

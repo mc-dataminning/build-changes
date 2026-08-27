@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ui extends va {
-   private static final int w = 9;
-   public static final vj<ui> a = new vj.a<ui>() {
-      public ui a(DataInput $$0, ut $$1) throws IOException {
+public class ui extends ut {
+   private static final int b = 12;
+   public static final vc<ui> a = new vc.a<ui>() {
+      public ui a(DataInput $$0, um $$1) throws IOException {
          return ui.a(d($$0, $$1));
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static byte d(DataInput $$0, ut $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
+      private static int d(DataInput $$0, um $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readInt();
       }
 
       @Override
       public int c() {
-         return 1;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "BYTE";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Byte";
+         return "TAG_Int";
       }
 
       @Override
@@ -39,39 +39,33 @@ public class ui extends va {
          return true;
       }
    };
-   public static final ui b = a((byte)0);
-   public static final ui c = a((byte)1);
-   private final byte x;
+   private final int c;
 
-   ui(byte $$0) {
-      this.x = $$0;
+   ui(int $$0) {
+      this.c = $$0;
    }
 
-   public static ui a(byte $$0) {
-      return ui.a.a[128 + $$0];
-   }
-
-   public static ui a(boolean $$0) {
-      return $$0 ? c : b;
+   public static ui a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ui.a.a[$$0 - -128] : new ui($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 9;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 1;
+      return 3;
    }
 
    @Override
-   public vj<ui> c() {
+   public vc<ui> c() {
       return a;
    }
 
@@ -81,68 +75,70 @@ public class ui extends va {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ui && this.x == ((ui)$$0).x;
+      return this == $$0 ? true : $$0 instanceof ui && this.c == ((ui)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return this.x;
+      return this.c;
    }
 
    @Override
-   public void a(vl $$0) {
+   public void a(ve $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.x;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return this.x;
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)this.x;
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return this.x;
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.x;
+      return (double)this.c;
    }
 
    @Override
    public float k() {
-      return (float)this.x;
+      return (float)this.c;
    }
 
    @Override
    public Number l() {
-      return this.x;
+      return this.c;
    }
 
    @Override
-   public ve.b a(ve $$0) {
-      return $$0.a(this.x);
+   public ux.b a(ux $$0) {
+      return $$0.a(this.c);
    }
 
    static class a {
-      static final ui[] a = new ui[256];
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ui[] a = new ui[1153];
 
       private a() {
       }
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ui((byte)($$0 - 128));
+            a[$$0] = new ui(-128 + $$0);
          }
       }
    }

@@ -1,30 +1,38 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ego extends egl {
-   protected final long c;
-   protected final eoh.a d;
-   protected final float e;
-   protected final eoh f;
+public class ego extends egw {
+   public static final MapCodec<ego> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ego::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   protected static <P extends ego> P3<Mu<P>, Long, eoh.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         eoh.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         axu.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
-   }
-
-   protected ego(long $$0, eoh.a $$1, float $$2) {
+   private ego(double $$0, int $$1, int $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
-      this.f = eoh.b(new dzt(new dyv($$0)), $$1);
    }
 
-   protected double a(ir $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public static ego a(double $$0, int $$1, int $$2) {
+      return new ego($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(aym $$0, io $$1) {
+      double $$2 = dby.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public egt<?> b() {
+      return egt.h;
    }
 }

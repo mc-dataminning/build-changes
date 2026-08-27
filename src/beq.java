@@ -1,35 +1,36 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 public class beq extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
+   private static final String a = "WorldGenSettings";
+   private static final List<String> b = List.of(
+      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
+   );
 
-   public beq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
-         String $$1x = $$0x.get("facing").asString("north");
-         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
-      }) : $$0;
+   public beq(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bgf.u), $$0 -> $$0.update(DSL.remainderFinder(), beq::a));
+      return this.fixTypeEverywhereTyped(
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bga.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
+
+               for (String $$2 : b) {
+                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
+                  if ($$3.isPresent()) {
+                     $$0x = $$0x.remove($$2);
+                     $$1 = $$1.set($$2, $$3.get());
+                  }
+               }
+
+               return $$0x.set("WorldGenSettings", $$1);
+            })
+      );
    }
 }

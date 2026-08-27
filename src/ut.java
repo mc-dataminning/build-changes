@@ -1,60 +1,23 @@
-import com.google.common.annotations.VisibleForTesting;
-
-public class ut {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
-
-   public ut(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+public abstract class ut implements va {
+   protected ut() {
    }
 
-   public static ut a(long $$0) {
-      return new ut($$0, 512);
-   }
+   public abstract long f();
 
-   public static ut a() {
-      return new ut(Long.MAX_VALUE, 512);
-   }
+   public abstract int g();
 
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
+   public abstract short h();
 
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new uu("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
-      }
-   }
+   public abstract byte i();
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new uu("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
-      }
-   }
+   public abstract double j();
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new uu("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
-   }
+   public abstract float k();
 
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
+   public abstract Number l();
 
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   @Override
+   public String toString() {
+      return this.s_();
    }
 }

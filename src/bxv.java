@@ -1,53 +1,67 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bxv<F extends K1, Value> {
-   cbr<Value> a();
+public class bxv {
+   public static buk<cll> a(float $$0) {
+      return bxw.a(
+         (Function<bxw.b<cll>, ? extends App<bxw.c<cll>, bxz<cll>>>)($$1 -> $$1.group($$1.b(cbu.d), $$1.c(cbu.c), $$1.b(cbu.g), $$1.a(cbu.m), $$1.a(cbu.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.p_()) {
+                           return false;
+                        } else if ($$7.gA().b() != clo.b) {
+                           return false;
+                        } else {
+                           io $$9 = $$1.<iw>b($$2).b();
+                           Optional<ix<cdx>> $$10 = $$6x.y().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bsq>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cll && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cll)$$0xxxx)
+                                 .filter(bsq::bD)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dS().c(cbu.c).isEmpty()) {
+                                       bul.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dS().a(cbu.d, iw.a($$6x.ae(), $$9));
+                                       agb.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
+   }
 
-   cbs b();
-
-   @Nullable
-   bxu<F, Value> a(btp<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cbr<Value> a) implements bxv<Mu<Unit>, Value> {
-      @Override
-      public cbs b() {
-         return cbs.b;
-      }
-
-      @Override
-      public bxu<Mu<Unit>, Value> a(btp<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bxu<>($$0, this.a, Const.create(Unit.INSTANCE));
+   private static boolean a(ix<cdx> $$0, cll $$1, io $$2) {
+      boolean $$3 = $$1.dS().c(cbu.d).isPresent();
+      if ($$3) {
+         return false;
+      } else {
+         Optional<iw> $$4 = $$1.dS().c(cbu.c);
+         clo $$5 = $$1.gA().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
+         }
       }
    }
 
-   public static record b<Value>(cbr<Value> a) implements bxv<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cbs b() {
-         return cbs.a;
-      }
-
-      @Override
-      public bxu<com.mojang.datafixers.kinds.IdF.Mu, Value> a(btp<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bxu<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(cbr<Value> a) implements bxv<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cbs b() {
-         return cbs.c;
-      }
-
-      @Override
-      public bxu<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(btp<?> $$0, Optional<Value> $$1) {
-         return new bxu<>($$0, this.a, OptionalBox.create($$1));
-      }
+   private static boolean a(bsz $$0, io $$1, cdx $$2) {
+      enk $$3 = $$0.K().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

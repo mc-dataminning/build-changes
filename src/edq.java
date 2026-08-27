@@ -1,75 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class edq extends eca<eff> {
-   public edq(Codec<eff> $$0) {
-      super($$0);
+public class edq<P extends edp> {
+   public static final edq<edk> a = a("blob_foliage_placer", edk.a);
+   public static final edq<edv> b = a("spruce_foliage_placer", edv.a);
+   public static final edq<edt> c = a("pine_foliage_placer", edt.a);
+   public static final edq<edj> d = a("acacia_foliage_placer", edj.a);
+   public static final edq<edl> e = a("bush_foliage_placer", edl.c);
+   public static final edq<edo> f = a("fancy_foliage_placer", edo.c);
+   public static final edq<edr> g = a("jungle_foliage_placer", edr.a);
+   public static final edq<eds> h = a("mega_pine_foliage_placer", eds.a);
+   public static final edq<edn> i = a("dark_oak_foliage_placer", edn.a);
+   public static final edq<edu> j = a("random_spread_foliage_placer", edu.a);
+   public static final edq<edm> k = a("cherry_foliage_placer", edm.a);
+   private final MapCodec<P> l;
+
+   private static <P extends edp> edq<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.W, $$0, new edq<>($$1));
    }
 
-   @Override
-   public boolean a(ecc<eff> $$0) {
-      eff $$1 = $$0.f();
-      dcv $$2 = $$0.b();
-      ir $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else {
-         dtc $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
+   private edq(MapCodec<P> $$0) {
+      this.l = $$0;
+   }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
-         }
-      }
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

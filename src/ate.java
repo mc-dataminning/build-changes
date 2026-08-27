@@ -1,27 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
 
-public record ate(xe c, int d, Optional<aye<Integer>> e) {
-   public static final Codec<ate> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               xg.a.fieldOf("description").forGetter(ate::a),
-               Codec.INT.fieldOf("pack_format").forGetter(ate::b),
-               aye.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(ate::c)
-            )
-            .apply($$0, ate::new)
-   );
-   public static final atd<ate> b = atd.a("pack", a);
+public record ate(String c, String d, String e) {
+   public static final yv<ByteBuf, ate> a = yv.a(yt.k, ate::b, yt.k, ate::c, yt.k, ate::d, ate::new);
+   public static final String b = "minecraft";
 
-   public xe a() {
+   public static ate a(String $$0) {
+      return new ate("minecraft", $$0, aa.b().b());
+   }
+
+   public boolean a() {
+      return this.c.equals("minecraft");
+   }
+
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
+
+   public String b() {
       return this.c;
    }
 
-   public int b() {
+   public String c() {
       return this.d;
    }
 
-   public Optional<aye<Integer>> c() {
+   public String d() {
       return this.e;
    }
 }

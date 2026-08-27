@@ -1,56 +1,49 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
 
-public class caf<T extends cnn> extends bzl {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class caf extends bzo {
+   private static final cdh b = cdh.b().a(6.0);
+   public static final int a = 400;
+   private final ces c;
+   private cll d;
+   private int e;
 
-   public caf(T $$0) {
+   public caf(ces $$0) {
       this.c = $$0;
-      this.a(EnumSet.of(bzl.a.a));
+      this.a(EnumSet.of(bzo.a.a, bzo.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.c.p() == null && !this.c.cW() && this.c.gN() && !this.c.gM().a() && !((aqt)this.c.dU()).c(this.c.du());
+      if (!this.c.dP().Q()) {
+         return false;
+      } else if (this.c.el().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dP().a(cll.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.c.gN() && !this.c.gM().a() && this.c.dU() instanceof aqt && !((aqt)this.c.dU()).c(this.c.du());
+      return this.e > 0;
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
    }
 
    @Override
    public void e() {
-      if (this.c.gN()) {
-         cnm $$0 = this.c.gM();
-         if (this.c.am > this.d) {
-            this.d = this.c.am + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gu()) {
-            ewu $$1 = cdi.a(this.c, 15, 4, ewu.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.J().a($$1.c, $$1.d, $$1.e, 1.0);
-            }
-         }
-      }
-   }
-
-   private void a(cnm $$0) {
-      if ($$0.u()) {
-         Set<cnn> $$1 = Sets.newHashSet();
-         List<cnn> $$2 = this.c.dU().a(cnn.class, this.c.cP().g(16.0), $$1x -> !$$1x.gN() && cno.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (cnn $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
-      }
+      this.c.G().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

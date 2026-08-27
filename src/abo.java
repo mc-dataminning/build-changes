@@ -1,15 +1,28 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record abo(List<atk> b) implements zl<abm> {
-   public static final zc<ByteBuf, abo> a = zc.a(atk.a.a(za.c(64)), abo::b, abo::new);
+public record abo(akn b, @Nullable byte[] c) implements ze<abn> {
+   public static final yv<vx, abo> a = ze.a(abo::a, abo::new);
 
-   @Override
-   public zn<abo> a() {
-      return abk.f;
+   private abo(vx $$0) {
+      this($$0.q(), $$0.c(zr.b));
    }
 
-   public void a(abm $$0) {
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, zr.b);
+   }
+
+   @Override
+   public zg<abo> a() {
+      return abm.b;
+   }
+
+   public void a(abn $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public byte[] e() {
+      return this.c;
    }
 }

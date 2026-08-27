@@ -1,82 +1,76 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-public abstract class dqp {
-   private static final int a = 5;
-   private int b;
-   private double c;
+public class dqp {
+   static final String a = "shared_data";
+   static Codec<dqp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ctq.a("display_item").forGetter($$0x -> $$0x.d),
+               jr.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dqn.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dqp::new)
+   );
+   private ctq d = ctq.i;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dqn.b.d();
+   boolean c;
 
-   protected abstract void a(dca var1, ir var2, dtc var3);
-
-   protected abstract void b(dca var1, ir var2, dtc var3);
-
-   protected abstract void a(dca var1, ir var2, dtc var3, int var4, int var5);
-
-   protected abstract boolean a(cly var1);
-
-   public void a(cly $$0, dca $$1, ir $$2, dtc $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dxv.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gN(), this.c);
+   dqp(ctq $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
    }
 
-   public void b(cly $$0, dca $$1, ir $$2, dtc $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dxv.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   dqp() {
    }
 
-   private List<cly> a(dca $$0, ir $$1) {
-      double $$2 = this.c + 4.0;
-      ewp $$3 = new ewp($$1).g($$2);
-      return $$0.a(dxj.a(cly.class), $$3, this::a);
+   public ctq a() {
+      return this.d;
    }
 
-   public void c(dca $$0, ir $$1, dtc $$2) {
-      List<cly> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
+   public boolean b() {
+      return !this.d.e();
+   }
 
-      for (cly $$4 : $$3) {
-         this.c = Math.max($$4.gN(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dxv.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dxv.j, $$1);
-         }
-
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+   public void a(ctq $$0) {
+      if (!ctq.a(this.d, $$0)) {
+         this.d = $$0.s();
+         this.f();
       }
    }
 
-   public int a() {
-      return this.b;
+   boolean c() {
+      return !this.e.isEmpty();
    }
 
-   private static void d(dca $$0, ir $$1, dtc $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(aqn $$0, io $$1, dqo $$2, dqn $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
+      }
+   }
+
+   private void f() {
+      this.c = true;
+   }
+
+   void a(dqp $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

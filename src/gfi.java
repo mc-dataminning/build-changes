@@ -1,30 +1,62 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class gfi {
-   public static final akt a = new akt("textures/gui/title/background/panorama_overlay.png");
-   private final fgj b;
-   private final geu c;
-   private float d;
-   private float e;
+public class gfi implements dac {
+   private final int c;
+   private final int d;
+   protected final gfh[][] a;
+   protected final daz b;
 
-   public gfi(geu $$0) {
-      this.c = $$0;
-      this.b = fgj.Q();
+   gfi(daz $$0, int $$1, int $$2, gfh[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
-   public void a(fia $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   public drd a_(io $$0) {
+      int $$1 = jq.a($$0.u()) - this.c;
+      int $$2 = jq.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Override
+   public emw b_(io $$0) {
+      int $$1 = jq.a($$0.u()) - this.c;
+      int $$2 = jq.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
+   }
+
+   @Override
+   public float a(it $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public eml y_() {
+      return this.b.y_();
+   }
+
+   @Nullable
+   @Override
+   public doi c_(io $$0) {
+      int $$1 = jq.a($$0.u()) - this.c;
+      int $$2 = jq.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
+
+   @Override
+   public int a(io $$0, dak $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

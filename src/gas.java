@@ -1,67 +1,25 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
-import javax.annotation.Nullable;
-
-public record gas(String a, @Nullable gas.a b) {
-   public static gas a() {
-      return a(null);
+public class gas extends gbf {
+   gas(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   public static gas a(String $$0) {
-      return a(new gas.a.b($$0));
-   }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-   public static gas a(fcj $$0) {
-      return a(new gas.a.a($$0));
-   }
-
-   public static gas a(@Nullable gas.a $$0) {
-      return new gas(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gas.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gas.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w14potato");
-      if (fgj.e().a()) {
-         $$0.append(" (modded)");
+      public a(gat $$0) {
+         this.a = $$0;
       }
 
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public gas.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements gas.a {
-         public a(fcj $$0) {
-            this($$0.a, $$0.n);
-         }
-      }
-
-      public static record b(String a) implements gas.a {
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gas $$8 = new gas($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

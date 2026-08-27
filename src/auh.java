@@ -1,46 +1,43 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import java.io.File;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public abstract class auh extends aui<Map<akt, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
-
-   public auh(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class auh extends aup<String, aui> {
+   public auh(File $$0) {
+      super($$0);
    }
 
-   protected Map<akt, JsonElement> a(aud $$0, bmo $$1) {
-      Map<akt, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   @Override
+   protected auo<String> a(JsonObject $$0) {
+      return new aui($$0);
    }
 
-   public static void a(aud $$0, String $$1, Gson $$2, Map<akt, JsonElement> $$3) {
-      akm $$4 = akm.a($$1);
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
+   }
 
-      for (Entry<akt, aub> $$5 : $$4.a($$0).entrySet()) {
-         akt $$6 = $$5.getKey();
-         akt $$7 = $$4.b($$6);
+   public boolean a(String $$0) {
+      return this.d($$0);
+   }
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = ayc.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
+   @Nullable
+   public aui b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
+   }
+
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
       }
+
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
+      }
+
+      return $$1;
    }
 }

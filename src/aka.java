@@ -1,135 +1,53 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.Iterator;
 
-public class aka {
-   private static final axj<ajz<?>> F = axj.c(16);
-   public static final ajz<Byte> a = ajz.a(za.c);
-   public static final ajz<Integer> b = ajz.a(za.g);
-   public static final ajz<Long> c = ajz.a(za.h);
-   public static final ajz<Float> d = ajz.a(za.i);
-   public static final ajz<String> e = ajz.a(za.l);
-   public static final ajz<xe> f = ajz.a(xg.d);
-   public static final ajz<Optional<xe>> g = ajz.a(xg.e);
-   public static final ajz<cuh> h = new ajz<cuh>() {
-      @Override
-      public zc<? super wp, cuh> codec() {
-         return cuh.e;
+public interface aka<T> {
+   default void a(int $$0, int $$1, int $$2, cxy<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cyd $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
       }
 
-      public cuh a(cuh $$0) {
-         return $$0.r();
-      }
-   };
-   public static final ajz<dtc> i = ajz.a(za.a(dfc.q));
-   private static final zc<ByteBuf, Optional<dtc>> G = new zc<ByteBuf, Optional<dtc>>() {
-      public void a(ByteBuf $$0, Optional<dtc> $$1) {
-         if ($$1.isPresent()) {
-            wv.a($$0, dfc.i($$1.get()));
-         } else {
-            wv.a($$0, 0);
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = ayf.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = ayf.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
          }
       }
-
-      public Optional<dtc> a(ByteBuf $$0) {
-         int $$1 = wv.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dfc.a($$1));
-      }
-   };
-   public static final ajz<Optional<dtc>> j = ajz.a(G);
-   public static final ajz<Boolean> k = ajz.a(za.b);
-   public static final ajz<kz> l = ajz.a(lb.bc);
-   public static final ajz<List<kz>> m = ajz.a(lb.bc.a(za.a()));
-   public static final ajz<js> n = ajz.a(js.a);
-   public static final ajz<ir> o = ajz.a(ir.b);
-   public static final ajz<Optional<ir>> p = ajz.a(ir.b.a(za::a));
-   public static final ajz<iw> q = ajz.a(iw.j);
-   public static final ajz<Optional<UUID>> r = ajz.a(ju.g.a(za::a));
-   public static final ajz<Optional<iz>> s = ajz.a(iz.c.a(za::a));
-   public static final ajz<uk> t = new ajz<uk>() {
-      @Override
-      public zc<? super wp, uk> codec() {
-         return za.p;
-      }
-
-      public uk a(uk $$0) {
-         return $$0.h();
-      }
-   };
-   public static final ajz<clm> u = ajz.a(clm.d);
-   private static final zc<ByteBuf, OptionalInt> H = new zc<ByteBuf, OptionalInt>() {
-      public OptionalInt a(ByteBuf $$0) {
-         int $$1 = wv.a($$0);
-         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
-      }
-
-      public void a(ByteBuf $$0, OptionalInt $$1) {
-         wv.a($$0, $$1.orElse(-1) + 1);
-      }
-   };
-   public static final ajz<OptionalInt> v = ajz.a(H);
-   public static final ajz<bsz> w = ajz.a(bsz.t);
-   public static final ajz<ja<cei>> x = ajz.a(za.b(li.l));
-   public static final ajz<ja<cfi>> y = ajz.a(za.b(li.m));
-   public static final ajz<ja<cep>> z = ajz.a(za.b(li.B));
-   public static final ajz<ja<cic>> A = ajz.a(za.b(li.S));
-   public static final ajz<cfn.a> B = ajz.a(cfn.a.e);
-   public static final ajz<cgv.a> C = ajz.a(cgv.a.i);
-   public static final ajz<Vector3f> D = ajz.a(za.r);
-   public static final ajz<Quaternionf> E = ajz.a(za.s);
-
-   public static void a(ajz<?> $$0) {
-      F.d($$0);
    }
 
-   @Nullable
-   public static ajz<?> a(int $$0) {
-      return F.a($$0);
-   }
-
-   public static int b(ajz<?> $$0) {
-      return F.a($$0);
-   }
-
-   private aka() {
-   }
-
-   static {
-      a(a);
-      a(b);
-      a(c);
-      a(d);
-      a(e);
-      a(f);
-      a(g);
-      a(h);
-      a(k);
-      a(n);
-      a(o);
-      a(p);
-      a(q);
-      a(r);
-      a(i);
-      a(j);
-      a(t);
-      a(l);
-      a(m);
-      a(u);
-      a(v);
-      a(w);
-      a(x);
-      a(y);
-      a(z);
-      a(s);
-      a(A);
-      a(C);
-      a(B);
-      a(D);
-      a(E);
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

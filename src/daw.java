@@ -1,55 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public record daw(ja<cuc> d, int e, kc f, cuh g) {
-   public static final Codec<daw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lh.h.r().fieldOf("id").forGetter(daw::a), axu.j.fieldOf("count").orElse(1).forGetter(daw::b), axu.a(kc.a, "components", kc.c).forGetter(daw::c)
-            )
-            .apply($$0, daw::new)
-   );
-   public static final zc<wp, daw> b = zc.a(za.b(li.G), daw::a, za.g, daw::b, kc.b, daw::c, daw::new);
-   public static final zc<wp, Optional<daw>> c = b.a(za::a);
+public enum daw implements ayz {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public daw(dbz $$0) {
-      this($$0, 1);
+   public static final daw e = a;
+   public static final ayz.a<daw> f = ayz.a(daw::values);
+   private static final IntFunction<daw> g = aww.a(daw::a, values(), aww.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final wx k;
+   private final wx l;
+
+   private daw(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = wx.c("selectWorld.gameMode." + $$1);
+      this.l = wx.c("gameMode." + $$1);
    }
 
-   public daw(dbz $$0, int $$1) {
-      this($$0.q().n(), $$1, kc.c);
+   public int a() {
+      return this.i;
    }
 
-   public daw(ja<cuc> $$0, int $$1, kc $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public String b() {
+      return this.j;
    }
 
-   public daw a(UnaryOperator<kc.a> $$0) {
-      return new daw(this.d, this.e, $$0.apply(kc.a()).a());
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   private static cuh a(ja<cuc> $$0, int $$1, kc $$2) {
-      return new cuh($$0, $$1, $$2.c());
+   public wx d() {
+      return this.l;
    }
 
-   public boolean a(cuh $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
+   public wx e() {
+      return this.k;
    }
 
-   public ja<cuc> a() {
-      return this.d;
+   public void a(clv $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   public int b() {
-      return this.e;
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   public kc c() {
-      return this.f;
+   public boolean g() {
+      return this == b;
    }
 
-   public cuh d() {
-      return this.g;
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static daw a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static daw a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static daw a(String $$0, @Nullable daw $$1) {
+      daw $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable daw $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static daw b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

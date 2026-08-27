@@ -1,325 +1,97 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class alb {
+public class alb implements atr {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final auq c;
-   private final Path d;
-   private al e;
-   private final Map<ag, ai> f = new LinkedHashMap<>();
-   private final Set<ag> g = new HashSet<>();
-   private final Set<ag> h = new HashSet<>();
-   private final Set<ah> i = new HashSet<>();
-   private aqu j;
-   @Nullable
-   private ag k;
-   private boolean l = true;
-   private final Codec<alb.a> m;
+   private static final akg b = new akg("functions", ".mcfunction");
+   private volatile Map<akn, hq<ee>> c = ImmutableMap.of();
+   private final awn<hq<ee>> d = new awn<>(this::a, "tags/functions");
+   private volatile Map<akn, Collection<hq<ee>>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<ee> g;
 
-   public alb(DataFixer $$0, auq $$1, alg $$2, Path $$3, aqu $$4) {
-      this.c = $$1;
-      this.d = $$3;
-      this.j = $$4;
-      this.e = $$2.a();
-      int $$5 = 1343;
-      this.m = azs.p.a(alb.a.a, $$0, 1343);
-      this.d($$2);
+   public Optional<hq<ee>> a(akn $$0) {
+      return Optional.ofNullable(this.c.get($$0));
    }
 
-   public void a(aqu $$0) {
-      this.j = $$0;
+   public Map<akn, hq<ee>> a() {
+      return this.c;
    }
 
-   public void a() {
-      for (aq<?> $$0 : lh.ap) {
-         $$0.a(this);
-      }
+   public Collection<hq<ee>> b(akn $$0) {
+      return this.e.getOrDefault($$0, List.of());
    }
 
-   public void a(alg $$0) {
-      this.a();
-      this.f.clear();
-      this.g.clear();
-      this.i.clear();
-      this.h.clear();
-      this.l = true;
-      this.k = null;
-      this.e = $$0.a();
-      this.d($$0);
+   public Iterable<akn> b() {
+      return this.e.keySet();
    }
 
-   private void b(alg $$0) {
-      for (ag $$1 : $$0.b()) {
-         this.d($$1);
-      }
+   public alb(int $$0, CommandDispatcher<ee> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   private void c(alg $$0) {
-      for (ag $$1 : $$0.b()) {
-         af $$2 = $$1.b();
-         if ($$2.e().isEmpty()) {
-            this.a($$1, "");
-            $$2.d().a(this.j);
+   @Override
+   public CompletableFuture<Void> a(atr.a $$0, atx $$1, bmk $$2, bmk $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<akn, List<awn.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<akn, CompletableFuture<hq<ee>>>> $$7 = CompletableFuture.<Map<akn, atv>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<akn, CompletableFuture<hq<ee>>> $$2x = Maps.newHashMap();
+         ee $$3x = new ee(ed.a, eum.b, eul.a, null, this.f, "", ww.a, null, null);
+
+         for (Entry<akn, atv> $$4x : $$1x.entrySet()) {
+            akn $$5x = $$4x.getKey();
+            akn $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return hq.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
          }
-      }
-   }
 
-   private void d(alg $$0) {
-      if (Files.isRegularFile(this.d)) {
-         try {
-            JsonReader $$1 = new JsonReader(Files.newBufferedReader(this.d, StandardCharsets.UTF_8));
-
-            try {
-               $$1.setLenient(false);
-               JsonElement $$2 = Streams.parse($$1);
-               alb.a $$3 = ad.a(this.m.parse(JsonOps.INSTANCE, $$2), JsonParseException::new);
-               this.a($$0, $$3);
-            } catch (Throwable var6) {
-               try {
-                  $$1.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<akn, CompletableFuture<hq<ee>>> $$1x = (Map<akn, CompletableFuture<hq<ee>>>)$$0x.getSecond();
+         Builder<akn, hq<ee>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
                }
 
-               throw var6;
-            }
-
-            $$1.close();
-         } catch (JsonParseException var7) {
-            a.error("Couldn't parse player advancements in {}", this.d, var7);
-         } catch (IOException var8) {
-            a.error("Couldn't access player advancements in {}", this.d, var8);
-         }
-      }
-
-      this.c($$0);
-      this.b($$0);
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<akn, List<awn.a>>)$$0x.getFirst());
+      }, $$5);
    }
 
-   public void b() {
-      JsonElement $$0 = ad.a(this.m.encodeStart(JsonOps.INSTANCE, this.d()), IllegalStateException::new);
-
+   private static List<String> a(atv $$0) {
       try {
-         v.c(this.d.getParent());
-
-         try (Writer $$1 = Files.newBufferedWriter(this.d, StandardCharsets.UTF_8)) {
-            b.toJson($$0, $$1);
-         }
-      } catch (IOException var7) {
-         a.error("Couldn't save player advancements to {}", this.d, var7);
-      }
-   }
-
-   private void a(alg $$0, alb.a $$1) {
-      $$1.a(($$1x, $$2) -> {
-         ag $$3 = $$0.a($$1x);
-         if ($$3 == null) {
-            a.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", $$1x, this.d);
-         } else {
-            this.a($$3, $$2);
-            this.h.add($$3);
-            this.c($$3);
-         }
-      });
-   }
-
-   private alb.a d() {
-      Map<akt, ai> $$0 = new LinkedHashMap<>();
-      this.f.forEach(($$1, $$2) -> {
-         if ($$2.b()) {
-            $$0.put($$1.a(), $$2);
-         }
-      });
-      return new alb.a($$0);
-   }
-
-   public boolean a(ag $$0, String $$1) {
-      boolean $$2 = false;
-      ai $$3 = this.b($$0);
-      boolean $$4 = $$3.a();
-      if ($$3.a($$1)) {
-         this.e($$0);
-         this.h.add($$0);
-         $$2 = true;
-         if (!$$4 && $$3.a()) {
-            $$0.b().d().a(this.j);
-            $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.dU().ab().b(dbw.B)) {
-                  this.c.a($$1x.e().a($$0, this.j), false);
-               }
-            });
-         }
-      }
-
-      if (!$$4 && $$3.a()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   public boolean b(ag $$0, String $$1) {
-      boolean $$2 = false;
-      ai $$3 = this.b($$0);
-      boolean $$4 = $$3.a();
-      if ($$3.b($$1)) {
-         this.d($$0);
-         this.h.add($$0);
-         $$2 = true;
-      }
-
-      if ($$4 && !$$3.a()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   public al c() {
-      return this.e;
-   }
-
-   private void c(ag $$0) {
-      ah $$1 = this.e.a($$0);
-      if ($$1 != null) {
-         this.i.add($$1.d());
-      }
-   }
-
-   private void d(ag $$0) {
-      ai $$1 = this.b($$0);
-      if (!$$1.a()) {
-         for (Entry<String, ao<?>> $$2 : $$0.b().e().entrySet()) {
-            ap $$3 = $$1.c($$2.getKey());
-            if ($$3 != null && !$$3.a()) {
-               this.a($$0, $$2.getKey(), $$2.getValue());
-            }
-         }
-      }
-   }
-
-   private <T extends ar> void a(ag $$0, String $$1, ao<T> $$2) {
-      $$2.a().a(this, new aq.a<>($$2.b(), $$0, $$1));
-   }
-
-   private void e(ag $$0) {
-      ai $$1 = this.b($$0);
-
-      for (Entry<String, ao<?>> $$2 : $$0.b().e().entrySet()) {
-         ap $$3 = $$1.c($$2.getKey());
-         if ($$3 != null && ($$3.a() || $$1.a())) {
-            this.b($$0, $$2.getKey(), $$2.getValue());
-         }
-      }
-   }
-
-   private <T extends ar> void b(ag $$0, String $$1, ao<T> $$2) {
-      $$2.a().b(this, new aq.a<>($$2.b(), $$0, $$1));
-   }
-
-   public void b(aqu $$0) {
-      if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
-         Map<akt, ai> $$1 = new HashMap<>();
-         Set<ag> $$2 = new HashSet<>();
-         Set<akt> $$3 = new HashSet<>();
-
-         for (ah $$4 : this.i) {
-            this.a($$4, $$2, $$3);
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
          }
 
-         this.i.clear();
-
-         for (ag $$5 : this.h) {
-            if (this.g.contains($$5)) {
-               $$1.put($$5.a(), this.f.get($$5));
-            }
-         }
-
-         this.h.clear();
-         if (!$$1.isEmpty() || !$$2.isEmpty() || !$$3.isEmpty()) {
-            $$0.d.b(new agc(this.l, $$2, $$3, $$1));
-         }
-      }
-
-      this.l = false;
-   }
-
-   public void a(@Nullable ag $$0) {
-      ag $$1 = this.k;
-      if ($$0 != null && $$0.b().a() && $$0.b().c().isPresent()) {
-         this.k = $$0;
-      } else {
-         this.k = null;
-      }
-
-      if ($$1 != this.k) {
-         this.j.d.b(new aen(this.k == null ? null : this.k.a()));
-      }
-   }
-
-   public ai b(ag $$0) {
-      ai $$1 = this.f.get($$0);
-      if ($$1 == null) {
-         $$1 = new ai();
-         this.a($$0, $$1);
-      }
-
-      return $$1;
-   }
-
-   private void a(ag $$0, ai $$1) {
-      $$1.a($$0.b().f());
-      this.f.put($$0, $$1);
-   }
-
-   private void a(ah $$0, Set<ag> $$1, Set<akt> $$2) {
-      alr.a($$0, $$0x -> this.b($$0x.b()).a(), ($$2x, $$3) -> {
-         ag $$4 = $$2x.b();
-         if ($$3) {
-            if (this.g.add($$4)) {
-               $$1.add($$4);
-               if (this.f.containsKey($$4)) {
-                  this.h.add($$4);
-               }
-            }
-         } else if (this.g.remove($$4)) {
-            $$2.add($$4.a());
-         }
-      });
-   }
-
-   static record a(Map<akt, ai> b) {
-      public static final Codec<alb.a> a = Codec.unboundedMap(akt.a, ai.a).xmap(alb.a::new, alb.a::a);
-
-      public void a(BiConsumer<akt, ai> $$0) {
-         this.b.entrySet().stream().sorted(Entry.comparingByValue()).forEach($$1 -> $$0.accept($$1.getKey(), $$1.getValue()));
-      }
-
-      public Map<akt, ai> a() {
-         return this.b;
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
    }
 }

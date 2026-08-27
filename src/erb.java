@@ -1,30 +1,30 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface erb {
-   ir a();
+public class erb extends eqs {
+   public static final MapCodec<erb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(jy.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, erb::new)
+   );
+   private final jy b;
 
-   float b();
+   private erb(List<esn> $$0, jy $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-   long c();
+   @Override
+   public equ b() {
+      return eqv.j;
+   }
 
-   long d();
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      $$0.a(this.b);
+      return $$0;
+   }
 
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   dbw o();
-
-   bpx q();
-
-   boolean r();
-
-   default void a(p $$0, dcc $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public static <T> eqs.a<?> a(ka<T> $$0, T $$1) {
+      return a($$2 -> new erb($$2, jy.a().a($$0, $$1).a()));
    }
 }

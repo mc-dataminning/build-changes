@@ -1,83 +1,162 @@
-public class cid {
-   public static final aks<cic> a = a("kebab");
-   public static final aks<cic> b = a("aztec");
-   public static final aks<cic> c = a("alban");
-   public static final aks<cic> d = a("aztec2");
-   public static final aks<cic> e = a("bomb");
-   public static final aks<cic> f = a("plant");
-   public static final aks<cic> g = a("wasteland");
-   public static final aks<cic> h = a("pool");
-   public static final aks<cic> i = a("courbet");
-   public static final aks<cic> j = a("sea");
-   public static final aks<cic> k = a("sunset");
-   public static final aks<cic> l = a("creebet");
-   public static final aks<cic> m = a("wanderer");
-   public static final aks<cic> n = a("graham");
-   public static final aks<cic> o = a("match");
-   public static final aks<cic> p = a("bust");
-   public static final aks<cic> q = a("stage");
-   public static final aks<cic> r = a("void");
-   public static final aks<cic> s = a("skull_and_roses");
-   public static final aks<cic> t = a("wither");
-   public static final aks<cic> u = a("fighters");
-   public static final aks<cic> v = a("pointer");
-   public static final aks<cic> w = a("pigscene");
-   public static final aks<cic> x = a("burning_skull");
-   public static final aks<cic> y = a("skeleton");
-   public static final aks<cic> z = a("donkey_kong");
-   public static final aks<cic> A = a("earth");
-   public static final aks<cic> B = a("wind");
-   public static final aks<cic> C = a("water");
-   public static final aks<cic> D = a("fire");
-   public static final aks<cic> E = a("poisonous_potato");
-   public static final aks<cic> F = a("mr_potato");
-   public static final aks<cic> G = a("abstractato");
-   public static final aks<cic> H = a("burning_potato");
-   public static final aks<cic> I = a("ubiquitato");
-   public static final aks<cic> J = a("ceci");
-   public static final aks<cic> K = a("potatoe");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public static cic a(jn<cic> $$0) {
-      jn.a($$0, a, new cic(16, 16));
-      jn.a($$0, b, new cic(16, 16));
-      jn.a($$0, c, new cic(16, 16));
-      jn.a($$0, d, new cic(16, 16));
-      jn.a($$0, e, new cic(16, 16));
-      jn.a($$0, f, new cic(16, 16));
-      jn.a($$0, g, new cic(16, 16));
-      jn.a($$0, h, new cic(32, 16));
-      jn.a($$0, i, new cic(32, 16));
-      jn.a($$0, j, new cic(32, 16));
-      jn.a($$0, k, new cic(32, 16));
-      jn.a($$0, l, new cic(32, 16));
-      jn.a($$0, m, new cic(16, 32));
-      jn.a($$0, n, new cic(16, 32));
-      jn.a($$0, o, new cic(32, 32));
-      jn.a($$0, p, new cic(32, 32));
-      jn.a($$0, q, new cic(32, 32));
-      jn.a($$0, r, new cic(32, 32));
-      jn.a($$0, s, new cic(32, 32));
-      jn.a($$0, t, new cic(32, 32));
-      jn.a($$0, u, new cic(64, 32));
-      jn.a($$0, v, new cic(64, 64));
-      jn.a($$0, w, new cic(64, 64));
-      jn.a($$0, x, new cic(64, 64));
-      jn.a($$0, y, new cic(64, 48));
-      jn.a($$0, A, new cic(32, 32));
-      jn.a($$0, B, new cic(32, 32));
-      jn.a($$0, C, new cic(32, 32));
-      jn.a($$0, D, new cic(32, 32));
-      jn.a($$0, E, new cic(128, 128));
-      jn.a($$0, F, new cic(32, 48));
-      jn.a($$0, G, new cic(32, 32));
-      jn.a($$0, H, new cic(64, 64));
-      jn.a($$0, I, new cic(48, 48));
-      jn.a($$0, J, new cic(128, 64));
-      jn.a($$0, K, new cic(64, 32));
-      return jn.a($$0, z, new cic(64, 48));
+public class cid extends cia implements btq<ix<cie>> {
+   private static final ajs<ix<cie>> g = ajw.a(cid.class, aju.A);
+   private static final akm<cie> h = cif.a;
+   public static final MapCodec<ix<cie>> e = le.l.r().fieldOf("variant");
+   public static final Codec<ix<cie>> f = e.codec();
+
+   private static ix<cie> s() {
+      return le.l.g(h);
    }
 
-   private static aks<cic> a(String $$0) {
-      return aks.a(li.S, new akt($$0));
+   public cid(bsc<? extends cid> $$0, daz $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void a(ajw.a $$0) {
+      $$0.a(g, s());
+   }
+
+   @Override
+   public void a(ajs<?> $$0) {
+      if (g.equals($$0)) {
+         this.y();
+      }
+   }
+
+   public void b(ix<cie> $$0) {
+      this.ao.a(g, $$0);
+   }
+
+   public ix<cie> p() {
+      return this.ao.a(g);
+   }
+
+   public static Optional<cid> a(daz $$0, io $$1, it $$2) {
+      cid $$3 = new cid($$0, $$1);
+      List<ix<cie>> $$4 = new ArrayList<>();
+      le.l.c(awg.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.b($$1x);
+            return !$$3.z();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(cid::c).max().orElse(0);
+            $$4.removeIf($$1x -> c($$1x) < $$5);
+            Optional<ix<cie>> $$6 = ac.b($$4, $$3.ah);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.b($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
+         }
+      }
+   }
+
+   private static int c(ix<cie> $$0) {
+      return $$0.a().a() * $$0.a().b();
+   }
+
+   private cid(daz $$0, io $$1) {
+      super(bsc.av, $$0, $$1);
+   }
+
+   public cid(daz $$0, io $$1, it $$2, ix<cie> $$3) {
+      this($$0, $$1);
+      this.b($$3);
+      this.a($$2);
+   }
+
+   @Override
+   public void b(ud $$0) {
+      a($$0, this.p());
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      ix<cie> $$1 = f.parse(ur.a, $$0).result().orElseGet(cid::s);
+      this.b($$1);
+      this.d = it.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.d);
+   }
+
+   public static void a(ud $$0, ix<cie> $$1) {
+      f.encodeStart(ur.a, $$1).ifSuccess($$1x -> $$0.a((ud)$$1x));
+   }
+
+   @Override
+   public int A() {
+      return this.p().a().a();
+   }
+
+   @Override
+   public int B() {
+      return this.p().a().b();
+   }
+
+   @Override
+   public void b(@Nullable brw $$0) {
+      if (this.dP().aa().b(dav.i)) {
+         this.a(avi.sp, 1.0F, 1.0F);
+         if ($$0 instanceof cly $$1 && $$1.fP()) {
+            return;
+         }
+
+         this.a(ctt.pZ);
+      }
+   }
+
+   @Override
+   public void C() {
+      this.a(avi.sq, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public eum do() {
+      return eum.a(this.c);
+   }
+
+   @Override
+   public ze<abq> dl() {
+      return new abr(this, this.d.d(), this.D());
+   }
+
+   @Override
+   public void a(abr $$0) {
+      super.a($$0);
+      this.a(it.a($$0.p()));
+   }
+
+   @Override
+   public ctq dC() {
+      return new ctq(ctt.pZ);
    }
 }

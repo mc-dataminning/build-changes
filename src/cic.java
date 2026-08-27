@@ -1,17 +1,133 @@
-public class cic {
-   private final int a;
-   private final int b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cic(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cic extends cia {
+   public static final double e = 0.375;
+
+   public cic(bsc<? extends cic> $$0, daz $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public cic(daz $$0, io $$1) {
+      super(bsc.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   protected void y() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ak().l() / 2.0;
+      double $$1 = (double)this.ak().m();
+      this.a(new euh(this.du() - $$0, this.dw(), this.dA() - $$0, this.du() + $$0, this.dw() + $$1, this.dA() + $$0));
+   }
+
+   @Override
+   public void a(it $$0) {
+   }
+
+   @Override
+   public int A() {
+      return 9;
+   }
+
+   @Override
+   public int B() {
+      return 9;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void b(@Nullable brw $$0) {
+      this.a(avi.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ud $$0) {
+   }
+
+   @Override
+   public void a(ud $$0) {
+   }
+
+   @Override
+   public bpw a(cly $$0, bpv $$1) {
+      if (this.dP().B) {
+         return bpw.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bss> $$4 = this.dP().a(bss.class, new euh(this.du() - 7.0, this.dw() - 7.0, this.dA() - 7.0, this.du() + 7.0, this.dw() + 7.0, this.dA() + 7.0));
+
+         for (bss $$5 : $$4) {
+            if ($$5.ge() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ao();
+            if ($$0.gd().d) {
+               for (bss $$7 : $$4) {
+                  if ($$7.gc() && $$7.ge() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dvw.b, $$0);
+         }
+
+         return bpw.b;
+      }
+   }
+
+   @Override
+   public boolean z() {
+      return this.dP().a_(this.c).a(avx.S);
+   }
+
+   public static cic b(daz $$0, io $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (cic $$6 : $$0.a(cic.class, new euh((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.D().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      cic $$7 = new cic($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
+   public void C() {
+      this.a(avi.nT, 1.0F, 1.0F);
+   }
+
+   @Override
+   public ze<abq> dl() {
+      return new abr(this, 0, this.D());
+   }
+
+   @Override
+   public eum q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public ctq dC() {
+      return new ctq(ctt.uK);
    }
 }

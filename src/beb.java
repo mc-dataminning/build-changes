@@ -2,49 +2,66 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class beb extends DataFix {
-   private final Set<String> a;
+   private static final Set<String> a = Set.of(
+      "filled_map.buried_treasure",
+      "filled_map.explorer_jungle",
+      "filled_map.explorer_swamp",
+      "filled_map.mansion",
+      "filled_map.monument",
+      "filled_map.trial_chambers",
+      "filled_map.village_desert",
+      "filled_map.village_plains",
+      "filled_map.village_savanna",
+      "filled_map.village_snowy",
+      "filled_map.village_taiga"
+   );
 
-   public beb(Schema $$0, boolean $$1, Set<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public beb(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgf.B.typeName(), bhp.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
-                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
-                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
-                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
-                  if ($$11.isEmpty()) {
-                     return $$3x;
-                  }
-
-                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
-               }
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bga.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped(
+         "ItemStack custom_name to item_name component fix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            Optional<String> $$4 = $$3.map(Pair::getSecond);
+            if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
+               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), beb::b));
+            } else {
+               return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent()
+                  ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), beb::a))
+                  : $$2x;
             }
          }
+      );
+   }
 
-         return $$3x;
-      });
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return a($$0, a::contains);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, Predicate<String> $$1) {
+      OptionalDynamic<T> $$2 = $$0.get("minecraft:custom_name");
+      Optional<String> $$3 = $$2.asString().result().flatMap(azk::a).filter($$1);
+      return $$3.isPresent() ? $$0.renameField("minecraft:custom_name", "minecraft:item_name") : $$0;
    }
 }

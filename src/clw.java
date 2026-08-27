@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum clw implements ayo {
+public enum clw implements ayh {
    a(0, "options.chat.visibility.full"),
    b(1, "options.chat.visibility.system"),
    c(2, "options.chat.visibility.hidden");
 
-   private static final IntFunction<clw> d = axd.a(clw::a, values(), axd.a.b);
+   private static final IntFunction<clw> d = aww.a(clw::a, values(), aww.a.b);
    private final int e;
    private final String f;
 

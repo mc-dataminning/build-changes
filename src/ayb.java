@@ -1,30 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.io.Serializable;
+import java.util.Deque;
+import java.util.List;
+import java.util.RandomAccess;
+import javax.annotation.Nullable;
 
-public final class ayb {
-   private ayb() {
+public interface ayb<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   ayb<T> b();
+
+   @Override
+   T getFirst();
+
+   @Override
+   T getLast();
+
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
-      } else {
-         $$2.add($$4);
+   @Override
+   default T remove() {
+      return this.removeFirst();
+   }
 
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
-            }
-         }
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
+   }
 
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
-      }
+   @Override
+   default T element() {
+      return this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
+   }
+
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
+   }
+
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

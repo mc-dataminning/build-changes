@@ -1,94 +1,115 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public abstract class ati implements atq {
-   private static final Logger c = LogUtils.getLogger();
-   public static final String a = "vanilla";
-   public static final atk b = atk.a("core");
-   private final asr d;
-   private final ast e;
-   private final akt f;
-   private final ewk g;
+public class ati {
+   private final Set<atk> a;
+   private Map<String, atf> b = ImmutableMap.of();
+   private List<atf> c = ImmutableList.of();
 
-   public ati(asr $$0, ast $$1, akt $$2, ewk $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ati(atk... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   @Override
-   public void loadPacks(Consumer<atl> $$0) {
-      atl $$1 = this.a(this.e);
-      if ($$1 != null) {
-         $$0.accept($$1);
+   public void a() {
+      List<String> $$0 = this.c.stream().map(atf::g).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
+   }
+
+   private Map<String, atf> h() {
+      Map<String, atf> $$0 = Maps.newTreeMap();
+
+      for (atk $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
       }
 
-      this.a($$0);
+      return ImmutableMap.copyOf($$0);
    }
 
-   @Nullable
-   protected abstract atl a(asp var1);
-
-   protected abstract xe a(String var1);
-
-   public ast a() {
-      return this.e;
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
    }
 
-   private void a(Consumer<atl> $$0) {
-      Map<String, Function<String, atl>> $$1 = new HashMap<>();
-      this.a($$1::put);
-      $$1.forEach(($$1x, $$2) -> {
-         atl $$3 = $$2.apply($$1x);
-         if ($$3 != null) {
-            $$0.accept($$3);
-         }
-      });
-   }
-
-   protected void a(BiConsumer<String, Function<String, atl>> $$0) {
-      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
-   }
-
-   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, atl>> $$1) {
-      if ($$0 != null && Files.isDirectory($$0)) {
-         try {
-            atj.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
-         } catch (IOException var4) {
-            c.warn("Failed to discover packs in {}", $$0, var4);
-         }
+   public boolean a(String $$0) {
+      atf $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<atf> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private static String a(Path $$0) {
-      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   public boolean b(String $$0) {
+      atf $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<atf> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<atf> b(Collection<String> $$0) {
+      List<atf> $$1 = this.c($$0).collect(ac.b());
+
+      for (atf $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, atf::h, false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<atf> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<atf> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(atf::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public col e() {
+      return this.f().stream().map(atf::e).reduce(col::b).orElse(col.a());
+   }
+
+   public Collection<atf> f() {
+      return this.c;
    }
 
    @Nullable
-   protected abstract atl a(String var1, atl.c var2, xe var3);
+   public atf c(String $$0) {
+      return this.b.get($$0);
+   }
 
-   protected static atl.c b(final asp $$0) {
-      return new atl.c() {
-         @Override
-         public asp a(aso $$0x) {
-            return $$0;
-         }
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
+   }
 
-         @Override
-         public asp a(aso $$0x, atl.a $$1) {
-            return $$0;
-         }
-      };
+   public List<asj> g() {
+      return this.c.stream().map(atf::f).collect(ImmutableList.toImmutableList());
    }
 }

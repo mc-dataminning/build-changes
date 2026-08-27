@@ -1,55 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dhh extends dfc {
-   public static final MapCodec<dhh> a = b(dhh::new);
-   protected static final exn b = dic.c;
+public class dhh extends dcv {
+   public static final MapCodec<dhh> c = b(dhh::new);
 
    @Override
    public MapCodec<dhh> a() {
-      return a;
+      return c;
    }
 
-   protected dhh(dtb.d $$0) {
+   protected dhh(drc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean f_(dtc $$0) {
-      return true;
+   public doi a(io $$0, drd $$1) {
+      return new dpe($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return a($$0, $$2, dok.a);
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      return !this.n().a((dcd)$$0.q(), $$0.a()) ? dfc.a(this.n(), ($$0.q().z_() ? dfe.n : dfe.m).n(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$1 == iw.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected void a(daz $$0, io $$1, cly $$2) {
+      doi $$3 = $$0.c_($$1);
+      if ($$3 instanceof dpe) {
+         $$2.a((bqa)$$3);
+         $$2.a(avs.am);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      dic.a(null, $$0, $$1, $$2);
-   }
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avi.jY, avj.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      dtc $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof die;
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+         it $$7 = $$0.c(a);
+         it.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == it.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == it.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ky.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ky.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

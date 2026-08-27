@@ -1,70 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class ekl implements ejy {
-   private final List<ejx> a = Lists.newArrayList();
+public class ekl extends eli {
+   public static final MapCodec<ekl> a = MapCodec.unit(() -> ekl.b);
+   public static final ekl b = new ekl();
+   private final Map<dea, dea> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dec.m, dec.pr);
+      $$0.put(dec.cn, dec.pr);
+      $$0.put(dec.b, dec.pv);
+      $$0.put(dec.eH, dec.pw);
+      $$0.put(dec.eI, dec.pw);
+      $$0.put(dec.cQ, dec.ps);
+      $$0.put(dec.ni, dec.ps);
+      $$0.put(dec.nk, dec.pD);
+      $$0.put(dec.fj, dec.pA);
+      $$0.put(dec.ng, dec.pA);
+      $$0.put(dec.jI, dec.pu);
+      $$0.put(dec.nw, dec.pu);
+      $$0.put(dec.jE, dec.pE);
+      $$0.put(dec.jD, dec.pE);
+      $$0.put(dec.jK, dec.pz);
+      $$0.put(dec.nu, dec.pz);
+      $$0.put(dec.nK, dec.pB);
+      $$0.put(dec.nI, dec.pB);
+      $$0.put(dec.fP, dec.pt);
+      $$0.put(dec.fQ, dec.pt);
+      $$0.put(dec.eK, dec.py);
+      $$0.put(dec.eJ, dec.px);
+      $$0.put(dec.eW, dec.eX);
+   });
+
+   private ekl() {
+   }
 
    @Override
-   public void a(ejx $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public ejx a(ejl $$0) {
-      return ejx.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (ejx $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, ayt $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      ejl $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(ayt $$0, int $$1, int $$2) {
-      ejl $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
+   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
+      dea $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         $$5 = $$1;
+         drd $$7 = $$4.b();
+         drd $$8 = $$6.n();
+         if ($$7.b(dlu.b)) {
+            $$8 = $$8.a(dlu.b, $$7.c(dlu.b));
+         }
+
+         if ($$7.b(dlu.c)) {
+            $$8 = $$8.a(dlu.c, $$7.c(dlu.c));
+         }
+
+         if ($$7.b(dld.b)) {
+            $$8 = $$8.a(dld.b, $$7.c(dld.b));
+         }
+
+         return new ell.c($$4.a(), $$8, $$4.c());
       }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
    }
 
-   public eki a() {
-      return new eki(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public ejl d() {
-      return ejx.a(this.a.stream());
+   @Override
+   protected elk<?> a() {
+      return elk.l;
    }
 }

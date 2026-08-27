@@ -1,84 +1,60 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.annotations.VisibleForTesting;
 
-public class um implements vh {
-   private static final int c = 8;
-   public static final vj<um> a = new vj<um>() {
-      public um a(DataInput $$0, ut $$1) {
-         $$1.b(8L);
-         return um.b;
+public class um {
+   private static final int a = 512;
+   private final long b;
+   private long c;
+   private final int d;
+   private int e;
+
+   public um(long $$0, int $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static um a(long $$0) {
+      return new um($$0, 512);
+   }
+
+   public static um a() {
+      return new um(Long.MAX_VALUE, 512);
+   }
+
+   public void a(long $$0, long $$1) {
+      this.b($$0 * $$1);
+   }
+
+   public void b(long $$0) {
+      if (this.c + $$0 > this.b) {
+         throw new un("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+      } else {
+         this.c += $$0;
       }
+   }
 
-      @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) {
-         $$2.b(8L);
-         return $$1.a();
+   public void b() {
+      if (this.e >= this.d) {
+         throw new un("Tried to read NBT tag with too high complexity, depth > " + this.d);
+      } else {
+         this.e++;
       }
+   }
 
-      @Override
-      public void a(DataInput $$0, int $$1, ut $$2) {
+   public void c() {
+      if (this.e <= 0) {
+         throw new un("NBT-Accounter tried to pop stack-depth at top-level");
+      } else {
+         this.e--;
       }
-
-      @Override
-      public void b(DataInput $$0, ut $$1) {
-      }
-
-      @Override
-      public String a() {
-         return "END";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final um b = new um();
-
-   private um() {
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
+   @VisibleForTesting
+   public long d() {
+      return this.c;
    }
 
-   @Override
-   public int a() {
-      return 8;
-   }
-
-   @Override
-   public byte b() {
-      return 0;
-   }
-
-   @Override
-   public vj<um> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   public um e() {
-      return this;
-   }
-
-   @Override
-   public void a(vl $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public ve.b a(ve $$0) {
-      return $$0.a();
+   @VisibleForTesting
+   public int e() {
+      return this.e;
    }
 }

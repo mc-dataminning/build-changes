@@ -1,17 +1,28 @@
-import java.util.OptionalInt;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-public class ezt {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+public class ezt extends faq {
+   public Set<String> a = Sets.newHashSet();
 
-   public ezt(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static ezt a(String $$0) {
+      ezt $$1 = new ezt();
+      JsonParser $$2 = new JsonParser();
+
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
+      }
+
+      return $$1;
    }
 }

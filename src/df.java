@@ -1,37 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class df extends dh<df.a> {
+public abstract class df<T extends df.a> implements ap<T> {
+   private final Map<akv, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
+
    @Override
-   public Codec<df.a> a() {
-      return df.a.a;
+   public final void a(akv $$0, ap.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
-   public void a(aqu $$0, czc<?> $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public static ao<df.a> a(akt $$0) {
-      return an.g.a(new df.a(Optional.empty(), $$0));
-   }
-
-   public static record a(Optional<bd> b, akt c) implements dh.a {
-      public static final Codec<df.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(df.a::a), akt.a.fieldOf("recipe").forGetter(df.a::b)).apply($$0, df.a::new)
-      );
-
-      public boolean a(czc<?> $$0) {
-         return this.c.equals($$0.a());
+   @Override
+   public final void b(akv $$0, ap.a<T> $$1) {
+      Set<ap.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
       }
+   }
 
+   @Override
+   public final void a(akv $$0) {
+      this.a.remove($$0);
+   }
+
+   protected void a(aqo $$0, Predicate<T> $$1) {
+      akv $$2 = $$0.Q();
+      Set<ap.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         eph $$4 = br.b($$0, $$0);
+         List<ap.a<T>> $$5 = null;
+
+         for (ap.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bc> $$8 = $$7.a();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (ap.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
+      }
+   }
+
+   public interface a extends aq {
       @Override
-      public Optional<bd> a() {
-         return this.b;
+      default void a(bd $$0) {
+         $$0.a(this.a(), ".player");
       }
 
-      public akt b() {
-         return this.c;
-      }
+      Optional<bc> a();
    }
 }

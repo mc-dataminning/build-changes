@@ -1,5 +1,8 @@
-import java.util.function.Function;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eym<T> {
-   vh b(long var1, Function<T, String> var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ewn
+@ewm
+interface eym {
 }

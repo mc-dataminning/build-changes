@@ -1,11 +1,57 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public interface gqd extends gqg {
-   @Deprecated
-   @Override
-   default float call(cuh $$0, @Nullable fzn $$1, @Nullable bso $$2, int $$3) {
-      return aym.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+public class gqd extends akn {
+   @VisibleForTesting
+   static final char g = '#';
+   private final String h;
+
+   private gqd(String $$0, String $$1, String $$2, @Nullable akn.a $$3) {
+      super($$0, $$1, $$3);
+      this.h = $$2;
    }
 
-   float unclampedCall(cuh var1, @Nullable fzn var2, @Nullable bso var3, int var4);
+   public gqd(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.h = j($$2);
+   }
+
+   public gqd(akn $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gqd c(String $$0, String $$1) {
+      return new gqd("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.h;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gqd && super.equals($$0)) {
+         gqd $$1 = (gqd)$$0;
+         return this.h.equals($$1.h);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.h.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.h;
+   }
 }

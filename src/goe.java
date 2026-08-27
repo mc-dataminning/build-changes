@@ -1,19 +1,30 @@
-public class goe extends gpi<cka, fuz<cka>> {
-   private static final akt a = new akt("textures/entity/breeze/breeze_wind.png");
-   private static final fuz<cka> b = new fuz<>(fuz.a(128, 128).a());
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public goe(gmp<cka, fuz<cka>> $$0) {
-      super($$0);
+public class goe implements gnz {
+   public static final MapCodec<goe> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, goe::new)
+   );
+   private final String c;
+   private final String d;
+
+   public goe(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, cka $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.am + $$6;
-      fbg $$11 = $$1.getBuffer(gfo.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gjw.a(b, b.e()).a($$0, $$11, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   public void a(atx $$0, gnz.a $$1) {
+      akg $$2 = new akg("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         akn $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   public gob a() {
+      return goc.b;
    }
 }

@@ -1,23 +1,22 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bft extends DataFix {
-   public bft(Schema $$0) {
-      super($$0, false);
+public class bft extends azr {
+   private final Predicate<String> a;
+
+   public bft(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2.negate();
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsProgrammerArtFix",
-         this.getInputSchema().getType(bgf.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
-      );
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
    }
 }

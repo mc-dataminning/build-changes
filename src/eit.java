@@ -1,29 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public class eit extends eja {
-   public static final Codec<eit> a = RecordCodecBuilder.create($$0 -> $$0.group(dyu.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eit::new));
-   private final dyu.a c;
+public interface eit<P extends eis> {
+   eit<eir> a = a("single_pool_element", eir.b);
+   eit<eiq> b = a("list_pool_element", eiq.a);
+   eit<eim> c = a("feature_pool_element", eim.a);
+   eit<eil> d = a("empty_pool_element", eil.a);
+   eit<eip> e = a("legacy_single_pool_element", eip.a);
 
-   private eit(dyu.a $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static eit a(dyu.a $$0) {
-      return new eit($$0);
-   }
-
-   @Override
-   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new ir($$3, $$5, $$4)) : Stream.of();
-   }
-
-   @Override
-   public ejb<?> b() {
-      return ejb.k;
+   static <P extends eis> eit<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.ai, $$0, () -> $$1);
    }
 }

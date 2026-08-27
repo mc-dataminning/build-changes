@@ -1,104 +1,125 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dfh extends den implements dia {
-   public static final MapCodec<dfh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               lh.e.q().fieldOf("turns_into").forGetter(dfh::b),
-               lh.b.q().fieldOf("brush_sound").forGetter(dfh::c),
-               lh.b.q().fieldOf("brush_comleted_sound").forGetter(dfh::d),
-               u()
-            )
-            .apply($$0, dfh::new)
-   );
-   private static final duc c = dts.bv;
+public class dfh extends dhw implements ded {
+   public static final MapCodec<dfh> a = b(dfh::new);
    public static final int b = 2;
-   private final dfc d;
-   private final avn e;
-   private final avn f;
+   public static final dsd c = drt.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final evf[] m = new evf[]{
+      dea.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dea.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dea.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final evf[] n = new evf[]{
+      dea.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dea.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dea.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final evf[] o = new evf[]{
+      dea.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dea.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dea.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final evf[] F = new evf[]{
+      dea.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dea.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dea.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<dfh> a() {
       return a;
    }
 
-   public dfh(dfc $$0, avn $$1, avn $$2, dtb.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public dfh(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, it.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(c);
+   protected boolean d_(drd $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public dlw a_(dtc $$0) {
-      return dlw.c;
-   }
-
-   @Override
-   public void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if ($$1.c_($$2) instanceof dqg $$4) {
-         $$4.b();
-      }
-
-      if (dib.m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cif $$5 = cif.a($$1, $$2, $$0);
-         $$5.r();
-      }
-   }
-
-   @Override
-   public void a(dca $$0, ir $$1, cif $$2) {
-      ewu $$3 = $$2.cP().f();
-      $$0.c(2001, ir.a($$3), dfc.i($$2.t()));
-      $$0.a($$2, dxv.f, $$3);
-   }
-
-   @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      if ($$3.a(16) == 0) {
-         ir $$4 = $$2.d();
-         if (dib.m($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new ks(lb.B, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
          }
+      }
+   }
+
+   @Override
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      drd $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(avx.z);
+   }
+
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      int $$4 = $$0.c(c);
+      switch ((it)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
       }
    }
 
    @Nullable
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dqg($$0, $$1);
+   public drd a(cxb $$0) {
+      drd $$1 = this.n();
+      dbc $$2 = $$0.q();
+      io $$3 = $$0.a();
+
+      for (it $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 
-   public dfc b() {
-      return this.d;
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public avn c() {
-      return this.e;
+   @Override
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return $$2.c(c) < 2;
    }
 
-   public avn d() {
-      return this.f;
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
    }
 }

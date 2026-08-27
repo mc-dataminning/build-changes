@@ -1,134 +1,89 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ddl {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final boo<ddl.c> a = boo.c();
-   public static final ddl b = new ddl.a().a();
-   public static final MapCodec<ddl> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bsr.i, boo.c(ddl.c.a).promotePartial(ad.a("Spawn data: ", d::error)), azg.a(bsr.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(lh.g.q(), ddl.b.a, lh.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ddl::new)
+public class ddl extends ddi {
+   public static final MapCodec<ddl> b = b(ddl::new);
+   public static final drx c = dhw.aE;
+   private static final Map<it, evf> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         it.c,
+         dea.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         it.d,
+         dea.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         it.e,
+         dea.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         it.f,
+         dea.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
    );
-   private final float f;
-   private final Map<bsr, boo<ddl.c>> g;
-   private final Map<bsb<?>, ddl.b> h;
 
-   ddl(float $$0, Map<bsr, boo<ddl.c>> $$1, Map<bsb<?>, ddl.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   @Override
+   public MapCodec<? extends ddl> a() {
+      return b;
    }
 
-   public boo<ddl.c> a(bsr $$0) {
-      return this.g.getOrDefault($$0, a);
+   protected ddl(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, it.c).a(d, Boolean.valueOf(true)));
+   }
+
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return e.get($$0.c(c));
+   }
+
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dec.a.n() : $$0;
+   }
+
+   @Override
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      it $$3 = $$0.c(c);
+      io $$4 = $$2.a($$3.g());
+      drd $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
-   public ddl.b a(bsb<?> $$0) {
-      return this.h.get($$0);
-   }
+   @Override
+   public drd a(cxb $$0) {
+      drd $$1 = super.a($$0);
+      dbc $$2 = $$0.q();
+      io $$3 = $$0.a();
+      it[] $$4 = $$0.f();
 
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bsr, List<ddl.c>> a = Stream.of(bsr.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bsb<?>, ddl.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public ddl.a a(bsr $$0, ddl.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
+      for (it $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      public ddl.a a(bsb<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new ddl.b($$2, $$1));
-         return this;
-      }
-
-      public ddl.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ddl a() {
-         return new ddl(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> boo.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<ddl.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, ddl.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bom.a {
-      public static final Codec<ddl.c> a = axu.b(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     lh.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bol.a.fieldOf("weight").forGetter(bom.a::a),
-                     axu.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     axu.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, ddl.c::new)
-         ),
-         (Function<ddl.c, DataResult<ddl.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final bsb<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bsb<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bol.a($$1), $$2, $$3);
-      }
-
-      public c(bsb<?> $$0, bol $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bsr.h ? bsb.aA : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bsb.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+      return null;
    }
 }

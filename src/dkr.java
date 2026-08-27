@@ -1,64 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkr extends dfc implements dff {
-   public static final MapCodec<dkr> a = b(dkr::new);
+public class dkr extends dgk implements dkq {
+   public static final MapCodec<dkr> b = b(dkr::new);
 
    @Override
    public MapCodec<dkr> a() {
-      return a;
+      return b;
    }
 
-   protected dkr(dtb.d $$0) {
-      super($$0);
-   }
-
-   private static boolean b(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.c();
-      dtc $$4 = $$1.a_($$3);
-      int $$5 = eov.a($$1, $$0, $$2, $$4, $$3, iw.b, $$4.b($$1, $$3));
-      return $$5 < $$1.Q();
+   public dkr(drc.d $$0) {
+      super(boy.a(1), $$0);
    }
 
    @Override
-   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dfe.eJ.n());
-      }
-   }
+   public int a(dkv.a $$0, dba $$1, io $$2, aym $$3, dkv $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         io $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               io $$10 = $$7.c();
+               drd $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), avj.e, 1.0F, 1.0F);
+            }
 
-   @Override
-   public boolean b(dcd $$0, ir $$1, dtc $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
-      dtc $$4 = $$0.a_($$2);
-      ir $$5 = $$2.c();
-      duz $$6 = $$0.l().g();
-      jn<ebm<?, ?>> $$7 = $$0.I_().d(li.aC);
-      if ($$4.a(dfe.pw)) {
-         this.a($$7, sc.k, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(dfe.pn)) {
-         this.a($$7, sc.m, $$0, $$6, $$1, $$5);
-         this.a($$7, sc.o, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, sc.s, $$0, $$6, $$1, $$5);
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
+      } else {
+         return $$6;
       }
    }
 
-   private void a(jn<ebm<?, ?>> $$0, aks<ebm<?, ?>> $$1, aqt $$2, duz $$3, ayt $$4, ir $$5) {
-      $$0.b($$1).ifPresent($$4x -> ((ebm)$$4x.a()).a($$2, $$3, $$4, $$5));
+   private static int a(dkv $$0, io $$1, io $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = ayf.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = ayf.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private drd a(dba $$0, io $$1, aym $$2, boolean $$3) {
+      drd $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dec.qV.n().a(dku.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dec.qQ.n();
+      }
+
+      return $$4.b(drt.C) && !$$0.b_($$1).c() ? $$4.a(drt.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(dba $$0, io $$1) {
+      drd $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(dec.G) && $$2.u().b(emx.c)) {
+         int $$3 = 0;
+
+         for (io $$4 : io.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            drd $$5 = $$0.a_($$4);
+            if ($$5.a(dec.qQ) || $$5.a(dec.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public dff.a aq_() {
-      return dff.a.a;
+   public boolean d() {
+      return false;
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface zg {
+public record zg<T extends ze<?>>(zf a, akn b) {
+   @Override
+   public String toString() {
+      return this.a.b() + "/" + this.b;
+   }
 }

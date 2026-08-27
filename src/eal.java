@@ -1,21 +1,89 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eal extends eam {
-   public static final Codec<eal> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eal::new));
-
-   public eal(jv $$0) {
+public class eal extends dzz<eck> {
+   public eal(Codec<eck> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0) {
-      return $$0.e();
-   }
+   public boolean a(eab<eck> $$0) {
+      io $$1 = $$0.e();
+      aym $$2 = $$0.d();
+      dbu $$3 = $$0.b();
 
-   @Override
-   public eac<?> a() {
-      return eac.e;
+      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
+         $$1 = $$1.d();
+      }
+
+      if (!$$3.a_($$1).a(dec.dP)) {
+         return false;
+      } else {
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
+
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = ayf.f($$7);
+
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)ayf.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)ayf.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     drd $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.i() || b($$13) || $$13.a(dec.dP) || $$13.a(dec.dO)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dec.iC.n());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.i() || b($$13) || $$13.a(dec.dP) || $$13.a(dec.dO)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dec.iC.n());
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               io $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  drd $$19 = $$3.a_($$17);
+                  if (!$$19.i() && !b($$19) && !$$19.a(dec.dP) && !$$19.a(dec.dO) && !$$19.a(dec.iC)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, dec.iC.n());
+                  $$17 = $$17.d();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

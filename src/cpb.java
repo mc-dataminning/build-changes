@@ -1,218 +1,190 @@
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class cpb {
-   public static final zc<wp, cpb> a = new zc<wp, cpb>() {
-      public cpb a(wp $$0) {
-         int $$1 = $$0.l();
-         int $$2 = $$0.l();
-         int $$3 = $$0.l();
-         List<dtc> $$4 = $$0.a($$0x -> dfc.a($$0x.l()));
-         int $$5 = aym.e($$4.size());
-         dtc[] $$6 = new dtc[$$1 * $$2 * $$3];
-         aza $$7 = new aza($$5, $$6.length, $$0.d());
-
-         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
-            $$6[$$8] = $$4.get($$7.a($$8));
-         }
-
-         ArrayList<ir> $$9 = $$0.a(ArrayList::new, ir.b);
-         return new cpb($$6, $$9, $$1, $$2, $$3);
-      }
-
-      public void a(wp $$0, cpb $$1) {
-         $$0.c($$1.f);
-         $$0.c($$1.g);
-         $$0.c($$1.h);
-         Reference2IntMap<dtc> $$2 = new Reference2IntOpenHashMap();
-         List<dtc> $$3 = new ArrayList<>();
-         $$2.defaultReturnValue(-1);
-
-         for (dtc $$4 : $$1.d) {
-            int $$5 = $$3.size();
-            int $$6 = $$2.putIfAbsent($$4, $$5);
-            if ($$6 == -1) {
-               $$3.add($$4);
-            }
-         }
-
-         $$0.a($$3, ($$0x, $$1x) -> $$0x.c(dfc.i($$1x)));
-         int $$7 = aym.e($$3.size());
-         axb $$8 = new aza($$7, $$1.f * $$1.g * $$1.h);
-         int $$9 = 0;
-
-         for (dtc $$10 : $$1.d) {
-            $$8.b($$9++, $$2.getInt($$10));
-         }
-
-         $$0.a($$8.a());
-         $$0.a($$1.e, ir.b);
+public class cpb extends cov {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final cpg s;
+   long t;
+   public final bpp n = new bqf(2) {
+      @Override
+      public void e() {
+         cpb.this.a(this);
+         super.e();
       }
    };
-   private static final int b = -1;
-   private static final dtc c = dfe.a.n();
-   final dtc[] d;
-   final List<ir> e;
-   final int f;
-   final int g;
-   final int h;
+   private final cql u = new cql() {
+      @Override
+      public void e() {
+         cpb.this.a(this);
+         super.e();
+      }
+   };
 
-   cpb(dtc[] $$0, List<ir> $$1, int $$2, int $$3, int $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   public cpb(int $$0, clx $$1) {
+      this($$0, $$1, cpg.a);
    }
 
-   public cpb(int $$0, int $$1, int $$2) {
-      this.d = new dtc[$$0 * $$1 * $$2];
-      Arrays.fill(this.d, c);
-      this.e = new ArrayList<>();
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
+   public cpb(int $$0, clx $$1, final cpg $$2) {
+      super(cqc.x, $$0);
+      this.s = $$2;
+      this.a(new cqq(this.n, 0, 15, 15) {
+         @Override
+         public boolean a(ctq $$0) {
+            return $$0.a(ctt.rU);
+         }
+      });
+      this.a(new cqq(this.n, 1, 15, 52) {
+         @Override
+         public boolean a(ctq $$0) {
+            return $$0.a(ctt.qO) || $$0.a(ctt.uj) || $$0.a(ctt.fT);
+         }
+      });
+      this.a(new cqq(this.u, 2, 145, 39) {
+         @Override
+         public boolean a(ctq $$0) {
+            return false;
+         }
 
-   public void a(int $$0, int $$1, int $$2, dtc $$3) {
-      int $$4 = this.b($$0, $$1, $$2);
-      if ($$4 == -1) {
-         throw new IllegalStateException("Block was out of bounds");
-      } else {
-         this.d[$$4] = $$3;
+         @Override
+         public void a(cly $$0, ctq $$1) {
+            cpb.this.i.get(0).a(1);
+            cpb.this.i.get(1).a(1);
+            $$1.g().b($$1, $$0.dP(), $$0);
+            $$2.a(($$0x, $$1x) -> {
+               long $$2xx = $$0x.Y();
+               if (cpb.this.t != $$2xx) {
+                  $$0x.a(null, $$1x, avi.Ar, avj.e, 1.0F, 1.0F);
+                  cpb.this.t = $$2xx;
+               }
+            });
+            super.a($$0, $$1);
+         }
+      });
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cqq($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cqq($$1, $$5, 8 + $$5 * 18, 142));
       }
    }
 
-   public void a(ir $$0) {
-      this.e.add($$0);
+   @Override
+   public boolean a(cly $$0) {
+      return a(this.s, $$0, dec.nX);
    }
 
-   public void a(dca $$0, ewu $$1, iw $$2) {
-      this.e.forEach($$3 -> {
-         dtc $$4 = this.a($$3.u(), $$3.v(), $$3.w());
-         if ($$4.b() instanceof coy $$6) {
-            $$6.a($$0, this, $$4, $$3, $$1.b((double)$$3.u(), (double)$$3.v(), (double)$$3.w()), $$2);
+   @Override
+   public void a(bpp $$0) {
+      ctq $$1 = this.n.a(0);
+      ctq $$2 = this.n.a(1);
+      ctq $$3 = this.u.a(2);
+      if ($$3.e() || !$$1.e() && !$$2.e()) {
+         if (!$$1.e() && !$$2.e()) {
+            this.a($$1, $$2, $$3);
+         }
+      } else {
+         this.u.b(2);
+      }
+   }
+
+   private void a(ctq $$0, ctq $$1, ctq $$2) {
+      this.s.a(($$3, $$4) -> {
+         eol $$5 = cty.b($$0, $$3);
+         if ($$5 != null) {
+            ctq $$6;
+            if ($$1.a(ctt.qO) && !$$5.h && $$5.f < 4) {
+               $$6 = $$0.c(1);
+               $$6.b(kb.C, cwr.b);
+               this.d();
+            } else if ($$1.a(ctt.fT) && !$$5.h) {
+               $$6 = $$0.c(1);
+               $$6.b(kb.C, cwr.a);
+               this.d();
+            } else {
+               if (!$$1.a(ctt.uj)) {
+                  this.u.b(2);
+                  this.d();
+                  return;
+               }
+
+               $$6 = $$0.c(2);
+               this.d();
+            }
+
+            if (!ctq.a($$6, $$2)) {
+               this.u.a(2, $$6);
+               this.d();
+            }
          }
       });
    }
 
-   public dtc a(int $$0, int $$1, int $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      return $$3 == -1 ? c : this.d[$$3];
+   @Override
+   public boolean a(ctq $$0, cqq $$1) {
+      return $$1.c != this.u && super.a($$0, $$1);
    }
 
-   public dtc b(ir $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
+   @Override
+   public ctq a(cly $$0, int $$1) {
+      ctq $$2 = ctq.i;
+      cqq $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         ctq $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 == 2) {
+            $$4.g().b($$4, $$0.dP(), $$0);
+            if (!this.a($$4, 3, 39, true)) {
+               return ctq.i;
+            }
 
-   private int b(int $$0, int $$1, int $$2) {
-      return $$0 >= 0 && $$1 >= 0 && $$2 >= 0 && $$0 < this.f && $$1 < this.g && $$2 < this.h ? ($$0 + $$2 * this.f) * this.g + $$1 : -1;
-   }
-
-   public int a() {
-      return this.f;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   public cpb d() {
-      return new cpb(Arrays.copyOf(this.d, this.d.length), new ArrayList<>(this.e), this.f, this.g, this.h);
-   }
-
-   public void a(ir $$0, dca $$1) {
-      ir.a $$2 = new ir.a();
-
-      for (int $$3 = 0; $$3 < this.h; $$3++) {
-         for (int $$4 = 0; $$4 < this.f; $$4++) {
-            for (int $$5 = 0; $$5 < this.g; $$5++) {
-               $$2.a($$0, $$4, $$5, $$3);
-               dtc $$6 = this.a($$4, $$5, $$3);
-               if (!$$6.i()) {
-                  epe $$7 = $$1.b_($$2);
-                  if ($$7.b(epf.c)) {
-                     $$6 = $$6.b(dts.C, Boolean.valueOf(true));
-                  }
-
-                  $$1.a($$2, $$6, 18);
+            $$3.b($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if ($$4.a(ctt.rU)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return ctq.i;
                }
+            } else if (!$$4.a(ctt.qO) && !$$4.a(ctt.uj) && !$$4.a(ctt.fT)) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return ctq.i;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return ctq.i;
+               }
+            } else if (!this.a($$4, 1, 2, false)) {
+               return ctq.i;
             }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return ctq.i;
          }
+
+         if ($$4.e()) {
+            $$3.e(ctq.i);
+         }
+
+         $$3.b();
+         if ($$4.I() == $$2.I()) {
+            return ctq.i;
+         }
+
+         $$3.a($$0, $$4);
+         this.d();
       }
 
-      for (int $$8 = 0; $$8 < this.h; $$8++) {
-         for (int $$9 = 0; $$9 < this.f; $$9++) {
-            for (int $$10 = 0; $$10 < this.g; $$10++) {
-               $$2.a($$0, $$9, $$10, $$8);
-               $$1.b($$2, this.a($$9, $$10, $$8).b());
-            }
-         }
-      }
+      return $$2;
    }
 
-   public static cpb a(jb<dfc> $$0, uk $$1) {
-      int $$2 = $$1.h("size_x");
-      int $$3 = $$1.h("size_y");
-      int $$4 = $$1.h("size_z");
-      dtc[] $$5 = new dtc[$$2 * $$3 * $$4];
-      uq $$6 = $$1.c("palette", 10);
-      List<dtc> $$7 = new ArrayList<>();
-
-      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
-         $$7.add(uz.a($$0, $$6.a($$8)));
-      }
-
-      int[] $$9 = $$1.n("blocks");
-      if ($$9.length != $$5.length) {
-         return new cpb($$2, $$3, $$4);
-      } else {
-         for (int $$10 = 0; $$10 < $$9.length; $$10++) {
-            int $$11 = $$9[$$10];
-            $$5[$$10] = $$11 < $$7.size() ? $$7.get($$11) : dfe.a.n();
-         }
-
-         List<ir> $$12 = new ArrayList<>();
-         if ($$1.b("tickables", 12)) {
-            Arrays.stream($$1.o("tickables")).mapToObj(ir::d).forEach($$12::add);
-         }
-
-         return new cpb($$5, $$12, $$2, $$3, $$4);
-      }
-   }
-
-   public vh e() {
-      uk $$0 = new uk();
-      $$0.a("size_x", this.f);
-      $$0.a("size_y", this.g);
-      $$0.a("size_z", this.h);
-      Reference2IntMap<dtc> $$1 = new Reference2IntOpenHashMap();
-      $$1.defaultReturnValue(-1);
-      uq $$2 = new uq();
-      int[] $$3 = new int[this.d.length];
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         dtc $$5 = this.d[$$4];
-         int $$6 = $$2.size();
-         int $$7 = $$1.putIfAbsent($$5, $$6);
-         if ($$7 == -1) {
-            $$2.add(uz.a($$5));
-            $$3[$$4] = $$6;
-         } else {
-            $$3[$$4] = $$7;
-         }
-      }
-
-      $$0.a("palette", $$2);
-      $$0.a("blocks", new uo($$3));
-      $$0.a("tickables", this.e.stream().mapToLong(ir::a).toArray());
-      return $$0;
+   @Override
+   public void b(cly $$0) {
+      super.b($$0);
+      this.u.b(2);
+      this.s.a(($$1, $$2) -> this.a($$0, this.n));
    }
 }

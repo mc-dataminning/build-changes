@@ -1,24 +1,16 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class baw extends bfe {
+public class baw extends DataFix {
    public baw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bgf.s, "Sign");
+      super($$0, $$1);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update($$1, azr::b);
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         $$0x = this.a($$0x, "Text1");
-         $$0x = this.a($$0x, "Text2");
-         $$0x = this.a($$0x, "Text3");
-         return this.a($$0x, "Text4");
-      });
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bga.u), $$0 -> $$0.update(DSL.remainderFinder(), bav::a)
+      );
    }
 }

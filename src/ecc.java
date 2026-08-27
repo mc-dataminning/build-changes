@@ -1,43 +1,32 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ecc<FC extends eek> {
-   private final Optional<ebm<?, ?>> a;
-   private final dcv b;
-   private final duz c;
-   private final ayt d;
-   private final ir e;
-   private final FC f;
+public class ecc implements ecd {
+   public static final Codec<ecc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(io.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecc::new)
+   );
+   private final Optional<io> b;
+   private final boolean c;
 
-   public ecc(Optional<ebm<?, ?>> $$0, dcv $$1, duz $$2, ayt $$3, ir $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private ecc(Optional<io> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public Optional<ebm<?, ?>> a() {
-      return this.a;
+   public static ecc a(io $$0, boolean $$1) {
+      return new ecc(Optional.of($$0), $$1);
    }
 
-   public dcv b() {
+   public static ecc a() {
+      return new ecc(Optional.empty(), false);
+   }
+
+   public Optional<io> b() {
       return this.b;
    }
 
-   public duz c() {
+   public boolean c() {
       return this.c;
-   }
-
-   public ayt d() {
-      return this.d;
-   }
-
-   public ir e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
    }
 }

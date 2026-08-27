@@ -1,232 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
 
-public record dwu(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awt<dfc> v, akt w, float x, dwu.a y
-) {
-   public static final int a = ir.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dwu> h = axu.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axu.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dwu::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dwu::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dwu::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dwu::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dwu::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dwu::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dwu::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dwu::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dwu::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dwu::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dwu::p),
-                  awt.b(li.f).fieldOf("infiniburn").forGetter(dwu::q),
-                  akt.a.fieldOf("effects").orElse(dws.f).forGetter(dwu::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dwu::s),
-                  dwu.a.a.forGetter(dwu::t)
-               )
-               .apply($$0, dwu::new)
-      )
+public class dwu {
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<dwu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dwu::new)
    );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<ja<dwu>> j = akp.a(li.aE, h);
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   public dwu(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awt<dfc> v, akt w, float x, dwu.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-      }
-   }
-
-   @Deprecated
-   public static DataResult<aks<dca>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dca.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(dca.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(dca.j);
-         }
-      }
-
-      return dca.g.parse($$0);
-   }
-
-   public static double a(dwu $$0, dwu $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(aks<dca> $$0, Path $$1) {
-      if ($$0 == dca.h) {
-         return $$1;
-      } else if ($$0 == dca.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dca.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
-      }
-   }
-
-   public boolean a() {
-      return this.k.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = aym.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public bpf d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.m;
-   }
-
-   public boolean i() {
-      return this.n;
-   }
-
-   public boolean j() {
-      return this.o;
-   }
-
-   public double k() {
-      return this.p;
-   }
-
-   public boolean l() {
-      return this.q;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public int n() {
-      return this.s;
-   }
-
-   public int o() {
-      return this.t;
-   }
-
-   public int p() {
-      return this.u;
-   }
-
-   public awt<dfc> q() {
-      return this.v;
-   }
-
-   public akt r() {
-      return this.w;
-   }
-
-   public float s() {
-      return this.x;
-   }
-
-   public dwu.a t() {
-      return this.y;
-   }
-
-   public static record a(boolean b, boolean c, bpf d, int e) {
-      public static final MapCodec<dwu.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dwu.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dwu.a::b),
-                  bpf.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dwu.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dwu.a::d)
-               )
-               .apply($$0, dwu.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
-      }
-
-      public bpf c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   public dwu(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

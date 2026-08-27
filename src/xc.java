@@ -1,81 +1,99 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class xc {
-   public static final Codec<xc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xc.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xc::new)
-   );
-   private final xc.a b;
-   private final String c;
-
-   public xc(xc.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public xc.a a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xc $$1 = (xc)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
-
-   public static enum a implements azg {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
-
-      public static final MapCodec<xc.a> g = azg.a(xc.a::values).fieldOf("action");
-      public static final MapCodec<xc.a> h = axu.a(g, xc.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
-      }
-
-      public boolean a() {
-         return this.i;
+public interface xc {
+   Optional<azh> a = Optional.of(azh.a);
+   xc b = new xc() {
+      @Override
+      public <T> Optional<T> a(xc.a<T> $$0) {
+         return Optional.empty();
       }
 
       @Override
-      public String c() {
-         return this.j;
+      public <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
+         return Optional.empty();
       }
+   };
 
-      public static DataResult<xc.a> a(xc.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
+   <T> Optional<T> a(xc.a<T> var1);
+
+   <T> Optional<T> a(xc.b<T> var1, xu var2);
+
+   static xc e(final String $$0) {
+      return new xc() {
+         @Override
+         public <T> Optional<T> a(xc.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xc.b<T> $$0x, xu $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static xc a(final String $$0, final xu $$1) {
+      return new xc() {
+         @Override
+         public <T> Optional<T> a(xc.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xc.b<T> $$0x, xu $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static xc a(xc... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static xc a(final List<? extends xc> $$0) {
+      return new xc() {
+         @Override
+         public <T> Optional<T> a(xc.a<T> $$0x) {
+            for (xc $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(xc.b<T> $$0x, xu $$1) {
+            for (xc $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(xu var1, String var2);
    }
 }

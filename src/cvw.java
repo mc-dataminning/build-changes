@@ -1,143 +1,45 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cvw extends cuc {
-   private static final Map<bsb<? extends bsq>, cvw> a = Maps.newIdentityHashMap();
-   private static final MapCodec<bsb<?>> b = lh.g.q().fieldOf("id");
-   private final int c;
-   private final int j;
-   private final bsb<?> k;
+public class cvw {
+   public static final akm<cvv> a = a("quartz");
+   public static final akm<cvv> b = a("iron");
+   public static final akm<cvv> c = a("netherite");
+   public static final akm<cvv> d = a("redstone");
+   public static final akm<cvv> e = a("copper");
+   public static final akm<cvv> f = a("gold");
+   public static final akm<cvv> g = a("emerald");
+   public static final akm<cvv> h = a("diamond");
+   public static final akm<cvv> i = a("lapis");
+   public static final akm<cvv> j = a("amethyst");
 
-   public cvw(bsb<? extends bsq> $$0, int $$1, int $$2, cuc.a $$3) {
-      super($$3);
-      this.k = $$0;
-      this.c = $$1;
-      this.j = $$2;
-      a.put($$0, this);
+   public static void a(qo<cvv> $$0) {
+      a($$0, a, ctt.oB, xu.a.a(14931140), 0.1F);
+      a($$0, b, ctt.oE, xu.a.a(15527148), 0.2F, Map.of(crh.c, "iron_darker"));
+      a($$0, c, ctt.oJ, xu.a.a(6445145), 0.3F, Map.of(crh.g, "netherite_darker"));
+      a($$0, d, ctt.lH, xu.a.a(9901575), 0.4F);
+      a($$0, e, ctt.oG, xu.a.a(11823181), 0.5F);
+      a($$0, f, ctt.oI, xu.a.a(14594349), 0.6F, Map.of(crh.d, "gold_darker"));
+      a($$0, g, ctt.oz, xu.a.a(1155126), 0.7F);
+      a($$0, h, ctt.oy, xu.a.a(7269586), 0.8F, Map.of(crh.e, "diamond_darker"));
+      a($$0, i, ctt.oA, xu.a.a(4288151), 0.9F);
+      a($$0, j, ctt.oC, xu.a.a(10116294), 1.0F);
    }
 
-   @Override
-   public bqa a(cyf $$0) {
-      dca $$1 = $$0.q();
-      if (!($$1 instanceof aqt)) {
-         return bqa.a;
-      } else {
-         cuh $$2 = $$0.n();
-         ir $$3 = $$0.a();
-         iw $$4 = $$0.k();
-         dtc $$5 = $$1.a_($$3);
-         if ($$1.c_($$3) instanceof dcs $$6) {
-            bsb<?> $$7 = this.j($$2);
-            $$6.a($$7, $$1.F_());
-            $$1.a($$3, $$5, $$5, 3);
-            $$1.a($$0.o(), dxv.c, $$3);
-            $$2.h(1);
-            return bqa.b;
-         } else {
-            ir $$8;
-            if ($$5.k($$1, $$3).c()) {
-               $$8 = $$3;
-            } else {
-               $$8 = $$3.a($$4);
-            }
-
-            bsb<?> $$10 = this.j($$2);
-            if ($$10.a((aqt)$$1, $$2, $$0.o(), $$8, bss.m, true, !Objects.equals($$3, $$8) && $$4 == iw.b) != null) {
-               $$2.h(1);
-               $$1.a($$0.o(), dxv.t, $$3);
-            }
-
-            return bqa.b;
-         }
-      }
+   public static Optional<ix.c<cvv>> a(iz.a $$0, ctq $$1) {
+      return $$0.b(lf.aO).b().filter($$1x -> $$1.a(((cvv)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      ewq $$4 = a($$0, $$1, dbj.b.b);
-      if ($$4.c() != ews.a.b) {
-         return bqb.c($$3);
-      } else if (!($$0 instanceof aqt)) {
-         return bqb.a($$3);
-      } else {
-         ir $$6 = $$4.a();
-         if (!($$0.a_($$6).b() instanceof djw)) {
-            return bqb.c($$3);
-         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
-            bsb<?> $$7 = this.j($$3);
-            brv $$8 = $$7.a((aqt)$$0, $$3, $$1, $$6, bss.m, false, false);
-            if ($$8 == null) {
-               return bqb.c($$3);
-            } else {
-               $$3.a(1, $$1);
-               $$1.b(avz.c.b(this));
-               $$0.a($$1, dxv.t, $$8.ds());
-               return bqb.b($$3);
-            }
-         } else {
-            return bqb.d($$3);
-         }
-      }
+   private static void a(qo<cvv> $$0, akm<cvv> $$1, ctl $$2, xu $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public boolean a(cuh $$0, bsb<?> $$1) {
-      return Objects.equals(this.j($$0), $$1);
+   private static void a(qo<cvv> $$0, akm<cvv> $$1, ctl $$2, xu $$3, float $$4, Map<ix<crg>, String> $$5) {
+      cvv $$6 = cvv.a($$1.a().a(), $$2, $$4, wx.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public int a(int $$0) {
-      return $$0 == 0 ? this.c : this.j;
-   }
-
-   @Nullable
-   public static cvw a(@Nullable bsb<?> $$0) {
-      return a.get($$0);
-   }
-
-   public static Iterable<cvw> d() {
-      return Iterables.unmodifiableIterable(a.values());
-   }
-
-   public bsb<?> j(cuh $$0) {
-      cxf $$1 = $$0.a(ke.K, cxf.a);
-      return !$$1.b() ? $$1.a(b).result().orElse(this.k) : this.k;
-   }
-
-   @Override
-   public cop m() {
-      return this.k.m();
-   }
-
-   public Optional<bsq> a(cly $$0, bsq $$1, bsb<? extends bsq> $$2, aqt $$3, ewu $$4, cuh $$5) {
-      if (!this.a($$5, $$2)) {
-         return Optional.empty();
-      } else {
-         bsq $$6;
-         if ($$1 instanceof brp) {
-            $$6 = ((brp)$$1).a($$3, (brp)$$1);
-         } else {
-            $$6 = $$2.a((dca)$$3);
-         }
-
-         if ($$6 == null) {
-            return Optional.empty();
-         } else {
-            $$6.a(true);
-            if (!$$6.o_()) {
-               return Optional.empty();
-            } else {
-               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
-               $$3.a_($$6);
-               $$6.b($$5.a(ke.f));
-               $$5.a(1, $$0);
-               return Optional.of($$6);
-            }
-         }
-      }
+   private static akm<cvv> a(String $$0) {
+      return akm.a(lf.aO, new akn($$0));
    }
 }

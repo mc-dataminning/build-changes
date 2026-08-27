@@ -1,79 +1,55 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public class acn implements ze<abq> {
+   public static final yv<wi, acn> a = ze.a(acn::a, acn::new);
+   public static final int b = -1;
+   public static final int c = -2;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final ctq g;
 
-public record acn(List<acn.a> b) implements zl<abw> {
-   public static final zc<we, acn> a = zl.a(acn::a, acn::new);
-   private static final int c = 2097152;
-
-   private acn(we $$0) {
-      this($$0.a(acn.a::new));
+   public acn(int $$0, int $$1, int $$2, ctq $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3.s();
    }
 
-   public static acn a(List<dvi> $$0) {
-      return new acn($$0.stream().map(acn.a::new).toList());
+   private acn(wi $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = ctq.e.decode($$0);
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wi $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      ctq.e.encode($$0, this.g);
    }
 
    @Override
-   public zn<acn> a() {
-      return agj.q;
+   public zg<acn> a() {
+      return agc.w;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public static record a(dbh a, byte[] b) {
-      public a(dvi $$0) {
-         this($$0.g(), new byte[a($$0)]);
-         a(new we(this.d()), $$0);
-      }
+   public int b() {
+      return this.d;
+   }
 
-      public a(we $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
+   public int e() {
+      return this.f;
+   }
 
-      private static int a(dvi $$0) {
-         int $$1 = 0;
+   public ctq f() {
+      return this.g;
+   }
 
-         for (dvj $$2 : $$0.e()) {
-            $$1 += $$2.i().c();
-         }
-
-         return $$1;
-      }
-
-      public we a() {
-         return new we(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(we $$0, dvi $$1) {
-         for (dvj $$2 : $$1.e()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(we $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public dbh b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public int g() {
+      return this.e;
    }
 }

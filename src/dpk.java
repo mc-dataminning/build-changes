@@ -1,61 +1,221 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpk extends dfc {
-   public static final MapCodec<dpk> a = b(dpk::new);
+public class dpk extends doi implements bpn, bqa {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bpp e = new bpp() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   @Override
-   public MapCodec<dpk> a() {
-      return a;
+      @Override
+      public boolean c() {
+         return dpk.this.g.e();
+      }
+
+      @Override
+      public ctq a(int $$0) {
+         return $$0 == 0 ? dpk.this.g : ctq.i;
+      }
+
+      @Override
+      public ctq a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            ctq $$2 = dpk.this.g.a($$1);
+            if (dpk.this.g.e()) {
+               dpk.this.k();
+            }
+
+            return $$2;
+         } else {
+            return ctq.i;
+         }
+      }
+
+      @Override
+      public ctq b(int $$0) {
+         if ($$0 == 0) {
+            ctq $$1 = dpk.this.g;
+            dpk.this.g = ctq.i;
+            dpk.this.k();
+            return $$1;
+         } else {
+            return ctq.i;
+         }
+      }
+
+      @Override
+      public void a(int $$0, ctq $$1) {
+      }
+
+      @Override
+      public int ai_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dpk.this.e();
+      }
+
+      @Override
+      public boolean a(cly $$0) {
+         return bpp.a(dpk.this, $$0) && dpk.this.c();
+      }
+
+      @Override
+      public boolean b(int $$0, ctq $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cpf f = new cpf() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dpk.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dpk.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   ctq g = ctq.i;
+   int h;
+   private int i;
+
+   public dpk(io $$0, drd $$1) {
+      super(dok.D, $$0, $$1);
    }
 
-   protected dpk(dtb.d $$0) {
-      super($$0);
+   public ctq b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.g.a(ctt.tZ) || this.g.a(ctt.ua);
+   }
+
+   public void b(ctq $$0) {
+      this.a($$0, null);
+   }
+
+   void k() {
+      this.h = 0;
+      this.i = 0;
+      dil.a(null, this.i(), this.aA_(), this.n(), false);
+   }
+
+   public void a(ctq $$0, @Nullable cly $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = c(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = ayf.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dil.a(this.i(), this.aA_(), this.n());
+      }
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public int j() {
+      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
+      return ayf.d($$0 * 14.0F) + (this.c() ? 1 : 0);
+   }
+
+   private ctq b(ctq $$0, @Nullable cly $$1) {
+      if (this.n instanceof aqn && $$0.a(ctt.ua)) {
+         cvo.a($$0, this.a($$1), $$1);
+      }
+
+      return $$0;
+   }
+
+   private ee a(@Nullable cly $$0) {
+      String $$1;
+      wx $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = wx.b("Lectern");
+      } else {
+         $$1 = $$0.af().getString();
+         $$2 = $$0.O_();
+      }
+
+      eum $$5 = eum.b(this.o);
+      return new ee(ed.a, $$5, eul.a, (aqn)this.n, 2, $$1, $$2, this.n.o(), $$0);
    }
 
    @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if ($$1.E_().i()) {
-         $$1.a($$2, dfe.bw.n(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, avo.CF, avq.e, 1.0F, (1.0F + $$1.F_().i() * 0.2F) * 0.7F);
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(ctq.a($$1, (va)$$0.p("Book")).orElse(ctq.i), null);
+      } else {
+         this.g = ctq.i;
+      }
+
+      this.i = c(this.g);
+      this.h = ayf.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b().e()) {
+         $$0.a("Book", this.b().a($$1));
+         $$0.a("Page", this.h);
       }
    }
 
    @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      iw $$4 = iw.b($$3);
-      if ($$4 != iw.b) {
-         ir $$5 = $$2.a($$4);
-         dtc $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == iw.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == iw.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == iw.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == iw.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   public void a() {
+      this.b(ctq.i);
+   }
 
-            $$1.a(lb.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
+   @Override
+   public cov createMenu(int $$0, clx $$1, cly $$2) {
+      return new cpz($$0, this.e, this.f);
+   }
+
+   @Override
+   public wx O_() {
+      return wx.c("container.lectern");
+   }
+
+   private static int c(ctq $$0) {
+      cwz $$1 = $$0.a(kb.I);
+      if ($$1 != null) {
+         return $$1.a().size();
+      } else {
+         cwy $$2 = $$0.a(kb.H);
+         return $$2 != null ? $$2.a().size() : 0;
       }
    }
 }

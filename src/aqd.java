@@ -1,113 +1,42 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public record aqd(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public interface aqd<T> {
-   static <T> aqd<T> a(T $$0) {
-      return new aqd.b<>($$0);
+   public dag a() {
+      return new dag(jq.a(this.a), jq.a(this.b));
    }
 
-   static <T> aqd<T> a(String $$0) {
-      return a(() -> $$0);
+   public long b() {
+      return a(this.a, this.b);
    }
 
-   static <T> aqd<T> a(Supplier<String> $$0) {
-      return new aqd.a<>($$0);
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
    }
 
-   boolean a();
-
-   @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(aqd<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
    }
 
-   @Nullable
-   String b();
-
-   aqd<T> a(Consumer<T> var1);
-
-   <R> aqd<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements aqd<T> {
-      @Override
-      public boolean a() {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public aqd<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> aqd<R> a(Function<T, R> $$0) {
-         return new aqd.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
-      }
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
-   public static record b<T>(T a) implements aqd<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   @Override
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
+   }
 
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return dag.d(this.a, this.b);
+   }
 
-      @Nullable
-      @Override
-      public String b() {
-         return null;
-      }
+   public int c() {
+      return this.a;
+   }
 
-      @Override
-      public aqd<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
-      }
-
-      @Override
-      public <R> aqd<R> a(Function<T, R> $$0) {
-         return new aqd.b<>($$0.apply(this.a));
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
-
-      public T c() {
-         return this.a;
-      }
+   public int d() {
+      return this.b;
    }
 }

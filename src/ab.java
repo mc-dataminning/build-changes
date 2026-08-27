@@ -1,183 +1,145 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DSL.TypeReference;
-import io.netty.util.ResourceLeakDetector;
-import io.netty.util.ResourceLeakDetector.Level;
-import java.time.Duration;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
+import oshi.hardware.GlobalMemory;
+import oshi.hardware.GraphicsCard;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.hardware.PhysicalMemory;
+import oshi.hardware.VirtualMemory;
+import oshi.hardware.CentralProcessor.ProcessorIdentifier;
 
 public class ab {
-   @Deprecated
-   public static final boolean a = true;
-   @Deprecated
-   public static final int b = 3824;
-   @Deprecated
-   public static final String c = "april2024";
-   @Deprecated
-   public static final String d = "24w14potato";
-   @Deprecated
-   public static final int e = 766;
-   @Deprecated
-   public static final int f = 183;
-   public static final int g = 3798;
-   private static final int bp = 30;
-   public static final boolean h = false;
-   @Deprecated
-   public static final int i = 30;
-   @Deprecated
-   public static final int j = 36;
-   @Deprecated
-   public static final int k = 1;
-   public static final int l = 1;
-   public static final String m = "DataVersion";
-   public static final boolean n = false;
-   public static final boolean o = false;
-   public static final boolean p = false;
-   public static final boolean q = false;
-   public static final boolean r = false;
-   public static final boolean s = false;
-   public static final boolean t = false;
-   public static final boolean u = false;
-   public static final boolean v = false;
-   public static final boolean w = false;
-   public static final boolean x = false;
-   public static final boolean y = false;
-   public static final boolean z = false;
-   public static final boolean A = false;
-   public static final boolean B = false;
-   public static final boolean C = false;
-   public static final boolean D = false;
-   public static final boolean E = false;
-   public static final boolean F = false;
-   public static final boolean G = false;
-   public static final boolean H = false;
-   public static final boolean I = false;
-   public static final boolean J = false;
-   public static final boolean K = false;
-   public static final boolean L = false;
-   public static final boolean M = false;
-   public static final boolean N = false;
-   public static final boolean O = false;
-   public static final boolean P = false;
-   public static final boolean Q = false;
-   public static final boolean R = false;
-   public static final boolean S = false;
-   public static final boolean T = false;
-   public static final boolean U = false;
-   public static final boolean V = false;
-   public static final boolean W = false;
-   public static final boolean X = false;
-   public static final boolean Y = false;
-   public static final boolean Z = false;
-   public static final boolean aa = false;
-   public static final boolean ab = false;
-   public static final boolean ac = false;
-   public static final boolean ad = false;
-   public static final boolean ae = false;
-   public static final boolean af = false;
-   public static final boolean ag = false;
-   public static final boolean ah = false;
-   public static final boolean ai = false;
-   public static final boolean aj = false;
-   public static final boolean ak = false;
-   public static final boolean al = false;
-   public static final boolean am = false;
-   public static final boolean an = false;
-   public static final boolean ao = false;
-   public static final boolean ap = false;
-   public static final boolean aq = false;
-   public static final boolean ar = false;
-   public static boolean as = false;
-   public static boolean at = false;
-   public static final boolean au = false;
-   public static final boolean av = false;
-   public static final boolean aw = false;
-   public static final boolean ax = false;
-   public static final boolean ay = false;
-   public static final boolean az = false;
-   public static final boolean aA = false;
-   public static final boolean aB = false;
-   public static final boolean aC = false;
-   public static final boolean aD = false;
-   public static final int aE = 25565;
-   public static final boolean aF = false;
-   public static final boolean aG = false;
-   public static final int aH = 0;
-   public static final int aI = 0;
-   public static final Level aJ = Level.DISABLED;
-   public static final boolean aK = false;
-   public static final boolean aL = false;
-   public static final boolean aM = false;
-   public static final boolean aN = false;
-   public static final boolean aO = false;
-   public static final boolean aP = false;
-   public static final boolean aQ = false;
-   public static final boolean aR = false;
-   public static final long aS = Duration.ofMillis(300L).toNanos();
-   public static final float aT = 3600000.0F;
-   public static final boolean aU = false;
-   public static final boolean aV = false;
-   public static boolean aW = true;
-   public static boolean aX;
-   public static Set<TypeReference> aY = Set.of();
-   public static final int aZ = 16;
-   public static final int ba = 256;
-   public static final int bb = 32500;
-   public static final int bc = 2000000;
-   public static final int bd = 16;
-   public static final int be = 1000000;
-   public static final int bf = 32;
-   public static final char[] bg = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bh = 20;
-   public static final int bi = 50;
-   public static final int bj = 1200;
-   public static final int bk = 24000;
-   public static final float bl = 1365.3334F;
-   public static final float bm = 0.87890625F;
-   public static final float bn = 17.578125F;
-   public static final int bo = 64;
-   @Nullable
-   private static ae bq;
+   public static final long a = 1048576L;
+   private static final long b = 1000000000L;
+   private static final Logger c = LogUtils.getLogger();
+   private static final String d = System.getProperty("os.name") + " (" + System.getProperty("os.arch") + ") version " + System.getProperty("os.version");
+   private static final String e = System.getProperty("java.version") + ", " + System.getProperty("java.vendor");
+   private static final String f = System.getProperty("java.vm.name")
+      + " ("
+      + System.getProperty("java.vm.info")
+      + "), "
+      + System.getProperty("java.vm.vendor");
+   private final Map<String, String> g = Maps.newLinkedHashMap();
 
-   public static void a(ae $$0) {
-      if (bq == null) {
-         bq = $$0;
-      } else if ($$0 != bq) {
-         throw new IllegalStateException("Cannot override the current game version!");
+   public ab() {
+      this.a("Minecraft Version", aa.b().c());
+      this.a("Minecraft Version ID", aa.b().b());
+      this.a("Operating System", d);
+      this.a("Java Version", e);
+      this.a("Java VM Version", f);
+      this.a("Memory", () -> {
+         Runtime $$0 = Runtime.getRuntime();
+         long $$1 = $$0.maxMemory();
+         long $$2 = $$0.totalMemory();
+         long $$3 = $$0.freeMemory();
+         long $$4 = $$1 / 1048576L;
+         long $$5 = $$2 / 1048576L;
+         long $$6 = $$3 / 1048576L;
+         return $$3 + " bytes (" + $$6 + " MiB) / " + $$2 + " bytes (" + $$5 + " MiB) up to " + $$1 + " bytes (" + $$4 + " MiB)";
+      });
+      this.a("CPUs", () -> String.valueOf(Runtime.getRuntime().availableProcessors()));
+      this.a("hardware", () -> this.a(new SystemInfo()));
+      this.a("JVM Flags", () -> {
+         List<String> $$0 = ac.l().collect(Collectors.toList());
+         return String.format(Locale.ROOT, "%d total; %s", $$0.size(), String.join(" ", $$0));
+      });
+   }
+
+   public void a(String $$0, String $$1) {
+      this.g.put($$0, $$1);
+   }
+
+   public void a(String $$0, Supplier<String> $$1) {
+      try {
+         this.a($$0, $$1.get());
+      } catch (Exception var4) {
+         c.warn("Failed to get system info for {}", $$0, var4);
+         this.a($$0, "ERR");
       }
    }
 
-   public static void a() {
-      if (bq == null) {
-         bq = t.a();
+   private void a(SystemInfo $$0) {
+      HardwareAbstractionLayer $$1 = $$0.getHardware();
+      this.a("processor", () -> this.a($$1.getProcessor()));
+      this.a("graphics", () -> this.b($$1.getGraphicsCards()));
+      this.a("memory", () -> this.a($$1.getMemory()));
+   }
+
+   private void a(String $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var4) {
+         c.warn("Failed retrieving info for group {}", $$0, var4);
       }
    }
 
-   public static ae b() {
-      if (bq == null) {
-         throw new IllegalStateException("Game version not set");
-      } else {
-         return bq;
+   private void a(List<PhysicalMemory> $$0) {
+      int $$1 = 0;
+
+      for (PhysicalMemory $$2 : $$0) {
+         String $$3 = String.format(Locale.ROOT, "Memory slot #%d ", $$1++);
+         this.a($$3 + "capacity (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getCapacity() / 1048576.0F));
+         this.a($$3 + "clockSpeed (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getClockSpeed() / 1.0E9F));
+         this.a($$3 + "type", $$2::getMemoryType);
       }
    }
 
-   public static int c() {
-      return 1073742007;
+   private void a(VirtualMemory $$0) {
+      this.a("Virtual memory max (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getVirtualMax() / 1048576.0F));
+      this.a("Virtual memory used (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getVirtualInUse() / 1048576.0F));
+      this.a("Swap memory total (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getSwapTotal() / 1048576.0F));
+      this.a("Swap memory used (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$0.getSwapUsed() / 1048576.0F));
    }
 
-   public static boolean a(dbh $$0) {
-      int $$1 = $$0.d();
-      int $$2 = $$0.e();
-      return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
+   private void a(GlobalMemory $$0) {
+      this.a("physical memory", () -> this.a($$0.getPhysicalMemory()));
+      this.a("virtual memory", () -> this.a($$0.getVirtualMemory()));
    }
 
-   public static void d() {
-      aY = azs.t;
+   private void b(List<GraphicsCard> $$0) {
+      int $$1 = 0;
+
+      for (GraphicsCard $$2 : $$0) {
+         String $$3 = String.format(Locale.ROOT, "Graphics card #%d ", $$1++);
+         this.a($$3 + "name", $$2::getName);
+         this.a($$3 + "vendor", $$2::getVendor);
+         this.a($$3 + "VRAM (MB)", () -> String.format(Locale.ROOT, "%.2f", (float)$$2.getVRam() / 1048576.0F));
+         this.a($$3 + "deviceId", $$2::getDeviceId);
+         this.a($$3 + "versionInfo", $$2::getVersionInfo);
+      }
    }
 
-   static {
-      ResourceLeakDetector.setLevel(aJ);
-      CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new eb();
+   private void a(CentralProcessor $$0) {
+      ProcessorIdentifier $$1 = $$0.getProcessorIdentifier();
+      this.a("Processor Vendor", $$1::getVendor);
+      this.a("Processor Name", $$1::getName);
+      this.a("Identifier", $$1::getIdentifier);
+      this.a("Microarchitecture", $$1::getMicroarchitecture);
+      this.a("Frequency (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)$$1.getVendorFreq() / 1.0E9F));
+      this.a("Number of physical packages", () -> String.valueOf($$0.getPhysicalPackageCount()));
+      this.a("Number of physical CPUs", () -> String.valueOf($$0.getPhysicalProcessorCount()));
+      this.a("Number of logical CPUs", () -> String.valueOf($$0.getLogicalProcessorCount()));
+   }
+
+   public void a(StringBuilder $$0) {
+      $$0.append("-- ").append("System Details").append(" --\n");
+      $$0.append("Details:");
+      this.g.forEach(($$1, $$2) -> {
+         $$0.append("\n\t");
+         $$0.append($$1);
+         $$0.append(": ");
+         $$0.append($$2);
+      });
+   }
+
+   public String a() {
+      return this.g.entrySet().stream().map($$0 -> $$0.getKey() + ": " + $$0.getValue()).collect(Collectors.joining(System.lineSeparator()));
    }
 }

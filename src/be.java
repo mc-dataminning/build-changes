@@ -1,35 +1,47 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class be {
-   private final ayr a;
-   private final jb.a b;
-
-   public be(ayr $$0, jb.a $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class be extends df<be.a> {
+   @Override
+   public Codec<be.a> a() {
+      return be.a.a;
    }
 
-   public void a(Optional<bd> $$0, String $$1) {
-      $$0.ifPresent($$1x -> this.a($$1x, $$1));
+   public void a(aqo $$0, cjx $$1, cll $$2) {
+      eph $$3 = br.b($$0, $$1);
+      eph $$4 = br.b($$0, $$2);
+      this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
-   public void a(List<bd> $$0, String $$1) {
-      this.a($$0, euf.m, $$1);
-   }
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements df.a {
+      public static final Codec<be.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(be.a::a),
+                  br.b.optionalFieldOf("zombie").forGetter(be.a::c),
+                  br.b.optionalFieldOf("villager").forGetter(be.a::d)
+               )
+               .apply($$0, be.a::new)
+      );
 
-   public void a(bd $$0, String $$1) {
-      this.a($$0, euf.m, $$1);
-   }
+      public static an<be.a> b() {
+         return am.s.a(new be.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
 
-   public void a(bd $$0, eue $$1, String $$2) {
-      $$0.a(new erv(this.a.a($$2), $$1, this.b));
-   }
+      public boolean a(eph $$0, eph $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      }
 
-   public void a(List<bd> $$0, eue $$1, String $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         bd $$4 = $$0.get($$3);
-         $$4.a(new erv(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
+      @Override
+      public void a(bd $$0) {
+         df.a.super.a($$0);
+         $$0.a(this.c, ".zombie");
+         $$0.a(this.d, ".villager");
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
       }
    }
 }

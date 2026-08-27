@@ -1,56 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map.Entry;
+public class kg extends kh {
+   private final kh c = new kh();
+   private final cnv.b d;
+   private final boolean e;
 
-public record kg<T>(kd<T> b, T c) {
-   public static final zc<wp, kg<?>> a = new zc<wp, kg<?>>() {
-      public kg<?> a(wp $$0) {
-         kd<?> $$1 = kd.b.decode($$0);
-         return a($$0, (kd<T>)$$1);
-      }
-
-      private static <T> kg<T> a(wp $$0, kd<T> $$1) {
-         return new kg<>($$1, $$1.e().decode($$0));
-      }
-
-      public void a(wp $$0, kg<?> $$1) {
-         b($$0, (kg<T>)$$1);
-      }
-
-      private static <T> void b(wp $$0, kg<T> $$1) {
-         kd.b.encode($$0, $$1.a());
-         $$1.a().e().encode($$0, $$1.b());
-      }
-   };
-
-   static kg<?> a(Entry<kd<?>, Object> $$0) {
-      return a($$0.getKey(), $$0.getValue());
+   public kg(cnv.b $$0) {
+      this($$0, false);
    }
 
-   static <T> kg<T> a(kd<T> $$0, Object $$1) {
-      return new kg<>($$0, (T)$$1);
-   }
-
-   public void a(kf $$0) {
-      $$0.b(this.b, this.c);
-   }
-
-   public <D> DataResult<D> a(DynamicOps<D> $$0) {
-      Codec<T> $$1 = this.b.b();
-      return $$1 == null ? DataResult.error(() -> "Component of type " + this.b + " is not encodable") : $$1.encodeStart($$0, this.c);
+   public kg(cnv.b $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.b + "=>" + this.c;
+   public ctq a(kf $$0, ctq $$1) {
+      it $$2 = $$0.d().c(dgf.b);
+      aqn $$3 = $$0.b();
+      eum $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)bsc.k.l() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      io $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(awc.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).i() || !$$3.b_($$9.d()).a(awc.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
+      }
+
+      cnv $$13 = (cnv)(this.e ? new cnw($$3, $$6, $$7 + $$10, $$8) : new cnv($$3, $$6, $$7 + $$10, $$8));
+      bsc.<cnv>a($$3, $$1, null).accept($$13);
+      $$13.a(this.d);
+      $$13.r($$2.p());
+      $$3.b($$13);
+      $$1.h(1);
+      return $$1;
    }
 
-   public kd<T> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   @Override
+   protected void a(kf $$0) {
+      $$0.b().c(1000, $$0.c(), 0);
    }
 }

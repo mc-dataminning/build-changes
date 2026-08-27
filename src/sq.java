@@ -1,108 +1,28 @@
-import java.util.List;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class sq {
-   public static final aks<eix> a = sp.a("crimson_fungi");
-   public static final aks<eix> b = sp.a("warped_fungi");
-   public static final aks<eix> c = sp.a("potato_tree");
-   public static final aks<eix> d = sp.a("potato_tree_tall");
-   public static final aks<eix> e = sp.a("mother_potato_tree");
-   public static final aks<eix> f = sp.a("potato_checked");
-   public static final aks<eix> g = sp.a("mother_potato_checked");
-   public static final aks<eix> h = sp.a("oak_checked");
-   public static final aks<eix> i = sp.a("dark_oak_checked");
-   public static final aks<eix> j = sp.a("birch_checked");
-   public static final aks<eix> k = sp.a("acacia_checked");
-   public static final aks<eix> l = sp.a("spruce_checked");
-   public static final aks<eix> m = sp.a("mangrove_checked");
-   public static final aks<eix> n = sp.a("cherry_checked");
-   public static final aks<eix> o = sp.a("pine_on_snow");
-   public static final aks<eix> p = sp.a("spruce_on_snow");
-   public static final aks<eix> q = sp.a("pine_checked");
-   public static final aks<eix> r = sp.a("jungle_tree");
-   public static final aks<eix> s = sp.a("fancy_oak_checked");
-   public static final aks<eix> t = sp.a("mega_jungle_tree_checked");
-   public static final aks<eix> u = sp.a("mega_spruce_checked");
-   public static final aks<eix> v = sp.a("mega_pine_checked");
-   public static final aks<eix> w = sp.a("tall_mangrove_checked");
-   public static final aks<eix> x = sp.a("jungle_bush");
-   public static final aks<eix> y = sp.a("super_birch_bees_0002");
-   public static final aks<eix> z = sp.a("super_birch_bees");
-   public static final aks<eix> A = sp.a("oak_bees_0002");
-   public static final aks<eix> B = sp.a("oak_bees_002");
-   public static final aks<eix> C = sp.a("birch_bees_0002");
-   public static final aks<eix> D = sp.a("birch_bees_002");
-   public static final aks<eix> E = sp.a("fancy_oak_bees_0002");
-   public static final aks<eix> F = sp.a("fancy_oak_bees_002");
-   public static final aks<eix> G = sp.a("fancy_oak_bees");
-   public static final aks<eix> H = sp.a("cherry_bees_005");
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sq {
+   int a() default 100;
 
-   public static void a(qq<eix> $$0) {
-      jb<ebm<?, ?>> $$1 = $$0.a(li.aC);
-      ja<ebm<?, ?>> $$2 = $$1.b(sf.a);
-      ja<ebm<?, ?>> $$3 = $$1.b(sf.c);
-      ja<ebm<?, ?>> $$4 = $$1.b(sf.d);
-      ja<ebm<?, ?>> $$5 = $$1.b(sf.f);
-      ja<ebm<?, ?>> $$6 = $$1.b(sf.e);
-      ja<ebm<?, ?>> $$7 = $$1.b(sf.j);
-      ja<ebm<?, ?>> $$8 = $$1.b(sf.k);
-      ja<ebm<?, ?>> $$9 = $$1.b(sf.l);
-      ja<ebm<?, ?>> $$10 = $$1.b(sf.m);
-      ja<ebm<?, ?>> $$11 = $$1.b(sf.n);
-      ja<ebm<?, ?>> $$12 = $$1.b(sf.A);
-      ja<ebm<?, ?>> $$13 = $$1.b(sf.C);
-      ja<ebm<?, ?>> $$14 = $$1.b(sf.o);
-      ja<ebm<?, ?>> $$15 = $$1.b(sf.p);
-      ja<ebm<?, ?>> $$16 = $$1.b(sf.q);
-      ja<ebm<?, ?>> $$17 = $$1.b(sf.s);
-      ja<ebm<?, ?>> $$18 = $$1.b(sf.t);
-      ja<ebm<?, ?>> $$19 = $$1.b(sf.u);
-      ja<ebm<?, ?>> $$20 = $$1.b(sf.B);
-      ja<ebm<?, ?>> $$21 = $$1.b(sf.y);
-      ja<ebm<?, ?>> $$22 = $$1.b(sf.v);
-      ja<ebm<?, ?>> $$23 = $$1.b(sf.w);
-      ja<ebm<?, ?>> $$24 = $$1.b(sf.D);
-      ja<ebm<?, ?>> $$25 = $$1.b(sf.E);
-      ja<ebm<?, ?>> $$26 = $$1.b(sf.G);
-      ja<ebm<?, ?>> $$27 = $$1.b(sf.H);
-      ja<ebm<?, ?>> $$28 = $$1.b(sf.J);
-      ja<ebm<?, ?>> $$29 = $$1.b(sf.K);
-      ja<ebm<?, ?>> $$30 = $$1.b(sf.M);
-      ja<ebm<?, ?>> $$31 = $$1.b(sf.N);
-      sp.a($$0, a, $$2, eip.a(8), eik.a());
-      sp.a($$0, b, $$3, eip.a(8), eik.a());
-      sp.a($$0, c, $$6, eip.a(6), eik.a(), sp.a(dfe.tK));
-      sp.a($$0, d, $$4, ejd.a(6), eip.a(1), eik.a(), sp.a(dfe.tK));
-      sp.a($$0, e, $$5, ejd.a(48), eip.a(1), eik.a(), sp.a(dfe.tK));
-      sp.a($$0, f, $$6, sp.a(dfe.tK));
-      sp.a($$0, g, $$5, sp.a(dfe.tK));
-      sp.a($$0, h, $$7, sp.a(dfe.ac));
-      sp.a($$0, i, $$8, sp.a(dfe.ai));
-      sp.a($$0, j, $$9, sp.a(dfe.ae));
-      sp.a($$0, k, $$10, sp.a(dfe.ag));
-      sp.a($$0, l, $$11, sp.a(dfe.ad));
-      sp.a($$0, m, $$12, sp.a(dfe.aj));
-      sp.a($$0, n, $$13, sp.a(dfe.ah));
-      eab $$32 = eab.a(iw.a.q(), dfe.eD, dfe.sa);
-      List<eja> $$33 = List.of(eir.a(iw.b, eab.a(eab.a(dfe.sa)), 8), eil.a($$32));
-      sp.a($$0, o, $$14, $$33);
-      sp.a($$0, p, $$11, $$33);
-      sp.a($$0, q, $$14, sp.a(dfe.ad));
-      sp.a($$0, r, $$15, sp.a(dfe.af));
-      sp.a($$0, s, $$16, sp.a(dfe.ac));
-      sp.a($$0, t, $$17, sp.a(dfe.af));
-      sp.a($$0, u, $$18, sp.a(dfe.ad));
-      sp.a($$0, v, $$19, sp.a(dfe.ad));
-      sp.a($$0, w, $$20, sp.a(dfe.aj));
-      sp.a($$0, x, $$21, sp.a(dfe.ac));
-      sp.a($$0, y, $$22, sp.a(dfe.ae));
-      sp.a($$0, z, $$23, sp.a(dfe.ae));
-      sp.a($$0, A, $$24, sp.a(dfe.ac));
-      sp.a($$0, B, $$25, sp.a(dfe.ac));
-      sp.a($$0, C, $$26, sp.a(dfe.ae));
-      sp.a($$0, D, $$27, sp.a(dfe.ae));
-      sp.a($$0, E, $$28, sp.a(dfe.ac));
-      sp.a($$0, F, $$29, sp.a(dfe.ac));
-      sp.a($$0, G, $$30, sp.a(dfe.ac));
-      sp.a($$0, H, $$31, sp.a(dfe.ah));
-   }
+   String b() default "defaultBatch";
+
+   boolean c() default false;
+
+   int d() default 0;
+
+   boolean e() default true;
+
+   boolean f() default false;
+
+   String g() default "";
+
+   long h() default 0L;
+
+   int i() default 1;
+
+   int j() default 1;
 }

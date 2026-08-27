@@ -1,3 +1,14 @@
+import java.util.function.Consumer;
+
 public interface ard {
-   arc create(int var1);
+   void a(Consumer<ze<?>> var1);
+
+   ard.a a();
+
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
+      }
+   }
 }

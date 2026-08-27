@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eyv
-@eyu
-interface faw {
+public class faw extends RuntimeException {
+   public faw(String $$0, Exception $$1) {
+      super($$0, $$1);
+   }
 }

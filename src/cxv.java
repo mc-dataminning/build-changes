@@ -1,36 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Map;
 
-public record cxv(List<cxv.a> d) {
-   public static final cxv a = new cxv(List.of());
-   public static final Codec<cxv> b = cxv.a.a.listOf().xmap(cxv::new, cxv::a);
-   public static final zc<wp, cxv> c = cxv.a.b.a(za.a()).a(cxv::new, cxv::a);
-
-   public cxv a(cxv.a $$0) {
-      return new cxv(ad.a(this.d, $$0));
+public class cxv extends cyd {
+   public cxv(cxm $$0) {
+      super("", $$0, cye.a(Map.of('#', cxt.a(ctt.qO), 'x', cxt.a(ctt.rU)), "###", "#x#", "###"), new ctq(ctt.uj));
    }
 
-   public List<cxv.a> a() {
-      return this.d;
+   @Override
+   public boolean a(cpl $$0, daz $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         ctq $$2 = a($$0);
+         if ($$2.e()) {
+            return false;
+         } else {
+            eol $$3 = cty.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
-   public static record a(ja<brf> c, int d) {
-      public static final Codec<cxv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(lh.d.r().fieldOf("id").forGetter(cxv.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(cxv.a::c)).apply($$0, cxv.a::new)
-      );
-      public static final zc<wp, cxv.a> b = zc.a(za.b(li.R), cxv.a::b, za.g, cxv.a::c, cxv.a::new);
+   @Override
+   public ctq a(cpl $$0, iz.a $$1) {
+      ctq $$2 = a($$0).c(1);
+      $$2.b(kb.C, cwr.b);
+      return $$2;
+   }
 
-      public brh a() {
-         return new brh(this.c, this.d);
+   private static ctq a(cpl $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         ctq $$2 = $$0.a($$1);
+         if ($$2.a(ctt.rU)) {
+            return $$2;
+         }
       }
 
-      public ja<brf> b() {
-         return this.c;
-      }
+      return ctq.i;
+   }
 
-      public int c() {
-         return this.d;
-      }
+   @Override
+   public boolean ao_() {
+      return true;
+   }
+
+   @Override
+   public cya<?> ap_() {
+      return cya.f;
    }
 }

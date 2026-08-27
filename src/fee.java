@@ -1,233 +1,441 @@
 import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fee extends gxb {
-   static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("mco.configure.world.players.title");
-   static final xe c = xe.c("mco.question");
-   private static final int B = 8;
-   final fma C = new fma(this);
-   private final fds D;
-   final fcj E;
-   @Nullable
-   private fee.b F;
-   boolean G;
+public final class fee<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final fee.e<Boolean> a = new fee.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final fee.b<Boolean> b = ($$0, $$1) -> $$1 ? ww.b : ww.c;
+   private final fee.l<T> d;
+   final Function<T, wx> e;
+   private final fee.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final wx j;
+   T k;
 
-   public fee(fds $$0, fcj $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public static fee<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
    }
 
-   @Override
-   public void aN_() {
-      this.C.a(b, this.p);
-      this.F = this.C.c(new fee.b());
-      this.C();
-      fme $$0 = this.C.b(fme.e().a(8));
-      $$0.a(fin.a(xe.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fdx(this.D, this, this.E))).a());
-      $$0.a(fin.a(xd.k, $$0x -> this.d()).a());
-      this.C.a($$1 -> {
-         fil var10000 = this.c($$1);
+   public static fee<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
       });
-      this.c();
+   }
+
+   public static fee<Boolean> a(String $$0, fee.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static fee<Boolean> a(String $$0, fee.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
+   }
+
+   public static fee<Boolean> a(String $$0, fee.l<Boolean> $$1, fee.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new fee<>($$0, $$1, $$2, a, $$3, $$4);
+   }
+
+   public fee(String $$0, fee.l<T> $$1, fee.b<T> $$2, fee.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   }
+
+   public fee(String $$0, fee.l<T> $$1, fee.b<T> $$2, fee.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = wx.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
+
+   public static <T> fee.l<T> a() {
+      return $$0 -> null;
+   }
+
+   public static <T> fee.l<T> a(wx $$0) {
+      return $$1 -> fhl.a($$0);
+   }
+
+   public static <T extends ayh> fee.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public ffy a(fef $$0) {
+      return this.a($$0, 0, 0, 150);
+   }
+
+   public ffy a(fef $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public ffy a(fef $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
    }
 
    @Override
-   protected void c() {
-      this.C.a();
-      if (this.F != null) {
-         this.F.a(this.n, this.C);
-      }
+   public String toString() {
+      return this.j.getString();
    }
 
-   void C() {
-      if (this.F != null) {
-         this.F.aE_().clear();
-
-         for (fcf $$0 : this.E.h) {
-            this.F.aE_().add(new fee.a($$0));
-         }
-      }
-   }
-
-   @Override
-   public void d() {
-      this.D();
-   }
-
-   private void D() {
-      if (this.G) {
-         this.m.a(this.D.f());
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!feb.Q().r()) {
+         this.k = $$1;
       } else {
-         this.m.a(this.D);
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
+         }
       }
    }
 
-   class a extends fit.a<fee.a> {
-      private static final xe b = xe.c("mco.configure.world.invites.normal.tooltip");
-      private static final xe c = xe.c("mco.configure.world.invites.ops.tooltip");
-      private static final xe d = xe.c("mco.configure.world.invites.remove.tooltip");
-      private static final akt e = new akt("player_list/make_operator");
-      private static final akt f = new akt("player_list/remove_operator");
-      private static final akt g = new akt("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fcf j;
-      private final fin k;
-      private final fin l;
-      private final fin m;
+   public fee.n<T> e() {
+      return this.f;
+   }
 
-      public a(fcf $$0) {
-         this.j = $$0;
-         int $$1 = fee.this.E.h.indexOf(this.j);
-         this.l = fjs.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fee.this.p.a(b))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get(), xe.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fjs.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fee.this.p.a(c))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get(), xe.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fjs.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fee.this.p.a(d))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fbs $$1 = fbs.a();
-         UUID $$2 = fee.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fee.this.E.a, $$2));
-         } catch (fdf var5) {
-            fee.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fbs $$1 = fbs.a();
-         UUID $$2 = fee.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fee.this.E.a, $$2));
-         } catch (fdf var5) {
-            fee.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fee.this.E.h.size()) {
-            fcf $$1 = fee.this.E.h.get($$0);
-            fdt $$2 = new fdt($$2x -> {
-               if ($$2x) {
-                  fbs $$3 = fbs.a();
-
-                  try {
-                     $$3.a(fee.this.E.a, $$1.b());
-                  } catch (fdf var6) {
-                     fee.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fee.this.E.h.remove($$0);
-                  fee.this.C();
-               }
-
-               fee.this.G = true;
-               fee.this.m.a(fee.this);
-            }, fee.c, xe.a("mco.configure.world.uninvite.player", $$1.a()));
-            fee.this.m.a($$2);
-         }
-      }
-
-      private void a(fcb $$0) {
-         for (fcf $$1 : fee.this.E.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fin d() {
-         return this.l.k ? this.l : this.m;
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fee.d.a<T> d, Codec<T> e) implements fee.d<T> {
+      @Override
+      public fgh.c<T> a() {
+         return fgh.c.a(this.c, this.a, this.b);
       }
 
       @Override
-      public List<? extends fkj> aE_() {
-         return ImmutableList.of(this.d(), this.k);
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      public List<T> c() {
+         return this.b;
+      }
+
+      public BooleanSupplier d() {
+         return this.c;
       }
 
       @Override
-      public List<? extends fmh> b() {
-         return ImmutableList.of(this.d(), this.k);
+      public fee.d.a<T> e() {
+         return this.d;
       }
 
       @Override
-      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fez.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fee.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.x();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.d().x() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+      public Codec<T> f() {
+         return this.e;
       }
    }
 
-   class b extends fit<fee.a> {
-      private static final int m = 36;
+   public interface b<T> {
+      wx toString(wx var1, T var2);
+   }
 
-      public b() {
-         super(fgj.Q(), fee.this.n, fee.this.C.d(), fee.this.C.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
-      }
-
-      @Override
-      protected void a(fia $$0, int $$1, int $$2) {
-         String $$3 = fee.this.E.h != null ? Integer.toString(fee.this.E.h.size()) : "0";
-         xe $$4 = xe.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fee.this.p, $$4, $$1 + this.b() / 2 - fee.this.p.a($$4) / 2, $$2, -1, false);
-      }
-
-      @Override
-      public int a() {
-         return this.l() * this.d + this.f;
+   public static record c(int a, IntSupplier b, int c) implements fee.g, fee.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(ayf.a($$0, this.d(), this.b()));
       }
 
       @Override
       public int b() {
-         return 300;
+         return this.b.getAsInt();
       }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.INT
+            .validate(
+               $$0 -> {
+                  int $$1 = this.c + 1;
+                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                     ? DataResult.success($$0)
+                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+               }
+            );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public fgh.c<Integer> a() {
+         return fgh.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends fee.n<T> {
+      fgh.c<T> a();
+
+      default fee.d.a<T> e() {
+         return fee::a;
+      }
+
+      @Override
+      default Function<fee<T>, ffy> a(fee.l<T> $$0, fef $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> fgh.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.av();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(fee<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements fee.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public fgh.c<T> a() {
+         return fgh.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b) implements fee.g {
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+   }
+
+   interface g extends fee.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         return (double)ayf.c((float)$$0.intValue(), (float)this.d(), (float)this.b(), 0.0F, 1.0F);
+      }
+
+      default Integer a(double $$0) {
+         return ayf.a(ayf.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b()));
+      }
+
+      default <R> fee.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new fee.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
+      }
+   }
+
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fee.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public fgh.c<T> a() {
+         return fgh.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
+      }
+   }
+
+   static final class i<N> extends fft {
+      private final fee<N> d;
+      private final fee.k<N> e;
+      private final fee.l<N> f;
+      private final Consumer<N> m;
+
+      i(fef $$0, int $$1, int $$2, int $$3, int $$4, fee<N> $$5, fee.k<N> $$6, fee.l<N> $$7, Consumer<N> $$8) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.m = $$8;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.d.c()));
+         this.a(this.f.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         this.d.a(this.e.b(this.c));
+         this.a.av();
+         this.m.accept(this.d.c());
+      }
+   }
+
+   interface j<T> extends fee.d<T>, fee.k<T> {
+      boolean c();
+
+      @Override
+      default Function<fee<T>, ffy> a(fee.l<T> $$0, fef $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? fee.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fee.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends fee.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      @Override
+      default Function<fee<T>, ffy> a(fee.l<T> $$0, fef $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new fee.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5);
+      }
+   }
+
+   @FunctionalInterface
+   public interface l<T> {
+      @Nullable
+      fhl apply(T var1);
+   }
+
+   public static enum m implements fee.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> fee.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new fee.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<fee<T>, ffy> a(fee.l<T> var1, fef var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
    }
 }

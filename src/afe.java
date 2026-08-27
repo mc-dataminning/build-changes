@@ -1,60 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 
-public class afe implements zl<abw> {
-   public static final zc<wp, afe> a = zl.a(afe::a, afe::new);
-   private static final byte b = -128;
-   private final int c;
-   private final List<Pair<bsc, cuh>> d;
-
-   public afe(int $$0, List<Pair<bsc, cuh>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   private afe(wp $$0) {
-      this.c = $$0.l();
-      bsc[] $$1 = bsc.values();
-      this.d = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bsc $$3 = $$1[$$2 & 127];
-         cuh $$4 = cuh.e.decode($$0);
-         this.d.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
-   }
-
-   private void a(wp $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bsc, cuh> $$3 = this.d.get($$2);
-         bsc $$4 = (bsc)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         cuh.e.encode($$0, (cuh)$$3.getSecond());
-      }
-   }
+public record afe(String b, String c, int d, Optional<wx> e, Optional<yn> f) implements ze<abq> {
+   public static final yv<wi, afe> a = yv.a(yt.k, afe::b, yt.k, afe::e, yt.f, afe::f, wz.e, afe::g, yp.d, afe::h, afe::new);
 
    @Override
-   public zn<afe> a() {
-      return agj.aG;
+   public zg<afe> a() {
+      return agc.aL;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String e() {
       return this.c;
    }
 
-   public List<Pair<bsc, cuh>> e() {
+   public int f() {
       return this.d;
+   }
+
+   public Optional<wx> g() {
+      return this.e;
+   }
+
+   public Optional<yn> h() {
+      return this.f;
    }
 }

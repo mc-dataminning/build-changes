@@ -1,6 +1,20 @@
-public interface dsc {
-   static void a(qq<dpr> $$0) {
-      dpt.a($$0, dpt.P);
-      dpt.a($$0, dpt.Q);
+public enum dsc implements ayz {
+   a("top"),
+   b("bottom");
+
+   private final String c;
+
+   private dsc(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
    }
 }

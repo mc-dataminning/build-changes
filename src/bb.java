@@ -2,35 +2,39 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bb extends dh<bb.a> {
+public class bb extends df<bb.a> {
    @Override
    public Codec<bb.a> a() {
       return bb.a.a;
    }
 
-   public void a(aqu $$0, int $$1) {
+   public void a(aqo $$0, ctq $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bd> b, cu.d c) implements dh.a {
+   public static record a(Optional<bc> b, Optional<ch> c) implements df.a {
       public static final Codec<bb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(bb.a::a), axu.a(cu.d.d, "level", cu.d.c).forGetter(bb.a::c)).apply($$0, bb.a::new)
+         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(bb.a::a), ch.a.optionalFieldOf("item").forGetter(bb.a::c)).apply($$0, bb.a::new)
       );
 
-      public static ao<bb.a> b() {
-         return an.m.a(new bb.a(Optional.empty(), cu.d.c));
+      public static an<bb.a> b() {
+         return am.A.a(new bb.a(Optional.empty(), Optional.empty()));
       }
 
-      public static ao<bb.a> a(cu.d $$0) {
-         return an.m.a(new bb.a(Optional.empty(), $$0));
+      public static an<bb.a> a(day $$0) {
+         return a(ch.a.a().a($$0.r()));
       }
 
-      public boolean a(int $$0) {
-         return this.c.d($$0);
+      public static an<bb.a> a(ch.a $$0) {
+         return am.A.a(new bb.a(Optional.empty(), Optional.of($$0.b())));
+      }
+
+      public boolean a(ctq $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public Optional<bd> a() {
+      public Optional<bc> a() {
          return this.b;
       }
    }

@@ -1,84 +1,84 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class eqw {
-   private static final String a = "command_storage_";
-   private final Map<String, eqw.a> b = Maps.newHashMap();
-   private final eqz c;
+public class eqw extends eqs {
+   public static final int a = 0;
+   public static final MapCodec<eqw> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(etj.a.fieldOf("count").forGetter($$0x -> $$0x.c), Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eqw::new)
+   );
+   private final eti c;
+   private final int d;
 
-   public eqw(eqz $$0) {
-      this.c = $$0;
+   eqw(List<esn> $$0, eti $$1, int $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private eqw.a a(String $$0) {
-      eqw.a $$1 = new eqw.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   @Override
+   public equ b() {
+      return eqv.l;
    }
 
-   private eql.a<eqw.a> b(String $$0) {
-      return new eql.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), azs.h);
+   @Override
+   public Set<erw<?>> a() {
+      return Sets.union(ImmutableSet.of(erz.d), this.c.a());
    }
 
-   public uk a(akt $$0) {
-      String $$1 = $$0.b();
-      eqw.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new uk();
+   private boolean c() {
+      return this.d > 0;
    }
 
-   public void a(akt $$0, uk $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<akt> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eql {
-      private static final String a = "contents";
-      private final Map<String, uk> b = Maps.newHashMap();
-
-      eqw.a a(uk $$0) {
-         uk $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
+   @Override
+   public ctq a(ctq $$0, eph $$1) {
+      brw $$2 = $$1.c(erz.d);
+      if ($$2 instanceof bsq) {
+         int $$3 = czc.h((bsq)$$2);
+         if ($$3 == 0) {
+            return $$0;
          }
 
+         float $$4 = (float)$$3 * this.c.b($$1);
+         $$0.g(Math.round($$4));
+         if (this.c() && $$0.I() > this.d) {
+            $$0.e(this.d);
+         }
+      }
+
+      return $$0;
+   }
+
+   public static eqw.a a(eti $$0) {
+      return new eqw.a($$0);
+   }
+
+   public static class a extends eqs.a<eqw.a> {
+      private final eti a;
+      private int b = 0;
+
+      public a(eti $$0) {
+         this.a = $$0;
+      }
+
+      protected eqw.a a() {
+         return this;
+      }
+
+      public eqw.a a(int $$0) {
+         this.b = $$0;
          return this;
       }
 
       @Override
-      public uk a(uk $$0, jc.a $$1) {
-         uk $$2 = new uk();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
-
-      public uk a(String $$0) {
-         uk $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new uk();
-      }
-
-      public void a(String $$0, uk $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<akt> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new akt($$0, $$1));
+      public eqt b() {
+         return new eqw(this.g(), this.a, this.b);
       }
    }
 }

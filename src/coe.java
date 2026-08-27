@@ -1,118 +1,70 @@
-public class coe extends cnw {
-   static final ajy<String> c = akc.a(coe.class, aka.e);
-   static final ajy<xe> d = akc.a(coe.class, aka.f);
-   private final dbb e = new coe.a();
-   private static final int i = 4;
-   private int j;
+public class coe extends cnt {
+   private final dab c = new dab() {
+      @Override
+      public void a(daz $$0, io $$1, int $$2) {
+         $$0.a(coe.this, (byte)$$2);
+      }
+   };
+   private final Runnable d;
 
-   public coe(bsb<? extends coe> $$0, dca $$1) {
+   public coe(bsc<? extends coe> $$0, daz $$1) {
       super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public coe(dca $$0, double $$1, double $$2, double $$3) {
-      super(bsb.x, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected cuc ah_() {
-      return cuk.pc;
+   public coe(daz $$0, double $$1, double $$2, double $$3) {
+      super(bsc.aU, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   protected ctl ah_() {
+      return ctt.nM;
+   }
+
+   private Runnable b(daz $$0) {
+      return $$0 instanceof aqn ? () -> this.c.a((aqn)$$0, this.dp()) : () -> this.c.a($$0, this.dp());
+   }
+
+   @Override
+   public cnt.a v() {
+      return cnt.a.e;
+   }
+
+   @Override
+   public drd x() {
+      return dec.ct.n();
+   }
+
+   @Override
+   protected void a(ud $$0) {
       super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xd.a);
+      this.c.a(this.dP(), this.dp(), $$0);
    }
 
    @Override
-   protected void a(uk $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dY());
-      this.ap().a(c, this.B().m());
-      this.ap().a(d, this.B().l());
-   }
-
-   @Override
-   protected void b(uk $$0) {
+   protected void b(ud $$0) {
       super.b($$0);
-      this.e.a($$0, this.dY());
+      this.c.a($$0);
    }
 
    @Override
-   public cnw.a u() {
-      return cnw.a.g;
+   public void b(byte $$0) {
+      this.c.a(this.dP(), $$0);
    }
 
    @Override
-   public dtc x() {
-      return dfe.gG.n();
+   public void l() {
+      super.l();
+      this.d.run();
    }
 
-   public dbb B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.am - this.j >= 4) {
-         this.B().a(this.dU());
-         this.j = this.am;
-      }
+   public dab B() {
+      return this.c;
    }
 
    @Override
-   public bqa a(cly $$0, bpz $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(ajy<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ap().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ap().a(c));
-      }
-   }
-
-   @Override
-   public boolean cU() {
+   public boolean cP() {
       return true;
-   }
-
-   public class a extends dbb {
-      @Override
-      public aqt e() {
-         return (aqt)coe.this.dU();
-      }
-
-      @Override
-      public void f() {
-         coe.this.ap().a(coe.c, this.m());
-         coe.this.ap().a(coe.d, this.l());
-      }
-
-      @Override
-      public ewu g() {
-         return coe.this.ds();
-      }
-
-      public coe h() {
-         return coe.this;
-      }
-
-      @Override
-      public eh i() {
-         return new eh(this, coe.this.ds(), coe.this.bR(), this.e(), 2, this.n().getString(), coe.this.P_(), this.e().o(), coe.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !coe.this.dP();
-      }
    }
 }

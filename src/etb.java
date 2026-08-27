@@ -1,14 +1,11 @@
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public interface etb extends erq, BiFunction<cuh, erp, cuh> {
-   etc b();
+public interface etb {
+   @Nullable
+   va a(eph var1);
 
-   static Consumer<cuh> a(BiFunction<cuh, erp, cuh> $$0, Consumer<cuh> $$1, erp $$2) {
-      return $$3 -> $$1.accept($$0.apply($$3, $$2));
-   }
+   Set<erw<?>> b();
 
-   public interface a {
-      etb b();
-   }
+   eta a();
 }

@@ -1,90 +1,107 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class ggh {
-   public float[] a;
-   public final int b;
+public class ggh implements gfw.a {
+   private final feb a;
+   private final Map<akm<daz>, Map<String, ehd>> b = Maps.newIdentityHashMap();
+   private final Map<akm<daz>, Map<String, aat.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public ggh(@Nullable float[] $$0, int $$1) {
+   public ggh(feb $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
-
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<ggh> {
-      private static final int a = 0;
-
-      public ggh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new ggh($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = ayc.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
-
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = ayc.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = ayc.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
+   @Override
+   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
+      fdm $$5 = this.a.j.m();
+      akm<daz> $$6 = this.a.r.ae();
+      io $$7 = io.a($$5.b().c, 0.0, $$5.b().e);
+      eyy $$8 = $$1.getBuffer(gcs.y());
+      if (this.b.containsKey($$6)) {
+         for (ehd $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gci.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
             }
          }
       }
+
+      Map<String, aat.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (aat.a $$11 : $$10.values()) {
+            ehd $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gci.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gci.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
+   }
+
+   public void a(ehd $$0, List<aat.a> $$1, akm<daz> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, aat.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (aat.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

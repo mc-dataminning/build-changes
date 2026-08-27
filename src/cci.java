@@ -1,22 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-public class cci extends ccr {
-   public static final float a = 10.0F;
+public class cci extends ccu {
+   public static final float a = 8.0F;
 
    @Override
-   protected boolean a(bso $$0, bso $$1) {
-      return !$$0.dZ().a(cbr.U) && ccx.c($$0, $$1) && cfy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   protected boolean a(bsq $$0, bsq $$1) {
+      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && cda.c($$0, $$1);
    }
 
-   private boolean e(bso $$0, bso $$1) {
-      List<UUID> $$2 = $$0.dZ().c(cbr.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cE());
+   private boolean e(bsq $$0, bsq $$1) {
+      return !$$0.dS().a(cbu.U) && $$1.ak().a(awa.j);
+   }
+
+   private boolean b(bsq $$0) {
+      return $$0.ak().a(awa.i);
+   }
+
+   private boolean f(bsq $$0, bsq $$1) {
+      return $$1.g((brw)$$0) <= 64.0;
    }
 
    @Override
-   protected cbr<bso> b() {
-      return cbr.B;
+   protected cbu<bsq> b() {
+      return cbu.B;
    }
 }

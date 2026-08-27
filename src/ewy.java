@@ -1,20 +1,35 @@
 public interface ewy {
-   ewy a = ($$0, $$1) -> false;
-   ewy b = ($$0, $$1) -> !$$0 && !$$1;
-   ewy c = ($$0, $$1) -> $$1 && !$$0;
-   ewy d = ($$0, $$1) -> !$$0;
-   ewy e = ($$0, $$1) -> $$0 && !$$1;
-   ewy f = ($$0, $$1) -> !$$1;
-   ewy g = ($$0, $$1) -> $$0 != $$1;
-   ewy h = ($$0, $$1) -> !$$0 || !$$1;
-   ewy i = ($$0, $$1) -> $$0 && $$1;
-   ewy j = ($$0, $$1) -> $$0 == $$1;
-   ewy k = ($$0, $$1) -> $$1;
-   ewy l = ($$0, $$1) -> !$$0 || $$1;
-   ewy m = ($$0, $$1) -> $$0;
-   ewy n = ($$0, $$1) -> $$0 || !$$1;
-   ewy o = ($$0, $$1) -> $$0 || $$1;
-   ewy p = ($$0, $$1) -> true;
+   int a();
 
-   boolean apply(boolean var1, boolean var2);
+   int b();
+
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
+   }
+
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
+   }
+
+   default float g() {
+      return 7.0F - this.j();
+   }
+
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
+
+   default float i() {
+      return 0.0F;
+   }
+
+   default float j() {
+      return 7.0F;
+   }
 }

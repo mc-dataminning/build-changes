@@ -1,47 +1,43 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
-public class nr implements Supplier<JsonElement> {
-   private final Map<nt<?>, nt<?>.a> a = Maps.newLinkedHashMap();
+public class nr<T> {
+   final String a;
+   final Function<T, JsonElement> b;
 
-   public <T> nr a(nt<T> $$0, T $$1) {
-      nt<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
+   public nr(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public nr<T>.a a(T $$0) {
+      return new nr.a($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
+
+   public class a {
+      private final T b;
+
+      public a(T $$1) {
+         this.b = $$1;
       }
-   }
 
-   public static nr a() {
-      return new nr();
-   }
+      public nr<T> a() {
+         return nr.this;
+      }
 
-   public static nr a(nr $$0, nr $$1) {
-      nr $$2 = new nr();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
-   }
+      public void a(JsonObject $$0) {
+         $$0.add(nr.this.a, nr.this.b.apply(this.b));
+      }
 
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
-   }
-
-   public static JsonElement a(List<nr> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
+      @Override
+      public String toString() {
+         return nr.this.a + "=" + this.b;
       }
    }
 }

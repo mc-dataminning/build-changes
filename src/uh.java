@@ -5,57 +5,61 @@ import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 
-public class uh extends uj<ui> {
+public class uh extends uc<ui> {
    private static final int b = 24;
-   public static final vj<uh> a = new vj.b<uh>() {
-      public uh a(DataInput $$0, ut $$1) throws IOException {
+   public static final vc<uh> a = new vc.b<uh>() {
+      public uh a(DataInput $$0, um $$1) throws IOException {
          return new uh(d($$0, $$1));
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static byte[] d(DataInput $$0, ut $$1) throws IOException {
+      private static int[] d(DataInput $$0, um $$1) throws IOException {
          $$1.b(24L);
          int $$2 = $$0.readInt();
-         $$1.a(1L, (long)$$2);
-         byte[] $$3 = new byte[$$2];
-         $$0.readFully($$3);
+         $$1.a(4L, (long)$$2);
+         int[] $$3 = new int[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readInt();
+         }
+
          return $$3;
       }
 
       @Override
-      public void b(DataInput $$0, ut $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 1);
+      public void b(DataInput $$0, um $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 4);
       }
 
       @Override
       public String a() {
-         return "BYTE[]";
+         return "INT[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Byte_Array";
+         return "TAG_Int_Array";
       }
    };
-   private byte[] c;
+   private int[] c;
 
-   public uh(byte[] $$0) {
+   public uh(int[] $$0) {
       this.c = $$0;
    }
 
-   public uh(List<Byte> $$0) {
+   public uh(List<Integer> $$0) {
       this(a($$0));
    }
 
-   private static byte[] a(List<Byte> $$0) {
-      byte[] $$1 = new byte[$$0.size()];
+   private static int[] a(List<Integer> $$0) {
+      int[] $$1 = new int[$$0.size()];
 
       for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Byte $$3 = $$0.get($$2);
+         Integer $$3 = $$0.get($$2);
          $$1[$$2] = $$3 == null ? 0 : $$3;
       }
 
@@ -65,21 +69,24 @@ public class uh extends uj<ui> {
    @Override
    public void a(DataOutput $$0) throws IOException {
       $$0.writeInt(this.c.length);
-      $$0.write(this.c);
+
+      for (int $$1 : this.c) {
+         $$0.writeInt($$1);
+      }
    }
 
    @Override
    public int a() {
-      return 24 + 1 * this.c.length;
+      return 24 + 4 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 7;
+      return 11;
    }
 
    @Override
-   public vj<uh> c() {
+   public vc<uh> c() {
       return a;
    }
 
@@ -88,9 +95,8 @@ public class uh extends uj<ui> {
       return this.s_();
    }
 
-   @Override
-   public vh d() {
-      byte[] $$0 = new byte[this.c.length];
+   public uh e() {
+      int[] $$0 = new int[this.c.length];
       System.arraycopy(this.c, 0, $$0, 0, this.c.length);
       return new uh($$0);
    }
@@ -105,13 +111,13 @@ public class uh extends uj<ui> {
       return Arrays.hashCode(this.c);
    }
 
-   @Override
-   public void a(vl $$0) {
-      $$0.a(this);
+   public int[] g() {
+      return this.c;
    }
 
-   public byte[] e() {
-      return this.c;
+   @Override
+   public void a(ve $$0) {
+      $$0.a(this);
    }
 
    @Override
@@ -124,19 +130,19 @@ public class uh extends uj<ui> {
    }
 
    public ui a(int $$0, ui $$1) {
-      byte $$2 = this.c[$$0];
-      this.c[$$0] = $$1.i();
+      int $$2 = this.c[$$0];
+      this.c[$$0] = $$1.g();
       return ui.a($$2);
    }
 
    public void b(int $$0, ui $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
+      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
    }
 
    @Override
-   public boolean a(int $$0, vh $$1) {
-      if ($$1 instanceof va) {
-         this.c[$$0] = ((va)$$1).i();
+   public boolean a(int $$0, va $$1) {
+      if ($$1 instanceof ut) {
+         this.c[$$0] = ((ut)$$1).g();
          return true;
       } else {
          return false;
@@ -144,9 +150,9 @@ public class uh extends uj<ui> {
    }
 
    @Override
-   public boolean b(int $$0, vh $$1) {
-      if ($$1 instanceof va) {
-         this.c = ArrayUtils.add(this.c, $$0, ((va)$$1).i());
+   public boolean b(int $$0, va $$1) {
+      if ($$1 instanceof ut) {
+         this.c = ArrayUtils.add(this.c, $$0, ((ut)$$1).g());
          return true;
       } else {
          return false;
@@ -154,23 +160,23 @@ public class uh extends uj<ui> {
    }
 
    public ui b(int $$0) {
-      byte $$1 = this.c[$$0];
+      int $$1 = this.c[$$0];
       this.c = ArrayUtils.remove(this.c, $$0);
       return ui.a($$1);
    }
 
    @Override
    public byte f() {
-      return 1;
+      return 3;
    }
 
    @Override
    public void clear() {
-      this.c = new byte[0];
+      this.c = new int[0];
    }
 
    @Override
-   public ve.b a(ve $$0) {
+   public ux.b a(ux $$0) {
       return $$0.a(this.c);
    }
 }

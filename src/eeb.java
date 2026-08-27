@@ -1,53 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public record eeb(List<eeb.a> b, iw c, eab d, boolean e) implements eek {
-   public static final Codec<eeb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eeb.a.a.listOf().fieldOf("layers").forGetter(eeb::a),
-               iw.g.fieldOf("direction").forGetter(eeb::b),
-               eab.b.fieldOf("allowed_placement").forGetter(eeb::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eeb::d)
-            )
-            .apply($$0, eeb::new)
-   );
+public abstract class eeb {
+   public static final Codec<eeb> d = le.Y.q().dispatch(eeb::a, eec::a);
+   protected final bpb e;
+   protected final eee f;
+   protected final Optional<edy> g;
 
-   public static eeb.a a(bpf $$0, egl $$1) {
-      return new eeb.a($$0, $$1);
-   }
-
-   public static eeb b(bpf $$0, egl $$1) {
-      return new eeb(List.of(a($$0, $$1)), iw.b, eab.c, false);
-   }
-
-   public List<eeb.a> a() {
-      return this.b;
-   }
-
-   public iw b() {
-      return this.c;
-   }
-
-   public eab c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpf b, egl c) {
-      public static final Codec<eeb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpf.d.fieldOf("height").forGetter(eeb.a::a), egl.a.fieldOf("provider").forGetter(eeb.a::b)).apply($$0, eeb.a::new)
+   protected static <P extends eeb> P3<Mu<P>, bpb, eee, Optional<edy>> a(Instance<P> $$0) {
+      return $$0.group(
+         bpb.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         eee.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         edy.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
       );
+   }
 
-      public bpf a() {
-         return this.b;
-      }
+   public eeb(bpb $$0, eee $$1, Optional<edy> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-      public egl b() {
-         return this.c;
+   protected abstract eec<?> a();
+
+   public abstract boolean a(dbf var1, BiConsumer<io, drd> var2, aym var3, io var4, io var5, ecz var6);
+
+   protected boolean a(dbf $$0, io $$1) {
+      return ebl.c($$0, $$1);
+   }
+
+   protected void a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, io $$3, ecz $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            edy $$5 = this.g.get();
+            io $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, drc.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
       }
+   }
+
+   protected drd a(dbf $$0, io $$1, drd $$2) {
+      if ($$2.b(drt.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awc.a));
+         return $$2.a(drt.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
+   }
+
+   public io a(io $$0, aym $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

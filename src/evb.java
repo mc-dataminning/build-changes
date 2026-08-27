@@ -1,42 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record evb(float b, float c) implements euu {
-   public static final Codec<evb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(evb::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(evb::d)).apply($$0, evb::new)
-   );
+public class evb extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   @Override
-   public euv b() {
-      return euw.g;
+   public evb(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public Set<eud<?>> a() {
-      return ImmutableSet.of(eug.d);
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   public boolean a(erp $$0) {
-      brv $$1 = $$0.c(eug.d);
-      int $$2 = 0;
-      if ($$1 instanceof bso) {
-         $$2 = dae.h((bso)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
-   }
-
-   public static euu.a a(float $$0, float $$1) {
-      return () -> new evb($$0, $$1);
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public float d() {
-      return this.c;
+   public int size() {
+      return this.a.size();
    }
 }

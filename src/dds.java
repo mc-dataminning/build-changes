@@ -1,32 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dds extends den {
-   private final csy a;
+public class dds extends ddm implements ddr {
+   public static final MapCodec<dds> a = b(dds::new);
 
-   protected dds(csy $$0, dtb.d $$1) {
-      super($$1);
-      this.a = $$0;
+   @Override
+   public MapCodec<dds> a() {
+      return a;
+   }
+
+   public dds(drc.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dds> a();
-
-   @Override
-   public boolean a(dtc $$0) {
-      return true;
+   public csj b() {
+      return csj.a;
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dpq($$0, $$1, this.a);
+   public doi a(io $$0, drd $$1) {
+      return new dod($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return a($$2, dok.o, dod::a);
    }
 
    @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return $$0.c_($$1) instanceof dpq $$3 ? $$3.c() : super.a($$0, $$1, $$2);
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$1.B) {
+         return bpw.a;
+      } else {
+         if ($$1.c_($$2) instanceof dod $$5) {
+            $$3.a($$5);
+            $$3.a(avs.ab);
+         }
+
+         return bpw.b;
+      }
    }
 
-   public csy b() {
-      return this.a;
+   @Override
+   protected dkg a_(drd $$0) {
+      return dkg.c;
    }
 }

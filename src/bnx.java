@@ -1,6 +1,29 @@
-import java.util.Set;
-import java.util.function.Supplier;
+public class bnx implements bny {
+   public static final bny a = new bnx();
 
-public interface bnx {
-   Set<bnv> a(Supplier<bmm> var1);
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bmk f() {
+      return bmh.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

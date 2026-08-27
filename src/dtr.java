@@ -1,102 +1,372 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public record dtr(String s, boolean t, boolean u, boolean v, dtr.a w, dnd x, avn y, avn z, avn A, avn B, avn C, avn D, avn E, avn F) {
-   private static final Map<String, dtr> G = new Object2ObjectArrayMap();
-   public static final Codec<dtr> a = axu.a(dtr::b, G::get);
-   public static final dtr b = a(new dtr("iron", false, false, false, dtr.a.a, dnd.g, avo.nC, avo.nD, avo.nK, avo.nL, avo.ph, avo.pi, avo.zz, avo.zA));
-   public static final dtr c = a(new dtr("copper", true, true, false, dtr.a.a, dnd.aj, avo.fN, avo.fO, avo.fU, avo.fV, avo.ph, avo.pi, avo.zz, avo.zA));
-   public static final dtr d = a(new dtr("gold", false, true, false, dtr.a.a, dnd.g, avo.nC, avo.nD, avo.nK, avo.nL, avo.ph, avo.pi, avo.zz, avo.zA));
-   public static final dtr e = a(new dtr("stone", true, true, false, dtr.a.b, dnd.f, avo.nC, avo.nD, avo.nK, avo.nL, avo.zE, avo.zF, avo.zz, avo.zA));
-   public static final dtr f = a(
-      new dtr("polished_blackstone", true, true, false, dtr.a.b, dnd.f, avo.nC, avo.nD, avo.nK, avo.nL, avo.zE, avo.zF, avo.zz, avo.zA)
-   );
-   public static final dtr g = a(new dtr("oak"));
-   public static final dtr h = a(new dtr("spruce"));
-   public static final dtr i = a(new dtr("birch"));
-   public static final dtr j = a(new dtr("acacia"));
-   public static final dtr k = a(new dtr("cherry", true, true, true, dtr.a.a, dnd.aZ, avo.eJ, avo.eK, avo.eL, avo.eM, avo.eP, avo.eQ, avo.eN, avo.eO));
-   public static final dtr l = a(new dtr("jungle"));
-   public static final dtr m = a(new dtr("dark_oak"));
-   public static final dtr n = a(new dtr("crimson", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
-   public static final dtr o = a(new dtr("warped", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
-   public static final dtr p = a(new dtr("potato", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
-   public static final dtr q = a(new dtr("mangrove"));
-   public static final dtr r = a(new dtr("bamboo", true, true, true, dtr.a.a, dnd.aS, avo.bt, avo.bu, avo.bv, avo.bw, avo.bz, avo.bA, avo.bx, avo.by));
+public class dtr<T> implements dtq<T>, dts<T> {
+   private static final int a = 0;
+   private final dtq<T> b = ($$0x, $$1x) -> 0;
+   private final jc<T> c;
+   private volatile dtr.c<T> d;
+   private final dtr.d e;
+   private final azc f = new azc("PalettedContainer");
 
-   public dtr(String $$0) {
-      this($$0, true, true, true, dtr.a.a, dnd.b, avo.Dp, avo.Dq, avo.Dr, avo.Ds, avo.Dv, avo.Dw, avo.Dt, avo.Du);
+   public void a() {
+      this.f.a();
    }
 
-   private static dtr a(dtr $$0) {
-      G.put($$0.s, $$0);
-      return $$0;
+   public void b() {
+      this.f.b();
    }
 
-   public static Stream<dtr> a() {
-      return G.values().stream();
+   public static <T> Codec<dtr<T>> a(jc<T> $$0, Codec<T> $$1, dtr.d $$2, T $$3) {
+      dts.b<T, dtr<T>> $$4 = dtr::a;
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public String b() {
-      return this.s;
+   public static <T> Codec<dts<T>> b(jc<T> $$0, Codec<T> $$1, dtr.d $$2, T $$3) {
+      dts.b<T, dts<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean c() {
-      return this.t;
+   private static <T, C extends dts<T>> Codec<C> a(jc<T> $$0, Codec<T> $$1, dtr.d $$2, T $$3, dts.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(axn.a($$3)).listOf().fieldOf("palette").forGetter(dts.a::a),
+                     Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(dts.a::b)
+                  )
+                  .apply($$2x, dts.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
    }
 
-   public boolean d() {
-      return this.u;
+   public dtr(jc<T> $$0, dtr.d $$1, dtr.a<T> $$2, awu $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new dtr.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
    }
 
-   public boolean e() {
-      return this.v;
+   private dtr(jc<T> $$0, dtr.d $$1, dtr.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
    }
 
-   public dtr.a f() {
-      return this.w;
+   public dtr(jc<T> $$0, T $$1, dtr.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
    }
 
-   public dnd g() {
-      return this.x;
+   private dtr.c<T> a(@Nullable dtr.c<T> $$0, int $$1) {
+      dtr.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
    }
 
-   public avn h() {
-      return this.y;
+   @Override
+   public int onResize(int $$0, T $$1) {
+      dtr.c<T> $$2 = this.d;
+      dtr.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
    }
 
-   public avn i() {
-      return this.z;
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
    }
 
-   public avn j() {
-      return this.A;
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
    }
 
-   public avn k() {
-      return this.B;
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
    }
 
-   public avn l() {
-      return this.C;
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
    }
 
-   public avn m() {
-      return this.D;
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
    }
 
-   public avn n() {
-      return this.E;
+   @Override
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
    }
 
-   public avn o() {
-      return this.F;
+   protected T a(int $$0) {
+      dtr.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void a(Consumer<T> $$0) {
+      dtp<T> $$1 = this.d.e();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(vx $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         dtr.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
+      }
+   }
+
+   @Override
+   public void b(vx $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
+   }
+
+   private static <T> DataResult<dtr<T>> a(jc<T> $$0, dtr.d $$1, dts.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dtr.a<T> $$6 = $$1.a($$0, $$5);
+      awu $$7;
+      if ($$5 == 0) {
+         $$7 = new azj($$4);
+      } else {
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == dtr.d.f) {
+               dtp<T> $$10 = new dth<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               ayt $$11 = new ayt($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new ayt($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new ayt($$6.b(), $$4, $$9);
+            }
+         } catch (ayt.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
+         }
+      }
+
+      return DataResult.success(new dtr<>($$0, $$1, $$6, $$7, $$3));
+   }
+
+   @Override
+   public dts.a<T> a(jc<T> $$0, dtr.d $$1) {
+      this.a();
+
+      dts.a var12;
+      try {
+         dth<T> $$2 = new dth<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            ayt $$6 = new ayt($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
+         } else {
+            $$7 = Optional.empty();
+         }
+
+         var12 = new dts.a<>($$2.d(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   public dtr<T> d() {
+      return new dtr<>(this.c, this.e, this.d.b());
+   }
+
+   @Override
+   public dtr<T> e() {
+      return new dtr<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dtr.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
+      } else {
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      }
+   }
+
+   static record a<T>(dtp.a a, int b) {
+      public dtr.c<T> a(jc<T> $$0, dtq<T> $$1, int $$2) {
+         awu $$3 = (awu)(this.b == 0 ? new azj($$2) : new ayt(this.b, $$2));
+         dtp<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dtr.c<>(this, $$3, $$4);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
+
+   static record c<T>(dtr.a<T> a, awu b, dtp<T> c) {
+
+      public void a(dtp<T> $$0, awu $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
+         }
+      }
+
+      public int a() {
+         return 1 + this.c.a() + wo.a(this.b.a().length) + this.b.a().length * 8;
+      }
+
+      public void a(vx $$0) {
+         $$0.k(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
+
+      public dtr.c<T> b() {
+         return new dtr.c<>(this.a, this.b.d(), this.c.c());
+      }
+
+      public dtr.a<T> c() {
+         return this.a;
+      }
+
+      public awu d() {
+         return this.b;
+      }
+
+      public dtp<T> e() {
+         return this.c;
+      }
+   }
+
+   public abstract static class d {
+      public static final dtp.a a = dtu::a;
+      public static final dtp.a b = dtn::a;
+      public static final dtp.a c = dth::a;
+      static final dtp.a f = dtg::a;
+      public static final dtr.d d = new dtr.d(4) {
+         @Override
+         public <A> dtr.a<A> a(jc<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dtr.a(a, $$1);
+               case 1, 2, 3, 4 -> new dtr.a(b, 4);
+               case 5, 6, 7, 8 -> new dtr.a(c, $$1);
+               default -> new dtr.a(dtr.d.f, ayf.e($$0.b()));
+            };
+         }
+      };
+      public static final dtr.d e = new dtr.d(2) {
+         @Override
+         public <A> dtr.a<A> a(jc<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dtr.a(a, $$1);
+               case 1, 2, 3 -> new dtr.a(b, $$1);
+               default -> new dtr.a(dtr.d.f, ayf.e($$0.b()));
+            };
+         }
+      };
+      private final int g;
+
+      d(int $$0) {
+         this.g = $$0;
+      }
+
+      public int a() {
+         return 1 << this.g * 3;
+      }
+
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
+
+      public abstract <A> dtr.a<A> a(jc<A> var1, int var2);
+
+      <A> int b(jc<A> $$0, int $$1) {
+         int $$2 = ayf.e($$1);
+         dtr.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
+      }
    }
 }

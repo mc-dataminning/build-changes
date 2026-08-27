@@ -1,31 +1,42 @@
-import java.util.Map;
+import java.util.UUID;
 
-public class aaa implements zl<zr> {
-   public static final zc<we, aaa> a = zl.a(aaa::a, aaa::new);
-   private final Map<aks<? extends jn<?>>, aww.a> b;
+public record aaa(UUID b, aaa.a c) implements ze<zv> {
+   public static final yv<vx, aaa> a = ze.a(aaa::a, aaa::new);
 
-   public aaa(Map<aks<? extends jn<?>>, aww.a> $$0) {
-      this.b = $$0;
+   private aaa(vx $$0) {
+      this($$0.n(), $$0.b(aaa.a.class));
    }
 
-   private aaa(we $$0) {
-      this.b = $$0.a(we::r, aww.a::b);
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b, we::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aaa> a() {
-      return aab.i;
+   public zg<aaa> a() {
+      return zu.n;
    }
 
-   public void a(zr $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
    }
 
-   public Map<aks<? extends jn<?>>, aww.a> b() {
-      return this.b;
+   public aaa.a e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

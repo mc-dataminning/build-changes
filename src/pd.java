@@ -1,24 +1,54 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
 
-public class pd implements pc.a {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public uk apply(String $$0, uk $$1) {
-      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+public class pd extends pr<dny> {
+   public pd(ln $$0, CompletableFuture<iz.a> $$1) {
+      super($$0, lf.d, $$1);
    }
 
-   public static uk a(String $$0, uk $$1) {
-      ent $$2 = new ent();
-      int $$3 = uz.b($$1, 500);
-      int $$4 = 3798;
-      if ($$3 < 3798) {
-         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
-      }
-
-      uk $$5 = azs.f.a(azt.a(), $$1, $$3);
-      $$2.a(lh.e.p(), $$5);
-      return $$2.a(new uk());
+   @Override
+   protected void a(iz.a $$0) {
+      this.b(avv.a)
+         .a(
+            doa.b,
+            doa.c,
+            doa.d,
+            doa.e,
+            doa.f,
+            doa.g,
+            doa.h,
+            doa.i,
+            doa.j,
+            doa.k,
+            doa.l,
+            doa.m,
+            doa.n,
+            doa.o,
+            doa.p,
+            doa.q,
+            doa.r,
+            doa.s,
+            doa.t,
+            doa.u,
+            doa.v,
+            doa.w,
+            doa.x,
+            doa.y,
+            doa.z,
+            doa.A,
+            doa.B,
+            doa.C,
+            doa.D,
+            doa.E,
+            doa.F,
+            doa.G,
+            doa.H,
+            doa.I
+         );
+      this.b(avv.b).a(doa.M);
+      this.b(avv.c).a(doa.K);
+      this.b(avv.d).a(doa.L);
+      this.b(avv.e).a(doa.N);
+      this.b(avv.f).a(doa.J);
+      this.b(avv.g).a(doa.O);
    }
 }

@@ -1,169 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class djb extends den {
-   public static final MapCodec<djb> a = b(djb::new);
-   public static final dtw b = dts.Q;
-   public static final dtt c = dts.f;
-   private static final exn d = dfc.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
-   private static final exn e = dfc.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
-   private static final exn f = exk.a(e, d);
-   private static final exn g = a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   private static final exn h = exk.a(f, g, ewy.e);
-   private static final exn i = exk.a(h, dfc.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
-   private static final exn j = exk.a(h, dfc.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
-   private static final exn k = exk.a(h, dfc.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
-   private static final exn l = exk.a(h, dfc.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
-   private static final exn m = exk.a(h, dfc.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
-   private static final exn n = g;
-   private static final exn o = exk.a(g, dfc.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
-   private static final exn F = exk.a(g, dfc.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
-   private static final exn G = exk.a(g, dfc.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
-   private static final exn H = exk.a(g, dfc.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+public class djb {
+   public static final djb.e[] a = new djb.e[]{djb.e.a, djb.e.b, djb.e.c};
+   private final djb.b b;
 
-   @Override
-   public MapCodec<djb> a() {
-      return a;
+   public djb(dja $$0) {
+      this(new djb.a($$0));
    }
 
-   public djb(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, iw.a).a(c, Boolean.valueOf(true)));
+   public djb(djb.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      switch ((iw)$$0.c(b)) {
-         case a:
-            return i;
-         case c:
-            return k;
-         case d:
-            return l;
-         case e:
-            return m;
-         case f:
-            return j;
-         default:
-            return h;
-      }
+   public boolean a(drd $$0, daf $$1, io $$2, it $$3) {
+      return it.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2) {
-      switch ((iw)$$0.c(b)) {
-         case a:
-            return n;
-         case c:
-            return F;
-         case d:
-            return G;
-         case e:
-            return H;
-         case f:
-            return o;
-         default:
-            return g;
-      }
+   public Optional<djb.c> a(drd $$0, dba $$1, io $$2, aym $$3) {
+      return it.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   @Override
-   public dtc a(cyd $$0) {
-      iw $$1 = $$0.k().g();
-      return this.n().a(b, $$1.o() == iw.a.b ? iw.a : $$1).a(c, Boolean.valueOf(true));
+   public long a(drd $$0, dba $$1, io $$2, boolean $$3) {
+      return it.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
    }
 
-   @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new drc($$0, $$1);
+   public Optional<djb.c> a(drd $$0, dba $$1, io $$2, it $$3, aym $$4, boolean $$5) {
+      return it.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
    }
 
-   @Nullable
-   @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return $$0.C ? null : a($$2, dqe.s, drc::a);
+   private long a(drd $$0, dba $$1, io $$2, it $$3, boolean $$4) {
+      return it.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
    }
 
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
+   @VisibleForTesting
+   public Optional<djb.c> a(drd $$0, dba $$1, io $$2, it $$3, it $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
    }
 
-   @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      if ($$1.C) {
-         return bqa.a;
-      } else {
-         dqc $$5 = $$1.c_($$2);
-         if ($$5 instanceof drc) {
-            $$3.a((drc)$$5);
-            $$3.a(avz.ae);
+   public Optional<djb.c> a(drd $$0, daf $$1, io $$2, it $$3, it $$4, djb.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (djb.e $$6 : this.b.a()) {
+            djb.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
+            }
          }
 
-         return bqa.b;
+         return Optional.empty();
+      } else {
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
+   public Optional<djb.c> a(dba $$0, djb.c $$1, boolean $$2) {
+      drd $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   private void a(dca $$0, ir $$1, dtc $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 2);
+   public static class a implements djb.b {
+      protected dja a;
+
+      public a(dja $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public drd a(drd $$0, daf $$1, io $$2, it $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(daf $$0, io $$1, io $$2, it $$3, drd $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(dec.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(daf $$0, io $$1, djb.c $$2) {
+         drd $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
       }
    }
 
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      bpw.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
+   public interface b {
+      @Nullable
+      drd a(drd var1, daf var2, io var3, it var4);
 
-   @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.c;
-   }
+      boolean a(daf var1, io var2, djb.c var3);
 
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
+      default djb.e[] a() {
+         return djb.a;
+      }
 
-   @Override
-   protected int a(dtc $$0, dca $$1, ir $$2) {
-      return cpg.a($$1.c_($$2));
-   }
+      default boolean a(drd $$0, it $$1) {
+         return dja.a($$0, $$1);
+      }
 
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+      default boolean a(drd $$0) {
+         return false;
+      }
 
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
+      default boolean b(drd $$0, it $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
 
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b, c);
-   }
+      default boolean a(dba $$0, djb.c $$1, drd $$2, boolean $$3) {
+         drd $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
 
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
-      dqc $$4 = $$1.c_($$2);
-      if ($$4 instanceof drc) {
-         drc.a($$1, $$2, $$0, $$3, (drc)$$4);
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
+         }
       }
    }
 
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   public static record c(io a, it b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(daf var1, io var2, djb.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public djb.c a(io $$0, it $$1, it $$2) {
+            return new djb.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public djb.c a(io $$0, it $$1, it $$2) {
+            return new djb.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public djb.c a(io $$0, it $$1, it $$2) {
+            return new djb.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract djb.c a(io var1, it var2, it var3);
    }
 }

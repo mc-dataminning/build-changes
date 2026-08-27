@@ -15,26 +15,26 @@ public class cmc {
    private static final int b = 0;
    public final Int2IntMap a = new Int2IntOpenHashMap();
 
-   public void a(cuh $$0) {
-      if (!$$0.l() && !$$0.A() && !$$0.b(ke.f)) {
+   public void a(ctq $$0) {
+      if (!$$0.m() && !$$0.B() && !$$0.b(kb.f)) {
          this.b($$0);
       }
    }
 
-   public void b(cuh $$0) {
-      this.a($$0, $$0.i());
+   public void b(ctq $$0) {
+      this.a($$0, $$0.j());
    }
 
-   public void a(cuh $$0, int $$1) {
-      if (!$$0.d()) {
+   public void a(ctq $$0, int $$1) {
+      if (!$$0.e()) {
          int $$2 = c($$0);
-         int $$3 = Math.min($$1, $$0.G());
+         int $$3 = Math.min($$1, $$0.I());
          this.b($$2, $$3);
       }
    }
 
-   public static int c(cuh $$0) {
-      return lh.h.a($$0.f());
+   public static int c(ctq $$0) {
+      return le.h.a($$0.g());
    }
 
    boolean b(int $$0) {
@@ -55,24 +55,24 @@ public class cmc {
       this.a.put($$0, this.a.get($$0) + $$1);
    }
 
-   public boolean a(cza<?> $$0, @Nullable IntList $$1) {
+   public boolean a(cxw<?> $$0, @Nullable IntList $$1) {
       return this.a($$0, $$1, 1);
    }
 
-   public boolean a(cza<?> $$0, @Nullable IntList $$1, int $$2) {
+   public boolean a(cxw<?> $$0, @Nullable IntList $$1, int $$2) {
       return new cmc.a($$0).a($$2, $$1);
    }
 
-   public int a(czc<?> $$0, @Nullable IntList $$1) {
+   public int a(cxy<?> $$0, @Nullable IntList $$1) {
       return this.a($$0, Integer.MAX_VALUE, $$1);
    }
 
-   public int a(czc<?> $$0, int $$1, @Nullable IntList $$2) {
+   public int a(cxy<?> $$0, int $$1, @Nullable IntList $$2) {
       return new cmc.a($$0.b()).b($$1, $$2);
    }
 
-   public static cuh a(int $$0) {
-      return $$0 == 0 ? cuh.i : new cuh(cuc.b($$0));
+   public static ctq a(int $$0) {
+      return $$0 == 0 ? ctq.i : new ctq(ctl.b($$0));
    }
 
    public void a() {
@@ -80,18 +80,18 @@ public class cmc {
    }
 
    class a {
-      private final cza<?> b;
-      private final List<cyv> c = Lists.newArrayList();
+      private final cxw<?> b;
+      private final List<cxt> c = Lists.newArrayList();
       private final int d;
       private final int[] e;
       private final int f;
       private final BitSet g;
       private final IntList h = new IntArrayList();
 
-      public a(cza<?> $$0) {
+      public a(cxw<?> $$0) {
          this.b = $$0;
          this.c.addAll($$0.a());
-         this.c.removeIf(cyv::c);
+         this.c.removeIf(cxt::c);
          this.d = this.c.size();
          this.e = this.a();
          this.f = this.e.length;
@@ -135,7 +135,7 @@ public class cmc {
             this.g.clear(0, this.d + this.f + this.d);
             int $$7 = 0;
 
-            for (cyv $$9 : this.b.a()) {
+            for (cxt $$9 : this.b.a()) {
                if ($$6 && $$9.c()) {
                   $$1.add(0);
                } else {
@@ -160,7 +160,7 @@ public class cmc {
       private int[] a() {
          IntCollection $$0 = new IntAVLTreeSet();
 
-         for (cyv $$1 : this.c) {
+         for (cxt $$1 : this.c) {
             $$0.addAll($$1.b());
          }
 
@@ -287,7 +287,7 @@ public class cmc {
       private int b() {
          int $$0 = Integer.MAX_VALUE;
 
-         for (cyv $$1 : this.c) {
+         for (cxt $$1 : this.c) {
             int $$2 = 0;
             IntListIterator var5 = $$1.b().iterator();
 

@@ -1,47 +1,69 @@
-public abstract class cmz extends cna implements cmo {
-   private static final ajy<cuh> b = akc.a(cmz.class, aka.h);
-
-   public cmz(bsb<? extends cmz> $$0, dca $$1) {
+public class cmz extends cmx {
+   public cmz(bsc<? extends cmz> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public cmz(bsb<? extends cmz> $$0, double $$1, double $$2, double $$3, dca $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public cmz(daz $$0, bsq $$1) {
+      super(bsc.C, $$1, $$0);
    }
 
-   public cmz(bsb<? extends cmz> $$0, bso $$1, dca $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cuh $$0) {
-      this.ap().a(b, $$0.c(1));
-   }
-
-   protected abstract cuc r();
-
-   @Override
-   public cuh p() {
-      return this.ap().a(b);
+   public cmz(daz $$0, double $$1, double $$2, double $$3) {
+      super(bsc.C, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      $$0.a(b, new cuh(this.r()));
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   public void b(uk $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dY()));
-   }
-
-   @Override
-   public void a(uk $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cuh.a(this.dY(), (vh)$$0.p("Item")).orElseGet(() -> new cuh(this.r())));
-      } else {
-         this.a(new cuh(this.r()));
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dP()
+               .a(
+                  new ku(ky.S, this.p()),
+                  this.du(),
+                  this.dw(),
+                  this.dA(),
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08
+               );
+         }
       }
+   }
+
+   @Override
+   protected void a(euj $$0) {
+      super.a($$0);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(euk $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         if (this.ah.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ah.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cel $$3 = bsc.t.a(this.dP());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+                  this.dP().b($$3);
+               }
+            }
+         }
+
+         this.dP().a(this, (byte)3);
+         this.ao();
+      }
+   }
+
+   @Override
+   protected ctl u() {
+      return ctt.qR;
    }
 }

@@ -1,99 +1,110 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class gdr extends gdu {
-   gdr(fzn $$0, gdp $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+public class gdr {
+   public static final gdr a = new gdr();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final gdr.a[] c;
+   private final akn[] d;
+
+   private gdr() {
+      this.c = new gdr.a[0];
+      this.d = new akn[0];
    }
 
-   gdr(fzn $$0, gdp $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
+   public gdr(gqa $$0, gdm $$1, List<gdq> $$2) {
+      this.d = $$2.stream().flatMap(gdq::b).map(gdq.b::a).distinct().toArray(akn[]::new);
+      Object2IntMap<akn> $$3 = new Object2IntOpenHashMap();
 
-   @Override
-   public gcy b() {
-      return gcy.b;
-   }
-
-   public static class a implements gcx<le> {
-      private final gdp a;
-
-      public a(gdp $$0) {
-         this.a = $$0;
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayt $$8 = $$1.A;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gdr $$12 = new gdr($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+      List<gdr.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         gdq $$7 = $$2.get($$6);
+         gpw $$8 = this.a($$0, $$1, $$7);
+         gdr.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new gdr.b($$2x, $$1x.b());
+         }).toArray(gdr.b[]::new);
+         $$5.add(new gdr.a($$9, $$8));
       }
+
+      this.c = $$5.toArray(new gdr.a[0]);
    }
 
-   public static class b implements gcx<le> {
-      private final gdp a;
+   @Nullable
+   private gpw a(gqa $$0, gdm $$1, gdq $$2) {
+      gqh $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gpx.a);
+   }
 
-      public b(gdp $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   public gpw a(gpw $$0, ctq $$1, @Nullable fwr $$2, @Nullable bsq $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdr $$8 = new gdr($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<ky> o() {
-               return Optional.of(ky.a);
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            akn $$8 = this.d[$$7];
+            gnd $$9 = gnc.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+            } else {
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
             }
-         };
-         $$8.t = aym.b($$1.A, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
+         }
+
+         for (gdr.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gpw $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      private final gdr.b[] a;
+      @Nullable
+      final gpw b;
+
+      a(gdr.b[] $$0, @Nullable gpw $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      boolean a(float[] $$0) {
+         for (gdr.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   public static class c implements gcx<le> {
-      private final gdp a;
+   static class b {
+      public final int a;
+      public final float b;
 
-      public c(gdp $$0) {
+      b(int $$0, float $$1) {
          this.a = $$0;
-      }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdr $$8 = new gdr($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gcx<le> {
-      private final gdp a;
-
-      public d(gdp $$0) {
-         this.a = $$0;
-      }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
-         gdr $$9 = new gdr($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+         this.b = $$1;
       }
    }
 }

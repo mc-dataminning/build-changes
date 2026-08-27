@@ -1,76 +1,88 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dee extends dfc implements dff {
+public class dee extends ddm {
    public static final MapCodec<dee> a = b(dee::new);
-   protected static final float b = 4.0F;
-   protected static final exn c = dfc.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+   public static final dru[] b = new dru[]{drt.k, drt.l, drt.m};
+   protected static final evf c = evc.a(dea.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dea.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dee> a() {
       return a;
    }
 
-   public dee(dtb.d $$0) {
+   public dee(drc.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      ewu $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   protected dkg a_(drd $$0) {
+      return dkg.c;
    }
 
    @Override
-   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   public doi a(io $$0, drd $$1) {
+      return new dol($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return $$0.B ? null : a($$2, dok.l, dol::a);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return $$1.a_($$2.d()).a(awe.av);
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return c;
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dfe.a.n();
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$1.B) {
+         return bpw.a;
       } else {
-         if ($$1 == iw.b && $$2.a(dfe.nX)) {
-            $$3.a($$4, dfe.nX.n(), 2);
+         doi $$5 = $$1.c_($$2);
+         if ($$5 instanceof dol) {
+            $$3.a((dol)$$5);
+            $$3.a(avs.aa);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return bpw.b;
       }
    }
 
    @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return new cuh(cuk.eZ);
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(ky.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public boolean b(dcd $$0, ir $$1, dtc $$2) {
-      return $$0.a_($$1.c()).i();
+   protected void a(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
+      bps.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
+   protected boolean c_(drd $$0) {
       return true;
    }
 
    @Override
-   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
-      this.a($$0, $$2);
+   protected int a(drd $$0, daz $$1, io $$2) {
+      return cov.a($$1.c_($$2));
    }
 
    @Override
-   protected float a(dtc $$0, cly $$1, dbg $$2, ir $$3) {
-      return $$1.fg().f() instanceof cwc ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b[0], b[1], b[2]);
    }
 
-   protected void a(dca $$0, ir $$1) {
-      $$0.a($$1.c(), dfe.nX.n().a(def.i, dto.b), 3);
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
    }
 }

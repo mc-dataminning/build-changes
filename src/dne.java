@@ -1,47 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dne extends den {
+public class dne extends dmm implements dlb {
    public static final MapCodec<dne> a = b(dne::new);
+   public static final dru c = drt.C;
 
    @Override
-   public MapCodec<dne> a() {
+   protected MapCodec<? extends dne> a() {
       return a;
    }
 
-   protected dne(dtb.d $$0) {
+   protected dne(drc.d $$0) {
       super($$0);
-   }
-
-   @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new drv($$0, $$1);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
    }
 
    @Nullable
    @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return a($$2, dqe.k, $$0.C ? drv::a : drv::b);
+   public drd a(cxb $$0) {
+      emw $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(emx.c)));
    }
 
    @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, cuh $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.c;
+   protected emw b_(drd $$0) {
+      return $$0.c(c) ? emx.c.a(true) : super.b_($$0);
    }
 
    @Override
-   public void a(cuh $$0, @Nullable dbg $$1, List<xe> $$2, cwi $$3, @Nullable jo $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dcs.a($$0, $$2, "SpawnData");
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(c);
    }
 }

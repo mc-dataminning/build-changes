@@ -1,56 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class ant {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("commands.publish.alreadyPublished", $$0));
-
-   public static void a(CommandDispatcher<eh> $$0) {
+   public static <T extends eg<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((eh)$$0x.getSource(), ayd.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)ei.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((eh)$$0x.getSource(), ayd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ei.a("gamemode", ev.a())
-                           .executes($$0x -> a((eh)$$0x.getSource(), ayd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ev.a($$0x, "gamemode"))))
-                        .then(
-                           ei.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (eh)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       ev.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new ant.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new ant.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new ant.b(), false))
       );
    }
 
-   private static int a(eh $$0, int $$1, boolean $$2, @Nullable dbx $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().R());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
-         throw a.create();
-      } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
+   static class a<T extends eg<T>> implements ha.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
+         $$0.p().onFailure();
+         hf $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
       }
    }
 
-   public static xs a(int $$0) {
-      xe $$1 = xh.a(String.valueOf($$0));
-      return xe.a("commands.publish.started", $$1);
+   static class b<T extends eg<T>> implements hb.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gy $$3, he<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(hn.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new hj.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
+      }
+   }
+
+   static class c<T extends eg<T>> implements ha.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         hf $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

@@ -1,19 +1,96 @@
-import com.mojang.serialization.Codec;
+public interface bqs {
+   akm<bqr> a = akm.a(lf.s, new akn("in_fire"));
+   akm<bqr> b = akm.a(lf.s, new akn("lightning_bolt"));
+   akm<bqr> c = akm.a(lf.s, new akn("on_fire"));
+   akm<bqr> d = akm.a(lf.s, new akn("lava"));
+   akm<bqr> e = akm.a(lf.s, new akn("hot_floor"));
+   akm<bqr> f = akm.a(lf.s, new akn("in_wall"));
+   akm<bqr> g = akm.a(lf.s, new akn("cramming"));
+   akm<bqr> h = akm.a(lf.s, new akn("drown"));
+   akm<bqr> i = akm.a(lf.s, new akn("starve"));
+   akm<bqr> j = akm.a(lf.s, new akn("cactus"));
+   akm<bqr> k = akm.a(lf.s, new akn("fall"));
+   akm<bqr> l = akm.a(lf.s, new akn("fly_into_wall"));
+   akm<bqr> m = akm.a(lf.s, new akn("out_of_world"));
+   akm<bqr> n = akm.a(lf.s, new akn("generic"));
+   akm<bqr> o = akm.a(lf.s, new akn("magic"));
+   akm<bqr> p = akm.a(lf.s, new akn("wither"));
+   akm<bqr> q = akm.a(lf.s, new akn("dragon_breath"));
+   akm<bqr> r = akm.a(lf.s, new akn("dry_out"));
+   akm<bqr> s = akm.a(lf.s, new akn("sweet_berry_bush"));
+   akm<bqr> t = akm.a(lf.s, new akn("freeze"));
+   akm<bqr> u = akm.a(lf.s, new akn("stalagmite"));
+   akm<bqr> v = akm.a(lf.s, new akn("falling_block"));
+   akm<bqr> w = akm.a(lf.s, new akn("falling_anvil"));
+   akm<bqr> x = akm.a(lf.s, new akn("falling_stalactite"));
+   akm<bqr> y = akm.a(lf.s, new akn("sting"));
+   akm<bqr> z = akm.a(lf.s, new akn("mob_attack"));
+   akm<bqr> A = akm.a(lf.s, new akn("mob_attack_no_aggro"));
+   akm<bqr> B = akm.a(lf.s, new akn("player_attack"));
+   akm<bqr> C = akm.a(lf.s, new akn("arrow"));
+   akm<bqr> D = akm.a(lf.s, new akn("trident"));
+   akm<bqr> E = akm.a(lf.s, new akn("mob_projectile"));
+   akm<bqr> F = akm.a(lf.s, new akn("spit"));
+   akm<bqr> G = akm.a(lf.s, new akn("wind_charge"));
+   akm<bqr> H = akm.a(lf.s, new akn("fireworks"));
+   akm<bqr> I = akm.a(lf.s, new akn("fireball"));
+   akm<bqr> J = akm.a(lf.s, new akn("unattributed_fireball"));
+   akm<bqr> K = akm.a(lf.s, new akn("wither_skull"));
+   akm<bqr> L = akm.a(lf.s, new akn("thrown"));
+   akm<bqr> M = akm.a(lf.s, new akn("indirect_magic"));
+   akm<bqr> N = akm.a(lf.s, new akn("thorns"));
+   akm<bqr> O = akm.a(lf.s, new akn("explosion"));
+   akm<bqr> P = akm.a(lf.s, new akn("player_explosion"));
+   akm<bqr> Q = akm.a(lf.s, new akn("sonic_boom"));
+   akm<bqr> R = akm.a(lf.s, new akn("bad_respawn_point"));
+   akm<bqr> S = akm.a(lf.s, new akn("outside_border"));
+   akm<bqr> T = akm.a(lf.s, new akn("generic_kill"));
 
-public enum bqs implements azg {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<bqs> d = azg.a(bqs::values);
-   private final String e;
-
-   private bqs(String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   static void a(qo<bqr> $$0) {
+      $$0.a(a, new bqr("inFire", 0.1F, bqn.d));
+      $$0.a(b, new bqr("lightningBolt", 0.1F));
+      $$0.a(c, new bqr("onFire", 0.0F, bqn.d));
+      $$0.a(d, new bqr("lava", 0.1F, bqn.d));
+      $$0.a(e, new bqr("hotFloor", 0.1F, bqn.d));
+      $$0.a(f, new bqr("inWall", 0.0F));
+      $$0.a(g, new bqr("cramming", 0.0F));
+      $$0.a(h, new bqr("drown", 0.0F, bqn.c));
+      $$0.a(i, new bqr("starve", 0.0F));
+      $$0.a(j, new bqr("cactus", 0.1F));
+      $$0.a(k, new bqr("fall", bqo.b, 0.0F, bqn.a, bqt.b));
+      $$0.a(l, new bqr("flyIntoWall", 0.0F));
+      $$0.a(m, new bqr("outOfWorld", 0.0F));
+      $$0.a(n, new bqr("generic", 0.0F));
+      $$0.a(o, new bqr("magic", 0.0F));
+      $$0.a(p, new bqr("wither", 0.0F));
+      $$0.a(q, new bqr("dragonBreath", 0.0F));
+      $$0.a(r, new bqr("dryout", 0.1F));
+      $$0.a(s, new bqr("sweetBerryBush", 0.1F, bqn.e));
+      $$0.a(t, new bqr("freeze", 0.0F, bqn.f));
+      $$0.a(u, new bqr("stalagmite", 0.0F));
+      $$0.a(v, new bqr("fallingBlock", 0.1F));
+      $$0.a(w, new bqr("anvil", 0.1F));
+      $$0.a(x, new bqr("fallingStalactite", 0.1F));
+      $$0.a(y, new bqr("sting", 0.1F));
+      $$0.a(z, new bqr("mob", 0.1F));
+      $$0.a(A, new bqr("mob", 0.1F));
+      $$0.a(B, new bqr("player", 0.1F));
+      $$0.a(C, new bqr("arrow", 0.1F));
+      $$0.a(D, new bqr("trident", 0.1F));
+      $$0.a(E, new bqr("mob", 0.1F));
+      $$0.a(F, new bqr("mob", 0.1F));
+      $$0.a(H, new bqr("fireworks", 0.1F));
+      $$0.a(J, new bqr("onFire", 0.1F, bqn.d));
+      $$0.a(I, new bqr("fireball", 0.1F, bqn.d));
+      $$0.a(K, new bqr("witherSkull", 0.1F));
+      $$0.a(L, new bqr("thrown", 0.1F));
+      $$0.a(M, new bqr("indirectMagic", 0.0F));
+      $$0.a(N, new bqr("thorns", 0.1F, bqn.b));
+      $$0.a(O, new bqr("explosion", bqo.c, 0.1F));
+      $$0.a(P, new bqr("explosion.player", bqo.c, 0.1F));
+      $$0.a(Q, new bqr("sonic_boom", bqo.c, 0.0F));
+      $$0.a(R, new bqr("badRespawnPoint", bqo.c, 0.1F, bqn.a, bqt.c));
+      $$0.a(S, new bqr("outsideBorder", 0.0F));
+      $$0.a(T, new bqr("genericKill", 0.0F));
    }
 }

@@ -1,35 +1,43 @@
-public interface ezg {
-   int a();
+import java.util.Locale;
 
-   int b();
+public enum ezg {
+   a,
+   b,
+   c,
+   d;
 
-   void a(int var1, int var2);
+   private static final int e = 1024;
 
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   public static ezg a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
+         }
+      }
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   public static double a(long $$0, ezg $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
-
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   public static String b(long $$0, ezg $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

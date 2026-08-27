@@ -1,18 +1,14 @@
-public enum zm {
-   a("serverbound"),
-   b("clientbound");
+import io.netty.buffer.ByteBuf;
 
-   private final String c;
+public record zm(wx b) implements ze<zk> {
+   public static final yv<ByteBuf, zm> a = wz.f.a(zm::new, zm::b);
 
-   private zm(String $$0) {
-      this.c = $$0;
+   @Override
+   public zg<zm> a() {
+      return zu.b;
    }
 
-   public zm a() {
-      return this == b ? a : b;
-   }
-
-   public String b() {
-      return this.c;
+   public void a(zk $$0) {
+      $$0.a(this);
    }
 }

@@ -1,98 +1,136 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzl extends gay {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final fzy.a H;
 
-public class fzl extends fzk implements abf, ws {
-   private static final Logger i = LogUtils.getLogger();
-   private final GameProfile j;
-   private cop k;
-   private final jo.b l;
-   private final gaa m = new gaa();
-   @Nullable
-   private fzt n;
+   fzl(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, fzy.a.a);
+   }
 
-   public fzl(fgj $$0, wc $$1, fzr $$2) {
-      super($$0, $$1, $$2);
-      this.j = $$2.a();
-      this.l = $$2.c();
-      this.k = $$2.d();
+   fzl(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, fzy.a $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public boolean c() {
-      return this.b.i();
+   public gac b() {
+      return this.H.a() ? gac.b : gac.c;
    }
 
    @Override
-   protected void a(aam $$0) {
-      this.b($$0);
-   }
-
-   private void b(aam $$0) {
-      i.warn("Unknown custom packet payload: {}", $$0.a().a());
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   public void a(abh $$0) {
-      zo.a($$0, this, this.a);
-      this.m.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aaa $$0) {
-      zo.a($$0, this, this.a);
-      this.m.a($$0.b());
-   }
-
-   @Override
-   public void a(abj $$0) {
-      this.k = cor.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abi $$0) {
-      zo.a($$0, this, this.a);
-      if (this.n == null) {
-         this.n = new fzt();
-      }
-
-      List<atk> $$1 = this.n.a($$0.b());
-      this.b(new abo($$1));
-   }
-
-   private <T> T a(Function<aug, T> $$0) {
-      if (this.n == null) {
-         return $$0.apply(aug.b);
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
       } else {
-         Object var3;
-         try (att $$1 = this.n.a()) {
-            var3 = $$0.apply($$1);
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
          }
 
-         return (T)var3;
+         return $$3 | $$4 << 16;
       }
    }
 
    @Override
-   public void a(abg $$0) {
-      zo.a($$0, this, this.a);
-      jo.b $$1 = this.a($$0x -> this.m.a($$0x, this.l, this.b.e()));
-      this.b.a(agk.b.bind(wp.a($$1)), new fzo(this.a, this.b, new fzr(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
-      this.b.a(abn.a);
-      this.b.a(agk.a.bind(wp.a($$1)));
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
    }
 
    @Override
-   public void e() {
-      this.f();
+   public void a(eyy $$0, fdm $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(xe $$0) {
-      super.a($$0);
-      this.a.B();
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzl $$8 = new fzl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gab<lb> {
+      private final gat a;
+
+      public b(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzl $$8 = new fzl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gab<lb> {
+      private final gat a;
+
+      public c(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzl $$8 = new fzl($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new fzy.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

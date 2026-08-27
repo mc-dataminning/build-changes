@@ -1,51 +1,39 @@
-public enum gex {
-   a(new gex.b(gex.a.f, gex.a.e, gex.a.a), new gex.b(gex.a.f, gex.a.e, gex.a.d), new gex.b(gex.a.c, gex.a.e, gex.a.d), new gex.b(gex.a.c, gex.a.e, gex.a.a)),
-   b(new gex.b(gex.a.f, gex.a.b, gex.a.d), new gex.b(gex.a.f, gex.a.b, gex.a.a), new gex.b(gex.a.c, gex.a.b, gex.a.a), new gex.b(gex.a.c, gex.a.b, gex.a.d)),
-   c(new gex.b(gex.a.c, gex.a.b, gex.a.d), new gex.b(gex.a.c, gex.a.e, gex.a.d), new gex.b(gex.a.f, gex.a.e, gex.a.d), new gex.b(gex.a.f, gex.a.b, gex.a.d)),
-   d(new gex.b(gex.a.f, gex.a.b, gex.a.a), new gex.b(gex.a.f, gex.a.e, gex.a.a), new gex.b(gex.a.c, gex.a.e, gex.a.a), new gex.b(gex.a.c, gex.a.b, gex.a.a)),
-   e(new gex.b(gex.a.f, gex.a.b, gex.a.d), new gex.b(gex.a.f, gex.a.e, gex.a.d), new gex.b(gex.a.f, gex.a.e, gex.a.a), new gex.b(gex.a.f, gex.a.b, gex.a.a)),
-   f(new gex.b(gex.a.c, gex.a.b, gex.a.a), new gex.b(gex.a.c, gex.a.e, gex.a.a), new gex.b(gex.a.c, gex.a.e, gex.a.d), new gex.b(gex.a.c, gex.a.b, gex.a.d));
+public class gex implements gek<dpr> {
+   private final fup<?> a;
 
-   private static final gex[] g = ad.a(new gex[6], $$0 -> {
-      $$0[gex.a.e] = a;
-      $$0[gex.a.b] = b;
-      $$0[gex.a.d] = c;
-      $$0[gex.a.a] = d;
-      $$0[gex.a.f] = e;
-      $$0[gex.a.c] = f;
-   });
-   private final gex.b[] h;
-
-   public static gex a(iw $$0) {
-      return g[$$0.d()];
+   public gex(gel.a $$0) {
+      this.a = new fup($$0.a(fvv.bk));
    }
 
-   private gex(gex.b... $$0) {
-      this.h = $$0;
-   }
-
-   public gex.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = iw.d.d();
-      public static final int b = iw.b.d();
-      public static final int c = iw.f.d();
-      public static final int d = iw.c.d();
-      public static final int e = iw.a.d();
-      public static final int f = iw.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public void a(dpr $$0, float $$1, eyu $$2, gck $$3, int $$4, int $$5) {
+      it $$6 = it.b;
+      if ($$0.m()) {
+         drd $$7 = $$0.i().a_($$0.aA_());
+         if ($$7.b() instanceof dkz) {
+            $$6 = $$7.c(dkz.b);
+         }
       }
+
+      csj $$8 = $$0.u();
+      gpz $$9;
+      if ($$8 == null) {
+         $$9 = gcz.i;
+      } else {
+         $$9 = gcz.j.get($$8.a());
+      }
+
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fvw $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eyy $$13 = $$9.a($$3, gcs::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

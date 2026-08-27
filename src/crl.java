@@ -1,97 +1,29 @@
 import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-public class crl implements cpw {
-   private final jj<cuh> b;
-   private final int c;
-   private final int d;
-   private final cpg e;
-
-   public crl(cpg $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jj.a($$1 * $$2, cuh.i));
+public class crl extends cvb {
+   public crl(dea $$0, dea $$1, ctl.a $$2) {
+      super($$0, $$1, $$2, it.a);
+      Validate.isInstanceOf(dcr.class, $$0);
+      Validate.isInstanceOf(dcr.class, $$1);
    }
 
-   public crl(cpg $$0, int $$1, int $$2, jj<cuh> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   public int b() {
-      return this.b.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (cuh $$0 : this.b) {
-         if (!$$0.d()) {
-            return false;
+   public static void a(ctq $$0, List<wx> $$1) {
+      dnz $$2 = $$0.a(kb.W);
+      if ($$2 != null) {
+         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
+            dnz.b $$4 = $$2.b().get($$3);
+            $$1.add($$4.a().a(n.h));
          }
       }
+   }
 
-      return true;
+   public csj b() {
+      return ((dcr)this.d()).b();
    }
 
    @Override
-   public cuh a(int $$0) {
-      return $$0 >= this.b() ? cuh.i : this.b.get($$0);
-   }
-
-   @Override
-   public cuh b(int $$0) {
-      return bpu.a(this.b, $$0);
-   }
-
-   @Override
-   public cuh a(int $$0, int $$1) {
-      cuh $$2 = bpu.a(this.b, $$0, $$1);
-      if (!$$2.d()) {
-         this.e.a(this);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(int $$0, cuh $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cly $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int f() {
-      return this.c;
-   }
-
-   @Override
-   public List<cuh> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void a(cmc $$0) {
-      for (cuh $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
+      a($$0, $$2);
    }
 }

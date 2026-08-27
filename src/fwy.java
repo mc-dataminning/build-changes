@@ -1,62 +1,68 @@
-public class fwy<T extends cew> extends fxc<T> {
-   public fwy(fys $$0) {
-      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
+
+public class fwy extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final fyi b;
+   private final fwy.a c;
+
+   public fwy(fyi $$0, fwy.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fyy c() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fyx.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         fyu.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         fyx.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         fyu.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      fyx $$3 = fyx.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, fyu.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, fyu.a(4.5F, 14.0F, 6.0F));
-      fyx $$4 = fyx.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, fyu.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, fyu.a(3.5F, 14.0F, -8.0F));
-      return fyy.a($$0, 128, 64);
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         arg.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         arg.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$3 - (float)$$0.am;
-      float $$7 = $$0.G($$6);
-      $$7 *= $$7;
-      float $$8 = 1.0F - $$7;
-      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
-      this.b.c = 9.0F * $$8 + 11.0F * $$7;
-      this.h.c = 14.0F * $$8 - 6.0F * $$7;
-      this.h.d = -8.0F * $$8 - 4.0F * $$7;
-      this.h.e -= $$7 * (float) Math.PI * 0.45F;
-      this.i.c = this.h.c;
-      this.i.d = this.h.d;
-      this.i.e -= $$7 * (float) Math.PI * 0.45F;
-      if (this.e) {
-         this.a.c = 10.0F * $$8 - 9.0F * $$7;
-         this.a.d = -16.0F * $$8 - 7.0F * $$7;
-      } else {
-         this.a.c = 10.0F * $$8 - 14.0F * $$7;
-         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = arg.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = ayf.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = ayf.a($$4.get(4), -1);
+            int $$9 = ayf.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
       }
 
-      this.a.e += $$7 * (float) Math.PI * 0.15F;
+      $$0.close();
+   }
+
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

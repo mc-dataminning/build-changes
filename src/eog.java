@@ -1,15 +1,31 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
 
-public class eog {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public record eog(akn d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<ix<eog>> b = le.av.r();
+   public static final yv<wi, ix<eog>> c = yt.b(lf.ay);
+
+   public boolean a() {
+      return this.f != -1;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   public akn b() {
+      return this.d;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   public boolean c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
    }
 }

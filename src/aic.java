@@ -1,156 +1,51 @@
-public class aic implements zl<agl> {
-   public static final zc<we, aic> a = zl.a(aic::a, aic::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final ir e;
-   private final drw.a f;
-   private final dum g;
-   private final String h;
-   private final ir i;
-   private final jv j;
-   private final dke k;
-   private final dmd l;
-   private final String m;
-   private final boolean n;
-   private final boolean o;
-   private final boolean p;
-   private final float q;
-   private final long r;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public aic(
-      ir $$0, drw.a $$1, dum $$2, String $$3, ir $$4, jv $$5, dke $$6, dmd $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$12;
-      this.r = $$13;
+public class aic {
+   private static final double a = 4096.0;
+   private eum b;
+
+   public aic() {
+      this.b = eum.b;
    }
 
-   private aic(we $$0) {
-      this.e = $$0.e();
-      this.f = $$0.b(drw.a.class);
-      this.g = $$0.b(dum.class);
-      this.h = $$0.p();
-      int $$1 = 48;
-      this.i = new ir(aym.a($$0.readByte(), -48, 48), aym.a($$0.readByte(), -48, 48), aym.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.j = new jv(aym.a($$0.readByte(), 0, 48), aym.a($$0.readByte(), 0, 48), aym.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dke.class);
-      this.l = $$0.b(dmd.class);
-      this.m = $$0.d(128);
-      this.q = aym.a($$0.readFloat(), 0.0F, 1.0F);
-      this.r = $$0.m();
-      int $$3 = $$0.readByte();
-      this.n = ($$3 & 1) != 0;
-      this.o = ($$3 & 2) != 0;
-      this.p = ($$3 & 4) != 0;
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private void a(we $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.k(this.i.u());
-      $$0.k(this.i.v());
-      $$0.k(this.i.w());
-      $$0.k(this.j.u());
-      $$0.k(this.j.v());
-      $$0.k(this.j.w());
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.q);
-      $$0.a(this.r);
-      int $$1 = 0;
-      if (this.n) {
-         $$1 |= 1;
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
+
+   public eum a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new eum($$3, $$4, $$5);
       }
-
-      if (this.o) {
-         $$1 |= 2;
-      }
-
-      if (this.p) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
    }
 
-   @Override
-   public zn<aic> a() {
-      return agj.bY;
+   public long a(eum $$0) {
+      return a($$0.c) - a(this.b.c);
    }
 
-   public void a(agl $$0) {
-      $$0.a(this);
+   public long b(eum $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public ir b() {
-      return this.e;
+   public long c(eum $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public drw.a e() {
-      return this.f;
+   public eum d(eum $$0) {
+      return $$0.d(this.b);
    }
 
-   public dum f() {
-      return this.g;
-   }
-
-   public String g() {
-      return this.h;
-   }
-
-   public ir h() {
-      return this.i;
-   }
-
-   public jv i() {
-      return this.j;
-   }
-
-   public dke j() {
-      return this.k;
-   }
-
-   public dmd k() {
-      return this.l;
-   }
-
-   public String l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public boolean o() {
-      return this.p;
-   }
-
-   public float p() {
-      return this.q;
-   }
-
-   public long q() {
-      return this.r;
+   public void e(eum $$0) {
+      this.b = $$0;
    }
 }

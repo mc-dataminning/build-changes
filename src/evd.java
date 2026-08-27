@@ -1,60 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record evd(Optional<Long> b, ero c) implements euu {
-   public static final Codec<evd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(Codec.LONG, "period").forGetter(evd::c), ero.a.fieldOf("value").forGetter(evd::d)).apply($$0, evd::new)
-   );
+public class evd extends evf {
+   private final evf b;
+   private final it.a c;
+   private static final DoubleList d = new eus(1);
 
-   @Override
-   public euv b() {
-      return euw.s;
+   public evd(evf $$0, it.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private static euv a(euv $$0, it.a $$1, int $$2) {
+      return new eve(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
    @Override
-   public Set<eud<?>> a() {
-      return this.c.a();
-   }
-
-   public boolean a(erp $$0) {
-      aqt $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
-   }
-
-   public static evd.a a(ero $$0) {
-      return new evd.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public ero d() {
-      return this.c;
-   }
-
-   public static class a implements euu.a {
-      private Optional<Long> a = Optional.empty();
-      private final ero b;
-
-      public a(ero $$0) {
-         this.b = $$0;
-      }
-
-      public evd.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public evd a() {
-         return new evd(this.a, this.b);
-      }
+   protected DoubleList a(it.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

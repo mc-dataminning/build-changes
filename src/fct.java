@@ -1,23 +1,18 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class fct extends fcy implements fcs {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class fct {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public fct(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public int a() {
-      return this.b;
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

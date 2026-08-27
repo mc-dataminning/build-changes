@@ -1,46 +1,36 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bqy(String i) {
-   public static final bqy a = new bqy("generic");
-   public static final bqy b = new bqy("ladder");
-   public static final bqy c = new bqy("vines");
-   public static final bqy d = new bqy("weeping_vines");
-   public static final bqy e = new bqy("twisting_vines");
-   public static final bqy f = new bqy("scaffolding");
-   public static final bqy g = new bqy("other_climbable");
-   public static final bqy h = new bqy("water");
+class bqy extends brb {
+   private final boolean a;
 
-   public static bqy a(dtc $$0) {
-      if ($$0.a(dfe.dA) || $$0.a(awe.P)) {
-         return b;
-      } else if ($$0.a(dfe.fX)) {
-         return c;
-      } else if ($$0.a(dfe.pz) || $$0.a(dfe.pA)) {
-         return d;
-      } else if ($$0.a(dfe.pB) || $$0.a(dfe.pC)) {
-         return e;
+   public bqy(brd $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   @Override
+   public boolean a(bsq $$0, int $$1) {
+      if (this.a == $$0.ez()) {
+         $$0.c((float)Math.max(4 << $$1, 0));
       } else {
-         return $$0.a(dfe.oQ) ? f : g;
+         $$0.a($$0.dQ().o(), (float)(6 << $$1));
       }
+
+      return true;
    }
 
-   @Nullable
-   public static bqy a(bso $$0) {
-      Optional<ir> $$1 = $$0.eU();
-      if ($$1.isPresent()) {
-         dtc $$2 = $$0.dU().a_($$1.get());
-         return a($$2);
+   @Override
+   public void a(@Nullable brw $$0, @Nullable brw $$1, bsq $$2, int $$3, double $$4) {
+      if (this.a == $$2.ez()) {
+         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
+         $$2.c((float)$$5);
       } else {
-         return $$0.bi() ? h : null;
+         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
+         if ($$0 == null) {
+            $$2.a($$2.dQ().o(), (float)$$6);
+         } else {
+            $$2.a($$2.dQ().c($$0, $$1), (float)$$6);
+         }
       }
-   }
-
-   public String a() {
-      return "death.fell.accident." + this.i;
-   }
-
-   public String b() {
-      return this.i;
    }
 }

@@ -1,28 +1,76 @@
-import java.util.EnumMap;
+public class fzs extends fzy {
+   private static final int a = 3;
+   private final gcq b;
+   private final brw D;
+   private final brw E;
+   private int F;
+   private final ghr G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
 
-public class fzs {
-   public static final int a = 5000;
-   private final fzo b;
-   private final fiv c;
-   private final EnumMap<blb, Long> d;
-
-   public fzs(fzo $$0, fiv $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(blb.class);
+   public fzs(ghr $$0, gcq $$1, fwr $$2, brw $$3, brw $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.ds());
    }
 
+   private fzs(ghr $$0, gcq $$1, fwr $$2, brw $$3, brw $$4, eum $$5) {
+      super($$2, $$3.du(), $$3.dw(), $$3.dA(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private brw a(brw $$0) {
+      return (brw)(!($$0 instanceof cii) ? $$0 : ((cii)$$0).C());
+   }
+
+   @Override
+   public gac b() {
+      return gac.e;
+   }
+
+   @Override
+   public void a(eyy $$0, fdm $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = ayf.d((double)$$2, this.K, this.H);
+      double $$5 = ayf.d((double)$$2, this.L, this.I);
+      double $$6 = ayf.d((double)$$2, this.M, this.J);
+      double $$7 = ayf.d((double)$$3, this.D.du(), $$4);
+      double $$8 = ayf.d((double)$$3, this.D.dw(), $$5);
+      double $$9 = ayf.d((double)$$3, this.D.dA(), $$6);
+      gck.a $$10 = this.b.c();
+      eum $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dF(), $$2, new eyu(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
+   }
+
+   @Override
    public void a() {
-      if (this.c.g()) {
-         this.a(blb.a);
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   private void a(blb $$0) {
-      long $$1 = ad.b();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahc($$0));
-         this.d.put($$0, $$1);
-      }
+   private void c() {
+      this.H = this.E.du();
+      this.I = (this.E.dw() + this.E.dy()) / 2.0;
+      this.J = this.E.dA();
+   }
+
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

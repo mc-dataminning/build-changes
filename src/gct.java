@@ -1,40 +1,35 @@
-public class gct extends gdu {
-   gct(fzn $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, aym.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, aym.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, aym.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class gct {
+   private final long[] a;
+   private int b;
+   private int c;
+
+   public gct(int $$0) {
+      this.a = new long[$$0];
    }
 
-   @Override
-   public gcy b() {
-      return gcy.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aym.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements gcx<le> {
-      private final gdp a;
-
-      public a(gdp $$0) {
-         this.a = $$0;
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
       }
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gct $$8 = new gct($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
+
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
       }
    }
 }

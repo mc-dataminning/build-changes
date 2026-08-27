@@ -1,99 +1,66 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fdx extends gxb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("mco.configure.world.buttons.invite");
-   private static final xe c = xe.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final xe B = xe.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final xe C = xe.c("mco.configure.world.players.error").b(-65536);
-   private final fma D = new fma(this);
-   private fiw E;
-   private fin F;
-   private final fcj G;
-   private final fds H;
-   private final fon I;
-   @Nullable
-   private xe J;
+public class fdx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gbo[] e = new gbo[9];
+   private boolean f;
 
-   public fdx(fds $$0, fon $$1, fcj $$2) {
-      super(b);
-      this.H = $$0;
-      this.I = $$1;
-      this.G = $$2;
-   }
+   public fdx(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   @Override
-   public void aN_() {
-      this.D.a(b, this.p);
-      fme $$0 = this.D.c(fme.d().a(8));
-      this.E = new fiw(this.m.h, 200, 20, xe.c("mco.configure.world.invite.profile.name"));
-      $$0.a(flw.a(this.p, this.E, c));
-      this.F = $$0.a(fin.a(b, $$0x -> this.C()).a(200).a());
-      this.D.b(fin.a(xd.k, $$0x -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         fil var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-   }
-
-   @Override
-   protected void aC_() {
-      this.b(this.E);
-   }
-
-   private void C() {
-      if (azh.h(this.E.a())) {
-         this.a(C);
-      } else {
-         long $$0 = this.G.a;
-         String $$1 = this.E.a().trim();
-         this.F.j = false;
-         this.E.e(false);
-         this.a(B);
-         CompletableFuture.<fcj>supplyAsync(() -> {
-            try {
-               return fbs.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ad.g()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.G.h = $$0x.h;
-               this.m.a(new fee(this.H, this.G));
-            } else {
-               this.a(C);
-            }
-
-            this.E.e(true);
-            this.F.j = true;
-         }, this.q);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gbo();
       }
    }
 
-   private void a(xe $$0) {
-      this.J = $$0;
-      this.m.aZ().c($$0);
-   }
+   private void b() {
+      try {
+         ud $$0 = uq.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
 
-   @Override
-   public void d() {
-      this.m.a(this.I);
-   }
+         int $$1 = us.b($$0, 1343);
+         $$0 = azl.d.a(this.d, $$0, $$1);
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.J != null) {
-         $$0.a(this.p, this.J, this.n / 2, this.F.D() + this.F.v() + 8, -1);
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gbo.a.parse(ur.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gbo::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
       }
+   }
+
+   public void a() {
+      try {
+         ud $$0 = us.e(new ud());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gbo $$2 = this.a($$1);
+            DataResult<va> $$3 = gbo.a.encodeStart(ur.a, $$2);
+            $$0.a(String.valueOf($$1), (va)$$3.getOrThrow());
+         }
+
+         uq.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gbo a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

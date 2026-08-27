@@ -1,62 +1,106 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
 
-public class dhp extends dhi {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dhp> d = b(dhp::new);
-   private static final km f = new kl();
+public abstract class dhp extends dhn implements ded {
+   public static final dsd e = drt.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dhp> a() {
-      return d;
-   }
-
-   public dhp(dtb.d $$0) {
-      super($$0);
+   protected dhp(drc.d $$0, it $$1, evf $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected km a(cuh $$0) {
-      return f;
+   protected abstract MapCodec<? extends dhp> a();
+
+   @Override
+   public drd a(dba $$0) {
+      return this.n().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dqv($$0, $$1);
+   protected boolean d_(drd $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   protected void a(aqt $$0, dtc $$1, ir $$2) {
-      dqu $$3 = $$0.a($$2, dqe.h).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         kj $$4 = new kj($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cuh $$6 = $$3.a($$5);
-            if (!$$6.d()) {
-               iw $$7 = $$0.a_($$2).c(b);
-               bpt $$8 = drc.a($$0, $$2.a($$7));
-               cuh $$9;
-               if ($$8 == null) {
-                  $$9 = f.dispense($$4, $$6);
-               } else {
-                  $$9 = drc.a($$3, $$8, $$6.r().a(1), $$7.g());
-                  if ($$9.d()) {
-                     $$9 = $$6.r();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.r();
-                  }
-               }
-
-               $$3.a($$5, $$9);
-            }
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         io $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
          }
       }
+   }
+
+   protected drd a(drd $$0, aym $$1) {
+      return $$0.a(e);
+   }
+
+   public drd n(drd $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(drd $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected drd a(drd $$0, drd $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, emx.c, emx.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().n());
+      }
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      io $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(aym var1);
+
+   protected abstract boolean g(drd var1);
+
+   @Override
+   protected dhp c() {
+      return this;
    }
 }

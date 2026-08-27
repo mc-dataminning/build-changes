@@ -1,19 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class aeo implements ze<abq> {
+   public static final yv<vx, aeo> a = ze.a(aeo::a, aeo::new);
+   private final int b;
 
-public record aeo(xe b, Optional<byte[]> c) implements zl<abw> {
-   public static final zc<ByteBuf, aeo> a = zc.a(xg.f, aeo::b, za.k.a(za::a), aeo::e, aeo::new);
-
-   @Override
-   public zn<aeo> a() {
-      return agj.aq;
+   public aeo(dsu $$0) {
+      this.b = $$0.r();
    }
 
-   public void a(abw $$0) {
+   private aeo(vx $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zg<aeo> a() {
+      return agc.av;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

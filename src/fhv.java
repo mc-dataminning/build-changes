@@ -1,95 +1,225 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import org.joml.Vector2i;
 
-public class fhv implements AutoCloseable {
-   private static final double a = 3.0;
-   private final fgj b = fgj.Q();
-   private final gga c;
-   private final fht d;
-   private final Reference2ObjectMap<gfo, fbf> e = new Reference2ObjectArrayMap();
-   @Nullable
-   private CompletableFuture<fhu.b> f;
-   private boolean g = true;
+public interface fhv extends fhw {
+   List<? extends fhw> aF_();
 
-   public fhv(fht $$0) {
-      this.d = $$0;
-      this.c = this.b.ap();
-   }
-
-   private void a() {
-      if (this.f != null) {
-         if (this.f.isDone()) {
-            try (fhu.b $$0 = this.f.join()) {
-               $$0.a(this.e);
-               fbf.b();
-            }
-
-            this.f = null;
-         }
-      } else if (this.g) {
-         this.g = false;
-         fhu.a $$1 = fhu.a.a(this.d);
-         fhu $$2 = new fhu(this.c, $$1);
-         this.f = CompletableFuture.supplyAsync($$2::a, ad.f());
-      }
-   }
-
-   public void a(float $$0, double $$1, double $$2, double $$3, gik $$4, Matrix4f $$5, Matrix4f $$6, boolean $$7) {
-      coz $$8 = this.d.d();
-      ewu $$9 = new ewu(aym.d((double)$$0, $$8.ae, $$8.dz()), aym.d((double)$$0, $$8.af, $$8.dB()), aym.d((double)$$0, $$8.ag, $$8.dF()));
-      cpb $$10 = this.d.e();
-      if ($$4.a(
-         $$9.c - 3.0,
-         $$9.d - 3.0,
-         $$9.e - 3.0,
-         $$9.c + (double)$$10.a() + 1.0 + 3.0,
-         $$9.d + (double)$$10.b() + 1.0 + 3.0,
-         $$9.e + (double)$$10.c() + 1.0 + 3.0
-      )) {
-         this.a();
-         if (!this.e.isEmpty()) {
-            fag $$11 = this.b.aP();
-            Vector3f $$12 = new Vector3f((float)($$9.c - $$1), (float)($$9.d - $$2), (float)($$9.e - $$3));
-            if ($$7) {
-               this.a(gfo.f(), $$12, $$5, $$6, $$11);
-               this.a(gfo.t(), $$12, $$5, $$6, $$11);
-            } else {
-               this.a(gfo.c(), $$12, $$5, $$6, $$11);
-               this.a(gfo.d(), $$12, $$5, $$6, $$11);
-               this.a(gfo.e(), $$12, $$5, $$6, $$11);
-            }
+   default Optional<fhw> b_(double $$0, double $$1) {
+      for (fhw $$2 : this.aF_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
          }
       }
-   }
 
-   private void a(gfo $$0, Vector3f $$1, Matrix4f $$2, Matrix4f $$3, fag $$4) {
-      fbf $$5 = (fbf)this.e.get($$0);
-      if ($$5 != null) {
-         $$0.a();
-         gfu $$6 = RenderSystem.getShader();
-         $$6.a(fbh.b.h, $$2, $$3, $$4);
-         $$6.p.a($$1.x, $$1.y, $$1.z);
-         $$6.g();
-         $$5.a();
-         $$5.c();
-         fbf.b();
-         $$6.f();
-         $$0.b();
-      }
+      return Optional.empty();
    }
 
    @Override
-   public void close() {
-      this.e.values().forEach(fbf::close);
-      this.e.clear();
-      if (this.f != null) {
-         this.f.thenAcceptAsync(fhu.b::close, $$0 -> RenderSystem.recordRenderCall($$0::run));
-         this.f = null;
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (fhw $$3 : this.aF_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
+
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      this.b(false);
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aI_() != null && this.aH_() && $$2 == 0 ? this.aI_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aH_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aI_() != null && this.aI_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aI_() != null && this.aI_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aI_() != null && this.aI_().a($$0, $$1);
+   }
+
+   @Nullable
+   fhw aI_();
+
+   void a(@Nullable fhw var1);
+
+   @Override
+   default void a(boolean $$0) {
+   }
+
+   @Override
+   default boolean aJ_() {
+      return this.aI_() != null;
+   }
+
+   @Nullable
+   @Override
+   default ffk aK_() {
+      fhw $$0 = this.aI_();
+      return $$0 != null ? ffk.a(this, $$0.aK_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default ffk a(fkc $$0) {
+      fhw $$1 = this.aI_();
+      if ($$1 != null) {
+         ffk $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return ffk.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof fkc.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof fkc.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private ffk a(fkc.c $$0) {
+      boolean $$1 = $$0.b();
+      fhw $$2 = this.aI_();
+      List<? extends fhw> $$3 = new ArrayList<>(this.aF_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
+
+      ListIterator<? extends fhw> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fhw> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fhw $$11 = $$10.get();
+         ffk $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return ffk.a(this, $$12);
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   private ffk a(fkc.a $$0) {
+      fhw $$1 = this.aI_();
+      if ($$1 == null) {
+         fke $$2 = $$0.b();
+         fkg $$3 = this.G().c($$2.b());
+         return ffk.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fkg $$4 = $$1.G();
+         return ffk.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private ffk a(fkg $$0, fke $$1, @Nullable fhw $$2, fkc $$3) {
+      fkd $$4 = $$1.a();
+      fkd $$5 = $$4.a();
+      fke $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fhw> $$8 = new ArrayList<>();
+
+      for (fhw $$9 : this.aF_()) {
+         if ($$9 != $$2) {
+            fkg $$10 = $$9.G();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<fhw> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
+      Comparator<fhw> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (fhw $$14 : $$8) {
+         ffk $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private ffk b(fkg $$0, fke $$1, @Nullable fhw $$2, fkc $$3) {
+      fkd $$4 = $$1.a();
+      fkd $$5 = $$4.a();
+      List<Pair<fhw, Long>> $$6 = new ArrayList<>();
+      fkf $$7 = fkf.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fhw $$8 : this.aF_()) {
+         if ($$8 != $$2) {
+            fkg $$9 = $$8.G();
+            fkf $$10 = fkf.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<fhw, Long> $$12 : $$6) {
+         ffk $$13 = ((fhw)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

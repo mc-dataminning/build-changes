@@ -1,32 +1,19 @@
-import java.util.Map.Entry;
+import java.util.Optional;
 
-public class dap extends dad {
-   private static final float b = 0.15F;
+public class dap extends das {
+   private final brw a;
 
-   public dap(dad.b $$0) {
-      super($$0);
+   public dap(brw $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void b(bso $$0, brv $$1, int $$2) {
-      ayt $$3 = $$0.et();
-      Entry<bsc, cuh> $$4 = dae.b(dag.h, $$0);
-      if (a($$2, $$3)) {
-         if ($$1 != null) {
-            $$1.a($$0.dX().d($$0), (float)b($$2, $$3));
-         }
-
-         if ($$4 != null) {
-            $$4.getValue().a(2, $$0, $$4.getKey());
-         }
-      }
+   public Optional<Float> a(dar $$0, daf $$1, io $$2, drd $$3, emw $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public static boolean a(int $$0, ayt $$1) {
-      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
-   }
-
-   public static int b(int $$0, ayt $$1) {
-      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
+   @Override
+   public boolean a(dar $$0, daf $$1, io $$2, drd $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

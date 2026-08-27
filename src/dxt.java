@@ -1,68 +1,83 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class dxt implements dxz {
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ju.a.fieldOf("source_entity").forGetter(dxt::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new dxt(Either.right(Either.left($$0x)), $$1))
+public class dxt {
+   public static final MapCodec<dxt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(dxt::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dxt::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dxt::d),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(dxt::new))
    );
-   public static final zc<wp, dxt> b = zc.a(za.g, dxt::c, za.i, $$0 -> $$0.f, ($$0, $$1) -> new dxt(Either.right(Either.right($$0)), $$1));
-   private Either<brv, Either<UUID, Integer>> e;
-   private final float f;
+   public static final dxt b = new dxt((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public dxt(brv $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dxt(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   private dxt(Either<brv, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static dxt a() {
+      return new dxt(f(), true, false);
    }
 
-   @Override
-   public Optional<ewu> a(dca $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
+   private dxt(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f.isPresent();
+   }
+
+   public dxt a(boolean $$0) {
+      return new dxt(this.c, this.d, $$0, this.f);
+   }
+
+   public dxt b(boolean $$0) {
+      return new dxt(this.c, $$0, this.e, this.f);
+   }
+
+   public dxt a(OptionalLong $$0) {
+      return new dxt($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
       }
-
-      return this.e.left().map($$0x -> $$0x.ds().b(0.0, (double)this.f, 0.0));
    }
 
-   private void b(dca $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((brv)$$1.map($$1x -> $$0 instanceof aqt $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
-   }
-
-   private UUID b() {
-      return (UUID)this.e.map(brv::cE, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   private int c() {
-      return (Integer)this.e.map(brv::al, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dya<dxt> a() {
-      return dya.b;
-   }
-
-   public static class a implements dya<dxt> {
-      @Override
-      public Codec<dxt> a() {
-         return dxt.a;
-      }
-
-      @Override
-      public zc<wp, dxt> b() {
-         return dxt.b;
-      }
+   public static long f() {
+      return aym.a().g();
    }
 }

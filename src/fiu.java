@@ -1,278 +1,276 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class fiu<T> extends fie {
-   public static final BooleanSupplier a = fon::t;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final xe c;
-   private int d;
-   private T f;
-   private final fiu.c<T> m;
-   private final Function<T, xe> n;
-   private final Function<fiu<T>, xs> o;
-   private final fiu.b<T> p;
-   private final boolean q;
-   private final fgm.l<T> r;
+public class fiu {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   fiu(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      xe $$4,
-      xe $$5,
-      int $$6,
-      T $$7,
-      fiu.c<T> $$8,
-      Function<T, xe> $$9,
-      Function<fiu<T>, xs> $$10,
-      fiu.b<T> $$11,
-      fgm.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
+   public fiu(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
       this.f();
    }
 
-   private void f() {
-      this.a(this.r.apply(this.f));
+   public static Supplier<String> a(feb $$0) {
+      return () -> b($$0);
    }
 
-   @Override
-   public void b() {
-      if (fon.s()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
+   public static String b(feb $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = aym.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
+   public static Consumer<String> c(feb $$0) {
+      return $$1 -> a($$0, $$1);
    }
 
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(aym.b(this.d + $$0, $$1.size()));
+   public static void a(feb $$0, String $$1) {
+      $$0.o.a($$1);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
+   public boolean a(char $$0) {
+      if (aza.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
       }
 
       return true;
    }
 
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
+   public boolean a(int $$0) {
+      if (flz.f($$0)) {
+         this.d();
+         return true;
+      } else if (flz.e($$0)) {
+         this.c();
+         return true;
+      } else if (flz.d($$0)) {
+         this.b();
+         return true;
+      } else if (flz.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         fiu.a $$1 = flz.r() ? fiu.a.b : fiu.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, flz.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 262) {
+                  this.a(1, flz.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 268) {
+                  this.a(flz.s());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(flz.s());
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   private int h(int $$0) {
+      return ayf.a($$0, 0, this.a.get().length());
+   }
+
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
       }
 
-      this.b($$0);
+      this.f = ayf.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
    }
 
-   private void b(T $$0) {
-      xe $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.f();
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
    }
 
-   private xe c(T $$0) {
-      return (xe)(this.q ? this.n.apply($$0) : this.d($$0));
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
    }
 
-   private xs d(T $$0) {
-      return xd.a(this.c, this.n.apply($$0));
+   public void a(int $$0, boolean $$1, fiu.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
    }
 
-   public T a() {
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = fem.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, fiu.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = fem.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
+
+         this.b.accept($$2);
+      }
+   }
+
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
+
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
+
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
+      }
+   }
+
+   public void e() {
+      this.a(false);
+   }
+
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
       return this.f;
    }
 
-   @Override
-   protected xs aK_() {
-      return this.o.apply(this);
+   public void f(int $$0) {
+      this.c($$0, true);
    }
 
-   @Override
-   public void a(fmj $$0) {
-      $$0.a(fmi.a, this.aK_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         xe $$2 = this.c($$1);
-         if (this.aI_()) {
-            $$0.a(fmi.d, xe.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(fmi.d, xe.a("narration.cycle_button.usage.hovered", $$2));
-         }
-      }
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
    }
 
-   public xs d() {
-      return a_((xe)(this.q ? this.d(this.f) : this.y()));
+   public int h() {
+      return this.g;
    }
 
-   public static <T> fiu.a<T> a(Function<T, xe> $$0) {
-      return new fiu.a<>($$0);
+   public void g(int $$0) {
+      this.g = this.h($$0);
    }
 
-   public static fiu.a<Boolean> a(xe $$0, xe $$1) {
-      return new fiu.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = ayf.a($$0, 0, $$2);
+      this.g = ayf.a($$1, 0, $$2);
    }
 
-   public static fiu.a<Boolean> e() {
-      return new fiu.a<Boolean>($$0 -> $$0 ? xd.b : xd.c).a(b);
+   public boolean i() {
+      return this.f != this.g;
    }
 
-   public static fiu.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
-      @Nullable
-      private T b;
-      private final Function<T, xe> c;
-      private fgm.l<T> d = $$0x -> null;
-      private Function<fiu<T>, xs> e = fiu::d;
-      private fiu.c<T> f = fiu.c.a(ImmutableList.of());
-      private boolean g;
-
-      public a(Function<T, xe> $$0) {
-         this.c = $$0;
-      }
-
-      public fiu.a<T> a(Collection<T> $$0) {
-         return this.a(fiu.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final fiu.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public fiu.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(fiu.c.a(fiu.a, $$0, $$1));
-      }
-
-      public fiu.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(fiu.c.a($$0, $$1, $$2));
-      }
-
-      public fiu.a<T> a(fiu.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fiu.a<T> a(fgm.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fiu.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
-         }
-
-         return this;
-      }
-
-      public fiu.a<T> a(Function<fiu<T>, xs> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fiu.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public fiu<T> a(xe $$0, fiu.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
-      }
-
-      public fiu<T> a(int $$0, int $$1, int $$2, int $$3, xe $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public fiu<T> a(int $$0, int $$1, int $$2, int $$3, xe $$4, fiu.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            xe $$8 = this.c.apply($$7);
-            xe $$9 = (xe)(this.g ? $$8 : xd.a($$4, $$8));
-            return new fiu<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
-         }
-      }
-   }
-
-   public interface b<T> {
-      void onValueChange(fiu<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> fiu.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new fiu.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
-      }
-
-      static <T> fiu.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new fiu.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

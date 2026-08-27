@@ -1,18 +1,37 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface fmb extends fmc {
-   void b(Consumer<fmc> var1);
+public abstract class fmb extends flr {
+   protected final fee<?>[] r;
+   @Nullable
+   private ffy a;
+   protected fgx s;
 
-   @Override
-   default void a(Consumer<fil> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public fmb(flz $$0, fef $$1, wx $$2, fee<?>[] $$3) {
+      super($$0, $$1, $$2);
+      this.r = $$3;
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fmb $$1) {
-            $$1.a();
-         }
-      });
+   @Override
+   protected void aN_() {
+      this.s = this.c(new fgx(this.m, this.n, this.o, this));
+      this.s.a(this.r);
+      this.a = this.s.b(this.c.as());
+      if (this.a != null) {
+         this.a.j = this.m.aX().a();
+      }
+
+      super.aN_();
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.d);
+   }
+
+   public void C() {
+      if (this.a instanceof fgh) {
+         ((fgh)this.a).a(this.c.as().c());
+      }
    }
 }

@@ -1,163 +1,91 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.ListBuilder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.ListBuilder.Builder;
-import com.mojang.serialization.RecordBuilder.MapBuilder;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public abstract class akl<T> implements DynamicOps<T> {
-   protected final DynamicOps<T> a;
+public class akl<T> extends akf<T> {
+   private final akl.b b;
 
-   protected akl(DynamicOps<T> $$0) {
-      this.a = $$0;
+   private static akl.b a(final akl.b $$0) {
+      return new akl.b() {
+         private final Map<akm<? extends jk<?>>, Optional<? extends akl.a<?>>> b = new HashMap<>();
+
+         @Override
+         public <T> Optional<akl.a<T>> a(akm<? extends jk<? extends T>> $$0x) {
+            return (Optional<akl.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+         }
+      };
    }
 
-   public T empty() {
-      return (T)this.a.empty();
+   public static <T> akl<T> a(DynamicOps<T> $$0, final iz.a $$1) {
+      return a($$0, a(new akl.b() {
+         @Override
+         public <E> Optional<akl.a<E>> a(akm<? extends jk<? extends E>> $$0) {
+            return $$1.a($$0).map(akl.a::a);
+         }
+      }));
    }
 
-   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
-      return (U)this.a.convertTo($$0, $$1);
+   public static <T> akl<T> a(DynamicOps<T> $$0, akl.b $$1) {
+      return new akl<>($$0, $$1);
    }
 
-   public DataResult<Number> getNumberValue(T $$0) {
-      return this.a.getNumberValue($$0);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, iz.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public T createNumeric(Number $$0) {
-      return (T)this.a.createNumeric($$0);
+   private akl(DynamicOps<T> $$0, akl.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public T createByte(byte $$0) {
-      return (T)this.a.createByte($$0);
+   public <U> akl<U> a(DynamicOps<U> $$0) {
+      return (akl<U>)($$0 == this.a ? this : new akl((DynamicOps<T>)$$0, this.b));
    }
 
-   public T createShort(short $$0) {
-      return (T)this.a.createShort($$0);
+   public <E> Optional<ja<E>> a(akm<? extends jk<? extends E>> $$0) {
+      return this.b.a($$0).map(akl.a::a);
    }
 
-   public T createInt(int $$0) {
-      return (T)this.a.createInt($$0);
+   public <E> Optional<iy<E>> b(akm<? extends jk<? extends E>> $$0) {
+      return this.b.a($$0).map(akl.a::b);
    }
 
-   public T createLong(long $$0) {
-      return (T)this.a.createLong($$0);
+   public static <E, O> RecordCodecBuilder<O, iy<E>> c(akm<? extends jk<? extends E>> $$0) {
+      return axn.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof akl<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   public T createFloat(float $$0) {
-      return (T)this.a.createFloat($$0);
+   public static <E, O> RecordCodecBuilder<O, ix.c<E>> d(akm<E> $$0) {
+      akm<? extends jk<E>> $$1 = akm.a($$0.b());
+      return axn.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof akl<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   public T createDouble(double $$0) {
-      return (T)this.a.createDouble($$0);
+   public static record a<T>(ja<T> a, iy<T> b, Lifecycle c) {
+      public static <T> akl.a<T> a(iz.b<T> $$0) {
+         return new akl.a<>($$0, $$0, $$0.g());
+      }
    }
 
-   public DataResult<Boolean> getBooleanValue(T $$0) {
-      return this.a.getBooleanValue($$0);
-   }
-
-   public T createBoolean(boolean $$0) {
-      return (T)this.a.createBoolean($$0);
-   }
-
-   public DataResult<String> getStringValue(T $$0) {
-      return this.a.getStringValue($$0);
-   }
-
-   public T createString(String $$0) {
-      return (T)this.a.createString($$0);
-   }
-
-   public DataResult<T> mergeToList(T $$0, T $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
-      return this.a.mergeToList($$0, $$1);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
-      return this.a.mergeToMap($$0, $$1, $$2);
-   }
-
-   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
-      return this.a.mergeToMap($$0, $$1);
-   }
-
-   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
-      return this.a.getMapValues($$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
-      return this.a.getMapEntries($$0);
-   }
-
-   public T createMap(Stream<Pair<T, T>> $$0) {
-      return (T)this.a.createMap($$0);
-   }
-
-   public DataResult<MapLike<T>> getMap(T $$0) {
-      return this.a.getMap($$0);
-   }
-
-   public DataResult<Stream<T>> getStream(T $$0) {
-      return this.a.getStream($$0);
-   }
-
-   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
-      return this.a.getList($$0);
-   }
-
-   public T createList(Stream<T> $$0) {
-      return (T)this.a.createList($$0);
-   }
-
-   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
-      return this.a.getByteBuffer($$0);
-   }
-
-   public T createByteList(ByteBuffer $$0) {
-      return (T)this.a.createByteList($$0);
-   }
-
-   public DataResult<IntStream> getIntStream(T $$0) {
-      return this.a.getIntStream($$0);
-   }
-
-   public T createIntList(IntStream $$0) {
-      return (T)this.a.createIntList($$0);
-   }
-
-   public DataResult<LongStream> getLongStream(T $$0) {
-      return this.a.getLongStream($$0);
-   }
-
-   public T createLongList(LongStream $$0) {
-      return (T)this.a.createLongList($$0);
-   }
-
-   public T remove(T $$0, String $$1) {
-      return (T)this.a.remove($$0, $$1);
-   }
-
-   public boolean compressMaps() {
-      return this.a.compressMaps();
-   }
-
-   public ListBuilder<T> listBuilder() {
-      return new Builder(this);
-   }
-
-   public RecordBuilder<T> mapBuilder() {
-      return new MapBuilder(this);
+   public interface b {
+      <T> Optional<akl.a<T>> a(akm<? extends jk<? extends T>> var1);
    }
 }

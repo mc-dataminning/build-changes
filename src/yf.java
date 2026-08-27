@@ -3,50 +3,94 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record yf(String d, @Nullable gf e) implements yg {
-   public static final MapCodec<yf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(yf::b)).apply($$0, yf::new));
-   public static final yg.a<yf> b = new yg.a<>(a, "block");
-
-   public yf(String $$0) {
-      this($$0, a($$0));
-   }
+public class yf implements wy {
+   public static final MapCodec<yf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yf::b), Codec.STRING.fieldOf("objective").forGetter(yf::d)).apply($$0, yf::new)
+   );
+   public static final MapCodec<yf> b = a.fieldOf("score");
+   public static final wy.a<yf> c = new wy.a<>(b, "score");
+   private final String d;
+   @Nullable
+   private final gt e;
+   private final String f;
 
    @Nullable
-   private static gf a(String $$0) {
+   private static gt a(String $$0) {
       try {
-         return gd.a().a(new StringReader($$0));
+         return new gu(new StringReader($$0)).t();
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
+   public yf(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = a($$0);
+      this.f = $$1;
+   }
+
    @Override
-   public Stream<uk> a(eh $$0) {
+   public wy.a<?> a() {
+      return c;
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gt c() {
+      return this.e;
+   }
+
+   public String d() {
+      return this.f;
+   }
+
+   private evp a(ee $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         aqt $$1 = $$0.e();
-         ir $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            dqc $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.v()));
+         List<? extends brw> $$1 = this.e.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw er.a.create();
+            }
+
+            return $$1.get(0);
+         }
+      }
+
+      return evp.c(this.d);
+   }
+
+   private xl a(evp $$0, ee $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         evq $$3 = $$2.aK();
+         evi $$4 = $$3.a(this.f);
+         if ($$4 != null) {
+            evm $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yq.b));
             }
          }
       }
 
-      return Stream.empty();
+      return wx.i();
    }
 
    @Override
-   public yg.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
+   public xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return wx.i();
+      } else {
+         evp $$3 = this.a($$0);
+         evp $$4 = (evp)($$1 != null && $$3.equals(evp.cy) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
    }
 
    @Override
@@ -54,7 +98,7 @@ public record yf(String d, @Nullable gf e) implements yg {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yf $$1 && this.d.equals($$1.d)) {
+         if ($$0 instanceof yf $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
             return true;
          }
 
@@ -64,15 +108,12 @@ public record yf(String d, @Nullable gf e) implements yg {
 
    @Override
    public int hashCode() {
-      return this.d.hashCode();
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.f.hashCode();
    }
 
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gf c() {
-      return this.e;
+   @Override
+   public String toString() {
+      return "score{name='" + this.d + "', objective='" + this.f + "'}";
    }
 }

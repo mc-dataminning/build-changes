@@ -1,103 +1,130 @@
-import com.google.common.base.Stopwatch;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class anj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xe.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xe.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xe.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(ei.a("structure").then(ei.a("structure", fl.a(li.aJ)).executes($$0x -> a((eh)$$0x.getSource(), fl.a($$0x, "structure", li.aJ, c))))))
-               .then(ei.a("biome").then(ei.a("biome", fk.a($$1, li.az)).executes($$0x -> a((eh)$$0x.getSource(), fk.a($$0x, "biome", li.az))))))
-            .then(ei.a("poi").then(ei.a("poi", fk.a($$1, li.V)).executes($$0x -> b((eh)$$0x.getSource(), fk.a($$0x, "poi", li.V)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("particle").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ef.a("name", fb.a($$1))
+                     .executes(
+                        $$0x -> a(
+                              (ee)$$0x.getSource(), fb.a($$0x, "name"), ((ee)$$0x.getSource()).d(), eum.b, 0.0F, 0, false, ((ee)$$0x.getSource()).l().ah().t()
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)ef.a("pos", gh.a())
+                           .executes(
+                              $$0x -> a((ee)$$0x.getSource(), fb.a($$0x, "name"), gh.a($$0x, "pos"), eum.b, 0.0F, 0, false, ((ee)$$0x.getSource()).l().ah().t())
+                           ))
+                        .then(
+                           ef.a("delta", gh.a(false))
+                              .then(
+                                 ef.a("speed", FloatArgumentType.floatArg(0.0F))
+                                    .then(
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("count", IntegerArgumentType.integer(0))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ee)$$0x.getSource(),
+                                                         fb.a($$0x, "name"),
+                                                         gh.a($$0x, "pos"),
+                                                         gh.a($$0x, "delta"),
+                                                         FloatArgumentType.getFloat($$0x, "speed"),
+                                                         IntegerArgumentType.getInteger($$0x, "count"),
+                                                         false,
+                                                         ((ee)$$0x.getSource()).l().ah().t()
+                                                      )
+                                                ))
+                                             .then(
+                                                ((LiteralArgumentBuilder)ef.a("force")
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ee)$$0x.getSource(),
+                                                               fb.a($$0x, "name"),
+                                                               gh.a($$0x, "pos"),
+                                                               gh.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               true,
+                                                               ((ee)$$0x.getSource()).l().ah().t()
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      ef.a("viewers", er.d())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (ee)$$0x.getSource(),
+                                                                  fb.a($$0x, "name"),
+                                                                  gh.a($$0x, "pos"),
+                                                                  gh.a($$0x, "delta"),
+                                                                  FloatArgumentType.getFloat($$0x, "speed"),
+                                                                  IntegerArgumentType.getInteger($$0x, "count"),
+                                                                  true,
+                                                                  er.f($$0x, "viewers")
+                                                               )
+                                                         )
+                                                   )
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ef.a("normal")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ee)$$0x.getSource(),
+                                                            fb.a($$0x, "name"),
+                                                            gh.a($$0x, "pos"),
+                                                            gh.a($$0x, "delta"),
+                                                            FloatArgumentType.getFloat($$0x, "speed"),
+                                                            IntegerArgumentType.getInteger($$0x, "count"),
+                                                            false,
+                                                            ((ee)$$0x.getSource()).l().ah().t()
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ef.a("viewers", er.d())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ee)$$0x.getSource(),
+                                                               fb.a($$0x, "name"),
+                                                               gh.a($$0x, "pos"),
+                                                               gh.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               false,
+                                                               er.f($$0x, "viewers")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static Optional<? extends je.b<ejt>> a(fl.c<ejt> $$0, jn<ejt> $$1) {
-      return (Optional<? extends je.b<ejt>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> je.a($$0xx)), $$1::b);
-   }
+   private static int a(ee $$0, kw $$1, eum $$2, eum $$3, float $$4, int $$5, boolean $$6, Collection<aqo> $$7) throws CommandSyntaxException {
+      int $$8 = 0;
 
-   private static int a(eh $$0, fl.c<ejt> $$1) throws CommandSyntaxException {
-      jn<ejt> $$2 = $$0.e().I_().d(li.aJ);
-      je<ejt> $$3 = (je<ejt>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      ir $$4 = ir.a($$0.d());
-      aqt $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ad.d);
-      Pair<ir, ja<ejt>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
-      } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+      for (aqo $$9 : $$7) {
+         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
+            $$8++;
+         }
       }
-   }
 
-   private static int a(eh $$0, fk.c<dcz> $$1) throws CommandSyntaxException {
-      ir $$2 = ir.a($$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ad.d);
-      Pair<ir, ja<dcz>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
+      if ($$8 == 0) {
+         throw a.create();
       } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+         $$0.a(() -> wx.a("commands.particle.success", le.j.b($$1.a()).toString()), true);
+         return $$8;
       }
-   }
-
-   private static int b(eh $$0, fk.c<cdu> $$1) throws CommandSyntaxException {
-      ir $$2 = ir.a($$0.d());
-      aqt $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ad.d);
-      Optional<Pair<ja<cdu>, ir>> $$5 = $$3.y().e($$1, $$2, 256, cdr.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
-      }
-   }
-
-   public static int a(eh $$0, fk.c<?> $$1, ir $$2, Pair<ir, ? extends ja<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((ja)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   public static int a(eh $$0, fl.c<?> $$1, ir $$2, Pair<ir, ? extends ja<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((ja)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   private static int a(eh $$0, ir $$1, Pair<ir, ? extends ja<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      ir $$7 = (ir)$$2.getFirst();
-      int $$8 = $$4 ? aym.d(aym.c((float)$$1.j($$7))) : aym.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      xe $$10 = xh.a((xe)xe.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new xc(xc.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xk(xk.a.a, xe.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> xe.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
-   }
-
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return aym.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

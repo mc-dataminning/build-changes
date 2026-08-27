@@ -1,100 +1,96 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class did extends dgz {
-   public static final MapCodec<did> i = b(did::new);
-   private final exn[] j;
+public class did extends ddm {
+   public static final MapCodec<did> a = b(did::new);
+   public static final dru b = drt.n;
 
    @Override
    public MapCodec<did> a() {
-      return i;
+      return a;
    }
 
-   public did(dtb.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
-      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+   protected did(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exn g(dtc $$0, dbg $$1, ir $$2) {
-      return this.j[this.g($$0)];
+   public void a(daz $$0, io $$1, drd $$2, @Nullable bsq $$3, ctq $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cwf $$5 = $$4.a(kb.N, cwf.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
    }
 
    @Override
-   protected exn c(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return this.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
-   }
-
-   public boolean a(dtc $$0, boolean $$1, iw $$2) {
-      dfc $$3 = $$0.b();
-      boolean $$4 = this.m($$0);
-      boolean $$5 = $$3 instanceof die && die.a($$0, $$2);
-      return !j($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean m(dtc $$0) {
-      return $$0.a(awe.S) && $$0.a(awe.k) == this.n().a(awe.k);
-   }
-
-   @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      if ($$2.C) {
-         return $$0.a(cuk.wv) ? bqc.a : bqc.e;
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dpj $$5) {
+         $$5.l();
+         return bpw.a($$1.B);
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         return bpw.d;
       }
    }
 
    @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      return !$$1.x_() ? cun.a($$3, $$1, $$2) : bqa.d;
+   protected void a(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dpj $$5) {
+            $$5.l();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      dbg $$1 = $$0.q();
-      ir $$2 = $$0.a();
-      epe $$3 = $$0.q().b_($$0.a());
-      ir $$4 = $$2.e();
-      ir $$5 = $$2.h();
-      ir $$6 = $$2.f();
-      ir $$7 = $$2.g();
-      dtc $$8 = $$1.a_($$4);
-      dtc $$9 = $$1.a_($$5);
-      dtc $$10 = $$1.a_($$6);
-      dtc $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, iw.d), iw.d)))
-         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, iw.e), iw.e)))
-         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, iw.c), iw.c)))
-         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, iw.f), iw.f)))
-         .a(e, Boolean.valueOf($$3.a() == epf.c));
+   public doi a(io $$0, drd $$1) {
+      return new dpj($$0, $$1);
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   public boolean e_(drd $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(drd $$0, daf $$1, io $$2, it $$3) {
+      if ($$1.c_($$2) instanceof dpj $$4 && $$4.j()) {
+         return 15;
       }
 
-      return $$1.o().e() == iw.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return 0;
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected boolean c_(drd $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(drd $$0, daz $$1, io $$2) {
+      if ($$1.c_($$2) instanceof dpj $$3 && $$3.f().g() instanceof cul $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected dkg a_(drd $$0) {
+      return dkg.c;
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return $$1.c(b) ? a($$2, dok.e, dpj::a) : null;
    }
 }

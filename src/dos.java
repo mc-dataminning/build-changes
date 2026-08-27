@@ -1,104 +1,164 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class dos extends doi {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final daa d = new daa() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dos.this.e();
+      }
 
-public class dos extends dmq {
-   public static final MapCodec<dos> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmq::c), u()).apply($$0, dos::new));
-   public static final dtw b = djc.aE;
-   protected static final float c = 2.0F;
-   protected static final float d = 4.5F;
-   protected static final float e = 12.5F;
-   private static final Map<iw, exn> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         iw.c,
-         dfc.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
-         iw.d,
-         dfc.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
-         iw.f,
-         dfc.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
-         iw.e,
-         dfc.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
-      )
-   );
+      @Override
+      public aqn e() {
+         return (aqn)dos.this.n;
+      }
 
-   @Override
-   public MapCodec<dos> a() {
-      return a;
-   }
+      @Override
+      public void f() {
+         drd $$0 = dos.this.n.a_(dos.this.o);
+         this.e().a(dos.this.o, $$0, $$0, 3);
+      }
 
-   public dos(dup $$0, dtb.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, iw.c).a(f, Boolean.valueOf(false)));
-   }
+      @Override
+      public eum g() {
+         return eum.b(dos.this.o);
+      }
 
-   @Override
-   public String g() {
-      return this.q().a();
-   }
+      @Override
+      public ee i() {
+         it $$0 = dos.this.n().c(dfj.b);
+         return new ee(this, eum.b(dos.this.o), new eul(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
 
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return i.get($$0.c(b));
+      @Override
+      public boolean j() {
+         return !dos.this.o();
+      }
+   };
+
+   public dos(io $$0, drd $$1) {
+      super(dok.w, $$0, $$1);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
-   @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.n();
-      epe $$2 = $$0.q().b_($$0.a());
-      dcd $$3 = $$0.q();
-      ir $$4 = $$0.a();
-      iw[] $$5 = $$0.f();
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
 
-      for (iw $$6 : $$5) {
-         if ($$6.o().d()) {
-            iw $$7 = $$6.g();
-            $$1 = $$1.a(b, $$7);
-            if ($$1.a($$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == epf.c));
-            }
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public daa b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.n != null && this.l() != dos.a.a) {
+         this.v();
+      }
+   }
+
+   public void f() {
+      dos.a $$0 = this.l();
+      if ($$0 == dos.a.b && (this.a || this.b) && this.n != null) {
+         this.v();
+      }
+   }
+
+   private void v() {
+      dea $$0 = this.n().b();
+      if ($$0 instanceof dfj) {
+         this.k();
+         this.n.a(this.o, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         io $$0 = this.o.a(this.n.a_(this.o).c(dfj.b).g());
+         if (this.n.a_($$0).b() instanceof dfj) {
+            doi $$1 = this.n.c_($$0);
+            this.c = $$1 instanceof dos && ((dos)$$1).b().k() > 0;
+         } else {
+            this.c = false;
          }
       }
 
-      return null;
+      return this.c;
+   }
+
+   public dos.a l() {
+      drd $$0 = this.n();
+      if ($$0.a(dec.fN)) {
+         return dos.a.c;
+      } else if ($$0.a(dec.kG)) {
+         return dos.a.b;
+      } else {
+         return $$0.a(dec.kH) ? dos.a.a : dos.a.c;
+      }
+   }
+
+   public boolean u() {
+      drd $$0 = this.n.a_(this.aA_());
+      return $$0.b() instanceof dfj ? $$0.c(dfj.c) : false;
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(doi.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(kb.f));
    }
 
    @Override
-   public float g(dtc $$0) {
-      return $$0.c(b).p();
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.f, this.d.o());
    }
 
    @Override
-   public ewu m(dtc $$0) {
-      exn $$1 = i.get($$0.c(b));
-      return $$1.a().f();
+   public void a(ud $$0) {
+      super.a($$0);
+      $$0.r("CustomName");
    }
 
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b, f);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

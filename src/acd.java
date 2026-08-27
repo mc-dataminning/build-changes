@@ -1,45 +1,37 @@
-public class acd implements zl<abw> {
-   public static final zc<we, acd> a = zl.a(acd::a, acd::new);
-   private final int b;
-   private final ir c;
-   private final int d;
+public class acd implements ze<abq> {
+   public static final yv<vx, acd> a = ze.a(acd::a, acd::new);
+   private final bpt b;
+   private final boolean c;
 
-   public acd(int $$0, ir $$1, int $$2) {
+   public acd(bpt $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private acd(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
+   private acd(vx $$0) {
+      this.b = bpt.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
+      $$0.k(this.b.a());
       $$0.a(this.c);
-      $$0.k(this.d);
    }
 
    @Override
-   public zn<acd> a() {
-      return agj.i;
+   public zg<acd> a() {
+      return agc.m;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ir e() {
+   public boolean b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   public bpt e() {
+      return this.b;
    }
 }

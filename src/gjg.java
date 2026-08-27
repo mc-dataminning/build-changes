@@ -1,44 +1,31 @@
-public class gjg implements gis.a {
-   private final fgj a;
+public class gjg extends giz<cew, ftw> {
+   private static final akn a = new akn("textures/entity/parrot/parrot_red_blue.png");
+   private static final akn i = new akn("textures/entity/parrot/parrot_blue.png");
+   private static final akn j = new akn("textures/entity/parrot/parrot_green.png");
+   private static final akn k = new akn("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akn l = new akn("textures/entity/parrot/parrot_grey.png");
 
-   public gjg(fgj $$0) {
-      this.a = $$0;
+   public gjg(ght.a $$0) {
+      super($$0, new ftw($$0.a(fvv.aG)), 0.3F);
    }
 
-   @Override
-   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
-      ir $$5 = this.a.s.du();
-      dcd $$6 = this.a.s.dU();
+   public akn a(cew $$0) {
+      return a($$0.gx());
+   }
 
-      for (ir $$7 : ir.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         epe $$8 = $$6.b_($$7);
-         if ($$8.a(awj.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gis.a(
-               $$0,
-               $$1,
-               new ewp(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
-      }
+   public static akn a(cew.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
 
-      for (ir $$10 : ir.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         epe $$11 = $$6.b_($$10);
-         if ($$11.a(awj.a)) {
-            gis.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+   public float a(cew $$0, float $$1) {
+      float $$2 = ayf.i($$1, $$0.ce, $$0.cb);
+      float $$3 = ayf.i($$1, $$0.cd, $$0.cc);
+      return (ayf.a($$2) + 1.0F) * $$3;
    }
 }

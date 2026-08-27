@@ -2,32 +2,37 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 public abstract class bef extends DataFix {
    private final String a;
-   private final String b;
-   private final String c;
+   private final Predicate<String> b;
 
-   public bef(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
-   }
-
-   public bef(Schema $$0, String $$1, String $$2, String $$3) {
+   public bef(Schema $$0, String $$1, Predicate<String> $$2) {
       super($$0, false);
       this.a = $$1;
       this.b = $$2;
-      this.c = $$3;
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<?> $$1 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped(
-         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> azu.a($$0xxx, this.b, this.c, this::a)))
-      );
+      Type<?> $$0 = this.getInputSchema().getType(bga.t);
+      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
+   }
+
+   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
+      OpticFinder<?> $$4 = $$0.findField("tag");
+      return $$4x -> {
+         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
+         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
+      };
    }
 
    protected abstract <T> Dynamic<T> a(Dynamic<T> var1);

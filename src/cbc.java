@@ -1,42 +1,99 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbc extends cbl {
-   private final ceq a;
-   @Nullable
-   private bso b;
-   private final cde c = cde.a().a(64.0);
+public class cbc extends bzo {
+   private final bzo a;
+   private final int b;
+   private boolean c;
 
-   public cbc(ceq $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bzl.a.d));
+   public cbc(int $$0, bzo $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cbc $$0) {
+      return this.Q_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean a() {
-      ewp $$0 = this.a.cP().c(10.0, 8.0, 10.0);
-      List<? extends bso> $$1 = this.a.dU().a(cll.class, this.c, this.a, $$0);
-      List<cly> $$2 = this.a.dU().a(this.c, this.a, $$0);
+      return this.a.a();
+   }
 
-      for (bso $$3 : $$1) {
-         cll $$4 = (cll)$$3;
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
 
-         for (cly $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof cly) || !this.b.O_() && !((cly)this.b).f();
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
-      super.c();
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public boolean R_() {
+      return this.a.R_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<bzo.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<bzo.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public bzo k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cbc)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

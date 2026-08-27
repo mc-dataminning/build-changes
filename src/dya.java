@@ -1,14 +1,25 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface dya<T extends dxz> {
-   dya<dxr> a = a("block", new dxr.a());
-   dya<dxt> b = a("entity", new dxt.a());
+class dya extends dye {
+   public static final MapCodec<dya> a = a(dya::new);
 
-   Codec<T> a();
+   public dya(List<dyc> $$0) {
+      super($$0);
+   }
 
-   zc<wp, T> b();
+   public boolean a(dbu $$0, io $$1) {
+      for (dyc $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
 
-   static <S extends dya<T>, T extends dxz> S a(String $$0, S $$1) {
-      return jn.a(lh.v, $$0, $$1);
+      return true;
+   }
+
+   @Override
+   public dyd<?> a() {
+      return dyd.j;
    }
 }

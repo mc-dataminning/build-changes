@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class eet implements eek {
-   public static final Codec<eet> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eet::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class eet extends eev {
+   public static final MapCodec<eet> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eet::new, $$0 -> $$0.b);
+   private final float b;
 
-   public eet(float $$0, float $$1, float $$2, float $$3) {
+   public eet(float $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   }
+
+   @Override
+   protected eew<?> a() {
+      return eew.c;
+   }
+
+   @Override
+   public void a(eev.a $$0) {
+      aym $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<io> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (it $$3x : it.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  it $$4 = $$3x.g();
+                  io $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dec.fC.n().a(dfh.c, Integer.valueOf($$1.a(3))).a(dfh.aE, $$3x));
+                  }
+               }
+            }
+         });
+      }
    }
 }

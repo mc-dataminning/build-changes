@@ -1,85 +1,37 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class bvs {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
-
-   public static buh<bsw> a() {
-      return bxt.a(
-         (Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$0 -> $$0.group($$0.b(cbr.i), $$0.c(cbr.m), $$0.a(cbr.n), $$0.a(cbr.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.F_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bso> $$8 = $$0.b($$1);
-                        Optional<bso> $$9 = $$8.stream().filter($$1xx -> a((bso)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bso> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              ewu $$11 = cdl.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(ir.a($$11))) {
-                                 $$2.a(new cbu($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public static bvu<bsq> a(float $$0) {
+      return bxw.a((Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$1 -> $$1.group($$1.c(cbu.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dp())) {
+                  return false;
+               } else {
+                  Optional<eum> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new cbx($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   private static void a(bxu<?, bso> $$0, bxu<?, bvu> $$1, bxu<?, cbu> $$2, bso $$3) {
-      $$0.a($$3);
-      $$1.a(new bur($$3, true));
-      $$2.a(new cbu(new bur($$3, false), 0.6F, 1));
+   @Nullable
+   private static eum a(aqn $$0, bsq $$1) {
+      aym $$2 = $$1.el();
+      io $$3 = $$1.dp();
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         io $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return eum.c($$5);
+         }
+      }
+
+      return null;
    }
 
-   private static Optional<bso> a(List<bso> $$0) {
-      Map<bso, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<bso, Integer> b(List<bso> $$0) {
-      Map<bso, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bvs::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static bso a(bso $$0) {
-      return $$0.dZ().c(cbr.q).get();
-   }
-
-   private static boolean b(bso $$0) {
-      return $$0.dZ().c(cbr.q).isPresent();
-   }
-
-   private static boolean a(bso $$0, bso $$1) {
-      return $$1.dZ().c(cbr.q).filter($$1x -> $$1x == $$0).isPresent();
+   public static boolean a(aqn $$0, bsq $$1, io $$2) {
+      return $$0.h($$2) && (double)$$0.a(dwv.a.e, $$2).v() <= $$1.dw();
    }
 }

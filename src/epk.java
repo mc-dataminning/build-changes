@@ -1,117 +1,136 @@
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public abstract class epk extends epc {
-   @Override
-   public epd d() {
-      return epf.b;
+public class epk {
+   private final aqn a;
+   private final Map<erw<?>, Object> b;
+   private final Map<akn, epk.b> c;
+   private final float d;
+
+   public epk(aqn $$0, Map<erw<?>, Object> $$1, Map<akn, epk.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public epd e() {
-      return epf.c;
+   public aqn a() {
+      return this.a;
    }
 
-   @Override
-   public cuc a() {
-      return cuk.rW;
+   public boolean a(erw<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public void a(dca $$0, ir $$1, epe $$2, ayt $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avo.Cw, avq.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-         }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(lb.aj, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+   public <T> T b(erw<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
       }
    }
 
    @Nullable
-   @Override
-   public kz h() {
-      return lb.l;
+   public <T> T c(erw<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Override
-   protected boolean a(dca $$0) {
-      return $$0.ab().b(dbw.V);
+   @Nullable
+   public <T> T d(erw<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Override
-   protected void a(dcb $$0, ir $$1, dtc $$2) {
-      dqc $$3 = $$2.t() ? $$0.c_($$1) : null;
-      dfc.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(dcd $$0) {
-      return 4;
-   }
-
-   @Override
-   public dtc b(epe $$0) {
-      return dfe.al.n().a(djw.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(epd $$0) {
-      return $$0 == epf.c || $$0 == epf.b;
-   }
-
-   @Override
-   public int c(dcd $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(dcd $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(epe $$0, dbg $$1, ir $$2, epd $$3, iw $$4) {
-      return $$4 == iw.a && !$$3.a(awj.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<avn> j() {
-      return Optional.of(avo.dn);
-   }
-
-   public static class a extends epk {
-      @Override
-      protected void a(dtd.a<epd, epe> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(epe $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(epe $$0) {
-         return false;
+   public void a(akn $$0, Consumer<ctq> $$1) {
+      epk.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
       }
    }
 
-   public static class b extends epk {
-      @Override
-      public int d(epe $$0) {
-         return 8;
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final aqn a;
+      private final Map<erw<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<akn, epk.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(aqn $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public boolean c(epe $$0) {
-         return true;
+      public aqn a() {
+         return this.a;
       }
+
+      public <T> epk.a a(erw<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> epk.a b(erw<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(erw<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(erw<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public epk.a a(akn $$0, epk.b $$1) {
+         epk.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public epk.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public epk a(erx $$0) {
+         Set<erw<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<erw<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new epk(this.a, this.b, this.c, this.d);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<ctq> var1);
    }
 }

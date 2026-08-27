@@ -1,26 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record dzq(dzs b, dzp c) {
-   public static final Codec<dzq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dzs.a.forGetter(dzq::a), dzp.a.forGetter(dzq::b)).apply($$0, $$0.stable(dzq::new))
-   );
-
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzs $$1, dzp $$2) {
-      return a.encodeStart($$0, new dzq($$1, $$2));
+public class dzq extends dzo {
+   public dzq(Codec<eck> $$0) {
+      super($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzs $$1, jo $$2) {
-      return a($$0, $$1, new dzp($$2.d(li.aT)));
-   }
+   @Override
+   protected boolean a(dba $$0, aym $$1, io $$2, drd $$3) {
+      io.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-   public dzs a() {
-      return this.b;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
 
-   public dzp b() {
-      return this.c;
+         $$4.c(it.b);
+      }
+
+      io $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<it> $$9 = it.c.a.c($$1);
+
+      for (it $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(it.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
+            }
+         }
+      }
+
+      return true;
    }
 }

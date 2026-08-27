@@ -1,77 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gtl implements gtr {
+   private static final int a = 1200;
+   private static final wx b = wx.c("tutorial.craft_planks.title");
+   private static final wx c = wx.c("tutorial.craft_planks.description");
+   private final gtq d;
+   private fil e;
+   private int f;
 
-public class gtl implements gsz {
-   private final int a;
-   private final List<bom.b<gsz>> b;
-   private final gsz c;
-
-   public gtl(List<bom.b<gsz>> $$0) {
-      this.b = $$0;
-      this.a = bon.a($$0);
-      this.c = $$0.get(0).b();
+   public gtl(gtq $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public List<ggd> a(@Nullable dtc $$0, @Nullable iw $$1, ayt $$2) {
-      return bon.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gts.f);
+      } else {
+         if (this.f == 1) {
+            gbm $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.gc().a(awf.b)) {
+                  this.d.a(gts.f);
+                  return;
+               }
 
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public gqy e() {
-      return this.c.e();
-   }
-
-   @Override
-   public ggp f() {
-      return this.c.f();
-   }
-
-   @Override
-   public ggn g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bom.b<gsz>> a = Lists.newArrayList();
-
-      public gtl.a a(@Nullable gsz $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bom.a($$0, $$1));
+               if (a($$0, awf.b)) {
+                  this.d.a(gts.f);
+                  return;
+               }
+            }
          }
 
-         return this;
-      }
-
-      @Nullable
-      public gsz a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gsz)(this.a.size() == 1 ? this.a.get(0).b() : new gtl(this.a));
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fil(fil.a.e, b, c, false);
+            this.d.e().ax().a(this.e);
          }
       }
+   }
+
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(ctq $$0) {
+      if ($$0.a(awf.b)) {
+         this.d.a(gts.f);
+      }
+   }
+
+   public static boolean a(gbm $$0, awm<ctl> $$1) {
+      for (ix<ctl> $$2 : le.h.c($$1)) {
+         if ($$0.j().a(avs.b.b($$2.a())) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface frf {
+   void a(frd var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface frf {
+   wx aO_();
+
+   void a(ffn var1, float var2, int var3);
+
+   boolean aP_();
 }

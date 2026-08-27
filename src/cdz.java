@@ -1,10 +1,8 @@
-public class cdz extends cdy {
-   public cdz(bsb<? extends cdy> $$0, dca $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean dV() {
-      return true;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cdz {
 }

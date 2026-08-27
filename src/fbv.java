@@ -1,289 +1,234 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fbv<T extends fbv<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
-
-   public fbv(String $$0, int $$1, int $$2) {
+public class fbv extends gty {
+   static final akn a = new akn("pending_invite/accept_highlighted");
+   static final akn b = new akn("pending_invite/accept");
+   static final akn c = new akn("pending_invite/reject_highlighted");
+   static final akn B = new akn("pending_invite/reject");
+   private static final Logger C = LogUtils.getLogger();
+   private static final wx D = wx.c("mco.invites.nopending");
+   static final wx E = wx.c("mco.invites.button.accept");
+   static final wx F = wx.c("mco.invites.button.reject");
+   private final flz G;
+   private final CompletableFuture<List<ezu>> H = CompletableFuture.supplyAsync(() -> {
       try {
-         this.b = $$0;
-         Proxy $$3 = fbt.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         return ezk.a().i().a;
+      } catch (fax var1x) {
+         C.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ac.h());
+   @Nullable
+   wx I;
+   fbv.b J;
+   int K = -1;
+   private fga L;
+   private fga M;
+
+   public fbv(flz $$0, wx $$1) {
+      super($$1);
+      this.G = $$0;
+   }
+
+   @Override
+   public void aN_() {
+      ezf.f();
+      this.J = new fbv.b();
+      this.H.thenAcceptAsync($$0 -> {
+         List<fbv.a> $$1 = $$0.stream().map($$0x -> new fbv.a($$0x)).toList();
+         this.J.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aX().b(D);
          }
-
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new fde(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new fde(var6.getMessage(), var6);
-      }
+      }, this.q);
+      this.c(this.J);
+      this.L = this.c((fga)fga.a(E, $$0 -> {
+         this.a(this.K, true);
+         this.K = -1;
+         this.C();
+      }).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fga)fga.a(ww.d, $$0 -> this.d()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fga)fga.a(F, $$0 -> {
+         this.a(this.K, false);
+         this.K = -1;
+         this.C();
+      }).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.C();
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
+   @Override
+   public void d() {
+      this.m.a(this.G);
    }
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new fde(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new fde(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.J.l()) {
+         String $$2 = this.J.aF_().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               ezk $$2x = ezk.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
                }
 
-               $$3.close();
-               return;
+               return true;
+            } catch (fax var3x) {
+               C.error("Couldn't handle invite", var3x);
+               return false;
             }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
-      }
-   }
+         }, ac.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.J.a($$0);
+               fba $$3 = this.m.ba();
+               if ($$1) {
+                  $$3.c.a();
+               }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static fbv<?> a(String $$0) {
-      return new fbv.b($$0, 5000, 60000);
-   }
-
-   public static fbv<?> a(String $$0, int $$1, int $$2) {
-      return new fbv.b($$0, $$1, $$2);
-   }
-
-   public static fbv<?> b(String $$0, String $$1) {
-      return new fbv.c($$0, $$1, 5000, 60000);
-   }
-
-   public static fbv<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new fbv.c($$0, $$1, $$2, $$3);
-   }
-
-   public static fbv<?> b(String $$0) {
-      return new fbv.a($$0, 5000, 60000);
-   }
-
-   public static fbv<?> c(String $$0, String $$1) {
-      return new fbv.d($$0, $$1, 5000, 60000);
-   }
-
-   public static fbv<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new fbv.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends fbv<fbv.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fbv.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new fde(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends fbv<fbv.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fbv.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new fde(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends fbv<fbv.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fbv.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+               $$3.d.a();
             }
+         }, this.q);
+      }
+   }
 
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fde(var3.getMessage(), var3);
+   @Override
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.I = null;
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.I != null) {
+         $$0.a(this.p, this.I, $$1, $$2);
+      }
+
+      if (this.H.isDone() && this.J.l() == 0) {
+         $$0.a(this.p, D, this.n / 2, this.o / 2 - 20, -1);
+      }
+   }
+
+   void C() {
+      this.L.k = this.a(this.K);
+      this.M.k = this.a(this.K);
+   }
+
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends fgw.a<fbv.a> {
+      private static final int b = 38;
+      final ezu c;
+      private final List<fbe> d;
+
+      a(ezu $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fbv.a.a(), new fbv.a.b());
+      }
+
+      @Override
+      public void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fbe.a(fbv.this.J, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(ffn $$0, ezu $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(fbv.this.p, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(fbv.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(fbv.this.p, fcr.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         fbe.a($$0, this.d, fbv.this.J, $$2, $$3, $$4, $$5);
+         fcr.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public wx a() {
+         wx $$0 = ww.b(wx.b(this.c.b), wx.b(this.c.c), fcr.a(this.c.e));
+         return wx.a("narrator.select", $$0);
+      }
+
+      class a extends fbe {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(ffn $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? fbv.a : fbv.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fbv.this.I = fbv.E;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fbv.this.a($$0, true);
+         }
+      }
+
+      class b extends fbe {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(ffn $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? fbv.c : fbv.B, $$1, $$2, 18, 18);
+            if ($$3) {
+               fbv.this.I = fbv.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fbv.this.a($$0, false);
          }
       }
    }
 
-   public static class d extends fbv<fbv.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
+   class b extends gtx<fbv.a> {
+      public b() {
+         super(fbv.this.n, fbv.this.o - 72, 32, 36);
       }
 
-      public fbv.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
+      @Override
+      public void a(int $$0) {
+         this.i($$0);
+      }
 
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fde(var3.getMessage(), var3);
-         }
+      @Override
+      public int a() {
+         return this.l() * 36;
+      }
+
+      @Override
+      public int b() {
+         return 260;
+      }
+
+      @Override
+      public void b(int $$0) {
+         super.b($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         fbv.this.K = $$0;
+         fbv.this.C();
+      }
+
+      public void a(@Nullable fbv.a $$0) {
+         super.a($$0);
+         fbv.this.K = this.aF_().indexOf($$0);
+         fbv.this.C();
       }
    }
 }

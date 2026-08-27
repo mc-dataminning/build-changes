@@ -1,42 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class ccv extends ccx<cll> {
-   private static final int a = 40;
-
-   public ccv() {
-      super(40);
-   }
-
-   protected void a(aqt $$0, cll $$1) {
-      aks<dca> $$2 = $$0.af();
-      ir $$3 = $$1.du();
-      List<iz> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ir $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gL().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(iz.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      btp<?> $$10 = $$1.dZ();
-      if (!$$4.isEmpty()) {
-         $$10.a(cbr.f, $$4);
-      } else {
-         $$10.b(cbr.f);
-      }
+public class ccv extends cda<bsq> {
+   @Override
+   public Set<cbu<?>> a() {
+      return ImmutableSet.of(cbu.h, cbu.M, cbu.an);
    }
 
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.f);
+   protected void a(aqn $$0, bsq $$1) {
+      bts<?> $$2 = $$1.dS();
+      List<ckn> $$3 = Lists.newArrayList();
+      cbw $$4 = $$2.c(cbu.h).orElse(cbw.a());
+      Optional<bss> $$5 = $$4.a($$0x -> $$0x instanceof cjv || $$0x instanceof chw).map(bss.class::cast);
+
+      for (bsq $$7 : $$2.c(cbu.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof ckn && ((ckn)$$7).gq()) {
+            $$3.add((ckn)$$7);
+         }
+      }
+
+      $$2.a(cbu.M, $$5);
+      $$2.a(cbu.an, $$3);
    }
 }

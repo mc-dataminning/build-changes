@@ -1,60 +1,40 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class aoi {
-   public static void a(CommandDispatcher<eh> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("commands.spectate.not_spectator", $$0));
+
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("serverpack").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ei.a("push")
-                     .then(
-                        ((RequiredArgumentBuilder)ei.a("url", StringArgumentType.string())
-                              .then(
-                                 ((RequiredArgumentBuilder)ei.a("uuid", fx.a())
-                                       .then(
-                                          ei.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eh)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(fx.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (eh)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fx.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
-                              ))
-                           .executes($$0x -> a((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
-                     )
-               ))
-            .then(ei.a("pop").then(ei.a("uuid", fx.a()).executes($$0x -> a((eh)$$0x.getSource(), fx.a($$0x, "uuid")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ee)$$0x.getSource(), null, ((ee)$$0x.getSource()).h())))
+            .then(
+               ((RequiredArgumentBuilder)ef.a("target", er.a()).executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), ((ee)$$0x.getSource()).h())))
+                  .then(ef.a("player", er.c()).executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), er.e($$0x, "player"))))
+            )
       );
    }
 
-   private static void a(eh $$0, zl<?> $$1) {
-      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
-   }
+   private static int a(ee $$0, @Nullable brw $$1, aqo $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != daw.d) {
+         throw b.create($$2.O_());
+      } else {
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> wx.a("commands.spectate.success.started", $$1.O_()), false);
+         } else {
+            $$0.a(() -> wx.c("commands.spectate.success.stopped"), false);
+         }
 
-   private static int a(eh $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      zx $$6 = new zx($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
-   }
-
-   private static int a(eh $$0, UUID $$1) {
-      zw $$2 = new zw(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+         return 1;
+      }
    }
 }

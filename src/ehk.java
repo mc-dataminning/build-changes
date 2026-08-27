@@ -1,77 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 
-public class ehk extends eho {
-   public static final Codec<ehk> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ehk::new));
+public abstract class ehk extends ehl {
+   private final ehk.a d;
+   private final int e;
+   private final int f;
 
-   public ehk(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected ehk(ehk.a $$0, int $$1, int $$2, ehl.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected ehp<?> a() {
-      return ehp.b;
+   public Optional<ehl.b> a(ehl.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dwv.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   @Override
-   public List<efw.a> a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<efw.a> $$6 = Lists.newArrayList();
-      iw $$7 = iw.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      ir.a $$10 = new ir.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+   private void a(eid $$0, ehl.a $$1) {
+      dag $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new efw.a(new ir($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      iw $$16 = iw.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new efw.a(new ir($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   @FunctionalInterface
+   protected interface a {
+      ehp construct(dxu var1, int var2, int var3);
    }
 }

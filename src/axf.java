@@ -1,36 +1,54 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 public class axf {
-   public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = ad.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public int a(Class<?> $$0) {
-      int $$1 = this.b.getInt($$0);
-      if ($$1 != -1) {
-         return $$1;
+   axf(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
+   }
+
+   public static axf.a a() {
+      return new axf.a();
+   }
+
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
       } else {
-         Class<?> $$2 = $$0;
-
-         while (($$2 = $$2.getSuperclass()) != Object.class) {
-            int $$3 = this.b.getInt($$2);
-            if ($$3 != -1) {
-               return $$3;
-            }
-         }
-
-         return -1;
+         this.a(Stream.of($$0));
       }
    }
 
-   public int b(Class<?> $$0) {
-      return this.a($$0) + 1;
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(axf::a).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   public int c(Class<?> $$0) {
-      int $$1 = this.a($$0);
-      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
-      this.b.put($$0, $$2);
-      return $$2;
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   }
+
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public axf.a a(String $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public axf a(Writer $$0) throws IOException {
+         return new axf($$0, this.a);
+      }
    }
 }

@@ -1,13 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bdm extends bek {
-   public bdm(Schema $$0) {
-      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
+public class bdm extends bez {
+   public bdm(Schema $$0, String $$1) {
+      super($$0, false, "Gossip for for " + $$1, bga.z, $$1);
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.remove("filtered_title").remove("filtered_pages");
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Gossips",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt()
+                        .result()
+                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)azs.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
+                        .map($$0xx::createList),
+                     $$0xx
+                  )
+            )
+      );
    }
 }

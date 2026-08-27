@@ -1,3 +1,4 @@
-public interface bpv {
-   void a(bpt var1);
+public enum bpv {
+   a,
+   b;
 }

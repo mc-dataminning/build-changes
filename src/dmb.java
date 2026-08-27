@@ -1,26 +1,28 @@
-import com.mojang.serialization.MapCodec;
+public enum dmb {
+   a {
+      @Override
+      public boolean a(drd $$0, daf $$1, io $$2, it $$3) {
+         return dea.a($$0.l($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final int d = 1;
+      private final evf e = dea.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-public class dmb extends dfl {
-   public static final MapCodec<dmb> a = b(dmb::new);
-   protected static final float b = 6.0F;
-   protected static final exn c = dfc.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+      @Override
+      public boolean a(drd $$0, daf $$1, io $$2, it $$3) {
+         return !evc.c($$0.l($$1, $$2).a($$3), this.e, euq.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final evf e = evc.a(evc.b(), dea.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), euq.e);
 
-   @Override
-   public MapCodec<dmb> a() {
-      return a;
-   }
+      @Override
+      public boolean a(drd $$0, daf $$1, io $$2, it $$3) {
+         return !evc.c($$0.l($$1, $$2).a($$3), this.e, euq.c);
+      }
+   };
 
-   protected dmb(dtb.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.a(awe.aN) || $$0.a(dfe.eL) || super.b($$0, $$1, $$2);
-   }
+   public abstract boolean a(drd var1, daf var2, io var3, it var4);
 }

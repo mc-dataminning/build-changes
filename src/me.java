@@ -1,50 +1,46 @@
 import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
+import com.google.gson.JsonObject;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
 
-public class me implements lo {
-   private static final Logger d = LogUtils.getLogger();
-   private final Path e;
-   private final CompletableFuture<jc.a> f;
-   private static final MapCodec<aks<dcz>> g = aks.a(li.az).fieldOf("biome");
-   private static final Codec<ddi.c<aks<dcz>>> h = ddi.c.a(g).fieldOf("biomes").codec();
+public class me implements ll {
+   private final ln d;
 
-   public me(lq $$0, CompletableFuture<jc.a> $$1) {
-      this.e = $$0.a(lq.b.c).resolve("biome_parameters");
-      this.f = $$1;
+   public me(ln $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(lm $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ddn.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
+   public CompletableFuture<?> a(lj $$0) {
+      JsonObject $$1 = new JsonObject();
+      le.aw.h().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((jk)$$1x.a())));
+      Path $$2 = this.d.a(ln.b.c).resolve("registries.json");
+      return ll.a($$0, $$1, $$2);
+   }
+
+   private static <T> JsonElement a(jk<T> $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 instanceof is) {
+         akn $$2 = ((is)$$0).a();
+         $$1.addProperty("default", $$2.toString());
+      }
+
+      int $$3 = le.aw.a($$0);
+      $$1.addProperty("protocol_id", $$3);
+      JsonObject $$4 = new JsonObject();
+      $$0.h().forEach($$2 -> {
+         T $$3x = $$2.a();
+         int $$4x = $$0.a($$3x);
+         JsonObject $$5 = new JsonObject();
+         $$5.addProperty("protocol_id", $$4x);
+         $$4.add($$2.h().a().toString(), $$5);
       });
-   }
-
-   private static <E> CompletableFuture<?> a(Path $$0, lm $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? lo.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
-
-   private Path a(akt $$0) {
-      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
+      $$1.add("entries", $$4);
+      return $$1;
    }
 
    @Override
    public final String a() {
-      return "Biome Parameters";
+      return "Registry Dump";
    }
 }

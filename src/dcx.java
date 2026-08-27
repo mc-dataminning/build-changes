@@ -1,42 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class dcx {
-   public static final Codec<dcx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avn.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dcx::new)
-   );
-   public static final dcx b = new dcx(avo.h, 6000, 8, 2.0);
-   private final ja<avn> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public class dcx extends dea {
+   public static final MapCodec<dcx> a = b(dcx::new);
 
-   public dcx(ja<avn> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Override
+   public MapCodec<dcx> a() {
+      return a;
    }
 
-   public ja<avn> a() {
-      return this.c;
+   public dcx(drc.d $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.d;
+   @Override
+   protected dkg a_(drd $$0) {
+      return dkg.a;
    }
 
-   public int c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return evc.a();
    }
 }

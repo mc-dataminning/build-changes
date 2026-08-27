@@ -1,142 +1,247 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class bqq {
-   public static final int a = 100;
-   public static final int b = 300;
-   private static final yb c = yb.a.a(new xc(xc.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xk(xk.a.a, xe.b("MCPE-28723")));
-   private final List<bqo> d = Lists.newArrayList();
-   private final bso e;
-   private int f;
-   private int g;
-   private int h;
-   private boolean i;
-   private boolean j;
+   private final jk<bqr> a;
+   private final bqp b;
+   private final bqp c;
+   private final bqp d;
+   private final bqp e;
+   private final bqp f;
+   private final bqp g;
+   private final bqp h;
+   private final bqp i;
+   private final bqp j;
+   private final bqp k;
+   private final bqp l;
+   private final bqp m;
+   private final bqp n;
+   private final bqp o;
+   private final bqp p;
+   private final bqp q;
+   private final bqp r;
+   private final bqp s;
+   private final bqp t;
+   private final bqp u;
+   private final bqp v;
+   private final bqp w;
+   private final bqp x;
 
-   public bqq(bso $$0) {
-      this.e = $$0;
+   public bqq(jl $$0) {
+      this.a = $$0.d(lf.s);
+      this.b = this.a(bqs.a);
+      this.c = this.a(bqs.b);
+      this.d = this.a(bqs.c);
+      this.e = this.a(bqs.d);
+      this.f = this.a(bqs.e);
+      this.g = this.a(bqs.f);
+      this.h = this.a(bqs.g);
+      this.i = this.a(bqs.h);
+      this.j = this.a(bqs.i);
+      this.k = this.a(bqs.j);
+      this.l = this.a(bqs.k);
+      this.m = this.a(bqs.l);
+      this.n = this.a(bqs.m);
+      this.o = this.a(bqs.n);
+      this.p = this.a(bqs.o);
+      this.q = this.a(bqs.p);
+      this.r = this.a(bqs.q);
+      this.s = this.a(bqs.r);
+      this.t = this.a(bqs.s);
+      this.u = this.a(bqs.t);
+      this.v = this.a(bqs.u);
+      this.w = this.a(bqs.S);
+      this.x = this.a(bqs.T);
    }
 
-   public void a(bqt $$0, float $$1) {
-      this.c();
-      bqy $$2 = bqy.a(this.e);
-      bqo $$3 = new bqo($$0, $$1, $$2, this.e.ad);
-      this.d.add($$3);
-      this.f = this.e.am;
-      this.j = true;
-      if (!this.i && this.e.bI() && a($$0)) {
-         this.i = true;
-         this.g = this.e.am;
-         this.h = this.g;
-         this.e.f_();
-      }
+   private bqp a(akm<bqr> $$0) {
+      return new bqp(this.a.g($$0));
    }
 
-   private static boolean a(bqt $$0) {
-      return $$0.d() instanceof bso;
+   private bqp a(akm<bqr> $$0, @Nullable brw $$1) {
+      return new bqp(this.a.g($$0), $$1);
    }
 
-   private xe a(brv $$0, xe $$1, String $$2, String $$3) {
-      cuh $$5 = $$0 instanceof bso $$4 ? $$4.fg() : cuh.i;
-      return !$$5.d() && $$5.b(ke.f) ? xe.a($$2, this.e.P_(), $$1, $$5.E()) : xe.a($$3, this.e.P_(), $$1);
+   private bqp a(akm<bqr> $$0, @Nullable brw $$1, @Nullable brw $$2) {
+      return new bqp(this.a.g($$0), $$1, $$2);
    }
 
-   private xe a(bqo $$0, @Nullable brv $$1) {
-      bqt $$2 = $$0.a();
-      if (!$$2.a(awg.n) && !$$2.a(awg.t)) {
-         xe $$4 = a($$1);
-         brv $$5 = $$2.d();
-         xe $$6 = a($$5);
-         if ($$6 != null && !$$6.equals($$4)) {
-            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
-         } else {
-            return (xe)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xe.a("death.fell.killer", this.e.P_()));
-         }
-      } else {
-         bqy $$3 = Objects.requireNonNullElse($$0.c(), bqy.a);
-         return xe.a($$3.a(), this.e.P_());
-      }
+   public bqp a() {
+      return this.b;
    }
 
-   @Nullable
-   private static xe a(@Nullable brv $$0) {
-      return $$0 == null ? null : $$0.P_();
+   public bqp b() {
+      return this.c;
    }
 
-   public xe a() {
-      if (this.d.isEmpty()) {
-         return xe.a("death.attack.generic", this.e.P_());
-      } else {
-         bqo $$0 = this.d.get(this.d.size() - 1);
-         bqt $$1 = $$0.a();
-         bqo $$2 = this.d();
-         bqx $$3 = $$1.j().e();
-         if ($$3 == bqx.b && $$2 != null) {
-            return this.a($$2, $$1.d());
-         } else if ($$3 == bqx.c) {
-            String $$4 = "death.attack." + $$1.e();
-            xe $$5 = xh.a((xe)xe.c($$4 + ".link")).c(c);
-            return xe.a($$4 + ".message", this.e.P_(), $$5);
-         } else {
-            return $$1.a(this.e);
-         }
-      }
+   public bqp c() {
+      return this.d;
    }
 
-   @Nullable
-   private bqo d() {
-      bqo $$0 = null;
-      bqo $$1 = null;
-      float $$2 = 0.0F;
-      float $$3 = 0.0F;
-
-      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
-         bqo $$5 = this.d.get($$4);
-         bqo $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
-         bqt $$7 = $$5.a();
-         boolean $$8 = $$7.a(awg.t);
-         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
-         if (($$7.a(awg.n) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
-            if ($$4 > 0) {
-               $$0 = $$6;
-            } else {
-               $$0 = $$5;
-            }
-
-            $$3 = $$9;
-         }
-
-         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
-            $$1 = $$5;
-            $$2 = $$5.b();
-         }
-      }
-
-      if ($$3 > 5.0F && $$0 != null) {
-         return $$0;
-      } else {
-         return $$2 > 5.0F && $$1 != null ? $$1 : null;
-      }
+   public bqp d() {
+      return this.e;
    }
 
-   public int b() {
-      return this.i ? this.e.am - this.g : this.h - this.g;
+   public bqp e() {
+      return this.f;
    }
 
-   public void c() {
-      int $$0 = this.i ? 300 : 100;
-      if (this.j && (!this.e.bI() || this.e.am - this.f > $$0)) {
-         boolean $$1 = this.i;
-         this.j = false;
-         this.i = false;
-         this.h = this.e.am;
-         if ($$1) {
-            this.e.g_();
-         }
+   public bqp f() {
+      return this.g;
+   }
 
-         this.d.clear();
-      }
+   public bqp g() {
+      return this.h;
+   }
+
+   public bqp h() {
+      return this.i;
+   }
+
+   public bqp i() {
+      return this.j;
+   }
+
+   public bqp j() {
+      return this.k;
+   }
+
+   public bqp k() {
+      return this.l;
+   }
+
+   public bqp l() {
+      return this.m;
+   }
+
+   public bqp m() {
+      return this.n;
+   }
+
+   public bqp n() {
+      return this.o;
+   }
+
+   public bqp o() {
+      return this.p;
+   }
+
+   public bqp p() {
+      return this.q;
+   }
+
+   public bqp q() {
+      return this.r;
+   }
+
+   public bqp r() {
+      return this.s;
+   }
+
+   public bqp s() {
+      return this.t;
+   }
+
+   public bqp t() {
+      return this.u;
+   }
+
+   public bqp u() {
+      return this.v;
+   }
+
+   public bqp a(brw $$0) {
+      return this.a(bqs.v, $$0);
+   }
+
+   public bqp b(brw $$0) {
+      return this.a(bqs.w, $$0);
+   }
+
+   public bqp c(brw $$0) {
+      return this.a(bqs.x, $$0);
+   }
+
+   public bqp a(bsq $$0) {
+      return this.a(bqs.y, $$0);
+   }
+
+   public bqp b(bsq $$0) {
+      return this.a(bqs.z, $$0);
+   }
+
+   public bqp c(bsq $$0) {
+      return this.a(bqs.A, $$0);
+   }
+
+   public bqp a(cly $$0) {
+      return this.a(bqs.B, $$0);
+   }
+
+   public bqp a(cme $$0, @Nullable brw $$1) {
+      return this.a(bqs.C, $$0, $$1);
+   }
+
+   public bqp a(brw $$0, @Nullable brw $$1) {
+      return this.a(bqs.D, $$0, $$1);
+   }
+
+   public bqp a(brw $$0, @Nullable bsq $$1) {
+      return this.a(bqs.E, $$0, $$1);
+   }
+
+   public bqp b(brw $$0, @Nullable bsq $$1) {
+      return this.a(bqs.F, $$0, $$1);
+   }
+
+   public bqp c(brw $$0, @Nullable bsq $$1) {
+      return this.a(bqs.G, $$0, $$1);
+   }
+
+   public bqp a(cml $$0, @Nullable brw $$1) {
+      return this.a(bqs.H, $$0, $$1);
+   }
+
+   public bqp a(cmk $$0, @Nullable brw $$1) {
+      return $$1 == null ? this.a(bqs.J, $$0) : this.a(bqs.I, $$0, $$1);
+   }
+
+   public bqp a(cne $$0, brw $$1) {
+      return this.a(bqs.K, $$0, $$1);
+   }
+
+   public bqp b(brw $$0, @Nullable brw $$1) {
+      return this.a(bqs.L, $$0, $$1);
+   }
+
+   public bqp c(brw $$0, @Nullable brw $$1) {
+      return this.a(bqs.M, $$0, $$1);
+   }
+
+   public bqp d(brw $$0) {
+      return this.a(bqs.N, $$0);
+   }
+
+   public bqp a(@Nullable dar $$0) {
+      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
+   }
+
+   public bqp d(@Nullable brw $$0, @Nullable brw $$1) {
+      return this.a($$1 != null && $$0 != null ? bqs.P : bqs.O, $$0, $$1);
+   }
+
+   public bqp e(brw $$0) {
+      return this.a(bqs.Q, $$0);
+   }
+
+   public bqp a(eum $$0) {
+      return new bqp(this.a.g(bqs.R), $$0);
+   }
+
+   public bqp v() {
+      return this.w;
+   }
+
+   public bqp w() {
+      return this.x;
    }
 }

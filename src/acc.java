@@ -1,20 +1,14 @@
-public record acc(int b) implements zl<abw> {
-   public static final zc<we, acc> a = zl.a(acc::a, acc::new);
-
-   private acc(we $$0) {
-      this($$0.l());
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
+public class acc extends zc<abq> {
+   public acc(Iterable<ze<? super abq>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zn<acc> a() {
-      return agj.h;
+   public zg<acc> a() {
+      return agc.a;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 }

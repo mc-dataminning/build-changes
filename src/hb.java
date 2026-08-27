@@ -1,30 +1,16 @@
-public record hb(byte b) {
-   public static final hb a = new hb((byte)0);
-   private static final byte c = 1;
-   private static final byte d = 2;
+import com.mojang.brigadier.RedirectModifier;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.List;
 
-   private hb a(byte $$0) {
-      int $$1 = this.b | $$0;
-      return $$1 != this.b ? new hb((byte)$$1) : this;
-   }
+public interface hb<T> {
+   void a(T var1, List<T> var2, ContextChain<T> var3, gy var4, he<T> var5);
 
-   public boolean a() {
-      return (this.b & 1) != 0;
-   }
-
-   public hb b() {
-      return this.a((byte)1);
-   }
-
-   public boolean c() {
-      return (this.b & 2) != 0;
-   }
-
-   public hb d() {
-      return this.a((byte)2);
-   }
-
-   public byte e() {
-      return this.b;
+   public interface a<T> extends RedirectModifier<T>, hb<T> {
+      default Collection<T> apply(CommandContext<T> $$0) throws CommandSyntaxException {
+         throw new UnsupportedOperationException("This function should not run");
+      }
    }
 }

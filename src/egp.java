@@ -1,40 +1,57 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class egp extends ego {
-   public static final Codec<egp> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, egp::new));
-   protected final List<dtc> h;
+public record egp(ix<dzm<?, ?>> e, List<egs> f) {
+   public static final Codec<egp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dzm.b.fieldOf("feature").forGetter($$0x -> $$0x.e), egs.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, egp::new)
+   );
+   public static final Codec<ix<egp>> b = akj.a(lf.aI, a);
+   public static final Codec<jb<egp>> c = jm.a(lf.aI, a);
+   public static final Codec<List<jb<egp>>> d = jm.a(lf.aI, a, true).listOf();
 
-   protected static <P extends egp> P4<Mu<P>, Long, eoh.a, Float, List<dtc>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dtc.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   public boolean a(dbu $$0, dta $$1, aym $$2, io $$3) {
+      return this.a(new egq($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public egp(long $$0, eoh.a $$1, float $$2, List<dtc> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public boolean b(dbu $$0, dta $$1, aym $$2, io $$3) {
+      return this.a(new egq($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(egq $$0, aym $$1, io $$2) {
+      Stream<io> $$3 = Stream.of($$2);
+
+      for (egs $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dzm<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<dzm<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   protected egm<?> a() {
-      return egm.d;
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public dtc a(ayt $$0, ir $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   public ix<dzm<?, ?>> b() {
+      return this.e;
    }
 
-   protected dtc a(List<dtc> $$0, ir $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dtc a(List<dtc> $$0, double $$1) {
-      double $$2 = aym.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public List<egs> c() {
+      return this.f;
    }
 }

@@ -1,37 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record cwx(akt e, ja<cuc> f, xe g, boolean h) {
+public record cwx(boolean c) implements cww {
    public static final Codec<cwx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akt.a.fieldOf("asset_id").forGetter(cwx::a),
-               akq.a(li.G).fieldOf("template_item").forGetter(cwx::b),
-               xg.a.fieldOf("description").forGetter(cwx::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cwx::d)
-            )
-            .apply($$0, cwx::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwx::a)).apply($$0, cwx::new)
    );
-   public static final zc<wp, cwx> b = zc.a(akt.b, cwx::a, za.b(li.G), cwx::b, xg.b, cwx::c, za.b, cwx::d, cwx::new);
-   public static final Codec<ja<cwx>> c = akp.a(li.aP, a);
-   public static final zc<wp, ja<cwx>> d = za.a(li.aP, b);
+   public static final yv<ByteBuf, cwx> b = yt.b.a(cwx::new, cwx::a);
+   private static final wx d = wx.c("item.unbreakable").a(n.j);
 
-   public xe a(ja<cwv> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   @Override
+   public void a(Consumer<wx> $$0, cvj $$1) {
+      if (this.c) {
+         $$0.accept(d);
+      }
    }
 
-   public akt a() {
-      return this.e;
+   public cwx a(boolean $$0) {
+      return new cwx($$0);
    }
 
-   public ja<cuc> b() {
-      return this.f;
-   }
-
-   public xe c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
+   public boolean a() {
+      return this.c;
    }
 }

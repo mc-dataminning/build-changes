@@ -1,39 +1,96 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class frm implements frk {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fmt e;
+public class frm {
+   public final frm.d a;
+   public final exl b;
+   public final frm.a c;
+   public final frm.b d;
+   public final frm.c e;
 
-   public frm(fmt $$0) {
-      this.e = $$0;
+   public frm(frm.d $$0, exl $$1, frm.a $$2, frm.b $$3, frm.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+      public Path a() {
+         return this.d == null ? this.c.toPath() : goq.a(this.c.toPath(), this.d);
       }
-
-      return $$6;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(aym.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !aza.h(this.b) || !aza.h(this.c) || !aza.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fep a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fep $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

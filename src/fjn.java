@@ -1,84 +1,130 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fjn extends fil {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fjn.a n;
-   private final Supplier<gry> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
+public class fjn implements fjo {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fjl c = new fjl();
+   private final fjl d = new fjl();
+   private final fjl e = new fjl();
+   private final flz f;
+   private int g;
+   private int h;
 
-   public fjn(int $$0, int $$1, fyo $$2, Supplier<gry> $$3) {
-      super(0, 0, $$0, $$1, xd.a);
-      this.n = fjn.a.a($$2);
-      this.o = $$3;
+   public fjn(flz $$0) {
+      this($$0, 33);
+   }
+
+   public fjn(flz $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public fjn(flz $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void b(fia $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
-      float $$4 = (float)this.v() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      ezy.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      ezy.d();
-      $$0.c().b();
+   public void m(int $$0) {
    }
 
    @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = aym.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
+   public void n(int $$0) {
    }
 
    @Override
-   public void a(gvq $$0) {
+   public int C() {
+      return 0;
    }
 
    @Override
-   protected void a(fmj $$0) {
+   public int D() {
+      return 0;
    }
 
    @Override
-   public boolean B() {
-      return false;
+   public int x() {
+      return this.f.n;
    }
 
-   @Nullable
    @Override
-   public fhx a(fmp $$0) {
-      return null;
+   public int v() {
+      return this.f.o;
    }
 
-   static record a(fww<?> a, fww<?> b) {
-      public static fjn.a a(fyo $$0) {
-         fww<?> $$1 = new fww($$0.a(fyr.aW), false);
-         fww<?> $$2 = new fww($$0.a(fyr.ba), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fjn.a($$1, $$2);
-      }
+   public int b() {
+      return this.h;
+   }
 
-      public void a(fia $$0, gry $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fww<?> $$2 = $$1.e() == gry.a.a ? this.b : this.a;
-         gfo $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-      }
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<fjp> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.v();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fjp> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fjp> T a(T $$0, Consumer<fjq> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(wx $$0, ffl $$1) {
+      this.c.a(new fhh($$0, $$1));
+   }
+
+   public <T extends fjp> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fjp> T b(T $$0, Consumer<fjq> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fjp> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fjp> T c(T $$0, Consumer<fjq> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

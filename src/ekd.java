@@ -1,101 +1,45 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public abstract class ekd extends ejx {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected ent b;
-   protected enp c;
-   protected ir d;
+public class ekd extends ehl {
+   public static final MapCodec<ekd> d = a(ekd::new);
 
-   public ekd(ekk $$0, int $$1, enu $$2, akt $$3, String $$4, enp $$5, ir $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(iw.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
-   }
-
-   public ekd(ekk $$0, uk $$1, enu $$2, Function<akt, enp> $$3) {
-      super($$0, $$1);
-      this.a(iw.c);
-      this.a = $$1.l("Template");
-      this.d = new ir($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      akt $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
-   }
-
-   protected akt b() {
-      return new akt(this.a);
+   public ekd(ehl.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(ekj $$0, uk $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
+   public Optional<ehl.b> a(ehl.a $$0) {
+      return Optional.of(new ehl.b($$0.h().l(), (Consumer<eid>)($$1 -> a($$1, $$0))));
    }
 
-   @Override
-   public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, dbh $$5, ir $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (ent.c $$8 : this.b.a(this.d, this.c, dfe.ql)) {
-            if ($$8.c() != null) {
-               dum $$9 = dum.valueOf($$8.c().l("mode"));
-               if ($$9 == dum.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
+   private static void a(eid $$0, ehl.a $$1) {
+      int $$2 = 0;
+
+      ekc.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         ekc.a();
+         $$3 = new ekc.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<ehp> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            ehp $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
          }
 
-         for (ent.c $$11 : this.b.a(this.d, this.c, dfe.qm)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dtc $$13 = dfe.a.n();
-
-               try {
-                  $$13 = gb.a($$0.a(li.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
-
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
-      }
-   }
-
-   protected abstract void a(String var1, ir var2, dcp var3, ayt var4, ejl var5);
-
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   public dmd a() {
-      return this.c.d();
-   }
-
-   public ent c() {
-      return this.b;
-   }
-
-   public ir d() {
-      return this.d;
-   }
-
-   public enp e() {
-      return this.c;
+   public ehu<?> e() {
+      return ehu.n;
    }
 }

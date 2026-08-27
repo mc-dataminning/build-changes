@@ -1,33 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class bco extends bfe {
+public class bco extends bgl {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+
    public bco(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bgf.z, "minecraft:item_frame");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
+      super("EntityPufferfishRenameFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private static byte a(byte $$0) {
-      switch ($$0) {
-         case 0:
-            return 3;
-         case 1:
-            return 4;
-         case 2:
-         default:
-            return 2;
-         case 3:
-            return 5;
-      }
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
    }
 }

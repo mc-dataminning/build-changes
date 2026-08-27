@@ -1,49 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public record egt(egl b, List<egt.a> c) {
-   public static final Codec<egt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egl.a.fieldOf("fallback").forGetter(egt::a), egt.a.a.listOf().fieldOf("rules").forGetter(egt::b)).apply($$0, egt::new)
-   );
+public interface egt<P extends egs> {
+   egt<ege> a = a("block_predicate_filter", ege.a);
+   egt<egv> b = a("rarity_filter", egv.a);
+   egt<egx> c = a("surface_relative_threshold_filter", egx.a);
+   egt<egy> d = a("surface_water_depth_filter", egy.a);
+   egt<egd> e = a("biome", egd.a);
+   egt<egi> f = a("count", egi.a);
+   egt<egn> g = a("noise_based_count", egn.a);
+   egt<ego> h = a("noise_threshold_count", ego.a);
+   egt<egh> i = a("count_on_every_layer", egh.a);
+   egt<egj> j = a("environment_scan", egj.a);
+   egt<egl> k = a("heightmap", egl.a);
+   egt<egk> l = a("height_range", egk.a);
+   egt<egm> m = a("in_square", egm.a);
+   egt<egu> n = a("random_offset", egu.a);
+   egt<egf> o = a("carving_mask", egf.a);
 
-   public static egt a(egl $$0) {
-      return new egt($$0, List.of());
-   }
+   MapCodec<P> codec();
 
-   public static egt a(dfc $$0) {
-      return a(egl.a($$0));
-   }
-
-   public dtc a(dcv $$0, ayt $$1, ir $$2) {
-      for (egt.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public egl a() {
-      return this.b;
-   }
-
-   public List<egt.a> b() {
-      return this.c;
-   }
-
-   public static record a(eab b, egl c) {
-      public static final Codec<egt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eab.b.fieldOf("if_true").forGetter(egt.a::a), egl.a.fieldOf("then").forGetter(egt.a::b)).apply($$0, egt.a::new)
-      );
-
-      public eab a() {
-         return this.b;
-      }
-
-      public egl b() {
-         return this.c;
-      }
+   private static <P extends egs> egt<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.U, $$0, () -> $$1);
    }
 }

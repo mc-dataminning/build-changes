@@ -1,59 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class eul {
+   public static final eul a = new eul(0.0F, 0.0F);
+   public static final eul b = new eul(1.0F, 1.0F);
+   public static final eul c = new eul(1.0F, 0.0F);
+   public static final eul d = new eul(-1.0F, 0.0F);
+   public static final eul e = new eul(0.0F, 1.0F);
+   public static final eul f = new eul(0.0F, -1.0F);
+   public static final eul g = new eul(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final eul h = new eul(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public abstract class eul implements euu {
-   protected final List<euu> c;
-   private final Predicate<erp> a;
-
-   protected eul(List<euu> $$0, Predicate<erp> $$1) {
-      this.c = $$0;
-      this.a = $$1;
+   public eul(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   protected static <T extends eul> Codec<T> a(Function<List<euu>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(euw.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   public eul a(float $$0) {
+      return new eul(this.i * $$0, this.j * $$0);
    }
 
-   protected static <T extends eul> Codec<T> b(Function<List<euu>, T> $$0) {
-      return euw.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   public float a(eul $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   public final boolean a(erp $$0) {
-      return this.a.test($$0);
+   public eul b(eul $$0) {
+      return new eul(this.i + $$0.i, this.j + $$0.j);
    }
 
-   @Override
-   public void a(erv $$0) {
-      euu.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public eul b(float $$0) {
+      return new eul(this.i + $$0, this.j + $$0);
    }
 
-   public abstract static class a implements euu.a {
-      private final Builder<euu> a = ImmutableList.builder();
+   public boolean c(eul $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
 
-      protected a(euu.a... $$0) {
-         for (euu.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   public eul a() {
+      float $$0 = ayf.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new eul(this.i / $$0, this.j / $$0);
+   }
 
-      public void a(euu.a $$0) {
-         this.a.add($$0.build());
-      }
+   public float b() {
+      return ayf.c(this.i * this.i + this.j * this.j);
+   }
 
-      @Override
-      public euu build() {
-         return this.a(this.a.build());
-      }
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
 
-      protected abstract euu a(List<euu> var1);
+   public float d(eul $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public eul d() {
+      return new eul(-this.i, -this.j);
    }
 }

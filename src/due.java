@@ -1,20 +1,5 @@
-public enum due implements azg {
-   a("normal"),
-   b("sticky");
+import java.util.concurrent.CompletableFuture;
 
-   private final String c;
-
-   private due(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+public interface due {
+   CompletableFuture<Void> a(dag var1, ux var2);
 }

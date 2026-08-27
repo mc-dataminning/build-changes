@@ -1,89 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ami {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.damage.invulnerable"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.b("Target not reached"));
 
-   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("damage").requires($$0x -> $$0x.c(2)))
-            .then(
-               ei.a("target", eu.a())
-                  .then(
-                     ((RequiredArgumentBuilder)ei.a("amount", FloatArgumentType.floatArg(0.0F))
-                           .executes(
-                              $$0x -> a(
-                                    (eh)$$0x.getSource(), eu.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((eh)$$0x.getSource()).e().aj().o()
-                                 )
-                           ))
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ei.a("damageType", fg.a($$1, li.s))
-                                    .executes(
-                                       $$0x -> a(
-                                             (eh)$$0x.getSource(),
-                                             eu.a($$0x, "target"),
-                                             FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bqt(fg.a($$0x, "damageType", li.s))
-                                          )
-                                    ))
-                                 .then(
-                                    ei.a("at")
-                                       .then(
-                                          ei.a("location", gk.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eh)$$0x.getSource(),
-                                                      eu.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bqt(fg.a($$0x, "damageType", li.s), gk.a($$0x, "location"))
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ei.a("by")
-                                    .then(
-                                       ((RequiredArgumentBuilder)ei.a("entity", eu.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eh)$$0x.getSource(),
-                                                      eu.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bqt(fg.a($$0x, "damageType", li.s), eu.a($$0x, "entity"))
-                                                   )
-                                             ))
-                                          .then(
-                                             ei.a("from")
-                                                .then(
-                                                   ei.a("cause", eu.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (eh)$$0x.getSource(),
-                                                               eu.a($$0x, "target"),
-                                                               FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bqt(fg.a($$0x, "damageType", li.s), eu.a($$0x, "entity"), eu.a($$0x, "cause"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(ef.a("to", ga.a()).executes($$0x -> a((ee)$$0x.getSource(), ga.a($$0x, "to"))))
       );
    }
 
-   private static int a(eh $$0, brv $$1, float $$2, bqt $$3) throws CommandSyntaxException {
-      if ($$1.a($$3, $$2)) {
-         $$0.a(() -> xe.a("commands.damage.success", $$2, $$1.P_()), true);
-         return 1;
-      } else {
+   private static int a(ee $$0, io $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bss $$3)) {
          throw a.create();
+      } else {
+         ccc $$4 = new ccb($$3, $$0.e());
+         enk $$5 = $$4.a($$1, 0);
+         agb.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> wx.b("Made path"), true);
+            return 1;
+         }
       }
    }
 }

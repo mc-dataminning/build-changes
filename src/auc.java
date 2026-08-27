@@ -1,23 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class auc {
-   private static final Codec<auc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ayu.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, auc::new)
-   );
-   public static final atd<auc> a = atd.a("filter", b);
-   private final List<ayu> c;
-
-   public auc(List<ayu> $$0) {
-      this.c = List.copyOf($$0);
+public abstract class auc<T> implements atr {
+   @Override
+   public final CompletableFuture<Void> a(atr.a $$0, atx $$1, bmk $$2, bmk $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
-   }
+   protected abstract T b(atx var1, bmk var2);
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
-   }
+   protected abstract void a(T var1, atx var2, bmk var3);
 }

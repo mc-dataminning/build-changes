@@ -1,73 +1,61 @@
-public class adh implements zl<abw> {
-   public static final zc<we, adh> a = zl.a(adh::a, adh::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   private adh(we $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
+public record adh(int b, boolean c, Set<akm<daz>> d, int e, int f, int g, boolean h, boolean i, boolean j, afz k, boolean l) implements ze<abq> {
+   public static final yv<wi, adh> a = ze.a(adh::a, adh::new);
+
+   private adh(wi $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lf.aS)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new afz($$0),
+         $$0.readBoolean()
+      );
    }
 
-   public adh(dut $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(wi $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.a(this.d, vx::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
       $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zn<adh> a() {
-      return agj.K;
+   public zg<adh> a() {
+      return agc.O;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public boolean e() {
       return this.c;
    }
 
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
+   public Set<akm<daz>> f() {
       return this.d;
    }
 
-   public long h() {
+   public int g() {
+      return this.e;
+   }
+
+   public int h() {
       return this.f;
    }
 
@@ -75,11 +63,23 @@ public class adh implements zl<abw> {
       return this.g;
    }
 
-   public int j() {
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
       return this.i;
    }
 
-   public int k() {
-      return this.h;
+   public boolean l() {
+      return this.j;
+   }
+
+   public afz m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

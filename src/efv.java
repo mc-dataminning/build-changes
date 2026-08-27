@@ -1,28 +1,50 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class efv extends efr {
-   public static final Codec<efv> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, efv::new));
+public class efv extends efs {
+   public static final MapCodec<efv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxp.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dxp.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, efv::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dxp d;
+   private final dxp e;
+   private final LongSet f = new LongOpenHashSet();
 
-   public efv(bpf $$0, bpf $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private efv(dxp $$0, dxp $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static efv a(dxp $$0, dxp $$1) {
+      return new efv($$0, $$1);
    }
 
    @Override
-   protected efx<?> a() {
-      return efx.f;
-   }
+   public int a(aym $$0, dxs $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
 
-   @Override
-   protected void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, int $$4, efw.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+         return $$2;
+      } else {
+         return ayf.b($$0, $$2, $$3);
       }
    }
 
    @Override
-   protected boolean a(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return aym.k((float)$$1 + 0.5F) + aym.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public eft<?> a() {
+      return eft.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

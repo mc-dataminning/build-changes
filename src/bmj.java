@@ -1,45 +1,32 @@
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 
-public class bmj implements bmn {
-   public static final bmj a = new bmj();
+public interface bmj {
+   char d = '\u001e';
 
-   private bmj() {
+   List<bmm> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   @Override
-   public List<bmq> a(String $$0) {
-      return Collections.emptyList();
+   default int f() {
+      return this.d() - this.b();
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
+   String e();
 
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

@@ -1,7 +1,20 @@
-public class aim {
-   public static final zn<ail> a = a("intention");
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zl<aio>> zn<T> a(String $$0) {
-      return new zn<>(zm.a, new akt($$0));
+public record aim(GameProfile b) implements ze<aik> {
+   public static final yv<ByteBuf, aim> a = yt.t.a(aim::new, aim::b);
+
+   @Override
+   public zg<aim> a() {
+      return aiq.b;
+   }
+
+   public void a(aik $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

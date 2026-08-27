@@ -1,106 +1,97 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class ejp extends ejx {
-   private static final Logger d = LogUtils.getLogger();
-   protected final ela a;
-   protected ir b;
-   private final int h;
-   protected final dmd c;
-   private final List<ekv> i = Lists.newArrayList();
-   private final enu j;
+public class ejp extends ehl {
+   public static final MapCodec<ejp> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), ejp.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, ejp::new)
+   );
+   private final ejp.a e;
 
-   public ejp(enu $$0, ela $$1, ir $$2, int $$3, dmd $$4, ejl $$5) {
-      super(ekk.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
-   }
-
-   public ejp(ekj $$0, uk $$1) {
-      super(ekk.ad, $$1);
-      this.j = $$0.c();
-      this.b = new ir($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<vh> $$2 = $$0.b().a(uy.a);
-      this.a = (ela)ela.e
-         .parse($$2, $$1.p("pool_element"))
-         .resultOrPartial(d::error)
-         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.c = dmd.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      uq $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(ekv.a(new Dynamic($$2, $$1x))));
+   public ejp(ehl.c $$0, ejp.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected void a(ekj $$0, uk $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<vh> $$2 = $$0.b().a(uy.a);
-      ela.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      uq $$3 = new uq();
+   public Optional<ehl.b> a(ehl.a $$0) {
+      $$0.f().j();
+      dag $$1 = $$0.h();
+      io $$2 = new io($$1.b(), 50, $$1.e());
+      eid $$3 = new eid();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new ehl.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
 
-      for (ekv $$4 : this.i) {
-         $$3.add((vh)$$4.a($$2).getValue());
+   private int a(eid $$0, ehl.a $$1) {
+      dag $$2 = $$1.h();
+      dxu $$3 = $$1.f();
+      dta $$4 = $$1.b();
+      ejo.d $$5 = new ejo.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.e();
+      if (this.e == ejp.a.b) {
+         io $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), dwv.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : ayf.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
+      } else {
+         return $$0.a($$6, $$4.f(), $$3, 10);
+      }
+   }
+
+   @Override
+   public ehu<?> e() {
+      return ehu.h;
+   }
+
+   public static enum a implements ayz {
+      a("normal", dec.U, dec.n, dec.dU),
+      b("mesa", dec.aa, dec.t, dec.ki);
+
+      public static final Codec<ejp.a> c = ayz.a(ejp.a::values);
+      private static final IntFunction<ejp.a> d = aww.a(Enum::ordinal, values(), aww.a.a);
+      private final String e;
+      private final drd f;
+      private final drd g;
+      private final drd h;
+
+      private a(String $$0, dea $$1, dea $$2, dea $$3) {
+         this.e = $$0;
+         this.f = $$1.n();
+         this.g = $$2.n();
+         this.h = $$3.n();
       }
 
-      $$1.a("junctions", $$3);
-   }
+      public String a() {
+         return this.e;
+      }
 
-   @Override
-   public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, dbh $$5, ir $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
+      public static ejp.a a(int $$0) {
+         return d.apply($$0);
+      }
 
-   public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, ir $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
-   }
+      public drd b() {
+         return this.f;
+      }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
+      public drd d() {
+         return this.g;
+      }
 
-   @Override
-   public dmd a() {
-      return this.c;
-   }
+      public drd e() {
+         return this.h;
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public ela b() {
-      return this.a;
-   }
-
-   public ir c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(ekv $$0) {
-      this.i.add($$0);
-   }
-
-   public List<ekv> e() {
-      return this.i;
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

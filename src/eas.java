@@ -1,31 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eas extends eeu {
-   public static final MapCodec<eas> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               ehz.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               bpd.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               dzo.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               eat.b.optionalFieldOf("debug_settings", eat.a).forGetter($$0x -> $$0x.h),
-               jp.a(li.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, eas::new)
-   );
-   public final ehz e;
-   public final bpd f;
-   public final dzo g;
-   public final eat h;
-   public final je<dfc> i;
-
-   public eas(float $$0, ehz $$1, bpd $$2, dzo $$3, eat $$4, je<dfc> $$5) {
+public class eas extends dzz<ecj> {
+   public eas(Codec<ecj> $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   }
+
+   @Override
+   public boolean a(eab<ecj> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      drd $$3 = $$1.a_($$2.d());
+      ecj $$4 = $$0.f();
+      aym $$5 = $$0.d();
+      if (!$$3.a(avx.aL)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.al()) {
+            int $$7 = 0;
+
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               io $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               drd $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
+         }
+      }
    }
 }

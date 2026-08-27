@@ -1,13 +1,26 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qf extends pt<eji> {
-   public qf(lq $$0, CompletableFuture<jc.a> $$1) {
-      super($$0, li.aQ, $$1);
-   }
+public class qf {
+   public static final akm<eiu> a = qv.a("ancient_city/city_center");
 
-   @Override
-   protected void a(jc.a $$0) {
-      this.b(awx.a).a(ejj.a).a(ejj.b).a(ejj.c).a(ejj.d).a(ejj.e);
-      this.b(awx.b).b(awx.a).a(ejj.f);
+   public static void a(qo<eiu> $$0) {
+      iy<elj> $$1 = $$0.a(lf.aK);
+      ix<elj> $$2 = $$1.b(qw.G);
+      iy<eiu> $$3 = $$0.a(lf.aM);
+      ix<eiu> $$4 = $$3.b(qv.a);
+      $$0.a(
+         a,
+         new eiu(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eis.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(eis.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(eis.b("ancient_city/city_center/city_center_3", $$2), 1)
+            ),
+            eiu.a.b
+         )
+      );
+      qg.a($$0);
    }
 }

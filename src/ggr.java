@@ -1,109 +1,44 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ggr implements gth {
-   private final akt a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class ggr extends giu<chy, frw> {
+   public static final akn a = new akn("textures/entity/armorstand/wood.png");
 
-   public ggr(akt $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public ggr(ght.a $$0) {
+      super($$0, new frx($$0.a(fvv.c)), 0.0F);
+      this.a(new glv<>(this, new frw($$0.a(fvv.d)), new frw($$0.a(fvv.e)), $$0.g()));
+      this.a(new gly<>(this, $$0.d()));
+      this.a(new glo<>(this, $$0.f()));
+      this.a(new glk<>(this, $$0.f(), $$0.d()));
    }
 
-   public akt a() {
-      return this.a;
+   public akn a(chy $$0) {
+      return a;
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   protected void a(chy $$0, eyu $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$6 = (float)($$0.dP().Y() - $$0.bN) + $$4;
+      if ($$6 < 5.0F) {
+         $$1.a(a.d.rotationDegrees(ayf.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+      }
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
+   protected boolean b(chy $$0) {
+      double $$1 = this.c.b($$0);
+      float $$2 = $$0.ca() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cE();
    }
 
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   @Nullable
+   protected gcs a(chy $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.z()) {
+         return super.a($$0, $$1, $$2, $$3);
       } else {
-         return !($$0 instanceof ggr $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<ggr> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public ggr a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         akt $$4 = this.b($$3);
-         gta $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new ggr($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return ayc.a($$0, "uvlock", false);
-      }
-
-      protected gta a(JsonObject $$0) {
-         int $$1 = ayc.a($$0, "x", 0);
-         int $$2 = ayc.a($$0, "y", 0);
-         gta $$3 = gta.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         akn $$4 = this.a($$0);
+         if ($$2) {
+            return gcs.c($$4, false);
          } else {
-            return $$3;
-         }
-      }
-
-      protected akt b(JsonObject $$0) {
-         return new akt(ayc.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = ayc.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
+            return $$1 ? gcs.a($$4, false) : null;
          }
       }
    }

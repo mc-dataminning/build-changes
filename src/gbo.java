@@ -1,66 +1,64 @@
-public class gbo extends gdu {
-   private final float a;
-   private final float b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   gbo(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuh $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class gbo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = clx.g();
+   public static final Codec<gbo> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ac.a($$0, c)).xmap(gbo::new, $$0 -> $$0.f);
+   private static final DynamicOps<va> d = ur.a;
+   private static final Dynamic<?> e = new Dynamic(d, (va)ctq.c.encodeStart(d, ctq.i).getOrThrow());
+   private List<Dynamic<?>> f;
+
+   private gbo(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public gcy b() {
-      return gcy.a;
+   public gbo() {
+      this(Collections.nCopies(c, e));
    }
 
-   protected gbo(fzn $$0, double $$1, double $$2, double $$3, cuh $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fgj.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public List<ctq> a(iz.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> ctq.c.parse(akl.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(ctq.i))
+         .toList();
    }
 
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
+   public void a(clx $$0, jl $$1) {
+      akl<va> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements gcx<kx> {
-      public gcu a(kx $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbo($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         ctq $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = ctq.c
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
       }
+
+      this.f = $$3.build();
    }
 
-   public static class b implements gcx<le> {
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbo($$1, $$2, $$3, $$4, new cuh(cuk.sn));
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   public static class c implements gcx<le> {
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbo($$1, $$2, $$3, $$4, new cuh(cuk.rZ));
-      }
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

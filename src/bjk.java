@@ -4,19 +4,27 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjk extends bhp {
+public class bjk extends bhl {
    public bjk(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bgf.D,
-         () -> DSL.optionalFields(
-               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bgf.y.in($$0)))), "SpawnData", DSL.fields("entity", bgf.y.in($$0))
-            )
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bhm.a($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:frog");
+      a($$0, $$1, "minecraft:tadpole");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bga.C.in($$0))))
       );
+      return $$1;
    }
 }

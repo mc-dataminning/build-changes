@@ -24,27 +24,27 @@ public class clb {
    @VisibleForTesting
    protected static final int b = 150;
    private static final int f = 1;
-   private int g = aym.b(ayt.a(), 0, 2);
+   private int g = ayf.b(aym.a(), 0, 2);
    int h;
    private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ju.a.fieldOf("uuid").forGetter(Pair::getFirst), axu.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+      $$0 -> $$0.group(jr.a.fieldOf("uuid").forGetter(Pair::getFirst), axn.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
    );
-   private final Predicate<brv> j;
+   private final Predicate<brw> j;
    @VisibleForTesting
-   protected final ArrayList<brv> c;
+   protected final ArrayList<brw> c;
    private final clb.a k;
    @VisibleForTesting
-   protected final Object2IntMap<brv> d;
+   protected final Object2IntMap<brw> d;
    @VisibleForTesting
    protected final Object2IntMap<UUID> e;
 
-   public static Codec<clb> a(Predicate<brv> $$0) {
+   public static Codec<clb> a(Predicate<brw> $$0) {
       return RecordCodecBuilder.create(
          $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(clb::b)).apply($$1, $$1x -> new clb($$0, $$1x))
       );
    }
 
-   public clb(Predicate<brv> $$0, List<Pair<UUID, Integer>> $$1) {
+   public clb(Predicate<brw> $$0, List<Pair<UUID, Integer>> $$1) {
       this.j = $$0;
       this.c = new ArrayList<>();
       this.k = new clb.a(this);
@@ -56,14 +56,14 @@ public class clb {
    private List<Pair<UUID, Integer>> b() {
       return Streams.concat(
             new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cE(), this.d.getInt($$0))),
+               this.c.stream().map($$0 -> Pair.of($$0.cz(), this.d.getInt($$0))),
                this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
             }
          )
          .collect(Collectors.toList());
    }
 
-   public void a(aqt $$0, Predicate<brv> $$1) {
+   public void a(aqn $$0, Predicate<brw> $$1) {
       this.g--;
       if (this.g <= 0) {
          this.a($$0);
@@ -82,13 +82,13 @@ public class clb {
          }
       }
 
-      ObjectIterator<Entry<brv>> $$5 = this.d.object2IntEntrySet().iterator();
+      ObjectIterator<Entry<brw>> $$5 = this.d.object2IntEntrySet().iterator();
 
       while ($$5.hasNext()) {
-         Entry<brv> $$6 = (Entry<brv>)$$5.next();
+         Entry<brw> $$6 = (Entry<brw>)$$5.next();
          int $$7 = $$6.getIntValue();
-         brv $$8 = (brv)$$6.getKey();
-         brv.d $$9 = $$8.dQ();
+         brw $$8 = (brw)$$6.getKey();
+         brw.c $$9 = $$8.dL();
          if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
             $$6.setValue($$7 - 1);
          } else {
@@ -99,7 +99,7 @@ public class clb {
                   case e:
                   case c:
                   case d:
-                     this.e.put($$8.cE(), $$7 - 1);
+                     this.e.put($$8.cz(), $$7 - 1);
                }
             }
          }
@@ -116,13 +116,13 @@ public class clb {
       }
    }
 
-   private void a(aqt $$0) {
+   private void a(aqn $$0) {
       ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
 
       while ($$1.hasNext()) {
          Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
          int $$3 = $$2.getIntValue();
-         brv $$4 = $$0.a((UUID)$$2.getKey());
+         brw $$4 = $$0.a((UUID)$$2.getKey());
          if ($$4 != null) {
             this.d.put($$4, $$3);
             this.c.add($$4);
@@ -131,11 +131,11 @@ public class clb {
       }
    }
 
-   public int a(brv $$0, int $$1) {
+   public int a(brw $$0, int $$1) {
       boolean $$2 = !this.d.containsKey($$0);
       int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
       if ($$2) {
-         int $$4 = this.e.removeInt($$0.cE());
+         int $$4 = this.e.removeInt($$0.cz());
          $$3 += $$4;
          this.d.put($$0, $$3);
          this.c.add($$0);
@@ -145,28 +145,28 @@ public class clb {
       return $$3;
    }
 
-   public void a(brv $$0) {
+   public void a(brw $$0) {
       this.d.removeInt($$0);
       this.c.remove($$0);
       this.c();
    }
 
    @Nullable
-   private brv d() {
+   private brw d() {
       return this.c.stream().filter(this.j).findFirst().orElse(null);
    }
 
-   public int b(@Nullable brv $$0) {
+   public int b(@Nullable brw $$0) {
       return $$0 == null ? this.h : this.d.getInt($$0);
    }
 
-   public Optional<bso> a() {
-      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bso).map($$0 -> (bso)$$0);
+   public Optional<bsq> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bsq).map($$0 -> (bsq)$$0);
    }
 
    @VisibleForTesting
-   protected static record a(clb a) implements Comparator<brv> {
-      public int a(brv $$0, brv $$1) {
+   protected static record a(clb a) implements Comparator<brw> {
+      public int a(brw $$0, brw $$1) {
          if ($$0.equals($$1)) {
             return 0;
          } else {

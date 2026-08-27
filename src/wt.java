@@ -1,101 +1,84 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandler;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ReferenceCountUtil;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class wt {
-   public static <T extends wk> wt.b a(wm<T> $$0) {
-      return a(new wi<T>($$0));
+public record wt(wu j, wu k) {
+   public static final Codec<wt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wu.a.fieldOf("chat").forGetter(wt::a), wu.a.fieldOf("narration").forGetter(wt::b)).apply($$0, wt::new)
+   );
+   public static final wu b = wu.a("chat.type.text");
+   public static final akm<wt> c = a("chat");
+   public static final akm<wt> d = a("say_command");
+   public static final akm<wt> e = a("msg_command_incoming");
+   public static final akm<wt> f = a("msg_command_outgoing");
+   public static final akm<wt> g = a("team_msg_command_incoming");
+   public static final akm<wt> h = a("team_msg_command_outgoing");
+   public static final akm<wt> i = a("emote_command");
+
+   private static akm<wt> a(String $$0) {
+      return akm.a(lf.aA, new akn($$0));
    }
 
-   private static wt.b a(ChannelInboundHandler $$0) {
-      return $$1 -> {
-         $$1.pipeline().replace($$1.name(), "decoder", $$0);
-         $$1.channel().config().setAutoRead(true);
-      };
+   public static void a(qo<wt> $$0) {
+      $$0.a(c, new wt(b, wu.a("chat.type.text.narrate")));
+      $$0.a(d, new wt(wu.a("chat.type.announcement"), wu.a("chat.type.text.narrate")));
+      $$0.a(e, new wt(wu.b("commands.message.display.incoming"), wu.a("chat.type.text.narrate")));
+      $$0.a(f, new wt(wu.c("commands.message.display.outgoing"), wu.a("chat.type.text.narrate")));
+      $$0.a(g, new wt(wu.d("chat.type.team.text"), wu.a("chat.type.text.narrate")));
+      $$0.a(h, new wt(wu.d("chat.type.team.sent"), wu.a("chat.type.text.narrate")));
+      $$0.a(i, new wt(wu.a("chat.type.emote"), wu.a("chat.type.emote")));
    }
 
-   public static <T extends wk> wt.d b(wm<T> $$0) {
-      return a(new wj<T>($$0));
+   public static wt.a a(akm<wt> $$0, brw $$1) {
+      return a($$0, $$1.dP().H_(), $$1.O_());
    }
 
-   private static wt.d a(ChannelOutboundHandler $$0) {
-      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   public static wt.a a(akm<wt> $$0, ee $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public static class a extends ChannelDuplexHandler {
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         if (!($$1 instanceof ByteBuf) && !($$1 instanceof zl)) {
-            $$0.fireChannelRead($$1);
-         } else {
-            ReferenceCountUtil.release($$1);
-            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
-         }
+   public static wt.a a(akm<wt> $$0, jl $$1, wx $$2) {
+      jk<wt> $$3 = $$1.d(lf.aA);
+      return new wt.a($$3.g($$0), $$2);
+   }
+
+   public wu a() {
+      return this.j;
+   }
+
+   public wu b() {
+      return this.k;
+   }
+
+   public static record a(ix<wt> b, wx c, Optional<wx> d) {
+      public static final yv<wi, wt.a> a = yv.a(yt.b(lf.aA), wt.a::a, wz.d, wt.a::b, wz.e, wt.a::c, wt.a::new);
+
+      a(ix<wt> $$0, wx $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
-         if ($$1 instanceof wt.b $$3) {
-            try {
-               $$3.run($$0);
-            } finally {
-               ReferenceCountUtil.release($$1);
-            }
-
-            $$2.setSuccess();
-         } else {
-            $$0.write($$1, $$2);
-         }
+      public wx a(wx $$0) {
+         return this.b.a().a().a($$0, this);
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      void run(ChannelHandlerContext var1);
-
-      default wt.b andThen(wt.b $$0) {
-         return $$1 -> {
-            this.run($$1);
-            $$0.run($$1);
-         };
+      public wx b(wx $$0) {
+         return this.b.a().b().a($$0, this);
       }
-   }
 
-   public static class c extends ChannelOutboundHandlerAdapter {
-      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
-         if ($$1 instanceof zl) {
-            ReferenceCountUtil.release($$1);
-            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
-         } else {
-            if ($$1 instanceof wt.d $$3) {
-               try {
-                  $$3.run($$0);
-               } finally {
-                  ReferenceCountUtil.release($$1);
-               }
-
-               $$2.setSuccess();
-            } else {
-               $$0.write($$1, $$2);
-            }
-         }
+      public wt.a c(wx $$0) {
+         return new wt.a(this.b, this.c, Optional.of($$0));
       }
-   }
 
-   @FunctionalInterface
-   public interface d {
-      void run(ChannelHandlerContext var1);
+      public ix<wt> a() {
+         return this.b;
+      }
 
-      default wt.d andThen(wt.d $$0) {
-         return $$1 -> {
-            this.run($$1);
-            $$0.run($$1);
-         };
+      public wx b() {
+         return this.c;
+      }
+
+      public Optional<wx> c() {
+         return this.d;
       }
    }
 }

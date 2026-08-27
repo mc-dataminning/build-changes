@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface ffd {
+public interface ffd {
+   int getColor(drd var1, @Nullable dac var2, @Nullable io var3, int var4);
 }

@@ -1,84 +1,91 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmh extends dhn implements dmg {
-   public static final MapCodec<dmh> c = b(dmh::new);
+public class dmh extends dea {
+   public static final MapCodec<dmh> a = b(dmh::new);
+   private static final dsd b = drt.aT;
+   private static final int c = 20;
+   private static final int d = 8;
 
    @Override
    public MapCodec<dmh> a() {
-      return c;
+      return a;
    }
 
-   public dmh(dtb.d $$0) {
-      super(bpc.a(1), $$0);
+   public dmh(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public int a(dml.a $$0, dcb $$1, ir $$2, ayt $$3, dml $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         ir $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               ir $$10 = $$7.c();
-               dtc $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), avq.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
-      } else {
-         return $$6;
+   protected void a(daz $$0, drd $$1, eui $$2, cmq $$3) {
+      int $$4 = a((dba)$$0, $$1, $$2, (brw)$$3);
+      if ($$3.s() instanceof aqo $$6) {
+         $$6.a(avs.aE);
+         am.M.a($$6, $$3, $$2.e(), $$4);
       }
    }
 
-   private static int a(dml $$0, ir $$1, ir $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = aym.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = aym.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
-   }
-
-   private dtc a(dcb $$0, ir $$1, ayt $$2, boolean $$3) {
-      dtc $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dfe.sg.n().a(dmk.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = dfe.sb.n();
+   private static int a(dba $$0, drd $$1, eui $$2, brw $$3) {
+      int $$4 = a($$2, $$2.e());
+      int $$5 = $$3 instanceof cme ? 20 : 8;
+      if (!$$0.O().a($$2.a(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.a(), $$5);
       }
 
-      return $$4.b(dts.C) && !$$0.b_($$1).c() ? $$4.a(dts.C, Boolean.valueOf(true)) : $$4;
+      return $$4;
    }
 
-   private static boolean a(dcb $$0, ir $$1) {
-      dtc $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(dfe.al) && $$2.u().b(epf.c)) {
-         int $$3 = 0;
-
-         for (ir $$4 : ir.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dtc $$5 = $$0.a_($$4);
-            if ($$5.a(dfe.sb) || $$5.a(dfe.sg)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
+   private static int a(eui $$0, eum $$1) {
+      it $$2 = $$0.b();
+      double $$3 = Math.abs(ayf.e($$1.c) - 0.5);
+      double $$4 = Math.abs(ayf.e($$1.d) - 0.5);
+      double $$5 = Math.abs(ayf.e($$1.e) - 0.5);
+      it.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == it.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == it.a.c) {
+         $$7 = Math.max($$3, $$4);
       } else {
-         return false;
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, ayf.c(15.0 * ayf.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(dba $$0, drd $$1, int $$2, io $$3, int $$4) {
+      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
+   }
+
+   @Override
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
       }
    }
 
    @Override
-   public boolean d() {
-      return false;
+   protected int a(drd $$0, daf $$1, io $$2, it $$3) {
+      return $$0.c(b);
+   }
+
+   @Override
+   protected boolean e_(drd $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void b(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
+      if (!$$1.x_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.O().a($$2, this)) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+         }
+      }
    }
 }

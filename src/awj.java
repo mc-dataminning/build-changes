@@ -1,11 +1,35 @@
-public final class awj {
-   public static final awt<epd> a = a("water");
-   public static final awt<epd> b = a("lava");
+import java.util.ArrayList;
+import java.util.List;
 
-   private awj() {
+public class awj {
+   private final List<awk> a = new ArrayList<>();
+
+   public static awj a() {
+      return new awj();
    }
 
-   private static awt<epd> a(String $$0) {
-      return awt.a(li.z, new akt($$0));
+   public List<awk> b() {
+      return List.copyOf(this.a);
+   }
+
+   public awj a(awk $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public awj a(akn $$0) {
+      return this.a(awk.a($$0));
+   }
+
+   public awj b(akn $$0) {
+      return this.a(awk.b($$0));
+   }
+
+   public awj c(akn $$0) {
+      return this.a(awk.c($$0));
+   }
+
+   public awj d(akn $$0) {
+      return this.a(awk.d($$0));
    }
 }

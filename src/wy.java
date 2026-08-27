@@ -1,22 +1,27 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-@Sharable
-public class wy extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
+public interface wy {
+   default <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
+      return Optional.empty();
+   }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = wv.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("unable to fit " + $$3 + " into 3");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         wv.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+   default <T> Optional<T> a(xc.a<T> $$0) {
+      return Optional.empty();
+   }
+
+   default xl a(@Nullable ee $$0, @Nullable brw $$1, int $$2) throws CommandSyntaxException {
+      return xl.a(this);
+   }
+
+   wy.a<?> a();
+
+   public static record a<T extends wy>(MapCodec<T> a, String b) implements ayz {
+      @Override
+      public String c() {
+         return this.b;
       }
    }
 }

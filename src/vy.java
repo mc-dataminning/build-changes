@@ -1,16 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
-
-public class vy extends MessageToByteEncoder<ByteBuf> {
-   private final vw a;
-
-   public vy(Cipher $$0) {
-      this.a = new vw($$0);
-   }
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
-      this.a.a($$1, $$2);
-   }
+public class vy {
+   public static final String a = "decompress";
+   public static final String b = "compress";
+   public static final String c = "decoder";
+   public static final String d = "encoder";
+   public static final String e = "inbound_config";
+   public static final String f = "outbound_config";
+   public static final String g = "splitter";
+   public static final String h = "prepender";
+   public static final String i = "decrypt";
+   public static final String j = "encrypt";
+   public static final String k = "unbundler";
+   public static final String l = "bundler";
+   public static final String m = "packet_handler";
+   public static final String n = "timeout";
+   public static final String o = "legacy_query";
+   public static final String p = "latency";
 }

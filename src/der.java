@@ -1,28 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class der extends dfc {
-   protected static final int a = 2;
-   protected static final exn b = dfc.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
+public class der extends dea {
+   public static final MapCodec<der> a = b(der::new);
+   protected static final evf b = dea.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-   protected der(dtb.d $$0) {
+   @Override
+   public MapCodec<? extends der> a() {
+      return a;
+   }
+
+   public der(drc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends der> a();
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
       return b;
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1 == iw.a && !this.a($$0, $$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      return !$$0.a($$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return a($$1, $$2.d(), iw.b);
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      return !$$1.u($$2.d());
    }
 }

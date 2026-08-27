@@ -1,22 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public interface eac<P extends eab> {
-   eac<eah> a = a("matching_blocks", eah.a);
-   eac<eag> b = a("matching_block_tag", eag.e);
-   eac<eai> c = a("matching_fluids", eai.a);
-   eac<eae> d = a("has_sturdy_face", eae.a);
-   eac<eal> e = a("solid", eal.a);
-   eac<eak> f = a("replaceable", eak.a);
-   eac<eao> g = a("would_survive", eao.a);
-   eac<eaf> h = a("inside_world_bounds", eaf.a);
-   eac<eaa> i = a("any_of", eaa.a);
-   eac<dzz> j = a("all_of", dzz.a);
-   eac<eaj> k = a("not", eaj.a);
-   eac<ean> l = a("true", ean.e);
+public class eac extends dzz<ech> {
+   public eac(Codec<ech> $$0) {
+      super($$0);
+   }
 
-   Codec<P> codec();
+   @Override
+   public boolean a(eab<ech> $$0) {
+      io $$1 = $$0.e();
+      ech $$2 = $$0.f();
+      dbu $$3 = $$0.b();
+      io.a $$4 = new io.a();
 
-   private static <P extends eab> eac<P> a(String $$0, Codec<P> $$1) {
-      return jn.a(lh.O, $$0, () -> $$1);
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
+         }
+      }
+
+      return true;
    }
 }

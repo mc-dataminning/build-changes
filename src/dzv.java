@@ -1,132 +1,111 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public class dzv implements ayt {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dzv> b = dzu.a.xmap($$0 -> new dzv($$0), $$0 -> $$0.e);
-   private dzu e;
-   private final dyw f = new dyw(this);
+public class dzv {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   public dzv(long $$0) {
-      this.e = new dzu(dzj.c($$0));
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   public dzv(dzj.a $$0) {
-      this.e = new dzu($$0);
-   }
-
-   public dzv(long $$0, long $$1) {
-      this.e = new dzu($$0, $$1);
-   }
-
-   private dzv(dzu $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public ayt d() {
-      return new dzv(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public dzh e() {
-      return new dzv.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dzu(dzj.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   protected static boolean a(dbu $$0, io $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
+
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(ayf.b($$5) * (float)$$2);
+            int $$7 = (int)(ayf.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
             }
          }
 
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+         return true;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   protected static boolean a(dba $$0, io $$1) {
+      return $$0.a($$1, dzv::c);
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   protected static boolean b(dba $$0, io $$1) {
+      return $$0.a($$1, dzv::e);
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
+   protected static void a(it $$0, int $$1, boolean $$2, Consumer<drd> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dsa.e));
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dsa.d));
+         }
+      }
 
-   @Override
-   public double k() {
-      return this.f.b();
-   }
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dsa.c));
+      }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dsa.a : dsa.b));
       }
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
+   protected static void a(dba $$0, io $$1, it $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         io.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dec.st)) {
+               $$3x = $$3x.a(djs.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
    }
 
-   public static class a implements dzh {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   protected static boolean c(dba $$0, io $$1) {
+      drd $$2 = $$0.a_($$1);
+      if ($$2.a(avx.bs)) {
+         $$0.a($$1, dec.su.n(), 2);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public ayt a(int $$0, int $$1, int $$2) {
-         long $$3 = aym.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dzv($$4, this.b);
-      }
+   private static drd a(it $$0, dsa $$1) {
+      return dec.st.n().a(djs.b, $$0).a(djs.c, $$1);
+   }
 
-      @Override
-      public ayt a(String $$0) {
-         dzj.a $$1 = dzj.a($$0);
-         return new dzv($$1.a(this.a, this.b));
-      }
+   public static boolean a(drd $$0) {
+      return b($$0) || $$0.a(dec.H);
+   }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public static boolean b(drd $$0) {
+      return $$0.a(dec.su) || $$0.a(avx.bs);
+   }
+
+   public static boolean c(drd $$0) {
+      return $$0.i() || $$0.a(dec.G);
+   }
+
+   public static boolean d(drd $$0) {
+      return !$$0.i() && !$$0.a(dec.G);
+   }
+
+   public static boolean e(drd $$0) {
+      return $$0.i() || $$0.a(dec.G) || $$0.a(dec.H);
    }
 }

@@ -1,101 +1,91 @@
-import com.google.common.hash.Hashing;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class ddb {
-   public static final int a = jl.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final ddb.a e;
-   private final long f;
+public class ddb extends dej {
+   public static final MapCodec<ddb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akm.a(lf.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               akm.a(lf.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               akm.a(lf.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, ddb::new)
+   );
+   public static final drx b = dhw.aE;
+   protected static final float c = 2.0F;
+   private static final Map<it, evf> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         it.d,
+         dea.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         it.e,
+         dea.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         it.c,
+         dea.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         it.f,
+         dea.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final akm<dea> e;
+   private final akm<dea> f;
+   private final akm<ctl> g;
 
-   public ddb(ddb.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   @Override
+   public MapCodec<ddb> a() {
+      return a;
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   protected ddb(akm<dea> $$0, akm<dea> $$1, akm<ctl> $$2, drc.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, it.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
-   public ddb a(ddb.a $$0) {
-      return new ddb($$0, this.f);
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return d.get($$0.c(b));
    }
 
-   public ja<dcz> a(ir $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dea> $$6 = $$3.H_().d(lf.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().n().b(dlw.c, Integer.valueOf(7));
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ja<dcz> a(double $$0, double $$1, double $$2) {
-      int $$3 = jl.a(aym.a($$0));
-      int $$4 = jl.a(aym.a($$1));
-      int $$5 = jl.a(aym.a($$2));
-      return this.a($$3, $$4, $$5);
+   @Override
+   protected boolean b(drd $$0, daf $$1, io $$2) {
+      return $$0.a(dec.cC);
    }
 
-   public ja<dcz> b(ir $$0) {
-      int $$1 = jl.a($$0.u());
-      int $$2 = jl.a($$0.v());
-      int $$3 = jl.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   @Override
+   public ctq a(dbc $$0, io $$1, drd $$2) {
+      return new ctq((day)DataFixUtils.orElse($$0.H_().d(lf.G).e(this.g), this));
    }
 
-   public ja<dcz> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = ayi.a($$0, (long)$$1);
-      $$7 = ayi.a($$7, (long)$$2);
-      $$7 = ayi.a($$7, (long)$$3);
-      $$7 = ayi.a($$7, (long)$$1);
-      $$7 = ayi.a($$7, (long)$$2);
-      $$7 = ayi.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = ayi.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = ayi.a($$7, $$0);
-      double $$10 = b($$7);
-      return aym.k($$6 + $$10) + aym.k($$5 + $$9) + aym.k($$4 + $$8);
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      ja<dcz> getNoiseBiome(int var1, int var2, int var3);
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
    }
 }

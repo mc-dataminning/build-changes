@@ -1,39 +1,383 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dof extends dgf {
-   public static final MapCodec<dof> n = b(dof::new);
+public class dof extends doi {
+   private static final Logger c = LogUtils.getLogger();
+   private static final String d = "flower_pos";
+   private static final String e = "bees";
+   static final List<String> f = Arrays.asList(
+      "Air",
+      "ArmorDropChances",
+      "ArmorItems",
+      "Brain",
+      "CanPickUpLoot",
+      "DeathTime",
+      "FallDistance",
+      "FallFlying",
+      "Fire",
+      "HandDropChances",
+      "HandItems",
+      "HurtByTimestamp",
+      "HurtTime",
+      "LeftHanded",
+      "Motion",
+      "NoGravity",
+      "OnGround",
+      "PortalCooldown",
+      "Pos",
+      "Rotation",
+      "CannotEnterHiveTicks",
+      "TicksSincePollination",
+      "CropsGrownSincePollination",
+      "hive_pos",
+      "Passengers",
+      "leash",
+      "UUID"
+   );
+   public static final int a = 3;
+   private static final int g = 400;
+   private static final int h = 2400;
+   public static final int b = 600;
+   private final List<dof.a> i = Lists.newArrayList();
+   @Nullable
+   private io j;
 
-   @Override
-   public MapCodec<dof> a() {
-      return n;
+   public dof(io $$0, drd $$1) {
+      super(dok.H, $$0, $$1);
    }
 
-   public dof(dtb.d $$0) {
-      super($$0, () -> dqe.d);
+   @Override
+   public void e() {
+      if (this.b()) {
+         this.a(null, this.n.a_(this.aA_()), dof.b.c);
+      }
+
+      super.e();
+   }
+
+   public boolean b() {
+      if (this.n == null) {
+         return false;
+      } else {
+         for (io $$0 : io.c(this.o.b(-1, -1, -1), this.o.b(1, 1, 1))) {
+            if (this.n.a_($$0).b() instanceof dha) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean c() {
+      return this.i.isEmpty();
+   }
+
+   public boolean d() {
+      return this.i.size() == 3;
+   }
+
+   public void a(@Nullable cly $$0, drd $$1, dof.b $$2) {
+      List<brw> $$3 = this.a($$1, $$2);
+      if ($$0 != null) {
+         for (brw $$4 : $$3) {
+            if ($$4 instanceof ceh) {
+               ceh $$5 = (ceh)$$4;
+               if ($$0.dn().g($$4.dn()) <= 16.0) {
+                  if (!this.j()) {
+                     $$5.h($$0);
+                  } else {
+                     $$5.u(400);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private List<brw> a(drd $$0, dof.b $$1) {
+      List<brw> $$2 = Lists.newArrayList();
+      this.i.removeIf($$3 -> a(this.n, this.o, $$0, $$3.b(), $$2, $$1, this.j));
+      if (!$$2.isEmpty()) {
+         super.e();
+      }
+
+      return $$2;
+   }
+
+   @azi
+   public int f() {
+      return this.i.size();
+   }
+
+   public static int a(drd $$0) {
+      return $$0.c(ddu.c);
+   }
+
+   @azi
+   public boolean j() {
+      return deo.a(this.n, this.aA_());
+   }
+
+   public void a(brw $$0) {
+      if (this.i.size() < 3) {
+         $$0.ac();
+         $$0.bH();
+         this.a(dof.c.a($$0));
+         if (this.n != null) {
+            if ($$0 instanceof ceh $$1 && $$1.u() && (!this.k() || this.n.z.h())) {
+               this.j = $$1.s();
+            }
+
+            io $$2 = this.aA_();
+            this.n.a(null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), avi.bV, avj.e, 1.0F, 1.0F);
+            this.n.a(dvw.c, $$2, dvw.a.a($$0, this.n()));
+         }
+
+         $$0.ao();
+         super.e();
+      }
+   }
+
+   public void a(dof.c $$0) {
+      this.i.add(new dof.a($$0));
+   }
+
+   private static boolean a(daz $$0, io $$1, drd $$2, dof.c $$3, @Nullable List<brw> $$4, dof.b $$5, @Nullable io $$6) {
+      if (($$0.R() || $$0.ac()) && $$5 != dof.b.c) {
+         return false;
+      } else {
+         it $$7 = $$2.c(ddu.b);
+         io $$8 = $$1.a($$7);
+         boolean $$9 = !$$0.a_($$8).k($$0, $$8).c();
+         if ($$9 && $$5 != dof.b.c) {
+            return false;
+         } else {
+            brw $$10 = $$3.a($$0, $$1);
+            if ($$10 != null) {
+               if ($$10 instanceof ceh $$11) {
+                  if ($$6 != null && !$$11.u() && $$0.z.i() < 0.9F) {
+                     $$11.i($$6);
+                  }
+
+                  if ($$5 == dof.b.a) {
+                     $$11.gD();
+                     if ($$2.a(avx.aG, $$0x -> $$0x.b(ddu.c))) {
+                        int $$12 = a($$2);
+                        if ($$12 < 5) {
+                           int $$13 = $$0.z.a(100) == 0 ? 2 : 1;
+                           if ($$12 + $$13 > 5) {
+                              $$13--;
+                           }
+
+                           $$0.b($$1, $$2.a(ddu.c, Integer.valueOf($$12 + $$13)));
+                        }
+                     }
+                  }
+
+                  if ($$4 != null) {
+                     $$4.add($$11);
+                  }
+
+                  float $$14 = $$10.dj();
+                  double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
+                  double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
+                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dk() / 2.0F);
+                  double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
+                  $$10.b($$16, $$17, $$18, $$10.dF(), $$10.dH());
+               }
+
+               $$0.a(null, $$1, avi.bW, avj.e, 1.0F, 1.0F);
+               $$0.a(dvw.c, $$1, dvw.a.a($$10, $$0.a_($$1)));
+               return $$0.b($$10);
+            } else {
+               return false;
+            }
+         }
+      }
+   }
+
+   private boolean k() {
+      return this.j != null;
+   }
+
+   private static void a(daz $$0, io $$1, drd $$2, List<dof.a> $$3, @Nullable io $$4) {
+      boolean $$5 = false;
+      Iterator<dof.a> $$6 = $$3.iterator();
+
+      while ($$6.hasNext()) {
+         dof.a $$7 = $$6.next();
+         if ($$7.a()) {
+            dof.b $$8 = $$7.c() ? dof.b.a : dof.b.b;
+            if (a($$0, $$1, $$2, $$7.b(), null, $$8, $$4)) {
+               $$5 = true;
+               $$6.remove();
+            }
+         }
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(daz $$0, io $$1, drd $$2, dof $$3) {
+      a($$0, $$1, $$2, $$3.i, $$3.j);
+      if (!$$3.i.isEmpty() && $$0.E_().j() < 0.005) {
+         double $$4 = (double)$$1.u() + 0.5;
+         double $$5 = (double)$$1.v();
+         double $$6 = (double)$$1.w() + 0.5;
+         $$0.a(null, $$4, $$5, $$6, avi.bY, avj.e, 1.0F, 1.0F);
+      }
+
+      agb.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dsa($$0, $$1);
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.i.clear();
+      if ($$0.e("bees")) {
+         dof.c.b.parse(ur.a, $$0.c("bees")).resultOrPartial($$0x -> c.error("Failed to parse bees: '{}'", $$0x)).ifPresent($$0x -> $$0x.forEach(this::a));
+      }
+
+      this.j = us.a($$0, "flower_pos").orElse(null);
    }
 
    @Override
-   protected avw<akt> c() {
-      return avz.i.b(avz.aj);
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("bees", (va)dof.c.b.encodeStart(ur.a, this.l()).getOrThrow());
+      if (this.k()) {
+         $$0.a("flower_pos", us.a(this.j));
+      }
    }
 
    @Override
-   protected boolean e_(dtc $$0) {
-      return true;
+   protected void a(doi.b $$0) {
+      super.a($$0);
+      this.i.clear();
+      List<dof.c> $$1 = $$0.a(kb.ab, List.of());
+      $$1.forEach(this::a);
    }
 
    @Override
-   protected int a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return aym.a(dqj.a($$1, $$2), 0, 15);
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.ab, this.l());
    }
 
    @Override
-   protected int b(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return $$3 == iw.b ? $$0.b($$1, $$2, $$3) : 0;
+   public void a(ud $$0) {
+      super.a($$0);
+      $$0.r("bees");
+   }
+
+   private List<dof.c> l() {
+      return this.i.stream().map(dof.a::b).toList();
+   }
+
+   static class a {
+      private final dof.c a;
+      private int b;
+
+      a(dof.c $$0) {
+         this.a = $$0;
+         this.b = $$0.b();
+      }
+
+      public boolean a() {
+         return this.b++ > this.a.f;
+      }
+
+      public dof.c b() {
+         return new dof.c(this.a.d, this.b, this.a.f);
+      }
+
+      public boolean c() {
+         return this.a.d.d().q("HasNectar");
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
+   }
+
+   public static record c(cwf d, int e, int f) {
+      public static final Codec<dof.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cwf.b.optionalFieldOf("entity_data", cwf.a).forGetter(dof.c::a),
+                  Codec.INT.fieldOf("ticks_in_hive").forGetter(dof.c::b),
+                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(dof.c::c)
+               )
+               .apply($$0, dof.c::new)
+      );
+      public static final Codec<List<dof.c>> b = a.listOf();
+      public static final yv<ByteBuf, dof.c> c = yv.a(cwf.d, dof.c::a, yt.f, dof.c::b, yt.f, dof.c::c, dof.c::new);
+
+      public static dof.c a(brw $$0) {
+         ud $$1 = new ud();
+         $$0.e($$1);
+         dof.f.forEach($$1::r);
+         boolean $$2 = $$1.q("HasNectar");
+         return new dof.c(cwf.a($$1), 0, $$2 ? 2400 : 600);
+      }
+
+      public static dof.c a(int $$0) {
+         ud $$1 = new ud();
+         $$1.a("id", le.g.b(bsc.h).toString());
+         return new dof.c(cwf.a($$1), $$0, 600);
+      }
+
+      @Nullable
+      public brw a(daz $$0, io $$1) {
+         ud $$2 = this.d.c();
+         dof.f.forEach($$2::r);
+         brw $$3 = bsc.a($$2, $$0, $$0x -> $$0x);
+         if ($$3 != null && $$3.ak().a(awa.e)) {
+            $$3.f(true);
+            if ($$3 instanceof ceh $$4) {
+               $$4.j($$1);
+               a(this.e, $$4);
+            }
+
+            return $$3;
+         } else {
+            return null;
+         }
+      }
+
+      private static void a(int $$0, ceh $$1) {
+         int $$2 = $$1.g();
+         if ($$2 < 0) {
+            $$1.c_(Math.min(0, $$2 + $$0));
+         } else if ($$2 > 0) {
+            $$1.c_(Math.max(0, $$2 - $$0));
+         }
+
+         $$1.t(Math.max(0, $$1.gr() - $$0));
+      }
+
+      public cwf a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.f;
+      }
    }
 }

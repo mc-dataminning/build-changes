@@ -1,53 +1,217 @@
-public class ema {
-   private static final akt[] a = new akt[]{
-      new akt("nether_fossils/fossil_1"),
-      new akt("nether_fossils/fossil_2"),
-      new akt("nether_fossils/fossil_3"),
-      new akt("nether_fossils/fossil_4"),
-      new akt("nether_fossils/fossil_5"),
-      new akt("nether_fossils/fossil_6"),
-      new akt("nether_fossils/fossil_7"),
-      new akt("nether_fossils/fossil_8"),
-      new akt("nether_fossils/fossil_9"),
-      new akt("nether_fossils/fossil_10"),
-      new akt("nether_fossils/fossil_11"),
-      new akt("nether_fossils/fossil_12"),
-      new akt("nether_fossils/fossil_13"),
-      new akt("nether_fossils/fossil_14")
-   };
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-   public static void a(enu $$0, ejy $$1, ayt $$2, ir $$3) {
-      dmd $$4 = dmd.a($$2);
-      $$1.a(new ema.a($$0, ad.a(a, $$2), $$3, $$4));
+public class ema {
+   private static final int a = 33554432;
+   private final elx[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
+
+   @Deprecated
+   public static ema a(aym $$0, IntStream $$1) {
+      return new ema($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   public static class a extends ekd {
-      public a(enu $$0, akt $$1, ir $$2, dmd $$3) {
-         super(ekk.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Deprecated
+   public static ema a(aym $$0, int $$1, DoubleList $$2) {
+      return new ema($$0, Pair.of($$1, $$2), false);
+   }
+
+   public static ema b(aym $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
+   }
+
+   public static ema a(aym $$0, List<Integer> $$1) {
+      return new ema($$0, a(new IntRBTreeSet($$1)), true);
+   }
+
+   public static ema a(aym $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new ema($$0, Pair.of($$1, $$4), true);
+   }
+
+   public static ema b(aym $$0, int $$1, DoubleList $$2) {
+      return new ema($$0, Pair.of($$1, $$2), true);
+   }
+
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
+
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
+            }
+
+            return Pair.of(-$$1, $$4);
+         }
+      }
+   }
+
+   protected ema(aym $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new elx[$$3];
+      if ($$2) {
+         dxi $$5 = $$0.e();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new elx($$5.a("octave_" + $$7));
+            }
+         }
+      } else {
+         elx $$8 = new elx($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
+         }
+
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new elx($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
+         }
       }
 
-      public a(enu $$0, uk $$1) {
-         super(ekk.ac, $$1, $$0, $$1x -> a(dmd.valueOf($$1.l("Rot"))));
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
+   }
+
+   protected double a() {
+      return this.g;
+   }
+
+   private static void a(aym $$0) {
+      $$0.b(262);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
+   }
+
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         elx $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
       }
 
-      private static enp a(dmd $$0) {
-         return new enp().a($$0).a(dke.a).a(emv.d);
+      return $$6;
+   }
+
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
+   }
+
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         elx $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
       }
 
-      @Override
-      protected void a(ekj $$0, uk $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
+      return $$1;
+   }
+
+   @Nullable
+   public elx a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
+   }
+
+   public static double b(double $$0) {
+      return $$0 - (double)ayf.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
+   }
+
+   protected int b() {
+      return this.c;
+   }
+
+   protected DoubleList c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         elx $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
+         } else {
+            $$3.a($$0);
+         }
+
+         $$0.append(", ");
       }
 
-      @Override
-      protected void a(String $$0, ir $$1, dcp $$2, ayt $$3, ejl $$4) {
-      }
-
-      @Override
-      public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, dbh $$5, ir $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+      $$0.append("]");
+      $$0.append("}");
    }
 }

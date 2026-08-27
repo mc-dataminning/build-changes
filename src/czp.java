@@ -1,15 +1,10 @@
-public class czp extends cyh {
-   public czp(String $$0, cyn $$1, cyv $$2, cuh $$3, float $$4, int $$5) {
-      super(czf.b, $$0, $$1, $$2, $$3, $$4, $$5);
+public class czp extends czb {
+   protected czp(czb.b $$0) {
+      super($$0);
    }
 
    @Override
-   public cuh g() {
-      return new cuh(dfe.dp);
-   }
-
-   @Override
-   public cze<?> ao_() {
-      return cze.q;
+   public boolean a(czb $$0) {
+      return super.a($$0) && $$0 != cze.x;
    }
 }

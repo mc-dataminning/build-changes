@@ -1,58 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class gsj {
-   public static final gsk a = new gsk();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gsj e = new gsj(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gsl a(int $$0, int $$1) {
-         return new gsl($$0, $$1);
-      }
-   };
-   private final List<gsi> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
+   private final aua a;
+   private final Map<akn, CompletableFuture<ewu>> b = Maps.newHashMap();
 
-   public gsj(List<gsi> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+   public gsj(aua $$0) {
+      this.a = $$0;
    }
 
-   public gsl a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gsl(this.g, this.h) : new gsl(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gsl($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gsl($$2, $$2);
-      }
+   public CompletableFuture<ewu> a(akn $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ewu var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  ews $$2 = new ews($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ewu($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.g()));
    }
 
-   public int a() {
-      return this.i;
+   public CompletableFuture<gsf> a(akn $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gsf)($$1 ? new gsh(ews::new, $$2) : new ews($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.g());
    }
 
-   public boolean b() {
-      return this.j;
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(ewu::b));
+      this.b.clear();
    }
 
-   public void a(gsj.a $$0) {
-      for (gsi $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   public CompletableFuture<?> a(Collection<grg> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

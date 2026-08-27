@@ -1,17 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class egl {
-   public static final Codec<egl> a = lh.V.q().dispatch(egl::a, egm::a);
+public class egl extends egs {
+   public static final MapCodec<egl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, egl::new)
+   );
+   private final dwv.a c;
 
-   public static egu a(dtc $$0) {
-      return new egu($$0);
+   private egl(dwv.a $$0) {
+      this.c = $$0;
    }
 
-   public static egu a(dfc $$0) {
-      return new egu($$0.n());
+   public static egl a(dwv.a $$0) {
+      return new egl($$0);
    }
 
-   protected abstract egm<?> a();
+   @Override
+   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new io($$3, $$5, $$4)) : Stream.of();
+   }
 
-   public abstract dtc a(ayt var1, ir var2);
+   @Override
+   public egt<?> b() {
+      return egt.k;
+   }
 }

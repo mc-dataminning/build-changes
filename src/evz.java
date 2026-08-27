@@ -1,11 +1,3 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-
-public interface evz {
-   @Nullable
-   exx a(erp var1);
-
-   evy a();
-
-   Set<eud<?>> b();
+public interface evz<T> extends ewf<T> {
+   boolean b(io var1, T var2);
 }

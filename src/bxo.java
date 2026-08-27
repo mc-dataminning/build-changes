@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxo extends bug<cll> {
-   public bxo() {
-      super(ImmutableMap.of());
-   }
+public class bxo {
+   private static final int a = 36;
 
-   protected boolean a(aqt $$0, cll $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static buk<bsq> a() {
+      return bxw.a(
+         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$0 -> $$0.group($$0.a(cbu.x), $$0.a(cbu.y), $$0.a(cbu.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bsq>a($$2).filter($$1xx -> $$1xx.g((brw)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dS().a($$4.Z(), $$4.Y());
+                     }
 
-   protected void b(aqt $$0, cll $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         btp<?> $$3 = $$1.dZ();
-         if (!$$3.c(cnq.g)) {
-            $$3.b(cbr.t);
-            $$3.b(cbr.m);
-            $$3.b(cbr.n);
-            $$3.b(cbr.r);
-            $$3.b(cbr.q);
-         }
-
-         $$3.a(cnq.g);
-      }
-   }
-
-   protected void c(aqt $$0, cll $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bso $$0) {
-      return $$0.dZ().a(cbr.A);
-   }
-
-   public static boolean c(bso $$0) {
-      return $$0.dZ().a(cbr.x);
+                     return true;
+                  }))
+      );
    }
 }

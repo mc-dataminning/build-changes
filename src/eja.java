@@ -1,10 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-public abstract class eja {
-   public static final Codec<eja> b = lh.U.q().dispatch(eja::b, ejb::codec);
+record eja(bog<List<eiw>> c) implements eiw {
+   static MapCodec<eja> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bog.b(Codec.list(eiw.b)).fieldOf("groups").forGetter(eja::c)).apply($$0, eja::new));
 
-   public abstract Stream<ir> a_(eiy var1, ayt var2, ir var3);
+   @Override
+   public void a(aym $$0, BiConsumer<akm<eiu>, akm<eiu>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   }
 
-   public abstract ejb<?> b();
+   @Override
+   public Stream<akm<eiu>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(eiw::a);
+   }
+
+   @Override
+   public MapCodec<eja> b() {
+      return a;
+   }
 }

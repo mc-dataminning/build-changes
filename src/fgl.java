@@ -1,37 +1,50 @@
-import java.util.function.IntFunction;
+public class fgl extends fgu {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public enum fgl {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
-
-   private static final IntFunction<fgl> e = axd.a(fgl::a, values(), axd.a.b);
-   private final int f;
-   private final xe g;
-
-   private fgl(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = xe.c($$1);
+   public fgl(int $$0, wx $$1, ffl $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public int a() {
-      return this.f;
+   public fgl(int $$0, wx $$1, ffl $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public xe b() {
-      return this.g;
+   public fgl(int $$0, wx $$1, ffl $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   public static fgl a(int $$0) {
-      return e.apply($$0);
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
-   public boolean c() {
-      return this == b || this == c;
+   @Override
+   protected void a(fjw $$0) {
+      $$0.a(fjv.a, this.y());
    }
 
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   public void b(ffn $$0, int $$1, int $$2, float $$3) {
+      if (this.aJ_() || this.b) {
+         int $$4 = this.C() - this.c;
+         int $$5 = this.D() - this.c;
+         int $$6 = this.x() + this.c * 2;
+         int $$7 = this.v() + this.c * 2;
+         int $$8 = this.b ? (this.aJ_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gsn $$0) {
    }
 }

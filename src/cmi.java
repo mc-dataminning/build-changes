@@ -1,7 +1,7 @@
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cmi extends brv implements btm {
+public class cmi extends brw implements btp {
    public static final int b = 20;
    public static final int c = 2;
    public static final int d = 14;
@@ -10,16 +10,16 @@ public class cmi extends brv implements btm {
    private int g = 22;
    private boolean h;
    @Nullable
-   private bso i;
+   private bsq i;
    @Nullable
    private UUID j;
 
-   public cmi(bsb<? extends cmi> $$0, dca $$1) {
+   public cmi(bsc<? extends cmi> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public cmi(dca $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bso $$6) {
-      this(bsb.M, $$0);
+   public cmi(daz $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bsq $$6) {
+      this(bsc.K, $$0);
       this.e = $$5;
       this.a($$6);
       this.r($$4 * (180.0F / (float)Math.PI));
@@ -27,20 +27,20 @@ public class cmi extends brv implements btm {
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   protected void a(ajw.a $$0) {
    }
 
-   public void a(@Nullable bso $$0) {
+   public void a(@Nullable bsq $$0) {
       this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cE();
+      this.j = $$0 == null ? null : $$0.cz();
    }
 
    @Nullable
-   public bso p() {
-      if (this.i == null && this.j != null && this.dU() instanceof aqt) {
-         brv $$0 = ((aqt)this.dU()).a(this.j);
-         if ($$0 instanceof bso) {
-            this.i = (bso)$$0;
+   public bsq p() {
+      if (this.i == null && this.j != null && this.dP() instanceof aqn) {
+         brw $$0 = ((aqn)this.dP()).a(this.j);
+         if ($$0 instanceof bsq) {
+            this.i = (bsq)$$0;
          }
       }
 
@@ -48,7 +48,7 @@ public class cmi extends brv implements btm {
    }
 
    @Override
-   protected void a(uk $$0) {
+   protected void a(ud $$0) {
       this.e = $$0.h("Warmup");
       if ($$0.b("Owner")) {
          this.j = $$0.a("Owner");
@@ -56,7 +56,7 @@ public class cmi extends brv implements btm {
    }
 
    @Override
-   protected void b(uk $$0) {
+   protected void b(ud $$0) {
       $$0.a("Warmup", this.e);
       if (this.j != null) {
          $$0.a("Owner", this.j);
@@ -66,30 +66,30 @@ public class cmi extends brv implements btm {
    @Override
    public void l() {
       super.l();
-      if (this.dU().C) {
+      if (this.dP().B) {
          if (this.h) {
             this.g--;
             if (this.g == 14) {
                for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dz() + (this.al.j() * 2.0 - 1.0) * (double)this.do() * 0.5;
-                  double $$2 = this.dB() + 0.05 + this.al.j();
-                  double $$3 = this.dF() + (this.al.j() * 2.0 - 1.0) * (double)this.do() * 0.5;
-                  double $$4 = (this.al.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.al.j() * 0.3;
-                  double $$6 = (this.al.j() * 2.0 - 1.0) * 0.3;
-                  this.dU().a(lb.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
+                  double $$1 = this.du() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
+                  double $$2 = this.dw() + 0.05 + this.ah.j();
+                  double $$3 = this.dA() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
+                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  double $$5 = 0.3 + this.ah.j() * 0.3;
+                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  this.dP().a(ky.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
                }
             }
          }
       } else if (--this.e < 0) {
          if (this.e == -8) {
-            for (bso $$8 : this.dU().a(bso.class, this.cP().c(0.2, 0.0, 0.2))) {
+            for (bsq $$8 : this.dP().a(bsq.class, this.cK().c(0.2, 0.0, 0.2))) {
                this.c($$8);
             }
          }
 
          if (!this.f) {
-            this.dU().a(this, (byte)4);
+            this.dP().a(this, (byte)4);
             this.f = true;
          }
 
@@ -99,17 +99,17 @@ public class cmi extends brv implements btm {
       }
    }
 
-   private void c(bso $$0) {
-      bso $$1 = this.p();
-      if ($$0.bI() && !$$0.cz() && $$0 != $$1) {
+   private void c(bsq $$0) {
+      bsq $$1 = this.p();
+      if ($$0.bD() && !$$0.cu() && $$0 != $$1) {
          if ($$1 == null) {
-            $$0.a(this.dX().p(), 6.0F);
+            $$0.a(this.dQ().o(), 6.0F);
          } else {
             if ($$1.s($$0)) {
                return;
             }
 
-            $$0.a(this.dX().c(this, (brv)$$1), 6.0F);
+            $$0.a(this.dQ().c(this, (brw)$$1), 6.0F);
          }
       }
    }
@@ -119,8 +119,8 @@ public class cmi extends brv implements btm {
       super.b($$0);
       if ($$0 == 4) {
          this.h = true;
-         if (!this.ba()) {
-            this.dU().a(this.dz(), this.dB(), this.dF(), avo.iO, this.dj(), 1.0F, this.al.i() * 0.2F + 0.85F, false);
+         if (!this.aW()) {
+            this.dP().a(this.du(), this.dw(), this.dA(), avi.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
          }
       }
    }

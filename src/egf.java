@@ -1,20 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public record egf(egl b, float c) {
-   public static final Codec<egf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egl.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, egf::new)
-   );
+public class egf extends egs {
+   public static final MapCodec<egf> a = dwr.a.c.fieldOf("step").xmap(egf::new, $$0 -> $$0.c);
+   private final dwr.a c;
 
-   public egl a() {
-      return this.b;
+   private egf(dwr.a $$0) {
+      this.c = $$0;
    }
 
-   public float b() {
-      return this.c;
+   public static egf a(dwr.a $$0) {
+      return new egf($$0);
+   }
+
+   @Override
+   public Stream<io> a_(egq $$0, aym $$1, io $$2) {
+      dag $$3 = new dag($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public egt<?> b() {
+      return egt.o;
    }
 }

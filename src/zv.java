@@ -1,29 +1,11 @@
-public class zv implements zl<zr> {
-   public static final zc<we, zv> a = zl.a(zv::a, zv::new);
-   private final int b;
+public interface zv extends abn, agf {
+   void a(zy var1);
 
-   public zv(int $$0) {
-      this.b = $$0;
-   }
+   void a(zz var1);
 
-   private zv(we $$0) {
-      this.b = $$0.readInt();
-   }
+   void a(zx var1);
 
-   private void a(we $$0) {
-      $$0.p(this.b);
-   }
+   void a(aaa var1);
 
-   @Override
-   public zn<zv> a() {
-      return aab.d;
-   }
-
-   public void a(zr $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
+   void a(zw var1);
 }

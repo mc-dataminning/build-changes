@@ -1,62 +1,72 @@
-public class gbt extends gdu {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+public class gbt {
+   public static final wx a = wx.c("quickplay.error.title");
+   private static final wx b = wx.c("quickplay.error.invalid_identifier");
+   private static final wx c = wx.c("quickplay.error.realm_connect");
+   private static final wx d = wx.c("quickplay.error.realm_permission");
+   private static final wx e = wx.c("gui.toTitle");
+   private static final wx f = wx.c("gui.toWorld");
+   private static final wx g = wx.c("gui.toRealms");
 
-   protected gbt(fzn $$0, double $$1, double $$2, double $$3, gdp $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+   public static void a(feb $$0, frm.c $$1, ezk $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!aza.h($$3)) {
+         a($$0, $$3);
+      } else if (!aza.h($$4)) {
+         b($$0, $$4);
+      } else if (!aza.h($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   @Override
-   public gcy b() {
-      return gcy.b;
+   private static void a(feb $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         flz $$2 = new fqu(new fme());
+         $$0.a(new fla($$2, a, b, f));
+      } else {
+         $$0.x().a($$1, () -> $$0.a(new fme()));
+      }
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   private static void b(feb $$0, String $$1) {
+      fxg $$2 = new fxg($$0);
+      $$2.a();
+      fxf $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new fxf(gpb.a("selectServer.defaultName"), $$1, fxf.c.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
+      fyi $$4 = fyi.a($$1);
+      fks.a(new fox(new fme()), $$0, $$4, $$3, true, null);
+   }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
+   private static void a(feb $$0, ezk $$1, String $$2) {
+      long $$3;
+      fad $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         flz $$6 = new ezf(new fme());
+         $$0.a(new fla($$6, a, b, g));
+         return;
+      } catch (fax var10) {
+         flz $$8 = new fme();
+         $$0.a(new fla($$8, a, c, e));
+         return;
+      }
+
+      fab $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         flz $$12 = new ezf(new fme());
+         $$0.a(new fla($$12, a, d, g));
+      } else {
+         fme $$13 = new fme();
+         fda $$14 = new fda($$13, $$11);
+         $$0.a(new fbr($$13, $$14));
       }
    }
 }

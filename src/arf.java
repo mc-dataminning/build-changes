@@ -1,43 +1,35 @@
-import java.util.concurrent.Executor;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class arf implements arc {
-   private final arc a;
-   private final bot<Runnable> b;
-   private boolean c;
+public record arf(String b, xb c) {
+   public static final arf a = a("");
 
-   private arf(arc $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bot.a($$1, "progressListener");
+   public static arf a(String $$0) {
+      return new arf($$0, xb.c);
    }
 
-   public static arf a(arc $$0, Executor $$1) {
-      arf $$2 = new arf($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static arf b(String $$0) {
+      return new arf($$0, xb.b);
    }
 
-   @Override
-   public void a(dbh $$0) {
-      this.b.a(() -> this.a.a($$0));
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
-   public void a(dbh $$0, @Nullable dvx $$1) {
-      if (this.c) {
-         this.b.a(() -> this.a.a($$0, $$1));
-      }
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
    }
 
-   @Override
-   public void a() {
-      this.c = true;
-      this.b.a(this.a::a);
+   public boolean c() {
+      return !this.c.a();
    }
 
-   @Override
-   public void b() {
-      this.c = false;
-      this.b.a(this.a::b);
+   public String d() {
+      return this.b;
+   }
+
+   public xb e() {
+      return this.c;
    }
 }

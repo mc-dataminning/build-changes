@@ -1,31 +1,33 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class ezv {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
-   }
+public class ezv extends faq {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ezu> a = Lists.newArrayList();
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
-   }
+   public static ezv a(String $$0) {
+      ezv $$1 = new ezv();
 
-   public static String a() {
-      return GlStateManager._getString(7936);
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
 
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
+            while ($$4.hasNext()) {
+               $$1.a.add(ezu.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+      }
 
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+      return $$1;
    }
 }

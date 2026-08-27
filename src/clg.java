@@ -4,166 +4,166 @@ import java.util.ArrayList;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class clg extends brp implements clj, clk, dax {
-   private static final ajy<Integer> cj = akc.a(clg.class, aka.b);
-   private static final Logger ck = LogUtils.getLogger();
-   public static final int ch = 300;
-   private static final int cl = 8;
+public abstract class clg extends brq implements clj, clk, czw {
+   private static final ajs<Integer> ca = ajw.a(clg.class, aju.b);
+   private static final Logger cb = LogUtils.getLogger();
+   public static final int bY = 300;
+   private static final int cc = 8;
    @Nullable
-   private cly cm;
+   private cly cd;
    @Nullable
-   protected daz ci;
-   private final bqj cn = new bqj(8);
+   protected czy bZ;
+   private final bqf ce = new bqf(8);
 
-   public clg(bsb<? extends clg> $$0, dca $$1) {
+   public clg(bsc<? extends clg> $$0, daz $$1) {
       super($$0, $$1);
-      this.a(epv.n, 16.0F);
-      this.a(epv.o, -1.0F);
+      this.a(enn.n, 16.0F);
+      this.a(enn.o, -1.0F);
    }
 
    @Override
-   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
+   public btj a(dbo $$0, bpu $$1, bsu $$2, @Nullable btj $$3) {
       if ($$3 == null) {
-         $$3 = new brp.a(false);
+         $$3 = new brq.a(false);
       }
 
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int r() {
-      return this.as.a(cj);
+   public int s() {
+      return this.ao.a(ca);
    }
 
-   public void u(int $$0) {
-      this.as.a(cj, $$0);
+   public void t(int $$0) {
+      this.ao.a(ca, $$0);
    }
 
    @Override
-   public int t() {
+   public int u() {
       return 0;
    }
 
    @Override
-   protected void a(akc.a $$0) {
+   protected void a(ajw.a $$0) {
       super.a($$0);
-      $$0.a(cj, 0);
+      $$0.a(ca, 0);
    }
 
    @Override
    public void f(@Nullable cly $$0) {
-      this.cm = $$0;
+      this.cd = $$0;
    }
 
    @Nullable
    @Override
-   public cly gy() {
-      return this.cm;
+   public cly gp() {
+      return this.cd;
    }
 
-   public boolean gz() {
-      return this.cm != null;
+   public boolean gq() {
+      return this.cd != null;
    }
 
    @Override
-   public daz gA() {
-      if (this.ci == null) {
-         this.ci = new daz();
-         this.gF();
+   public czy gr() {
+      if (this.bZ == null) {
+         this.bZ = new czy();
+         this.gw();
       }
 
-      return this.ci;
+      return this.bZ;
    }
 
    @Override
-   public void a(@Nullable daz $$0) {
+   public void a(@Nullable czy $$0) {
    }
 
    @Override
-   public void v(int $$0) {
+   public void u(int $$0) {
    }
 
    @Override
-   public void a(day $$0) {
+   public void a(czx $$0) {
       $$0.l();
-      this.bV = -this.O();
+      this.bM = -this.O();
       this.b($$0);
-      if (this.cm instanceof aqu) {
-         an.t.a((aqu)this.cm, this, $$0.f());
+      if (this.cd instanceof aqo) {
+         am.t.a((aqo)this.cd, this, $$0.f());
       }
    }
 
-   protected abstract void b(day var1);
+   protected abstract void b(czx var1);
 
    @Override
-   public boolean gB() {
+   public boolean gs() {
       return true;
    }
 
    @Override
-   public void n(cuh $$0) {
-      if (!this.dU().C && this.bV > -this.O() + 20) {
-         this.bV = -this.O();
-         this.b(this.w(!$$0.d()));
+   public void n(ctq $$0) {
+      if (!this.dP().B && this.bM > -this.O() + 20) {
+         this.bM = -this.O();
+         this.b(this.w(!$$0.e()));
       }
    }
 
    @Override
-   public avn gC() {
-      return avo.Bs;
+   public avh gt() {
+      return avi.AU;
    }
 
-   protected avn w(boolean $$0) {
-      return $$0 ? avo.Bs : avo.Bq;
+   protected avh w(boolean $$0) {
+      return $$0 ? avi.AU : avi.AS;
    }
 
-   public void gD() {
-      this.b(avo.Bn);
+   public void gu() {
+      this.b(avi.AP);
    }
 
    @Override
-   public void b(uk $$0) {
+   public void b(ud $$0) {
       super.b($$0);
-      daz $$1 = this.gA();
+      czy $$1 = this.gr();
       if (!$$1.isEmpty()) {
-         $$0.a("Offers", ad.a(daz.a.encodeStart(this.dY().a(uy.a), $$1), IllegalStateException::new));
+         $$0.a("Offers", (va)czy.a.encodeStart(this.dR().a(ur.a), $$1).getOrThrow());
       }
 
-      this.b($$0, this.dY());
+      this.b($$0, this.dR());
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(ud $$0) {
       super.a($$0);
       if ($$0.e("Offers")) {
-         daz.a.parse(this.dY().a(uy.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", ck::warn)).ifPresent($$0x -> this.ci = $$0x);
+         czy.a.parse(this.dR().a(ur.a), $$0.c("Offers")).resultOrPartial(ac.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
       }
 
-      this.a($$0, this.dY());
+      this.a($$0, this.dR());
    }
 
    @Nullable
    @Override
-   public brv b(aqt $$0, boolean $$1) {
-      this.gE();
-      return super.b($$0, $$1);
+   public brw b(aqn $$0) {
+      this.gv();
+      return super.b($$0);
    }
 
-   protected void gE() {
+   protected void gv() {
       this.f(null);
    }
 
    @Override
-   public void a(bqt $$0) {
+   public void a(bqp $$0) {
       super.a($$0);
-      this.gE();
+      this.gv();
    }
 
-   protected void a(kz $$0) {
+   protected void a(kw $$0) {
       for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.al.k() * 0.02;
-         double $$3 = this.al.k() * 0.02;
-         double $$4 = this.al.k() * 0.02;
-         this.dU().a($$0, this.d(1.0), this.dC() + 1.0, this.g(1.0), $$2, $$3, $$4);
+         double $$2 = this.ah.k() * 0.02;
+         double $$3 = this.ah.k() * 0.02;
+         double $$4 = this.ah.k() * 0.02;
+         this.dP().a($$0, this.d(1.0), this.dx() + 1.0, this.g(1.0), $$2, $$3, $$4);
       }
    }
 
@@ -173,24 +173,24 @@ public abstract class clg extends brp implements clj, clk, dax {
    }
 
    @Override
-   public bqj x() {
-      return this.cn;
+   public bqf y() {
+      return this.ce;
    }
 
    @Override
-   public btf a_(int $$0) {
+   public bti a_(int $$0) {
       int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.cn.b() ? btf.a(this.cn, $$1) : super.a_($$0);
+      return $$1 >= 0 && $$1 < this.ce.b() ? bti.a(this.ce, $$1) : super.a_($$0);
    }
 
-   protected abstract void gF();
+   protected abstract void gw();
 
-   protected void a(daz $$0, clp.g[] $$1, int $$2) {
+   protected void a(czy $$0, clp.g[] $$1, int $$2) {
       ArrayList<clp.g> $$3 = Lists.newArrayList($$1);
       int $$4 = 0;
 
       while ($$4 < $$2 && !$$3.isEmpty()) {
-         day $$5 = $$3.remove(this.al.a($$3.size())).a(this, this.al);
+         czx $$5 = $$3.remove(this.ah.a($$3.size())).a(this, this.ah);
          if ($$5 != null) {
             $$0.add($$5);
             $$4++;
@@ -199,14 +199,14 @@ public abstract class clg extends brp implements clj, clk, dax {
    }
 
    @Override
-   public ewu q(float $$0) {
-      float $$1 = aym.i($$0, this.bk, this.bj) * (float) (Math.PI / 180.0);
-      ewu $$2 = new ewu(0.0, this.cP().c() - 1.0, 0.2);
+   public eum q(float $$0) {
+      float $$1 = ayf.i($$0, this.aZ, this.aY) * (float) (Math.PI / 180.0);
+      eum $$2 = new eum(0.0, this.cK().c() - 1.0, 0.2);
       return this.l($$0).e($$2.b(-$$1));
    }
 
    @Override
-   public boolean gG() {
-      return this.dU().C;
+   public boolean gx() {
+      return this.dP().B;
    }
 }

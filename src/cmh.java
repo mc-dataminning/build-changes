@@ -1,67 +1,67 @@
 import java.util.List;
 
 public class cmh extends cmf {
-   public static final float e = 4.0F;
+   public static final float f = 4.0F;
 
-   public cmh(bsb<? extends cmh> $$0, dca $$1) {
+   public cmh(bsc<? extends cmh> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public cmh(dca $$0, bso $$1, double $$2, double $$3, double $$4) {
-      super(bsb.C, $$1, $$2, $$3, $$4, $$0);
+   public cmh(daz $$0, bsq $$1, double $$2, double $$3, double $$4) {
+      super(bsc.A, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected void a(ews $$0) {
+   protected void a(euk $$0) {
       super.a($$0);
-      if ($$0.c() != ews.a.c || !this.e(((ewr)$$0).a())) {
-         if (!this.dU().C) {
-            List<bso> $$1 = this.dU().a(bso.class, this.cP().c(4.0, 2.0, 4.0));
-            brr $$2 = new brr(this.dU(), this.dz(), this.dB(), this.dF());
-            brv $$3 = this.t();
-            if ($$3 instanceof bso) {
-               $$2.a((bso)$$3);
+      if ($$0.c() != euk.a.c || !this.e(((euj)$$0).a())) {
+         if (!this.dP().B) {
+            List<bsq> $$1 = this.dP().a(bsq.class, this.cK().c(4.0, 2.0, 4.0));
+            brs $$2 = new brs(this.dP(), this.du(), this.dw(), this.dA());
+            brw $$3 = this.s();
+            if ($$3 instanceof bsq) {
+               $$2.a((bsq)$$3);
             }
 
-            $$2.a(lb.h);
+            $$2.a(ky.h);
             $$2.a(3.0F);
             $$2.a(600);
-            $$2.c((7.0F - $$2.g()) / (float)$$2.k());
-            $$2.a(new brh(brj.g, 1, 1));
+            $$2.c((7.0F - $$2.g()) / (float)$$2.j());
+            $$2.a(new bre(brg.g, 1, 1));
             if (!$$1.isEmpty()) {
-               for (bso $$4 : $$1) {
+               for (bsq $$4 : $$1) {
                   double $$5 = this.g($$4);
                   if ($$5 < 16.0) {
-                     $$2.a_($$4.dz(), $$4.dB(), $$4.dF());
+                     $$2.a_($$4.du(), $$4.dw(), $$4.dA());
                      break;
                   }
                }
             }
 
-            this.dU().c(2006, this.du(), this.ba() ? -1 : 1);
-            this.dU().b($$2);
+            this.dP().c(2006, this.dp(), this.aW() ? -1 : 1);
+            this.dP().b($$2);
             this.ao();
          }
       }
    }
 
    @Override
-   public boolean bE() {
+   public boolean bz() {
       return false;
    }
 
    @Override
-   public boolean a(bqt $$0, float $$1) {
+   public boolean a(bqp $$0, float $$1) {
       return false;
    }
 
    @Override
-   protected kz u() {
-      return lb.h;
+   protected kw v() {
+      return ky.h;
    }
 
    @Override
-   protected boolean r() {
+   protected boolean u() {
       return false;
    }
 }

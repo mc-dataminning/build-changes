@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface equ {
+public record equ(MapCodec<? extends eqt> a) {
 }

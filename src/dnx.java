@@ -1,73 +1,109 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dnx extends dhl implements djx {
-   public static final MapCodec<dnx> c = b(dnx::new);
-   public static final dua<dty> d = dhl.b;
-   protected static final float e = 6.0F;
-   protected static final exn f = dfc.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dnx extends doi implements bqb {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wx d;
+   private csj e;
+   private dnz f = dnz.a;
 
-   @Override
-   public MapCodec<dnx> a() {
-      return c;
+   public dnx(io $$0, drd $$1) {
+      super(dok.t, $$0, $$1);
+      this.e = ((dcr)$$1.b()).b();
    }
 
-   public dnx(dtb.d $$0) {
-      super($$0);
+   public dnx(io $$0, drd $$1, csj $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
+
+   public void a(ctq $$0, csj $$1) {
+      this.e = $$1;
+      this.a($$0);
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.d($$1, $$2, iw.b) && !$$0.a(dfe.lH);
-   }
-
-   @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return new cuh(dfe.cg);
+   public wx af() {
+      return (wx)(this.d != null ? this.d : wx.c("block.minecraft.banner"));
    }
 
    @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      if ($$1 != null) {
-         epe $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(awj.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public wx ah() {
+      return this.d;
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      if ($$0.c(d) == dty.a) {
-         dtc $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dty.b;
-      } else {
-         epe $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(awj.a) && $$4.e() == 8;
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dnz.a)) {
+         $$0.a("patterns", (va)dnz.b.encodeStart($$1.a(ur.a), this.f).getOrThrow());
+      }
+
+      if (this.d != null) {
+         $$0.a("CustomName", wx.a.a(this.d, $$1));
       }
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return epf.c.a(false);
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = wx.a.a($$0.l("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         dnz.b
+            .parse($$1.a(ur.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
+      }
+   }
+
+   public abx a() {
+      return abx.a(this);
    }
 
    @Override
-   public boolean a(@Nullable cly $$0, dbg $$1, ir $$2, dtc $$3, epd $$4) {
-      return false;
+   public ud a(iz.a $$0) {
+      return this.e($$0);
+   }
+
+   public dnz b() {
+      return this.f;
+   }
+
+   public ctq c() {
+      ctq $$0 = new ctq(ddf.a(this.e));
+      $$0.a(this.s());
+      return $$0;
+   }
+
+   public csj f() {
+      return this.e;
    }
 
    @Override
-   public boolean a(dcb $$0, ir $$1, dtc $$2, epe $$3) {
-      return false;
+   protected void a(doi.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(kb.W, dnz.a);
+      this.d = $$0.a(kb.f);
+   }
+
+   @Override
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.W, this.f);
+      $$0.a(kb.f, this.d);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

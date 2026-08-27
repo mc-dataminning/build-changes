@@ -1,93 +1,94 @@
-import java.util.Optional;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public abstract class epd {
-   public static final jg<epe> c = new jg<>();
-   protected final dtd<epd, epe> d;
-   private epe a;
-   private final ja.c<epd> b = lh.c.f(this);
+public interface epd {
+   int d = 19133;
+   int e = 19132;
 
-   protected epd() {
-      dtd.a<epd, epe> $$0 = new dtd.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(epd::g, epe::new);
-      this.f(this.d.b());
+   dbt D();
+
+   void a(dbt var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   protected void a(dtd.a<epd, epe> $$0) {
-   }
-
-   public dtd<epd, epe> f() {
-      return this.d;
-   }
-
-   protected final void f(epe $$0) {
-      this.a = $$0;
-   }
-
-   public final epe g() {
-      return this.a;
-   }
-
-   public abstract cuc a();
-
-   protected void a(dca $$0, ir $$1, epe $$2, ayt $$3) {
-   }
-
-   protected void b(dca $$0, ir $$1, epe $$2) {
-   }
-
-   protected void b(dca $$0, ir $$1, epe $$2, ayt $$3) {
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
    @Nullable
-   protected kz h() {
-      return null;
-   }
+   ud E();
 
-   protected abstract boolean a(epe var1, dbg var2, ir var3, epd var4, iw var5);
+   void a(@Nullable ud var1);
 
-   protected abstract ewu a(dbg var1, ir var2, epe var3);
+   epc I();
 
-   public abstract int a(dcd var1);
+   dbd J();
 
-   protected boolean i() {
-      return false;
-   }
+   ud a(jl var1, @Nullable ud var2);
 
-   protected boolean b() {
-      return false;
-   }
+   boolean l();
 
-   protected abstract float c();
+   int x();
 
-   public abstract float a(epe var1, dbg var2, ir var3);
+   String e();
 
-   public abstract float a(epe var1);
+   daw k();
 
-   protected abstract dtc b(epe var1);
+   void a(daw var1);
 
-   public abstract boolean c(epe var1);
+   boolean m();
 
-   public abstract int d(epe var1);
+   bpt q();
 
-   public boolean a(epd $$0) {
-      return $$0 == this;
-   }
+   void a(bpt var1);
 
-   @Deprecated
-   public boolean a(awt<epd> $$0) {
-      return this.b.a($$0);
-   }
+   boolean r();
 
-   public abstract exn b(epe var1, dbg var2, ir var3);
+   void d(boolean var1);
 
-   public Optional<avn> j() {
-      return Optional.empty();
-   }
+   dav o();
 
-   @Deprecated
-   public ja.c<epd> k() {
-      return this.b;
+   @Nullable
+   ud w();
+
+   duy.a C();
+
+   void a(duy.a var1);
+
+   dxt y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default col K() {
+      return this.D().b();
    }
 }

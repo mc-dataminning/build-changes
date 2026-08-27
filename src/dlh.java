@@ -1,41 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlh extends dfl implements dff {
-   public static final MapCodec<dlh> a = b(dlh::new);
-   protected static final exn b = dfc.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dlh extends dcv {
+   public static final MapCodec<dlh> c = b(dlh::new);
 
    @Override
    public MapCodec<dlh> a() {
-      return a;
+      return c;
    }
 
-   public dlh(dtb.d $$0) {
+   protected dlh(drc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      ewu $$4 = $$0.n($$1, $$2);
-      return b.a($$4.c, $$4.d, $$4.e);
+   public doi a(io $$0, drd $$1) {
+      return new dpv($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return a($$0, $$2, dok.B);
    }
 
    @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.a(dfe.l) || $$0.a(dfe.k);
+   protected void a(daz $$0, io $$1, cly $$2) {
+      doi $$3 = $$0.c_($$1);
+      if ($$3 instanceof dpv) {
+         $$2.a((bqa)$$3);
+         $$2.a(avs.at);
+      }
    }
 
    @Override
-   public boolean b(dcd $$0, ir $$1, dtc $$2) {
-      return true;
-   }
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avi.yh, avj.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
-      return (double)$$0.A.i() < 0.25;
-   }
-
-   @Override
-   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
-      dsr.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+         $$1.a(ky.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

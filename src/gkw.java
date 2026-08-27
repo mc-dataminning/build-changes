@@ -1,27 +1,37 @@
-public class gkw extends gkp<cmm> {
-   private final glp a;
+public class gkw extends ghs<cne> {
+   private static final akn a = new akn("textures/entity/wither/wither_invulnerable.png");
+   private static final akn f = new akn("textures/entity/wither/wither.png");
+   private final fus g;
 
-   public gkw(gkq.a $$0) {
+   public gkw(ght.a $$0) {
       super($$0);
-      this.a = $$0.b();
+      this.g = new fus($$0.a(fvv.cb));
    }
 
-   public void a(cmm $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.d.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.r()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
+   public static fwc a() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("head", fwb.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvy.a);
+      return fwc.a($$0, 64, 64);
+   }
 
-      this.a.a($$0.p(), cue.h, $$5, gqp.d, $$3, $$4, $$0.dU(), $$0.al());
+   protected int a(cne $$0, io $$1) {
+      return 15;
+   }
+
+   public void a(cne $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = ayf.j($$2, $$0.O, $$0.dF());
+      float $$7 = ayf.i($$2, $$0.P, $$0.dH());
+      eyy $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akt a(cmm $$0) {
-      return gqx.e;
+   public akn a(cne $$0) {
+      return $$0.z() ? a : f;
    }
 }

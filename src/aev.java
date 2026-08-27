@@ -1,32 +1,52 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aev implements zl<abw> {
-   public static final zc<we, aev> a = zl.a(aev::a, aev::new);
-   private final int b;
+public record aev(int c, List<ajw.c<?>> d) implements ze<abq> {
+   public static final yv<wi, aev> a = ze.a(aev::b, aev::new);
+   public static final int b = 255;
 
-   public aev(brv $$0) {
-      this.b = $$0.al();
+   private aev(wi $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private aev(we $$0) {
-      this.b = $$0.l();
+   private static void a(List<ajw.c<?>> $$0, wi $$1) {
+      for (ajw.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private static List<ajw.c<?>> a(wi $$0) {
+      List<ajw.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(ajw.c.a($$0, $$2));
+      }
+
+      return $$1;
+   }
+
+   private void b(wi $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zn<aev> a() {
-      return agj.ax;
+   public zg<aev> a() {
+      return agc.aC;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brv a(dca $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.c;
+   }
+
+   public List<ajw.c<?>> e() {
+      return this.d;
    }
 }

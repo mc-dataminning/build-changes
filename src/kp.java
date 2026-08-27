@@ -1,25 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
 
-public class kp extends kn {
-   private static final Logger c = LogUtils.getLogger();
+public class kp implements kw {
+   public static final kw.a<kp> a = new kw.a<kp>() {
+      public kp a(kx<kp> $$0, StringReader $$1, iz.a $$2) throws CommandSyntaxException {
+         $$1.expect(' ');
+         return new kp($$0, fy.a(le.e.p(), $$1, false).a());
+      }
+   };
+   private final kx<kp> b;
+   private final drd c;
+
+   public static MapCodec<kp> a(kx<kp> $$0) {
+      return drd.b.xmap($$1 -> new kp($$0, $$1), $$0x -> $$0x.c).fieldOf("value");
+   }
+
+   public static yv<? super wi, kp> b(kx<kp> $$0) {
+      return yt.a(dea.q).a($$1 -> new kp($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public kp(kx<kp> $$0, drd $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
    @Override
-   protected cuh a(kj $$0, cuh $$1) {
-      this.a(false);
-      cuc $$2 = $$1.f();
-      if ($$2 instanceof csc) {
-         iw $$3 = $$0.d().c(dhi.b);
-         ir $$4 = $$0.c().a($$3);
-         iw $$5 = $$0.b().u($$4.d()) ? $$3 : iw.b;
+   public String a(iz.a $$0) {
+      return le.j.b(this.a()) + " " + fy.a(this.c);
+   }
 
-         try {
-            this.a(((csc)$$2).a((cyd)(new cye($$0.b(), $$4, $$3, $$1, $$5))).a());
-         } catch (Exception var8) {
-            c.error("Error trying to place shulker box at {}", $$4, var8);
-         }
-      }
+   @Override
+   public kx<kp> a() {
+      return this.b;
+   }
 
-      return $$1;
+   public drd b() {
+      return this.c;
    }
 }

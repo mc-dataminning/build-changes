@@ -1,17 +1,27 @@
-public enum wd {
-   a("handshake"),
-   b("play"),
-   c("status"),
-   d("login"),
-   e("configuration");
+public interface wd {
+   zf a();
 
-   private final String f;
+   vw b();
 
-   private wd(String $$0) {
-      this.f = $$0;
+   void a(wx var1);
+
+   boolean c();
+
+   default boolean a(ze<?> $$0) {
+      return this.c();
    }
 
-   public String a() {
-      return this.f;
+   default boolean d() {
+      return true;
+   }
+
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
+   }
+
+   default void a(p $$0) {
    }
 }

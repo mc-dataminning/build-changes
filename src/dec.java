@@ -1,91 +1,1185 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dec extends dfl {
-   public static final MapCodec<dec> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aks.a(li.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               aks.a(li.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               aks.a(li.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
-            .apply($$0, dec::new)
+public class dec {
+   private static final drc.f tu = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dpr $$4 ? $$4.v() : true;
+   public static final dea a = a("air", new dcx(drc.d.a().o().b().g().l()));
+   public static final dea b = a("stone", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea c = a("granite", new dea(drc.d.a().a(ena.k).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea d = a("polished_granite", new dea(drc.d.a().a(ena.k).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea e = a("diorite", new dea(drc.d.a().a(ena.o).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea f = a("polished_diorite", new dea(drc.d.a().a(ena.o).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea g = a("andesite", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea h = a("polished_andesite", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea i = a("grass_block", new dhl(drc.d.a().a(ena.b).e().d(0.6F).a(dln.d)));
+   public static final dea j = a("dirt", new dea(drc.d.a().a(ena.k).d(0.5F).a(dln.c)));
+   public static final dea k = a("coarse_dirt", new dea(drc.d.a().a(ena.k).d(0.5F).a(dln.c)));
+   public static final dea l = a("podzol", new dlk(drc.d.a().a(ena.I).d(0.5F).a(dln.c)));
+   public static final dea m = a("cobblestone", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea n = a("oak_planks", new dea(drc.d.a().a(ena.n).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea o = a("spruce_planks", new dea(drc.d.a().a(ena.I).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea p = a("birch_planks", new dea(drc.d.a().a(ena.c).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea q = a("jungle_planks", new dea(drc.d.a().a(ena.k).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea r = a("acacia_planks", new dea(drc.d.a().a(ena.p).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea s = a("cherry_planks", new dea(drc.d.a().a(ena.K).a(dse.e).a(2.0F, 3.0F).a(dln.aU).h()));
+   public static final dea t = a("dark_oak_planks", new dea(drc.d.a().a(ena.A).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea u = a("mangrove_planks", new dea(drc.d.a().a(ena.C).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea v = a("bamboo_planks", new dea(drc.d.a().a(ena.s).a(dse.e).a(2.0F, 3.0F).a(dln.aS).h()));
+   public static final dea w = a("bamboo_mosaic", new dea(drc.d.a().a(ena.s).a(dse.e).a(2.0F, 3.0F).a(dln.aS).h()));
+   public static final dea x = a("oak_sapling", new dko(dqs.b, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea y = a("spruce_sapling", new dko(dqs.c, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea z = a("birch_sapling", new dko(dqs.f, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea A = a("jungle_sapling", new dko(dqs.g, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea B = a("acacia_sapling", new dko(dqs.h, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea C = a("cherry_sapling", new dko(dqs.i, drc.d.a().a(ena.u).b().e().d().a(dln.aV).a(enb.b)));
+   public static final dea D = a("dark_oak_sapling", new dko(dqs.j, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea E = a("mangrove_propagule", new div(dqs.d, drc.d.a().a(ena.h).b().e().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea F = a("bedrock", new dea(drc.d.a().a(ena.l).a(dse.b).a(-1.0F, 3600000.0F).g().a(dec::a)));
+   public static final dea G = a("water", new diq(emx.c, drc.d.a().a(ena.m).o().b().d(100.0F).a(enb.b).g().i().a(dln.a)));
+   public static final dea H = a("lava", new diq(emx.e, drc.d.a().a(ena.e).o().b().e().d(100.0F).a($$0x -> 15).a(enb.b).g().i().a(dln.a)));
+   public static final dea I = a("sand", new dfi(new awz(14406560), drc.d.a().a(ena.c).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea J = a("suspicious_sand", new def(I, avi.cT, avi.cV, drc.d.a().a(ena.c).a(dse.c).d(0.25F).a(dln.aZ).a(enb.b)));
+   public static final dea K = a("red_sand", new dfi(new awz(11098145), drc.d.a().a(ena.p).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea L = a("gravel", new dfi(new awz(-8356741), drc.d.a().a(ena.l).a(dse.c).d(0.6F).a(dln.c)));
+   public static final dea M = a("suspicious_gravel", new def(L, avi.cU, avi.cW, drc.d.a().a(ena.l).a(dse.c).d(0.25F).a(dln.ba).a(enb.b)));
+   public static final dea N = a("gold_ore", new dgk(boy.a(0), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea O = a("deepslate_gold_ore", new dgk(boy.a(0), drc.d.b(N).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea P = a("iron_ore", new dgk(boy.a(0), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea Q = a("deepslate_iron_ore", new dgk(boy.a(0), drc.d.b(P).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea R = a("coal_ore", new dgk(bph.a(0, 2), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea S = a("deepslate_coal_ore", new dgk(bph.a(0, 2), drc.d.b(R).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea T = a("nether_gold_ore", new dgk(bph.a(0, 1), drc.d.a().a(ena.J).a(dse.b).m().a(3.0F, 3.0F).a(dln.V)));
+   public static final dea U = a("oak_log", a(ena.n, ena.I));
+   public static final dea V = a("spruce_log", a(ena.I, ena.A));
+   public static final dea W = a("birch_log", a(ena.c, ena.o));
+   public static final dea X = a("jungle_log", a(ena.k, ena.I));
+   public static final dea Y = a("acacia_log", a(ena.p, ena.l));
+   public static final dea Z = a("cherry_log", a(ena.K, ena.R, dln.aU));
+   public static final dea aa = a("dark_oak_log", a(ena.A, ena.A));
+   public static final dea ab = a("mangrove_log", a(ena.C, ena.I));
+   public static final dea ac = a("mangrove_roots", new diw(drc.d.a().a(ena.I).a(dse.e).d(0.7F).a(dln.aK).c().b(dec::b).c(dec::b).c().h()));
+   public static final dea ad = a("muddy_mangrove_roots", new dkm(drc.d.a().a(ena.I).d(0.7F).a(dln.aL)));
+   public static final dea ae = a("bamboo_block", a(ena.s, ena.h, dln.aS));
+   public static final dea af = a("stripped_spruce_log", a(ena.I, ena.I));
+   public static final dea ag = a("stripped_birch_log", a(ena.c, ena.c));
+   public static final dea ah = a("stripped_jungle_log", a(ena.k, ena.k));
+   public static final dea ai = a("stripped_acacia_log", a(ena.p, ena.p));
+   public static final dea aj = a("stripped_cherry_log", a(ena.K, ena.Q, dln.aU));
+   public static final dea ak = a("stripped_dark_oak_log", a(ena.A, ena.A));
+   public static final dea al = a("stripped_oak_log", a(ena.n, ena.n));
+   public static final dea am = a("stripped_mangrove_log", a(ena.C, ena.C));
+   public static final dea an = a("stripped_bamboo_block", a(ena.s, ena.s, dln.aS));
+   public static final dea ao = a("oak_wood", new dkm(drc.d.a().a(ena.n).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea ap = a("spruce_wood", new dkm(drc.d.a().a(ena.I).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea aq = a("birch_wood", new dkm(drc.d.a().a(ena.c).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea ar = a("jungle_wood", new dkm(drc.d.a().a(ena.k).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea as = a("acacia_wood", new dkm(drc.d.a().a(ena.v).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea at = a("cherry_wood", new dkm(drc.d.a().a(ena.R).a(dse.e).d(2.0F).a(dln.aU).h()));
+   public static final dea au = a("dark_oak_wood", new dkm(drc.d.a().a(ena.A).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea av = a("mangrove_wood", new dkm(drc.d.a().a(ena.C).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea aw = a("stripped_oak_wood", new dkm(drc.d.a().a(ena.n).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea ax = a("stripped_spruce_wood", new dkm(drc.d.a().a(ena.I).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea ay = a("stripped_birch_wood", new dkm(drc.d.a().a(ena.c).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea az = a("stripped_jungle_wood", new dkm(drc.d.a().a(ena.k).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea aA = a("stripped_acacia_wood", new dkm(drc.d.a().a(ena.p).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea aB = a("stripped_cherry_wood", new dkm(drc.d.a().a(ena.Q).a(dse.e).d(2.0F).a(dln.aU).h()));
+   public static final dea aC = a("stripped_dark_oak_wood", new dkm(drc.d.a().a(ena.A).a(dse.e).d(2.0F).a(dln.b).h()));
+   public static final dea aD = a("stripped_mangrove_wood", a(ena.C, ena.C));
+   public static final dea aE = a("oak_leaves", a(dln.d));
+   public static final dea aF = a("spruce_leaves", a(dln.d));
+   public static final dea aG = a("birch_leaves", a(dln.d));
+   public static final dea aH = a("jungle_leaves", a(dln.d));
+   public static final dea aI = a("acacia_leaves", a(dln.d));
+   public static final dea aJ = a("cherry_leaves", new dfc(drc.d.a().a(ena.u).d(0.2F).e().a(dln.aW).c().a(dec::c).b(dec::b).c(dec::b).h().a(enb.b).a(dec::b)));
+   public static final dea aK = a("dark_oak_leaves", a(dln.d));
+   public static final dea aL = a("mangrove_leaves", new diu(drc.d.a().a(ena.h).d(0.2F).e().a(dln.d).c().a(dec::c).b(dec::b).c(dec::b).h().a(enb.b).a(dec::b)));
+   public static final dea aM = a("azalea_leaves", a(dln.ax));
+   public static final dea aN = a("flowering_azalea_leaves", a(dln.ax));
+   public static final dea aO = a("sponge", new dlp(drc.d.a().a(ena.s).d(0.6F).a(dln.be)));
+   public static final dea aP = a("wet_sponge", new dnr(drc.d.a().a(ena.s).d(0.6F).a(dln.bf)));
+   public static final dea aQ = a("glass", new dmm(drc.d.a().a(dse.d).d(0.3F).a(dln.h).c().a(dec::a).a(dec::b).b(dec::b).c(dec::b)));
+   public static final dea aR = a("lapis_ore", new dgk(bph.a(2, 5), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea aS = a("deepslate_lapis_ore", new dgk(bph.a(2, 5), drc.d.b(aR).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea aT = a("lapis_block", new dea(drc.d.a().a(ena.G).m().a(3.0F, 3.0F)));
+   public static final dea aU = a("dispenser", new dgf(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F)));
+   public static final dea aV = a("sandstone", new dea(drc.d.a().a(ena.c).a(dse.b).m().d(0.8F)));
+   public static final dea aW = a("chiseled_sandstone", new dea(drc.d.a().a(ena.c).a(dse.b).m().d(0.8F)));
+   public static final dea aX = a("cut_sandstone", new dea(drc.d.a().a(ena.c).a(dse.b).m().d(0.8F)));
+   public static final dea aY = a("note_block", new djj(drc.d.a().a(ena.n).a(dse.e).a(dln.b).d(0.8F).h()));
+   public static final dea aZ = a("white_bed", a(csj.a));
+   public static final dea ba = a("orange_bed", a(csj.b));
+   public static final dea bb = a("magenta_bed", a(csj.c));
+   public static final dea bc = a("light_blue_bed", a(csj.d));
+   public static final dea bd = a("yellow_bed", a(csj.e));
+   public static final dea be = a("lime_bed", a(csj.f));
+   public static final dea bf = a("pink_bed", a(csj.g));
+   public static final dea bg = a("gray_bed", a(csj.h));
+   public static final dea bh = a("light_gray_bed", a(csj.i));
+   public static final dea bi = a("cyan_bed", a(csj.j));
+   public static final dea bj = a("purple_bed", a(csj.k));
+   public static final dea bk = a("blue_bed", a(csj.l));
+   public static final dea bl = a("brown_bed", a(csj.m));
+   public static final dea bm = a("green_bed", a(csj.n));
+   public static final dea bn = a("red_bed", a(csj.o));
+   public static final dea bo = a("black_bed", a(csj.p));
+   public static final dea bp = a("powered_rail", new djw(drc.d.a().b().d(0.7F).a(dln.g)));
+   public static final dea bq = a("detector_rail", new dgb(drc.d.a().b().d(0.7F).a(dln.g)));
+   public static final dea br = a("sticky_piston", a(true));
+   public static final dea bs = a("cobweb", new dnn(drc.d.a().a(ena.d).a(dln.bi).j().b().m().d(4.0F).a(enb.b)));
+   public static final dea bt = a("short_grass", new dmf(drc.d.a().a(ena.h).o().b().d().a(dln.d).a(drc.c.c).h().a(enb.b)));
+   public static final dea bu = a("fern", new dmf(drc.d.a().a(ena.h).o().b().d().a(dln.d).a(drc.c.c).h().a(enb.b)));
+   public static final dea bv = a("dead_bush", new dfz(drc.d.a().a(ena.n).o().b().d().a(dln.d).h().a(enb.b)));
+   public static final dea bw = a("seagrass", new dky(drc.d.a().a(ena.m).o().b().d().a(dln.q).a(enb.b)));
+   public static final dea bx = a("tall_seagrass", new dmg(drc.d.a().a(ena.m).o().b().d().a(dln.q).a(drc.c.b).a(enb.b)));
+   public static final dea by = a("piston", a(false));
+   public static final dea bz = a("piston_head", new dqx(drc.d.a().a(ena.l).d(1.5F).g().a(enb.c)));
+   public static final dea bA = a("white_wool", new dea(drc.d.a().a(ena.i).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bB = a("orange_wool", new dea(drc.d.a().a(ena.p).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bC = a("magenta_wool", new dea(drc.d.a().a(ena.q).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bD = a("light_blue_wool", new dea(drc.d.a().a(ena.r).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bE = a("yellow_wool", new dea(drc.d.a().a(ena.s).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bF = a("lime_wool", new dea(drc.d.a().a(ena.t).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bG = a("pink_wool", new dea(drc.d.a().a(ena.u).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bH = a("gray_wool", new dea(drc.d.a().a(ena.v).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bI = a("light_gray_wool", new dea(drc.d.a().a(ena.w).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bJ = a("cyan_wool", new dea(drc.d.a().a(ena.x).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bK = a("purple_wool", new dea(drc.d.a().a(ena.y).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bL = a("blue_wool", new dea(drc.d.a().a(ena.z).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bM = a("brown_wool", new dea(drc.d.a().a(ena.A).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bN = a("green_wool", new dea(drc.d.a().a(ena.B).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bO = a("red_wool", new dea(drc.d.a().a(ena.C).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bP = a("black_wool", new dea(drc.d.a().a(ena.D).a(dse.h).d(0.8F).a(dln.i).h()));
+   public static final dea bQ = a("moving_piston", new dqv(drc.d.a().a(ena.l).j().d(-1.0F).f().g().c().a(dec::b).b(dec::b).c(dec::b).a(enb.c)));
+   public static final dea bR = a("dandelion", new dhc(brg.w, 0.35F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bS = a("torchflower", new dhc(brg.p, 5.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bT = a("poppy", new dhc(brg.p, 5.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bU = a("blue_orchid", new dhc(brg.w, 0.35F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bV = a("allium", new dhc(brg.l, 4.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bW = a("azure_bluet", new dhc(brg.o, 8.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bX = a("red_tulip", new dhc(brg.r, 9.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bY = a("orange_tulip", new dhc(brg.r, 9.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea bZ = a("white_tulip", new dhc(brg.r, 9.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea ca = a("pink_tulip", new dhc(brg.r, 9.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea cb = a("oxeye_daisy", new dhc(brg.j, 8.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea cc = a("cornflower", new dhc(brg.h, 6.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea cd = a("wither_rose", new dns(brg.t, 8.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea ce = a("lily_of_the_valley", new dhc(brg.s, 12.0F, drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).a(enb.b)));
+   public static final dea cf = a("brown_mushroom", new djc(ry.e, drc.d.a().a(ena.A).b().e().d().a(dln.d).a($$0x -> 1).d(dec::a).a(enb.b)));
+   public static final dea cg = a("red_mushroom", new djc(ry.f, drc.d.a().a(ena.C).b().e().d().a(dln.d).d(dec::a).a(enb.b)));
+   public static final dea ch = a("gold_block", new dea(drc.d.a().a(ena.E).a(dse.g).m().a(3.0F, 6.0F).a(dln.g)));
+   public static final dea ci = a("iron_block", new dea(drc.d.a().a(ena.g).a(dse.k).m().a(5.0F, 6.0F).a(dln.g)));
+   public static final dea cj = a("bricks", new dea(drc.d.a().a(ena.C).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea ck = a("tnt", new dmj(drc.d.a().a(ena.e).d().a(dln.d).h().a(dec::b)));
+   public static final dea cl = a("bookshelf", new dea(drc.d.a().a(ena.n).a(dse.e).d(1.5F).a(dln.b).h()));
+   public static final dea cm = a("chiseled_bookshelf", new dfe(drc.d.a().a(ena.n).a(dse.e).d(1.5F).a(dln.aY).h()));
+   public static final dea cn = a("mossy_cobblestone", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea co = a("obsidian", new dea(drc.d.a().a(ena.D).a(dse.b).m().a(50.0F, 1200.0F)));
+   public static final dea cp = a("torch", new dmk(ky.F, drc.d.a().b().d().a($$0x -> 14).a(dln.b).a(enb.b)));
+   public static final dea cq = a("wall_torch", new dnc(ky.F, drc.d.a().b().d().a($$0x -> 14).a(dln.b).a(cp).a(enb.b)));
+   public static final dea cr = a("fire", new dha(drc.d.a().a(ena.e).o().b().d().a($$0x -> 15).a(dln.i).a(enb.b)));
+   public static final dea cs = a("soul_fire", new dll(drc.d.a().a(ena.r).o().b().d().a($$0x -> 10).a(dln.i).a(enb.b)));
+   public static final dea ct = a("spawner", new dlo(drc.d.a().a(ena.l).a(dse.b).m().d(5.0F).a(dln.g).c()));
+   public static final dea cu = a("oak_stairs", b(n));
+   public static final dea cv = a("chest", new dfd(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h(), () -> dok.b));
+   public static final dea cw = a("redstone_wire", new dkc(drc.d.a().b().d().a(enb.b)));
+   public static final dea cx = a("diamond_ore", new dgk(bph.a(3, 7), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea cy = a("deepslate_diamond_ore", new dgk(bph.a(3, 7), drc.d.b(cx).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea cz = a("diamond_block", new dea(drc.d.a().a(ena.F).m().a(5.0F, 6.0F).a(dln.g)));
+   public static final dea cA = a("crafting_table", new dfu(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea cB = a("wheat", new dfv(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea cC = a("farmland", new dgx(drc.d.a().a(ena.k).e().d(0.6F).a(dln.c).c(dec::a).b(dec::a)));
+   public static final dea cD = a("furnace", new dhh(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F).a(a(13))));
+   public static final dea cE = a("oak_sign", new dlv(dsq.b, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cF = a("spruce_sign", new dlv(dsq.c, drc.d.a().a(V.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cG = a("birch_sign", new dlv(dsq.d, drc.d.a().a(ena.c).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cH = a("acacia_sign", new dlv(dsq.e, drc.d.a().a(ena.p).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cI = a("cherry_sign", new dlv(dsq.f, drc.d.a().a(s.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cJ = a("jungle_sign", new dlv(dsq.g, drc.d.a().a(X.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cK = a("dark_oak_sign", new dlv(dsq.h, drc.d.a().a(aa.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cL = a("mangrove_sign", new dlv(dsq.k, drc.d.a().a(ab.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cM = a("bamboo_sign", new dlv(dsq.l, drc.d.a().a(v.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea cN = a("oak_door", new dgg(drs.g, drc.d.a().a(n.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea cO = a("ladder", new dig(drc.d.a().k().d(0.4F).a(dln.m).c().a(enb.b)));
+   public static final dea cP = a("rail", new djz(drc.d.a().b().d(0.7F).a(dln.g)));
+   public static final dea cQ = a("cobblestone_stairs", b(m));
+   public static final dea cR = a("oak_wall_sign", new dna(dsq.b, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(cE).h()));
+   public static final dea cS = a("spruce_wall_sign", new dna(dsq.c, drc.d.a().a(V.w()).j().a(dse.e).b().d(1.0F).a(cF).h()));
+   public static final dea cT = a("birch_wall_sign", new dna(dsq.d, drc.d.a().a(ena.c).j().a(dse.e).b().d(1.0F).a(cG).h()));
+   public static final dea cU = a("acacia_wall_sign", new dna(dsq.e, drc.d.a().a(ena.p).j().a(dse.e).b().d(1.0F).a(cH).h()));
+   public static final dea cV = a("cherry_wall_sign", new dna(dsq.f, drc.d.a().a(Z.w()).j().a(dse.e).b().d(1.0F).a(cI).h()));
+   public static final dea cW = a("jungle_wall_sign", new dna(dsq.g, drc.d.a().a(X.w()).j().a(dse.e).b().d(1.0F).a(cJ).h()));
+   public static final dea cX = a("dark_oak_wall_sign", new dna(dsq.h, drc.d.a().a(aa.w()).j().a(dse.e).b().d(1.0F).a(cK).h()));
+   public static final dea cY = a("mangrove_wall_sign", new dna(dsq.k, drc.d.a().a(ab.w()).j().a(dse.e).b().d(1.0F).a(cL).h()));
+   public static final dea cZ = a("bamboo_wall_sign", new dna(dsq.l, drc.d.a().a(v.w()).j().a(dse.e).b().d(1.0F).h().a(cM)));
+   public static final dea da = a("oak_hanging_sign", new dez(dsq.b, drc.d.a().a(U.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea db = a("spruce_hanging_sign", new dez(dsq.c, drc.d.a().a(V.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dc = a("birch_hanging_sign", new dez(dsq.d, drc.d.a().a(ena.c).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dd = a("acacia_hanging_sign", new dez(dsq.e, drc.d.a().a(ena.p).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea de = a("cherry_hanging_sign", new dez(dsq.f, drc.d.a().a(ena.Q).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea df = a("jungle_hanging_sign", new dez(dsq.g, drc.d.a().a(X.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dg = a("dark_oak_hanging_sign", new dez(dsq.h, drc.d.a().a(aa.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dh = a("crimson_hanging_sign", new dez(dsq.i, drc.d.a().a(ena.ab).j().a(dse.e).b().d(1.0F)));
+   public static final dea di = a("warped_hanging_sign", new dez(dsq.j, drc.d.a().a(ena.ae).j().a(dse.e).b().d(1.0F)));
+   public static final dea dj = a("mangrove_hanging_sign", new dez(dsq.k, drc.d.a().a(ab.w()).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dk = a("bamboo_hanging_sign", new dez(dsq.l, drc.d.a().a(ena.s).j().a(dse.e).b().d(1.0F).h()));
+   public static final dea dl = a("oak_wall_hanging_sign", new dmz(dsq.b, drc.d.a().a(U.w()).j().a(dse.e).b().d(1.0F).h().a(da)));
+   public static final dea dm = a("spruce_wall_hanging_sign", new dmz(dsq.c, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(db).h()));
+   public static final dea dn = a("birch_wall_hanging_sign", new dmz(dsq.d, drc.d.a().a(ena.c).j().a(dse.e).b().d(1.0F).a(dc).h()));
+   public static final dea do = a("acacia_wall_hanging_sign", new dmz(dsq.e, drc.d.a().a(ena.p).j().a(dse.e).b().d(1.0F).h().a(dd)));
+   public static final dea dp = a("cherry_wall_hanging_sign", new dmz(dsq.f, drc.d.a().a(ena.Q).j().a(dse.e).b().d(1.0F).h().a(de)));
+   public static final dea dq = a("jungle_wall_hanging_sign", new dmz(dsq.g, drc.d.a().a(X.w()).j().a(dse.e).b().d(1.0F).h().a(df)));
+   public static final dea dr = a("dark_oak_wall_hanging_sign", new dmz(dsq.h, drc.d.a().a(aa.w()).j().a(dse.e).b().d(1.0F).h().a(dg)));
+   public static final dea ds = a("mangrove_wall_hanging_sign", new dmz(dsq.k, drc.d.a().a(ab.w()).j().a(dse.e).b().d(1.0F).h().a(dj)));
+   public static final dea dt = a("crimson_wall_hanging_sign", new dmz(dsq.i, drc.d.a().a(ena.ab).j().a(dse.e).b().d(1.0F).a(dh)));
+   public static final dea du = a("warped_wall_hanging_sign", new dmz(dsq.j, drc.d.a().a(ena.ae).j().a(dse.e).b().d(1.0F).a(di)));
+   public static final dea dv = a("bamboo_wall_hanging_sign", new dmz(dsq.l, drc.d.a().a(ena.s).j().a(dse.e).b().d(1.0F).h().a(dk)));
+   public static final dea dw = a("lever", new din(drc.d.a().b().d(0.5F).a(dln.f).a(enb.b)));
+   public static final dea dx = a("stone_pressure_plate", new djx(drs.e, drc.d.a().a(ena.l).j().a(dse.b).m().b().d(0.5F).a(enb.b)));
+   public static final dea dy = a("iron_door", new dgg(drs.b, drc.d.a().a(ena.g).m().d(5.0F).c().a(enb.b)));
+   public static final dea dz = a("oak_pressure_plate", new djx(drs.g, drc.d.a().a(n.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dA = a("spruce_pressure_plate", new djx(drs.h, drc.d.a().a(o.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dB = a("birch_pressure_plate", new djx(drs.i, drc.d.a().a(p.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dC = a("jungle_pressure_plate", new djx(drs.l, drc.d.a().a(q.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dD = a("acacia_pressure_plate", new djx(drs.j, drc.d.a().a(r.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dE = a("cherry_pressure_plate", new djx(drs.k, drc.d.a().a(s.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dF = a("dark_oak_pressure_plate", new djx(drs.m, drc.d.a().a(t.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dG = a("mangrove_pressure_plate", new djx(drs.p, drc.d.a().a(u.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dH = a("bamboo_pressure_plate", new djx(drs.q, drc.d.a().a(v.w()).j().a(dse.e).b().d(0.5F).h().a(enb.b)));
+   public static final dea dI = a("redstone_ore", new dkb(drc.d.a().a(ena.l).a(dse.b).m().e().a(a(9)).a(3.0F, 3.0F)));
+   public static final dea dJ = a("deepslate_redstone_ore", new dkb(drc.d.b(dI).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea dK = a("redstone_torch", new dke(drc.d.a().b().d().a(a(7)).a(dln.b).a(enb.b)));
+   public static final dea dL = a("redstone_wall_torch", new dkf(drc.d.a().b().d().a(a(7)).a(dln.b).a(dK).a(enb.b)));
+   public static final dea dM = a("stone_button", b());
+   public static final dea dN = a("snow", new dlj(drc.d.a().a(ena.i).o().k().e().d(0.1F).m().a(dln.k).c(($$0x, $$1x, $$2) -> $$0x.c(dlj.c) >= 8).a(enb.b)));
+   public static final dea dO = a("ice", new dhy(drc.d.a().a(ena.f).a(0.98F).e().d(0.5F).a(dln.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bsc.aD).a(dec::b)));
+   public static final dea dP = a("snow_block", new dea(drc.d.a().a(ena.i).m().d(0.2F).a(dln.k)));
+   public static final dea dQ = a("cactus", new del(drc.d.a().a(ena.h).e().d(0.4F).a(dln.i).a(enb.b)));
+   public static final dea dR = a("clay", new dea(drc.d.a().a(ena.j).a(dse.f).d(0.6F).a(dln.c)));
+   public static final dea dS = a("sugar_cane", new dma(drc.d.a().a(ena.h).b().e().d().a(dln.d).a(enb.b)));
+   public static final dea dT = a("jukebox", new did(drc.d.a().a(ena.k).a(dse.e).a(2.0F, 6.0F).a(dln.b).h()));
+   public static final dea dU = a("oak_fence", new dgy(drc.d.a().a(n.w()).j().a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea dV = a("netherrack", new dji(drc.d.a().a(ena.J).a(dse.b).m().d(0.4F).a(dln.M)));
+   public static final dea dW = a("soul_sand", new dlm(drc.d.a().a(ena.A).a(dse.l).d(0.5F).b(0.4F).a(dln.I).a(dec::b).a(dec::a).c(dec::a).b(dec::a)));
+   public static final dea dX = a("soul_soil", new dea(drc.d.a().a(ena.A).d(0.5F).a(dln.J)));
+   public static final dea dY = a("basalt", new dkm(drc.d.a().a(ena.D).a(dse.b).m().a(1.25F, 4.2F).a(dln.K)));
+   public static final dea dZ = a("polished_basalt", new dkm(drc.d.a().a(ena.D).a(dse.b).m().a(1.25F, 4.2F).a(dln.K)));
+   public static final dea ea = a("soul_torch", new dmk(ky.L, drc.d.a().b().d().a($$0x -> 10).a(dln.b).a(enb.b)));
+   public static final dea eb = a("soul_wall_torch", new dnc(ky.L, drc.d.a().b().d().a($$0x -> 10).a(dln.b).a(ea).a(enb.b)));
+   public static final dea ec = a("glowstone", new dea(drc.d.a().a(ena.c).a(dse.p).d(0.3F).a(dln.h).a($$0x -> 15).a(dec::b)));
+   public static final dea ed = a("nether_portal", new dje(drc.d.a().b().e().d(-1.0F).a(dln.h).a($$0x -> 11).a(enb.c)));
+   public static final dea ee = a("carved_pumpkin", new dgt(drc.d.a().a(ena.p).d(1.0F).a(dln.b).a(dec::b).a(enb.b)));
+   public static final dea ef = a("jack_o_lantern", new deu(drc.d.a().a(ena.p).d(1.0F).a(dln.b).a($$0x -> 15).a(dec::b).a(enb.b)));
+   public static final dea eg = a("cake", new dem(drc.d.a().j().d(0.5F).a(dln.i).a(enb.b)));
+   public static final dea eh = a("repeater", new dkh(drc.d.a().d().a(dln.f).a(enb.b)));
+   public static final dea ei = a("white_stained_glass", b(csj.a));
+   public static final dea ej = a("orange_stained_glass", b(csj.b));
+   public static final dea ek = a("magenta_stained_glass", b(csj.c));
+   public static final dea el = a("light_blue_stained_glass", b(csj.d));
+   public static final dea em = a("yellow_stained_glass", b(csj.e));
+   public static final dea en = a("lime_stained_glass", b(csj.f));
+   public static final dea eo = a("pink_stained_glass", b(csj.g));
+   public static final dea ep = a("gray_stained_glass", b(csj.h));
+   public static final dea eq = a("light_gray_stained_glass", b(csj.i));
+   public static final dea er = a("cyan_stained_glass", b(csj.j));
+   public static final dea es = a("purple_stained_glass", b(csj.k));
+   public static final dea et = a("blue_stained_glass", b(csj.l));
+   public static final dea eu = a("brown_stained_glass", b(csj.m));
+   public static final dea ev = a("green_stained_glass", b(csj.n));
+   public static final dea ew = a("red_stained_glass", b(csj.o));
+   public static final dea ex = a("black_stained_glass", b(csj.p));
+   public static final dea ey = a("oak_trapdoor", new dmn(drs.g, drc.d.a().a(ena.n).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea ez = a("spruce_trapdoor", new dmn(drs.h, drc.d.a().a(ena.I).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eA = a("birch_trapdoor", new dmn(drs.i, drc.d.a().a(ena.c).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eB = a("jungle_trapdoor", new dmn(drs.l, drc.d.a().a(ena.k).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eC = a("acacia_trapdoor", new dmn(drs.j, drc.d.a().a(ena.p).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eD = a("cherry_trapdoor", new dmn(drs.k, drc.d.a().a(ena.K).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eE = a("dark_oak_trapdoor", new dmn(drs.m, drc.d.a().a(ena.A).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eF = a("mangrove_trapdoor", new dmn(drs.p, drc.d.a().a(ena.C).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eG = a("bamboo_trapdoor", new dmn(drs.q, drc.d.a().a(ena.s).a(dse.e).d(3.0F).c().a(dec::a).h()));
+   public static final dea eH = a("stone_bricks", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea eI = a("mossy_stone_bricks", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea eJ = a("cracked_stone_bricks", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea eK = a("chiseled_stone_bricks", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea eL = a("packed_mud", new dea(drc.d.b(j).a(1.0F, 3.0F).a(dln.aO)));
+   public static final dea eM = a("mud_bricks", new dea(drc.d.a().a(ena.S).a(dse.b).m().a(1.5F, 3.0F).a(dln.aN)));
+   public static final dea eN = a("infested_stone", new dhz(b, drc.d.a().a(ena.j)));
+   public static final dea eO = a("infested_cobblestone", new dhz(m, drc.d.a().a(ena.j)));
+   public static final dea eP = a("infested_stone_bricks", new dhz(eH, drc.d.a().a(ena.j)));
+   public static final dea eQ = a("infested_mossy_stone_bricks", new dhz(eI, drc.d.a().a(ena.j)));
+   public static final dea eR = a("infested_cracked_stone_bricks", new dhz(eJ, drc.d.a().a(ena.j)));
+   public static final dea eS = a("infested_chiseled_stone_bricks", new dhz(eK, drc.d.a().a(ena.j)));
+   public static final dea eT = a("brown_mushroom_block", new dhx(drc.d.a().a(ena.k).a(dse.e).d(0.2F).a(dln.b).h()));
+   public static final dea eU = a("red_mushroom_block", new dhx(drc.d.a().a(ena.C).a(dse.e).d(0.2F).a(dln.b).h()));
+   public static final dea eV = a("mushroom_stem", new dhx(drc.d.a().a(ena.d).a(dse.e).d(0.2F).a(dln.b).h()));
+   public static final dea eW = a("iron_bars", new dib(drc.d.a().m().a(5.0F, 6.0F).a(dln.g).c()));
+   public static final dea eX = a("chain", new dfa(drc.d.a().j().m().a(5.0F, 6.0F).a(dln.U).c()));
+   public static final dea eY = a("glass_pane", new dib(drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea eZ = a(akd.a, new djy(drc.d.a().a(ena.p).a(dse.m).d(1.0F).a(dln.b).a(enb.b)));
+   public static final dea fa = a(akd.d, new dea(drc.d.a().a(ena.t).d(1.0F).a(dln.b).a(enb.b)));
+   public static final dea fb = a(akd.c, new ddb(akd.b, akd.a, ake.a, drc.d.a().a(ena.h).b().d().a(dln.b).a(enb.b)));
+   public static final dea fc = a(akd.f, new ddb(akd.e, akd.d, ake.b, drc.d.a().a(ena.h).b().d().a(dln.b).a(enb.b)));
+   public static final dea fd = a(akd.b, new dlw(akd.a, akd.c, ake.a, drc.d.a().a(ena.h).b().e().d().a(dln.x).a(enb.b)));
+   public static final dea fe = a(akd.e, new dlw(akd.d, akd.f, ake.b, drc.d.a().a(ena.h).b().e().d().a(dln.x).a(enb.b)));
+   public static final dea ff = a("vine", new dmw(drc.d.a().a(ena.h).o().b().e().d(0.2F).a(dln.y).h().a(enb.b)));
+   public static final dea fg = a("glow_lichen", new dhk(drc.d.a().a(ena.aj).o().b().d(0.2F).a(dln.aD).a(dhk.b(7)).h().a(enb.b)));
+   public static final dea fh = a("oak_fence_gate", new dgz(dsq.b, drc.d.a().a(n.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea fi = a("brick_stairs", b(cj));
+   public static final dea fj = a("stone_brick_stairs", b(eH));
+   public static final dea fk = a("mud_brick_stairs", b(eM));
+   public static final dea fl = a("mycelium", new djd(drc.d.a().a(ena.y).e().d(0.6F).a(dln.d)));
+   public static final dea fm = a("lily_pad", new dnd(drc.d.a().a(ena.h).d().a(dln.e).c().a(enb.b)));
+   public static final dea fn = a("nether_bricks", new dea(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea fo = a("nether_brick_fence", new dgy(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea fp = a("nether_brick_stairs", b(fn));
+   public static final dea fq = a("nether_wart", new djh(drc.d.a().a(ena.C).b().e().a(dln.z).a(enb.b)));
+   public static final dea fr = a("enchanting_table", new dgm(drc.d.a().a(ena.C).a(dse.b).m().a($$0x -> 7).a(5.0F, 1200.0F)));
+   public static final dea fs = a("brewing_stand", new dee(drc.d.a().a(ena.g).m().d(0.5F).a($$0x -> 1).c()));
+   public static final dea ft = a("cauldron", new dev(drc.d.a().a(ena.l).m().d(2.0F).c()));
+   public static final dea fu = a("water_cauldron", new dij(dby.c.b, ju.d, drc.d.b(ft)));
+   public static final dea fv = a("lava_cauldron", new dii(drc.d.b(ft).a($$0x -> 15)));
+   public static final dea fw = a("powder_snow_cauldron", new dij(dby.c.c, ju.f, drc.d.b(ft)));
+   public static final dea fx = a("end_portal", new dgo(drc.d.a().a(ena.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(enb.c)));
+   public static final dea fy = a("end_portal_frame", new dgp(drc.d.a().a(ena.B).a(dse.b).a(dln.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g()));
+   public static final dea fz = a("end_stone", new dea(drc.d.a().a(ena.c).a(dse.b).m().a(3.0F, 9.0F)));
+   public static final dea fA = a("dragon_egg", new dgj(drc.d.a().a(ena.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(enb.b)));
+   public static final dea fB = a("redstone_lamp", new dkd(drc.d.a().a(a(15)).d(0.3F).a(dln.h).a(dec::b)));
+   public static final dea fC = a("cocoa", new dfh(drc.d.a().a(ena.h).e().a(0.2F, 3.0F).a(dln.b).c().a(enb.b)));
+   public static final dea fD = a("sandstone_stairs", b(aV));
+   public static final dea fE = a("emerald_ore", new dgk(bph.a(3, 7), drc.d.a().a(ena.l).a(dse.b).m().a(3.0F, 3.0F)));
+   public static final dea fF = a("deepslate_emerald_ore", new dgk(bph.a(3, 7), drc.d.b(fE).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea fG = a("ender_chest", new dgr(drc.d.a().a(ena.l).a(dse.b).m().a(22.5F, 600.0F).a($$0x -> 7)));
+   public static final dea fH = a("tripwire_hook", new dmr(drc.d.a().b().a(dln.b).a(enb.b)));
+   public static final dea fI = a("tripwire", new dmq(fH, drc.d.a().b().a(enb.b)));
+   public static final dea fJ = a("emerald_block", new dea(drc.d.a().a(ena.H).a(dse.n).m().a(5.0F, 6.0F).a(dln.g)));
+   public static final dea fK = a("spruce_stairs", b(o));
+   public static final dea fL = a("birch_stairs", b(p));
+   public static final dea fM = a("jungle_stairs", b(q));
+   public static final dea fN = a("command_block", new dfj(false, drc.d.a().a(ena.A).m().a(-1.0F, 3600000.0F).g()));
+   public static final dea fO = a("beacon", new dds(drc.d.a().a(ena.F).a(dse.d).d(3.0F).a($$0x -> 15).c().a(dec::b)));
+   public static final dea fP = a("cobblestone_wall", new dmy(drc.d.b(m).j()));
+   public static final dea fQ = a("mossy_cobblestone_wall", new dmy(drc.d.b(m).j()));
+   public static final dea fR = a("flower_pot", a(a));
+   public static final dea fS = a("potted_torchflower", a(bS));
+   public static final dea fT = a("potted_oak_sapling", a(x));
+   public static final dea fU = a("potted_spruce_sapling", a(y));
+   public static final dea fV = a("potted_birch_sapling", a(z));
+   public static final dea fW = a("potted_jungle_sapling", a(A));
+   public static final dea fX = a("potted_acacia_sapling", a(B));
+   public static final dea fY = a("potted_cherry_sapling", a(C));
+   public static final dea fZ = a("potted_dark_oak_sapling", a(D));
+   public static final dea ga = a("potted_mangrove_propagule", a(E));
+   public static final dea gb = a("potted_fern", a(bu));
+   public static final dea gc = a("potted_dandelion", a(bR));
+   public static final dea gd = a("potted_poppy", a(bT));
+   public static final dea ge = a("potted_blue_orchid", a(bU));
+   public static final dea gf = a("potted_allium", a(bV));
+   public static final dea gg = a("potted_azure_bluet", a(bW));
+   public static final dea gh = a("potted_red_tulip", a(bX));
+   public static final dea gi = a("potted_orange_tulip", a(bY));
+   public static final dea gj = a("potted_white_tulip", a(bZ));
+   public static final dea gk = a("potted_pink_tulip", a(ca));
+   public static final dea gl = a("potted_oxeye_daisy", a(cb));
+   public static final dea gm = a("potted_cornflower", a(cc));
+   public static final dea gn = a("potted_lily_of_the_valley", a(ce));
+   public static final dea go = a("potted_wither_rose", a(cd));
+   public static final dea gp = a("potted_red_mushroom", a(cg));
+   public static final dea gq = a("potted_brown_mushroom", a(cf));
+   public static final dea gr = a("potted_dead_bush", a(bv));
+   public static final dea gs = a("potted_cactus", a(dQ));
+   public static final dea gt = a("carrots", new des(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea gu = a("potatoes", new djt(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea gv = a("oak_button", a(drs.g));
+   public static final dea gw = a("spruce_button", a(drs.h));
+   public static final dea gx = a("birch_button", a(drs.i));
+   public static final dea gy = a("jungle_button", a(drs.l));
+   public static final dea gz = a("acacia_button", a(drs.j));
+   public static final dea gA = a("cherry_button", a(drs.k));
+   public static final dea gB = a("dark_oak_button", a(drs.m));
+   public static final dea gC = a("mangrove_button", a(drs.p));
+   public static final dea gD = a("bamboo_button", a(drs.q));
+   public static final dea gE = a("skeleton_skull", new dlc(dlc.b.c, drc.d.a().a(dse.r).d(1.0F).a(enb.b)));
+   public static final dea gF = a("skeleton_wall_skull", new dnb(dlc.b.c, drc.d.a().d(1.0F).a(gE).a(enb.b)));
+   public static final dea gG = a("wither_skeleton_skull", new dnt(drc.d.a().a(dse.u).d(1.0F).a(enb.b)));
+   public static final dea gH = a("wither_skeleton_wall_skull", new dnu(drc.d.a().d(1.0F).a(gG).a(enb.b)));
+   public static final dea gI = a("zombie_head", new dlc(dlc.b.f, drc.d.a().a(dse.q).d(1.0F).a(enb.b)));
+   public static final dea gJ = a("zombie_wall_head", new dnb(dlc.b.f, drc.d.a().d(1.0F).a(gI).a(enb.b)));
+   public static final dea gK = a("player_head", new djq(drc.d.a().a(dse.w).d(1.0F).a(enb.b)));
+   public static final dea gL = a("player_wall_head", new djr(drc.d.a().d(1.0F).a(gK).a(enb.b)));
+   public static final dea gM = a("creeper_head", new dlc(dlc.b.g, drc.d.a().a(dse.s).d(1.0F).a(enb.b)));
+   public static final dea gN = a("creeper_wall_head", new dnb(dlc.b.g, drc.d.a().d(1.0F).a(gM).a(enb.b)));
+   public static final dea gO = a("dragon_head", new dlc(dlc.b.i, drc.d.a().a(dse.t).d(1.0F).a(enb.b)));
+   public static final dea gP = a("dragon_wall_head", new dnb(dlc.b.i, drc.d.a().d(1.0F).a(gO).a(enb.b)));
+   public static final dea gQ = a("piglin_head", new dlc(dlc.b.h, drc.d.a().a(dse.v).d(1.0F).a(enb.b)));
+   public static final dea gR = a("piglin_wall_head", new djm(drc.d.a().d(1.0F).a(gQ).a(enb.b)));
+   public static final dea gS = a("anvil", new dda(drc.d.a().a(ena.g).m().a(5.0F, 1200.0F).a(dln.n).a(enb.c)));
+   public static final dea gT = a("chipped_anvil", new dda(drc.d.a().a(ena.g).m().a(5.0F, 1200.0F).a(dln.n).a(enb.c)));
+   public static final dea gU = a("damaged_anvil", new dda(drc.d.a().a(ena.g).m().a(5.0F, 1200.0F).a(dln.n).a(enb.c)));
+   public static final dea gV = a("trapped_chest", new dmo(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea gW = a("light_weighted_pressure_plate", new dnq(15, drs.d, drc.d.a().a(ena.E).j().m().b().d(0.5F).a(enb.b)));
+   public static final dea gX = a("heavy_weighted_pressure_plate", new dnq(150, drs.b, drc.d.a().a(ena.g).j().m().b().d(0.5F).a(enb.b)));
+   public static final dea gY = a("comparator", new dfk(drc.d.a().d().a(dln.f).a(enb.b)));
+   public static final dea gZ = a("daylight_detector", new dfy(drc.d.a().a(ena.n).a(dse.e).d(0.2F).a(dln.b).h()));
+   public static final dea ha = a("redstone_block", new djv(drc.d.a().a(ena.e).m().a(5.0F, 6.0F).a(dln.g).a(dec::b)));
+   public static final dea hb = a("nether_quartz_ore", new dgk(bph.a(2, 5), drc.d.a().a(ena.J).a(dse.b).m().a(3.0F, 3.0F).a(dln.P)));
+   public static final dea hc = a("hopper", new dhv(drc.d.a().a(ena.l).m().a(3.0F, 4.8F).a(dln.g).c()));
+   public static final dea hd = a("quartz_block", new dea(drc.d.a().a(ena.o).a(dse.b).m().d(0.8F)));
+   public static final dea he = a("chiseled_quartz_block", new dea(drc.d.a().a(ena.o).a(dse.b).m().d(0.8F)));
+   public static final dea hf = a("quartz_pillar", new dkm(drc.d.a().a(ena.o).a(dse.b).m().d(0.8F)));
+   public static final dea hg = a("quartz_stairs", b(hd));
+   public static final dea hh = a("activator_rail", new djw(drc.d.a().b().d(0.7F).a(dln.g)));
+   public static final dea hi = a("dropper", new dgl(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F)));
+   public static final dea hj = a("white_terracotta", new dea(drc.d.a().a(ena.K).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hk = a("orange_terracotta", new dea(drc.d.a().a(ena.L).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hl = a("magenta_terracotta", new dea(drc.d.a().a(ena.M).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hm = a("light_blue_terracotta", new dea(drc.d.a().a(ena.N).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hn = a("yellow_terracotta", new dea(drc.d.a().a(ena.O).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea ho = a("lime_terracotta", new dea(drc.d.a().a(ena.P).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hp = a("pink_terracotta", new dea(drc.d.a().a(ena.Q).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hq = a("gray_terracotta", new dea(drc.d.a().a(ena.R).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hr = a("light_gray_terracotta", new dea(drc.d.a().a(ena.S).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hs = a("cyan_terracotta", new dea(drc.d.a().a(ena.T).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea ht = a("purple_terracotta", new dea(drc.d.a().a(ena.U).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hu = a("blue_terracotta", new dea(drc.d.a().a(ena.V).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hv = a("brown_terracotta", new dea(drc.d.a().a(ena.W).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hw = a("green_terracotta", new dea(drc.d.a().a(ena.X).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hx = a("red_terracotta", new dea(drc.d.a().a(ena.Y).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hy = a("black_terracotta", new dea(drc.d.a().a(ena.Z).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea hz = a("white_stained_glass_pane", new dlt(csj.a, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hA = a("orange_stained_glass_pane", new dlt(csj.b, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hB = a("magenta_stained_glass_pane", new dlt(csj.c, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hC = a("light_blue_stained_glass_pane", new dlt(csj.d, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hD = a("yellow_stained_glass_pane", new dlt(csj.e, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hE = a("lime_stained_glass_pane", new dlt(csj.f, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hF = a("pink_stained_glass_pane", new dlt(csj.g, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hG = a("gray_stained_glass_pane", new dlt(csj.h, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hH = a("light_gray_stained_glass_pane", new dlt(csj.i, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hI = a("cyan_stained_glass_pane", new dlt(csj.j, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hJ = a("purple_stained_glass_pane", new dlt(csj.k, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hK = a("blue_stained_glass_pane", new dlt(csj.l, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hL = a("brown_stained_glass_pane", new dlt(csj.m, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hM = a("green_stained_glass_pane", new dlt(csj.n, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hN = a("red_stained_glass_pane", new dlt(csj.o, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hO = a("black_stained_glass_pane", new dlt(csj.p, drc.d.a().a(dse.d).d(0.3F).a(dln.h).c()));
+   public static final dea hP = a("acacia_stairs", b(r));
+   public static final dea hQ = a("cherry_stairs", b(s));
+   public static final dea hR = a("dark_oak_stairs", b(t));
+   public static final dea hS = a("mangrove_stairs", b(u));
+   public static final dea hT = a("bamboo_stairs", b(v));
+   public static final dea hU = a("bamboo_mosaic_stairs", b(w));
+   public static final dea hV = a("slime_block", new dle(drc.d.a().a(ena.b).a(0.8F).a(dln.o).c()));
+   public static final dea hW = a("barrier", new ddh(drc.d.a().a(-1.0F, 3600000.8F).g().c().a(dec::a).n().a(enb.c)));
+   public static final dea hX = a("light", new dio(drc.d.a().o().a(-1.0F, 3600000.8F).g().c().a(dio.e)));
+   public static final dea hY = a("iron_trapdoor", new dmn(drs.b, drc.d.a().a(ena.g).m().d(5.0F).c().a(dec::a)));
+   public static final dea hZ = a("prismarine", new dea(drc.d.a().a(ena.x).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ia = a("prismarine_bricks", new dea(drc.d.a().a(ena.F).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ib = a("dark_prismarine", new dea(drc.d.a().a(ena.F).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ic = a("prismarine_stairs", b(hZ));
+   public static final dea id = a("prismarine_brick_stairs", b(ia));
+   public static final dea ie = a("dark_prismarine_stairs", b(ib));
+   public static final dea if = a("prismarine_slab", new dld(drc.d.a().a(ena.x).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ig = a("prismarine_brick_slab", new dld(drc.d.a().a(ena.F).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ih = a("dark_prismarine_slab", new dld(drc.d.a().a(ena.F).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ii = a("sea_lantern", new dea(drc.d.a().a(ena.o).a(dse.d).d(0.3F).a(dln.h).a($$0x -> 15).a(dec::b)));
+   public static final dea ij = a("hay_block", new dhs(drc.d.a().a(ena.s).a(dse.o).d(0.5F).a(dln.d)));
+   public static final dea ik = a("white_carpet", new dnv(csj.a, drc.d.a().a(ena.i).d(0.1F).a(dln.i).h()));
+   public static final dea il = a("orange_carpet", new dnv(csj.b, drc.d.a().a(ena.p).d(0.1F).a(dln.i).h()));
+   public static final dea im = a("magenta_carpet", new dnv(csj.c, drc.d.a().a(ena.q).d(0.1F).a(dln.i).h()));
+   public static final dea in = a("light_blue_carpet", new dnv(csj.d, drc.d.a().a(ena.r).d(0.1F).a(dln.i).h()));
+   public static final dea io = a("yellow_carpet", new dnv(csj.e, drc.d.a().a(ena.s).d(0.1F).a(dln.i).h()));
+   public static final dea ip = a("lime_carpet", new dnv(csj.f, drc.d.a().a(ena.t).d(0.1F).a(dln.i).h()));
+   public static final dea iq = a("pink_carpet", new dnv(csj.g, drc.d.a().a(ena.u).d(0.1F).a(dln.i).h()));
+   public static final dea ir = a("gray_carpet", new dnv(csj.h, drc.d.a().a(ena.v).d(0.1F).a(dln.i).h()));
+   public static final dea is = a("light_gray_carpet", new dnv(csj.i, drc.d.a().a(ena.w).d(0.1F).a(dln.i).h()));
+   public static final dea it = a("cyan_carpet", new dnv(csj.j, drc.d.a().a(ena.x).d(0.1F).a(dln.i).h()));
+   public static final dea iu = a("purple_carpet", new dnv(csj.k, drc.d.a().a(ena.y).d(0.1F).a(dln.i).h()));
+   public static final dea iv = a("blue_carpet", new dnv(csj.l, drc.d.a().a(ena.z).d(0.1F).a(dln.i).h()));
+   public static final dea iw = a("brown_carpet", new dnv(csj.m, drc.d.a().a(ena.A).d(0.1F).a(dln.i).h()));
+   public static final dea ix = a("green_carpet", new dnv(csj.n, drc.d.a().a(ena.B).d(0.1F).a(dln.i).h()));
+   public static final dea iy = a("red_carpet", new dnv(csj.o, drc.d.a().a(ena.C).d(0.1F).a(dln.i).h()));
+   public static final dea iz = a("black_carpet", new dnv(csj.p, drc.d.a().a(ena.D).d(0.1F).a(dln.i).h()));
+   public static final dea iA = a("terracotta", new dea(drc.d.a().a(ena.p).a(dse.b).m().a(1.25F, 4.2F)));
+   public static final dea iB = a("coal_block", new dea(drc.d.a().a(ena.D).a(dse.b).m().a(5.0F, 6.0F)));
+   public static final dea iC = a("packed_ice", new dea(drc.d.a().a(ena.f).a(dse.i).a(0.98F).d(0.5F).a(dln.h)));
+   public static final dea iD = a("sunflower", new dme(drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iE = a("lilac", new dme(drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iF = a("rose_bush", new dme(drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iG = a("peony", new dme(drc.d.a().a(ena.h).b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iH = a("tall_grass", new dgi(drc.d.a().a(ena.h).o().b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iI = a("large_fern", new dgi(drc.d.a().a(ena.h).o().b().d().a(dln.d).a(drc.c.b).h().a(enb.b)));
+   public static final dea iJ = a("white_banner", new ddf(csj.a, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iK = a("orange_banner", new ddf(csj.b, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iL = a("magenta_banner", new ddf(csj.c, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iM = a("light_blue_banner", new ddf(csj.d, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iN = a("yellow_banner", new ddf(csj.e, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iO = a("lime_banner", new ddf(csj.f, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iP = a("pink_banner", new ddf(csj.g, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iQ = a("gray_banner", new ddf(csj.h, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iR = a("light_gray_banner", new ddf(csj.i, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iS = a("cyan_banner", new ddf(csj.j, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iT = a("purple_banner", new ddf(csj.k, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iU = a("blue_banner", new ddf(csj.l, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iV = a("brown_banner", new ddf(csj.m, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iW = a("green_banner", new ddf(csj.n, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iX = a("red_banner", new ddf(csj.o, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iY = a("black_banner", new ddf(csj.p, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).h()));
+   public static final dea iZ = a("white_wall_banner", new dmx(csj.a, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iJ).h()));
+   public static final dea ja = a("orange_wall_banner", new dmx(csj.b, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iK).h()));
+   public static final dea jb = a("magenta_wall_banner", new dmx(csj.c, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iL).h()));
+   public static final dea jc = a("light_blue_wall_banner", new dmx(csj.d, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iM).h()));
+   public static final dea jd = a("yellow_wall_banner", new dmx(csj.e, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iN).h()));
+   public static final dea je = a("lime_wall_banner", new dmx(csj.f, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iO).h()));
+   public static final dea jf = a("pink_wall_banner", new dmx(csj.g, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iP).h()));
+   public static final dea jg = a("gray_wall_banner", new dmx(csj.h, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iQ).h()));
+   public static final dea jh = a("light_gray_wall_banner", new dmx(csj.i, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iR).h()));
+   public static final dea ji = a("cyan_wall_banner", new dmx(csj.j, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iS).h()));
+   public static final dea jj = a("purple_wall_banner", new dmx(csj.k, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iT).h()));
+   public static final dea jk = a("blue_wall_banner", new dmx(csj.l, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iU).h()));
+   public static final dea jl = a("brown_wall_banner", new dmx(csj.m, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iV).h()));
+   public static final dea jm = a("green_wall_banner", new dmx(csj.n, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iW).h()));
+   public static final dea jn = a("red_wall_banner", new dmx(csj.o, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iX).h()));
+   public static final dea jo = a("black_wall_banner", new dmx(csj.p, drc.d.a().a(ena.n).j().a(dse.e).b().d(1.0F).a(dln.b).a(iY).h()));
+   public static final dea jp = a("red_sandstone", new dea(drc.d.a().a(ena.p).a(dse.b).m().d(0.8F)));
+   public static final dea jq = a("chiseled_red_sandstone", new dea(drc.d.a().a(ena.p).a(dse.b).m().d(0.8F)));
+   public static final dea jr = a("cut_red_sandstone", new dea(drc.d.a().a(ena.p).a(dse.b).m().d(0.8F)));
+   public static final dea js = a("red_sandstone_stairs", b(jp));
+   public static final dea jt = a("oak_slab", new dld(drc.d.a().a(ena.n).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea ju = a("spruce_slab", new dld(drc.d.a().a(ena.I).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jv = a("birch_slab", new dld(drc.d.a().a(ena.c).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jw = a("jungle_slab", new dld(drc.d.a().a(ena.k).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jx = a("acacia_slab", new dld(drc.d.a().a(ena.p).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jy = a("cherry_slab", new dld(drc.d.a().a(ena.K).a(dse.e).a(2.0F, 3.0F).a(dln.aU).h()));
+   public static final dea jz = a("dark_oak_slab", new dld(drc.d.a().a(ena.A).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jA = a("mangrove_slab", new dld(drc.d.a().a(ena.C).a(dse.e).a(2.0F, 3.0F).a(dln.b).h()));
+   public static final dea jB = a("bamboo_slab", new dld(drc.d.a().a(ena.s).a(dse.e).a(2.0F, 3.0F).a(dln.aS).h()));
+   public static final dea jC = a("bamboo_mosaic_slab", new dld(drc.d.a().a(ena.s).a(dse.e).a(2.0F, 3.0F).a(dln.aS).h()));
+   public static final dea jD = a("stone_slab", new dld(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jE = a("smooth_stone_slab", new dld(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jF = a("sandstone_slab", new dld(drc.d.a().a(ena.c).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jG = a("cut_sandstone_slab", new dld(drc.d.a().a(ena.c).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jH = a("petrified_oak_slab", new dld(drc.d.a().a(ena.n).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jI = a("cobblestone_slab", new dld(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jJ = a("brick_slab", new dld(drc.d.a().a(ena.C).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jK = a("stone_brick_slab", new dld(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jL = a("mud_brick_slab", new dld(drc.d.a().a(ena.S).a(dse.b).m().a(1.5F, 3.0F).a(dln.aN)));
+   public static final dea jM = a("nether_brick_slab", new dld(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea jN = a("quartz_slab", new dld(drc.d.a().a(ena.o).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jO = a("red_sandstone_slab", new dld(drc.d.a().a(ena.p).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jP = a("cut_red_sandstone_slab", new dld(drc.d.a().a(ena.p).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jQ = a("purpur_slab", new dld(drc.d.a().a(ena.q).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jR = a("smooth_stone", new dea(drc.d.a().a(ena.l).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jS = a("smooth_sandstone", new dea(drc.d.a().a(ena.c).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jT = a("smooth_quartz", new dea(drc.d.a().a(ena.o).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jU = a("smooth_red_sandstone", new dea(drc.d.a().a(ena.p).a(dse.b).m().a(2.0F, 6.0F)));
+   public static final dea jV = a("spruce_fence_gate", new dgz(dsq.c, drc.d.a().a(o.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea jW = a("birch_fence_gate", new dgz(dsq.d, drc.d.a().a(p.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea jX = a("jungle_fence_gate", new dgz(dsq.g, drc.d.a().a(q.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea jY = a("acacia_fence_gate", new dgz(dsq.e, drc.d.a().a(r.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea jZ = a("cherry_fence_gate", new dgz(dsq.f, drc.d.a().a(s.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea ka = a("dark_oak_fence_gate", new dgz(dsq.h, drc.d.a().a(t.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea kb = a("mangrove_fence_gate", new dgz(dsq.k, drc.d.a().a(u.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea kc = a("bamboo_fence_gate", new dgz(dsq.l, drc.d.a().a(v.w()).j().a(dse.e).a(2.0F, 3.0F).h()));
+   public static final dea kd = a("spruce_fence", new dgy(drc.d.a().a(o.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea ke = a("birch_fence", new dgy(drc.d.a().a(p.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea kf = a("jungle_fence", new dgy(drc.d.a().a(q.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea kg = a("acacia_fence", new dgy(drc.d.a().a(r.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea kh = a("cherry_fence", new dgy(drc.d.a().a(s.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.aU)));
+   public static final dea ki = a("dark_oak_fence", new dgy(drc.d.a().a(t.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea kj = a("mangrove_fence", new dgy(drc.d.a().a(u.w()).a(dse.e).a(2.0F, 3.0F).h().a(dln.b)));
+   public static final dea kk = a("bamboo_fence", new dgy(drc.d.a().a(v.w()).a(dse.e).a(2.0F, 3.0F).a(dln.aS).h()));
+   public static final dea kl = a("spruce_door", new dgg(drs.h, drc.d.a().a(o.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea km = a("birch_door", new dgg(drs.i, drc.d.a().a(p.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea kn = a("jungle_door", new dgg(drs.l, drc.d.a().a(q.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea ko = a("acacia_door", new dgg(drs.j, drc.d.a().a(r.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea kp = a("cherry_door", new dgg(drs.k, drc.d.a().a(s.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea kq = a("dark_oak_door", new dgg(drs.m, drc.d.a().a(t.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea kr = a("mangrove_door", new dgg(drs.p, drc.d.a().a(u.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea ks = a("bamboo_door", new dgg(drs.q, drc.d.a().a(v.w()).a(dse.e).d(3.0F).c().h().a(enb.b)));
+   public static final dea kt = a("end_rod", new dgq(drc.d.a().k().d().a($$0x -> 14).a(dln.b).c()));
+   public static final dea ku = a("chorus_plant", new dfg(drc.d.a().a(ena.y).k().d(0.4F).a(dln.b).c().a(enb.b)));
+   public static final dea kv = a("chorus_flower", new dff(ku, drc.d.a().a(ena.y).k().e().d(0.4F).a(dln.b).c().a(dec::a).a(enb.b).a(dec::b)));
+   public static final dea kw = a("purpur_block", new dea(drc.d.a().a(ena.q).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea kx = a("purpur_pillar", new dkm(drc.d.a().a(ena.q).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ky = a("purpur_stairs", b(kw));
+   public static final dea kz = a("end_stone_bricks", new dea(drc.d.a().a(ena.c).a(dse.b).m().a(3.0F, 9.0F)));
+   public static final dea kA = a("torchflower_crop", new dml(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea kB = a("pitcher_crop", new djp(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea kC = a("pitcher_plant", new dgi(drc.d.a().a(ena.h).b().d().a(dln.w).a(drc.c.b).h().a(enb.b)));
+   public static final dea kD = a("beetroots", new ddv(drc.d.a().a(ena.h).b().e().d().a(dln.w).a(enb.b)));
+   public static final dea kE = a("dirt_path", new dge(drc.d.a().a(ena.k).d(0.65F).a(dln.d).c(dec::a).b(dec::a)));
+   public static final dea kF = a("end_gateway", new dgn(drc.d.a().a(ena.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(enb.c)));
+   public static final dea kG = a("repeating_command_block", new dfj(false, drc.d.a().a(ena.y).m().a(-1.0F, 3600000.0F).g()));
+   public static final dea kH = a("chain_command_block", new dfj(true, drc.d.a().a(ena.B).m().a(-1.0F, 3600000.0F).g()));
+   public static final dea kI = a(
+      "frosted_ice", new dhf(drc.d.a().a(ena.f).a(0.98F).e().d(0.5F).a(dln.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bsc.aD).a(dec::b))
    );
-   public static final dtw b = djc.aE;
-   protected static final float c = 2.0F;
-   private static final Map<iw, exn> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         iw.d,
-         dfc.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         iw.e,
-         dfc.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         iw.c,
-         dfc.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         iw.f,
-         dfc.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
+   public static final dea kJ = a(
+      "magma_block", new dit(drc.d.a().a(ena.J).a(dse.b).m().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dec::a).e(dec::a))
    );
-   private final aks<dfc> e;
-   private final aks<dfc> f;
-   private final aks<cuc> g;
+   public static final dea kK = a("nether_wart_block", new dea(drc.d.a().a(ena.C).d(1.0F).a(dln.L)));
+   public static final dea kL = a("red_nether_bricks", new dea(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea kM = a("bone_block", new dkm(drc.d.a().a(ena.c).a(dse.j).m().d(2.0F).a(dln.Q)));
+   public static final dea kN = a("structure_void", new dlz(drc.d.a().o().b().g().n().a(enb.b)));
+   public static final dea kO = a("observer", new djl(drc.d.a().a(ena.l).a(dse.b).d(3.0F).m().a(dec::b)));
+   public static final dea kP = a("shulker_box", a(null, ena.y));
+   public static final dea kQ = a("white_shulker_box", a(csj.a, ena.i));
+   public static final dea kR = a("orange_shulker_box", a(csj.b, ena.p));
+   public static final dea kS = a("magenta_shulker_box", a(csj.c, ena.q));
+   public static final dea kT = a("light_blue_shulker_box", a(csj.d, ena.r));
+   public static final dea kU = a("yellow_shulker_box", a(csj.e, ena.s));
+   public static final dea kV = a("lime_shulker_box", a(csj.f, ena.t));
+   public static final dea kW = a("pink_shulker_box", a(csj.g, ena.u));
+   public static final dea kX = a("gray_shulker_box", a(csj.h, ena.v));
+   public static final dea kY = a("light_gray_shulker_box", a(csj.i, ena.w));
+   public static final dea kZ = a("cyan_shulker_box", a(csj.j, ena.x));
+   public static final dea la = a("purple_shulker_box", a(csj.k, ena.U));
+   public static final dea lb = a("blue_shulker_box", a(csj.l, ena.z));
+   public static final dea lc = a("brown_shulker_box", a(csj.m, ena.A));
+   public static final dea ld = a("green_shulker_box", a(csj.n, ena.B));
+   public static final dea le = a("red_shulker_box", a(csj.o, ena.C));
+   public static final dea lf = a("black_shulker_box", a(csj.p, ena.D));
+   public static final dea lg = a("white_glazed_terracotta", new dhj(drc.d.a().a(csj.a).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lh = a("orange_glazed_terracotta", new dhj(drc.d.a().a(csj.b).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea li = a("magenta_glazed_terracotta", new dhj(drc.d.a().a(csj.c).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lj = a("light_blue_glazed_terracotta", new dhj(drc.d.a().a(csj.d).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lk = a("yellow_glazed_terracotta", new dhj(drc.d.a().a(csj.e).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea ll = a("lime_glazed_terracotta", new dhj(drc.d.a().a(csj.f).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lm = a("pink_glazed_terracotta", new dhj(drc.d.a().a(csj.g).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea ln = a("gray_glazed_terracotta", new dhj(drc.d.a().a(csj.h).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lo = a("light_gray_glazed_terracotta", new dhj(drc.d.a().a(csj.i).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lp = a("cyan_glazed_terracotta", new dhj(drc.d.a().a(csj.j).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lq = a("purple_glazed_terracotta", new dhj(drc.d.a().a(csj.k).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lr = a("blue_glazed_terracotta", new dhj(drc.d.a().a(csj.l).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea ls = a("brown_glazed_terracotta", new dhj(drc.d.a().a(csj.m).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lt = a("green_glazed_terracotta", new dhj(drc.d.a().a(csj.n).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lu = a("red_glazed_terracotta", new dhj(drc.d.a().a(csj.o).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lv = a("black_glazed_terracotta", new dhj(drc.d.a().a(csj.p).a(dse.b).m().d(1.4F).a(enb.e)));
+   public static final dea lw = a("white_concrete", new dea(drc.d.a().a(csj.a).a(dse.b).m().d(1.8F)));
+   public static final dea lx = a("orange_concrete", new dea(drc.d.a().a(csj.b).a(dse.b).m().d(1.8F)));
+   public static final dea ly = a("magenta_concrete", new dea(drc.d.a().a(csj.c).a(dse.b).m().d(1.8F)));
+   public static final dea lz = a("light_blue_concrete", new dea(drc.d.a().a(csj.d).a(dse.b).m().d(1.8F)));
+   public static final dea lA = a("yellow_concrete", new dea(drc.d.a().a(csj.e).a(dse.b).m().d(1.8F)));
+   public static final dea lB = a("lime_concrete", new dea(drc.d.a().a(csj.f).a(dse.b).m().d(1.8F)));
+   public static final dea lC = a("pink_concrete", new dea(drc.d.a().a(csj.g).a(dse.b).m().d(1.8F)));
+   public static final dea lD = a("gray_concrete", new dea(drc.d.a().a(csj.h).a(dse.b).m().d(1.8F)));
+   public static final dea lE = a("light_gray_concrete", new dea(drc.d.a().a(csj.i).a(dse.b).m().d(1.8F)));
+   public static final dea lF = a("cyan_concrete", new dea(drc.d.a().a(csj.j).a(dse.b).m().d(1.8F)));
+   public static final dea lG = a("purple_concrete", new dea(drc.d.a().a(csj.k).a(dse.b).m().d(1.8F)));
+   public static final dea lH = a("blue_concrete", new dea(drc.d.a().a(csj.l).a(dse.b).m().d(1.8F)));
+   public static final dea lI = a("brown_concrete", new dea(drc.d.a().a(csj.m).a(dse.b).m().d(1.8F)));
+   public static final dea lJ = a("green_concrete", new dea(drc.d.a().a(csj.n).a(dse.b).m().d(1.8F)));
+   public static final dea lK = a("red_concrete", new dea(drc.d.a().a(csj.o).a(dse.b).m().d(1.8F)));
+   public static final dea lL = a("black_concrete", new dea(drc.d.a().a(csj.p).a(dse.b).m().d(1.8F)));
+   public static final dea lM = a("white_concrete_powder", new dfm(lw, drc.d.a().a(csj.a).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lN = a("orange_concrete_powder", new dfm(lx, drc.d.a().a(csj.b).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lO = a("magenta_concrete_powder", new dfm(ly, drc.d.a().a(csj.c).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lP = a("light_blue_concrete_powder", new dfm(lz, drc.d.a().a(csj.d).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lQ = a("yellow_concrete_powder", new dfm(lA, drc.d.a().a(csj.e).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lR = a("lime_concrete_powder", new dfm(lB, drc.d.a().a(csj.f).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lS = a("pink_concrete_powder", new dfm(lC, drc.d.a().a(csj.g).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lT = a("gray_concrete_powder", new dfm(lD, drc.d.a().a(csj.h).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lU = a("light_gray_concrete_powder", new dfm(lE, drc.d.a().a(csj.i).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lV = a("cyan_concrete_powder", new dfm(lF, drc.d.a().a(csj.j).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lW = a("purple_concrete_powder", new dfm(lG, drc.d.a().a(csj.k).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lX = a("blue_concrete_powder", new dfm(lH, drc.d.a().a(csj.l).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lY = a("brown_concrete_powder", new dfm(lI, drc.d.a().a(csj.m).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea lZ = a("green_concrete_powder", new dfm(lJ, drc.d.a().a(csj.n).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea ma = a("red_concrete_powder", new dfm(lK, drc.d.a().a(csj.o).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea mb = a("black_concrete_powder", new dfm(lL, drc.d.a().a(csj.p).a(dse.c).d(0.5F).a(dln.j)));
+   public static final dea mc = a("kelp", new die(drc.d.a().a(ena.m).b().e().d().a(dln.q).a(enb.b)));
+   public static final dea md = a("kelp_plant", new dif(drc.d.a().a(ena.m).b().d().a(dln.q).a(enb.b)));
+   public static final dea me = a("dried_kelp_block", new dea(drc.d.a().a(ena.B).a(0.5F, 2.5F).a(dln.d)));
+   public static final dea mf = a("turtle_egg", new dms(drc.d.a().a(ena.c).j().d(0.5F).a(dln.g).e().c().a(enb.b)));
+   public static final dea mg = a("sniffer_egg", new dli(drc.d.a().a(ena.C).d(0.5F).a(dln.g).c()));
+   public static final dea mh = a("dead_tube_coral_block", new dea(drc.d.a().a(ena.v).j().a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea mi = a("dead_brain_coral_block", new dea(drc.d.a().a(ena.v).j().a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea mj = a("dead_bubble_coral_block", new dea(drc.d.a().a(ena.v).j().a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea mk = a("dead_fire_coral_block", new dea(drc.d.a().a(ena.v).j().a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ml = a("dead_horn_coral_block", new dea(drc.d.a().a(ena.v).j().a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea mm = a("tube_coral_block", new dfp(mh, drc.d.a().a(ena.z).a(dse.b).m().a(1.5F, 6.0F).a(dln.r)));
+   public static final dea mn = a("brain_coral_block", new dfp(mi, drc.d.a().a(ena.u).a(dse.b).m().a(1.5F, 6.0F).a(dln.r)));
+   public static final dea mo = a("bubble_coral_block", new dfp(mj, drc.d.a().a(ena.y).a(dse.b).m().a(1.5F, 6.0F).a(dln.r)));
+   public static final dea mp = a("fire_coral_block", new dfp(mk, drc.d.a().a(ena.C).a(dse.b).m().a(1.5F, 6.0F).a(dln.r)));
+   public static final dea mq = a("horn_coral_block", new dfp(ml, drc.d.a().a(ena.s).a(dse.b).m().a(1.5F, 6.0F).a(dln.r)));
+   public static final dea mr = a("dead_tube_coral", new ddj(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea ms = a("dead_brain_coral", new ddj(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mt = a("dead_bubble_coral", new ddj(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mu = a("dead_fire_coral", new ddj(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mv = a("dead_horn_coral", new ddj(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mw = a("tube_coral", new dfr(mr, drc.d.a().a(ena.z).b().d().a(dln.q).a(enb.b)));
+   public static final dea mx = a("brain_coral", new dfr(ms, drc.d.a().a(ena.u).b().d().a(dln.q).a(enb.b)));
+   public static final dea my = a("bubble_coral", new dfr(mt, drc.d.a().a(ena.y).b().d().a(dln.q).a(enb.b)));
+   public static final dea mz = a("fire_coral", new dfr(mu, drc.d.a().a(ena.C).b().d().a(dln.q).a(enb.b)));
+   public static final dea mA = a("horn_coral", new dfr(mv, drc.d.a().a(ena.s).b().d().a(dln.q).a(enb.b)));
+   public static final dea mB = a("dead_tube_coral_fan", new ddi(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mC = a("dead_brain_coral_fan", new ddi(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mD = a("dead_bubble_coral_fan", new ddi(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mE = a("dead_fire_coral_fan", new ddi(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mF = a("dead_horn_coral_fan", new ddi(drc.d.a().a(ena.v).j().a(dse.b).m().b().d()));
+   public static final dea mG = a("tube_coral_fan", new dfq(mB, drc.d.a().a(ena.z).b().d().a(dln.q).a(enb.b)));
+   public static final dea mH = a("brain_coral_fan", new dfq(mC, drc.d.a().a(ena.u).b().d().a(dln.q).a(enb.b)));
+   public static final dea mI = a("bubble_coral_fan", new dfq(mD, drc.d.a().a(ena.y).b().d().a(dln.q).a(enb.b)));
+   public static final dea mJ = a("fire_coral_fan", new dfq(mE, drc.d.a().a(ena.C).b().d().a(dln.q).a(enb.b)));
+   public static final dea mK = a("horn_coral_fan", new dfq(mF, drc.d.a().a(ena.s).b().d().a(dln.q).a(enb.b)));
+   public static final dea mL = a("dead_tube_coral_wall_fan", new ddl(drc.d.a().a(ena.v).j().a(dse.b).m().b().d().a(mB)));
+   public static final dea mM = a("dead_brain_coral_wall_fan", new ddl(drc.d.a().a(ena.v).j().a(dse.b).m().b().d().a(mC)));
+   public static final dea mN = a("dead_bubble_coral_wall_fan", new ddl(drc.d.a().a(ena.v).j().a(dse.b).m().b().d().a(mD)));
+   public static final dea mO = a("dead_fire_coral_wall_fan", new ddl(drc.d.a().a(ena.v).j().a(dse.b).m().b().d().a(mE)));
+   public static final dea mP = a("dead_horn_coral_wall_fan", new ddl(drc.d.a().a(ena.v).j().a(dse.b).m().b().d().a(mF)));
+   public static final dea mQ = a("tube_coral_wall_fan", new dfs(mL, drc.d.a().a(ena.z).b().d().a(dln.q).a(mG).a(enb.b)));
+   public static final dea mR = a("brain_coral_wall_fan", new dfs(mM, drc.d.a().a(ena.u).b().d().a(dln.q).a(mH).a(enb.b)));
+   public static final dea mS = a("bubble_coral_wall_fan", new dfs(mN, drc.d.a().a(ena.y).b().d().a(dln.q).a(mI).a(enb.b)));
+   public static final dea mT = a("fire_coral_wall_fan", new dfs(mO, drc.d.a().a(ena.C).b().d().a(dln.q).a(mJ).a(enb.b)));
+   public static final dea mU = a("horn_coral_wall_fan", new dfs(mP, drc.d.a().a(ena.s).b().d().a(dln.q).a(mK).a(enb.b)));
+   public static final dea mV = a("sea_pickle", new dkx(drc.d.a().a(ena.B).a($$0x -> dkx.m($$0x) ? 0 : 3 + 3 * $$0x.c(dkx.c)).a(dln.o).c().a(enb.b)));
+   public static final dea mW = a("blue_ice", new dhq(drc.d.a().a(ena.f).d(2.8F).a(0.989F).a(dln.h)));
+   public static final dea mX = a("conduit", new dfn(drc.d.a().a(ena.F).j().a(dse.d).d(3.0F).a($$0x -> 15).c()));
+   public static final dea mY = a("bamboo_sapling", new ddd(drc.d.a().a(ena.n).j().e().d().b().d(1.0F).a(dln.t).a(drc.c.b).h().a(enb.b)));
+   public static final dea mZ = a("bamboo", new dde(drc.d.a().a(ena.h).j().e().d().d(1.0F).a(dln.s).c().f().a(drc.c.b).h().a(enb.b).a(dec::b)));
+   public static final dea na = a("potted_bamboo", a(mZ));
+   public static final dea nb = a("void_air", new dcx(drc.d.a().o().b().g().l()));
+   public static final dea nc = a("cave_air", new dcx(drc.d.a().o().b().g().l()));
+   public static final dea nd = a("bubble_column", new deg(drc.d.a().a(ena.m).o().b().g().a(enb.b).i().a(dln.a)));
+   public static final dea ne = a("polished_granite_stairs", b(d));
+   public static final dea nf = a("smooth_red_sandstone_stairs", b(jU));
+   public static final dea ng = a("mossy_stone_brick_stairs", b(eI));
+   public static final dea nh = a("polished_diorite_stairs", b(f));
+   public static final dea ni = a("mossy_cobblestone_stairs", b(cn));
+   public static final dea nj = a("end_stone_brick_stairs", b(kz));
+   public static final dea nk = a("stone_stairs", b(b));
+   public static final dea nl = a("smooth_sandstone_stairs", b(jS));
+   public static final dea nm = a("smooth_quartz_stairs", b(jT));
+   public static final dea nn = a("granite_stairs", b(c));
+   public static final dea no = a("andesite_stairs", b(g));
+   public static final dea np = a("red_nether_brick_stairs", b(kL));
+   public static final dea nq = a("polished_andesite_stairs", b(h));
+   public static final dea nr = a("diorite_stairs", b(e));
+   public static final dea ns = a("polished_granite_slab", new dld(drc.d.b(d)));
+   public static final dea nt = a("smooth_red_sandstone_slab", new dld(drc.d.b(jU)));
+   public static final dea nu = a("mossy_stone_brick_slab", new dld(drc.d.b(eI)));
+   public static final dea nv = a("polished_diorite_slab", new dld(drc.d.b(f)));
+   public static final dea nw = a("mossy_cobblestone_slab", new dld(drc.d.b(cn)));
+   public static final dea nx = a("end_stone_brick_slab", new dld(drc.d.b(kz)));
+   public static final dea ny = a("smooth_sandstone_slab", new dld(drc.d.b(jS)));
+   public static final dea nz = a("smooth_quartz_slab", new dld(drc.d.b(jT)));
+   public static final dea nA = a("granite_slab", new dld(drc.d.b(c)));
+   public static final dea nB = a("andesite_slab", new dld(drc.d.b(g)));
+   public static final dea nC = a("red_nether_brick_slab", new dld(drc.d.b(kL)));
+   public static final dea nD = a("polished_andesite_slab", new dld(drc.d.b(h)));
+   public static final dea nE = a("diorite_slab", new dld(drc.d.b(e)));
+   public static final dea nF = a("brick_wall", new dmy(drc.d.b(cj).j()));
+   public static final dea nG = a("prismarine_wall", new dmy(drc.d.b(hZ).j()));
+   public static final dea nH = a("red_sandstone_wall", new dmy(drc.d.b(jp).j()));
+   public static final dea nI = a("mossy_stone_brick_wall", new dmy(drc.d.b(eI).j()));
+   public static final dea nJ = a("granite_wall", new dmy(drc.d.b(c).j()));
+   public static final dea nK = a("stone_brick_wall", new dmy(drc.d.b(eH).j()));
+   public static final dea nL = a("mud_brick_wall", new dmy(drc.d.b(eM).j()));
+   public static final dea nM = a("nether_brick_wall", new dmy(drc.d.b(fn).j()));
+   public static final dea nN = a("andesite_wall", new dmy(drc.d.b(g).j()));
+   public static final dea nO = a("red_nether_brick_wall", new dmy(drc.d.b(kL).j()));
+   public static final dea nP = a("sandstone_wall", new dmy(drc.d.b(aV).j()));
+   public static final dea nQ = a("end_stone_brick_wall", new dmy(drc.d.b(kz).j()));
+   public static final dea nR = a("diorite_wall", new dmy(drc.d.b(e).j()));
+   public static final dea nS = a("scaffolding", new dkp(drc.d.a().a(ena.c).b().a(dln.u).f().a(dec::a).a(enb.b).a(dec::b)));
+   public static final dea nT = a("loom", new dis(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea nU = a("barrel", new ddg(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea nV = a("smoker", new dlh(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F).a(a(13))));
+   public static final dea nW = a("blast_furnace", new ddz(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F).a(a(13))));
+   public static final dea nX = a("cartography_table", new det(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea nY = a("fletching_table", new dhb(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea nZ = a("grindstone", new dhm(drc.d.a().a(ena.g).m().a(2.0F, 6.0F).a(dln.f).a(enb.c)));
+   public static final dea oa = a("lectern", new dil(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea ob = a("smithing_table", new dlg(drc.d.a().a(ena.n).a(dse.e).d(2.5F).a(dln.b).h()));
+   public static final dea oc = a("stonecutter", new dlx(drc.d.a().a(ena.l).a(dse.b).m().d(3.5F)));
+   public static final dea od = a("bell", new ddw(drc.d.a().a(ena.E).j().m().d(5.0F).a(dln.n).a(enb.b)));
+   public static final dea oe = a("lantern", new dih(drc.d.a().a(ena.g).j().m().d(3.5F).a(dln.A).a($$0x -> 15).c().a(enb.b)));
+   public static final dea of = a("soul_lantern", new dih(drc.d.a().a(ena.g).j().m().d(3.5F).a(dln.A).a($$0x -> 10).c().a(enb.b)));
+   public static final dea og = a("campfire", new deo(true, 1, drc.d.a().a(ena.I).a(dse.e).d(2.0F).a(dln.b).a(a(15)).c().h()));
+   public static final dea oh = a("soul_campfire", new deo(false, 2, drc.d.a().a(ena.I).a(dse.e).d(2.0F).a(dln.b).a(a(10)).c().h()));
+   public static final dea oi = a("sweet_berry_bush", new dmd(drc.d.a().a(ena.h).e().b().a(dln.v).a(enb.b)));
+   public static final dea oj = a("warped_stem", a(ena.ae));
+   public static final dea ok = a("stripped_warped_stem", a(ena.ae));
+   public static final dea ol = a("warped_hyphae", new dkm(drc.d.a().a(ena.af).a(dse.e).d(2.0F).a(dln.B)));
+   public static final dea om = a("stripped_warped_hyphae", new dkm(drc.d.a().a(ena.af).a(dse.e).d(2.0F).a(dln.B)));
+   public static final dea on = a("warped_nylium", new djk(drc.d.a().a(ena.ad).a(dse.b).m().d(0.4F).a(dln.C).e()));
+   public static final dea oo = a("warped_fungus", new dhg(ry.d, on, drc.d.a().a(ena.x).d().b().a(dln.D).a(enb.b)));
+   public static final dea op = a("warped_wart_block", new dea(drc.d.a().a(ena.ag).d(1.0F).a(dln.L)));
+   public static final dea oq = a("warped_roots", new dkl(drc.d.a().a(ena.x).o().b().d().a(dln.E).a(drc.c.b).a(enb.b)));
+   public static final dea or = a("nether_sprouts", new djf(drc.d.a().a(ena.x).o().b().d().a(dln.O).a(drc.c.b).a(enb.b)));
+   public static final dea os = a("crimson_stem", a(ena.ab));
+   public static final dea ot = a("stripped_crimson_stem", a(ena.ab));
+   public static final dea ou = a("crimson_hyphae", new dkm(drc.d.a().a(ena.ac).a(dse.e).d(2.0F).a(dln.B)));
+   public static final dea ov = a("stripped_crimson_hyphae", new dkm(drc.d.a().a(ena.ac).a(dse.e).d(2.0F).a(dln.B)));
+   public static final dea ow = a("crimson_nylium", new djk(drc.d.a().a(ena.aa).a(dse.b).m().d(0.4F).a(dln.C).e()));
+   public static final dea ox = a("crimson_fungus", new dhg(ry.b, ow, drc.d.a().a(ena.J).d().b().a(dln.D).a(enb.b)));
+   public static final dea oy = a("shroomlight", new dea(drc.d.a().a(ena.C).d(1.0F).a(dln.F).a($$0x -> 15)));
+   public static final dea oz = a("weeping_vines", new dno(drc.d.a().a(ena.J).e().b().d().a(dln.G).a(enb.b)));
+   public static final dea oA = a("weeping_vines_plant", new dnp(drc.d.a().a(ena.J).b().d().a(dln.G).a(enb.b)));
+   public static final dea oB = a("twisting_vines", new dmt(drc.d.a().a(ena.x).e().b().d().a(dln.G).a(enb.b)));
+   public static final dea oC = a("twisting_vines_plant", new dmu(drc.d.a().a(ena.x).b().d().a(dln.G).a(enb.b)));
+   public static final dea oD = a("crimson_roots", new dkl(drc.d.a().a(ena.J).o().b().d().a(dln.E).a(drc.c.b).a(enb.b)));
+   public static final dea oE = a("crimson_planks", new dea(drc.d.a().a(ena.ab).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oF = a("warped_planks", new dea(drc.d.a().a(ena.ae).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oG = a("crimson_slab", new dld(drc.d.a().a(oE.w()).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oH = a("warped_slab", new dld(drc.d.a().a(oF.w()).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oI = a("crimson_pressure_plate", new djx(drs.n, drc.d.a().a(oE.w()).j().a(dse.e).b().d(0.5F).a(enb.b)));
+   public static final dea oJ = a("warped_pressure_plate", new djx(drs.o, drc.d.a().a(oF.w()).j().a(dse.e).b().d(0.5F).a(enb.b)));
+   public static final dea oK = a("crimson_fence", new dgy(drc.d.a().a(oE.w()).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oL = a("warped_fence", new dgy(drc.d.a().a(oF.w()).a(dse.e).a(2.0F, 3.0F).a(dln.aT)));
+   public static final dea oM = a("crimson_trapdoor", new dmn(drs.n, drc.d.a().a(oE.w()).a(dse.e).d(3.0F).c().a(dec::a)));
+   public static final dea oN = a("warped_trapdoor", new dmn(drs.o, drc.d.a().a(oF.w()).a(dse.e).d(3.0F).c().a(dec::a)));
+   public static final dea oO = a("crimson_fence_gate", new dgz(dsq.i, drc.d.a().a(oE.w()).j().a(dse.e).a(2.0F, 3.0F)));
+   public static final dea oP = a("warped_fence_gate", new dgz(dsq.j, drc.d.a().a(oF.w()).j().a(dse.e).a(2.0F, 3.0F)));
+   public static final dea oQ = a("crimson_stairs", b(oE));
+   public static final dea oR = a("warped_stairs", b(oF));
+   public static final dea oS = a("crimson_button", a(drs.n));
+   public static final dea oT = a("warped_button", a(drs.o));
+   public static final dea oU = a("crimson_door", new dgg(drs.n, drc.d.a().a(oE.w()).a(dse.e).d(3.0F).c().a(enb.b)));
+   public static final dea oV = a("warped_door", new dgg(drs.o, drc.d.a().a(oF.w()).a(dse.e).d(3.0F).c().a(enb.b)));
+   public static final dea oW = a("crimson_sign", new dlv(dsq.i, drc.d.a().a(oE.w()).a(dse.e).j().b().d(1.0F)));
+   public static final dea oX = a("warped_sign", new dlv(dsq.j, drc.d.a().a(oF.w()).a(dse.e).j().b().d(1.0F)));
+   public static final dea oY = a("crimson_wall_sign", new dna(dsq.i, drc.d.a().a(oE.w()).a(dse.e).j().b().d(1.0F).a(oW)));
+   public static final dea oZ = a("warped_wall_sign", new dna(dsq.j, drc.d.a().a(oF.w()).a(dse.e).j().b().d(1.0F).a(oX)));
+   public static final dea pa = a("structure_block", new dly(drc.d.a().a(ena.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final dea pb = a("jigsaw", new dic(drc.d.a().a(ena.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final dea pc = a("composter", new dfl(drc.d.a().a(ena.n).a(dse.e).d(0.6F).a(dln.b).h()));
+   public static final dea pd = a("target", new dmh(drc.d.a().a(ena.o).d(0.5F).a(dln.d)));
+   public static final dea pe = a("bee_nest", new ddu(drc.d.a().a(ena.s).a(dse.e).d(0.3F).a(dln.b).h()));
+   public static final dea pf = a("beehive", new ddu(drc.d.a().a(ena.n).a(dse.e).d(0.6F).a(dln.b).h()));
+   public static final dea pg = a("honey_block", new dhu(drc.d.a().a(ena.p).b(0.4F).c(0.5F).c().a(dln.p)));
+   public static final dea ph = a("honeycomb_block", new dea(drc.d.a().a(ena.p).d(0.6F).a(dln.r)));
+   public static final dea pi = a("netherite_block", new dea(drc.d.a().a(ena.D).m().a(50.0F, 1200.0F).a(dln.R)));
+   public static final dea pj = a("ancient_debris", new dea(drc.d.a().a(ena.D).m().a(30.0F, 1200.0F).a(dln.S)));
+   public static final dea pk = a("crying_obsidian", new dfx(drc.d.a().a(ena.D).a(dse.b).m().a(50.0F, 1200.0F).a($$0x -> 10)));
+   public static final dea pl = a("respawn_anchor", new dki(drc.d.a().a(ena.D).a(dse.b).m().a(50.0F, 1200.0F).a($$0x -> dki.a($$0x, 15))));
+   public static final dea pm = a("potted_crimson_fungus", a(ox));
+   public static final dea pn = a("potted_warped_fungus", a(oo));
+   public static final dea po = a("potted_crimson_roots", a(oD));
+   public static final dea pp = a("potted_warped_roots", a(oq));
+   public static final dea pq = a("lodestone", new dea(drc.d.a().a(ena.g).m().d(3.5F).a(dln.T).a(enb.c)));
+   public static final dea pr = a("blackstone", new dea(drc.d.a().a(ena.D).a(dse.b).m().a(1.5F, 6.0F)));
+   public static final dea ps = a("blackstone_stairs", b(pr));
+   public static final dea pt = a("blackstone_wall", new dmy(drc.d.b(pr).j()));
+   public static final dea pu = a("blackstone_slab", new dld(drc.d.b(pr).a(2.0F, 6.0F)));
+   public static final dea pv = a("polished_blackstone", new dea(drc.d.b(pr).a(2.0F, 6.0F)));
+   public static final dea pw = a("polished_blackstone_bricks", new dea(drc.d.b(pv).a(1.5F, 6.0F)));
+   public static final dea px = a("cracked_polished_blackstone_bricks", new dea(drc.d.b(pw)));
+   public static final dea py = a("chiseled_polished_blackstone", new dea(drc.d.b(pv).a(1.5F, 6.0F)));
+   public static final dea pz = a("polished_blackstone_brick_slab", new dld(drc.d.b(pw).a(2.0F, 6.0F)));
+   public static final dea pA = a("polished_blackstone_brick_stairs", b(pw));
+   public static final dea pB = a("polished_blackstone_brick_wall", new dmy(drc.d.b(pw).j()));
+   public static final dea pC = a("gilded_blackstone", new dea(drc.d.b(pr).a(dln.W)));
+   public static final dea pD = a("polished_blackstone_stairs", b(pv));
+   public static final dea pE = a("polished_blackstone_slab", new dld(drc.d.b(pv)));
+   public static final dea pF = a("polished_blackstone_pressure_plate", new djx(drs.f, drc.d.a().a(ena.D).j().a(dse.b).m().b().d(0.5F).a(enb.b)));
+   public static final dea pG = a("polished_blackstone_button", b());
+   public static final dea pH = a("polished_blackstone_wall", new dmy(drc.d.b(pv).j()));
+   public static final dea pI = a("chiseled_nether_bricks", new dea(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea pJ = a("cracked_nether_bricks", new dea(drc.d.a().a(ena.J).a(dse.b).m().a(2.0F, 6.0F).a(dln.N)));
+   public static final dea pK = a("quartz_bricks", new dea(drc.d.b(hd)));
+   public static final dea pL = a("candle", b(ena.c));
+   public static final dea pM = a("white_candle", b(ena.d));
+   public static final dea pN = a("orange_candle", b(ena.p));
+   public static final dea pO = a("magenta_candle", b(ena.q));
+   public static final dea pP = a("light_blue_candle", b(ena.r));
+   public static final dea pQ = a("yellow_candle", b(ena.s));
+   public static final dea pR = a("lime_candle", b(ena.t));
+   public static final dea pS = a("pink_candle", b(ena.u));
+   public static final dea pT = a("gray_candle", b(ena.v));
+   public static final dea pU = a("light_gray_candle", b(ena.w));
+   public static final dea pV = a("cyan_candle", b(ena.x));
+   public static final dea pW = a("purple_candle", b(ena.y));
+   public static final dea pX = a("blue_candle", b(ena.z));
+   public static final dea pY = a("brown_candle", b(ena.A));
+   public static final dea pZ = a("green_candle", b(ena.B));
+   public static final dea qa = a("red_candle", b(ena.C));
+   public static final dea qb = a("black_candle", b(ena.D));
+   public static final dea qc = a("candle_cake", new deq(pL, drc.d.b(eg).a(a(3))));
+   public static final dea qd = a("white_candle_cake", new deq(pM, drc.d.b(qc)));
+   public static final dea qe = a("orange_candle_cake", new deq(pN, drc.d.b(qc)));
+   public static final dea qf = a("magenta_candle_cake", new deq(pO, drc.d.b(qc)));
+   public static final dea qg = a("light_blue_candle_cake", new deq(pP, drc.d.b(qc)));
+   public static final dea qh = a("yellow_candle_cake", new deq(pQ, drc.d.b(qc)));
+   public static final dea qi = a("lime_candle_cake", new deq(pR, drc.d.b(qc)));
+   public static final dea qj = a("pink_candle_cake", new deq(pS, drc.d.b(qc)));
+   public static final dea qk = a("gray_candle_cake", new deq(pT, drc.d.b(qc)));
+   public static final dea ql = a("light_gray_candle_cake", new deq(pU, drc.d.b(qc)));
+   public static final dea qm = a("cyan_candle_cake", new deq(pV, drc.d.b(qc)));
+   public static final dea qn = a("purple_candle_cake", new deq(pW, drc.d.b(qc)));
+   public static final dea qo = a("blue_candle_cake", new deq(pX, drc.d.b(qc)));
+   public static final dea qp = a("brown_candle_cake", new deq(pY, drc.d.b(qc)));
+   public static final dea qq = a("green_candle_cake", new deq(pZ, drc.d.b(qc)));
+   public static final dea qr = a("red_candle_cake", new deq(qa, drc.d.b(qc)));
+   public static final dea qs = a("black_candle_cake", new deq(qb, drc.d.b(qc)));
+   public static final dea qt = a("amethyst_block", new dcy(drc.d.a().a(ena.y).d(1.5F).a(dln.Y).m()));
+   public static final dea qu = a("budding_amethyst", new dei(drc.d.a().a(ena.y).e().d(1.5F).a(dln.Y).m().a(enb.b)));
+   public static final dea qv = a("amethyst_cluster", new dcz(7.0F, 3.0F, drc.d.a().a(ena.y).j().c().a(dln.Z).d(1.5F).a($$0x -> 5).a(enb.b)));
+   public static final dea qw = a("large_amethyst_bud", new dcz(5.0F, 3.0F, drc.d.b(qv).a(dln.ab).a($$0x -> 4)));
+   public static final dea qx = a("medium_amethyst_bud", new dcz(4.0F, 3.0F, drc.d.b(qv).a(dln.ac).a($$0x -> 2)));
+   public static final dea qy = a("small_amethyst_bud", new dcz(3.0F, 4.0F, drc.d.b(qv).a(dln.aa).a($$0x -> 1)));
+   public static final dea qz = a("tuff", new dea(drc.d.a().a(ena.R).a(dse.b).a(dln.ad).m().a(1.5F, 6.0F)));
+   public static final dea qA = a("tuff_slab", new dld(drc.d.b(qz).a(coo.c)));
+   public static final dea qB = a("tuff_stairs", new dlu(qz.n(), drc.d.b(qz).a(coo.c)));
+   public static final dea qC = a("tuff_wall", new dmy(drc.d.b(qz).j().a(coo.c)));
+   public static final dea qD = a("polished_tuff", new dea(drc.d.b(qz).a(dln.af).a(coo.c)));
+   public static final dea qE = a("polished_tuff_slab", new dld(drc.d.b(qD)));
+   public static final dea qF = a("polished_tuff_stairs", new dlu(qD.n(), drc.d.b(qD)));
+   public static final dea qG = a("polished_tuff_wall", new dmy(drc.d.b(qD).j()));
+   public static final dea qH = a("chiseled_tuff", new dea(drc.d.b(qz).a(coo.c)));
+   public static final dea qI = a("tuff_bricks", new dea(drc.d.b(qz).a(dln.ae).a(coo.c)));
+   public static final dea qJ = a("tuff_brick_slab", new dld(drc.d.b(qI)));
+   public static final dea qK = a("tuff_brick_stairs", new dlu(qI.n(), drc.d.b(qI)));
+   public static final dea qL = a("tuff_brick_wall", new dmy(drc.d.b(qI).j()));
+   public static final dea qM = a("chiseled_tuff_bricks", new dea(drc.d.b(qI)));
+   public static final dea qN = a("calcite", new dea(drc.d.a().a(ena.K).a(dse.b).a(dln.ag).m().d(0.75F)));
+   public static final dea qO = a("tinted_glass", new dmi(drc.d.b(aQ).a(ena.v).c().a(dec::a).a(dec::b).b(dec::b).c(dec::b)));
+   public static final dea qP = a("powder_snow", new dju(drc.d.a().a(ena.i).d(0.25F).a(dln.l).f().a(dec::b)));
+   public static final dea qQ = a("sculk_sensor", new dkt(drc.d.a().a(ena.x).d(1.5F).a(dln.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dkt.m($$0x) == dsk.b)));
+   public static final dea qR = a("calibrated_sculk_sensor", new den(drc.d.b(qQ)));
+   public static final dea qS = a("sculk", new dkr(drc.d.a().a(ena.D).d(0.2F).a(dln.aA)));
+   public static final dea qT = a("sculk_vein", new dkw(drc.d.a().a(ena.D).j().b().d(0.2F).a(dln.aB).a(enb.b)));
+   public static final dea qU = a("sculk_catalyst", new dks(drc.d.a().a(ena.D).a(3.0F, 3.0F).a(dln.az).a($$0x -> 6)));
+   public static final dea qV = a("sculk_shrieker", new dku(drc.d.a().a(ena.D).a(3.0F, 3.0F).a(dln.aC)));
+   public static final dea qW = a("copper_block", new dni(dnf.a.a, drc.d.a().a(ena.p).m().a(3.0F, 6.0F).a(dln.aj)));
+   public static final dea qX = a("exposed_copper", new dni(dnf.a.b, drc.d.a((drc)qW).a(ena.S)));
+   public static final dea qY = a("weathered_copper", new dni(dnf.a.c, drc.d.a((drc)qW).a(ena.ae)));
+   public static final dea qZ = a("oxidized_copper", new dni(dnf.a.d, drc.d.a((drc)qW).a(ena.ad)));
+   public static final dea ra = a("copper_ore", new dgk(boy.a(0), drc.d.b(P)));
+   public static final dea rb = a("deepslate_copper_ore", new dgk(boy.a(0), drc.d.b(ra).a(ena.ah).a(4.5F, 3.0F).a(dln.aE)));
+   public static final dea rc = a("oxidized_cut_copper", new dni(dnf.a.d, drc.d.a((drc)qZ)));
+   public static final dea rd = a("weathered_cut_copper", new dni(dnf.a.c, drc.d.a((drc)qY)));
+   public static final dea re = a("exposed_cut_copper", new dni(dnf.a.b, drc.d.a((drc)qX)));
+   public static final dea rf = a("cut_copper", new dni(dnf.a.a, drc.d.a((drc)qW)));
+   public static final dea rg = a("oxidized_chiseled_copper", new dni(dnf.a.d, drc.d.a((drc)qZ).a(coo.c)));
+   public static final dea rh = a("weathered_chiseled_copper", new dni(dnf.a.c, drc.d.a((drc)qY).a(coo.c)));
+   public static final dea ri = a("exposed_chiseled_copper", new dni(dnf.a.b, drc.d.a((drc)qX).a(coo.c)));
+   public static final dea rj = a("chiseled_copper", new dni(dnf.a.a, drc.d.a((drc)qW).a(coo.c)));
+   public static final dea rk = a("waxed_oxidized_chiseled_copper", new dea(drc.d.a((drc)rg)));
+   public static final dea rl = a("waxed_weathered_chiseled_copper", new dea(drc.d.a((drc)rh)));
+   public static final dea rm = a("waxed_exposed_chiseled_copper", new dea(drc.d.a((drc)ri)));
+   public static final dea rn = a("waxed_chiseled_copper", new dea(drc.d.a((drc)rj)));
+   public static final dea ro = a("oxidized_cut_copper_stairs", new dnl(dnf.a.d, rc.n(), drc.d.a((drc)rc)));
+   public static final dea rp = a("weathered_cut_copper_stairs", new dnl(dnf.a.c, rd.n(), drc.d.a((drc)qY)));
+   public static final dea rq = a("exposed_cut_copper_stairs", new dnl(dnf.a.b, re.n(), drc.d.a((drc)qX)));
+   public static final dea rr = a("cut_copper_stairs", new dnl(dnf.a.a, rf.n(), drc.d.a((drc)qW)));
+   public static final dea rs = a("oxidized_cut_copper_slab", new dnk(dnf.a.d, drc.d.a((drc)rc)));
+   public static final dea rt = a("weathered_cut_copper_slab", new dnk(dnf.a.c, drc.d.a((drc)rd)));
+   public static final dea ru = a("exposed_cut_copper_slab", new dnk(dnf.a.b, drc.d.a((drc)re)));
+   public static final dea rv = a("cut_copper_slab", new dnk(dnf.a.a, drc.d.a((drc)rf)));
+   public static final dea rw = a("waxed_copper_block", new dea(drc.d.a((drc)qW)));
+   public static final dea rx = a("waxed_weathered_copper", new dea(drc.d.a((drc)qY)));
+   public static final dea ry = a("waxed_exposed_copper", new dea(drc.d.a((drc)qX)));
+   public static final dea rz = a("waxed_oxidized_copper", new dea(drc.d.a((drc)qZ)));
+   public static final dea rA = a("waxed_oxidized_cut_copper", new dea(drc.d.a((drc)qZ)));
+   public static final dea rB = a("waxed_weathered_cut_copper", new dea(drc.d.a((drc)qY)));
+   public static final dea rC = a("waxed_exposed_cut_copper", new dea(drc.d.a((drc)qX)));
+   public static final dea rD = a("waxed_cut_copper", new dea(drc.d.a((drc)qW)));
+   public static final dea rE = a("waxed_oxidized_cut_copper_stairs", c(rA));
+   public static final dea rF = a("waxed_weathered_cut_copper_stairs", c(rB));
+   public static final dea rG = a("waxed_exposed_cut_copper_stairs", c(rC));
+   public static final dea rH = a("waxed_cut_copper_stairs", c(rD));
+   public static final dea rI = a("waxed_oxidized_cut_copper_slab", new dld(drc.d.a((drc)rA).m()));
+   public static final dea rJ = a("waxed_weathered_cut_copper_slab", new dld(drc.d.a((drc)rB).m()));
+   public static final dea rK = a("waxed_exposed_cut_copper_slab", new dld(drc.d.a((drc)rC).m()));
+   public static final dea rL = a("waxed_cut_copper_slab", new dld(drc.d.a((drc)rD).m()));
+   public static final dea rM = a("copper_door", new dnh(drs.c, dnf.a.a, drc.d.a().a(qW.w()).a(3.0F, 6.0F).c().m().a(enb.b).a(coo.c)));
+   public static final dea rN = a("exposed_copper_door", new dnh(drs.c, dnf.a.b, drc.d.a((drc)rM).a(qX.w())));
+   public static final dea rO = a("oxidized_copper_door", new dnh(drs.c, dnf.a.d, drc.d.a((drc)rM).a(qZ.w())));
+   public static final dea rP = a("weathered_copper_door", new dnh(drs.c, dnf.a.c, drc.d.a((drc)rM).a(qY.w())));
+   public static final dea rQ = a("waxed_copper_door", new dgg(drs.c, drc.d.a((drc)rM)));
+   public static final dea rR = a("waxed_exposed_copper_door", new dgg(drs.c, drc.d.a((drc)rN)));
+   public static final dea rS = a("waxed_oxidized_copper_door", new dgg(drs.c, drc.d.a((drc)rO)));
+   public static final dea rT = a("waxed_weathered_copper_door", new dgg(drs.c, drc.d.a((drc)rP)));
+   public static final dea rU = a("copper_trapdoor", new dnm(drs.c, dnf.a.a, drc.d.a().a(qW.w()).a(3.0F, 6.0F).m().c().a(dec::a).a(coo.c)));
+   public static final dea rV = a("exposed_copper_trapdoor", new dnm(drs.c, dnf.a.b, drc.d.a((drc)rU).a(qX.w())));
+   public static final dea rW = a("oxidized_copper_trapdoor", new dnm(drs.c, dnf.a.d, drc.d.a((drc)rU).a(qZ.w())));
+   public static final dea rX = a("weathered_copper_trapdoor", new dnm(drs.c, dnf.a.c, drc.d.a((drc)rU).a(qY.w())));
+   public static final dea rY = a("waxed_copper_trapdoor", new dmn(drs.c, drc.d.a((drc)rU)));
+   public static final dea rZ = a("waxed_exposed_copper_trapdoor", new dmn(drs.c, drc.d.a((drc)rV)));
+   public static final dea sa = a("waxed_oxidized_copper_trapdoor", new dmn(drs.c, drc.d.a((drc)rW)));
+   public static final dea sb = a("waxed_weathered_copper_trapdoor", new dmn(drs.c, drc.d.a((drc)rX)));
+   public static final dea sc = a(
+      "copper_grate", new dnj(dnf.a.a, drc.d.a().a(3.0F, 6.0F).a(dln.al).a(ena.p).c().m().a(dec::a).a(dec::b).b(dec::b).c(dec::b).a(coo.c))
+   );
+   public static final dea sd = a("exposed_copper_grate", new dnj(dnf.a.b, drc.d.a((drc)sc).a(ena.S)));
+   public static final dea se = a("weathered_copper_grate", new dnj(dnf.a.c, drc.d.a((drc)sc).a(ena.ae)));
+   public static final dea sf = a("oxidized_copper_grate", new dnj(dnf.a.d, drc.d.a((drc)sc).a(ena.ad)));
+   public static final dea sg = a("waxed_copper_grate", new dne(drc.d.a((drc)sc)));
+   public static final dea sh = a("waxed_exposed_copper_grate", new dne(drc.d.a((drc)sd)));
+   public static final dea si = a("waxed_weathered_copper_grate", new dne(drc.d.a((drc)se)));
+   public static final dea sj = a("waxed_oxidized_copper_grate", new dne(drc.d.a((drc)sf)));
+   public static final dea sk = a("copper_bulb", new dng(dnf.a.a, drc.d.a().a(qW.w()).a(3.0F, 6.0F).a(dln.ak).m().a(dec::b).a(a(15)).a(coo.c)));
+   public static final dea sl = a("exposed_copper_bulb", new dng(dnf.a.b, drc.d.a((drc)sk).a(ena.S).a(a(12))));
+   public static final dea sm = a("weathered_copper_bulb", new dng(dnf.a.c, drc.d.a((drc)sk).a(ena.ae).a(a(8))));
+   public static final dea sn = a("oxidized_copper_bulb", new dng(dnf.a.d, drc.d.a((drc)sk).a(ena.ad).a(a(4))));
+   public static final dea so = a("waxed_copper_bulb", new dfo(drc.d.a((drc)sk)));
+   public static final dea sp = a("waxed_exposed_copper_bulb", new dfo(drc.d.a((drc)sl)));
+   public static final dea sq = a("waxed_weathered_copper_bulb", new dfo(drc.d.a((drc)sm)));
+   public static final dea sr = a("waxed_oxidized_copper_bulb", new dfo(drc.d.a((drc)sn)));
+   public static final dea ss = a("lightning_rod", new dip(drc.d.a().a(ena.p).j().m().a(3.0F, 6.0F).a(dln.aj).c()));
+   public static final dea st = a(
+      "pointed_dripstone", new djs(drc.d.a().a(ena.W).j().a(dse.b).c().a(dln.ai).e().a(1.5F, 3.0F).f().a(drc.c.b).a(enb.b).a(dec::b))
+   );
+   public static final dea su = a("dripstone_block", new dea(drc.d.a().a(ena.W).a(dse.b).a(dln.ah).m().a(1.5F, 1.0F)));
+   public static final dea sv = a("cave_vines", new dex(drc.d.a().a(ena.h).e().b().a(dew.h_(14)).d().a(dln.am).a(enb.b)));
+   public static final dea sw = a("cave_vines_plant", new dey(drc.d.a().a(ena.h).b().a(dew.h_(14)).d().a(dln.am).a(enb.b)));
+   public static final dea sx = a("spore_blossom", new dlq(drc.d.a().a(ena.h).d().b().a(dln.an).a(enb.b)));
+   public static final dea sy = a("azalea", new ddc(drc.d.a().a(ena.h).k().d().a(dln.ao).c().a(enb.b)));
+   public static final dea sz = a("flowering_azalea", new ddc(drc.d.a().a(ena.h).k().d().a(dln.ap).c().a(enb.b)));
+   public static final dea sA = a("moss_carpet", new der(drc.d.a().a(ena.B).d(0.1F).a(dln.aq).a(enb.b)));
+   public static final dea sB = a("pink_petals", new djn(drc.d.a().a(ena.h).b().a(dln.ar).a(enb.b)));
+   public static final dea sC = a("moss_block", new diy(drc.d.a().a(ena.B).d(0.1F).a(dln.as).a(enb.b)));
+   public static final dea sD = a("big_dripleaf", new ddx(drc.d.a().a(ena.h).k().d(0.1F).a(dln.at).a(enb.b)));
+   public static final dea sE = a("big_dripleaf_stem", new ddy(drc.d.a().a(ena.h).b().d(0.1F).a(dln.at).a(enb.b)));
+   public static final dea sF = a("small_dripleaf", new dlf(drc.d.a().a(ena.h).b().d().a(dln.au).a(drc.c.c).a(enb.b)));
+   public static final dea sG = a("hanging_roots", new dhr(drc.d.a().a(ena.k).o().b().d().a(dln.aw).a(drc.c.b).h().a(enb.b)));
+   public static final dea sH = a("rooted_dirt", new dkk(drc.d.a().a(ena.k).d(0.5F).a(dln.av)));
+   public static final dea sI = a("mud", new diz(drc.d.b(j).a(ena.T).a(dec::b).a(dec::a).c(dec::a).b(dec::a).a(dln.aM)));
+   public static final dea sJ = a("deepslate", new dkm(drc.d.a().a(ena.ah).a(dse.b).m().a(3.0F, 6.0F).a(dln.aE)));
+   public static final dea sK = a("cobbled_deepslate", new dea(drc.d.b(sJ).a(3.5F, 6.0F)));
+   public static final dea sL = a("cobbled_deepslate_stairs", b(sK));
+   public static final dea sM = a("cobbled_deepslate_slab", new dld(drc.d.b(sK)));
+   public static final dea sN = a("cobbled_deepslate_wall", new dmy(drc.d.b(sK).j()));
+   public static final dea sO = a("polished_deepslate", new dea(drc.d.b(sK).a(dln.aH)));
+   public static final dea sP = a("polished_deepslate_stairs", b(sO));
+   public static final dea sQ = a("polished_deepslate_slab", new dld(drc.d.b(sO)));
+   public static final dea sR = a("polished_deepslate_wall", new dmy(drc.d.b(sO).j()));
+   public static final dea sS = a("deepslate_tiles", new dea(drc.d.b(sK).a(dln.aG)));
+   public static final dea sT = a("deepslate_tile_stairs", b(sS));
+   public static final dea sU = a("deepslate_tile_slab", new dld(drc.d.b(sS)));
+   public static final dea sV = a("deepslate_tile_wall", new dmy(drc.d.b(sS).j()));
+   public static final dea sW = a("deepslate_bricks", new dea(drc.d.b(sK).a(dln.aF)));
+   public static final dea sX = a("deepslate_brick_stairs", b(sW));
+   public static final dea sY = a("deepslate_brick_slab", new dld(drc.d.b(sW)));
+   public static final dea sZ = a("deepslate_brick_wall", new dmy(drc.d.b(sW).j()));
+   public static final dea ta = a("chiseled_deepslate", new dea(drc.d.b(sK).a(dln.aF)));
+   public static final dea tb = a("cracked_deepslate_bricks", new dea(drc.d.b(sW)));
+   public static final dea tc = a("cracked_deepslate_tiles", new dea(drc.d.b(sS)));
+   public static final dea td = a("infested_deepslate", new dia(sJ, drc.d.a().a(ena.ah).a(dln.aE)));
+   public static final dea te = a("smooth_basalt", new dea(drc.d.b(dY)));
+   public static final dea tf = a("raw_iron_block", new dea(drc.d.a().a(ena.ai).a(dse.b).m().a(5.0F, 6.0F)));
+   public static final dea tg = a("raw_copper_block", new dea(drc.d.a().a(ena.p).a(dse.b).m().a(5.0F, 6.0F)));
+   public static final dea th = a("raw_gold_block", new dea(drc.d.a().a(ena.E).a(dse.b).m().a(5.0F, 6.0F)));
+   public static final dea ti = a("potted_azalea_bush", a(sy));
+   public static final dea tj = a("potted_flowering_azalea_bush", a(sz));
+   public static final dea tk = a("ochre_froglight", new dkm(drc.d.a().a(ena.c).d(0.3F).a($$0x -> 15).a(dln.aI)));
+   public static final dea tl = a("verdant_froglight", new dkm(drc.d.a().a(ena.aj).d(0.3F).a($$0x -> 15).a(dln.aI)));
+   public static final dea tm = a("pearlescent_froglight", new dkm(drc.d.a().a(ena.u).d(0.3F).a($$0x -> 15).a(dln.aI)));
+   public static final dea tn = a("frogspawn", new dhe(drc.d.a().a(ena.m).d().c().b().a(dln.aJ).a(enb.b)));
+   public static final dea to = a("reinforced_deepslate", new dea(drc.d.a().a(ena.ah).a(dse.b).a(dln.aE).a(55.0F, 1200.0F)));
+   public static final dea tp = a("decorated_pot", new dga(drc.d.a().a(ena.Y).a(0.0F, 0.0F).a(enb.b).c()));
+   public static final dea tq = a("crafter", new dft(drc.d.a().a(ena.l).a(1.5F, 3.5F).a(coo.c)));
+   public static final dea tr = a(
+      "trial_spawner", new dmp(drc.d.a().a(ena.l).a(dse.b).m().a($$0x -> $$0x.c(dmp.b).a()).d(50.0F).a(dln.bd).c(dec::b).c().a(coo.c))
+   );
+   public static final dea ts = a("vault", new dmv(drc.d.a().a(ena.l).a(dse.b).c().m().a(dln.bg).a($$0x -> $$0x.c(dmv.b).a()).d(50.0F).c(dec::b).a(coo.c)));
+   public static final dea tt = a("heavy_core", new dht(drc.d.a().a(ena.g).a(dse.c).a(dln.bh).d(10.0F).a(enb.a).f(1200.0F).a(coo.c)));
 
-   @Override
-   public MapCodec<dec> a() {
-      return a;
+   private static ToIntFunction<drd> a(int $$0) {
+      return $$1 -> $$1.c(drt.r) ? $$0 : 0;
    }
 
-   protected dec(aks<dfc> $$0, aks<dfc> $$1, aks<cuc> $$2, dtb.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, iw.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   private static Boolean a(drd $$0, daf $$1, io $$2, bsc<?> $$3) {
+      return false;
    }
 
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return d.get($$0.c(b));
+   private static Boolean b(drd $$0, daf $$1, io $$2, bsc<?> $$3) {
+      return true;
    }
 
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<dfc> $$6 = $$3.I_().d(li.f).e(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().n().b(dnm.c, Integer.valueOf(7));
+   private static Boolean c(drd $$0, daf $$1, io $$2, bsc<?> $$3) {
+      return $$3 == bsc.au || $$3 == bsc.ax;
+   }
+
+   private static dea a(csj $$0) {
+      return new ddt($$0, drc.d.a().a($$1 -> $$1.c(ddt.b) == drq.b ? $$0.e() : ena.d).a(dln.b).d(0.2F).c().h().a(enb.b));
+   }
+
+   private static dea a(ena $$0, ena $$1) {
+      return new dkm(drc.d.a().a($$2 -> $$2.c(dkm.i) == it.a.b ? $$0 : $$1).a(dse.e).d(2.0F).a(dln.b).h());
+   }
+
+   private static dea a(ena $$0, ena $$1, dln $$2) {
+      return new dkm(drc.d.a().a($$2x -> $$2x.c(dkm.i) == it.a.b ? $$0 : $$1).a(dse.e).d(2.0F).a($$2).h());
+   }
+
+   private static dea a(ena $$0) {
+      return new dkm(drc.d.a().a($$1 -> $$0).a(dse.e).d(2.0F).a(dln.B));
+   }
+
+   private static boolean a(drd $$0, daf $$1, io $$2) {
+      return true;
+   }
+
+   private static boolean b(drd $$0, daf $$1, io $$2) {
+      return false;
+   }
+
+   private static dea b(csj $$0) {
+      return new dls($$0, drc.d.a().a($$0).a(dse.d).d(0.3F).a(dln.h).c().a(dec::a).a(dec::b).b(dec::b).c(dec::b));
+   }
+
+   private static dea a(dln $$0) {
+      return new dik(drc.d.a().a(ena.h).d(0.2F).e().a($$0).c().a(dec::c).b(dec::b).c(dec::b).h().a(enb.b).a(dec::b));
+   }
+
+   private static dea a(@Nullable csj $$0, ena $$1) {
+      return new dkz($$0, drc.d.a().a($$1).j().d(2.0F).f().c().b(tu).c(tu).a(enb.b));
+   }
+
+   private static dea a(boolean $$0) {
+      drc.f $$1 = ($$0x, $$1x, $$2) -> !$$0x.c(dqw.c);
+      return new dqw($$0, drc.d.a().a(ena.l).d(1.5F).a(dec::b).b($$1).c($$1).a(enb.c));
+   }
+
+   private static dea a(drs $$0) {
+      return new dek($$0, 30, drc.d.a().b().d(0.5F).a(enb.b));
+   }
+
+   private static dea b() {
+      return new dek(drs.e, 20, drc.d.a().b().d(0.5F).a(enb.b));
+   }
+
+   private static dea a(dea $$0) {
+      return new dhd($$0, drc.d.a().d().c().a(enb.b));
+   }
+
+   private static dea b(ena $$0) {
+      return new dep(drc.d.a().a($$0).c().d(0.1F).a(dln.X).a(dep.i).a(enb.b));
+   }
+
+   @Deprecated
+   private static dea b(dea $$0) {
+      return new dlu($$0.n(), drc.d.b($$0));
+   }
+
+   private static dea c(dea $$0) {
+      return new dlu($$0.n(), drc.d.a((drc)$$0));
+   }
+
+   public static dea a(String $$0, dea $$1) {
+      return jk.a(le.e, $$0, $$1);
+   }
+
+   public static dea a(akm<dea> $$0, dea $$1) {
+      return jk.a(le.e, $$0, $$1);
+   }
+
+   public static void a() {
+      dea.q.forEach(drc.a::a);
+   }
+
+   static {
+      for (dea $$0 : le.e) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            drd $$1 = (drd)var2.next();
+            dea.q.b($$1);
+            $$1.a();
          }
+
+         $$0.v();
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return $$0.a(dfe.dn) || $$0.a(dfe.do);
-   }
-
-   @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return new cuh((dbz)DataFixUtils.orElse($$0.I_().d(li.G).e(this.g), this));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
    }
 }

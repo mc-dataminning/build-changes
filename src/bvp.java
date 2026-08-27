@@ -1,37 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bvp {
-   public static bvr<bso> a(float $$0) {
-      return bxt.a((Function<bxt.b<bso>, ? extends App<bxt.c<bso>, bxw<bso>>>)($$1 -> $$1.group($$1.c(cbr.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.du())) {
-                  return false;
-               } else {
-                  Optional<ewu> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new cbu($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bvp extends buj<bss> {
+   public bvp(int $$0, int $$1) {
+      super(ImmutableMap.of(cbu.n, cbv.a), $$0, $$1);
    }
 
-   @Nullable
-   private static ewu a(aqt $$0, bso $$1) {
-      ayt $$2 = $$1.et();
-      ir $$3 = $$1.du();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ir $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ewu.c($$5);
-         }
-      }
-
-      return null;
+   protected boolean a(aqn $$0, bss $$1, long $$2) {
+      return $$1.dS().c(cbu.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   public static boolean a(aqt $$0, bso $$1, ir $$2) {
-      return $$0.h($$2) && (double)$$0.a(dyu.a.e, $$2).v() <= $$1.dB();
+   protected void b(aqn $$0, bss $$1, long $$2) {
+      $$1.dS().b(cbu.n);
+   }
+
+   protected void c(aqn $$0, bss $$1, long $$2) {
+      $$1.dS().c(cbu.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

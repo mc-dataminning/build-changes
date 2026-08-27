@@ -1,29 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map.Entry;
 
-public class czn<T extends cyp> implements cze<T> {
-   private final czn.a<T> a;
-   private final Codec<T> A;
-   private final zc<wp, T> B;
+public class czn extends czb {
+   private static final float b = 0.15F;
 
-   public czn(czn.a<T> $$0) {
-      this.a = $$0;
-      this.A = RecordCodecBuilder.create($$1 -> $$1.group(cyo.e.fieldOf("category").orElse(cyo.d).forGetter(cyp::d)).apply($$1, $$0::create));
-      this.B = zc.a(cyo.g, cyp::d, $$0::create);
+   public czn(czb.b $$0) {
+      super($$0);
    }
 
    @Override
-   public Codec<T> a() {
-      return this.A;
+   public void b(bsq $$0, brw $$1, int $$2) {
+      aym $$3 = $$0.el();
+      Entry<bsd, ctq> $$4 = czc.b(cze.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dQ().d($$0), (float)b($$2, $$3));
+         }
+
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
+         }
+      }
    }
 
-   @Override
-   public zc<wp, T> b() {
-      return this.B;
+   public static boolean a(int $$0, aym $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
    }
 
-   @FunctionalInterface
-   public interface a<T extends cyp> {
-      T create(cyo var1);
+   public static int b(int $$0, aym $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

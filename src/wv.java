@@ -1,48 +1,81 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class wv {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+   public static final Codec<wv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wv.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, wv::new)
+   );
+   private final wv.a b;
+   private final String c;
 
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
-            return $$1;
-         }
+   public wv(wv.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public wv.a a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         wv $$1 = (wv)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
+   }
+
+   public static enum a implements ayz {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
+
+      public static final MapCodec<wv.a> g = ayz.a(wv.a::values).fieldOf("action");
+      public static final MapCodec<wv.a> h = g.validate(wv.a::a);
+      private final boolean i;
+      private final String j;
+
+      private a(String $$0, boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      return 5;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
-   }
-
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
-         }
-      } while (a($$3));
-
-      return $$1;
-   }
-
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
+      public boolean a() {
+         return this.i;
       }
 
-      $$0.writeByte($$1);
-      return $$0;
+      @Override
+      public String c() {
+         return this.j;
+      }
+
+      public static DataResult<wv.a> a(wv.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 }

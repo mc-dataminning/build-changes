@@ -1,23 +1,31 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fch extends fcy {
-   private static final Logger b = LogUtils.getLogger();
-   public String a;
+public class fch {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public static fch a(String $$0) {
-      fch $$1 = new fch();
+   fch(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fev.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fch.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return $$1;
+      public fch.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fch a() {
+         return new fch(this.a, this.b);
+      }
    }
 }

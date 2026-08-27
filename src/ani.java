@@ -1,29 +1,37 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ani {
-   public static void a(CommandDispatcher<eh> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.pardonip.failed"));
+
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("list").executes($$0x -> a((eh)$$0x.getSource())))
-            .then(ei.a("uuids").executes($$0x -> b((eh)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ef.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().g().a(), $$1))
+                  .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+            )
       );
    }
 
-   private static int a(eh $$0) {
-      return a($$0, cly::P_);
-   }
-
-   private static int b(eh $$0) {
-      return a($$0, $$0x -> xe.a("commands.list.nameAndId", $$0x.af(), xe.a($$0x.gk().getId())));
-   }
-
-   private static int a(eh $$0, Function<aqu, xe> $$1) {
-      auq $$2 = $$0.l().ah();
-      List<aqu> $$3 = $$2.t();
-      xe $$4 = xh.b($$3, $$1);
-      $$0.a(() -> xe.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
-      return $$3.size();
+   private static int a(ee $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
+         throw a.create();
+      } else {
+         auh $$2 = $$0.l().ah().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
+         } else {
+            $$2.c($$1);
+            $$0.a(() -> wx.a("commands.pardonip.success", $$1), true);
+            return 1;
+         }
+      }
    }
 }

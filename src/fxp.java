@@ -1,7 +1,8 @@
-public abstract class fxp extends fwn {
-   public fxp() {
-      super(gfo::i);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public abstract void a(float var1, float var2, float var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fxp {
 }

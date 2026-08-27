@@ -1,38 +1,29 @@
-public class fdr extends gxb {
-   private static final xe a = xe.c("mco.client.incompatible.title").b(-65536);
-   private static final xe b = xe.b(ab.b().c()).b(-65536);
-   private static final xe c = xe.a("mco.client.unsupported.snapshot.version", b);
-   private static final xe B = xe.a("mco.client.outdated.stable.version", b);
-   private final fon C;
-   private final fma D = new fma(this);
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fdr(fon $$0) {
-      super(a);
-      this.C = $$0;
+public class fdr {
+   private final List<xc> a = Lists.newArrayList();
+
+   public void a(xc $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public void aN_() {
-      this.D.a(a, this.p);
-      this.D.c(new fjh(this.C(), this.p).b(true));
-      this.D.b(fin.a(xd.k, $$0 -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         fil var10000 = this.c($$1);
-      });
-      this.c();
+   @Nullable
+   public xc a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xc.a(this.a);
+      }
    }
 
-   @Override
-   protected void c() {
-      this.D.a();
+   public xc b() {
+      xc $$0 = this.a();
+      return $$0 != null ? $$0 : xc.b;
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.C);
-   }
-
-   private xe C() {
-      return ab.b().g() ? B : c;
+   public void c() {
+      this.a.clear();
    }
 }

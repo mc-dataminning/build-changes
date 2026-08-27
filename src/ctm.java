@@ -1,36 +1,65 @@
-public class ctm extends cuc {
-   public ctm(cuc.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+public class ctm {
+   private final Map<ctl, ctm.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(ctl $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      if ($$1.cJ != null) {
-         if (!$$0.C) {
-            int $$4 = $$1.cJ.a($$3);
-            $$3.a($$4, $$1, bso.d($$2));
-         }
-
-         $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.jj, avq.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         $$1.a(dxv.C);
+   public float a(ctl $$0, float $$1) {
+      ctm.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return ayf.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.jl, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         if (!$$0.C) {
-            int $$5 = dae.e($$3);
-            int $$6 = dae.d($$3);
-            $$0.b(new cmn($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(avz.c.b(this));
-         $$1.a(dxv.D);
+         return 0.0F;
       }
-
-      return bqb.a($$3, $$0.x_());
    }
 
-   @Override
-   public int g() {
-      return 1;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<ctl, ctm.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<ctl, ctm.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(ctl $$0, int $$1) {
+      this.a.put($$0, new ctm.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(ctl $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(ctl $$0, int $$1) {
+   }
+
+   protected void c(ctl $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

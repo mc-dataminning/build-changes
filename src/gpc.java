@@ -1,52 +1,17 @@
-public class gpc<T extends cer> extends gpi<T, fvj<T>> {
-   private final gga a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gpc(gmp<T, fvj<T>> $$0, gga $$1) {
-      super($$0);
-      this.a = $$1;
-   }
+public record gpc(String b, String c, boolean d) {
+   public static final Codec<gpc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axn.w.fieldOf("region").forGetter(gpc::b),
+               axn.w.fieldOf("name").forGetter(gpc::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gpc::d)
+            )
+            .apply($$0, gpc::new)
+   );
 
-   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         fgj $$10 = fgj.Q();
-         boolean $$11 = $$10.b($$3) && $$3.cm();
-         if (!$$3.cm() || $$11) {
-            dtc $$12 = $$3.t().a();
-            int $$13 = glt.c($$3, 0.0F);
-            gsz $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
-   }
-
-   private void a(fbc $$0, gfg $$1, int $$2, boolean $$3, dtc $$4, int $$5, gsz $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gfo.r(gqx.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   public wx a() {
+      return wx.b(this.c + " (" + this.b + ")");
    }
 }

@@ -1,76 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dlb extends dfc {
-   public static final MapCodec<dlb> a = b(dlb::new);
-   private static final xe d = xe.c("container.poisonous_potato_cutter");
-   public static final dtw b = djc.aE;
-   protected static final exn c = dfc.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-
+public interface dlb extends deh, dir {
    @Override
-   public MapCodec<dlb> a() {
-      return a;
-   }
-
-   public dlb(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, iw.c));
+   default boolean a(@Nullable cly $$0, daf $$1, io $$2, drd $$3, emv $$4) {
+      return $$4 == emx.c;
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      return this.n().a(b, $$0.g().g());
-   }
+   default boolean a(dba $$0, io $$1, drd $$2, emw $$3) {
+      if (!$$2.c(drt.C) && $$3.a() == emx.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(drt.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      if ($$1.C) {
-         return bqa.a;
+         return true;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avz.az);
-         return bqa.b;
+         return false;
       }
    }
 
-   @Nullable
    @Override
-   protected bqe b(dtc $$0, dca $$1, ir $$2) {
-      return new bqk(($$2x, $$3, $$4) -> new cqu($$2x, $$3, cpr.a($$1, $$2)), d);
+   default ctq a(@Nullable cly $$0, dba $$1, io $$2, drd $$3) {
+      if ($$3.c(drt.C)) {
+         $$1.a($$2, $$3.a(drt.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new ctq(ctt.qz);
+      } else {
+         return ctq.i;
+      }
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean f_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.c;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   default Optional<avh> at_() {
+      return emx.c.j();
    }
 }

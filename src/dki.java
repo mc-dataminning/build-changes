@@ -1,160 +1,177 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dki {
-   public static final dki.e[] a = new dki.e[]{dki.e.a, dki.e.b, dki.e.c};
-   private final dki.b b;
+public class dki extends dea {
+   public static final MapCodec<dki> a = b(dki::new);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dsd d = drt.aZ;
+   private static final ImmutableList<js> e = ImmutableList.of(
+      new js(0, 0, -1), new js(-1, 0, 0), new js(0, 0, 1), new js(1, 0, 0), new js(-1, 0, -1), new js(1, 0, -1), new js(-1, 0, 1), new js(1, 0, 1)
+   );
+   private static final ImmutableList<js> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(js::o).iterator())
+      .addAll(e.stream().map(js::p).iterator())
+      .add(new js(0, 1, 0))
+      .build();
 
-   public dki(dkh $$0) {
-      this(new dki.a($$0));
+   @Override
+   public MapCodec<dki> a() {
+      return a;
    }
 
-   public dki(dki.b $$0) {
-      this.b = $$0;
+   public dki(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(0)));
    }
 
-   public boolean a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-      return iw.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
-   }
-
-   public Optional<dki.c> a(dtc $$0, dcb $$1, ir $$2, ayt $$3) {
-      return iw.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(dtc $$0, dcb $$1, ir $$2, boolean $$3) {
-      return iw.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<dki.c> a(dtc $$0, dcb $$1, ir $$2, iw $$3, ayt $$4, boolean $$5) {
-      return iw.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dtc $$0, dcb $$1, ir $$2, iw $$3, boolean $$4) {
-      return iw.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dki.c> a(dtc $$0, dcb $$1, ir $$2, iw $$3, iw $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dki.c> a(dtc $$0, dbg $$1, ir $$2, iw $$3, iw $$4, dki.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dki.e $$6 : this.b.a()) {
-            dki.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
-         }
-
-         return Optional.empty();
+   @Override
+   protected bpy a(ctq $$0, drd $$1, daz $$2, io $$3, cly $$4, bpv $$5, eui $$6) {
+      if (a($$0) && m($$1)) {
+         a($$4, $$2, $$3, $$1);
+         $$0.a(1, $$4);
+         return bpy.a($$2.B);
       } else {
-         return Optional.empty();
+         return $$5 == bpv.a && a($$4.b(bpv.b)) && m($$1) ? bpy.e : bpy.d;
       }
    }
 
-   public Optional<dki.c> a(dcb $$0, dki.c $$1, boolean $$2) {
-      dtc $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
+   @Override
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$0.c(d) == 0) {
+         return bpw.d;
+      } else if (!a($$1)) {
+         if (!$$1.B) {
+            this.d($$0, $$1, $$2);
+         }
 
-   public static class a implements dki.b {
-      protected dkh a;
-
-      public a(dkh $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dtc a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dbg $$0, ir $$1, ir $$2, iw $$3, dtc $$4) {
-         return $$4.i() || $$4.a(this.a) || $$4.a(dfe.al) && $$4.u().b();
-      }
-
-      @Override
-      public boolean a(dbg $$0, ir $$1, dki.c $$2) {
-         dtc $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      dtc a(dtc var1, dbg var2, ir var3, iw var4);
-
-      boolean a(dbg var1, ir var2, dki.c var3);
-
-      default dki.e[] a() {
-         return dki.a;
-      }
-
-      default boolean a(dtc $$0, iw $$1) {
-         return dkh.a($$0, $$1);
-      }
-
-      default boolean a(dtc $$0) {
-         return false;
-      }
-
-      default boolean b(dtc $$0, iw $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(dcb $$0, dki.c $$1, dtc $$2, boolean $$3) {
-         dtc $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
+         return bpw.a($$1.B);
+      } else {
+         if (!$$1.B) {
+            aqo $$5 = (aqo)$$3;
+            if ($$5.T() != $$1.ae() || !$$2.equals($$5.R())) {
+               $$5.a($$1.ae(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avi.vw, avj.e, 1.0F, 1.0F);
+               return bpw.a;
             }
+         }
 
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
+         return bpw.b;
+      }
+   }
+
+   private static boolean a(ctq $$0) {
+      return $$0.a(ctt.fu);
+   }
+
+   private static boolean m(drd $$0) {
+      return $$0.c(d) < 4;
+   }
+
+   private static boolean a(io $$0, daz $$1) {
+      emw $$2 = $$1.b_($$0);
+      if (!$$2.a(awc.a)) {
+         return false;
+      } else if ($$2.b()) {
+         return true;
+      } else {
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
             return false;
+         } else {
+            emw $$4 = $$1.b_($$0.d());
+            return !$$4.a(awc.a);
          }
       }
    }
 
-   public static record c(ir a, iw b) {
-   }
-
-   @FunctionalInterface
-   public interface d {
-      boolean test(dbg var1, ir var2, dki.c var3);
-   }
-
-   public static enum e {
-      a {
+   private void d(drd $$0, daz $$1, final io $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = it.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.c()).a(awc.a);
+      das $$5 = new das() {
          @Override
-         public dki.c a(ir $$0, iw $$1, iw $$2) {
-            return new dki.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dki.c a(ir $$0, iw $$1, iw $$2) {
-            return new dki.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dki.c a(ir $$0, iw $$1, iw $$2) {
-            return new dki.c($$0.a($$1).a($$2), $$1.g());
+         public Optional<Float> a(dar $$0, daf $$1, io $$2x, drd $$3, emw $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(dec.G.e()) : super.a($$0, $$1, $$2, $$3, $$4);
          }
       };
+      eum $$6 = $$2.b();
+      $$1.a(null, $$1.ai().a($$6), $$5, $$6, 5.0F, true, daz.a.b);
+   }
 
-      public abstract dki.c a(ir var1, iw var2, iw var3);
+   public static boolean a(daz $$0) {
+      return $$0.D_().m();
+   }
+
+   public static void a(@Nullable brw $$0, daz $$1, io $$2, drd $$3) {
+      drd $$4 = $$3.a(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(dvw.c, $$2, dvw.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avi.vu, avj.e, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a($$2, avi.vt, avj.e, 1.0F, 1.0F, false);
+         }
+
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(ky.aH, $$4, $$5, $$6, 0.0, $$7, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean c_(drd $$0) {
+      return true;
+   }
+
+   public static int a(drd $$0, int $$1) {
+      return ayf.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
+   }
+
+   @Override
+   protected int a(drd $$0, daz $$1, io $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<eum> a(bsc<?> $$0, daj $$1, io $$2) {
+      Optional<eum> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<eum> a(bsc<?> $$0, daj $$1, io $$2, boolean $$3) {
+      io.a $$4 = new io.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         js $$5 = (js)var5.next();
+         $$4.g($$2).h($$5);
+         eum $$6 = cny.a($$0, $$1, $$4, $$3);
+         if ($$6 != null) {
+            return Optional.of($$6);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
    }
 }

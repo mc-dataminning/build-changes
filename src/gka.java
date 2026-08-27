@@ -1,17 +1,20 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gka<T extends cjp> extends giz<T, fux<T>> {
+   private static final akn a = new akn("textures/entity/spider/spider.png");
 
-public class gka<T extends cgh> extends gjj<T, fve<T>> {
-   private static final Map<bsb<?>, akt> a = Maps.newHashMap(
-      ImmutableMap.of(bsb.B, new akt("textures/entity/horse/donkey.png"), bsb.au, new akt("textures/entity/horse/mule.png"))
-   );
-
-   public gka(gkq.a $$0, float $$1, fyq $$2) {
-      super($$0, new fve<>($$0.a($$2)), $$1);
+   public gka(ght.a $$0) {
+      this($$0, fvv.bx);
    }
 
-   public akt a(T $$0) {
-      return a.get($$0.ak());
+   public gka(ght.a $$0, fvu $$1) {
+      super($$0, new fux<>($$0.a($$1)), 0.8F);
+      this.a(new gmm<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akn a(T $$0) {
+      return a;
    }
 }

@@ -1,46 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class fgr {
-   private static final Logger a = LogUtils.getLogger();
-   private final fgj b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+   public static final akn a = new akn("textures/gui/title/minecraft.png");
+   public static final akn b = new akn("textures/gui/title/minceraft.png");
+   public static final akn c = new akn("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)aym.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public fgr(fgj $$0) {
-      this.b = $$0;
+   public fgr(boolean $$0) {
+      this.o = $$0;
    }
 
-   public void a(fon $$0) {
-      if (!this.b.ah() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new frq($$0));
-         this.d = true;
-      }
+   public void a(ffn $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ad.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return fbs.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (fdf var2) {
-         return false;
-      }
+   public void a(ffn $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      RenderSystem.enableBlend();
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 }

@@ -1,50 +1,108 @@
-public class gdb extends gda {
-   gdb(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
+import javax.annotation.Nullable;
+
+public class gdb {
+   protected final gci a;
+   protected final daz b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public gfk.b[] f;
+
+   public gdb(gfk $$0, daz $$1, int $$2, gci $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   protected void a(gfk $$0) {
+      if (!feb.Q().bv()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
+         int $$1 = this.d * this.c * this.e;
+         this.f = new gfk.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
       }
    }
 
-   public static class a implements gcx<le> {
-      private final gdp a;
-      private final float b;
-      private final float c;
-      private final float d;
-
-      public a(gdp $$0, float $$1, float $$2, float $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public void a() {
+      for (gfk.b $$0 : this.f) {
+         $$0.e();
       }
+   }
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdb $$8 = new gdb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         float $$9 = $$1.A.i() * 0.6F + 0.4F;
-         $$8.a(this.b * $$9, this.c * $$9, this.d * $$9);
-         $$8.a(this.a);
-         return $$8;
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.am();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dbb c() {
+      return this.b;
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = ayf.c($$0);
+      int $$3 = ayf.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.I_() + $$12 * 16;
+               gfk.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               io $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      gfk.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected gfk.b a(io $$0) {
+      int $$1 = ayf.a($$0.v() - this.b.I_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = ayf.b(ayf.a($$0.u(), 16), this.d);
+         int $$3 = ayf.b(ayf.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

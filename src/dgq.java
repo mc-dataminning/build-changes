@@ -1,59 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgq extends dfc {
-   public static final MapCodec<dgq> a = b(dgq::new);
-   public static final dtt b = dts.w;
-   public static final dtt c = dts.r;
+public class dgq extends dkj {
+   public static final MapCodec<dgq> b = b(dgq::new);
 
    @Override
-   protected MapCodec<? extends dgq> a() {
-      return a;
+   public MapCodec<dgq> a() {
+      return b;
    }
 
-   public dgq(dtb.d $$0) {
+   protected dgq(drc.d $$0) {
       super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(a, it.b));
    }
 
    @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof aqt $$5) {
-         this.a($$0, $$5, $$2);
+   public drd a(cxb $$0) {
+      it $$1 = $$0.k();
+      drd $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().a(a, $$1.g()) : this.n().a(a, $$1);
+   }
+
+   @Override
+   public void a(drd $$0, daz $$1, io $$2, aym $$3) {
+      it $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ky.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      if ($$1 instanceof aqt $$6) {
-         this.a($$0, $$6, $$2);
-      }
-   }
-
-   public void a(dtc $$0, aqt $$1, ir $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dtc $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? avo.fG : avo.fH, avq.e);
-         }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dtc $$0, dca $$1, ir $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(a);
    }
 }

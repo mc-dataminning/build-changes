@@ -1,51 +1,106 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class avn {
-   public static final Codec<avn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akt.a.fieldOf("sound_id").forGetter(avn::a), Codec.FLOAT.optionalFieldOf("range").forGetter(avn::b)).apply($$0, avn::a)
-   );
-   public static final Codec<ja<avn>> b = akp.a(li.ag, a);
-   public static final zc<ByteBuf, avn> c = zc.a(akt.b, avn::a, za.i.a(za::a), avn::b, avn::a);
-   public static final zc<wp, ja<avn>> d = za.a(li.ag, c);
-   private static final float e = 16.0F;
-   private final akt f;
-   private final float g;
-   private final boolean h;
+public class avn extends avl {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   private static avn a(akt $$0, Optional<Float> $$1) {
-      return $$1.<avn>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   public int a(Collection<cxy<?>> $$0, aqo $$1) {
+      List<akn> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxy<?> $$4 : $$0) {
+         akn $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().ao_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(aea.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public static avn a(akt $$0) {
-      return new avn($$0, 16.0F, false);
+   public int b(Collection<cxy<?>> $$0, aqo $$1) {
+      List<akn> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxy<?> $$4 : $$0) {
+         akn $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(aea.a.c, $$1, $$2);
+      return $$3;
    }
 
-   public static avn a(akt $$0, float $$1) {
-      return new avn($$0, $$1, true);
+   private void a(aea.a $$0, aqo $$1, List<akn> $$2) {
+      $$1.c.b(new aea($$0, $$2, Collections.emptyList(), this.a()));
    }
 
-   private avn(akt $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public ud b() {
+      ud $$0 = new ud();
+      this.a().b($$0);
+      uj $$1 = new uj();
+
+      for (akn $$2 : this.a) {
+         $$1.add(uy.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      uj $$3 = new uj();
+
+      for (akn $$4 : this.b) {
+         $$3.add(uy.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
    }
 
-   public akt a() {
-      return this.f;
+   public void a(ud $$0, cxz $$1) {
+      this.a(avm.a($$0));
+      uj $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      uj $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+   private void a(uj $$0, Consumer<cxy<?>> $$1, cxz $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            akn $$5 = new akn($$4);
+            Optional<cxy<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
       }
    }
 
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public void a(aqo $$0) {
+      $$0.c.b(new aea(aea.a.a, this.a, this.b, this.a()));
    }
 }

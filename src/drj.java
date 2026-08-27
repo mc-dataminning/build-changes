@@ -1,61 +1,96 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public record drj(Optional<cuc> d, Optional<cuc> e, Optional<cuc> f, Optional<cuc> g) {
-   public static final drj a = new drj(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<drj> b = axu.a(lh.h.q().listOf(), 4).xmap(drj::new, drj::a);
-   public static final zc<wp, drj> c = za.a(li.G).a(za.c(4)).a(drj::new, drj::a);
+public class drj {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<drh>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   private drj(List<cuc> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   private drj() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   public drj(cuc $$0, cuc $$1, cuc $$2, cuc $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
-   }
+   public drj a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
 
-   private static Optional<cuc> a(List<cuc> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
+
+            this.b.add($$0);
+            return this;
+         }
       } else {
-         cuc $$2 = $$0.get($$1);
-         return $$2 == cuk.si ? Optional.empty() : Optional.of($$2);
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   public uk a(uk $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", ad.a(b.encodeStart(uy.a, this), IllegalStateException::new));
-         return $$0;
+   public static drj a() {
+      return new drj();
+   }
+
+   public drj a(char $$0, Predicate<drh> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public dri b() {
+      return new dri(this.c());
+   }
+
+   private Predicate<drh>[][][] c() {
+      this.d();
+      Predicate<drh>[][][] $$0 = (Predicate<drh>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
       }
+
+      return $$0;
    }
 
-   public List<cuc> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cuk.si)).toList();
-   }
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-   public static drj b(@Nullable uk $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(uy.a, $$0.c("sherds")).result().orElse(a) : a;
-   }
+      for (Entry<Character, Predicate<drh>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
 
-   public Optional<cuc> b() {
-      return this.d;
-   }
-
-   public Optional<cuc> c() {
-      return this.e;
-   }
-
-   public Optional<cuc> d() {
-      return this.f;
-   }
-
-   public Optional<cuc> e() {
-      return this.g;
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

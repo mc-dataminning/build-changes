@@ -1,30 +1,45 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class evw {
+   private static final ewg<Object> a = new ewg<Object>() {
+      @Override
+      public void a(ewd<Object> $$0) {
+      }
 
-public record evw(erp.b c) implements evz {
-   public static final Codec<evw> a = RecordCodecBuilder.create($$0 -> $$0.group(erp.b.e.fieldOf("target").forGetter(evw::c)).apply($$0, evw::new));
-   public static final Codec<evw> b = erp.b.e.xmap(evw::new, evw::c);
+      @Override
+      public boolean a(io $$0, Object $$1) {
+         return false;
+      }
 
-   public static evz a(erp.b $$0) {
-      return new evw($$0);
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final evz<Object> b = new evz<Object>() {
+      @Override
+      public void a(ewd<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(io $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(io $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> ewg<T> a() {
+      return (ewg<T>)a;
    }
 
-   @Override
-   public evy a() {
-      return ewa.c;
-   }
-
-   @Nullable
-   @Override
-   public exx a(erp $$0) {
-      return $$0.c(this.c.a());
-   }
-
-   @Override
-   public Set<eud<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public static <T> evz<T> b() {
+      return (evz<T>)b;
    }
 }

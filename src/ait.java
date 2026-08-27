@@ -1,55 +1,44 @@
-import java.security.PublicKey;
+import javax.annotation.Nullable;
 
-public class ait implements zl<aiq> {
-   public static final zc<we, ait> a = zl.a(ait::a, ait::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
+public record ait(int b, @Nullable aix c) implements ze<ais> {
+   public static final yv<vx, ait> a = ze.a(ait::c, ait::a);
+   private static final int d = 1048576;
 
-   public ait(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private static ait a(vx $$0) {
+      int $$1 = $$0.l();
+      return new ait($$1, a($$1, $$0));
    }
 
-   private ait(we $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private static aix a(int $$0, vx $$1) {
+      return b($$1);
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private static aix b(vx $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.j($$1);
+         return aiz.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zn<ait> a() {
-      return aiw.c;
+   public zg<ait> a() {
+      return aiq.f;
    }
 
-   public void a(aiq $$0) {
+   public void a(ais $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws axl {
-      return axk.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   @Nullable
+   public aix e() {
+      return this.c;
    }
 }

@@ -1,166 +1,253 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class djw extends dfc implements dfj {
-   private static final Codec<epc> f = lh.c
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof epc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
-   public static final MapCodec<djw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, djw::new));
-   public static final duc b = dts.aP;
-   protected final epc c;
-   private final List<epe> g;
-   public static final exn d = dfc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final ImmutableList<iw> e = ImmutableList.of(iw.a, iw.d, iw.c, iw.f, iw.e);
+public class djw extends ddp {
+   public static final MapCodec<djw> d = b(djw::new);
+   public static final dsb<dsh> e = drt.ah;
+   public static final dru f = drt.w;
 
    @Override
    public MapCodec<djw> a() {
-      return a;
+      return d;
    }
 
-   protected djw(epc $$0, dtb.d $$1) {
-      super($$1);
-      this.c = $$0;
-      this.g = Lists.newArrayList();
-      this.g.add($$0.a(false));
-
-      for (int $$2 = 1; $$2 < 8; $$2++) {
-         this.g.add($$0.a(8 - $$2, false));
-      }
-
-      this.g.add($$0.a(8, true));
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+   protected djw(drc.d $$0) {
+      super(true, $$0);
+      this.k(this.E.b().a(e, dsh.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.c()), $$0.u()) ? d : exk.a();
-   }
+   protected boolean a(daz $$0, io $$1, drd $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
+      } else {
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         dsh $$9 = $$2.c(e);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
 
-   @Override
-   protected boolean d_(dtc $$0) {
-      return $$0.u().f();
-   }
+               $$9 = dsh.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
 
-   @Override
-   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      $$0.u().b($$1, $$2, $$3);
-   }
+               $$9 = dsh.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
 
-   @Override
-   protected boolean a_(dtc $$0, dbg $$1, ir $$2) {
-      return false;
-   }
+               $$9 = dsh.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
 
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return !this.c.a(awj.b);
-   }
+               $$9 = dsh.a;
+         }
 
-   @Override
-   protected epe b_(dtc $$0) {
-      int $$1 = $$0.c(b);
-      return this.g.get(Math.min($$1, 8));
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dtc $$1, iw $$2) {
-      return $$1.u().a().a(this.c);
-   }
-
-   @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.a;
-   }
-
-   @Override
-   protected List<cuh> a(dtc $$0, ers.a $$1) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return exk.a();
-   }
-
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((dcd)$$1));
-      }
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.u().b() || $$2.u().b()) {
-         $$3.a($$4, $$0.u().a(), this.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((dcd)$$1));
+         return this.a($$0, new io($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new io($$5, $$6 - 1, $$7), $$3, $$4, $$9);
       }
    }
 
-   private boolean a(dca $$0, ir $$1, dtc $$2) {
-      if (this.c.a(awj.b)) {
-         boolean $$3 = $$0.a_($$1.d()).a(dfe.eL);
-         UnmodifiableIterator var5 = e.iterator();
-
-         while (var5.hasNext()) {
-            iw $$4 = (iw)var5.next();
-            ir $$5 = $$1.a($$4.g());
-            if ($$0.b_($$5).a(awj.a)) {
-               dfc $$6 = $$0.b_($$1).b() ? dfe.cZ : dfe.q;
-               $$0.b($$1, $$6.n());
-               this.a($$0, $$1);
+   protected boolean a(daz $$0, io $$1, boolean $$2, int $$3, dsh $$4) {
+      drd $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         dsh $$6 = $$5.c(e);
+         if ($$4 != dsh.b || $$6 != dsh.a && $$6 != dsh.e && $$6 != dsh.f) {
+            if ($$4 != dsh.a || $$6 != dsh.b && $$6 != dsh.c && $$6 != dsh.d) {
+               if (!$$5.c(f)) {
+                  return false;
+               } else {
+                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
                return false;
             }
-
-            if ($$3 && $$0.a_($$5).a(dfe.nU)) {
-               $$0.b($$1, dfe.eM.n());
-               this.a($$0, $$1);
-               return false;
-            }
+         } else {
+            return false;
          }
       }
-
-      return true;
-   }
-
-   private void a(dcb $$0, ir $$1) {
-      $$0.c(1501, $$1, 0);
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cuh a(@Nullable cly $$0, dcb $$1, ir $$2, dtc $$3) {
-      if ($$3.c(b) == 0) {
-         $$1.a($$2, dfe.a.n(), 11);
-         return new cuh(this.c.a());
-      } else {
-         return cuh.i;
+   protected void a(drd $$0, daz $$1, io $$2, dea $$3) {
+      boolean $$4 = $$0.c(f);
+      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.d(), this);
+         if ($$0.c(e).b()) {
+            $$1.a($$2.c(), this);
+         }
       }
    }
 
    @Override
-   public Optional<avn> as_() {
-      return this.c.j();
+   public dsg<dsh> c() {
+      return e;
+   }
+
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dsh)$$0.c(e)) {
+               case c:
+                  return $$0.a(e, dsh.d);
+               case d:
+                  return $$0.a(e, dsh.c);
+               case e:
+                  return $$0.a(e, dsh.f);
+               case f:
+                  return $$0.a(e, dsh.e);
+               case g:
+                  return $$0.a(e, dsh.i);
+               case h:
+                  return $$0.a(e, dsh.j);
+               case i:
+                  return $$0.a(e, dsh.g);
+               case j:
+                  return $$0.a(e, dsh.h);
+            }
+         case d:
+            switch ((dsh)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dsh.b);
+               case b:
+                  return $$0.a(e, dsh.a);
+               case c:
+                  return $$0.a(e, dsh.e);
+               case d:
+                  return $$0.a(e, dsh.f);
+               case e:
+                  return $$0.a(e, dsh.d);
+               case f:
+                  return $$0.a(e, dsh.c);
+               case g:
+                  return $$0.a(e, dsh.j);
+               case h:
+                  return $$0.a(e, dsh.g);
+               case i:
+                  return $$0.a(e, dsh.h);
+               case j:
+                  return $$0.a(e, dsh.i);
+            }
+         case b:
+            switch ((dsh)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dsh.b);
+               case b:
+                  return $$0.a(e, dsh.a);
+               case c:
+                  return $$0.a(e, dsh.f);
+               case d:
+                  return $$0.a(e, dsh.e);
+               case e:
+                  return $$0.a(e, dsh.c);
+               case f:
+                  return $$0.a(e, dsh.d);
+               case g:
+                  return $$0.a(e, dsh.h);
+               case h:
+                  return $$0.a(e, dsh.i);
+               case i:
+                  return $$0.a(e, dsh.j);
+               case j:
+                  return $$0.a(e, dsh.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      dsh $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dsh.f);
+               case f:
+                  return $$0.a(e, dsh.e);
+               case g:
+                  return $$0.a(e, dsh.j);
+               case h:
+                  return $$0.a(e, dsh.i);
+               case i:
+                  return $$0.a(e, dsh.h);
+               case j:
+                  return $$0.a(e, dsh.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dsh.d);
+               case d:
+                  return $$0.a(e, dsh.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dsh.h);
+               case h:
+                  return $$0.a(e, dsh.g);
+               case i:
+                  return $$0.a(e, dsh.j);
+               case j:
+                  return $$0.a(e, dsh.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(e, f, c);
    }
 }

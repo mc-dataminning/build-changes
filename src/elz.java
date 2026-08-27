@@ -1,42 +1,112 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class elz extends ejt {
-   public static final boo<ddl.c> d = boo.a(
-      new ddl.c(bsb.k, 10, 2, 3), new ddl.c(bsb.bC, 5, 4, 4), new ddl.c(bsb.bu, 8, 5, 5), new ddl.c(bsb.aP, 2, 5, 5), new ddl.c(bsb.aq, 3, 4, 4)
-   );
-   public static final Codec<elz> e = a(elz::new);
+public class elz {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final ema d;
+   private final ema e;
+   private final double f;
+   private final elz.a g;
 
-   public elz(ejt.d $$0) {
-      super($$0);
+   @Deprecated
+   public static elz a(aym $$0, elz.a $$1) {
+      return new elz($$0, $$1, false);
    }
 
-   @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      dbh $$1 = $$0.h();
-      ir $$2 = new ir($$1.d(), 64, $$1.e());
-      return Optional.of(new ejt.c($$2, (Consumer<ekl>)($$1x -> a($$1x, $$0))));
+   public static elz a(aym $$0, int $$1, double... $$2) {
+      return b($$0, new elz.a($$1, new DoubleArrayList($$2)));
    }
 
-   private static void a(ekl $$0, ejt.b $$1) {
-      ely.q $$2 = new ely.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<ejx> $$3 = $$2.d;
+   public static elz b(aym $$0, elz.a $$1) {
+      return new elz($$0, $$1, true);
+   }
 
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         ejx $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+   private elz(aym $$0, elz.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = ema.b($$0, $$3, $$4);
+         this.e = ema.b($$0, $$3, $$4);
+      } else {
+         this.d = ema.a($$0, $$3, $$4);
+         this.e = ema.a($$0, $$3, $$4);
       }
 
-      $$0.a($$1.f(), 48, 70);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   @Override
-   public ekc<?> f() {
-      return ekc.d;
+   public double a() {
+      return this.f;
+   }
+
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public elz.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<elz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(elz.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(elz.a::b))
+               .apply($$0, elz.a::new)
+      );
+      public static final Codec<ix<elz.a>> b = akj.a(lf.aH, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
+      }
+
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
+      }
    }
 }

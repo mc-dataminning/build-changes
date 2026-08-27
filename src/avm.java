@@ -1,18 +1,153 @@
-public class avm {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final avl a = new avl(avo.qy, 20, 600, true);
-   public static final avl b = new avl(avo.qd, 12000, 24000, false);
-   public static final avl c = new avl(avo.qe, 0, 0, true);
-   public static final avl d = new avl(avo.qv, 0, 0, true);
-   public static final avl e = new avl(avo.qw, 6000, 24000, true);
-   public static final avl f = a(avo.qX);
-   public static final avl g = a(avo.qx);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-   public static avl a(ja<avn> $$0) {
-      return new avl($$0, 12000, 24000, false);
+public final class avm {
+   private static final Map<cqj, Pair<String, String>> a = ImmutableMap.of(
+      cqj.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cqj.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cqj.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cqj.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cqj, avm.a> b;
+
+   private avm(Map<cqj, avm.a> $$0) {
+      this.b = $$0;
+   }
+
+   public avm() {
+      this(ac.a(Maps.newEnumMap(cqj.class), $$0 -> {
+         for (cqj $$1 : cqj.values()) {
+            $$0.put($$1, new avm.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(cqj $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(cqj $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(cqj $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(cqj $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static avm a(vx $$0) {
+      Map<cqj, avm.a> $$1 = Maps.newEnumMap(cqj.class);
+
+      for (cqj $$2 : cqj.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new avm.a($$3, $$4));
+      }
+
+      return new avm($$1);
+   }
+
+   public void b(vx $$0) {
+      for (cqj $$1 : cqj.values()) {
+         avm.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static avm a(ud $$0) {
+      Map<cqj, avm.a> $$1 = Maps.newEnumMap(cqj.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new avm.a($$4, $$5));
+      });
+      return new avm($$1);
+   }
+
+   public void b(ud $$0) {
+      a.forEach(($$1, $$2) -> {
+         avm.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public avm a() {
+      Map<cqj, avm.a> $$0 = Maps.newEnumMap(cqj.class);
+
+      for (cqj $$1 : cqj.values()) {
+         avm.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new avm($$0);
+   }
+
+   public void a(avm $$0) {
+      this.b.clear();
+
+      for (cqj $$1 : cqj.values()) {
+         avm.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof avm && this.b.equals(((avm)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public avm.a a() {
+         return new avm.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof avm.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

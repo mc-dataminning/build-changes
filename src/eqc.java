@@ -1,162 +1,61 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class eqc {
-   public static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final aqt n;
+public class eqc extends epz {
+   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(awm.a(lf.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, eqc::new)
+   );
+   private final awm<ctl> j;
+   private final boolean k;
 
-   public eqc(aqt $$0) {
-      this.n = $$0;
+   private eqc(awm<ctl> $$0, boolean $$1, int $$2, int $$3, List<esn> $$4, List<eqt> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public Optional<l.a> a(ir $$0, boolean $$1, dut $$2) {
-      cdr $$3 = this.n.y();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4, dvx.c);
-      Optional<cds> $$5 = $$3.b($$0x -> $$0x.a(cdv.r), $$0, $$4, cdr.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<cds>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(dts.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         ir $$1x = $$0x.f();
-         this.n.l().a(aqy.f, new dbh($$1x), 3, $$1x);
-         dtc $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(dts.H), 21, iw.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
+   @Override
+   public epy a() {
+      return epv.f;
    }
 
-   public Optional<l.a> a(ir $$0, iw.a $$1) {
-      iw $$2 = iw.a(iw.b.a, $$1);
-      double $$3 = -1.0;
-      ir $$4 = null;
-      double $$5 = -1.0;
-      ir $$6 = null;
-      dut $$7 = this.n.D_();
-      int $$8 = Math.min(this.n.am(), this.n.J_() + this.n.k()) - 1;
-      ir.a $$9 = $$0.j();
+   @Override
+   public void a(Consumer<ctq> $$0, eph $$1) {
+      le.h.c(this.j).forEach($$1x -> $$0.accept(new ctq($$1x)));
+   }
 
-      for (ir.a $$10 : ir.a($$0, 16, iw.f, iw.d)) {
-         int $$11 = Math.min($$8, this.n.a(dyu.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
-
-            for (int $$13 = $$11; $$13 >= this.n.J_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.J_() && this.a($$10.d(iw.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
-                     }
-                  }
+   private boolean a(eph $$0, Consumer<epw> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ix<ctl> $$2 : le.h.c(this.j)) {
+            $$1.accept(new epz.c() {
+               @Override
+               public void a(Consumer<ctq> $$0, eph $$1) {
+                  $$0.accept(new ctq($$2));
                }
-            }
+            });
          }
+
+         return true;
       }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.J_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new ir($$0.u(), aym.a($$0.v(), $$17, $$18), $$0.w()).i();
-         iw $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
-         }
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dtc $$23 = $$22 < 0 ? dfe.cZ.n() : dfe.a.n();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, dfe.cZ.n(), 3);
-            }
-         }
-      }
-
-      dtc $$26 = dfe.eR.n().a(dkl.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
    }
 
-   private boolean a(ir.a $$0) {
-      dtc $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   @Override
+   public boolean expand(eph $$0, Consumer<epw> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   private boolean a(ir $$0, ir.a $$1, iw $$2, int $$3) {
-      iw $$4 = $$2.h();
+   public static epz.a<?> a(awm<ctl> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqc($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
-
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public static epz.a<?> b(awm<ctl> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqc($$0, true, $$1, $$2, $$3, $$4));
    }
 }

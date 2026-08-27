@@ -1,62 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class emf extends ejt {
-   public static final Codec<emf> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a($$0),
-               emf.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, emf::new)
-   );
-   public final emf.a e;
-   public final float f;
-   public final float g;
-
-   public emf(ejt.d $$0, emf.a $$1, float $$2, float $$3) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+public class emf extends emk<emf.a> {
+   protected emf(dtm $$0) {
+      super(dbi.b, $$0, new emf.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      return a($$0, dyu.a.c, $$1 -> this.a($$1, $$0));
+   protected int a(long $$0) {
+      long $$1 = jq.e($$0);
+      dte $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(jq.b(io.a($$0)), jq.b(io.b($$0)), jq.b(io.c($$0)));
    }
 
-   private void a(ekl $$0, ejt.b $$1) {
-      ir $$2 = new ir($$1.h().d(), 90, $$1.h().e());
-      dmd $$3 = dmd.a($$1.f());
-      eme.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
-   }
-
-   @Override
-   public ekc<?> f() {
-      return ekc.k;
-   }
-
-   public static enum a implements azg {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<emf.a> c = azg.a(emf.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
+   protected static final class a extends emh<emf.a> {
+      public a(Long2ObjectOpenHashMap<dte> $$0) {
+         super($$0);
       }
 
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
+      public emf.a a() {
+         return new emf.a(this.a.clone());
       }
    }
 }

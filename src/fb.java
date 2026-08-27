@@ -9,49 +9,48 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fb implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xe.b("arguments.objective.readonly", $$0));
+public class fb implements ArgumentType<kw> {
+   private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("particle.notFound", $$0));
+   private final iz.a c;
 
-   public static fb a() {
-      return new fb();
+   public fb(ea $$0) {
+      this.c = $$0;
    }
 
-   public static exq a(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      exy $$3 = ((eh)$$0.getSource()).l().aK();
-      exq $$4 = $$3.a($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static fb a(ea $$0) {
+      return new fb($$0);
    }
 
-   public static exq b(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
-      exq $$2 = a($$0, $$1);
-      if ($$2.c().e()) {
-         throw c.create($$2.b());
-      } else {
-         return $$2;
-      }
+   public static kw a(CommandContext<ee> $$0, String $$1) {
+      return (kw)$$0.getArgument($$1, kw.class);
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      S $$2 = (S)$$0.getSource();
-      if ($$2 instanceof eh $$3) {
-         return em.b($$3.l().aK().d(), $$1);
-      } else {
-         return $$2 instanceof em $$4 ? $$4.a($$0) : Suggestions.empty();
-      }
+   public kw a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, this.c);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
+   }
+
+   public static kw a(StringReader $$0, iz.a $$1) throws CommandSyntaxException {
+      kx<?> $$2 = a($$0, $$1.b(lf.T));
+      return a($$0, (kx<kw>)$$2, $$1);
+   }
+
+   private static kx<?> a(StringReader $$0, iz<kx<?>> $$1) throws CommandSyntaxException {
+      akn $$2 = akn.a($$0);
+      akm<kx<?>> $$3 = akm.a(lf.T, $$2);
+      return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
+   }
+
+   private static <T extends kw> T a(StringReader $$0, kx<T> $$1, iz.a $$2) throws CommandSyntaxException {
+      return $$1.c().b($$1, $$0, $$2);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      iz.b<kx<?>> $$2 = this.c.b(lf.T);
+      return ej.a($$2.c().map(akm::a), $$1);
    }
 }

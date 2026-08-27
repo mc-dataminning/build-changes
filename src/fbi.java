@@ -1,182 +1,224 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fbi {
-   private final fbi.a a;
-   private final fbi.b b;
-   private final int c;
-   private final int d;
-   private final int e;
+public class fbi extends gty {
+   private static final akn a = new akn("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final flz B;
+   @Nullable
+   private fab C;
+   private final long D;
+   private final wx[] E = new wx[]{wx.c("mco.brokenworld.message.line1"), wx.c("mco.brokenworld.message.line2")};
+   private int F;
+   private final List<Integer> G = Lists.newArrayList();
+   private int H;
 
-   public fbi(int $$0, fbi.a $$1, fbi.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
+   public fbi(flz $$0, long $$1, boolean $$2) {
+      super($$2 ? wx.c("mco.brokenworld.minigame.title") : wx.c("mco.brokenworld.title"));
+      this.B = $$0;
+      this.D = $$1;
+   }
+
+   @Override
+   public void aN_() {
+      this.F = this.n / 2 - 150;
+      this.c(fga.a(ww.k, $$0 -> this.d()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      if (this.C == null) {
+         this.a(this.D);
       } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+         this.C();
       }
    }
 
-   private boolean a(int $$0, fbi.b $$1) {
-      return $$0 == 0 || $$1 == fbi.b.d;
-   }
-
-   public final fbi.a a() {
-      return this.a;
-   }
-
-   public final fbi.b b() {
-      return this.b;
-   }
-
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
-      return this.c;
-   }
-
    @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
+   public wx i() {
+      return xa.a(Stream.concat(Stream.of(this.l), Stream.of(this.E)).collect(Collectors.toList()), ww.v);
    }
 
-   public final int e() {
-      return this.e;
-   }
-
-   public final boolean f() {
-      return this.b == fbi.b.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         fbi $$1 = (fbi)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
+   private void C() {
+      for (Entry<Integer, fai> $$0 : this.C.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.C.n || this.C.m == fab.d.b;
+         fga $$3;
+         if ($$2) {
+            $$3 = fga.a(wx.c("mco.brokenworld.play"), $$1x -> this.m.a(new fbr(this.B, new fdj(this.C.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
+            $$3.j = !this.C.i.get($$1).n;
          } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
+            $$3 = fga.a(wx.c("mco.brokenworld.download"), $$1x -> {
+               wx $$2x = wx.c("mco.configure.world.restore.download.question.line1");
+               wx $$3x = wx.c("mco.configure.world.restore.download.question.line2");
+               this.m.a(new fbq($$1xx -> {
+                  if ($$1xx) {
+                     this.b($$1);
+                  } else {
+                     this.m.a(this);
+                  }
+               }, fbq.a.b, $$2x, $$3x, true));
+            }).a(this.a($$1), g(8), 80, 20).a();
          }
+
+         if (this.G.contains($$1)) {
+            $$3.j = false;
+            $$3.b(wx.c("mco.brokenworld.downloaded"));
+         }
+
+         this.c($$3);
+      }
+   }
+
+   @Override
+   public void e() {
+      this.H++;
+   }
+
+   @Override
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.E.length; $$4++) {
+         $$0.a(this.p, this.E[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
+      }
+
+      if (this.C != null) {
+         for (Entry<Integer, fai> $$5 : this.C.i.entrySet()) {
+            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.C.n == $$5.getKey() && !this.D(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().l,
+                  $$5.getValue().m,
+                  $$5.getValue().n
+               );
+            } else {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.C.n == $$5.getKey() && !this.D(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().n
+               );
+            }
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      return this.F + ($$0 - 1) * 110;
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         ezk $$1 = ezk.a();
+
+         try {
+            this.C = $$1.a($$0);
+            this.C();
+         } catch (fax var5) {
+            b.error("Couldn't get own world", var5);
+            this.m.a(new fbo(var5, this.B));
+         }
+      }).start();
+   }
+
+   public void b() {
+      new Thread(() -> {
+         ezk $$0 = ezk.a();
+         if (this.C.e == fab.c.a) {
+            this.m.execute(() -> this.m.a(new fbr(this, new fdc(this.C, this, true, this.m))));
+         } else {
+            try {
+               fab $$1 = $$0.a(this.D);
+               this.m.execute(() -> ezf.a($$1, this));
+            } catch (fax var3) {
+               b.error("Couldn't get own world", var3);
+               this.m.execute(() -> this.m.a(this.B));
+            }
+         }
+      }).start();
+   }
+
+   private void b(int $$0) {
+      ezk $$1 = ezk.a();
+
+      try {
+         far $$2 = $$1.b(this.C.a, $$0);
+         fbn $$3 = new fbn(this, $$2, this.C.a($$0), $$1x -> {
+            if ($$1x) {
+               this.G.add($$0);
+               this.p();
+               this.C();
+            } else {
+               this.m.a(this);
+            }
+         });
+         this.m.a($$3);
+      } catch (fax var5) {
+         b.error("Couldn't download world data", var5);
+         this.m.a(new fbo(var5, this));
+      }
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.B);
+   }
+
+   private boolean D() {
+      return this.C != null && this.C.m == fab.d.b;
+   }
+
+   private void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      akn $$11;
+      if ($$10) {
+         $$11 = fbd.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = fcq.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = fbd.b;
+      } else if ($$7 == 2) {
+         $$11 = fbd.c;
+      } else if ($$7 == 3) {
+         $$11 = fbd.d;
       } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
-   }
-
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
-   }
-
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(int $$0, String $$1, int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
+         $$11 = fcq.a(String.valueOf(this.C.p), this.C.q);
       }
 
-      public int a() {
-         return this.h;
+      if (!$$5) {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      } else if ($$5) {
+         float $$17 = 0.9F + 0.1F * ayf.b((float)this.H * 0.2F);
+         $$0.a($$17, $$17, $$17, 1.0F);
       }
 
-      public String b() {
-         return this.i;
+      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+      if ($$5) {
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      } else {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
       }
 
-      public int c() {
-         return this.j;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
-         }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
-
-      private final String g;
-      private final fbi.b.b h;
-      private final fbi.b.a i;
-
-      private b(String $$0, fbi.b.b $$1, fbi.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
-      }
+      $$0.a(a, $$1, $$2, 80, 80);
+      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

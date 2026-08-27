@@ -1,148 +1,77 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.google.common.base.Stopwatch;
+import java.io.File;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public class ti {
-   private static final Collection<ua> a = Lists.newArrayList();
-   private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<aqt>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<aqt>> d = Maps.newHashMap();
-   private static final Set<ua> e = Sets.newHashSet();
+public class ti implements tw {
+   private final Document a;
+   private final Element b;
+   private final Stopwatch c;
+   private final File d;
 
-   public static void a(Class<?> $$0) {
-      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(ti::a);
+   public ti(File $$0) throws ParserConfigurationException {
+      this.d = $$0;
+      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+      this.b = this.a.createElement("testsuite");
+      Element $$1 = this.a.createElement("testsuite");
+      $$1.appendChild(this.b);
+      this.a.appendChild($$1);
+      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
+      this.c = Stopwatch.createStarted();
    }
 
-   public static void a(Method $$0) {
-      String $$1 = $$0.getDeclaringClass().getSimpleName();
-      sx $$2 = $$0.getAnnotation(sx.class);
-      if ($$2 != null) {
-         a.add(c($$0));
-         b.add($$1);
-      }
-
-      te $$3 = $$0.getAnnotation(te.class);
-      if ($$3 != null) {
-         a.addAll(b($$0));
-         b.add($$1);
-      }
-
-      a($$0, sv.class, sv::a, c);
-      a($$0, su.class, su::a, d);
+   private Element a(sz $$0, String $$1) {
+      Element $$2 = this.a.createElement("testcase");
+      $$2.setAttribute("name", $$1);
+      $$2.setAttribute("classname", $$0.s());
+      $$2.setAttribute("time", String.valueOf((double)$$0.k() / 1000.0));
+      this.b.appendChild($$2);
+      return $$2;
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<aqt>> $$3) {
-      T $$4 = $$0.getAnnotation($$1);
-      if ($$4 != null) {
-         String $$5 = $$2.apply($$4);
-         Consumer<aqt> $$6 = $$3.putIfAbsent($$5, (Consumer<aqt>)d($$0));
-         if ($$6 != null) {
-            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
-         }
-      }
+   @Override
+   public void a(sz $$0) {
+      String $$1 = $$0.b();
+      String $$2 = $$0.m().getMessage();
+      Element $$3 = this.a.createElement($$0.q() ? "failure" : "skipped");
+      $$3.setAttribute("message", "(" + $$0.c().x() + ") " + $$2);
+      Element $$4 = this.a($$0, $$1);
+      $$4.appendChild($$3);
    }
 
-   public static Stream<ua> a(String $$0) {
-      return a.stream().filter($$1 -> a($$1, $$0));
+   @Override
+   public void b(sz $$0) {
+      String $$1 = $$0.b();
+      this.a($$0, $$1);
    }
 
-   public static Collection<ua> a() {
-      return a;
-   }
+   @Override
+   public void a() {
+      this.c.stop();
+      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
 
-   public static Collection<String> b() {
-      return b;
-   }
-
-   public static boolean b(String $$0) {
-      return b.contains($$0);
-   }
-
-   public static Consumer<aqt> c(String $$0) {
-      return c.getOrDefault($$0, $$0x -> {
-      });
-   }
-
-   public static Consumer<aqt> d(String $$0) {
-      return d.getOrDefault($$0, $$0x -> {
-      });
-   }
-
-   public static Optional<ua> e(String $$0) {
-      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
-   }
-
-   public static ua f(String $$0) {
-      Optional<ua> $$1 = e($$0);
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Can't find the test function for " + $$0);
-      } else {
-         return $$1.get();
-      }
-   }
-
-   private static Collection<ua> b(Method $$0) {
       try {
-         Object $$1 = $$0.getDeclaringClass().newInstance();
-         return (Collection<ua>)$$0.invoke($$1);
-      } catch (ReflectiveOperationException var2) {
-         throw new RuntimeException(var2);
+         this.a(this.d);
+      } catch (TransformerException var2) {
+         throw new Error("Couldn't save test report", var2);
       }
    }
 
-   private static ua c(Method $$0) {
-      sx $$1 = $$0.getAnnotation(sx.class);
-      String $$2 = $$0.getDeclaringClass().getSimpleName();
-      String $$3 = $$2.toLowerCase();
-      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
-      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
-      String $$6 = $$1.b();
-      dmd $$7 = tw.a($$1.d());
-      return new ua($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<tf>)d($$0));
-   }
-
-   private static Consumer<?> d(Method $$0) {
-      return $$1 -> {
-         try {
-            Object $$2 = $$0.getDeclaringClass().newInstance();
-            $$0.invoke($$2, $$1);
-         } catch (InvocationTargetException var3) {
-            if (var3.getCause() instanceof RuntimeException) {
-               throw (RuntimeException)var3.getCause();
-            } else {
-               throw new RuntimeException(var3.getCause());
-            }
-         } catch (ReflectiveOperationException var4) {
-            throw new RuntimeException(var4);
-         }
-      };
-   }
-
-   private static boolean a(ua $$0, String $$1) {
-      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
-   }
-
-   public static Stream<ua> c() {
-      return e.stream();
-   }
-
-   public static void a(ua $$0) {
-      e.add($$0);
-   }
-
-   public static void d() {
-      e.clear();
+   public void a(File $$0) throws TransformerException {
+      TransformerFactory $$1 = TransformerFactory.newInstance();
+      Transformer $$2 = $$1.newTransformer();
+      DOMSource $$3 = new DOMSource(this.a);
+      StreamResult $$4 = new StreamResult($$0);
+      $$2.transform($$3, $$4);
    }
 }

@@ -1,61 +1,188 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-public class agd implements zl<abw> {
-   public static final zc<wp, agd> a = zc.a(za.g, agd::b, agd.a.b.a(za.a()), agd::e, agd::new);
-   private final int b;
-   private final List<agd.a> c;
-
-   public agd(int $$0, Collection<btr> $$1) {
-      this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (btr $$2 : $$1) {
-         this.c.add(new agd.a($$2.a(), $$2.b(), $$2.c()));
-      }
-   }
-
-   private agd(int $$0, List<agd.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public zn<agd> a() {
-      return agj.bd;
-   }
-
-   public void a(abw $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public List<agd.a> e() {
-      return this.c;
-   }
-
-   public static record a(ja<btq> c, double d, Collection<btt> e) {
-      public static final zc<ByteBuf, btt> a = zc.a(
-         ju.g, btt::b, za.j, btt::d, btt.a.e, btt::e, ($$0, $$1, $$2) -> new btt($$0, "Unknown synced attribute modifier", $$1, $$2)
-      );
-      public static final zc<wp, agd.a> b = zc.a(za.b(li.c), agd.a::a, za.j, agd.a::b, a.a(za.a(ArrayList::new)), agd.a::c, agd.a::new);
-
-      public ja<btq> a() {
-         return this.c;
-      }
-
-      public double b() {
-         return this.d;
-      }
-
-      public Collection<btt> c() {
-         return this.e;
-      }
-   }
+public class agd {
+   public static final wf.a<age, wi> a = zj.c(
+      vw.b,
+      $$0 -> $$0.a(agc.bf, agg.a)
+            .a(agc.bg, agh.a)
+            .a(agc.bh, agi.a)
+            .a(agc.bi, agj.a)
+            .a(agc.bj, agk.a)
+            .a(agc.bk, agl.a)
+            .a(agc.bl, agm.a)
+            .a(agc.bm, agn.a)
+            .a(agc.bn, ago.a)
+            .a(agc.bo, agp.a)
+            .a(zu.j, zw.a)
+            .a(agc.bp, agq.a)
+            .a(agc.bq, agr.b)
+            .a(agc.br, ags.a)
+            .a(agc.bs, agt.a)
+            .a(agc.bt, agu.a)
+            .a(agc.bu, agv.a)
+            .a(abm.b, abo.a)
+            .a(zu.k, zx.a)
+            .a(agc.bv, agw.a)
+            .a(agc.bw, agx.b)
+            .a(agc.bx, agy.a)
+            .a(agc.by, agz.a)
+            .a(agc.bz, aha.a)
+            .a(zu.l, zy.a)
+            .a(agc.bA, ahb.a)
+            .a(agc.bB, ahc.a.i)
+            .a(agc.bC, ahc.b.i)
+            .a(agc.bD, ahc.c.i)
+            .a(agc.bE, ahc.d.i)
+            .a(agc.bF, ahd.a)
+            .a(agc.bG, ahe.a)
+            .a(agc.bH, ahf.a)
+            .a(ajg.b, aji.a)
+            .a(agc.bI, ahg.a)
+            .a(agc.bJ, ahh.a)
+            .a(agc.bK, ahi.a)
+            .a(agc.bL, ahj.a)
+            .a(agc.bM, ahk.a)
+            .a(zu.m, zz.a)
+            .a(agc.bN, ahl.a)
+            .a(agc.bO, ahm.a)
+            .a(agc.bP, ahn.a)
+            .a(zu.n, aaa.a)
+            .a(agc.bQ, aho.a)
+            .a(agc.bR, ahp.a)
+            .a(agc.bS, ahq.a)
+            .a(agc.bT, ahr.a)
+            .a(agc.bU, ahs.a)
+            .a(agc.bV, aht.a)
+            .a(agc.bW, ahu.a)
+            .a(agc.bX, ahv.a)
+            .a(agc.bY, ahw.a)
+            .a(agc.bZ, ahx.a)
+            .a(agc.ca, ahy.a)
+            .a(agc.cb, ahz.a)
+            .a(agc.cc, aia.a)
+            .a(agc.cd, aib.a)
+   );
+   public static final wf.a<abq, wi> b = zj.d(
+      vw.b,
+      $$0 -> $$0.a(agc.a, acc::new, new acb())
+            .a(agc.c, abr.a)
+            .a(agc.d, abs.a)
+            .a(agc.e, abt.a)
+            .a(agc.f, abu.a)
+            .a(agc.g, abv.a)
+            .a(agc.h, abw.a)
+            .a(agc.i, abx.a)
+            .a(agc.j, aby.a)
+            .a(agc.k, abz.a)
+            .a(agc.l, aca.a)
+            .a(agc.m, acd.a)
+            .a(agc.n, ace.a)
+            .a(agc.o, acf.b)
+            .a(agc.p, acg.a)
+            .a(agc.q, ach.a)
+            .a(agc.r, aci.a)
+            .a(agc.s, acj.a)
+            .a(agc.t, ack.a)
+            .a(agc.u, acl.a)
+            .a(agc.v, acm.a)
+            .a(agc.w, acn.a)
+            .a(abm.a, abl.a)
+            .a(agc.x, aco.a)
+            .a(agc.y, acp.a)
+            .a(zu.a, zl.a)
+            .a(agc.z, acq.a)
+            .a(agc.A, acr.a)
+            .a(agc.B, acs.a)
+            .a(zu.b, zm.a)
+            .a(agc.C, act.a)
+            .a(agc.D, acu.a)
+            .a(agc.E, acv.a)
+            .a(agc.F, acw.a)
+            .a(agc.G, acx.a)
+            .a(agc.H, acy.a)
+            .a(agc.I, acz.a)
+            .a(agc.J, ada.a)
+            .a(zu.c, zn.a)
+            .a(agc.K, adc.a)
+            .a(agc.L, add.a)
+            .a(agc.M, ade.a)
+            .a(agc.N, adf.a)
+            .a(agc.O, adh.a)
+            .a(agc.P, adi.a)
+            .a(agc.Q, adj.a)
+            .a(agc.R, adk.a.j)
+            .a(agc.S, adk.b.j)
+            .a(agc.T, adk.c.j)
+            .a(agc.U, adl.a)
+            .a(agc.V, adm.a)
+            .a(agc.W, adn.a)
+            .a(agc.X, ado.a)
+            .a(zu.d, zo.a)
+            .a(ajg.a, ajf.a)
+            .a(agc.Y, adp.a)
+            .a(agc.Z, adq.a)
+            .a(agc.aa, adr.a)
+            .a(agc.ab, ads.a)
+            .a(agc.ac, adt.b)
+            .a(agc.ad, adu.a)
+            .a(agc.ae, adv.a)
+            .a(agc.af, adw.a)
+            .a(agc.ag, adx.a)
+            .a(agc.ah, ady.a)
+            .a(agc.ai, aea.a)
+            .a(agc.aj, aeb.a)
+            .a(agc.ak, aec.a)
+            .a(agc.ce, aed.a)
+            .a(zu.e, zp.a)
+            .a(zu.f, zq.b)
+            .a(agc.al, aee.a)
+            .a(agc.am, aef.a)
+            .a(agc.an, aeg.a)
+            .a(agc.ao, aeh.a)
+            .a(agc.ap, aei.a)
+            .a(agc.aq, aej.a)
+            .a(agc.ar, aek.a)
+            .a(agc.as, ael.a)
+            .a(agc.at, aem.a)
+            .a(agc.au, aen.a)
+            .a(agc.av, aeo.a)
+            .a(agc.aw, aep.a)
+            .a(agc.ax, aeq.a)
+            .a(agc.ay, aer.a)
+            .a(agc.az, aes.a)
+            .a(agc.aA, aet.a)
+            .a(agc.aB, aeu.a)
+            .a(agc.aC, aev.a)
+            .a(agc.aD, aew.a)
+            .a(agc.aE, aex.a)
+            .a(agc.aF, aey.a)
+            .a(agc.aG, aez.a)
+            .a(agc.aH, afa.a)
+            .a(agc.aI, afb.a)
+            .a(agc.aJ, afc.a)
+            .a(agc.aK, afd.a)
+            .a(agc.aL, afe.a)
+            .a(agc.aM, aff.a)
+            .a(agc.aN, afg.a)
+            .a(agc.aO, afh.a)
+            .a(agc.aP, afi.a)
+            .a(agc.aQ, afj.a)
+            .a(agc.aR, afk.a)
+            .a(agc.aS, afl.a)
+            .a(agc.aT, afm.b)
+            .a(agc.aU, afn.a)
+            .a(zu.g, zr.a)
+            .a(agc.aV, afo.a)
+            .a(agc.aW, afp.a)
+            .a(agc.aX, afq.a)
+            .a(agc.aY, afr.a)
+            .a(agc.aZ, afs.a)
+            .a(agc.cf, aft.a)
+            .a(agc.cg, afu.a)
+            .a(zu.h, zs.a)
+            .a(agc.ba, afv.a)
+            .a(agc.bb, afw.a)
+            .a(agc.bc, afx.a)
+            .a(agc.bd, afy.a)
+            .a(zu.i, zt.a)
+            .a(agc.be, adz.a)
+   );
 }

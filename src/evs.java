@@ -1,61 +1,83 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record evs(evz b, String c, float d) implements evq {
-   public static final Codec<evs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ewa.a.fieldOf("target").forGetter(evs::c),
-               Codec.STRING.fieldOf("score").forGetter(evs::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(evs::e)
-            )
-            .apply($$0, evs::new)
-   );
-
-   @Override
-   public evp b() {
-      return evr.e;
+public abstract class evs {
+   public boolean a(@Nullable evs $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   @Override
-   public Set<eud<?>> a() {
-      return this.b.b();
-   }
+   public abstract String b();
 
-   public static evs a(erp.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
+   public abstract xl d(wx var1);
 
-   public static evs a(erp.b $$0, String $$1, float $$2) {
-      return new evs(evw.a($$0), $$1, $$2);
-   }
+   public abstract boolean i();
 
-   @Override
-   public float b(erp $$0) {
-      exx $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         exy $$2 = $$0.d().f();
-         exq $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            exu $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
+   public abstract boolean h();
+
+   public abstract evs.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract evs.b k();
+
+   public abstract evs.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, evs.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (evs.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static evs.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wx a() {
+         return wx.c("team.collision." + this.e);
       }
    }
 
-   public evz c() {
-      return this.b;
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   public String d() {
-      return this.c;
-   }
+      private static final Map<String, evs.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (evs.b)$$0));
+      public final String e;
+      public final int f;
 
-   public float e() {
-      return this.d;
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static evs.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wx b() {
+         return wx.c("team.visibility." + this.e);
+      }
    }
 }

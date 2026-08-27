@@ -1,78 +1,35 @@
-public class cbx extends cbz {
-   public cbx(bsq $$0, dca $$1) {
-      super($$0, $$1);
+public class cbx {
+   private final bvx a;
+   private final float b;
+   private final int c;
+
+   public cbx(io $$0, float $$1, int $$2) {
+      this(new bum($$0), $$1, $$2);
    }
 
-   @Override
-   protected epu a(int $$0) {
-      this.o = new epp();
-      this.o.a(true);
-      return new epu(this.o, $$0);
+   public cbx(eum $$0, float $$1, int $$2) {
+      this(new bum(io.a($$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a(ewu $$0, ewu $$1) {
-      return a(this.a, $$0, $$1, true);
+   public cbx(brw $$0, float $$1, int $$2) {
+      this(new buu($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return this.p() && this.a.bm() || !this.a.bW();
+   public cbx(bvx $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected ewu b() {
-      return this.a.ds();
+   public bvx a() {
+      return this.a;
    }
 
-   @Override
-   public eps a(brv $$0, int $$1) {
-      return this.a($$0.du(), $$1);
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
-      }
-
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            ewu $$0 = this.c.a(this.a);
-            if (this.a.dy() == aym.a($$0.c) && this.a.dA() == aym.a($$0.d) && this.a.dE() == aym.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         agi.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            ewu $$1 = this.c.a(this.a);
-            this.a.G().a($$1.c, $$1.d, $$1.e, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   @Override
-   public boolean a(ir $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+   public int c() {
+      return this.c;
    }
 }

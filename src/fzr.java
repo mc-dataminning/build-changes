@@ -1,6 +1,27 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fzr extends fzw {
+   fzr(fwr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
+   }
 
-public record fzr(GameProfile a, gwd b, jo.b c, cop d, @Nullable String e, @Nullable gab f, @Nullable fon g, Map<akt, byte[]> h) {
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(ky.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements gab<lb> {
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzr($$1, $$2, $$3, $$4);
+      }
+   }
 }

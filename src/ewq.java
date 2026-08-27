@@ -1,47 +1,32 @@
-public class ewq extends ews {
-   private final iw b;
-   private final ir c;
-   private final boolean d;
-   private final boolean e;
+import org.lwjgl.openal.AL10;
 
-   public static ewq a(ewu $$0, iw $$1, ir $$2) {
-      return new ewq(true, $$0, $$1, $$2, false);
+public class ewq {
+   private float a = 1.0F;
+   private ewr b = ewr.a;
+
+   public void a(ewr $$0) {
+      this.b = $$0;
+      eum $$1 = $$0.b();
+      eum $$2 = $$0.c();
+      eum $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   public ewq(ewu $$0, iw $$1, ir $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   private ewq(boolean $$0, ewu $$1, iw $$2, ir $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
+   public float a() {
+      return this.a;
    }
 
-   public ewq a(iw $$0) {
-      return new ewq(this.d, this.a, $$0, this.c, this.e);
+   public void b() {
+      this.a(ewr.a);
    }
 
-   public ewq a(ir $$0) {
-      return new ewq(this.d, this.a, this.b, $$0, this.e);
-   }
-
-   public ir a() {
-      return this.c;
-   }
-
-   public iw b() {
+   public ewr c() {
       return this.b;
-   }
-
-   @Override
-   public ews.a c() {
-      return this.d ? ews.a.a : ews.a.b;
-   }
-
-   public boolean d() {
-      return this.e;
    }
 }

@@ -1,59 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public class ddq extends ddd {
-   public static final Codec<ddq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akr.d(ddg.am), akr.d(ddg.an), akr.d(ddg.ao), akr.d(ddg.ap), akr.d(ddg.aq)).apply($$0, $$0.stable(ddq::new))
-   );
-   private final ja<dcz> c;
-   private final ja<dcz> d;
-   private final ja<dcz> e;
-   private final ja<dcz> f;
-   private final ja<dcz> g;
+public abstract class ddq extends dea {
+   protected static final int a = 2;
+   protected static final evf b = dea.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   public static ddq a(jb<dcz> $$0) {
-      return new ddq($$0.b(ddg.am), $$0.b(ddg.an), $$0.b(ddg.ao), $$0.b(ddg.ap), $$0.b(ddg.aq));
-   }
-
-   private ddq(ja<dcz> $$0, ja<dcz> $$1, ja<dcz> $$2, ja<dcz> $$3, ja<dcz> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   protected ddq(drc.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected Stream<ja<dcz>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
+   protected abstract MapCodec<? extends ddq> a();
 
    @Override
-   protected Codec<? extends ddd> a() {
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
       return b;
    }
 
    @Override
-   public ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2, ddi.f $$3) {
-      int $$4 = jl.c($$0);
-      int $$5 = jl.c($$1);
-      int $$6 = jl.c($$2);
-      int $$7 = jt.a($$4);
-      int $$8 = jt.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (jt.a($$4) * 2 + 1) * 8;
-         int $$10 = (jt.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dyn.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
-      }
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      return $$1 == it.a && !this.a($$0, $$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      return a($$1, $$2.d(), it.b);
    }
 }

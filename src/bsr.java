@@ -1,57 +1,57 @@
-import com.mojang.serialization.Codec;
+public class bsr extends brw {
+   private static final String b = "data";
+   private ud c = new ud();
 
-public enum bsr implements azg {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<bsr> i = azg.a(bsr::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bsr(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public bsr(bsc<?> $$0, daz $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
    @Override
-   public String c() {
-      return this.m;
+   public void l() {
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void a(ajw.a $$0) {
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected void a(ud $$0) {
+      this.c = $$0.p("data");
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected void b(ud $$0) {
+      $$0.a("data", this.c.h());
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   public ze<abq> dl() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected boolean r(brw $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bJ() {
+      return false;
+   }
+
+   @Override
+   protected void p(brw $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public enb k_() {
+      return enb.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
    }
 }

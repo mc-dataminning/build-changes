@@ -1,144 +1,91 @@
 import java.io.DataInput;
-import java.io.DataOutput;
 import java.io.IOException;
 
-public class vc extends va {
-   private static final int b = 10;
-   public static final vj<vc> a = new vj.a<vc>() {
-      public vc a(DataInput $$0, ut $$1) throws IOException {
-         return vc.a(d($$0, $$1));
+public interface vc<T extends va> {
+   T c(DataInput var1, um var2) throws IOException;
+
+   ux.b a(DataInput var1, ux var2, um var3) throws IOException;
+
+   default void b(DataInput $$0, ux $$1, um $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
+   }
+
+   void a(DataInput var1, int var2, um var3) throws IOException;
+
+   void b(DataInput var1, um var2) throws IOException;
+
+   default boolean d() {
+      return false;
+   }
+
+   String a();
+
+   String b();
+
+   static vc<uf> a(final int $$0) {
+      return new vc<uf>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
+
+         public uf a(DataInput $$0x, um $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public ux.b a(DataInput $$0x, ux $$1, um $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, um $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, um $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends va> extends vc<T> {
+      @Override
+      default void b(DataInput $$0, um $$1) throws IOException {
+         $$0.skipBytes(this.c());
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      default void a(DataInput $$0, int $$1, um $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
       }
 
-      private static short d(DataInput $$0, ut $$1) throws IOException {
-         $$1.b(10L);
-         return $$0.readShort();
-      }
+      int c();
+   }
 
+   public interface b<T extends va> extends vc<T> {
       @Override
-      public int c() {
-         return 2;
-      }
-
-      @Override
-      public String a() {
-         return "SHORT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Short";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final short c;
-
-   vc(short $$0) {
-      this.c = $$0;
-   }
-
-   public static vc a(short $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? vc.a.a[$$0 - -128] : new vc($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeShort(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public byte b() {
-      return 2;
-   }
-
-   @Override
-   public vj<vc> c() {
-      return a;
-   }
-
-   public vc e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vc && this.c == ((vc)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(vl $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return this.c;
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 255);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public ve.b a(ve $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final vc[] a = new vc[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new vc((short)(-128 + $$0));
+      default void a(DataInput $$0, int $$1, um $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
          }
       }
    }

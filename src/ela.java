@@ -1,81 +1,51 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class ela {
-   public static final Codec<ela> e = lh.ai.q().dispatch("element_type", ela::a, elb::codec);
-   private static final ja<enr> a = ja.a(new enr(List.of()));
+public class ela {
+   public static final els a = els.a;
+   public static final Codec<ela> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               elf.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               elf.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eky.c.lenientOptionalFieldOf("position_predicate", ekx.b).forGetter($$0x -> $$0x.e),
+               drd.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               elt.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ela::new)
+   );
+   private final elf c;
+   private final elf d;
+   private final eky e;
+   private final drd f;
+   private final elt g;
+
+   public ela(elf $$0, elf $$1, drd $$2) {
+      this($$0, $$1, ekx.b, $$2);
+   }
+
+   public ela(elf $$0, elf $$1, eky $$2, drd $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public ela(elf $$0, elf $$1, eky $$2, drd $$3, elt $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a(drd $$0, drd $$1, io $$2, io $$3, io $$4, aym $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public drd a() {
+      return this.f;
+   }
+
    @Nullable
-   private volatile elc.a b;
-
-   protected static <E extends ela> RecordCodecBuilder<E, elc.a> d() {
-      return elc.a.c.fieldOf("projection").forGetter(ela::e);
-   }
-
-   protected ela(elc.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract jv a(enu var1, dmd var2);
-
-   public abstract List<ent.c> a(enu var1, ir var2, dmd var3, ayt var4);
-
-   public abstract ejl a(enu var1, ir var2, dmd var3);
-
-   public abstract boolean a(enu var1, dcv var2, dct var3, duz var4, ir var5, ir var6, dmd var7, ejl var8, ayt var9, boolean var10);
-
-   public abstract elb<?> a();
-
-   public void a(dcb $$0, ent.c $$1, ir $$2, dmd $$3, ayt $$4, ejl $$5) {
-   }
-
-   public ela a(elc.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public elc.a e() {
-      elc.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
-   }
-
-   public int f() {
-      return 1;
-   }
-
-   public static Function<elc.a, ekt> g() {
-      return $$0 -> ekt.b;
-   }
-
-   public static Function<elc.a, ekx> a(String $$0) {
-      return $$1 -> new ekx(Either.left(new akt($$0)), a, $$1);
-   }
-
-   public static Function<elc.a, ekx> a(String $$0, ja<enr> $$1) {
-      return $$2 -> new ekx(Either.left(new akt($$0)), $$1, $$2);
-   }
-
-   public static Function<elc.a, ekz> b(String $$0) {
-      return $$1 -> new ekz(Either.left(new akt($$0)), a, $$1);
-   }
-
-   public static Function<elc.a, ekz> b(String $$0, ja<enr> $$1) {
-      return $$2 -> new ekz(Either.left(new akt($$0)), $$1, $$2);
-   }
-
-   public static Function<elc.a, eku> a(ja<eix> $$0) {
-      return $$1 -> new eku($$0, $$1);
-   }
-
-   public static Function<elc.a, eky> b(List<Function<elc.a, ? extends ela>> $$0) {
-      return $$1 -> new eky($$0.stream().map($$1x -> (ela)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   public ud a(aym $$0, @Nullable ud $$1) {
+      return this.g.a($$0, $$1);
    }
 }

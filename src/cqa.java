@@ -1,240 +1,280 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 
-public class cqa extends cpg {
-   static final akt n = new akt("item/empty_slot_lapis_lazuli");
-   private final bpt o = new bqj(2) {
+public class cqa extends cov {
+   private static final int k = -1;
+   private static final int l = 4;
+   private static final int m = 31;
+   private static final int n = 31;
+   private static final int o = 40;
+   private final cpg p;
+   final cpn q = cpn.a();
+   private List<ix<dny>> r = List.of();
+   Runnable s = () -> {
+   };
+   private final iy<dny> t;
+   final cqq u;
+   final cqq v;
+   private final cqq w;
+   private final cqq x;
+   long y;
+   private final bpp z = new bqf(3) {
       @Override
       public void e() {
          super.e();
          cqa.this.a(this);
+         cqa.this.s.run();
       }
    };
-   private final cpr p;
-   private final ayt q = ayt.a();
-   private final cpy r = cpy.a();
-   public final int[] k = new int[3];
-   public final int[] l = new int[]{-1, -1, -1};
-   public final int[] m = new int[]{-1, -1, -1};
+   private final bpp A = new bqf(1) {
+      @Override
+      public void e() {
+         super.e();
+         cqa.this.s.run();
+      }
+   };
 
    public cqa(int $$0, clx $$1) {
-      this($$0, $$1, cpr.a);
+      this($$0, $$1, cpg.a);
    }
 
-   public cqa(int $$0, clx $$1, cpr $$2) {
-      super(cqo.n, $$0);
+   public cqa(int $$0, clx $$1, final cpg $$2) {
+      super(cqc.s, $$0);
       this.p = $$2;
-      this.a(new cre(this.o, 0, 15, 47) {
+      this.u = this.a(new cqq(this.z, 0, 13, 26) {
          @Override
-         public int a() {
-            return 1;
+         public boolean a(ctq $$0) {
+            return $$0.g() instanceof crl;
          }
       });
-      this.a(new cre(this.o, 1, 35, 47) {
+      this.v = this.a(new cqq(this.z, 1, 33, 26) {
          @Override
-         public boolean a(cuh $$0) {
-            return $$0.a(cuk.pQ);
+         public boolean a(ctq $$0) {
+            return $$0.g() instanceof csk;
+         }
+      });
+      this.w = this.a(new cqq(this.z, 2, 23, 45) {
+         @Override
+         public boolean a(ctq $$0) {
+            return $$0.g() instanceof crm;
+         }
+      });
+      this.x = this.a(new cqq(this.A, 0, 143, 57) {
+         @Override
+         public boolean a(ctq $$0) {
+            return false;
          }
 
          @Override
-         public Pair<akt, akt> c() {
-            return Pair.of(cqi.x, cqa.n);
+         public void a(cly $$0, ctq $$1) {
+            cqa.this.u.a(1);
+            cqa.this.v.a(1);
+            if (!cqa.this.u.h() || !cqa.this.v.h()) {
+               cqa.this.q.a(-1);
+            }
+
+            $$2.a(($$0x, $$1x) -> {
+               long $$2xx = $$0x.Y();
+               if (cqa.this.y != $$2xx) {
+                  $$0x.a(null, $$1x, avi.Aq, avj.e, 1.0F, 1.0F);
+                  cqa.this.y = $$2xx;
+               }
+            });
+            super.a($$0, $$1);
          }
       });
 
       for (int $$3 = 0; $$3 < 3; $$3++) {
          for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cre($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+            this.a(new cqq($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
          }
       }
 
       for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cre($$1, $$5, 8 + $$5 * 18, 142));
+         this.a(new cqq($$1, $$5, 8 + $$5 * 18, 142));
       }
 
-      this.a(cpy.a(this.k, 0));
-      this.a(cpy.a(this.k, 1));
-      this.a(cpy.a(this.k, 2));
-      this.a(this.r).a($$1.l.gv());
-      this.a(cpy.a(this.l, 0));
-      this.a(cpy.a(this.l, 1));
-      this.a(cpy.a(this.l, 2));
-      this.a(cpy.a(this.m, 0));
-      this.a(cpy.a(this.m, 1));
-      this.a(cpy.a(this.m, 2));
-   }
-
-   @Override
-   public void a(bpt $$0) {
-      if ($$0 == this.o) {
-         cuh $$1 = $$0.a(0);
-         if (!$$1.d() && $$1.z()) {
-            this.p.a(($$1x, $$2x) -> {
-               int $$3 = 0;
-
-               for (ir $$4 : dhq.c) {
-                  if (dhq.a($$1x, $$2x, $$4)) {
-                     $$3++;
-                  }
-               }
-
-               this.q.b((long)this.r.b());
-
-               for (int $$5 = 0; $$5 < 3; $$5++) {
-                  this.k[$$5] = dae.a(this.q, $$5, $$3, $$1);
-                  this.l[$$5] = -1;
-                  this.m[$$5] = -1;
-                  if (this.k[$$5] < $$5 + 1) {
-                     this.k[$$5] = 0;
-                  }
-               }
-
-               for (int $$6 = 0; $$6 < 3; $$6++) {
-                  if (this.k[$$6] > 0) {
-                     List<daf> $$7 = this.a($$1, $$6, this.k[$$6]);
-                     if ($$7 != null && !$$7.isEmpty()) {
-                        daf $$8 = $$7.get(this.q.a($$7.size()));
-                        this.l[$$6] = lh.f.a($$8.a);
-                        this.m[$$6] = $$8.b;
-                     }
-                  }
-               }
-
-               this.d();
-            });
-         } else {
-            for (int $$2 = 0; $$2 < 3; $$2++) {
-               this.k[$$2] = 0;
-               this.l[$$2] = -1;
-               this.m[$$2] = -1;
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean b(cly $$0, int $$1) {
-      if ($$1 >= 0 && $$1 < this.k.length) {
-         cuh $$2 = this.o.a(0);
-         cuh $$3 = this.o.a(1);
-         int $$4 = $$1 + 1;
-         if (($$3.d() || $$3.G() < $$4) && !$$0.fY()) {
-            return false;
-         } else if (this.k[$$1] <= 0 || $$2.d() || ($$0.cE < $$4 || $$0.cE < this.k[$$1]) && !$$0.gm().d) {
-            return false;
-         } else {
-            this.p.a(($$5, $$6) -> {
-               cuh $$7 = $$2;
-               List<daf> $$8 = this.a($$2, $$1, this.k[$$1]);
-               if (!$$8.isEmpty()) {
-                  $$0.a($$2, $$4);
-                  if ($$2.a(cuk.sm)) {
-                     $$7 = $$2.a(cuk.wh, 1);
-                     this.o.a(0, $$7);
-                  }
-
-                  for (daf $$9 : $$8) {
-                     $$7.a($$9.a, $$9.b);
-                  }
-
-                  if (!$$0.fY()) {
-                     $$3.h($$4);
-                     if ($$3.d()) {
-                        this.o.a(1, cuh.i);
-                     }
-                  }
-
-                  $$0.a(avz.al);
-                  if ($$0 instanceof aqu) {
-                     an.j.a((aqu)$$0, $$7, $$4);
-                  }
-
-                  this.o.e();
-                  this.r.a($$0.gv());
-                  this.a(this.o);
-                  $$5.a(null, $$6, avo.ik, avq.e, 1.0F, $$5.A.i() * 0.1F + 0.9F);
-               }
-            });
-            return true;
-         }
-      } else {
-         ad.a($$0.af() + " pressed invalid button id: " + $$1);
-         return false;
-      }
-   }
-
-   private List<daf> a(cuh $$0, int $$1, int $$2) {
-      this.q.b((long)(this.r.b() + $$1));
-      List<daf> $$3 = dae.b(this.q, $$0, $$2, false);
-      if ($$0.a(cuk.sm) && $$3.size() > 1) {
-         $$3.remove(this.q.a($$3.size()));
-      }
-
-      return $$3;
-   }
-
-   public int l() {
-      cuh $$0 = this.o.a(1);
-      return $$0.d() ? 0 : $$0.G();
-   }
-
-   public int m() {
-      return this.r.b();
-   }
-
-   @Override
-   public void b(cly $$0) {
-      super.b($$0);
-      this.p.a(($$1, $$2) -> this.a($$0, this.o));
+      this.a(this.q);
+      this.t = $$1.l.dR().b(lf.d);
    }
 
    @Override
    public boolean a(cly $$0) {
-      return a(this.p, $$0, dfe.gj);
+      return a(this.p, $$0, dec.nT);
    }
 
    @Override
-   public cuh a(cly $$0, int $$1) {
-      cuh $$2 = cuh.i;
-      cre $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuh $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 == 0) {
-            if (!this.a($$4, 2, 38, true)) {
-               return cuh.i;
-            }
-         } else if ($$1 == 1) {
-            if (!this.a($$4, 2, 38, true)) {
-               return cuh.i;
-            }
-         } else if ($$4.a(cuk.pQ)) {
-            if (!this.a($$4, 1, 2, true)) {
-               return cuh.i;
-            }
-         } else {
-            if (this.i.get(0).h() || !this.i.get(0).a($$4)) {
-               return cuh.i;
-            }
+   public boolean b(cly $$0, int $$1) {
+      if ($$1 >= 0 && $$1 < this.r.size()) {
+         this.q.a($$1);
+         this.a(this.r.get($$1));
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-            cuh $$5 = $$4.c(1);
-            $$4.h(1);
-            this.i.get(0).e($$5);
+   private List<ix<dny>> c(ctq $$0) {
+      if ($$0.e()) {
+         return this.t.a(avv.a).<List<ix<dny>>>map(ImmutableList::copyOf).orElse(ImmutableList.of());
+      } else {
+         return $$0.g() instanceof crm $$1 ? this.t.a($$1.b()).<List<ix<dny>>>map(ImmutableList::copyOf).orElse(ImmutableList.of()) : List.of();
+      }
+   }
+
+   private boolean e(int $$0) {
+      return $$0 >= 0 && $$0 < this.r.size();
+   }
+
+   @Override
+   public void a(bpp $$0) {
+      ctq $$1 = this.u.g();
+      ctq $$2 = this.v.g();
+      ctq $$3 = this.w.g();
+      if (!$$1.e() && !$$2.e()) {
+         int $$4 = this.q.b();
+         boolean $$5 = this.e($$4);
+         List<ix<dny>> $$6 = this.r;
+         this.r = this.c($$3);
+         ix<dny> $$7;
+         if (this.r.size() == 1) {
+            this.q.a(0);
+            $$7 = this.r.get(0);
+         } else if (!$$5) {
+            this.q.a(-1);
+            $$7 = null;
+         } else {
+            ix<dny> $$9 = $$6.get($$4);
+            int $$10 = this.r.indexOf($$9);
+            if ($$10 != -1) {
+               $$7 = $$9;
+               this.q.a($$10);
+            } else {
+               $$7 = null;
+               this.q.a(-1);
+            }
          }
 
-         if ($$4.d()) {
-            $$3.e(cuh.i);
+         if ($$7 != null) {
+            dnz $$13 = $$1.a(kb.W, dnz.a);
+            boolean $$14 = $$13.b().size() >= 6;
+            if ($$14) {
+               this.q.a(-1);
+               this.x.f(ctq.i);
+            } else {
+               this.a($$7);
+            }
+         } else {
+            this.x.f(ctq.i);
+         }
+
+         this.d();
+      } else {
+         this.x.f(ctq.i);
+         this.r = List.of();
+         this.q.a(-1);
+      }
+   }
+
+   public List<ix<dny>> l() {
+      return this.r;
+   }
+
+   public int m() {
+      return this.q.b();
+   }
+
+   public void a(Runnable $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public ctq a(cly $$0, int $$1) {
+      ctq $$2 = ctq.i;
+      cqq $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         ctq $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 == this.x.d) {
+            if (!this.a($$4, 4, 40, true)) {
+               return ctq.i;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 != this.v.d && $$1 != this.u.d && $$1 != this.w.d) {
+            if ($$4.g() instanceof crl) {
+               if (!this.a($$4, this.u.d, this.u.d + 1, false)) {
+                  return ctq.i;
+               }
+            } else if ($$4.g() instanceof csk) {
+               if (!this.a($$4, this.v.d, this.v.d + 1, false)) {
+                  return ctq.i;
+               }
+            } else if ($$4.g() instanceof crm) {
+               if (!this.a($$4, this.w.d, this.w.d + 1, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 4 && $$1 < 31) {
+               if (!this.a($$4, 31, 40, false)) {
+                  return ctq.i;
+               }
+            } else if ($$1 >= 31 && $$1 < 40 && !this.a($$4, 4, 31, false)) {
+               return ctq.i;
+            }
+         } else if (!this.a($$4, 4, 40, false)) {
+            return ctq.i;
+         }
+
+         if ($$4.e()) {
+            $$3.e(ctq.i);
          } else {
             $$3.b();
          }
 
-         if ($$4.G() == $$2.G()) {
-            return cuh.i;
+         if ($$4.I() == $$2.I()) {
+            return ctq.i;
          }
 
          $$3.a($$0, $$4);
       }
 
       return $$2;
+   }
+
+   @Override
+   public void b(cly $$0) {
+      super.b($$0);
+      this.p.a(($$1, $$2) -> this.a($$0, this.z));
+   }
+
+   private void a(ix<dny> $$0) {
+      ctq $$1 = this.u.g();
+      ctq $$2 = this.v.g();
+      ctq $$3 = ctq.i;
+      if (!$$1.e() && !$$2.e()) {
+         $$3 = $$1.c(1);
+         csj $$4 = ((csk)$$2.g()).c();
+         $$3.a(kb.W, dnz.a, $$2x -> new dnz.a().a($$2x).a($$0, $$4).a());
+      }
+
+      if (!ctq.a($$3, this.x.g())) {
+         this.x.f($$3);
+      }
+   }
+
+   public cqq n() {
+      return this.u;
+   }
+
+   public cqq o() {
+      return this.v;
+   }
+
+   public cqq p() {
+      return this.w;
+   }
+
+   public cqq q() {
+      return this.x;
    }
 }

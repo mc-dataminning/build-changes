@@ -1,41 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Predicate;
 
-public class esn extends eta {
-   public static final Codec<esn> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, esn::new));
+public interface esn extends epi, Predicate<eph> {
+   eso b();
 
-   private esn(List<euu> $$0) {
-      super($$0);
-   }
+   @FunctionalInterface
+   public interface a {
+      esn build();
 
-   @Override
-   public etc b() {
-      return etd.w;
-   }
-
-   @Override
-   public cuh a(cuh $$0, erp $$1) {
-      Float $$2 = $$1.c(eug.j);
-      if ($$2 != null) {
-         ayt $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.G();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
+      default esn.a invert() {
+         return esk.a(this);
       }
 
-      return $$0;
-   }
+      default esc.a or(esn.a $$0) {
+         return esc.a(this, $$0);
+      }
 
-   public static eta.a<?> c() {
-      return a(esn::new);
+      default esb.a and(esn.a $$0) {
+         return esb.a(this, $$0);
+      }
    }
 }

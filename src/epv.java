@@ -1,38 +1,18 @@
-public enum epv {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   private final float A;
+public class epv {
+   public static final Codec<epx> a = le.F.q().dispatch(epx::a, epy::a);
+   public static final epy b = a("empty", eps.a);
+   public static final epy c = a("item", epu.a);
+   public static final epy d = a("loot_table", eqa.a);
+   public static final epy e = a("dynamic", epr.a);
+   public static final epy f = a("tag", eqc.a);
+   public static final epy g = a("alternatives", epo.a);
+   public static final epy h = a("sequence", eqb.a);
+   public static final epy i = a("group", ept.a);
 
-   private epv(float $$0) {
-      this.A = $$0;
-   }
-
-   public float a() {
-      return this.A;
+   private static epy a(String $$0, MapCodec<? extends epx> $$1) {
+      return jk.a(le.F, new akn($$0), new epy($$1));
    }
 }

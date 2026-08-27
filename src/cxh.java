@@ -1,20 +1,90 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.function.Function;
-
-public record cxh(Map<ja<dfc>, duf<?>> c) {
-   public static final cxh a = new cxh(Map.of());
-   public static final Codec<cxh> b = axu.c(lh.e.r(), (Function)($$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         duf<?> $$2 = ((dfc)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, duf::f))).xmap(cxh::new, cxh::a);
-
-   public cxh a(ja<dfc> $$0, duf<?> $$1) {
-      return new cxh(ad.a(this.c, $$0, $$1));
+public class cxh extends cxo {
+   public cxh(cxm $$0) {
+      super($$0);
    }
 
-   public Map<ja<dfc>, duf<?>> a() {
-      return this.c;
+   public boolean a(cpl $$0, daz $$1) {
+      csj $$2 = null;
+      ctq $$3 = null;
+      ctq $$4 = null;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         ctq $$6 = $$0.a($$5);
+         if (!$$6.e()) {
+            ctl $$7 = $$6.g();
+            if (!($$7 instanceof crl)) {
+               return false;
+            }
+
+            crl $$8 = (crl)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = $$6.a(kb.W, dnz.a).b().size();
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
+                  return false;
+               }
+
+               $$3 = $$6;
+            } else {
+               if ($$4 != null) {
+                  return false;
+               }
+
+               $$4 = $$6;
+            }
+         }
+      }
+
+      return $$3 != null && $$4 != null;
+   }
+
+   public ctq a(cpl $$0, iz.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         ctq $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            int $$4 = $$3.a(kb.W, dnz.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
+         }
+      }
+
+      return ctq.i;
+   }
+
+   public jg<ctq> a(cpl $$0) {
+      jg<ctq> $$1 = jg.a($$0.b(), ctq.i);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ctq $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            if ($$3.g().v()) {
+               $$1.set($$2, new ctq($$3.g().u()));
+            } else if (!$$3.a(kb.W, dnz.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cya<?> ap_() {
+      return cya.k;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 }

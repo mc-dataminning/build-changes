@@ -1,141 +1,420 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.function.Function;
 
-public class ftj extends fon {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("selectWorld.enterName").a(n.h);
-   private static final xe c = xe.c("selectWorld.edit.resetIcon");
-   private static final xe d = xe.c("selectWorld.edit.openFolder");
-   private static final xe r = xe.c("selectWorld.edit.backup");
-   private static final xe s = xe.c("selectWorld.edit.backupFolder");
-   private static final xe u = xe.c("selectWorld.edit.optimize");
-   private static final xe v = xe.c("optimizeWorld.confirm.title");
-   private static final xe w = xe.c("optimizeWorld.confirm.description");
-   private static final xe x = xe.c("selectWorld.edit.save");
-   private static final int y = 200;
-   private static final int z = 4;
-   private static final int A = 98;
-   private final fme B = fme.d().a(5);
-   private final BooleanConsumer C;
-   private final erf.c D;
-   private final fiw E;
+public class ftj<T extends bsq> extends frr<T> implements frv, fte {
+   public static final float f = 0.25F;
+   public static final float g = 0.5F;
+   public static final float h = -0.1F;
+   private static final float a = 0.005F;
+   private static final float b = (float) (Math.PI / 12);
+   private static final float w = 1.9198622F;
+   private static final float x = (float) (Math.PI / 12);
+   private static final float y = (float) (-Math.PI * 4.0 / 9.0);
+   private static final float z = 0.43633232F;
+   private static final float A = (float) (Math.PI / 6);
+   public static final float i = 1.4835298F;
+   public static final float j = (float) (Math.PI / 6);
+   public final fvw k;
+   public final fvw l;
+   public final fvw m;
+   public final fvw n;
+   public final fvw o;
+   public final fvw p;
+   public final fvw q;
+   public ftj.a r = ftj.a.a;
+   public ftj.a s = ftj.a.a;
+   public boolean t;
+   public float u;
 
-   public static ftj a(fgj $$0, erf.c $$1, BooleanConsumer $$2) throws IOException {
-      erg $$3 = $$1.a($$1.h());
-      return new ftj($$0, $$1, $$3.b(), $$2);
+   public ftj(fvw $$0) {
+      this($$0, gcs::e);
    }
 
-   private ftj(fgj $$0, erf.c $$1, String $$2, BooleanConsumer $$3) {
-      super(xe.c("selectWorld.edit.title"));
-      this.C = $$3;
-      this.D = $$1;
-      fhy $$4 = $$0.h;
-      this.B.a(new fmf(200, 20));
-      this.B.a(new fju(b, $$4));
-      this.E = this.B.a(new fiw($$4, 200, 20, b));
-      this.E.a($$2);
-      fme $$5 = fme.e().a(4);
-      fin $$6 = $$5.a(fin.a(x, $$0x -> this.a(this.E.a())).a(98).a());
-      $$5.a(fin.a(xd.e, $$0x -> this.d()).a(98).a());
-      this.E.b($$1x -> $$6.j = !azh.h($$1x));
-      this.B.a(fin.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.B.a(fin.a(d, $$1x -> ad.j().a($$1.a(erd.l).toFile())).a(200).a());
-      this.B.a(fin.a(r, $$1x -> {
-         boolean $$2x = a($$1);
-         this.C.accept(!$$2x);
-      }).a(200).a());
-      this.B.a(fin.a(s, $$1x -> {
-         erf $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   public ftj(fvw $$0, Function<akn, gcs> $$1) {
+      super($$1, true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F);
+      this.k = $$0.b("head");
+      this.l = $$0.b("hat");
+      this.m = $$0.b("body");
+      this.n = $$0.b("right_arm");
+      this.o = $$0.b("left_arm");
+      this.p = $$0.b("right_leg");
+      this.q = $$0.b("left_leg");
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   public static fwe a(fwa $$0, float $$1) {
+      fwe $$2 = new fwe();
+      fwf $$3 = $$2.a();
+      $$3.a("head", fwb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fvy.a(0.0F, 0.0F + $$1, 0.0F));
+      $$3.a("hat", fwb.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fvy.a(0.0F, 0.0F + $$1, 0.0F));
+      $$3.a("body", fwb.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fvy.a(0.0F, 0.0F + $$1, 0.0F));
+      $$3.a("right_arm", fwb.c().a(40, 16).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvy.a(-5.0F, 2.0F + $$1, 0.0F));
+      $$3.a("left_arm", fwb.c().a(40, 16).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvy.a(5.0F, 2.0F + $$1, 0.0F));
+      $$3.a("right_leg", fwb.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvy.a(-1.9F, 12.0F + $$1, 0.0F));
+      $$3.a("left_leg", fwb.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvy.a(1.9F, 12.0F + $$1, 0.0F));
+      return $$2;
+   }
+
+   @Override
+   protected Iterable<fvw> a() {
+      return ImmutableList.of(this.k);
+   }
+
+   @Override
+   protected Iterable<fvw> b() {
+      return ImmutableList.of(this.m, this.n, this.o, this.p, this.q, this.l);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.u = $$0.a($$3);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      boolean $$6 = $$0.fF() > 4;
+      boolean $$7 = $$0.cd();
+      this.k.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$6) {
+         this.k.e = (float) (-Math.PI / 4);
+      } else if (this.u > 0.0F) {
+         if ($$7) {
+            this.k.e = this.a(this.u, this.k.e, (float) (-Math.PI / 4));
+         } else {
+            this.k.e = this.a(this.u, this.k.e, $$5 * (float) (Math.PI / 180.0));
+         }
+      } else {
+         this.k.e = $$5 * (float) (Math.PI / 180.0);
+      }
+
+      this.m.f = 0.0F;
+      this.n.d = 0.0F;
+      this.n.b = -5.0F;
+      this.o.d = 0.0F;
+      this.o.b = 5.0F;
+      float $$8 = 1.0F;
+      if ($$6) {
+         $$8 = (float)$$0.ds().g();
+         $$8 /= 0.2F;
+         $$8 *= $$8 * $$8;
+      }
+
+      if ($$8 < 1.0F) {
+         $$8 = 1.0F;
+      }
+
+      this.n.e = ayf.b($$1 * 0.6662F + (float) Math.PI) * 2.0F * $$2 * 0.5F / $$8;
+      this.o.e = ayf.b($$1 * 0.6662F) * 2.0F * $$2 * 0.5F / $$8;
+      this.n.g = 0.0F;
+      this.o.g = 0.0F;
+      this.p.e = ayf.b($$1 * 0.6662F) * 1.4F * $$2 / $$8;
+      this.q.e = ayf.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 / $$8;
+      this.p.f = 0.005F;
+      this.q.f = -0.005F;
+      this.p.g = 0.005F;
+      this.q.g = -0.005F;
+      if (this.d) {
+         this.n.e += (float) (-Math.PI / 5);
+         this.o.e += (float) (-Math.PI / 5);
+         this.p.e = -1.4137167F;
+         this.p.f = (float) (Math.PI / 10);
+         this.p.g = 0.07853982F;
+         this.q.e = -1.4137167F;
+         this.q.f = (float) (-Math.PI / 10);
+         this.q.g = -0.07853982F;
+      }
+
+      this.n.f = 0.0F;
+      this.o.f = 0.0F;
+      boolean $$9 = $$0.fu() == bsk.b;
+      if ($$0.fv()) {
+         boolean $$10 = $$0.fw() == bpv.a;
+         if ($$10 == $$9) {
+            this.a($$0);
+         } else {
+            this.b($$0);
+         }
+      } else {
+         boolean $$11 = $$9 ? this.r.a() : this.s.a();
+         if ($$9 != $$11) {
+            this.b($$0);
+            this.a($$0);
+         } else {
+            this.a($$0);
+            this.b($$0);
+         }
+      }
+
+      this.a($$0, $$3);
+      if (this.t) {
+         this.m.e = 0.5F;
+         this.n.e += 0.4F;
+         this.o.e += 0.4F;
+         this.p.d = 4.0F;
+         this.q.d = 4.0F;
+         this.p.c = 12.2F;
+         this.q.c = 12.2F;
+         this.k.c = 4.2F;
+         this.m.c = 3.2F;
+         this.o.c = 5.2F;
+         this.n.c = 5.2F;
+      } else {
+         this.m.e = 0.0F;
+         this.p.d = 0.0F;
+         this.q.d = 0.0F;
+         this.p.c = 12.0F;
+         this.q.c = 12.0F;
+         this.k.c = 0.0F;
+         this.m.c = 0.0F;
+         this.o.c = 2.0F;
+         this.n.c = 2.0F;
+      }
+
+      if (this.s != ftj.a.h) {
+         frt.a(this.n, $$3, 1.0F);
+      }
+
+      if (this.r != ftj.a.h) {
+         frt.a(this.o, $$3, -1.0F);
+      }
+
+      if (this.u > 0.0F) {
+         float $$12 = $$1 % 26.0F;
+         bsk $$13 = this.c($$0);
+         float $$14 = $$13 == bsk.b && this.c > 0.0F ? 0.0F : this.u;
+         float $$15 = $$13 == bsk.a && this.c > 0.0F ? 0.0F : this.u;
+         if (!$$0.fv()) {
+            if ($$12 < 14.0F) {
+               this.o.e = this.a($$15, this.o.e, 0.0F);
+               this.n.e = ayf.i($$14, this.n.e, 0.0F);
+               this.o.f = this.a($$15, this.o.f, (float) Math.PI);
+               this.n.f = ayf.i($$14, this.n.f, (float) Math.PI);
+               this.o.g = this.a($$15, this.o.g, (float) Math.PI + 1.8707964F * this.a($$12) / this.a(14.0F));
+               this.n.g = ayf.i($$14, this.n.g, (float) Math.PI - 1.8707964F * this.a($$12) / this.a(14.0F));
+            } else if ($$12 >= 14.0F && $$12 < 22.0F) {
+               float $$16 = ($$12 - 14.0F) / 8.0F;
+               this.o.e = this.a($$15, this.o.e, (float) (Math.PI / 2) * $$16);
+               this.n.e = ayf.i($$14, this.n.e, (float) (Math.PI / 2) * $$16);
+               this.o.f = this.a($$15, this.o.f, (float) Math.PI);
+               this.n.f = ayf.i($$14, this.n.f, (float) Math.PI);
+               this.o.g = this.a($$15, this.o.g, 5.012389F - 1.8707964F * $$16);
+               this.n.g = ayf.i($$14, this.n.g, 1.2707963F + 1.8707964F * $$16);
+            } else if ($$12 >= 22.0F && $$12 < 26.0F) {
+               float $$17 = ($$12 - 22.0F) / 4.0F;
+               this.o.e = this.a($$15, this.o.e, (float) (Math.PI / 2) - (float) (Math.PI / 2) * $$17);
+               this.n.e = ayf.i($$14, this.n.e, (float) (Math.PI / 2) - (float) (Math.PI / 2) * $$17);
+               this.o.f = this.a($$15, this.o.f, (float) Math.PI);
+               this.n.f = ayf.i($$14, this.n.f, (float) Math.PI);
+               this.o.g = this.a($$15, this.o.g, (float) Math.PI);
+               this.n.g = ayf.i($$14, this.n.g, (float) Math.PI);
+            }
          }
 
-         ad.j().a($$3x.toFile());
-      }).a(200).a());
-      this.B.a(fin.a(u, $$2x -> $$0.a(new fmz(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
-            }
-
-            $$0.a(ftl.a($$0, this.C, $$0.at(), $$1, $$3x));
-         }, v, w, true))).a(200).a());
-      this.B.a(new fmf(200, 20));
-      this.B.a($$5);
-      this.B.a($$1x -> {
-         fil var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aC_() {
-      this.b(this.E);
-   }
-
-   @Override
-   protected void aN_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.B.a();
-      fly.a(this.B, this.G());
-   }
-
-   @Override
-   public void d() {
-      this.C.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.D.a($$0);
-      } catch (uv | vb | IOException var3) {
-         a.error("Failed to access world '{}'", this.D.f(), var3);
-         fkv.a(this.m, this.D.f());
+         float $$18 = 0.3F;
+         float $$19 = 0.33333334F;
+         this.q.e = ayf.i(this.u, this.q.e, 0.3F * ayf.b($$1 * 0.33333334F + (float) Math.PI));
+         this.p.e = ayf.i(this.u, this.p.e, 0.3F * ayf.b($$1 * 0.33333334F));
       }
 
-      this.C.accept(true);
+      this.l.a(this.k);
    }
 
-   public static boolean a(erf.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         xe $$4 = xe.c("selectWorld.edit.backupFailed");
-         xe $$5 = xe.b($$2.getMessage());
-         fgj.Q().aA().a(new fkv(fkv.a.b, $$4, $$5));
-         return false;
-      } else {
-         xe $$6 = xe.a("selectWorld.edit.backupCreated", $$0.f());
-         xe $$7 = xe.a("selectWorld.edit.backupSize", aym.c((double)$$1 / 1048576.0));
-         fgj.Q().aA().a(new fkv(fkv.a.b, $$6, $$7));
-         return true;
+   private void a(T $$0) {
+      switch (this.s) {
+         case a:
+            this.n.f = 0.0F;
+            break;
+         case b:
+            this.n.e = this.n.e * 0.5F - (float) (Math.PI / 10);
+            this.n.f = 0.0F;
+            break;
+         case c:
+            this.a(this.n, true);
+            break;
+         case d:
+            this.n.f = -0.1F + this.k.f;
+            this.o.f = 0.1F + this.k.f + 0.4F;
+            this.n.e = (float) (-Math.PI / 2) + this.k.e;
+            this.o.e = (float) (-Math.PI / 2) + this.k.e;
+            break;
+         case e:
+            this.n.e = this.n.e * 0.5F - (float) Math.PI;
+            this.n.f = 0.0F;
+            break;
+         case f:
+            frt.a(this.n, this.o, $$0, true);
+            break;
+         case g:
+            frt.a(this.n, this.o, this.k, true);
+            break;
+         case h:
+            this.n.e = ayf.a(this.k.e - 1.9198622F - ($$0.ca() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
+            this.n.f = this.k.f - (float) (Math.PI / 12);
+            break;
+         case i:
+            this.n.e = ayf.a(this.k.e, -1.2F, 1.2F) - 1.4835298F;
+            this.n.f = this.k.f - (float) (Math.PI / 6);
+            break;
+         case j:
+            this.n.e = this.n.e * 0.5F - (float) (Math.PI / 5);
+            this.n.f = 0.0F;
       }
    }
 
+   private void b(T $$0) {
+      switch (this.r) {
+         case a:
+            this.o.f = 0.0F;
+            break;
+         case b:
+            this.o.e = this.o.e * 0.5F - (float) (Math.PI / 10);
+            this.o.f = 0.0F;
+            break;
+         case c:
+            this.a(this.o, false);
+            break;
+         case d:
+            this.n.f = -0.1F + this.k.f - 0.4F;
+            this.o.f = 0.1F + this.k.f;
+            this.n.e = (float) (-Math.PI / 2) + this.k.e;
+            this.o.e = (float) (-Math.PI / 2) + this.k.e;
+            break;
+         case e:
+            this.o.e = this.o.e * 0.5F - (float) Math.PI;
+            this.o.f = 0.0F;
+            break;
+         case f:
+            frt.a(this.n, this.o, $$0, false);
+            break;
+         case g:
+            frt.a(this.n, this.o, this.k, false);
+            break;
+         case h:
+            this.o.e = ayf.a(this.k.e - 1.9198622F - ($$0.ca() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
+            this.o.f = this.k.f + (float) (Math.PI / 12);
+            break;
+         case i:
+            this.o.e = ayf.a(this.k.e, -1.2F, 1.2F) - 1.4835298F;
+            this.o.f = this.k.f + (float) (Math.PI / 6);
+            break;
+         case j:
+            this.o.e = this.o.e * 0.5F - (float) (Math.PI / 5);
+            this.o.f = 0.0F;
+      }
+   }
+
+   private void a(fvw $$0, boolean $$1) {
+      $$0.e = $$0.e * 0.5F - 0.9424779F + ayf.a(this.k.e, (float) (-Math.PI * 4.0 / 9.0), 0.43633232F);
+      $$0.f = ($$1 ? -30.0F : 30.0F) * (float) (Math.PI / 180.0) + ayf.a(this.k.f, (float) (-Math.PI / 6), (float) (Math.PI / 6));
+   }
+
+   protected void a(T $$0, float $$1) {
+      if (!(this.c <= 0.0F)) {
+         bsk $$2 = this.c($$0);
+         fvw $$3 = this.a($$2);
+         float $$4 = this.c;
+         this.m.f = ayf.a(ayf.c($$4) * (float) (Math.PI * 2)) * 0.2F;
+         if ($$2 == bsk.a) {
+            this.m.f *= -1.0F;
+         }
+
+         this.n.d = ayf.a(this.m.f) * 5.0F;
+         this.n.b = -ayf.b(this.m.f) * 5.0F;
+         this.o.d = -ayf.a(this.m.f) * 5.0F;
+         this.o.b = ayf.b(this.m.f) * 5.0F;
+         this.n.f = this.n.f + this.m.f;
+         this.o.f = this.o.f + this.m.f;
+         this.o.e = this.o.e + this.m.f;
+         $$4 = 1.0F - this.c;
+         $$4 *= $$4;
+         $$4 *= $$4;
+         $$4 = 1.0F - $$4;
+         float $$5 = ayf.a($$4 * (float) Math.PI);
+         float $$6 = ayf.a(this.c * (float) Math.PI) * -(this.k.e - 0.7F) * 0.75F;
+         $$3.e -= $$5 * 1.2F + $$6;
+         $$3.f = $$3.f + this.m.f * 2.0F;
+         $$3.g = $$3.g + ayf.a(this.c * (float) Math.PI) * -0.4F;
+      }
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = ($$2 - $$1) % (float) (Math.PI * 2);
+      if ($$3 < (float) -Math.PI) {
+         $$3 += (float) (Math.PI * 2);
+      }
+
+      if ($$3 >= (float) Math.PI) {
+         $$3 -= (float) (Math.PI * 2);
+      }
+
+      return $$1 + $$0 * $$3;
+   }
+
+   private float a(float $$0) {
+      return -65.0F * $$0 + $$0 * $$0;
+   }
+
+   public void a(ftj<T> $$0) {
+      super.a($$0);
+      $$0.r = this.r;
+      $$0.s = this.s;
+      $$0.t = this.t;
+      $$0.k.a(this.k);
+      $$0.l.a(this.l);
+      $$0.m.a(this.m);
+      $$0.n.a(this.n);
+      $$0.o.a(this.o);
+      $$0.p.a(this.p);
+      $$0.q.a(this.q);
+   }
+
+   public void b_(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.m.k = $$0;
+      this.n.k = $$0;
+      this.o.k = $$0;
+      this.p.k = $$0;
+      this.q.k = $$0;
+   }
+
    @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
+   public void a(bsk $$0, eyu $$1) {
+      this.a($$0).a($$1);
+   }
+
+   protected fvw a(bsk $$0) {
+      return $$0 == bsk.a ? this.o : this.n;
+   }
+
+   @Override
+   public fvw d() {
+      return this.k;
+   }
+
+   private bsk c(T $$0) {
+      bsk $$1 = $$0.fu();
+      return $$0.aK == bpv.a ? $$1 : $$1.e();
+   }
+
+   public static enum a {
+      a(false),
+      b(false),
+      c(false),
+      d(true),
+      e(false),
+      f(true),
+      g(true),
+      h(false),
+      i(false),
+      j(false);
+
+      private final boolean k;
+
+      private a(boolean $$0) {
+         this.k = $$0;
+      }
+
+      public boolean a() {
+         return this.k;
+      }
    }
 }

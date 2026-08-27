@@ -1,59 +1,132 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
 
-public class dxw {
-   private final aqt a;
+public class dxw implements aym {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dxw> b = dxv.a.xmap($$0 -> new dxw($$0), $$0 -> $$0.e);
+   private dxv e;
+   private final dwx f = new dwx(this);
 
-   public dxw(aqt $$0) {
-      this.a = $$0;
+   public dxw(long $$0) {
+      this.e = new dxv(dxk.c($$0));
    }
 
-   public void a(ja<dxv> $$0, ewu $$1, dxv.a $$2) {
-      int $$3 = $$0.a().a();
-      ir $$4 = ir.a($$1);
-      int $$5 = jt.a($$4.u() - $$3);
-      int $$6 = jt.a($$4.v() - $$3);
-      int $$7 = jt.a($$4.w() - $$3);
-      int $$8 = jt.a($$4.u() + $$3);
-      int $$9 = jt.a($$4.v() + $$3);
-      int $$10 = jt.a($$4.w() + $$3);
-      List<dxv.b> $$11 = new ArrayList<>();
-      dxy.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dxx.a.b) {
-            $$11.add(new dxv.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   public dxw(dxk.a $$0) {
+      this.e = new dxv($$0);
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            duy $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
+   public dxw(long $$0, long $$1) {
+      this.e = new dxv($$0, $$1);
+   }
+
+   private dxw(dxv $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public aym d() {
+      return new dxw(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public dxi e() {
+      return new dxw.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new dxv(dxk.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
             }
          }
-      }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         agi.a(this.a, $$0, $$1);
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
       }
    }
 
-   private void a(List<dxv.b> $$0) {
-      Collections.sort($$0);
+   @Override
+   public long g() {
+      return this.e.a();
+   }
 
-      for (dxv.b $$1 : $$0) {
-         dxx $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements dxi {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public aym a(int $$0, int $$1, int $$2) {
+         long $$3 = ayf.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dxw($$4, this.b);
+      }
+
+      @Override
+      public aym a(String $$0) {
+         dxk.a $$1 = dxk.a($$0);
+         return new dxw($$1.a(this.a, this.b));
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

@@ -1,115 +1,106 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class ehh extends eho {
-   private static final Codec<bpl> b = axu.b(
-      bpl.a,
-      (Function<bpl, DataResult<bpl>>)($$0 -> $$0.b() - $$0.a() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success($$0))
-   );
-   public static final Codec<ehh> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bpf.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bpf.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bpf.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bpf.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, ehh::new)
-   );
-   private final bpf h;
-   private final bpf i;
-   private final bpl j;
-   private final bpl k;
-   private final bpf l;
+public class ehh extends ehp {
+   private static final Logger d = LogUtils.getLogger();
+   protected final eis a;
+   protected io b;
+   private final int h;
+   protected final dkn c;
+   private final List<ein> i = Lists.newArrayList();
+   private final elm j;
 
-   public ehh(int $$0, int $$1, int $$2, bpf $$3, bpf $$4, bpl $$5, bpf $$6) {
-      super($$0, $$1, $$2);
+   public ehh(elm $$0, eis $$1, io $$2, int $$3, dkn $$4, ehd $$5) {
+      super(eic.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
       this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bpl.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
+      this.c = $$4;
+   }
+
+   public ehh(eib $$0, ud $$1) {
+      super(eic.ad, $$1);
+      this.j = $$0.c();
+      this.b = new io($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<va> $$2 = $$0.b().a(ur.a);
+      this.a = (eis)eis.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dkn.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      uj $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(ein.a(new Dynamic($$2, $$1x))));
    }
 
    @Override
-   protected ehp<?> a() {
-      return ehp.i;
+   protected void a(eib $$0, ud $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<va> $$2 = $$0.b().a(ur.a);
+      eis.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      uj $$3 = new uj();
+
+      for (ein $$4 : this.i) {
+         $$3.add((va)$$4.a($$2).getValue());
+      }
+
+      $$1.a("junctions", $$3);
    }
 
    @Override
-   public List<efw.a> a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
-      }
-
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
-      }
-
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<efw.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new efw.a($$4.b($$11), 0, false));
-      }
-
-      ir.a $$16 = new ir.a();
-      iw $$17 = iw.c.a.a($$2);
-      Function<dtc, dtc> $$18 = $$1x -> $$1x.b(dmc.i, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
+   public void a(dbu $$0, dbs $$1, dta $$2, aym $$3, ehd $$4, dag $$5, io $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   private efw.a a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5, Function<dtc, dtc> $$6, iw $$7, int $$8, boolean $$9, ir.a $$10) {
-      $$10.g($$4).c(iw.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      ir $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
+   public void a(dbu $$0, dbs $$1, dta $$2, aym $$3, ehd $$4, io $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
+   }
 
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.d($$7), $$5, $$6);
-      }
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
 
-      iw $$17 = $$14.v() > $$10.v() ? iw.b : iw.a;
+   @Override
+   public dkn a() {
+      return this.c;
+   }
 
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new efw.a($$14.c(), 0, false);
-         }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.d($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
-      }
+   public eis b() {
+      return this.a;
+   }
+
+   public io c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(ein $$0) {
+      this.i.add($$0);
+   }
+
+   public List<ein> e() {
+      return this.i;
    }
 }

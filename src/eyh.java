@@ -1,3 +1,14 @@
-public interface eyh<T> extends eyn<T> {
-   boolean b(ir var1, T var2);
+public enum eyh {
+   a(0),
+   b(1);
+
+   private final int c;
+
+   private eyh(int $$0) {
+      this.c = $$0;
+   }
+
+   public int a() {
+      return this.c;
+   }
 }

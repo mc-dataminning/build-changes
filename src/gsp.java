@@ -1,12 +1,7 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface gsp<T> {
+   int e();
 
-public record gsp(gsq d) {
-   public static final gsp a = new gsp(gsq.b);
-   public static final Codec<gsp> b = RecordCodecBuilder.create($$0 -> $$0.group(axu.a(gsq.a, "scaling", gsq.b).forGetter(gsp::a)).apply($$0, gsp::new));
-   public static final atd<gsp> c = atd.a("gui", b);
+   T b(aym var1);
 
-   public gsq a() {
-      return this.d;
-   }
+   void a(gsk var1);
 }

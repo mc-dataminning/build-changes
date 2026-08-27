@@ -1,56 +1,90 @@
-public class gdl extends gdc {
-   private final gdp b;
-   protected boolean a;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   gdl(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
+public class gdl {
+   public float[] a;
+   public final int b;
+
+   public gdl(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   @Override
-   public gcy b() {
-      return gcy.c;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
    }
 
-   public static class a implements gcx<le> {
-      private final gdp a;
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
 
-      public a(gdp $$0) {
+   public void a(float[] $$0) {
+      if (this.a == null) {
          this.a = $$0;
       }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdl $$8 = new gdl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
    }
 
-   public static class b implements gcx<le> {
-      private final gdp a;
+   protected static class a implements JsonDeserializer<gdl> {
+      private static final int a = 0;
 
-      public b(gdp $$0) {
-         this.a = $$0;
+      public gdl a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gdl($$4, $$5);
       }
 
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdl $$8 = new gdl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+      protected int a(JsonObject $$0) {
+         int $$1 = axv.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
+
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = axv.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = axv.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
    }
 }

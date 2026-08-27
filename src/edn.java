@@ -1,19 +1,51 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edn extends eca<efd> {
-   public edn(Codec<efd> $$0) {
-      super($$0);
+public class edn extends edp {
+   public static final MapCodec<edn> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, edn::new));
+
+   public edn(bpb $$0, bpb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a(ecc<efd> $$0) {
-      ayt $$1 = $$0.d();
-      efd $$2 = $$0.f();
-      dcv $$3 = $$0.b();
-      ir $$4 = $$0.e();
-      duz $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      eix $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   protected edq<?> a() {
+      return edq.i;
+   }
+
+   @Override
+   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
+      io $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
+   }
+
+   @Override
+   public int a(aym $$0, int $$1, ecz $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

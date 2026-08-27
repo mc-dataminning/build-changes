@@ -1,59 +1,19 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duw implements AutoCloseable {
-   private final dcb a;
-   private final Long2ObjectMap<dvj> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dvj c;
-   private long d;
+public record duw(ix<duv> e, dta f) {
+   public static final Codec<duw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(duv.j.fieldOf("type").forGetter(duw::a), dta.a.fieldOf("generator").forGetter(duw::b)).apply($$0, $$0.stable(duw::new))
+   );
+   public static final akm<duw> b = akm.a(lf.aT, new akn("overworld"));
+   public static final akm<duw> c = akm.a(lf.aT, new akn("the_nether"));
+   public static final akm<duw> d = akm.a(lf.aT, new akn("the_end"));
 
-   public duw(dcb $$0) {
-      this.a = $$0;
+   public ix<duv> a() {
+      return this.e;
    }
 
-   @Nullable
-   public dvj a(ir $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.an()) {
-         long $$2 = jt.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dvj)this.b.computeIfAbsent($$2, $$2x -> {
-               duy $$3 = this.a.a_(jt.a($$0.u()), jt.a($$0.w()));
-               dvj $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
-   }
-
-   public dtc b(ir $$0) {
-      dvj $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dfe.a.n();
-      } else {
-         int $$2 = jt.b($$0.u());
-         int $$3 = jt.b($$0.v());
-         int $$4 = jt.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
-
-      while (var1.hasNext()) {
-         dvj $$0 = (dvj)var1.next();
-         $$0.b();
-      }
+   public dta b() {
+      return this.f;
    }
 }

@@ -1,244 +1,140 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public abstract class gcu {
-   private static final ewp a = new ewp(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double b = aym.k(100.0);
-   protected final fzn c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected double i;
-   protected double j;
-   protected double k;
-   protected double l;
-   private ewp D = a;
-   protected boolean m;
-   protected boolean n = true;
-   private boolean E;
-   protected boolean o;
-   protected float p = 0.6F;
-   protected float q = 1.8F;
-   protected final ayt r = ayt.a();
-   protected int s;
-   protected int t;
-   protected float u;
-   protected float v = 1.0F;
-   protected float w = 1.0F;
-   protected float x = 1.0F;
-   protected float y = 1.0F;
-   protected float z;
-   protected float A;
-   protected float B = 0.98F;
-   protected boolean C = false;
+public class gcu {
+   private static final akn a = new akn("textures/misc/underwater.png");
 
-   protected gcu(fzn $$0, double $$1, double $$2, double $$3) {
-      this.c = $$0;
-      this.b(0.2F, 0.2F);
-      this.c($$1, $$2, $$3);
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
-   }
+   public static void a(feb $$0, eyu $$1) {
+      cly $$2 = $$0.s;
+      if (!$$2.ag) {
+         drd $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ao().a().a($$3), $$1);
+         }
+      }
 
-   public gcu(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3);
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
-   }
-
-   public gcu c(float $$0) {
-      this.j *= (double)$$0;
-      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
-      this.l *= (double)$$0;
-      return this;
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-   }
-
-   public gcu d(float $$0) {
-      this.b(0.2F * $$0, 0.2F * $$0);
-      return this;
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   protected void e(float $$0) {
-      this.y = $$0;
-   }
-
-   public void a(int $$0) {
-      this.t = $$0;
-   }
-
-   public int j() {
-      return this.t;
-   }
-
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - 0.04 * (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.C && this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
+      if (!$$0.s.N_()) {
+         if ($$0.s.a(awc.a)) {
+            b($$0, $$1);
          }
 
-         this.j = this.j * (double)this.B;
-         this.k = this.k * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.m) {
-            this.j *= 0.7F;
-            this.l *= 0.7F;
+         if ($$0.s.bQ()) {
+            c($$0, $$1);
          }
       }
    }
 
-   public abstract void a(fbg var1, ffu var2, float var3);
+   @Nullable
+   private static drd a(cly $$0) {
+      io.a $$1 = new io.a();
 
-   public abstract gcy b();
-
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName()
-         + ", Pos ("
-         + this.g
-         + ","
-         + this.h
-         + ","
-         + this.i
-         + "), RGBA ("
-         + this.v
-         + ","
-         + this.w
-         + ","
-         + this.x
-         + ","
-         + this.y
-         + "), Age "
-         + this.s;
-   }
-
-   public void k() {
-      this.o = true;
-   }
-
-   protected void b(float $$0, float $$1) {
-      if ($$0 != this.p || $$1 != this.q) {
-         this.p = $$0;
-         this.q = $$1;
-         ewp $$2 = this.n();
-         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
-         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
-         this.a(new ewp($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
-      }
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      float $$3 = this.p / 2.0F;
-      float $$4 = this.q;
-      this.a(new ewp($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      if (!this.E) {
-         double $$3 = $$0;
-         double $$4 = $$1;
-         double $$5 = $$2;
-         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
-            ewu $$6 = brv.a(null, new ewu($$0, $$1, $$2), this.n(), this.c, List.of()).b();
-            $$0 = $$6.c;
-            $$1 = $$6.d;
-            $$2 = $$6.e;
-         }
-
-         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
-            this.a(this.n().d($$0, $$1, $$2));
-            this.l();
-         }
-
-         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
-            this.E = true;
-         }
-
-         this.m = $$4 != $$1 && $$4 < 0.0;
-         if ($$3 != $$0) {
-            this.j = 0.0;
-         }
-
-         if ($$5 != $$2) {
-            this.l = 0.0;
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.du() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dj() * 0.8F);
+         double $$4 = $$0.dy() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ee());
+         double $$5 = $$0.dA() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dj() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         drd $$6 = $$0.dP().a_($$1);
+         if ($$6.l() != dkg.a && $$6.p($$0.dP(), $$1)) {
+            return $$6;
          }
       }
+
+      return null;
    }
 
-   protected void l() {
-      ewp $$0 = this.n();
-      this.g = ($$0.a + $$0.d) / 2.0;
-      this.h = $$0.b;
-      this.i = ($$0.c + $$0.f) / 2.0;
+   private static void a(gnv $$0, eyu $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(gcd::r);
+      eyp $$2 = eyw.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eyz.b.h, eys.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      eyq.a($$2.d());
    }
 
-   protected int a(float $$0) {
-      ir $$1 = ir.a(this.g, this.h, this.i);
-      return this.c.B($$1) ? gfe.a(this.c, $$1) : 0;
+   private static void b(feb $$0, eyu $$1) {
+      RenderSystem.setShader(gcd::s);
+      RenderSystem.setShaderTexture(0, a);
+      eyp $$2 = eyw.b().d();
+      io $$3 = io.a($$0.s.du(), $$0.s.dy(), $$0.s.dA());
+      float $$4 = gcj.a($$0.s.dP().D_(), $$0.s.dP().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dF() / 64.0F;
+      float $$12 = $$0.s.dH() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eyz.b.h, eys.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      eyq.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public boolean m() {
-      return !this.o;
-   }
+   private static void c(feb $$0, eyu $$1) {
+      eyp $$2 = eyw.b().d();
+      RenderSystem.setShader(gcd::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gnv $$3 = gqb.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = ayf.i($$10, $$4, $$6);
+      float $$12 = ayf.i($$10, $$5, $$6);
+      float $$13 = ayf.i($$10, $$7, $$9);
+      float $$14 = ayf.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
 
-   public ewp n() {
-      return this.D;
-   }
-
-   public void a(ewp $$0) {
-      this.D = $$0;
-   }
-
-   public Optional<ky> o() {
-      return Optional.empty();
-   }
-
-   public static record a(float b, float c, float d, float e) {
-      public static final gcu.a a = new gcu.a(1.0F, 1.0F, 0.0F, 1.0F);
-
-      public boolean a() {
-         return this.b >= 1.0F && this.c >= 1.0F;
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(eyz.b.h, eys.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         eyq.a($$2.d());
+         $$1.b();
       }
 
-      public float a(int $$0, int $$1, float $$2) {
-         if (aym.a(this.b, this.c)) {
-            return this.b;
-         } else {
-            float $$3 = aym.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
-            return aym.b(this.b, this.c, $$3);
-         }
-      }
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

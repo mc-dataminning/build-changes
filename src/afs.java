@@ -1,48 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
+public class afs implements ze<abq> {
+   public static final yv<vx, afs> a = ze.a(afs::a, afs::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-public class afs implements zl<abw> {
-   public static final zc<wp, afs> a = zl.a(afs::a, afs::new);
-   private final List<afs.a> b;
-
-   public afs(List<afs.a> $$0) {
-      this.b = $$0;
+   public afs(brw $$0) {
+      this.b = $$0.al();
+      eum $$1 = $$0.do();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
+      this.h = $$0.aE();
    }
 
-   private afs(wp $$0) {
-      int $$1 = $$0.readInt();
-      Builder<afs.a> $$2 = ImmutableList.builder();
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         $$2.add(new afs.a($$0.readInt(), afr.a.decode($$0)));
-      }
-
-      this.b = $$2.build();
+   private afs(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(wp $$0) {
-      $$0.p(this.b.size());
-
-      for (afs.a $$1 : this.b) {
-         $$0.p($$1.a);
-         afr.a.encode($$0, $$1.b);
-      }
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zn<afs> a() {
-      return agj.aU;
+   public zg<afs> a() {
+      return agc.aZ;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public List<afs.a> b() {
+   public int b() {
       return this.b;
    }
 
-   public static record a(int a, afr b) {
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

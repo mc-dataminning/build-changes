@@ -1,40 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
 public class fao extends faq {
-   private static final faj a = new faj() {
-      @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fao.a c = fao.a.a;
+
+   public static fao a(String $$0) {
+      fao $$1 = new fao();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fcn.a("startDate", $$3, 0L);
+         $$1.b = fcn.a("daysLeft", $$3, 0);
+         $$1.c = b(fcn.b("subscriptionType", $$3, fao.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
       }
-   };
-   private int b;
 
-   private fao(faq.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
+      return $$1;
    }
 
-   public void a(fan $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
-   }
-
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
+   private static fao.a b(String $$0) {
+      try {
+         return fao.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fao.a.a;
       }
    }
 
-   public static fao a(faq.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      fao $$5 = new fao($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
+   public static enum a {
+      a,
+      b;
    }
 }

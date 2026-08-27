@@ -1,17 +1,12 @@
-public interface eow {
-   void a(ir var1);
+public class eow extends RuntimeException {
+   private final wx a;
 
-   boolean L_();
-
-   int a();
-
-   default void a(ir $$0, boolean $$1) {
-      this.a(jt.a($$0), $$1);
+   public eow(wx $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   void a(jt var1, boolean var2);
-
-   void a(dbh var1, boolean var2);
-
-   void b(dbh var1);
+   public wx a() {
+      return this.a;
+   }
 }

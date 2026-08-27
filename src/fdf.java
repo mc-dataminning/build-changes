@@ -1,12 +1,13 @@
-public class fdf extends Exception {
-   public final fbu a;
+public class fdf extends fdg {
+   private final fas b;
 
-   public fdf(fbu $$0) {
-      this.a = $$0;
+   public fdf(fas $$0, long $$1, wx $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String getMessage() {
-      return this.a.c();
+   protected void a(ezk $$0, long $$1) throws fax {
+      $$0.d($$1, this.b.a);
    }
 }

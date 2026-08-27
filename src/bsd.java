@@ -1,42 +1,76 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+public enum bsd implements ayz {
+   a(bsd.a.a, 0, 0, "mainhand"),
+   b(bsd.a.a, 1, 5, "offhand"),
+   c(bsd.a.b, 0, 1, "feet"),
+   d(bsd.a.b, 1, 2, "legs"),
+   e(bsd.a.b, 2, 3, "chest"),
+   f(bsd.a.b, 3, 4, "head"),
+   g(bsd.a.c, 0, 6, "body");
 
-public enum bsd implements azg {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bsc.a),
-   c(2, "offhand", bsc.b),
-   d(3, "hand", $$0 -> $$0.a() == bsc.a.a),
-   e(4, "feet", bsc.c),
-   f(5, "legs", bsc.d),
-   g(6, "chest", bsc.e),
-   h(7, "head", bsc.f),
-   i(8, "armor", bsc::f);
+   public static final ayz.a<bsd> h = ayz.a(bsd::values);
+   private final bsd.a i;
+   private final int j;
+   private final int k;
+   private final String l;
 
-   public static final IntFunction<bsd> j = axd.a($$0 -> $$0.m, values(), axd.a.a);
-   public static final Codec<bsd> k = azg.a(bsd::values);
-   public static final zc<ByteBuf, bsd> l = za.a(j, $$0 -> $$0.m);
-   private final int m;
-   private final String n;
-   private final Predicate<bsc> o;
-
-   private bsd(int $$0, String $$1, Predicate<bsc> $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
+   private bsd(bsd.a $$0, int $$1, int $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   private bsd(int $$0, String $$1, bsc $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public bsd.a a() {
+      return this.i;
+   }
+
+   public int b() {
+      return this.j;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public String e() {
+      return this.l;
+   }
+
+   public boolean f() {
+      return this.i == bsd.a.b;
    }
 
    @Override
    public String c() {
-      return this.n;
+      return this.l;
    }
 
-   public boolean a(bsc $$0) {
-      return this.o.test($$0);
+   public static bsd a(String $$0) {
+      bsd $$1 = h.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
+   }
+
+   public static bsd a(bsd.a $$0, int $$1) {
+      for (bsd $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
+         }
+      }
+
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

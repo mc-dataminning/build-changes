@@ -1,45 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class ebf extends eca<eed> {
-   public ebf(Codec<eed> $$0) {
+public class ebf extends dzz<ecn> {
+   public ebf(Codec<ecn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eed> $$0) {
-      ir $$1 = $$0.e();
-      dcv $$2 = $$0.b();
-      ayt $$3 = $$0.d();
-
-      eed $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.J_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            dtc $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.J_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (ir $$11 : ir.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
+   public boolean a(eab<ecn> $$0) {
+      boolean $$1 = false;
+      aym $$2 = $$0.d();
+      dbu $$3 = $$0.b();
+      io $$4 = $$0.e();
+      ecn $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dwv.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      io $$9 = new io($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dec.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         drd $$11 = $$10 ? dec.bx.n() : dec.bw.n();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               drd $$12 = $$11.a(dmg.d, drz.a);
+               io $$13 = $$9.c();
+               if ($$3.a_($$13).a(dec.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
                }
+            } else {
+               $$3.a($$9, $$11, 2);
             }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+            $$1 = true;
          }
-
-         return true;
       }
+
+      return $$1;
    }
 }

@@ -1,57 +1,85 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class esi extends esh {
-   public static final Codec<esi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.either(aks.a(li.aU), eru.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, esi::new)
+public record esi(Map<String, epg> b, eph.b c) implements esn {
+   public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, epg.a).fieldOf("scores").forGetter(esi::c), eph.b.e.fieldOf("entity").forGetter(esi::d))
+            .apply($$0, esi::new)
    );
-   private final Either<aks<eru>, eru> j;
 
-   private esi(Either<aks<eru>, eru> $$0, int $$1, int $$2, List<euu> $$3, List<etb> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   @Override
+   public eso b() {
+      return esp.j;
    }
 
    @Override
-   public esg a() {
-      return esd.d;
+   public Set<erw<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   @Override
-   public void a(Consumer<cuh> $$0, erp $$1) {
-      ((eru)this.j.map($$1x -> $$1.a().a(li.aU, $$1x).map(ja::a).orElse(eru.a), $$0x -> $$0x)).a($$1, $$0);
-   }
+   public boolean a(eph $$0) {
+      brw $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         evq $$2 = $$0.d().f();
 
-   @Override
-   public void a(erv $$0) {
-      Optional<aks<eru>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         aks<eru> $$2 = $$1.get();
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
+         for (Entry<String, epg> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
          }
+
+         return true;
+      }
+   }
+
+   protected boolean a(eph $$0, brw $$1, evq $$2, String $$3, epg $$4) {
+      evi $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         evm $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
+   }
+
+   public static esi.a a(eph.b $$0) {
+      return new esi.a($$0);
+   }
+
+   public Map<String, epg> c() {
+      return this.b;
+   }
+
+   public eph.b d() {
+      return this.c;
+   }
+
+   public static class a implements esn.a {
+      private final Builder<String, epg> a = ImmutableMap.builder();
+      private final eph.b b;
+
+      public a(eph.b $$0) {
+         this.b = $$0;
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .a(li.aU, $$1x)
-                  .ifPresentOrElse($$2x -> ((eru)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
-   }
+      public esi.a a(String $$0, epg $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-   public static esh.a<?> a(aks<eru> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esi(Either.left($$0), $$1, $$2, $$3, $$4));
-   }
-
-   public static esh.a<?> a(eru $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esi(Either.right($$0), $$1, $$2, $$3, $$4));
+      @Override
+      public esn build() {
+         return new esi(this.a.build(), this.b);
+      }
    }
 }

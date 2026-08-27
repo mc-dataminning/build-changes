@@ -1,47 +1,31 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class bon {
-   private bon() {
+public class bon implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
+
+   public bon(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
    }
 
-   public static int a(List<? extends bom> $$0) {
-      long $$1 = 0L;
-
-      for (bom $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+   @Override
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
-
-   public static <T extends bom> Optional<T> a(ayt $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends bom> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static <T extends bom> Optional<T> a(ayt $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+      return $$1;
    }
 }

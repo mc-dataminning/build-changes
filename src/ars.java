@@ -1,198 +1,33 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.local.LocalAddress;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.ServerSocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
 
-public class ars {
-   private static final Logger d = LogUtils.getLogger();
-   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
-      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
-   );
-   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
-      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
-   );
-   final MinecraftServer e;
-   public volatile boolean c;
-   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
-   final List<wc> g = Collections.synchronizedList(Lists.newArrayList());
-
-   public ars(MinecraftServer $$0) {
-      this.e = $$0;
-      this.c = true;
-   }
-
-   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
-      synchronized (this.f) {
-         Class<? extends ServerSocketChannel> $$2;
-         EventLoopGroup $$3;
-         if (Epoll.isAvailable() && this.e.p()) {
-            $$2 = EpollServerSocketChannel.class;
-            $$3 = (EventLoopGroup)b.get();
-            d.info("Using epoll channel type");
-         } else {
-            $$2 = NioServerSocketChannel.class;
-            $$3 = (EventLoopGroup)a.get();
-            d.info("Using default channel type");
-         }
-
-         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               try {
-                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-               } catch (ChannelException var5) {
-               }
-
-               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-               if (ars.this.e.an()) {
-                  $$1.addLast("legacy_query", new arn(ars.this.d()));
-               }
-
-               wc.a($$1, zm.a, null);
-               int $$2 = ars.this.e.o();
-               wc $$3 = (wc)($$2 > 0 ? new wo($$2) : new wc(zm.a));
-               ars.this.g.add($$3);
-               $$3.a($$1);
-               $$3.a(new aru(ars.this.e, $$3));
-            }
-         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
-      }
-   }
-
-   public SocketAddress a() {
-      ChannelFuture $$0;
-      synchronized (this.f) {
-         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               wc $$1 = new wc(zm.a);
-               $$1.a(new aro(ars.this.e, $$1));
-               ars.this.g.add($$1);
-               ChannelPipeline $$2 = $$0.pipeline();
-               wc.a($$2, zm.a);
-               $$1.a($$2);
-            }
-         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
-         this.f.add($$0);
+public interface ars {
+   ars a = new ars() {
+      @Override
+      public void a() {
       }
 
-      return $$0.channel().localAddress();
-   }
-
-   public void b() {
-      this.c = false;
-
-      for (ChannelFuture $$0 : this.f) {
-         try {
-            $$0.channel().close().sync();
-         } catch (InterruptedException var4) {
-            d.error("Interrupted whilst closing channel");
-         }
-      }
-   }
-
-   public void c() {
-      synchronized (this.g) {
-         Iterator<wc> $$0 = this.g.iterator();
-
-         while ($$0.hasNext()) {
-            wc $$1 = $$0.next();
-            if (!$$1.j()) {
-               if ($$1.i()) {
-                  try {
-                     $$1.b();
-                  } catch (Exception var7) {
-                     if ($$1.e()) {
-                        throw new z(o.a(var7, "Ticking memory connection"));
-                     }
-
-                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bn()), var7);
-                     xe $$3 = xe.b("Internal server error");
-                     $$1.a(new zt($$3), wl.a(() -> $$1.a($$3)));
-                     $$1.m();
-                  }
-               } else {
-                  $$0.remove();
-                  $$1.n();
-               }
-            }
-         }
-      }
-   }
-
-   public MinecraftServer d() {
-      return this.e;
-   }
-
-   public List<wc> e() {
-      return this.g;
-   }
-
-   static class a extends ChannelInboundHandlerAdapter {
-      private static final Timer a = new HashedWheelTimer();
-      private final int b;
-      private final int c;
-      private final List<ars.a.a> d = Lists.newArrayList();
-
-      public a(int $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      @Override
+      public void b() {
       }
 
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         this.a($$0, $$1);
+      @Override
+      public CompletableFuture<arf> a(String $$0) {
+         return CompletableFuture.completedFuture(arf.a($$0));
       }
 
-      private void a(ChannelHandlerContext $$0, Object $$1) {
-         int $$2 = this.b + (int)(Math.random() * (double)this.c);
-         this.d.add(new ars.a.a($$0, $$1));
-         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      @Override
+      public CompletableFuture<List<arf>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(arf::a).collect(ImmutableList.toImmutableList()));
       }
+   };
 
-      private void a(Timeout $$0) {
-         ars.a.a $$1 = this.d.remove(0);
-         $$1.a.fireChannelRead($$1.b);
-      }
+   void a();
 
-      static class a {
-         public final ChannelHandlerContext a;
-         public final Object b;
+   void b();
 
-         public a(ChannelHandlerContext $$0, Object $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-   }
+   CompletableFuture<arf> a(String var1);
+
+   CompletableFuture<List<arf>> a(List<String> var1);
 }

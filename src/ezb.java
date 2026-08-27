@@ -1,91 +1,207 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 public class ezb {
-   private static final Logger a = LogUtils.getLogger();
-
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   public static eyy a() {
+      throw new IllegalArgumentException();
    }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
-      }
+   public static eyy a(eyy $$0) {
+      return $$0;
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   public static eyy a(eyy $$0, eyy $$1) {
+      return new ezb.a($$0, $$1);
    }
 
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
-      }
+   public static eyy a(eyy... $$0) {
+      return new ezb.b($$0);
    }
 
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
+   static class a implements eyy {
+      private final eyy a;
+      private final eyy b;
 
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
-
-            if ($$3 == 16) {
-               return 4355;
-            }
+      public a(eyy $$0, eyy $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
          }
       }
 
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+      @Override
+      public eyy a(double $$0, double $$1, double $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public eyy a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public eyy a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eyy a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eyy b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eyy a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+      }
+
+      @Override
+      public void e() {
+         this.a.e();
+         this.b.e();
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a.b($$0, $$1, $$2, $$3);
+         this.b.b($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public void l() {
+         this.a.l();
+         this.b.l();
+      }
+   }
+
+   static class b implements eyy {
+      private final eyy[] a;
+
+      public b(eyy[] $$0) {
+         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
+               if ($$0[$$1] == $$0[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
+
+         this.a = $$0;
+      }
+
+      private void a(Consumer<eyy> $$0) {
+         for (eyy $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
+
+      @Override
+      public eyy a(double $$0, double $$1, double $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public eyy a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public eyy a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eyy a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eyy b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eyy a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
+      }
+
+      @Override
+      public void e() {
+         this.a(eyy::e);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
+      }
+
+      @Override
+      public void l() {
+         this.a(eyy::l);
+      }
    }
 }

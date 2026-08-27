@@ -1,183 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fsg<T extends cfx> extends ftf<T> {
+   private static final float a = 2.0F;
+   private static final float b = 2.5F;
+   private static final float f = 0.45F;
+   private static final float g = 29.35F;
+   private static final String h = "saddle";
+   private static final String i = "bridle";
+   private static final String j = "reins";
+   private final fvw k;
+   private final fvw l;
+   private final fvw[] m;
+   private final fvw[] n;
 
-public class fsg {
-   public static final int a = 20;
-   private static final fka b = new fka(new akt("recipe_book/page_forward"), new akt("recipe_book/page_forward_highlighted"));
-   private static final fka c = new fka(new akt("recipe_book/page_backward"), new akt("recipe_book/page_backward_highlighted"));
-   private final List<fsi> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fsi e;
-   private final fse f = new fse();
-   private fgj g;
-   private final List<fsk> h = Lists.newArrayList();
-   private List<fsj> i = ImmutableList.of();
-   private fjt j;
-   private fjt k;
-   private int l;
-   private int m;
-   private avs n;
-   @Nullable
-   private czc<?> o;
-   @Nullable
-   private fsj p;
+   public fsg(fvw $$0) {
+      this.k = $$0;
+      fvw $$1 = $$0.b("body");
+      this.l = $$1.b("head");
+      this.m = new fvw[]{$$1.b("saddle"), this.l.b("bridle")};
+      this.n = new fvw[]{this.l.b("reins")};
+   }
 
-   public fsg() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new fsi());
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      fwa $$2 = new fwa(0.05F);
+      fwf $$3 = $$1.a("body", fwb.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fvy.a(0.0F, 4.0F, 9.5F));
+      $$3.a("hump", fwb.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fvy.a(0.0F, -12.0F, -10.0F));
+      $$3.a("tail", fwb.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fvy.a(0.0F, -9.0F, 3.5F));
+      fwf $$4 = $$3.a(
+         "head",
+         fwb.c()
+            .a(60, 24)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
+            .a(21, 0)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
+            .a(50, 0)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
+         fvy.a(0.0F, -3.0F, -19.5F)
+      );
+      $$4.a("left_ear", fwb.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fvy.a(2.5F, -21.0F, -9.5F));
+      $$4.a("right_ear", fwb.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fvy.a(-2.5F, -21.0F, -9.5F));
+      $$1.a("left_hind_leg", fwb.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fvy.a(4.9F, 1.0F, 9.5F));
+      $$1.a("right_hind_leg", fwb.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fvy.a(-4.9F, 1.0F, 9.5F));
+      $$1.a("left_front_leg", fwb.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fvy.a(4.9F, 1.0F, -10.5F));
+      $$1.a("right_front_leg", fwb.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fvy.a(-4.9F, 1.0F, -10.5F));
+      $$3.a(
+         "saddle",
+         fwb.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
+         fvy.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "reins",
+         fwb.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         fvy.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "bridle",
+         fwb.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         fvy.a(0.0F, 0.0F, 0.0F)
+      );
+      return fwc.a($$0, 128, 128);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fvw::c);
+      this.a($$0, $$4, $$5, $$3);
+      this.a($$0);
+      this.a(fex.a, $$1, $$2, 2.0F, 2.5F);
+      this.a($$0.ce, fex.b, $$3, 1.0F);
+      this.a($$0.cf, fex.c, $$3, 1.0F);
+      this.a($$0.cg, fex.d, $$3, 1.0F);
+      this.a($$0.ch, fex.f, $$3, 1.0F);
+      this.a($$0.ci, fex.e, $$3, 1.0F);
+   }
+
+   private void a(T $$0, float $$1, float $$2, float $$3) {
+      $$1 = ayf.a($$1, -30.0F, 30.0F);
+      $$2 = ayf.a($$2, -25.0F, 45.0F);
+      if ($$0.c() > 0) {
+         float $$4 = $$3 - (float)$$0.ai;
+         float $$5 = 45.0F * ((float)$$0.c() - $$4) / 55.0F;
+         $$2 = ayf.a($$2 + $$5, -25.0F, 70.0F);
+      }
+
+      this.l.f = $$1 * (float) (Math.PI / 180.0);
+      this.l.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   private void a(T $$0) {
+      boolean $$1 = $$0.i();
+      boolean $$2 = $$0.bS();
+
+      for (fvw $$3 : this.m) {
+         $$3.k = $$1;
+      }
+
+      for (fvw $$4 : this.n) {
+         $$4.k = $$2 && $$1;
       }
    }
 
-   public void a(fgj $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fjt($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fjt($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(fsf $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<fsj> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fsi $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fsj $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
-         } else {
-            $$2.k = false;
-         }
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         xe $$6 = xe.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fsi $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.A()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fia $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public czc<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fsj b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
-         }
-
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
+   @Override
+   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(0.45F, 0.45F, 0.45F);
+         $$0.a(0.0F, 1.834375F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
       } else {
-         for (fsi $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.d();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.C(), $$7.D(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.x());
-               }
-
-               return true;
-            }
-         }
-
-         return false;
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 
-   public void a(List<czc<?>> $$0) {
-      for (fsk $$1 : this.h) {
-         $$1.a($$0);
-      }
-   }
-
-   public fgj d() {
-      return this.g;
-   }
-
-   public avs e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<fil> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   @Override
+   public fvw a() {
+      return this.k;
    }
 }

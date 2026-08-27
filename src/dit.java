@@ -1,56 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dit extends dfc {
-   protected final iw a;
-   protected final boolean b;
-   protected final exn d;
+public class dit extends dea {
+   public static final MapCodec<dit> a = b(dit::new);
+   private static final int b = 20;
 
-   protected dit(dtb.d $$0, iw $$1, exn $$2, boolean $$3) {
+   @Override
+   public MapCodec<dit> a() {
+      return a;
+   }
+
+   public dit(drc.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
-   protected abstract MapCodec<? extends dit> a();
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().n();
-   }
-
-   public dtc a(dcb $$0) {
-      return this.n();
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.a(this.a.g());
-      dtc $$4 = $$1.a_($$3);
-      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public void a(daz $$0, io $$1, drd $$2, brw $$3) {
+      if (!$$3.bW() && $$3 instanceof bsq && !czc.j((bsq)$$3)) {
+         $$3.a($$0.ai().e(), 1.0F);
       }
-   }
 
-   protected boolean m(dtc $$0) {
-      return true;
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return this.d;
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      deg.b($$1, $$2.c(), $$0);
    }
 
-   protected abstract div c();
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$1 == it.b && $$2.a(dec.G)) {
+         $$3.a($$4, this, 20);
+      }
 
-   protected abstract dfc b();
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
 }

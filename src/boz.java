@@ -1,64 +1,26 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public class boz extends bpd {
-   public static final Codec<boz> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, boz::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
+public abstract class boz implements bpe {
+   private static final Codec<Either<Float, boz>> a = Codec.either(Codec.FLOAT, le.L.q().dispatch(boz::c, bpa::codec));
+   public static final Codec<boz> c = a.xmap(
+      $$0 -> (boz)$$0.map(box::a, $$0x -> $$0x), $$0 -> $$0.c() == bpa.a ? Either.left(((box)$$0).d()) : Either.right($$0)
+   );
 
-   public static boz a(float $$0, float $$1, float $$2, float $$3) {
-      return new boz($$0, $$1, $$2, $$3);
+   public static Codec<boz> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
 
-   private boz(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   public abstract float a();
 
-   @Override
-   public float a(ayt $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
-   }
+   public abstract float b();
 
-   public static float a(ayt $$0, float $$1, float $$2, float $$3, float $$4) {
-      return aym.a(aym.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public float a() {
-      return this.e;
-   }
-
-   @Override
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public bpe<?> c() {
-      return bpe.c;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
-   }
+   public abstract bpa<?> c();
 }

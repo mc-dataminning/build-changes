@@ -1,65 +1,101 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+public class gaq extends gay {
+   private static final aym a = aym.a();
+   private final gat b;
 
-public class gaq extends gar {
-   private final String f;
+   gaq(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   gaq(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
-   }
-
-   public String a() {
-      return this.f;
-   }
-
-   public gaq c() {
-      gaq $$0 = new gaq(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public fon a(fon $$0, gav $$1) {
-      return new fst($$0, $$1, this);
+   public gac b() {
+      return gac.c;
    }
 
-   public static class a extends gar.a<gaq> {
-      public a(gaq $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
+      } else {
+         this.e(ayf.i(0.05F, this.y, 1.0F));
+      }
+   }
+
+   private boolean g() {
+      feb $$0 = feb.Q();
+      gbm $$1 = $$0.s;
+      return $$1 != null && $$1.bx().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aA().a() && $$1.gA();
+   }
+
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
       }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new gaq(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gaq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gab<kq> {
+      private final gat a;
+
+      public b(gat $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
+      public fzy a(kq $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzy $$8 = new gaq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         $$8.e($$0.e());
+         return $$8;
+      }
+   }
+
+   public static class c implements gab<lb> {
+      private final gat a;
+
+      public c(gat $$0) {
+         this.a = $$0;
       }
 
-      @Nullable
-      @Override
-      public gar.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gar.b.d : null;
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gaq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class d implements gab<lb> {
+      private final gat a;
+
+      public d(gat $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public Either<gar.c, gar.b> a(gav $$0) {
-         gar.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new gar.c(this.a.a, gau.c, $$3));
-         }
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaq $$8 = new gaq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
       }
    }
 }

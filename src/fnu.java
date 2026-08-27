@@ -1,64 +1,30 @@
-public class fnu extends fnc {
-   private fin c;
+import org.joml.Vector3f;
 
-   public fnu() {
-      super("");
+public class fnu extends fmz {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int d = 16;
+   private static final int r = 16;
+   private final akn s = new akn("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fnu(dps $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wx.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.c = fin.a(xe.c("multiplayer.stopSleeping"), $$0 -> this.B()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+   protected void b(ffn $$0, drd $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   protected void a(ffn $$0, drd $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void d() {
-      this.B();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.B();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.l.d().d();
-         return true;
-      }
-   }
-
-   private void B() {
-      fzo $$0 = this.m.s.h;
-      $$0.b(new ahp(this.m.s, ahp.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fnc(this.b.a()));
-      }
+   protected Vector3f m() {
+      return c;
    }
 }

@@ -1,29 +1,53 @@
-import java.util.Optional;
+public class ejs {
+   private static final akn[] a = new akn[]{
+      new akn("nether_fossils/fossil_1"),
+      new akn("nether_fossils/fossil_2"),
+      new akn("nether_fossils/fossil_3"),
+      new akn("nether_fossils/fossil_4"),
+      new akn("nether_fossils/fossil_5"),
+      new akn("nether_fossils/fossil_6"),
+      new akn("nether_fossils/fossil_7"),
+      new akn("nether_fossils/fossil_8"),
+      new akn("nether_fossils/fossil_9"),
+      new akn("nether_fossils/fossil_10"),
+      new akn("nether_fossils/fossil_11"),
+      new akn("nether_fossils/fossil_12"),
+      new akn("nether_fossils/fossil_13"),
+      new akn("nether_fossils/fossil_14")
+   };
 
-public abstract class ejs extends ejt {
-   private final ejs.a d;
-   private final int e;
-   private final int f;
-
-   protected ejs(ejs.a $$0, int $$1, int $$2, ejt.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static void a(elm $$0, ehq $$1, aym $$2, io $$3) {
+      dkn $$4 = dkn.a($$2);
+      $$1.a(new ejs.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<ejt.c> a(ejt.b $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dyu.a.a, $$1 -> this.a($$1, $$0));
-   }
+   public static class a extends ehv {
+      public a(elm $$0, akn $$1, io $$2, dkn $$3) {
+         super(eic.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private void a(ekl $$0, ejt.b $$1) {
-      dbh $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
+      public a(elm $$0, ud $$1) {
+         super(eic.ac, $$1, $$0, $$1x -> a(dkn.valueOf($$1.l("Rot"))));
+      }
 
-   @FunctionalInterface
-   protected interface a {
-      ejx construct(dzt var1, int var2, int var3);
+      private static elh a(dkn $$0) {
+         return new elh().a($$0).a(dix.a).a(ekn.d);
+      }
+
+      @Override
+      protected void a(eib $$0, ud $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, io $$1, dbo $$2, aym $$3, ehd $$4) {
+      }
+
+      @Override
+      public void a(dbu $$0, dbs $$1, dta $$2, aym $$3, ehd $$4, dag $$5, io $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

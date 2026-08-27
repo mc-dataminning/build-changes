@@ -1,72 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class fov {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public class fov extends fon {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final xe d;
-   private final xj r;
-   private final ImmutableList<fov.a> s;
-   private fjg u = fjg.a;
-   private int v;
-   private int w;
-
-   protected fov(xe $$0, List<xe> $$1, ImmutableList<fov.a> $$2) {
-      super($$0);
-      this.r = xj.a($$1);
-      this.d = xd.a($$0, xh.a($$1, xd.a));
-      this.s = $$2;
+   public static void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   @Override
-   public xe i() {
-      return this.d;
+   private static void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   @Override
-   public void aN_() {
-      UnmodifiableIterator $$1 = this.s.iterator();
-
-      while ($$1.hasNext()) {
-         fov.a $$0 = (fov.a)$$1.next();
-         this.w = Math.max(this.w, 20 + this.p.a($$0.a) + 20);
-      }
-
-      int $$1x = 5 + this.w + 5;
-      int $$2 = $$1x * this.s.size();
-      this.u = fjg.a(this.p, this.r, $$2);
-      int $$3 = this.u.a() * 9;
-      this.v = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.v + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fov.a $$6 = (fov.a)var6.next();
-         this.c(fin.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
-      }
+   private static void b(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.v - 9 * 2, -1);
-      this.u.a($$0, this.n / 2, this.v);
+   private static void a(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   private static void c(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
    }
 
-   public static final class a {
-      final xe a;
-      final fin.c b;
-
-      public a(xe $$0, fin.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private static void b(ffn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

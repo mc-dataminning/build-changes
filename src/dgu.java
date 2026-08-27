@@ -1,43 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dgu extends dem {
-   public static final MapCodec<dgu> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgr.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dgu::new));
-   private final dfc f;
+public abstract class dgu extends dhw {
+   public static final dsb<dro> K = drt.U;
 
-   @Override
-   public MapCodec<dgu> a() {
-      return e;
-   }
-
-   protected dgu(dfc $$0, dtb.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dgu(drc.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      this.a($$0, (dcb)$$1, $$2);
-   }
+   protected abstract MapCodec<? extends dgu> a();
 
    @Override
-   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.n().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
-      }
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
+   public static boolean b(dbc $$0, io $$1, it $$2) {
+      io $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return dfe.a.n();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
+   public drd a(cxb $$0) {
+      for (it $$1 : $$0.f()) {
+         drd $$2;
+         if ($$1.o() == it.a.b) {
+            $$2 = this.n().a(K, $$1 == it.b ? dro.c : dro.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.n().a(K, dro.b).a(aE, $$1.g());
          }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$2.a((dbc)$$0.q(), $$0.a())) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected static it m(drd $$0) {
+      switch ((dro)$$0.c(K)) {
+         case c:
+            return it.a;
+         case a:
+            return it.b;
+         default:
+            return $$0.c(aE);
       }
    }
 }

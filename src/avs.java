@@ -1,93 +1,98 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class avs {
-   protected final Set<akt> a = Sets.newHashSet();
-   protected final Set<akt> b = Sets.newHashSet();
-   private final avt c = new avt();
+   public static final avr<dea> a = a("mined", le.e);
+   public static final avr<ctl> b = a("crafted", le.h);
+   public static final avr<ctl> c = a("used", le.h);
+   public static final avr<ctl> d = a("broken", le.h);
+   public static final avr<ctl> e = a("picked_up", le.h);
+   public static final avr<ctl> f = a("dropped", le.h);
+   public static final avr<bsc<?>> g = a("killed", le.g);
+   public static final avr<bsc<?>> h = a("killed_by", le.g);
+   public static final avr<akn> i = a("custom", le.m);
+   public static final akn j = a("leave_game", avq.b);
+   public static final akn k = a("play_time", avq.e);
+   public static final akn l = a("total_world_time", avq.e);
+   public static final akn m = a("time_since_death", avq.e);
+   public static final akn n = a("time_since_rest", avq.e);
+   public static final akn o = a("sneak_time", avq.e);
+   public static final akn p = a("walk_one_cm", avq.d);
+   public static final akn q = a("crouch_one_cm", avq.d);
+   public static final akn r = a("sprint_one_cm", avq.d);
+   public static final akn s = a("walk_on_water_one_cm", avq.d);
+   public static final akn t = a("fall_one_cm", avq.d);
+   public static final akn u = a("climb_one_cm", avq.d);
+   public static final akn v = a("fly_one_cm", avq.d);
+   public static final akn w = a("walk_under_water_one_cm", avq.d);
+   public static final akn x = a("minecart_one_cm", avq.d);
+   public static final akn y = a("boat_one_cm", avq.d);
+   public static final akn z = a("pig_one_cm", avq.d);
+   public static final akn A = a("horse_one_cm", avq.d);
+   public static final akn B = a("aviate_one_cm", avq.d);
+   public static final akn C = a("swim_one_cm", avq.d);
+   public static final akn D = a("strider_one_cm", avq.d);
+   public static final akn E = a("jump", avq.b);
+   public static final akn F = a("drop", avq.b);
+   public static final akn G = a("damage_dealt", avq.c);
+   public static final akn H = a("damage_dealt_absorbed", avq.c);
+   public static final akn I = a("damage_dealt_resisted", avq.c);
+   public static final akn J = a("damage_taken", avq.c);
+   public static final akn K = a("damage_blocked_by_shield", avq.c);
+   public static final akn L = a("damage_absorbed", avq.c);
+   public static final akn M = a("damage_resisted", avq.c);
+   public static final akn N = a("deaths", avq.b);
+   public static final akn O = a("mob_kills", avq.b);
+   public static final akn P = a("animals_bred", avq.b);
+   public static final akn Q = a("player_kills", avq.b);
+   public static final akn R = a("fish_caught", avq.b);
+   public static final akn S = a("talked_to_villager", avq.b);
+   public static final akn T = a("traded_with_villager", avq.b);
+   public static final akn U = a("eat_cake_slice", avq.b);
+   public static final akn V = a("fill_cauldron", avq.b);
+   public static final akn W = a("use_cauldron", avq.b);
+   public static final akn X = a("clean_armor", avq.b);
+   public static final akn Y = a("clean_banner", avq.b);
+   public static final akn Z = a("clean_shulker_box", avq.b);
+   public static final akn aa = a("interact_with_brewingstand", avq.b);
+   public static final akn ab = a("interact_with_beacon", avq.b);
+   public static final akn ac = a("inspect_dropper", avq.b);
+   public static final akn ad = a("inspect_hopper", avq.b);
+   public static final akn ae = a("inspect_dispenser", avq.b);
+   public static final akn af = a("play_noteblock", avq.b);
+   public static final akn ag = a("tune_noteblock", avq.b);
+   public static final akn ah = a("pot_flower", avq.b);
+   public static final akn ai = a("trigger_trapped_chest", avq.b);
+   public static final akn aj = a("open_enderchest", avq.b);
+   public static final akn ak = a("enchant_item", avq.b);
+   public static final akn al = a("play_record", avq.b);
+   public static final akn am = a("interact_with_furnace", avq.b);
+   public static final akn an = a("interact_with_crafting_table", avq.b);
+   public static final akn ao = a("open_chest", avq.b);
+   public static final akn ap = a("sleep_in_bed", avq.b);
+   public static final akn aq = a("open_shulker_box", avq.b);
+   public static final akn ar = a("open_barrel", avq.b);
+   public static final akn as = a("interact_with_blast_furnace", avq.b);
+   public static final akn at = a("interact_with_smoker", avq.b);
+   public static final akn au = a("interact_with_lectern", avq.b);
+   public static final akn av = a("interact_with_campfire", avq.b);
+   public static final akn aw = a("interact_with_cartography_table", avq.b);
+   public static final akn ax = a("interact_with_loom", avq.b);
+   public static final akn ay = a("interact_with_stonecutter", avq.b);
+   public static final akn az = a("bell_ring", avq.b);
+   public static final akn aA = a("raid_trigger", avq.b);
+   public static final akn aB = a("raid_win", avq.b);
+   public static final akn aC = a("interact_with_anvil", avq.b);
+   public static final akn aD = a("interact_with_grindstone", avq.b);
+   public static final akn aE = a("target_hit", avq.b);
+   public static final akn aF = a("interact_with_smithing_table", avq.b);
 
-   public void a(avs $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private static akn a(String $$0, avq $$1) {
+      akn $$2 = new akn($$0);
+      jk.a(le.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public void a(czc<?> $$0) {
-      if (!$$0.b().an_()) {
-         this.a($$0.a());
-      }
-   }
-
-   protected void a(akt $$0) {
-      this.a.add($$0);
-   }
-
-   public boolean b(@Nullable czc<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
-   }
-
-   public boolean b(akt $$0) {
-      return this.a.contains($$0);
-   }
-
-   public void c(czc<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(akt $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(czc<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(czc<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(czc<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(akt $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(cqx $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(cqx $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(cqw<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(cqx $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(cqx $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(avt $$0) {
-      this.c.a($$0);
-   }
-
-   public avt a() {
-      return this.c.a();
-   }
-
-   public void a(cqx $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   private static <T> avr<T> a(String $$0, jk<T> $$1) {
+      wx $$2 = wx.c("stat_type.minecraft." + $$0);
+      return jk.a(le.x, $$0, new avr<>($$1, $$2));
    }
 }

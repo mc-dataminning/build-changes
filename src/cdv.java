@@ -1,104 +1,89 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
 public class cdv {
-   public static final aks<cdu> a = a("armorer");
-   public static final aks<cdu> b = a("butcher");
-   public static final aks<cdu> c = a("cartographer");
-   public static final aks<cdu> d = a("cleric");
-   public static final aks<cdu> e = a("farmer");
-   public static final aks<cdu> f = a("fisherman");
-   public static final aks<cdu> g = a("fletcher");
-   public static final aks<cdu> h = a("leatherworker");
-   public static final aks<cdu> i = a("librarian");
-   public static final aks<cdu> j = a("mason");
-   public static final aks<cdu> k = a("shepherd");
-   public static final aks<cdu> l = a("toolsmith");
-   public static final aks<cdu> m = a("weaponsmith");
-   public static final aks<cdu> n = a("home");
-   public static final aks<cdu> o = a("meeting");
-   public static final aks<cdu> p = a("beehive");
-   public static final aks<cdu> q = a("bee_nest");
-   public static final aks<cdu> r = a("nether_portal");
-   public static final aks<cdu> s = a("lodestone");
-   public static final aks<cdu> t = a("lightning_rod");
-   public static final aks<cdu> u = a("potato_portal");
-   public static final aks<cdu> v = a("pedestal");
-   private static final Set<dtc> w = ImmutableList.of(
-         dfe.bX, dfe.bY, dfe.bU, dfe.bV, dfe.bS, dfe.bQ, dfe.bW, dfe.bM, dfe.bR, dfe.bO, dfe.bL, dfe.bK, new dfc[]{dfe.bP, dfe.bT, dfe.bJ, dfe.bN}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(deu.b) == dtp.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dtc> x = ImmutableList.of(dfe.gl, dfe.gn, dfe.gm, dfe.go)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dtc, ja<cdu>> y = Maps.newHashMap();
+   private final io a;
+   private final ix<cdx> b;
+   private int c;
+   private final Runnable d;
 
-   private static Set<dtc> a(dfc... $$0) {
-      return (Set<dtc>)($$0.length == 1
-         ? ImmutableSet.copyOf($$0[0].l().a())
-         : Arrays.stream($$0).flatMap($$0x -> $$0x.l().a().stream()).collect(ImmutableSet.toImmutableSet()));
+   public static Codec<cdv> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  io.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  akk.a(lf.V).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, cdv::new)
+      );
    }
 
-   private static aks<cdu> a(String $$0) {
-      return aks.a(li.V, new akt($$0));
+   private cdv(io $$0, ix<cdx> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static cdu a(jn<cdu> $$0, aks<cdu> $$1, Set<dtc> $$2, int $$3, int $$4) {
-      cdu $$5 = new cdu($$2, $$3, $$4);
-      jn.a($$0, $$1, $$5);
-      a($$0.g($$1), $$2);
-      return $$5;
+   public cdv(io $$0, ix<cdx> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   private static void a(ja<cdu> $$0, Set<dtc> $$1) {
-      $$1.forEach($$1x -> {
-         ja<cdu> $$2 = y.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ad.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
-         }
-      });
+   @Deprecated
+   @azi
+   public int a() {
+      return this.c;
    }
 
-   public static Optional<ja<cdu>> a(dtc $$0) {
-      return Optional.ofNullable(y.get($$0));
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static boolean b(dtc $$0) {
-      return y.containsKey($$0);
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static cdu a(jn<cdu> $$0) {
-      a($$0, a, a(dfe.oU), 1, 1);
-      a($$0, b, a(dfe.oT), 1, 1);
-      a($$0, c, a(dfe.oV), 1, 1);
-      a($$0, d, a(dfe.gk), 1, 1);
-      a($$0, e, a(dfe.qn), 1, 1);
-      a($$0, f, a(dfe.oS), 1, 1);
-      a($$0, g, a(dfe.oW), 1, 1);
-      a($$0, h, x, 1, 1);
-      a($$0, i, a(dfe.oY), 1, 1);
-      a($$0, j, a(dfe.pa), 1, 1);
-      a($$0, k, a(dfe.oR), 1, 1);
-      a($$0, l, a(dfe.oZ), 1, 1);
-      a($$0, m, a(dfe.oX), 1, 1);
-      a($$0, n, w, 1, 1);
-      a($$0, o, a(dfe.pc), 32, 6);
-      a($$0, p, a(dfe.qq), 0, 1);
-      a($$0, q, a(dfe.qp), 0, 1);
-      a($$0, r, a(dfe.eR), 0, 1);
-      a($$0, u, a(dfe.eS), 0, 1);
-      a($$0, s, a(dfe.qB), 0, 1);
-      a($$0, v, a(dfe.eT), 0, 1);
-      return a($$0, t, a(dfe.tD), 0, 1);
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public io f() {
+      return this.a;
+   }
+
+   public ix<cdx> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cdv)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

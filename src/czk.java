@@ -1,74 +1,60 @@
-public class czk extends cyq {
-   public czk(cyo $$0) {
+public class czk extends czb {
+   public final czk.a b;
+
+   public czk(czb.b $$0, czk.a $$1) {
       super($$0);
+      this.b = $$1;
    }
 
-   public boolean a(cpw $$0, dca $$1) {
-      cuh $$2 = cuh.i;
-      cuh $$3 = cuh.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuh $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.f() instanceof crz) {
-               if (!$$3.d()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cuk.xd)) {
-                  return false;
-               }
-
-               if (!$$2.d()) {
-                  return false;
-               }
-
-               dps $$6 = $$5.a(ke.W, dps.a);
-               if (!$$6.b().isEmpty()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            }
-         }
-      }
-
-      return !$$2.d() && !$$3.d();
-   }
-
-   public cuh a(cpw $$0, jc.a $$1) {
-      cuh $$2 = cuh.i;
-      cuh $$3 = cuh.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuh $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.f() instanceof crz) {
-               $$2 = $$5;
-            } else if ($$5.a(cuk.xd)) {
-               $$3 = $$5.r();
-            }
-         }
-      }
-
-      if ($$3.d()) {
-         return $$3;
+   @Override
+   public int a(int $$0, bqp $$1) {
+      if ($$1.a(avz.e)) {
+         return 0;
+      } else if (this.b == czk.a.a) {
+         return $$0;
+      } else if (this.b == czk.a.b && $$1.a(avz.j)) {
+         return $$0 * 2;
+      } else if (this.b == czk.a.c && $$1.a(avz.n)) {
+         return $$0 * 3;
+      } else if (this.b == czk.a.d && $$1.a(avz.m)) {
+         return $$0 * 2;
       } else {
-         $$3.b(ke.W, $$2.a(ke.W));
-         $$3.b(ke.X, ((crz)$$2.f()).b());
-         return $$3;
+         return this.b == czk.a.e && $$1.a(avz.k) ? $$0 * 2 : 0;
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean a(czb $$0) {
+      if ($$0 instanceof czk $$1) {
+         return this.b == $$1.b ? false : this.b == czk.a.c || $$1.b == czk.a.c;
+      } else {
+         return super.a($$0);
+      }
    }
 
-   @Override
-   public cze<?> ao_() {
-      return cze.m;
+   public static int a(bsq $$0, int $$1) {
+      int $$2 = czc.a(cze.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= ayf.d((float)$$1 * (float)$$2 * 0.15F);
+      }
+
+      return $$1;
+   }
+
+   public static double a(bsq $$0, double $$1) {
+      int $$2 = czc.a(cze.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= ayf.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
+      }
+
+      return $$1;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

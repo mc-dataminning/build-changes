@@ -1,48 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bai extends DataFix {
-   public bai(Schema $$0) {
-      super($$0, true);
+public class bai extends bez {
+   public bai(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntityBlockStateFix", bga.s, "minecraft:piston");
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.remove("Bees");
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.remove("EntityData");
-      $$0 = azu.a($$0, "TicksInHive", "ticks_in_hive");
-      return azu.a($$0, "MinOccupationTicks", "min_ticks_in_hive");
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bgf.s, "minecraft:beehive");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
-      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
-      Type<?> $$3 = $$2.getElement();
-      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
-      OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bgf.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bgf.s);
-      return this.fixTypeEverywhereTyped(
-         "BeehiveFieldRenameFix",
-         $$6,
-         $$7,
-         $$4x -> azu.a(
-               $$7,
-               $$4x.updateTyped(
-                  $$1,
-                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
-                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
-               )
-            )
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bga.s, "minecraft:piston");
+      Type<?> $$2 = $$1.findFieldType("blockState");
+      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("blockId").asInt(0);
+      $$4 = $$4.remove("blockId");
+      int $$6 = $$4.get("blockData").asInt(0) & 15;
+      $$4 = $$4.remove("blockData");
+      Dynamic<?> $$7 = bav.b($$5 << 4 | $$6);
+      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
+      return $$8.set(DSL.remainderFinder(), $$4)
+         .set(
+            $$3,
+            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
+               .getFirst()
+         );
    }
 }

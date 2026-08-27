@@ -1,29 +1,34 @@
-public class agp implements zl<agl> {
-   public static final zc<we, agp> a = zl.a(agp::a, agp::new);
-   private final bpx b;
+public class agp implements ze<age> {
+   public static final yv<vx, agp> a = ze.a(agp::a, agp::new);
+   private final agp.a b;
 
-   public agp(bpx $$0) {
+   public agp(agp.a $$0) {
       this.b = $$0;
    }
 
-   private agp(we $$0) {
-      this.b = bpx.a($$0.readUnsignedByte());
+   private agp(vx $$0) {
+      this.b = $$0.b(agp.a.class);
    }
 
-   private void a(we $$0) {
-      $$0.k(this.b.a());
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<agp> a() {
-      return agj.bi;
+   public zg<agp> a() {
+      return agc.bo;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public bpx b() {
+   public agp.a b() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,26 +1,29 @@
-public record aau(long c, ir d) implements aam {
-   public static final zc<we, aau> a = aam.a(aau::a, aau::new);
-   public static final aam.b<aau> b = aam.a("debug/neighbors_update");
+import java.util.HashSet;
+import java.util.Set;
 
-   private aau(we $$0) {
-      this($$0.m(), $$0.e());
+public record aau(Set<jq> c, Set<jq> d) implements aaf {
+   public static final yv<vx, aau> a = aaf.a(aau::a, aau::new);
+   public static final aaf.b<aau> b = aaf.a("debug/village_sections");
+
+   private aau(vx $$0) {
+      this($$0.a(HashSet::new, vx::g), $$0.a(HashSet::new, vx::g));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vx $$0) {
+      $$0.a(this.c, vx::a);
+      $$0.a(this.d, vx::a);
    }
 
    @Override
-   public aam.b<aau> a() {
+   public aaf.b<aau> a() {
       return b;
    }
 
-   public long b() {
+   public Set<jq> b() {
       return this.c;
    }
 
-   public ir c() {
+   public Set<jq> c() {
       return this.d;
    }
 }

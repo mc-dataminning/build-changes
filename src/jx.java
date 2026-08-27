@@ -1,225 +1,187 @@
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Spliterators;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public interface jx {
-   Map<String, jx.a> a = new Object2ObjectArrayMap();
-   Codec<jx.a> b = axu.a(jx.a::a, a::get);
-   jx.a c = a("empty");
-   jx.a d = a("water");
-   jx.a e = a("lava");
-   jx.a f = a("powder_snow");
-   jx g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dfe.gm.n().a(djp.g, Integer.valueOf(3)), avo.dh);
-   jx h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dfe.gn.n(), avo.dk);
-   jx i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dfe.go.n().a(djp.g, Integer.valueOf(3)), avo.dl);
-   jx j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      dfc $$6 = dfc.a($$5.f());
-      if (!($$6 instanceof dmp)) {
-         return bqc.d;
-      } else {
-         if (!$$1.C) {
-            $$3.a($$4, $$5.a(dfe.lN, 1));
-            $$3.a(avz.Z);
-            djp.d($$0, $$1, $$2);
-         }
+public interface jx extends Iterable<kd<?>> {
+   jx a = new jx() {
+      @Nullable
+      @Override
+      public <T> T a(ka<? extends T> $$0) {
+         return null;
+      }
 
-         return bqc.a($$1.C);
+      @Override
+      public Set<ka<?>> b() {
+         return Set.of();
+      }
+
+      @Override
+      public Iterator<kd<?>> iterator() {
+         return Collections.emptyIterator();
       }
    };
-   jx k = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      dps $$6 = $$5.a(ke.W, dps.a);
-      if ($$6.b().isEmpty()) {
-         return bqc.d;
+   Codec<jx> b = ka.d.flatComapMap(jx.a::a, $$0 -> {
+      int $$1 = $$0.d();
+      if ($$1 == 0) {
+         return DataResult.success(Reference2ObjectMaps.emptyMap());
       } else {
-         if (!$$1.C) {
-            cuh $$7 = $$5.c(1);
-            $$7.b(ke.W, $$6.a());
-            $$5.a(1, $$3);
-            if ($$5.d()) {
-               $$3.a($$4, $$7);
-            } else if ($$3.gl().f($$7)) {
-               $$3.cp.b();
-            } else {
-               $$3.a($$7, false);
+         Reference2ObjectMap<ka<?>, Object> $$2 = new Reference2ObjectArrayMap($$1);
+
+         for (kd<?> $$3 : $$0) {
+            if (!$$3.a().d()) {
+               $$2.put($$3.a(), $$3.b());
             }
-
-            $$3.a(avz.Y);
-            djp.d($$0, $$1, $$2);
          }
 
-         return bqc.a($$1.C);
+         return DataResult.success($$2);
       }
-   };
-   jx l = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!$$5.a(awm.bA)) {
-         return bqc.d;
-      } else if (!$$5.b(ke.x)) {
-         return bqc.d;
-      } else {
-         if (!$$1.C) {
-            $$5.c(ke.x);
-            $$3.a(avz.X);
-            djp.d($$0, $$1, $$2);
-         }
+   });
 
-         return bqc.a($$1.C);
-      }
-   };
-
-   static jx.a a(String $$0) {
-      Object2ObjectOpenHashMap<cuc, jx> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((jx)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bqc.d);
-      jx.a $$2 = new jx.a($$0, $$1);
-      a.put($$0, $$2);
-      return $$2;
+   static jx.a a() {
+      return new jx.a();
    }
 
-   bqc interact(dtc var1, dca var2, ir var3, cly var4, bpz var5, cuh var6);
+   @Nullable
+   <T> T a(ka<? extends T> var1);
 
-   static void a() {
-      Map<cuc, jx> $$0 = c.b();
-      a($$0);
-      $$0.put(cuk.tH, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         cwr $$6 = $$5.a(ke.E);
-         if ($$6 != null && $$6.a(cws.a)) {
-            if (!$$1x.C) {
-               cuc $$7 = $$5.f();
-               $$3x.a($$4, cuj.a($$5, $$3x, new cuh(cuk.tI)));
-               $$3x.a(avz.W);
-               $$3x.b(avz.c.b($$7));
-               $$1x.b($$2x, dfe.gm.n());
-               $$1x.a(null, $$2x, avo.cG, avq.e, 1.0F, 1.0F);
-               $$1x.a(null, dxv.z, $$2x);
-            }
+   Set<ka<?>> b();
 
-            return bqc.a($$1x.C);
+   default boolean b(ka<?> $$0) {
+      return this.a($$0) != null;
+   }
+
+   default <T> T a(ka<? extends T> $$0, T $$1) {
+      T $$2 = this.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   default <T> kd<T> c(ka<T> $$0) {
+      T $$1 = this.a($$0);
+      return $$1 != null ? new kd<>($$0, $$1) : null;
+   }
+
+   @Override
+   default Iterator<kd<?>> iterator() {
+      return Iterators.transform(this.b().iterator(), $$0 -> Objects.requireNonNull(this.c($$0)));
+   }
+
+   default Stream<kd<?>> c() {
+      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), (long)this.d(), 1345), false);
+   }
+
+   default int d() {
+      return this.b().size();
+   }
+
+   default boolean e() {
+      return this.d() == 0;
+   }
+
+   default jx a(final Predicate<ka<?>> $$0) {
+      return new jx() {
+         @Nullable
+         @Override
+         public <T> T a(ka<? extends T> $$0x) {
+            return $$0.test($$0) ? jx.this.a($$0) : null;
+         }
+
+         @Override
+         public Set<ka<?>> b() {
+            return Sets.filter(jx.this.b(), $$0::test);
+         }
+      };
+   }
+
+   public static class a {
+      private final Reference2ObjectMap<ka<?>, Object> a = new Reference2ObjectArrayMap();
+
+      a() {
+      }
+
+      public <T> jx.a a(ka<T> $$0, @Nullable T $$1) {
+         this.b($$0, $$1);
+         return this;
+      }
+
+      <T> void b(ka<T> $$0, @Nullable Object $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
          } else {
-            return bqc.d;
+            this.a.remove($$0);
          }
-      });
-      Map<cuc, jx> $$1 = d.b();
-      a($$1);
-      $$1.put(cuk.rV, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuh(cuk.rW), $$0xx -> $$0xx.c(djp.g) == 3, avo.dn));
-      $$1.put(cuk.tI, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (!$$1x.C) {
-            cuc $$6 = $$5.f();
-            $$3x.a($$4, cuj.a($$5, $$3x, cwr.a(cuk.tH, cws.a)));
-            $$3x.a(avz.W);
-            $$3x.b(avz.c.b($$6));
-            djp.d($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, avo.cH, avq.e, 1.0F, 1.0F);
-            $$1x.a(null, dxv.y, $$2x);
+      }
+
+      public jx.a a(jx $$0) {
+         for (kd<?> $$1 : $$0) {
+            this.a.put($$1.a(), $$1.b());
          }
 
-         return bqc.a($$1x.C);
-      });
-      $$1.put(cuk.tH, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(djp.g) == 3) {
-            return bqc.d;
+         return this;
+      }
+
+      public jx a() {
+         return a(this.a);
+      }
+
+      private static jx a(Map<ka<?>, Object> $$0) {
+         if ($$0.isEmpty()) {
+            return jx.a;
          } else {
-            cwr $$6 = $$5.a(ke.E);
-            if ($$6 != null && $$6.a(cws.a)) {
-               if (!$$1x.C) {
-                  $$3x.a($$4, cuj.a($$5, $$3x, new cuh(cuk.tI)));
-                  $$3x.a(avz.W);
-                  $$3x.b(avz.c.b($$5.f()));
-                  $$1x.b($$2x, $$0x.a(djp.g));
-                  $$1x.a(null, $$2x, avo.cG, avq.e, 1.0F, 1.0F);
-                  $$1x.a(null, dxv.z, $$2x);
-               }
-
-               return bqc.a($$1x.C);
-            } else {
-               return bqc.d;
-            }
+            return $$0.size() < 8 ? new jx.a.a(new Reference2ObjectArrayMap($$0)) : new jx.a.a(new Reference2ObjectOpenHashMap($$0));
          }
-      });
-      $$1.put(cuk.qU, l);
-      $$1.put(cuk.qT, l);
-      $$1.put(cuk.qS, l);
-      $$1.put(cuk.qR, l);
-      $$1.put(cuk.wu, l);
-      $$1.put(cuk.pH, l);
-      $$1.put(cuk.wA, k);
-      $$1.put(cuk.wH, k);
-      $$1.put(cuk.wP, k);
-      $$1.put(cuk.wL, k);
-      $$1.put(cuk.wM, k);
-      $$1.put(cuk.wJ, k);
-      $$1.put(cuk.wN, k);
-      $$1.put(cuk.wD, k);
-      $$1.put(cuk.wI, k);
-      $$1.put(cuk.wF, k);
-      $$1.put(cuk.wC, k);
-      $$1.put(cuk.wB, k);
-      $$1.put(cuk.wG, k);
-      $$1.put(cuk.wK, k);
-      $$1.put(cuk.wO, k);
-      $$1.put(cuk.wE, k);
-      $$1.put(cuk.ks, j);
-      $$1.put(cuk.kz, j);
-      $$1.put(cuk.kH, j);
-      $$1.put(cuk.kD, j);
-      $$1.put(cuk.kE, j);
-      $$1.put(cuk.kB, j);
-      $$1.put(cuk.kF, j);
-      $$1.put(cuk.kv, j);
-      $$1.put(cuk.kA, j);
-      $$1.put(cuk.kx, j);
-      $$1.put(cuk.ku, j);
-      $$1.put(cuk.kt, j);
-      $$1.put(cuk.ky, j);
-      $$1.put(cuk.kC, j);
-      $$1.put(cuk.kG, j);
-      $$1.put(cuk.kw, j);
-      Map<cuc, jx> $$2 = e.b();
-      $$2.put(cuk.rV, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuh(cuk.rX), $$0xx -> true, avo.dq));
-      a($$2);
-      Map<cuc, jx> $$3 = f.b();
-      $$3.put(cuk.rV, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuh(cuk.rY), $$0xx -> $$0xx.c(djp.g) == 3, avo.dr));
-      a($$3);
-   }
-
-   static void a(Map<cuc, jx> $$0) {
-      $$0.put(cuk.rX, h);
-      $$0.put(cuk.rW, g);
-      $$0.put(cuk.rY, i);
-   }
-
-   static bqc a(dtc $$0, dca $$1, ir $$2, cly $$3, bpz $$4, cuh $$5, cuh $$6, Predicate<dtc> $$7, avn $$8) {
-      if (!$$7.test($$0)) {
-         return bqc.d;
-      } else {
-         if (!$$1.C) {
-            cuc $$9 = $$5.f();
-            $$3.a($$4, cuj.a($$5, $$3, $$6));
-            $$3.a(avz.W);
-            $$3.b(avz.c.b($$9));
-            $$1.b($$2, dfe.gl.n());
-            $$1.a(null, $$2, $$8, avq.e, 1.0F, 1.0F);
-            $$1.a(null, dxv.y, $$2);
-         }
-
-         return bqc.a($$1.C);
-      }
-   }
-
-   static bqc a(dca $$0, ir $$1, cly $$2, bpz $$3, cuh $$4, dtc $$5, avn $$6) {
-      if (!$$0.C) {
-         cuc $$7 = $$4.f();
-         $$2.a($$3, cuj.a($$4, $$2, new cuh(cuk.rV)));
-         $$2.a(avz.V);
-         $$2.b(avz.c.b($$7));
-         $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, avq.e, 1.0F, 1.0F);
-         $$0.a(null, dxv.z, $$1);
       }
 
-      return bqc.a($$0.C);
-   }
+      static record a(Reference2ObjectMap<ka<?>, Object> c) implements jx {
+         @Nullable
+         @Override
+         public <T> T a(ka<? extends T> $$0) {
+            return (T)this.c.get($$0);
+         }
 
-   public static record a(String a, Map<cuc, jx> b) {
+         @Override
+         public boolean b(ka<?> $$0) {
+            return this.c.containsKey($$0);
+         }
+
+         @Override
+         public Set<ka<?>> b() {
+            return this.c.keySet();
+         }
+
+         @Override
+         public Iterator<kd<?>> iterator() {
+            return Iterators.transform(Reference2ObjectMaps.fastIterator(this.c), kd::a);
+         }
+
+         @Override
+         public int d() {
+            return this.c.size();
+         }
+
+         @Override
+         public String toString() {
+            return this.c.toString();
+         }
+
+         public Reference2ObjectMap<ka<?>, Object> f() {
+            return this.c;
+         }
+      }
    }
 }

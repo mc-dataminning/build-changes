@@ -1,45 +1,36 @@
-public class gbr extends gdu {
-   private final gdp a;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-   gbr(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public class gbr implements bnt {
+   private final gci a;
+   private final Set<bnr> b = new ObjectOpenHashSet();
+   private final bnz c = new bnz();
+
+   public gbr(LongSupplier $$0, gci $$1) {
+      this.a = $$1;
+      this.b.add(boa.a($$0));
+      this.a();
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+   private void a() {
+      this.b.addAll(boa.a());
+      this.b.add(bnr.a("totalChunks", bnq.f, this.a, gci::i));
+      this.b.add(bnr.a("renderedChunks", bnq.f, this.a, gci::k));
+      this.b.add(bnr.a("lastViewDistance", bnq.f, this.a, gci::j));
+      gfk $$0 = this.a.h();
+      this.b.add(bnr.a("toUpload", bnq.g, $$0, gfk::c));
+      this.b.add(bnr.a("freeBufferCount", bnq.g, $$0, gfk::d));
+      this.b.add(bnr.a("toBatchCount", bnq.g, $$0, gfk::b));
+      if (eyn.a().isPresent()) {
+         this.b.add(bnr.a("gpuUtilization", bnq.i, feb.Q(), feb::v));
       }
    }
 
    @Override
-   public gcy b() {
-      return gcy.b;
-   }
-
-   public static class a implements gcx<le> {
-      private final gdp a;
-
-      public a(gdp $$0) {
-         this.a = $$0;
-      }
-
-      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public Set<bnr> a(Supplier<bmi> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

@@ -1,4 +1,9 @@
-import java.nio.file.Path;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public record ewl(Path a, Path b) {
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface ewl {
 }

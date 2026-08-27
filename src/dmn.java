@@ -1,149 +1,159 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dmn extends dfl implements dff, dmr {
-   public static final MapCodec<dmn> a = b(dmn::new);
-   public static final int b = 4;
-   public static final duc c = dts.aS;
-   public static final dtt d = dts.C;
-   protected static final exn e = dfc.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
-   protected static final exn f = dfc.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
-   protected static final exn g = dfc.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
-   protected static final exn h = dfc.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
+public class dmn extends dhw implements dlb {
+   public static final MapCodec<dmn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(drs.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.m), u()).apply($$0, dmn::new)
+   );
+   public static final dru b = drt.u;
+   public static final dsb<dsc> c = drt.af;
+   public static final dru d = drt.w;
+   public static final dru e = drt.C;
+   protected static final int f = 3;
+   protected static final evf g = dea.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final evf h = dea.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final evf i = dea.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final evf j = dea.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final evf k = dea.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0);
+   protected static final evf l = dea.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private final drs m;
 
    @Override
-   public MapCodec<dmn> a() {
+   public MapCodec<? extends dmn> a() {
       return a;
    }
 
-   protected dmn(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)).a(d, Boolean.valueOf(true)));
+   protected dmn(drs $$0, drc.d $$1) {
+      super($$1.a($$0.g()));
+      this.m = $$0;
+      this.k(this.E.b().a(aE, it.c).a(b, Boolean.valueOf(false)).a(c, dsc.b).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
-   @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      if (!$$0.c(b)) {
+         return $$0.c(c) == dsc.a ? l : k;
       } else {
-         epe $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == epf.c;
-         return super.a($$0).a(d, Boolean.valueOf($$3));
-      }
-   }
-
-   public static boolean m(dtc $$0) {
-      return !$$0.c(d);
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
-      return !$$0.k($$1, $$2).a(iw.b).c() || $$0.d($$1, $$2, iw.b);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.d();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dfe.a.n();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
+         switch ((it)$$0.c(aE)) {
+            case c:
+            default:
+               return j;
+            case d:
+               return i;
+            case e:
+               return h;
+            case f:
+               return g;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   protected boolean a(dtc $$0, cyd $$1) {
-      return !$$1.h() && $$1.n().a(this.q()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      switch ($$0.c(c)) {
-         case 1:
+   protected boolean a(drd $$0, enl $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return $$0.c(e);
+         case c:
+            return $$0.c(b);
          default:
-            return e;
-         case 2:
-            return f;
-         case 3:
-            return g;
-         case 4:
-            return h;
+            return false;
       }
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if (!this.m.c()) {
+         return bpw.d;
+      } else {
+         this.b($$0, $$1, $$2, $$3);
+         return bpw.a($$1.B);
+      }
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(c, d);
+   protected void a(drd $$0, daz $$1, io $$2, dar $$3, BiConsumer<ctq, io> $$4) {
+      if ($$3.j() == dar.a.d && !$$1.x_() && this.m.d() && !$$0.c(d)) {
+         this.b($$0, $$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private void b(drd $$0, daz $$1, io $$2, @Nullable cly $$3) {
+      drd $$4 = $$0.a(b);
+      $$1.a($$2, $$4, 2);
+      if ($$4.c(e)) {
+         $$1.a($$2, emx.c, emx.c.a((dbc)$$1));
+      }
+
+      this.a($$3, $$1, $$2, $$4.c(b));
+   }
+
+   protected void a(@Nullable cly $$0, daz $$1, io $$2, boolean $$3) {
+      $$1.a($$0, $$2, $$3 ? this.m.k() : this.m.j(), avj.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
+      $$1.a($$0, $$3 ? dvw.h : dvw.d, $$2);
    }
 
    @Override
-   public boolean b(dcd $$0, ir $$1, dtc $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
-      if (!m($$3) && $$0.a_($$2.d()).a(awe.ar)) {
-         int $$4 = 5;
-         int $$5 = 1;
-         int $$6 = 2;
-         int $$7 = 0;
-         int $$8 = $$2.u() - 2;
-         int $$9 = 0;
-
-         for (int $$10 = 0; $$10 < 5; $$10++) {
-            for (int $$11 = 0; $$11 < $$5; $$11++) {
-               int $$12 = 2 + $$2.v() - 1;
-
-               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
-                  ir $$14 = new ir($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
-                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dfe.al)) {
-                     dtc $$15 = $$0.a_($$14.d());
-                     if ($$15.a(awe.ar)) {
-                        $$0.a($$14, dfe.nT.n().a(c, Integer.valueOf($$1.a(4) + 1)), 3);
-                     }
-                  }
-               }
+   protected void a(drd $$0, daz $$1, io $$2, dea $$3, io $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(d)) {
+            if ($$0.c(b) != $$6) {
+               $$0 = $$0.a(b, Boolean.valueOf($$6));
+               this.a(null, $$1, $$2, $$6);
             }
 
-            if ($$7 < 2) {
-               $$5 += 2;
-               $$9++;
-            } else {
-               $$5 -= 2;
-               $$9--;
+            $$1.a($$2, $$0.a(d, Boolean.valueOf($$6)), 2);
+            if ($$0.c(e)) {
+               $$1.a($$2, emx.c, emx.c.a((dbc)$$1));
             }
-
-            $$7++;
          }
-
-         $$0.a($$2, $$3.a(c, Integer.valueOf(4)), 2);
       }
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   public drd a(cxb $$0) {
+      drd $$1 = this.n();
+      emw $$2 = $$0.q().b_($$0.a());
+      it $$3 = $$0.k();
+      if (!$$0.c() && $$3.o().d()) {
+         $$1 = $$1.a(aE, $$3).a(c, $$0.l().d - (double)$$0.a().v() > 0.5 ? dsc.a : dsc.b);
+      } else {
+         $$1 = $$1.a(aE, $$0.g().g()).a(c, $$3 == it.b ? dsc.b : dsc.a);
+      }
+
+      if ($$0.q().C($$0.a())) {
+         $$1 = $$1.a(b, Boolean.valueOf(true)).a(d, Boolean.valueOf(true));
+      }
+
+      return $$1.a(e, Boolean.valueOf($$2.a() == emx.c));
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(aE, b, c, d, e);
+   }
+
+   @Override
+   protected emw b_(drd $$0) {
+      return $$0.c(e) ? emx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected drs m() {
+      return this.m;
    }
 }

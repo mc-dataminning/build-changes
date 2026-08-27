@@ -1,73 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ect extends eca<eep> {
-   public ect(Codec<eep> $$0) {
-      super($$0);
-   }
+public class ect implements ecd {
+   public static final Codec<ect> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egp.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               awm.b(lf.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               eee.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               eee.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               dyc.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+            )
+            .apply($$0, ect::new)
+   );
+   public final ix<egp> b;
+   public final int c;
+   public final int d;
+   public final awm<dea> e;
+   public final eee f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final eee k;
+   public final int l;
+   public final int n;
+   public final dyc o;
 
-   @Override
-   public boolean a(ecc<eep> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      ayt $$3 = $$0.d();
-      eep $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<iw> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ir.a $$6 = $$2.j();
-
-            for (iw $$7 : $$5) {
-               $$6.g($$2);
-               List<iw> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dtc $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(dcv $$0, ir $$1, dtc $$2, eep $$3, ayt $$4, List<iw> $$5) {
-      ir.a $$6 = $$1.j();
-
-      for (iw $$7 : $$5) {
-         dtc $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dtc $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean c(dtc $$0) {
-      return $$0.i() || $$0.a(dfe.al);
+   public ect(ix<egp> $$0, int $$1, int $$2, awm<dea> $$3, eee $$4, int $$5, int $$6, int $$7, int $$8, eee $$9, int $$10, int $$11, dyc $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

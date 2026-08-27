@@ -1,37 +1,58 @@
-public class fup extends fwd<chw> {
-   public fup(fys $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableList;
+
+public class fup<T extends cjk> extends fto<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+
+   public fup(fvw $$0) {
+      super(gcs::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fyy a(fyw $$0) {
-      fza $$1 = fwd.a($$0, 0.0F);
-      fzb $$2 = $$1.a();
-      $$2.a("head", fyx.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fyu.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fyx.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fyu.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fyx.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyu.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fyx.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyu.a(1.9F, 11.0F, 0.0F));
-      return fyy.a($$1, 64, 32);
+   public static fwc a() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("lid", fwb.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fvy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fwb.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fvy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fwb.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fvy.a(0.0F, 12.0F, 0.0F));
+      return fwc.a($$0, 64, 64);
    }
 
-   public void a(chw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.F().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.F().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.F().d();
-      this.l.a(this.k);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + ayf.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = ayf.a($$3 * 0.1F) * 0.7F;
+      }
+
+      this.g.a(0.0F, 16.0F + ayf.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.G($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.ba - 180.0F - $$0.aY) * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public Iterable<fvw> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fvw b() {
+      return this.g;
+   }
+
+   public fvw c() {
+      return this.h;
    }
 }

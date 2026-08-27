@@ -1,18 +1,8 @@
-import java.util.function.Function;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class fwi<E extends brv> extends fvq<E> {
-   public fwi() {
-      this(gfo::e);
-   }
-
-   public fwi(Function<akt, gfo> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(fbc $$0, fbg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-   }
-
-   public abstract Iterable<fys> d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fwi {
 }

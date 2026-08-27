@@ -1,76 +1,89 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
 
-public class djn extends dfc implements dmr {
+public class djn extends dej implements ded {
    public static final MapCodec<djn> a = b(djn::new);
-   public static final dtt b = dts.j;
-   public static final dtt c = dts.C;
-   protected static final exn d = exk.a(dfc.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dfc.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final exn e = exk.a(dfc.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dfc.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final drx d = drt.R;
+   public static final dsd e = drt.S;
+   private static final BiFunction<it, Integer, evf> f = ac.a(
+      ($$0, $$1) -> {
+         evf[] $$2 = new evf[]{
+            dea.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dea.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dea.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dea.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         evf $$3 = evc.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = evc.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
    public MapCodec<djn> a() {
       return a;
    }
 
-   public djn(dtb.d $$0) {
+   protected djn(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, it.c).a(e, Integer.valueOf(1)));
    }
 
-   @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
+   public drd a(drd $$0, dkn $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
 
-      for (iw $$2 : $$0.f()) {
-         if ($$2.o() == iw.a.b) {
-            dtc $$3 = this.n().a(b, Boolean.valueOf($$2 == iw.b));
-            if ($$3.a((dcd)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == epf.c));
-            }
-         }
+   @Override
+   public drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   public boolean a(drd $$0, cxb $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public drd a(cxb $$0) {
+      drd $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.n().a(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new ctq(this));
       }
-
-      return null;
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      iw $$3 = m($$0).g();
-      return dfc.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static iw m(dtc $$0) {
-      return $$0.c(b) ? iw.a : iw.b;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
-      }
-
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
    }
 }

@@ -1,127 +1,137 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.playsound.failed"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<eh> $$0) {
-      RequiredArgumentBuilder<eh, akt> $$1 = (RequiredArgumentBuilder<eh, akt>)ei.a("sound", fi.a())
-         .suggests(ig.c)
-         .executes($$0x -> a((eh)$$0x.getSource(), a(((eh)$$0x.getSource()).i()), fi.c($$0x, "sound"), avq.a, ((eh)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
-
-      for (avq $$2 : avq.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<ee> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ee)$$0x.getSource(), 0, true)))
+            .then(
+               ((RequiredArgumentBuilder)ef.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+                  .then(
+                     ef.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
+                  )
+            )
+      );
    }
 
-   private static LiteralArgumentBuilder<eh> a(avq $$0) {
-      return (LiteralArgumentBuilder<eh>)((LiteralArgumentBuilder)ei.a($$0.a())
-            .executes($$1 -> a((eh)$$1.getSource(), a(((eh)$$1.getSource()).i()), fi.c($$1, "sound"), $$0, ((eh)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-         .then(
-            ((RequiredArgumentBuilder)ei.a("targets", eu.d())
-                  .executes($$1 -> a((eh)$$1.getSource(), eu.f($$1, "targets"), fi.c($$1, "sound"), $$0, ((eh)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)ei.a("pos", gk.a())
-                        .executes($$1 -> a((eh)$$1.getSource(), eu.f($$1, "targets"), fi.c($$1, "sound"), $$0, gk.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
-                     .then(
-                        ((RequiredArgumentBuilder)ei.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (eh)$$1.getSource(),
-                                       eu.f($$1, "targets"),
-                                       fi.c($$1, "sound"),
-                                       $$0,
-                                       gk.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
-                                    )
-                              ))
-                           .then(
-                              ((RequiredArgumentBuilder)ei.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (eh)$$1.getSource(),
-                                             eu.f($$1, "targets"),
-                                             fi.c($$1, "sound"),
-                                             $$0,
-                                             gk.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
-                                          )
-                                    ))
-                                 .then(
-                                    ei.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          $$1 -> a(
-                                                (eh)$$1.getSource(),
-                                                eu.f($$1, "targets"),
-                                                fi.c($$1, "sound"),
-                                                $$0,
-                                                gk.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
-                                       )
-                                 )
-                           )
-                     )
-               )
-         );
-   }
+   private static int a(ee $$0, int $$1, boolean $$2) {
+      aqn $$3 = $$0.e();
+      aql $$4 = $$3.l();
+      $$4.a.d();
+      eum $$5 = $$0.d();
+      dag $$6 = new dag(io.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
 
-   private static Collection<aqu> a(@Nullable aqu $$0) {
-      return $$0 != null ? List.of($$0) : List.of();
-   }
-
-   private static int a(eh $$0, Collection<aqu> $$1, akt $$2, avq $$3, ewu $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      ja<avn> $$8 = ja.a(avn.a($$2));
-      double $$9 = (double)aym.k($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.e().F_().g();
-
-      for (aqu $$12 : $$1) {
-         double $$13 = $$4.c - $$12.dz();
-         double $$14 = $$4.d - $$12.dB();
-         double $$15 = $$4.e - $$12.dF();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ewu $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            dag $$13 = new dag($$12, $$11);
+            dtj $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (io $$15 : io.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.al() - 1, $$13.g())) {
+                  $$3.a($$15, dec.a.n(), 16);
+               }
             }
-
-            double $$19 = Math.sqrt($$16);
-            $$17 = new ewu($$12.dz() + $$13 / $$19 * 2.0, $$12.dB() + $$14 / $$19 * 2.0, $$12.dF() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
          }
-
-         $$12.d.b(new afr($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
       }
 
-      if ($$10 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xe.a("commands.playsound.success.single", xe.a($$2), $$1.iterator().next().P_()), true);
-         } else {
-            $$0.a(() -> xe.a("commands.playsound.success.multiple", xe.a($$2), $$1.size()), true);
+      bop<Runnable> $$16 = bop.a(ac.g(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var34 = ImmutableList.of(dty.f, dty.g, dty.h, dty.i, dty.j, dty.k).iterator();
+
+      while (var34.hasNext()) {
+         dty $$19 = (dty)var34.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+         duc $$22 = new duc($$3, $$4.g(), $$3.q(), $$4.a());
+
+         for (int $$23 = $$6.f - $$1; $$23 <= $$6.f + $$1; $$23++) {
+            for (int $$24 = $$6.e - $$1; $$24 <= $$6.e + $$1; $$24++) {
+               dag $$25 = new dag($$24, $$23);
+               dtj $$26 = $$4.a($$24, $$23, false);
+               if ($$26 != null && (!$$2 || !$$26.s())) {
+                  List<dsz> $$27 = Lists.newArrayList();
+                  int $$28 = Math.max(1, $$19.e());
+
+                  for (int $$29 = $$25.f - $$28; $$29 <= $$25.f + $$28; $$29++) {
+                     for (int $$30 = $$25.e - $$28; $$30 <= $$25.e + $$28; $$30++) {
+                        dsz $$31 = $$4.a($$30, $$29, $$19.d(), true);
+                        dsz $$32;
+                        if ($$31 instanceof dti) {
+                           $$32 = new dti(((dti)$$31).C(), true);
+                        } else if ($$31 instanceof dtj) {
+                           $$32 = new dti((dtj)$$31, true);
+                        } else {
+                           $$32 = $$31;
+                        }
+
+                        $$27.add($$32);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$4x -> $$19.a($$22, $$16::a, $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$27).thenApply($$1xx -> {
+                        if ($$19 == dty.g) {
+                           dwv.a($$1xx, dty.b);
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
          }
 
-         return $$10;
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
       }
+
+      long $$35 = System.currentTimeMillis();
+
+      for (int $$36 = $$6.f - $$1; $$36 <= $$6.f + $$1; $$36++) {
+         for (int $$37 = $$6.e - $$1; $$37 <= $$6.e + $$1; $$37++) {
+            dag $$38 = new dag($$37, $$36);
+            dtj $$39 = $$4.a($$37, $$36, false);
+            if ($$39 != null && (!$$2 || !$$39.s())) {
+               for (io $$40 : io.b($$38.d(), $$3.I_(), $$38.e(), $$38.f(), $$3.al() - 1, $$38.g())) {
+                  $$4.a($$40);
+               }
+            }
+         }
+      }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$35) + " ms");
+      long $$41 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> wx.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$41, $$18, (float)$$41 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

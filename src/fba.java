@@ -1,30 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class fba {
-   public static final fbi a = new fbi(0, fbi.a.a, fbi.b.a, 3);
-   public static final fbi b = new fbi(0, fbi.a.b, fbi.b.c, 4);
-   public static final fbi c = new fbi(0, fbi.a.a, fbi.b.d, 2);
-   public static final fbi d = new fbi(1, fbi.a.e, fbi.b.d, 2);
-   public static final fbi e = new fbi(2, fbi.a.e, fbi.b.d, 2);
-   public static final fbi f = new fbi(0, fbi.a.c, fbi.b.b, 3);
-   public static final fbi g = new fbi(0, fbi.a.c, fbi.b.e, 1);
-   public static final fbi h = c;
-   public static final fbh i = new fbh(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final fbh j = new fbh(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final fbh k = new fbh(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final fbh l = new fbh(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final fbh m = new fbh(ImmutableMap.builder().put("Position", a).build());
-   public static final fbh n = new fbh(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final fbh o = new fbh(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final fbh p = new fbh(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final fbh q = new fbh(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final fbh r = new fbh(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final fbh s = new fbh(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final fbh t = new fbh(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final fbh u = new fbh(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final fbh v = new fbh(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public final fcj a = new fcj(ac.h(), TimeUnit.MILLISECONDS, ac.c);
+   private final List<fcj.e<?>> h;
+   public final fcj.e<List<faa>> b;
+   public final fcj.e<fba.a> c;
+   public final fcj.e<Integer> d;
+   public final fcj.e<Boolean> e;
+   public final fcj.e<ezz> f;
+   public final fbb g = new fbb(new fcp());
+
+   public fba(ezk $$0) {
+      this.c = this.a.a("server list", () -> {
+         fad $$1 = $$0.b();
+         return ezf.b() ? new fba.a($$1.a, $$0.c()) : new fba.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fck.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fck.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fck.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fck.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fck.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public List<fcj.e<?>> a() {
+      return this.h;
+   }
+
+   public static record a(List<fab> a, List<fab> b) {
+   }
 }

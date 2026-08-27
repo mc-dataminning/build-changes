@@ -1,27 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
-
-public record cxy(boolean c) implements cxx {
-   public static final Codec<cxy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cxy::a)).apply($$0, cxy::new)
-   );
-   public static final zc<ByteBuf, cxy> b = za.b.a(cxy::new, cxy::a);
-   private static final xe d = xe.c("item.unbreakable").a(n.j);
+public record cxy<T extends cxw<?>>(akn b, T c) {
+   public static final yv<wi, cxy<?>> a = yv.a(akn.b, cxy::a, cxw.i, cxy::b, cxy::new);
 
    @Override
-   public void a(Consumer<xe> $$0, cwi $$1) {
-      if (this.c) {
-         $$0.accept(d);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxy<?> $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public cxy a(boolean $$0) {
-      return new cxy($$0);
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   public boolean a() {
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public akn a() {
+      return this.b;
+   }
+
+   public T b() {
       return this.c;
    }
 }

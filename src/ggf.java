@@ -1,49 +1,45 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class ggf {
-   public static final int a = -1;
-   public final iw b;
-   public final int c;
-   public final String d;
-   public final ggh e;
+public class ggf implements gfw.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final feb c;
+   private Collection<io> d = Lists.newArrayList();
 
-   public ggf(@Nullable iw $$0, int $$1, String $$2, ggh $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public ggf(feb $$0) {
+      this.c = $$0;
    }
 
-   protected static class a implements JsonDeserializer<ggf> {
-      private static final int a = -1;
+   public void a(Collection<io> $$0) {
+      this.d = $$0;
+   }
 
-      public ggf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         iw $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         ggh $$7 = (ggh)$$2.deserialize($$3, ggh.class);
-         return new ggf($$4, $$5, $$6, $$7);
-      }
+   @Override
+   public void a(eyu $$0, gck $$1, double $$2, double $$3, double $$4) {
+      io $$5 = this.b().c();
 
-      protected int a(JsonObject $$0) {
-         return ayc.a($$0, "tintindex", -1);
+      for (io $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
       }
+   }
 
-      private String b(JsonObject $$0) {
-         return ayc.i($$0, "texture");
-      }
+   private static void a(eyu $$0, gck $$1, io $$2) {
+      gfw.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
 
-      @Nullable
-      private iw c(JsonObject $$0) {
-         String $$1 = ayc.a($$0, "cullface", "");
-         return iw.a($$1);
-      }
+   private static void a(eyu $$0, gck $$1, String $$2, io $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gfw.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fdm b() {
+      return this.c.j.m();
    }
 }

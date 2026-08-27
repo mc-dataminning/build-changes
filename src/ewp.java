@@ -1,386 +1,376 @@
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.nio.IntBuffer;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.OptionalLong;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALC10;
+import org.lwjgl.openal.ALC11;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import org.lwjgl.openal.ALUtil;
+import org.lwjgl.openal.SOFTHRTF;
+import org.lwjgl.system.MemoryStack;
+import org.slf4j.Logger;
 
 public class ewp {
-   private static final double g = 1.0E-7;
-   public final double a;
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
-   public final double f;
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 0;
+   private static final int c = 30;
+   private long d;
+   private long e;
+   private boolean f;
+   @Nullable
+   private String g;
+   private static final ewp.a h = new ewp.a() {
+      @Nullable
+      @Override
+      public ewo a() {
+         return null;
+      }
 
-   public ewp(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this.a = Math.min($$0, $$3);
-      this.b = Math.min($$1, $$4);
-      this.c = Math.min($$2, $$5);
-      this.d = Math.max($$0, $$3);
-      this.e = Math.max($$1, $$4);
-      this.f = Math.max($$2, $$5);
-   }
-
-   public ewp(ir $$0) {
-      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
-   }
-
-   public ewp(ewu $$0, ewu $$1) {
-      this($$0.c, $$0.d, $$0.e, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static ewp a(ejl $$0) {
-      return new ewp((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
-   }
-
-   public static ewp a(ewu $$0) {
-      return new ewp($$0.c, $$0.d, $$0.e, $$0.c + 1.0, $$0.d + 1.0, $$0.e + 1.0);
-   }
-
-   public static ewp a(ir $$0, ir $$1) {
-      return new ewp(
-         (double)Math.min($$0.u(), $$1.u()),
-         (double)Math.min($$0.v(), $$1.v()),
-         (double)Math.min($$0.w(), $$1.w()),
-         (double)(Math.max($$0.u(), $$1.u()) + 1),
-         (double)(Math.max($$0.v(), $$1.v()) + 1),
-         (double)(Math.max($$0.w(), $$1.w()) + 1)
-      );
-   }
-
-   public ewp a(double $$0) {
-      return new ewp($$0, this.b, this.c, this.d, this.e, this.f);
-   }
-
-   public ewp b(double $$0) {
-      return new ewp(this.a, $$0, this.c, this.d, this.e, this.f);
-   }
-
-   public ewp c(double $$0) {
-      return new ewp(this.a, this.b, $$0, this.d, this.e, this.f);
-   }
-
-   public ewp d(double $$0) {
-      return new ewp(this.a, this.b, this.c, $$0, this.e, this.f);
-   }
-
-   public ewp e(double $$0) {
-      return new ewp(this.a, this.b, this.c, this.d, $$0, this.f);
-   }
-
-   public ewp f(double $$0) {
-      return new ewp(this.a, this.b, this.c, this.d, this.e, $$0);
-   }
-
-   public double a(iw.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   public double b(iw.a $$0) {
-      return $$0.a(this.d, this.e, this.f);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof ewp $$1)) {
+      @Override
+      public boolean a(ewo $$0) {
          return false;
-      } else if (Double.compare($$1.a, this.a) != 0) {
-         return false;
-      } else if (Double.compare($$1.b, this.b) != 0) {
-         return false;
-      } else if (Double.compare($$1.c, this.c) != 0) {
-         return false;
-      } else if (Double.compare($$1.d, this.d) != 0) {
-         return false;
+      }
+
+      @Override
+      public void b() {
+      }
+
+      @Override
+      public int c() {
+         return 0;
+      }
+
+      @Override
+      public int d() {
+         return 0;
+      }
+   };
+   private ewp.a i = h;
+   private ewp.a j = h;
+   private final ewq k = new ewq();
+
+   public ewp() {
+      this.g = a();
+   }
+
+   public void a(@Nullable String $$0, boolean $$1) {
+      this.d = a($$0);
+      this.f = false;
+      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
+      if (ewt.a(this.d, "Get capabilities")) {
+         throw new IllegalStateException("Failed to get OpenAL capabilities");
+      } else if (!$$2.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
       } else {
-         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
+         this.a($$2.ALC_SOFT_HRTF && $$1);
+         MemoryStack $$3 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
+            this.e = ALC10.alcCreateContext(this.d, $$4);
+         } catch (Throwable var9) {
+            if ($$3 != null) {
+               try {
+                  $$3.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$3 != null) {
+            $$3.close();
+         }
+
+         if (ewt.a(this.d, "Create context")) {
+            throw new IllegalStateException("Unable to create OpenAL context");
+         } else {
+            ALC10.alcMakeContextCurrent(this.e);
+            int $$5 = this.i();
+            int $$6 = ayf.a((int)ayf.c((float)$$5), 2, 8);
+            int $$7 = ayf.a($$5 - $$6, 8, 255);
+            this.i = new ewp.b($$7);
+            this.j = new ewp.b($$6);
+            ALCapabilities $$8 = AL.createCapabilities($$2);
+            ewt.a("Initialization");
+            if (!$$8.AL_EXT_source_distance_model) {
+               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+            } else {
+               AL10.alEnable(512);
+               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
+                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+               } else {
+                  ewt.a("Enable per-source distance models");
+                  a.info("OpenAL initialized on device {}", this.b());
+                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.a);
-      int $$1 = (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.b);
-      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.c);
-      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.d);
-      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.e);
-      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.f);
-      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   private void a(boolean $$0) {
+      int $$1 = ALC10.alcGetInteger(this.d, 6548);
+      if ($$1 > 0) {
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
+            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
+               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
+            }
+         } catch (Throwable var7) {
+            if ($$2 != null) {
+               try {
+                  $$2.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+            }
+
+            throw var7;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+      }
    }
 
-   public ewp a(double $$0, double $$1, double $$2) {
-      double $$3 = this.a;
-      double $$4 = this.b;
-      double $$5 = this.c;
-      double $$6 = this.d;
-      double $$7 = this.e;
-      double $$8 = this.f;
-      if ($$0 < 0.0) {
-         $$3 -= $$0;
-      } else if ($$0 > 0.0) {
-         $$6 -= $$0;
+   private int i() {
+      MemoryStack $$0 = MemoryStack.stackPush();
+
+      int var7;
+      label58: {
+         try {
+            int $$1 = ALC10.alcGetInteger(this.d, 4098);
+            if (ewt.a(this.d, "Get attributes size")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            IntBuffer $$2 = $$0.mallocInt($$1);
+            ALC10.alcGetIntegerv(this.d, 4099, $$2);
+            if (ewt.a(this.d, "Get attributes")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            int $$3 = 0;
+
+            while ($$3 < $$1) {
+               int $$4 = $$2.get($$3++);
+               if ($$4 == 0) {
+                  break;
+               }
+
+               int $$5 = $$2.get($$3++);
+               if ($$4 == 4112) {
+                  var7 = $$5;
+                  break label58;
+               }
+            }
+         } catch (Throwable var9) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return 30;
       }
 
-      if ($$1 < 0.0) {
-         $$4 -= $$1;
-      } else if ($$1 > 0.0) {
-         $$7 -= $$1;
+      if ($$0 != null) {
+         $$0.close();
       }
 
-      if ($$2 < 0.0) {
-         $$5 -= $$2;
-      } else if ($$2 > 0.0) {
-         $$8 -= $$2;
-      }
-
-      return new ewp($$3, $$4, $$5, $$6, $$7, $$8);
-   }
-
-   public ewp b(ewu $$0) {
-      return this.b($$0.c, $$0.d, $$0.e);
-   }
-
-   public ewp b(double $$0, double $$1, double $$2) {
-      double $$3 = this.a;
-      double $$4 = this.b;
-      double $$5 = this.c;
-      double $$6 = this.d;
-      double $$7 = this.e;
-      double $$8 = this.f;
-      if ($$0 < 0.0) {
-         $$3 += $$0;
-      } else if ($$0 > 0.0) {
-         $$6 += $$0;
-      }
-
-      if ($$1 < 0.0) {
-         $$4 += $$1;
-      } else if ($$1 > 0.0) {
-         $$7 += $$1;
-      }
-
-      if ($$2 < 0.0) {
-         $$5 += $$2;
-      } else if ($$2 > 0.0) {
-         $$8 += $$2;
-      }
-
-      return new ewp($$3, $$4, $$5, $$6, $$7, $$8);
-   }
-
-   public ewp c(double $$0, double $$1, double $$2) {
-      double $$3 = this.a - $$0;
-      double $$4 = this.b - $$1;
-      double $$5 = this.c - $$2;
-      double $$6 = this.d + $$0;
-      double $$7 = this.e + $$1;
-      double $$8 = this.f + $$2;
-      return new ewp($$3, $$4, $$5, $$6, $$7, $$8);
-   }
-
-   public ewp g(double $$0) {
-      return this.c($$0, $$0, $$0);
-   }
-
-   public ewp a(ewp $$0) {
-      double $$1 = Math.max(this.a, $$0.a);
-      double $$2 = Math.max(this.b, $$0.b);
-      double $$3 = Math.max(this.c, $$0.c);
-      double $$4 = Math.min(this.d, $$0.d);
-      double $$5 = Math.min(this.e, $$0.e);
-      double $$6 = Math.min(this.f, $$0.f);
-      return new ewp($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public ewp b(ewp $$0) {
-      double $$1 = Math.min(this.a, $$0.a);
-      double $$2 = Math.min(this.b, $$0.b);
-      double $$3 = Math.min(this.c, $$0.c);
-      double $$4 = Math.max(this.d, $$0.d);
-      double $$5 = Math.max(this.e, $$0.e);
-      double $$6 = Math.max(this.f, $$0.f);
-      return new ewp($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public ewp d(double $$0, double $$1, double $$2) {
-      return new ewp(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
-   }
-
-   public ewp a(ir $$0) {
-      return new ewp(
-         this.a + (double)$$0.u(),
-         this.b + (double)$$0.v(),
-         this.c + (double)$$0.w(),
-         this.d + (double)$$0.u(),
-         this.e + (double)$$0.v(),
-         this.f + (double)$$0.w()
-      );
-   }
-
-   public ewp c(ewu $$0) {
-      return this.d($$0.c, $$0.d, $$0.e);
-   }
-
-   public boolean c(ewp $$0) {
-      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
-   }
-
-   public boolean a(ewu $$0, ewu $$1) {
-      return this.a(
-         Math.min($$0.c, $$1.c), Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.max($$0.c, $$1.c), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e)
-      );
-   }
-
-   public boolean d(ewu $$0) {
-      return this.e($$0.c, $$0.d, $$0.e);
-   }
-
-   public boolean e(double $$0, double $$1, double $$2) {
-      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
-   }
-
-   public double a() {
-      double $$0 = this.b();
-      double $$1 = this.c();
-      double $$2 = this.d();
-      return ($$0 + $$1 + $$2) / 3.0;
-   }
-
-   public double b() {
-      return this.d - this.a;
-   }
-
-   public double c() {
-      return this.e - this.b;
-   }
-
-   public double d() {
-      return this.f - this.c;
-   }
-
-   public ewp f(double $$0, double $$1, double $$2) {
-      return this.c(-$$0, -$$1, -$$2);
-   }
-
-   public ewp h(double $$0) {
-      return this.g(-$$0);
-   }
-
-   public Optional<ewu> b(ewu $$0, ewu $$1) {
-      double[] $$2 = new double[]{1.0};
-      double $$3 = $$1.c - $$0.c;
-      double $$4 = $$1.d - $$0.d;
-      double $$5 = $$1.e - $$0.e;
-      iw $$6 = a(this, $$0, $$2, null, $$3, $$4, $$5);
-      if ($$6 == null) {
-         return Optional.empty();
-      } else {
-         double $$7 = $$2[0];
-         return Optional.of($$0.b($$7 * $$3, $$7 * $$4, $$7 * $$5));
-      }
+      return var7;
    }
 
    @Nullable
-   public static ewq a(Iterable<ewp> $$0, ewu $$1, ewu $$2, ir $$3) {
-      double[] $$4 = new double[]{1.0};
-      iw $$5 = null;
-      double $$6 = $$2.c - $$1.c;
-      double $$7 = $$2.d - $$1.d;
-      double $$8 = $$2.e - $$1.e;
-
-      for (ewp $$9 : $$0) {
-         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
-      }
-
-      if ($$5 == null) {
+   public static String a() {
+      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
          return null;
       } else {
-         double $$10 = $$4[0];
-         return new ewq($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+         ALUtil.getStringList(0L, 4115);
+         return ALC10.alcGetString(0L, 4114);
       }
    }
 
-   @Nullable
-   private static iw a(ewp $$0, ewu $$1, double[] $$2, @Nullable iw $$3, double $$4, double $$5, double $$6) {
-      if ($$4 > 1.0E-7) {
-         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.a, $$0.b, $$0.e, $$0.c, $$0.f, iw.e, $$1.c, $$1.d, $$1.e);
-      } else if ($$4 < -1.0E-7) {
-         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.d, $$0.b, $$0.e, $$0.c, $$0.f, iw.f, $$1.c, $$1.d, $$1.e);
+   public String b() {
+      String $$0 = ALC10.alcGetString(this.d, 4115);
+      if ($$0 == null) {
+         $$0 = ALC10.alcGetString(this.d, 4101);
       }
 
-      if ($$5 > 1.0E-7) {
-         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.b, $$0.c, $$0.f, $$0.a, $$0.d, iw.a, $$1.d, $$1.e, $$1.c);
-      } else if ($$5 < -1.0E-7) {
-         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.e, $$0.c, $$0.f, $$0.a, $$0.d, iw.b, $$1.d, $$1.e, $$1.c);
+      if ($$0 == null) {
+         $$0 = "Unknown";
       }
 
-      if ($$6 > 1.0E-7) {
-         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.c, $$0.a, $$0.d, $$0.b, $$0.e, iw.c, $$1.e, $$1.c, $$1.d);
-      } else if ($$6 < -1.0E-7) {
-         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.f, $$0.a, $$0.d, $$0.b, $$0.e, iw.d, $$1.e, $$1.c, $$1.d);
-      }
-
-      return $$3;
+      return $$0;
    }
 
-   @Nullable
-   private static iw a(
-      double[] $$0,
-      @Nullable iw $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      iw $$10,
-      double $$11,
-      double $$12,
-      double $$13
-   ) {
-      double $$14 = ($$5 - $$11) / $$2;
-      double $$15 = $$12 + $$14 * $$3;
-      double $$16 = $$13 + $$14 * $$4;
-      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
-         $$0[0] = $$14;
-         return $$10;
+   public synchronized boolean c() {
+      String $$0 = a();
+      if (Objects.equals(this.g, $$0)) {
+         return false;
       } else {
-         return $$1;
+         this.g = $$0;
+         return true;
       }
    }
 
-   public double e(ewu $$0) {
-      double $$1 = Math.max(Math.max(this.a - $$0.c, $$0.c - this.d), 0.0);
-      double $$2 = Math.max(Math.max(this.b - $$0.d, $$0.d - this.e), 0.0);
-      double $$3 = Math.max(Math.max(this.c - $$0.e, $$0.e - this.f), 0.0);
-      return aym.f($$1, $$2, $$3);
+   private static long a(@Nullable String $$0) {
+      OptionalLong $$1 = OptionalLong.empty();
+      if ($$0 != null) {
+         $$1 = b($$0);
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(a());
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(null);
+      }
+
+      if ($$1.isEmpty()) {
+         throw new IllegalStateException("Failed to open OpenAL device");
+      } else {
+         return $$1.getAsLong();
+      }
    }
 
-   @Override
-   public String toString() {
-      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
+   private static OptionalLong b(@Nullable String $$0) {
+      long $$1 = ALC10.alcOpenDevice($$0);
+      return $$1 != 0L && !ewt.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
    }
 
-   public boolean e() {
-      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   public void d() {
+      this.i.b();
+      this.j.b();
+      ALC10.alcDestroyContext(this.e);
+      if (this.d != 0L) {
+         ALC10.alcCloseDevice(this.d);
+      }
    }
 
-   public ewu f() {
-      return new ewu(aym.d(0.5, this.a, this.d), aym.d(0.5, this.b, this.e), aym.d(0.5, this.c, this.f));
+   public ewq e() {
+      return this.k;
    }
 
-   public static ewp a(ewu $$0, double $$1, double $$2, double $$3) {
-      return new ewp($$0.c - $$1 / 2.0, $$0.d - $$2 / 2.0, $$0.e - $$3 / 2.0, $$0.c + $$1 / 2.0, $$0.d + $$2 / 2.0, $$0.e + $$3 / 2.0);
+   @Nullable
+   public ewo a(ewp.c $$0) {
+      return ($$0 == ewp.c.b ? this.j : this.i).a();
+   }
+
+   public void a(ewo $$0) {
+      if (!this.i.a($$0) && !this.j.a($$0)) {
+         throw new IllegalStateException("Tried to release unknown channel");
+      }
+   }
+
+   public String f() {
+      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   }
+
+   public List<String> g() {
+      List<String> $$0 = ALUtil.getStringList(0L, 4115);
+      return $$0 == null ? Collections.emptyList() : $$0;
+   }
+
+   public boolean h() {
+      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+   }
+
+   interface a {
+      @Nullable
+      ewo a();
+
+      boolean a(ewo var1);
+
+      void b();
+
+      int c();
+
+      int d();
+   }
+
+   static class b implements ewp.a {
+      private final int a;
+      private final Set<ewo> b = Sets.newIdentityHashSet();
+
+      public b(int $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public ewo a() {
+         if (this.b.size() >= this.a) {
+            if (aa.aX) {
+               ewp.a.warn("Maximum sound pool size {} reached", this.a);
+            }
+
+            return null;
+         } else {
+            ewo $$0 = ewo.a();
+            if ($$0 != null) {
+               this.b.add($$0);
+            }
+
+            return $$0;
+         }
+      }
+
+      @Override
+      public boolean a(ewo $$0) {
+         if (!this.b.remove($$0)) {
+            return false;
+         } else {
+            $$0.b();
+            return true;
+         }
+      }
+
+      @Override
+      public void b() {
+         this.b.forEach(ewo::b);
+         this.b.clear();
+      }
+
+      @Override
+      public int c() {
+         return this.a;
+      }
+
+      @Override
+      public int d() {
+         return this.b.size();
+      }
+   }
+
+   public static enum c {
+      a,
+      b;
    }
 }

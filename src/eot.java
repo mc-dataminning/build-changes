@@ -1,154 +1,30 @@
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class eot implements eow {
-   public static final int b = 1;
-   protected final dcc c;
-   @Nullable
-   private final eov<?, ?> a;
-   @Nullable
-   private final eov<?, ?> d;
+public interface eot {
+   io a();
 
-   public eot(dvl $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new eom($$0) : null;
-      this.d = $$2 ? new eox($$0) : null;
-   }
+   float b();
 
-   @Override
-   public void a(ir $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
+   long c();
 
-      if (this.d != null) {
-         this.d.a($$0);
-      }
-   }
+   long d();
 
-   @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
-   }
+   boolean g();
 
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
+   boolean i();
 
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
+   void b(boolean var1);
 
-      return $$0;
-   }
+   boolean l();
 
-   @Override
-   public void a(jt $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
+   dav o();
 
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
+   bpt q();
 
-   @Override
-   public void a(dbh $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
+   boolean r();
 
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dbh $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public eor a(dcj $$0) {
-      if ($$0 == dcj.b) {
-         return (eor)(this.a == null ? eor.a.a : this.a);
-      } else {
-         return (eor)(this.d == null ? eor.a.a : this.d);
-      }
-   }
-
-   public String a(dcj $$0, jt $$1) {
-      if ($$0 == dcj.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
-
-      return "n/a";
-   }
-
-   public eos.b b(dcj $$0, jt $$1) {
-      if ($$0 == dcj.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return eos.b.a;
-   }
-
-   public void a(dcj $$0, jt $$1, @Nullable dvd $$2) {
-      if ($$0 == dcj.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(dbh $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
-   }
-
-   public int a(ir $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(jt $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.an() + 2;
-   }
-
-   public int d() {
-      return this.c.ao() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   default void a(p $$0, dbb $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

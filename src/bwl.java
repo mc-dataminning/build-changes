@@ -3,26 +3,20 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bwl {
-   private static final int a = 1;
-
-   public static buh<bsq> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static buh<bsq> a(Function<bso, Float> $$0) {
-      return bxt.a(
-         (Function<bxt.b<bsq>, ? extends App<bxt.c<bsq>, bxw<bsq>>>)($$1 -> $$1.group($$1.a(cbr.m), $$1.a(cbr.n), $$1.b(cbr.o), $$1.a(cbr.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bso $$9 = $$1.b($$4);
-                     Optional<cbt> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bui.a($$7, $$9, 1)) {
-                        $$2.b();
+   public static buk<bsq> a(bsc<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bxw.a(
+         (Function<bxw.b<bsq>, ? extends App<bxw.c<bsq>, bxz<bsq>>>)($$2x -> $$2x.group($$2x.a(cbu.n), $$2x.c(cbu.q), $$2x.b(cbu.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bsq> $$9 = $$2x.<cbw>b($$5).a($$3xx -> $$3xx.g((brw)$$7) <= (double)$$2 && $$0.equals($$3xx.ak()));
+                     if ($$9.isEmpty()) {
+                        return false;
                      } else {
-                        $$3.a(new bur($$9, true));
-                        $$2.a(new cbu(new bur($$9, false), $$0.apply($$7), 0));
+                        bsq $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new buu($$10, true));
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

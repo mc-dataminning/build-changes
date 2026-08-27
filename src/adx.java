@@ -1,88 +1,83 @@
-public class adx implements zl<abw> {
-   public static final zc<we, adx> a = zl.a(adx::a, adx::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
+import javax.annotation.Nullable;
+
+public class adx implements ze<abq> {
+   public static final yv<vx, adx> a = ze.a(adx::a, adx::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final eq.a f;
+   private final eq.a g;
    private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
 
-   public adx(clv $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
+   public adx(eq.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
    }
 
-   private adx(we $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
+   public adx(eq.a $$0, brw $$1, eq.a $$2) {
+      this.f = $$0;
+      this.e = $$1.al();
+      this.g = $$2;
+      eum $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
    }
 
-   private void a(we $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
+   private adx(vx $$0) {
+      this.f = $$0.b(eq.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
       if (this.h) {
-         $$1 = (byte)($$1 | 4);
+         this.e = $$0.l();
+         this.g = $$0.b(eq.a.class);
+      } else {
+         this.e = 0;
+         this.g = null;
       }
+   }
 
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
+   private void a(vx $$0) {
+      $$0.a(this.f);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
       }
-
-      $$0.k($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
    }
 
    @Override
-   public zn<adx> a() {
-      return agj.aa;
+   public zg<adx> a() {
+      return agc.ag;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public eq.a b() {
       return this.f;
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
+   @Nullable
+   public eum a(daz $$0) {
+      if (this.h) {
+         brw $$1 = $$0.a(this.e);
+         return $$1 == null ? new eum(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new eum(this.b, this.c, this.d);
+      }
    }
 }

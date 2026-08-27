@@ -1,11 +1,25 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public abstract class eje extends eja {
-   protected abstract int a(ayt var1, ir var2);
+public class eje extends ehl {
+   public static final MapCodec<eje> d = a(eje::new);
+
+   public eje(ehl.c $$0) {
+      super($$0);
+   }
 
    @Override
-   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   public Optional<ehl.b> a(ehl.a $$0) {
+      return a($$0, dwv.a.c, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(eid $$0, ehl.a $$1) {
+      io $$2 = new io($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new ejd.a($$2));
+   }
+
+   @Override
+   public ehu<?> e() {
+      return ehu.a;
    }
 }

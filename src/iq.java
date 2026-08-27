@@ -1,51 +1,69 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.function.Supplier;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
-
 public class iq {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<iw, j> a = ad.a(Maps.newEnumMap(iw.class), $$0 -> {
-      $$0.put(iw.d, j.a());
-      $$0.put(iw.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(iw.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(iw.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(iw.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(iw.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<iw, j> b = ad.a(Maps.newEnumMap(iw.class), $$0 -> {
-      for (iw $$1 : iw.values()) {
-         $$0.put($$1, a.get($$1).b());
-      }
-   });
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private int l;
+   private int m;
+   private int n;
+   private int o;
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
+   public iq(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3 - $$0 + 1;
+      this.i = $$4 - $$1 + 1;
+      this.j = $$5 - $$2 + 1;
+      this.k = this.h * this.i * this.j;
    }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
-   }
-
-   public static j a(j $$0, iw $$1, Supplier<String> $$2) {
-      iw $$3 = iw.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+   public boolean a() {
+      if (this.l == this.k) {
+         return false;
       } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+         this.m = this.l % this.h;
+         int $$0 = this.l / this.h;
+         this.n = $$0 % this.i;
+         this.o = $$0 / this.i;
+         this.l++;
+         return true;
       }
+   }
+
+   public int b() {
+      return this.e + this.m;
+   }
+
+   public int c() {
+      return this.f + this.n;
+   }
+
+   public int d() {
+      return this.g + this.o;
+   }
+
+   public int e() {
+      int $$0 = 0;
+      if (this.m == 0 || this.m == this.h - 1) {
+         $$0++;
+      }
+
+      if (this.n == 0 || this.n == this.i - 1) {
+         $$0++;
+      }
+
+      if (this.o == 0 || this.o == this.j - 1) {
+         $$0++;
+      }
+
+      return $$0;
    }
 }

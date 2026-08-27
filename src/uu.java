@@ -1,5 +1,5 @@
-public class uu extends uv {
-   public uu(String $$0) {
+public class uu extends y {
+   public uu(o $$0) {
       super($$0);
    }
 }

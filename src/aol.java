@@ -2,36 +2,41 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import java.util.Collection;
-import java.util.Collections;
+import javax.annotation.Nullable;
 
 public class aol {
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((eh)$$0x.getSource(), Collections.singleton(((eh)$$0x.getSource()).h()), ir.a(((eh)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)ei.a("targets", eu.d())
-                     .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), ir.a(((eh)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)ei.a("pos", gd.a()).executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), gd.c($$0x, "pos"), 0.0F)))
-                        .then(ei.a("angle", en.a()).executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), gd.c($$0x, "pos"), en.a($$0x, "angle"))))
-                  )
-            )
-      );
-   }
+   public static void a(CommandDispatcher<ee> $$0) {
+      RequiredArgumentBuilder<ee, gt> $$1 = (RequiredArgumentBuilder<ee, gt>)((RequiredArgumentBuilder)ef.a("targets", er.d())
+            .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), null, null)))
+         .then(ef.a("*").then(ef.a("sound", ff.a()).suggests(ic.c).executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), null, ff.c($$0x, "sound")))));
 
-   private static int a(eh $$0, Collection<aqu> $$1, ir $$2, float $$3) {
-      aks<dca> $$4 = $$0.e().af();
-
-      for (aqu $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
+      for (avj $$2 : avj.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)ef.a($$2.a()).executes($$1x -> a((ee)$$1x.getSource(), er.f($$1x, "targets"), $$2, null)))
+               .then(ef.a("sound", ff.a()).suggests(ic.c).executes($$1x -> a((ee)$$1x.getSource(), er.f($$1x, "targets"), $$2, ff.c($$1x, "sound"))))
+         );
       }
 
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> xe.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().P_()), true);
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+   }
+
+   private static int a(ee $$0, Collection<aqo> $$1, @Nullable avj $$2, @Nullable akn $$3) {
+      afn $$4 = new afn($$3, $$2);
+
+      for (aqo $$5 : $$1) {
+         $$5.c.b($$4);
+      }
+
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> wx.a("commands.stopsound.success.source.sound", wx.a($$3), $$2.a()), true);
+         } else {
+            $$0.a(() -> wx.a("commands.stopsound.success.source.any", $$2.a()), true);
+         }
+      } else if ($$3 != null) {
+         $$0.a(() -> wx.a("commands.stopsound.success.sourceless.sound", wx.a($$3)), true);
       } else {
-         $$0.a(() -> xe.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         $$0.a(() -> wx.c("commands.stopsound.success.sourceless.any"), true);
       }
 
       return $$1.size();

@@ -1,16 +1,4 @@
-public class eud<T> {
-   private final akt a;
+import java.nio.file.Path;
 
-   public eud(akt $$0) {
-      this.a = $$0;
-   }
-
-   public akt a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+public record eud(Path a, Path b) {
 }

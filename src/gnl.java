@@ -1,16 +1,50 @@
-public class gnl extends glz<cff, fya<cff>> {
-   private static final akt a = new akt("textures/entity/turtle/big_sea_turtle.png");
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-   public gnl(gkq.a $$0) {
-      super($$0, new fya<>($$0.a(fyr.bT)), 0.7F);
+public final class gnl {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final akn d = new akn("missingno");
+   private static final atz e = new atz.a().a(gpg.a, new gpg(ImmutableList.of(new gpf(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gni f;
+
+   private static exv a(int $$0, int $$1) {
+      exv $$2 = new exv($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   protected float a(cff $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.83F : $$1;
+   public static gnp a() {
+      exv $$0 = a(16, 16);
+      return new gnp(d, new gpi(16, 16), $$0, e);
    }
 
-   public akt b(cff $$0) {
-      return a;
+   public static akn b() {
+      return d;
+   }
+
+   public static gni c() {
+      if (f == null) {
+         exv $$0 = a(16, 16);
+         $$0.i();
+         f = new gni($$0);
+         feb.Q().aa().a(d, f);
+      }
+
+      return f;
    }
 }

@@ -1,29 +1,93 @@
-public record aga(float b, boolean c) implements zl<abw> {
-   public static final zc<we, aga> a = zl.a(aga::a, aga::new);
+import java.util.UUID;
 
-   private aga(we $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class aga {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(brw $$0) {
+      if ($$0 instanceof cly) {
+         return $$0.af().getString();
+      } else {
+         wx $$1 = $$0.ah();
+         return $$1 != null ? $$1.getString() : a($$0.cz());
+      }
    }
 
-   public static aga a(bql $$0) {
-      return new aga($$0.f(), $$0.l());
+   public static String a(UUID $$0) {
+      aym $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private static String a(aym $$0, String[] $$1) {
+      return ac.a($$1, $$0);
    }
 
-   @Override
-   public zn<aga> a() {
-      return agj.cf;
-   }
-
-   public void a(abw $$0) {
-      $$0.a(this);
-   }
-
-   public boolean e() {
-      return this.c;
+   private static aym b(UUID $$0) {
+      return aym.a((long)($$0.hashCode() >> 2));
    }
 }

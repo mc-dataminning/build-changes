@@ -1,45 +1,12 @@
-public class afg implements zl<abw> {
-   public static final zc<we, afg> a = zl.a(afg::a, afg::new);
-   private final float b;
-   private final int c;
-   private final float d;
-
-   public afg(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private afg(we $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-   }
+public record afg(wx b) implements ze<abq> {
+   public static final yv<wi, afg> a = yv.a(wz.d, afg::b, afg::new);
 
    @Override
-   public zn<afg> a() {
-      return agj.aI;
+   public zg<afg> a() {
+      return agc.aN;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

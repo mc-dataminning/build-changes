@@ -27,7 +27,7 @@ public class o {
    private File f;
    private boolean g = true;
    private StackTraceElement[] h = new StackTraceElement[0];
-   private final ac i = new ac();
+   private final ab i = new ab();
 
    public o(String $$0, Throwable $$1) {
       this.c = $$0;
@@ -160,7 +160,7 @@ public class o {
       }
    }
 
-   public ac g() {
+   public ab g() {
       return this.i;
    }
 
@@ -239,7 +239,7 @@ public class o {
       };
 
       try {
-         return $$0[(int)(ad.c() % (long)$$0.length)];
+         return $$0[(int)(ac.d() % (long)$$0.length)];
       } catch (Throwable var2) {
          return "Witty comment unavailable :(";
       }
@@ -251,7 +251,7 @@ public class o {
       }
 
       o $$3;
-      if ($$0 instanceof z $$2) {
+      if ($$0 instanceof y $$2) {
          $$3 = $$2.a();
       } else {
          $$3 = new o($$1, $$0);
@@ -261,7 +261,7 @@ public class o {
    }
 
    public static void h() {
-      ayk.a();
+      ayd.a();
       new o("Don't panic!", new Throwable()).e();
    }
 }

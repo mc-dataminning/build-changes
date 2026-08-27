@@ -1,65 +1,89 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cqs extends cre {
-   public cqs(bpt $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cqs {
+   private static final List<cqr> b = ac.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bsd.a.a(98);
+      int $$2 = bsd.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bsd.f.a(100);
+      $$2 = bsd.e.a(100);
+      int $$5 = bsd.d.a(100);
+      int $$6 = bsd.c.a(100);
+      int $$7 = bsd.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cqr> a = ayz.b(() -> b.toArray(new cqr[0]));
+   private static final Function<String, cqr> c = ayz.a(b.toArray(new cqr[0]), $$0 -> $$0);
+
+   private static cqr a(String $$0, int $$1) {
+      return cqr.a($$0, IntLists.singleton($$1));
    }
 
-   @Override
-   public void b(cuh $$0, cuh $$1) {
+   private static cqr a(String $$0, IntList $$1) {
+      return cqr.a($$0, IntLists.unmodifiable($$1));
    }
 
-   @Override
-   public boolean a(cly $$0) {
-      return false;
+   private static cqr a(String $$0, int... $$1) {
+      return cqr.a($$0, IntList.of($$1));
    }
 
-   @Override
-   public Optional<cuh> a(int $$0, int $$1, cly $$2) {
-      return Optional.empty();
+   private static void a(List<cqr> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   @Override
-   public cuh b(int $$0, int $$1, cly $$2) {
-      return cuh.i;
+   private static void a(List<cqr> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
+      }
+
+      $$0.add(a($$1 + "*", $$4));
    }
 
-   @Override
-   public cuh b_(cuh $$0) {
-      return $$0;
+   private static void a(List<cqr> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   @Override
-   public cuh b(cuh $$0, int $$1) {
-      return this.b_($$0);
+   @Nullable
+   public static cqr a(String $$0) {
+      return c.apply($$0);
    }
 
-   @Override
-   public boolean b(cly $$0) {
-      return false;
+   public static Stream<String> a() {
+      return b.stream().map(ayz::c);
    }
 
-   @Override
-   public boolean a(cuh $$0) {
-      return false;
-   }
-
-   @Override
-   public cuh a(int $$0) {
-      return cuh.i;
-   }
-
-   @Override
-   public void a(cly $$0, cuh $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
-      return true;
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(ayz::c);
    }
 }

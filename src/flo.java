@@ -1,64 +1,59 @@
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+public class flo extends flz {
+   private static final wx a = wx.c("symlink_warning.title.world").a(n.r);
+   private static final wx b = wx.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final wx c = wx.c("symlink_warning.title.pack").a(n.r);
+   private static final wx d = wx.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final wx r;
+   private final String s;
+   private final Runnable u;
+   private final fjm v = new fjm().b(10);
 
-public class flo {
-   private static long a = 0L;
-
-   public static long a() {
-      if (a == 0L) {
-         MemoryStack $$0 = MemoryStack.stackPush();
-
-         try {
-            PointerBuffer $$1 = $$0.mallocPointer(1);
-            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-            a = $$1.get();
-         } catch (Throwable var4) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var3) {
-                  var4.addSuppressed(var3);
-               }
-            }
-
-            throw var4;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-      }
-
-      return a;
+   public flo(wx $$0, wx $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.r = $$1;
+      this.s = $$2;
+      this.u = $$3;
    }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
+   public static flz a(Runnable $$0) {
+      return new flo(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   public static flz b(Runnable $$0) {
+      return new flo(c, d, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.v.c().b();
+      fjm.b $$0 = this.v.d(1);
+      $$0.a(new fhh(this.l, this.p));
+      $$0.a(new fgu(this.r, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fjm $$2 = new fjm().a(5);
+      fjm.b $$3 = $$2.d(3);
+      $$3.a(fga.a(ww.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
+      $$3.a(fga.a(ww.o, $$0x -> this.m.o.a(this.s)).b(120, 20).a());
+      $$3.a(fga.a(ww.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.v.a(this::c);
    }
 
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
+   @Override
+   protected void c() {
+      this.v.a();
+      fjl.a(this.v, this.G());
    }
 
-   public static void b() {
-      if (a != 0L) {
-         FreeType.FT_Done_Library(a);
-         a = 0L;
-      }
+   @Override
+   public wx i() {
+      return ww.a(super.i(), this.r);
+   }
+
+   @Override
+   public void d() {
+      this.u.run();
    }
 }

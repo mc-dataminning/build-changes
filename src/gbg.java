@@ -1,30 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+public class gbg extends fyq {
+   private static final int a = 12235202;
 
-public class gbg {
-   public static final gbg a = new gbg(gbf.b, gbh.createDnsSrvRedirectHandler(), gbc.a());
-   private final gbf b;
-   private final gbh c;
-   private final gbc d;
-
-   @VisibleForTesting
-   gbg(gbf $$0, gbh $$1, gbc $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   protected gbg(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gat $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axp.b.b(12235202) / 255.0F;
+      this.w = (float)axp.b.c(12235202) / 255.0F;
+      this.x = (float)axp.b.d(12235202) / 255.0F;
    }
 
-   public Optional<gbd> a(gbe $$0) {
-      Optional<gbd> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gbe> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-         return $$1;
-      } else {
-         return Optional.empty();
+      public a(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         aym $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gbg($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

@@ -1,133 +1,72 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public abstract class cxf implements cxw<bpp> {
+   protected final cyb<?> a;
+   protected final cxl b;
+   protected final String c;
+   protected final cxt d;
+   protected final ctq e;
+   protected final float f;
+   protected final int g;
 
-public final class cxf {
-   public static final cxf a = new cxf(new uk());
-   public static final Codec<cxf> b = uk.a.xmap(cxf::new, $$0 -> $$0.e);
-   public static final Codec<cxf> c = axu.b(
-      b, (Function<cxf, DataResult<cxf>>)($$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0))
-   );
-   @Deprecated
-   public static final zc<ByteBuf, cxf> d = za.o.a(cxf::new, $$0 -> $$0.e);
-   private final uk e;
-
-   private cxf(uk $$0) {
-      this.e = $$0;
-   }
-
-   public static cxf a(uk $$0) {
-      return new cxf($$0.h());
-   }
-
-   public static Predicate<cuh> a(kd<cxf> $$0, uk $$1) {
-      return $$2 -> {
-         cxf $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(uk $$0) {
-      return uz.a($$0, this.e, true);
-   }
-
-   public static void a(kd<cxf> $$0, cuh $$1, Consumer<uk> $$2) {
-      cxf $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.e.g()) {
-         $$1.c($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(kd<cxf> $$0, cuh $$1, uk $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
-   }
-
-   public cxf a(Consumer<uk> $$0) {
-      uk $$1 = this.e.h();
-      $$0.accept($$1);
-      return new cxf($$1);
-   }
-
-   public void a(brv $$0) {
-      uk $$1 = $$0.f(new uk());
-      UUID $$2 = $$0.cE();
-      $$1.a(this.e);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dqc $$0, jc.a $$1) {
-      uk $$2 = $$0.d($$1);
-      uk $$3 = $$2.h();
-      $$2.a(this.e);
-      if (!$$2.equals($$3)) {
-         $$0.a($$2, $$1);
-         $$0.e();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public <T> DataResult<cxf> a(MapEncoder<T> $$0, T $$1) {
-      return $$0.encode($$1, uy.a, uy.a.mapBuilder()).build(this.e).map($$0x -> new cxf((uk)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      MapLike<vh> $$1 = ad.a(uy.a.e(this.e), IllegalStateException::new);
-      return $$0.decode(uy.a, $$1);
-   }
-
-   public int a() {
-      return this.e.f();
-   }
-
-   public boolean b() {
-      return this.e.g();
-   }
-
-   public uk c() {
-      return this.e.h();
-   }
-
-   public boolean a(String $$0) {
-      return this.e.e($$0);
+   public cxf(cyb<?> $$0, String $$1, cxl $$2, cxt $$3, ctq $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof cxf $$1 ? this.e.equals($$1.e) : false;
-      }
+   public boolean a(bpp $$0, daz $$1) {
+      return this.d.a($$0.a(0));
    }
 
    @Override
-   public int hashCode() {
-      return this.e.hashCode();
+   public ctq a(bpp $$0, iz.a $$1) {
+      return this.e.s();
    }
 
    @Override
-   public String toString() {
-      return this.e.toString();
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   @Deprecated
-   public uk d() {
+   @Override
+   public jg<cxt> a() {
+      jg<cxt> $$0 = jg.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public ctq a(iz.a $$0) {
       return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cyb<?> e() {
+      return this.a;
+   }
+
+   public cxl f() {
+      return this.b;
+   }
+
+   public interface a<T extends cxf> {
+      T create(String var1, cxl var2, cxt var3, ctq var4, float var5, int var6);
    }
 }

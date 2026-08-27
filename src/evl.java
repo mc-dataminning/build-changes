@@ -1,29 +1,177 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Sets;
+import java.util.Collection;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public record evl(akt b) implements evj {
-   public static final Codec<evl> a = RecordCodecBuilder.create($$0 -> $$0.group(akt.a.fieldOf("source").forGetter(evl::c)).apply($$0, evl::new));
+public class evl extends evs {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final evq c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wx f;
+   private wx g = ww.a;
+   private wx h = ww.a;
+   private boolean i = true;
+   private boolean j = true;
+   private evs.b k = evs.b.a;
+   private evs.b l = evs.b.a;
+   private n m = n.v;
+   private evs.a n = evs.a.a;
+   private final xu o;
 
-   @Override
-   public evi a() {
-      return evk.b;
+   public evl(evq $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = wx.b($$1);
+      this.o = xu.a.a($$1).a(new xd(xd.a.a, wx.b($$1)));
    }
 
-   @Nullable
-   @Override
-   public vh a(erp $$0) {
-      return $$0.d().o().aL().a(this.b);
+   public evq a() {
+      return this.c;
    }
 
    @Override
-   public Set<eud<?>> b() {
-      return ImmutableSet.of();
+   public String b() {
+      return this.d;
    }
 
-   public akt c() {
-      return this.b;
+   public wx c() {
+      return this.f;
+   }
+
+   public xl d() {
+      xl $$0 = xa.a((wx)this.f.f().c(this.o));
+      n $$1 = this.n();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(wx $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
+      } else {
+         this.f = $$0;
+         this.c.b(this);
+      }
+   }
+
+   public void b(@Nullable wx $$0) {
+      this.g = $$0 == null ? ww.a : $$0;
+      this.c.b(this);
+   }
+
+   public wx e() {
+      return this.g;
+   }
+
+   public void c(@Nullable wx $$0) {
+      this.h = $$0 == null ? ww.a : $$0;
+      this.c.b(this);
+   }
+
+   public wx f() {
+      return this.h;
+   }
+
+   @Override
+   public Collection<String> g() {
+      return this.e;
+   }
+
+   @Override
+   public xl d(wx $$0) {
+      xl $$1 = wx.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.n();
+      if ($$2 != n.v) {
+         $$1.a($$2);
+      }
+
+      return $$1;
+   }
+
+   public static xl a(@Nullable evs $$0, wx $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
+   }
+
+   @Override
+   public boolean h() {
+      return this.i;
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public boolean i() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public evs.b j() {
+      return this.k;
+   }
+
+   @Override
+   public evs.b k() {
+      return this.l;
+   }
+
+   public void a(evs.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(evs.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public evs.a l() {
+      return this.n;
+   }
+
+   public void a(evs.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int m() {
+      int $$0 = 0;
+      if (this.h()) {
+         $$0 |= 1;
+      }
+
+      if (this.i()) {
+         $$0 |= 2;
+      }
+
+      return $$0;
+   }
+
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
+   }
+
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public n n() {
+      return this.m;
    }
 }

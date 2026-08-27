@@ -1,39 +1,60 @@
-public class ght implements ghg<drq> {
-   private final fxl<?> a;
+@FunctionalInterface
+public interface ght<T extends brw> {
+   ghs<T> create(ght.a var1);
 
-   public ght(ghh.a $$0) {
-      this.a = new fxl($$0.a(fyr.bo));
-   }
+   public static class a {
+      private final ghr a;
+      private final gir b;
+      private final gde c;
+      private final gcg d;
+      private final atx e;
+      private final fvs f;
+      private final ffl g;
 
-   public void a(drq $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
-      iw $$6 = iw.b;
-      if ($$0.m()) {
-         dtc $$7 = $$0.i().a_($$0.az_());
-         if ($$7.b() instanceof dmp) {
-            $$6 = $$7.c(dmp.b);
-         }
+      public a(ghr $$0, gir $$1, gde $$2, gcg $$3, atx $$4, fvs $$5, ffl $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
 
-      csy $$8 = $$0.t();
-      gtc $$9;
-      if ($$8 == null) {
-         $$9 = gfv.i;
-      } else {
-         $$9 = gfv.j.get($$8.a());
+      public ghr a() {
+         return this.a;
       }
 
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fys $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      fbg $$13 = $$9.a($$3, gfo::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      public gir b() {
+         return this.b;
+      }
+
+      public gde c() {
+         return this.c;
+      }
+
+      public gcg d() {
+         return this.d;
+      }
+
+      public atx e() {
+         return this.e;
+      }
+
+      public fvs f() {
+         return this.f;
+      }
+
+      public gqc g() {
+         return this.c.a().a();
+      }
+
+      public fvw a(fvu $$0) {
+         return this.f.a($$0);
+      }
+
+      public ffl h() {
+         return this.g;
+      }
    }
 }

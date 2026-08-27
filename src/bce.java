@@ -1,30 +1,75 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class bce extends bgp {
+public class bce extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
    public bce(Schema $$0, boolean $$1) {
-      super("EntityCatSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("minecraft:ocelot", $$0)) {
-         int $$2 = $$1.get("CatType").asInt(0);
-         if ($$2 == 0) {
-            String $$3 = $$1.get("Owner").asString("");
-            String $$4 = $$1.get("OwnerUUID").asString("");
-            if ($$3.length() > 0 || $$4.length() > 0) {
-               $$1.set("Trusting", $$1.createBoolean(true));
-            }
-         } else if ($$2 > 0 && $$2 < 4) {
-            $$1 = $$1.set("CatType", $$1.createInt($$2));
-            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
-            return Pair.of("minecraft:cat", $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
+      } else {
+         if (!$$2.isPresent()) {
+            return $$0;
          }
+
+         $$3 = $$2.get().floatValue();
       }
 
-      return Pair.of($$0, $$1);
+      return $$0.set("Health", $$0.createFloat($$3));
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bga.z), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

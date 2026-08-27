@@ -1,39 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edo extends eca<eer> {
-   public edo(Codec<eer> $$0) {
-      super($$0);
+public class edo extends edk {
+   public static final MapCodec<edo> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edo::new));
+
+   public edo(bpb $$0, bpb $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(ecc<eer> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      ir.a $$3 = new ir.a();
-      ir.a $$4 = new ir.a();
+   protected edq<?> a() {
+      return edq.f;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dyu.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(iw.a, 1);
-            dcz $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dfe.eC.n(), 2);
-            }
-
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dfe.eB.n(), 2);
-               dtc $$11 = $$1.a_($$4);
-               if ($$11.b(dna.c)) {
-                  $$1.a($$4, $$11.a(dna.c, Boolean.valueOf(true)), 2);
-               }
-            }
-         }
+   @Override
+   protected void a(dbf $$0, edp.b $$1, aym $$2, ecz $$3, int $$4, edp.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
+   }
 
-      return true;
+   @Override
+   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return ayf.k((float)$$1 + 0.5F) + ayf.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

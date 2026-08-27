@@ -1,17 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Consumer;
 
-public record aws(List<awr> b, boolean c) {
-   public static final Codec<aws> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awr.a.listOf().fieldOf("values").forGetter(aws::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(aws::b)).apply($$0, aws::new)
-   );
+@FunctionalInterface
+public interface aws<T> {
+   aws.a accept(T var1);
 
-   public List<awr> a() {
-      return this.b;
+   static <T> aws<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return aws.a.a;
+      };
    }
 
-   public boolean b() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

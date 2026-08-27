@@ -1,88 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfg extends den {
+public class dfg extends djo {
    public static final MapCodec<dfg> a = b(dfg::new);
-   public static final dtt[] b = new dtt[]{dts.k, dts.l, dts.m};
-   protected static final exn c = exk.a(dfc.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dfc.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dfg> a() {
       return a;
    }
 
-   public dfg(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+   protected dfg(drc.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.c;
+   public drd a(cxb $$0) {
+      return a($$0.q(), $$0.a(), this.n());
+   }
+
+   public static drd a(daf $$0, io $$1, drd $$2) {
+      drd $$3 = $$0.a_($$1.d());
+      drd $$4 = $$0.a_($$1.c());
+      drd $$5 = $$0.a_($$1.e());
+      drd $$6 = $$0.a_($$1.h());
+      drd $$7 = $$0.a_($$1.f());
+      drd $$8 = $$0.a_($$1.g());
+      dea $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dec.kv) || $$3.a(dec.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dec.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dec.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dec.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dec.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dec.kv)));
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dqf($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return $$0.C ? null : a($$2, dqe.m, dqf::a);
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c;
-   }
-
-   @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      if ($$1.C) {
-         return bqa.a;
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         dqc $$5 = $$1.c_($$2);
-         if ($$5 instanceof dqf) {
-            $$3.a((dqf)$$5);
-            $$3.a(avz.aa);
-         }
-
-         return bqa.b;
+         boolean $$6 = $$2.a(this) || $$2.a(dec.kv) || $$1 == it.a && $$2.a(dec.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(lb.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      bpw.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      drd $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+
+      for (it $$5 : it.c.a) {
+         io $$6 = $$2.a($$5);
+         drd $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            drd $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(dec.fz)) {
+               return true;
+            }
+         }
+      }
+
+      return $$3.a(this) || $$3.a(dec.fz);
    }
 
    @Override
-   protected boolean c_(dtc $$0) {
-      return true;
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   protected int a(dtc $$0, dca $$1, ir $$2) {
-      return cpg.a($$1.c_($$2));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
+   protected boolean a(drd $$0, enl $$1) {
       return false;
    }
 }

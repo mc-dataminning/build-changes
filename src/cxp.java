@@ -1,44 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-
-public record cxp(Map<String, cxp.a> c) {
-   public static final cxp a = new cxp(Map.of());
-   public static final Codec<cxp> b = Codec.unboundedMap(Codec.STRING, cxp.a.a).xmap(cxp::new, cxp::a);
-
-   public cxp a(String $$0, cxp.a $$1) {
-      return new cxp(ad.a(this.c, $$0, $$1));
+public class cxp extends cxo {
+   public cxp(cxm $$0) {
+      super($$0);
    }
 
-   public Map<String, cxp.a> a() {
-      return this.c;
+   public boolean a(cpl $$0, daz $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            ctq $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awf.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(ctt.a)) {
+                     return false;
+                  }
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static record a(ja<eqo> b, double c, double d, float e) {
-      public static final Codec<cxp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eqo.b.fieldOf("type").forGetter(cxp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cxp.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cxp.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cxp.a::d)
-               )
-               .apply($$0, cxp.a::new)
-      );
+   public ctq a(cpl $$0, iz.a $$1) {
+      dpm $$2 = new dpm($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return doy.a($$2);
+   }
 
-      public ja<eqo> a() {
-         return this.b;
-      }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 3 && $$1 == 3;
+   }
 
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   @Override
+   public cya<?> ap_() {
+      return cya.w;
    }
 }

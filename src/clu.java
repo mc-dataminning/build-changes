@@ -3,6 +3,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 // $VF: synthetic class
 @ParametersAreNonnullByDefault
 @u
-@x
+@w
 interface clu {
 }

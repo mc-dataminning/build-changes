@@ -1,136 +1,136 @@
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class cka extends cjd {
-   private static final int cj = 20;
-   private static final int ck = 1;
-   private static final int cl = 20;
-   private static final int cm = 3;
-   private static final int cn = 5;
-   private static final int co = 10;
-   private static final float cp = 3.0F;
-   private static final int cq = 1;
-   private static final int cr = 80;
-   public brq b = new brq();
-   public brq c = new brq();
-   public brq d = new brq();
-   public brq e = new brq();
-   public brq ch = new brq();
-   public brq ci = new brq();
-   private int cs = 0;
-   private int ct = 0;
-   private static final cmt cu = ($$0, $$1, $$2) -> {
-      $$1.dU().a($$1, avo.cK, $$1.dj(), 1.0F, 1.0F);
-      cmt.b.deflect($$0, $$1, $$2);
+public class cka extends cje {
+   private static final int ca = 20;
+   private static final int cb = 1;
+   private static final int cc = 20;
+   private static final int cd = 3;
+   private static final int ce = 5;
+   private static final int cf = 10;
+   private static final float cg = 3.0F;
+   private static final int ch = 1;
+   private static final int ci = 80;
+   public brr b = new brr();
+   public brr c = new brr();
+   public brr d = new brr();
+   public brr e = new brr();
+   public brr bY = new brr();
+   public brr bZ = new brr();
+   private int cj = 0;
+   private int ck = 0;
+   private static final cmr cl = ($$0, $$1, $$2) -> {
+      $$1.dP().a($$1, avi.cF, $$1.de(), 1.0F, 1.0F);
+      cmr.b.deflect($$0, $$1, $$2);
    };
 
-   public static btu.a r() {
-      return bsq.A().a(btv.r, 0.63F).a(btv.q, 30.0).a(btv.k, 24.0).a(btv.c, 3.0);
+   public static btx.a s() {
+      return bss.A().a(bty.r, 0.63F).a(bty.q, 30.0).a(bty.k, 24.0).a(bty.c, 3.0);
    }
 
-   public cka(bsb<? extends cjd> $$0, dca $$1) {
+   public cka(bsc<? extends cje> $$0, daz $$1) {
       super($$0, $$1);
-      this.a(epv.z, -1.0F);
-      this.a(epv.o, -1.0F);
-      this.bW = 10;
+      this.a(enn.z, -1.0F);
+      this.a(enn.o, -1.0F);
+      this.bN = 10;
    }
 
    @Override
-   protected btp<?> a(Dynamic<?> $$0) {
-      return ckb.a(this.ea().a($$0));
+   protected bts<?> a(Dynamic<?> $$0) {
+      return ckb.a(this.dT().a($$0));
    }
 
    @Override
-   public btp<cka> dZ() {
-      return (btp<cka>)super.dZ();
+   public bts<cka> dS() {
+      return (bts<cka>)super.dS();
    }
 
    @Override
-   protected btp.b<cka> ea() {
-      return btp.a(ckb.f, ckb.e);
+   protected bts.b<cka> dT() {
+      return bts.a(ckb.f, ckb.e);
    }
 
    @Override
-   public void a(ajy<?> $$0) {
-      if (this.dU().x_() && ax.equals($$0)) {
-         this.gB();
-         bsz $$1 = this.ar();
+   public void a(ajs<?> $$0) {
+      if (this.dP().x_() && at.equals($$0)) {
+         this.gs();
+         btc $$1 = this.ar();
          switch ($$1) {
             case q:
-               this.ch.b(this.am);
+               this.bY.b(this.ai);
                break;
             case r:
-               this.e.b(this.am);
+               this.e.b(this.ai);
                break;
             case p:
-               this.c.b(this.am);
+               this.c.b(this.ai);
          }
       }
 
       super.a($$0);
    }
 
-   private void gB() {
-      this.ch.a();
+   private void gs() {
+      this.bY.a();
       this.b.a();
-      this.ci.a();
+      this.bZ.a();
       this.e.a();
    }
 
    @Override
    public void l() {
-      bsz $$0 = this.ar();
+      btc $$0 = this.ar();
       switch ($$0) {
          case q:
          case r:
          case a:
-            this.t().b(1 + this.et().a(1));
+            this.u().b(1 + this.el().a(1));
             break;
          case p:
             this.b(20);
             break;
          case g:
-            this.x();
+            this.y();
       }
 
-      if ($$0 != bsz.p && this.c.c()) {
-         this.d.a(this.am);
+      if ($$0 != btc.p && this.c.c()) {
+         this.d.a(this.ai);
          this.c.a();
       }
 
-      this.ct = this.ct == 0 ? this.al.a(1, 80) : this.ct - 1;
-      if (this.ct == 0) {
-         this.gy();
+      this.ck = this.ck == 0 ? this.ah.a(1, 80) : this.ck - 1;
+      if (this.ck == 0) {
+         this.gp();
       }
 
       super.l();
    }
 
-   public cka t() {
-      this.cs = 0;
+   public cka u() {
+      this.cj = 0;
       return this;
    }
 
-   public void x() {
-      if (++this.cs <= 5) {
-         dtc $$0 = !this.dv().i() ? this.dv() : this.bt();
-         ewu $$1 = this.dx();
-         ewu $$2 = this.ds().e($$1).b(0.0, 0.1F, 0.0);
+   public void y() {
+      if (++this.cj <= 5) {
+         drd $$0 = !this.dq().i() ? this.dq() : this.bp();
+         eum $$1 = this.ds();
+         eum $$2 = this.dn().e($$1).b(0.0, 0.1F, 0.0);
 
          for (int $$3 = 0; $$3 < 3; $$3++) {
-            this.dU().a(new ks(lb.b, $$0), $$2.c, $$2.d, $$2.e, 0.0, 0.0, 0.0);
+            this.dP().a(new kp(ky.b, $$0), $$2.c, $$2.d, $$2.e, 0.0, 0.0, 0.0);
          }
       }
    }
 
    public void b(int $$0) {
-      if (!this.bW()) {
-         ewu $$1 = this.cP().f();
-         ewu $$2 = new ewu($$1.c, this.ds().d, $$1.e);
-         dtc $$3 = !this.dv().i() ? this.dv() : this.bt();
-         if ($$3.l() != dlw.a) {
+      if (!this.bR()) {
+         eum $$1 = this.cK().f();
+         eum $$2 = new eum($$1.c, this.dn().d, $$1.e);
+         drd $$3 = !this.dq().i() ? this.dq() : this.bp();
+         if ($$3.l() != dkg.a) {
             for (int $$4 = 0; $$4 < $$0; $$4++) {
-               this.dU().a(new ks(lb.b, $$3), $$2.c, $$2.d, $$2.e, 0.0, 0.0, 0.0);
+               this.dP().a(new kp(ky.b, $$3), $$2.c, $$2.d, $$2.e, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -139,70 +139,70 @@ public class cka extends cjd {
    @Override
    public void P() {
       if (this.p() == null || !this.aE()) {
-         this.dU().a(this, this.u(), this.dj(), 1.0F, 1.0F);
+         this.dP().a(this, this.v(), this.de(), 1.0F, 1.0F);
       }
    }
 
-   public void gy() {
-      float $$0 = 0.7F + 0.4F * this.al.i();
-      float $$1 = 0.8F + 0.2F * this.al.i();
-      this.dU().a(this, avo.cU, this.dj(), $$1, $$0);
+   public void gp() {
+      float $$0 = 0.7F + 0.4F * this.ah.i();
+      float $$1 = 0.8F + 0.2F * this.ah.i();
+      this.dP().a(this, avi.cP, this.de(), $$1, $$0);
    }
 
    @Override
-   public cmt a(cms $$0) {
-      return $$0.ak() == bsb.p ? cmt.a : cu;
+   public cmr a(cmq $$0) {
+      return $$0.ak() != bsc.n && $$0.ak() != bsc.bn ? cl : cmr.a;
    }
 
    @Override
-   public avq dj() {
-      return avq.f;
+   public avj de() {
+      return avj.f;
    }
 
    @Override
-   protected avn n_() {
-      return avo.cS;
+   protected avh o_() {
+      return avi.cN;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.cT;
+   protected avh d(bqp $$0) {
+      return avi.cO;
    }
 
    @Override
-   protected avn u() {
-      return this.aE() ? avo.cM : avo.cN;
+   protected avh v() {
+      return this.aE() ? avi.cH : avi.cI;
    }
 
-   public Optional<bso> gz() {
-      return this.dZ().c(cbr.x).map(bqt::d).filter($$0 -> $$0 instanceof bso).map($$0 -> (bso)$$0);
+   public Optional<bsq> gq() {
+      return this.dS().c(cbu.x).map(bqp::d).filter($$0 -> $$0 instanceof bsq).map($$0 -> (bsq)$$0);
    }
 
-   public boolean j(ewu $$0) {
-      ewu $$1 = this.du().b();
+   public boolean j(eum $$0) {
+      eum $$1 = this.dp().b();
       return $$0.a($$1, 4.0, 10.0);
    }
 
    @Override
    protected void Y() {
-      this.dU().ag().a("breezeBrain");
-      this.dZ().a((aqt)this.dU(), this);
-      this.dU().ag().b("breezeActivityUpdate");
+      this.dP().af().a("breezeBrain");
+      this.dS().a((aqn)this.dP(), this);
+      this.dP().af().b("breezeActivityUpdate");
       ckb.a(this);
-      this.dU().ag().c();
+      this.dP().af().c();
       super.Y();
    }
 
    @Override
    protected void X() {
       super.X();
-      agi.a((bso)this);
-      agi.a(this);
+      agb.a((bsq)this);
+      agb.a(this);
    }
 
    @Override
-   public boolean a(bsb<?> $$0) {
-      return $$0 == bsb.bE || $$0 == bsb.ah;
+   public boolean a(bsc<?> $$0) {
+      return $$0 == bsc.by || $$0 == bsc.af;
    }
 
    @Override
@@ -211,35 +211,35 @@ public class cka extends cjd {
    }
 
    @Override
-   public int ac() {
+   public int ad() {
       return 25;
    }
 
-   public double gA() {
-      return this.dD() - 0.4;
+   public double gr() {
+      return this.dy() - 0.4;
    }
 
    @Override
-   public boolean b(bqt $$0) {
-      return $$0.a(awg.b) || $$0.d() instanceof cka || super.b($$0);
+   public boolean b(bqp $$0) {
+      return $$0.a(avz.b) || $$0.d() instanceof cka || super.b($$0);
    }
 
    @Override
-   public double dn() {
-      return (double)this.cQ();
+   public double di() {
+      return (double)this.cL();
    }
 
    @Override
-   public boolean a(float $$0, float $$1, bqt $$2) {
+   public boolean a(float $$0, float $$1, bqp $$2) {
       if ($$0 > 3.0F) {
-         this.a(avo.cQ, 1.0F, 1.0F);
+         this.a(avi.cL, 1.0F, 1.0F);
       }
 
       return super.a($$0, $$1, $$2);
    }
 
    @Override
-   protected brv.c bf() {
-      return brv.c.c;
+   protected brw.b bb() {
+      return brw.b.c;
    }
 }

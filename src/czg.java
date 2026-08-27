@@ -1,75 +1,127 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class czg extends cyq {
-   public czg(cyo $$0) {
-      super($$0);
+public class czg implements cww {
+   public static final czg a = new czg(new Object2IntLinkedOpenHashMap(), true);
+   public static final int b = 255;
+   private static final Codec<Integer> e = Codec.intRange(0, 255);
+   private static final Codec<Object2IntLinkedOpenHashMap<ix<czb>>> f = Codec.unboundedMap(le.f.r(), e)
+      .xmap(Object2IntLinkedOpenHashMap::new, Function.identity());
+   private static final Codec<czg> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(f.fieldOf("levels").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.i))
+            .apply($$0, czg::new)
+   );
+   public static final Codec<czg> c = Codec.withAlternative(g, f, $$0 -> new czg($$0, true));
+   public static final yv<wi, czg> d = yv.a(yt.a(Object2IntLinkedOpenHashMap::new, yt.b(lf.u), yt.f), $$0 -> $$0.h, yt.b, $$0 -> $$0.i, czg::new);
+   final Object2IntLinkedOpenHashMap<ix<czb>> h;
+   final boolean i;
+
+   czg(Object2IntLinkedOpenHashMap<ix<czb>> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   @Nullable
-   private Pair<cuh, cuh> a(cpw $$0) {
-      cuh $$1 = null;
-      cuh $$2 = null;
+   public int a(czb $$0) {
+      return this.h.getInt($$0.m());
+   }
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cuh $$4 = $$0.a($$3);
-         if (!$$4.d()) {
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else {
-               if ($$2 != null) {
-                  return null;
-               }
+   @Override
+   public void a(Consumer<wx> $$0, cvj $$1) {
+      if (this.i) {
+         ObjectBidirectionalIterator var3 = this.h.object2IntEntrySet().iterator();
 
-               $$2 = $$4;
-            }
+         while (var3.hasNext()) {
+            Entry<ix<czb>> $$2 = (Entry<ix<czb>>)var3.next();
+            $$0.accept(((czb)((ix)$$2.getKey()).a()).e($$2.getIntValue()));
+         }
+      }
+   }
+
+   public czg a(boolean $$0) {
+      return new czg(this.h, $$0);
+   }
+
+   public Set<ix<czb>> a() {
+      return Collections.unmodifiableSet(this.h.keySet());
+   }
+
+   public Set<Entry<ix<czb>>> b() {
+      return Collections.unmodifiableSet(this.h.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.h.size();
+   }
+
+   public boolean d() {
+      return this.h.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof czg $$1) ? false : this.i == $$1.i && this.h.equals($$1.h);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.h.hashCode();
+      return 31 * $$0 + (this.i ? 1 : 0);
+   }
+
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.h + ", showInTooltip=" + this.i + "}";
+   }
+
+   public static class a {
+      private final Object2IntLinkedOpenHashMap<ix<czb>> a = new Object2IntLinkedOpenHashMap();
+      private final boolean b;
+
+      public a(czg $$0) {
+         this.a.putAll($$0.h);
+         this.b = $$0.i;
+      }
+
+      public void a(czb $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0.m());
+         } else {
+            this.a.put($$0.m(), $$1);
          }
       }
 
-      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
-   }
-
-   private static boolean a(cuh $$0, cuh $$1) {
-      return $$1.a($$0.f()) && $$0.G() == 1 && $$1.G() == 1 && $$0.b(ke.c) && $$1.b(ke.c) && $$0.b(ke.d) && $$1.b(ke.d);
-   }
-
-   public boolean a(cpw $$0, dca $$1) {
-      return this.a($$0) != null;
-   }
-
-   public cuh a(cpw $$0, jc.a $$1) {
-      Pair<cuh, cuh> $$2 = this.a($$0);
-      if ($$2 == null) {
-         return cuh.i;
-      } else {
-         cuh $$3 = (cuh)$$2.getFirst();
-         cuh $$4 = (cuh)$$2.getSecond();
-         int $$5 = Math.max($$3.n(), $$4.n());
-         int $$6 = $$3.n() - $$3.m();
-         int $$7 = $$4.n() - $$4.m();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cuh $$9 = new cuh($$3.f());
-         $$9.b(ke.c, Integer.valueOf($$5));
-         $$9.b(Math.max($$5 - $$8, 0));
-         dai $$10 = dae.b($$3);
-         dai $$11 = dae.b($$4);
-         dae.a($$9, $$3x -> $$1.b(li.u).b().map(ja::a).filter(dad::b).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
+      public void b(czb $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0.m(), $$1, Integer::max);
+         }
       }
-   }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
+      public void a(Predicate<ix<czb>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
 
-   @Override
-   public cze<?> ao_() {
-      return cze.p;
+      public int a(czb $$0) {
+         return this.a.getOrDefault($$0.m(), 0);
+      }
+
+      public Set<ix<czb>> a() {
+         return this.a.keySet();
+      }
+
+      public czg b() {
+         return new czg(this.a, this.b);
+      }
    }
 }

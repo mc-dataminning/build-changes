@@ -1,41 +1,56 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bbr extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("structure_references", "empty")
-      .put("biomes", "empty")
-      .put("base", "surface")
-      .put("carved", "carvers")
-      .put("liquid_carved", "liquid_carvers")
-      .put("decorated", "features")
-      .put("lighted", "light")
-      .put("mobs_spawned", "spawn")
-      .put("finalized", "heightmaps")
-      .put("fullchunk", "full")
-      .build();
+public class bbr extends bez {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
 
-   public bbr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bbr(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bga.s, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(bgf.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            String $$3 = a.getOrDefault($$2x, "empty");
-            return Objects.equals($$2x, $$3) ? $$0xx : $$0xx.set(DSL.remainderFinder(), $$1xx.set("Status", $$1xx.createString($$3)));
-         }));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bbr::b);
+      $$0 = $$0.update("back_text", bbr::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = azk.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
+         }
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bbr::a);
    }
 }

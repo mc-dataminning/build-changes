@@ -1,54 +1,42 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-public class eyj<T> implements eym<T>, eyo<T> {
-   private final List<eyk<T>> a = Lists.newArrayList();
-   private final Set<eyk<?>> b = new ObjectOpenCustomHashSet(eyk.a);
+public class eyj {
+   private static final Logger a = LogUtils.getLogger();
 
-   @Override
-   public void a(eyl<T> $$0) {
-      eyk<T> $$1 = new eyk<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   private void a(eyk<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public static void a(eyk $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
+   }
+
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+      } else {
+         return $$0;
       }
    }
 
-   @Override
-   public boolean a(ir $$0, T $$1) {
-      return this.b.contains(eyk.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public vh b(long $$0, Function<T, String> $$1) {
-      uq $$2 = new uq();
-
-      for (eyk<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+   public static void b(eyk $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
       }
-
-      return $$2;
-   }
-
-   public List<eyk<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> eyj<T> a(uq $$0, Function<String, Optional<T>> $$1, dbh $$2) {
-      eyj<T> $$3 = new eyj<>();
-      eyk.a($$0, $$1, $$2, $$3::a);
-      return $$3;
    }
 }

@@ -1,267 +1,315 @@
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dfd {
-   public static final MapCodec<dfc> a = lh.ag.q().dispatchMap(dfc::a, MapCodec::codec);
+public class dfd extends dcu<dop> implements dlb {
+   public static final MapCodec<dfd> b = b($$0 -> new dfd($$0, () -> dok.b));
+   public static final drx c = dhw.aE;
+   public static final dsb<drv> d = drt.bc;
+   public static final dru e = drt.C;
+   public static final int f = 1;
+   protected static final int g = 1;
+   protected static final int h = 14;
+   protected static final evf i = dea.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
+   protected static final evf j = dea.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
+   protected static final evf k = dea.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   protected static final evf l = dea.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
+   protected static final evf m = dea.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   private static final dgh.b<dop, Optional<bpp>> n = new dgh.b<dop, Optional<bpp>>() {
+      public Optional<bpp> a(dop $$0, dop $$1) {
+         return Optional.of(new bpo($$0, $$1));
+      }
 
-   public static MapCodec<? extends dfc> a(jn<MapCodec<? extends dfc>> $$0) {
-      jn.a($$0, "block", dfc.p);
-      jn.a($$0, "air", ddy.a);
-      jn.a($$0, "amethyst", ddz.a);
-      jn.a($$0, "amethyst_cluster", dea.b);
-      jn.a($$0, "anvil", deb.a);
-      jn.a($$0, "attached_stem", dec.a);
-      jn.a($$0, "azalea", ded.a);
-      jn.a($$0, "vicious_potato", don.b);
-      jn.a($$0, "bamboo_sapling", dee.a);
-      jn.a($$0, "bamboo_stalk", def.a);
-      jn.a($$0, "banner", deg.a);
-      jn.a($$0, "barrel", deh.a);
-      jn.a($$0, "barrier", dei.a);
-      jn.a($$0, "base_coral_fan", dej.a);
-      jn.a($$0, "base_coral_plant", dek.a);
-      jn.a($$0, "base_coral_wall_fan", dem.b);
-      jn.a($$0, "beacon", det.a);
-      jn.a($$0, "bed", deu.a);
-      jn.a($$0, "beehive", dev.a);
-      jn.a($$0, "beetroot", dew.a);
-      jn.a($$0, "bell", dex.a);
-      jn.a($$0, "big_brain", dey.b);
-      jn.a($$0, "big_dripleaf", dez.a);
-      jn.a($$0, "big_dripleaf_stem", dfa.a);
-      jn.a($$0, "blast_furnace", dfb.c);
-      jn.a($$0, "brewing_stand", dfg.a);
-      jn.a($$0, "brushable", dfh.a);
-      jn.a($$0, "bubble_column", dfi.a);
-      jn.a($$0, "budding_amethyst", dfk.b);
-      jn.a($$0, "button", dfm.a);
-      jn.a($$0, "cactus", dfn.a);
-      jn.a($$0, "cake", dfo.a);
-      jn.a($$0, "calibrated_sculk_sensor", dfp.a);
-      jn.a($$0, "campfire", dfq.a);
-      jn.a($$0, "candle_cake", dfs.c);
-      jn.a($$0, "candle", dfr.c);
-      jn.a($$0, "carpet", dft.a);
-      jn.a($$0, "carrot", dfu.a);
-      jn.a($$0, "cartography_table", dfv.a);
-      jn.a($$0, "carved_pumpkin", dhx.c);
-      jn.a($$0, "poisonous_potato_zombie_head_block", dli.b);
-      jn.a($$0, "poisonous_potato_zombie_head_hat", dhy.a);
-      jn.a($$0, "cauldron", dfx.d);
-      jn.a($$0, "cave_vines", dfz.c);
-      jn.a($$0, "cave_vines_plant", dga.c);
-      jn.a($$0, "ceiling_hanging_sign", dgb.a);
-      jn.a($$0, "chain", dgc.a);
-      jn.a($$0, "cherry_leaves", dge.a);
-      jn.a($$0, "chest", dgf.b);
-      jn.a($$0, "chiseled_book_shelf", dgg.a);
-      jn.a($$0, "chorus_flower", dgh.a);
-      jn.a($$0, "chorus_plant", dgi.a);
-      jn.a($$0, "strong_roots", dno.j);
-      jn.a($$0, "weak_roots", dox.a);
-      jn.a($$0, "powerful_potato", dlm.a);
-      jn.a($$0, "potato_peels", dle.a);
-      jn.a($$0, "corrupted_potato_peels", dgv.a);
-      jn.a($$0, "potato_refinery", dlg.c);
-      jn.a($$0, "poisonous_mashed_potato", dkd.a);
-      jn.a($$0, "floatater", dih.a);
-      jn.a($$0, "cocoa", dgj.a);
-      jn.a($$0, "colored_falling", dgk.a);
-      jn.a($$0, "command", dgl.a);
-      jn.a($$0, "comparator", dgm.a);
-      jn.a($$0, "composter", dgn.a);
-      jn.a($$0, "concrete_powder", dgo.a);
-      jn.a($$0, "conduit", dgp.a);
-      jn.a($$0, "copper_bulb_block", dgq.a);
-      jn.a($$0, "coral", dgr.b);
-      jn.a($$0, "coral_fan", dgs.b);
-      jn.a($$0, "coral_plant", dgt.a);
-      jn.a($$0, "coral_wall_fan", dgu.e);
-      jn.a($$0, "crafter", dgw.a);
-      jn.a($$0, "crafting_table", dgx.a);
-      jn.a($$0, "crop", dgy.d);
-      jn.a($$0, "crying_obsidian", dha.a);
-      jn.a($$0, "daylight_detector", dhb.a);
-      jn.a($$0, "dead_bush", dhc.a);
-      jn.a($$0, "decorated_pot", dhd.a);
-      jn.a($$0, "detector_rail", dhe.d);
-      jn.a($$0, "dirt_path", dhh.a);
-      jn.a($$0, "dispenser", dhi.a);
-      jn.a($$0, "door", dhj.a);
-      jn.a($$0, "double_plant", dhl.a);
-      jn.a($$0, "dragon_egg", dhm.a);
-      jn.a($$0, "drop_experience", dhn.a);
-      jn.a($$0, "drop_experience_transparent", dho.c);
-      jn.a($$0, "dropper", dhp.d);
-      jn.a($$0, "enchantment_table", dhq.a);
-      jn.a($$0, "ender_chest", dhv.b);
-      jn.a($$0, "end_gateway", dhr.a);
-      jn.a($$0, "end_portal", dhs.a);
-      jn.a($$0, "end_portal_frame", dht.a);
-      jn.a($$0, "end_rod", dhu.b);
-      jn.a($$0, "farm", dic.a);
-      jn.a($$0, "fence", did.i);
-      jn.a($$0, "fence_gate", die.a);
-      jn.a($$0, "fire", dif.c);
-      jn.a($$0, "fletching_table", dig.a);
-      jn.a($$0, "flower", dii.b);
-      jn.a($$0, "flower_pot", dij.a);
-      jn.a($$0, "frogspawn", dik.a);
-      jn.a($$0, "frosted_ice", dil.a);
-      jn.a($$0, "fungus", dim.a);
-      jn.a($$0, "furnace", din.c);
-      jn.a($$0, "glazed_terracotta", dip.a);
-      jn.a($$0, "glow_lichen", diq.a);
-      jn.a($$0, "grass", dir.a);
-      jn.a($$0, "grindstone", dis.a);
-      jn.a($$0, "half_transparent", diw.d);
-      jn.a($$0, "hanging_roots", dix.a);
-      jn.a($$0, "hay", diy.a);
-      jn.a($$0, "heavy_core", diz.a);
-      jn.a($$0, "honey", dja.a);
-      jn.a($$0, "hopper", djb.a);
-      jn.a($$0, "huge_mushroom", djd.a);
-      jn.a($$0, "ice", dje.e);
-      jn.a($$0, "infested", djf.a);
-      jn.a($$0, "infested_rotated_pillar", djg.b);
-      jn.a($$0, "iron_bars", djh.i);
-      jn.a($$0, "jack_o_lantern", dfw.a);
-      jn.a($$0, "jigsaw", dji.a);
-      jn.a($$0, "jukebox", djj.a);
-      jn.a($$0, "kelp", djk.c);
-      jn.a($$0, "kelp_plant", djl.c);
-      jn.a($$0, "ladder", djm.a);
-      jn.a($$0, "lantern", djn.a);
-      jn.a($$0, "lava_cauldron", djo.d);
-      jn.a($$0, "layered_cauldron", djp.d);
-      jn.a($$0, "leaves", djq.b);
-      jn.a($$0, "lectern", djr.a);
-      jn.a($$0, "lever", djt.a);
-      jn.a($$0, "light", dju.a);
-      jn.a($$0, "lightning_rod", djv.b);
-      jn.a($$0, "liquid", djw.a);
-      jn.a($$0, "loom", djy.a);
-      jn.a($$0, "magma", djz.a);
-      jn.a($$0, "mangrove_leaves", dka.a);
-      jn.a($$0, "mangrove_propagule", dkb.a);
-      jn.a($$0, "mangrove_roots", dkc.a);
-      jn.a($$0, "moss", dkf.a);
-      jn.a($$0, "moving_piston", dsu.a);
-      jn.a($$0, "mud", dkg.a);
-      jn.a($$0, "mushroom", dkj.a);
-      jn.a($$0, "mycelium", dkk.a);
-      jn.a($$0, "nether_portal", dkl.a);
-      jn.a($$0, "potato_portal", dlf.a);
-      jn.a($$0, "netherrack", dkp.a);
-      jn.a($$0, "nether_sprouts", dkm.a);
-      jn.a($$0, "potato_sprouts", dlh.a);
-      jn.a($$0, "nether_wart", dko.a);
-      jn.a($$0, "note", dkq.a);
-      jn.a($$0, "nylium", dkr.a);
-      jn.a($$0, "observer", dks.b);
-      jn.a($$0, "piglinwallskull", dku.b);
-      jn.a($$0, "pink_petals", dkv.a);
-      jn.a($$0, "piston_base", dsv.b);
-      jn.a($$0, "piston_head", dsw.b);
-      jn.a($$0, "pitcher_crop", dkx.c);
-      jn.a($$0, "player_head", dky.b);
-      jn.a($$0, "player_wall_head", dkz.b);
-      jn.a($$0, "pointed_dripstone", dla.a);
-      jn.a($$0, "potato", dld.a);
-      jn.a($$0, "potato_battery", dlc.a);
-      jn.a($$0, "pedestal", dkt.a);
-      jn.a($$0, "powder_snow", dlj.a);
-      jn.a($$0, "powered", dlk.a);
-      jn.a($$0, "powered_rail", dll.d);
-      jn.a($$0, "pressure_plate", dln.e);
-      jn.a($$0, "pumpkin", dlo.a);
-      jn.a($$0, "rail", dlp.d);
-      jn.a($$0, "redstone_lamp", dlt.a);
-      jn.a($$0, "redstone_ore", dlr.a);
-      jn.a($$0, "redstone_torch", dlu.c);
-      jn.a($$0, "redstone_wall_torch", dlv.h);
-      jn.a($$0, "redstone_wire", dls.a);
-      jn.a($$0, "repeater", dlx.a);
-      jn.a($$0, "respawn_anchor", dly.a);
-      jn.a($$0, "rooted_dirt", dma.a);
-      jn.a($$0, "roots", dmb.a);
-      jn.a($$0, "rotated_pillar", dmc.h);
-      jn.a($$0, "sapling", dme.e);
-      jn.a($$0, "scaffolding", dmf.a);
-      jn.a($$0, "sculk_catalyst", dmi.a);
-      jn.a($$0, "sculk", dmh.c);
-      jn.a($$0, "sculk_sensor", dmj.c);
-      jn.a($$0, "sculk_shrieker", dmk.a);
-      jn.a($$0, "sculk_vein", dmm.c);
-      jn.a($$0, "seagrass", dmo.a);
-      jn.a($$0, "sea_pickle", dmn.a);
-      jn.a($$0, "shulker_box", dmp.a);
-      jn.a($$0, "skull", dms.c);
-      jn.a($$0, "slab", dmt.a);
-      jn.a($$0, "slime", dmu.a);
-      jn.a($$0, "small_dripleaf", dmv.c);
-      jn.a($$0, "smithing_table", dmw.b);
-      jn.a($$0, "smoker", dmx.c);
-      jn.a($$0, "sniffer_egg", dmy.a);
-      jn.a($$0, "snow_layer", dmz.a);
-      jn.a($$0, "snowy_dirt", dna.b);
-      jn.a($$0, "soul_fire", dnb.c);
-      jn.a($$0, "soul_sand", dnc.a);
-      jn.a($$0, "spawner", dne.a);
-      jn.a($$0, "sponge", dnf.a);
-      jn.a($$0, "spore_blossom", dng.a);
-      jn.a($$0, "stained_glass_pane", dnj.j);
-      jn.a($$0, "stained_glass", dni.a);
-      jn.a($$0, "stair", dnk.a);
-      jn.a($$0, "standing_sign", dnl.a);
-      jn.a($$0, "stem", dnm.a);
-      jn.a($$0, "stonecutter", dnn.a);
-      jn.a($$0, "poisonous_potato_cutter", dlb.a);
-      jn.a($$0, "structure", dnp.a);
-      jn.a($$0, "structure_void", dnq.a);
-      jn.a($$0, "sugar_cane", dnr.a);
-      jn.a($$0, "sweet_berry_bush", dnu.a);
-      jn.a($$0, "tall_flower", dnv.c);
-      jn.a($$0, "tall_grass", dnw.a);
-      jn.a($$0, "tall_seagrass", dnx.c);
-      jn.a($$0, "target", dny.a);
-      jn.a($$0, "tinted_glass", dnz.a);
-      jn.a($$0, "tnt", doa.a);
-      jn.a($$0, "torchflower_crop", doc.a);
-      jn.a($$0, "torch", dob.d);
-      jn.a($$0, "transparent", dod.b);
-      jn.a($$0, "trapdoor", doe.a);
-      jn.a($$0, "trapped_chest", dof.n);
-      jn.a($$0, "trial_spawner", dog.a);
-      jn.a($$0, "trip_wire_hook", doi.a);
-      jn.a($$0, "tripwire", doh.a);
-      jn.a($$0, "turtle_egg", doj.a);
-      jn.a($$0, "twisting_vines_plant", dol.c);
-      jn.a($$0, "twisting_vines", dok.c);
-      jn.a($$0, "vault", dom.a);
-      jn.a($$0, "vine", doo.a);
-      jn.a($$0, "wall_banner", dop.a);
-      jn.a($$0, "wall_hanging_sign", dor.a);
-      jn.a($$0, "wall_sign", dos.a);
-      jn.a($$0, "wall_skull", dot.c);
-      jn.a($$0, "wall_torch", dou.f);
-      jn.a($$0, "wall", doq.a);
-      jn.a($$0, "waterlily", dov.a);
-      jn.a($$0, "waterlogged_transparent", dow.a);
-      jn.a($$0, "weathering_copper_bulb", doz.d);
-      jn.a($$0, "weathering_copper_door", dpa.l);
-      jn.a($$0, "weathering_copper_full", dpb.d);
-      jn.a($$0, "weathering_copper_grate", dpc.e);
-      jn.a($$0, "weathering_copper_slab", dpd.f);
-      jn.a($$0, "weathering_copper_stair", dpe.I);
-      jn.a($$0, "weathering_copper_trap_door", dpf.m);
-      jn.a($$0, "web", dpg.a);
-      jn.a($$0, "weeping_vines_plant", dpi.c);
-      jn.a($$0, "weeping_vines", dph.c);
-      jn.a($$0, "weighted_pressure_plate", dpj.e);
-      jn.a($$0, "wet_sponge", dpk.a);
-      jn.a($$0, "wither_rose", dpl.g);
-      jn.a($$0, "wither_skull", dpm.b);
-      jn.a($$0, "wither_wall_skull", dpn.b);
-      return jn.a($$0, "wool_carpet", dpo.c);
+      public Optional<bpp> a(dop $$0) {
+         return Optional.of($$0);
+      }
+
+      public Optional<bpp> a() {
+         return Optional.empty();
+      }
+   };
+   private static final dgh.b<dop, Optional<bqa>> o = new dgh.b<dop, Optional<bqa>>() {
+      public Optional<bqa> a(final dop $$0, final dop $$1) {
+         final bpp $$2 = new bpo($$0, $$1);
+         return Optional.of(new bqa() {
+            @Nullable
+            @Override
+            public cov createMenu(int $$0x, clx $$1x, cly $$2x) {
+               if ($$0.d($$2) && $$1.d($$2)) {
+                  $$0.e_($$1.l);
+                  $$1.e_($$1.l);
+                  return cpc.b($$0, $$1, $$2);
+               } else {
+                  return null;
+               }
+            }
+
+            @Override
+            public wx O_() {
+               if ($$0.ag()) {
+                  return $$0.O_();
+               } else {
+                  return (wx)($$1.ag() ? $$1.O_() : wx.c("container.chestDouble"));
+               }
+            }
+         });
+      }
+
+      public Optional<bqa> a(dop $$0) {
+         return Optional.of($$0);
+      }
+
+      public Optional<bqa> a() {
+         return Optional.empty();
+      }
+   };
+
+   @Override
+   public MapCodec<? extends dfd> a() {
+      return b;
+   }
+
+   protected dfd(drc.d $$0, Supplier<dok<? extends dop>> $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(c, it.c).a(d, drv.a).a(e, Boolean.valueOf(false)));
+   }
+
+   public static dgh.a g(drd $$0) {
+      drv $$1 = $$0.c(d);
+      if ($$1 == drv.a) {
+         return dgh.a.a;
+      } else {
+         return $$1 == drv.c ? dgh.a.b : dgh.a.c;
+      }
+   }
+
+   @Override
+   protected dkg a_(drd $$0) {
+      return dkg.b;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, emx.c, emx.c.a($$3));
+      }
+
+      if ($$2.a(this) && $$1.o().d()) {
+         drv $$6 = $$2.c(d);
+         if ($$0.c(d) == drv.a && $$6 != drv.a && $$0.c(c) == $$2.c(c) && h($$2) == $$1.g()) {
+            return $$0.a(d, $$6.a());
+         }
+      } else if (h($$0) == $$1) {
+         return $$0.a(d, drv.a);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      if ($$0.c(d) == drv.a) {
+         return m;
+      } else {
+         switch (h($$0)) {
+            case c:
+            default:
+               return i;
+            case d:
+               return j;
+            case e:
+               return k;
+            case f:
+               return l;
+         }
+      }
+   }
+
+   public static it h(drd $$0) {
+      it $$1 = $$0.c(c);
+      return $$0.c(d) == drv.b ? $$1.h() : $$1.i();
+   }
+
+   @Override
+   public drd a(cxb $$0) {
+      drv $$1 = drv.a;
+      it $$2 = $$0.g().g();
+      emw $$3 = $$0.q().b_($$0.a());
+      boolean $$4 = $$0.h();
+      it $$5 = $$0.k();
+      if ($$5.o().d() && $$4) {
+         it $$6 = this.a($$0, $$5.g());
+         if ($$6 != null && $$6.o() != $$5.o()) {
+            $$2 = $$6;
+            $$1 = $$6.i() == $$5.g() ? drv.c : drv.b;
+         }
+      }
+
+      if ($$1 == drv.a && !$$4) {
+         if ($$2 == this.a($$0, $$2.h())) {
+            $$1 = drv.b;
+         } else if ($$2 == this.a($$0, $$2.i())) {
+            $$1 = drv.c;
+         }
+      }
+
+      return this.n().a(c, $$2).a(d, $$1).a(e, Boolean.valueOf($$3.a() == emx.c));
+   }
+
+   @Override
+   protected emw b_(drd $$0) {
+      return $$0.c(e) ? emx.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   private it a(cxb $$0, it $$1) {
+      drd $$2 = $$0.q().a_($$0.a().a($$1));
+      return $$2.a(this) && $$2.c(d) == drv.a ? $$2.c(c) : null;
+   }
+
+   @Override
+   protected void a(drd $$0, daz $$1, io $$2, drd $$3, boolean $$4) {
+      bps.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      if ($$1.B) {
+         return bpw.a;
+      } else {
+         bqa $$5 = this.b($$0, $$1, $$2);
+         if ($$5 != null) {
+            $$3.a($$5);
+            $$3.b(this.c());
+            ckp.a($$3, true);
+         }
+
+         return bpw.b;
+      }
+   }
+
+   protected avp<akn> c() {
+      return avs.i.b(avs.ao);
+   }
+
+   public dok<? extends dop> d() {
+      return this.a.get();
+   }
+
+   @Nullable
+   public static bpp a(dfd $$0, drd $$1, daz $$2, io $$3, boolean $$4) {
+      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
+   }
+
+   @Override
+   public dgh.c<? extends dop> a(drd $$0, daz $$1, io $$2, boolean $$3) {
+      BiPredicate<dba, io> $$4;
+      if ($$3) {
+         $$4 = ($$0x, $$1x) -> false;
+      } else {
+         $$4 = dfd::a;
+      }
+
+      return dgh.a(this.a.get(), dfd::g, dfd::h, c, $$0, $$1, $$2, $$4);
+   }
+
+   @Nullable
+   @Override
+   protected bqa b(drd $$0, daz $$1, io $$2) {
+      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
+   }
+
+   public static dgh.b<dop, Float2FloatFunction> a(final dpl $$0) {
+      return new dgh.b<dop, Float2FloatFunction>() {
+         public Float2FloatFunction a(dop $$0x, dop $$1) {
+            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
+         }
+
+         public Float2FloatFunction a(dop $$0x) {
+            return $$0::a;
+         }
+
+         public Float2FloatFunction a() {
+            return $$0::a;
+         }
+      };
+   }
+
+   @Override
+   public doi a(io $$0, drd $$1) {
+      return new dop($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return $$0.B ? a($$2, this.d(), dop::a) : null;
+   }
+
+   public static boolean a(dba $$0, io $$1) {
+      return a((daf)$$0, $$1) || b($$0, $$1);
+   }
+
+   private static boolean a(daf $$0, io $$1) {
+      io $$2 = $$1.c();
+      return $$0.a_($$2).g($$0, $$2);
+   }
+
+   private static boolean b(dba $$0, io $$1) {
+      List<cej> $$2 = $$0.a(
+         cej.class, new euh((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
+      );
+      if (!$$2.isEmpty()) {
+         for (cej $$3 : $$2) {
+            if ($$3.y()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected boolean c_(drd $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(drd $$0, daz $$1, io $$2) {
+      return cov.b(a(this, $$0, $$1, $$2, false));
+   }
+
+   @Override
+   protected drd a(drd $$0, dkn $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected drd a(drd $$0, dix $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(c, d, e);
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      doi $$4 = $$1.c_($$2);
+      if ($$4 instanceof dop) {
+         ((dop)$$4).l();
+      }
    }
 }

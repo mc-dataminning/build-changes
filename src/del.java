@@ -1,72 +1,98 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class del extends dfc implements dmr {
-   public static final dtt d = dts.C;
-   private static final exn a = dfc.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected del(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
+public class del extends dea {
+   public static final MapCodec<del> a = b(del::new);
+   public static final dsd b = drt.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final evf e = dea.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final evf f = dea.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
-   protected abstract MapCodec<? extends del> a();
-
-   protected void a(dtc $$0, dcb $$1, ir $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.F_().a(40));
-      }
-   }
-
-   protected static boolean e(dtc $$0, dbg $$1, ir $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (iw $$3 : iw.values()) {
-            if ($$1.b_($$2.a($$3)).a(awj.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return this.n().a(d, Boolean.valueOf($$1.a(awj.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+   public MapCodec<del> a() {
       return a;
    }
 
+   protected del(drc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+   }
+
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   protected void a(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      io $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               drd $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected evf b(drd $$0, daf $$1, io $$2, eur $$3) {
+      return e;
+   }
+
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return f;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      return $$1 == iw.a && !this.a($$0, (dcd)$$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, iw.b);
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      for (it $$3 : it.c.a) {
+         drd $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(awc.b)) {
+            return false;
+         }
+      }
+
+      drd $$5 = $$1.a_($$2.d());
+      return ($$5.a(dec.dQ) || $$5.a(avx.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(d);
+   protected void a(drd $$0, daz $$1, io $$2, brw $$3) {
+      $$3.a($$1.ai().j(), 1.0F);
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
    }
 }

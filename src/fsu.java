@@ -1,59 +1,99 @@
-public class fsu extends fon {
-   private static final xe a = xe.c("gui.abuseReport.title");
-   private static final xe b = xe.c("gui.abuseReport.message");
-   private static final xe c = xe.c("gui.abuseReport.type.chat");
-   private static final xe d = xe.c("gui.abuseReport.type.skin");
-   private static final xe r = xe.c("gui.abuseReport.type.name");
-   private static final int s = 6;
-   private final fon u;
-   private final gav v;
-   private final fsy w;
-   private final fme x = fme.d().a(6);
+public class fsu<T extends bsq> extends ftj<T> {
+   public boolean a;
+   public boolean b;
 
-   public fsu(fon $$0, gav $$1, fsy $$2) {
-      super(a);
-      this.u = $$0;
-      this.v = $$1;
-      this.w = $$2;
+   public fsu(fvw $$0) {
+      super($$0);
+   }
+
+   public static fwc c() {
+      float $$0 = -14.0F;
+      fwe $$1 = ftj.a(fwa.a, -14.0F);
+      fwf $$2 = $$1.a();
+      fvy $$3 = fvy.a(0.0F, -13.0F, 0.0F);
+      $$2.a("hat", fwb.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fwa(-0.5F)), $$3);
+      $$2.a("head", fwb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
+      $$2.a("body", fwb.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fvy.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", fwb.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fvy.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", fwb.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fvy.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", fwb.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fvy.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", fwb.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fvy.a(2.0F, -5.0F, 0.0F));
+      return fwc.a($$1, 64, 32);
    }
 
    @Override
-   public xe i() {
-      return xd.a(super.i(), b);
-   }
-
-   @Override
-   protected void aN_() {
-      this.x.c().b();
-      this.x.a(new fju(this.l, this.p), this.x.b().e(6));
-      this.x.a(new fjh(b, this.p).b(true), this.x.b().e(6));
-      fin $$0 = this.x.a(fin.a(c, $$0x -> this.m.a(new fsq(this.u, this.v, this.w.d()))).a());
-      if (!this.w.k()) {
-         $$0.j = false;
-         $$0.a(fjy.a(xe.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.w.j()) {
-         $$0.j = false;
-         $$0.a(fjy.a(xe.a("gui.socialInteractions.tooltip.report.no_messages", this.w.c())));
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.k.k = true;
+      int $$6 = -14;
+      this.m.e = 0.0F;
+      this.m.c = -14.0F;
+      this.m.d = -0.0F;
+      this.p.e -= 0.0F;
+      this.q.e -= 0.0F;
+      this.n.e *= 0.5F;
+      this.o.e *= 0.5F;
+      this.p.e *= 0.5F;
+      this.q.e *= 0.5F;
+      float $$7 = 0.4F;
+      if (this.n.e > 0.4F) {
+         this.n.e = 0.4F;
       }
 
-      this.x.a(fin.a(d, $$0x -> this.m.a(new fsw(this.u, this.v, this.w.d(), this.w.h()))).a());
-      this.x.a(fin.a(r, $$0x -> this.m.a(new fst(this.u, this.v, this.w.d(), this.w.c()))).a());
-      this.x.a(fmf.b(20));
-      this.x.a(fin.a(xd.e, $$0x -> this.d()).a());
-      this.x.a($$1 -> {
-         fil var10000 = this.c($$1);
-      });
-      this.c();
-   }
+      if (this.o.e > 0.4F) {
+         this.o.e = 0.4F;
+      }
 
-   @Override
-   protected void c() {
-      this.x.a();
-      fly.a(this.x, this.G());
-   }
+      if (this.n.e < -0.4F) {
+         this.n.e = -0.4F;
+      }
 
-   @Override
-   public void d() {
-      this.m.a(this.u);
+      if (this.o.e < -0.4F) {
+         this.o.e = -0.4F;
+      }
+
+      if (this.p.e > 0.4F) {
+         this.p.e = 0.4F;
+      }
+
+      if (this.q.e > 0.4F) {
+         this.q.e = 0.4F;
+      }
+
+      if (this.p.e < -0.4F) {
+         this.p.e = -0.4F;
+      }
+
+      if (this.q.e < -0.4F) {
+         this.q.e = -0.4F;
+      }
+
+      if (this.a) {
+         this.n.e = -0.5F;
+         this.o.e = -0.5F;
+         this.n.g = 0.05F;
+         this.o.g = -0.05F;
+      }
+
+      this.p.d = 0.0F;
+      this.q.d = 0.0F;
+      this.p.c = -5.0F;
+      this.q.c = -5.0F;
+      this.k.d = -0.0F;
+      this.k.c = -13.0F;
+      this.l.b = this.k.b;
+      this.l.c = this.k.c;
+      this.l.d = this.k.d;
+      this.l.e = this.k.e;
+      this.l.f = this.k.f;
+      this.l.g = this.k.g;
+      if (this.b) {
+         float $$8 = 1.0F;
+         this.k.c -= 5.0F;
+      }
+
+      int $$9 = -14;
+      this.n.a(-5.0F, -12.0F, 0.0F);
+      this.o.a(5.0F, -12.0F, 0.0F);
    }
 }

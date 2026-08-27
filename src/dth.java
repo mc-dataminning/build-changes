@@ -1,174 +1,111 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class dth {
-   private final Predicate<dtg>[][][] a;
-   private final int b;
-   private final int c;
+public class dth<T> implements dtp<T> {
+   private final jc<T> a;
+   private final axc<T> b;
+   private final dtq<T> c;
    private final int d;
 
-   public dth(Predicate<dtg>[][][] $$0) {
+   public dth(jc<T> $$0, int $$1, dtq<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
+   }
+
+   public dth(jc<T> $$0, int $$1, dtq<T> $$2) {
+      this($$0, $$1, $$2, axc.c(1 << $$1));
+   }
+
+   private dth(jc<T> $$0, int $$1, dtq<T> $$2, axc<T> $$3) {
       this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
+   }
+
+   public static <A> dtp<A> a(int $$0, jc<A> $$1, dtq<A> $$2, List<A> $$3) {
+      return new dth<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
          }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dto($$0);
       } else {
-         this.c = 0;
-         this.d = 0;
+         return $$1;
       }
    }
 
+   @Override
+   public void a(vx $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
+   }
+
+   @Override
+   public void b(vx $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
    public int a() {
-      return this.b;
+      int $$0 = wo.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wo.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
    }
 
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
    public int b() {
-      return this.c;
+      return this.b.b();
    }
 
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dtg>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dth.b a(dcd $$0, ir $$1, iw $$2, iw $$3) {
-      LoadingCache<ir, dtg> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dth.b a(ir $$0, iw $$1, iw $$2, LoadingCache<ir, dtg> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dtg)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
-      }
-
-      return new dth.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
-
-   @Nullable
-   public dth.b a(dcd $$0, ir $$1) {
-      LoadingCache<ir, dtg> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (ir $$4 : ir.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (iw $$5 : iw.values()) {
-            for (iw $$6 : iw.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dth.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   public static LoadingCache<ir, dtg> a(dcd $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dth.a($$0, $$1));
-   }
-
-   protected static ir a(ir $$0, iw $$1, iw $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         jv $$6 = new jv($$1.j(), $$1.k(), $$1.l());
-         jv $$7 = new jv($$2.j(), $$2.k(), $$2.l());
-         jv $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<ir, dtg> {
-      private final dcd a;
-      private final boolean b;
-
-      public a(dcd $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dtg a(ir $$0) {
-         return new dtg(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final ir a;
-      private final iw b;
-      private final iw c;
-      private final LoadingCache<ir, dtg> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(ir $$0, iw $$1, iw $$2, LoadingCache<ir, dtg> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public ir a() {
-         return this.a;
-      }
-
-      public iw b() {
-         return this.b;
-      }
-
-      public iw c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dtg a(int $$0, int $$1, int $$2) {
-         return (dtg)this.d.getUnchecked(dth.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   @Override
+   public dtp<T> c() {
+      return new dth<>(this.a, this.d, this.c, this.b.c());
    }
 }

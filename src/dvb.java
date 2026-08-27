@@ -1,9 +1,24 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dvb {
-   public static Codec<? extends duz> a(jn<Codec<? extends duz>> $$0) {
-      jn.a($$0, "noise", dyx.c);
-      jn.a($$0, "flat", dyp.c);
-      return jn.a($$0, "debug", dyl.c);
+public class dvb<T> {
+   private final dag a;
+   private final List<T> b;
+
+   public dvb(dag $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public dag a() {
+      return this.a;
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

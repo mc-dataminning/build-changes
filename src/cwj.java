@@ -1,117 +1,131 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public class cwj extends cuc {
-   public static final int a = 10;
-   public static final float b = 8.0F;
-   public static final float c = 2.5F;
-
-   public cwj(cuc.a $$0) {
-      super($$0);
-   }
-
-   public static cxl d() {
-      return cxl.a().a(btv.c, new btt(e, "Tool modifier", 8.0, btt.a.a), bsd.b).a(btv.e, new btt(f, "Tool modifier", -2.9F, btt.a.a), bsd.b).a();
-   }
-
-   public static cxw h() {
-      return new cxw(List.of(), 1.0F, 2);
-   }
-
-   @Override
-   public boolean a(dtc $$0, dca $$1, ir $$2, cly $$3) {
-      return !$$3.f();
-   }
-
-   @Override
-   public cwk c(cuh $$0) {
-      return cwk.f;
-   }
+public record cwj(cwj.a e, IntList f, IntList g, boolean h, boolean i) implements cww {
+   public static final cwj a = new cwj(cwj.a.a, IntList.of(), IntList.of(), false, false);
+   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
+   public static final Codec<cwj> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwj.a.g.fieldOf("shape").forGetter(cwj::a),
+               b.optionalFieldOf("colors", IntList.of()).forGetter(cwj::b),
+               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cwj::c),
+               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cwj::d),
+               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cwj::e)
+            )
+            .apply($$0, cwj::new)
+   );
+   private static final yv<ByteBuf, IntList> j = yt.e.a(yt.a()).a(IntArrayList::new, ArrayList::new);
+   public static final yv<ByteBuf, cwj> d = yv.a(cwj.a.f, cwj::a, j, cwj::b, j, cwj::c, yt.b, cwj::d, yt.b, cwj::e, cwj::new);
+   private static final wx k = wx.c("item.minecraft.firework_star.custom_color");
 
    @Override
-   public int b(cuh $$0) {
-      return 72000;
+   public void a(Consumer<wx> $$0, cvj $$1) {
+      this.a($$0);
+      this.b($$0);
    }
 
-   @Override
-   public void a(cuh $$0, dca $$1, bso $$2, int $$3) {
-      if ($$2 instanceof cly $$4) {
-         int $$5 = this.b($$0) - $$3;
-         if ($$5 >= 10) {
-            int $$6 = dae.j($$0);
-            if ($$6 <= 0 || $$4.bj()) {
-               if (!$$1.C) {
-                  $$0.a(1, $$4, bso.d($$2.fF()));
-                  if ($$6 == 0) {
-                     cnf $$7 = new cnf($$1, $$4, $$0);
-                     $$7.a($$4, $$4.dM(), $$4.dK(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
-                     if ($$4.fY()) {
-                        $$7.d = cme.a.c;
-                     }
+   public void a(Consumer<wx> $$0) {
+      $$0.accept(this.e.a().a(n.h));
+   }
 
-                     $$1.b($$7);
-                     $$1.a(null, $$7, avo.Ab, avq.h, 1.0F, 1.0F);
-                     if (!$$4.fY()) {
-                        $$4.gl().h($$0);
-                     }
-                  }
-               }
+   public void b(Consumer<wx> $$0) {
+      if (!this.f.isEmpty()) {
+         $$0.accept(a(wx.i().a(n.h), this.f));
+      }
 
-               $$4.b(avz.c.b(this));
-               if ($$6 > 0) {
-                  float $$8 = $$4.dK();
-                  float $$9 = $$4.dM();
-                  float $$10 = -aym.a($$8 * (float) (Math.PI / 180.0)) * aym.b($$9 * (float) (Math.PI / 180.0));
-                  float $$11 = -aym.a($$9 * (float) (Math.PI / 180.0));
-                  float $$12 = aym.b($$8 * (float) (Math.PI / 180.0)) * aym.b($$9 * (float) (Math.PI / 180.0));
-                  float $$13 = aym.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
-                  $$10 *= $$14 / $$13;
-                  $$11 *= $$14 / $$13;
-                  $$12 *= $$14 / $$13;
-                  $$4.j((double)$$10, (double)$$11, (double)$$12);
-                  $$4.v(20);
-                  if ($$4.aE()) {
-                     float $$15 = 1.1999999F;
-                     $$4.a(bst.a, new ewu(0.0, 1.1999999F, 0.0));
-                  }
+      if (!this.g.isEmpty()) {
+         $$0.accept(a(wx.c("item.minecraft.firework_star.fade_to").b(ww.v).a(n.h), this.g));
+      }
 
-                  avn $$16;
-                  if ($$6 >= 3) {
-                     $$16 = avo.Aa;
-                  } else if ($$6 == 2) {
-                     $$16 = avo.zZ;
-                  } else {
-                     $$16 = avo.zY;
-                  }
+      if (this.h) {
+         $$0.accept(wx.c("item.minecraft.firework_star.trail").a(n.h));
+      }
 
-                  $$1.a(null, $$4, $$16, avq.h, 1.0F, 1.0F);
-               }
-            }
+      if (this.i) {
+         $$0.accept(wx.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static wx a(xl $$0, IntList $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
+
+         $$0.b(a($$1.getInt($$2)));
       }
+
+      return $$0;
    }
 
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      cuh $$3 = $$1.b($$2);
-      if ($$3.m() >= $$3.n() - 1) {
-         return bqb.d($$3);
-      } else if (dae.j($$3) > 0 && !$$1.bj()) {
-         return bqb.d($$3);
-      } else {
-         $$1.c($$2);
-         return bqb.b($$3);
+   private static wx a(int $$0) {
+      csj $$1 = csj.b($$0);
+      return (wx)($$1 == null ? k : wx.c("item.minecraft.firework_star." + $$1.b()));
+   }
+
+   public cwj a(IntList $$0) {
+      return new cwj(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   }
+
+   public cwj.a a() {
+      return this.e;
+   }
+
+   public IntList b() {
+      return this.f;
+   }
+
+   public IntList c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
+   }
+
+   public boolean e() {
+      return this.i;
+   }
+
+   public static enum a implements ayz {
+      a(0, "small_ball"),
+      b(1, "large_ball"),
+      c(2, "star"),
+      d(3, "creeper"),
+      e(4, "burst");
+
+      private static final IntFunction<cwj.a> h = aww.a(cwj.a::b, values(), aww.a.a);
+      public static final yv<ByteBuf, cwj.a> f = yt.a(h, cwj.a::b);
+      public static final Codec<cwj.a> g = ayz.b(cwj.a::values);
+      private final int i;
+      private final String j;
+
+      private a(int $$0, String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
-   }
 
-   @Override
-   public boolean a(cuh $$0, bso $$1, bso $$2) {
-      $$0.a(1, $$2, bsc.a);
-      return true;
-   }
+      public xl a() {
+         return wx.c("item.minecraft.firework_star.shape." + this.j);
+      }
 
-   @Override
-   public int g() {
-      return 1;
+      public int b() {
+         return this.i;
+      }
+
+      public static cwj.a a(int $$0) {
+         return h.apply($$0);
+      }
+
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

@@ -1,16 +1,16 @@
-public class gjl extends glz<cfk, ful> {
-   private static final akt a = new akt("textures/entity/allay/allay.png");
+public class gjl extends giz<cey, fuc<cey>> {
+   private static final akn a = new akn("textures/entity/bear/polarbear.png");
 
-   public gjl(gkq.a $$0) {
-      super($$0, new ful($$0.a(fyr.a)), 0.4F);
-      this.a(new goy<>(this, $$0.d()));
+   public gjl(ght.a $$0) {
+      super($$0, new fuc<>($$0.a(fvv.ba)), 0.9F);
    }
 
-   public akt a(cfk $$0) {
+   public akn a(cey $$0) {
       return a;
    }
 
-   protected int a(cfk $$0, ir $$1) {
-      return 15;
+   protected void a(cey $$0, eyu $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

@@ -1,36 +1,43 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.function.Supplier;
 
-public class cdb extends ccr {
-   private static final ImmutableMap<bsb<?>, Float> a = ImmutableMap.builder()
-      .put(bsb.D, 8.0F)
-      .put(bsb.L, 12.0F)
-      .put(bsb.ae, 8.0F)
-      .put(bsb.af, 12.0F)
-      .put(bsb.aD, 15.0F)
-      .put(bsb.aJ, 12.0F)
-      .put(bsb.bm, 8.0F)
-      .put(bsb.bo, 10.0F)
-      .put(bsb.bx, 10.0F)
-      .put(bsb.by, 8.0F)
-      .put(bsb.bB, 8.0F)
-      .build();
+public class cdb<U extends cda<?>> {
+   public static final cdb<cck> a = a("dummy", cck::new);
+   public static final cdb<ccs> b = a("nearest_items", ccs::new);
+   public static final cdb<cct<bsq>> c = a("nearest_living_entities", cct::new);
+   public static final cdb<ccx> d = a("nearest_players", ccx::new);
+   public static final cdb<ccr> e = a("nearest_bed", ccr::new);
+   public static final cdb<cco> f = a("hurt_by", cco::new);
+   public static final cdb<cde> g = a("villager_hostiles", cde::new);
+   public static final cdb<cdd> h = a("villager_babies", cdd::new);
+   public static final cdb<ccy> i = a("secondary_pois", ccy::new);
+   public static final cdb<ccm> j = a("golem_detected", ccm::new);
+   public static final cdb<ccq<cfp>> k = a("armadillo_scare_detected", () -> new ccq<>(5, cfp::j, cfp::gA, cbu.G, 80));
+   public static final cdb<ccw> l = a("piglin_specific_sensor", ccw::new);
+   public static final cdb<ccv> m = a("piglin_brute_specific_sensor", ccv::new);
+   public static final cdb<ccn> n = a("hoglin_specific_sensor", ccn::new);
+   public static final cdb<cch> o = a("nearest_adult", cch::new);
+   public static final cdb<cci> p = a("axolotl_attackables", cci::new);
+   public static final cdb<cdc> q = a("axolotl_temptations", () -> new cdc(cft.a()));
+   public static final cdb<cdc> r = a("goat_temptations", () -> new cdc(cgh.a()));
+   public static final cdb<cdc> s = a("frog_temptations", () -> new cdc(cgb.a()));
+   public static final cdb<cdc> t = a("camel_temptations", () -> new cdc(cfy.b()));
+   public static final cdb<cdc> u = a("armadillo_temptations", () -> new cdc(cfq.b()));
+   public static final cdb<ccl> v = a("frog_attackables", ccl::new);
+   public static final cdb<ccp> w = a("is_in_water", ccp::new);
+   public static final cdb<cdf> x = a("warden_entity_sensor", cdf::new);
+   public static final cdb<cdc> y = a("sniffer_temptations", () -> new cdc(cgy.a()));
+   public static final cdb<ccj> z = a("breeze_attack_entity_sensor", ccj::new);
+   private final Supplier<U> A;
 
-   @Override
-   protected boolean a(bso $$0, bso $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   private cdb(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   private boolean e(bso $$0, bso $$1) {
-      float $$2 = (Float)a.get($$1.ak());
-      return $$1.g((brv)$$0) <= (double)($$2 * $$2);
+   public U a() {
+      return this.A.get();
    }
 
-   @Override
-   protected cbr<bso> b() {
-      return cbr.A;
-   }
-
-   private boolean b(bso $$0) {
-      return a.containsKey($$0.ak());
+   private static <U extends cda<?>> cdb<U> a(String $$0, Supplier<U> $$1) {
+      return jk.a(le.C, new akn($$0), new cdb<>($$1));
    }
 }

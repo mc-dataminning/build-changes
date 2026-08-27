@@ -1,8 +1,41 @@
-import java.util.function.BiConsumer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
-public class ne implements mn {
+public class ne implements ll {
+   private final ln d;
+   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
+
+   public ne(ln $$0) {
+      this.d = $$0;
+   }
+
+   public <T> ne a(asx<T> $$0, T $$1) {
+      this.e.put($$0.a(), () -> $$0.a($$1));
+      return this;
+   }
+
    @Override
-   public void generate(jc.a $$0, BiConsumer<aks<eru>, eru.a> $$1) {
-      $$1.accept(ern.bl, eru.b());
+   public CompletableFuture<?> a(lj $$0) {
+      JsonObject $$1 = new JsonObject();
+      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
+      return ll.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
+   }
+
+   @Override
+   public final String a() {
+      return "Pack Metadata";
+   }
+
+   public static ne a(ln $$0, wx $$1) {
+      return new ne($$0).a(asy.b, new asy($$1, t.a.a(asl.b), Optional.empty()));
+   }
+
+   public static ne a(ln $$0, wx $$1, col $$2) {
+      return a($$0, $$1).a(asf.a, new asf($$2));
    }
 }

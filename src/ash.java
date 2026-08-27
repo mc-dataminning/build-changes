@@ -1,26 +1,34 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public class ash {
-   private static final ash a = new ash(Map.of());
-   private final Map<atc<?>, ?> b;
+public record ash(List<ash.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<ash> d = RecordCodecBuilder.create($$0 -> $$0.group(ash.a.c.listOf().fieldOf("entries").forGetter(ash::a)).apply($$0, ash::new));
+   public static final asx<ash> a = asx.a("overlays", d);
 
-   private ash(Map<atc<?>, ?> $$0) {
-      this.b = $$0;
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   public <T> T a(atc<T> $$0) {
-      return (T)this.b.get($$0);
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(ash.a::b).toList();
    }
 
-   public static ash a() {
-      return a;
+   public List<ash.a> a() {
+      return this.b;
    }
 
-   public static <T> ash a(atc<T> $$0, T $$1) {
-      return new ash(Map.of($$0, $$1));
-   }
+   public static record a(axx<Integer> a, String b) {
+      static final Codec<ash.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axx.a(Codec.INT).fieldOf("formats").forGetter(ash.a::a), Codec.STRING.validate(ash::a).fieldOf("directory").forGetter(ash.a::b))
+               .apply($$0, ash.a::new)
+      );
 
-   public static <T1, T2> ash a(atc<T1> $$0, T1 $$1, atc<T2> $$2, T2 $$3) {
-      return new ash(Map.of($$0, $$1, $$2, (T1)$$3));
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
    }
 }

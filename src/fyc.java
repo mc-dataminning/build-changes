@@ -1,3 +1,8 @@
-public interface fyc {
-   void a(boolean var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fyc {
 }

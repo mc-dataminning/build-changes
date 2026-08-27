@@ -35,10 +35,10 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gwf.a.a(gwb.z, $$1);
-      gwf.a.a(gwb.A, $$2);
-      ab.a();
-      ab.d();
+      gtc.a.a(gsy.z, $$1);
+      gtc.a.a(gsy.A, $$2);
+      aa.a();
+      aa.d();
       OptionParser $$3 = new OptionParser();
       $$3.allowsUnrecognizedOptions();
       $$3.accepts("demo");
@@ -58,7 +58,7 @@ public class Main {
       OptionSpec<Integer> $$13 = $$3.accepts("proxyPort").withRequiredArg().defaultsTo("8080", new String[0]).ofType(Integer.class);
       OptionSpec<String> $$14 = $$3.accepts("proxyUser").withRequiredArg();
       OptionSpec<String> $$15 = $$3.accepts("proxyPass").withRequiredArg();
-      OptionSpec<String> $$16 = $$3.accepts("username").withRequiredArg().defaultsTo("Player" + ad.b() % 1000L, new String[0]);
+      OptionSpec<String> $$16 = $$3.accepts("username").withRequiredArg().defaultsTo("Player" + ac.c() % 1000L, new String[0]);
       OptionSpec<String> $$17 = $$3.accepts("uuid").withRequiredArg();
       OptionSpec<String> $$18 = $$3.accepts("xuid").withOptionalArg().defaultsTo("", new String[0]);
       OptionSpec<String> $$19 = $$3.accepts("clientId").withOptionalArg().defaultsTo("", new String[0]);
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(fgy.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(fep.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -110,13 +110,13 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = ayc.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = ayc.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = axv.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = axv.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
       File $$53 = $$32.has($$11) ? a($$32, $$11) : new File($$51, "resourcepacks/");
-      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : ju.a((String)$$16.value($$32));
+      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : jr.a((String)$$16.value($$32));
       String $$55 = $$32.has($$28) ? (String)$$28.value($$32) : null;
       String $$56 = (String)$$32.valueOf($$18);
       String $$57 = (String)$$32.valueOf($$19);
@@ -125,45 +125,45 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bmu.f.a(bms.a);
+         bmq.f.a(bmo.a);
       }
 
       o.h();
 
       try {
-         akv.a();
-         gwf.a.a(akv.b.get());
-         akv.c();
+         akp.a();
+         gtc.a.a(akp.b.get());
+         akp.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
          p $$64 = $$63.a("Initialization");
-         ayn.a($$64);
-         fgj.a(null, null, $$46, null, $$63);
-         fgj.a(null, $$51, $$63);
+         ayg.a($$64);
+         feb.a(null, null, $$46, null, $$63);
+         feb.a(null, $$51, $$63);
          return;
       }
 
       String $$65 = (String)$$29.value($$32);
-      fgy.a $$66 = fgy.a.a($$65);
+      fep.a $$66 = fep.a.a($$65);
       if ($$66 == null) {
          a.warn("Unrecognized user type: {}", $$65);
       }
 
-      fgy $$67 = new fgy((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
-      fuf $$68 = new fuf(
-         new fuf.d($$67, $$48, $$49, $$35),
-         new ezt($$38, $$39, $$40, $$41, $$42),
-         new fuf.a($$51, $$53, $$52, $$55),
-         new fuf.b($$43, $$46, $$50, $$44, $$45),
-         new fuf.c($$58, $$59, $$60, $$61)
+      fep $$67 = new fep((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      frm $$68 = new frm(
+         new frm.d($$67, $$48, $$49, $$35),
+         new exl($$38, $$39, $$40, $$41, $$42),
+         new frm.a($$51, $$53, $$52, $$55),
+         new frm.b($$43, $$46, $$50, $$44, $$45),
+         new frm.c($$58, $$59, $$60, $$61)
       );
-      ad.l();
+      ac.m();
       Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fgj $$0 = fgj.Q();
+            feb $$0 = feb.Q();
             if ($$0 != null) {
-               gvd $$1 = $$0.V();
+               gsa $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -172,30 +172,30 @@ public class Main {
       };
       $$69.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$69);
-      final fgj $$70 = null;
+      final feb $$70 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$70 = new fgj($$68);
+         $$70 = new feb($$68);
          RenderSystem.finishInitialization();
-      } catch (fug var82) {
-         ad.i();
+      } catch (frn var82) {
+         ac.j();
          a.warn("Failed to create window: ", var82);
          return;
       } catch (Throwable var83) {
          o $$73 = o.a(var83, "Initializing game");
          p $$74 = $$73.a("Initialization");
-         ayn.a($$74);
-         fgj.a($$70, null, $$68.d.b, null, $$73);
-         fgj.a($$70, $$68.c.a, $$73);
+         ayg.a($$74);
+         feb.a($$70, null, $$68.d.b, null, $$73);
+         feb.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      fgj $$75 = $$70;
+      feb $$75 = $$70;
       Thread $$76;
-      if ($$70.aO()) {
+      if ($$70.aN()) {
          $$76 = new Thread("Game thread") {
             @Override
             public void run() {
@@ -222,7 +222,7 @@ public class Main {
          }
       }
 
-      fay.a();
+      eyq.a();
 
       try {
          $$75.q();

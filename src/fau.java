@@ -2,7 +2,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 // $VF: synthetic class
 @ParametersAreNonnullByDefault
-@eyv
-@eyu
+@w
 interface fau {
 }

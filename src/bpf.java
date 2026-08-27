@@ -1,40 +1,67 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bpf {
-   private static final Codec<Either<Integer, bpf>> a = Codec.either(Codec.INT, lh.M.q().dispatch(bpf::c, bpg::codec));
-   public static final Codec<bpf> c = a.xmap(
-      $$0 -> (bpf)$$0.map(bpc::a, $$0x -> $$0x), $$0 -> $$0.c() == bpg.a ? Either.left(((bpc)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bpf> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bpf> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bpf> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
-   }
-
-   public static <T extends bpf> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return axu.b(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+public class bpf extends boz {
+   public static final MapCodec<bpf> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bpf::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
             } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
             }
-         })
+         }
       );
+   private final float b;
+   private final float d;
+   private final float e;
+
+   public static bpf a(float $$0, float $$1, float $$2) {
+      return new bpf($$0, $$1, $$2);
    }
 
-   public abstract int a(ayt var1);
+   private bpf(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   public abstract int a();
+   @Override
+   public float a(aym $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   }
 
-   public abstract int b();
+   @Override
+   public float a() {
+      return this.b;
+   }
 
-   public abstract bpg<?> c();
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bpa<?> c() {
+      return bpa.d;
+   }
+
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+   }
 }

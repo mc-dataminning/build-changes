@@ -1,119 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.HashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class atw implements att {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, atu> c;
-   private final List<asp> d;
+public class atw {
+   private static final Codec<atw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(ayn.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, atw::new)
+   );
+   public static final asx<atw> a = asx.a("filter", b);
+   private final List<ayn> c;
 
-   public atw(asr $$0, List<asp> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, atu> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (asp $$4 : $$1) {
-         auc $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<akt> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               atu $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new atu($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
-      }
-
-      this.c = $$2;
+   public atw(List<ayn> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   @Nullable
-   private auc a(asp $$0) {
-      try {
-         return $$0.a(auc.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   @Override
-   public Set<String> a() {
-      return this.c.keySet();
-   }
-
-   @Override
-   public Optional<aub> getResource(akt $$0) {
-      aud $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
-
-   @Override
-   public List<aub> a(akt $$0) {
-      aud $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<akt, aub> b(String $$0, Predicate<akt> $$1) {
-      a($$0);
-      Map<akt, aub> $$2 = new TreeMap<>();
-
-      for (atu $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public Map<akt, List<aub>> c(String $$0, Predicate<akt> $$1) {
-      a($$0);
-      Map<akt, List<aub>> $$2 = new TreeMap<>();
-
-      for (atu $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<asp> b() {
-      return this.d.stream();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(asp::close);
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

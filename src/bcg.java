@@ -1,29 +1,34 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
-import java.util.Optional;
 
-public class bcg extends DataFix {
+public class bcg extends bcr {
    public bcg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityHorseSplitFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bhp.a());
-      return this.fixTypeEverywhereTyped(
-         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bgf.z), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
-            })
-      );
-   }
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+      if (Objects.equals("EntityHorse", $$0)) {
+         int $$3 = $$2.get("Type").asInt(0);
 
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", azr.a($$0.getOps(), $$1));
+         String $$4 = switch ($$3) {
+            case 1 -> "Donkey";
+            case 2 -> "Mule";
+            case 3 -> "ZombieHorse";
+            case 4 -> "SkeletonHorse";
+            default -> "Horse";
+         };
+         $$2.remove("Type");
+         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bga.z).types().get($$4);
+         return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x));
+      } else {
+         return Pair.of($$0, $$1);
+      }
    }
 }

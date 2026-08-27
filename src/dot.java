@@ -1,78 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+public class dot extends doi {
+   private int a;
 
-public class dot extends ddx {
-   public static final MapCodec<dot> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dms.a.b.fieldOf("kind").forGetter(ddx::b), u()).apply($$0, dot::new));
-   public static final dtw d = djc.aE;
-   private static final Map<iw, exn> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         iw.c,
-         dfc.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         iw.d,
-         dfc.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         iw.f,
-         dfc.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         iw.e,
-         dfc.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
-
-   @Override
-   public MapCodec<? extends dot> a() {
-      return c;
-   }
-
-   protected dot(dms.a $$0, dtb.d $$1) {
-      super($$0, $$1);
-      this.k(this.n().a(d, iw.c));
+   public dot(io $$0, drd $$1) {
+      super(dok.s, $$0, $$1);
    }
 
    @Override
-   public String g() {
-      return this.q().a();
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("OutputSignal", this.a);
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return b.get($$0.c(d));
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.a = $$0.h("OutputSignal");
    }
 
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      dbg $$2 = $$0.q();
-      ir $$3 = $$0.a();
-      iw[] $$4 = $$0.f();
-
-      for (iw $$5 : $$4) {
-         if ($$5.o().d()) {
-            iw $$6 = $$5.g();
-            $$1 = $$1.a(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   protected dtc a(dtc $$0, dmd $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

@@ -1,102 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class dhl extends dfl {
+public class dhl extends dlr implements ded {
    public static final MapCodec<dhl> a = b(dhl::new);
-   public static final dua<dty> b = dts.ae;
 
    @Override
-   public MapCodec<? extends dhl> a() {
+   public MapCodec<dhl> a() {
       return a;
    }
 
-   public dhl(dtb.d $$0) {
+   public dhl(drc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dty.b));
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      dty $$6 = $$0.c(b);
-      if ($$1.o() != iw.a.b || $$6 == dty.b != ($$1 == iw.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dty.b && $$1 == iw.a && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return dfe.a.n();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      ir $$1 = $$0.a();
-      dca $$2 = $$0.q();
-      return $$1.v() < $$2.am() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public void a(dca $$0, ir $$1, dtc $$2, bso $$3, cuh $$4) {
-      ir $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.n().a(b, dty.a)), 3);
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      if ($$0.c(b) != dty.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dtc $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == dty.b;
-      }
-   }
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      io $$4 = $$2.c();
+      drd $$5 = dec.bt.n();
+      Optional<ix.c<egp>> $$6 = $$0.H_().d(lf.aI).b(sk.n);
 
-   public static void a(dcb $$0, dtc $$1, ir $$2, int $$3) {
-      ir $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, dty.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, dty.a)), $$3);
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         io $$8 = $$4;
 
-   public static dtc c(dcd $$0, ir $$1, dtc $$2) {
-      return $$2.b(dts.C) ? $$2.a(dts.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public dtc a(dca $$0, ir $$1, dtc $$2, cly $$3) {
-      if (!$$0.C) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
-         } else {
-            a($$2, $$0, $$1, null, $$3, $$3.fg());
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
          }
-      }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
+         drd $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((ded)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
 
-   @Override
-   public void a(dca $$0, cly $$1, ir $$2, dtc $$3, @Nullable dqc $$4, cuh $$5) {
-      super.a($$0, $$1, $$2, dfe.a.n(), $$4, $$5);
-   }
+         if ($$10.i()) {
+            ix<egp> $$12;
+            if ($$1.a(8) == 0) {
+               List<dzm<?, ?>> $$11 = $$0.t($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
 
-   protected static void b(dca $$0, ir $$1, dtc $$2, cly $$3) {
-      dty $$4 = $$2.c(b);
-      if ($$4 == dty.a) {
-         ir $$5 = $$1.d();
-         dtc $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dty.b) {
-            dtc $$7 = $$6.u().b(epf.c) ? dfe.al.n() : dfe.a.n();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, dfc.i($$6));
+               $$12 = ((ecq)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
          }
       }
    }
 
    @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected long a(dtc $$0, ir $$1) {
-      return aym.b($$1.u(), $$1.c($$0.c(b) == dty.b ? 0 : 1).v(), $$1.w());
+   public ded.a ar_() {
+      return ded.a.a;
    }
 }

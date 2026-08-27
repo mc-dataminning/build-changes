@@ -1,45 +1,66 @@
-import java.util.ArrayList;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface blr<S> {
-   void a(int var1, blw<S> var2, Object var3);
+public final class blr {
+   private final Object2ObjectMap<blk<?>, Object> a = new Object2ObjectArrayMap();
 
-   default void a(int $$0, Object $$1) {
-      this.a($$0, blw.b(), $$1);
+   public <T> void a(blk<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   void a(int var1);
+   @Nullable
+   public <T> T a(blk<T> $$0) {
+      return (T)this.a.get($$0);
+   }
 
-   public static class a<S> implements blr<S> {
-      private final List<bls<S>> a = new ArrayList<>();
-      private int b = -1;
+   public <T> T b(blk<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
 
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
+   public <T> T b(blk<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(blk<T>... $$0) {
+      for (blk<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
          }
       }
 
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
+      return null;
+   }
 
-      @Override
-      public void a(int $$0, blw<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new bls<>($$0, $$1, $$2));
-         }
-      }
+   @SafeVarargs
+   public final <T> T b(blk<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
 
-      public List<bls<S>> a() {
-         return this.a;
-      }
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
 
-      public int b() {
-         return this.b;
+   public void a(blr $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof blr $$1 ? this.a.equals($$1.a) : false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

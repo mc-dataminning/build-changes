@@ -1,52 +1,67 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bok<E> extends boo<bom.b<E>> {
-   public static <E> Codec<bok<E>> a(Codec<E> $$0) {
-      return bom.b.a($$0).listOf().xmap(bok::new, boo::e);
+public class bok<E extends boi> {
+   private final int a;
+   private final ImmutableList<E> b;
+
+   bok(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = boj.a($$0);
    }
 
-   public static <E> Codec<bok<E>> b(Codec<E> $$0) {
-      return axu.a(bom.b.a($$0).listOf()).xmap(bok::new, boo::e);
+   public static <E extends boi> bok<E> c() {
+      return new bok<>(ImmutableList.of());
    }
 
-   bok(List<? extends bom.b<E>> $$0) {
-      super($$0);
+   @SafeVarargs
+   public static <E extends boi> bok<E> a(E... $$0) {
+      return new bok<>(ImmutableList.copyOf($$0));
    }
 
-   public static <E> bok.a<E> a() {
-      return new bok.a<>();
+   public static <E extends boi> bok<E> a(List<E> $$0) {
+      return new bok<>($$0);
    }
 
-   public static <E> bok<E> b() {
-      return new bok<>(List.of());
+   public boolean d() {
+      return this.b.isEmpty();
    }
 
-   public static <E> bok<E> a(E $$0) {
-      return new bok<>(List.of(bom.a($$0, 1)));
-   }
-
-   public Optional<E> a(ayt $$0) {
-      return this.b($$0).map(bom.b::b);
-   }
-
-   public static class a<E> {
-      private final Builder<bom.b<E>> a = ImmutableList.builder();
-
-      public bok.a<E> a(E $$0) {
-         return this.a($$0, 1);
+   public Optional<E> b(aym $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return boj.a(this.b, $$1);
       }
+   }
 
-      public bok.a<E> a(E $$0, int $$1) {
-         this.a.add(bom.a($$0, $$1));
-         return this;
-      }
+   public List<E> e() {
+      return this.b;
+   }
 
-      public bok<E> a() {
-         return new bok<>(this.a.build());
+   public static <E extends boi> Codec<bok<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bok::a, bok::e);
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bok<?> $$1 = (bok<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

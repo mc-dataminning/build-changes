@@ -1,72 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dey extends den {
-   public static final dtw a = dts.R;
-   private static final exn d = exk.a(dfc.a(6.0, 0.0, 6.0, 10.0, 5.0, 10.0), dfc.a(1.0, 5.0, 1.0, 15.0, 15.0, 15.0));
-   public static final MapCodec<dey> b = b(dey::new);
-   public static final int c = 1000;
-
-   public dey(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, iw.c));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(a);
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      return this.n().a(a, $$0.g());
-   }
+public class dey extends dho implements ded, dew {
+   public static final MapCodec<dey> c = b(dey::new);
 
    @Override
    public MapCodec<dey> a() {
-      return b;
+      return c;
+   }
+
+   public dey(drc.d $$0) {
+      super($$0, it.a, q_, false);
+      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return d;
-   }
-
-   @Nullable
-   @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new dqa($$0, $$1);
+   protected dhp c() {
+      return (dhp)dec.sv;
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
-      if (!$$1.C && $$3 instanceof bse $$4) {
-         $$1.a($$2, dqe.T).ifPresent($$3x -> {
-            int $$4x = $$3x.b() + $$4.r();
-            $$4.ao();
-
-            while ($$4x >= 1000) {
-               cuh $$5 = new cuh(cuk.As);
-               $$5.b(ke.ae, new cyb(1000));
-               a($$1, $$2, $$5);
-               $$4x -= 1000;
-            }
-
-            $$3x.a($$4x);
-            $$3x.e();
-         });
-      }
+   protected drd a(drd $$0, drd $$1) {
+      return $$1.a(r_, $$0.c(r_));
    }
 
    @Override
-   protected dlw a_(dtc $$0) {
-      return dlw.c;
+   public ctq a(dbc $$0, io $$1, drd $$2) {
+      return new ctq(ctt.ws);
    }
 
-   @Nullable
    @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return a($$2, dqe.T, dqa::a);
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      return dew.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

@@ -1,41 +1,34 @@
-public class buq implements buh<bso> {
-   private final int a;
-   private final int b;
-   private bug.a c = bug.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public buq(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class buq extends buj<cga> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public buq() {
+      super(ImmutableMap.of(cbu.m, cbv.b), 100);
    }
 
-   @Override
-   public bug.a a() {
-      return this.c;
+   protected boolean a(aqn $$0, cga $$1) {
+      return $$1.ar() == btc.a;
    }
 
-   @Override
-   public final boolean e(aqt $$0, bso $$1, long $$2) {
-      this.c = bug.a.b;
-      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(aqn $$0, cga $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(aqt $$0, bso $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(aqn $$0, cga $$1, long $$2) {
+      if (!$$1.bi()) {
+         $$1.b(btc.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(aqt $$0, bso $$1, long $$2) {
-      this.c = bug.a.a;
+   protected void c(aqn $$0, cga $$1, long $$2) {
+      $$1.b(btc.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(aqn $$0, cga $$1, long $$2) {
+      this.e++;
    }
 }

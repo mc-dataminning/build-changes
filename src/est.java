@@ -1,63 +1,43 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Set;
 
-public class est extends eta {
-   public static final Codec<est> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(evr.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, est::new)
+public record est(float b, float c) implements esn {
+   public static final MapCodec<est> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(est::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(est::d)).apply($$0, est::new)
    );
-   private final evq b;
-   private final boolean c;
 
-   est(List<euu> $$0, evq $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   public eso b() {
+      return esp.g;
    }
 
    @Override
-   public etc b() {
-      return etd.f;
+   public Set<erw<?>> a() {
+      return ImmutableSet.of(erz.d);
    }
 
-   @Override
-   public Set<eud<?>> a() {
-      return this.b.a();
+   public boolean a(eph $$0) {
+      brw $$1 = $$0.c(erz.d);
+      int $$2 = 0;
+      if ($$1 instanceof bsq) {
+         $$2 = czc.h((bsq)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   @Override
-   public cuh a(cuh $$0, erp $$1) {
-      ayt $$2 = $$1.b();
-      return dae.a($$2, $$0, this.b.a($$1), this.c);
+   public static esn.a a(float $$0, float $$1) {
+      return () -> new est($$0, $$1);
    }
 
-   public static est.a a(evq $$0) {
-      return new est.a($$0);
+   public float c() {
+      return this.b;
    }
 
-   public static class a extends eta.a<est.a> {
-      private final evq a;
-      private boolean b;
-
-      public a(evq $$0) {
-         this.a = $$0;
-      }
-
-      protected est.a a() {
-         return this;
-      }
-
-      public est.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public etb b() {
-         return new est(this.g(), this.a, this.b);
-      }
+   public float d() {
+      return this.c;
    }
 }

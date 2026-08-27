@@ -1,65 +1,80 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public final class akq<E> implements Codec<ja<E>> {
-   private final aks<? extends jn<E>> a;
+public class akq extends IOException {
+   private final List<akq.a> a = Lists.newArrayList();
+   private final String b;
 
-   public static <E> akq<E> a(aks<? extends jn<E>> $$0) {
-      return new akq<>($$0);
+   public akq(String $$0) {
+      this.a.add(new akq.a());
+      this.b = $$0;
    }
 
-   private akq(aks<? extends jn<E>> $$0) {
-      this.a = $$0;
+   public akq(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new akq.a());
+      this.b = $$0;
    }
 
-   public <T> DataResult<T> a(ja<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof akr<?> $$3) {
-         Optional<jd<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
-            }
-
-            return (DataResult<T>)$$0.d()
-               .map(
-                  $$2x -> akt.a.encode($$2x.a(), $$1, $$2),
-                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
-               );
-         }
-      }
-
-      return DataResult.error(() -> "Can't access registry " + this.a);
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
    }
 
-   public <T> DataResult<Pair<ja<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof akr<?> $$2) {
-         Optional<jb<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            return akt.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$1x -> {
-                     akt $$2x = (akt)$$1x.getFirst();
-                     return $$3.get()
-                        .a(aks.a(this.a, $$2x))
-                        .<DataResult>map(DataResult::success)
-                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
-                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
-                        .setLifecycle(Lifecycle.stable());
-                  }
-               );
-         }
-      }
-
-      return DataResult.error(() -> "Can't access registry " + this.a);
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new akq.a());
    }
 
    @Override
-   public String toString() {
-      return "RegistryFixedCodec[" + this.a + "]";
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   }
+
+   public static akq a(Exception $$0) {
+      if ($$0 instanceof akq) {
+         return (akq)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new akq($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
+      }
    }
 }

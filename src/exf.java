@@ -1,32 +1,94 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class exf implements exg {
-   private final DoubleList a;
+public class exf {
+   private final List<ConcurrentLinkedQueue<exe>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public exf(DoubleList $$0) {
-      this.a = $$0;
+   public exf() {
+      this.c = this.e = this.f + 1;
    }
 
-   @Override
-   public boolean a(exg.a $$0) {
-      int $$1 = this.a.size() - 1;
+   public boolean a() {
+      return !this.b && this.c == this.e;
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
       }
-
-      return true;
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public void a(exe $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<exe> $$1 = this.i();
+         $$1.add($$0);
+      }
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<exe> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<exe> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<exe> j() {
+      return this.a.get(this.e);
    }
 }

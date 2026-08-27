@@ -1,140 +1,114 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class deq extends dfc implements dmr {
-   protected static final exn a = dfc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final exn b = dfc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dtt c = dts.C;
-   private final boolean d;
+public class deq extends dcs {
+   public static final MapCodec<deq> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(le.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, deq::new)
+   );
+   public static final dru d = dcs.b;
+   protected static final float e = 1.0F;
+   protected static final evf f = dea.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final evf g = dea.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final evf h = evc.a(f, g);
+   private static final Map<dep, deq> i = Maps.newHashMap();
+   private static final Iterable<eum> j = ImmutableList.of(new eum(0.5, 1.0, 0.5));
+   private final dep k;
 
-   public static boolean a(dca $$0, ir $$1) {
-      return g($$0.a_($$1));
+   @Override
+   public MapCodec<deq> a() {
+      return c;
    }
 
-   public static boolean g(dtc $$0) {
-      return $$0.a(awe.N) && $$0.b() instanceof deq;
-   }
-
-   protected deq(boolean $$0, dtb.d $$1) {
+   protected deq(dea $$0, drc.d $$1) {
       super($$1);
-      this.d = $$0;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends deq> a();
-
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      dug $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return c($$1, $$2.d());
-   }
-
-   @Override
-   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
-      }
-   }
-
-   protected dtc a(dtc $$0, dca $$1, ir $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
-      if (!$$1.C && $$1.a_($$2).a(this)) {
-         dug $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(ir $$0, dca $$1, dug $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      if ($$0 instanceof dep $$2) {
+         i.put($$2, this);
+         this.k = $$2;
       } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
+         throw new IllegalArgumentException("Expected block to be of " + dep.class + " was " + $$0.getClass());
       }
    }
 
-   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3) {
+   @Override
+   protected Iterable<eum> b(drd $$0) {
+      return j;
    }
 
-   protected dtc a(dca $$0, ir $$1, dtc $$2, boolean $$3) {
-      if ($$0.C) {
-         return $$2;
+   @Override
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return h;
+   }
+
+   @Override
+   protected bpy a(ctq $$0, drd $$1, daz $$2, io $$3, cly $$4, bpv $$5, eui $$6) {
+      if ($$0.a(ctt.os) || $$0.a(ctt.tX)) {
+         return bpy.e;
+      } else if (a($$6) && $$0.e() && $$1.c(d)) {
+         a($$4, $$1, $$2, $$3);
+         return bpy.a($$2.B);
       } else {
-         dug $$4 = $$2.c(this.c());
-         return new dlq($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == epf.c;
-      dtc $$3 = super.n();
-      iw $$4 = $$0.g();
-      boolean $$5 = $$4 == iw.f || $$4 == iw.e;
-      return $$3.a(this.c(), $$5 ? dug.b : dug.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract duf<dug> c();
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   protected bpw a(drd $$0, daz $$1, io $$2, cly $$3, eui $$4) {
+      bpw $$5 = dem.a($$1, $$2, dec.eg.n(), $$3);
+      if ($$5.a()) {
+         c($$0, $$1, $$2);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$5;
+   }
+
+   private static boolean a(eui $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public ctq a(dbc $$0, io $$1, drd $$2) {
+      return new ctq(dec.eg);
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      return $$1 == it.a && !$$0.a($$3, $$4) ? dec.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected int a(drd $$0, daz $$1, io $$2) {
+      return dem.d;
+   }
+
+   @Override
+   protected boolean c_(drd $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(drd $$0, enl $$1) {
+      return false;
+   }
+
+   public static drd a(dep $$0) {
+      return i.get($$0).n();
+   }
+
+   public static boolean g(drd $$0) {
+      return $$0.a(avx.bk, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

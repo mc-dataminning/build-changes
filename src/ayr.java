@@ -1,49 +1,54 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.function.Supplier;
+import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.logging.LogUtils;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.util.Collection;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public interface ayr {
-   ayr a(String var1);
+   ayr a = ($$0, $$1) -> true;
+   Logger b = LogUtils.getLogger();
 
-   void b(String var1);
+   boolean validate(ayq var1, byte[] var2);
 
-   public static class a implements ayr {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
+   default boolean a(byte[] $$0, byte[] $$1) {
+      return this.validate($$1x -> $$1x.update($$0), $$1);
+   }
 
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
+   private static boolean a(ayq $$0, byte[] $$1, Signature $$2) throws SignatureException {
+      $$0.update($$2::update);
+      return $$2.verify($$1);
+   }
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String b() {
-         if (this.c == null) {
-            this.c = this.b.get();
+   static ayr a(PublicKey $$0, String $$1) {
+      return ($$2, $$3) -> {
+         try {
+            Signature $$4 = Signature.getInstance($$1);
+            $$4.initVerify($$0);
+            return a($$2, $$3, $$4);
+         } catch (Exception var5) {
+            b.error("Failed to verify signature", var5);
+            return false;
          }
+      };
+   }
 
-         return this.c;
-      }
+   @Nullable
+   static ayr a(ServicesKeySet $$0, ServicesKeyType $$1) {
+      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
+      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
+            Signature $$3 = $$2xx.signature();
 
-      @Override
-      public ayr a(String $$0) {
-         return new ayr.a(this.a, () -> this.b() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.b(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
+            try {
+               return a($$1x, $$2x, $$3);
+            } catch (SignatureException var5) {
+               b.error("Failed to verify Services signature", var5);
+               return false;
+            }
+         });
    }
 }

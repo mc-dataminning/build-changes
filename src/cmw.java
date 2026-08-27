@@ -1,61 +1,49 @@
-public class cmw extends cml {
-   public cmw(bsb<? extends cmw> $$0, dca $$1) {
+public class cmw extends cme {
+   private int f = 200;
+
+   public cmw(bsc<? extends cmw> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public cmw(dca $$0, bso $$1, double $$2, double $$3, double $$4) {
-      super(bsb.aT, $$1, $$2, $$3, $$4, $$0);
+   public cmw(daz $$0, bsq $$1, ctq $$2) {
+      super(bsc.aV, $$1, $$0, $$2);
    }
 
-   public cmw(dca $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super(bsb.aT, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
+   public cmw(daz $$0, double $$1, double $$2, double $$3, ctq $$4) {
+      super(bsc.aV, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected void a(ewr $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         brv $$1 = $$0.a();
-         brv $$2 = this.t();
-         int $$3 = $$1.aB();
-         $$1.g(5);
-         if (!$$1.a(this.dX().a((cml)this, $$2), 5.0F)) {
-            $$1.i($$3);
-         } else if ($$2 instanceof bso) {
-            this.a((bso)$$2, $$1);
-         }
+   public void l() {
+      super.l();
+      if (this.dP().B && !this.b) {
+         this.dP().a(ky.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(ewq $$0) {
+   protected void a(bsq $$0) {
       super.a($$0);
-      if (!this.dU().C) {
-         brv $$1 = this.t();
-         if (!($$1 instanceof bsq) || this.dU().ab().b(dbw.c)) {
-            ir $$2 = $$0.a().a($$0.b());
-            if (this.dU().u($$2)) {
-               this.dU().b($$2, deo.a(this.dU(), $$2));
-            }
-         }
+      bre $$1 = new bre(brg.x, this.f, 0);
+      $$0.b($$1, this.I());
+   }
+
+   @Override
+   public void a(ud $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
       }
    }
 
    @Override
-   protected void a(ews $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         this.ao();
-      }
+   public void b(ud $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
    }
 
    @Override
-   public boolean bE() {
-      return false;
-   }
-
-   @Override
-   public boolean a(bqt $$0, float $$1) {
-      return false;
+   protected ctq x() {
+      return new ctq(ctt.vp);
    }
 }

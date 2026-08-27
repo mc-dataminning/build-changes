@@ -1,63 +1,65 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhr extends den {
+public class dhr extends dea implements dlb {
    public static final MapCodec<dhr> a = b(dhr::new);
+   private static final dru c = drt.C;
+   protected static final evf b = dea.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dhr> a() {
       return a;
    }
 
-   protected dhr(dtb.d $$0) {
+   protected dhr(drc.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dqc a(ir $$0, dtc $$1) {
-      return new drx($$0, $$1);
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected emw b_(drd $$0) {
+      return $$0.c(c) ? emx.c.a(false) : super.b_($$0);
    }
 
    @Nullable
    @Override
-   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
-      return a($$2, dqe.w, $$0.C ? drx::a : drx::b);
-   }
-
-   @Override
-   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
-      dqc $$4 = $$1.c_($$2);
-      if ($$4 instanceof drx) {
-         int $$5 = ((drx)$$4).f();
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
-
-            $$1.a(lb.aa, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
+   public drd a(cxb $$0) {
+      drd $$1 = super.a($$0);
+      if ($$1 != null) {
+         emw $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == emx.c));
+      } else {
+         return null;
       }
    }
 
    @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return cuh.i;
+   protected boolean a(drd $$0, dbc $$1, io $$2) {
+      io $$3 = $$2.c();
+      drd $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, it.a);
    }
 
    @Override
-   protected boolean a(dtc $$0, epd $$1) {
-      return false;
+   protected evf a(drd $$0, daf $$1, io $$2, eur $$3) {
+      return b;
+   }
+
+   @Override
+   protected drd a(drd $$0, it $$1, drd $$2, dba $$3, io $$4, io $$5) {
+      if ($$1 == it.b && !this.a($$0, $$3, $$4)) {
+         return dec.a.n();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, emx.c, emx.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

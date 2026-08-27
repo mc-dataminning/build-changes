@@ -1,102 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekv {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final elc.a e;
+public class ekv extends eky {
+   public static final MapCodec<ekv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ekv::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public ekv(int $$0, int $$1, int $$2, int $$3, elc.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public elc.a e() {
-      return this.e;
-   }
-
-   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      Builder<T, T> $$1 = ImmutableMap.builder();
-      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
-         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
-         .put($$0.createString("source_z"), $$0.createInt(this.c))
-         .put($$0.createString("delta_y"), $$0.createInt(this.d))
-         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
-      return new Dynamic($$0, $$0.createMap($$1.build()));
-   }
-
-   public static <T> ekv a(Dynamic<T> $$0) {
-      return new ekv(
-         $$0.get("source_x").asInt(0),
-         $$0.get("source_ground_y").asInt(0),
-         $$0.get("source_z").asInt(0),
-         $$0.get("delta_y").asInt(0),
-         elc.a.a($$0.get("dest_proj").asString(""))
-      );
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ekv $$1 = (ekv)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.d != $$1.d ? false : this.e == $$1.e;
-         }
+   public ekv(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         return false;
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.a;
-      $$0 = 31 * $$0 + this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      return 31 * $$0 + this.e.hashCode();
+   public boolean a(io $$0, io $$1, io $$2, aym $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= ayf.b(this.b, this.d, ayf.g((float)$$4, (float)this.e, (float)this.f));
    }
 
    @Override
-   public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.a
-         + ", sourceGroundY="
-         + this.b
-         + ", sourceZ="
-         + this.c
-         + ", deltaY="
-         + this.d
-         + ", destProjection="
-         + this.e
-         + "}";
+   protected ekz<?> a() {
+      return ekz.b;
    }
 }

@@ -1,192 +1,141 @@
-public class fqq extends fon {
-   private static final xe a = xe.c("jigsaw_block.joint_label");
-   private static final xe b = xe.c("jigsaw_block.pool");
-   private static final xe c = xe.c("jigsaw_block.name");
-   private static final xe d = xe.c("jigsaw_block.target");
-   private static final xe r = xe.c("jigsaw_block.final_state");
-   private static final xe s = xe.c("jigsaw_block.placement_priority");
-   private static final xe u = xe.c("jigsaw_block.placement_priority.tooltip");
-   private static final xe v = xe.c("jigsaw_block.selection_priority");
-   private static final xe w = xe.c("jigsaw_block.selection_priority.tooltip");
-   private final dre x;
-   private fiw y;
-   private fiw z;
-   private fiw A;
-   private fiw B;
-   private fiw C;
-   private fiw D;
-   int E;
-   private boolean F = true;
-   private fiu<dre.a> G;
-   private fin H;
-   private fin I;
-   private dre.a J;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   public fqq(dre $$0) {
-      super(fgb.a);
-      this.x = $$0;
+public class fqq extends flz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wx b = wx.c("selectWorld.enterName").a(n.h);
+   private static final wx c = wx.c("selectWorld.edit.resetIcon");
+   private static final wx d = wx.c("selectWorld.edit.openFolder");
+   private static final wx r = wx.c("selectWorld.edit.backup");
+   private static final wx s = wx.c("selectWorld.edit.backupFolder");
+   private static final wx u = wx.c("selectWorld.edit.optimize");
+   private static final wx v = wx.c("optimizeWorld.confirm.title");
+   private static final wx w = wx.c("optimizeWorld.confirm.description");
+   private static final wx x = wx.c("selectWorld.edit.save");
+   private static final int y = 200;
+   private static final int z = 4;
+   private static final int A = 98;
+   private final fjr B = fjr.d().a(5);
+   private final BooleanConsumer C;
+   private final eox.c D;
+   private final fgj E;
+
+   public static fqq a(feb $$0, eox.c $$1, BooleanConsumer $$2) throws IOException {
+      eoy $$3 = $$1.a($$1.h());
+      return new fqq($$0, $$1, $$3.b(), $$2);
    }
 
-   private void B() {
-      this.D();
-      this.m.a(null);
-   }
+   private fqq(feb $$0, eox.c $$1, String $$2, BooleanConsumer $$3) {
+      super(wx.c("selectWorld.edit.title"));
+      this.C = $$3;
+      this.D = $$1;
+      ffl $$4 = $$0.h;
+      this.B.a(new fjs(200, 20));
+      this.B.a(new fhh(b, $$4));
+      this.E = this.B.a(new fgj($$4, 200, 20, b));
+      this.E.a($$2);
+      fjr $$5 = fjr.e().a(4);
+      fga $$6 = $$5.a(fga.a(x, $$0x -> this.a(this.E.a())).a(98).a());
+      $$5.a(fga.a(ww.e, $$0x -> this.d()).a(98).a());
+      this.E.b($$1x -> $$6.j = !aza.h($$1x));
+      this.B.a(fga.a(c, $$1x -> {
+         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.j = false;
+      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.B.a(fga.a(d, $$1x -> ac.k().a($$1.a(eov.l).toFile())).a(200).a());
+      this.B.a(fga.a(r, $$1x -> {
+         boolean $$2x = a($$1);
+         this.C.accept(!$$2x);
+      }).a(200).a());
+      this.B.a(fga.a(s, $$1x -> {
+         eox $$2x = $$0.m();
+         Path $$3x = $$2x.d();
 
-   private void C() {
-      this.m.a(null);
-   }
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
+         }
 
-   private void D() {
-      this.m
-         .L()
-         .b(new aib(this.x.az_(), new akt(this.y.a()), new akt(this.z.a()), new akt(this.A.a()), this.B.a(), this.J, this.a(this.C.a()), this.a(this.D.a())));
-   }
+         ac.k().a($$3x.toFile());
+      }).a(200).a());
+      this.B.a(fga.a(u, $$2x -> $$0.a(new fkm(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
 
-   private int a(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
-      }
-   }
-
-   private void E() {
-      this.m.L().b(new ahg(this.x.az_(), this.E, this.F));
+            $$0.a(fqs.a($$0, this.C, $$0.as(), $$1, $$3x));
+         }, v, w, true))).a(200).a());
+      this.B.a(new fjs(200, 20));
+      this.B.a($$5);
+      this.B.a($$1x -> {
+         ffy var10000 = this.c($$1x);
+      });
    }
 
    @Override
-   public void d() {
-      this.C();
+   protected void aD_() {
+      this.b(this.E);
    }
 
    @Override
    protected void aN_() {
-      this.A = new fiw(this.p, this.n / 2 - 153, 20, 300, 20, b);
-      this.A.f(128);
-      this.A.a(this.x.d().a().toString());
-      this.A.b($$0x -> this.F());
-      this.d(this.A);
-      this.y = new fiw(this.p, this.n / 2 - 153, 55, 300, 20, c);
-      this.y.f(128);
-      this.y.a(this.x.b().toString());
-      this.y.b($$0x -> this.F());
-      this.d(this.y);
-      this.z = new fiw(this.p, this.n / 2 - 153, 90, 300, 20, d);
-      this.z.f(128);
-      this.z.a(this.x.c().toString());
-      this.z.b($$0x -> this.F());
-      this.d(this.z);
-      this.B = new fiw(this.p, this.n / 2 - 153, 125, 300, 20, r);
-      this.B.f(256);
-      this.B.a(this.x.f());
-      this.d(this.B);
-      this.C = new fiw(this.p, this.n / 2 - 153, 160, 98, 20, v);
-      this.C.f(3);
-      this.C.a(Integer.toString(this.x.l()));
-      this.C.a(fjy.a(w));
-      this.d(this.C);
-      this.D = new fiw(this.p, this.n / 2 - 50, 160, 98, 20, s);
-      this.D.f(3);
-      this.D.a(Integer.toString(this.x.k()));
-      this.D.a(fjy.a(u));
-      this.d(this.D);
-      this.J = this.x.j();
-      this.G = this.c(fiu.<dre.a>a(dre.a::a).a(dre.a.values()).a(this.J).a().a(this.n / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.J = $$1));
-      boolean $$0 = dji.m(this.x.n()).o().b();
-      this.G.j = $$0;
-      this.G.k = $$0;
-      this.c(new fij(this.n / 2 - 154, 185, 100, 20, xd.a, 0.0) {
-         {
-            this.b();
-         }
-
-         @Override
-         protected void b() {
-            this.b(xe.a("jigsaw_block.levels", fqq.this.E));
-         }
-
-         @Override
-         protected void a() {
-            fqq.this.E = aym.a(aym.b(0.0, 20.0, this.c));
-         }
-      });
-      this.c(fiu.b(this.F).a(this.n / 2 - 50, 185, 100, 20, xe.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.F = $$1));
-      this.I = this.c((fin)fin.a(xe.c("jigsaw_block.generate"), $$0x -> {
-         this.B();
-         this.E();
-      }).a(this.n / 2 + 54, 185, 100, 20).a());
-      this.H = this.c((fin)fin.a(xd.d, $$0x -> this.B()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c((fin)fin.a(xd.e, $$0x -> this.C()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.F();
+      this.c();
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.A);
+   protected void c() {
+      this.B.a();
+      fjl.a(this.B, this.G());
    }
 
    @Override
-   public void b(fia $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void d() {
+      this.C.accept(false);
    }
 
-   private void F() {
-      boolean $$0 = akt.i(this.y.a()) && akt.i(this.z.a()) && akt.i(this.A.a());
-      this.H.j = $$0;
-      this.I.j = $$0;
+   private void a(String $$0) {
+      try {
+         this.D.a($$0);
+      } catch (uo | uu | IOException var3) {
+         a.error("Failed to access world '{}'", this.D.f(), var3);
+         fii.a(this.m, this.D.f());
+      }
+
+      this.C.accept(true);
    }
 
-   @Override
-   public void a(fgj $$0, int $$1, int $$2) {
-      String $$3 = this.y.a();
-      String $$4 = this.z.a();
-      String $$5 = this.A.a();
-      String $$6 = this.B.a();
-      String $$7 = this.C.a();
-      String $$8 = this.D.a();
-      int $$9 = this.E;
-      dre.a $$10 = this.J;
-      this.b($$0, $$1, $$2);
-      this.y.a($$3);
-      this.z.a($$4);
-      this.A.a($$5);
-      this.B.a($$6);
-      this.E = $$9;
-      this.J = $$10;
-      this.G.a($$10);
-      this.C.a($$7);
-      this.D.a($$8);
-   }
+   public static boolean a(eox.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (!this.H.j || $$0 != 257 && $$0 != 335) {
+      try {
+         $$1 = $$0.l();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         wx $$4 = wx.c("selectWorld.edit.backupFailed");
+         wx $$5 = wx.b($$2.getMessage());
+         feb.Q().ax().a(new fii(fii.a.b, $$4, $$5));
          return false;
       } else {
-         this.B();
+         wx $$6 = wx.a("selectWorld.edit.backupCreated", $$0.f());
+         wx $$7 = wx.a("selectWorld.edit.backupSize", ayf.c((double)$$1 / 1048576.0));
+         feb.Q().ax().a(new fii(fii.a.b, $$6, $$7));
          return true;
       }
    }
 
    @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, b, this.n / 2 - 153, 10, 10526880);
-      this.A.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, c, this.n / 2 - 153, 45, 10526880);
-      this.y.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, d, this.n / 2 - 153, 80, 10526880);
-      this.z.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, r, this.n / 2 - 153, 115, 10526880);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, v, this.n / 2 - 153, 150, 10526880);
-      this.D.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, s, this.n / 2 - 50, 150, 10526880);
-      this.C.a($$0, $$1, $$2, $$3);
-      if (dji.m(this.x.n()).o().b()) {
-         $$0.b(this.p, a, this.n / 2 + 53, 150, 10526880);
-      }
+      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
    }
 }

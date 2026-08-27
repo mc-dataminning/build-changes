@@ -1,103 +1,47 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class fnw extends fmx<cpv> {
+   private static final akn D = new akn("container/horse/chest_slots");
+   private static final akn E = new akn("container/horse/saddle_slot");
+   private static final akn F = new akn("container/horse/llama_armor_slot");
+   private static final akn G = new akn("container/horse/armor_slot");
+   private static final akn H = new akn("textures/gui/container/horse.png");
+   private final cgk I;
+   private float J;
+   private float K;
 
-public class fnw extends fon {
-   private static final long a = 2000L;
-   private final arg b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dvx> r = ad.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dvx.c, 5526612);
-      $$0.put(dvx.d, 10066329);
-      $$0.put(dvx.e, 6250897);
-      $$0.put(dvx.f, 8434258);
-      $$0.put(dvx.g, 13750737);
-      $$0.put(dvx.h, 7497737);
-      $$0.put(dvx.i, 3159410);
-      $$0.put(dvx.j, 2213376);
-      $$0.put(dvx.k, 13421772);
-      $$0.put(dvx.l, 16769184);
-      $$0.put(dvx.m, 15884384);
-      $$0.put(dvx.n, 16777215);
-   });
-
-   public fnw(arg $$0) {
-      super(fgb.a);
-      this.b = $$0;
+   public fnw(cpv $$0, clx $$1, cgk $$2) {
+      super($$0, $$1, $$2.O_());
+      this.I = $$2;
    }
 
    @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void j() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fmj $$0) {
-      if (this.d) {
-         $$0.a(fmi.a, xe.c("narrator.loading.done"));
-      } else {
-         $$0.a(fmi.a, this.B());
+   protected void a(ffn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(H, $$4, $$5, 0, 0, this.c, this.d);
+      if (this.I instanceof cgj $$6 && $$6.u()) {
+         $$0.a(D, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gx() * 18, 54);
       }
-   }
 
-   private xe B() {
-      return xe.a("loading.progress", aym.a(this.b.f(), 0, 100));
+      if (this.I.f()) {
+         $$0.a(E, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      }
+
+      if (this.I.fR()) {
+         if (this.I instanceof cgn) {
+            $$0.a(F, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(G, $$4 + 7, $$5 + 35, 18, 18);
+         }
+      }
+
+      fnx.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.J, this.K, this.I);
    }
 
    @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
+   public void a(ffn $$0, int $$1, int $$2, float $$3) {
+      this.J = (float)$$1;
+      this.K = (float)$$2;
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ad.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.B(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(fia $$0, arg $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dvx $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
+      this.a($$0, $$1, $$2);
    }
 }

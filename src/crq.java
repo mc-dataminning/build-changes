@@ -1,115 +1,127 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class crq {
-   private static final Codec<crq> e = aw.a.flatComapMap($$0 -> new crq(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<crq> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(aw.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), axu.a(Codec.BOOL, "show_in_tooltip", true).forGetter(crq::a))
-            .apply($$0, crq::new)
-   );
-   public static final Codec<crq> a = axu.e(f, e);
-   public static final zc<wp, crq> b = zc.a(aw.b.a(za.a()), $$0 -> $$0.h, za.b, crq::a, crq::new);
-   public static final xe c = xe.c("item.canBreak").a(n.h);
-   public static final xe d = xe.c("item.canPlace").a(n.h);
-   private static final xe g = xe.c("item.canUse.unknown").a(n.h);
-   private final List<aw> h;
-   private final boolean i;
-   private final List<xe> j;
-   @Nullable
-   private dtg k;
-   private boolean l;
-   private boolean m;
+public class crq extends ctl {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   private crq(List<aw> $$0, boolean $$1, List<xe> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public crq(ctl.a $$0) {
+      super($$0);
    }
 
-   public crq(List<aw> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
-   }
+   @Override
+   public bpw a(cxd $$0) {
+      daz $$1 = $$0.q();
+      io $$2 = $$0.a();
+      io $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().a(dvw.C);
+            $$1.c(1505, $$2, 15);
+         }
 
-   private static boolean a(dtg $$0, @Nullable dtg $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         jo $$3 = $$0.c().I_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
+         return bpw.a($$1.B);
       } else {
-         return false;
-      }
-   }
-
-   public boolean a(dtg $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
-
-         for (aw $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
+         drd $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().a(dvw.C);
+               $$1.c(1505, $$3, 15);
             }
+
+            return bpw.a($$1.B);
+         } else {
+            return bpw.d;
+         }
+      }
+   }
+
+   public static boolean a(ctq $$0, daz $$1, io $$2) {
+      drd $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof ded $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof aqn) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((aqn)$$1, $$1.z, $$2, $$3);
+            }
+
+            $$0.h(1);
          }
 
-         this.l = false;
+         return true;
+      }
+
+      return false;
+   }
+
+   public static boolean a(ctq $$0, daz $$1, io $$2, @Nullable it $$3) {
+      if ($$1.a_($$2).a(dec.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof aqn)) {
+            return true;
+         } else {
+            aym $$4 = $$1.E_();
+
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               io $$6 = $$2;
+               drd $$7 = dec.bw.n();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               ix<dby> $$9 = $$1.t($$6);
+               if ($$9.a(avw.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = le.e.a(avx.ar, $$1.z).map($$0x -> ((dea)$$0x.a()).n()).orElse($$7);
+                     if ($$7.b(ddl.c)) {
+                        $$7 = $$7.a(ddl.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = le.e.a(avx.ap, $$1.z).map($$0x -> ((dea)$$0x.a()).n()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(avx.ar, $$0x -> $$0x.b(ddl.c))) {
+                  for (int $$10 = 0; !$$7.a((dbc)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(ddl.c, it.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((dbc)$$1, $$6)) {
+                  drd $$11 = $$1.a_($$6);
+                  if ($$11.a(dec.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dec.bw) && $$4.a(10) == 0) {
+                     ((ded)dec.bw).a((aqn)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
+      } else {
          return false;
       }
    }
 
-   public void a(Consumer<xe> $$0) {
-      this.j.forEach($$0);
-   }
-
-   public crq a(boolean $$0) {
-      return new crq(this.h, $$0, this.j);
-   }
-
-   private static List<xe> a(List<aw> $$0) {
-      for (aw $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
+   public static void a(dba $$0, io $$1, int $$2) {
+      drd $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof ded $$4) {
+         io $$5 = $$4.a($$1);
+         switch ($$4.ar_()) {
+            case a:
+               ayi.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, ky.O);
+               break;
+            case b:
+               ayi.a($$0, $$5, $$2, ky.O);
          }
+      } else if ($$3.a(dec.G)) {
+         ayi.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, ky.O);
       }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dfc)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof crq $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

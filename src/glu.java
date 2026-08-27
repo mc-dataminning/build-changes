@@ -1,20 +1,24 @@
-public class glu extends glz<cgl, fwj<cgl>> {
-   private static final akt a = new akt("textures/entity/llama/creamy.png");
-   private static final akt b = new akt("textures/entity/llama/white.png");
-   private static final akt g = new akt("textures/entity/llama/brown.png");
-   private static final akt k = new akt("textures/entity/llama/gray.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public glu(gkq.a $$0, fyq $$1) {
-      super($$0, new fwj<>($$0.a($$1)), 0.7F);
-      this.a(new goz(this, $$0.f()));
+public class glu extends gmf<cgm, fth<cgm>> {
+   private static final Map<cgo, akn> a = ac.a(Maps.newEnumMap(cgo.class), $$0 -> {
+      $$0.put(cgo.a, null);
+      $$0.put(cgo.b, new akn("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cgo.c, new akn("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cgo.d, new akn("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cgo.e, new akn("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public glu(gjp<cgm, fth<cgm>> $$0) {
+      super($$0);
    }
 
-   public akt a(cgl $$0) {
-      return switch ($$0.gK()) {
-         case a -> a;
-         case b -> b;
-         case c -> g;
-         case d -> k;
-      };
+   public void a(eyu $$0, gck $$1, int $$2, cgm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      akn $$10 = a.get($$3.u());
+      if ($$10 != null && !$$3.ch()) {
+         eyy $$11 = $$1.getBuffer(gcs.i($$10));
+         this.c().a($$0, $$11, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

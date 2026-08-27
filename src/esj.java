@@ -1,64 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public class esj extends ery {
-   public static final Codec<esj> a = a(esj::new);
+public class esj implements esn {
+   private static final esj b = new esj();
+   public static final MapCodec<esj> a = MapCodec.unit(b);
 
-   esj(List<esf> $$0, List<euu> $$1) {
-      super($$0, $$1);
+   private esj() {
    }
 
    @Override
-   public esg a() {
-      return esd.h;
+   public eso b() {
+      return esp.n;
    }
 
    @Override
-   protected erx a(List<? extends erx> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (erx)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (erx $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
+   public Set<erw<?>> a() {
+      return ImmutableSet.of(erz.j);
+   }
 
+   public boolean a(eph $$0) {
+      Float $$1 = $$0.c(erz.j);
+      if ($$1 != null) {
+         aym $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
          return true;
-      };
-      };
+      }
    }
 
-   public static esj.a a(esf.a<?>... $$0) {
-      return new esj.a($$0);
-   }
-
-   public static class a extends esf.a<esj.a> {
-      private final Builder<esf> a = ImmutableList.builder();
-
-      public a(esf.a<?>... $$0) {
-         for (esf.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected esj.a a() {
-         return this;
-      }
-
-      @Override
-      public esj.a c(esf.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public esf b() {
-         return new esj(this.a.build(), this.f());
-      }
+   public static esn.a c() {
+      return () -> b;
    }
 }

@@ -1,151 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bot<T> implements bny, bos<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bov<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public class bot extends bpb {
+   public static final MapCodec<bot> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bot::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static bot<Runnable> a(Executor $$0, String $$1) {
-      return new bot<>(new bov.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
-   }
-
-   public bot(bov<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
+   private bot(int $$0, int $$1) {
+      this.b = $$0;
       this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bnw.a.a(this);
    }
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
-
-      return true;
-   }
-
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
+   public static bot a(int $$0, int $$1) {
+      return new bot($$0, $$1);
    }
 
    @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
-      } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ad.a(this.g, $$0).run();
-            return true;
-         }
-      }
+   public int a(aym $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
+   public int a() {
+      return this.b;
    }
 
    @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
-         }
-      }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
    public int b() {
-      return this.e.c();
+      return this.f;
    }
 
-   public boolean c() {
-      return this.g() && !this.e.b();
+   @Override
+   public bpc<?> c() {
+      return bpc.c;
    }
 
    @Override
    public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String bx() {
-      return this.g;
-   }
-
-   @Override
-   public List<bnv> bu() {
-      return ImmutableList.of(bnv.a(this.g + "-queue-size", bnu.c, this::b));
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

@@ -1,16 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface bpg<P extends bpf> {
-   bpg<bpc> a = a("constant", bpc.b);
-   bpg<bpl> b = a("uniform", bpl.a);
-   bpg<box> c = a("biased_to_bottom", box.a);
-   bpg<boy> d = a("clamped", boy.a);
-   bpg<bpm> e = a("weighted_list", bpm.a);
-   bpg<bpa> f = a("clamped_normal", bpa.a);
+public class bpg extends boz {
+   public static final MapCodec<bpg> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bpg::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   Codec<P> codec();
+   private bpg(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends bpf> bpg<P> a(String $$0, Codec<P> $$1) {
-      return jn.a(lh.M, $$0, () -> $$1);
+   public static bpg b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new bpg($$0, $$1);
+      }
+   }
+
+   @Override
+   public float a(aym $$0) {
+      return ayf.b($$0, this.b, this.d);
+   }
+
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bpa<?> c() {
+      return bpa.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

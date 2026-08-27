@@ -1,23 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class dcy {
-   public static final Codec<dcy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(lb.bb.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dcy::new)
-   );
-   private final kz b;
-   private final float c;
+public class dcy extends dea {
+   public static final MapCodec<dcy> a = b(dcy::new);
 
-   public dcy(kz $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public MapCodec<? extends dcy> a() {
+      return a;
    }
 
-   public kz a() {
-      return this.b;
+   public dcy(drc.d $$0) {
+      super($$0);
    }
 
-   public boolean a(ayt $$0) {
-      return $$0.i() <= this.c;
+   @Override
+   protected void a(daz $$0, drd $$1, eui $$2, cmq $$3) {
+      if (!$$0.B) {
+         io $$4 = $$2.a();
+         $$0.a(null, $$4, avi.G, avj.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
+         $$0.a(null, $$4, avi.E, avj.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
+      }
    }
 }

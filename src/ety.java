@@ -1,38 +1,49 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ety extends eta {
-   public static final Codec<xe> a = axu.b(xg.a, (Function<xe, DataResult<xe>>)($$0 -> cya.h.encodeStart(ayf.a, $$0).map($$1 -> $$0)));
-   public static final Codec<ety> b = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(cya.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), esz.a(100).forGetter($$0x -> $$0x.d))).apply($$0, ety::new)
-   );
-   private final List<ark<xe>> c;
-   private final esz d;
+public class ety<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final ety<MinecraftServer> a = new ety<MinecraftServer>().a(new etv.a()).a(new etw.a());
+   private final Map<akn, etx.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, etx.a<C, ?>> d = Maps.newHashMap();
 
-   protected ety(List<euu> $$0, List<ark<xe>> $$1, esz $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   public ety<C> a(etx.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   @Override
-   protected cuh a(cuh $$0, erp $$1) {
-      $$0.a(ke.H, cya.a, this::a);
-      return $$0;
+   private <T extends etx<C>> etx.a<C, T> a(Class<?> $$0) {
+      return (etx.a<C, T>)this.d.get($$0);
    }
 
-   @VisibleForTesting
-   public cya a(cya $$0) {
-      List<ark<xe>> $$1 = this.d.a($$0.a(), this.c, 100);
-      return $$0.b($$1);
+   public <T extends etx<C>> ud a(T $$0) {
+      etx.a<C, T> $$1 = this.a($$0.getClass());
+      ud $$2 = new ud();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
    }
 
-   @Override
-   public etc b() {
-      return etd.K;
+   @Nullable
+   public etx<C> a(ud $$0) {
+      akn $$1 = akn.a($$0.l("Type"));
+      etx.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
+         }
+      }
    }
 }

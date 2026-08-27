@@ -1,60 +1,79 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record ady(UUID b, int c, @Nullable xq d, xx.a e, @Nullable xe f, xi g, xa.a h) implements zl<abw> {
-   public static final zc<wp, ady> a = zl.a(ady::a, ady::new);
+public class ady implements ze<abq> {
+   public static final yv<vx, ady> a = ze.a(ady::a, ady::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<bte> g;
+   private final int h;
 
-   private ady(wp $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xq::a), new xx.a($$0), we.a($$0, xg.d), xi.a($$0), xa.a.a.decode($$0));
+   public ady(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bte> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private void a(wp $$0) {
+   private ady(vx $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = bte.a($$0.readUnsignedByte());
+      this.h = $$0.l();
+   }
+
+   private void a(vx $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xq::a);
-      this.e.a($$0);
-      we.a($$0, this.f, xg.d);
-      xi.a($$0, this.g);
-      xa.a.a.encode($$0, this.h);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(bte.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public zn<ady> a() {
-      return agj.ab;
+   public zg<ady> a() {
+      return agc.ah;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public double b() {
+      return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   @Nullable
-   public xq f() {
+   public double f() {
       return this.d;
    }
 
-   public xx.a g() {
+   public float g() {
       return this.e;
    }
 
-   @Nullable
-   public xe h() {
+   public float h() {
       return this.f;
    }
 
-   public xi i() {
-      return this.g;
+   public int i() {
+      return this.h;
    }
 
-   public xa.a j() {
-      return this.h;
+   public Set<bte> j() {
+      return this.g;
    }
 }

@@ -1,48 +1,33 @@
-import com.google.common.base.Charsets;
-import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class ezr {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+public class ezr extends faq {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ezq> a;
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? azf.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
-      }
+   public static ezr a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ezr $$2 = new ezr();
+      $$2.a = Lists.newArrayList();
 
-      return $$3;
-   }
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
 
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
-   }
-
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
-      } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
-
-         try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
+            while ($$4.hasNext()) {
+               $$2.a.add(ezq.a($$4.next()));
+            }
          }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
+
+      return $$2;
    }
 }

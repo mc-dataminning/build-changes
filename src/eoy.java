@@ -1,140 +1,313 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class eoy extends eos<eoy.a> {
-   protected eoy(dvl $$0) {
-      super(dcj.a, $$0, new eoy.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class eoy implements Comparable<eoy> {
+   public static final wx a = wx.c("selectWorld.select");
+   private final dbd b;
+   private final eoz c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private wx i;
+
+   public eoy(dbd $$0, eoz $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public String a() {
+      return this.d;
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = jt.e($$0);
-      int $$3 = jt.c($$2);
-      eoy.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(jt.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dvd $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = ir.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
 
-               $$2 = jt.a($$2, iw.b);
-            }
-         }
+   public Path c() {
+      return this.h;
+   }
 
-         return $$6.a(jt.b(ir.a($$0)), jt.b(ir.b($$0)), jt.b(ir.c($$0)));
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(eoy $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
       }
    }
 
-   @Override
-   protected void h(long $$0) {
-      int $$1 = jt.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
+   public dbd g() {
+      return this.b;
+   }
 
-      long $$2 = jt.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
+   public daw h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public xl k() {
+      return aza.b(this.c.c()) ? wx.c("selectWorld.versionUnknown") : wx.b(this.c.c());
+   }
+
+   public eoz l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == eoy.a.b;
+   }
+
+   public eoy.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return eoy.a.c;
+      } else {
+         return $$2 > $$1 ? eoy.a.b : eoy.a.a;
       }
    }
 
-   @Override
-   protected void i(long $$0) {
-      long $$1 = jt.f($$0);
-      int $$2 = jt.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jt.a($$3, iw.a)) {
-            $$2--;
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return aa.b().d().a(this.c.d());
+   }
+
+   public wx s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private wx z() {
+      if (this.p()) {
+         return wx.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return wx.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return wx.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         xl $$0 = this.i() ? wx.i().b(wx.c("gameMode.hardcore").b(-65536)) : wx.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wx.c("selectWorld.commands"));
          }
 
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
+         if (this.e()) {
+            $$0.f(", ").b(wx.c("selectWorld.experimental").a(n.o));
+         }
+
+         xl $$1 = this.k();
+         xl $$2 = wx.b(", ").b(wx.c("selectWorld.version")).b(ww.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
          } else {
-            this.d.c.remove($$1);
-         }
-      }
-   }
-
-   @Override
-   protected dvd g(long $$0) {
-      dvd $$1 = (dvd)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(jt.f($$0));
-         if ($$2 != this.d.b && jt.c($$0) < $$2) {
-            long $$3 = jt.a($$0, iw.b);
-
-            dvd $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = jt.a($$3, iw.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dvd(15) : new dvd();
-         }
-      }
-   }
-
-   private static dvd a(dvd $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+            $$2.b($$1);
          }
 
-         return new dvd($$2);
+         $$0.b($$2);
+         return $$0;
       }
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   public wx t() {
+      return a;
    }
 
-   protected boolean l(long $$0) {
-      long $$1 = jt.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || jt.c($$0) >= $$2;
+   public boolean u() {
+      return !this.q();
    }
 
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
+   public boolean v() {
+      return !this.d() && !this.p();
    }
 
-   protected int c() {
-      return this.d.b;
+   public boolean w() {
+      return !this.q();
    }
 
-   protected static final class a extends eop<eoy.a> {
-      int b;
-      final Long2IntOpenHashMap c;
+   public boolean x() {
+      return !this.q();
+   }
 
-      public a(Long2ObjectOpenHashMap<dvd> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(boolean $$0, boolean $$1, String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public eoy.a a() {
-         return new eoy.a(this.a.clone(), this.c.clone(), this.b);
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends eoy {
+      private static final wx b = wx.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wx c = wx.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wx s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wx t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends eoy {
+      private static final wx b = wx.c("symlink_warning.more_info");
+      private static final wx c = wx.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wx s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wx t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
       }
    }
 }

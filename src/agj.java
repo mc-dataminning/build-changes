@@ -1,173 +1,20 @@
-public class agj {
-   public static final zn<acj> a = a("bundle");
-   public static final zn<aci> b = a("bundle_delimiter");
-   public static final zn<abx> c = a("add_entity");
-   public static final zn<aby> d = a("add_experience_orb");
-   public static final zn<abz> e = a("add_sub_grid");
-   public static final zn<aca> f = a("animate");
-   public static final zn<acb> g = a("award_stats");
-   public static final zn<acc> h = a("block_changed_ack");
-   public static final zn<acd> i = a("block_destruction");
-   public static final zn<ace> j = a("block_entity_data");
-   public static final zn<acf> k = a("block_event");
-   public static final zn<acg> l = a("block_update");
-   public static final zn<ach> m = a("boss_event");
-   public static final zn<ack> n = a("change_difficulty");
-   public static final zn<acl> o = a("chunk_batch_finished");
-   public static final zn<acm> p = a("chunk_batch_start");
-   public static final zn<acn> q = a("chunks_biomes");
-   public static final zn<aco> r = a("clear_titles");
-   public static final zn<acp> s = a("command_suggestions");
-   public static final zn<acq> t = a("commands");
-   public static final zn<acr> u = a("container_close");
-   public static final zn<acs> v = a("container_set_content");
-   public static final zn<act> w = a("container_set_data");
-   public static final zn<acu> x = a("container_set_slot");
-   public static final zn<acv> y = a("cooldown");
-   public static final zn<acw> z = a("custom_chat_completions");
-   public static final zn<acx> A = a("damage_event");
-   public static final zn<acy> B = a("debug_sample");
-   public static final zn<acz> C = a("delete_chat");
-   public static final zn<ada> D = a("disguised_chat");
-   public static final zn<adb> E = a("entity_event");
-   public static final zn<adc> F = a("explode");
-   public static final zn<add> G = a("forget_level_chunk");
-   public static final zn<ade> H = a("game_event");
-   public static final zn<adf> I = a("horse_screen_open");
-   public static final zn<adg> J = a("hurt_animation");
-   public static final zn<adh> K = a("initialize_border");
-   public static final zn<adj> L = a("level_chunk_with_light");
-   public static final zn<adk> M = a("level_event");
-   public static final zn<adl> N = a("level_particles");
-   public static final zn<adm> O = a("light_update");
-   public static final zn<ado> P = a("login");
-   public static final zn<adp> Q = a("map_item_data");
-   public static final zn<adq> R = a("merchant_offers");
-   public static final zn<adr.a> S = a("move_entity_pos");
-   public static final zn<adr.b> T = a("move_entity_pos_rot");
-   public static final zn<adr.c> U = a("move_entity_rot");
-   public static final zn<ads> V = a("move_vehicle");
-   public static final zn<adt> W = a("open_book");
-   public static final zn<adu> X = a("open_screen");
-   public static final zn<adv> Y = a("open_sign_editor");
-   public static final zn<adw> Z = a("place_ghost_recipe");
-   public static final zn<adx> aa = a("player_abilities");
-   public static final zn<ady> ab = a("player_chat");
-   public static final zn<adz> ac = a("player_combat_end");
-   public static final zn<aea> ad = a("player_combat_enter");
-   public static final zn<aeb> ae = a("player_combat_kill");
-   public static final zn<aec> af = a("player_info_remove");
-   public static final zn<aed> ag = a("player_info_update");
-   public static final zn<aee> ah = a("player_look_at");
-   public static final zn<aef> ai = a("player_position");
-   public static final zn<aeg> aj = a("recipe");
-   public static final zn<aeh> ak = a("remove_entities");
-   public static final zn<aei> al = a("remove_mob_effect");
-   public static final zn<aek> am = a("respawn");
-   public static final zn<ael> an = a("rotate_head");
-   public static final zn<aem> ao = a("section_blocks_update");
-   public static final zn<aen> ap = a("select_advancements_tab");
-   public static final zn<aeo> aq = a("server_data");
-   public static final zn<aep> ar = a("set_action_bar_text");
-   public static final zn<aeq> as = a("set_border_center");
-   public static final zn<aer> at = a("set_border_lerp_size");
-   public static final zn<aes> au = a("set_border_size");
-   public static final zn<aet> av = a("set_border_warning_delay");
-   public static final zn<aeu> aw = a("set_border_warning_distance");
-   public static final zn<aev> ax = a("set_camera");
-   public static final zn<aew> ay = a("set_carried_item");
-   public static final zn<aex> az = a("set_chunk_cache_center");
-   public static final zn<aey> aA = a("set_chunk_cache_radius");
-   public static final zn<aez> aB = a("set_default_spawn_position");
-   public static final zn<afa> aC = a("set_display_objective");
-   public static final zn<afb> aD = a("set_entity_data");
-   public static final zn<afc> aE = a("set_entity_link");
-   public static final zn<afd> aF = a("set_entity_motion");
-   public static final zn<afe> aG = a("set_equipment");
-   public static final zn<aff> aH = a("set_experience");
-   public static final zn<afg> aI = a("set_health");
-   public static final zn<afh> aJ = a("set_objective");
-   public static final zn<afi> aK = a("set_passengers");
-   public static final zn<afj> aL = a("set_player_team");
-   public static final zn<afk> aM = a("set_score");
-   public static final zn<afl> aN = a("set_simulation_distance");
-   public static final zn<afm> aO = a("set_subtitle_text");
-   public static final zn<afn> aP = a("set_time");
-   public static final zn<afo> aQ = a("set_title_text");
-   public static final zn<afp> aR = a("set_titles_animation");
-   public static final zn<afq> aS = a("sound_entity");
-   public static final zn<afr> aT = a("sound");
-   public static final zn<afs> aU = a("sound_sequence");
-   public static final zn<aft> aV = a("start_configuration");
-   public static final zn<afu> aW = a("stop_sound");
-   public static final zn<afv> aX = a("system_chat");
-   public static final zn<afw> aY = a("tab_list");
-   public static final zn<afx> aZ = a("tag_query");
-   public static final zn<afy> ba = a("take_item_entity");
-   public static final zn<afz> bb = a("teleport_entity");
-   public static final zn<agc> bc = a("update_advancements");
-   public static final zn<agd> bd = a("update_attributes");
-   public static final zn<age> be = a("update_mob_effect");
-   public static final zn<agf> bf = a("update_recipes");
-   public static final zn<agn> bg = b("accept_teleportation");
-   public static final zn<ago> bh = b("block_entity_tag_query");
-   public static final zn<agp> bi = b("change_difficulty");
-   public static final zn<agq> bj = b("chat_ack");
-   public static final zn<agr> bk = b("chat_command");
-   public static final zn<ags> bl = b("chat");
-   public static final zn<agt> bm = b("chat_session_update");
-   public static final zn<agu> bn = b("chunk_batch_received");
-   public static final zn<agv> bo = b("client_command");
-   public static final zn<agw> bp = b("command_suggestion");
-   public static final zn<agx> bq = b("configuration_acknowledged");
-   public static final zn<agy> br = b("container_button_click");
-   public static final zn<agz> bs = b("container_click");
-   public static final zn<aha> bt = b("container_close");
-   public static final zn<ahb> bu = b("container_slot_state_changed");
-   public static final zn<ahc> bv = b("debug_sample_subscription");
-   public static final zn<ahd> bw = b("edit_book");
-   public static final zn<ahe> bx = b("entity_tag_query");
-   public static final zn<ahf> by = b("interact");
-   public static final zn<ahg> bz = b("jigsaw_generate");
-   public static final zn<ahh> bA = b("lock_difficulty");
-   public static final zn<ahi.a> bB = b("move_player_pos");
-   public static final zn<ahi.b> bC = b("move_player_pos_rot");
-   public static final zn<ahi.c> bD = b("move_player_rot");
-   public static final zn<ahi.d> bE = b("move_player_status_only");
-   public static final zn<ahj> bF = b("move_vehicle");
-   public static final zn<ahk> bG = b("paddle_boat");
-   public static final zn<ahl> bH = b("pick_item");
-   public static final zn<ahm> bI = b("place_recipe");
-   public static final zn<ahn> bJ = b("player_abilities");
-   public static final zn<aho> bK = b("player_action");
-   public static final zn<ahp> bL = b("player_command");
-   public static final zn<ahq> bM = b("player_input");
-   public static final zn<ahr> bN = b("recipe_book_change_settings");
-   public static final zn<ahs> bO = b("recipe_book_seen_recipe");
-   public static final zn<aht> bP = b("rename_item");
-   public static final zn<ahu> bQ = b("seen_advancements");
-   public static final zn<ahv> bR = b("select_trade");
-   public static final zn<ahw> bS = b("set_beacon");
-   public static final zn<ahx> bT = b("set_carried_item");
-   public static final zn<ahy> bU = b("set_command_block");
-   public static final zn<ahz> bV = b("set_command_minecart");
-   public static final zn<aia> bW = b("set_creative_mode_slot");
-   public static final zn<aib> bX = b("set_jigsaw_block");
-   public static final zn<aic> bY = b("set_structure_block");
-   public static final zn<aid> bZ = b("sign_update");
-   public static final zn<aie> ca = b("swing");
-   public static final zn<aif> cb = b("teleport_to_entity");
-   public static final zn<aig> cc = b("use_item_on");
-   public static final zn<aih> cd = b("use_item");
-   public static final zn<aej> ce = a("reset_score");
-   public static final zn<aga> cf = a("ticking_state");
-   public static final zn<agb> cg = a("ticking_step");
+public record agj(int b) implements ze<age> {
+   public static final yv<vx, agj> a = ze.a(agj::a, agj::new);
 
-   private static <T extends zl<abw>> zn<T> a(String $$0) {
-      return new zn<>(zm.b, new akt($$0));
+   private agj(vx $$0) {
+      this($$0.l());
    }
 
-   private static <T extends zl<agl>> zn<T> b(String $$0) {
-      return new zn<>(zm.a, new akt($$0));
+   private void a(vx $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zg<agj> a() {
+      return agc.bi;
+   }
+
+   public void a(age $$0) {
+      $$0.a(this);
    }
 }

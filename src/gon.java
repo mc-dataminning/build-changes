@@ -1,13 +1,41 @@
-public class gon<T extends ciq> extends gpi<T, fvm<T>> {
-   private static final akt a = new akt("textures/entity/zombie/drowned_outer_layer.png");
-   private final fvm<T> b;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-   public gon(gmp<T, fvm<T>> $$0, fyo $$1) {
-      super($$0);
-      this.b = new fvm<>($$1.a(fyr.V));
+public class gon {
+   private static final gov[] a = new gov[]{
+      a("textures/entity/player/slim/alex.png", gov.a.a),
+      a("textures/entity/player/slim/ari.png", gov.a.a),
+      a("textures/entity/player/slim/efe.png", gov.a.a),
+      a("textures/entity/player/slim/kai.png", gov.a.a),
+      a("textures/entity/player/slim/makena.png", gov.a.a),
+      a("textures/entity/player/slim/noor.png", gov.a.a),
+      a("textures/entity/player/slim/steve.png", gov.a.a),
+      a("textures/entity/player/slim/sunny.png", gov.a.a),
+      a("textures/entity/player/slim/zuri.png", gov.a.a),
+      a("textures/entity/player/wide/alex.png", gov.a.b),
+      a("textures/entity/player/wide/ari.png", gov.a.b),
+      a("textures/entity/player/wide/efe.png", gov.a.b),
+      a("textures/entity/player/wide/kai.png", gov.a.b),
+      a("textures/entity/player/wide/makena.png", gov.a.b),
+      a("textures/entity/player/wide/noor.png", gov.a.b),
+      a("textures/entity/player/wide/steve.png", gov.a.b),
+      a("textures/entity/player/wide/sunny.png", gov.a.b),
+      a("textures/entity/player/wide/zuri.png", gov.a.b)
+   };
+
+   public static akn a() {
+      return a[6].a();
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public static gov a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
+
+   public static gov a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static gov a(String $$0, gov.a $$1) {
+      return new gov(new akn($$0), null, null, null, $$1, true);
    }
 }

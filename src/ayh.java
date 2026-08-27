@@ -1,15 +1,9 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+public interface ayh {
+   int a();
 
-@Deprecated
-public class ayh<T> {
-   private final Supplier<T> a;
+   String b();
 
-   public ayh(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
-   }
-
-   public T a() {
-      return this.a.get();
+   default wx d() {
+      return wx.c(this.b());
    }
 }

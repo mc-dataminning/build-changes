@@ -1,15 +1,57 @@
-public class gpy extends gpi<cfh, fyj<cfh>> {
-   private static final akt a = new akt("textures/entity/wolf/wolf_collar.png");
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gpy(gmp<cfh, fyj<cfh>> $$0) {
-      super($$0);
+public class gpy implements gpw {
+   private final gdt a;
+   private final gdr b;
+   private final gnv c;
+   private final boolean d;
+
+   public gpy(gdt $$0, gdr $$1, gnv $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(fbc $$0, gfg $$1, int $$2, cfh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.r() && !$$3.cm()) {
-         float[] $$10 = $$3.gJ().d();
-         fbg $$11 = $$1.getBuffer(gfo.e(a));
-         this.c().a($$0, $$11, $$2, gqp.d, $$10[0], $$10[1], $$10[2], 1.0F);
-      }
+   @Override
+   public List<gdh> a(@Nullable drd $$0, @Nullable it $$1, aym $$2) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d;
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   @Override
+   public gnv e() {
+      return this.c;
+   }
+
+   @Override
+   public gdt f() {
+      return this.a;
+   }
+
+   @Override
+   public gdr g() {
+      return this.b;
    }
 }

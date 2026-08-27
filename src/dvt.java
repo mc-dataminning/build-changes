@@ -1,89 +1,43 @@
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class dvt<T> implements dvo<T> {
-   private final jf<T> a;
+public class dvt<T extends dvy> {
+   private final T a;
    @Nullable
-   private T b;
-   private final dvp<T> c;
+   private jq b;
 
-   public dvt(jf<T> $$0, dvp<T> $$1, List<T> $$2) {
+   public dvt(T $$0) {
       this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
    }
 
-   public static <A> dvo<A> a(int $$0, jf<A> $$1, dvp<A> $$2, List<A> $$3) {
-      return new dvt<>($$1, $$2, $$3);
+   public void a(aqn $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
+   public T a() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
+   public void b(aqn $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
+   public void c(aqn $$0) {
+      this.a.a().a($$0).map(jq::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   @Override
-   public void a(we $$0) {
-      this.b = this.a.b($$0.l());
-   }
-
-   @Override
-   public void b(we $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wv.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dvo<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
+   private static void a(dbc $$0, @Nullable jq $$1, Consumer<dvz> $$2) {
+      if ($$1 != null) {
+         dsz $$3 = $$0.a($$1.a(), $$1.c(), dty.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

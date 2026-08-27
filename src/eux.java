@@ -1,47 +1,32 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record eux(Optional<bs> b, erp.b c) implements euu {
-   public static final Codec<eux> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(bs.a, "predicate").forGetter(eux::c), erp.b.e.fieldOf("entity").forGetter(eux::d)).apply($$0, eux::new)
-   );
+public class eux implements euy {
+   private final DoubleList a;
 
-   @Override
-   public euv b() {
-      return euw.h;
+   public eux(DoubleList $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public Set<eud<?>> a() {
-      return ImmutableSet.of(eug.f, this.c.a());
+   public boolean a(euy.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public boolean a(erp $$0) {
-      brv $$1 = $$0.c(this.c.a());
-      ewu $$2 = $$0.c(eug.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public int size() {
+      return this.a.size();
    }
 
-   public static euu.a a(erp.b $$0) {
-      return a($$0, bs.a.a());
-   }
-
-   public static euu.a a(erp.b $$0, bs.a $$1) {
-      return () -> new eux(Optional.of($$1.b()), $$0);
-   }
-
-   public static euu.a a(erp.b $$0, bs $$1) {
-      return () -> new eux(Optional.of($$1), $$0);
-   }
-
-   public Optional<bs> c() {
-      return this.b;
-   }
-
-   public erp.b d() {
-      return this.c;
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

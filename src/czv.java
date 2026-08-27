@@ -1,60 +1,57 @@
-public class czv extends cyq {
-   public czv(cyo $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
+
+public record czv(ix<ctl> d, int e, jz f, ctq g) {
+   public static final Codec<czv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               le.h.r().fieldOf("id").forGetter(czv::a),
+               axn.j.fieldOf("count").orElse(1).forGetter(czv::b),
+               jz.a.optionalFieldOf("components", jz.c).forGetter(czv::c)
+            )
+            .apply($$0, czv::new)
+   );
+   public static final yv<wi, czv> b = yv.a(yt.b(lf.G), czv::a, yt.f, czv::b, jz.b, czv::c, czv::new);
+   public static final yv<wi, Optional<czv>> c = b.a(yt::a);
+
+   public czv(day $$0) {
+      this($$0, 1);
    }
 
-   public boolean a(cpw $$0, dca $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cuh $$7 = $$0.a($$6);
-         if (!$$7.d()) {
-            if ($$7.a(dfe.cQ.q()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(dfe.cR.q()) && !$$3) {
-               $$3 = true;
-            } else if (($$7.a(awm.O) || $$7.a(cuk.vT)) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(cuk.qJ) || $$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            }
-         }
-      }
-
-      return $$2 && $$4 && $$3 && $$5;
+   public czv(day $$0, int $$1) {
+      this($$0.r().o(), $$1, jz.c);
    }
 
-   public cuh a(cpw $$0, jc.a $$1) {
-      cuh $$2 = new cuh(cuk.xF, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cuh $$4 = $$0.a($$3);
-         if (!$$4.d()) {
-            dnt $$5 = dnt.a($$4.f());
-            if ($$5 != null) {
-               $$2.b(ke.F, $$5.getSuspiciousEffects());
-               break;
-            }
-         }
-      }
-
-      return $$2;
+   public czv(ix<ctl> $$0, int $$1, jz $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public czv a(UnaryOperator<jz.a> $$0) {
+      return new czv(this.d, this.e, $$0.apply(jz.a()).a());
    }
 
-   @Override
-   public cze<?> ao_() {
-      return cze.o;
+   private static ctq a(ix<ctl> $$0, int $$1, jz $$2) {
+      return new ctq($$0, $$1, $$2.c());
+   }
+
+   public boolean a(ctq $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public ix<ctl> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public jz c() {
+      return this.f;
+   }
+
+   public ctq d() {
+      return this.g;
    }
 }

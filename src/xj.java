@@ -1,99 +1,104 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface xj {
-   Optional<azo> a = Optional.of(azo.a);
-   xj b = new xj() {
-      @Override
-      public <T> Optional<T> a(xj.a<T> $$0) {
-         return Optional.empty();
+public record xj(byte[] c) {
+   public static final Codec<xj> a = axn.n.xmap(xj::new, xj::b);
+   public static final int b = 256;
+
+   public xj(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
+   }
+
+   public static xj a(vx $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xj($$1);
+   }
+
+   public static void a(vx $$0, xj $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(ayr $$0, ayq $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xj $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public xj.a a(xk $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xj.a($$1) : new xj.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable xj c) {
+      public static final int a = -1;
+
+      public a(xj $$0) {
+         this(-1, $$0);
       }
 
-      @Override
-      public <T> Optional<T> a(xj.b<T> $$0, yb $$1) {
-         return Optional.empty();
+      public a(int $$0) {
+         this($$0, null);
       }
-   };
 
-   <T> Optional<T> a(xj.a<T> var1);
+      public static xj.a a(vx $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xj.a(xj.a($$0)) : new xj.a($$1);
+      }
 
-   <T> Optional<T> a(xj.b<T> var1, yb var2);
-
-   static xj e(final String $$0) {
-      return new xj() {
-         @Override
-         public <T> Optional<T> a(xj.a<T> $$0x) {
-            return $$0.accept($$0);
+      public static void a(vx $$0, xj.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xj.a($$0, $$1.b());
          }
+      }
 
-         @Override
-         public <T> Optional<T> a(xj.b<T> $$0x, yb $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
-   }
+      public Optional<xj> a(xk $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
 
-   static xj a(final String $$0, final yb $$1) {
-      return new xj() {
-         @Override
-         public <T> Optional<T> a(xj.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
+      public int a() {
+         return this.b;
+      }
 
-         @Override
-         public <T> Optional<T> a(xj.b<T> $$0x, yb $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
-   }
-
-   static xj a(xj... $$0) {
-      return a(ImmutableList.copyOf($$0));
-   }
-
-   static xj a(final List<? extends xj> $$0) {
-      return new xj() {
-         @Override
-         public <T> Optional<T> a(xj.a<T> $$0x) {
-            for (xj $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
-            }
-
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(xj.b<T> $$0x, yb $$1) {
-            for (xj $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
-   }
-
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      Optional<T> accept(String var1);
-   }
-
-   public interface b<T> {
-      Optional<T> accept(yb var1, String var2);
+      @Nullable
+      public xj b() {
+         return this.c;
+      }
    }
 }

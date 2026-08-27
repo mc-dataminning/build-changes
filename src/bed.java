@@ -11,52 +11,25 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class bed extends DataFix {
-   public static final String[] a = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
-   };
-
    public bed(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgf.B.typeName(), bhp.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bga.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Typed<?> $$8 = (Typed<?>)$$7.get();
-                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
-                  int $$10 = $$9.get("Color").asInt(0);
-                  $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bgf.B.typeName(), a[$$10 % 16]));
-               }
-            }
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
+            return $$2x;
          }
-
-         return $$3x;
       });
    }
 }

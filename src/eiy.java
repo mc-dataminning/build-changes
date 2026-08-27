@@ -1,42 +1,24 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class eiy extends dzr {
-   private final dcv a;
-   private final duz b;
-   private final Optional<eix> c;
+@FunctionalInterface
+public interface eiy {
+   eiy a = $$0 -> $$0;
 
-   public eiy(dcv $$0, duz $$1, Optional<eix> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   akm<eiu> lookup(akm<eiu> var1);
 
-   public int a(dyu.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   public dux a(dbh $$0, dyq.a $$1) {
-      return ((dvs)this.a.a_($$0.e, $$0.f)).b($$1);
-   }
-
-   public dtc a(ir $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.J_();
-   }
-
-   public dcv d() {
-      return this.a;
-   }
-
-   public Optional<eix> e() {
-      return this.c;
-   }
-
-   public duz f() {
-      return this.b;
+   static eiy create(List<eiw> $$0, io $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         aym $$3 = aym.a($$2).e().a($$1);
+         Builder<akm<eiu>, akm<eiu>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<akm<eiu>, akm<eiu>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

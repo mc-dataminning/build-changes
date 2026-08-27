@@ -1,30 +1,63 @@
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class crz extends cwa {
-   public crz(dfc $$0, dfc $$1, cuc.a $$2) {
-      super($$0, $$1, $$2, iw.a);
-      Validate.isInstanceOf(dds.class, $$0);
-      Validate.isInstanceOf(dds.class, $$1);
+public class crz extends ctl {
+   public crz(ctl.a $$0) {
+      super($$0);
    }
 
-   public static void a(cuh $$0, List<xe> $$1) {
-      dps $$2 = $$0.a(ke.W);
-      if ($$2 != null) {
-         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
-            dps.b $$4 = $$2.b().get($$3);
-            $$1.add($$4.a().a(n.h));
+   @Nullable
+   public static iw a(daz $$0) {
+      return $$0.D_().j() ? iw.a($$0.ae(), $$0.U()) : null;
+   }
+
+   @Override
+   public boolean d_(ctq $$0) {
+      return $$0.b(kb.R) || super.d_($$0);
+   }
+
+   @Override
+   public void a(ctq $$0, daz $$1, brw $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aqn $$5) {
+         cwo $$6 = $$0.a(kb.R);
+         if ($$6 != null) {
+            cwo $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(kb.R, $$7);
+            }
          }
       }
    }
 
-   public csy b() {
-      return ((dds)this.d()).b();
+   @Override
+   public bpw a(cxd $$0) {
+      io $$1 = $$0.a();
+      daz $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dec.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, avi.on, avj.h, 1.0F, 1.0F);
+         cly $$3 = $$0.o();
+         ctq $$4 = $$0.n();
+         boolean $$5 = !$$3.fP() && $$4.I() == 1;
+         cwo $$6 = new cwo(Optional.of(iw.a($$2.ae(), $$1)), true);
+         if ($$5) {
+            $$4.b(kb.R, $$6);
+         } else {
+            ctq $$7 = $$4.a(ctt.qS, 1);
+            $$4.a(1, $$3);
+            $$7.b(kb.R, $$6);
+            if (!$$3.gc().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bpw.a($$2.B);
+      }
    }
 
    @Override
-   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
-      a($$0, $$2);
+   public String i(ctq $$0) {
+      return $$0.b(kb.R) ? "item.minecraft.lodestone_compass" : super.i($$0);
    }
 }

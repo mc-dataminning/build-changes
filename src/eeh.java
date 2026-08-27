@@ -1,30 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public record eeh(egt b, eab c, bpf d, int e) implements eek {
-   public static final Codec<eeh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egt.a.fieldOf("state_provider").forGetter(eeh::a),
-               eab.b.fieldOf("target").forGetter(eeh::b),
-               bpf.b(0, 8).fieldOf("radius").forGetter(eeh::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eeh::d)
-            )
-            .apply($$0, eeh::new)
-   );
+public abstract class eeh extends eee {
+   protected final long c;
+   protected final elz.a d;
+   protected final float e;
+   protected final elz f;
 
-   public egt a() {
-      return this.b;
+   protected static <P extends eeh> P3<Mu<P>, Long, elz.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         elz.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         axn.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public eab b() {
-      return this.c;
+   protected eeh(long $$0, elz.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = elz.b(new dxu(new dww($$0)), $$1);
    }
 
-   public bpf c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   protected double a(io $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

@@ -1,45 +1,24 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class gjh extends giz<cjg, ftx<cjg>> {
+   private static final akn a = new akn("textures/entity/phantom.png");
 
-public class gjh implements gis.a {
-   private final List<ir> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
-
-   public void a(ir $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gjh(ght.a $$0) {
+      super($$0, new ftx<>($$0.a(fvv.aH)), 0.75F);
+      this.a(new gmd<>(this));
    }
 
-   @Override
-   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
-      fbg $$5 = $$1.getBuffer(gfo.B());
+   public akn a(cjg $$0) {
+      return a;
+   }
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         ir $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gfe.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
-      }
+   protected void a(cjg $$0, eyu $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cjg $$0, eyu $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dH()));
    }
 }

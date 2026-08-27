@@ -1,89 +1,62 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class eci extends eca<eer> {
-   private static final dtl a = dtl.a(dfe.ao);
-   private final dtc b = dfe.ao.n();
-   private final dtc c = dfe.z.n();
-   private final dtc d = dfe.u.n();
-   private final dtc au = dfe.iR.n().a(dju.c, Integer.valueOf(15)).a(dju.d, Boolean.valueOf(true));
+public class eci implements ecd {
+   public static final Codec<eci> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               le.e.q().fieldOf("block").flatXmap(eci::a, DataResult::success).orElse((dja)dec.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               jm.a(lf.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eci::new)
+   );
+   public final dja b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final jb<dea> h;
+   private final ObjectArrayList<it> i;
 
-   public eci(Codec<eer> $$0) {
-      super($$0);
+   private static DataResult<dja> a(dea $$0) {
+      return $$0 instanceof dja $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
    }
 
-   @Override
-   public boolean a(ecc<eer> $$0) {
-      dcv $$1 = $$0.b();
-      ir $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
-         $$2 = $$2.d();
+   public eci(dja $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jb<dea> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(it.b);
       }
 
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.au, 2);
-
-         for (iw $$8 : iw.c.a) {
-            $$1.a($$2.a($$8), this.au, 2);
-         }
-
-         ir $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (iw $$10 : iw.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         return true;
+      if ($$2) {
+         this.i.add(it.a);
       }
+
+      if ($$4) {
+         it.c.a.forEach(this.i::add);
+      }
+   }
+
+   public List<it> a(aym $$0, it $$1) {
+      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<it> a(aym $$0) {
+      return ac.a(this.i, $$0);
    }
 }

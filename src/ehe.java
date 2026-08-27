@@ -1,45 +1,26 @@
-import com.mojang.serialization.Codec;
+public interface ehe {
+   akm<ehr> a = a("villages");
+   akm<ehr> b = a("desert_pyramids");
+   akm<ehr> c = a("igloos");
+   akm<ehr> d = a("jungle_temples");
+   akm<ehr> e = a("swamp_huts");
+   akm<ehr> f = a("pillager_outposts");
+   akm<ehr> g = a("ocean_monuments");
+   akm<ehr> h = a("woodland_mansions");
+   akm<ehr> i = a("buried_treasures");
+   akm<ehr> j = a("mineshafts");
+   akm<ehr> k = a("ruined_portals");
+   akm<ehr> l = a("shipwrecks");
+   akm<ehr> m = a("ocean_ruins");
+   akm<ehr> n = a("nether_complexes");
+   akm<ehr> o = a("nether_fossils");
+   akm<ehr> p = a("end_cities");
+   akm<ehr> q = a("ancient_cities");
+   akm<ehr> r = a("strongholds");
+   akm<ehr> s = a("trail_ruins");
+   akm<ehr> t = a("trial_chambers");
 
-public class ehe extends ehc {
-   public static final Codec<ehe> a = Codec.unit(() -> ehe.b);
-   public static final ehe b = new ehe();
-
-   @Override
-   protected ehd<?> a() {
-      return ehd.a;
-   }
-
-   @Override
-   public void a(ehc.a $$0) {
-      ayt $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ir $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, doo.d);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ir $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, doo.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ir $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, doo.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ir $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, doo.c);
-            }
-         }
-      });
+   private static akm<ehr> a(String $$0) {
+      return akm.a(lf.aL, new akn($$0));
    }
 }

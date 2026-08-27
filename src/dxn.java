@@ -1,415 +1,280 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dxn<T extends dxc> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final dxk<T> c;
-   private final dxf<T> d;
-   private final dxe<T> e;
-   final dxh<T> f;
-   private final dxl<T> g;
-   private final Long2ObjectMap<dxp> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<dxn.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<dxa<T>> k = Queues.newConcurrentLinkedQueue();
+public class dxn {
+   private static final drd a = dec.hj.n();
+   private static final drd b = dec.hk.n();
+   private static final drd c = dec.iA.n();
+   private static final drd d = dec.hn.n();
+   private static final drd e = dec.hv.n();
+   private static final drd f = dec.hx.n();
+   private static final drd g = dec.hr.n();
+   private static final drd h = dec.iC.n();
+   private static final drd i = dec.dP.n();
+   private final drd j;
+   private final int k;
+   private final drd[] l;
+   private final elz m;
+   private final elz n;
+   private final elz o;
+   private final elz p;
+   private final elz q;
+   private final elz r;
+   private final elz s;
+   private final dxi t;
+   private final elz u;
+   private final elz v;
 
-   public dxn(Class<T> $$0, dxk<T> $$1, dxf<T> $$2) {
-      this.e = new dxe<>();
-      this.f = new dxh<>($$0, this.h);
-      this.h.defaultReturnValue(dxp.a);
-      this.i.defaultReturnValue(dxn.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new dxm<>(this.e, this.f);
+   public dxn(dxj $$0, drd $$1, int $$2, dxi $$3) {
+      this.j = $$1;
+      this.k = $$2;
+      this.t = $$3;
+      this.m = $$0.a(dxe.P);
+      this.l = a($$3.a(new akn("clay_bands")));
+      this.u = $$0.a(dxe.N);
+      this.v = $$0.a(dxe.O);
+      this.n = $$0.a(dxe.Q);
+      this.o = $$0.a(dxe.R);
+      this.p = $$0.a(dxe.S);
+      this.q = $$0.a(dxe.T);
+      this.r = $$0.a(dxe.U);
+      this.s = $$0.a(dxe.V);
    }
 
-   void a(long $$0, dxg<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
-
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cE())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   public boolean a(T $$0) {
-      return this.a($$0, false);
-   }
-
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = jt.c($$0.du());
-         dxg<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new dxn.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
+   public void a(dxj $$0, dca $$1, jk<dby> $$2, boolean $$3, dxs $$4, final dsz $$5, dwz $$6, dxm.o $$7) {
+      final io.a $$8 = new io.a();
+      final dag $$9 = $$5.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dsw $$12 = new dsw() {
+         @Override
+         public drd a(int $$0) {
+            return $$5.a_($$8.q($$0));
          }
 
-         dxp $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends dxc> dxp a(T $$0, dxp $$1) {
-      return $$0.dT() ? dxp.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(dbh $$0, aqm $$1) {
-      dxp $$2 = dxp.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(dbh $$0, dxp $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == dxp.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         dxp $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      dxn.b $$1 = (dxn.b)this.i.get($$0);
-      if ($$1 == dxn.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      dxn.b $$2 = (dxn.b)this.i.get($$0);
-      if ($$2 == dxn.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dxc::dS)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == dxn.b.c) {
-               this.d.a(new dxa<>(new dbh($$0), ImmutableList.of()));
-            }
-
-            return true;
-         } else if ($$2 == dxn.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new dxa<>(new dbh($$0), $$3));
-            $$3.forEach($$1);
-            return true;
-         }
-      }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, dxn.b.b);
-      dbh $$1 = new dbh($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.da().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(dxc $$0) {
-      $$0.b(brv.d.c);
-      $$0.a(dxd.a);
-   }
-
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != dxp.a ? true : this.d($$0));
-   }
-
-   private void h() {
-      dxa<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), dxn.b.c);
-      }
-   }
-
-   public void a() {
-      this.h();
-      this.g();
-   }
-
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<dxn.b> $$1 = (Entry<dxn.b>)var2.next();
-         if ($$1.getValue() == dxn.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == dxp.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == dxp.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.c();
-      this.d.close();
-   }
-
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public dxl<T> d() {
-      return this.g;
-   }
-
-   public boolean a(ir $$0) {
-      return ((dxp)this.h.get(dbh.a($$0))).a();
-   }
-
-   public boolean a(dbh $$0) {
-      return ((dxp)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == dxn.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      axm $$1 = axm.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         dxn.b $$2 = (dxn.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            dxg<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(jt.b($$2x), jt.c($$2x), jt.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
+         @Override
+         public void a(int $$0, drd $$1) {
+            dbb $$2 = $$5.z();
+            if ($$0 >= $$2.I_() && $$0 < $$2.al()) {
+               $$5.a($$8.q($$0), $$1, false);
+               if (!$$1.u().c()) {
+                  $$5.e($$8);
                }
             }
-         });
-      });
-   }
+         }
 
-   @azp
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
+         @Override
+         public String toString() {
+            return "ChunkBlockColumn " + $$9;
+         }
+      };
+      dxm.g $$13 = new dxm.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
+      dxm.u $$14 = $$7.apply($$13);
+      io.a $$15 = new io.a();
 
-   @azp
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements dxd {
-      private final T c;
-      private long d;
-      private dxg<T> e;
-
-      a(T $$0, long $$1, dxg<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         ir $$0 = this.c.du();
-         long $$1 = jt.c($$0);
-         if ($$1 != this.d) {
-            dxp $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dxn.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jt.a(this.d), $$1});
+      for (int $$16 = 0; $$16 < 16; $$16++) {
+         for (int $$17 = 0; $$17 < 16; $$17++) {
+            int $$18 = $$10 + $$16;
+            int $$19 = $$11 + $$17;
+            int $$20 = $$5.a(dwv.a.a, $$16, $$17) + 1;
+            $$8.p($$18).r($$19);
+            ix<dby> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
+            if ($$21.a(dcf.B)) {
+               this.a($$12, $$18, $$19, $$20, $$5);
             }
 
-            dxn.this.a(this.d, this.e);
-            dxg<T> $$3 = dxn.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
+            int $$22 = $$5.a(dwv.a.a, $$16, $$17) + 1;
+            $$13.a($$18, $$19);
+            int $$23 = 0;
+            int $$24 = Integer.MIN_VALUE;
+            int $$25 = Integer.MAX_VALUE;
+            int $$26 = $$5.I_();
+
+            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
+               drd $$28 = $$12.a($$27);
+               if ($$28.i()) {
+                  $$23 = 0;
+                  $$24 = Integer.MIN_VALUE;
+               } else if (!$$28.u().c()) {
+                  if ($$24 == Integer.MIN_VALUE) {
+                     $$24 = $$27 + 1;
+                  }
+               } else {
+                  if ($$25 >= $$27) {
+                     $$25 = duv.g;
+
+                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
+                        drd $$30 = $$12.a($$29);
+                        if (!this.a($$30)) {
+                           $$25 = $$29 + 1;
+                           break;
+                        }
+                     }
+                  }
+
+                  $$23++;
+                  int $$31 = $$27 - $$25 + 1;
+                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
+                  if ($$28 == this.j) {
+                     drd $$32 = $$14.tryApply($$18, $$27, $$19);
+                     if ($$32 != null) {
+                        $$12.a($$27, $$32);
+                     }
+                  }
+               }
+            }
+
+            if ($$21.a(dcf.W) || $$21.a(dcf.X)) {
+               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
+            }
          }
       }
+   }
 
-      private void a(dxp $$0, dxp $$1) {
-         dxp $$2 = dxn.a(this.c, $$0);
-         dxp $$3 = dxn.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               dxn.this.c.a(this.c);
+   protected int a(int $$0, int $$1) {
+      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
+      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   }
+
+   protected double b(int $$0, int $$1) {
+      return this.v.a((double)$$0, 0.0, (double)$$1);
+   }
+
+   private boolean a(drd $$0) {
+      return !$$0.i() && $$0.u().c();
+   }
+
+   @Deprecated
+   public Optional<drd> a(dxm.o $$0, dyv $$1, Function<io, ix<dby>> $$2, dsz $$3, dwz $$4, io $$5, boolean $$6) {
+      dxm.g $$7 = new dxm.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(lf.az), $$1);
+      dxm.u $$8 = $$0.apply($$7);
+      int $$9 = $$5.u();
+      int $$10 = $$5.v();
+      int $$11 = $$5.w();
+      $$7.a($$9, $$11);
+      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
+      drd $$12 = $$8.tryApply($$9, $$10, $$11);
+      return Optional.ofNullable($$12);
+   }
+
+   private void a(dsw $$0, int $$1, int $$2, int $$3, dbb $$4) {
+      double $$5 = 0.2;
+      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
+      if (!($$6 <= 0.0)) {
+         double $$7 = 0.75;
+         double $$8 = 1.5;
+         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
+         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
+         int $$11 = ayf.a($$10);
+         if ($$3 <= $$11) {
+            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
+               drd $$13 = $$0.a($$12);
+               if ($$13.a(this.j.b())) {
+                  break;
+               }
+
+               if ($$13.a(dec.G)) {
+                  return;
+               }
             }
+
+            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).i(); $$14--) {
+               $$0.a($$14, this.j);
+            }
+         }
+      }
+   }
+
+   private void a(int $$0, dby $$1, dsw $$2, io.a $$3, int $$4, int $$5, int $$6) {
+      double $$7 = 1.28;
+      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
+      if (!($$8 <= 1.8)) {
+         double $$9 = 1.17;
+         double $$10 = 1.5;
+         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
+         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
+         if ($$1.d($$3.d($$4, 63, $$5))) {
+            $$12 -= 2.0;
+         }
+
+         double $$13;
+         if ($$12 > 2.0) {
+            $$13 = (double)this.k - $$12 - 7.0;
+            $$12 += (double)this.k;
          } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               dxn.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               dxn.this.e(this.c);
+            $$12 = 0.0;
+            $$13 = 0.0;
+         }
+
+         double $$15 = $$12;
+         aym $$16 = this.t.a($$4, 0, $$5);
+         int $$17 = 2 + $$16.a(4);
+         int $$18 = this.k + 18 + $$16.a(10);
+         int $$19 = 0;
+
+         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
+            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
+               || $$2.a($$20).a(dec.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
+               if ($$19 <= $$17 && $$20 > $$18) {
+                  $$2.a($$20, i);
+                  $$19++;
+               } else {
+                  $$2.a($$20, h);
+               }
             }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               dxn.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               dxn.this.c(this.c);
-            }
-
-            if ($$5) {
-               dxn.this.c.a(this.c);
-            }
          }
-      }
-
-      @Override
-      public void a(brv.d $$0) {
-         if (!this.e.b(this.c)) {
-            dxn.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jt.a(this.d), $$0});
-         }
-
-         dxp $$1 = dxn.a(this.c, this.e.c());
-         if ($$1.a()) {
-            dxn.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            dxn.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            dxn.this.c.f(this.c);
-         }
-
-         dxn.this.b.remove(this.c.cE());
-         this.c.a(a);
-         dxn.this.a(this.d, this.e);
       }
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   private static drd[] a(aym $$0) {
+      drd[] $$1 = new drd[192];
+      Arrays.fill($$1, c);
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$2 += $$0.a(5) + 1;
+         if ($$2 < $$1.length) {
+            $$1[$$2] = b;
+         }
+      }
+
+      a($$0, $$1, 1, d);
+      a($$0, $$1, 2, e);
+      a($$0, $$1, 1, f);
+      int $$3 = $$0.a(9, 15);
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
+         $$1[$$5] = a;
+         if ($$5 - 1 > 0 && $$0.h()) {
+            $$1[$$5 - 1] = g;
+         }
+
+         if ($$5 + 1 < $$1.length && $$0.h()) {
+            $$1[$$5 + 1] = g;
+         }
+
+         $$4++;
+      }
+
+      return $$1;
+   }
+
+   private static void a(aym $$0, drd[] $$1, int $$2, drd $$3) {
+      int $$4 = $$0.a(6, 15);
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         int $$6 = $$2 + $$0.a(3);
+         int $$7 = $$0.a($$1.length);
+
+         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
+            $$1[$$7 + $$8] = $$3;
+         }
+      }
+   }
+
+   protected drd a(int $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
+      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

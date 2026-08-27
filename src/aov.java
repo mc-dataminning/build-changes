@@ -1,48 +1,63 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 import java.util.List;
 
 public class aov {
-   private static final yb a = yb.a.a(new xk(xk.a.a, xe.c("chat.type.team.hover"))).a(new xc(xc.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.transfer.error.no_players"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
-      LiteralCommandNode<eh> $$1 = $$0.register((LiteralArgumentBuilder)ei.a("teammsg").then(ei.a("message", ey.a()).executes($$0x -> {
-         eh $$1x = (eh)$$0x.getSource();
-         brv $$2 = $$1x.g();
-         ext $$3 = $$2.co();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<aqu> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.co() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               ey.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)ei.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<ee> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("transfer").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ef.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ee)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)ef.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (ee)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((ee)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           ef.a("players", er.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (ee)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       er.f($$0x, "players")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static void a(eh $$0, brv $$1, ext $$2, List<aqu> $$3, xu $$4) {
-      xe $$5 = $$2.d().c(a);
-      xa.a $$6 = xa.a(xa.g, $$0).c($$5);
-      xa.a $$7 = xa.a(xa.h, $$0).c($$5);
-      xt $$8 = xt.a($$4);
-      boolean $$9 = false;
+   private static int a(ee $$0, String $$1, int $$2, Collection<aqo> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
+      } else {
+         for (aqo $$4 : $$3) {
+            $$4.c.b(new zs($$1, $$2));
+         }
 
-      for (aqu $$10 : $$3) {
-         xa.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
-      }
+         if ($$3.size() == 1) {
+            $$0.a(() -> wx.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> wx.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
 
-      if ($$9) {
-         $$0.a(auq.f);
+         return $$3.size();
       }
    }
 }

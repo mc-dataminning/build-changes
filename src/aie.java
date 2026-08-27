@@ -1,29 +1,26 @@
-public class aie implements zl<agl> {
-   public static final zc<we, aie> a = zl.a(aie::a, aie::new);
-   private final bpz b;
+public enum aie {
+   a,
+   b,
+   c;
 
-   public aie(bpz $$0) {
-      this.b = $$0;
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static aie a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private aie(we $$0) {
-      this.b = $$0.b(bpz.class);
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-   }
-
-   @Override
-   public zn<aie> a() {
-      return agj.ca;
-   }
-
-   public void a(agl $$0) {
-      $$0.a(this);
-   }
-
-   public bpz b() {
-      return this.b;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

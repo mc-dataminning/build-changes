@@ -1,10 +1,5 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public interface sv {
+   void a(st var1);
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface sv {
-   String a();
+   void b(st var1);
 }

@@ -1,42 +1,27 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
 import org.slf4j.Logger;
 
-public class far {
-   private static final Logger a = LogUtils.getLogger();
+public class far extends faq {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
-   }
+   public static far a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      far $$3 = new far();
 
-   public static void a(fas $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
-   }
-
-   public static int a() throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
-      } else {
-         return $$0;
+      try {
+         $$3.a = fcn.b("downloadLink", $$2, "");
+         $$3.b = fcn.b("resourcePackUrl", $$2, "");
+         $$3.c = fcn.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
-   }
 
-   public static void b(fas $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
-      }
+      return $$3;
    }
 }

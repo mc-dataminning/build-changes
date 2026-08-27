@@ -1,37 +1,66 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class epx {
-   private final dbk a;
-   @Nullable
-   private final epw b;
-   private final ir c;
-   private final ir.a d = new ir.a();
+public abstract class epx implements epp {
+   protected final List<esn> e;
+   private final Predicate<eph> a;
 
-   public epx(dbk $$0, bsq $$1) {
-      this.a = $$0;
-      if ($$1.dU() instanceof aqt $$2) {
-         this.b = $$2.I();
-      } else {
-         this.b = null;
+   protected epx(List<esn> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
+   }
+
+   protected static <T extends epx> P1<Mu<T>, List<esn>> a(Instance<T> $$0) {
+      return $$0.group(esp.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   }
+
+   public void a(epn $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+   }
+
+   protected final boolean a(eph $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract epy a();
+
+   public abstract static class a<T extends epx.a<T>> implements esg<T> {
+      private final Builder<esn> a = ImmutableList.builder();
+
+      protected abstract T aC_();
+
+      public T a(esn.a $$0) {
+         this.a.add($$0.build());
+         return this.aC_();
       }
 
-      this.c = $$1.du();
-   }
+      public final T e() {
+         return this.aC_();
+      }
 
-   public epv a(int $$0, int $$1, int $$2) {
-      ir $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? eqa.b(this.a, $$3) : this.b.a(this.a, $$3);
-   }
+      protected List<esn> f() {
+         return this.a.build();
+      }
 
-   public dtc a(ir $$0) {
-      return this.a.a_($$0);
-   }
+      public epo.a a(epx.a<?> $$0) {
+         return new epo.a(this, $$0);
+      }
 
-   public dbk a() {
-      return this.a;
-   }
+      public ept.a b(epx.a<?> $$0) {
+         return new ept.a(this, $$0);
+      }
 
-   public ir b() {
-      return this.c;
+      public eqb.a c(epx.a<?> $$0) {
+         return new eqb.a(this, $$0);
+      }
+
+      public abstract epx b();
    }
 }

@@ -1,31 +1,77 @@
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class fep {
-   public final int a;
-   @Nullable
-   public final String b;
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fep.a f;
 
-   fep(int $$0, String $$1) {
+   public fep(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fep.a $$5) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
 
-      public fep.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fep.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fep.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
       }
 
-      public fep.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
+      @Nullable
+      public static fep.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
       }
 
-      public fep a() {
-         return new fep(this.a, this.b);
+      public String a() {
+         return this.e;
       }
    }
 }

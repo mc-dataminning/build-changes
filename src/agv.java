@@ -1,35 +1,30 @@
-public class agv implements zl<agl> {
-   public static final zc<we, agv> a = zl.a(agv::a, agv::new);
-   private final agv.a b;
+public record agv(int b, int c, boolean d) implements ze<age> {
+   public static final yv<vx, agv> a = ze.a(agv::a, agv::new);
 
-   public agv(agv.a $$0) {
-      this.b = $$0;
+   private agv(vx $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
    }
 
-   private agv(we $$0) {
-      this.b = $$0.b(agv.a.class);
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<agv> a() {
-      return agj.bo;
+   public zg<agv> a() {
+      return agc.bu;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   public agv.a b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public boolean f() {
+      return this.d;
    }
 }

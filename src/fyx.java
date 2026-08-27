@@ -1,83 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fyx extends gay {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
 
-public class fyx {
-   private static final Set<iw> a = EnumSet.allOf(iw.class);
-   private final List<fyv> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fyx a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   protected fyx(fwr $$0, double $$1, double $$2, double $$3, gat $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
    }
 
-   public fyx a() {
-      return this.a(true);
+   @Override
+   public gac b() {
+      return gac.b;
    }
 
-   public fyx a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      }
 
-   public fyx a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fyw $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fyv($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
 
-   public fyx a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fyv($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fyw.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fyx a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fyv(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyw.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fyx a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<iw> $$6) {
-      this.b.add(new fyv(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyw.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fyx a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fyv($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fyw.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fyx a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fyw $$7) {
-      this.b.add(new fyv($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fyx a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fyv(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyw.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fyx a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fyw $$6, float $$7, float $$8) {
-      this.b.add(new fyv(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fyx a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fyw $$6) {
-      this.b.add(new fyv(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fyv> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fyx c() {
-      return new fyx();
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
+      }
    }
 }

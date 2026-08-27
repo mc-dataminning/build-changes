@@ -1,40 +1,48 @@
-public class dzk implements dyj {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dyw i = new dyw(this);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-   public dzk(long $$0) {
-      this.b($$0);
+public class dzk extends dzz<eck> {
+   public dzk(Codec<eck> $$0) {
+      super($$0);
    }
 
    @Override
-   public ayt d() {
-      return new dzk(this.g());
-   }
+   public boolean a(eab<eck> $$0) {
+      aym $$1 = $$0.d();
+      dbu $$2 = $$0.b();
+      dag $$3 = new dag($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      io.a $$6 = new io.a();
+      IntListIterator var8 = $$4.iterator();
 
-   @Override
-   public dzh e() {
-      return new dyv.a(this.g());
-   }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            io $$9 = $$2.a(dwv.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dec.cv.n(), 2);
+               bqe.a($$2, $$1, $$9, epf.b);
+               drd $$10 = dec.cp.n();
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
+               for (it $$11 : it.c.a) {
+                  io $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
 
-   @Override
-   public double k() {
-      return this.i.b();
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

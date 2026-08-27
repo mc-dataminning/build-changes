@@ -1,23 +1,38 @@
-import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Optional;
 
-public class agx implements zl<agl> {
-   public static final agx a = new agx();
-   public static final zc<ByteBuf, agx> b = zc.a(a);
+public record agx(int c, List<String> d, Optional<String> e) implements ze<age> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final yv<vx, agx> b = yv.a(yt.f, agx::b, yt.b(8192).a(yt.c(200)), agx::e, yt.b(128).a(yt::a), agx::f, agx::new);
 
-   private agx() {
+   public agx(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zn<agx> a() {
-      return agj.bq;
+   public zg<agx> a() {
+      return agc.bw;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int b() {
+      return this.c;
+   }
+
+   public List<String> e() {
+      return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

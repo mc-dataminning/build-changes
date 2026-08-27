@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class ccl extends ccx<bso> {
+public class ccl extends ccu {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cbr<?>> a() {
-      return ImmutableSet.of(cbr.x, cbr.y);
+   protected boolean a(bsq $$0, bsq $$1) {
+      return !$$0.dS().a(cbu.U) && cda.c($$0, $$1) && cga.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(bsq $$0, bsq $$1) {
+      List<UUID> $$2 = $$0.dS().c(cbu.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
    @Override
-   protected void a(aqt $$0, bso $$1) {
-      btp<?> $$2 = $$1.dZ();
-      bqt $$3 = $$1.eK();
-      if ($$3 != null) {
-         $$2.a(cbr.x, $$1.eK());
-         brv $$4 = $$3.d();
-         if ($$4 instanceof bso) {
-            $$2.a(cbr.y, (bso)$$4);
-         }
-      } else {
-         $$2.b(cbr.x);
-      }
-
-      $$2.c(cbr.y).ifPresent($$2x -> {
-         if (!$$2x.bI() || $$2x.dU() != $$0) {
-            $$2.b(cbr.y);
-         }
-      });
+   protected cbu<bsq> b() {
+      return cbu.B;
    }
 }

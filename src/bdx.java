@@ -2,42 +2,61 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
 
 public class bdx extends DataFix {
+   public static final String[] a = new String[]{
+      "minecraft:white_shulker_box",
+      "minecraft:orange_shulker_box",
+      "minecraft:magenta_shulker_box",
+      "minecraft:light_blue_shulker_box",
+      "minecraft:yellow_shulker_box",
+      "minecraft:lime_shulker_box",
+      "minecraft:pink_shulker_box",
+      "minecraft:gray_shulker_box",
+      "minecraft:silver_shulker_box",
+      "minecraft:cyan_shulker_box",
+      "minecraft:purple_shulker_box",
+      "minecraft:blue_shulker_box",
+      "minecraft:brown_shulker_box",
+      "minecraft:green_shulker_box",
+      "minecraft:red_shulker_box",
+      "minecraft:black_shulker_box"
+   };
+
    public bdx(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            $$2 = $$2.set("Name", azr.a($$2.getOps(), $$3.get()));
-         } else {
-            Optional<String> $$4 = $$2.get("LocName").asString().result();
-            if ($$4.isPresent()) {
-               $$2 = $$2.set("Name", azr.b($$2.getOps(), $$4.get()));
-               $$2 = $$2.remove("LocName");
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bga.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bga.B.typeName(), bhl.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Typed<?> $$8 = (Typed<?>)$$7.get();
+                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
+                  int $$10 = $$9.get("Color").asInt(0);
+                  $$9.remove("Color");
+                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bga.B.typeName(), a[$$10 % 16]));
+               }
             }
          }
 
-         return $$0.set("display", $$2);
-      } else {
-         return $$0;
-      }
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemCustomNameToComponentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+         return $$3x;
+      });
    }
 }

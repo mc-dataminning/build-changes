@@ -1,29 +1,13 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.Set;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class euy implements euu {
-   private static final euy b = new euy();
-   public static final Codec<euy> a = Codec.unit(b);
+interface euy {
+   DoubleList a();
 
-   private euy() {
-   }
+   boolean a(euy.a var1);
 
-   @Override
-   public euv b() {
-      return euw.i;
-   }
+   int size();
 
-   @Override
-   public Set<eud<?>> a() {
-      return ImmutableSet.of(eug.b);
-   }
-
-   public boolean a(erp $$0) {
-      return $$0.a(eug.b);
-   }
-
-   public static euu.a c() {
-      return () -> b;
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

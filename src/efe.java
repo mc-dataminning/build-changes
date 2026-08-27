@@ -1,43 +1,44 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public class efe implements eek {
-   public static final Codec<efe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               edp.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               ir.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, efe::new)
-   );
-   private final boolean b;
-   private final List<edp.a> c;
-   @Nullable
-   private final ir d;
+public class efe extends efh {
+   public static final MapCodec<efe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efe::new));
 
-   public efe(boolean $$0, List<edp.a> $$1, @Nullable ir $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
+   public efe(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private efe(boolean $$0, List<edp.a> $$1, Optional<ir> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
+   @Override
+   protected efi<?> a() {
+      return efi.c;
    }
 
-   public boolean a() {
-      return this.b;
+   @Override
+   public List<edp.a> a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, int $$3, io $$4, ecz $$5) {
+      io $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      io.a $$7 = new io.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new edp.a($$4.b($$3), 0, true));
    }
 
-   public List<edp.a> b() {
-      return this.c;
-   }
-
-   @Nullable
-   public ir c() {
-      return this.d;
+   private void a(dbf $$0, BiConsumer<io, drd> $$1, aym $$2, io.a $$3, ecz $$4, io $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

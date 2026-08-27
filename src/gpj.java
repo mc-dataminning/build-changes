@@ -1,21 +1,38 @@
-public class gpj<T extends brv & btd, M extends fvq<T>> extends gpi<T, M> {
-   private final akt a;
-   private final M b;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   public gpj(gmp<T, M> $$0, M $$1, akt $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+public class gpj {
+   public static final gpk a = new gpk();
+   public static final String b = "villager";
+   private final gpj.a c;
+
+   public gpj(gpj.a $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fbg $$10 = $$1.getBuffer(gfo.e(this.a));
-         this.b.a($$0, $$10, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public gpj.a a() {
+      return this.c;
+   }
+
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, gpj.a> d = Arrays.stream(values()).collect(Collectors.toMap(gpj.a::a, $$0 -> (gpj.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static gpj.a a(String $$0) {
+         return d.getOrDefault($$0, a);
       }
    }
 }

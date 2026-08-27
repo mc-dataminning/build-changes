@@ -1,58 +1,18 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class avg {
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final avf a = new avf(avi.pZ, 20, 600, true);
+   public static final avf b = new avf(avi.pE, 12000, 24000, false);
+   public static final avf c = new avf(avi.pF, 0, 0, true);
+   public static final avf d = new avf(avi.pW, 0, 0, true);
+   public static final avf e = new avf(avi.pX, 6000, 24000, true);
+   public static final avf f = a(avi.qy);
+   public static final avf g = a(avi.pY);
 
-public abstract class avg implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
-
-   protected avg(String $$0) {
-      this.b = $$0;
-   }
-
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
-      }
-   }
-
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
-   }
-
-   public boolean c() {
-      return this.a;
+   public static avf a(ix<avh> $$0) {
+      return new avf($$0, 12000, 24000, false);
    }
 }

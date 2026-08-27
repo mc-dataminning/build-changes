@@ -1,19 +1,15 @@
-class brd extends brf {
-   protected brd(brg $$0, int $$1) {
-      super($$0, $$1);
+public enum brd {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private brd(n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(bso $$0, int $$1) {
-      if ($$0 instanceof cly $$2) {
-         $$2.C(0.005F * (float)($$1 + 1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public n a() {
+      return this.d;
    }
 }

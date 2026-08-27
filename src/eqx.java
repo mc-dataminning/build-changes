@@ -1,30 +1,41 @@
-public class eqx {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiFunction;
 
-   public eqx(int $$0) {
-      this($$0, a);
+public class eqx implements eqt {
+   public static final MapCodec<eqx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eqv.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eqx::new)
+   );
+   public static final Codec<eqx> b = eqv.b.listOf().xmap(eqx::new, $$0 -> $$0.c);
+   private final List<eqt> c;
+   private final BiFunction<ctq, eph, ctq> d;
+
+   private eqx(List<eqt> $$0) {
+      this.c = $$0;
+      this.d = eqv.a($$0);
    }
 
-   public eqx(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static eqx a(List<eqt> $$0) {
+      return new eqx(List.copyOf($$0));
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   public ctq a(ctq $$0, eph $$1) {
+      return this.d.apply($$0, $$1);
    }
 
-   public String b() {
-      return this.c;
+   @Override
+   public void a(epn $$0) {
+      eqt.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(eqx $$0) {
-      return this.b().equals($$0.b());
+   @Override
+   public equ b() {
+      return eqv.F;
    }
 }

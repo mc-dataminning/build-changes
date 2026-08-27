@@ -1,42 +1,61 @@
-import java.util.Comparator;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqy<T> {
-   private final String i;
-   private final Comparator<T> j;
-   private final long k;
-   public static final aqy<azo> a = a("start", ($$0, $$1) -> 0);
-   public static final aqy<azo> b = a("dragon", ($$0, $$1) -> 0);
-   public static final aqy<dbh> c = a("player", Comparator.comparingLong(dbh::a));
-   public static final aqy<dbh> d = a("forced", Comparator.comparingLong(dbh::a));
-   public static final aqy<dbh> e = a("light", Comparator.comparingLong(dbh::a));
-   public static final aqy<ir> f = a("portal", jv::i, 300);
-   public static final aqy<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final aqy<dbh> h = a("unknown", Comparator.comparingLong(dbh::a), 1);
+public class aqy implements aqw {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   public static <T> aqy<T> a(String $$0, Comparator<T> $$1) {
-      return new aqy<>($$0, $$1, 0L);
+   private aqy(int $$0) {
+      this.b = $$0;
    }
 
-   public static <T> aqy<T> a(String $$0, Comparator<T> $$1, int $$2) {
-      return new aqy<>($$0, $$1, (long)$$2);
+   public static aqy b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   protected aqy(String $$0, Comparator<T> $$1, long $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
+   public static aqy c(int $$0) {
+      int $$1 = aqw.a($$0);
+      return new aqy($$1 * $$1);
+   }
+
+   public static aqy c() {
+      return new aqy(0);
    }
 
    @Override
-   public String toString() {
-      return this.i;
+   public void a(dag $$0) {
+      this.e = ac.c();
+      this.d = this.e;
    }
 
-   public Comparator<T> a() {
-      return this.j;
+   @Override
+   public void a(dag $$0, @Nullable dty $$1) {
+      if ($$1 == dty.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ac.c() > this.e) {
+         this.e += 500L;
+         a.info(wx.a("menu.preparingSpawn", ayf.a($$2, 0, 100)).getString());
+      }
    }
 
-   public long b() {
-      return this.k;
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ac.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : ayf.d((float)this.c * 100.0F / (float)this.b);
    }
 }

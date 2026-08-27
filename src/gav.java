@@ -1,73 +1,99 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public final class gav {
-   private static final int a = 1024;
-   private final gam b;
-   private final gas c;
-   private final gah d;
-   @Nullable
-   private gar e;
-
-   public gav(gam $$0, gas $$1, gah $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class gav extends gay {
+   gav(fwr $$0, gat $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   public static gav a(gas $$0, UserApiService $$1) {
-      gah $$2 = new gah(1024);
-      gam $$3 = gam.a($$0, $$1);
-      return new gav($$3, $$0, $$2);
+   gav(fwr $$0, gat $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   public void a(fgj $$0, fon $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gar $$4 = this.e.b();
-         $$0.a(
-            new fne(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xe.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xe.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xe.c("gui.abuseReport.draft.edit"),
-               xe.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   @Override
+   public gac b() {
+      return gac.b;
+   }
+
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         aym $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         gav $$12 = new gav($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
       }
    }
 
-   public gam a() {
-      return this.b;
+   public static class b implements gab<lb> {
+      private final gat a;
+
+      public b(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gav $$8 = new gav($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<kv> o() {
+               return Optional.of(kv.a);
+            }
+         };
+         $$8.t = ayf.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
    }
 
-   public gah b() {
-      return this.d;
+   public static class c implements gab<lb> {
+      private final gat a;
+
+      public c(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gav $$8 = new gav($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
    }
 
-   public boolean a(gas $$0) {
-      return Objects.equals(this.c, $$0);
-   }
+   public static class d implements gab<lb> {
+      private final gat a;
 
-   public void a(@Nullable gar $$0) {
-      this.e = $$0;
-   }
+      public d(gat $$0) {
+         this.a = $$0;
+      }
 
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         gav $$9 = new gav($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
+      }
    }
 }

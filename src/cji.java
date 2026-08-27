@@ -1,3 +1,3 @@
 public interface cji {
-   void a(bso var1, float var2);
+   void a(bsq var1, float var2);
 }

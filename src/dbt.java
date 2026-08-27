@@ -1,27 +1,25 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbt {
-   public Optional<Float> a(dbs $$0, dbg $$1, ir $$2, dtc $$3, epe $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public record dbt(dan d, col e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dbt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dan.b.lenientOptionalFieldOf("DataPacks", dan.a).forGetter(dbt::a), coo.f.lenientOptionalFieldOf("enabled_features", coo.h).forGetter(dbt::b)
+            )
+            .apply($$0, dbt::new)
+   );
+   public static final dbt c = new dbt(dan.a, coo.h);
+
+   public dbt a(col $$0) {
+      return new dbt(this.d, this.e.b($$0));
    }
 
-   public boolean a(dbs $$0, dbg $$1, ir $$2, dtc $$3, float $$4) {
-      return true;
+   public dan a() {
+      return this.d;
    }
 
-   public boolean a(dbs $$0, brv $$1) {
-      return true;
-   }
-
-   public float a() {
-      return 1.0F;
-   }
-
-   public float b(dbs $$0, brv $$1) {
-      float $$2 = $$0.a() * 2.0F;
-      ewu $$3 = $$0.b();
-      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
-      double $$5 = (1.0 - $$4) * (double)dbs.a($$3, $$1);
-      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
+   public col b() {
+      return this.e;
    }
 }

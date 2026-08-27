@@ -1,27 +1,93 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class emv extends enq {
-   public static final Codec<emv> a = dtc.b.xmap(dtb.a::b, dfc::n).listOf().fieldOf("blocks").xmap(emv::new, $$0 -> $$0.e).codec();
-   public static final emv b = new emv(ImmutableList.of(dfe.ql));
-   public static final emv c = new emv(ImmutableList.of(dfe.a));
-   public static final emv d = new emv(ImmutableList.of(dfe.a, dfe.ql));
-   private final ImmutableList<dfc> e;
+public abstract class emv {
+   public static final jd<emw> c = new jd<>();
+   protected final dre<emv, emw> d;
+   private emw a;
+   private final ix.c<emv> b = le.c.f(this);
 
-   public emv(List<dfc> $$0) {
-      this.e = ImmutableList.copyOf($$0);
+   protected emv() {
+      dre.a<emv, emw> $$0 = new dre.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(emv::g, emw::new);
+      this.f(this.d.b());
+   }
+
+   protected void a(dre.a<emv, emw> $$0) {
+   }
+
+   public dre<emv, emw> f() {
+      return this.d;
+   }
+
+   protected final void f(emw $$0) {
+      this.a = $$0;
+   }
+
+   public final emw g() {
+      return this.a;
+   }
+
+   public abstract ctl a();
+
+   protected void a(daz $$0, io $$1, emw $$2, aym $$3) {
+   }
+
+   protected void b(daz $$0, io $$1, emw $$2) {
+   }
+
+   protected void b(daz $$0, io $$1, emw $$2, aym $$3) {
    }
 
    @Nullable
-   @Override
-   public ent.c a(dcd $$0, ir $$1, ir $$2, ent.c $$3, ent.c $$4, enp $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   protected kw h() {
+      return null;
    }
 
-   @Override
-   protected ens<?> a() {
-      return ens.e;
+   protected abstract boolean a(emw var1, daf var2, io var3, emv var4, it var5);
+
+   protected abstract eum a(daf var1, io var2, emw var3);
+
+   public abstract int a(dbc var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(emw var1, daf var2, io var3);
+
+   public abstract float a(emw var1);
+
+   protected abstract drd b(emw var1);
+
+   public abstract boolean c(emw var1);
+
+   public abstract int d(emw var1);
+
+   public boolean a(emv $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(awm<emv> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract evf b(emw var1, daf var2, io var3);
+
+   public Optional<avh> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public ix.c<emv> k() {
+      return this.b;
    }
 }

@@ -1,216 +1,193 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class aml {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xe.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xe.c("commands.debug.function.noReturnRun"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.effect.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.effect.clear.everything.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.effect.clear.specific.failed"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
+   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(ei.a("start").executes($$0x -> a((eh)$$0x.getSource()))))
-               .then(ei.a("stop").executes($$0x -> b((eh)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)ei.a("function").requires($$0x -> $$0x.c(3))).then(ei.a("name", gp.a()).suggests(amz.b).executes(new aml.a())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("effect").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ((LiteralArgumentBuilder)ef.a("clear").executes($$0x -> a((ee)$$0x.getSource(), ImmutableList.of(((ee)$$0x.getSource()).g()))))
+                     .then(
+                        ((RequiredArgumentBuilder)ef.a("targets", er.b()).executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"))))
+                           .then(ef.a("effect", fd.a($$1, lf.R)).executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), fd.f($$0x, "effect"))))
+                     )
+               ))
+            .then(
+               ef.a("give")
+                  .then(
+                     ef.a("targets", er.b())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("effect", fd.a($$1, lf.R))
+                                    .executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), fd.f($$0x, "effect"), null, 0, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)ef.a("seconds", IntegerArgumentType.integer(1, 1000000))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ee)$$0x.getSource(),
+                                                   er.b($$0x, "targets"),
+                                                   fd.f($$0x, "effect"),
+                                                   IntegerArgumentType.getInteger($$0x, "seconds"),
+                                                   0,
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          ((RequiredArgumentBuilder)ef.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ee)$$0x.getSource(),
+                                                         er.b($$0x, "targets"),
+                                                         fd.f($$0x, "effect"),
+                                                         IntegerArgumentType.getInteger($$0x, "seconds"),
+                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
+                                                         true
+                                                      )
+                                                ))
+                                             .then(
+                                                ef.a("hideParticles", BoolArgumentType.bool())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ee)$$0x.getSource(),
+                                                            er.b($$0x, "targets"),
+                                                            fd.f($$0x, "effect"),
+                                                            IntegerArgumentType.getInteger($$0x, "seconds"),
+                                                            IntegerArgumentType.getInteger($$0x, "amplifier"),
+                                                            !BoolArgumentType.getBool($$0x, "hideParticles")
+                                                         )
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ((LiteralArgumentBuilder)ef.a("infinite")
+                                       .executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), fd.f($$0x, "effect"), -1, 0, true)))
+                                    .then(
+                                       ((RequiredArgumentBuilder)ef.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ee)$$0x.getSource(),
+                                                      er.b($$0x, "targets"),
+                                                      fd.f($$0x, "effect"),
+                                                      -1,
+                                                      IntegerArgumentType.getInteger($$0x, "amplifier"),
+                                                      true
+                                                   )
+                                             ))
+                                          .then(
+                                             ef.a("hideParticles", BoolArgumentType.bool())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ee)$$0x.getSource(),
+                                                         er.b($$0x, "targets"),
+                                                         fd.f($$0x, "effect"),
+                                                         -1,
+                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
+                                                         !BoolArgumentType.getBool($$0x, "hideParticles")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(eh $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.bi()) {
-         throw c.create();
+   private static int a(ee $$0, Collection<? extends brw> $$1, ix<brc> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      brc $$6 = $$2.a();
+      int $$7 = 0;
+      int $$8;
+      if ($$3 != null) {
+         if ($$6.a()) {
+            $$8 = $$3;
+         } else if ($$3 == -1) {
+            $$8 = -1;
+         } else {
+            $$8 = $$3 * 20;
+         }
+      } else if ($$6.a()) {
+         $$8 = 1;
       } else {
-         $$1.bj();
-         $$0.a(() -> xe.c("commands.debug.started"), true);
-         return 0;
+         $$8 = 600;
+      }
+
+      for (brw $$13 : $$1) {
+         if ($$13 instanceof bsq) {
+            bre $$14 = new bre($$2, $$8, $$4, false, $$5);
+            if (((bsq)$$13).b($$14, $$0.f())) {
+               $$7++;
+            }
+         }
+      }
+
+      if ($$7 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wx.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().O_(), $$8 / 20), true);
+         } else {
+            $$0.a(() -> wx.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
+         }
+
+         return $$7;
       }
    }
 
-   private static int b(eh $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.bi()) {
+   private static int a(ee $$0, Collection<? extends brw> $$1) throws CommandSyntaxException {
+      int $$2 = 0;
+
+      for (brw $$3 : $$1) {
+         if ($$3 instanceof bsq && ((bsq)$$3).ew()) {
+            $$2++;
+         }
+      }
+
+      if ($$2 == 0) {
          throw b.create();
       } else {
-         bmn $$2 = $$1.bk();
-         double $$3 = (double)$$2.g() / (double)azl.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> xe.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
+         if ($$1.size() == 1) {
+            $$0.a(() -> wx.a("commands.effect.clear.everything.success.single", $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wx.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
+         }
+
+         return $$2;
       }
    }
 
-   static class a extends hd.b<eh> implements hd.a<eh> {
-      public void a(eh $$0, ContextChain<eh> $$1, hb $$2, hh<eh> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw aml.e.create();
-         } else if ($$3.a() != null) {
-            throw aml.d.create();
+   private static int a(ee $$0, Collection<? extends brw> $$1, ix<brc> $$2) throws CommandSyntaxException {
+      brc $$3 = $$2.a();
+      int $$4 = 0;
+
+      for (brw $$5 : $$1) {
+         if ($$5 instanceof bsq && ((bsq)$$5).e($$2)) {
+            $$4++;
+         }
+      }
+
+      if ($$4 == 0) {
+         throw c.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wx.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().O_()), true);
          } else {
-            CommandContext<eh> $$4 = $$1.getTopContext();
-            Collection<ht<eh>> $$5 = gp.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ad.e() + ".txt";
-            CommandDispatcher<eh> $$8 = $$0.l().aF().a();
-            int $$9 = 0;
-
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               aml.b $$12 = new aml.b($$11);
-               $$3.a($$12);
-
-               for (final ht<eh> $$13 : $$5) {
-                  try {
-                     eh $$14 = $$0.a($$12).b(2);
-                     hv<eh> $$15 = $$13.a(null, $$8);
-                     $$3.a((new hn<eh>($$15, ee.a, false) {
-                        public void a(eh $$0, hg<eh> $$1, hi $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
-                        }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (ek var18) {
-                     $$0.b(var18.a());
-                  }
-               }
-            } catch (IOException | UncheckedIOException var19) {
-               aml.a.warn("Tracing failed", var19);
-               $$0.b(xe.c("commands.debug.function.traceFailed"));
-            }
-
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> xe.a("commands.debug.function.success.single", $$18, xe.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> xe.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
-               }
-            });
+            $$0.a(() -> wx.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
          }
-      }
-   }
 
-   static class b implements eg, hj {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
-
-      b(PrintWriter $$0) {
-         this.c = $$0;
-      }
-
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
-      }
-
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
-         }
-      }
-
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
-         }
-      }
-
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
-         }
-      }
-
-      @Override
-      public void a(int $$0, akt $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
-      }
-
-      @Override
-      public void a(xe $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
-
-      @Override
-      public boolean k_() {
-         return true;
-      }
-
-      @Override
-      public boolean w_() {
-         return true;
-      }
-
-      @Override
-      public boolean V_() {
-         return false;
-      }
-
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+         return $$4;
       }
    }
 }

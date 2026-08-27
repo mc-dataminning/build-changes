@@ -1,111 +1,84 @@
-public class cog extends cnx implements drb {
-   private boolean c = true;
+public abstract class cog extends brw {
+   protected static final ajs<Integer> f = ajw.a(cog.class, aju.b);
+   protected static final ajs<Integer> g = ajw.a(cog.class, aju.b);
+   protected static final ajs<Float> h = ajw.a(cog.class, aju.d);
 
-   public cog(bsb<? extends cog> $$0, dca $$1) {
+   public cog(bsc<?> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   public cog(dca $$0, double $$1, double $$2, double $$3) {
-      super(bsb.ac, $$1, $$2, $$3, $$0);
-   }
-
    @Override
-   public cnw.a u() {
-      return cnw.a.f;
-   }
+   public boolean a(bqp $$0, float $$1) {
+      if (this.dP().B || this.dK()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
+      } else {
+         this.n(-this.P());
+         this.d(10);
+         this.bv();
+         this.b(this.N() + $$1 * 10.0F);
+         this.a(dvw.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cly && ((cly)$$0.d()).gd().d;
+         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.ao();
+            }
+         } else {
+            this.a($$0);
+         }
 
-   @Override
-   public dtc x() {
-      return dfe.hW.n();
-   }
-
-   @Override
-   public int z() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.F()) {
-         this.b($$4);
+         return true;
       }
    }
 
-   public boolean F() {
-      return this.c;
-   }
-
-   public void b(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public double G() {
-      return this.dz();
-   }
-
-   @Override
-   public double I() {
-      return this.dB() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dF();
-   }
-
-   @Override
-   public boolean K() {
+   boolean d(bqp $$0) {
       return false;
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dU().C && this.bI() && this.F() && this.L()) {
-         this.e();
-      }
-   }
-
-   public boolean L() {
-      if (drc.a(this.dU(), this)) {
-         return true;
-      } else {
-         for (cig $$1 : this.dU().a(cig.class, this.cP().c(0.25, 0.0, 0.25), bsa.a)) {
-            if (drc.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
+   public void b(ctl $$0) {
+      this.an();
+      if (this.dP().aa().b(dav.i)) {
+         ctq $$1 = new ctq($$0);
+         $$1.b(kb.f, this.ah());
+         this.b($$1);
       }
    }
 
    @Override
-   protected cuc ah_() {
-      return cuk.pg;
+   protected void a(ajw.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
    }
 
-   @Override
-   protected void b(uk $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
+   public void d(int $$0) {
+      this.ao.a(f, $$0);
    }
 
-   @Override
-   protected void a(uk $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   public void n(int $$0) {
+      this.ao.a(g, $$0);
    }
 
-   @Override
-   public cpg a(int $$0, clx $$1) {
-      return new cqg($$0, $$1, this);
+   public void b(float $$0) {
+      this.ao.a(h, $$0);
    }
+
+   public float N() {
+      return this.ao.a(h);
+   }
+
+   public int O() {
+      return this.ao.a(f);
+   }
+
+   public int P() {
+      return this.ao.a(g);
+   }
+
+   protected void a(bqp $$0) {
+      this.b(this.ah_());
+   }
+
+   abstract ctl ah_();
 }

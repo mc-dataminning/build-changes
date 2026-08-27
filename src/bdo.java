@@ -1,75 +1,25 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bdo extends DataFix {
-   private static final String a = "minecraft:empty";
+public class bdo extends bfa {
+   private final String a;
 
-   public bdo(Schema $$0) {
-      super($$0, true);
+   public bdo(Schema $$0, String $$1, String $$2) {
+      super($$0, true, "Horse armor fix for " + $$1, bga.z, $$1);
+      this.a = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgf.z);
-      Type<?> $$1 = this.getOutputSchema().getType(bgf.z);
-      return this.fixTypeEverywhereTyped(
-         "Fix AbstractArrow item type",
-         $$0,
-         $$1,
-         this.a(this.a("minecraft:trident", bdo::c), this.a("minecraft:arrow", bdo::a), this.a("minecraft:spectral_arrow", bdo::b))
-      );
-   }
-
-   @SafeVarargs
-   private <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
-         }
-
-         return $$1;
-      };
-   }
-
-   private Function<Typed<?>, Typed<?>> a(String $$0, bdo.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bgf.z, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(bgf.z, $$0);
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bdo.a<?> $$1, Type<?> $$2, Type<T> $$3) {
-      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
-      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
-   }
-
-   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
-      return ad.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
-   }
-
-   private static String a(Dynamic<?> $$0) {
-      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-   }
-
-   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
-      return ad.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
-   }
-
-   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
-      return new Typed($$1, $$0.getOps(), $$0.getValue());
-   }
-
-   interface a<F> {
-      Typed<F> fix(Typed<?> var1, Type<F> var2);
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
+      } else {
+         return $$0;
+      }
    }
 }

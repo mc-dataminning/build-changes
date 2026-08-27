@@ -1,32 +1,16 @@
-public class cba<T extends bsw> extends bzv {
-   private final T b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cba(T $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cba extends cbb {
+   public cba(bsz $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void c() {
-      super.c();
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected eum h() {
+      eum $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      eum $$2 = cdn.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cdj.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

@@ -1,59 +1,64 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djk extends div implements djx {
-   public static final MapCodec<djk> c = b(djk::new);
-   protected static final exn g = dfc.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class djk extends dea implements ded {
+   public static final MapCodec<djk> a = b(djk::new);
 
    @Override
    public MapCodec<djk> a() {
-      return c;
+      return a;
    }
 
-   protected djk(dtb.d $$0) {
-      super($$0, iw.b, g, true, 0.14);
+   protected djk(drc.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected boolean g(dtc $$0) {
-      return $$0.a(dfe.al);
-   }
-
-   @Override
-   protected dfc b() {
-      return dfe.nb;
+   private static boolean b(drd $$0, dbc $$1, io $$2) {
+      io $$3 = $$2.c();
+      drd $$4 = $$1.a_($$3);
+      int $$5 = emn.a($$1, $$0, $$2, $$4, $$3, it.b, $$4.b($$1, $$3));
+      return $$5 < $$1.P();
    }
 
    @Override
-   protected boolean m(dtc $$0) {
-      return !$$0.a(dfe.lH);
+   protected void b(drd $$0, aqn $$1, io $$2, aym $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dec.dV.n());
+      }
    }
 
    @Override
-   public boolean a(@Nullable cly $$0, dbg $$1, ir $$2, dtc $$3, epd $$4) {
-      return false;
+   public boolean b(dbc $$0, io $$1, drd $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public boolean a(dcb $$0, ir $$1, dtc $$2, epe $$3) {
-      return false;
+   public boolean a(daz $$0, aym $$1, io $$2, drd $$3) {
+      return true;
    }
 
    @Override
-   protected int a(ayt $$0) {
-      return 1;
+   public void a(aqn $$0, aym $$1, io $$2, drd $$3) {
+      drd $$4 = $$0.a_($$2);
+      io $$5 = $$2.c();
+      dta $$6 = $$0.l().g();
+      jk<dzm<?, ?>> $$7 = $$0.H_().d(lf.aC);
+      if ($$4.a(dec.ow)) {
+         this.a($$7, rv.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dec.on)) {
+         this.a($$7, rv.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rv.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rv.n, $$0, $$6, $$1, $$5);
+         }
+      }
    }
 
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awj.a) && $$1.e() == 8 ? super.a($$0) : null;
+   private void a(jk<dzm<?, ?>> $$0, akm<dzm<?, ?>> $$1, aqn $$2, dta $$3, aym $$4, io $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((dzm)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return epf.c.a(false);
+   public ded.a ar_() {
+      return ded.a.a;
    }
 }

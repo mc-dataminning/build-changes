@@ -1,91 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public enum dww {
-   a {
-      @Override
-      public void a(aqt $$0, dwx $$1, List<cgz> $$2, int $$3, ir $$4) {
-         ir $$5 = new ir(0, 128, 0);
+public class dww implements dwk {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dwx i = new dwx(this);
 
-         for (cgz $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public dww(long $$0) {
+      this.b($$0);
+   }
 
-         $$1.a(b);
+   @Override
+   public aym d() {
+      return new dww(this.g());
+   }
+
+   @Override
+   public dxi e() {
+      return new dww.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw azc.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
       }
-   },
-   b {
-      @Override
-      public void a(aqt $$0, dwx $$1, List<cgz> $$2, int $$3, ir $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new ir(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(aqt $$0, dwx $$1, List<cgz> $$2, int $$3, ir $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<edp.a> $$8 = edp.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               edp.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cgz $$11 : $$2) {
-                     $$11.a(new ir($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   }
 
-                  for (ir $$13 : ir.c(new ir($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ir($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dca.a.b);
-                  efe $$14 = new efe(true, ImmutableList.of($$10), new ir(0, 128, 0));
-                  eca.M.a($$14, $$0, $$0.l().g(), ayt.a(), new ir($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw azc.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
       }
-   },
-   d {
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements dxi {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
       @Override
-      public void a(aqt $$0, dwx $$1, List<cgz> $$2, int $$3, ir $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
-
-            for (cgz $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dz(), $$5.dB(), $$5.dF(), 6.0F, dca.a.a);
-               $$5.ao();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new ir(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cgz $$6 : $$2) {
-               $$6.a(new ir(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new ir(0, 128, 0), 0);
-         }
+      public aym a(int $$0, int $$1, int $$2) {
+         long $$3 = ayf.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dww($$4);
       }
-   },
-   e {
+
       @Override
-      public void a(aqt $$0, dwx $$1, List<cgz> $$2, int $$3, ir $$4) {
+      public aym a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dww((long)$$1 ^ this.a);
       }
-   };
 
-   public abstract void a(aqt var1, dwx var2, List<cgz> var3, int var4, ir var5);
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
+   }
 }

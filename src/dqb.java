@@ -1,20 +1,15 @@
-public class dqb extends dpp {
-   public dqb(ir $$0, dtc $$1) {
-      super(dqe.D, $$0, $$1, czf.c);
+public class dqb extends dop {
+   public dqb(io $$0, drd $$1) {
+      super(dok.c, $$0, $$1);
    }
 
    @Override
-   protected xe k() {
-      return xe.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int b(cuh $$0) {
-      return super.b($$0) / 2;
-   }
-
-   @Override
-   protected cpg a(int $$0, clx $$1) {
-      return new cpk($$0, $$1, this, this.m);
+   protected void a(daz $$0, io $$1, drd $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 != $$4) {
+         dea $$5 = $$2.b();
+         $$0.a($$1, $$5);
+         $$0.a($$1.d(), $$5);
+      }
    }
 }

@@ -1,85 +1,127 @@
-public class aqk extends aqv {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-   public aqk(aqu $$0) {
-      super($$0);
+public class aqk extends bpm {
+   private final Set<aqo> h = Sets.newHashSet();
+   private final Set<aqo> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
+
+   public aqk(wx $$0, bpm.a $$1, bpm.b $$2) {
+      super(ayf.a(), $$0, $$1, $$2);
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.Z();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.d.b(new ade(ade.g, 0.0F));
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(aca::b);
+      }
+   }
+
+   @Override
+   public void a(bpm.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(aca::d);
+      }
+   }
+
+   @Override
+   public void a(bpm.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(aca::d);
+      }
+   }
+
+   @Override
+   public bpm a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(aca::e);
       }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
+      return this;
+   }
+
+   @Override
+   public bpm b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(aca::e);
       }
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.d.b(new ade(ade.g, 104.0F));
-            } else {
-               this.d.a(xe.c("demo.day." + $$1));
-            }
+      return this;
+   }
+
+   @Override
+   public bpm c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(aca::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(wx $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(aca::c);
+      }
+   }
+
+   private void a(Function<bpm, aca> $$0) {
+      if (this.j) {
+         aca $$1 = $$0.apply(this);
+
+         for (aqo $$2 : this.h) {
+            $$2.c.b($$1);
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.d.b(new ade(ade.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.d.b(new ade(ade.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.d.b(new ade(ade.g, 103.0F));
+      }
+   }
+
+   public void a(aqo $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.c.b(aca.a(this));
+      }
+   }
+
+   public void b(aqo $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.c.b(aca.a(this.h()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (aqo $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
          }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(xe.c("demo.day.warning"));
       }
    }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(xe.c("demo.reminder"));
-         this.g = 0;
+   public boolean f() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (aqo $$1 : this.h) {
+            $$1.c.b($$0 ? aca.a(this) : aca.a(this.h()));
+         }
       }
    }
 
-   @Override
-   public void a(ir $$0, aho.a $$1, iw $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public bqa a(aqu $$0, dca $$1, cuh $$2, bpz $$3) {
-      if (this.f) {
-         this.f();
-         return bqa.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public bqa a(aqu $$0, dca $$1, cuh $$2, bpz $$3, ewq $$4) {
-      if (this.f) {
-         this.f();
-         return bqa.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public Collection<aqo> g() {
+      return this.i;
    }
 }

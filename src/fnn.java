@@ -1,52 +1,50 @@
-public class fnn extends fon {
-   private static final xe a = xe.c("gui.toMenu");
-   private static final xe b = xe.c("gui.toTitle");
-   private final fon c;
-   private final xe d;
-   private final xe r;
-   private final fme s = fme.d();
+import java.util.List;
 
-   public fnn(fon $$0, xe $$1, xe $$2) {
-      this($$0, $$1, $$2, a);
+public class fnn {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<akn> e = List.of();
+   private int f;
+   private int g;
+
+   public fnn(int $$0) {
+      this.d = $$0;
    }
 
-   public fnn(fon $$0, xe $$1, xe $$2, xe $$3) {
-      super($$1);
-      this.c = $$0;
-      this.d = $$2;
-      this.r = $$3;
-   }
-
-   @Override
-   protected void aN_() {
-      this.s.c().b().a(10);
-      this.s.a(new fju(this.l, this.p));
-      this.s.a(new fjh(this.d, this.p).d(this.n - 50).b(true));
-      fin $$0;
-      if (this.m.F()) {
-         $$0 = fin.a(this.r, $$0x -> this.m.a(this.c)).a();
-      } else {
-         $$0 = fin.a(b, $$0x -> this.m.a(new fou())).a();
+   public void a(List<akn> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
       }
 
-      this.s.a($$0);
-      this.s.a();
-      this.s.a(this::c);
-      this.c();
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   protected void c() {
-      fly.a(this.s, this.G());
+   public void a(cov $$0, ffn $$1, float $$2, int $$3, int $$4) {
+      cqq $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   public xe i() {
-      return xd.a(this.l, this.d);
+   private void a(cqq $$0, akn $$1, float $$2, ffn $$3, int $$4, int $$5) {
+      gnv $$6 = feb.Q().a(gnu.e).apply($$1);
+      $$3.a($$4 + $$0.e, $$5 + $$0.f, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

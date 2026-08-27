@@ -1,48 +1,43 @@
-public class cjq extends cik {
-   public cjq(bsb<? extends cjq> $$0, dca $$1) {
+public class cjq extends cim {
+   public cjq(bsc<? extends cjq> $$0, daz $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean dW() {
-      return true;
-   }
-
-   public static boolean a(bsb<cjq> $$0, dcp $$1, bss $$2, ir $$3, ayt $$4) {
-      ir $$5 = $$3;
+   public static boolean a(bsc<cjq> $$0, dbo $$1, bsu $$2, io $$3, aym $$4) {
+      io $$5 = $$3;
 
       do {
          $$5 = $$5.c();
-      } while ($$1.a_($$5).a(dfe.sa));
+      } while ($$1.a_($$5).a(dec.qP));
 
-      return b($$0, $$1, $$2, $$3, $$4) && (bss.a($$2) || $$1.h($$5.d()));
+      return b($$0, $$1, $$2, $$3, $$4) && (bsu.a($$2) || $$1.h($$5.d()));
    }
 
    @Override
-   protected avn u() {
-      return avo.zH;
+   protected avh v() {
+      return avi.zj;
    }
 
    @Override
-   protected avn d(bqt $$0) {
-      return avo.zJ;
+   protected avh d(bqp $$0) {
+      return avi.zl;
    }
 
    @Override
-   protected avn n_() {
-      return avo.zI;
+   protected avh o_() {
+      return avi.zk;
    }
 
    @Override
-   avn t() {
-      return avo.zK;
+   avh u() {
+      return avi.zm;
    }
 
    @Override
-   protected cme b(cuh $$0, float $$1) {
+   protected cme b(ctq $$0, float $$1) {
       cme $$2 = super.b($$0, $$1);
       if ($$2 instanceof cmg) {
-         ((cmg)$$2).a(new brh(brj.b, 600));
+         ((cmg)$$2).a(new bre(brg.b, 600));
       }
 
       return $$2;

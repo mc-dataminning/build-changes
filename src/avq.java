@@ -1,22 +1,37 @@
-public enum avq {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private final String k;
+public interface avq {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   avq b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   avq c = $$0 -> a.format((double)$$0 * 0.1);
+   avq d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   avq e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   private avq(String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
-   }
+   String format(int var1);
 }

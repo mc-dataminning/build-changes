@@ -1,27 +1,70 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fcz extends fcy {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class fcz extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final flz f;
+   private final String g;
 
-   public static fcz a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fcz $$3 = new fcz();
+   public fcz(long $$0, int $$1, String $$2, flz $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
+   }
 
-      try {
-         $$3.a = fev.b("downloadLink", $$2, "");
-         $$3.b = fev.b("resourcePackUrl", $$2, "");
-         $$3.c = fev.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+   @Override
+   public void run() {
+      ezk $$0 = ezk.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            far $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fbn(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fay var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fax var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new fbo(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
       }
+   }
 
-      return $$3;
+   @Override
+   public wx a() {
+      return c;
    }
 }

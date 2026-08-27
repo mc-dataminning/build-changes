@@ -1,247 +1,255 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fpe extends fon implements fzi.a {
-   private static final akt w = new akt("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int x = 9;
-   private static final int y = 18;
-   public static final int c = 234;
-   public static final int d = 113;
-   private static final int z = 8;
-   private static final int A = 6;
-   public static final int r = 16;
-   public static final int s = 16;
-   public static final int u = 14;
-   public static final int v = 7;
-   private static final double B = 16.0;
-   private static final xe C = xe.c("advancements.sad_label");
-   private static final xe D = xe.c("advancements.empty");
-   private static final xe E = xe.c("gui.advancements");
-   private final fma F = new fma(this);
-   @Nullable
-   private final fon G;
-   private final fzi H;
-   private final Map<ag, fpa> I = Maps.newLinkedHashMap();
-   @Nullable
-   private fpa J;
-   private boolean K;
+public class fpe {
+   private final ati a;
+   final List<atf> b;
+   final List<atf> c;
+   final Function<atf, akn> d;
+   final Runnable e;
+   private final Consumer<ati> f;
 
-   public fpe(fzi $$0) {
-      this($$0, null);
+   public fpe(Runnable $$0, Function<atf, akn> $$1, ati $$2, Consumer<ati> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public fpe(fzi $$0, @Nullable fon $$1) {
-      super(E);
-      this.H = $$0;
-      this.G = $$1;
+   public Stream<fpe.a> a() {
+      return this.c.stream().map($$0 -> new fpe.d($$0));
    }
 
-   @Override
-   protected void aN_() {
-      this.F.a(E, this.p);
-      this.I.clear();
-      this.J = null;
-      this.H.a(this);
-      if (this.J == null && !this.I.isEmpty()) {
-         fpa $$0 = this.I.values().iterator().next();
-         this.H.a($$0.c().b(), true);
-      } else {
-         this.H.a(this.J == null ? null : this.J.c().b(), true);
-      }
-
-      this.F.b(fin.a(xd.d, $$0x -> this.d()).a(200).a());
-      this.F.a($$1 -> {
-         fil var10000 = this.c($$1);
-      });
-      this.c();
+   public Stream<fpe.a> b() {
+      return this.b.stream().map($$0 -> new fpe.c($$0));
    }
 
-   @Override
-   protected void c() {
-      this.F.a();
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(atf::g).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
    public void d() {
-      this.m.a(this.G);
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   @Override
-   public void j() {
-      this.H.a(null);
-      fzo $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(ahu.b());
+   public interface a {
+      akn a();
+
+      atg b();
+
+      String c();
+
+      wx d();
+
+      wx e();
+
+      atj f();
+
+      default wx g() {
+         return this.f().a(this.e());
       }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.n - 252) / 2;
-         int $$4 = (this.o - 140) / 2;
+   abstract class b implements fpe.a {
+      private final atf b;
 
-         for (fpa $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.H.a($$5.c().b(), true);
-               break;
-            }
+      public b(atf $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<atf> s();
+
+      protected abstract List<atf> t();
+
+      @Override
+      public akn a() {
+         return fpe.this.d.apply(this.b);
+      }
+
+      @Override
+      public atg b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wx d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wx e() {
+         return this.b.c();
+      }
+
+      @Override
+      public atj f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, atf::h, true);
+         fpe.this.e.run();
+         fpe.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fee<Boolean> $$0 = feb.Q().m.t();
+            $$0.a(!$$0.c());
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
+      protected void a(int $$0) {
+         List<atf> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fpe.this.e.run();
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.m.m.U.a($$0, $$1)) {
-         this.m.a(null);
-         this.m.n.i();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      @Override
+      public boolean q() {
+         List<atf> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<atf> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   @Override
-   public void a(fia $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 252) / 2;
-      int $$5 = (this.o - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
+   class c extends fpe.b {
+      public c(atf $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atf> s() {
+         return fpe.this.b;
+      }
+
+      @Override
+      protected List<atf> t() {
+         return fpe.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.K = false;
+   class d extends fpe.b {
+      public d(atf $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atf> s() {
+         return fpe.this.c;
+      }
+
+      @Override
+      protected List<atf> t() {
+         return fpe.this.b;
+      }
+
+      @Override
+      public boolean n() {
          return false;
-      } else {
-         if (!this.K) {
-            this.K = true;
-         } else if (this.J != null) {
-            this.J.a($$3, $$4);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.J != null) {
-         this.J.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void b(fia $$0, int $$1, int $$2, int $$3, int $$4) {
-      fpa $$5 = this.J;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.p, D, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.p, C, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(fia $$0, int $$1, int $$2) {
-      RenderSystem.enableBlend();
-      $$0.a(w, $$1, $$2, 0, 0, 252, 140);
-      if (this.I.size() > 1) {
-         for (fpa $$3 : this.I.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.J);
-         }
-
-         for (fpa $$4 : this.I.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
       }
 
-      $$0.a(this.p, this.J != null ? this.J.d() : E, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void c(fia $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.J != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         RenderSystem.enableDepthTest();
-         this.J.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         RenderSystem.disableDepthTest();
-         $$0.c().b();
+      @Override
+      public void j() {
+         this.u();
       }
 
-      if (this.I.size() > 1) {
-         for (fpa $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.p, $$5.d(), $$1, $$2);
-            }
-         }
+      @Override
+      public void k() {
       }
-   }
-
-   @Override
-   public void a(ah $$0) {
-      fpa $$1 = fpa.a(this.m, this, this.I.size(), $$0);
-      if ($$1 != null) {
-         this.I.put($$0.b(), $$1);
-      }
-   }
-
-   @Override
-   public void b(ah $$0) {
-   }
-
-   @Override
-   public void c(ah $$0) {
-      fpa $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ah $$0) {
-   }
-
-   @Override
-   public void a(ah $$0, ai $$1) {
-      fpc $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable ag $$0) {
-      this.J = this.I.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.I.clear();
-      this.J = null;
-   }
-
-   @Nullable
-   public fpc e(ah $$0) {
-      fpa $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
-   }
-
-   @Nullable
-   private fpa f(ah $$0) {
-      ah $$1 = $$0.d();
-      return this.I.get($$1.b());
    }
 }

@@ -1,10 +1,25 @@
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-public abstract class eiz extends eja {
+record eiz(akm<eiu> c, bog<akm<eiu>> d) implements eiw {
+   static MapCodec<eiz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akm.a(lf.aM).fieldOf("alias").forGetter(eiz::c), bog.b(akm.a(lf.aM)).fieldOf("targets").forGetter(eiz::d)).apply($$0, eiz::new)
+   );
+
    @Override
-   public final Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+   public void a(aym $$0, BiConsumer<akm<eiu>, akm<eiu>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (akm<eiu>)$$1x.b()));
    }
 
-   protected abstract boolean a(eiy var1, ayt var2, ir var3);
+   @Override
+   public Stream<akm<eiu>> a() {
+      return this.d.e().stream().map(boi.b::b);
+   }
+
+   @Override
+   public MapCodec<eiz> b() {
+      return a;
+   }
 }

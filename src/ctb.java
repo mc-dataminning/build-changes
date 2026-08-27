@@ -1,30 +1,15 @@
-public class ctb extends cuc implements cth {
-   public ctb(cuc.a $$0) {
+public class ctb extends ctl implements cus {
+   public ctb(ctl.a $$0) {
       super($$0);
-      dhi.a(this, crt.a);
-   }
-
-   public static boolean j(cuh $$0) {
-      return $$0.m() < $$0.n() - 1;
    }
 
    @Override
-   public boolean a(cuh $$0, cuh $$1) {
-      return $$1.a(cuk.xB);
-   }
-
-   @Override
-   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public ja<avn> ap_() {
-      return avo.aw;
-   }
-
-   @Override
-   public bsc k() {
-      return bsc.e;
+   public boolean a(daz $$0, dps $$1, boolean $$2, cly $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aA_(), avi.kA, avj.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,58 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public abstract class dhz extends djc {
-   public static final dua<dtn> K = dts.U;
+public class dhz extends dea {
+   public static final MapCodec<dhz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(le.e.q().fieldOf("host").forGetter(dhz::b), u()).apply($$0, dhz::new));
+   private final dea b;
+   private static final Map<dea, dea> c = Maps.newIdentityHashMap();
+   private static final Map<drd, drd> d = Maps.newIdentityHashMap();
+   private static final Map<drd, drd> e = Maps.newIdentityHashMap();
 
-   protected dhz(dtb.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<? extends dhz> a() {
+      return a;
+   }
+
+   public dhz(dea $$0, drc.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public dea b() {
+      return this.b;
+   }
+
+   public static boolean m(drd $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aqn $$0, io $$1) {
+      cjl $$2 = bsc.aM.a((daz)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.Q();
+      }
    }
 
    @Override
-   protected abstract MapCodec<? extends dhz> a();
-
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      return b($$1, $$2, m($$0).g());
+   protected void a(drd $$0, aqn $$1, io $$2, ctq $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.aa().b(dav.h) && czc.a(cze.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
    }
 
-   public static boolean b(dcd $$0, ir $$1, iw $$2) {
-      ir $$3 = $$1.a($$2);
-      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   public static drd n(drd $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).n());
    }
 
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      for (iw $$1 : $$0.f()) {
-         dtc $$2;
-         if ($$1.o() == iw.a.b) {
-            $$2 = this.n().a(K, $$1 == iw.b ? dtn.c : dtn.a).a(aE, $$0.g());
-         } else {
-            $$2 = this.n().a(K, dtn.b).a(aE, $$1.g());
+   public drd o(drd $$0) {
+      return a(e, $$0, () -> this.b().n());
+   }
+
+   private static drd a(Map<drd, drd> $$0, drd $$1, Supplier<drd> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         drd $$2x = $$2.get();
+
+         for (dsg $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
 
-         if ($$2.a((dcd)$$0.q(), $$0.a())) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected static iw m(dtc $$0) {
-      switch ((dtn)$$0.c(K)) {
-         case c:
-            return iw.a;
-         case a:
-            return iw.b;
-         default:
-            return $$0.c(aE);
-      }
+         return $$2x;
+      });
    }
 }

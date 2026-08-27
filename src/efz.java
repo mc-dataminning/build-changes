@@ -1,49 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class efz extends efw {
-   public static final Codec<efz> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bpf.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, efz::new)
-   );
-   private final bpf b;
-
-   public efz(bpf $$0, bpf $$1, bpf $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
+public record efz(List<dwz.c> a) implements dwz.c {
+   @Nullable
    @Override
-   protected efx<?> a() {
-      return efx.h;
-   }
-
-   @Override
-   protected void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, int $$4, efw.a $$5, int $$6, int $$7, int $$8) {
-      ir $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + aym.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
+   public drd calculate(dwo.b $$0) {
+      for (dwz.c $$1 : this.a) {
+         drd $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
          }
-
-         this.a($$0, $$1, $$2, $$3, new ir($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
       }
-   }
 
-   @Override
-   public int a(ayt $$0, int $$1, efg $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+      return null;
    }
 }

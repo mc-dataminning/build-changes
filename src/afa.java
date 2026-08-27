@@ -1,45 +1,45 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class afa implements ze<abq> {
+   public static final yv<vx, afa> a = ze.a(afa::a, afa::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class afa implements zl<abw> {
-   public static final zc<we, afa> a = zl.a(afa::a, afa::new);
-   private final exp b;
-   private final String c;
-
-   public afa(exp $$0, @Nullable exq $$1) {
+   public afa(float $$0, int $$1, float $$2) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afa(we $$0) {
-      this.b = $$0.a(exp.u);
-      this.c = $$0.p();
+   private afa(vx $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(we $$0) {
-      $$0.a(exp::a, this.b);
-      $$0.a(this.c);
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<afa> a() {
-      return agj.aC;
+   public zg<afa> a() {
+      return agc.aH;
    }
 
-   public void a(abw $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public exp b() {
+   public float b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

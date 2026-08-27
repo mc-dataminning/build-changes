@@ -1,91 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record aw(Optional<je<dfc>> c, Optional<dn> d, Optional<cw> e) {
-   public static final Codec<aw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axu.a(jp.a(li.f), "blocks").forGetter(aw::b), axu.a(dn.a, "state").forGetter(aw::c), axu.a(cw.c, "nbt").forGetter(aw::d))
-            .apply($$0, aw::new)
-   );
-   public static final zc<wp, aw> b = zc.a(za.a(za.c(li.f)), aw::b, za.a(dn.b), aw::c, za.a(cw.d), aw::d, aw::new);
-
-   public boolean a(aqt $$0, ir $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
-      }
+public class aw extends df<aw.a> {
+   @Override
+   public Codec<aw.a> a() {
+      return aw.a.a;
    }
 
-   public boolean a(dtg $$0) {
-      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
+   public void a(aqo $$0, ceg $$1, ceg $$2, @Nullable brq $$3) {
+      eph $$4 = br.b($$0, $$1);
+      eph $$5 = br.b($$0, $$2);
+      eph $$6 = $$3 != null ? br.b($$0, $$3) : null;
+      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   private boolean a(dtc $$0) {
-      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
-   }
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d, Optional<bc> e) implements df.a {
+      public static final Codec<aw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(aw.a::a),
+                  br.b.optionalFieldOf("parent").forGetter(aw.a::c),
+                  br.b.optionalFieldOf("partner").forGetter(aw.a::d),
+                  br.b.optionalFieldOf("child").forGetter(aw.a::e)
+               )
+               .apply($$0, aw.a::new)
+      );
 
-   private static boolean a(dcd $$0, @Nullable dqc $$1, cw $$2) {
-      return $$1 != null && $$2.a($$1.b($$0.I_()));
-   }
-
-   public boolean a() {
-      return this.e.isPresent();
-   }
-
-   public Optional<je<dfc>> b() {
-      return this.c;
-   }
-
-   public Optional<dn> c() {
-      return this.d;
-   }
-
-   public Optional<cw> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<je<dfc>> a = Optional.empty();
-      private Optional<dn> b = Optional.empty();
-      private Optional<cw> c = Optional.empty();
-
-      private a() {
+      public static an<aw.a> b() {
+         return am.p.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static aw.a a() {
-         return new aw.a();
+      public static an<aw.a> a(br.a $$0) {
+         return am.p.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(br.a($$0))));
       }
 
-      public aw.a a(dfc... $$0) {
-         this.a = Optional.of(je.a(dfc::r, $$0));
-         return this;
+      public static an<aw.a> a(Optional<br> $$0, Optional<br> $$1, Optional<br> $$2) {
+         return am.p.a(new aw.a(Optional.empty(), br.a($$0), br.a($$1), br.a($$2)));
       }
 
-      public aw.a a(Collection<dfc> $$0) {
-         this.a = Optional.of(je.a(dfc::r, $$0));
-         return this;
+      public boolean a(eph $$0, eph $$1, @Nullable eph $$2) {
+         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      public aw.a a(awt<dfc> $$0) {
-         this.a = Optional.of(lh.e.a($$0));
-         return this;
+      private static boolean a(Optional<bc> $$0, eph $$1) {
+         return $$0.isEmpty() || $$0.get().a($$1);
       }
 
-      public aw.a a(uk $$0) {
-         this.c = Optional.of(new cw($$0));
-         return this;
+      @Override
+      public void a(bd $$0) {
+         df.a.super.a($$0);
+         $$0.a(this.c, ".parent");
+         $$0.a(this.d, ".partner");
+         $$0.a(this.e, ".child");
       }
 
-      public aw.a a(dn.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      public aw b() {
-         return new aw(this.a, this.b, this.c);
+      @Override
+      public Optional<bc> a() {
+         return this.b;
       }
    }
 }

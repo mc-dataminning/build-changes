@@ -1,89 +1,18 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public abstract class gar {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected gat e;
-
-   public gar(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class gar extends fzg {
+   gar(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
-   }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-   public abstract gar b();
-
-   public abstract fon a(fon var1, gav var2);
-
-   public abstract static class a<R extends gar> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
+      public a(gat $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public R e() {
-         return this.a;
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gar($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public gat h() {
-         return this.a.e;
-      }
-
-      public void a(gat $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract gar.b c();
-
-      public abstract Either<gar.c, gar.b> a(gav var1);
-   }
-
-   public static record b(xe e) {
-      public static final gar.b a = new gar.b(xe.c("gui.abuseReport.send.no_reason"));
-      public static final gar.b b = new gar.b(xe.c("gui.chatReport.send.no_reported_messages"));
-      public static final gar.b c = new gar.b(xe.c("gui.chatReport.send.too_many_messages"));
-      public static final gar.b d = new gar.b(xe.c("gui.abuseReport.send.comment_too_long"));
-
-      public fjy a() {
-         return fjy.a(this.e);
-      }
-
-      public xe b() {
-         return this.e;
-      }
-   }
-
-   public static record c(UUID a, gau b, AbuseReport c) {
    }
 }

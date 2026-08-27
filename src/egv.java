@@ -1,29 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public class egv extends egl {
-   public static final Codec<egv> b = bok.b(dtc.b).comapFlatMap(egv::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bok<dtc> c;
+public class egv extends egr {
+   public static final MapCodec<egv> a = axn.j.fieldOf("chance").xmap(egv::new, $$0 -> $$0.c);
+   private final int c;
 
-   private static DataResult<egv> a(bok<dtc> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new egv($$0));
-   }
-
-   public egv(bok<dtc> $$0) {
+   private egv(int $$0) {
       this.c = $$0;
    }
 
-   public egv(bok.a<dtc> $$0) {
-      this($$0.a());
+   public static egv a(int $$0) {
+      return new egv($$0);
    }
 
    @Override
-   protected egm<?> a() {
-      return egm.b;
+   protected boolean a(egq $$0, aym $$1, io $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
    @Override
-   public dtc a(ayt $$0, ir $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public egt<?> b() {
+      return egt.b;
    }
 }

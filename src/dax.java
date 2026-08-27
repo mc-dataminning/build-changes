@@ -1,41 +1,19 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public class dax {
+   private static int[] a = new int[65536];
 
-public interface dax {
-   void f(@Nullable cly var1);
-
-   @Nullable
-   cly gy();
-
-   daz gA();
-
-   void a(daz var1);
-
-   void a(day var1);
-
-   void n(cuh var1);
-
-   int t();
-
-   void v(int var1);
-
-   boolean gB();
-
-   avn gC();
-
-   default boolean gJ() {
-      return false;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default void a(cly $$0, xe $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bqk(($$0x, $$1x, $$2x) -> new cqq($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         daz $$4 = this.gA();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gB(), this.gJ());
-         }
-      }
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   boolean gG();
+   public static int a() {
+      return a(0.5, 1.0);
+   }
 }

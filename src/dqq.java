@@ -1,245 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class dqq extends drm implements cpw {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jj<cuh> q = jj.a(9, cuh.i);
-   private int r = 0;
-   protected final cpq k = new cpq() {
-      private final int[] b = new int[9];
-      private int c = 0;
-
+public enum dqq implements ayz {
+   a("inactive", dqq.a.a) {
       @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.c : this.b[$$0];
+      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+         $$3.a(ctq.i);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
       }
-
+   },
+   b("active", dqq.a.b) {
       @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.c = $$1;
-         } else {
-            this.b[$$0] = $$1;
+      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dql.b.a($$0, this, $$2, $$3, $$1);
          }
+
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", dqq.a.b) {
+      @Override
+      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+         $$0.a(null, $$1, avi.AF, avj.e);
+      }
+   },
+   d("ejecting", dqq.a.b) {
+      @Override
+      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+         $$0.a(null, $$1, avi.AH, avj.e);
       }
 
       @Override
-      public int a() {
-         return 10;
+      protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3) {
+         $$0.a(null, $$1, avi.AA, avj.e);
       }
    };
 
-   public dqq(ir $$0, dtc $$1) {
-      super(dqe.Q, $$0, $$1);
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dqq.a j;
+
+   dqq(String $$0, dqq.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    @Override
-   protected xe k() {
-      return xe.c("container.crafter");
+   public String c() {
+      return this.i;
    }
 
-   @Override
-   protected cpg a(int $$0, clx $$1) {
-      return new cpu($$0, $$1, this, this.k);
+   public int a() {
+      return this.j.c;
    }
 
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, cuh $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cuh $$2 = this.q.get($$0);
-         int $$3 = $$2.G();
-         if ($$3 >= $$2.i()) {
-            return false;
-         } else {
-            return $$2.d() ? true : !this.a($$3, $$2, $$0);
+   public dqq a(aqn $$0, io $$1, dqn $$2, dqo $$3, dqp $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.Y() + 20L);
+            yield d;
          }
-      }
-   }
-
-   private boolean a(int $$0, cuh $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cuh $$4 = this.a($$3);
-            if ($$4.d() || $$4.G() < $$0 && cuh.c($$4, $$1)) {
-               return true;
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.Y() + (long)$$7);
+               yield d;
             }
          }
+      };
+   }
+
+   private static dqq a(aqn $$0, io $$1, dqn $$2, dqo $$3, dqp $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.Y() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(aqn $$0, io $$1, dqq $$2, dqn $$3, dqp $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3, boolean $$4) {
+   }
+
+   protected void a(aqn $$0, io $$1, dqn $$2, dqp $$3) {
+   }
+
+   private void a(aqn $$0, io $$1, ctq $$2, float $$3) {
+      kh.a($$0, $$2, 2, it.b, eum.c($$1).a(it.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, avi.AC, avj.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(int $$0) {
+         this.c = $$0;
       }
-
-      return false;
-   }
-
-   @Override
-   public void a(uk $$0, jc.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jj.a(this.b(), cuh.i);
-      if (!this.a_($$0)) {
-         bpu.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(uk $$0, jc.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.b_($$0)) {
-         bpu.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean c() {
-      for (cuh $$0 : this.q) {
-         if (!$$0.d()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cuh a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cuh $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(cly $$0) {
-      return bpt.a(this, $$0);
-   }
-
-   @Override
-   public jj<cuh> j() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jj<cuh> $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(cmc $$0) {
-      for (cuh $$1 : this.q) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(uk $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(uk $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dca $$0, ir $$1, dtc $$2, dqq $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dgw.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int t() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cuh $$2 = this.a($$1);
-         if (!$$2.d() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).d();
    }
 }

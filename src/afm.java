@@ -1,12 +1,23 @@
-public record afm(xe b) implements zl<abw> {
-   public static final zc<wp, afm> a = zc.a(xg.d, afm::b, afm::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zn<afm> a() {
-      return agj.aO;
+public class afm implements ze<abq> {
+   public static final afm a = new afm();
+   public static final yv<ByteBuf, afm> b = yv.a(a);
+
+   private afm() {
    }
 
-   public void a(abw $$0) {
+   @Override
+   public zg<afm> a() {
+      return agc.aT;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

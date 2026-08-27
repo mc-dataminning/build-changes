@@ -1,52 +1,92 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class anz {
-   public static <T extends ej<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<ee> c = ($$0, $$1) -> ej.b(((ee)$$0.getSource()).l().bb().I().s().a(), $$1);
+
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new anz.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new anz.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new anz.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ef.a("function")
+                     .then(
+                        ef.a("function", gm.a())
+                           .suggests(amt.b)
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("time", ft.a())
+                                       .executes($$0x -> a((ee)$$0x.getSource(), gm.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       ef.a("append")
+                                          .executes(
+                                             $$0x -> a((ee)$$0x.getSource(), gm.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    ef.a("replace")
+                                       .executes($$0x -> a((ee)$$0x.getSource(), gm.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               ef.a("clear")
+                  .then(
+                     ef.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
+            )
       );
    }
 
-   static class a<T extends ej<T>> implements hd.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hb $$2, hh<T> $$3) {
-         $$0.p().onFailure();
-         hi $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
-
-   static class b<T extends ej<T>> implements he.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hb $$3, hh<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(hq.a());
+   private static int a(ee $$0, Pair<akn, Either<hq<ee>, Collection<hq<ee>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
+         throw a.create();
+      } else {
+         long $$4 = $$0.e().Y() + (long)$$2;
+         akn $$5 = (akn)$$1.getFirst();
+         etz<MinecraftServer> $$6 = $$0.l().bb().I().s();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
             }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hm.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
+
+            $$6.a($$7, $$4, new etv($$5));
+            $$0.a(() -> wx.a("commands.schedule.created.function", wx.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new etw($$5));
+            $$0.a(() -> wx.a("commands.schedule.created.tag", wx.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
    }
 
-   static class c<T extends ej<T>> implements hd.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hb $$2, hh<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hi $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int a(ee $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().bb().I().s().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
+      } else {
+         $$0.a(() -> wx.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
       }
    }
 }

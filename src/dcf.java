@@ -1,2 +1,70 @@
-public interface dcf extends dcg, dci {
+public abstract class dcf {
+   public static final akm<dby> a = a("the_void");
+   public static final akm<dby> b = a("plains");
+   public static final akm<dby> c = a("sunflower_plains");
+   public static final akm<dby> d = a("snowy_plains");
+   public static final akm<dby> e = a("ice_spikes");
+   public static final akm<dby> f = a("desert");
+   public static final akm<dby> g = a("swamp");
+   public static final akm<dby> h = a("mangrove_swamp");
+   public static final akm<dby> i = a("forest");
+   public static final akm<dby> j = a("flower_forest");
+   public static final akm<dby> k = a("birch_forest");
+   public static final akm<dby> l = a("dark_forest");
+   public static final akm<dby> m = a("old_growth_birch_forest");
+   public static final akm<dby> n = a("old_growth_pine_taiga");
+   public static final akm<dby> o = a("old_growth_spruce_taiga");
+   public static final akm<dby> p = a("taiga");
+   public static final akm<dby> q = a("snowy_taiga");
+   public static final akm<dby> r = a("savanna");
+   public static final akm<dby> s = a("savanna_plateau");
+   public static final akm<dby> t = a("windswept_hills");
+   public static final akm<dby> u = a("windswept_gravelly_hills");
+   public static final akm<dby> v = a("windswept_forest");
+   public static final akm<dby> w = a("windswept_savanna");
+   public static final akm<dby> x = a("jungle");
+   public static final akm<dby> y = a("sparse_jungle");
+   public static final akm<dby> z = a("bamboo_jungle");
+   public static final akm<dby> A = a("badlands");
+   public static final akm<dby> B = a("eroded_badlands");
+   public static final akm<dby> C = a("wooded_badlands");
+   public static final akm<dby> D = a("meadow");
+   public static final akm<dby> E = a("cherry_grove");
+   public static final akm<dby> F = a("grove");
+   public static final akm<dby> G = a("snowy_slopes");
+   public static final akm<dby> H = a("frozen_peaks");
+   public static final akm<dby> I = a("jagged_peaks");
+   public static final akm<dby> J = a("stony_peaks");
+   public static final akm<dby> K = a("river");
+   public static final akm<dby> L = a("frozen_river");
+   public static final akm<dby> M = a("beach");
+   public static final akm<dby> N = a("snowy_beach");
+   public static final akm<dby> O = a("stony_shore");
+   public static final akm<dby> P = a("warm_ocean");
+   public static final akm<dby> Q = a("lukewarm_ocean");
+   public static final akm<dby> R = a("deep_lukewarm_ocean");
+   public static final akm<dby> S = a("ocean");
+   public static final akm<dby> T = a("deep_ocean");
+   public static final akm<dby> U = a("cold_ocean");
+   public static final akm<dby> V = a("deep_cold_ocean");
+   public static final akm<dby> W = a("frozen_ocean");
+   public static final akm<dby> X = a("deep_frozen_ocean");
+   public static final akm<dby> Y = a("mushroom_fields");
+   public static final akm<dby> Z = a("dripstone_caves");
+   public static final akm<dby> aa = a("lush_caves");
+   public static final akm<dby> ab = a("deep_dark");
+   public static final akm<dby> ac = a("nether_wastes");
+   public static final akm<dby> ad = a("warped_forest");
+   public static final akm<dby> ae = a("crimson_forest");
+   public static final akm<dby> af = a("soul_sand_valley");
+   public static final akm<dby> ag = a("basalt_deltas");
+   public static final akm<dby> ah = a("the_end");
+   public static final akm<dby> ai = a("end_highlands");
+   public static final akm<dby> aj = a("end_midlands");
+   public static final akm<dby> ak = a("small_end_islands");
+   public static final akm<dby> al = a("end_barrens");
+
+   private static akm<dby> a(String $$0) {
+      return akm.a(lf.az, new akn($$0));
+   }
 }

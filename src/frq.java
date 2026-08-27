@@ -1,26 +1,29 @@
-public class frq extends fru {
-   private static final xe b = xe.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final xe c = xe.c("title.32bit.deprecation.realms");
-   private static final xe d = xe.c("title.32bit.deprecation.realms.check");
-   private static final xe r = b.f().f("\n").a(c);
-   private final fon s;
+import java.util.function.Function;
 
-   public frq(fon $$0) {
-      super(b, c, d, r);
-      this.s = $$0;
+public abstract class frq<E extends brw> extends ftf<E> {
+   private final float a;
+   private final float b;
+
+   public frq(float $$0, float $$1) {
+      this($$0, $$1, gcs::e);
+   }
+
+   public frq(float $$0, float $$1, Function<akn, gcs> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
    @Override
-   protected fmb B() {
-      fme $$0 = fme.e().a(8);
-      $$0.a(fin.a(xd.d, $$0x -> {
-         if (this.a.a()) {
-            this.m.m.w = true;
-            this.m.m.av();
-         }
-
-         this.m.a(this.s);
-      }).a());
-      return $$0;
+   public void a(eyu $$0, eyy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

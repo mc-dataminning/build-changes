@@ -1,77 +1,31 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dyv implements dyj {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dyw i = new dyw(this);
+public class dyv extends dxs {
+   private final jl a;
+   private final dwz b;
+   private final dxj c;
+   private final dxm.o d;
 
-   public dyv(long $$0) {
-      this.b($$0);
+   public dyv(dwy $$0, jl $$1, dbb $$2, dwz $$3, dxj $$4, dxm.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public ayt d() {
-      return new dyv(this.g());
+   @Deprecated
+   public Optional<drd> a(Function<io, ix<dby>> $$0, dsz $$1, io $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   @Override
-   public dzh e() {
-      return new dyv.a(this.g());
+   @Deprecated
+   public jl c() {
+      return this.a;
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw azj.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw azj.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dzh {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public ayt a(int $$0, int $$1, int $$2) {
-         long $$3 = aym.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dyv($$4);
-      }
-
-      @Override
-      public ayt a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dyv((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   public dxj d() {
+      return this.c;
    }
 }

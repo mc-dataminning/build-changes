@@ -1,18 +1,24 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class wh extends MessageToMessageEncoder<zl<?>> {
-   private final zk a;
+public class wh extends vv {
+   private static final Logger h = LogUtils.getLogger();
+   private static final wx i = wx.c("disconnect.exceeded_packet_rate");
+   private final int j;
 
-   public wh(zk $$0) {
-      this.a = $$0;
+   public wh(int $$0) {
+      super(zf.a);
+      this.j = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zl<?> $$1, List<Object> $$2) throws Exception {
-      this.a.a($$1, $$2::add);
-      if ($$1.d()) {
-         $$0.pipeline().remove($$0.name());
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zm(i), we.a(() -> this.a(i)));
+         this.m();
       }
    }
 }

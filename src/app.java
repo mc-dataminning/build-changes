@@ -1,567 +1,170 @@
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogQueues;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
-import java.net.InetAddress;
-import java.net.Proxy;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Collection;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import org.slf4j.Logger;
 
-public class app extends MinecraftServer implements alk {
-   static final Logger k = LogUtils.getLogger();
-   private static final int l = 5000;
-   private static final int m = 2;
-   private final List<akx> n = Collections.synchronizedList(Lists.newArrayList());
-   @Nullable
-   private avh o;
-   private final ave p;
-   @Nullable
-   private avj q;
-   private final apr r;
-   @Nullable
-   private apv s;
-   @Nullable
-   private final arz t;
-   @Nullable
-   private blc u;
-   @Nullable
-   private bkz v;
+public class app extends JComponent {
+   private static final Font a = new Font("Monospaced", 0, 12);
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Minecraft server";
+   private static final String d = "Minecraft server - shutting down!";
+   private final apj e;
+   private Thread f;
+   private final Collection<Runnable> g = Lists.newArrayList();
+   final AtomicBoolean h = new AtomicBoolean();
 
-   public app(Thread $$0, erf.c $$1, ato $$2, alq $$3, apr $$4, DataFixer $$5, aln $$6, ard $$7) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
-      this.r = $$4;
-      this.p = new ave(this);
-      this.t = arz.a($$4.a().S);
-   }
+   public static app a(final apj $$0) {
+      try {
+         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      } catch (Exception var3) {
+      }
 
-   @Override
-   public boolean e() throws IOException {
-      Thread $$0 = new Thread("Server console handler") {
+      final JFrame $$1 = new JFrame("Minecraft server");
+      final app $$2 = new app($$0);
+      $$1.setDefaultCloseOperation(2);
+      $$1.add($$2);
+      $$1.pack();
+      $$1.setLocationRelativeTo(null);
+      $$1.setVisible(true);
+      $$1.addWindowListener(new WindowAdapter() {
          @Override
-         public void run() {
-            BufferedReader $$0 = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
-
-            String $$1;
-            try {
-               while (!app.this.ag() && app.this.x() && ($$1 = $$0.readLine()) != null) {
-                  app.this.a($$1, app.this.aI());
-               }
-            } catch (IOException var4) {
-               app.k.error("Exception handling console input", var4);
+         public void windowClosing(WindowEvent $$0x) {
+            if (!$$2.h.getAndSet(true)) {
+               $$1.setTitle("Minecraft server - shutting down!");
+               $$0.a(true);
+               $$2.f();
             }
          }
-      };
-      $$0.setDaemon(true);
-      $$0.setUncaughtExceptionHandler(new r(k));
-      $$0.start();
-      k.info("Starting minecraft server version {}", ab.b().c());
-      if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
-         k.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
-      }
+      });
+      $$2.a($$1::dispose);
+      $$2.a();
+      return $$2;
+   }
 
-      k.info("Loading properties");
-      apq $$1 = this.r.a();
-      if (this.T()) {
-         this.a_("127.0.0.1");
-      } else {
-         this.d($$1.a);
-         this.e($$1.b);
-         this.a_($$1.c);
-      }
-
-      this.f($$1.f);
-      this.g($$1.g);
-      this.d($$1.h);
-      super.c($$1.V.get());
-      this.h($$1.j);
-      this.j.a($$1.l);
-      k.info("Default game type: {}", $$1.l);
-      InetAddress $$2 = null;
-      if (!this.w().isEmpty()) {
-         $$2 = InetAddress.getByName(this.w());
-      }
-
-      if (this.R() < 0) {
-         this.a($$1.n);
-      }
-
-      this.U();
-      k.info("Starting Minecraft server on {}:{}", this.w().isEmpty() ? "*" : this.w(), this.R());
+   private app(apj $$0) {
+      this.e = $$0;
+      this.setPreferredSize(new Dimension(854, 480));
+      this.setLayout(new BorderLayout());
 
       try {
-         this.ai().a($$2, this.R());
-      } catch (IOException var10) {
-         k.warn("**** FAILED TO BIND TO PORT!");
-         k.warn("The exception was: {}", var10.toString());
-         k.warn("Perhaps a server is already running on that port?");
-         return false;
-      }
-
-      if (!this.Z()) {
-         k.warn("**** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");
-         k.warn("The server will make no attempt to authenticate usernames. Beware.");
-         k.warn(
-            "While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose."
-         );
-         k.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
-      }
-
-      if (this.bs()) {
-         this.au().c();
-      }
-
-      if (!aup.e(this)) {
-         return false;
-      } else {
-         this.a(new apo(this, this.bd(), this.g));
-         this.v = new bkz(this.bq());
-         this.u = new blc(blf.values().length, this.v, blb.a);
-         long $$4 = ad.c();
-         drt.a(this.i, this);
-         aum.a(this.Z());
-         k.info("Preparing level \"{}\"", this.s());
-         this.t_();
-         long $$5 = ad.c() - $$4;
-         String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
-         k.info("Done ({})! For help, type \"help\"", $$6);
-         if ($$1.o != null) {
-            this.aM().a(dbw.B).a($$1.o, this);
-         }
-
-         if ($$1.p) {
-            k.info("Starting GS4 status listener");
-            this.o = avh.a(this);
-         }
-
-         if ($$1.r) {
-            k.info("Starting remote control listener");
-            this.q = avj.a(this);
-         }
-
-         if (this.bt() > 0L) {
-            Thread $$7 = new Thread(new aps(this));
-            $$7.setUncaughtExceptionHandler(new s(k));
-            $$7.setName("Server Watchdog");
-            $$7.setDaemon(true);
-            $$7.start();
-         }
-
-         if ($$1.O) {
-            blk.a(this);
-            k.info("JMX monitoring enabled");
-         }
-
-         return true;
+         this.add(this.e(), "Center");
+         this.add(this.c(), "West");
+      } catch (Exception var3) {
+         b.error("Couldn't build server GUI", var3);
       }
    }
 
-   @Override
-   public boolean ab() {
-      return this.a().d && super.ab();
+   public void a(Runnable $$0) {
+      this.g.add($$0);
    }
 
-   @Override
-   public boolean V() {
-      return this.r.a().w && super.V();
-   }
-
-   @Override
-   public boolean ac() {
-      return this.r.a().e && super.ac();
-   }
-
-   @Override
-   public apq a() {
-      return this.r.a();
-   }
-
-   @Override
-   public void t() {
-      this.a(this.a().k, true);
-   }
-
-   @Override
-   public boolean j() {
-      return this.a().u;
-   }
-
-   @Override
-   public ac a(ac $$0) {
-      $$0.a("Is Modded", () -> this.P().b());
-      $$0.a("Type", () -> "Dedicated Server (map_server.txt)");
+   private JComponent c() {
+      JPanel $$0 = new JPanel(new BorderLayout());
+      apr $$1 = new apr(this.e);
+      this.g.add($$1::a);
+      $$0.add($$1, "North");
+      $$0.add(this.d(), "Center");
+      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
       return $$0;
    }
 
-   @Override
-   public void a(Path $$0) throws IOException {
-      apq $$1 = this.a();
+   private JComponent d() {
+      JList<?> $$0 = new apq(this.e);
+      JScrollPane $$1 = new JScrollPane($$0, 22, 30);
+      $$1.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
+      return $$1;
+   }
 
-      try (Writer $$2 = Files.newBufferedWriter($$0)) {
-         $$2.write(String.format(Locale.ROOT, "sync-chunk-writes=%s%n", $$1.M));
-         $$2.write(String.format(Locale.ROOT, "gamemode=%s%n", $$1.l));
-         $$2.write(String.format(Locale.ROOT, "spawn-monsters=%s%n", $$1.w));
-         $$2.write(String.format(Locale.ROOT, "entity-broadcast-range-percentage=%d%n", $$1.R));
-         $$2.write(String.format(Locale.ROOT, "max-world-size=%d%n", $$1.L));
-         $$2.write(String.format(Locale.ROOT, "spawn-npcs=%s%n", $$1.e));
-         $$2.write(String.format(Locale.ROOT, "view-distance=%d%n", $$1.F));
-         $$2.write(String.format(Locale.ROOT, "simulation-distance=%d%n", $$1.G));
-         $$2.write(String.format(Locale.ROOT, "spawn-animals=%s%n", $$1.d));
-         $$2.write(String.format(Locale.ROOT, "generate-structures=%s%n", $$1.Z.c()));
-         $$2.write(String.format(Locale.ROOT, "use-native=%s%n", $$1.x));
-         $$2.write(String.format(Locale.ROOT, "rate-limit=%d%n", $$1.E));
+   private JComponent e() {
+      JPanel $$0 = new JPanel(new BorderLayout());
+      JTextArea $$1 = new JTextArea();
+      JScrollPane $$2 = new JScrollPane($$1, 22, 30);
+      $$1.setEditable(false);
+      $$1.setFont(a);
+      JTextField $$3 = new JTextField();
+      $$3.addActionListener($$1x -> {
+         String $$2x = $$3.getText().trim();
+         if (!$$2x.isEmpty()) {
+            this.e.a($$2x, this.e.aI());
+         }
+
+         $$3.setText("");
+      });
+      $$1.addFocusListener(new FocusAdapter() {
+         @Override
+         public void focusGained(FocusEvent $$0) {
+         }
+      });
+      $$0.add($$2, "Center");
+      $$0.add($$3, "South");
+      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
+      this.f = new Thread(() -> {
+         String $$2x;
+         while (($$2x = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
+            this.a($$1, $$2, $$2x);
+         }
+      });
+      this.f.setUncaughtExceptionHandler(new r(b));
+      this.f.setDaemon(true);
+      return $$0;
+   }
+
+   public void a() {
+      this.f.start();
+   }
+
+   public void b() {
+      if (!this.h.getAndSet(true)) {
+         this.f();
       }
    }
 
-   @Override
-   public void i() {
-      if (this.t != null) {
-         this.t.close();
-      }
-
-      if (this.s != null) {
-         this.s.b();
-      }
-
-      if (this.q != null) {
-         this.q.b();
-      }
-
-      if (this.o != null) {
-         this.o.b();
-      }
+   void f() {
+      this.g.forEach(Runnable::run);
    }
 
-   @Override
-   public void b(BooleanSupplier $$0) {
-      super.b($$0);
-      this.bp();
-   }
-
-   @Override
-   public boolean G() {
-      return this.a().v;
-   }
-
-   public void a(String $$0, eh $$1) {
-      this.n.add(new akx($$0, $$1));
-   }
-
-   @Override
-   public void bp() {
-      while (!this.n.isEmpty()) {
-         akx $$0 = this.n.remove(0);
-         this.aH().a($$0.b, $$0.a);
-      }
-   }
-
-   @Override
-   public boolean n() {
-      return true;
-   }
-
-   @Override
-   public int o() {
-      return this.a().E;
-   }
-
-   @Override
-   public boolean p() {
-      return this.a().x;
-   }
-
-   public apo bq() {
-      return (apo)super.ah();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.w();
-   }
-
-   @Override
-   public int d() {
-      return this.R();
-   }
-
-   @Override
-   public String h() {
-      return this.af();
-   }
-
-   @Override
-   public void br() {
-      if (this.s == null) {
-         this.s = apv.a(this);
-      }
-   }
-
-   @Override
-   public boolean ak() {
-      return this.s != null;
-   }
-
-   @Override
-   public boolean q() {
-      return this.a().y;
-   }
-
-   @Override
-   public int am() {
-      return this.a().z;
-   }
-
-   @Override
-   public boolean a(aqt $$0, ir $$1, cly $$2) {
-      if ($$0.af() != dca.h) {
-         return false;
-      } else if (this.bq().k().c()) {
-         return false;
-      } else if (this.bq().f($$2.gk())) {
-         return false;
-      } else if (this.am() <= 0) {
-         return false;
+   public void a(JTextArea $$0, JScrollPane $$1, String $$2) {
+      if (!SwingUtilities.isEventDispatchThread()) {
+         SwingUtilities.invokeLater(() -> this.a($$0, $$1, $$2));
       } else {
-         ir $$3 = $$0.V();
-         int $$4 = aym.a($$1.u() - $$3.u());
-         int $$5 = aym.a($$1.w() - $$3.w());
-         int $$6 = Math.max($$4, $$5);
-         return $$6 <= this.am();
-      }
-   }
-
-   @Override
-   public boolean an() {
-      return this.a().P;
-   }
-
-   @Override
-   public boolean ao() {
-      return this.a().Q;
-   }
-
-   @Override
-   public int k() {
-      return this.a().A;
-   }
-
-   @Override
-   public int l() {
-      return this.a().B;
-   }
-
-   @Override
-   public void c(int $$0) {
-      super.c($$0);
-      this.r.a($$1 -> $$1.V.a(this.bc(), $$0));
-   }
-
-   @Override
-   public boolean m() {
-      return this.a().J;
-   }
-
-   @Override
-   public boolean V_() {
-      return this.a().K;
-   }
-
-   @Override
-   public int ax() {
-      return this.a().L;
-   }
-
-   @Override
-   public int aA() {
-      return this.a().I;
-   }
-
-   @Override
-   public boolean aB() {
-      apq $$0 = this.a();
-      return $$0.X && $$0.a && this.i.b();
-   }
-
-   @Override
-   public boolean bn() {
-      return this.a().Y;
-   }
-
-   @Override
-   protected boolean bs() {
-      boolean $$0 = false;
-
-      for (int $$1 = 0; !$$0 && $$1 <= 2; $$1++) {
-         if ($$1 > 0) {
-            k.warn("Encountered a problem while converting the user banlist, retrying in a few seconds");
-            this.bB();
+         Document $$3 = $$0.getDocument();
+         JScrollBar $$4 = $$1.getVerticalScrollBar();
+         boolean $$5 = false;
+         if ($$1.getViewport().getView() == $$0) {
+            $$5 = (double)$$4.getValue() + $$4.getSize().getHeight() + (double)(a.getSize() * 4) > (double)$$4.getMaximum();
          }
 
-         $$0 = aup.a((MinecraftServer)this);
-      }
-
-      boolean $$2 = false;
-
-      for (int var7 = 0; !$$2 && var7 <= 2; var7++) {
-         if (var7 > 0) {
-            k.warn("Encountered a problem while converting the ip banlist, retrying in a few seconds");
-            this.bB();
+         try {
+            $$3.insertString($$3.getLength(), $$2, null);
+         } catch (BadLocationException var8) {
          }
 
-         $$2 = aup.b(this);
-      }
-
-      boolean $$3 = false;
-
-      for (int var8 = 0; !$$3 && var8 <= 2; var8++) {
-         if (var8 > 0) {
-            k.warn("Encountered a problem while converting the op list, retrying in a few seconds");
-            this.bB();
+         if ($$5) {
+            $$4.setValue(Integer.MAX_VALUE);
          }
-
-         $$3 = aup.c(this);
       }
-
-      boolean $$4 = false;
-
-      for (int var9 = 0; !$$4 && var9 <= 2; var9++) {
-         if (var9 > 0) {
-            k.warn("Encountered a problem while converting the whitelist, retrying in a few seconds");
-            this.bB();
-         }
-
-         $$4 = aup.d(this);
-      }
-
-      boolean $$5 = false;
-
-      for (int var10 = 0; !$$5 && var10 <= 2; var10++) {
-         if (var10 > 0) {
-            k.warn("Encountered a problem while converting the player save files, retrying in a few seconds");
-            this.bB();
-         }
-
-         $$5 = aup.a(this);
-      }
-
-      return $$0 || $$2 || $$3 || $$4 || $$5;
-   }
-
-   private void bB() {
-      try {
-         Thread.sleep(5000L);
-      } catch (InterruptedException var2) {
-      }
-   }
-
-   public long bt() {
-      return this.a().C;
-   }
-
-   @Override
-   public int bl() {
-      return this.a().D;
-   }
-
-   @Override
-   public String u() {
-      return "";
-   }
-
-   @Override
-   public String a(String $$0) {
-      this.p.e();
-      this.h(() -> this.aH().a(this.p.g(), $$0));
-      return this.p.f();
-   }
-
-   public void i(boolean $$0) {
-      this.r.a($$1 -> $$1.W.a(this.bc(), $$0));
-   }
-
-   @Override
-   public void v() {
-      super.v();
-      ad.i();
-      drt.b();
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return false;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a().R * $$0 / 100;
-   }
-
-   @Override
-   public String s() {
-      return this.f.f();
-   }
-
-   @Override
-   public boolean aZ() {
-      return this.r.a().M;
-   }
-
-   @Override
-   public ary a(aqu $$0) {
-      return this.t != null ? this.t.a($$0.gk()) : ary.a;
-   }
-
-   @Nullable
-   @Override
-   public dbx bf() {
-      return this.r.a().i ? this.j.k() : null;
-   }
-
-   @Override
-   public Optional<MinecraftServer.b> X() {
-      return this.r.a().T;
-   }
-
-   @Override
-   public void aU() {
-      super.aU();
-      this.v.a(this.al());
-   }
-
-   @Override
-   public bld f() {
-      return this.u;
-   }
-
-   @Override
-   public boolean g() {
-      return this.v.a(blb.a);
-   }
-
-   @Override
-   public void a(aqu $$0, blb $$1) {
-      this.v.a($$0, $$1);
-   }
-
-   @Override
-   public boolean bo() {
-      return this.r.a().aa;
    }
 }

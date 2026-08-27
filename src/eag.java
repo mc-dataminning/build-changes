@@ -1,22 +1,47 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eag extends eam {
-   final awt<dfc> a;
-   public static final Codec<eag> e = RecordCodecBuilder.create($$0 -> a($$0).and(awt.a(li.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eag::new));
-
-   protected eag(jv $$0, awt<dfc> $$1) {
+public class eag extends dzz<eck> {
+   public eag(Codec<eck> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dtc $$0) {
-      return $$0.a(this.a);
-   }
+   public boolean a(eab<eck> $$0) {
+      dbu $$1 = $$0.b();
+      io $$2 = $$0.e();
+      aym $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         drd $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dec.dV) && !$$4.a(dec.dY) && !$$4.a(dec.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, dec.ec.n(), 2);
 
-   @Override
-   public eac<?> a() {
-      return eac.b;
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               io $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
+
+                  for (it $$8 : it.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dec.ec)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dec.ec.n(), 2);
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

@@ -1,70 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class amg {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("clear.failed.multiple", $$0));
-
-   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((eh)$$0x.getSource(), Collections.singleton(((eh)$$0x.getSource()).h()), $$0xx -> true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(ef.a("config").then(ef.a("target", er.c()).executes($$0x -> a((ee)$$0x.getSource(), er.e($$0x, "target"))))))
             .then(
-               ((RequiredArgumentBuilder)ei.a("targets", eu.d()).executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), $$0xx -> true)))
+               ef.a("unconfig")
                   .then(
-                     ((RequiredArgumentBuilder)ei.a("item", gt.a($$1)).executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), gt.a($$0x, "item"))))
-                        .then(
-                           ei.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), gt.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
+                     ef.a("target", fu.a())
+                        .suggests(($$0x, $$1) -> ej.b(a(((ee)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((ee)$$0x.getSource(), fu.a($$0x, "target")))
                   )
             )
       );
    }
 
-   private static int a(eh $$0, Collection<aqu> $$1, Predicate<cuh> $$2) throws CommandSyntaxException {
-      return a($$0, $$1, $$2, -1);
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (vv $$2 : $$0.ai().e()) {
+         if ($$2.k() instanceof arl $$3) {
+            $$1.add($$3.k().getId().toString());
+         }
+      }
+
+      return $$1;
    }
 
-   private static int a(eh $$0, Collection<aqu> $$1, Predicate<cuh> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
+   private static int a(ee $$0, aqo $$1) {
+      GameProfile $$2 = $$1.gb();
+      $$1.c.o();
+      $$0.a(() -> wx.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
 
-      for (aqu $$5 : $$1) {
-         $$4 += $$5.gl().a($$2, $$3, $$5.cp.q());
-         $$5.cq.d();
-         $$5.cp.a($$5.gl());
-      }
-
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().af());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xe.a("commands.clear.test.single", $$6, $$1.iterator().next().P_()), true);
-            } else {
-               $$0.a(() -> xe.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+   private static int a(ee $$0, UUID $$1) {
+      for (vv $$2 : $$0.l().ai().e()) {
+         wd var5 = $$2.k();
+         if (var5 instanceof arl) {
+            arl $$3 = (arl)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
             }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> xe.a("commands.clear.success.single", $$6, $$1.iterator().next().P_()), true);
-         } else {
-            $$0.a(() -> xe.a("commands.clear.success.multiple", $$6, $$1.size()), true);
          }
-
-         return $$4;
       }
+
+      $$0.b(wx.b("Can't find player to unconfig"));
+      return 0;
    }
 }

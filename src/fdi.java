@@ -1,33 +1,52 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fdi {
-   public final fer a = new fer(ad.g(), TimeUnit.MILLISECONDS, ad.c);
-   private final List<fer.e<?>> h;
-   public final fer.e<List<fci>> b;
-   public final fer.e<fdi.a> c;
-   public final fer.e<Integer> d;
-   public final fer.e<Boolean> e;
-   public final fer.e<fch> f;
-   public final fdj g = new fdj(new fex());
+public class fdi extends fdb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final fas e;
+   private final fbk f;
 
-   public fdi(fbs $$0) {
-      this.c = this.a.a("server list", () -> {
-         fcl $$1 = $$0.b();
-         return fbn.b() ? new fdi.a($$1.a, $$0.c()) : new fdi.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fes.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fes.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fes.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fes.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fes.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   public fdi(long $$0, fas $$1, fbk $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public List<fer.e<?>> a() {
-      return this.h;
+   @Override
+   public void run() {
+      ezk $$0 = ezk.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (fay var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 
-   public static record a(List<fcj> a, List<fcj> b) {
+   @Override
+   public wx a() {
+      return c;
    }
 }

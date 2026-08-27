@@ -1,17 +1,6 @@
-public interface alk extends alj {
-   apq a();
-
-   String b();
-
-   int d();
-
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+public record alk(atn a, aky b, je<akw> c, epd d) implements AutoCloseable {
+   @Override
+   public void close() {
+      this.a.close();
+   }
 }

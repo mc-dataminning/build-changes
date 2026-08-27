@@ -1,42 +1,45 @@
-import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ekt extends ela {
-   public static final Codec<ekt> a = Codec.unit(() -> ekt.b);
+public class ekt extends eli {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ekt> a = MapCodec.unit(() -> ekt.b);
    public static final ekt b = new ekt();
 
    private ekt() {
-      super(elc.a.a);
+   }
+
+   @Nullable
+   @Override
+   public ell.c a(dbc $$0, io $$1, io $$2, ell.c $$3, ell.c $$4, elh $$5) {
+      drd $$6 = $$4.b();
+      if ($$6.a(dec.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            drd $$9;
+            try {
+               fy.a $$8 = fy.a($$0.a(lf.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
+            }
+
+            return $$9.a(dec.kN) ? null : new ell.c($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   public jv a(enu $$0, dmd $$1) {
-      return jv.g;
-   }
-
-   @Override
-   public List<ent.c> a(enu $$0, ir $$1, dmd $$2, ayt $$3) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public ejl a(enu $$0, ir $$1, dmd $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(enu $$0, dcv $$1, dct $$2, duz $$3, ir $$4, ir $$5, dmd $$6, ejl $$7, ayt $$8, boolean $$9) {
-      return true;
-   }
-
-   @Override
-   public elb<?> a() {
-      return elb.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   protected elk<?> a() {
+      return elk.h;
    }
 }

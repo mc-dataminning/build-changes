@@ -1,67 +1,90 @@
-public class gdt extends gdu {
-   private final ir a;
-   private final float b;
-   private final float F;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gdt(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ir.a($$1, $$2, $$3));
+public class gdt {
+   public static final gdt a = new gdt();
+   public final gds b;
+   public final gds c;
+   public final gds d;
+   public final gds e;
+   public final gds f;
+   public final gds g;
+   public final gds h;
+   public final gds i;
+
+   private gdt() {
+      this(gds.a, gds.a, gds.a, gds.a, gds.a, gds.a, gds.a, gds.a);
    }
 
-   public gdt(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7, ir $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(fgj.Q().ap().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dfe.j)) {
-         int $$9 = fgj.Q().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   public gdt(gdt $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
+
+   public gdt(gds $$0, gds $$1, gds $$2, gds $$3, gds $$4, gds $$5, gds $$6, gds $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public gds a(ctn $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gds.a;
+      };
+   }
+
+   public boolean b(ctn $$0) {
+      return this.a($$0) != gds.a;
+   }
+
+   protected static class a implements JsonDeserializer<gdt> {
+      public gdt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gds $$4 = this.a($$2, $$3, ctn.c);
+         gds $$5 = this.a($$2, $$3, ctn.b);
+         if ($$5 == gds.a) {
+            $$5 = $$4;
+         }
+
+         gds $$6 = this.a($$2, $$3, ctn.e);
+         gds $$7 = this.a($$2, $$3, ctn.d);
+         if ($$7 == gds.a) {
+            $$7 = $$6;
+         }
+
+         gds $$8 = this.a($$2, $$3, ctn.f);
+         gds $$9 = this.a($$2, $$3, ctn.g);
+         gds $$10 = this.a($$2, $$3, ctn.h);
+         gds $$11 = this.a($$2, $$3, ctn.i);
+         return new gdt($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
-
-   @Override
-   public gcy b() {
-      return gcy.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? gfe.a(this.c, this.a) : $$1;
-   }
-
-   public static class a implements gcx<ks> {
-      public gcu a(ks $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dtc $$8 = $$0.b();
-         return !$$8.i() && !$$8.a(dfe.cA) && $$8.z() ? new gdt($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      private gds a(JsonDeserializationContext $$0, JsonObject $$1, ctn $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gds)$$0.deserialize($$1.get($$3), gds.class) : gds.a;
       }
    }
 }

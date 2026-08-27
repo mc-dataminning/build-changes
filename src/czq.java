@@ -1,22 +1,15 @@
-public interface czq extends cza<bpt> {
-   @Override
-   default czf<?> e() {
-      return czf.g;
+public class czq extends czb {
+   public czq(czb.b $$0) {
+      super($$0);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   default cuh g() {
-      return new cuh(dfe.oZ);
+   public boolean b() {
+      return true;
    }
-
-   boolean a(cuh var1);
-
-   boolean b(cuh var1);
-
-   boolean c(cuh var1);
 }

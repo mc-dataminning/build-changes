@@ -1,6 +1,8 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dlo extends dfc {
+public class dlo extends ddm {
    public static final MapCodec<dlo> a = b(dlo::new);
 
    @Override
@@ -8,30 +10,38 @@ public class dlo extends dfc {
       return a;
    }
 
-   protected dlo(dtb.d $$0) {
+   protected dlo(drc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      if (!$$0.a(cuk.ts)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return bqc.a($$2.C);
-      } else {
-         iw $$7 = $$6.b();
-         iw $$8 = $$7.o() == iw.a.b ? $$4.cM().g() : $$7;
-         $$2.a(null, $$3, avo.vr, avq.e, 1.0F, 1.0F);
-         $$2.a($$3, dfe.eU.n().a(dfw.b, $$8), 11);
-         cig $$9 = new cig(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cuh(cuk.tv, 4)
-         );
-         $$9.o(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bso.d($$5));
-         $$2.a($$4, dxv.M, $$3);
-         $$4.b(avz.c.b(cuk.ts));
-         return bqc.a($$2.C);
+   public doi a(io $$0, drd $$1) {
+      return new dpw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends doi> doj<T> a(daz $$0, drd $$1, dok<T> $$2) {
+      return a($$2, dok.j, $$0.B ? dpw::a : dpw::b);
+   }
+
+   @Override
+   protected void a(drd $$0, aqn $$1, io $$2, ctq $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
+   }
+
+   @Override
+   protected dkg a_(drd $$0) {
+      return dkg.c;
+   }
+
+   @Override
+   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dbr.a($$0, $$2, "SpawnData");
    }
 }

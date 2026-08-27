@@ -1,59 +1,104 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import org.joml.Matrix4f;
 
-public class giz implements gis.a {
-   private final fgj a;
-   private final Map<Long, Map<ir, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public abstract class giz<T extends bss, M extends fsw<T>> extends giu<T, M> {
+   public static final int h = 24;
 
-   giz(fgj $$0) {
-      this.a = $$0;
+   public giz(ght.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(long $$0, ir $$1) {
-      Map<ir, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   protected boolean a(T $$0) {
+      return super.b($$0) && ($$0.cF() || $$0.ag() && $$0 == this.c.c);
    }
 
-   @Override
-   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Z();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<ir> $$8 = Sets.newHashSet();
-      Map<ir, Integer> $$9 = Maps.newHashMap();
-      fbg $$10 = $$1.getBuffer(gfo.z());
-      Iterator<Entry<Long, Map<ir, Integer>>> $$11 = this.b.entrySet().iterator();
+   public boolean a(T $$0, gfo $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         brw $$5 = $$0.ge();
+         return $$5 != null ? $$1.a($$5.h_()) : false;
+      }
+   }
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<ir, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<ir, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<ir, Integer> $$16 : $$14.entrySet()) {
-               ir $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ewp $$19 = new ewp(ir.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gfe.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
+   public void a(T $$0, float $$1, float $$2, eyu $$3, gck $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      brw $$6 = $$0.ge();
+      if ($$6 != null) {
+         this.a($$0, $$2, $$3, $$4, $$6);
+      }
+   }
+
+   private <E extends brw> void a(T $$0, float $$1, eyu $$2, gck $$3, E $$4) {
+      $$2.a();
+      eum $$5 = $$4.q($$1);
+      double $$6 = (double)(ayf.i($$1, $$0.aZ, $$0.aY) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
+      eum $$7 = $$0.p($$1);
+      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
+      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
+      double $$10 = ayf.d((double)$$1, $$0.L, $$0.du()) + $$8;
+      double $$11 = ayf.d((double)$$1, $$0.M, $$0.dw()) + $$7.d;
+      double $$12 = ayf.d((double)$$1, $$0.N, $$0.dA()) + $$9;
+      $$2.a($$8, $$7.d, $$9);
+      float $$13 = (float)($$5.c - $$10);
+      float $$14 = (float)($$5.d - $$11);
+      float $$15 = (float)($$5.e - $$12);
+      float $$16 = 0.025F;
+      eyy $$17 = $$3.getBuffer(gcs.h());
+      Matrix4f $$18 = $$2.c().a();
+      float $$19 = ayf.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
+      float $$20 = $$15 * $$19;
+      float $$21 = $$13 * $$19;
+      io $$22 = io.a($$0.j($$1));
+      io $$23 = io.a($$4.j($$1));
+      int $$24 = this.a($$0, $$22);
+      int $$25 = this.c.a($$4).a($$4, $$23);
+      int $$26 = $$0.dP().a(dbi.a, $$22);
+      int $$27 = $$0.dP().a(dbi.a, $$23);
+
+      for (int $$28 = 0; $$28 <= 24; $$28++) {
+         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
       }
 
-      for (Entry<ir, Integer> $$20 : $$9.entrySet()) {
-         ir $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gis.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      for (int $$29 = 24; $$29 >= 0; $$29--) {
+         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
       }
+
+      $$2.b();
+   }
+
+   private static void a(
+      eyy $$0,
+      Matrix4f $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      int $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      int $$13,
+      boolean $$14
+   ) {
+      float $$15 = (float)$$13 / 24.0F;
+      int $$16 = (int)ayf.i($$15, (float)$$5, (float)$$6);
+      int $$17 = (int)ayf.i($$15, (float)$$7, (float)$$8);
+      int $$18 = gcj.a($$16, $$17);
+      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
+      float $$20 = 0.5F * $$19;
+      float $$21 = 0.4F * $$19;
+      float $$22 = 0.3F * $$19;
+      float $$23 = $$2 * $$15;
+      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
+      float $$25 = $$4 * $$15;
+      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+   }
+
+   protected float b(T $$0) {
+      return super.f($$0) * $$0.ed();
    }
 }

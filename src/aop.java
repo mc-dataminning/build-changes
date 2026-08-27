@@ -1,312 +1,48 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class aop {
-   private static final int a = 10000;
-   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> xe.b("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> xe.b("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> xe.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
-   );
+   private static final xu a = xu.a.a(new xd(xd.a.a, wx.c("chat.type.team.hover"))).a(new wv(wv.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.teammsg.failed.noteam"));
 
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("spreadplayers").requires($$0x -> $$0x.c(2)))
-            .then(
-               ei.a("center", gj.a())
-                  .then(
-                     ei.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
-                        .then(
-                           ((RequiredArgumentBuilder)ei.a("maxRange", FloatArgumentType.floatArg(1.0F))
-                                 .then(
-                                    ei.a("respectTeams", BoolArgumentType.bool())
-                                       .then(
-                                          ei.a("targets", eu.b())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eh)$$0x.getSource(),
-                                                      gj.a($$0x, "center"),
-                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                      ((eh)$$0x.getSource()).e().am(),
-                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                      eu.b($$0x, "targets")
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ei.a("under")
-                                    .then(
-                                       ei.a("maxHeight", IntegerArgumentType.integer())
-                                          .then(
-                                             ei.a("respectTeams", BoolArgumentType.bool())
-                                                .then(
-                                                   ei.a("targets", eu.b())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (eh)$$0x.getSource(),
-                                                               gj.a($$0x, "center"),
-                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
-                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                               eu.b($$0x, "targets")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int a(eh $$0, ewt $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends brv> $$6) throws CommandSyntaxException {
-      aqt $$7 = $$0.e();
-      int $$8 = $$7.J_();
-      if ($$4 < $$8) {
-         throw d.create($$4, $$8);
-      } else {
-         ayt $$9 = ayt.a();
-         double $$10 = (double)($$1.i - $$3);
-         double $$11 = (double)($$1.j - $$3);
-         double $$12 = (double)($$1.i + $$3);
-         double $$13 = (double)($$1.j + $$3);
-         aop.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
-         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
-         double $$15 = a($$6, $$7, $$14, $$4, $$5);
-         $$0.a(
-            () -> xe.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
-            true
-         );
-         return $$14.length;
-      }
-   }
-
-   private static int a(Collection<? extends brv> $$0) {
-      Set<eya> $$1 = Sets.newHashSet();
-
-      for (brv $$2 : $$0) {
-         if ($$2 instanceof cly) {
-            $$1.add($$2.co());
+   public static void a(CommandDispatcher<ee> $$0) {
+      LiteralCommandNode<ee> $$1 = $$0.register((LiteralArgumentBuilder)ef.a("teammsg").then(ef.a("message", ev.a()).executes($$0x -> {
+         ee $$1x = (ee)$$0x.getSource();
+         brw $$2 = $$1x.g();
+         evl $$3 = $$2.cj();
+         if ($$3 == null) {
+            throw b.create();
          } else {
-            $$1.add(null);
-         }
-      }
+            List<aqo> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cj() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               ev.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
 
-      return $$1.size();
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)ef.a("tm").redirect($$1));
    }
 
-   private static void a(ewt $$0, double $$1, aqt $$2, ayt $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aop.a[] $$9, boolean $$10) throws CommandSyntaxException {
-      boolean $$11 = true;
-      double $$12 = Float.MAX_VALUE;
+   private static void a(ee $$0, brw $$1, evl $$2, List<aqo> $$3, xn $$4) {
+      wx $$5 = $$2.d().c(a);
+      wt.a $$6 = wt.a(wt.g, $$0).c($$5);
+      wt.a $$7 = wt.a(wt.h, $$0).c($$5);
+      xm $$8 = xm.a($$4);
+      boolean $$9 = false;
 
-      int $$13;
-      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
-         $$11 = false;
-         $$12 = Float.MAX_VALUE;
-
-         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
-            aop.a $$15 = $$9[$$14];
-            int $$16 = 0;
-            aop.a $$17 = new aop.a();
-
-            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
-               if ($$14 != $$18) {
-                  aop.a $$19 = $$9[$$18];
-                  double $$20 = $$15.a($$19);
-                  $$12 = Math.min($$20, $$12);
-                  if ($$20 < $$1) {
-                     $$16++;
-                     $$17.a = $$17.a + ($$19.a - $$15.a);
-                     $$17.b = $$17.b + ($$19.b - $$15.b);
-                  }
-               }
-            }
-
-            if ($$16 > 0) {
-               $$17.a /= (double)$$16;
-               $$17.b /= (double)$$16;
-               double $$21 = $$17.b();
-               if ($$21 > 0.0) {
-                  $$17.a();
-                  $$15.b($$17);
-               } else {
-                  $$15.a($$3, $$4, $$5, $$6, $$7);
-               }
-
-               $$11 = true;
-            }
-
-            if ($$15.a($$4, $$5, $$6, $$7)) {
-               $$11 = true;
-            }
-         }
-
-         if (!$$11) {
-            for (aop.a $$22 : $$9) {
-               if (!$$22.b($$2, $$8)) {
-                  $$22.a($$3, $$4, $$5, $$6, $$7);
-                  $$11 = true;
-               }
-            }
-         }
+      for (aqo $$10 : $$3) {
+         wt.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
 
-      if ($$12 == Float.MAX_VALUE) {
-         $$12 = 0.0;
-      }
-
-      if ($$13 >= 10000) {
-         if ($$10) {
-            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         } else {
-            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         }
-      }
-   }
-
-   private static double a(Collection<? extends brv> $$0, aqt $$1, aop.a[] $$2, int $$3, boolean $$4) {
-      double $$5 = 0.0;
-      int $$6 = 0;
-      Map<eya, aop.a> $$7 = Maps.newHashMap();
-
-      for (brv $$8 : $$0) {
-         aop.a $$10;
-         if ($$4) {
-            eya $$9 = $$8 instanceof cly ? $$8.co() : null;
-            if (!$$7.containsKey($$9)) {
-               $$7.put($$9, $$2[$$6++]);
-            }
-
-            $$10 = $$7.get($$9);
-         } else {
-            $$10 = $$2[$$6++];
-         }
-
-         $$8.a($$1, (double)aym.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)aym.a($$10.b) + 0.5, Set.of(), $$8.dK(), $$8.dM());
-         double $$12 = Double.MAX_VALUE;
-
-         for (aop.a $$13 : $$2) {
-            if ($$10 != $$13) {
-               double $$14 = $$10.a($$13);
-               $$12 = Math.min($$14, $$12);
-            }
-         }
-
-         $$5 += $$12;
-      }
-
-      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
-   }
-
-   private static aop.a[] a(ayt $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
-      aop.a[] $$6 = new aop.a[$$1];
-
-      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
-         aop.a $$8 = new aop.a();
-         $$8.a($$0, $$2, $$3, $$4, $$5);
-         $$6[$$7] = $$8;
-      }
-
-      return $$6;
-   }
-
-   static class a {
-      double a;
-      double b;
-
-      double a(aop.a $$0) {
-         double $$1 = this.a - $$0.a;
-         double $$2 = this.b - $$0.b;
-         return Math.sqrt($$1 * $$1 + $$2 * $$2);
-      }
-
-      void a() {
-         double $$0 = this.b();
-         this.a /= $$0;
-         this.b /= $$0;
-      }
-
-      double b() {
-         return Math.sqrt(this.a * this.a + this.b * this.b);
-      }
-
-      public void b(aop.a $$0) {
-         this.a = this.a - $$0.a;
-         this.b = this.b - $$0.b;
-      }
-
-      public boolean a(double $$0, double $$1, double $$2, double $$3) {
-         boolean $$4 = false;
-         if (this.a < $$0) {
-            this.a = $$0;
-            $$4 = true;
-         } else if (this.a > $$2) {
-            this.a = $$2;
-            $$4 = true;
-         }
-
-         if (this.b < $$1) {
-            this.b = $$1;
-            $$4 = true;
-         } else if (this.b > $$3) {
-            this.b = $$3;
-            $$4 = true;
-         }
-
-         return $$4;
-      }
-
-      public int a(dbg $$0, int $$1) {
-         ir.a $$2 = new ir.a(this.a, (double)($$1 + 1), this.b);
-         boolean $$3 = $$0.a_($$2).i();
-         $$2.d(iw.a);
-         boolean $$4 = $$0.a_($$2).i();
-
-         while ($$2.v() > $$0.J_()) {
-            $$2.d(iw.a);
-            boolean $$5 = $$0.a_($$2).i();
-            if (!$$5 && $$4 && $$3) {
-               return $$2.v() + 1;
-            }
-
-            $$3 = $$4;
-            $$4 = $$5;
-         }
-
-         return $$1 + 1;
-      }
-
-      public boolean b(dbg $$0, int $$1) {
-         ir $$2 = ir.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dtc $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.k() && !$$3.a(awe.aM);
-      }
-
-      public void a(ayt $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = aym.a($$0, $$1, $$3);
-         this.b = aym.a($$0, $$2, $$4);
+      if ($$9) {
+         $$0.a(auk.e);
       }
    }
 }

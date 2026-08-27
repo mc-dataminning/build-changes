@@ -1,58 +1,61 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dvf<T> implements dvo<T> {
-   private final jf<T> a;
+public class dvf<T extends dvd> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public dvf(jf<T> $$0) {
-      this.a = $$0;
-   }
+   public <U extends T> void a(dvk<T, U> $$0, aws<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   public static <A> dvo<A> a(int $$0, jf<A> $$1, dvp<A> $$2, List<A> $$3) {
-      return new dvf<>($$1);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dvn($$0);
-      } else {
-         return $$1;
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
       }
    }
 
-   @Override
-   public void a(we $$0) {
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
-   @Override
-   public void b(we $$0) {
+   public void a(T $$0) {
+      UUID $$1 = $$0.cz();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.al(), $$0);
+      }
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public void b(T $$0) {
+      this.c.remove($$0.cz());
+      this.b.remove($$0.al());
    }
 
-   @Override
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
    public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dvo<T> c() {
-      return this;
+      return this.c.size();
    }
 }

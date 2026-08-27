@@ -1,47 +1,28 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class anx {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.save.alreadyOn"));
 
-   public static void a(Collection<String> $$0, eh $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(xe.c("commands.reload.failure"));
-         return null;
-      });
-   }
+   public static void a(CommandDispatcher<ee> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ee $$1 = (ee)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static Collection<String> a(ato $$0, erl $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
-
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
+         for (aqn $$3 : $$1.l().K()) {
+            if ($$3 != null && $$3.e) {
+               $$3.e = false;
+               $$2 = true;
+            }
          }
-      }
 
-      return $$3;
-   }
-
-   public static void a(CommandDispatcher<eh> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         eh $$1 = (eh)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         ato $$3 = $$2.aG();
-         erl $$4 = $$2.bb();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> xe.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wx.c("commands.save.enabled"), true);
+            return 1;
+         }
       }));
    }
 }

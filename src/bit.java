@@ -1,32 +1,16 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bit extends bhp {
+public class bit extends bhl {
    public bit(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:wandering_trader",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(bgf.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bgf.t.in($$0), "buyB", bgf.t.in($$0), "sell", bgf.t.in($$0)))),
-               bhq.a($$0)
-            )
-      );
-      $$0.register(
-         $$1,
-         "minecraft:trader_llama",
-         $$1x -> DSL.optionalFields("Items", DSL.list(bgf.t.in($$0)), "SaddleItem", bgf.t.in($$0), "DecorItem", bgf.t.in($$0), bhq.a($$0))
-      );
+      $$0.register($$1, "minecraft:hoglin", () -> bhm.a($$0));
       return $$1;
    }
 }

@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface gsu {
+public interface gsu {
+   void log(gss var1);
 }

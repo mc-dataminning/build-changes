@@ -1,8 +1,19 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.MapCodec;
 
-public record ekj(aud a, jo b, enu c) {
-   public static ekj a(aqt $$0) {
-      MinecraftServer $$1 = $$0.o();
-      return new ekj($$1.bg(), $$1.bc(), $$1.ba());
+public class ekj extends elf {
+   public static final MapCodec<ekj> a = MapCodec.unit(() -> ekj.b);
+   public static final ekj b = new ekj();
+
+   private ekj() {
+   }
+
+   @Override
+   public boolean a(drd $$0, aym $$1) {
+      return true;
+   }
+
+   @Override
+   protected elg<?> a() {
+      return elg.a;
    }
 }

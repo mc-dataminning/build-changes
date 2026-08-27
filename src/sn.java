@@ -1,82 +1,10 @@
-import java.util.List;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class sn {
-   public static final aks<eix> a = sp.a("delta");
-   public static final aks<eix> b = sp.a("poison_pool");
-   public static final aks<eix> c = sp.a("small_basalt_columns");
-   public static final aks<eix> d = sp.a("small_debris_columns");
-   public static final aks<eix> e = sp.a("large_basalt_columns");
-   public static final aks<eix> f = sp.a("large_potato_columns");
-   public static final aks<eix> g = sp.a("basalt_blobs");
-   public static final aks<eix> h = sp.a("blackstone_blobs");
-   public static final aks<eix> i = sp.a("glowstone_extra");
-   public static final aks<eix> j = sp.a("glowstone");
-   public static final aks<eix> k = sp.a("crimson_forest_vegetation");
-   public static final aks<eix> l = sp.a("warped_forest_vegetation");
-   public static final aks<eix> m = sp.a("nether_sprouts");
-   public static final aks<eix> n = sp.a("twisting_vines");
-   public static final aks<eix> o = sp.a("corrupted_buds");
-   public static final aks<eix> p = sp.a("potato_sprouts");
-   public static final aks<eix> q = sp.a("weeping_vines");
-   public static final aks<eix> r = sp.a("patch_crimson_roots");
-   public static final aks<eix> s = sp.a("basalt_pillar");
-   public static final aks<eix> t = sp.a("spring_delta");
-   public static final aks<eix> u = sp.a("spring_closed");
-   public static final aks<eix> v = sp.a("spring_closed_double");
-   public static final aks<eix> w = sp.a("spring_open");
-   public static final aks<eix> x = sp.a("patch_soul_fire");
-   public static final aks<eix> y = sp.a("patch_fire");
-
-   public static void a(qq<eix> $$0) {
-      jb<ebm<?, ?>> $$1 = $$0.a(li.aC);
-      ja<ebm<?, ?>> $$2 = $$1.b(sc.a);
-      ja<ebm<?, ?>> $$3 = $$1.b(sc.b);
-      ja<ebm<?, ?>> $$4 = $$1.b(sc.c);
-      ja<ebm<?, ?>> $$5 = $$1.b(sc.d);
-      ja<ebm<?, ?>> $$6 = $$1.b(sc.e);
-      ja<ebm<?, ?>> $$7 = $$1.b(sc.f);
-      ja<ebm<?, ?>> $$8 = $$1.b(sc.g);
-      ja<ebm<?, ?>> $$9 = $$1.b(sc.h);
-      ja<ebm<?, ?>> $$10 = $$1.b(sc.i);
-      ja<ebm<?, ?>> $$11 = $$1.b(sc.j);
-      ja<ebm<?, ?>> $$12 = $$1.b(sc.l);
-      ja<ebm<?, ?>> $$13 = $$1.b(sc.n);
-      ja<ebm<?, ?>> $$14 = $$1.b(sc.p);
-      ja<ebm<?, ?>> $$15 = $$1.b(sc.q);
-      ja<ebm<?, ?>> $$16 = $$1.b(sc.r);
-      ja<ebm<?, ?>> $$17 = $$1.b(sc.t);
-      ja<ebm<?, ?>> $$18 = $$1.b(sc.u);
-      ja<ebm<?, ?>> $$19 = $$1.b(sc.v);
-      ja<ebm<?, ?>> $$20 = $$1.b(sc.w);
-      ja<ebm<?, ?>> $$21 = $$1.b(sc.x);
-      ja<ebm<?, ?>> $$22 = $$1.b(sc.y);
-      ja<ebm<?, ?>> $$23 = $$1.b(sc.A);
-      ja<ebm<?, ?>> $$24 = $$1.b(sc.z);
-      sp.a($$0, a, $$2, eip.a(40), eik.a());
-      sp.a($$0, b, $$3, eip.a(40), eik.a());
-      sp.a($$0, c, $$4, eip.a(4), eik.a());
-      sp.a($$0, d, $$5, eip.a(1), ejd.a(3), eik.a());
-      sp.a($$0, e, $$6, eip.a(2), eik.a());
-      sp.a($$0, f, $$7, eip.a(1), ejd.a(3), eik.a());
-      sp.a($$0, g, $$8, eiq.a(75), eiu.a(), sp.e, eik.a());
-      sp.a($$0, h, $$9, eiq.a(25), eiu.a(), sp.e, eik.a());
-      sp.a($$0, i, $$10, eiq.a(box.a(0, 9)), eiu.a(), sp.h, eik.a());
-      sp.a($$0, j, $$10, eiq.a(10), eiu.a(), sp.e, eik.a());
-      sp.a($$0, k, $$11, eip.a(6), eik.a());
-      sp.a($$0, l, $$12, eip.a(5), eik.a());
-      sp.a($$0, m, $$13, eip.a(4), eik.a());
-      sp.a($$0, p, $$16, eip.a(8), eik.a());
-      sp.a($$0, n, $$14, eiq.a(10), eiu.a(), sp.e, eik.a());
-      sp.a($$0, o, $$15, eiq.a(10), eiu.a(), sp.e, eik.a());
-      sp.a($$0, q, $$17, eiq.a(10), eiu.a(), sp.e, eik.a());
-      sp.a($$0, r, $$18, sp.e, eik.a());
-      sp.a($$0, s, $$19, eiq.a(10), eiu.a(), sp.e, eik.a());
-      sp.a($$0, t, $$20, eiq.a(16), eiu.a(), sp.h, eik.a());
-      sp.a($$0, u, $$21, eiq.a(16), eiu.a(), sp.f, eik.a());
-      sp.a($$0, v, $$21, eiq.a(32), eiu.a(), sp.f, eik.a());
-      sp.a($$0, w, $$22, eiq.a(8), eiu.a(), sp.h, eik.a());
-      List<eja> $$25 = List.of(eiq.a(bpl.a(0, 5)), eiu.a(), sp.h, eik.a());
-      sp.a($$0, x, $$23, $$25);
-      sp.a($$0, y, $$24, $$25);
-   }
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sn {
+   String a();
 }

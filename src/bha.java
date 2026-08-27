@@ -6,113 +6,56 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class bha extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final short c = 12;
+   private static final int a = 2;
+   private static final int[] b = new int[]{0, 10, 50, 100, 150};
+
+   public static int a(int $$0) {
+      return b[ayf.a($$0 - 1, 0, b.length - 1)];
+   }
 
    public bha(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgf.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
-         Type<?> $$5 = this.getInputSchema().getType(bgf.c);
-         OpticFinder<?> $$6 = $$5.findField("Level");
-         OpticFinder<?> $$7 = $$6.type().findField("Sections");
-         Type<?> $$8 = $$7.type();
-         if (!($$8 instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-         } else {
-            Type<?> $$9 = ((ListType)$$8).getElement();
-            OpticFinder<?> $$10 = DSL.typeFinder($$9);
-            return TypeRewriteRule.seq(
-               new bab(this.getOutputSchema(), "AddTrappedChestFix", bgf.s).makeRule(),
-               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
-                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
-                     if ($$4xx.isEmpty()) {
-                        return $$3xx;
-                     } else {
-                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
-                        IntSet $$6x = new IntOpenHashSet();
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bga.z, "minecraft:villager");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
+      OpticFinder<?> $$2 = $$0.findField("Offers");
+      Type<?> $$3 = $$2.type();
+      OpticFinder<?> $$4 = $$3.findField("Recipes");
+      ListType<?> $$5 = (ListType<?>)$$4.type();
+      OpticFinder<?> $$6 = $$5.getElement().finder();
+      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bga.z), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
+            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
+            Typed<?> $$6x = $$3xx;
+            if ($$5xx == 0 || $$5xx == 1) {
+               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
+               $$5xx = ayf.a($$7 / 2, 1, 5);
+               if ($$5xx > 1) {
+                  $$6x = a($$3xx, $$5xx);
+               }
+            }
 
-                        for (Typed<?> $$7x : $$5x) {
-                           bha.a $$8x = new bha.a($$7x, this.getInputSchema());
-                           if (!$$8x.b()) {
-                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
-                                 int $$10x = $$8x.c($$9x);
-                                 if ($$8x.a($$10x)) {
-                                    $$6x.add($$8x.c() << 12 | $$9x);
-                                 }
-                              }
-                           }
-                        }
+            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
+            if ($$8.isEmpty()) {
+               $$6x = b($$6x, $$5xx);
+            }
 
-                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-                        int $$12 = $$11.get("xPos").asInt(0);
-                        int $$13 = $$11.get("zPos").asInt(0);
-                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(bgf.s);
-                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
-                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
-                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
-                              int $$7xx = $$5xx.get("y").asInt(0);
-                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
-                              return $$6x.contains(ber.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
-                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
-                                       a.warn("Block Entity was expected to be a chest");
-                                    }
-
-                                    return "minecraft:trapped_chest";
-                                 })) : $$4xxxx;
-                           }));
-                     }
-                  }))
-            );
-         }
-      }
+            return $$6x;
+         }));
    }
 
-   public static final class a extends ber.b {
-      @Nullable
-      private IntSet h;
+   private static Typed<?> a(Typed<?> $$0, int $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
+   }
 
-      public a(Typed<?> $$0, Schema $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      protected boolean a() {
-         this.h = new IntOpenHashSet();
-
-         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
-            Dynamic<?> $$1 = this.e.get($$0);
-            String $$2 = $$1.get("Name").asString("");
-            if (Objects.equals($$2, "minecraft:trapped_chest")) {
-               this.h.add($$0);
-            }
-         }
-
-         return this.h.isEmpty();
-      }
-
-      public boolean a(int $$0) {
-         return this.h.contains($$0);
-      }
+   private static Typed<?> b(Typed<?> $$0, int $$1) {
+      int $$2 = a($$1);
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
    }
 }

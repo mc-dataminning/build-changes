@@ -1,62 +1,8 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class eib extends ehz {
-   public static final Codec<eib> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzo.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dzo.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eib::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dzo d;
-   private final dzo e;
-   private final int f;
-
-   private eib(dzo $$0, dzo $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static eib a(dzo $$0, dzo $$1, int $$2) {
-      return new eib($$0, $$1, $$2);
-   }
-
-   public static eib a(dzo $$0, dzo $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(ayt $$0, dzr $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return aym.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + aym.b($$0, 0, $$6) + aym.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public eia<?> a() {
-      return eia.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+public record eib(atx a, jl b, elm c) {
+   public static eib a(aqn $$0) {
+      MinecraftServer $$1 = $$0.o();
+      return new eib($$1.bg(), $$1.bc(), $$1.ba());
    }
 }

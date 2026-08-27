@@ -1,37 +1,20 @@
-public class agw implements zl<agl> {
-   public static final zc<we, agw> a = zl.a(agw::a, agw::new);
-   private final int b;
-   private final String c;
+public record agw(bkx b) implements ze<age> {
+   public static final yv<vx, agw> a = ze.a(agw::a, agw::new);
 
-   public agw(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agw(vx $$0) {
+      this($$0.b(bkx.class));
    }
 
-   private agw(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<agw> a() {
-      return agj.bp;
+   public zg<agw> a() {
+      return agc.bv;
    }
 
-   public void a(agl $$0) {
+   public void a(age $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
    }
 }

@@ -1,77 +1,85 @@
-public class fyi<T extends chu> extends fvz<T> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String f = "right_head";
-   private static final String g = "left_head";
-   private static final float h = 0.065F;
-   private static final float i = 0.265F;
-   private final fys j;
-   private final fys k;
-   private final fys l;
-   private final fys m;
-   private final fys n;
-   private final fys o;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   public fyi(fys $$0) {
-      this.j = $$0;
-      this.n = $$0.b("ribcage");
-      this.o = $$0.b("tail");
-      this.k = $$0.b("center_head");
-      this.l = $$0.b("right_head");
-      this.m = $$0.b("left_head");
+public final class fyi {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fyi c = new fyi(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fyi(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   public static fyy a(fyw $$0) {
-      fza $$1 = new fza();
-      fzb $$2 = $$1.a();
-      $$2.a("shoulders", fyx.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fyu.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         fyx.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         fyu.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
-      );
-      $$2.a(
-         "tail",
-         fyx.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         fyu.a(-2.0F, 6.9F + aym.b(0.20420352F) * 10.0F, -0.5F + aym.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", fyx.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fyu.a);
-      fyx $$4 = fyx.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, fyu.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, fyu.a(10.0F, 4.0F, 0.0F));
-      return fyy.a($$1, 64, 64);
+   private fyi(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fyi a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fyi($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
    @Override
-   public fys a() {
-      return this.j;
+   public String toString() {
+      return this.b.toString();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = aym.b($$3 * 0.1F);
-      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
-      this.o.a(-2.0F, 6.9F + aym.b(this.n.e) * 10.0F, -0.5F + aym.a(this.n.e) * 10.0F);
-      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fyi ? this.b.equals(((fyi)$$0).b) : false;
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      a($$0, this.l, 0);
-      a($$0, this.m, 1);
-   }
-
-   private static <T extends chu> void a(T $$0, fys $$1, int $$2) {
-      $$1.f = ($$0.b($$2) - $$0.bj) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

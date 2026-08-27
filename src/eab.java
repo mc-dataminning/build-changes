@@ -1,119 +1,43 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 
-public interface eab extends BiPredicate<dcv, ir> {
-   Codec<eab> b = lh.O.q().dispatch(eab::a, eac::codec);
-   eab c = a(dfe.a);
-   eab d = a(dfe.a, dfe.al);
+public class eab<FC extends ecd> {
+   private final Optional<dzm<?, ?>> a;
+   private final dbu b;
+   private final dta c;
+   private final aym d;
+   private final io e;
+   private final FC f;
 
-   eac<?> a();
-
-   static eab a(List<eab> $$0) {
-      return new dzz($$0);
+   public eab(Optional<dzm<?, ?>> $$0, dbu $$1, dta $$2, aym $$3, io $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   static eab a(eab... $$0) {
-      return a(List.of($$0));
+   public Optional<dzm<?, ?>> a() {
+      return this.a;
    }
 
-   static eab a(eab $$0, eab $$1) {
-      return a(List.of($$0, $$1));
+   public dbu b() {
+      return this.b;
    }
 
-   static eab b(List<eab> $$0) {
-      return new eaa($$0);
+   public dta c() {
+      return this.c;
    }
 
-   static eab b(eab... $$0) {
-      return b(List.of($$0));
+   public aym d() {
+      return this.d;
    }
 
-   static eab b(eab $$0, eab $$1) {
-      return b(List.of($$0, $$1));
+   public io e() {
+      return this.e;
    }
 
-   static eab a(jv $$0, List<dfc> $$1) {
-      return new eah($$0, je.a(dfc::r, $$1));
-   }
-
-   static eab c(List<dfc> $$0) {
-      return a(jv.g, $$0);
-   }
-
-   static eab a(jv $$0, dfc... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static eab a(dfc... $$0) {
-      return a(jv.g, $$0);
-   }
-
-   static eab a(jv $$0, awt<dfc> $$1) {
-      return new eag($$0, $$1);
-   }
-
-   static eab a(awt<dfc> $$0) {
-      return a(jv.g, $$0);
-   }
-
-   static eab b(jv $$0, List<epd> $$1) {
-      return new eai($$0, je.a(epd::k, $$1));
-   }
-
-   static eab a(jv $$0, epd... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static eab a(epd... $$0) {
-      return a(jv.g, $$0);
-   }
-
-   static eab a(eab $$0) {
-      return new eaj($$0);
-   }
-
-   static eab a(jv $$0) {
-      return new eak($$0);
-   }
-
-   static eab b() {
-      return a(jv.g);
-   }
-
-   static eab a(dtc $$0, jv $$1) {
-      return new eao($$1, $$0);
-   }
-
-   static eab a(jv $$0, iw $$1) {
-      return new eae($$0, $$1);
-   }
-
-   static eab a(iw $$0) {
-      return a(jv.g, $$0);
-   }
-
-   static eab b(jv $$0) {
-      return new eal($$0);
-   }
-
-   static eab c() {
-      return b(jv.g);
-   }
-
-   static eab d() {
-      return c(jv.g);
-   }
-
-   static eab c(jv $$0) {
-      return a($$0, epf.a);
-   }
-
-   static eab d(jv $$0) {
-      return new eaf($$0);
-   }
-
-   static eab e() {
-      return ean.a;
+   public FC f() {
+      return this.f;
    }
 }

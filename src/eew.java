@@ -1,22 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public class eew implements eek {
-   public static final Codec<eew> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(eew::new, eea.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), eix.b.fieldOf("default").forGetter($$0x -> $$0x.c))
-   );
-   public final List<eea> b;
-   public final ja<eix> c;
+public class eew<P extends eev> {
+   public static final eew<eex> a = a("trunk_vine", eex.a);
+   public static final eew<eeu> b = a("leave_vine", eeu.a);
+   public static final eew<eet> c = a("cocoa", eet.a);
+   public static final eew<ees> d = a("beehive", ees.a);
+   public static final eew<eeq> e = a("alter_ground", eeq.a);
+   public static final eew<eer> f = a("attached_to_leaves", eer.a);
+   private final MapCodec<P> g;
 
-   public eew(List<eea> $$0, ja<eix> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static <P extends eev> eew<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.Z, $$0, new eew<>($$1));
    }
 
-   @Override
-   public Stream<ebm<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   private eew(MapCodec<P> $$0) {
+      this.g = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

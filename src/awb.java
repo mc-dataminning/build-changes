@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class awb {
+   public static final awm<efm> a = a("visible");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@u
-interface awb {
+   private awb() {
+   }
+
+   private static awm<efm> a(String $$0) {
+      return awm.a(lf.aF, new akn($$0));
+   }
 }

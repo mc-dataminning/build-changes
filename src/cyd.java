@@ -1,77 +1,121 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyd extends cyf {
-   private final ir b;
-   protected boolean a = true;
+public class cyd implements cxn {
+   final cye a;
+   final ctq b;
+   final String c;
+   final cxm d;
+   final boolean e;
 
-   public cyd(cly $$0, bpz $$1, cuh $$2, ewq $$3) {
-      this($$0.dU(), $$0, $$1, $$2, $$3);
+   public cyd(String $$0, cxm $$1, cye $$2, ctq $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
    }
 
-   public cyd(cyf $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
-   }
-
-   protected cyd(dca $$0, @Nullable cly $$1, bpz $$2, cuh $$3, ewq $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
-   }
-
-   public static cyd a(cyd $$0, ir $$1, iw $$2) {
-      return new cyd(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ewq(
-            new ewu((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public cyd(String $$0, cxm $$1, cye $$2, ctq $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
    @Override
-   public ir a() {
-      return this.a ? super.a() : this.b;
+   public cya<?> ap_() {
+      return cya.a;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+   @Override
+   public String c() {
+      return this.c;
    }
 
-   public boolean c() {
-      return this.a;
+   @Override
+   public cxm d() {
+      return this.d;
    }
 
-   public iw d() {
-      return iw.a(this.o())[0];
+   @Override
+   public ctq a(iz.a $$0) {
+      return this.b;
    }
 
-   public iw e() {
-      return iw.a(this.o(), iw.a.b);
+   @Override
+   public jg<cxt> a() {
+      return this.a.c();
    }
 
-   public iw[] f() {
-      iw[] $$0 = iw.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         iw $$1 = this.k();
-         int $$2 = 0;
+   @Override
+   public boolean h() {
+      return this.e;
+   }
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
+   }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
+   public boolean a(cpl $$0, daz $$1) {
+      return this.a.a($$0);
+   }
 
-         return $$0;
+   public ctq a(cpl $$0, iz.a $$1) {
+      return this.a($$1).s();
+   }
+
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean i() {
+      jg<cxt> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   }
+
+   public static class a implements cya<cyd> {
+      public static final MapCodec<cyd> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  cxm.e.fieldOf("category").orElse(cxm.d).forGetter($$0x -> $$0x.d),
+                  cye.a.forGetter($$0x -> $$0x.a),
+                  ctq.a.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, cyd::new)
+      );
+      public static final yv<wi, cyd> y = yv.a(cyd.a::a, cyd.a::a);
+
+      @Override
+      public MapCodec<cyd> a() {
+         return x;
+      }
+
+      @Override
+      public yv<wi, cyd> b() {
+         return y;
+      }
+
+      private static cyd a(wi $$0) {
+         String $$1 = $$0.p();
+         cxm $$2 = $$0.b(cxm.class);
+         cye $$3 = cye.b.decode($$0);
+         ctq $$4 = ctq.f.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new cyd($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private static void a(wi $$0, cyd $$1) {
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         cye.b.encode($$0, $$1.a);
+         ctq.f.encode($$0, $$1.b);
+         $$0.a($$1.e);
       }
    }
 }

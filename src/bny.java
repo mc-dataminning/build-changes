@@ -1,5 +1,13 @@
-import java.util.List;
-
 public interface bny {
-   List<bnv> bu();
+   void a();
+
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bmk f();
+
+   void d();
 }

@@ -1,65 +1,57 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class dix extends dfc implements dmr {
-   public static final MapCodec<dix> a = b(dix::new);
-   private static final dtt c = dts.C;
-   protected static final exn b = dfc.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public enum dix implements ayz {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dix> a() {
-      return a;
+   public static final Codec<dix> d = ayz.a(dix::values);
+   private final String e;
+   private final wx f;
+   private final h g;
+
+   private dix(String $$0, h $$1) {
+      this.e = $$0;
+      this.f = wx.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   protected dix(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfc, dtc> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      if ($$1 != null) {
-         epe $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == epf.c));
-      } else {
-         return null;
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
       }
    }
 
-   @Override
-   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
-      ir $$3 = $$2.c();
-      dtc $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, iw.a);
+   public dkn a(it $$0) {
+      it.a $$1 = $$0.o();
+      return (this != b || $$1 != it.a.c) && (this != c || $$1 != it.a.a) ? dkn.a : dkn.c;
    }
 
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return b;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      if ($$1 == iw.b && !this.a($$0, $$3, $$4)) {
-         return dfe.a.n();
+   public it b(it $$0) {
+      if (this == c && $$0.o() == it.a.a) {
+         return $$0.g();
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return this == b && $$0.o() == it.a.c ? $$0.g() : $$0;
       }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public wx b() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

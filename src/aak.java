@@ -1,21 +1,16 @@
-public record aak(String c) implements aam {
-   public static final zc<we, aak> a = aam.a(aak::a, aak::new);
-   public static final aam.b<aak> b = aam.a("brand");
+public record aak() implements aaf {
+   public static final yv<vx, aak> a = aaf.a(aak::a, aak::new);
+   public static final aaf.b<aak> b = aaf.a("debug/game_test_clear");
 
-   private aak(we $$0) {
-      this($$0.p());
+   private aak(vx $$0) {
+      this();
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c);
+   private void a(vx $$0) {
    }
 
    @Override
-   public aam.b<aak> a() {
+   public aaf.b<aak> a() {
       return b;
-   }
-
-   public String b() {
-      return this.c;
    }
 }

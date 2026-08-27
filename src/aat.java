@@ -1,35 +1,57 @@
-public record aat(aat.a c) implements aam {
-   public static final zc<we, aat> a = aam.a(aat::a, aat::new);
-   public static final aam.b<aat> b = aam.a("debug/hive");
+import java.util.List;
 
-   private aat(we $$0) {
-      this(new aat.a($$0));
+public record aat(akm<daz> c, ehd d, List<aat.a> e) implements aaf {
+   public static final yv<vx, aat> a = aaf.a(aat::a, aat::new);
+   public static final aaf.b<aat> b = aaf.a("debug/structures");
+
+   private aat(vx $$0) {
+      this($$0.a(lf.aS), b($$0), $$0.a(aat.a::new));
    }
 
-   private void a(we $$0) {
-      this.c.a($$0);
+   private void a(vx $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public aam.b<aat> a() {
+   public aaf.b<aat> a() {
       return b;
    }
 
-   public aat.a b() {
+   static ehd b(vx $$0) {
+      return new ehd($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(vx $$0, ehd $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public akm<daz> b() {
       return this.c;
    }
 
-   public static record a(ir a, String b, int c, int d, boolean e) {
-      public a(we $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+   public ehd c() {
+      return this.d;
+   }
+
+   public List<aat.a> d() {
+      return this.e;
+   }
+
+   public static record a(ehd a, boolean b) {
+      public a(vx $$0) {
+         this(aat.b($$0), $$0.readBoolean());
       }
 
-      public void a(we $$0) {
-         $$0.a(this.a);
+      public void a(vx $$0) {
+         aat.a($$0, this.a);
          $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
       }
    }
 }

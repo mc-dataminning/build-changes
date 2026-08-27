@@ -1,58 +1,67 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fxl<T extends cjk> extends fwi<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fys f;
-   private final fys g;
-   private final fys h;
+public class fxl {
+   private final fxn[] a;
+   private int b;
 
-   public fxl(fys $$0) {
-      super(gfo::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public static Codec<fxl> a(int $$0) {
+      return Codec.list(fxn.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fxl($$0, $$1));
+            },
+            fxl::c
+         );
    }
 
-   public static fyy a() {
-      fza $$0 = new fza();
-      fzb $$1 = $$0.a();
-      $$1.a("lid", fyx.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fyu.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fyx.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fyu.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fyx.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyu.a(0.0F, 12.0F, 0.0F));
-      return fyy.a($$0, 64, 64);
+   public fxl(int $$0) {
+      this.a = new fxn[$$0];
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.am;
-      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + aym.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = aym.a($$3 * 0.1F) * 0.7F;
+   private fxl(int $$0, List<fxn> $$1) {
+      this.a = $$1.toArray(fxn[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fxn> c() {
+      List<fxn> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      this.g.a(0.0F, 16.0F + aym.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.G($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.bl - 180.0F - $$0.bj) * (float) (Math.PI / 180.0);
+      return $$0;
    }
 
-   @Override
-   public Iterable<fys> d() {
-      return ImmutableList.of(this.f, this.g);
+   public void a(fxn $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
-   public fys b() {
-      return this.g;
+   @Nullable
+   public fxn b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   public fys c() {
-      return this.h;
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

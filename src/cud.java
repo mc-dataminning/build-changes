@@ -1,65 +1,53 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 
-public class cud {
-   private final Map<cuc, cud.a> a = Maps.newHashMap();
-   private int b;
+public class cud extends ctl {
+   private static final int j = 32;
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
 
-   public boolean a(cuc $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cud(ctl.a $$0) {
+      super($$0);
    }
 
-   public float a(cuc $$0, float $$1) {
-      cud.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return aym.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
+   @Override
+   public ctq a(ctq $$0, daz $$1, bsq $$2) {
+      if ($$2 instanceof aqo $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(avs.c.b(this));
       }
-   }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cuc, cud.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cuc, cud.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
+      $$0.a(1, $$2);
+      if (!$$1.B) {
+         $$1.a(null, $$2.dp(), avi.so, $$2.de(), 1.0F, 1.0F);
+         Integer $$4 = $$0.a(kb.P, Integer.valueOf(0));
+         $$2.e(brg.E);
+         $$2.b(new bre(brg.E, 120000, $$4, false, false, true));
       }
+
+      return $$0;
    }
 
-   public void a(cuc $$0, int $$1) {
-      this.a.put($$0, new cud.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   @Override
+   public int b(ctq $$0) {
+      return 32;
    }
 
-   public void b(cuc $$0) {
-      this.a.remove($$0);
-      this.c($$0);
+   @Override
+   public cvl c(ctq $$0) {
+      return cvl.c;
    }
 
-   protected void b(cuc $$0, int $$1) {
+   @Override
+   public bpx<ctq> a(daz $$0, cly $$1, bpv $$2) {
+      return cts.a($$0, $$1, $$2);
    }
 
-   protected void c(cuc $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void a(ctq $$0, ctl.b $$1, List<wx> $$2, cvj $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Integer $$4 = $$0.a(kb.P, Integer.valueOf(0));
+      List<bre> $$5 = List.of(new bre(brg.E, 120000, $$4, false, false, true));
+      cvr.a($$5, $$2::add, 1.0F, $$1.b());
    }
 }

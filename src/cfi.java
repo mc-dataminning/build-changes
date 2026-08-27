@@ -1,74 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-
-public final class cfi {
-   public static final Codec<cfi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akt.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
-               akt.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
-               akt.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
-               jp.a(li.az).fieldOf("biomes").forGetter(cfi::d)
-            )
-            .apply($$0, cfi::new)
-   );
-   public static final Codec<ja<cfi>> b = akp.a(li.m, a);
-   private final akt c;
-   private final akt d;
-   private final akt e;
-   private final akt f;
-   private final akt g;
-   private final akt h;
-   private final je<dcz> i;
-
-   public cfi(akt $$0, akt $$1, akt $$2, je<dcz> $$3) {
-      this.c = $$0;
-      this.f = a($$0);
-      this.d = $$1;
-      this.g = a($$1);
-      this.e = $$2;
-      this.h = a($$2);
-      this.i = $$3;
-   }
-
-   private static akt a(akt $$0) {
-      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
-   }
-
-   public akt a() {
-      return this.f;
-   }
-
-   public akt b() {
-      return this.g;
-   }
-
-   public akt c() {
-      return this.h;
-   }
-
-   public je<dcz> d() {
-      return this.i;
+public abstract class cfi extends bsz {
+   protected cfi(bsc<? extends cfi> $$0, daz $$1) {
+      super($$0, $$1);
+      this.a(enn.j, 0.0F);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
+   public boolean a(dbc $$0) {
+      return $$0.f(this);
+   }
+
+   @Override
+   public int O() {
+      return 120;
+   }
+
+   @Override
+   public int ej() {
+      return 1 + this.dP().z.a(3);
+   }
+
+   protected void b(int $$0) {
+      if (this.bD() && !this.bh()) {
+         this.k($$0 - 1);
+         if (this.cl() == -20) {
+            this.k(0);
+            this.a(this.dQ().h(), 2.0F);
+         }
       } else {
-         return !($$0 instanceof cfi $$1)
-            ? false
-            : Objects.equals(this.c, $$1.c) && Objects.equals(this.d, $$1.d) && Objects.equals(this.e, $$1.e) && Objects.equals(this.i, $$1.i);
+         this.k(300);
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = 1;
-      $$0 = 31 * $$0 + this.c.hashCode();
-      $$0 = 31 * $$0 + this.d.hashCode();
-      $$0 = 31 * $$0 + this.e.hashCode();
-      return 31 * $$0 + this.i.hashCode();
+   public void au() {
+      int $$0 = this.cl();
+      super.au();
+      this.b($$0);
+   }
+
+   @Override
+   public boolean cC() {
+      return false;
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return false;
+   }
+
+   public static boolean c(bsc<? extends cfi> $$0, dba $$1, bsu $$2, io $$3, aym $$4) {
+      int $$5 = $$1.z_();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(awc.a) && $$1.a_($$3.c()).a(dec.G);
    }
 }

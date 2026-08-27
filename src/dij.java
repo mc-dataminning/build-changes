@@ -1,85 +1,95 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dij extends dfc {
-   public static final MapCodec<dij> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lh.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dij::new)
+public class dij extends dct {
+   public static final MapCodec<dij> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dby.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ju.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
+            .apply($$0, dij::new)
    );
-   private static final Map<dfc, dfc> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final exn c = dfc.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final dfc e;
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dsd g = drt.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final dby.c j;
 
    @Override
    public MapCodec<dij> a() {
-      return a;
+      return d;
    }
 
-   public dij(dfc $$0, dtb.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
-   }
-
-   @Override
-   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
-      return c;
+   public dij(dby.c $$0, ju.a $$1, drc.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.k(this.E.b().a(g, Integer.valueOf(1)));
    }
 
    @Override
-   protected bqc a(cuh $$0, dtc $$1, dca $$2, ir $$3, cly $$4, bpz $$5, ewq $$6) {
-      dtc $$8 = ($$0.f() instanceof csc $$7 ? d.getOrDefault($$7.d(), dfe.a) : dfe.a).n();
-      if ($$8.i()) {
-         return bqc.d;
-      } else if (!this.k()) {
-         return bqc.b;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dxv.c, $$3);
-         $$4.a(avz.ai);
-         $$0.a(1, $$4);
-         return bqc.a($$2.C);
-      }
+   public boolean d(drd $$0) {
+      return $$0.c(g) == 3;
    }
 
    @Override
-   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
-      if (this.k()) {
-         return bqa.b;
-      } else {
-         cuh $$5 = new cuh(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
+   protected boolean a(emv $$0) {
+      return $$0 == emx.c && this.j == dby.c.b;
+   }
+
+   @Override
+   protected double b(drd $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   protected void a(drd $$0, daz $$1, io $$2, brw $$3) {
+      if (!$$1.B && $$3.bQ() && this.a($$0, $$2, $$3)) {
+         $$3.aC();
+         if ($$3.a($$1, $$2)) {
+            this.e($$0, $$1, $$2);
          }
+      }
+   }
 
-         $$1.a($$2, dfe.gK.n(), 3);
-         $$1.a($$3, dxv.c, $$2);
-         return bqa.a($$1.C);
+   private void e(drd $$0, daz $$1, io $$2) {
+      if (this.j == dby.c.c) {
+         d(dec.fu.n().a(g, $$0.c(g)), $$1, $$2);
+      } else {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(drd $$0, daz $$1, io $$2) {
+      int $$3 = $$0.c(g) - 1;
+      drd $$4 = $$3 == 0 ? dec.ft.n() : $$0.a(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(dvw.c, $$2, dvw.a.a($$4));
+   }
+
+   @Override
+   public void a(drd $$0, daz $$1, io $$2, dby.c $$3) {
+      if (dev.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         drd $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(dvw.c, $$2, dvw.a.a($$4));
       }
    }
 
    @Override
-   public cuh a(dcd $$0, ir $$1, dtc $$2) {
-      return this.k() ? super.a($$0, $$1, $$2) : new cuh(this.e);
-   }
-
-   private boolean k() {
-      return this.e == dfe.a;
+   protected int a(drd $$0, daz $$1, io $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
-      return $$1 == iw.a && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public dfc b() {
-      return this.e;
+   protected void a(dre.a<dea, drd> $$0) {
+      $$0.a(g);
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   protected void a(drd $$0, daz $$1, io $$2, emv $$3) {
+      if (!this.d($$0)) {
+         drd $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(dvw.c, $$2, dvw.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      }
    }
 }

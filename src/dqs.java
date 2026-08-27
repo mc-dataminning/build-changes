@@ -1,172 +1,150 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dqs extends dqc implements bqi, eyf.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dqs.a h;
-   private drj k;
-   private cuh l = cuh.i;
-   @Nullable
-   protected aks<eru> i;
-   protected long j;
+public final class dqs {
+   private static final Map<String, dqs> k = new Object2ObjectArrayMap();
+   public static final Codec<dqs> a = Codec.stringResolver($$0 -> $$0.l, k::get);
+   public static final dqs b = new dqs(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(ry.g), Optional.of(ry.n), Optional.of(ry.C), Optional.of(ry.I)
+   );
+   public static final dqs c = new dqs(
+      "spruce", 0.5F, Optional.of(ry.q), Optional.of(ry.r), Optional.of(ry.k), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dqs d = new dqs(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(ry.x), Optional.of(ry.y), Optional.empty(), Optional.empty()
+   );
+   public static final dqs e = new dqs("azalea", Optional.empty(), Optional.of(ry.w), Optional.empty());
+   public static final dqs f = new dqs("birch", Optional.empty(), Optional.of(ry.i), Optional.of(ry.F));
+   public static final dqs g = new dqs("jungle", Optional.of(ry.p), Optional.of(ry.o), Optional.empty());
+   public static final dqs h = new dqs("acacia", Optional.empty(), Optional.of(ry.j), Optional.empty());
+   public static final dqs i = new dqs("cherry", Optional.empty(), Optional.of(ry.z), Optional.of(ry.K));
+   public static final dqs j = new dqs("dark_oak", Optional.of(ry.h), Optional.empty(), Optional.empty());
+   private final String l;
+   private final float m;
+   private final Optional<akm<dzm<?, ?>>> n;
+   private final Optional<akm<dzm<?, ?>>> o;
+   private final Optional<akm<dzm<?, ?>>> p;
+   private final Optional<akm<dzm<?, ?>>> q;
+   private final Optional<akm<dzm<?, ?>>> r;
+   private final Optional<akm<dzm<?, ?>>> s;
 
-   public dqs(ir $$0, dtc $$1) {
-      super(dqe.P, $$0, $$1);
-      this.k = drj.a;
+   public dqs(String $$0, Optional<akm<dzm<?, ?>>> $$1, Optional<akm<dzm<?, ?>>> $$2, Optional<akm<dzm<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   @Override
-   protected void b(uk $$0, jc.a $$1) {
-      super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.b_($$0) && !this.l.d()) {
-         $$0.a("item", this.l.a($$1));
+   public dqs(
+      String $$0,
+      float $$1,
+      Optional<akm<dzm<?, ?>>> $$2,
+      Optional<akm<dzm<?, ?>>> $$3,
+      Optional<akm<dzm<?, ?>>> $$4,
+      Optional<akm<dzm<?, ?>>> $$5,
+      Optional<akm<dzm<?, ?>>> $$6,
+      Optional<akm<dzm<?, ?>>> $$7
+   ) {
+      this.l = $$0;
+      this.m = $$1;
+      this.n = $$2;
+      this.o = $$3;
+      this.p = $$4;
+      this.q = $$5;
+      this.r = $$6;
+      this.s = $$7;
+      k.put($$0, this);
+   }
+
+   @Nullable
+   private akm<dzm<?, ?>> a(aym $$0, boolean $$1) {
+      if ($$0.i() < this.m) {
+         if ($$1 && this.s.isPresent()) {
+            return this.s.get();
+         }
+
+         if (this.q.isPresent()) {
+            return this.q.get();
+         }
       }
+
+      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
    }
 
-   @Override
-   public void a(uk $$0, jc.a $$1) {
-      super.a($$0, $$1);
-      this.k = drj.b($$0);
-      if (!this.a_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cuh.a($$1, (vh)$$0.p("item")).orElse(cuh.i);
+   @Nullable
+   private akm<dzm<?, ?>> a(aym $$0) {
+      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   }
+
+   public boolean a(aqn $$0, dta $$1, io $$2, drd $$3, aym $$4) {
+      akm<dzm<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         ix<dzm<?, ?>> $$6 = $$0.H_().d(lf.aC).b($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     dzm<?, ?> $$9 = $$6.a();
+                     drd $$10 = dec.a.n();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
+               }
+            }
+         }
+      }
+
+      akm<dzm<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         ix<dzm<?, ?>> $$12 = $$0.H_().d(lf.aC).b($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
          } else {
-            this.l = cuh.i;
+            dzm<?, ?> $$13 = $$12.a();
+            drd $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
          }
       }
    }
 
-   public ace j() {
-      return ace.a(this);
+   private static boolean a(drd $$0, daf $$1, io $$2, int $$3, int $$4) {
+      dea $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   @Override
-   public uk a(jc.a $$0) {
-      return this.d($$0);
-   }
-
-   public iw k() {
-      return this.n().c(dts.R);
-   }
-
-   public drj l() {
-      return this.k;
-   }
-
-   public void c(cuh $$0) {
-      this.a($$0.a());
-   }
-
-   public cuh t() {
-      cuh $$0 = cuk.fK.v();
-      $$0.a(this.s());
-      return $$0;
-   }
-
-   public static cuh a(drj $$0) {
-      cuh $$1 = cuk.fK.v();
-      $$1.b(ke.Y, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public aks<eru> ax_() {
-      return this.i;
-   }
-
-   @Override
-   public void a(@Nullable aks<eru> $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public long ay_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a(ka.a $$0) {
-      $$0.a(ke.Y, this.k);
-      $$0.a(ke.Z, cxm.a(List.of(this.l)));
-   }
-
-   @Override
-   public void a(ka $$0) {
-      this.k = $$0.a(ke.Y, drj.a);
-      this.l = $$0.a(ke.Z, cxm.a).a();
-   }
-
-   @Override
-   public void a(uk $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cuh f() {
-      this.e_(null);
-      return this.l;
-   }
-
-   @Override
-   public cuh c(int $$0) {
-      this.e_(null);
-      cuh $$1 = this.l.a($$0);
-      if (this.l.d()) {
-         this.l = cuh.i;
+   private boolean a(dba $$0, io $$1) {
+      for (io $$2 : io.a.c($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
+         if ($$0.a_($$2).a(avx.U)) {
+            return true;
+         }
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void b(cuh $$0) {
-      this.e_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dqc u() {
-      return this;
-   }
-
-   public void a(dqs.a $$0) {
-      if (this.n != null && !this.n.x_()) {
-         this.n.a(this.az_(), this.n().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean b_(int $$0, int $$1) {
-      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dqs.a.values().length) {
-         this.g = this.n.Z();
-         this.h = dqs.a.values()[$$1];
-         return true;
-      } else {
-         return super.b_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
-      }
+      return false;
    }
 }

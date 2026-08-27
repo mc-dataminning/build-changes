@@ -1,39 +1,90 @@
-public record cei(akt l) {
-   public static final aks<cei> a = a("tabby");
-   public static final aks<cei> b = a("black");
-   public static final aks<cei> c = a("red");
-   public static final aks<cei> d = a("siamese");
-   public static final aks<cei> e = a("british_shorthair");
-   public static final aks<cei> f = a("calico");
-   public static final aks<cei> g = a("persian");
-   public static final aks<cei> h = a("ragdoll");
-   public static final aks<cei> i = a("white");
-   public static final aks<cei> j = a("jellie");
-   public static final aks<cei> k = a("all_black");
+import java.util.Optional;
 
-   private static aks<cei> a(String $$0) {
-      return aks.a(li.l, new akt($$0));
+public interface cei {
+   boolean u();
+
+   void w(boolean var1);
+
+   void n(ctq var1);
+
+   void c(ud var1);
+
+   ctq b();
+
+   avh y();
+
+   @Deprecated
+   static void a(bss $$0, ctq $$1) {
+      $$1.b(kb.f, $$0.ah());
+      cwf.a(kb.M, $$1, $$1x -> {
+         if ($$0.gf()) {
+            $$1x.a("NoAI", $$0.gf());
+         }
+
+         if ($$0.aW()) {
+            $$1x.a("Silent", $$0.aW());
+         }
+
+         if ($$0.aX()) {
+            $$1x.a("NoGravity", $$0.aX());
+         }
+
+         if ($$0.cf()) {
+            $$1x.a("Glowing", $$0.cf());
+         }
+
+         if ($$0.cu()) {
+            $$1x.a("Invulnerable", $$0.cu());
+         }
+
+         $$1x.a("Health", $$0.eA());
+      });
    }
 
-   public static cei a(jn<cei> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   @Deprecated
+   static void a(bss $$0, ud $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.t($$1.j("Health"));
+      }
    }
 
-   private static cei a(jn<cei> $$0, aks<cei> $$1, String $$2) {
-      return jn.a($$0, $$1, new cei(new akt($$2)));
-   }
+   static <T extends bsq & cei> Optional<bpw> a(cly $$0, bpv $$1, T $$2) {
+      ctq $$3 = $$0.b($$1);
+      if ($$3.g() == ctt.qz && $$2.bD()) {
+         $$2.a($$2.y(), 1.0F, 1.0F);
+         ctq $$4 = $$2.b();
+         $$2.n($$4);
+         ctq $$5 = cts.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         daz $$6 = $$2.dP();
+         if (!$$6.B) {
+            am.k.a((aqo)$$0, $$4);
+         }
 
-   public akt a() {
-      return this.l;
+         $$2.ao();
+         return Optional.of(bpw.a($$6.B));
+      } else {
+         return Optional.empty();
+      }
    }
 }

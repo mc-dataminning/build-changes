@@ -2,22 +2,21 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ul extends va {
-   private static final int c = 16;
-   public static final ul a = new ul(0.0);
-   public static final vj<ul> b = new vj.a<ul>() {
-      public ul a(DataInput $$0, ut $$1) throws IOException {
+public class ul extends ut {
+   private static final int b = 16;
+   public static final vc<ul> a = new vc.a<ul>() {
+      public ul a(DataInput $$0, um $$1) throws IOException {
          return ul.a(d($$0, $$1));
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static double d(DataInput $$0, ut $$1) throws IOException {
+      private static long d(DataInput $$0, um $$1) throws IOException {
          $$1.b(16L);
-         return $$0.readDouble();
+         return $$0.readLong();
       }
 
       @Override
@@ -27,12 +26,12 @@ public class ul extends va {
 
       @Override
       public String a() {
-         return "DOUBLE";
+         return "LONG";
       }
 
       @Override
       public String b() {
-         return "TAG_Double";
+         return "TAG_Long";
       }
 
       @Override
@@ -40,19 +39,19 @@ public class ul extends va {
          return true;
       }
    };
-   private final double w;
+   private final long c;
 
-   private ul(double $$0) {
-      this.w = $$0;
+   ul(long $$0) {
+      this.c = $$0;
    }
 
-   public static ul a(double $$0) {
-      return $$0 == 0.0 ? a : new ul($$0);
+   public static ul a(long $$0) {
+      return $$0 >= -128L && $$0 <= 1024L ? ul.a.a[(int)$$0 - -128] : new ul($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+      $$0.writeLong(this.c);
    }
 
    @Override
@@ -62,12 +61,12 @@ public class ul extends va {
 
    @Override
    public byte b() {
-      return 6;
+      return 4;
    }
 
    @Override
-   public vj<ul> c() {
-      return b;
+   public vc<ul> c() {
+      return a;
    }
 
    public ul e() {
@@ -76,57 +75,71 @@ public class ul extends va {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ul && this.w == ((ul)$$0).w;
+      return this == $$0 ? true : $$0 instanceof ul && this.c == ((ul)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+      return (int)(this.c ^ this.c >>> 32);
    }
 
    @Override
-   public void a(vl $$0) {
+   public void a(ve $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)Math.floor(this.w);
+      return this.c;
    }
 
    @Override
    public int g() {
-      return aym.a(this.w);
+      return (int)(this.c & -1L);
    }
 
    @Override
    public short h() {
-      return (short)(aym.a(this.w) & 65535);
+      return (short)((int)(this.c & 65535L));
    }
 
    @Override
    public byte i() {
-      return (byte)(aym.a(this.w) & 0xFF);
+      return (byte)((int)(this.c & 255L));
    }
 
    @Override
    public double j() {
-      return this.w;
+      return (double)this.c;
    }
 
    @Override
    public float k() {
-      return (float)this.w;
+      return (float)this.c;
    }
 
    @Override
    public Number l() {
-      return this.w;
+      return this.c;
    }
 
    @Override
-   public ve.b a(ve $$0) {
-      return $$0.a(this.w);
+   public ux.b a(ux $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ul[] a = new ul[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ul((long)(-128 + $$0));
+         }
+      }
    }
 }

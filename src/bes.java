@@ -1,28 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.Optional;
 
-public class bes extends DataFix {
+public class bes extends bdz {
    public bes(Schema $$0) {
-      super($$0, false);
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("ExitPortalLocation", azu::a);
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bgf.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
-            if ($$1.result().isPresent()) {
-               return $$0x;
-            } else {
-               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-               return $$0x.set("DragonFight", a($$2));
-            }
-         }));
+      return $$0;
    }
 }
