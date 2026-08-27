@@ -4,7 +4,10 @@
       {
         "value": [
           "-Xms4G",
-          "-Xmx4G"
+          "-Xmx4G",
+          "-XX:+UseCompactObjectHeaders",
+          "-XX:+AlwaysPreTouch",
+          "-XX:+UseStringDeduplication"
         ]
       },
       {
@@ -221,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "2443ba7d3c92457e00e75a4363a601461ebd3ed4",
-      "size": 37283304,
-      "url": "https://piston-data.mojang.com/v1/objects/2443ba7d3c92457e00e75a4363a601461ebd3ed4/client.jar"
+      "sha1": "7d4a5d1026cbd2fec3db1c801cf9d25e0e558285",
+      "size": 37362626,
+      "url": "https://piston-data.mojang.com/v1/objects/7d4a5d1026cbd2fec3db1c801cf9d25e0e558285/client.jar"
     },
     "server": {
-      "sha1": "165c30e5076a13848404f41692ff1e0126d0a6f3",
-      "size": 60053273,
-      "url": "https://piston-data.mojang.com/v1/objects/165c30e5076a13848404f41692ff1e0126d0a6f3/server.jar"
+      "sha1": "430ae0858fe2663346745a7be773cebc68a79e31",
+      "size": 60097393,
+      "url": "https://piston-data.mojang.com/v1/objects/430ae0858fe2663346745a7be773cebc68a79e31/server.jar"
     }
   },
-  "id": "26.1-snapshot-2",
+  "id": "26.1-snapshot-3",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -1885,7 +1888,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-01-07T12:38:03+00:00",
-  "time": "2026-01-07T12:38:03+00:00",
+  "releaseTime": "2026-01-13T12:47:34+00:00",
+  "time": "2026-01-13T12:47:34+00:00",
   "type": "snapshot"
 }
