@@ -164,27 +164,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
-      "size": 26565623,
-      "url": "https://piston-data.mojang.com/v1/objects/c6b92b2374a629f20802bb284f98a4ee790e950a/client.jar"
+      "sha1": "df5327eb08ef460eb65477c00c0ef118cfa296bc",
+      "size": 26566571,
+      "url": "https://piston-data.mojang.com/v1/objects/df5327eb08ef460eb65477c00c0ef118cfa296bc/client.jar"
     },
     "client_mappings": {
-      "sha1": "65b1468c44fbf34382716416b5c1a16d2949217a",
-      "size": 9421856,
-      "url": "https://piston-data.mojang.com/v1/objects/65b1468c44fbf34382716416b5c1a16d2949217a/client.txt"
+      "sha1": "fc7817246d4cd6fe6e879cdd5012d9295948ed24",
+      "size": 9422442,
+      "url": "https://piston-data.mojang.com/v1/objects/fc7817246d4cd6fe6e879cdd5012d9295948ed24/client.txt"
     },
     "server": {
-      "sha1": "79493072f65e17243fd36a699c9a96b4381feb91",
-      "size": 51424012,
-      "url": "https://piston-data.mojang.com/v1/objects/79493072f65e17243fd36a699c9a96b4381feb91/server.jar"
+      "sha1": "a9b9c22721ec3ac516627f30554f21ed7c23efe5",
+      "size": 51418972,
+      "url": "https://piston-data.mojang.com/v1/objects/a9b9c22721ec3ac516627f30554f21ed7c23efe5/server.jar"
     },
     "server_mappings": {
-      "sha1": "14be97974a77b09eb8bca88ed9268445f0fde3e7",
-      "size": 7283217,
-      "url": "https://piston-data.mojang.com/v1/objects/14be97974a77b09eb8bca88ed9268445f0fde3e7/server.txt"
+      "sha1": "df5804bd8047f3013e056e139f75e261c35d3cad",
+      "size": 7283803,
+      "url": "https://piston-data.mojang.com/v1/objects/df5804bd8047f3013e056e139f75e261c35d3cad/server.txt"
     }
   },
-  "id": "1.20.5",
+  "id": "1.20.6-rc1",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -676,13 +676,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-patch.jar",
-          "sha1": "806d869f37ce0df388a24e17aaaf5ca0894d851b",
-          "size": 1071983,
-          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-patch.jar"
+          "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos.jar",
+          "sha1": "1e9b635b5c16b515527b905749be59223e338c4d",
+          "size": 1142682,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos.jar"
         }
       },
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-macos-patch",
+      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-macos",
       "rules": [
         {
           "action": "allow",
@@ -1680,7 +1680,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2024-04-23T11:54:12+00:00",
-  "time": "2024-04-23T11:54:12+00:00",
-  "type": "release"
+  "releaseTime": "2024-04-26T10:12:17+00:00",
+  "time": "2024-04-26T10:12:17+00:00",
+  "type": "snapshot"
 }
