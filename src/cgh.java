@@ -1,19 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Map;
 
-public class cgh {
-   public static bqb<boi> a(int $$0) {
-      return btn.a(
-         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$1 -> $$1.group($$1.b(bxl.L), $$1.c(bxl.ad), $$1.c(bxl.ag), $$1.c(bxl.af))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
-                     cdw $$7 = $$1.b($$2);
-                     if (!cgc.a($$7.q())) {
-                        return false;
-                     } else {
-                        $$3.a(true, (long)$$0);
-                        return true;
-                     }
-                  }))
-      );
+public class cgh extends bqp<cgc> {
+   public cgh() {
+      super(Map.of(bya.o, byb.a, bya.aZ, byb.b, bya.ba, byb.b, bya.m, byb.b, bya.aV, byb.b));
+   }
+
+   protected boolean a(apa $$0, cgc $$1) {
+      return $$1.bL() || $$1.aZ() || $$1.c(bnu.y) != null;
+   }
+
+   protected boolean a(apa $$0, cgc $$1, long $$2) {
+      return false;
+   }
+
+   protected void b(apa $$0, cgc $$1, long $$2) {
+      $$1.dM().a(bya.aV, axo.a, 60L);
    }
 }

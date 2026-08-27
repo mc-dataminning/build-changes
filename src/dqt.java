@@ -1,22 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dqt {
+   dqv a();
 
-public class dqt {
-   public static final Codec<dqt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwe.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dqt::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+   int b();
 
-   public dqt(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   boolean a(apa var1, il<dqr> var2, dqr.a var3, eov var4);
+
+   default dqt.a c() {
+      return dqt.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends dqt> {
+      T c();
    }
 }

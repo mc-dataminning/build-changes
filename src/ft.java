@@ -7,28 +7,28 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 
-public class ft implements ArgumentType<EnumSet<ie.a>> {
+public class ft implements ArgumentType<EnumSet<ih.a>> {
    private static final Collection<String> a = Arrays.asList("xyz", "x");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("arguments.swizzle.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("arguments.swizzle.invalid"));
 
    public static ft a() {
       return new ft();
    }
 
-   public static EnumSet<ie.a> a(CommandContext<du> $$0, String $$1) {
-      return (EnumSet<ie.a>)$$0.getArgument($$1, EnumSet.class);
+   public static EnumSet<ih.a> a(CommandContext<du> $$0, String $$1) {
+      return (EnumSet<ih.a>)$$0.getArgument($$1, EnumSet.class);
    }
 
-   public EnumSet<ie.a> a(StringReader $$0) throws CommandSyntaxException {
-      EnumSet<ie.a> $$1 = EnumSet.noneOf(ie.a.class);
+   public EnumSet<ih.a> a(StringReader $$0) throws CommandSyntaxException {
+      EnumSet<ih.a> $$1 = EnumSet.noneOf(ih.a.class);
 
       while ($$0.canRead() && $$0.peek() != ' ') {
          char $$2 = $$0.read();
 
-         ie.a $$6 = switch ($$2) {
-            case 'x' -> ie.a.a;
-            case 'y' -> ie.a.b;
-            case 'z' -> ie.a.c;
+         ih.a $$6 = switch ($$2) {
+            case 'x' -> ih.a.a;
+            case 'y' -> ih.a.b;
+            case 'z' -> ih.a.c;
             default -> throw b.create();
          };
          if ($$1.contains($$6)) {

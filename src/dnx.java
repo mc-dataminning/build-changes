@@ -1,3 +1,5 @@
-interface dnx<T> {
-   int onResize(int var1, T var2);
+public interface dnx {
+   dme a(int var1);
+
+   void a(int var1, dme var2);
 }

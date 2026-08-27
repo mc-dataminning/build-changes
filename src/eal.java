@@ -1,29 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eal extends eas {
-   public static final Codec<eal> a = RecordCodecBuilder.create($$0 -> $$0.group(dqv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eal::new));
-   private final dqv.a c;
+public class eal extends ean {
+   public static final Codec<eal> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsk.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dsk.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eal::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dsk d;
+   private final dsk e;
+   private final int f;
 
-   private eal(dqv.a $$0) {
-      this.c = $$0;
+   private eal(dsk $$0, dsk $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eal a(dqv.a $$0) {
-      return new eal($$0);
+   public static eal a(dsk $$0, dsk $$1, int $$2) {
+      return new eal($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<hz> a_(eaq $$0, awp $$1, hz $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new hz($$3, $$5, $$4)) : Stream.of();
+   public int a(awt $$0, dsn $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public eat<?> b() {
-      return eat.k;
+   public eao<?> a() {
+      return eao.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

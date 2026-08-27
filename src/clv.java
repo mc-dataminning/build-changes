@@ -1,68 +1,239 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
 
-public class clv implements blp, clu {
-   private final is<cpd> c = is.a(1, cpd.h);
-   @Nullable
-   private csh<?> d;
+public class clv extends cmh<clk> {
+   public static final int k = 0;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 5;
+   public static final int o = 5;
+   public static final int p = 9;
+   public static final int q = 9;
+   public static final int r = 36;
+   public static final int s = 36;
+   public static final int t = 45;
+   public static final int u = 45;
+   public static final ajc v = new ajc("textures/atlas/blocks.png");
+   public static final ajc w = new ajc("item/empty_armor_slot_helmet");
+   public static final ajc x = new ajc("item/empty_armor_slot_chestplate");
+   public static final ajc y = new ajc("item/empty_armor_slot_leggings");
+   public static final ajc z = new ajc("item/empty_armor_slot_boots");
+   public static final ajc A = new ajc("item/empty_armor_slot_shield");
+   static final ajc[] C = new ajc[]{z, y, x, w};
+   private static final bom[] D = new bom[]{bom.f, bom.e, bom.d, bom.c};
+   private final clk E = new cmu(this, 2, 2);
+   private final cmk F = new cmk();
+   public final boolean B;
+   private final cia G;
 
-   @Override
-   public int b() {
-      return 1;
-   }
+   public clv(chz $$0, boolean $$1, final cia $$2) {
+      super(null, 0);
+      this.B = $$1;
+      this.G = $$2;
+      this.a(new cml($$0.m, this.E, this.F, 0, 154, 28));
 
-   @Override
-   public boolean aj_() {
-      for (cpd $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         for (int $$4 = 0; $$4 < 2; $$4++) {
+            this.a(new cmp(this.E, $$4 + $$3 * 2, 98 + $$4 * 18, 18 + $$3 * 18));
          }
       }
 
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         final bom $$6 = D[$$5];
+         this.a(new cmp($$0, 39 - $$5, 8, 8 + $$5 * 18) {
+            @Override
+            public void a(cpq $$0, cpq $$1) {
+               clv.a($$2, $$6, $$0, $$1);
+               super.a($$0, $$1);
+            }
+
+            @Override
+            public int a() {
+               return 1;
+            }
+
+            @Override
+            public boolean a(cpq $$0) {
+               return $$6 == boz.h($$0);
+            }
+
+            @Override
+            public boolean a(cia $$0) {
+               cpq $$1 = this.g();
+               return !$$1.b() && !$$0.f() && cua.d($$1) ? false : super.a($$0);
+            }
+
+            @Override
+            public Pair<ajc, ajc> c() {
+               return Pair.of(clv.v, clv.C[$$6.b()]);
+            }
+         });
+      }
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cmp($$0, $$8 + ($$7 + 1) * 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cmp($$0, $$9, 8 + $$9 * 18, 142));
+      }
+
+      this.a(new cmp($$0, 40, 77, 62) {
+         @Override
+         public void a(cpq $$0, cpq $$1) {
+            clv.a($$2, bom.b, $$0, $$1);
+            super.a($$0, $$1);
+         }
+
+         @Override
+         public Pair<ajc, ajc> c() {
+            return Pair.of(clv.v, clv.A);
+         }
+      });
+   }
+
+   static void a(cia $$0, bom $$1, cpq $$2, cpq $$3) {
+      $$0.a($$1, $$3, $$2);
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
+   }
+
+   @Override
+   public void a(cie $$0) {
+      this.E.a($$0);
+   }
+
+   @Override
+   public void l() {
+      this.F.a();
+      this.E.a();
+   }
+
+   @Override
+   public boolean a(csu<? extends css<clk>> $$0) {
+      return $$0.b().a(this.E, this.G.dJ());
+   }
+
+   @Override
+   public void a(bme $$0) {
+      cll.a(this, this.G.dJ(), this.G, this.E, this.F);
+   }
+
+   @Override
+   public void b(cia $$0) {
+      super.b($$0);
+      this.F.a();
+      if (!$$0.dJ().B) {
+         this.a($$0, this.E);
+      }
+   }
+
+   @Override
+   public boolean a(cia $$0) {
       return true;
    }
 
    @Override
-   public cpd a(int $$0) {
-      return this.c.get(0);
+   public cpq a(cia $$0, int $$1) {
+      cpq $$2 = cpq.h;
+      cmp $$3 = this.i.get($$1);
+      if ($$3.h()) {
+         cpq $$4 = $$3.g();
+         $$2 = $$4.q();
+         bom $$5 = boz.h($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cpq.h;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cpq.h;
+            }
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cpq.h;
+            }
+         } else if ($$5.a() == bom.a.b && !this.i.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cpq.h;
+            }
+         } else if ($$5 == bom.b && !this.i.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cpq.h;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cpq.h;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cpq.h;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cpq.h;
+         }
+
+         if ($$4.b()) {
+            $$3.a(cpq.h, $$2);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cpq.h;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public cpd a(int $$0, int $$1) {
-      return blq.a(this.c, 0);
+   public boolean a(cpq $$0, cmp $$1) {
+      return $$1.d != this.F && super.a($$0, $$1);
    }
 
    @Override
-   public cpd b(int $$0) {
-      return blq.a(this.c, 0);
+   public int m() {
+      return 0;
    }
 
    @Override
-   public void a(int $$0, cpd $$1) {
-      this.c.set(0, $$1);
+   public int n() {
+      return this.E.f();
    }
 
    @Override
-   public void e() {
+   public int o() {
+      return this.E.g();
    }
 
    @Override
-   public boolean a(chl $$0) {
-      return true;
+   public int p() {
+      return 5;
+   }
+
+   public clk q() {
+      return this.E;
    }
 
    @Override
-   public void a() {
-      this.c.clear();
+   public cmi t() {
+      return cmi.a;
    }
 
    @Override
-   public void a(@Nullable csh<?> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public csh<?> d() {
-      return this.d;
+   public boolean e(int $$0) {
+      return $$0 != this.m();
    }
 }

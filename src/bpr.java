@@ -1,30 +1,38 @@
-public class bpr extends bpk {
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public bpr(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+public interface bpr {
+   bpq a = ($$0, $$1, $$2) -> true;
+   bpq b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.D_().a($$1)) {
+         ib $$3 = $$1.c();
+         return $$0.b_($$1).a(auj.a) && !$$0.a_($$3).g($$0, $$3);
+      } else {
+         return false;
       }
-   }
+   };
+   bpq c = ($$0, $$1, $$2) -> $$2 != null && $$0.D_().a($$1) ? $$0.b_($$1).a(auj.b) : false;
+   bpq d = new bpq() {
+      @Override
+      public boolean isSpawnPositionOk(cwh $$0, ib $$1, @Nullable bol<?> $$2) {
+         if ($$2 != null && $$0.D_().a($$1)) {
+            ib $$3 = $$1.c();
+            ib $$4 = $$1.d();
+            dme $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
+      }
 
-   public double d() {
-      return this.b;
-   }
+      private boolean a(cwh $$0, ib $$1, bol<?> $$2) {
+         dme $$3 = $$0.a_($$1);
+         return cwp.a($$0, $$1, $$3, $$3.u(), $$2);
+      }
 
-   public double e() {
-      return this.c;
-   }
-
-   @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : awi.a($$0, this.b, this.c);
-   }
+      @Override
+      public ib a(cwh $$0, ib $$1) {
+         ib $$2 = $$1.d();
+         return $$0.a_($$2).a($$0, $$2, eih.a) ? $$2 : $$1;
+      }
+   };
 }

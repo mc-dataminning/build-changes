@@ -1,86 +1,27 @@
-public class blo implements blp {
-   private final blp c;
-   private final blp d;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-   public blo(blp $$0, blp $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public abstract class blo implements blt {
+   private static final Codec<Either<Float, blo>> a = Codec.either(Codec.FLOAT, kh.L.q().dispatch(blo::c, blp::codec));
+   public static final Codec<blo> c = a.xmap(
+      $$0 -> (blo)$$0.map(blm::a, $$0x -> $$0x), $$0 -> $$0.c() == blp.a ? Either.left(((blm)$$0).d()) : Either.right($$0)
+   );
+
+   public static Codec<blo> a(float $$0, float $$1) {
+      return avu.a(c, (Function<blo, DataResult<blo>>)($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      }));
    }
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
-   }
+   public abstract float a();
 
-   @Override
-   public boolean aj_() {
-      return this.c.aj_() && this.d.aj_();
-   }
+   public abstract float b();
 
-   public boolean a(blp $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
-
-   @Override
-   public cpd a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public cpd a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cpd b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cpd $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public int al_() {
-      return this.c.al_();
-   }
-
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(chl $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(chl $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(chl $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cpd $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
-   }
+   public abstract blp<?> c();
 }

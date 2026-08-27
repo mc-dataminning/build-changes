@@ -1,26 +1,30 @@
-public abstract class enx {
-   protected final enz a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected enx(enz $$0) {
-      this.a = $$0;
+public record enx(ejy.b c) implements eoa {
+   public static final Codec<enx> a = RecordCodecBuilder.create($$0 -> $$0.group(ejy.b.e.fieldOf("target").forGetter(enx::c)).apply($$0, enx::new));
+   public static final Codec<enx> b = ejy.b.e.xmap(enx::new, enx::c);
+
+   public static eoa a(ejy.b $$0) {
+      return new enx($$0);
    }
 
-   public double a(bnq $$0) {
-      double $$1 = this.a.c - $$0.dr();
-      double $$2 = this.a.d - $$0.dt();
-      double $$3 = this.a.e - $$0.dx();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public enz a() {
+      return eob.c;
    }
 
-   public abstract enx.a c();
-
-   public enz e() {
-      return this.a;
+   @Nullable
+   @Override
+   public epy a(ejy $$0) {
+      return $$0.c(this.c.a());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public Set<emg<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

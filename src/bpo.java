@@ -1,96 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class bpo {
-   private final Map<ij<bpk>, bpl> a;
-
-   bpo(Map<ij<bpk>, bpl> $$0) {
-      this.a = $$0;
-   }
-
-   private bpl d(ij<bpk> $$0) {
-      bpl $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
+public interface bpo {
+   bpo b = new bpo() {
+      @Override
+      public cpq a() {
+         return cpq.h;
       }
-   }
 
-   public double a(ij<bpk> $$0) {
-      return this.d($$0).f();
-   }
-
-   public double b(ij<bpk> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(ij<bpk> $$0, UUID $$1) {
-      bpn $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
+      @Override
+      public boolean a(cpq $$0) {
+         return false;
       }
-   }
+   };
 
-   @Nullable
-   public bpl a(Consumer<bpl> $$0, ij<bpk> $$1) {
-      bpl $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bpl $$3 = new bpl($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
+   static bpo a(final bme $$0, final int $$1, final Predicate<cpq> $$2) {
+      return new bpo() {
+         @Override
+         public cpq a() {
+            return $$0.a($$1);
+         }
 
-   public static bpo.a a() {
-      return new bpo.a();
-   }
-
-   public boolean c(ij<bpk> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(ij<bpk> $$0, UUID $$1) {
-      bpl $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<ij<bpk>, bpl> a = ImmutableMap.builder();
-      private boolean b;
-
-      private bpl b(ij<bpk> $$0) {
-         bpl $$1 = new bpl($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+         @Override
+         public boolean a(cpq $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
             }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
-      }
-
-      public bpo.a a(ij<bpk> $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public bpo.a a(ij<bpk> $$0, double $$1) {
-         bpl $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bpo a() {
-         this.b = true;
-         return new bpo(this.a.buildKeepingLast());
-      }
+         }
+      };
    }
+
+   static bpo a(bme $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static bpo a(final box $$0, final bom $$1, final Predicate<cpq> $$2) {
+      return new bpo() {
+         @Override
+         public cpq a() {
+            return $$0.c($$1);
+         }
+
+         @Override
+         public boolean a(cpq $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bpo a(box $$0, bom $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   cpq a();
+
+   boolean a(cpq var1);
 }

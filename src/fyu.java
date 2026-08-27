@@ -1,57 +1,58 @@
-import java.util.BitSet;
-import java.util.Set;
+public class fyu implements fyq<djp> {
+   private final gcw a;
 
-public class fyu {
-   private static final int a = ie.values().length;
-   private final BitSet b = new BitSet(a * a);
-
-   public void a(Set<ie> $$0) {
-      for (ie $$1 : $$0) {
-         for (ie $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
+   public fyu(fyr.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(ie $$0, ie $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ie $$0, ie $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (ie $$1 : ie.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (ie $$2 : ie.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ie $$3 : ie.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+   public void a(djp $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.n().c(dmu.bv);
+         if ($$6 > 0) {
+            ih $$7 = $$0.d();
+            if ($$7 != null) {
+               cpq $$8 = $$0.f();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ih.f || $$7 == ih.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = fwo.a($$0.i(), $$0.n(), $$0.aD_().a($$7));
+                  this.a.a($$8, cpn.i, $$11, ghq.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
          }
+      }
+   }
 
-         $$0.append('\n');
+   private float[] a(ih $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      return $$0.toString();
+      return $$2;
    }
 }

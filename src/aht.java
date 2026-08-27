@@ -1,3 +1,8 @@
-public interface aht extends uw {
-   void a(ahu var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aht {
 }

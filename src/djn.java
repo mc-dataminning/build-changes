@@ -1,189 +1,219 @@
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.types.Type;
+import com.mojang.logging.LogUtils;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class djn extends dix implements bme, epk {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
+public class djn<T extends djl> {
+   private static final Logger S = LogUtils.getLogger();
+   public static final djn<dkh> a = a("furnace", djn.b.a(dkh::new, czh.cD));
+   public static final djn<djs> b = a("chest", djn.b.a(djs::new, czh.cv));
+   public static final djn<dld> c = a("trapped_chest", djn.b.a(dld::new, czh.gV));
+   public static final djn<dkg> d = a("ender_chest", djn.b.a(dkg::new, czh.fG));
+   public static final djn<dkm> e = a("jukebox", djn.b.a(dkm::new, czh.dT));
+   public static final djn<dkd> f = a("dispenser", djn.b.a(dkd::new, czh.aU));
+   public static final djn<dke> g = a("dropper", djn.b.a(dke::new, czh.hi));
+   public static final djn<dku> h = a(
+      "sign",
+      djn.b.a(
+         dku::new,
+         czh.cE,
+         czh.cF,
+         czh.cG,
+         czh.cH,
+         czh.cI,
+         czh.cJ,
+         czh.cK,
+         czh.cR,
+         czh.cS,
+         czh.cT,
+         czh.cU,
+         czh.cV,
+         czh.cW,
+         czh.cX,
+         czh.oW,
+         czh.oY,
+         czh.oX,
+         czh.oZ,
+         czh.cL,
+         czh.cY,
+         czh.cM,
+         czh.cZ
+      )
+   );
+   public static final djn<dki> i = a(
+      "hanging_sign",
+      djn.b.a(
+         dki::new,
+         czh.da,
+         czh.db,
+         czh.dc,
+         czh.dd,
+         czh.de,
+         czh.df,
+         czh.dg,
+         czh.dh,
+         czh.di,
+         czh.dj,
+         czh.dk,
+         czh.dl,
+         czh.dm,
+         czh.dn,
+         czh.do,
+         czh.dp,
+         czh.dq,
+         czh.dr,
+         czh.dt,
+         czh.du,
+         czh.ds,
+         czh.dv
+      )
+   );
+   public static final djn<dky> j = a("mob_spawner", djn.b.a(dky::new, czh.ct));
+   public static final djn<dma> k = a("piston", djn.b.a(dma::new, czh.bQ));
+   public static final djn<djo> l = a("brewing_stand", djn.b.a(djo::new, czh.fs));
+   public static final djn<dkf> m = a("enchanting_table", djn.b.a(dkf::new, czh.fr));
+   public static final djn<dlb> n = a("end_portal", djn.b.a(dlb::new, czh.fx));
+   public static final djn<djg> o = a("beacon", djn.b.a(djg::new, czh.fO));
+   public static final djn<dkw> p = a(
+      "skull", djn.b.a(dkw::new, czh.gE, czh.gF, czh.gM, czh.gN, czh.gO, czh.gP, czh.gI, czh.gJ, czh.gG, czh.gH, czh.gK, czh.gL, czh.gQ, czh.gR)
+   );
+   public static final djn<dka> q = a("daylight_detector", djn.b.a(dka::new, czh.gZ));
+   public static final djn<dkk> r = a("hopper", djn.b.a(dkk::new, czh.hc));
+   public static final djn<djw> s = a("comparator", djn.b.a(djw::new, czh.gY));
+   public static final djn<djb> t = a(
+      "banner",
+      djn.b.a(
+         djb::new,
+         czh.iJ,
+         czh.iK,
+         czh.iL,
+         czh.iM,
+         czh.iN,
+         czh.iO,
+         czh.iP,
+         czh.iQ,
+         czh.iR,
+         czh.iS,
+         czh.iT,
+         czh.iU,
+         czh.iV,
+         czh.iW,
+         czh.iX,
+         czh.iY,
+         czh.iZ,
+         czh.ja,
+         czh.jb,
+         czh.jc,
+         czh.jd,
+         czh.je,
+         czh.jf,
+         czh.jg,
+         czh.jh,
+         czh.ji,
+         czh.jj,
+         czh.jk,
+         czh.jl,
+         czh.jm,
+         czh.jn,
+         czh.jo
+      )
+   );
+   public static final djn<dkz> u = a("structure_block", djn.b.a(dkz::new, czh.pa));
+   public static final djn<dla> v = a("end_gateway", djn.b.a(dla::new, czh.kF));
+   public static final djn<djv> w = a("command_block", djn.b.a(djv::new, czh.fN, czh.kH, czh.kG));
+   public static final djn<dkt> x = a(
+      "shulker_box",
+      djn.b.a(dkt::new, czh.kP, czh.lf, czh.lb, czh.lc, czh.kZ, czh.kX, czh.ld, czh.kT, czh.kY, czh.kV, czh.kS, czh.kR, czh.kW, czh.la, czh.le, czh.kQ, czh.kU)
+   );
+   public static final djn<djh> y = a(
+      "bed", djn.b.a(djh::new, czh.bn, czh.bo, czh.bk, czh.bl, czh.bi, czh.bg, czh.bm, czh.bc, czh.bh, czh.be, czh.bb, czh.ba, czh.bf, czh.bj, czh.aZ, czh.bd)
+   );
+   public static final djn<djx> z = a("conduit", djn.b.a(djx::new, czh.mX));
+   public static final djn<dje> A = a("barrel", djn.b.a(dje::new, czh.nU));
+   public static final djn<dkx> B = a("smoker", djn.b.a(dkx::new, czh.nV));
+   public static final djn<djk> C = a("blast_furnace", djn.b.a(djk::new, czh.nW));
+   public static final djn<dkn> D = a("lectern", djn.b.a(dkn::new, czh.oa));
+   public static final djn<djj> E = a("bell", djn.b.a(djj::new, czh.od));
+   public static final djn<dkl> F = a("jigsaw", djn.b.a(dkl::new, czh.pb));
+   public static final djn<djr> G = a("campfire", djn.b.a(djr::new, czh.og, czh.oh));
+   public static final djn<dji> H = a("beehive", djn.b.a(dji::new, czh.pe, czh.pf));
+   public static final djn<dkr> I = a("sculk_sensor", djn.b.a(dkr::new, czh.qQ));
+   public static final djn<djq> J = a("calibrated_sculk_sensor", djn.b.a(djq::new, czh.qR));
+   public static final djn<dkq> K = a("sculk_catalyst", djn.b.a(dkq::new, czh.qU));
+   public static final djn<dks> L = a("sculk_shrieker", djn.b.a(dks::new, czh.qV));
+   public static final djn<dju> M = a("chiseled_bookshelf", djn.b.a(dju::new, czh.cm));
+   public static final djn<djp> N = a("brushable_block", djn.b.a(djp::new, czh.J, czh.M));
+   public static final djn<dkb> O = a("decorated_pot", djn.b.a(dkb::new, czh.tp));
+   public static final djn<djz> P = a("crafter", djn.b.a(djz::new, czh.tq));
+   public static final djn<dle> Q = a("trial_spawner", djn.b.a(dle::new, czh.tr));
+   public static final djn<dlm> R = a("vault", djn.b.a(dlm::new, czh.ts));
+   private final djn.a<? extends T> T;
+   private final Set<czf> U;
+   private final Type<?> V;
+   private final il.c<djn<?>> W = kh.k.g(this);
+
    @Nullable
-   public djn.b i;
-   private djn.a l;
-   private cpd m = cpd.h;
-   @Nullable
-   protected aiy j;
-   protected long k;
-
-   public djn(hz $$0, dlj $$1) {
-      super(diz.O, $$0, $$1);
-      this.l = djn.a.a;
+   public static ajc a(djn<?> $$0) {
+      return kh.k.b($$0);
    }
 
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.l.a($$0);
-      if (!this.d_($$0) && !this.m.b()) {
-         $$0.a("item", this.m.b(new sw()));
+   private static <T extends djl> djn<T> a(String $$0, djn.b<T> $$1) {
+      if ($$1.b.isEmpty()) {
+         S.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
       }
+
+      Type<?> $$2 = ac.a(bdt.s, $$0);
+      return ix.a(kh.k, $$0, $$1.a($$2));
    }
 
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.l = djn.a.b($$0);
-      if (!this.c_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = cpd.a($$0.p("item"));
-         } else {
-            this.m = cpd.h;
-         }
-      }
-   }
-
-   public aan k() {
-      return aan.a(this);
-   }
-
-   @Override
-   public sw aA_() {
-      return this.q();
-   }
-
-   public ie l() {
-      return this.r().c(dlz.R);
-   }
-
-   public djn.a m() {
-      return this.l;
-   }
-
-   public void a(cpd $$0) {
-      this.l = djn.a.b(cmw.a($$0));
-   }
-
-   public cpd w() {
-      return a(this.l);
-   }
-
-   public static cpd a(djn.a $$0) {
-      cpd $$1 = cpg.eB.ao_();
-      sw $$2 = $$0.a(new sw());
-      cmw.a($$1, diz.O, $$2);
-      return $$1;
+   public djn(djn.a<? extends T> $$0, Set<czf> $$1, Type<?> $$2) {
+      this.T = $$0;
+      this.U = $$1;
+      this.V = $$2;
    }
 
    @Nullable
-   @Override
-   public aiy aC_() {
-      return this.j;
+   public T a(ib $$0, dme $$1) {
+      return (T)this.T.create($$0, $$1);
    }
 
-   @Override
-   public void a(@Nullable aiy $$0) {
-      this.j = $$0;
+   public boolean a(dme $$0) {
+      return this.U.contains($$0.b());
    }
 
-   @Override
-   public long aD_() {
-      return this.k;
+   @Nullable
+   public il.c<djn<?>> a() {
+      return this.W;
    }
 
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
+   @Nullable
+   public T a(cvk $$0, ib $$1) {
+      djl $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.r() == this ? $$2 : null);
    }
 
-   @Override
-   public cpd x() {
-      this.e_(null);
-      return this.m;
+   @FunctionalInterface
+   interface a<T extends djl> {
+      T create(ib var1, dme var2);
    }
 
-   @Override
-   public cpd c(int $$0) {
-      this.e_(null);
-      cpd $$1 = this.m.a($$0);
-      if (this.m.b()) {
-         this.m = cpd.h;
+   public static final class b<T extends djl> {
+      private final djn.a<? extends T> a;
+      final Set<czf> b;
+
+      private b(djn.a<? extends T> $$0, Set<czf> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void b(cpd $$0) {
-      this.e_(null);
-      this.m = $$0;
-   }
-
-   @Override
-   public dix y() {
-      return this;
-   }
-
-   public void a(djn.b $$0) {
-      if (this.o != null && !this.o.y_()) {
-         this.o.a(this.aE_(), this.r().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < djn.b.values().length) {
-         this.h = this.o.X();
-         this.i = djn.b.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static record a(coy b, coy c, coy d, coy e) {
-      public static final djn.a a = new djn.a(cpg.qK, cpg.qK, cpg.qK, cpg.qK);
-
-      public sw a(sw $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            tc $$1 = new tc();
-            this.a().forEach($$1x -> $$1.add(tr.a(kf.h.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
+      public static <T extends djl> djn.b<T> a(djn.a<? extends T> $$0, czf... $$1) {
+         return new djn.b<>($$0, ImmutableSet.copyOf($$1));
       }
 
-      public Stream<coy> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static djn.a b(@Nullable sw $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            tc $$1 = $$0.c("sherds", 8);
-            return new djn.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static coy a(tc $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cpg.qK;
-         } else {
-            tt $$2 = $$0.k($$1);
-            return kf.h.a(aiy.a($$2.t_()));
-         }
-      }
-   }
-
-   public static enum b {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private b(int $$0) {
-         this.c = $$0;
+      public djn<T> a(Type<?> $$0) {
+         return new djn<>(this.a, this.b, $$0);
       }
    }
 }

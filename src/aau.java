@@ -1,20 +1,14 @@
-public record aau(int b) implements xx<aag> {
-   public static final xo<uq, aau> a = xx.a(aau::a, aau::new);
-
-   private aau(uq $$0) {
-      this($$0.n());
-   }
-
-   private void a(uq $$0) {
-      $$0.c(this.b);
+public class aau extends xx<aai> {
+   public aau(Iterable<xz<? super aai>> $$0) {
+      super($$0);
    }
 
    @Override
-   public xz<aau> a() {
-      return aeq.n;
+   public yb<aau> a() {
+      return aet.a;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 }

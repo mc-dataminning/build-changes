@@ -1,34 +1,117 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
+public class ckq {
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-public interface ckq {
-   ckq a = new ckq() {
-      @Override
-      public <T> Optional<T> a(BiFunction<cvr, hz, T> $$0) {
-         return Optional.empty();
+   public ckq() {
+      this.b = 5.0F;
+   }
+
+   public void a(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   }
+
+   public void a(cpl $$0, cpq $$1) {
+      if ($$0.v()) {
+         ckr $$2 = $$0.w();
+         this.a($$2.a(), $$2.b());
       }
-   };
+   }
 
-   static ckq a(final cvr $$0, final hz $$1) {
-      return new ckq() {
-         @Override
-         public <T> Optional<T> a(BiFunction<cvr, hz, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
+   public void a(cia $$0) {
+      bmi $$1 = $$0.dJ().aj();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bmi.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
-      };
+      }
+
+      boolean $$2 = $$0.dJ().Z().b(cwa.k);
+      if ($$2 && this.b > 0.0F && $$0.gg() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
+         }
+      } else if ($$2 && this.a >= 18 && $$0.gg()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eu() > 10.0F || $$1 == bmi.d || $$0.eu() > 1.0F && $$1 == bmi.c) {
+               $$0.a($$0.dK().i(), 1.0F);
+            }
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
+      }
    }
 
-   <T> Optional<T> a(BiFunction<cvr, hz, T> var1);
-
-   default <T> T a(BiFunction<cvr, hz, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
+   public void a(sy $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
    }
 
-   default void a(BiConsumer<cvr, hz> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   public void b(sy $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

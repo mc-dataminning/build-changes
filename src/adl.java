@@ -1,61 +1,45 @@
-public class adl implements xx<aag> {
-   public static final xo<uq, adl> a = xx.a(adl::a, adl::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public adl(bnq $$0) {
-      this($$0.aj(), $$0.dp());
-   }
+public class adl implements xz<aai> {
+   public static final xq<us, adl> a = xz.a(adl::a, adl::new);
+   private final epq b;
+   private final String c;
 
-   public adl(int $$0, enz $$1) {
+   public adl(epq $$0, @Nullable epr $$1) {
       this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = awi.a($$1.c, -3.9, 3.9);
-      double $$4 = awi.a($$1.d, -3.9, 3.9);
-      double $$5 = awi.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private adl(uq $$0) {
-      this.b = $$0.n();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private adl(us $$0) {
+      this.b = $$0.a(epq.u);
+      this.c = $$0.p();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+   private void a(us $$0) {
+      $$0.a(epq::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public xz<adl> a() {
-      return aeq.aD;
+   public yb<adl> a() {
+      return aet.aB;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public epq b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

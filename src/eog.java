@@ -1,18 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+@FunctionalInterface
+public interface eog<T> {
+   void handle(T var1, eoi<T> var2, long var3);
 
-public final class eog extends eos {
-   protected eog(eoi $$0) {
-      super($$0);
-   }
+   public abstract static class a<T, C extends eog<T>> {
+      private final ajc a;
+      private final Class<?> b;
 
-   @Override
-   protected DoubleList a(ie.a $$0) {
-      return new eof(this.a.c($$0));
-   }
+      public a(ajc $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   protected int a(ie.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return awi.a(awi.a($$1 * (double)$$2, -1.0, (double)$$2));
+      public ajc a() {
+         return this.a;
+      }
+
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(sy var1, C var2);
+
+      public abstract C b(sy var1);
    }
 }

@@ -1,128 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class ebt {
-   public static final String a = "INVALID";
-   public static final ebt b = new ebt(null, new cuy(0, 0), 0, new eca(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final ebl d;
-   private final eca e;
-   private final cuy f;
-   private int g;
-   @Nullable
-   private volatile ebd h;
+public class ebt extends ebm {
+   public static final Codec<ebt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ebt::new)
+   );
+   private final int c;
 
-   public ebt(ebl $$0, cuy $$1, int $$2, eca $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   private ebt(int $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static ebt a(ecb $$0, sw $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         iv<ebl> $$4 = $$0.b().d(kg.aD);
-         ebl $$5 = $$4.a(new aiy($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            cuy $$6 = new cuy($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            tc $$8 = $$1.c("Children", 10);
-
-            try {
-               eca $$9 = eca.a($$8, $$0);
-               if ($$5 instanceof edv) {
-                  $$9 = edv.a($$6, $$2, $$9);
-               }
-
-               return new ebt($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
-            }
-         }
-      }
+   public static ebt a(int $$0) {
+      return new ebt($$0);
    }
 
-   public ebd a() {
-      ebd $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
-
-      return $$0;
+   @Override
+   protected boolean a(ebl $$0, awt $$1, ib $$2) {
+      int $$3 = $$0.a(drq.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(drq.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
    }
 
-   public void a(cwm $$0, cwk $$1, dng $$2, awp $$3, ebd $$4, cuy $$5) {
-      List<ebp> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         ebd $$7 = $$6.get(0).f;
-         hz $$8 = $$7.g();
-         hz $$9 = new hz($$8.u(), $$7.i(), $$8.w());
-
-         for (ebp $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
-
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
-   }
-
-   public sw a(ecb $$0, cuy $$1) {
-      sw $$2 = new sw();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(kg.aD).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
-   }
-
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public cuy c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public ebl h() {
-      return this.d;
-   }
-
-   public List<ebp> i() {
-      return this.e.c();
+   @Override
+   public ebo<?> b() {
+      return ebo.d;
    }
 }

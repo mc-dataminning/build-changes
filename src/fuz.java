@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fuz {
+   ghz a(int var1, int var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fuz {
+   ghz a(awt var1);
 }

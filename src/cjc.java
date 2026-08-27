@@ -1,59 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cjc {
-   private final List<ciz> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<ciz> a() {
-      return ImmutableList.copyOf(this.a);
+public class cjc extends ciz {
+   public cjc(bol<? extends cjc> $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
-   public cjc a(int $$0, float $$1) {
-      this.a.add(new ciz($$0, $$1));
-      this.b();
-      return this;
+   public cjc(cwe $$0, box $$1) {
+      super(bol.F, $$1, $$0);
    }
 
-   public cjc a(Collection<ciz> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   @Override
+   protected cpl s() {
+      return cpt.se;
    }
 
-   private void b() {
-      Int2ObjectSortedMap<ciz> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   protected void a(eos $$0) {
+      super.a($$0);
+      $$0.a().a(this.dK().b(this, this.w()), 0.0F);
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         ciz $$1 = this.a.get(this.b);
-         ciz $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   protected void a(eot $$0) {
+      super.a($$0);
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            ciz $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dJ().a(kb.Z, this.do(), this.dq() + this.af.j() * 2.0, this.du(), this.af.k(), 0.0, this.af.k());
+      }
+
+      if (!this.dJ().B && !this.dE()) {
+         bof $$2 = this.w();
+         if ($$2 instanceof apb $$3) {
+            if ($$3.d.c() && $$3.dJ() == this.dJ() && !$$3.fF()) {
+               if (this.af.i() < 0.05F && this.dJ().Z().b(cwa.e)) {
+                  cex $$4 = bol.H.a(this.dJ());
+                  if ($$4 != null) {
+                     $$4.b($$2.do(), $$2.dq(), $$2.du(), $$2.dz(), $$2.dB());
+                     this.dJ().b($$4);
+                  }
+               }
+
+               if ($$2.bL()) {
+                  $$3.a(this.do(), this.dq(), this.du());
+               } else {
+                  $$2.c(this.do(), this.dq(), this.du());
+               }
+
+               $$2.n();
+               $$2.a(this.dK().k(), 5.0F);
+               this.dJ().a(null, this.do(), this.dq(), this.du(), atp.tO, atq.h);
             }
-
-            this.b = $$6;
-            $$5 = $$7.b();
+         } else if ($$2 != null) {
+            $$2.c(this.do(), this.dq(), this.du());
+            $$2.n();
          }
 
-         return $$5;
+         this.am();
       }
+   }
+
+   @Override
+   public void l() {
+      bof $$0 = this.w();
+      if ($$0 instanceof apb && !$$0.bx() && this.dJ().Z().b(cwa.Y)) {
+         this.am();
+      } else {
+         super.l();
+      }
+   }
+
+   @Nullable
+   @Override
+   public bof b(apa $$0) {
+      bof $$1 = this.w();
+      if ($$1 != null && $$1.dJ().ad() != $$0.ad()) {
+         this.b(null);
+      }
+
+      return super.b($$0);
    }
 }

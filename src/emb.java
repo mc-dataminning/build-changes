@@ -1,22 +1,28 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface emb extends ejd, Predicate<ejc> {
-   emc b();
+public class emb extends elk {
+   public static final Codec<emb> a = RecordCodecBuilder.create($$0 -> a($$0).and(kh.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, emb::new));
+   private final il<crm> b;
 
-   @FunctionalInterface
-   public interface a {
-      emb build();
+   private emb(List<emx> $$0, il<crm> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      default emb.a invert() {
-         return ely.a(this);
-      }
+   @Override
+   public elm b() {
+      return eln.z;
+   }
 
-      default elq.a or(emb.a $$0) {
-         return elq.a(this, $$0);
-      }
+   @Override
+   public cpq a(cpq $$0, ejy $$1) {
+      cro.a($$0, this.b);
+      return $$0;
+   }
 
-      default elp.a and(emb.a $$0) {
-         return elp.a(this, $$0);
-      }
+   public static elk.a<?> a(il<crm> $$0) {
+      return a($$1 -> new emb($$1, $$0));
    }
 }

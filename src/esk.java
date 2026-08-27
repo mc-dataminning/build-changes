@@ -1,212 +1,119 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public class esk implements AutoCloseable {
-   private final esk.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private esm e;
-   @Nullable
-   private RenderSystem.a f;
-   private esm.a g;
-   private int h;
-   private esm.b i;
+public abstract class esk {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public esk(esk.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
+   public List<String> a(String $$0) {
+      esk.a $$1 = new esk.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   public void a(esc.b $$0) {
-      try {
-         if (!this.e()) {
-            RenderSystem.assertOnRenderThread();
-            esc.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.i();
-            this.g = $$1.k();
-            this.i = $$1.j();
-            return;
+   private List<String> a(String $$0, esk.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
+
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
+            }
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!axh.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!ac.b($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = axh.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
          }
-      } finally {
-         $$0.e();
       }
+
+      String $$17 = $$0.substring($$4);
+      if (!ac.b($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
    }
 
-   private esm a(esc.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.g().equals(this.e)) {
-         if (this.e != null) {
-            this.e.f();
-         }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.g().e();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.g();
-   }
-
-   @Nullable
-   private RenderSystem.a b(esc.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
+   private String a(String $$0, esk.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
-         if ($$2 != this.f || !$$2.a($$0.i())) {
-            $$2.b($$0.i());
-         }
-
-         return $$2;
+         return $$0;
       }
    }
 
-   public void a() {
-      esd.b();
-      GlStateManager._glBindVertexArray(this.d);
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
    }
 
-   public static void b() {
-      esd.b();
-      GlStateManager._glBindVertexArray(0);
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
    }
 
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private esm.a f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, fwh $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
       } else {
-         this.b($$0, $$1, $$2);
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
       }
    }
 
-   private void b(Matrix4f $$0, Matrix4f $$1, fwh $$2) {
-      for (int $$3 = 0; $$3 < 12; $$3++) {
-         int $$4 = RenderSystem.getShaderTexture($$3);
-         $$2.a("Sampler" + $$3, $$4);
-      }
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-      if ($$2.b != null) {
-         $$2.b.a($$0);
-      }
-
-      if ($$2.c != null) {
-         $$2.c.a($$1);
-      }
-
-      if ($$2.d != null) {
-         $$2.d.a(RenderSystem.getInverseViewRotationMatrix());
-      }
-
-      if ($$2.g != null) {
-         $$2.g.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$2.j != null) {
-         $$2.j.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$2.k != null) {
-         $$2.k.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$2.l != null) {
-         $$2.l.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$2.m != null) {
-         $$2.m.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$2.n != null) {
-         $$2.n.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$2.e != null) {
-         $$2.e.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$2.p != null) {
-         $$2.p.a(RenderSystem.getShaderGameTime());
-      }
-
-      if ($$2.f != null) {
-         erl $$5 = exo.P().aN();
-         $$2.f.a((float)$$5.k(), (float)$$5.l());
-      }
-
-      if ($$2.o != null && (this.i == esm.b.a || this.i == esm.b.b)) {
-         $$2.o.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights($$2);
-      $$2.g();
-      this.c();
-      $$2.f();
-   }
-
-   @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
-   }
-
-   public esm d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
-   }
-
-   public static enum a {
-      a(35044),
-      b(35048);
-
-      final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   static final class a {
+      int a;
+      int b;
    }
 }

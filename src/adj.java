@@ -1,52 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
+public class adj implements xz<aai> {
+   public static final xq<us, adj> a = xz.a(adj::a, adj::new);
+   private final int b;
 
-public record adj(int c, List<aih.b<?>> d) implements xx<aag> {
-   public static final xo<vb, adj> a = xx.a(adj::b, adj::new);
-   public static final int b = 255;
-
-   private adj(vb $$0) {
-      this($$0.n(), a($$0));
+   public adj(int $$0) {
+      this.b = $$0;
    }
 
-   private static void a(List<aih.b<?>> $$0, vb $$1) {
-      for (aih.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private adj(us $$0) {
+      this.b = $$0.l();
    }
 
-   private static List<aih.b<?>> a(vb $$0) {
-      List<aih.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aih.b.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(vb $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(us $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public xz<adj> a() {
-      return aeq.aB;
+   public yb<adj> a() {
+      return aet.az;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
-   }
-
-   public List<aih.b<?>> e() {
-      return this.d;
+      return this.b;
    }
 }

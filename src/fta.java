@@ -1,27 +1,40 @@
-public class fta extends ftf {
-   fta(fqe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+public class fta extends fve {
+   fta(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(jz.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
+      super.a();
+      if (!this.o && !this.c.b_(ib.a(this.g, this.h, this.i)).a(auj.a)) {
          this.k();
       }
    }
 
-   public static class a implements ftk<kc> {
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fta($$1, $$2, $$3, $$4);
+   @Override
+   public fui b() {
+      return fui.b;
+   }
+
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fta $$8 = new fta($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

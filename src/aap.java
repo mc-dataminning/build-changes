@@ -1,31 +1,44 @@
-public class aap implements xx<aag> {
-   public static final xo<vb, aap> a = xo.a(hz.b, aap::e, xm.a(cys.q), aap::b, aap::new);
-   private final hz b;
-   private final dlj c;
+import java.util.function.BiFunction;
 
-   public aap(hz $$0, dlj $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class aap implements xz<aai> {
+   public static final xq<vd, aap> a = xq.a(ib.b, aap::b, xo.a(ki.h), aap::e, xo.k, aap::f, aap::new);
+   private final ib b;
+   private final djn<?> c;
+   private final sy d;
+
+   public static aap a(djl $$0, BiFunction<djl, iy, sy> $$1) {
+      iy $$2 = $$0.i().I_();
+      return new aap($$0.aD_(), $$0.r(), $$1.apply($$0, $$2));
    }
 
-   public aap(cux $$0, hz $$1) {
-      this($$1, $$0.a_($$1));
+   public static aap a(djl $$0) {
+      return a($$0, djl::a);
+   }
+
+   private aap(ib $$0, djn<?> $$1, sy $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public xz<aap> a() {
-      return aeq.k;
+   public yb<aap> a() {
+      return aet.i;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public dlj b() {
+   public ib b() {
+      return this.b;
+   }
+
+   public djn<?> e() {
       return this.c;
    }
 
-   public hz e() {
-      return this.b;
+   public sy f() {
+      return this.d;
    }
 }

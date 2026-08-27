@@ -1,108 +1,33 @@
-public class diq extends dkb {
-   private is<cpd> e = is.a(27, cpd.h);
-   private final djk f = new djk() {
-      @Override
-      protected void a(cvr $$0, hz $$1, dlj $$2) {
-         diq.this.a($$2, atl.bx);
-         diq.this.a($$2, true);
-      }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      protected void b(cvr $$0, hz $$1, dlj $$2) {
-         diq.this.a($$2, atl.bw);
-         diq.this.a($$2, false);
-      }
+public class diq extends dhr implements dij {
+   public static final MapCodec<diq> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dmt.a.fieldOf("block_set_type").forGetter(dhr::i), dij.a.e.fieldOf("weathering_state").forGetter(diq::s), u()).apply($$0, diq::new)
+   );
+   private final dij.a n;
 
-      @Override
-      protected void a(cvr $$0, hz $$1, dlj $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<diq> a() {
+      return m;
+   }
 
-      @Override
-      protected boolean a(chl $$0) {
-         if ($$0.bW instanceof ckm) {
-            blp $$1 = ((ckm)$$0.bW).l();
-            return $$1 == diq.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public diq(hz $$0, dlj $$1) {
-      super(diz.A, $$0, $$1);
+   protected diq(dmt $$0, dij.a $$1, dmd.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         blq.a($$0, this.e);
-      }
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.e = is.a(this.b(), cpd.h);
-      if (!this.c_($$0)) {
-         blq.b($$0, this.e);
-      }
+   protected boolean e_(dme $$0) {
+      return dij.c($$0.b()).isPresent();
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected is<cpd> k() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(is<cpd> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected vq l() {
-      return vq.c("container.barrel");
-   }
-
-   @Override
-   protected ckf a(int $$0, chk $$1) {
-      return ckm.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(chl $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.a($$0, this.i(), this.aE_(), this.r());
-      }
-   }
-
-   @Override
-   public void c(chl $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.b($$0, this.i(), this.aE_(), this.r());
-      }
-   }
-
-   public void m() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aE_(), this.r());
-      }
-   }
-
-   void a(dlj $$0, boolean $$1) {
-      this.o.a(this.aE_(), $$0.a(cxy.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dlj $$0, atk $$1) {
-      jd $$2 = $$0.c(cxy.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, atm.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+   public dij.a s() {
+      return this.n;
    }
 }

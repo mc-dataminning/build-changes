@@ -1,73 +1,58 @@
-public class gmr implements gmw {
-   private static final int a = 6000;
-   private static final vq b = vq.c("tutorial.find_tree.title");
-   private static final vq c = vq.c("tutorial.find_tree.description");
-   private final gmv d;
-   private fbz e;
-   private int f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gmr(gmv $$0) {
-      this.d = $$0;
+public class gmr implements gms<glj> {
+   private final List<gms<glj>> a = Lists.newArrayList();
+   @Nullable
+   private final vs b;
+
+   public gmr(ajc $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : vs.c($$1);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gmx.f);
-      } else {
-         if (this.f == 1) {
-            fuv $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gmx.e);
-               return;
+   public int e() {
+      int $$0 = 0;
+
+      for (gms<glj> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public glj a(awt $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (gms<glj> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
             }
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fbz(fbz.a.c, b, c, false);
-            this.d.e().az().a(this.e);
-         }
+         return gmq.a;
+      } else {
+         return gmq.a;
       }
+   }
+
+   public void a(gms<glj> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public vs a() {
+      return this.b;
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+   public void a(gmn $$0) {
+      for (gms<glj> $$1 : this.a) {
+         $$1.a($$0);
       }
-   }
-
-   @Override
-   public void a(fqe $$0, enx $$1) {
-      if ($$1.c() == enx.a.b) {
-         dlj $$2 = $$0.a_(((env)$$1).a());
-         if ($$2.a(aua.ai)) {
-            this.d.a(gmx.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(cpd $$0) {
-      if ($$0.a(aui.al)) {
-         this.d.a(gmx.e);
-      }
-   }
-
-   private static boolean b(fuv $$0) {
-      return $$0.fT().a_($$0x -> $$0x.a(aui.al));
-   }
-
-   public static boolean a(fuv $$0) {
-      for (ij<cys> $$1 : kf.e.c(aua.ai)) {
-         cys $$2 = $$1.a();
-         if ($$0.j().a(atv.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

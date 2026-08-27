@@ -1,39 +1,89 @@
-public record cab(aiy l) {
-   public static final aix<cab> a = a("tabby");
-   public static final aix<cab> b = a("black");
-   public static final aix<cab> c = a("red");
-   public static final aix<cab> d = a("siamese");
-   public static final aix<cab> e = a("british_shorthair");
-   public static final aix<cab> f = a("calico");
-   public static final aix<cab> g = a("persian");
-   public static final aix<cab> h = a("ragdoll");
-   public static final aix<cab> i = a("white");
-   public static final aix<cab> j = a("jellie");
-   public static final aix<cab> k = a("all_black");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-   private static aix<cab> a(String $$0) {
-      return aix.a(kg.l, new aiy($$0));
+public class cab {
+   private final ib a;
+   private final il<cad> b;
+   private int c;
+   private final Runnable d;
+
+   public static Codec<cab> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  ib.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  aiz.a(ki.U).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, cab::new)
+      );
    }
 
-   public static cab a(iv<cab> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   private cab(ib $$0, il<cad> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static cab a(iv<cab> $$0, aix<cab> $$1, String $$2) {
-      return iv.a($$0, $$1, new cab(new aiy($$2)));
+   public cab(ib $$0, il<cad> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   public aiy a() {
-      return this.l;
+   @Deprecated
+   @axp
+   public int a() {
+      return this.c;
+   }
+
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
+   }
+
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
+   }
+
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public ib f() {
+      return this.a;
+   }
+
+   public il<cad> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cab)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

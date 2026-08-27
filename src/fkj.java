@@ -1,59 +1,59 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
 
-public record fkj(drt a, iv<dow> b, drq c, iq<ajh> d, aji e, cwl f) {
-   public fkj(drr $$0, iq<ajh> $$1, aji $$2, cwl $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class fkj extends fkf<fsb.a> {
+   private static final int r = 120;
+   private static final vs t = vs.c("gui.abuseReport.name.title");
+   private final fea u = fea.d().a(8);
+   private fbc v;
+   private fak w;
+
+   private fkj(fgh $$0, fsg $$1, fsb.a $$2) {
+      super(t, $$0, $$1, $$2);
    }
 
-   public fkj(drt $$0, drq $$1, iq<ajh> $$2, aji $$3, cwl $$4) {
-      this($$0, $$2.a(ajh.c).d(kg.aN), $$1, $$2.a(ajh.c), $$3, $$4);
+   public fkj(fgh $$0, fsg $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fsb.a($$2, $$3, $$1.a().b()));
    }
 
-   public fkj a(drt $$0, drq $$1) {
-      return new fkj($$0, this.b, $$1, this.d, this.e, this.f);
+   public fkj(fgh $$0, fsg $$1, fsb $$2) {
+      this($$0, $$1, new fsb.a($$2, $$1.a().b()));
    }
 
-   public fkj a(fkj.b $$0) {
-      return new fkj($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void aP_() {
+      this.u.c().b();
+      this.u.a(new fbr(this.e, this.i));
+      vs $$0 = vs.b(this.q.e().a()).a(n.o);
+      this.u.a(new fbr(vs.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.E();
+      });
+      this.u.a(fds.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      fea $$1 = this.u.a(fea.e().a(8));
+      $$1.a(fak.a(vr.k, $$0x -> this.d()).a(120).a());
+      this.w = $$1.a(fak.a(a, $$0x -> this.o()).a(120).a());
+      this.E();
+      this.u.a($$1x -> {
+         fai var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public fkj a(fkj.a $$0) {
-      return new fkj(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      this.u.a();
+      fdu.a(this.u, this.F());
    }
 
-   public iw.b a() {
-      return this.d.a();
+   private void E() {
+      fsc.b $$0 = this.q.c();
+      this.w.j = $$0 == null;
+      this.w.a(x.a($$0, fsc.b::a));
    }
 
-   public drt b() {
-      return this.a;
-   }
-
-   public iv<dow> c() {
-      return this.b;
-   }
-
-   public drq d() {
-      return this.c;
-   }
-
-   public iq<ajh> e() {
-      return this.d;
-   }
-
-   public aji f() {
-      return this.e;
-   }
-
-   public cwl g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<iw.b, drq, drq> {
-   }
-
-   public interface b extends UnaryOperator<drt> {
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

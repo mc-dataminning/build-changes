@@ -1,67 +1,32 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtr extends dtz<dvz> {
-   private static final ImmutableList<cys> a = ImmutableList.of(cyu.F, cyu.fn, cyu.fo, cyu.fp, cyu.fq, cyu.cv, cyu.ct);
-   private static final ie[] b = ie.values();
-   private static final double c = 0.9;
+public class dtr extends dto {
+   public static final Codec<dtr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dto.d.forGetter($$0x -> $$0x),
+               blo.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               blo.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               blo.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dtr::new)
+   );
+   public final blo b;
+   public final blo c;
+   final blo j;
 
-   public dtr(Codec<dvz> $$0) {
-      super($$0);
+   public dtr(float $$0, ean $$1, blo $$2, dsk $$3, dtp $$4, ip<czf> $$5, blo $$6, blo $$7, blo $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dub<dvz> $$0) {
-      boolean $$1 = false;
-      awp $$2 = $$0.d();
-      cwm $$3 = $$0.b();
-      dvz $$4 = $$0.f();
-      hz $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (hz $$13 : hz.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            hz $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   public dtr(float $$0, ean $$1, blo $$2, dsk $$3, ip<czf> $$4, blo $$5, blo $$6, blo $$7) {
+      this($$0, $$1, $$2, $$3, dtp.a, $$4, $$5, $$6, $$7);
    }
 
-   private static boolean a(cvs $$0, hz $$1, dvz $$2) {
-      dlj $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ie $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ie.b || !$$5 && $$4 == ie.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public dtr(dto $$0, blo $$1, blo $$2, blo $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

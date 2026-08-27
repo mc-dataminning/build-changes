@@ -1,41 +1,62 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class evx extends gob {
+   private final fgh a;
+   private final evx.a b;
+   private fbd c = fbd.a;
 
-public interface evx {
-   evx a = new evx() {
-      @Override
-      public long a() {
-         return 1L;
-      }
+   public evx(evg $$0, fgh $$1) {
+      super(eyc.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-      @Override
-      public long b() {
-         return 1L;
-      }
-   };
+   public evx(vs $$0, fgh $$1) {
+      super(eyc.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   long a();
+   public evx(vs $$0, vs $$1, fgh $$2) {
+      super(eyc.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
 
-   long b();
+   private static evx.a a(evg $$0) {
+      etv $$1 = $$0.a;
+      return a(vs.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
 
-   static evx a(final int $$0) {
-      return new evx() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
+   private static evx.a a(vs $$0) {
+      return a(vs.c("mco.errorMessage.generic"), $$0);
+   }
 
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
-         }
+   private static evx.a a(vs $$0, vs $$1) {
+      return new evx.a($$0, $$1);
+   }
 
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+   @Override
+   public void aP_() {
+      this.c(fak.a(vr.h, $$0 -> this.d()).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = fbd.a(this.i, this.b.b, this.g * 3 / 4);
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.a);
+   }
+
+   @Override
+   public vs i() {
+      return vs.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -2142128);
+   }
+
+   static record a(vs a, vs b) {
    }
 }

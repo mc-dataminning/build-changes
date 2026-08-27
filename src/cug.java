@@ -1,20 +1,20 @@
-public class cug extends ctm {
-   public cug(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bk, $$1);
+public class cug extends ctz {
+   protected cug(ctz.a $$0, bom... $$1) {
+      super($$0, aum.bg, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + $$0 * 7;
+      return 5 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 2;
    }
 }

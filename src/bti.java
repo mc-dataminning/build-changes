@@ -1,40 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bti extends bqa<cgy> {
-   public bti() {
-      super(ImmutableMap.of());
-   }
+public class bti {
+   public static bqq<chn> a(bya<List<ik>> $$0, float $$1, int $$2, int $$3, bya<ik> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return buc.a(
+         (Function<buc.b<chn>, ? extends App<buc.c<chn>, buf<chn>>>)($$6 -> $$6.group($$6.a(bya.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<ik> $$11 = $$6.b($$6x);
+                     ik $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        ik $$13 = $$11.get($$8.F_().a($$11.size()));
+                        if ($$13 != null && $$8.ad() == $$13.a() && $$12.b().a($$9.dh(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new byd($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   protected boolean a(aow $$0, cgy $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(aow $$0, cgy $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bpj<?> $$3 = $$1.dO();
-         if (!$$3.c(ciy.g)) {
-            $$3.b(bxl.t);
-            $$3.b(bxl.m);
-            $$3.b(bxl.n);
-            $$3.b(bxl.r);
-            $$3.b(bxl.q);
-         }
-
-         $$3.a(ciy.g);
-      }
-   }
-
-   protected void c(aow $$0, cgy $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(boi $$0) {
-      return $$0.dO().a(bxl.A);
-   }
-
-   public static boolean c(boi $$0) {
-      return $$0.dO().a(bxl.x);
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

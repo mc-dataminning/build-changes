@@ -1,28 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class amq {
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), hz.a(((du)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("pos", fo.a()).executes($$0x -> a((du)$$0x.getSource(), fo.c($$0x, "pos"), 0.0F)))
-                  .then(dv.a("angle", ea.a()).executes($$0x -> a((du)$$0x.getSource(), fo.c($$0x, "pos"), ea.a($$0x, "angle"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)dv.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)dv.a("uuid", fi.a())
+                                       .then(
+                                          dv.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(fi.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fi.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(dv.a("pop").then(dv.a("uuid", fi.a()).executes($$0x -> a((du)$$0x.getSource(), fi.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(du $$0, hz $$1, float $$2) {
-      aow $$3 = $$0.e();
-      if ($$3.ad() != cvr.h) {
-         $$0.b(vq.c("commands.setworldspawn.failure.not_overworld"));
-         return 0;
-      } else {
-         $$3.a($$1, $$2);
-         $$0.a(() -> vq.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-         return 1;
-      }
+   private static void a(du $$0, xz<?> $$1) {
+      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
+   }
+
+   private static int a(du $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      yl $$6 = new yl($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
+
+   private static int a(du $$0, UUID $$1) {
+      yk $$2 = new yk(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

@@ -1,71 +1,95 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-class fyp {
-   private final Map<hz, dix> a;
+public class fyp implements asg {
+   private Map<djn<?>, fyq<?>> d = ImmutableMap.of();
+   private final ezv e;
+   private final fqb f;
+   public cwe a;
+   public exv b;
+   public eot c;
+   private final Supplier<fxk> g;
+   private final Supplier<gcw> h;
+   private final Supplier<gbw> i;
+
+   public fyp(ezv $$0, fqb $$1, Supplier<fxk> $$2, Supplier<gcw> $$3, Supplier<gbw> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
    @Nullable
-   private final List<dny<dlj>> b;
-   private final boolean c;
-   private final dnq d;
+   public <E extends djl> fyq<E> a(E $$0) {
+      return (fyq<E>)this.d.get($$0.r());
+   }
 
-   fyp(dnq $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ag();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dnm) {
-         this.b = null;
-      } else {
-         dnr[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dnr $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+   public void a(cwe $$0, exv $$1, eot $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
+
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   public dix a(hz $$0) {
-      return this.a.get($$0);
-   }
-
-   public dlj b(hz $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dlj $$4 = null;
-         if ($$2 == 60) {
-            $$4 = cyu.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dqm.a($$1, $$3);
-         }
-
-         return $$4 == null ? cyu.a.o() : $$4;
-      } else if (this.b == null) {
-         return cyu.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dny<dlj> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   public <E extends djl> void a(E $$0, float $$1, etd $$2, fwq $$3) {
+      fyq<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.m() && $$0.r().a($$0.n())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
-
-            return cyu.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
          }
       }
+   }
+
+   private static <T extends djl> void a(fyq<T> $$0, T $$1, float $$2, etd $$3, fwq $$4) {
+      cwe $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fwo.a($$5, $$1.aD_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, ghq.d);
+   }
+
+   public <E extends djl> boolean a(E $$0, etd $$1, fwq $$2, int $$3, int $$4) {
+      fyq<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(djl $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable cwe $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(asf $$0) {
+      fyr.a $$1 = new fyr.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fys.a($$1);
    }
 }

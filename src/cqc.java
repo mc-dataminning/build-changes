@@ -1,7 +1,5 @@
-public interface cqc {
-   boolean a(cvr var1, dkg var2, boolean var3, chl var4);
-
-   default boolean a(dkh $$0, chl $$1) {
-      return $$0.a($$1);
+public class cqc extends coc {
+   protected cqc(crd $$0, int $$1, float $$2, cpl.a $$3) {
+      super((float)$$1, $$2, $$0, aue.bB, $$3);
    }
 }

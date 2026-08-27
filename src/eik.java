@@ -1,30 +1,38 @@
-public class eik {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+public class eik extends eie {
+   private float m = Float.MAX_VALUE;
+   private eie n;
+   private boolean o;
 
-   public eik(int $$0) {
-      this($$0, a);
+   public eik(eie $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   public eik(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eik(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   public void a(float $$0, eie $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   public String b() {
-      return this.c;
+   public eie d() {
+      return this.n;
    }
 
-   public int c() {
-      return this.b;
+   public void e() {
+      this.o = true;
    }
 
-   public boolean a(eik $$0) {
-      return this.b().equals($$0.b());
+   public boolean f() {
+      return this.o;
+   }
+
+   public static eik c(us $$0) {
+      eik $$1 = new eik($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

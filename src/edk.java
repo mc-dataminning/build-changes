@@ -1,28 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edk extends ebl {
-   public static final Codec<edk> d = a(edk::new);
+public class edk extends edm {
+   public static final Codec<edk> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, edk::new));
 
-   public edk(ebl.c $$0) {
-      super($$0);
+   protected edk(Either<ajc, egg> $$0, il<ege> $$1, edp.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<ebl.b> a(ebl.a $$0) {
-      return a($$0, dqv.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(ecd $$0, ebl.a $$1) {
-      cuy $$2 = $$1.h();
-      dru $$3 = $$1.f();
-      hz $$4 = new hz($$2.d(), 90, $$2.e());
-      dfe $$5 = dfe.a($$3);
-      edj.a($$1.e(), $$4, $$5, $$0, $$3);
+   protected egc a(dfr $$0, eby $$1, boolean $$2) {
+      egc $$3 = super.a($$0, $$1, $$2);
+      $$3.b(efi.b);
+      $$3.a(efi.d);
+      return $$3;
    }
 
    @Override
-   public ebu<?> e() {
-      return ebu.e;
+   public edo<?> a() {
+      return edo.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

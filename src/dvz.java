@@ -1,41 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvz implements dwd {
-   public static final Codec<dvz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlj.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dlj.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               blb.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               blb.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dvz::new)
-   );
-   private final dlj b;
-   private final dlj c;
-   private final blb d;
-   private final blb e;
-
-   public dvz(dlj $$0, dlj $$1, blb $$2, blb $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class dvz extends duu<dwt> {
+   public dvz(Codec<dwt> $$0) {
+      super($$0);
    }
 
-   public dlj a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(duw<dwt> $$0) {
+      int $$1 = 0;
+      awt $$2 = $$0.d();
+      cwz $$3 = $$0.b();
+      ib $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public dlj b() {
-      return this.c;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(drq.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dme $$11 = czh.mV.o().a(dgb.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(czh.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public blb c() {
-      return this.d;
-   }
-
-   public blb d() {
-      return this.e;
+      return $$1 > 0;
    }
 }

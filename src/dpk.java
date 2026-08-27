@@ -1,38 +1,98 @@
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
-public interface dpk<B, T extends B> {
-   static <B, T extends B> dpk<B, T> a(final Class<T> $$0) {
-      return new dpk<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public class dpk {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dpk> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dpk> i = new Object2ObjectOpenHashMap();
+   public static final dpk a = a(new dpk(1, null, $$0 -> new avv(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dpk b = a(
+      new dpk(2, "deflate", $$0 -> new avv(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dpk c = a(new dpk(3, "none", avv::new, BufferedOutputStream::new));
+   public static final dpk d = a(
+      new dpk(4, "lz4", $$0 -> new avv(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dpk e = a(new dpk(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dpk f = b;
+   private static volatile dpk j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dpk.a<InputStream> m;
+   private final dpk.a<OutputStream> n;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   private dpk(int $$0, @Nullable String $$1, dpk.a<InputStream> $$2, dpk.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   static <B, T extends B> dpk<B, T> b(final Class<T> $$0) {
-      return new dpk<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
+   private static dpk a(dpk $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
+      }
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+      return $$0;
    }
 
    @Nullable
-   T a(B var1);
+   public static dpk a(int $$0) {
+      return (dpk)h.get($$0);
+   }
 
-   Class<? extends B> a();
+   public static void a(String $$0) {
+      dpk $$1 = (dpk)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      }
+   }
+
+   public static dpk a() {
+      return j;
+   }
+
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
+   }
+
+   public int b() {
+      return this.k;
+   }
+
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
+   }
 }

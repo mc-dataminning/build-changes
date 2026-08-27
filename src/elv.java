@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record elv(Optional<bg> b) implements emb {
-   public static final Codec<elv> a = RecordCodecBuilder.create($$0 -> $$0.group(avq.a(bg.a, "predicate").forGetter(elv::c)).apply($$0, elv::new));
+public class elv extends elk {
+   public static final Codec<elv> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(aut.b(ki.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, elv::new)
+   );
+   private final aut<cpi> b;
 
-   @Override
-   public emc b() {
-      return emd.n;
+   private elv(List<emx> $$0, aut<cpi> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<elk<?>> a() {
-      return ImmutableSet.of(eln.f, eln.c);
+   public elm b() {
+      return eln.A;
    }
 
-   public boolean a(ejc $$0) {
-      bmp $$1 = $$0.c(eln.c);
-      enz $$2 = $$0.c(eln.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public cpq a(cpq $$0, ejy $$1) {
+      cpj.a($$0, this.b, $$1.b());
+      return $$0;
    }
 
-   public static emb.a a(bg.a $$0) {
-      return () -> new elv(Optional.of($$0.b()));
-   }
-
-   public Optional<bg> c() {
-      return this.b;
+   public static elk.a<?> a(aut<cpi> $$0) {
+      return a($$1 -> new elv($$1, $$0));
    }
 }

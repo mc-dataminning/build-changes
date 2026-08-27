@@ -1,45 +1,156 @@
-public class agm implements xx<aes> {
-   public static final xo<uq, agm> a = xx.a(agm::a, agm::new);
-   private final env b;
-   private final blv c;
-   private final int d;
+public class agm implements xz<aev> {
+   public static final xq<us, agm> a = xz.a(agm::a, agm::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final ib e;
+   private final dkz.a f;
+   private final dno g;
+   private final String h;
+   private final ib i;
+   private final jf j;
+   private final deb k;
+   private final dfr l;
+   private final String m;
+   private final boolean n;
+   private final boolean o;
+   private final boolean p;
+   private final float q;
+   private final long r;
 
-   public agm(blv $$0, env $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+   public agm(
+      ib $$0, dkz.a $$1, dno $$2, String $$3, ib $$4, jf $$5, deb $$6, dfr $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+   ) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$12;
+      this.r = $$13;
    }
 
-   private agm(uq $$0) {
-      this.c = $$0.b(blv.class);
-      this.b = $$0.x();
-      this.d = $$0.n();
+   private agm(us $$0) {
+      this.e = $$0.e();
+      this.f = $$0.b(dkz.a.class);
+      this.g = $$0.b(dno.class);
+      this.h = $$0.p();
+      int $$1 = 48;
+      this.i = new ib(awm.a($$0.readByte(), -48, 48), awm.a($$0.readByte(), -48, 48), awm.a($$0.readByte(), -48, 48));
+      int $$2 = 48;
+      this.j = new jf(awm.a($$0.readByte(), 0, 48), awm.a($$0.readByte(), 0, 48), awm.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(deb.class);
+      this.l = $$0.b(dfr.class);
+      this.m = $$0.d(128);
+      this.q = awm.a($$0.readFloat(), 0.0F, 1.0F);
+      this.r = $$0.m();
+      int $$3 = $$0.readByte();
+      this.n = ($$3 & 1) != 0;
+      this.o = ($$3 & 2) != 0;
+      this.p = ($$3 & 4) != 0;
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c);
-      $$0.a(this.b);
-      $$0.c(this.d);
+   private void a(us $$0) {
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.k(this.i.u());
+      $$0.k(this.i.v());
+      $$0.k(this.i.w());
+      $$0.k(this.j.u());
+      $$0.k(this.j.v());
+      $$0.k(this.j.w());
+      $$0.a(this.k);
+      $$0.a(this.l);
+      $$0.a(this.m);
+      $$0.a(this.q);
+      $$0.a(this.r);
+      int $$1 = 0;
+      if (this.n) {
+         $$1 |= 1;
+      }
+
+      if (this.o) {
+         $$1 |= 2;
+      }
+
+      if (this.p) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public xz<agm> a() {
-      return aeq.bY;
+   public yb<agm> a() {
+      return aet.bW;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public blv b() {
-      return this.c;
+   public ib b() {
+      return this.e;
    }
 
-   public env e() {
-      return this.b;
+   public dkz.a e() {
+      return this.f;
    }
 
-   public int f() {
-      return this.d;
+   public dno f() {
+      return this.g;
+   }
+
+   public String g() {
+      return this.h;
+   }
+
+   public ib h() {
+      return this.i;
+   }
+
+   public jf i() {
+      return this.j;
+   }
+
+   public deb j() {
+      return this.k;
+   }
+
+   public dfr k() {
+      return this.l;
+   }
+
+   public String l() {
+      return this.m;
+   }
+
+   public boolean m() {
+      return this.n;
+   }
+
+   public boolean n() {
+      return this.o;
+   }
+
+   public boolean o() {
+      return this.p;
+   }
+
+   public float p() {
+      return this.q;
+   }
+
+   public long q() {
+      return this.r;
    }
 }

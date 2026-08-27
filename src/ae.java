@@ -8,19 +8,19 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai g, boolean h, Optional<vq> i) {
-   private static final Codec<Map<String, an<?>>> j = avq.a(
+public record ae(Optional<ajc> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai g, boolean h, Optional<vs> i) {
+   private static final Codec<Map<String, an<?>>> j = avu.a(
       Codec.unboundedMap(Codec.STRING, an.a), $$0 -> $$0.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success($$0)
    );
-   public static final Codec<ae> a = avq.a(
+   public static final Codec<ae> a = avu.a(
       RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avq.a(aiy.a, "parent").forGetter(ae::b),
-                  avq.a(ar.a, "display").forGetter(ae::c),
-                  avq.a(aj.a, "rewards", aj.b).forGetter(ae::d),
+                  avu.a(ajc.a, "parent").forGetter(ae::b),
+                  avu.a(ar.a, "display").forGetter(ae::c),
+                  avu.a(aj.a, "rewards", aj.b).forGetter(ae::d),
                   j.fieldOf("criteria").forGetter(ae::e),
-                  avq.a(ai.a, "requirements").forGetter($$0x -> Optional.of($$0x.f())),
-                  avq.a(Codec.BOOL, "sends_telemetry_event", false).forGetter(ae::g)
+                  avu.a(ai.a, "requirements").forGetter($$0x -> Optional.of($$0x.f())),
+                  avu.a(Codec.BOOL, "sends_telemetry_event", false).forGetter(ae::g)
                )
                .apply($$0, ($$0x, $$1, $$2, $$3, $$4, $$5) -> {
                   ai $$6 = $$4.orElseGet(() -> ai.a($$3.keySet()));
@@ -29,9 +29,9 @@ public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
       ),
       ae::a
    );
-   public static final xo<vb, ae> b = xo.a(ae::a, ae::b);
+   public static final xq<vd, ae> b = xq.a(ae::a, ae::b);
 
-   public ae(Optional<aiy> $$0, Optional<ar> $$1, aj $$2, Map<String, an<?>> $$3, ai $$4, boolean $$5) {
+   public ae(Optional<ajc> $$0, Optional<ar> $$1, aj $$2, Map<String, an<?>> $$3, ai $$4, boolean $$5) {
       this($$0, $$1, $$2, Map.copyOf($$3), $$4, $$5, $$1.map(ae::a));
    }
 
@@ -39,41 +39,41 @@ public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
       return $$0.f().a($$0.e().keySet()).map($$1 -> $$0);
    }
 
-   private static vq a(ar $$0) {
-      vq $$1 = $$0.a();
+   private static vs a(ar $$0) {
+      vs $$1 = $$0.a();
       n $$2 = $$0.e().a();
-      vq $$3 = vt.a($$1.f(), wn.a.a($$2)).f("\n").b($$0.b());
-      vq $$4 = $$1.f().a($$1x -> $$1x.a(new vw(vw.a.a, $$3)));
-      return vt.a($$4).a($$2);
+      vs $$3 = vv.a($$1.f(), wp.a.a($$2)).f("\n").b($$0.b());
+      vs $$4 = $$1.f().a($$1x -> $$1x.a(new vy(vy.a.a, $$3)));
+      return vv.a($$4).a($$2);
    }
 
-   public static vq a(af $$0) {
-      return $$0.b().h().orElseGet(() -> vq.b($$0.a().toString()));
+   public static vs a(af $$0) {
+      return $$0.b().h().orElseGet(() -> vs.b($$0.a().toString()));
    }
 
-   private void a(vb $$0) {
-      $$0.a(this.c, uq::a);
-      ar.b.a(xm::a).encode($$0, this.d);
+   private void a(vd $$0) {
+      $$0.a(this.c, us::a);
+      ar.b.a(xo::a).encode($$0, this.d);
       this.g.a($$0);
       $$0.a(this.h);
    }
 
-   private static ae b(vb $$0) {
-      return new ae($$0.b(uq::s), (Optional<ar>)ar.b.a(xm::a).decode($$0), aj.b, Map.of(), new ai($$0), $$0.readBoolean());
+   private static ae b(vd $$0) {
+      return new ae($$0.b(us::q), (Optional<ar>)ar.b.a(xo::a).decode($$0), aj.b, Map.of(), new ai($$0), $$0.readBoolean());
    }
 
    public boolean a() {
       return this.c.isEmpty();
    }
 
-   public void a(awn $$0, ejg $$1) {
+   public void a(awr $$0, ekc $$1) {
       this.f.forEach(($$2, $$3) -> {
          bd $$4 = new bd($$0.a($$2), $$1);
          $$3.b().a($$4);
       });
    }
 
-   public Optional<aiy> b() {
+   public Optional<ajc> b() {
       return this.c;
    }
 
@@ -97,12 +97,12 @@ public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
       return this.h;
    }
 
-   public Optional<vq> h() {
+   public Optional<vs> h() {
       return this.i;
    }
 
    public static class a {
-      private Optional<aiy> a = Optional.empty();
+      private Optional<ajc> a = Optional.empty();
       private Optional<ar> b = Optional.empty();
       private aj c = aj.b;
       private final Builder<String, an<?>> d = ImmutableMap.builder();
@@ -126,17 +126,17 @@ public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
       @Deprecated(
          forRemoval = true
       )
-      public ae.a a(aiy $$0) {
+      public ae.a a(ajc $$0) {
          this.a = Optional.of($$0);
          return this;
       }
 
-      public ae.a a(cpd $$0, vq $$1, vq $$2, @Nullable aiy $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cpq $$0, vs $$1, vs $$2, @Nullable ajc $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new ar($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(cvq $$0, vq $$1, vq $$2, @Nullable aiy $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new ar(new cpd($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ae.a a(cwd $$0, vs $$1, vs $$2, @Nullable ajc $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new ar(new cpq($$0.l()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(ar $$0) {
@@ -173,14 +173,14 @@ public record ae(Optional<aiy> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
          return this;
       }
 
-      public af b(aiy $$0) {
+      public af b(ajc $$0) {
          Map<String, an<?>> $$1 = this.d.buildOrThrow();
          ai $$2 = this.e.orElseGet(() -> this.f.create($$1.keySet()));
          return new af($$0, new ae(this.a, this.b, this.c, $$1, $$2, this.g));
       }
 
       public af a(Consumer<af> $$0, String $$1) {
-         af $$2 = this.b(new aiy($$1));
+         af $$2 = this.b(new ajc($$1));
          $$0.accept($$2);
          return $$2;
       }

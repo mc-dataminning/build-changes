@@ -1,25 +1,68 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public final class dsa {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-class dsa extends dse {
-   public static final Codec<dsa> a = a(dsa::new);
-
-   public dsa(List<dsc> $$0) {
-      super($$0);
+   private dsa() {
    }
 
-   public boolean a(cwm $$0, hz $$1) {
-      for (dsc $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
+   protected static dru.c a(drj $$0, drj $$1, drj $$2, dsd $$3) {
+      dme $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dsa.a $$8 = $$6 > 0.0 ? dsa.a.a : dsa.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = awm.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               awt $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = awm.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
          }
-      }
-
-      return true;
+      };
    }
 
-   @Override
-   public dsd<?> a() {
-      return dsd.j;
+   protected static enum a {
+      a(czh.ra.o(), czh.tg.o(), czh.c.o(), 0, 50),
+      b(czh.Q.o(), czh.tf.o(), czh.qz.o(), -60, -8);
+
+      final dme e;
+      final dme f;
+      final dme g;
+      protected final int c;
+      protected final int d;
+
+      private a(dme $$0, dme $$1, dme $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

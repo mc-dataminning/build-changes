@@ -1,37 +1,31 @@
-public class fnz extends fne {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fpj e;
-   private final fpj f;
-   private final fpj g;
+public class fnz<T extends bof> extends fnn<T> {
+   private final fqf a;
 
-   public fnz(fpj $$0) {
-      super(fwb::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fnz(fqf $$0) {
+      this.a = $$0;
    }
 
-   public static fpp a() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a();
-      $$1.a("plate", fpo.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fpl.a);
-      $$1.a("handle", fpo.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fpl.a);
-      return fpp.a($$0, 64, 64);
-   }
-
-   public fpj b() {
-      return this.f;
-   }
-
-   public fpj c() {
-      return this.g;
+   public static fql b() {
+      fqn $$0 = new fqn();
+      fqo $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", fqk.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fqh.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", fqk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fqh.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", fqk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fqh.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", fqk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fqh.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", fqk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fqh.a(0.0F, 4.0F, 7.0F));
+      return fql.a($$0, 64, 32);
    }
 
    @Override
-   public void a(esh $$0, esl $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public fqf a() {
+      return this.a;
    }
 }

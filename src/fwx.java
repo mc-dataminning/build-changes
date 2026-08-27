@@ -1,261 +1,541 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import org.joml.Matrix4fStack;
 
-public class fwx {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+public abstract class fwx {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final fwx.p c = new fwx.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final fwx.p d = new fwx.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final fwx.p e = new fwx.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final fwx.p f = new fwx.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final fwx.p g = new fwx.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final fwx.p h = new fwx.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final fwx.m i = new fwx.m();
+   protected static final fwx.m j = new fwx.m(fwj::v);
+   protected static final fwx.m k = new fwx.m(fwj::p);
+   protected static final fwx.m l = new fwx.m(fwj::r);
+   protected static final fwx.m m = new fwx.m(fwj::s);
+   protected static final fwx.m n = new fwx.m(fwj::w);
+   protected static final fwx.m o = new fwx.m(fwj::q);
+   protected static final fwx.m p = new fwx.m(fwj::x);
+   protected static final fwx.m q = new fwx.m(fwj::y);
+   protected static final fwx.m r = new fwx.m(fwj::z);
+   protected static final fwx.m s = new fwx.m(fwj::A);
+   protected static final fwx.m t = new fwx.m(fwj::B);
+   protected static final fwx.m u = new fwx.m(fwj::C);
+   protected static final fwx.m v = new fwx.m(fwj::D);
+   protected static final fwx.m w = new fwx.m(fwj::E);
+   protected static final fwx.m x = new fwx.m(fwj::F);
+   protected static final fwx.m y = new fwx.m(fwj::G);
+   protected static final fwx.m z = new fwx.m(fwj::H);
+   protected static final fwx.m A = new fwx.m(fwj::I);
+   protected static final fwx.m B = new fwx.m(fwj::J);
+   protected static final fwx.m C = new fwx.m(fwj::K);
+   protected static final fwx.m D = new fwx.m(fwj::L);
+   protected static final fwx.m E = new fwx.m(fwj::M);
+   protected static final fwx.m F = new fwx.m(fwj::N);
+   protected static final fwx.m G = new fwx.m(fwj::O);
+   protected static final fwx.m H = new fwx.m(fwj::P);
+   protected static final fwx.m I = new fwx.m(fwj::Q);
+   protected static final fwx.m J = new fwx.m(fwj::R);
+   protected static final fwx.m K = new fwx.m(fwj::S);
+   protected static final fwx.m L = new fwx.m(fwj::U);
+   protected static final fwx.m M = new fwx.m(fwj::V);
+   protected static final fwx.m N = new fwx.m(fwj::W);
+   protected static final fwx.m O = new fwx.m(fwj::X);
+   protected static final fwx.m P = new fwx.m(fwj::Y);
+   protected static final fwx.m Q = new fwx.m(fwj::Z);
+   protected static final fwx.m R = new fwx.m(fwj::aa);
+   protected static final fwx.m S = new fwx.m(fwj::ab);
+   protected static final fwx.m T = new fwx.m(fwj::ac);
+   protected static final fwx.m U = new fwx.m(fwj::ad);
+   protected static final fwx.m V = new fwx.m(fwj::aq);
+   protected static final fwx.m W = new fwx.m(fwj::ae);
+   protected static final fwx.m X = new fwx.m(fwj::af);
+   protected static final fwx.m Y = new fwx.m(fwj::ag);
+   protected static final fwx.m Z = new fwx.m(fwj::ah);
+   protected static final fwx.m aa = new fwx.m(fwj::ai);
+   protected static final fwx.m ab = new fwx.m(fwj::aj);
+   protected static final fwx.m ac = new fwx.m(fwj::ak);
+   protected static final fwx.m ad = new fwx.m(fwj::al);
+   protected static final fwx.m ae = new fwx.m(fwj::am);
+   protected static final fwx.m af = new fwx.m(fwj::an);
+   protected static final fwx.m ag = new fwx.m(fwj::ao);
+   protected static final fwx.m ah = new fwx.m(fwj::ap);
+   protected static final fwx.m ai = new fwx.m(fwj::ar);
+   protected static final fwx.m aj = new fwx.m(fwj::as);
+   protected static final fwx.m ak = new fwx.m(fwj::at);
+   protected static final fwx.m al = new fwx.m(fwj::au);
+   protected static final fwx.m am = new fwx.m(fwj::T);
+   protected static final fwx.n an = new fwx.n(ghy.e, false, true);
+   protected static final fwx.n ao = new fwx.n(ghy.e, false, false);
+   protected static final fwx.e ap = new fwx.e();
+   protected static final fwx.o aq = new fwx.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final fwx.o ar = new fwx.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final fwx.o as = new fwx.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final fwx.g at = new fwx.g(true);
+   protected static final fwx.g au = new fwx.g(false);
+   protected static final fwx.l av = new fwx.l(true);
+   protected static final fwx.l aw = new fwx.l(false);
+   protected static final fwx.c ax = new fwx.c(true);
+   protected static final fwx.c ay = new fwx.c(false);
+   protected static final fwx.d az = new fwx.d("always", 519);
+   protected static final fwx.d aA = new fwx.d("==", 514);
+   protected static final fwx.d aB = new fwx.d("<=", 515);
+   protected static final fwx.d aC = new fwx.d(">", 516);
+   protected static final fwx.q aD = new fwx.q(true, true);
+   protected static final fwx.q aE = new fwx.q(true, false);
+   protected static final fwx.q aF = new fwx.q(false, true);
+   protected static final fwx.f aG = new fwx.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final fwx.f aH = new fwx.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final fwx.f aI = new fwx.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final fwx.k aJ = new fwx.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final fwx.k aK = new fwx.k("outline_target", () -> eyk.P().f.s().a(false), () -> eyk.P().g().a(false));
+   protected static final fwx.k aL = new fwx.k("translucent_target", () -> {
+      if (eyk.N()) {
+         eyk.P().f.t().a(false);
+      }
+   }, () -> {
+      if (eyk.N()) {
+         eyk.P().g().a(false);
+      }
+   });
+   protected static final fwx.k aM = new fwx.k("particles_target", () -> {
+      if (eyk.N()) {
+         eyk.P().f.v().a(false);
+      }
+   }, () -> {
+      if (eyk.N()) {
+         eyk.P().g().a(false);
+      }
+   });
+   protected static final fwx.k aN = new fwx.k("weather_target", () -> {
+      if (eyk.N()) {
+         eyk.P().f.w().a(false);
+      }
+   }, () -> {
+      if (eyk.N()) {
+         eyk.P().g().a(false);
+      }
+   });
+   protected static final fwx.k aO = new fwx.k("clouds_target", () -> {
+      if (eyk.N()) {
+         eyk.P().f.x().a(false);
+      }
+   }, () -> {
+      if (eyk.N()) {
+         eyk.P().g().a(false);
+      }
+   });
+   protected static final fwx.k aP = new fwx.k("item_entity_target", () -> {
+      if (eyk.N()) {
+         eyk.P().f.u().a(false);
+      }
+   }, () -> {
+      if (eyk.N()) {
+         eyk.P().g().a(false);
+      }
+   });
+   protected static final fwx.h aQ = new fwx.h(OptionalDouble.of(1.0));
+   protected static final fwx.b aR = new fwx.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final fwx.b aS = new fwx.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
 
-   public fwq a(Vector3f $$0, Vector3f $$1, fws $$2, ghb $$3, ie $$4, gjj $$5, @Nullable fwt $$6, boolean $$7, aiy $$8) {
-      fwu $$9 = $$2.e;
-      if ($$5.c()) {
-         $$9 = a($$2.e, $$4, $$5.b(), $$8);
+   public fwx(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
+   }
+
+   public void a() {
+      this.aU.run();
+   }
+
+   public void b() {
+      this.aV.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.b() * eyk.P().m.aj().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends fwx {
+      private final boolean aT;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
       }
 
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = awi.i($$11, $$9.a[0], $$12);
-      $$9.a[2] = awi.i($$11, $$9.a[2], $$12);
-      $$9.a[1] = awi.i($$11, $$9.a[1], $$13);
-      $$9.a[3] = awi.i($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
-      ie $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         this.a($$14, $$15);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class b extends fwx {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class c extends fwx.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends fwx {
+      private final String aT;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aT = $$0;
       }
 
-      return new fwq($$14, $$2.c, $$15, $$3, $$7);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
    }
 
-   public static fwu a(fwu $$0, ie $$1, j $$2, aiy $$3) {
-      Matrix4f $$4 = hy.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
-      float $$5 = $$0.a($$0.c(0));
-      float $$6 = $$0.b($$0.c(0));
-      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
-      float $$8 = 16.0F * $$7.x();
-      float $$9 = 16.0F * $$7.y();
-      float $$10 = $$0.a($$0.c(2));
-      float $$11 = $$0.b($$0.c(2));
-      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
-      float $$13 = 16.0F * $$12.x();
-      float $$14 = 16.0F * $$12.y();
-      float $$15;
-      float $$16;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$15 = $$8;
-         $$16 = $$13;
-      } else {
-         $$15 = $$13;
-         $$16 = $$8;
+   protected static class e extends fwx {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
       }
 
-      float $$19;
-      float $$20;
-      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
-         $$19 = $$9;
-         $$20 = $$14;
-      } else {
-         $$19 = $$14;
-         $$20 = $$9;
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
       }
 
-      float $$23 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$24 = new Matrix3f($$4);
-      Vector3f $$25 = $$24.transform(new Vector3f(awi.b($$23), awi.a($$23), 0.0F));
-      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
-      return new fwu(new float[]{$$15, $$19, $$16, $$20}, $$26);
+      protected Optional<ajc> c() {
+         return Optional.empty();
+      }
    }
 
-   private int[] a(fwu $$0, ghb $$1, ie $$2, float[] $$3, j $$4, @Nullable fwt $$5, boolean $$6) {
-      int[] $$7 = new int[32];
+   protected static class f extends fwx {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
+   protected static class g extends fwx.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               eyk.P().j.n().c();
+            }
+         }, () -> {
+            if ($$0) {
+               eyk.P().j.n().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends fwx {
+      private final OptionalDouble aT;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)eyk.P().aN().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
       }
 
-      return $$7;
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
    }
 
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[ie.values().length];
-      $$2[fvk.a.f] = $$0.x() / 16.0F;
-      $$2[fvk.a.e] = $$0.y() / 16.0F;
-      $$2[fvk.a.d] = $$0.z() / 16.0F;
-      $$2[fvk.a.c] = $$1.x() / 16.0F;
-      $$2[fvk.a.b] = $$1.y() / 16.0F;
-      $$2[fvk.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
+   protected static class i extends fwx.e {
+      private final Optional<ajc> aT;
 
-   private void a(int[] $$0, int $$1, ie $$2, fwu $$3, float[] $$4, ghb $$5, j $$6, @Nullable fwt $$7, boolean $$8) {
-      fvk.b $$9 = fvk.a($$2).a($$1);
-      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
-      this.a($$10, $$7);
-      this.a($$10, $$6);
-      this.a($$0, $$1, $$10, $$5, $$3);
-   }
+      i(ImmutableList<Triple<ajc, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
 
-   private void a(int[] $$0, int $$1, Vector3f $$2, ghb $$3, fwu $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
+            while (var2.hasNext()) {
+               Triple<ajc, Boolean, Boolean> $$2 = (Triple<ajc, Boolean, Boolean>)var2.next();
+               gia $$3 = eyk.P().Z();
+               $$3.b((ajc)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (ajc)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
 
-   private void a(Vector3f $$0, @Nullable fwt $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
+      @Override
+      protected Optional<ajc> c() {
+         return this.aT;
+      }
+
+      public static fwx.i.a d() {
+         return new fwx.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<ajc, Boolean, Boolean>> a = new Builder();
+
+         public fwx.i.a a(ajc $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
          }
 
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
+         public fwx.i a() {
+            return new fwx.i(this.a.build());
+         }
+      }
+   }
+
+   protected static final class j extends fwx.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends fwx {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends fwx.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               eyk.P().j.o().a();
+            }
+         }, () -> {
+            if ($$0) {
+               eyk.P().j.o().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends fwx {
+      private final Optional<Supplier<fxe>> aT;
+
+      public m(Supplier<fxe> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class n extends fwx.e {
+      private final Optional<ajc> aT;
+      private final boolean aU;
+      private final boolean aV;
+
+      public n(ajc $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gia $$3 = eyk.P().Z();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
+      }
+
+      @Override
+      protected Optional<ajc> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends fwx {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends fwx {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends fwx {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
             }
 
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
-      }
-   }
-
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   public static ie a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return ie.b;
-      } else {
-         ie $$7 = null;
-         float $$8 = 0.0F;
-
-         for (ie $$9 : ie.values()) {
-            jd $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
             }
-         }
-
-         return $$7 == null ? ie.b : $$7;
-      }
-   }
-
-   private void a(int[] $$0, ie $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[ie.values().length];
-      $$3[fvk.a.f] = 999.0F;
-      $$3[fvk.a.e] = 999.0F;
-      $$3[fvk.a.d] = 999.0F;
-      $$3[fvk.a.c] = -999.0F;
-      $$3[fvk.a.b] = -999.0F;
-      $$3[fvk.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[fvk.a.f]) {
-            $$3[fvk.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[fvk.a.e]) {
-            $$3[fvk.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[fvk.a.d]) {
-            $$3[fvk.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[fvk.a.c]) {
-            $$3[fvk.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[fvk.a.b]) {
-            $$3[fvk.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[fvk.a.a]) {
-            $$3[fvk.a.a] = $$8;
-         }
-      }
-
-      fvk $$9 = fvk.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         fvk.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (awi.a($$13, $$18) && awi.a($$14, $$19) && awi.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
             }
-         }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
       }
    }
 }

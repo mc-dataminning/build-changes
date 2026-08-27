@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqa
-@epz
-interface eqp {
+public interface eqp<T> extends eqo<T> {
 }

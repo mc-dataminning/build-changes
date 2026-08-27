@@ -1,63 +1,110 @@
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class gnc<E extends fak.a<E>> extends fak<E> {
-   protected gnc(int $$0, int $$1, int $$2, int $$3) {
-      super(exo.P(), $$0, $$1, $$2, $$3);
+public class gnc {
+   final Map<gnb<?>, Object> a;
+
+   gnc(Map<gnb<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.n() != 0) {
-         this.a(this.d($$0));
+   public static gnc.a a() {
+      return new gnc.a();
+   }
+
+   public static Codec<gnc> a(final List<gnb<?>> $$0) {
+      return (new MapCodec<gnc>() {
+         public <T> RecordBuilder<T> a(gnc $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gnb<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(gnc $$0x, RecordBuilder<T> $$1, gnb<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<gnc> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<gnc.a> $$2 = DataResult.success(new gnc.a());
+
+            for (gnb<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(gnc.a::a);
+         }
+
+         private <T, V> DataResult<gnc.a> a(DataResult<gnc.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gnb<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gnb::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(gnb<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<gnb<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gnb<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   @Override
-   public void a(int $$0) {
-      this.p($$0);
-   }
+      public <T> gnc.a a(gnb<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-   @Override
-   public int a() {
-      return 0;
-   }
+      public <T> gnc.a b(gnb<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
 
-   @Override
-   public int c() {
-      return this.q() + this.b();
-   }
+         return this;
+      }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
+      public gnc.a a(gnc $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int n() {
-      return super.n();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int q() {
-      return super.q();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void H() {
-      this.m();
+      public gnc a() {
+         return new gnc(this.a);
+      }
    }
 }

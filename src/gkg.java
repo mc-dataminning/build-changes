@@ -1,34 +1,57 @@
-public class gkg extends gjx {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cen r;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public gkg(cen $$0) {
-      super(atl.le, atm.f, gko.t());
-      this.r = $$0;
-      this.k = gko.a.a;
-      this.i = true;
-      this.j = 0;
+public class gkg extends ajc {
+   @VisibleForTesting
+   static final char f = '#';
+   private final String g;
+
+   private gkg(String $$0, String $$1, String $$2, @Nullable ajc.a $$3) {
+      super($$0, $$1, $$3);
+      this.g = $$2;
+   }
+
+   public gkg(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.g = j($$2);
+   }
+
+   public gkg(ajc $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gkg c(String $$0, String $$1) {
+      return new gkg("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.g;
    }
 
    @Override
-   public boolean s() {
-      return !this.r.aU();
-   }
-
-   @Override
-   public void q() {
-      if (!this.r.dH() && this.r.q() == null) {
-         this.f = (double)((float)this.r.dr());
-         this.g = (double)((float)this.r.dt());
-         this.h = (double)((float)this.r.dx());
-         float $$0 = this.r.G(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gkg && super.equals($$0)) {
+         gkg $$1 = (gkg)$$0;
+         return this.g.equals($$1.g);
       } else {
-         this.n();
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.g.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.g;
    }
 }

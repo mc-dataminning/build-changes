@@ -1,68 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dbb extends dbo {
-   public static final MapCodec<dbb> a = b(dbb::new);
-   protected static final eos b = cys.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public abstract class dbb extends czf implements dgf {
+   public static final dmv a = des.b;
+   public static final dmv b = des.c;
+   public static final dmv c = des.d;
+   public static final dmv d = des.e;
+   public static final dmv e = dmu.C;
+   protected static final Map<ih, dmv> f = des.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final epo[] g;
+   protected final epo[] h;
+   private final Object2IntMap<dme> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dbb> a() {
-      return a;
-   }
+   protected dbb(float $$0, float $$1, float $$2, float $$3, float $$4, dmd.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
 
-   public dbb(dli.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return b;
-   }
-
-   @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      this.d($$0, $$1, $$2);
-      return blw.a($$1.B);
-   }
-
-   @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, chl $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(dlj $$0, cvr $$1, hz $$2) {
-      dna $$3 = $$1.D_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         hz $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = awi.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = awi.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = awi.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(jz.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
-               }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
-            }
-
-            return;
-         }
+      while (var7.hasNext()) {
+         dme $$6 = (dme)var7.next();
+         this.g($$6);
       }
    }
 
    @Override
-   protected int b() {
-      return 5;
+   protected abstract MapCodec<? extends dbb> a();
+
+   protected epo[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      epo $$9 = czf.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      epo $$10 = czf.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      epo $$11 = czf.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      epo $$12 = czf.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      epo $$13 = czf.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      epo $$14 = epl.a($$10, $$13);
+      epo $$15 = epl.a($$11, $$12);
+      epo[] $$16 = new epo[]{
+         epl.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         epl.a($$11, $$10),
+         epl.a($$12, $$10),
+         epl.a($$15, $$10),
+         $$13,
+         epl.a($$11, $$13),
+         epl.a($$12, $$13),
+         epl.a($$15, $$13),
+         $$14,
+         epl.a($$11, $$14),
+         epl.a($$12, $$14),
+         epl.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = epl.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
    }
 
    @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(ih $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dme $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(ih.c);
+         }
+
+         if ($$0x.c(b)) {
+            $$1 |= a(ih.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(ih.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(ih.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(e) ? ehs.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
       return false;
+   }
+
+   @Override
+   protected dme a(dme $$0, dfr $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

@@ -1,75 +1,23 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Map;
 
-public class azy extends DataFix {
-   private static final Set<String> a = Sets.newHashSet(
-      new String[]{
-         "ArmorStand",
-         "Bat",
-         "Blaze",
-         "CaveSpider",
-         "Chicken",
-         "Cow",
-         "Creeper",
-         "EnderDragon",
-         "Enderman",
-         "Endermite",
-         "EntityHorse",
-         "Ghast",
-         "Giant",
-         "Guardian",
-         "LavaSlime",
-         "MushroomCow",
-         "Ozelot",
-         "Pig",
-         "PigZombie",
-         "Rabbit",
-         "Sheep",
-         "Shulker",
-         "Silverfish",
-         "Skeleton",
-         "Slime",
-         "SnowMan",
-         "Spider",
-         "Squid",
-         "Villager",
-         "VillagerGolem",
-         "Witch",
-         "WitherBoss",
-         "Wolf",
-         "Zombie"
-      }
-   );
+public class azy extends bee {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
 
    public azy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
-      float $$3;
-      if ($$1.isPresent()) {
-         $$3 = $$1.get().floatValue();
-         $$0 = $$0.remove("HealF");
-      } else {
-         if (!$$2.isPresent()) {
-            return $$0;
-         }
-
-         $$3 = $$2.get().floatValue();
-      }
-
-      return $$0.set("Health", $$0.createFloat($$3));
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bdn.y), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

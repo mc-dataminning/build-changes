@@ -1,45 +1,36 @@
-public class afx implements xx<aes> {
-   public static final xo<uq, afx> a = xx.a(afx::a, afx::new);
-   private final clt b;
+public class afx implements xz<aev> {
+   public static final xq<us, afx> a = xz.a(afx::a, afx::new);
+   private static final int b = 2;
    private final boolean c;
-   private final boolean d;
 
-   public afx(clt $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afx(chx $$0) {
+      this.c = $$0.b;
    }
 
-   private afx(uq $$0) {
-      this.b = $$0.b(clt.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   private afx(us $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(us $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public xz<afx> a() {
-      return aeq.bJ;
+   public yb<afx> a() {
+      return aet.bH;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public clt b() {
-      return this.b;
-   }
-
-   public boolean e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

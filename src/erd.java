@@ -1,32 +1,61 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
 public class erd {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   @Nullable
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
 
-   public static void a(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
+   public erd(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static void b(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = erc.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (erc.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (erc.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
    }
 
-   public static void a() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (erc.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
    }
 
-   public static void b() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void c() {
-      RenderSystem.setShaderLights(e, f);
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

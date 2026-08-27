@@ -1,69 +1,73 @@
-public class clx extends ckf {
-   private static final int k = 27;
-   private final blp l;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public clx(int $$0, chk $$1) {
-      this($$0, $$1, new bmf(27));
-   }
+public class clx {
+   private final List<clx.b> a;
+   private final clx.b b;
 
-   public clx(int $$0, chk $$1, blp $$2) {
-      super(clm.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cly($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cma($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cma($$1, $$9, 8 + $$9 * 18, 142));
+   clx(List<clx.b> $$0, clx.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(clx.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   @Override
-   public boolean a(chl $$0) {
-      return this.l.a($$0);
+   public static clx.a a() {
+      return new clx.a();
    }
 
-   @Override
-   public cpd a(chl $$0, int $$1) {
-      cpd $$2 = cpd.h;
-      cma $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cpd $$4 = $$3.g();
-         $$2 = $$4.q();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cpd.h;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cpd.h;
-         }
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
 
-         if ($$4.b()) {
-            $$3.e(cpd.h);
-         } else {
-            $$3.b();
-         }
+   public clx.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public clx.b b() {
+      return this.b;
+   }
+
+   public List<clx.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(clx.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<clx.b> a = new ArrayList<>();
+      private clx.b b = clx.b.e;
+
+      public clx.a a(int $$0, int $$1, int $$2, Predicate<cpq> $$3) {
+         this.a.add(new clx.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      return $$2;
+      public clx.a a(int $$0, int $$1, int $$2) {
+         this.b = new clx.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public clx a() {
+         return new clx(this.a, this.b);
+      }
    }
 
-   @Override
-   public void b(chl $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public static record b(int a, int b, int c, Predicate<cpq> d) {
+      static final clx.b e = new clx.b(0, 0, 0, $$0 -> true);
    }
 }

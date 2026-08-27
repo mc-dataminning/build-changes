@@ -1,36 +1,51 @@
-public enum dmn implements axc {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String k;
+public class dmn implements Predicate<dme> {
+   public static final Predicate<dme> a = $$0 -> true;
+   private final dmf<czf, dme> b;
+   private final Map<dnh<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   private dmn(String $$0) {
-      this.k = $$0;
+   private dmn(dmf<czf, dme> $$0) {
+      this.b = $$0;
    }
 
-   public String a() {
-      return this.k;
+   public static dmn a(czf $$0) {
+      return new dmn($$0.n());
    }
 
-   @Override
-   public String toString() {
-      return this.k;
+   public boolean a(@Nullable dme $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dnh<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+   protected <T extends Comparable<T>> boolean a(dme $$0, dnh<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   public <V extends Comparable<V>> dmn a(dnh<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

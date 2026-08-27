@@ -1,88 +1,65 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.util.UndashedUuid;
 import io.netty.buffer.ByteBuf;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.UUID;
 
-public final class jc {
-   public static final Codec<UUID> a = Codec.INT_STREAM.comapFlatMap($$0 -> ac.a($$0, 4).map(jc::a), $$0 -> Arrays.stream(a($$0)));
-   public static final Codec<Set<UUID>> b = Codec.list(a).xmap(Sets::newHashSet, Lists::newArrayList);
-   public static final Codec<UUID> c = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(UUID.fromString($$0), Lifecycle.stable());
-      } catch (IllegalArgumentException var2) {
-         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
-      }
-   }, UUID::toString);
-   public static Codec<UUID> d = Codec.either(a, Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(UndashedUuid.fromStringLenient($$0), Lifecycle.stable());
-      } catch (IllegalArgumentException var2) {
-         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
-      }
-   }, UndashedUuid::toString)).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::right);
-   public static Codec<UUID> e = Codec.either(a, c).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::left);
-   public static xo<ByteBuf, UUID> f = new xo<ByteBuf, UUID>() {
-      public UUID a(ByteBuf $$0) {
-         return uq.d($$0);
+public class jc {
+   public static final xq<ByteBuf, jc> a = new xq<ByteBuf, jc>() {
+      public jc a(ByteBuf $$0) {
+         return new jc($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
 
-      public void a(ByteBuf $$0, UUID $$1) {
-         uq.a($$0, $$1);
+      public void a(ByteBuf $$0, jc $$1) {
+         $$0.writeFloat($$1.b);
+         $$0.writeFloat($$1.c);
+         $$0.writeFloat($$1.d);
       }
    };
-   public static final int g = 16;
-   private static final String h = "OfflinePlayer:";
+   protected final float b;
+   protected final float c;
+   protected final float d;
 
-   private jc() {
+   public jc(float $$0, float $$1, float $$2) {
+      this.b = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
+      this.c = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
+      this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public static UUID a(int[] $$0) {
-      return new UUID((long)$$0[0] << 32 | (long)$$0[1] & 4294967295L, (long)$$0[2] << 32 | (long)$$0[3] & 4294967295L);
+   public jc(te $$0) {
+      this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public static int[] a(UUID $$0) {
-      long $$1 = $$0.getMostSignificantBits();
-      long $$2 = $$0.getLeastSignificantBits();
-      return a($$1, $$2);
+   public te a() {
+      te $$0 = new te();
+      $$0.add(tb.a(this.b));
+      $$0.add(tb.a(this.c));
+      $$0.add(tb.a(this.d));
+      return $$0;
    }
 
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof jc $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
    }
 
-   public static byte[] b(UUID $$0) {
-      byte[] $$1 = new byte[16];
-      ByteBuffer.wrap($$1).order(ByteOrder.BIG_ENDIAN).putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits());
-      return $$1;
+   public float b() {
+      return this.b;
    }
 
-   public static UUID a(Dynamic<?> $$0) {
-      int[] $$1 = $$0.asIntStream().toArray();
-      if ($$1.length != 4) {
-         throw new IllegalArgumentException("Could not read UUID. Expected int-array of length 4, got " + $$1.length + ".");
-      } else {
-         return a($$1);
-      }
+   public float c() {
+      return this.c;
    }
 
-   public static UUID a(String $$0) {
-      return UUID.nameUUIDFromBytes(("OfflinePlayer:" + $$0).getBytes(StandardCharsets.UTF_8));
+   public float d() {
+      return this.d;
    }
 
-   public static GameProfile b(String $$0) {
-      UUID $$1 = a($$0);
-      return new GameProfile($$1, $$0);
+   public float e() {
+      return awm.g(this.b);
+   }
+
+   public float f() {
+      return awm.g(this.c);
+   }
+
+   public float g() {
+      return awm.g(this.d);
    }
 }

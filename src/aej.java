@@ -1,59 +1,78 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class aej implements xz<aai> {
+   public static final xq<us, aej> a = xz.a(aej::a, aej::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-public class aej implements xx<aag> {
-   public static final xo<vb, aej> a = xx.a(aej::a, aej::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<aiy> d;
-   private final Map<aiy, ah> e;
-
-   public aej(boolean $$0, Collection<af> $$1, Set<aiy> $$2, Map<aiy, ah> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+   public aej(bof $$0) {
+      this.b = $$0.aj();
+      eov $$1 = $$0.di();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dz() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dB() * 256.0F / 360.0F));
+      this.h = $$0.aC();
    }
 
-   private aej(vb $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, uq::s);
-      this.e = $$0.a(uq::s, ah::b);
+   private aej(us $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(vb $$0) {
-      $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, uq::a);
-      $$0.a(this.e, uq::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(us $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public xz<aej> a() {
-      return aeq.aZ;
+   public yb<aej> a() {
+      return aet.aZ;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public Set<aiy> e() {
+   public double f() {
       return this.d;
    }
 
-   public Map<aiy, ah> f() {
+   public double g() {
       return this.e;
    }
 
-   public boolean g() {
-      return this.b;
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

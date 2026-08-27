@@ -1,46 +1,52 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public abstract class asf extends asg<Map<aiy, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public interface asf extends asi {
+   Set<String> a();
 
-   public asf(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   List<asd> a(ajc var1);
 
-   protected Map<aiy, JsonElement> a(asb $$0, bin $$1) {
-      Map<aiy, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
-   }
+   Map<ajc, asd> b(String var1, Predicate<ajc> var2);
 
-   public static void a(asb $$0, String $$1, Gson $$2, Map<aiy, JsonElement> $$3) {
-      air $$4 = air.a($$1);
+   Map<ajc, List<asd>> c(String var1, Predicate<ajc> var2);
 
-      for (Entry<aiy, arz> $$5 : $$4.a($$0).entrySet()) {
-         aiy $$6 = $$5.getKey();
-         aiy $$7 = $$4.b($$6);
+   Stream<aqt> b();
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = avy.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
+   public static enum a implements asf {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<asd> getResource(ajc $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<asd> a(ajc $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ajc, asd> b(String $$0, Predicate<ajc> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ajc, List<asd>> c(String $$0, Predicate<ajc> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aqt> b() {
+         return Stream.of();
       }
    }
 }

@@ -1,55 +1,39 @@
-public class fun extends fuh {
-   private float a;
+public class fun extends fve {
+   private final fuz a;
 
-   fun(fqe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
+   fun(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
       this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.b($$7);
    }
 
    @Override
-   public ftl b() {
-      return ftl.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fui b() {
+      return fui.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * awi.b(this.a));
-         this.l = this.l + (double)(0.6F * awi.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(hz.a(this.g, this.h, this.i)).a(auf.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fun $$8 = new fun($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+   public static record a(fuz a) implements fuh<kc> {
+      public fue a(kc $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fun $$8 = new fun($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

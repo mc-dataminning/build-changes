@@ -1,52 +1,55 @@
-public abstract class chx extends chs implements cia {
-   private static final aie<cpd> e = aih.a(chx.class, aig.h);
+public class chx {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
 
-   public chx(bnw<? extends chx> $$0, cvr $$1) {
-      super($$0, $$1);
+   public void a(sy $$0) {
+      sy $$1 = new sy();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public chx(bnw<? extends chx> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cvr $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public void b(sy $$0) {
+      if ($$0.b("abilities", 10)) {
+         sy $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
 
-   public chx(bnw<? extends chx> $$0, boi $$1, double $$2, double $$3, double $$4, cvr $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(cpd $$0) {
-      if (!$$0.a(cpg.tV) || $$0.v()) {
-         this.an().b(e, $$0.c(1));
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
       }
    }
 
-   protected cpd z() {
-      return this.an().b(e);
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   public cpd q() {
-      cpd $$0 = this.z();
-      return $$0.b() ? new cpd(cpg.tV) : $$0;
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   protected void c_() {
-      this.an().a(e, cpd.h);
+   public float b() {
+      return this.g;
    }
 
-   @Override
-   public void b(sw $$0) {
-      super.b($$0);
-      cpd $$1 = this.z();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new sw()));
-      }
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      cpd $$1 = cpd.a($$0.p("Item"));
-      this.a($$1);
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

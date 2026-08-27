@@ -1,76 +1,49 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class dzh {
-   public static final Codec<dzh> c = kf.X.q().dispatch(dzh::a, dzi::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public record dzh(dyz b, List<dzh.a> c) {
+   public static final Codec<dzh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyz.a.fieldOf("fallback").forGetter(dzh::a), dzh.a.a.listOf().fieldOf("rules").forGetter(dzh::b)).apply($$0, dzh::new)
+   );
 
-   protected static <P extends dzh> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+   public static dzh a(dyz $$0) {
+      return new dzh($$0, List.of());
+   }
+
+   public static dzh a(czf $$0) {
+      return a(dyz.a($$0));
+   }
+
+   public dme a(cwz $$0, awt $$1, ib $$2) {
+      for (dzh.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public dyz a() {
+      return this.b;
+   }
+
+   public List<dzh.a> b() {
+      return this.c;
+   }
+
+   public static record a(dsx b, dyz c) {
+      public static final Codec<dzh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dsx.b.fieldOf("if_true").forGetter(dzh.a::a), dyz.a.fieldOf("then").forGetter(dzh.a::b)).apply($$0, dzh.a::new)
       );
-   }
 
-   public dzh(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   protected abstract dzi<?> a();
-
-   public abstract List<dxp.a> a(cvx var1, BiConsumer<hz, dlj> var2, awp var3, int var4, hz var5, dwz var6);
-
-   public int a(awp $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(cvx $$0, hz $$1) {
-      return $$0.a($$1, $$0x -> dtz.b($$0x) && !$$0x.a(cyu.i) && !$$0x.a(cyu.fl));
-   }
-
-   protected static void a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, hz $$3, dwz $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      public dsx a() {
+         return this.b;
       }
-   }
 
-   protected boolean b(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, hz $$3, dwz $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, hz $$3, dwz $$4, Function<dlj, dlj> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      public dyz b() {
+         return this.c;
       }
-   }
-
-   protected void a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, hz.a $$3, dwz $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(cvx $$0, hz $$1) {
-      return dvl.c($$0, $$1);
-   }
-
-   public boolean b(cvx $$0, hz $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(aua.t));
    }
 }

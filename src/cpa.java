@@ -1,37 +1,14 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum cpa implements axc {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<cpa> j = axc.a(cpa::values);
-   public static final IntFunction<cpa> k = ava.a(cpa::a, values(), ava.a.a);
-   private final byte l;
-   private final String m;
-
-   private cpa(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class cpa extends cnl {
+   public cpa(czf $$0, cpl.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   protected dme c(crx $$0) {
+      cia $$1 = $$0.o();
+      return $$1 != null && !$$1.gs() ? null : super.c($$0);
    }
 }

@@ -1,82 +1,103 @@
+import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
 
-public class fes extends ffl {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class fes extends fgh {
+   private static final vs a = vs.c("accessibility.onboarding.screen.narrator");
+   private static final int b = 4;
+   private static final int c = 16;
+   private final fws k = new fws(fgm.b);
+   private final fbb l;
+   private final eyo m;
+   private final boolean n;
+   private boolean o;
+   private float p;
+   private final Runnable q;
    @Nullable
-   private final vq k;
-   private final vq l;
-   private final Runnable m;
+   private fav r;
    @Nullable
-   private fah n;
-   private ezo o;
-   private int p;
+   private fai t;
 
-   public static fes a(vq $$0, vq $$1, Runnable $$2) {
-      return new fes($$0, null, $$1, $$2, 0);
-   }
-
-   public static fes a(vq $$0, vq $$1, vq $$2, Runnable $$3) {
-      return new fes($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fes(vq $$0, @Nullable vq $$1, vq $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
+   public fes(eyo $$0, Runnable $$1) {
+      super(vs.c("accessibility.onboarding.screen.title"));
+      this.m = $$0;
+      this.q = $$1;
+      this.l = new fbb(true);
+      this.n = eyk.P().aX().a();
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      if (this.k != null) {
-         this.n = fah.a(this.i, this.k, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.c(ezo.a(this.l, $$0x -> this.d()).a((this.g - 150) / 2, $$4, 150, 20).a());
+   public void aP_() {
+      int $$0 = this.o();
+      fdu $$1 = new fdu(this.g, this.h - $$0);
+      $$1.c().d().a(4);
+      fea $$2 = $$1.a(fea.d());
+      $$2.c().b().a(2);
+      this.r = new fav(this.g - 16, this.e, this.i);
+      $$2.a(this.r, $$0x -> $$0x.e(16));
+      this.t = this.m.ap().a(this.m, 0, 0, 150);
+      this.t.j = this.n;
+      $$2.a(this.t);
+      $$2.a(fao.b(150, $$0x -> this.a(new fet(this, this.f.m)), false));
+      $$2.a(fao.a(150, $$0x -> this.a(new ffq(this, this.f.m, this.f.af())), false));
+      $$1.a(fak.a(vr.j, $$0x -> this.d()).a(), $$1.b().f().a(8));
+      $$1.a();
+      fdu.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
+      $$1.a(this::c);
    }
 
    @Override
-   public void e() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.j = this.p == 0;
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = few.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
+   protected void aG_() {
+      if (this.n && this.t != null) {
+         this.b(this.t);
       } else {
-         this.n.a($$0, this.g / 2, 120);
+         super.aG_();
       }
    }
 
-   @Override
-   public boolean aO_() {
-      return this.n != null && this.o.j;
+   private int o() {
+      return 90;
    }
 
    @Override
    public void d() {
-      this.m.run();
+      this.a(this.q);
+   }
+
+   private void a(fgh $$0) {
+      this.a(() -> this.f.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.m.ae = false;
+      this.m.as();
+      Narrator.getNarrator().clear();
+      $$0.run();
    }
 
    @Override
-   public vq i() {
-      return vp.a(this.e, this.k != null ? this.k : vp.a);
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E();
+      this.l.a($$0, this.g, 1.0F);
+      if (this.r != null) {
+         this.r.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.k.a(0.0F, 1.0F);
+      $$0.a(0, 0, this.g, this.h, -1877995504);
+   }
+
+   private void E() {
+      if (!this.o && this.n) {
+         if (this.p < 40.0F) {
+            this.p++;
+         } else if (this.f.aB()) {
+            Narrator.getNarrator().say(a.getString(), true);
+            this.o = true;
+         }
+      }
    }
 }

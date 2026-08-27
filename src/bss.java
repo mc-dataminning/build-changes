@@ -1,23 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bss {
-   public static bqb<boq> a(bxl<ii> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$5 -> $$5.group($$5.a(bxl.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  ii $$10 = $$5.b($$6);
-                  if ($$7.ad() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
+   public static bqq<box> a() {
+      return buc.a((Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$0 -> $$0.a((buf<box>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bpy<?> $$3 = $$1.dM();
+               cjj $$4 = $$0x.d($$1.dj());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cjn.h);
+                     $$3.a(cjn.h);
                   } else {
-                     $$5x.a(new bxo($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
+                     $$3.b(cjn.i);
+                     $$3.a(cjn.i);
                   }
-               }))
-      );
+               }
+
+               return true;
+            }
+         }))));
    }
 }

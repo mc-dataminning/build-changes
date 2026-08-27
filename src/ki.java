@@ -1,223 +1,110 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
 public class ki {
-   private static final Map<cys, kj> ap = Maps.newHashMap();
-   private static final String aq = "wooden";
-   private static final String ar = "has_planks";
-   public static final kj a = a(cyu.r)
-      .a(cyu.gz)
-      .h(cyu.kg)
-      .j(cyu.jY)
-      .m(cyu.dD)
-      .a(cyu.cH, cyu.cU)
-      .k(cyu.jx)
-      .l(cyu.hP)
-      .f(cyu.ko)
-      .o(cyu.eC)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj b = a(cyu.s)
-      .a(cyu.gA)
-      .h(cyu.kh)
-      .j(cyu.jZ)
-      .m(cyu.dE)
-      .a(cyu.cI, cyu.cV)
-      .k(cyu.jy)
-      .l(cyu.hQ)
-      .f(cyu.kp)
-      .o(cyu.eD)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj c = a(cyu.p)
-      .a(cyu.gx)
-      .h(cyu.ke)
-      .j(cyu.jW)
-      .m(cyu.dB)
-      .a(cyu.cG, cyu.cT)
-      .k(cyu.jv)
-      .l(cyu.fL)
-      .f(cyu.km)
-      .o(cyu.eA)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj d = a(cyu.oE)
-      .a(cyu.oS)
-      .h(cyu.oK)
-      .j(cyu.oO)
-      .m(cyu.oI)
-      .a(cyu.oW, cyu.oY)
-      .k(cyu.oG)
-      .l(cyu.oQ)
-      .f(cyu.oU)
-      .o(cyu.oM)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj e = a(cyu.q)
-      .a(cyu.gy)
-      .h(cyu.kf)
-      .j(cyu.jX)
-      .m(cyu.dC)
-      .a(cyu.cJ, cyu.cW)
-      .k(cyu.jw)
-      .l(cyu.fM)
-      .f(cyu.kn)
-      .o(cyu.eB)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj f = a(cyu.n)
-      .a(cyu.gv)
-      .h(cyu.dU)
-      .j(cyu.fh)
-      .m(cyu.dz)
-      .a(cyu.cE, cyu.cR)
-      .k(cyu.jt)
-      .l(cyu.cu)
-      .f(cyu.cN)
-      .o(cyu.ey)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj g = a(cyu.t)
-      .a(cyu.gB)
-      .h(cyu.ki)
-      .j(cyu.ka)
-      .m(cyu.dF)
-      .a(cyu.cK, cyu.cX)
-      .k(cyu.jz)
-      .l(cyu.hR)
-      .f(cyu.kq)
-      .o(cyu.eE)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj h = a(cyu.o)
-      .a(cyu.gw)
-      .h(cyu.kd)
-      .j(cyu.jV)
-      .m(cyu.dA)
-      .a(cyu.cF, cyu.cS)
-      .k(cyu.ju)
-      .l(cyu.fK)
-      .f(cyu.kl)
-      .o(cyu.ez)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj i = a(cyu.oF)
-      .a(cyu.oT)
-      .h(cyu.oL)
-      .j(cyu.oP)
-      .m(cyu.oJ)
-      .a(cyu.oX, cyu.oZ)
-      .k(cyu.oH)
-      .l(cyu.oR)
-      .f(cyu.oV)
-      .o(cyu.oN)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj j = a(cyu.u)
-      .a(cyu.gC)
-      .k(cyu.jA)
-      .l(cyu.hS)
-      .h(cyu.kj)
-      .j(cyu.kb)
-      .m(cyu.dG)
-      .a(cyu.cL, cyu.cY)
-      .f(cyu.kr)
-      .o(cyu.eF)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj k = a(cyu.v)
-      .a(cyu.gD)
-      .k(cyu.jB)
-      .l(cyu.hT)
-      .g(cyu.kk)
-      .i(cyu.kc)
-      .m(cyu.dH)
-      .a(cyu.cM, cyu.cZ)
-      .f(cyu.ks)
-      .o(cyu.eG)
-      .c(cyu.w)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kj l = a(cyu.w).k(cyu.jC).l(cyu.hU).a();
-   public static final kj m = a(cyu.eM).p(cyu.nL).l(cyu.fk).k(cyu.jL).a();
-   public static final kj n = a(cyu.g).p(cyu.nN).l(cyu.no).k(cyu.nB).n(cyu.h).a();
-   public static final kj o = a(cyu.h).l(cyu.nq).k(cyu.nD).a();
-   public static final kj p = a(cyu.pr).p(cyu.pt).l(cyu.ps).k(cyu.pu).n(cyu.pv).a();
-   public static final kj q = a(cyu.pv).p(cyu.pH).m(cyu.pF).a(cyu.pG).l(cyu.pD).k(cyu.pE).n(cyu.pw).b(cyu.py).a();
-   public static final kj r = a(cyu.pw).p(cyu.pB).l(cyu.pA).k(cyu.pz).d(cyu.px).a();
-   public static final kj s = a(cyu.cj).p(cyu.nF).l(cyu.fi).k(cyu.jJ).a();
-   public static final kj t = a(cyu.kz).p(cyu.nQ).l(cyu.nj).k(cyu.nx).a();
-   public static final kj u = a(cyu.eI).p(cyu.nI).l(cyu.ng).k(cyu.nu).a();
-   public static final kj v = a(cyu.qW).e(cyu.rf).f(cyu.rM).o(cyu.rU).b().a();
-   public static final kj w = a(cyu.rf).k(cyu.rv).l(cyu.rr).b(cyu.rj).b().a();
-   public static final kj x = a(cyu.rw).e(cyu.rD).f(cyu.rQ).o(cyu.rY).a("waxed_cut_copper").b().a();
-   public static final kj y = a(cyu.rD).k(cyu.rL).l(cyu.rH).b(cyu.rn).a("waxed_cut_copper").b().a();
-   public static final kj z = a(cyu.qX).e(cyu.re).f(cyu.rN).o(cyu.rV).b().a();
-   public static final kj A = a(cyu.re).k(cyu.ru).l(cyu.rq).b(cyu.ri).b().a();
-   public static final kj B = a(cyu.ry).e(cyu.rC).f(cyu.rR).o(cyu.rZ).a("waxed_exposed_cut_copper").b().a();
-   public static final kj C = a(cyu.rC).k(cyu.rK).l(cyu.rG).b(cyu.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final kj D = a(cyu.qY).e(cyu.rd).f(cyu.rP).o(cyu.rX).b().a();
-   public static final kj E = a(cyu.rd).k(cyu.rt).l(cyu.rp).b(cyu.rh).b().a();
-   public static final kj F = a(cyu.rx).e(cyu.rB).f(cyu.rT).o(cyu.sb).a("waxed_weathered_cut_copper").b().a();
-   public static final kj G = a(cyu.rB).k(cyu.rJ).l(cyu.rF).b(cyu.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final kj H = a(cyu.qZ).e(cyu.rc).f(cyu.rO).o(cyu.rW).b().a();
-   public static final kj I = a(cyu.rc).k(cyu.rs).l(cyu.ro).b(cyu.rg).b().a();
-   public static final kj J = a(cyu.rz).e(cyu.rA).f(cyu.rS).o(cyu.sa).a("waxed_oxidized_cut_copper").b().a();
-   public static final kj K = a(cyu.rA).k(cyu.rI).l(cyu.rE).b(cyu.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final kj L = a(cyu.m).p(cyu.fP).l(cyu.cQ).k(cyu.jI).a();
-   public static final kj M = a(cyu.cn).p(cyu.fQ).l(cyu.ni).k(cyu.nw).a();
-   public static final kj N = a(cyu.e).p(cyu.nR).l(cyu.nr).k(cyu.nE).n(cyu.f).a();
-   public static final kj O = a(cyu.f).l(cyu.nh).k(cyu.nv).a();
-   public static final kj P = a(cyu.c).p(cyu.nJ).l(cyu.nn).k(cyu.nA).n(cyu.d).a();
-   public static final kj Q = a(cyu.d).l(cyu.ne).k(cyu.ns).a();
-   public static final kj R = a(cyu.qz).p(cyu.qC).l(cyu.qB).k(cyu.qA).b(cyu.qH).n(cyu.qD).a();
-   public static final kj S = a(cyu.qD).p(cyu.qG).l(cyu.qF).k(cyu.qE).n(cyu.qI).a();
-   public static final kj T = a(cyu.qI).p(cyu.qL).l(cyu.qK).k(cyu.qJ).b(cyu.qM).a();
-   public static final kj U = a(cyu.fn).h(cyu.fo).p(cyu.nM).l(cyu.fp).k(cyu.jM).b(cyu.pI).d(cyu.pJ).a();
-   public static final kj V = a(cyu.kL).k(cyu.nC).l(cyu.np).p(cyu.nO).a();
-   public static final kj W = a(cyu.hZ).p(cyu.nG).l(cyu.ic).k(cyu.if).a();
-   public static final kj X = a(cyu.kw).l(cyu.ky).k(cyu.jQ).c().a();
-   public static final kj Y = a(cyu.ia).l(cyu.id).k(cyu.ig).a();
-   public static final kj Z = a(cyu.ib).l(cyu.ie).k(cyu.ih).a();
-   public static final kj aa = a(cyu.hd).l(cyu.hg).k(cyu.jN).b(cyu.he).c().a();
-   public static final kj ab = a(cyu.jT).l(cyu.nm).k(cyu.nz).a();
-   public static final kj ac = a(cyu.aV).p(cyu.nP).l(cyu.fD).k(cyu.jF).b(cyu.aW).e(cyu.aX).c().a();
-   public static final kj ad = a(cyu.aX).k(cyu.jG).a();
-   public static final kj ae = a(cyu.jS).k(cyu.ny).l(cyu.nl).a();
-   public static final kj af = a(cyu.jp).p(cyu.nH).l(cyu.js).k(cyu.jO).b(cyu.jq).e(cyu.jr).c().a();
-   public static final kj ag = a(cyu.jr).k(cyu.jP).a();
-   public static final kj ah = a(cyu.jU).k(cyu.nt).l(cyu.nf).a();
-   public static final kj ai = a(cyu.b).k(cyu.jD).m(cyu.dx).a(cyu.dM).l(cyu.nk).a();
-   public static final kj aj = a(cyu.eH).p(cyu.nK).l(cyu.fj).k(cyu.jK).b(cyu.eK).d(cyu.eJ).c().a();
-   public static final kj ak = a(cyu.sJ).a();
-   public static final kj al = a(cyu.sK).k(cyu.sM).l(cyu.sL).p(cyu.sN).b(cyu.ta).n(cyu.sO).a();
-   public static final kj am = a(cyu.sO).k(cyu.sQ).l(cyu.sP).p(cyu.sR).a();
-   public static final kj an = a(cyu.sW).k(cyu.sY).l(cyu.sX).p(cyu.sZ).d(cyu.tb).a();
-   public static final kj ao = a(cyu.sS).k(cyu.sU).l(cyu.sT).p(cyu.sV).d(cyu.tc).a();
+   public static final ajc a = new ajc("root");
+   public static final ajb<ix<cjn>> b = a("activity");
+   public static final ajb<ix<bpz>> c = a("attribute");
+   public static final ajb<ix<djc>> d = a("banner_pattern");
+   public static final ajb<ix<Codec<? extends cxh>>> e = a("worldgen/biome_source");
+   public static final ajb<ix<czf>> f = a("block");
+   public static final ajb<ix<MapCodec<? extends czf>>> g = a("block_type");
+   public static final ajb<ix<djn<?>>> h = a("block_entity_type");
+   public static final ajb<ix<dsy<?>>> i = a("block_predicate_type");
+   public static final ajb<ix<dza<?>>> j = a("worldgen/block_state_provider_type");
+   public static final ajb<ix<dtv<?>>> k = a("worldgen/carver");
+   public static final ajb<ix<caq>> l = a("cat_variant");
+   public static final ajb<ix<Codec<? extends dob>>> m = a("worldgen/chunk_generator");
+   public static final ajb<ix<dof>> n = a("chunk_status");
+   public static final ajb<ix<hn<?, ?>>> o = a("command_argument_type");
+   public static final ajb<ix<cny>> p = a("creative_mode_tab");
+   public static final ajb<ix<ajc>> q = a("custom_stat");
+   public static final ajb<ix<bng>> r = a("damage_type");
+   public static final ajb<ix<Codec<? extends drj>>> s = a("worldgen/density_function_type");
+   public static final ajb<ix<ctz>> t = a("enchantment");
+   public static final ajb<ix<bol<?>>> u = a("entity_type");
+   public static final ajb<ix<duu<?>>> v = a("worldgen/feature");
+   public static final ajb<ix<dya<?>>> w = a("worldgen/feature_size_type");
+   public static final ajb<ix<blp<?>>> x = a("float_provider_type");
+   public static final ajb<ix<ehq>> y = a("fluid");
+   public static final ajb<ix<dyl<?>>> z = a("worldgen/foliage_placer_type");
+   public static final ajb<ix<cax>> A = a("frog_variant");
+   public static final ajb<ix<dqr>> B = a("game_event");
+   public static final ajb<ix<eao<?>>> C = a("height_provider_type");
+   public static final ajb<ix<cpi>> D = a("instrument");
+   public static final ajb<ix<blr<?>>> E = a("int_provider_type");
+   public static final ajb<ix<cpl>> F = a("item");
+   public static final ajb<ix<emy>> G = a("loot_condition_type");
+   public static final ajb<ix<elm>> H = a("loot_function_type");
+   public static final ajb<ix<enk>> I = a("loot_nbt_provider_type");
+   public static final ajb<ix<enr>> J = a("loot_number_provider_type");
+   public static final ajb<ix<eks>> K = a("loot_pool_entry_type");
+   public static final ajb<ix<enz>> L = a("loot_score_provider_type");
+   public static final ajb<ix<Codec<? extends dsh.f>>> M = a("worldgen/material_condition");
+   public static final ajb<ix<Codec<? extends dsh.o>>> N = a("worldgen/material_rule");
+   public static final ajb<ix<bya<?>>> O = a("memory_module_type");
+   public static final ajb<ix<cmb<?>>> P = a("menu");
+   public static final ajb<ix<bnq>> Q = a("mob_effect");
+   public static final ajb<ix<ceh>> R = a("painting_variant");
+   public static final ajb<ix<ka<?>>> S = a("particle_type");
+   public static final ajb<ix<ebo<?>>> T = a("worldgen/placement_modifier_type");
+   public static final ajb<ix<cad>> U = a("point_of_interest_type");
+   public static final ajb<ix<dqw<?>>> V = a("position_source_type");
+   public static final ajb<ix<efu<?>>> W = a("pos_rule_test");
+   public static final ajb<ix<crm>> X = a("potion");
+   public static final ajb<ix<csw<?>>> Y = a("recipe_serializer");
+   public static final ajb<ix<csx<?>>> Z = a("recipe_type");
+   public static final ajb<ix<dyx<?>>> aa = a("worldgen/root_placer_type");
+   public static final ajb<ix<egb<?>>> ab = a("rule_test");
+   public static final ajb<ix<egp<?>>> ac = a("rule_block_entity_modifier");
+   public static final ajb<ix<cjp>> ad = a("schedule");
+   public static final ajb<ix<bzh<?>>> ae = a("sensor_type");
+   public static final ajb<ix<ato>> af = a("sound_event");
+   public static final ajb<ix<aty<?>>> ag = a("stat_type");
+   public static final ajb<ix<ecx>> ah = a("worldgen/structure_piece");
+   public static final ajb<ix<ede<?>>> ai = a("worldgen/structure_placement");
+   public static final ajb<ix<edo<?>>> aj = a("worldgen/structure_pool_element");
+   public static final ajb<ix<Codec<? extends edr>>> ak = a("worldgen/pool_alias_binding");
+   public static final ajb<ix<egf<?>>> al = a("worldgen/structure_processor");
+   public static final ajb<ix<ecp<?>>> am = a("worldgen/structure_type");
+   public static final ajb<ix<dzr<?>>> an = a("worldgen/tree_decorator_type");
+   public static final ajb<ix<ead<?>>> ao = a("worldgen/trunk_placer_type");
+   public static final ajb<ix<chq>> ap = a("villager_profession");
+   public static final ajb<ix<chs>> aq = a("villager_type");
+   public static final ajb<ix<String>> ar = a("decorated_pot_patterns");
+   public static final ajb<ix<xj<?>>> as = a("number_format_type");
+   public static final ajb<ix<cnd>> at = a("armor_material");
+   public static final ajb<ix<cxd>> au = a("worldgen/biome");
+   public static final ajb<ix<vo>> av = a("chat_type");
+   public static final ajb<ix<dtt<?>>> aw = a("worldgen/configured_carver");
+   public static final ajb<ix<duh<?, ?>>> ax = a("worldgen/configured_feature");
+   public static final ajb<ix<drj>> ay = a("worldgen/density_function");
+   public static final ajb<ix<dpq>> az = a("dimension_type");
+   public static final ajb<ix<eah>> aA = a("worldgen/flat_level_generator_preset");
+   public static final ajb<ix<drv>> aB = a("worldgen/noise_settings");
+   public static final ajb<ix<egu.a>> aC = a("worldgen/noise");
+   public static final ajb<ix<ebk>> aD = a("worldgen/placed_feature");
+   public static final ajb<ix<ecg>> aE = a("worldgen/structure");
+   public static final ajb<ix<ege>> aF = a("worldgen/processor_list");
+   public static final ajb<ix<ecm>> aG = a("worldgen/structure_set");
+   public static final ajb<ix<edp>> aH = a("worldgen/template_pool");
+   public static final ajb<ix<ap<?>>> aI = a("trigger_type");
+   public static final ajb<ix<crs>> aJ = a("trim_material");
+   public static final ajb<ix<cru>> aK = a("trim_pattern");
+   public static final ajb<ix<ebv>> aL = a("worldgen/world_preset");
+   public static final ajb<ix<cxr>> aM = a("worldgen/multi_noise_biome_source_parameter_list");
+   public static final ajb<ix<cwe>> aN = a("dimension");
+   public static final ajb<ix<dpr>> aO = a("dimension");
 
-   private static kj.a a(cys $$0) {
-      kj.a $$1 = new kj.a($$0);
-      kj $$2 = ap.put($$0, $$1.a());
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate family definition for " + kf.e.b($$0));
-      } else {
-         return $$1;
-      }
+   public static ajb<cwe> a(ajb<dpr> $$0) {
+      return ajb.a(aN, $$0.a());
    }
 
-   public static Stream<kj> a() {
-      return ap.values().stream();
+   public static ajb<dpr> b(ajb<cwe> $$0) {
+      return ajb.a(aO, $$0.a());
+   }
+
+   private static <T> ajb<ix<T>> a(String $$0) {
+      return ajb.a(new ajc($$0));
    }
 }

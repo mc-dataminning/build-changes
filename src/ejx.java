@@ -1,119 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P4;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public abstract class ejx extends ejv {
-   public static final int d = 1;
-   public static final int f = 0;
-   protected final int g;
-   protected final int h;
-   protected final List<ekp> i;
-   final BiFunction<cpd, ejc, cpd> a;
-   private final eju j = new ejx.c() {
-      @Override
-      public void a(Consumer<cpd> $$0, ejc $$1) {
-         ejx.this.a(ekp.a(ejx.this.a, $$0, $$1), $$1);
+public class ejx {
+   private static final Codec<ejx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avu.a(ent.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), avu.a(ent.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, ejx::new)
+   );
+   public static final Codec<ejx> a = Codec.either(Codec.INT, b).xmap($$0 -> (ejx)$$0.map(ejx::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final ens c;
+   @Nullable
+   private final ens d;
+   private final ejx.b e;
+   private final ejx.a f;
+
+   public Set<emg<?>> a() {
+      Builder<emg<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
-   };
 
-   protected ejx(int $$0, int $$1, List<emb> $$2, List<ekp> $$3) {
-      super($$2);
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$3;
-      this.a = ekr.a($$3);
-   }
-
-   protected static <T extends ejx> P4<Mu<T>, Integer, Integer, List<emb>, List<ekp>> b(Instance<T> $$0) {
-      return $$0.group(
-            avq.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), avq.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
-         )
-         .and(a($$0).t1())
-         .and(avq.a(ekr.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
-   }
-
-   @Override
-   public void a(ejl $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
       }
+
+      return $$0.build();
    }
 
-   protected abstract void a(Consumer<cpd> var1, ejc var2);
+   private ejx(Optional<ens> $$0, Optional<ens> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-   @Override
-   public boolean expand(ejc $$0, Consumer<eju> $$1) {
-      if (this.a($$0)) {
-         $$1.accept(this.j);
-         return true;
+   private ejx(@Nullable ens $$0, @Nullable ens $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         return false;
+         this.e = ($$2, $$3) -> awm.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static ejx.a<?> a(ejx.d $$0) {
-      return new ejx.b($$0);
+   public static ejx a(int $$0) {
+      enq $$1 = enq.a((float)$$0);
+      return new ejx(Optional.of($$1), Optional.of($$1));
    }
 
-   public abstract static class a<T extends ejx.a<T>> extends ejv.a<T> implements ekm<T> {
-      protected int a = 1;
-      protected int b = 0;
-      private final Builder<ekp> c = ImmutableList.builder();
-
-      public T a(ekp.a $$0) {
-         this.c.add($$0.b());
-         return this.aG_();
-      }
-
-      protected List<ekp> a() {
-         return this.c.build();
-      }
-
-      public T a(int $$0) {
-         this.a = $$0;
-         return this.aG_();
-      }
-
-      public T b(int $$0) {
-         this.b = $$0;
-         return this.aG_();
-      }
+   public static ejx a(int $$0, int $$1) {
+      return new ejx(Optional.of(enq.a((float)$$0)), Optional.of(enq.a((float)$$1)));
    }
 
-   static class b extends ejx.a<ejx.b> {
-      private final ejx.d c;
-
-      public b(ejx.d $$0) {
-         this.c = $$0;
-      }
-
-      protected ejx.b g() {
-         return this;
-      }
-
-      @Override
-      public ejv b() {
-         return this.c.build(this.a, this.b, this.f(), this.a());
-      }
+   public static ejx b(int $$0) {
+      return new ejx(Optional.of(enq.a((float)$$0)), Optional.empty());
    }
 
-   protected abstract class c implements eju {
-      @Override
-      public int a(float $$0) {
-         return Math.max(awi.d((float)ejx.this.g + (float)ejx.this.h * $$0), 0);
-      }
+   public static ejx c(int $$0) {
+      return new ejx(Optional.empty(), Optional.of(enq.a((float)$$0)));
+   }
+
+   public int a(ejy $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ejy $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof enq $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
    @FunctionalInterface
-   protected interface d {
-      ejx build(int var1, int var2, List<emb> var3, List<ekp> var4);
+   interface a {
+      boolean test(ejy var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ejy var1, int var2);
    }
 }

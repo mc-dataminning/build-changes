@@ -1,65 +1,8 @@
-public class qw {
-   public static final aix<eap> a = rb.a("monster_room");
-   public static final aix<eap> b = rb.a("monster_room_deep");
-   public static final aix<eap> c = rb.a("fossil_upper");
-   public static final aix<eap> d = rb.a("fossil_lower");
-   public static final aix<eap> e = rb.a("dripstone_cluster");
-   public static final aix<eap> f = rb.a("large_dripstone");
-   public static final aix<eap> g = rb.a("pointed_dripstone");
-   public static final aix<eap> h = rb.a("underwater_magma");
-   public static final aix<eap> i = rb.a("glow_lichen");
-   public static final aix<eap> j = rb.a("rooted_azalea_tree");
-   public static final aix<eap> k = rb.a("cave_vines");
-   public static final aix<eap> l = rb.a("lush_caves_vegetation");
-   public static final aix<eap> m = rb.a("lush_caves_clay");
-   public static final aix<eap> n = rb.a("lush_caves_ceiling_vegetation");
-   public static final aix<eap> o = rb.a("spore_blossom");
-   public static final aix<eap> p = rb.a("classic_vines_cave_feature");
-   public static final aix<eap> q = rb.a("amethyst_geode");
-   public static final aix<eap> r = rb.a("sculk_patch_deep_dark");
-   public static final aix<eap> s = rb.a("sculk_patch_ancient_city");
-   public static final aix<eap> t = rb.a("sculk_vein");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static void a(ph<eap> $$0) {
-      ik<dtm<?, ?>> $$1 = $$0.a(kg.aw);
-      ij<dtm<?, ?>> $$2 = $$1.b(qk.a);
-      ij<dtm<?, ?>> $$3 = $$1.b(qk.b);
-      ij<dtm<?, ?>> $$4 = $$1.b(qk.c);
-      ij<dtm<?, ?>> $$5 = $$1.b(qk.d);
-      ij<dtm<?, ?>> $$6 = $$1.b(qk.e);
-      ij<dtm<?, ?>> $$7 = $$1.b(qk.f);
-      ij<dtm<?, ?>> $$8 = $$1.b(qk.g);
-      ij<dtm<?, ?>> $$9 = $$1.b(qk.h);
-      ij<dtm<?, ?>> $$10 = $$1.b(qk.i);
-      ij<dtm<?, ?>> $$11 = $$1.b(qk.j);
-      ij<dtm<?, ?>> $$12 = $$1.b(qk.m);
-      ij<dtm<?, ?>> $$13 = $$1.b(qk.r);
-      ij<dtm<?, ?>> $$14 = $$1.b(qk.s);
-      ij<dtm<?, ?>> $$15 = $$1.b(qk.t);
-      ij<dtm<?, ?>> $$16 = $$1.b(qs.c);
-      ij<dtm<?, ?>> $$17 = $$1.b(qk.u);
-      ij<dtm<?, ?>> $$18 = $$1.b(qk.v);
-      ij<dtm<?, ?>> $$19 = $$1.b(qk.w);
-      ij<dtm<?, ?>> $$20 = $$1.b(qk.x);
-      rb.a($$0, a, $$2, eai.a(10), eam.a(), eak.a(drp.a(0), drp.b()), ead.a());
-      rb.a($$0, b, $$2, eai.a(4), eam.a(), eak.a(drp.b(6), drp.a(-1)), ead.a());
-      rb.a($$0, c, $$3, eav.a(64), eam.a(), eak.a(drp.a(0), drp.b()), ead.a());
-      rb.a($$0, d, $$4, eav.a(64), eam.a(), eak.a(drp.a(), drp.a(-8)), ead.a());
-      rb.a($$0, e, $$5, eai.a(blh.a(48, 96)), eam.a(), rb.i, ead.a());
-      rb.a($$0, f, $$6, eai.a(blh.a(10, 48)), eam.a(), rb.i, ead.a());
-      rb.a($$0, g, $$7, eai.a(blh.a(192, 256)), eam.a(), rb.i, eai.a(blh.a(1, 5)), eau.a(bkw.a(0.0F, 3.0F, -10, 10), bkw.a(0.0F, 0.6F, -2, 2)), ead.a());
-      rb.a($$0, h, $$8, eai.a(blh.a(44, 52)), eam.a(), rb.i, eax.a(dqv.a.c, Integer.MIN_VALUE, -2), ead.a());
-      rb.a($$0, i, $$9, eai.a(blh.a(104, 157)), rb.i, eam.a(), eax.a(dqv.a.c, Integer.MIN_VALUE, -13), ead.a());
-      rb.a($$0, j, $$10, eai.a(blh.a(1, 2)), eam.a(), rb.i, eaj.a(ie.b, dsc.c(), dsc.c, 12), eau.a(bky.a(-1)), ead.a());
-      rb.a($$0, k, $$11, eai.a(188), eam.a(), rb.i, eaj.a(ie.b, dsc.a(ie.a), dsc.c, 12), eau.a(bky.a(-1)), ead.a());
-      rb.a($$0, l, $$12, eai.a(125), eam.a(), rb.i, eaj.a(ie.a, dsc.c(), dsc.c, 12), eau.a(bky.a(1)), ead.a());
-      rb.a($$0, m, $$13, eai.a(62), eam.a(), rb.i, eaj.a(ie.a, dsc.c(), dsc.c, 12), eau.a(bky.a(1)), ead.a());
-      rb.a($$0, n, $$14, eai.a(125), eam.a(), rb.i, eaj.a(ie.b, dsc.c(), dsc.c, 12), eau.a(bky.a(-1)), ead.a());
-      rb.a($$0, o, $$15, eai.a(25), eam.a(), rb.i, eaj.a(ie.b, dsc.c(), dsc.c, 12), eau.a(bky.a(-1)), ead.a());
-      rb.a($$0, p, $$16, eai.a(256), eam.a(), rb.i, ead.a());
-      rb.a($$0, q, $$17, eav.a(24), eam.a(), eak.a(drp.b(6), drp.a(30)), ead.a());
-      rb.a($$0, r, $$18, eai.a(bky.a(256)), eam.a(), rb.i, ead.a());
-      rb.a($$0, s, $$19);
-      rb.a($$0, t, $$20, eai.a(blh.a(204, 250)), eam.a(), rb.i, ead.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface qw {
 }

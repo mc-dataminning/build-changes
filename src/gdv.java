@@ -1,18 +1,12 @@
-public class gdv extends gbt<cfg> {
-   private static final aiy a = new aiy("textures/entity/illager/vindicator.png");
+public class gdv extends gde<cbi, fov<cbi>> {
+   private static final ajc a = new ajc("textures/entity/sheep/sheep.png");
 
-   public gdv(gba.a $$0) {
-      super($$0, new fmw<>($$0.a(fpi.bM)), 0.5F);
-      this.a(new gfe<cfg, fmw<cfg>>(this, $$0.d()) {
-         public void a(esh $$0, fvt $$1, int $$2, cfg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fY()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gdv(gby.a $$0) {
+      super($$0, new fov<>($$0.a(fqe.bd)), 0.7F);
+      this.a(new ggl(this, $$0.f()));
    }
 
-   public aiy a(cfg $$0) {
+   public ajc a(cbi $$0) {
       return a;
    }
 }

@@ -1,45 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class eed extends ebl {
+public class eed extends ecg {
    public static final Codec<eed> d = a(eed::new);
 
-   public eed(ebl.c $$0) {
+   public eed(ecg.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<ebl.b> a(ebl.a $$0) {
-      return Optional.of(new ebl.b($$0.h().l(), (Consumer<ecd>)($$1 -> a($$1, $$0))));
+   public Optional<ecg.b> a(ecg.a $$0) {
+      dfr $$1 = dfr.a($$0.f());
+      ib $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ecg.b($$2, (Consumer<ecy>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private static void a(ecd $$0, ebl.a $$1) {
-      int $$2 = 0;
-
-      eec.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         eec.a();
-         $$3 = new eec.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<ebp> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            ebp $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
-
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+   private void a(ecy $$0, ib $$1, dfr $$2, ecg.a $$3) {
+      List<eck> $$4 = Lists.newArrayList();
+      eec.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public ebu<?> e() {
-      return ebu.n;
+   public ecp<?> e() {
+      return ecp.c;
    }
 }

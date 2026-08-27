@@ -1,111 +1,73 @@
-import java.util.function.Consumer;
+import org.joml.Matrix4f;
 
-public class fde implements fdb {
-   private final fcz a;
-   private final fde.a b;
-   private int c = 0;
+public class fde {
+   private final fdc a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   private fde(fde.a $$0) {
-      this(0, 0, $$0);
+   public fde(fdc $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   public fde(int $$0, int $$1, fde.a $$2) {
-      this.a = new fcz($$0, $$1);
-      this.b = $$2;
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eth $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   public fde a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   public void a(fde.a $$0, Matrix4f $$1, eth $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   public fdd b() {
-      return this.a.b();
+   public fwy a(ezv.a $$0) {
+      return this.a.a($$0);
    }
 
-   public fdd c() {
-      return this.a.c();
-   }
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
 
-   public <T extends fdc> T a(T $$0, fdd $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fdc> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fdc> T a(T $$0, Consumer<fdd> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fdc> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public int u() {
-      return this.a.u();
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a.m($$0);
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.a.n($$0);
-   }
-
-   @Override
-   public int B() {
-      return this.a.B();
-   }
-
-   @Override
-   public int C() {
-      return this.a.C();
-   }
-
-   public static fde d() {
-      return new fde(fde.a.b);
-   }
-
-   public static fde e() {
-      return new fde(fde.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fcz $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
-      }
-
-      public <T extends fdc> T a(fcz $$0, T $$1, int $$2, fdd $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
    }
 }

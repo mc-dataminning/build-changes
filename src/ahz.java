@@ -1,8 +1,8 @@
-public interface ahz extends aet, aht {
-   @Override
-   default up b() {
-      return up.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aia var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ahz {
 }

@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fj implements Predicate<dln> {
-   private final dlj a;
-   private final Set<dmm<?>> b;
+public class fj implements Predicate<dmi> {
+   private final dme a;
+   private final Set<dnh<?>> b;
    @Nullable
-   private final sw c;
+   private final sy c;
 
-   public fj(dlj $$0, Set<dmm<?>> $$1, @Nullable sw $$2) {
+   public fj(dme $$0, Set<dnh<?>> $$1, @Nullable sy $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dlj a() {
+   public dme a() {
       return this.a;
    }
 
-   public Set<dmm<?>> b() {
+   public Set<dnh<?>> b() {
       return this.b;
    }
 
-   public boolean a(dln $$0) {
-      dlj $$1 = $$0.a();
+   public boolean a(dmi $$0) {
+      dme $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dmm<?> $$2 : this.b) {
+         for (dnh<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class fj implements Predicate<dln> {
          if (this.c == null) {
             return true;
          } else {
-            dix $$3 = $$0.b();
-            return $$3 != null && tl.a(this.c, $$3.o(), true);
+            djl $$3 = $$0.b();
+            return $$3 != null && tn.a(this.c, $$3.b($$0.c().I_()), true);
          }
       }
    }
 
-   public boolean a(aow $$0, hz $$1) {
-      return this.a(new dln($$0, $$1, false));
+   public boolean a(apa $$0, ib $$1) {
+      return this.a(new dmi($$0, $$1, false));
    }
 
-   public boolean a(aow $$0, hz $$1, int $$2) {
-      dlj $$3 = cys.b(this.a, $$0, $$1);
+   public boolean a(apa $$0, ib $$1, int $$2) {
+      dme $$3 = czf.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,9 +56,9 @@ public class fj implements Predicate<dln> {
          return false;
       } else {
          if (this.c != null) {
-            dix $$4 = $$0.c_($$1);
+            djl $$4 = $$0.c_($$1);
             if ($$4 != null) {
-               $$4.a(this.c);
+               $$4.a(this.c, $$0.I_());
             }
          }
 

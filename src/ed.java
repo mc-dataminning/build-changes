@@ -6,24 +6,26 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ed implements ArgumentType<vq> {
+public class ed implements ArgumentType<vs> {
    private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("argument.component.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("argument.component.invalid", $$0));
+   private final in.a c;
 
-   private ed() {
+   private ed(in.a $$0) {
+      this.c = $$0;
    }
 
-   public static vq a(CommandContext<du> $$0, String $$1) {
-      return (vq)$$0.getArgument($$1, vq.class);
+   public static vs a(CommandContext<du> $$0, String $$1) {
+      return (vs)$$0.getArgument($$1, vs.class);
    }
 
-   public static ed a() {
-      return new ed();
+   public static ed a(dq $$0) {
+      return new ed($$0);
    }
 
-   public vq a(StringReader $$0) throws CommandSyntaxException {
+   public vs a(StringReader $$0) throws CommandSyntaxException {
       try {
-         return dy.a($$0, vs.a);
+         return dy.a(this.c, $$0, vu.a);
       } catch (Exception var4) {
          String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
          throw a.createWithContext($$0, $$2);

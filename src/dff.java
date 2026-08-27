@@ -1,63 +1,98 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dff extends czb implements cyv {
-   public static final MapCodec<dff> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dky.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dff::new)
-   );
-   public static final dmj f = dlz.aU;
-   protected static final float g = 6.0F;
-   protected static final eos h = cys.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dky i;
+public class dff extends czf {
+   public static final MapCodec<dff> a = b(dff::new);
+   public static final dmv b = dfi.d;
 
    @Override
-   public MapCodec<? extends dff> a() {
-      return e;
+   public MapCodec<dff> a() {
+      return a;
    }
 
-   protected dff(dky $$0, dli.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
+   public dff(dmd.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return h;
+   protected void a(dme $$0, cwe $$1, ib $$2, cia $$3) {
+      d($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   public void a(cwe $$0, ib $$1, dme $$2, bof $$3) {
+      if (!$$3.bQ()) {
+         d($$2, $$0, $$1);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(aow $$0, hz $$1, dlj $$2, awp $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   @Override
+   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
+      if ($$2.B) {
+         a($$2, $$3);
       } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+         d($$1, $$2, $$3);
+      }
+
+      return $$0.d() instanceof cnl && new crx($$4, $$5, $$0, $$6).b() ? bmn.e : bmn.a;
+   }
+
+   private static void d(dme $$0, cwe $$1, ib $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   public boolean b(cvu $$0, hz $$1, dlj $$2) {
-      return true;
+   protected boolean e_(dme $$0) {
+      return $$0.c(b);
    }
 
    @Override
-   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
-      return (double)$$0.z.i() < 0.45;
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+      }
    }
 
    @Override
-   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(dme $$0, apa $$1, ib $$2, cpq $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4 && cua.a(cuc.v, $$3) == 0) {
+         int $$5 = 1 + $$1.z.a(5);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(f);
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(cwe $$0, ib $$1) {
+      double $$2 = 0.5625;
+      awt $$3 = $$0.z;
+
+      for (ih $$4 : ih.values()) {
+         ib $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            ih.a $$6 = $$4.o();
+            double $$7 = $$6 == ih.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == ih.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == ih.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(jv.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
    }
 }

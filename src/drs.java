@@ -1,17 +1,34 @@
 public class drs {
-   private final int a;
-   private final int b;
+   public final awt a;
+   private double b;
+   private boolean c;
 
-   public drs(dng $$0, cvt $$1) {
-      this.a = Math.max($$1.J_(), $$0.f());
-      this.b = Math.min($$1.K_(), $$0.d());
+   public drs(awt $$0) {
+      this.a = $$0;
    }
 
-   public int a() {
-      return this.a;
+   public void a() {
+      this.c = false;
    }
 
-   public int b() {
-      return this.b;
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = awm.k($$0) + awm.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
+
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
+      }
    }
 }

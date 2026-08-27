@@ -1,21 +1,31 @@
-public record zj(hz c) implements yy {
-   public static final xo<uq, zj> a = yy.a(zj::a, zj::new);
-   public static final yy.b<zj> b = yy.a("debug/poi_removed");
+public record zj(int c, eig d, float e) implements za {
+   public static final xq<us, zj> a = za.a(zj::a, zj::new);
+   public static final za.b<zj> b = za.a("debug/path");
 
-   private zj(uq $$0) {
-      this($$0.e());
+   private zj(us $$0) {
+      this($$0.readInt(), eig.b($$0), $$0.readFloat());
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public yy.b<zj> a() {
+   public za.b<zj> a() {
       return b;
    }
 
-   public hz b() {
+   public int b() {
       return this.c;
+   }
+
+   public eig c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

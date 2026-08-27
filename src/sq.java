@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sq {
+@FunctionalInterface
+public interface sq {
+   Stream<so> findTestFunctions();
 }

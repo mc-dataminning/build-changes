@@ -1,16 +1,20 @@
-public class gjz extends gkb {
-   public gjz(bzy $$0) {
-      super($$0, atl.bO, atm.g);
-      this.j = 0;
-   }
+import java.util.List;
+import javax.annotation.Nullable;
 
-   @Override
-   protected gjx o() {
-      return new gka(this.n);
-   }
+public interface gjz {
+   List<fxn> a(@Nullable dme var1, @Nullable ih var2, awt var3);
 
-   @Override
-   protected boolean p() {
-      return !this.n.aa_();
-   }
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   ghz e();
+
+   fxz f();
+
+   fxx g();
 }

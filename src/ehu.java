@@ -1,210 +1,213 @@
 import java.util.Optional;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ehu {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dli.f e = ($$0, $$1, $$2) -> $$0.a(cyu.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final cvs h;
-   private final ie.a i;
-   private final ie j;
-   private int k;
-   @Nullable
-   private hz l;
-   private int m;
-   private final int n;
+public abstract class ehu extends ehp {
+   public static final float e = 0.44444445F;
 
-   public static Optional<ehu> a(cvs $$0, hz $$1, ie.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
+   @Override
+   public ehq d() {
+      return ehs.d;
    }
 
-   public static Optional<ehu> a(cvs $$0, hz $$1, Predicate<ehu> $$2, ie.a $$3) {
-      Optional<ehu> $$4 = Optional.of(new ehu($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         ie.a $$5 = $$3 == ie.a.a ? ie.a.c : ie.a.a;
-         return Optional.of(new ehu($$0, $$1, $$5)).filter($$2);
-      }
+   @Override
+   public ehq e() {
+      return ehs.e;
    }
 
-   public ehu(cvs $$0, hz $$1, ie.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == ie.a.a ? ie.e : ie.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
+   @Override
+   public cpl a() {
+      return cpt.qz;
+   }
+
+   @Override
+   public void a(cwe $$0, ib $$1, ehr $$2, awt $$3) {
+      ib $$4 = $$1.c();
+      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(kb.V, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, atp.nt, atq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), atp.nr, atq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
          }
       }
    }
 
-   @Nullable
-   private hz a(hz $$0) {
-      int $$1 = Math.max(this.h.J_(), $$0.v() - 21);
+   @Override
+   public void b(cwe $$0, ib $$1, ehr $$2, awt $$3) {
+      if ($$0.Z().b(cwa.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            ib $$5 = $$1;
 
-      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
-         $$0 = $$0.d();
-      }
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
 
-      ie $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
-   }
-
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
-
-   private int a(hz $$0, ie $$1) {
-      hz.a $$2 = new hz.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         dlj $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
+               dme $$7 = $$0.a_($$5);
+               if ($$7.i()) {
+                  if (this.a((cwh)$$0, $$5)) {
+                     $$0.b($$5, cys.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
             }
-            break;
-         }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               ib $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
 
-         dlj $$5 = this.h.a_($$2.c(ie.a));
-         if (!e.test($$5, this.h, $$2)) {
-            break;
+               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
+                  $$0.b($$9.c(), cys.a($$0, $$9));
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(cwh $$0, ib $$1) {
+      for (ih $$2 : ih.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
          }
       }
 
-      return 0;
+      return false;
    }
 
-   private int e() {
-      hz.a $$0 = new hz.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   private boolean b(cwh $$0, ib $$1) {
+      return $$1.v() >= $$0.J_() && $$1.v() < $$0.ak() && !$$0.B($$1) ? false : $$0.a_($$1).j();
    }
 
-   private boolean a(hz.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         hz.a $$3 = $$0.g(this.l).c(ie.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
-            return false;
+   @Nullable
+   @Override
+   public jz h() {
+      return kb.j;
+   }
+
+   @Override
+   protected void a(cwf $$0, ib $$1, dme $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(cwh $$0) {
+      return $$0.E_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dme b(ehr $$0) {
+      return czh.H.o().a(ddu.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ehq $$0) {
+      return $$0 == ehs.e || $$0 == ehs.d;
+   }
+
+   @Override
+   public int c(cwh $$0) {
+      return $$0.E_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(ehr $$0, cvk $$1, ib $$2, ehq $$3, ih $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(auj.a);
+   }
+
+   @Override
+   public int a(cwh $$0) {
+      return $$0.E_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(cwe $$0, ib $$1, ehr $$2, ehr $$3) {
+      int $$4 = this.a((cwh)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cvk)$$0, $$1) > $$2.a((cvk)$$0, $$1) && $$0.F_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(cwf $$0, ib $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(cwe $$0) {
+      return $$0.Z().b(cwa.V);
+   }
+
+   @Override
+   protected void a(cwf $$0, ib $$1, dme $$2, ih $$3, ehr $$4) {
+      if ($$3 == ih.a) {
+         ehr $$5 = $$0.b_($$1);
+         if (this.a(auj.b) && $$5.a(auj.a)) {
+            if ($$2.b() instanceof ddu) {
+               $$0.a($$1, czh.b.o(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
          }
       }
 
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
       return true;
    }
 
-   private int a(hz.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(ie.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
 
-         $$0.g(this.l).c(ie.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
+   @Override
+   public Optional<ato> j() {
+      return Optional.of(atp.dd);
+   }
 
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(ie.b, $$1).c(this.j, $$2);
-            dlj $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
-            }
-
-            if ($$3.a(cyu.ed)) {
-               this.k++;
-            }
-         }
+   public static class a extends ehu {
+      @Override
+      protected void a(dmf.a<ehq, ehr> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      return 21;
-   }
-
-   private static boolean a(dlj $$0) {
-      return $$0.i() || $$0.a(aua.aJ) || $$0.a(cyu.ed);
-   }
-
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
-
-   public void b() {
-      dlj $$0 = cyu.ed.o().a(ddv.b, this.i);
-      hz.a(this.l, this.l.a(ie.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
-   }
-
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
-   }
-
-   public static enz a(l.a $$0, ie.a $$1, enz $$2, bnt $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      hz $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = awi.a(awi.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
+      @Override
+      public int d(ehr $$0) {
+         return $$0.c(b);
       }
 
-      double $$11;
-      if ($$5 > 0.0) {
-         ie.a $$10 = ie.a.b;
-         $$11 = awi.a(awi.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
+      @Override
+      public boolean c(ehr $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ehu {
+      @Override
+      public int d(ehr $$0) {
+         return 8;
       }
 
-      ie.a $$13 = $$1 == ie.a.a ? ie.a.c : ie.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new enz($$8, $$11, $$14);
-   }
-
-   public static eht a(aow $$0, l.a $$1, ie.a $$2, enz $$3, bnq $$4, enz $$5, float $$6, float $$7) {
-      hz $$8 = $$1.a;
-      dlj $$9 = $$0.a_($$8);
-      ie.a $$10 = $$9.d(dlz.H).orElse(ie.a.a);
-      double $$11 = (double)$$1.b;
-      double $$12 = (double)$$1.c;
-      bnt $$13 = $$4.a($$4.ap());
-      int $$14 = $$2 == $$10 ? 0 : 90;
-      enz $$15 = $$2 == $$10 ? $$5 : new enz($$5.e, $$5.d, -$$5.c);
-      double $$16 = (double)$$13.a() / 2.0 + ($$11 - (double)$$13.a()) * $$3.a();
-      double $$17 = ($$12 - (double)$$13.b()) * $$3.b();
-      double $$18 = 0.5 + $$3.c();
-      boolean $$19 = $$10 == ie.a.a;
-      enz $$20 = new enz((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
-      enz $$21 = a($$20, $$0, $$4, $$13);
-      return new eht($$21, $$15, $$6 + (float)$$14, $$7);
-   }
-
-   private static enz a(enz $$0, aow $$1, bnq $$2, bnt $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         enz $$5 = $$0.b(0.0, $$4, 0.0);
-         eos $$6 = eop.a(enu.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<enz> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<enz> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
+      @Override
+      public boolean c(ehr $$0) {
+         return true;
       }
    }
 }

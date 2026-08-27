@@ -1,34 +1,34 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class gle extends gkv {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cfc r;
 
-public class gle extends aso {
-   private sw a;
-
-   public gle(glf $$0, iq<ajh> $$1, eiv $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gle(cfc $$0) {
+      super(atp.le, atq.f, glm.t());
+      this.r = $$0;
+      this.k = glm.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   protected void b(aox $$0) {
-      if (this.b().a($$0.fS())) {
-         this.a = $$0.f(new sw());
+   public boolean s() {
+      return !this.r.aU();
+   }
+
+   @Override
+   public void q() {
+      if (!this.r.dE() && this.r.q() == null) {
+         this.f = (double)((float)this.r.do());
+         this.g = (double)((float)this.r.dq());
+         this.h = (double)((float)this.r.du());
+         float $$0 = this.r.G(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public vq a(SocketAddress $$0, GameProfile $$1) {
-      return (vq)(this.b().a($$1) && this.a($$1.getName()) != null ? vq.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public glf b() {
-      return (glf)super.c();
-   }
-
-   @Override
-   public sw r() {
-      return this.a;
    }
 }

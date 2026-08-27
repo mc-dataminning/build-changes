@@ -1,37 +1,29 @@
-public class afk implements xx<aes> {
-   public static final xo<uq, afk> a = xx.a(afk::a, afk::new);
+public class afk implements xz<aev> {
+   public static final xq<us, afk> a = xz.a(afk::a, afk::new);
    private final int b;
-   private final int c;
 
-   public afk(int $$0, int $$1) {
+   public afk(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private afk(uq $$0) {
-      this.b = $$0.n();
-      this.c = $$0.n();
+   private afk(us $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(us $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public xz<afk> a() {
-      return aeq.bt;
+   public yb<afk> a() {
+      return aet.br;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

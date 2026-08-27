@@ -1,25 +1,22 @@
-public class cti extends ctm {
-   public cti(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bn, $$1);
+public interface cti extends css<bme> {
+   @Override
+   default csx<?> e() {
+      return csx.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 25;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   default cpq g() {
+      return new cpq(czh.ob);
    }
 
-   @Override
-   public boolean b() {
-      return true;
-   }
+   boolean a(cpq var1);
 
-   @Override
-   public boolean c() {
-      return true;
-   }
+   boolean b(cpq var1);
+
+   boolean c(cpq var1);
 }

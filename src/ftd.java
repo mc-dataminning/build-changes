@@ -1,55 +1,68 @@
-public class ftd extends fuh {
-   ftd(fqe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-   }
+public class ftd extends fve {
+   ftd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   @Override
-   public ftl b() {
-      return ftl.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(jz.ab, this.g, this.h, this.i, this.j, this.k, this.l);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
          }
+      } else {
+         this.k();
       }
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   @Override
+   public fui b() {
+      return fui.c;
+   }
 
-      public a(fuc $$0) {
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftd $$8 = new ftd($$1, $$2, $$3, $$4);
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftd $$8 = new ftd($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fuh<ke> {
+      private final fuz a;
+
+      public b(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftd $$8 = new ftd($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
          $$8.a(this.a);
          return $$8;
       }

@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
+public class add implements xz<aai> {
+   public static final xq<us, add> a = xz.a(add::a, add::new);
+   private final double b;
 
-public class add implements xx<aag> {
-   public static final xo<uq, add> a = xx.a(add::a, add::new);
-   private final int b;
-
-   public add(bnq $$0) {
-      this.b = $$0.aj();
+   public add(dnv $$0) {
+      this.b = $$0.k();
    }
 
-   private add(uq $$0) {
-      this.b = $$0.n();
+   private add(us $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<add> a() {
-      return aeq.av;
+   public yb<add> a() {
+      return aet.at;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bnq a(cvr $$0) {
-      return $$0.a(this.b);
+   public double b() {
+      return this.b;
    }
 }

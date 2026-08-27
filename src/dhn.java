@@ -1,87 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dhn extends cxj {
-   public static final MapCodec<dhn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cnr.q.fieldOf("color").forGetter(cxj::b), u()).apply($$0, dhn::new));
-   public static final dmd b = dcn.aE;
-   private static final Map<ie, eos> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         ie.c,
-         cys.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         ie.d,
-         cys.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         ie.e,
-         cys.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         ie.f,
-         cys.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
+public class dhn extends czf {
+   public static final MapCodec<dhn> a = b(dhn::new);
+   public static final dmv b = dmu.B;
 
    @Override
    public MapCodec<dhn> a() {
       return a;
    }
 
-   public dhn(cnr $$0, dli.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, ie.c));
+   public dhn(dmd.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public String h() {
-      return this.j().a();
-   }
-
-   @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return c.get($$0.c(b));
-   }
-
-   @Override
-   public dlj a(crk $$0) {
-      dlj $$1 = this.o();
-      cvu $$2 = $$0.q();
-      hz $$3 = $$0.a();
-      ie[] $$4 = $$0.f();
-
-      for (ie $$5 : $$4) {
-         if ($$5.o().d()) {
-            ie $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if ($$1.C($$2)) {
+            a($$1, $$2);
+            $$1.a($$2, false);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         a($$1, $$2);
+         $$1.a($$2, false);
+      }
    }
 
    @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dme a(cwe $$0, ib $$1, dme $$2, cia $$3) {
+      if (!$$0.y_() && !$$3.f() && $$2.c(b)) {
+         a($$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
+   public void a(cwe $$0, ib $$1, cvw $$2) {
+      if (!$$0.B) {
+         cem $$3 = new cem($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
+         int $$4 = $$3.s();
+         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
+         $$0.b($$3);
+      }
+   }
+
+   public static void a(cwe $$0, ib $$1) {
+      a($$0, $$1, null);
+   }
+
+   private static void a(cwe $$0, ib $$1, @Nullable box $$2) {
+      if (!$$0.B) {
+         cem $$3 = new cem($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
+         $$0.b($$3);
+         $$0.a(null, $$3.do(), $$3.dq(), $$3.du(), atp.yR, atq.e, 1.0F, 1.0F);
+         $$0.a($$2, dqr.I, $$1);
+      }
+   }
+
+   @Override
+   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
+      if (!$$0.a(cpt.or) && !$$0.a(cpt.tV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else {
+         a($$2, $$3, $$4);
+         $$2.a($$3, czh.a.o(), 11);
+         cpl $$7 = $$0.d();
+         if (!$$4.f()) {
+            if ($$0.a(cpt.or)) {
+               $$0.a(1, $$4, box.d($$5));
+            } else {
+               $$0.h(1);
+            }
+         }
+
+         $$4.b(atz.c.b($$7));
+         return bmn.a($$2.B);
+      }
+   }
+
+   @Override
+   protected void a(cwe $$0, dme $$1, eor $$2, cis $$3) {
+      if (!$$0.B) {
+         ib $$4 = $$2.a();
+         bof $$5 = $$3.w();
+         if ($$3.bK() && $$3.a($$0, $$4)) {
+            a($$0, $$4, $$5 instanceof box ? (box)$$5 : null);
+            $$0.a($$4, false);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(cvw $$0) {
+      return false;
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
       $$0.a(b);
    }
 }

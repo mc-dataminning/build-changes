@@ -12,21 +12,21 @@ import java.util.concurrent.CompletableFuture;
 
 public class fo implements ArgumentType<fq> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vs.c("argument.pos.outofbounds"));
 
    public static fo a() {
       return new fo();
    }
 
-   public static hz a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      aow $$2 = ((du)$$0.getSource()).e();
+   public static ib a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      apa $$2 = ((du)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static hz a(CommandContext<du> $$0, aow $$1, String $$2) throws CommandSyntaxException {
-      hz $$3 = b($$0, $$2);
+   public static ib a(CommandContext<du> $$0, apa $$1, String $$2) throws CommandSyntaxException {
+      ib $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
       } else if (!$$1.k($$3)) {
@@ -36,13 +36,13 @@ public class fo implements ArgumentType<fq> {
       }
    }
 
-   public static hz b(CommandContext<du> $$0, String $$1) {
+   public static ib b(CommandContext<du> $$0, String $$1) {
       return ((fq)$$0.getArgument($$1, fq.class)).c((du)$$0.getSource());
    }
 
-   public static hz c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      hz $$2 = b($$0, $$1);
-      if (!cvr.l($$2)) {
+   public static ib c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      ib $$2 = b($$0, $$1);
+      if (!cwe.l($$2)) {
          throw c.create();
       } else {
          return $$2;

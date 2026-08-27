@@ -1,14 +1,17 @@
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public interface ekp extends ejd, BiFunction<cpd, ejc, cpd> {
-   ekq b();
+public class ekp {
+   public static final Codec<ekr> a = kh.F.q().dispatch(ekr::a, eks::a);
+   public static final eks b = a("empty", ekm.a);
+   public static final eks c = a("item", eko.a);
+   public static final eks d = a("loot_table", eku.a);
+   public static final eks e = a("dynamic", ekl.a);
+   public static final eks f = a("tag", ekw.a);
+   public static final eks g = a("alternatives", eki.a);
+   public static final eks h = a("sequence", ekv.a);
+   public static final eks i = a("group", ekn.a);
 
-   static Consumer<cpd> a(BiFunction<cpd, ejc, cpd> $$0, Consumer<cpd> $$1, ejc $$2) {
-      return $$3 -> $$1.accept($$0.apply($$3, $$2));
-   }
-
-   public interface a {
-      ekp b();
+   private static eks a(String $$0, Codec<? extends ekr> $$1) {
+      return ix.a(kh.F, new ajc($$0), new eks($$1));
    }
 }

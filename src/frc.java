@@ -1,120 +1,13 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class frc extends frf {
-   final IntSet f = new IntOpenHashSet();
+public enum frc {
+   a,
+   b;
 
-   frc(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
-   }
+   private static final List<frc> c = List.of(values());
+   private static final iy.b d = iy.a(kh.at);
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
-      }
-   }
-
-   public frc a() {
-      frc $$0 = new frc(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public ffl a(ffl $$0, frj $$1) {
-      return new fjk($$0, $$1, this);
-   }
-
-   public static class a extends frf.a<frc> {
-      public a(frc $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new frc(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public frf.b c() {
-         if (this.a.f.isEmpty()) {
-            return frf.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return frf.b.c;
-         } else if (this.a.e == null) {
-            return frf.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? frf.b.d : null;
-         }
-      }
-
-      @Override
-      public Either<frf.c, frf.b> a(frj $$0) {
-         frf.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new frf.c(this.a.a, fri.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(frj $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         frd $$2 = new frd(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(fqy.a $$0, boolean $$1) {
-         wl $$2 = $$0.g().k();
-         wj $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(wc::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), wc::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public frc.a d() {
-         return new frc.a(this.a.a(), this.b);
-      }
+   public static is<frc> a() {
+      return new is<>(c).a(a, d);
    }
 }

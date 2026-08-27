@@ -1,48 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.function.Function;
 
-public class btl extends bqa<cgy> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
-   public btl() {
-      super(ImmutableMap.of(bxl.c, bxm.a, bxl.n, bxm.c));
+public class btl {
+   public static <E extends box> bsa<E> a(List<Pair<? extends buf<? super E>, Integer>> $$0) {
+      return a($$0, brd.a.b, brd.b.a);
    }
 
-   protected boolean b(aow $$0, cgy $$1) {
-      if ($$0.X() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.X();
-         ii $$2 = $$1.dO().c(bxl.c).get();
-         return $$2.a() == $$0.ad() && $$2.b().a($$1.dk(), 1.73);
-      }
-   }
+   public static <E extends box> bsa<E> a(List<Pair<? extends buf<? super E>, Integer>> $$0, brd.a $$1, brd.b $$2) {
+      bsy<buf<? super E>> $$3 = new bsy<>();
+      $$0.forEach($$1x -> $$3.a((buf<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return buc.a((Function<buc.b<E>, ? extends App<buc.c<E>, buf<E>>>)($$3x -> $$3x.a((buf<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == brd.a.b) {
+               $$3.a();
+            }
 
-   protected void a(aow $$0, cgy $$1, long $$2) {
-      bpj<cgy> $$3 = $$1.dO();
-      $$3.a(bxl.J, $$2);
-      $$3.c(bxl.c).ifPresent($$1x -> $$3.a(bxl.n, new bqd($$1x.b())));
-      $$1.gv();
-      this.a($$0, $$1);
-      if ($$1.gu()) {
-         $$1.gt();
-      }
-   }
+            for (buf<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == brd.b.a) {
+                  break;
+               }
+            }
 
-   protected void a(aow $$0, cgy $$1) {
-   }
-
-   protected boolean b(aow $$0, cgy $$1, long $$2) {
-      Optional<ii> $$3 = $$1.dO().c(bxl.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         ii $$4 = $$3.get();
-         return $$4.a() == $$0.ad() && $$4.b().a($$1.dk(), 1.73);
-      }
+            return true;
+         }))));
    }
 }

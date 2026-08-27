@@ -1,29 +1,18 @@
-public class aax implements xx<aag> {
-   public static final xo<uq, aax> a = xx.a(aax::a, aax::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public aax(boolean $$0) {
-      this.b = $$0;
-   }
+public class aax implements xz<aai> {
+   public static final aax a = new aax();
+   public static final xq<ByteBuf, aax> b = xq.a(a);
 
-   private aax(uq $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
+   private aax() {
    }
 
    @Override
-   public xz<aax> a() {
-      return aeq.q;
+   public yb<aax> a() {
+      return aet.o;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

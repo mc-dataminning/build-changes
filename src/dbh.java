@@ -1,82 +1,175 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dbh extends cys {
-   public static final MapCodec<dbh> a = b(dbh::new);
-   public static final dmd b = dcn.aE;
-   public static final dma c = dlz.h;
-   protected static final eos d = cys.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final eos e = cys.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final eos f = eop.a(d, e);
-   private static dlo g;
+public abstract class dbh extends dda {
+   protected static final epo c = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   public static final dmv d = dmu.w;
 
-   @Override
-   public MapCodec<dbh> a() {
-      return a;
-   }
-
-   public dbh(dli.d $$0) {
+   protected dbh(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ie.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dlj $$0) {
-      return true;
+   protected abstract MapCodec<? extends dbh> a();
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return c;
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return $$0.c(c) ? f : d;
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      return this.b($$1, $$3, $$1.a_($$3));
+   }
+
+   protected boolean b(cwh $$0, ib $$1, dme $$2) {
+      return $$2.a($$0, $$1, ih.b, dhf.c);
    }
 
    @Override
-   public dlj a(crk $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
-
-   @Override
-   protected boolean d_(dlj $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dlj $$0, cvr $$1, hz $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dlo b() {
-      if (g == null) {
-         g = dlp.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dln.a(dls.a))
-            .a('^', dln.a(dls.a(cyu.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.d))))
-            .a('>', dln.a(dls.a(cyu.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.e))))
-            .a('v', dln.a(dls.a(cyu.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.c))))
-            .a('<', dln.a(dls.a(cyu.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.f))))
-            .b();
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!this.c((cwh)$$1, $$2, $$0)) {
+         boolean $$4 = $$0.c(d);
+         boolean $$5 = this.a((cwe)$$1, $$2, $$0);
+         if ($$4 && !$$5) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 2);
+         } else if (!$$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 2);
+            if (!$$5) {
+               $$1.a($$2, this, this.g($$0), eqq.b);
+            }
+         }
       }
-
-      return g;
    }
 
    @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+   protected int b(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      if (!$$0.c(d)) {
+         return 0;
+      } else {
+         return $$0.c(aE) == $$3 ? this.a($$1, $$2, $$0) : 0;
+      }
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if ($$0.a((cwh)$$1, $$2)) {
+         this.c($$1, $$2, $$0);
+      } else {
+         djl $$6 = $$0.t() ? $$1.c_($$2) : null;
+         a($$0, $$1, $$2, $$6);
+         $$1.a($$2, false);
+
+         for (ih $$7 : ih.values()) {
+            $$1.a($$2.a($$7), this);
+         }
+      }
+   }
+
+   protected void c(cwe $$0, ib $$1, dme $$2) {
+      if (!this.c((cwh)$$0, $$1, $$2)) {
+         boolean $$3 = $$2.c(d);
+         boolean $$4 = this.a($$0, $$1, $$2);
+         if ($$3 != $$4 && !$$0.N().b($$1, this)) {
+            eqq $$5 = eqq.c;
+            if (this.b((cvk)$$0, $$1, $$2)) {
+               $$5 = eqq.a;
+            } else if ($$3) {
+               $$5 = eqq.b;
+            }
+
+            $$0.a($$1, this, this.g($$2), $$5);
+         }
+      }
+   }
+
+   public boolean c(cwh $$0, ib $$1, dme $$2) {
       return false;
    }
+
+   protected boolean a(cwe $$0, ib $$1, dme $$2) {
+      return this.b($$0, $$1, $$2) > 0;
+   }
+
+   protected int b(cwe $$0, ib $$1, dme $$2) {
+      ih $$3 = $$2.c(aE);
+      ib $$4 = $$1.a($$3);
+      int $$5 = $$0.c($$4, $$3);
+      if ($$5 >= 15) {
+         return $$5;
+      } else {
+         dme $$6 = $$0.a_($$4);
+         return Math.max($$5, $$6.a(czh.cw) ? $$6.c(dfg.f) : 0);
+      }
+   }
+
+   protected int a(cwu $$0, ib $$1, dme $$2) {
+      ih $$3 = $$2.c(aE);
+      ih $$4 = $$3.h();
+      ih $$5 = $$3.i();
+      boolean $$6 = this.b();
+      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+   }
+
+   @Override
+   protected boolean f_(dme $$0) {
+      return true;
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
+      if (this.a($$0, $$1, $$2)) {
+         $$0.a($$1, this, 1);
+      }
+   }
+
+   @Override
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      this.d($$1, $$2, $$0);
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         this.d($$1, $$2, $$0);
+      }
+   }
+
+   protected void d(cwe $$0, ib $$1, dme $$2) {
+      ih $$3 = $$2.c(aE);
+      ib $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected int a(cvk $$0, ib $$1, dme $$2) {
+      return 15;
+   }
+
+   public static boolean m(dme $$0) {
+      return $$0.b() instanceof dbh;
+   }
+
+   public boolean b(cvk $$0, ib $$1, dme $$2) {
+      ih $$3 = $$2.c(aE).g();
+      dme $$4 = $$0.a_($$1.a($$3));
+      return m($$4) && $$4.c(aE) != $$3;
+   }
+
+   protected abstract int g(dme var1);
 }

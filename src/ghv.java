@@ -1,17 +1,6 @@
-import java.io.IOException;
+public interface ghv extends AutoCloseable {
+   void a(int var1, int var2);
 
-public class ghv extends asg<int[]> {
-   private static final aiy a = new aiy("textures/colormap/grass.png");
-
-   protected int[] a(asb $$0, bin $$1) {
-      try {
-         return ghx.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
-   }
-
-   protected void a(int[] $$0, asb $$1, bin $$2) {
-      cvp.a($$0);
-   }
+   @Override
+   void close();
 }

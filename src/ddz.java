@@ -1,68 +1,128 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ddz extends cys implements cyv {
-   public static final MapCodec<ddz> a = b(ddz::new);
+public class ddz extends dfs implements dgf {
+   public static final MapCodec<ddz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlt.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, ddz::new)
+   );
+   public static final dne b = dmu.at;
+   public static final int c = 4;
+   private static final epo[] j = new epo[]{
+      czf.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      czf.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      czf.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      czf.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      czf.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dmv k = dmu.C;
+   public static final dmv d = dmu.j;
 
    @Override
    public MapCodec<ddz> a() {
       return a;
    }
 
-   public ddz(dli.d $$0) {
-      super($$0);
+   public ddz(dlt $$0, dmd.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(cvu $$0, hz $$1, dlj $$2) {
-      if (!$$0.a_($$1.c()).a((cux)$$0, $$1)) {
-         return false;
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
+   }
+
+   @Override
+   protected boolean b(dme $$0, cvk $$1, ib $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(czh.dR);
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      ehr $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ehs.c;
+      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
+   }
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      eov $$4 = $$0.n($$1, $$2);
+      epo $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
       } else {
-         for (hz $$3 : hz.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(aua.aK)) {
-               return true;
-            }
-         }
+         $$5 = j[$$0.c(b)];
+      }
 
-         return false;
+      return $$5.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return m($$0) ? $$1.a_($$2.c()).a(czh.aL) : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
+      }
+
+      return $$1 == ih.b && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(k) ? ehs.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!m($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!n($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
+         }
       }
    }
 
    @Override
-   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
-      return true;
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      return !m($$2) || !n($$2);
    }
 
    @Override
-   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (hz $$6 : hz.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dlj $$7 = $$0.a_($$6);
-         if ($$7.a(cyu.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(cyu.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? cyu.on.o() : cyu.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, cyu.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, cyu.ow.o(), 3);
-      }
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return m($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cyv.a av_() {
-      return cyv.a.a;
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      if (m($$3) && !n($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static boolean m(dme $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean n(dme $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static dme c() {
+      return b(0);
+   }
+
+   public static dme b(int $$0) {
+      return czh.E.o().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
    }
 }

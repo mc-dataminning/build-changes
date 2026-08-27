@@ -1,62 +1,72 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
-
 public class fvz {
-   private final fwe a = new fwe();
-   private final fwf b;
-   private final fvt.a c;
-   private final fvt.a d;
-   private final fvu e;
+   public static final vs a = vs.c("quickplay.error.title");
+   private static final vs b = vs.c("quickplay.error.invalid_identifier");
+   private static final vs c = vs.c("quickplay.error.realm_connect");
+   private static final vs d = vs.c("quickplay.error.realm_permission");
+   private static final vs e = vs.c("gui.toTitle");
+   private static final vs f = vs.c("gui.toWorld");
+   private static final vs g = vs.c("gui.toRealms");
 
-   public fvz(int $$0) {
-      this.b = fwf.a($$0);
-      SortedMap<fwb, esc> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(fwi.h(), this.a.a(fwb.c()));
-         $$0x.put(fwi.i(), this.a.a(fwb.e()));
-         $$0x.put(fwi.a(), this.a.a(fwb.d()));
-         $$0x.put(fwi.k(), this.a.a(fwb.f()));
-         a($$0x, fwi.b());
-         a($$0x, fwi.c());
-         a($$0x, fwi.d());
-         a($$0x, fwi.e());
-         a($$0x, fwi.f());
-         $$0x.put(fwi.g(), new esc(786432));
-         a($$0x, fwb.j());
-         a($$0x, fwb.k());
-         a($$0x, fwb.m());
-         a($$0x, fwb.n());
-         a($$0x, fwb.l());
-         a($$0x, fwb.o());
-         a($$0x, fwb.p());
-         a($$0x, fwb.i());
-         gjg.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fvt.a(new esc(1536));
-      this.c = fvt.a($$1, new esc(786432));
-      this.e = new fvu(this.c);
+   public static void a(eyk $$0, flv.c $$1, ett $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ac.b($$3)) {
+         a($$0, $$3);
+      } else if (!ac.b($$4)) {
+         b($$0, $$4);
+      } else if (!ac.b($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fwb, esc> $$0, fwb $$1) {
-      $$0.put($$1, new esc($$1.G()));
+   private static void a(eyk $$0, String $$1) {
+      if (!$$0.l().b($$1)) {
+         fgh $$2 = new fld(new fgm());
+         $$0.a(new ffj($$2, a, b, f));
+      } else {
+         $$0.w().a($$1, () -> $$0.a(new fgm()));
+      }
    }
 
-   public fwe a() {
-      return this.a;
+   private static void b(eyk $$0, String $$1) {
+      fro $$2 = new fro($$0);
+      $$2.a();
+      frn $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new frn(gje.a("selectServer.defaultName"), $$1, frn.c.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
+
+      fsp $$4 = fsp.a($$1);
+      ffb.a(new fjf(new fgm()), $$0, $$4, $$3, true, null);
    }
 
-   public fwf b() {
-      return this.b;
-   }
+   private static void a(eyk $$0, ett $$1, String $$2) {
+      long $$3;
+      eum $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fgh $$6 = new eto(new fgm());
+         $$0.a(new ffj($$6, a, b, g));
+         return;
+      } catch (evg var10) {
+         fgh $$8 = new fgm();
+         $$0.a(new ffj($$8, a, c, e));
+         return;
+      }
 
-   public fvt.a c() {
-      return this.c;
-   }
-
-   public fvt.a d() {
-      return this.d;
-   }
-
-   public fvu e() {
-      return this.e;
+      euk $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fgh $$12 = new eto(new fgm());
+         $$0.a(new ffj($$12, a, d, g));
+      } else {
+         fgm $$13 = new fgm();
+         exj $$14 = new exj($$13, $$11);
+         $$0.a(new ewa($$13, $$14));
+      }
    }
 }

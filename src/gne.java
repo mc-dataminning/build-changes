@@ -1,29 +1,51 @@
-import com.google.common.util.concurrent.RateLimiter;
 import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public class gne {
-   private final float a;
-   private final AtomicReference<gne.a> b = new AtomicReference<>();
+public abstract class gne {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   public gne(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public void a(exg $$0, vq $$1) {
-      gne.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gne.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public void a(gmy $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   static class a {
-      final vq a;
-      final RateLimiter b;
-
-      a(vq $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(gmy var1);
 }

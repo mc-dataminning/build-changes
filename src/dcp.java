@@ -1,51 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class dcp extends dci {
-   public static final MapCodec<dcp> e = b(dcp::new);
+public class dcp extends dee implements czi, dgf {
+   public static final MapCodec<dcp> a = b(dcp::new);
+   private static final dmv c = dmu.C;
+   private final def d = new def(this);
 
    @Override
-   public MapCodec<? extends dcp> a() {
-      return e;
+   public MapCodec<dcp> a() {
+      return a;
    }
 
-   public dcp(dli.d $$0) {
+   public dcp(dmd.d $$0) {
       super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
    }
 
-   public static dlj b() {
-      return cyu.G.o();
-   }
-
-   @Override
-   public void a(cvr $$0, chl $$1, hz $$2, dlj $$3, @Nullable dix $$4, cpd $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (ctn.a(ctp.v, $$5) == 0) {
-         if ($$0.E_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dlj $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+   public static ToIntFunction<dme> b(int $$0) {
+      return $$1 -> dee.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$1.a(cwa.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
-      }
+   protected void a(dmf.a<czf, dme> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
-   protected void d(dlj $$0, cvr $$1, hz $$2) {
-      if ($$1.E_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dme $$0, crx $$1) {
+      return !$$1.n().a(cpt.fV) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      return ih.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public def c() {
+      return this.d;
    }
 }

@@ -1,111 +1,140 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class fxa {
-   public static final fxa a = new fxa();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fxa.a[] c;
-   private final aiy[] d;
+   private static final ajc a = new ajc("textures/misc/underwater.png");
 
-   private fxa() {
-      this.c = new fxa.a[0];
-      this.d = new aiy[0];
-   }
-
-   public fxa(gjf $$0, fwv $$1, List<fwz> $$2) {
-      this.d = $$2.stream().flatMap(fwz::b).map(fwz.b::a).distinct().toArray(aiy[]::new);
-      Object2IntMap<aiy> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   public static void a(eyk $$0, etd $$1) {
+      cia $$2 = $$0.s;
+      if (!$$2.ae) {
+         dme $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ao().a().a($$3), $$1);
+         }
       }
 
-      List<fxa.a> $$5 = Lists.newArrayList();
+      if (!$$0.s.P_()) {
+         if ($$0.s.a(auj.a)) {
+            b($$0, $$1);
+         }
 
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fwz $$7 = $$2.get($$6);
-         gjb $$8 = this.a($$0, $$1, $$7);
-         fxa.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fxa.b($$2x, $$1x.b());
-         }).toArray(fxa.b[]::new);
-         $$5.add(new fxa.a($$9, $$8));
+         if ($$0.s.bK()) {
+            c($$0, $$1);
+         }
       }
-
-      this.c = $$5.toArray(new fxa.a[0]);
    }
 
    @Nullable
-   private gjb a(gjf $$0, fwv $$1, fwz $$2) {
-      gjm $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gjc.a);
-   }
+   private static dme a(cia $$0) {
+      ib.a $$1 = new ib.a();
 
-   @Nullable
-   public gjb a(gjb $$0, cpd $$1, @Nullable fqe $$2, @Nullable boi $$3, int $$4) {
-      if (this.c.length != 0) {
-         coy $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            aiy $$9 = this.d[$$8];
-            ggj $$10 = ggi.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (fxa.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               gjb $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.do() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dd() * 0.8F);
+         double $$4 = $$0.ds() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.dY());
+         double $$5 = $$0.du() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dd() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dme $$6 = $$0.dJ().a_($$1);
+         if ($$6.l() != dfk.a && $$6.p($$0.dJ(), $$1)) {
+            return $$6;
          }
       }
 
-      return $$0;
+      return null;
    }
 
-   static class a {
-      private final fxa.b[] a;
-      @Nullable
-      final gjb b;
-
-      a(fxa.b[] $$0, @Nullable gjb $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (fxa.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   private static void a(ghz $$0, etd $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(fwj::r);
+      esy $$2 = etf.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eti.b.h, etb.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      esz.a($$2.d());
    }
 
-   static class b {
-      public final int a;
-      public final float b;
+   private static void b(eyk $$0, etd $$1) {
+      RenderSystem.setShader(fwj::s);
+      RenderSystem.setShaderTexture(0, a);
+      esy $$2 = etf.b().d();
+      ib $$3 = ib.a($$0.s.do(), $$0.s.ds(), $$0.s.du());
+      float $$4 = fwp.a($$0.s.dJ().E_(), $$0.s.dJ().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dz() / 64.0F;
+      float $$12 = $$0.s.dB() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eti.b.h, etb.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      esz.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private static void c(eyk $$0, etd $$1) {
+      esy $$2 = etf.b().d();
+      RenderSystem.setShader(fwj::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      ghz $$3 = gke.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = awm.i($$10, $$4, $$6);
+      float $$12 = awm.i($$10, $$5, $$6);
+      float $$13 = awm.i($$10, $$7, $$9);
+      float $$14 = awm.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(eti.b.h, etb.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         esz.a($$2.d());
+         $$1.b();
       }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

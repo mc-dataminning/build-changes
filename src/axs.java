@@ -1,42 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public abstract class axs extends DataFix {
-   private final String a;
+public enum axs {
+   a(bdt.a),
+   b(bdt.b),
+   c(bdt.c),
+   d(bdt.d),
+   e(bdt.e),
+   f(bdt.f),
+   g(bdt.g),
+   h(bdt.h),
+   i(bdt.i),
+   j(bdt.j),
+   k(bdt.k),
+   l(bdt.l),
+   m(bdt.m),
+   n(bdt.o),
+   o(bdt.n),
+   p(bdt.p),
+   q(bdt.q),
+   r(bdt.J),
+   s(bdt.r);
 
-   public axs(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private axs(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdn.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bdn.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+   static int a() {
+      return aa.b().d().c();
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(axs.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = axs.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
+   public sy a(DataFixer $$0, sy $$1, int $$2, int $$3) {
+      return (sy)this.a($$0, new Dynamic(tm.a, $$1), $$2, $$3).getValue();
+   }
+
+   public sy a(DataFixer $$0, sy $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
+   }
 }

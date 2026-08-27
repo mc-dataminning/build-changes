@@ -1,53 +1,18 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface epc {
-   String a_ = "*";
-   epc cv = new epc() {
-      @Override
-      public String cy() {
-         return "*";
-      }
-   };
-
-   String cy();
-
-   @Nullable
-   default vq Q_() {
-      return null;
+public final class epc extends epo {
+   protected epc(epe $$0) {
+      super($$0);
    }
 
-   default vq gW() {
-      vq $$0 = this.Q_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new vw(vw.a.a, vq.b(this.cy())))) : vq.b(this.cy());
+   @Override
+   protected DoubleList a(ih.a $$0) {
+      return new epb(this.a.c($$0));
    }
 
-   static epc d(final String $$0) {
-      if ($$0.equals("*")) {
-         return cv;
-      } else {
-         final vq $$1 = vq.b($$0);
-         return new epc() {
-            @Override
-            public String cy() {
-               return $$0;
-            }
-
-            @Override
-            public vq gW() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static epc a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new epc() {
-         @Override
-         public String cy() {
-            return $$1;
-         }
-      };
+   @Override
+   protected int a(ih.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return awm.a(awm.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

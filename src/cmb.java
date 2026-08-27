@@ -1,116 +1,55 @@
-import java.util.List;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public class cmb<T extends cku> implements cki {
+   public static final cmb<clb> a = a("generic_9x1", clb::a);
+   public static final cmb<clb> b = a("generic_9x2", clb::b);
+   public static final cmb<clb> c = a("generic_9x3", clb::c);
+   public static final cmb<clb> d = a("generic_9x4", clb::d);
+   public static final cmb<clb> e = a("generic_9x5", clb::e);
+   public static final cmb<clb> f = a("generic_9x6", clb::f);
+   public static final cmb<cln> g = a("generic_3x3", cln::new);
+   public static final cmb<cli> h = a("crafter_3x3", cli::new);
+   public static final cmb<ckw> i = a("anvil", ckw::new);
+   public static final cmb<ckx> j = a("beacon", ckx::new);
+   public static final cmb<cky> k = a("blast_furnace", cky::new);
+   public static final cmb<ckz> l = a("brewing_stand", ckz::new);
+   public static final cmb<cll> m = a("crafting", cll::new);
+   public static final cmb<clo> n = a("enchantment", clo::new);
+   public static final cmb<clq> o = a("furnace", clq::new);
+   public static final cmb<cls> p = a("grindstone", cls::new);
+   public static final cmb<clt> q = a("hopper", clt::new);
+   public static final cmb<cly> r = a("lectern", ($$0, $$1) -> new cly($$0));
+   public static final cmb<clz> s = a("loom", clz::new);
+   public static final cmb<cmd> t = a("merchant", cmd::new);
+   public static final cmb<cmm> u = a("shulker_box", cmm::new);
+   public static final cmb<cmq> v = a("smithing", cmq::new);
+   public static final cmb<cmr> w = a("smoker", cmr::new);
+   public static final cmb<cla> x = a("cartography_table", cla::new);
+   public static final cmb<cmt> y = a("stonecutter", cmt::new);
+   private final ckl z;
+   private final cmb.a<T> A;
 
-public class cmb extends clh {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int s = 8;
-   public static final int t = 26;
-   public static final int u = 44;
-   private static final int w = 98;
-   public static final int v = 48;
-   private final cvr x;
-   @Nullable
-   private csh<csv> y;
-   private final List<csh<csv>> z;
-
-   public cmb(int $$0, chk $$1) {
-      this($$0, $$1, ckq.a);
+   private static <T extends cku> cmb<T> a(String $$0, cmb.a<T> $$1) {
+      return ix.a(kh.r, $$0, new cmb<>($$1, ckn.g));
    }
 
-   public cmb(int $$0, chk $$1, ckq $$2) {
-      super(clm.v, $$0, $$1, $$2);
-      this.x = $$1.m.dM();
-      this.z = this.x.r().a(csk.g);
+   private static <T extends cku> cmb<T> a(String $$0, cmb.a<T> $$1, ckj... $$2) {
+      return ix.a(kh.r, $$0, new cmb<>($$1, ckn.e.a($$2)));
    }
 
-   @Override
-   protected cli l() {
-      return cli.a()
-         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
+   private cmb(cmb.a<T> $$0, ckl $$1) {
+      this.A = $$0;
+      this.z = $$1;
    }
 
-   @Override
-   protected boolean a(dlj $$0) {
-      return $$0.a(cyu.ob);
-   }
-
-   @Override
-   protected boolean a(chl $$0, boolean $$1) {
-      return this.y != null && this.y.b().a(this.q, this.x);
+   public T a(int $$0, chz $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   protected void a(chl $$0, cpd $$1) {
-      $$1.a($$0.dM(), $$0, $$1.M());
-      this.r.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
+   public ckl m() {
+      return this.z;
    }
 
-   private List<cpd> n() {
-      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
-   }
-
-   private void e(int $$0) {
-      cpd $$1 = this.q.a($$0);
-      if (!$$1.b()) {
-         $$1.h(1);
-         this.q.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void m() {
-      List<csh<csv>> $$0 = this.x.r().b(csk.g, this.q, this.x);
-      if ($$0.isEmpty()) {
-         this.r.a(0, cpd.h);
-      } else {
-         csh<csv> $$1 = $$0.get(0);
-         cpd $$2 = $$1.b().a(this.q, this.x.I_());
-         if ($$2.a(this.x.I())) {
-            this.y = $$1;
-            this.r.a($$1);
-            this.r.a(0, $$2);
-         }
-      }
-   }
-
-   @Override
-   public int d(cpd $$0) {
-      return this.e($$0).orElse(0);
-   }
-
-   private static OptionalInt a(csv $$0, cpd $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
-      } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   public boolean a(cpd $$0, cma $$1) {
-      return $$1.d != this.r && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean c(cpd $$0) {
-      return this.e($$0).isPresent();
-   }
-
-   private OptionalInt e(cpd $$0) {
-      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+   interface a<T extends cku> {
+      T create(int var1, chz var2);
    }
 }

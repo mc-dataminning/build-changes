@@ -1,70 +1,121 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public record dqd(ij<dpw> b, float c, enz d, @Nullable UUID e, @Nullable UUID f, @Nullable bnq g) {
-   public static final Codec<dqd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kf.a.r().fieldOf("game_event").forGetter(dqd::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dqd::b),
-               enz.a.fieldOf("pos").forGetter(dqd::c),
-               jc.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               jc.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dqd($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dqd<T extends dpy> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dql> b;
+   private final Long2ObjectMap<dqc<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dqd(ij<dpw> $$0, float $$1, enz $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
+   public dqd(Class<T> $$0, Long2ObjectFunction<dql> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public dqd(ij<dpw> $$0, float $$1, enz $$2, @Nullable bnq $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
-   }
+   public void a(eoq $$0, ava<dqc<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = jd.a($$0.a - 2.0);
+      int $$4 = jd.a($$0.b - 4.0);
+      int $$5 = jd.a($$0.c - 2.0);
+      int $$6 = jd.a($$0.d + 2.0);
+      int $$7 = jd.a($$0.e + 0.0);
+      int $$8 = jd.a($$0.f + 2.0);
 
-   @Nullable
-   private static UUID a(@Nullable bnq $$0) {
-      if ($$0 instanceof cid $$1 && $$1.w() != null) {
-         return $$1.w().cw();
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = jd.b($$9, 0, 0);
+         long $$11 = jd.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = jd.c($$13);
+            int $$15 = jd.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dqc<T> $$16 = (dqc<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
+            }
+         }
       }
-
-      return null;
    }
 
-   public Optional<bnq> a(aow $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   public LongStream a(long $$0) {
+      int $$1 = cvl.a($$0);
+      int $$2 = cvl.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
    }
 
-   public Optional<bnq> b(aow $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof cid).map($$0x -> (cid)$$0x).map(cid::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jd.b($$0, 0, $$1);
+      long $$3 = jd.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
    }
 
-   public ij<dpw> a() {
-      return this.b;
+   public Stream<dqc<T>> b(long $$0) {
+      return this.a($$0).<dqc<T>>mapToObj(this.c::get).filter(Objects::nonNull);
    }
 
-   public float b() {
-      return this.c;
+   private static long f(long $$0) {
+      return cvl.c(jd.b($$0), jd.d($$0));
    }
 
-   public enz c() {
-      return this.d;
+   public dqc<T> c(long $$0) {
+      return (dqc<T>)this.c.computeIfAbsent($$0, this::g);
    }
 
    @Nullable
-   public UUID d() {
-      return this.e;
+   public dqc<T> d(long $$0) {
+      return (dqc<T>)this.c.get($$0);
    }
 
-   @Nullable
-   public UUID e() {
-      return this.f;
+   private dqc<T> g(long $$0) {
+      long $$1 = f($$0);
+      dql $$2 = (dql)this.b.get($$1);
+      this.d.add($$0);
+      return new dqc<>(this.a, $$2);
    }
 
-   @Nullable
-   public bnq f() {
-      return this.g;
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(eoq $$0, ava<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dqf<T, U> $$0, eoq $$1, ava<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @axp
+   public int b() {
+      return this.d.size();
    }
 }

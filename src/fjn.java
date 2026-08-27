@@ -1,59 +1,255 @@
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fjn extends fjj<fre.a> {
-   private static final int r = 120;
-   private static final vq t = vq.c("gui.abuseReport.name.title");
-   private final fde u = fde.d().a(8);
-   private fag v;
-   private ezo w;
+public class fjn {
+   private final arq a;
+   final List<arn> b;
+   final List<arn> c;
+   final Function<arn, ajc> d;
+   final Runnable e;
+   private final Consumer<arq> f;
 
-   private fjn(ffl $$0, frj $$1, fre.a $$2) {
-      super(t, $$0, $$1, $$2);
+   public fjn(Runnable $$0, Function<arn, ajc> $$1, arq $$2, Consumer<arq> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public fjn(ffl $$0, frj $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new fre.a($$2, $$3, $$1.a().b()));
+   public Stream<fjn.a> a() {
+      return this.c.stream().map($$0 -> new fjn.d($$0));
    }
 
-   public fjn(ffl $$0, frj $$1, fre $$2) {
-      this($$0, $$1, new fre.a($$2, $$1.a().b()));
+   public Stream<fjn.a> b() {
+      return this.b.stream().map($$0 -> new fjn.c($$0));
    }
 
-   @Override
-   protected void aQ_() {
-      this.u.c().b();
-      this.u.a(new fav(this.e, this.i));
-      vq $$0 = vq.b(this.q.e().a()).a(n.o);
-      this.u.a(new fav(vq.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
-      this.v = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      this.u.a(fcw.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
-      fde $$1 = this.u.a(fde.e().a(8));
-      $$1.a(ezo.a(vp.k, $$0x -> this.d()).a(120).a());
-      this.w = $$1.a(ezo.a(a, $$0x -> this.o()).a(120).a());
-      this.E();
-      this.u.a($$1x -> {
-         ezm var10000 = this.c($$1x);
-      });
-      this.c();
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(arn::f).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void c() {
-      this.u.a();
-      fcy.a(this.u, this.F());
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   private void E() {
-      frf.b $$0 = this.q.c();
-      this.w.j = $$0 == null;
-      this.w.a(x.a($$0, frf.b::a));
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
+   public interface a {
+      ajc a();
+
+      aro b();
+
+      String c();
+
+      vs d();
+
+      vs e();
+
+      arr f();
+
+      default vs g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fjn.a {
+      private final arn b;
+
+      public b(arn $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<arn> s();
+
+      protected abstract List<arn> t();
+
+      @Override
+      public ajc a() {
+         return fjn.this.d.apply(this.b);
+      }
+
+      @Override
+      public aro b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public vs d() {
+         return this.b.a();
+      }
+
+      @Override
+      public vs e() {
+         return this.b.b();
+      }
+
+      @Override
+      public arr f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fjn.this.e.run();
+         fjn.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            eyn<Boolean> $$0 = eyk.P().m.r();
+            $$0.a(!$$0.c());
+         }
+      }
+
+      protected void a(int $$0) {
+         List<arn> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fjn.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<arn> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<arn> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends fjn.b {
+      public c(arn $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<arn> s() {
+         return fjn.this.b;
+      }
+
+      @Override
+      protected List<arn> t() {
+         return fjn.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fjn.b {
+      public d(arn $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<arn> s() {
+         return fjn.this.c;
+      }
+
+      @Override
+      protected List<arn> t() {
+         return fjn.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

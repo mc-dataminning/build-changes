@@ -1,17 +1,47 @@
-public class fry extends fsa {
-   protected fry(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuc $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+import javax.annotation.Nullable;
+
+public enum fry {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
+
+   private final vs n;
+
+   private fry(String $$0) {
+      this.n = vs.c("gui.banned.reason." + $$0);
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   public vs a() {
+      return this.n;
+   }
 
-      public a(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fry($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
+   @Nullable
+   public static fry a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

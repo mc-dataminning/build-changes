@@ -1,37 +1,153 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-public interface att {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   att b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   att c = $$0 -> a.format((double)$$0 * 0.1);
-   att d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   att e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
+public final class att {
+   private static final Map<cmi, Pair<String, String>> a = ImmutableMap.of(
+      cmi.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cmi.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cmi.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cmi.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cmi, att.a> b;
 
-   String format(int var1);
+   private att(Map<cmi, att.a> $$0) {
+      this.b = $$0;
+   }
+
+   public att() {
+      this(ac.a(Maps.newEnumMap(cmi.class), $$0 -> {
+         for (cmi $$1 : cmi.values()) {
+            $$0.put($$1, new att.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(cmi $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(cmi $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(cmi $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(cmi $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static att a(us $$0) {
+      Map<cmi, att.a> $$1 = Maps.newEnumMap(cmi.class);
+
+      for (cmi $$2 : cmi.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new att.a($$3, $$4));
+      }
+
+      return new att($$1);
+   }
+
+   public void b(us $$0) {
+      for (cmi $$1 : cmi.values()) {
+         att.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static att a(sy $$0) {
+      Map<cmi, att.a> $$1 = Maps.newEnumMap(cmi.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new att.a($$4, $$5));
+      });
+      return new att($$1);
+   }
+
+   public void b(sy $$0) {
+      a.forEach(($$1, $$2) -> {
+         att.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public att a() {
+      Map<cmi, att.a> $$0 = Maps.newEnumMap(cmi.class);
+
+      for (cmi $$1 : cmi.values()) {
+         att.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new att($$0);
+   }
+
+   public void a(att $$0) {
+      this.b.clear();
+
+      for (cmi $$1 : cmi.values()) {
+         att.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof att && this.b.equals(((att)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public att.a a() {
+         return new att.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof att.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
+   }
 }

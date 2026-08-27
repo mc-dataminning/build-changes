@@ -1,3 +1,8 @@
-public interface ghd {
-   void e();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ghd {
 }

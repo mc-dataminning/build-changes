@@ -1,37 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bqg extends bpz {
+   private final double b;
+   private final double c;
 
-public class bqg extends bqa<boi> {
-   private final bxl<Integer> c;
-
-   public bqg(bxl<Integer> $$0) {
-      super(ImmutableMap.of($$0, bxm.a));
-      this.c = $$0;
+   public bqg(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
    }
 
-   private Optional<Integer> b(boi $$0) {
-      return $$0.dO().c(this.c);
+   public double d() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(aow $$0, boi $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(aow $$0, boi $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dO().a(this.c, $$3.get() - 1);
+   public double e() {
+      return this.c;
    }
 
    @Override
-   protected void b(aow $$0, boi $$1, long $$2) {
-      $$1.dO().b(this.c);
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : awm.a($$0, this.b, this.c);
    }
 }

@@ -1,127 +1,138 @@
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ewn extends ewo {
-   private static final vq b = vq.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final vq d = vq.c("mco.connect.connecting");
-   private final eto e;
-   private final ffl f;
+public class ewn extends gob {
+   static final Logger a = LogUtils.getLogger();
+   private static final vs b = vs.c("mco.configure.world.subscription.title");
+   private static final vs c = vs.c("mco.configure.world.subscription.start");
+   private static final vs v = vs.c("mco.configure.world.subscription.timeleft");
+   private static final vs w = vs.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final vs x = vs.c("mco.configure.world.subscription.expired");
+   private static final vs y = vs.c("mco.configure.world.subscription.less_than_a_day");
+   private static final vs z = vs.c("mco.configure.world.subscription.unknown");
+   private static final vs A = vs.c("mco.configure.world.subscription.recurring.info");
+   private final fgh B;
+   final euk C;
+   final fgh D;
+   private vs E = z;
+   private vs F = z;
+   @Nullable
+   private eux.a G;
 
-   public ewn(ffl $$0, eto $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public ewn(fgh $$0, euk $$1, fgh $$2) {
+      super(eyc.a);
+      this.B = $$0;
+      this.C = $$1;
+      this.D = $$2;
    }
 
    @Override
-   public void run() {
-      etp $$0;
+   public void aP_() {
+      this.a(this.C.a);
+      this.c(fak.a(vs.c("mco.configure.world.subscription.extend"), $$0 -> fez.a(this, avi.a(this.C.b, this.f.W().b()))).a(this.g / 2 - 100, g(6), 200, 20).a());
+      if (this.C.j) {
+         this.c(fak.a(vs.c("mco.configure.world.delete.button"), $$0 -> {
+            vs $$1 = vs.c("mco.configure.world.delete.question.line1");
+            vs $$2 = vs.c("mco.configure.world.delete.question.line2");
+            this.f.a(new evz(this::c, evz.a.a, $$1, $$2, true));
+         }).a(this.g / 2 - 100, g(10), 200, 20).a());
+      } else if (eto.b() && this.C.s != null) {
+         this.c(new fau(this.g / 2 - 100, g(8), 200, 46, vs.a("mco.snapshot.subscription.info", this.C.s), this.i).a(-6250336));
+      } else {
+         this.c(new fau(this.g / 2 - 100, g(8), 200, 46, A, this.i).a(-6250336));
+      }
+
+      this.c(fak.a(vr.k, $$0 -> this.d()).a(this.g / 2 - 100, g(12), 200, 20).a());
+   }
+
+   @Override
+   public vs i() {
+      return vr.b(b, c, this.F, v, this.E);
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         (new Thread("Realms-delete-realm") {
+            @Override
+            public void run() {
+               try {
+                  ett $$0 = ett.a();
+                  $$0.i(ewn.this.C.a);
+               } catch (evg var2) {
+                  ewn.a.error("Couldn't delete world", var2);
+               }
+
+               ewn.this.f.execute(() -> ewn.this.f.a(ewn.this.D));
+            }
+         }).start();
+      }
+
+      this.f.a(this);
+   }
+
+   private void a(long $$0) {
+      ett $$1 = ett.a();
+
       try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (euk var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new evs(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = exo.P().b(this.e.g);
-               a(
-                  (ffl)($$3
-                     ? new euv(this.f, this.e.a, this.e.m == eto.d.b)
-                     : new evb(vq.c("mco.brokenworld.nonowner.title"), vq.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
-         }
-      } catch (TimeoutException var6) {
-         this.a(vq.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
+         eux $$2 = $$1.h($$0);
+         this.E = this.a($$2.b);
+         this.F = b($$2.a);
+         this.G = $$2.c;
+      } catch (evg var5) {
+         a.error("Couldn't get subscription", var5);
+         this.f.a(new evx(var5, this.B));
       }
-
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      ffl $$8 = (ffl)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-      a($$8);
    }
 
-   private static UUID a(eto $$0) {
-      return $$0.o != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
+   private static vs b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return vs.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
    }
 
    @Override
-   public vq a() {
-      return d;
+   public void d() {
+      this.f.a(this.B);
    }
 
-   private etp f() throws euk, TimeoutException, CancellationException {
-      esx $$0 = esx.a();
-
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
-         }
-
-         try {
-            return $$0.c(this.e.a);
-         } catch (eul var4) {
-            a((long)var4.c);
-         }
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 100;
+      $$0.a(this.i, b, this.g / 2, 17, -1);
+      $$0.a(this.i, c, $$4, g(0), -6250336, false);
+      $$0.a(this.i, this.F, $$4, g(1), -1, false);
+      if (this.G == eux.a.a) {
+         $$0.a(this.i, v, $$4, g(3), -6250336, false);
+      } else if (this.G == eux.a.b) {
+         $$0.a(this.i, w, $$4, g(3), -6250336, false);
       }
 
-      throw new TimeoutException();
+      $$0.a(this.i, this.E, $$4, g(4), -1, false);
    }
 
-   public eve a(etp $$0) {
-      return new evf(this.f, new ewk(this.f, this.e, $$0));
-   }
-
-   private evd a(etp $$0, UUID $$1, Function<etp, ffl> $$2) {
-      BooleanConsumer $$3 = $$3x -> {
-         if (!$$3x) {
-            a(this.f);
+   private vs a(int $$0) {
+      if ($$0 < 0 && this.C.j) {
+         return x;
+      } else if ($$0 <= 1) {
+         return y;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return vs.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return vs.a("mco.configure.world.subscription.remaining.months", $$1);
          } else {
-            a(new fer(b));
-            this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-               exo.P().ad().i();
-               c.error("Failed to download resource pack from {}", $$0, $$1xx);
-               a(new evb(vq.c("mco.download.resourcePack.fail"), this.f));
-               return null;
-            });
+            return $$4 ? vs.a("mco.configure.world.subscription.remaining.days", $$2) : vs.i();
          }
-      };
-      return new evd($$3, evd.a.b, vq.c("mco.configure.world.resourcepack.question.line1"), vq.c("mco.configure.world.resourcepack.question.line2"), true);
-   }
-
-   private CompletableFuture<?> a(etp $$0, UUID $$1) {
-      try {
-         gjq $$2 = exo.P().ad();
-         CompletableFuture<Void> $$3 = $$2.b($$1);
-         $$2.g();
-         $$2.a($$1, new URL($$0.b), $$0.c);
-         return $$3;
-      } catch (Exception var5) {
-         CompletableFuture<Void> $$5 = new CompletableFuture<>();
-         $$5.completeExceptionally(var5);
-         return $$5;
       }
    }
 }

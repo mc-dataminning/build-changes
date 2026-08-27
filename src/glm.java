@@ -1,58 +1,47 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import javax.annotation.Nullable;
 
-public class glm implements glk {
-   private final glm.a a;
-   private glk b;
-   private final BufferedInputStream c;
+public interface glm {
+   ajc a();
 
-   public glm(glm.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new glm.b(this.c));
+   @Nullable
+   gmr a(gmq var1);
+
+   glj b();
+
+   atq c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   glm.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
+   default boolean s() {
+      return true;
    }
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new glm.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
+   static awt t() {
+      return awt.a();
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      glk create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

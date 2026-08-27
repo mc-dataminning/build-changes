@@ -4,52 +4,33 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 
-public class kd implements jx {
-   public static final Codec<kd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dqa.c.fieldOf("destination").forGetter(kd::c), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kd::d)).apply($$0, kd::new)
-   );
-   public static final xo<vb, kd> b = xo.a(dqa.d, kd::c, xm.d, kd::d, kd::new);
-   public static final jx.a<kd> c = new jx.a<kd>() {
-      public kd a(jy<kd> $$0, StringReader $$1) throws CommandSyntaxException {
+public class kd implements jz {
+   public static final Codec<kd> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.d)).apply($$0, kd::new));
+   public static final xq<vd, kd> b = xq.a(xo.d, $$0 -> $$0.d, kd::new);
+   public static final jz.a<kd> c = new jz.a<kd>() {
+      public kd a(ka<kd> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$2 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$3 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$4 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         int $$5 = $$1.readInt();
-         hz $$6 = hz.a((double)$$2, (double)$$3, (double)$$4);
-         return new kd(new dps($$6), $$5);
+         int $$3 = $$1.readInt();
+         return new kd($$3);
       }
    };
-   private final dqa d;
-   private final int e;
+   private final int d;
 
-   public kd(dqa $$0, int $$1) {
+   public kd(int $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
    @Override
-   public String a() {
-      enz $$0 = this.d.a(null).get();
-      double $$1 = $$0.a();
-      double $$2 = $$0.b();
-      double $$3 = $$0.c();
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", kf.j.b(this.b()), $$1, $$2, $$3, this.e);
+   public String a(in.a $$0) {
+      return String.format(Locale.ROOT, "%s %d", kh.j.b(this.a()), this.d);
    }
 
    @Override
-   public jy<kd> b() {
-      return jz.R;
+   public ka<kd> a() {
+      return kb.aS;
    }
 
-   public dqa c() {
+   public int b() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

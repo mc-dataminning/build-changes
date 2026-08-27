@@ -1,79 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-public class fss extends fuh {
-   private final float a;
-   private final fuc b;
+@FunctionalInterface
+public interface fss {
+   Logger a = LogUtils.getLogger();
+   fss b = $$0 -> Optional.empty();
 
-   fss(fqe $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fuc $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
+   Optional<fsp> lookupRedirect(fsp var1);
 
-   @Override
-   public ftl b() {
-      return ftl.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements ftk<jr> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
+   static fss createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      @Nullable
-      public fth a(jr $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dlj $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == dex.a) {
-            return null;
-         } else {
-            hz $$9 = hz.a($$2, $$3, $$4);
-            int $$10 = exo.P().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dbo) {
-               $$10 = ((dbo)$$8.b()).b($$8, $$1, $$9);
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fsp($$4x[3], fsp.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
             }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fss($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
          }
-      }
+
+         return Optional.empty();
+      };
    }
 }

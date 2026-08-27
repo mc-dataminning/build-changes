@@ -1,95 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class ajm {
    private static final Logger a = LogUtils.getLogger();
-   private static final aiy b = new aiy("tick");
-   private static final aiy c = new aiy("load");
-   private final MinecraftServer d;
-   private List<hd<du>> e = ImmutableList.of();
-   private boolean f;
-   private ajl g;
+   private static final CompletableFuture<axo> b = CompletableFuture.completedFuture(axo.a);
+   private final ajm.a c;
+   private final dv d;
+   private final csv e;
+   private final auv f;
+   private final ekb g;
+   private final ajo h;
+   private final ajp i;
 
-   public ajm(MinecraftServer $$0, ajl $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public ajm(iy.b $$0, ckl $$1, dv.a $$2, int $$3) {
+      this.c = new ajm.a($$0);
+      this.c.a(ajm.b.a);
+      this.e = new csv(this.c);
+      this.f = new auv($$0);
+      this.d = new dv($$2, dq.a(this.c, $$1));
+      this.g = new ekb(this.c);
+      this.h = new ajo(this.c, this.g);
+      this.i = new ajp($$3, this.d.a());
    }
 
-   public CommandDispatcher<du> a() {
-      return this.d.aG().a();
+   public ajp a() {
+      return this.i;
    }
 
-   public void b() {
-      if (this.d.aQ().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<hd<du>> $$0 = this.g.b(c);
-            this.a($$0, c);
-         }
+   public ekb b() {
+      return this.g;
+   }
 
-         this.a(this.e, b);
+   public csv c() {
+      return this.e;
+   }
+
+   public dv d() {
+      return this.d;
+   }
+
+   public ajo e() {
+      return this.h;
+   }
+
+   public List<arz> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
+   }
+
+   public static CompletableFuture<ajm> a(asf $$0, iy.b $$1, ckl $$2, dv.a $$3, int $$4, Executor $$5, Executor $$6) {
+      ajm $$7 = new ajm($$1, $$2, $$3, $$4);
+      return asl.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(ajm.b.b)).thenApply($$1x -> $$7);
+   }
+
+   public void a(iy $$0) {
+      this.f.a().forEach($$1 -> a($$0, (auv.a<?>)$$1));
+      dja.f();
+      czh.a();
+   }
+
+   private static <T> void a(iy $$0, auv.a<T> $$1) {
+      ajb<? extends ix<T>> $$2 = $$1.a();
+      Map<aut<T>, List<il<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> aut.a($$2, (ajc)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends il<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
+   }
+
+   static class a implements in.a {
+      private final iy a;
+      ajm.b b;
+
+      a(iy $$0) {
+         this.b = ajm.b.b;
+         this.a = $$0;
+      }
+
+      public void a(ajm.b $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public Stream<ajb<? extends ix<?>>> a() {
+         return this.a.a();
+      }
+
+      @Override
+      public <T> Optional<in.b<T>> a(ajb<? extends ix<? extends T>> $$0) {
+         return this.a.c($$0).map($$0x -> this.a($$0x.p(), $$0x.u()));
+      }
+
+      private <T> in.b<T> a(final in.b<T> $$0, final in.b<T> $$1) {
+         return new in.b.a<T>() {
+            @Override
+            protected in.b<T> a() {
+               return switch (a.this.b) {
+                  case b -> $$0;
+                  case a -> $$1;
+               };
+            }
+         };
       }
    }
 
-   private void a(Collection<hd<du>> $$0, aiy $$1) {
-      this.d.aT().a($$1::toString);
-
-      for (hd<du> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.d.aT().c();
-   }
-
-   public void a(hd<du> $$0, du $$1) {
-      bin $$2 = this.d.aT();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         hf<du> $$3 = $$0.a(null, this.a());
-         dv.a($$1, $$2x -> gq.a($$2x, $$3, $$1, dr.a));
-      } catch (dx var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
-      }
-   }
-
-   public void a(ajl $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(ajl $$0) {
-      this.e = ImmutableList.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public du c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<hd<du>> a(aiy $$0) {
-      return this.g.a($$0);
-   }
-
-   public Collection<hd<du>> b(aiy $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<aiy> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<aiy> e() {
-      return this.g.b();
+   static enum b {
+      a,
+      b;
    }
 }

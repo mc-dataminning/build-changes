@@ -1,146 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public record abk(we.a b) implements xz<aai> {
+   public static final xq<us, abk> a = xz.a(abk::a, abk::new);
 
-public class abk implements xx<aag> {
-   public static final xo<vb, abk> a = xx.a(abk::a, abk::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final List<hz> f;
-   private final float g;
-   private final float h;
-   private final float i;
-   private final jx j;
-   private final jx k;
-   private final cvj.a l;
-   private final ij<atk> m;
-
-   public abk(double $$0, double $$1, double $$2, float $$3, List<hz> $$4, @Nullable enz $$5, cvj.a $$6, jx $$7, jx $$8, ij<atk> $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = Lists.newArrayList($$4);
-      this.m = $$9;
-      if ($$5 != null) {
-         this.g = (float)$$5.c;
-         this.h = (float)$$5.d;
-         this.i = (float)$$5.e;
-      } else {
-         this.g = 0.0F;
-         this.h = 0.0F;
-         this.i = 0.0F;
-      }
-
-      this.l = $$6;
-      this.j = $$7;
-      this.k = $$8;
+   private abk(us $$0) {
+      this(we.a.a($$0));
    }
 
-   private abk(vb $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      int $$1 = awi.a(this.b);
-      int $$2 = awi.a(this.c);
-      int $$3 = awi.a(this.d);
-      this.f = $$0.a($$3x -> {
-         int $$4 = $$3x.readByte() + $$1;
-         int $$5 = $$3x.readByte() + $$2;
-         int $$6 = $$3x.readByte() + $$3;
-         return new hz($$4, $$5, $$6);
-      });
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.l = $$0.b(cvj.a.class);
-      this.j = jz.aX.decode($$0);
-      this.k = jz.aX.decode($$0);
-      this.m = atk.d.decode($$0);
-   }
-
-   private void a(vb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      int $$1 = awi.a(this.b);
-      int $$2 = awi.a(this.c);
-      int $$3 = awi.a(this.d);
-      $$0.a(this.f, ($$3x, $$4) -> {
-         int $$5 = $$4.u() - $$1;
-         int $$6 = $$4.v() - $$2;
-         int $$7 = $$4.w() - $$3;
-         $$3x.k($$5);
-         $$3x.k($$6);
-         $$3x.k($$7);
-      });
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      jz.aX.encode($$0, this.j);
-      jz.aX.encode($$0, this.k);
-      atk.d.encode($$0, this.m);
+   private void a(us $$0) {
+      we.a.a($$0, this.b);
    }
 
    @Override
-   public xz<abk> a() {
-      return aeq.D;
+   public yb<abk> a() {
+      return aet.B;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public float b() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public float f() {
-      return this.i;
-   }
-
-   public double g() {
-      return this.b;
-   }
-
-   public double h() {
-      return this.c;
-   }
-
-   public double i() {
-      return this.d;
-   }
-
-   public float j() {
-      return this.e;
-   }
-
-   public List<hz> k() {
-      return this.f;
-   }
-
-   public cvj.a l() {
-      return this.l;
-   }
-
-   public jx m() {
-      return this.j;
-   }
-
-   public jx n() {
-      return this.k;
-   }
-
-   public ij<atk> o() {
-      return this.m;
    }
 }

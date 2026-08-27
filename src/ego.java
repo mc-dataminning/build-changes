@@ -1,17 +1,11 @@
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
+
 public interface ego {
-   void a(hz var1);
+   Codec<ego> c = kh.p.q().dispatch(ego::a, egp::codec);
 
-   boolean L_();
+   @Nullable
+   sy a(awt var1, @Nullable sy var2);
 
-   int a();
-
-   default void a(hz $$0, boolean $$1) {
-      this.a(jb.a($$0), $$1);
-   }
-
-   void a(jb var1, boolean var2);
-
-   void a(cuy var1, boolean var2);
-
-   void b(cuy var1);
+   egp<?> a();
 }

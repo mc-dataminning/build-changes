@@ -1,60 +1,59 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class cqo extends cqr {
-   private final float a;
-   private final Multimap<ij<bpk>, bpn> b;
+public class cqo extends coc {
+   protected static final Map<czf, dme> a = Maps.newHashMap(
+      new Builder()
+         .put(czh.i, czh.kE.o())
+         .put(czh.j, czh.kE.o())
+         .put(czh.l, czh.kE.o())
+         .put(czh.k, czh.kE.o())
+         .put(czh.fl, czh.kE.o())
+         .put(czh.sH, czh.kE.o())
+         .build()
+   );
 
-   public cqo(cqq $$0, int $$1, float $$2, coy.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<ij<bpk>, bpn> $$4 = ImmutableMultimap.builder();
-      $$4.put(bpp.c, new bpn(m, "Weapon modifier", (double)this.a, bpn.a.a));
-      $$4.put(bpp.e, new bpn(n, "Weapon modifier", (double)$$2, bpn.a.a));
-      this.b = $$4.build();
-   }
-
-   public float h() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(dlj $$0, cvr $$1, hz $$2, chl $$3) {
-      return !$$3.f();
+   public cqo(crd $$0, float $$1, float $$2, cpl.a $$3) {
+      super($$1, $$2, $$0, aue.bC, $$3);
    }
 
    @Override
-   public float a(cpd $$0, dlj $$1) {
-      if ($$1.a(cyu.bs)) {
-         return 15.0F;
+   public bml a(crz $$0) {
+      cwe $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dme $$3 = $$1.a_($$2);
+      if ($$0.k() == ih.a) {
+         return bml.d;
       } else {
-         return $$1.a(aua.bD) ? 1.5F : 1.0F;
+         cia $$4 = $$0.o();
+         dme $$5 = a.get($$3.b());
+         dme $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, atp.wd, atq.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof czt && $$3.c(czt.c)) {
+            if (!$$1.y_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            czt.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(czt.c, Boolean.valueOf(false));
+         }
+
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dqr.c, $$2, dqr.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, box.d($$0.p()));
+               }
+            }
+
+            return bml.a($$1.B);
+         } else {
+            return bml.d;
+         }
       }
-   }
-
-   @Override
-   public boolean a(cpd $$0, boi $$1, boi $$2) {
-      $$0.a(1, $$2, bnx.a);
-      return true;
-   }
-
-   @Override
-   public boolean a(cpd $$0, cvr $$1, dlj $$2, hz $$3, boi $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, bnx.a);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a_(dlj $$0) {
-      return $$0.a(cyu.bs);
-   }
-
-   @Override
-   public Multimap<ij<bpk>, bpn> a(bnx $$0) {
-      return $$0 == bnx.a ? this.b : super.a($$0);
    }
 }

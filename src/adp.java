@@ -1,74 +1,60 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-public class adp implements xx<aag> {
-   public static final xo<vb, adp> a = xx.a(adp::a, adp::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final vq f;
-   private final epg.a g;
-   private final Optional<xg> h;
-   private final int i;
+public class adp implements xz<aai> {
+   public static final xq<vd, adp> a = xz.a(adp::a, adp::new);
+   private static final byte b = -128;
+   private final int c;
+   private final List<Pair<bom, cpq>> d;
 
-   public adp(eov $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
+   public adp(int $$0, List<Pair<bom, cpq>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private adp(vb $$0) {
-      this.e = $$0.r();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = vp.a;
-         this.g = epg.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = $$0.m();
-         this.g = $$0.b(epg.a.class);
-         this.h = xi.d.decode($$0);
-      }
+   private adp(vd $$0) {
+      this.c = $$0.l();
+      bom[] $$1 = bom.values();
+      this.d = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bom $$3 = $$1[$$2 & 127];
+         cpq $$4 = cpq.f.decode($$0);
+         this.d.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
-   private void a(vb $$0) {
-      $$0.a(this.e);
-      $$0.k(this.i);
-      if (this.i == 0 || this.i == 2) {
-         $$0.a(this.f);
-         $$0.a(this.g);
-         xi.d.encode($$0, this.h);
+   private void a(vd $$0) {
+      $$0.c(this.c);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bom, cpq> $$3 = this.d.get($$2);
+         bom $$4 = (bom)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         cpq.f.encode($$0, (cpq)$$3.getSecond());
       }
    }
 
    @Override
-   public xz<adp> a() {
-      return aeq.aH;
+   public yb<adp> a() {
+      return aet.aF;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.c;
    }
 
-   public vq e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.i;
-   }
-
-   public epg.a g() {
-      return this.g;
-   }
-
-   public Optional<xg> h() {
-      return this.h;
+   public List<Pair<bom, cpq>> e() {
+      return this.d;
    }
 }

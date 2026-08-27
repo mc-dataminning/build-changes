@@ -1,19 +1,45 @@
-import java.util.Map;
-
-public class cfs extends bqa<cfn> {
-   public cfs() {
-      super(Map.of(bxl.o, bxm.a, bxl.aZ, bxm.b, bxl.ba, bxm.b, bxl.m, bxm.b, bxl.aV, bxm.b));
+public class cfs extends cep {
+   public cfs(bol<? extends cfs> $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aow $$0, cfn $$1) {
-      return $$1.bO() || $$1.aZ() || $$1.c(bnf.y) != null;
+   public static boolean a(bol<cfs> $$0, cwt $$1, bpb $$2, ib $$3, awt $$4) {
+      ib $$5 = $$3;
+
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(czh.qP));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (bpb.a($$2) || $$1.h($$5.d()));
    }
 
-   protected boolean a(aow $$0, cfn $$1, long $$2) {
-      return false;
+   @Override
+   protected ato y() {
+      return atp.yF;
    }
 
-   protected void b(aow $$0, cfn $$1, long $$2) {
-      $$1.dO().a(bxl.aV, axk.a, 60L);
+   @Override
+   protected ato d(bne $$0) {
+      return atp.yH;
+   }
+
+   @Override
+   protected ato n_() {
+      return atp.yG;
+   }
+
+   @Override
+   ato w() {
+      return atp.yI;
+   }
+
+   @Override
+   protected cig b(cpq $$0, float $$1) {
+      cig $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cii) {
+         ((cii)$$2).a(new bns(bnu.b, 600));
+      }
+
+      return $$2;
    }
 }

@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ec implements ArgumentType<n> {
    private static final Collection<String> b = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("argument.color.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("argument.color.invalid", $$0));
 
    private ec() {
    }

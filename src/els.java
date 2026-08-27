@@ -3,57 +3,81 @@ import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class els implements emb {
-   protected final List<emb> c;
-   private final Predicate<ejc> a;
+public class els extends elk {
+   public static final Codec<els> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(kh.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ekp.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, els::new)
+   );
+   private final il<djn<?>> b;
+   private final List<ekr> c;
 
-   protected els(List<emb> $$0, Predicate<ejc> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends els> Codec<T> a(Function<List<emb>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(emd.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends els> Codec<T> b(Function<List<emb>, T> $$0) {
-      return emd.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ejc $$0) {
-      return this.a.test($$0);
+   els(List<emx> $$0, il<djn<?>> $$1, List<ekr> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public void a(ejl $$0) {
-      emb.super.a($$0);
+   public elm b() {
+      return eln.p;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   @Override
+   public cpq a(cpq $$0, ejy $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         iu<cpq> $$2 = iu.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ekg.a($$1.d(), $$2::add), $$1)));
+         sy $$3 = new sy();
+         bmf.a($$3, $$2);
+         sy $$4 = cnl.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
+         } else {
+            $$4.a($$3);
+         }
+
+         cnl.a($$0, this.b.a(), $$4);
+         return $$0;
       }
    }
 
-   public abstract static class a implements emb.a {
-      private final Builder<emb> a = ImmutableList.builder();
+   @Override
+   public void a(ekh $$0) {
+      super.a($$0);
 
-      protected a(emb.a... $$0) {
-         for (emb.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static els.a a(djn<?> $$0) {
+      return new els.a($$0);
+   }
+
+   public static class a extends elk.a<els.a> {
+      private final Builder<ekr> a = ImmutableList.builder();
+      private final djn<?> b;
+
+      public a(djn<?> $$0) {
+         this.b = $$0;
       }
 
-      public void a(emb.a $$0) {
-         this.a.add($$0.build());
+      protected els.a a() {
+         return this;
+      }
+
+      public els.a a(ekr.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
       @Override
-      public emb build() {
-         return this.a(this.a.build());
+      public ell b() {
+         return new els(this.g(), this.b.a(), this.a.build());
       }
-
-      protected abstract emb a(List<emb> var1);
    }
 }

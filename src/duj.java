@@ -1,167 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class duj extends dtz<dui> {
-   private static final float a = 0.06F;
-
-   public duj(Codec<dui> $$0) {
+public abstract class duj extends duu<dxf> {
+   public duj(Codec<dxf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dub<dui> $$0) {
-      cwm $$1 = $$0.b();
-      hz $$2 = $$0.e();
-      awp $$3 = $$0.d();
-      dng $$4 = $$0.c();
-      dui $$5 = $$0.f();
-      cys $$6 = $$5.b.b();
-      hz $$7 = null;
-      dlj $$8 = $$1.a_($$2.d());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
-      }
+   public boolean a(duw<dxf> $$0) {
+      awt $$1 = $$0.d();
+      cwz $$2 = $$0.b();
+      ib $$3 = $$0.e();
+      Optional<czf> $$4 = kh.e.a(aue.ap, $$1).map(il::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-      if ($$7 == null) {
+   protected abstract boolean a(cwf var1, awt var2, ib var3, dme var4);
+
+   protected boolean b(cwf $$0, awt $$1, ib $$2, dme $$3) {
+      ib $$4 = $$2.c();
+      dme $$5 = $$0.a_($$2);
+      if (($$5.a(czh.G) || $$5.a(aue.as)) && $$0.a_($$4).a(czh.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            kh.e.a(aue.as, $$1).map(il::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, czh.mV.o().a(dgb.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (ih $$6 : ih.c.a) {
+            if ($$1.i() < 0.2F) {
+               ib $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(czh.G)) {
+                  kh.e.a(aue.aq, $$1).map(il::a).ifPresent($$3x -> {
+                     dme $$4x = $$3x.o();
+                     if ($$4x.b(cyq.c)) {
+                        $$4x = $$4x.a(cyq.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
          return false;
-      } else {
-         int $$9 = awi.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
-         }
-
-         if (!$$5.g) {
-            int $$10 = $$4.d();
-            if ($$7.v() + $$9 + 1 >= $$10) {
-               return false;
-            }
-         }
-
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, cyu.a.o(), 4);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
-         return true;
-      }
-   }
-
-   private static boolean a(cwm $$0, hz $$1, dui $$2, boolean $$3) {
-      if ($$0.a($$1, dli.a::r)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
-      }
-   }
-
-   private void a(cwm $$0, awp $$1, dui $$2, hz $$3, int $$4, boolean $$5) {
-      hz.a $$6 = new hz.a();
-      dlj $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && awi.a($$9) == $$8 && awi.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.d()).i()) {
-                        $$0.b($$6, true);
-                     }
-
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
-                     }
-                  } else {
-                     this.a($$0, $$6, $$7);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void b(cwm $$0, awp $$1, dui $$2, hz $$3, int $$4, boolean $$5) {
-      hz.a $$6 = new hz.a();
-      boolean $$7 = $$2.d.a(cyu.kK);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
-
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.d()).i()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(cvs $$0, awp $$1, dui $$2, hz.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
-      }
-   }
-
-   private void a(cvs $$0, awp $$1, hz $$2, dlj $$3, boolean $$4) {
-      if ($$0.a_($$2.d()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
-      }
-   }
-
-   private static void a(hz $$0, cvs $$1, awp $$2) {
-      hz.a $$3 = $$0.j().c(ie.a);
-      if ($$1.u($$3)) {
-         int $$4 = awi.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
-         }
-
-         int $$5 = 23;
-         int $$6 = 25;
-         dvs.a($$1, $$2, $$3, $$4, 23, 25);
       }
    }
 }

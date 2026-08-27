@@ -1,50 +1,59 @@
-import javax.annotation.Nullable;
+import java.util.concurrent.locks.LockSupport;
 
-public class gmo {
-   private final gmv a;
-   private final exs b;
-   @Nullable
-   private fbz c;
+public class gmo extends blb<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public gmo(gmv $$0, exs $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gmo() {
+      super("Sound executor");
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      vq $$0 = vq.c("tutorial.bundleInsert.title");
-      vq $$1 = vq.c("tutorial.bundleInsert.description");
-      this.c = new fbz(fbz.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
+   }
 
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.as();
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread az() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
       }
    }
 
-   public void a(cpd $$0, cpd $$1, ckn $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cpg.qT)) {
-            if ($$2 == ckn.a) {
-               this.a();
-            } else if ($$2 == ckn.b) {
-               this.b();
-            }
-         } else if ($$0.a(cpg.qT) && !$$1.b() && $$2 == ckn.b) {
-            this.b();
-         }
+   @Override
+   protected void z() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
+
+      this.by();
+      this.b = false;
+      this.a = this.b();
    }
 }

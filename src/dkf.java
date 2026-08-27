@@ -1,229 +1,109 @@
-import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dkf extends dkb implements bmi {
-   public static final int e = 9;
-   public static final int f = 3;
-   public static final int g = 27;
-   public static final int h = 1;
-   public static final int i = 10;
-   public static final float j = 0.5F;
-   public static final float k = 270.0F;
-   public static final String l = "Items";
-   private static final int[] r = IntStream.range(0, 27).toArray();
-   private is<cpd> s = is.a(27, cpd.h);
-   private int t;
-   private dkf.a u = dkf.a.a;
-   private float v;
-   private float w;
-   @Nullable
-   private final cnr x;
+public class dkf extends djl implements bmq {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final awt k = awt.a();
+   private vs l;
 
-   public dkf(@Nullable cnr $$0, hz $$1, dlj $$2) {
-      super(diz.x, $$1, $$2);
-      this.x = $$0;
+   public dkf(ib $$0, dme $$1) {
+      super(djn.m, $$0, $$1);
    }
 
-   public dkf(hz $$0, dlj $$1) {
-      super(diz.x, $$0, $$1);
-      this.x = dfq.a($$1.b());
-   }
-
-   public static void a(cvr $$0, hz $$1, dlj $$2, dkf $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(cvr $$0, hz $$1, dlj $$2) {
-      this.w = this.v;
-      switch (this.u) {
-         case a:
-            this.v = 0.0F;
-            break;
-         case b:
-            this.v += 0.1F;
-            if (this.w == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v >= 1.0F) {
-               this.u = dkf.a.c;
-               this.v = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case d:
-            this.v -= 0.1F;
-            if (this.w == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v <= 0.0F) {
-               this.u = dkf.a.a;
-               this.v = 0.0F;
-               d($$0, $$1, $$2);
-            }
-            break;
-         case c:
-            this.v = 1.0F;
-      }
-   }
-
-   public dkf.a m() {
-      return this.u;
-   }
-
-   public enu a(dlj $$0) {
-      return cex.a(1.0F, $$0.c(dfq.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(cvr $$0, hz $$1, dlj $$2) {
-      if ($$2.b() instanceof dfq) {
-         ie $$3 = $$2.c(dfq.b);
-         enu $$4 = cex.a(1.0F, $$3, this.w, this.v).a($$1);
-         List<bnq> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bnq $$6 : $$5) {
-               if ($$6.s_() != ehb.d) {
-                  $$6.a(bon.d, new enz(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
+   @Override
+   protected void b(sy $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (this.ae()) {
+         $$0.a("CustomName", vs.a.a(this.l));
       }
    }
 
    @Override
-   public int b() {
-      return this.s.size();
+   public void a(sy $$0, in.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = vs.a.a($$0.l("CustomName"));
+      }
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.t = $$1;
-         if ($$1 == 0) {
-            this.u = dkf.a.d;
-         }
+   public static void a(cwe $$0, ib $$1, dme $$2, dkf $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cia $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.do() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.du() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)awm.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-         if ($$1 == 1) {
-            this.u = dkf.a.b;
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
-
-         return true;
       } else {
-         return super.a_($$0, $$1);
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
-   }
 
-   private static void d(cvr $$0, hz $$1, dlj $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(chl $$0) {
-      if (!this.q && !$$0.P_()) {
-         if (this.t < 0) {
-            this.t = 0;
-         }
-
-         this.t++;
-         this.o.a(this.p, this.r().b(), 1, this.t);
-         if (this.t == 1) {
-            this.o.a($$0, dpw.k, this.p);
-            this.o.a(null, this.p, atl.wg, atm.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
-   }
 
-   @Override
-   public void c(chl $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.t--;
-         this.o.a(this.p, this.r().b(), 1, this.t);
-         if (this.t <= 0) {
-            this.o.a($$0, dpw.j, this.p);
-            this.o.a(null, this.p, atl.wf, atm.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
-   }
 
-   @Override
-   protected vq l() {
-      return vq.c("container.shulkerBox");
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.d($$0);
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         blq.a($$0, this.s, false);
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
       }
-   }
 
-   @Override
-   public void d(sw $$0) {
-      this.s = is.a(this.b(), cpd.h);
-      if (!this.c_($$0) && $$0.b("Items", 9)) {
-         blq.b($$0, this.s);
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
       }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = awm.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = awm.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   protected is<cpd> k() {
-      return this.s;
+   public vs ad() {
+      return (vs)(this.l != null ? this.l : vs.c("container.enchant"));
    }
 
-   @Override
-   protected void a(is<cpd> $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public int[] a(ie $$0) {
-      return r;
-   }
-
-   @Override
-   public boolean a(int $$0, cpd $$1, @Nullable ie $$2) {
-      return !(cys.a($$1.d()) instanceof dfq);
-   }
-
-   @Override
-   public boolean b(int $$0, cpd $$1, ie $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return awi.i($$0, this.w, this.v);
+   public void a(@Nullable vs $$0) {
+      this.l = $$0;
    }
 
    @Nullable
-   public cnr w() {
-      return this.x;
-   }
-
    @Override
-   protected ckf a(int $$0, chk $$1) {
-      return new clx($$0, $$1, this);
-   }
-
-   public boolean x() {
-      return this.u == dkf.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public vs af() {
+      return this.l;
    }
 }

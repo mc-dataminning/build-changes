@@ -1,74 +1,45 @@
-import javax.annotation.Nullable;
+public class clr extends cmp {
+   private final cia a;
+   private int b;
 
-public class clr extends bmf {
-   @Nullable
-   private djs c;
-
-   public clr() {
-      super(27);
-   }
-
-   public void a(djs $$0) {
-      this.c = $$0;
-   }
-
-   public boolean b(djs $$0) {
-      return this.c == $$0;
+   public clr(cia $$0, bme $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public void a(tc $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         this.a($$1, cpd.h);
-      }
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         sw $$3 = $$0.a($$2);
-         int $$4 = $$3.f("Slot") & 255;
-         if ($$4 >= 0 && $$4 < this.b()) {
-            this.a($$4, cpd.a($$3));
-         }
-      }
+   public boolean a(cpq $$0) {
+      return false;
    }
 
    @Override
-   public tc g() {
-      tc $$0 = new tc();
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cpd $$2 = this.a($$1);
-         if (!$$2.b()) {
-            sw $$3 = new sw();
-            $$3.a("Slot", (byte)$$1);
-            $$2.b($$3);
-            $$0.add($$3);
-         }
+   public cpq a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().M());
       }
 
-      return $$0;
+      return super.a($$0);
    }
 
    @Override
-   public boolean a(chl $$0) {
-      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   public void a(cia $$0, cpq $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
    }
 
    @Override
-   public void d_(chl $$0) {
-      if (this.c != null) {
-         this.c.a($$0);
-      }
-
-      super.d_($$0);
+   protected void a(cpq $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public void c(chl $$0) {
-      if (this.c != null) {
-         this.c.b($$0);
+   protected void b_(cpq $$0) {
+      $$0.a(this.a.dJ(), this.a, this.b);
+      if (this.a instanceof apb $$1 && this.d instanceof dja $$2) {
+         $$2.a($$1);
       }
 
-      super.c($$0);
-      this.c = null;
+      this.b = 0;
    }
 }

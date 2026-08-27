@@ -1,98 +1,92 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ewa {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
+public class ewa extends gob {
+   private static final Logger a = LogUtils.getLogger();
+   private static final goc b = new goc(Duration.ofSeconds(5L));
+   private final List<exk> c;
+   private final fgh v;
+   private final fea w = fea.d();
+   private volatile vs x;
    @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+   private faz y;
+
+   public ewa(fgh $$0, exk... $$1) {
+      super(eyc.a);
+      this.v = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
       } else {
-         return $$2.apply($$3.getAsJsonObject());
+         this.x = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (exk $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new eve(a));
+         $$3.start();
       }
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
+   @Override
+   public void e() {
+      super.e();
+      if (this.y != null) {
+         b.a(this.f.aX(), this.y.x());
       }
    }
 
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
       } else {
-         return $$2;
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
+   @Override
+   public void aP_() {
+      this.w.c().b();
+      this.y = new faz(this.i, this.x);
+      this.w.a(this.y, $$0 -> $$0.e(30));
+      this.w.a(fak.a(vr.e, $$0 -> this.f()).a());
+      this.w.a($$1 -> {
+         fai var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.w.a();
+      fdu.a(this.w, this.F());
+   }
+
+   protected void f() {
+      for (exk $$0 : this.c) {
+         $$0.b();
       }
+
+      this.f.a(this.v);
    }
 
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
+   public void a(vs $$0) {
+      if (this.y != null) {
+         this.y.b($$0);
       }
-   }
 
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
+      this.x = $$0;
    }
 }

@@ -1,60 +1,87 @@
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class gmj {
-   private boolean a;
-   @Nullable
-   private gmd.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private final Set<gmj.a> a = Sets.newIdentityHashSet();
+   final eqy b;
+   final Executor c;
 
-   public gmj(@Nullable String $$0) {
-      this.d = $$0;
+   public gmj(eqy $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(gme.a $$0) {
-      if (this.c != null) {
-         $$0.a(gmd.j, !this.c.equals("vanilla"));
+   public CompletableFuture<gmj.a> a(eqy.c $$0) {
+      CompletableFuture<gmj.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         eqx $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gmj.a $$3 = new gmj.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<eqx>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gmj.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gmj.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gmj.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      eqx b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      $$0.a(gmd.k, this.a());
-   }
-
-   private gmd.c a() {
-      fqq $$0 = exo.P().R();
-      if ($$0 != null && $$0.e()) {
-         return gmd.c.a;
-      } else {
-         return exo.P().T() ? gmd.c.b : gmd.c.c;
+      public a(eqx $$1) {
+         this.b = $$1;
       }
-   }
 
-   public boolean a(gma $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gmb.b, $$0x -> {
-            $$0x.a(gmd.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gmd.o, this.d);
+      public void a(Consumer<eqx> $$0) {
+         gmj.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
             }
          });
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   public void a(cvo $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gmd.b.e : gmd.b.a;
-         case b -> gmd.b.b;
-         case c -> gmd.b.c;
-         case d -> gmd.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+      public void b() {
+         this.c = true;
+         gmj.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

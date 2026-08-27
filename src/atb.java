@@ -1,45 +1,38 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class atb implements dt {
-   private static final String b = "Rcon";
-   private static final vq c = vq.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
-
-   public atb(MinecraftServer $$0) {
-      this.e = $$0;
+public class atb extends asw<GameProfile> {
+   public atb(GameProfile $$0) {
+      super($$0);
    }
 
-   public void e() {
-      this.d.setLength(0);
-   }
-
-   public String f() {
-      return this.d.toString();
-   }
-
-   public du g() {
-      aow $$0 = this.e.H();
-      return new du(this, enz.a($$0.T()), eny.a, $$0, 4, "Rcon", c, this.e, null);
+   public atb(JsonObject $$0) {
+      super(b($$0));
    }
 
    @Override
-   public void a(vq $$0) {
-      this.d.append($$0.getString());
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+      }
    }
 
-   @Override
-   public boolean l_() {
-      return true;
-   }
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   @Override
-   public boolean x_() {
-      return true;
-   }
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
 
-   @Override
-   public boolean W_() {
-      return this.e.k();
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

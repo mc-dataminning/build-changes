@@ -1,31 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dui implements dwd {
-   public static final Codec<dui> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlj.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dlj.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dlj.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dlj.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dsc.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dui::new)
-   );
-   public final dlj b;
-   public final dlj c;
-   public final dlj d;
-   public final dlj e;
-   public final dsc f;
-   public final boolean g;
+public class dui extends duj {
+   public dui(Codec<dxf> $$0) {
+      super($$0);
+   }
 
-   public dui(dlj $$0, dlj $$1, dlj $$2, dlj $$3, dsc $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   protected boolean a(cwf $$0, awt $$1, ib $$2, dme $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ih $$4 = ih.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ih> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+
+         for (ih $$8 : $$6.subList(0, $$5)) {
+            ib.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ih $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ih.b);
+               ih[] $$13 = new ih[]{$$8, ih.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ih.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ih.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

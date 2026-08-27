@@ -1,24 +1,31 @@
-public class cqg extends coy {
-   public cqg(coy.a $$0) {
+import java.util.function.Predicate;
+
+public abstract class cqg extends cpl {
+   public static final Predicate<cpq> c = $$0 -> $$0.a(aum.at);
+   public static final Predicate<cpq> d = c.or($$0 -> $$0.a(cpt.uq));
+
+   public cqg(cpl.a $$0) {
       super($$0);
    }
 
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atl.xT, atm.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cii $$4 = new cii($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(atv.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
-
-      return blx.a($$3, $$0.y_());
+   public Predicate<cpq> d() {
+      return this.b();
    }
+
+   public abstract Predicate<cpq> b();
+
+   public static cpq a(box $$0, Predicate<cpq> $$1) {
+      if ($$1.test($$0.b(bmk.b))) {
+         return $$0.b(bmk.b);
+      } else {
+         return $$1.test($$0.b(bmk.a)) ? $$0.b(bmk.a) : cpq.h;
+      }
+   }
+
+   @Override
+   public int e() {
+      return 1;
+   }
+
+   public abstract int c();
 }

@@ -1,55 +1,184 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ejh<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final ejh<emb> a = new ejh<>(emd.a, "predicates", c());
-   public static final ejh<ekp> b = new ejh<>(ekr.b, "item_modifiers", c());
-   public static final ejh<ejk> c = new ejh<>(ejk.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final ejh.a<T> g;
+public class ejh implements ejt {
+   private final eju a;
+   private final ejt b;
 
-   private ejh(Codec<T> $$0, String $$1, ejh.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ejh(eju $$0, ejt $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public String a() {
-      return this.f;
+   @Override
+   public ib a() {
+      return this.b.a();
    }
 
-   public void a(ejl $$0, eje<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public Optional<T> a(aiy $$0, JsonElement $$1) {
-      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
-      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$2.result();
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public static Stream<ejh<?>> b() {
-      return Stream.of(a, b, c);
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   private static <T extends ejd> ejh.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   private static ejh.a<ejk> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   @Override
+   public int f() {
+      return this.b.f();
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(ejl var1, eje<T> var2, T var3);
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public cwb k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ib $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(cwb $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public cwa o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dnv.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dnv.c $$0) {
+   }
+
+   @Override
+   public bmi q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public eoi<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, cwg $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

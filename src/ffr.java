@@ -1,77 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class ffr extends ffl {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final vq k;
-   private final vv l;
-   private final ImmutableList<ffr.a> m;
-   private fah n = fah.a;
-   private int o;
-   private int p;
+public class ffr extends fgh {
+   private static final long a = 2000L;
+   private final apn b;
+   private long c = -1L;
+   private boolean k;
+   private static final Object2IntMap<dof> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dof.c, 5526612);
+      $$0.put(dof.d, 10066329);
+      $$0.put(dof.e, 6250897);
+      $$0.put(dof.f, 8434258);
+      $$0.put(dof.g, 13750737);
+      $$0.put(dof.h, 7497737);
+      $$0.put(dof.i, 3159410);
+      $$0.put(dof.j, 2213376);
+      $$0.put(dof.k, 13421772);
+      $$0.put(dof.l, 16769184);
+      $$0.put(dof.m, 15884384);
+      $$0.put(dof.n, 16777215);
+   });
 
-   protected ffr(vq $$0, List<vq> $$1, ImmutableList<ffr.a> $$2) {
-      super($$0);
-      this.l = vv.a($$1);
-      this.k = vp.a($$0, vt.a($$1, vp.a));
-      this.m = $$2;
+   public ffr(apn $$0) {
+      super(eyc.a);
+      this.b = $$0;
    }
 
    @Override
-   public vq i() {
-      return this.k;
-   }
-
-   @Override
-   public void aQ_() {
-      UnmodifiableIterator $$1 = this.m.iterator();
-
-      while ($$1.hasNext()) {
-         ffr.a $$0 = (ffr.a)$$1.next();
-         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
-      }
-
-      int $$1x = 5 + this.p + 5;
-      int $$2 = $$1x * this.m.size();
-      this.n = fah.a(this.i, this.l, $$2);
-      int $$3 = this.n.a() * 9;
-      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.o + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
-         ffr.a $$6 = (ffr.a)var6.next();
-         this.c(ezo.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
-      }
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
-      this.n.a($$0, this.g / 2, this.o);
-   }
-
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public boolean aO_() {
+   public boolean aN_() {
       return false;
    }
 
-   public static final class a {
-      final vq a;
-      final ezo.c b;
+   @Override
+   protected boolean aO_() {
+      return false;
+   }
 
-      public a(vq $$0, ezo.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void k() {
+      this.k = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fef $$0) {
+      if (this.k) {
+         $$0.a(fee.a, vs.c("narrator.loading.done"));
+      } else {
+         $$0.a(fee.a, this.o());
       }
+   }
+
+   private vs o() {
+      return vs.a("loading.progress", awm.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.g / 2;
+      int $$6 = this.h / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.i, this.o(), $$5, $$6 - $$7, 16777215);
+   }
+
+   public static void a(ezx $$0, apn $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+         }
+
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dof $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
+            }
+         }
+      });
    }
 }

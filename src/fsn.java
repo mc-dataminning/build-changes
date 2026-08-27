@@ -1,41 +1,33 @@
-public class fsn<T extends ju> extends fuh {
-   private final fuc a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   protected fsn(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fuc $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.e().x(), $$9);
-      this.w = this.a($$7.e().y(), $$9);
-      this.x = this.a($$7.e().z(), $$9);
-      this.D = this.D * 0.75F * $$7.f();
-      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
-      this.b($$8);
-   }
+public interface fsn {
+   boolean a(fso var1);
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
+   boolean a(fsp var1);
 
-   @Override
-   public ftl b() {
-      return ftl.b;
-   }
+   static fsn a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fsn() {
+         @Override
+         public boolean a(fso $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+         @Override
+         public boolean a(fsp $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

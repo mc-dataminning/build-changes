@@ -1,71 +1,49 @@
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class crm {
    @Nullable
-   private final chl a;
-   private final blv b;
-   private final env c;
-   private final cvr d;
-   private final cpd e;
+   private final String a;
+   private final List<bns> b;
 
-   public crm(chl $$0, blv $$1, env $$2) {
-      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
+   public static il<crm> a(String $$0) {
+      ajc $$1 = ajc.a($$0);
+      return $$1 == null ? crp.b : kh.i.c($$1).map(Function.identity()).orElse(crp.b);
    }
 
-   protected crm(cvr $$0, @Nullable chl $$1, blv $$2, cpd $$3, env $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public crm(bns... $$0) {
+      this(null, $$0);
    }
 
-   protected final env j() {
-      return this.c;
+   public crm(@Nullable String $$0, bns... $$1) {
+      this.a = $$0;
+      this.b = List.of($$1);
    }
 
-   public hz a() {
-      return this.c.a();
+   public static String a(il<crm> $$0, String $$1) {
+      String $$2 = $$0.a().a;
+      if ($$2 != null) {
+         return $$1 + $$2;
+      } else {
+         ajb<crm> $$3 = $$0.e().orElse(crp.a);
+         return $$1 + $$3.a().a();
+      }
    }
 
-   public ie k() {
-      return this.c.b();
-   }
-
-   public enz l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cpd n() {
-      return this.e;
-   }
-
-   @Nullable
-   public chl o() {
-      return this.a;
-   }
-
-   public blv p() {
+   public List<bns> a() {
       return this.b;
    }
 
-   public cvr q() {
-      return this.d;
-   }
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         for (bns $$0 : this.b) {
+            if ($$0.b().a().a()) {
+               return true;
+            }
+         }
+      }
 
-   public ie g() {
-      return this.a == null ? ie.c : this.a.cE();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fI();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dC();
+      return false;
    }
 }

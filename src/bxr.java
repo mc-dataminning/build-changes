@@ -1,78 +1,40 @@
-public class bxr extends bxt {
-   public bxr(bok $$0, cvr $$1) {
-      super($$0, $$1);
+import java.util.EnumSet;
+
+public class bxr extends bxu {
+   private final bpt a;
+   private box b;
+   private int c;
+
+   public bxr(bpt $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bvu.a.d));
    }
 
    @Override
-   protected ehn a(int $$0) {
-      this.o = new ehi();
-      this.o.a(true);
-      return new ehn(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(enz $$0, enz $$1) {
-      return a(this.a, $$0, $$1, true);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.p() && this.a.bd() || !this.a.bO();
-   }
-
-   @Override
-   protected enz b() {
-      return this.a.dk();
-   }
-
-   @Override
-   public ehl a(bnq $$0, int $$1) {
-      return this.a($$0.dm(), $$1);
+   public boolean a() {
+      if (this.a.u() && !this.a.gl()) {
+         box $$0 = this.a.R_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eg();
+            int $$1 = $$0.eh();
+            return $$1 != this.c && this.a(this.b, bzn.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
+      this.e.h(this.b);
+      box $$0 = this.a.R_();
+      if ($$0 != null) {
+         this.c = $$0.eh();
       }
 
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            enz $$0 = this.c.a(this.a);
-            if (this.a.dq() == awi.a($$0.c) && this.a.ds() == awi.a($$0.d) && this.a.dw() == awi.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         aep.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            enz $$1 = this.c.a(this.a);
-            this.a.K().a($$1.c, $$1.d, $$1.e, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   @Override
-   public boolean a(hz $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      super.c();
    }
 }

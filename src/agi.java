@@ -1,88 +1,48 @@
-public class agi implements xx<aes> {
-   public static final xo<uq, agi> a = xx.a(agi::a, agi::new);
+public class agi implements xz<aev> {
+   public static final xq<us, agi> a = xz.a(agi::a, agi::new);
    private static final int b = 1;
    private static final int c = 2;
    private static final int d = 4;
-   private final hz e;
-   private final dkl.a f;
-   private final dmt g;
-   private final String h;
-   private final hz i;
-   private final jd j;
-   private final ddo k;
-   private final dfe l;
-   private final String m;
-   private final boolean n;
-   private final boolean o;
-   private final boolean p;
-   private final float q;
-   private final long r;
+   private final ib e;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final djv.a j;
 
-   public agi(
-      hz $$0, dkl.a $$1, dmt $$2, String $$3, hz $$4, jd $$5, ddo $$6, dfe $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
+   public agi(ib $$0, String $$1, djv.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$12;
-      this.r = $$13;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   private agi(uq $$0) {
+   private agi(us $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dkl.a.class);
-      this.g = $$0.b(dmt.class);
-      this.h = $$0.r();
-      int $$1 = 48;
-      this.i = new hz(awi.a($$0.readByte(), -48, 48), awi.a($$0.readByte(), -48, 48), awi.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.j = new jd(awi.a($$0.readByte(), 0, 48), awi.a($$0.readByte(), 0, 48), awi.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(ddo.class);
-      this.l = $$0.b(dfe.class);
-      this.m = $$0.d(128);
-      this.q = awi.a($$0.readFloat(), 0.0F, 1.0F);
-      this.r = $$0.o();
-      int $$3 = $$0.readByte();
-      this.n = ($$3 & 1) != 0;
-      this.o = ($$3 & 2) != 0;
-      this.p = ($$3 & 4) != 0;
+      this.f = $$0.p();
+      this.j = $$0.b(djv.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private void a(uq $$0) {
+   private void a(us $$0) {
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.k(this.i.u());
-      $$0.k(this.i.v());
-      $$0.k(this.i.w());
-      $$0.k(this.j.u());
-      $$0.k(this.j.v());
-      $$0.k(this.j.w());
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.q);
-      $$0.a(this.r);
+      $$0.a(this.j);
       int $$1 = 0;
-      if (this.n) {
+      if (this.g) {
          $$1 |= 1;
       }
 
-      if (this.o) {
+      if (this.h) {
          $$1 |= 2;
       }
 
-      if (this.p) {
+      if (this.i) {
          $$1 |= 4;
       }
 
@@ -90,67 +50,35 @@ public class agi implements xx<aes> {
    }
 
    @Override
-   public xz<agi> a() {
-      return aeq.bU;
+   public yb<agi> a() {
+      return aet.bS;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public hz b() {
+   public ib b() {
       return this.e;
    }
 
-   public dkl.a e() {
+   public String e() {
       return this.f;
    }
 
-   public dmt f() {
+   public boolean f() {
       return this.g;
    }
 
-   public String g() {
+   public boolean g() {
       return this.h;
    }
 
-   public hz h() {
+   public boolean h() {
       return this.i;
    }
 
-   public jd i() {
+   public djv.a i() {
       return this.j;
-   }
-
-   public ddo j() {
-      return this.k;
-   }
-
-   public dfe k() {
-      return this.l;
-   }
-
-   public String l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public boolean o() {
-      return this.p;
-   }
-
-   public float p() {
-      return this.q;
-   }
-
-   public long q() {
-      return this.r;
    }
 }

@@ -1,29 +1,14 @@
-public class yh implements xx<yd> {
-   public static final xo<uq, yh> a = xx.a(yh::a, yh::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public yh(int $$0) {
-      this.b = $$0;
-   }
-
-   private yh(uq $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(uq $$0) {
-      $$0.p(this.b);
-   }
+public record yh(vs b) implements xz<yf> {
+   public static final xq<ByteBuf, yh> a = vu.d.a(yh::new, yh::b);
 
    @Override
-   public xz<yh> a() {
-      return yn.d;
+   public yb<yh> a() {
+      return yp.b;
    }
 
-   public void a(yd $$0) {
+   public void a(yf $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

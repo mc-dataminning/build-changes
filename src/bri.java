@@ -2,25 +2,26 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bri {
-   private static final int a = 1;
+   private static ib a(boz $$0, ib $$1) {
+      awt $$2 = $$0.dJ().z;
+      return $$1.b(a($$2), 0, a($$2));
+   }
 
-   public static bqb<boi> a(float $$0) {
-      return btn.a(
-         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$1 -> $$1.group($$1.a(bxl.n), $$1.c(bxl.m), $$1.b(bxl.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bO()) {
-                        return false;
-                     } else {
-                        bnq $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.m($$8);
-                        } else {
-                           $$2.a(new bql($$8, true));
-                           $$3.a(new bxo(new bql($$8, false), $$0, 1));
-                        }
+   private static int a(awt $$0) {
+      return $$0.a(3) - 1;
+   }
 
-                        return true;
+   public static <E extends boz> bsa<E> a(bya<ib> $$0, int $$1, float $$2) {
+      return buc.a(
+         (Function<buc.b<E>, ? extends App<buc.c<E>, buf<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bya.o), $$3.c(bya.m), $$3.a(bya.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ib $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dj(), (double)$$1);
+                     if (!$$8) {
+                        bqr.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
+
+                     return true;
                   }))
       );
    }

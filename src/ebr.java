@@ -1,44 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public record ebr(List<ebr.a> c, eci d) {
-   public static final Codec<ebr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ebr.a.a.listOf().fieldOf("structures").forGetter(ebr::a), eci.b.fieldOf("placement").forGetter(ebr::b)).apply($$0, ebr::new)
-   );
-   public static final Codec<ij<ebr>> b = aiu.a(kg.aF, a);
+public abstract class ebr extends ebn {
+   protected abstract int a(awt var1, ib var2);
 
-   public ebr(ij<ebl> $$0, eci $$1) {
-      this(List.of(new ebr.a($$0, 1)), $$1);
-   }
-
-   public static ebr.a a(ij<ebl> $$0, int $$1) {
-      return new ebr.a($$0, $$1);
-   }
-
-   public static ebr.a a(ij<ebl> $$0) {
-      return new ebr.a($$0, 1);
-   }
-
-   public List<ebr.a> a() {
-      return this.c;
-   }
-
-   public eci b() {
-      return this.d;
-   }
-
-   public static record a(ij<ebl> b, int c) {
-      public static final Codec<ebr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ebl.b.fieldOf("structure").forGetter(ebr.a::a), avq.j.fieldOf("weight").forGetter(ebr.a::b)).apply($$0, ebr.a::new)
-      );
-
-      public ij<ebl> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @Override
+   public Stream<ib> a_(ebl $$0, awt $$1, ib $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

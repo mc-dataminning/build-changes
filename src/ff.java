@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class ff extends fc<ddo> {
+public class ff extends fc<deb> {
    private ff() {
-      super(ddo.d, ddo::values);
+      super(deb.d, deb::values);
    }
 
-   public static fc<ddo> a() {
+   public static fc<deb> a() {
       return new ff();
    }
 
-   public static ddo a(CommandContext<du> $$0, String $$1) {
-      return (ddo)$$0.getArgument($$1, ddo.class);
+   public static deb a(CommandContext<du> $$0, String $$1) {
+      return (deb)$$0.getArgument($$1, deb.class);
    }
 }

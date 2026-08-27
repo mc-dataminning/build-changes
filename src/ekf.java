@@ -1,59 +1,146 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ekf extends eko {
-   public static final Codec<ekf> a = RecordCodecBuilder.create($$0 -> a($$0).and(ekf.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ekf::new));
-   private final ekf.a b;
+public class ekf {
+   public static final Codec<ekf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ekp.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               avu.a(emz.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
+               avu.a(eln.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
+               ent.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               ent.a.fieldOf("bonus_rolls").orElse(enq.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, ekf::new)
+   );
+   private final List<ekr> b;
+   private final List<emx> c;
+   private final Predicate<ejy> d;
+   private final List<ell> e;
+   private final BiFunction<cpq, ejy, cpq> f;
+   private final ens g;
+   private final ens h;
 
-   private ekf(List<emb> $$0, ekf.a $$1) {
-      super($$0);
-      this.b = $$1;
+   ekf(List<ekr> $$0, List<emx> $$1, List<ell> $$2, ens $$3, ens $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ac.a($$1);
+      this.e = $$2;
+      this.f = eln.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public ekq b() {
-      return ekr.o;
-   }
+   private void b(Consumer<cpq> $$0, ejy $$1) {
+      awt $$2 = $$1.b();
+      List<ekq> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   @Override
-   public Set<elk<?>> a() {
-      return ImmutableSet.of(this.b.g);
-   }
-
-   @Override
-   public cpd a(cpd $$0, ejc $$1) {
-      if ($$1.c(this.b.g) instanceof bmb $$3 && $$3.ae()) {
-         $$0.a($$3.Q_());
+      for (ekr $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
       }
 
-      return $$0;
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (ekq $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
    }
 
-   public static eko.a<?> a(ekf.a $$0) {
-      return a($$1 -> new ekf($$1, $$0));
+   public void a(Consumer<cpq> $$0, ejy $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cpq> $$2 = ell.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + awm.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
    }
 
-   public static enum a implements axc {
-      a("this", eln.a),
-      b("killer", eln.d),
-      c("killer_player", eln.b),
-      d("block_entity", eln.h);
-
-      public static final Codec<ekf.a> e = axc.a(ekf.a::values);
-      private final String f;
-      final elk<?> g;
-
-      private a(String $$0, elk<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   public void a(ekh $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static ekf.a a() {
+      return new ekf.a();
+   }
+
+   public static class a implements eli<ekf.a>, emq<ekf.a> {
+      private final Builder<ekr> a = ImmutableList.builder();
+      private final Builder<emx> b = ImmutableList.builder();
+      private final Builder<ell> c = ImmutableList.builder();
+      private ens d = enq.a(1.0F);
+      private ens e = enq.a(0.0F);
+
+      public ekf.a a(ens $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ekf.a a() {
+         return this;
+      }
+
+      public ekf.a b(ens $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ekf.a a(ekr.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public ekf.a a(emx.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public ekf.a a(ell.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public ekf b() {
+         return new ekf(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

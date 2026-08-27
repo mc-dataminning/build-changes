@@ -1,7 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.annotations.SerializedName;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-interface euh {
+public class euh extends euz implements eut {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public euh(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

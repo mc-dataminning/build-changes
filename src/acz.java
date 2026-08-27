@@ -1,45 +1,19 @@
-public class acz implements xx<aag> {
-   public static final xo<uq, acz> a = xx.a(acz::a, acz::new);
-   private final double b;
-   private final double c;
-   private final long d;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public acz(dna $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
-   }
-
-   private acz(uq $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.o();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-   }
+public record acz(vs b, Optional<byte[]> c) implements xz<aai> {
+   public static final xq<ByteBuf, acz> a = xq.a(vu.d, acz::b, xo.h.a(xo::a), acz::e, acz::new);
 
    @Override
-   public xz<acz> a() {
-      return aeq.ar;
+   public yb<acz> a() {
+      return aet.ap;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public Optional<byte[]> e() {
       return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

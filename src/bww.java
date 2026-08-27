@@ -1,42 +1,125 @@
-import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class bww extends bxf {
-   private final caj a;
-   @Nullable
-   private boi b;
-   private final byy c = byy.a().a(64.0);
+public class bww extends bwh {
+   private final czf g;
+   private final boz h;
+   private int i;
+   private static final int j = 20;
 
-   public bww(caj $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bvf.a.d));
+   public bww(czf $$0, bpf $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean a() {
-      enu $$0 = this.a.cH().c(10.0, 8.0, 10.0);
-      List<? extends boi> $$1 = this.a.dM().a(cgy.class, this.c, this.a, $$0);
-      List<chl> $$2 = this.a.dM().a(this.c, this.a, $$0);
-
-      for (boi $$3 : $$1) {
-         cgy $$4 = (cgy)$$3;
-
-         for (chl $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
+      if (!this.h.dJ().Z().b(cwa.c)) {
+         return false;
+      } else if (this.c > 0) {
+         this.c--;
+         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
+      } else {
+         this.c = this.a(this.a);
+         return false;
       }
+   }
 
-      return this.b == null ? false : !(this.b instanceof chl) || !this.b.P_() && !((chl)this.b).f();
+   @Override
+   public void d() {
+      super.d();
+      this.h.aa = 1.0F;
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
       super.c();
+      this.i = 0;
+   }
+
+   public void a(cwf $$0, ib $$1) {
+   }
+
+   public void a(cwe $$0, ib $$1) {
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      cwe $$0 = this.h.dJ();
+      ib $$1 = this.h.dj();
+      ib $$2 = this.a($$1, $$0);
+      awt $$3 = this.h.ef();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            eov $$4 = this.h.dm();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.B) {
+               double $$5 = 0.08;
+               ((apa)$$0)
+                  .a(
+                     new jx(kb.Q, new cpq(cpt.qQ)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
+            }
+         }
+
+         if (this.i % 2 == 0) {
+            eov $$6 = this.h.dm();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((cwf)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.B) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((apa)$$0).a(kb.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
+      }
+   }
+
+   @Nullable
+   private ib a(ib $$0, cvk $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         ib[] $$2 = new ib[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (ib $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(cwh $$0, ib $$1) {
+      doa $$2 = $$0.a(jd.a($$1.u()), jd.a($$1.w()), dof.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

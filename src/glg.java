@@ -1,23 +1,44 @@
-public class glg {
-   private final String a;
-   private final String b;
-   private long c;
+public class glg extends gkv {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cia p;
+   private final cjt q;
+   private final boolean r;
 
-   public glg(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.b();
+   public glg(cia $$0, cjt $$1, boolean $$2) {
+      super($$2 ? atp.ok : atp.ol, atq.g, glm.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = glm.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.q.aU();
    }
 
-   public String b() {
-      return this.b;
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public void c() {
-      this.c = ac.b();
+   @Override
+   public void q() {
+      if (this.q.dE() || !this.p.bL() || this.p.cW() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dm().h();
+         if ($$0 >= 0.01F) {
+            this.d = awm.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
    }
 }

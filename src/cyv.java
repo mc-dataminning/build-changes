@@ -1,23 +1,28 @@
-public interface cyv {
-   boolean b(cvu var1, hz var2, dlj var3);
+import com.mojang.serialization.MapCodec;
 
-   boolean a(cvr var1, awp var2, hz var3, dlj var4);
+public abstract class cyv extends czf {
+   protected static final int a = 2;
+   protected static final epo b = czf.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   void a(aow var1, awp var2, hz var3, dlj var4);
-
-   default hz a(hz $$0) {
-      return switch (this.av_()) {
-         case a -> $$0.c();
-         case b -> $$0;
-      };
+   protected cyv(dmd.d $$0) {
+      super($$0);
    }
 
-   default cyv.a av_() {
-      return cyv.a.b;
+   @Override
+   protected abstract MapCodec<? extends cyv> a();
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return b;
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !this.a($$0, $$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return a($$1, $$2.d(), ih.b);
    }
 }

@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ej implements ArgumentType<ej.a> {
    private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.player.unknown"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("argument.player.unknown"));
 
    public static Collection<GameProfile> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((ej.a)$$0.getArgument($$1, ej.a.class)).getNames((du)$$0.getSource());
@@ -28,8 +28,8 @@ public class ej implements ArgumentType<ej.a> {
 
    public ej.a a(StringReader $$0) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '@') {
-         gh $$1 = new gh($$0);
-         gg $$2 = $$1.t();
+         gj $$1 = new gj($$0);
+         gi $$2 = $$1.t();
          if ($$2.b()) {
             throw eh.c.create();
          } else {
@@ -44,7 +44,7 @@ public class ej implements ArgumentType<ej.a> {
 
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().at().a($$4);
+            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -54,7 +54,7 @@ public class ej implements ArgumentType<ej.a> {
       if ($$0.getSource() instanceof dz) {
          StringReader $$2 = new StringReader($$1.getInput());
          $$2.setCursor($$1.getStart());
-         gh $$3 = new gh($$2);
+         gj $$3 = new gj($$2);
 
          try {
             $$3.t();
@@ -77,22 +77,22 @@ public class ej implements ArgumentType<ej.a> {
    }
 
    public static class b implements ej.a {
-      private final gg a;
+      private final gi a;
 
-      public b(gg $$0) {
+      public b(gi $$0) {
          this.a = $$0;
       }
 
       @Override
       public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
-         List<aox> $$1 = this.a.d($$0);
+         List<apb> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw eh.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (aox $$3 : $$1) {
-               $$2.add($$3.fS());
+            for (apb $$3 : $$1) {
+               $$2.add($$3.fU());
             }
 
             return $$2;

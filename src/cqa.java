@@ -1,55 +1,62 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cqa extends coy implements coe {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
+public class cqa extends cnt {
+   private final bol<?> a;
+   private final ato b;
 
-   public cqa(coy.a $$0) {
-      super($$0);
-      dax.a(this, cmn.a);
+   public cqa(bol<?> $$0, ehq $$1, ato $$2, cpl.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public String j(cpd $$0) {
-      return cmw.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   public void a(@Nullable cia $$0, cwe $$1, cpq $$2, ib $$3) {
+      if ($$1 instanceof apa) {
+         this.a((apa)$$1, $$2, $$3);
+         $$1.a($$0, dqr.t, $$3);
+      }
    }
 
    @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      cmt.a($$0, $$2);
+   protected void a(@Nullable cia $$0, cwf $$1, ib $$2) {
+      $$1.a($$0, $$2, this.b, atq.g, 1.0F, 1.0F);
+   }
+
+   private void a(apa $$0, cpq $$1, ib $$2) {
+      if (this.a.a($$0, $$1, null, $$2, bpb.l, true, false) instanceof cao $$4) {
+         $$4.c($$1.x());
+         $$4.w(true);
+      }
    }
 
    @Override
-   public cqw c(cpd $$0) {
-      return cqw.d;
-   }
+   public void a(cpq $$0, @Nullable cwe $$1, List<vs> $$2, crh $$3) {
+      if (this.a == bol.be) {
+         sy $$4 = $$0.w();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + cbm.t($$5);
+            String $$8 = "color.minecraft." + cbm.u($$5);
 
-   @Override
-   public int b(cpd $$0) {
-      return 72000;
-   }
+            for (int $$9 = 0; $$9 < cbm.c.size(); $$9++) {
+               if ($$5 == cbm.c.get($$9).a()) {
+                  $$2.add(vs.c(cbm.c($$9)).a($$6));
+                  return;
+               }
+            }
 
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return blx.b($$3);
-   }
+            $$2.add(cbm.v($$5).d().e().a($$6));
+            wg $$10 = vs.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(vs.c($$8));
+            }
 
-   @Override
-   public boolean a(cpd $$0, cpd $$1) {
-      return $$1.a(aui.b) || super.a($$0, $$1);
-   }
-
-   public static cnr d(cpd $$0) {
-      sw $$1 = cmw.a($$0);
-      return $$1 != null ? cnr.a($$1.h("Base")) : cnr.a;
-   }
-
-   @Override
-   public bnx g() {
-      return bnx.b;
+            $$10.a($$6);
+            $$2.add($$10);
+         }
+      }
    }
 }

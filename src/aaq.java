@@ -1,309 +1,53 @@
-import java.util.UUID;
-import java.util.function.Function;
+public class aaq implements xz<aai> {
+   public static final xq<vd, aaq> a = xz.a(aaq::a, aaq::new);
+   private final ib b;
+   private final int c;
+   private final int d;
+   private final czf e;
 
-public class aaq implements xx<aag> {
-   public static final xo<uq, aaq> a = xx.a(aaq::a, aaq::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final UUID e;
-   private final aaq.c f;
-   static final aaq.c g = new aaq.c() {
-      @Override
-      public aaq.d a() {
-         return aaq.d.b;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0);
-      }
-
-      @Override
-      public void a(uq $$0) {
-      }
-   };
-
-   private aaq(UUID $$0, aaq.c $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public aaq(ib $$0, czf $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private aaq(uq $$0) {
-      this.e = $$0.p();
-      aaq.d $$1 = $$0.b(aaq.d.class);
-      this.f = $$1.g.apply($$0);
+   private aaq(vd $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = xo.a(ki.f).decode($$0);
    }
 
-   public static aaq a(blm $$0) {
-      return new aaq($$0.i(), new aaq.a($$0));
-   }
-
-   public static aaq a(UUID $$0) {
-      return new aaq($$0, g);
-   }
-
-   public static aaq b(blm $$0) {
-      return new aaq($$0.i(), new aaq.f($$0.k()));
-   }
-
-   public static aaq c(blm $$0) {
-      return new aaq($$0.i(), new aaq.e($$0.j()));
-   }
-
-   public static aaq d(blm $$0) {
-      return new aaq($$0.i(), new aaq.h($$0.l(), $$0.m()));
-   }
-
-   public static aaq e(blm $$0) {
-      return new aaq($$0.i(), new aaq.g($$0.n(), $$0.o(), $$0.p()));
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f.a());
-      this.f.a($$0);
-   }
-
-   static int a(boolean $$0, boolean $$1, boolean $$2) {
-      int $$3 = 0;
-      if ($$0) {
-         $$3 |= 1;
-      }
-
-      if ($$1) {
-         $$3 |= 2;
-      }
-
-      if ($$2) {
-         $$3 |= 4;
-      }
-
-      return $$3;
+   private void a(vd $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.k(this.d);
+      xo.a(ki.f).encode($$0, this.e);
    }
 
    @Override
-   public xz<aaq> a() {
-      return aeq.l;
+   public yb<aaq> a() {
+      return aet.j;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public void a(aaq.b $$0) {
-      this.f.a(this.e, $$0);
+   public ib b() {
+      return this.b;
    }
 
-   static class a implements aaq.c {
-      private final vq a;
-      private final float b;
-      private final blm.a c;
-      private final blm.b d;
-      private final boolean e;
-      private final boolean f;
-      private final boolean g;
-
-      a(blm $$0) {
-         this.a = $$0.j();
-         this.b = $$0.k();
-         this.c = $$0.l();
-         this.d = $$0.m();
-         this.e = $$0.n();
-         this.f = $$0.o();
-         this.g = $$0.p();
-      }
-
-      private a(uq $$0) {
-         this.a = $$0.m();
-         this.b = $$0.readFloat();
-         this.c = $$0.b(blm.a.class);
-         this.d = $$0.b(blm.b.class);
-         int $$1 = $$0.readUnsignedByte();
-         this.e = ($$1 & 1) > 0;
-         this.f = ($$1 & 2) > 0;
-         this.g = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public aaq.d a() {
-         return aaq.d.a;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
-      }
-
-      @Override
-      public void a(uq $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.k(aaq.a(this.e, this.f, this.g));
-      }
+   public int e() {
+      return this.c;
    }
 
-   public interface b {
-      default void a(UUID $$0, vq $$1, float $$2, blm.a $$3, blm.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      }
-
-      default void a(UUID $$0) {
-      }
-
-      default void a(UUID $$0, float $$1) {
-      }
-
-      default void a(UUID $$0, vq $$1) {
-      }
-
-      default void a(UUID $$0, blm.a $$1, blm.b $$2) {
-      }
-
-      default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-      }
+   public int f() {
+      return this.d;
    }
 
-   interface c {
-      aaq.d a();
-
-      void a(UUID var1, aaq.b var2);
-
-      void a(uq var1);
-   }
-
-   static enum d {
-      a(aaq.a::new),
-      b($$0 -> aaq.g),
-      c(aaq.f::new),
-      d(aaq.e::new),
-      e(aaq.h::new),
-      f(aaq.g::new);
-
-      final Function<uq, aaq.c> g;
-
-      private d(Function<uq, aaq.c> $$0) {
-         this.g = $$0;
-      }
-   }
-
-   static class e implements aaq.c {
-      private final vq a;
-
-      e(vq $$0) {
-         this.a = $$0;
-      }
-
-      private e(uq $$0) {
-         this.a = $$0.m();
-      }
-
-      @Override
-      public aaq.d a() {
-         return aaq.d.d;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(uq $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class f implements aaq.c {
-      private final float a;
-
-      f(float $$0) {
-         this.a = $$0;
-      }
-
-      private f(uq $$0) {
-         this.a = $$0.readFloat();
-      }
-
-      @Override
-      public aaq.d a() {
-         return aaq.d.c;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(uq $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class g implements aaq.c {
-      private final boolean a;
-      private final boolean b;
-      private final boolean c;
-
-      g(boolean $$0, boolean $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      private g(uq $$0) {
-         int $$1 = $$0.readUnsignedByte();
-         this.a = ($$1 & 1) > 0;
-         this.b = ($$1 & 2) > 0;
-         this.c = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public aaq.d a() {
-         return aaq.d.f;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c);
-      }
-
-      @Override
-      public void a(uq $$0) {
-         $$0.k(aaq.a(this.a, this.b, this.c));
-      }
-   }
-
-   static class h implements aaq.c {
-      private final blm.a a;
-      private final blm.b b;
-
-      h(blm.a $$0, blm.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private h(uq $$0) {
-         this.a = $$0.b(blm.a.class);
-         this.b = $$0.b(blm.b.class);
-      }
-
-      @Override
-      public aaq.d a() {
-         return aaq.d.e;
-      }
-
-      @Override
-      public void a(UUID $$0, aaq.b $$1) {
-         $$1.a($$0, this.a, this.b);
-      }
-
-      @Override
-      public void a(uq $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
+   public czf g() {
+      return this.e;
    }
 }

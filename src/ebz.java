@@ -1,26 +1,26 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public interface ebz {
+   ajb<ecm> a = a("villages");
+   ajb<ecm> b = a("desert_pyramids");
+   ajb<ecm> c = a("igloos");
+   ajb<ecm> d = a("jungle_temples");
+   ajb<ecm> e = a("swamp_huts");
+   ajb<ecm> f = a("pillager_outposts");
+   ajb<ecm> g = a("ocean_monuments");
+   ajb<ecm> h = a("woodland_mansions");
+   ajb<ecm> i = a("buried_treasures");
+   ajb<ecm> j = a("mineshafts");
+   ajb<ecm> k = a("ruined_portals");
+   ajb<ecm> l = a("shipwrecks");
+   ajb<ecm> m = a("ocean_ruins");
+   ajb<ecm> n = a("nether_complexes");
+   ajb<ecm> o = a("nether_fossils");
+   ajb<ecm> p = a("end_cities");
+   ajb<ecm> q = a("ancient_cities");
+   ajb<ecm> r = a("strongholds");
+   ajb<ecm> s = a("trail_ruins");
+   ajb<ecm> t = a("trial_chambers");
 
-@FunctionalInterface
-public interface ebz<C extends dwd> {
-   Optional<eby<C>> createGenerator(ebz.a<C> var1);
-
-   static <C extends dwd> ebz<C> simple(Predicate<ebz.a<C>> $$0, eby<C> $$1) {
-      Optional<eby<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
-   }
-
-   static <C extends dwd> Predicate<ebz.a<C>> checkForBiomeOnTop(dqv.a $$0) {
-      return $$1 -> $$1.a($$0);
-   }
-
-   public static record a<C extends dwd>(dng a, cwu b, drj c, long d, cuy e, C f, cvt g, Predicate<ij<cwq>> h, efm i, iw j) {
-      public boolean a(dqv.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ij<cwq> $$4 = this.a.c().getNoiseBiome(iu.a($$1), iu.a($$3), iu.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   private static ajb<ecm> a(String $$0) {
+      return ajb.a(ki.aG, new ajc($$0));
    }
 }

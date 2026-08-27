@@ -1,10 +1,15 @@
-import java.util.List;
-
-public interface gky<T> extends glb<T> {
-   static <T> gky<T> b() {
-      return $$0 -> List.of();
+public class gky extends gkz {
+   public gky(can $$0) {
+      super($$0, atp.bP, atq.g);
    }
 
-   default void a() {
+   @Override
+   protected gkv o() {
+      return new gkx(this.n);
+   }
+
+   @Override
+   protected boolean p() {
+      return this.n.aa_();
    }
 }

@@ -1,41 +1,62 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dzf extends dze {
-   public static final Codec<dzf> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzf::new));
+public class dzf extends dyz {
+   public static final Codec<dzf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dyz.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               blq.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dzf::new)
+   );
+   private final dyz c;
+   private final String d;
+   @Nullable
+   private dne e;
+   private final blq f;
 
-   public dzf(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   public dzf(dyz $$0, dne $$1, blq $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected dzi<?> a() {
-      return dzi.d;
-   }
-
-   @Override
-   public List<dxp.a> a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, int $$3, hz $$4, dwz $$5) {
-      List<dxp.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + awi.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + awi.a($$8) * (float)$$11);
-            hz $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
+      }
+   }
 
-         $$6.add(new dxp.a($$4.b($$9, $$7, $$10), -2, false));
+   public dzf(dyz $$0, String $$1, blq $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected dza<?> a() {
+      return dza.g;
+   }
+
+   @Override
+   public dme a(awt $$0, ib $$1) {
+      dme $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      return $$6;
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dne a(dme $$0, String $$1) {
+      Collection<dnh<?>> $$2 = $$0.B();
+      Optional<dne> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dne).map($$0x -> (dne)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

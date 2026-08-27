@@ -1,136 +1,121 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
 import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class eji {
-   private final aow a;
-   private final Map<elk<?>, Object> b;
-   private final Map<aiy, eji.b> c;
-   private final float d;
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, eiw> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final in.a d;
+   private final File e;
 
-   public eji(aow $$0, Map<elk<?>, Object> $$1, Map<aiy, eji.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public eji(File $$0, DataFixer $$1, in.a $$2) {
+      this.c = $$1;
+      this.e = $$0;
+      this.d = $$2;
    }
 
-   public aow a() {
-      return this.a;
+   private File a(String $$0) {
+      return new File(this.e, $$0 + ".dat");
    }
 
-   public boolean a(elk<?> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T> T b(elk<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public <T> T c(elk<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public <T> T d(elk<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   public void a(aiy $$0, Consumer<cpd> $$1) {
-      eji.b $$2 = this.c.get($$0);
+   public <T extends eiw> T a(eiw.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
       if ($$2 != null) {
-         $$2.add($$1);
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
       }
    }
 
-   public float b() {
-      return this.d;
+   @Nullable
+   public <T extends eiw> T b(eiw.a<T> $$0, String $$1) {
+      eiw $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
+      }
+
+      return (T)$$2;
    }
 
-   public static class a {
-      private final aow a;
-      private final Map<elk<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<aiy, eji.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(aow $$0) {
-         this.a = $$0;
-      }
-
-      public aow a() {
-         return this.a;
-      }
-
-      public <T> eji.a a(elk<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> eji.a b(elk<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
+   @Nullable
+   private <T extends eiw> T a(BiFunction<sy, in.a, T> $$0, axs $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            sy $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
          }
-
-         return this;
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
       }
 
-      public <T> T a(elk<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
+      return null;
+   }
+
+   public void a(String $$0, eiw $$1) {
+      this.b.put($$0, $$1);
+   }
+
+   public sy a(String $$0, axs $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
+
+      sy var9;
+      try (
+         FileInputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
+      ) {
+         sy $$6;
+         if (this.a($$5)) {
+            $$6 = tl.a($$5, th.a());
          } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(elk<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public eji.a a(aiy $$0, eji.b $$1) {
-         eji.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public eji.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eji a(ell $$0) {
-         Set<elk<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<elk<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new eji(this.a, this.b, this.c, this.d);
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = tl.a($$7);
             }
          }
+
+         int $$10 = tn.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
       }
+
+      return var9;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cpd> var1);
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
+   }
+
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0), this.d);
+         }
+      });
    }
 }

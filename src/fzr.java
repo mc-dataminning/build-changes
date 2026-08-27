@@ -1,37 +1,155 @@
-import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
 import java.util.Set;
 
-public class fzr implements fze.a {
-   private static final int a = 60;
-   private final Set<jb> b = Sets.newHashSet();
+public class fzr {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ih[] l = ih.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   fzr() {
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(jb $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jb $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      hz $$5 = hz.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
+            }
          }
-      });
+      }
+   });
+   private int o = 4096;
+
+   public void a(ib $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
    }
 
-   private static void a(esh $$0, fvt $$1, jb $$2) {
-      fze.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+   private static int b(ib $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fzs a() {
+      fzs $$0 = new fzs();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private Set<ih> a(int $$0) {
+      Set<ih> $$1 = EnumSet.noneOf(ih.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ih $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ih> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ih.e);
+      } else if ($$2 == 15) {
+         $$1.add(ih.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ih.a);
+      } else if ($$3 == 15) {
+         $$1.add(ih.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ih.c);
+      } else if ($$4 == 15) {
+         $$1.add(ih.d);
+      }
+   }
+
+   private int a(int $$0, ih $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
+      }
    }
 }

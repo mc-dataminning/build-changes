@@ -1,76 +1,70 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+public abstract class cxk {
+   public static final ajb<cxd> a = a("the_void");
+   public static final ajb<cxd> b = a("plains");
+   public static final ajb<cxd> c = a("sunflower_plains");
+   public static final ajb<cxd> d = a("snowy_plains");
+   public static final ajb<cxd> e = a("ice_spikes");
+   public static final ajb<cxd> f = a("desert");
+   public static final ajb<cxd> g = a("swamp");
+   public static final ajb<cxd> h = a("mangrove_swamp");
+   public static final ajb<cxd> i = a("forest");
+   public static final ajb<cxd> j = a("flower_forest");
+   public static final ajb<cxd> k = a("birch_forest");
+   public static final ajb<cxd> l = a("dark_forest");
+   public static final ajb<cxd> m = a("old_growth_birch_forest");
+   public static final ajb<cxd> n = a("old_growth_pine_taiga");
+   public static final ajb<cxd> o = a("old_growth_spruce_taiga");
+   public static final ajb<cxd> p = a("taiga");
+   public static final ajb<cxd> q = a("snowy_taiga");
+   public static final ajb<cxd> r = a("savanna");
+   public static final ajb<cxd> s = a("savanna_plateau");
+   public static final ajb<cxd> t = a("windswept_hills");
+   public static final ajb<cxd> u = a("windswept_gravelly_hills");
+   public static final ajb<cxd> v = a("windswept_forest");
+   public static final ajb<cxd> w = a("windswept_savanna");
+   public static final ajb<cxd> x = a("jungle");
+   public static final ajb<cxd> y = a("sparse_jungle");
+   public static final ajb<cxd> z = a("bamboo_jungle");
+   public static final ajb<cxd> A = a("badlands");
+   public static final ajb<cxd> B = a("eroded_badlands");
+   public static final ajb<cxd> C = a("wooded_badlands");
+   public static final ajb<cxd> D = a("meadow");
+   public static final ajb<cxd> E = a("cherry_grove");
+   public static final ajb<cxd> F = a("grove");
+   public static final ajb<cxd> G = a("snowy_slopes");
+   public static final ajb<cxd> H = a("frozen_peaks");
+   public static final ajb<cxd> I = a("jagged_peaks");
+   public static final ajb<cxd> J = a("stony_peaks");
+   public static final ajb<cxd> K = a("river");
+   public static final ajb<cxd> L = a("frozen_river");
+   public static final ajb<cxd> M = a("beach");
+   public static final ajb<cxd> N = a("snowy_beach");
+   public static final ajb<cxd> O = a("stony_shore");
+   public static final ajb<cxd> P = a("warm_ocean");
+   public static final ajb<cxd> Q = a("lukewarm_ocean");
+   public static final ajb<cxd> R = a("deep_lukewarm_ocean");
+   public static final ajb<cxd> S = a("ocean");
+   public static final ajb<cxd> T = a("deep_ocean");
+   public static final ajb<cxd> U = a("cold_ocean");
+   public static final ajb<cxd> V = a("deep_cold_ocean");
+   public static final ajb<cxd> W = a("frozen_ocean");
+   public static final ajb<cxd> X = a("deep_frozen_ocean");
+   public static final ajb<cxd> Y = a("mushroom_fields");
+   public static final ajb<cxd> Z = a("dripstone_caves");
+   public static final ajb<cxd> aa = a("lush_caves");
+   public static final ajb<cxd> ab = a("deep_dark");
+   public static final ajb<cxd> ac = a("nether_wastes");
+   public static final ajb<cxd> ad = a("warped_forest");
+   public static final ajb<cxd> ae = a("crimson_forest");
+   public static final ajb<cxd> af = a("soul_sand_valley");
+   public static final ajb<cxd> ag = a("basalt_deltas");
+   public static final ajb<cxd> ah = a("the_end");
+   public static final ajb<cxd> ai = a("end_highlands");
+   public static final ajb<cxd> aj = a("end_midlands");
+   public static final ajb<cxd> ak = a("small_end_islands");
+   public static final ajb<cxd> al = a("end_barrens");
 
-public abstract class cxk extends cys {
-   public static final int a = 3;
-   public static final dma b = dlz.r;
-
-   @Override
-   protected abstract MapCodec<? extends cxk> a();
-
-   protected cxk(dli.d $$0) {
-      super($$0);
-   }
-
-   protected abstract Iterable<enz> b(dlj var1);
-
-   public static boolean c(dlj $$0) {
-      return $$0.b(b) && ($$0.a(aua.ae) || $$0.a(aua.bj)) && $$0.c(b);
-   }
-
-   @Override
-   protected void a(cvr $$0, dlj $$1, env $$2, cid $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(dlj $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(cvr $$0, enz $$1, awp $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(jz.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, atl.dB, atm.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
-      }
-
-      $$0.a(jz.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable chl $$0, dlj $$1, cvs $$2, hz $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cxk) {
-         ((cxk)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(jz.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, atl.dD, atm.e, 1.0F, 1.0F);
-      $$2.a($$0, dpw.c, $$3);
-   }
-
-   private static void a(cvs $$0, dlj $$1, hz $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, cvj $$3, BiConsumer<cpd, hz> $$4) {
-      if ($$3.j() == cvj.a.d && !$$1.y_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
+   private static ajb<cxd> a(String $$0) {
+      return ajb.a(ki.au, new ajc($$0));
    }
 }

@@ -1,3 +1,5 @@
-public interface ahq extends uw {
-   void a(ahr var1);
+public record ahq(ajc a) implements aho {
+   @Override
+   public void a(us $$0) {
+   }
 }

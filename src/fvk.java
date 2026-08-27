@@ -1,51 +1,56 @@
-public enum fvk {
-   a(new fvk.b(fvk.a.f, fvk.a.e, fvk.a.a), new fvk.b(fvk.a.f, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.a)),
-   b(new fvk.b(fvk.a.f, fvk.a.b, fvk.a.d), new fvk.b(fvk.a.f, fvk.a.b, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.b, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.b, fvk.a.d)),
-   c(new fvk.b(fvk.a.c, fvk.a.b, fvk.a.d), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.f, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.f, fvk.a.b, fvk.a.d)),
-   d(new fvk.b(fvk.a.f, fvk.a.b, fvk.a.a), new fvk.b(fvk.a.f, fvk.a.e, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.b, fvk.a.a)),
-   e(new fvk.b(fvk.a.f, fvk.a.b, fvk.a.d), new fvk.b(fvk.a.f, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.f, fvk.a.e, fvk.a.a), new fvk.b(fvk.a.f, fvk.a.b, fvk.a.a)),
-   f(new fvk.b(fvk.a.c, fvk.a.b, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.a), new fvk.b(fvk.a.c, fvk.a.e, fvk.a.d), new fvk.b(fvk.a.c, fvk.a.b, fvk.a.d));
+public class fvk extends fve {
+   private float a;
 
-   private static final fvk[] g = ac.a(new fvk[6], $$0 -> {
-      $$0[fvk.a.e] = a;
-      $$0[fvk.a.b] = b;
-      $$0[fvk.a.d] = c;
-      $$0[fvk.a.a] = d;
-      $$0[fvk.a.f] = e;
-      $$0[fvk.a.c] = f;
-   });
-   private final fvk.b[] h;
-
-   public static fvk a(ie $$0) {
-      return g[$$0.d()];
+   fvk(fra $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   private fvk(fvk.b... $$0) {
-      this.h = $$0;
+   @Override
+   public fui b() {
+      return fui.b;
    }
 
-   public fvk.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * awm.b(this.a));
+         this.l = this.l + (double)(0.6F * awm.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(ib.a(this.g, this.h, this.i)).a(auj.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
    }
 
-   public static final class a {
-      public static final int a = ie.d.d();
-      public static final int b = ie.b.d();
-      public static final int c = ie.f.d();
-      public static final int d = ie.c.d();
-      public static final int e = ie.a.d();
-      public static final int f = ie.e.d();
-   }
+   public static class a implements fuh<ke> {
+      private final fuz a;
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(fuz $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvk $$8 = new fvk($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

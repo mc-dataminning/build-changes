@@ -1,22 +1,49 @@
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class ml {
-   public static final mm<ml.a> a = new mm<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final mm<ml.a> b = new mm<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final mm<aiy> c = new mm<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final mm<Boolean> d = new mm<>("uvlock", JsonPrimitive::new);
-   public static final mm<Integer> e = new mm<>("weight", JsonPrimitive::new);
+public final class ml {
+   private static final ml a = new ml(ImmutableList.of());
+   private static final Comparator<dnh.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dnh.a<?>> c;
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public ml a(dnh.a<?> $$0) {
+      return new ml(ImmutableList.builder().addAll(this.c).add($$0).build());
+   }
 
-      final int e;
+   public ml a(ml $$0) {
+      return new ml(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
 
-      private a(int $$0) {
-         this.e = $$0;
-      }
+   private ml(List<dnh.a<?>> $$0) {
+      this.c = $$0;
+   }
+
+   public static ml a() {
+      return a;
+   }
+
+   public static ml a(dnh.a<?>... $$0) {
+      return new ml(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof ml && this.c.equals(((ml)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(dnh.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

@@ -1,27 +1,19 @@
-import java.util.UUID;
+public class ahg {
+   public static final yb<ahb> a = a("custom_query");
+   public static final yb<ahc> b = a("game_profile");
+   public static final yb<ahd> c = a("hello");
+   public static final yb<ahe> d = a("login_compression");
+   public static final yb<ahf> e = a("login_disconnect");
+   public static final yb<ahj> f = b("custom_query_answer");
+   public static final yb<ahk> g = b("hello");
+   public static final yb<ahl> h = b("key");
+   public static final yb<ahm> i = b("login_acknowledged");
 
-public record ahg(String b, UUID c) implements xx<ahe> {
-   public static final xo<uq, ahg> a = xx.a(ahg::a, ahg::new);
-
-   private ahg(uq $$0) {
-      this($$0.d(16), $$0.p());
+   private static <T extends xz<aha>> yb<T> a(String $$0) {
+      return new yb<>(ya.b, new ajc($$0));
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public xz<ahg> a() {
-      return ahc.g;
-   }
-
-   public void a(ahe $$0) {
-      $$0.a(this);
-   }
-
-   public UUID e() {
-      return this.c;
+   private static <T extends xz<ahi>> yb<T> b(String $$0) {
+      return new yb<>(ya.a, new ajc($$0));
    }
 }

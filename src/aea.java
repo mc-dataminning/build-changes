@@ -1,23 +1,45 @@
-import io.netty.buffer.ByteBuf;
+public class aea implements xz<aai> {
+   public static final xq<us, aea> a = xz.a(aea::a, aea::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class aea implements xx<aag> {
-   public static final aea a = new aea();
-   public static final xo<ByteBuf, aea> b = xo.a(a);
+   public aea(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   private aea() {
+   private aea(us $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
+   }
+
+   private void a(us $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public xz<aea> a() {
-      return aeq.aS;
+   public yb<aea> a() {
+      return aet.aQ;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

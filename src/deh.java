@@ -1,38 +1,22 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deh extends dft {
-   public static final MapCodec<deh> b = b(deh::new);
+public class deh extends dgv {
+   public static final MapCodec<deh> a = b(deh::new);
 
    @Override
    public MapCodec<deh> a() {
-      return b;
+      return a;
    }
 
-   protected deh(dli.d $$0) {
-      super(dft.b.e, $$0);
+   public deh(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      b($$0, $$1, $$4);
-   }
-
-   public static void b(cvr $$0, hz $$1, cpd $$2) {
-      if ($$0.c_($$1) instanceof dki $$3) {
-         GameProfile $$4 = null;
-         if ($$2.v()) {
-            sw $$5 = $$2.w();
-            if ($$5.b("SkullOwner", 10)) {
-               $$4 = tl.a($$5.p("SkullOwner"));
-            } else if ($$5.b("SkullOwner", 8) && !ac.b($$5.l("SkullOwner"))) {
-               $$4 = new GameProfile(ac.d, $$5.l("SkullOwner"));
-            }
-         }
-
-         $$3.a($$4);
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(kb.W, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 }

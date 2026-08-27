@@ -1,55 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class daw extends cys {
-   public static final MapCodec<daw> a = b(daw::new);
-   protected static final eos b = dbp.c;
+public class daw extends cyp {
+   public static final MapCodec<daw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dau.a.forGetter($$0x -> $$0x.e), u()).apply($$0, daw::new));
+   private final czf e;
+   protected static final float b = 6.0F;
+   protected static final epo c = czf.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<daw> a() {
       return a;
    }
 
-   protected daw(dli.d $$0) {
-      super($$0);
+   protected daw(czf $$0, dmd.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean g_(dlj $$0) {
-      return true;
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      this.a($$0, (cwf)$$1, $$2);
    }
 
    @Override
-   public dlj a(crk $$0) {
-      return !this.o().a((cvu)$$0.q(), $$0.a()) ? cys.a(this.o(), cyu.j.o(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$1 == ie.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.o().a(d, Boolean.valueOf(false)), 2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      dbp.a(null, $$0, $$1, $$2);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
+         return czh.a.o();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, ehs.c, ehs.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      dlj $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof dbr;
-   }
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
-      return false;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return c;
    }
 }

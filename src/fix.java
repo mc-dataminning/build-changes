@@ -1,86 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fix implements fiz {
+   private static final ajc a = new ajc("container/bundle/background");
+   private static final int b = 4;
+   private static final int c = 1;
+   private static final int d = 18;
+   private static final int e = 20;
+   private final iu<cpq> f;
+   private final int g;
 
-public class fix {
-   @Nullable
-   private csh<?> a;
-   private final List<fix.a> b = Lists.newArrayList();
-   float c;
-
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fix(cmw $$0) {
+      this.f = $$0.a();
+      this.g = $$0.b();
    }
 
-   public void a(csc $$0, int $$1, int $$2) {
-      this.b.add(new fix.a($$0, $$1, $$2));
+   @Override
+   public int a() {
+      return this.c() + 4;
    }
 
-   public fix.a a(int $$0) {
-      return this.b.get($$0);
+   @Override
+   public int a(ezv $$0) {
+      return this.b();
    }
 
-   public int b() {
-      return this.b.size();
+   private int b() {
+      return this.d() * 18 + 2;
    }
 
-   @Nullable
-   public csh<?> c() {
-      return this.a;
+   private int c() {
+      return this.e() * 20 + 2;
    }
 
-   public void a(csh<?> $$0) {
-      this.a = $$0;
-   }
+   @Override
+   public void a(ezv $$0, int $$1, int $$2, ezx $$3) {
+      int $$4 = this.d();
+      int $$5 = this.e();
+      $$3.a(a, $$1, $$2, this.b(), this.c());
+      boolean $$6 = this.g >= 64;
+      int $$7 = 0;
 
-   public void a(ezb $$0, exo $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!ffl.t()) {
-         this.c += $$5;
-      }
-
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fix.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
-         }
-
-         cpd $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(fwb.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
+      for (int $$8 = 0; $$8 < $$5; $$8++) {
+         for (int $$9 = 0; $$9 < $$4; $$9++) {
+            int $$10 = $$1 + $$9 * 18 + 1;
+            int $$11 = $$2 + $$8 * 20 + 1;
+            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
          }
       }
    }
 
-   public class a {
-      private final csc b;
-      private final int c;
-      private final int d;
-
-      public a(csc $$1, int $$2, int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   private void a(int $$0, int $$1, int $$2, boolean $$3, ezx $$4, ezv $$5) {
+      if ($$2 >= this.f.size()) {
+         this.a($$4, $$0, $$1, $$3 ? fix.a.a : fix.a.b);
+      } else {
+         cpq $$6 = this.f.get($$2);
+         this.a($$4, $$0, $$1, fix.a.b);
+         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
+         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
+         if ($$2 == 0) {
+            fhg.a($$4, $$0 + 1, $$1 + 1, 0);
+         }
       }
+   }
 
-      public int a() {
-         return this.c;
-      }
+   private void a(ezx $$0, int $$1, int $$2, fix.a $$3) {
+      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   }
 
-      public int b() {
-         return this.d;
-      }
+   private int d() {
+      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
+   }
 
-      public cpd c() {
-         cpd[] $$0 = this.b.a();
-         return $$0.length == 0 ? cpd.h : $$0[awi.d(fix.this.c / 30.0F) % $$0.length];
+   private int e() {
+      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
+   }
+
+   static enum a {
+      a(new ajc("container/bundle/blocked_slot"), 18, 20),
+      b(new ajc("container/bundle/slot"), 18, 20);
+
+      public final ajc c;
+      public final int d;
+      public final int e;
+
+      private a(ajc $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
    }
 }

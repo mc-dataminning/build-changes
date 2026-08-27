@@ -1,18 +1,20 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class efj {
-   private final List<efi> a;
+public class efj extends ega {
+   public static final Codec<efj> a = kh.e.q().fieldOf("block").xmap(efj::new, $$0 -> $$0.b).codec();
+   private final czf b;
 
-   public efj(List<efi> $$0) {
-      this.a = $$0;
-   }
-
-   public List<efi> a() {
-      return this.a;
+   public efj(czf $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public boolean a(dme $$0, awt $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected egb<?> a() {
+      return egb.b;
    }
 }

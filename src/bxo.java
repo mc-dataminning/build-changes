@@ -1,35 +1,19 @@
-public class bxo {
-   private final bro a;
-   private final float b;
-   private final int c;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bxo(hz $$0, float $$1, int $$2) {
-      this(new bqd($$0), $$1, $$2);
+public class bxo<T extends box> extends bxn<T> {
+   private boolean i = true;
+
+   public bxo(cjk $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<box> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public bxo(enz $$0, float $$1, int $$2) {
-      this(new bqd(hz.a($$0)), $$1, $$2);
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
-   public bxo(bnq $$0, float $$1, int $$2) {
-      this(new bql($$0, false), $$1, $$2);
-   }
-
-   public bxo(bro $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public bro a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   @Override
+   public boolean a() {
+      return this.i && super.a();
    }
 }

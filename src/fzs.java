@@ -1,44 +1,57 @@
-public class fzs implements fze.a {
-   private final exo a;
+import java.util.BitSet;
+import java.util.Set;
 
-   public fzs(exo $$0) {
-      this.a = $$0;
+public class fzs {
+   private static final int a = ih.values().length;
+   private final BitSet b = new BitSet(a * a);
+
+   public void a(Set<ih> $$0) {
+      for (ih $$1 : $$0) {
+         for (ih $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(ih $$0, ih $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ih $$0, ih $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      hz $$5 = this.a.s.dm();
-      cvu $$6 = this.a.s.dM();
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-      for (hz $$7 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         egw $$8 = $$6.b_($$7);
-         if ($$8.a(auf.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            fze.a(
-               $$0,
-               $$1,
-               new enu(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
+      for (ih $$1 : ih.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
 
-      for (hz $$10 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         egw $$11 = $$6.b_($$10);
-         if ($$11.a(auf.a)) {
-            fze.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+      $$0.append('\n');
+
+      for (ih $$2 : ih.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (ih $$3 : ih.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
          }
+
+         $$0.append('\n');
       }
+
+      return $$0.toString();
    }
 }

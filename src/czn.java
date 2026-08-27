@@ -1,62 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class czn extends cxl {
-   public static final MapCodec<czn> d = b(czn::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class czn extends cyd {
+   public static final MapCodec<czn> b = b(czn::new);
+   public static final int c = 5;
+   private static final ih[] d = ih.values();
 
    @Override
    public MapCodec<czn> a() {
-      return d;
+      return b;
    }
 
-   public czn(dli.d $$0) {
-      super($$0, jf.c);
-   }
-
-   @Override
-   public boolean d(dlj $$0) {
-      return false;
-   }
-
-   protected static boolean a(cvr $$0, cwq.c $$1) {
-      if ($$1 == cwq.c.b) {
-         return $$0.F_().i() < 0.05F;
-      } else {
-         return $$1 == cwq.c.c ? $$0.F_().i() < 0.1F : false;
-      }
+   public czn(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, cwq.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cwq.c.b) {
-            $$1.b($$2, cyu.fu.o());
-            $$1.a(null, dpw.c, $$2);
-         } else if ($$3 == cwq.c.c) {
-            $$1.b($$2, cyu.fw.o());
-            $$1.a(null, dpw.c, $$2);
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$3.a(5) == 0) {
+         ih $$4 = d[$$3.a(d.length)];
+         ib $$5 = $$2.a($$4);
+         dme $$6 = $$1.a_($$5);
+         czf $$7 = null;
+         if (g($$6)) {
+            $$7 = czh.qy;
+         } else if ($$6.a(czh.qy) && $$6.c(cye.d) == $$4) {
+            $$7 = czh.qx;
+         } else if ($$6.a(czh.qx) && $$6.c(cye.d) == $$4) {
+            $$7 = czh.qw;
+         } else if ($$6.a(czh.qw) && $$6.c(cye.d) == $$4) {
+            $$7 = czh.qv;
+         }
+
+         if ($$7 != null) {
+            dme $$8 = $$7.o().a(cye.d, $$4).a(cye.c, Boolean.valueOf($$6.u().a() == ehs.c));
+            $$1.b($$5, $$8);
          }
       }
    }
 
-   @Override
-   protected boolean a(egv $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, egv $$3) {
-      if ($$3 == egx.c) {
-         dlj $$4 = cyu.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dpw.c, $$2, dpw.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == egx.e) {
-         dlj $$5 = cyu.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dpw.c, $$2, dpw.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   public static boolean g(dme $$0) {
+      return $$0.i() || $$0.a(czh.G) && $$0.u().e() == 8;
    }
 }

@@ -3,7 +3,9 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
 public class bbi extends DataFix {
    public bbi(Schema $$0, boolean $$1) {
@@ -11,20 +13,15 @@ public class bbi extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdn.D);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bbi::a));
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdt.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bdt.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bbi::a));
+      }
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bbi::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bbi::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
    }
 }

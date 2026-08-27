@@ -1,70 +1,148 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public record drd(int g, int h, int i, int j) {
-   public static final Codec<drd> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dov.e, dov.d).fieldOf("min_y").forGetter(drd::c),
-                  Codec.intRange(0, dov.c).fieldOf("height").forGetter(drd::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(drd::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(drd::f)
-               )
-               .apply($$0, drd::new)
-      )
-      .comapFlatMap(drd::a, Function.identity());
-   protected static final drd b = a(-64, 384, 1, 2);
-   protected static final drd c = a(0, 128, 1, 2);
-   protected static final drd d = a(0, 128, 2, 1);
-   protected static final drd e = a(-64, 192, 1, 2);
-   protected static final drd f = a(0, 256, 2, 1);
-
-   private static DataResult<drd> a(drd $$0) {
-      if ($$0.c() + $$0.d() > dov.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dov.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+public class drd implements drk.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
       }
+   });
+   private final ObjectListIterator<drd.a> h;
+   private final ObjectListIterator<edi> i;
+
+   public static drd a(cwx $$0, cvl $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<drd.a> $$4 = new ObjectArrayList(10);
+      ObjectList<edi> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != ecr.a).forEach($$5x -> {
+         ecr $$6 = $$5x.h().d();
+
+         for (eck $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof ecc) {
+                  ecc $$8 = (ecc)$$7;
+                  edp.a $$9 = $$8.b().e();
+                  if ($$9 == edp.a.b) {
+                     $$4.add(new drd.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (edi $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new drd.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new drd($$4.iterator(), $$5.iterator());
    }
 
-   public static drd a(int $$0, int $$1, int $$2, int $$3) {
-      drd $$4 = new drd($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
+   @VisibleForTesting
+   public drd(ObjectListIterator<drd.a> $$0, ObjectListIterator<edi> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(drj.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         drd.a $$5 = (drd.a)this.h.next();
+         eby $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         edi $$13 = (edi)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
       return $$4;
    }
 
-   public int a() {
-      return iu.c(this.f());
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
-   public int b() {
-      return iu.c(this.e());
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   public drd a(cvt $$0) {
-      int $$1 = Math.max(this.g, $$0.J_());
-      int $$2 = Math.min(this.g + this.h, $$0.ak()) - $$1;
-      return new drd($$1, $$2, this.i, this.j);
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = awm.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return awm.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   public int c() {
-      return this.g;
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = awm.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * awm.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
    }
 
-   public int d() {
-      return this.h;
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   public int e() {
-      return this.i;
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   public int f() {
-      return this.j;
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = awm.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(eby a, ecr b, int c) {
    }
 }

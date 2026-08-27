@@ -1,78 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+public interface eca {
+   ajb<ecg> a = a("pillager_outpost");
+   ajb<ecg> b = a("mineshaft");
+   ajb<ecg> c = a("mineshaft_mesa");
+   ajb<ecg> d = a("mansion");
+   ajb<ecg> e = a("jungle_pyramid");
+   ajb<ecg> f = a("desert_pyramid");
+   ajb<ecg> g = a("igloo");
+   ajb<ecg> h = a("shipwreck");
+   ajb<ecg> i = a("shipwreck_beached");
+   ajb<ecg> j = a("swamp_hut");
+   ajb<ecg> k = a("stronghold");
+   ajb<ecg> l = a("monument");
+   ajb<ecg> m = a("ocean_ruin_cold");
+   ajb<ecg> n = a("ocean_ruin_warm");
+   ajb<ecg> o = a("fortress");
+   ajb<ecg> p = a("nether_fossil");
+   ajb<ecg> q = a("end_city");
+   ajb<ecg> r = a("buried_treasure");
+   ajb<ecg> s = a("bastion_remnant");
+   ajb<ecg> t = a("village_plains");
+   ajb<ecg> u = a("village_desert");
+   ajb<ecg> v = a("village_savanna");
+   ajb<ecg> w = a("village_snowy");
+   ajb<ecg> x = a("village_taiga");
+   ajb<ecg> y = a("ruined_portal");
+   ajb<ecg> z = a("ruined_portal_desert");
+   ajb<ecg> A = a("ruined_portal_jungle");
+   ajb<ecg> B = a("ruined_portal_swamp");
+   ajb<ecg> C = a("ruined_portal_mountain");
+   ajb<ecg> D = a("ruined_portal_ocean");
+   ajb<ecg> E = a("ruined_portal_nether");
+   ajb<ecg> F = a("ancient_city");
+   ajb<ecg> G = a("trail_ruins");
+   ajb<ecg> H = a("trial_chambers");
 
-public record eca(List<ebp> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aiy c = new aiy("jigsaw");
-   private static final Map<aiy, aiy> d = ImmutableMap.builder()
-      .put(new aiy("nvi"), c)
-      .put(new aiy("pcp"), c)
-      .put(new aiy("bastionremnant"), c)
-      .put(new aiy("runtime"), c)
-      .build();
-
-   public eca(List<ebp> a) {
-      this.a = List.copyOf(a);
-   }
-
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(hz $$0) {
-      for (ebp $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public tt a(ecb $$0) {
-      tc $$1 = new tc();
-
-      for (ebp $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static eca a(tc $$0, ecb $$1) {
-      List<ebp> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         sw $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aiy $$6 = new aiy($$5);
-         aiy $$7 = d.getOrDefault($$6, $$6);
-         ecc $$8 = kf.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               ebp $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new eca($$2);
-   }
-
-   public ebd b() {
-      return ebp.a(this.a.stream());
-   }
-
-   public List<ebp> c() {
-      return this.a;
+   private static ajb<ecg> a(String $$0) {
+      return ajb.a(ki.aE, new ajc($$0));
    }
 }

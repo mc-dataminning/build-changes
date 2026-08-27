@@ -1,54 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public interface eyy {
-   static eyy a(fbk $$0) {
-      return new eyy.a($$0);
+public class eyy extends eyi {
+   private final BooleanSupplier h;
+
+   public eyy(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, ery.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
-   @Nullable
-   static eyy a(fbj $$0, @Nullable eyy $$1) {
-      return $$1 == null ? null : new eyy.b($$0, $$1);
-   }
-
-   static eyy a(fbk $$0, fbj... $$1) {
-      eyy $$2 = a($$0);
-
-      for (fbj $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fbk a();
-
-   void a(boolean var1);
-
-   public static record a(fbk a) implements eyy {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
-   }
-
-   public static record b(fbj a, eyy b) implements eyy {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
          }
-
-         this.b.a($$0);
+      } else {
+         super.a($$0);
       }
+   }
 
-      public fbj b() {
-         return this.a;
-      }
-
-      public eyy c() {
-         return this.b;
-      }
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

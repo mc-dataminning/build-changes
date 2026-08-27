@@ -1,133 +1,118 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Predicate;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bqc {
-   private bqc() {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bqc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               je.a.fieldOf("UUID").forGetter(bqc::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bqc::c),
+               bqc.a.f.fieldOf("Operation").forGetter(bqc::b)
+            )
+            .apply($$0, bqc::new)
+   );
+   private final double c;
+   private final bqc.a d;
+   private final String e;
+   private final UUID f;
+
+   public bqc(String $$0, double $$1, bqc.a $$2) {
+      this(awm.a(awt.c()), $$0, $$1, $$2);
    }
 
-   public static void a(boi $$0, boi $$1, float $$2, int $$3) {
-      c($$0, $$1);
-      b($$0, $$1, $$2, $$3);
+   public bqc(UUID $$0, String $$1, double $$2, bqc.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static boolean a(bpj<?> $$0, boi $$1) {
-      Optional<bxn> $$2 = $$0.c(bxl.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   public UUID a() {
+      return this.f;
    }
 
-   public static boolean a(bpj<?> $$0, bxl<? extends boi> $$1, bnw<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ai() == $$2);
+   public bqc.a b() {
+      return this.d;
    }
 
-   private static boolean a(bpj<?> $$0, bxl<? extends boi> $$1, Predicate<boi> $$2) {
-      return $$0.c($$1).filter($$2).filter(boi::bx).filter($$1x -> a($$0, $$1x)).isPresent();
+   public double c() {
+      return this.c;
    }
 
-   private static void c(boi $$0, boi $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(boi $$0, boi $$1) {
-      $$0.dO().a(bxl.n, new bql($$1, true));
-   }
-
-   private static void b(boi $$0, boi $$1, float $$2, int $$3) {
-      a($$0, (bnq)$$1, $$2, $$3);
-      a($$1, (bnq)$$0, $$2, $$3);
-   }
-
-   public static void a(boi $$0, bnq $$1, float $$2, int $$3) {
-      a($$0, new bql($$1, true), $$2, $$3);
-   }
-
-   public static void a(boi $$0, hz $$1, float $$2, int $$3) {
-      a($$0, new bqd($$1), $$2, $$3);
-   }
-
-   public static void a(boi $$0, bro $$1, float $$2, int $$3) {
-      bxo $$4 = new bxo($$1, $$2, $$3);
-      $$0.dO().a(bxl.n, $$1);
-      $$0.dO().a(bxl.m, $$4);
-   }
-
-   public static void a(boi $$0, cpd $$1, enz $$2) {
-      enz $$3 = new enz(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(boi $$0, cpd $$1, enz $$2, enz $$3, float $$4) {
-      double $$5 = $$0.dv() - (double)$$4;
-      cdw $$6 = new cdw($$0.dM(), $$0.dr(), $$5, $$0.dx(), $$1);
-      $$6.a($$0);
-      enz $$7 = $$2.d($$0.dk());
-      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
-      $$6.g($$7);
-      $$6.u();
-      $$0.dM().b($$6);
-   }
-
-   public static jb a(aow $$0, jb $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return jb.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bok $$0, boi $$1, int $$2) {
-      if ($$0.eT().d() instanceof cpt $$3 && $$0.a($$3)) {
-         int $$4 = $$3.d() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(boi $$0, boi $$1, double $$2) {
-      Optional<boi> $$3 = $$0.dO().c(bxl.o);
-      if ($$3.isEmpty()) {
-         return false;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bqc $$1 = (bqc)$$0;
+         return Objects.equals(this.f, $$1.f);
       } else {
-         double $$4 = $$0.f($$3.get().dk());
-         double $$5 = $$0.f($$1.dk());
-         return $$5 > $$4 + $$2 * $$2;
+         return false;
       }
    }
 
-   public static boolean b(boi $$0, boi $$1) {
-      bpj<?> $$2 = $$0.dO();
-      return !$$2.a(bxl.h) ? false : $$2.c(bxl.h).get().a($$1);
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
    }
 
-   public static boi a(boi $$0, Optional<boi> $$1, boi $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
    }
 
-   public static boi a(boi $$0, boi $$1, boi $$2) {
-      enz $$3 = $$1.dk();
-      enz $$4 = $$2.dk();
-      return $$0.f($$3) < $$0.f($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<boi> a(boi $$0, bxl<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.dO().c($$1);
-      return $$2.<bnq>map($$1x -> ((aow)$$0.dM()).a($$1x)).map($$0x -> $$0x instanceof boi $$1x ? $$1x : null);
+   public sy d() {
+      sy $$0 = new sy();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
    }
 
    @Nullable
-   public static enz a(boq $$0, int $$1, int $$2) {
-      enz $$3 = bzc.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dM().a_(hz.a($$3)).a($$0.dM(), hz.a($$3), ehm.b) && $$4++ < 10) {
-         $$3 = bzc.a($$0, $$1, $$2);
+   public static bqc a(sy $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bqc.a $$2 = bqc.a.d.apply($$0.h("Operation"));
+         return new bqc($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
       }
-
-      return $$3;
    }
 
-   public static boolean a(boi $$0) {
-      return $$0.dO().a(bxl.r);
+   public static enum a implements axg {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      public static final IntFunction<bqc.a> d = ave.a(bqc.a::a, values(), ave.a.a);
+      public static final xq<ByteBuf, bqc.a> e = xo.a(d, bqc.a::a);
+      public static final Codec<bqc.a> f = axg.a(bqc.a::values);
+      private final String g;
+      private final int h;
+
+      private a(String $$0, int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

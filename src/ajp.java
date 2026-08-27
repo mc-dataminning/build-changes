@@ -1,233 +1,97 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class ajp extends epd {
-   private final MinecraftServer b;
-   private final Set<eov> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class ajp implements arz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aiv b = new aiv("functions", ".mcfunction");
+   private volatile Map<ajc, hf<du>> c = ImmutableMap.of();
+   private final auu<hf<du>> d = new auu<>(this::a, "tags/functions");
+   private volatile Map<ajc, Collection<hf<du>>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<du> g;
 
-   public ajp(MinecraftServer $$0) {
-      this.b = $$0;
+   public Optional<hf<du>> a(ajc $$0) {
+      return Optional.ofNullable(this.c.get($$0));
+   }
+
+   public Map<ajc, hf<du>> a() {
+      return this.c;
+   }
+
+   public Collection<hf<du>> b(ajc $$0) {
+      return this.e.getOrDefault($$0, List.of());
+   }
+
+   public Iterable<ajc> b() {
+      return this.e.keySet();
+   }
+
+   public ajp(int $$0, CommandDispatcher<du> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
    @Override
-   protected void a(epc $$0, eov $$1, epa $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new ads($$0.cy(), $$1.b(), $$2.a(), $$2.d(), Optional.ofNullable($$2.c())));
-      }
+   public CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<ajc, List<auu.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<ajc, CompletableFuture<hf<du>>>> $$7 = CompletableFuture.<Map<ajc, asd>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<ajc, CompletableFuture<hf<du>>> $$2x = Maps.newHashMap();
+         du $$3x = new du(dt.a, eov.b, eou.a, null, this.f, "", vr.a, null, null);
 
-      this.a();
-   }
-
-   @Override
-   protected void a(epc $$0, eov $$1) {
-      super.a($$0, $$1);
-      this.a();
-   }
-
-   @Override
-   public void a(epc $$0) {
-      super.a($$0);
-      this.b.ag().a(new acr($$0.cy(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(epc $$0, eov $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new acr($$0.cy(), $$1.b()));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(eou $$0, @Nullable eov $$1) {
-      eov $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ag().a(new adi($$0, $$1));
-         } else {
-            this.g($$2);
+         for (Entry<ajc, asd> $$4x : $$1x.entrySet()) {
+            ajc $$5x = $$4x.getKey();
+            ajc $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return hf.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
          }
-      }
 
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ag().a(new adi($$0, $$1));
-         } else {
-            this.e($$1);
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<ajc, CompletableFuture<hf<du>>> $$1x = (Map<ajc, CompletableFuture<hf<du>>>)$$0x.getSecond();
+         Builder<ajc, hf<du>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<ajc, List<auu.a>>)$$0x.getFirst());
+      }, $$5);
+   }
+
+   private static List<String> a(asd $$0) {
+      try {
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
          }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, eoy $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ag().a(adr.a($$1, $$0, adr.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void b(String $$0, eoy $$1) {
-      super.b($$0, $$1);
-      this.b.ag().a(adr.a($$1, $$0, adr.a.b));
-      this.a();
-   }
-
-   @Override
-   public void a(eov $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(eov $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ag().a(new adp($$0, 2));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void c(eov $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(eoy $$0) {
-      super.a($$0);
-      this.b.ag().a(adr.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(eoy $$0) {
-      super.b($$0);
-      this.b.ag().a(adr.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(eoy $$0) {
-      super.c($$0);
-      this.b.ag().a(adr.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
-      }
-   }
-
-   public List<xx<?>> d(eov $$0) {
-      List<xx<?>> $$1 = Lists.newArrayList();
-      $$1.add(new adp($$0, 0));
-
-      for (eou $$2 : eou.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new adi($$2, $$0));
-         }
-      }
-
-      for (eow $$3 : this.i($$0)) {
-         $$1.add(new ads($$3.c(), $$0.b(), $$3.d(), $$3.e(), Optional.ofNullable($$3.f())));
-      }
-
-      return $$1;
-   }
-
-   public void e(eov $$0) {
-      List<xx<?>> $$1 = this.d($$0);
-
-      for (aox $$2 : this.b.ag().t()) {
-         for (xx<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<xx<?>> f(eov $$0) {
-      List<xx<?>> $$1 = Lists.newArrayList();
-      $$1.add(new adp($$0, 1));
-
-      for (eou $$2 : eou.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new adi($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(eov $$0) {
-      List<xx<?>> $$1 = this.f($$0);
-
-      for (aox $$2 : this.b.ag().t()) {
-         for (xx<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(eov $$0) {
-      int $$1 = 0;
-
-      for (eou $$2 : eou.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public eib.a<epe> b() {
-      return new eib.a<>(this::i, this::a, axo.n);
-   }
-
-   private epe i() {
-      epe $$0 = new epe(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private epe a(sw $$0) {
-      return this.i().b($$0);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

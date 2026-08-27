@@ -1,25 +1,34 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface cvz {
-   boolean a(hz var1, dlj var2, int var3, int var4);
+public class cvz extends eiw {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   default boolean a(hz $$0, dlj $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public static eiw.a<cvz> a() {
+      return new eiw.a<>(cvz::new, cvz::b, axs.i);
    }
 
-   boolean a(hz var1, boolean var2);
-
-   default boolean b(hz $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   private cvz(LongSet $$0) {
+      this.c = $$0;
    }
 
-   default boolean a(hz $$0, boolean $$1, @Nullable bnq $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public cvz() {
+      this(new LongOpenHashSet());
    }
 
-   boolean a(hz var1, boolean var2, @Nullable bnq var3, int var4);
+   public static cvz b(sy $$0, in.a $$1) {
+      return new cvz(new LongOpenHashSet($$0.o("Forced")));
+   }
 
-   default boolean b(bnq $$0) {
-      return false;
+   @Override
+   public sy a(sy $$0, in.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

@@ -1,29 +1,19 @@
-import java.util.function.Function;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class epv<T> implements epm<T> {
-   private final Function<hz, ept<T>> a;
+public interface epv {
+   int a();
 
-   public epv(Function<hz, ept<T>> $$0) {
-      this.a = $$0;
+   boolean b();
+
+   @Nullable
+   xi c();
+
+   default wg a(xi $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   @Override
-   public boolean a(hz $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(epq<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(hz $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   static wg a(@Nullable epv $$0, xi $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

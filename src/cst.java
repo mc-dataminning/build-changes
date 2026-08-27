@@ -1,88 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class cst implements csf<blp> {
-   protected final csc a;
-   protected final cpd b;
-   private final csk<?> d;
-   private final csj<?> e;
-   protected final String c;
+public class cst {
+   private final cst.a[] a;
+   private WeakReference<csv> b = new WeakReference<>(null);
 
-   public cst(csk<?> $$0, csj<?> $$1, String $$2, csc $$3, cpd $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public cst(int $$0) {
+      this.a = new cst.a[$$0];
    }
 
-   @Override
-   public csk<?> e() {
-      return this.d;
+   public Optional<csj> a(cwe $$0, clk $$1) {
+      if ($$1.aj_()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cst.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public csj<?> at_() {
-      return this.e;
+   private void a(cwe $$0) {
+      csv $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private Optional<csj> a(clk $$0, cwe $$1) {
+      Optional<csu<csj>> $$2 = $$1.r().a(csx.a, $$0, $$1);
+      this.a($$0.h(), $$2.map(csu::b).orElse(null));
+      return $$2.map(csu::b);
    }
 
-   @Override
-   public cpd a(iw $$0) {
-      return this.b;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cst.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public is<csc> a() {
-      is<csc> $$0 = is.a();
-      $$0.add(this.a);
-      return $$0;
-   }
+   private void a(List<cpq> $$0, @Nullable csj $$1) {
+      iu<cpq> $$2 = iu.a($$0.size(), cpq.h);
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public cpd a(blp $$0, iw $$1) {
-      return this.b.q();
-   }
-
-   public interface a<T extends cst> {
-      T create(String var1, csc var2, cpd var3);
-   }
-
-   public static class b<T extends cst> implements csj<T> {
-      final cst.a<T> x;
-      private final Codec<T> y;
-      private final xo<vb, T> z;
-
-      protected b(cst.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     avq.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     csc.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cpd.e.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = xo.a(xm.h, $$0x -> $$0x.c, csc.b, $$0x -> $$0x.a, cpd.f, $$0x -> $$0x.b, $$0::create);
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
       }
 
-      @Override
-      public Codec<T> a() {
-         return this.y;
-      }
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cst.a($$2, $$1);
+   }
 
-      @Override
-      public xo<vb, T> b() {
-         return this.z;
+   static record a(iu<cpq> a, @Nullable csj b) {
+      public boolean a(List<cpq> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cpq.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

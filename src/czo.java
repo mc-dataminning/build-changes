@@ -1,29 +1,35 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface czo {
-   eos t_ = cys.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dma u_ = dlz.D;
-
-   static blw a(@Nullable bnq $$0, dlj $$1, cvr $$2, hz $$3) {
-      if ($$1.c(u_)) {
-         cys.a($$2, $$3, new cpd(cpg.wm, 1));
-         float $$4 = awi.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, atl.dW, atm.e, 1.0F, $$4);
-         dlj $$5 = $$1.a(u_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dpw.c, $$3, dpw.a.a($$0, $$5));
-         return blw.a($$2.B);
-      } else {
-         return blw.d;
-      }
+public abstract class czo extends czf {
+   protected czo(dmd.d $$0) {
+      super($$0);
    }
 
-   static boolean i_(dlj $$0) {
-      return $$0.b(u_) && $$0.c(u_);
+   @Override
+   protected abstract MapCodec<? extends czo> a();
+
+   protected boolean b(dme $$0, cvk $$1, ib $$2) {
+      return $$0.a(aue.af) || $$0.a(czh.cC);
    }
 
-   static ToIntFunction<dlj> h_(int $$0) {
-      return $$1 -> $$1.c(dlz.D) ? $$0 : 0;
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return $$3 == eih.c && !this.aG ? true : super.a($$0, $$1, $$2, $$3);
    }
 }

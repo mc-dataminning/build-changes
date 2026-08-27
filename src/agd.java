@@ -1,29 +1,29 @@
-public class agd implements xx<aes> {
-   public static final xo<uq, agd> a = xx.a(agd::a, agd::new);
-   private final int b;
+public class agd implements xz<aev> {
+   public static final xq<us, agd> a = xz.a(agd::a, agd::new);
+   private final String b;
 
-   public agd(int $$0) {
+   public agd(String $$0) {
       this.b = $$0;
    }
 
-   private agd(uq $$0) {
-      this.b = $$0.readShort();
+   private agd(us $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(uq $$0) {
-      $$0.l(this.b);
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<agd> a() {
-      return aeq.bP;
+   public yb<agd> a() {
+      return aet.bN;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String b() {
       return this.b;
    }
 }

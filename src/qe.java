@@ -1,70 +1,24 @@
-public abstract class qe {
-   public static void a(ph<cwq> $$0) {
-      ik<eap> $$1 = $$0.a(kg.aC);
-      ik<dsy<?>> $$2 = $$0.a(kg.av);
-      $$0.a(cwx.a, qh.j($$1, $$2));
-      $$0.a(cwx.b, qh.a($$1, $$2, false, false, false));
-      $$0.a(cwx.c, qh.a($$1, $$2, true, false, false));
-      $$0.a(cwx.d, qh.a($$1, $$2, false, true, false));
-      $$0.a(cwx.e, qh.a($$1, $$2, false, true, true));
-      $$0.a(cwx.f, qh.d($$1, $$2));
-      $$0.a(cwx.g, qh.h($$1, $$2));
-      $$0.a(cwx.h, qh.i($$1, $$2));
-      $$0.a(cwx.i, qh.b($$1, $$2, false, false, false));
-      $$0.a(cwx.j, qh.b($$1, $$2, false, false, true));
-      $$0.a(cwx.k, qh.b($$1, $$2, true, false, false));
-      $$0.a(cwx.l, qh.g($$1, $$2));
-      $$0.a(cwx.m, qh.b($$1, $$2, true, true, false));
-      $$0.a(cwx.n, qh.a($$1, $$2, false));
-      $$0.a(cwx.o, qh.a($$1, $$2, true));
-      $$0.a(cwx.p, qh.h($$1, $$2, false));
-      $$0.a(cwx.q, qh.h($$1, $$2, true));
-      $$0.a(cwx.r, qh.a($$1, $$2, false, false));
-      $$0.a(cwx.s, qh.a($$1, $$2, false, true));
-      $$0.a(cwx.t, qh.b($$1, $$2, false));
-      $$0.a(cwx.u, qh.b($$1, $$2, false));
-      $$0.a(cwx.v, qh.b($$1, $$2, true));
-      $$0.a(cwx.w, qh.a($$1, $$2, true, false));
-      $$0.a(cwx.x, qh.b($$1, $$2));
-      $$0.a(cwx.y, qh.a($$1, $$2));
-      $$0.a(cwx.z, qh.c($$1, $$2));
-      $$0.a(cwx.A, qh.c($$1, $$2, false));
-      $$0.a(cwx.B, qh.c($$1, $$2, false));
-      $$0.a(cwx.C, qh.c($$1, $$2, true));
-      $$0.a(cwx.D, qh.j($$1, $$2, false));
-      $$0.a(cwx.E, qh.j($$1, $$2, true));
-      $$0.a(cwx.F, qh.o($$1, $$2));
-      $$0.a(cwx.G, qh.n($$1, $$2));
-      $$0.a(cwx.H, qh.k($$1, $$2));
-      $$0.a(cwx.I, qh.l($$1, $$2));
-      $$0.a(cwx.J, qh.m($$1, $$2));
-      $$0.a(cwx.K, qh.i($$1, $$2, false));
-      $$0.a(cwx.L, qh.i($$1, $$2, true));
-      $$0.a(cwx.M, qh.b($$1, $$2, false, false));
-      $$0.a(cwx.N, qh.b($$1, $$2, true, false));
-      $$0.a(cwx.O, qh.b($$1, $$2, false, true));
-      $$0.a(cwx.P, qh.f($$1, $$2));
-      $$0.a(cwx.Q, qh.f($$1, $$2, false));
-      $$0.a(cwx.R, qh.f($$1, $$2, true));
-      $$0.a(cwx.S, qh.e($$1, $$2, false));
-      $$0.a(cwx.T, qh.e($$1, $$2, true));
-      $$0.a(cwx.U, qh.d($$1, $$2, false));
-      $$0.a(cwx.V, qh.d($$1, $$2, true));
-      $$0.a(cwx.W, qh.g($$1, $$2, false));
-      $$0.a(cwx.X, qh.g($$1, $$2, true));
-      $$0.a(cwx.Y, qh.e($$1, $$2));
-      $$0.a(cwx.Z, qh.q($$1, $$2));
-      $$0.a(cwx.aa, qh.p($$1, $$2));
-      $$0.a(cwx.ab, qh.r($$1, $$2));
-      $$0.a(cwx.ac, qg.a($$1, $$2));
-      $$0.a(cwx.ad, qg.e($$1, $$2));
-      $$0.a(cwx.ae, qg.d($$1, $$2));
-      $$0.a(cwx.af, qg.b($$1, $$2));
-      $$0.a(cwx.ag, qg.c($$1, $$2));
-      $$0.a(cwx.ah, qf.b($$1, $$2));
-      $$0.a(cwx.ai, qf.d($$1, $$2));
-      $$0.a(cwx.aj, qf.c($$1, $$2));
-      $$0.a(cwx.ak, qf.e($$1, $$2));
-      $$0.a(cwx.al, qf.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class qe {
+   public static void a(pj<ecg> $$0) {
+      im<cxd> $$1 = $$0.a(ki.au);
+      im<edp> $$2 = $$0.a(ki.aH);
+      $$0.a(
+         eca.H,
+         new eeg(
+            pv.a($$1.b(aud.I), Arrays.stream(bpa.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new ecn(ecn.a.a, bkz.c()))), drm.b.d, ecr.b),
+            $$2.b(qa.a),
+            Optional.empty(),
+            20,
+            eaq.a(dsk.a(-40), dsk.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            qa.d
+         )
+      );
    }
 }

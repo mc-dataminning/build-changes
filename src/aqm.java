@@ -1,11 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record aqm(cjw b) {
-   private static final Codec<aqm> c = RecordCodecBuilder.create($$0 -> $$0.group(cjy.f.fieldOf("enabled").forGetter(aqm::a)).apply($$0, aqm::new));
-   public static final arc<aqm> a = arc.a("features", c);
+public class aqm {
+   private static final aqm a = new aqm(Map.of());
+   private final Map<arf<?>, ?> b;
 
-   public cjw a() {
-      return this.b;
+   private aqm(Map<arf<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(arf<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static aqm a() {
+      return a;
+   }
+
+   public static <T> aqm a(arf<T> $$0, T $$1) {
+      return new aqm(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> aqm a(arf<T1> $$0, T1 $$1, arf<T2> $$2, T2 $$3) {
+      return new aqm(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

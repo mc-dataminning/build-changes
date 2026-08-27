@@ -17,43 +17,43 @@ public class el implements fa<el.a> {
       return new el();
    }
 
-   public static vq a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static vs a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       el.a $$2 = (el.a)$$0.getArgument($$1, el.a.class);
       return $$2.a((du)$$0.getSource());
    }
 
-   public static void a(CommandContext<du> $$0, String $$1, Consumer<wg> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<du> $$0, String $$1, Consumer<wi> $$2) throws CommandSyntaxException {
       el.a $$3 = (el.a)$$0.getArgument($$1, el.a.class);
       du $$4 = (du)$$0.getSource();
-      vq $$5 = $$3.a($$4);
+      vs $$5 = $$3.a($$4);
       ds $$6 = $$4.n();
-      wg $$7 = $$6.a($$1);
+      wi $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, wg.a($$3.a).a($$5));
+         b($$2, $$4, wi.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<wg> $$0, du $$1, wg $$2) {
+   private static void a(Consumer<wi> $$0, du $$1, wi $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<apn> $$4 = a($$1, $$2);
-      vq $$5 = $$3.bk().decorate($$1.i(), $$2.d());
+      CompletableFuture<apr> $$4 = a($$1, $$2);
+      vs $$5 = $$3.bm().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         wg $$4x = $$2.a($$5).a($$3x.e());
+         wi $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<wg> $$0, du $$1, wg $$2) {
-      vl $$3 = $$1.l().bk();
-      vq $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<wi> $$0, du $$1, wi $$2) {
+      vn $$3 = $$1.l().bm();
+      vs $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<apn> a(du $$0, wg $$1) {
-      aox $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(apn.a($$1.c()));
+   private static CompletableFuture<apr> a(du $$0, wi $$1) {
+      apb $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.ct()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(apr.a($$1.c()));
    }
 
    public el.a a(StringReader $$0) throws CommandSyntaxException {
@@ -81,17 +81,17 @@ public class el implements fa<el.a> {
          return this.b;
       }
 
-      vq a(du $$0) throws CommandSyntaxException {
+      vs a(du $$0) throws CommandSyntaxException {
          return this.a($$0, $$0.c(2));
       }
 
-      public vq a(du $$0, boolean $$1) throws CommandSyntaxException {
+      public vs a(du $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            we $$2 = vq.b(this.a.substring(0, this.b[0].a()));
+            wg $$2 = vs.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (el.b $$4 : this.b) {
-               vq $$5 = $$4.a($$0);
+               vs $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -109,7 +109,7 @@ public class el implements fa<el.a> {
 
             return $$2;
          } else {
-            return vq.b(this.a);
+            return vs.b(this.a);
          }
       }
 
@@ -124,7 +124,7 @@ public class el implements fa<el.a> {
 
             while (true) {
                int $$5;
-               gg $$7;
+               gi $$7;
                while (true) {
                   if (!$$0.canRead()) {
                      return new el.a($$2, $$3.toArray(new el.b[0]));
@@ -134,11 +134,11 @@ public class el implements fa<el.a> {
                      $$5 = $$0.getCursor();
 
                      try {
-                        gh $$6 = new gh($$0);
+                        gj $$6 = new gj($$0);
                         $$7 = $$6.t();
                         break;
                      } catch (CommandSyntaxException var8) {
-                        if (var8.getType() != gh.h && var8.getType() != gh.f) {
+                        if (var8.getType() != gj.h && var8.getType() != gj.f) {
                            throw var8;
                         }
 
@@ -158,9 +158,9 @@ public class el implements fa<el.a> {
    public static class b {
       private final int a;
       private final int b;
-      private final gg c;
+      private final gi c;
 
-      public b(int $$0, int $$1, gg $$2) {
+      public b(int $$0, int $$1, gi $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -174,13 +174,13 @@ public class el implements fa<el.a> {
          return this.b;
       }
 
-      public gg c() {
+      public gi c() {
          return this.c;
       }
 
       @Nullable
-      public vq a(du $$0) throws CommandSyntaxException {
-         return gg.a(this.c.b($$0));
+      public vs a(du $$0) throws CommandSyntaxException {
+         return gi.a(this.c.b($$0));
       }
    }
 }

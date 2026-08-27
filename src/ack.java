@@ -1,23 +1,29 @@
-import java.util.List;
-import java.util.UUID;
+public class ack implements xz<aai> {
+   public static final xq<us, ack> a = xz.a(ack::a, ack::new);
+   private final int b;
 
-public record ack(List<UUID> b) implements xx<aag> {
-   public static final xo<uq, ack> a = xx.a(ack::a, ack::new);
-
-   private ack(uq $$0) {
-      this($$0.a(jc.f));
+   public ack(bnb $$0) {
+      this($$0.b());
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b, jc.f);
+   public ack(int $$0) {
+      this.b = $$0;
+   }
+
+   private ack(us $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(us $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public xz<ack> a() {
-      return aeq.ad;
+   public yb<ack> a() {
+      return aet.ab;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 }

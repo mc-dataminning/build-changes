@@ -1,59 +1,34 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gmc implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bhz d;
-   @Nullable
-   private CompletableFuture<Optional<gly>> e;
+public class gmc extends ass {
+   private sy a;
 
-   private gmc(bhz $$0) {
-      this.d = $$0;
-   }
-
-   public static CompletableFuture<Optional<gmc>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bhz $$1 = bhz.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gmc($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.f());
-   }
-
-   public CompletableFuture<Optional<glz>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bhz.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gly($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gly::a));
+   public gmc(gmd $$0, is<ajl> $$1, ejr $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
    @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gly::close));
+   protected void b(apb $$0) {
+      if (this.b().a($$0.fU())) {
+         this.a = $$0.f(new sy());
       }
+
+      super.b($$0);
+   }
+
+   @Override
+   public vs a(SocketAddress $$0, GameProfile $$1) {
+      return (vs)(this.b().a($$1) && this.a($$1.getName()) != null ? vs.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public gmd b() {
+      return (gmd)super.c();
+   }
+
+   @Override
+   public sy r() {
+      return this.a;
    }
 }

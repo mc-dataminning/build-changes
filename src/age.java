@@ -1,84 +1,60 @@
-public class age implements xx<aes> {
-   public static final xo<uq, age> a = xx.a(age::a, age::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final hz e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final djh.a j;
+import javax.annotation.Nullable;
 
-   public age(hz $$0, String $$1, djh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+public class age implements xz<aev> {
+   public static final xq<us, age> a = xz.a(age::a, age::new);
+   private final age.a b;
+   @Nullable
+   private final ajc c;
+
+   public age(age.a $$0, @Nullable ajc $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private age(uq $$0) {
-      this.e = $$0.e();
-      this.f = $$0.r();
-      this.j = $$0.b(djh.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   public static age a(af $$0) {
+      return new age(age.a.a, $$0.a());
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
+   public static age b() {
+      return new age(age.a.b, null);
+   }
 
-      if (this.h) {
-         $$1 |= 2;
+   private age(us $$0) {
+      this.b = $$0.b(age.a.class);
+      if (this.b == age.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
       }
+   }
 
-      if (this.i) {
-         $$1 |= 4;
+   private void a(us $$0) {
+      $$0.a(this.b);
+      if (this.b == age.a.a) {
+         $$0.a(this.c);
       }
-
-      $$0.k($$1);
    }
 
    @Override
-   public xz<age> a() {
-      return aeq.bQ;
+   public yb<age> a() {
+      return aet.bO;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public hz b() {
-      return this.e;
+   public age.a e() {
+      return this.b;
    }
 
-   public String e() {
-      return this.f;
+   @Nullable
+   public ajc f() {
+      return this.c;
    }
 
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public djh.a i() {
-      return this.j;
+   public static enum a {
+      a,
+      b;
    }
 }

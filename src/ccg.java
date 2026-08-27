@@ -1,85 +1,132 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class ccg extends bvf {
-   private final ccf a;
+public class ccg extends bqp<cce> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final ato l;
+   private final ato m;
+   private eov n;
+   private ccg.a o = ccg.a.d;
 
-   public ccg(ccf $$0) {
-      this.a = $$0;
+   public ccg(ato $$0, ato $$1) {
+      super(ImmutableMap.of(bya.m, byb.b, bya.n, byb.c, bya.o, byb.a, bya.Z, byb.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   @Override
-   public boolean a() {
-      return this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), 10.0);
+   protected boolean a(apa $$0, cce $$1) {
+      box $$2 = $$1.dM().c(bya.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.dM().b(bya.o);
+         this.b($$1, $$2);
+      }
+
+      return $$3 && $$1.ap() != bpi.i && cce.j($$2);
    }
 
-   @Override
-   public void e() {
-      aow $$0 = (aow)this.a.dM();
-      blu $$1 = $$0.d_(this.a.dm());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      boh $$2 = bnw.ak.a((cvr)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.dr(), this.a.dt(), this.a.dx());
-         $$2.a(true);
-         $$0.b($$2);
-         cez $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.m(this.a);
-            $$0.a_($$3);
+   protected boolean a(apa $$0, cce $$1, long $$2) {
+      return $$1.dM().a(bya.o) && this.o != ccg.a.d && !$$1.dM().a(bya.Z);
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cbz $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cez $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.m($$5);
-                     $$5.j(this.a.eh().a(0.0, 1.1485), 0.0, this.a.eh().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
+   protected void b(apa $$0, cce $$1, long $$2) {
+      box $$3 = $$1.dM().c(bya.o).get();
+      bqr.a($$1, $$3);
+      $$1.a((bof)$$3);
+      $$1.dM().a(bya.m, new byd($$3.dh(), 2.0F, 0));
+      this.k = 10;
+      this.o = ccg.a.a;
+   }
+
+   protected void c(apa $$0, cce $$1, long $$2) {
+      $$1.dM().b(bya.o);
+      $$1.u();
+      $$1.b(bpi.a);
+   }
+
+   private void b(apa $$0, cce $$1) {
+      $$0.a(null, $$1, this.m, atq.g, 2.0F, 1.0F);
+      Optional<bof> $$2 = $$1.w();
+      if ($$2.isPresent()) {
+         bof $$3 = $$2.get();
+         if ($$3.bx()) {
+            $$1.B($$3);
+            if (!$$3.bx()) {
+               $$3.a(bof.c.a);
             }
          }
       }
    }
 
-   @Nullable
-   private cbz a(blu $$0) {
-      ccf $$1 = bnw.aM.a(this.a.dM());
-      if ($$1 != null) {
-         $$1.a((aow)this.a.dM(), $$0, bom.k, null, null);
-         $$1.a_(this.a.dr(), this.a.dt(), this.a.dx());
-         $$1.ak = 60;
-         $$1.fL();
-         $$1.x(true);
-         $$1.c_(0);
+   protected void d(apa $$0, cce $$1, long $$2) {
+      box $$3 = $$1.dM().c(bya.o).get();
+      $$1.a((bof)$$3);
+      switch (this.o) {
+         case a:
+            if ($$3.e($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, atq.g, 2.0F, 1.0F);
+               $$1.b(bpi.j);
+               $$3.g($$3.dh().a($$1.dh()).d().a(0.75));
+               this.n = $$3.dh();
+               this.j = 0;
+               this.o = ccg.a.b;
+            } else if (this.k <= 0) {
+               $$1.dM().a(bya.m, new byd($$3.dh(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = ccg.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = ccg.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
       }
-
-      return $$1;
    }
 
-   @Nullable
-   private cez a(blu $$0, cbz $$1) {
-      cez $$2 = bnw.aL.a($$1.dM());
-      if ($$2 != null) {
-         $$2.a((aow)$$1.dM(), $$0, bom.k, null, null);
-         $$2.a_($$1.dr(), $$1.dt(), $$1.dx());
-         $$2.ak = 60;
-         $$2.fL();
-         if ($$2.c(bnx.f).b()) {
-            $$2.a(bnx.f, new cpd(cpg.pF));
-         }
-
-         $$2.a(bnx.a, ctn.a($$2.eh(), this.a($$2.eT()), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
-         $$2.a(bnx.f, ctn.a($$2.eh(), this.a($$2.c(bnx.f)), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
-      }
-
-      return $$2;
+   private boolean a(cce $$0, box $$1) {
+      eig $$2 = $$0.N().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
    }
 
-   private cpd a(cpd $$0) {
-      $$0.c("Enchantments");
-      return $$0;
+   private void b(cce $$0, box $$1) {
+      List<UUID> $$2 = $$0.dM().c(bya.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.ct());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.ct());
+      }
+
+      $$0.dM().a(bya.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

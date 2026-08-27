@@ -1,44 +1,99 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dun extends dtz<dwk> {
-   public dun(Codec<dwk> $$0) {
+public class dun extends duu<dxf> {
+   private static final dmn a = dmn.a(czh.I);
+   private final dme b = czh.I.o();
+   private final dme c = czh.jF.o();
+   private final dme d = czh.aV.o();
+   private final dme an = czh.G.o();
+
+   public dun(Codec<dxf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dub<dwk> $$0) {
-      int $$1 = 0;
-      cwm $$2 = $$0.b();
-      hz $$3 = $$0.e();
-      awp $$4 = $$0.d();
-      int $$5 = $$2.a(dqv.a.d, $$3.u(), $$3.w());
-      hz $$6 = new hz($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(cyu.G)) {
-         dlj $$7 = cyu.mc.o();
-         dlj $$8 = cyu.md.o();
-         int $$9 = 1 + $$4.a(10);
+   public boolean a(duw<dxf> $$0) {
+      cwz $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      $$2 = $$2.c();
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(cyu.G) && $$2.a_($$6.c()).a(cyu.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(dcv.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               hz $$11 = $$6.d();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(cyu.mc)) {
-                  $$2.a($$11, $$7.a(dcv.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.c();
-         }
+      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
+         $$2 = $$2.d();
       }
 
-      return $$1 > 0;
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ih $$8 : ih.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         ib $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ih $$10 : ih.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<ib> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         awt $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
+      }
+   }
+
+   private static void b(cwz $$0, ib $$1) {
+      $$0.a($$1, czh.J.o(), 3);
+      $$0.a($$1, djn.N).ifPresent($$1x -> $$1x.a(ejw.aO, $$1.a()));
    }
 }

@@ -1,118 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public final class egw extends dll<egv, egw> {
-   public static final Codec<egw> a = a(kf.c.q(), egv::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
+public class egw {
+   private final egx[] a;
+   private final double b;
+   private final double c;
 
-   public egw(egv $$0, ImmutableMap<dmm<?>, Comparable<?>> $$1, MapCodec<egw> $$2) {
-      super($$0, $$1, $$2);
+   public egw(awt $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   public egv a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.a().c(this);
-   }
-
-   public boolean a(egv $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(cux $$0, hz $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(cux $$0, hz $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            hz $$4 = $$1.b($$2, 0, $$3);
-            egw $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
+   private egw(awt $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            egx $$5 = new egx($$0);
+            int $$6 = $$3;
+            this.a = new egx[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
             }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new egx($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               awt $$9 = new dsp(new drr($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new egx($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
-
-      return false;
    }
 
-   public void a(cvr $$0, hz $$1) {
-      this.a().b($$0, $$1, this);
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   public void a(cvr $$0, hz $$1, awp $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
+      for (egx $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
 
-   public boolean f() {
-      return this.a().i();
-   }
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
 
-   public void b(cvr $$0, hz $$1, awp $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public enz c(cux $$0, hz $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dlj g() {
-      return this.a().b(this);
-   }
-
-   @Nullable
-   public jx h() {
-      return this.a().h();
-   }
-
-   public boolean a(aup<egv> $$0) {
-      return this.a().k().a($$0);
-   }
-
-   public boolean a(in<egv> $$0) {
-      return $$0.a(this.a().k());
-   }
-
-   public boolean b(egv $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(cux $$0, hz $$1, egv $$2, ie $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public eos d(cux $$0, hz $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public ij<egv> j() {
-      return this.e.k();
-   }
-
-   public Stream<aup<egv>> k() {
-      return this.e.k().c();
+      return $$3;
    }
 }

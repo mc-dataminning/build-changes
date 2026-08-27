@@ -1,40 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record dxz(in<cys> b, in<cys> c, dye d, int e, int f, float g) {
-   public static final Codec<dxz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ix.a(kg.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               ix.a(kg.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               dye.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dxz::new)
-   );
+public abstract class dxz {
+   public static final Codec<dxz> a = kh.aa.q().dispatch(dxz::b, dya::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public in<cys> a() {
-      return this.b;
+   protected static <S extends dxz> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   public in<cys> b() {
+   public dxz(OptionalInt $$0) {
+      this.c = $$0;
+   }
+
+   protected abstract dya<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
       return this.c;
-   }
-
-   public dye c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
    }
 }

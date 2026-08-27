@@ -1,57 +1,31 @@
-import java.util.Collections;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class gjd implements gjb {
-   private final fxc a;
-   private final fxa b;
-   private final ghb c;
-   private final boolean d;
+public class gjd {
+   public static avy a(vx $$0, boolean $$1) {
+      wq $$2 = wq.a($$0, UCharacter::getMirror, gjd::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<avy> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gjd(fxc $$0, fxa $$1, ghb $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return avy.composite($$4);
    }
 
-   @Override
-   public List<fwq> a(@Nullable dlj $$0, @Nullable ie $$1, awp $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   @Override
-   public ghb e() {
-      return this.c;
-   }
-
-   @Override
-   public fxc f() {
-      return this.a;
-   }
-
-   @Override
-   public fxa g() {
-      return this.b;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

@@ -1,35 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhx extends day implements dhv {
-   public static final MapCodec<dhx> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dly.a.fieldOf("block_set_type").forGetter(day::b), dhv.a.e.fieldOf("weathering_state").forGetter(dhx::g), u()).apply($$0, dhx::new)
-   );
-   private final dhv.a m;
+public class dhx extends dcu {
+   public static final MapCodec<dhx> c = b(dhx::new);
+   public static final epo g = czf.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
    public MapCodec<dhx> a() {
-      return l;
+      return c;
    }
 
-   protected dhx(dly $$0, dhv.a $$1, dli.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
-   }
-
-   @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$0.c(day.f) == dmf.b) {
-         this.a_($$0, $$1, $$2, $$3);
-      }
+   public dhx(dmd.d $$0) {
+      super($$0, ih.b, g, false, 0.1);
    }
 
    @Override
-   protected boolean e_(dlj $$0) {
-      return dhv.c($$0.b()).isPresent();
+   protected int a(awt $$0) {
+      return dek.a($$0);
    }
 
-   public dhv.a g() {
-      return this.m;
+   @Override
+   protected czf b() {
+      return czh.oC;
+   }
+
+   @Override
+   protected boolean g(dme $$0) {
+      return dek.a($$0);
    }
 }

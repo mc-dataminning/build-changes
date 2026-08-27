@@ -1,36 +1,54 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class fva implements bjt {
-   private final fvr a;
-   private final Set<bjr> b = new ObjectOpenHashSet();
-   private final bjz c = new bjz();
-
-   public fva(LongSupplier $$0, fvr $$1) {
-      this.a = $$1;
-      this.b.add(bka.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bka.a());
-      this.b.add(bjr.a("totalChunks", bjq.f, this.a, fvr::i));
-      this.b.add(bjr.a("renderedChunks", bjq.f, this.a, fvr::k));
-      this.b.add(bjr.a("lastViewDistance", bjq.f, this.a, fvr::j));
-      fys $$0 = this.a.h();
-      this.b.add(bjr.a("toUpload", bjq.g, $$0, fys::c));
-      this.b.add(bjr.a("freeBufferCount", bjq.g, $$0, fys::d));
-      this.b.add(bjr.a("toBatchCount", bjq.g, $$0, fys::b));
-      if (esa.a().isPresent()) {
-         this.b.add(bjr.a("gpuUtilization", bjq.i, exo.P(), exo::u));
-      }
+public class fva extends fuq {
+   fva(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fuz $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)avw.b.b($$7), (float)avw.b.c($$7), (float)avw.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public Set<bjr> a(Supplier<bil> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(ib.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
+      }
+   }
+
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fva($$1, $$2, $$3, $$4, $$5, $$6, $$7, avw.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements fuh<ke> {
+      private final fuz a;
+
+      public b(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fva($$1, $$2, $$3, $$4, $$5, $$6, $$7, avw.b.a(255, 255, 255, 255), this.a);
+      }
    }
 }

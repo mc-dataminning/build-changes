@@ -1,99 +1,77 @@
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gkl implements glu<gkl> {
-   public static final air a = new air("sounds", ".ogg");
-   private final aiy b;
-   private final ble c;
-   private final ble d;
-   private final int e;
-   private final gkl.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+public class gkl implements gjz {
+   private final int a;
+   private final List<bkx.b<gjz>> b;
+   private final gjz c;
 
-   public gkl(String $$0, ble $$1, ble $$2, int $$3, gkl.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new aiy($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public aiy a() {
-      return this.b;
-   }
-
-   public aiy b() {
-      return a.a(this.b);
-   }
-
-   public ble c() {
-      return this.c;
-   }
-
-   public ble d() {
-      return this.d;
+   public gkl(List<bkx.b<gjz>> $$0) {
+      this.b = $$0;
+      this.a = bky.a($$0);
+      this.c = $$0.get(0).b();
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gkl a(awp $$0) {
-      return this;
+   public List<fxn> a(@Nullable dme $$0, @Nullable ih $$1, awt $$2) {
+      return bky.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
    }
 
    @Override
-   public void a(glp $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gkl.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
+   public boolean a() {
+      return this.c.a();
    }
 
    @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
+   public boolean b() {
+      return this.c.b();
    }
 
-   public static enum a {
-      a("file"),
-      b("event");
+   @Override
+   public boolean c() {
+      return this.c.c();
+   }
 
-      private final String c;
+   @Override
+   public boolean d() {
+      return this.c.d();
+   }
 
-      private a(String $$0) {
-         this.c = $$0;
+   @Override
+   public ghz e() {
+      return this.c.e();
+   }
+
+   @Override
+   public fxz f() {
+      return this.c.f();
+   }
+
+   @Override
+   public fxx g() {
+      return this.c.g();
+   }
+
+   public static class a {
+      private final List<bkx.b<gjz>> a = Lists.newArrayList();
+
+      public gkl.a a(@Nullable gjz $$0, int $$1) {
+         if ($$0 != null) {
+            this.a.add(bkx.a($$0, $$1));
+         }
+
+         return this;
       }
 
       @Nullable
-      public static gkl.a a(String $$0) {
-         for (gkl.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+      public gjz a() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            return (gjz)(this.a.size() == 1 ? this.a.get(0).b() : new gkl(this.a));
          }
-
-         return null;
       }
    }
 }

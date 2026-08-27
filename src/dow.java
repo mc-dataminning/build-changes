@@ -1,19 +1,89 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public record dow(ij<dov> e, dng f) {
-   public static final Codec<dow> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dov.j.fieldOf("type").forGetter(dow::a), dng.a.fieldOf("generator").forGetter(dow::b)).apply($$0, $$0.stable(dow::new))
-   );
-   public static final aix<dow> b = aix.a(kg.aN, new aiy("overworld"));
-   public static final aix<dow> c = aix.a(kg.aN, new aiy("the_nether"));
-   public static final aix<dow> d = aix.a(kg.aN, new aiy("the_end"));
+public class dow<T> implements dor<T> {
+   private final iq<T> a;
+   @Nullable
+   private T b;
+   private final dos<T> c;
 
-   public ij<dov> a() {
-      return this.e;
+   public dow(iq<T> $$0, dos<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   public dng b() {
-      return this.f;
+   public static <A> dor<A> a(int $$0, iq<A> $$1, dos<A> $$2, List<A> $$3) {
+      return new dow<>($$1, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(us $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(us $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return vj.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dor<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

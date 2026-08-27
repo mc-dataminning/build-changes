@@ -1,99 +1,244 @@
+import java.util.List;
 import java.util.Optional;
 
-public class fue extends fuh {
-   fue(fqe $$0, fuc $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+public abstract class fue {
+   private static final eoq a = new eoq(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final double b = awm.k(100.0);
+   protected final fra c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected double i;
+   protected double j;
+   protected double k;
+   protected double l;
+   private eoq D = a;
+   protected boolean m;
+   protected boolean n = true;
+   private boolean E;
+   protected boolean o;
+   protected float p = 0.6F;
+   protected float q = 1.8F;
+   protected final awt r = awt.a();
+   protected int s;
+   protected int t;
+   protected float u;
+   protected float v = 1.0F;
+   protected float w = 1.0F;
+   protected float x = 1.0F;
+   protected float y = 1.0F;
+   protected float z;
+   protected float A;
+   protected float B = 0.98F;
+   protected boolean C = false;
+
+   protected fue(fra $$0, double $$1, double $$2, double $$3) {
+      this.c = $$0;
+      this.b(0.2F, 0.2F);
+      this.c($$1, $$2, $$3);
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
    }
 
-   fue(fqe $$0, fuc $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+   public fue(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3);
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
+      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
+      this.j = this.j / $$8 * $$7 * 0.4F;
+      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
+      this.l = this.l / $$8 * $$7 * 0.4F;
    }
+
+   public fue c(float $$0) {
+      this.j *= (double)$$0;
+      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
+      this.l *= (double)$$0;
+      return this;
+   }
+
+   public void b(double $$0, double $$1, double $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+   }
+
+   public fue d(float $$0) {
+      this.b(0.2F * $$0, 0.2F * $$0);
+      return this;
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
+   }
+
+   protected void e(float $$0) {
+      this.y = $$0;
+   }
+
+   public void a(int $$0) {
+      this.t = $$0;
+   }
+
+   public int j() {
+      return this.t;
+   }
+
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - 0.04 * (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.C && this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.k = this.k * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.m) {
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+      }
+   }
+
+   public abstract void a(eth var1, exv var2, float var3);
+
+   public abstract fui b();
 
    @Override
-   public ftl b() {
-      return ftl.b;
+   public String toString() {
+      return this.getClass().getSimpleName()
+         + ", Pos ("
+         + this.g
+         + ","
+         + this.h
+         + ","
+         + this.i
+         + "), RGBA ("
+         + this.v
+         + ","
+         + this.w
+         + ","
+         + this.x
+         + ","
+         + this.y
+         + "), Age "
+         + this.s;
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         awp $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         fue $$12 = new fue($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
-      }
+   public void k() {
+      this.o = true;
    }
 
-   public static class b implements ftk<kc> {
-      private final fuc a;
-
-      public b(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fue $$8 = new fue($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<jw> o() {
-               return Optional.of(jw.a);
-            }
-         };
-         $$8.t = awi.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
+   protected void b(float $$0, float $$1) {
+      if ($$0 != this.p || $$1 != this.q) {
+         this.p = $$0;
+         this.q = $$1;
+         eoq $$2 = this.n();
+         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
+         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
+         this.a(new eoq($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
       }
    }
 
-   public static class c implements ftk<kc> {
-      private final fuc a;
+   public void c(double $$0, double $$1, double $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      float $$3 = this.p / 2.0F;
+      float $$4 = this.q;
+      this.a(new eoq($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
+   }
 
-      public c(fuc $$0) {
-         this.a = $$0;
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      if (!this.E) {
+         double $$3 = $$0;
+         double $$4 = $$1;
+         double $$5 = $$2;
+         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
+            eov $$6 = bof.a(null, new eov($$0, $$1, $$2), this.n(), this.c, List.of());
+            $$0 = $$6.c;
+            $$1 = $$6.d;
+            $$2 = $$6.e;
+         }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fue $$8 = new fue($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
+         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
+            this.a(this.n().d($$0, $$1, $$2));
+            this.l();
+         }
+
+         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
+            this.E = true;
+         }
+
+         this.m = $$4 != $$1 && $$4 < 0.0;
+         if ($$3 != $$0) {
+            this.j = 0.0;
+         }
+
+         if ($$5 != $$2) {
+            this.l = 0.0;
+         }
       }
    }
 
-   public static class d implements ftk<kc> {
-      private final fuc a;
+   protected void l() {
+      eoq $$0 = this.n();
+      this.g = ($$0.a + $$0.d) / 2.0;
+      this.h = $$0.b;
+      this.i = ($$0.c + $$0.f) / 2.0;
+   }
 
-      public d(fuc $$0) {
-         this.a = $$0;
+   protected int a(float $$0) {
+      ib $$1 = ib.a(this.g, this.h, this.i);
+      return this.c.B($$1) ? fwo.a(this.c, $$1) : 0;
+   }
+
+   public boolean m() {
+      return !this.o;
+   }
+
+   public eoq n() {
+      return this.D;
+   }
+
+   public void a(eoq $$0) {
+      this.D = $$0;
+   }
+
+   public Optional<jy> o() {
+      return Optional.empty();
+   }
+
+   public static record a(float b, float c, float d, float e) {
+      public static final fue.a a = new fue.a(1.0F, 1.0F, 0.0F, 1.0F);
+
+      public boolean a() {
+         return this.b >= 1.0F && this.c >= 1.0F;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         fue $$9 = new fue($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+      public float a(int $$0, int $$1, float $$2) {
+         if (awm.a(this.b, this.c)) {
+            return this.b;
+         } else {
+            float $$3 = awm.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
+            return awm.b(this.b, this.c, $$3);
+         }
       }
    }
 }

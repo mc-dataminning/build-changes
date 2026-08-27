@@ -1,37 +1,23 @@
-public class aed implements xx<aag> {
-   public static final xo<uq, aed> a = xx.a(aed::a, aed::new);
-   private final vq b;
-   private final vq c;
+import io.netty.buffer.ByteBuf;
 
-   public aed(vq $$0, vq $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class aed implements xz<aai> {
+   public static final aed a = new aed();
+   public static final xq<ByteBuf, aed> b = xq.a(a);
 
-   private aed(uq $$0) {
-      this.b = $$0.m();
-      this.c = $$0.m();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private aed() {
    }
 
    @Override
-   public xz<aed> a() {
-      return aeq.aV;
+   public yb<aed> a() {
+      return aet.aT;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public vq b() {
-      return this.b;
-   }
-
-   public vq e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

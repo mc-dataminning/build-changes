@@ -1,110 +1,106 @@
-import java.util.function.Supplier;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ffc extends ffl {
-   private static final vq a = vq.c("options.skinCustomisation");
-   private static final vq b = vq.c("options.sounds");
-   private static final vq c = vq.c("options.video");
-   private static final vq k = vq.c("options.controls");
-   private static final vq l = vq.c("options.language");
-   private static final vq m = vq.c("options.chat");
-   private static final vq n = vq.c("options.resourcepack");
-   private static final vq o = vq.c("options.accessibility");
-   private static final vq p = vq.c("options.telemetry");
-   private static final vq q = vq.c("options.credits_and_attribution");
-   private static final int r = 2;
-   private final ffl t;
-   private final exs u;
-   private ezv<blt> v;
-   private fae w;
+public class ffc extends fgh {
+   private static final vs a = vs.c("createWorld.customize.buffet.biome");
+   private final fgh b;
+   private final Consumer<il<cxd>> c;
+   final ix<cxd> k;
+   private ffc.a l;
+   il<cxd> m;
+   private fak n;
 
-   public ffc(ffl $$0, exs $$1) {
-      super(vq.c("options.title"));
-      this.t = $$0;
-      this.u = $$1;
-   }
-
-   @Override
-   protected void aQ_() {
-      fcz $$0 = new fcz();
-      $$0.c().f(5).e(4).b();
-      fcz.b $$1 = $$0.d(2);
-      $$1.a(this.u.ae().a(this.f.m, 0, 0, 150));
-      $$1.a(this.o());
-      $$1.a(fdf.b(26), 2);
-      $$1.a(this.a(a, () -> new ffo(this, this.u)));
-      $$1.a(this.a(b, () -> new ffp(this, this.u)));
-      $$1.a(this.a(c, () -> new ffs(this, this.u)));
-      $$1.a(this.a(k, () -> new fgd(this, this.u)));
-      $$1.a(this.a(l, () -> new feu(this, this.u, this.f.af())));
-      $$1.a(this.a(m, () -> new feb(this, this.u)));
-      $$1.a(this.a(n, () -> new fis(this.f.ab(), this::a, this.f.ae(), vq.c("resourcePack.title"))));
-      $$1.a(this.a(o, () -> new fdx(this, this.u)));
-      $$1.a(this.a(p, () -> new fjy(this, this.u)));
-      $$1.a(this.a(q, () -> new fei(this)));
-      $$1.a(ezo.a(vp.d, $$0x -> this.d()).a(200).a(), 2, $$1.b().c(6));
-      $$0.a();
-      fcy.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
-      $$0.a(this::c);
+   public ffc(fgh $$0, flf $$1, Consumer<il<cxd>> $$2) {
+      super(vs.c("createWorld.customize.buffet.title"));
+      this.b = $$0;
+      this.c = $$2;
+      this.k = $$1.a().d(ki.au);
+      il<cxd> $$3 = this.k.b(cxk.b).or(() -> this.k.h().findAny()).orElseThrow();
+      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
    }
 
    @Override
    public void d() {
-      this.f.a(this.t);
-   }
-
-   private void a(arm $$0) {
-      this.u.a($$0);
-      this.f.a(this);
-   }
-
-   private fdc o() {
-      if (this.f.r != null && this.f.T()) {
-         this.v = a(0, 0, "options.difficulty", this.f);
-         if (!this.f.r.k().l()) {
-            this.w = new fae(0, 0, $$0x -> this.f.a(new fee(this::c, vq.c("difficulty.lock.title"), vq.a("difficulty.lock.question", this.f.r.k().q().b()))));
-            this.v.k(this.v.w() - this.w.w());
-            this.w.b(this.f.r.k().r());
-            this.w.j = !this.w.a();
-            this.v.j = !this.w.a();
-            fcx $$0 = new fcx(150, 0, fcx.b.a);
-            $$0.a(this.v);
-            $$0.a(this.w);
-            return $$0;
-         } else {
-            this.v.j = false;
-            return this.v;
-         }
-      } else {
-         return ezo.a(vq.c("options.online"), $$0x -> this.f.a(ffb.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
-      }
-   }
-
-   public static ezv<blt> a(int $$0, int $$1, String $$2, exo $$3) {
-      return ezv.a(blt::b).a(blt.values()).a($$3.r.aj()).a($$0, $$1, 150, 20, vq.c($$2), ($$1x, $$2x) -> $$3.K().b(new aew($$2x)));
-   }
-
-   private void c(boolean $$0) {
-      this.f.a(this);
-      if ($$0 && this.f.r != null) {
-         this.f.K().b(new afn(true));
-         this.w.b(true);
-         this.w.j = false;
-         this.v.j = false;
-      }
+      this.f.a(this.b);
    }
 
    @Override
-   public void k() {
-      this.u.as();
+   protected void aP_() {
+      this.l = this.c(new ffc.a());
+      this.n = this.c(fak.a(vr.d, $$0 -> {
+         this.c.accept(this.m);
+         this.f.a(this.b);
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.c(fak.a(vr.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.l.a(this.l.l().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
+   }
+
+   void o() {
+      this.n.j = this.l.i() != null;
    }
 
    @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, a, this.g / 2, 28, 10526880);
    }
 
-   private ezo a(vq $$0, Supplier<ffl> $$1) {
-      return ezo.a($$0, $$1x -> this.f.a($$1.get())).a();
+   @Override
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends fbg<ffc.a.a> {
+      a() {
+         super(ffc.this.f, ffc.this.g, ffc.this.h - 77, 40, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         ffc.this.k.h().map($$0x -> new ffc.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+      }
+
+      public void a(@Nullable ffc.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            ffc.this.m = $$0.b;
+         }
+
+         ffc.this.o();
+      }
+
+      class a extends fbg.a<ffc.a.a> {
+         final il.c<cxd> b;
+         final vs c;
+
+         public a(il.c<cxd> $$0) {
+            this.b = $$0;
+            ajc $$1 = $$0.h().a();
+            String $$2 = $$1.f("biome");
+            if (st.a().b($$2)) {
+               this.c = vs.c($$2);
+            } else {
+               this.c = vs.b($$1.toString());
+            }
+         }
+
+         @Override
+         public vs a() {
+            return vs.a("narrator.select", this.c);
+         }
+
+         @Override
+         public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(ffc.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+      }
    }
 }

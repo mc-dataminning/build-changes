@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dns extends cux {
-   void a(BiConsumer<hz, dlj> var1);
-
-   egg B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dns {
 }

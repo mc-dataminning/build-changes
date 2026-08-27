@@ -1,24 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class va extends uo {
-   private static final Logger h = LogUtils.getLogger();
-   private static final vq i = vq.c("disconnect.exceeded_packet_rate");
-   private final int j;
+public interface va<T extends uy> {
+   ur a();
 
-   public va(int $$0) {
-      super(xy.a);
-      this.j = $$0;
-   }
+   ya b();
 
-   @Override
-   protected void c() {
-      super.c();
-      float $$0 = this.o();
-      if ($$0 > (float)this.j) {
-         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new yf(i), ux.a(() -> this.a(i)));
-         this.m();
-      }
+   xq<ByteBuf, xz<? super T>> c();
+
+   @Nullable
+   xy d();
+
+   public interface a<T extends uy, B extends ByteBuf> {
+      va<T> bind(Function<ByteBuf, B> var1);
    }
 }

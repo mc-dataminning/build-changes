@@ -144,4 +144,12 @@ public class f {
       Vector3f $$19 = new Vector3f($$18.m00, $$18.m11, $$18.m22);
       return Triple.of($$9, $$19, $$2.conjugate());
    }
+
+   public static boolean a(Matrix4f $$0) {
+      return ($$0.properties() & 8) != 0;
+   }
+
+   public static boolean b(Matrix4f $$0) {
+      return ($$0.properties() & 16) != 0;
+   }
 }

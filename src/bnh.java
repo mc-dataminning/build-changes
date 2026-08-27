@@ -1,20 +1,96 @@
-class bnh extends bnb {
-   protected bnh(bnc $$0, int $$1) {
-      super($$0, $$1);
-   }
+public interface bnh {
+   ajb<bng> a = ajb.a(ki.r, new ajc("in_fire"));
+   ajb<bng> b = ajb.a(ki.r, new ajc("lightning_bolt"));
+   ajb<bng> c = ajb.a(ki.r, new ajc("on_fire"));
+   ajb<bng> d = ajb.a(ki.r, new ajc("lava"));
+   ajb<bng> e = ajb.a(ki.r, new ajc("hot_floor"));
+   ajb<bng> f = ajb.a(ki.r, new ajc("in_wall"));
+   ajb<bng> g = ajb.a(ki.r, new ajc("cramming"));
+   ajb<bng> h = ajb.a(ki.r, new ajc("drown"));
+   ajb<bng> i = ajb.a(ki.r, new ajc("starve"));
+   ajb<bng> j = ajb.a(ki.r, new ajc("cactus"));
+   ajb<bng> k = ajb.a(ki.r, new ajc("fall"));
+   ajb<bng> l = ajb.a(ki.r, new ajc("fly_into_wall"));
+   ajb<bng> m = ajb.a(ki.r, new ajc("out_of_world"));
+   ajb<bng> n = ajb.a(ki.r, new ajc("generic"));
+   ajb<bng> o = ajb.a(ki.r, new ajc("magic"));
+   ajb<bng> p = ajb.a(ki.r, new ajc("wither"));
+   ajb<bng> q = ajb.a(ki.r, new ajc("dragon_breath"));
+   ajb<bng> r = ajb.a(ki.r, new ajc("dry_out"));
+   ajb<bng> s = ajb.a(ki.r, new ajc("sweet_berry_bush"));
+   ajb<bng> t = ajb.a(ki.r, new ajc("freeze"));
+   ajb<bng> u = ajb.a(ki.r, new ajc("stalagmite"));
+   ajb<bng> v = ajb.a(ki.r, new ajc("falling_block"));
+   ajb<bng> w = ajb.a(ki.r, new ajc("falling_anvil"));
+   ajb<bng> x = ajb.a(ki.r, new ajc("falling_stalactite"));
+   ajb<bng> y = ajb.a(ki.r, new ajc("sting"));
+   ajb<bng> z = ajb.a(ki.r, new ajc("mob_attack"));
+   ajb<bng> A = ajb.a(ki.r, new ajc("mob_attack_no_aggro"));
+   ajb<bng> B = ajb.a(ki.r, new ajc("player_attack"));
+   ajb<bng> C = ajb.a(ki.r, new ajc("arrow"));
+   ajb<bng> D = ajb.a(ki.r, new ajc("trident"));
+   ajb<bng> E = ajb.a(ki.r, new ajc("mob_projectile"));
+   ajb<bng> F = ajb.a(ki.r, new ajc("spit"));
+   ajb<bng> G = ajb.a(ki.r, new ajc("wind_charge"));
+   ajb<bng> H = ajb.a(ki.r, new ajc("fireworks"));
+   ajb<bng> I = ajb.a(ki.r, new ajc("fireball"));
+   ajb<bng> J = ajb.a(ki.r, new ajc("unattributed_fireball"));
+   ajb<bng> K = ajb.a(ki.r, new ajc("wither_skull"));
+   ajb<bng> L = ajb.a(ki.r, new ajc("thrown"));
+   ajb<bng> M = ajb.a(ki.r, new ajc("indirect_magic"));
+   ajb<bng> N = ajb.a(ki.r, new ajc("thorns"));
+   ajb<bng> O = ajb.a(ki.r, new ajc("explosion"));
+   ajb<bng> P = ajb.a(ki.r, new ajc("player_explosion"));
+   ajb<bng> Q = ajb.a(ki.r, new ajc("sonic_boom"));
+   ajb<bng> R = ajb.a(ki.r, new ajc("bad_respawn_point"));
+   ajb<bng> S = ajb.a(ki.r, new ajc("outside_border"));
+   ajb<bng> T = ajb.a(ki.r, new ajc("generic_kill"));
 
-   @Override
-   public boolean a(boi $$0, int $$1) {
-      if ($$0.ew() < $$0.eN()) {
-         $$0.c(1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   static void a(pj<bng> $$0) {
+      $$0.a(a, new bng("inFire", 0.1F, bnc.d));
+      $$0.a(b, new bng("lightningBolt", 0.1F));
+      $$0.a(c, new bng("onFire", 0.0F, bnc.d));
+      $$0.a(d, new bng("lava", 0.1F, bnc.d));
+      $$0.a(e, new bng("hotFloor", 0.1F, bnc.d));
+      $$0.a(f, new bng("inWall", 0.0F));
+      $$0.a(g, new bng("cramming", 0.0F));
+      $$0.a(h, new bng("drown", 0.0F, bnc.c));
+      $$0.a(i, new bng("starve", 0.0F));
+      $$0.a(j, new bng("cactus", 0.1F));
+      $$0.a(k, new bng("fall", bnd.b, 0.0F, bnc.a, bni.b));
+      $$0.a(l, new bng("flyIntoWall", 0.0F));
+      $$0.a(m, new bng("outOfWorld", 0.0F));
+      $$0.a(n, new bng("generic", 0.0F));
+      $$0.a(o, new bng("magic", 0.0F));
+      $$0.a(p, new bng("wither", 0.0F));
+      $$0.a(q, new bng("dragonBreath", 0.0F));
+      $$0.a(r, new bng("dryout", 0.1F));
+      $$0.a(s, new bng("sweetBerryBush", 0.1F, bnc.e));
+      $$0.a(t, new bng("freeze", 0.0F, bnc.f));
+      $$0.a(u, new bng("stalagmite", 0.0F));
+      $$0.a(v, new bng("fallingBlock", 0.1F));
+      $$0.a(w, new bng("anvil", 0.1F));
+      $$0.a(x, new bng("fallingStalactite", 0.1F));
+      $$0.a(y, new bng("sting", 0.1F));
+      $$0.a(z, new bng("mob", 0.1F));
+      $$0.a(A, new bng("mob", 0.1F));
+      $$0.a(B, new bng("player", 0.1F));
+      $$0.a(C, new bng("arrow", 0.1F));
+      $$0.a(D, new bng("trident", 0.1F));
+      $$0.a(E, new bng("mob", 0.1F));
+      $$0.a(F, new bng("mob", 0.1F));
+      $$0.a(H, new bng("fireworks", 0.1F));
+      $$0.a(J, new bng("onFire", 0.1F, bnc.d));
+      $$0.a(I, new bng("fireball", 0.1F, bnc.d));
+      $$0.a(K, new bng("witherSkull", 0.1F));
+      $$0.a(L, new bng("thrown", 0.1F));
+      $$0.a(M, new bng("indirectMagic", 0.0F));
+      $$0.a(N, new bng("thorns", 0.1F, bnc.b));
+      $$0.a(O, new bng("explosion", bnd.c, 0.1F));
+      $$0.a(P, new bng("explosion.player", bnd.c, 0.1F));
+      $$0.a(Q, new bng("sonic_boom", bnd.c, 0.0F));
+      $$0.a(R, new bng("badRespawnPoint", bnd.c, 0.1F, bnc.a, bni.c));
+      $$0.a(S, new bng("outsideBorder", 0.0F));
+      $$0.a(T, new bng("genericKill", 0.0F));
    }
 }

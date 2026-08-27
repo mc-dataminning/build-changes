@@ -1,132 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bvg {
-   private static final bwt a = new bwt(Integer.MAX_VALUE, new bvf() {
-      @Override
-      public boolean a() {
+public class bvg extends bvu {
+   private static final bzn d = bzn.b().a(8.0).d();
+   protected final cam a;
+   private final Class<? extends cam> e;
+   protected final cwe b;
+   @Nullable
+   protected cam c;
+   private int f;
+   private final double g;
+
+   public bvg(cam $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cam>)$$0.getClass());
+   }
+
+   public bvg(cam $$0, double $$1, Class<? extends cam> $$2) {
+      this.a = $$0;
+      this.b = $$0.dJ();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.gp()) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bvf.a, bwt> b = new EnumMap<>(bvf.a.class);
-   private final Set<bwt> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<bin> d;
-   private final EnumSet<bvf.a> e = EnumSet.noneOf(bvf.a.class);
-
-   public bvg(Supplier<bin> $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, bvf $$1) {
-      this.c.add(new bwt($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<bvf> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(bvf $$0) {
-      for (bwt $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.d();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(bwt $$0, EnumSet<bvf.a> $$1) {
-      for (bvf.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(bwt $$0, Map<bvf.a, bwt> $$1) {
-      for (bvf.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bin $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (bwt $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
-            $$1.d();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((bwt)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (bwt $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
-            for (bvf.a $$3 : $$2.j()) {
-               bwt $$4 = this.b.getOrDefault($$3, a);
-               $$4.d();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bin $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (bwt $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.T_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<bwt> b() {
-      return this.c;
-   }
-
-   public void a(bvf.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(bvf.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(bvf.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
       } else {
-         this.a($$0);
+         this.c = this.h();
+         return this.c != null;
       }
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.bx() && this.c.gp() && this.f < 60 && !this.c.gi();
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void e() {
+      this.a.I().a(this.c, 10.0F, (float)this.a.ab());
+      this.a.N().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cam h() {
+      List<? extends cam> $$0 = this.b.a(this.e, d, this.a, this.a.cE().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cam $$2 = null;
+
+      for (cam $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gi() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((apa)this.b, this.c);
    }
 }

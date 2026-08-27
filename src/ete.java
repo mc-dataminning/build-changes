@@ -1,33 +1,93 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class ete extends eud {
-   private static final Logger b = LogUtils.getLogger();
-   public List<etd> a;
+public class ete extends etc {
+   private final eth f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public static ete a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      ete $$2 = new ete();
-      $$2.a = Lists.newArrayList();
+   public ete(eth $$0, etd.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
+   }
 
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
+   }
 
-            while ($$4.hasNext()) {
-               $$2.a.add(etd.a($$4.next()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
-      }
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      ih $$1 = ih.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
+   }
 
-      return $$2;
+   @Override
+   public eth a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
+   }
+
+   @Override
+   public eth a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
+   }
+
+   @Override
+   public eth a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public eth a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
+
+   @Override
+   public eth b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public eth a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

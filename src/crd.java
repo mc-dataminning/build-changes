@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface crd {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface crd {
+   float b();
+
+   float c();
+
+   int d();
+
+   int e();
+
+   csp f();
 }

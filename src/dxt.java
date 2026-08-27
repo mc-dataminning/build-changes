@@ -1,48 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxt extends dxp {
+public class dxt implements dwy {
    public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(blb.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dxt::new)
+      $$0 -> $$0.group(
+               ehr.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               iz.a(ki.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dxt::new)
    );
-   private final blb b;
+   public final ehr b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final ip<czf> f;
 
-   public dxt(blb $$0, blb $$1, blb $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected dxq<?> a() {
-      return dxq.c;
-   }
-
-   @Override
-   protected void a(cvx $$0, dxp.b $$1, awp $$2, dwz $$3, int $$4, dxp.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
-   }
-
-   @Override
-   public int a(awp $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(awp $$0, int $$1, dwz $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(awp $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public dxt(ehr $$0, boolean $$1, int $$2, int $$3, ip<czf> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

@@ -1,73 +1,19 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class dir extends dix implements blp, bma, bmb {
-   private blz e = blz.a;
-   @Nullable
-   private vq f;
+public class dir extends czf {
+   public static final MapCodec<dir> a = b(dir::new);
 
-   protected dir(diz<?> $$0, hz $$1, dlj $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<dir> a() {
+      return a;
+   }
+
+   public dir(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.e = blz.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.f = vq.a.a($$0.l("CustomName"));
-      }
+   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
+      $$3.a($$0, new eov(0.25, 0.05F, 0.25));
    }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.e.a($$0);
-      if (this.f != null) {
-         $$0.a("CustomName", vq.a.a(this.f));
-      }
-   }
-
-   public void a(vq $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public vq ad() {
-      return this.f != null ? this.f : this.l();
-   }
-
-   @Override
-   public vq Q_() {
-      return this.ad();
-   }
-
-   @Nullable
-   @Override
-   public vq af() {
-      return this.f;
-   }
-
-   protected abstract vq l();
-
-   public boolean d(chl $$0) {
-      return a($$0, this.e, this.Q_());
-   }
-
-   public static boolean a(chl $$0, blz $$1, vq $$2) {
-      if (!$$0.P_() && !$$1.a($$0.eT())) {
-         $$0.a(vq.a("container.isLocked", $$2), true);
-         $$0.a(atl.eH, atm.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public ckf createMenu(int $$0, chk $$1, chl $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract ckf a(int var1, chk var2);
 }

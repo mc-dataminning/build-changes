@@ -1,30 +1,37 @@
-public record afi(int b, int c, boolean d) implements xx<aes> {
-   public static final xo<uq, afi> a = xx.a(afi::a, afi::new);
+public class afi implements xz<aev> {
+   public static final xq<us, afi> a = xz.a(afi::a, afi::new);
+   private final int b;
+   private final int c;
 
-   private afi(uq $$0) {
-      this($$0.n(), $$0.n(), $$0.readBoolean());
+   public afi(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private afi(us $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.readByte();
+   }
+
+   private void a(us $$0) {
+      $$0.k(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public xz<afi> a() {
-      return aeq.br;
+   public yb<afi> a() {
+      return aet.bp;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

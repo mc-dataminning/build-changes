@@ -1,108 +1,168 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fwk {
-   protected final fvr a;
-   protected final cvr b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public fys.b[] f;
+public class fwk extends ask<fwk.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ajc b = new ajc("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public fwk(fys $$0, cvr $$1, int $$2, fvr $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   protected void a(fys $$0) {
-      if (!exo.P().bt()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new fys.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
-      }
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public void a() {
-      for (fys.b $$0 : this.f) {
-         $$0.e();
-      }
+   public void d() {
+      this.d = true;
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
+   public void e() {
+      this.e = true;
    }
 
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.al();
-      this.e = $$1;
-      this.g = $$0;
+   public void f() {
+      this.e = true;
+      this.f = true;
    }
 
-   public int b() {
-      return this.g;
+   public boolean g() {
+      return this.d && !this.e;
    }
 
-   public cvt c() {
-      return this.b;
+   public boolean h() {
+      return this.f;
    }
 
-   public void a(double $$0, double $$1) {
-      int $$2 = awi.c($$0);
-      int $$3 = awi.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.J_() + $$12 * 16;
-               fys.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               hz $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.am(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      fys.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
    }
 
    @Nullable
-   protected fys.b a(hz $$0) {
-      int $$1 = awi.a($$0.v() - this.b.J_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = awi.b(awi.a($$0.u(), 16), this.d);
-         int $$3 = awi.b(awi.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fwk.a a(asf $$0, bjc $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
+      }
+
+      $$1.b();
+      return new fwk.a($$2, $$3, $$4);
+   }
+
+   protected void a(fwk.a $$0, asf $$1, bjc $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(asf $$0, bjc $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, erw.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, erw.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, erw.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

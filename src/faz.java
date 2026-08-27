@@ -1,43 +1,39 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class faz implements fdk {
-   private static final int a = 170;
-   private final vq b;
-   @Nullable
-   private List<avu> c;
-   @Nullable
-   private final vq d;
+public class faz extends fai {
+   private final ezv a;
 
-   private faz(vq $$0, @Nullable vq $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static faz a(vq $$0, @Nullable vq $$1) {
-      return new faz($$0, $$1);
-   }
-
-   public static faz a(vq $$0) {
-      return new faz($$0, $$0);
+   public faz(ezv $$0, vs $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   public void b(fdj $$0) {
-      if (this.d != null) {
-         $$0.a(fdi.c, this.d);
-      }
+   protected void b(ezx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.B() + this.w() / 2;
+      int $$5 = this.C() + this.u() / 2;
+      vs $$6 = this.x();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = ffs.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public List<avu> a(exo $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
+   @Override
+   protected void a(fef $$0) {
    }
 
-   public static List<avu> a(exo $$0, vq $$1) {
-      return $$0.h.c($$1, 170);
+   @Override
+   public void a(gmq $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public ezu a(fel $$0) {
+      return null;
    }
 }

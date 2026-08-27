@@ -1,24 +1,25 @@
-public abstract class gew<T extends bnq & bou, M extends fmi<T>> extends gfl<T, M> {
-   public gew(gcv<T, M> $$0) {
+public class gew extends gbx<cjg> {
+   private static final ajc a = new ajc("textures/entity/projectiles/wind_charge.png");
+   private final fpt f;
+
+   public gew(gby.a $$0) {
       super($$0);
+      this.f = new fpt($$0.a(fqe.bP));
    }
 
-   @Override
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ag + $$6;
-         fmi<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         esl $$12 = $$1.getBuffer(fwb.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, ggs.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(cjg $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
+      float $$6 = (float)$$0.ag + $$2;
+      eth $$7 = $$4.getBuffer(fwy.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, ghq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected abstract float a(float var1);
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
 
-   protected abstract aiy a();
-
-   protected abstract fmi<T> b();
+   public ajc a(cjg $$0) {
+      return a;
+   }
 }

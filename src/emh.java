@@ -1,42 +1,70 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record emh(float b, float c) implements emb {
-   public static final Codec<emh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(emh::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(emh::d)).apply($$0, emh::new)
-   );
+public class emh {
+   private final Set<emg<?>> a;
+   private final Set<emg<?>> b;
 
-   @Override
-   public emc b() {
-      return emd.f;
+   emh(Set<emg<?>> $$0, Set<emg<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<elk<?>> a() {
-      return ImmutableSet.of(eln.d);
+   public boolean a(emg<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(ejc $$0) {
-      bnq $$1 = $$0.c(eln.d);
-      int $$2 = 0;
-      if ($$1 instanceof boi) {
-         $$2 = ctn.h((boi)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   public Set<emg<?>> a() {
+      return this.a;
    }
 
-   public static emb.a a(float $$0, float $$1) {
-      return () -> new emh($$0, $$1);
-   }
-
-   public float c() {
+   public Set<emg<?>> b() {
       return this.b;
    }
 
-   public float d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(ekh $$0, ejz $$1) {
+      Set<emg<?>> $$2 = $$1.a();
+      Set<emg<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static emh.a c() {
+      return new emh.a();
+   }
+
+   public static class a {
+      private final Set<emg<?>> a = Sets.newIdentityHashSet();
+      private final Set<emg<?>> b = Sets.newIdentityHashSet();
+
+      public emh.a a(emg<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public emh.a b(emg<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public emh a() {
+         return new emh(this.a, this.b);
+      }
    }
 }

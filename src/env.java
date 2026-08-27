@@ -1,47 +1,42 @@
-public class env extends enx {
-   private final ie b;
-   private final hz c;
-   private final boolean d;
-   private final boolean e;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public static env a(enz $$0, ie $$1, hz $$2) {
-      return new env(true, $$0, $$1, $$2, false);
+public record env(ens b, ens c) implements ens {
+   public static final Codec<env> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ent.a.fieldOf("min").forGetter(env::c), ent.a.fieldOf("max").forGetter(env::d)).apply($$0, env::new)
+   );
+
+   @Override
+   public enr b() {
+      return ent.c;
    }
 
-   public env(enz $$0, ie $$1, hz $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
-   }
-
-   private env(boolean $$0, enz $$1, ie $$2, hz $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-   }
-
-   public env a(ie $$0) {
-      return new env(this.d, this.a, $$0, this.c, this.e);
-   }
-
-   public env a(hz $$0) {
-      return new env(this.d, this.a, this.b, $$0, this.e);
-   }
-
-   public hz a() {
-      return this.c;
-   }
-
-   public ie b() {
-      return this.b;
+   public static env a(float $$0, float $$1) {
+      return new env(enq.a($$0), enq.a($$1));
    }
 
    @Override
-   public enx.a c() {
-      return this.d ? enx.a.a : enx.a.b;
+   public int a(ejy $$0) {
+      return awm.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public float b(ejy $$0) {
+      return awm.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<emg<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ens c() {
+      return this.b;
+   }
+
+   public ens d() {
+      return this.c;
    }
 }

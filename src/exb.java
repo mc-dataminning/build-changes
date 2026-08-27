@@ -1,113 +1,172 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class exb extends ato {
-   private static final Logger c = LogUtils.getLogger();
-   private Map<exx, List<fjd>> d = ImmutableMap.of();
-   private List<fjd> e = ImmutableList.of();
-
-   public void a(Iterable<csh<?>> $$0, iw $$1) {
-      Map<exx, List<List<csh<?>>>> $$2 = a($$0);
-      Map<exx, List<fjd>> $$3 = Maps.newHashMap();
-      Builder<fjd> $$4 = ImmutableList.builder();
-      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fjd($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
-      exx.w
-         .forEach(
-            ($$1x, $$2x) -> $$3.put(
-                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
-               )
-         );
-      this.d = ImmutableMap.copyOf($$3);
-      this.e = $$4.build();
+public class exb {
+   private exb() {
    }
 
-   private static Map<exx, List<List<csh<?>>>> a(Iterable<csh<?>> $$0) {
-      Map<exx, List<List<csh<?>>>> $$1 = Maps.newHashMap();
-      Table<exx, String, List<csh<?>>> $$2 = HashBasedTable.create();
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
+   }
 
-      for (csh<?> $$3 : $$0) {
-         csf<?> $$4 = $$3.b();
-         if (!$$4.as_() && !$$4.i()) {
-            exx $$5 = g($$3);
-            String $$6 = $$4.c();
-            if ($$6.isEmpty()) {
-               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
+   public static List<exb.a> a(String $$0, exb.b... $$1) {
+      return a($$0, Arrays.asList($$1));
+   }
+
+   private static List<exb.a> a(String $$0, List<exb.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
+   }
+
+   private static List<exb.a> a(List<String> $$0, List<exb.b> $$1) {
+      int $$2 = 0;
+      List<exb.a> $$3 = Lists.newArrayList();
+
+      for (String $$4 : $$0) {
+         List<exb.b> $$5 = Lists.newArrayList();
+
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
             } else {
-               List<csh<?>> $$7 = (List<csh<?>>)$$2.get($$5, $$6);
-               if ($$7 == null) {
-                  $$7 = Lists.newArrayList();
-                  $$2.put($$5, $$6, $$7);
-                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
-               }
-
-               $$7.add($$3);
+               $$5.add(exb.b.a($$7));
             }
          }
+
+         $$3.add(new exb.a($$5));
       }
 
-      return $$1;
+      return $$3;
    }
 
-   private static exx g(csh<?> $$0) {
-      csf<?> $$1 = $$0.b();
-      if ($$1 instanceof crw $$2) {
-         return switch ($$2.d()) {
-            case a -> exx.b;
-            case c -> exx.d;
-            case b -> exx.c;
-            case d -> exx.e;
-         };
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
       } else {
-         csk<?> $$3 = $$1.e();
-         if ($$1 instanceof cro $$4) {
-            cru $$5 = $$4.f();
-            if ($$3 == csk.b) {
-               return switch ($$5) {
-                  case b -> exx.h;
-                  case a -> exx.g;
-                  case c -> exx.i;
-               };
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
+
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
             }
 
-            if ($$3 == csk.c) {
-               return $$5 == cru.b ? exx.k : exx.l;
-            }
-
-            if ($$3 == csk.d) {
-               return exx.n;
-            }
-
-            if ($$3 == csk.e) {
-               return exx.q;
-            }
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
          }
 
-         if ($$3 == csk.f) {
-            return exx.o;
-         } else if ($$3 == csk.g) {
-            return exx.p;
-         } else {
-            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> kf.s.b($$1.e())), LogUtils.defer($$0::a));
-            return exx.r;
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
          }
+
+         return $$2;
       }
    }
 
-   public List<fjd> b() {
-      return this.e;
+   public static class a {
+      public final List<exb.b> a;
+
+      a(exb.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<exb.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            exb.a $$1 = (exb.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
    }
 
-   public List<fjd> a(exx $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   public static class b {
+      private final String a;
+      @Nullable
+      private final String b;
+      @Nullable
+      private final String c;
+
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
+
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            exb.b $$1 = (exb.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      }
+
+      public String a() {
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static exb.b a(String $$0, String $$1) {
+         return new exb.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static exb.b a(String $$0) {
+         return new exb.b($$0);
+      }
    }
 }

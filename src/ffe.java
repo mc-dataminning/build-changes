@@ -1,27 +1,42 @@
-public class ffe extends ffl {
-   private fah a;
+public class ffe extends fgh {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final vs c = vs.c("credits_and_attribution.screen.title");
+   private static final vs k = vs.c("credits_and_attribution.button.credits");
+   private static final vs l = vs.c("credits_and_attribution.button.attribution");
+   private static final vs m = vs.c("credits_and_attribution.button.licenses");
+   private final fgh n;
+   private final fdw o = new fdw(this);
 
-   public ffe() {
-      super(vq.c("outOfMemory.title"));
-      this.a = fah.a;
+   public ffe(fgh $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void aQ_() {
-      this.c(ezo.a(vp.l, $$0 -> this.f.a(new ffq())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.c(ezo.a(vq.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = fah.a(this.i, vq.c("outOfMemory.message"), 295);
+   protected void aP_() {
+      this.o.a(new fbr(this.p(), this.i));
+      fea $$0 = this.o.c(fea.d()).a(8);
+      $$0.c().b();
+      $$0.a(fak.a(k, $$0x -> this.o()).a(210).a());
+      $$0.a(fak.a(l, fez.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(fak.a(m, fez.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(fak.a(vr.d, $$0x -> this.d()).a());
+      this.o.a();
+      this.o.a(this::c);
    }
 
    @Override
-   public boolean aO_() {
-      return false;
+   protected void c() {
+      this.o.a();
+   }
+
+   private void o() {
+      this.f.a(new fgp(false, () -> this.f.a(this)));
    }
 
    @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+   public void d() {
+      this.f.a(this.n);
    }
 }

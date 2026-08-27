@@ -1,68 +1,69 @@
-import javax.annotation.Nullable;
+public class aeb implements xz<aai> {
+   public static final xq<vd, aeb> a = xz.a(aeb::a, aeb::new);
+   private final il<ato> b;
+   private final atq c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class aeb implements xx<aag> {
-   public static final xo<uq, aeb> a = xx.a(aeb::a, aeb::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final aiy d;
-   @Nullable
-   private final atm e;
-
-   public aeb(@Nullable aiy $$0, @Nullable atm $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public aeb(il<ato> $$0, atq $$1, bof $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.aj();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private aeb(uq $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(atm.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.s();
-      } else {
-         this.d = null;
-      }
+   private aeb(vd $$0) {
+      this.b = ato.d.decode($$0);
+      this.c = $$0.b(atq.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(uq $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(vd $$0) {
+      ato.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public xz<aeb> a() {
-      return aeq.aT;
+   public yb<aeb> a() {
+      return aet.aR;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aiy b() {
+   public il<ato> b() {
+      return this.b;
+   }
+
+   public atq e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   @Nullable
-   public atm e() {
+   public float g() {
       return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

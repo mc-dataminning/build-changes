@@ -1,14 +1,19 @@
-class bni extends bna {
-   protected bni(bnc $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bni implements axg {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bni> d = axg.a(bni::values);
+   private final String e;
+
+   private bni(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(boi $$0, int $$1) {
-      if (!$$0.dM().B && $$0 instanceof chl $$2) {
-         $$2.gd().a($$1 + 1, 1.0F);
-      }
-
-      return true;
+   public String c() {
+      return this.e;
    }
 }

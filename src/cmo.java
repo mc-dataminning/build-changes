@@ -1,17 +1,22 @@
-public interface cmo {
-   int a(cmn.a var1);
+public class cmo implements cle {
+   private final int[] a;
 
-   int b(cmn.a var1);
+   public cmo(int $$0) {
+      this.a = new int[$$0];
+   }
 
-   int a();
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
 
-   atk b();
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
 
-   csc d();
-
-   String e();
-
-   float f();
-
-   float g();
+   @Override
+   public int a() {
+      return this.a.length;
+   }
 }

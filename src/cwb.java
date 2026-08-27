@@ -1,50 +1,103 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class cwb {
-   private final Long2ObjectMap<List<aox>> a = new Long2ObjectOpenHashMap();
-   private final Map<aox, cwb.a> b = Maps.newHashMap();
-   private final aog c;
+public enum cwb implements axg {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public cwb(aog $$0) {
-      this.c = $$0;
+   public static final cwb e = a;
+   public static final axg.a<cwb> f = axg.a(cwb::values);
+   private static final IntFunction<cwb> g = ave.a(cwb::a, values(), ave.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final vs k;
+   private final vs l;
+
+   private cwb(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = vs.c("selectWorld.gameMode." + $$1);
+      this.l = vs.c("gameMode." + $$1);
    }
 
-   private List<aox> a(cuy $$0) {
-      return (List<aox>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   public int a() {
+      return this.i;
    }
 
-   public void a(cuy $$0, bol $$1) {
-      for (aox $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new cwb.a()).a($$1);
-      }
+   public String b() {
+      return this.j;
    }
 
-   public boolean a(bol $$0, cuy $$1) {
-      for (aox $$2 : this.a($$1)) {
-         cwb.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   static class a {
-      private final Object2IntMap<bol> a = new Object2IntOpenHashMap(bol.values().length);
+   public vs d() {
+      return this.l;
+   }
 
-      public void a(bol $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+   public vs e() {
+      return this.k;
+   }
+
+   public void a(chx $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
 
-      public boolean b(bol $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+      $$0.e = !this.f();
+   }
+
+   public boolean f() {
+      return this == c || this == d;
+   }
+
+   public boolean g() {
+      return this == b;
+   }
+
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static cwb a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static cwb a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cwb a(String $$0, @Nullable cwb $$1) {
+      cwb $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable cwb $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static cwb b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

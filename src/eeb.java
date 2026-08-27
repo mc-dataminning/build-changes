@@ -1,32 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class eeb extends ebl {
-   public static final Codec<eeb> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, eeb::new)
-   );
-   public final boolean e;
+public class eeb extends ecf {
+   public static final Codec<eeb> d = a(eeb::new);
 
-   public eeb(ebl.c $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
+   public eeb(ecg.c $$0) {
+      super(eea::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<ebl.b> a(ebl.a $$0) {
-      dqv.a $$1 = this.e ? dqv.a.a : dqv.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   public void a(cwz $$0, cwx $$1, dob $$2, awt $$3, eby $$4, cvl $$5, ecv $$6) {
+      Set<ib> $$7 = axd.a(jf::i);
+
+      for (eck $$8 : $$6.c()) {
+         if ($$8 instanceof eea $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<ib> $$10 = new ObjectArrayList($$7.stream().toList());
+      awt $$11 = awt.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         ib $$13 = (ib)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, czh.I.o(), 2);
+         }
+      }
    }
 
-   private void a(ecd $$0, ebl.a $$1) {
-      dfe $$2 = dfe.a($$1.f());
-      hz $$3 = new hz($$1.h().d(), 90, $$1.h().e());
-      eea.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+   private static void a(eby $$0, cwz $$1, ib $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, czh.J.o(), 2);
+         $$1.a($$2, djn.N).ifPresent($$1x -> $$1x.a(ejw.aP, $$2.a()));
+      }
    }
 
    @Override
-   public ebu<?> e() {
-      return ebu.m;
+   public ecp<?> e() {
+      return ecp.b;
    }
 }

@@ -1,54 +1,68 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dbo extends cys implements dbn {
-   public dbo(dli.d $$0) {
+public class dbo extends dcb {
+   public static final MapCodec<dbo> a = b(dbo::new);
+   protected static final epo b = czf.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dbo> a() {
+      return a;
+   }
+
+   public dbo(dmd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dbo> a();
-
-   @Override
-   protected void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return b;
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      this.d($$0, $$1, $$2);
+      return bml.a($$1.B);
    }
 
    @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cdv $$4 = cdv.a($$1, $$2, $$0);
-         this.a($$4);
-      }
+   protected void a(dme $$0, cwe $$1, ib $$2, cia $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   protected void a(cdv $$0) {
-   }
+   private void d(dme $$0, cwe $$1, ib $$2) {
+      dnv $$3 = $$1.D_();
 
-   protected int b() {
-      return 2;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ib $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = awm.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = awm.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = awm.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(kb.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   public static boolean m(dlj $$0) {
-      return $$0.i() || $$0.a(aua.aJ) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      if ($$3.a(16) == 0) {
-         hz $$4 = $$2.d();
-         if (m($$1.a_($$4))) {
-            awl.a($$1, $$2, $$3, new jr(jz.B, $$0));
+            return;
          }
       }
    }
 
-   public int b(dlj $$0, cux $$1, hz $$2) {
-      return -16777216;
+   @Override
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

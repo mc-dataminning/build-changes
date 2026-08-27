@@ -1,26 +1,8 @@
-public enum bly {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public boolean a() {
-      return this.b().a();
-   }
-
-   public static bly a(boolean $$0) {
-      return $$0 ? a : b;
-   }
-
-   public blw b() {
-      return switch (this) {
-         case a -> blw.a;
-         case b -> blw.b;
-         case c -> blw.c;
-         case d, e -> blw.d;
-         case f -> blw.e;
-      };
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bly {
 }

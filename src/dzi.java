@@ -1,26 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class dzi<P extends dzh> {
-   public static final dzi<dzg> a = a("straight_trunk_placer", dzg.a);
-   public static final dzi<dzd> b = a("forking_trunk_placer", dzd.a);
-   public static final dzi<dze> c = a("giant_trunk_placer", dze.a);
-   public static final dzi<dzf> d = a("mega_jungle_trunk_placer", dzf.b);
-   public static final dzi<dzb> e = a("dark_oak_trunk_placer", dzb.a);
-   public static final dzi<dzc> f = a("fancy_trunk_placer", dzc.a);
-   public static final dzi<dyz> g = a("bending_trunk_placer", dyz.a);
-   public static final dzi<dzj> h = a("upwards_branching_trunk_placer", dzj.a);
-   public static final dzi<dza> i = a("cherry_trunk_placer", dza.a);
-   private final Codec<P> j;
+public class dzi extends dyz {
+   public static final Codec<dzi> b = dme.b.fieldOf("state").xmap(dzi::new, $$0 -> $$0.c).codec();
+   private final dme c;
 
-   private static <P extends dzh> dzi<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.X, $$0, new dzi<>($$1));
+   protected dzi(dme $$0) {
+      this.c = $$0;
    }
 
-   private dzi(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dza<?> a() {
+      return dza.a;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public dme a(awt $$0, ib $$1) {
+      return this.c;
    }
 }

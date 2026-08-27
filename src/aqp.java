@@ -1,36 +1,151 @@
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiConsumer;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface aqp extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public class aqp implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bip<aqp.e> d;
+   private final ble<Runnable> e = ble.a(ac.h(), "download-queue");
 
-   @Nullable
-   art<InputStream> a(String... var1);
+   public aqp(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bip.a(aqp.e.a, $$0.resolve("log.json"));
+      aqo.a($$0, 20);
+   }
 
-   @Nullable
-   art<InputStream> a(aqq var1, aiy var2);
+   private aqp.b b(aqp.a $$0, Map<UUID, aqp.c> $$1) {
+      aqp.b $$2 = new aqp.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   void a(aqq var1, String var2, String var3, aqp.a var4);
+            try {
+               $$5 = awd.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
+            }
 
-   Set<String> a(aqq var1);
+            try {
+               this.d
+                  .a(
+                     new aqp.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
+            }
+         }
+      );
+      return $$2;
+   }
 
-   @Nullable
-   <T> T a(arb<T> var1) throws IOException;
+   private Either<String, aqp.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new aqp.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
+      }
+   }
 
-   String a();
-
-   default boolean b() {
-      return false;
+   public CompletableFuture<aqp.b> a(aqp.a $$0, Map<UUID, aqp.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
    }
 
    @Override
-   void close();
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<aiy, art<InputStream>> {
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, awd.a e) {
+   }
+
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
+      }
+   }
+
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<aqp.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aqp.d::a), Codec.LONG.fieldOf("size").forGetter(aqp.d::b)).apply($$0, aqp.d::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
+   }
+
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, aqp.d> f) {
+      public static final Codec<aqp.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  je.d.fieldOf("id").forGetter(aqp.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(aqp.e::b),
+                  avu.m.fieldOf("time").forGetter(aqp.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(aqp.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), aqp.d.a.fieldOf("file")).forGetter(aqp.e::e)
+               )
+               .apply($$0, aqp.e::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public Instant c() {
+         return this.d;
+      }
+
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, aqp.d> e() {
+         return this.f;
+      }
    }
 }

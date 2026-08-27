@@ -1,22 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dsg implements drf {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final drs i = new drs(this);
 
-public class dsg implements dsc {
-   public static final Codec<dsg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jd.v(16).optionalFieldOf("offset", hz.c).forGetter($$0x -> $$0x.e)).apply($$0, dsg::new)
-   );
-   private final jd e;
-
-   public dsg(jd $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(cwm $$0, hz $$1) {
-      return !$$0.s($$1.a(this.e));
+   public dsg(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public dsd<?> a() {
-      return dsd.h;
+   public awt d() {
+      return new dsg(this.g());
+   }
+
+   @Override
+   public dsd e() {
+      return new drr.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

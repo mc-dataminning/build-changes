@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cgs {
+public enum cgs {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 }

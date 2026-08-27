@@ -1,29 +1,37 @@
-public class agk implements xx<aes> {
-   public static final xo<uq, agk> a = xx.a(agk::a, agk::new);
-   private final blv b;
+public class agk implements xz<aev> {
+   public static final xq<vd, agk> a = xz.a(agk::a, agk::new);
+   private final int b;
+   private final cpq c;
 
-   public agk(blv $$0) {
+   public agk(int $$0, cpq $$1) {
       this.b = $$0;
+      this.c = $$1.q();
    }
 
-   private agk(uq $$0) {
-      this.b = $$0.b(blv.class);
+   private agk(vd $$0) {
+      this.b = $$0.readShort();
+      this.c = cpq.f.decode($$0);
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
+   private void a(vd $$0) {
+      $$0.l(this.b);
+      cpq.f.encode($$0, this.c);
    }
 
    @Override
-   public xz<agk> a() {
-      return aeq.bW;
+   public yb<agk> a() {
+      return aet.bU;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public blv b() {
+   public int b() {
       return this.b;
+   }
+
+   public cpq e() {
+      return this.c;
    }
 }

@@ -1,3 +1,8 @@
-public interface bma extends cll {
-   vq Q_();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bma {
 }

@@ -1,78 +1,71 @@
-public class crz extends crx {
-   private static final csc a = csc.a(cpg.qN);
-   private static final csc b = csc.a(cpg.pt);
-   private static final csc c = csc.a(cpg.ur);
+import javax.annotation.Nullable;
 
-   public crz(crv $$0) {
-      super($$0);
+public class crz {
+   @Nullable
+   private final cia a;
+   private final bmk b;
+   private final eor c;
+   private final cwe d;
+   private final cpq e;
+
+   public crz(cia $$0, bmk $$1, eor $$2) {
+      this($$0.dJ(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(ckv $$0, cvr $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpd $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
+   protected crz(cwe $$0, @Nullable cia $$1, bmk $$2, cpq $$3, eor $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cpd a(ckv $$0, iw $$1) {
-      cpd $$2 = new cpd(cpg.uq, 3);
-      sw $$3 = $$2.a("Fireworks");
-      tc $$4 = new tc();
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cpd $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               sw $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
-      return $$2;
+   protected final eor j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public ib a() {
+      return this.c.a();
    }
 
-   @Override
-   public cpd a(iw $$0) {
-      return new cpd(cpg.uq);
+   public ih k() {
+      return this.c.b();
    }
 
-   @Override
-   public csj<?> at_() {
-      return csj.g;
+   public eov l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cpq n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cia o() {
+      return this.a;
+   }
+
+   public bmk p() {
+      return this.b;
+   }
+
+   public cwe q() {
+      return this.d;
+   }
+
+   public ih g() {
+      return this.a == null ? ih.c : this.a.cB();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fK();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dz();
    }
 }

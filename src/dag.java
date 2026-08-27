@@ -1,59 +1,51 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dag extends cys {
-   public static final MapCodec<dag> a = b(dag::new);
-   public static final dma b = dlz.w;
-   public static final dma c = dlz.r;
+public interface dag<T extends Enum<T>> {
+   int v_ = 4;
 
-   @Override
-   protected MapCodec<? extends dag> a() {
-      return a;
-   }
+   Optional<dme> j_(dme var1);
 
-   public dag(dli.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
-   }
+   float ay_();
 
-   @Override
-   protected void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof aow $$5) {
-         this.a($$0, $$5, $$2);
+   default void a_(dme $$0, apa $$1, ib $$2, awt $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
-      if ($$1 instanceof aow $$6) {
-         this.a($$0, $$6, $$2);
-      }
-   }
+   T c();
 
-   public void a(dlj $$0, aow $$1, hz $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dlj $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? atl.ft : atl.fu, atm.e);
+   default Optional<dme> c(dme $$0, apa $$1, ib $$2, awt $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (ib $$7 : ib.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
          }
 
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dag<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
+         }
       }
-   }
 
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean d_(dlj $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dlj $$0, cvr $$1, hz $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.ay_();
+      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
    }
 }

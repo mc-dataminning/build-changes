@@ -1,13 +1,30 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzb {
-   @Nullable
-   public static enz a(boq $$0, int $$1, int $$2, int $$3, enz $$4, double $$5) {
-      enz $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = bzd.a($$0, $$1);
-      return bzg.a($$0, () -> {
-         hz $$7x = bza.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bzd.a($$0, $$7x) ? $$7x : null;
-      });
+public class bzb extends bzg<box> {
+   @Override
+   public Set<bya<?>> a() {
+      return ImmutableSet.of(bya.h, bya.M, bya.an);
+   }
+
+   @Override
+   protected void a(apa $$0, box $$1) {
+      bpy<?> $$2 = $$1.dM();
+      List<cgp> $$3 = Lists.newArrayList();
+      byc $$4 = $$2.c(bya.h).orElse(byc.a());
+      Optional<boz> $$5 = $$4.a($$0x -> $$0x instanceof cfx || $$0x instanceof cdz).map(boz.class::cast);
+
+      for (box $$7 : $$2.c(bya.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cgp && ((cgp)$$7).gm()) {
+            $$3.add((cgp)$$7);
+         }
+      }
+
+      $$2.a(bya.M, $$5);
+      $$2.a(bya.an, $$3);
    }
 }

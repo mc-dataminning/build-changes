@@ -1,46 +1,143 @@
-public class eie {
-   private final hz a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public eie(hz $$0, int $$1, int $$2) {
+public class eie {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eie h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eic l = eic.a;
+
+   public eie(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public static eie a(sw $$0) {
-      hz $$1 = tl.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new eie($$1, $$2, $$3);
+   public eie a(int $$0, int $$1, int $$2) {
+      eie $$3 = new eie($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   public sw a() {
-      sw $$0 = new sw();
-      $$0.a("Pos", tl.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
-      return $$0;
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   public hz b() {
-      return this.a;
+   public float a(eie $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return awm.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public int c() {
-      return this.b;
+   public float b(eie $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return awm.c($$1 * $$1 + $$2 * $$2);
    }
 
-   public int d() {
-      return this.c;
+   public float a(ib $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return awm.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public String e() {
-      return a(this.a);
+   public float c(eie $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public static String a(hz $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public float b(ib $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(eie $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(ib $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public ib a() {
+      return new ib(this.a, this.b, this.c);
+   }
+
+   public eov b() {
+      return new eov((double)this.a, (double)this.b, (double)this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eie $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.m;
+   }
+
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   }
+
+   public void a(us $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
+   }
+
+   public static eie b(us $$0) {
+      eie $$1 = new eie($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
+   }
+
+   protected static void a(us $$0, eie $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eic.class);
+      $$1.g = $$0.readFloat();
    }
 }

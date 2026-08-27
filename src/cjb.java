@@ -1,45 +1,69 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cjb {
-   private final cja a;
-   private final List<cjb.a> b = Lists.newArrayList();
-
-   public cjb(cja $$0) {
-      this.a = $$0;
+public class cjb extends ciz {
+   public cjb(bol<? extends cjb> $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
-   public cjb a(int $$0, ciy $$1) {
-      this.b.add(new cjb.a($$0, $$1));
-      return this;
+   public cjb(cwe $$0, box $$1) {
+      super(bol.B, $$1, $$0);
    }
 
-   public cja a() {
-      this.b.stream().map(cjb.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         ciy $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cjb(cwe $$0, double $$1, double $$2, double $$3) {
+      super(bol.B, $$1, $$2, $$3, $$0);
    }
 
-   static class a {
-      private final int a;
-      private final ciy b;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-      public a(int $$0, ciy $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dJ()
+               .a(
+                  new jx(kb.Q, this.q()),
+                  this.do(),
+                  this.dq(),
+                  this.du(),
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08
+               );
+         }
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   protected void a(eos $$0) {
+      super.a($$0);
+      $$0.a().a(this.dK().b(this, this.w()), 0.0F);
+   }
 
-      public ciy b() {
-         return this.b;
+   @Override
+   protected void a(eot $$0) {
+      super.a($$0);
+      if (!this.dJ().B) {
+         if (this.af.a(8) == 0) {
+            int $$1 = 1;
+            if (this.af.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               car $$3 = bol.s.a(this.dJ());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.do(), this.dq(), this.du(), this.dz(), 0.0F);
+                  this.dJ().b($$3);
+               }
+            }
+         }
+
+         this.dJ().a(this, (byte)3);
+         this.am();
       }
+   }
+
+   @Override
+   protected cpl s() {
+      return cpt.qQ;
    }
 }

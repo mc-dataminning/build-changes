@@ -1,161 +1,160 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fkq {
-   static final aiy b = new aiy("spectator/close");
-   static final aiy c = new aiy("spectator/scroll_left");
-   static final aiy d = new aiy("spectator/scroll_right");
-   private static final fks e = new fkq.a();
-   private static final fks f = new fkq.b(-1, true);
-   private static final fks g = new fkq.b(1, true);
-   private static final fks h = new fkq.b(1, false);
-   private static final int i = 8;
-   static final vq j = vq.c("spectatorMenu.close");
-   static final vq k = vq.c("spectatorMenu.previous_page");
-   static final vq l = vq.c("spectatorMenu.next_page");
-   public static final fks a = new fks() {
-      @Override
-      public void a(fkq $$0) {
-      }
+public class fkq extends faq<fko> {
+   private final fkr a;
+   private final List<fko> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-      @Override
-      public vq aR_() {
-         return vp.a;
-      }
-
-      @Override
-      public void a(ezb $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aS_() {
-         return false;
-      }
-   };
-   private final fkt m;
-   private fkr n;
-   private int o = -1;
-   int p;
-
-   public fkq(fkt $$0) {
-      this.n = new fkp();
-      this.m = $$0;
+   public fkq(fkr $$0, eyk $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
+      this.c(false);
    }
 
-   public fks a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
-      } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fks)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
-      }
+   @Override
+   protected void a(ezx $$0) {
+      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
    }
 
-   public List<fks> a() {
-      List<fks> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
-      }
-
-      return $$0;
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fko> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   public fks b() {
-      return this.a(this.o);
-   }
+   private void a(Collection<UUID> $$0, Map<UUID, fko> $$1) {
+      frb $$2 = this.c.s.cr;
 
-   public fkr c() {
-      return this.n;
-   }
-
-   public void b(int $$0) {
-      fks $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aS_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
+      for (UUID $$3 : $$0) {
+         frk $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fko(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
       }
    }
 
-   public void d() {
-      this.m.a(this);
+   private void a(Map<UUID, fko> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aZ().b())) {
+         fko $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fko $$2 = new fko(this.c, this.a, $$3.getId(), $$3.getName(), this.c.am().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
    }
 
-   public int e() {
-      return this.o;
+   private static Collection<GameProfile> a(frs $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fru $$3 = $$0.b($$2);
+         if ($$3 instanceof frv.a) {
+            frv.a $$4 = (frv.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public void a(fkr $$0) {
+   private void e() {
+      this.m.sort(Comparator.<fko, Integer>comparing($$0 -> {
+         if (this.c.b($$0.c())) {
+            return 0;
+         } else if (this.c.aZ().a($$0.c())) {
+            return 1;
+         } else if ($$0.c().version() == 2) {
+            return 4;
+         } else {
+            return $$0.i() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.b().isBlank()) {
+            int $$1 = $$0.b().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fko::b, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fko> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.e();
+      this.H();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void H() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
       this.n = $$0;
-      this.o = -1;
-      this.p = 0;
    }
 
-   public fku f() {
-      return new fku(this.a(), this.o);
+   public boolean d() {
+      return this.m.isEmpty();
    }
 
-   static class a implements fks {
-      @Override
-      public void a(fkq $$0) {
-         $$0.d();
-      }
+   public void a(frk $$0, fkr.a $$1) {
+      UUID $$2 = $$0.a().getId();
 
-      @Override
-      public vq aR_() {
-         return fkq.j;
-      }
-
-      @Override
-      public void a(ezb $$0, float $$1, int $$2) {
-         $$0.a(fkq.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aS_() {
-         return true;
-      }
-   }
-
-   static class b implements fks {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fkq $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public vq aR_() {
-         return this.a < 0 ? fkq.k : fkq.l;
-      }
-
-      @Override
-      public void a(ezb $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fkq.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(fkq.d, 0, 0, 16, 16);
+      for (fko $$3 : this.m) {
+         if ($$3.c().equals($$2)) {
+            $$3.c(false);
+            return;
          }
       }
 
-      @Override
-      public boolean aS_() {
-         return this.b;
+      if (($$1 == fkr.a.a || this.c.aL().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fko $$5 = new fko(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fko $$1 : this.m) {
+         if ($$1.c().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

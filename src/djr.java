@@ -1,109 +1,156 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class djr extends dix implements bmb {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final awp k = awp.a();
-   private vq l;
+public class djr extends djl implements bmc {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final iu<cpq> c = iu.a(4, cpq.h);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final csv.a<bme, csg> f = csv.b(csx.e);
 
-   public djr(hz $$0, dlj $$1) {
-      super(diz.m, $$0, $$1);
+   public djr(ib $$0, dme $$1) {
+      super(djn.G, $$0, $$1);
    }
 
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (this.ae()) {
-         $$0.a("CustomName", vq.a.a(this.l));
-      }
-   }
+   public static void a(cwe $$0, ib $$1, dme $$2, djr $$3) {
+      boolean $$4 = false;
 
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = vq.a.a($$0.l("CustomName"));
-      }
-   }
-
-   public static void a(cvr $$0, hz $$1, dlj $$2, djr $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      chl $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dr() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dx() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)awi.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cpq $$6 = $$3.c.get($$5);
+         if (!$$6.b()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               bme $$7 = new bmu($$6);
+               cpq $$8 = $$3.f.a($$7, $$0).map($$2x -> ((csg)$$2x.b()).a($$7, $$0.I_())).orElse($$6);
+               if ($$8.a($$0.I())) {
+                  bmh.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cpq.h);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(dqr.c, $$1, dqr.a.a($$2));
+               }
+            }
          }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
       }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(cwe $$0, ib $$1, dme $$2, djr $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = awm.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
       }
 
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void c(cwe $$0, ib $$1, dme $$2, djr $$3) {
+      awt $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            czt.a($$0, $$1, $$2.c(czt.d), false);
+         }
       }
 
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
+      int $$6 = $$2.c(czt.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
+            ih $$8 = ih.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(kb.ab, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
       }
+   }
 
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = awi.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = awi.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
+   public iu<cpq> b() {
+      return this.c;
    }
 
    @Override
-   public vq ad() {
-      return (vq)(this.l != null ? this.l : vq.c("container.enchant"));
+   public void a(sy $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      bmf.b($$0, this.c);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
    }
 
-   public void a(@Nullable vq $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
    @Override
-   public vq af() {
-      return this.l;
+   protected void b(sy $$0, in.a $$1) {
+      super.b($$0, $$1);
+      bmf.a($$0, this.c, true);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public aap c() {
+      return aap.a(this);
+   }
+
+   @Override
+   public sy a(in.a $$0) {
+      sy $$1 = new sy();
+      bmf.a($$1, this.c, true);
+      return $$1;
+   }
+
+   public Optional<csu<csg>> a(cpq $$0) {
+      return this.c.stream().noneMatch(cpq::b) ? Optional.empty() : this.f.a(new bmu($$0), this.o);
+   }
+
+   public boolean a(@Nullable bof $$0, cpq $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cpq $$4 = this.c.get($$3);
+         if ($$4.b()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.a(1));
+            this.o.a(dqr.c, this.aD_(), dqr.a.a($$0, this.n()));
+            this.f();
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private void f() {
+      this.e();
+      this.i().a(this.aD_(), this.n(), this.n(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void d() {
+      if (this.o != null) {
+         this.f();
+      }
    }
 }

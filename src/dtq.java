@@ -1,44 +1,31 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dtq extends dto {
-   public dtq(Codec<dwk> $$0) {
-      super($$0);
+public class dtq extends dsn {
+   private final iy a;
+   private final dru b;
+   private final dse c;
+   private final dsh.o d;
+
+   public dtq(drt $$0, iy $$1, cwg $$2, dru $$3, dse $$4, dsh.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   protected boolean a(cvs $$0, awp $$1, hz $$2, dlj $$3) {
-      hz.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   @Deprecated
+   public Optional<dme> a(Function<ib, il<cxd>> $$0, doa $$1, ib $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   @Deprecated
+   public iy c() {
+      return this.a;
+   }
 
-         $$4.c(ie.b);
-      }
-
-      hz $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ie> $$9 = ie.c.a.c($$1);
-
-      for (ie $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ie.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public dse d() {
+      return this.c;
    }
 }

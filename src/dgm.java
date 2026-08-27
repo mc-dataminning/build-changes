@@ -1,53 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgm extends dfr {
-   public static final MapCodec<dgm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmw.a.fieldOf("wood_type").forGetter(dfr::d), u()).apply($$0, dgm::new));
-   public static final dmj b = dlz.ba;
+public class dgm extends czf {
+   public static final MapCodec<dgm> a = b(dgm::new);
+   public static final int b = 2;
+   public static final dne c = dmu.aE;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final epo g = czf.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dgm> a() {
       return a;
    }
 
-   public dgm(dmw $$0, dli.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   public dgm(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      return $$1.a_($$2.d()).e();
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public dlj a(crk $$0) {
-      egw $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dmp.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == egx.c));
+   public epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return g;
+   }
+
+   public int m(dme $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean n(dme $$0) {
+      return this.m($$0) == 2;
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !this.a($$0, $$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, atp.xR, atq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, atp.xS, atq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         cdb $$4 = bol.aP.a((cwe)$$1);
+         if ($$4 != null) {
+            eov $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), awm.g($$1.z.i() * 360.0F), 0.0F);
+            $$1.b($$4);
+         }
+      }
    }
 
    @Override
-   public float g(dlj $$0) {
-      return dmp.b($$0.c(b));
+   public void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.y_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(dqr.i, $$2, dqr.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.z.a(300));
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 
-   @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b, f);
+   public static boolean a(cvk $$0, ib $$1) {
+      return $$0.a_($$1.d()).a(aue.cl);
    }
 }

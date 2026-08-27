@@ -1,107 +1,41 @@
-public abstract class fgl<T extends ckg> extends fgk<T> implements fjf {
-   public final fiv x;
-   private boolean y;
-   private final aiy z;
-   private final aiy A;
-   private final aiy B;
+import java.util.Arrays;
 
-   public fgl(T $$0, fiv $$1, chk $$2, vq $$3, aiy $$4, aiy $$5, aiy $$6) {
-      super($$0, $$2, $$3);
-      this.x = $$1;
-      this.z = $$4;
-      this.A = $$5;
-      this.B = $$6;
+public class fgl extends ffz {
+   private fbh c;
+
+   private static eyn<?>[] a(eyo $$0) {
+      return new eyn[]{$$0.T(), $$0.U()};
+   }
+
+   public fgl(fgh $$0, eyo $$1) {
+      super($$0, $$1, vs.c("options.sounds.title"));
    }
 
    @Override
-   public void aQ_() {
-      super.aQ_();
-      this.y = this.g < 379;
-      this.x.a(this.g, this.h, this.f, this.y, this.p);
-      this.t = this.x.a(this.g, this.c);
-      this.c(new faa(this.t + 20, this.h / 2 - 49, 20, 18, fiz.a, $$0 -> {
-         this.x.e();
-         this.t = this.x.a(this.g, this.c);
-         $$0.c(this.t + 20, this.h / 2 - 49);
-      }));
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aP_() {
+      this.c = this.c(new fbh(this.f, this.g, this.h - 64, 32, 25));
+      this.c.a(this.b.b(atq.a));
+      this.c.a(this.o());
+      this.c.a(this.b.aq());
+      this.c.a(a(this.b));
+      this.c(fak.a(vr.d, $$0 -> {
+         this.f.m.as();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   private eyn<?>[] o() {
+      return Arrays.stream(atq.values()).filter($$0 -> $$0 != atq.a).map($$0 -> this.b.b($$0)).toArray(eyn[]::new);
    }
 
    @Override
-   public void E() {
-      super.E();
-      this.x.g();
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      if (this.x.f() && this.y) {
-         this.b($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, this.t, this.u, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.x.a($$0, this.t, this.u, $$1, $$2);
-   }
-
-   @Override
-   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.p.s()) {
-         int $$6 = 14;
-         int $$7 = awi.f(this.p.r() * 13.0F) + 1;
-         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = awi.f(this.p.q() * 24.0F);
-      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.y && this.x.f() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(cma $$0, int $$1, int $$2, cko $$3) {
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.x.a($$0);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void I() {
-      this.x.i();
-   }
-
-   @Override
-   public fiz J() {
-      return this.x;
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

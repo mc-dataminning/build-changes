@@ -1,21 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dwo implements dwd {
+public class dwo {
    public static final Codec<dwo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eap.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eap.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dwo::new)
+      $$0 -> $$0.group(ebk.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dwo::new)
    );
-   public final ij<eap> b;
-   public final ij<eap> c;
+   public final il<ebk> b;
+   public final float c;
 
-   public dwo(ij<eap> $$0, ij<eap> $$1) {
+   public dwo(il<ebk> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   public Stream<dtm<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public boolean a(cwz $$0, dob $$1, awt $$2, ib $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

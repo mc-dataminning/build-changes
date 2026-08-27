@@ -11,51 +11,51 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class eu<T> implements ArgumentType<aix<T>> {
+public class eu<T> implements ArgumentType<ajb<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vq.b("commands.place.jigsaw.invalid", $$0));
-   final aix<? extends iv<T>> e;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vs.b("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vs.b("commands.place.jigsaw.invalid", $$0));
+   final ajb<? extends ix<T>> e;
 
-   public eu(aix<? extends iv<T>> $$0) {
+   public eu(ajb<? extends ix<T>> $$0) {
       this.e = $$0;
    }
 
-   public static <T> eu<T> a(aix<? extends iv<T>> $$0) {
+   public static <T> eu<T> a(ajb<? extends ix<T>> $$0) {
       return new eu<>($$0);
    }
 
-   private static <T> aix<T> a(CommandContext<du> $$0, String $$1, aix<iv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aix<?> $$4 = (aix<?>)$$0.getArgument($$1, aix.class);
-      Optional<aix<T>> $$5 = $$4.d($$2);
+   private static <T> ajb<T> a(CommandContext<du> $$0, String $$1, ajb<ix<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ajb<?> $$4 = (ajb<?>)$$0.getArgument($$1, ajb.class);
+      Optional<ajb<T>> $$5 = $$4.d($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   private static <T> iv<T> a(CommandContext<du> $$0, aix<? extends iv<T>> $$1) {
-      return ((du)$$0.getSource()).l().bb().d($$1);
+   private static <T> ix<T> a(CommandContext<du> $$0, ajb<? extends ix<T>> $$1) {
+      return ((du)$$0.getSource()).l().bd().d($$1);
    }
 
-   private static <T> ij.c<T> b(CommandContext<du> $$0, String $$1, aix<iv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aix<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> il.c<T> b(CommandContext<du> $$0, String $$1, ajb<ix<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ajb<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ij.c<dtm<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kg.aw, b);
+   public static il.c<duh<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, ki.ax, b);
    }
 
-   public static ij.c<ebl> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kg.aD, c);
+   public static il.c<ecg> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, ki.aE, c);
    }
 
-   public static ij.c<ecu> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kg.aG, d);
+   public static il.c<edp> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, ki.aH, d);
    }
 
-   public aix<T> a(StringReader $$0) throws CommandSyntaxException {
-      aiy $$1 = aiy.a($$0);
-      return aix.a(this.e, $$1);
+   public ajb<T> a(StringReader $$0) throws CommandSyntaxException {
+      ajc $$1 = ajc.a($$0);
+      return ajb.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -66,13 +66,13 @@ public class eu<T> implements ArgumentType<aix<T>> {
       return a;
    }
 
-   public static class a<T> implements hl<eu<T>, eu.a<T>.a> {
-      public void a(eu.a<T>.a $$0, uq $$1) {
+   public static class a<T> implements hn<eu<T>, eu.a<T>.a> {
+      public void a(eu.a<T>.a $$0, us $$1) {
          $$1.b($$0.b);
       }
 
-      public eu.a<T>.a a(uq $$0) {
-         return new eu.a.a($$0.t());
+      public eu.a<T>.a a(us $$0) {
+         return new eu.a.a($$0.r());
       }
 
       public void a(eu.a<T>.a $$0, JsonObject $$1) {
@@ -83,10 +83,10 @@ public class eu<T> implements ArgumentType<aix<T>> {
          return new eu.a.a($$0.e);
       }
 
-      public final class a implements hl.a<eu<T>> {
-         final aix<? extends iv<T>> b;
+      public final class a implements hn.a<eu<T>> {
+         final ajb<? extends ix<T>> b;
 
-         a(aix<? extends iv<T>> $$1) {
+         a(ajb<? extends ix<T>> $$1) {
             this.b = $$1;
          }
 
@@ -95,7 +95,7 @@ public class eu<T> implements ArgumentType<aix<T>> {
          }
 
          @Override
-         public hl<eu<T>, ?> a() {
+         public hn<eu<T>, ?> a() {
             return a.this;
          }
       }

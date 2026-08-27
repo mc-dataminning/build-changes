@@ -1,29 +1,45 @@
-public class adc implements xx<aag> {
-   public static final xo<uq, adc> a = xx.a(adc::a, adc::new);
-   private final int b;
+public class adc implements xz<aai> {
+   public static final xq<us, adc> a = xz.a(adc::a, adc::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public adc(dna $$0) {
-      this.b = $$0.r();
+   public adc(dnv $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private adc(uq $$0) {
-      this.b = $$0.n();
+   private adc(us $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public xz<adc> a() {
-      return aeq.au;
+   public yb<adc> a() {
+      return aet.as;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

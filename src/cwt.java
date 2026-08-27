@@ -1,3 +1,7 @@
-public interface cwt {
-   ij<cwq> getNoiseBiome(int var1, int var2, int var3, cwz.f var4);
+public interface cwt extends cwf {
+   apa E();
+
+   default void a_(bof $$0) {
+      $$0.cO().forEach(this::b);
+   }
 }

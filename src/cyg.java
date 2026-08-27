@@ -1,125 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class cyg extends cys {
-   protected static final eos a = cys.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final eos b = cys.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final enu c = new enu(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dly d;
+public class cyg extends czo {
+   public static final MapCodec<cyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ajb.a(ki.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               ajb.a(ki.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               ajb.a(ki.F).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, cyg::new)
+   );
+   public static final dmy b = dda.aE;
+   protected static final float c = 2.0F;
+   private static final Map<ih, epo> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         ih.d,
+         czf.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         ih.e,
+         czf.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         ih.c,
+         czf.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         ih.f,
+         czf.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final ajb<czf> e;
+   private final ajb<czf> f;
+   private final ajb<cpl> g;
 
-   protected cyg(dli.d $$0, dly $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   @Override
+   public MapCodec<cyg> a() {
+      return a;
+   }
+
+   protected cyg(ajb<czf> $$0, ajb<czf> $$1, ajb<cpl> $$2, dmd.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, ih.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected abstract MapCodec<? extends cyg> a();
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return this.g($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   public boolean a(dlj $$0) {
-      return true;
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      hz $$3 = $$2.d();
-      return c($$1, $$3) || a($$1, $$3, ie.b);
-   }
-
-   @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      int $$4 = this.g($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
-      }
-   }
-
-   @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, bnq $$3) {
-      if (!$$1.B) {
-         int $$4 = this.g($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<czf> $$6 = $$3.I_().d(ki.f).d(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().o().b(dha.c, Integer.valueOf(7));
          }
       }
-   }
 
-   private void a(@Nullable bnq $$0, cvr $$1, hz $$2, dlj $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         dlj $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), atm.e);
-         $$1.a($$0, dpw.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), atm.e);
-         $$1.a($$0, dpw.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new hz($$2), this, this.b());
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.g($$0) > 0) {
-            this.a($$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected void a(cvr $$0, hz $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.d(), this);
+   protected boolean b(dme $$0, cvk $$1, ib $$2) {
+      return $$0.a(czh.cC);
    }
 
    @Override
-   protected int a(dlj $$0, cux $$1, hz $$2, ie $$3) {
-      return this.g($$0);
+   public cpq a(cwh $$0, ib $$1, dme $$2) {
+      return new cpq((cwd)DataFixUtils.orElse($$0.I_().d(ki.F).d(this.g), this));
    }
 
    @Override
-   protected int b(dlj $$0, cux $$1, hz $$2, ie $$3) {
-      return $$3 == ie.b ? this.g($$0) : 0;
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean f_(dlj $$0) {
-      return true;
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   protected static int a(cvr $$0, enu $$1, Class<? extends bnq> $$2) {
-      return $$0.a($$2, $$1, bnv.f.and($$0x -> !$$0x.r_())).size();
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
    }
-
-   protected abstract int b(cvr var1, hz var2);
-
-   protected abstract int g(dlj var1);
-
-   protected abstract dlj a(dlj var1, int var2);
 }

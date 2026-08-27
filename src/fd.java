@@ -6,24 +6,26 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
 
-public class fd implements ArgumentType<wn> {
+public class fd implements ArgumentType<wp> {
    private static final Collection<String> b = List.of("{\"bold\": true}\n");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("argument.style.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("argument.style.invalid", $$0));
+   private final in.a c;
 
-   private fd() {
+   private fd(in.a $$0) {
+      this.c = $$0;
    }
 
-   public static wn a(CommandContext<du> $$0, String $$1) {
-      return (wn)$$0.getArgument($$1, wn.class);
+   public static wp a(CommandContext<du> $$0, String $$1) {
+      return (wp)$$0.getArgument($$1, wp.class);
    }
 
-   public static fd a() {
-      return new fd();
+   public static fd a(dq $$0) {
+      return new fd($$0);
    }
 
-   public wn a(StringReader $$0) throws CommandSyntaxException {
+   public wp a(StringReader $$0) throws CommandSyntaxException {
       try {
-         return dy.a($$0, wn.b.b);
+         return dy.a(this.c, $$0, wp.b.b);
       } catch (Exception var4) {
          String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
          throw a.createWithContext($$0, $$2);

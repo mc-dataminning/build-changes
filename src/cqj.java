@@ -1,10 +1,20 @@
-public class cqj extends cmr {
-   public cqj(coy.a $$0) {
+public class cqj extends cpl {
+   public cqj(cpl.a $$0) {
       super($$0);
    }
 
    @Override
-   public chr a(cvr $$0, cpd $$1, boi $$2) {
-      return new cij($$0, $$2, $$1.c(1));
+   public bml a(cpq $$0, cia $$1, box $$2, bmk $$3) {
+      if ($$2 instanceof bpm $$4 && $$2.bx() && !$$4.i() && $$4.g()) {
+         if (!$$1.dJ().B) {
+            $$4.a(atq.g);
+            $$2.dJ().a($$2, dqr.v, $$2.dh());
+            $$0.h(1);
+         }
+
+         return bml.a($$1.dJ().B);
+      }
+
+      return bml.d;
    }
 }

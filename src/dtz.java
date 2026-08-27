@@ -1,143 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class dtz<FC extends dwd> {
-   public static final dtz<dwk> e = a("no_op", new dut(dwk.a));
-   public static final dtz<dwz> f = a("tree", new dvl(dwz.a));
-   public static final dtz<dwq> g = a("flower", new dux(dwq.a));
-   public static final dtz<dwq> h = a("no_bonemeal_flower", new dux(dwq.a));
-   public static final dtz<dwq> i = a("random_patch", new dux(dwq.a));
-   public static final dtz<dvv> j = a("block_pile", new dti(dvv.a));
-   public static final dtz<dwy> k = a("spring_feature", new dvk(dwy.a));
-   public static final dtz<dwk> l = a("chorus_plant", new dtl(dwk.a));
-   public static final dtz<dwr> m = a("replace_single_block", new dva(dwr.a));
-   public static final dtz<dwk> n = a("void_start_platform", new dvq(dwk.a));
-   public static final dtz<dwk> o = a("desert_well", new dts(dwk.a));
-   public static final dtz<due> p = a("fossil", new dud(due.a));
-   public static final dtz<dwf> q = a("huge_red_mushroom", new duk(dwf.a));
-   public static final dtz<dwf> r = a("huge_brown_mushroom", new duh(dwf.a));
-   public static final dtz<dwk> s = a("ice_spike", new dul(dwk.a));
-   public static final dtz<dwk> t = a("glowstone_blob", new dug(dwk.a));
-   public static final dtz<dwk> u = a("freeze_top_layer", new dvi(dwk.a));
-   public static final dtz<dwk> v = a("vines", new dvp(dwk.a));
-   public static final dtz<dvu> w = a("block_column", new dth(dvu.a));
-   public static final dtz<dxc> x = a("vegetation_patch", new dvo(dxc.a));
-   public static final dtz<dxc> y = a("waterlogged_vegetation_patch", new dvr(dxc.a));
-   public static final dtz<dwt> z = a("root_system", new dvb(dwt.a));
-   public static final dtz<dwi> A = a("multiface_growth", new dur(dwi.a));
-   public static final dtz<dxb> B = a("underwater_magma", new dvn(dxb.a));
-   public static final dtz<dwk> C = a("monster_room", new duq(dwk.a));
-   public static final dtz<dwk> D = a("blue_ice", new dtj(dwk.a));
-   public static final dtz<dvw> E = a("iceberg", new dum(dvw.a));
-   public static final dtz<dvw> F = a("forest_rock", new dtg(dvw.a));
-   public static final dtz<dwa> G = a("disk", new dtt(dwa.a));
-   public static final dtz<duo.a> H = a("lake", new duo(duo.a.a));
-   public static final dtz<dwl> I = a("ore", new duu(dwl.a));
-   public static final dtz<dwx> J = a("end_spike", new dvj(dwx.a));
-   public static final dtz<dwk> K = a("end_island", new dtx(dwk.a));
-   public static final dtz<dwc> L = a("end_gateway", new dtw(dwc.a));
-   public static final dvf M = a("seagrass", new dvf(dwn.k));
-   public static final dtz<dwk> N = a("kelp", new dun(dwk.a));
-   public static final dtz<dwk> O = a("coral_tree", new dtq(dwk.a));
-   public static final dtz<dwk> P = a("coral_mushroom", new dtp(dwk.a));
-   public static final dtz<dwk> Q = a("coral_claw", new dtn(dwk.a));
-   public static final dtz<dvy> R = a("sea_pickle", new dve(dvy.a));
-   public static final dtz<dwv> S = a("simple_block", new dvg(dwv.a));
-   public static final dtz<dwn> T = a("bamboo", new dtd(dwn.k));
-   public static final dtz<dui> U = a("huge_fungus", new duj(dui.a));
-   public static final dtz<dwj> V = a("nether_forest_vegetation", new dus(dwj.c));
-   public static final dtz<dwk> W = a("weeping_vines", new dvs(dwk.a));
-   public static final dtz<dxa> X = a("twisting_vines", new dvm(dxa.a));
-   public static final dtz<dvx> Y = a("basalt_columns", new dte(dvx.a));
-   public static final dtz<dvz> Z = a("delta_feature", new dtr(dvz.a));
-   public static final dtz<dws> aa = a("netherrack_replace_blobs", new duz(dws.a));
-   public static final dtz<dwh> ab = a("fill_layer", new duc(dwh.a));
-   public static final dtk ac = a("bonus_chest", new dtk(dwk.a));
-   public static final dtz<dwk> ad = a("basalt_pillar", new dtf(dwk.a));
-   public static final dtz<dwl> ae = a("scattered_ore", new dvc(dwl.a));
-   public static final dtz<dwp> af = a("random_selector", new duy(dwp.a));
-   public static final dtz<dww> ag = a("simple_random_selector", new dvh(dww.a));
-   public static final dtz<dwo> ah = a("random_boolean_selector", new duw(dwo.a));
-   public static final dtz<dwe> ai = a("geode", new duf(dwe.b));
-   public static final dtz<dwb> aj = a("dripstone_cluster", new dtu(dwb.a));
-   public static final dtz<dwg> ak = a("large_dripstone", new dup(dwg.a));
-   public static final dtz<dwm> al = a("pointed_dripstone", new duv(dwm.a));
-   public static final dtz<dwu> am = a("sculk_patch", new dvd(dwu.a));
-   private final Codec<dtm<FC, dtz<FC>>> a;
+public class dtz extends duu<dws> {
+   private static final ImmutableList<czf> a = ImmutableList.of(czh.H, czh.F, czh.kJ, czh.dW, czh.fn, czh.fo, czh.fp, czh.fq, czh.cv, czh.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
 
-   private static <C extends dwd, F extends dtz<C>> F a(String $$0, F $$1) {
-      return iv.a(kf.Q, $$0, $$1);
+   public dtz(Codec<dws> $$0) {
+      super($$0);
    }
 
-   public dtz(Codec<FC> $$0) {
-      this.a = $$0.fieldOf("config").xmap($$0x -> new dtm<>(this, $$0x), dtm::c).codec();
-   }
+   @Override
+   public boolean a(duw<dws> $$0) {
+      int $$1 = $$0.c().e();
+      ib $$2 = $$0.e();
+      cwz $$3 = $$0.b();
+      awt $$4 = $$0.d();
+      dws $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-   public Codec<dtm<FC, dtz<FC>>> a() {
-      return this.a;
-   }
+         for (ib $$11 : ib.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+            }
+         }
 
-   protected void a(cvz $$0, hz $$1, dlj $$2) {
-      $$0.a($$1, $$2, 3);
-   }
-
-   public static Predicate<dlj> a(aup<cys> $$0) {
-      return $$1 -> !$$1.a($$0);
-   }
-
-   protected void a(cwm $$0, hz $$1, dlj $$2, Predicate<dlj> $$3) {
-      if ($$3.test($$0.a_($$1))) {
-         $$0.a($$1, $$2, 2);
+         return $$10;
       }
    }
 
-   public abstract boolean a(dub<FC> var1);
+   private boolean a(cwf $$0, int $$1, ib $$2, int $$3, int $$4) {
+      boolean $$5 = false;
 
-   public boolean a(FC $$0, cwm $$1, dng $$2, awp $$3, hz $$4) {
-      return $$1.f_($$4) ? this.a(new dub<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
-   }
+      for (ib $$6 : ib.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         ib $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
 
-   protected static boolean a(dlj $$0) {
-      return $$0.a(aua.bd);
-   }
+            for (ib.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (ib)$$10)) {
+                  this.a($$0, $$10, czh.dY.o());
+                  $$10.c(ih.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(czh.dY)) {
+                     break;
+                  }
 
-   public static boolean b(dlj $$0) {
-      return $$0.a(aua.af);
-   }
-
-   public static boolean a(cvx $$0, hz $$1) {
-      return $$0.a($$1, dtz::b);
-   }
-
-   public static boolean a(Function<hz, dlj> $$0, hz $$1, Predicate<dlj> $$2) {
-      hz.a $$3 = new hz.a();
-
-      for (ie $$4 : ie.values()) {
-         $$3.a($$1, $$4);
-         if ($$2.test($$0.apply($$3))) {
-            return true;
+                  $$10.c(ih.b);
+               }
+            }
          }
       }
 
-      return false;
+      return $$5;
    }
 
-   public static boolean a(Function<hz, dlj> $$0, hz $$1) {
-      return a($$0, $$1, dli.a::i);
-   }
-
-   protected void a(cwm $$0, hz $$1) {
-      hz.a $$2 = $$1.j();
-
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         $$2.c(ie.b);
-         if ($$0.a_($$2).i()) {
-            return;
+   @Nullable
+   private static ib a(cwf $$0, int $$1, ib.a $$2, int $$3) {
+      while ($$2.v() > $$0.J_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
          }
 
-         $$0.y($$2).e($$2);
+         $$2.c(ih.a);
       }
+
+      return null;
+   }
+
+   private static boolean a(cwf $$0, int $$1, ib.a $$2) {
+      if (!a($$0, $$1, (ib)$$2)) {
+         return false;
+      } else {
+         dme $$3 = $$0.a_($$2.c(ih.a));
+         $$2.c(ih.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static ib a(cwf $$0, ib.a $$1, int $$2) {
+      while ($$1.v() < $$0.ak() && $$2 > 0) {
+         $$2--;
+         dme $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(ih.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(cwf $$0, int $$1, ib $$2) {
+      dme $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(czh.H) && $$2.v() <= $$1;
    }
 }

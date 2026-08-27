@@ -1,55 +1,98 @@
 import com.mojang.serialization.MapCodec;
 
-public class czq extends dcg implements cyv, czo {
-   public static final MapCodec<czq> c = b(czq::new);
+public class czq extends czf {
+   public static final MapCodec<czq> a = b(czq::new);
+   public static final dne b = dmu.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final epo e = czf.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final epo f = czf.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<czq> a() {
-      return c;
+      return a;
    }
 
-   public czq(dli.d $$0) {
-      super($$0, ie.a, t_, false);
-      this.k(this.E.b().a(u_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected dch c() {
-      return (dch)cyu.sv;
+   protected czq(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dlj a(dlj $$0, dlj $$1) {
-      return $$1.a(u_, $$0.c(u_));
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public cpd a(cvu $$0, hz $$1, dlj $$2) {
-      return new cpd(cpg.wm);
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      ib $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.o());
+               dme $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
+            }
+         }
+      }
    }
 
    @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      return czo.a($$3, $$0, $$1, $$2);
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return e;
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(u_);
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return f;
    }
 
    @Override
-   public boolean b(cvu $$0, hz $$1, dlj $$2) {
-      return !$$2.c(u_);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
-      return true;
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      for (ih $$3 : ih.c.a) {
+         dme $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(auj.b)) {
+            return false;
+         }
+      }
+
+      dme $$5 = $$1.a_($$2.d());
+      return ($$5.a(czh.dQ) || $$5.a(aue.H)) && !$$1.a_($$2.c()).k();
    }
 
    @Override
-   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
-      $$0.a($$2, $$3.a(u_, Boolean.valueOf(true)), 2);
+   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
+      $$3.a($$1.ah().j(), 1.0F);
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

@@ -1,97 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public class dwz implements dwd {
-   public static final Codec<dwz> a = RecordCodecBuilder.create(
+public class dwz implements dwy {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<dwz> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dye.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               dzh.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               dye.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               dxp.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               dyb.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               dye.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               dxe.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               dyv.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+               drn.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               drp.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dro.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               blq.b(1, 20).fieldOf("outer_wall_distance").orElse(blw.a(4, 5)).forGetter($$0x -> $$0x.i),
+               blq.b(1, 20).fieldOf("distribution_points").orElse(blw.a(3, 4)).forGetter($$0x -> $$0x.j),
+               blq.b(0, 10).fieldOf("point_offset").orElse(blw.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, dwz::new)
    );
-   public final dye b;
-   public final dye c;
-   public final dzh d;
-   public final dye e;
-   public final dxp f;
-   public final Optional<dyb> g;
-   public final dxe h;
-   public final List<dyv> i;
-   public final boolean j;
-   public final boolean k;
+   public final drn c;
+   public final drp d;
+   public final dro e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final blq i;
+   public final blq j;
+   public final blq k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   protected dwz(dye $$0, dzh $$1, dye $$2, dxp $$3, Optional<dyb> $$4, dye $$5, dxe $$6, List<dyv> $$7, boolean $$8, boolean $$9) {
-      this.b = $$0;
+   public dwz(drn $$0, drp $$1, dro $$2, double $$3, double $$4, boolean $$5, blq $$6, blq $$7, blq $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
       this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-   }
-
-   public static class a {
-      public final dye a;
-      private final dzh c;
-      public final dye b;
-      private final dxp d;
-      private final Optional<dyb> e;
-      private dye f;
-      private final dxe g;
-      private List<dyv> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
-
-      public a(dye $$0, dzh $$1, dye $$2, dxp $$3, Optional<dyb> $$4, dxe $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = dye.a(cyu.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(dye $$0, dzh $$1, dye $$2, dxp $$3, dxe $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public dwz.a a(dye $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public dwz.a a(List<dyv> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dwz.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public dwz.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public dwz c() {
-         return new dwz(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

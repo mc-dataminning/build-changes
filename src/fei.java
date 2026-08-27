@@ -1,42 +1,88 @@
-public class fei extends ffl {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final vq c = vq.c("credits_and_attribution.screen.title");
-   private static final vq k = vq.c("credits_and_attribution.button.credits");
-   private static final vq l = vq.c("credits_and_attribution.button.attribution");
-   private static final vq m = vq.c("credits_and_attribution.button.licenses");
-   private final ffl n;
-   private final fda o = new fda(this);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fei(ffl $$0) {
-      super(c);
-      this.n = $$0;
+public class fei {
+   int a;
+   final Map<fei.a, fei.b> b = Maps.newTreeMap(Comparator.<fei.a, fee>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fef> $$0) {
+      this.a++;
+      $$0.accept(new fei.c(0));
    }
 
-   @Override
-   protected void aQ_() {
-      this.o.a(new fav(this.p(), this.i));
-      fde $$0 = this.o.c(fde.d()).a(8);
-      $$0.c().b();
-      $$0.a(ezo.a(k, $$0x -> this.o()).a(210).a());
-      $$0.a(ezo.a(l, fed.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(ezo.a(m, fed.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.o.b(ezo.a(vp.d, $$0x -> this.d()).a());
-      this.o.a();
-      this.o.a(this::c);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   protected void c() {
-      this.o.a();
+   static class a {
+      final fee a;
+      final int b;
+
+      a(fee $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   private void o() {
-      this.f.a(new fft(false, () -> this.f.a(this)));
+   static class b {
+      feh<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = feh.a;
+         this.b = -1;
+      }
+
+      public fei.b a(int $$0, feh<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   public void d() {
-      this.f.a(this.n);
+   class c implements fef {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fee $$0, feh<?> $$1) {
+         fei.this.b.computeIfAbsent(new fei.a($$0, this.b), $$0x -> new fei.b()).a(fei.this.a, $$1);
+      }
+
+      @Override
+      public fef a() {
+         return fei.this.new c(this.b + 1);
+      }
    }
 }

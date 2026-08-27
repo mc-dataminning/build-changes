@@ -1,29 +1,117 @@
-public class fui extends ftt {
-   fui(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
-   }
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
+public interface fui {
+   fui a = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, ghy.e);
+         $$0.a(eti.b.h, etb.l);
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fui($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public void a(etf $$0) {
+         $$0.c();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fui b = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fwj::u);
+         RenderSystem.setShaderTexture(0, ghy.f);
+         $$0.a(eti.b.h, etb.l);
+      }
+
+      @Override
+      public void a(etf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fui c = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, ghy.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(eti.b.h, etb.l);
+      }
+
+      @Override
+      public void a(etf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fui d = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, ghy.f);
+         $$0.a(eti.b.h, etb.l);
+      }
+
+      @Override
+      public void a(etf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fui e = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(etf $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fui f = new fui() {
+      @Override
+      public void a(esy $$0, gia $$1) {
+      }
+
+      @Override
+      public void a(etf $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(esy var1, gia var2);
+
+   void a(etf var1);
 }

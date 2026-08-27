@@ -1,1183 +1,140 @@
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class cyu {
-   private static final dli.f ts = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dkf $$4 ? $$4.x() : true;
-   public static final cys a = a("air", new cxp(dli.d.a().o().b().g().l()));
-   public static final cys b = a("stone", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys c = a("granite", new cys(dli.d.a().a(eha.k).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys d = a("polished_granite", new cys(dli.d.a().a(eha.k).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys e = a("diorite", new cys(dli.d.a().a(eha.o).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys f = a("polished_diorite", new cys(dli.d.a().a(eha.o).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys g = a("andesite", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys h = a("polished_andesite", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys i = a("grass_block", new dcd(dli.d.a().a(eha.b).e().d(0.6F).a(dge.d)));
-   public static final cys j = a("dirt", new cys(dli.d.a().a(eha.k).d(0.5F).a(dge.c)));
-   public static final cys k = a("coarse_dirt", new cys(dli.d.a().a(eha.k).d(0.5F).a(dge.c)));
-   public static final cys l = a("podzol", new dgb(dli.d.a().a(eha.I).d(0.5F).a(dge.c)));
-   public static final cys m = a("cobblestone", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys n = a("oak_planks", new cys(dli.d.a().a(eha.n).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys o = a("spruce_planks", new cys(dli.d.a().a(eha.I).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys p = a("birch_planks", new cys(dli.d.a().a(eha.c).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys q = a("jungle_planks", new cys(dli.d.a().a(eha.k).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys r = a("acacia_planks", new cys(dli.d.a().a(eha.p).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys s = a("cherry_planks", new cys(dli.d.a().a(eha.K).a(dmk.e).a(2.0F, 3.0F).a(dge.aU).h()));
-   public static final cys t = a("dark_oak_planks", new cys(dli.d.a().a(eha.A).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys u = a("mangrove_planks", new cys(dli.d.a().a(eha.C).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys v = a("bamboo_planks", new cys(dli.d.a().a(eha.s).a(dmk.e).a(2.0F, 3.0F).a(dge.aS).h()));
-   public static final cys w = a("bamboo_mosaic", new cys(dli.d.a().a(eha.s).a(dmk.e).a(2.0F, 3.0F).a(dge.aS).h()));
-   public static final cys x = a("oak_sapling", new dff(dky.b, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys y = a("spruce_sapling", new dff(dky.c, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys z = a("birch_sapling", new dff(dky.f, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys A = a("jungle_sapling", new dff(dky.g, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys B = a("acacia_sapling", new dff(dky.h, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys C = a("cherry_sapling", new dff(dky.i, dli.d.a().a(eha.u).b().e().d().a(dge.aV).a(ehb.b)));
-   public static final cys D = a("dark_oak_sapling", new dff(dky.j, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys E = a("mangrove_propagule", new ddm(dky.d, dli.d.a().a(eha.h).b().e().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys F = a("bedrock", new cys(dli.d.a().a(eha.l).a(dmk.b).a(-1.0F, 3600000.0F).g().a(cyu::a)));
-   public static final cys G = a("water", new ddh(egx.c, dli.d.a().a(eha.m).o().b().d(100.0F).a(ehb.b).g().i().a(dge.a)));
-   public static final cys H = a("lava", new ddh(egx.e, dli.d.a().a(eha.e).o().b().e().d(100.0F).a($$0x -> 15).a(ehb.b).g().i().a(dge.a)));
-   public static final cys I = a("sand", new daa(new avc(14406560), dli.d.a().a(eha.c).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys J = a("suspicious_sand", new cyx(I, atl.cL, atl.cN, dli.d.a().a(eha.c).a(dmk.c).d(0.25F).a(dge.aZ).a(ehb.b)));
-   public static final cys K = a("red_sand", new daa(new avc(11098145), dli.d.a().a(eha.p).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys L = a("gravel", new daa(new avc(-8356741), dli.d.a().a(eha.l).a(dmk.c).d(0.6F).a(dge.c)));
-   public static final cys M = a("suspicious_gravel", new cyx(L, atl.cM, atl.cO, dli.d.a().a(eha.l).a(dmk.c).d(0.25F).a(dge.ba).a(ehb.b)));
-   public static final cys N = a("gold_ore", new dbc(bky.a(0), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys O = a("deepslate_gold_ore", new dbc(bky.a(0), dli.d.b(N).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys P = a("iron_ore", new dbc(bky.a(0), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys Q = a("deepslate_iron_ore", new dbc(bky.a(0), dli.d.b(P).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys R = a("coal_ore", new dbc(blh.a(0, 2), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys S = a("deepslate_coal_ore", new dbc(blh.a(0, 2), dli.d.b(R).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys T = a("nether_gold_ore", new dbc(blh.a(0, 1), dli.d.a().a(eha.J).a(dmk.b).m().a(3.0F, 3.0F).a(dge.V)));
-   public static final cys U = a("oak_log", a(eha.n, eha.I));
-   public static final cys V = a("spruce_log", a(eha.I, eha.A));
-   public static final cys W = a("birch_log", a(eha.c, eha.o));
-   public static final cys X = a("jungle_log", a(eha.k, eha.I));
-   public static final cys Y = a("acacia_log", a(eha.p, eha.l));
-   public static final cys Z = a("cherry_log", a(eha.K, eha.R, dge.aU));
-   public static final cys aa = a("dark_oak_log", a(eha.A, eha.A));
-   public static final cys ab = a("mangrove_log", a(eha.C, eha.I));
-   public static final cys ac = a("mangrove_roots", new ddn(dli.d.a().a(eha.I).a(dmk.e).d(0.7F).a(dge.aK).c().b(cyu::b).c(cyu::b).c().h()));
-   public static final cys ad = a("muddy_mangrove_roots", new dfd(dli.d.a().a(eha.I).d(0.7F).a(dge.aL)));
-   public static final cys ae = a("bamboo_block", a(eha.s, eha.h, dge.aS));
-   public static final cys af = a("stripped_spruce_log", a(eha.I, eha.I));
-   public static final cys ag = a("stripped_birch_log", a(eha.c, eha.c));
-   public static final cys ah = a("stripped_jungle_log", a(eha.k, eha.k));
-   public static final cys ai = a("stripped_acacia_log", a(eha.p, eha.p));
-   public static final cys aj = a("stripped_cherry_log", a(eha.K, eha.Q, dge.aU));
-   public static final cys ak = a("stripped_dark_oak_log", a(eha.A, eha.A));
-   public static final cys al = a("stripped_oak_log", a(eha.n, eha.n));
-   public static final cys am = a("stripped_mangrove_log", a(eha.C, eha.C));
-   public static final cys an = a("stripped_bamboo_block", a(eha.s, eha.s, dge.aS));
-   public static final cys ao = a("oak_wood", new dfd(dli.d.a().a(eha.n).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys ap = a("spruce_wood", new dfd(dli.d.a().a(eha.I).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys aq = a("birch_wood", new dfd(dli.d.a().a(eha.c).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys ar = a("jungle_wood", new dfd(dli.d.a().a(eha.k).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys as = a("acacia_wood", new dfd(dli.d.a().a(eha.v).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys at = a("cherry_wood", new dfd(dli.d.a().a(eha.R).a(dmk.e).d(2.0F).a(dge.aU).h()));
-   public static final cys au = a("dark_oak_wood", new dfd(dli.d.a().a(eha.A).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys av = a("mangrove_wood", new dfd(dli.d.a().a(eha.C).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys aw = a("stripped_oak_wood", new dfd(dli.d.a().a(eha.n).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys ax = a("stripped_spruce_wood", new dfd(dli.d.a().a(eha.I).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys ay = a("stripped_birch_wood", new dfd(dli.d.a().a(eha.c).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys az = a("stripped_jungle_wood", new dfd(dli.d.a().a(eha.k).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys aA = a("stripped_acacia_wood", new dfd(dli.d.a().a(eha.p).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys aB = a("stripped_cherry_wood", new dfd(dli.d.a().a(eha.Q).a(dmk.e).d(2.0F).a(dge.aU).h()));
-   public static final cys aC = a("stripped_dark_oak_wood", new dfd(dli.d.a().a(eha.A).a(dmk.e).d(2.0F).a(dge.b).h()));
-   public static final cys aD = a("stripped_mangrove_wood", a(eha.C, eha.C));
-   public static final cys aE = a("oak_leaves", a(dge.d));
-   public static final cys aF = a("spruce_leaves", a(dge.d));
-   public static final cys aG = a("birch_leaves", a(dge.d));
-   public static final cys aH = a("jungle_leaves", a(dge.d));
-   public static final cys aI = a("acacia_leaves", a(dge.d));
-   public static final cys aJ = a("cherry_leaves", new czu(dli.d.a().a(eha.u).d(0.2F).e().a(dge.aW).c().a(cyu::c).b(cyu::b).c(cyu::b).h().a(ehb.b).a(cyu::b)));
-   public static final cys aK = a("dark_oak_leaves", a(dge.d));
-   public static final cys aL = a("mangrove_leaves", new ddl(dli.d.a().a(eha.h).d(0.2F).e().a(dge.d).c().a(cyu::c).b(cyu::b).c(cyu::b).h().a(ehb.b).a(cyu::b)));
-   public static final cys aM = a("azalea_leaves", a(dge.ax));
-   public static final cys aN = a("flowering_azalea_leaves", a(dge.ax));
-   public static final cys aO = a("sponge", new dgg(dli.d.a().a(eha.s).d(0.6F).a(dge.be)));
-   public static final cys aP = a("wet_sponge", new dih(dli.d.a().a(eha.s).d(0.6F).a(dge.bf)));
-   public static final cys aQ = a("glass", new dhd(dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c().a(cyu::a).a(cyu::b).b(cyu::b).c(cyu::b)));
-   public static final cys aR = a("lapis_ore", new dbc(blh.a(2, 5), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys aS = a("deepslate_lapis_ore", new dbc(blh.a(2, 5), dli.d.b(aR).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys aT = a("lapis_block", new cys(dli.d.a().a(eha.G).m().a(3.0F, 3.0F)));
-   public static final cys aU = a("dispenser", new dax(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F)));
-   public static final cys aV = a("sandstone", new cys(dli.d.a().a(eha.c).a(dmk.b).m().d(0.8F)));
-   public static final cys aW = a("chiseled_sandstone", new cys(dli.d.a().a(eha.c).a(dmk.b).m().d(0.8F)));
-   public static final cys aX = a("cut_sandstone", new cys(dli.d.a().a(eha.c).a(dmk.b).m().d(0.8F)));
-   public static final cys aY = a("note_block", new dea(dli.d.a().a(eha.n).a(dmk.e).a(dge.b).d(0.8F).h()));
-   public static final cys aZ = a("white_bed", a(cnr.a));
-   public static final cys ba = a("orange_bed", a(cnr.b));
-   public static final cys bb = a("magenta_bed", a(cnr.c));
-   public static final cys bc = a("light_blue_bed", a(cnr.d));
-   public static final cys bd = a("yellow_bed", a(cnr.e));
-   public static final cys be = a("lime_bed", a(cnr.f));
-   public static final cys bf = a("pink_bed", a(cnr.g));
-   public static final cys bg = a("gray_bed", a(cnr.h));
-   public static final cys bh = a("light_gray_bed", a(cnr.i));
-   public static final cys bi = a("cyan_bed", a(cnr.j));
-   public static final cys bj = a("purple_bed", a(cnr.k));
-   public static final cys bk = a("blue_bed", a(cnr.l));
-   public static final cys bl = a("brown_bed", a(cnr.m));
-   public static final cys bm = a("green_bed", a(cnr.n));
-   public static final cys bn = a("red_bed", a(cnr.o));
-   public static final cys bo = a("black_bed", a(cnr.p));
-   public static final cys bp = a("powered_rail", new den(dli.d.a().b().d(0.7F).a(dge.g)));
-   public static final cys bq = a("detector_rail", new dat(dli.d.a().b().d(0.7F).a(dge.g)));
-   public static final cys br = a("sticky_piston", a(true));
-   public static final cys bs = a("cobweb", new did(dli.d.a().a(eha.d).j().b().m().d(4.0F).a(ehb.b)));
-   public static final cys bt = a("short_grass", new dgw(dli.d.a().a(eha.h).o().b().d().a(dge.d).a(dli.c.c).h().a(ehb.b)));
-   public static final cys bu = a("fern", new dgw(dli.d.a().a(eha.h).o().b().d().a(dge.d).a(dli.c.c).h().a(ehb.b)));
-   public static final cys bv = a("dead_bush", new dar(dli.d.a().a(eha.n).o().b().d().a(dge.d).h().a(ehb.b)));
-   public static final cys bw = a("seagrass", new dfp(dli.d.a().a(eha.m).o().b().d().a(dge.q).a(ehb.b)));
-   public static final cys bx = a("tall_seagrass", new dgx(dli.d.a().a(eha.m).o().b().d().a(dge.q).a(dli.c.b).a(ehb.b)));
-   public static final cys by = a("piston", a(false));
-   public static final cys bz = a("piston_head", new dld(dli.d.a().a(eha.l).d(1.5F).g().a(ehb.c)));
-   public static final cys bA = a("white_wool", new cys(dli.d.a().a(eha.i).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bB = a("orange_wool", new cys(dli.d.a().a(eha.p).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bC = a("magenta_wool", new cys(dli.d.a().a(eha.q).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bD = a("light_blue_wool", new cys(dli.d.a().a(eha.r).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bE = a("yellow_wool", new cys(dli.d.a().a(eha.s).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bF = a("lime_wool", new cys(dli.d.a().a(eha.t).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bG = a("pink_wool", new cys(dli.d.a().a(eha.u).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bH = a("gray_wool", new cys(dli.d.a().a(eha.v).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bI = a("light_gray_wool", new cys(dli.d.a().a(eha.w).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bJ = a("cyan_wool", new cys(dli.d.a().a(eha.x).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bK = a("purple_wool", new cys(dli.d.a().a(eha.y).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bL = a("blue_wool", new cys(dli.d.a().a(eha.z).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bM = a("brown_wool", new cys(dli.d.a().a(eha.A).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bN = a("green_wool", new cys(dli.d.a().a(eha.B).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bO = a("red_wool", new cys(dli.d.a().a(eha.C).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bP = a("black_wool", new cys(dli.d.a().a(eha.D).a(dmk.h).d(0.8F).a(dge.i).h()));
-   public static final cys bQ = a("moving_piston", new dlb(dli.d.a().a(eha.l).j().d(-1.0F).f().g().c().a(cyu::b).b(cyu::b).c(cyu::b).a(ehb.c)));
-   public static final cys bR = a("dandelion", new dbu(bnf.w, 7, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bS = a("torchflower", new dbu(bnf.p, 5, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bT = a("poppy", new dbu(bnf.p, 5, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bU = a("blue_orchid", new dbu(bnf.w, 7, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bV = a("allium", new dbu(bnf.l, 4, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bW = a("azure_bluet", new dbu(bnf.o, 8, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bX = a("red_tulip", new dbu(bnf.r, 9, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bY = a("orange_tulip", new dbu(bnf.r, 9, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys bZ = a("white_tulip", new dbu(bnf.r, 9, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys ca = a("pink_tulip", new dbu(bnf.r, 9, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys cb = a("oxeye_daisy", new dbu(bnf.j, 8, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys cc = a("cornflower", new dbu(bnf.h, 6, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys cd = a("wither_rose", new dii(bnf.t, 8, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys ce = a("lily_of_the_valley", new dbu(bnf.s, 12, dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).a(ehb.b)));
-   public static final cys cf = a("brown_mushroom", new ddt(qr.e, dli.d.a().a(eha.A).b().e().d().a(dge.d).a($$0x -> 1).d(cyu::a).a(ehb.b)));
-   public static final cys cg = a("red_mushroom", new ddt(qr.f, dli.d.a().a(eha.C).b().e().d().a(dge.d).d(cyu::a).a(ehb.b)));
-   public static final cys ch = a("gold_block", new cys(dli.d.a().a(eha.E).a(dmk.g).m().a(3.0F, 6.0F).a(dge.g)));
-   public static final cys ci = a("iron_block", new cys(dli.d.a().a(eha.g).a(dmk.k).m().a(5.0F, 6.0F).a(dge.g)));
-   public static final cys cj = a("bricks", new cys(dli.d.a().a(eha.C).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys ck = a("tnt", new dha(dli.d.a().a(eha.e).d().a(dge.d).h().a(cyu::b)));
-   public static final cys cl = a("bookshelf", new cys(dli.d.a().a(eha.n).a(dmk.e).d(1.5F).a(dge.b).h()));
-   public static final cys cm = a("chiseled_bookshelf", new czw(dli.d.a().a(eha.n).a(dmk.e).d(1.5F).a(dge.aY).h()));
-   public static final cys cn = a("mossy_cobblestone", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys co = a("obsidian", new cys(dli.d.a().a(eha.D).a(dmk.b).m().a(50.0F, 1200.0F)));
-   public static final cys cp = a("torch", new dhb(jz.E, dli.d.a().b().d().a($$0x -> 14).a(dge.b).a(ehb.b)));
-   public static final cys cq = a("wall_torch", new dhs(jz.E, dli.d.a().b().d().a($$0x -> 14).a(dge.b).a(cp).a(ehb.b)));
-   public static final cys cr = a("fire", new dbs(dli.d.a().a(eha.e).o().b().d().a($$0x -> 15).a(dge.i).a(ehb.b)));
-   public static final cys cs = a("soul_fire", new dgc(dli.d.a().a(eha.r).o().b().d().a($$0x -> 10).a(dge.i).a(ehb.b)));
-   public static final cys ct = a("spawner", new dgf(dli.d.a().a(eha.l).a(dmk.b).m().d(5.0F).a(dge.g).c()));
-   public static final cys cu = a("oak_stairs", b(n));
-   public static final cys cv = a("chest", new czv(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h(), () -> diz.b));
-   public static final cys cw = a("redstone_wire", new det(dli.d.a().b().d().a(ehb.b)));
-   public static final cys cx = a("diamond_ore", new dbc(blh.a(3, 7), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys cy = a("deepslate_diamond_ore", new dbc(blh.a(3, 7), dli.d.b(cx).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys cz = a("diamond_block", new cys(dli.d.a().a(eha.F).m().a(5.0F, 6.0F).a(dge.g)));
-   public static final cys cA = a("crafting_table", new dam(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys cB = a("wheat", new dan(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys cC = a("farmland", new dbp(dli.d.a().a(eha.k).e().d(0.6F).a(dge.c).c(cyu::a).b(cyu::a)));
-   public static final cys cD = a("furnace", new dbz(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F).a(a(13))));
-   public static final cys cE = a("oak_sign", new dgm(dmw.b, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cF = a("spruce_sign", new dgm(dmw.c, dli.d.a().a(V.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cG = a("birch_sign", new dgm(dmw.d, dli.d.a().a(eha.c).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cH = a("acacia_sign", new dgm(dmw.e, dli.d.a().a(eha.p).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cI = a("cherry_sign", new dgm(dmw.f, dli.d.a().a(s.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cJ = a("jungle_sign", new dgm(dmw.g, dli.d.a().a(X.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cK = a("dark_oak_sign", new dgm(dmw.h, dli.d.a().a(aa.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cL = a("mangrove_sign", new dgm(dmw.k, dli.d.a().a(ab.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cM = a("bamboo_sign", new dgm(dmw.l, dli.d.a().a(v.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys cN = a("oak_door", new day(dly.g, dli.d.a().a(n.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys cO = a("ladder", new dcx(dli.d.a().k().d(0.4F).a(dge.m).c().a(ehb.b)));
-   public static final cys cP = a("rail", new deq(dli.d.a().b().d(0.7F).a(dge.g)));
-   public static final cys cQ = a("cobblestone_stairs", b(m));
-   public static final cys cR = a("oak_wall_sign", new dhq(dmw.b, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(cE).h()));
-   public static final cys cS = a("spruce_wall_sign", new dhq(dmw.c, dli.d.a().a(V.w()).j().a(dmk.e).b().d(1.0F).a(cF).h()));
-   public static final cys cT = a("birch_wall_sign", new dhq(dmw.d, dli.d.a().a(eha.c).j().a(dmk.e).b().d(1.0F).a(cG).h()));
-   public static final cys cU = a("acacia_wall_sign", new dhq(dmw.e, dli.d.a().a(eha.p).j().a(dmk.e).b().d(1.0F).a(cH).h()));
-   public static final cys cV = a("cherry_wall_sign", new dhq(dmw.f, dli.d.a().a(Z.w()).j().a(dmk.e).b().d(1.0F).a(cI).h()));
-   public static final cys cW = a("jungle_wall_sign", new dhq(dmw.g, dli.d.a().a(X.w()).j().a(dmk.e).b().d(1.0F).a(cJ).h()));
-   public static final cys cX = a("dark_oak_wall_sign", new dhq(dmw.h, dli.d.a().a(aa.w()).j().a(dmk.e).b().d(1.0F).a(cK).h()));
-   public static final cys cY = a("mangrove_wall_sign", new dhq(dmw.k, dli.d.a().a(ab.w()).j().a(dmk.e).b().d(1.0F).a(cL).h()));
-   public static final cys cZ = a("bamboo_wall_sign", new dhq(dmw.l, dli.d.a().a(v.w()).j().a(dmk.e).b().d(1.0F).h().a(cM)));
-   public static final cys da = a("oak_hanging_sign", new czr(dmw.b, dli.d.a().a(U.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys db = a("spruce_hanging_sign", new czr(dmw.c, dli.d.a().a(V.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dc = a("birch_hanging_sign", new czr(dmw.d, dli.d.a().a(eha.c).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dd = a("acacia_hanging_sign", new czr(dmw.e, dli.d.a().a(eha.p).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys de = a("cherry_hanging_sign", new czr(dmw.f, dli.d.a().a(eha.Q).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys df = a("jungle_hanging_sign", new czr(dmw.g, dli.d.a().a(X.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dg = a("dark_oak_hanging_sign", new czr(dmw.h, dli.d.a().a(aa.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dh = a("crimson_hanging_sign", new czr(dmw.i, dli.d.a().a(eha.ab).j().a(dmk.e).b().d(1.0F)));
-   public static final cys di = a("warped_hanging_sign", new czr(dmw.j, dli.d.a().a(eha.ae).j().a(dmk.e).b().d(1.0F)));
-   public static final cys dj = a("mangrove_hanging_sign", new czr(dmw.k, dli.d.a().a(ab.w()).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dk = a("bamboo_hanging_sign", new czr(dmw.l, dli.d.a().a(eha.s).j().a(dmk.e).b().d(1.0F).h()));
-   public static final cys dl = a("oak_wall_hanging_sign", new dhp(dmw.b, dli.d.a().a(U.w()).j().a(dmk.e).b().d(1.0F).h().a(da)));
-   public static final cys dm = a("spruce_wall_hanging_sign", new dhp(dmw.c, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(db).h()));
-   public static final cys dn = a("birch_wall_hanging_sign", new dhp(dmw.d, dli.d.a().a(eha.c).j().a(dmk.e).b().d(1.0F).a(dc).h()));
-   public static final cys do = a("acacia_wall_hanging_sign", new dhp(dmw.e, dli.d.a().a(eha.p).j().a(dmk.e).b().d(1.0F).h().a(dd)));
-   public static final cys dp = a("cherry_wall_hanging_sign", new dhp(dmw.f, dli.d.a().a(eha.Q).j().a(dmk.e).b().d(1.0F).h().a(de)));
-   public static final cys dq = a("jungle_wall_hanging_sign", new dhp(dmw.g, dli.d.a().a(X.w()).j().a(dmk.e).b().d(1.0F).h().a(df)));
-   public static final cys dr = a("dark_oak_wall_hanging_sign", new dhp(dmw.h, dli.d.a().a(aa.w()).j().a(dmk.e).b().d(1.0F).h().a(dg)));
-   public static final cys ds = a("mangrove_wall_hanging_sign", new dhp(dmw.k, dli.d.a().a(ab.w()).j().a(dmk.e).b().d(1.0F).h().a(dj)));
-   public static final cys dt = a("crimson_wall_hanging_sign", new dhp(dmw.i, dli.d.a().a(eha.ab).j().a(dmk.e).b().d(1.0F).a(dh)));
-   public static final cys du = a("warped_wall_hanging_sign", new dhp(dmw.j, dli.d.a().a(eha.ae).j().a(dmk.e).b().d(1.0F).a(di)));
-   public static final cys dv = a("bamboo_wall_hanging_sign", new dhp(dmw.l, dli.d.a().a(eha.s).j().a(dmk.e).b().d(1.0F).h().a(dk)));
-   public static final cys dw = a("lever", new dde(dli.d.a().b().d(0.5F).a(dge.f).a(ehb.b)));
-   public static final cys dx = a("stone_pressure_plate", new deo(dly.e, dli.d.a().a(eha.l).j().a(dmk.b).m().b().d(0.5F).a(ehb.b)));
-   public static final cys dy = a("iron_door", new day(dly.b, dli.d.a().a(eha.g).m().d(5.0F).c().a(ehb.b)));
-   public static final cys dz = a("oak_pressure_plate", new deo(dly.g, dli.d.a().a(n.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dA = a("spruce_pressure_plate", new deo(dly.h, dli.d.a().a(o.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dB = a("birch_pressure_plate", new deo(dly.i, dli.d.a().a(p.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dC = a("jungle_pressure_plate", new deo(dly.l, dli.d.a().a(q.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dD = a("acacia_pressure_plate", new deo(dly.j, dli.d.a().a(r.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dE = a("cherry_pressure_plate", new deo(dly.k, dli.d.a().a(s.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dF = a("dark_oak_pressure_plate", new deo(dly.m, dli.d.a().a(t.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dG = a("mangrove_pressure_plate", new deo(dly.p, dli.d.a().a(u.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dH = a("bamboo_pressure_plate", new deo(dly.q, dli.d.a().a(v.w()).j().a(dmk.e).b().d(0.5F).h().a(ehb.b)));
-   public static final cys dI = a("redstone_ore", new des(dli.d.a().a(eha.l).a(dmk.b).m().e().a(a(9)).a(3.0F, 3.0F)));
-   public static final cys dJ = a("deepslate_redstone_ore", new des(dli.d.b(dI).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys dK = a("redstone_torch", new dev(dli.d.a().b().d().a(a(7)).a(dge.b).a(ehb.b)));
-   public static final cys dL = a("redstone_wall_torch", new dew(dli.d.a().b().d().a(a(7)).a(dge.b).a(dK).a(ehb.b)));
-   public static final cys dM = a("stone_button", b());
-   public static final cys dN = a("snow", new dga(dli.d.a().a(eha.i).o().k().e().d(0.1F).m().a(dge.k).c(($$0x, $$1x, $$2) -> $$0x.c(dga.c) >= 8).a(ehb.b)));
-   public static final cys dO = a("ice", new dcp(dli.d.a().a(eha.f).a(0.98F).e().d(0.5F).a(dge.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bnw.aB).a(cyu::b)));
-   public static final cys dP = a("snow_block", new cys(dli.d.a().a(eha.i).m().d(0.2F).a(dge.k)));
-   public static final cys dQ = a("cactus", new czd(dli.d.a().a(eha.h).e().d(0.4F).a(dge.i).a(ehb.b)));
-   public static final cys dR = a("clay", new cys(dli.d.a().a(eha.j).a(dmk.f).d(0.6F).a(dge.c)));
-   public static final cys dS = a("sugar_cane", new dgr(dli.d.a().a(eha.h).b().e().d().a(dge.d).a(ehb.b)));
-   public static final cys dT = a("jukebox", new dcu(dli.d.a().a(eha.k).a(dmk.e).a(2.0F, 6.0F).a(dge.b).h()));
-   public static final cys dU = a("oak_fence", new dbq(dli.d.a().a(n.w()).j().a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys dV = a("netherrack", new ddz(dli.d.a().a(eha.J).a(dmk.b).m().d(0.4F).a(dge.M)));
-   public static final cys dW = a("soul_sand", new dgd(dli.d.a().a(eha.A).a(dmk.l).d(0.5F).b(0.4F).a(dge.I).a(cyu::b).a(cyu::a).c(cyu::a).b(cyu::a)));
-   public static final cys dX = a("soul_soil", new cys(dli.d.a().a(eha.A).d(0.5F).a(dge.J)));
-   public static final cys dY = a("basalt", new dfd(dli.d.a().a(eha.D).a(dmk.b).m().a(1.25F, 4.2F).a(dge.K)));
-   public static final cys dZ = a("polished_basalt", new dfd(dli.d.a().a(eha.D).a(dmk.b).m().a(1.25F, 4.2F).a(dge.K)));
-   public static final cys ea = a("soul_torch", new dhb(jz.J, dli.d.a().b().d().a($$0x -> 10).a(dge.b).a(ehb.b)));
-   public static final cys eb = a("soul_wall_torch", new dhs(jz.J, dli.d.a().b().d().a($$0x -> 10).a(dge.b).a(ea).a(ehb.b)));
-   public static final cys ec = a("glowstone", new cys(dli.d.a().a(eha.c).a(dmk.p).d(0.3F).a(dge.h).a($$0x -> 15).a(cyu::b)));
-   public static final cys ed = a("nether_portal", new ddv(dli.d.a().b().e().d(-1.0F).a(dge.h).a($$0x -> 11).a(ehb.c)));
-   public static final cys ee = a("carved_pumpkin", new dbl(dli.d.a().a(eha.p).d(1.0F).a(dge.b).a(cyu::b).a(ehb.b)));
-   public static final cys ef = a("jack_o_lantern", new czm(dli.d.a().a(eha.p).d(1.0F).a(dge.b).a($$0x -> 15).a(cyu::b).a(ehb.b)));
-   public static final cys eg = a("cake", new cze(dli.d.a().j().d(0.5F).a(dge.i).a(ehb.b)));
-   public static final cys eh = a("repeater", new dey(dli.d.a().d().a(dge.f).a(ehb.b)));
-   public static final cys ei = a("white_stained_glass", b(cnr.a));
-   public static final cys ej = a("orange_stained_glass", b(cnr.b));
-   public static final cys ek = a("magenta_stained_glass", b(cnr.c));
-   public static final cys el = a("light_blue_stained_glass", b(cnr.d));
-   public static final cys em = a("yellow_stained_glass", b(cnr.e));
-   public static final cys en = a("lime_stained_glass", b(cnr.f));
-   public static final cys eo = a("pink_stained_glass", b(cnr.g));
-   public static final cys ep = a("gray_stained_glass", b(cnr.h));
-   public static final cys eq = a("light_gray_stained_glass", b(cnr.i));
-   public static final cys er = a("cyan_stained_glass", b(cnr.j));
-   public static final cys es = a("purple_stained_glass", b(cnr.k));
-   public static final cys et = a("blue_stained_glass", b(cnr.l));
-   public static final cys eu = a("brown_stained_glass", b(cnr.m));
-   public static final cys ev = a("green_stained_glass", b(cnr.n));
-   public static final cys ew = a("red_stained_glass", b(cnr.o));
-   public static final cys ex = a("black_stained_glass", b(cnr.p));
-   public static final cys ey = a("oak_trapdoor", new dhe(dly.g, dli.d.a().a(eha.n).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys ez = a("spruce_trapdoor", new dhe(dly.h, dli.d.a().a(eha.I).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eA = a("birch_trapdoor", new dhe(dly.i, dli.d.a().a(eha.c).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eB = a("jungle_trapdoor", new dhe(dly.l, dli.d.a().a(eha.k).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eC = a("acacia_trapdoor", new dhe(dly.j, dli.d.a().a(eha.p).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eD = a("cherry_trapdoor", new dhe(dly.k, dli.d.a().a(eha.K).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eE = a("dark_oak_trapdoor", new dhe(dly.m, dli.d.a().a(eha.A).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eF = a("mangrove_trapdoor", new dhe(dly.p, dli.d.a().a(eha.C).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eG = a("bamboo_trapdoor", new dhe(dly.q, dli.d.a().a(eha.s).a(dmk.e).d(3.0F).c().a(cyu::a).h()));
-   public static final cys eH = a("stone_bricks", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys eI = a("mossy_stone_bricks", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys eJ = a("cracked_stone_bricks", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys eK = a("chiseled_stone_bricks", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys eL = a("packed_mud", new cys(dli.d.b(j).a(1.0F, 3.0F).a(dge.aO)));
-   public static final cys eM = a("mud_bricks", new cys(dli.d.a().a(eha.S).a(dmk.b).m().a(1.5F, 3.0F).a(dge.aN)));
-   public static final cys eN = a("infested_stone", new dcq(b, dli.d.a().a(eha.j)));
-   public static final cys eO = a("infested_cobblestone", new dcq(m, dli.d.a().a(eha.j)));
-   public static final cys eP = a("infested_stone_bricks", new dcq(eH, dli.d.a().a(eha.j)));
-   public static final cys eQ = a("infested_mossy_stone_bricks", new dcq(eI, dli.d.a().a(eha.j)));
-   public static final cys eR = a("infested_cracked_stone_bricks", new dcq(eJ, dli.d.a().a(eha.j)));
-   public static final cys eS = a("infested_chiseled_stone_bricks", new dcq(eK, dli.d.a().a(eha.j)));
-   public static final cys eT = a("brown_mushroom_block", new dco(dli.d.a().a(eha.k).a(dmk.e).d(0.2F).a(dge.b).h()));
-   public static final cys eU = a("red_mushroom_block", new dco(dli.d.a().a(eha.C).a(dmk.e).d(0.2F).a(dge.b).h()));
-   public static final cys eV = a("mushroom_stem", new dco(dli.d.a().a(eha.d).a(dmk.e).d(0.2F).a(dge.b).h()));
-   public static final cys eW = a("iron_bars", new dcs(dli.d.a().m().a(5.0F, 6.0F).a(dge.g).c()));
-   public static final cys eX = a("chain", new czs(dli.d.a().j().m().a(5.0F, 6.0F).a(dge.U).c()));
-   public static final cys eY = a("glass_pane", new dcs(dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys eZ = a(aio.a, new dep(dli.d.a().a(eha.p).a(dmk.m).d(1.0F).a(dge.b).a(ehb.b)));
-   public static final cys fa = a(aio.d, new cys(dli.d.a().a(eha.t).d(1.0F).a(dge.b).a(ehb.b)));
-   public static final cys fb = a(aio.c, new cxt(aio.b, aio.a, aip.a, dli.d.a().a(eha.h).b().d().a(dge.b).a(ehb.b)));
-   public static final cys fc = a(aio.f, new cxt(aio.e, aio.d, aip.b, dli.d.a().a(eha.h).b().d().a(dge.b).a(ehb.b)));
-   public static final cys fd = a(aio.b, new dgn(aio.a, aio.c, aip.a, dli.d.a().a(eha.h).b().e().d().a(dge.x).a(ehb.b)));
-   public static final cys fe = a(aio.e, new dgn(aio.d, aio.f, aip.b, dli.d.a().a(eha.h).b().e().d().a(dge.x).a(ehb.b)));
-   public static final cys ff = a("vine", new dhm(dli.d.a().a(eha.h).o().b().e().d(0.2F).a(dge.y).h().a(ehb.b)));
-   public static final cys fg = a("glow_lichen", new dcc(dli.d.a().a(eha.aj).o().b().d(0.2F).a(dge.aD).a(dcc.b(7)).h().a(ehb.b)));
-   public static final cys fh = a("oak_fence_gate", new dbr(dmw.b, dli.d.a().a(n.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys fi = a("brick_stairs", b(cj));
-   public static final cys fj = a("stone_brick_stairs", b(eH));
-   public static final cys fk = a("mud_brick_stairs", b(eM));
-   public static final cys fl = a("mycelium", new ddu(dli.d.a().a(eha.y).e().d(0.6F).a(dge.d)));
-   public static final cys fm = a("lily_pad", new dht(dli.d.a().a(eha.h).d().a(dge.e).c().a(ehb.b)));
-   public static final cys fn = a("nether_bricks", new cys(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys fo = a("nether_brick_fence", new dbq(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys fp = a("nether_brick_stairs", b(fn));
-   public static final cys fq = a("nether_wart", new ddy(dli.d.a().a(eha.C).b().e().a(dge.z).a(ehb.b)));
-   public static final cys fr = a("enchanting_table", new dbe(dli.d.a().a(eha.C).a(dmk.b).m().a($$0x -> 7).a(5.0F, 1200.0F)));
-   public static final cys fs = a("brewing_stand", new cyw(dli.d.a().a(eha.g).m().d(0.5F).a($$0x -> 1).c()));
-   public static final cys ft = a("cauldron", new czn(dli.d.a().a(eha.l).m().d(2.0F).c()));
-   public static final cys fu = a("water_cauldron", new dda(cwq.c.b, jf.d, dli.d.b(ft)));
-   public static final cys fv = a("lava_cauldron", new dcz(dli.d.b(ft).a($$0x -> 15)));
-   public static final cys fw = a("powder_snow_cauldron", new dda(cwq.c.c, jf.f, dli.d.b(ft)));
-   public static final cys fx = a("end_portal", new dbg(dli.d.a().a(eha.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ehb.c)));
-   public static final cys fy = a("end_portal_frame", new dbh(dli.d.a().a(eha.B).a(dmk.b).a(dge.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g()));
-   public static final cys fz = a("end_stone", new cys(dli.d.a().a(eha.c).a(dmk.b).m().a(3.0F, 9.0F)));
-   public static final cys fA = a("dragon_egg", new dbb(dli.d.a().a(eha.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(ehb.b)));
-   public static final cys fB = a("redstone_lamp", new deu(dli.d.a().a(a(15)).d(0.3F).a(dge.h).a(cyu::b)));
-   public static final cys fC = a("cocoa", new czz(dli.d.a().a(eha.h).e().a(0.2F, 3.0F).a(dge.b).c().a(ehb.b)));
-   public static final cys fD = a("sandstone_stairs", b(aV));
-   public static final cys fE = a("emerald_ore", new dbc(blh.a(3, 7), dli.d.a().a(eha.l).a(dmk.b).m().a(3.0F, 3.0F)));
-   public static final cys fF = a("deepslate_emerald_ore", new dbc(blh.a(3, 7), dli.d.b(fE).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys fG = a("ender_chest", new dbj(dli.d.a().a(eha.l).a(dmk.b).m().a(22.5F, 600.0F).a($$0x -> 7)));
-   public static final cys fH = a("tripwire_hook", new dhi(dli.d.a().b().a(dge.b).a(ehb.b)));
-   public static final cys fI = a("tripwire", new dhh(fH, dli.d.a().b().a(ehb.b)));
-   public static final cys fJ = a("emerald_block", new cys(dli.d.a().a(eha.H).a(dmk.n).m().a(5.0F, 6.0F).a(dge.g)));
-   public static final cys fK = a("spruce_stairs", b(o));
-   public static final cys fL = a("birch_stairs", b(p));
-   public static final cys fM = a("jungle_stairs", b(q));
-   public static final cys fN = a("command_block", new dab(false, dli.d.a().a(eha.A).m().a(-1.0F, 3600000.0F).g()));
-   public static final cys fO = a("beacon", new cyk(dli.d.a().a(eha.F).a(dmk.d).d(3.0F).a($$0x -> 15).c().a(cyu::b)));
-   public static final cys fP = a("cobblestone_wall", new dho(dli.d.b(m).j()));
-   public static final cys fQ = a("mossy_cobblestone_wall", new dho(dli.d.b(m).j()));
-   public static final cys fR = a("flower_pot", a(a));
-   public static final cys fS = a("potted_torchflower", a(bS));
-   public static final cys fT = a("potted_oak_sapling", a(x));
-   public static final cys fU = a("potted_spruce_sapling", a(y));
-   public static final cys fV = a("potted_birch_sapling", a(z));
-   public static final cys fW = a("potted_jungle_sapling", a(A));
-   public static final cys fX = a("potted_acacia_sapling", a(B));
-   public static final cys fY = a("potted_cherry_sapling", a(C));
-   public static final cys fZ = a("potted_dark_oak_sapling", a(D));
-   public static final cys ga = a("potted_mangrove_propagule", a(E));
-   public static final cys gb = a("potted_fern", a(bu));
-   public static final cys gc = a("potted_dandelion", a(bR));
-   public static final cys gd = a("potted_poppy", a(bT));
-   public static final cys ge = a("potted_blue_orchid", a(bU));
-   public static final cys gf = a("potted_allium", a(bV));
-   public static final cys gg = a("potted_azure_bluet", a(bW));
-   public static final cys gh = a("potted_red_tulip", a(bX));
-   public static final cys gi = a("potted_orange_tulip", a(bY));
-   public static final cys gj = a("potted_white_tulip", a(bZ));
-   public static final cys gk = a("potted_pink_tulip", a(ca));
-   public static final cys gl = a("potted_oxeye_daisy", a(cb));
-   public static final cys gm = a("potted_cornflower", a(cc));
-   public static final cys gn = a("potted_lily_of_the_valley", a(ce));
-   public static final cys go = a("potted_wither_rose", a(cd));
-   public static final cys gp = a("potted_red_mushroom", a(cg));
-   public static final cys gq = a("potted_brown_mushroom", a(cf));
-   public static final cys gr = a("potted_dead_bush", a(bv));
-   public static final cys gs = a("potted_cactus", a(dQ));
-   public static final cys gt = a("carrots", new czk(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys gu = a("potatoes", new dek(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys gv = a("oak_button", a(dly.g));
-   public static final cys gw = a("spruce_button", a(dly.h));
-   public static final cys gx = a("birch_button", a(dly.i));
-   public static final cys gy = a("jungle_button", a(dly.l));
-   public static final cys gz = a("acacia_button", a(dly.j));
-   public static final cys gA = a("cherry_button", a(dly.k));
-   public static final cys gB = a("dark_oak_button", a(dly.m));
-   public static final cys gC = a("mangrove_button", a(dly.p));
-   public static final cys gD = a("bamboo_button", a(dly.q));
-   public static final cys gE = a("skeleton_skull", new dft(dft.b.c, dli.d.a().a(dmk.r).d(1.0F).a(ehb.b)));
-   public static final cys gF = a("skeleton_wall_skull", new dhr(dft.b.c, dli.d.a().d(1.0F).a(gE).a(ehb.b)));
-   public static final cys gG = a("wither_skeleton_skull", new dij(dli.d.a().a(dmk.u).d(1.0F).a(ehb.b)));
-   public static final cys gH = a("wither_skeleton_wall_skull", new dik(dli.d.a().d(1.0F).a(gG).a(ehb.b)));
-   public static final cys gI = a("zombie_head", new dft(dft.b.f, dli.d.a().a(dmk.q).d(1.0F).a(ehb.b)));
-   public static final cys gJ = a("zombie_wall_head", new dhr(dft.b.f, dli.d.a().d(1.0F).a(gI).a(ehb.b)));
-   public static final cys gK = a("player_head", new deh(dli.d.a().a(dmk.w).d(1.0F).a(ehb.b)));
-   public static final cys gL = a("player_wall_head", new dei(dli.d.a().d(1.0F).a(gK).a(ehb.b)));
-   public static final cys gM = a("creeper_head", new dft(dft.b.g, dli.d.a().a(dmk.s).d(1.0F).a(ehb.b)));
-   public static final cys gN = a("creeper_wall_head", new dhr(dft.b.g, dli.d.a().d(1.0F).a(gM).a(ehb.b)));
-   public static final cys gO = a("dragon_head", new dft(dft.b.i, dli.d.a().a(dmk.t).d(1.0F).a(ehb.b)));
-   public static final cys gP = a("dragon_wall_head", new dhr(dft.b.i, dli.d.a().d(1.0F).a(gO).a(ehb.b)));
-   public static final cys gQ = a("piglin_head", new dft(dft.b.h, dli.d.a().a(dmk.v).d(1.0F).a(ehb.b)));
-   public static final cys gR = a("piglin_wall_head", new ded(dli.d.a().d(1.0F).a(gQ).a(ehb.b)));
-   public static final cys gS = a("anvil", new cxs(dli.d.a().a(eha.g).m().a(5.0F, 1200.0F).a(dge.n).a(ehb.c)));
-   public static final cys gT = a("chipped_anvil", new cxs(dli.d.a().a(eha.g).m().a(5.0F, 1200.0F).a(dge.n).a(ehb.c)));
-   public static final cys gU = a("damaged_anvil", new cxs(dli.d.a().a(eha.g).m().a(5.0F, 1200.0F).a(dge.n).a(ehb.c)));
-   public static final cys gV = a("trapped_chest", new dhf(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys gW = a("light_weighted_pressure_plate", new dig(15, dly.d, dli.d.a().a(eha.E).j().m().b().d(0.5F).a(ehb.b)));
-   public static final cys gX = a("heavy_weighted_pressure_plate", new dig(150, dly.b, dli.d.a().a(eha.g).j().m().b().d(0.5F).a(ehb.b)));
-   public static final cys gY = a("comparator", new dac(dli.d.a().d().a(dge.f).a(ehb.b)));
-   public static final cys gZ = a("daylight_detector", new daq(dli.d.a().a(eha.n).a(dmk.e).d(0.2F).a(dge.b).h()));
-   public static final cys ha = a("redstone_block", new dem(dli.d.a().a(eha.e).m().a(5.0F, 6.0F).a(dge.g).a(cyu::b)));
-   public static final cys hb = a("nether_quartz_ore", new dbc(blh.a(2, 5), dli.d.a().a(eha.J).a(dmk.b).m().a(3.0F, 3.0F).a(dge.P)));
-   public static final cys hc = a("hopper", new dcm(dli.d.a().a(eha.l).m().a(3.0F, 4.8F).a(dge.g).c()));
-   public static final cys hd = a("quartz_block", new cys(dli.d.a().a(eha.o).a(dmk.b).m().d(0.8F)));
-   public static final cys he = a("chiseled_quartz_block", new cys(dli.d.a().a(eha.o).a(dmk.b).m().d(0.8F)));
-   public static final cys hf = a("quartz_pillar", new dfd(dli.d.a().a(eha.o).a(dmk.b).m().d(0.8F)));
-   public static final cys hg = a("quartz_stairs", b(hd));
-   public static final cys hh = a("activator_rail", new den(dli.d.a().b().d(0.7F).a(dge.g)));
-   public static final cys hi = a("dropper", new dbd(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F)));
-   public static final cys hj = a("white_terracotta", new cys(dli.d.a().a(eha.K).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hk = a("orange_terracotta", new cys(dli.d.a().a(eha.L).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hl = a("magenta_terracotta", new cys(dli.d.a().a(eha.M).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hm = a("light_blue_terracotta", new cys(dli.d.a().a(eha.N).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hn = a("yellow_terracotta", new cys(dli.d.a().a(eha.O).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys ho = a("lime_terracotta", new cys(dli.d.a().a(eha.P).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hp = a("pink_terracotta", new cys(dli.d.a().a(eha.Q).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hq = a("gray_terracotta", new cys(dli.d.a().a(eha.R).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hr = a("light_gray_terracotta", new cys(dli.d.a().a(eha.S).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hs = a("cyan_terracotta", new cys(dli.d.a().a(eha.T).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys ht = a("purple_terracotta", new cys(dli.d.a().a(eha.U).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hu = a("blue_terracotta", new cys(dli.d.a().a(eha.V).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hv = a("brown_terracotta", new cys(dli.d.a().a(eha.W).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hw = a("green_terracotta", new cys(dli.d.a().a(eha.X).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hx = a("red_terracotta", new cys(dli.d.a().a(eha.Y).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hy = a("black_terracotta", new cys(dli.d.a().a(eha.Z).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys hz = a("white_stained_glass_pane", new dgk(cnr.a, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hA = a("orange_stained_glass_pane", new dgk(cnr.b, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hB = a("magenta_stained_glass_pane", new dgk(cnr.c, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hC = a("light_blue_stained_glass_pane", new dgk(cnr.d, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hD = a("yellow_stained_glass_pane", new dgk(cnr.e, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hE = a("lime_stained_glass_pane", new dgk(cnr.f, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hF = a("pink_stained_glass_pane", new dgk(cnr.g, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hG = a("gray_stained_glass_pane", new dgk(cnr.h, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hH = a("light_gray_stained_glass_pane", new dgk(cnr.i, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hI = a("cyan_stained_glass_pane", new dgk(cnr.j, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hJ = a("purple_stained_glass_pane", new dgk(cnr.k, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hK = a("blue_stained_glass_pane", new dgk(cnr.l, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hL = a("brown_stained_glass_pane", new dgk(cnr.m, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hM = a("green_stained_glass_pane", new dgk(cnr.n, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hN = a("red_stained_glass_pane", new dgk(cnr.o, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hO = a("black_stained_glass_pane", new dgk(cnr.p, dli.d.a().a(dmk.d).d(0.3F).a(dge.h).c()));
-   public static final cys hP = a("acacia_stairs", b(r));
-   public static final cys hQ = a("cherry_stairs", b(s));
-   public static final cys hR = a("dark_oak_stairs", b(t));
-   public static final cys hS = a("mangrove_stairs", b(u));
-   public static final cys hT = a("bamboo_stairs", b(v));
-   public static final cys hU = a("bamboo_mosaic_stairs", b(w));
-   public static final cys hV = a("slime_block", new dfv(dli.d.a().a(eha.b).a(0.8F).a(dge.o).c()));
-   public static final cys hW = a("barrier", new cxz(dli.d.a().a(-1.0F, 3600000.8F).g().c().a(cyu::a).n().a(ehb.c)));
-   public static final cys hX = a("light", new ddf(dli.d.a().o().a(-1.0F, 3600000.8F).g().c().a(ddf.e)));
-   public static final cys hY = a("iron_trapdoor", new dhe(dly.b, dli.d.a().a(eha.g).m().d(5.0F).c().a(cyu::a)));
-   public static final cys hZ = a("prismarine", new cys(dli.d.a().a(eha.x).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ia = a("prismarine_bricks", new cys(dli.d.a().a(eha.F).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ib = a("dark_prismarine", new cys(dli.d.a().a(eha.F).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ic = a("prismarine_stairs", b(hZ));
-   public static final cys id = a("prismarine_brick_stairs", b(ia));
-   public static final cys ie = a("dark_prismarine_stairs", b(ib));
-   public static final cys if = a("prismarine_slab", new dfu(dli.d.a().a(eha.x).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ig = a("prismarine_brick_slab", new dfu(dli.d.a().a(eha.F).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ih = a("dark_prismarine_slab", new dfu(dli.d.a().a(eha.F).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ii = a("sea_lantern", new cys(dli.d.a().a(eha.o).a(dmk.d).d(0.3F).a(dge.h).a($$0x -> 15).a(cyu::b)));
-   public static final cys ij = a("hay_block", new dck(dli.d.a().a(eha.s).a(dmk.o).d(0.5F).a(dge.d)));
-   public static final cys ik = a("white_carpet", new dil(cnr.a, dli.d.a().a(eha.i).d(0.1F).a(dge.i).h()));
-   public static final cys il = a("orange_carpet", new dil(cnr.b, dli.d.a().a(eha.p).d(0.1F).a(dge.i).h()));
-   public static final cys im = a("magenta_carpet", new dil(cnr.c, dli.d.a().a(eha.q).d(0.1F).a(dge.i).h()));
-   public static final cys in = a("light_blue_carpet", new dil(cnr.d, dli.d.a().a(eha.r).d(0.1F).a(dge.i).h()));
-   public static final cys io = a("yellow_carpet", new dil(cnr.e, dli.d.a().a(eha.s).d(0.1F).a(dge.i).h()));
-   public static final cys ip = a("lime_carpet", new dil(cnr.f, dli.d.a().a(eha.t).d(0.1F).a(dge.i).h()));
-   public static final cys iq = a("pink_carpet", new dil(cnr.g, dli.d.a().a(eha.u).d(0.1F).a(dge.i).h()));
-   public static final cys ir = a("gray_carpet", new dil(cnr.h, dli.d.a().a(eha.v).d(0.1F).a(dge.i).h()));
-   public static final cys is = a("light_gray_carpet", new dil(cnr.i, dli.d.a().a(eha.w).d(0.1F).a(dge.i).h()));
-   public static final cys it = a("cyan_carpet", new dil(cnr.j, dli.d.a().a(eha.x).d(0.1F).a(dge.i).h()));
-   public static final cys iu = a("purple_carpet", new dil(cnr.k, dli.d.a().a(eha.y).d(0.1F).a(dge.i).h()));
-   public static final cys iv = a("blue_carpet", new dil(cnr.l, dli.d.a().a(eha.z).d(0.1F).a(dge.i).h()));
-   public static final cys iw = a("brown_carpet", new dil(cnr.m, dli.d.a().a(eha.A).d(0.1F).a(dge.i).h()));
-   public static final cys ix = a("green_carpet", new dil(cnr.n, dli.d.a().a(eha.B).d(0.1F).a(dge.i).h()));
-   public static final cys iy = a("red_carpet", new dil(cnr.o, dli.d.a().a(eha.C).d(0.1F).a(dge.i).h()));
-   public static final cys iz = a("black_carpet", new dil(cnr.p, dli.d.a().a(eha.D).d(0.1F).a(dge.i).h()));
-   public static final cys iA = a("terracotta", new cys(dli.d.a().a(eha.p).a(dmk.b).m().a(1.25F, 4.2F)));
-   public static final cys iB = a("coal_block", new cys(dli.d.a().a(eha.D).a(dmk.b).m().a(5.0F, 6.0F)));
-   public static final cys iC = a("packed_ice", new cys(dli.d.a().a(eha.f).a(dmk.i).a(0.98F).d(0.5F).a(dge.h)));
-   public static final cys iD = a("sunflower", new dgv(dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iE = a("lilac", new dgv(dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iF = a("rose_bush", new dgv(dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iG = a("peony", new dgv(dli.d.a().a(eha.h).b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iH = a("tall_grass", new dba(dli.d.a().a(eha.h).o().b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iI = a("large_fern", new dba(dli.d.a().a(eha.h).o().b().d().a(dge.d).a(dli.c.b).h().a(ehb.b)));
-   public static final cys iJ = a("white_banner", new cxx(cnr.a, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iK = a("orange_banner", new cxx(cnr.b, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iL = a("magenta_banner", new cxx(cnr.c, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iM = a("light_blue_banner", new cxx(cnr.d, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iN = a("yellow_banner", new cxx(cnr.e, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iO = a("lime_banner", new cxx(cnr.f, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iP = a("pink_banner", new cxx(cnr.g, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iQ = a("gray_banner", new cxx(cnr.h, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iR = a("light_gray_banner", new cxx(cnr.i, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iS = a("cyan_banner", new cxx(cnr.j, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iT = a("purple_banner", new cxx(cnr.k, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iU = a("blue_banner", new cxx(cnr.l, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iV = a("brown_banner", new cxx(cnr.m, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iW = a("green_banner", new cxx(cnr.n, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iX = a("red_banner", new cxx(cnr.o, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iY = a("black_banner", new cxx(cnr.p, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).h()));
-   public static final cys iZ = a("white_wall_banner", new dhn(cnr.a, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iJ).h()));
-   public static final cys ja = a("orange_wall_banner", new dhn(cnr.b, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iK).h()));
-   public static final cys jb = a("magenta_wall_banner", new dhn(cnr.c, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iL).h()));
-   public static final cys jc = a("light_blue_wall_banner", new dhn(cnr.d, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iM).h()));
-   public static final cys jd = a("yellow_wall_banner", new dhn(cnr.e, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iN).h()));
-   public static final cys je = a("lime_wall_banner", new dhn(cnr.f, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iO).h()));
-   public static final cys jf = a("pink_wall_banner", new dhn(cnr.g, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iP).h()));
-   public static final cys jg = a("gray_wall_banner", new dhn(cnr.h, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iQ).h()));
-   public static final cys jh = a("light_gray_wall_banner", new dhn(cnr.i, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iR).h()));
-   public static final cys ji = a("cyan_wall_banner", new dhn(cnr.j, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iS).h()));
-   public static final cys jj = a("purple_wall_banner", new dhn(cnr.k, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iT).h()));
-   public static final cys jk = a("blue_wall_banner", new dhn(cnr.l, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iU).h()));
-   public static final cys jl = a("brown_wall_banner", new dhn(cnr.m, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iV).h()));
-   public static final cys jm = a("green_wall_banner", new dhn(cnr.n, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iW).h()));
-   public static final cys jn = a("red_wall_banner", new dhn(cnr.o, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iX).h()));
-   public static final cys jo = a("black_wall_banner", new dhn(cnr.p, dli.d.a().a(eha.n).j().a(dmk.e).b().d(1.0F).a(dge.b).a(iY).h()));
-   public static final cys jp = a("red_sandstone", new cys(dli.d.a().a(eha.p).a(dmk.b).m().d(0.8F)));
-   public static final cys jq = a("chiseled_red_sandstone", new cys(dli.d.a().a(eha.p).a(dmk.b).m().d(0.8F)));
-   public static final cys jr = a("cut_red_sandstone", new cys(dli.d.a().a(eha.p).a(dmk.b).m().d(0.8F)));
-   public static final cys js = a("red_sandstone_stairs", b(jp));
-   public static final cys jt = a("oak_slab", new dfu(dli.d.a().a(eha.n).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys ju = a("spruce_slab", new dfu(dli.d.a().a(eha.I).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jv = a("birch_slab", new dfu(dli.d.a().a(eha.c).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jw = a("jungle_slab", new dfu(dli.d.a().a(eha.k).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jx = a("acacia_slab", new dfu(dli.d.a().a(eha.p).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jy = a("cherry_slab", new dfu(dli.d.a().a(eha.K).a(dmk.e).a(2.0F, 3.0F).a(dge.aU).h()));
-   public static final cys jz = a("dark_oak_slab", new dfu(dli.d.a().a(eha.A).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jA = a("mangrove_slab", new dfu(dli.d.a().a(eha.C).a(dmk.e).a(2.0F, 3.0F).a(dge.b).h()));
-   public static final cys jB = a("bamboo_slab", new dfu(dli.d.a().a(eha.s).a(dmk.e).a(2.0F, 3.0F).a(dge.aS).h()));
-   public static final cys jC = a("bamboo_mosaic_slab", new dfu(dli.d.a().a(eha.s).a(dmk.e).a(2.0F, 3.0F).a(dge.aS).h()));
-   public static final cys jD = a("stone_slab", new dfu(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jE = a("smooth_stone_slab", new dfu(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jF = a("sandstone_slab", new dfu(dli.d.a().a(eha.c).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jG = a("cut_sandstone_slab", new dfu(dli.d.a().a(eha.c).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jH = a("petrified_oak_slab", new dfu(dli.d.a().a(eha.n).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jI = a("cobblestone_slab", new dfu(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jJ = a("brick_slab", new dfu(dli.d.a().a(eha.C).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jK = a("stone_brick_slab", new dfu(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jL = a("mud_brick_slab", new dfu(dli.d.a().a(eha.S).a(dmk.b).m().a(1.5F, 3.0F).a(dge.aN)));
-   public static final cys jM = a("nether_brick_slab", new dfu(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys jN = a("quartz_slab", new dfu(dli.d.a().a(eha.o).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jO = a("red_sandstone_slab", new dfu(dli.d.a().a(eha.p).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jP = a("cut_red_sandstone_slab", new dfu(dli.d.a().a(eha.p).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jQ = a("purpur_slab", new dfu(dli.d.a().a(eha.q).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jR = a("smooth_stone", new cys(dli.d.a().a(eha.l).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jS = a("smooth_sandstone", new cys(dli.d.a().a(eha.c).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jT = a("smooth_quartz", new cys(dli.d.a().a(eha.o).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jU = a("smooth_red_sandstone", new cys(dli.d.a().a(eha.p).a(dmk.b).m().a(2.0F, 6.0F)));
-   public static final cys jV = a("spruce_fence_gate", new dbr(dmw.c, dli.d.a().a(o.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys jW = a("birch_fence_gate", new dbr(dmw.d, dli.d.a().a(p.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys jX = a("jungle_fence_gate", new dbr(dmw.g, dli.d.a().a(q.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys jY = a("acacia_fence_gate", new dbr(dmw.e, dli.d.a().a(r.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys jZ = a("cherry_fence_gate", new dbr(dmw.f, dli.d.a().a(s.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys ka = a("dark_oak_fence_gate", new dbr(dmw.h, dli.d.a().a(t.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys kb = a("mangrove_fence_gate", new dbr(dmw.k, dli.d.a().a(u.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys kc = a("bamboo_fence_gate", new dbr(dmw.l, dli.d.a().a(v.w()).j().a(dmk.e).a(2.0F, 3.0F).h()));
-   public static final cys kd = a("spruce_fence", new dbq(dli.d.a().a(o.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys ke = a("birch_fence", new dbq(dli.d.a().a(p.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys kf = a("jungle_fence", new dbq(dli.d.a().a(q.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys kg = a("acacia_fence", new dbq(dli.d.a().a(r.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys kh = a("cherry_fence", new dbq(dli.d.a().a(s.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.aU)));
-   public static final cys ki = a("dark_oak_fence", new dbq(dli.d.a().a(t.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys kj = a("mangrove_fence", new dbq(dli.d.a().a(u.w()).a(dmk.e).a(2.0F, 3.0F).h().a(dge.b)));
-   public static final cys kk = a("bamboo_fence", new dbq(dli.d.a().a(v.w()).a(dmk.e).a(2.0F, 3.0F).a(dge.aS).h()));
-   public static final cys kl = a("spruce_door", new day(dly.h, dli.d.a().a(o.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys km = a("birch_door", new day(dly.i, dli.d.a().a(p.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys kn = a("jungle_door", new day(dly.l, dli.d.a().a(q.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys ko = a("acacia_door", new day(dly.j, dli.d.a().a(r.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys kp = a("cherry_door", new day(dly.k, dli.d.a().a(s.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys kq = a("dark_oak_door", new day(dly.m, dli.d.a().a(t.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys kr = a("mangrove_door", new day(dly.p, dli.d.a().a(u.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys ks = a("bamboo_door", new day(dly.q, dli.d.a().a(v.w()).a(dmk.e).d(3.0F).c().h().a(ehb.b)));
-   public static final cys kt = a("end_rod", new dbi(dli.d.a().k().d().a($$0x -> 14).a(dge.b).c()));
-   public static final cys ku = a("chorus_plant", new czy(dli.d.a().a(eha.y).k().d(0.4F).a(dge.b).c().a(ehb.b)));
-   public static final cys kv = a("chorus_flower", new czx(ku, dli.d.a().a(eha.y).k().e().d(0.4F).a(dge.b).c().a(cyu::a).a(ehb.b).a(cyu::b)));
-   public static final cys kw = a("purpur_block", new cys(dli.d.a().a(eha.q).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys kx = a("purpur_pillar", new dfd(dli.d.a().a(eha.q).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ky = a("purpur_stairs", b(kw));
-   public static final cys kz = a("end_stone_bricks", new cys(dli.d.a().a(eha.c).a(dmk.b).m().a(3.0F, 9.0F)));
-   public static final cys kA = a("torchflower_crop", new dhc(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys kB = a("pitcher_crop", new deg(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys kC = a("pitcher_plant", new dba(dli.d.a().a(eha.h).b().d().a(dge.w).a(dli.c.b).h().a(ehb.b)));
-   public static final cys kD = a("beetroots", new cyn(dli.d.a().a(eha.h).b().e().d().a(dge.w).a(ehb.b)));
-   public static final cys kE = a("dirt_path", new daw(dli.d.a().a(eha.k).d(0.65F).a(dge.d).c(cyu::a).b(cyu::a)));
-   public static final cys kF = a("end_gateway", new dbf(dli.d.a().a(eha.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ehb.c)));
-   public static final cys kG = a("repeating_command_block", new dab(false, dli.d.a().a(eha.y).m().a(-1.0F, 3600000.0F).g()));
-   public static final cys kH = a("chain_command_block", new dab(true, dli.d.a().a(eha.B).m().a(-1.0F, 3600000.0F).g()));
-   public static final cys kI = a(
-      "frosted_ice", new dbx(dli.d.a().a(eha.f).a(0.98F).e().d(0.5F).a(dge.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bnw.aB).a(cyu::b))
-   );
-   public static final cys kJ = a(
-      "magma_block", new ddk(dli.d.a().a(eha.J).a(dmk.b).m().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(cyu::a).e(cyu::a))
-   );
-   public static final cys kK = a("nether_wart_block", new cys(dli.d.a().a(eha.C).d(1.0F).a(dge.L)));
-   public static final cys kL = a("red_nether_bricks", new cys(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys kM = a("bone_block", new dfd(dli.d.a().a(eha.c).a(dmk.j).m().d(2.0F).a(dge.Q)));
-   public static final cys kN = a("structure_void", new dgq(dli.d.a().o().b().g().n().a(ehb.b)));
-   public static final cys kO = a("observer", new dec(dli.d.a().a(eha.l).a(dmk.b).d(3.0F).m().a(cyu::b)));
-   public static final cys kP = a("shulker_box", a(null, eha.y));
-   public static final cys kQ = a("white_shulker_box", a(cnr.a, eha.i));
-   public static final cys kR = a("orange_shulker_box", a(cnr.b, eha.p));
-   public static final cys kS = a("magenta_shulker_box", a(cnr.c, eha.q));
-   public static final cys kT = a("light_blue_shulker_box", a(cnr.d, eha.r));
-   public static final cys kU = a("yellow_shulker_box", a(cnr.e, eha.s));
-   public static final cys kV = a("lime_shulker_box", a(cnr.f, eha.t));
-   public static final cys kW = a("pink_shulker_box", a(cnr.g, eha.u));
-   public static final cys kX = a("gray_shulker_box", a(cnr.h, eha.v));
-   public static final cys kY = a("light_gray_shulker_box", a(cnr.i, eha.w));
-   public static final cys kZ = a("cyan_shulker_box", a(cnr.j, eha.x));
-   public static final cys la = a("purple_shulker_box", a(cnr.k, eha.U));
-   public static final cys lb = a("blue_shulker_box", a(cnr.l, eha.z));
-   public static final cys lc = a("brown_shulker_box", a(cnr.m, eha.A));
-   public static final cys ld = a("green_shulker_box", a(cnr.n, eha.B));
-   public static final cys le = a("red_shulker_box", a(cnr.o, eha.C));
-   public static final cys lf = a("black_shulker_box", a(cnr.p, eha.D));
-   public static final cys lg = a("white_glazed_terracotta", new dcb(dli.d.a().a(cnr.a).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lh = a("orange_glazed_terracotta", new dcb(dli.d.a().a(cnr.b).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys li = a("magenta_glazed_terracotta", new dcb(dli.d.a().a(cnr.c).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lj = a("light_blue_glazed_terracotta", new dcb(dli.d.a().a(cnr.d).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lk = a("yellow_glazed_terracotta", new dcb(dli.d.a().a(cnr.e).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys ll = a("lime_glazed_terracotta", new dcb(dli.d.a().a(cnr.f).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lm = a("pink_glazed_terracotta", new dcb(dli.d.a().a(cnr.g).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys ln = a("gray_glazed_terracotta", new dcb(dli.d.a().a(cnr.h).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lo = a("light_gray_glazed_terracotta", new dcb(dli.d.a().a(cnr.i).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lp = a("cyan_glazed_terracotta", new dcb(dli.d.a().a(cnr.j).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lq = a("purple_glazed_terracotta", new dcb(dli.d.a().a(cnr.k).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lr = a("blue_glazed_terracotta", new dcb(dli.d.a().a(cnr.l).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys ls = a("brown_glazed_terracotta", new dcb(dli.d.a().a(cnr.m).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lt = a("green_glazed_terracotta", new dcb(dli.d.a().a(cnr.n).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lu = a("red_glazed_terracotta", new dcb(dli.d.a().a(cnr.o).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lv = a("black_glazed_terracotta", new dcb(dli.d.a().a(cnr.p).a(dmk.b).m().d(1.4F).a(ehb.e)));
-   public static final cys lw = a("white_concrete", new cys(dli.d.a().a(cnr.a).a(dmk.b).m().d(1.8F)));
-   public static final cys lx = a("orange_concrete", new cys(dli.d.a().a(cnr.b).a(dmk.b).m().d(1.8F)));
-   public static final cys ly = a("magenta_concrete", new cys(dli.d.a().a(cnr.c).a(dmk.b).m().d(1.8F)));
-   public static final cys lz = a("light_blue_concrete", new cys(dli.d.a().a(cnr.d).a(dmk.b).m().d(1.8F)));
-   public static final cys lA = a("yellow_concrete", new cys(dli.d.a().a(cnr.e).a(dmk.b).m().d(1.8F)));
-   public static final cys lB = a("lime_concrete", new cys(dli.d.a().a(cnr.f).a(dmk.b).m().d(1.8F)));
-   public static final cys lC = a("pink_concrete", new cys(dli.d.a().a(cnr.g).a(dmk.b).m().d(1.8F)));
-   public static final cys lD = a("gray_concrete", new cys(dli.d.a().a(cnr.h).a(dmk.b).m().d(1.8F)));
-   public static final cys lE = a("light_gray_concrete", new cys(dli.d.a().a(cnr.i).a(dmk.b).m().d(1.8F)));
-   public static final cys lF = a("cyan_concrete", new cys(dli.d.a().a(cnr.j).a(dmk.b).m().d(1.8F)));
-   public static final cys lG = a("purple_concrete", new cys(dli.d.a().a(cnr.k).a(dmk.b).m().d(1.8F)));
-   public static final cys lH = a("blue_concrete", new cys(dli.d.a().a(cnr.l).a(dmk.b).m().d(1.8F)));
-   public static final cys lI = a("brown_concrete", new cys(dli.d.a().a(cnr.m).a(dmk.b).m().d(1.8F)));
-   public static final cys lJ = a("green_concrete", new cys(dli.d.a().a(cnr.n).a(dmk.b).m().d(1.8F)));
-   public static final cys lK = a("red_concrete", new cys(dli.d.a().a(cnr.o).a(dmk.b).m().d(1.8F)));
-   public static final cys lL = a("black_concrete", new cys(dli.d.a().a(cnr.p).a(dmk.b).m().d(1.8F)));
-   public static final cys lM = a("white_concrete_powder", new dae(lw, dli.d.a().a(cnr.a).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lN = a("orange_concrete_powder", new dae(lx, dli.d.a().a(cnr.b).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lO = a("magenta_concrete_powder", new dae(ly, dli.d.a().a(cnr.c).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lP = a("light_blue_concrete_powder", new dae(lz, dli.d.a().a(cnr.d).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lQ = a("yellow_concrete_powder", new dae(lA, dli.d.a().a(cnr.e).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lR = a("lime_concrete_powder", new dae(lB, dli.d.a().a(cnr.f).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lS = a("pink_concrete_powder", new dae(lC, dli.d.a().a(cnr.g).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lT = a("gray_concrete_powder", new dae(lD, dli.d.a().a(cnr.h).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lU = a("light_gray_concrete_powder", new dae(lE, dli.d.a().a(cnr.i).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lV = a("cyan_concrete_powder", new dae(lF, dli.d.a().a(cnr.j).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lW = a("purple_concrete_powder", new dae(lG, dli.d.a().a(cnr.k).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lX = a("blue_concrete_powder", new dae(lH, dli.d.a().a(cnr.l).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lY = a("brown_concrete_powder", new dae(lI, dli.d.a().a(cnr.m).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys lZ = a("green_concrete_powder", new dae(lJ, dli.d.a().a(cnr.n).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys ma = a("red_concrete_powder", new dae(lK, dli.d.a().a(cnr.o).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys mb = a("black_concrete_powder", new dae(lL, dli.d.a().a(cnr.p).a(dmk.c).d(0.5F).a(dge.j)));
-   public static final cys mc = a("kelp", new dcv(dli.d.a().a(eha.m).b().e().d().a(dge.q).a(ehb.b)));
-   public static final cys md = a("kelp_plant", new dcw(dli.d.a().a(eha.m).b().d().a(dge.q).a(ehb.b)));
-   public static final cys me = a("dried_kelp_block", new cys(dli.d.a().a(eha.B).a(0.5F, 2.5F).a(dge.d)));
-   public static final cys mf = a("turtle_egg", new dhj(dli.d.a().a(eha.c).j().d(0.5F).a(dge.g).e().c().a(ehb.b)));
-   public static final cys mg = a("sniffer_egg", new dfz(dli.d.a().a(eha.C).d(0.5F).a(dge.g).c()));
-   public static final cys mh = a("dead_tube_coral_block", new cys(dli.d.a().a(eha.v).j().a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys mi = a("dead_brain_coral_block", new cys(dli.d.a().a(eha.v).j().a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys mj = a("dead_bubble_coral_block", new cys(dli.d.a().a(eha.v).j().a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys mk = a("dead_fire_coral_block", new cys(dli.d.a().a(eha.v).j().a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ml = a("dead_horn_coral_block", new cys(dli.d.a().a(eha.v).j().a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys mm = a("tube_coral_block", new dah(mh, dli.d.a().a(eha.z).a(dmk.b).m().a(1.5F, 6.0F).a(dge.r)));
-   public static final cys mn = a("brain_coral_block", new dah(mi, dli.d.a().a(eha.u).a(dmk.b).m().a(1.5F, 6.0F).a(dge.r)));
-   public static final cys mo = a("bubble_coral_block", new dah(mj, dli.d.a().a(eha.y).a(dmk.b).m().a(1.5F, 6.0F).a(dge.r)));
-   public static final cys mp = a("fire_coral_block", new dah(mk, dli.d.a().a(eha.C).a(dmk.b).m().a(1.5F, 6.0F).a(dge.r)));
-   public static final cys mq = a("horn_coral_block", new dah(ml, dli.d.a().a(eha.s).a(dmk.b).m().a(1.5F, 6.0F).a(dge.r)));
-   public static final cys mr = a("dead_tube_coral", new cyb(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys ms = a("dead_brain_coral", new cyb(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mt = a("dead_bubble_coral", new cyb(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mu = a("dead_fire_coral", new cyb(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mv = a("dead_horn_coral", new cyb(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mw = a("tube_coral", new daj(mr, dli.d.a().a(eha.z).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mx = a("brain_coral", new daj(ms, dli.d.a().a(eha.u).b().d().a(dge.q).a(ehb.b)));
-   public static final cys my = a("bubble_coral", new daj(mt, dli.d.a().a(eha.y).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mz = a("fire_coral", new daj(mu, dli.d.a().a(eha.C).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mA = a("horn_coral", new daj(mv, dli.d.a().a(eha.s).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mB = a("dead_tube_coral_fan", new cya(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mC = a("dead_brain_coral_fan", new cya(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mD = a("dead_bubble_coral_fan", new cya(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mE = a("dead_fire_coral_fan", new cya(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mF = a("dead_horn_coral_fan", new cya(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d()));
-   public static final cys mG = a("tube_coral_fan", new dai(mB, dli.d.a().a(eha.z).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mH = a("brain_coral_fan", new dai(mC, dli.d.a().a(eha.u).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mI = a("bubble_coral_fan", new dai(mD, dli.d.a().a(eha.y).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mJ = a("fire_coral_fan", new dai(mE, dli.d.a().a(eha.C).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mK = a("horn_coral_fan", new dai(mF, dli.d.a().a(eha.s).b().d().a(dge.q).a(ehb.b)));
-   public static final cys mL = a("dead_tube_coral_wall_fan", new cyd(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d().a(mB)));
-   public static final cys mM = a("dead_brain_coral_wall_fan", new cyd(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d().a(mC)));
-   public static final cys mN = a("dead_bubble_coral_wall_fan", new cyd(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d().a(mD)));
-   public static final cys mO = a("dead_fire_coral_wall_fan", new cyd(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d().a(mE)));
-   public static final cys mP = a("dead_horn_coral_wall_fan", new cyd(dli.d.a().a(eha.v).j().a(dmk.b).m().b().d().a(mF)));
-   public static final cys mQ = a("tube_coral_wall_fan", new dak(mL, dli.d.a().a(eha.z).b().d().a(dge.q).a(mG).a(ehb.b)));
-   public static final cys mR = a("brain_coral_wall_fan", new dak(mM, dli.d.a().a(eha.u).b().d().a(dge.q).a(mH).a(ehb.b)));
-   public static final cys mS = a("bubble_coral_wall_fan", new dak(mN, dli.d.a().a(eha.y).b().d().a(dge.q).a(mI).a(ehb.b)));
-   public static final cys mT = a("fire_coral_wall_fan", new dak(mO, dli.d.a().a(eha.C).b().d().a(dge.q).a(mJ).a(ehb.b)));
-   public static final cys mU = a("horn_coral_wall_fan", new dak(mP, dli.d.a().a(eha.s).b().d().a(dge.q).a(mK).a(ehb.b)));
-   public static final cys mV = a("sea_pickle", new dfo(dli.d.a().a(eha.B).a($$0x -> dfo.m($$0x) ? 0 : 3 + 3 * $$0x.c(dfo.c)).a(dge.o).c().a(ehb.b)));
-   public static final cys mW = a("blue_ice", new dci(dli.d.a().a(eha.f).d(2.8F).a(0.989F).a(dge.h)));
-   public static final cys mX = a("conduit", new daf(dli.d.a().a(eha.F).j().a(dmk.d).d(3.0F).a($$0x -> 15).c()));
-   public static final cys mY = a("bamboo_sapling", new cxv(dli.d.a().a(eha.n).j().e().d().b().d(1.0F).a(dge.t).a(dli.c.b).h().a(ehb.b)));
-   public static final cys mZ = a("bamboo", new cxw(dli.d.a().a(eha.h).j().e().d().d(1.0F).a(dge.s).c().f().a(dli.c.b).h().a(ehb.b).a(cyu::b)));
-   public static final cys na = a("potted_bamboo", a(mZ));
-   public static final cys nb = a("void_air", new cxp(dli.d.a().o().b().g().l()));
-   public static final cys nc = a("cave_air", new cxp(dli.d.a().o().b().g().l()));
-   public static final cys nd = a("bubble_column", new cyy(dli.d.a().a(eha.m).o().b().g().a(ehb.b).i().a(dge.a)));
-   public static final cys ne = a("polished_granite_stairs", b(d));
-   public static final cys nf = a("smooth_red_sandstone_stairs", b(jU));
-   public static final cys ng = a("mossy_stone_brick_stairs", b(eI));
-   public static final cys nh = a("polished_diorite_stairs", b(f));
-   public static final cys ni = a("mossy_cobblestone_stairs", b(cn));
-   public static final cys nj = a("end_stone_brick_stairs", b(kz));
-   public static final cys nk = a("stone_stairs", b(b));
-   public static final cys nl = a("smooth_sandstone_stairs", b(jS));
-   public static final cys nm = a("smooth_quartz_stairs", b(jT));
-   public static final cys nn = a("granite_stairs", b(c));
-   public static final cys no = a("andesite_stairs", b(g));
-   public static final cys np = a("red_nether_brick_stairs", b(kL));
-   public static final cys nq = a("polished_andesite_stairs", b(h));
-   public static final cys nr = a("diorite_stairs", b(e));
-   public static final cys ns = a("polished_granite_slab", new dfu(dli.d.b(d)));
-   public static final cys nt = a("smooth_red_sandstone_slab", new dfu(dli.d.b(jU)));
-   public static final cys nu = a("mossy_stone_brick_slab", new dfu(dli.d.b(eI)));
-   public static final cys nv = a("polished_diorite_slab", new dfu(dli.d.b(f)));
-   public static final cys nw = a("mossy_cobblestone_slab", new dfu(dli.d.b(cn)));
-   public static final cys nx = a("end_stone_brick_slab", new dfu(dli.d.b(kz)));
-   public static final cys ny = a("smooth_sandstone_slab", new dfu(dli.d.b(jS)));
-   public static final cys nz = a("smooth_quartz_slab", new dfu(dli.d.b(jT)));
-   public static final cys nA = a("granite_slab", new dfu(dli.d.b(c)));
-   public static final cys nB = a("andesite_slab", new dfu(dli.d.b(g)));
-   public static final cys nC = a("red_nether_brick_slab", new dfu(dli.d.b(kL)));
-   public static final cys nD = a("polished_andesite_slab", new dfu(dli.d.b(h)));
-   public static final cys nE = a("diorite_slab", new dfu(dli.d.b(e)));
-   public static final cys nF = a("brick_wall", new dho(dli.d.b(cj).j()));
-   public static final cys nG = a("prismarine_wall", new dho(dli.d.b(hZ).j()));
-   public static final cys nH = a("red_sandstone_wall", new dho(dli.d.b(jp).j()));
-   public static final cys nI = a("mossy_stone_brick_wall", new dho(dli.d.b(eI).j()));
-   public static final cys nJ = a("granite_wall", new dho(dli.d.b(c).j()));
-   public static final cys nK = a("stone_brick_wall", new dho(dli.d.b(eH).j()));
-   public static final cys nL = a("mud_brick_wall", new dho(dli.d.b(eM).j()));
-   public static final cys nM = a("nether_brick_wall", new dho(dli.d.b(fn).j()));
-   public static final cys nN = a("andesite_wall", new dho(dli.d.b(g).j()));
-   public static final cys nO = a("red_nether_brick_wall", new dho(dli.d.b(kL).j()));
-   public static final cys nP = a("sandstone_wall", new dho(dli.d.b(aV).j()));
-   public static final cys nQ = a("end_stone_brick_wall", new dho(dli.d.b(kz).j()));
-   public static final cys nR = a("diorite_wall", new dho(dli.d.b(e).j()));
-   public static final cys nS = a("scaffolding", new dfg(dli.d.a().a(eha.c).b().a(dge.u).f().a(cyu::a).a(ehb.b).a(cyu::b)));
-   public static final cys nT = a("loom", new ddj(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys nU = a("barrel", new cxy(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys nV = a("smoker", new dfy(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F).a(a(13))));
-   public static final cys nW = a("blast_furnace", new cyr(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F).a(a(13))));
-   public static final cys nX = a("cartography_table", new czl(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys nY = a("fletching_table", new dbt(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys nZ = a("grindstone", new dce(dli.d.a().a(eha.g).m().a(2.0F, 6.0F).a(dge.f).a(ehb.c)));
-   public static final cys oa = a("lectern", new ddc(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys ob = a("smithing_table", new dfx(dli.d.a().a(eha.n).a(dmk.e).d(2.5F).a(dge.b).h()));
-   public static final cys oc = a("stonecutter", new dgo(dli.d.a().a(eha.l).a(dmk.b).m().d(3.5F)));
-   public static final cys od = a("bell", new cyo(dli.d.a().a(eha.E).j().m().d(5.0F).a(dge.n).a(ehb.b)));
-   public static final cys oe = a("lantern", new dcy(dli.d.a().a(eha.g).j().m().d(3.5F).a(dge.A).a($$0x -> 15).c().a(ehb.b)));
-   public static final cys of = a("soul_lantern", new dcy(dli.d.a().a(eha.g).j().m().d(3.5F).a(dge.A).a($$0x -> 10).c().a(ehb.b)));
-   public static final cys og = a("campfire", new czg(true, 1, dli.d.a().a(eha.I).a(dmk.e).d(2.0F).a(dge.b).a(a(15)).c().h()));
-   public static final cys oh = a("soul_campfire", new czg(false, 2, dli.d.a().a(eha.I).a(dmk.e).d(2.0F).a(dge.b).a(a(10)).c().h()));
-   public static final cys oi = a("sweet_berry_bush", new dgu(dli.d.a().a(eha.h).e().b().a(dge.v).a(ehb.b)));
-   public static final cys oj = a("warped_stem", a(eha.ae));
-   public static final cys ok = a("stripped_warped_stem", a(eha.ae));
-   public static final cys ol = a("warped_hyphae", new dfd(dli.d.a().a(eha.af).a(dmk.e).d(2.0F).a(dge.B)));
-   public static final cys om = a("stripped_warped_hyphae", new dfd(dli.d.a().a(eha.af).a(dmk.e).d(2.0F).a(dge.B)));
-   public static final cys on = a("warped_nylium", new deb(dli.d.a().a(eha.ad).a(dmk.b).m().d(0.4F).a(dge.C).e()));
-   public static final cys oo = a("warped_fungus", new dby(qr.d, on, dli.d.a().a(eha.x).d().b().a(dge.D).a(ehb.b)));
-   public static final cys op = a("warped_wart_block", new cys(dli.d.a().a(eha.ag).d(1.0F).a(dge.L)));
-   public static final cys oq = a("warped_roots", new dfc(dli.d.a().a(eha.x).o().b().d().a(dge.E).a(dli.c.b).a(ehb.b)));
-   public static final cys or = a("nether_sprouts", new ddw(dli.d.a().a(eha.x).o().b().d().a(dge.O).a(dli.c.b).a(ehb.b)));
-   public static final cys os = a("crimson_stem", a(eha.ab));
-   public static final cys ot = a("stripped_crimson_stem", a(eha.ab));
-   public static final cys ou = a("crimson_hyphae", new dfd(dli.d.a().a(eha.ac).a(dmk.e).d(2.0F).a(dge.B)));
-   public static final cys ov = a("stripped_crimson_hyphae", new dfd(dli.d.a().a(eha.ac).a(dmk.e).d(2.0F).a(dge.B)));
-   public static final cys ow = a("crimson_nylium", new deb(dli.d.a().a(eha.aa).a(dmk.b).m().d(0.4F).a(dge.C).e()));
-   public static final cys ox = a("crimson_fungus", new dby(qr.b, ow, dli.d.a().a(eha.J).d().b().a(dge.D).a(ehb.b)));
-   public static final cys oy = a("shroomlight", new cys(dli.d.a().a(eha.C).d(1.0F).a(dge.F).a($$0x -> 15)));
-   public static final cys oz = a("weeping_vines", new die(dli.d.a().a(eha.J).e().b().d().a(dge.G).a(ehb.b)));
-   public static final cys oA = a("weeping_vines_plant", new dif(dli.d.a().a(eha.J).b().d().a(dge.G).a(ehb.b)));
-   public static final cys oB = a("twisting_vines", new dhk(dli.d.a().a(eha.x).e().b().d().a(dge.G).a(ehb.b)));
-   public static final cys oC = a("twisting_vines_plant", new dhl(dli.d.a().a(eha.x).b().d().a(dge.G).a(ehb.b)));
-   public static final cys oD = a("crimson_roots", new dfc(dli.d.a().a(eha.J).o().b().d().a(dge.E).a(dli.c.b).a(ehb.b)));
-   public static final cys oE = a("crimson_planks", new cys(dli.d.a().a(eha.ab).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oF = a("warped_planks", new cys(dli.d.a().a(eha.ae).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oG = a("crimson_slab", new dfu(dli.d.a().a(oE.w()).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oH = a("warped_slab", new dfu(dli.d.a().a(oF.w()).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oI = a("crimson_pressure_plate", new deo(dly.n, dli.d.a().a(oE.w()).j().a(dmk.e).b().d(0.5F).a(ehb.b)));
-   public static final cys oJ = a("warped_pressure_plate", new deo(dly.o, dli.d.a().a(oF.w()).j().a(dmk.e).b().d(0.5F).a(ehb.b)));
-   public static final cys oK = a("crimson_fence", new dbq(dli.d.a().a(oE.w()).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oL = a("warped_fence", new dbq(dli.d.a().a(oF.w()).a(dmk.e).a(2.0F, 3.0F).a(dge.aT)));
-   public static final cys oM = a("crimson_trapdoor", new dhe(dly.n, dli.d.a().a(oE.w()).a(dmk.e).d(3.0F).c().a(cyu::a)));
-   public static final cys oN = a("warped_trapdoor", new dhe(dly.o, dli.d.a().a(oF.w()).a(dmk.e).d(3.0F).c().a(cyu::a)));
-   public static final cys oO = a("crimson_fence_gate", new dbr(dmw.i, dli.d.a().a(oE.w()).j().a(dmk.e).a(2.0F, 3.0F)));
-   public static final cys oP = a("warped_fence_gate", new dbr(dmw.j, dli.d.a().a(oF.w()).j().a(dmk.e).a(2.0F, 3.0F)));
-   public static final cys oQ = a("crimson_stairs", b(oE));
-   public static final cys oR = a("warped_stairs", b(oF));
-   public static final cys oS = a("crimson_button", a(dly.n));
-   public static final cys oT = a("warped_button", a(dly.o));
-   public static final cys oU = a("crimson_door", new day(dly.n, dli.d.a().a(oE.w()).a(dmk.e).d(3.0F).c().a(ehb.b)));
-   public static final cys oV = a("warped_door", new day(dly.o, dli.d.a().a(oF.w()).a(dmk.e).d(3.0F).c().a(ehb.b)));
-   public static final cys oW = a("crimson_sign", new dgm(dmw.i, dli.d.a().a(oE.w()).a(dmk.e).j().b().d(1.0F)));
-   public static final cys oX = a("warped_sign", new dgm(dmw.j, dli.d.a().a(oF.w()).a(dmk.e).j().b().d(1.0F)));
-   public static final cys oY = a("crimson_wall_sign", new dhq(dmw.i, dli.d.a().a(oE.w()).a(dmk.e).j().b().d(1.0F).a(oW)));
-   public static final cys oZ = a("warped_wall_sign", new dhq(dmw.j, dli.d.a().a(oF.w()).a(dmk.e).j().b().d(1.0F).a(oX)));
-   public static final cys pa = a("structure_block", new dgp(dli.d.a().a(eha.w).m().a(-1.0F, 3600000.0F).g()));
-   public static final cys pb = a("jigsaw", new dct(dli.d.a().a(eha.w).m().a(-1.0F, 3600000.0F).g()));
-   public static final cys pc = a("composter", new dad(dli.d.a().a(eha.n).a(dmk.e).d(0.6F).a(dge.b).h()));
-   public static final cys pd = a("target", new dgy(dli.d.a().a(eha.o).d(0.5F).a(dge.d)));
-   public static final cys pe = a("bee_nest", new cym(dli.d.a().a(eha.s).a(dmk.e).d(0.3F).a(dge.b).h()));
-   public static final cys pf = a("beehive", new cym(dli.d.a().a(eha.n).a(dmk.e).d(0.6F).a(dge.b).h()));
-   public static final cys pg = a("honey_block", new dcl(dli.d.a().a(eha.p).b(0.4F).c(0.5F).c().a(dge.p)));
-   public static final cys ph = a("honeycomb_block", new cys(dli.d.a().a(eha.p).d(0.6F).a(dge.r)));
-   public static final cys pi = a("netherite_block", new cys(dli.d.a().a(eha.D).m().a(50.0F, 1200.0F).a(dge.R)));
-   public static final cys pj = a("ancient_debris", new cys(dli.d.a().a(eha.D).m().a(30.0F, 1200.0F).a(dge.S)));
-   public static final cys pk = a("crying_obsidian", new dap(dli.d.a().a(eha.D).a(dmk.b).m().a(50.0F, 1200.0F).a($$0x -> 10)));
-   public static final cys pl = a("respawn_anchor", new dez(dli.d.a().a(eha.D).a(dmk.b).m().a(50.0F, 1200.0F).a($$0x -> dez.a($$0x, 15))));
-   public static final cys pm = a("potted_crimson_fungus", a(ox));
-   public static final cys pn = a("potted_warped_fungus", a(oo));
-   public static final cys po = a("potted_crimson_roots", a(oD));
-   public static final cys pp = a("potted_warped_roots", a(oq));
-   public static final cys pq = a("lodestone", new cys(dli.d.a().a(eha.g).m().d(3.5F).a(dge.T).a(ehb.c)));
-   public static final cys pr = a("blackstone", new cys(dli.d.a().a(eha.D).a(dmk.b).m().a(1.5F, 6.0F)));
-   public static final cys ps = a("blackstone_stairs", b(pr));
-   public static final cys pt = a("blackstone_wall", new dho(dli.d.b(pr).j()));
-   public static final cys pu = a("blackstone_slab", new dfu(dli.d.b(pr).a(2.0F, 6.0F)));
-   public static final cys pv = a("polished_blackstone", new cys(dli.d.b(pr).a(2.0F, 6.0F)));
-   public static final cys pw = a("polished_blackstone_bricks", new cys(dli.d.b(pv).a(1.5F, 6.0F)));
-   public static final cys px = a("cracked_polished_blackstone_bricks", new cys(dli.d.b(pw)));
-   public static final cys py = a("chiseled_polished_blackstone", new cys(dli.d.b(pv).a(1.5F, 6.0F)));
-   public static final cys pz = a("polished_blackstone_brick_slab", new dfu(dli.d.b(pw).a(2.0F, 6.0F)));
-   public static final cys pA = a("polished_blackstone_brick_stairs", b(pw));
-   public static final cys pB = a("polished_blackstone_brick_wall", new dho(dli.d.b(pw).j()));
-   public static final cys pC = a("gilded_blackstone", new cys(dli.d.b(pr).a(dge.W)));
-   public static final cys pD = a("polished_blackstone_stairs", b(pv));
-   public static final cys pE = a("polished_blackstone_slab", new dfu(dli.d.b(pv)));
-   public static final cys pF = a("polished_blackstone_pressure_plate", new deo(dly.f, dli.d.a().a(eha.D).j().a(dmk.b).m().b().d(0.5F).a(ehb.b)));
-   public static final cys pG = a("polished_blackstone_button", b());
-   public static final cys pH = a("polished_blackstone_wall", new dho(dli.d.b(pv).j()));
-   public static final cys pI = a("chiseled_nether_bricks", new cys(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys pJ = a("cracked_nether_bricks", new cys(dli.d.a().a(eha.J).a(dmk.b).m().a(2.0F, 6.0F).a(dge.N)));
-   public static final cys pK = a("quartz_bricks", new cys(dli.d.b(hd)));
-   public static final cys pL = a("candle", b(eha.c));
-   public static final cys pM = a("white_candle", b(eha.d));
-   public static final cys pN = a("orange_candle", b(eha.p));
-   public static final cys pO = a("magenta_candle", b(eha.q));
-   public static final cys pP = a("light_blue_candle", b(eha.r));
-   public static final cys pQ = a("yellow_candle", b(eha.s));
-   public static final cys pR = a("lime_candle", b(eha.t));
-   public static final cys pS = a("pink_candle", b(eha.u));
-   public static final cys pT = a("gray_candle", b(eha.v));
-   public static final cys pU = a("light_gray_candle", b(eha.w));
-   public static final cys pV = a("cyan_candle", b(eha.x));
-   public static final cys pW = a("purple_candle", b(eha.y));
-   public static final cys pX = a("blue_candle", b(eha.z));
-   public static final cys pY = a("brown_candle", b(eha.A));
-   public static final cys pZ = a("green_candle", b(eha.B));
-   public static final cys qa = a("red_candle", b(eha.C));
-   public static final cys qb = a("black_candle", b(eha.D));
-   public static final cys qc = a("candle_cake", new czi(pL, dli.d.b(eg).a(a(3))));
-   public static final cys qd = a("white_candle_cake", new czi(pM, dli.d.b(qc)));
-   public static final cys qe = a("orange_candle_cake", new czi(pN, dli.d.b(qc)));
-   public static final cys qf = a("magenta_candle_cake", new czi(pO, dli.d.b(qc)));
-   public static final cys qg = a("light_blue_candle_cake", new czi(pP, dli.d.b(qc)));
-   public static final cys qh = a("yellow_candle_cake", new czi(pQ, dli.d.b(qc)));
-   public static final cys qi = a("lime_candle_cake", new czi(pR, dli.d.b(qc)));
-   public static final cys qj = a("pink_candle_cake", new czi(pS, dli.d.b(qc)));
-   public static final cys qk = a("gray_candle_cake", new czi(pT, dli.d.b(qc)));
-   public static final cys ql = a("light_gray_candle_cake", new czi(pU, dli.d.b(qc)));
-   public static final cys qm = a("cyan_candle_cake", new czi(pV, dli.d.b(qc)));
-   public static final cys qn = a("purple_candle_cake", new czi(pW, dli.d.b(qc)));
-   public static final cys qo = a("blue_candle_cake", new czi(pX, dli.d.b(qc)));
-   public static final cys qp = a("brown_candle_cake", new czi(pY, dli.d.b(qc)));
-   public static final cys qq = a("green_candle_cake", new czi(pZ, dli.d.b(qc)));
-   public static final cys qr = a("red_candle_cake", new czi(qa, dli.d.b(qc)));
-   public static final cys qs = a("black_candle_cake", new czi(qb, dli.d.b(qc)));
-   public static final cys qt = a("amethyst_block", new cxq(dli.d.a().a(eha.y).d(1.5F).a(dge.Y).m()));
-   public static final cys qu = a("budding_amethyst", new cza(dli.d.a().a(eha.y).e().d(1.5F).a(dge.Y).m().a(ehb.b)));
-   public static final cys qv = a("amethyst_cluster", new cxr(7.0F, 3.0F, dli.d.a().a(eha.y).j().c().a(dge.Z).d(1.5F).a($$0x -> 5).a(ehb.b)));
-   public static final cys qw = a("large_amethyst_bud", new cxr(5.0F, 3.0F, dli.d.b(qv).a(dge.ab).a($$0x -> 4)));
-   public static final cys qx = a("medium_amethyst_bud", new cxr(4.0F, 3.0F, dli.d.b(qv).a(dge.ac).a($$0x -> 2)));
-   public static final cys qy = a("small_amethyst_bud", new cxr(3.0F, 4.0F, dli.d.b(qv).a(dge.aa).a($$0x -> 1)));
-   public static final cys qz = a("tuff", new cys(dli.d.a().a(eha.R).a(dmk.b).a(dge.ad).m().a(1.5F, 6.0F)));
-   public static final cys qA = a("tuff_slab", new dfu(dli.d.b(qz).a(cjy.c)));
-   public static final cys qB = a("tuff_stairs", new dgl(qz.o(), dli.d.b(qz).a(cjy.c)));
-   public static final cys qC = a("tuff_wall", new dho(dli.d.b(qz).j().a(cjy.c)));
-   public static final cys qD = a("polished_tuff", new cys(dli.d.b(qz).a(dge.af).a(cjy.c)));
-   public static final cys qE = a("polished_tuff_slab", new dfu(dli.d.b(qD)));
-   public static final cys qF = a("polished_tuff_stairs", new dgl(qD.o(), dli.d.b(qD)));
-   public static final cys qG = a("polished_tuff_wall", new dho(dli.d.b(qD).j()));
-   public static final cys qH = a("chiseled_tuff", new cys(dli.d.b(qz).a(cjy.c)));
-   public static final cys qI = a("tuff_bricks", new cys(dli.d.b(qz).a(dge.ae).a(cjy.c)));
-   public static final cys qJ = a("tuff_brick_slab", new dfu(dli.d.b(qI)));
-   public static final cys qK = a("tuff_brick_stairs", new dgl(qI.o(), dli.d.b(qI)));
-   public static final cys qL = a("tuff_brick_wall", new dho(dli.d.b(qI).j()));
-   public static final cys qM = a("chiseled_tuff_bricks", new cys(dli.d.b(qI)));
-   public static final cys qN = a("calcite", new cys(dli.d.a().a(eha.K).a(dmk.b).a(dge.ag).m().d(0.75F)));
-   public static final cys qO = a("tinted_glass", new dgz(dli.d.b(aQ).a(eha.v).c().a(cyu::a).a(cyu::b).b(cyu::b).c(cyu::b)));
-   public static final cys qP = a("powder_snow", new del(dli.d.a().a(eha.i).d(0.25F).a(dge.l).f().a(cyu::b)));
-   public static final cys qQ = a("sculk_sensor", new dfk(dli.d.a().a(eha.x).d(1.5F).a(dge.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dfk.m($$0x) == dmq.b)));
-   public static final cys qR = a("calibrated_sculk_sensor", new czf(dli.d.b(qQ)));
-   public static final cys qS = a("sculk", new dfi(dli.d.a().a(eha.D).d(0.2F).a(dge.aA)));
-   public static final cys qT = a("sculk_vein", new dfn(dli.d.a().a(eha.D).j().b().d(0.2F).a(dge.aB).a(ehb.b)));
-   public static final cys qU = a("sculk_catalyst", new dfj(dli.d.a().a(eha.D).a(3.0F, 3.0F).a(dge.az).a($$0x -> 6)));
-   public static final cys qV = a("sculk_shrieker", new dfl(dli.d.a().a(eha.D).a(3.0F, 3.0F).a(dge.aC)));
-   public static final cys qW = a("copper_block", new dhy(dhv.a.a, dli.d.a().a(eha.p).m().a(3.0F, 6.0F).a(dge.aj)));
-   public static final cys qX = a("exposed_copper", new dhy(dhv.a.b, dli.d.a((dli)qW).a(eha.S)));
-   public static final cys qY = a("weathered_copper", new dhy(dhv.a.c, dli.d.a((dli)qW).a(eha.ae)));
-   public static final cys qZ = a("oxidized_copper", new dhy(dhv.a.d, dli.d.a((dli)qW).a(eha.ad)));
-   public static final cys ra = a("copper_ore", new dbc(bky.a(0), dli.d.b(P)));
-   public static final cys rb = a("deepslate_copper_ore", new dbc(bky.a(0), dli.d.b(ra).a(eha.ah).a(4.5F, 3.0F).a(dge.aE)));
-   public static final cys rc = a("oxidized_cut_copper", new dhy(dhv.a.d, dli.d.a((dli)qZ)));
-   public static final cys rd = a("weathered_cut_copper", new dhy(dhv.a.c, dli.d.a((dli)qY)));
-   public static final cys re = a("exposed_cut_copper", new dhy(dhv.a.b, dli.d.a((dli)qX)));
-   public static final cys rf = a("cut_copper", new dhy(dhv.a.a, dli.d.a((dli)qW)));
-   public static final cys rg = a("oxidized_chiseled_copper", new dhy(dhv.a.d, dli.d.a((dli)qZ).a(cjy.c)));
-   public static final cys rh = a("weathered_chiseled_copper", new dhy(dhv.a.c, dli.d.a((dli)qY).a(cjy.c)));
-   public static final cys ri = a("exposed_chiseled_copper", new dhy(dhv.a.b, dli.d.a((dli)qX).a(cjy.c)));
-   public static final cys rj = a("chiseled_copper", new dhy(dhv.a.a, dli.d.a((dli)qW).a(cjy.c)));
-   public static final cys rk = a("waxed_oxidized_chiseled_copper", new cys(dli.d.a((dli)rg)));
-   public static final cys rl = a("waxed_weathered_chiseled_copper", new cys(dli.d.a((dli)rh)));
-   public static final cys rm = a("waxed_exposed_chiseled_copper", new cys(dli.d.a((dli)ri)));
-   public static final cys rn = a("waxed_chiseled_copper", new cys(dli.d.a((dli)rj)));
-   public static final cys ro = a("oxidized_cut_copper_stairs", new dib(dhv.a.d, rc.o(), dli.d.a((dli)rc)));
-   public static final cys rp = a("weathered_cut_copper_stairs", new dib(dhv.a.c, rd.o(), dli.d.a((dli)qY)));
-   public static final cys rq = a("exposed_cut_copper_stairs", new dib(dhv.a.b, re.o(), dli.d.a((dli)qX)));
-   public static final cys rr = a("cut_copper_stairs", new dib(dhv.a.a, rf.o(), dli.d.a((dli)qW)));
-   public static final cys rs = a("oxidized_cut_copper_slab", new dia(dhv.a.d, dli.d.a((dli)rc)));
-   public static final cys rt = a("weathered_cut_copper_slab", new dia(dhv.a.c, dli.d.a((dli)rd)));
-   public static final cys ru = a("exposed_cut_copper_slab", new dia(dhv.a.b, dli.d.a((dli)re)));
-   public static final cys rv = a("cut_copper_slab", new dia(dhv.a.a, dli.d.a((dli)rf)));
-   public static final cys rw = a("waxed_copper_block", new cys(dli.d.a((dli)qW)));
-   public static final cys rx = a("waxed_weathered_copper", new cys(dli.d.a((dli)qY)));
-   public static final cys ry = a("waxed_exposed_copper", new cys(dli.d.a((dli)qX)));
-   public static final cys rz = a("waxed_oxidized_copper", new cys(dli.d.a((dli)qZ)));
-   public static final cys rA = a("waxed_oxidized_cut_copper", new cys(dli.d.a((dli)qZ)));
-   public static final cys rB = a("waxed_weathered_cut_copper", new cys(dli.d.a((dli)qY)));
-   public static final cys rC = a("waxed_exposed_cut_copper", new cys(dli.d.a((dli)qX)));
-   public static final cys rD = a("waxed_cut_copper", new cys(dli.d.a((dli)qW)));
-   public static final cys rE = a("waxed_oxidized_cut_copper_stairs", c(rA));
-   public static final cys rF = a("waxed_weathered_cut_copper_stairs", c(rB));
-   public static final cys rG = a("waxed_exposed_cut_copper_stairs", c(rC));
-   public static final cys rH = a("waxed_cut_copper_stairs", c(rD));
-   public static final cys rI = a("waxed_oxidized_cut_copper_slab", new dfu(dli.d.a((dli)rA).m()));
-   public static final cys rJ = a("waxed_weathered_cut_copper_slab", new dfu(dli.d.a((dli)rB).m()));
-   public static final cys rK = a("waxed_exposed_cut_copper_slab", new dfu(dli.d.a((dli)rC).m()));
-   public static final cys rL = a("waxed_cut_copper_slab", new dfu(dli.d.a((dli)rD).m()));
-   public static final cys rM = a("copper_door", new dhx(dly.c, dhv.a.a, dli.d.a().a(qW.w()).a(3.0F, 6.0F).c().m().a(ehb.b).a(cjy.c)));
-   public static final cys rN = a("exposed_copper_door", new dhx(dly.c, dhv.a.b, dli.d.a((dli)rM).a(qX.w())));
-   public static final cys rO = a("oxidized_copper_door", new dhx(dly.c, dhv.a.d, dli.d.a((dli)rM).a(qZ.w())));
-   public static final cys rP = a("weathered_copper_door", new dhx(dly.c, dhv.a.c, dli.d.a((dli)rM).a(qY.w())));
-   public static final cys rQ = a("waxed_copper_door", new day(dly.c, dli.d.a((dli)rM)));
-   public static final cys rR = a("waxed_exposed_copper_door", new day(dly.c, dli.d.a((dli)rN)));
-   public static final cys rS = a("waxed_oxidized_copper_door", new day(dly.c, dli.d.a((dli)rO)));
-   public static final cys rT = a("waxed_weathered_copper_door", new day(dly.c, dli.d.a((dli)rP)));
-   public static final cys rU = a("copper_trapdoor", new dic(dly.c, dhv.a.a, dli.d.a().a(qW.w()).a(3.0F, 6.0F).m().c().a(cyu::a).a(cjy.c)));
-   public static final cys rV = a("exposed_copper_trapdoor", new dic(dly.c, dhv.a.b, dli.d.a((dli)rU).a(qX.w())));
-   public static final cys rW = a("oxidized_copper_trapdoor", new dic(dly.c, dhv.a.d, dli.d.a((dli)rU).a(qZ.w())));
-   public static final cys rX = a("weathered_copper_trapdoor", new dic(dly.c, dhv.a.c, dli.d.a((dli)rU).a(qY.w())));
-   public static final cys rY = a("waxed_copper_trapdoor", new dhe(dly.c, dli.d.a((dli)rU)));
-   public static final cys rZ = a("waxed_exposed_copper_trapdoor", new dhe(dly.c, dli.d.a((dli)rV)));
-   public static final cys sa = a("waxed_oxidized_copper_trapdoor", new dhe(dly.c, dli.d.a((dli)rW)));
-   public static final cys sb = a("waxed_weathered_copper_trapdoor", new dhe(dly.c, dli.d.a((dli)rX)));
-   public static final cys sc = a(
-      "copper_grate", new dhz(dhv.a.a, dli.d.a().a(3.0F, 6.0F).a(dge.al).a(eha.p).c().m().a(cyu::a).a(cyu::b).b(cyu::b).c(cyu::b).a(cjy.c))
-   );
-   public static final cys sd = a("exposed_copper_grate", new dhz(dhv.a.b, dli.d.a((dli)sc).a(eha.S)));
-   public static final cys se = a("weathered_copper_grate", new dhz(dhv.a.c, dli.d.a((dli)sc).a(eha.ae)));
-   public static final cys sf = a("oxidized_copper_grate", new dhz(dhv.a.d, dli.d.a((dli)sc).a(eha.ad)));
-   public static final cys sg = a("waxed_copper_grate", new dhu(dli.d.a((dli)sc)));
-   public static final cys sh = a("waxed_exposed_copper_grate", new dhu(dli.d.a((dli)sd)));
-   public static final cys si = a("waxed_weathered_copper_grate", new dhu(dli.d.a((dli)se)));
-   public static final cys sj = a("waxed_oxidized_copper_grate", new dhu(dli.d.a((dli)sf)));
-   public static final cys sk = a("copper_bulb", new dhw(dhv.a.a, dli.d.a().a(qW.w()).a(3.0F, 6.0F).a(dge.ak).m().a(cyu::b).a(a(15)).a(cjy.c)));
-   public static final cys sl = a("exposed_copper_bulb", new dhw(dhv.a.b, dli.d.a((dli)sk).a(eha.S).a(a(12))));
-   public static final cys sm = a("weathered_copper_bulb", new dhw(dhv.a.c, dli.d.a((dli)sk).a(eha.ae).a(a(8))));
-   public static final cys sn = a("oxidized_copper_bulb", new dhw(dhv.a.d, dli.d.a((dli)sk).a(eha.ad).a(a(4))));
-   public static final cys so = a("waxed_copper_bulb", new dag(dli.d.a((dli)sk)));
-   public static final cys sp = a("waxed_exposed_copper_bulb", new dag(dli.d.a((dli)sl)));
-   public static final cys sq = a("waxed_weathered_copper_bulb", new dag(dli.d.a((dli)sm)));
-   public static final cys sr = a("waxed_oxidized_copper_bulb", new dag(dli.d.a((dli)sn)));
-   public static final cys ss = a("lightning_rod", new ddg(dli.d.a().a(eha.p).j().m().a(3.0F, 6.0F).a(dge.aj).c()));
-   public static final cys st = a(
-      "pointed_dripstone", new dej(dli.d.a().a(eha.W).j().a(dmk.b).c().a(dge.ai).e().a(1.5F, 3.0F).f().a(dli.c.b).a(ehb.b).a(cyu::b))
-   );
-   public static final cys su = a("dripstone_block", new cys(dli.d.a().a(eha.W).a(dmk.b).a(dge.ah).m().a(1.5F, 1.0F)));
-   public static final cys sv = a("cave_vines", new czp(dli.d.a().a(eha.h).e().b().a(czo.h_(14)).d().a(dge.am).a(ehb.b)));
-   public static final cys sw = a("cave_vines_plant", new czq(dli.d.a().a(eha.h).b().a(czo.h_(14)).d().a(dge.am).a(ehb.b)));
-   public static final cys sx = a("spore_blossom", new dgh(dli.d.a().a(eha.h).d().b().a(dge.an).a(ehb.b)));
-   public static final cys sy = a("azalea", new cxu(dli.d.a().a(eha.h).k().d().a(dge.ao).c().a(ehb.b)));
-   public static final cys sz = a("flowering_azalea", new cxu(dli.d.a().a(eha.h).k().d().a(dge.ap).c().a(ehb.b)));
-   public static final cys sA = a("moss_carpet", new czj(dli.d.a().a(eha.B).d(0.1F).a(dge.aq).a(ehb.b)));
-   public static final cys sB = a("pink_petals", new dee(dli.d.a().a(eha.h).b().a(dge.ar).a(ehb.b)));
-   public static final cys sC = a("moss_block", new ddp(dli.d.a().a(eha.B).d(0.1F).a(dge.as).a(ehb.b)));
-   public static final cys sD = a("big_dripleaf", new cyp(dli.d.a().a(eha.h).k().d(0.1F).a(dge.at).a(ehb.b)));
-   public static final cys sE = a("big_dripleaf_stem", new cyq(dli.d.a().a(eha.h).b().d(0.1F).a(dge.at).a(ehb.b)));
-   public static final cys sF = a("small_dripleaf", new dfw(dli.d.a().a(eha.h).b().d().a(dge.au).a(dli.c.c).a(ehb.b)));
-   public static final cys sG = a("hanging_roots", new dcj(dli.d.a().a(eha.k).o().b().d().a(dge.aw).a(dli.c.b).h().a(ehb.b)));
-   public static final cys sH = a("rooted_dirt", new dfb(dli.d.a().a(eha.k).d(0.5F).a(dge.av)));
-   public static final cys sI = a("mud", new ddq(dli.d.b(j).a(eha.T).a(cyu::b).a(cyu::a).c(cyu::a).b(cyu::a).a(dge.aM)));
-   public static final cys sJ = a("deepslate", new dfd(dli.d.a().a(eha.ah).a(dmk.b).m().a(3.0F, 6.0F).a(dge.aE)));
-   public static final cys sK = a("cobbled_deepslate", new cys(dli.d.b(sJ).a(3.5F, 6.0F)));
-   public static final cys sL = a("cobbled_deepslate_stairs", b(sK));
-   public static final cys sM = a("cobbled_deepslate_slab", new dfu(dli.d.b(sK)));
-   public static final cys sN = a("cobbled_deepslate_wall", new dho(dli.d.b(sK).j()));
-   public static final cys sO = a("polished_deepslate", new cys(dli.d.b(sK).a(dge.aH)));
-   public static final cys sP = a("polished_deepslate_stairs", b(sO));
-   public static final cys sQ = a("polished_deepslate_slab", new dfu(dli.d.b(sO)));
-   public static final cys sR = a("polished_deepslate_wall", new dho(dli.d.b(sO).j()));
-   public static final cys sS = a("deepslate_tiles", new cys(dli.d.b(sK).a(dge.aG)));
-   public static final cys sT = a("deepslate_tile_stairs", b(sS));
-   public static final cys sU = a("deepslate_tile_slab", new dfu(dli.d.b(sS)));
-   public static final cys sV = a("deepslate_tile_wall", new dho(dli.d.b(sS).j()));
-   public static final cys sW = a("deepslate_bricks", new cys(dli.d.b(sK).a(dge.aF)));
-   public static final cys sX = a("deepslate_brick_stairs", b(sW));
-   public static final cys sY = a("deepslate_brick_slab", new dfu(dli.d.b(sW)));
-   public static final cys sZ = a("deepslate_brick_wall", new dho(dli.d.b(sW).j()));
-   public static final cys ta = a("chiseled_deepslate", new cys(dli.d.b(sK).a(dge.aF)));
-   public static final cys tb = a("cracked_deepslate_bricks", new cys(dli.d.b(sW)));
-   public static final cys tc = a("cracked_deepslate_tiles", new cys(dli.d.b(sS)));
-   public static final cys td = a("infested_deepslate", new dcr(sJ, dli.d.a().a(eha.ah).a(dge.aE)));
-   public static final cys te = a("smooth_basalt", new cys(dli.d.b(dY)));
-   public static final cys tf = a("raw_iron_block", new cys(dli.d.a().a(eha.ai).a(dmk.b).m().a(5.0F, 6.0F)));
-   public static final cys tg = a("raw_copper_block", new cys(dli.d.a().a(eha.p).a(dmk.b).m().a(5.0F, 6.0F)));
-   public static final cys th = a("raw_gold_block", new cys(dli.d.a().a(eha.E).a(dmk.b).m().a(5.0F, 6.0F)));
-   public static final cys ti = a("potted_azalea_bush", a(sy));
-   public static final cys tj = a("potted_flowering_azalea_bush", a(sz));
-   public static final cys tk = a("ochre_froglight", new dfd(dli.d.a().a(eha.c).d(0.3F).a($$0x -> 15).a(dge.aI)));
-   public static final cys tl = a("verdant_froglight", new dfd(dli.d.a().a(eha.aj).d(0.3F).a($$0x -> 15).a(dge.aI)));
-   public static final cys tm = a("pearlescent_froglight", new dfd(dli.d.a().a(eha.u).d(0.3F).a($$0x -> 15).a(dge.aI)));
-   public static final cys tn = a("frogspawn", new dbw(dli.d.a().a(eha.m).d().c().b().a(dge.aJ).a(ehb.b)));
-   public static final cys to = a("reinforced_deepslate", new cys(dli.d.a().a(eha.ah).a(dmk.b).a(dge.aE).a(55.0F, 1200.0F)));
-   public static final cys tp = a("decorated_pot", new das(dli.d.a().a(eha.Y).a(0.0F, 0.0F).a(ehb.b).c()));
-   public static final cys tq = a("crafter", new dal(dli.d.a().a(eha.l).a(1.5F, 3.5F).a(cjy.c)));
-   public static final cys tr = a(
-      "trial_spawner", new dhg(dli.d.a().a(eha.l).a(dmk.b).m().a($$0x -> $$0x.c(dhg.b).a()).d(50.0F).a(dge.bd).c(cyu::b).c().a(cjy.c))
-   );
+public abstract class cyu extends czf implements dgf {
+   protected static final epo a = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   protected static final epo b = czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final dmv c = dmu.C;
+   private final boolean d;
 
-   private static ToIntFunction<dlj> a(int $$0) {
-      return $$1 -> $$1.c(dlz.r) ? $$0 : 0;
+   public static boolean a(cwe $$0, ib $$1) {
+      return g($$0.a_($$1));
    }
 
-   private static Boolean a(dlj $$0, cux $$1, hz $$2, bnw<?> $$3) {
-      return false;
+   public static boolean g(dme $$0) {
+      return $$0.a(aue.N) && $$0.b() instanceof cyu;
    }
 
-   private static Boolean b(dlj $$0, cux $$1, hz $$2, bnw<?> $$3) {
-      return true;
+   protected cyu(boolean $$0, dmd.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   private static Boolean c(dlj $$0, cux $$1, hz $$2, bnw<?> $$3) {
-      return $$3 == bnw.as || $$3 == bnw.av;
+   @Override
+   protected abstract MapCodec<? extends cyu> a();
+
+   public boolean b() {
+      return this.d;
    }
 
-   private static cys a(cnr $$0) {
-      return new cyl($$0, dli.d.a().a($$1 -> $$1.c(cyl.b) == dlw.b ? $$0.e() : eha.d).a(dge.b).d(0.2F).c().h().a(ehb.b));
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      dni $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
+      return $$4 != null && $$4.b() ? b : a;
    }
 
-   private static cys a(eha $$0, eha $$1) {
-      return new dfd(dli.d.a().a($$2 -> $$2.c(dfd.i) == ie.a.b ? $$0 : $$1).a(dmk.e).d(2.0F).a(dge.b).h());
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return c($$1, $$2.d());
    }
 
-   private static cys a(eha $$0, eha $$1, dge $$2) {
-      return new dfd(dli.d.a().a($$2x -> $$2x.c(dfd.i) == ie.a.b ? $$0 : $$1).a(dmk.e).d(2.0F).a($$2).h());
+   @Override
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$0, $$1, $$2, $$4);
+      }
    }
 
-   private static cys a(eha $$0) {
-      return new dfd(dli.d.a().a($$1 -> $$0).a(dmk.e).d(2.0F).a(dge.B));
+   protected dme a(dme $$0, cwe $$1, ib $$2, boolean $$3) {
+      $$0 = this.a($$1, $$2, $$0, true);
+      if (this.d) {
+         $$1.a($$0, $$2, this, $$2, $$3);
+      }
+
+      return $$0;
    }
 
-   private static boolean a(dlj $$0, cux $$1, hz $$2) {
-      return true;
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if (!$$1.B && $$1.a_($$2).a(this)) {
+         dni $$6 = $$0.c(this.c());
+         if (a($$2, $$1, $$6)) {
+            c($$0, $$1, $$2);
+            $$1.a($$2, $$5);
+         } else {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
    }
 
-   private static boolean b(dlj $$0, cux $$1, hz $$2) {
-      return false;
+   private static boolean a(ib $$0, cwe $$1, dni $$2) {
+      if (!c($$1, $$0.d())) {
+         return true;
+      } else {
+         switch ($$2) {
+            case c:
+               return !c($$1, $$0.h());
+            case d:
+               return !c($$1, $$0.g());
+            case e:
+               return !c($$1, $$0.e());
+            case f:
+               return !c($$1, $$0.f());
+            default:
+               return false;
+         }
+      }
    }
 
-   private static cys b(cnr $$0) {
-      return new dgj($$0, dli.d.a().a($$0).a(dmk.d).d(0.3F).a(dge.h).c().a(cyu::a).a(cyu::b).b(cyu::b).c(cyu::b));
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3) {
    }
 
-   private static cys a(dge $$0) {
-      return new ddb(dli.d.a().a(eha.h).d(0.2F).e().a($$0).c().a(cyu::c).b(cyu::b).c(cyu::b).h().a(ehb.b).a(cyu::b));
+   protected dme a(cwe $$0, ib $$1, dme $$2, boolean $$3) {
+      if ($$0.B) {
+         return $$2;
+      } else {
+         dni $$4 = $$2.c(this.c());
+         return new dfe($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
+      }
    }
 
-   private static cys a(@Nullable cnr $$0, eha $$1) {
-      return new dfq($$0, dli.d.a().a($$1).j().d(2.0F).f().c().b(ts).c(ts).a(ehb.b));
-   }
-
-   private static cys a(boolean $$0) {
-      dli.f $$1 = ($$0x, $$1x, $$2) -> !$$0x.c(dlc.c);
-      return new dlc($$0, dli.d.a().a(eha.l).d(1.5F).a(cyu::b).b($$1).c($$1).a(ehb.c));
-   }
-
-   private static cys a(dly $$0) {
-      return new czc($$0, 30, dli.d.a().b().d(0.5F).a(ehb.b));
-   }
-
-   private static cys b() {
-      return new czc(dly.e, 20, dli.d.a().b().d(0.5F).a(ehb.b));
-   }
-
-   private static cys a(cys $$0) {
-      return new dbv($$0, dli.d.a().d().c().a(ehb.b));
-   }
-
-   private static cys b(eha $$0) {
-      return new czh(dli.d.a().a($$0).c().d(0.1F).a(dge.X).a(czh.i).a(ehb.b));
-   }
-
-   @Deprecated
-   private static cys b(cys $$0) {
-      return new dgl($$0.o(), dli.d.b($$0));
-   }
-
-   private static cys c(cys $$0) {
-      return new dgl($$0.o(), dli.d.a((dli)$$0));
-   }
-
-   public static cys a(String $$0, cys $$1) {
-      return iv.a(kf.e, $$0, $$1);
-   }
-
-   public static cys a(aix<cys> $$0, cys $$1) {
-      return iv.a(kf.e, $$0, $$1);
-   }
-
-   public static void a() {
-      cys.q.forEach(dli.a::a);
-   }
-
-   static {
-      for (cys $$0 : kf.e) {
-         UnmodifiableIterator var2 = $$0.n().a().iterator();
-
-         while (var2.hasNext()) {
-            dlj $$1 = (dlj)var2.next();
-            cys.q.b($$1);
-            $$1.a();
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$4) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$0.c(this.c()).b()) {
+            $$1.a($$2.c(), this);
          }
 
-         $$0.v();
+         if (this.d) {
+            $$1.a($$2, this);
+            $$1.a($$2.d(), this);
+         }
       }
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      ehr $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ehs.c;
+      dme $$3 = super.o();
+      ih $$4 = $$0.g();
+      boolean $$5 = $$4 == ih.f || $$4 == ih.e;
+      return $$3.a(this.c(), $$5 ? dni.b : dni.a).a(c, Boolean.valueOf($$2));
+   }
+
+   public abstract dnh<dni> c();
+
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
    }
 }

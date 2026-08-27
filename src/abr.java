@@ -1,57 +1,29 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public record abr(int b, float c) implements xz<aai> {
+   public static final xq<us, abr> a = xz.a(abr::a, abr::new);
 
-public class abr implements xx<aag> {
-   public static final xo<vb, abr> a = xx.a(abr::a, abr::new);
-   private final int b;
-   private final int c;
-   private final abq d;
-   private final abv e;
-
-   public abr(dnq $$0, egl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cuy $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new abq($$0);
-      this.e = new abv($$4, $$1, $$2, $$3);
+   public abr(box $$0) {
+      this($$0.aj(), $$0.eD());
    }
 
-   private abr(vb $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new abq($$0, this.b, this.c);
-      this.e = new abv($$0, this.b, this.c);
+   private abr(us $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(vb $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(us $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public xz<abr> a() {
-      return aeq.J;
+   public yb<abr> a() {
+      return aet.I;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public abq f() {
-      return this.d;
-   }
-
-   public abv g() {
-      return this.e;
    }
 }

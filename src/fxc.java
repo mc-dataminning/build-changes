@@ -1,90 +1,64 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fxc {
-   public static final fxc a = new fxc();
-   public final fxb b;
-   public final fxb c;
-   public final fxb d;
-   public final fxb e;
-   public final fxb f;
-   public final fxb g;
-   public final fxb h;
-   public final fxb i;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 4;
+   private final Queue<fxb> c;
+   private volatile int d;
 
-   private fxc() {
-      this(fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a);
+   private fxc(List<fxb> $$0) {
+      this.c = Queues.newArrayDeque($$0);
+      this.d = this.c.size();
    }
 
-   public fxc(fxc $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
-   }
+   public static fxc a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fxb.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<fxb> $$3 = new ArrayList<>($$2);
 
-   public fxc(fxb $$0, fxb $$1, fxb $$2, fxb $$3, fxb $$4, fxb $$5, fxb $$6, fxb $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public fxb a(cpa $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fxb.a;
-      };
-   }
-
-   public boolean b(cpa $$0) {
-      return this.a($$0) != fxb.a;
-   }
-
-   protected static class a implements JsonDeserializer<fxc> {
-      public fxc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         fxb $$4 = this.a($$2, $$3, cpa.c);
-         fxb $$5 = this.a($$2, $$3, cpa.b);
-         if ($$5 == fxb.a) {
-            $$5 = $$4;
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new fxb());
          }
+      } catch (OutOfMemoryError var7) {
+         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
 
-         fxb $$6 = this.a($$2, $$3, cpa.e);
-         fxb $$7 = this.a($$2, $$3, cpa.d);
-         if ($$7 == fxb.a) {
-            $$7 = $$6;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
          }
-
-         fxb $$8 = this.a($$2, $$3, cpa.f);
-         fxb $$9 = this.a($$2, $$3, cpa.g);
-         fxb $$10 = this.a($$2, $$3, cpa.h);
-         fxb $$11 = this.a($$2, $$3, cpa.i);
-         return new fxc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      private fxb a(JsonDeserializationContext $$0, JsonObject $$1, cpa $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fxb)$$0.deserialize($$1.get($$3), fxb.class) : fxb.a;
+      return new fxc($$3);
+   }
+
+   @Nullable
+   public fxb a() {
+      fxb $$0 = this.c.poll();
+      if ($$0 != null) {
+         this.d = this.c.size();
+         return $$0;
+      } else {
+         return null;
       }
+   }
+
+   public void a(fxb $$0) {
+      this.c.add($$0);
+      this.d = this.c.size();
+   }
+
+   public boolean b() {
+      return this.c.isEmpty();
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,47 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dtt extends dtz<dwa> {
-   public dtt(Codec<dwa> $$0) {
-      super($$0);
+public record dtt<WC extends dto>(dtv<WC> d, WC e) {
+   public static final Codec<dtt<?>> a = kh.P.q().dispatch($$0 -> $$0.d, dtv::c);
+   public static final Codec<il<dtt<?>>> b = aiy.a(ki.aw, a);
+   public static final Codec<ip<dtt<?>>> c = iz.a(ki.aw, a);
+
+   public boolean a(awt $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dub<dwa> $$0) {
-      dwa $$1 = $$0.f();
-      hz $$2 = $$0.e();
-      cwm $$3 = $$0.b();
-      awp $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      hz.a $$10 = new hz.a();
-
-      for (hz $$11 : hz.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public boolean a(dtq $$0, doa $$1, Function<ib, il<cxd>> $$2, awt $$3, drc $$4, cvl $$5, dnz $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   protected boolean a(dwa $$0, cwm $$1, awp $$2, int $$3, int $$4, hz.a $$5) {
-      boolean $$6 = false;
+   public dtv<WC> a() {
+      return this.d;
+   }
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dlj $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
+   public WC b() {
+      return this.e;
    }
 }

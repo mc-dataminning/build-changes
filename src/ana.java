@@ -3,224 +3,59 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
 
 public class ana {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.teleport.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vs.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      LiteralCommandNode<du> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("teleport").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("location", fv.a())
-                        .executes(
-                           $$0x -> a(
-                                 (du)$$0x.getSource(),
-                                 Collections.singleton(((du)$$0x.getSource()).g()),
-                                 ((du)$$0x.getSource()).e(),
-                                 fv.b($$0x, "location"),
-                                 fx.d(),
-                                 null
-                              )
-                        )
-                  ))
-               .then(
-                  dv.a("destination", eh.a())
-                     .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).g()), eh.a($$0x, "destination")))
-               ))
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("summon").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.b())
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("location", fv.a())
-                                 .executes(
-                                    $$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), ((du)$$0x.getSource()).e(), fv.b($$0x, "location"), null, null)
-                                 ))
-                              .then(
-                                 dv.a("rotation", fs.a())
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             eh.b($$0x, "targets"),
-                                             ((du)$$0x.getSource()).e(),
-                                             fv.b($$0x, "location"),
-                                             fs.a($$0x, "rotation"),
-                                             null
-                                          )
-                                    )
-                              ))
-                           .then(
-                              ((LiteralArgumentBuilder)dv.a("facing")
-                                    .then(
-                                       dv.a("entity")
-                                          .then(
-                                             ((RequiredArgumentBuilder)dv.a("facingEntity", eh.a())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            eh.b($$0x, "targets"),
-                                                            ((du)$$0x.getSource()).e(),
-                                                            fv.b($$0x, "location"),
-                                                            null,
-                                                            new ana.a(eh.a($$0x, "facingEntity"), eg.a.a)
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dv.a("facingAnchor", eg.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               eh.b($$0x, "targets"),
-                                                               ((du)$$0x.getSource()).e(),
-                                                               fv.b($$0x, "location"),
-                                                               null,
-                                                               new ana.a(eh.a($$0x, "facingEntity"), eg.a($$0x, "facingAnchor"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("facingLocation", fv.a())
-                                       .executes(
-                                          $$0x -> a(
-                                                (du)$$0x.getSource(),
-                                                eh.b($$0x, "targets"),
-                                                ((du)$$0x.getSource()).e(),
-                                                fv.b($$0x, "location"),
-                                                null,
-                                                new ana.a(fv.a($$0x, "facingLocation"))
-                                             )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(dv.a("destination", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), eh.a($$0x, "destination"))))
+               ((RequiredArgumentBuilder)dv.a("entity", et.a($$1, ki.u))
+                     .suggests(hr.d)
+                     .executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), ((du)$$0x.getSource()).d(), new sy(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", fv.a())
+                           .executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), fv.a($$0x, "pos"), new sy(), true)))
+                        .then(dv.a("nbt", ee.a()).executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), fv.a($$0x, "pos"), ee.a($$0x, "nbt"), false)))
+                  )
             )
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(du $$0, Collection<? extends bnq> $$1, bnq $$2) throws CommandSyntaxException {
-      for (bnq $$3 : $$1) {
-         a($$0, $$3, (aow)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bov.class), $$2.dC(), $$2.dE(), null);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vq.a("commands.teleport.success.entity.single", $$1.iterator().next().Q_(), $$2.Q_()), true);
+   public static bof a(du $$0, il.c<bol<?>> $$1, eov $$2, sy $$3, boolean $$4) throws CommandSyntaxException {
+      ib $$5 = ib.a($$2);
+      if (!cwe.l($$5)) {
+         throw c.create();
       } else {
-         $$0.a(() -> vq.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.Q_()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(du $$0, Collection<? extends bnq> $$1, aow $$2, fq $$3, @Nullable fq $$4, @Nullable ana.a $$5) throws CommandSyntaxException {
-      enz $$6 = $$3.a($$0);
-      eny $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bov> $$8 = EnumSet.noneOf(bov.class);
-      if ($$3.a()) {
-         $$8.add(bov.a);
-      }
-
-      if ($$3.b()) {
-         $$8.add(bov.b);
-      }
-
-      if ($$3.c()) {
-         $$8.add(bov.c);
-      }
-
-      if ($$4 == null) {
-         $$8.add(bov.e);
-         $$8.add(bov.d);
-      } else {
-         if ($$4.a()) {
-            $$8.add(bov.e);
-         }
-
-         if ($$4.b()) {
-            $$8.add(bov.d);
-         }
-      }
-
-      for (bnq $$9 : $$1) {
-         if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
+         sy $$6 = $$3.h();
+         $$6.a("id", $$1.h().a().toString());
+         apa $$7 = $$0.e();
+         bof $$8 = bol.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dz(), $$1x.dB());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
          } else {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
-         }
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vq.a("commands.teleport.success.location.single", $$1.iterator().next().Q_(), a($$6.c), a($$6.d), a($$6.e)), true);
-      } else {
-         $$0.a(() -> vq.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%f", $$0);
-   }
-
-   private static void a(du $$0, bnq $$1, aow $$2, double $$3, double $$4, double $$5, Set<bov> $$6, float $$7, float $$8, @Nullable ana.a $$9) throws CommandSyntaxException {
-      hz $$10 = hz.a($$3, $$4, $$5);
-      if (!cvr.l($$10)) {
-         throw a.create();
-      } else {
-         float $$11 = awi.g($$7);
-         float $$12 = awi.g($$8);
-         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
-            if ($$9 != null) {
-               $$9.a($$0, $$1);
+            if ($$4 && $$8 instanceof boz) {
+               ((boz)$$8).a($$0.e(), $$0.e().d_($$8.dj()), bpb.n, null);
             }
 
-            if (!($$1 instanceof boi $$13) || !$$13.fw()) {
-               $$1.g($$1.dp().d(1.0, 0.0, 1.0));
-               $$1.c(true);
-            }
-
-            if ($$1 instanceof boq $$14) {
-               $$14.N().n();
-            }
-         }
-      }
-   }
-
-   static class a {
-      private final enz a;
-      private final bnq b;
-      private final eg.a c;
-
-      public a(bnq $$0, eg.a $$1) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$1.a($$0);
-      }
-
-      public a(enz $$0) {
-         this.b = null;
-         this.a = $$0;
-         this.c = null;
-      }
-
-      public void a(du $$0, bnq $$1) {
-         if (this.b != null) {
-            if ($$1 instanceof aox) {
-               ((aox)$$1).a($$0.m(), this.b, this.c);
+            if (!$$7.e($$8)) {
+               throw b.create();
             } else {
-               $$1.a($$0.m(), this.a);
+               return $$8;
             }
-         } else {
-            $$1.a($$0.m(), this.a);
          }
       }
+   }
+
+   private static int b(du $$0, il.c<bol<?>> $$1, eov $$2, sy $$3, boolean $$4) throws CommandSyntaxException {
+      bof $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> vs.a("commands.summon.success", $$5.Q_()), true);
+      return 1;
    }
 }

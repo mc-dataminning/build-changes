@@ -1,22 +1,25 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public interface ekm<T extends ekm<T>> {
-   T b(ekp.a var1);
+public class ekm extends ekt {
+   public static final Codec<ekm> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ekm::new));
 
-   default <E> T a(Iterable<E> $$0, Function<E, ekp.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private ekm(int $$0, int $$1, List<emx> $$2, List<ell> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   default <E> T a(E[] $$0, Function<E, ekp.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public eks a() {
+      return ekp.b;
    }
 
-   T c();
+   @Override
+   public void a(Consumer<cpq> $$0, ejy $$1) {
+   }
+
+   public static ekt.a<?> b() {
+      return a(ekm::new);
+   }
 }

@@ -1,42 +1,63 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dfs extends cyz, ddi {
+public class dfs extends czo implements czi {
+   public static final MapCodec<dfs> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlt.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dfs::new)
+   );
+   public static final dne f = dmu.aU;
+   protected static final float g = 6.0F;
+   protected static final epo h = czf.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dlt i;
+
    @Override
-   default boolean a(@Nullable chl $$0, cux $$1, hz $$2, dlj $$3, egv $$4) {
-      return $$4 == egx.c;
+   public MapCodec<? extends dfs> a() {
+      return e;
+   }
+
+   protected dfs(dlt $$0, dmd.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
    }
 
    @Override
-   default boolean a(cvs $$0, hz $$1, dlj $$2, egw $$3) {
-      if (!$$2.c(dlz.C) && $$3.a() == egx.c) {
-         if (!$$0.y_()) {
-            $$0.a($$1, $$2.a(dlz.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return h;
+   }
 
-         return true;
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(apa $$0, ib $$1, dme $$2, awt $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
       } else {
-         return false;
+         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   default cpd a(@Nullable chl $$0, cvs $$1, hz $$2, dlj $$3) {
-      if ($$3.c(dlz.C)) {
-         $$1.a($$2, $$3.a(dlz.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cpd(cpg.qy);
-      } else {
-         return cpd.h;
-      }
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      return true;
    }
 
    @Override
-   default Optional<atk> ax_() {
-      return egx.c.j();
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(f);
    }
 }

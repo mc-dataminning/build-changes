@@ -1,35 +1,21 @@
 public class fwc {
-   private final long[] a;
-   private int b;
-   private int c;
+   public static final cvp a = cxd::a;
+   public static final cvp b = ($$0, $$1, $$2) -> $$0.f();
+   public static final cvp c = ($$0, $$1, $$2) -> $$0.i();
 
-   public fwc(int $$0) {
-      this.a = new long[$$0];
+   private static int a(cvh $$0, ib $$1, cvp $$2) {
+      return $$0.a($$1, $$2);
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
+   public static int a(cvh $$0, ib $$1) {
+      return a($$0, $$1, a);
+   }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
+   public static int b(cvh $$0, ib $$1) {
+      return a($$0, $$1, b);
+   }
 
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
-      }
+   public static int c(cvh $$0, ib $$1) {
+      return a($$0, $$1, c);
    }
 }

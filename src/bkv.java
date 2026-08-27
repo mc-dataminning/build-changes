@@ -1,64 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class bkv extends bkz {
-   public static final Codec<bkv> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, bkv::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public static bkv a(float $$0, float $$1, float $$2, float $$3) {
-      return new bkv($$0, $$1, $$2, $$3);
+public class bkv<E> extends bkz<bkx.b<E>> {
+   public static <E> Codec<bkv<E>> a(Codec<E> $$0) {
+      return bkx.b.a($$0).listOf().xmap(bkv::new, bkz::e);
    }
 
-   private bkv(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static <E> Codec<bkv<E>> b(Codec<E> $$0) {
+      return avu.a(bkx.b.a($$0).listOf()).xmap(bkv::new, bkz::e);
    }
 
-   @Override
-   public float a(awp $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
+   bkv(List<? extends bkx.b<E>> $$0) {
+      super($$0);
    }
 
-   public static float a(awp $$0, float $$1, float $$2, float $$3, float $$4) {
-      return awi.a(awi.c($$0, $$1, $$2), $$3, $$4);
+   public static <E> bkv.a<E> a() {
+      return new bkv.a<>();
    }
 
-   @Override
-   public float a() {
-      return this.e;
+   public static <E> bkv<E> b() {
+      return new bkv<>(List.of());
    }
 
-   @Override
-   public float b() {
-      return this.f;
+   public static <E> bkv<E> a(E $$0) {
+      return new bkv<>(List.of(bkx.a($$0, 1)));
    }
 
-   @Override
-   public bla<?> c() {
-      return bla.c;
+   public Optional<E> a(awt $$0) {
+      return this.b($$0).map(bkx.b::b);
    }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+   public static class a<E> {
+      private final Builder<bkx.b<E>> a = ImmutableList.builder();
+
+      public bkv.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public bkv.a<E> a(E $$0, int $$1) {
+         this.a.add(bkx.a($$0, $$1));
+         return this;
+      }
+
+      public bkv<E> a() {
+         return new bkv<>(this.a.build());
+      }
    }
 }

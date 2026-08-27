@@ -1,164 +1,195 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Map;
-import java.util.Optional;
+import java.util.EnumSet;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class cfq extends bqa<cfn> {
-   private static final int c = 4;
-   private static final int d = 10;
-   private static final int e = 2;
-   private static final int f = Math.round(10.0F);
-   private static final float g = 1.4F;
-   private static final ObjectArrayList<Integer> h = new ObjectArrayList(Lists.newArrayList(new Integer[]{40, 55, 60, 75, 80}));
+public abstract class cfq extends ceo {
+   private static final aii<Byte> e = ail.a(cfq.class, aik.a);
+   protected int b;
+   private cfq.a bV = cfq.a.a;
 
-   @VisibleForTesting
-   public cfq() {
-      super(Map.of(bxl.o, bxm.a, bxl.aU, bxm.b, bxl.aZ, bxm.c, bxl.ba, bxm.c, bxl.aV, bxm.b, bxl.m, bxm.b, bxl.bb, bxm.c), 200);
+   protected cfq(bol<? extends cfq> $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aow $$0, cfn $$1) {
-      if (!$$1.aC() && !$$1.aZ()) {
-         return false;
-      } else if (bsu.a($$1)) {
-         return false;
-      } else if ($$1.dO().a(bxl.ba, bxm.a)) {
-         return true;
+   @Override
+   protected void c_() {
+      super.c_();
+      this.am.a(e, (byte)0);
+   }
+
+   @Override
+   public void a(sy $$0) {
+      super.a($$0);
+      this.b = $$0.h("SpellTicks");
+   }
+
+   @Override
+   public void b(sy $$0) {
+      super.b($$0);
+      $$0.a("SpellTicks", this.b);
+   }
+
+   @Override
+   public ceo.a u() {
+      if (this.gv()) {
+         return ceo.a.c;
       } else {
-         boi $$2 = $$1.dO().c(bxl.o).orElse(null);
-         if ($$2 == null) {
-            return false;
-         } else if (a($$1, $$2)) {
-            $$1.dO().b(bxl.o);
-            return false;
-         } else if (b($$1, $$2)) {
-            return false;
-         } else if (!b($$0, $$1)) {
+         return this.gC() ? ceo.a.g : ceo.a.a;
+      }
+   }
+
+   public boolean gv() {
+      return this.dJ().B ? this.am.b(e) > 0 : this.b > 0;
+   }
+
+   public void a(cfq.a $$0) {
+      this.bV = $$0;
+      this.am.b(e, (byte)$$0.h);
+   }
+
+   protected cfq.a gw() {
+      return !this.dJ().B ? this.bV : cfq.a.a(this.am.b(e));
+   }
+
+   @Override
+   protected void aa() {
+      super.aa();
+      if (this.b > 0) {
+         this.b--;
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dJ().B && this.gv()) {
+         cfq.a $$0 = this.gw();
+         double $$1 = $$0.i[0];
+         double $$2 = $$0.i[1];
+         double $$3 = $$0.i[2];
+         float $$4 = this.aV * (float) (Math.PI / 180.0) + awm.b((float)this.ag * 0.6662F) * 0.25F;
+         float $$5 = awm.b($$4);
+         float $$6 = awm.a($$4);
+         double $$7 = 0.6 * (double)this.dY();
+         double $$8 = 1.8 * (double)this.dY();
+         this.dJ().a(kb.v, this.do() + (double)$$5 * $$7, this.dq() + $$8, this.du() + (double)$$6 * $$7, $$1, $$2, $$3);
+         this.dJ().a(kb.v, this.do() - (double)$$5 * $$7, this.dq() + $$8, this.du() - (double)$$6 * $$7, $$1, $$2, $$3);
+      }
+   }
+
+   protected int gx() {
+      return this.b;
+   }
+
+   protected abstract ato gl();
+
+   protected static enum a {
+      a(0, 0.0, 0.0, 0.0),
+      b(1, 0.7, 0.7, 0.8),
+      c(2, 0.4, 0.3, 0.35),
+      d(3, 0.7, 0.5, 0.2),
+      e(4, 0.3, 0.3, 0.8),
+      f(5, 0.1, 0.1, 0.2);
+
+      private static final IntFunction<cfq.a> g = ave.a($$0 -> $$0.h, values(), ave.a.a);
+      final int h;
+      final double[] i;
+
+      private a(int $$0, double $$1, double $$2, double $$3) {
+         this.h = $$0;
+         this.i = new double[]{$$1, $$2, $$3};
+      }
+
+      public static cfq.a a(int $$0) {
+         return g.apply($$0);
+      }
+   }
+
+   protected class b extends bvu {
+      public b() {
+         this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+      }
+
+      @Override
+      public boolean a() {
+         return cfq.this.gx() > 0;
+      }
+
+      @Override
+      public void c() {
+         super.c();
+         cfq.this.bO.n();
+      }
+
+      @Override
+      public void d() {
+         super.d();
+         cfq.this.a(cfq.a.a);
+      }
+
+      @Override
+      public void e() {
+         if (cfq.this.q() != null) {
+            cfq.this.I().a(cfq.this.q(), (float)cfq.this.fJ(), (float)cfq.this.ab());
+         }
+      }
+   }
+
+   protected abstract class c extends bvu {
+      protected int b;
+      protected int c;
+
+      @Override
+      public boolean a() {
+         box $$0 = cfq.this.q();
+         if ($$0 == null || !$$0.bx()) {
             return false;
          } else {
-            hz $$3 = a($$1, cfp.a($$2, $$1.eh()));
-            if ($$3 == null) {
-               return false;
-            } else if (!cfp.a($$1, $$3.b()) && !cfp.a($$1, $$3.b(4).b())) {
-               return false;
-            } else {
-               $$1.dO().a(bxl.ba, $$3);
-               return true;
-            }
-         }
-      }
-   }
-
-   protected boolean a(aow $$0, cfn $$1, long $$2) {
-      return $$1.ap() != bot.a && !$$1.dO().a(bxl.aU);
-   }
-
-   protected void b(aow $$0, cfn $$1, long $$2) {
-      if ($$1.dO().a(bxl.aZ, bxm.b)) {
-         $$1.dO().a(bxl.aZ, axk.a, (long)f);
-      }
-
-      $$1.b(bot.r);
-      $$0.a(null, $$1, atl.cx, atm.f, 1.0F, 1.0F);
-      $$1.dO().c(bxl.ba).ifPresent($$1x -> $$1.a(eg.a.b, $$1x.b()));
-   }
-
-   protected void c(aow $$0, cfn $$1, long $$2) {
-      boolean $$3 = $$1.aZ();
-      if (!$$3 && $$1.dO().a(bxl.bb, bxm.a)) {
-         $$1.dO().b(bxl.bb);
-      }
-
-      if (a($$1)) {
-         enz $$4 = $$1.dO().c(bxl.ba).flatMap($$1x -> a($$1, $$1.eh(), enz.c($$1x))).orElse(null);
-         if ($$4 == null) {
-            $$1.b(bot.a);
-            return;
-         }
-
-         if ($$3) {
-            $$1.dO().a(bxl.bb, axk.a);
-         }
-
-         $$1.a(atl.cD, 1.0F, 1.0F);
-         $$1.b(bot.g);
-         $$1.r($$1.aU);
-         $$1.p(true);
-         $$1.g($$4);
-      } else if (b($$1)) {
-         $$1.a(atl.cE, 1.0F, 1.0F);
-         $$1.b(bot.a);
-         $$1.p(false);
-         boolean $$5 = $$1.dO().a(bxl.x);
-         $$1.dO().a(bxl.aU, axk.a, $$5 ? 2L : 10L);
-         $$1.dO().a(bxl.aV, axk.a, 100L);
-      }
-   }
-
-   protected void d(aow $$0, cfn $$1, long $$2) {
-      if ($$1.ap() == bot.g || $$1.ap() == bot.r) {
-         $$1.b(bot.a);
-      }
-
-      $$1.dO().b(bxl.ba);
-      $$1.dO().b(bxl.aZ);
-      $$1.dO().b(bxl.bb);
-   }
-
-   private static boolean a(cfn $$0) {
-      return $$0.dO().c(bxl.aZ).isEmpty() && $$0.ap() == bot.r;
-   }
-
-   private static boolean b(cfn $$0) {
-      boolean $$1 = $$0.ap() == bot.g;
-      boolean $$2 = $$0.aC();
-      boolean $$3 = $$0.aZ() && $$0.dO().a(bxl.bb, bxm.b);
-      return $$1 && ($$2 || $$3);
-   }
-
-   @Nullable
-   private static hz a(boi $$0, enz $$1) {
-      cva $$2 = new cva($$1, $$1.a(ie.a, 10.0), cva.a.a, cva.b.a, $$0);
-      enx $$3 = $$0.dM().a($$2);
-      if ($$3.c() == enx.a.b) {
-         return hz.a($$3.e()).c();
-      } else {
-         cva $$4 = new cva($$1, $$1.a(ie.b, 10.0), cva.a.a, cva.b.a, $$0);
-         enx $$5 = $$0.dM().a($$4);
-         return $$5.c() == enx.a.b ? hz.a($$3.e()).c() : null;
-      }
-   }
-
-   private static boolean a(cfn $$0, boi $$1) {
-      return !$$1.a($$0, 24.0);
-   }
-
-   private static boolean b(cfn $$0, boi $$1) {
-      return $$1.e($$0) - 4.0F <= 0.0F;
-   }
-
-   private static boolean b(aow $$0, cfn $$1) {
-      hz $$2 = $$1.dm();
-
-      for (int $$3 = 1; $$3 <= 4; $$3++) {
-         hz $$4 = $$2.a(ie.b, $$3);
-         if (!$$0.a_($$4).i() && !$$0.b_($$4).a(auf.a)) {
-            return false;
+            return cfq.this.gv() ? false : cfq.this.ag >= this.c;
          }
       }
 
-      return true;
-   }
+      @Override
+      public boolean b() {
+         box $$0 = cfq.this.q();
+         return $$0 != null && $$0.bx() && this.b > 0;
+      }
 
-   private static Optional<enz> a(cfn $$0, awp $$1, enz $$2) {
-      for (int $$4 : ac.a(h, $$1)) {
-         Optional<enz> $$5 = bre.a($$0, $$2, 1.4F, $$4, false);
-         if ($$5.isPresent()) {
-            return $$5;
+      @Override
+      public void c() {
+         this.b = this.a(this.n());
+         cfq.this.b = this.h();
+         this.c = cfq.this.ag + this.i();
+         ato $$0 = this.l();
+         if ($$0 != null) {
+            cfq.this.a($$0, 1.0F, 1.0F);
+         }
+
+         cfq.this.a(this.m());
+      }
+
+      @Override
+      public void e() {
+         this.b--;
+         if (this.b == 0) {
+            this.k();
+            cfq.this.a(cfq.this.gl(), 1.0F, 1.0F);
          }
       }
 
-      return Optional.empty();
+      protected abstract void k();
+
+      protected int n() {
+         return 20;
+      }
+
+      protected abstract int h();
+
+      protected abstract int i();
+
+      @Nullable
+      protected abstract ato l();
+
+      protected abstract cfq.a m();
    }
 }

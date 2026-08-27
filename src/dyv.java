@@ -1,66 +1,108 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public abstract class dyv {
-   public static final Codec<dyv> h = kf.Z.q().dispatch(dyv::a, dyw::a);
+public class dyv extends dyw {
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final Codec<dyv> c = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(dyu.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, dyv::new)
+   );
+   private final dyu h;
 
-   protected abstract dyw<?> a();
+   public dyv(blq $$0, dyz $$1, Optional<dyt> $$2, dyu $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+   }
 
-   public abstract void a(dyv.a var1);
+   @Override
+   public boolean a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, ib $$3, ib $$4, dxu $$5) {
+      List<ib> $$6 = Lists.newArrayList();
+      ib.a $$7 = $$3.j();
 
-   public static final class a {
-      private final cvx a;
-      private final BiConsumer<hz, dlj> b;
-      private final awp c;
-      private final ObjectArrayList<hz> d;
-      private final ObjectArrayList<hz> e;
-      private final ObjectArrayList<hz> f;
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
+         }
 
-      public a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, Set<hz> $$3, Set<hz> $$4, Set<hz> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(jd::v));
-         this.e.sort(Comparator.comparingInt(jd::v));
-         this.f.sort(Comparator.comparingInt(jd::v));
+         $$7.c(ih.b);
       }
 
-      public void a(hz $$0, dma $$1) {
-         this.a($$0, cyu.ff.o().a($$1, Boolean.valueOf(true)));
+      $$6.add($$4.d());
+
+      for (ih $$8 : ih.c.a) {
+         ib $$9 = $$4.a($$8);
+         List<ib> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
+
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
       }
 
-      public void a(hz $$0, dlj $$1) {
-         this.b.accept($$0, $$1);
+      for (ib $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
       }
 
-      public boolean a(hz $$0) {
-         return this.a.a($$0, dli.a::i);
-      }
+      return true;
+   }
 
-      public cvx a() {
-         return this.a;
-      }
+   private boolean a(cwk $$0, awt $$1, ib $$2, ih $$3, ib $$4, List<ib> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (ib $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
+            }
+         }
 
-      public awp b() {
-         return this.c;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public ObjectArrayList<hz> c() {
-         return this.d;
+   protected List<ib> a(ib $$0, ih $$1, awt $$2, ib $$3) {
+      ib $$4 = $$0.d();
+      ib $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
       }
+   }
 
-      public ObjectArrayList<hz> d() {
-         return this.e;
-      }
+   @Override
+   protected boolean a(cwk $$0, ib $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   }
 
-      public ObjectArrayList<hz> e() {
-         return this.f;
+   @Override
+   protected void a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, ib $$3, dxu $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         dme $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   @Override
+   protected dyx<?> a() {
+      return dyx.a;
    }
 }

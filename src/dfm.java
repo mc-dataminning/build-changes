@@ -1,328 +1,180 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
 import java.util.Optional;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dfm {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int e = 32;
-   public static final int d = 11;
-   final boolean f;
-   private final aup<cys> g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private List<dfm.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+public class dfm extends czf {
+   public static final MapCodec<dfm> a = b(dfm::new);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dne d = dmu.aZ;
+   private static final ImmutableList<jf> e = ImmutableList.of(
+      new jf(0, 0, -1), new jf(-1, 0, 0), new jf(0, 0, 1), new jf(1, 0, 0), new jf(-1, 0, -1), new jf(1, 0, -1), new jf(-1, 0, 1), new jf(1, 0, 1)
+   );
+   private static final ImmutableList<jf> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(jf::o).iterator())
+      .addAll(e.stream().map(jf::p).iterator())
+      .add(new jf(0, 1, 0))
+      .build();
 
-   public dfm(boolean $$0, aup<cys> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
+   @Override
+   public MapCodec<dfm> a() {
+      return a;
    }
 
-   public static dfm a() {
-      return new dfm(false, aua.bL, 10, 4, 10, 5);
+   public dfm(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(0)));
    }
 
-   public static dfm b() {
-      return new dfm(true, aua.bM, 50, 1, 5, 10);
-   }
-
-   public aup<cys> c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
-   }
-
-   public int g() {
-      return this.k;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   @VisibleForTesting
-   public List<dfm.a> i() {
-      return this.l;
-   }
-
-   public void j() {
-      this.l.clear();
-   }
-
-   public void a(sw $$0) {
-      if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<dfm.a> $$1 = (List<dfm.a>)dfm.a.b.listOf().parse(new Dynamic(tk.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
-         int $$2 = Math.min($$1.size(), 32);
-
-         for (int $$3 = 0; $$3 < $$2; $$3++) {
-            this.a($$1.get($$3));
+   @Override
+   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
+      if (a($$0) && m($$1)) {
+         a($$4, $$2, $$3, $$1);
+         if (!$$4.fW().d) {
+            $$0.h(1);
          }
+
+         return bmn.a($$2.B);
+      } else {
+         return $$5 == bmk.a && a($$4.b(bmk.b)) && m($$1) ? bmn.e : bmn.d;
       }
    }
 
-   public void b(sw $$0) {
-      dfm.a.b.listOf().encodeStart(tk.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
-   }
+   @Override
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$0.c(d) == 0) {
+         return bml.d;
+      } else if (!a($$1)) {
+         if (!$$1.B) {
+            this.d($$0, $$1, $$2);
+         }
 
-   public void a(hz $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new dfm.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(dfm.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
-      }
-   }
-
-   public void a(cvs $$0, hz $$1, awp $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
-         List<dfm.a> $$4 = new ArrayList<>();
-         Map<hz, dfm.a> $$5 = new HashMap<>();
-         Object2IntMap<hz> $$6 = new Object2IntOpenHashMap();
-
-         for (dfm.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               hz $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               dfm.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
-               } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
-                     $$5.put($$8, $$7);
-                  }
-               }
+         return bml.a($$1.B);
+      } else {
+         if (!$$1.B) {
+            apb $$5 = (apb)$$3;
+            if ($$5.T() != $$1.ad() || !$$2.equals($$5.R())) {
+               $$5.a($$1.ad(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, atp.uS, atq.e, 1.0F, 1.0F);
+               return bml.a;
             }
          }
 
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<hz> $$10 = (Entry<hz>)var16.next();
-            hz $$11 = (hz)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            dfm.a $$13 = $$5.get($$11);
-            Collection<ie> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + ddr.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.l = $$4;
+         return bml.b;
       }
    }
 
-   public static class a {
-      private static final ObjectArrayList<jd> c = ac.a(
-         new ObjectArrayList(18),
-         $$0 -> hz.b(new hz(-1, -1, -1), new hz(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(hz.c))
-               .map(hz::i)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private hz d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<ie> h;
-      private static final Codec<Set<ie>> i = ie.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, ie.class), Lists::newArrayList);
-      public static final Codec<dfm.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  hz.a.fieldOf("pos").forGetter(dfm.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dfm.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dfm.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.optionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, dfm.a::new)
-      );
+   private static boolean a(cpq $$0) {
+      return $$0.a(cpt.ft);
+   }
 
-      private a(hz $$0, int $$1, int $$2, int $$3, Optional<Set<ie>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
+   private static boolean m(dme $$0) {
+      return $$0.c(d) < 4;
+   }
 
-      public a(hz $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public hz a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<ie> d() {
-         return this.h;
-      }
-
-      private boolean a(cvs $$0, hz $$1, boolean $$2) {
-         if (this.e <= 0) {
+   private static boolean a(ib $$0, cwe $$1) {
+      ehr $$2 = $$1.b_($$0);
+      if (!$$2.a(auj.a)) {
+         return false;
+      } else if ($$2.b()) {
+         return true;
+      } else {
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
             return false;
-         } else if ($$2) {
-            return true;
          } else {
-            return $$0 instanceof aow $$3 ? $$3.n($$1) : false;
+            ehr $$4 = $$1.b_($$0.d());
+            return !$$4.a(auj.a);
+         }
+      }
+   }
+
+   private void d(dme $$0, cwe $$1, final ib $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = ih.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.c()).a(auj.a);
+      cvx $$5 = new cvx() {
+         @Override
+         public Optional<Float> a(cvw $$0, cvk $$1, ib $$2x, dme $$3, ehr $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(czh.G.e()) : super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      };
+      eov $$6 = $$2.b();
+      $$1.a(null, $$1.ah().a($$6), $$5, $$6, 5.0F, true, cwe.a.b);
+   }
+
+   public static boolean a(cwe $$0) {
+      return $$0.E_().m();
+   }
+
+   public static void a(@Nullable bof $$0, cwe $$1, ib $$2, dme $$3) {
+      dme $$4 = $$3.a(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(dqr.c, $$2, dqr.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, atp.uQ, atq.e, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a($$2, atp.uP, atq.e, 1.0F, 1.0F, false);
+         }
+
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(kb.aE, $$4, $$5, $$6, 0.0, $$7, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean d_(dme $$0) {
+      return true;
+   }
+
+   public static int a(dme $$0, int $$1) {
+      return awm.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
+   }
+
+   @Override
+   protected int a(dme $$0, cwe $$1, ib $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<eov> a(bol<?> $$0, cvo $$1, ib $$2) {
+      Optional<eov> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<eov> a(bol<?> $$0, cvo $$1, ib $$2, boolean $$3) {
+      ib.a $$4 = new ib.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         jf $$5 = (jf)var5.next();
+         $$4.g($$2).h($$5);
+         eov $$6 = cjy.a($$0, $$1, $$4, $$3);
+         if ($$6 != null) {
+            return Optional.of($$6);
          }
       }
 
-      public void a(cvs $$0, hz $$1, awp $$2, dfm $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               dlj $$5 = $$0.a_(this.d);
-               dfh $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.d()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
+      return Optional.empty();
+   }
 
-                  $$0.a(null, this.d, atl.vm, atm.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  hz $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.i();
-                     if ($$3.h() && !this.d.a(new jd($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof dfh) {
-                     this.h = ddr.m($$5);
-                  }
-
-                  this.g = $$6.i_(this.g);
-                  this.f = $$6.b();
-               }
-            }
-         }
-      }
-
-      void a(dfm.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static dfh a(dlj $$0) {
-         return $$0.b() instanceof dfh $$1 ? $$1 : dfh.v_;
-      }
-
-      private static List<jd> a(awp $$0) {
-         return ac.a(c, $$0);
-      }
-
-      @Nullable
-      private static hz a(cvs $$0, hz $$1, awp $$2) {
-         hz.a $$3 = $$1.j();
-         hz.a $$4 = $$1.j();
-
-         for (jd $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            dlj $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof dfh && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (dfn.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(cvs $$0, hz $$1, hz $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
-         } else {
-            hz $$3 = $$2.b($$1);
-            ie $$4 = ie.a(ie.a.a, $$3.u() < 0 ? ie.b.b : ie.b.a);
-            ie $$5 = ie.a(ie.a.b, $$3.v() < 0 ? ie.b.b : ie.b.a);
-            ie $$6 = ie.a(ie.a.c, $$3.w() < 0 ? ie.b.b : ie.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
-            } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
-            }
-         }
-      }
-
-      private static boolean a(cvs $$0, hz $$1, ie $$2) {
-         hz $$3 = $$1.a($$2);
-         return !$$0.a_($$3).d($$0, $$3, $$2.g());
-      }
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

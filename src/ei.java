@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ei implements ArgumentType<cvo> {
-   private static final Collection<String> a = Stream.of(cvo.a, cvo.b).map(cvo::b).collect(Collectors.toList());
-   private static final cvo[] b = cvo.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("argument.gamemode.invalid", $$0));
+public class ei implements ArgumentType<cwb> {
+   private static final Collection<String> a = Stream.of(cwb.a, cwb.b).map(cwb::b).collect(Collectors.toList());
+   private static final cwb[] b = cwb.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vs.b("argument.gamemode.invalid", $$0));
 
-   public cvo a(StringReader $$0) throws CommandSyntaxException {
+   public cwb a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      cvo $$2 = cvo.a($$1, null);
+      cwb $$2 = cwb.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class ei implements ArgumentType<cvo> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dz ? dz.b(Arrays.stream(b).map(cvo::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof dz ? dz.b(Arrays.stream(b).map(cwb::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class ei implements ArgumentType<cvo> {
       return new ei();
    }
 
-   public static cvo a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return (cvo)$$0.getArgument($$1, cvo.class);
+   public static cwb a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return (cwb)$$0.getArgument($$1, cwb.class);
    }
 }

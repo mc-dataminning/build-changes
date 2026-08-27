@@ -1,30 +1,13 @@
-import java.util.Locale;
+public class eio {
+   public final eov a;
+   public final eov b;
+   public final float c;
+   public final float d;
 
-public interface eio {
-   hz a();
-
-   float b();
-
-   long c();
-
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   cvn o();
-
-   blt q();
-
-   boolean r();
-
-   default void a(p $$0, cvt $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public eio(eov $$0, eov $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

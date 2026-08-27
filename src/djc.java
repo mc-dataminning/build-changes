@@ -1,34 +1,56 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class djc extends dkd {
-   public djc(hz $$0, dlj $$1) {
-      super(diz.J, $$0, $$1);
+public class djc {
+   final String a;
+
+   public djc(String $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public dqf.d c() {
-      return new djc.a(this.aE_());
+   public static ajc a(ajb<djc> $$0, boolean $$1) {
+      String $$2 = $$1 ? "banner" : "shield";
+      return $$0.a().d("entity/" + $$2 + "/");
    }
 
-   protected class a extends dkd.a {
-      public a(hz $$1) {
-         super($$1);
+   public String a() {
+      return this.a;
+   }
+
+   @Nullable
+   public static il<djc> a(String $$0) {
+      return kh.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   }
+
+   public static class a {
+      private final List<Pair<il<djc>, cog>> a = Lists.newArrayList();
+
+      public djc.a a(ajb<djc> $$0, cog $$1) {
+         return this.a(kh.am.f($$0), $$1);
       }
 
-      @Override
-      public int a() {
-         return 16;
+      public djc.a a(il<djc> $$0, cog $$1) {
+         return this.a(Pair.of($$0, $$1));
       }
 
-      @Override
-      public boolean a(aow $$0, hz $$1, ij<dpw> $$2, @Nullable dpw.a $$3) {
-         int $$4 = this.a($$0, this.c, djc.this.r());
-         return $$4 != 0 && dqf.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
+      public djc.a a(Pair<il<djc>, cog> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      private int a(cvr $$0, hz $$1, dlj $$2) {
-         ie $$3 = $$2.c(czf.b).g();
-         return $$0.c($$1.a($$3), $$3);
+      public te a() {
+         te $$0 = new te();
+
+         for (Pair<il<djc>, cog> $$1 : this.a) {
+            sy $$2 = new sy();
+            $$2.a("Pattern", ((djc)((il)$$1.getFirst()).a()).a);
+            $$2.a("Color", ((cog)$$1.getSecond()).a());
+            $$0.add($$2);
+         }
+
+         return $$0;
       }
    }
 }

@@ -1,67 +1,90 @@
-public class csd extends crx {
-   public csd(crv $$0) {
+public class csd extends csk {
+   public csd(csi $$0) {
       super($$0);
    }
 
-   public boolean a(ckv $$0, cvr $$1) {
-      int $$2 = 0;
-      cpd $$3 = cpd.h;
+   public boolean a(clk $$0, cwe $$1) {
+      cog $$2 = null;
+      cpq $$3 = null;
+      cpq $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpd $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cpg.rT)) {
-               if (!$$3.b()) {
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cpq $$6 = $$0.a($$5);
+         if (!$$6.b()) {
+            cpl $$7 = $$6.d();
+            if (!($$7 instanceof cni)) {
+               return false;
+            }
+
+            cni $$8 = (cni)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = djb.c($$6);
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$3 = $$6;
             } else {
-               if (!$$5.a(cpg.uf)) {
+               if ($$4 != null) {
                   return false;
                }
 
-               $$2++;
+               $$4 = $$6;
             }
          }
       }
 
-      return !$$3.b() && $$2 > 0;
+      return $$3 != null && $$4 != null;
    }
 
-   public cpd a(ckv $$0, iw $$1) {
-      int $$2 = 0;
-      cpd $$3 = cpd.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpd $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cpg.rT)) {
-               if (!$$3.b()) {
-                  return cpd.h;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpg.uf)) {
-                  return cpd.h;
-               }
-
-               $$2++;
+   public cpq a(clk $$0, iy $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         cpq $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            int $$4 = djb.c($$3);
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cpd.h;
+      return cpq.h;
+   }
+
+   public iu<cpq> a(clk $$0) {
+      iu<cpq> $$1 = iu.a($$0.b(), cpq.h);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cpq $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            if ($$3.d().u()) {
+               $$1.set($$2, new cpq($$3.d().t()));
+            } else if (djb.c($$3) > 0) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public csw<?> as_() {
+      return csw.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
-   }
-
-   @Override
-   public csj<?> at_() {
-      return csj.e;
+      return $$0 * $$1 >= 2;
    }
 }

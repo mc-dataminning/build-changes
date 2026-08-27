@@ -1,95 +1,233 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class ajt {
-   private static final Logger a = LogUtils.getLogger();
+public class ajt extends epz {
+   private final MinecraftServer b;
+   private final Set<epr> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public static <D, R> CompletableFuture<R> a(ajt.c $$0, ajt.f<D> $$1, ajt.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<cwl, arr> $$5 = $$0.a.a();
-         arr $$6 = (arr)$$5.getSecond();
-         iq<ajh> $$7 = ajh.a();
-         iq<ajh> $$8 = b($$6, $$7, ajh.b, ait.a);
-         iw.b $$9 = $$8.b(ajh.c);
-         iw.b $$10 = ait.a($$6, $$9, ait.b);
-         cwl $$11 = (cwl)$$5.getFirst();
-         ajt.b<D> $$12 = $$1.get(new ajt.a($$6, $$11, $$9, $$10));
-         iq<ajh> $$13 = $$8.a(ajh.c, $$12.b);
-         iw.b $$14 = $$13.b(ajh.d);
-         return aji.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$5x -> {
-            $$5x.a($$14);
-            return $$2.create($$6, $$5x, $$13, $$12.a);
-         }, $$4);
-      } catch (Exception var15) {
-         return CompletableFuture.failedFuture(var15);
+   public ajt(MinecraftServer $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   protected void a(epy $$0, epr $$1, epw $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ah().a(new adv($$0.cv(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
       }
+
+      this.a();
    }
 
-   private static iw.b a(asb $$0, iq<ajh> $$1, ajh $$2, List<ait.c<?>> $$3) {
-      iw.b $$4 = $$1.b($$2);
-      return ait.a($$0, $$4, $$3);
+   @Override
+   protected void a(epy $$0, epr $$1) {
+      super.a($$0, $$1);
+      this.a();
    }
 
-   private static iq<ajh> b(asb $$0, iq<ajh> $$1, ajh $$2, List<ait.c<?>> $$3) {
-      iw.b $$4 = a($$0, $$1, $$2, $$3);
-      return $$1.a($$2, $$4);
+   @Override
+   public void a(epy $$0) {
+      super.a($$0);
+      this.b.ah().a(new acu($$0.cv(), null));
+      this.a();
    }
 
-   public static record a(asb a, cwl b, iw.b c, iw.b d) {
+   @Override
+   public void b(epy $$0, epr $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ah().a(new acu($$0.cv(), $$1.b()));
+      }
+
+      this.a();
    }
 
-   public static record b<D>(D a, iw.b b) {
-   }
-
-   public static record c(ajt.d a, dv.a b, int c) {
-   }
-
-   public static record d(arm a, cwl b, boolean c, boolean d) {
-      public Pair<cwl, arr> a() {
-         cjw $$0 = this.d ? cjy.e.a() : this.b.b();
-         cwl $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
-         if (!this.d) {
-            $$1 = $$1.a(this.b.b());
+   @Override
+   public void a(epq $$0, @Nullable epr $$1) {
+      epr $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ah().a(new adl($$0, $$1));
+         } else {
+            this.g($$2);
          }
-
-         List<aqp> $$2 = this.a.g();
-         arr $$3 = new aru(aqq.b, $$2);
-         return Pair.of($$1, $$3);
       }
 
-      public arm b() {
-         return this.a;
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ah().a(new adl($$0, $$1));
+         } else {
+            this.e($$1);
+         }
       }
 
-      public cwl c() {
-         return this.b;
-      }
+      this.a();
+   }
 
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
+   @Override
+   public boolean a(String $$0, epu $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ah().a(adu.a($$1, $$0, adu.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(arr var1, aji var2, iq<ajh> var3, D var4);
+   @Override
+   public void b(String $$0, epu $$1) {
+      super.b($$0, $$1);
+      this.b.ah().a(adu.a($$1, $$0, adu.a.b));
+      this.a();
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      ajt.b<D> get(ajt.a var1);
+   @Override
+   public void a(epr $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(epr $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ah().a(new ads($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(epr $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(epu $$0) {
+      super.a($$0);
+      this.b.ah().a(adu.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(epu $$0) {
+      super.b($$0);
+      this.b.ah().a(adu.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(epu $$0) {
+      super.c($$0);
+      this.b.ah().a(adu.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
+      }
+   }
+
+   public List<xz<?>> d(epr $$0) {
+      List<xz<?>> $$1 = Lists.newArrayList();
+      $$1.add(new ads($$0, 0));
+
+      for (epq $$2 : epq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new adl($$2, $$0));
+         }
+      }
+
+      for (eps $$3 : this.i($$0)) {
+         $$1.add(new adv($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
+      }
+
+      return $$1;
+   }
+
+   public void e(epr $$0) {
+      List<xz<?>> $$1 = this.d($$0);
+
+      for (apb $$2 : this.b.ah().t()) {
+         for (xz<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
+      }
+
+      this.c.add($$0);
+   }
+
+   public List<xz<?>> f(epr $$0) {
+      List<xz<?>> $$1 = Lists.newArrayList();
+      $$1.add(new ads($$0, 1));
+
+      for (epq $$2 : epq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new adl($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(epr $$0) {
+      List<xz<?>> $$1 = this.f($$0);
+
+      for (apb $$2 : this.b.ah().t()) {
+         for (xz<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(epr $$0) {
+      int $$1 = 0;
+
+      for (epq $$2 : epq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public eiw.a<eqa> b() {
+      return new eiw.a<>(this::i, this::a, axs.n);
+   }
+
+   private eqa i() {
+      eqa $$0 = new eqa(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private eqa a(sy $$0, in.a $$1) {
+      return this.i().a($$0);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

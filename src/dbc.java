@@ -1,27 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbc extends cys {
-   public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(blb.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, dbc::new)
-   );
-   private final blb b;
+public class dbc extends czf {
+   public static final MapCodec<dbc> a = b(dbc::new);
 
    @Override
-   public MapCodec<? extends dbc> a() {
+   public MapCodec<dbc> a() {
       return a;
    }
 
-   public dbc(blb $$0, dli.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public dbc(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, cpd $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$3.a(5) == 0) {
+         ih $$4 = ih.b($$3);
+         if ($$4 != ih.b) {
+            ib $$5 = $$2.a($$4);
+            dme $$6 = $$1.a_($$5);
+            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
+               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
+               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
+               $$1.a(kb.aB, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
+            }
+         }
       }
    }
 }

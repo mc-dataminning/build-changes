@@ -1,47 +1,22 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dro implements dqk {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dqx i = new dqx(this);
+public class dro {
+   public static final Codec<dro> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dwz.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dro::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-   public dro(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public awp d() {
-      return new dro(this.g());
-   }
-
-   @Override
-   public dri e() {
-      return new dqw.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+   public dro(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

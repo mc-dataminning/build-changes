@@ -1,15 +1,14 @@
-public enum dmz {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dmz implements axg {
+   a,
+   b;
 
-   private final int d;
-
-   private dmz(int $$0) {
-      this.d = $$0;
+   @Override
+   public String toString() {
+      return this.c();
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this == a ? "left" : "right";
    }
 }

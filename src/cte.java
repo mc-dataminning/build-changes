@@ -1,15 +1,57 @@
-public class cte extends ctm {
-   public cte(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bm, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class cte<T extends csb> implements csw<T> {
+   private final csb.a<T> x;
+   private final Codec<T> y;
+   private final xq<vd, T> z;
+
+   public cte(csb.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  avu.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  csh.d.fieldOf("category").orElse(csh.c).forGetter($$0xx -> $$0xx.b),
+                  csp.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  kh.h.q().xmap(cpq::new, cpq::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
+      this.z = xq.a(this::a, this::a);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public Codec<T> a() {
+      return this.y;
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public xq<vd, T> b() {
+      return this.z;
+   }
+
+   private T a(vd $$0) {
+      String $$1 = $$0.p();
+      csh $$2 = $$0.b(csh.class);
+      csp $$3 = csp.b.decode($$0);
+      cpq $$4 = cpq.f.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private void a(vd $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      csp.b.encode($$0, $$1.d);
+      cpq.f.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public csb a(String $$0, csh $$1, csp $$2, cpq $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

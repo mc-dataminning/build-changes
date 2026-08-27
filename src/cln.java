@@ -1,138 +1,77 @@
-import javax.annotation.Nullable;
+public class cln extends cku {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bme p;
 
-public class cln implements blp {
-   private final cuo c;
-   private final is<cpd> d = is.a(3, cpd.h);
-   @Nullable
-   private cup e;
-   private int f;
-   private int g;
-
-   public cln(cuo $$0) {
-      this.c = $$0;
+   public cln(int $$0, chz $$1) {
+      this($$0, $$1, new bmu(9));
    }
 
-   @Override
-   public int b() {
-      return this.d.size();
-   }
+   public cln(int $$0, chz $$1, bme $$2) {
+      super(cmb.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
 
-   @Override
-   public boolean aj_() {
-      for (cpd $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cmp($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public cpd a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cpd a(int $$0, int $$1) {
-      cpd $$2 = this.d.get($$0);
-      if ($$0 == 2 && !$$2.b()) {
-         return blq.a(this.d, $$0, $$2.M());
-      } else {
-         cpd $$3 = blq.a(this.d, $$0, $$1);
-         if (!$$3.b() && this.d($$0)) {
-            this.f();
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cmp($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
          }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cpd b(int $$0) {
-      return blq.a(this.d, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cpd $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.M() > this.al_()) {
-         $$1.f(this.al_());
       }
 
-      if (this.d($$0)) {
-         this.f();
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cmp($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(chl $$0) {
-      return this.c.gg() == $$0;
+   public boolean a(cia $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.e = null;
-      cpd $$0;
-      cpd $$1;
-      if (this.d.get(0).b()) {
-         $$0 = this.d.get(1);
-         $$1 = cpd.h;
-      } else {
-         $$0 = this.d.get(0);
-         $$1 = this.d.get(1);
-      }
-
-      if ($$0.b()) {
-         this.a(2, cpd.h);
-         this.g = 0;
-      } else {
-         cuq $$4 = this.c.gi();
-         if (!$$4.isEmpty()) {
-            cup $$5 = $$4.a($$0, $$1, this.f);
-            if ($$5 == null || $$5.q()) {
-               this.e = $$5;
-               $$5 = $$4.a($$1, $$0, this.f);
+   public cpq a(cia $$0, int $$1) {
+      cpq $$2 = cpq.h;
+      cmp $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cpq $$4 = $$3.g();
+         $$2 = $$4.q();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cpq.h;
             }
-
-            if ($$5 != null && !$$5.q()) {
-               this.e = $$5;
-               this.a(2, $$5.f());
-               this.g = $$5.p();
-            } else {
-               this.a(2, cpd.h);
-               this.g = 0;
-            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cpq.h;
          }
 
-         this.c.l(this.a(2));
+         if ($$4.b()) {
+            $$3.e(cpq.h);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cpq.h;
+         }
+
+         $$3.a($$0, $$4);
       }
-   }
 
-   @Nullable
-   public cup g() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-      this.f = $$0;
-      this.f();
+      return $$2;
    }
 
    @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   public int h() {
-      return this.g;
+   public void b(cia $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

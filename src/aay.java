@@ -1,55 +1,79 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import java.util.List;
 
-public class aay implements xx<aag> {
-   public static final xo<uq, aay> a = xx.a(aay::a, aay::new);
-   private final int b;
-   private final Suggestions c;
+public record aay(List<aay.a> b) implements xz<aai> {
+   public static final xq<us, aay> a = xz.a(aay::a, aay::new);
+   private static final int c = 2097152;
 
-   public aay(int $$0, Suggestions $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private aay(us $$0) {
+      this($$0.a(aay.a::new));
    }
 
-   private aay(uq $$0) {
-      this.b = $$0.n();
-      int $$1 = $$0.n();
-      int $$2 = $$0.n();
-      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
-      List<Suggestion> $$4 = $$0.a((xp<? super uq, Suggestion>)($$1x -> {
-         String $$2x = $$1x.r();
-         vq $$3x = $$1x.c(uq::m);
-         return new Suggestion($$3, $$2x, $$3x);
-      }));
-      this.c = new Suggestions($$3, $$4);
+   public static aay a(List<dol> $$0) {
+      return new aay($$0.stream().map(aay.a::new).toList());
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c.getRange().getStart());
-      $$0.c(this.c.getRange().getLength());
-      $$0.a(this.c.getList(), ($$0x, $$1) -> {
-         $$0x.a($$1.getText());
-         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(vt.a($$1x)));
-      });
+   private void a(us $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public xz<aay> a() {
-      return aeq.r;
+   public yb<aay> a() {
+      return aet.p;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
+   public static record a(cvl a, byte[] b) {
+      public a(dol $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new us(this.d()), $$0);
+      }
 
-   public Suggestions e() {
-      return this.c;
+      public a(us $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
+
+      private static int a(dol $$0) {
+         int $$1 = 0;
+
+         for (dom $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public us a() {
+         return new us(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(us $$0, dol $$1) {
+         for (dom $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(us $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cvl b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

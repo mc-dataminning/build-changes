@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Arrays;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eli {
+public interface eli<T extends eli<T>> {
+   T b(ell.a var1);
+
+   default <E> T a(Iterable<E> $$0, Function<E, ell.a> $$1) {
+      T $$2 = this.c();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
+   }
+
+   default <E> T a(E[] $$0, Function<E, ell.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
+   }
+
+   T c();
 }

@@ -1,17 +1,14 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class efr implements eft {
-   private static final efr b = new efr();
-   public static final Codec<efr> a = Codec.unit(b);
+public class efr extends egd {
+   public static final Codec<efr> a = Codec.unit(() -> efr.b);
+   public static final efr b = new efr();
 
-   @Override
-   public sw a(awp $$0, @Nullable sw $$1) {
-      return new sw();
+   private efr() {
    }
 
    @Override
-   public efu<?> a() {
-      return efu.a;
+   protected egf<?> a() {
+      return egf.j;
    }
 }

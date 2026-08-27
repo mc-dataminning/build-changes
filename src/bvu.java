@@ -1,55 +1,57 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bvu extends bvf {
-   private final boq a;
-   @Nullable
-   private boi b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
+public abstract class bvu {
+   private final EnumSet<bvu.a> a = EnumSet.noneOf(bvu.a.class);
 
-   public bvu(boq $$0, double $$1, float $$2) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(bvf.a.a));
-   }
+   public abstract boolean a();
 
-   @Override
-   public boolean a() {
-      this.b = this.a.q();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
-         return false;
-      } else {
-         enz $$0 = bzc.a(this.a, 16, 7, this.b.dk(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      }
-   }
-
-   @Override
    public boolean b() {
-      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
+      return this.a();
    }
 
-   @Override
-   public void d() {
-      this.b = null;
+   public boolean S_() {
+      return true;
    }
 
-   @Override
    public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.f);
+   }
+
+   public void d() {
+   }
+
+   public boolean T_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bvu.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bvu.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.T_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return awm.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

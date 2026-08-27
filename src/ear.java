@@ -1,10 +1,53 @@
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class ear extends eas {
-   @Override
-   public final Stream<hz> a_(eaq $$0, awp $$1, hz $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class ear extends ean {
+   public static final Codec<ear> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsk.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dsk.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ear::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dsk d;
+   private final dsk e;
+   private final int f;
+
+   private ear(dsk $$0, dsk $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected abstract boolean a(eaq var1, awp var2, hz var3);
+   public static ear a(dsk $$0, dsk $$1, int $$2) {
+      return new ear($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(awt $$0, dsn $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = awm.a($$0, $$2 + this.f, $$3);
+         int $$5 = awm.a($$0, $$2, $$4 - 1);
+         return awm.a($$0, $$2, $$5 - 1 + this.f);
+      }
+   }
+
+   @Override
+   public eao<?> a() {
+      return eao.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   }
 }

@@ -1,29 +1,19 @@
-public class yf implements xx<yd> {
-   public static final xo<uq, yf> a = xx.a(yf::a, yf::new);
-   private final vq b;
+public interface yf extends aac, un {
+   void a(yi var1);
 
-   public yf(vq $$0) {
-      this.b = $$0;
-   }
+   void a(yj var1);
 
-   private yf(uq $$0) {
-      this.b = $$0.m();
-   }
+   void a(yg var1);
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-   }
+   void a(yh var1);
 
-   @Override
-   public xz<yf> a() {
-      return yn.b;
-   }
+   void a(yl var1);
 
-   public void a(yd $$0) {
-      $$0.a(this);
-   }
+   void a(yk var1);
 
-   public vq b() {
-      return this.b;
-   }
+   void a(yo var1);
+
+   void a(ym var1);
+
+   void a(yn var1);
 }

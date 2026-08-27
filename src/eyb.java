@@ -1,24 +1,38 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class eyb {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
-   private final FloatUnaryOperator e;
+   private final frb a;
+   private int b = -1;
+   @Nullable
+   private Consumer<sy> c;
 
-   public eyb(float $$0, long $$1, FloatUnaryOperator $$2) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
-      this.e = $$2;
+   public eyb(frb $$0) {
+      this.a = $$0;
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.e.apply(this.d);
+   public boolean a(int $$0, @Nullable sy $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private int a(Consumer<sy> $$0) {
       this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+      return ++this.b;
+   }
+
+   public void a(int $$0, Consumer<sy> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new afo($$2, $$0));
+   }
+
+   public void a(ib $$0, Consumer<sy> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aey($$2, $$0));
    }
 }

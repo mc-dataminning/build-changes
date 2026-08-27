@@ -1,81 +1,67 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class daf extends cye implements dfs {
+public class daf extends dfq implements dgf {
    public static final MapCodec<daf> a = b(daf::new);
-   public static final dma b = dlz.C;
-   private static final int d = 3;
-   protected static final eos c = cys.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   public static final dmv b = dmu.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final epo e = czf.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final epo f = czf.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final epo g = czf.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
    @Override
    public MapCodec<daf> a() {
       return a;
    }
 
-   public daf(dli.d $$0) {
+   public daf(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ih.a.b));
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new djj($$0, $$1);
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      switch ((ih.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return a($$2, diz.z, $$0.B ? djj::a : djj::b);
+   public dme a(crx $$0) {
+      ehr $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ehs.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.b;
-   }
-
-   @Override
-   protected egw c_(dlj $$0) {
-      return $$0.c(b) ? egx.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
       if ($$0.c(b)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return c;
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b).a(i);
    }
 
    @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
-      if ($$4.B()) {
-         dix $$5 = $$0.c_($$1);
-         if ($$5 instanceof dis) {
-            ((dis)$$5).a($$4.z());
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public dlj a(crk $$0) {
-      egw $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Boolean.valueOf($$1.a(auf.a) && $$1.e() == 8));
+   protected ehr c_(dme $$0) {
+      return $$0.c(b) ? ehs.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
       return false;
    }
 }

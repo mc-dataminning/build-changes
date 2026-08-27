@@ -1,63 +1,123 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class gla implements asc {
-   public static final gla.a<cpd> a = new gla.a<>();
-   public static final gla.a<cpd> b = new gla.a<>();
-   public static final gla.a<fjd> c = new gla.a<>();
-   private final Map<gla.a<?>, gla.c<?>> d = new HashMap<>();
+public class gla implements gkw {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final fvs c;
+   private final gmq d;
+   private final cxf e;
+   private final awt f;
+   private final Object2ObjectArrayMap<cxd, gla.a> g = new Object2ObjectArrayMap();
+   private Optional<cxb> h = Optional.empty();
+   private Optional<cxa> i = Optional.empty();
+   private float j;
+   @Nullable
+   private cxd k;
+
+   public gla(fvs $$0, gmq $$1, cxf $$2) {
+      this.f = $$0.dJ().F_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public float b() {
+      return this.j;
+   }
 
    @Override
-   public void a(asb $$0) {
-      for (gla.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
-   }
+   public void a() {
+      this.g.values().removeIf(gkv::m);
+      cxd $$0 = this.e.a(this.c.do(), this.c.dq(), this.c.du()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(gla.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new gla.a((ato)$$1.a());
+                  this.d.a((glm)$$2);
+               }
 
-   public <T> void a(gla.a<T> $$0, gla.b<T> $$1) {
-      this.d.put($$0, new gla.c<>($$1));
-   }
-
-   private <T> gla.c<T> b(gla.a<T> $$0) {
-      gla.c<T> $$1 = (gla.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
-      } else {
-         return $$1;
-      }
-   }
-
-   public <T> void a(gla.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
-
-   public <T> glb<T> a(gla.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gky<T>> {
-   }
-
-   static class c<T> {
-      private final gla.b<T> a;
-      gky<T> b = gky.b();
-
-      c(gla.b<T> $$0) {
-         this.a = $$0;
+               $$2.p();
+               return $$2;
+            }));
       }
 
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(glh.b($$0x.a().a()));
+         }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               cwe $$1 = this.c.dJ();
+               int $$2 = $$0x.c() * 2 + 1;
+               ib $$3 = ib.a(
+                  this.c.do() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.ds() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.du() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(cwn.a, $$3);
+               if ($$4 > 0) {
+                  this.j = this.j - (float)$$4 / (float)$$1.O() * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(cwn.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.do();
+                  double $$9 = $$6 - this.c.ds();
+                  double $$10 = $$7 - this.c.du();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  glh $$13 = glh.a($$0x.a().a(), this.f, this.c.do() + $$8 / $$11 * $$12, this.c.ds() + $$9 / $$11 * $$12, this.c.du() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
+   }
+
+   public static class a extends gkv {
+      private int n;
+      private int o;
+
+      public a(ato $$0) {
+         super($$0, atq.i, glm.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      void a() {
-         this.b.a();
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
+
+         this.o = this.o + this.n;
+         this.d = awm.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
+
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
+
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
       }
    }
 }

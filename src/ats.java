@@ -1,51 +1,93 @@
-import java.util.Objects;
+import com.google.common.collect.Sets;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class ats<T> extends epg {
-   public static final xo<vb, ats<?>> a = xm.a(kg.ag).b(ats::a, atu::a);
-   private final att o;
-   private final T p;
-   private final atu<T> q;
+public class ats {
+   protected final Set<ajc> a = Sets.newHashSet();
+   protected final Set<ajc> b = Sets.newHashSet();
+   private final att c = new att();
 
-   protected ats(atu<T> $$0, T $$1, att $$2) {
-      super(a($$0, $$1));
-      this.q = $$0;
-      this.o = $$2;
-      this.p = $$1;
+   public void a(ats $$0) {
+      this.a.clear();
+      this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
    }
 
-   public static <T> String a(atu<T> $$0, T $$1) {
-      return a(kf.x.b($$0)) + ":" + a($$0.b().b($$1));
+   public void a(csu<?> $$0) {
+      if (!$$0.b().ar_()) {
+         this.a($$0.a());
+      }
    }
 
-   private static <T> String a(@Nullable aiy $$0) {
-      return $$0.toString().replace(':', '.');
+   protected void a(ajc $$0) {
+      this.a.add($$0);
    }
 
-   public atu<T> a() {
-      return this.q;
+   public boolean b(@Nullable csu<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
    }
 
-   public T b() {
-      return this.p;
+   public boolean b(ajc $$0) {
+      return this.a.contains($$0);
    }
 
-   public String a(int $$0) {
-      return this.o.format($$0);
+   public void c(csu<?> $$0) {
+      this.c($$0.a());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof ats && Objects.equals(this.d(), ((ats)$$0).d());
+   protected void c(ajc $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
+   public boolean d(csu<?> $$0) {
+      return this.b.contains($$0.a());
    }
 
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   public void e(csu<?> $$0) {
+      this.b.remove($$0.a());
+   }
+
+   public void f(csu<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(ajc $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(cmi $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(cmi $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(cmh<?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(cmi $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(cmi $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(att $$0) {
+      this.c.a($$0);
+   }
+
+   public att a() {
+      return this.c.a();
+   }
+
+   public void a(cmi $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
    }
 }

@@ -1,53 +1,52 @@
-import java.util.function.BooleanSupplier;
+public class ffj extends fgh {
+   private static final vs a = vs.c("gui.toMenu");
+   private static final vs b = vs.c("gui.toTitle");
+   private final fgh c;
+   private final vs k;
+   private final vs l;
+   private final fea m = fea.d();
 
-public class ffj extends ffl {
-   private static final vq a = vq.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier k;
+   public ffj(fgh $$0, vs $$1, vs $$2) {
+      this($$0, $$1, $$2, a);
+   }
 
-   public ffj(BooleanSupplier $$0) {
-      super(exg.a);
-      this.k = $$0;
-      this.c = System.currentTimeMillis();
+   public ffj(fgh $$0, vs $$1, vs $$2, vs $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
-   public boolean aO_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aP_() {
-      return false;
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void e() {
-      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
+   protected void aP_() {
+      this.m.c().b().a(10);
+      this.m.a(new fbr(this.e, this.i));
+      this.m.a(new fbe(this.k, this.i).c(this.g - 50).b(true));
+      fak $$0;
+      if (this.f.E()) {
+         $$0 = fak.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = fak.a(b, $$0x -> this.f.a(new fgm())).a();
       }
+
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::c);
+      this.c();
    }
 
    @Override
-   public void d() {
-      this.f.aX().c(vq.c("narrator.ready_to_play"));
-      super.d();
+   protected void c() {
+      fdu.a(this.m, this.F());
    }
 
    @Override
-   public boolean m() {
+   public vs i() {
+      return vr.a(this.e, this.k);
+   }
+
+   @Override
+   public boolean aN_() {
       return false;
    }
 }

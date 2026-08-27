@@ -1,106 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class ejb {
-   private static final Codec<ejb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avq.a(emx.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), avq.a(emx.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, ejb::new)
-   );
-   public static final Codec<ejb> a = Codec.either(Codec.INT, b).xmap($$0 -> (ejb)$$0.map(ejb::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final emw c;
-   @Nullable
-   private final emw d;
-   private final ejb.b e;
-   private final ejb.a f;
+public class ejb extends eiw {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public Set<elk<?>> a() {
-      Builder<elk<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public static eiw.a<ejb> a() {
+      return new eiw.a<>(ejb::new, ejb::b, axs.k);
    }
 
-   private ejb(Optional<emw> $$0, Optional<emw> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public ejb() {
+      this.b.defaultReturnValue(-1);
    }
 
-   private ejb(@Nullable emw $$0, @Nullable emw $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   public static ejb b(sy $$0, in.a $$1) {
+      ejb $$2 = new ejb();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> awi.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
+
+      return $$2;
    }
 
-   public static ejb a(int $$0) {
-      emu $$1 = emu.a((float)$$0);
-      return new ejb(Optional.of($$1), Optional.of($$1));
+   @Override
+   public sy a(sy $$0, in.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
    }
 
-   public static ejb a(int $$0, int $$1) {
-      return new ejb(Optional.of(emu.a((float)$$0)), Optional.of(emu.a((float)$$1)));
-   }
-
-   public static ejb b(int $$0) {
-      return new ejb(Optional.of(emu.a((float)$$0)), Optional.empty());
-   }
-
-   public static ejb c(int $$0) {
-      return new ejb(Optional.empty(), Optional.of(emu.a((float)$$0)));
-   }
-
-   public int a(ejc $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(ejc $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof emu $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(ejc var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(ejc var1, int var2);
+   public eja b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new eja($$0);
    }
 }

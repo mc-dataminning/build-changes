@@ -1,35 +1,85 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public record apn(String b, vu c) {
-   public static final apn a = a("");
+public class apn implements apj {
+   private final apl a;
+   private final Long2ObjectOpenHashMap<dof> b = new Long2ObjectOpenHashMap();
+   private cvl c = new cvl(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public static apn a(String $$0) {
-      return new apn($$0, vu.c);
+   private apn(apl $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static apn b(String $$0) {
-      return new apn($$0, vu.b);
+   public static apn b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static apn c(int $$0) {
+      apl $$1 = apl.c($$0);
+      int $$2 = apj.a($$0);
+      int $$3 = $$0 + dof.b();
+      int $$4 = apj.a($$3);
+      return new apn($$1, $$2, $$3, $$4);
+   }
+
+   public static apn c() {
+      return new apn(apl.c(), 0, 0, 0);
+   }
+
+   @Override
+   public void a(cvl $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
+      }
+   }
+
+   @Override
+   public void a(cvl $$0, @Nullable dof $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
+         } else {
+            this.b.put($$0.a(), $$1);
+         }
+      }
+   }
+
+   @Override
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
+   }
+
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.a.d();
    }
 
    @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public vu e() {
-      return this.c;
+   public dof a(int $$0, int $$1) {
+      return (dof)this.b.get(cvl.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

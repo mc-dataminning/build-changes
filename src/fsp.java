@@ -1,102 +1,85 @@
-public class fsp extends fuh {
-   private final double a;
-   private final double b;
-   private final double F;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   fsp(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$7;
-      this.w = 0.9F * $$7;
-      this.x = $$7;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+public final class fsp {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fsp c = new fsp(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fsp(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public ftl b() {
-      return ftl.b;
+   private fsp(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
       }
-
-      return $$3 | $$4 << 16;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fsp a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fsp($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
       }
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsp $$8 = new fsp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
    }
 
-   public static class b implements ftk<kc> {
-      private final fuc a;
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
 
-      public b(fuc $$0) {
-         this.a = $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fsp ? this.b.equals(((fsp)$$0).b) : false;
       }
+   }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsp $$8 = new fsp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

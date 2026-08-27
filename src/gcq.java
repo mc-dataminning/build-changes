@@ -1,12 +1,18 @@
-public class gcq extends gbt<ceu> {
-   private static final aiy a = new aiy("textures/entity/illager/pillager.png");
+public class gcq extends gfd {
+   private static final ajc a = new ajc("textures/entity/zombie/husk.png");
 
-   public gcq(gba.a $$0) {
-      super($$0, new fmw<>($$0.a(fpi.aN)), 0.5F);
-      this.a(new gfe<>(this, $$0.d()));
+   public gcq(gby.a $$0) {
+      super($$0, fqe.an, fqe.ao, fqe.ap);
    }
 
-   public aiy a(ceu $$0) {
+   protected void a(cfz $$0, etd $$1, float $$2) {
+      float $$3 = 1.0625F;
+      $$1.b(1.0625F, 1.0625F, 1.0625F);
+      super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public ajc a(cfz $$0) {
       return a;
    }
 }

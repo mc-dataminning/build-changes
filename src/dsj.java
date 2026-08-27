@@ -1,22 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.atomic.AtomicLong;
 
-class dsj extends dsn {
-   private final in<egv> e;
-   public static final Codec<dsj> a = RecordCodecBuilder.create($$0 -> a($$0).and(ix.a(kg.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dsj::new));
+@Deprecated
+public class dsj implements drf {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final drs i = new drs(this);
 
-   public dsj(jd $$0, in<egv> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dsj(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(dlj $$0) {
-      return $$0.u().a(this.e);
+   public awt d() {
+      return new dsj(this.g());
    }
 
    @Override
-   public dsd<?> a() {
-      return dsd.c;
+   public dsd e() {
+      return new drr.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

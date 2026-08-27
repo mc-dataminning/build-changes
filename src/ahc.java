@@ -1,19 +1,36 @@
-public class ahc {
-   public static final xz<agx> a = a("custom_query");
-   public static final xz<agy> b = a("game_profile");
-   public static final xz<agz> c = a("hello");
-   public static final xz<aha> d = a("login_compression");
-   public static final xz<ahb> e = a("login_disconnect");
-   public static final xz<ahf> f = b("custom_query_answer");
-   public static final xz<ahg> g = b("hello");
-   public static final xz<ahh> h = b("key");
-   public static final xz<ahi> i = b("login_acknowledged");
+import com.mojang.authlib.GameProfile;
 
-   private static <T extends xx<agw>> xz<T> a(String $$0) {
-      return new xz<>(xy.b, new aiy($$0));
+public class ahc implements xz<aha> {
+   public static final xq<us, ahc> a = xz.a(ahc::a, ahc::new);
+   private final GameProfile b;
+
+   public ahc(GameProfile $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends xx<ahe>> xz<T> b(String $$0) {
-      return new xz<>(xy.a, new aiy($$0));
+   private ahc(us $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(us $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yb<ahc> a() {
+      return ahg.b;
+   }
+
+   public void a(aha $$0) {
+      $$0.a(this);
+   }
+
+   public GameProfile b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,96 +1,124 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
 public class dlp {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dln>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+   static final String a = "server_data";
+   static Codec<dlp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               je.c.optionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.optionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               cpq.a.listOf().optionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.optionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dlp::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<cpq> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
 
-   private dlp() {
-      this.c.put(' ', $$0 -> true);
+   dlp(Set<UUID> $$0, long $$1, List<cpq> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
    }
 
-   public dlp a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
+   dlp() {
+   }
+
+   void a(long $$0) {
+      this.h = $$0;
+   }
+
+   long a() {
+      return this.h;
+   }
+
+   Set<UUID> b() {
+      return this.e;
+   }
+
+   boolean a(cia $$0) {
+      return this.e.contains($$0.ct());
+   }
+
+   @VisibleForTesting
+   public void b(cia $$0) {
+      this.e.add($$0.ct());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
          }
+      }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+      this.i();
+   }
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
+   long c() {
+      return this.f;
+   }
 
-            this.b.add($$0);
-            return this;
-         }
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
+   }
+
+   List<cpq> d() {
+      return this.g;
+   }
+
+   void e() {
+      this.i = 0;
+      this.i();
+   }
+
+   void a(List<cpq> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
+   }
+
+   cpq f() {
+      return this.g.isEmpty() ? cpq.h : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cpq.h);
+   }
+
+   cpq g() {
+      if (this.g.isEmpty()) {
+         return cpq.h;
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cpq.h);
       }
    }
 
-   public static dlp a() {
-      return new dlp();
+   void a(dlp $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   public dlp a(char $$0, Predicate<dln> $$1) {
-      this.c.put($$0, $$1);
-      return this;
+   private void i() {
+      this.c = true;
    }
 
-   public dlo b() {
-      return new dlo(this.c());
-   }
-
-   private Predicate<dln>[][][] c() {
-      this.d();
-      Predicate<dln>[][][] $$0 = (Predicate<dln>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
-
-      for (Entry<Character, Predicate<dln>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - awm.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

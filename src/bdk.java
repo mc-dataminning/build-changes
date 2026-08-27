@@ -1,61 +1,49 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
 
-public class bdk {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_wooden_slab", "minecraft:acacia_slab")
-      .put("minecraft:birch_wooden_slab", "minecraft:birch_slab")
-      .put("minecraft:black_stained_hardened_clay", "minecraft:black_terracotta")
-      .put("minecraft:blue_stained_hardened_clay", "minecraft:blue_terracotta")
-      .put("minecraft:boat", "minecraft:oak_boat")
-      .put("minecraft:bone_meal_from_block", "minecraft:bone_meal_from_bone_block")
-      .put("minecraft:bone_meal_from_bone", "minecraft:bone_meal")
-      .put("minecraft:brick_block", "minecraft:bricks")
-      .put("minecraft:brown_stained_hardened_clay", "minecraft:brown_terracotta")
-      .put("minecraft:chiseled_stonebrick", "minecraft:chiseled_stone_bricks")
-      .put("minecraft:cyan_stained_hardened_clay", "minecraft:cyan_terracotta")
-      .put("minecraft:dark_oak_wooden_slab", "minecraft:dark_oak_slab")
-      .put("minecraft:end_bricks", "minecraft:end_stone_bricks")
-      .put("minecraft:fence_gate", "minecraft:oak_fence_gate")
-      .put("minecraft:fence", "minecraft:oak_fence")
-      .put("minecraft:golden_rail", "minecraft:powered_rail")
-      .put("minecraft:gold_ingot_from_block", "minecraft:gold_ingot_from_gold_block")
-      .put("minecraft:gray_stained_hardened_clay", "minecraft:gray_terracotta")
-      .put("minecraft:green_stained_hardened_clay", "minecraft:green_terracotta")
-      .put("minecraft:iron_ingot_from_block", "minecraft:iron_ingot_from_iron_block")
-      .put("minecraft:jungle_wooden_slab", "minecraft:jungle_slab")
-      .put("minecraft:light_blue_stained_hardened_clay", "minecraft:light_blue_terracotta")
-      .put("minecraft:light_gray_stained_hardened_clay", "minecraft:light_gray_terracotta")
-      .put("minecraft:lime_stained_hardened_clay", "minecraft:lime_terracotta")
-      .put("minecraft:lit_pumpkin", "minecraft:jack_o_lantern")
-      .put("minecraft:magenta_stained_hardened_clay", "minecraft:magenta_terracotta")
-      .put("minecraft:magma", "minecraft:magma_block")
-      .put("minecraft:melon_block", "minecraft:melon")
-      .put("minecraft:mossy_stonebrick", "minecraft:mossy_stone_bricks")
-      .put("minecraft:noteblock", "minecraft:note_block")
-      .put("minecraft:oak_wooden_slab", "minecraft:oak_slab")
-      .put("minecraft:orange_stained_hardened_clay", "minecraft:orange_terracotta")
-      .put("minecraft:pillar_quartz_block", "minecraft:quartz_pillar")
-      .put("minecraft:pink_stained_hardened_clay", "minecraft:pink_terracotta")
-      .put("minecraft:purple_shulker_box", "minecraft:shulker_box")
-      .put("minecraft:purple_stained_hardened_clay", "minecraft:purple_terracotta")
-      .put("minecraft:red_nether_brick", "minecraft:red_nether_bricks")
-      .put("minecraft:red_stained_hardened_clay", "minecraft:red_terracotta")
-      .put("minecraft:slime", "minecraft:slime_block")
-      .put("minecraft:smooth_red_sandstone", "minecraft:cut_red_sandstone")
-      .put("minecraft:smooth_sandstone", "minecraft:cut_sandstone")
-      .put("minecraft:snow_layer", "minecraft:snow")
-      .put("minecraft:snow", "minecraft:snow_block")
-      .put("minecraft:speckled_melon", "minecraft:glistering_melon_slice")
-      .put("minecraft:spruce_wooden_slab", "minecraft:spruce_slab")
-      .put("minecraft:stonebrick", "minecraft:stone_bricks")
-      .put("minecraft:stone_stairs", "minecraft:cobblestone_stairs")
-      .put("minecraft:string_to_wool", "minecraft:white_wool_from_string")
-      .put("minecraft:trapdoor", "minecraft:oak_trapdoor")
-      .put("minecraft:white_stained_hardened_clay", "minecraft:white_terracotta")
-      .put("minecraft:wooden_button", "minecraft:oak_button")
-      .put("minecraft:wooden_door", "minecraft:oak_door")
-      .put("minecraft:wooden_pressure_plate", "minecraft:oak_pressure_plate")
-      .put("minecraft:yellow_stained_hardened_clay", "minecraft:yellow_terracotta")
-      .build();
+public class bdk extends DataFix {
+   public bdk(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdt.c);
+      OpticFinder<?> $$1 = $$0.findField("block_ticks");
+      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
+         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
+         Optional<? extends Dynamic<?>> $$3 = $$2.isPresent() ? $$2.get().write().result() : Optional.empty();
+         return $$1x.update(DSL.remainderFinder(), $$1xx -> {
+            int $$2x = $$1xx.get("xPos").asInt(0);
+            int $$3x = $$1xx.get("zPos").asInt(0);
+            Optional<? extends Dynamic<?>> $$4 = $$1xx.get("fluid_ticks").get().result();
+            $$1xx = a($$1xx, $$2x, $$3x, $$3, "neighbor_block_ticks");
+            return a($$1xx, $$2x, $$3x, $$4, "neighbor_fluid_ticks");
+         });
+      });
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, Optional<? extends Dynamic<?>> $$3, String $$4) {
+      if ($$3.isPresent()) {
+         List<? extends Dynamic<?>> $$5 = $$3.get().asStream().filter($$2x -> {
+            int $$3x = $$2x.get("x").asInt(0);
+            int $$4x = $$2x.get("z").asInt(0);
+            int $$5x = Math.abs($$1 - ($$3x >> 4));
+            int $$6 = Math.abs($$2 - ($$4x >> 4));
+            return ($$5x != 0 || $$6 != 0) && $$5x <= 1 && $$6 <= 1;
+         }).toList();
+         if (!$$5.isEmpty()) {
+            $$0 = $$0.set("UpgradeData", $$0.get("UpgradeData").orElseEmptyMap().set($$4, $$0.createList($$5.stream())));
+         }
+      }
+
+      return $$0;
+   }
 }

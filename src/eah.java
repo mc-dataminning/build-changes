@@ -1,78 +1,17 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eah extends eas {
-   public static final Codec<eah> a = blb.b(0, 256).fieldOf("count").xmap(eah::new, $$0 -> $$0.c).codec();
-   private final blb c;
+public record eah(il<cpl> c, eaj d) {
+   public static final Codec<eah> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiz.a(ki.F).fieldOf("display").forGetter($$0x -> $$0x.c), eaj.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, eah::new)
+   );
+   public static final Codec<il<eah>> b = aiy.a(ki.aA, a);
 
-   private eah(blb $$0) {
-      this.c = $$0;
+   public il<cpl> a() {
+      return this.c;
    }
 
-   public static eah a(blb $$0) {
-      return new eah($$0);
-   }
-
-   public static eah a(int $$0) {
-      return a(bky.a($$0));
-   }
-
-   @Override
-   public Stream<hz> a_(eaq $$0, awp $$1, hz $$2) {
-      Builder<hz> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dqv.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new hz($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
-   }
-
-   @Override
-   public eat<?> b() {
-      return eat.i;
-   }
-
-   private static int a(eaq $$0, int $$1, int $$2, int $$3, int $$4) {
-      hz.a $$5 = new hz.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dlj $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dlj $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(cyu.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
-         }
-
-         $$7 = $$9;
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   private static boolean a(dlj $$0) {
-      return $$0.i() || $$0.a(cyu.G) || $$0.a(cyu.H);
+   public eaj b() {
+      return this.d;
    }
 }

@@ -1,34 +1,16 @@
-public class gdp extends gaz<cdx> {
-   private final fwn a;
+public class gdp extends gde<cbe, fok<cbe>> {
+   private static final ajc a = new ajc("textures/entity/bear/polarbear.png");
 
-   public gdp(gba.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gdp(gby.a $$0) {
+      super($$0, new fok<>($$0.a(fqe.aW)), 0.9F);
    }
 
-   public void a(cdx $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = awi.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gdo.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ajc a(cbe $$0) {
+      return a;
    }
 
-   public aiy a(cdx $$0) {
-      return gha.e;
+   protected void a(cbe $$0, etd $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

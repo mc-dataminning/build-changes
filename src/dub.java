@@ -1,43 +1,45 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class dub<FC extends dwd> {
-   private final Optional<dtm<?, ?>> a;
-   private final cwm b;
-   private final dng c;
-   private final awp d;
-   private final hz e;
-   private final FC f;
-
-   public dub(Optional<dtm<?, ?>> $$0, cwm $$1, dng $$2, awp $$3, hz $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class dub extends duu<dwr> {
+   public dub(Codec<dwr> $$0) {
+      super($$0);
    }
 
-   public Optional<dtm<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   public boolean a(duw<dwr> $$0) {
+      ib $$1 = $$0.e();
+      cwz $$2 = $$0.b();
+      awt $$3 = $$0.d();
 
-   public cwm b() {
-      return this.b;
-   }
+      dwr $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.J_() + 3; $$1 = $$1.d()) {
+         if (!$$2.u($$1.d())) {
+            dme $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
 
-   public dng c() {
-      return this.c;
-   }
+      if ($$1.v() <= $$2.J_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-   public awp d() {
-      return this.d;
-   }
+            for (ib $$11 : ib.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
 
-   public hz e() {
-      return this.e;
-   }
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
 
-   public FC f() {
-      return this.f;
+         return true;
+      }
    }
 }

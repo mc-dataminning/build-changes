@@ -1,154 +1,186 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dlk<O, S extends dll<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dmm<?>> c;
-   private final ImmutableList<S> d;
+public enum dlk implements axg {
+   a("inactive", 0, dlk.b.a, -1.0, false),
+   b("waiting_for_players", 4, dlk.b.b, 200.0, true),
+   c("active", 8, dlk.b.c, 1000.0, true),
+   d("waiting_for_reward_ejection", 8, dlk.b.b, -1.0, false),
+   e("ejecting_reward", 8, dlk.b.b, -1.0, false),
+   f("cooldown", 0, dlk.b.d, -1.0, false);
 
-   protected dlk(Function<O, S> $$0, O $$1, dlk.b<O, S> $$2, Map<String, dmm<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+   private static final float g = 40.0F;
+   private static final int h = awm.d(30.0F);
+   private final String i;
+   private final int j;
+   private final double k;
+   private final dlk.b l;
+   private final boolean m;
 
-      while ($$7.hasNext()) {
-         Entry<String, dmm<?>> $$6 = (Entry<String, dmm<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dmm<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dmm<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dmm<?> $$11 = (dmm<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dmm<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dmm<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   private dlk(String $$0, int $$1, dlk.b $$2, double $$3, boolean $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l = $$2;
+      this.k = $$3;
+      this.m = $$4;
    }
 
-   private static <S extends dll<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dmm<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dll)((dll)$$1x.getFirst()).a($$3, ((dmm.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   dlk a(ib $$0, dlh $$1, apa $$2) {
+      dlj $$3 = $$1.c();
+      dli $$4 = $$1.b();
+      dlg $$5 = $$1.f();
+      dlg.a $$6 = $$1.g();
+
+      return switch (this) {
+         case a -> $$3.a($$1, $$2, b) == null ? this : b;
+         case b -> {
+            if (!$$3.b()) {
+               yield a;
+            } else {
+               $$3.a($$2, $$0, $$5, $$6, $$4.a());
+               yield $$3.c.isEmpty() ? this : c;
+            }
+         }
+         case c -> {
+            if (!$$3.b()) {
+               yield a;
+            } else {
+               int $$7 = $$3.a($$0);
+               $$3.a($$2, $$0, $$5, $$6, $$4.a());
+               if ($$3.a($$4, $$7)) {
+                  if ($$3.c()) {
+                     $$3.e = $$2.X() + (long)$$4.h();
+                     $$3.g = 0;
+                     $$3.f = 0L;
+                     yield d;
+                  }
+               } else if ($$3.a($$2, $$4, $$7)) {
+                  $$1.a($$2, $$0).ifPresent($$4x -> {
+                     $$3.d.add($$4x);
+                     $$3.g++;
+                     $$3.f = $$2.X() + (long)$$4.g();
+                     $$3.j.b($$2.F_()).ifPresent($$2xx -> {
+                        $$3.h = Optional.of((cwv)$$2xx.b());
+                        $$1.e();
+                     });
+                  });
+               }
+
+               yield this;
+            }
+         }
+         case d -> {
+            if ($$3.a($$2, $$4, 40.0F)) {
+               $$2.a(null, $$0, atp.lM, atq.e);
+               yield e;
+            } else {
+               yield this;
+            }
+         }
+         case e -> {
+            if (!$$3.b($$2, $$4, (float)h)) {
+               yield this;
+            } else if ($$3.c.isEmpty()) {
+               $$2.a(null, $$0, atp.lN, atq.e);
+               $$3.i = Optional.empty();
+               yield f;
+            } else {
+               if ($$3.i.isEmpty()) {
+                  $$3.i = $$4.j().a($$2.F_());
+               }
+
+               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
+               $$3.c.remove($$3.c.iterator().next());
+               yield this;
+            }
+         }
+         case f -> {
+            if ($$3.a($$2)) {
+               $$3.e = 0L;
+               yield b;
+            } else {
+               yield this;
+            }
+         }
+      };
    }
 
-   public ImmutableList<S> a() {
-      return this.d;
+   public int a() {
+      return this.j;
    }
 
-   public S b() {
-      return (S)this.d.get(0);
+   public double b() {
+      return this.k;
    }
 
-   public O c() {
-      return this.b;
+   public boolean d() {
+      return this.k >= 0.0;
    }
 
-   public Collection<dmm<?>> d() {
-      return this.c.values();
+   public boolean e() {
+      return this.m;
+   }
+
+   public void a(cwe $$0, ib $$1) {
+      this.l.emit($$0, $$0.F_(), $$1);
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dmm::f).collect(Collectors.toList()))
-         .toString();
+   public String c() {
+      return this.i;
    }
 
-   @Nullable
-   public dmm<?> a(String $$0) {
-      return (dmm<?>)this.c.get($$0);
-   }
+   static class a {
+      private static final int a = 0;
+      private static final int b = 4;
+      private static final int c = 8;
 
-   public static class a<O, S extends dll<O, S>> {
-      private final O a;
-      private final Map<String, dmm<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
+      private a() {
       }
+   }
 
-      public dlk.a<O, S> a(dmm<?>... $$0) {
-         for (dmm<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
+   interface b {
+      dlk.b a = ($$0, $$1, $$2) -> {
+      };
+      dlk.b b = ($$0, $$1, $$2) -> {
+         if ($$1.a(2) == 0) {
+            eov $$3 = $$2.b().a($$1, 0.9F);
+            a(kb.aG, $$3, $$0);
+         }
+      };
+      dlk.b c = ($$0, $$1, $$2) -> {
+         eov $$3 = $$2.b().a($$1, 1.0F);
+         a(kb.ab, $$3, $$0);
+         a(kb.E, $$3, $$0);
+      };
+      dlk.b d = ($$0, $$1, $$2) -> {
+         eov $$3 = $$2.b().a($$1, 0.9F);
+         if ($$1.a(3) == 0) {
+            a(kb.ab, $$3, $$0);
          }
 
-         return this;
-      }
+         if ($$0.X() % 20L == 0L) {
+            eov $$4 = $$2.b().b(0.0, 0.5, 0.0);
+            int $$5 = $$0.F_().a(4) + 20;
 
-      private <T extends Comparable<T>> void a(dmm<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dlk.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dlk.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               a(kb.ab, $$4, $$0);
             }
          }
+      };
+
+      private static void a(ke $$0, eov $$1, cwe $$2) {
+         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
 
-      public dlk<O, S> a(Function<O, S> $$0, dlk.b<O, S> $$1) {
-         return new dlk<>($$0, this.a, $$1, this.b);
-      }
+      void emit(cwe var1, awt var2, ib var3);
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dmm<?>, Comparable<?>> var2, MapCodec<S> var3);
+   static class c {
+      private static final double a = -1.0;
+      private static final double b = 200.0;
+      private static final double c = 1000.0;
+
+      private c() {
+      }
    }
 }

@@ -1,58 +1,46 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-public abstract class atd implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
+public class atd {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
 
-   protected atd(String $$0) {
-      this.b = $$0;
+   public atd(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
-      }
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   public boolean c() {
-      return this.a;
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
+   }
+
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

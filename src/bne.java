@@ -1,47 +1,120 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public final class bne {
-   public static vq a(bnd $$0, float $$1, float $$2) {
-      if ($$0.a()) {
-         return vq.c("effect.duration.infinite");
+public class bne {
+   private final il<bng> a;
+   @Nullable
+   private final bof b;
+   @Nullable
+   private final bof c;
+   @Nullable
+   private final eov d;
+
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
+
+   public float a() {
+      return this.j().c();
+   }
+
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bne(il<bng> $$0, @Nullable bof $$1, @Nullable bof $$2, @Nullable eov $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bne(il<bng> $$0, @Nullable bof $$1, @Nullable bof $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bne(il<bng> $$0, eov $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bne(il<bng> $$0, @Nullable bof $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bne(il<bng> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bof c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bof d() {
+      return this.b;
+   }
+
+   public vs a(box $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         box $$5 = $$0.eK();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? vs.a($$6, $$0.Q_(), $$5.Q_()) : vs.a($$1, $$0.Q_());
       } else {
-         int $$3 = awi.d((float)$$0.c() * $$1);
-         return vq.b(axd.a($$3, $$2));
+         vs $$2 = this.b == null ? this.c.Q_() : this.b.Q_();
+         cpq $$4 = this.b instanceof box $$3 ? $$3.eR() : cpq.h;
+         return !$$4.b() && $$4.B() ? vs.a($$1 + ".item", $$0.Q_(), $$2, $$4.K()) : vs.a($$1, $$0.Q_(), $$2);
       }
    }
 
-   public static boolean a(boi $$0) {
-      return $$0.a(bnf.c) || $$0.a(bnf.C);
+   public String e() {
+      return this.j().a();
    }
 
-   public static int b(boi $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.a(bnf.c)) {
-         $$1 = $$0.c(bnf.c).d();
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof box && !(this.b instanceof cia);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cia $$0 && $$0.fW().d) {
+         return true;
       }
 
-      if ($$0.a(bnf.C)) {
-         $$2 = $$0.c(bnf.C).d();
+      return false;
+   }
+
+   @Nullable
+   public eov h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dh() : null;
       }
-
-      return Math.max($$1, $$2);
    }
 
-   public static boolean c(boi $$0) {
-      return $$0.a(bnf.m) || $$0.a(bnf.C);
+   @Nullable
+   public eov i() {
+      return this.d;
    }
 
-   public static List<aox> a(aow $$0, @Nullable bnq $$1, enz $$2, double $$3, bnd $$4, int $$5) {
-      ij<bnb> $$6 = $$4.b();
-      List<aox> $$7 = $$0.a(
-         $$6x -> $$6x.f.d()
-               && ($$1 == null || !$$1.r($$6x))
-               && $$2.a((it)$$6x.dk(), $$3)
-               && (!$$6x.a($$6) || $$6x.c($$6).d() < $$4.d() || $$6x.c($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new bnd($$4), $$1));
-      return $$7;
+   public boolean a(aut<bng> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(ajb<bng> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bng j() {
+      return this.a.a();
+   }
+
+   public il<bng> k() {
+      return this.a;
    }
 }

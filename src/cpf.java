@@ -1,44 +1,58 @@
-import java.util.stream.Stream;
+public class cpf extends cpl {
+   private static final int a = 40;
 
-public class cpf {
-   public static blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      $$1.c($$2);
-      return blx.b($$1.b($$2));
+   public cpf(cpl.a $$0) {
+      super($$0);
    }
 
-   public static cpd a(cpd $$0, chl $$1, cpd $$2, boolean $$3) {
-      boolean $$4 = $$1.fU().d;
-      if ($$3 && $$4) {
-         if (!$$1.fT().h($$2)) {
-            $$1.fT().e($$2);
+   @Override
+   public cpq a(cpq $$0, cwe $$1, box $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof apb $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(atz.c.b(this));
+      }
+
+      if (!$$1.B) {
+         $$2.e(bnu.s);
+      }
+
+      if ($$0.b()) {
+         return new cpq(cpt.sk);
+      } else {
+         if ($$2 instanceof cia $$4 && !$$4.fW().d) {
+            cpq $$5 = new cpq(cpt.sk);
+            if (!$$4.fV().e($$5)) {
+               $$4.a($$5, false);
+            }
          }
 
          return $$0;
-      } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
-
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fT().e($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
       }
    }
 
-   public static cpd a(cpd $$0, chl $$1, cpd $$2) {
-      return a($$0, $$1, $$2, true);
+   @Override
+   public int b(cpq $$0) {
+      return 40;
    }
 
-   public static void a(cdw $$0, Stream<cpd> $$1) {
-      cvr $$2 = $$0.dM();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cdw($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
-      }
+   @Override
+   public crj c(cpq $$0) {
+      return crj.c;
+   }
+
+   @Override
+   public ato ao_() {
+      return atp.mf;
+   }
+
+   @Override
+   public ato ap_() {
+      return atp.mf;
+   }
+
+   @Override
+   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
+      return cps.a($$0, $$1, $$2);
    }
 }

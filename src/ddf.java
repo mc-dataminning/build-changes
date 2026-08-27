@@ -1,84 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class ddf extends cys implements dfs {
-   public static final MapCodec<ddf> a = b(ddf::new);
-   public static final int b = 15;
-   public static final dmj c = dlz.aP;
-   public static final dma d = dlz.C;
-   public static final ToIntFunction<dlj> e = $$0 -> $$0.c(c);
+public class ddf extends dbb {
+   public static final MapCodec<ddf> i = b(ddf::new);
 
    @Override
-   public MapCodec<ddf> a() {
-      return a;
+   public MapCodec<? extends ddf> a() {
+      return i;
    }
 
-   public ddf(dli.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      if (!$$1.B && $$3.gq()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return blw.a;
-      } else {
-         return blw.b;
-      }
+   protected ddf(dmd.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return $$3.a(cpg.hB) ? eop.b() : eop.a();
+   public dme a(crx $$0) {
+      cvk $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      ehr $$3 = $$0.q().b_($$0.a());
+      ib $$4 = $$2.e();
+      ib $$5 = $$2.f();
+      ib $$6 = $$2.g();
+      ib $$7 = $$2.h();
+      dme $$8 = $$1.a_($$4);
+      dme $$9 = $$1.a_($$5);
+      dme $$10 = $$1.a_($$6);
+      dme $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ih.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ih.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ih.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ih.e))))
+         .a(e, Boolean.valueOf($$3.a() == ehs.c));
    }
 
    @Override
-   protected boolean a_(dlj $$0, cux $$1, hz $$2) {
-      return true;
-   }
-
-   @Override
-   protected dex b_(dlj $$0) {
-      return dex.a;
-   }
-
-   @Override
-   protected float d(dlj $$0, cux $$1, hz $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected egw c_(dlj $$0) {
-      return $$0.c(d) ? egx.c.a(false) : super.c_($$0);
+   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return epl.a();
    }
 
    @Override
-   public cpd a(cvu $$0, hz $$1, dlj $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
+   protected boolean a(dme $$0, dme $$1, ih $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
 
-   public static cpd a(cpd $$0, int $$1) {
-      if ($$1 != 15) {
-         sw $$2 = new sw();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
       }
 
-      return $$0;
+      return super.a($$0, $$1, $$2);
+   }
+
+   public final boolean a(dme $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof ddf || $$0.a(aue.L);
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

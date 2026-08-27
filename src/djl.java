@@ -1,245 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class djl extends dkb implements ckv {
-   public static final int e = 3;
-   public static final int f = 3;
-   public static final int g = 9;
-   public static final int h = 1;
-   public static final int i = 0;
-   public static final int j = 9;
-   public static final int k = 10;
-   private is<cpd> r = is.a(9, cpd.h);
-   private int s = 0;
-   protected final ckp l = new ckp() {
-      private final int[] b = new int[9];
-      private int c = 0;
+public abstract class djl {
+   private static final Logger e = LogUtils.getLogger();
+   private final djn<?> f;
+   @Nullable
+   protected cwe o;
+   protected final ib p;
+   protected boolean q;
+   private dme g;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.c : this.b[$$0];
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.c = $$1;
-         } else {
-            this.b[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public djl(hz $$0, dlj $$1) {
-      super(diz.P, $$0, $$1);
+   public djl(djn<?> $$0, ib $$1, dme $$2) {
+      this.f = $$0;
+      this.p = $$1.i();
+      this.g = $$2;
    }
 
-   @Override
-   protected vq l() {
-      return vq.c("container.crafter");
+   public static ib a(sy $$0) {
+      return new ib($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
-   @Override
-   protected ckf a(int $$0, chk $$1) {
-      return new ckt($$0, $$1, this, this.l);
+   @Nullable
+   public cwe i() {
+      return this.o;
    }
 
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.l.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
+   public void a(cwe $$0) {
+      this.o = $$0;
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.l.a($$0) == 1 : false;
+   public boolean m() {
+      return this.o != null;
    }
 
-   @Override
-   public boolean b(int $$0, cpd $$1) {
-      if (this.l.a($$0) == 1) {
-         return false;
+   public void a(sy $$0, in.a $$1) {
+   }
+
+   protected void b(sy $$0, in.a $$1) {
+   }
+
+   public final sy b(in.a $$0) {
+      sy $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final sy c(in.a $$0) {
+      sy $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final sy d(in.a $$0) {
+      sy $$1 = new sy();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   private void c(sy $$0) {
+      ajc $$1 = djn.a(this.r());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         cpd $$2 = this.r.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.g()) {
-            return false;
-         } else {
-            return $$2.b() ? true : !this.a($$3, $$2, $$0);
-         }
+         $$0.a("id", $$1.toString());
       }
    }
 
-   private boolean a(int $$0, cpd $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cpd $$4 = this.a($$3);
-            if ($$4.b() || $$4.M() < $$0 && cpd.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
+   public static void a(sy $$0, djn<?> $$1) {
+      $$0.a("id", djn.a($$1).toString());
+   }
 
+   public void a(cpq $$0, in.a $$1) {
+      cnl.a($$0, this.r(), this.d($$1));
+   }
+
+   private void d(sy $$0) {
+      this.c($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
+   }
+
+   @Nullable
+   public static djl a(ib $$0, dme $$1, sy $$2, in.a $$3) {
+      String $$4 = $$2.l("id");
+      ajc $$5 = ajc.a($$4);
+      if ($$5 == null) {
+         e.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return kh.k.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               e.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.a($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               e.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            e.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.g);
+      }
+   }
+
+   protected static void a(cwe $$0, ib $$1, dme $$2) {
+      $$0.q($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public ib aD_() {
+      return this.p;
+   }
+
+   public dme n() {
+      return this.g;
+   }
+
+   @Nullable
+   public xz<aai> az_() {
+      return null;
+   }
+
+   public sy a(in.a $$0) {
+      return new sy();
+   }
+
+   public boolean o() {
+      return this.q;
+   }
+
+   public void aA_() {
+      this.q = true;
+   }
+
+   public void p() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
       return false;
    }
 
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.s = $$0.h("crafting_ticks_remaining");
-      this.r = is.a(this.b(), cpd.h);
-      if (!this.c_($$0)) {
-         blq.b($$0, this.r);
-      }
-
-      int[] $$1 = $$0.n("disabled_slots");
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.l.a($$2, 0);
-      }
-
-      for (int $$3 : $$1) {
-         if (this.e($$3)) {
-            this.l.a($$3, 1);
-         }
-      }
-
-      this.l.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      $$0.a("crafting_ticks_remaining", this.s);
-      if (!this.d_($$0)) {
-         blq.a($$0, this.r);
-      }
-
-      this.d($$0);
-      this.e($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean aj_() {
-      for (cpd $$0 : this.r) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cpd a(int $$0) {
-      return this.r.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cpd $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(chl $$0) {
-      return blp.a(this, $$0);
-   }
-
-   @Override
-   public is<cpd> k() {
-      return this.r;
-   }
-
-   @Override
-   protected void a(is<cpd> $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(chp $$0) {
-      for (cpd $$1 : this.r) {
-         $$0.a($$1);
+   public void a(p $$0) {
+      $$0.a("Name", () -> kh.k.b(this.r()) + " // " + this.getClass().getCanonicalName());
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.n());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
       }
    }
 
-   private void d(sw $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
+   public boolean q() {
+      return false;
    }
 
-   private void e(sw $$0) {
-      $$0.a("triggered", this.l.a(9));
+   public djn<?> r() {
+      return this.f;
    }
 
-   public void a(boolean $$0) {
-      this.l.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean m() {
-      return this.l.a(9) == 1;
-   }
-
-   public static void a(cvr $$0, hz $$1, dlj $$2, djl $$3) {
-      int $$4 = $$3.s - 1;
-      if ($$4 >= 0) {
-         $$3.s = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dal.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.s = $$0;
-   }
-
-   public int w() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cpd $$2 = this.a($$1);
-         if (!$$2.b() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.r.get($$0).b();
+   @Deprecated
+   public void b(dme $$0) {
+      this.g = $$0;
    }
 }

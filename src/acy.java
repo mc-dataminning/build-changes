@@ -1,37 +1,33 @@
-public class acy implements xx<aag> {
-   public static final xo<uq, acy> a = xx.a(acy::a, acy::new);
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public acy(dna $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+public class acy implements xz<aai> {
+   public static final xq<us, acy> a = xz.a(acy::a, acy::new);
+   @Nullable
+   private final ajc b;
+
+   public acy(@Nullable ajc $$0) {
+      this.b = $$0;
    }
 
-   private acy(uq $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
+   private acy(us $$0) {
+      this.b = $$0.c(us::q);
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.a(this.b, us::a);
    }
 
    @Override
-   public xz<acy> a() {
-      return aeq.aq;
+   public yb<acy> a() {
+      return aet.ao;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.c;
-   }
-
-   public double e() {
+   @Nullable
+   public ajc b() {
       return this.b;
    }
 }

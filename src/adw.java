@@ -1,29 +1,20 @@
-public class adw implements xx<aag> {
-   public static final xo<uq, adw> a = xx.a(adw::a, adw::new);
-   private final vq b;
+public record adw(int b) implements xz<aai> {
+   public static final xq<us, adw> a = xz.a(adw::a, adw::new);
 
-   public adw(vq $$0) {
-      this.b = $$0;
+   private adw(us $$0) {
+      this($$0.l());
    }
 
-   private adw(uq $$0) {
-      this.b = $$0.m();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
+   private void a(us $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public xz<adw> a() {
-      return aeq.aO;
+   public yb<adw> a() {
+      return aet.aM;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public vq b() {
-      return this.b;
    }
 }

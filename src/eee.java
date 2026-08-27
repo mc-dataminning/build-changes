@@ -1,98 +1,80 @@
-public class eee extends ebj {
-   private boolean h;
-   private boolean i;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public eee(awp $$0, int $$1, int $$2) {
-      super(ecc.K, $$1, 64, $$2, 7, 7, 9, a($$0));
-   }
+public class eee {
+   public static final int a = 90;
+   static final ajc b = new ajc("igloo/top");
+   private static final ajc c = new ajc("igloo/middle");
+   private static final ajc d = new ajc("igloo/bottom");
+   static final Map<ajc, ib> e = ImmutableMap.of(b, new ib(3, 5, 5), c, new ib(1, 3, 1), d, new ib(3, 6, 7));
+   static final Map<ajc, ib> f = ImmutableMap.of(b, ib.c, c, new ib(2, -3, 4), d, new ib(0, -3, -2));
 
-   public eee(sw $$0) {
-      super(ecc.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
-   }
+   public static void a(egh $$0, ib $$1, dfr $$2, ecl $$3, awt $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new eee.a($$0, d, $$1, $$2, $$5 * 3));
 
-   @Override
-   protected void a(ecb $$0, sw $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
-   }
-
-   @Override
-   public void a(cwm $$0, cwk $$1, dng $$2, awp $$3, ebd $$4, cuy $$5, hz $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, cyu.o.o(), cyu.o.o(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, cyu.U.o(), cyu.U.o(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, cyu.U.o(), cyu.U.o(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, cyu.U.o(), cyu.U.o(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, cyu.U.o(), cyu.U.o(), false);
-         this.a($$0, cyu.dU.o(), 2, 3, 2, $$4);
-         this.a($$0, cyu.dU.o(), 3, 3, 7, $$4);
-         this.a($$0, cyu.a.o(), 1, 3, 4, $$4);
-         this.a($$0, cyu.a.o(), 5, 3, 4, $$4);
-         this.a($$0, cyu.a.o(), 5, 3, 5, $$4);
-         this.a($$0, cyu.gp.o(), 1, 3, 5, $$4);
-         this.a($$0, cyu.cA.o(), 3, 2, 6, $$4);
-         this.a($$0, cyu.ft.o(), 4, 2, 6, $$4);
-         this.a($$0, cyu.dU.o(), 1, 2, 1, $$4);
-         this.a($$0, cyu.dU.o(), 5, 2, 1, $$4);
-         dlj $$7 = cyu.fK.o().a(dgl.b, ie.c);
-         dlj $$8 = cyu.fK.o().a(dgl.b, ie.f);
-         dlj $$9 = cyu.fK.o().a(dgl.b, ie.e);
-         dlj $$10 = cyu.fK.o().a(dgl.b, ie.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.a(dgl.d, dms.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.a(dgl.d, dms.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.a(dgl.d, dms.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.a(dgl.d, dms.e), 6, 4, 8, $$4);
-
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, cyu.U.o(), $$12, -1, $$11, $$4);
-            }
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new eee.a($$0, c, $$1, $$2, $$6 * 3));
          }
-
-         if (!this.h) {
-            hz $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               cfh $$14 = bnw.bm.a((cvr)$$0.E());
-               if ($$14 != null) {
-                  $$14.fL();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), bom.d, null, null);
-                  $$0.a_($$14);
-               }
-            }
-         }
-
-         this.a($$0, $$4);
       }
+
+      $$3.a(new eee.a($$0, b, $$1, $$2, 0));
    }
 
-   private void a(cwg $$0, ebd $$1) {
-      if (!this.i) {
-         hz $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            caa $$3 = bnw.o.a((cvr)$$0.E());
-            if ($$3 != null) {
-               $$3.fL();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), bom.d, null, null);
-               $$0.a_($$3);
+   public static class a extends ecq {
+      public a(egh $$0, ajc $$1, ib $$2, dfr $$3, int $$4) {
+         super(ecx.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
+
+      public a(egh $$0, sy $$1) {
+         super(ecx.I, $$1, $$0, $$1x -> a(dfr.valueOf($$1.l("Rot")), $$1x));
+      }
+
+      private static egc a(dfr $$0, ajc $$1) {
+         return new egc().a($$0).a(deb.a).a(eee.e.get($$1)).a(efi.b);
+      }
+
+      private static ib a(ajc $$0, ib $$1, int $$2) {
+         return $$1.a(eee.f.get($$0)).c($$2);
+      }
+
+      @Override
+      protected void a(ecw $$0, sy $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, ib $$1, cwt $$2, awt $$3, eby $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, czh.a.o(), 3);
+            djl $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof djs) {
+               ((djs)$$5).a(ejw.C, $$3.g());
             }
          }
+      }
+
+      @Override
+      public void a(cwz $$0, cwx $$1, dob $$2, awt $$3, eby $$4, cvl $$5, ib $$6) {
+         ajc $$7 = new ajc(this.a);
+         egc $$8 = a(this.c.d(), $$7);
+         ib $$9 = eee.f.get($$7);
+         ib $$10 = this.d.a((jf)egg.a($$8, new ib(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(drq.a.a, $$10.u(), $$10.w());
+         ib $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(eee.b)) {
+            ib $$13 = this.d.a((jf)egg.a($$8, new ib(3, 0, 5)));
+            dme $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(czh.cO)) {
+               $$0.a($$13, czh.dP.o(), 3);
+            }
+         }
+
+         this.d = $$12;
       }
    }
 }

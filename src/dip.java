@@ -1,91 +1,33 @@
-public class dip {
-   public static final aix<dio> a = a("base");
-   public static final aix<dio> b = a("square_bottom_left");
-   public static final aix<dio> c = a("square_bottom_right");
-   public static final aix<dio> d = a("square_top_left");
-   public static final aix<dio> e = a("square_top_right");
-   public static final aix<dio> f = a("stripe_bottom");
-   public static final aix<dio> g = a("stripe_top");
-   public static final aix<dio> h = a("stripe_left");
-   public static final aix<dio> i = a("stripe_right");
-   public static final aix<dio> j = a("stripe_center");
-   public static final aix<dio> k = a("stripe_middle");
-   public static final aix<dio> l = a("stripe_downright");
-   public static final aix<dio> m = a("stripe_downleft");
-   public static final aix<dio> n = a("small_stripes");
-   public static final aix<dio> o = a("cross");
-   public static final aix<dio> p = a("straight_cross");
-   public static final aix<dio> q = a("triangle_bottom");
-   public static final aix<dio> r = a("triangle_top");
-   public static final aix<dio> s = a("triangles_bottom");
-   public static final aix<dio> t = a("triangles_top");
-   public static final aix<dio> u = a("diagonal_left");
-   public static final aix<dio> v = a("diagonal_up_right");
-   public static final aix<dio> w = a("diagonal_up_left");
-   public static final aix<dio> x = a("diagonal_right");
-   public static final aix<dio> y = a("circle");
-   public static final aix<dio> z = a("rhombus");
-   public static final aix<dio> A = a("half_vertical");
-   public static final aix<dio> B = a("half_horizontal");
-   public static final aix<dio> C = a("half_vertical_right");
-   public static final aix<dio> D = a("half_horizontal_bottom");
-   public static final aix<dio> E = a("border");
-   public static final aix<dio> F = a("curly_border");
-   public static final aix<dio> G = a("gradient");
-   public static final aix<dio> H = a("gradient_up");
-   public static final aix<dio> I = a("bricks");
-   public static final aix<dio> J = a("globe");
-   public static final aix<dio> K = a("creeper");
-   public static final aix<dio> L = a("skull");
-   public static final aix<dio> M = a("flower");
-   public static final aix<dio> N = a("mojang");
-   public static final aix<dio> O = a("piglin");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static aix<dio> a(String $$0) {
-      return aix.a(kg.d, new aiy($$0));
+public class dip extends dgy implements dij {
+   public static final MapCodec<dip> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dij.a.e.fieldOf("weathering_state").forGetter(dag::c), dme.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dip::new)
+   );
+   private final dij.a J;
+
+   @Override
+   public MapCodec<dip> a() {
+      return I;
    }
 
-   public static dio a(iv<dio> $$0) {
-      iv.a($$0, a, new dio("b"));
-      iv.a($$0, b, new dio("bl"));
-      iv.a($$0, c, new dio("br"));
-      iv.a($$0, d, new dio("tl"));
-      iv.a($$0, e, new dio("tr"));
-      iv.a($$0, f, new dio("bs"));
-      iv.a($$0, g, new dio("ts"));
-      iv.a($$0, h, new dio("ls"));
-      iv.a($$0, i, new dio("rs"));
-      iv.a($$0, j, new dio("cs"));
-      iv.a($$0, k, new dio("ms"));
-      iv.a($$0, l, new dio("drs"));
-      iv.a($$0, m, new dio("dls"));
-      iv.a($$0, n, new dio("ss"));
-      iv.a($$0, o, new dio("cr"));
-      iv.a($$0, p, new dio("sc"));
-      iv.a($$0, q, new dio("bt"));
-      iv.a($$0, r, new dio("tt"));
-      iv.a($$0, s, new dio("bts"));
-      iv.a($$0, t, new dio("tts"));
-      iv.a($$0, u, new dio("ld"));
-      iv.a($$0, v, new dio("rd"));
-      iv.a($$0, w, new dio("lud"));
-      iv.a($$0, x, new dio("rud"));
-      iv.a($$0, y, new dio("mc"));
-      iv.a($$0, z, new dio("mr"));
-      iv.a($$0, A, new dio("vh"));
-      iv.a($$0, B, new dio("hh"));
-      iv.a($$0, C, new dio("vhr"));
-      iv.a($$0, D, new dio("hhb"));
-      iv.a($$0, E, new dio("bo"));
-      iv.a($$0, F, new dio("cbo"));
-      iv.a($$0, G, new dio("gra"));
-      iv.a($$0, H, new dio("gru"));
-      iv.a($$0, I, new dio("bri"));
-      iv.a($$0, J, new dio("glb"));
-      iv.a($$0, K, new dio("cre"));
-      iv.a($$0, L, new dio("sku"));
-      iv.a($$0, M, new dio("flo"));
-      iv.a($$0, N, new dio("moj"));
-      return iv.a($$0, O, new dio("pig"));
+   public dip(dij.a $$0, dme $$1, dmd.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
+   }
+
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean e_(dme $$0) {
+      return dij.c($$0.b()).isPresent();
+   }
+
+   public dij.a i() {
+      return this.J;
    }
 }

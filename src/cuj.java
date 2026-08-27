@@ -1,11 +1,11 @@
-public class cuj extends ctm {
-   public cuj(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bp, $$1);
+public class cuj extends ctz {
+   public cuj(ctz.a $$0, bom... $$1) {
+      super($$0, aum.bp, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 20;
    }
 
    @Override
@@ -14,12 +14,7 @@ public class cuj extends ctm {
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public boolean a(ctz $$0) {
+      return super.a($$0) && $$0 != cuc.K;
    }
 }

@@ -1,5 +1,5 @@
-public class rk extends RuntimeException {
-   public rk(String $$0) {
-      super($$0);
+class rk extends Throwable {
+   public rk(int $$0, int $$1, ru $$2) {
+      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.y() + ". max attempts: " + $$2.x() + ".", $$2.m());
    }
 }

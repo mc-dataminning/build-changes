@@ -1,227 +1,287 @@
-import java.util.List;
-import java.util.Optional;
+public class fth extends fve {
+   private final ehq b;
+   protected boolean a;
 
-public abstract class fth {
-   private static final enu a = new enu(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double b = awi.k(100.0);
-   protected final fqe c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected double i;
-   protected double j;
-   protected double k;
-   protected double l;
-   private enu D = a;
-   protected boolean m;
-   protected boolean n = true;
-   private boolean E;
-   protected boolean o;
-   protected float p = 0.6F;
-   protected float q = 1.8F;
-   protected final awp r = awp.a();
-   protected int s;
-   protected int t;
-   protected float u;
-   protected float v = 1.0F;
-   protected float w = 1.0F;
-   protected float x = 1.0F;
-   protected float y = 1.0F;
-   protected float z;
-   protected float A;
-   protected float B = 0.98F;
-   protected boolean C = false;
-
-   protected fth(fqe $$0, double $$1, double $$2, double $$3) {
-      this.c = $$0;
-      this.b(0.2F, 0.2F);
-      this.c($$1, $$2, $$3);
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
+   fth(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
    }
 
-   public fth(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3);
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
+   protected ehq g() {
+      return this.b;
    }
 
-   public fth c(float $$0) {
-      this.j *= (double)$$0;
-      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
-      this.l *= (double)$$0;
-      return this;
+   @Override
+   public fui b() {
+      return fui.b;
    }
 
-   public void b(double $$0, double $$1, double $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
-   public fth d(float $$0) {
-      this.b(0.2F * $$0, 0.2F * $$0);
-      return this;
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   protected void e(float $$0) {
-      this.y = $$0;
-   }
-
-   public void a(int $$0) {
-      this.t = $$0;
-   }
-
-   public int j() {
-      return this.t;
-   }
-
+   @Override
    public void a() {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - 0.04 * (double)this.u;
+      this.h();
+      if (!this.o) {
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (this.C && this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != ehs.a) {
+               ib $$0 = ib.a(this.g, this.h, this.i);
+               ehr $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((cvk)this.c, $$0))) {
+                  this.k();
+               }
+            }
          }
+      }
+   }
 
-         this.j = this.j * (double)this.B;
-         this.k = this.k * (double)this.B;
-         this.l = this.l * (double)this.B;
+   protected void h() {
+      if (this.t-- <= 0) {
+         this.k();
+      }
+   }
+
+   protected void i() {
+   }
+
+   public static fve a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.c, kb.n);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fve b(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.c, kb.aj);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fve c(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fth.a($$1, $$2, $$3, $$4, ehs.e, kb.k);
+   }
+
+   public static fve d(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.e, kb.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fve e(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fve f(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth.b $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.a, kb.at);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static fve g(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.g($$1, $$2, $$3, $$4, ehs.a, kb.au);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static fve h(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static fve i(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.c, kb.aL);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fve j(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.d($$1, $$2, $$3, $$4, ehs.c, kb.aj);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fve k(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fth.a($$1, $$2, $$3, $$4, ehs.e, kb.aJ);
+   }
+
+   public static fve l(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.d($$1, $$2, $$3, $$4, ehs.e, kb.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fve m(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.f($$1, $$2, $$3, $$4, ehs.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static fve n(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / awm.b($$1.F_(), 0.1F, 0.9F));
+      fth $$9 = new fth.f($$1, $$2, $$3, $$4, ehs.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static fve o(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth.b $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.a, kb.aC);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fve p(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.a, kb.aD);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fve q(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends fth.b {
+      a(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
+      }
+   }
+
+   static class b extends fth {
+      private final jz b;
+
+      b(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
+      }
+
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
+      }
+   }
+
+   static class c extends fth {
+      c(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
+
+   static class d extends fth.e {
+      d(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
          if (this.m) {
-            this.j *= 0.7F;
-            this.l *= 0.7F;
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            ato $$0 = this.g() == ehs.e ? atp.hj : atp.hk;
+            float $$1 = awm.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, atq.e, $$1, 1.0F, false);
          }
       }
    }
 
-   public abstract void a(esl var1, ewz var2, float var3);
+   static class e extends fth.f {
+      protected final jz b;
 
-   public abstract ftl b();
-
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName()
-         + ", Pos ("
-         + this.g
-         + ","
-         + this.h
-         + ","
-         + this.i
-         + "), RGBA ("
-         + this.v
-         + ","
-         + this.w
-         + ","
-         + this.x
-         + ","
-         + this.y
-         + "), Age "
-         + this.s;
-   }
-
-   public void k() {
-      this.o = true;
-   }
-
-   protected void b(float $$0, float $$1) {
-      if ($$0 != this.p || $$1 != this.q) {
-         this.p = $$0;
-         this.q = $$1;
-         enu $$2 = this.n();
-         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
-         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
-         this.a(new enu($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
+      e(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
       }
-   }
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      float $$3 = this.p / 2.0F;
-      float $$4 = this.q;
-      this.a(new enu($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      if (!this.E) {
-         double $$3 = $$0;
-         double $$4 = $$1;
-         double $$5 = $$2;
-         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
-            enz $$6 = bnq.a(null, new enz($$0, $$1, $$2), this.n(), this.c, List.of());
-            $$0 = $$6.c;
-            $$1 = $$6.d;
-            $$2 = $$6.e;
-         }
-
-         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
-            this.a(this.n().d($$0, $$1, $$2));
-            this.l();
-         }
-
-         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
-            this.E = true;
-         }
-
-         this.m = $$4 != $$1 && $$4 < 0.0;
-         if ($$3 != $$0) {
-            this.j = 0.0;
-         }
-
-         if ($$5 != $$2) {
-            this.l = 0.0;
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
          }
       }
    }
 
-   protected void l() {
-      enu $$0 = this.n();
-      this.g = ($$0.a + $$0.d) / 2.0;
-      this.h = $$0.b;
-      this.i = ($$0.c + $$0.f) / 2.0;
+   static class f extends fth {
+      f(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(fra $$0, double $$1, double $$2, double $$3, ehq $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
    }
 
-   protected int a(float $$0) {
-      hz $$1 = hz.a(this.g, this.h, this.i);
-      return this.c.B($$1) ? fvr.a(this.c, $$1) : 0;
-   }
+   static class g extends fth.e {
+      g(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
 
-   public boolean m() {
-      return !this.o;
-   }
-
-   public enu n() {
-      return this.D;
-   }
-
-   public void a(enu $$0) {
-      this.D = $$0;
-   }
-
-   public Optional<jw> o() {
-      return Optional.empty();
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = awm.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, atp.bS, atq.e, $$0, 1.0F, false);
+         }
+      }
    }
 }

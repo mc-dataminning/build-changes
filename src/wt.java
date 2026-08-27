@@ -3,46 +3,50 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record wt(String d, @Nullable gg e) implements ws {
-   public static final MapCodec<wt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(wt::b)).apply($$0, wt::new));
-   public static final ws.a<wt> b = new ws.a<>(a, "entity");
+public record wt(String d, @Nullable fq e) implements wu {
+   public static final MapCodec<wt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(wt::b)).apply($$0, wt::new));
+   public static final wu.a<wt> b = new wu.a<>(a, "block");
 
    public wt(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static gg a(String $$0) {
+   private static fq a(String $$0) {
       try {
-         gh $$1 = new gh(new StringReader($$0));
-         return $$1.t();
+         return fo.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<sw> a(du $$0) throws CommandSyntaxException {
+   public Stream<sy> a(du $$0) {
       if (this.e != null) {
-         List<? extends bnq> $$1 = this.e.b($$0);
-         return $$1.stream().map(co::b);
-      } else {
-         return Stream.empty();
+         apa $$1 = $$0.e();
+         ib $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            djl $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.v()));
+            }
+         }
       }
+
+      return Stream.empty();
    }
 
    @Override
-   public ws.a<?> a() {
+   public wu.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "entity=" + this.d;
+      return "block=" + this.d;
    }
 
    @Override
@@ -68,7 +72,7 @@ public record wt(String d, @Nullable gg e) implements ws {
    }
 
    @Nullable
-   public gg c() {
+   public fq c() {
       return this.e;
    }
 }

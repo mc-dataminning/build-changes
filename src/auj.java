@@ -1,10 +1,11 @@
-public class auj {
-   public static final aup<cds> a = a("placeable");
+public final class auj {
+   public static final aut<ehq> a = a("water");
+   public static final aut<ehq> b = a("lava");
 
    private auj() {
    }
 
-   private static aup<cds> a(String $$0) {
-      return aup.a(kg.R, new aiy($$0));
+   private static aut<ehq> a(String $$0) {
+      return aut.a(ki.y, new ajc($$0));
    }
 }

@@ -1,256 +1,81 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
-import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface vq extends Message, vv {
-   wn a();
+public class vq {
+   public static final Codec<vq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(vq.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, vq::new)
+   );
+   private final vq.a b;
+   private final String c;
 
-   vr b();
-
-   @Override
-   default String getString() {
-      return vv.super.getString();
+   public vq(vq.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((vv.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
-         }
-      }));
-      return $$1.toString();
+   public vq.a a() {
+      return this.b;
    }
 
-   List<vq> c();
-
-   @Nullable
-   default String d() {
-      if (this.b() instanceof wx $$0 && this.c().isEmpty() && this.a().g()) {
-         return $$0.b();
-      }
-
-      return null;
-   }
-
-   default we e() {
-      return we.a(this.b());
-   }
-
-   default we f() {
-      return new we(this.b(), new ArrayList<>(this.c()), this.a());
-   }
-
-   avu g();
-
-   @Override
-   default <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
-      wn $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (vq $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
-      }
+   public String b() {
+      return this.c;
    }
 
    @Override
-   default <T> Optional<T> a(vv.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (vq $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   default List<vq> h() {
-      return this.a(wn.a);
-   }
-
-   default List<vq> a(wn $$0) {
-      List<vq> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
-
-         return Optional.empty();
-      }, $$0);
-      return $$1;
-   }
-
-   default boolean a(vq $$0) {
-      if (this.equals($$0)) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         vq $$1 = (vq)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
-         List<vq> $$1 = this.h();
-         List<vq> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
+         return false;
       }
    }
 
-   static vq a(@Nullable String $$0) {
-      return (vq)($$0 != null ? b($$0) : vp.a);
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   static we b(String $$0) {
-      return we.a(wx.a($$0));
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   static we c(String $$0) {
-      return we.a(new xb($$0, null, xb.a));
-   }
+   public static enum a implements axg {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-   static we a(String $$0, Object... $$1) {
-      return we.a(new xb($$0, null, $$1));
-   }
+      public static final MapCodec<vq.a> g = axg.a(vq.a::values).fieldOf("action");
+      public static final MapCodec<vq.a> h = avu.a(g, vq.a::a);
+      private final boolean i;
+      private final String j;
 
-   static we b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!xb.a($$3) && !($$3 instanceof vq)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
+      private a(String $$0, boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      return a($$0, $$1);
-   }
-
-   static we a(String $$0, @Nullable String $$1) {
-      return we.a(new xb($$0, $$1, xb.a));
-   }
-
-   static we a(String $$0, @Nullable String $$1, Object... $$2) {
-      return we.a(new xb($$0, $$1, $$2));
-   }
-
-   static we i() {
-      return we.a(wx.c);
-   }
-
-   static we d(String $$0) {
-      return we.a(new wu($$0));
-   }
-
-   static we a(String $$0, boolean $$1, Optional<vq> $$2, ws $$3) {
-      return we.a(new ww($$0, $$1, $$2, $$3));
-   }
-
-   static we b(String $$0, String $$1) {
-      return we.a(new wy($$0, $$1));
-   }
-
-   static we a(String $$0, Optional<vq> $$1) {
-      return we.a(new wz($$0, $$1));
-   }
-
-   static vq a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static vq a(Message $$0) {
-      return (vq)($$0 instanceof vq $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static vq a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static vq a(aiy $$0) {
-      return b($$0.toString());
-   }
-
-   static vq a(cuy $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
+      public boolean a() {
+         return this.i;
       }
 
-      static we b(JsonElement $$0) {
-         return ac.a(vs.a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+      @Override
+      public String c() {
+         return this.j;
       }
 
-      static JsonElement c(vq $$0) {
-         return ac.a(vs.a.encodeStart(JsonOps.INSTANCE, $$0), JsonParseException::new);
-      }
-
-      public static String a(vq $$0) {
-         return a.toJson(c($$0));
-      }
-
-      public static JsonElement b(vq $$0) {
-         return c($$0);
-      }
-
-      @Nullable
-      public static we a(String $$0) {
-         JsonElement $$1 = JsonParser.parseString($$0);
-         return $$1 == null ? null : b($$1);
-      }
-
-      @Nullable
-      public static we a(@Nullable JsonElement $$0) {
-         return $$0 == null ? null : b($$0);
-      }
-
-      @Nullable
-      public static we b(String $$0) {
-         JsonReader $$1 = new JsonReader(new StringReader($$0));
-         $$1.setLenient(true);
-         JsonElement $$2 = JsonParser.parseReader($$1);
-         return $$2 == null ? null : b($$2);
-      }
-   }
-
-   public static class b implements JsonDeserializer<we>, JsonSerializer<vq> {
-      public we a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return vq.a.b($$0);
-      }
-
-      public JsonElement a(vq $$0, Type $$1, JsonSerializationContext $$2) {
-         return vq.a.c($$0);
+      public static DataResult<vq.a> a(vq.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

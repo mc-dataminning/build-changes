@@ -1,45 +1,28 @@
-public class gey extends gfl<cah, fmk<cah>> {
-   private final fvp a;
+public class gey extends gde<cdz, fpv<cdz>> {
+   private static final ajc a = new ajc("textures/entity/wither/wither_invulnerable.png");
+   private static final ajc i = new ajc("textures/entity/wither/wither.png");
 
-   public gey(gcv<cah, fmk<cah>> $$0, fvp $$1) {
-      super($$0);
-      this.a = $$1;
+   public gey(gby.a $$0) {
+      super($$0, new fpv<>($$0.a(fqe.bR)), 1.0F);
+      this.a(new ggx(this, $$0.f()));
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, cah $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fD();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
+   protected int a(cdz $$0, ib $$1) {
+      return 15;
+   }
+
+   public ajc a(cdz $$0) {
+      int $$1 = $$0.A();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cdz $$0, etd $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.A();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
       }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
-
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      cpd $$14 = $$3.c(bnx.a);
-      this.a.a($$3, $$14, cpa.h, false, $$0, $$1, $$2);
-      $$0.b();
+      $$1.b($$3, $$3, $$3);
    }
 }

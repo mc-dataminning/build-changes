@@ -1,8 +1,9 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public class ks {
-   public static kp a(ko $$0, CompletableFuture<il.b> $$1) {
-      return new kp($$0, $$1, List.of(new kt()));
+public interface ks {
+   void a(in.a var1, Consumer<af> var2);
+
+   static af a(String $$0) {
+      return ae.a.a().b(new ajc($$0));
    }
 }

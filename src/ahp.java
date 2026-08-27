@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ahp() implements ahn {
+   public static final ahp a = new ahp();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ahp {
+   @Override
+   public void a(us $$0) {
+   }
 }

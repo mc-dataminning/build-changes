@@ -1,188 +1,147 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class ald {
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("commands.function.error.argument_not_compound", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vq.b("commands.function.scheduled.no_functions", $$0));
-   @VisibleForTesting
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.function.instantiationFailure", $$0, $$1));
-   public static final SuggestionProvider<du> b = ($$0, $$1) -> {
-      ajm $$2 = ((du)$$0.getSource()).l().aE();
-      dz.a($$2.e(), $$1, "#");
-      return dz.a($$2.d(), $$1);
-   };
-   static final ald.b<du> e = new ald.b<du>() {
-      public void a(du $$0, aiy $$1, int $$2) {
-         $$0.a(() -> vq.a("commands.function.result", vq.a($$1), $$2), true);
-      }
-   };
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.experience.set.points.invalid"));
 
    public static void a(CommandDispatcher<du> $$0) {
-      LiteralArgumentBuilder<du> $$1 = dv.a("with");
-
-      for (ann.c $$2 : ann.c) {
-         $$2.a($$1, $$1x -> $$1x.executes(new ald.c() {
-               @Override
-               protected sw a(CommandContext<du> $$0) throws CommandSyntaxException {
-                  return $$2.a($$0).a();
-               }
-            }).then(dv.a("path", em.a()).executes(new ald.c() {
-               @Override
-               protected sw a(CommandContext<du> $$0) throws CommandSyntaxException {
-                  return ald.a(em.a($$0, "path"), $$2.a($$0));
-               }
-            })));
-      }
-
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("function").requires($$0x -> $$0x.c(2)))
-            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("name", fz.a()).suggests(b).executes(new ald.c() {
-               @Nullable
-               @Override
-               protected sw a(CommandContext<du> $$0) {
-                  return null;
-               }
-            })).then(dv.a("arguments", ee.a()).executes(new ald.c() {
-               @Override
-               protected sw a(CommandContext<du> $$0) {
-                  return ee.a($$0, "arguments");
-               }
-            }))).then($$1))
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("experience").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     dv.a("add")
+                        .then(
+                           dv.a("targets", eh.d())
+                              .then(
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
+                                          ))
+                                       .then(
+                                          dv.a("points")
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("levels")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.b)
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  dv.a("set")
+                     .then(
+                        dv.a("targets", eh.d())
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer(0))
+                                       .executes(
+                                          $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
+                                       ))
+                                    .then(
+                                       dv.a("points")
+                                          .executes(
+                                             $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("levels")
+                                       .executes(
+                                          $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.b)
+                                       )
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               dv.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("targets", eh.c())
+                           .then(dv.a("points").executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "targets"), ald.a.a))))
+                        .then(dv.a("levels").executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "targets"), ald.a.b)))
+                  )
+            )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   static sw a(em.g $$0, anm $$1) throws CommandSyntaxException {
-      tt $$2 = ann.a($$0, $$1);
-      if ($$2 instanceof sw) {
-         return (sw)$$2;
+   private static int a(du $$0, apb $$1, ald.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> vs.a("commands.experience.query." + $$2.e, $$1.Q_(), $$3), false);
+      return $$3;
+   }
+
+   private static int a(du $$0, Collection<? extends apb> $$1, int $$2, ald.a $$3) {
+      for (apb $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vs.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
       } else {
-         throw c.create($$2.c().a());
-      }
-   }
-
-   public static du a(du $$0) {
-      return $$0.a().b(2);
-   }
-
-   public static <T extends dw<T>> void a(Collection<hd<T>> $$0, @Nullable sw $$1, T $$2, T $$3, gr<T> $$4, ald.b<T> $$5, gl $$6) throws CommandSyntaxException {
-      if ($$6.c()) {
-         a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         b($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static <T extends dw<T>> void a(@Nullable sw $$0, gr<T> $$1, CommandDispatcher<T> $$2, T $$3, hd<T> $$4, aiy $$5, dr $$6, boolean $$7) throws CommandSyntaxException {
-      try {
-         hf<T> $$8 = $$4.a($$0, $$2);
-         $$1.a(new gx<>($$8, $$6, $$7).bind($$3));
-      } catch (dx var9) {
-         throw a.create($$5, var9.a());
-      }
-   }
-
-   private static <T extends dw<T>> dr a(T $$0, ald.b<T> $$1, aiy $$2, dr $$3) {
-      return $$0.y() ? $$3 : ($$4, $$5) -> {
-         $$1.a($$0, $$2, $$5);
-         $$3.onResult($$4, $$5);
-      };
-   }
-
-   private static <T extends dw<T>> void a(Collection<hd<T>> $$0, @Nullable sw $$1, T $$2, T $$3, gr<T> $$4, ald.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      dr $$8 = dr.chain($$2.p(), $$4.b().d());
-
-      for (hd<T> $$9 : $$0) {
-         aiy $$10 = $$9.a();
-         dr $$11 = a($$2, $$5, $$10, $$8);
-         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
+         $$0.a(() -> vs.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
       }
 
-      $$4.a(ha.a());
+      return $$1.size();
    }
 
-   private static <T extends dw<T>> void b(Collection<hd<T>> $$0, @Nullable sw $$1, T $$2, T $$3, gr<T> $$4, ald.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      dr $$8 = $$2.p();
-      if (!$$0.isEmpty()) {
-         if ($$0.size() == 1) {
-            hd<T> $$9 = $$0.iterator().next();
-            aiy $$10 = $$9.a();
-            dr $$11 = a($$2, $$5, $$10, $$8);
-            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
-         } else if ($$8 == dr.a) {
-            for (hd<T> $$12 : $$0) {
-               aiy $$13 = $$12.a();
-               dr $$14 = a($$2, $$5, $$13, $$8);
-               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
-            }
-         } else {
-            class a {
-               boolean a;
-               int b;
+   private static int b(du $$0, Collection<? extends apb> $$1, int $$2, ald.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-               public void a(int $$0) {
-                  this.a = true;
-                  this.b += $$0;
-               }
-            }
-
-            a $$15 = new a();
-            dr $$16 = ($$1x, $$2x) -> $$15.a($$2x);
-
-            for (hd<T> $$17 : $$0) {
-               aiy $$18 = $$17.a();
-               dr $$19 = a($$2, $$5, $$18, $$16);
-               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
-            }
-
-            $$4.a(($$2x, $$3x) -> {
-               if ($$15.a) {
-                  $$8.onSuccess($$15.b);
-               }
-            });
+      for (apb $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
          }
       }
-   }
 
-   public interface b<T> {
-      void a(T var1, aiy var2, int var3);
-   }
-
-   abstract static class c extends gn.b<du> implements gn.a<du> {
-      @Nullable
-      protected abstract sw a(CommandContext<du> var1) throws CommandSyntaxException;
-
-      public void a(du $$0, ContextChain<du> $$1, gl $$2, gr<du> $$3) throws CommandSyntaxException {
-         CommandContext<du> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<aiy, Collection<hd<du>>> $$5 = fz.c($$4, "name");
-         Collection<hd<du>> $$6 = (Collection<hd<du>>)$$5.getSecond();
-         if ($$6.isEmpty()) {
-            throw ald.d.create(vq.a((aiy)$$5.getFirst()));
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vs.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
          } else {
-            sw $$7 = this.a($$4);
-            du $$8 = ald.a($$0);
-            if ($$6.size() == 1) {
-               $$0.a(() -> vq.a("commands.function.scheduled.single", vq.a($$6.iterator().next().a())), true);
-            } else {
-               $$0.a(() -> vq.a("commands.function.scheduled.multiple", vt.b($$6.stream().map(hd::a).toList(), vq::a)), true);
-            }
-
-            ald.a($$6, $$7, $$0, $$8, $$3, ald.e, $$2);
+            $$0.a(() -> vs.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
+
+         return $$1.size();
+      }
+   }
+
+   static enum a {
+      a("points", cia::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.ge()) {
+            return false;
+         } else {
+            $$0.a($$1);
+            return true;
+         }
+      }, $$0 -> awm.d($$0.cm * (float)$$0.ge())),
+      b("levels", apb::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.ck);
+
+      public final BiConsumer<apb, Integer> c;
+      public final BiPredicate<apb, Integer> d;
+      public final String e;
+      final ToIntFunction<apb> f;
+
+      private a(String $$0, BiConsumer<apb, Integer> $$1, BiPredicate<apb, Integer> $$2, ToIntFunction<apb> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

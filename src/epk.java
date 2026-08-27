@@ -1,55 +1,20 @@
-public interface epk extends blp {
-   cpd x();
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   cpd c(int var1);
+public class epk extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   void b(cpd var1);
-
-   dix y();
-
-   default cpd h() {
-      return this.c(this.al_());
+   public epk(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   default int b() {
-      return 1;
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   default boolean aj_() {
-      return this.x().b();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cpd b(int $$0) {
-      return this.a($$0, this.al_());
-   }
-
-   @Override
-   default cpd a(int $$0) {
-      return $$0 == 0 ? this.x() : cpd.h;
-   }
-
-   @Override
-   default cpd a(int $$0, int $$1) {
-      return $$0 != 0 ? cpd.h : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cpd $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   @Override
-   default boolean a(chl $$0) {
-      return blp.a(this.y(), $$0);
+   public int size() {
+      return this.a.size();
    }
 }

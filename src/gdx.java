@@ -1,20 +1,38 @@
-public class gdx extends gcg<cgp, fov<cgp>> {
-   private static final aiy a = new aiy("textures/entity/warden/warden.png");
-   private static final aiy i = new aiy("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aiy j = new aiy("textures/entity/warden/warden_heart.png");
-   private static final aiy k = new aiy("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aiy l = new aiy("textures/entity/warden/warden_pulsating_spots_2.png");
+import javax.annotation.Nullable;
 
-   public gdx(gba.a $$0) {
-      super($$0, new fov<>($$0.a(fpi.bN)), 0.9F);
-      this.a(new gfx<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fov::e));
-      this.a(new gfx<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, awi.b($$2 * 0.045F) * 0.25F), fov::f));
-      this.a(new gfx<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, awi.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fov::f));
-      this.a(new gfx<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fov::c));
-      this.a(new gfx<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fov::d));
+public class gdx extends gde<cfm, foy<cfm>> {
+   private static final ajc a = new ajc("textures/" + fxf.i.b().a() + ".png");
+   private static final ajc[] i = fxf.j.stream().map($$0 -> new ajc("textures/" + $$0.b().a() + ".png")).toArray(ajc[]::new);
+
+   public gdx(gby.a $$0) {
+      super($$0, new foy<>($$0.a(fqe.bg)), 0.0F);
+      this.a(new ggm(this));
    }
 
-   public aiy a(cgp $$0) {
-      return a;
+   public eov a(cfm $$0, float $$1) {
+      return $$0.F($$1).orElse(super.a($$0, $$1)).a((double)$$0.dY());
+   }
+
+   public boolean a(cfm $$0, fzu $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.F(0.0F).filter($$2x -> {
+         bol<?> $$3x = $$0.ai();
+         float $$4x = $$3x.l() / 2.0F;
+         float $$5 = $$3x.k() / 2.0F;
+         eov $$6 = eov.c($$0.dj());
+         return $$1.a(new eoq($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
+      }).isPresent();
+   }
+
+   public ajc a(cfm $$0) {
+      return a($$0.gm());
+   }
+
+   public static ajc a(@Nullable cog $$0) {
+      return $$0 == null ? a : i[$$0.a()];
+   }
+
+   protected void a(cfm $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
+      $$1.a($$0.A().g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

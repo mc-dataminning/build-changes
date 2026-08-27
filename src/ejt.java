@@ -1,17 +1,67 @@
-import com.mojang.serialization.Codec;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class ejt {
-   public static final Codec<ejv> a = kf.F.q().dispatch(ejv::a, ejw::a);
-   public static final ejw b = a("empty", ejq.a);
-   public static final ejw c = a("item", ejs.a);
-   public static final ejw d = a("loot_table", ejy.a);
-   public static final ejw e = a("dynamic", ejp.a);
-   public static final ejw f = a("tag", eka.a);
-   public static final ejw g = a("alternatives", ejm.a);
-   public static final ejw h = a("sequence", ejz.a);
-   public static final ejw i = a("group", ejr.a);
+public interface ejt extends ejv {
+   @Override
+   String e();
 
-   private static ejw a(String $$0, Codec<? extends ejv> $$1) {
-      return iv.a(kf.F, new aiy($$0), new ejw($$1));
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, cwg $$1) {
+      ejv.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
+
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   cwb k();
+
+   void a(dnv.c var1);
+
+   dnv.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(cwb var1);
+
+   eoi<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

@@ -1,22 +1,20 @@
-public enum ewb {
-   a(0, ebb.a),
-   b(1, ebb.b),
-   c(2, ebb.c),
-   d(3, ebb.d);
+public class ewb extends ewa {
+   private final exk a;
 
-   private final int e;
-   private final vq f;
-
-   private ewb(int $$0, aix<eba> $$1) {
-      this.e = $$0;
-      this.f = vq.c($$1.a().f("generator"));
+   public ewb(fgh $$0, exk $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public vq a() {
-      return this.f;
+   @Override
+   public void e() {
+      super.e();
+      this.a.c();
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

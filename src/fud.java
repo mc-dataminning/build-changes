@@ -1,54 +1,40 @@
-public class fud extends ftt {
-   fud(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fuc $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)avs.b.b($$7), (float)avs.b.c($$7), (float)avs.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class fud extends fve {
+   fud(fra $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, awm.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, awm.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, awm.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(hz.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
+   public fui b() {
+      return fui.b;
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   @Override
+   public float b(float $$0) {
+      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(fuc $$0) {
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fud($$1, $$2, $$3, $$4, $$5, $$6, $$7, avs.b.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements ftk<kc> {
-      private final fuc a;
-
-      public b(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fud($$1, $$2, $$3, $$4, $$5, $$6, $$7, avs.b.a(255, 255, 255, 255), this.a);
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fud $$8 = new fud($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

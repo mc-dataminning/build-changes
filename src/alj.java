@@ -1,45 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.brigadier.context.CommandContext;
 
 public class alj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("commands.jfr.dump.failed", $$0));
-
-   private alj() {
-   }
-
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+      final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
+      cwa.a(
+         new cwa.c() {
+            @Override
+            public <T extends cwa.g<T>> void a(cwa.e<T> $$0, cwa.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> alj.a((du)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> alj.a($$1xxx, $$0)))
+               );
+            }
+         }
       );
+      $$0.register($$1);
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      bir $$1 = bir.a($$0.l());
-      if (!bit.e.a($$1)) {
-         throw a.create();
-      } else {
-         $$0.a(() -> vq.c("commands.jfr.started"), false);
-         return 1;
-      }
+   static <T extends cwa.g<T>> int a(CommandContext<du> $$0, cwa.e<T> $$1) {
+      du $$2 = (du)$$0.getSource();
+      T $$3 = $$2.l().aN().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> vs.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
    }
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bit.e.b().normalize());
-         Path $$2 = $$0.l().p() && !aa.aU ? $$1 : $$1.toAbsolutePath();
-         vq $$3 = vq.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new vo(vo.a.f, $$2.toString())).a(new vw(vw.a.a, vq.c("chat.copy.click"))));
-         $$0.a(() -> vq.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
-      }
+   static <T extends cwa.g<T>> int a(du $$0, cwa.e<T> $$1) {
+      T $$2 = $$0.l().aN().a($$1);
+      $$0.a(() -> vs.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

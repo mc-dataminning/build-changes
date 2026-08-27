@@ -1,44 +1,29 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class aez implements xz<aev> {
+   public static final xq<us, aez> a = xz.a(aez::a, aez::new);
+   private final bmi b;
 
-public record aez(String b, Instant c, long d, @Nullable wc e, vx.b f) implements xx<aes> {
-   public static final xo<uq, aez> a = xx.a(aez::a, aez::new);
-
-   private aez(uq $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(wc::a), new vx.b($$0));
+   public aez(bmi $$0) {
+      this.b = $$0;
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, wc::a);
-      this.f.a($$0);
+   private aez(us $$0) {
+      this.b = bmi.a($$0.readUnsignedByte());
+   }
+
+   private void a(us $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public xz<aez> a() {
-      return aeq.bi;
+   public yb<aez> a() {
+      return aet.bg;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   @Nullable
-   public wc g() {
-      return this.e;
-   }
-
-   public vx.b h() {
-      return this.f;
+   public bmi b() {
+      return this.b;
    }
 }

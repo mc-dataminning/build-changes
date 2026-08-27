@@ -1,96 +1,112 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class edp extends ebl {
-   public static final Codec<edp> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), edp.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, edp::new)
+public class edp {
+   private static final int c = Integer.MIN_VALUE;
+   private static final MutableObject<Codec<il<edp>>> d = new MutableObject();
+   public static final Codec<edp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avu.a(d::getValue).fieldOf("fallback").forGetter(edp::a),
+               Codec.mapPair(edn.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, edp::new)
    );
-   private final edp.a e;
+   public static final Codec<il<edp>> b = ac.a(aiy.a(ki.aH, a), d::setValue);
+   private final List<Pair<edn, Integer>> e;
+   private final ObjectArrayList<edn> f;
+   private final il<edp> g;
+   private int h = Integer.MIN_VALUE;
 
-   public edp(ebl.c $$0, edp.a $$1) {
-      super($$0);
+   public edp(il<edp> $$0, List<Pair<edn, Integer>> $$1) {
       this.e = $$1;
-   }
+      this.f = new ObjectArrayList();
 
-   @Override
-   public Optional<ebl.b> a(ebl.a $$0) {
-      $$0.f().j();
-      cuy $$1 = $$0.h();
-      hz $$2 = new hz($$1.b(), 50, $$1.e());
-      ecd $$3 = new ecd();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new ebl.b($$2.b(0, $$4, 0), Either.right($$3)));
-   }
+      for (Pair<edn, Integer> $$2 : $$1) {
+         edn $$3 = (edn)$$2.getFirst();
 
-   private int a(ecd $$0, ebl.a $$1) {
-      cuy $$2 = $$1.h();
-      dru $$3 = $$1.f();
-      dng $$4 = $$1.b();
-      edo.d $$5 = new edo.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.e();
-      if (this.e == edp.a.b) {
-         hz $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), dqv.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : awi.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
-      } else {
-         return $$0.a($$6, $$4.f(), $$3, 10);
+         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
+            this.f.add($$3);
+         }
       }
+
+      this.g = $$0;
    }
 
-   @Override
-   public ebu<?> e() {
-      return ebu.h;
+   public edp(il<edp> $$0, List<Pair<Function<edp.a, ? extends edn>, Integer>> $$1, edp.a $$2) {
+      this.e = Lists.newArrayList();
+      this.f = new ObjectArrayList();
+
+      for (Pair<Function<edp.a, ? extends edn>, Integer> $$3 : $$1) {
+         edn $$4 = (edn)((Function)$$3.getFirst()).apply($$2);
+         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+
+         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
+            this.f.add($$4);
+         }
+      }
+
+      this.g = $$0;
    }
 
-   public static enum a implements axc {
-      a("normal", cyu.U, cyu.n, cyu.dU),
-      b("mesa", cyu.aa, cyu.t, cyu.ki);
+   public int a(egh $$0) {
+      if (this.h == Integer.MIN_VALUE) {
+         this.h = this.f.stream().filter($$0x -> $$0x != edg.b).mapToInt($$1 -> $$1.a($$0, ib.c, dfr.a).e()).max().orElse(0);
+      }
 
-      public static final Codec<edp.a> c = axc.a(edp.a::values);
-      private static final IntFunction<edp.a> d = ava.a(Enum::ordinal, values(), ava.a.a);
-      private final String e;
-      private final dlj f;
-      private final dlj g;
-      private final dlj h;
+      return this.h;
+   }
 
-      private a(String $$0, cys $$1, cys $$2, cys $$3) {
-         this.e = $$0;
-         this.f = $$1.o();
-         this.g = $$2.o();
-         this.h = $$3.o();
+   public il<edp> a() {
+      return this.g;
+   }
+
+   public edn a(awt $$0) {
+      return (edn)this.f.get($$0.a(this.f.size()));
+   }
+
+   public List<edn> b(awt $$0) {
+      return ac.a(this.f, $$0);
+   }
+
+   public int b() {
+      return this.f.size();
+   }
+
+   public static enum a implements axg {
+      a("terrain_matching", ImmutableList.of(new efn(drq.a.a, -1))),
+      b("rigid", ImmutableList.of());
+
+      public static final axg.a<edp.a> c = axg.a(edp.a::values);
+      private final String d;
+      private final ImmutableList<egd> e;
+
+      private a(String $$0, ImmutableList<egd> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
       public String a() {
+         return this.d;
+      }
+
+      public static edp.a a(String $$0) {
+         return c.a($$0);
+      }
+
+      public ImmutableList<egd> b() {
          return this.e;
-      }
-
-      public static edp.a a(int $$0) {
-         return d.apply($$0);
-      }
-
-      public dlj b() {
-         return this.f;
-      }
-
-      public dlj d() {
-         return this.g;
-      }
-
-      public dlj e() {
-         return this.h;
       }
 
       @Override
       public String c() {
-         return this.e;
+         return this.d;
       }
    }
 }

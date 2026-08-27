@@ -1,87 +1,55 @@
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cow extends coy {
-   private static final String a = "instrument";
-   private final aup<cov> b;
-
-   public cow(coy.a $$0, aup<cov> $$1) {
+public class cow extends cpl {
+   public cow(cpl.a $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<aix<cov>> $$4 = this.d($$0).flatMap(ij::e);
-      if ($$4.isPresent()) {
-         we $$5 = vq.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
+   public void a(cpq $$0, @Nullable cwe $$1, List<vs> $$2, crh $$3) {
+      sy $$4 = $$0.c("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
    }
 
-   public static cpd a(coy $$0, ij<cov> $$1) {
-      cpd $$2 = new cpd($$0);
-      a($$2, $$1);
-      return $$2;
-   }
+   public static void a(sy $$0, List<vs> $$1) {
+      cov.a $$2 = cov.a.a($$0.f("Type"));
+      $$1.add(vs.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(vs.i().a(n.h), $$3));
+      }
 
-   public static void a(cpd $$0, aup<cov> $$1, awp $$2) {
-      Optional<ij<cov>> $$3 = kf.an.a($$1, $$2);
-      $$3.ifPresent($$1x -> a($$0, $$1x));
-   }
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(vs.c("item.minecraft.firework_star.fade_to").b(vr.v).a(n.h), $$4));
+      }
 
-   private static void a(cpd $$0, ij<cov> $$1) {
-      sw $$2 = $$0.x();
-      $$2.a("instrument", $$1.e().orElseThrow(() -> new IllegalStateException("Invalid instrument")).a().toString());
-   }
+      if ($$0.q("Trail")) {
+         $$1.add(vs.c("item.minecraft.firework_star.trail").a(n.h));
+      }
 
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      Optional<? extends ij<cov>> $$4 = this.d($$3);
-      if ($$4.isPresent()) {
-         cov $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.go().a(this, $$5.b());
-         $$1.b(atv.c.b(this));
-         return blx.b($$3);
-      } else {
-         return blx.d($$3);
+      if ($$0.q("Flicker")) {
+         $$1.add(vs.c("item.minecraft.firework_star.flicker").a(n.h));
       }
    }
 
-   @Override
-   public int b(cpd $$0) {
-      Optional<? extends ij<cov>> $$1 = this.d($$0);
-      return $$1.<Integer>map($$0x -> ((cov)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<? extends ij<cov>> d(cpd $$0) {
-      sw $$1 = $$0.w();
-      if ($$1 != null && $$1.b("instrument", 8)) {
-         aiy $$2 = aiy.a($$1.l("instrument"));
-         if ($$2 != null) {
-            return kf.an.c($$2);
+   private static vs a(wg $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
+
+         $$0.b(a($$1[$$2]));
       }
 
-      Iterator<ij<cov>> $$3 = kf.an.c(this.b).iterator();
-      return $$3.hasNext() ? Optional.of($$3.next()) : Optional.empty();
+      return $$0;
    }
 
-   @Override
-   public cqw c(cpd $$0) {
-      return cqw.i;
-   }
-
-   private static void a(cvr $$0, chl $$1, cov $$2) {
-      atk $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, atm.c, $$4, 1.0F);
-      $$0.a(dpw.B, $$1.dk(), dpw.a.a($$1));
+   private static vs a(int $$0) {
+      cog $$1 = cog.b($$0);
+      return $$1 == null ? vs.c("item.minecraft.firework_star.custom_color") : vs.c("item.minecraft.firework_star." + $$1.b());
    }
 }

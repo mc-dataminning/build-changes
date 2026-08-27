@@ -1,29 +1,75 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dzl {
-   public static final Codec<dzl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dov.c).fieldOf("height").forGetter(dzl::a), kf.e.q().fieldOf("block").orElse(cyu.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, dzl::new)
-   );
-   private final cys b;
-   private final int c;
+public class dzl extends dzq {
+   public static final Codec<dzl> a = dyz.a.fieldOf("provider").xmap(dzl::new, $$0 -> $$0.b).codec();
+   private final dyz b;
 
-   public dzl(int $$0, cys $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public dlj b() {
-      return this.b.o();
+   public dzl(dyz $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + kf.e.b(this.b);
+   protected dzr<?> a() {
+      return dzr.e;
+   }
+
+   @Override
+   public void a(dzq.a $$0) {
+      List<ib> $$1 = Lists.newArrayList();
+      List<ib> $$2 = $$0.e();
+      List<ib> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
+
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(dzq.a $$0, ib $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(dzq.a $$0, ib $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         ib $$3 = $$1.b($$2);
+         if (duu.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
+      }
    }
 }

@@ -1,20 +1,12 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+public class ejn extends RuntimeException {
+   private final vs a;
 
-@FunctionalInterface
-interface ejn {
-   ejn b = ($$0, $$1) -> false;
-   ejn c = ($$0, $$1) -> true;
-
-   boolean expand(ejc var1, Consumer<eju> var2);
-
-   default ejn and(ejn $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   public ejn(vs $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   default ejn or(ejn $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   public vs a() {
+      return this.a;
    }
 }

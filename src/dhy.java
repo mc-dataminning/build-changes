@@ -1,33 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhy extends cys implements dhv {
-   public static final MapCodec<dhy> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dhv.a.e.fieldOf("weathering_state").forGetter(czt::c), u()).apply($$0, dhy::new)
-   );
-   private final dhv.a e;
+public class dhy extends dct {
+   public static final MapCodec<dhy> c = b(dhy::new);
+   public static final epo e = czf.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dhy> a() {
-      return d;
+      return c;
    }
 
-   public dhy(dhv.a $$0, dli.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dhy(dmd.d $$0) {
+      super($$0, ih.b, e, false);
    }
 
    @Override
-   protected boolean e_(dlj $$0) {
-      return dhv.c($$0.b()).isPresent();
-   }
-
-   public dhv.a g() {
-      return this.e;
+   protected dcu c() {
+      return (dcu)czh.oB;
    }
 }

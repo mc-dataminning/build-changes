@@ -1,6 +1,15 @@
-public interface qb {
-   static void a(ph<ebr> $$0) {
-      ik<ebl> $$1 = $$0.a(kg.aD);
-      $$0.a(ebe.t, new ebr($$1.b(ebf.H), new ecg(32, 8, ech.a, 94251327)));
+public class qb {
+   public static final ajb<edp> a = a("empty");
+
+   public static ajb<edp> a(String $$0) {
+      return ajb.a(ki.aH, new ajc($$0));
+   }
+
+   public static void a(pj<edp> $$0, String $$1, edp $$2) {
+      pq.a($$0, $$1, $$2);
+   }
+
+   public static void a(pj<edp> $$0) {
+      qa.a($$0);
    }
 }

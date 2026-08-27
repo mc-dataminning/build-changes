@@ -1,30 +1,14 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Consumer;
 
-public class apq implements agu {
-   private final MinecraftServer a;
-   private final uo b;
+public interface apq {
+   void a(Consumer<xz<?>> var1);
 
-   public apq(MinecraftServer $$0, uo $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   apq.a a();
 
-   @Override
-   public void a(agr $$0) {
-      if ($$0.g() != agq.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.b.a(ahd.a, new apx(this.a, this.b, false));
-         this.b.a(ahd.b);
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
       }
-   }
-
-   @Override
-   public void a(vq $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.i();
    }
 }

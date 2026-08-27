@@ -1,20 +1,21 @@
-public record abl(cuy b) implements xx<aag> {
-   public static final xo<uq, abl> a = xx.a(abl::a, abl::new);
+public record abl(vs b, vo.a c) implements xz<aai> {
+   public static final xq<vd, abl> a = xq.a(vu.b, abl::b, vo.a.a, abl::e, abl::new);
 
-   private abl(uq $$0) {
-      this($$0.f());
+   @Override
+   public yb<abl> a() {
+      return aet.C;
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
+   public void a(aai $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public xz<abl> a() {
-      return aeq.E;
+   public boolean c() {
+      return true;
    }
 
-   public void a(aag $$0) {
-      $$0.a(this);
+   public vo.a e() {
+      return this.c;
    }
 }

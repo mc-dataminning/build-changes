@@ -1,29 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bsr {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
-
-   public static brl<boq> a(bxl<ii> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$4 -> $$4.group($$4.a(bxl.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  ii $$9 = $$4.b($$5);
-                  if ($$6.ad() != $$9.a() || !$$9.b().a($$7.dk(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<enz> $$10 = Optional.ofNullable(bzf.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new bxo($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static bqq<box> a(bol<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$2x -> $$2x.group($$2x.a(bya.n), $$2x.c(bya.q), $$2x.b(bya.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<box> $$9 = $$2x.<byc>b($$5).a($$3xx -> $$3xx.f((bof)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        box $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bra($$10, true));
+                        return true;
+                     }
+                  }))
       );
    }
 }

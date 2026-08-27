@@ -1,9 +1,135 @@
-public class fhf extends fgl<clb> {
-   private static final aiy y = new aiy("container/furnace/lit_progress");
-   private static final aiy z = new aiy("container/furnace/burn_progress");
-   private static final aiy A = new aiy("textures/gui/container/furnace.png");
+public abstract class fhf extends fgh {
+   private static final vs m = vs.c("advMode.setCommand");
+   private static final vs n = vs.c("advMode.command");
+   private static final vs o = vs.c("advMode.previousOutput");
+   protected fat a;
+   protected fat b;
+   protected fak c;
+   protected fak k;
+   protected far<Boolean> l;
+   fan p;
 
-   public fhf(clb $$0, chk $$1, vq $$2) {
-      super($$0, new fjg(), $$1, $$2, A, y, z);
+   public fhf() {
+      super(eyc.a);
+   }
+
+   @Override
+   public void e() {
+      if (!this.o().j()) {
+         this.d();
+      }
+   }
+
+   abstract cvf o();
+
+   abstract int E();
+
+   @Override
+   protected void aP_() {
+      this.c = this.c(fak.a(vr.d, $$0x -> this.H()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
+      this.k = this.c(fak.a(vr.e, $$0x -> this.d()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.o().o();
+      this.l = this.c(far.a(vs.b("O"), vs.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.E(), 20, 20, vs.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         cvf $$2 = this.o();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fat(this.i, this.g / 2 - 150, 50, 300, 20, vs.c("advMode.command")) {
+         @Override
+         protected wg aM_() {
+            return super.aM_().b(fhf.this.p.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fat(this.i, this.g / 2 - 150, this.E(), 276, 20, vs.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.p = new fan(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.p.a(true);
+      this.p.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected vs B() {
+      return this.p.a() ? this.p.b() : super.B();
+   }
+
+   @Override
+   public void a(eyk $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.p.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.o().l().getString() : "-");
+   }
+
+   protected void H() {
+      cvf $$0 = this.o();
+      this.a($$0);
+      if (!$$0.o()) {
+         $$0.c(null);
+      }
+
+      this.f.a(null);
+   }
+
+   protected abstract void a(cvf var1);
+
+   private void a(String $$0) {
+      this.p.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.p.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.H();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, m, this.g / 2, 20, 16777215);
+      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.p.a($$0, $$1, $$2);
    }
 }

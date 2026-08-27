@@ -1,49 +1,37 @@
-public record agr(int b, String c, int d, agq e) implements xx<agu> {
-   public static final xo<uq, agr> a = xx.a(agr::a, agr::new);
-   private static final int f = 255;
+public class agr implements xz<aev> {
+   public static final xq<us, agr> a = xz.a(agr::a, agr::new);
+   private final bmk b;
+   private final int c;
 
-   @Deprecated
-   public agr(int b, String c, int d, agq e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public agr(bmk $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private agr(uq $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), agq.a($$0.n()));
+   private agr(us $$0) {
+      this.b = $$0.b(bmk.class);
+      this.c = $$0.l();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public xz<agr> a() {
-      return ags.a;
+   public yb<agr> a() {
+      return aet.cb;
    }
 
-   public void a(agu $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public bmk b() {
+      return this.b;
    }
 
-   public String e() {
+   public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public agq g() {
-      return this.e;
    }
 }

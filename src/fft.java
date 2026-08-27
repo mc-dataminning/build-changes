@@ -1,286 +1,169 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fft extends ffl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aiy b = new aiy("textures/misc/vignette.png");
-   private static final vq c = vq.b("============").a(n.p);
-   private static final String k = "           ";
-   private static final String l = "" + n.p + n.q + n.k + n.l;
-   private static final float m = 5.0F;
-   private static final float n = 15.0F;
-   private final boolean o;
-   private final Runnable p;
+public class fft extends fgb {
+   static final ajc c = new ajc("textures/gui/title/mojangstudios.png");
+   private static final int d = avw.b.a(255, 239, 50, 61);
+   private static final int e = avw.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> eyk.P().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final eyk m;
+   private final asb n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
    private float q;
-   private List<avu> r;
-   private IntSet t;
-   private int u;
-   private boolean v;
-   private final IntSet w = new IntOpenHashSet();
-   private float x;
-   private final float y;
-   private int z;
-   private final faf A = new faf(false);
+   private long r = -1L;
+   private long s = -1L;
 
-   public fft(boolean $$0, Runnable $$1) {
-      super(exg.a);
-      this.o = $$0;
-      this.p = $$1;
-      if (!$$0) {
-         this.y = 0.75F;
+   public fft(eyk $$0, asb $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+   }
+
+   public static void a(eyk $$0) {
+      $$0.Z().a(c, new fft.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
+         }
+
+         int $$9 = awm.f((1.0F - awm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(fwy.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - awm.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = awm.c(awm.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(fwy.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = awm.a($$8, 0.0F, 1.0F);
       } else {
-         this.y = 0.5F;
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, eyk.a);
+         $$10 = 1.0F;
       }
 
-      this.z = 1;
-      this.x = this.y;
-   }
-
-   private float o() {
-      return this.v ? this.y * (5.0F + (float)this.w.size() * 15.0F) * (float)this.z : this.y * (float)this.z;
-   }
-
-   @Override
-   public void e() {
-      this.f.r().a();
-      this.f.aj().a(false);
-      float $$0 = (float)(this.u + this.h + this.h + 24);
-      if (this.q > $$0) {
-         this.E();
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.add($$0);
-      } else if ($$0 == 32) {
-         this.v = true;
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = awm.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - awm.a($$7, 0.0F, 1.0F));
       }
 
-      this.x = this.o();
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = 1;
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
       }
 
-      if ($$0 == 32) {
-         this.v = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.remove($$0);
-      }
-
-      this.x = this.o();
-      return super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void d() {
-      this.E();
-   }
-
-   private void E() {
-      this.p.run();
-   }
-
-   @Override
-   protected void aQ_() {
-      if (this.r == null) {
-         this.r = Lists.newArrayList();
-         this.t = new IntOpenHashSet();
-         if (this.o) {
-            this.a("texts/end.txt", this::a);
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
          }
 
-         this.a("texts/credits.json", this::b);
-         if (this.o) {
-            this.a("texts/postcredits.txt", this::a);
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
          }
-
-         this.u = this.r.size() * 12;
       }
    }
 
-   private void a(String $$0, fft.a $$1) {
-      try (Reader $$2 = this.f.aa().openAsReader(new aiy($$0))) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits", var8);
-      }
+   private void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = awm.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = avw.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      awp $$2 = awp.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.f.W().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(l)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + l.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.H();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.H();
-      }
+   @Override
+   public boolean a() {
+      return true;
    }
 
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : avy.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(vq.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.H();
-         this.H();
+   static class a extends ghs {
+      public a() {
+         super(fft.c);
+      }
 
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(vq.b($$8).a(n.o), true);
-               this.H();
-               this.H();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(vq.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(vq.b("           ").f($$15).a(n.p), false);
+      @Override
+      protected ghs.a b(asf $$0) {
+         aqw $$1 = eyk.P().ac();
+         arx<InputStream> $$2 = $$1.a(aqu.a, fft.c);
+         if ($$2 == null) {
+            return new ghs.a(new FileNotFoundException(fft.c.toString()));
+         } else {
+            try {
+               ghs.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new ghs.a(new gjv(true, true), ese.a($$3));
                }
 
-               this.H();
-               this.H();
+               return var5;
+            } catch (IOException var9) {
+               return new ghs.a(var9);
             }
          }
       }
-   }
-
-   private void H() {
-      this.r.add(avu.a);
-   }
-
-   private void a(String $$0) {
-      this.r.addAll(this.f.h.c(vq.b($$0), 256));
-   }
-
-   private void a(vq $$0, boolean $$1) {
-      if ($$1) {
-         this.t.add(this.r.size());
-      }
-
-      this.r.add($$0.g());
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      this.q = Math.max(0.0F, this.q + $$3 * this.x);
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 128;
-      int $$5 = this.h + 50;
-      float $$6 = -this.q;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.A.a($$0, this.g, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.r.size(); $$8++) {
-         if ($$8 == this.r.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.h / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.h) {
-            avu $$10 = this.r.get($$8);
-            if (this.t.contains($$8)) {
-               $$0.a(this.i, $$10, $$4 + 128, $$7, 16777215);
-            } else {
-               $$0.b(this.i, $$10, $$4, $$7, 16777215);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, this.g, this.h);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   }
-
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.g;
-      float $$5 = this.q * 0.5F;
-      int $$6 = 64;
-      float $$7 = this.q / this.y;
-      float $$8 = $$7 * 0.02F;
-      float $$9 = (float)(this.u + this.h + this.h + 24) / this.y;
-      float $$10 = ($$9 - 20.0F - $$7) * 0.005F;
-      if ($$10 < $$8) {
-         $$8 = $$10;
-      }
-
-      if ($$8 > 1.0F) {
-         $$8 = 1.0F;
-      }
-
-      $$8 *= $$8;
-      $$8 = $$8 * 96.0F / 255.0F;
-      $$0.a($$8, $$8, $$8, 1.0F);
-      $$0.a(d, 0, 0, 0, 0.0F, $$5, $$4, this.h, 64, 64);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void k() {
-      this.f.r().b(atj.c);
-   }
-
-   @Override
-   public ati D() {
-      return atj.c;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
    }
 }

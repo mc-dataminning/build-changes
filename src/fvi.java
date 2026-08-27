@@ -1,136 +1,122 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public abstract class fvi {
-   private static final Object2ObjectMap<aiy, fvi> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fvi.c $$1 = new fvi.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dot.e, $$1);
-      $$0.put(dot.f, new fvi.b());
-      $$0.put(dot.g, new fvi.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fvi.d e;
-   private final boolean f;
-   private final boolean g;
+public class fvi extends fve {
+   private final dqv a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   public fvi(float $$0, boolean $$1, fvi.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   fvi(fra $$0, double $$1, double $$2, double $$3, dqv $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<eov> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         eov $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)awm.d($$8, $$10);
+         this.H = this.G = (float)awm.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
-   public static fvi a(dov $$0) {
-      return (fvi)a.get($$0.r());
+   @Override
+   public void a(eth $$0, exv $$1, float $$2) {
+      float $$3 = awm.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = awm.i($$2, this.F, this.b);
+      float $$5 = awm.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = awi.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - awi.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   private void a(eth $$0, exv $$1, float $$2, Consumer<Quaternionf> $$3) {
+      eov $$4 = $$1.b();
+      float $$5 = (float)(awm.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(awm.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(awm.d((double)$$2, this.f, this.i) - $$4.c());
+      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
+      $$3.accept($$9);
+      Vector3f[] $$10 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$11 = this.b($$2);
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         Vector3f $$13 = $$10[$$12];
+         $$13.rotate($$9);
+         $$13.mul($$11);
+         $$13.add($$5, $$6, $$7);
+      }
+
+      float $$14 = this.c();
+      float $$15 = this.d();
+      float $$16 = this.e();
+      float $$17 = this.f();
+      int $$18 = this.a($$2);
+      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fui b() {
+      return fui.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         return null;
+         Optional<eov> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            eov $$3 = $$0.get();
+            this.g = awm.d($$2, this.g, $$3.a());
+            this.h = awm.d($$2, this.h, $$3.b());
+            this.i = awm.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)awm.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)awm.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
       }
    }
 
-   public float a() {
-      return this.c;
-   }
+   public static class a implements fuh<kf> {
+      private final fuz a;
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public abstract enz a(enz var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fvi.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fvi {
-      public a() {
-         super(Float.NaN, false, fvi.d.c, true, false);
+      public a(fuz $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public enz a(enz $$0, float $$1) {
-         return $$0.a(0.15F);
+      public fue a(kf $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvi $$8 = new fvi($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fvi {
-      public b() {
-         super(Float.NaN, true, fvi.d.a, false, true);
-      }
-
-      @Override
-      public enz a(enz $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fvi {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fvi.d.b, false, false);
-      }
-
-      @Override
-      public enz a(enz $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

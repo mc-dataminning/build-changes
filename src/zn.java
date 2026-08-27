@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record zn(Set<jb> c, Set<jb> d) implements yy {
-   public static final xo<uq, zn> a = yy.a(zn::a, zn::new);
-   public static final yy.b<zn> b = yy.a("debug/village_sections");
+public record zn(List<ib> c) implements za {
+   public static final xq<us, zn> a = za.a(zn::a, zn::new);
+   public static final za.b<zn> b = za.a("debug/raids");
 
-   private zn(uq $$0) {
-      this($$0.a(HashSet::new, uq::g), $$0.a(HashSet::new, uq::g));
+   private zn(us $$0) {
+      this($$0.a(ib.b));
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c, uq::a);
-      $$0.a(this.d, uq::a);
+   private void a(us $$0) {
+      $$0.a(this.c, ib.b);
    }
 
    @Override
-   public yy.b<zn> a() {
+   public za.b<zn> a() {
       return b;
    }
 
-   public Set<jb> b() {
+   public List<ib> b() {
       return this.c;
-   }
-
-   public Set<jb> c() {
-      return this.d;
    }
 }

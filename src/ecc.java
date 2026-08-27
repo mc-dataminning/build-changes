@@ -1,92 +1,106 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
 import java.util.Locale;
+import org.slf4j.Logger;
 
-public interface ecc {
-   ecc a = a(edo.a::new, "MSCorridor");
-   ecc b = a(edo.b::new, "MSCrossing");
-   ecc c = a(edo.d::new, "MSRoom");
-   ecc d = a(edo.e::new, "MSStairs");
-   ecc e = a(edq.a::new, "NeBCr");
-   ecc f = a(edq.b::new, "NeBEF");
-   ecc g = a(edq.c::new, "NeBS");
-   ecc h = a(edq.d::new, "NeCCS");
-   ecc i = a(edq.e::new, "NeCTB");
-   ecc j = a(edq.f::new, "NeCE");
-   ecc k = a(edq.g::new, "NeSCSC");
-   ecc l = a(edq.h::new, "NeSCLT");
-   ecc m = a(edq.i::new, "NeSC");
-   ecc n = a(edq.j::new, "NeSCRT");
-   ecc o = a(edq.k::new, "NeCSR");
-   ecc p = a(edq.l::new, "NeMT");
-   ecc q = a(edq.o::new, "NeRC");
-   ecc r = a(edq.p::new, "NeSR");
-   ecc s = a(edq.q::new, "NeStart");
-   ecc t = a(eec.a::new, "SHCC");
-   ecc u = a(eec.b::new, "SHFC");
-   ecc v = a(eec.c::new, "SH5C");
-   ecc w = a(eec.d::new, "SHLT");
-   ecc x = a(eec.e::new, "SHLi");
-   ecc y = a(eec.g::new, "SHPR");
-   ecc z = a(eec.h::new, "SHPH");
-   ecc A = a(eec.i::new, "SHRT");
-   ecc B = a(eec.j::new, "SHRC");
-   ecc C = a(eec.l::new, "SHSD");
-   ecc D = a(eec.m::new, "SHStart");
-   ecc E = a(eec.n::new, "SHS");
-   ecc F = a(eec.o::new, "SHSSD");
-   ecc G = a(edm::new, "TeJP");
-   ecc H = a(edw.a::a, "ORP");
-   ecc I = a(edj.a::new, "Iglu");
-   ecc J = a(edy::new, "RUPO");
-   ecc K = a(eee::new, "TeSH");
-   ecc L = a(edf::new, "TeDP");
-   ecc M = a(edu.h::new, "OMB");
-   ecc N = a(edu.j::new, "OMCR");
-   ecc O = a(edu.k::new, "OMDXR");
-   ecc P = a(edu.l::new, "OMDXYR");
-   ecc Q = a(edu.m::new, "OMDYR");
-   ecc R = a(edu.n::new, "OMDYZR");
-   ecc S = a(edu.o::new, "OMDZR");
-   ecc T = a(edu.p::new, "OMEntry");
-   ecc U = a(edu.q::new, "OMPenthouse");
-   ecc V = a(edu.s::new, "OMSimple");
-   ecc W = a(edu.t::new, "OMSimpleT");
-   ecc X = a(edu.u::new, "OMWR");
-   ecc Y = a(edh.a::new, "ECP");
-   ecc Z = a(eeg.i::new, "WMP");
-   ecc aa = a(edd.a::new, "BTP");
-   ecc ab = a(eea.a::new, "Shipwreck");
-   ecc ac = a(eds.a::new, "NeFos");
-   ecc ad = a(ebh::new, "jigsaw");
+public class ecc extends eck {
+   private static final Logger d = LogUtils.getLogger();
+   protected final edn a;
+   protected ib b;
+   private final int h;
+   protected final dfr c;
+   private final List<edi> i = Lists.newArrayList();
+   private final egh j;
 
-   ebp load(ecb var1, sw var2);
-
-   private static ecc a(ecc $$0, String $$1) {
-      return iv.a(kf.S, $$1.toLowerCase(Locale.ROOT), $$0);
+   public ecc(egh $$0, edn $$1, ib $$2, int $$3, dfr $$4, eby $$5) {
+      super(ecx.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
    }
 
-   private static ecc a(ecc.a $$0, String $$1) {
-      return a((ecc)$$0, $$1);
+   public ecc(ecw $$0, sy $$1) {
+      super(ecx.ad, $$1);
+      this.j = $$0.c();
+      this.b = new ib($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<tv> $$2 = aja.a(tm.a, $$0.b());
+      this.a = (edn)edn.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dfr.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      te $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(edi.a(new Dynamic($$2, $$1x))));
    }
 
-   private static ecc a(ecc.b $$0, String $$1) {
-      return a((ecc)$$0, $$1);
-   }
+   @Override
+   protected void a(ecw $$0, sy $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<tv> $$2 = aja.a(tm.a, $$0.b());
+      edn.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      te $$3 = new te();
 
-   public interface a extends ecc {
-      ebp load(sw var1);
-
-      @Override
-      default ebp load(ecb $$0, sw $$1) {
-         return this.load($$1);
+      for (edi $$4 : this.i) {
+         $$3.add((tv)$$4.a($$2).getValue());
       }
+
+      $$1.a("junctions", $$3);
    }
 
-   public interface b extends ecc {
-      ebp load(efm var1, sw var2);
+   @Override
+   public void a(cwz $$0, cwx $$1, dob $$2, awt $$3, eby $$4, cvl $$5, ib $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
+   }
 
-      @Override
-      default ebp load(ecb $$0, sw $$1) {
-         return this.load($$0.c(), $$1);
-      }
+   public void a(cwz $$0, cwx $$1, dob $$2, awt $$3, eby $$4, ib $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dfr a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public edn b() {
+      return this.a;
+   }
+
+   public ib c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(edi $$0) {
+      this.i.add($$0);
+   }
+
+   public List<edi> e() {
+      return this.i;
    }
 }

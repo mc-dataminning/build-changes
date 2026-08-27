@@ -1,20 +1,12 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface gjs {
-   void a(UUID var1, gjs.b var2);
+public record gjs(Map<String, gjf> d) {
+   public static final Codec<String> a = avu.b(1, 16);
+   public static final Codec<gjs> b = Codec.unboundedMap(a, gjf.a).xmap(gjs::new, gjs::a);
+   public static final arg<gjs> c = arg.a("language", b);
 
-   void a(UUID var1, gjs.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
+   public Map<String, gjf> a() {
+      return this.d;
    }
 }

@@ -1,11 +1,9 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface eft {
-   Codec<eft> c = kf.p.q().dispatch(eft::a, efu::codec);
+public abstract class eft {
+   public static final Codec<eft> c = kh.q.q().dispatch("predicate_type", eft::a, efu::codec);
 
-   @Nullable
-   sw a(awp var1, @Nullable sw var2);
+   public abstract boolean a(ib var1, ib var2, ib var3, awt var4);
 
-   efu<?> a();
+   protected abstract efu<?> a();
 }

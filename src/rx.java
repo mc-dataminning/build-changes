@@ -1,210 +1,181 @@
-import com.google.common.base.Stopwatch;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import java.net.Proxy;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.longs.LongArraySet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class rx extends MinecraftServer {
-   private static final Logger k = LogUtils.getLogger();
-   private static final int l = 20;
-   private static final int m = 14999992;
-   private static final ajr n = new ajr(null, ServicesKeySet.EMPTY, null, null);
-   private List<rm> o = new ArrayList<>();
-   private final List<sm> p;
-   private final hz q;
-   private final Stopwatch r = Stopwatch.createUnstarted();
-   private static final cvn s = ac.a(new cvn(), $$0 -> {
-      $$0.a(cvn.e).a(false, null);
-      $$0.a(cvn.v).a(false, null);
-   });
-   private static final drt t = new drt(0L, false, false);
+public class rx {
+   public static final int a = 8;
+   private static final Logger b = LogUtils.getLogger();
+   final apa c;
+   private final sa d;
+   private final List<ru> e;
+   private ImmutableList<ro> f;
+   final List<rq> g = Lists.newArrayList();
+   private final List<ru> h = Lists.newArrayList();
+   private final rx.b i;
+   private boolean j = true;
    @Nullable
-   private sd u;
+   ro k;
+   private final rx.c l;
+   private final rx.c m;
 
-   public static rx a(Thread $$0, eis.c $$1, arm $$2, Collection<sm> $$3, hz $$4) {
-      if ($$3.isEmpty()) {
-         throw new IllegalArgumentException("No test functions were given!");
+   protected rx(rx.b $$0, Collection<ro> $$1, apa $$2, sa $$3, rx.c $$4, rx.c $$5) {
+      this.c = $$2;
+      this.d = $$3;
+      this.i = $$0;
+      this.l = $$4;
+      this.m = $$5;
+      this.f = ImmutableList.copyOf($$1);
+      this.e = this.f.stream().flatMap($$0x -> $$0x.b().stream()).collect(Collectors.toList());
+      $$3.a(this);
+      this.e.forEach($$0x -> $$0x.a(new sg()));
+   }
+
+   public List<ru> a() {
+      return this.e;
+   }
+
+   public void b() {
+      this.j = false;
+      this.a(0);
+   }
+
+   public void c() {
+      this.j = true;
+      if (this.k != null) {
+         this.k.d().accept(this.c);
+      }
+   }
+
+   public void a(ru $$0) {
+      ru $$1 = $$0.B();
+      $$0.A().forEach($$2 -> $$2.a($$0, $$1, this));
+      this.e.add($$1);
+      this.h.add($$1);
+      if (this.j) {
+         this.d();
+      }
+   }
+
+   void a(final int $$0) {
+      if ($$0 >= this.f.size()) {
+         this.d();
       } else {
-         $$2.a();
-         cwl $$5 = new cwl(new cvf(new ArrayList<>($$2.b()), List.of()), cjy.e.a());
-         cvv $$6 = new cvv("Test Level", cvo.b, false, blt.c, true, s, $$5);
-         ajt.d $$7 = new ajt.d($$2, $$5, false, true);
-         ajt.c $$8 = new ajt.c($$7, dv.a.b, 4);
+         this.k = (ro)this.f.get($$0);
+         Collection<ru> $$1 = this.a(this.k.b());
+         String $$2 = this.k.a();
+         b.info("Running test batch '{}' ({} tests)...", $$2, $$1.size());
+         this.k.c().accept(this.c);
+         this.g.forEach($$0x -> $$0x.a(this.k));
+         final sf $$3 = new sf();
+         $$1.forEach($$3::a);
+         $$3.a(new rv() {
+            private void a() {
+               if ($$3.i()) {
+                  rx.this.k.d().accept(rx.this.c);
+                  rx.this.g.forEach($$0xxx -> $$0xxx.b(rx.this.k));
+                  LongSet $$0 = new LongArraySet(rx.this.c.w());
+                  $$0.forEach($$0xxx -> rx.this.c.a(cvl.a($$0xxx), cvl.b($$0xxx), false));
+                  rx.this.a($$0 + 1);
+               }
+            }
 
-         try {
-            k.debug("Starting resource loading");
-            Stopwatch $$9 = Stopwatch.createStarted();
-            aju $$10 = ac.<aju>c($$2x -> ajt.a($$8, $$1xx -> {
-                  iv<dow> $$2xx = new ir<>(kg.aN, Lifecycle.stable()).l();
-                  drq.b $$3x = $$1xx.c().d(kg.aK).f(ebb.b).a().a().a($$2xx);
-                  return new ajt.b<>(new eiw($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
-               }, aju::new, ac.f(), $$2x)).get();
-            $$9.stop();
-            k.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
-            return new rx($$0, $$1, $$2, $$10, $$3, $$4);
-         } catch (Exception var11) {
-            k.warn("Failed to load vanilla datapack, bit oops", var11);
-            System.exit(-1);
-            throw new IllegalStateException();
-         }
+            @Override
+            public void a(ru $$0x) {
+            }
+
+            @Override
+            public void a(ru $$0x, rx $$1) {
+               this.a();
+            }
+
+            @Override
+            public void b(ru $$0x, rx $$1) {
+               this.a();
+            }
+
+            @Override
+            public void a(ru $$0x, ru $$1, rx $$2) {
+            }
+         });
+         $$1.forEach(this.d::a);
       }
    }
 
-   private rx(Thread $$0, eis.c $$1, arm $$2, aju $$3, Collection<sm> $$4, hz $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, axp.a(), n, aph::b);
-      this.p = Lists.newArrayList($$4);
-      this.q = $$5;
-   }
-
-   @Override
-   public boolean e() {
-      this.a(new aso(this, this.bc(), this.g, 1) {
-      });
-      this.u_();
-      aow $$0 = this.H();
-      this.o = Lists.newArrayList(rn.a(this.p, $$0));
-      $$0.a(this.q, 0.0F);
-      int $$1 = 20000000;
-      $$0.a(20000000, 20000000, false, false);
-      k.info("Started game test server");
-      return true;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      aow $$1 = this.H();
-      if (!this.bn()) {
-         this.b($$1);
-      }
-
-      if ($$1.X() % 20L == 0L) {
-         k.info(this.u.j());
-      }
-
-      if (this.u.i()) {
-         this.a(false);
-         k.info(this.u.j());
-         sa.a();
-         k.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.u.h(), this.r.stop());
-         if (this.u.d()) {
-            k.info("{} required tests failed :(", this.u.a());
-            this.u.f().forEach($$0x -> k.info("   - {}", $$0x.b()));
-         } else {
-            k.info("All {} required tests passed :)", this.u.h());
-         }
-
-         if (this.u.e()) {
-            k.info("{} optional tests failed", this.u.b());
-            this.u.g().forEach($$0x -> k.info("   - {}", $$0x.b()));
-         }
-
-         k.info("====================================================");
+   private void d() {
+      if (!this.h.isEmpty()) {
+         this.f = ImmutableList.copyOf(this.i.batch(this.h));
+         this.h.clear();
+         this.j = false;
+         this.a(0);
+      } else {
+         this.f = ImmutableList.of();
+         this.j = true;
       }
    }
 
-   @Override
-   public void w_() {
-      this.bx();
+   public void a(rq $$0) {
+      this.g.add($$0);
    }
 
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Game test server");
-      return $$0;
+   private Collection<ru> a(Collection<ru> $$0) {
+      return $$0.stream().map(this::b).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
    }
 
-   @Override
-   public void g() {
-      super.g();
-      k.info("Game test server shutting down");
-      System.exit(this.u.a());
+   private Optional<ru> b(ru $$0) {
+      return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   @Override
-   public void a(o $$0) {
-      super.a($$0);
-      k.error("Game test server crashed\n{}", $$0.e());
-      System.exit(1);
+   public static void a(apa $$0) {
+      aes.a($$0);
    }
 
-   private void b(aow $$0) {
-      hz $$1 = new hz($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
-      rv $$2 = rv.a.a(this.o, $$0).a(new sh($$1, 8)).a();
-      Collection<rs> $$3 = $$2.a();
-      this.u = new sd($$3);
-      k.info("{} tests are now running at position {}!", this.u.h(), $$1.x());
-      this.r.reset();
-      this.r.start();
-      $$2.b();
+   public static class a {
+      private final apa a;
+      private final sa b = sa.a;
+      private final rx.b c = rp.a();
+      private final rx.c d = rx.c.a;
+      private rx.c e = rx.c.b;
+      private final Collection<ro> f;
+
+      private a(Collection<ro> $$0, apa $$1) {
+         this.f = $$0;
+         this.a = $$1;
+      }
+
+      public static rx.a a(Collection<ro> $$0, apa $$1) {
+         return new rx.a($$0, $$1);
+      }
+
+      public static rx.a b(Collection<ru> $$0, apa $$1) {
+         return a(rp.a().batch($$0), $$1);
+      }
+
+      public rx.a a(rx.c $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public rx a() {
+         return new rx(this.c, this.f, this.a, this.b, this.d, this.e);
+      }
    }
 
-   private boolean bn() {
-      return this.u != null;
+   public interface b {
+      Collection<ro> batch(Collection<ru> var1);
    }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
+   public interface c {
+      rx.c a = $$0 -> Optional.of($$0.n().a().a(1));
+      rx.c b = $$0 -> Optional.empty();
 
-   @Override
-   public int i() {
-      return 0;
-   }
-
-   @Override
-   public int j() {
-      return 4;
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public boolean o() {
-      return true;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public boolean W_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return false;
+      Optional<ru> spawnStructure(ru var1);
    }
 }

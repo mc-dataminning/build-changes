@@ -1,124 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import java.util.Map;
 
-public class ddb extends cys implements dfs {
-   public static final MapCodec<ddb> b = b(ddb::new);
-   public static final int c = 7;
-   public static final dmj d = dlz.aC;
-   public static final dma e = dlz.v;
-   public static final dma f = dlz.C;
-   private static final int a = 1;
+public class ddb extends czf {
+   public static final MapCodec<ddb> a = b(ddb::new);
+   public static final dmv b = des.b;
+   public static final dmv c = des.c;
+   public static final dmv d = des.d;
+   public static final dmv e = des.e;
+   public static final dmv f = des.f;
+   public static final dmv g = des.g;
+   private static final Map<ih, dmv> h = des.h;
 
    @Override
-   public MapCodec<? extends ddb> a() {
-      return b;
+   public MapCodec<ddb> a() {
+      return a;
    }
 
-   public ddb(dli.d $$0) {
+   public ddb(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected eos b_(dlj $$0, cux $$1, hz $$2) {
-      return eop.a();
+   public dme a(crx $$0) {
+      cvk $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      return this.o()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   protected boolean e_(dlj $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if (this.m($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean m(dlj $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
-
-   @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(h.get($$1.a(ih.c)), $$0.c(b))
+         .a(h.get($$1.a(ih.d)), $$0.c(d))
+         .a(h.get($$1.a(ih.f)), $$0.c(c))
+         .a(h.get($$1.a(ih.e)), $$0.c(e))
+         .a(h.get($$1.a(ih.b)), $$0.c(f))
+         .a(h.get($$1.a(ih.a)), $$0.c(g));
    }
 
    @Override
-   protected int g(dlj $$0, cux $$1, hz $$2) {
-      return 1;
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a(h.get($$1.b(ih.c)), $$0.c(b))
+         .a(h.get($$1.b(ih.d)), $$0.c(d))
+         .a(h.get($$1.b(ih.f)), $$0.c(c))
+         .a(h.get($$1.b(ih.e)), $$0.c(e))
+         .a(h.get($$1.b(ih.b)), $$0.c(f))
+         .a(h.get($$1.b(ih.a)), $$0.c(g));
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dlj a(dlj $$0, cvs $$1, hz $$2) {
-      int $$3 = 7;
-      hz.a $$4 = new hz.a();
-
-      for (ie $$5 : ie.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(dlj $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dlj $$0) {
-      if ($$0.a(aua.t)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   protected egw c_(dlj $$0) {
-      return $$0.c(f) ? egx.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            hz $$4 = $$2.d();
-            dlj $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ie.b)) {
-               awl.a($$1, $$2, $$3, jz.m);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public dlj a(crk $$0) {
-      egw $$1 = $$0.q().b_($$0.a());
-      dlj $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == egx.c));
-      return a($$2, $$0.q(), $$0.a());
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

@@ -1,44 +1,49 @@
-public class ftw extends fuh {
-   private final fuc a;
+public class ftw extends fve {
+   private final fuz a;
 
-   protected ftw(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+   protected ftw(fra $$0, double $$1, double $$2, double $$3, double $$4, fuz $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public ftl b() {
-      return ftl.b;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   @Override
+   public fui b() {
+      return fui.d;
+   }
 
-      public a(fuc $$0) {
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftw $$8 = new ftw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
-         return $$8;
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftw($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

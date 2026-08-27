@@ -1,61 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cyk extends cye implements cyj {
-   public static final MapCodec<cyk> a = b(cyk::new);
+public class cyk extends cxw {
+   public static final MapCodec<cyk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cog.q.fieldOf("color").forGetter(cxw::b), u()).apply($$0, cyk::new));
+   public static final dne b = dmu.ba;
+   private static final Map<cog, czf> c = Maps.newHashMap();
+   private static final epo d = czf.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<cyk> a() {
       return a;
    }
 
-   public cyk(dli.d $$0) {
-      super($$0);
+   public cyk(cog $$0, dmd.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   public cnr b() {
-      return cnr.a;
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dis($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return a($$2, diz.o, dis::a);
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return d;
    }
 
    @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      if ($$1.B) {
-         return blw.a;
-      } else {
-         dix $$5 = $$1.c_($$2);
-         if ($$5 instanceof dis) {
-            $$3.a((dis)$$5);
-            $$3.a(atv.ab);
-         }
-
-         return blw.b;
-      }
+   public dme a(crx $$0) {
+      return this.o().a(b, Integer.valueOf(dnk.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, boi $$3, cpd $$4) {
-      if ($$4.B()) {
-         dix $$5 = $$0.c_($$1);
-         if ($$5 instanceof dis) {
-            ((dis)$$5).a($$4.z());
-         }
-      }
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
+   }
+
+   public static czf a(cog $$0) {
+      return c.getOrDefault($$0, czh.iJ);
    }
 }

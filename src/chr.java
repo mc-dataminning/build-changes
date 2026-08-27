@@ -1,593 +1,1197 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public abstract class chr extends cid {
-   private static final double g = 2.0;
-   private static final aie<Byte> h = aih.a(chr.class, aig.a);
-   private static final aie<Byte> i = aih.a(chr.class, aig.a);
-   private static final int j = 1;
-   private static final int k = 2;
-   private static final int l = 4;
-   @Nullable
-   private dlj m;
-   protected boolean b;
-   protected int c;
-   public chr.a d = chr.a.a;
-   public int e;
-   private int n;
-   private double o = 2.0;
-   private int p;
-   private atk q = this.s();
-   @Nullable
-   private IntOpenHashSet r;
-   @Nullable
-   private List<bnq> s;
-   private cpd t;
-
-   protected chr(bnw<? extends chr> $$0, cvr $$1, cpd $$2) {
-      super($$0, $$1);
-      this.t = $$2.q();
-      if ($$2.B()) {
-         this.b($$2.z());
+public class chr {
+   private static final int e = 12;
+   private static final int f = 16;
+   private static final int g = 3;
+   private static final int h = 1;
+   private static final int i = 2;
+   private static final int j = 5;
+   private static final int k = 10;
+   private static final int l = 10;
+   private static final int m = 20;
+   private static final int n = 15;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final float q = 0.05F;
+   private static final float r = 0.2F;
+   public static final Map<chq, Int2ObjectMap<chr.g[]>> a = ac.a(
+      Maps.newHashMap(),
+      $$0 -> {
+         $$0.put(
+            chq.g,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{
+                     new chr.b(cpt.pv, 20, 16, 2),
+                     new chr.b(cpt.uc, 26, 16, 2),
+                     new chr.b(cpt.ub, 22, 16, 2),
+                     new chr.b(cpt.vg, 15, 16, 2),
+                     new chr.i(cpt.pw, 1, 6, 16, 1)
+                  },
+                  2,
+                  new chr.g[]{new chr.b(czh.eZ, 6, 12, 10), new chr.i(cpt.up, 1, 4, 5), new chr.i(cpt.os, 1, 4, 16, 5)},
+                  3,
+                  new chr.g[]{new chr.i(cpt.rR, 3, 18, 10), new chr.b(czh.fa, 4, 12, 20)},
+                  4,
+                  new chr.g[]{
+                     new chr.i(czh.eg, 1, 1, 12, 15),
+                     new chr.j(bnu.p, 100, 15),
+                     new chr.j(bnu.h, 160, 15),
+                     new chr.j(bnu.r, 140, 15),
+                     new chr.j(bnu.o, 120, 15),
+                     new chr.j(bnu.s, 280, 15),
+                     new chr.j(bnu.w, 7, 15)
+                  },
+                  5,
+                  new chr.g[]{new chr.i(cpt.ug, 3, 3, 30), new chr.i(cpt.ss, 4, 3, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.h,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{
+                     new chr.b(cpt.pr, 20, 16, 2),
+                     new chr.b(cpt.ov, 10, 16, 2),
+                     new chr.h(cpt.qY, 6, 1, cpt.rc, 6, 16, 1, 0.05F),
+                     new chr.i(cpt.qG, 3, 1, 16, 1)
+                  },
+                  2,
+                  new chr.g[]{new chr.b(cpt.qY, 15, 16, 10), new chr.h(cpt.qZ, 6, 1, cpt.rd, 6, 16, 5, 0.05F), new chr.i(cpt.wn, 2, 1, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.qZ, 13, 16, 20), new chr.e(cpt.qU, 3, 3, 10, 0.2F)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.ra, 6, 12, 30)},
+                  5,
+                  new chr.g[]{
+                     new chr.b(cpt.rb, 4, 12, 30),
+                     new chr.c(
+                        1,
+                        12,
+                        30,
+                        ImmutableMap.builder()
+                           .put(chs.c, cpt.nT)
+                           .put(chs.g, cpt.nV)
+                           .put(chs.e, cpt.nV)
+                           .put(chs.a, cpt.nZ)
+                           .put(chs.b, cpt.nZ)
+                           .put(chs.d, cpt.ob)
+                           .put(chs.f, cpt.of)
+                           .build()
+                     )
+                  }
+               )
+            )
+         );
+         $$0.put(
+            chq.n,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{
+                     new chr.b(czh.bA, 18, 16, 2),
+                     new chr.b(czh.bM, 18, 16, 2),
+                     new chr.b(czh.bP, 18, 16, 2),
+                     new chr.b(czh.bH, 18, 16, 2),
+                     new chr.i(cpt.rU, 2, 1, 1)
+                  },
+                  2,
+                  new chr.g[]{
+                     new chr.b(cpt.rh, 12, 16, 10),
+                     new chr.b(cpt.ro, 12, 16, 10),
+                     new chr.b(cpt.rw, 12, 16, 10),
+                     new chr.b(cpt.rk, 12, 16, 10),
+                     new chr.b(cpt.rm, 12, 16, 10),
+                     new chr.i(czh.bA, 1, 1, 16, 5),
+                     new chr.i(czh.bB, 1, 1, 16, 5),
+                     new chr.i(czh.bC, 1, 1, 16, 5),
+                     new chr.i(czh.bD, 1, 1, 16, 5),
+                     new chr.i(czh.bE, 1, 1, 16, 5),
+                     new chr.i(czh.bF, 1, 1, 16, 5),
+                     new chr.i(czh.bG, 1, 1, 16, 5),
+                     new chr.i(czh.bH, 1, 1, 16, 5),
+                     new chr.i(czh.bI, 1, 1, 16, 5),
+                     new chr.i(czh.bJ, 1, 1, 16, 5),
+                     new chr.i(czh.bK, 1, 1, 16, 5),
+                     new chr.i(czh.bL, 1, 1, 16, 5),
+                     new chr.i(czh.bM, 1, 1, 16, 5),
+                     new chr.i(czh.bN, 1, 1, 16, 5),
+                     new chr.i(czh.bO, 1, 1, 16, 5),
+                     new chr.i(czh.bP, 1, 1, 16, 5),
+                     new chr.i(czh.ik, 1, 4, 16, 5),
+                     new chr.i(czh.il, 1, 4, 16, 5),
+                     new chr.i(czh.im, 1, 4, 16, 5),
+                     new chr.i(czh.in, 1, 4, 16, 5),
+                     new chr.i(czh.io, 1, 4, 16, 5),
+                     new chr.i(czh.ip, 1, 4, 16, 5),
+                     new chr.i(czh.iq, 1, 4, 16, 5),
+                     new chr.i(czh.ir, 1, 4, 16, 5),
+                     new chr.i(czh.is, 1, 4, 16, 5),
+                     new chr.i(czh.it, 1, 4, 16, 5),
+                     new chr.i(czh.iu, 1, 4, 16, 5),
+                     new chr.i(czh.iv, 1, 4, 16, 5),
+                     new chr.i(czh.iw, 1, 4, 16, 5),
+                     new chr.i(czh.ix, 1, 4, 16, 5),
+                     new chr.i(czh.iy, 1, 4, 16, 5),
+                     new chr.i(czh.iz, 1, 4, 16, 5)
+                  },
+                  3,
+                  new chr.g[]{
+                     new chr.b(cpt.rl, 12, 16, 20),
+                     new chr.b(cpt.rp, 12, 16, 20),
+                     new chr.b(cpt.ri, 12, 16, 20),
+                     new chr.b(cpt.rv, 12, 16, 20),
+                     new chr.b(cpt.rn, 12, 16, 20),
+                     new chr.i(czh.aZ, 3, 1, 12, 10),
+                     new chr.i(czh.bd, 3, 1, 12, 10),
+                     new chr.i(czh.bn, 3, 1, 12, 10),
+                     new chr.i(czh.bo, 3, 1, 12, 10),
+                     new chr.i(czh.bk, 3, 1, 12, 10),
+                     new chr.i(czh.bl, 3, 1, 12, 10),
+                     new chr.i(czh.bi, 3, 1, 12, 10),
+                     new chr.i(czh.bg, 3, 1, 12, 10),
+                     new chr.i(czh.bm, 3, 1, 12, 10),
+                     new chr.i(czh.bc, 3, 1, 12, 10),
+                     new chr.i(czh.bh, 3, 1, 12, 10),
+                     new chr.i(czh.be, 3, 1, 12, 10),
+                     new chr.i(czh.bb, 3, 1, 12, 10),
+                     new chr.i(czh.ba, 3, 1, 12, 10),
+                     new chr.i(czh.bf, 3, 1, 12, 10),
+                     new chr.i(czh.bj, 3, 1, 12, 10)
+                  },
+                  4,
+                  new chr.g[]{
+                     new chr.b(cpt.rt, 12, 16, 30),
+                     new chr.b(cpt.rr, 12, 16, 30),
+                     new chr.b(cpt.rs, 12, 16, 30),
+                     new chr.b(cpt.ru, 12, 16, 30),
+                     new chr.b(cpt.rj, 12, 16, 30),
+                     new chr.b(cpt.rq, 12, 16, 30),
+                     new chr.i(cpt.uL, 3, 1, 12, 15),
+                     new chr.i(cpt.uW, 3, 1, 12, 15),
+                     new chr.i(cpt.uO, 3, 1, 12, 15),
+                     new chr.i(cpt.uZ, 3, 1, 12, 15),
+                     new chr.i(cpt.uR, 3, 1, 12, 15),
+                     new chr.i(cpt.uY, 3, 1, 12, 15),
+                     new chr.i(cpt.uQ, 3, 1, 12, 15),
+                     new chr.i(cpt.uS, 3, 1, 12, 15),
+                     new chr.i(cpt.va, 3, 1, 12, 15),
+                     new chr.i(cpt.uV, 3, 1, 12, 15),
+                     new chr.i(cpt.uN, 3, 1, 12, 15),
+                     new chr.i(cpt.uU, 3, 1, 12, 15),
+                     new chr.i(cpt.uX, 3, 1, 12, 15),
+                     new chr.i(cpt.uP, 3, 1, 12, 15),
+                     new chr.i(cpt.uM, 3, 1, 12, 15),
+                     new chr.i(cpt.uT, 3, 1, 12, 15)
+                  },
+                  5,
+                  new chr.g[]{new chr.i(cpt.pY, 2, 3, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.i,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.po, 32, 16, 2), new chr.i(cpt.ou, 1, 16, 1), new chr.h(czh.L, 10, 1, cpt.pV, 10, 12, 1, 0.05F)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.pV, 26, 12, 10), new chr.i(cpt.ot, 2, 1, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.pr, 14, 16, 20), new chr.i(cpt.vP, 3, 1, 10)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.ps, 24, 16, 30), new chr.e(cpt.ot, 2, 3, 15)},
+                  5,
+                  new chr.g[]{new chr.b(cpt.ma, 8, 12, 30), new chr.e(cpt.vP, 3, 3, 15), new chr.k(cpt.ou, 5, cpt.vm, 5, 2, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.k,
+            a(
+               ImmutableMap.builder()
+                  .put(1, new chr.g[]{new chr.b(cpt.qN, 24, 16, 2), new chr.d(1), new chr.i(czh.cl, 9, 1, 12, 1)})
+                  .put(2, new chr.g[]{new chr.b(cpt.qO, 4, 12, 10), new chr.d(5), new chr.i(cpt.wj, 1, 1, 5)})
+                  .put(3, new chr.g[]{new chr.b(cpt.re, 5, 12, 20), new chr.d(10), new chr.i(cpt.cF, 1, 4, 10)})
+                  .put(4, new chr.g[]{new chr.b(cpt.tW, 2, 12, 30), new chr.d(15), new chr.i(cpt.qV, 5, 1, 15), new chr.i(cpt.qR, 4, 1, 15)})
+                  .put(5, new chr.g[]{new chr.i(cpt.uH, 20, 1, 30)})
+                  .build()
+            )
+         );
+         $$0.put(
+            chq.e,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.qN, 24, 16, 2), new chr.i(cpt.uf, 7, 1, 1)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.fS, 11, 16, 10), new chr.l(13, aup.d, "filled_map.monument", eiy.a.j, 12, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.qR, 1, 12, 20), new chr.l(14, aup.c, "filled_map.mansion", eiy.a.i, 12, 10)},
+                  4,
+                  new chr.g[]{
+                     new chr.i(cpt.tY, 7, 1, 15),
+                     new chr.i(cpt.uL, 3, 1, 15),
+                     new chr.i(cpt.uW, 3, 1, 15),
+                     new chr.i(cpt.uO, 3, 1, 15),
+                     new chr.i(cpt.uZ, 3, 1, 15),
+                     new chr.i(cpt.uR, 3, 1, 15),
+                     new chr.i(cpt.uY, 3, 1, 15),
+                     new chr.i(cpt.uQ, 3, 1, 15),
+                     new chr.i(cpt.uS, 3, 1, 15),
+                     new chr.i(cpt.va, 3, 1, 15),
+                     new chr.i(cpt.uV, 3, 1, 15),
+                     new chr.i(cpt.uN, 3, 1, 15),
+                     new chr.i(cpt.uU, 3, 1, 15),
+                     new chr.i(cpt.uX, 3, 1, 15),
+                     new chr.i(cpt.uP, 3, 1, 15),
+                     new chr.i(cpt.uM, 3, 1, 15),
+                     new chr.i(cpt.uT, 3, 1, 15)
+                  },
+                  5,
+                  new chr.g[]{new chr.i(cpt.vW, 8, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.f,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.sd, 32, 16, 2), new chr.i(cpt.lG, 1, 2, 1)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.oH, 3, 12, 10), new chr.i(cpt.oz, 1, 1, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.uz, 2, 12, 20), new chr.i(czh.ec, 4, 1, 12, 10)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.oo, 4, 12, 30), new chr.b(cpt.sk, 9, 12, 30), new chr.i(cpt.se, 5, 1, 15)},
+                  5,
+                  new chr.g[]{new chr.b(cpt.si, 22, 12, 30), new chr.i(cpt.tU, 3, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.c,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{
+                     new chr.b(cpt.ov, 15, 16, 2),
+                     new chr.i(new cpq(cpt.pH), 7, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.pI), 4, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.pF), 5, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.pG), 9, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new chr.g[]{
+                     new chr.b(cpt.oD, 4, 12, 10),
+                     new chr.i(new cpq(cpt.wi), 36, 1, 12, 5, 0.2F),
+                     new chr.i(new cpq(cpt.pE), 1, 1, 12, 5, 0.2F),
+                     new chr.i(new cpq(cpt.pD), 3, 1, 12, 5, 0.2F)
+                  },
+                  3,
+                  new chr.g[]{
+                     new chr.b(cpt.qz, 1, 12, 20),
+                     new chr.b(cpt.ox, 1, 12, 20),
+                     new chr.i(new cpq(cpt.pB), 1, 1, 12, 10, 0.2F),
+                     new chr.i(new cpq(cpt.pC), 4, 1, 12, 10, 0.2F),
+                     new chr.i(new cpq(cpt.vo), 5, 1, 12, 10, 0.2F)
+                  },
+                  4,
+                  new chr.g[]{new chr.e(cpt.pL, 14, 3, 15, 0.2F), new chr.e(cpt.pM, 8, 3, 15, 0.2F)},
+                  5,
+                  new chr.g[]{new chr.e(cpt.pJ, 8, 3, 30, 0.2F), new chr.e(cpt.pK, 16, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            chq.p,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.ov, 15, 16, 2), new chr.i(new cpq(cpt.pc), 3, 1, 12, 1, 0.2F), new chr.e(cpt.oZ, 2, 3, 1)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.oD, 4, 12, 10), new chr.i(new cpq(cpt.wi), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.pV, 24, 12, 20)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.ox, 1, 12, 30), new chr.e(cpt.ph, 12, 3, 15, 0.2F)},
+                  5,
+                  new chr.g[]{new chr.e(cpt.pe, 8, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            chq.o,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{
+                     new chr.b(cpt.ov, 15, 16, 2),
+                     new chr.i(new cpq(cpt.oS), 1, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.oQ), 1, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.oR), 1, 1, 12, 1, 0.2F),
+                     new chr.i(new cpq(cpt.oT), 1, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new chr.g[]{new chr.b(cpt.oD, 4, 12, 10), new chr.i(new cpq(cpt.wi), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new chr.g[]{
+                     new chr.b(cpt.pV, 30, 12, 20),
+                     new chr.e(cpt.pc, 1, 3, 10, 0.2F),
+                     new chr.e(cpt.pa, 2, 3, 10, 0.2F),
+                     new chr.e(cpt.pb, 3, 3, 10, 0.2F),
+                     new chr.i(new cpq(cpt.pi), 4, 1, 3, 10, 0.2F)
+                  },
+                  4,
+                  new chr.g[]{new chr.b(cpt.ox, 1, 12, 30), new chr.e(cpt.ph, 12, 3, 15, 0.2F), new chr.e(cpt.pf, 5, 3, 15, 0.2F)},
+                  5,
+                  new chr.g[]{new chr.e(cpt.pg, 13, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            chq.d,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.sb, 14, 16, 2), new chr.b(cpt.pW, 7, 16, 2), new chr.b(cpt.uw, 4, 16, 2), new chr.i(cpt.uy, 1, 1, 1)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.ov, 15, 16, 2), new chr.i(cpt.pX, 1, 5, 16, 5), new chr.i(cpt.sc, 1, 8, 16, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.uJ, 7, 16, 20), new chr.b(cpt.rZ, 10, 16, 20)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.qM, 10, 12, 30)},
+                  5,
+                  new chr.g[]{new chr.b(cpt.wl, 10, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.j,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.qC, 6, 16, 2), new chr.a(cpt.pz, 3), new chr.a(cpt.py, 7)},
+                  2,
+                  new chr.g[]{new chr.b(cpt.pV, 26, 12, 10), new chr.a(cpt.px, 5, 12, 5), new chr.a(cpt.pA, 4, 12, 5)},
+                  3,
+                  new chr.g[]{new chr.b(cpt.uA, 9, 12, 20), new chr.a(cpt.py, 7)},
+                  4,
+                  new chr.g[]{new chr.b(cpt.oo, 4, 12, 30), new chr.a(cpt.uF, 6, 12, 15)},
+                  5,
+                  new chr.g[]{new chr.i(new cpq(cpt.nK), 6, 1, 12, 30, 0.2F), new chr.a(cpt.px, 5, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            chq.l,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new chr.g[]{new chr.b(cpt.qL, 10, 16, 2), new chr.i(cpt.qK, 1, 10, 16, 1)},
+                  2,
+                  new chr.g[]{new chr.b(czh.b, 20, 16, 10), new chr.i(czh.eK, 1, 4, 16, 5)},
+                  3,
+                  new chr.g[]{
+                     new chr.b(czh.c, 16, 16, 20),
+                     new chr.b(czh.g, 16, 16, 20),
+                     new chr.b(czh.e, 16, 16, 20),
+                     new chr.i(czh.su, 1, 4, 16, 10),
+                     new chr.i(czh.h, 1, 4, 16, 10),
+                     new chr.i(czh.f, 1, 4, 16, 10),
+                     new chr.i(czh.d, 1, 4, 16, 10)
+                  },
+                  4,
+                  new chr.g[]{
+                     new chr.b(cpt.oA, 12, 12, 30),
+                     new chr.i(czh.hk, 1, 1, 12, 15),
+                     new chr.i(czh.hj, 1, 1, 12, 15),
+                     new chr.i(czh.hu, 1, 1, 12, 15),
+                     new chr.i(czh.hm, 1, 1, 12, 15),
+                     new chr.i(czh.hq, 1, 1, 12, 15),
+                     new chr.i(czh.hr, 1, 1, 12, 15),
+                     new chr.i(czh.hy, 1, 1, 12, 15),
+                     new chr.i(czh.hx, 1, 1, 12, 15),
+                     new chr.i(czh.hp, 1, 1, 12, 15),
+                     new chr.i(czh.hl, 1, 1, 12, 15),
+                     new chr.i(czh.ho, 1, 1, 12, 15),
+                     new chr.i(czh.hw, 1, 1, 12, 15),
+                     new chr.i(czh.hs, 1, 1, 12, 15),
+                     new chr.i(czh.ht, 1, 1, 12, 15),
+                     new chr.i(czh.hn, 1, 1, 12, 15),
+                     new chr.i(czh.hv, 1, 1, 12, 15),
+                     new chr.i(czh.lh, 1, 1, 12, 15),
+                     new chr.i(czh.lg, 1, 1, 12, 15),
+                     new chr.i(czh.lr, 1, 1, 12, 15),
+                     new chr.i(czh.lj, 1, 1, 12, 15),
+                     new chr.i(czh.ln, 1, 1, 12, 15),
+                     new chr.i(czh.lo, 1, 1, 12, 15),
+                     new chr.i(czh.lv, 1, 1, 12, 15),
+                     new chr.i(czh.lu, 1, 1, 12, 15),
+                     new chr.i(czh.lm, 1, 1, 12, 15),
+                     new chr.i(czh.li, 1, 1, 12, 15),
+                     new chr.i(czh.ll, 1, 1, 12, 15),
+                     new chr.i(czh.lt, 1, 1, 12, 15),
+                     new chr.i(czh.lp, 1, 1, 12, 15),
+                     new chr.i(czh.lq, 1, 1, 12, 15),
+                     new chr.i(czh.lk, 1, 1, 12, 15),
+                     new chr.i(czh.ls, 1, 1, 12, 15)
+                  },
+                  5,
+                  new chr.g[]{new chr.i(czh.hf, 1, 1, 12, 30), new chr.i(czh.hd, 1, 1, 12, 30)}
+               )
+            )
+         );
       }
-   }
-
-   protected chr(bnw<? extends chr> $$0, double $$1, double $$2, double $$3, cvr $$4, cpd $$5) {
-      this($$0, $$4, $$5);
-      this.a_($$1, $$2, $$3);
-   }
-
-   protected chr(bnw<? extends chr> $$0, boi $$1, cvr $$2, cpd $$3) {
-      this($$0, $$1.dr(), $$1.dv() - 0.1F, $$1.dx(), $$2, $$3);
-      this.b($$1);
-      if ($$1 instanceof chl) {
-         this.d = chr.a.b;
-      }
-   }
-
-   public void b(atk $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   protected void c_() {
-      this.am.a(h, (byte)0);
-      this.am.a(i, (byte)0);
-   }
-
-   @Override
-   public void c(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      super.c($$0, $$1, $$2, $$3, $$4);
-      this.n = 0;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
-      this.a($$3, $$4);
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      super.l($$0, $$1, $$2);
-      this.n = 0;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      boolean $$0 = this.G();
-      enz $$1 = this.dp();
-      if (this.N == 0.0F && this.M == 0.0F) {
-         double $$2 = $$1.h();
-         this.r((float)(awi.d($$1.c, $$1.e) * 180.0F / (float)Math.PI));
-         this.s((float)(awi.d($$1.d, $$2) * 180.0F / (float)Math.PI));
-         this.M = this.dC();
-         this.N = this.dE();
-      }
-
-      hz $$3 = this.dm();
-      dlj $$4 = this.dM().a_($$3);
-      if (!$$4.i() && !$$0) {
-         eos $$5 = $$4.k(this.dM(), $$3);
-         if (!$$5.c()) {
-            enz $$6 = this.dk();
-
-            for (enu $$7 : $$5.e()) {
-               if ($$7.a($$3).d($$6)) {
-                  this.b = true;
-                  break;
+   );
+   public static final Int2ObjectMap<chr.g[]> b = a(
+      ImmutableMap.of(
+         1,
+         new chr.g[]{
+            new chr.i(cpt.cS, 2, 1, 5, 1),
+            new chr.i(cpt.qP, 4, 1, 5, 1),
+            new chr.i(cpt.ft, 2, 1, 5, 1),
+            new chr.i(cpt.vN, 5, 1, 5, 1),
+            new chr.i(cpt.cN, 1, 1, 12, 1),
+            new chr.i(cpt.dI, 1, 1, 8, 1),
+            new chr.i(cpt.fj, 1, 1, 4, 1),
+            new chr.i(cpt.dJ, 3, 1, 12, 1),
+            new chr.i(cpt.eV, 3, 1, 8, 1),
+            new chr.i(cpt.dj, 1, 1, 12, 1),
+            new chr.i(cpt.dk, 1, 1, 12, 1),
+            new chr.i(cpt.dl, 1, 1, 8, 1),
+            new chr.i(cpt.dm, 1, 1, 12, 1),
+            new chr.i(cpt.dn, 1, 1, 12, 1),
+            new chr.i(cpt.do, 1, 1, 12, 1),
+            new chr.i(cpt.dp, 1, 1, 12, 1),
+            new chr.i(cpt.dq, 1, 1, 12, 1),
+            new chr.i(cpt.dr, 1, 1, 12, 1),
+            new chr.i(cpt.ds, 1, 1, 12, 1),
+            new chr.i(cpt.dt, 1, 1, 12, 1),
+            new chr.i(cpt.du, 1, 1, 7, 1),
+            new chr.i(cpt.pu, 1, 1, 12, 1),
+            new chr.i(cpt.vh, 1, 1, 12, 1),
+            new chr.i(cpt.rX, 1, 1, 12, 1),
+            new chr.i(cpt.rY, 1, 1, 12, 1),
+            new chr.i(cpt.aa, 5, 1, 8, 1),
+            new chr.i(cpt.Y, 5, 1, 8, 1),
+            new chr.i(cpt.ac, 5, 1, 8, 1),
+            new chr.i(cpt.Z, 5, 1, 8, 1),
+            new chr.i(cpt.W, 5, 1, 8, 1),
+            new chr.i(cpt.X, 5, 1, 8, 1),
+            new chr.i(cpt.ab, 5, 1, 8, 1),
+            new chr.i(cpt.ad, 5, 1, 8, 1),
+            new chr.i(cpt.rv, 1, 3, 12, 1),
+            new chr.i(cpt.rh, 1, 3, 12, 1),
+            new chr.i(cpt.rs, 1, 3, 12, 1),
+            new chr.i(cpt.rn, 1, 3, 12, 1),
+            new chr.i(cpt.rw, 1, 3, 12, 1),
+            new chr.i(cpt.ru, 1, 3, 12, 1),
+            new chr.i(cpt.rp, 1, 3, 12, 1),
+            new chr.i(cpt.rj, 1, 3, 12, 1),
+            new chr.i(cpt.rl, 1, 3, 12, 1),
+            new chr.i(cpt.ro, 1, 3, 12, 1),
+            new chr.i(cpt.rr, 1, 3, 12, 1),
+            new chr.i(cpt.rk, 1, 3, 12, 1),
+            new chr.i(cpt.rm, 1, 3, 12, 1),
+            new chr.i(cpt.ri, 1, 3, 12, 1),
+            new chr.i(cpt.rt, 1, 3, 12, 1),
+            new chr.i(cpt.rq, 1, 3, 12, 1),
+            new chr.i(cpt.kw, 3, 1, 8, 1),
+            new chr.i(cpt.kx, 3, 1, 8, 1),
+            new chr.i(cpt.ky, 3, 1, 8, 1),
+            new chr.i(cpt.kz, 3, 1, 8, 1),
+            new chr.i(cpt.kv, 3, 1, 8, 1),
+            new chr.i(cpt.fU, 1, 1, 12, 1),
+            new chr.i(cpt.dz, 1, 1, 12, 1),
+            new chr.i(cpt.dA, 1, 1, 12, 1),
+            new chr.i(cpt.ga, 1, 2, 5, 1),
+            new chr.i(cpt.dP, 1, 2, 5, 1),
+            new chr.i(cpt.af, 1, 8, 8, 1),
+            new chr.i(cpt.ai, 1, 4, 6, 1),
+            new chr.i(cpt.xf, 1, 2, 5, 1),
+            new chr.i(cpt.F, 1, 2, 5, 1),
+            new chr.i(cpt.dM, 1, 2, 5, 1)
+         },
+         2,
+         new chr.g[]{
+            new chr.i(cpt.qH, 5, 1, 4, 1),
+            new chr.i(cpt.qE, 5, 1, 4, 1),
+            new chr.i(cpt.hU, 3, 1, 6, 1),
+            new chr.i(cpt.kU, 6, 1, 6, 1),
+            new chr.i(cpt.pt, 1, 1, 8, 1),
+            new chr.i(cpt.E, 3, 3, 6, 1)
+         }
+      )
+   );
+   private static final chr.l s = new chr.l(8, aup.f, "filled_map.village_desert", eiy.a.B, 12, 5);
+   private static final chr.l t = new chr.l(8, aup.e, "filled_map.village_savanna", eiy.a.D, 12, 5);
+   private static final chr.l u = new chr.l(8, aup.g, "filled_map.village_plains", eiy.a.C, 12, 5);
+   private static final chr.l v = new chr.l(8, aup.h, "filled_map.village_taiga", eiy.a.F, 12, 5);
+   private static final chr.l w = new chr.l(8, aup.i, "filled_map.village_snowy", eiy.a.E, 12, 5);
+   private static final chr.l x = new chr.l(8, aup.j, "filled_map.explorer_jungle", eiy.a.G, 12, 5);
+   private static final chr.l y = new chr.l(8, aup.k, "filled_map.explorer_swamp", eiy.a.H, 12, 5);
+   public static final Map<chq, Int2ObjectMap<chr.g[]>> c = Map.of(
+      chq.k,
+      a(
+         ImmutableMap.builder()
+            .put(1, new chr.g[]{new chr.b(cpt.qN, 24, 16, 2), a(1), new chr.i(czh.cl, 9, 1, 12, 1)})
+            .put(2, new chr.g[]{new chr.b(cpt.qO, 4, 12, 10), a(5), new chr.i(cpt.wj, 1, 1, 5)})
+            .put(3, new chr.g[]{new chr.b(cpt.re, 5, 12, 20), a(10), new chr.i(cpt.cF, 1, 4, 10)})
+            .put(4, new chr.g[]{new chr.b(cpt.tW, 2, 12, 30), new chr.i(cpt.qV, 5, 1, 15), new chr.i(cpt.qR, 4, 1, 15)})
+            .put(5, new chr.g[]{a(), new chr.i(cpt.uH, 20, 1, 30)})
+            .build()
+      ),
+      chq.c,
+      a(
+         ImmutableMap.builder()
+            .put(1, new chr.g[]{new chr.b(cpt.ov, 15, 12, 2), new chr.b(cpt.oD, 5, 12, 2)})
+            .put(
+               2,
+               new chr.g[]{
+                  chr.m.a(new chr.i(cpt.pI, 4, 1, 12, 5, 0.05F), chs.a, chs.c, chs.d, chs.e, chs.g),
+                  chr.m.a(new chr.i(cpt.pE, 4, 1, 12, 5, 0.05F), chs.b, chs.f),
+                  chr.m.a(new chr.i(cpt.pF, 5, 1, 12, 5, 0.05F), chs.a, chs.c, chs.d, chs.e, chs.g),
+                  chr.m.a(new chr.i(cpt.pB, 5, 1, 12, 5, 0.05F), chs.b, chs.f),
+                  chr.m.a(new chr.i(cpt.pH, 7, 1, 12, 5, 0.05F), chs.a, chs.c, chs.d, chs.e, chs.g),
+                  chr.m.a(new chr.i(cpt.pD, 7, 1, 12, 5, 0.05F), chs.b, chs.f),
+                  chr.m.a(new chr.i(cpt.pG, 9, 1, 12, 5, 0.05F), chs.a, chs.c, chs.d, chs.e, chs.g),
+                  chr.m.a(new chr.i(cpt.pC, 9, 1, 12, 5, 0.05F), chs.b, chs.f)
                }
-            }
-         }
-      }
-
-      if (this.e > 0) {
-         this.e--;
-      }
-
-      if (this.ba() || $$4.a(cyu.qP)) {
-         this.aA();
-      }
-
-      if (this.b && !$$0) {
-         if (this.m != $$4 && this.H()) {
-            this.K();
-         } else if (!this.dM().B) {
-            this.q();
-         }
-
-         this.c++;
-      } else {
-         this.c = 0;
-         enz $$8 = this.dk();
-         enz $$9 = $$8.e($$1);
-         enx $$10 = this.dM().a(new cva($$8, $$9, cva.a.a, cva.b.a, this));
-         if ($$10.c() != enx.a.a) {
-            $$9 = $$10.e();
-         }
-
-         while (!this.dH() && !this.f) {
-            enw $$11 = this.a($$8, $$9);
-            if ($$11 != null) {
-               $$10 = $$11;
-            }
-
-            if ($$10 != null && $$10.c() == enx.a.c) {
-               bnq $$12 = ((enw)$$10).a();
-               bnq $$13 = this.w();
-               if ($$12 instanceof chl && $$13 instanceof chl && !((chl)$$13).a((chl)$$12)) {
-                  $$10 = null;
-                  $$11 = null;
+            )
+            .put(3, new chr.g[]{new chr.b(cpt.qz, 1, 12, 20), new chr.i(cpt.vo, 5, 1, 12, 10, 0.05F), new chr.i(cpt.wi, 36, 1, 12, 10, 0.2F)})
+            .put(
+               4,
+               new chr.g[]{
+                  chr.m.a(new chr.i(a(cpt.pI, cuc.h, 1), 8, 1, 3, 15, 0.05F), chs.a),
+                  chr.m.a(new chr.i(a(cpt.pF, cuc.h, 1), 9, 1, 3, 15, 0.05F), chs.a),
+                  chr.m.a(new chr.i(a(cpt.pH, cuc.h, 1), 11, 1, 3, 15, 0.05F), chs.a),
+                  chr.m.a(new chr.i(a(cpt.pG, cuc.h, 1), 13, 1, 3, 15, 0.05F), chs.a),
+                  chr.m.a(new chr.i(a(cpt.pI, cuc.a, 1), 8, 1, 3, 15, 0.05F), chs.c),
+                  chr.m.a(new chr.i(a(cpt.pF, cuc.a, 1), 9, 1, 3, 15, 0.05F), chs.c),
+                  chr.m.a(new chr.i(a(cpt.pH, cuc.a, 1), 11, 1, 3, 15, 0.05F), chs.c),
+                  chr.m.a(new chr.i(a(cpt.pG, cuc.a, 1), 13, 1, 3, 15, 0.05F), chs.c),
+                  chr.m.a(new chr.i(a(cpt.pI, cuc.k, 1), 2, 1, 3, 15, 0.05F), chs.d),
+                  chr.m.a(new chr.i(a(cpt.pF, cuc.k, 1), 3, 1, 3, 15, 0.05F), chs.d),
+                  chr.m.a(new chr.i(a(cpt.pH, cuc.k, 1), 5, 1, 3, 15, 0.05F), chs.d),
+                  chr.m.a(new chr.i(a(cpt.pG, cuc.k, 1), 7, 1, 3, 15, 0.05F), chs.d),
+                  chr.m.a(new chr.i(a(cpt.pI, cuc.j, 1), 8, 1, 3, 15, 0.05F), chs.e),
+                  chr.m.a(new chr.i(a(cpt.pF, cuc.g, 1), 9, 1, 3, 15, 0.05F), chs.e),
+                  chr.m.a(new chr.i(a(cpt.pE, cuc.w, 1), 8, 1, 3, 15, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pB, cuc.w, 1), 9, 1, 3, 15, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pD, cuc.w, 1), 11, 1, 3, 15, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pC, cuc.w, 1), 13, 1, 3, 15, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pE, cuc.L, 1), 8, 1, 3, 15, 0.05F), chs.f),
+                  chr.m.a(new chr.i(a(cpt.pB, cuc.L, 1), 9, 1, 3, 15, 0.05F), chs.f),
+                  chr.m.a(new chr.i(a(cpt.pD, cuc.L, 1), 11, 1, 3, 15, 0.05F), chs.f),
+                  chr.m.a(new chr.i(a(cpt.pC, cuc.L, 1), 13, 1, 3, 15, 0.05F), chs.f),
+                  chr.m.a(new chr.h(cpt.pM, 1, 4, cpt.pL, 1, 3, 15, 0.05F, true), chs.g),
+                  chr.m.a(new chr.h(cpt.pL, 1, 4, cpt.pK, 1, 3, 15, 0.05F, true), chs.g),
+                  chr.m.a(new chr.h(cpt.pJ, 1, 4, cpt.pM, 1, 3, 15, 0.05F, true), chs.g),
+                  chr.m.a(new chr.h(cpt.pK, 1, 2, cpt.pJ, 1, 3, 15, 0.05F, true), chs.g)
                }
+            )
+            .put(
+               5,
+               new chr.g[]{
+                  chr.m.a(new chr.h(cpt.ox, 4, 16, a(cpt.pK, cuc.h, 1), 1, 3, 30, 0.05F), chs.a),
+                  chr.m.a(new chr.h(cpt.ox, 3, 16, a(cpt.pL, cuc.h, 1), 1, 3, 30, 0.05F), chs.a),
+                  chr.m.a(new chr.h(cpt.ox, 3, 16, a(cpt.pL, cuc.a, 1), 1, 3, 30, 0.05F), chs.c),
+                  chr.m.a(new chr.h(cpt.ox, 2, 12, a(cpt.pM, cuc.a, 1), 1, 3, 30, 0.05F), chs.c),
+                  chr.m.a(new chr.h(cpt.ox, 2, 6, a(cpt.pJ, cuc.k, 1), 1, 3, 30, 0.05F), chs.d),
+                  chr.m.a(new chr.h(cpt.ox, 3, 8, a(cpt.pK, cuc.k, 1), 1, 3, 30, 0.05F), chs.d),
+                  chr.m.a(new chr.h(cpt.ox, 2, 12, a(cpt.pM, cuc.j, 1), 1, 3, 30, 0.05F), chs.e),
+                  chr.m.a(new chr.h(cpt.ox, 3, 12, a(cpt.pJ, cuc.g, 1), 1, 3, 30, 0.05F), chs.e),
+                  chr.m.a(new chr.i(a(cpt.pB, cuc.e, 1), 9, 1, 3, 30, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pE, cuc.c, 1), 8, 1, 3, 30, 0.05F), chs.b),
+                  chr.m.a(new chr.i(a(cpt.pB, cuc.f, 1), 9, 1, 3, 30, 0.05F), chs.f),
+                  chr.m.a(new chr.i(a(cpt.pE, cuc.i, 1), 8, 1, 3, 30, 0.05F), chs.f),
+                  chr.m.a(new chr.h(cpt.ox, 4, 18, a(cpt.pK, cuc.d, 1), 1, 3, 30, 0.05F), chs.g),
+                  chr.m.a(new chr.h(cpt.ox, 3, 18, a(cpt.pL, cuc.d, 1), 1, 3, 30, 0.05F), chs.g),
+                  chr.m.a(new chr.b(cpt.aM, 1, 12, 30, 42), chs.g),
+                  chr.m.a(new chr.b(cpt.aJ, 1, 12, 30, 4), chs.a, chs.b, chs.c, chs.d, chs.e, chs.f)
+               }
+            )
+            .build()
+      ),
+      chq.e,
+      a(
+         ImmutableMap.of(
+            1,
+            new chr.g[]{new chr.b(cpt.qN, 24, 16, 2), new chr.i(cpt.uf, 7, 1, 1)},
+            2,
+            new chr.g[]{
+               new chr.b(cpt.fS, 11, 16, 10),
+               new chr.m(ImmutableMap.builder().put(chs.a, t).put(chs.d, u).put(chs.c, v).put(chs.g, w).put(chs.e, u).put(chs.b, t).put(chs.f, w).build()),
+               new chr.m(ImmutableMap.builder().put(chs.a, u).put(chs.d, s).put(chs.c, t).put(chs.g, u).put(chs.e, v).put(chs.b, s).put(chs.f, v).build()),
+               new chr.m(
+                  ImmutableMap.builder().put(chs.a, x).put(chs.d, x).put(chs.c, new chr.f()).put(chs.g, y).put(chs.e, y).put(chs.b, y).put(chs.f, x).build()
+               )
+            },
+            3,
+            new chr.g[]{new chr.b(cpt.qR, 1, 12, 20), new chr.l(13, aup.d, "filled_map.monument", eiy.a.j, 12, 10)},
+            4,
+            new chr.g[]{
+               new chr.i(cpt.tY, 7, 1, 15),
+               new chr.i(cpt.uL, 3, 1, 15),
+               new chr.i(cpt.uW, 3, 1, 15),
+               new chr.i(cpt.uO, 3, 1, 15),
+               new chr.i(cpt.uZ, 3, 1, 15),
+               new chr.i(cpt.uR, 3, 1, 15),
+               new chr.i(cpt.uY, 3, 1, 15),
+               new chr.i(cpt.uQ, 3, 1, 15),
+               new chr.i(cpt.uS, 3, 1, 15),
+               new chr.i(cpt.va, 3, 1, 15),
+               new chr.i(cpt.uV, 3, 1, 15),
+               new chr.i(cpt.uN, 3, 1, 15),
+               new chr.i(cpt.uU, 3, 1, 15),
+               new chr.i(cpt.uX, 3, 1, 15),
+               new chr.i(cpt.uP, 3, 1, 15),
+               new chr.i(cpt.uM, 3, 1, 15),
+               new chr.i(cpt.uT, 3, 1, 15)
+            },
+            5,
+            new chr.g[]{new chr.i(cpt.vW, 8, 1, 30), new chr.l(14, aup.c, "filled_map.mansion", eiy.a.i, 1, 30)}
+         )
+      )
+   );
+   public static final List<Pair<chr.g[], Integer>> d = ImmutableList.builder()
+      .add(
+         Pair.of(
+            new chr.g[]{
+               new chr.b(a(crp.c), 1, 1, 1),
+               new chr.b(cpt.qy, 1, 1, 1, 2),
+               new chr.b(cpt.qD, 1, 1, 1, 2),
+               new chr.b(cpt.sm, 1, 1, 1, 3),
+               new chr.b(cpt.ud, 4, 1, 1),
+               new chr.b(cpt.hC, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new chr.g[]{
+               new chr.i(cpt.hU, 1, 1, 6, 1),
+               new chr.i(cpt.kU, 6, 1, 6, 1),
+               new chr.i(cpt.pt, 1, 4, 2, 1),
+               new chr.i(cpt.E, 3, 3, 6, 1),
+               new chr.i(czh.Y, 1, 8, 4, 1),
+               new chr.i(czh.W, 1, 8, 4, 1),
+               new chr.i(czh.aa, 1, 8, 4, 1),
+               new chr.i(czh.X, 1, 8, 4, 1),
+               new chr.i(czh.U, 1, 8, 4, 1),
+               new chr.i(czh.V, 1, 8, 4, 1),
+               new chr.i(czh.Z, 1, 8, 4, 1),
+               new chr.e(cpt.pb, 1, 1, 1, 0.2F),
+               new chr.i(a(crp.j), 5, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new chr.g[]{
+               new chr.i(cpt.qH, 3, 1, 4, 1),
+               new chr.i(cpt.qE, 3, 1, 4, 1),
+               new chr.i(cpt.cS, 2, 1, 5, 1),
+               new chr.i(cpt.qP, 4, 1, 5, 1),
+               new chr.i(cpt.ft, 2, 1, 5, 1),
+               new chr.i(cpt.vN, 5, 1, 5, 1),
+               new chr.i(cpt.cN, 1, 1, 12, 1),
+               new chr.i(cpt.dI, 1, 1, 8, 1),
+               new chr.i(cpt.fj, 1, 1, 4, 1),
+               new chr.i(cpt.dJ, 3, 1, 12, 1),
+               new chr.i(cpt.eV, 3, 1, 8, 1),
+               new chr.i(cpt.dj, 1, 1, 12, 1),
+               new chr.i(cpt.dk, 1, 1, 12, 1),
+               new chr.i(cpt.dl, 1, 1, 8, 1),
+               new chr.i(cpt.dm, 1, 1, 12, 1),
+               new chr.i(cpt.dn, 1, 1, 12, 1),
+               new chr.i(cpt.do, 1, 1, 12, 1),
+               new chr.i(cpt.dp, 1, 1, 12, 1),
+               new chr.i(cpt.dq, 1, 1, 12, 1),
+               new chr.i(cpt.dr, 1, 1, 12, 1),
+               new chr.i(cpt.ds, 1, 1, 12, 1),
+               new chr.i(cpt.dt, 1, 1, 12, 1),
+               new chr.i(cpt.du, 1, 1, 7, 1),
+               new chr.i(cpt.pu, 1, 1, 12, 1),
+               new chr.i(cpt.vh, 1, 1, 12, 1),
+               new chr.i(cpt.rX, 1, 1, 12, 1),
+               new chr.i(cpt.rY, 1, 1, 12, 1),
+               new chr.i(cpt.aa, 5, 1, 8, 1),
+               new chr.i(cpt.Y, 5, 1, 8, 1),
+               new chr.i(cpt.ac, 5, 1, 8, 1),
+               new chr.i(cpt.Z, 5, 1, 8, 1),
+               new chr.i(cpt.W, 5, 1, 8, 1),
+               new chr.i(cpt.X, 5, 1, 8, 1),
+               new chr.i(cpt.ab, 5, 1, 8, 1),
+               new chr.i(cpt.ad, 5, 1, 8, 1),
+               new chr.i(cpt.rv, 1, 3, 12, 1),
+               new chr.i(cpt.rh, 1, 3, 12, 1),
+               new chr.i(cpt.rs, 1, 3, 12, 1),
+               new chr.i(cpt.rn, 1, 3, 12, 1),
+               new chr.i(cpt.rw, 1, 3, 12, 1),
+               new chr.i(cpt.ru, 1, 3, 12, 1),
+               new chr.i(cpt.rp, 1, 3, 12, 1),
+               new chr.i(cpt.rj, 1, 3, 12, 1),
+               new chr.i(cpt.rl, 1, 3, 12, 1),
+               new chr.i(cpt.ro, 1, 3, 12, 1),
+               new chr.i(cpt.rr, 1, 3, 12, 1),
+               new chr.i(cpt.rk, 1, 3, 12, 1),
+               new chr.i(cpt.rm, 1, 3, 12, 1),
+               new chr.i(cpt.ri, 1, 3, 12, 1),
+               new chr.i(cpt.rt, 1, 3, 12, 1),
+               new chr.i(cpt.rq, 1, 3, 12, 1),
+               new chr.i(cpt.kw, 3, 1, 8, 1),
+               new chr.i(cpt.kx, 3, 1, 8, 1),
+               new chr.i(cpt.ky, 3, 1, 8, 1),
+               new chr.i(cpt.kz, 3, 1, 8, 1),
+               new chr.i(cpt.kv, 3, 1, 8, 1),
+               new chr.i(cpt.fU, 1, 3, 4, 1),
+               new chr.i(cpt.dz, 1, 3, 4, 1),
+               new chr.i(cpt.dA, 1, 3, 4, 1),
+               new chr.i(cpt.ga, 1, 5, 2, 1),
+               new chr.i(cpt.dP, 1, 2, 5, 1),
+               new chr.i(cpt.af, 1, 8, 8, 1),
+               new chr.i(cpt.ai, 1, 4, 6, 1),
+               new chr.i(cpt.xf, 1, 2, 5, 1),
+               new chr.i(cpt.F, 1, 2, 5, 1),
+               new chr.i(cpt.dM, 1, 2, 5, 1)
+            },
+            5
+         )
+      )
+      .build();
+
+   private static chr.g a(int $$0) {
+      return new chr.m(
+         ImmutableMap.builder()
+            .put(chs.a, new chr.d($$0, cuc.b, cuc.h, cuc.B))
+            .put(chs.b, new chr.d($$0, cuc.c, cuc.e, cuc.y))
+            .put(chs.c, new chr.d($$0, cuc.z, cuc.o, cuc.p))
+            .put(chs.d, new chr.d($$0, cuc.q, cuc.k, cuc.t))
+            .put(chs.e, new chr.d($$0, cuc.g, cuc.s, cuc.j))
+            .put(chs.f, new chr.d($$0, cuc.i, cuc.f, cuc.M))
+            .put(chs.g, new chr.d($$0, cuc.d, cuc.r, cuc.A))
+            .build()
+      );
+   }
+
+   private static chr.g a() {
+      return new chr.m(
+         ImmutableMap.builder()
+            .put(chs.a, new chr.d(30, 3, 3, cuc.u))
+            .put(chs.b, new chr.d(30, 2, 2, cuc.w))
+            .put(chs.c, new chr.d(30, 3, 3, cuc.a))
+            .put(chs.d, new chr.d(30, 3, 3, cuc.n))
+            .put(chs.e, new chr.d(30, cuc.v))
+            .put(chs.f, new chr.d(30, cuc.L))
+            .put(chs.g, new chr.d(30, 2, 2, cuc.x))
+            .build()
+      );
+   }
+
+   private static Int2ObjectMap<chr.g[]> a(ImmutableMap<Integer, chr.g[]> $$0) {
+      return new Int2ObjectOpenHashMap($$0);
+   }
+
+   private static cpq a(il<crm> $$0) {
+      return cro.a(new cpq(cpt.sj), $$0);
+   }
+
+   private static cpq a(cpl $$0, ctz $$1, int $$2) {
+      cpq $$3 = new cpq($$0);
+      $$3.a($$1, $$2);
+      return $$3;
+   }
+
+   static class a implements chr.g {
+      private final cpl a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public a(cpl $$0, int $$1) {
+         this($$0, $$1, 12, 1);
+      }
+
+      public a(cpl $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         cpq $$2 = new cpq(cpt.oy, this.b);
+         cpq $$3 = new cpq(this.a);
+         if ($$3.a(aum.ba)) {
+            List<coh> $$4 = Lists.newArrayList();
+            $$4.add(a($$1));
+            if ($$1.i() > 0.7F) {
+               $$4.add(a($$1));
             }
 
-            if ($$10 != null && !$$0) {
-               this.a($$10);
-               this.at = true;
+            if ($$1.i() > 0.8F) {
+               $$4.add(a($$1));
             }
 
-            if ($$11 == null || this.D() <= 0) {
-               break;
-            }
-
-            $$10 = null;
+            $$3 = coi.a($$3, $$4);
          }
 
-         this.f = false;
-         $$1 = this.dp();
-         double $$14 = $$1.c;
-         double $$15 = $$1.d;
-         double $$16 = $$1.e;
-         if (this.B()) {
-            for (int $$17 = 0; $$17 < 4; $$17++) {
-               this.dM()
-                  .a(
-                     jz.g,
-                     this.dr() + $$14 * (double)$$17 / 4.0,
-                     this.dt() + $$15 * (double)$$17 / 4.0,
-                     this.dx() + $$16 * (double)$$17 / 4.0,
-                     -$$14,
-                     -$$15 + 0.2,
-                     -$$16
-                  );
-            }
-         }
+         return new cvc($$2, $$3, this.c, this.d, 0.2F);
+      }
 
-         double $$18 = this.dr() + $$14;
-         double $$19 = this.dt() + $$15;
-         double $$20 = this.dx() + $$16;
-         double $$21 = $$1.h();
-         if ($$0) {
-            this.r((float)(awi.d(-$$14, -$$16) * 180.0F / (float)Math.PI));
+      private static coh a(awt $$0) {
+         return coh.a(cog.a($$0.a(16)));
+      }
+   }
+
+   static class b implements chr.g {
+      private final cpq a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
+
+      public b(cwd $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 1);
+      }
+
+      public b(cwd $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new cpq($$0.l(), $$1), $$2, $$3, $$4);
+      }
+
+      public b(cpq $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = 0.05F;
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         return new cvc(this.a.q(), new cpq(cpt.oy, this.d), this.b, this.c, this.e);
+      }
+   }
+
+   static class c implements chr.g {
+      private final Map<chs, cpl> a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public c(int $$0, int $$1, int $$2, Map<chs, cpl> $$3) {
+         kh.y.s().filter($$1x -> !$$3.containsKey($$1x)).findAny().ifPresent($$0x -> {
+            throw new IllegalStateException("Missing trade for villager type: " + kh.y.b($$0x));
+         });
+         this.a = $$3;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Nullable
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         if ($$0 instanceof chp $$2) {
+            cpq $$3 = new cpq(this.a.get($$2.gw().a()), this.b);
+            return new cvc($$3, new cpq(cpt.oy), this.c, this.d, 0.05F);
          } else {
-            this.r((float)(awi.d($$14, $$16) * 180.0F / (float)Math.PI));
+            return null;
+         }
+      }
+   }
+
+   static class d implements chr.g {
+      private final int a;
+      private final List<ctz> b;
+      private final int c;
+      private final int d;
+
+      public d(int $$0) {
+         this($$0, kh.f.s().filter(ctz::i).toArray(ctz[]::new));
+      }
+
+      public d(int $$0, ctz... $$1) {
+         this($$0, 0, Integer.MAX_VALUE, $$1);
+      }
+
+      public d(int $$0, int $$1, int $$2, ctz... $$3) {
+         this.c = $$1;
+         this.d = $$2;
+         this.a = $$0;
+         this.b = Arrays.asList($$3);
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         ctz $$2 = this.b.get($$1.a(this.b.size()));
+         int $$3 = Math.max($$2.f(), this.c);
+         int $$4 = Math.min($$2.a(), this.d);
+         int $$5 = awm.a($$1, $$3, $$4);
+         cpq $$6 = com.a(new cub($$2, $$5));
+         int $$7 = 2 + $$1.a(5 + $$5 * 10) + 3 * $$5;
+         if ($$2.b()) {
+            $$7 *= 2;
          }
 
-         this.s((float)(awi.d($$15, $$21) * 180.0F / (float)Math.PI));
-         this.s(d(this.N, this.dE()));
-         this.r(d(this.M, this.dC()));
-         float $$22 = 0.99F;
-         float $$23 = 0.05F;
-         if (this.aZ()) {
-            for (int $$24 = 0; $$24 < 4; $$24++) {
-               float $$25 = 0.25F;
-               this.dM().a(jz.e, $$18 - $$14 * 0.25, $$19 - $$15 * 0.25, $$20 - $$16 * 0.25, $$14, $$15, $$16);
+         if ($$7 > 64) {
+            $$7 = 64;
+         }
+
+         return new cvc(new cpq(cpt.oy, $$7), new cpq(cpt.qO), $$6, 12, this.a, 0.2F);
+      }
+   }
+
+   static class e implements chr.g {
+      private final cpq a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
+
+      public e(cpl $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 0.05F);
+      }
+
+      public e(cpl $$0, int $$1, int $$2, int $$3, float $$4) {
+         this.a = new cpq($$0);
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         int $$2 = 5 + $$1.a(15);
+         cpq $$3 = cua.a($$1, new cpq(this.a.d()), $$2, false);
+         int $$4 = Math.min(this.b + $$2, 64);
+         cpq $$5 = new cpq(cpt.oy, $$4);
+         return new cvc($$5, $$3, this.c, this.d, this.e);
+      }
+   }
+
+   static class f implements chr.g {
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         return null;
+      }
+   }
+
+   public interface g {
+      @Nullable
+      cvc a(bof var1, awt var2);
+   }
+
+   static class h implements chr.g {
+      private final cpq a;
+      private final int b;
+      private final cpq c;
+      private final int d;
+      private final int e;
+      private final float f;
+      private final boolean g;
+
+      public h(cwd $$0, int $$1, int $$2, cpl $$3, int $$4, int $$5, int $$6, float $$7) {
+         this($$0, $$1, $$2, new cpq($$3), $$4, $$5, $$6, $$7, false);
+      }
+
+      public h(cwd $$0, int $$1, int $$2, cpl $$3, int $$4, int $$5, int $$6, float $$7, boolean $$8) {
+         this($$0, $$1, $$2, new cpq($$3), $$4, $$5, $$6, $$7, $$8);
+      }
+
+      public h(cwd $$0, int $$1, int $$2, cpq $$3, int $$4, int $$5, int $$6, float $$7) {
+         this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+      }
+
+      private h(cwd $$0, int $$1, int $$2, cpq $$3, int $$4, int $$5, int $$6, float $$7, boolean $$8) {
+         this.a = new cpq($$0, $$1);
+         this.b = $$2;
+         this.c = $$3.c($$4);
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.g = $$8;
+      }
+
+      @Nullable
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         return new cvc(new cpq(cpt.oy, this.b), this.a.q(), this.c.q(), 0, this.d, this.e, this.f, 0, this.g);
+      }
+   }
+
+   static class i implements chr.g {
+      private final cpq a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
+
+      public i(czf $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new cpq($$0), $$1, $$2, $$3, $$4);
+      }
+
+      public i(cpl $$0, int $$1, int $$2, int $$3) {
+         this(new cpq($$0), $$1, $$2, 12, $$3);
+      }
+
+      public i(cpl $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new cpq($$0), $$1, $$2, $$3, $$4);
+      }
+
+      public i(cpq $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, $$1, $$2, $$3, $$4, 0.05F);
+      }
+
+      public i(cpl $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this(new cpq($$0), $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public i(cpq $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.a.f($$2);
+         this.c = $$3;
+         this.d = $$4;
+         this.e = $$5;
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         return new cvc(new cpq(cpt.oy, this.b), this.a.q(), this.c, this.d, this.e);
+      }
+   }
+
+   static class j implements chr.g {
+      private final List<dhg.a> a;
+      private final int b;
+      private final float c;
+
+      public j(il<bnq> $$0, int $$1, int $$2) {
+         this(List.of(new dhg.a($$0, $$1)), $$2, 0.05F);
+      }
+
+      public j(List<dhg.a> $$0, int $$1, float $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Nullable
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         cpq $$2 = new cpq(cpt.vQ, 1);
+         cra.a($$2, this.a);
+         return new cvc(new cpq(cpt.oy, 1), $$2, 12, this.b, this.c);
+      }
+   }
+
+   static class k implements chr.g {
+      private final cpq a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final cpl f;
+      private final int g;
+      private final float h;
+
+      public k(cpl $$0, int $$1, cpl $$2, int $$3, int $$4, int $$5, int $$6) {
+         this.a = new cpq($$2);
+         this.c = $$4;
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$0;
+         this.g = $$1;
+         this.b = $$3;
+         this.h = 0.05F;
+      }
+
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         cpq $$2 = new cpq(cpt.oy, this.c);
+         List<il<crm>> $$3 = kh.i.h().filter($$0x -> !((crm)$$0x.a()).a().isEmpty() && crn.a($$0x)).collect(Collectors.toList());
+         il<crm> $$4 = ac.a($$3, $$1);
+         cpq $$5 = cro.a(new cpq(this.a.d(), this.b), $$4);
+         return new cvc($$2, new cpq(this.f, this.g), $$5, this.d, this.e, this.h);
+      }
+   }
+
+   static class l implements chr.g {
+      private final int a;
+      private final aut<ecg> b;
+      private final String c;
+      private final eiy.a d;
+      private final int e;
+      private final int f;
+
+      public l(int $$0, aut<ecg> $$1, String $$2, eiy.a $$3, int $$4, int $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+
+      @Nullable
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         if (!($$0.dJ() instanceof apa)) {
+            return null;
+         } else {
+            apa $$2 = (apa)$$0.dJ();
+            ib $$3 = $$2.a(this.b, $$0.dj(), 100, true);
+            if ($$3 != null) {
+               cpq $$4 = cpx.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
+               cpx.a($$2, $$4);
+               ejc.a($$4, $$3, "+", this.d);
+               $$4.a(vs.c(this.c));
+               return new cvc(new cpq(cpt.oy, this.a), new cpq(cpt.qR), $$4, this.e, this.f, 0.2F);
+            } else {
+               return null;
             }
-
-            $$22 = this.E();
-         }
-
-         this.g($$1.a((double)$$22));
-         if (!this.aV() && !$$0) {
-            enz $$26 = this.dp();
-            this.o($$26.c, $$26.d - 0.05F, $$26.e);
-         }
-
-         this.a_($$18, $$19, $$20);
-         this.aQ();
-      }
-   }
-
-   private boolean H() {
-      return this.b && this.dM().b(new enu(this.dk(), this.dk()).g(0.06));
-   }
-
-   private void K() {
-      this.b = false;
-      enz $$0 = this.dp();
-      this.g($$0.d((double)(this.af.i() * 0.2F), (double)(this.af.i() * 0.2F), (double)(this.af.i() * 0.2F)));
-      this.n = 0;
-   }
-
-   @Override
-   public void a(bon $$0, enz $$1) {
-      super.a($$0, $$1);
-      if ($$0 != bon.a && this.H()) {
-         this.K();
-      }
-   }
-
-   protected void q() {
-      this.n++;
-      if (this.n >= 1200) {
-         this.am();
-      }
-   }
-
-   private void M() {
-      if (this.s != null) {
-         this.s.clear();
-      }
-
-      if (this.r != null) {
-         this.r.clear();
-      }
-   }
-
-   @Override
-   protected void a(enw $$0) {
-      super.a($$0);
-      bnq $$1 = $$0.a();
-      float $$2 = (float)this.dp().f();
-      int $$3 = awi.c(awi.a((double)$$2 * this.o, 0.0, 2.147483647E9));
-      if (this.D() > 0) {
-         if (this.r == null) {
-            this.r = new IntOpenHashSet(5);
-         }
-
-         if (this.s == null) {
-            this.s = Lists.newArrayListWithCapacity(5);
-         }
-
-         if (this.r.size() >= this.D() + 1) {
-            this.am();
-            return;
-         }
-
-         this.r.add($$1.aj());
-      }
-
-      if (this.B()) {
-         long $$4 = (long)this.af.a($$3 / 2 + 2);
-         $$3 = (int)Math.min($$4 + (long)$$3, 2147483647L);
-      }
-
-      bnq $$5 = this.w();
-      bmp $$6;
-      if ($$5 == null) {
-         $$6 = this.dN().a(this, this);
-      } else {
-         $$6 = this.dN().a(this, $$5);
-         if ($$5 instanceof boi) {
-            ((boi)$$5).z($$1);
-         }
-      }
-
-      boolean $$8 = $$1.ai() == bnw.G;
-      int $$9 = $$1.az();
-      if (this.bN() && !$$8) {
-         $$1.g(5);
-      }
-
-      if ($$1.a($$6, (float)$$3)) {
-         if ($$8) {
-            return;
-         }
-
-         if ($$1 instanceof boi $$10) {
-            if (!this.dM().B && this.D() <= 0) {
-               $$10.q($$10.eP() + 1);
-            }
-
-            if (this.p > 0) {
-               double $$11 = Math.max(0.0, 1.0 - $$10.g(bpp.k));
-               enz $$12 = this.dp().d(1.0, 0.0, 1.0).d().a((double)this.p * 0.6 * $$11);
-               if ($$12.g() > 0.0) {
-                  $$10.j($$12.c, 0.1, $$12.e);
-               }
-            }
-
-            if (!this.dM().B && $$5 instanceof boi) {
-               ctn.a($$10, $$5);
-               ctn.b((boi)$$5, $$10);
-            }
-
-            this.a($$10);
-            if ($$5 != null && $$10 != $$5 && $$10 instanceof chl && $$5 instanceof aox && !this.aU()) {
-               ((aox)$$5).d.b(new abm(abm.h, 0.0F));
-            }
-
-            if (!$$1.bx() && this.s != null) {
-               this.s.add($$10);
-            }
-
-            if (!this.dM().B && $$5 instanceof aox $$13) {
-               if (this.s != null && this.C()) {
-                  am.H.a($$13, this.s);
-               } else if (!$$1.bx() && this.C()) {
-                  am.H.a($$13, Arrays.asList($$1));
-               }
-            }
-         }
-
-         this.a(this.q, 1.0F, 1.2F / (this.af.i() * 0.2F + 0.9F));
-         if (this.D() <= 0) {
-            this.am();
-         }
-      } else {
-         $$1.i($$9);
-         this.g(this.dp().a(-0.1));
-         this.r(this.dC() + 180.0F);
-         this.M += 180.0F;
-         if (!this.dM().B && this.dp().g() < 1.0E-7) {
-            if (this.d == chr.a.b) {
-               this.a(this.x(), 0.1F);
-            }
-
-            this.am();
          }
       }
    }
 
-   @Override
-   protected void a(env $$0) {
-      this.m = this.dM().a_($$0.a());
-      super.a($$0);
-      enz $$1 = $$0.e().a(this.dr(), this.dt(), this.dx());
-      this.g($$1);
-      enz $$2 = $$1.d().a(0.05F);
-      this.p(this.dr() - $$2.c, this.dt() - $$2.d, this.dx() - $$2.e);
-      this.a(this.u(), 1.0F, 1.2F / (this.af.i() * 0.2F + 0.9F));
-      this.b = true;
-      this.e = 7;
-      this.a(false);
-      this.a((byte)0);
-      this.b(atl.aC);
-      this.q(false);
-      this.M();
-   }
-
-   protected atk s() {
-      return atl.aC;
-   }
-
-   protected final atk u() {
-      return this.q;
-   }
-
-   protected void a(boi $$0) {
-   }
-
-   @Nullable
-   protected enw a(enz $$0, enz $$1) {
-      return cif.a(this.dM(), this, $$0, $$1, this.cH().b(this.dp()).g(1.0), this::a);
-   }
-
-   @Override
-   protected boolean a(bnq $$0) {
-      return super.a($$0) && (this.r == null || !this.r.contains($$0.aj()));
-   }
-
-   @Override
-   public void b(sw $$0) {
-      super.b($$0);
-      $$0.a("life", (short)this.n);
-      if (this.m != null) {
-         $$0.a("inBlockState", tl.a(this.m));
+   static record m(Map<chs, chr.g> a) implements chr.g {
+      public static chr.m a(chr.g $$0, chs... $$1) {
+         return new chr.m(Arrays.stream($$1).collect(Collectors.toMap($$0x -> $$0x, $$1x -> $$0)));
       }
 
-      $$0.a("shake", (byte)this.e);
-      $$0.a("inGround", this.b);
-      $$0.a("pickup", (byte)this.d.ordinal());
-      $$0.a("damage", this.o);
-      $$0.a("crit", this.B());
-      $$0.a("PierceLevel", this.D());
-      $$0.a("SoundEvent", kf.b.b(this.q).toString());
-      $$0.a("ShotFromCrossbow", this.C());
-      $$0.a("item", this.t.b(new sw()));
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.n = $$0.g("life");
-      if ($$0.b("inBlockState", 10)) {
-         this.m = tl.a(this.dM().a(kg.f), $$0.p("inBlockState"));
-      }
-
-      this.e = $$0.f("shake") & 255;
-      this.b = $$0.q("inGround");
-      if ($$0.b("damage", 99)) {
-         this.o = $$0.k("damage");
-      }
-
-      this.d = chr.a.a($$0.f("pickup"));
-      this.a($$0.q("crit"));
-      this.a($$0.f("PierceLevel"));
-      if ($$0.b("SoundEvent", 8)) {
-         this.q = kf.b.b(new aiy($$0.l("SoundEvent"))).orElse(this.s());
-      }
-
-      this.q($$0.q("ShotFromCrossbow"));
-      if ($$0.b("item", 10)) {
-         this.t = cpd.a($$0.p("item"));
-      }
-   }
-
-   @Override
-   public void b(@Nullable bnq $$0) {
-      super.b($$0);
-      if ($$0 instanceof chl) {
-         this.d = ((chl)$$0).fU().d ? chr.a.c : chr.a.b;
-      }
-   }
-
-   @Override
-   public void b_(chl $$0) {
-      if (!this.dM().B && (this.b || this.G()) && this.e <= 0) {
-         if (this.a($$0)) {
-            $$0.a(this, 1);
-            this.am();
+      @Nullable
+      @Override
+      public cvc a(bof $$0, awt $$1) {
+         if ($$0 instanceof chp $$2) {
+            chs $$3 = $$2.gw().a();
+            chr.g $$4 = this.a.get($$3);
+            return $$4 == null ? null : $$4.a($$0, $$1);
+         } else {
+            return null;
          }
-      }
-   }
-
-   protected boolean a(chl $$0) {
-      switch (this.d) {
-         case b:
-            return $$0.fT().e(this.x());
-         case c:
-            return $$0.fU().d;
-         default:
-            return false;
-      }
-   }
-
-   protected cpd x() {
-      return this.t.q();
-   }
-
-   @Override
-   protected bnq.b aW() {
-      return bnq.b.a;
-   }
-
-   public cpd y() {
-      return this.t;
-   }
-
-   public void h(double $$0) {
-      this.o = $$0;
-   }
-
-   public double z() {
-      return this.o;
-   }
-
-   public void b(int $$0) {
-      this.p = $$0;
-   }
-
-   public int A() {
-      return this.p;
-   }
-
-   @Override
-   public boolean cq() {
-      return false;
-   }
-
-   public void a(boolean $$0) {
-      this.a(1, $$0);
-   }
-
-   public void a(byte $$0) {
-      this.am.b(i, $$0);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      byte $$2 = this.am.b(h);
-      if ($$1) {
-         this.am.b(h, (byte)($$2 | $$0));
-      } else {
-         this.am.b(h, (byte)($$2 & ~$$0));
-      }
-   }
-
-   public boolean B() {
-      byte $$0 = this.am.b(h);
-      return ($$0 & 1) != 0;
-   }
-
-   public boolean C() {
-      byte $$0 = this.am.b(h);
-      return ($$0 & 4) != 0;
-   }
-
-   public byte D() {
-      return this.am.b(i);
-   }
-
-   public void a(boi $$0, float $$1) {
-      int $$2 = ctn.a(ctp.y, $$0);
-      int $$3 = ctn.a(ctp.z, $$0);
-      this.h((double)($$1 * 2.0F) + this.af.a((double)this.dM().aj().a() * 0.11, 0.57425));
-      if ($$2 > 0) {
-         this.h(this.z() + (double)$$2 * 0.5 + 0.5);
-      }
-
-      if ($$3 > 0) {
-         this.b($$3);
-      }
-
-      if (ctn.a(ctp.A, $$0) > 0) {
-         this.g(100);
-      }
-   }
-
-   protected float E() {
-      return 0.6F;
-   }
-
-   public void p(boolean $$0) {
-      this.ae = $$0;
-      this.a(2, $$0);
-   }
-
-   public boolean G() {
-      return !this.dM().B ? this.ae : (this.am.b(h) & 2) != 0;
-   }
-
-   public void q(boolean $$0) {
-      this.a(4, $$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public static chr.a a(int $$0) {
-         if ($$0 < 0 || $$0 > values().length) {
-            $$0 = 0;
-         }
-
-         return values()[$$0];
       }
    }
 }

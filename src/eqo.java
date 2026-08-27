@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface eqo<T> {
+   void a(eqm<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqa
-@epz
-interface eqo {
+   boolean a(ib var1, T var2);
+
+   int a();
 }

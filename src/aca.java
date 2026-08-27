@@ -1,61 +1,42 @@
-public class aca implements xx<aag> {
-   public static final xo<uq, aca> a = xx.a(aca::a, aca::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public aca(bnq $$0) {
-      this.b = $$0.dr();
-      this.c = $$0.dt();
-      this.d = $$0.dx();
-      this.e = $$0.dC();
-      this.f = $$0.dE();
-   }
+public record aca(eja b, byte c, boolean d, Optional<List<eiy>> e, Optional<ejc.b> f) implements xz<aai> {
+   public static final xq<vd, aca> a = xq.a(eja.a, aca::b, xo.b, aca::e, xo.a, aca::f, eiy.a.a(xo.a()).a(xo::a), aca::g, ejc.b.a, aca::h, aca::new);
 
-   private aca(uq $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public aca(eja $$0, byte $$1, boolean $$2, @Nullable Collection<eiy> $$3, @Nullable ejc.b $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public xz<aca> a() {
-      return aeq.T;
+   public yb<aca> a() {
+      return aet.P;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public void a(ejc $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public double e() {
+   public byte e() {
       return this.c;
    }
 
-   public double f() {
+   public boolean f() {
       return this.d;
    }
 
-   public float g() {
+   public Optional<List<eiy>> g() {
       return this.e;
    }
 
-   public float h() {
+   public Optional<ejc.b> h() {
       return this.f;
    }
 }

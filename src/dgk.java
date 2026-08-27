@@ -1,31 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgk extends dcs implements cyj {
-   public static final MapCodec<dgk> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cnr.q.fieldOf("color").forGetter(dgk::b), u()).apply($$0, dgk::new));
-   private final cnr k;
+public class dgk extends daz {
+   public static final MapCodec<dgk> b = b(dgk::new);
+   private static final vs c = vs.c("container.upgrade");
 
    @Override
    public MapCodec<dgk> a() {
-      return j;
+      return b;
    }
 
-   public dgk(cnr $$0, dli.d $$1) {
-      super($$1);
-      this.k = $$0;
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   protected dgk(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   public cnr b() {
-      return this.k;
+   protected bmp b(dme $$0, cwe $$1, ib $$2) {
+      return new bmv(($$2x, $$3, $$4) -> new cmq($$2x, $$3, clf.a($$1, $$2)), c);
+   }
+
+   @Override
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$1.B) {
+         return bml.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(atz.aF);
+         return bml.b;
+      }
    }
 }

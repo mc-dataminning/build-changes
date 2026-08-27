@@ -1,19 +1,14 @@
-import io.netty.buffer.ByteBuf;
+public abstract class xx<T extends uy> implements xz<T> {
+   private final Iterable<xz<? super T>> a;
 
-public interface xx<T extends uw> {
-   xz<? extends xx<T>> a();
-
-   void a(T var1);
-
-   default boolean c() {
-      return false;
+   protected xx(Iterable<xz<? super T>> $$0) {
+      this.a = $$0;
    }
 
-   default boolean d() {
-      return false;
+   public final Iterable<xz<? super T>> b() {
+      return this.a;
    }
 
-   static <B extends ByteBuf, T extends xx<?>> xo<B, T> a(xr<B, T> $$0, xp<B, T> $$1) {
-      return xo.a($$0, $$1);
-   }
+   @Override
+   public abstract yb<? extends xx<T>> a();
 }

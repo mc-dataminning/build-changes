@@ -1,11 +1,19 @@
-public class gcj extends gcg<cal, fng<cal>> {
-   private static final aiy a = new aiy("textures/entity/cat/ocelot.png");
+public class gcj extends gde<cfb, fnr<cfb>> {
+   private static final ajc a = new ajc("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gcj(gba.a $$0) {
-      super($$0, new fng<>($$0.a(fpi.aA)), 0.4F);
+   public gcj(gby.a $$0, float $$1) {
+      super($$0, new fnj($$0.a(fqe.ad)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new ggc<>(this, $$0.d()));
+      this.a(new gfz<>(this, new fnj($$0.a(fqe.ae)), new fnj($$0.a(fqe.af)), $$0.g()));
    }
 
-   public aiy a(cal $$0) {
+   protected void a(cfb $$0, etd $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ajc a(cfb $$0) {
       return a;
    }
 }

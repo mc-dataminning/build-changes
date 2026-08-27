@@ -1,70 +1,73 @@
-public class fsg extends fuh {
-   fsg(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public final class fsg {
+   private static final int a = 1024;
+   private final frx b;
+   private final fsd c;
+   private final frs d;
+   @Nullable
+   private fsc e;
+
+   public fsg(frx $$0, fsd $$1, frs $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public static fsg a(fsd $$0, UserApiService $$1) {
+      frs $$2 = new frs(1024);
+      frx $$3 = frx.a($$0, $$1);
+      return new fsg($$3, $$0, $$2);
+   }
+
+   public void a(eyk $$0, fgh $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fsc $$4 = this.e.b();
+         $$0.a(
+            new ffa(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               vs.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               vs.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               vs.c("gui.abuseReport.draft.edit"),
+               vs.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         this.t = this.r.a(50) + 80;
-      }
-
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
-         }
-      } else {
-         this.k();
+         $$2.run();
       }
    }
 
-   @Override
-   public ftl b() {
-      return ftl.c;
+   public frx a() {
+      return this.b;
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsg $$8 = new fsg($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public frs b() {
+      return this.d;
    }
 
-   public static class b implements ftk<kc> {
-      private final fuc a;
+   public boolean a(fsd $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public b(fuc $$0) {
-         this.a = $$0;
-      }
+   public void a(@Nullable fsc $$0) {
+      this.e = $$0;
+   }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsg $$8 = new fsg($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

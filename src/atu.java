@@ -1,45 +1,106 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class atu<T> implements Iterable<ats<T>> {
-   private final iv<T> a;
-   private final Map<T, ats<T>> b = new IdentityHashMap<>();
-   private final vq c;
-   private final xo<vb, ats<T>> d;
+public class atu extends ats {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   public atu(iv<T> $$0, vq $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = xm.a($$0.c()).a(this::b, ats::b);
+   public int a(Collection<csu<?>> $$0, apb $$1) {
+      List<ajc> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (csu<?> $$4 : $$0) {
+         ajc $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().ar_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(acr.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public xo<vb, ats<T>> a() {
-      return this.d;
+   public int b(Collection<csu<?>> $$0, apb $$1) {
+      List<ajc> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (csu<?> $$4 : $$0) {
+         ajc $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(acr.a.c, $$1, $$2);
+      return $$3;
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   private void a(acr.a $$0, apb $$1, List<ajc> $$2) {
+      $$1.d.b(new acr($$0, $$2, Collections.emptyList(), this.a()));
    }
 
-   public ats<T> a(T $$0, att $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new ats<>(this, (T)$$1x, $$1));
+   public sy b() {
+      sy $$0 = new sy();
+      this.a().b($$0);
+      te $$1 = new te();
+
+      for (ajc $$2 : this.a) {
+         $$1.add(tt.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      te $$3 = new te();
+
+      for (ajc $$4 : this.b) {
+         $$3.add(tt.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
    }
 
-   public iv<T> b() {
-      return this.a;
+   public void a(sy $$0, csv $$1) {
+      this.a(att.a($$0));
+      te $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      te $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   @Override
-   public Iterator<ats<T>> iterator() {
-      return this.b.values().iterator();
+   private void a(te $$0, Consumer<csu<?>> $$1, csv $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            ajc $$5 = new ajc($$4);
+            Optional<csu<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
    }
 
-   public ats<T> b(T $$0) {
-      return this.a($$0, att.b);
-   }
-
-   public vq c() {
-      return this.c;
+   public void a(apb $$0) {
+      $$0.d.b(new acr(acr.a.a, this.a, this.b, this.a()));
    }
 }

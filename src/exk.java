@@ -1,63 +1,56 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class exk {
+public abstract class exk implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fux[] e = new fux[9];
-   private boolean f;
+   private boolean c = false;
 
-   public exk(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fux();
-      }
-   }
-
-   private void b() {
+   protected static void a(long $$0) {
       try {
-         sw $$0 = tj.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = tl.b($$0, 1343);
-         $$0 = axo.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public void a() {
-      try {
-         sw $$0 = tl.g(new sw());
+   public static void a(fgh $$0) {
+      eyk $$1 = eyk.P();
+      $$1.execute(() -> $$1.a($$0));
+   }
 
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
+   protected void a(vs $$0) {
+      this.b();
+      eyk $$1 = eyk.P();
+      $$1.execute(() -> $$1.a(new evx($$0, new eto(new fgm()))));
+   }
 
-         tj.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
+   protected void a(Exception $$0) {
+      if ($$0 instanceof evg $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vs.b($$0.getMessage()));
       }
    }
 
-   public fux a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
+   protected void a(evg $$0) {
+      this.a($$0.a.b());
+   }
 
-      return this.e[$$0];
+   public abstract vs a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

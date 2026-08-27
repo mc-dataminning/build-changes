@@ -1,17 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class auo {
+   public static final aut<cad> a = a("acquirable_job_site");
+   public static final aut<cad> b = a("village");
+   public static final aut<cad> c = a("bee_home");
 
-public record auo(List<aun> b, boolean c) {
-   public static final Codec<auo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aun.a.listOf().fieldOf("values").forGetter(auo::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(auo::b)).apply($$0, auo::new)
-   );
-
-   public List<aun> a() {
-      return this.b;
+   private auo() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static aut<cad> a(String $$0) {
+      return aut.a(ki.U, new ajc($$0));
    }
 }

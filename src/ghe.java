@@ -1,44 +1,11 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface ghe {
-   Logger a = LogUtils.getLogger();
-
-   static ghe create(Collection<arb<?>> $$0) {
-      return ($$1, $$2) -> {
-         asd $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         eri $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = eri.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         gil $$11 = $$3.a(gil.a).orElse(gil.e);
-         gin $$12 = $$11.a($$7.a(), $$7.b());
-         if (awi.c($$7.a(), $$12.a()) && awi.c($$7.b(), $$12.b())) {
-            return new ggv($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+public interface ghe extends ghh {
+   @Deprecated
+   @Override
+   default float call(cpq $$0, @Nullable fra $$1, @Nullable box $$2, int $$3) {
+      return awm.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
    }
 
-   @Nullable
-   ggv loadSprite(aiy var1, arz var2);
+   float unclampedCall(cpq var1, @Nullable fra var2, @Nullable box var3, int var4);
 }

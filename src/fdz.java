@@ -1,57 +1,143 @@
-public class fdz extends ffl {
-   private final Runnable c;
-   protected final fdz.a a;
-   private final vq k;
-   private final boolean l;
-   private fah m = fah.a;
-   protected int b;
-   private ezq n;
+public interface fdz {
+   fdz a(int var1);
 
-   public fdz(Runnable $$0, fdz.a $$1, vq $$2, vq $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+   fdz a(int var1, int var2);
+
+   fdz a(int var1, int var2, int var3, int var4);
+
+   fdz b(int var1);
+
+   fdz c(int var1);
+
+   fdz d(int var1);
+
+   fdz e(int var1);
+
+   fdz f(int var1);
+
+   fdz g(int var1);
+
+   fdz a(float var1, float var2);
+
+   fdz a(float var1);
+
+   fdz b(float var1);
+
+   default fdz a() {
+      return this.a(0.0F);
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.m = fah.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.c(ezo.a(vq.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(ezo.a(vq.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(ezo.a(vp.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = ezq.a(vq.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
-      if (this.l) {
-         this.c(this.n);
+   default fdz b() {
+      return this.a(0.5F);
+   }
+
+   default fdz c() {
+      return this.a(1.0F);
+   }
+
+   default fdz d() {
+      return this.b(0.0F);
+   }
+
+   default fdz e() {
+      return this.b(0.5F);
+   }
+
+   default fdz f() {
+      return this.b(1.0F);
+   }
+
+   fdz g();
+
+   fdz.a h();
+
+   static fdz i() {
+      return new fdz.a();
+   }
+
+   public static class a implements fdz {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-   }
-
-   @Override
-   public boolean aO_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      public a(fdz.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
-   }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+      public fdz.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fdz.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fdz.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fdz.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fdz.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fdz.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fdz.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fdz.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fdz.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fdz.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fdz.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fdz.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fdz.a j() {
+         return new fdz.a(this);
+      }
+
+      @Override
+      public fdz.a h() {
+         return this;
+      }
    }
 }

@@ -1,27 +1,15 @@
-import java.util.List;
-
 public enum bnr {
-   a(bnr.a.c),
-   b(bnr.a.b),
-   c(bnr.a.c),
-   d(bnr.a.d);
+   a(n.j),
+   b(n.m),
+   c(n.j);
 
-   private final bnr.a e;
+   private final n d;
 
-   private bnr(bnr.a $$0) {
-      this.e = $$0;
+   private bnr(n $$0) {
+      this.d = $$0;
    }
 
-   public List<enz> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
-   }
-
-   public interface a {
-      List<enz> a = List.of(enz.b);
-      bnr.a b = ($$0, $$1) -> a;
-      bnr.a c = ($$0, $$1) -> List.of(new enz(0.0, (double)$$1, 0.0));
-      bnr.a d = ($$0, $$1) -> List.of(new enz(0.0, (double)$$1 / 2.0, 0.0));
-
-      List<enz> create(float var1, float var2);
+   public n a() {
+      return this.d;
    }
 }

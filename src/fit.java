@@ -1,236 +1,172 @@
-public class fit extends fak<fit.a> {
-   static final aiy a = new aiy("transferable_list/select_highlighted");
-   static final aiy m = new aiy("transferable_list/select");
-   static final aiy n = new aiy("transferable_list/unselect_highlighted");
-   static final aiy o = new aiy("transferable_list/unselect");
-   static final aiy p = new aiy("transferable_list/move_up_highlighted");
-   static final aiy q = new aiy("transferable_list/move_up");
-   static final aiy r = new aiy("transferable_list/move_down_highlighted");
-   static final aiy t = new aiy("transferable_list/move_down");
-   static final vq u = vq.c("pack.incompatible");
-   static final vq v = vq.c("pack.incompatible.confirm.title");
-   private final vq w;
-   final fis x;
+import java.util.List;
 
-   public fit(exo $$0, fis $$1, int $$2, int $$3, vq $$4) {
-      super($$0, $$2, $$3 - 83, 32, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class fit extends fhg<cmt> {
+   private static final ajc x = new ajc("container/stonecutter/scroller");
+   private static final ajc y = new ajc("container/stonecutter/scroller_disabled");
+   private static final ajc z = new ajc("container/stonecutter/recipe_selected");
+   private static final ajc A = new ajc("container/stonecutter/recipe_highlighted");
+   private static final ajc B = new ajc("container/stonecutter/recipe");
+   private static final ajc C = new ajc("textures/gui/container/stonecutter.png");
+   private static final int D = 12;
+   private static final int E = 15;
+   private static final int F = 4;
+   private static final int G = 3;
+   private static final int H = 16;
+   private static final int I = 18;
+   private static final int J = 54;
+   private static final int K = 52;
+   private static final int L = 14;
+   private float M;
+   private boolean N;
+   private int O;
+   private boolean P;
+
+   public fit(cmt $$0, chz $$1, vs $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::K);
+      this.m--;
    }
 
    @Override
-   protected void a(ezb $$0, int $$1, int $$2) {
-      vq $$3 = vq.i().b(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.C() + 3, $$2), 16777215, false);
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public int b() {
-      return this.g;
+   protected void a(ezx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = (int)(41.0F * this.M);
+      ajc $$7 = this.J() ? x : y;
+      $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
+      int $$8 = this.t + 52;
+      int $$9 = this.u + 14;
+      int $$10 = this.O + 12;
+      this.a($$0, $$2, $$3, $$8, $$9, $$10);
+      this.b($$0, $$8, $$9, $$10);
    }
 
    @Override
-   protected int c() {
-      return this.D() - 6;
+   protected void a(ezx $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+         List<csu<ctm>> $$6 = this.p.m();
+
+         for (int $$7 = this.O; $$7 < $$5 && $$7 < this.p.n(); $$7++) {
+            int $$8 = $$7 - this.O;
+            int $$9 = $$3 + $$8 % 4 * 16;
+            int $$10 = $$4 + $$8 / 4 * 18 + 2;
+            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
+               $$0.b(this.i, $$6.get($$7).b().a(this.f.r.I_()), $$1, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = this.O; $$6 < $$5 && $$6 < this.p.n(); $$6++) {
+         int $$7 = $$6 - this.O;
+         int $$8 = $$3 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$4 + $$9 * 18 + 2;
+         ajc $$11;
+         if ($$6 == this.p.l()) {
+            $$11 = z;
+         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
+            $$11 = A;
+         } else {
+            $$11 = B;
+         }
+
+         $$0.a($$11, $$8, $$10 - 1, 16, 18);
+      }
+   }
+
+   private void b(ezx $$0, int $$1, int $$2, int $$3) {
+      List<csu<ctm>> $$4 = this.p.m();
+
+      for (int $$5 = this.O; $$5 < $$3 && $$5 < this.p.n(); $$5++) {
+         int $$6 = $$5 - this.O;
+         int $$7 = $$1 + $$6 % 4 * 16;
+         int $$8 = $$6 / 4;
+         int $$9 = $$2 + $$8 * 18 + 2;
+         $$0.a($$4.get($$5).b().a(this.f.r.I_()), $$7, $$9);
+      }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.i() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.i().c();
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.N = false;
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+
+         for (int $$6 = this.O; $$6 < $$5; $$6++) {
+            int $$7 = $$6 - this.O;
+            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
+            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
+            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.p.b(this.f.s, $$6)) {
+               eyk.P().aj().a(glh.a(atp.zP, 1.0F));
+               this.f.q.a(this.p.j, $$6);
                return true;
-            default:
-               if (ffl.v()) {
-                  switch ($$0) {
-                     case 264:
-                        this.i().f();
-                        return true;
-                     case 265:
-                        this.i().e();
-                        return true;
-                  }
-               }
+            }
+         }
+
+         $$3 = this.t + 119;
+         $$4 = this.u + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
+            this.N = true;
          }
       }
 
       return super.a($$0, $$1, $$2);
    }
 
-   public static class a extends fak.a<fit.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final fit e;
-      protected final exo a;
-      private final fir.a f;
-      private final avu g;
-      private final fah h;
-      private final avu i;
-      private final fah j;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.N && this.J()) {
+         int $$5 = this.u + 14;
+         int $$6 = $$5 + 54;
+         this.M = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
+         this.M = awm.a(this.M, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)this.I()) + 0.5) * 4;
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
 
-      public a(exo $$0, fit $$1, fir.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, fit.u);
-         this.j = b($$0, $$2.b().b());
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.J()) {
+         int $$4 = this.I();
+         float $$5 = (float)$$3 / (float)$$4;
+         this.M = awm.a(this.M - $$5, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)$$4) + 0.5) * 4;
       }
 
-      private static avu a(exo $$0, vq $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            vv $$3 = vv.a($$0.h.a($$1, 157 - $$0.h.b("...")), vv.e("..."));
-            return sr.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
+      return true;
+   }
 
-      private static fah b(exo $$0, vq $$1) {
-         return fah.a($$0.h, $$1, 157, 2);
-      }
+   private boolean J() {
+      return this.P && this.p.n() > 12;
+   }
 
-      @Override
-      public vq a() {
-         return vq.a("narrator.select", this.f.d());
-      }
+   protected int I() {
+      return (this.p.n() + 4 - 1) / 4 - 3;
+   }
 
-      @Override
-      public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         ark $$10 = this.f.b();
-         if (!$$10.a()) {
-            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         avu $$11 = this.g;
-         fah $$12 = this.h;
-         if (this.d() && (this.a.m.W().c() || $$8 || this.e.i() == this && this.e.aL_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$13 = $$6 - $$3;
-            int $$14 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$11 = this.i;
-               $$12 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$13 < 32) {
-                  $$0.a(fit.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fit.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$13 < 16) {
-                     $$0.a(fit.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fit.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
-                     $$0.a(fit.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fit.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
-                     $$0.a(fit.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fit.t, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.g()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void f() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean g() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            vq $$0 = this.f.b().c();
-            this.a.a(new fee($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, fit.v, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.q();
-         double $$4 = $$1 - (double)this.e.g(this.e.l().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.o();
-            if (this.f.o()) {
-               this.g();
-               return true;
-            }
-
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return false;
+   private void K() {
+      this.P = this.p.o();
+      if (!this.P) {
+         this.M = 0.0F;
+         this.O = 0;
       }
    }
 }

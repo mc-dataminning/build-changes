@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 
-public class ht implements hl<LongArgumentType, ht.a> {
-   public void a(ht.a $$0, uq $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(hn.a($$2, $$3));
+public class ht implements hn<FloatArgumentType, ht.a> {
+   public void a(ht.a $$0, us $$1) {
+      boolean $$2 = $$0.b != -Float.MAX_VALUE;
+      boolean $$3 = $$0.c != Float.MAX_VALUE;
+      $$1.k(hp.a($$2, $$3));
       if ($$2) {
-         $$1.b($$0.b);
+         $$1.a($$0.b);
       }
 
       if ($$3) {
-         $$1.b($$0.c);
+         $$1.a($$0.c);
       }
    }
 
-   public ht.a a(uq $$0) {
+   public ht.a a(us $$0) {
       byte $$1 = $$0.readByte();
-      long $$2 = hn.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = hn.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      float $$2 = hp.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
+      float $$3 = hp.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
       return new ht.a($$2, $$3);
    }
 
    public void a(ht.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
+      if ($$0.b != -Float.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
+      if ($$0.c != Float.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public ht.a a(LongArgumentType $$0) {
+   public ht.a a(FloatArgumentType $$0) {
       return new ht.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements hl.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements hn.a<FloatArgumentType> {
+      final float b;
+      final float c;
 
-      a(long $$1, long $$2) {
+      a(float $$1, float $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public LongArgumentType a(dq $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public FloatArgumentType a(dq $$0) {
+         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
       @Override
-      public hl<LongArgumentType, ?> a() {
+      public hn<FloatArgumentType, ?> a() {
          return ht.this;
       }
    }

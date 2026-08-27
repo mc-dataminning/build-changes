@@ -1,119 +1,64 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class ggu extends ggm {
-   static final Logger f = LogUtils.getLogger();
-   protected final aiy e;
+public class ggu<T extends box & chp, M extends fne<T> & fpp> extends ggj<T, M> {
+   private static final Int2ObjectMap<ajc> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new ajc("stone"));
+      $$0.put(2, new ajc("iron"));
+      $$0.put(3, new ajc("gold"));
+      $$0.put(4, new ajc("emerald"));
+      $$0.put(5, new ajc("diamond"));
+   });
+   private final Object2ObjectMap<chs, gjm.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<chq, gjm.a> c = new Object2ObjectOpenHashMap();
+   private final asf d;
+   private final String e;
 
-   public ggu(aiy $$0) {
-      this.e = $$0;
+   public ggu(gdt<T, M> $$0, asf $$1, String $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void a(asb $$0) throws IOException {
-      ggu.a $$1 = this.b($$0);
-      $$1.c();
-      gix $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      eri $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
-      }
-   }
-
-   private void a(eri $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
-   }
-
-   protected ggu.a b(asb $$0) {
-      return ggu.a.a($$0, this.e);
-   }
-
-   protected static class a implements Closeable {
-      @Nullable
-      private final gix a;
-      @Nullable
-      private final eri b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable gix $$0, eri $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static ggu.a a(asb $$0, aiy $$1) {
-         try {
-            arz $$2 = $$0.getResourceOrThrow($$1);
-
-            eri $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = eri.a($$3);
+   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cb()) {
+         cho $$10 = $$3.gw();
+         chs $$11 = $$10.a();
+         chq $$12 = $$10.b();
+         gjm.a $$13 = this.a(this.b, "type", kh.y, $$11);
+         gjm.a $$14 = this.a(this.c, "profession", kh.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gjm.a.a || $$14 == gjm.a.b && $$13 != gjm.a.c);
+         ajc $$16 = this.a("type", kh.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != chq.b && !$$3.o_()) {
+            ajc $$17 = this.a("profession", kh.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != chq.m) {
+               ajc $$18 = this.a("profession_level", (ajc)a.get(awm.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
             }
+         }
+      }
+   }
 
-            gix $$6 = null;
+   private ajc a(String $$0, ajc $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
+   }
 
+   public <K> gjm.a a(Object2ObjectMap<K, gjm.a> $$0, String $$1, ig<K> $$2, K $$3) {
+      return (gjm.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
             try {
-               $$6 = $$2.f().a(gix.a).orElse(null);
-            } catch (RuntimeException var8) {
-               ggu.f.warn("Failed reading metadata of: {}", $$1, var8);
+               return $$0xx.f().a(gjm.a).map(gjm::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
             }
-
-            return new ggu.a($$6, $$4);
-         } catch (IOException var10) {
-            return new ggu.a(var10);
-         }
-      }
-
-      @Nullable
-      public gix a() {
-         return this.a;
-      }
-
-      public eri b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+         }).orElse(gjm.a.a));
    }
 }

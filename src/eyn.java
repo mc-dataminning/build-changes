@@ -1,1032 +1,437 @@
-public class eyn {
-   public static final eyf a = eyf.a.a(0.0F)
-      .a("head", new eye(eye.d.c, new eyg(0.0F, eyh.a(1.2F, 1.2F, 1.2F), eye.b.a)))
-      .a("head", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 1.0F, 1.0F), eye.b.a)))
-      .b();
-   public static final eyf b = eyf.a.a(8.0F)
-      .a()
-      .a(
-         "nose",
-         new eye(
-            eye.d.c,
-            new eyg(0.0F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(0.5417F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(0.5833F, eyh.a(1.0, 0.5, 1.0), eye.b.b),
-            new eyg(0.6667F, eyh.a(1.0, 2.5, 1.0), eye.b.b),
-            new eyg(0.7917F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.9167F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.0F, eyh.a(1.0, 3.0, 1.0), eye.b.b),
-            new eyg(1.125F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(2.0F, eyh.a(1.0, 1.0, 1.0), eye.b.a)
-         )
-      )
-      .b();
-   public static final eyf c = eyf.a.a(1.0F)
-      .a(
-         "nose",
-         new eye(
-            eye.d.c,
-            new eyg(0.0F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.0833F, eyh.a(1.0, 0.7F, 1.0), eye.b.b),
-            new eyg(0.125F, eyh.a(1.0, 3.0, 1.0), eye.b.b),
-            new eyg(0.25F, eyh.a(1.0, 3.0, 1.0), eye.b.b),
-            new eyg(0.7083F, eyh.a(1.0, 4.0, 1.0), eye.b.b),
-            new eyg(0.8333F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.0F, eyh.a(1.0, 1.0, 1.0), eye.b.b)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.125F, eyh.b(-5.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.875F, eyh.b(-20.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .b();
-   public static final eyf d = eyf.a.a(2.0F)
-      .a()
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(0.75F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(-7.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-7.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 2.67F, -0.67F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.3333F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(1.9167F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 2.67F, -0.67F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, -1.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(1.75F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(0.9167F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a),
-            new eyg(0.3333F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a),
-            new eyg(1.5833F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(1.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(0.5F, eyh.b(-1.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(1.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(1.5F, eyh.b(-1.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(1.0F, 0.0F, -2.5F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.2083F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.375F, eyh.a(0.0F, -1.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2083F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.a(0.0F, -1.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(7.5F, 0.0F, 0.0F), eye.b.b),
-            new eyg(0.1667F, eyh.b(9.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(0.875F, eyh.b(-1.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.25F, eyh.b(7.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.75F, eyh.b(5.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.0F, eyh.b(7.5F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.b),
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, -7.5F), eye.b.b),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.b),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, -7.5F), eye.b.b),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.b),
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, 7.5F), eye.b.b),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.b),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 7.5F), eye.b.b),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.b)
-         )
-      )
-      .b();
-   public static final eyf e = eyf.a.a(2.0F)
-      .a()
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(0.75F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(-7.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-7.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 2.67F, -0.67F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.3333F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(1.9167F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 2.67F, -0.67F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, -1.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(1.75F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.1667F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(0.1667F, eyh.a(0.0F, 0.0F, 3.0F), eye.b.a),
-            new eyg(0.9167F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(1.1667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.1667F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5833F, eyh.b(-35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(25.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a),
-            new eyg(0.3333F, eyh.a(0.0F, 4.0F, -1.0F), eye.b.a),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.a(0.0F, 0.0F, -2.0F), eye.b.a),
-            new eyg(1.0F, eyh.a(0.0F, 0.0F, -0.5F), eye.b.a),
-            new eyg(1.5833F, eyh.a(0.0F, 0.0F, 2.0F), eye.b.a),
-            new eyg(2.0F, eyh.a(0.0F, 2.22F, 0.78F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5F, eyh.b(1.25F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.125F, eyh.b(33.61503F, 11.46526F, 9.803F), eye.b.a),
-            new eyg(0.875F, eyh.b(34.71128F, 17.67415F, 14.15251F), eye.b.a),
-            new eyg(1.125F, eyh.b(37.21128F, -17.67415F, -14.15251F), eye.b.a),
-            new eyg(1.875F, eyh.b(38.30529F, -21.62827F, -17.40292F), eye.b.a),
-            new eyg(2.0F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("head", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, -2.0F, 0.0F), eye.b.a), new eyg(2.0F, eyh.a(0.0F, -2.0F, 0.0F), eye.b.a)))
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(0.25F, eyh.b(0.0F, 0.0F, -15.0F), eye.b.a),
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, -15.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, -15.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(1.75F, eyh.b(0.0F, 0.0F, -15.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(0.25F, eyh.b(0.0F, 0.0F, 15.0F), eye.b.a),
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, 15.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 15.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(1.75F, eyh.b(0.0F, 0.0F, 15.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a)
-         )
-      )
-      .a(
-         "nose",
-         new eye(
-            eye.d.c,
-            new eyg(0.0F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.0833F, eyh.a(1.0, 1.5, 1.0), eye.b.b),
-            new eyg(0.2083F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.375F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.4583F, eyh.a(1.0, 2.5, 1.0), eye.b.b),
-            new eyg(0.625F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.8333F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(0.9167F, eyh.a(1.0, 2.5, 1.0), eye.b.b),
-            new eyg(1.0833F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.2917F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.3333F, eyh.a(1.0, 2.5, 1.0), eye.b.b),
-            new eyg(1.5F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.625F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(1.6667F, eyh.a(1.0, 3.5, 1.0), eye.b.b),
-            new eyg(1.8333F, eyh.a(1.0, 1.0, 1.0), eye.b.b),
-            new eyg(2.0F, eyh.a(1.0, 1.0, 1.0), eye.b.b)
-         )
-      )
-      .b();
-   public static final eyf f = eyf.a.a(8.0F)
-      .a(
-         "body",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5F, eyh.b(1.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.b(-5.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.5F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.5F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(4.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(4.5F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(5.6667F, eyh.b(5.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(5.8333F, eyh.b(-2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(6.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(0.0F, -7.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.c,
-            new eyg(0.0F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(1.5F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(1.5417F, eyh.a(1.04F, 0.98F, 1.02F), eye.b.a),
-            new eyg(1.5833F, eyh.a(1.0, 1.0, 1.0), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.1667F, eyh.b(10.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.4167F, eyh.b(-10.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.875F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.0833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.5F, eyh.b(47.5F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.6667F, eyh.b(38.44F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.875F, eyh.b(10.95951F, 13.57454F, -14.93501F), eye.b.b),
-            new eyg(3.2083F, eyh.b(47.5F, 0.0F, 0.0F), eye.b.b),
-            new eyg(3.5833F, eyh.b(55.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(3.7917F, eyh.b(4.2932F, -16.187F, 10.90042F), eye.b.b),
-            new eyg(4.125F, eyh.b(47.5F, 0.0F, 0.0F), eye.b.b),
-            new eyg(4.4167F, eyh.b(54.71135F, 7.98009F, -5.56662F), eye.b.b),
-            new eyg(4.5F, eyh.b(55.72895F, -6.77684F, 4.46197F), eye.b.b),
-            new eyg(4.5833F, eyh.b(54.71135F, 7.98009F, -5.56662F), eye.b.b),
-            new eyg(4.6667F, eyh.b(55.72895F, -6.77684F, 4.46197F), eye.b.b),
-            new eyg(4.75F, eyh.b(54.71135F, 7.98009F, -5.56662F), eye.b.b),
-            new eyg(4.8333F, eyh.b(55.72895F, -6.77684F, 4.46197F), eye.b.b),
-            new eyg(5.0F, eyh.b(65.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(5.75F, eyh.b(65.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(5.9167F, eyh.b(-32.5F, 0.0F, 0.0F), eye.b.b),
-            new eyg(6.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.625F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(1.5833F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(1.875F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(2.0833F, eyh.a(0.0F, 3.0F, 0.0F), eye.b.a),
-            new eyg(2.2917F, eyh.a(0.0F, 6.0F, 0.0F), eye.b.a),
-            new eyg(2.6667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.2083F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a),
-            new eyg(3.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(4.125F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a),
-            new eyg(5.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(5.75F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
-            new eyg(6.0F, eyh.a(0.0F, 1.5F, 0.0F), eye.b.a),
-            new eyg(6.25F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, -2.5F), eye.b.a),
-            new eyg(1.4167F, eyh.b(0.0F, 0.0F, -50.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(0.0F, 0.0F, -30.0F), eye.b.a),
-            new eyg(5.9167F, eyh.b(0.0F, 0.0F, -30.0F), eye.b.a),
-            new eyg(6.0833F, eyh.b(0.0F, 0.0F, -65.0F), eye.b.a),
-            new eyg(6.3333F, eyh.b(0.0F, 0.0F, -30.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 2.5F), eye.b.a),
-            new eyg(1.4167F, eyh.b(0.0F, 0.0F, 50.0F), eye.b.a),
-            new eyg(1.5833F, eyh.b(0.0F, 0.0F, 30.0F), eye.b.a),
-            new eyg(5.9167F, eyh.b(0.0F, 0.0F, 30.0F), eye.b.a),
-            new eyg(6.0833F, eyh.b(0.0F, 0.0F, 65.0F), eye.b.a),
-            new eyg(6.3333F, eyh.b(0.0F, 0.0F, 30.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2083F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2083F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2917F, eyh.a(-2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(-2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.a(-2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2083F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2083F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2917F, eyh.a(2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.3333F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.4167F, eyh.a(2.0F, -0.75F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.a)
-         )
-      )
-      .b();
-   public static final eyf g = eyf.a.a(3.0F)
-      .a(
-         "body",
-         new eye(
-            eye.d.b,
-            new eyg(0.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.b(2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(-2.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.7083F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.a,
-            new eyg(0.25F, eyh.a(0.0F, -7.0F, 0.0F), eye.b.a),
-            new eyg(0.75F, eyh.a(0.0F, -7.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.7083F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.3333F, eyh.b(-5.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.7083F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.0F, eyh.b(10.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("head", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a), new eyg(1.375F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a)))
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, -30.0F), eye.b.a),
-            new eyg(0.9167F, eyh.b(0.0F, 0.0F, -30.0F), eye.b.a),
-            new eyg(1.2083F, eyh.b(0.0F, 0.0F, -5.0F), eye.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 30.0F), eye.b.a),
-            new eyg(0.9167F, eyh.b(0.0F, 0.0F, 30.0F), eye.b.a),
-            new eyg(1.2083F, eyh.b(0.0F, 0.0F, 5.0F), eye.b.a)
-         )
-      )
-      .a("right_front_leg", new eye(eye.d.b, new eyg(0.0F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.b), new eyg(0.4583F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.2083F, eyh.a(6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.4583F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a("right_mid_leg", new eye(eye.d.b, new eyg(0.0833F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.b), new eyg(0.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0833F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.3333F, eyh.a(6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a("right_hind_leg", new eye(eye.d.b, new eyg(0.1667F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.b), new eyg(0.6667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.1667F, eyh.a(-4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.4167F, eyh.a(6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.6667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a("left_front_leg", new eye(eye.d.b, new eyg(0.0F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.b), new eyg(0.4583F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.2083F, eyh.a(-6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.4583F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a("left_mid_leg", new eye(eye.d.b, new eyg(0.0833F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.b), new eyg(0.5833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.0833F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.3333F, eyh.a(-6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.5833F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a("left_hind_leg", new eye(eye.d.b, new eyg(0.1667F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.b), new eyg(0.6667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)))
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.a,
-            new eyg(0.1667F, eyh.a(4.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.4167F, eyh.a(-6.0F, -5.5F, 0.0F), eye.b.b),
-            new eyg(0.6667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .b();
-   public static final eyf h = eyf.a.a(4.0F)
-      .a(
-         "bone",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(-90.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.5F, eyh.b(-98.91F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.9583F, eyh.b(-90.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.7083F, eyh.b(-68.28F, 0.0F, 0.0F), eye.b.b),
-            new eyg(2.9583F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a(
-         "bone",
-         new eye(
-            eye.d.a,
-            new eyg(1.0F, eyh.a(0.0F, 20.0F, 17.0F), eye.b.b),
-            new eyg(1.5F, eyh.a(0.0F, 25.19F, 20.37F), eye.b.b),
-            new eyg(1.9583F, eyh.a(0.0F, 20.0F, 17.0F), eye.b.b),
-            new eyg(2.7083F, eyh.a(0.0F, 17.06F, 11.25F), eye.b.b),
-            new eyg(2.8333F, eyh.a(0.0F, 9.85F, 2.2F), eye.b.b),
-            new eyg(2.9583F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a(
-         "body",
-         new eye(
-            eye.d.c,
-            new eyg(1.0F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(1.9583F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(2.9167F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
-            new eyg(3.0F, eyh.a(1.05F, 0.95F, 1.05F), eye.b.a),
-            new eyg(3.0833F, eyh.a(1.0, 1.0, 1.0), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.2917F, eyh.b(17.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.9583F, eyh.b(-10.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.75F, eyh.b(35.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.9167F, eyh.b(-30.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0417F, eyh.b(7.5F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.125F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "head",
-         new eye(
-            eye.d.a,
-            new eyg(1.0F, eyh.a(0.0F, 7.0F, 19.0F), eye.b.a),
-            new eyg(1.5F, eyh.a(0.0F, 7.0F, 0.0F), eye.b.a),
-            new eyg(1.9583F, eyh.a(0.0F, 7.0F, 0.0F), eye.b.a),
-            new eyg(2.75F, eyh.a(0.0F, 7.0F, 0.0F), eye.b.a),
-            new eyg(2.9583F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, -5.0F), eye.b.a),
-            new eyg(1.9583F, eyh.b(0.0F, 0.0F, -5.0F), eye.b.a),
-            new eyg(2.7083F, eyh.b(0.0F, 0.0F, -5.0F), eye.b.a),
-            new eyg(2.9167F, eyh.b(0.0F, 0.0F, -90.0F), eye.b.b),
-            new eyg(3.125F, eyh.b(0.0F, 0.0F, -5.0F), eye.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 5.0F), eye.b.a),
-            new eyg(1.9583F, eyh.b(0.0F, 0.0F, 5.0F), eye.b.a),
-            new eyg(2.7083F, eyh.b(0.0F, 0.0F, 5.0F), eye.b.a),
-            new eyg(2.9167F, eyh.b(0.0F, 0.0F, 90.0F), eye.b.b),
-            new eyg(3.125F, eyh.b(0.0F, 0.0F, 5.0F), eye.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.25F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.5F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.75F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("right_front_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .a(
-         "right_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.625F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.875F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.125F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.375F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.625F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("right_mid_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .a(
-         "right_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.25F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.5F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("right_hind_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .a(
-         "left_front_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.25F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.5F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.75F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("left_front_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .a(
-         "left_mid_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.375F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.625F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.875F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.125F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.375F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.625F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("left_mid_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .a(
-         "left_hind_leg",
-         new eye(
-            eye.d.b,
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.5F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(1.75F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.0F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.25F, eyh.b(-15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(2.5F, eyh.b(15.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
-         )
-      )
-      .a("left_hind_leg", new eye(eye.d.a, new eyg(1.0F, eyh.a(0.0F, 4.0F, 0.0F), eye.b.a), new eyg(1.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
-      .b();
-   public static final eyf i = eyf.a.a(2.0F)
-      .a()
-      .a(
-         "head",
-         new eye(
-            eye.d.b,
-            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
-            new eyg(0.5F, eyh.b(-32.00206F, 19.3546F, -11.70092F), eye.b.b),
-            new eyg(1.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.5F, eyh.b(-32.00206F, -19.3546F, 11.70092F), eye.b.b),
-            new eyg(2.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, -67.5F), eye.b.b),
-            new eyg(0.9583F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.125F, eyh.b(0.0F, 0.0F, -67.5F), eye.b.b),
-            new eyg(1.2917F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new eye(
-            eye.d.b,
-            new eyg(0.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(0.75F, eyh.b(0.0F, 0.0F, 67.5F), eye.b.b),
-            new eyg(0.9583F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
-            new eyg(1.125F, eyh.b(0.0F, 0.0F, 67.5F), eye.b.b),
-            new eyg(1.2917F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
-         )
-      )
-      .b();
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public final class eyn<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final eyn.e<Boolean> a = new eyn.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final eyn.b<Boolean> b = ($$0, $$1) -> $$1 ? vr.b : vr.c;
+   private final eyn.l<T> d;
+   final Function<T, vs> e;
+   private final eyn.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final vs j;
+   T k;
+
+   public static eyn<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
+   }
+
+   public static eyn<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
+      });
+   }
+
+   public static eyn<Boolean> a(String $$0, eyn.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static eyn<Boolean> a(String $$0, eyn.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
+   }
+
+   public static eyn<Boolean> a(String $$0, eyn.l<Boolean> $$1, eyn.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new eyn<>($$0, $$1, $$2, a, $$3, $$4);
+   }
+
+   public eyn(String $$0, eyn.l<T> $$1, eyn.b<T> $$2, eyn.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   }
+
+   public eyn(String $$0, eyn.l<T> $$1, eyn.b<T> $$2, eyn.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = vs.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
+
+   public static <T> eyn.l<T> a() {
+      return $$0 -> null;
+   }
+
+   public static <T> eyn.l<T> a(vs $$0) {
+      return $$1 -> fbv.a($$0);
+   }
+
+   public static <T extends awo> eyn.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public fai a(eyo $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public fai a(eyo $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
+   }
+
+   @Override
+   public String toString() {
+      return this.j.getString();
+   }
+
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!eyk.P().q()) {
+         this.k = $$1;
+      } else {
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
+         }
+      }
+   }
+
+   public eyn.n<T> e() {
+      return this.f;
+   }
+
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, eyn.d.a<T> d, Codec<T> e) implements eyn.d<T> {
+      @Override
+      public far.c<T> a() {
+         return far.c.a(this.c, this.a, this.b);
+      }
+
+      @Override
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      public List<T> c() {
+         return this.b;
+      }
+
+      public BooleanSupplier d() {
+         return this.c;
+      }
+
+      @Override
+      public eyn.d.a<T> e() {
+         return this.d;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.e;
+      }
+   }
+
+   public interface b<T> {
+      vs toString(vs var1, T var2);
+   }
+
+   public static record c(int a, IntSupplier b, int c) implements eyn.g, eyn.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(awm.a($$0, this.d(), this.b()));
+      }
+
+      @Override
+      public int b() {
+         return this.b.getAsInt();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return avu.a(
+            Codec.INT,
+            $$0 -> {
+               int $$1 = this.c + 1;
+               return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                  ? DataResult.success($$0)
+                  : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+            }
+         );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public far.c<Integer> a() {
+         return far.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends eyn.n<T> {
+      far.c<T> a();
+
+      default eyn.d.a<T> e() {
+         return eyn::a;
+      }
+
+      @Override
+      default Function<eyn<T>, fai> a(eyn.l<T> $$0, eyo $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> far.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.as();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(eyn<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements eyn.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public far.c<T> a() {
+         return far.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b) implements eyn.g {
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+   }
+
+   interface g extends eyn.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         return (double)awm.c((float)$$0.intValue(), (float)this.d(), (float)this.b(), 0.0F, 1.0F);
+      }
+
+      default Integer a(double $$0) {
+         return awm.a(awm.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b()));
+      }
+
+      default <R> eyn.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new eyn.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
+      }
+   }
+
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements eyn.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public far.c<T> a() {
+         return far.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
+      }
+   }
+
+   static final class i<N> extends fad {
+      private final eyn<N> d;
+      private final eyn.k<N> e;
+      private final eyn.l<N> f;
+      private final Consumer<N> m;
+
+      i(eyo $$0, int $$1, int $$2, int $$3, int $$4, eyn<N> $$5, eyn.k<N> $$6, eyn.l<N> $$7, Consumer<N> $$8) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.m = $$8;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.d.c()));
+         this.a(this.f.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         this.d.a(this.e.b(this.c));
+         this.a.as();
+         this.m.accept(this.d.c());
+      }
+   }
+
+   interface j<T> extends eyn.d<T>, eyn.k<T> {
+      boolean c();
+
+      @Override
+      default Function<eyn<T>, fai> a(eyn.l<T> $$0, eyo $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? eyn.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : eyn.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends eyn.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      @Override
+      default Function<eyn<T>, fai> a(eyn.l<T> $$0, eyo $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new eyn.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5);
+      }
+   }
+
+   @FunctionalInterface
+   public interface l<T> {
+      @Nullable
+      fbv apply(T var1);
+   }
+
+   public static enum m implements eyn.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> eyn.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new eyn.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return avu.a(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<eyn<T>, fai> a(eyn.l<T> var1, eyo var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
+   }
 }

@@ -1,39 +1,13 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
 
 public class amp {
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), hz.a(((du)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.d())
-                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), hz.a(((du)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("pos", fo.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), 0.0F)))
-                        .then(dv.a("angle", ea.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), ea.a($$0x, "angle"))))
-                  )
-            )
-      );
-   }
-
-   private static int a(du $$0, Collection<aox> $$1, hz $$2, float $$3) {
-      aix<cvr> $$4 = $$0.e().ad();
-
-      for (aox $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> vq.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vq.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
-      }
-
-      return $$1.size();
+   public static void a(CommandDispatcher<du> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((du)$$0x.getSource()).e().C();
+         vs $$2 = vv.a(String.valueOf($$1x));
+         ((du)$$0x.getSource()).a(() -> vs.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

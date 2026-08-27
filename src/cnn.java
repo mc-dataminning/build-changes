@@ -1,62 +1,127 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import javax.annotation.Nullable;
 
-public class cnn extends cqr {
-   private final aup<cys> a;
-   protected final float b;
-   private final float c;
-   private final Multimap<ij<bpk>, bpn> d;
+public class cnn extends cpl {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   protected cnn(float $$0, float $$1, cqq $$2, aup<cys> $$3, coy.a $$4) {
-      super($$2, $$4);
-      this.a = $$3;
-      this.b = $$2.b();
-      this.c = $$0 + $$2.c();
-      Builder<ij<bpk>, bpn> $$5 = ImmutableMultimap.builder();
-      $$5.put(bpp.c, new bpn(m, "Tool modifier", (double)this.c, bpn.a.a));
-      $$5.put(bpp.e, new bpn(n, "Tool modifier", (double)$$1, bpn.a.a));
-      this.d = $$5.build();
+   public cnn(cpl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public float a(cpd $$0, dlj $$1) {
-      return $$1.a(this.a) ? this.b : 1.0F;
+   public bml a(crz $$0) {
+      cwe $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      ib $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().b(dqr.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return bml.a($$1.B);
+      } else {
+         dme $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().b(dqr.C);
+               $$1.c(1505, $$3, 15);
+            }
+
+            return bml.a($$1.B);
+         } else {
+            return bml.d;
+         }
+      }
    }
 
-   @Override
-   public boolean a(cpd $$0, boi $$1, boi $$2) {
-      $$0.a(2, $$2, bnx.a);
-      return true;
-   }
+   public static boolean a(cpq $$0, cwe $$1, ib $$2) {
+      dme $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof czi $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof apa) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((apa)$$1, $$1.z, $$2, $$3);
+            }
 
-   @Override
-   public boolean a(cpd $$0, cvr $$1, dlj $$2, hz $$3, boi $$4) {
-      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
-         $$0.a(1, $$4, bnx.a);
+            $$0.h(1);
+         }
+
+         return true;
       }
 
-      return true;
+      return false;
    }
 
-   @Override
-   public Multimap<ij<bpk>, bpn> a(bnx $$0) {
-      return $$0 == bnx.a ? this.d : super.a($$0);
-   }
+   public static boolean a(cpq $$0, cwe $$1, ib $$2, @Nullable ih $$3) {
+      if ($$1.a_($$2).a(czh.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof apa)) {
+            return true;
+         } else {
+            awt $$4 = $$1.F_();
 
-   public float d() {
-      return this.c;
-   }
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               ib $$6 = $$2;
+               dme $$7 = czh.bw.o();
 
-   @Override
-   public boolean a_(dlj $$0) {
-      int $$1 = this.w().d();
-      if ($$1 < 3 && $$0.a(aua.bE)) {
-         return false;
-      } else if ($$1 < 2 && $$0.a(aua.bF)) {
-         return false;
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               il<cxd> $$9 = $$1.t($$6);
+               if ($$9.a(aud.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = kh.e.a(aue.aq, $$1.z).map($$0x -> ((czf)$$0x.a()).o()).orElse($$7);
+                     if ($$7.b(cyq.c)) {
+                        $$7 = $$7.a(cyq.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = kh.e.a(aue.ao, $$1.z).map($$0x -> ((czf)$$0x.a()).o()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(aue.aq, $$0x -> $$0x.b(cyq.c))) {
+                  for (int $$10 = 0; !$$7.a((cwh)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(cyq.c, ih.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((cwh)$$1, $$6)) {
+                  dme $$11 = $$1.a_($$6);
+                  if ($$11.a(czh.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(czh.bw) && $$4.a(10) == 0) {
+                     ((czi)czh.bw).a((apa)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
       } else {
-         return $$1 < 1 && $$0.a(aua.bG) ? false : $$0.a(this.a);
+         return false;
+      }
+   }
+
+   public static void a(cwf $$0, ib $$1, int $$2) {
+      dme $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof czi $$4) {
+         ib $$5 = $$4.a($$1);
+         switch ($$4.au_()) {
+            case a:
+               awp.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, kb.M);
+               break;
+            case b:
+               awp.a($$0, $$5, $$2, kb.M);
+         }
+      } else if ($$3.a(czh.G)) {
+         awp.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, kb.M);
       }
    }
 }

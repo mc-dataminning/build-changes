@@ -1,8 +1,17 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface gjf {
-   gjm a(aiy var1);
+public record gjf(String b, String c, boolean d) {
+   public static final Codec<gjf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avu.v.fieldOf("region").forGetter(gjf::b),
+               avu.v.fieldOf("name").forGetter(gjf::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gjf::d)
+            )
+            .apply($$0, gjf::new)
+   );
 
-   @Nullable
-   gjb a(aiy var1, gjj var2);
+   public vs a() {
+      return vs.b(this.c + " (" + this.b + ")");
+   }
 }

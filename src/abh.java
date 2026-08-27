@@ -1,20 +1,33 @@
-public record abh(wc.a b) implements xx<aag> {
-   public static final xo<uq, abh> a = xx.a(abh::a, abh::new);
+import java.util.List;
 
-   private abh(uq $$0) {
-      this(wc.a.a($$0));
+public record abh(abh.a b, List<String> c) implements xz<aai> {
+   public static final xq<us, abh> a = xz.a(abh::a, abh::new);
+
+   private abh(us $$0) {
+      this($$0.b(abh.a.class), $$0.a(us::p));
    }
 
-   private void a(uq $$0) {
-      wc.a.a($$0, this.b);
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, us::a);
    }
 
    @Override
-   public xz<abh> a() {
-      return aeq.A;
+   public yb<abh> a() {
+      return aet.y;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
+   }
+
+   public List<String> e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

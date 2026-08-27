@@ -1,48 +1,119 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.UUID;
 
-@FunctionalInterface
-public interface frv {
-   Logger a = LogUtils.getLogger();
-   frv b = $$0 -> Optional.empty();
+public interface frv extends fru {
+   static frv.a a(GameProfile $$0, wi $$1, frt $$2) {
+      return new frv.a($$0, $$1, $$2);
+   }
 
-   Optional<frs> lookupRedirect(frs var1);
+   static frv.b a(vs $$0, Instant $$1) {
+      return new frv.b($$0, $$1);
+   }
 
-   static frv createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   vs b();
+
+   default vs c() {
+      return this.b();
+   }
+
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, wi d, frt e) implements frv {
+      public static final Codec<frv.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avu.u.fieldOf("profile").forGetter(frv.a::f), wi.a.forGetter(frv.a::g), frt.d.optionalFieldOf("trust_level", frt.a).forGetter(frv.a::h)
+               )
+               .apply($$0, frv.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public vs b() {
+         if (!this.d.o().a()) {
+            vs $$0 = this.d.o().b(this.d.c());
+            return (vs)($$0 != null ? $$0 : vs.i());
+         } else {
+            return this.d.d();
+         }
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new frs($$4x[3], frs.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      @Override
+      public vs c() {
+         vs $$0 = this.b();
+         vs $$1 = this.i();
+         return vs.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
 
-         return Optional.empty();
-      };
+      public vs d() {
+         vs $$0 = this.i();
+         return vs.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private vs i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return vs.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fru.a a() {
+         return fru.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public wi g() {
+         return this.d;
+      }
+
+      public frt h() {
+         return this.e;
+      }
+   }
+
+   public static record b(vs c, Instant d) implements frv {
+      public static final Codec<frv.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(vu.a.fieldOf("message").forGetter(frv.b::d), avu.m.fieldOf("time_stamp").forGetter(frv.b::e)).apply($$0, frv.b::new)
+      );
+
+      @Override
+      public vs b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public fru.a a() {
+         return fru.a.b;
+      }
+
+      public vs d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
+      }
    }
 }

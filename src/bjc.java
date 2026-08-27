@@ -1,78 +1,101 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public record bjc(
-   Instant a, Instant b, Duration c, @Nullable Duration d, List<bjm> e, List<bjh> f, bjj.a g, bjl.a h, bjk i, bjk j, bji.a k, bji.a l, List<bjg> m
-) {
-   public List<Pair<dnk, bjo<bjg>>> a() {
-      Map<dnk, List<bjg>> $$0 = this.m.stream().collect(Collectors.groupingBy(bjg::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((dnk)$$0x.getKey(), bjo.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dnk, bjo<bjg>>, Duration>comparing($$0x -> ((bjo)$$0x.getSecond()).f()).reversed())
-         .toList();
+public interface bjc {
+   String b = "root";
+
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   void a(bkf var1);
+
+   default void d(String $$0) {
+      this.a($$0, 1);
    }
 
-   public String b() {
-      return new bje().a(this);
+   void a(String var1, int var2);
+
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
    }
 
-   public Instant c() {
-      return this.a;
-   }
+   void a(Supplier<String> var1, int var2);
 
-   public Instant d() {
-      return this.b;
-   }
+   static bjc a(final bjc $$0, final bjc $$1) {
+      if ($$0 == biz.a) {
+         return $$1;
+      } else {
+         return $$1 == biz.a ? $$0 : new bjc() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
 
-   public Duration e() {
-      return this.c;
-   }
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
 
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-   public List<bjm> g() {
-      return this.e;
-   }
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-   public List<bjh> h() {
-      return this.f;
-   }
+            @Override
+            public void a(bkf $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-   public bjj.a i() {
-      return this.g;
-   }
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
 
-   public bjl.a j() {
-      return this.h;
-   }
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
 
-   public bjk k() {
-      return this.i;
-   }
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
 
-   public bjk l() {
-      return this.j;
-   }
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
 
-   public bji.a m() {
-      return this.k;
-   }
-
-   public bji.a n() {
-      return this.l;
-   }
-
-   public List<bjg> o() {
-      return this.m;
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
+      }
    }
 }

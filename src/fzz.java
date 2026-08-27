@@ -1,45 +1,90 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fzz extends gcb<cdm, flj> {
-   public static final aiy a = new aiy("textures/entity/armorstand/wood.png");
+public class fzz implements gac.a {
+   private final eyk a;
+   private static final int b = avw.b.a(255, 0, 155, 155);
+   private static final int c = avw.b.a(255, 255, 255, 0);
 
-   public fzz(gba.a $$0) {
-      super($$0, new flk($$0.a(fpi.c)), 0.0F);
-      this.a(new gfb<>(this, new flj($$0.a(fpi.d)), new flj($$0.a(fpi.e)), $$0.g()));
-      this.a(new gfe<>(this, $$0.d()));
-      this.a(new geu<>(this, $$0.f()));
-      this.a(new geq<>(this, $$0.f(), $$0.d()));
+   public fzz(eyk $$0) {
+      this.a = $$0;
    }
 
-   public aiy a(cdm $$0) {
-      return a;
-   }
+   @Override
+   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
+      bof $$5 = this.a.j.m().g();
+      float $$6 = (float)((double)this.a.r.J_() - $$3);
+      float $$7 = (float)((double)this.a.r.ak() - $$3);
+      cvl $$8 = $$5.dl();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      eth $$11 = $$1.getBuffer(fwy.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-   protected void a(cdm $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dM().X() - $$0.bJ) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(awi.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean b(cdm $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
-   }
-
-   @Nullable
-   protected fwb a(cdm $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.B()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         aiy $$4 = this.a($$0);
-         if ($$2) {
-            return fwb.c($$4, false);
-         } else {
-            return $$1 ? fwb.a($$4, false) : null;
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
          }
+      }
+
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$19 = this.a.r.J_(); $$19 <= this.a.r.ak(); $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      $$11 = $$1.getBuffer(fwy.a(2.0));
+
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         }
+      }
+
+      for (int $$24 = this.a.r.J_(); $$24 <= this.a.r.ak(); $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
       }
    }
 }

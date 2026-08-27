@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dqg<T> {
+   void g(T var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dqg {
+   void f(T var1);
+
+   void e(T var1);
+
+   void d(T var1);
+
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

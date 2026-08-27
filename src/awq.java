@@ -1,37 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public class awq {
-   public static final Codec<awq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avq.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), avq.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, awq::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<aiy> f;
+public record awq(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-   private awq(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   public static awq a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new awq($$2, $$3);
+      }
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   public static awq a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
    }
 
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<aiy> c() {
-      return this.f;
+   public static void a(ByteBuffer $$0) throws IOException {
+      ByteOrder $$1 = $$0.order();
+      $$0.order(ByteOrder.BIG_ENDIAN);
+      if ($$0.getLong(0) != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$0.getInt(8) != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$0.getInt(12) != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         $$0.order($$1);
+      }
    }
 }

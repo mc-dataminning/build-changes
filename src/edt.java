@@ -1,48 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class edt extends ebl {
-   public static final Codec<edt> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dzs.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, edt::new)
-   );
-   public final dzs e;
+@FunctionalInterface
+public interface edt {
+   edt a = $$0 -> $$0;
 
-   public edt(ebl.c $$0, dzs $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   ajb<edp> lookup(ajb<edp> var1);
 
-   @Override
-   public Optional<ebl.b> a(ebl.a $$0) {
-      dru $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      drs $$5 = new drs($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cwd $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      hz.a $$8 = new hz.a($$2, $$6, $$3);
-
-      while ($$6 > $$4) {
-         dlj $$9 = $$7.a($$6);
-         dlj $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(cyu.dW) || $$10.d(cvg.a, $$8.q($$6), ie.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
+   static edt create(List<edr> $$0, ib $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
       } else {
-         hz $$11 = new hz($$2, $$6, $$3);
-         return Optional.of(new ebl.b($$11, (Consumer<ecd>)($$3x -> eds.a($$0.e(), $$3x, $$1, $$11))));
+         awt $$3 = awt.a($$2).e().a($$1);
+         Builder<ajb<edp>, ajb<edp>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<ajb<edp>, ajb<edp>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
       }
-   }
-
-   @Override
-   public ebu<?> e() {
-      return ebu.i;
    }
 }

@@ -1,23 +1,24 @@
-public class gfy<T extends boi> extends gep<T, foy<T>> {
-   public gfy(gcv<T, foy<T>> $$0, fvp $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class gfy extends ggj<ccq, fnp<ccq>> {
+   private static final Map<ccs, ajc> a = ac.a(Maps.newEnumMap(ccs.class), $$0 -> {
+      $$0.put(ccs.a, null);
+      $$0.put(ccs.b, new ajc("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(ccs.c, new ajc("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(ccs.d, new ajc("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(ccs.e, new ajc("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gfy(gdt<ccq, fnp<ccq>> $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cpd $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cpg.sj)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(etd $$0, fwq $$1, int $$2, ccq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ajc $$10 = a.get($$3.w());
+      if ($$10 != null && !$$3.cb()) {
+         eth $$11 = $$1.getBuffer(fwy.i($$10));
+         this.c().a($$0, $$11, $$2, gcz.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
    }
 }

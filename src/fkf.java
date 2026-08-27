@@ -1,102 +1,154 @@
-import com.mojang.datafixers.DataFixer;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class fkf extends ffl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<aix<cvr>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(cvr.h, -13408734);
-      $$0.put(cvr.i, -10075085);
-      $$0.put(cvr.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final blk k;
+public abstract class fkf<B extends fsc.a<?>> extends fgh {
+   private static final vs r = vs.c("gui.abuseReport.report_sent_msg");
+   private static final vs t = vs.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vs u = vs.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vs v = vs.c("gui.abuseReport.error.title").a(n.r);
+   private static final vs w = vs.c("gui.abuseReport.send.generic_error");
+   protected static final vs a = vs.c("gui.abuseReport.send");
+   protected static final vs b = vs.c("gui.abuseReport.observed_what");
+   protected static final vs c = vs.c("gui.abuseReport.select_reason");
+   private static final vs x = vs.c("gui.abuseReport.describe");
+   protected static final vs k = vs.c("gui.abuseReport.more_comments");
+   private static final vs y = vs.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final fgh o;
+   protected final fsg p;
+   protected B q;
 
-   @Nullable
-   public static fkf a(exo $$0, BooleanConsumer $$1, DataFixer $$2, eis.c $$3, boolean $$4) {
-      try {
-         fkl $$5 = $$0.w();
-         arm $$6 = arp.a($$3);
+   protected fkf(vs $$0, fgh $$1, fsg $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+   }
 
-         fkf var10;
-         try (aju $$7 = $$5.a($$3.f(), false, $$6)) {
-            eiy $$8 = $$7.d();
-            iw.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fkf($$1, $$2, $$3, $$8.J(), $$4, $$9.d(kg.aN));
-         }
+   protected fbc a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      fbc $$4 = new fbc(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
+   protected void o() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(ffo.a(t, vr.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.E();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void E() {
+      this.I();
+      this.f.a(ffo.a(u, r, vr.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vs $$2;
+      if ($$0.getCause() instanceof ws $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = w;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(vs $$0) {
+      vs $$1 = $$0.f().a(n.m);
+      this.f.a(ffo.a(v, $$1, vr.k, () -> this.f.a(this)));
+   }
+
+   void H() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
       }
    }
 
-   private fkf(BooleanConsumer $$0, DataFixer $$1, eis.c $$2, cvv $$3, boolean $$4, iv<dow> $$5) {
-      super(vq.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new blk($$2, $$1, $$5, $$4, false);
-   }
-
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.c(ezo.a(vp.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.k.b()) {
-         this.c.accept(true);
-      }
+   void I() {
+      this.p.a(null);
    }
 
    @Override
    public void d() {
-      this.c.accept(false);
+      if (this.q.b()) {
+         this.f.a(new fkf.a());
+      } else {
+         this.f.a(this.o);
+      }
    }
 
    @Override
    public void k() {
-      this.k.a();
+      this.H();
+      super.k();
    }
 
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, vq.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, vq.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, vq.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   class a extends fjk {
+      private static final int c = 20;
+      private static final vs k = vs.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vs l = vs.c("gui.abuseReport.discard.content");
+      private static final vs m = vs.c("gui.abuseReport.discard.return");
+      private static final vs n = vs.c("gui.abuseReport.discard.draft");
+      private static final vs o = vs.c("gui.abuseReport.discard.discard");
 
-         for (aix<cvr> $$9 : this.k.c()) {
-            int $$10 = awi.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
+      protected a() {
+         super(k, l, l);
+      }
 
-         int $$11 = this.k.f() + this.k.g();
-         vq $$12 = vq.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         vq $$13 = vq.a("optimizeWorld.progress.percentage", awi.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      @Override
+      protected void a(int $$0) {
+         this.c((fcg)fak.a(m, $$0x -> this.d()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.c((fcg)fak.a(n, $$0x -> {
+            fkf.this.H();
+            this.f.a(fkf.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.c((fcg)fak.a(o, $$0x -> {
+            fkf.this.I();
+            this.f.a(fkf.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
+      }
+
+      @Override
+      public void d() {
+         this.f.a(fkf.this);
+      }
+
+      @Override
+      public boolean aN_() {
+         return false;
+      }
+
+      @Override
+      protected void c(ezx $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
       }
    }
 }

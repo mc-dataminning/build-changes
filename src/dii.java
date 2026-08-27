@@ -1,48 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class dii extends dbu {
-   public static final MapCodec<dii> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dbu::b), u()).apply($$0, dii::new));
-
-   @Override
-   public MapCodec<dii> a() {
-      return e;
-   }
-
-   public dii(ij<bnb> $$0, int $$1, dli.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dii(List<dgt.a> $$0, dli.d $$1) {
-      super($$0, $$1);
-   }
+public class dii extends dhq implements dgf {
+   public static final MapCodec<dii> a = b(dii::new);
+   public static final dmv c = dmu.C;
 
    @Override
-   protected boolean b(dlj $$0, cux $$1, hz $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(cyu.dV) || $$0.a(cyu.dW) || $$0.a(cyu.dX);
+   protected MapCodec<? extends dii> a() {
+      return a;
+   }
+
+   protected dii(dmd.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      ehr $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(ehs.c)));
    }
 
    @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      eos $$4 = this.a($$0, $$1, $$2, eoe.a());
-      enz $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(jz.ab, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
-         }
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, bnq $$3) {
-      if (!$$1.B && $$1.aj() != blt.a) {
-         if ($$3 instanceof boi $$4 && !$$4.b($$1.ah().p())) {
-            $$4.b(new bnd(bnf.t, 40));
-         }
-      }
+   protected ehr c_(dme $$0) {
+      return $$0.c(c) ? ehs.c.a(true) : super.c_($$0);
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,79 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dvm extends dtz<dxa> {
-   public dvm(Codec<dxa> $$0) {
+public class dvm extends duu<dxd> {
+   public dvm(Codec<dxd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dub<dxa> $$0) {
-      cwm $$1 = $$0.b();
-      hz $$2 = $$0.e();
-      if (a($$1, $$2)) {
+   public boolean a(duw<dxd> $$0) {
+      cwz $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      awt $$3 = $$0.d();
+      dxd $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         awp $$3 = $$0.d();
-         dxa $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         hz.a $$8 = new hz.a();
+         List<ih> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            ib.a $$6 = $$2.j();
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(awi.a($$3, -$$5, $$5), awi.a($$3, -$$6, $$6), awi.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (hz)$$8)) {
-               int $$10 = awi.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
+            for (ih $$7 : $$5) {
+               $$6.g($$2);
+               List<ih> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dme $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
                }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
             }
-         }
 
-         return true;
-      }
-   }
-
-   private static boolean a(cvs $$0, hz.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.s($$1)) {
             return false;
          }
-      } while ($$0.a_($$1).i());
-
-      $$1.e(0, 1, 0);
-      return true;
+      }
    }
 
-   public static void a(cvs $$0, awp $$1, hz.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.c())) {
-               $$0.a($$2, cyu.oB.o().a(dch.e, Integer.valueOf(awi.a($$1, $$4, $$5))), 2);
-               break;
+   public static boolean a(cwz $$0, ib $$1, dme $$2, dxd $$3, awt $$4, List<ih> $$5) {
+      ib.a $$6 = $$1.j();
+
+      for (ih $$7 : $$5) {
+         dme $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dme $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
             }
 
-            $$0.a($$2, cyu.oC.o(), 2);
-         }
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
 
-         $$2.c(ie.b);
+            return true;
+         }
       }
+
+      return false;
    }
 
-   private static boolean a(cvs $$0, hz $$1) {
-      if (!$$0.u($$1)) {
-         return true;
-      } else {
-         dlj $$2 = $$0.a_($$1.d());
-         return !$$2.a(cyu.dV) && !$$2.a(cyu.on) && !$$2.a(cyu.op);
-      }
+   private static boolean c(dme $$0) {
+      return $$0.i() || $$0.a(czh.G);
    }
 }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fcm {
+public interface fcm {
+   vs a();
+
+   void a(Consumer<fai> var1);
+
+   void a(fep var1);
 }

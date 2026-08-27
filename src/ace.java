@@ -1,37 +1,29 @@
-public class ace implements xx<aag> {
-   public static final xo<uq, ace> a = xx.a(ace::a, ace::new);
-   private final int b;
-   private final aiy c;
+public class ace implements xz<aai> {
+   public static final xq<us, ace> a = xz.a(ace::a, ace::new);
+   private final bmk b;
 
-   public ace(int $$0, csh<?> $$1) {
+   public ace(bmk $$0) {
       this.b = $$0;
-      this.c = $$1.a();
    }
 
-   private ace(uq $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.s();
+   private ace(us $$0) {
+      this.b = $$0.b(bmk.class);
    }
 
-   private void a(uq $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<ace> a() {
-      return aeq.X;
+   public yb<ace> a() {
+      return aet.V;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public aiy b() {
-      return this.c;
-   }
-
-   public int e() {
+   public bmk b() {
       return this.b;
    }
 }

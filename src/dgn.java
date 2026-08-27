@@ -1,112 +1,124 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dgn extends czb implements cyv {
-   public static final MapCodec<dgn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aix.a(kg.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               aix.a(kg.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               aix.a(kg.F).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               u()
-            )
-            .apply($$0, dgn::new)
-   );
-   public static final int b = 7;
-   public static final dmj c = dlz.av;
-   protected static final float d = 1.0F;
-   protected static final eos[] e = new eos[]{
-      cys.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      cys.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+public class dgn extends czf {
+   public static final MapCodec<dgn> a = b(dgn::new);
+   public static final int b = 8;
+   public static final dne c = dmu.aF;
+   protected static final epo[] d = new epo[]{
+      epl.a(),
+      czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
    };
-   private final aix<cys> f;
-   private final aix<cys> g;
-   private final aix<coy> h;
+   public static final int e = 5;
 
    @Override
    public MapCodec<dgn> a() {
       return a;
    }
 
-   protected dgn(aix<cys> $$0, aix<cys> $$1, aix<coy> $$2, dli.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dgn(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean b(dlj $$0, cux $$1, hz $$2) {
-      return $$0.a(cyu.cC);
-   }
-
-   @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dan.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               ie $$6 = ie.c.a.a($$3);
-               hz $$7 = $$2.a($$6);
-               dlj $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(cyu.cC) || $$8.a(aua.af))) {
-                  iv<cys> $$9 = $$1.I_().d(kg.f);
-                  Optional<cys> $$10 = $$9.d(this.f);
-                  Optional<cys> $$11 = $$9.d(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(dcn.aE, $$6));
-                  }
-               }
-            }
-         }
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
    }
 
    @Override
-   public cpd a(cvu $$0, hz $$1, dlj $$2) {
-      return new cpd((cvq)DataFixUtils.orElse($$0.I_().d(kg.F).d(this.h), this));
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public boolean b(cvu $$0, hz $$1, dlj $$2) {
-      return $$2.c(c) != 7;
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return d[$$0.c(c) - 1];
    }
 
    @Override
-   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
+   protected epo b_(dme $$0, cvk $$1, ib $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean g_(dme $$0) {
       return true;
    }
 
    @Override
-   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + awi.a($$0.z, 2, 5));
-      dlj $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
+   protected float d(dme $$0, cvk $$1, ib $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      dme $$3 = $$1.a_($$2.d());
+      if ($$3.a(aue.ch)) {
+         return false;
+      } else {
+         return $$3.a(aue.ci) ? true : czf.a($$3.k($$1, $$2.d()), ih.b) || $$3.a(this) && $$3.c(c) == 8;
       }
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$1.a(cwn.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dme $$0, crx $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.l()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == ih.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      dme $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
       $$0.a(c);
    }
 }

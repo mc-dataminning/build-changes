@@ -1,15 +1,26 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efy {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public class efy extends ega {
+   public static final Codec<efy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dme.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, efy::new)
+   );
+   private final dme b;
+   private final float d;
+
+   public efy(dme $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   public boolean a(dme $$0, awt $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   protected egb<?> a() {
+      return egb.f;
    }
 }

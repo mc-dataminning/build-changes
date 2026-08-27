@@ -1,70 +1,151 @@
-public abstract class cwx {
-   public static final aix<cwq> a = a("the_void");
-   public static final aix<cwq> b = a("plains");
-   public static final aix<cwq> c = a("sunflower_plains");
-   public static final aix<cwq> d = a("snowy_plains");
-   public static final aix<cwq> e = a("ice_spikes");
-   public static final aix<cwq> f = a("desert");
-   public static final aix<cwq> g = a("swamp");
-   public static final aix<cwq> h = a("mangrove_swamp");
-   public static final aix<cwq> i = a("forest");
-   public static final aix<cwq> j = a("flower_forest");
-   public static final aix<cwq> k = a("birch_forest");
-   public static final aix<cwq> l = a("dark_forest");
-   public static final aix<cwq> m = a("old_growth_birch_forest");
-   public static final aix<cwq> n = a("old_growth_pine_taiga");
-   public static final aix<cwq> o = a("old_growth_spruce_taiga");
-   public static final aix<cwq> p = a("taiga");
-   public static final aix<cwq> q = a("snowy_taiga");
-   public static final aix<cwq> r = a("savanna");
-   public static final aix<cwq> s = a("savanna_plateau");
-   public static final aix<cwq> t = a("windswept_hills");
-   public static final aix<cwq> u = a("windswept_gravelly_hills");
-   public static final aix<cwq> v = a("windswept_forest");
-   public static final aix<cwq> w = a("windswept_savanna");
-   public static final aix<cwq> x = a("jungle");
-   public static final aix<cwq> y = a("sparse_jungle");
-   public static final aix<cwq> z = a("bamboo_jungle");
-   public static final aix<cwq> A = a("badlands");
-   public static final aix<cwq> B = a("eroded_badlands");
-   public static final aix<cwq> C = a("wooded_badlands");
-   public static final aix<cwq> D = a("meadow");
-   public static final aix<cwq> E = a("cherry_grove");
-   public static final aix<cwq> F = a("grove");
-   public static final aix<cwq> G = a("snowy_slopes");
-   public static final aix<cwq> H = a("frozen_peaks");
-   public static final aix<cwq> I = a("jagged_peaks");
-   public static final aix<cwq> J = a("stony_peaks");
-   public static final aix<cwq> K = a("river");
-   public static final aix<cwq> L = a("frozen_river");
-   public static final aix<cwq> M = a("beach");
-   public static final aix<cwq> N = a("snowy_beach");
-   public static final aix<cwq> O = a("stony_shore");
-   public static final aix<cwq> P = a("warm_ocean");
-   public static final aix<cwq> Q = a("lukewarm_ocean");
-   public static final aix<cwq> R = a("deep_lukewarm_ocean");
-   public static final aix<cwq> S = a("ocean");
-   public static final aix<cwq> T = a("deep_ocean");
-   public static final aix<cwq> U = a("cold_ocean");
-   public static final aix<cwq> V = a("deep_cold_ocean");
-   public static final aix<cwq> W = a("frozen_ocean");
-   public static final aix<cwq> X = a("deep_frozen_ocean");
-   public static final aix<cwq> Y = a("mushroom_fields");
-   public static final aix<cwq> Z = a("dripstone_caves");
-   public static final aix<cwq> aa = a("lush_caves");
-   public static final aix<cwq> ab = a("deep_dark");
-   public static final aix<cwq> ac = a("nether_wastes");
-   public static final aix<cwq> ad = a("warped_forest");
-   public static final aix<cwq> ae = a("crimson_forest");
-   public static final aix<cwq> af = a("soul_sand_valley");
-   public static final aix<cwq> ag = a("basalt_deltas");
-   public static final aix<cwq> ah = a("the_end");
-   public static final aix<cwq> ai = a("end_highlands");
-   public static final aix<cwq> aj = a("end_midlands");
-   public static final aix<cwq> ak = a("small_end_islands");
-   public static final aix<cwq> al = a("end_barrens");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private static aix<cwq> a(String $$0) {
-      return aix.a(kg.at, new aiy($$0));
+public class cwx {
+   private final cwf a;
+   private final dso b;
+   private final ech c;
+
+   public cwx(cwf $$0, dso $$1, ech $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public cwx a(aph $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
+      } else {
+         return new cwx($$0, this.b, this.c);
+      }
+   }
+
+   public List<eco> a(cvl $$0, Predicate<ecg> $$1) {
+      Map<ecg, LongSet> $$2 = this.a.a($$0.e, $$0.f, dof.e).h();
+      Builder<eco> $$3 = ImmutableList.builder();
+
+      for (Entry<ecg, LongSet> $$4 : $$2.entrySet()) {
+         ecg $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
+   }
+
+   public List<eco> a(jd $$0, ecg $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dof.e).b($$1);
+      Builder<eco> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(ecg $$0, LongSet $$1, Consumer<eco> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         jd $$4 = jd.a(new cvl($$3), this.a.am());
+         eco $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dof.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
+   }
+
+   @Nullable
+   public eco a(jd $$0, ecg $$1, dox $$2) {
+      return $$2.a($$1);
+   }
+
+   public void a(jd $$0, ecg $$1, eco $$2, dox $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(jd $$0, ecg $$1, long $$2, dox $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public eco a(ib $$0, ecg $$1) {
+      for (eco $$2 : this.a(jd.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return eco.b;
+   }
+
+   public eco a(ib $$0, ajb<ecg> $$1) {
+      ecg $$2 = this.b().d(ki.aE).a($$1);
+      return $$2 == null ? eco.b : this.b($$0, $$2);
+   }
+
+   public eco a(ib $$0, aut<ecg> $$1) {
+      ix<ecg> $$2 = this.b().d(ki.aE);
+
+      for (eco $$3 : this.a(new cvl($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return eco.b;
+   }
+
+   public eco b(ib $$0, ecg $$1) {
+      for (eco $$2 : this.a(jd.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return eco.b;
+   }
+
+   public boolean a(ib $$0, eco $$1) {
+      for (eck $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(ib $$0) {
+      jd $$1 = jd.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dof.e).w();
+   }
+
+   public Map<ecg, LongSet> b(ib $$0) {
+      jd $$1 = jd.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dof.e).h();
+   }
+
+   public eci a(cvl $$0, ecg $$1, edd $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(eco $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public iy b() {
+      return this.a.I_();
    }
 }

@@ -1,43 +1,69 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public class avw {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-public class avw implements axe, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   public avw(Executor $$0) {
-      this.d = $$0;
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 
-   @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
-         }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
-         }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
-         } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
-         }
-      });
-   }
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-   @Override
-   public void close() {
-      this.e = true;
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = awm.a($$0, a($$1), a($$2));
+         int $$4 = awm.a($$0, b($$1), b($$2));
+         int $$5 = awm.a($$0, c($$1), c($$2));
+         int $$6 = awm.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
    }
 }

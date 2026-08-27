@@ -1,33 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dwu(int b, int c, int d, int e, int f, blb g, float h) implements dwd {
+public class dwu implements dwy {
    public static final Codec<dwu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dwu::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dwu::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dwu::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dwu::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dwu::f),
-               blb.c.fieldOf("extra_rare_growths").forGetter(dwu::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dwu::h)
+               dme.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dme.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               blq.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               blq.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dwu::new)
    );
+   private final dme b;
+   private final dme c;
+   private final blq d;
+   private final blq e;
 
-   public int a() {
+   public dwu(dme $$0, dme $$1, blq $$2, blq $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public dme a() {
       return this.b;
    }
 
-   public int b() {
+   public dme b() {
       return this.c;
    }
 
-   public int c() {
+   public blq c() {
       return this.d;
    }
 
-   public int d() {
+   public blq d() {
       return this.e;
    }
 }

@@ -1,10 +1,28 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface glk extends Closeable {
-   AudioFormat a();
+public class glk {
+   private final List<glj> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-   ByteBuffer a(int var1) throws IOException;
+   public glk(List<glj> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public List<glj> a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   @Nullable
+   public String c() {
+      return this.c;
+   }
 }

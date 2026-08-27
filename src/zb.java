@@ -1,17 +1,23 @@
-public record zb(dqa c, int d) implements yy {
-   public static final xo<vb, zb> a = xo.a(dqa.d, zb::b, xm.d, zb::c, zb::new);
-   public static final yy.b<zb> b = yy.a("debug/game_event_listeners");
+public record zb(ajc a) implements za {
+   public static <T extends us> xq<T, zb> a(ajc $$0, int $$1) {
+      return za.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new zb($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
+   }
 
    @Override
-   public yy.b<zb> a() {
-      return b;
+   public za.b<zb> a() {
+      return new za.b<>(this.a);
    }
 
-   public dqa b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public ajc b() {
+      return this.a;
    }
 }

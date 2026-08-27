@@ -1,20 +1,8 @@
-public interface eod {
-   eod a = ($$0, $$1) -> false;
-   eod b = ($$0, $$1) -> !$$0 && !$$1;
-   eod c = ($$0, $$1) -> $$1 && !$$0;
-   eod d = ($$0, $$1) -> !$$0;
-   eod e = ($$0, $$1) -> $$0 && !$$1;
-   eod f = ($$0, $$1) -> !$$1;
-   eod g = ($$0, $$1) -> $$0 != $$1;
-   eod h = ($$0, $$1) -> !$$0 || !$$1;
-   eod i = ($$0, $$1) -> $$0 && $$1;
-   eod j = ($$0, $$1) -> $$0 == $$1;
-   eod k = ($$0, $$1) -> $$1;
-   eod l = ($$0, $$1) -> !$$0 || $$1;
-   eod m = ($$0, $$1) -> $$0;
-   eod n = ($$0, $$1) -> $$0 || !$$1;
-   eod o = ($$0, $$1) -> $$0 || $$1;
-   eod p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eod {
 }

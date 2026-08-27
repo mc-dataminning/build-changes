@@ -1,43 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dvq extends dtz<dwk> {
-   private static final hz a = new hz(8, 3, 8);
-   private static final cuy b = new cuy(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dvq(Codec<dwk> $$0) {
+public class dvq extends duu<dxh> {
+   public dvq(Codec<dxh> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   @Override
+   public boolean a(duw<dxh> $$0) {
+      cwf $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      awt $$3 = $$0.d();
+      dxh $$4 = $$0.f();
+      Optional<ih> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ib $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && duq.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         duq.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
    }
 
-   @Override
-   public boolean a(dub<dwk> $$0) {
-      cwm $$1 = $$0.b();
-      cuy $$2 = new cuy($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
+   private static Optional<ih> a(cwf $$0, ib $$1, awt $$2) {
+      boolean $$3 = duq.b($$0.a_($$1.c()));
+      boolean $$4 = duq.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ih.a : ih.b);
+      } else if ($$3) {
+         return Optional.of(ih.a);
       } else {
-         hz $$3 = a.h($$0.e().v() + a.v());
-         hz.a $$4 = new hz.a();
+         return $$4 ? Optional.of(ih.b) : Optional.empty();
+      }
+   }
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cyu.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cyu.b.o(), 2);
-                  }
+   private static void a(cwf $$0, awt $$1, ib $$2, dxh $$3) {
+      duq.c($$0, $$2);
+
+      for (ih $$4 : ih.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            ib $$5 = $$2.a($$4);
+            duq.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               ib $$6 = $$5.a(ih.b($$1));
+               duq.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  ib $$7 = $$6.a(ih.b($$1));
+                  duq.c($$0, $$7);
                }
             }
          }
-
-         return true;
       }
    }
 }

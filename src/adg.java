@@ -1,29 +1,32 @@
-public class adg implements xx<aag> {
-   public static final xo<uq, adg> a = xx.a(adg::a, adg::new);
+import javax.annotation.Nullable;
+
+public class adg implements xz<aai> {
+   public static final xq<us, adg> a = xz.a(adg::a, adg::new);
    private final int b;
 
-   public adg(int $$0) {
-      this.b = $$0;
+   public adg(bof $$0) {
+      this.b = $$0.aj();
    }
 
-   private adg(uq $$0) {
-      this.b = $$0.n();
+   private adg(us $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(uq $$0) {
+   private void a(us $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public xz<adg> a() {
-      return aeq.ay;
+   public yb<adg> a() {
+      return aet.aw;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bof a(cwe $$0) {
+      return $$0.a(this.b);
    }
 }

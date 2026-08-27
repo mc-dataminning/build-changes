@@ -1,75 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
 
-public record cwi(sw d, Optional<cwi.a> e) {
-   public static final String a = "entity";
-   public static final Codec<cwi> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(sw.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cwi.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
-            .apply($$0, cwi::new)
-   );
-   public static final Codec<bkg<cwi>> c = bkg.a(b);
+public final class cwi {
+   private final String a;
+   private final cwb b;
+   private final boolean c;
+   private final bmi d;
+   private final boolean e;
+   private final cwa f;
+   private final cwy g;
 
-   public cwi() {
-      this(new sw(), Optional.empty());
+   public cwi(String $$0, cwb $$1, boolean $$2, bmi $$3, boolean $$4, cwa $$5, cwy $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public cwi(sw d, Optional<cwi.a> e) {
-      if (d.e("id")) {
-         aiy $$2 = aiy.a(d.l("id"));
-         if ($$2 != null) {
-            d.a("id", $$2.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
-   }
-
-   public sw a() {
-      return this.d;
-   }
-
-   public Optional<cwi.a> b() {
-      return this.e;
-   }
-
-   public sw c() {
-      return this.d;
-   }
-
-   public Optional<cwi.a> d() {
-      return this.e;
-   }
-
-   public static record a(awa<Integer> b, awa<Integer> c) {
-      private static final awa<Integer> d = new awa<>(0, 15);
-      public static final Codec<cwi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cwi.a::new)
+   public static cwi a(Dynamic<?> $$0, cwy $$1) {
+      cwb $$2 = cwb.a($$0.get("GameType").asInt(0));
+      return new cwi(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bmi.a($$0x.byteValue())).result().orElse(bmi.c),
+         $$0.get("allowCommands").asBoolean($$2 == cwb.b),
+         new cwa($$0.get("GameRules")),
+         $$1
       );
+   }
 
-      private static DataResult<awa<Integer>> a(awa<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   public String a() {
+      return this.a;
+   }
 
-      private static MapCodec<awa<Integer>> a(String $$0) {
-         return avq.a(awa.a.optionalFieldOf($$0, d), cwi.a::a);
-      }
+   public cwb b() {
+      return this.b;
+   }
 
-      public boolean a(hz $$0, aow $$1) {
-         return this.b.a($$1.a(cwa.b, $$0)) && this.c.a($$1.a(cwa.a, $$0));
-      }
+   public boolean c() {
+      return this.c;
+   }
 
-      public awa<Integer> a() {
-         return this.b;
-      }
+   public bmi d() {
+      return this.d;
+   }
 
-      public awa<Integer> b() {
-         return this.c;
-      }
+   public boolean e() {
+      return this.e;
+   }
+
+   public cwa f() {
+      return this.f;
+   }
+
+   public cwy g() {
+      return this.g;
+   }
+
+   public cwi a(cwb $$0) {
+      return new cwi(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public cwi a(bmi $$0) {
+      return new cwi(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public cwi a(cwy $$0) {
+      return new cwi(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public cwi h() {
+      return new cwi(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

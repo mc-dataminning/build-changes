@@ -1,80 +1,54 @@
-import java.io.DataOutput;
+import com.google.common.collect.Lists;
 import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
-public class avm implements DataOutput {
-   private final DataOutput a;
+public class avm {
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public avm(DataOutput $$0) {
-      this.a = $$0;
+   avm(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
+   public static avm.a a() {
+      return new avm.a();
    }
 
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
+      } else {
+         this.a(Stream.of($$0));
+      }
    }
 
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(avm::a).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
    }
 
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
-   }
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
 
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
+      public avm.a a(String $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
-
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+      public avm a(Writer $$0) throws IOException {
+         return new avm($$0, this.a);
+      }
    }
 }

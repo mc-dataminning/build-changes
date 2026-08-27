@@ -1,56 +1,59 @@
-public class dty extends dtz<dwk> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hz an = hz.c;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static hz a(hz $$0) {
-      return an.a((jd)$$0);
-   }
+public class dty extends duu<dxi> {
+   private static final dme a = czh.mZ.o().a(cyj.h, Integer.valueOf(1)).a(cyj.i, dmq.a).a(cyj.j, Integer.valueOf(0));
+   private static final dme b = a.a(cyj.i, dmq.c).a(cyj.j, Integer.valueOf(1));
+   private static final dme c = a.a(cyj.i, dmq.c);
+   private static final dme d = a.a(cyj.i, dmq.b);
 
-   public dty(boolean $$0) {
-      super(dwk.a);
-      this.ao = $$0;
+   public dty(Codec<dxi> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dub<dwk> $$0) {
-      hz $$1 = $$0.e();
-      cwm $$2 = $$0.b();
+   public boolean a(duw<dxi> $$0) {
+      int $$1 = 0;
+      ib $$2 = $$0.e();
+      cwz $$3 = $$0.b();
+      awt $$4 = $$0.d();
+      dxi $$5 = $$0.f();
+      ib.a $$6 = $$2.j();
+      ib.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (czh.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      for (hz $$3 : hz.a(new hz($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hz($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cyu.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cyu.fz.o());
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(drq.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, czh.l.o(), 2);
+                        }
+                     }
+                  }
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cyu.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cyu.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hz($$3), cyu.fx.o());
-            } else {
-               this.a($$2, new hz($$3), cyu.a.o());
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ih.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ih.a, 1), c, 2);
+               $$3.a($$6.c(ih.a, 1), d, 2);
             }
          }
+
+         $$1++;
       }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cyu.F.o());
-      }
-
-      hz $$6 = $$1.b(2);
-
-      for (ie $$7 : ie.c.a) {
-         this.a($$2, $$6.a($$7), cyu.cq.o().a(dhs.g, $$7));
-      }
-
-      return true;
+      return $$1 > 0;
    }
 }

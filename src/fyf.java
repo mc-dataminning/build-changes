@@ -1,50 +1,100 @@
-public class fyf implements fxt<dlf> {
-   private final fwn a;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public fyf(fxu.a $$0) {
-      this.a = $$0.b();
+public class fyf implements gkk {
+   private final dmf<czf, dme> a;
+   private final List<fyh> b;
+
+   public fyf(dmf<czf, dme> $$0, List<fyh> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(dlf $$0, float $$1, esh $$2, fvt $$3, int $$4, int $$5) {
-      cvr $$6 = $$0.i();
-      if ($$6 != null) {
-         hz $$7 = $$0.aE_().a($$0.g().g());
-         dlj $$8 = $$0.k();
-         if (!$$8.i()) {
-            fwp.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(cyu.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dld.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.f() && !$$0.c()) {
-               dml $$9 = $$8.a(cyu.br) ? dml.b : dml.a;
-               dlj $$10 = cyu.bz.o().a(dld.c, $$9).a(dld.a, $$8.c(dlc.a));
-               $$10 = $$10.a(dld.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               hz $$11 = $$7.a($$0.g());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dlc.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public List<fyh> a() {
+      return this.b;
+   }
 
-            $$2.b();
-            fwp.b();
-         }
+   public Set<fya> b() {
+      Set<fya> $$0 = Sets.newHashSet();
+
+      for (fyh $$1 : this.b) {
+         $$0.add($$1.a());
       }
-   }
 
-   private void a(hz $$0, dlj $$1, esh $$2, fvt $$3, cvr $$4, boolean $$5, int $$6) {
-      fwb $$7 = fvo.b($$1);
-      esl $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, awp.a(), $$1.a($$0), $$6);
+      return $$0;
    }
 
    @Override
-   public int aT_() {
-      return 68;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fyf $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<ajc> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<ajc, gkk> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gjz a(gkd $$0, Function<gkc, ghz> $$1, gkh $$2, ajc $$3) {
+      gki.a $$4 = new gki.a();
+
+      for (fyh $$5 : this.a()) {
+         gjz $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<fyf> {
+      private final fxt.a a;
+
+      public a(fxt.a $$0) {
+         this.a = $$0;
+      }
+
+      public fyf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fyf(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fyh> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fyh> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fyh)$$0.deserialize($$3, fyh.class));
+         }
+
+         return $$2;
+      }
    }
 }

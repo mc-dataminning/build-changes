@@ -1,15 +1,28 @@
-public enum bnc {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import com.mojang.serialization.Codec;
 
-   private final n d;
+public enum bnc implements axg {
+   a("hurt", atp.tE),
+   b("thorns", atp.yQ),
+   c("drowning", atp.tF),
+   d("burning", atp.tH),
+   e("poking", atp.tI),
+   f("freezing", atp.tG);
 
-   private bnc(n $$0) {
-      this.d = $$0;
+   public static final Codec<bnc> g = axg.a(bnc::values);
+   private final String h;
+   private final ato i;
+
+   private bnc(String $$0, ato $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.h;
+   }
+
+   public ato a() {
+      return this.i;
    }
 }

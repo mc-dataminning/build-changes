@@ -1,54 +1,113 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dig extends cyg {
-   public static final MapCodec<dig> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dly.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dig::new)
+public class dig extends dho {
+   public static final MapCodec<dig> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dig::new));
+   public static final dmy g = dda.aE;
+   protected static final float h = 2.5F;
+   private static final Map<ih, epo> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         ih.c,
+         czf.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         ih.d,
+         czf.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         ih.e,
+         czf.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         ih.f,
+         czf.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
-   public static final dmj f = dlz.aT;
-   private final int g;
 
    @Override
    public MapCodec<dig> a() {
-      return e;
+      return f;
    }
 
-   protected dig(int $$0, dly $$1, dli.d $$2) {
-      super($$2, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-      this.g = $$0;
+   protected dig(ke $$0, dmd.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, ih.c));
    }
 
    @Override
-   protected int b(cvr $$0, hz $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), bnq.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return awi.f($$3 * 15.0F);
-      } else {
-         return 0;
+   public String g() {
+      return this.l().a();
+   }
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return m($$0);
+   }
+
+   public static epo m(dme $$0) {
+      return i.get($$0.c(g));
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return b($$1, $$2, $$0.c(g));
+   }
+
+   public static boolean b(cwh $$0, ib $$1, ih $$2) {
+      ib $$3 = $$1.a($$2.g());
+      dme $$4 = $$0.a_($$3);
+      return $$4.d($$0, $$3, $$2);
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      dme $$1 = this.o();
+      cwh $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      ih[] $$4 = $$0.f();
+
+      for (ih $$5 : $$4) {
+         if ($$5.o().d()) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
+
+      return null;
    }
 
    @Override
-   protected int g(dlj $$0) {
-      return $$0.c(f);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? czh.a.o() : $$0;
    }
 
    @Override
-   protected dlj a(dlj $$0, int $$1) {
-      return $$0.a(f, Integer.valueOf($$1));
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      ih $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      ih $$10 = $$4.g();
+      $$1.a(kb.ab, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected int b() {
-      return 10;
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(f);
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(g);
    }
 }

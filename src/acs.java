@@ -1,36 +1,36 @@
-public record acs(aen e, byte f) implements xx<aag> {
-   public static final xo<vb, acs> a = xx.a(acs::a, acs::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   private acs(vb $$0) {
-      this(new aen($$0), $$0.readByte());
+public class acs implements xz<aai> {
+   public static final xq<us, acs> a = xz.a(acs::a, acs::new);
+   private final IntList b;
+
+   public acs(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vb $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   public acs(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private acs(us $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<acs> a() {
-      return aeq.ak;
+   public yb<acs> a() {
+      return aet.aj;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public aen b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public IntList b() {
+      return this.b;
    }
 }

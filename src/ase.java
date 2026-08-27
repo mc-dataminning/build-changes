@@ -1,27 +1,23 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@FunctionalInterface
-public interface ase {
-   Optional<arz> getResource(aiy var1);
+public class ase {
+   private static final Codec<ase> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(awu.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, ase::new)
+   );
+   public static final arg<ase> a = arg.a("filter", b);
+   private final List<awu> c;
 
-   default arz getResourceOrThrow(aiy $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   public ase(List<awu> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   default InputStream open(aiy $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   default BufferedReader openAsReader(aiy $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static ase fromMap(Map<aiy, arz> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

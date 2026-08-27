@@ -1,27 +1,17 @@
-public class gbi extends gcg<cah, fmk<cah>> {
-   private static final aiy a = new aiy("textures/entity/fox/fox.png");
-   private static final aiy i = new aiy("textures/entity/fox/fox_sleep.png");
-   private static final aiy j = new aiy("textures/entity/fox/snow_fox.png");
-   private static final aiy k = new aiy("textures/entity/fox/snow_fox_sleep.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gbi(gba.a $$0) {
-      super($$0, new fmk<>($$0.a(fpi.Z)), 0.4F);
-      this.a(new gey(this, $$0.d()));
+public class gbi<T extends ccn> extends gat<T, fms<T>> {
+   private static final Map<bol<?>, ajc> a = Maps.newHashMap(
+      ImmutableMap.of(bol.y, new ajc("textures/entity/horse/donkey.png"), bol.ar, new ajc("textures/entity/horse/mule.png"))
+   );
+
+   public gbi(gby.a $$0, float $$1, fqd $$2) {
+      super($$0, new fms<>($$0.a($$2)), $$1);
    }
 
-   protected void a(cah $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gm() || $$0.gg()) {
-         float $$6 = -awi.i($$4, $$0.N, $$0.dE());
-         $$1.a(a.b.rotationDegrees($$6));
-      }
-   }
-
-   public aiy a(cah $$0) {
-      if ($$0.w() == cah.v.a) {
-         return $$0.fD() ? i : a;
-      } else {
-         return $$0.fD() ? k : j;
-      }
+   public ajc a(T $$0) {
+      return a.get($$0.ai());
    }
 }

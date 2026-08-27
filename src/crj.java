@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface crj {
+public enum crj {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j;
 }

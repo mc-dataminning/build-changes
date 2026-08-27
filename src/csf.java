@@ -1,56 +1,89 @@
-import com.mojang.serialization.Codec;
+public class csf extends csk {
+   public csf(csi $$0) {
+      super($$0);
+   }
 
-public interface csf<C extends blp> {
-   Codec<csf<?>> h = kf.t.q().dispatch(csf::at_, csj::a);
-   xo<vb, csf<?>> i = xm.a(kg.Y).b(csf::at_, csj::b);
+   public boolean a(clk $$0, cwe $$1) {
+      int $$2 = 0;
+      cpq $$3 = cpq.h;
 
-   boolean a(C var1, cvr var2);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpq $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cpt.tX)) {
+               if (!$$3.b()) {
+                  return false;
+               }
 
-   cpd a(C var1, iw var2);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cpt.tW)) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
+               $$2++;
+            }
+         }
+      }
 
-   cpd a(iw var1);
+      return !$$3.b() && $$2 > 0;
+   }
 
-   default is<cpd> a(C $$0) {
-      is<cpd> $$1 = is.a($$0.b(), cpd.h);
+   public cpq a(clk $$0, iy $$1) {
+      int $$2 = 0;
+      cpq $$3 = cpq.h;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpq $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cpt.tX)) {
+               if (!$$3.b()) {
+                  return cpq.h;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cpt.tW)) {
+                  return cpq.h;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      if (!$$3.b() && $$2 >= 1 && crl.d($$3) < 2) {
+         cpq $$6 = $$3.c($$2);
+         $$6.x().a("generation", crl.d($$3) + 1);
+         return $$6;
+      } else {
+         return cpq.h;
+      }
+   }
+
+   public iu<cpq> a(clk $$0) {
+      iu<cpq> $$1 = iu.a($$0.b(), cpq.h);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         coy $$3 = $$0.a($$2).d();
-         if ($$3.s()) {
-            $$1.set($$2, new cpd($$3.r()));
+         cpq $$3 = $$0.a($$2);
+         if ($$3.d().u()) {
+            $$1.set($$2, new cpq($$3.d().t()));
+         } else if ($$3.d() instanceof crl) {
+            $$1.set($$2, $$3.c(1));
+            break;
          }
       }
 
       return $$1;
    }
 
-   default is<csc> a() {
-      return is.a();
+   @Override
+   public csw<?> as_() {
+      return csw.d;
    }
 
-   default boolean as_() {
-      return false;
-   }
-
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cpd g() {
-      return new cpd(cyu.cA);
-   }
-
-   csj<?> at_();
-
-   csk<?> e();
-
-   default boolean i() {
-      is<csc> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

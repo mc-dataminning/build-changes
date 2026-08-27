@@ -1,178 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public interface cvi {
-   List<bnq> a(@Nullable bnq var1, enu var2, Predicate<? super bnq> var3);
+public class cvi<T> extends AbstractIterator<T> {
+   private final eoq a;
+   private final epa b;
+   private final id c;
+   private final ib.a d;
+   private final epo e;
+   private final cvo f;
+   private final boolean g;
+   @Nullable
+   private cvk h;
+   private long i;
+   private final BiFunction<ib.a, epo, T> j;
 
-   <T extends bnq> List<T> a(dpk<bnq, T> var1, enu var2, Predicate<? super T> var3);
-
-   default <T extends bnq> List<T> a(Class<T> $$0, enu $$1, Predicate<? super T> $$2) {
-      return this.a(dpk.a($$0), $$1, $$2);
+   public cvi(cvo $$0, @Nullable bof $$1, eoq $$2, boolean $$3, BiFunction<ib.a, epo, T> $$4) {
+      this.b = $$1 == null ? epa.a() : epa.a($$1);
+      this.d = new ib.a();
+      this.e = epl.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = awm.a($$2.a - 1.0E-7) - 1;
+      int $$6 = awm.a($$2.d + 1.0E-7) + 1;
+      int $$7 = awm.a($$2.b - 1.0E-7) - 1;
+      int $$8 = awm.a($$2.e + 1.0E-7) + 1;
+      int $$9 = awm.a($$2.c - 1.0E-7) - 1;
+      int $$10 = awm.a($$2.f + 1.0E-7) + 1;
+      this.c = new id($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   List<? extends chl> x();
-
-   default List<bnq> a_(@Nullable bnq $$0, enu $$1) {
-      return this.a($$0, $$1, bnv.f);
-   }
-
-   default boolean a(@Nullable bnq $$0, eos $$1) {
-      if ($$1.c()) {
-         return true;
+   @Nullable
+   private cvk a(int $$0, int $$1) {
+      int $$2 = jd.a($$0);
+      int $$3 = jd.a($$1);
+      long $$4 = cvl.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         for (bnq $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dH() && $$2.H && ($$0 == null || !$$2.x($$0)) && eop.c($$1, eop.a($$2.cH()), eod.i)) {
-               return false;
-            }
-         }
-
-         return true;
+         cvk $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   default <T extends bnq> List<T> a(Class<T> $$0, enu $$1) {
-      return this.a($$0, $$1, bnv.f);
-   }
-
-   default List<eos> c(@Nullable bnq $$0, enu $$1) {
-      if ($$1.a() < 1.0E-7) {
-         return List.of();
-      } else {
-         Predicate<bnq> $$2 = $$0 == null ? bnv.g : bnv.f.and($$0::h);
-         List<bnq> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
-         if ($$3.isEmpty()) {
-            return List.of();
-         } else {
-            Builder<eos> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
-
-            for (bnq $$5 : $$3) {
-               $$4.add(eop.a($$5.cH()));
-            }
-
-            return $$4.build();
-         }
-      }
-   }
-
-   @Nullable
-   default chl a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<bnq> $$4) {
-      double $$5 = -1.0;
-      chl $$6 = null;
-
-      for (chl $$7 : this.x()) {
-         if ($$4 == null || $$4.test($$7)) {
-            double $$8 = $$7.i($$0, $$1, $$2);
-            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
-               $$5 = $$8;
-               $$6 = $$7;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cvk $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dme $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(czh.bQ))) {
+                  epo $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == epl.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     epo $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && epl.c($$7, this.e, eoz.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
             }
          }
       }
 
-      return $$6;
-   }
-
-   @Nullable
-   default chl a(bnq $$0, double $$1) {
-      return this.a($$0.dr(), $$0.dt(), $$0.dx(), $$1, false);
-   }
-
-   @Nullable
-   default chl a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
-      Predicate<bnq> $$5 = $$4 ? bnv.e : bnv.f;
-      return this.a($$0, $$1, $$2, $$3, $$5);
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      for (chl $$4 : this.x()) {
-         if (bnv.f.test($$4) && bnv.b.test($$4)) {
-            double $$5 = $$4.i($$0, $$1, $$2);
-            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Nullable
-   default chl a(byy $$0, boi $$1) {
-      return this.a(this.x(), $$0, $$1, $$1.dr(), $$1.dt(), $$1.dx());
-   }
-
-   @Nullable
-   default chl a(byy $$0, boi $$1, double $$2, double $$3, double $$4) {
-      return this.a(this.x(), $$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   default chl a(byy $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.x(), $$0, null, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   default <T extends boi> T a(Class<? extends T> $$0, byy $$1, @Nullable boi $$2, double $$3, double $$4, double $$5, enu $$6) {
-      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   default <T extends boi> T a(List<? extends T> $$0, byy $$1, @Nullable boi $$2, double $$3, double $$4, double $$5) {
-      double $$6 = -1.0;
-      T $$7 = null;
-
-      for (T $$8 : $$0) {
-         if ($$1.a($$2, $$8)) {
-            double $$9 = $$8.i($$3, $$4, $$5);
-            if ($$6 == -1.0 || $$9 < $$6) {
-               $$6 = $$9;
-               $$7 = $$8;
-            }
-         }
-      }
-
-      return $$7;
-   }
-
-   default List<chl> a(byy $$0, boi $$1, enu $$2) {
-      List<chl> $$3 = Lists.newArrayList();
-
-      for (chl $$4 : this.x()) {
-         if ($$2.e($$4.dr(), $$4.dt(), $$4.dx()) && $$0.a($$1, $$4)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3;
-   }
-
-   default <T extends boi> List<T> a(Class<T> $$0, byy $$1, boi $$2, enu $$3) {
-      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
-      List<T> $$5 = Lists.newArrayList();
-
-      for (T $$6 : $$4) {
-         if ($$1.a($$2, $$6)) {
-            $$5.add($$6);
-         }
-      }
-
-      return $$5;
-   }
-
-   @Nullable
-   default chl b(UUID $$0) {
-      for (int $$1 = 0; $$1 < this.x().size(); $$1++) {
-         chl $$2 = this.x().get($$1);
-         if ($$0.equals($$2.cw())) {
-            return $$2;
-         }
-      }
-
-      return null;
+      return (T)this.endOfData();
    }
 }

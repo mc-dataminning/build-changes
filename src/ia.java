@@ -1,34 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import java.util.HashMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public class ia<T> {
-   private final Codec<T> a;
-
-   ia(Codec<T> $$0) {
-      this.a = $$0;
-   }
-
-   public T a(T $$0, il.b $$1, il.b $$2) {
-      DynamicOps<Object> $$3 = aiw.a(awb.a, $$1);
-      DynamicOps<Object> $$4 = aiw.a(awb.a, $$2);
-      Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
-      return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
-   }
-
-   public static class a {
-      private final Map<aix<? extends iv<?>>, ia<?>> a = new HashMap<>();
-
-      public <T> ia.a a(aix<? extends iv<? extends T>> $$0, Codec<T> $$1) {
-         this.a.put($$0, new ia($$1));
-         return this;
+public class ia {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Map<ih, j> a = ac.a(Maps.newEnumMap(ih.class), $$0 -> {
+      $$0.put(ih.d, j.a());
+      $$0.put(ih.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(ih.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(ih.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(ih.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(ih.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   });
+   public static final Map<ih, j> b = ac.a(Maps.newEnumMap(ih.class), $$0 -> {
+      for (ih $$1 : ih.values()) {
+         $$0.put($$1, a.get($$1).b());
       }
+   });
 
-      @Nullable
-      public <T> ia<T> a(aix<? extends iv<? extends T>> $$0) {
-         return (ia<T>)this.a.get($$0);
+   public static j a(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(-0.5F, -0.5F, -0.5F);
+      return new j($$1);
+   }
+
+   public static j b(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(0.5F, 0.5F, 0.5F);
+      return new j($$1);
+   }
+
+   public static j a(j $$0, ih $$1, Supplier<String> $$2) {
+      ih $$3 = ih.a($$0.c(), $$1);
+      j $$4 = $$0.b();
+      if ($$4 == null) {
+         c.warn($$2.get());
+         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+      } else {
+         j $$5 = b.get($$1).a($$4).a(a.get($$3));
+         return a($$5);
       }
    }
 }

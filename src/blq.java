@@ -1,76 +1,40 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class blq {
-   public static cpd a(List<cpd> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cpd.h;
+public abstract class blq {
+   private static final Codec<Either<Integer, blq>> a = Codec.either(Codec.INT, kh.M.q().dispatch(blq::c, blr::codec));
+   public static final Codec<blq> c = a.xmap(
+      $$0 -> (blq)$$0.map(bln::a, $$0x -> $$0x), $$0 -> $$0.c() == blr.a ? Either.left(((bln)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<blq> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<blq> e = b(1, Integer.MAX_VALUE);
+
+   public static Codec<blq> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public static cpd a(List<cpd> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cpd.h) : cpd.h;
+   public static <T extends blq> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return avu.a(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
    }
 
-   public static sw a(sw $$0, is<cpd> $$1) {
-      return a($$0, $$1, true);
-   }
+   public abstract int a(awt var1);
 
-   public static sw a(sw $$0, is<cpd> $$1, boolean $$2) {
-      tc $$3 = new tc();
+   public abstract int a();
 
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         cpd $$5 = $$1.get($$4);
-         if (!$$5.b()) {
-            sw $$6 = new sw();
-            $$6.a("Slot", (byte)$$4);
-            $$5.b($$6);
-            $$3.add($$6);
-         }
-      }
+   public abstract int b();
 
-      if (!$$3.isEmpty() || $$2) {
-         $$0.a("Items", $$3);
-      }
-
-      return $$0;
-   }
-
-   public static void b(sw $$0, is<cpd> $$1) {
-      tc $$2 = $$0.c("Items", 10);
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         sw $$4 = $$2.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < $$1.size()) {
-            $$1.set($$5, cpd.a($$4));
-         }
-      }
-   }
-
-   public static int a(blp $$0, Predicate<cpd> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cpd $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.b()) {
-            $$0.a($$5, cpd.h);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
-   }
-
-   public static int a(cpd $$0, Predicate<cpd> $$1, int $$2, boolean $$3) {
-      if ($$0.b() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
-      } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
-      }
-   }
+   public abstract blr<?> c();
 }

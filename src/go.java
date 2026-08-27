@@ -1,16 +1,5 @@
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.List;
-
-public interface go<T> {
-   void a(T var1, List<T> var2, ContextChain<T> var3, gl var4, gr<T> var5);
-
-   public interface a<T> extends RedirectModifier<T>, go<T> {
-      default Collection<T> apply(CommandContext<T> $$0) throws CommandSyntaxException {
-         throw new UnsupportedOperationException("This function should not run");
-      }
+public record go<T>(gu a, gr<T> b) {
+   public void a(gs<T> $$0) {
+      this.b.execute($$0, this.a);
    }
 }

@@ -1,12 +1,37 @@
-public interface gt extends AutoCloseable {
-   void a(int var1, String var2);
+import javax.annotation.Nullable;
 
-   void a(int var1, String var2, int var3);
+public interface gt<T> {
+   void a(gr<T> var1);
 
-   void a(String var1);
+   void a(@Nullable gv var1);
 
-   void a(int var1, aiy var2, int var3);
+   @Nullable
+   gv a();
 
-   @Override
-   void close();
+   gu b();
+
+   static <T extends dw<T>> gt<T> a(final gs<T> $$0, final gu $$1) {
+      return new gt<T>() {
+         @Override
+         public void a(gr<T> $$0x) {
+            $$0.a(new go<>($$1, $$0));
+         }
+
+         @Override
+         public void a(@Nullable gv $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public gv a() {
+            return $$0.b();
+         }
+
+         @Override
+         public gu b() {
+            return $$1;
+         }
+      };
+   }
 }

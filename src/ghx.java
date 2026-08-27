@@ -1,17 +1,15 @@
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.Collection;
+import java.util.Locale;
 
-public class ghx {
-   @Deprecated
-   public static int[] a(asb $$0, aiy $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         eri $$3 = eri.a($$2);
-      ) {
-         var4 = $$3.e();
-      }
+public class ghx extends RuntimeException {
+   private final Collection<ghw.a> a;
 
-      return var4;
+   public ghx(ghw.a $$0, Collection<ghw.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
+   }
+
+   public Collection<ghw.a> a() {
+      return this.a;
    }
 }

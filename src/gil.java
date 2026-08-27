@@ -1,58 +1,35 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gil {
-   public static final gim a = new gim();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gil e = new gil(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gin a(int $$0, int $$1) {
-         return new gin($$0, $$1);
-      }
-   };
-   private final List<gik> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
+public class gil implements gid {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<gil> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajc.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ajc.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gil::new)
+   );
+   private final ajc d;
+   private final Optional<ajc> e;
 
-   public gil(List<gik> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+   public gil(ajc $$0, Optional<ajc> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public gin a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gin(this.g, this.h) : new gin(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gin($$0, this.h);
+   @Override
+   public void a(asf $$0, gid.a $$1) {
+      ajc $$2 = a.a(this.d);
+      Optional<asd> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
       } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gin($$2, $$2);
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(gil.a $$0) {
-      for (gik $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   @Override
+   public gif a() {
+      return gig.a;
    }
 }

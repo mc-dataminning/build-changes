@@ -1,71 +1,50 @@
-import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class cpv extends coy {
-   private static final Map<atk, cpv> a = Maps.newHashMap();
-   private final int b;
-   private final atk c;
-   private final int d;
-
-   protected cpv(int $$0, atk $$1, coy.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3 * 20;
-      a.put(this.c, this);
+public class cpv extends cpl {
+   public cpv(cpl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public blw a(crm $$0) {
-      cvr $$1 = $$0.q();
-      hz $$2 = $$0.a();
-      dlj $$3 = $$1.a_($$2);
-      if ($$3.a(cyu.dT) && !$$3.c(dcu.b)) {
-         cpd $$4 = $$0.n();
-         if (!$$1.B) {
-            chl $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof djy $$6) {
-               $$6.b($$4.q());
-               $$1.a(dpw.c, $$2, dpw.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(atv.al);
-            }
+   public bml a(crz $$0) {
+      cwe $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dme $$3 = $$1.a_($$2);
+      if ($$3.a(aue.S)) {
+         cia $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
          }
 
-         return blw.a($$1.B);
+         return bml.a($$1.B);
       } else {
-         return blw.d;
+         return bml.d;
       }
    }
 
-   public int h() {
-      return this.b;
-   }
+   public static bml a(cia $$0, cwe $$1, ib $$2) {
+      cef $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      eoq $$8 = new eoq((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<boz> $$9 = $$1.a(boz.class, $$8, $$1x -> $$1x.ga() == $$0);
 
-   @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      $$2.add(this.w().a(n.h));
-   }
+      for (boz $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cef.b($$1, $$2);
+            $$3.D();
+         }
 
-   public we w() {
-      return vq.c(this.a() + ".desc");
-   }
+         $$10.b($$3, true);
+      }
 
-   @Nullable
-   public static cpv a(atk $$0) {
-      return a.get($$0);
-   }
-
-   public atk x() {
-      return this.c;
-   }
-
-   public int y() {
-      return this.d;
+      if (!$$9.isEmpty()) {
+         $$1.a(dqr.b, $$2, dqr.a.a($$0));
+         return bml.a;
+      } else {
+         return bml.d;
+      }
    }
 }

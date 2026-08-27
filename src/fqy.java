@@ -1,119 +1,69 @@
 import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface fqy extends fqx {
-   static fqy.a a(GameProfile $$0, wg $$1, fqw $$2) {
-      return new fqy.a($$0, $$1, $$2);
+public class fqy extends fqx implements vg, zt {
+   private static final Logger i = LogUtils.getLogger();
+   private final GameProfile j;
+   private ckl k;
+   private final iy.b l;
+   private final frm m = new frm();
+
+   public fqy(eyk $$0, uq $$1, fre $$2) {
+      super($$0, $$1, $$2);
+      this.j = $$2.a();
+      this.l = $$2.c();
+      this.k = $$2.d();
    }
 
-   static fqy.b a(vq $$0, Instant $$1) {
-      return new fqy.b($$0, $$1);
+   @Override
+   public boolean c() {
+      return this.b.i();
    }
 
-   vq b();
-
-   default vq c() {
-      return this.b();
+   @Override
+   protected void a(za $$0) {
+      this.b($$0);
    }
 
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, wg d, fqw e) implements fqy {
-      public static final Codec<fqy.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avq.u.fieldOf("profile").forGetter(fqy.a::f), wg.a.forGetter(fqy.a::g), fqw.d.optionalFieldOf("trust_level", fqw.a).forGetter(fqy.a::h)
-               )
-               .apply($$0, fqy.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public vq b() {
-         if (!this.d.o().a()) {
-            vq $$0 = this.d.o().b(this.d.c());
-            return (vq)($$0 != null ? $$0 : vq.i());
-         } else {
-            return this.d.d();
-         }
-      }
-
-      @Override
-      public vq c() {
-         vq $$0 = this.b();
-         vq $$1 = this.i();
-         return vq.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public vq d() {
-         vq $$0 = this.i();
-         return vq.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private vq i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return vq.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fqx.a a() {
-         return fqx.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public wg g() {
-         return this.d;
-      }
-
-      public fqw h() {
-         return this.e;
-      }
+   private void b(za $$0) {
+      i.warn("Unknown custom packet payload: {}", $$0.a().a());
    }
 
-   public static record b(vq c, Instant d) implements fqy {
-      public static final Codec<fqy.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(vs.a.fieldOf("message").forGetter(fqy.b::d), avq.m.fieldOf("time_stamp").forGetter(fqy.b::e)).apply($$0, fqy.b::new)
-      );
+   @Override
+   public void a(zv $$0) {
+      yc.a($$0, this, this.a);
+      this.m.a($$0.b(), $$0.e());
+   }
 
-      @Override
-      public vq b() {
-         return this.c;
-      }
+   @Override
+   public void a(yo $$0) {
+      yc.a($$0, this, this.a);
+      this.m.a($$0.b());
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   @Override
+   public void a(zw $$0) {
+      this.k = ckn.e.a($$0.b());
+   }
 
-      @Override
-      public fqx.a a() {
-         return fqx.a.b;
-      }
+   @Override
+   public void a(zu $$0) {
+      yc.a($$0, this, this.a);
+      iy.b $$1 = this.m.a(this.l, this.b.e());
+      this.b.a(aeu.b.bind(vd.a($$1)), new frb(this.a, this.b, new fre(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
+      this.b.a(aaa.a);
+      this.b.a(aeu.a.bind(vd.a($$1)));
+   }
 
-      public vq d() {
-         return this.c;
-      }
+   @Override
+   public void e() {
+      this.f();
+   }
 
-      public Instant e() {
-         return this.d;
-      }
+   @Override
+   public void a(vs $$0) {
+      super.a($$0);
+      this.a.y();
    }
 }

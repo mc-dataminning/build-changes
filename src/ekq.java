@@ -1,4 +1,7 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public record ekq(Codec<? extends ekp> a) {
+public interface ekq {
+   int a(float var1);
+
+   void a(Consumer<cpq> var1, ejy var2);
 }

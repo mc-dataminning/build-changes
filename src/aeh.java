@@ -1,29 +1,46 @@
-public record aeh(float b, boolean c) implements xx<aag> {
-   public static final xo<uq, aeh> a = xx.a(aeh::a, aeh::new);
+import javax.annotation.Nullable;
 
-   private aeh(uq $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class aeh implements xz<aai> {
+   public static final xq<us, aeh> a = xz.a(aeh::a, aeh::new);
+   private final int b;
+   @Nullable
+   private final sy c;
+
+   public aeh(int $$0, @Nullable sy $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static aeh a(bmh $$0) {
-      return new aeh($$0.f(), $$0.l());
+   private aeh(us $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.c(this.b);
+      $$0.a((tv)this.c);
    }
 
    @Override
-   public xz<aeh> a() {
-      return aeq.cb;
+   public yb<aeh> a() {
+      return aet.aX;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public sy e() {
       return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

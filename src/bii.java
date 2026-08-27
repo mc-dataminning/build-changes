@@ -1,45 +1,65 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+public class bii extends big implements bim {
+   public static final int c = 240;
+   private final long[][] d;
+   private int e;
+   private int f;
 
-public class bii implements bim {
-   public static final bii a = new bii();
+   public bii(int $$0) {
+      this($$0, new long[$$0]);
+   }
 
-   private bii() {
+   public bii(int $$0, long[] $$1) {
+      super($$0, $$1);
+      this.d = new long[240][$$0];
    }
 
    @Override
-   public List<bip> a(String $$0) {
-      return Collections.emptyList();
+   protected void a() {
+      int $$0 = this.b(this.e + this.f);
+      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
+      if (this.f < 240) {
+         this.f++;
+      } else {
+         this.e = this.b(this.e + 1);
+      }
    }
 
    @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
+   public int c() {
+      return this.d.length;
    }
 
    @Override
    public int d() {
-      return 0;
+      return this.f;
    }
 
    @Override
-   public String e() {
-      return "";
+   public long a(int $$0) {
+      return this.a($$0, 0);
+   }
+
+   @Override
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.f) {
+         long[] $$2 = this.d[this.b(this.e + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
+         } else {
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+         }
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+      }
+   }
+
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   @Override
+   public void e() {
+      this.e = 0;
+      this.f = 0;
    }
 }

@@ -1,40 +1,24 @@
-public class gdl<T extends bnq & cia> extends gaz<T> {
-   private static final float a = 12.25F;
-   private final gby f;
-   private final float g;
-   private final boolean h;
+public class gdl extends gde<cfi, fof<cfi>> {
+   private static final ajc a = new ajc("textures/entity/phantom.png");
 
-   public gdl(gba.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gdl(gby.a $$0) {
+      super($$0, new fof<>($$0.a(fqe.aD)), 0.75F);
+      this.a(new ggh<>(this));
    }
 
-   public gdl(gba.a $$0) {
-      this($$0, 1.0F, false);
+   public ajc a(cfi $$0) {
+      return a;
    }
 
-   @Override
-   protected int a(T $$0, hz $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected void a(cfi $$0, etd $$1, float $$2) {
+      int $$3 = $$0.u();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
-      if ($$0.ag >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cpa.h, $$5, ggs.d, $$3, $$4, $$0.dM(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public aiy a(bnq $$0) {
-      return gha.e;
+   protected void a(cfi $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dB()));
    }
 }

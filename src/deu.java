@@ -1,49 +1,38 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class deu extends cys {
-   public static final MapCodec<deu> a = b(deu::new);
-   public static final dma b = dev.d;
+public class deu extends dgg {
+   public static final MapCodec<deu> b = b(deu::new);
 
    @Override
    public MapCodec<deu> a() {
-      return a;
+      return b;
    }
 
-   public deu(dli.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dlj a(crk $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
+   protected deu(dmd.d $$0) {
+      super(dgg.b.e, $$0);
    }
 
    @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
+   public void a(cwe $$0, ib $$1, dme $$2, @Nullable box $$3, cpq $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      b($$0, $$1, $$4);
+   }
+
+   public static void b(cwe $$0, ib $$1, cpq $$2) {
+      if ($$0.c_($$1) instanceof dkw $$3) {
+         GameProfile $$4 = null;
+         if ($$2.v()) {
+            sy $$5 = $$2.w();
+            if ($$5.b("SkullOwner", 10)) {
+               $$4 = tn.a($$5.p("SkullOwner"));
+            } else if ($$5.b("SkullOwner", 8) && !ac.b($$5.l("SkullOwner"))) {
+               $$4 = new GameProfile(ac.d, $$5.l("SkullOwner"));
             }
          }
-      }
-   }
 
-   @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
+         $$3.a($$4);
       }
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
    }
 }

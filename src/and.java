@@ -1,54 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class and {
+   private static final wp a = wp.a.a(new vy(vy.a.a, vs.c("chat.type.team.hover"))).a(new vq(vq.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.teammsg.failed.noteam"));
+
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
-                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
-                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
-                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
-                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
-                        .then(dv.a("time", fh.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(dv.a("add").then(dv.a("time", fh.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
-                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).e())))))
-                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().X() % 2147483647L)))))
-                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().Y() / 24000L % 2147483647L))))
-            )
-      );
+      LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", el.a()).executes($$0x -> {
+         du $$1x = (du)$$0x.getSource();
+         bof $$2 = $$1x.g();
+         epu $$3 = $$2.cd();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<apb> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cd() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               el.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   private static int a(aow $$0) {
-      return (int)($$0.Y() % 24000L);
-   }
+   private static void a(du $$0, bof $$1, epu $$2, List<apb> $$3, wi $$4) {
+      vs $$5 = $$2.d().c(a);
+      vo.a $$6 = vo.a(vo.g, $$0).c($$5);
+      vo.a $$7 = vo.a(vo.h, $$0).c($$5);
+      wh $$8 = wh.a($$4);
+      boolean $$9 = false;
 
-   private static int c(du $$0, int $$1) {
-      $$0.a(() -> vq.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(du $$0, int $$1) {
-      for (aow $$2 : $$0.l().J()) {
-         $$2.b((long)$$1);
+      for (apb $$10 : $$3) {
+         vo.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
 
-      $$0.a(() -> vq.a("commands.time.set", $$1), true);
-      return a($$0.e());
-   }
-
-   public static int b(du $$0, int $$1) {
-      for (aow $$2 : $$0.l().J()) {
-         $$2.b($$2.Y() + (long)$$1);
+      if ($$9) {
+         $$0.a(ass.f);
       }
-
-      int $$3 = a($$0.e());
-      $$0.a(() -> vq.a("commands.time.set", $$3), true);
-      return $$3;
    }
 }

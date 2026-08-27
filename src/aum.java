@@ -1,35 +1,130 @@
-import java.util.ArrayList;
-import java.util.List;
+public final class aum {
+   public static final aut<cpl> a = a("wool");
+   public static final aut<cpl> b = a("planks");
+   public static final aut<cpl> c = a("stone_bricks");
+   public static final aut<cpl> d = a("wooden_buttons");
+   public static final aut<cpl> e = a("stone_buttons");
+   public static final aut<cpl> f = a("buttons");
+   public static final aut<cpl> g = a("wool_carpets");
+   public static final aut<cpl> h = a("wooden_doors");
+   public static final aut<cpl> i = a("wooden_stairs");
+   public static final aut<cpl> j = a("wooden_slabs");
+   public static final aut<cpl> k = a("wooden_fences");
+   public static final aut<cpl> l = a("fence_gates");
+   public static final aut<cpl> m = a("wooden_pressure_plates");
+   public static final aut<cpl> n = a("wooden_trapdoors");
+   public static final aut<cpl> o = a("doors");
+   public static final aut<cpl> p = a("saplings");
+   public static final aut<cpl> q = a("logs_that_burn");
+   public static final aut<cpl> r = a("logs");
+   public static final aut<cpl> s = a("dark_oak_logs");
+   public static final aut<cpl> t = a("oak_logs");
+   public static final aut<cpl> u = a("birch_logs");
+   public static final aut<cpl> v = a("acacia_logs");
+   public static final aut<cpl> w = a("cherry_logs");
+   public static final aut<cpl> x = a("jungle_logs");
+   public static final aut<cpl> y = a("spruce_logs");
+   public static final aut<cpl> z = a("mangrove_logs");
+   public static final aut<cpl> A = a("crimson_stems");
+   public static final aut<cpl> B = a("warped_stems");
+   public static final aut<cpl> C = a("bamboo_blocks");
+   public static final aut<cpl> D = a("wart_blocks");
+   public static final aut<cpl> E = a("banners");
+   public static final aut<cpl> F = a("sand");
+   public static final aut<cpl> G = a("smelts_to_glass");
+   public static final aut<cpl> H = a("stairs");
+   public static final aut<cpl> I = a("slabs");
+   public static final aut<cpl> J = a("walls");
+   public static final aut<cpl> K = a("anvil");
+   public static final aut<cpl> L = a("rails");
+   public static final aut<cpl> M = a("leaves");
+   public static final aut<cpl> N = a("trapdoors");
+   public static final aut<cpl> O = a("small_flowers");
+   public static final aut<cpl> P = a("beds");
+   public static final aut<cpl> Q = a("fences");
+   public static final aut<cpl> R = a("tall_flowers");
+   public static final aut<cpl> S = a("flowers");
+   public static final aut<cpl> T = a("piglin_repellents");
+   public static final aut<cpl> U = a("piglin_loved");
+   public static final aut<cpl> V = a("ignored_by_piglin_babies");
+   public static final aut<cpl> W = a("piglin_food");
+   public static final aut<cpl> X = a("fox_food");
+   public static final aut<cpl> Y = a("gold_ores");
+   public static final aut<cpl> Z = a("iron_ores");
+   public static final aut<cpl> aa = a("diamond_ores");
+   public static final aut<cpl> ab = a("redstone_ores");
+   public static final aut<cpl> ac = a("lapis_ores");
+   public static final aut<cpl> ad = a("coal_ores");
+   public static final aut<cpl> ae = a("emerald_ores");
+   public static final aut<cpl> af = a("copper_ores");
+   public static final aut<cpl> ag = a("non_flammable_wood");
+   public static final aut<cpl> ah = a("soul_fire_base_blocks");
+   public static final aut<cpl> ai = a("candles");
+   public static final aut<cpl> aj = a("dirt");
+   public static final aut<cpl> ak = a("terracotta");
+   public static final aut<cpl> al = a("completes_find_tree_tutorial");
+   public static final aut<cpl> am = a("boats");
+   public static final aut<cpl> an = a("chest_boats");
+   public static final aut<cpl> ao = a("fishes");
+   public static final aut<cpl> ap = a("signs");
+   public static final aut<cpl> aq = a("music_discs");
+   public static final aut<cpl> ar = a("creeper_drop_music_discs");
+   public static final aut<cpl> as = a("coals");
+   public static final aut<cpl> at = a("arrows");
+   public static final aut<cpl> au = a("lectern_books");
+   public static final aut<cpl> av = a("bookshelf_books");
+   public static final aut<cpl> aw = a("beacon_payment_items");
+   public static final aut<cpl> ax = a("stone_tool_materials");
+   public static final aut<cpl> ay = a("stone_crafting_materials");
+   public static final aut<cpl> az = a("freeze_immune_wearables");
+   public static final aut<cpl> aA = a("axolotl_tempt_items");
+   public static final aut<cpl> aB = a("dampens_vibrations");
+   public static final aut<cpl> aC = a("cluster_max_harvestables");
+   public static final aut<cpl> aD = a("compasses");
+   public static final aut<cpl> aE = a("hanging_signs");
+   public static final aut<cpl> aF = a("creeper_igniters");
+   public static final aut<cpl> aG = a("noteblock_top_instruments");
+   public static final aut<cpl> aH = a("foot_armor");
+   public static final aut<cpl> aI = a("leg_armor");
+   public static final aut<cpl> aJ = a("chest_armor");
+   public static final aut<cpl> aK = a("head_armor");
+   public static final aut<cpl> aL = a("skulls");
+   public static final aut<cpl> aM = a("trimmable_armor");
+   public static final aut<cpl> aN = a("trim_materials");
+   public static final aut<cpl> aO = a("trim_templates");
+   public static final aut<cpl> aP = a("sniffer_food");
+   public static final aut<cpl> aQ = a("decorated_pot_sherds");
+   public static final aut<cpl> aR = a("decorated_pot_ingredients");
+   public static final aut<cpl> aS = a("swords");
+   public static final aut<cpl> aT = a("axes");
+   public static final aut<cpl> aU = a("hoes");
+   public static final aut<cpl> aV = a("pickaxes");
+   public static final aut<cpl> aW = a("shovels");
+   public static final aut<cpl> aX = a("tools");
+   public static final aut<cpl> aY = a("breaks_decorated_pots");
+   public static final aut<cpl> aZ = a("villager_plantable_seeds");
+   public static final aut<cpl> ba = a("dyeable");
+   public static final aut<cpl> bb = a("enchantable/foot_armor");
+   public static final aut<cpl> bc = a("enchantable/leg_armor");
+   public static final aut<cpl> bd = a("enchantable/chest_armor");
+   public static final aut<cpl> be = a("enchantable/head_armor");
+   public static final aut<cpl> bf = a("enchantable/armor");
+   public static final aut<cpl> bg = a("enchantable/sword");
+   public static final aut<cpl> bh = a("enchantable/weapon");
+   public static final aut<cpl> bi = a("enchantable/mining");
+   public static final aut<cpl> bj = a("enchantable/mining_loot");
+   public static final aut<cpl> bk = a("enchantable/fishing");
+   public static final aut<cpl> bl = a("enchantable/trident");
+   public static final aut<cpl> bm = a("enchantable/durability");
+   public static final aut<cpl> bn = a("enchantable/bow");
+   public static final aut<cpl> bo = a("enchantable/equippable");
+   public static final aut<cpl> bp = a("enchantable/crossbow");
+   public static final aut<cpl> bq = a("enchantable/vanishing");
 
-public class aum {
-   private final List<aun> a = new ArrayList<>();
-
-   public static aum a() {
-      return new aum();
+   private aum() {
    }
 
-   public List<aun> b() {
-      return List.copyOf(this.a);
-   }
-
-   public aum a(aun $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public aum a(aiy $$0) {
-      return this.a(aun.a($$0));
-   }
-
-   public aum b(aiy $$0) {
-      return this.a(aun.b($$0));
-   }
-
-   public aum c(aiy $$0) {
-      return this.a(aun.c($$0));
-   }
-
-   public aum d(aiy $$0) {
-      return this.a(aun.d($$0));
+   private static aut<cpl> a(String $$0) {
+      return aut.a(ki.F, new ajc($$0));
    }
 }

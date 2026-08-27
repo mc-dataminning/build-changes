@@ -1,46 +1,113 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-
-public abstract class ezf extends ezm {
-   protected static final int e = 2;
-   private static final fbb a = new fbb(new aiy("widget/button"), new aiy("widget/button_disabled"), new aiy("widget/button_highlighted"));
-
-   public ezf(int $$0, int $$1, int $$2, int $$3, vq $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public abstract void b();
-
-   @Override
-   protected void b(ezb $$0, int $$1, int $$2, float $$3) {
-      exo $$4 = exo.P();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | awi.f(this.l * 255.0F) << 24);
-   }
-
-   public void a(ezb $$0, eyz $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fdo.a($$0)) {
-         this.a(exo.P().aj());
-         this.b();
-         return true;
-      } else {
-         return false;
-      }
-   }
+public class ezf {
+   public static final ezb a = ezb.a.a(0.5F)
+      .a()
+      .a("head", new eza(eza.d.b, new ezc(0.0F, ezd.b(180.0F, 0.0F, 0.0F), eza.b.a)))
+      .a("head", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 0.5F, 0.0F), eza.b.a)))
+      .a("body", new eza(eza.d.b, new ezc(0.0F, ezd.b(180.0F, 0.0F, 0.0F), eza.b.a)))
+      .a("body", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 0.5F, 0.0F), eza.b.a)))
+      .a("feet", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
+      .a("right_wing", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, -10.0F, 0.0F), eza.b.a)))
+      .a("right_wing", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 0.0F, 1.0F), eza.b.a)))
+      .a("right_wing_tip", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, -120.0F, 0.0F), eza.b.a)))
+      .a("left_wing", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 10.0F, 0.0F), eza.b.a)))
+      .a("left_wing", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 0.0F, 1.0F), eza.b.a)))
+      .a("left_wing_tip", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 120.0F, 0.0F), eza.b.a)))
+      .b();
+   public static final ezb b = ezb.a.a(0.5F)
+      .a()
+      .a(
+         "head",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.b(20.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eza(
+            eza.d.a,
+            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.a(0.0F, 2.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.a(0.0F, 1.0F, 0.0F), eza.b.a),
+            new ezc(0.375F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.4583F, ezd.a(0.0F, -1.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(40.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.b(52.5F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(40.0F, 0.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eza(
+            eza.d.a,
+            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.a(0.0F, 2.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.a(0.0F, 1.0F, 0.0F), eza.b.a),
+            new ezc(0.375F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.4583F, ezd.a(0.0F, -1.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "feet",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(10.0F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.b(-21.25F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.b(-12.5F, 0.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(10.0F, 0.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "right_wing",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(0.0F, 85.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.b(0.0F, -55.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.b(0.0F, 50.0F, 0.0F), eza.b.a),
+            new ezc(0.375F, ezd.b(0.0F, 70.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(0.0F, 85.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "right_wing_tip",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(0.0F, 10.5F, 0.0F), eza.b.a),
+            new ezc(0.0417F, ezd.b(0.0F, 65.5F, 0.0F), eza.b.a),
+            new ezc(0.2083F, ezd.b(0.0F, -135.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(0.0F, 10.5F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "left_wing",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(0.0F, -85.0F, 0.0F), eza.b.a),
+            new ezc(0.125F, ezd.b(0.0F, 55.0F, 0.0F), eza.b.a),
+            new ezc(0.25F, ezd.b(0.0F, -50.0F, 0.0F), eza.b.a),
+            new ezc(0.375F, ezd.b(0.0F, -70.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(0.0F, -85.0F, 0.0F), eza.b.a)
+         )
+      )
+      .a(
+         "left_wing_tip",
+         new eza(
+            eza.d.b,
+            new ezc(0.0F, ezd.b(0.0F, -10.5F, 0.0F), eza.b.a),
+            new ezc(0.0417F, ezd.b(0.0F, -65.5F, 0.0F), eza.b.a),
+            new ezc(0.2083F, ezd.b(0.0F, 135.0F, 0.0F), eza.b.a),
+            new ezc(0.5F, ezd.b(0.0F, -10.5F, 0.0F), eza.b.a)
+         )
+      )
+      .b();
 }

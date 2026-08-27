@@ -1,58 +1,35 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class glt implements glu<gkl> {
-   private final List<glu<gkl>> a = Lists.newArrayList();
-   @Nullable
-   private final vq b;
+public class glt<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public glt(aiy $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : vq.c($$1);
+   public glt(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (glu<gkl> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public gkl a(awp $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (glu<gkl> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
          }
 
-         return gls.a;
-      } else {
-         return gls.a;
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
-   }
 
-   public void a(glu<gkl> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public vq a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(glp $$0) {
-      for (glu<gkl> $$1 : this.a) {
-         $$1.a($$0);
-      }
+      return (T)this.endOfData();
    }
 }

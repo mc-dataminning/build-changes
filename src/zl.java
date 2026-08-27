@@ -1,23 +1,21 @@
-import java.util.List;
+public record zl(ib c) implements za {
+   public static final xq<us, zl> a = za.a(zl::a, zl::new);
+   public static final za.b<zl> b = za.a("debug/poi_removed");
 
-public record zl(List<hz> c) implements yy {
-   public static final xo<uq, zl> a = yy.a(zl::a, zl::new);
-   public static final yy.b<zl> b = yy.a("debug/raids");
-
-   private zl(uq $$0) {
-      this($$0.a(hz.b));
+   private zl(us $$0) {
+      this($$0.e());
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c, hz.b);
+   private void a(us $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public yy.b<zl> a() {
+   public za.b<zl> a() {
       return b;
    }
 
-   public List<hz> b() {
+   public ib b() {
       return this.c;
    }
 }

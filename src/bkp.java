@@ -1,151 +1,88 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
 import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public class bkp<T> implements bju, bko<T>, AutoCloseable, Runnable {
+public class bkp implements bki {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bkr<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+   private final Set<bkg> b = new ObjectOpenHashSet();
+   private final bko c = new bko();
 
-   public static bkp<Runnable> a(Executor $$0, String $$1) {
-      return new bkp<>(new bkr.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
-   }
-
-   public bkp(bkr<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bjs.a.a(this);
-   }
-
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
-
-      return true;
-   }
-
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
-   }
-
-   @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
-      } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
-         }
+   public bkp(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   @Override
-   public void run() {
+   public static Set<bkg> a() {
+      Builder<bkg> $$0 = ImmutableSet.builder();
+
       try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
+         bkp.a $$1 = new bkp.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bkg.a("cpu#" + $$1x, bkf.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
-   }
 
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
+      $$0.add(bkg.a("heap MiB", bkf.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bkh.a.a());
+      return $$0.build();
    }
 
    @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
+   public Set<bkg> a(Supplier<bja> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
+   public static bkg a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
          }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bkg.d $$3 = new bkg.d(2.0F);
+      return bkg.a("ticktime", bkf.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
+
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
       }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   public int b() {
-      return this.e.c();
-   }
-
-   public boolean c() {
-      return this.g() && !this.e.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String bv() {
-      return this.g;
-   }
-
-   @Override
-   public List<bjr> bs() {
-      return ImmutableList.of(bjr.a(this.g + "-queue-size", bjq.c, this::b));
    }
 }

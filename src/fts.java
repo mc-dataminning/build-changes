@@ -1,99 +1,146 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fts extends fve {
+   static final awt a = awt.a();
+   private final fuz b;
 
-public class fts extends fuh {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
-
-   fts(fqe $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
+   fts(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(esl $$0, ewz $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - awi.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
-   }
-
-   private void a(esl $$0, ewz $$1, float $$2, Consumer<Quaternionf> $$3) {
-      enz $$4 = $$1.b();
-      float $$5 = (float)(awi.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(awi.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(awi.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
-   }
-
-   private void a(esl $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   public fui b() {
+      return fui.c;
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
-   }
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = awm.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
 
-   @Override
-   public ftl b() {
-      return ftl.c;
+      return $$3 | $$4 << 16;
    }
 
    @Override
    public void a() {
-      if (this.G > 0) {
-         this.G--;
-      } else {
-         super.a();
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fuh<ke> {
+      private final double a = 0.25;
+      private final fuz b;
+
+      public a(fuz $$0) {
+         this.b = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.z.a(2) + 2);
+         return $$8;
       }
    }
 
-   public static class a implements ftk<kb> {
-      private final fuc a;
+   public static class b implements fuh<ke> {
+      private final fuz a;
 
-      public a(fuc $$0) {
+      public b(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kb $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.5 - fts.a.j(), $$6, 0.5 - fts.a.j(), this.a);
+         if ($$1.z.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements fuh<ke> {
+      private final double a = 0.01;
+      private final fuz b;
+
+      public c(fuz $$0) {
+         this.b = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.z.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements fuh<ke> {
+      private final double a = 0.01;
+      private final fuz b;
+
+      public d(fuz $$0) {
+         this.b = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements fuh<ke> {
+      private final double a = 0.01;
+      private final fuz b;
+
+      public e(fuz $$0) {
+         this.b = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
          return $$8;
       }
    }

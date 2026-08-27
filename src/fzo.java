@@ -1,84 +1,62 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class fzo implements fze.a {
-   private final exo a;
+public class fzo implements cvh {
+   private final int c;
+   private final int d;
+   protected final fzn[][] a;
+   protected final cwe b;
 
-   public fzo(exo $$0) {
-      this.a = $$0;
+   fzo(cwe $$0, int $$1, int $$2, fzn[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
    @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      cux $$6 = this.a.s.dM();
-      hz $$7 = hz.a($$2, $$3, $$4);
+   public dme a_(ib $$0) {
+      int $$1 = jd.a($$0.u()) - this.c;
+      int $$2 = jd.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
+   }
 
-      for (hz $$8 : hz.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dlj $$9 = $$6.a_($$8);
-         if (!$$9.a(cyu.a)) {
-            eos $$10 = $$9.j($$6, $$8);
+   @Override
+   public ehr b_(ib $$0) {
+      int $$1 = jd.a($$0.u()) - this.c;
+      int $$2 = jd.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
+   }
 
-            for (enu $$11 : $$10.e()) {
-               enu $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ie.e)) {
-                  esl $$23 = $$1.getBuffer(fwb.y());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public float a(ih $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
 
-               if ($$9.d($$6, $$8, ie.d)) {
-                  esl $$24 = $$1.getBuffer(fwb.y());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public ehg z_() {
+      return this.b.z_();
+   }
 
-               if ($$9.d($$6, $$8, ie.f)) {
-                  esl $$25 = $$1.getBuffer(fwb.y());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Nullable
+   @Override
+   public djl c_(ib $$0) {
+      int $$1 = jd.a($$0.u()) - this.c;
+      int $$2 = jd.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
 
-               if ($$9.d($$6, $$8, ie.c)) {
-                  esl $$26 = $$1.getBuffer(fwb.y());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public int a(ib $$0, cvp $$1) {
+      return this.b.a($$0, $$1);
+   }
 
-               if ($$9.d($$6, $$8, ie.a)) {
-                  esl $$27 = $$1.getBuffer(fwb.y());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public int J_() {
+      return this.b.J_();
+   }
 
-               if ($$9.d($$6, $$8, ie.b)) {
-                  esl $$28 = $$1.getBuffer(fwb.y());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
-         }
-      }
+   @Override
+   public int K_() {
+      return this.b.K_();
    }
 }

@@ -1,41 +1,90 @@
-public class fxr implements fxt<div> {
-   public static final gje a = new gje(gha.e, new aiy("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fpj c;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public fxr(fxu.a $$0) {
-      fpj $$1 = $$0.a(fpi.l);
-      this.c = $$1.b("bell_body");
+public class fxr {
+   public float[] a;
+   public final int b;
+
+   public fxr(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fpp b() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a();
-      fps $$2 = $$1.a("bell_body", fpo.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fpl.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fpo.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fpl.a(-8.0F, -12.0F, -8.0F));
-      return fpp.a($$0, 32, 32);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   public void a(div $$0, float $$1, esh $$2, fvt $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = awi.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ie.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ie.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ie.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ie.e) {
-            $$8 = $$9;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<fxr> {
+      private static final int a = 0;
+
+      public fxr a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new fxr($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = awc.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      esl $$10 = a.a($$3, fwb::c);
-      this.c.a($$2, $$10, $$4, $$5);
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = awc.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = awc.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
+      }
    }
 }

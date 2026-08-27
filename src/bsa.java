@@ -1,56 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public abstract class bsa<E extends box> implements bqq<E>, buf<E> {
+   private bqp.a a;
 
-@Deprecated
-public class bsa {
-   public static bqb<boi> a(float $$0, blh $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public bsa() {
+      this.a = bqp.a.a;
    }
 
-   public static bqb<boi> a(bnw<?> $$0, float $$1, blh $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   @Override
+   public final bqp.a a() {
+      return this.a;
    }
 
-   private static bqb<boi> a(float $$0, blh $$1, Predicate<boi> $$2) {
-      float $$3 = $$0 * $$0;
-      bsa.a $$4 = new bsa.a($$1);
-      return btn.a(
-         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$3x -> $$3x.group($$3x.c(bxl.n), $$3x.b(bxl.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<boi> $$9 = $$3x.<bxn>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((bnq)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.z)) {
-                        return false;
-                     } else {
-                        $$4x.a(new bql($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
-   }
-
-   public static final class a {
-      private final blh a;
-      private int b;
-
-      public a(blh $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
-         }
+   @Override
+   public final boolean e(apa $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bqp.a.b;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public boolean a(awp $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
+   @Override
+   public final void f(apa $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(apa $$0, E $$1, long $$2) {
+      this.a = bqp.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

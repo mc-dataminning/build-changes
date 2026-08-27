@@ -1,61 +1,74 @@
-public class fsh extends fuh {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   protected fsh(fqe $$0, double $$1, double $$2, double $$3, fuc $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+public class fsh extends fsc {
+   final Supplier<giy> f;
+
+   fsh(UUID $$0, Instant $$1, UUID $$2, Supplier<giy> $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public Supplier<giy> a() {
+      return this.f;
+   }
+
+   public fsh c() {
+      fsh $$0 = new fsh(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
    @Override
-   public ftl b() {
-      return ftl.b;
+   public fgh a(fgh $$0, fsg $$1) {
+      return new fkm($$0, $$1, this);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   public static class a extends fsc.a<fsh> {
+      public a(fsh $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
+      public a(UUID $$0, Supplier<giy> $$1, AbuseReportLimits $$2) {
+         super(new fsh(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      }
+
+      @Nullable
+      @Override
+      public fsc.b c() {
+         if (this.a.e == null) {
+            return fsc.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fsc.b.d : null;
+         }
+      }
+
+      @Override
+      public Either<fsc.c, fsc.b> a(fsg $$0) {
+         fsc.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            giy $$4 = this.a.f.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new fsc.c(this.a.a, fsf.b, $$6));
          }
       }
    }

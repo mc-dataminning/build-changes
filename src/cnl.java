@@ -1,347 +1,213 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import net.minecraft.server.MinecraftServer;
 
-public class cnl extends cpt {
-   private static final String b = "Charged";
-   private static final String e = "ChargedProjectiles";
-   private static final int f = 25;
-   public static final int a = 8;
-   private boolean g = false;
-   private boolean h = false;
-   private static final float i = 0.2F;
-   private static final float j = 0.5F;
-   private static final float k = 3.15F;
-   private static final float r = 1.6F;
+public class cnl extends cpl {
+   public static final String a = "BlockEntityTag";
+   public static final String b = "BlockStateTag";
+   @Deprecated
+   private final czf c;
 
-   public cnl(coy.a $$0) {
-      super($$0);
+   public cnl(czf $$0, cpl.a $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public Predicate<cpd> e() {
-      return d;
-   }
-
-   @Override
-   public Predicate<cpd> b() {
-      return c;
-   }
-
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      if (d($$3)) {
-         a($$0, $$1, $$2, $$3, o($$3), 1.0F);
-         a($$3, false);
-         return blx.b($$3);
-      } else if (!$$1.g($$3).b()) {
-         if (!d($$3)) {
-            this.g = false;
-            this.h = false;
-            $$1.c($$2);
-         }
-
-         return blx.b($$3);
+   public bml a(crz $$0) {
+      bml $$1 = this.a(new crx($$0));
+      if (!$$1.a() && this.v()) {
+         bml $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
+         return $$2 == bml.b ? bml.c : $$2;
       } else {
-         return blx.d($$3);
+         return $$1;
       }
    }
 
-   private static float o(cpd $$0) {
-      return a($$0, cpg.uq) ? 1.6F : 3.15F;
-   }
+   public bml a(crx $$0) {
+      if (!this.d().a($$0.q().I())) {
+         return bml.e;
+      } else if (!$$0.b()) {
+         return bml.e;
+      } else {
+         crx $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bml.e;
+         } else {
+            dme $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bml.e;
+            } else if (!this.a($$1, $$2)) {
+               return bml.e;
+            } else {
+               ib $$3 = $$1.a();
+               cwe $$4 = $$1.q();
+               cia $$5 = $$1.o();
+               cpq $$6 = $$1.n();
+               dme $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof apb) {
+                     am.z.a((apb)$$5, $$3, $$6);
+                  }
+               }
 
-   @Override
-   public void a(cpd $$0, cvr $$1, boi $$2, int $$3) {
-      int $$4 = this.b($$0) - $$3;
-      float $$5 = a($$4, $$0);
-      if ($$5 >= 1.0F && !d($$0) && a($$2, $$0)) {
-         a($$0, true);
-         atm $$6 = $$2 instanceof chl ? atm.h : atm.f;
-         $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), atl.gb, $$6, 1.0F, 1.0F / ($$1.F_().i() * 0.5F + 1.0F) + 0.2F);
+               dgr $$8 = $$7.w();
+               $$4.a($$5, $$3, this.a($$7), atq.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(dqr.i, $$3, dqr.a.a($$5, $$7));
+               if ($$5 == null || !$$5.fW().d) {
+                  $$6.h(1);
+               }
+
+               return bml.a($$4.B);
+            }
+         }
       }
    }
 
-   private static boolean a(boi $$0, cpd $$1) {
-      int $$2 = ctn.a(ctp.I, $$1);
-      int $$3 = $$2 == 0 ? 1 : 3;
-      boolean $$4 = $$0 instanceof chl && ((chl)$$0).fU().d;
-      cpd $$5 = $$0.g($$1);
-      cpd $$6 = $$5.q();
+   protected ato a(dme $$0) {
+      return $$0.w().e();
+   }
 
-      for (int $$7 = 0; $$7 < $$3; $$7++) {
-         if ($$7 > 0) {
-            $$5 = $$6.q();
-         }
+   @Nullable
+   public crx b(crx $$0) {
+      return $$0;
+   }
 
-         if ($$5.b() && $$4) {
-            $$5 = new cpd(cpg.ou);
-            $$6 = $$5.q();
-         }
+   protected boolean a(ib $$0, cwe $$1, @Nullable cia $$2, cpq $$3, dme $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
 
-         if (!a($$0, $$1, $$5, $$7 > 0, $$4)) {
-            return false;
+   @Nullable
+   protected dme c(crx $$0) {
+      dme $$1 = this.d().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dme a(ib $$0, cwe $$1, cpq $$2, dme $$3) {
+      dme $$4 = $$3;
+      sy $$5 = $$2.w();
+      if ($$5 != null) {
+         sy $$6 = $$5.p("BlockStateTag");
+         dmf<czf, dme> $$7 = $$3.b().n();
+
+         for (String $$8 : $$6.e()) {
+            dnh<?> $$9 = $$7.a($$8);
+            if ($$9 != null) {
+               String $$10 = $$6.c($$8).t_();
+               $$4 = a($$4, $$9, $$10);
+            }
          }
       }
 
+      if ($$4 != $$3) {
+         $$1.a($$0, $$4, 2);
+      }
+
+      return $$4;
+   }
+
+   private static <T extends Comparable<T>> dme a(dme $$0, dnh<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   protected boolean b(crx $$0, dme $$1) {
+      cia $$2 = $$0.o();
+      epa $$3 = $$2 == null ? epa.a() : epa.a($$2);
+      return (!this.c() || $$1.a((cwh)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
+
+   protected boolean c() {
       return true;
    }
 
-   private static boolean a(boi $$0, cpd $$1, cpd $$2, boolean $$3, boolean $$4) {
-      if ($$2.b()) {
+   protected boolean a(crx $$0, dme $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(cwe $$0, @Nullable cia $$1, ib $$2, cpq $$3) {
+      MinecraftServer $$4 = $$0.o();
+      if ($$4 == null) {
          return false;
       } else {
-         boolean $$5 = $$4 && $$2.d() instanceof cmr;
-         cpd $$6;
-         if (!$$5 && !$$4 && !$$3) {
-            $$6 = $$2.a(1);
-            if ($$2.b() && $$0 instanceof chl) {
-               ((chl)$$0).fT().g($$2);
-            }
-         } else {
-            $$6 = $$2.q();
-         }
-
-         b($$1, $$6);
-         return true;
-      }
-   }
-
-   public static boolean d(cpd $$0) {
-      sw $$1 = $$0.w();
-      return $$1 != null && $$1.q("Charged");
-   }
-
-   public static void a(cpd $$0, boolean $$1) {
-      sw $$2 = $$0.x();
-      $$2.a("Charged", $$1);
-   }
-
-   private static void b(cpd $$0, cpd $$1) {
-      sw $$2 = $$0.x();
-      tc $$3;
-      if ($$2.b("ChargedProjectiles", 9)) {
-         $$3 = $$2.c("ChargedProjectiles", 10);
-      } else {
-         $$3 = new tc();
-      }
-
-      sw $$5 = new sw();
-      $$1.b($$5);
-      $$3.add($$5);
-      $$2.a("ChargedProjectiles", $$3);
-   }
-
-   private static List<cpd> p(cpd $$0) {
-      List<cpd> $$1 = Lists.newArrayList();
-      sw $$2 = $$0.w();
-      if ($$2 != null && $$2.b("ChargedProjectiles", 9)) {
-         tc $$3 = $$2.c("ChargedProjectiles", 10);
-         if ($$3 != null) {
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               sw $$5 = $$3.a($$4);
-               $$1.add(cpd.a($$5));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static void q(cpd $$0) {
-      sw $$1 = $$0.w();
-      if ($$1 != null) {
-         tc $$2 = $$1.c("ChargedProjectiles", 9);
-         $$2.clear();
-         $$1.a("ChargedProjectiles", $$2);
-      }
-   }
-
-   public static boolean a(cpd $$0, coy $$1) {
-      return p($$0).stream().anyMatch($$1x -> $$1x.a($$1));
-   }
-
-   private static void a(cvr $$0, boi $$1, blv $$2, cpd $$3, cpd $$4, float $$5, boolean $$6, float $$7, float $$8, float $$9) {
-      if (!$$0.B) {
-         boolean $$10 = $$4.a(cpg.uq);
-         cid $$11;
-         if ($$10) {
-            $$11 = new chy($$0, $$4, $$1, $$1.dr(), $$1.dv() - 0.15F, $$1.dx(), true);
-         } else {
-            $$11 = a($$0, $$1, $$3, $$4);
-            if ($$6 || $$9 != 0.0F) {
-               ((chr)$$11).d = chr.a.c;
-            }
-         }
-
-         if ($$1 instanceof cee $$13) {
-            $$13.a($$13.q(), $$3, $$11, $$9);
-         } else {
-            enz $$14 = $$1.i(1.0F);
-            Quaternionf $$15 = new Quaternionf().setAngleAxis((double)($$9 * (float) (Math.PI / 180.0)), $$14.c, $$14.d, $$14.e);
-            enz $$16 = $$1.f(1.0F);
-            Vector3f $$17 = $$16.j().rotate($$15);
-            $$11.c((double)$$17.x(), (double)$$17.y(), (double)$$17.z(), $$7, $$8);
-         }
-
-         $$3.a($$10 ? 3 : 1, $$1, boi.d($$2));
-         $$0.b($$11);
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atl.gh, atm.h, 1.0F, $$5);
-      }
-   }
-
-   private static chr a(cvr $$0, boi $$1, cpd $$2, cpd $$3) {
-      cmr $$4 = (cmr)($$3.d() instanceof cmr ? $$3.d() : cpg.ou);
-      chr $$5 = $$4.a($$0, $$3, $$1);
-      if ($$1 instanceof chl) {
-         $$5.a(true);
-      }
-
-      $$5.b(atl.ga);
-      $$5.q(true);
-      int $$6 = ctn.a(ctp.K, $$2);
-      if ($$6 > 0) {
-         $$5.a((byte)$$6);
-      }
-
-      return $$5;
-   }
-
-   public static void a(cvr $$0, boi $$1, blv $$2, cpd $$3, float $$4, float $$5) {
-      List<cpd> $$6 = p($$3);
-      float[] $$7 = a($$1.eh());
-
-      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
-         cpd $$9 = $$6.get($$8);
-         boolean $$10 = $$1 instanceof chl && ((chl)$$1).fU().d;
-         if (!$$9.b()) {
-            if ($$8 == 0) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 0.0F);
-            } else if ($$8 == 1) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, -10.0F);
-            } else if ($$8 == 2) {
-               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 10.0F);
-            }
-         }
-      }
-
-      a($$0, $$1, $$3);
-   }
-
-   private static float[] a(awp $$0) {
-      boolean $$1 = $$0.h();
-      return new float[]{1.0F, a($$1, $$0), a(!$$1, $$0)};
-   }
-
-   private static float a(boolean $$0, awp $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
-   }
-
-   private static void a(cvr $$0, boi $$1, cpd $$2) {
-      if ($$1 instanceof aox $$3) {
-         if (!$$0.B) {
-            am.G.a($$3, $$2);
-         }
-
-         $$3.b(atv.c.b($$2.d()));
-      }
-
-      q($$2);
-   }
-
-   @Override
-   public void a(cvr $$0, boi $$1, cpd $$2, int $$3) {
-      if (!$$0.B) {
-         int $$4 = ctn.a(ctp.J, $$2);
-         atk $$5 = this.a($$4);
-         atk $$6 = $$4 == 0 ? atl.gc : null;
-         float $$7 = (float)($$2.s() - $$3) / (float)k($$2);
-         if ($$7 < 0.2F) {
-            this.g = false;
-            this.h = false;
-         }
-
-         if ($$7 >= 0.2F && !this.g) {
-            this.g = true;
-            $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), $$5, atm.h, 0.5F, 1.0F);
-         }
-
-         if ($$7 >= 0.5F && $$6 != null && !this.h) {
-            this.h = true;
-            $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), $$6, atm.h, 0.5F, 1.0F);
-         }
-      }
-   }
-
-   @Override
-   public int b(cpd $$0) {
-      return k($$0) + 3;
-   }
-
-   public static int k(cpd $$0) {
-      int $$1 = ctn.a(ctp.J, $$0);
-      return $$1 == 0 ? 25 : 25 - 5 * $$1;
-   }
-
-   @Override
-   public cqw c(cpd $$0) {
-      return cqw.g;
-   }
-
-   private atk a(int $$0) {
-      switch ($$0) {
-         case 1:
-            return atl.ge;
-         case 2:
-            return atl.gf;
-         case 3:
-            return atl.gg;
-         default:
-            return atl.gd;
-      }
-   }
-
-   private static float a(int $$0, cpd $$1) {
-      float $$2 = (float)$$0 / (float)k($$1);
-      if ($$2 > 1.0F) {
-         $$2 = 1.0F;
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      List<cpd> $$4 = p($$0);
-      if (d($$0) && !$$4.isEmpty()) {
-         cpd $$5 = $$4.get(0);
-         $$2.add(vq.c("item.minecraft.crossbow.projectile").b(vp.v).b($$5.K()));
-         if ($$3.a() && $$5.a(cpg.uq)) {
-            List<vq> $$6 = Lists.newArrayList();
-            cpg.uq.a($$5, $$1, $$6, $$3);
-            if (!$$6.isEmpty()) {
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, vq.b("  ").b($$6.get($$7)).a(n.h));
+         sy $$5 = a($$3);
+         if ($$5 != null) {
+            djl $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if (!$$0.B && $$6.q() && ($$1 == null || !$$1.gs())) {
+                  return false;
                }
 
-               $$2.addAll($$6);
+               sy $$7 = $$6.d($$0.I_());
+               sy $$8 = $$7.h();
+               $$7.a($$5);
+               if (!$$7.equals($$8)) {
+                  $$6.a($$7, $$0.I_());
+                  $$6.e();
+                  return true;
+               }
             }
          }
+
+         return false;
       }
    }
 
    @Override
-   public boolean l(cpd $$0) {
-      return $$0.a(this);
+   public String a() {
+      return this.d().g();
    }
 
    @Override
-   public int d() {
-      return 8;
+   public void a(cpq $$0, @Nullable cwe $$1, List<vs> $$2, crh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d().a($$0, $$1, $$2, $$3, $$1 != null ? $$1.I_() : null);
+   }
+
+   public czf d() {
+      return this.c;
+   }
+
+   public void a(Map<czf, cpl> $$0, cpl $$1) {
+      $$0.put(this.d(), $$1);
+   }
+
+   @Override
+   public boolean aq_() {
+      return !(this.c instanceof dgd);
+   }
+
+   @Override
+   public void a(cel $$0) {
+      if (this.c instanceof dgd) {
+         cpq $$1 = $$0.q();
+         sy $$2 = a($$1);
+         if ($$2 != null && $$2.b("Items", 9)) {
+            te $$3 = $$2.c("Items", 10);
+            cps.a($$0, $$3.stream().map(sy.class::cast).map(cpq::a));
+         }
+      }
+   }
+
+   @Nullable
+   public static sy a(cpq $$0) {
+      return $$0.c("BlockEntityTag");
+   }
+
+   public static void a(cpq $$0, djn<?> $$1, sy $$2) {
+      if ($$2.g()) {
+         $$0.d("BlockEntityTag");
+      } else {
+         djl.a($$2, $$1);
+         $$0.a("BlockEntityTag", $$2);
+      }
+   }
+
+   @Override
+   public ckl m() {
+      return this.d().m();
    }
 }

@@ -1,26 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dqu {
+   dqu a = new dqu() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public class dqu {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<dqu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dqu::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+      @Override
+      public void a(dqt $$0) {
+      }
 
-   public dqu(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      @Override
+      public void b(dqt $$0) {
+      }
+
+      @Override
+      public boolean a(il<dqr> $$0, eov $$1, dqr.a $$2, dqu.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dqt var1);
+
+   void b(dqt var1);
+
+   boolean a(il<dqr> var1, eov var2, dqr.a var3, dqu.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dqt var1, eov var2);
    }
 }

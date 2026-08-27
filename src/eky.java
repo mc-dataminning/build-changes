@@ -1,97 +1,146 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eky extends eko {
+public class eky extends elk {
+   private static final Map<ajc, eky.c> b = Stream.of(eky.a.a, eky.d.b, eky.e.b).collect(Collectors.toMap(eky.c::a, Function.identity()));
+   private static final Codec<eky.c> c = ajc.a.comapFlatMap($$0 -> {
+      eky.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, eky.c::a);
+   private static final MapCodec<eky.b> d = avu.a("formula", "parameters", c, eky.b::a, eky.c::b);
    public static final Codec<eky> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  avq.a(Codec.unboundedMap(kf.f.r(), emx.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eky::new)
+      $$0 -> a($$0).and($$0.group(kh.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, eky::new)
    );
-   private final Map<ij<ctm>, emw> b;
-   private final boolean c;
+   private final il<ctz> e;
+   private final eky.b f;
 
-   eky(List<emb> $$0, Map<ij<ctm>, emw> $$1, boolean $$2) {
+   private eky(List<emx> $$0, il<ctz> $$1, eky.b $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public ekq b() {
-      return ekr.f;
+   public elm b() {
+      return eln.r;
    }
 
    @Override
-   public Set<elk<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<emg<?>> a() {
+      return ImmutableSet.of(emj.i);
    }
 
    @Override
-   public cpd a(cpd $$0, ejc $$1) {
-      Object2IntMap<ctm> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((ctm)$$2x.a(), $$3.a($$1)));
-      if ($$0.d() == cpg.qO) {
-         cpd $$3 = new cpd(cpg.us);
-         $$2.forEach(($$1x, $$2x) -> cnz.a($$3, new cto($$1x, $$2x)));
-         return $$3;
-      } else {
-         Map<ctm, Integer> $$4 = ctn.a($$0);
-         if (this.c) {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
-         } else {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
+   public cpq a(cpq $$0, ejy $$1) {
+      cpq $$2 = $$1.c(emj.i);
+      if ($$2 != null) {
+         int $$3 = cua.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
+         $$0.f($$4);
+      }
+
+      return $$0;
+   }
+
+   public static elk.a<?> a(ctz $$0, float $$1, int $$2) {
+      return a($$3 -> new eky($$3, $$0.k(), new eky.a($$2, $$1)));
+   }
+
+   public static elk.a<?> a(ctz $$0) {
+      return a($$1 -> new eky($$1, $$0.k(), new eky.d()));
+   }
+
+   public static elk.a<?> b(ctz $$0) {
+      return a($$1 -> new eky($$1, $$0.k(), new eky.e(1)));
+   }
+
+   public static elk.a<?> a(ctz $$0, int $$1) {
+      return a($$2 -> new eky($$2, $$0.k(), new eky.e($$1)));
+   }
+
+   static record a(int b, float c) implements eky.b {
+      private static final Codec<eky.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(eky.a::b), Codec.FLOAT.fieldOf("probability").forGetter(eky.a::c)).apply($$0, eky.a::new)
+      );
+      public static final eky.c a = new eky.c(new ajc("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(awt $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
          }
 
-         ctn.a($$4, $$0);
-         return $$0;
-      }
-   }
-
-   private static void a(Map<ctm, Integer> $$0, ctm $$1, int $$2) {
-      if ($$2 == 0) {
-         $$0.remove($$1);
-      } else {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public static class a extends eko.a<eky.a> {
-      private final Builder<ij<ctm>, emw> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected eky.a a() {
-         return this;
-      }
-
-      public eky.a a(ctm $$0, emw $$1) {
-         this.a.put($$0.k(), $$1);
-         return this;
+         return $$1;
       }
 
       @Override
-      public ekp b() {
-         return new eky(this.g(), this.a.build(), this.b);
+      public eky.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(awt var1, int var2, int var3);
+
+      eky.c a();
+   }
+
+   static record c(ajc a, Codec<? extends eky.b> b) {
+   }
+
+   static record d() implements eky.b {
+      public static final Codec<eky.d> a = Codec.unit(eky.d::new);
+      public static final eky.c b = new eky.c(new ajc("ore_drops"), a);
+
+      @Override
+      public int a(awt $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public eky.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements eky.b {
+      public static final Codec<eky.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(eky.e::b)).apply($$0, eky.e::new)
+      );
+      public static final eky.c b = new eky.c(new ajc("uniform_bonus_count"), a);
+
+      @Override
+      public int a(awt $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public eky.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

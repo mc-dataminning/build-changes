@@ -1,94 +1,144 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public interface eiy {
-   int d = 19133;
-   int e = 19132;
+public record eiy(eiy.a b, byte c, byte d, byte e, Optional<vs> f) {
+   public static final xq<vd, eiy> a = xq.a(eiy.a.K, eiy::c, xo.b, eiy::d, xo.b, eiy::e, xo.b, eiy::f, vu.c, eiy::g, eiy::new);
 
-   cwl D();
-
-   void a(cwl var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public eiy(eiy.a b, byte c, byte d, byte e, Optional<vs> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public byte a() {
+      return this.b.b();
+   }
+
+   public boolean b() {
+      return this.b.e();
+   }
+
+   public eiy.a c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<vs> g() {
+      return this.f;
+   }
+
+   public static enum a implements axg {
+      a(0, "player", false, true),
+      b(1, "frame", true, true),
+      c(2, "red_marker", false, true),
+      d(3, "blue_marker", false, true),
+      e(4, "target_x", true, false),
+      f(5, "target_point", true, false),
+      g(6, "player_off_map", false, true),
+      h(7, "player_off_limits", false, true),
+      i(8, "mansion", true, 5393476, false, true),
+      j(9, "monument", true, 3830373, false, true),
+      k(10, "banner_white", true, true),
+      l(11, "banner_orange", true, true),
+      m(12, "banner_magenta", true, true),
+      n(13, "banner_light_blue", true, true),
+      o(14, "banner_yellow", true, true),
+      p(15, "banner_lime", true, true),
+      q(16, "banner_pink", true, true),
+      r(17, "banner_gray", true, true),
+      s(18, "banner_light_gray", true, true),
+      t(19, "banner_cyan", true, true),
+      u(20, "banner_purple", true, true),
+      v(21, "banner_blue", true, true),
+      w(22, "banner_brown", true, true),
+      x(23, "banner_green", true, true),
+      y(24, "banner_red", true, true),
+      z(25, "banner_black", true, true),
+      A(26, "red_x", true, false),
+      B(27, "village_desert", true, ehv.w.ak, false, true),
+      C(28, "village_plains", true, ehv.w.ak, false, true),
+      D(29, "village_savanna", true, ehv.w.ak, false, true),
+      E(30, "village_snowy", true, ehv.w.ak, false, true),
+      F(31, "village_taiga", true, ehv.w.ak, false, true),
+      G(32, "jungle_temple", true, ehv.w.ak, false, true),
+      H(33, "swamp_hut", true, ehv.w.ak, false, true);
+
+      public static final IntFunction<eiy.a> I = ave.a(eiy.a::a, values(), ave.a.a);
+      public static final Codec<eiy.a> J = axg.a(eiy.a::values);
+      public static final xq<ByteBuf, eiy.a> K = xo.a(I, eiy.a::a);
+      private final int L;
+      private final String M;
+      private final byte N;
+      private final boolean O;
+      private final int P;
+      private final boolean Q;
+      private final boolean R;
+
+      private a(int $$0, String $$1, boolean $$2, boolean $$3) {
+         this($$0, $$1, $$2, -1, $$3, false);
       }
-   }
 
-   @Nullable
-   sw E();
+      private a(int $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+         this.L = $$0;
+         this.M = $$1;
+         this.R = $$4;
+         this.N = (byte)this.ordinal();
+         this.O = $$2;
+         this.P = $$3;
+         this.Q = $$5;
+      }
 
-   void a(@Nullable sw var1);
+      public int a() {
+         return this.L;
+      }
 
-   eix I();
+      public byte b() {
+         return this.N;
+      }
 
-   cvv J();
+      public boolean d() {
+         return this.Q;
+      }
 
-   sw a(iw var1, @Nullable sw var2);
+      public boolean e() {
+         return this.O;
+      }
 
-   boolean l();
+      public boolean f() {
+         return this.P >= 0;
+      }
 
-   int x();
+      public int g() {
+         return this.P;
+      }
 
-   String e();
+      public static eiy.a a(byte $$0) {
+         return values()[awm.a($$0, 0, values().length - 1)];
+      }
 
-   cvo k();
+      public boolean h() {
+         return this.R;
+      }
 
-   void a(cvo var1);
-
-   boolean m();
-
-   blt q();
-
-   void a(blt var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   cvn o();
-
-   @Nullable
-   sw w();
-
-   doy.a C();
-
-   void a(doy.a var1);
-
-   drt y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cjw K() {
-      return this.D().b();
+      @Override
+      public String c() {
+         return this.M;
+      }
    }
 }

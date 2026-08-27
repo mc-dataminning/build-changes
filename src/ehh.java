@@ -1,38 +1,65 @@
-public enum ehh {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-   private final float A;
+public class ehh {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   private ehh(float $$0) {
-      this.A = $$0;
+   public ehh(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   public float a() {
-      return this.A;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
+   }
+
+   public boolean b() {
+      return this.c >= this.a;
+   }
+
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

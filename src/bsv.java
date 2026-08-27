@@ -1,95 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bsv extends bqa<cgy> {
-   private Set<coy> c = ImmutableSet.of();
+public class bsv {
+   public static bsa<chn> a(bya<ik> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return buc.a(
+         (Function<buc.b<chn>, ? extends App<buc.c<chn>, buf<chn>>>)($$5 -> $$5.group($$5.a(bya.E), $$5.c(bya.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     ik $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ad() && (!$$13.isPresent() || $$9.X() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dj()) > $$3) {
+                           eov $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bsv() {
-      super(ImmutableMap.of(bxl.q, bxm.a, bxl.h, bxm.a));
-   }
+                           while ($$14 == null || ib.a($$14).k($$10.dj()) > $$3) {
+                              $$14 = bzr.a($$10, 15, 7, eov.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   protected boolean a(aow $$0, cgy $$1) {
-      return bqc.a($$1.dO(), bxl.q, bnw.bh);
-   }
+                           $$7.a(new byd($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dj()) > $$2) {
+                           $$7.a(new byd($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   protected boolean a(aow $$0, cgy $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aow $$0, cgy $$1, long $$2) {
-      cgy $$3 = (cgy)$$1.dO().c(bxl.q).get();
-      bqc.a($$1, $$3, 0.5F, 2);
-      this.c = a($$1, $$3);
-   }
-
-   protected void c(aow $$0, cgy $$1, long $$2) {
-      cgy $$3 = (cgy)$$1.dO().c(bxl.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bqc.a($$1, $$3, 0.5F, 2);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gy() && ($$1.gr().b() == chb.g || $$3.gz())) {
-            a($$1, cgy.bW.keySet(), $$3);
-         }
-
-         if ($$3.gr().b() == chb.g && $$1.A().a_(cpg.pv) > cpg.pv.k() / 2) {
-            a($$1, ImmutableSet.of(cpg.pv), $$3);
-         }
-
-         if (!this.c.isEmpty() && $$1.A().a(this.c)) {
-            a($$1, this.c, $$3);
-         }
-      }
-   }
-
-   protected void d(aow $$0, cgy $$1, long $$2) {
-      $$1.dO().b(bxl.q);
-   }
-
-   private static Set<coy> a(cgy $$0, cgy $$1) {
-      ImmutableSet<coy> $$2 = $$1.gr().b().d();
-      ImmutableSet<coy> $$3 = $$0.gr().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cgy $$0, Set<coy> $$1, boi $$2) {
-      bmf $$3 = $$0.A();
-      cpd $$4 = cpd.h;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         cpd $$6;
-         coy $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.M() > $$6.g() / 2) {
-                     $$8 = $$6.M() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.M() > 24) {
-                     $$8 = $$6.M() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new cpd($$7, $$8);
-         break;
-      }
-
-      if (!$$4.b()) {
-         bqc.a($$0, $$4, $$2.dk());
-      }
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,9 +1,6 @@
-public class qd {
-   public static void a(ph<ecu> $$0) {
-      pn.a($$0);
-      pr.a($$0);
-      pq.a($$0);
-      pj.a($$0);
-      pv.a($$0);
+public interface qd {
+   static void a(pj<ecm> $$0) {
+      im<ecg> $$1 = $$0.a(ki.aE);
+      $$0.a(ebz.t, new ecm($$1.b(eca.H), new edb(32, 8, edc.a, 94251327)));
    }
 }

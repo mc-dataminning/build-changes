@@ -1,37 +1,41 @@
-import java.util.Locale;
+public class frh {
+   private final fvs a;
+   private final fra b;
+   private final fwo c;
+   private frh.a d = frh.a.a;
 
-public enum frh {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
-
-   private final String k;
-   private final vq l;
-   private final vq m;
-
-   private frh(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vq.c($$1);
-      this.m = vq.c($$1 + ".description");
+   public frh(fvs $$0, fra $$1, fwo $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.k;
+   public void a() {
+      switch (this.d) {
+         case b:
+            ib $$0 = this.a.dj();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.P_() || !this.a.bx()) {
+               this.d = frh.a.c;
+            }
+         case a:
+         case c:
+      }
    }
 
-   public vq b() {
-      return this.l;
+   public boolean b() {
+      return this.d == frh.a.c;
    }
 
-   public vq c() {
-      return this.m;
+   public void c() {
+      if (this.d == frh.a.a) {
+         this.d = frh.a.b;
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

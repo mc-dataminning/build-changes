@@ -1,70 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
 
-public class fnu extends fna<cjg> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fpj g;
-   private final fpj h;
-   private final ImmutableList<fpj> i;
+public class fnu<T extends cfp> extends fnn<T> {
+   private static final int a = 8;
+   private final fqf b;
+   private final fqf[] f = new fqf[8];
 
-   public fnu(fpj $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+   public fnu(fqf $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
    }
 
-   protected Builder<fpj> a(fpj $$0) {
-      Builder<fpj> $$1 = new Builder();
-      $$1.add(new fpj[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public static void a(fps $$0) {
-      $$0.a(
-         "bottom",
-         fpo.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fpl.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fpo.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fpl.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fpo.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fpl.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-   }
+   public static fql b() {
+      fqn $$0 = new fqn();
+      fqo $$1 = $$0.a();
 
-   public static fpp b() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a();
-      a($$1);
-      return fpp.a($$0, 128, 64);
-   }
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
 
-   public void a(cjg $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fpj> c() {
-      return this.i;
-   }
-
-   private static void a(cjg $$0, int $$1, fpj $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = awi.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (awi.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = awi.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (awi.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+         $$1.a(a($$2), fqk.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fqh.a);
       }
+
+      $$1.a("inside_cube", fqk.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fqh.a);
+      return fql.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = awm.i($$3, $$0.bU, $$0.e);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
+      }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public fqf a() {
+      return this.b;
    }
 }

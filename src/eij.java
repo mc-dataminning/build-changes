@@ -1,84 +1,120 @@
 import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class eij {
-   private static final String a = "command_storage_";
-   private final Map<String, eij.a> b = Maps.newHashMap();
-   private final eim c;
+public class eij extends eif {
+   private final boolean k;
+   private final Long2ObjectMap<eic> l = new Long2ObjectOpenHashMap();
 
-   public eij(eim $$0) {
-      this.c = $$0;
+   public eij(boolean $$0) {
+      this.k = $$0;
    }
 
-   private eij.a a(String $$0) {
-      eij.a $$1 = new eij.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   @Override
+   public void a(cwr $$0, boz $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   private eib.a<eij.a> b(String $$0) {
-      return new eib.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), axo.h);
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
    }
 
-   public sw a(aiy $$0) {
-      String $$1 = $$0.b();
-      eij.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new sw();
+   @Override
+   public eie a() {
+      return this.b(awm.a(this.b.cE().a), awm.a(this.b.cE().b + 0.5), awm.a(this.b.cE().c));
    }
 
-   public void a(aiy $$0, sw $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   @Override
+   public eik a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(awm.a($$0), awm.a($$1), awm.a($$2)));
    }
 
-   public Stream<aiy> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
+   @Override
+   public int a(eie[] $$0, eie $$1) {
+      int $$2 = 0;
+      Map<ih, eie> $$3 = Maps.newEnumMap(ih.class);
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eib {
-      private static final String a = "contents";
-      private final Map<String, sw> b = Maps.newHashMap();
-
-      eij.a b(sw $$0) {
-         sw $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
+      for (ih $$4 : ih.values()) {
+         eie $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.b($$5)) {
+            $$0[$$2++] = $$5;
          }
-
-         return this;
       }
 
-      @Override
-      public sw a(sw $$0) {
-         sw $$1 = new sw();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
-
-      public sw a(String $$0) {
-         sw $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new sw();
-      }
-
-      public void a(String $$0, sw $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
+      for (ih $$6 : ih.c.a) {
+         ih $$7 = $$6.h();
+         eie $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
+            $$0[$$2++] = $$8;
          }
-
-         this.c();
       }
 
-      public Stream<aiy> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new aiy($$0, $$1));
+      return $$2;
+   }
+
+   protected boolean b(@Nullable eie $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   protected boolean a(@Nullable eie $$0, @Nullable eie $$1, @Nullable eie $$2) {
+      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
+   }
+
+   @Nullable
+   protected eie a(int $$0, int $$1, int $$2) {
+      eie $$3 = null;
+      eic $$4 = this.c($$0, $$1, $$2);
+      if (this.k && $$4 == eic.u || $$4 == eic.j) {
+         float $$5 = this.b.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.b($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.a.b_(new ib($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
       }
+
+      return $$3;
+   }
+
+   protected eic c(int $$0, int $$1, int $$2) {
+      return (eic)this.l.computeIfAbsent(ib.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   }
+
+   @Override
+   public eic a(cvk $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.b);
+   }
+
+   @Override
+   public eic a(cvk $$0, int $$1, int $$2, int $$3, boz $$4) {
+      ib.a $$5 = new ib.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
+               ehr $$9 = $$0.b_($$5.d($$6, $$7, $$8));
+               dme $$10 = $$0.a_($$5.d($$6, $$7, $$8));
+               if ($$9.c() && $$10.a($$0, $$5.d(), eih.b) && $$10.i()) {
+                  return eic.u;
+               }
+
+               if (!$$9.a(auj.a)) {
+                  return eic.a;
+               }
+            }
+         }
+      }
+
+      dme $$11 = $$0.a_($$5);
+      return $$11.a($$0, $$5, eih.b) ? eic.j : eic.a;
    }
 }

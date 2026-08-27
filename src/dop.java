@@ -1,93 +1,114 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
-import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class dop {
-   private static final Logger f = LogUtils.getLogger();
-   private static final Int2ObjectMap<dop> g = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dop> h = new Object2ObjectOpenHashMap();
-   public static final dop a = a(new dop(1, null, $$0 -> new avr(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dop b = a(
-      new dop(2, "deflate", $$0 -> new avr(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dop c = a(new dop(3, null, $$0 -> $$0, $$0 -> $$0));
-   public static final dop d = a(
-      new dop(4, "lz4", $$0 -> new avr(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dop e = b;
-   private static volatile dop i = e;
-   private final int j;
-   @Nullable
-   private final String k;
-   private final dop.a<InputStream> l;
-   private final dop.a<OutputStream> m;
+public class dop<T> implements dor<T> {
+   private final iq<T> a;
+   private final T[] b;
+   private final dos<T> c;
+   private final int d;
+   private int e;
 
-   private dop(int $$0, @Nullable String $$1, dop.a<InputStream> $$2, dop.a<OutputStream> $$3) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
+   private dop(iq<T> $$0, int $$1, dos<T> $$2, List<T> $$3) {
+      this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
+      this.d = $$1;
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
+      }
+
+      this.e = $$3.size();
    }
 
-   private static dop a(dop $$0) {
-      g.put($$0.j, $$0);
-      if ($$0.k != null) {
-         h.put($$0.k, $$0);
+   private dop(iq<T> $$0, T[] $$1, dos<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public static <A> dor<A> a(int $$0, iq<A> $$1, dos<A> $$2, List<A> $$3) {
+      return new dop<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
+         }
+      }
+
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new doq($$0);
+      }
+   }
+
+   @Override
+   public void a(us $$0) {
+      this.e = $$0.l();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.l());
+      }
+   }
+
+   @Override
+   public void b(us $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = vj.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += vj.a(this.a.a(this.b[$$1]));
       }
 
       return $$0;
    }
 
-   @Nullable
-   public static dop a(int $$0) {
-      return (dop)g.get($$0);
-   }
-
-   public static void a(String $$0) {
-      dop $$1 = (dop)h.get($$0);
-      if ($$1 != null) {
-         i = $$1;
-      } else {
-         f.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", h.keySet()));
-      }
-   }
-
-   public static dop a() {
-      return i;
-   }
-
-   public static boolean b(int $$0) {
-      return g.containsKey($$0);
-   }
-
+   @Override
    public int b() {
-      return this.j;
+      return this.e;
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.m.wrap($$0);
-   }
-
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.l.wrap($$0);
-   }
-
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   @Override
+   public dor<T> c() {
+      return new dop<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

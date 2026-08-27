@@ -8,15 +8,15 @@ import javax.annotation.Nullable;
 public interface bs {
    Codec<bs> a = bs.b.t.dispatch(bs::a, $$0 -> $$0.a().codec());
 
-   boolean a(bnq var1, aow var2, @Nullable enz var3);
+   boolean a(bof var1, apa var2, @Nullable eov var3);
 
    bs.a a();
 
-   static bs a(cab $$0) {
+   static bs a(caq $$0) {
       return bs.b.f.a($$0);
    }
 
-   static bs a(cai $$0) {
+   static bs a(cax $$0) {
       return bs.b.g.a($$0);
    }
 
@@ -26,7 +26,7 @@ public interface bs {
    public static final class b {
       public static final bs.a a = new bs.a(MapCodec.unit(new bs() {
          @Override
-         public boolean a(bnq $$0, aow $$1, @Nullable enz $$2) {
+         public boolean a(bof $$0, apa $$1, @Nullable eov $$2) {
             return true;
          }
 
@@ -39,19 +39,19 @@ public interface bs {
       public static final bs.a c = new bs.a(bw.c);
       public static final bs.a d = new bs.a(cs.c);
       public static final bs.a e = new bs.a(cz.b);
-      public static final bu<cab> f = bu.a(kf.ak, $$0 -> $$0 instanceof caa $$1 ? Optional.of($$1.gn()) : Optional.empty());
-      public static final bu<cai> g = bu.a(kf.al, $$0 -> $$0 instanceof cbp $$1 ? Optional.of($$1.A()) : Optional.empty());
-      public static final bu<cbh.d> h = bu.a(cbh.d.f, $$0 -> $$0 instanceof cbh $$1 ? Optional.of($$1.gg()) : Optional.empty());
-      public static final bu<cjg.b> i = bu.a(cjg.b.j, $$0 -> $$0 instanceof cjg $$1 ? Optional.of($$1.y()) : Optional.empty());
-      public static final bu<cah.v> j = bu.a(cah.v.c, $$0 -> $$0 instanceof cah $$1 ? Optional.of($$1.w()) : Optional.empty());
-      public static final bu<cak.a> k = bu.a(cak.a.c, $$0 -> $$0 instanceof cak $$1 ? Optional.of($$1.w()) : Optional.empty());
-      public static final bu<ij<cds>> l = bu.a(kf.l.r(), $$0 -> $$0 instanceof cdr $$1 ? Optional.of($$1.q()) : Optional.empty());
-      public static final bu<car.g> m = bu.a(car.g.h, $$0 -> $$0 instanceof car $$1 ? Optional.of($$1.gg()) : Optional.empty());
-      public static final bu<cci> n = bu.a(cci.h, $$0 -> $$0 instanceof ccb $$1 ? Optional.of($$1.w()) : Optional.empty());
-      public static final bu<ccc.d> o = bu.a(ccc.d.e, $$0 -> $$0 instanceof ccc $$1 ? Optional.of($$1.gs()) : Optional.empty());
-      public static final bu<chd> p = bu.a(kf.y.q(), $$0 -> $$0 instanceof cha $$1 ? Optional.of($$1.a()) : Optional.empty());
-      public static final bu<can.b> q = bu.a(can.b.f, $$0 -> $$0 instanceof can $$1 ? Optional.of($$1.go()) : Optional.empty());
-      public static final bu<cax.b> r = bu.a(cax.b.m, $$0 -> $$0 instanceof cax $$1 ? Optional.of($$1.gr()) : Optional.empty());
+      public static final bu<caq> f = bu.a(kh.ak, $$0 -> $$0 instanceof cap $$1 ? Optional.of($$1.gs()) : Optional.empty());
+      public static final bu<cax> g = bu.a(kh.al, $$0 -> $$0 instanceof cce $$1 ? Optional.of($$1.A()) : Optional.empty());
+      public static final bu<cbw.d> h = bu.a(cbw.d.f, $$0 -> $$0 instanceof cbw $$1 ? Optional.of($$1.gl()) : Optional.empty());
+      public static final bu<cjv.b> i = bu.a(cjv.b.j, $$0 -> $$0 instanceof cjv $$1 ? Optional.of($$1.y()) : Optional.empty());
+      public static final bu<caw.v> j = bu.a(caw.v.c, $$0 -> $$0 instanceof caw $$1 ? Optional.of($$1.w()) : Optional.empty());
+      public static final bu<caz.a> k = bu.a(caz.a.c, $$0 -> $$0 instanceof caz $$1 ? Optional.of($$1.w()) : Optional.empty());
+      public static final bu<il<ceh>> l = bu.a(kh.l.r(), $$0 -> $$0 instanceof ceg $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bu<cbg.g> m = bu.a(cbg.g.h, $$0 -> $$0 instanceof cbg $$1 ? Optional.of($$1.gl()) : Optional.empty());
+      public static final bu<ccx> n = bu.a(ccx.h, $$0 -> $$0 instanceof ccq $$1 ? Optional.of($$1.u()) : Optional.empty());
+      public static final bu<ccr.d> o = bu.a(ccr.d.e, $$0 -> $$0 instanceof ccr $$1 ? Optional.of($$1.gx()) : Optional.empty());
+      public static final bu<chs> p = bu.a(kh.y.q(), $$0 -> $$0 instanceof chp $$1 ? Optional.of($$1.a()) : Optional.empty());
+      public static final bu<cbc.b> q = bu.a(cbc.b.f, $$0 -> $$0 instanceof cbc $$1 ? Optional.of($$1.gt()) : Optional.empty());
+      public static final bu<cbm.b> r = bu.a(cbm.b.m, $$0 -> $$0 instanceof cbm $$1 ? Optional.of($$1.gw()) : Optional.empty());
       public static final BiMap<String, bs.a> s = ImmutableBiMap.builder()
          .put("any", a)
          .put("lightning", b)
@@ -72,6 +72,6 @@ public interface bs {
          .put("parrot", q.a())
          .put("tropical_fish", r.a())
          .buildOrThrow();
-      public static final Codec<bs.a> t = avq.a(s.inverse()::get, s::get);
+      public static final Codec<bs.a> t = avu.a(s.inverse()::get, s::get);
    }
 }

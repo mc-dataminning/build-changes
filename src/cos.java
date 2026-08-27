@@ -1,58 +1,44 @@
-public class cos extends coy {
-   private static final int a = 40;
+import javax.annotation.Nullable;
 
-   public cos(coy.a $$0) {
-      super($$0);
+public interface cos {
+   bom i();
+
+   default il<ato> at_() {
+      return atp.aq;
    }
 
-   @Override
-   public cpd a(cpd $$0, cvr $$1, boi $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof aox $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(atv.c.b(this));
-      }
+   default bmm<cpq> a(cpl $$0, cwe $$1, cia $$2, bmk $$3) {
+      cpq $$4 = $$2.b($$3);
+      bom $$5 = boz.h($$4);
+      cpq $$6 = $$2.c($$5);
+      if ((!cua.d($$6) || $$2.f()) && !cpq.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(atz.c.b($$0));
+         }
 
-      if (!$$1.B) {
-         $$2.e(bnf.s);
-      }
-
-      if ($$0.b()) {
-         return new cpd(cpg.sk);
+         cpq $$7 = $$6.b() ? $$4 : $$6.c();
+         cpq $$8 = $$2.f() ? $$4.q() : $$4.c();
+         $$2.a($$5, $$8);
+         return bmm.a($$7, $$1.y_());
       } else {
-         if ($$2 instanceof chl $$4 && !$$4.fU().d) {
-            cpd $$5 = new cpd(cpg.sk);
-            if (!$$4.fT().e($$5)) {
-               $$4.a($$5, false);
+         return bmm.d($$4);
+      }
+   }
+
+   @Nullable
+   static cos c_(cpq $$0) {
+      cpl $$3 = $$0.d();
+      if ($$3 instanceof cos) {
+         return (cos)$$3;
+      } else {
+         if ($$0.d() instanceof cnl $$2) {
+            czf var6 = $$2.d();
+            if (var6 instanceof cos) {
+               return (cos)var6;
             }
          }
 
-         return $$0;
+         return null;
       }
-   }
-
-   @Override
-   public int b(cpd $$0) {
-      return 40;
-   }
-
-   @Override
-   public cqw c(cpd $$0) {
-      return cqw.c;
-   }
-
-   @Override
-   public atk ap_() {
-      return atl.mf;
-   }
-
-   @Override
-   public atk aq_() {
-      return atl.mf;
-   }
-
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      return cpf.a($$0, $$1, $$2);
    }
 }

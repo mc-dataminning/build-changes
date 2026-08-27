@@ -1,120 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class csm extends csk {
+   private static final csp a = csp.a(cpt.qN);
+   private static final csp b = csp.a(cpt.pt);
+   private static final csp c = csp.a(cpt.ur);
 
-public class csm implements crw {
-   final csn a;
-   final cpd b;
-   final String c;
-   final crv d;
-   final boolean e;
-
-   public csm(String $$0, crv $$1, csn $$2, cpd $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public csm(csi $$0) {
+      super($$0);
    }
 
-   public csm(String $$0, crv $$1, csn $$2, cpd $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(clk $$0, cwe $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpq $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 && $$3 >= 1;
    }
 
-   @Override
-   public csj<?> at_() {
-      return csj.a;
-   }
+   public cpq a(clk $$0, iy $$1) {
+      cpq $$2 = new cpq(cpt.uq, 3);
+      sy $$3 = $$2.b("Fireworks");
+      te $$4 = new te();
+      int $$5 = 0;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cpq $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               sy $$8 = $$7.c("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
+         }
+      }
 
-   @Override
-   public crv d() {
-      return this.d;
-   }
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
 
-   @Override
-   public cpd a(iw $$0) {
-      return this.b;
-   }
-
-   @Override
-   public is<csc> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(ckv $$0, cvr $$1) {
-      return this.a.a($$0);
-   }
-
-   public cpd a(ckv $$0, iw $$1) {
-      return this.a($$1).q();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      is<csc> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   public cpq a(iy $$0) {
+      return new cpq(cpt.uq);
    }
 
-   public static class a implements csj<csm> {
-      public static final Codec<csm> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avq.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  crv.e.fieldOf("category").orElse(crv.d).forGetter($$0x -> $$0x.d),
-                  csn.a.forGetter($$0x -> $$0x.a),
-                  cpd.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  avq.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, csm::new)
-      );
-      public static final xo<vb, csm> y = xo.a(csm.a::a, csm.a::a);
-
-      @Override
-      public Codec<csm> a() {
-         return x;
-      }
-
-      @Override
-      public xo<vb, csm> b() {
-         return y;
-      }
-
-      private static csm a(vb $$0) {
-         String $$1 = $$0.r();
-         crv $$2 = $$0.b(crv.class);
-         csn $$3 = csn.b.decode($$0);
-         cpd $$4 = cpd.f.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new csm($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(vb $$0, csm $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         csn.b.encode($$0, $$1.a);
-         cpd.f.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   @Override
+   public csw<?> as_() {
+      return csw.g;
    }
 }

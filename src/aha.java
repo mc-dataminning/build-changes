@@ -1,29 +1,16 @@
-public class aha implements xx<agw> {
-   public static final xo<uq, aha> a = xx.a(aha::a, aha::new);
-   private final int b;
-
-   public aha(int $$0) {
-      this.b = $$0;
-   }
-
-   private aha(uq $$0) {
-      this.b = $$0.n();
-   }
-
-   private void a(uq $$0) {
-      $$0.c(this.b);
-   }
-
+public interface aha extends aac, un {
    @Override
-   public xz<aha> a() {
-      return ahc.d;
+   default ur b() {
+      return ur.d;
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
+   void a(ahd var1);
 
-   public int b() {
-      return this.b;
-   }
+   void a(ahc var1);
+
+   void a(ahf var1);
+
+   void a(ahe var1);
+
+   void a(ahb var1);
 }

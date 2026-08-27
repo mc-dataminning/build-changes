@@ -1,44 +1,45 @@
-import java.util.List;
+public class adq implements xz<aai> {
+   public static final xq<us, adq> a = xz.a(adq::a, adq::new);
+   private final float b;
+   private final int c;
+   private final int d;
 
-public class adq implements xx<aag> {
-   public static final xo<uq, adq> a = xx.a(adq::a, adq::new);
-   private final int b;
-   private final int[] c;
-
-   public adq(bnq $$0) {
-      this.b = $$0.aj();
-      List<bnq> $$1 = $$0.cP();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).aj();
-      }
+   public adq(float $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private adq(uq $$0) {
-      this.b = $$0.n();
-      this.c = $$0.c();
+   private adq(us $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public xz<adq> a() {
-      return aeq.aI;
+   public yb<adq> a() {
+      return aet.aG;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

@@ -1,50 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bdz extends DataFix {
-   public bdz(Schema $$0) {
-      super($$0, true);
+   public bdz(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdn.C);
-      Type<?> $$1 = this.getOutputSchema().getType(bdn.C);
-      OpticFinder<?> $$2 = $$0.findField("SpawnData");
-      Type<?> $$3 = $$1.findField("SpawnData").type();
-      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
-      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         $$0,
-         $$1,
-         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdt.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bdt.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bdz::a));
+      }
    }
 
-   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
-   }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
 
-   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      List<?> $$3 = (List<?>)$$1.getValue();
-      List<?> $$4 = $$3.stream().map($$1x -> {
-         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
-         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> $$4x = new Dynamic($$2);
-         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
-         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
-      }).toList();
-      return new Typed($$0, $$2, $$4);
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         String $$3 = String.valueOf($$2);
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
+         if ($$4.isPresent()) {
+            Dynamic<T> $$5 = $$4.get();
+            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
+            $$1.put($$0.createInt($$2), $$6);
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$0.set("Sections", $$0.createMap($$1));
    }
 }

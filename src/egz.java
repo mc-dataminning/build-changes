@@ -1,213 +1,113 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class egz extends egu {
-   public static final float e = 0.44444445F;
+public final class egz extends ehi<eha.a, eha> {
+   private final ib.a g = new ib.a();
 
-   @Override
-   public egv d() {
-      return egx.d;
+   public egz(doo $$0) {
+      this($$0, new eha($$0));
+   }
+
+   @VisibleForTesting
+   public egz(doo $$0, eha $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public egv e() {
-      return egx.e;
-   }
-
-   @Override
-   public coy a() {
-      return cpg.qz;
-   }
-
-   @Override
-   public void a(cvr $$0, hz $$1, egw $$2, awp $$3) {
-      hz $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(jz.V, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, atl.nt, atm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), atl.nr, atm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   public void b(cvr $$0, hz $$1, egw $$2, awp $$3) {
-      if ($$0.Z().b(cvn.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            hz $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
-
-               dlj $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((cvu)$$0, $$5)) {
-                     $$0.b($$5, cyf.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
+   protected void a(long $$0) {
+      long $$1 = jd.e($$0);
+      if (this.f.b($$1)) {
+         dme $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, ehi.a.a($$4));
          } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               hz $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
+            this.b($$0, c);
+         }
 
-               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), cyf.a($$0, $$9));
+         if ($$3 > 0) {
+            this.c($$0, ehi.a.a($$3, a($$2)));
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dme $$3 = null;
+
+      for (ih $$4 : d) {
+         if (ehi.a.a($$1, $$4)) {
+            long $$5 = ib.a($$0, $$4);
+            if (this.f.b(jd.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dme $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = ehi.a.b($$1) ? czh.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, ehi.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
                }
             }
          }
       }
    }
 
-   private boolean a(cvu $$0, hz $$1) {
-      for (ie $$2 : ie.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(cvu $$0, hz $$1) {
-      return $$1.v() >= $$0.J_() && $$1.v() < $$0.ak() && !$$0.B($$1) ? false : $$0.a_($$1).j();
-   }
-
-   @Nullable
    @Override
-   public jx h() {
-      return jz.j;
-   }
+   protected void a(long $$0, long $$1) {
+      int $$2 = ehi.a.a($$1);
 
-   @Override
-   protected void a(cvs $$0, hz $$1, dlj $$2) {
-      this.a($$0, $$1);
-   }
+      for (ih $$3 : d) {
+         if (ehi.a.a($$1, $$3)) {
+            long $$4 = ib.a($$0, $$3);
+            if (this.f.b(jd.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dme $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, ehi.a.a($$5, $$3.g()));
+                     }
 
-   @Override
-   public int b(cvu $$0) {
-      return $$0.E_().i() ? 4 : 2;
-   }
-
-   @Override
-   public dlj b(egw $$0) {
-      return cyu.H.o().a(ddh.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(egv $$0) {
-      return $$0 == egx.e || $$0 == egx.d;
-   }
-
-   @Override
-   public int c(cvu $$0) {
-      return $$0.E_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(egw $$0, cux $$1, hz $$2, egv $$3, ie $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(auf.a);
-   }
-
-   @Override
-   public int a(cvu $$0) {
-      return $$0.E_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(cvr $$0, hz $$1, egw $$2, egw $$3) {
-      int $$4 = this.a((cvu)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cux)$$0, $$1) > $$2.a((cux)$$0, $$1) && $$0.F_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(cvs $$0, hz $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(cvr $$0) {
-      return $$0.Z().b(cvn.V);
-   }
-
-   @Override
-   protected void a(cvs $$0, hz $$1, dlj $$2, ie $$3, egw $$4) {
-      if ($$3 == ie.a) {
-         egw $$5 = $$0.b_($$1);
-         if (this.a(auf.b) && $$5.a(auf.a)) {
-            if ($$2.b() instanceof ddh) {
-               $$0.a($$1, cyu.b.o(), 3);
+                     if ($$7 > 0) {
+                        this.c($$4, ehi.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, ehi.a.b($$5, false, $$3.g()));
+                  }
+               }
             }
-
-            this.a($$0, $$1);
-            return;
          }
       }
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   private int a(long $$0, dme $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(jd.e($$0)) ? $$2 : 0;
    }
 
    @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<atk> j() {
-      return Optional.of(atl.dd);
-   }
-
-   public static class a extends egz {
-      @Override
-      protected void a(dlk.a<egv, egw> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(egw $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(egw $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends egz {
-      @Override
-      public int d(egw $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(egw $$0) {
-         return true;
+   public void b(cvl $$0) {
+      this.a($$0, true);
+      don $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), ehi.a.a($$2, a($$1x)));
+         });
       }
    }
 }

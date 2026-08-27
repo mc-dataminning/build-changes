@@ -1,38 +1,8 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gio {
-   public static final gip a = new gip();
-   public static final String b = "villager";
-   private final gio.a c;
-
-   public gio(gio.a $$0) {
-      this.c = $$0;
-   }
-
-   public gio.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gio.a> d = Arrays.stream(values()).collect(Collectors.toMap(gio.a::a, $$0 -> (gio.a)$$0));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static gio.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gio {
 }

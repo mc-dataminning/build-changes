@@ -1,25 +1,25 @@
-public class ade implements xx<aag> {
-   public static final xo<uq, ade> a = xx.a(ade::a, ade::new);
+public class ade implements xz<aai> {
+   public static final xq<us, ade> a = xz.a(ade::a, ade::new);
    private final int b;
 
-   public ade(int $$0) {
-      this.b = $$0;
+   public ade(dnv $$0) {
+      this.b = $$0.q();
    }
 
-   private ade(uq $$0) {
-      this.b = $$0.readByte();
+   private ade(us $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(uq $$0) {
-      $$0.k(this.b);
+   private void a(us $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public xz<ade> a() {
-      return aeq.aw;
+   public yb<ade> a() {
+      return aet.au;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 

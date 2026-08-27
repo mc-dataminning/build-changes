@@ -1,37 +1,61 @@
-public class acd implements xx<aag> {
-   public static final xo<uq, acd> a = xx.a(acd::a, acd::new);
-   private final hz b;
-   private final boolean c;
+public class acd implements xz<aai> {
+   public static final xq<us, acd> a = xz.a(acd::a, acd::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public acd(hz $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public acd(bof $$0) {
+      this.b = $$0.do();
+      this.c = $$0.dq();
+      this.d = $$0.du();
+      this.e = $$0.dz();
+      this.f = $$0.dB();
    }
 
-   private acd(uq $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private acd(us $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(uq $$0) {
+   private void a(us $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public xz<acd> a() {
-      return aeq.W;
+   public yb<acd> a() {
+      return aet.U;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public hz b() {
+   public double b() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

@@ -1,22 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class btu<E extends cgp> extends bqa<E> {
-   public btu(int $$0) {
-      super(ImmutableMap.of(bxl.aC, bxm.a, bxl.m, bxm.b, bxl.n, bxm.c), $$0);
-   }
+public class btu {
+   private static final int a = 36;
 
-   protected boolean a(aow $$0, E $$1, long $$2) {
-      return true;
-   }
+   public static bqq<box> a() {
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$0 -> $$0.group($$0.a(bya.x), $$0.a(bya.y), $$0.a(bya.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<box>a($$2).filter($$1xx -> $$1xx.f((bof)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dM().a($$4.Y(), $$4.X());
+                     }
 
-   protected void b(aow $$0, E $$1, long $$2) {
-      $$1.b(bot.n);
-      $$1.a(atl.AR, 5.0F, 1.0F);
-   }
-
-   protected void c(aow $$0, E $$1, long $$2) {
-      if ($$1.c(bot.n)) {
-         $$1.b(bot.a);
-      }
+                     return true;
+                  }))
+      );
    }
 }

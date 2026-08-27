@@ -1,57 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public abstract class ccs implements cda {
-   protected final ccq a;
+public enum ccs {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public ccs(ccq $$0) {
-      this.a = $$0;
+   private static final IntFunction<ccs> f = ave.a(ccs::a, values(), ave.a.b);
+   private final int g;
+
+   private ccs(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void a(ccp $$0, hz $$1, bmp $$2, @Nullable chl $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public enz g() {
-      return null;
-   }
-
-   @Override
-   public float a(bmp $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dp().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public static ccs a(int $$0) {
+      return f.apply($$0);
    }
 }

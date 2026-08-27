@@ -1,101 +1,145 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public record dly(String r, boolean s, boolean t, boolean u, dly.a v, dge w, atk x, atk y, atk z, atk A, atk B, atk C, atk D, atk E) {
-   private static final Map<String, dly> F = new Object2ObjectArrayMap();
-   public static final Codec<dly> a = avq.a(dly::b, F::get);
-   public static final dly b = a(new dly("iron", false, false, false, dly.a.a, dge.g, atl.mO, atl.mP, atl.mW, atl.mX, atl.oh, atl.oi, atl.yx, atl.yy));
-   public static final dly c = a(new dly("copper", true, true, false, dly.a.a, dge.aj, atl.fA, atl.fB, atl.fH, atl.fI, atl.oh, atl.oi, atl.yx, atl.yy));
-   public static final dly d = a(new dly("gold", false, true, false, dly.a.a, dge.g, atl.mO, atl.mP, atl.mW, atl.mX, atl.oh, atl.oi, atl.yx, atl.yy));
-   public static final dly e = a(new dly("stone", true, true, false, dly.a.b, dge.f, atl.mO, atl.mP, atl.mW, atl.mX, atl.yC, atl.yD, atl.yx, atl.yy));
-   public static final dly f = a(
-      new dly("polished_blackstone", true, true, false, dly.a.b, dge.f, atl.mO, atl.mP, atl.mW, atl.mX, atl.yC, atl.yD, atl.yx, atl.yy)
-   );
-   public static final dly g = a(new dly("oak"));
-   public static final dly h = a(new dly("spruce"));
-   public static final dly i = a(new dly("birch"));
-   public static final dly j = a(new dly("acacia"));
-   public static final dly k = a(new dly("cherry", true, true, true, dly.a.a, dge.aU, atl.ew, atl.ex, atl.ey, atl.ez, atl.eC, atl.eD, atl.eA, atl.eB));
-   public static final dly l = a(new dly("jungle"));
-   public static final dly m = a(new dly("dark_oak"));
-   public static final dly n = a(new dly("crimson", true, true, true, dly.a.a, dge.aT, atl.qj, atl.qk, atl.ql, atl.qm, atl.qp, atl.qq, atl.qn, atl.qo));
-   public static final dly o = a(new dly("warped", true, true, true, dly.a.a, dge.aT, atl.qj, atl.qk, atl.ql, atl.qm, atl.qp, atl.qq, atl.qn, atl.qo));
-   public static final dly p = a(new dly("mangrove"));
-   public static final dly q = a(new dly("bamboo", true, true, true, dly.a.a, dge.aS, atl.bm, atl.bn, atl.bo, atl.bp, atl.bs, atl.bt, atl.bq, atl.br));
+public class dly extends dbi {
+   public static final MapCodec<dly> b = b(dly::new);
+   public static final dnc<dng> c = dmu.bg;
+   public static final dmv d = dmu.x;
+   public static final float e = 4.0F;
+   protected static final epo f = czf.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final epo g = czf.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final epo h = czf.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final epo i = czf.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final epo j = czf.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final epo k = czf.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final epo o = czf.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final epo F = czf.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final epo G = czf.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final epo H = czf.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final epo I = czf.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final epo J = czf.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final epo K = czf.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final epo L = czf.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final epo M = czf.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final epo N = czf.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final epo O = czf.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final epo P = czf.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final epo[] Q = a(true);
+   private static final epo[] R = a(false);
 
-   public dly(String $$0) {
-      this($$0, true, true, true, dly.a.a, dge.b, atl.BU, atl.BV, atl.BW, atl.BX, atl.Ca, atl.Cb, atl.BY, atl.BZ);
+   @Override
+   protected MapCodec<dly> a() {
+      return b;
    }
 
-   private static dly a(dly $$0) {
-      F.put($$0.r, $$0);
-      return $$0;
+   private static epo[] a(boolean $$0) {
+      return Arrays.stream(ih.values()).map($$1 -> a($$1, $$0)).toArray(epo[]::new);
    }
 
-   public static Stream<dly> a() {
-      return F.values().stream();
+   private static epo a(ih $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return epl.a(k, $$1 ? L : F);
+         case b:
+            return epl.a(j, $$1 ? K : o);
+         case c:
+            return epl.a(i, $$1 ? N : H);
+         case d:
+            return epl.a(h, $$1 ? M : G);
+         case e:
+            return epl.a(g, $$1 ? P : J);
+         case f:
+            return epl.a(f, $$1 ? O : I);
+      }
    }
 
-   public String b() {
-      return this.r;
+   public dly(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ih.c).a(c, dng.a).a(d, Boolean.valueOf(false)));
    }
 
-   public boolean c() {
-      return this.s;
+   @Override
+   protected boolean g_(dme $$0) {
+      return true;
    }
 
-   public boolean d() {
-      return this.t;
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
    }
 
-   public boolean e() {
-      return this.u;
+   private boolean a(dme $$0, dme $$1) {
+      czf $$2 = $$0.c(c) == dng.a ? czh.by : czh.br;
+      return $$1.a($$2) && $$1.c(dlx.c) && $$1.c(a) == $$0.c(a);
    }
 
-   public dly.a f() {
-      return this.v;
+   @Override
+   public dme a(cwe $$0, ib $$1, dme $$2, cia $$3) {
+      if (!$$0.B && $$3.fW().d) {
+         ib $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public dge g() {
-      return this.w;
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         ib $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
+      }
    }
 
-   public atk h() {
-      return this.x;
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public atk i() {
-      return this.y;
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      dme $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(czh.bQ) && $$3.c(a) == $$0.c(a);
    }
 
-   public atk j() {
-      return this.z;
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if ($$0.a((cwh)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+      }
    }
 
-   public atk k() {
-      return this.A;
+   @Override
+   public cpq a(cwh $$0, ib $$1, dme $$2) {
+      return new cpq($$2.c(c) == dng.b ? czh.br : czh.by);
    }
 
-   public atk l() {
-      return this.B;
+   @Override
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public atk m() {
-      return this.C;
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
-   public atk n() {
-      return this.D;
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(a, c, d);
    }
 
-   public atk o() {
-      return this.E;
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

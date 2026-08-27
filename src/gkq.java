@@ -1,32 +1,20 @@
-public class gkq implements gjy {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fuv e;
-   private final gls f;
-   private int g = 0;
+import java.util.UUID;
 
-   public gkq(fuv $$0, gls $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public interface gkq {
+   void a(UUID var1, gkq.b var2);
+
+   void a(UUID var1, gkq.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.be()) {
-         float $$0 = this.e.dM().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gko)(new gkr.a(this.e, atl.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gko)(new gkr.a(this.e, atl.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gko)(new gkr.a(this.e, atl.A)));
-         }
-      }
+   public static enum b {
+      a,
+      b;
    }
 }

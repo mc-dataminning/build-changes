@@ -1,33 +1,25 @@
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+public class axn<A, B> {
+   private A a;
+   private B b;
 
-public class axn {
-   private static final String a = a("");
-
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = a($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   public axn(A $$0, B $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   public A a() {
+      return this.a;
    }
 
-   private static String a(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return avy.e($$1);
+   public void a(A $$0) {
+      this.a = $$0;
    }
 
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(avy.e($$2)));
+   public B b() {
+      return this.b;
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   public void b(B $$0) {
+      this.b = $$0;
    }
 }

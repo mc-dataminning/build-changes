@@ -1,120 +1,63 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.List;
 
 public class anj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.whitelist.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.transfer.error.no_players"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                 "whitelist"
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("transfer").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((du)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (du)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((du)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           dv.a("players", eh.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (du)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       eh.f($$0x, "players")
+                                    )
                               )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dv.a("on").executes($$0x -> b((du)$$0x.getSource()))))
-                        .then(dv.a("off").executes($$0x -> c((du)$$0x.getSource()))))
-                     .then(dv.a("list").executes($$0x -> d((du)$$0x.getSource()))))
-                  .then(dv.a("add").then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
-                     aso $$2 = ((du)$$0x.getSource()).l().ag();
-                     return dz.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
-                  }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))))
-               .then(
-                  dv.a("remove")
-                     .then(
-                        dv.a("targets", ej.a())
-                           .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ag().j(), $$1))
-                           .executes($$0x -> b((du)$$0x.getSource(), ej.a($$0x, "targets")))
-                     )
-               ))
-            .then(dv.a("reload").executes($$0x -> a((du)$$0x.getSource())))
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) {
-      $$0.l().ag().a();
-      $$0.a(() -> vq.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
-   }
-
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      asw $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            asx $$5 = new asx($$4);
-            $$2.a($$5);
-            $$0.a(() -> vq.a("commands.whitelist.add.success", vq.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      asw $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            asx $$5 = new asx($$4);
-            $$2.b($$5);
-            $$0.a(() -> vq.a("commands.whitelist.remove.success", vq.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0) throws CommandSyntaxException {
-      aso $$1 = $$0.l().ag();
-      if ($$1.o()) {
+   private static int a(du $$0, String $$1, int $$2, Collection<apb> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
          throw a.create();
       } else {
-         $$1.a(true);
-         $$0.a(() -> vq.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
-   }
+         for (apb $$4 : $$3) {
+            $$4.d.b(new yn($$1, $$2));
+         }
 
-   private static int c(du $$0) throws CommandSyntaxException {
-      aso $$1 = $$0.l().ag();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> vq.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
+         if ($$3.size() == 1) {
+            $$0.a(() -> vs.a("commands.transfer.success.single", $$3.iterator().next().Q_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> vs.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
 
-   private static int d(du $$0) {
-      String[] $$1 = $$0.l().ag().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> vq.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> vq.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+         return $$3.size();
       }
-
-      return $$1.length;
    }
 }

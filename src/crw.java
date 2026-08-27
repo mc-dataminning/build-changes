@@ -1,8 +1,8 @@
-public interface crw extends csf<ckv> {
-   @Override
-   default csk<?> e() {
-      return csk.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   crv d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface crw {
 }

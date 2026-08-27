@@ -1,40 +1,83 @@
-public class ftg extends fuh {
-   ftg(fqe $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, awi.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, awi.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, awi.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class ftg extends fve {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final fuz M;
+
+   ftg(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = awm.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = awm.a(this.r, 0.0F, 0.0F);
+      this.x = awm.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
-   public ftl b() {
-      return ftl.b;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
+   }
+
+   @Override
+   public fui b() {
+      return fui.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   public static class a implements fuh<ke> {
+      private final fuz a;
 
-      public a(fuc $$0) {
+      public a(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftg $$8 = new ftg($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

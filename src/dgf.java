@@ -1,47 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dgf extends cye {
-   public static final MapCodec<dgf> a = b(dgf::new);
-
+public interface dgf extends czm, ddv {
    @Override
-   public MapCodec<dgf> a() {
-      return a;
-   }
-
-   protected dgf(dli.d $$0) {
-      super($$0);
+   default boolean a(@Nullable cia $$0, cvk $$1, ib $$2, dme $$3, ehq $$4) {
+      return $$4 == ehs.c;
    }
 
    @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dkk($$0, $$1);
-   }
+   default boolean a(cwf $$0, ib $$1, dme $$2, ehr $$3) {
+      if (!$$2.c(dmu.C) && $$3.a() == ehs.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.a(dmu.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Nullable
-   @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return a($$2, diz.j, $$0.B ? dkk::a : dkk::b);
-   }
-
-   @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, cpd $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
+   default cpq a(@Nullable cia $$0, cwf $$1, ib $$2, dme $$3) {
+      if ($$3.c(dmu.C)) {
+         $$1.a($$2, $$3.a(dmu.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cpq(cpt.qy);
+      } else {
+         return cpq.h;
+      }
    }
 
    @Override
-   public void a(cpd $$0, @Nullable cux $$1, List<vq> $$2, cqu $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      cwj.a($$0, $$2, "SpawnData");
+   default Optional<ato> aw_() {
+      return ehs.c.j();
    }
 }

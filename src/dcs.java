@@ -1,82 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcs extends dao {
-   public static final MapCodec<dcs> i = b(dcs::new);
+public abstract class dcs extends czf {
+   protected final ih a;
+   protected final boolean b;
+   protected final epo d;
 
-   @Override
-   public MapCodec<? extends dcs> a() {
-      return i;
-   }
-
-   protected dcs(dli.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   protected dcs(dmd.d $$0, ih $$1, epo $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public dlj a(crk $$0) {
-      cux $$1 = $$0.q();
-      hz $$2 = $$0.a();
-      egw $$3 = $$0.q().b_($$0.a());
-      hz $$4 = $$2.e();
-      hz $$5 = $$2.f();
-      hz $$6 = $$2.g();
-      hz $$7 = $$2.h();
-      dlj $$8 = $$1.a_($$4);
-      dlj $$9 = $$1.a_($$5);
-      dlj $$10 = $$1.a_($$6);
-      dlj $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ie.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ie.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ie.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ie.e))))
-         .a(e, Boolean.valueOf($$3.a() == egx.c));
+   protected abstract MapCodec<? extends dcs> a();
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      dme $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dme a(cwf $$0) {
+      return this.o();
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      ib $$3 = $$2.a(this.a.g());
+      dme $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
+   }
 
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean m(dme $$0) {
+      return true;
    }
 
    @Override
-   protected eos c(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return eop.a();
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(dlj $$0, dlj $$1, ie $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
+   protected abstract dcu c();
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dlj $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof dcs || $$0.a(aua.L);
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(a, b, d, c, e);
-   }
+   protected abstract czf b();
 }

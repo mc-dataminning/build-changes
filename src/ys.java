@@ -1,29 +1,15 @@
-public class ys implements xx<yo> {
-   public static final xo<uq, ys> a = xx.a(ys::a, ys::new);
-   private final int b;
+import java.util.List;
 
-   public ys(int $$0) {
-      this.b = $$0;
-   }
-
-   private ys(uq $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(uq $$0) {
-      $$0.p(this.b);
-   }
+public record ys(za b) implements xz<yq> {
+   private static final int c = 32767;
+   public static final xq<us, ys> a = za.<us>a($$0 -> zb.a($$0, 32767), List.of(new za.c<>(yy.b, yy.a))).a(ys::new, ys::b);
 
    @Override
-   public xz<ys> a() {
-      return yn.m;
+   public yb<ys> a() {
+      return yp.k;
    }
 
-   public void a(yo $$0) {
+   public void a(yq $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

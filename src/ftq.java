@@ -1,39 +1,65 @@
-public class ftq extends fuh {
-   private final fuc a;
-
-   ftq(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
+public class ftq extends fum {
+   ftq(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+   }
+
+   @Override
+   public fui b() {
+      return fui.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = awm.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   @Override
-   public ftl b() {
-      return ftl.c;
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftq $$8 = new ftq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class b implements fuh<ke> {
+      private final fuz a;
 
-   public static record a(fuc a) implements ftk<ka> {
-      public fth a(ka $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftq $$8 = new ftq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
+      public b(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftq $$8 = new ftq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
          return $$8;
       }
    }

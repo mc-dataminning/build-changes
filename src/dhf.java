@@ -1,39 +1,28 @@
-import com.mojang.serialization.MapCodec;
+public enum dhf {
+   a {
+      @Override
+      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+         return czf.a($$0.l($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final int d = 1;
+      private final epo e = czf.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-public class dhf extends czv {
-   public static final MapCodec<dhf> n = b(dhf::new);
+      @Override
+      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+         return !epl.c($$0.l($$1, $$2).a($$3), this.e, eoz.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final epo e = epl.a(epl.b(), czf.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), eoz.e);
 
-   @Override
-   public MapCodec<dhf> a() {
-      return n;
-   }
+      @Override
+      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+         return !epl.c($$0.l($$1, $$2).a($$3), this.e, eoz.c);
+      }
+   };
 
-   public dhf(dli.d $$0) {
-      super($$0, () -> diz.c);
-   }
-
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dkp($$0, $$1);
-   }
-
-   @Override
-   protected ats<aiy> c() {
-      return atv.i.b(atv.ai);
-   }
-
-   @Override
-   protected boolean f_(dlj $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dlj $$0, cux $$1, hz $$2, ie $$3) {
-      return awi.a(dje.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(dlj $$0, cux $$1, hz $$2, ie $$3) {
-      return $$3 == ie.b ? $$0.b($$1, $$2, $$3) : 0;
-   }
+   public abstract boolean a(dme var1, cvk var2, ib var3, ih var4);
 }

@@ -1,35 +1,35 @@
-public class bpi {
-   private float a;
-   private float b;
-   private float c;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public void a(float $$0) {
-      this.b = $$0;
+public enum bpi {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
+
+   public static final IntFunction<bpi> s = ave.a(bpi::a, values(), ave.a.a);
+   public static final xq<ByteBuf, bpi> t = xo.a(s, bpi::a);
+   private final int u;
+
+   private bpi(int $$0) {
+      this.u = $$0;
    }
 
-   public void a(float $$0, float $$1) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b(float $$0) {
-      return awi.i($$0, this.a, this.b);
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c(float $$0) {
-      return this.c - this.b * (1.0F - $$0);
-   }
-
-   public boolean c() {
-      return this.b > 1.0E-5F;
+   public int a() {
+      return this.u;
    }
 }

@@ -1,118 +1,115 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-public class cso implements crw {
-   final String a;
-   final crv b;
-   final cpd c;
-   final is<csc> d;
+public class cso extends csk {
+   private static final csp a = csp.a(cpt.tV, cpt.ps, cpt.sh, cpt.uh, cpt.ui, cpt.ul, cpt.uj, cpt.um, cpt.uk, cpt.un);
+   private static final csp b = csp.a(cpt.ox);
+   private static final csp c = csp.a(cpt.qX);
+   private static final Map<cpl, cov.a> d = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cpt.tV, cov.a.b);
+      $$0.put(cpt.ps, cov.a.e);
+      $$0.put(cpt.sh, cov.a.c);
+      $$0.put(cpt.uh, cov.a.d);
+      $$0.put(cpt.ui, cov.a.d);
+      $$0.put(cpt.ul, cov.a.d);
+      $$0.put(cpt.uj, cov.a.d);
+      $$0.put(cpt.um, cov.a.d);
+      $$0.put(cpt.uk, cov.a.d);
+      $$0.put(cpt.un, cov.a.d);
+   });
+   private static final csp e = csp.a(cpt.pt);
 
-   public cso(String $$0, crv $$1, cpd $$2, is<csc> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public cso(csi $$0) {
+      super($$0);
    }
 
-   @Override
-   public csj<?> at_() {
-      return csj.b;
-   }
+   public boolean a(clk $$0, cwe $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   @Override
-   public String c() {
-      return this.a;
-   }
+      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
+         cpq $$8 = $$0.a($$7);
+         if (!$$8.b()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
 
-   @Override
-   public crv d() {
-      return this.b;
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   @Override
-   public cpd a(iw $$0) {
-      return this.c;
-   }
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
 
-   @Override
-   public is<csc> a() {
-      return this.d;
-   }
+               $$5 = true;
+            } else if (e.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
 
-   public boolean a(ckv $$0, cvr $$1) {
-      chp $$2 = new chp();
-      int $$3 = 0;
+               $$2 = true;
+            } else {
+               if (!($$8.d() instanceof coh)) {
+                  return false;
+               }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpd $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            $$3++;
-            $$2.a($$5, 1);
+               $$3 = true;
+            }
          }
       }
 
-      return $$3 == this.d.size() && $$2.a(this, null);
+      return $$2 && $$3;
    }
 
-   public cpd a(ckv $$0, iw $$1) {
-      return this.c.q();
+   public cpq a(clk $$0, iy $$1) {
+      cpq $$2 = new cpq(cpt.ur);
+      sy $$3 = $$2.b("Explosion");
+      cov.a $$4 = cov.a.a;
+      List<Integer> $$5 = Lists.newArrayList();
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cpq $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (a.a($$7)) {
+               $$4 = d.get($$7.d());
+            } else if (c.a($$7)) {
+               $$3.a("Flicker", true);
+            } else if (b.a($$7)) {
+               $$3.a("Trail", true);
+            } else if ($$7.d() instanceof coh) {
+               $$5.add(((coh)$$7.d()).c().f());
+            }
+         }
+      }
+
+      $$3.b("Colors", $$5);
+      $$3.a("Type", (byte)$$4.a());
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+      return $$0 * $$1 >= 2;
    }
 
-   public static class a implements csj<cso> {
-      private static final Codec<cso> y = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avq.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.a),
-                  crv.e.fieldOf("category").orElse(crv.d).forGetter($$0x -> $$0x.b),
-                  cpd.c.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  csc.d.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     csc[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(csc[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(is.a(csc.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cso::new)
-      );
-      public static final xo<vb, cso> x = xo.a(cso.a::a, cso.a::a);
+   @Override
+   public cpq a(iy $$0) {
+      return new cpq(cpt.ur);
+   }
 
-      @Override
-      public Codec<cso> a() {
-         return y;
-      }
-
-      @Override
-      public xo<vb, cso> b() {
-         return x;
-      }
-
-      private static cso a(vb $$0) {
-         String $$1 = $$0.r();
-         crv $$2 = $$0.b(crv.class);
-         int $$3 = $$0.n();
-         is<csc> $$4 = is.a($$3, csc.a);
-         $$4.replaceAll($$1x -> csc.b.decode($$0));
-         cpd $$5 = cpd.f.decode($$0);
-         return new cso($$1, $$2, $$5, $$4);
-      }
-
-      private static void a(vb $$0, cso $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (csc $$2 : $$1.d) {
-            csc.b.encode($$0, $$2);
-         }
-
-         cpd.f.encode($$0, $$1.c);
-      }
+   @Override
+   public csw<?> as_() {
+      return csw.h;
    }
 }

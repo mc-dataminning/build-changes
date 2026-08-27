@@ -1,19 +1,40 @@
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import javax.annotation.Nullable;
+
 public class sa {
-   private static sp a = new sc();
+   public static final sa a = new sa();
+   private final Collection<ru> b = Lists.newCopyOnWriteArrayList();
+   @Nullable
+   private rx c;
 
-   public static void a(sp $$0) {
-      a = $$0;
+   private sa() {
    }
 
-   public static void a(rs $$0) {
-      a.a($$0);
+   public void a(ru $$0) {
+      this.b.add($$0);
    }
 
-   public static void b(rs $$0) {
-      a.b($$0);
+   public void a() {
+      this.b.clear();
+      if (this.c != null) {
+         this.c.c();
+         this.c = null;
+      }
    }
 
-   public static void a() {
-      a.a();
+   public void a(rx $$0) {
+      if (this.c != null) {
+         ac.a("The runner was already set in GameTestTicker");
+      }
+
+      this.c = $$0;
+   }
+
+   public void b() {
+      if (this.c != null) {
+         this.b.forEach($$0 -> $$0.a(this.c));
+         this.b.removeIf(ru::j);
+      }
    }
 }

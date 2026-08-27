@@ -1,67 +1,51 @@
-import java.util.Locale;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface eix extends eiz {
-   @Override
-   String e();
-
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, cvt $$1) {
-      eiz.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
-   }
-
-   int f();
-
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
+public record eix(ib c, cog d, Optional<vs> e) {
+   public static final Codec<eix> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ib.a.fieldOf("Pos").forGetter(eix::c), cog.q.optionalFieldOf("Color", cog.a).forGetter(eix::d), vu.e.optionalFieldOf("Name").forGetter(eix::e)
+            )
+            .apply($$0, eix::new)
+   );
+   public static final Codec<List<eix>> b = a.listOf();
 
    @Nullable
-   UUID v();
+   public static eix a(cvk $$0, ib $$1) {
+      if ($$0.c_($$1) instanceof djb $$3) {
+         cog $$4 = $$3.f();
+         Optional<vs> $$5 = Optional.ofNullable($$3.af());
+         return new eix($$1, $$4, $$5);
+      } else {
+         return null;
+      }
+   }
 
-   void a(UUID var1);
+   public eiy.a a() {
+      return switch (this.d) {
+         case a -> eiy.a.k;
+         case b -> eiy.a.l;
+         case c -> eiy.a.m;
+         case d -> eiy.a.n;
+         case e -> eiy.a.o;
+         case f -> eiy.a.p;
+         case g -> eiy.a.q;
+         case h -> eiy.a.r;
+         case i -> eiy.a.s;
+         case j -> eiy.a.t;
+         case k -> eiy.a.u;
+         case l -> eiy.a.v;
+         case m -> eiy.a.w;
+         case n -> eiy.a.x;
+         case o -> eiy.a.y;
+         default -> eiy.a.z;
+      };
+   }
 
-   cvo k();
-
-   void a(dna.c var1);
-
-   dna.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(cvo var1);
-
-   enm<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   }
 }

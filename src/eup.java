@@ -1,40 +1,36 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class eup implements Iterable<eto> {
-   private final exo a;
-   private final Set<eto> b = new HashSet<>();
-   private List<eto> c = List.of();
+public class eup extends euz {
+   private static final Logger b = LogUtils.getLogger();
+   public List<euo> a;
 
-   public eup(exo $$0) {
-      this.a = $$0;
-   }
+   public static eup a(String $$0) {
+      eup $$1 = new eup();
+      $$1.a = Lists.newArrayList();
 
-   public void a(List<eto> $$0) {
-      List<eto> $$1 = new ArrayList<>($$0);
-      $$1.sort(new eto.b(this.a.W().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(euo.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(eto $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<eto> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$1;
    }
 }

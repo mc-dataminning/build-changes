@@ -1,141 +1,65 @@
-public class cjn extends cje {
-   private static final aie<Boolean> e = aih.a(cjn.class, aig.k);
-   private int i;
-   public double c;
-   public double d;
-   private static final csc j = csc.a(cpg.ov, cpg.ow);
+public class cjn {
+   public static final cjn a = a("core");
+   public static final cjn b = a("idle");
+   public static final cjn c = a("work");
+   public static final cjn d = a("play");
+   public static final cjn e = a("rest");
+   public static final cjn f = a("meet");
+   public static final cjn g = a("panic");
+   public static final cjn h = a("raid");
+   public static final cjn i = a("pre_raid");
+   public static final cjn j = a("hide");
+   public static final cjn k = a("fight");
+   public static final cjn l = a("celebrate");
+   public static final cjn m = a("admire_item");
+   public static final cjn n = a("avoid");
+   public static final cjn o = a("ride");
+   public static final cjn p = a("play_dead");
+   public static final cjn q = a("long_jump");
+   public static final cjn r = a("ram");
+   public static final cjn s = a("tongue");
+   public static final cjn t = a("swim");
+   public static final cjn u = a("lay_spawn");
+   public static final cjn v = a("sniff");
+   public static final cjn w = a("investigate");
+   public static final cjn x = a("roar");
+   public static final cjn y = a("emerge");
+   public static final cjn z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cjn(bnw<? extends cjn> $$0, cvr $$1) {
-      super($$0, $$1);
+   private cjn(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cjn(cvr $$0, double $$1, double $$2, double $$3) {
-      super(bnw.R, $$0, $$1, $$2, $$3);
+   public String a() {
+      return this.A;
    }
 
-   @Override
-   public cje.a w() {
-      return cje.a.c;
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.am.a(e, false);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dM().y_()) {
-         if (this.i > 0) {
-            this.i--;
-         }
-
-         if (this.i <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.p(this.i > 0);
-      }
-
-      if (this.C() && this.af.a(4) == 0) {
-         this.dM().a(jz.U, this.dr(), this.dt() + 0.8, this.dx(), 0.0, 0.0, 0.0);
-      }
+   private static cjn a(String $$0) {
+      return ix.a(kh.E, $$0, new cjn($$0));
    }
 
    @Override
-   protected double q() {
-      return (this.aZ() ? 3.0 : 4.0) / 20.0;
-   }
-
-   @Override
-   protected coy ai_() {
-      return cpg.nN;
-   }
-
-   @Override
-   protected void c(hz $$0, dlj $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      enz $$4 = this.dp();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
-      }
-   }
-
-   @Override
-   protected void u() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         enz $$1 = this.dp().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.aZ()) {
-            $$1 = $$1.a(0.1);
-         }
-
-         this.g($$1);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cjn $$1 = (cjn)$$0;
+         return this.A.equals($$1.A);
       } else {
-         this.g(this.dp().d(0.98, 0.0, 0.98));
+         return false;
       }
-
-      super.u();
    }
 
    @Override
-   public blw a(chl $$0, blv $$1) {
-      cpd $$2 = $$0.b($$1);
-      if (j.a($$2) && this.i + 3600 <= 32000) {
-         if (!$$0.fU().d) {
-            $$2.h(1);
-         }
-
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.c = this.dr() - $$0.dr();
-         this.d = this.dx() - $$0.dx();
-      }
-
-      return blw.a(this.dM().B);
+   public int hashCode() {
+      return this.B;
    }
 
    @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.i);
-   }
-
-   @Override
-   protected void a(sw $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean C() {
-      return this.am.b(e);
-   }
-
-   protected void p(boolean $$0) {
-      this.am.b(e, $$0);
-   }
-
-   @Override
-   public dlj y() {
-      return cyu.cD.o().a(dbz.a, ie.c).a(dbz.b, Boolean.valueOf(this.C()));
+   public String toString() {
+      return this.a();
    }
 }

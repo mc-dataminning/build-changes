@@ -1,72 +1,122 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-public final class bre {
-   public static Optional<enz> a(bok $$0, enz $$1, float $$2, int $$3, boolean $$4) {
-      enz $$5 = $$0.dk();
-      enz $$6 = new enz($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      enz $$7 = $$1.d($$6);
-      enz $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = 0.08;
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * 0.08 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
+public class bre extends bqp<chn> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<chq, ajc> g = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(chq.c, ejw.ax);
+      $$0.put(chq.d, ejw.ay);
+      $$0.put(chq.e, ejw.az);
+      $$0.put(chq.f, ejw.aA);
+      $$0.put(chq.g, ejw.aB);
+      $$0.put(chq.h, ejw.aC);
+      $$0.put(chq.i, ejw.aD);
+      $$0.put(chq.j, ejw.aE);
+      $$0.put(chq.k, ejw.aF);
+      $$0.put(chq.l, ejw.aG);
+      $$0.put(chq.n, ejw.aH);
+      $$0.put(chq.o, ejw.aI);
+      $$0.put(chq.p, ejw.aJ);
+   });
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
+
+   public bre(int $$0) {
+      super(ImmutableMap.of(bya.m, byb.c, bya.n, byb.c, bya.q, byb.c, bya.k, byb.a), $$0);
+   }
+
+   protected boolean a(apa $$0, chn $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
+         return false;
       } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
+         return true;
+      }
+   }
+
+   protected void a(apa $$0, chn $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      cia $$3 = this.c($$1).get();
+      $$1.dM().a(bya.q, $$3);
+      bqr.a($$1, $$3);
+   }
+
+   protected boolean b(apa $$0, chn $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(apa $$0, chn $$1, long $$2) {
+      cia $$3 = this.c($$1).get();
+      bqr.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$1, (box)$$3);
+            this.j = true;
+         }
+      } else {
+         bqr.a($$1, $$3, 0.5F, 5);
+      }
+   }
+
+   protected void d(apa $$0, chn $$1, long $$2) {
+      this.i = a($$0);
+      $$1.dM().b(bya.q);
+      $$1.dM().b(bya.m);
+      $$1.dM().b(bya.n);
+   }
+
+   private void a(chn $$0, box $$1) {
+      for (cpq $$3 : this.a($$0)) {
+         bqr.a($$0, $$3, $$1.dh());
+      }
+   }
+
+   private List<cpq> a(chn $$0) {
+      if ($$0.o_()) {
+         return ImmutableList.of(new cpq(cpt.dk));
+      } else {
+         chq $$1 = $$0.gw().b();
+         if (g.containsKey($$1)) {
+            ekg $$2 = $$0.dJ().o().aM().getLootTable(g.get($$1));
+            eke $$3 = new eke.a((apa)$$0.dJ()).a(emj.f, $$0.dh()).a(emj.a, $$0).a(emi.i);
+            return $$2.a($$3);
          } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = awi.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               enz $$27 = null;
-               bnt $$28 = $$0.a(bot.g);
-
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * 0.08 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  enz $$33 = new enz($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new enz($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
+            return ImmutableList.of(new cpq(cpt.pu));
          }
       }
    }
 
-   private static boolean a(bok $$0, bnt $$1, enz $$2, enz $$3) {
-      enz $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = awi.c($$4.f() / $$5);
-      enz $$7 = $$4.d();
-      enz $$8 = $$2;
+   private boolean b(chn $$0) {
+      return this.c($$0).isPresent();
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dM().a($$0, $$1.a($$8))) {
-            return false;
-         }
-      }
+   private Optional<cia> c(chn $$0) {
+      return $$0.dM().c(bya.k).filter(this::a);
+   }
 
-      return true;
+   private boolean a(cia $$0) {
+      return $$0.a(bnu.F);
+   }
+
+   private boolean a(chn $$0, cia $$1) {
+      ib $$2 = $$1.dj();
+      ib $$3 = $$0.dj();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(apa $$0) {
+      return 600 + $$0.z.a(6001);
    }
 }

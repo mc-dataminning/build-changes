@@ -1,102 +1,136 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eke extends eko {
-   public static final Codec<eke> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kf.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dmm::f).toList())
-               )
-            )
-            .apply($$0, eke::new)
-   );
-   private final ij<cys> b;
-   private final Set<dmm<?>> c;
+public class eke {
+   private final apa a;
+   private final Map<emg<?>, Object> b;
+   private final Map<ajc, eke.b> c;
+   private final float d;
 
-   eke(List<emb> $$0, ij<cys> $$1, Set<dmm<?>> $$2) {
-      super($$0);
+   public eke(apa $$0, Map<emg<?>, Object> $$1, Map<ajc, eke.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   private eke(List<emb> $$0, ij<cys> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   public apa a() {
+      return this.a;
    }
 
-   @Override
-   public ekq b() {
-      return ekr.x;
+   public boolean a(emg<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public Set<elk<?>> a() {
-      return ImmutableSet.of(eln.g);
+   public <T> T b(emg<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   protected cpd a(cpd $$0, ejc $$1) {
-      dlj $$2 = $$1.c(eln.g);
+   @Nullable
+   public <T> T c(emg<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(emg<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(ajc $$0, Consumer<cpq> $$1) {
+      eke.b $$2 = this.c.get($$0);
       if ($$2 != null) {
-         sw $$3 = $$0.x();
-         sw $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final apa a;
+      private final Map<emg<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<ajc, eke.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(apa $$0) {
+         this.a = $$0;
+      }
+
+      public apa a() {
+         return this.a;
+      }
+
+      public <T> eke.a a(emg<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> eke.a b(emg<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
          } else {
-            $$4 = new sw();
-            $$3.a("BlockStateTag", $$4);
+            this.b.put($$0, $$1);
          }
 
-         for (dmm<?> $$6 : this.c) {
-            if ($$2.b($$6)) {
-               $$4.a($$6.f(), a($$2, $$6));
-            }
+         return this;
+      }
+
+      public <T> T a(emg<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
       }
 
-      return $$0;
-   }
-
-   public static eke.a a(cys $$0) {
-      return new eke.a($$0);
-   }
-
-   private static <T extends Comparable<T>> String a(dlj $$0, dmm<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
-   }
-
-   public static class a extends eko.a<eke.a> {
-      private final ij<cys> a;
-      private final Builder<dmm<?>> b = ImmutableSet.builder();
-
-      a(cys $$0) {
-         this.a = $$0.r();
+      @Nullable
+      public <T> T b(emg<T> $$0) {
+         return (T)this.b.get($$0);
       }
 
-      public eke.a a(dmm<?> $$0) {
-         if (!this.a.a().n().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+      public eke.a a(ajc $$0, eke.b $$1) {
+         eke.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
          } else {
-            this.b.add($$0);
             return this;
          }
       }
 
-      protected eke.a a() {
+      public eke.a a(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      @Override
-      public ekp b() {
-         return new eke(this.g(), this.a, this.b.build());
+      public eke a(emh $$0) {
+         Set<emg<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<emg<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new eke(this.a, this.b, this.c, this.d);
+            }
+         }
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cpq> var1);
    }
 }

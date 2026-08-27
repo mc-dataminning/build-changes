@@ -1,23 +1,29 @@
-import java.util.Optional;
-import java.util.UUID;
+public class yi implements xz<yf> {
+   public static final xq<us, yi> a = xz.a(yi::a, yi::new);
+   private final long b;
 
-public record yi(Optional<UUID> b) implements xx<yd> {
-   public static final xo<uq, yi> a = xx.a(yi::a, yi::new);
-
-   private yi(uq $$0) {
-      this($$0.b(jc.f));
+   public yi(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b, jc.f);
+   private yi(us $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(us $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public xz<yi> a() {
-      return yn.e;
+   public yb<yi> a() {
+      return yp.c;
    }
 
-   public void a(yd $$0) {
+   public void a(yf $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

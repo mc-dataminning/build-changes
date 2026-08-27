@@ -1,57 +1,46 @@
-import java.util.Arrays;
+public class fmy<T extends bof> extends fnn<T> {
+   private final fqf a;
+   private final fqf b;
+   private final fqf f;
+   private final fqf g;
+   private final fqf h;
+   private final fqf i;
+   private static final int j = 6;
 
-public class fmy<T extends cfa> extends fmr<T> {
-   private static final int a = 8;
-   private final fpj b;
-   private final fpj[] f = new fpj[8];
-
-   public fmy(fpj $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+   public fmy(fqf $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
-   }
-
-   public static fpp b() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fpo.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fpl.a);
-      }
-
-      $$1.a("inside_cube", fpo.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fpl.a);
-      return fpp.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = awi.i($$3, $$0.bS, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
-      }
+   public static fql a(fqj $$0) {
+      fqn $$1 = new fqn();
+      fqo $$2 = $$1.a();
+      $$2.a("head", fqk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fqh.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fqk.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fqh.a(0.0F, 6.0F, 0.0F));
+      fqk $$3 = fqk.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fqh.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fqh.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fqh.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fqh.a(2.0F, 18.0F, -4.0F));
+      return fql.a($$1, 64, 32);
    }
 
    @Override
-   public fpj a() {
-      return this.b;
+   public fqf a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = awm.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = awm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = awm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = awm.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

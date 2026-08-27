@@ -1,37 +1,62 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class gml {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   private static final int a = 100;
+   private final awt b = awt.a();
+   private final eyk c;
+   @Nullable
+   private glm d;
+   private int e = 100;
+
+   public gml(eyk $$0) {
+      this.c = $$0;
+   }
 
    public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
+      atm $$0 = this.c.ak();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.aj().b(this.d);
+            this.e = awm.a(this.b, 0, $$0.b() / 2);
+         }
+
+         if (!this.c.aj().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, awm.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
+   public void a(atm $$0) {
+      this.d = glh.a($$0.a().a());
+      if (this.d.b() != gmq.a) {
+         this.c.aj().a(this.d);
       }
 
-      this.d = $$0;
+      this.e = Integer.MAX_VALUE;
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   public void b(atm $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
    }
 
-   public void a(gma $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gmb.e, $$1x -> {
-            $$1x.a(gmd.p, this.a($$1));
-            $$1x.a(gmd.q, (int)this.c);
-         }));
+   public void b() {
+      if (this.d != null) {
+         this.c.aj().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(atm $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

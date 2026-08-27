@@ -1,37 +1,45 @@
-public class afq implements xx<aes> {
-   public static final xo<uq, afq> a = xx.a(afq::a, afq::new);
-   private final boolean b;
-   private final boolean c;
+public class afq implements xz<aev> {
+   public static final xq<us, afq> a = xz.a(afq::a, afq::new);
+   private final ib b;
+   private final int c;
+   private final boolean d;
 
-   public afq(boolean $$0, boolean $$1) {
+   public afq(ib $$0, int $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   private afq(uq $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   private afq(us $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(uq $$0) {
+   private void a(us $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(aes $$0) {
-      $$0.a(this);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public xz<afq> a() {
-      return aeq.bC;
+   public yb<afq> a() {
+      return aet.bx;
    }
 
-   public boolean b() {
+   public void a(aev $$0) {
+      $$0.a(this);
+   }
+
+   public ib b() {
       return this.b;
    }
 
-   public boolean e() {
+   public int e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

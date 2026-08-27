@@ -8,12 +8,12 @@ public class ct extends cx<ct.a> {
       return ct.a.a;
    }
 
-   public void a(aox $$0) {
+   public void a(apb $$0) {
       this.a($$0, $$0x -> true);
    }
 
    public static record a(Optional<bc> b) implements cx.a {
-      public static final Codec<ct.a> a = RecordCodecBuilder.create($$0 -> $$0.group(avq.a(br.b, "player").forGetter(ct.a::a)).apply($$0, ct.a::new));
+      public static final Codec<ct.a> a = RecordCodecBuilder.create($$0 -> $$0.group(avu.a(br.b, "player").forGetter(ct.a::a)).apply($$0, ct.a::new));
 
       public static an<ct.a> a(ck.a $$0) {
          return am.q.a(new ct.a(Optional.of(br.a(br.a.a().a($$0)))));
@@ -43,7 +43,7 @@ public class ct extends cx<ct.a> {
          return am.x.a(new ct.a(Optional.empty()));
       }
 
-      public static an<ct.a> a(cys $$0, coy $$1) {
+      public static an<ct.a> a(czf $$0, cpl $$1) {
          return a(br.a.a().a(bo.a.a().d(cc.a.a().a($$1))).b(ck.a.a().a(av.a.a().a($$0))));
       }
 

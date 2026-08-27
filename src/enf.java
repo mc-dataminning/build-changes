@@ -1,18 +1,60 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class enf {
-   private static final Codec<ene> d = kf.K.q().dispatch(ene::a, end::a);
-   public static final Codec<ene> a = avq.a(
-      (Supplier<Codec<ene>>)(() -> Codec.either(enb.b, d)
-            .xmap($$0 -> (ene)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof enb $$1 ? Either.left($$1) : Either.right($$0)))
+public record enf(Optional<Long> b, ejx c) implements emx {
+   public static final Codec<enf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avu.a(Codec.LONG, "period").forGetter(enf::c), ejx.a.fieldOf("value").forGetter(enf::d)).apply($$0, enf::new)
    );
-   public static final end b = a("fixed", enc.a);
-   public static final end c = a("context", enb.a);
 
-   private static end a(String $$0, Codec<? extends ene> $$1) {
-      return iv.a(kf.K, new aiy($$0), new end($$1));
+   @Override
+   public emy b() {
+      return emz.r;
+   }
+
+   @Override
+   public Set<emg<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(ejy $$0) {
+      apa $$1 = $$0.d();
+      long $$2 = $$1.Y();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static enf.a a(ejx $$0) {
+      return new enf.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ejx d() {
+      return this.c;
+   }
+
+   public static class a implements emx.a {
+      private Optional<Long> a = Optional.empty();
+      private final ejx b;
+
+      public a(ejx $$0) {
+         this.b = $$0;
+      }
+
+      public enf.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public enf a() {
+         return new enf(this.a, this.b);
+      }
    }
 }

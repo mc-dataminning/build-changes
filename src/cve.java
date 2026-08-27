@@ -1,3 +1,8 @@
-public interface cve {
-   int a(aow var1, boolean var2, boolean var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cve {
 }

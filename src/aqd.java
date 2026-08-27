@@ -1,21 +1,36 @@
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+public class aqd implements aid {
+   private static final vs a = vs.c("multiplayer.status.request_handled");
+   private final aic b;
+   private final uq c;
+   private boolean d;
 
-public class aqd implements apm {
-   public static final apm.a a = new apm.a("server_resource_pack");
-   private final MinecraftServer.b b;
-
-   public aqd(MinecraftServer.b $$0) {
+   public aqd(aic $$0, uq $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(Consumer<xx<?>> $$0) {
-      $$0.accept(new yj(this.b.a(), this.b.b(), this.b.c(), this.b.d(), this.b.e()));
+   public void a(vs $$0) {
    }
 
    @Override
-   public apm.a a() {
-      return a;
+   public boolean c() {
+      return this.c.i();
+   }
+
+   @Override
+   public void a(aie $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new aib(this.b));
+      }
+   }
+
+   @Override
+   public void a(ahy $$0) {
+      this.c.a(new ahv($$0.b()));
+      this.c.a(a);
    }
 }

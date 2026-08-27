@@ -1,40 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public class bwo extends bvf {
-   private final cgt a;
+public class bwo<T extends cjk> extends bvu {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public bwo(cgt $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bvf.a.c, bvf.a.a));
+   public bwo(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bvu.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bx()) {
-         return false;
-      } else if (this.a.aZ()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else if (this.a.S) {
-         return false;
-      } else {
-         chl $$0 = this.a.gg();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bW != null;
+      return this.c.q() == null && !this.c.cL() && this.c.gA() && !this.c.gz().a() && !((apa)this.c.dJ()).c(this.c.dj());
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.gA() && !this.c.gz().a() && this.c.dJ() instanceof apa && !((apa)this.c.dJ()).c(this.c.dj());
+   }
+
+   @Override
+   public void e() {
+      if (this.c.gA()) {
+         cjj $$0 = this.c.gz();
+         if (this.c.ag > this.d) {
+            this.d = this.c.ag + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.gh()) {
+            eov $$1 = bzr.a(this.c, 15, 4, eov.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.N().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
          }
       }
    }
 
-   @Override
-   public void c() {
-      this.a.N().n();
-   }
+   private void a(cjj $$0) {
+      if ($$0.v()) {
+         Set<cjk> $$1 = Sets.newHashSet();
+         List<cjk> $$2 = this.c.dJ().a(cjk.class, this.c.cE().g(16.0), $$1x -> !$$1x.gA() && cjl.a($$1x, $$0));
+         $$1.addAll($$2);
 
-   @Override
-   public void d() {
-      this.a.f(null);
+         for (cjk $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

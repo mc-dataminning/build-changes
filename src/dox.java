@@ -1,91 +1,18 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum dox {
-   a {
-      @Override
-      public void a(aow $$0, doy $$1, List<ccp> $$2, int $$3, hz $$4) {
-         hz $$5 = new hz(0, 128, 0);
+public interface dox {
+   @Nullable
+   eco a(ecg var1);
 
-         for (ccp $$6 : $$2) {
-            $$6.a($$5);
-         }
+   void a(ecg var1, eco var2);
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(aow $$0, doy $$1, List<ccp> $$2, int $$3, hz $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new hz(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(aow $$0, doy $$1, List<ccp> $$2, int $$3, hz $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dvj.a> $$8 = dvj.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dvj.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (ccp $$11 : $$2) {
-                     $$11.a(new hz($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   LongSet b(ecg var1);
 
-                  for (hz $$13 : hz.a(new hz($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hz($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
+   void a(ecg var1, long var2);
 
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cvr.a.b);
-                  dwx $$14 = new dwx(true, ImmutableList.of($$10), new hz(0, 128, 0));
-                  dtz.J.a($$14, $$0, $$0.l().g(), awp.a(), new hz($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(aow $$0, doy $$1, List<ccp> $$2, int $$3, hz $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   Map<ecg, LongSet> h();
 
-            for (ccp $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cvr.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new hz(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (ccp $$6 : $$2) {
-               $$6.a(new hz(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new hz(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(aow $$0, doy $$1, List<ccp> $$2, int $$3, hz $$4) {
-      }
-   };
-
-   public abstract void a(aow var1, doy var2, List<ccp> var3, int var4, hz var5);
+   void b(Map<ecg, LongSet> var1);
 }

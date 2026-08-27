@@ -1,36 +1,26 @@
-public record zc(hz c, int d, String e, int f) implements yy {
-   public static final xo<uq, zc> a = yy.a(zc::a, zc::new);
-   public static final yy.b<zc> b = yy.a("debug/game_test_add_marker");
+public record zc(ajb<dqr> c, eov d) implements za {
+   public static final xq<us, zc> a = za.a(zc::a, zc::new);
+   public static final za.b<zc> b = za.a("debug/game_event");
 
-   private zc(uq $$0) {
-      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
+   private zc(us $$0) {
+      this($$0.a(ki.B), $$0.k());
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   private void a(us $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yy.b<zc> a() {
+   public za.b<zc> a() {
       return b;
    }
 
-   public hz b() {
+   public ajb<dqr> b() {
       return this.c;
    }
 
-   public int c() {
+   public eov c() {
       return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
    }
 }

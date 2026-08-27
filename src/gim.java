@@ -1,71 +1,21 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gim implements arb<gil> {
-   public gil b(JsonObject $$0) {
-      Builder<gik> $$1 = ImmutableList.builder();
-      int $$2 = avy.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gim implements gid {
+   public static final Codec<gim> b = RecordCodecBuilder.create($$0 -> $$0.group(awu.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gim::new));
+   private final awu c;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = avy.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gik $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = avy.a($$0, "width", -1);
-      int $$9 = avy.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = avy.a($$0, "interpolate", false);
-      return new gil($$1.build(), $$8, $$9, $$2, $$10);
-   }
-
-   @Nullable
-   private gik a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gik(avy.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = avy.m($$1, "frames[" + $$0 + "]");
-         int $$3 = avy.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
-
-         int $$4 = avy.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gik($$4, $$3);
-      } else {
-         return null;
-      }
+   public gim(awu $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public String a() {
-      return "animation";
+   public void a(asf $$0, gid.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gif a() {
+      return gig.c;
    }
 }

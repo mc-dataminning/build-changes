@@ -1,76 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcy extends cys implements dfs {
+public class dcy extends dcv {
    public static final MapCodec<dcy> a = b(dcy::new);
-   public static final dma b = dlz.j;
-   public static final dma c = dlz.C;
-   protected static final eos d = eop.a(cys.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cys.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final eos e = eop.a(cys.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cys.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final epo b = czf.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dcy> a() {
       return a;
    }
 
-   public dcy(dli.d $$0) {
+   public dcy(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   @Nullable
-   @Override
-   public dlj a(crk $$0) {
-      egw $$1 = $$0.q().b_($$0.a());
+   private static boolean c(bof $$0) {
+      return $$0 instanceof box || $$0 instanceof cjt || $$0 instanceof cem || $$0 instanceof cjv;
+   }
 
-      for (ie $$2 : $$0.f()) {
-         if ($$2.o() == ie.a.b) {
-            dlj $$3 = this.o().a(b, Boolean.valueOf($$2 == ie.b));
-            if ($$3.a((cvu)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == egx.c));
-            }
+   @Override
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return b;
+   }
+
+   @Override
+   public void a(cwe $$0, dme $$1, ib $$2, bof $$3, float $$4) {
+      $$3.a(atp.mc, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.ah().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
+      }
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean a(ib $$0, bof $$1) {
+      if ($$1.aC()) {
+         return false;
+      } else if ($$1.dq() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dm().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.do());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.du());
+         double $$4 = 0.4375 + (double)($$1.dd() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(bof $$0, ib $$1) {
+      if ($$0 instanceof apb && $$0.dJ().X() % 20L == 0L) {
+         am.K.a((apb)$$0, $$0.dJ().a_($$1));
+      }
+   }
+
+   private void d(bof $$0) {
+      eov $$1 = $$0.dm();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new eov($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new eov($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(cwe $$0, bof $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(atp.mc, 1.0F, 1.0F);
+         }
+
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
          }
       }
-
-      return null;
    }
 
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return $$0.c(b) ? e : d;
+   public static void a(bof $$0) {
+      a($$0, 5);
    }
 
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b, c);
+   public static void b(bof $$0) {
+      a($$0, 10);
    }
 
-   @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      ie $$3 = m($$0).g();
-      return cys.a($$1, $$2.a($$3), $$3.g());
-   }
+   private static void a(bof $$0, int $$1) {
+      if ($$0.dJ().B) {
+         dme $$2 = czh.pg.o();
 
-   protected static ie m(dlj $$0) {
-      return $$0.c(b) ? ie.a : ie.b;
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dJ().a(new jt(kb.c, $$2), $$0.do(), $$0.dq(), $$0.du(), 0.0, 0.0, 0.0);
+         }
       }
-
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected egw c_(dlj $$0) {
-      return $$0.c(c) ? egx.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
-      return false;
    }
 }

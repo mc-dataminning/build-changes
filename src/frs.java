@@ -1,85 +1,67 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class frs {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final frs c = new frs(HostAndPort.fromParts("server.invalid", 25565));
+public class frs {
+   private final fru[] a;
+   private int b;
 
-   public frs(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public static Codec<frs> a(int $$0) {
+      return Codec.list(fru.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new frs($$0, $$1));
+            },
+            frs::c
+         );
    }
 
-   private frs(HostAndPort $$0) {
-      this.b = $$0;
+   public frs(int $$0) {
+      this.a = new fru[$$0];
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   private frs(int $$0, List<fru> $$1) {
+      this.a = $$1.toArray(fru[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fru> c() {
+      List<fru> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
+
+      return $$0;
+   }
+
+   public void a(fru $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
+   @Nullable
+   public fru b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
+
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
    }
 
    public int b() {
-      return this.b.getPort();
+      return this.b - 1;
    }
 
-   public static frs a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new frs($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
-   }
-
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof frs ? this.b.equals(((frs)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

@@ -35,20 +35,20 @@ public class dy {
       }
    }
 
-   public static <T> T a(StringReader $$0, Codec<T> $$1) {
-      JsonReader $$2 = new JsonReader(new java.io.StringReader($$0.getRemaining()));
-      $$2.setLenient(false);
+   public static <T> T a(in.a $$0, StringReader $$1, Codec<T> $$2) {
+      JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
+      $$3.setLenient(false);
 
-      Object var4;
+      Object var5;
       try {
-         JsonElement $$3 = Streams.parse($$2);
-         var4 = ac.a($$1.parse(JsonOps.INSTANCE, $$3), JsonParseException::new);
-      } catch (StackOverflowError var8) {
-         throw new JsonParseException(var8);
+         JsonElement $$4 = Streams.parse($$3);
+         var5 = ac.a($$2.parse(aja.a(JsonOps.INSTANCE, $$0), $$4), JsonParseException::new);
+      } catch (StackOverflowError var9) {
+         throw new JsonParseException(var9);
       } finally {
-         $$0.setCursor($$0.getCursor() + a($$2));
+         $$1.setCursor($$1.getCursor() + a($$3));
       }
 
-      return (T)var4;
+      return (T)var5;
    }
 }

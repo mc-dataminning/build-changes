@@ -1,46 +1,26 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public enum exw {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class exw {
-   private static final Logger a = LogUtils.getLogger();
-   private final exo b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+   private static final exw[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public exw(exo $$0) {
-      this.b = $$0;
+   private exw(boolean $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public void a(ffl $$0) {
-      if (!this.b.ag() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fik($$0));
-         this.d = true;
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
+   public boolean b() {
+      return this.f;
    }
 
-   private boolean b() {
-      try {
-         return esx.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (euk var2) {
-         return false;
-      }
+   public exw c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

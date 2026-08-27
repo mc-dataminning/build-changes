@@ -1,33 +1,28 @@
-import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class ata {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
-
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
-      }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+public class ata extends asx<GameProfile, atb> {
+   public ata(File $$0) {
+      super($$0);
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
+   @Override
+   protected asw<GameProfile> a(JsonObject $$0) {
+      return new atb($$0);
    }
 
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(asw::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

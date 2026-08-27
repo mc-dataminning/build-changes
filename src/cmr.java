@@ -1,11 +1,9 @@
-public class cmr extends coy {
-   public cmr(coy.a $$0) {
-      super($$0);
+public class cmr extends ckv {
+   public cmr(int $$0, chz $$1) {
+      super(cmb.w, csx.d, cmi.d, $$0, $$1);
    }
 
-   public chr a(cvr $$0, cpd $$1, boi $$2) {
-      cht $$3 = new cht($$0, $$2, $$1.c(1));
-      $$3.a($$1);
-      return $$3;
+   public cmr(int $$0, chz $$1, bme $$2, cle $$3) {
+      super(cmb.w, csx.d, cmi.d, $$0, $$1, $$2, $$3);
    }
 }

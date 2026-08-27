@@ -1,22 +1,42 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class bze {
-   @Nullable
-   public static enz a(boq $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = bzd.a($$0, $$1);
-      return bzg.a($$0, () -> {
-         hz $$9 = bzg.a($$0.eh(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            hz $$10 = bzf.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = bzg.a($$10, $$0.eh().a($$6 - $$7 + 1) + $$7, $$0.dM().ak(), $$1xx -> bzd.c($$0, $$1xx));
-               return !bzd.a($$0, $$10) && !bzd.b($$0, $$10) ? $$10 : null;
+public class bze extends bzg<chn> {
+   private static final int a = 40;
+
+   public bze() {
+      super(40);
+   }
+
+   protected void a(apa $$0, chn $$1) {
+      ajb<cwe> $$2 = $$0.ad();
+      ib $$3 = $$1.dj();
+      List<ik> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               ib $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gw().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(ik.a($$2, $$9));
+               }
             }
          }
-      });
+      }
+
+      bpy<?> $$10 = $$1.dM();
+      if (!$$4.isEmpty()) {
+         $$10.a(bya.f, $$4);
+      } else {
+         $$10.b(bya.f);
+      }
+   }
+
+   @Override
+   public Set<bya<?>> a() {
+      return ImmutableSet.of(bya.f);
    }
 }

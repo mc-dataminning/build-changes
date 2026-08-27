@@ -1,73 +1,124 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cli extends cku implements clg {
+   protected static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final cmk p = new cmk();
+   private final cle q;
+   private final cia r;
+   private final clk s;
 
-public class cli {
-   private final List<cli.b> a;
-   private final cli.b b;
+   public cli(int $$0, chz $$1) {
+      super(cmb.h, $$0);
+      this.r = $$1.m;
+      this.q = new cmo(10);
+      this.s = new cmu(this, 3, 3);
+      this.a($$1);
+   }
 
-   cli(List<cli.b> $$0, cli.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cli.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+   public cli(int $$0, chz $$1, clk $$2, cle $$3) {
+      super(cmb.h, $$0);
+      this.r = $$1.m;
+      this.q = $$3;
+      this.s = $$2;
+      a($$2, 9);
+      $$2.d_($$1.m);
+      this.a($$1);
+      this.a(this);
+   }
+
+   private void a(chz $$0) {
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            int $$3 = $$2 + $$1 * 3;
+            this.a(new clj(this.s, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
+         }
+      }
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         for (int $$5 = 0; $$5 < 9; $$5++) {
+            this.a(new cmp($$0, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
+         }
+      }
+
+      for (int $$6 = 0; $$6 < 9; $$6++) {
+         this.a(new cmp($$0, $$6, 8 + $$6 * 18, 142));
+      }
+
+      this.a(new cmf(this.p, 0, 134, 35));
+      this.a(this.q);
+      this.n();
+   }
+
+   public void a(int $$0, boolean $$1) {
+      clj $$2 = (clj)this.b($$0);
+      this.q.a($$2.e, $$1 ? 0 : 1);
+      this.d();
+   }
+
+   public boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 ? this.q.a($$0) == 1 : false;
+   }
+
+   public boolean l() {
+      return this.q.a(9) == 1;
+   }
+
+   @Override
+   public cpq a(cia $$0, int $$1) {
+      cpq $$2 = cpq.h;
+      cmp $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cpq $$4 = $$3.g();
+         $$2 = $$4.q();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cpq.h;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cpq.h;
+         }
+
+         if ($$4.b()) {
+            $$3.f(cpq.h);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cpq.h;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(cia $$0) {
+      return this.s.a($$0);
+   }
+
+   private void n() {
+      if (this.r instanceof apb $$0) {
+         cwe $$1 = $$0.dJ();
+         cpq $$2 = day.a($$1, this.s).map($$1x -> $$1x.a(this.s, $$1.I_())).orElse(cpq.h);
+         this.p.a(0, $$2);
       }
    }
 
-   public static cli.a a() {
-      return new cli.a();
+   public bme m() {
+      return this.s;
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
+   @Override
+   public void a(cku $$0, int $$1, cpq $$2) {
+      this.n();
    }
 
-   public cli.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cli.b b() {
-      return this.b;
-   }
-
-   public List<cli.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cli.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cli.b> a = new ArrayList<>();
-      private cli.b b = cli.b.e;
-
-      public cli.a a(int $$0, int $$1, int $$2, Predicate<cpd> $$3) {
-         this.a.add(new cli.b($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      public cli.a a(int $$0, int $$1, int $$2) {
-         this.b = new cli.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cli a() {
-         return new cli(this.a, this.b);
-      }
-   }
-
-   public static record b(int a, int b, int c, Predicate<cpd> d) {
-      static final cli.b e = new cli.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void a(cku $$0, int $$1, int $$2) {
    }
 }

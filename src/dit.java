@@ -1,25 +1,20 @@
-public class dit extends dix {
-   private cnr a;
+import com.mojang.serialization.MapCodec;
 
-   public dit(hz $$0, dlj $$1) {
-      super(diz.y, $$0, $$1);
-      this.a = ((cyl)$$1.b()).b();
+public class dit extends dct {
+   public static final MapCodec<dit> c = b(dit::new);
+   public static final epo e = czf.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dit> a() {
+      return c;
    }
 
-   public dit(hz $$0, dlj $$1, cnr $$2) {
-      super(diz.y, $$0, $$1);
-      this.a = $$2;
+   public dit(dmd.d $$0) {
+      super($$0, ih.a, e, false);
    }
 
-   public aan c() {
-      return aan.a(this);
-   }
-
-   public cnr d() {
-      return this.a;
-   }
-
-   public void a(cnr $$0) {
-      this.a = $$0;
+   @Override
+   protected dcu c() {
+      return (dcu)czh.oz;
    }
 }

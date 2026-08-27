@@ -1,111 +1,110 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fcy extends fcv {
-   private final List<fcy.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fdd f = fdd.i().a(0.5F, 0.5F);
+public class fcy<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public fcy() {
-      this(0, 0, 0, 0);
+   public fcy(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   public fcy(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fcy(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fcy a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fcy a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fcy b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fdd b() {
-      return this.f.g();
-   }
-
-   public fdd c() {
-      return this.f;
-   }
-
-   @Override
    public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
-
-      for (fcy.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
-
-      for (fcy.a $$3 : this.c) {
-         $$3.a(this.B(), $$0);
-         $$3.b(this.C(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
+      Arrays.fill(this.g, this.f);
    }
 
-   public <T extends fdc> T a(T $$0) {
-      return this.a($$0, this.b());
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   public <T extends fdc> T a(T $$0, fdd $$1) {
-      this.c.add(new fcy.a($$0, $$1));
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
+      }
+   }
+
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
+   }
+
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(fcy.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
       return $$0;
    }
 
-   public <T extends fdc> T a(T $$0, Consumer<fdd> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fdc> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(fdc $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fdc $$0, fdt $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fdc $$0, fdt $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.w(), $$0::m, $$5);
-      a($$2, $$4, $$0.u(), $$0::n, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)awi.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fcv.a {
-      protected a(fdc $$0, fdd $$1) {
-         super($$0, $$1);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

@@ -1,32 +1,48 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bst {
-   public static bqb<cgy> a(bxl<List<ii>> $$0, float $$1, int $$2, int $$3, bxl<ii> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<cgy>, ? extends App<btn.c<cgy>, btq<cgy>>>)($$6 -> $$6.group($$6.a(bxl.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<ii> $$11 = $$6.b($$6x);
-                     ii $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
+   public static bqq<bpf> a(bya<ib> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, eov::c);
+   }
+
+   public static bsa<bpf> b(bya<? extends bof> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bof::dh);
+   }
+
+   private static <T> bsa<bpf> a(bya<T> $$0, float $$1, int $$2, boolean $$3, Function<T, eov> $$4) {
+      return buc.a(
+         (Function<buc.b<bpf>, ? extends App<buc.c<bpf>, buf<bpf>>>)($$5 -> $$5.group($$5.a(bya.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<byd> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     eov $$11 = $$8.dh();
+                     eov $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((iv)$$12, (double)$$2)) {
                         return false;
                      } else {
-                        ii $$13 = $$11.get($$8.F_().a($$11.size()));
-                        if ($$13 != null && $$8.ad() == $$13.a() && $$12.b().a($$9.dk(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new bxo($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           eov $$13 = $$10.get().a().a().d($$11);
+                           eov $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
                            }
-
-                           return true;
-                        } else {
-                           return false;
                         }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           eov $$16 = bzu.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new byd($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

@@ -1,20 +1,15 @@
-public class dkj extends dim {
-   public dkj(hz $$0, dlj $$1) {
-      super(diz.B, $$0, $$1, csk.d);
+public interface dkj extends bme {
+   epo w_ = czf.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
+   epo x_ = czf.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
+   epo e = epl.a(w_, x_);
+
+   default epo ak_() {
+      return e;
    }
 
-   @Override
-   protected vq l() {
-      return vq.c("container.smoker");
-   }
+   double I();
 
-   @Override
-   protected int a(cpd $$0) {
-      return super.a($$0) / 2;
-   }
+   double J();
 
-   @Override
-   protected ckf a(int $$0, chk $$1) {
-      return new cmc($$0, $$1, this, this.n);
-   }
+   double K();
 }

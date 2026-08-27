@@ -1,11 +1,11 @@
-public final class auf {
-   public static final aup<egv> a = a("water");
-   public static final aup<egv> b = a("lava");
+public class auf {
+   public static final aut<caq> a = a("default_spawns");
+   public static final aut<caq> b = a("full_moon_spawns");
 
    private auf() {
    }
 
-   private static aup<egv> a(String $$0) {
-      return aup.a(kg.y, new aiy($$0));
+   private static aut<caq> a(String $$0) {
+      return aut.a(ki.l, new ajc($$0));
    }
 }

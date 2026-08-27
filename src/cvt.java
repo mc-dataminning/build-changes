@@ -1,55 +1,31 @@
-public interface cvt {
-   int K_();
+import javax.annotation.Nullable;
 
-   int J_();
+public enum cvt implements cvk {
+   a;
 
-   default int ak() {
-      return this.J_() + this.K_();
+   @Nullable
+   @Override
+   public djl c_(ib $$0) {
+      return null;
    }
 
-   default int al() {
-      return this.an() - this.am();
+   @Override
+   public dme a_(ib $$0) {
+      return czh.a.o();
    }
 
-   default int am() {
-      return jb.a(this.J_());
+   @Override
+   public ehr b_(ib $$0) {
+      return ehs.a.g();
    }
 
-   default int an() {
-      return jb.a(this.ak() - 1) + 1;
+   @Override
+   public int J_() {
+      return 0;
    }
 
-   default boolean s(hz $$0) {
-      return this.d($$0.v());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 < this.J_() || $$0 >= this.ak();
-   }
-
-   default int e(int $$0) {
-      return this.f(jb.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.am();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.am();
-   }
-
-   static cvt e(final int $$0, final int $$1) {
-      return new cvt() {
-         @Override
-         public int K_() {
-            return $$1;
-         }
-
-         @Override
-         public int J_() {
-            return $$0;
-         }
-      };
+   @Override
+   public int K_() {
+      return 0;
    }
 }

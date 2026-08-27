@@ -1,9 +1,36 @@
-import com.mojang.serialization.Codec;
+public enum dni implements axg {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-public class dni {
-   public static Codec<? extends dng> a(iv<Codec<? extends dng>> $$0) {
-      iv.a($$0, "noise", dqy.c);
-      iv.a($$0, "flat", dqq.c);
-      return iv.a($$0, "debug", dqm.c);
+   private final String k;
+
+   private dni(String $$0) {
+      this.k = $$0;
+   }
+
+   public String a() {
+      return this.k;
+   }
+
+   @Override
+   public String toString() {
+      return this.k;
+   }
+
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
+   }
+
+   @Override
+   public String c() {
+      return this.k;
    }
 }

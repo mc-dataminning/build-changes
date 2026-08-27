@@ -1,198 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class xb implements vr {
-   public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = avq.a(avq.b, xb::b);
-   private static final Codec<Object> e = Codec.either(d, vs.a)
-      .xmap(
-         $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof vq $$1 ? Either.right($$1) : Either.left($$0)
-      );
-   public static final MapCodec<xb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
-               Codec.STRING.optionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-               avq.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
-            )
-            .apply($$0, xb::a)
+public class xb implements vt {
+   private static final Logger d = LogUtils.getLogger();
+   public static final MapCodec<xb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(xb::b), avu.a(vu.a, "separator").forGetter(xb::d)).apply($$0, xb::new)
    );
-   public static final vr.a<xb> c = new vr.a<>(b, "translatable");
-   private static final vv f = vv.e("%");
-   private static final vv g = vv.e("null");
-   private final String h;
+   public static final vt.a<xb> b = new vt.a<>(a, "selector");
+   private final String e;
    @Nullable
-   private final String i;
-   private final Object[] j;
+   private final gi f;
+   protected final Optional<vs> c;
+
+   public xb(String $$0, Optional<vs> $$1) {
+      this.e = $$0;
+      this.c = $$1;
+      this.f = a($$0);
+   }
+
    @Nullable
-   private sr k;
-   private List<vv> l = ImmutableList.of();
-   private static final Pattern m = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
-
-   private static DataResult<Object> b(@Nullable Object $$0) {
-      return !a($$0) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success($$0);
-   }
-
-   public static boolean a(@Nullable Object $$0) {
-      return $$0 instanceof Number || $$0 instanceof Boolean || $$0 instanceof String;
-   }
-
-   private static Optional<List<Object>> a(Object[] $$0) {
-      return $$0.length == 0 ? Optional.empty() : Optional.of(Arrays.asList($$0));
-   }
-
-   private static Object[] a(Optional<List<Object>> $$0) {
-      return $$0.<Object[]>map($$0x -> $$0x.isEmpty() ? a : $$0x.toArray()).orElse(a);
-   }
-
-   private static xb a(String $$0, Optional<String> $$1, Optional<List<Object>> $$2) {
-      return new xb($$0, $$1.orElse(null), a($$2));
-   }
-
-   public xb(String $$0, @Nullable String $$1, Object[] $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   @Override
-   public vr.a<?> a() {
-      return c;
-   }
-
-   private void e() {
-      sr $$0 = sr.a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         String $$1 = this.i != null ? $$0.a(this.h, this.i) : $$0.a(this.h);
-
-         try {
-            Builder<vv> $$2 = ImmutableList.builder();
-            this.a($$1, $$2::add);
-            this.l = $$2.build();
-         } catch (xc var4) {
-            this.l = ImmutableList.of(vv.e($$1));
-         }
-      }
-   }
-
-   private void a(String $$0, Consumer<vv> $$1) {
-      Matcher $$2 = m.matcher($$0);
+   private static gi a(String $$0) {
+      gi $$1 = null;
 
       try {
-         int $$3 = 0;
-         int $$4 = 0;
-
-         while ($$2.find($$4)) {
-            int $$5 = $$2.start();
-            int $$6 = $$2.end();
-            if ($$5 > $$4) {
-               String $$7 = $$0.substring($$4, $$5);
-               if ($$7.indexOf(37) != -1) {
-                  throw new IllegalArgumentException();
-               }
-
-               $$1.accept(vv.e($$7));
-            }
-
-            String $$8 = $$2.group(2);
-            String $$9 = $$0.substring($$5, $$6);
-            if ("%".equals($$8) && "%%".equals($$9)) {
-               $$1.accept(f);
-            } else {
-               if (!"s".equals($$8)) {
-                  throw new xc(this, "Unsupported format: '" + $$9 + "'");
-               }
-
-               String $$10 = $$2.group(1);
-               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
-               $$1.accept(this.a($$11));
-            }
-
-            $$4 = $$6;
-         }
-
-         if ($$4 < $$0.length()) {
-            String $$12 = $$0.substring($$4);
-            if ($$12.indexOf(37) != -1) {
-               throw new IllegalArgumentException();
-            }
-
-            $$1.accept(vv.e($$12));
-         }
-      } catch (IllegalArgumentException var12) {
-         throw new xc(this, var12);
+         gj $$2 = new gj(new StringReader($$0));
+         $$1 = $$2.t();
+      } catch (CommandSyntaxException var3) {
+         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
       }
+
+      return $$1;
    }
 
-   private vv a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.j.length) {
-         Object $$1 = this.j[$$0];
-         if ($$1 instanceof vq) {
-            return (vq)$$1;
-         } else {
-            return $$1 == null ? g : vv.e($$1.toString());
-         }
+   @Override
+   public vt.a<?> a() {
+      return b;
+   }
+
+   public String b() {
+      return this.e;
+   }
+
+   @Nullable
+   public gi c() {
+      return this.f;
+   }
+
+   public Optional<vs> d() {
+      return this.c;
+   }
+
+   @Override
+   public wg a(@Nullable du $$0, @Nullable bof $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.f != null) {
+         Optional<? extends vs> $$3 = vv.a($$0, this.c, $$1, $$2);
+         return vv.a(this.f.b($$0), $$3, bof::Q_);
       } else {
-         throw new xc(this, $$0);
+         return vs.i();
       }
    }
 
    @Override
-   public <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
-      this.e();
-
-      for (vv $$2 : this.l) {
-         Optional<T> $$3 = $$2.a($$0, $$1);
-         if ($$3.isPresent()) {
-            return $$3;
-         }
-      }
-
-      return Optional.empty();
+   public <T> Optional<T> a(vx.b<T> $$0, wp $$1) {
+      return $$0.accept($$1, this.e);
    }
 
    @Override
-   public <T> Optional<T> a(vv.a<T> $$0) {
-      this.e();
-
-      for (vv $$1 : this.l) {
-         Optional<T> $$2 = $$1.a($$0);
-         if ($$2.isPresent()) {
-            return $$2;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
-      Object[] $$3 = new Object[this.j.length];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         Object $$5 = this.j[$$4];
-         if ($$5 instanceof vq $$6) {
-            $$3[$$4] = vt.a($$0, $$6, $$1, $$2);
-         } else {
-            $$3[$$4] = $$5;
-         }
-      }
-
-      return we.a(new xb(this.h, this.i, $$3));
+   public <T> Optional<T> a(vx.a<T> $$0) {
+      return $$0.accept(this.e);
    }
 
    @Override
@@ -200,7 +82,7 @@ public class xb implements vr {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof xb $$1 && Objects.equals(this.h, $$1.h) && Objects.equals(this.i, $$1.i) && Arrays.equals(this.j, $$1.j)) {
+         if ($$0 instanceof xb $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
             return true;
          }
 
@@ -210,26 +92,12 @@ public class xb implements vr {
 
    @Override
    public int hashCode() {
-      int $$0 = Objects.hashCode(this.h);
-      $$0 = 31 * $$0 + Objects.hashCode(this.i);
-      return 31 * $$0 + Arrays.hashCode(this.j);
+      int $$0 = this.e.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
    @Override
    public String toString() {
-      return "translation{key='" + this.h + "'" + (this.i != null ? ", fallback='" + this.i + "'" : "") + ", args=" + Arrays.toString(this.j) + "}";
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Nullable
-   public String c() {
-      return this.i;
-   }
-
-   public Object[] d() {
-      return this.j;
+      return "pattern{" + this.e + "}";
    }
 }

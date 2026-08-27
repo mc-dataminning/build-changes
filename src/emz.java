@@ -1,42 +1,29 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Supplier;
 
-public record emz(emw b, emw c) implements emw {
-   public static final Codec<emz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emx.a.fieldOf("min").forGetter(emz::c), emx.a.fieldOf("max").forGetter(emz::d)).apply($$0, emz::new)
-   );
+public class emz {
+   private static final Codec<emx> t = kh.H.q().dispatch("condition", emx::b, emy::a);
+   public static final Codec<emx> a = avu.a((Supplier<Codec<emx>>)(() -> avu.e(t, eml.b)));
+   public static final emy b = a("inverted", emu.a);
+   public static final emy c = a("any_of", emm.a);
+   public static final emy d = a("all_of", eml.a);
+   public static final emy e = a("random_chance", enc.a);
+   public static final emy f = a("random_chance_with_looting", end.a);
+   public static final emy g = a("entity_properties", ena.a);
+   public static final emy h = a("killed_by_player", enb.a);
+   public static final emy i = a("entity_scores", ems.a);
+   public static final emy j = a("block_state_property", emw.a);
+   public static final emy k = a("match_tool", ene.a);
+   public static final emy l = a("table_bonus", emn.a);
+   public static final emy m = a("survives_explosion", emt.a);
+   public static final emy n = a("damage_source_properties", emr.a);
+   public static final emy o = a("location_check", emv.a);
+   public static final emy p = a("weather_check", enh.a);
+   public static final emy q = a("reference", emp.a);
+   public static final emy r = a("time_check", enf.a);
+   public static final emy s = a("value_check", eng.a);
 
-   @Override
-   public emv b() {
-      return emx.c;
-   }
-
-   public static emz a(float $$0, float $$1) {
-      return new emz(emu.a($$0), emu.a($$1));
-   }
-
-   @Override
-   public int a(ejc $$0) {
-      return awi.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(ejc $$0) {
-      return awi.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<elk<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public emw c() {
-      return this.b;
-   }
-
-   public emw d() {
-      return this.c;
+   private static emy a(String $$0, Codec<? extends emx> $$1) {
+      return ix.a(kh.H, new ajc($$0), new emy($$1));
    }
 }

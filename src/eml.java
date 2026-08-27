@@ -1,50 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record eml(Optional<Boolean> b, Optional<Boolean> c) implements emb {
-   public static final Codec<eml> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avq.a(Codec.BOOL, "raining").forGetter(eml::d), avq.a(Codec.BOOL, "thundering").forGetter(eml::e)).apply($$0, eml::new)
-   );
+public class eml extends emo {
+   public static final Codec<eml> a = a(eml::new);
+   public static final Codec<eml> b = b(eml::new);
+
+   eml(List<emx> $$0) {
+      super($$0, ac.a($$0));
+   }
+
+   public static eml a(List<emx> $$0) {
+      return new eml(List.copyOf($$0));
+   }
 
    @Override
-   public emc b() {
-      return emd.p;
+   public emy b() {
+      return emz.d;
    }
 
-   public boolean a(ejc $$0) {
-      aow $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+   public static eml.a a(emx.a... $$0) {
+      return new eml.a($$0);
    }
 
-   public static eml.a c() {
-      return new eml.a();
-   }
+   public static class a extends emo.a {
+      public a(emx.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<Boolean> d() {
-      return this.b;
-   }
-
-   public Optional<Boolean> e() {
-      return this.c;
-   }
-
-   public static class a implements emb.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eml.a a(boolean $$0) {
-         this.a = Optional.of($$0);
+      @Override
+      public eml.a and(emx.a $$0) {
+         this.a($$0);
          return this;
       }
 
-      public eml.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eml a() {
-         return new eml(this.a, this.b);
+      @Override
+      protected emx a(List<emx> $$0) {
+         return new eml($$0);
       }
    }
 }

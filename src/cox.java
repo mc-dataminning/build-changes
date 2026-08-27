@@ -1,27 +1,36 @@
-public interface cox {
-   int a = 256;
-   int b = 140;
-   aix<cov> c = a("ponder_goat_horn");
-   aix<cov> d = a("sing_goat_horn");
-   aix<cov> e = a("seek_goat_horn");
-   aix<cov> f = a("feel_goat_horn");
-   aix<cov> g = a("admire_goat_horn");
-   aix<cov> h = a("call_goat_horn");
-   aix<cov> i = a("yearn_goat_horn");
-   aix<cov> j = a("dream_goat_horn");
-
-   private static aix<cov> a(String $$0) {
-      return aix.a(kg.D, new aiy($$0));
+public class cox extends cpl {
+   public cox(cpl.a $$0) {
+      super($$0);
    }
 
-   static cov a(iv<cov> $$0) {
-      iv.a($$0, c, new cov((ij<atk>)atl.mh.get(0), 140, 256.0F));
-      iv.a($$0, d, new cov((ij<atk>)atl.mh.get(1), 140, 256.0F));
-      iv.a($$0, e, new cov((ij<atk>)atl.mh.get(2), 140, 256.0F));
-      iv.a($$0, f, new cov((ij<atk>)atl.mh.get(3), 140, 256.0F));
-      iv.a($$0, g, new cov((ij<atk>)atl.mh.get(4), 140, 256.0F));
-      iv.a($$0, h, new cov((ij<atk>)atl.mh.get(5), 140, 256.0F));
-      iv.a($$0, i, new cov((ij<atk>)atl.mh.get(6), 140, 256.0F));
-      return iv.a($$0, j, new cov((ij<atk>)atl.mh.get(7), 140, 256.0F));
+   @Override
+   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
+      cpq $$3 = $$1.b($$2);
+      if ($$1.cp != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cp.a($$3);
+            $$3.a($$4, $$1, box.d($$2));
+         }
+
+         $$0.a(null, $$1.do(), $$1.dq(), $$1.du(), atp.iI, atq.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+         $$1.b(dqr.C);
+      } else {
+         $$0.a(null, $$1.do(), $$1.dq(), $$1.du(), atp.iK, atq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cua.c($$3);
+            int $$6 = cua.b($$3);
+            $$0.b(new cio($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(atz.c.b(this));
+         $$1.b(dqr.D);
+      }
+
+      return bmm.a($$3, $$0.y_());
+   }
+
+   @Override
+   public int e() {
+      return 1;
    }
 }

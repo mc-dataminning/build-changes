@@ -1,23 +1,24 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cqt extends cmr {
-   public cqt(coy.a $$0) {
+public class cqt extends cpl {
+   public cqt(cpl.a $$0) {
       super($$0);
    }
 
    @Override
-   public cpd ao_() {
-      return crb.a(super.ao_(), crc.E);
-   }
+   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
+      cpq $$3 = $$1.b($$2);
+      $$0.a(null, $$1.do(), $$1.dq(), $$1.du(), atp.xT, atq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cix $$4 = new cix($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dB(), $$1.dz(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      crb.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
-   }
+      $$1.b(atz.c.b(this));
+      if (!$$1.fW().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public String j(cpd $$0) {
-      return cqz.a(crb.d($$0), this.a() + ".effect.");
+      return bmm.a($$3, $$0.y_());
    }
 }

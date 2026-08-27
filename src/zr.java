@@ -1,12 +1,8 @@
-public interface zr extends yd {
-   @Override
-   default up b() {
-      return up.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(zs var1);
-
-   void a(zt var1);
-
-   void a(zu var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface zr {
 }

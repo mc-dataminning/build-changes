@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
-
-public class aia implements xx<ahz> {
-   public static final aia a = new aia();
-   public static final xo<ByteBuf, aia> b = xo.a(a);
-
-   private aia() {
-   }
-
+public interface aia extends ahu, un {
    @Override
-   public xz<aia> a() {
-      return aib.b;
+   default ur b() {
+      return ur.c;
    }
 
-   public void a(ahz $$0) {
-      $$0.a(this);
-   }
+   void a(aib var1);
 }

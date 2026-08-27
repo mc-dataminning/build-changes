@@ -1,14 +1,14 @@
-import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dqb<T extends dqa> {
-   dqb<dps> a = a("block", new dps.a());
-   dqb<dpu> b = a("entity", new dpu.a());
+public interface dqb<T> extends AutoCloseable {
+   CompletableFuture<dpw<T>> a(cvl var1);
 
-   Codec<T> a();
+   void a(dpw<T> var1);
 
-   xo<vb, T> b();
+   void a(boolean var1);
 
-   static <S extends dqb<T>, T extends dqa> S a(String $$0, S $$1) {
-      return iv.a(kf.v, $$0, $$1);
+   @Override
+   default void close() throws IOException {
    }
 }

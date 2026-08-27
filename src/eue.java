@@ -1,27 +1,33 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class eue extends eud {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class eue extends euz {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eud> a = Lists.newArrayList();
 
    public static eue a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      eue $$3 = new eue();
+      eue $$1 = new eue();
 
       try {
-         $$3.a = ewa.b("downloadLink", $$2, "");
-         $$3.b = ewa.b("resourcePackUrl", $$2, "");
-         $$3.c = ewa.b("resourcePackHash", $$2, "");
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(eud.a($$4.next().getAsJsonObject()));
+            }
+         }
       } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
 
-      return $$3;
+      return $$1;
    }
 }

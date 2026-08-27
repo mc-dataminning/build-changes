@@ -1,110 +1,71 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.Validate;
 
-public class gjk implements gjb {
-   private final List<Pair<Predicate<dlj>, gjb>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final ghb d;
-   protected final fxc e;
-   protected final fxa f;
-   private final Map<dlj, BitSet> h = new Reference2ObjectOpenHashMap();
+public class gjk implements arf<gjj> {
+   public gjj b(JsonObject $$0) {
+      Builder<gji> $$1 = ImmutableList.builder();
+      int $$2 = awc.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   public gjk(List<Pair<Predicate<dlj>, gjb>> $$0) {
-      this.g = $$0;
-      gjb $$1 = (gjb)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
-   }
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = awc.v($$0, "frames");
 
-   @Override
-   public List<fwq> a(@Nullable dlj $$0, @Nullable ie $$1, awp $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dlj>, gjb> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               gji $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
                }
             }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
 
-            this.h.put($$0, $$3);
+      int $$8 = awc.a($$0, "width", -1);
+      int $$9 = awc.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = awc.a($$0, "interpolate", false);
+      return new gjj($$1.build(), $$8, $$9, $$2, $$10);
+   }
+
+   @Nullable
+   private gji a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new gji(awc.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = awc.m($$1, "frames[" + $$0 + "]");
+         int $$3 = awc.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
          }
 
-         List<fwq> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((gjb)this.g.get($$8).getRight()).a($$0, $$1, awp.a($$7)));
-            }
-         }
-
-         return $$6;
+         int $$4 = awc.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new gji($$4, $$3);
+      } else {
+         return null;
       }
    }
 
    @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public ghb e() {
-      return this.d;
-   }
-
-   @Override
-   public fxc f() {
-      return this.e;
-   }
-
-   @Override
-   public fxa g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<dlj>, gjb>> a = Lists.newArrayList();
-
-      public void a(Predicate<dlj> $$0, gjb $$1) {
-         this.a.add(Pair.of($$0, $$1));
-      }
-
-      public gjb a() {
-         return new gjk(this.a);
-      }
+   public String a() {
+      return "animation";
    }
 }

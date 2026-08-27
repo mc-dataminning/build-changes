@@ -1,44 +1,74 @@
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record ads(String b, String c, int d, @Nullable vq e, Optional<xg> f) implements xx<aag> {
-   public static final xo<vb, ads> a = xx.a(ads::a, ads::new);
+public class ads implements xz<aai> {
+   public static final xq<vd, ads> a = xz.a(ads::a, ads::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final vs f;
+   private final eqc.a g;
+   private final Optional<xi> h;
+   private final int i;
 
-   private ads(vb $$0) {
-      this($$0.r(), $$0.r(), $$0.n(), $$0.c(uq::m), xi.d.decode($$0));
+   public ads(epr $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
    }
 
-   private void a(vb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e, uq::a);
-      xi.d.encode($$0, this.f);
+   private ads(vd $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = vr.a;
+         this.g = eqc.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = vu.b.decode($$0);
+         this.g = $$0.b(eqc.a.class);
+         this.h = xk.d.decode($$0);
+      }
+   }
+
+   private void a(vd $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         vu.b.encode($$0, this.f);
+         $$0.a(this.g);
+         xk.d.encode($$0, this.h);
+      }
    }
 
    @Override
-   public xz<ads> a() {
-      return aeq.aK;
+   public yb<ads> a() {
+      return aet.aI;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   @Nullable
-   public vq g() {
+   public String b() {
       return this.e;
    }
 
-   public Optional<xg> h() {
+   public vs e() {
       return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public eqc.a g() {
+      return this.g;
+   }
+
+   public Optional<xi> h() {
+      return this.h;
    }
 }

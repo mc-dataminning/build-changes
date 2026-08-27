@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum esq {
+   a(0),
+   b(1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqa
-@epz
-interface esq {
+   private final int c;
+
+   private esq(int $$0) {
+      this.c = $$0;
+   }
+
+   public int a() {
+      return this.c;
+   }
 }

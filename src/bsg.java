@@ -1,42 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bsg {
-   public static brl<cgy> a(bxl<ii> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return btn.a(
-         (Function<btn.b<cgy>, ? extends App<btn.c<cgy>, btq<cgy>>>)($$5 -> $$5.group($$5.a(bxl.E), $$5.c(bxl.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     ii $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ad() && (!$$13.isPresent() || $$9.X() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dm()) > $$3) {
-                           enz $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+public class bsg extends bqp<boz> {
+   private final blq c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-                           while ($$14 == null || hz.a($$14).k($$10.dm()) > $$3) {
-                              $$14 = bzc.a($$10, 15, 7, enz.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public bsg(blq $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(bya.n, byb.b, bya.Q, byb.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
 
-                           $$7.a(new bxo($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dm()) > $$2) {
-                           $$7.a(new bxo($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
-
-                     return true;
-                  }))
-      );
+   protected void a(apa $$0, boz $$1, long $$2) {
+      awt $$3 = $$1.ef();
+      float $$4 = awm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = awm.g($$1.dz() + 2.0F * $$3.i() * this.d - this.d);
+      eov $$6 = eov.a($$4, $$5);
+      $$1.dM().a(bya.n, new bqs($$1.br().e($$6)));
+      $$1.dM().a(bya.Q, this.c.a($$3));
    }
 }

@@ -1,46 +1,70 @@
-public class fmc<T extends bnq> extends fmr<T> {
-   private final fpj a;
-   private final fpj b;
-   private final fpj f;
-   private final fpj g;
-   private final fpj h;
-   private final fpj i;
-   private static final int j = 6;
-
-   public fmc(fpj $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+public class fmc {
+   public static void a(fqf $$0, fqf $$1, fqf $$2, boolean $$3) {
+      fqf $$4 = $$3 ? $$0 : $$1;
+      fqf $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fpp a(fpn $$0) {
-      fpr $$1 = new fpr();
-      fps $$2 = $$1.a();
-      $$2.a("head", fpo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fpl.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fpo.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fpl.a(0.0F, 6.0F, 0.0F));
-      fpo $$3 = fpo.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fpl.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fpl.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fpl.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fpl.a(2.0F, 18.0F, -4.0F));
-      return fpp.a($$1, 64, 32);
+   public static void a(fqf $$0, fqf $$1, box $$2, boolean $$3) {
+      fqf $$4 = $$3 ? $$0 : $$1;
+      fqf $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)coa.k($$2.fr());
+      float $$7 = awm.a((float)$$2.ft(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = awm.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = awm.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   @Override
-   public fpj a() {
-      return this.a;
+   public static <T extends boz> void a(fqf $$0, fqf $$1, T $$2, float $$3, float $$4) {
+      float $$5 = awm.a($$3 * (float) Math.PI);
+      float $$6 = awm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fo() == bor.b) {
+         $$0.e = -1.8849558F + awm.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + awm.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + awm.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + awm.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      }
+
+      a($$0, $$1, $$4);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = awi.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = awi.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = awi.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = awi.b($$1 * 0.6662F) * 1.4F * $$2;
+   public static void a(fqf $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (awm.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * awm.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fqf $$0, fqf $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fqf $$0, fqf $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = awm.a($$3 * (float) Math.PI);
+      float $$6 = awm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

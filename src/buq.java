@@ -1,62 +1,19 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class buq extends bvf {
-   private final boq a;
+public class buq {
+   private static final blq a = blw.a(100, 200);
 
-   public buq(boq $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bvf.a.a, bvf.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.ci() < 140;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<hz> $$0 = hz.b(
-         awi.a(this.a.dr() - 1.0), this.a.ds(), awi.a(this.a.dx() - 1.0), awi.a(this.a.dr() + 1.0), awi.a(this.a.dt() + 8.0), awi.a(this.a.dx() + 1.0)
+   public static bqq<box> a() {
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$0 -> $$0.group($$0.a(bya.aB), $$0.a(bya.m), $$0.c(bya.aG), $$0.b(bya.B), $$0.c(bya.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(axo.a);
+                     $$2.a(axo.a, (long)a.a($$3x.F_()));
+                     $$1.b();
+                     $$4x.b(bpi.m);
+                     return true;
+                  }))
       );
-      hz $$1 = null;
-
-      for (hz $$2 : $$0) {
-         if (this.a(this.a.dM(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = hz.a(this.a.dr(), this.a.dt() + 8.0, this.a.dx());
-      }
-
-      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
-   }
-
-   @Override
-   public void e() {
-      this.h();
-      this.a.a(0.02F, new enz((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
-      this.a.a(bon.a, this.a.dp());
-   }
-
-   private boolean a(cvu $$0, hz $$1) {
-      dlj $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(cyu.nd)) && $$2.a($$0, $$1, ehm.a);
    }
 }

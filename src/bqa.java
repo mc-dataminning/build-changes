@@ -1,101 +1,208 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public abstract class bqa<E extends boi> implements bqb<E> {
-   public static final int a = 60;
-   protected final Map<bxl<?>, bxm> b;
-   private bqa.a c = bqa.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bqa {
+   private final il<bpz> a;
+   private final Map<bqc.a, Set<bqc>> b = Maps.newEnumMap(bqc.a.class);
+   private final Map<UUID, bqc> c = new Object2ObjectArrayMap();
+   private final Set<bqc> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bqa> h;
 
-   public bqa(Map<bxl<?>, bxm> $$0) {
-      this($$0, 60);
+   public bqa(il<bpz> $$0, Consumer<bqa> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a().a();
    }
 
-   public bqa(Map<bxl<?>, bxm> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public il<bpz> a() {
+      return this.a;
    }
 
-   public bqa(Map<bxl<?>, bxm> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   public double b() {
+      return this.e;
    }
 
-   @Override
-   public bqa.a a() {
-      return this.c;
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
+      }
    }
 
-   @Override
-   public final boolean e(aow $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bqa.a.b;
-         int $$3 = this.e + $$0.F_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
+   public Set<bqc> a(bqc.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   }
+
+   public Set<bqc> c() {
+      return ImmutableSet.copyOf(this.c.values());
+   }
+
+   @Nullable
+   public bqc a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public boolean a(bqc $$0) {
+      return this.c.get($$0.a()) != null;
+   }
+
+   private void f(bqc $$0) {
+      bqc $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.b()).add($$0);
+         this.d();
+      }
+   }
+
+   public void b(bqc $$0) {
+      bqc $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$0 != $$1) {
+         Set<bqc> $$2 = this.a($$0.b());
+         if ($$1 != null) {
+            $$2.remove($$1);
+         }
+
+         $$2.add($$0);
+         this.d();
+      }
+   }
+
+   public void c(bqc $$0) {
+      this.f($$0);
+   }
+
+   public void d(bqc $$0) {
+      this.f($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   public void e(bqc $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bqc $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bqc $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
          return true;
       } else {
          return false;
       }
    }
 
-   protected void d(aow $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(aow $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
+   public void e() {
+      for (bqc $$0 : this.c()) {
+         this.e($$0);
       }
    }
 
-   protected void c(aow $$0, E $$1, long $$2) {
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
    }
 
-   @Override
-   public final void g(aow $$0, E $$1, long $$2) {
-      this.c = bqa.a.a;
-      this.b($$0, $$1, $$2);
+   private double h() {
+      double $$0 = this.b();
+
+      for (bqc $$1 : this.b(bqc.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bqc $$3 : this.b(bqc.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bqc $$4 : this.b(bqc.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.a.a().a($$2);
    }
 
-   protected void b(aow $$0, E $$1, long $$2) {
+   private Collection<bqc> b(bqc.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
    }
 
-   protected boolean a(aow $$0, E $$1, long $$2) {
-      return false;
+   public void a(bqa $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
    }
 
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
+   public sy g() {
+      sy $$0 = new sy();
+      ajb<bpz> $$1 = this.a.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("Name", $$1.a().toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         te $$2 = new te();
+
+         for (bqc $$3 : this.d) {
+            $$2.add($$3.d());
+         }
+
+         $$0.a("Modifiers", $$2);
+      }
+
+      return $$0;
    }
 
-   protected boolean a(aow $$0, E $$1) {
-      return true;
-   }
+   public void a(sy $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         te $$1 = $$0.c("Modifiers", 10);
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<bxl<?>, bxm> $$1 : this.b.entrySet()) {
-         bxl<?> $$2 = $$1.getKey();
-         bxm $$3 = $$1.getValue();
-         if (!$$0.dO().a($$2, $$3)) {
-            return false;
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bqc $$3 = bqc.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
          }
       }
 
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+      this.d();
    }
 }

@@ -1,4 +1,6 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public record ghh(Codec<? extends ghf> a) {
+@Deprecated
+public interface ghh {
+   float call(cpq var1, @Nullable fra var2, @Nullable box var3, int var4);
 }

@@ -1,59 +1,141 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cxh extends cwu {
-   public static final Codec<cxh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aiw.d(cwx.ah), aiw.d(cwx.ai), aiw.d(cwx.aj), aiw.d(cwx.ak), aiw.d(cwx.al)).apply($$0, $$0.stable(cxh::new))
-   );
-   private final ij<cwq> c;
-   private final ij<cwq> d;
-   private final ij<cwq> e;
-   private final ij<cwq> f;
-   private final ij<cwq> g;
+public abstract class cxh implements cxg {
+   public static final Codec<cxh> a = kh.ab.q().dispatchStable(cxh::a, Function.identity());
+   private final Supplier<Set<il<cxd>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   public static cxh a(ik<cwq> $$0) {
-      return new cxh($$0.b(cwx.ah), $$0.b(cwx.ai), $$0.b(cwx.aj), $$0.b(cwx.ak), $$0.b(cwx.al));
+   protected cxh() {
    }
 
-   private cxh(ij<cwq> $$0, ij<cwq> $$1, ij<cwq> $$2, ij<cwq> $$3, ij<cwq> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   protected abstract Codec<? extends cxh> a();
+
+   protected abstract Stream<il<cxd>> b();
+
+   public Set<il<cxd>> c() {
+      return this.b.get();
    }
 
-   @Override
-   protected Stream<ij<cwq>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
+   public Set<il<cxd>> a(int $$0, int $$1, int $$2, int $$3, cxm.f $$4) {
+      int $$5 = iw.a($$0 - $$3);
+      int $$6 = iw.a($$1 - $$3);
+      int $$7 = iw.a($$2 - $$3);
+      int $$8 = iw.a($$0 + $$3);
+      int $$9 = iw.a($$1 + $$3);
+      int $$10 = iw.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<il<cxd>> $$14 = Sets.newHashSet();
 
-   @Override
-   protected Codec<? extends cwu> a() {
-      return b;
-   }
-
-   @Override
-   public ij<cwq> getNoiseBiome(int $$0, int $$1, int $$2, cwz.f $$3) {
-      int $$4 = iu.c($$0);
-      int $$5 = iu.c($$1);
-      int $$6 = iu.c($$2);
-      int $$7 = jb.a($$4);
-      int $$8 = jb.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (jb.a($$4) * 2 + 1) * 8;
-         int $$10 = (jb.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dqo.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
       }
+
+      return $$14;
+   }
+
+   @Nullable
+   public Pair<ib, il<cxd>> a(int $$0, int $$1, int $$2, int $$3, Predicate<il<cxd>> $$4, awt $$5, cxm.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<ib, il<cxd>> a(ib $$0, int $$1, int $$2, int $$3, Predicate<il<cxd>> $$4, cxm.f $$5, cwh $$6) {
+      Set<il<cxd>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = awm.a($$0.v(), $$6.J_() + 1, $$6.ak(), $$3).toArray();
+
+         for (ib.a $$10 : ib.a(ib.c, $$8, ih.f, ih.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = iw.a($$11);
+            int $$14 = iw.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = iw.a($$15);
+               il<cxd> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new ib($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<ib, il<cxd>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<il<cxd>> $$5, awt $$6, boolean $$7, cxm.f $$8) {
+      int $$9 = iw.a($$0);
+      int $$10 = iw.a($$2);
+      int $$11 = iw.a($$3);
+      int $$12 = iw.a($$1);
+      Pair<ib, il<cxd>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               il<cxd> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     ib $$24 = new ib(iw.c($$21), $$1, iw.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
+   }
+
+   @Override
+   public abstract il<cxd> getNoiseBiome(int var1, int var2, int var3, cxm.f var4);
+
+   public void a(List<String> $$0, ib $$1, cxm.f $$2) {
    }
 }

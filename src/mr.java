@@ -1,164 +1,32 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.function.UnaryOperator;
 
 public class mr {
-   public static final mq a = a("cube", mt.c, mt.j, mt.k, mt.l, mt.m, mt.n, mt.o);
-   public static final mq b = a("cube_directional", mt.c, mt.j, mt.k, mt.l, mt.m, mt.n, mt.o);
-   public static final mq c = a("cube_all", mt.a);
-   public static final mq d = a("cube_all_inner_faces", mt.a);
-   public static final mq e = a("cube_mirrored_all", "_mirrored", mt.a);
-   public static final mq f = a("cube_north_west_mirrored_all", "_north_west_mirrored", mt.a);
-   public static final mq g = a("cube_column_uv_locked_x", "_x", mt.d, mt.i);
-   public static final mq h = a("cube_column_uv_locked_y", "_y", mt.d, mt.i);
-   public static final mq i = a("cube_column_uv_locked_z", "_z", mt.d, mt.i);
-   public static final mq j = a("cube_column", mt.d, mt.i);
-   public static final mq k = a("cube_column_horizontal", "_horizontal", mt.d, mt.i);
-   public static final mq l = a("cube_column_mirrored", "_mirrored", mt.d, mt.i);
-   public static final mq m = a("cube_top", mt.f, mt.i);
-   public static final mq n = a("cube_bottom_top", mt.f, mt.e, mt.i);
-   public static final mq o = a("cube_bottom_top_inner_faces", mt.f, mt.e, mt.i);
-   public static final mq p = a("orientable", mt.f, mt.g, mt.i);
-   public static final mq q = a("orientable_with_bottom", mt.f, mt.e, mt.i, mt.g);
-   public static final mq r = a("orientable_vertical", "_vertical", mt.g, mt.i);
-   public static final mq s = a("button", mt.b);
-   public static final mq t = a("button_pressed", "_pressed", mt.b);
-   public static final mq u = a("button_inventory", "_inventory", mt.b);
-   public static final mq v = a("door_bottom_left", "_bottom_left", mt.f, mt.e);
-   public static final mq w = a("door_bottom_left_open", "_bottom_left_open", mt.f, mt.e);
-   public static final mq x = a("door_bottom_right", "_bottom_right", mt.f, mt.e);
-   public static final mq y = a("door_bottom_right_open", "_bottom_right_open", mt.f, mt.e);
-   public static final mq z = a("door_top_left", "_top_left", mt.f, mt.e);
-   public static final mq A = a("door_top_left_open", "_top_left_open", mt.f, mt.e);
-   public static final mq B = a("door_top_right", "_top_right", mt.f, mt.e);
-   public static final mq C = a("door_top_right_open", "_top_right_open", mt.f, mt.e);
-   public static final mq D = a("custom_fence_post", "_post", mt.b, mt.c);
-   public static final mq E = a("custom_fence_side_north", "_side_north", mt.b);
-   public static final mq F = a("custom_fence_side_east", "_side_east", mt.b);
-   public static final mq G = a("custom_fence_side_south", "_side_south", mt.b);
-   public static final mq H = a("custom_fence_side_west", "_side_west", mt.b);
-   public static final mq I = a("custom_fence_inventory", "_inventory", mt.b);
-   public static final mq J = a("fence_post", "_post", mt.b);
-   public static final mq K = a("fence_side", "_side", mt.b);
-   public static final mq L = a("fence_inventory", "_inventory", mt.b);
-   public static final mq M = a("template_wall_post", "_post", mt.r);
-   public static final mq N = a("template_wall_side", "_side", mt.r);
-   public static final mq O = a("template_wall_side_tall", "_side_tall", mt.r);
-   public static final mq P = a("wall_inventory", "_inventory", mt.r);
-   public static final mq Q = a("template_custom_fence_gate", mt.b, mt.c);
-   public static final mq R = a("template_custom_fence_gate_open", "_open", mt.b, mt.c);
-   public static final mq S = a("template_custom_fence_gate_wall", "_wall", mt.b, mt.c);
-   public static final mq T = a("template_custom_fence_gate_wall_open", "_wall_open", mt.b, mt.c);
-   public static final mq U = a("template_fence_gate", mt.b);
-   public static final mq V = a("template_fence_gate_open", "_open", mt.b);
-   public static final mq W = a("template_fence_gate_wall", "_wall", mt.b);
-   public static final mq X = a("template_fence_gate_wall_open", "_wall_open", mt.b);
-   public static final mq Y = a("pressure_plate_up", mt.b);
-   public static final mq Z = a("pressure_plate_down", "_down", mt.b);
-   public static final mq aa = a(mt.c);
-   public static final mq ab = a("slab", mt.e, mt.f, mt.i);
-   public static final mq ac = a("slab_top", "_top", mt.e, mt.f, mt.i);
-   public static final mq ad = a("leaves", mt.a);
-   public static final mq ae = a("stairs", mt.e, mt.f, mt.i);
-   public static final mq af = a("inner_stairs", "_inner", mt.e, mt.f, mt.i);
-   public static final mq ag = a("outer_stairs", "_outer", mt.e, mt.f, mt.i);
-   public static final mq ah = a("template_trapdoor_top", "_top", mt.b);
-   public static final mq ai = a("template_trapdoor_bottom", "_bottom", mt.b);
-   public static final mq aj = a("template_trapdoor_open", "_open", mt.b);
-   public static final mq ak = a("template_orientable_trapdoor_top", "_top", mt.b);
-   public static final mq al = a("template_orientable_trapdoor_bottom", "_bottom", mt.b);
-   public static final mq am = a("template_orientable_trapdoor_open", "_open", mt.b);
-   public static final mq an = a("pointed_dripstone", mt.p);
-   public static final mq ao = a("cross", mt.p);
-   public static final mq ap = a("tinted_cross", mt.p);
-   public static final mq aq = a("flower_pot_cross", mt.q);
-   public static final mq ar = a("tinted_flower_pot_cross", mt.q);
-   public static final mq as = a("rail_flat", mt.s);
-   public static final mq at = a("rail_curved", "_corner", mt.s);
-   public static final mq au = a("template_rail_raised_ne", "_raised_ne", mt.s);
-   public static final mq av = a("template_rail_raised_sw", "_raised_sw", mt.s);
-   public static final mq aw = a("carpet", mt.t);
-   public static final mq ax = a("flowerbed_1", "_1", mt.P, mt.y);
-   public static final mq ay = a("flowerbed_2", "_2", mt.P, mt.y);
-   public static final mq az = a("flowerbed_3", "_3", mt.P, mt.y);
-   public static final mq aA = a("flowerbed_4", "_4", mt.P, mt.y);
-   public static final mq aB = a("coral_fan", mt.x);
-   public static final mq aC = a("coral_wall_fan", mt.x);
-   public static final mq aD = a("template_glazed_terracotta", mt.u);
-   public static final mq aE = a("template_chorus_flower", mt.b);
-   public static final mq aF = a("template_daylight_detector", mt.f, mt.i);
-   public static final mq aG = a("template_glass_pane_noside", "_noside", mt.v);
-   public static final mq aH = a("template_glass_pane_noside_alt", "_noside_alt", mt.v);
-   public static final mq aI = a("template_glass_pane_post", "_post", mt.v, mt.w);
-   public static final mq aJ = a("template_glass_pane_side", "_side", mt.v, mt.w);
-   public static final mq aK = a("template_glass_pane_side_alt", "_side_alt", mt.v, mt.w);
-   public static final mq aL = a("template_command_block", mt.g, mt.h, mt.i);
-   public static final mq aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", mt.b);
-   public static final mq aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", mt.b);
-   public static final mq aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", mt.b);
-   public static final mq aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", mt.b);
-   public static final mq aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", mt.b);
-   public static final mq aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", mt.b);
-   public static final mq aS = a("template_anvil", mt.f);
-   public static final mq[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, mt.y)).toArray(mq[]::new);
-   public static final mq aU = a("stem_fruit", mt.y, mt.z);
-   public static final mq aV = a("crop", mt.A);
-   public static final mq aW = a("template_farmland", mt.B, mt.f);
-   public static final mq aX = a("template_fire_floor", mt.C);
-   public static final mq aY = a("template_fire_side", mt.C);
-   public static final mq aZ = a("template_fire_side_alt", mt.C);
-   public static final mq ba = a("template_fire_up", mt.C);
-   public static final mq bb = a("template_fire_up_alt", mt.C);
-   public static final mq bc = a("template_campfire", mt.C, mt.K);
-   public static final mq bd = a("template_lantern", mt.D);
-   public static final mq be = a("template_hanging_lantern", "_hanging", mt.D);
-   public static final mq bf = a("template_torch", mt.G);
-   public static final mq bg = a("template_torch_wall", mt.G);
-   public static final mq bh = a("template_piston", mt.E, mt.e, mt.i);
-   public static final mq bi = a("template_piston_head", mt.E, mt.i, mt.F);
-   public static final mq bj = a("template_piston_head_short", mt.E, mt.i, mt.F);
-   public static final mq bk = a("template_seagrass", mt.b);
-   public static final mq bl = a("template_turtle_egg", mt.a);
-   public static final mq bm = a("template_two_turtle_eggs", mt.a);
-   public static final mq bn = a("template_three_turtle_eggs", mt.a);
-   public static final mq bo = a("template_four_turtle_eggs", mt.a);
-   public static final mq bp = a("template_single_face", mt.b);
-   public static final mq bq = a("template_cauldron_level1", mt.N, mt.M, mt.c, mt.f, mt.e, mt.i);
-   public static final mq br = a("template_cauldron_level2", mt.N, mt.M, mt.c, mt.f, mt.e, mt.i);
-   public static final mq bs = a("template_cauldron_full", mt.N, mt.M, mt.c, mt.f, mt.e, mt.i);
-   public static final mq bt = a("template_azalea", mt.f, mt.i);
-   public static final mq bu = a("template_potted_azalea_bush", mt.q, mt.f, mt.i);
-   public static final mq bv = a("template_potted_azalea_bush", mt.q, mt.f, mt.i);
-   public static final mq bw = a("sniffer_egg", mt.f, mt.e, mt.j, mt.k, mt.l, mt.m);
-   public static final mq bx = b("generated", mt.H);
-   public static final mq by = b("template_music_disc", mt.H);
-   public static final mq bz = b("handheld", mt.H);
-   public static final mq bA = b("handheld_rod", mt.H);
-   public static final mq bB = b("generated", mt.H, mt.I);
-   public static final mq bC = b("generated", mt.H, mt.I, mt.J);
-   public static final mq bD = b("template_shulker_box", mt.c);
-   public static final mq bE = b("template_bed", mt.c);
-   public static final mq bF = b("template_banner");
-   public static final mq bG = b("template_skull");
-   public static final mq bH = a("template_candle", mt.a, mt.c);
-   public static final mq bI = a("template_two_candles", mt.a, mt.c);
-   public static final mq bJ = a("template_three_candles", mt.a, mt.c);
-   public static final mq bK = a("template_four_candles", mt.a, mt.c);
-   public static final mq bL = a("template_cake_with_candle", mt.L, mt.e, mt.i, mt.f, mt.c);
-   public static final mq bM = a("template_sculk_shrieker", mt.e, mt.i, mt.f, mt.c, mt.O);
-
-   private static mq a(mt... $$0) {
-      return new mq(Optional.empty(), Optional.empty(), $$0);
+   @Deprecated
+   public static ajc a(String $$0) {
+      return new ajc("minecraft", "block/" + $$0);
    }
 
-   private static mq a(String $$0, mt... $$1) {
-      return new mq(Optional.of(new aiy("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   public static ajc b(String $$0) {
+      return new ajc("minecraft", "item/" + $$0);
    }
 
-   private static mq b(String $$0, mt... $$1) {
-      return new mq(Optional.of(new aiy("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   public static ajc a(czf $$0, String $$1) {
+      ajc $$2 = kh.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   private static mq a(String $$0, String $$1, mt... $$2) {
-      return new mq(Optional.of(new aiy("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public static ajc a(czf $$0) {
+      ajc $$1 = kh.e.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static ajc a(cpl $$0) {
+      ajc $$1 = kh.h.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static ajc a(cpl $$0, String $$1) {
+      ajc $$2 = kh.h.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

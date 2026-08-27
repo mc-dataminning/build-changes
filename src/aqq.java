@@ -1,14 +1,11 @@
-public enum aqq {
-   a("assets"),
-   b("data");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final String c;
+public record aqq(ckl b) {
+   private static final Codec<aqq> c = RecordCodecBuilder.create($$0 -> $$0.group(ckn.f.fieldOf("enabled").forGetter(aqq::a)).apply($$0, aqq::new));
+   public static final arg<aqq> a = arg.a("features", c);
 
-   private aqq(String $$0) {
-      this.c = $$0;
-   }
-
-   public String a() {
-      return this.c;
+   public ckl a() {
+      return this.b;
    }
 }

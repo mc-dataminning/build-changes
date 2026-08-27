@@ -1,38 +1,53 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class exf {
-   private final fqf a;
-   private int b = -1;
-   @Nullable
-   private Consumer<sw> c;
+public class exf extends exk {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vs c = vs.c("mco.configure.world.closing");
+   private final euk d;
+   private final evt e;
 
-   public exf(fqf $$0) {
-      this.a = $$0;
+   public exf(euk $$0, evt $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public boolean a(int $$0, @Nullable sw $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      ett $$0 = ett.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = euk.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (evh var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   private int a(Consumer<sw> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<sw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new afk($$2, $$0));
-   }
-
-   public void a(hz $$0, Consumer<sw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aev($$2, $$0));
+   @Override
+   public vs a() {
+      return c;
    }
 }

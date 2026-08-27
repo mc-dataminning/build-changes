@@ -1,24 +1,20 @@
-public record fds(int a, int b) {
-   public static fds a(fdq $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fds($$1, $$2);
-         case b -> new fds($$2, $$1);
-      };
+import java.util.function.Consumer;
+
+public class fds {
+   private static final int a = 4;
+
+   private fds() {
    }
 
-   public fds a(fdr $$0) {
-      return switch ($$0) {
-         case b -> new fds(this.a, this.b + 1);
-         case a -> new fds(this.a, this.b - 1);
-         case c -> new fds(this.a - 1, this.b);
-         case d -> new fds(this.a + 1, this.b);
-      };
+   public static fdx a(ezv $$0, fdy $$1, vs $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public int a(fdq $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static fdx a(ezv $$0, fdy $$1, vs $$2, Consumer<fdz> $$3) {
+      fea $$4 = fea.d().a(4);
+      $$4.a(new fbr($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

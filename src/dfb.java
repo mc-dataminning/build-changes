@@ -1,34 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfb extends cys implements cyv {
-   public static final MapCodec<dfb> a = b(dfb::new);
+public class dfb extends cyt {
+   public static final MapCodec<dfb> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dmt.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dfb::new)
+   );
+   public static final dmv f = dmu.w;
 
    @Override
    public MapCodec<dfb> a() {
-      return a;
+      return e;
    }
 
-   public dfb(dli.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(cvu $$0, hz $$1, dlj $$2) {
-      return $$0.a_($$1.d()).i();
+   protected dfb(dmt $$0, dmd.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
-      return true;
+   protected int g(dme $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
-      $$0.b($$2.d(), cyu.sG.o());
+   protected dme a(dme $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   public hz a(hz $$0) {
-      return $$0.d();
+   protected int b(cwe $$0, ib $$1) {
+      Class<? extends bof> $$2 = switch (this.d.f()) {
+         case a -> bof.class;
+         case b -> box.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(f);
    }
 }

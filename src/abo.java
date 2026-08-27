@@ -1,29 +1,20 @@
-public record abo(int b, float c) implements xx<aag> {
-   public static final xo<uq, abo> a = xx.a(abo::a, abo::new);
+public record abo(cvl b) implements xz<aai> {
+   public static final xq<us, abo> a = xz.a(abo::a, abo::new);
 
-   public abo(boi $$0) {
-      this($$0.aj(), $$0.eF());
+   private abo(us $$0) {
+      this($$0.f());
    }
 
-   private abo(uq $$0) {
-      this($$0.n(), $$0.readFloat());
-   }
-
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<abo> a() {
-      return aeq.H;
+   public yb<abo> a() {
+      return aet.F;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public float e() {
-      return this.c;
    }
 }

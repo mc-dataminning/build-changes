@@ -1,71 +1,99 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Optional;
 
-public record vx(List<wc> d) {
-   public static final Codec<vx> a = wc.a.listOf().xmap(vx::new, vx::a);
-   public static vx b = new vx(List.of());
-   public static final int c = 20;
-
-   public void a(awt.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (wc $$1 : this.d) {
-         $$0.update($$1.b());
-      }
-   }
-
-   public vx.a a(wd $$0) {
-      return new vx.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
-   }
-
-   public List<wc> a() {
-      return this.d;
-   }
-
-   public static record a(List<wc.a> b) {
-      public static final vx.a a = new vx.a(List.of());
-
-      public a(uq $$0) {
-         this($$0.a(uq.a(ArrayList::new, 20), wc.a::a));
+public interface vx {
+   Optional<axo> a = Optional.of(axo.a);
+   vx b = new vx() {
+      @Override
+      public <T> Optional<T> a(vx.a<T> $$0) {
+         return Optional.empty();
       }
 
-      public void a(uq $$0) {
-         $$0.a(this.b, wc.a::a);
+      @Override
+      public <T> Optional<T> a(vx.b<T> $$0, wp $$1) {
+         return Optional.empty();
       }
+   };
 
-      public Optional<vx> a(wd $$0) {
-         List<wc> $$1 = new ArrayList<>(this.b.size());
+   <T> Optional<T> a(vx.a<T> var1);
 
-         for (wc.a $$2 : this.b) {
-            Optional<wc> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
+   <T> Optional<T> a(vx.b<T> var1, wp var2);
 
-            $$1.add($$3.get());
+   static vx e(final String $$0) {
+      return new vx() {
+         @Override
+         public <T> Optional<T> a(vx.a<T> $$0x) {
+            return $$0.accept($$0);
          }
 
-         return Optional.of(new vx($$1));
-      }
-
-      public List<wc.a> a() {
-         return this.b;
-      }
+         @Override
+         public <T> Optional<T> a(vx.b<T> $$0x, wp $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
    }
 
-   public static record b(int a, BitSet b) {
-      public b(uq $$0) {
-         this($$0.n(), $$0.e(20));
-      }
+   static vx a(final String $$0, final wp $$1) {
+      return new vx() {
+         @Override
+         public <T> Optional<T> a(vx.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
 
-      public void a(uq $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
-      }
+         @Override
+         public <T> Optional<T> a(vx.b<T> $$0x, wp $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static vx a(vx... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static vx a(final List<? extends vx> $$0) {
+      return new vx() {
+         @Override
+         public <T> Optional<T> a(vx.a<T> $$0x) {
+            for (vx $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(vx.b<T> $$0x, wp $$1) {
+            for (vx $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(wp var1, String var2);
    }
 }

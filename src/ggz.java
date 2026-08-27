@@ -1,15 +1,15 @@
-import java.util.Collection;
-import java.util.Locale;
+public class ggz extends ggj<cbp, fpw<cbp>> {
+   private static final ajc a = new ajc("textures/entity/wolf/wolf_collar.png");
 
-public class ggz extends RuntimeException {
-   private final Collection<ggy.a> a;
-
-   public ggz(ggy.a $$0, Collection<ggy.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   public ggz(gdt<cbp, fpw<cbp>> $$0) {
+      super($$0);
    }
 
-   public Collection<ggy.a> a() {
-      return this.a;
+   public void a(etd $$0, fwq $$1, int $$2, cbp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u() && !$$3.cb()) {
+         float[] $$10 = $$3.gu().d();
+         eth $$11 = $$1.getBuffer(fwy.e(a));
+         this.c().a($$0, $$11, $$2, ghq.d, $$10[0], $$10[1], $$10[2], 1.0F);
+      }
    }
 }

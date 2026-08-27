@@ -1,104 +1,61 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class cyx extends cye implements dbn {
-   public static final MapCodec<cyx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kf.e.q().fieldOf("turns_into").forGetter(cyx::b),
-               kf.b.q().fieldOf("brush_sound").forGetter(cyx::c),
-               kf.b.q().fieldOf("brush_comleted_sound").forGetter(cyx::d),
-               u()
-            )
-            .apply($$0, cyx::new)
-   );
-   private static final dmj c = dlz.bv;
-   public static final int b = 2;
-   private final cys d;
-   private final atk e;
-   private final atk f;
+public class cyx extends cyr implements cyw {
+   public static final MapCodec<cyx> a = b(cyx::new);
 
    @Override
    public MapCodec<cyx> a() {
       return a;
    }
 
-   public cyx(cys $$0, atk $$1, atk $$2, dli.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public cyx(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(c);
+   public cog b() {
+      return cog.a;
    }
 
    @Override
-   public dex b_(dlj $$0) {
-      return dex.c;
-   }
-
-   @Override
-   public void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$1.c_($$2) instanceof djb $$4) {
-         $$4.c();
-      }
-
-      if (dbo.m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cdv $$5 = cdv.a($$1, $$2, $$0);
-         $$5.s();
-      }
-   }
-
-   @Override
-   public void a(cvr $$0, hz $$1, cdv $$2) {
-      enz $$3 = $$2.cH().f();
-      $$0.c(2001, hz.a($$3), cys.i($$2.u()));
-      $$0.a($$2, dpw.f, $$3);
-   }
-
-   @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      if ($$3.a(16) == 0) {
-         hz $$4 = $$2.d();
-         if (dbo.m($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new jr(jz.B, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public djl a(ib $$0, dme $$1) {
+      return new djg($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new djb($$0, $$1);
+   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
+      return a($$2, djn.o, djg::a);
    }
 
-   public cys b() {
-      return this.d;
+   @Override
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$1.B) {
+         return bml.a;
+      } else {
+         djl $$5 = $$1.c_($$2);
+         if ($$5 instanceof djg) {
+            $$3.a((djg)$$5);
+            $$3.a(atz.ab);
+         }
+
+         return bml.b;
+      }
    }
 
-   public atk c() {
-      return this.e;
+   @Override
+   protected dfk b_(dme $$0) {
+      return dfk.c;
    }
 
-   public atk d() {
-      return this.f;
+   @Override
+   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
+      if ($$4.B()) {
+         djl $$5 = $$0.c_($$1);
+         if ($$5 instanceof djg) {
+            ((djg)$$5).a($$4.z());
+         }
+      }
    }
 }

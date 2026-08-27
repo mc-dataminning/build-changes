@@ -1,121 +1,136 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fjy extends ffl {
-   private static final int a = 8;
-   private static final vq b = vq.c("telemetry_info.screen.title");
-   private static final vq c = vq.c("telemetry_info.screen.description").a(n.h);
-   private static final vq k = vq.c("telemetry_info.button.privacy_statement");
-   private static final vq l = vq.c("telemetry_info.button.give_feedback");
-   private static final vq m = vq.c("telemetry_info.button.show_data");
-   private static final vq n = vq.c("telemetry_info.opt_in.description");
-   private final ffl o;
-   private final exs p;
-   @Nullable
-   private fjx q;
-   private double r;
+public class fjy extends fai {
+   private static final ajc b = new ajc("recipe_book/slot_many_craftable");
+   private static final ajc c = new ajc("recipe_book/slot_craftable");
+   private static final ajc d = new ajc("recipe_book/slot_many_uncraftable");
+   private static final ajc e = new ajc("recipe_book/slot_uncraftable");
+   private static final float f = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final vs n = vs.c("gui.recipebook.moreRecipes");
+   private cmh<?> o;
+   private ats p;
+   private fjz q;
+   private float r;
+   private float t;
+   private int u;
 
-   public fjy(ffl $$0, exs $$1) {
-      super(b);
-      this.o = $$0;
-      this.p = $$1;
+   public fjy() {
+      super(0, 0, 25, 25, vr.a);
+   }
+
+   public void a(fjz $$0, fjw $$1) {
+      this.q = $$0;
+      this.o = (cmh<?>)$$1.d().s.bX;
+      this.p = $$1.e();
+      List<csu<?>> $$2 = $$0.a(this.p.a(this.o));
+
+      for (csu<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.t = 15.0F;
+            break;
+         }
+      }
+   }
+
+   public fjz a() {
+      return this.q;
    }
 
    @Override
-   public vq i() {
-      return vp.a(super.i(), c);
-   }
-
-   @Override
-   protected void aQ_() {
-      fcy $$0 = new fcy();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      fde $$1 = $$0.a(fde.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new fav(this.p(), this.i));
-      $$1.a(new fai(c, this.i).c(this.g - 16).b(true));
-      fcz $$2 = this.a(ezo.a(k, this::b).a(), ezo.a(l, this::c).a());
-      $$1.a($$2);
-      fdb $$3 = this.o();
-      $$0.a();
-      $$3.a();
-      int $$4 = $$2.C() + $$2.u();
-      int $$5 = $$3.u();
-      int $$6 = this.h - $$4 - $$5 - 16;
-      this.q = new fjx(0, 0, this.g - 40, $$6, this.f.h);
-      this.q.a(this.r);
-      this.q.a($$0x -> this.r = $$0x);
-      $$1.a(this.q);
-      $$1.a($$3);
-      $$0.a();
-      fcy.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         ezm var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aH_() {
-      this.b(this.q);
-   }
-
-   private fdb o() {
-      fde $$0 = fde.d();
-      $$0.c().b().e(4);
-      if (this.f.C()) {
-         $$0.a(this.E());
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      if (!fgh.t()) {
+         this.r += $$3;
       }
 
-      $$0.a(this.a(ezo.a(m, this::d).a(), ezo.a(vp.d, this::a).a()));
+      ajc $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
+      }
+
+      boolean $$8 = this.t > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
+         this.t -= $$3;
+      }
+
+      $$0.a($$4, this.B(), this.C(), this.g, this.h);
+      List<csu<?>> $$10 = this.f();
+      this.u = awm.d(this.r / 30.0F) % $$10.size();
+      cpq $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.f().size() > 1) {
+         $$0.a($$11, this.B() + $$12 + 1, this.C() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.B() + $$12, this.C() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<csu<?>> f() {
+      List<csu<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
       return $$0;
    }
 
-   private ezm E() {
-      exr<Boolean> $$0 = this.p.af();
-      ezq $$1 = ezq.a(n, this.f.h).a($$0).a(this::a).a();
-      $$1.j = this.f.C();
+   public boolean b() {
+      return this.f().size() == 1;
+   }
+
+   public csu<?> d() {
+      List<csu<?>> $$0 = this.f();
+      return $$0.get(this.u);
+   }
+
+   public List<vs> e() {
+      cpq $$0 = this.f().get(this.u).b().a(this.q.a());
+      List<vs> $$1 = Lists.newArrayList(fgh.a(eyk.P(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
+      }
+
       return $$1;
    }
 
-   private void a(ezm $$0, boolean $$1) {
-      if (this.q != null) {
-         this.q.b($$1);
+   @Override
+   public void a(fef $$0) {
+      cpq $$1 = this.f().get(this.u).b().a(this.q.a());
+      $$0.a(fee.a, vs.a("narration.recipe", $$1.z()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(fee.d, vs.c("narration.button.usage.hovered"), vs.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fee.d, vs.c("narration.button.usage.hovered"));
       }
    }
 
-   private void a(ezo $$0) {
-      this.f.a(this.o);
-   }
-
-   private void b(ezo $$0) {
-      fed.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
-   }
-
-   private void c(ezo $$0) {
-      fed.a(this, "https://aka.ms/javafeedback?ref=game");
-   }
-
-   private void d(ezo $$0) {
-      Path $$1 = this.f.t().b();
-      ac.j().a($$1.toUri());
+   @Override
+   public int w() {
+      return 25;
    }
 
    @Override
-   public void d() {
-      this.f.a(this.o);
-   }
-
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private fcz a(ezm $$0, ezm $$1) {
-      fcz $$2 = new fcz();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
+   protected boolean j(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

@@ -1,45 +1,83 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public abstract class fdr implements fdx {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public enum fdr {
-   a,
-   b,
-   c,
-   d;
-
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fdq a() {
-      return switch (this) {
-         case a, b -> fdq.b;
-         case c, d -> fdq.a;
-      };
+   public fdr(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public fdr b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   @Override
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.B() + ($$0 - this.B());
+         $$1.m($$2);
+      });
+      this.c = $$0;
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.C() + ($$0 - this.C());
+         $$1.n($$2);
+      });
+      this.d = $$0;
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   @Override
+   public int B() {
+      return this.c;
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   @Override
+   public int C() {
+      return this.d;
    }
 
-   public IntComparator d() {
-      return this.e;
+   @Override
+   public int w() {
+      return this.a;
+   }
+
+   @Override
+   public int u() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fdy a;
+      public final fdz.a b;
+
+      protected a(fdy $$0, fdz $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
+
+      public int a() {
+         return this.a.u() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.w() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.w() - this.b.c);
+         int $$4 = (int)awm.i(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.u() - this.b.d);
+         int $$4 = Math.round(awm.i(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
+      }
    }
 }

@@ -1,430 +1,177 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class apd implements cwm {
-   private static final Logger a = LogUtils.getLogger();
-   private final List<dnf> b;
-   private final dnf c;
-   private final int d;
-   private final aow e;
-   private final long f;
-   private final eio g;
-   private final awp h;
-   private final dov i;
-   private final epv<cys> j = new epv<>($$0x -> this.y($$0x).o());
-   private final epv<egv> k = new epv<>($$0x -> this.y($$0x).p());
-   private final cws l;
-   private final cuy m;
-   private final cuy n;
-   private final cwk o;
-   private final dnk p;
-   private final int q;
-   @Nullable
-   private Supplier<String> r;
-   private final AtomicLong s = new AtomicLong();
-   private static final aiy t = new aiy("worldgen_region_random");
+public class apd extends ehg implements AutoCloseable {
+   public static final int a = 1000;
+   private static final Logger d = LogUtils.getLogger();
+   private final ble<Runnable> e;
+   private final ObjectList<Pair<apd.a, Runnable>> f = new ObjectArrayList();
+   private final aok g;
+   private final bld<aom.a<Runnable>> h;
+   private final int i = 1000;
+   private final AtomicBoolean j = new AtomicBoolean();
 
-   public apd(aow $$0, List<dnf> $$1, dnk $$2, int $$3) {
-      this.p = $$2;
-      this.q = $$3;
-      int $$4 = awi.a(Math.sqrt((double)$$1.size()));
-      if ($$4 * $$4 != $$1.size()) {
-         throw (IllegalStateException)ac.b(new IllegalStateException("Cache size is not a square."));
-      } else {
-         this.b = $$1;
-         this.c = $$1.get($$1.size() / 2);
-         this.d = $$4;
-         this.e = $$0;
-         this.f = $$0.C();
-         this.g = $$0.B_();
-         this.h = $$0.l().i().a(t).a(this.c.f().l());
-         this.i = $$0.E_();
-         this.l = new cws(this, cws.a(this.f));
-         this.m = $$1.get(0).f();
-         this.n = $$1.get($$1.size() - 1).f();
-         this.o = $$0.a().a(this);
-      }
-   }
-
-   public boolean a(cuy $$0, int $$1) {
-      return this.e.l().a.b($$0, $$1);
-   }
-
-   public cuy a() {
-      return this.c.f();
+   public apd(doo $$0, aok $$1, boolean $$2, ble<Runnable> $$3, bld<aom.a<Runnable>> $$4) {
+      super($$0, true, $$2);
+      this.g = $$1;
+      this.h = $$4;
+      this.e = $$3;
    }
 
    @Override
-   public void a(@Nullable Supplier<String> $$0) {
-      this.r = $$0;
+   public void close() {
    }
 
    @Override
-   public dnf a(int $$0, int $$1) {
-      return this.a($$0, $$1, dnk.c);
-   }
-
-   @Nullable
-   @Override
-   public dnf a(int $$0, int $$1, dnk $$2, boolean $$3) {
-      dnf $$6;
-      if (this.b($$0, $$1)) {
-         int $$4 = $$0 - this.m.e;
-         int $$5 = $$1 - this.m.f;
-         $$6 = this.b.get($$4 + $$5 * this.d);
-         if ($$6.j().b($$2)) {
-            return $$6;
-         }
-      } else {
-         $$6 = null;
-      }
-
-      if (!$$3) {
-         return null;
-      } else {
-         a.error("Requested chunk : {} {}", $$0, $$1);
-         a.error("Region bounds : {} {} | {} {}", new Object[]{this.m.e, this.m.f, this.n.e, this.n.f});
-         if ($$6 != null) {
-            throw (RuntimeException)ac.b(
-               new RuntimeException(String.format(Locale.ROOT, "Chunk is not of correct status. Expecting %s, got %s | %s %s", $$2, $$6.j(), $$0, $$1))
-            );
-         } else {
-            throw (RuntimeException)ac.b(new RuntimeException(String.format(Locale.ROOT, "We are asking a region for a chunk out of bound | %s %s", $$0, $$1)));
-         }
-      }
+   public int a() {
+      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
    }
 
    @Override
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.m.e && $$0 <= this.n.e && $$1 >= this.m.f && $$1 <= this.n.f;
+   public void a(ib $$0) {
+      ib $$1 = $$0.i();
+      this.a(jd.a($$0.u()), jd.a($$0.w()), apd.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   @Override
-   public dlj a_(hz $$0) {
-      return this.a(jb.a($$0.u()), jb.a($$0.w())).a_($$0);
-   }
+   protected void a(cvl $$0) {
+      this.a($$0.e, $$0.f, () -> 0, apd.a.a, ac.a((Runnable)(() -> {
+         super.b($$0, false);
+         super.a($$0, false);
 
-   @Override
-   public egw b_(hz $$0) {
-      return this.y($$0).b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public chl a(double $$0, double $$1, double $$2, double $$3, Predicate<bnq> $$4) {
-      return null;
-   }
-
-   @Override
-   public int C_() {
-      return 0;
-   }
-
-   @Override
-   public cws G_() {
-      return this.l;
-   }
-
-   @Override
-   public ij<cwq> a(int $$0, int $$1, int $$2) {
-      return this.e.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public float a(ie $$0, boolean $$1) {
-      return 1.0F;
-   }
-
-   @Override
-   public egl z_() {
-      return this.e.z_();
-   }
-
-   @Override
-   public boolean a(hz $$0, boolean $$1, @Nullable bnq $$2, int $$3) {
-      dlj $$4 = this.a_($$0);
-      if ($$4.i()) {
-         return false;
-      } else {
-         if ($$1) {
-            dix $$5 = $$4.t() ? this.c_($$0) : null;
-            cys.a($$4, (cvr)this.e, $$0, $$5, $$2, cpd.h);
+         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
+            super.a(cwn.b, jd.a($$0, $$1), null);
+            super.a(cwn.a, jd.a($$0, $$1), null);
          }
 
-         return this.a($$0, cyu.a.o(), 3, $$3);
-      }
+         for (int $$2 = this.c.am(); $$2 < this.c.an(); $$2++) {
+            super.a(jd.a($$0, $$2), true);
+         }
+      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
    }
 
-   @Nullable
    @Override
-   public dix c_(hz $$0) {
-      dnf $$1 = this.y($$0);
-      dix $$2 = $$1.c_($$0);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         sw $$3 = $$1.f($$0);
-         dlj $$4 = $$1.a_($$0);
-         if ($$3 != null) {
-            if ("DUMMY".equals($$3.l("id"))) {
-               if (!$$4.t()) {
-                  return null;
-               }
+   public void a(jd $$0, boolean $$1) {
+      this.a($$0.a(), $$0.c(), () -> 0, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
+   }
 
-               $$2 = ((dbk)$$4.b()).a($$0, $$4);
-            } else {
-               $$2 = dix.a($$0, $$4, $$3);
-            }
+   @Override
+   public void b(cvl $$0) {
+      this.a($$0.e, $$0.f, apd.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+   }
 
-            if ($$2 != null) {
-               $$1.a($$2);
-               return $$2;
+   @Override
+   public void a(cvl $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+   }
+
+   @Override
+   public void a(cwn $$0, jd $$1, @Nullable dog $$2) {
+      this.a($$1.a(), $$1.c(), () -> 0, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
+   }
+
+   private void a(int $$0, int $$1, apd.a $$2, Runnable $$3) {
+      this.a($$0, $$1, this.g.c(cvl.c($$0, $$1)), $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, IntSupplier $$2, apd.a $$3, Runnable $$4) {
+      this.h.a(aom.a(() -> {
+         this.f.add(Pair.of($$3, $$4));
+         if (this.f.size() >= 1000) {
+            this.f();
+         }
+      }, cvl.c($$0, $$1), $$2));
+   }
+
+   @Override
+   public void b(cvl $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, () -> 0, apd.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+   }
+
+   public CompletableFuture<doa> a(doa $$0, boolean $$1) {
+      cvl $$2 = $$0.f();
+      this.a($$2.e, $$2.f, apd.a.a, ac.a((Runnable)(() -> {
+         dom[] $$2x = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$0.al(); $$3++) {
+            dom $$4 = $$2x[$$3];
+            if (!$$4.c()) {
+               int $$5 = this.c.g($$3);
+               super.a(jd.a($$2, $$5), false);
             }
          }
+      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
+      return CompletableFuture.supplyAsync(() -> {
+         super.a($$2, $$1);
+         super.b($$2, false);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, apd.a.b, $$1x));
+   }
 
-         if ($$4.t()) {
-            a.warn("Tried to access a block entity before it was created. {}", $$0);
+   public CompletableFuture<doa> b(doa $$0, boolean $$1) {
+      cvl $$2 = $$0.f();
+      $$0.b(false);
+      this.a($$2.e, $$2.f, apd.a.a, ac.a((Runnable)(() -> {
+         if (!$$1) {
+            super.b($$2);
          }
+      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.b(true);
+         this.g.b($$2);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, apd.a.b, $$1x));
+   }
 
-         return null;
+   public void b() {
+      if ((!this.f.isEmpty() || super.L_()) && this.j.compareAndSet(false, true)) {
+         this.e.a(() -> {
+            this.f();
+            this.j.set(false);
+         });
       }
    }
 
-   @Override
-   public boolean f_(hz $$0) {
-      int $$1 = jb.a($$0.u());
-      int $$2 = jb.a($$0.w());
-      cuy $$3 = this.a();
-      int $$4 = Math.abs($$3.e - $$1);
-      int $$5 = Math.abs($$3.f - $$2);
-      if ($$4 <= this.q && $$5 <= this.q) {
-         if (this.c.y()) {
-            cvt $$6 = this.c.z();
-            if ($$0.v() < $$6.J_() || $$0.v() >= $$6.ak()) {
-               return false;
-            }
+   private void f() {
+      int $$0 = Math.min(this.f.size(), 1000);
+      ObjectListIterator<Pair<apd.a, Runnable>> $$1 = this.f.iterator();
+
+      int $$2;
+      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
+         Pair<apd.a, Runnable> $$3 = (Pair<apd.a, Runnable>)$$1.next();
+         if ($$3.getFirst() == apd.a.a) {
+            ((Runnable)$$3.getSecond()).run();
+         }
+      }
+
+      $$1.back($$2);
+      super.a();
+
+      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
+         Pair<apd.a, Runnable> $$4 = (Pair<apd.a, Runnable>)$$1.next();
+         if ($$4.getFirst() == apd.a.b) {
+            ((Runnable)$$4.getSecond()).run();
          }
 
-         return true;
-      } else {
-         ac.a(
-            "Detected setBlock in a far chunk ["
-               + $$1
-               + ", "
-               + $$2
-               + "], pos: "
-               + $$0
-               + ", status: "
-               + this.p
-               + (this.r == null ? "" : ", currently generating: " + this.r.get())
-         );
-         return false;
+         $$1.remove();
       }
    }
 
-   @Override
-   public boolean a(hz $$0, dlj $$1, int $$2, int $$3) {
-      if (!this.f_($$0)) {
-         return false;
-      } else {
-         dnf $$4 = this.y($$0);
-         dlj $$5 = $$4.a($$0, $$1, false);
-         if ($$5 != null) {
-            this.e.a($$0, $$5, $$1);
-         }
-
-         if ($$1.t()) {
-            if ($$4.j().g() == dnk.a.b) {
-               dix $$6 = ((dbk)$$1.b()).a($$0, $$1);
-               if ($$6 != null) {
-                  $$4.a($$6);
-               } else {
-                  $$4.d($$0);
-               }
-            } else {
-               sw $$7 = new sw();
-               $$7.a("x", $$0.u());
-               $$7.a("y", $$0.v());
-               $$7.a("z", $$0.w());
-               $$7.a("id", "DUMMY");
-               $$4.a($$7);
-            }
-         } else if ($$5 != null && $$5.t()) {
-            $$4.d($$0);
-         }
-
-         if ($$1.q(this, $$0)) {
-            this.f($$0);
-         }
-
-         return true;
-      }
+   public CompletableFuture<?> a(int $$0, int $$1) {
+      return CompletableFuture.runAsync(() -> {
+      }, $$2 -> this.a($$0, $$1, apd.a.b, $$2));
    }
 
-   private void f(hz $$0) {
-      this.y($$0).e($$0);
-   }
-
-   @Override
-   public boolean b(bnq $$0) {
-      int $$1 = jb.a($$0.dq());
-      int $$2 = jb.a($$0.dw());
-      this.a($$1, $$2).a($$0);
-      return true;
-   }
-
-   @Override
-   public boolean a(hz $$0, boolean $$1) {
-      return this.a($$0, cyu.a.o(), 3);
-   }
-
-   @Override
-   public dna D_() {
-      return this.e.D_();
-   }
-
-   @Override
-   public boolean y_() {
-      return false;
-   }
-
-   @Deprecated
-   @Override
-   public aow E() {
-      return this.e;
-   }
-
-   @Override
-   public iw I_() {
-      return this.e.I_();
-   }
-
-   @Override
-   public cjw I() {
-      return this.e.I();
-   }
-
-   @Override
-   public eio B_() {
-      return this.g;
-   }
-
-   @Override
-   public blu d_(hz $$0) {
-      if (!this.b(jb.a($$0.u()), jb.a($$0.w()))) {
-         throw new RuntimeException("We are asking a region for a chunk out of bound");
-      } else {
-         return new blu(this.e.aj(), this.e.Y(), 0L, this.e.ao());
-      }
-   }
-
-   @Nullable
-   @Override
-   public MinecraftServer o() {
-      return this.e.o();
-   }
-
-   @Override
-   public dnj L() {
-      return this.e.l();
-   }
-
-   @Override
-   public long C() {
-      return this.f;
-   }
-
-   @Override
-   public epm<cys> N() {
-      return this.j;
-   }
-
-   @Override
-   public epm<egv> M() {
-      return this.k;
-   }
-
-   @Override
-   public int A_() {
-      return this.e.A_();
-   }
-
-   @Override
-   public awp F_() {
-      return this.h;
-   }
-
-   @Override
-   public int a(dqv.a $$0, int $$1, int $$2) {
-      return this.a(jb.a($$1), jb.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
-   }
-
-   @Override
-   public void a(@Nullable chl $$0, hz $$1, atk $$2, atm $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public void a(jx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   @Override
-   public void a(@Nullable chl $$0, int $$1, hz $$2, int $$3) {
-   }
-
-   @Override
-   public void a(ij<dpw> $$0, enz $$1, dpw.a $$2) {
-   }
-
-   @Override
-   public dov E_() {
-      return this.i;
-   }
-
-   @Override
-   public boolean a(hz $$0, Predicate<dlj> $$1) {
-      return $$1.test(this.a_($$0));
-   }
-
-   @Override
-   public boolean b(hz $$0, Predicate<egw> $$1) {
-      return $$1.test(this.b_($$0));
-   }
-
-   @Override
-   public <T extends bnq> List<T> a(dpk<bnq, T> $$0, enu $$1, Predicate<? super T> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<bnq> a(@Nullable bnq $$0, enu $$1, @Nullable Predicate<? super bnq> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<chl> x() {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public int J_() {
-      return this.e.J_();
-   }
-
-   @Override
-   public int K_() {
-      return this.e.K_();
-   }
-
-   @Override
-   public long H_() {
-      return this.s.getAndIncrement();
+   static enum a {
+      a,
+      b;
    }
 }

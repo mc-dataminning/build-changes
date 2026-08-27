@@ -1,29 +1,12 @@
-public class ada implements xx<aag> {
-   public static final xo<uq, ada> a = xx.a(ada::a, ada::new);
-   private final double b;
-
-   public ada(dna $$0) {
-      this.b = $$0.k();
-   }
-
-   private ada(uq $$0) {
-      this.b = $$0.readDouble();
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b);
-   }
+public record ada(vs b) implements xz<aai> {
+   public static final xq<vd, ada> a = xq.a(vu.b, ada::b, ada::new);
 
    @Override
-   public xz<ada> a() {
-      return aeq.as;
+   public yb<ada> a() {
+      return aet.aq;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.b;
    }
 }

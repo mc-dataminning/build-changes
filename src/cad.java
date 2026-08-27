@@ -1,30 +1,29 @@
-public class cad extends bzw {
-   public cad(bnw<? extends cad> $$0, cvr $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cad(Set<dme> b, int c, int d) {
+   public static final Predicate<il<cad>> a = $$0 -> false;
+
+   public cad(Set<dme> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public cpd b() {
-      return new cpd(cpg.qG);
+   public boolean a(dme $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   protected atk y() {
-      return atl.fa;
+   public Set<dme> a() {
+      return this.b;
    }
 
-   @Override
-   protected atk n_() {
-      return atl.fb;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected atk d(bmp $$0) {
-      return atl.fd;
-   }
-
-   @Override
-   protected atk gh() {
-      return atl.fc;
+   public int c() {
+      return this.d;
    }
 }

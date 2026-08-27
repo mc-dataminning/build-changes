@@ -1,44 +1,65 @@
 import java.util.EnumSet;
 
-public class bwk extends bvf {
-   private final bpe a;
+public class bwk extends bvu {
+   private final boz a;
+   private box b;
+   private int c;
 
-   public bwk(bpe $$0) {
+   public bwk(boz $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bvf.a.c, bvf.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.gg();
+      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.u()) {
-         return false;
-      } else if (this.a.bc()) {
-         return false;
-      } else if (!this.a.aC()) {
+      box $$0 = this.a.q();
+      if ($$0 == null) {
          return false;
       } else {
-         boi $$0 = this.a.R_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.f($$0) < 144.0 && $$0.ei() != null ? false : this.a.gg();
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
-   public void c() {
-      this.a.N().n();
-      this.a.y(true);
+   public boolean b() {
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.a.y(false);
+      this.b = null;
+      this.a.N().n();
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dd() * 2.0F * this.a.dd() * 2.0F);
+      double $$1 = this.a.i(this.b.do(), this.b.dq(), this.b.du());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.B(this.b);
+         }
+      }
    }
 }

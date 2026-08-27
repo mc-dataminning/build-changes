@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eoa {
+public interface eoa {
+   @Nullable
+   epy a(ejy var1);
+
+   enz a();
+
+   Set<emg<?>> b();
 }

@@ -1,122 +1,164 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Set;
 
-public class fda implements fdb {
-   public static final int a = 36;
-   private static final int b = 30;
-   private final fcy c = new fcy();
-   private final fcy d = new fcy();
-   private final fcy e = new fcy();
-   private final ffl f;
-   private int g;
-   private int h;
+public class fda implements AutoCloseable {
+   private static final awt a = awt.a();
+   private static final float b = 32.0F;
+   private final gia c;
+   private final ajc d;
+   private fde e;
+   private fde f;
+   private final List<erg> g = Lists.newArrayList();
+   private final fcy<fde> h = new fcy<>(fde[]::new, fde[][]::new);
+   private final fcy<fda.a> i = new fcy<>(fda.a[]::new, fda.a[][]::new);
+   private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
+   private final List<fdb> k = Lists.newArrayList();
 
-   public fda(ffl $$0) {
-      this($$0, 36);
+   public fda(gia $$0, ajc $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public fda(ffl $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
+   public void a(List<erg> $$0) {
+      this.b();
+      this.c();
+      this.h.a();
+      this.i.a();
+      this.j.clear();
+      this.e = fdg.b.bake(this::a);
+      this.f = fdg.a.bake(this::a);
+      IntSet $$1 = new IntOpenHashSet();
 
-   public fda(ffl $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
-   }
+      for (erg $$2 : $$0) {
+         $$1.addAll($$2.a());
+      }
 
-   @Override
-   public void m(int $$0) {
-   }
-
-   @Override
-   public void n(int $$0) {
-   }
-
-   @Override
-   public int B() {
-      return 0;
-   }
-
-   @Override
-   public int C() {
-      return 0;
-   }
-
-   @Override
-   public int w() {
-      return this.f.g;
-   }
-
-   @Override
-   public int u() {
-      return this.f.h;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
+      Set<erg> $$3 = Sets.newHashSet();
+      $$1.forEach($$2x -> {
+         for (erg $$3x : $$0) {
+            erf $$4 = $$3x.a($$2x);
+            if ($$4 != null) {
+               $$3.add($$3x);
+               if ($$4 != fdg.b) {
+                  ((IntList)this.j.computeIfAbsent(awm.f($$4.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      $$0.stream().filter($$3::contains).forEach(this.g::add);
    }
 
    @Override
-   public void b(Consumer<fdc> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
+   public void close() {
+      this.b();
+      this.c();
    }
 
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.g);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.g);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.h - $$1);
-      this.e.b(this.f.g);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.h - $$1 - this.e.u();
-      this.e.c(0, Math.min($$2, $$3));
+   private void b() {
+      for (erg $$0 : this.g) {
+         $$0.close();
+      }
+
+      this.g.clear();
    }
 
-   public <T extends fdc> T a(T $$0) {
-      return this.c.a($$0);
+   private void c() {
+      for (fdb $$0 : this.k) {
+         $$0.close();
+      }
+
+      this.k.clear();
    }
 
-   public <T extends fdc> T a(T $$0, Consumer<fdd> $$1) {
-      return this.c.a($$0, $$1);
+   private static boolean b(erf $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
+      }
    }
 
-   public <T extends fdc> T b(T $$0) {
-      return this.d.a($$0);
+   private fda.a b(int $$0) {
+      erf $$1 = null;
+
+      for (erg $$2 : this.g) {
+         erf $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
+            }
+
+            if (!b($$3)) {
+               return new fda.a($$1, $$3);
+            }
+         }
+      }
+
+      return $$1 != null ? new fda.a($$1, fdg.b) : fda.a.c;
    }
 
-   public <T extends fdc> T b(T $$0, Consumer<fdd> $$1) {
-      return this.d.a($$0, $$1);
+   public erf a(int $$0, boolean $$1) {
+      return this.i.a($$0, this::b).a($$1);
    }
 
-   public <T extends fdc> T c(T $$0) {
-      return this.e.a($$0);
+   private fde c(int $$0) {
+      for (erg $$1 : this.g) {
+         erf $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
+      return this.e;
    }
 
-   public <T extends fdc> T c(T $$0, Consumer<fdd> $$1) {
-      return this.e.a($$0, $$1);
+   public fde a(int $$0) {
+      return this.h.a($$0, this::c);
+   }
+
+   private fde a(erh $$0) {
+      for (fdb $$1 : this.k) {
+         fde $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      ajc $$3 = this.d.e("/" + this.k.size());
+      boolean $$4 = $$0.c();
+      fdc $$5 = $$4 ? fdc.b($$3) : fdc.a($$3);
+      fdb $$6 = new fdb($$5, $$4);
+      this.k.add($$6);
+      this.c.a($$3, $$6);
+      fde $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public fde a(erf $$0) {
+      IntList $$1 = (IntList)this.j.get(awm.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public fde a() {
+      return this.f;
+   }
+
+   static record a(erf a, erf b) {
+      static final fda.a c = new fda.a(fdg.b, fdg.b);
+
+      erf a(boolean $$0) {
+         return $$0 ? this.b : this.a;
+      }
    }
 }

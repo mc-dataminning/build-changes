@@ -1,67 +1,138 @@
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class chu extends chs {
-   public static final float e = 4.0F;
+public class chu implements cvr {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final awt h = awt.a();
+   private final ejt i;
+   private int j;
+   private int k;
+   private int l;
 
-   public chu(bnw<? extends chu> $$0, cvr $$1) {
-      super($$0, $$1);
-   }
-
-   public chu(cvr $$0, boi $$1, double $$2, double $$3, double $$4) {
-      super(bnw.z, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(enx $$0) {
-      super.a($$0);
-      if ($$0.c() != enx.a.c || !this.d(((enw)$$0).a())) {
-         if (!this.dM().B) {
-            List<boi> $$1 = this.dM().a(boi.class, this.cH().c(4.0, 2.0, 4.0));
-            bnn $$2 = new bnn(this.dM(), this.dr(), this.dt(), this.dx());
-            bnq $$3 = this.w();
-            if ($$3 instanceof boi) {
-               $$2.a((boi)$$3);
-            }
-
-            $$2.a(jz.i);
-            $$2.a(3.0F);
-            $$2.b(600);
-            $$2.c((7.0F - $$2.h()) / (float)$$2.m());
-            $$2.a(new bnd(bnf.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (boi $$4 : $$1) {
-                  double $$5 = this.f($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dr(), $$4.dt(), $$4.dx());
-                     break;
-                  }
-               }
-            }
-
-            this.dM().c(2006, this.dm(), this.aU() ? -1 : 1);
-            this.dM().b($$2);
-            this.am();
-         }
+   public chu(ejt $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.t();
+      this.l = $$0.u();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.d(this.k);
+         this.l = 25;
+         $$0.e(this.l);
       }
    }
 
    @Override
-   public boolean bt() {
-      return false;
+   public int a(apa $$0, boolean $$1, boolean $$2) {
+      if (!$$0.Z().b(cwa.L)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
+      } else {
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.d(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.Z().b(cwa.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = awm.a(this.l + 25, 25, 75);
+               this.i.e(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean a(bmp $$0, float $$1) {
-      return false;
+   private boolean a(apa $$0) {
+      cia $$1 = $$0.j();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         ib $$2 = $$1.dj();
+         int $$3 = 48;
+         caa $$4 = $$0.y();
+         Optional<ib> $$5 = $$4.d($$0x -> $$0x.a(cae.o), $$0x -> true, $$2, 48, caa.b.c);
+         ib $$6 = $$5.orElse($$2);
+         ib $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.t($$7).a(aud.ah)) {
+               return false;
+            }
+
+            cht $$8 = bol.bj.a($$0, $$7, bpb.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.ct());
+               $$8.v(48000);
+               $$8.i($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Override
-   protected jx u() {
-      return jz.i;
+   private void a(apa $$0, cht $$1, int $$2) {
+      ib $$3 = this.a($$0, $$1.dj(), $$2);
+      if ($$3 != null) {
+         ccw $$4 = bol.bc.a($$0, $$3, bpb.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
+      }
    }
 
-   @Override
-   protected boolean s() {
-      return false;
+   @Nullable
+   private ib a(cwh $$0, ib $$1, int $$2) {
+      ib $$3 = null;
+      bpq $$4 = bps.a(bol.bj);
+
+      for (int $$5 = 0; $$5 < 10; $$5++) {
+         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$8 = $$0.a(drq.a.b, $$6, $$7);
+         ib $$9 = new ib($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bol.bj)) {
+            $$3 = $$9;
+            break;
+         }
+      }
+
+      return $$3;
+   }
+
+   private boolean a(cvk $$0, ib $$1) {
+      for (ib $$2 : ib.a($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).k($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

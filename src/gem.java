@@ -1,24 +1,33 @@
-public class gem extends gfl<ceh, fmg<ceh>> {
-   private final fwn a;
+public class gem extends gdd<ckf> {
+   private final fxk f;
 
-   public gem(gcv<ceh, fmg<ceh>> $$0, fwn $$1) {
-      super($$0);
-      this.a = $$1;
+   public gem(gby.a $$0) {
+      super($$0, fqe.bC);
+      this.f = $$0.c();
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, ceh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dlj $$10 = $$3.gg();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, ggs.d);
-         $$0.b();
+   protected void a(ckf $$0, float $$1, dme $$2, etd $$3, fwq $$4, int $$5) {
+      int $$6 = $$0.D();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = awm.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(fxk $$0, dme $$1, etd $$2, fwq $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = ghq.a(ghq.a(1.0F), 10);
+      } else {
+         $$6 = ghq.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

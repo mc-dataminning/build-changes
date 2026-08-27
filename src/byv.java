@@ -1,36 +1,18 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class byv extends byl {
-   private static final ImmutableMap<bnw<?>, Float> a = ImmutableMap.builder()
-      .put(bnw.A, 8.0F)
-      .put(bnw.I, 12.0F)
-      .put(bnw.ab, 8.0F)
-      .put(bnw.ac, 12.0F)
-      .put(bnw.aA, 15.0F)
-      .put(bnw.aF, 12.0F)
-      .put(bnw.bg, 8.0F)
-      .put(bnw.bi, 10.0F)
-      .put(bnw.br, 10.0F)
-      .put(bnw.bs, 8.0F)
-      .put(bnw.bu, 8.0F)
-      .build();
-
+public class byv extends bzg<box> {
    @Override
-   protected boolean a(boi $$0, boi $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(boi $$0, boi $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((bnq)$$0) <= (double)($$2 * $$2);
+   public Set<bya<?>> a() {
+      return ImmutableSet.of(bya.X);
    }
 
    @Override
-   protected bxl<boi> b() {
-      return bxl.A;
-   }
-
-   private boolean b(boi $$0) {
-      return a.containsKey($$0.ai());
+   protected void a(apa $$0, box $$1) {
+      if ($$1.aZ()) {
+         $$1.dM().a(bya.X, axo.a);
+      } else {
+         $$1.dM().b(bya.X);
+      }
    }
 }

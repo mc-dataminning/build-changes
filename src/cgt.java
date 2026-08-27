@@ -1,209 +1,118 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public abstract class cgt extends bnl implements cgw, cgx, cuo {
-   private static final aie<Integer> bV = aih.a(cgt.class, aig.b);
-   public static final int bT = 300;
-   private static final int bW = 8;
-   @Nullable
-   private chl bX;
-   @Nullable
-   protected cuq bU;
-   private final bmf bY = new bmf(8);
+public class cgt extends cgp {
+   private static final int bW = 50;
+   private static final float bX = 0.35F;
+   private static final int bY = 7;
+   protected static final ImmutableList<bzh<? extends bzg<? super cgt>>> e = ImmutableList.of(bzh.c, bzh.d, bzh.b, bzh.f, bzh.m);
+   protected static final ImmutableList<bya<?>> bV = ImmutableList.of(
+      bya.n, bya.v, bya.g, bya.h, bya.k, bya.l, bya.ao, bya.an, bya.x, bya.y, bya.m, bya.E, new bya[]{bya.o, bya.p, bya.q, bya.t, bya.ab, bya.M, bya.b}
+   );
 
-   public cgt(bnw<? extends cgt> $$0, cvr $$1) {
+   public cgt(bol<? extends cgt> $$0, cwe $$1) {
       super($$0, $$1);
-      this.a(ehh.n, 16.0F);
-      this.a(ehh.o, -1.0F);
+      this.bK = 20;
    }
 
-   @Override
-   public bpa a(cwg $$0, blu $$1, bom $$2, @Nullable bpa $$3, @Nullable sw $$4) {
-      if ($$3 == null) {
-         $$3 = new bnl.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public int u() {
-      return this.am.b(bV);
-   }
-
-   public void t(int $$0) {
-      this.am.b(bV, $$0);
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.am.a(bV, 0);
-   }
-
-   @Override
-   public void f(@Nullable chl $$0) {
-      this.bX = $$0;
+   public static bqd.a A() {
+      return cfg.gr().a(bqe.n, 50.0).a(bqe.o, 0.35F).a(bqe.c, 7.0);
    }
 
    @Nullable
    @Override
-   public chl gg() {
-      return this.bX;
-   }
-
-   public boolean gh() {
-      return this.bX != null;
-   }
-
-   @Override
-   public cuq gi() {
-      if (this.bU == null) {
-         this.bU = new cuq();
-         this.gn();
-      }
-
-      return this.bU;
+   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
+      cgu.a(this);
+      this.a($$0.F_(), $$1);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(@Nullable cuq $$0) {
+   protected void a(awt $$0, bmj $$1) {
+      this.a(bom.a, new cpq(cpt.oX));
    }
 
    @Override
-   public void u(int $$0) {
+   protected bpy.b<cgt> dN() {
+      return bpy.a(bV, e);
    }
 
    @Override
-   public void a(cup $$0) {
-      $$0.j();
-      this.bI = -this.Q();
-      this.b($$0);
-      if (this.bX instanceof aox) {
-         am.t.a((aox)this.bX, this, $$0.d());
-      }
-   }
-
-   protected abstract void b(cup var1);
-
-   @Override
-   public boolean gj() {
-      return true;
+   protected bpy<?> a(Dynamic<?> $$0) {
+      return cgu.a(this, this.dN().a($$0));
    }
 
    @Override
-   public void l(cpd $$0) {
-      if (!this.dM().B && this.bI > -this.Q() + 20) {
-         this.bI = -this.Q();
-         this.b(this.w(!$$0.b()));
-      }
+   public bpy<cgt> dM() {
+      return (bpy<cgt>)super.dM();
    }
 
    @Override
-   public atk gk() {
-      return atl.Ad;
-   }
-
-   protected atk w(boolean $$0) {
-      return $$0 ? atl.Ad : atl.Ab;
-   }
-
-   public void gl() {
-      this.b(atl.zY);
-   }
-
-   @Override
-   public void b(sw $$0) {
-      super.b($$0);
-      cuq $$1 = this.gi();
-      if (!$$1.isEmpty()) {
-         $$0.a("Offers", $$1.a());
-      }
-
-      this.a_($$0);
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      if ($$0.b("Offers", 10)) {
-         this.bU = new cuq($$0.p("Offers"));
-      }
-
-      this.c($$0);
-   }
-
-   @Nullable
-   @Override
-   public bnq b(aow $$0) {
-      this.gm();
-      return super.b($$0);
-   }
-
-   protected void gm() {
-      this.f(null);
-   }
-
-   @Override
-   public void a(bmp $$0) {
-      super.a($$0);
-      this.gm();
-   }
-
-   protected void a(jx $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.af.k() * 0.02;
-         double $$3 = this.af.k() * 0.02;
-         double $$4 = this.af.k() * 0.02;
-         this.dM().a($$0, this.d(1.0), this.du() + 1.0, this.g(1.0), $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(chl $$0) {
+   public boolean u() {
       return false;
    }
 
    @Override
-   public bmf A() {
-      return this.bY;
+   public boolean k(cpq $$0) {
+      return $$0.a(cpt.oX) ? super.k($$0) : false;
    }
 
    @Override
-   public boz a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bY.b() ? boz.a(this.bY, $$1) : super.a_($$0);
+   protected void aa() {
+      this.dJ().ae().a("piglinBruteBrain");
+      this.dM().a((apa)this.dJ(), this);
+      this.dJ().ae().c();
+      cgu.b(this);
+      cgu.c(this);
+      super.aa();
    }
 
-   protected abstract void gn();
+   @Override
+   public cgs gn() {
+      return this.gd() && this.go() ? cgs.a : cgs.f;
+   }
 
-   protected void a(cuq $$0, chc.g[] $$1, int $$2) {
-      ArrayList<chc.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         cup $$5 = $$3.remove(this.af.a($$3.size())).a(this, this.af);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+   @Override
+   public boolean a(bne $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if (this.dJ().B) {
+         return false;
+      } else {
+         if ($$2 && $$0.d() instanceof box) {
+            cgu.a(this, (box)$$0.d());
          }
+
+         return $$2;
       }
    }
 
    @Override
-   public enz q(float $$0) {
-      float $$1 = awi.i($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
-      enz $$2 = new enz(0.0, this.cH().c() - 1.0, 0.2);
-      return this.l($$0).e($$2.b(-$$1));
+   protected ato y() {
+      return atp.ti;
    }
 
    @Override
-   public boolean go() {
-      return this.dM().B;
+   protected ato d(bne $$0) {
+      return atp.tl;
+   }
+
+   @Override
+   protected ato n_() {
+      return atp.tk;
+   }
+
+   @Override
+   protected void b(ib $$0, dme $$1) {
+      this.a(atp.tm, 0.15F, 1.0F);
+   }
+
+   protected void gs() {
+      this.b(atp.tj);
+   }
+
+   @Override
+   protected void gp() {
+      this.b(atp.tn);
    }
 }

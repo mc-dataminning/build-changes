@@ -1,99 +1,222 @@
-public class fgx extends fgk<ckw> implements fjf {
-   private static final aiy x = new aiy("textures/gui/container/crafting_table.png");
-   private final fiz y = new fiz();
-   private boolean z;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public fgx(ckw $$0, chk $$1, vq $$2) {
-      super($$0, $$1, $$2);
+public class fgx extends fgh implements fqv.a {
+   private static final ajc p = new ajc("textures/gui/advancements/window.png");
+   public static final int a = 252;
+   public static final int b = 140;
+   private static final int q = 9;
+   private static final int r = 18;
+   public static final int c = 234;
+   public static final int k = 113;
+   private static final int t = 8;
+   private static final int u = 6;
+   public static final int l = 16;
+   public static final int m = 16;
+   public static final int n = 14;
+   public static final int o = 7;
+   private static final double v = 16.0;
+   private static final vs w = vs.c("advancements.sad_label");
+   private static final vs x = vs.c("advancements.empty");
+   private static final vs y = vs.c("gui.advancements");
+   private final fqv z;
+   private final Map<af, fgt> A = Maps.newLinkedHashMap();
+   @Nullable
+   private fgt B;
+   private boolean C;
+
+   public fgx(fqv $$0) {
+      super(eyc.a);
+      this.z = $$0;
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.z = this.g < 379;
-      this.y.a(this.g, this.h, this.f, this.z, this.p);
-      this.t = this.y.a(this.g, this.c);
-      this.c(new faa(this.t + 5, this.h / 2 - 49, 20, 18, fiz.a, $$0 -> {
-         this.y.e();
-         this.t = this.y.a(this.g, this.c);
-         $$0.c(this.t + 5, this.h / 2 - 49);
-      }));
-      this.d(this.y);
-      this.l = 29;
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.y.g();
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      if (this.y.f() && this.z) {
-         this.b($$0, $$1, $$2, $$3);
-         this.y.a($$0, $$1, $$2, $$3);
+   protected void aP_() {
+      this.A.clear();
+      this.B = null;
+      this.z.a(this);
+      if (this.B == null && !this.A.isEmpty()) {
+         fgt $$0 = this.A.values().iterator().next();
+         this.z.a($$0.c().b(), true);
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.y.a($$0, $$1, $$2, $$3);
-         this.y.a($$0, this.t, this.u, true, $$3);
+         this.z.a(this.B == null ? null : this.B.c().b(), true);
       }
-
-      this.a($$0, $$1, $$2);
-      this.y.a($$0, this.t, this.u, $$1, $$2);
    }
 
    @Override
-   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.y.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.y.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.z || !this.y.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void k() {
+      this.z.a(null);
+      frb $$0 = this.f.K();
+      if ($$0 != null) {
+         $$0.b(age.b());
+      }
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y.a($$0, $$1, $$2)) {
-         this.a(this.y);
+      if ($$2 == 0) {
+         int $$3 = (this.g - 252) / 2;
+         int $$4 = (this.h - 140) / 2;
+
+         for (fgt $$5 : this.A.values()) {
+            if ($$5.a($$3, $$4, $$0, $$1)) {
+               this.z.a($$5.c().b(), true);
+               break;
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.f.m.T.a($$0, $$1)) {
+         this.f.a(null);
+         this.f.n.i();
          return true;
       } else {
-         return this.z && this.y.f() ? true : super.a($$0, $$1, $$2);
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.y.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = (this.g - 252) / 2;
+      int $$5 = (this.h - 140) / 2;
+      this.b($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2, $$4, $$5);
+      this.a($$0, $$4, $$5);
+      this.b($$0, $$1, $$2, $$4, $$5);
    }
 
    @Override
-   protected void a(cma $$0, int $$1, int $$2, cko $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.y.a($$0);
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if ($$2 != 0) {
+         this.C = false;
+         return false;
+      } else {
+         if (!this.C) {
+            this.C = true;
+         } else if (this.B != null) {
+            this.B.a($$3, $$4);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public void I() {
-      this.y.i();
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.B != null) {
+         this.B.a($$2 * 16.0, $$3 * 16.0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(ezx $$0, int $$1, int $$2, int $$3, int $$4) {
+      fgt $$5 = this.B;
+      if ($$5 == null) {
+         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
+         int $$6 = $$3 + 9 + 117;
+         $$0.a(this.i, x, $$6, $$4 + 18 + 56 - 9 / 2, -1);
+         $$0.a(this.i, w, $$6, $$4 + 18 + 113 - 9, -1);
+      } else {
+         $$5.b($$0, $$3 + 9, $$4 + 18);
+      }
+   }
+
+   public void a(ezx $$0, int $$1, int $$2) {
+      RenderSystem.enableBlend();
+      $$0.a(p, $$1, $$2, 0, 0, 252, 140);
+      if (this.A.size() > 1) {
+         for (fgt $$3 : this.A.values()) {
+            $$3.a($$0, $$1, $$2, $$3 == this.B);
+         }
+
+         for (fgt $$4 : this.A.values()) {
+            $$4.a($$0, $$1, $$2);
+         }
+      }
+
+      $$0.a(this.i, y, $$1 + 8, $$2 + 6, 4210752, false);
+   }
+
+   private void b(ezx $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.B != null) {
+         $$0.c().a();
+         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
+         RenderSystem.enableDepthTest();
+         this.B.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         RenderSystem.disableDepthTest();
+         $$0.c().b();
+      }
+
+      if (this.A.size() > 1) {
+         for (fgt $$5 : this.A.values()) {
+            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
+               $$0.a(this.i, $$5.d(), $$1, $$2);
+            }
+         }
+      }
    }
 
    @Override
-   public fiz J() {
-      return this.y;
+   public void a(ag $$0) {
+      fgt $$1 = fgt.a(this.f, this, this.A.size(), $$0);
+      if ($$1 != null) {
+         this.A.put($$0.b(), $$1);
+      }
+   }
+
+   @Override
+   public void b(ag $$0) {
+   }
+
+   @Override
+   public void c(ag $$0) {
+      fgt $$1 = this.f($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
+   }
+
+   @Override
+   public void d(ag $$0) {
+   }
+
+   @Override
+   public void a(ag $$0, ah $$1) {
+      fgv $$2 = this.e($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   @Override
+   public void a(@Nullable af $$0) {
+      this.B = this.A.get($$0);
+   }
+
+   @Override
+   public void a() {
+      this.A.clear();
+      this.B = null;
+   }
+
+   @Nullable
+   public fgv e(ag $$0) {
+      fgt $$1 = this.f($$0);
+      return $$1 == null ? null : $$1.a($$0.b());
+   }
+
+   @Nullable
+   private fgt f(ag $$0) {
+      ag $$1 = $$0.d();
+      return this.A.get($$1.b());
    }
 }

@@ -1,118 +1,84 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
 
-public class aja {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public class aja<T> extends aiu<T> {
+   private final aja.b b;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (kf.as.e().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         } else {
-            dbs.b();
-            dad.b();
-            if (bnw.a(bnw.bw) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               cra.a();
-               gi.a();
-               jl.c();
-               jf.a();
-               kf.a();
-               cnk.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
-            }
-         }
-      }
-   }
+   private static aja.b a(final aja.b $$0) {
+      return new aja.b() {
+         private final Map<ajb<? extends ix<?>>, Optional<? extends aja.a<?>>> b = new HashMap<>();
 
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      sr $$3 = sr.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
-   }
-
-   private static void a(final Set<String> $$0) {
-      final sr $$1 = sr.a();
-      cvn.a(new cvn.c() {
          @Override
-         public <T extends cvn.g<T>> void a(cvn.e<T> $$0x, cvn.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
+         public <T> Optional<aja.a<T>> a(ajb<? extends ix<? extends T>> $$0x) {
+            return (Optional<aja.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
          }
-      });
+      };
    }
 
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(kf.u, bpk::c, $$0);
-      a(kf.g, bnw::g, $$0);
-      a(kf.d, bnb::d, $$0);
-      a(kf.h, coy::a, $$0);
-      a(kf.f, ctm::h, $$0);
-      a(kf.e, cys::h, $$0);
-      a(kf.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
+   public static <T> aja<T> a(DynamicOps<T> $$0, final in.a $$1) {
+      return a($$0, a(new aja.b() {
+         @Override
+         public <E> Optional<aja.a<E>> a(ajb<? extends ix<? extends E>> $$0) {
+            return $$1.a($$0).map($$0x -> (aja.a<E>)(new aja.a<>($$0x, $$0x, $$0x.g())));
+         }
+      }));
    }
 
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
+   public static <T> aja<T> a(DynamicOps<T> $$0, aja.b $$1) {
+      return new aja<>($$0, $$1);
    }
 
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, in.a $$1) {
+      return new Dynamic(a($$0.getOps(), $$1), $$0.getValue());
    }
 
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aU) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         dv.b();
-      }
-
-      bpq.a();
+   private aja(DynamicOps<T> $$0, aja.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new ajd("STDERR", System.err));
-         System.setOut(new ajd("STDOUT", a));
-      } else {
-         System.setErr(new ajf("STDERR", System.err));
-         System.setOut(new ajf("STDOUT", a));
-      }
+   public <E> Optional<io<E>> a(ajb<? extends ix<? extends E>> $$0) {
+      return this.b.a($$0).map(aja.a::a);
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   public <E> Optional<im<E>> b(ajb<? extends ix<? extends E>> $$0) {
+      return this.b.a($$0).map(aja.a::b);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, im<E>> c(ajb<? extends ix<? extends E>> $$0) {
+      return avu.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aja<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, il.c<E>> d(ajb<E> $$0) {
+      ajb<? extends ix<E>> $$1 = ajb.a($$0.b());
+      return avu.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aja<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static record a<T>(io<T> a, im<T> b, Lifecycle c) {
+   }
+
+   public interface b {
+      <T> Optional<aja.a<T>> a(ajb<? extends ix<? extends T>> var1);
    }
 }

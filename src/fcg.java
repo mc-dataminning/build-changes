@@ -1,17 +1,58 @@
-public record fcg(fwb a, fwb b, fwb c) {
-   public static fcg a(aiy $$0) {
-      return new fcg(fwb.u($$0), fwb.y($$0), fwb.w($$0));
+import javax.annotation.Nullable;
+
+public interface fcg extends fbu {
+   long s = 250L;
+
+   default void f(double $$0, double $$1) {
    }
 
-   public static fcg b(aiy $$0) {
-      return new fcg(fwb.t($$0), fwb.x($$0), fwb.v($$0));
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public fwb a(eyz.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default ezu a(fel $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aK_();
+
+   @Nullable
+   default ezu aL_() {
+      return this.aK_() ? ezu.a(this) : null;
+   }
+
+   default fep F() {
+      return fep.a();
    }
 }

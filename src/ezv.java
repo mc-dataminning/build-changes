@@ -1,274 +1,289 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class ezv<T> extends ezf {
-   public static final BooleanSupplier a = ffl::w;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final vq c;
-   private int d;
-   private T f;
-   private final ezv.c<T> m;
-   private final Function<T, vq> n;
-   private final Function<ezv<T>, we> o;
-   private final ezv.b<T> p;
-   private final boolean q;
-   private final exr.l<T> r;
+public class ezv {
+   private static final float d = 0.01F;
+   private static final Vector3f e = new Vector3f(0.0F, 0.0F, 0.03F);
+   public static final int a = 8;
+   public final int b = 9;
+   public final awt c = awt.a();
+   private final Function<ajc, fda> f;
+   final boolean g;
+   private final eyw h;
 
-   ezv(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      vq $$4,
-      vq $$5,
-      int $$6,
-      T $$7,
-      ezv.c<T> $$8,
-      Function<T, vq> $$9,
-      Function<ezv<T>, we> $$10,
-      ezv.b<T> $$11,
-      exr.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
-   }
-
-   private void f() {
-      this.a(this.r.apply(this.f));
-   }
-
-   @Override
-   public void b() {
-      if (ffl.v()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = awi.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(awi.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      vq $$1 = this.c($$0);
-      this.b($$1);
+   public ezv(Function<ajc, fda> $$0, boolean $$1) {
       this.f = $$0;
-      this.f();
+      this.g = $$1;
+      this.h = new eyw(($$0x, $$1x) -> this.a($$1x.k()).a($$0x, this.g).a($$1x.b()));
    }
 
-   private vq c(T $$0) {
-      return (vq)(this.q ? this.n.apply($$0) : this.d($$0));
+   fda a(ajc $$0) {
+      return this.f.apply($$0);
    }
 
-   private we d(T $$0) {
-      return vp.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected we aN_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fdj $$0) {
-      $$0.a(fdi.a, this.aN_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         vq $$2 = this.c($$1);
-         if (this.aL_()) {
-            $$0.a(fdi.d, vq.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(fdi.d, vq.a("narration.cycle_button.usage.hovered", $$2));
-         }
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
+         return $$0;
       }
    }
 
-   public we d() {
-      return a_((vq)(this.q ? this.d(this.f) : this.x()));
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
    }
 
-   public static <T> ezv.a<T> a(Function<T, vq> $$0) {
-      return new ezv.a<>($$0);
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   public static ezv.a<Boolean> a(vq $$0, vq $$1) {
-      return new ezv.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   public int a(vs $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static ezv.a<Boolean> e() {
-      return new ezv.a<Boolean>($$0 -> $$0 ? vp.b : vp.c).a(b);
+   public int a(avy $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static ezv.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
+   public void a(avy $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, fwq $$6, int $$7) {
+      int $$8 = a($$4);
+      ezv.b $$9 = new ezv.b($$6, 0.0F, 0.0F, $$8, false, $$5, ezv.a.a, $$7);
+
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.b();
+                  fda $$10x = this.a($$7x.k());
+                  erf $$11x = $$10x.a($$8x, this.g);
+                  $$9.l = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.m = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
+            }
+         }
+      }
+
+      ezv.b $$15 = new ezv.b($$6, $$1, $$2, a($$3), false, $$5, ezv.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a(0, $$1);
    }
 
-   public static class a<T> {
-      private int a;
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? $$0 | 0xFF000000 : $$0;
+   }
+
+   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9, boolean $$10) {
+      if ($$10) {
+         $$0 = this.a($$0);
+      }
+
+      $$3 = a($$3);
+      Matrix4f $$11 = new Matrix4f($$5);
+      if ($$4) {
+         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$11.translate(e);
+      }
+
+      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private int b(avy $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      $$3 = a($$3);
+      Matrix4f $$10 = new Matrix4f($$5);
+      if ($$4) {
+         this.c($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$10.translate(e);
+      }
+
+      $$1 = this.c($$0, $$1, $$2, $$3, false, $$10, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      ezv.b $$10 = new ezv.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      axf.c($$0, wp.a, $$10);
+      return $$10.a($$8, $$1);
+   }
+
+   private float c(avy $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fwq $$6, ezv.a $$7, int $$8, int $$9) {
+      ezv.b $$10 = new ezv.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      $$0.accept($$10);
+      return $$10.a($$8, $$1);
+   }
+
+   void a(fde $$0, boolean $$1, boolean $$2, float $$3, float $$4, float $$5, Matrix4f $$6, eth $$7, float $$8, float $$9, float $$10, float $$11, int $$12) {
+      $$0.a($$2, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      if ($$1) {
+         $$0.a($$2, $$4 + $$3, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
+   }
+
+   public int b(String $$0) {
+      return awm.f(this.h.a($$0));
+   }
+
+   public int a(vx $$0) {
+      return awm.f(this.h.a($$0));
+   }
+
+   public int a(avy $$0) {
+      return awm.f(this.h.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.h.c($$0, $$1, wp.a) : this.h.b($$0, $$1, wp.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.h.b($$0, $$1, wp.a);
+   }
+
+   public vx a(vx $$0, int $$1) {
+      return this.h.a($$0, $$1, wp.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.h.g($$0, $$1, wp.a).size();
+   }
+
+   public int b(vx $$0, int $$1) {
+      return 9 * this.h.b($$0, $$1, wp.a).size();
+   }
+
+   public List<avy> c(vx $$0, int $$1) {
+      return st.a().a(this.h.b($$0, $$1, wp.a));
+   }
+
+   public boolean a() {
+      return st.a().b();
+   }
+
+   public eyw b() {
+      return this.h;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   class b implements avz {
+      final fwq a;
+      private final boolean c;
+      private final float d;
+      private final float e;
+      private final float f;
+      private final float g;
+      private final float h;
+      private final Matrix4f i;
+      private final ezv.a j;
+      private final int k;
+      float l;
+      float m;
       @Nullable
-      private T b;
-      private final Function<T, vq> c;
-      private exr.l<T> d = $$0x -> null;
-      private Function<ezv<T>, we> e = ezv::d;
-      private ezv.c<T> f = ezv.c.a(ImmutableList.of());
-      private boolean g;
+      private List<fde.a> n;
 
-      public a(Function<T, vq> $$0) {
-         this.c = $$0;
-      }
-
-      public ezv.a<T> a(Collection<T> $$0) {
-         return this.a(ezv.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final ezv.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public ezv.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(ezv.c.a(ezv.a, $$0, $$1));
-      }
-
-      public ezv.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(ezv.c.a($$0, $$1, $$2));
-      }
-
-      public ezv.a<T> a(ezv.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ezv.a<T> a(exr.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ezv.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      private void a(fde.a $$0) {
+         if (this.n == null) {
+            this.n = Lists.newArrayList();
          }
 
-         return this;
+         this.n.add($$0);
       }
 
-      public ezv.a<T> a(Function<ezv<T>, we> $$0) {
-         this.e = $$0;
-         return this;
+      public b(fwq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, ezv.a $$6, int $$7) {
+         this.a = $$0;
+         this.l = $$1;
+         this.m = $$2;
+         this.c = $$4;
+         this.d = $$4 ? 0.25F : 1.0F;
+         this.e = (float)($$3 >> 16 & 0xFF) / 255.0F * this.d;
+         this.f = (float)($$3 >> 8 & 0xFF) / 255.0F * this.d;
+         this.g = (float)($$3 & 0xFF) / 255.0F * this.d;
+         this.h = (float)($$3 >> 24 & 0xFF) / 255.0F;
+         this.i = $$5;
+         this.j = $$6;
+         this.k = $$7;
       }
 
-      public ezv.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public ezv<T> a(int $$0, int $$1, int $$2, int $$3, vq $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public ezv<T> a(int $$0, int $$1, int $$2, int $$3, vq $$4, ezv.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      @Override
+      public boolean accept(int $$0, wp $$1, int $$2) {
+         fda $$3 = ezv.this.a($$1.k());
+         erf $$4 = $$3.a($$2, ezv.this.g);
+         fde $$5 = $$1.f() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.b();
+         float $$7 = this.h;
+         wr $$8 = $$1.a();
+         float $$10;
+         float $$11;
+         float $$12;
+         if ($$8 != null) {
+            int $$9 = $$8.a();
+            $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F * this.d;
+            $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F * this.d;
+            $$12 = (float)($$9 & 0xFF) / 255.0F * this.d;
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            vq $$8 = this.c.apply($$7);
-            vq $$9 = (vq)(this.g ? $$8 : vp.a($$4, $$8));
-            return new ezv<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            $$10 = this.e;
+            $$11 = this.f;
+            $$12 = this.g;
          }
-      }
-   }
 
-   public interface b<T> {
-      void onValueChange(ezv<T> var1, T var2);
-   }
+         if (!($$5 instanceof fdf)) {
+            float $$16 = $$6 ? $$4.a() : 0.0F;
+            float $$17 = this.c ? $$4.b() : 0.0F;
+            eth $$18 = this.a.getBuffer($$5.a(this.j));
+            ezv.this.a($$5, $$6, $$1.c(), $$16, this.l + $$17, this.m + $$17, this.i, $$18, $$10, $$11, $$12, $$7, this.k);
+         }
 
-   public interface c<T> {
-      List<T> a();
+         float $$19 = $$4.a($$6);
+         float $$20 = this.c ? 1.0F : 0.0F;
+         if ($$1.d()) {
+            this.a(new fde.a(this.l + $$20 - 1.0F, this.m + $$20 + 4.5F, this.l + $$20 + $$19, this.m + $$20 + 4.5F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      List<T> b();
+         if ($$1.e()) {
+            this.a(new fde.a(this.l + $$20 - 1.0F, this.m + $$20 + 9.0F, this.l + $$20 + $$19, this.m + $$20 + 9.0F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      static <T> ezv.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new ezv.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
+         this.l += $$19;
+         return true;
       }
 
-      static <T> ezv.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new ezv.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
+      public float a(int $$0, float $$1) {
+         if ($$0 != 0) {
+            float $$2 = (float)($$0 >> 24 & 0xFF) / 255.0F;
+            float $$3 = (float)($$0 >> 16 & 0xFF) / 255.0F;
+            float $$4 = (float)($$0 >> 8 & 0xFF) / 255.0F;
+            float $$5 = (float)($$0 & 0xFF) / 255.0F;
+            this.a(new fde.a($$1 - 1.0F, this.m + 9.0F, this.l + 1.0F, this.m - 1.0F, 0.01F, $$3, $$4, $$5, $$2));
+         }
 
-            @Override
-            public List<T> b() {
-               return $$3;
+         if (this.n != null) {
+            fde $$6 = ezv.this.a(wp.b).a();
+            eth $$7 = this.a.getBuffer($$6.a(this.j));
+
+            for (fde.a $$8 : this.n) {
+               $$6.a($$8, this.i, $$7, this.k);
             }
-         };
+         }
+
+         return this.l;
       }
    }
 }

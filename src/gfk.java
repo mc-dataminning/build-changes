@@ -1,33 +1,24 @@
-public class gfk<T extends chl, M extends fmi<T> & fli & fmq> extends gfe<T, M> {
-   private final fvp a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class gfk extends ggj<cew, fnc<cew>> {
+   private final fxk a;
 
-   public gfk(gcv<T, M> $$0, fvp $$1) {
-      super($$0, $$1);
+   public gfk(gdt<cew, fnc<cew>> $$0, fxk $$1) {
+      super($$0);
       this.a = $$1;
    }
 
-   @Override
-   protected void a(boi $$0, cpd $$1, cpa $$2, boc $$3, esh $$4, fvt $$5, int $$6) {
-      if ($$1.a(cpg.qW) && $$0.fp() == $$1 && $$0.aH == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(etd $$0, fwq $$1, int $$2, cew $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dme $$10 = $$3.gl();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, ghq.d);
+         $$0.b();
       }
-   }
-
-   private void a(boi $$0, cpd $$1, boc $$2, esh $$3, fvt $$4, int $$5) {
-      $$3.a();
-      fpj $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = awi.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      geq.a($$3, false);
-      boolean $$8 = $$2 == boc.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cpa.f, false, $$3, $$4, $$5);
-      $$3.b();
    }
 }

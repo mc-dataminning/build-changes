@@ -1,80 +1,83 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class dua {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aow, dua.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aow, dua.b>() {
-         public dua.b a(aow $$0) {
-            return new dua.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(aow $$0) {
-      try {
-         ((dua.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+public class dua extends duu<dxf> {
+   public dua(Codec<dxf> $$0) {
+      super($$0);
    }
 
-   public static void a(aow $$0, dtm<?, ?> $$1, Optional<eap> $$2) {
-      try {
-         ((dua.b)b.get($$0)).a().computeInt(new dua.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   public boolean a(duw<dxf> $$0) {
+      ib $$1 = $$0.e();
+      cwz $$2 = $$0.b();
+      awt $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.c())) {
+         ib.a $$4 = $$1.j();
+         ib.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ad().a().toString();
-               boolean $$3 = $$0.o().v();
-               iv<eap> $$4 = $$0.I_().d(kg.aC);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<aiy>map(aix::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
             }
-         );
+
+            $$2.a($$4, czh.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ih.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ih.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ih.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ih.f));
+            $$4.c(ih.a);
+         }
+
+         $$4.c(ih.b);
+         this.a($$2, $$3, $$5.a($$4, ih.c));
+         this.a($$2, $$3, $$5.a($$4, ih.d));
+         this.a($$2, $$3, $$5.a($$4, ih.e));
+         this.a($$2, $$3, $$5.a($$4, ih.f));
+         $$4.c(ih.a);
+         ib.a $$10 = new ib.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = awm.a($$11) * awm.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.u($$5.a($$10, ih.a))) {
+                     $$10.c(ih.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.u($$5.a($$10, ih.a))) {
+                     $$2.a($$10, czh.dY.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   static record a(dtm<?, ?> a, Optional<eap> b) {
+   private void a(cwf $$0, awt $$1, ib $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, czh.dY.o(), 2);
+      }
    }
 
-   static record b(Object2IntMap<dua.a> a, MutableInt b) {
+   private boolean b(cwf $$0, awt $$1, ib $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, czh.dY.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

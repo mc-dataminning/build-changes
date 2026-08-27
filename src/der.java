@@ -1,345 +1,89 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
 
-public class der {
-   private final cvr a;
-   private final hz b;
-   private final cyh c;
-   private dlj d;
-   private final boolean e;
-   private final List<hz> f = Lists.newArrayList();
+public class der extends czo implements czi {
+   public static final MapCodec<der> a = b(der::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dmy d = dmu.R;
+   public static final dne e = dmu.S;
+   private static final BiFunction<ih, Integer, epo> f = ac.a(
+      ($$0, $$1) -> {
+         epo[] $$2 = new epo[]{
+            czf.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            czf.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            czf.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            czf.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         epo $$3 = epl.a();
 
-   public der(cvr $$0, hz $$1, dlj $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (cyh)$$2.b();
-      dmn $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
-   }
-
-   public List<hz> a() {
-      return this.f;
-   }
-
-   private void a(dmn $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f());
-            break;
-         case b:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h());
-            break;
-         case c:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h().c());
-            break;
-         case d:
-            this.f.add(this.b.g().c());
-            this.f.add(this.b.h());
-            break;
-         case e:
-            this.f.add(this.b.e().c());
-            this.f.add(this.b.f());
-            break;
-         case f:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f().c());
-            break;
-         case g:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case h:
-            this.f.add(this.b.g());
-            this.f.add(this.b.f());
-            break;
-         case i:
-            this.f.add(this.b.g());
-            this.f.add(this.b.e());
-            break;
-         case j:
-            this.f.add(this.b.h());
-            this.f.add(this.b.e());
-      }
-   }
-
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         der $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = epl.a($$3, $$2[$$5]);
          }
+
+         return $$3.b();
       }
+   );
+
+   @Override
+   public MapCodec<der> a() {
+      return a;
    }
 
-   private boolean a(hz $$0) {
-      return cyh.a(this.a, $$0) || cyh.a(this.a, $$0.c()) || cyh.a(this.a, $$0.d());
+   protected der(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, ih.c).a(e, Integer.valueOf(1)));
    }
 
-   @Nullable
-   private der b(hz $$0) {
-      dlj $$2 = this.a.a_($$0);
-      if (cyh.g($$2)) {
-         return new der(this.a, $$0, $$2);
+   @Override
+   public dme a(dme $$0, dfr $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   public dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   public boolean a(dme $$0, crx $$1) {
+      return !$$1.h() && $$1.n().a(this.l()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      dme $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
       } else {
-         hz $$1 = $$0.c();
-         $$2 = this.a.a_($$1);
-         if (cyh.g($$2)) {
-            return new der(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.d();
-            $$2 = this.a.a_($$1);
-            return cyh.g($$2) ? new der(this.a, $$1, $$2) : null;
-         }
+         a($$0, $$2, new cpq(this));
       }
-   }
-
-   private boolean a(der $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(hz $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         hz $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (ie $$1 : ie.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean b(der $$0) {
-      return this.a($$0) || this.f.size() != 2;
-   }
-
-   private void c(der $$0) {
-      this.f.add($$0.b);
-      hz $$1 = this.b.e();
-      hz $$2 = this.b.f();
-      hz $$3 = this.b.g();
-      hz $$4 = this.b.h();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dmn $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dmn.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dmn.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dmn.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dmn.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dmn.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dmn.j;
-         }
-      }
-
-      if ($$9 == dmn.a) {
-         if (cyh.a(this.a, $$1.c())) {
-            $$9 = dmn.e;
-         }
-
-         if (cyh.a(this.a, $$2.c())) {
-            $$9 = dmn.f;
-         }
-      }
-
-      if ($$9 == dmn.b) {
-         if (cyh.a(this.a, $$4.c())) {
-            $$9 = dmn.c;
-         }
-
-         if (cyh.a(this.a, $$3.c())) {
-            $$9 = dmn.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dmn.a;
-      }
-
-      this.d = this.d.a(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
-   }
-
-   private boolean d(hz $$0) {
-      der $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$1.d();
-         return $$1.b(this);
-      }
-   }
-
-   public der a(boolean $$0, boolean $$1, dmn $$2) {
-      hz $$3 = this.b.e();
-      hz $$4 = this.b.f();
-      hz $$5 = this.b.g();
-      hz $$6 = this.b.h();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dmn $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dmn.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dmn.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dmn.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dmn.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dmn.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dmn.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dmn.a;
-         } else if ($$13) {
-            $$11 = dmn.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dmn.g;
-               }
-
-               if ($$15) {
-                  $$11 = dmn.h;
-               }
-
-               if ($$16) {
-                  $$11 = dmn.j;
-               }
-
-               if ($$17) {
-                  $$11 = dmn.i;
-               }
-            } else {
-               if ($$17) {
-                  $$11 = dmn.i;
-               }
-
-               if ($$16) {
-                  $$11 = dmn.j;
-               }
-
-               if ($$15) {
-                  $$11 = dmn.h;
-               }
-
-               if ($$14) {
-                  $$11 = dmn.g;
-               }
-            }
-         }
-      }
-
-      if ($$11 == dmn.a) {
-         if (cyh.a(this.a, $$3.c())) {
-            $$11 = dmn.e;
-         }
-
-         if (cyh.a(this.a, $$4.c())) {
-            $$11 = dmn.f;
-         }
-      }
-
-      if ($$11 == dmn.b) {
-         if (cyh.a(this.a, $$6.c())) {
-            $$11 = dmn.c;
-         }
-
-         if (cyh.a(this.a, $$5.c())) {
-            $$11 = dmn.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.a(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            der $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
-   }
-
-   public dlj c() {
-      return this.d;
    }
 }

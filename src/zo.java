@@ -1,46 +1,57 @@
-public record zo(hz c, float d, float e, float f, float g, float h) implements yy {
-   public static final xo<uq, zo> a = yy.a(zo::a, zo::new);
-   public static final yy.b<zo> b = yy.a("debug/worldgen_attempt");
+import java.util.List;
 
-   private zo(uq $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record zo(ajb<cwe> c, eby d, List<zo.a> e) implements za {
+   public static final xq<us, zo> a = za.a(zo::a, zo::new);
+   public static final za.b<zo> b = za.a("debug/structures");
+
+   private zo(us $$0) {
+      this($$0.a(ki.aN), b($$0), $$0.a(zo.a::new));
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(us $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public yy.b<zo> a() {
+   public za.b<zo> a() {
       return b;
    }
 
-   public hz b() {
+   static eby b(us $$0) {
+      return new eby($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(us $$0, eby $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public ajb<cwe> b() {
       return this.c;
    }
 
-   public float c() {
+   public eby c() {
       return this.d;
    }
 
-   public float d() {
+   public List<zo.a> d() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
-   }
+   public static record a(eby a, boolean b) {
+      public a(us $$0) {
+         this(zo.b($$0), $$0.readBoolean());
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public void a(us $$0) {
+         zo.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

@@ -1,59 +1,102 @@
-public class fsa extends fuh {
-   private final fuc a;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   protected fsa(
-      fqe $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fuc $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public class fsa {
+   final int a;
+   private final List<fsa.a> b = new ArrayList<>();
+
+   public fsa(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public ftl b() {
-      return ftl.b;
+   public void a(frs $$0, IntCollection $$1, fsa.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
+
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fru $$6 = $$0.b($$4);
+         if ($$6 instanceof frv.a) {
+            frv.a $$5 = (frv.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
+      }
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(wi $$0) {
+      this.b.add(new fsa.a($$0));
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public boolean b(wi $$0) {
+      boolean $$1 = false;
+      Iterator<fsa.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fsa.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<we> b;
+      private wi c;
+      private boolean d = true;
+      private int e;
+
+      a(wi $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(wi $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fsa.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, frv.a var2);
    }
 }

@@ -1,69 +1,88 @@
-public class aby implements xx<aag> {
-   public static final xo<vb, aby> a = xx.a(aby::a, aby::new);
-   private final int b;
-   private final cuq c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public aby(int $$0, cuq $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.b();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class aby {
+   private static final xq<ByteBuf, byte[]> a = xo.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public aby(cvl $$0, ehg $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cwn.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cwn.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   private aby(vb $$0) {
-      this.b = $$0.n();
-      this.c = cuq.a.decode($$0);
-      this.d = $$0.n();
-      this.e = $$0.n();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   public aby(us $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(vb $$0) {
-      $$0.c(this.b);
-      cuq.a.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(us $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public xz<aby> a() {
-      return aeq.P;
+   private void a(cvl $$0, ehg $$1, cwn $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dog $$7 = $$1.a($$2).a(jd.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(aag $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
+   public BitSet a() {
       return this.b;
    }
 
-   public cuq e() {
-      return this.c;
-   }
-
-   public int f() {
+   public BitSet b() {
       return this.d;
    }
 
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
+   public List<byte[]> c() {
       return this.f;
    }
 
-   public boolean i() {
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
+      return this.e;
+   }
+
+   public List<byte[]> f() {
       return this.g;
    }
 }

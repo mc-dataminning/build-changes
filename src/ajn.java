@@ -1,9 +1,13 @@
-public interface ajn {
-   String ae();
+public final class ajn extends RuntimeException {
+   public static final ajn a = new ajn();
 
-   String K();
+   private ajn() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
 
-   int L();
-
-   int M();
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
+   }
 }

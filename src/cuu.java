@@ -1,19 +1,25 @@
-public interface cuu extends cux {
-   float a(ie var1, boolean var2);
-
-   egl z_();
-
-   int a(hz var1, cvc var2);
-
-   default int a(cwa $$0, hz $$1) {
-      return this.z_().a($$0).b($$1);
+public class cuu extends ctz {
+   public cuu(ctz.a $$0, bom... $$1) {
+      super($$0, aum.bl, $$1);
    }
 
-   default int b(hz $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 10 + $$0 * 7;
    }
 
-   default boolean h(hz $$0) {
-      return this.a(cwa.a, $$0) >= this.O();
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(ctz $$0) {
+      return super.a($$0) && $$0 != cuc.E && $$0 != cuc.H;
    }
 }

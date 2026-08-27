@@ -1,37 +1,53 @@
-public class agn implements xx<aes> {
-   public static final xo<uq, agn> a = xx.a(agn::a, agn::new);
-   private final blv b;
-   private final int c;
+public class agn implements xz<aev> {
+   public static final xq<us, agn> a = xz.a(agn::a, agn::new);
+   private static final int b = 384;
+   private final ib c;
+   private final String[] d;
+   private final boolean e;
 
-   public agn(blv $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public agn(ib $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private agn(uq $$0) {
-      this.b = $$0.b(blv.class);
-      this.c = $$0.n();
+   private agn(us $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(us $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public xz<agn> a() {
-      return aeq.bZ;
+   public yb<agn> a() {
+      return aet.bX;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public blv b() {
-      return this.b;
+   public ib b() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

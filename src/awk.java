@@ -1,9 +1,14 @@
-public interface awk {
-   int a();
+import javax.annotation.Nullable;
 
-   String b();
+public class awk {
+   @Nullable
+   private static byte[] a = null;
 
-   default vq d() {
-      return vq.c(this.b());
+   public static void a() {
+      a = new byte[10485760];
+   }
+
+   public static void b() {
+      a = new byte[0];
    }
 }

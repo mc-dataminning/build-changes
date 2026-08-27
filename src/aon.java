@@ -1,85 +1,69 @@
-public class aon extends aoy {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
-
-   public aon(aox $$0) {
-      super($$0);
+public abstract class aon extends ehd {
+   protected aon(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.X();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.d.b(new abm(abm.g, 0.0F));
-      }
+   protected boolean a(long $$0) {
+      return $$0 == cvl.a;
+   }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         cvl $$3 = new cvl($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.d.b(new abm(abm.g, 104.0F));
-            } else {
-               this.d.a(vq.c("demo.day." + $$1));
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = cvl.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
             }
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.d.b(new abm(abm.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.d.b(new abm(abm.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.d.b(new abm(abm.g, 103.0F));
+      }
+   }
+
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      cvl $$4 = new cvl($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = cvl.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = cvl.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
          }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(vq.c("demo.day.warning"));
       }
-   }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(vq.c("demo.reminder"));
-         this.g = 0;
-      }
+      return $$3;
    }
 
    @Override
-   public void a(hz $$0, afu.a $$1, ie $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == cvl.a ? this.b($$1) : $$2 + 1;
    }
 
-   @Override
-   public blw a(aox $$0, cvr $$1, cpd $$2, blv $$3) {
-      if (this.f) {
-         this.f();
-         return blw.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
+   protected abstract int b(long var1);
 
-   @Override
-   public blw a(aox $$0, cvr $$1, cpd $$2, blv $$3, env $$4) {
-      if (this.f) {
-         this.f();
-         return blw.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(cvl.a, $$0, $$1, $$2);
    }
 }

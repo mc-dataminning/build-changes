@@ -1,32 +1,27 @@
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
 
-public class gz<T extends dw<T>> implements gu<T> {
-   private final String a;
-   private final gl b;
-   private final CommandContext<T> c;
+public class gz<T extends dw<T>> implements gw<T> {
+   private final hh<T> a;
+   private final dr b;
+   private final boolean c;
 
-   public gz(String $$0, gl $$1, CommandContext<T> $$2) {
+   public gz(hh<T> $$0, dr $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public void a(T $$0, gq<T> $$1, gs $$2) {
-      $$1.c().a(() -> "execute " + this.a);
-
-      try {
-         $$1.e();
-         int $$3 = ContextChain.runExecutable(this.c, $$0, dw.b_(), this.b.a());
-         gt $$4 = $$1.b();
-         if ($$4 != null) {
-            $$4.a($$2.c(), this.a, $$3);
-         }
-      } catch (CommandSyntaxException var9) {
-         $$0.a(var9, this.b.a(), $$1.b());
-      } finally {
-         $$1.c().c();
+   public void a(T $$0, gs<T> $$1, gu $$2) {
+      $$1.e();
+      List<gw<T>> $$3 = this.a.b();
+      gv $$4 = $$1.b();
+      if ($$4 != null) {
+         $$4.a($$2.c(), this.a.a(), this.a.b().size());
       }
+
+      int $$5 = $$2.c() + 1;
+      gu.a $$6 = this.c ? $$2.e() : $$1.b($$5);
+      gu $$7 = new gu($$5, this.b, $$6);
+      ha.a($$1, $$7, $$3, ($$1x, $$2x) -> new go<>($$1x, $$2x.bind($$0)));
    }
 }

@@ -1,34 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.Duration;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public abstract class gnd extends ffl {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 3368635;
-   protected static final int r = 7107012;
-   protected static final int t = 8226750;
-   protected static final int u = 8;
-   private final List<gnb> a = Lists.newArrayList();
+public class gnd {
+   private final UUID a = UUID.randomUUID();
+   private final gmy b;
+   private final gnh c;
+   private final gnj d = new gnj();
+   private final gng e;
+   private final gni f;
 
-   public gnd(vq $$0) {
-      super($$0);
+   public gnd(gmy $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gnh($$3);
+      this.e = new gng();
+      this.f = new gni($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gnb.i, this.a);
+      });
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void a() {
+      this.e.a(this.b);
    }
 
-   protected gnb a(gnb $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public void a(cwb $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
    }
 
-   public vq o() {
-      return vp.a(this.a.stream().map(gnb::a).collect(Collectors.toList()));
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
+      }
+   }
+
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(cwe $$0, af $$1) {
+      ajc $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.X();
+         this.b.send(gmz.f, $$2x -> {
+            $$2x.a(gnb.D, $$2.toString());
+            $$2x.a(gnb.E, $$3);
+         });
+      }
    }
 }

@@ -1,53 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bsz {
-   public static bqb<boq> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$3 -> $$3.group($$3.c(bxl.o), $$3.c(bxl.m), $$3.a(bxl.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dm()).a(auf.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        hz $$8 = null;
-                        hz $$9 = null;
-                        hz $$10 = $$6.dm();
+public class bsz extends bqp<box> {
+   public static final int c = 100;
+   private long d;
 
-                        for (hz $$12 : hz.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dlj $$13 = $$6.dM().a_($$12.c());
-                              dlj $$14 = $$6.dM().a_($$12);
-                              if ($$14.a(cyu.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
+   public bsz() {
+      super(ImmutableMap.of(bya.b, byb.a, bya.I, byb.c));
+   }
 
-                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
-                                    $$9 = $$12.i();
-                                 }
-                              }
-                           }
-                        }
+   @Override
+   protected boolean a(apa $$0, box $$1) {
+      if ($$1.bL()) {
+         return false;
+      } else {
+         bpy<?> $$2 = $$1.dM();
+         ik $$3 = $$2.c(bya.b).get();
+         if ($$0.ad() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(bya.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.X() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
+            dme $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dh(), 2.0) && $$6.a(aue.R) && !$$6.c(cyy.c);
+         }
+      }
+   }
 
-                        if ($$8 != null) {
-                           $$5.a(new bqd($$8));
-                           $$4.a(new bxo(new bqd($$8), $$1, 0));
-                        }
+   @Override
+   protected boolean a(apa $$0, box $$1, long $$2) {
+      Optional<ik> $$3 = $$1.dM().c(bya.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ib $$4 = $$3.get().b();
+         return $$1.dM().c(cjn.e) && $$1.dq() > (double)$$4.v() + 0.4 && $$4.a($$1.dh(), 1.14);
+      }
+   }
 
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   protected void d(apa $$0, box $$1, long $$2) {
+      if ($$2 > this.d) {
+         bpy<?> $$3 = $$1.dM();
+         if ($$3.a(bya.v)) {
+            Set<ik> $$4 = $$3.c(bya.v).get();
+            Optional<List<box>> $$5;
+            if ($$3.a(bya.g)) {
+               $$5 = $$3.c(bya.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            brn.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dM().c(bya.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(apa $$0, box $$1, long $$2) {
+      if ($$1.fF()) {
+         $$1.fG();
+         this.d = $$2 + 40L;
+      }
    }
 }

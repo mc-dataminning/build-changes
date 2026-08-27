@@ -1,38 +1,103 @@
-public class gcy extends gaz<cig> {
-   private static final aiy a = new aiy("textures/entity/shulker/spark.png");
-   private static final fwb f = fwb.i(a);
-   private final foa<cig> g;
+import org.joml.Matrix4f;
 
-   public gcy(gba.a $$0) {
+public class gcy extends gbx<bow> {
+   public gcy(gby.a $$0) {
       super($$0);
-      this.g = new foa<>($$0.a(fpi.bh));
    }
 
-   protected int a(cig $$0, hz $$1) {
-      return 15;
+   public void a(bow $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      awt $$10 = awt.a($$0.b);
+
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
+      }
+
+      eth $$12 = $$4.getBuffer(fwy.s());
+      Matrix4f $$13 = $$3.c().a();
+
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         awt $$15 = awt.a($$0.b);
+
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+            }
+         }
+      }
    }
 
-   public void a(cig $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
-      $$3.a();
-      float $$6 = awi.j($$2, $$0.M, $$0.dC());
-      float $$7 = awi.i($$2, $$0.N, $$0.dE());
-      float $$8 = (float)$$0.ag + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(awi.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(awi.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(awi.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      esl $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      esl $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, ggs.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static void a(
+      Matrix4f $$0,
+      eth $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
    }
 
-   public aiy a(cig $$0) {
-      return a;
+   public ajc a(bow $$0) {
+      return ghy.e;
    }
 }

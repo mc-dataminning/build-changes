@@ -1,21 +1,18 @@
-import javax.annotation.Nullable;
-
-public class cqd extends cqm {
-   public cqd(coy.a $$0, cys $$1, cys $$2) {
-      super($$1, $$2, $$0, ie.a);
-   }
-
-   public cqd(coy.a $$0, cys $$1, cys $$2, ie $$3) {
-      super($$1, $$2, $$0, $$3);
+public class cqd extends cnl {
+   public cqd(czf $$0, cpl.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected boolean a(hz $$0, cvr $$1, @Nullable chl $$2, cpd $$3, dlj $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dkg $$6 && $$1.a_($$0).b() instanceof dfr $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public bml a(crz $$0) {
+      return bml.d;
+   }
 
-      return $$5;
+   @Override
+   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
+      eor $$3 = a($$0, $$1, cvn.b.b);
+      eor $$4 = $$3.a($$3.a().c());
+      bml $$5 = super.a(new crz($$1, $$2, $$4));
+      return new bmm<>($$5, $$1.b($$2));
    }
 }

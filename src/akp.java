@@ -1,216 +1,237 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Deque;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class akp {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vq.c("commands.debug.function.noReturnRun"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.clone.overlap"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vs.b("commands.clone.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vs.c("commands.clone.failed"));
+   public static final Predicate<dmi> a = $$0 -> !$$0.a().i();
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-               .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)dv.a("function").requires($$0x -> $$0x.c(3))).then(dv.a("name", fz.a()).suggests(ald.b).executes(new akp.a())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clone").requires($$0x -> $$0x.c(2)))
+               .then(a($$1, $$0x -> ((du)$$0x.getSource()).e())))
+            .then(dv.a("from").then(dv.a("sourceDimension", ef.a()).then(a($$1, $$0x -> ef.a($$0x, "sourceDimension")))))
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.bg()) {
-         throw c.create();
-      } else {
-         $$1.bh();
-         $$0.a(() -> vq.c("commands.debug.started"), true);
-         return 0;
-      }
+   private static ArgumentBuilder<du, ?> a(dq $$0, akp.b<CommandContext<du>, apa> $$1) {
+      return dv.a("begin", fo.a())
+         .then(
+            ((RequiredArgumentBuilder)dv.a("end", fo.a()).then(a($$0, $$1, $$0x -> ((du)$$0x.getSource()).e())))
+               .then(dv.a("to").then(dv.a("targetDimension", ef.a()).then(a($$0, $$1, $$0x -> ef.a($$0x, "targetDimension")))))
+         );
    }
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.bg()) {
+   private static akp.c a(CommandContext<du> $$0, apa $$1, String $$2) throws CommandSyntaxException {
+      ib $$3 = fo.a($$0, $$1, $$2);
+      return new akp.c($$1, $$3);
+   }
+
+   private static ArgumentBuilder<du, ?> a(dq $$0, akp.b<CommandContext<du>, apa> $$1, akp.b<CommandContext<du>, apa> $$2) {
+      akp.b<CommandContext<du>, akp.c> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
+      akp.b<CommandContext<du>, akp.c> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
+      akp.b<CommandContext<du>, akp.c> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
+      return ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("destination", fo.a())
+                  .executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, akp.d.c)))
+               .then(
+                  a(
+                     $$3,
+                     $$4,
+                     $$5,
+                     $$0x -> $$0xx -> true,
+                     dv.a("replace").executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, akp.d.c))
+                  )
+               ))
+            .then(
+               a(
+                  $$3,
+                  $$4,
+                  $$5,
+                  $$0x -> a,
+                  dv.a("masked").executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), a, akp.d.c))
+               )
+            ))
+         .then(
+            dv.a("filtered")
+               .then(
+                  a(
+                     $$3,
+                     $$4,
+                     $$5,
+                     $$0x -> fk.a($$0x, "filter"),
+                     dv.a("filter", fk.a($$0))
+                        .executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), fk.a($$3x, "filter"), akp.d.c))
+                  )
+               )
+         );
+   }
+
+   private static ArgumentBuilder<du, ?> a(
+      akp.b<CommandContext<du>, akp.c> $$0,
+      akp.b<CommandContext<du>, akp.c> $$1,
+      akp.b<CommandContext<du>, akp.c> $$2,
+      akp.b<CommandContext<du>, Predicate<dmi>> $$3,
+      ArgumentBuilder<du, ?> $$4
+   ) {
+      return $$4.then(dv.a("force").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akp.d.a)))
+         .then(dv.a("move").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akp.d.b)))
+         .then(dv.a("normal").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akp.d.c)));
+   }
+
+   private static int a(du $$0, akp.c $$1, akp.c $$2, akp.c $$3, Predicate<dmi> $$4, akp.d $$5) throws CommandSyntaxException {
+      ib $$6 = $$1.b();
+      ib $$7 = $$2.b();
+      eby $$8 = eby.a($$6, $$7);
+      ib $$9 = $$3.b();
+      ib $$10 = $$9.a($$8.c());
+      eby $$11 = eby.a($$9, $$10);
+      apa $$12 = $$1.a();
+      apa $$13 = $$3.a();
+      if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
-         bim $$2 = $$1.bi();
-         double $$3 = (double)$$2.g() / (double)axh.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> vq.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
-      }
-   }
+         int $$14 = $$8.d() * $$8.e() * $$8.f();
+         int $$15 = $$0.e().Z().c(cwa.z);
+         if ($$14 > $$15) {
+            throw c.create($$15, $$14);
+         } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
+            List<akp.a> $$16 = Lists.newArrayList();
+            List<akp.a> $$17 = Lists.newArrayList();
+            List<akp.a> $$18 = Lists.newArrayList();
+            Deque<ib> $$19 = Lists.newLinkedList();
+            ib $$20 = new ib($$11.h() - $$8.h(), $$11.i() - $$8.i(), $$11.j() - $$8.j());
 
-   static class a extends gn.b<du> implements gn.a<du> {
-      public void a(du $$0, ContextChain<du> $$1, gl $$2, gr<du> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw akp.e.create();
-         } else if ($$3.a() != null) {
-            throw akp.d.create();
-         } else {
-            CommandContext<du> $$4 = $$1.getTopContext();
-            Collection<hd<du>> $$5 = fz.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ac.e() + ".txt";
-            CommandDispatcher<du> $$8 = $$0.l().aE().a();
-            int $$9 = 0;
-
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               akp.b $$12 = new akp.b($$11);
-               $$3.a($$12);
-
-               for (final hd<du> $$13 : $$5) {
-                  try {
-                     du $$14 = $$0.a($$12).b(2);
-                     hf<du> $$15 = $$13.a(null, $$8);
-                     $$3.a((new gx<du>($$15, dr.a, false) {
-                        public void a(du $$0, gq<du> $$1, gs $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
+            for (int $$21 = $$8.j(); $$21 <= $$8.m(); $$21++) {
+               for (int $$22 = $$8.i(); $$22 <= $$8.l(); $$22++) {
+                  for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
+                     ib $$24 = new ib($$23, $$22, $$21);
+                     ib $$25 = $$24.a((jf)$$20);
+                     dmi $$26 = new dmi($$12, $$24, false);
+                     dme $$27 = $$26.a();
+                     if ($$4.test($$26)) {
+                        djl $$28 = $$12.c_($$24);
+                        if ($$28 != null) {
+                           sy $$29 = $$28.d($$0.v());
+                           $$17.add(new akp.a($$25, $$27, $$29));
+                           $$19.addLast($$24);
+                        } else if (!$$27.i($$12, $$24) && !$$27.r($$12, $$24)) {
+                           $$18.add(new akp.a($$25, $$27, null));
+                           $$19.addFirst($$24);
+                        } else {
+                           $$16.add(new akp.a($$25, $$27, null));
+                           $$19.addLast($$24);
                         }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (dx var18) {
-                     $$0.b(var18.a());
+                     }
                   }
                }
-            } catch (IOException | UncheckedIOException var19) {
-               akp.a.warn("Tracing failed", var19);
-               $$0.b(vq.c("commands.debug.function.traceFailed"));
             }
 
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> vq.a("commands.debug.function.success.single", $$18, vq.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> vq.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+            if ($$5 == akp.d.b) {
+               for (ib $$30 : $$19) {
+                  djl $$31 = $$12.c_($$30);
+                  bmc.a_($$31);
+                  $$12.a($$30, czh.hW.o(), 2);
                }
-            });
+
+               for (ib $$32 : $$19) {
+                  $$12.a($$32, czh.a.o(), 3);
+               }
+            }
+
+            List<akp.a> $$33 = Lists.newArrayList();
+            $$33.addAll($$16);
+            $$33.addAll($$17);
+            $$33.addAll($$18);
+            List<akp.a> $$34 = Lists.reverse($$33);
+
+            for (akp.a $$35 : $$34) {
+               djl $$36 = $$13.c_($$35.a);
+               bmc.a_($$36);
+               $$13.a($$35.a, czh.hW.o(), 2);
+            }
+
+            int $$37 = 0;
+
+            for (akp.a $$38 : $$33) {
+               if ($$13.a($$38.a, $$38.b, 2)) {
+                  $$37++;
+               }
+            }
+
+            for (akp.a $$39 : $$17) {
+               djl $$40 = $$13.c_($$39.a);
+               if ($$39.c != null && $$40 != null) {
+                  $$40.a($$39.c, $$13.I_());
+                  $$40.e();
+               }
+
+               $$13.a($$39.a, $$39.b, 2);
+            }
+
+            for (akp.a $$41 : $$34) {
+               $$13.b($$41.a, $$41.b.b());
+            }
+
+            $$13.m().a($$12.m(), $$8, $$20);
+            if ($$37 == 0) {
+               throw d.create();
+            } else {
+               int $$42 = $$37;
+               $$0.a(() -> vs.a("commands.clone.success", $$42), true);
+               return $$37;
+            }
+         } else {
+            throw fo.a.create();
          }
       }
    }
 
-   static class b implements dt, gt {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
+   static class a {
+      public final ib a;
+      public final dme b;
+      @Nullable
+      public final sy c;
 
-      b(PrintWriter $$0) {
-         this.c = $$0;
+      public a(ib $$0, dme $$1, @Nullable sy $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
+   }
 
-      private void a(int $$0) {
-         this.b($$0);
+   @FunctionalInterface
+   interface b<T, R> {
+      R apply(T var1) throws CommandSyntaxException;
+   }
+
+   static record c(apa a, ib b) {
+   }
+
+   static enum d {
+      a(true),
+      b(true),
+      c(false);
+
+      private final boolean d;
+
+      private d(boolean $$0) {
          this.d = $$0;
       }
 
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
-         }
-      }
-
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
-         }
-      }
-
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
-         }
-      }
-
-      @Override
-      public void a(int $$0, aiy $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
-      }
-
-      @Override
-      public void a(vq $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
-
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public boolean x_() {
-         return true;
-      }
-
-      @Override
-      public boolean W_() {
-         return false;
-      }
-
-      @Override
-      public boolean m_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+      public boolean a() {
+         return this.d;
       }
    }
 }

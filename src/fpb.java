@@ -1,9 +1,39 @@
-public class fpb<T extends cfk> extends flc<T> {
-   public fpb(fpj $$0) {
-      super($$0);
+public class fpb extends fpc {
+   private final fqf b;
+   protected final fqf a;
+
+   public fpb(fqf $$0) {
+      this.b = $$0;
+      this.a = $$0.b("head");
    }
 
-   public boolean a(T $$0) {
-      return $$0.fY();
+   public static fqn a() {
+      fqn $$0 = new fqn();
+      fqo $$1 = $$0.a();
+      $$1.a("head", fqk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fqh.a);
+      return $$0;
+   }
+
+   public static fql b() {
+      fqn $$0 = a();
+      fqo $$1 = $$0.a();
+      $$1.a("head").a("hat", fqk.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fqj(0.25F)), fqh.a);
+      return fql.a($$0, 64, 64);
+   }
+
+   public static fql c() {
+      fqn $$0 = a();
+      return fql.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(etd $$0, eth $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

@@ -1,29 +1,77 @@
-public final class iu {
-   public static final int a = 2;
-   public static final int b = 4;
-   public static final int c = 3;
-   private static final int d = 2;
+import com.google.common.collect.Lists;
+import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-   private iu() {
+public class iu<E> extends AbstractList<E> {
+   private final List<E> a;
+   @Nullable
+   private final E b;
+
+   public static <E> iu<E> a() {
+      return new iu<>(Lists.newArrayList(), null);
    }
 
-   public static int a(int $$0) {
-      return $$0 >> 2;
+   public static <E> iu<E> a(int $$0) {
+      return new iu<>(Lists.newArrayListWithCapacity($$0), null);
    }
 
-   public static int b(int $$0) {
-      return $$0 & 3;
+   public static <E> iu<E> a(int $$0, E $$1) {
+      Validate.notNull($$1);
+      Object[] $$2 = new Object[$$0];
+      Arrays.fill($$2, $$1);
+      return new iu<>(Arrays.asList((E[])$$2), $$1);
    }
 
-   public static int c(int $$0) {
-      return $$0 << 2;
+   @SafeVarargs
+   public static <E> iu<E> a(E $$0, E... $$1) {
+      return new iu<>(Arrays.asList($$1), $$0);
    }
 
-   public static int d(int $$0) {
-      return $$0 << 2;
+   protected iu(List<E> $$0, @Nullable E $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static int e(int $$0) {
-      return $$0 >> 2;
+   @Nonnull
+   @Override
+   public E get(int $$0) {
+      return this.a.get($$0);
+   }
+
+   @Override
+   public E set(int $$0, E $$1) {
+      Validate.notNull($$1);
+      return this.a.set($$0, $$1);
+   }
+
+   @Override
+   public void add(int $$0, E $$1) {
+      Validate.notNull($$1);
+      this.a.add($$0, $$1);
+   }
+
+   @Override
+   public E remove(int $$0) {
+      return this.a.remove($$0);
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public void clear() {
+      if (this.b == null) {
+         super.clear();
+      } else {
+         for (int $$0 = 0; $$0 < this.size(); $$0++) {
+            this.set($$0, this.b);
+         }
+      }
    }
 }

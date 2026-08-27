@@ -1,41 +1,47 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bwq extends bvu {
+   private final cco a;
+   private int b;
 
-public class bwq<T extends bok> extends bvf {
-   private final T a;
-   private final cpd b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final atk d;
-
-   public bwq(T $$0, cpd $$1, @Nullable atk $$2, Predicate<? super T> $$3) {
+   public bwq(cco $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fn();
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      this.a.a(bnx.a, this.b.q());
-      this.a.c(blv.a);
+      this.a.gQ();
+      this.h();
+   }
+
+   private void h() {
+      ato $$0 = this.a.gP();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void d() {
-      this.a.a(bnx.a, cpd.h);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.eh().i() * 0.2F + 0.9F);
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.ef().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fa() && this.a.ef().a(10) == 0;
+      } else {
+         return false;
       }
+   }
+
+   private void a(cco $$0) {
+      this.b = -$$0.gU();
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 }

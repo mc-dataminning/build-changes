@@ -1,28 +1,69 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public record acr(String b, @Nullable String c) implements xx<aag> {
-   public static final xo<uq, acr> a = xx.a(acr::a, acr::new);
+public class acr implements xz<aai> {
+   public static final xq<us, acr> a = xz.a(acr::a, acr::new);
+   private final acr.a b;
+   private final List<ajc> c;
+   private final List<ajc> d;
+   private final att e;
 
-   private acr(uq $$0) {
-      this($$0.r(), $$0.c(uq::r));
+   public acr(acr.a $$0, Collection<ajc> $$1, Collection<ajc> $$2, att $$3) {
+      this.b = $$0;
+      this.c = ImmutableList.copyOf($$1);
+      this.d = ImmutableList.copyOf($$2);
+      this.e = $$3;
    }
 
-   private void a(uq $$0) {
+   private acr(us $$0) {
+      this.b = $$0.b(acr.a.class);
+      this.e = att.a($$0);
+      this.c = $$0.a(us::q);
+      if (this.b == acr.a.a) {
+         this.d = $$0.a(us::q);
+      } else {
+         this.d = ImmutableList.of();
+      }
+   }
+
+   private void a(us $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, uq::a);
+      this.e.b($$0);
+      $$0.a(this.c, us::a);
+      if (this.b == acr.a.a) {
+         $$0.a(this.d, us::a);
+      }
    }
 
    @Override
-   public xz<acr> a() {
-      return aeq.ca;
+   public yb<acr> a() {
+      return aet.ai;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public List<ajc> b() {
       return this.c;
+   }
+
+   public List<ajc> e() {
+      return this.d;
+   }
+
+   public att f() {
+      return this.e;
+   }
+
+   public acr.a g() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

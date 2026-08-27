@@ -1,34 +1,24 @@
-public abstract class gfu<T extends boi, M extends fnn<T>> extends gfl<T, M> {
-   public gfu(gcb<T, M> $$0) {
+public abstract class gfu<T extends bof & bpj, M extends fne<T>> extends ggj<T, M> {
+   public gfu(gdt<T, M> $$0) {
       super($$0);
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(esh var1, fvt var2, int var3, bnq var4, float var5, float var6, float var7, float var8);
-
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      awp $$11 = awp.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fpj $$13 = this.c().a($$11);
-            fpj.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = awi.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = awi.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = awi.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
+   @Override
+   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ag + $$6;
+         fne<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         eth $$12 = $$1.getBuffer(fwy.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, ghq.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
    }
+
+   protected abstract float a(float var1);
+
+   protected abstract ajc a();
+
+   protected abstract fne<T> b();
 }

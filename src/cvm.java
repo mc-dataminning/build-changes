@@ -1,34 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.function.Predicate;
 
-public class cvm extends eib {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public class cvm {
+   private final eov a;
+   private final eov b;
+   private final Predicate<dme> c;
 
-   public static eib.a<cvm> a() {
-      return new eib.a<>(cvm::new, cvm::b, axo.i);
+   public cvm(eov $$0, eov $$1, Predicate<dme> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private cvm(LongSet $$0) {
-      this.c = $$0;
+   public eov a() {
+      return this.b;
    }
 
-   public cvm() {
-      this(new LongOpenHashSet());
+   public eov b() {
+      return this.a;
    }
 
-   public static cvm b(sw $$0) {
-      return new cvm(new LongOpenHashSet($$0.o("Forced")));
-   }
-
-   @Override
-   public sw a(sw $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
+   public Predicate<dme> c() {
       return this.c;
    }
 }

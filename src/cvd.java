@@ -1,25 +1,48 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public interface cvd extends cvi, cvu, cvw {
-   @Override
-   default <T extends dix> Optional<T> a(hz $$0, diz<T> $$1) {
-      return cvu.super.a($$0, $$1);
+public class cvd extends ArrayList<cvc> {
+   public static final Codec<cvd> a = cvc.a.listOf().fieldOf("Recipes").xmap(cvd::new, Function.identity()).codec();
+   public static final xq<vd, cvd> b = cvc.b.a(xo.a(cvd::new));
+
+   public cvd() {
    }
 
-   @Override
-   default List<eos> c(@Nullable bnq $$0, enu $$1) {
-      return cvi.super.c($$0, $$1);
+   private cvd(int $$0) {
+      super($$0);
    }
 
-   @Override
-   default boolean a(@Nullable bnq $$0, eos $$1) {
-      return cvi.super.a($$0, $$1);
+   private cvd(Collection<cvc> $$0) {
+      super($$0);
    }
 
-   @Override
-   default hz a(dqv.a $$0, hz $$1) {
-      return cvu.super.a($$0, $$1);
+   @Nullable
+   public cvc a(cpq $$0, cpq $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         cvc $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            cvc $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   public cvd a() {
+      cvd $$0 = new cvd(this.size());
+
+      for (cvc $$1 : this) {
+         $$0.add($$1.u());
+      }
+
+      return $$0;
    }
 }

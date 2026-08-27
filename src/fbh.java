@@ -1,61 +1,98 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fbh extends fbd {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = -6745839;
-   private static final int j = -4548257;
-   private static final int k = -10547572;
-   private final Supplier<Float> l;
+public class fbh extends faq<fbh.a> {
+   public fbh(eyk $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.e = false;
+   }
 
-   public fbh(eyz $$0, bhx $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.l = $$2;
+   public int a(eyn<?> $$0) {
+      return this.b(fbh.a.a(this.c.m, this.g, $$0));
+   }
+
+   public void a(eyn<?> $$0, @Nullable eyn<?> $$1) {
+      this.b(fbh.a.a(this.c.m, this.g, $$0, $$1));
+   }
+
+   public void a(eyn<?>[] $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         this.a($$0[$$1], $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null);
+      }
    }
 
    @Override
-   protected void d(ezb $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)axh.c / this.l.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public int b() {
+      return 400;
    }
 
    @Override
-   protected void c(ezb $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, bhy.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(fwb.C(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, bhy.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(fwb.C(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, bhy.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(fwb.C(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   protected int c() {
+      return super.c() + 32;
    }
 
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, bhy.d.ordinal());
+   @Nullable
+   public fai b(eyn<?> $$0) {
+      for (fbh.a $$1 : this.l()) {
+         fai $$2 = $$1.a.get($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public Optional<fai> e(double $$0, double $$1) {
+      for (fbh.a $$2 : this.l()) {
+         for (fai $$3 : $$2.b) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.l.get().floatValue());
-   }
+   protected static class a extends faq.a<fbh.a> {
+      final Map<eyn<?>, fai> a;
+      final List<fai> b;
 
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.l.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
-   }
+      private a(Map<eyn<?>, fai> $$0) {
+         this.a = $$0;
+         this.b = ImmutableList.copyOf($$0.values());
+      }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+      public static fbh.a a(eyo $$0, int $$1, eyn<?> $$2) {
+         return new fbh.a(ImmutableMap.of($$2, $$2.a($$0, $$1 / 2 - 155, 0, 310)));
+      }
+
+      public static fbh.a a(eyo $$0, int $$1, eyn<?> $$2, @Nullable eyn<?> $$3) {
+         fai $$4 = $$2.a($$0, $$1 / 2 - 155, 0, 150);
+         return $$3 == null ? new fbh.a(ImmutableMap.of($$2, $$4)) : new fbh.a(ImmutableMap.of($$2, $$4, $$3, $$3.a($$0, $$1 / 2 - 155 + 160, 0, 150)));
+      }
+
+      @Override
+      public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.b.forEach($$5x -> {
+            $$5x.n($$2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public List<? extends fcg> l() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends fed> a() {
+         return this.b;
+      }
    }
 }

@@ -1,46 +1,47 @@
-public final class eor extends eoi {
-   private final eoi d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+public class eor extends eot {
+   private final ih b;
+   private final ib c;
+   private final boolean d;
+   private final boolean e;
 
-   protected eor(eoi $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+   public static eor a(eov $$0, ih $$1, ib $$2) {
+      return new eor(true, $$0, $$1, $$2, false);
+   }
+
+   public eor(eov $$0, ih $$1, ib $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
+   }
+
+   private eor(boolean $$0, eov $$1, ih $$2, ib $$3, boolean $$4) {
+      super($$1);
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+   }
+
+   public eor a(ih $$0) {
+      return new eor(this.d, this.a, $$0, this.c, this.e);
+   }
+
+   public eor a(ib $$0) {
+      return new eor(this.d, this.a, this.b, $$0, this.e);
+   }
+
+   public ib a() {
+      return this.c;
+   }
+
+   public ih b() {
+      return this.b;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public eot.a c() {
+      return this.d ? eot.a.a : eot.a.b;
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(ie.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(ie.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(ie.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return awi.a($$1, $$2, $$3) - $$2;
+   public boolean d() {
+      return this.e;
    }
 }

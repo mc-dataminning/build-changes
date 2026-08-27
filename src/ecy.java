@@ -1,24 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface ecy {
-   ecy a = $$0 -> $$0;
+public class ecy implements ecl {
+   private final List<eck> a = Lists.newArrayList();
 
-   aix<ecu> lookup(aix<ecu> var1);
+   @Override
+   public void a(eck $$0) {
+      this.a.add($$0);
+   }
 
-   static ecy create(List<ecw> $$0, hz $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         awp $$3 = awp.a($$2).e().a($$1);
-         Builder<aix<ecu>, aix<ecu>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<aix<ecu>, aix<ecu>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+   @Nullable
+   @Override
+   public eck a(eby $$0) {
+      return eck.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (eck $$1 : this.a) {
+         $$1.a(0, $$0, 0);
       }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, awt $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      eby $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(awt $$0, int $$1, int $$2) {
+      eby $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public ecv a() {
+      return new ecv(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public eby d() {
+      return eck.a(this.a.stream());
    }
 }

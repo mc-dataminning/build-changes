@@ -1,151 +1,68 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aql implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bia<aql.e> d;
-   private final bkp<Runnable> e = bkp.a(ac.h(), "download-queue");
+public abstract class aql implements aqt {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-   public aql(Path $$0) throws IOException {
-      this.c = $$0;
-      v.c($$0);
-      this.d = bia.a(aql.e.a, $$0.resolve("log.json"));
-      aqk.a($$0, 20);
+   protected aql(String $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private aql.b b(aql.a $$0, Map<UUID, aql.c> $$1) {
-      aql.b $$2 = new aql.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
-
-            try {
-               $$5 = avz.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
-            }
-
-            try {
-               this.d
-                  .a(
-                     new aql.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
-            }
+   @Nullable
+   @Override
+   public <T> T a(arf<T> $$0) throws IOException {
+      arx<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
          }
-      );
-      return $$2;
-   }
 
-   private Either<String, aql.d> a(Path $$0) {
-      try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new aql.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
+         return (T)var4;
       }
    }
 
-   public CompletableFuture<aql.b> a(aql.a $$0, Map<UUID, aql.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
+   @Nullable
+   public static <T> T a(arf<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = awc.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(awc.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
+   public String a() {
+      return this.d;
    }
 
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, avz.a e) {
-   }
-
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
-      }
-   }
-
-   public static record c(URL a, @Nullable HashCode b) {
-   }
-
-   static record d(String b, long c) {
-      public static final Codec<aql.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aql.d::a), Codec.LONG.fieldOf("size").forGetter(aql.d::b)).apply($$0, aql.d::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
-   }
-
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, aql.d> f) {
-      public static final Codec<aql.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jc.c.fieldOf("id").forGetter(aql.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(aql.e::b),
-                  avq.m.fieldOf("time").forGetter(aql.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(aql.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), aql.d.a.fieldOf("file")).forGetter(aql.e::e)
-               )
-               .apply($$0, aql.e::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public Instant c() {
-         return this.d;
-      }
-
-      public Optional<String> d() {
-         return this.e;
-      }
-
-      public Either<String, aql.d> e() {
-         return this.f;
-      }
+   @Override
+   public boolean b() {
+      return this.e;
    }
 }

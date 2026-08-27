@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gmy {
+@FunctionalInterface
+public interface gmy {
+   gmy a = ($$0, $$1) -> {
+   };
+
+   default gmy decorate(Consumer<gnc.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
+   }
+
+   void send(gmz var1, Consumer<gnc.a> var2);
 }

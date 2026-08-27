@@ -1,14 +1,20 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+import net.minecraft.server.MinecraftServer;
 
-public record bjg(Duration a, cuy b, aom c, dnk d, String e) implements bjn {
-   public static bjg a(RecordedEvent $$0) {
-      return new bjg(
-         $$0.getDuration(),
-         new cuy($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new aom($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         dnk.a($$0.getString("status")),
-         $$0.getString("level")
-      );
+public enum bjg {
+   a("client"),
+   b("server");
+
+   private final String c;
+
+   private bjg(String $$0) {
+      this.c = $$0;
+   }
+
+   public static bjg a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
+   }
+
+   public String a() {
+      return this.c;
    }
 }

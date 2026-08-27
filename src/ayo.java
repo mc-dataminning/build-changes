@@ -1,24 +1,26 @@
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
-public class ayo extends axt {
-   public ayo(Schema $$0) {
-      super($$0, bdn.s);
+public class ayo extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   private ayo(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.a), $$0 -> {
-         $$0 = this.a($$0, "minecraft:conduit", this::c);
-         return this.a($$0, "minecraft:skull", this::b);
-      });
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bdt.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bdt.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.get("Owner").get().map($$0x -> a($$0x, "Id", "Id").orElse($$0x)).map($$1 -> $$0.remove("Owner").set("SkullOwner", $$1)).result().orElse($$0);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return b($$0, "target_uuid", "Target").orElse($$0);
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new ayo($$0, $$1, $$2);
    }
 }

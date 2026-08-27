@@ -1,86 +1,53 @@
-import com.google.common.collect.Lists;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class abv implements xz<aai> {
+   public static final xq<us, abv> a = xz.a(abv::a, abv::new);
+   private final int b;
+   private final ib c;
+   private final int d;
+   private final boolean e;
 
-public class abv {
-   private final BitSet a;
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final List<byte[]> e;
-   private final List<byte[]> f;
-
-   public abv(cuy $$0, egl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = new BitSet();
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = Lists.newArrayList();
-      this.f = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, cwa.a, $$4, this.a, this.c, this.e);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, cwa.b, $$4, this.b, this.d, this.f);
-         }
-      }
+   public abv(int $$0, ib $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public abv(uq $$0, int $$1, int $$2) {
-      this.a = $$0.y();
-      this.b = $$0.y();
-      this.c = $$0.y();
-      this.d = $$0.y();
-      this.e = $$0.a((xp<? super uq, byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((xp<? super uq, byte[]>)($$0x -> $$0x.a(2048)));
+   private abv(us $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   public void a(uq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   private void a(us $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, uq::a);
-      $$0.a(this.f, uq::a);
+      $$0.p(this.d);
+      $$0.a(this.e);
    }
 
-   private void a(cuy $$0, egl $$1, cwa $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dnl $$7 = $$1.a($$2).a(jb.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public yb<abv> a() {
+      return aet.L;
    }
 
-   public BitSet a() {
-      return this.a;
+   public void a(aai $$0) {
+      $$0.a(this);
    }
 
-   public BitSet b() {
-      return this.c;
-   }
-
-   public List<byte[]> c() {
+   public boolean b() {
       return this.e;
    }
 
-   public BitSet d() {
+   public int e() {
       return this.b;
    }
 
-   public BitSet e() {
+   public int f() {
       return this.d;
    }
 
-   public List<byte[]> f() {
-      return this.f;
+   public ib g() {
+      return this.c;
    }
 }

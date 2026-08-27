@@ -1,40 +1,51 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class dyi extends dyh {
-   public static final Codec<dyi> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dyi::new));
-   protected final List<dlj> h;
+public class dyi extends dyk {
+   public static final Codec<dyi> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dyi::new));
 
-   protected static <P extends dyi> P4<Mu<P>, Long, efz.a, Float, List<dlj>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dlj.b).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public dyi(long $$0, efz.a $$1, float $$2, List<dlj> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public dyi(blq $$0, blq $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected dyf<?> a() {
-      return dyf.d;
+   protected dyl<?> a() {
+      return dyl.i;
    }
 
    @Override
-   public dlj a(awp $$0, hz $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(cwk $$0, dyk.b $$1, awt $$2, dxu $$3, int $$4, dyk.a $$5, int $$6, int $$7, int $$8) {
+      ib $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
    }
 
-   protected dlj a(List<dlj> $$0, hz $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(awt $$0, int $$1, dxu $$2) {
+      return 4;
    }
 
-   protected dlj a(List<dlj> $$0, double $$1) {
-      double $$2 = awi.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean b(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

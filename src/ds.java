@@ -5,22 +5,22 @@ public interface ds {
    ds a = new ds() {
       @Nullable
       @Override
-      public wg a(String $$0) {
+      public wi a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   wg a(String var1);
+   wi a(String var1);
 
-   public static record a(Map<String, wg> b) implements ds {
+   public static record a(Map<String, wi> b) implements ds {
       @Nullable
       @Override
-      public wg a(String $$0) {
+      public wi a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, wg> a() {
+      public Map<String, wi> a() {
          return this.b;
       }
    }

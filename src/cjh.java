@@ -1,192 +1,109 @@
-import javax.annotation.Nullable;
+public class cjh extends cih {
+   private static final aii<Boolean> e = ail.a(cjh.class, aik.k);
 
-public class cjh extends cjg implements bob, cji {
-   private static final int i = 27;
-   private is<cpd> j = is.a(27, cpd.h);
-   @Nullable
-   private aiy k;
-   private long l;
-
-   public cjh(bnw<? extends cjg> $$0, cvr $$1) {
+   public cjh(bol<? extends cjh> $$0, cwe $$1) {
       super($$0, $$1);
    }
 
-   public cjh(cvr $$0, double $$1, double $$2, double $$3) {
-      super(bnw.q, $$0);
-      this.a_($$1, $$2, $$3);
-      this.J = $$1;
-      this.K = $$2;
-      this.L = $$3;
+   public cjh(cwe $$0, box $$1, double $$2, double $$3, double $$4) {
+      super(bol.bp, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
    protected float x() {
-      return 0.15F;
+      return this.z() ? 0.73F : super.x();
    }
 
    @Override
-   protected int z() {
-      return 1;
+   public boolean bK() {
+      return false;
    }
 
    @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.c($$0);
+   public float a(cvw $$0, cvk $$1, ib $$2, dme $$3, ehr $$4, float $$5) {
+      return this.z() && cdz.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
-   protected void a(sw $$0) {
+   protected void a(eos $$0) {
       super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public void a(bmp $$0) {
-      this.b(this.ai_());
-      this.a($$0, this.dM(), this);
-   }
-
-   @Override
-   public void a(bnq.c $$0) {
-      if (!this.dM().B && $$0.a()) {
-         bls.a(this.dM(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public blw a(chl $$0, blv $$1) {
-      if (this.q($$0) && !$$0.fI()) {
-         return super.a($$0, $$1);
-      } else {
-         blw $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(dpw.k, $$0);
-            cgc.a($$0, true);
+      if (!this.dJ().B) {
+         bof $$1 = $$0.a();
+         boolean $$4;
+         if (this.w() instanceof box $$3) {
+            $$4 = $$1.a(this.dK().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bx()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.c(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dK().o(), 5.0F);
          }
 
-         return $$2;
+         if ($$4 && $$1 instanceof box $$6) {
+            int $$7 = 0;
+            if (this.dJ().aj() == bmi.c) {
+               $$7 = 10;
+            } else if (this.dJ().aj() == bmi.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bns(bnu.t, 20 * $$7, 1), this.I());
+            }
+         }
       }
    }
 
    @Override
-   public void b(chl $$0) {
-      $$0.a((bma)this);
-      if (!$$0.dM().B) {
-         this.a(dpw.k, $$0);
-         cgc.a($$0, true);
+   protected void a(eot $$0) {
+      super.a($$0);
+      if (!this.dJ().B) {
+         this.dJ().a(this, this.do(), this.dq(), this.du(), 1.0F, false, cwe.a.c);
+         this.am();
       }
    }
 
    @Override
-   public coy ai_() {
-      return switch (this.y()) {
-         case b -> cpg.nW;
-         case c -> cpg.nY;
-         case d -> cpg.oa;
-         case e -> cpg.oc;
-         case f -> cpg.oe;
-         case g -> cpg.og;
-         case h -> cpg.oi;
-         case i -> cpg.ok;
-         default -> cpg.nU;
-      };
+   public boolean bt() {
+      return false;
    }
 
    @Override
-   public void a() {
-      this.f();
+   public boolean a(bne $$0, float $$1) {
+      return false;
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected void c_() {
+      this.am.a(e, false);
+   }
+
+   public boolean z() {
+      return this.am.b(e);
+   }
+
+   public void a(boolean $$0) {
+      this.am.b(e, $$0);
    }
 
    @Override
-   public cpd a(int $$0) {
-      return this.f_($$0);
+   protected boolean s() {
+      return false;
    }
 
    @Override
-   public cpd a(int $$0, int $$1) {
-      return this.b($$0, $$1);
+   public void b(sy $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.z());
    }
 
    @Override
-   public cpd b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cpd $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public boz a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(chl $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public ckf createMenu(int $$0, chk $$1, chl $$2) {
-      if (this.k != null && $$2.P_()) {
-         return null;
-      } else {
-         this.e($$1.m);
-         return ckm.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable chl $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public aiy C() {
-      return this.k;
-   }
-
-   @Override
-   public void a(@Nullable aiy $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long D() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public is<cpd> E() {
-      return this.j;
-   }
-
-   @Override
-   public void G() {
-      this.j = is.a(this.b(), cpd.h);
-   }
-
-   @Override
-   public void c(chl $$0) {
-      this.dM().a(dpw.j, this.dk(), dpw.a.a($$0));
+   public void a(sy $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

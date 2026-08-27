@@ -1,121 +1,147 @@
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ffg extends ffl {
-   private static final aiy a = new aiy("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int k = 4;
-   private static final int l = 204;
-   private static final int m = 98;
-   private static final vq n = vq.c("menu.returnToGame");
-   private static final vq o = vq.c("gui.advancements");
-   private static final vq p = vq.c("gui.stats");
-   private static final vq q = vq.c("menu.sendFeedback");
-   private static final vq r = vq.c("menu.reportBugs");
-   private static final vq t = vq.c("menu.options");
-   private static final vq u = vq.c("menu.shareToLan");
-   private static final vq v = vq.c("menu.playerReporting");
-   private static final vq w = vq.c("menu.returnToMenu");
-   private static final vq x = vq.c("menu.savingLevel");
-   private static final vq y = vq.c("menu.game");
-   private static final vq z = vq.c("menu.paused");
-   private final boolean A;
+public class ffg extends fgh {
+   private static final ajc a = new ajc("icon/draft_report");
+   private int b;
+   private final vs c;
+   private final boolean k;
+   private vs l;
+   private final List<fak> m = Lists.newArrayList();
    @Nullable
-   private ezo B;
+   private fak n;
 
-   public ffg(boolean $$0) {
-      super($$0 ? y : z);
-      this.A = $$0;
-   }
-
-   public boolean o() {
-      return this.A;
+   public ffg(@Nullable vs $$0, boolean $$1) {
+      super(vs.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.k = $$1;
    }
 
    @Override
-   protected void aQ_() {
-      if (this.A) {
-         this.E();
-      }
+   protected void aP_() {
+      this.b = 0;
+      this.m.clear();
+      vs $$0 = this.k ? vs.c("deathScreen.spectate") : vs.c("deathScreen.respawn");
+      this.m.add(this.c(fak.a($$0, $$0x -> {
+         this.f.s.fT();
+         $$0x.j = false;
+      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
+      this.n = this.c(
+         fak.a(vs.c("deathScreen.titleScreen"), $$0x -> this.f.aZ().a(this.f, this, this::o, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
+      );
+      this.m.add(this.n);
+      this.c(false);
+      this.l = vs.a("deathScreen.score.value", vs.b(Integer.toString(this.f.s.fP())).a(n.o));
+   }
 
-      this.c(new fav(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
+   @Override
+   public boolean aN_() {
+      return false;
+   }
+
+   private void o() {
+      if (this.k) {
+         this.E();
+      } else {
+         ffa $$0 = new ffg.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.f.s.fT();
+               this.f.a(null);
+            }
+         }, vs.c("deathScreen.quit.confirm"), vr.a, vs.c("deathScreen.titleScreen"), vs.c("deathScreen.respawn"));
+         this.f.a($$0);
+         $$0.b(20);
+      }
    }
 
    private void E() {
-      fcz $$0 = new fcz();
-      $$0.c().a(4, 4, 4, 0);
-      fcz.b $$1 = $$0.d(2);
-      $$1.a(ezo.a(n, $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(o, () -> new fgb(this.f.s.cq.q())));
-      $$1.a(this.a(p, () -> new ffu(this, this.f.s.j())));
-      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
-      $$1.a(this.a(t, () -> new ffc(this, this.f.m)));
-      if (this.f.T() && !this.f.U().p()) {
-         $$1.a(this.a(u, () -> new ffm(this)));
-      } else {
-         $$1.a(this.a(v, fjv::new));
+      if (this.f.r != null) {
+         this.f.r.W();
       }
 
-      vq $$2 = this.f.S() ? w : vp.p;
-      this.B = $$1.a(ezo.a($$2, $$0x -> {
-         $$0x.j = false;
-         this.f.aZ().a(this.f, this, this::H, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fcy.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
-      $$0.a(this::c);
+      this.f.b(new ffn(vs.c("menu.savingLevel")));
+      this.f.a(new fgm());
    }
 
-   private void H() {
-      boolean $$0 = this.f.S();
-      fqq $$1 = this.f.R();
-      this.f.r.W();
-      if ($$0) {
-         this.f.b(new fer(x));
-      } else {
-         this.f.z();
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
       }
 
-      ffq $$2 = new ffq();
-      if ($$0) {
-         this.f.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.f.a(new ess($$2));
-      } else {
-         this.f.a(new fij($$2));
+      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         wp $$4 = this.a($$1);
+         $$0.a(this.i, $$4, $$1, $$2);
       }
+
+      if (this.n != null && this.f.aZ().c()) {
+         $$0.a(a, this.n.B() + this.n.w() - 17, this.n.C() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private wp a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.f.h.a(this.c);
+         int $$2 = this.g / 2 - $$1 / 2;
+         int $$3 = this.g / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         wp $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == vq.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean m() {
+      return false;
    }
 
    @Override
    public void e() {
       super.e();
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.A && this.f != null && this.f.aZ().c() && this.B != null) {
-         $$0.a(a, this.B.B() + this.B.w() - 17, this.B.C() + 3, 15, 15);
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
       }
    }
 
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      if (this.A) {
-         super.b($$0, $$1, $$2, $$3);
+   private void c(boolean $$0) {
+      for (fak $$1 : this.m) {
+         $$1.j = $$0;
       }
    }
 
-   private ezo a(vq $$0, Supplier<ffl> $$1) {
-      return ezo.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
-   }
-
-   private ezo a(vq $$0, String $$1) {
-      return ezo.a($$0, fed.b(this, $$1)).a(98).a();
+   public static class a extends ffa {
+      public a(BooleanConsumer $$0, vs $$1, vs $$2, vs $$3, vs $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

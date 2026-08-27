@@ -1,30 +1,58 @@
-import java.util.function.IntFunction;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum ewy implements awk {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class ewy {
+   private static final String a = "realms_persistence.json";
+   private static final eub b = new eub();
+   private static final Logger c = LogUtils.getLogger();
 
-   private static final IntFunction<ewy> d = ava.a(ewy::a, values(), ava.a.b);
-   private final int e;
-   private final String f;
-
-   private ewy(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ewy.a a() {
+      return b();
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public void a(ewy.a $$0) {
+      b($$0);
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public static ewy.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         ewy.a $$2 = b.a($$1, ewy.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new ewy.a();
    }
 
-   public static ewy a(int $$0) {
-      return d.apply($$0);
+   public static void b(ewy.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return eyk.P().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements eut {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

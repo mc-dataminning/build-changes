@@ -1,52 +1,66 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class dzq extends dzs {
-   public static final Codec<dzq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drp.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               drp.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dzq::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final drp d;
-   private final drp e;
-   private final int f;
+public abstract class dzq {
+   public static final Codec<dzq> h = kh.Z.q().dispatch(dzq::a, dzr::a);
 
-   private dzq(drp $$0, drp $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   protected abstract dzr<?> a();
 
-   public static dzq a(drp $$0, drp $$1, int $$2) {
-      return new dzq($$0, $$1, $$2);
-   }
+   public abstract void a(dzq.a var1);
 
-   @Override
-   public int a(awp $$0, drs $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   public static final class a {
+      private final cwk a;
+      private final BiConsumer<ib, dme> b;
+      private final awt c;
+      private final ObjectArrayList<ib> d;
+      private final ObjectArrayList<ib> e;
+      private final ObjectArrayList<ib> f;
+
+      public a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, Set<ib> $$3, Set<ib> $$4, Set<ib> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jf::v));
+         this.e.sort(Comparator.comparingInt(jf::v));
+         this.f.sort(Comparator.comparingInt(jf::v));
       }
-   }
 
-   @Override
-   public dzt<?> a() {
-      return dzt.c;
-   }
+      public void a(ib $$0, dmv $$1) {
+         this.a($$0, czh.ff.o().a($$1, Boolean.valueOf(true)));
+      }
 
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      public void a(ib $$0, dme $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ib $$0) {
+         return this.a.a($$0, dmd.a::i);
+      }
+
+      public cwk a() {
+         return this.a;
+      }
+
+      public awt b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ib> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ib> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ib> e() {
+         return this.f;
+      }
    }
 }

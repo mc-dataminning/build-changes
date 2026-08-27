@@ -1,52 +1,44 @@
-public class gfg<T extends cak> extends gfl<T, fmb<T>> {
-   private final fwn a;
+public class gfg<T extends box, M extends foj<T>> extends ggs<T, M> {
+   private static final ajc a = new ajc("textures/entity/bee/bee_stinger.png");
 
-   public gfg(gcv<T, fmb<T>> $$0, fwn $$1) {
+   public gfg(gcz<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         exo $$10 = exo.P();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
-            dlj $$12 = $$3.w().a();
-            int $$13 = gcb.c($$3, 0.0F);
-            gjb $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eO();
+   }
+
+   @Override
+   protected void a(etd $$0, fwq $$1, int $$2, bof $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = awm.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      eth $$16 = $$1.getBuffer(fwy.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         etd.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
    }
 
-   private void a(esh $$0, fvt $$1, int $$2, boolean $$3, dlj $$4, int $$5, gjb $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(fwb.r(gha.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   private static void a(eth $$0, etd.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(ghq.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

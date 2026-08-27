@@ -1,44 +1,58 @@
-public class foy<T extends bnq> extends fou<T> {
-   private boolean b;
+import com.google.common.collect.ImmutableList;
 
-   public foy(fpj $$0) {
-      super($$0);
+public class foy<T extends cfm> extends fnw<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fqf f;
+   private final fqf g;
+   private final fqf h;
+
+   public foy(fqf $$0) {
+      super(fwy::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fpp c() {
-      fpr $$0 = fou.b();
-      fps $$1 = $$0.a();
-      fps $$2 = $$1.a("head", fpo.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fpl.a);
-      fps $$3 = $$2.a("hat", fpo.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fpl.a(-5.0F, -10.03125F, -5.0F));
-      fps $$4 = $$3.a("hat2", fpo.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fpl.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
-      fps $$5 = $$4.a("hat3", fpo.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fpl.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
-      $$5.a(
-         "hat4", fpo.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fpn(0.25F)), fpl.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
-      );
-      fps $$6 = $$2.a("nose");
-      $$6.a("mole", fpo.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fpn(-0.25F)), fpl.a(0.0F, -2.0F, 0.0F));
-      return fpp.a($$0, 64, 128);
+   public static fql a() {
+      fqn $$0 = new fqn();
+      fqo $$1 = $$0.a();
+      $$1.a("lid", fqk.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fqh.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fqk.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fqh.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fqk.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fqh.a(0.0F, 12.0F, 0.0F));
+      return fql.a($$0, 64, 64);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ag;
+      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + awm.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = awm.a($$3 * 0.1F) * 0.7F;
+      }
+
+      this.g.a(0.0F, 16.0F + awm.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.E($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.aX - 180.0F - $$0.aV) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.aj() % 10);
-      this.a.e = awi.a((float)$$0.ag * $$6) * 4.5F * (float) (Math.PI / 180.0);
-      this.a.f = 0.0F;
-      this.a.g = awi.b((float)$$0.ag * $$6) * 2.5F * (float) (Math.PI / 180.0);
-      if (this.b) {
-         this.a.a(0.0F, 1.0F, -1.5F);
-         this.a.e = -0.9F;
-      }
+   public Iterable<fqf> d() {
+      return ImmutableList.of(this.f, this.g);
    }
 
-   public fpj e() {
-      return this.a;
+   public fqf b() {
+      return this.g;
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
+   public fqf c() {
+      return this.h;
    }
 }

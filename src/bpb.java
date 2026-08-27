@@ -1,9 +1,27 @@
-import javax.annotation.Nullable;
+public enum bpb {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o,
+   p,
+   q;
 
-public interface bpb {
-   boolean isSpawnPositionOk(cvu var1, hz var2, @Nullable bnw<?> var3);
+   public static boolean a(bpb $$0) {
+      return $$0 == c || $$0 == q;
+   }
 
-   default hz a(cvu $$0, hz $$1) {
-      return $$1;
+   public static boolean b(bpb $$0) {
+      return $$0 == q;
    }
 }

@@ -1,28 +1,61 @@
-public class feb extends ffn {
-   public feb(ffl $$0, exs $$1) {
-      super(
-         $$0,
-         $$1,
-         vq.c("options.chat.title"),
-         new exr[]{
-            $$1.m(),
-            $$1.I(),
-            $$1.J(),
-            $$1.K(),
-            $$1.n(),
-            $$1.p(),
-            $$1.u(),
-            $$1.o(),
-            $$1.y(),
-            $$1.v(),
-            $$1.x(),
-            $$1.w(),
-            $$1.ap(),
-            $$1.H(),
-            $$1.ab(),
-            $$1.S(),
-            $$1.ad()
-         }
-      );
+import java.util.function.Consumer;
+
+public class feb implements fdy {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public feb(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public feb(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static feb a(int $$0) {
+      return new feb($$0, 0);
+   }
+
+   public static feb b(int $$0) {
+      return new feb(0, $$0);
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int B() {
+      return this.a;
+   }
+
+   @Override
+   public int C() {
+      return this.b;
+   }
+
+   @Override
+   public int w() {
+      return this.c;
+   }
+
+   @Override
+   public int u() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fai> $$0) {
    }
 }

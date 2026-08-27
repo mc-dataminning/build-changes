@@ -1,49 +1,66 @@
-public class fsz extends fuh {
-   private final fuc a;
+public class fsz extends fve {
+   private final float a;
+   private final float b;
 
-   protected fsz(fqe $$0, double $$1, double $$2, double $$3, double $$4, fuc $$5) {
+   fsz(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cpq $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+   }
+
+   @Override
+   public fui b() {
+      return fui.a;
+   }
+
+   protected fsz(fra $$0, double $$1, double $$2, double $$3, cpq $$4) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+      this.a(eyk.P().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements fuh<jx> {
+      public fue a(jx $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsz($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
       }
    }
 
-   @Override
-   public ftl b() {
-      return ftl.d;
+   public static class b implements fuh<ke> {
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsz($$1, $$2, $$3, $$4, new cpq(cpt.qP));
+      }
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
-
-      public a(fuc $$0) {
-         this.a = $$0;
-      }
-
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsz($$1, $$2, $$3, $$4, $$5, this.a);
+   public static class c implements fuh<ke> {
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsz($$1, $$2, $$3, $$4, new cpq(cpt.qB));
       }
    }
 }

@@ -1,32 +1,22 @@
-public class buj extends buh {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public buj(bok $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class buj<E extends che> extends bqp<E> {
+   public buj(int $$0) {
+      super(ImmutableMap.of(bya.aC, byb.a, bya.m, byb.b, bya.n, byb.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dE(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.N().l()) {
-            this.a.s(this.a(this.a.dE(), 0.0F, 5.0F));
-         }
+   protected boolean a(apa $$0, E $$1, long $$2) {
+      return true;
+   }
 
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
+   protected void b(apa $$0, E $$1, long $$2) {
+      $$1.b(bpi.n);
+      $$1.a(atp.Be, 5.0F, 1.0F);
+   }
 
-      float $$0 = awi.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
+   protected void c(apa $$0, E $$1, long $$2) {
+      if ($$1.c(bpi.n)) {
+         $$1.b(bpi.a);
       }
    }
 }

@@ -1,55 +1,75 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class coi extends coy {
-   public coi(coy.a $$0) {
-      super($$0);
+public interface coi {
+   String a = "color";
+   String b = "display";
+   int c = 10511680;
+
+   static boolean a(cpq $$0) {
+      sy $$1 = $$0.c("display");
+      return $$1 != null && $$1.b("color", 99);
    }
 
-   @Override
-   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
-      sw $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
+   static int b(cpq $$0) {
+      sy $$1 = $$0.c("display");
+      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
    }
 
-   public static void a(sw $$0, List<vq> $$1) {
-      coh.a $$2 = coh.a.a($$0.f("Type"));
-      $$1.add(vq.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(vq.i().a(n.h), $$3));
-      }
-
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(vq.c("item.minecraft.firework_star.fade_to").b(vp.v).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(vq.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(vq.c("item.minecraft.firework_star.flicker").a(n.h));
+   static void c(cpq $$0) {
+      sy $$1 = $$0.c("display");
+      if ($$1 != null && $$1.e("color")) {
+         $$1.r("color");
       }
    }
 
-   private static vq a(we $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   static void a(cpq $$0, int $$1) {
+      $$0.b("display").a("color", $$1);
+   }
+
+   static cpq a(cpq $$0, List<coh> $$1) {
+      if (!$$0.a(aum.ba)) {
+         return cpq.h;
+      } else {
+         int[] $$2 = new int[3];
+         int $$3 = 0;
+         int $$4 = 0;
+         cpq $$5 = $$0.c(1);
+         if (a($$0)) {
+            int $$6 = b($$5);
+            float $$7 = (float)($$6 >> 16 & 0xFF) / 255.0F;
+            float $$8 = (float)($$6 >> 8 & 0xFF) / 255.0F;
+            float $$9 = (float)($$6 & 0xFF) / 255.0F;
+            $$3 += (int)(Math.max($$7, Math.max($$8, $$9)) * 255.0F);
+            $$2[0] += (int)($$7 * 255.0F);
+            $$2[1] += (int)($$8 * 255.0F);
+            $$2[2] += (int)($$9 * 255.0F);
+            $$4++;
          }
 
-         $$0.b(a($$1[$$2]));
+         for (coh $$10 : $$1) {
+            float[] $$11 = $$10.c().d();
+            int $$12 = (int)($$11[0] * 255.0F);
+            int $$13 = (int)($$11[1] * 255.0F);
+            int $$14 = (int)($$11[2] * 255.0F);
+            $$3 += Math.max($$12, Math.max($$13, $$14));
+            $$2[0] += $$12;
+            $$2[1] += $$13;
+            $$2[2] += $$14;
+            $$4++;
+         }
+
+         int $$15 = $$2[0] / $$4;
+         int $$16 = $$2[1] / $$4;
+         int $$17 = $$2[2] / $$4;
+         float $$18 = (float)$$3 / (float)$$4;
+         float $$19 = (float)Math.max($$15, Math.max($$16, $$17));
+         $$15 = (int)((float)$$15 * $$18 / $$19);
+         $$16 = (int)((float)$$16 * $$18 / $$19);
+         $$17 = (int)((float)$$17 * $$18 / $$19);
+         int var24 = ($$15 << 8) + $$16;
+         var24 = (var24 << 8) + $$17;
+         a($$5, var24);
+         return $$5;
       }
-
-      return $$0;
-   }
-
-   private static vq a(int $$0) {
-      cnr $$1 = cnr.b($$0);
-      return $$1 == null ? vq.c("item.minecraft.firework_star.custom_color") : vq.c("item.minecraft.firework_star." + $$1.b());
    }
 }

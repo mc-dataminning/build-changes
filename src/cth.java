@@ -1,25 +1,15 @@
-public class cth extends ctm {
-   public cth(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bo, $$1);
+public class cth extends csb {
+   public cth(String $$0, csh $$1, csp $$2, cpq $$3, float $$4, int $$5) {
+      super(csx.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public cpq g() {
+      return new cpq(czh.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(ctm $$0) {
-      return super.a($$0) && $$0 != ctp.I;
+   public csw<?> as_() {
+      return csw.p;
    }
 }

@@ -1,136 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gmv {
-   private final exo a;
-   @Nullable
-   private gmw b;
-   private final List<gmv.a> c = Lists.newArrayList();
-   private final gmo d;
+public record gmv(gmz b, gnc c) {
+   public static final Codec<gmv> a = gmz.a.dispatchStable(gmv::a, gmz::c);
 
-   public gmv(exo $$0, exs $$1) {
-      this.a = $$0;
-      this.d = new gmo(this, $$1);
-   }
-
-   public void a(fut $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fqe $$0, @Nullable enx $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fqe $$0, hz $$1, dlj $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(cpd $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(fbz $$0, int $$1) {
-      this.c.add(new gmv.a($$0, $$1));
-      this.a.az().a($$0);
-   }
-
-   public void a(fbz $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gmv.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
+   public gmv(gmz b, gnc c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-      } else if (this.a.r != null) {
-         this.c();
-      }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(gmx $$0) {
-      this.a.m.r = $$0;
-      this.a.m.as();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   public exo e() {
-      return this.a;
+   public gmz a() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.j() == cvo.a;
-   }
-
-   public static vq a(String $$0) {
-      return vq.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cpd $$0, cpd $$1, ckn $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final fbz a;
-      private final int b;
-      private int c;
-
-      a(fbz $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public gnc b() {
+      return this.c;
    }
 }

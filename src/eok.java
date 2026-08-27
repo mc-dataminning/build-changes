@@ -1,32 +1,25 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class eok implements eol {
-   private final DoubleList a;
+public class eok extends Exception {
+   private final Path a;
+   private final List<eom> b;
 
-   public eok(DoubleList $$0) {
+   public eok(Path $$0, List<eom> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean a(eol.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public String getMessage() {
+      return a(this.a, this.b);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public static String a(Path $$0, List<eom> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

@@ -1,60 +1,37 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class acg implements xz<aai> {
+   public static final xq<us, acg> a = xz.a(acg::a, acg::new);
+   private final ib b;
+   private final boolean c;
 
-public record acg(UUID b, int c, @Nullable wc d, wj.a e, @Nullable vq f, vu g, vm.a h) implements xx<aag> {
-   public static final xo<vb, acg> a = xx.a(acg::a, acg::new);
-
-   private acg(vb $$0) {
-      this($$0.p(), $$0.n(), $$0.c(wc::a), new wj.a($$0), $$0.c(uq::m), vu.a($$0), vm.a.a.decode($$0));
+   public acg(ib $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vb $$0) {
+   private acg(us $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(us $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, wc::a);
-      this.e.a($$0);
-      $$0.a(this.f, uq::a);
-      vu.a($$0, this.g);
-      vm.a.a.encode($$0, this.h);
+      $$0.a(this.c);
    }
 
    @Override
-   public xz<acg> a() {
-      return aeq.Z;
+   public yb<acg> a() {
+      return aet.X;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public ib b() {
+      return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   @Nullable
-   public wc f() {
-      return this.d;
-   }
-
-   public wj.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public vq h() {
-      return this.f;
-   }
-
-   public vu i() {
-      return this.g;
-   }
-
-   public vm.a j() {
-      return this.h;
    }
 }

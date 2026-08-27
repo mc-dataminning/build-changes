@@ -1,31 +1,12 @@
-public class gkk extends gjx {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final ccm p;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public gkk(ccm $$0) {
-      super(atl.xN, atm.g, gko.t());
-      this.p = $$0;
-      this.k = gko.a.b;
-      this.i = false;
-      this.j = 0;
-   }
+public interface gkk {
+   Collection<ajc> f();
 
-   @Override
-   public boolean s() {
-      return !this.p.aU();
-   }
+   void a(Function<ajc, gkk> var1);
 
-   @Override
-   public void q() {
-      if (!this.p.dH() && this.p.q() == null && this.p.gm()) {
-         this.f = (double)((float)this.p.dr());
-         this.g = (double)((float)this.p.dt());
-         this.h = (double)((float)this.p.dx());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
-   }
+   @Nullable
+   gjz a(gkd var1, Function<gkc, ghz> var2, gkh var3, ajc var4);
 }

@@ -1,23 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dxa(int b, int c, int d) implements dwd {
+public class dxa implements dwy {
    public static final Codec<dxa> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avq.j.fieldOf("spread_width").forGetter(dxa::a), avq.j.fieldOf("spread_height").forGetter(dxa::b), avq.j.fieldOf("max_height").forGetter(dxa::c)
+               dyz.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               dyz.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dxa::new)
    );
+   public final dyz b;
+   public final dyz c;
+   public final int d;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public dxa(dyz $$0, dyz $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

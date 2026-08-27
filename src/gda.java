@@ -1,15 +1,20 @@
-public class gda extends gcg<cey, foc<cey>> {
-   private static final aiy a = new aiy("textures/entity/silverfish.png");
+public class gda extends gde<ccr, fnx<ccr>> {
+   private static final ajc a = new ajc("textures/entity/llama/creamy.png");
+   private static final ajc i = new ajc("textures/entity/llama/white.png");
+   private static final ajc j = new ajc("textures/entity/llama/brown.png");
+   private static final ajc k = new ajc("textures/entity/llama/gray.png");
 
-   public gda(gba.a $$0) {
-      super($$0, new foc<>($$0.a(fpi.bi)), 0.3F);
+   public gda(gby.a $$0, fqd $$1) {
+      super($$0, new fnx<>($$0.a($$1)), 0.7F);
+      this.a(new ggd(this, $$0.f()));
    }
 
-   protected float a(cey $$0) {
-      return 180.0F;
-   }
-
-   public aiy b(cey $$0) {
-      return a;
+   public ajc a(ccr $$0) {
+      return switch ($$0.gx()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

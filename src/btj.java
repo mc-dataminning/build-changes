@@ -1,15 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class btj {
-   public static bqb<boi> a() {
-      return btn.a((Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$0 -> $$0.a((btq<boi>)(($$0x, $$1, $$2) -> {
-            if (!$$1.dO().c(ciy.e) && $$1.fD()) {
-               $$1.fE();
-               return true;
-            } else {
-               return false;
-            }
-         }))));
+public class btj extends bqp<boz> {
+   private final float c;
+
+   public btj(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
+
+   public static boolean a(boz $$0) {
+      return $$0.aZ() && $$0.b(auj.a) > $$0.dc() || $$0.bn();
+   }
+
+   protected boolean a(apa $$0, boz $$1) {
+      return a($$1);
+   }
+
+   protected boolean a(apa $$0, boz $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(apa $$0, boz $$1, long $$2) {
+      if ($$1.ef().i() < this.c) {
+         $$1.M().a();
+      }
    }
 }

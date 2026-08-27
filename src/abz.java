@@ -1,166 +1,85 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public abstract class abz implements xx<aag> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public record abz(int b, boolean c, Set<ajb<cwe>> d, int e, int f, int g, boolean h, boolean i, boolean j, aeq k, boolean l) implements xz<aai> {
+   public static final xq<vd, abz> a = xz.a(abz::a, abz::new);
 
-   protected abz(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   private abz(vd $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(ki.aN)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aeq($$0),
+         $$0.readBoolean()
+      );
+   }
+
+   private void a(vd $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, us::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public abstract xz<? extends abz> a();
+   public yb<abz> a() {
+      return aet.O;
+   }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
-   }
-
-   @Nullable
-   public bnq a(cvr $$0) {
-      return $$0.a(this.a);
-   }
-
-   public short b() {
-      return this.b;
-   }
-
-   public short e() {
+   public boolean e() {
       return this.c;
    }
 
-   public short f() {
+   public Set<ajb<cwe>> f() {
       return this.d;
    }
 
-   public byte g() {
+   public int g() {
       return this.e;
    }
 
-   public byte h() {
+   public int h() {
       return this.f;
    }
 
-   public boolean i() {
-      return this.h;
-   }
-
-   public boolean j() {
-      return this.i;
-   }
-
-   public boolean k() {
+   public int i() {
       return this.g;
    }
 
-   public static class a extends abz {
-      public static final xo<uq, abz.a> j = xx.a(abz.a::b, abz.a::a);
-
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      private static abz.a a(uq $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new abz.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private void b(uq $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public xz<abz.a> a() {
-         return aeq.Q;
-      }
+   public boolean j() {
+      return this.h;
    }
 
-   public static class b extends abz {
-      public static final xo<uq, abz.b> j = xx.a(abz.b::b, abz.b::a);
-
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      private static abz.b a(uq $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new abz.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      private void b(uq $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public xz<abz.b> a() {
-         return aeq.R;
-      }
+   public boolean k() {
+      return this.i;
    }
 
-   public static class c extends abz {
-      public static final xo<uq, abz.c> j = xx.a(abz.c::b, abz.c::a);
+   public boolean l() {
+      return this.j;
+   }
 
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
+   public aeq m() {
+      return this.k;
+   }
 
-      private static abz.c a(uq $$0) {
-         int $$1 = $$0.n();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new abz.c($$1, $$2, $$3, $$4);
-      }
-
-      private void b(uq $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public xz<abz.c> a() {
-         return aeq.S;
-      }
+   public boolean n() {
+      return this.l;
    }
 }

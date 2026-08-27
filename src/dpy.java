@@ -1,20 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dpy {
-   dqa a();
+   int aj();
 
-   int b();
+   UUID ct();
 
-   boolean a(aow var1, ij<dpw> var2, dpw.a var3, enz var4);
+   ib dj();
 
-   default dpy.a c() {
-      return dpy.a.a;
-   }
+   eoq cE();
 
-   public static enum a {
-      a,
-      b;
-   }
+   void a(dpz var1);
 
-   public interface b<T extends dpy> {
-      T d();
-   }
+   Stream<? extends dpy> cO();
+
+   Stream<? extends dpy> cP();
+
+   void b(bof.c var1);
+
+   boolean dH();
+
+   boolean dI();
 }

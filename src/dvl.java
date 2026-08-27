@@ -1,197 +1,115 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Iterator;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dvl extends dtz<dwz> {
-   private static final int a = 19;
+public class dvl extends duu<dxf> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bol<?>[] b = new bol[]{bol.aL, bol.bs, bol.bs, bol.aU};
+   private static final dme c = czh.nc.o();
 
-   public dvl(Codec<dwz> $$0) {
+   public dvl(Codec<dxf> $$0) {
       super($$0);
    }
 
-   private static boolean d(cvx $$0, hz $$1) {
-      return $$0.a($$1, $$0x -> $$0x.a(cyu.ff));
-   }
+   @Override
+   public boolean a(duw<dxf> $$0) {
+      Predicate<dme> $$1 = duu.a(aue.bH);
+      ib $$2 = $$0.e();
+      awt $$3 = $$0.d();
+      cwz $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
 
-   public static boolean b(cvx $$0, hz $$1) {
-      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aua.O));
-   }
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               ib $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
 
-   private static void b(cvz $$0, hz $$1, dlj $$2) {
-      $$0.a($$1, $$2, 19);
-   }
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
 
-   public static boolean c(cvx $$0, hz $$1) {
-      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aua.cg));
-   }
-
-   private boolean a(cwm $$0, awp $$1, hz $$2, BiConsumer<hz, dlj> $$3, BiConsumer<hz, dlj> $$4, dxp.b $$5, dwz $$6) {
-      int $$7 = $$6.d.a($$1);
-      int $$8 = $$6.f.a($$1, $$7, $$6);
-      int $$9 = $$7 - $$8;
-      int $$10 = $$6.f.a($$1, $$9);
-      hz $$11 = $$6.g.<hz>map($$2x -> $$2x.a($$2, $$1)).orElse($$2);
-      int $$12 = Math.min($$2.v(), $$11.v());
-      int $$13 = Math.max($$2.v(), $$11.v()) + $$7 + 1;
-      if ($$12 >= $$0.J_() + 1 && $$13 <= $$0.ak()) {
-         OptionalInt $$14 = $$6.h.c();
-         int $$15 = this.a($$0, $$7, $$11, $$6);
-         if ($$15 >= $$7 || !$$14.isEmpty() && $$15 >= $$14.getAsInt()) {
-            if ($$6.g.isPresent() && !$$6.g.get().a($$0, $$3, $$1, $$2, $$11, $$6)) {
-               return false;
-            } else {
-               List<dxp.a> $$16 = $$6.d.a($$0, $$4, $$1, $$15, $$11, $$6);
-               $$16.forEach($$7x -> $$6.f.a($$0, $$5, $$1, $$6, $$15, $$7x, $$8, $$10));
-               return true;
-            }
-         } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private int a(cvx $$0, int $$1, hz $$2, dwz $$3) {
-      hz.a $$4 = new hz.a();
-
-      for (int $$5 = 0; $$5 <= $$1 + 1; $$5++) {
-         int $$6 = $$3.h.a($$1, $$5);
-
-         for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-            for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-               $$4.a($$2, $$7, $$5, $$8);
-               if (!$$3.d.b($$0, $$4) || !$$3.j && d($$0, $$4)) {
-                  return $$5 - 2;
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
+                  $$14++;
                }
             }
          }
       }
 
-      return $$1;
-   }
-
-   @Override
-   protected void a(cvz $$0, hz $$1, dlj $$2) {
-      b($$0, $$1, $$2);
-   }
-
-   @Override
-   public final boolean a(dub<dwz> $$0) {
-      final cwm $$1 = $$0.b();
-      awp $$2 = $$0.d();
-      hz $$3 = $$0.e();
-      dwz $$4 = $$0.f();
-      Set<hz> $$5 = Sets.newHashSet();
-      Set<hz> $$6 = Sets.newHashSet();
-      final Set<hz> $$7 = Sets.newHashSet();
-      Set<hz> $$8 = Sets.newHashSet();
-      BiConsumer<hz, dlj> $$9 = ($$2x, $$3x) -> {
-         $$5.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      BiConsumer<hz, dlj> $$10 = ($$2x, $$3x) -> {
-         $$6.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      dxp.b $$11 = new dxp.b() {
-         @Override
-         public void a(hz $$0, dlj $$1x) {
-            $$7.add($$0.i());
-            $$1.a($$0, $$1, 19);
-         }
-
-         @Override
-         public boolean a(hz $$0) {
-            return $$7.contains($$0);
-         }
-      };
-      BiConsumer<hz, dlj> $$12 = ($$2x, $$3x) -> {
-         $$8.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      boolean $$13 = this.a($$1, $$2, $$3, $$9, $$10, $$11, $$4);
-      if ($$13 && (!$$6.isEmpty() || !$$7.isEmpty())) {
-         if (!$$4.i.isEmpty()) {
-            dyv.a $$14 = new dyv.a($$1, $$12, $$2, $$6, $$7, $$5);
-            $$4.i.forEach($$1x -> $$1x.a($$14));
-         }
-
-         return ebd.a(Iterables.concat($$5, $$6, $$7, $$8)).map($$4x -> {
-            eoi $$5x = a($$1, $$4x, $$6, $$8, $$5);
-            efl.a($$1, 3, $$5x, $$4x.h(), $$4x.i(), $$4x.j());
-            return true;
-         }).orElse(false);
-      } else {
-         return false;
-      }
-   }
-
-   private static eoi a(cvs $$0, ebd $$1, Set<hz> $$2, Set<hz> $$3, Set<hz> $$4) {
-      eoi $$5 = new eoc($$1.d(), $$1.e(), $$1.f());
-      int $$6 = 7;
-      List<Set<hz>> $$7 = Lists.newArrayList();
-
-      for (int $$8 = 0; $$8 < 7; $$8++) {
-         $$7.add(Sets.newHashSet());
-      }
-
-      for (hz $$9 : Lists.newArrayList(Sets.union($$3, $$4))) {
-         if ($$1.b($$9)) {
-            $$5.c($$9.u() - $$1.h(), $$9.v() - $$1.i(), $$9.w() - $$1.j());
-         }
-      }
-
-      hz.a $$10 = new hz.a();
-      int $$11 = 0;
-      $$7.get(0).addAll($$2);
-
-      while (true) {
-         while ($$11 >= 7 || !$$7.get($$11).isEmpty()) {
-            if ($$11 >= 7) {
-               return $$5;
-            }
-
-            Iterator<hz> $$12 = $$7.get($$11).iterator();
-            hz $$13 = $$12.next();
-            $$12.remove();
-            if ($$1.b($$13)) {
-               if ($$11 != 0) {
-                  dlj $$14 = $$0.a_($$13);
-                  b($$0, $$13, $$14.a(dlz.aC, Integer.valueOf($$11)));
-               }
-
-               $$5.c($$13.u() - $$1.h(), $$13.v() - $$1.i(), $$13.w() - $$1.j());
-
-               for (ie $$15 : ie.values()) {
-                  $$10.a($$13, $$15);
-                  if ($$1.b($$10)) {
-                     int $$16 = $$10.u() - $$1.h();
-                     int $$17 = $$10.v() - $$1.i();
-                     int $$18 = $$10.w() - $$1.j();
-                     if (!$$5.b($$16, $$17, $$18)) {
-                        dlj $$19 = $$0.a_($$10);
-                        OptionalInt $$20 = ddb.n($$19);
-                        if (!$$20.isEmpty()) {
-                           int $$21 = Math.min($$20.getAsInt(), $$11 + 1);
-                           if ($$21 < 7) {
-                              $$7.get($$21).add($$10.i());
-                              $$11 = Math.min($$11, $$21);
-                           }
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  ib $$23 = $$2.b($$20, $$21, $$22);
+                  dme $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(czh.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, czh.cn.o(), $$1);
+                        } else {
+                           this.a($$4, $$23, czh.m.o(), $$1);
                         }
                      }
+                  } else if (!$$24.a(czh.cv) && !$$24.a(czh.ct)) {
+                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
          }
 
-         $$11++;
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               ib $$30 = new ib($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (ih $$32 : ih.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, eck.a($$4, $$30, czh.cv.o()), $$1);
+                     bmt.a($$4, $$3, $$30, ejw.d);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, czh.ct.o(), $$1);
+         if ($$4.c_($$2) instanceof dky $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   private bol<?> a(awt $$0) {
+      return ac.a(b, $$0);
    }
 }

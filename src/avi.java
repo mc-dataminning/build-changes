@@ -1,54 +1,33 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
 public class avi {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/Minecraft-Support";
+   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String m = "https://aka.ms/aboutjavareporting";
+   public static final String n = "https://aka.ms/mcjavamoderation";
+   public static final String o = "https://aka.ms/javablocking";
+   public static final String p = "https://aka.ms/MinecraftSymLinks";
+   public static final String q = "https://aka.ms/startjavarealmstrial";
+   public static final String r = "https://aka.ms/BuyJavaRealms";
+   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
 
-   avi(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public static avi.a a() {
-      return new avi.a();
-   }
-
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
-      } else {
-         this.a(Stream.of($$0));
-      }
-   }
-
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(avi::a).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
-   }
-
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
-
-      public avi.a a(String $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public avi a(Writer $$0) throws IOException {
-         return new avi($$0, this.a);
-      }
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

@@ -1,112 +1,49 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dzn {
-   public static final aix<dzm> a = a("classic_flat");
-   public static final aix<dzm> b = a("tunnelers_dream");
-   public static final aix<dzm> c = a("water_world");
-   public static final aix<dzm> d = a("overworld");
-   public static final aix<dzm> e = a("snowy_kingdom");
-   public static final aix<dzm> f = a("bottomless_pit");
-   public static final aix<dzm> g = a("desert");
-   public static final aix<dzm> h = a("redstone_ready");
-   public static final aix<dzm> i = a("the_void");
+public class dzn extends dzq {
+   public static final Codec<dzn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dzn::new, $$0 -> $$0.d).codec();
+   private static final ih b = ih.d;
+   private static final ih[] c = ih.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ih[]::new);
+   private final float d;
 
-   public static void a(ph<dzm> $$0) {
-      new dzn.a($$0).a();
+   public dzn(float $$0) {
+      this.d = $$0;
    }
 
-   private static aix<dzm> a(String $$0) {
-      return aix.a(kg.az, new aiy($$0));
+   @Override
+   protected dzr<?> a() {
+      return dzr.d;
    }
 
-   static class a {
-      private final ph<dzm> a;
+   @Override
+   public void a(dzq.a $$0) {
+      awt $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ib> $$2 = $$0.d();
+         List<ib> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ib> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<ib> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), czh.pe.o().a(cyz.b, b));
+               $$0.a().a($$6.get(), djn.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      a(ph<dzm> $$0) {
-         this.a = $$0;
-      }
-
-      private void a(aix<dzm> $$0, cvq $$1, aix<cwq> $$2, Set<aix<ebr>> $$3, boolean $$4, boolean $$5, dzl... $$6) {
-         ik<ebr> $$7 = this.a.a(kg.aF);
-         ik<eap> $$8 = this.a.a(kg.aC);
-         ik<cwq> $$9 = this.a.a(kg.at);
-         in.a<ebr> $$10 = in.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         dzo $$11 = new dzo(Optional.of($$10), $$9.b($$2), dzo.b($$8));
-         if ($$4) {
-            $$11.a();
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     sy $$4x = new sy();
+                     $$4x.a("id", kh.g.b(bol.i).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
          }
-
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new dzm($$1.j().i(), $$11));
-      }
-
-      public void a() {
-         this.a(dzn.a, cyu.i, cwx.b, ImmutableSet.of(ebe.a), false, false, new dzl(1, cyu.i), new dzl(2, cyu.j), new dzl(1, cyu.F));
-         this.a(dzn.b, cyu.b, cwx.t, ImmutableSet.of(ebe.j, ebe.r), true, false, new dzl(1, cyu.i), new dzl(5, cyu.j), new dzl(230, cyu.b), new dzl(1, cyu.F));
-         this.a(
-            dzn.c,
-            cpg.qy,
-            cwx.T,
-            ImmutableSet.of(ebe.m, ebe.l, ebe.g),
-            false,
-            false,
-            new dzl(90, cyu.G),
-            new dzl(5, cyu.L),
-            new dzl(5, cyu.j),
-            new dzl(5, cyu.b),
-            new dzl(64, cyu.sJ),
-            new dzl(1, cyu.F)
-         );
-         this.a(
-            dzn.d,
-            cyu.bt,
-            cwx.b,
-            ImmutableSet.of(ebe.a, ebe.j, ebe.f, ebe.k, ebe.r),
-            true,
-            true,
-            new dzl(1, cyu.i),
-            new dzl(3, cyu.j),
-            new dzl(59, cyu.b),
-            new dzl(1, cyu.F)
-         );
-         this.a(
-            dzn.e,
-            cyu.dN,
-            cwx.d,
-            ImmutableSet.of(ebe.a, ebe.c),
-            false,
-            false,
-            new dzl(1, cyu.dN),
-            new dzl(1, cyu.i),
-            new dzl(3, cyu.j),
-            new dzl(59, cyu.b),
-            new dzl(1, cyu.F)
-         );
-         this.a(dzn.f, cpg.ps, cwx.b, ImmutableSet.of(ebe.a), false, false, new dzl(1, cyu.i), new dzl(3, cyu.j), new dzl(2, cyu.m));
-         this.a(
-            dzn.g,
-            cyu.I,
-            cwx.f,
-            ImmutableSet.of(ebe.a, ebe.b, ebe.j, ebe.r),
-            true,
-            false,
-            new dzl(8, cyu.I),
-            new dzl(52, cyu.aV),
-            new dzl(3, cyu.b),
-            new dzl(1, cyu.F)
-         );
-         this.a(dzn.h, cpg.lG, cwx.f, ImmutableSet.of(), false, false, new dzl(116, cyu.aV), new dzl(3, cyu.b), new dzl(1, cyu.F));
-         this.a(dzn.i, cyu.hW, cwx.a, ImmutableSet.of(), true, false, new dzl(1, cyu.a));
       }
    }
 }

@@ -1,23 +1,79 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record acq(int b, ij<bnb> c) implements xx<aag> {
-   public static final xo<vb, acq> a = xo.a(xm.d, $$0 -> $$0.b, xm.b(kg.Q), acq::e, acq::new);
+public class acq implements xz<aai> {
+   public static final xq<us, acq> a = xz.a(acq::a, acq::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<bpk> g;
+   private final int h;
 
-   @Override
-   public xz<acq> a() {
-      return aeq.aj;
+   public acq(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bpk> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public void a(aag $$0) {
+   private acq(us $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = bpk.a($$0.readUnsignedByte());
+      this.h = $$0.l();
+   }
+
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(bpk.a(this.g));
+      $$0.c(this.h);
+   }
+
+   @Override
+   public yb<acq> a() {
+      return aet.ah;
+   }
+
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bnq a(cvr $$0) {
-      return $$0.a(this.b);
+   public double b() {
+      return this.b;
    }
 
-   public ij<bnb> e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<bpk> j() {
+      return this.g;
    }
 }

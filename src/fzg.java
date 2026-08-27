@@ -1,61 +1,36 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fzg implements fyq<dky> {
+   private final gbw a;
 
-public class fzg implements fze.a {
-   private static final float a = 0.02F;
-   private final Map<hz, fzg.a> b = Maps.newHashMap();
-
-   public void a(hz $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new fzg.a($$1, $$2, ac.b() + (long)$$3));
+   public fzg(fyr.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((fzg.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(esh $$0, fvt $$1, hz $$2, fzg.a $$3) {
-      fze.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         fze.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+   public void a(dky $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
+      cwe $$6 = $$0.i();
+      if ($$6 != null) {
+         cvg $$7 = $$0.c();
+         bof $$8 = $$7.b($$6, $$0.aD_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
       }
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static void a(float $$0, etd $$1, fwq $$2, int $$3, bof $$4, gbw $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dd(), $$4.de());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)awm.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

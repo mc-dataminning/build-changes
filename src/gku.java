@@ -1,33 +1,107 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+public abstract class gku implements glm {
+   protected glj a;
+   protected final atq b;
+   protected final ajc c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected glm.a k = glm.a.b;
+   protected boolean l;
+   protected awt m;
 
-public class gku<T> implements gky<T> {
-   protected final Comparator<T> a;
-   protected final gkz<T> b;
+   protected gku(ato $$0, atq $$1, awt $$2) {
+      this($$0.a(), $$1, $$2);
+   }
 
-   public gku(Function<T, Stream<aiy>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.e($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gkz.a($$1, $$0);
+   protected gku(ajc $$0, atq $$1, awt $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public ajc a() {
+      return this.c;
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
+   @Override
+   public gmr a(gmq $$0) {
+      if (this.c.equals(gmq.b)) {
+         this.a = gmq.d;
+         return gmq.c;
+      } else {
+         gmr $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gmq.a;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
+      }
    }
 
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gkv<T>($$2.iterator(), $$3.iterator(), this.a));
+   @Override
+   public glj b() {
+      return this.a;
+   }
+
+   @Override
+   public atq c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public glm.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

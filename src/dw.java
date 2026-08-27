@@ -18,11 +18,11 @@ public interface dw<T extends dw<T>> {
 
    CommandDispatcher<T> x();
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable gt var4);
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable gv var4);
 
    boolean y();
 
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable gt $$2) {
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable gv $$2) {
       this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
    }
 

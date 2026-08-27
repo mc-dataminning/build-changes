@@ -1,70 +1,39 @@
-public class cjp extends cje {
-   private final cut c = new cut() {
-      @Override
-      public void a(cvr $$0, hz $$1, int $$2) {
-         $$0.a(cjp.this, (byte)$$2);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class cjp {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cjp c = a("empty").a(0, cjn.b).a();
+   public static final cjp d = a("simple").a(5000, cjn.c).a(11000, cjn.e).a();
+   public static final cjp e = a("villager_baby").a(10, cjn.b).a(3000, cjn.d).a(6000, cjn.b).a(10000, cjn.d).a(12000, cjn.e).a();
+   public static final cjp f = a("villager_default").a(10, cjn.b).a(2000, cjn.c).a(9000, cjn.f).a(11000, cjn.b).a(12000, cjn.e).a();
+   private final Map<cjn, cjr> g = Maps.newHashMap();
+
+   protected static cjq a(String $$0) {
+      cjp $$1 = ix.a(kh.D, $$0, new cjp());
+      return new cjq($$1);
+   }
+
+   protected void a(cjn $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cjr());
       }
-   };
-   private final Runnable d;
-
-   public cjp(bnw<? extends cjp> $$0, cvr $$1) {
-      super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public cjp(cvr $$0, double $$1, double $$2, double $$3) {
-      super(bnw.aS, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
+   protected cjr b(cjn $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   protected coy ai_() {
-      return cpg.nL;
+   protected List<cjr> c(cjn $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   private Runnable b(cvr $$0) {
-      return $$0 instanceof aow ? () -> this.c.a((aow)$$0, this.dm()) : () -> this.c.a($$0, this.dm());
-   }
-
-   @Override
-   public cje.a w() {
-      return cje.a.e;
-   }
-
-   @Override
-   public dlj y() {
-      return cyu.ct.o();
-   }
-
-   @Override
-   protected void a(sw $$0) {
-      super.a($$0);
-      this.c.a(this.dM(), this.dm(), $$0);
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dM(), $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public cut C() {
-      return this.c;
-   }
-
-   @Override
-   public boolean cM() {
-      return true;
+   public cjn a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cjn.b);
    }
 }

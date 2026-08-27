@@ -1,29 +1,29 @@
-public class acj implements xx<aag> {
-   public static final xo<uq, acj> a = xx.a(acj::a, acj::new);
-   private final int b;
-   private final vq c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public acj(int $$0, vq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record acj(UUID b, int c, @Nullable we d, wl.a e, @Nullable vs f, vw g, vo.a h) implements xz<aai> {
+   public static final xq<vd, acj> a = xz.a(acj::a, acj::new);
+
+   private acj(vd $$0) {
+      this($$0.n(), $$0.l(), $$0.c(we::a), new wl.a($$0), us.a($$0, vu.b), vw.a($$0), vo.a.a.decode($$0));
    }
 
-   private acj(uq $$0) {
-      this.b = $$0.n();
-      this.c = $$0.m();
-   }
-
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vd $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, we::a);
+      this.e.a($$0);
+      us.a($$0, this.f, vu.b);
+      vw.a($$0, this.g);
+      vo.a.a.encode($$0, this.h);
    }
 
    @Override
-   public xz<acj> a() {
-      return aeq.ac;
+   public yb<acj> a() {
+      return aet.aa;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
@@ -32,11 +32,29 @@ public class acj implements xx<aag> {
       return true;
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 
-   public vq e() {
-      return this.c;
+   @Nullable
+   public we f() {
+      return this.d;
+   }
+
+   public wl.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public vs h() {
+      return this.f;
+   }
+
+   public vw i() {
+      return this.g;
+   }
+
+   public vo.a j() {
+      return this.h;
    }
 }

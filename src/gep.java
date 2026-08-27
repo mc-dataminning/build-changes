@@ -1,17 +1,16 @@
-public class gep<T extends boi, M extends fmi<T>> extends gfl<T, M> {
-   private final fvp a;
+public class gep extends gde<cbn, fpn<cbn>> {
+   private static final ajc a = new ajc("textures/entity/turtle/big_sea_turtle.png");
 
-   public gep(gcv<T, M> $$0, fvp $$1) {
-      super($$0);
-      this.a = $$1;
+   public gep(gby.a $$0) {
+      super($$0, new fpn<>($$0.a(fqe.bJ)), 0.7F);
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cpd $$10 = $$3.c(bnx.a);
-      this.a.a($$3, $$10, cpa.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected float a(cbn $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
+   }
+
+   public ajc b(cbn $$0) {
+      return a;
    }
 }

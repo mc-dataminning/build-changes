@@ -1,78 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dct extends cys implements dbk, dca {
-   public static final MapCodec<dct> a = b(dct::new);
-   public static final dmh<ih> b = dlz.T;
-
-   @Override
-   public MapCodec<dct> a() {
-      return a;
-   }
-
-   protected dct(dli.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ih.k));
+public abstract class dct extends dcs implements czi {
+   protected dct(dmd.d $$0, ih $$1, epo $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
+   protected abstract MapCodec<? extends dct> a();
+
+   protected dme a(dme $$0, dme $$1) {
+      return $$1;
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dlj a(crk $$0) {
-      ie $$1 = $$0.k();
-      ie $$2;
-      if ($$1.o() == ie.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ie.b;
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      return this.o().a(b, ih.a($$1, $$2));
-   }
-
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new djx($$0, $$1);
-   }
-
-   @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      dix $$5 = $$1.c_($$2);
-      if ($$5 instanceof djx && $$3.gq()) {
-         $$3.a((djx)$$5);
-         return blw.a($$1.B);
+      dcu $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         return blw.d;
+         if (this.b) {
+            $$3.a($$4, ehs.c, ehs.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static boolean a(efl.c $$0, efl.c $$1) {
-      ie $$2 = m($$0.b());
-      ie $$3 = m($$1.b());
-      ie $$4 = n($$0.b());
-      ie $$5 = n($$1.b());
-      djx.a $$6 = djx.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? djx.a.b : djx.a.a);
-      boolean $$7 = $$6 == djx.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public cpq a(cwh $$0, ib $$1, dme $$2) {
+      return new cpq(this.c());
    }
 
-   public static ie m(dlj $$0) {
-      return $$0.c(b).a();
+   @Override
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      Optional<ib> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
-   public static ie n(dlj $$0) {
-      return $$0.c(b).b();
+   @Override
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      Optional<ib> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dme $$5 = $$0.a_($$4.get());
+         ((dcu)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<ib> a(cvk $$0, ib $$1, czf $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dme $$0, crx $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().l()) ? false : $$2;
+   }
+
+   @Override
+   protected czf b() {
+      return this;
    }
 }

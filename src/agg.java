@@ -1,37 +1,18 @@
-public class agg implements xx<aes> {
-   public static final xo<vb, agg> a = xx.a(agg::a, agg::new);
-   private final int b;
-   private final cpd c;
+import java.util.Optional;
 
-   public agg(int $$0, cpd $$1) {
-      this.b = $$0;
-      this.c = $$1.q();
-   }
-
-   private agg(vb $$0) {
-      this.b = $$0.readShort();
-      this.c = cpd.f.decode($$0);
-   }
-
-   private void a(vb $$0) {
-      $$0.l(this.b);
-      cpd.f.encode($$0, this.c);
-   }
+public record agg(Optional<il<bnq>> b, Optional<il<bnq>> c) implements xz<aev> {
+   public static final xq<vd, agg> a = xq.a(xo.b(ki.Q).a(xo::a), agg::b, xo.b(ki.Q).a(xo::a), agg::e, agg::new);
 
    @Override
-   public xz<agg> a() {
-      return aeq.bS;
+   public yb<agg> a() {
+      return aet.bQ;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cpd e() {
+   public Optional<il<bnq>> e() {
       return this.c;
    }
 }

@@ -1,17 +1,45 @@
-public class gal extends gcg<cac, flx<cac>> {
-   private static final aiy a = new aiy("textures/entity/chicken.png");
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public gal(gba.a $$0) {
-      super($$0, new flx<>($$0.a(fpi.v)), 0.3F);
+public class gal implements gac.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final eyk c;
+   private Collection<ib> d = Lists.newArrayList();
+
+   public gal(eyk $$0) {
+      this.c = $$0;
    }
 
-   public aiy a(cac $$0) {
-      return a;
+   public void a(Collection<ib> $$0) {
+      this.d = $$0;
    }
 
-   protected float a(cac $$0, float $$1) {
-      float $$2 = awi.i($$1, $$0.bX, $$0.bT);
-      float $$3 = awi.i($$1, $$0.bW, $$0.bU);
-      return (awi.a($$2) + 1.0F) * $$3;
+   @Override
+   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
+      ib $$5 = this.b().c();
+
+      for (ib $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+   }
+
+   private static void a(etd $$0, fwq $$1, ib $$2) {
+      gac.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(etd $$0, fwq $$1, String $$2, ib $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gac.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private exv b() {
+      return this.c.j.m();
    }
 }

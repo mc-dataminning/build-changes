@@ -1,25 +1,59 @@
-public class bxz extends byl {
-   public static final float a = 8.0F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public class bxz<T> {
+   private final T a;
+   private long b;
+
+   public bxz(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> bxz<T> a(T $$0) {
+      return new bxz<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> bxz<T> a(T $$0, long $$1) {
+      return new bxz<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
 
    @Override
-   protected boolean a(boi $$0, boi $$1) {
-      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && byr.c($$0, $$1);
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   private boolean e(boi $$0, boi $$1) {
-      return !$$0.dO().a(bxl.U) && $$1.ai().a(aud.j);
+   @axp
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
    }
 
-   private boolean b(boi $$0) {
-      return $$0.ai().a(aud.i);
-   }
-
-   private boolean f(boi $$0, boi $$1) {
-      return $$1.f((bnq)$$0) <= 64.0;
-   }
-
-   @Override
-   protected bxl<boi> b() {
-      return bxl.B;
+   public static <T> Codec<bxz<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bxz<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

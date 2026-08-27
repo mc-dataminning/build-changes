@@ -1,28 +1,47 @@
-public enum dgs {
-   a {
-      @Override
-      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
-         return cys.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final eos e = cys.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
-         return !eop.c($$0.l($$1, $$2).a($$3), this.e, eod.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final eos e = eop.a(eop.b(), cys.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), eod.e);
+public class dgs extends cyr {
+   public static final MapCodec<dgs> a = b(dgs::new);
 
-      @Override
-      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
-         return !eop.c($$0.l($$1, $$2).a($$3), this.e, eod.c);
-      }
-   };
+   @Override
+   public MapCodec<dgs> a() {
+      return a;
+   }
 
-   public abstract boolean a(dlj var1, cux var2, hz var3, ie var4);
+   protected dgs(dmd.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public djl a(ib $$0, dme $$1) {
+      return new dky($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
+      return a($$2, djn.j, $$0.B ? dky::a : dky::b);
+   }
+
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, cpq $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
+      }
+   }
+
+   @Override
+   protected dfk b_(dme $$0) {
+      return dfk.c;
+   }
+
+   @Override
+   public void a(cpq $$0, @Nullable cvk $$1, List<vs> $$2, crh $$3, @Nullable iy $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cww.a($$0, $$2, "SpawnData");
+   }
 }

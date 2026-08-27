@@ -1,30 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-public class fru {
-   public static final fru a = new fru(frt.b, frv.createDnsSrvRedirectHandler(), frq.a());
-   private final frt b;
-   private final frv c;
-   private final frq d;
+public interface fru {
+   Codec<fru> a = axg.a(fru.a::values).dispatch(fru::a, fru.a::a);
 
-   @VisibleForTesting
-   fru(frt $$0, frv $$1, frq $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   fru.a a();
 
-   public Optional<frr> a(frs $$0) {
-      Optional<frr> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<frs> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public static enum a implements axg {
+      a("player", () -> frv.a.b),
+      b("system", () -> frv.b.b);
 
-         return $$1;
-      } else {
-         return Optional.empty();
+      private final String c;
+      private final Supplier<Codec<? extends fru>> d;
+
+      private a(String $$0, Supplier<Codec<? extends fru>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private Codec<? extends fru> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

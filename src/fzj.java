@@ -1,41 +1,46 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import org.joml.Matrix4f;
 
-public class fzj implements fze.a {
-   private final exo a;
-   private static final int b = 10;
+public class fzj<T extends dlb> implements fyq<T> {
+   public static final ajc a = new ajc("textures/environment/end_sky.png");
+   public static final ajc b = new ajc("textures/entity/end_portal.png");
 
-   public fzj(exo $$0) {
-      this.a = $$0;
+   public fzj(fyr.a $$0) {
    }
 
-   @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      cvr $$5 = this.a.r;
-      hz $$6 = hz.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(T $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
 
-      for (hz $$8 : hz.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(cwa.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = awi.h($$10, 0.9F, 0.9F);
-         long $$12 = jb.e($$8.a());
-         if ($$7.add($$12)) {
-            fze.a(
-               $$0,
-               $$1,
-               $$5.L().p().a(cwa.a, jb.a($$12)),
-               (double)jb.a(jb.b($$12), 8),
-               (double)jb.a(jb.c($$12), 8),
-               (double)jb.a(jb.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
+   private void a(T $$0, Matrix4f $$1, eth $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ih.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ih.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ih.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ih.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ih.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ih.b);
+   }
 
-         if ($$9 != 15) {
-            fze.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
+   private void a(T $$0, Matrix4f $$1, eth $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ih $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected fwy d() {
+      return fwy.u();
    }
 }

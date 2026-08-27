@@ -1,19 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.channel.ChannelHandlerContext;
 
-public class vb extends uq {
-   private final iw d;
-
-   public vb(ByteBuf $$0, iw $$1) {
-      super($$0);
-      this.d = $$1;
+public interface vb {
+   static void a(ChannelHandlerContext $$0, xz<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new vh.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   public iw L() {
-      return this.d;
-   }
-
-   public static Function<ByteBuf, vb> a(iw $$0) {
-      return $$1 -> new vb($$1, $$0);
+   static void b(ChannelHandlerContext $$0, xz<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new vh.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

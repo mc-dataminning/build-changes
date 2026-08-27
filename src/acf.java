@@ -1,88 +1,33 @@
-public class acf implements xx<aag> {
-   public static final xo<uq, acf> a = xx.a(acf::a, acf::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+public class acf implements xz<aai> {
+   public static final xq<vd, acf> a = xq.a(xo.d, acf::b, xo.a(ki.P), acf::e, vu.b, acf::f, acf::new);
+   private final int b;
+   private final cmb<?> c;
+   private final vs d;
 
-   public acf(chi $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
-   }
-
-   private acf(uq $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
-   }
-
-   private void a(uq $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.k($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
+   public acf(int $$0, cmb<?> $$1, vs $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public xz<acf> a() {
-      return aeq.Y;
+   public yb<acf> a() {
+      return aet.W;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.f;
+   public int b() {
+      return this.b;
    }
 
-   public boolean e() {
-      return this.g;
+   public cmb<?> e() {
+      return this.c;
    }
 
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
+   public vs f() {
+      return this.d;
    }
 }

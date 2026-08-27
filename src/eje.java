@@ -1,2 +1,8 @@
-public record eje<T>(ejh<T> a, aiy b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eje {
 }

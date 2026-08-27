@@ -1,40 +1,52 @@
-public class dje extends dkb implements dka {
-   private static final int e = 1;
-   private is<cpd> f = is.a(27, cpd.h);
-   private final djk g = new djk() {
+public class dje extends dkp {
+   private iu<cpq> e = iu.a(27, cpq.h);
+   private final djy f = new djy() {
       @Override
-      protected void a(cvr $$0, hz $$1, dlj $$2) {
-         dje.a($$0, $$1, $$2, atl.eI);
+      protected void a(cwe $$0, ib $$1, dme $$2) {
+         dje.this.a($$2, atp.bx);
+         dje.this.a($$2, true);
       }
 
       @Override
-      protected void b(cvr $$0, hz $$1, dlj $$2) {
-         dje.a($$0, $$1, $$2, atl.eG);
+      protected void b(cwe $$0, ib $$1, dme $$2) {
+         dje.this.a($$2, atp.bw);
+         dje.this.a($$2, false);
       }
 
       @Override
-      protected void a(cvr $$0, hz $$1, dlj $$2, int $$3, int $$4) {
-         dje.this.a($$0, $$1, $$2, $$3, $$4);
+      protected void a(cwe $$0, ib $$1, dme $$2, int $$3, int $$4) {
       }
 
       @Override
-      protected boolean a(chl $$0) {
-         if (!($$0.bW instanceof ckm)) {
-            return false;
+      protected boolean a(cia $$0) {
+         if ($$0.bX instanceof clb) {
+            bme $$1 = ((clb)$$0.bX).l();
+            return $$1 == dje.this;
          } else {
-            blp $$1 = ((ckm)$$0.bW).l();
-            return $$1 == dje.this || $$1 instanceof blo && ((blo)$$1).a(dje.this);
+            return false;
          }
       }
    };
-   private final djf h = new djf();
 
-   protected dje(diz<?> $$0, hz $$1, dlj $$2) {
-      super($$0, $$1, $$2);
+   public dje(ib $$0, dme $$1) {
+      super(djn.A, $$0, $$1);
    }
 
-   public dje(hz $$0, dlj $$1) {
-      this(diz.b, $$0, $$1);
+   @Override
+   protected void b(sy $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b($$0)) {
+         bmf.a($$0, this.e);
+      }
+   }
+
+   @Override
+   public void a(sy $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.e = iu.a(this.b(), cpq.h);
+      if (!this.c_($$0)) {
+         bmf.b($$0, this.e);
+      }
    }
 
    @Override
@@ -43,117 +55,54 @@ public class dje extends dkb implements dka {
    }
 
    @Override
-   protected vq l() {
-      return vq.c("container.chest");
+   protected iu<cpq> j() {
+      return this.e;
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.f = is.a(this.b(), cpd.h);
-      if (!this.c_($$0)) {
-         blq.b($$0, this.f);
-      }
+   protected void a(iu<cpq> $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         blq.a($$0, this.f);
-      }
-   }
-
-   public static void a(cvr $$0, hz $$1, dlj $$2, dje $$3) {
-      $$3.h.a();
-   }
-
-   static void a(cvr $$0, hz $$1, dlj $$2, atk $$3) {
-      dmb $$4 = $$2.c(czv.d);
-      if ($$4 != dmb.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dmb.c) {
-            ie $$8 = czv.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, atm.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+   protected vs k() {
+      return vs.c("container.barrel");
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   protected cku a(int $$0, chz $$1) {
+      return clb.a($$0, $$1, this);
    }
 
    @Override
-   public void d_(chl $$0) {
+   public void d_(cia $$0) {
       if (!this.q && !$$0.P_()) {
-         this.g.a($$0, this.i(), this.aE_(), this.r());
+         this.f.a($$0, this.i(), this.aD_(), this.n());
       }
    }
 
    @Override
-   public void c(chl $$0) {
+   public void c(cia $$0) {
       if (!this.q && !$$0.P_()) {
-         this.g.b($$0, this.i(), this.aE_(), this.r());
+         this.f.b($$0, this.i(), this.aD_(), this.n());
       }
    }
 
-   @Override
-   protected is<cpd> k() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(is<cpd> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.h.a($$0);
-   }
-
-   public static int a(cux $$0, hz $$1) {
-      dlj $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dix $$3 = $$0.c_($$1);
-         if ($$3 instanceof dje) {
-            return ((dje)$$3).g.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(dje $$0, dje $$1) {
-      is<cpd> $$2 = $$0.k();
-      $$0.a($$1.k());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected ckf a(int $$0, chk $$1) {
-      return ckm.a($$0, $$1, this);
-   }
-
-   public void m() {
+   public void l() {
       if (!this.q) {
-         this.g.c(this.i(), this.aE_(), this.r());
+         this.f.c(this.i(), this.aD_(), this.n());
       }
    }
 
-   protected void a(cvr $$0, hz $$1, dlj $$2, int $$3, int $$4) {
-      cys $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   void a(dme $$0, boolean $$1) {
+      this.o.a(this.aD_(), $$0.a(cyl.c, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(dme $$0, ato $$1) {
+      jf $$2 = $$0.c(cyl.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, atq.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

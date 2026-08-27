@@ -1,44 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dze extends dzh {
-   public static final Codec<dze> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dze::new));
+public class dze extends dzc {
+   public static final Codec<dze> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dme.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dme.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dme.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, dze::new)
+   );
+   private final float g;
+   private final float h;
+   private final dme i;
+   private final List<dme> j;
+   private final List<dme> k;
 
-   public dze(int $$0, int $$1, int $$2) {
+   public dze(long $$0, egu.a $$1, float $$2, float $$3, float $$4, dme $$5, List<dme> $$6, List<dme> $$7) {
       super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected dzi<?> a() {
-      return dzi.c;
+   protected dza<?> a() {
+      return dza.c;
    }
 
    @Override
-   public List<dxp.a> a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, int $$3, hz $$4, dwz $$5) {
-      hz $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      hz.a $$7 = new hz.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+   public dme a(awt $$0, ib $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      return ImmutableList.of(new dxp.a($$4.b($$3), 0, true));
-   }
-
-   private void a(cvx $$0, BiConsumer<hz, dlj> $$1, awp $$2, hz.a $$3, dwz $$4, hz $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

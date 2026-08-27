@@ -1,29 +1,20 @@
-public class yr implements xx<yo> {
-   public static final xo<uq, yr> a = xx.a(yr::a, yr::new);
-   private final long b;
+public record yr(aop b) implements xz<yq> {
+   public static final xq<us, yr> a = xz.a(yr::a, yr::new);
 
-   public yr(long $$0) {
-      this.b = $$0;
+   private yr(us $$0) {
+      this(new aop($$0));
    }
 
-   private yr(uq $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(uq $$0) {
-      $$0.b(this.b);
+   private void a(us $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public xz<yr> a() {
-      return yn.l;
+   public yb<yr> a() {
+      return yp.j;
    }
 
-   public void a(yo $$0) {
+   public void a(yq $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

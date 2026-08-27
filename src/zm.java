@@ -1,57 +1,26 @@
-import java.util.List;
+public record zm(ib c, int d) implements za {
+   public static final xq<us, zm> a = za.a(zm::a, zm::new);
+   public static final za.b<zm> b = za.a("debug/poi_ticket_count");
 
-public record zm(aix<cvr> c, ebd d, List<zm.a> e) implements yy {
-   public static final xo<uq, zm> a = yy.a(zm::a, zm::new);
-   public static final yy.b<zm> b = yy.a("debug/structures");
-
-   private zm(uq $$0) {
-      this($$0.a(kg.aM), b($$0), $$0.a(zm.a::new));
+   private zm(us $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(uq $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(us $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public yy.b<zm> a() {
+   public za.b<zm> a() {
       return b;
    }
 
-   static ebd b(uq $$0) {
-      return new ebd($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(uq $$0, ebd $$1) {
-      $$0.p($$1.h());
-      $$0.p($$1.i());
-      $$0.p($$1.j());
-      $$0.p($$1.k());
-      $$0.p($$1.l());
-      $$0.p($$1.m());
-   }
-
-   public aix<cvr> b() {
+   public ib b() {
       return this.c;
    }
 
-   public ebd c() {
+   public int c() {
       return this.d;
-   }
-
-   public List<zm.a> d() {
-      return this.e;
-   }
-
-   public static record a(ebd a, boolean b) {
-      public a(uq $$0) {
-         this(zm.b($$0), $$0.readBoolean());
-      }
-
-      public void a(uq $$0) {
-         zm.a($$0, this.a);
-         $$0.a(this.b);
-      }
    }
 }

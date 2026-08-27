@@ -1,40 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public abstract class bdy extends DataFix {
-   private final String a;
-
-   public bdy(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bdn.y);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bdn.y);
-      Type<Pair<String, String>> $$2 = DSL.named(bdn.w.typeName(), bew.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bdn.w), $$2)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
-                  String $$3 = this.a($$2xxx);
-                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
-                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
-                  if (!$$5.equals($$4, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
-                  } else {
-                     return $$3;
-                  }
-               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
-      }
-   }
-
-   protected abstract String a(String var1);
+public class bdy {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
+      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
+      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
+      .put("minecraft:red_coral", "minecraft:fire_coral_block")
+      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
+      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
+      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
+      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
+      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
+      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
+      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
+      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
+      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
+      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
+      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
+      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
+      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
+      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
+      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
+      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
+      .build();
 }

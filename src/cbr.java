@@ -1,132 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Predicate;
 
-public class cbr extends bqa<cbp> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final atk l;
-   private final atk m;
-   private enz n;
-   private cbr.a o = cbr.a.d;
+public class cbr {
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   public cbr(atk $$0, atk $$1) {
-      super(ImmutableMap.of(bxl.m, bxm.b, bxl.n, bxm.c, bxl.o, bxm.a, bxl.Z, bxm.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   protected static bpy<?> a(bpy<cbq> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cjn.a));
+      $$0.b(cjn.b);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(aow $$0, cbp $$1) {
-      boi $$2 = $$1.dO().c(bxl.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.dO().b(bxl.o);
-         this.b($$1, $$2);
+   private static void b(bpy<cbq> $$0) {
+      $$0.a(cjn.a, 0, ImmutableList.of(new btj(0.8F), new bqk(2.5F), new brv(45, 90), new brz(), new bqv(bya.aO), new bqv(bya.aP)));
+   }
+
+   private static void c(bpy<cbq> $$0) {
+      $$0.a(
+         cjn.b,
+         ImmutableList.of(
+            Pair.of(0, brj.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new brf(cbr::b, 2.25F, 20)),
+            Pair.of(2, btd.a(cbr::b, Predicate.not(cbr::c), 4, 16, 2.25F)),
+            Pair.of(3, bsp.a(6.0F, blw.a(30, 60))),
+            Pair.of(4, new bsm(ImmutableList.of(Pair.of(bsh.b(1.0F), 2), Pair.of(bsw.a(1.0F, 3), 2), Pair.of(new bqz(30, 60), 1))))
+         ),
+         ImmutableSet.of()
+      );
+   }
+
+   public static void a(cbq $$0) {
+      $$0.dM().a(ImmutableList.of(cjn.b));
+   }
+
+   public static void a(box $$0, ib $$1) {
+      bpy<?> $$2 = $$0.dM();
+      ik $$3 = ik.a($$0.dJ().ad(), $$1);
+      Optional<ik> $$4 = $$2.c(bya.aN);
+      if ($$4.isEmpty()) {
+         $$2.a(bya.aN, $$3);
+         $$2.a(bya.aO, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(bya.aO, 600);
+      }
+   }
+
+   private static Optional<bsd> b(box $$0) {
+      bpy<?> $$1 = $$0.dM();
+      Optional<ik> $$2 = $$1.c(bya.aN);
+      if ($$2.isPresent()) {
+         ik $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new bqs($$3.b().c()));
+         }
+
+         $$1.b(bya.aN);
       }
 
-      return $$3 && $$1.ap() != bot.i && cbp.j($$2);
+      return d($$0);
    }
 
-   protected boolean a(aow $$0, cbp $$1, long $$2) {
-      return $$1.dO().a(bxl.o) && this.o != cbr.a.d && !$$1.dO().a(bxl.Z);
+   private static boolean c(box $$0) {
+      bpy<?> $$1 = $$0.dM();
+      return $$1.a(bya.L);
    }
 
-   protected void b(aow $$0, cbp $$1, long $$2) {
-      boi $$3 = $$1.dO().c(bxl.o).get();
-      bqc.a($$1, $$3);
-      $$1.a((bnq)$$3);
-      $$1.dO().a(bxl.m, new bxo($$3.dk(), 2.0F, 0));
-      this.k = 10;
-      this.o = cbr.a.a;
+   private static boolean a(box $$0, bpy<?> $$1, ik $$2) {
+      Optional<Integer> $$3 = $$1.c(bya.aO);
+      cwe $$4 = $$0.dJ();
+      return $$4.ad() == $$2.a() && $$4.a_($$2.b()).a(czh.aY) && $$3.isPresent();
    }
 
-   protected void c(aow $$0, cbp $$1, long $$2) {
-      $$1.dO().b(bxl.o);
-      $$1.u();
-      $$1.b(bot.a);
+   private static Optional<bsd> d(box $$0) {
+      return a($$0).map($$0x -> new bra($$0x, true));
    }
 
-   private void b(aow $$0, cbp $$1) {
-      $$0.a(null, $$1, this.m, atm.g, 2.0F, 1.0F);
-      Optional<bnq> $$2 = $$1.w();
-      if ($$2.isPresent()) {
-         bnq $$3 = $$2.get();
-         if ($$3.bx()) {
-            $$1.B($$3);
-            if (!$$3.bx()) {
-               $$3.a(bnq.c.a);
+   public static Optional<apb> a(box $$0) {
+      cwe $$1 = $$0.dJ();
+      if (!$$1.y_() && $$1 instanceof apa $$2) {
+         Optional<UUID> $$3 = $$0.dM().c(bya.aM);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof apb $$5 && ($$5.f.d() || $$5.f.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
             }
+
+            return Optional.empty();
          }
       }
-   }
 
-   protected void d(aow $$0, cbp $$1, long $$2) {
-      boi $$3 = $$1.dO().c(bxl.o).get();
-      $$1.a((bnq)$$3);
-      switch (this.o) {
-         case a:
-            if ($$3.e($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, atm.g, 2.0F, 1.0F);
-               $$1.b(bot.j);
-               $$3.g($$3.dk().a($$1.dk()).d().a(0.75));
-               this.n = $$3.dk();
-               this.j = 0;
-               this.o = cbr.a.b;
-            } else if (this.k <= 0) {
-               $$1.dO().a(bxl.m, new bxo($$3.dk(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = cbr.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = cbr.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
-   }
-
-   private boolean a(cbp $$0, boi $$1) {
-      ehl $$2 = $$0.N().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
-   }
-
-   private void b(cbp $$0, boi $$1) {
-      List<UUID> $$2 = $$0.dO().c(bxl.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cw());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cw());
-      }
-
-      $$0.dO().a(bxl.aa, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+      return Optional.empty();
    }
 }

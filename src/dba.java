@@ -1,102 +1,177 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dba extends czb {
-   public static final MapCodec<dba> a = b(dba::new);
-   public static final dmh<dmf> b = dlz.ae;
+public class dba extends czo implements czi {
+   public static final MapCodec<dba> d = b(dba::new);
+   public static final int e = 7;
+   public static final dne f = dmu.av;
+   private static final epo[] a = new epo[]{
+      czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
 
    @Override
    public MapCodec<? extends dba> a() {
-      return a;
+      return d;
    }
 
-   public dba(dli.d $$0) {
+   protected dba(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dmf.b));
+      this.k(this.E.b().a(this.b(), Integer.valueOf(0)));
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      dmf $$6 = $$0.c(b);
-      if ($$1.o() != ie.a.b || $$6 == dmf.b != ($$1 == ie.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dmf.b && $$1 == ie.a && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return cyu.a.o();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dlj a(crk $$0) {
-      hz $$1 = $$0.a();
-      cvr $$2 = $$0.q();
-      return $$1.v() < $$2.ak() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return a[this.g($$0)];
    }
 
    @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, boi $$3, cpd $$4) {
-      hz $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.o().a(b, dmf.a)), 3);
+   protected boolean b(dme $$0, cvk $$1, ib $$2) {
+      return $$0.a(czh.cC);
+   }
+
+   protected dne b() {
+      return f;
+   }
+
+   public int c() {
+      return 7;
+   }
+
+   public int g(dme $$0) {
+      return $$0.c(this.b());
+   }
+
+   public dme b(int $$0) {
+      return this.o().a(this.b(), Integer.valueOf($$0));
+   }
+
+   public final boolean h(dme $$0) {
+      return this.g($$0) >= this.c();
    }
 
    @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      if ($$0.c(b) != dmf.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dlj $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == dmf.b;
-      }
-   }
-
-   public static void a(cvs $$0, dlj $$1, hz $$2, int $$3) {
-      hz $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, dmf.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, dmf.a)), $$3);
-   }
-
-   public static dlj c(cvu $$0, hz $$1, dlj $$2) {
-      return $$2.b(dlz.C) ? $$2.a(dlz.C, Boolean.valueOf($$0.z($$1))) : $$2;
+   protected boolean e_(dme $$0) {
+      return !this.h($$0);
    }
 
    @Override
-   public dlj a(cvr $$0, hz $$1, dlj $$2, chl $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
-         } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eT());
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(cvr $$0, chl $$1, hz $$2, dlj $$3, @Nullable dix $$4, cpd $$5) {
-      super.a($$0, $$1, $$2, cyu.a.o(), $$4, $$5);
-   }
-
-   protected static void b(cvr $$0, hz $$1, dlj $$2, chl $$3) {
-      dmf $$4 = $$2.c(b);
-      if ($$4 == dmf.a) {
-         hz $$5 = $$1.d();
-         dlj $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dmf.b) {
-            dlj $$7 = $$6.u().b(egx.c) ? cyu.G.o() : cyu.a.o();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, cys.i($$6));
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         int $$4 = this.g($$0);
+         if ($$4 < this.c()) {
+            float $$5 = a(this, $$1, $$2);
+            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
+               $$1.a($$2, this.b($$4 + 1), 2);
+            }
          }
       }
    }
 
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
+   public void a(cwe $$0, ib $$1, dme $$2) {
+      int $$3 = this.g($$2) + this.a($$0);
+      int $$4 = this.c();
+      if ($$3 > $$4) {
+         $$3 = $$4;
+      }
+
+      $$0.a($$1, this.b($$3), 2);
+   }
+
+   protected int a(cwe $$0) {
+      return awm.a($$0.z, 2, 5);
+   }
+
+   protected static float a(czf $$0, cvk $$1, ib $$2) {
+      float $$3 = 1.0F;
+      ib $$4 = $$2.d();
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            float $$7 = 0.0F;
+            dme $$8 = $$1.a_($$4.b($$5, 0, $$6));
+            if ($$8.a(czh.cC)) {
+               $$7 = 1.0F;
+               if ($$8.c(dcc.b) > 0) {
+                  $$7 = 3.0F;
+               }
+            }
+
+            if ($$5 != 0 || $$6 != 0) {
+               $$7 /= 4.0F;
+            }
+
+            $$3 += $$7;
+         }
+      }
+
+      ib $$9 = $$2.e();
+      ib $$10 = $$2.f();
+      ib $$11 = $$2.g();
+      ib $$12 = $$2.h();
+      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
+      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
+      if ($$13 && $$14) {
+         $$3 /= 2.0F;
+      } else {
+         boolean $$15 = $$1.a_($$11.e()).a($$0) || $$1.a_($$12.e()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$11.f()).a($$0);
+         if ($$15) {
+            $$3 /= 2.0F;
+         }
+      }
+
+      return $$3;
    }
 
    @Override
-   protected long a(dlj $$0, hz $$1) {
-      return awi.b($$1.u(), $$1.c($$0.c(b) == dmf.b ? 0 : 1).v(), $$1.w());
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return a($$1, $$2) && super.a($$0, $$1, $$2);
+   }
+
+   protected static boolean a(cwh $$0, ib $$1) {
+      return $$0.b($$1, 0) >= 8;
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
+      if ($$3 instanceof cfl && $$1.Z().b(cwa.c)) {
+         $$1.a($$2, true, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected cwd d() {
+      return cpt.pu;
+   }
+
+   @Override
+   public cpq a(cwh $$0, ib $$1, dme $$2) {
+      return new cpq(this.d());
+   }
+
+   @Override
+   public boolean b(cwh $$0, ib $$1, dme $$2) {
+      return !this.h($$2);
+   }
+
+   @Override
+   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
+      this.a((cwe)$$0, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(f);
    }
 }

@@ -1,55 +1,83 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dfj extends cye {
-   public static final MapCodec<dfj> a = b(dfj::new);
-   public static final dma b = dlz.E;
-   private final blb c = bky.a(5);
+public class dfj extends dfi {
+   public static final MapCodec<dfj> h = b(dfj::new);
+   public static final dmy i = dda.aE;
+   public static final dmv j = dfi.d;
 
    @Override
    public MapCodec<dfj> a() {
-      return a;
+      return h;
    }
 
-   public dfj(dli.d $$0) {
+   protected dfj(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(i, ih.c).a(j, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
+   public String g() {
+      return this.l().a();
    }
 
    @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return dig.m($$0);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return dig.b($$1, $$2, $$0.c(i));
+   }
+
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? czh.a.o() : $$0;
    }
 
    @Nullable
    @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dkc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return $$0.B ? null : a($$2, diz.K, dkc::a);
+   public dme a(crx $$0) {
+      dme $$1 = czh.cq.a($$0);
+      return $$1 == null ? null : this.o().a(i, $$1.c(i));
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
-   }
-
-   @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, cpd $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$0.c(j)) {
+         ih $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(jv.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected boolean a(cwe $$0, ib $$1, dme $$2) {
+      ih $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
+   }
+
+   @Override
+   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(i, $$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(i, j);
    }
 }

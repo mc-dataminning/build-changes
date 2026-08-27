@@ -1,16 +1,13 @@
-public class gat extends gbo {
-   public static final aiy a = new aiy("textures/entity/guardian_elder.png");
+public abstract class gat<T extends cco, M extends fnp<T>> extends gde<T, M> {
+   private final float a;
 
-   public gat(gba.a $$0) {
-      super($$0, 1.2F, fpi.R);
+   public gat(gby.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   protected void a(cen $$0, esh $$1, float $$2) {
-      $$1.b(ceg.b, ceg.b, ceg.b);
-   }
-
-   @Override
-   public aiy a(cen $$0) {
-      return a;
+   protected void a(T $$0, etd $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

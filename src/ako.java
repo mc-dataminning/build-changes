@@ -1,41 +1,66 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 public class ako {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.deop.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("clear.failed.multiple", $$0));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("deop").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), $$0xx -> true, -1)))
             .then(
-               dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ag().l(), $$1))
-                  .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
+               ((RequiredArgumentBuilder)dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), $$0xx -> true, -1)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("item", gd.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), -1)))
+                        .then(
+                           dv.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aso $$2 = $$0.l().ag();
-      int $$3 = 0;
+   private static int a(du $$0, Collection<apb> $$1, Predicate<cpq> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> vq.a("commands.deop.success", $$1.iterator().next().getName()), true);
-         }
+      for (apb $$5 : $$1) {
+         $$4 += $$5.fV().a($$2, $$3, $$5.bW.q());
+         $$5.bX.d();
+         $$5.bW.a($$5.fV());
       }
 
-      if ($$3 == 0) {
-         throw a.create();
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ad());
+         } else {
+            throw b.create($$1.size());
+         }
       } else {
-         $$0.l().a($$0);
-         return $$3;
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> vs.a("commands.clear.test.single", $$6, $$1.iterator().next().Q_()), true);
+            } else {
+               $$0.a(() -> vs.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> vs.a("commands.clear.success.single", $$6, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vs.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
+
+         return $$4;
       }
    }
 }

@@ -1,87 +1,115 @@
-import com.mojang.authlib.GameProfile;
+public class fuw extends fve {
+   private static final awt a = awt.a();
+   private final fuz b;
 
-public class fuw extends fus {
-   private enz g = enz.b;
-   private int cq;
+   fuw(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   public fuw(fqe $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ae = true;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
+   public fui b() {
+      return fui.c;
    }
 
    @Override
-   public boolean a(bmp $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void d_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
-      }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cq > 0) {
-         this.h(new enz((this.g.c - this.dp().c) / (double)this.cq, (this.g.d - this.dp().d) / (double)this.cq, (this.g.e - this.dp().e) / (double)this.cq));
-         this.cq--;
-      }
-
-      this.bZ = this.ca;
-      this.eR();
-      float $$1;
-      if (this.aC() && !this.ex()) {
-         $$1 = (float)Math.min(0.1, this.dp().h());
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
       } else {
-         $$1 = 0.0F;
+         this.e(awm.i(0.05F, this.y, 1.0F));
+      }
+   }
+
+   private boolean g() {
+      eyk $$0 = eyk.P();
+      fvs $$1 = $$0.s;
+      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gt();
+   }
+
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
+         this.a = $$0;
       }
 
-      this.ca = this.ca + ($$1 - this.ca) * 0.4F;
-      this.dM().ae().a("push");
-      this.M_();
-      this.dM().ae().c();
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fue $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(0.15F);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
    }
 
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.g = new enz($$0, $$1, $$2);
-      this.cq = this.ai().p() + 1;
+   public static class b implements fuh<ke> {
+      private final fuz a;
+
+      public b(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 
-   @Override
-   protected void fM() {
+   public static class c implements fuh<ke> {
+      private final fuz a;
+
+      public c(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fue $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
    }
 
-   @Override
-   public void a(vq $$0) {
-      exo $$1 = exo.P();
-      $$1.l.d().a($$0);
+   public static class d implements fuh<ke> {
+      private final fuz a;
+
+      public d(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 
-   @Override
-   public void a(aah $$0) {
-      super.a($$0);
-      this.bp();
+   public static class e implements fuh<ke> {
+      private final fuz a;
+
+      public e(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fuw $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
+      }
    }
 }

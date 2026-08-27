@@ -1,19 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public interface eoz {
-   int a();
+   eoz a = ($$0, $$1) -> false;
+   eoz b = ($$0, $$1) -> !$$0 && !$$1;
+   eoz c = ($$0, $$1) -> $$1 && !$$0;
+   eoz d = ($$0, $$1) -> !$$0;
+   eoz e = ($$0, $$1) -> $$0 && !$$1;
+   eoz f = ($$0, $$1) -> !$$1;
+   eoz g = ($$0, $$1) -> $$0 != $$1;
+   eoz h = ($$0, $$1) -> !$$0 || !$$1;
+   eoz i = ($$0, $$1) -> $$0 && $$1;
+   eoz j = ($$0, $$1) -> $$0 == $$1;
+   eoz k = ($$0, $$1) -> $$1;
+   eoz l = ($$0, $$1) -> !$$0 || $$1;
+   eoz m = ($$0, $$1) -> $$0;
+   eoz n = ($$0, $$1) -> $$0 || !$$1;
+   eoz o = ($$0, $$1) -> $$0 || $$1;
+   eoz p = ($$0, $$1) -> true;
 
-   boolean b();
-
-   @Nullable
-   xg c();
-
-   default we a(xg $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
-
-   static we a(@Nullable eoz $$0, xg $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

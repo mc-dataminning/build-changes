@@ -1,17 +1,13 @@
-public class geg extends gbr<cfl, fpc<cfl>> {
-   private static final aiy a = new aiy("textures/entity/zombie_villager/zombie_villager.png");
+public class geg extends gdz {
+   private static final ajc a = new ajc("textures/entity/skeleton/stray.png");
 
-   public geg(gba.a $$0) {
-      super($$0, new fpc<>($$0.a(fpi.cg)), 0.5F);
-      this.a(new gfb<>(this, new fpc($$0.a(fpi.ch)), new fpc($$0.a(fpi.ci)), $$0.g()));
-      this.a(new gfw<>(this, $$0.e(), "zombie_villager"));
+   public geg(gby.a $$0) {
+      super($$0, fqe.bv, fqe.bw, fqe.bx);
+      this.a(new ggr<>(this, $$0.f()));
    }
 
-   public aiy a(cfl $$0) {
+   @Override
+   public ajc a(cep $$0) {
       return a;
-   }
-
-   protected boolean b(cfl $$0) {
-      return super.a($$0) || $$0.gq();
    }
 }

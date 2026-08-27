@@ -1,29 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ele extends eko {
-   public static final Codec<ele> a = RecordCodecBuilder.create($$0 -> a($$0).and(tu.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ele::new));
-   private final sw b;
+public class ele extends elk {
+   public static final Codec<ele> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(ent.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, ele::new)
+   );
+   private final ens b;
+   private final boolean c;
 
-   private ele(List<emb> $$0, sw $$1) {
+   ele(List<emx> $$0, ens $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public ekq b() {
-      return ekr.g;
+   public elm b() {
+      return eln.d;
    }
 
    @Override
-   public cpd a(cpd $$0, ejc $$1) {
-      $$0.x().a(this.b);
-      return $$0;
+   public Set<emg<?>> a() {
+      return this.b.a();
    }
 
-   @Deprecated
-   public static eko.a<?> a(sw $$0) {
-      return a($$1 -> new ele($$1, $$0));
+   @Override
+   public cpq a(cpq $$0, ejy $$1) {
+      awt $$2 = $$1.b();
+      return cua.a($$2, $$0, this.b.a($$1), this.c);
+   }
+
+   public static ele.a a(ens $$0) {
+      return new ele.a($$0);
+   }
+
+   public static class a extends elk.a<ele.a> {
+      private final ens a;
+      private boolean b;
+
+      public a(ens $$0) {
+         this.a = $$0;
+      }
+
+      protected ele.a a() {
+         return this;
+      }
+
+      public ele.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public ell b() {
+         return new ele(this.g(), this.a, this.b);
+      }
    }
 }

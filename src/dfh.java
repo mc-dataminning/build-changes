@@ -1,52 +1,49 @@
-import java.util.Collection;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dfh {
-   dfh v_ = new dfh() {
-      @Override
-      public boolean a(cvs $$0, hz $$1, dlj $$2, @Nullable Collection<ie> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dfn)cyu.qT).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(egx.c) ? false : dfn.a($$0, $$1, $$2, $$3);
-         } else {
-            return dfh.super.a($$0, $$1, $$2, $$3, $$4);
+public class dfh extends czf {
+   public static final MapCodec<dfh> a = b(dfh::new);
+   public static final dmv b = dfi.d;
+
+   @Override
+   public MapCodec<dfh> a() {
+      return a;
+   }
+
+   public dfh(dmd.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
          }
       }
+   }
 
-      @Override
-      public int a(dfm.a $$0, cvs $$1, hz $$2, awp $$3, dfm $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
       }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
    }
 
-   default void a(cvs $$0, dlj $$1, hz $$2, awp $$3) {
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
    }
-
-   default boolean a(cvs $$0, hz $$1, awp $$2) {
-      return false;
-   }
-
-   default boolean a(cvs $$0, hz $$1, dlj $$2, @Nullable Collection<ie> $$3, boolean $$4) {
-      return ((ddr)cyu.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int i_(int $$0) {
-      return 1;
-   }
-
-   int a(dfm.a var1, cvs var2, hz var3, awp var4, dfm var5, boolean var6);
 }

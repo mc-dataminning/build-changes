@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class adi implements xz<aai> {
+   public static final xq<us, adi> a = xz.a(adi::a, adi::new);
+   private final int b;
+   private final int c;
 
-public class adi implements xx<aag> {
-   public static final xo<uq, adi> a = xx.a(adi::a, adi::new);
-   private final eou b;
-   private final String c;
-
-   public adi(eou $$0, @Nullable eov $$1) {
+   public adi(int $$0, int $$1) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
    }
 
-   private adi(uq $$0) {
-      this.b = $$0.a(eou.u);
-      this.c = $$0.r();
+   private adi(us $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(uq $$0) {
-      $$0.a(eou::a, this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public xz<adi> a() {
-      return aeq.aA;
+   public yb<adi> a() {
+      return aet.ay;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public eou b() {
+   public int b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public int e() {
+      return this.c;
    }
 }

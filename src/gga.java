@@ -1,18 +1,27 @@
-public class gga extends gfl<cba, fpa<cba>> {
-   private final fpa<cba> a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gga(gcv<cba, fpa<cba>> $$0, fpf $$1) {
+public class gga extends ggj<cay, fnt<cay>> {
+   private static final Map<cay.a, ajc> a = ImmutableMap.of(
+      cay.a.b,
+      new ajc("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      cay.a.c,
+      new ajc("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      cay.a.d,
+      new ajc("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gga(gdt<cay, fnt<cay>> $$0) {
       super($$0);
-      this.a = new fpa<>($$1.a(fpi.bZ));
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, cba $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gq()) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         esl $$10 = $$1.getBuffer(fwb.e(((cmm)cpg.oq).b()));
-         this.a.a($$0, $$10, $$2, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(etd $$0, fwq $$1, int $$2, cay $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cb()) {
+         cay.a $$10 = $$3.w();
+         if ($$10 != cay.a.a) {
+            ajc $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         }
       }
    }
 }

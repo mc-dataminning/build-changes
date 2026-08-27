@@ -1,256 +1,147 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class djj extends dix {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final cys[] h = new cys[]{cyu.hZ, cyu.ia, cyu.ii, cyu.ib};
+public class djj extends djl {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
    public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<hz> l = Lists.newArrayList();
-   @Nullable
-   private boi m;
-   @Nullable
-   private UUID n;
-   private long r;
+   public boolean b;
+   public ih c;
+   private List<box> m;
+   private boolean n;
+   private int r;
 
-   public djj(hz $$0, dlj $$1) {
-      super(diz.z, $$0, $$1);
+   public djj(ib $$0, dme $$1) {
+      super(djn.E, $$0, $$1);
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      if ($$0.b("Target")) {
-         this.n = $$0.a("Target");
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.b();
+         this.r = 0;
+         this.c = ih.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
       } else {
-         this.n = null;
+         return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (this.m != null) {
-         $$0.a("Target", this.m.cw());
-      }
-   }
-
-   public aan c() {
-      return aan.a(this);
-   }
-
-   @Override
-   public sw aA_() {
-      return this.q();
-   }
-
-   public static void a(cvr $$0, hz $$1, dlj $$2, djj $$3) {
-      $$3.a++;
-      long $$4 = $$0.X();
-      List<hz> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
+   private static void a(cwe $$0, ib $$1, dme $$2, djj $$3, djj.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
       }
 
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.d()) {
-         $$3.i++;
-      }
-   }
-
-   public static void b(cvr $$0, hz $$1, dlj $$2, djj $$3) {
-      $$3.a++;
-      long $$4 = $$0.X();
-      List<hz> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            atk $$7 = $$6 ? atl.fj : atl.fn;
-            $$0.a(null, $$1, $$7, atm.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
       }
 
-      if ($$3.d()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, atl.fk, atm.e, 1.0F, 1.0F);
-         }
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, atp.bY, atq.e, 1.0F, 1.0F);
+      }
 
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.F_().a(40);
-            $$0.a(null, $$1, atl.fl, atm.e, 1.0F, 1.0F);
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
          }
       }
    }
 
-   private static void a(djj $$0, List<hz> $$1) {
-      $$0.a($$1.size() >= 42);
+   public static void a(cwe $$0, ib $$1, dme $$2, djj $$3) {
+      a($$0, $$1, $$2, $$3, djj::b);
    }
 
-   private static boolean a(cvr $$0, hz $$1, List<hz> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               hz $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.z($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  hz $$13 = $$1.b($$7, $$8, $$9);
-                  dlj $$14 = $$0.a_($$13);
-
-                  for (cys $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
+   public static void b(cwe $$0, ib $$1, dme $$2, djj $$3) {
+      a($$0, $$1, $$2, $$3, djj::a);
    }
 
-   private static void b(cvr $$0, hz $$1, List<hz> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      enu $$8 = new enu((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.K_(), 0.0);
-      List<chl> $$9 = $$0.a(chl.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (chl $$10 : $$9) {
-            if ($$1.a($$10.dm(), (double)$$4) && $$10.ba()) {
-               $$10.b(new bnd(bnf.C, 260, 0, true, true));
+   public void a(ih $$0) {
+      ib $$1 = this.aD_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.n().b(), 1, $$0.d());
+   }
+
+   private void b() {
+      ib $$0 = this.aD_();
+      if (this.o.X() > this.l + 60L || this.m == null) {
+         this.l = this.o.X();
+         eoq $$1 = new eoq($$0).g(48.0);
+         this.m = this.o.a(box.class, $$1);
+      }
+
+      if (!this.o.B) {
+         for (box $$2 : this.m) {
+            if ($$2.bx() && !$$2.dE() && $$0.a($$2.dh(), 32.0)) {
+               $$2.dM().a(bya.D, this.o.X());
             }
          }
       }
    }
 
-   private static void a(cvr $$0, hz $$1, dlj $$2, List<hz> $$3, djj $$4) {
-      boi $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.n != null) {
-         $$4.m = a($$0, $$1, $$4.n);
-         $$4.n = null;
-      } else if ($$4.m == null) {
-         List<boi> $$7 = $$0.a(boi.class, a($$1), $$0x -> $$0x instanceof cej && $$0x.ba());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.z.a($$7.size()));
-         }
-      } else if (!$$4.m.bx() || !$$1.a($$4.m.dm(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dr(), $$4.m.dt(), $$4.m.dx(), atl.fm, atm.e, 1.0F, 1.0F);
-         $$4.m.a($$0.ah().o(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(cvr $$0, hz $$1, djj $$2) {
-      if ($$2.n == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cw().equals($$2.n)) {
-         $$2.m = a($$0, $$1, $$2.n);
-         if ($$2.m == null) {
-            $$2.n = null;
-         }
-      }
-   }
-
-   private static enu a(hz $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new enu((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
-   }
-
-   @Nullable
-   private static boi a(cvr $$0, hz $$1, UUID $$2) {
-      List<boi> $$3 = $$0.a(boi.class, a($$1), $$1x -> $$1x.cw().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
-   private static void a(cvr $$0, hz $$1, List<hz> $$2, @Nullable bnq $$3, int $$4) {
-      awp $$5 = $$0.z;
-      double $$6 = (double)(awi.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      enz $$7 = new enz((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
-
-      for (hz $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            hz $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(jz.ao, $$7.c, $$7.d, $$7.e, (double)$$10, (double)$$11, (double)$$12);
+   private static boolean a(ib $$0, List<box> $$1) {
+      for (box $$2 : $$1) {
+         if ($$2.bx() && !$$2.dE() && $$0.a($$2.dh(), 32.0) && $$2.ai().a(auh.c)) {
+            return true;
          }
       }
 
-      if ($$3 != null) {
-         enz $$13 = new enz($$3.dr(), $$3.dv(), $$3.dx());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
-         float $$15 = -1.0F + $$5.i() * $$3.dh();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
-         enz $$17 = new enz((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(jz.ao, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
-      }
+      return false;
    }
 
-   public boolean d() {
-      return this.j;
+   private static void a(cwe $$0, ib $$1, List<box> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(djj::a);
    }
 
-   public boolean f() {
-      return this.k;
+   private static void b(cwe $$0, ib $$1, List<box> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dh(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.do() - (double)$$1.u()) * ($$4x.do() - (double)$$1.u()) + ($$4x.du() - (double)$$1.w()) * ($$4x.du() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.do() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.du() - (double)$$1.w());
+         int $$9 = awm.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            double $$12 = (double)avw.b.b($$11) / 255.0;
+            double $$13 = (double)avw.b.c($$11) / 255.0;
+            double $$14 = (double)avw.b.d($$11) / 255.0;
+            $$0.a(kb.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
+         }
+      });
    }
 
-   private void a(boolean $$0) {
-      this.k = $$0;
+   private static boolean a(ib $$0, box $$1) {
+      return $$1.bx() && !$$1.dE() && $$0.a($$1.dh(), 48.0) && $$1.ai().a(auh.c);
    }
 
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   private static void a(box $$0) {
+      $$0.b(new bns(bnu.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(cwe var1, ib var2, List<box> var3);
    }
 }

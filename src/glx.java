@@ -1,29 +1,54 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public record glx(gmb b, gme c) {
-   public static final Codec<glx> a = gmb.a.dispatchStable(glx::a, gmb::c);
-
-   public glx(gmb b, gme c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+public interface glx<T> {
+   static <T> glx<T> a() {
+      return new glx<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
-      });
-      this.b = b;
-      this.c = c;
+
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   static <T> glx<T> a(List<T> $$0, Function<T, Stream<ajc>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gma<T> $$2 = new gma<>();
+         final gma<T> $$3 = new gma<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new glx<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
+      }
    }
 
-   public gmb a() {
-      return this.b;
-   }
+   List<T> a(String var1);
 
-   public gme b() {
-      return this.c;
-   }
+   List<T> b(String var1);
 }

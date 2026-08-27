@@ -1,62 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dwi implements dwd {
-   public static final Codec<dwi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kf.e.q().fieldOf("block").flatXmap(dwi::a, DataResult::success).orElse((ddr)cyu.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               ix.a(kg.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dwi::new)
-   );
-   public final ddr b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final in<cys> h;
-   private final ObjectArrayList<ie> i;
-
-   private static DataResult<ddr> a(cys $$0) {
-      return $$0 instanceof ddr $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+public class dwi extends duu<dxw> {
+   public dwi(Codec<dxw> $$0) {
+      super($$0);
    }
 
-   public dwi(ddr $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, in<cys> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ie.b);
-      }
-
-      if ($$2) {
-         this.i.add(ie.a);
-      }
-
-      if ($$4) {
-         ie.c.a.forEach(this.i::add);
+   @Override
+   public boolean a(duw<dxw> $$0) {
+      cwz $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      dxw $$3 = $$0.f();
+      awt $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ib $$6 = $$2.h($$5.getAsInt());
+         jf $$7 = new jf($$3.c, $$3.c, $$3.c);
+         eby $$8 = eby.a($$6.b($$7), $$6.a($$7));
+         return ib.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, czh.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
       }
    }
 
-   public List<ie> a(awp $$0, ie $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   private static OptionalInt a(cwz $$0, ib $$1, dxw $$2) {
+      Predicate<dme> $$3 = $$0x -> $$0x.a(czh.G);
+      Predicate<dme> $$4 = $$0x -> !$$0x.a(czh.G);
+      Optional<drg> $$5 = drg.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(drg::c).orElseGet(OptionalInt::empty);
    }
 
-   public List<ie> a(awp $$0) {
-      return ac.a(this.i, $$0);
+   private boolean b(cwz $$0, ib $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (ih $$2 : ih.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(cwf $$0, ib $$1) {
+      dme $$2 = $$0.a_($$1);
+      return $$2.a(czh.G) || $$2.i();
    }
 }

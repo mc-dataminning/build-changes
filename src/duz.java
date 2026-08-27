@@ -1,54 +1,35 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class duz extends dtz<dws> {
-   public duz(Codec<dws> $$0) {
-      super($$0);
-   }
+public class duz implements dwy {
+   public static final Codec<duz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajc.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               ajc.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               egf.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               egf.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, duz::new)
+   );
+   public final List<ajc> b;
+   public final List<ajc> c;
+   public final il<ege> d;
+   public final il<ege> e;
+   public final int f;
 
-   @Override
-   public boolean a(dub<dws> $$0) {
-      dws $$1 = $$0.f();
-      cwm $$2 = $$0.b();
-      awp $$3 = $$0.d();
-      cys $$4 = $$1.b.b();
-      hz $$5 = a($$2, $$0.e().j().a(ie.a.b, $$2.J_() + 1, $$2.ak() - 1), $$4);
-      if ($$5 == null) {
-         return false;
+   public duz(List<ajc> $$0, List<ajc> $$1, il<ege> $$2, il<ege> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (hz $$11 : hz.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dlj $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-   }
-
-   @Nullable
-   private static hz a(cvs $$0, hz.a $$1, cys $$2) {
-      while ($$1.v() > $$0.J_() + 1) {
-         dlj $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(ie.a);
-      }
-
-      return null;
    }
 }

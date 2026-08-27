@@ -1,93 +1,94 @@
-import java.util.UUID;
+public class aeo implements xz<aai> {
+   public static final xq<vd, aeo> a = xz.a(aeo::a, aeo::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final il<bnq> g;
+   private final byte h;
+   private final int i;
+   private final byte j;
 
-public class aeo {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bnq $$0) {
-      if ($$0 instanceof chl) {
-         return $$0.ad().getString();
-      } else {
-         vq $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cw());
+   public aeo(int $$0, bns $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.b();
+      this.h = (byte)($$1.d() & 0xFF);
+      this.i = $$1.c();
+      byte $$3 = 0;
+      if ($$1.e()) {
+         $$3 = (byte)($$3 | 1);
       }
+
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   public static String a(UUID $$0) {
-      awp $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private aeo(vd $$0) {
+      this.f = $$0.l();
+      this.g = xo.b(ki.Q).decode($$0);
+      this.h = $$0.readByte();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
    }
 
-   private static String a(awp $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   private void a(vd $$0) {
+      $$0.c(this.f);
+      xo.b(ki.Q).encode($$0, this.g);
+      $$0.k(this.h);
+      $$0.c(this.i);
+      $$0.k(this.j);
    }
 
-   private static awp b(UUID $$0) {
-      return awp.a((long)($$0.hashCode() >> 2));
+   @Override
+   public yb<aeo> a() {
+      return aet.bc;
+   }
+
+   public void a(aai $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.f;
+   }
+
+   public il<bnq> e() {
+      return this.g;
+   }
+
+   public byte f() {
+      return this.h;
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
+
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
    }
 }

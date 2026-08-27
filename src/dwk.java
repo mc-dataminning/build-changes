@@ -1,6 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dwk implements dwd {
-   public static final Codec<dwk> a = Codec.unit(() -> dwk.b);
-   public static final dwk b = new dwk();
+public class dwk extends duu<dxf> {
+   public dwk(Codec<dxf> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(duw<dxf> $$0) {
+      cwz $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ih $$3 : ih.values()) {
+            if ($$3 != ih.a && dia.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, czh.ff.o().a(dia.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
 }

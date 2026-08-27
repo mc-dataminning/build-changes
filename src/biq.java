@@ -1,47 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class biq {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bil f = bik.a;
-
-   public biq(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
-   }
-
-   public bin a() {
-      this.f = new big(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
-   }
-
-   public void b() {
-      if (this.f != bik.a) {
-         bim $$0 = this.f.d();
-         this.f = bik.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+public interface biq<T> extends Closeable {
+   static <T> biq<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new biq<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
          }
-      }
+
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
    @Nullable
-   public static biq a(String $$0) {
-      return null;
-   }
-
-   public static bin a(bin $$0, @Nullable biq $$1) {
-      return $$1 != null ? bin.a($$1.a(), $$0) : $$0;
-   }
+   T a() throws IOException;
 }

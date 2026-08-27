@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface git {
+public class git extends ask<int[]> {
+   private static final ajc a = new ajc("textures/colormap/grass.png");
+
+   protected int[] a(asf $$0, bjc $$1) {
+      try {
+         return giv.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, asf $$1, bjc $$2) {
+      cwc.a($$0);
+   }
 }

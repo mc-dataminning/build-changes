@@ -1,53 +1,31 @@
-import com.mojang.serialization.DynamicOps;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
 
 public class iz {
-   private static final Set<aix<? extends iv<?>>> a = ait.c.stream().map(ait.c::a).collect(Collectors.toUnmodifiableSet());
-
-   public static void a(DynamicOps<tt> $$0, iw $$1, BiConsumer<aix<? extends iv<?>>, List<iz.a>> $$2) {
-      ait.c.forEach($$3 -> a($$0, (ait.c<?>)$$3, $$1, $$2));
+   public static <E> Codec<ix<E>> a(ajb<? extends ix<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
+      Codec<Map<ajb<E>, E>> $$3 = Codec.unboundedMap(ajb.a($$0), $$2);
+      return $$3.xmap($$2x -> {
+         jg<E> $$3x = new it<>($$0, $$1);
+         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
+         return $$3x.l();
+      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
    }
 
-   private static <T> void a(DynamicOps<tt> $$0, ait.c<T> $$1, iw $$2, BiConsumer<aix<? extends iv<?>>, List<iz.a>> $$3) {
-      $$2.c($$1.a()).ifPresent($$3x -> {
-         List<iz.a> $$4 = new ArrayList<>($$3x.b());
-         $$3x.h().forEach($$3xx -> {
-            tt $$4x = ac.a($$1.b().encodeStart($$0, $$3xx.a()), $$1xxx -> new IllegalArgumentException("Failed to serialize " + $$3xx.h() + ": " + $$1xxx));
-            $$4.add(new iz.a($$3xx.h().a(), $$4x));
-         });
-         $$3.accept($$3x.c(), $$4);
-      });
+   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, false);
    }
 
-   private static Stream<iw.d<?>> a(iw $$0) {
-      return $$0.c().filter($$0x -> a.contains($$0x.a()));
+   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return aiw.a($$0, aiy.a($$0, $$1), $$2);
    }
 
-   public static Stream<iw.d<?>> a(iq<ajh> $$0) {
-      return a($$0.c(ajh.b));
+   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0) {
+      return a($$0, false);
    }
 
-   public static Stream<iw.d<?>> b(iq<ajh> $$0) {
-      Stream<iw.d<?>> $$1 = $$0.a(ajh.a).c();
-      Stream<iw.d<?>> $$2 = a($$0);
-      return Stream.concat($$2, $$1);
-   }
-
-   public static record a(aiy b, tt c) {
-      public static final xo<ByteBuf, iz.a> a = xo.a(aiy.b, iz.a::a, xm.i, iz.a::b, iz.a::new);
-
-      public aiy a() {
-         return this.b;
-      }
-
-      public tt b() {
-         return this.c;
-      }
+   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, boolean $$1) {
+      return aiw.a($$0, aiz.a($$0), $$1);
    }
 }

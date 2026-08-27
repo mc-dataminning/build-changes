@@ -1,33 +1,4 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+import java.util.Map;
 
-public interface frq {
-   boolean a(frr var1);
-
-   boolean a(frs var1);
-
-   static frq a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new frq() {
-         @Override
-         public boolean a(frr $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
-         }
-
-         @Override
-         public boolean a(frs $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
-         }
-      };
-   }
+public record frq(Map<ajc, byte[]> a) {
 }

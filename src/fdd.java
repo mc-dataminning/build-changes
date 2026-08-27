@@ -1,143 +1,276 @@
-public interface fdd {
-   fdd a(int var1);
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-   fdd a(int var1, int var2);
+public class fdd {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   fdd a(int var1, int var2, int var3, int var4);
-
-   fdd b(int var1);
-
-   fdd c(int var1);
-
-   fdd d(int var1);
-
-   fdd e(int var1);
-
-   fdd f(int var1);
-
-   fdd g(int var1);
-
-   fdd a(float var1, float var2);
-
-   fdd a(float var1);
-
-   fdd b(float var1);
-
-   default fdd a() {
-      return this.a(0.0F);
+   public fdd(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   default fdd b() {
-      return this.a(0.5F);
+   public static Supplier<String> a(eyk $$0) {
+      return () -> b($$0);
    }
 
-   default fdd c() {
-      return this.a(1.0F);
+   public static String b(eyk $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   default fdd d() {
-      return this.b(0.0F);
+   public static Consumer<String> c(eyk $$0) {
+      return $$1 -> a($$0, $$1);
    }
 
-   default fdd e() {
-      return this.b(0.5F);
+   public static void a(eyk $$0, String $$1) {
+      $$0.o.a($$1);
    }
 
-   default fdd f() {
-      return this.b(1.0F);
+   public boolean a(char $$0) {
+      if (aa.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
+      }
+
+      return true;
    }
 
-   fdd g();
+   public boolean a(int $$0) {
+      if (fgh.f($$0)) {
+         this.d();
+         return true;
+      } else if (fgh.e($$0)) {
+         this.c();
+         return true;
+      } else if (fgh.d($$0)) {
+         this.b();
+         return true;
+      } else if (fgh.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         fdd.a $$1 = fgh.t() ? fdd.a.b : fdd.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fgh.v(), $$1);
+                  return true;
+               }
 
-   fdd.a h();
+               if ($$0 == 262) {
+                  this.a(1, fgh.v(), $$1);
+                  return true;
+               }
 
-   static fdd i() {
-      return new fdd.a();
+               if ($$0 == 268) {
+                  this.a(fgh.v());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(fgh.v());
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
    }
 
-   public static class a implements fdd {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   private int h(int $$0) {
+      return awm.a($$0, 0, this.a.get().length());
+   }
 
-      public a() {
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
       }
 
-      public a(fdd.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      this.f = awm.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
       }
+   }
 
-      public fdd.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
 
-      public fdd.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
       }
+   }
 
-      public fdd.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
+   public void a(int $$0, boolean $$1, fdd.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
       }
+   }
 
-      public fdd.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
 
-      public fdd.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
 
-      public fdd.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
 
-      public fdd.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public void b(int $$0, boolean $$1) {
+      this.f = eyw.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
 
-      public fdd.a m(int $$0) {
-         return this.i($$0).k($$0);
+   public void a(int $$0, fdd.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
       }
+   }
 
-      public fdd.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public void d(int $$0) {
+      int $$1 = eyw.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
 
-      public fdd.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
 
-      public fdd.a c(float $$0) {
-         this.e = $$0;
-         return this;
+         this.b.accept($$2);
       }
+   }
 
-      public fdd.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
 
-      public fdd.a j() {
-         return new fdd.a(this);
-      }
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
 
-      @Override
-      public fdd.a h() {
-         return this;
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
+   }
+
+   public void e() {
+      this.a(false);
+   }
+
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = awm.a($$0, 0, $$2);
+      this.g = awm.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

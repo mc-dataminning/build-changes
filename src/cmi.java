@@ -1,2 +1,6 @@
-public interface cmi {
+public enum cmi {
+   a,
+   b,
+   c,
+   d;
 }

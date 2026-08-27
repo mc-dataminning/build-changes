@@ -1,41 +1,68 @@
-import java.util.Arrays;
+public class ffp extends fey {
+   private fak c;
 
-public class ffp extends ffd {
-   private fal c;
-
-   private static exr<?>[] a(exs $$0) {
-      return new exr[]{$$0.T(), $$0.U()};
-   }
-
-   public ffp(ffl $$0, exs $$1) {
-      super($$0, $$1, vq.c("options.sounds.title"));
+   public ffp() {
+      super("");
    }
 
    @Override
-   protected void aQ_() {
-      this.c = this.c(new fal(this.f, this.g, this.h - 64, 32, 25));
-      this.c.a(this.b.b(atm.a));
-      this.c.a(this.o());
-      this.c.a(this.b.aq());
-      this.c.a(a(this.b));
-      this.c(ezo.a(vp.d, $$0 -> {
-         this.f.m.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private exr<?>[] o() {
-      return Arrays.stream(atm.values()).filter($$0 -> $$0 != atm.a).map($$0 -> this.b.b($$0)).toArray(exr[]::new);
+   protected void aP_() {
+      super.aP_();
+      this.c = fak.a(vs.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      if (!this.f.I().a(this.f.S())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public void d() {
+      this.E();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.f.I().a(this.f.S()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
+      }
+
+      if (!this.f.I().a(this.f.S())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.f.l.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      frb $$0 = this.f.s.cr;
+      $$0.b(new afz(this.f.s, afz.a.c));
+   }
+
+   public void o() {
+      if (this.b.a().isEmpty()) {
+         this.f.a(null);
+      } else {
+         this.f.a(new fey(this.b.a()));
+      }
    }
 }

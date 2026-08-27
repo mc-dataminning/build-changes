@@ -1,107 +1,157 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Arrays;
 
 public class ang {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.trigger.failed.invalid"));
+   private static final float a = 10000.0F;
+   private static final String b = String.valueOf(20);
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)dv.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("objective", eo.a())
-                        .suggests(($$0x, $$1) -> a((du)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                 "tick"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(dv.a("query").executes($$0x -> a((du)$$0x.getSource()))))
+                        .then(
+                           dv.a("rate")
+                              .then(
+                                 dv.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
+                                    .suggests(($$0x, $$1) -> dz.a(new String[]{b}, $$1))
+                                    .executes($$0x -> a((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
+                              )
+                        ))
                      .then(
-                        dv.a("add")
+                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("step").executes($$0x -> b((du)$$0x.getSource(), 1)))
+                              .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
                            .then(
-                              dv.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (du)$$0x.getSource(),
-                                          ((du)$$0x.getSource()).h(),
-                                          eo.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
+                              dv.a("time", fh.a(1))
+                                 .suggests(($$0x, $$1) -> dz.a(new String[]{"1t", "1s"}, $$1))
+                                 .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                            )
                      ))
                   .then(
-                     dv.a("set")
+                     ((LiteralArgumentBuilder)dv.a("sprint").then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
                         .then(
-                           dv.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
+                           dv.a("time", fh.a(1))
+                              .suggests(($$0x, $$1) -> dz.a(new String[]{"60s", "1d", "3d"}, $$1))
+                              .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                         )
-                  )
-            )
+                  ))
+               .then(dv.a("unfreeze").executes($$0x -> a((du)$$0x.getSource(), false))))
+            .then(dv.a("freeze").executes($$0x -> a((du)$$0x.getSource(), true)))
       );
    }
 
-   public static CompletableFuture<Suggestions> a(du $$0, SuggestionsBuilder $$1) {
-      epc $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         epd $$4 = $$0.l().aJ();
+   private static String a(long $$0) {
+      return String.format("%.1f", (float)$$0 / (float)axl.b);
+   }
 
-         for (eov $$5 : $$4.c()) {
-            if ($$5.c() == epg.c) {
-               eoz $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
+   private static int a(du $$0, float $$1) {
+      aju $$2 = $$0.l().aR();
+      $$2.a($$1);
+      String $$3 = String.format("%.1f", $$1);
+      $$0.a(() -> vs.a("commands.tick.rate.success", $$3), true);
+      return (int)$$1;
+   }
+
+   private static int a(du $$0) {
+      aju $$1 = $$0.l().aR();
+      String $$2 = a($$0.l().aS());
+      float $$3 = $$1.f();
+      String $$4 = String.format("%.1f", $$3);
+      if ($$1.a()) {
+         $$0.a(() -> vs.c("commands.tick.status.sprinting"), false);
+         $$0.a(() -> vs.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      } else {
+         if ($$1.l()) {
+            $$0.a(() -> vs.c("commands.tick.status.frozen"), false);
+         } else if ($$1.h() < $$0.l().aS()) {
+            $$0.a(() -> vs.c("commands.tick.status.lagging"), false);
+         } else {
+            $$0.a(() -> vs.c("commands.tick.status.running"), false);
+         }
+
+         String $$5 = a($$1.h());
+         $$0.a(() -> vs.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+      }
+
+      long[] $$6 = Arrays.copyOf($$0.l().aT(), $$0.l().aT().length);
+      Arrays.sort($$6);
+      String $$7 = a($$6[$$6.length / 2]);
+      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
+      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
+      $$0.a(() -> vs.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
+      return (int)$$3;
+   }
+
+   private static int a(du $$0, int $$1) {
+      boolean $$2 = $$0.l().aR().b($$1);
+      if ($$2) {
+         $$0.a(() -> vs.c("commands.tick.sprint.stop.success"), true);
+      }
+
+      $$0.a(() -> vs.c("commands.tick.status.sprinting"), true);
+      return 1;
+   }
+
+   private static int a(du $$0, boolean $$1) {
+      aju $$2 = $$0.l().aR();
+      if ($$1) {
+         if ($$2.a()) {
+            $$2.c();
+         }
+
+         if ($$2.j()) {
+            $$2.b();
          }
       }
 
-      return dz.b($$3, $$1);
-   }
-
-   private static int a(du $$0, aox $$1, eov $$2, int $$3) throws CommandSyntaxException {
-      epb $$4 = a($$0.l().aJ(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> vq.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(du $$0, aox $$1, eov $$2, int $$3) throws CommandSyntaxException {
-      epb $$4 = a($$0.l().aJ(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> vq.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(du $$0, aox $$1, eov $$2) throws CommandSyntaxException {
-      epb $$3 = a($$0.l().aJ(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> vq.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static epb a(epd $$0, epc $$1, eov $$2) throws CommandSyntaxException {
-      if ($$2.c() != epg.c) {
-         throw b.create();
+      $$2.a($$1);
+      if ($$1) {
+         $$0.a(() -> vs.c("commands.tick.status.frozen"), true);
       } else {
-         eoz $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            epb $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
+         $$0.a(() -> vs.c("commands.tick.status.running"), true);
+      }
+
+      return $$1 ? 1 : 0;
+   }
+
+   private static int b(du $$0, int $$1) {
+      aju $$2 = $$0.l().aR();
+      boolean $$3 = $$2.a($$1);
+      if ($$3) {
+         $$0.a(() -> vs.a("commands.tick.step.success", $$1), true);
+      } else {
+         $$0.b(vs.c("commands.tick.step.fail"));
+      }
+
+      return 1;
+   }
+
+   private static int b(du $$0) {
+      aju $$1 = $$0.l().aR();
+      boolean $$2 = $$1.b();
+      if ($$2) {
+         $$0.a(() -> vs.c("commands.tick.step.stop.success"), true);
+         return 1;
+      } else {
+         $$0.b(vs.c("commands.tick.step.stop.fail"));
+         return 0;
+      }
+   }
+
+   private static int c(du $$0) {
+      aju $$1 = $$0.l().aR();
+      boolean $$2 = $$1.c();
+      if ($$2) {
+         $$0.a(() -> vs.c("commands.tick.sprint.stop.success"), true);
+         return 1;
+      } else {
+         $$0.b(vs.c("commands.tick.sprint.stop.fail"));
+         return 0;
       }
    }
 }

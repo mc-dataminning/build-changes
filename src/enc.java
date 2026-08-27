@@ -1,31 +1,23 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record enc(String b) implements ene {
-   public static final Codec<enc> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(enc::c)).apply($$0, enc::new));
-
-   public static ene a(String $$0) {
-      return new enc($$0);
-   }
+public record enc(float b) implements emx {
+   public static final Codec<enc> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(enc::c)).apply($$0, enc::new));
 
    @Override
-   public end a() {
-      return enf.b;
+   public emy b() {
+      return emz.e;
    }
 
-   @Override
-   public epc a(ejc $$0) {
-      return epc.d(this.b);
+   public boolean a(ejy $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   @Override
-   public Set<elk<?>> b() {
-      return ImmutableSet.of();
+   public static emx.a a(float $$0) {
+      return () -> new enc($$0);
    }
 
-   public String c() {
+   public float c() {
       return this.b;
    }
 }

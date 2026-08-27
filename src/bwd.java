@@ -1,13 +1,18 @@
-import javax.annotation.Nullable;
-
 public class bwd extends bwc {
-   public bwd(boq $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private final chi h;
+
+   public bwd(chi $$0) {
+      super($$0, cia.class, 8.0F);
+      this.h = $$0;
    }
 
-   @Nullable
    @Override
-   protected enz h() {
-      return bqc.a(this.b, 10, 7);
+   public boolean a() {
+      if (this.h.gm()) {
+         this.c = this.h.gl();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

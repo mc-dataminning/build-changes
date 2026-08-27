@@ -1,84 +1,384 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import java.util.Optional;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cxd extends cwu {
-   private static final MapCodec<ij<cwq>> d = cwq.c.fieldOf("biome");
-   public static final MapCodec<cwz.c<ij<cwq>>> b = cwz.c.a(d).fieldOf("biomes");
-   private static final MapCodec<ij<cxe>> e = cxe.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<cxd> c = Codec.mapEither(b, e).xmap(cxd::new, $$0 -> $$0.f).codec();
-   private final Either<cwz.c<ij<cwq>>, ij<cxe>> f;
+public final class cxd {
+   public static final Codec<cxd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxd.b.a.forGetter($$0x -> $$0x.i),
+               cxj.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               cxe.b.forGetter($$0x -> $$0x.j),
+               cxp.c.forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, cxd::new)
+   );
+   public static final Codec<cxd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cxd.b.a.forGetter($$0x -> $$0x.i), cxj.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new cxd($$0x, $$1, cxe.a, cxp.b))
+   );
+   public static final Codec<il<cxd>> c = aiy.a(ki.au, a);
+   public static final Codec<ip<cxd>> d = iz.a(ki.au, a);
+   private static final egw f = new egw(new dsp(new drr(1234L)), ImmutableList.of(0));
+   static final egw g = new egw(new dsp(new drr(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final egw e = new egw(new dsp(new drr(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final cxd.b i;
+   private final cxe j;
+   private final cxp k;
+   private final cxj l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ac.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-   private cxd(Either<cwz.c<ij<cwq>>, ij<cxe>> $$0) {
-      this.f = $$0;
+   cxd(cxd.b $$0, cxj $$1, cxe $$2, cxp $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
-   public static cxd a(cwz.c<ij<cwq>> $$0) {
-      return new cxd(Either.left($$0));
+   public int a() {
+      return this.l.d();
    }
 
-   public static cxd a(ij<cxe> $$0) {
-      return new cxd(Either.right($$0));
+   public cxp b() {
+      return this.k;
    }
 
-   private cwz.c<ij<cwq>> d() {
-      return (cwz.c<ij<cwq>>)this.f.map($$0 -> $$0, $$0 -> ((cxe)$$0.a()).a());
+   public boolean c() {
+      return this.i.a();
    }
 
-   @Override
-   protected Stream<ij<cwq>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public cxd.c a(ib $$0) {
+      if (!this.c()) {
+         return cxd.c.a;
+      } else {
+         return this.b($$0) ? cxd.c.c : cxd.c.b;
+      }
    }
 
-   @Override
-   protected Codec<? extends cwu> a() {
-      return c;
+   private float e(ib $$0) {
+      float $$1 = this.i.d.a($$0, this.g());
+      if ($$0.v() > 80) {
+         float $$2 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$1 - ($$2 + (float)$$0.v() - 80.0F) * 0.05F / 40.0F;
+      } else {
+         return $$1;
+      }
    }
 
-   public boolean a(aix<cxe> $$0) {
-      Optional<ij<cxe>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   @Deprecated
+   private float f(ib $$0) {
+      long $$1 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$2 = this.m.get();
+      float $$3 = $$2.get($$1);
+      if (!Float.isNaN($$3)) {
+         return $$3;
+      } else {
+         float $$4 = this.e($$0);
+         if ($$2.size() == 1024) {
+            $$2.removeFirstFloat();
+         }
+
+         $$2.put($$1, $$4);
+         return $$4;
+      }
    }
 
-   @Override
-   public ij<cwq> getNoiseBiome(int $$0, int $$1, int $$2, cwz.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
+   public boolean a(cwh $$0, ib $$1) {
+      return this.a($$0, $$1, true);
    }
 
-   @axl
-   public ij<cwq> a(cwz.h $$0) {
-      return this.d().a($$0);
+   public boolean a(cwh $$0, ib $$1, boolean $$2) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.ak() && $$0.a(cwn.b, $$1) < 10) {
+            dme $$3 = $$0.a_($$1);
+            ehr $$4 = $$0.b_($$1);
+            if ($$4.a() == ehs.c && $$3.b() instanceof ddu) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.z($$1.g()) && $$0.z($$1.h()) && $$0.z($$1.e()) && $$0.z($$1.f());
+               if (!$$5) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Override
-   public void a(List<String> $$0, hz $$1, cwz.f $$2) {
-      int $$3 = iu.a($$1.u());
-      int $$4 = iu.a($$1.v());
-      int $$5 = iu.a($$1.w());
-      cwz.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cwz.a($$6.d());
-      float $$8 = cwz.a($$6.e());
-      float $$9 = cwz.a($$6.b());
-      float $$10 = cwz.a($$6.c());
-      float $$11 = cwz.a($$6.g());
-      double $$12 = (double)drc.a($$11);
-      cxg $$13 = new cxg();
-      $$0.add(
-         "Biome builder PV: "
-            + cxg.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
+   public boolean b(ib $$0) {
+      return !this.c($$0);
+   }
+
+   public boolean c(ib $$0) {
+      return this.f($$0) >= 0.15F;
+   }
+
+   public boolean d(ib $$0) {
+      return this.f($$0) > 0.1F;
+   }
+
+   public boolean b(cwh $$0, ib $$1) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.ak() && $$0.a(cwn.b, $$1) < 10) {
+            dme $$2 = $$0.a_($$1);
+            if (($$2.i() || $$2.a(czh.dN)) && czh.dN.o().a($$0, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public cxe d() {
+      return this.j;
+   }
+
+   public int e() {
+      return this.l.a();
+   }
+
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::p);
+      return this.l.g().a($$0, $$1, $$2);
+   }
+
+   private int p() {
+      double $$0 = (double)awm.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)awm.a(this.i.e, 0.0F, 1.0F);
+      return cwc.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::q);
+   }
+
+   private int q() {
+      double $$0 = (double)awm.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)awm.a(this.i.e, 0.0F, 1.0F);
+      return cvy.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public cxj h() {
+      return this.l;
+   }
+
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<cxc> k() {
+      return this.l.h();
+   }
+
+   public Optional<il<ato>> l() {
+      return this.l.i();
+   }
+
+   public Optional<cxb> m() {
+      return this.l.j();
+   }
+
+   public Optional<cxa> n() {
+      return this.l.k();
+   }
+
+   public Optional<atm> o() {
+      return this.l.l();
+   }
+
+   public static class a {
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private cxd.d c = cxd.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private cxj e;
+      @Nullable
+      private cxp f;
+      @Nullable
+      private cxe g;
+
+      public cxd.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cxd.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cxd.a b(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cxd.a a(cxj $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cxd.a a(cxp $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cxd.a a(cxe $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public cxd.a a(cxd.d $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cxd a() {
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new cxd(new cxd.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
+      }
+   }
+
+   static record b(boolean b, float c, cxd.d d, float e) {
+      public static final MapCodec<cxd.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  cxd.d.c.optionalFieldOf("temperature_modifier", cxd.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, cxd.b::new)
       );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public cxd.d c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
+   }
+
+   public static enum c implements axg {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<cxd.c> d = axg.a(cxd.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   public static enum d implements axg {
+      a("none") {
+         @Override
+         public float a(ib $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(ib $$0, float $$1) {
+            double $$2 = cxd.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = cxd.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = cxd.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
+
+            return $$1;
+         }
+      };
+
+      private final String d;
+      public static final Codec<cxd.d> c = axg.a(cxd.d::values);
+
+      public abstract float a(ib var1, float var2);
+
+      d(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

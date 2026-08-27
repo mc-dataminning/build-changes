@@ -1,64 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class bkw extends blb {
-   public static final Codec<bkw> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bkw::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public class bkw {
+   public static final Codec<bkw> a = Codec.INT.xmap(bkw::a, bkw::a);
+   private static final bkw b = new bkw(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   public static bkw a(float $$0, float $$1, int $$2, int $$3) {
-      return new bkw($$0, $$1, $$2, $$3);
+   private bkw(int $$0) {
+      this.d = $$0;
    }
 
-   private bkw(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+   public static bkw a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bkw($$0);
+      }
    }
 
-   @Override
-   public int a(awp $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(awp $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)awi.a(awi.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
    public int a() {
-      return this.g;
+      return this.d;
    }
 
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public blc<?> c() {
-      return blc.f;
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aV) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
    }
 
    @Override
    public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+      return Integer.toString(this.d);
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bkw && this.d == ((bkw)$$0).d;
    }
 }

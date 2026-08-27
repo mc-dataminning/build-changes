@@ -1,64 +1,136 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fwf {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<fwe> c;
-   private volatile int d;
+public abstract class fwf {
+   private static final Object2ObjectMap<ajc, fwf> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fwf.c $$1 = new fwf.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dpo.e, $$1);
+      $$0.put(dpo.f, new fwf.b());
+      $$0.put(dpo.g, new fwf.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fwf.d e;
+   private final boolean f;
+   private final boolean g;
 
-   private fwf(List<fwe> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public fwf(float $$0, boolean $$1, fwf.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public static fwf a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fwe.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<fwe> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new fwe());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new fwf($$3);
+   public static fwf a(dpq $$0) {
+      return (fwf)a.get($$0.r());
    }
 
    @Nullable
-   public fwe a() {
-      fwe $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = awm.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - awm.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
       } else {
          return null;
       }
    }
 
-   public void a(fwe $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
+   public float a() {
+      return this.c;
    }
 
    public boolean b() {
-      return this.c.isEmpty();
+      return this.d;
    }
 
-   public int c() {
-      return this.d;
+   public abstract eov a(eov var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public fwf.d c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends fwf {
+      public a() {
+         super(Float.NaN, false, fwf.d.c, true, false);
+      }
+
+      @Override
+      public eov a(eov $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
+   }
+
+   public static class b extends fwf {
+      public b() {
+         super(Float.NaN, true, fwf.d.a, false, true);
+      }
+
+      @Override
+      public eov a(eov $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends fwf {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fwf.d.b, false, false);
+      }
+
+      @Override
+      public eov a(eov $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

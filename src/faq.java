@@ -1,152 +1,193 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class faq extends ffl {
-   private static final aiy a = new aiy("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int k = 6;
-   private static final int l = 130;
-   private static final int m = 64;
-   private static final int n = 250;
-   private final ffl o;
+public abstract class faq<E extends faq.a<E>> extends faf<E> {
+   public faq(eyk $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
    @Nullable
-   private final aiy p;
-   private final vq q;
-   private final List<faq.b> r;
-   @Nullable
-   private final Runnable t;
-   private final int u;
-   private final fde v = fde.d();
-
-   faq(ffl $$0, int $$1, @Nullable aiy $$2, vq $$3, vq $$4, List<faq.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$4;
-      this.r = $$5;
-      this.t = $$6;
-      this.u = $$1 - 36;
-   }
-
    @Override
-   public void aI_() {
-      super.aI_();
-      this.o.q();
-   }
-
-   @Override
-   protected void aQ_() {
-      this.v.a(12).c().b();
-      this.v.a(new fai(this.e.f().a(n.r), this.i).c(this.u).b(true));
-      if (this.p != null) {
-         this.v.a(fab.a(130, 64, this.p, 130, 64));
-      }
-
-      this.v.a(new fai(this.q, this.i).c(this.u).b(true));
-      this.v.a(this.o());
-      this.v.a($$1 -> {
-         ezm var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fde o() {
-      int $$0 = 6 * (this.r.size() - 1);
-      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
-      fde $$2 = fde.e();
-      $$2.a(6);
-
-      for (faq.b $$3 : this.r) {
-         $$2.a(ezo.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.o.a(this.f, this.g, this.h);
-      this.v.a();
-      fcy.a(this.v, this.F());
-   }
-
-   @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.o.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, exo.a);
-      this.a($$0);
-      $$0.a(a, this.v.B() - 18, this.v.C() - 18, this.v.w() + 36, this.v.u() + 36);
-   }
-
-   @Override
-   public vq i() {
-      return vp.a(this.e, this.q);
-   }
-
-   @Override
-   public void d() {
-      if (this.t != null) {
-         this.t.run();
-      }
-
-      this.f.a(this.o);
-   }
-
-   public static class a {
-      private final ffl a;
-      private final vq b;
-      private vq c = vp.a;
-      private int d = 250;
-      @Nullable
-      private aiy e;
-      private final List<faq.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(ffl $$0, vq $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public faq.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public faq.a a(aiy $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public faq.a a(vq $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public faq.a a(vq $$0, Consumer<faq> $$1) {
-         this.f.add(new faq.b($$0, $$1));
-         return this;
-      }
-
-      public faq.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public faq a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
+   public ezu a(fel $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (!($$0 instanceof fel.a $$1)) {
+         return super.a($$0);
+      } else {
+         E $$2 = this.k();
+         if ($$1.b().a() == fem.a && $$2 != null) {
+            return ezu.a(this, $$2.a($$0));
          } else {
-            return new faq(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+            int $$3 = -1;
+            fen $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.l().indexOf($$2.aJ_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = fen.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = fen.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            ezu $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.l().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return ezu.a(this, $$6);
          }
       }
    }
 
-   static record b(vq a, Consumer<faq> b) {
+   @Override
+   public void a(@Nullable fcg $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
+      }
+   }
+
+   @Override
+   public fed.a s() {
+      return this.aK_() ? fed.a.c : super.s();
+   }
+
+   @Override
+   protected boolean e(int $$0) {
+      return false;
+   }
+
+   @Override
+   public void a(fef $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.k();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(fee.d, vs.c("narration.component_list.usage"));
+   }
+
+   public abstract static class a<E extends faq.a<E>> extends faf.a<E> implements fcf {
+      @Nullable
+      private fcg a;
+      @Nullable
+      private fed b;
+      private boolean c;
+
+      @Override
+      public boolean aI_() {
+         return this.c;
+      }
+
+      @Override
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return fcf.super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(@Nullable fcg $$0) {
+         if (this.a != null) {
+            this.a.a(false);
+         }
+
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public fcg aJ_() {
+         return this.a;
+      }
+
+      @Nullable
+      public ezu a(fel $$0, int $$1) {
+         if (this.l().isEmpty()) {
+            return null;
+         } else {
+            ezu $$2 = this.l().get(Math.min($$1, this.l().size() - 1)).a($$0);
+            return ezu.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public ezu a(fel $$0) {
+         if ($$0 instanceof fel.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = awm.a($$2 + this.l().indexOf(this.aJ_()), 0, this.l().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.l().size(); $$4 += $$2) {
+               fcg $$5 = this.l().get($$4);
+               ezu $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return ezu.a(this, $$6);
+               }
+            }
+         }
+
+         return fcf.super.a($$0);
+      }
+
+      public abstract List<? extends fed> a();
+
+      void a(fef $$0) {
+         List<? extends fed> $$1 = this.a();
+         fgh.b $$2 = fgh.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
+
+            if ($$1.size() > 1) {
+               $$0.a(fee.b, vs.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == fed.a.c) {
+                  $$0.a(fee.d, vs.c("narration.component_list.usage"));
+               }
+            }
+
+            $$2.a.b($$0.a());
+         }
+      }
    }
 }

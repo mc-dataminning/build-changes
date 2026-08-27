@@ -1,7 +1,7 @@
 public interface dt {
    dt a = new dt() {
       @Override
-      public void a(vq $$0) {
+      public void a(vs $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface dt {
       }
    };
 
-   void a(vq var1);
+   void a(vs var1);
 
    boolean l_();
 

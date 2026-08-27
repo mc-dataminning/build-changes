@@ -1,286 +1,176 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class fgo extends fgk<cki> {
-   private static final aiy x = new aiy("textures/gui/container/beacon.png");
-   static final aiy y = new aiy("container/beacon/button_disabled");
-   static final aiy z = new aiy("container/beacon/button_selected");
-   static final aiy A = new aiy("container/beacon/button_highlighted");
-   static final aiy B = new aiy("container/beacon/button");
-   static final aiy C = new aiy("container/beacon/confirm");
-   static final aiy D = new aiy("container/beacon/cancel");
-   private static final vq E = vq.c("block.minecraft.beacon.primary");
-   private static final vq F = vq.c("block.minecraft.beacon.secondary");
-   private final List<fgo.a> G = Lists.newArrayList();
-   @Nullable
-   ij<bnb> H;
-   @Nullable
-   ij<bnb> I;
+public class fgo extends ffz {
+   private static final vs c = vs.c("options.graphics.fabulous").a(n.u);
+   private static final vs k = vs.a("options.graphics.warning.message", c, c);
+   private static final vs l = vs.c("options.graphics.warning.title").a(n.m);
+   private static final vs m = vs.c("options.graphics.warning.accept");
+   private static final vs n = vs.c("options.graphics.warning.cancel");
+   private fbh o;
+   private final fwk p;
+   private final int q;
 
-   public fgo(final cki $$0, chk $$1, vq $$2) {
-      super($$0, $$1, $$2);
-      this.c = 230;
-      this.k = 219;
-      $$0.a(new ckr() {
-         @Override
-         public void a(ckf $$0x, int $$1, cpd $$2) {
+   private static eyn<?>[] a(eyo $$0) {
+      return new eyn[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
+      };
+   }
+
+   public fgo(fgh $$0, eyo $$1) {
+      super($$0, $$1, vs.c("options.videoTitle"));
+      this.p = $$0.f.ai();
+      this.p.i();
+      if ($$1.j().c() == eyd.c) {
+         this.p.e();
+      }
+
+      this.q = $$1.A().c();
+   }
+
+   @Override
+   protected void aP_() {
+      this.o = this.c(new fbh(this.f, this.g, this.h - 64, 32, 25));
+      int $$0 = -1;
+      esh $$1 = this.f.aN();
+      esc $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<esg> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+      }
+
+      eyn<Integer> $$6 = new eyn<>("options.fullscreen.resolution", eyn.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return vs.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return eyo.a($$1x, vs.c("options.fullscreen.current"));
+         } else {
+            esg $$3x = $$2.a($$2x);
+            return eyo.a($$1x, vs.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
-
-         @Override
-         public void a(ckf $$0x, int $$1, int $$2) {
-            fgo.this.H = $$0.m();
-            fgo.this.I = $$0.n();
+      }, new eyn.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
          }
       });
-   }
-
-   private <T extends ezm & fgo.a> void a(T $$0) {
-      this.c($$0);
-      this.G.add($$0);
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.c(fak.a(vr.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.G.clear();
-      this.a(new fgo.c(this.t + 164, this.u + 107));
-      this.a(new fgo.b(this.t + 190, this.u + 107));
+   public void k() {
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.Q();
+      }
 
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dis.a.get($$0).size();
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
+      super.k();
+   }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            ij<bnb> $$4 = dis.a.get($$0).get($$3);
-            fgo.d $$5 = new fgo.d(this.t + 76 + $$3 * 24 - $$2 / 2, this.u + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.j = false;
-            this.a($$5);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
          }
-      }
 
-      int $$6 = 3;
-      int $$7 = dis.a.get(3).size() + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         ij<bnb> $$10 = dis.a.get(3).get($$9);
-         fgo.d $$11 = new fgo.d(this.t + 167 + $$9 * 24 - $$8 / 2, this.u + 47, $$10, false, 3);
-         $$11.j = false;
-         this.a($$11);
-      }
-
-      ij<bnb> $$12 = dis.a.get(0).get(0);
-      fgo.d $$13 = new fgo.g(this.t + 167 + ($$7 - 1) * 24 - $$8 / 2, this.u + 47, $$12);
-      $$13.k = false;
-      this.a($$13);
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.I();
-   }
-
-   void I() {
-      int $$0 = this.p.l();
-      this.G.forEach($$1 -> $$1.a($$0));
-   }
-
-   @Override
-   protected void b(ezb $$0, int $$1, int $$2) {
-      $$0.a(this.i, E, 62, 10, 14737632);
-      $$0.a(this.i, F, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new cpd(cpg.oI), $$4 + 20, $$5 + 109);
-      $$0.a(new cpd(cpg.oy), $$4 + 41, $$5 + 109);
-      $$0.a(new cpd(cpg.ox), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new cpd(cpg.oH), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new cpd(cpg.oD), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends fgo.f {
-      public b(int $$0, int $$1) {
-         super($$0, $$1, fgo.D, vp.e);
-      }
-
-      @Override
-      public void b() {
-         fgo.this.f.s.r();
-      }
-
-      @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends fgo.f {
-      public c(int $$0, int $$1) {
-         super($$0, $$1, fgo.C, vp.d);
-      }
-
-      @Override
-      public void b() {
-         fgo.this.f.K().b(new agc(Optional.ofNullable(fgo.this.H), Optional.ofNullable(fgo.this.I)));
-         fgo.this.f.s.r();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = fgo.this.p.o() && fgo.this.H != null;
-      }
-   }
-
-   class d extends fgo.e {
-      private final boolean c;
-      protected final int a;
-      private ij<bnb> d;
-      private ghb f;
-
-      public d(int $$0, int $$1, ij<bnb> $$2, boolean $$3, int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(ij<bnb> $$0) {
-         this.d = $$0;
-         this.f = exo.P().aF().a($$0);
-         this.a(faz.a(this.b($$0), null));
-      }
-
-      protected we b(ij<bnb> $$0) {
-         return vq.c($$0.a().d());
-      }
-
-      @Override
-      public void b() {
-         if (!this.a()) {
-            if (this.c) {
-               fgo.this.H = this.d;
-            } else {
-               fgo.this.I = this.d;
+         if (this.p.g()) {
+            List<vs> $$4 = Lists.newArrayList(new vs[]{k, vr.s});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(vr.s);
+               $$4.add(vs.a("options.graphics.warning.renderer", $$5).a(n.h));
             }
 
-            fgo.this.I();
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(vr.s);
+               $$4.add(vs.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(vr.s);
+               $$4.add(vs.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new fgn(l, $$4, ImmutableList.of(new fgn.a(m, $$0x -> {
+               this.b.j().a(eyd.c);
+               eyk.P().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new fgn.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
          }
-      }
 
-      @Override
-      protected void a(ezb $$0) {
-         $$0.a(this.B() + 2, this.C() + 2, 0, 18, 18, this.f);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = this.a < $$0;
-         this.b(this.d.equals(this.c ? fgo.this.H : fgo.this.I));
-      }
-
-      @Override
-      protected we aN_() {
-         return this.b(this.d);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   abstract static class e extends ezf implements fgo.a {
-      private boolean a;
-
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, vp.a);
-      }
-
-      protected e(int $$0, int $$1, vq $$2) {
-         super($$0, $$1, 22, 22, $$2);
-      }
-
-      @Override
-      public void b(ezb $$0, int $$1, int $$2, float $$3) {
-         aiy $$4;
-         if (!this.j) {
-            $$4 = fgo.y;
-         } else if (this.a) {
-            $$4 = fgo.z;
-         } else if (this.z()) {
-            $$4 = fgo.A;
-         } else {
-            $$4 = fgo.B;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (fgh.t()) {
+         eyn<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
          }
 
-         $$0.a($$4, this.B(), this.C(), this.g, this.h);
-         this.a($$0);
-      }
-
-      protected abstract void a(ezb var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(fdj $$0) {
-         this.c($$0);
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   abstract static class f extends fgo.e {
-      private final aiy a;
-
-      protected f(int $$0, int $$1, aiy $$2, vq $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
-
-      @Override
-      protected void a(ezb $$0) {
-         $$0.a(this.a, this.B() + 2, this.C() + 2, 18, 18);
-      }
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 
-   class g extends fgo.d {
-      public g(int $$0, int $$1, ij<bnb> $$2) {
-         super($$0, $$1, $$2, false, 3);
-      }
-
-      @Override
-      protected we b(ij<bnb> $$0) {
-         return vq.c($$0.a().d()).f(" II");
-      }
-
-      @Override
-      public void a(int $$0) {
-         if (fgo.this.H != null) {
-            this.k = true;
-            this.a(fgo.this.H);
-            super.a($$0);
-         } else {
-            this.k = false;
-         }
-      }
+   @Override
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

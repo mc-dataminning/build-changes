@@ -1,12 +1,20 @@
-public class aib {
-   public static final xz<ahx> a = a("status_response");
-   public static final xz<aia> b = b("status_request");
+public record aib(aic b) implements xz<aia> {
+   public static final xq<us, aib> a = xz.a(aib::a, aib::new);
 
-   private static <T extends xx<ahw>> xz<T> a(String $$0) {
-      return new xz<>(xy.b, new aiy($$0));
+   private aib(us $$0) {
+      this($$0.a(aic.a));
    }
 
-   private static <T extends xx<ahz>> xz<T> b(String $$0) {
-      return new xz<>(xy.a, new aiy($$0));
+   private void a(us $$0) {
+      $$0.a(aic.a, this.b);
+   }
+
+   @Override
+   public yb<aib> a() {
+      return aif.a;
+   }
+
+   public void a(aia $$0) {
+      $$0.a(this);
    }
 }

@@ -1,27 +1,38 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
 
-public class cgi {
-   public static brl<cgb> a() {
-      return btn.a(
-         (Function<btn.b<cgb>, ? extends App<btn.c<cgb>, btq<cgb>>>)($$0 -> $$0.group($$0.b(bxl.ak), $$0.c(bxl.ab), $$0.c(bxl.ah), $$0.a(bxl.ao))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.o_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cgi::a)).isPresent()) {
-                        cfv $$6 = $$0.b($$1);
-                        cgc.c($$4x, $$6);
-                        cgc.c((cga)$$4x);
-                        cgc.b($$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cgc::c));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class cgi extends bqp<cgc> {
+   public cgi() {
+      super(Map.of(bya.o, byb.a, bya.m, byb.b, bya.aU, byb.b, bya.aV, byb.b));
    }
 
-   private static boolean a(cga $$0) {
-      return $$0.dO().a(bxl.ah);
+   protected boolean a(apa $$0, cgc $$1) {
+      return $$1.aC() && !$$1.aZ() && $$1.ap() == bpi.a;
+   }
+
+   protected void a(apa $$0, cgc $$1, long $$2) {
+      box $$3 = $$1.dM().c(bya.o).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.j($$3.dh());
+         eov $$5 = null;
+         if ($$4) {
+            eov $$6 = bzr.a($$1, 5, 5, $$3.dh());
+            if ($$6 != null && cge.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.f($$1)) {
+               $$5 = $$6;
+            }
+         }
+
+         if ($$5 == null) {
+            $$5 = $$1.ef().h() ? cge.a($$3, $$1.ef()) : a($$1, $$3);
+         }
+
+         $$1.dM().a(bya.m, new byd(ib.a($$5), 0.6F, 1));
+      }
+   }
+
+   private static eov a(cgc $$0, box $$1) {
+      eov $$2 = $$1.dh().d($$0.dh());
+      double $$3 = $$2.f() - awm.d($$0.ef().j(), 8.0, 4.0);
+      eov $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.dh().e($$4);
    }
 }

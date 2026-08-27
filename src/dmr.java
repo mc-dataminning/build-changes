@@ -1,21 +1,20 @@
-public enum dmr implements axc {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dmr implements axg {
+   a("head"),
+   b("foot");
 
-   private final String d;
+   private final String c;
 
    private dmr(String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

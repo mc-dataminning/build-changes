@@ -1,99 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cxy extends cye {
-   public static final MapCodec<cxy> a = b(cxy::new);
-   public static final dmd b = dlz.P;
-   public static final dma c = dlz.u;
+public abstract class cxy extends czf {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final epo h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final epo b = epl.a(
+      epl.b(), epl.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), eoz.e
+   );
+   protected final jh.a c;
 
    @Override
-   public MapCodec<cxy> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends cxy> a();
 
-   public cxy(dli.d $$0) {
+   public cxy(dmd.d $$0, jh.a $$1) {
       super($$0);
-      this.k(this.E.b().a(b, ie.c).a(c, Boolean.valueOf(false)));
+      this.c = $$1;
+   }
+
+   protected double b(dme $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dme $$0, ib $$1, bof $$2) {
+      return $$2.dq() < (double)$$1.v() + this.b($$0) && $$2.cE().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      if ($$1.B) {
-         return blw.a;
-      } else {
-         dix $$5 = $$1.c_($$2);
-         if ($$5 instanceof diq) {
-            $$3.a((diq)$$5);
-            $$3.a(atv.ar);
-            cgc.a($$3, true);
-         }
-
-         return blw.b;
-      }
+   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
+      jh $$7 = this.c.b().get($$0.d());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected void a(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
-      bls.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      dix $$4 = $$1.c_($$2);
-      if ($$4 instanceof diq) {
-         ((diq)$$4).m();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new diq($$0, $$1);
+   protected epo a(dme $$0, cvk $$1, ib $$2) {
+      return h;
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
-   }
-
-   @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
-      if ($$4.B()) {
-         dix $$5 = $$0.c_($$1);
-         if ($$5 instanceof diq) {
-            ((diq)$$5).a($$4.z());
-         }
-      }
-   }
-
-   @Override
-   protected boolean d_(dlj $$0) {
+   protected boolean d_(dme $$0) {
       return true;
    }
 
    @Override
-   protected int a(dlj $$0, cvr $$1, hz $$2) {
-      return ckf.a($$1.c_($$2));
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 
-   @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+   public abstract boolean d(dme var1);
 
    @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      ib $$4 = dew.a((cwe)$$1, $$2);
+      if ($$4 != null) {
+         ehq $$5 = dew.a($$1, $$4);
+         if ($$5 != ehs.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
    }
 
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b, c);
+   protected boolean a(ehq $$0) {
+      return false;
    }
 
-   @Override
-   public dlj a(crk $$0) {
-      return this.o().a(b, $$0.d().g());
+   protected void a(dme $$0, cwe $$1, ib $$2, ehq $$3) {
    }
 }

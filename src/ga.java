@@ -10,10 +10,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class ga implements ArgumentType<gb> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final il<coy> b;
+   private final gc b;
 
    public ga(dq $$0) {
-      this.b = $$0.a(kg.F);
+      this.b = new gc($$0);
    }
 
    public static ga a(dq $$0) {
@@ -21,7 +21,7 @@ public class ga implements ArgumentType<gb> {
    }
 
    public gb a(StringReader $$0) throws CommandSyntaxException {
-      gc.a $$1 = gc.a(this.b, $$0);
+      gc.a $$1 = this.b.a($$0);
       return new gb($$1.a(), $$1.b());
    }
 
@@ -30,7 +30,7 @@ public class ga implements ArgumentType<gb> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return gc.a(this.b, $$1, false);
+      return this.b.a($$1);
    }
 
    public Collection<String> getExamples() {

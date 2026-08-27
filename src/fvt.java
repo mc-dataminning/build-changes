@@ -1,94 +1,87 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
 
-public interface fvt {
-   static fvt.a a(esc $$0) {
-      return a(ImmutableMap.of(), $$0);
+public class fvt extends fvp {
+   private eov g = eov.b;
+   private int cr;
+
+   public fvt(fra $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ae = true;
    }
 
-   static fvt.a a(Map<fwb, esc> $$0, esc $$1) {
-      return new fvt.a($$1, $$0);
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cE().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cx();
+      return $$0 < $$1 * $$1;
    }
 
-   esl getBuffer(fwb var1);
+   @Override
+   public boolean a(bne $$0, float $$1) {
+      return true;
+   }
 
-   public static class a implements fvt {
-      protected final esc a;
-      protected final Map<fwb, esc> b;
-      protected Optional<fwb> c = Optional.empty();
-      protected final Set<esc> d = Sets.newHashSet();
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
 
-      protected a(esc $$0, Map<fwb, esc> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void d_() {
+      if (this.bo > 0) {
+         this.a(this.bo, this.bp, this.bq, this.br, this.bs, this.bt);
+         this.bo--;
       }
 
-      @Override
-      public esl getBuffer(fwb $$0) {
-         Optional<fwb> $$1 = $$0.N();
-         esc $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
-            if (this.c.isPresent()) {
-               fwb $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.I(), $$0.H());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
+      if (this.bv > 0) {
+         this.a(this.bv, this.bu);
+         this.bv--;
       }
 
-      private esc b(fwb $$0) {
-         return this.b.getOrDefault($$0, this.a);
+      if (this.cr > 0) {
+         this.h(new eov((this.g.c - this.dm().c) / (double)this.cr, (this.g.d - this.dm().d) / (double)this.cr, (this.g.e - this.dm().e) / (double)this.cr));
+         this.cr--;
       }
 
-      public void a() {
-         if (this.c.isPresent()) {
-            fwb $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
+      this.ca = this.cb;
+      this.eP();
+      float $$1;
+      if (this.aC() && !this.ev()) {
+         $$1 = (float)Math.min(0.1, this.dm().h());
+      } else {
+         $$1 = 0.0F;
       }
 
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            esl $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
+      this.cb = this.cb + ($$1 - this.cb) * 0.4F;
+      this.dJ().ae().a("push");
+      this.M_();
+      this.dJ().ae().c();
+   }
 
-         for (fwb $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new eov($$0, $$1, $$2);
+      this.cr = this.ai().p() + 1;
+   }
 
-      public void a(fwb $$0) {
-         esc $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.N());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
-      }
+   @Override
+   protected void fO() {
+   }
+
+   @Override
+   public void a(vs $$0) {
+      eyk $$1 = eyk.P();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(aaj $$0) {
+      super.a($$0);
+      this.bp();
    }
 }

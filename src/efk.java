@@ -1,25 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface efk<P extends efi> {
-   Codec<efi> a = kf.ah.q().dispatch("processor_type", efi::a, efk::codec);
-   Codec<efj> b = a.listOf().xmap(efj::new, efj::a);
-   Codec<efj> c = avq.e(b.fieldOf("processors").codec(), b);
-   Codec<ij<efj>> d = aiu.a(kg.aE, c);
-   efk<een> e = a("block_ignore", een.a);
-   efk<eep> f = a("block_rot", eep.a);
-   efk<ees> g = a("gravity", ees.a);
-   efk<eet> h = a("jigsaw_replacement", eet.a);
-   efk<efe> i = a("rule", efe.a);
-   efk<eew> j = a("nop", eew.a);
-   efk<eem> k = a("block_age", eem.a);
-   efk<eel> l = a("blackstone_replace", eel.a);
-   efk<eeu> m = a("lava_submerged_block", eeu.a);
-   efk<efb> n = a("protected_blocks", efb.b);
-   efk<eer> o = a("capped", eer.a);
+public class efk extends egd {
+   public static final Codec<efk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iz.a(ki.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, efk::new)
+   );
+   private final Optional<ip<czf>> b;
+   private final float c;
 
-   Codec<P> codec();
+   public efk(ip<czf> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
 
-   static <P extends efi> efk<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.ah, $$0, () -> $$1);
+   public efk(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private efk(Optional<ip<czf>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public egg.c a(cwh $$0, ib $$1, ib $$2, egg.c $$3, egg.c $$4, egc $$5) {
+      awt $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   }
+
+   @Override
+   protected egf<?> a() {
+      return egf.f;
    }
 }

@@ -1,38 +1,49 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public final class eoh implements eol {
-   private final eof a;
-   private final int b;
-   private final int c;
+public class eoh<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final eoh<MinecraftServer> a = new eoh<MinecraftServer>().a(new eoe.a()).a(new eof.a());
+   private final Map<ajc, eog.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, eog.a<C, ?>> d = Maps.newHashMap();
 
-   eoh(int $$0, int $$1) {
-      this.a = new eof((int)eop.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public eoh<C> a(eog.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   @Override
-   public boolean a(eol.a $$0) {
-      int $$1 = this.a.size() - 1;
+   private <T extends eog<C>> eog.a<C, T> a(Class<?> $$0) {
+      return (eog.a<C, T>)this.d.get($$0);
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
+   public <T extends eog<C>> sy a(T $$0) {
+      eog.a<C, T> $$1 = this.a($$0.getClass());
+      sy $$2 = new sy();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
+
+   @Nullable
+   public eog<C> a(sy $$0) {
+      ajc $$1 = ajc.a($$0.l("Type"));
+      eog.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
          }
       }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
    }
 }

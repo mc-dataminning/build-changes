@@ -1,133 +1,110 @@
-enum ffy {
-   a(
-      new ffy.a(
-         new aiy("advancements/tab_above_left_selected"), new aiy("advancements/tab_above_middle_selected"), new aiy("advancements/tab_above_right_selected")
-      ),
-      new ffy.a(new aiy("advancements/tab_above_left"), new aiy("advancements/tab_above_middle"), new aiy("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new ffy.a(
-         new aiy("advancements/tab_below_left_selected"), new aiy("advancements/tab_below_middle_selected"), new aiy("advancements/tab_below_right_selected")
-      ),
-      new ffy.a(new aiy("advancements/tab_below_left"), new aiy("advancements/tab_below_middle"), new aiy("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new ffy.a(
-         new aiy("advancements/tab_left_top_selected"), new aiy("advancements/tab_left_middle_selected"), new aiy("advancements/tab_left_bottom_selected")
-      ),
-      new ffy.a(new aiy("advancements/tab_left_top"), new aiy("advancements/tab_left_middle"), new aiy("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new ffy.a(
-         new aiy("advancements/tab_right_top_selected"), new aiy("advancements/tab_right_middle_selected"), new aiy("advancements/tab_right_bottom_selected")
-      ),
-      new ffy.a(new aiy("advancements/tab_right_top"), new aiy("advancements/tab_right_middle"), new aiy("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import java.util.function.Supplier;
 
-   private final ffy.a e;
-   private final ffy.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class ffy extends fgh {
+   private static final vs a = vs.c("options.skinCustomisation");
+   private static final vs b = vs.c("options.sounds");
+   private static final vs c = vs.c("options.video");
+   private static final vs k = vs.c("options.controls");
+   private static final vs l = vs.c("options.language");
+   private static final vs m = vs.c("options.chat");
+   private static final vs n = vs.c("options.resourcepack");
+   private static final vs o = vs.c("options.accessibility");
+   private static final vs p = vs.c("options.telemetry");
+   private static final vs q = vs.c("options.credits_and_attribution");
+   private static final int r = 2;
+   private final fgh t;
+   private final eyo u;
+   private far<bmi> v;
+   private fba w;
 
-   private ffy(ffy.a $$0, ffy.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public ffy(fgh $$0, eyo $$1) {
+      super(vs.c("options.title"));
+      this.t = $$0;
+      this.u = $$1;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   protected void aP_() {
+      fdv $$0 = new fdv();
+      $$0.c().f(5).e(4).b();
+      fdv.b $$1 = $$0.d(2);
+      $$1.a(this.u.ae().a(this.f.m, 0, 0, 150));
+      $$1.a(this.o());
+      $$1.a(feb.b(26), 2);
+      $$1.a(this.a(a, () -> new fgk(this, this.u)));
+      $$1.a(this.a(b, () -> new fgl(this, this.u)));
+      $$1.a(this.a(c, () -> new fgo(this, this.u)));
+      $$1.a(this.a(k, () -> new fgz(this, this.u)));
+      $$1.a(this.a(l, () -> new ffq(this, this.u, this.f.af())));
+      $$1.a(this.a(m, () -> new fex(this, this.u)));
+      $$1.a(this.a(n, () -> new fjo(this.f.ab(), this::a, this.f.ae(), vs.c("resourcePack.title"))));
+      $$1.a(this.a(o, () -> new fet(this, this.u)));
+      $$1.a(this.a(p, () -> new fku(this, this.u)));
+      $$1.a(this.a(q, () -> new ffe(this)));
+      $$1.a(fak.a(vr.d, $$0x -> this.d()).a(200).a(), 2, $$1.b().c(6));
+      $$0.a();
+      fdu.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
+      $$0.a(this::c);
    }
 
-   public void a(ezb $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      ffy.a $$5 = $$3 ? this.e : this.f;
-      aiy $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   public void d() {
+      this.f.a(this.t);
+   }
+
+   private void a(arq $$0) {
+      this.u.a($$0);
+      this.f.a(this);
+   }
+
+   private fdy o() {
+      if (this.f.r != null && this.f.T()) {
+         this.v = a(0, 0, "options.difficulty", this.f);
+         if (!this.f.r.k().l()) {
+            this.w = new fba(0, 0, $$0x -> this.f.a(new ffa(this::c, vs.c("difficulty.lock.title"), vs.a("difficulty.lock.question", this.f.r.k().q().b()))));
+            this.v.k(this.v.w() - this.w.w());
+            this.w.b(this.f.r.k().r());
+            this.w.j = !this.w.a();
+            this.v.j = !this.w.a();
+            fdt $$0 = new fdt(150, 0, fdt.b.a);
+            $$0.a(this.v);
+            $$0.a(this.w);
+            return $$0;
+         } else {
+            this.v.j = false;
+            return this.v;
+         }
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(ezb $$0, int $$1, int $$2, int $$3, cpd $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         return fak.a(vs.c("options.online"), $$0x -> this.f.a(ffx.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   public static far<bmi> a(int $$0, int $$1, String $$2, eyk $$3) {
+      return far.a(bmi::b).a(bmi.values()).a($$3.r.aj()).a($$0, $$1, 150, 20, vs.c($$2), ($$1x, $$2x) -> $$3.K().b(new aez($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.f.a(this);
+      if ($$0 && this.f.r != null) {
+         this.f.K().b(new afr(true));
+         this.w.b(true);
+         this.w.j = false;
+         this.v.j = false;
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public void k() {
+      this.u.as();
    }
 
-   static record a(aiy a, aiy b, aiy c) {
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+   }
+
+   private fak a(vs $$0, Supplier<fgh> $$1) {
+      return fak.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

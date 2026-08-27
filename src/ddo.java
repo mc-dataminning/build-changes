@@ -1,57 +1,124 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
 
-public enum ddo implements axc {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class ddo extends czf implements dgf {
+   public static final MapCodec<ddo> b = b(ddo::new);
+   public static final int c = 7;
+   public static final dne d = dmu.aC;
+   public static final dmv e = dmu.v;
+   public static final dmv f = dmu.C;
+   private static final int a = 1;
 
-   public static final Codec<ddo> d = axc.a(ddo::values);
-   private final String e;
-   private final vq f;
-   private final h g;
-
-   private ddo(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = vq.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends ddo> a() {
+      return b;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dfe a(ie $$0) {
-      ie.a $$1 = $$0.o();
-      return (this != b || $$1 != ie.a.c) && (this != c || $$1 != ie.a.a) ? dfe.a : dfe.c;
-   }
-
-   public ie b(ie $$0) {
-      if (this == c && $$0.o() == ie.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ie.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public vq b() {
-      return this.f;
+   public ddo(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected epo b_(dme $$0, cvk $$1, ib $$2) {
+      return epl.a();
+   }
+
+   @Override
+   protected boolean e_(dme $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
+   }
+
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if (this.m($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean m(dme $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
+   }
+
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int g(dme $$0, cvk $$1, ib $$2) {
+      return 1;
+   }
+
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(d) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dme a(dme $$0, cwf $$1, ib $$2) {
+      int $$3 = 7;
+      ib.a $$4 = new ib.a();
+
+      for (ih $$5 : ih.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(d, Integer.valueOf($$3));
+   }
+
+   private static int o(dme $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(dme $$0) {
+      if ($$0.a(aue.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(f) ? ehs.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$1.r($$2.c())) {
+         if ($$3.a(15) == 1) {
+            ib $$4 = $$2.d();
+            dme $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, ih.b)) {
+               awp.a($$1, $$2, $$3, kb.m);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(d, e, f);
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      ehr $$1 = $$0.q().b_($$0.a());
+      dme $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ehs.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

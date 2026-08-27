@@ -9,24 +9,24 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class er implements ArgumentType<jx> {
+public class er implements ArgumentType<jz> {
    private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("particle.notFound", $$0));
-   private final il<jy<?>> c;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("particle.notFound", $$0));
+   private final in.a c;
 
    public er(dq $$0) {
-      this.c = $$0.a(kg.S);
+      this.c = $$0;
    }
 
    public static er a(dq $$0) {
       return new er($$0);
    }
 
-   public static jx a(CommandContext<du> $$0, String $$1) {
-      return (jx)$$0.getArgument($$1, jx.class);
+   public static jz a(CommandContext<du> $$0, String $$1) {
+      return (jz)$$0.getArgument($$1, jz.class);
    }
 
-   public jx a(StringReader $$0) throws CommandSyntaxException {
+   public jz a(StringReader $$0) throws CommandSyntaxException {
       return a($$0, this.c);
    }
 
@@ -34,22 +34,23 @@ public class er implements ArgumentType<jx> {
       return b;
    }
 
-   public static jx a(StringReader $$0, il<jy<?>> $$1) throws CommandSyntaxException {
-      jy<?> $$2 = b($$0, $$1);
-      return a($$0, (jy<jx>)$$2);
+   public static jz a(StringReader $$0, in.a $$1) throws CommandSyntaxException {
+      ka<?> $$2 = a($$0, $$1.b(ki.S));
+      return a($$0, (ka<jz>)$$2, $$1);
    }
 
-   private static jy<?> b(StringReader $$0, il<jy<?>> $$1) throws CommandSyntaxException {
-      aiy $$2 = aiy.a($$0);
-      aix<jy<?>> $$3 = aix.a(kg.S, $$2);
+   private static ka<?> a(StringReader $$0, in<ka<?>> $$1) throws CommandSyntaxException {
+      ajc $$2 = ajc.a($$0);
+      ajb<ka<?>> $$3 = ajb.a(ki.S, $$2);
       return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
-   private static <T extends jx> T a(StringReader $$0, jy<T> $$1) throws CommandSyntaxException {
-      return $$1.d().b($$1, $$0);
+   private static <T extends jz> T a(StringReader $$0, ka<T> $$1, in.a $$2) throws CommandSyntaxException {
+      return $$1.c().b($$1, $$0, $$2);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dz.a(this.c.c().map(aix::a), $$1);
+      in.b<ka<?>> $$2 = this.c.b(ki.S);
+      return dz.a($$2.c().map(ajb::a), $$1);
    }
 }

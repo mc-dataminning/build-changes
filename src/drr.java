@@ -1,26 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record drr(drt b, drq c) {
-   public static final Codec<drr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(drt.a.forGetter(drr::a), drq.a.forGetter(drr::b)).apply($$0, $$0.stable(drr::new))
-   );
+public class drr implements drf {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final drs i = new drs(this);
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, drt $$1, drq $$2) {
-      return a.encodeStart($$0, new drr($$1, $$2));
+   public drr(long $$0) {
+      this.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, drt $$1, iw $$2) {
-      return a($$0, $$1, new drq($$2.d(kg.aN)));
+   @Override
+   public awt d() {
+      return new drr(this.g());
    }
 
-   public drt a() {
-      return this.b;
+   @Override
+   public dsd e() {
+      return new drr.a(this.g());
    }
 
-   public drq b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw axj.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw axj.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements dsd {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public awt a(int $$0, int $$1, int $$2) {
+         long $$3 = awm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new drr($$4);
+      }
+
+      @Override
+      public awt a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new drr((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

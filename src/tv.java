@@ -1,92 +1,52 @@
-import java.io.DataInput;
+import java.io.DataOutput;
 import java.io.IOException;
 
-public interface tv<T extends tt> {
-   T c(DataInput var1, tf var2) throws IOException;
+public interface tv {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   tq.b a(DataInput var1, tq var2, tf var3) throws IOException;
+   void a(DataOutput var1) throws IOException;
 
-   default void b(DataInput $$0, tq $$1, tf $$2) throws IOException {
-      switch ($$1.b(this)) {
-         case a:
-            this.a($$0, $$1, $$2);
-         case c:
-         default:
-            break;
-         case b:
-            this.b($$0, $$2);
-      }
+   @Override
+   String toString();
+
+   byte b();
+
+   tx<?> c();
+
+   tv d();
+
+   int a();
+
+   default String t_() {
+      return new tu().a(this);
    }
 
-   void a(DataInput var1, int var2, tf var3) throws IOException;
+   void a(tz var1);
 
-   void b(DataInput var1, tf var2) throws IOException;
+   ts.b a(ts var1);
 
-   default boolean d() {
-      return false;
-   }
-
-   String a();
-
-   String b();
-
-   static tv<sy> a(final int $$0) {
-      return new tv<sy>() {
-         private IOException c() {
-            return new IOException("Invalid tag id: " + $$0);
-         }
-
-         public sy a(DataInput $$0x, tf $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public tq.b a(DataInput $$0x, tq $$1, tf $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void a(DataInput $$0x, int $$1, tf $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void b(DataInput $$0x, tf $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public String a() {
-            return "INVALID[" + $$0 + "]";
-         }
-
-         @Override
-         public String b() {
-            return "UNKNOWN_" + $$0;
-         }
-      };
-   }
-
-   public interface a<T extends tt> extends tv<T> {
-      @Override
-      default void b(DataInput $$0, tf $$1) throws IOException {
-         $$0.skipBytes(this.c());
-      }
-
-      @Override
-      default void a(DataInput $$0, int $$1, tf $$2) throws IOException {
-         $$0.skipBytes(this.c() * $$1);
-      }
-
-      int c();
-   }
-
-   public interface b<T extends tt> extends tv<T> {
-      @Override
-      default void a(DataInput $$0, int $$1, tf $$2) throws IOException {
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            this.b($$0, $$2);
-         }
+   default void b(ts $$0) {
+      ts.b $$1 = $$0.b(this.c());
+      if ($$1 == ts.b.a) {
+         this.a($$0);
       }
    }
 }

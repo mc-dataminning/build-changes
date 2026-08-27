@@ -1,35 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class byw extends byk<cgp> {
-   @Override
-   public Set<bxl<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bxl.B)));
-   }
+public class byw<T extends box> extends bzg<T> {
+   private final BiPredicate<T, box> a;
+   private final Predicate<T> c;
+   private final bya<Boolean> d;
+   private final int e;
 
-   protected void a(aow $$0, cgp $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bnw.bw)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bnw.bw))
-         .ifPresentOrElse($$1x -> $$1.dO().a(bxl.B, $$1x), () -> $$1.dO().b(bxl.B));
-   }
-
-   private static Optional<boi> a(cgp $$0, Predicate<boi> $$1) {
-      return $$0.dO().c(bxl.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   public byw(int $$0, BiPredicate<T, box> $$1, Predicate<T> $$2, bya<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   protected int b() {
-      return 24;
+   protected void a(apa $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
    @Override
-   protected int c() {
-      return 24;
+   public Set<bya<?>> a() {
+      return Set.of(bya.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<box>> $$1 = $$0.dM().c(bya.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dM().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dM().b(this.d);
    }
 }

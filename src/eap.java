@@ -1,57 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public record eap(ij<dtm<?, ?>> e, List<eas> f) {
+public class eap extends ean {
    public static final Codec<eap> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dtm.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eas.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, eap::new)
+      $$0 -> $$0.group(
+               dsk.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dsk.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eap::new)
    );
-   public static final Codec<ij<eap>> b = aiu.a(kg.aC, a);
-   public static final Codec<in<eap>> c = ix.a(kg.aC, a);
-   public static final Codec<List<in<eap>>> d = ix.a(kg.aC, a, true).listOf();
+   private static final Logger b = LogUtils.getLogger();
+   private final dsk d;
+   private final dsk e;
+   private final int f;
 
-   public boolean a(cwm $$0, dng $$1, awp $$2, hz $$3) {
-      return this.a(new eaq($$0, $$1, Optional.empty()), $$2, $$3);
+   private eap(dsk $$0, dsk $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean b(cwm $$0, dng $$1, awp $$2, hz $$3) {
-      return this.a(new eaq($$0, $$1, Optional.of(this)), $$2, $$3);
+   public static eap a(dsk $$0, dsk $$1, int $$2) {
+      return new eap($$0, $$1, $$2);
    }
 
-   private boolean a(eaq $$0, awp $$1, hz $$2) {
-      Stream<hz> $$3 = Stream.of($$2);
+   public static eap a(dsk $$0, dsk $$1) {
+      return a($$0, $$1, 0);
+   }
 
-      for (eas $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      dtm<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
+   @Override
+   public int a(awt $$0, dsn $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return awm.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + awm.b($$0, 0, $$6) + awm.b($$0, 0, $$5);
          }
-      });
-      return $$6.isTrue();
+      }
    }
 
-   public Stream<dtm<?, ?>> a() {
-      return this.e.a().a();
+   @Override
+   public eao<?> a() {
+      return eao.e;
    }
 
    @Override
    public String toString() {
-      return "Placed " + this.e;
-   }
-
-   public ij<dtm<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<eas> c() {
-      return this.f;
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

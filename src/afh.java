@@ -1,29 +1,23 @@
-public class afh implements xx<aes> {
-   public static final xo<uq, afh> a = xx.a(afh::a, afh::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public afh(int $$0) {
-      this.b = $$0;
-   }
+public class afh implements xz<aev> {
+   public static final afh a = new afh();
+   public static final xq<ByteBuf, afh> b = xq.a(a);
 
-   private afh(uq $$0) {
-      this.b = $$0.readByte();
-   }
-
-   private void a(uq $$0) {
-      $$0.k(this.b);
+   private afh() {
    }
 
    @Override
-   public xz<afh> a() {
-      return aeq.bq;
+   public yb<afh> a() {
+      return aet.bo;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

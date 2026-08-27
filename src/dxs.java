@@ -1,49 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dxs extends dxp {
+public class dxs implements dwy {
    public static final Codec<dxs> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(blb.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dxs::new)
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dwe.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ib.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, dxs::new)
    );
-   private final blb b;
+   private final boolean b;
+   private final List<dwe.a> c;
+   @Nullable
+   private final ib d;
 
-   public dxs(blb $$0, blb $$1, blb $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dxs(boolean $$0, List<dwe.a> $$1, @Nullable ib $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected dxq<?> a() {
-      return dxq.h;
+   private dxs(boolean $$0, List<dwe.a> $$1, Optional<ib> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(cvx $$0, dxp.b $$1, awp $$2, dwz $$3, int $$4, dxp.a $$5, int $$6, int $$7, int $$8) {
-      hz $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + awi.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new hz($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(awp $$0, int $$1, dwz $$2) {
-      return this.b.a($$0);
+   public List<dwe.a> b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean a(awp $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   @Nullable
+   public ib c() {
+      return this.d;
    }
 }

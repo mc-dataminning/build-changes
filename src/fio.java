@@ -1,59 +1,33 @@
-import javax.annotation.Nullable;
+public class fio extends fak {
+   private static final ajc a = new ajc("widget/page_forward_highlighted");
+   private static final ajc b = new ajc("widget/page_forward");
+   private static final ajc c = new ajc("widget/page_backward_highlighted");
+   private static final ajc d = new ajc("widget/page_backward");
+   private final boolean t;
+   private final boolean u;
 
-public abstract class fio extends ffl {
-   private final vq b;
-   @Nullable
-   private final vq c;
-   private final vq k;
-   @Nullable
-   protected ezq a;
-   private fah l = fah.a;
-
-   protected fio(vq $$0, vq $$1, vq $$2) {
-      this($$0, $$1, null, $$2);
+   public fio(int $$0, int $$1, boolean $$2, fak.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, vr.a, $$3, p);
+      this.t = $$2;
+      this.u = $$4;
    }
-
-   protected fio(vq $$0, vq $$1, @Nullable vq $$2, vq $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
-   }
-
-   protected abstract void a(int var1);
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = fah.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.o();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = ezq.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.c(this.a);
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      ajc $$4;
+      if (this.t) {
+         $$4 = this.z() ? a : b;
+      } else {
+         $$4 = this.z() ? c : d;
       }
 
-      this.a($$0);
+      $$0.a($$4, this.B(), this.C(), 23, 13);
    }
 
    @Override
-   public vq i() {
-      return this.k;
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.o(), 16777215);
-   }
-
-   protected void c(ezb $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
-   }
-
-   protected int o() {
-      return 9 * 2;
+   public void a(gmq $$0) {
+      if (this.u) {
+         $$0.a(glh.a(atp.cr, 1.0F));
+      }
    }
 }

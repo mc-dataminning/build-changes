@@ -1,26 +1,44 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public interface fqo {
-   fqo a = new fqo() {
-      @Override
-      public CompletableFuture<Optional<chn>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
+public class fqo {
+   private final List<fqi> a;
+   private final fqh b;
+   private final Map<String, fqo> c = Maps.newHashMap();
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static fqo a(UserApiService $$0, eyd $$1, Path $$2) {
-      return (fqo)($$1.g() == eyd.a.c ? new fpx($$0, $$1.b(), $$2) : a);
+   fqo(List<fqi> $$0, fqh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<chn>> a();
+   public fqo a(String $$0, fqk $$1, fqh $$2) {
+      fqo $$3 = new fqo($$1.b(), $$2);
+      fqo $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
+      }
 
-   boolean b();
+      return $$3;
+   }
+
+   public fqf a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fqf> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fqo)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fqf.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fqf $$4 = new fqf($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
+   }
+
+   public fqo a(String $$0) {
+      return this.c.get($$0);
+   }
 }

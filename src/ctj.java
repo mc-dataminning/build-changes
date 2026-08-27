@@ -1,54 +1,95 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ctj extends ctm {
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Optional<aup<bnw<?>>> e;
+public class ctj implements cti {
+   final csp a;
+   final csp b;
+   final csp c;
+   final cpq d;
 
-   public ctj(ctm.a $$0, int $$1, int $$2, int $$3, Optional<aup<bnw<?>>> $$4, bnx... $$5) {
-      super($$0, aui.bg, $$5);
+   public ctj(csp $$0, csp $$1, csp $$2, cpq $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
-      this.e = $$4;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.b + ($$0 - 1) * this.c;
+   public boolean a(bme $$0, cwe $$1) {
+      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + this.d;
+   public cpq a(bme $$0, iy $$1) {
+      return $$0.a(1).a(this.d.d(), this.d.M());
    }
 
    @Override
-   public int a() {
-      return 5;
+   public cpq a(iy $$0) {
+      return this.d;
    }
 
    @Override
-   public float a(int $$0, @Nullable bnw<?> $$1) {
-      if (this.e.isEmpty()) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else {
-         return $$1 != null && $$1.a(this.e.get()) ? (float)$$0 * 2.5F : 0.0F;
+   public boolean a(cpq $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public boolean b(cpq $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public boolean c(cpq $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public csw<?> as_() {
+      return csw.u;
+   }
+
+   @Override
+   public boolean i() {
+      return Stream.of(this.a, this.b, this.c).anyMatch(csp::c);
+   }
+
+   public static class a implements csw<ctj> {
+      private static final Codec<ctj> y = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  csp.c.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  csp.c.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  csp.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
+                  cpq.c.fieldOf("result").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, ctj::new)
+      );
+      public static final xq<vd, ctj> x = xq.a(ctj.a::a, ctj.a::a);
+
+      @Override
+      public Codec<ctj> a() {
+         return y;
       }
-   }
 
-   @Override
-   public boolean a(ctm $$0) {
-      return !($$0 instanceof ctj);
-   }
+      @Override
+      public xq<vd, ctj> b() {
+         return x;
+      }
 
-   @Override
-   public void a(boi $$0, bnq $$1, int $$2) {
-      if (this.e.isPresent() && $$1 instanceof boi $$3 && this.e.get() == aud.v && $$2 > 0 && $$3.ai().a(this.e.get())) {
-         int $$4 = 20 + $$0.eh().a(10 * $$2);
-         $$3.b(new bnd(bnf.b, $$4, 3));
+      private static ctj a(vd $$0) {
+         csp $$1 = csp.b.decode($$0);
+         csp $$2 = csp.b.decode($$0);
+         csp $$3 = csp.b.decode($$0);
+         cpq $$4 = cpq.f.decode($$0);
+         return new ctj($$1, $$2, $$3, $$4);
+      }
+
+      private static void a(vd $$0, ctj $$1) {
+         csp.b.encode($$0, $$1.a);
+         csp.b.encode($$0, $$1.b);
+         csp.b.encode($$0, $$1.c);
+         cpq.f.encode($$0, $$1.d);
       }
    }
 }

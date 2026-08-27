@@ -1,60 +1,64 @@
-import javax.annotation.Nullable;
+public class aga implements xz<aev> {
+   public static final xq<us, aga> a = xz.a(aga::a, aga::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private final float d;
+   private final float e;
+   private final boolean f;
+   private final boolean g;
 
-public class aga implements xx<aes> {
-   public static final xo<uq, aga> a = xx.a(aga::a, aga::new);
-   private final aga.a b;
-   @Nullable
-   private final aiy c;
-
-   public aga(aga.a $$0, @Nullable aiy $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aga(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static aga a(af $$0) {
-      return new aga(aga.a.a, $$0.a());
+   private aga(us $$0) {
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) > 0;
+      this.g = ($$1 & 2) > 0;
    }
 
-   public static aga b() {
-      return new aga(aga.a.b, null);
-   }
-
-   private aga(uq $$0) {
-      this.b = $$0.b(aga.a.class);
-      if (this.b == aga.a.a) {
-         this.c = $$0.s();
-      } else {
-         this.c = null;
+   private void a(us $$0) {
+      $$0.a(this.d);
+      $$0.a(this.e);
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
       }
-   }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      if (this.b == aga.a.a) {
-         $$0.a(this.c);
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
       }
+
+      $$0.k($$1);
    }
 
    @Override
-   public xz<aga> a() {
-      return aeq.bM;
+   public yb<aga> a() {
+      return aet.bK;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public aga.a e() {
-      return this.b;
+   public float b() {
+      return this.d;
    }
 
-   @Nullable
-   public aiy f() {
-      return this.c;
+   public float e() {
+      return this.e;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
    }
 }

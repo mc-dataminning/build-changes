@@ -1,188 +1,229 @@
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class ekg extends eko {
-   public static final Codec<ekg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(emq.a.fieldOf("source").forGetter($$0x -> $$0x.b), ekg.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+public class ekg {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ekg a = new ekg(emi.b, Optional.empty(), List.of(), List.of());
+   public static final emh b = emi.p;
+   public static final Codec<ekg> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               emi.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
+               avu.a(ajc.a, "random_sequence").forGetter($$0x -> $$0x.f),
+               avu.a(ekf.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
+               avu.a(eln.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
+            )
             .apply($$0, ekg::new)
    );
-   private final emp b;
-   private final List<ekg.b> c;
+   private final emh e;
+   private final Optional<ajc> f;
+   private final List<ekf> g;
+   private final List<ell> h;
+   private final BiFunction<cpq, ejy, cpq> i;
 
-   ekg(List<emb> $$0, emp $$1, List<ekg.b> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   ekg(emh $$0, Optional<ajc> $$1, List<ekf> $$2, List<ell> $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = eln.a($$3);
    }
 
-   @Override
-   public ekq b() {
-      return ekr.w;
+   public static Consumer<cpq> a(apa $$0, Consumer<cpq> $$1) {
+      return $$2 -> {
+         if ($$2.a($$0.I())) {
+            if ($$2.M() < $$2.g()) {
+               $$1.accept($$2);
+            } else {
+               int $$3 = $$2.M();
+
+               while ($$3 > 0) {
+                  cpq $$4 = $$2.c(Math.min($$2.g(), $$3));
+                  $$3 -= $$4.M();
+                  $$1.accept($$4);
+               }
+            }
+         }
+      };
    }
 
-   @Override
-   public Set<elk<?>> a() {
-      return this.b.b();
+   public void a(eke $$0, Consumer<cpq> $$1) {
+      this.a(new ejy.a($$0).a(this.f), $$1);
    }
 
-   @Override
-   public cpd a(cpd $$0, ejc $$1) {
-      tt $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         this.c.forEach($$2x -> $$2x.a($$0::x, $$2));
+   public void a(ejy $$0, Consumer<cpq> $$1) {
+      ejy.c<?> $$2 = ejy.a(this);
+      if ($$0.b($$2)) {
+         Consumer<cpq> $$3 = ell.a(this.i, $$1, $$0);
+
+         for (ekf $$4 : this.g) {
+            $$4.a($$3, $$0);
+         }
+
+         $$0.c($$2);
+      } else {
+         d.warn("Detected infinite loop in loot tables");
+      }
+   }
+
+   public void a(eke $$0, long $$1, Consumer<cpq> $$2) {
+      this.a(new ejy.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
+   }
+
+   public void b(eke $$0, Consumer<cpq> $$1) {
+      this.a($$0, a($$0.a(), $$1));
+   }
+
+   public void b(ejy $$0, Consumer<cpq> $$1) {
+      this.a($$0, a($$0.d(), $$1));
+   }
+
+   public ObjectArrayList<cpq> a(eke $$0, long $$1) {
+      return this.a(new ejy.a($$0).a($$1).a(this.f));
+   }
+
+   public ObjectArrayList<cpq> a(eke $$0) {
+      return this.a(new ejy.a($$0).a(this.f));
+   }
+
+   private ObjectArrayList<cpq> a(ejy $$0) {
+      ObjectArrayList<cpq> $$1 = new ObjectArrayList();
+      this.b($$0, $$1::add);
+      return $$1;
+   }
+
+   public emh a() {
+      return this.e;
+   }
+
+   public void a(ekh $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".pools[" + $$1 + "]"));
       }
 
-      return $$0;
-   }
-
-   public static ekg.a a(emp $$0) {
-      return new ekg.a($$0);
-   }
-
-   public static ekg.a a(ejc.b $$0) {
-      return new ekg.a(emn.a($$0));
-   }
-
-   public static class a extends eko.a<ekg.a> {
-      private final emp a;
-      private final List<ekg.b> b = Lists.newArrayList();
-
-      a(emp $$0) {
-         this.a = $$0;
+      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
+         this.h.get($$2).a($$0.a(".functions[" + $$2 + "]"));
       }
+   }
 
-      public ekg.a a(String $$0, String $$1, ekg.c $$2) {
-         try {
-            this.b.add(new ekg.b(ekg.d.a($$0), ekg.d.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
+   public void a(bme $$0, eke $$1, long $$2) {
+      ejy $$3 = new ejy.a($$1).a($$2).a(this.f);
+      ObjectArrayList<cpq> $$4 = this.a($$3);
+      awt $$5 = $$3.b();
+      List<Integer> $$6 = this.a($$0, $$5);
+      this.a($$4, $$6.size(), $$5);
+      ObjectListIterator var9 = $$4.iterator();
+
+      while (var9.hasNext()) {
+         cpq $$7 = (cpq)var9.next();
+         if ($$6.isEmpty()) {
+            d.warn("Tried to over-fill a container");
+            return;
+         }
+
+         if ($$7.b()) {
+            $$0.a($$6.remove($$6.size() - 1), cpq.h);
+         } else {
+            $$0.a($$6.remove($$6.size() - 1), $$7);
+         }
+      }
+   }
+
+   private void a(ObjectArrayList<cpq> $$0, int $$1, awt $$2) {
+      List<cpq> $$3 = Lists.newArrayList();
+      Iterator<cpq> $$4 = $$0.iterator();
+
+      while ($$4.hasNext()) {
+         cpq $$5 = $$4.next();
+         if ($$5.b()) {
+            $$4.remove();
+         } else if ($$5.M() > 1) {
+            $$3.add($$5);
+            $$4.remove();
          }
       }
 
-      public ekg.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, ekg.c.a);
+      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
+         cpq $$6 = $$3.remove(awm.a($$2, 0, $$3.size() - 1));
+         int $$7 = awm.a($$2, 1, $$6.M() / 2);
+         cpq $$8 = $$6.a($$7);
+         if ($$6.M() > 1 && $$2.h()) {
+            $$3.add($$6);
+         } else {
+            $$0.add($$6);
+         }
+
+         if ($$8.M() > 1 && $$2.h()) {
+            $$3.add($$8);
+         } else {
+            $$0.add($$8);
+         }
       }
 
-      protected ekg.a a() {
+      $$0.addAll($$3);
+      ac.c($$0, $$2);
+   }
+
+   private List<Integer> a(bme $$0, awt $$1) {
+      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         if ($$0.a($$3).b()) {
+            $$2.add($$3);
+         }
+      }
+
+      ac.c($$2, $$1);
+      return $$2;
+   }
+
+   public static ekg.a b() {
+      return new ekg.a();
+   }
+
+   public static class a implements eli<ekg.a> {
+      private final Builder<ekf> a = ImmutableList.builder();
+      private final Builder<ell> b = ImmutableList.builder();
+      private emh c = ekg.b;
+      private Optional<ajc> d = Optional.empty();
+
+      public ekg.a a(ekf.a $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
-      @Override
-      public ekp b() {
-         return new ekg(this.g(), this.a, this.b);
-      }
-   }
-
-   static record b(ekg.d b, ekg.d c, ekg.c d) {
-      public static final Codec<ekg.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ekg.d.a.fieldOf("source").forGetter(ekg.b::a), ekg.d.a.fieldOf("target").forGetter(ekg.b::b), ekg.c.d.fieldOf("op").forGetter(ekg.b::c)
-               )
-               .apply($$0, ekg.b::new)
-      );
-
-      public void a(Supplier<tt> $$0, tt $$1) {
-         try {
-            List<tt> $$2 = this.b.b().a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c.b(), $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
+      public ekg.a a(emh $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public ekg.d a() {
-         return this.b;
+      public ekg.a a(ajc $$0) {
+         this.d = Optional.of($$0);
+         return this;
       }
 
-      public ekg.d b() {
-         return this.c;
+      public ekg.a a(ell.a $$0) {
+         this.b.add($$0.b());
+         return this;
       }
 
-      public ekg.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements axc {
-      a("replace") {
-         @Override
-         public void a(tt $$0, em.g $$1, List<tt> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (tt)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(tt $$0, em.g $$1, List<tt> $$2) throws CommandSyntaxException {
-            List<tt> $$3 = $$1.a($$0, tc::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tc) {
-                  $$2.forEach($$1xx -> ((tc)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(tt $$0, em.g $$1, List<tt> $$2) throws CommandSyntaxException {
-            List<tt> $$3 = $$1.a($$0, sw::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof sw) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof sw) {
-                        ((sw)$$1x).a((sw)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<ekg.c> d = axc.a(ekg.c::values);
-      private final String e;
-
-      public abstract void a(tt var1, em.g var2, List<tt> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
+      public ekg.a a() {
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   static record d(String b, em.g c) {
-      public static final Codec<ekg.d> a = Codec.STRING.comapFlatMap($$0 -> {
-         try {
-            return DataResult.success(a($$0));
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
-         }
-      }, ekg.d::a);
-
-      public static ekg.d a(String $$0) throws CommandSyntaxException {
-         em.g $$1 = new em().a(new StringReader($$0));
-         return new ekg.d($$0, $$1);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public em.g b() {
-         return this.c;
+      public ekg b() {
+         return new ekg(this.c, this.d, this.a.build(), this.b.build());
       }
    }
 }

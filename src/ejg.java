@@ -1,25 +1,30 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ejg {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-@FunctionalInterface
-public interface ejg {
-   @Nullable
-   <T> T getElement(eje<T> var1);
-
-   @Nullable
-   default <T> T getElement(ejh<T> $$0, aiy $$1) {
-      return this.getElement(new eje<>($$0, $$1));
+   public ejg(int $$0) {
+      this($$0, a);
    }
 
-   default <T> Optional<T> getElementOptional(eje<T> $$0) {
-      return Optional.ofNullable(this.getElement($$0));
+   public ejg(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default <T> Optional<T> getElementOptional(ejh<T> $$0, aiy $$1) {
-      return this.getElementOptional(new eje<>($$0, $$1));
+   public boolean a() {
+      return !this.c.equals(a);
    }
 
-   default ejk getLootTable(aiy $$0) {
-      return this.getElementOptional(ejh.c, $$0).orElse(ejk.a);
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(ejg $$0) {
+      return this.b().equals($$0.b());
    }
 }

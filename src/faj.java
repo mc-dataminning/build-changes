@@ -1,356 +1,165 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.UUID;
 
 public class faj {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final eyz c;
-   private final List<faj.a> d = Lists.newArrayList();
-   private String e;
-   private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final ajc[] c = new ajc[]{
+      new ajc("boss_bar/pink_background"),
+      new ajc("boss_bar/blue_background"),
+      new ajc("boss_bar/red_background"),
+      new ajc("boss_bar/green_background"),
+      new ajc("boss_bar/yellow_background"),
+      new ajc("boss_bar/purple_background"),
+      new ajc("boss_bar/white_background")
    };
-   private Runnable l = () -> {
+   private static final ajc[] d = new ajc[]{
+      new ajc("boss_bar/pink_progress"),
+      new ajc("boss_bar/blue_progress"),
+      new ajc("boss_bar/red_progress"),
+      new ajc("boss_bar/green_progress"),
+      new ajc("boss_bar/yellow_progress"),
+      new ajc("boss_bar/purple_progress"),
+      new ajc("boss_bar/white_progress")
    };
+   private static final ajc[] e = new ajc[]{
+      new ajc("boss_bar/notched_6_background"),
+      new ajc("boss_bar/notched_10_background"),
+      new ajc("boss_bar/notched_12_background"),
+      new ajc("boss_bar/notched_20_background")
+   };
+   private static final ajc[] f = new ajc[]{
+      new ajc("boss_bar/notched_6_progress"),
+      new ajc("boss_bar/notched_10_progress"),
+      new ajc("boss_bar/notched_12_progress"),
+      new ajc("boss_bar/notched_20_progress")
+   };
+   private final eyk g;
+   final Map<UUID, fay> h = Maps.newLinkedHashMap();
 
-   public faj(eyz $$0, int $$1) {
-      this.c = $$0;
-      this.j = $$1;
-      this.a("");
+   public faj(eyk $$0) {
+      this.g = $$0;
    }
 
-   public int a() {
-      return this.i;
-   }
+   public void a(ezx $$0) {
+      if (!this.h.isEmpty()) {
+         this.g.aH().a("bossHealth");
+         int $$1 = $$0.a();
+         int $$2 = 12;
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
-      } else {
-         this.i = $$0;
+         for (fay $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            vs $$6 = $$3.j();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
+         }
+
+         this.g.aH().c();
       }
+   }
+
+   private void a(ezx $$0, int $$1, int $$2, bmb $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = awm.b($$3.k(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
+   }
+
+   private void a(ezx $$0, int $$1, int $$2, bmb $$3, int $$4, ajc[] $$5, ajc[] $$6) {
+      $$0.a($$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.m() != bmb.b.a) {
+         RenderSystem.enableBlend();
+         $$0.a($$6[$$3.m().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+         RenderSystem.disableBlend();
+      }
+   }
+
+   public void a(aas $$0) {
+      $$0.a(new aas.b() {
+         @Override
+         public void a(UUID $$0, vs $$1, float $$2, bmb.a $$3, bmb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            faj.this.h.put($$0, new fay($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            faj.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            faj.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, vs $$1) {
+            faj.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bmb.a $$1, bmb.b $$2) {
+            fay $$3 = faj.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fay $$4 = faj.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
    }
 
    public boolean b() {
-      return this.i != Integer.MAX_VALUE;
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
-   }
-
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(aa.a($$0, true));
-         faj.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = awi.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public faj.a e() {
-      return new faj.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         faj.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
+      if (!this.h.isEmpty()) {
+         for (bmb $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
          }
       }
 
-      return -1;
+      return false;
    }
 
-   public faj.a c(int $$0) {
-      return this.d.get(awi.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(fba $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = awi.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
-      }
-   }
-
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         faj.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(fba.a, $$2.a + $$3);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = awi.a($$0);
-      int $$3 = awi.a($$1 / 9.0);
-      faj.a $$4 = this.d.get(awi.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(fba.a, $$4.a + $$5);
-   }
-
-   public boolean e(int $$0) {
-      this.h = ffl.v();
-      if (ffl.f($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (ffl.e($$0)) {
-         exo.P().o.a(this.j());
-         return true;
-      } else if (ffl.d($$0)) {
-         this.b(exo.P().o.a());
-         return true;
-      } else if (ffl.c($$0)) {
-         exo.P().o.a(this.j());
-         this.b("");
-         return true;
-      } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bmb $$0 : this.h.values()) {
+            if ($$0.n()) {
                return true;
-            case 259:
-               if (ffl.t()) {
-                  faj.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
-
-               return true;
-            case 261:
-               if (ffl.t()) {
-                  faj.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
-
-               return true;
-            case 262:
-               if (ffl.t()) {
-                  faj.a $$2 = this.l();
-                  this.a(fba.a, $$2.a);
-               } else {
-                  this.a(fba.b, 1);
-               }
-
-               return true;
-            case 263:
-               if (ffl.t()) {
-                  faj.a $$1 = this.k();
-                  this.a(fba.a, $$1.a);
-               } else {
-                  this.a(fba.b, -1);
-               }
-
-               return true;
-            case 264:
-               if (!ffl.t()) {
-                  this.d(1);
-               }
-
-               return true;
-            case 265:
-               if (!ffl.t()) {
-                  this.d(-1);
-               }
-
-               return true;
-            case 266:
-               this.a(fba.a, 0);
-               return true;
-            case 267:
-               this.a(fba.c, 0);
-               return true;
-            case 268:
-               if (ffl.t()) {
-                  this.a(fba.a, 0);
-               } else {
-                  this.a(fba.a, this.m().a);
-               }
-
-               return true;
-            case 269:
-               if (ffl.t()) {
-                  this.a(fba.c, 0);
-               } else {
-                  this.a(fba.a, this.m().b);
-               }
-
-               return true;
-            default:
-               return false;
+            }
          }
       }
+
+      return false;
    }
 
-   public Iterable<faj.a> h() {
-      return this.d;
-   }
-
-   public boolean i() {
-      return this.g != this.f;
-   }
-
-   @VisibleForTesting
-   public String j() {
-      faj.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
-   }
-
-   private faj.a m() {
-      return this.f(0);
-   }
-
-   private faj.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(awi.a($$1 + $$0, 0, this.d.size() - 1));
-      }
-   }
-
-   @VisibleForTesting
-   public faj.a k() {
-      if (this.e.isEmpty()) {
-         return faj.a.c;
-      } else {
-         int $$0 = awi.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new faj.a($$0, this.g($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public faj.a l() {
-      if (this.e.isEmpty()) {
-         return faj.a.c;
-      } else {
-         int $$0 = awi.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new faj.a($$0, this.g($$0));
-      }
-   }
-
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
-   }
-
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(faj.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, wn.a, false, ($$0, $$1, $$2) -> this.d.add(new faj.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new faj.a(this.e.length(), this.e.length()));
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bmb $$0 : this.h.values()) {
+            if ($$0.p()) {
+               return true;
+            }
          }
       }
-   }
 
-   private String c(String $$0) {
-      return this.b() ? axd.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return axd.a($$0, $$1, false);
-      } else {
-         return $$0;
-      }
-   }
-
-   protected static record a(int a, int b) {
-      static final faj.a c = new faj.a(0, 0);
+      return false;
    }
 }

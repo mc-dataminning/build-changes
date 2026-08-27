@@ -1,51 +1,54 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
 
 public class anh {
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).h())))))
-            .then(
-               dv.a("set")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     dv.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
+                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
+                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
+                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
+                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
+                        .then(dv.a("time", fh.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dv.a("add").then(dv.a("time", fh.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
+                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).e())))))
+                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().X() % 2147483647L)))))
+                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().Y() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(du $$0, Collection<? extends chl> $$1, int $$2) {
-      for (chl $$3 : $$1) {
-         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vq.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vq.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(apa $$0) {
+      return (int)($$0.Y() % 24000L);
    }
 
-   private static int a(du $$0, Collection<? extends chl> $$1) {
-      for (chl $$2 : $$1) {
-         $$2.aa().ifPresent(cgr::b);
+   private static int c(du $$0, int $$1) {
+      $$0.a(() -> vs.a("commands.time.query", $$1), false);
+      return $$1;
+   }
+
+   public static int a(du $$0, int $$1) {
+      for (apa $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> vq.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vq.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      $$0.a(() -> vs.a("commands.time.set", $$1), true);
+      return a($$0.e());
+   }
+
+   public static int b(du $$0, int $$1) {
+      for (apa $$2 : $$0.l().K()) {
+         $$2.b($$2.Y() + (long)$$1);
       }
 
-      return $$1.size();
+      int $$3 = a($$0.e());
+      $$0.a(() -> vs.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

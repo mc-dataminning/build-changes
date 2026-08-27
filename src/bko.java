@@ -1,50 +1,30 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public interface bko<Msg> extends AutoCloseable {
-   String bv();
+public class bko {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   void a(Msg var1);
+   public Set<bkg> a(Supplier<bja> $$0) {
+      Set<bkg> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bkf)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-   @Override
-   default void close() {
-   }
+      for (bkg $$2 : $$1) {
+         this.a.add($$2.d());
+      }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bko<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
       return $$1;
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super bko<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
-   }
-
-   static <Msg> bko<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bko<Msg>() {
-         @Override
-         public String bv() {
-            return $$0;
-         }
-
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   private static bkg a(Supplier<bja> $$0, String $$1, bkf $$2) {
+      return bkg.a($$1, $$2, () -> {
+         biv.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)axl.b;
+      });
    }
 }

@@ -1,101 +1,179 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBDebugOutput;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
+import org.slf4j.Logger;
 
 public class erv {
-   private static final int a = 32768;
-   private final erv.a b;
-   private final String c;
-   private int d;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private static final Queue<erv.a> c = EvictingQueue.create(10);
+   @Nullable
+   private static volatile erv.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private static boolean g;
 
-   protected erv(erv.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
    }
 
-   public void a(erx $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
       }
    }
 
-   public String b() {
-      return this.c;
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
    }
 
-   public static erv a(erv.a $$0, String $$1, InputStream $$2, String $$3, ero $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      erv $$6 = new erv($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
    }
 
-   protected static int b(erv.a $$0, String $$1, InputStream $$2, String $$3, ero $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      erv.a $$8;
+      synchronized (c) {
+         $$8 = d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
          } else {
-            return $$6;
+            $$8 = new erv.a($$0, $$1, $$2, $$3, $$7);
+            c.add($$8);
+            d = $$8;
+         }
+      }
+
+      a.info("OpenGL debug message: {}", $$8);
+   }
+
+   public static List<String> a() {
+      synchronized (c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
+
+         for (erv.a $$1 : c) {
+            $$0.add($$1 + " x " + $$1.f);
+         }
+
+         return $$0;
+      }
+   }
+
+   public static boolean b() {
+      return g;
+   }
+
+   public static void a(int $$0, boolean $$1) {
+      RenderSystem.assertInInitPhase();
+      if ($$0 > 0) {
+         GLCapabilities $$2 = GL.getCapabilities();
+         if ($$2.GL_KHR_debug) {
+            g = true;
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$3 = 0; $$3 < e.size(); $$3++) {
+               boolean $$4 = $$3 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            }
+
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(erv::a), ert::a), 0L);
+         } else if ($$2.GL_ARB_debug_output) {
+            g = true;
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$5 = 0; $$5 < f.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
+            }
+
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(erv::a), ert::a), 0L);
          }
       }
    }
 
-   protected int c() {
-      return this.d;
-   }
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, erv> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      public String a() {
-         return this.c;
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
       }
 
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, erv> c() {
-         return this.f;
+      @Override
+      public String toString() {
+         return "id=" + this.a + ", source=" + erv.a(this.b) + ", type=" + erv.b(this.c) + ", severity=" + erv.c(this.d) + ", message='" + this.e + "'";
       }
    }
 }

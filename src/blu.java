@@ -1,59 +1,68 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-@Immutable
-public class blu {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final blt d;
+public class blu extends blo {
+   public static final Codec<blu> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, blu::new)
+      )
+      .comapFlatMap(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         },
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
    private final float e;
 
-   public blu(blt $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public static blu a(float $$0, float $$1, float $$2) {
+      return new blu($$0, $$1, $$2);
    }
 
-   public blt a() {
+   private blu(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public float a(awt $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   }
+
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
       return this.d;
    }
 
-   public float b() {
-      return this.e;
+   @Override
+   public blp<?> c() {
+      return blp.d;
    }
 
-   public boolean c() {
-      return this.e >= (float)blt.d.ordinal();
-   }
-
-   public boolean a(float $$0) {
-      return this.e > $$0;
-   }
-
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
-   }
-
-   private float a(blt $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == blt.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == blt.d;
-         float $$5 = 0.75F;
-         float $$6 = awi.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += awi.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += awi.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == blt.b) {
-            $$7 *= 0.5F;
-         }
-
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,5 +1,13 @@
-public interface bph<T> {
-   void a(T var1);
+public interface bph extends bpg {
+   void b(int var1);
 
-   T c();
+   boolean a();
+
+   void c(int var1);
+
+   void b();
+
+   default int ad_() {
+      return 0;
+   }
 }

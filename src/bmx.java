@@ -1,22 +1,9 @@
-class bmx extends bnb {
-   protected bmx(bnc $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public interface bmx extends bme {
+   int[] a(ih var1);
 
-   @Override
-   public boolean a(boi $$0, int $$1) {
-      if ($$0 instanceof aox $$2 && !$$0.P_()) {
-         aow $$3 = $$2.z();
-         if ($$3.aj() != blt.a && $$3.c($$0.dm())) {
-            $$3.z().a($$2);
-         }
-      }
+   boolean a(int var1, cpq var2, @Nullable ih var3);
 
-      return true;
-   }
+   boolean b(int var1, cpq var2, ih var3);
 }

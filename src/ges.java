@@ -1,25 +1,24 @@
-public class ges extends gfl<caf, fmd<caf>> {
-   private final fvp a;
+public class ges extends gde<chn, fpq<chn>> {
+   private static final ajc a = new ajc("textures/entity/villager/villager.png");
 
-   public ges(gcv<caf, fmd<caf>> $$0, fvp $$1) {
-      super($$0);
-      this.a = $$1;
+   public ges(gby.a $$0) {
+      super($$0, new fpq<>($$0.a(fqe.bL)), 0.5F);
+      this.a(new gfo<>(this, $$0.f(), $$0.d()));
+      this.a(new ggu<>(this, $$0.e(), "villager"));
+      this.a(new gfn<>(this, $$0.d()));
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, caf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == boc.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = awi.e($$3.dE()) / 60.0F;
-      if ($$3.dE() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   public ajc a(chn $$0) {
+      return a;
+   }
 
-      cpd $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cpa.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected void a(chn $$0, etd $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.dX();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(chn $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

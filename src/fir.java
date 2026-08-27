@@ -1,255 +1,140 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fir {
-   private final arm a;
-   final List<arj> b;
-   final List<arj> c;
-   final Function<arj, aiy> d;
-   final Runnable e;
-   private final Consumer<arm> f;
+public class fir extends fih<cmq> {
+   private static final ajc x = new ajc("container/smithing/error");
+   private static final ajc y = new ajc("item/empty_slot_smithing_template_armor_trim");
+   private static final ajc z = new ajc("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final vs A = vs.c("container.upgrade.missing_template_tooltip");
+   private static final vs B = vs.c("container.upgrade.error_tooltip");
+   private static final List<ajc> C = List.of(y, z);
+   private static final int D = 44;
+   private static final int E = 15;
+   private static final int F = 28;
+   private static final int G = 21;
+   private static final int H = 65;
+   private static final int I = 46;
+   private static final int J = 115;
+   private static final int K = 210;
+   private static final int L = 25;
+   private static final Vector3f M = new Vector3f();
+   private static final Quaternionf N = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int O = 25;
+   private static final int P = 75;
+   private static final int Q = 141;
+   private final fhw R = new fhw(0);
+   private final fhw S = new fhw(1);
+   private final fhw T = new fhw(2);
+   @Nullable
+   private ceb U;
 
-   public fir(Runnable $$0, Function<arj, aiy> $$1, arm $$2, Consumer<arm> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.f());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.c());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public fir(cmq $$0, chz $$1, vs $$2) {
+      super($$0, $$1, $$2, new ajc("textures/gui/container/smithing.png"));
+      this.l = 44;
+      this.m = 15;
    }
 
-   public Stream<fir.a> a() {
-      return this.c.stream().map($$0 -> new fir.d($$0));
+   @Override
+   protected void I() {
+      this.U = new ceb(this.f.r, 0.0, 0.0, 0.0);
+      this.U.s(true);
+      this.U.a(true);
+      this.U.aV = 210.0F;
+      this.U.s(25.0F);
+      this.U.aX = this.U.dz();
+      this.U.aY = this.U.dz();
+      this.b(this.p.b(3).g());
    }
 
-   public Stream<fir.a> b() {
-      return this.b.stream().map($$0 -> new fir.c($$0));
+   @Override
+   public void E() {
+      super.E();
+      Optional<cqs> $$0 = this.J();
+      this.R.a(C);
+      this.S.a($$0.map(cqs::y).orElse(List.of()));
+      this.T.a($$0.map(cqs::z).orElse(List.of()));
    }
 
-   void e() {
-      this.a.a(Lists.reverse(this.b).stream().map(arj::f).collect(ImmutableList.toImmutableList()));
+   private Optional<cqs> J() {
+      cpq $$0 = this.p.b(0).g();
+      return !$$0.b() && $$0.d() instanceof cqs $$1 ? Optional.of($$1) : Optional.empty();
    }
 
-   public void c() {
-      this.e();
-      this.f.accept(this.a);
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.c());
-      this.c.clear();
-      this.c.addAll(this.a.c());
-      this.c.removeAll(this.b);
+   @Override
+   protected void a(ezx $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.R.a(this.p, $$0, $$1, this.t, this.u);
+      this.S.a(this.p, $$0, $$1, this.t, this.u);
+      this.T.a(this.p, $$0, $$1, this.t, this.u);
+      fig.a($$0, (float)(this.t + 141), (float)(this.u + 75), 25.0F, M, N, null, this.U);
    }
 
-   public interface a {
-      aiy a();
-
-      ark b();
-
-      String c();
-
-      vq d();
-
-      vq e();
-
-      arn f();
-
-      default vq g() {
-         return this.f().a(this.e());
+   @Override
+   public void a(cku $$0, int $$1, cpq $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
-
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
-      }
-
-      default boolean p() {
-         return this.n() && !this.i();
-      }
-
-      boolean q();
-
-      boolean r();
    }
 
-   abstract class b implements fir.a {
-      private final arj b;
+   private void b(cpq $$0) {
+      if (this.U != null) {
+         for (bom $$1 : bom.values()) {
+            this.U.a($$1, cpq.h);
+         }
 
-      public b(arj $$0) {
-         this.b = $$0;
+         if (!$$0.b()) {
+            cpq $$2 = $$0.q();
+            if ($$0.d() instanceof cnc $$3) {
+               this.U.a($$3.i(), $$2);
+            } else {
+               this.U.a(bom.b, $$2);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void c(ezx $$0, int $$1, int $$2) {
+      if (this.K()) {
+         $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(ezx $$0, int $$1, int $$2) {
+      Optional<vs> $$3 = Optional.empty();
+      if (this.K() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(B);
       }
 
-      protected abstract List<arj> s();
-
-      protected abstract List<arj> t();
-
-      @Override
-      public aiy a() {
-         return fir.this.d.apply(this.b);
-      }
-
-      @Override
-      public ark b() {
-         return this.b.c();
-      }
-
-      @Override
-      public String c() {
-         return this.b.f();
-      }
-
-      @Override
-      public vq d() {
-         return this.b.a();
-      }
-
-      @Override
-      public vq e() {
-         return this.b.b();
-      }
-
-      @Override
-      public arn f() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.h();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.g();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.i().a(this.t(), this.b, Function.identity(), true);
-         fir.this.e.run();
-         fir.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.f().equals("high_contrast")) {
-            exr<Boolean> $$0 = exo.P().m.r();
-            $$0.a(!$$0.c());
+      if (this.r != null) {
+         cpq $$4 = this.p.b(0).g();
+         cpq $$5 = this.r.g();
+         if ($$4.b()) {
+            if (this.r.e == 0) {
+               $$3 = Optional.of(A);
+            }
+         } else if ($$4.d() instanceof cqs $$6 && $$5.b()) {
+            if (this.r.e == 1) {
+               $$3 = Optional.of($$6.i());
+            } else if (this.r.e == 2) {
+               $$3 = Optional.of($$6.j());
+            }
          }
       }
 
-      protected void a(int $$0) {
-         List<arj> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         fir.this.e.run();
-      }
-
-      @Override
-      public boolean q() {
-         List<arj> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).h();
-      }
-
-      @Override
-      public void l() {
-         this.a(-1);
-      }
-
-      @Override
-      public boolean r() {
-         List<arj> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
-      }
-
-      @Override
-      public void m() {
-         this.a(1);
-      }
+      $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
    }
 
-   class c extends fir.b {
-      public c(arj $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<arj> s() {
-         return fir.this.b;
-      }
-
-      @Override
-      protected List<arj> t() {
-         return fir.this.c;
-      }
-
-      @Override
-      public boolean n() {
-         return true;
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
-      }
-   }
-
-   class d extends fir.b {
-      public d(arj $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<arj> s() {
-         return fir.this.c;
-      }
-
-      @Override
-      protected List<arj> t() {
-         return fir.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
-      }
+   private boolean K() {
+      return this.p.b(0).h() && this.p.b(1).h() && this.p.b(2).h() && !this.p.b(this.p.o()).h();
    }
 }

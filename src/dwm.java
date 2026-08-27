@@ -1,25 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dwm implements dwd {
-   public static final Codec<dwm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwm::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class dwm extends dwj {
+   public dwm(Codec<dxx> $$0) {
+      super($$0);
+   }
 
-   public dwm(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   @Override
+   protected Set<ib> a(cwz $$0, dxx $$1, awt $$2, ib $$3, Predicate<dme> $$4, int $$5, int $$6) {
+      Set<ib> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<ib> $$8 = new HashSet<>();
+      ib.a $$9 = new ib.a();
+
+      for (ib $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (ib $$11 : $$8) {
+         $$0.a($$11, czh.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(cwz $$0, Set<ib> $$1, ib $$2, ib.a $$3) {
+      return a($$0, $$2, $$3, ih.c) || a($$0, $$2, $$3, ih.f) || a($$0, $$2, $$3, ih.d) || a($$0, $$2, $$3, ih.e) || a($$0, $$2, $$3, ih.a);
+   }
+
+   private static boolean a(cwz $$0, ib $$1, ib.a $$2, ih $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(cwz $$0, dxx $$1, dob $$2, awt $$3, ib $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dme $$5 = $$0.a_($$4);
+         if ($$5.b(dmu.C) && !$$5.c(dmu.C)) {
+            $$0.a($$4, $$5.a(dmu.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,26 +1,77 @@
-public class fhb extends fgk<cky> {
-   private static final aiy x = new aiy("textures/gui/container/dispenser.png");
+import javax.annotation.Nullable;
 
-   public fhb(cky $$0, chk $$1, vq $$2) {
-      super($$0, $$1, $$2);
+public class fhb extends ffz {
+   @Nullable
+   public eyi c;
+   public long k;
+   private fha l;
+   private fak m;
+
+   public fhb(fgh $$0, eyo $$1) {
+      super($$0, $$1, vs.c("controls.keybinds.title"));
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aP_() {
+      this.l = this.c(new fha(this, this.f));
+      this.m = this.c(fak.a(vs.c("controls.resetAll"), $$0 -> {
+         for (eyi $$1 : this.b.X) {
+            $$1.b($$1.i());
+         }
+
+         this.l.d();
+      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
+      this.c(fak.a(vr.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
    }
 
    @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null) {
+         this.b.a(this.c, ery.b.c.a($$2));
+         this.c = null;
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.c != null) {
+         if ($$0 == 256) {
+            this.b.a(this.c, ery.bv);
+         } else {
+            this.b.a(this.c, ery.a($$0, $$1));
+         }
+
+         this.c = null;
+         this.k = ac.b();
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      boolean $$4 = false;
+
+      for (eyi $$5 : this.b.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.m.j = $$4;
    }
 
    @Override
-   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

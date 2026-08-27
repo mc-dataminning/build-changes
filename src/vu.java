@@ -1,159 +1,115 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.stream.Stream;
 
 public class vu {
-   public static final Codec<vu> a = axc.a(vu.a::values).dispatch(vu::c, vu.a::a);
-   public static final vu b = new vu(new BitSet(0), vu.a.b);
-   public static final vu c = new vu(new BitSet(0), vu.a.a);
-   public static final wn d = wn.a.a(n.i).a(new vw(vw.a.a, vq.c("chat.filtered")));
-   static final Codec<vu> e = Codec.unit(c);
-   static final Codec<vu> f = Codec.unit(b);
-   static final Codec<vu> g = avq.s.xmap(vu::new, vu::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final vu.a j;
+   public static final Codec<vs> a = avu.a("Component", vu::a);
+   public static final xq<vd, vs> b = xo.b(a);
+   public static final xq<vd, Optional<vs>> c = b.a(xo::a);
+   public static final xq<ByteBuf, vs> d = xo.a(a);
+   public static final Codec<vs> e = avu.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
-   private vu(BitSet $$0, vu.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
+   private static wg a(List<vs> $$0) {
+      wg $$1 = $$0.get(0).f();
 
-   private vu(BitSet $$0) {
-      this.i = $$0;
-      this.j = vu.a.c;
-   }
-
-   public vu(int $$0) {
-      this(new BitSet($$0), vu.a.c);
-   }
-
-   private vu.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static vu a(uq $$0) {
-      vu.a $$1 = $$0.b(vu.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new vu($$0.y(), vu.a.c);
-      };
-   }
-
-   public static void a(uq $$0, vu $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == vu.a.c) {
-         $$0.a($$1.i);
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
+
+      return $$1;
    }
 
-   public void a(int $$0) {
-      this.i.set($$0);
+   public static <T extends axg, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new vu.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = axg.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
+      MapCodec<E> $$7 = new vu.b($$3, $$6, $$4);
+      return avu.a($$7, $$6);
    }
 
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
+   private static Codec<vs> a(Codec<vs> $$0) {
+      vt.a<?>[] $$1 = new vt.a[]{wz.b, xd.c, ww.b, xa.c, xb.b, wy.b};
+      MapCodec<vt> $$2 = a($$1, vt.a::a, vt::a, "type");
+      Codec<vs> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(vs::b), avu.a(avu.a($$0.listOf()), "extra", List.of()).forGetter(vs::c), wp.b.a.forGetter(vs::a))
+               .apply($$2x, wg::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, avu.a($$0.listOf())), $$3)
+         .xmap($$0x -> (vs)$$0x.map($$0xx -> (vs)$$0xx.map(vs::b, vu::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
    }
 
-   @Nullable
-   public vq b(String $$0) {
-      return switch (this.j) {
-         case a -> vq.b($$0);
-         case b -> null;
-         case c -> {
-            we $$1 = vq.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
 
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-               if ($$3) {
-                  $$1.b(vq.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
             }
          }
-      };
-   }
 
-   public boolean a() {
-      return this.j == vu.a.a;
-   }
+         return DataResult.error(() -> "No matching codec found");
+      }
 
-   public boolean b() {
-      return this.j == vu.a.b;
-   }
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         vu $$1 = (vu)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
-      } else {
-         return false;
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
-   }
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
 
-   static enum a implements axc {
-      a("pass_through", () -> vu.e),
-      b("fully_filtered", () -> vu.f),
-      c("partially_filtered", () -> vu.g);
-
-      private final String d;
-      private final Supplier<Codec<vu>> e;
-
-      private a(String $$0, Supplier<Codec<vu>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
       }
 
-      private Codec<vu> a() {
-         return this.e.get();
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
+      }
+
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
       }
    }
 }

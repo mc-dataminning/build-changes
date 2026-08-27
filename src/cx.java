@@ -8,15 +8,15 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public abstract class cx<T extends cx.a> implements ap<T> {
-   private final Map<ajg, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
+   private final Map<ajk, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
 
    @Override
-   public final void a(ajg $$0, ap.a<T> $$1) {
+   public final void a(ajk $$0, ap.a<T> $$1) {
       this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
    @Override
-   public final void b(ajg $$0, ap.a<T> $$1) {
+   public final void b(ajk $$0, ap.a<T> $$1) {
       Set<ap.a<T>> $$2 = this.a.get($$0);
       if ($$2 != null) {
          $$2.remove($$1);
@@ -27,15 +27,15 @@ public abstract class cx<T extends cx.a> implements ap<T> {
    }
 
    @Override
-   public final void a(ajg $$0) {
+   public final void a(ajk $$0) {
       this.a.remove($$0);
    }
 
-   protected void a(aox $$0, Predicate<T> $$1) {
-      ajg $$2 = $$0.Q();
+   protected void a(apb $$0, Predicate<T> $$1) {
+      ajk $$2 = $$0.Q();
       Set<ap.a<T>> $$3 = this.a.get($$2);
       if ($$3 != null && !$$3.isEmpty()) {
-         ejc $$4 = br.b($$0, $$0);
+         ejy $$4 = br.b($$0, $$0);
          List<ap.a<T>> $$5 = null;
 
          for (ap.a<T> $$6 : $$3) {

@@ -1,28 +1,20 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class efp implements eft {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<efp> a = RecordCodecBuilder.create($$0 -> $$0.group(aiy.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, efp::new));
-   private final aiy d;
+public class efp extends egd {
+   public static final Codec<efp> a = Codec.unit(() -> efp.b);
+   public static final efp b = new efp();
 
-   public efp(aiy $$0) {
-      this.d = $$0;
+   @Nullable
+   @Override
+   public egg.c a(cwh $$0, ib $$1, ib $$2, egg.c $$3, egg.c $$4, egc $$5) {
+      ib $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(czh.H);
+      return $$7 && !czf.a($$4.b().j($$0, $$6)) ? new egg.c($$6, czh.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public sw a(awp $$0, @Nullable sw $$1) {
-      sw $$2 = $$1 == null ? new sw() : $$1.h();
-      aiy.a.encodeStart(tk.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public efu<?> a() {
-      return efu.d;
+   protected egf<?> a() {
+      return egf.m;
    }
 }

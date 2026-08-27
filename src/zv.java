@@ -1,14 +1,20 @@
-public class zv {
-   public static final xz<zs> a = a("finish_configuration");
-   public static final xz<zt> b = a("registry_data");
-   public static final xz<zu> c = a("update_enabled_features");
-   public static final xz<zy> d = b("finish_configuration");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends xx<zr>> xz<T> a(String $$0) {
-      return new xz<>(xy.b, new aiy($$0));
+public record zv(ajb<? extends ix<?>> b, List<jb.a> c) implements xz<zt> {
+   private static final xq<ByteBuf, ajb<? extends ix<?>>> d = ajc.b.a(ajb::a, ajb::a);
+   public static final xq<us, zv> a = xq.a(d, zv::b, jb.a.a.a(xo.a()), zv::e, zv::new);
+
+   @Override
+   public yb<zv> a() {
+      return zx.b;
    }
 
-   private static <T extends xx<zx>> xz<T> b(String $$0) {
-      return new xz<>(xy.a, new aiy($$0));
+   public void a(zt $$0) {
+      $$0.a(this);
+   }
+
+   public List<jb.a> e() {
+      return this.c;
    }
 }

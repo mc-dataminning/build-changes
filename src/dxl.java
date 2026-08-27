@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxl extends dxk {
-   public static final Codec<dxl> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxl::new));
+public record dxl(int b, int c, int d, il<ebk> e) implements dwy {
+   public static final Codec<dxl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avu.j.fieldOf("tries").orElse(128).forGetter(dxl::a),
+               avu.i.fieldOf("xz_spread").orElse(7).forGetter(dxl::b),
+               avu.i.fieldOf("y_spread").orElse(3).forGetter(dxl::c),
+               ebk.b.fieldOf("feature").forGetter(dxl::d)
+            )
+            .apply($$0, dxl::new)
+   );
 
-   public dxl(blb $$0, blb $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected dxq<?> a() {
-      return dxq.e;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(cvx $$0, dxp.b $$1, awp $$2, dwz $$3, int $$4, dxp.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(awp $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public il<ebk> d() {
+      return this.e;
    }
 }

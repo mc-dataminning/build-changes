@@ -1,27 +1,92 @@
-public interface tx {
-   void a(tr var1);
+import java.io.DataInput;
+import java.io.IOException;
 
-   void a(su var1);
+public interface tx<T extends tv> {
+   T c(DataInput var1, th var2) throws IOException;
 
-   void a(to var1);
+   ts.b a(DataInput var1, ts var2, th var3) throws IOException;
 
-   void a(tb var1);
+   default void b(DataInput $$0, ts $$1, th $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
+   }
 
-   void a(te var1);
+   void a(DataInput var1, int var2, th var3) throws IOException;
 
-   void a(sz var1);
+   void b(DataInput var1, th var2) throws IOException;
 
-   void a(sx var1);
+   default boolean d() {
+      return false;
+   }
 
-   void a(st var1);
+   String a();
 
-   void a(ta var1);
+   String b();
 
-   void a(td var1);
+   static tx<ta> a(final int $$0) {
+      return new tx<ta>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
 
-   void a(tc var1);
+         public ta a(DataInput $$0x, th $$1) throws IOException {
+            throw this.c();
+         }
 
-   void a(sw var1);
+         @Override
+         public ts.b a(DataInput $$0x, ts $$1, th $$2) throws IOException {
+            throw this.c();
+         }
 
-   void a(sy var1);
+         @Override
+         public void a(DataInput $$0x, int $$1, th $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, th $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends tv> extends tx<T> {
+      @Override
+      default void b(DataInput $$0, th $$1) throws IOException {
+         $$0.skipBytes(this.c());
+      }
+
+      @Override
+      default void a(DataInput $$0, int $$1, th $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends tv> extends tx<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, th $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
+   }
 }

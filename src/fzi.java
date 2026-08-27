@@ -1,64 +1,41 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+public class fzi extends fzj<dla> {
+   private static final ajc c = new ajc("textures/entity/end_gateway_beam.png");
 
-public class fzi implements fze.a {
-   private final exo a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+   public fzi(fyr.a $$0) {
+      super($$0);
+   }
 
-   public fzi(exo $$0) {
-      this.a = $$0;
+   public void a(dla $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().ak() : 50.0;
+         $$6 = awm.a($$6 * (float) Math.PI);
+         int $$8 = awm.a((double)$$6 * $$7);
+         float[] $$9 = $$0.b() ? cog.c.d() : cog.k.d();
+         long $$10 = $$0.i().X();
+         fym.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      cvs $$5 = this.a.r;
-      esl $$6 = $$1.getBuffer(fwb.y());
-      hz $$7 = hz.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dnf $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dqv.a, dqv> $$11 : $$10.e()) {
-               dqv.a $$12 = $$11.getKey();
-               cuy $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = jb.a($$13.e, $$15);
-                     int $$18 = jb.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fvr.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
-      }
+   protected float b() {
+      return 1.0F;
    }
 
-   private Vector3f a(dqv.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected fwy d() {
+      return fwy.v();
+   }
+
+   @Override
+   public int aS_() {
+      return 256;
    }
 }

@@ -1,13 +1,18 @@
-public class get<T extends cef> extends gfl<T, fme<T>> {
-   private static final aiy a = new aiy("textures/entity/zombie/drowned_outer_layer.png");
-   private final fme<T> b;
+public class get extends gcr<cfv> {
+   private static final ajc a = new ajc("textures/entity/illager/vindicator.png");
 
-   public get(gcv<T, fme<T>> $$0, fpf $$1) {
-      super($$0);
-      this.b = new fme<>($$1.a(fpi.Q));
+   public get(gby.a $$0) {
+      super($$0, new fns<>($$0.a(fqe.bM)), 0.5F);
+      this.a(new ggc<cfv, fns<cfv>>(this, $$0.d()) {
+         public void a(etd $$0, fwq $$1, int $$2, cfv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gd()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public ajc a(cfv $$0) {
+      return a;
    }
 }

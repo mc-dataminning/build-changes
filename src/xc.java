@@ -1,15 +1,28 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class xc extends IllegalArgumentException {
-   public xc(xb $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public record xc(ajc d) implements wu {
+   public static final MapCodec<xc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ajc.a.fieldOf("storage").forGetter(xc::b)).apply($$0, xc::new));
+   public static final wu.a<xc> b = new wu.a<>(a, "storage");
+
+   @Override
+   public Stream<sy> a(du $$0) {
+      sy $$1 = $$0.l().aL().a(this.d);
+      return Stream.of($$1);
    }
 
-   public xc(xb $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   @Override
+   public wu.a<?> a() {
+      return b;
    }
 
-   public xc(xb $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   @Override
+   public String toString() {
+      return "storage=" + this.d;
+   }
+
+   public ajc b() {
+      return this.d;
    }
 }

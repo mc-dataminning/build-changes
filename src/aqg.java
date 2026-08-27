@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aqg {
+public class aqg implements apq {
+   public static final apq.a a = new apq.a("join_world");
+
+   @Override
+   public void a(Consumer<xz<?>> $$0) {
+      $$0.accept(zu.a);
+   }
+
+   @Override
+   public apq.a a() {
+      return a;
+   }
 }

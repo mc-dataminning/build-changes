@@ -1,107 +1,76 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fzp implements fze.a {
-   private final exo a;
-   private final Map<aix<cvr>, Map<String, ebd>> b = Maps.newIdentityHashMap();
-   private final Map<aix<cvr>, Map<String, zm.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class fzp {
+   private final Long2ObjectMap<fzp.a> a = new Long2ObjectOpenHashMap();
 
-   public fzp(exo $$0) {
-      this.a = $$0;
+   @Nullable
+   public fzo a(cwe $$0, ib $$1, ib $$2, int $$3) {
+      int $$4 = jd.a($$1.u() - $$3);
+      int $$5 = jd.a($$1.w() - $$3);
+      int $$6 = jd.a($$2.u() + $$3);
+      int $$7 = jd.a($$2.w() + $$3);
+      fzp.a[][] $$8 = new fzp.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (fzp.a)this.a.computeIfAbsent(cvl.c($$9, $$10), $$1x -> new fzp.a($$0.d(cvl.a($$1x), cvl.b($$1x))));
+         }
+      }
+
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fzn[][] $$11 = new fzn[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new fzo($$0, $$4, $$5, $$11);
+      }
    }
 
-   @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      ewz $$5 = this.a.j.m();
-      aix<cvr> $$6 = this.a.r.ad();
-      hz $$7 = hz.a($$5.b().c, 0.0, $$5.b().e);
-      esl $$8 = $$1.getBuffer(fwb.w());
-      if (this.b.containsKey($$6)) {
-         for (ebd $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               fvr.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
+   private static boolean a(ib $$0, ib $$1, int $$2, int $$3, fzp.a[][] $$4) {
+      int $$5 = jd.a($$0.u());
+      int $$6 = jd.a($$0.w());
+      int $$7 = jd.a($$1.u());
+      int $$8 = jd.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dol $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
             }
          }
       }
 
-      Map<String, zm.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (zm.a $$11 : $$10.values()) {
-            ebd $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  fvr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  fvr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
+      return true;
+   }
+
+   static final class a {
+      private final dol a;
+      @Nullable
+      private fzn b;
+
+      a(dol $$0) {
+         this.a = $$0;
+      }
+
+      public dol a() {
+         return this.a;
+      }
+
+      public fzn b() {
+         if (this.b == null) {
+            this.b = new fzn(this.a);
          }
+
+         return this.b;
       }
-   }
-
-   public void a(ebd $$0, List<zm.a> $$1, aix<cvr> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, zm.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (zm.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

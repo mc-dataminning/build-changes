@@ -1,121 +1,77 @@
-public class fgn extends fhl<ckh> {
-   private static final aiy x = new aiy("container/anvil/text_field");
-   private static final aiy y = new aiy("container/anvil/text_field_disabled");
-   private static final aiy z = new aiy("container/anvil/error");
-   private static final aiy A = new aiy("textures/gui/container/anvil.png");
-   private static final vq B = vq.c("container.repair.expensive");
-   private ezx C;
-   private final chl D;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-   public fgn(ckh $$0, chk $$1, vq $$2) {
-      super($$0, $$1, $$2, A);
-      this.D = $$1.m;
-      this.l = 60;
+public class fgn extends fgh {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final vs k;
+   private final vx l;
+   private final ImmutableList<fgn.a> m;
+   private fbd n = fbd.a;
+   private int o;
+   private int p;
+
+   protected fgn(vs $$0, List<vs> $$1, ImmutableList<fgn.a> $$2) {
+      super($$0);
+      this.l = vx.a($$1);
+      this.k = vr.a($$0, vv.a($$1, vr.a));
+      this.m = $$2;
    }
 
    @Override
-   protected void I() {
-      int $$0 = (this.g - this.c) / 2;
-      int $$1 = (this.h - this.k) / 2;
-      this.C = new ezx(this.i, $$0 + 62, $$1 + 24, 103, 12, vq.c("container.repair"));
-      this.C.f(false);
-      this.C.g(-1);
-      this.C.h(-1);
-      this.C.d(false);
-      this.C.f(50);
-      this.C.b(this::a);
-      this.C.a("");
-      this.d(this.C);
-      this.C.e(this.p.b(0).h());
+   public vs i() {
+      return this.k;
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.C);
-   }
+   public void aP_() {
+      UnmodifiableIterator $$1 = this.m.iterator();
 
-   @Override
-   public void a(exo $$0, int $$1, int $$2) {
-      String $$3 = this.C.a();
-      this.b($$0, $$1, $$2);
-      this.C.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.s.r();
+      while ($$1.hasNext()) {
+         fgn.a $$0 = (fgn.a)$$1.next();
+         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
       }
 
-      return !this.C.a($$0, $$1, $$2) && !this.C.d() ? super.a($$0, $$1, $$2) : true;
-   }
+      int $$1x = 5 + this.p + 5;
+      int $$2 = $$1x * this.m.size();
+      this.n = fbd.a(this.i, this.l, $$2);
+      int $$3 = this.n.a() * 9;
+      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.o + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
 
-   private void a(String $$0) {
-      cma $$1 = this.p.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().B() && $$0.equals($$1.g().z().getString())) {
-            $$2 = "";
-         }
-
-         if (this.p.a($$2)) {
-            this.f.s.cq.b(new afz($$2));
-         }
+      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fgn.a $$6 = (fgn.a)var6.next();
+         this.c(fak.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
       }
    }
 
    @Override
-   protected void b(ezb $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.p.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         vq $$5;
-         if ($$3 >= 40 && !this.f.s.fU().d) {
-            $$5 = B;
-            $$4 = 16736352;
-         } else if (!this.p.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = vq.a("container.repair.cost", $$3);
-            if (!this.p.b(2).a(this.D)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.i.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.i, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p.b(0).h() ? x : y, this.t + 59, this.u + 20, 110, 16);
+      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
+      this.n.a($$0, this.g / 2, this.o);
    }
 
    @Override
-   public void d(ezb $$0, int $$1, int $$2, float $$3) {
-      this.C.a($$0, $$1, $$2, $$3);
+   public void b(ezx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
    @Override
-   protected void c(ezb $$0, int $$1, int $$2) {
-      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(this.p.o()).h()) {
-         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
-      }
+   public boolean aN_() {
+      return false;
    }
 
-   @Override
-   public void a(ckf $$0, int $$1, cpd $$2) {
-      if ($$1 == 0) {
-         this.C.a($$2.b() ? "" : $$2.z().getString());
-         this.C.e(!$$2.b());
-         this.a(this.C);
+   public static final class a {
+      final vs a;
+      final fak.c b;
+
+      public a(vs $$0, fak.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

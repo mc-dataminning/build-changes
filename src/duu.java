@@ -1,158 +1,143 @@
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class duu extends dtz<dwl> {
-   public duu(Codec<dwl> $$0) {
-      super($$0);
+public abstract class duu<FC extends dwy> {
+   public static final duu<dxf> e = a("no_op", new dvo(dxf.a));
+   public static final duu<dxu> f = a("tree", new dwg(dxu.a));
+   public static final duu<dxl> g = a("flower", new dvs(dxl.a));
+   public static final duu<dxl> h = a("no_bonemeal_flower", new dvs(dxl.a));
+   public static final duu<dxl> i = a("random_patch", new dvs(dxl.a));
+   public static final duu<dwq> j = a("block_pile", new dud(dwq.a));
+   public static final duu<dxt> k = a("spring_feature", new dwf(dxt.a));
+   public static final duu<dxf> l = a("chorus_plant", new dug(dxf.a));
+   public static final duu<dxm> m = a("replace_single_block", new dvv(dxm.a));
+   public static final duu<dxf> n = a("void_start_platform", new dwl(dxf.a));
+   public static final duu<dxf> o = a("desert_well", new dun(dxf.a));
+   public static final duu<duz> p = a("fossil", new duy(duz.a));
+   public static final duu<dxa> q = a("huge_red_mushroom", new dvf(dxa.a));
+   public static final duu<dxa> r = a("huge_brown_mushroom", new dvc(dxa.a));
+   public static final duu<dxf> s = a("ice_spike", new dvg(dxf.a));
+   public static final duu<dxf> t = a("glowstone_blob", new dvb(dxf.a));
+   public static final duu<dxf> u = a("freeze_top_layer", new dwd(dxf.a));
+   public static final duu<dxf> v = a("vines", new dwk(dxf.a));
+   public static final duu<dwp> w = a("block_column", new duc(dwp.a));
+   public static final duu<dxx> x = a("vegetation_patch", new dwj(dxx.a));
+   public static final duu<dxx> y = a("waterlogged_vegetation_patch", new dwm(dxx.a));
+   public static final duu<dxo> z = a("root_system", new dvw(dxo.a));
+   public static final duu<dxd> A = a("multiface_growth", new dvm(dxd.a));
+   public static final duu<dxw> B = a("underwater_magma", new dwi(dxw.a));
+   public static final duu<dxf> C = a("monster_room", new dvl(dxf.a));
+   public static final duu<dxf> D = a("blue_ice", new due(dxf.a));
+   public static final duu<dwr> E = a("iceberg", new dvh(dwr.a));
+   public static final duu<dwr> F = a("forest_rock", new dub(dwr.a));
+   public static final duu<dwv> G = a("disk", new duo(dwv.a));
+   public static final duu<dvj.a> H = a("lake", new dvj(dvj.a.a));
+   public static final duu<dxg> I = a("ore", new dvp(dxg.a));
+   public static final duu<dxs> J = a("end_spike", new dwe(dxs.a));
+   public static final duu<dxf> K = a("end_island", new dus(dxf.a));
+   public static final duu<dwx> L = a("end_gateway", new dur(dwx.a));
+   public static final dwa M = a("seagrass", new dwa(dxi.k));
+   public static final duu<dxf> N = a("kelp", new dvi(dxf.a));
+   public static final duu<dxf> O = a("coral_tree", new dul(dxf.a));
+   public static final duu<dxf> P = a("coral_mushroom", new duk(dxf.a));
+   public static final duu<dxf> Q = a("coral_claw", new dui(dxf.a));
+   public static final duu<dwt> R = a("sea_pickle", new dvz(dwt.a));
+   public static final duu<dxq> S = a("simple_block", new dwb(dxq.a));
+   public static final duu<dxi> T = a("bamboo", new dty(dxi.k));
+   public static final duu<dvd> U = a("huge_fungus", new dve(dvd.a));
+   public static final duu<dxe> V = a("nether_forest_vegetation", new dvn(dxe.c));
+   public static final duu<dxf> W = a("weeping_vines", new dwn(dxf.a));
+   public static final duu<dxv> X = a("twisting_vines", new dwh(dxv.a));
+   public static final duu<dws> Y = a("basalt_columns", new dtz(dws.a));
+   public static final duu<dwu> Z = a("delta_feature", new dum(dwu.a));
+   public static final duu<dxn> aa = a("netherrack_replace_blobs", new dvu(dxn.a));
+   public static final duu<dxc> ab = a("fill_layer", new dux(dxc.a));
+   public static final duf ac = a("bonus_chest", new duf(dxf.a));
+   public static final duu<dxf> ad = a("basalt_pillar", new dua(dxf.a));
+   public static final duu<dxg> ae = a("scattered_ore", new dvx(dxg.a));
+   public static final duu<dxk> af = a("random_selector", new dvt(dxk.a));
+   public static final duu<dxr> ag = a("simple_random_selector", new dwc(dxr.a));
+   public static final duu<dxj> ah = a("random_boolean_selector", new dvr(dxj.a));
+   public static final duu<dwz> ai = a("geode", new dva(dwz.b));
+   public static final duu<dww> aj = a("dripstone_cluster", new dup(dww.a));
+   public static final duu<dxb> ak = a("large_dripstone", new dvk(dxb.a));
+   public static final duu<dxh> al = a("pointed_dripstone", new dvq(dxh.a));
+   public static final duu<dxp> am = a("sculk_patch", new dvy(dxp.a));
+   private final Codec<duh<FC, duu<FC>>> a;
+
+   private static <C extends dwy, F extends duu<C>> F a(String $$0, F $$1) {
+      return ix.a(kh.Q, $$0, $$1);
    }
 
-   @Override
-   public boolean a(dub<dwl> $$0) {
-      awp $$1 = $$0.d();
-      hz $$2 = $$0.e();
-      cwm $$3 = $$0.b();
-      dwl $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = awi.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - awi.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - awi.f($$6) - $$7;
-      int $$18 = 2 * (awi.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
+   public duu(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new duh<>(this, $$0x), duh::c).codec();
+   }
 
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(dqv.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
-            }
+   public Codec<duh<FC, duu<FC>>> a() {
+      return this.a;
+   }
+
+   protected void a(cwm $$0, ib $$1, dme $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<dme> a(aut<czf> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(cwz $$0, ib $$1, dme $$2, Predicate<dme> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
+      }
+   }
+
+   public abstract boolean a(duw<FC> var1);
+
+   public boolean a(FC $$0, cwz $$1, dob $$2, awt $$3, ib $$4) {
+      return $$1.f_($$4) ? this.a(new duw<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
+
+   protected static boolean a(dme $$0) {
+      return $$0.a(aue.bd);
+   }
+
+   public static boolean b(dme $$0) {
+      return $$0.a(aue.af);
+   }
+
+   public static boolean a(cwk $$0, ib $$1) {
+      return $$0.a($$1, duu::b);
+   }
+
+   public static boolean a(Function<ib, dme> $$0, ib $$1, Predicate<dme> $$2) {
+      ib.a $$3 = new ib.a();
+
+      for (ih $$4 : ih.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
       return false;
    }
 
-   protected boolean a(
-      cwm $$0, awp $$1, dwl $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      hz.a $$16 = new hz.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
-
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = awi.d((double)$$20, $$3, $$4);
-         double $$22 = awi.d((double)$$20, $$7, $$8);
-         double $$23 = awi.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(awi.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
-
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      try (dnd $$32 = new dnd($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(awi.a($$35 - $$34), $$9);
-               int $$39 = Math.max(awi.a($$36 - $$34), $$10);
-               int $$40 = Math.max(awi.a($$37 - $$34), $$11);
-               int $$41 = Math.max(awi.a($$35 + $$34), $$38);
-               int $$42 = Math.max(awi.a($$36 + $$34), $$39);
-               int $$43 = Math.max(awi.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dnr $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = jb.b($$44);
-                                          int $$53 = jb.b($$46);
-                                          int $$54 = jb.b($$48);
-                                          dlj $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (dwl.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$14 > 0;
+   public static boolean a(Function<ib, dme> $$0, ib $$1) {
+      return a($$0, $$1, dmd.a::i);
    }
 
-   public static boolean a(dlj $$0, Function<hz, dlj> $$1, awp $$2, dwl $$3, dwl.a $$4, hz.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
-         return false;
-      } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
-      }
-   }
+   protected void a(cwz $$0, ib $$1) {
+      ib.a $$2 = $$1.j();
 
-   protected static boolean a(awp $$0, float $$1) {
-      if ($$1 <= 0.0F) {
-         return true;
-      } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(ih.b);
+         if ($$0.a_($$2).i()) {
+            return;
+         }
+
+         $$0.y($$2).e($$2);
       }
    }
 }

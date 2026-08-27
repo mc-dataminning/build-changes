@@ -1,138 +1,166 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import java.util.UUID;
 
-public class akb {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final int c;
-   private final aso d;
-   private final int e;
-   private volatile boolean f;
-   @Nullable
-   private ServerSocket g;
-   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
+public class akb extends aox {
+   private final ajc h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public akb(String $$0, int $$1, aso $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public akb(ajc $$0, vs $$1) {
+      super($$1, bmb.a.g, bmb.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   public void a() throws IOException {
-      if (this.g != null && !this.g.isClosed()) {
-         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
-      } else {
-         this.f = true;
-         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
-         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
-         $$0.setDaemon(true);
-         $$0.start();
-         Thread $$1 = new Thread(this::c, "chase-server-sender");
-         $$1.setDaemon(true);
-         $$1.start();
-      }
+   public ajc a() {
+      return this.h;
    }
 
-   private void c() {
-      akb.a $$0 = null;
-
-      while (this.f) {
-         if (!this.h.isEmpty()) {
-            akb.a $$1 = this.e();
-            if ($$1 != null && !$$1.equals($$0)) {
-               $$0 = $$1;
-               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
-
-               for (Socket $$3 : this.h) {
-                  if (!$$3.isClosed()) {
-                     ac.g().submit(() -> {
-                        try {
-                           OutputStream $$2x = $$3.getOutputStream();
-                           $$2x.write($$2);
-                           $$2x.flush();
-                        } catch (IOException var3x) {
-                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
-                           IOUtils.closeQuietly($$3);
-                        }
-                     });
-                  }
-               }
-            }
-
-            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
-            this.h.removeAll($$4);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep((long)this.e);
-            } catch (InterruptedException var6) {
-            }
-         }
-      }
+   @Override
+   public void a(apb $$0) {
+      super.a($$0);
+      this.i.add($$0.ct());
    }
 
+   public void a(UUID $$0) {
+      this.i.add($$0);
+   }
+
+   @Override
+   public void b(apb $$0) {
+      super.b($$0);
+      this.i.remove($$0.ct());
+   }
+
+   @Override
    public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
+      super.b();
+      this.i.clear();
    }
 
-   private void d() {
-      try {
-         while (this.f) {
-            if (this.g != null) {
-               a.info("Remote control server is listening for connections on port {}", this.c);
-               Socket $$0 = this.g.accept();
-               a.info("Remote control server received client connection on port {}", $$0.getPort());
-               this.h.add($$0);
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(awm.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(awm.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final vs e() {
+      return vv.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new vy(vy.a.a, vs.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<apb> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<apb> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (apb $$5 : $$0) {
+            if ($$5.ct().equals($$3)) {
+               $$4 = true;
+               break;
             }
          }
-      } catch (ClosedByInterruptException var6) {
-         if (this.f) {
-            a.info("Remote control server closed by interrupt");
+
+         if (!$$4) {
+            $$1.add($$3);
          }
-      } catch (IOException var7) {
-         if (this.f) {
-            a.error("Remote control server closed because of an IO exception", var7);
-         }
-      } finally {
-         IOUtils.closeQuietly(this.g);
       }
 
-      a.info("Remote control server is now stopped");
-      this.f = false;
+      for (apb $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.ct().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (apb $$10 : this.h()) {
+            if ($$10.ct().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (apb $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
    }
 
-   @Nullable
-   private akb.a e() {
-      List<aox> $$0 = this.d.t();
-      if ($$0.isEmpty()) {
-         return null;
-      } else {
-         aox $$1 = $$0.get(0);
-         String $$2 = (String)akj.a.inverse().get($$1.dM().ad());
-         return $$2 == null ? null : new akb.a($$2, $$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
+   public sy f() {
+      sy $$0 = new sy();
+      $$0.a("Name", vs.a.a(this.a));
+      $$0.a("Visible", this.g());
+      $$0.a("Value", this.j);
+      $$0.a("Max", this.k);
+      $$0.a("Color", this.l().b());
+      $$0.a("Overlay", this.m().a());
+      $$0.a("DarkenScreen", this.n());
+      $$0.a("PlayBossMusic", this.o());
+      $$0.a("CreateWorldFog", this.p());
+      te $$1 = new te();
+
+      for (UUID $$2 : this.i) {
+         $$1.add(tn.a($$2));
+      }
+
+      $$0.a("Players", $$1);
+      return $$0;
+   }
+
+   public static akb a(sy $$0, ajc $$1) {
+      akb $$2 = new akb($$1, vs.a.a($$0.l("Name")));
+      $$2.d($$0.q("Visible"));
+      $$2.a($$0.h("Value"));
+      $$2.b($$0.h("Max"));
+      $$2.a(bmb.a.a($$0.l("Color")));
+      $$2.a(bmb.b.a($$0.l("Overlay")));
+      $$2.a($$0.q("DarkenScreen"));
+      $$2.b($$0.q("PlayBossMusic"));
+      $$2.c($$0.q("CreateWorldFog"));
+
+      for (tv $$4 : $$0.c("Players", 11)) {
+         $$2.a(tn.a($$4));
+      }
+
+      return $$2;
+   }
+
+   public void c(apb $$0) {
+      if (this.i.contains($$0.ct())) {
+         this.a($$0);
       }
    }
 
-   static record a(String a, double b, double c, double d, float e, float f) {
-      String g() {
-         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
-      }
+   public void d(apb $$0) {
+      super.b($$0);
    }
 }

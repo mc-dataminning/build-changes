@@ -1,243 +1,71 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class aiy implements Comparable<aiy> {
-   public static final Codec<aiy> a = Codec.STRING.comapFlatMap(aiy::b, aiy::toString).stable();
-   public static final xo<ByteBuf, aiy> b = xm.h.a(aiy::new, aiy::toString);
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vq.c("argument.id.invalid"));
-   public static final char c = ':';
-   public static final String d = "minecraft";
-   public static final String e = "realms";
-   private final String g;
-   private final String h;
+public final class aiy<E> implements Codec<il<E>> {
+   private final ajb<? extends ix<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   protected aiy(String $$0, String $$1, @Nullable aiy.a $$2) {
-      this.g = $$0;
-      this.h = $$1;
+   public static <E> aiy<E> a(ajb<? extends ix<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public aiy(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
+   public static <E> aiy<E> a(ajb<? extends ix<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new aiy<>($$0, $$1, $$2);
    }
 
-   private aiy(String[] $$0) {
-      this($$0[0], $$0[1]);
+   private aiy(ajb<? extends ix<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aiy(String $$0) {
-      this(b($$0, ':'));
-   }
+   public <T> DataResult<T> a(il<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aja<?> $$3) {
+         Optional<io<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
 
-   public static aiy a(String $$0, char $$1) {
-      return new aiy(b($$0, $$1));
-   }
-
-   @Nullable
-   public static aiy a(String $$0) {
-      try {
-         return new aiy($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static aiy a(String $$0, String $$1) {
-      try {
-         return new aiy($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
+            return (DataResult<T>)$$0.d().map($$2x -> ajc.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
          }
       }
 
-      return $$2;
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   public static DataResult<aiy> b(String $$0) {
-      try {
-         return DataResult.success(new aiy($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+   public <T> DataResult<Pair<il<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aja<?> $$2) {
+         Optional<im<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            im<E> $$4 = $$3.get();
+            DataResult<Pair<ajc, T>> $$5 = ajc.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(il::a));
+            } else {
+               Pair<ajc, T> $$6 = (Pair<ajc, T>)$$5.result().get();
+               ajb<E> $$7 = ajb.a(this.a, (ajc)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(il::a));
       }
-   }
-
-   public String a() {
-      return this.h;
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public aiy c(String $$0) {
-      return new aiy(this.g, d(this.g, $$0), null);
-   }
-
-   public aiy a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.h));
-   }
-
-   public aiy d(String $$0) {
-      return this.c($$0 + this.h);
-   }
-
-   public aiy e(String $$0) {
-      return this.c(this.h + $$0);
    }
 
    @Override
    public String toString() {
-      return this.g + ":" + this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aiy $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.g.hashCode() + this.h.hashCode();
-   }
-
-   public int a(aiy $$0) {
-      int $$1 = this.h.compareTo($$0.h);
-      if ($$1 == 0) {
-         $$1 = this.g.compareTo($$0.g);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.g + "." + this.h;
-   }
-
-   public String e() {
-      return this.g.equals("minecraft") ? this.h : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   public static aiy a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-
-      try {
-         return new aiy($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw f.createWithContext($$0);
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<aiy>, JsonSerializer<aiy> {
-      public aiy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new aiy(avy.a($$0, "location"));
-      }
-
-      public JsonElement a(aiy $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

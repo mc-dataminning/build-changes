@@ -1,26 +1,74 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class ayu extends DataFix {
-   public ayu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class ayu extends DataFix {
+   private final String a;
+
+   public ayu(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdt.z);
+      Type<Pair<String, String>> $$1 = DSL.named(bdt.z.typeName(), bfc.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
       } else {
-         return $$0;
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bdt.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+         );
+         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
+            this.a + " for flat_block_state",
+            this.getInputSchema().getType(bdt.v),
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+               )
+         );
+         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
       }
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bdn.u), $$0 -> $$0.update(DSL.remainderFinder(), ayu::a));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
+   }
+
+   private String b(String $$0) {
+      int $$1 = $$0.indexOf(91);
+      int $$2 = $$0.indexOf(123);
+      int $$3 = $$0.length();
+      if ($$1 > 0) {
+         $$3 = $$1;
+      }
+
+      if ($$2 > 0) {
+         $$3 = Math.min($$3, $$2);
+      }
+
+      String $$4 = $$0.substring(0, $$3);
+      String $$5 = this.a($$4);
+      return $$5 + $$0.substring($$3);
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new ayu($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

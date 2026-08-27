@@ -1,30 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum eag implements axc {
-   a(ie.b, 1, "ceiling"),
-   b(ie.a, -1, "floor");
+public class eag {
+   public static final Codec<eag> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dpq.c).fieldOf("height").forGetter(eag::a), kh.e.q().fieldOf("block").orElse(czh.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, eag::new)
+   );
+   private final czf b;
+   private final int c;
 
-   public static final Codec<eag> c = axc.a(eag::values);
-   private final ie d;
-   private final int e;
-   private final String f;
-
-   private eag(ie $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eag(int $$0, czf $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   public ie a() {
-      return this.d;
+   public int a() {
+      return this.c;
    }
 
-   public int b() {
-      return this.e;
+   public dme b() {
+      return this.b.o();
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + kh.e.b(this.b);
    }
 }

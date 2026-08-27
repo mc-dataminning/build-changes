@@ -1,35 +1,30 @@
-public class cas extends bzw {
-   public cas(bnw<? extends cas> $$0, cvr $$1) {
+public class cas extends cal {
+   public cas(bol<? extends cas> $$0, cwe $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public int gi() {
-      return 5;
+   public cpq b() {
+      return new cpq(cpt.qG);
    }
 
    @Override
-   public cpd b() {
-      return new cpd(cpg.qF);
+   protected ato y() {
+      return atp.fa;
    }
 
    @Override
-   protected atk y() {
-      return atl.uY;
+   protected ato n_() {
+      return atp.fb;
    }
 
    @Override
-   protected atk n_() {
-      return atl.uZ;
+   protected ato d(bne $$0) {
+      return atp.fd;
    }
 
    @Override
-   protected atk d(bmp $$0) {
-      return atl.vb;
-   }
-
-   @Override
-   protected atk gh() {
-      return atl.va;
+   protected ato gm() {
+      return atp.fc;
    }
 }

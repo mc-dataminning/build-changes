@@ -1,38 +1,27 @@
-public enum fga {
-   a(
-      new aiy("advancements/box_obtained"),
-      new aiy("advancements/task_frame_obtained"),
-      new aiy("advancements/challenge_frame_obtained"),
-      new aiy("advancements/goal_frame_obtained")
-   ),
-   b(
-      new aiy("advancements/box_unobtained"),
-      new aiy("advancements/task_frame_unobtained"),
-      new aiy("advancements/challenge_frame_unobtained"),
-      new aiy("advancements/goal_frame_unobtained")
-   );
+public class fga extends fgh {
+   private fbd a;
 
-   private final aiy c;
-   private final aiy d;
-   private final aiy e;
-   private final aiy f;
-
-   private fga(aiy $$0, aiy $$1, aiy $$2, aiy $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fga() {
+      super(vs.c("outOfMemory.title"));
+      this.a = fbd.a;
    }
 
-   public aiy a() {
-      return this.c;
+   @Override
+   protected void aP_() {
+      this.c(fak.a(vr.l, $$0 -> this.f.a(new fgm())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
+      this.c(fak.a(vs.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
+      this.a = fbd.a(this.i, vs.c("outOfMemory.message"), 295);
    }
 
-   public aiy a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   public boolean aN_() {
+      return false;
+   }
+
+   @Override
+   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
+      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
    }
 }

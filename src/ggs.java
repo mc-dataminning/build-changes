@@ -1,59 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public abstract class ggs<T extends box, M extends foj<T>> extends ggj<T, M> {
+   public ggs(gcz<T, M> $$0) {
+      super($$0);
+   }
 
-public class ggs implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final ggo f = new ggo(16, 16, false);
+   protected abstract int a(T var1);
 
-   public ggs() {
-      eri $$0 = this.f.e();
+   protected abstract void a(etd var1, fwq var2, int var3, bof var4, float var5, float var6, float var7, float var8);
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
+   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      awt $$11 = awt.a((long)$$3.aj());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fqf $$13 = this.c().a($$11);
+            fqf.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = awm.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = awm.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = awm.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
       }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
-   }
-
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
    }
 }

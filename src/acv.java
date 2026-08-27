@@ -1,33 +1,36 @@
-import javax.annotation.Nullable;
+public record acv(aeq e, byte f) implements xz<aai> {
+   public static final xq<vd, acv> a = xz.a(acv::a, acv::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-public class acv implements xx<aag> {
-   public static final xo<uq, acv> a = xx.a(acv::a, acv::new);
-   @Nullable
-   private final aiy b;
-
-   public acv(@Nullable aiy $$0) {
-      this.b = $$0;
+   private acv(vd $$0) {
+      this(new aeq($$0), $$0.readByte());
    }
 
-   private acv(uq $$0) {
-      this.b = $$0.c(uq::s);
-   }
-
-   private void a(uq $$0) {
-      $$0.a(this.b, uq::a);
+   private void a(vd $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public xz<acv> a() {
-      return aeq.an;
+   public yb<acv> a() {
+      return aet.al;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aiy b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
+   }
+
+   public aeq b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

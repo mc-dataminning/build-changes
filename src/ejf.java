@@ -1,82 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
 
-public class ejf implements arv, ejg {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final eje<ejk> a = new eje<>(ejh.c, eja.a);
-   private Map<eje<?>, ?> d = Map.of();
-   private Multimap<ejh<?>, aiy> e = ImmutableMultimap.of();
+public class ejf {
+   private static final String a = "command_storage_";
+   private final Map<String, ejf.a> b = Maps.newHashMap();
+   private final eji c;
 
-   @Override
-   public final CompletableFuture<Void> a(arv.a $$0, asb $$1, bin $$2, bin $$3, Executor $$4, Executor $$5) {
-      Map<ejh<?>, Map<aiy, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = ejh.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+   public ejf(eji $$0) {
+      this.c = $$0;
    }
 
-   private static <T> CompletableFuture<?> a(ejh<T> $$0, asb $$1, Executor $$2, Map<ejh<?>, Map<aiy, ?>> $$3) {
-      Map<aiy, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<aiy, JsonElement> $$3x = new HashMap<>();
-         asf.a($$1, $$0.a(), c, $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
+   private ejf.a a(String $$0) {
+      ejf.a $$1 = new ejf.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   private void a(Map<ejh<?>, Map<aiy, ?>> $$0) {
-      Object $$1 = $$0.get(ejh.c).remove(eja.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", eja.a);
+   private eiw.a<ejf.a> b(String $$0) {
+      return new eiw.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), axs.h);
+   }
+
+   public sy a(ajc $$0) {
+      String $$1 = $$0.b();
+      ejf.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new sy();
+   }
+
+   public void a(ajc $$0, sy $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<ajc> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends eiw {
+      private static final String a = "contents";
+      private final Map<String, sy> b = Maps.newHashMap();
+
+      ejf.a a(sy $$0) {
+         sy $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
       }
 
-      Builder<eje<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<ejh<?>, aiy> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new eje($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, ejk.a);
-      awn.a $$4 = new awn.a();
-      final Map<eje<?>, ?> $$5 = $$2.build();
-      ejl $$6 = new ejl($$4, elm.o, new ejg() {
-         @Nullable
-         @Override
-         public <T> T getElement(eje<T> $$0) {
-            return (T)$$5.get($$0);
+      @Override
+      public sy a(sy $$0, in.a $$1) {
+         sy $$2 = new sy();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public sy a(String $$0) {
+         sy $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new sy();
+      }
+
+      public void a(String $$0, sy $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
          }
-      });
-      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
-      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.d = $$5;
-      this.e = $$3.build();
-   }
 
-   private static <T> void a(ejl $$0, eje<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
-   }
+         this.c();
+      }
 
-   @Nullable
-   @Override
-   public <T> T getElement(eje<T> $$0) {
-      return (T)this.d.get($$0);
-   }
-
-   public Collection<aiy> a(ejh<?> $$0) {
-      return this.e.get($$0);
+      public Stream<ajc> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new ajc($$0, $$1));
+      }
    }
 }

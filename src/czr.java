@@ -1,129 +1,120 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class czr extends dfr {
-   public static final MapCodec<czr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmw.a.fieldOf("wood_type").forGetter(dfr::d), u()).apply($$0, czr::new));
-   public static final dmj b = dlz.ba;
-   public static final dma c = dlz.a;
-   protected static final float d = 5.0F;
-   protected static final eos e = cys.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, eos> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         cys.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         cys.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         cys.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         cys.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
-   );
+public class czr extends czf {
+   public static final MapCodec<czr> a = b(czr::new);
+   public static final int b = 6;
+   public static final dne c = dmu.ay;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final epo[] g = new epo[]{
+      czf.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      czf.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<czr> a() {
       return a;
    }
 
-   public czr(dmw $$0, dli.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   protected czr(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected bly a(cpd $$0, dlj $$1, cvr $$2, hz $$3, chl $$4, blv $$5, env $$6) {
-      if ($$2.c_($$3) instanceof dkg $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return bly.e;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return g[$$0.c(c)];
+   }
+
+   @Override
+   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
+      cpl $$7 = $$0.d();
+      if ($$0.a(aum.ai) && $$1.c(c) == 0 && czf.a($$7) instanceof czu $$8) {
+         if (!$$4.f()) {
+            $$0.h(1);
+         }
+
+         $$2.a(null, $$3, atp.dj, atq.e, 1.0F, 1.0F);
+         $$2.b($$3, czv.a($$8));
+         $$2.a($$4, dqr.c, $$3);
+         $$4.b(atz.c.b($$7));
+         return bmn.a;
+      } else {
+         return bmn.d;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(chl $$0, env $$1, dkg $$2, cpd $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof coq && $$1.b().equals(ie.a);
    }
 
    @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      return $$1.a_($$2.c()).a($$1, $$2.c(), ie.a, dgs.b);
-   }
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return bml.a;
+         }
 
-   @Override
-   public dlj a(crk $$0) {
-      cvr $$1 = $$0.q();
-      egw $$2 = $$1.b_($$0.a());
-      hz $$3 = $$0.a().c();
-      dlj $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(aua.az);
-      ie $$6 = ie.a((double)$$0.i());
-      boolean $$7 = !cys.a($$4.k($$1, $$3), ie.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dhp.b)) {
-            ie $$8 = $$4.c(dhp.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<ie> $$9 = dmp.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
+         if ($$3.b(bmk.a).b()) {
+            return bml.b;
          }
       }
 
-      int $$10 = !$$7 ? dmp.a($$6.g()) : dmp.a($$0.i() + 180.0F);
-      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == egx.c));
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static bml a(cwf $$0, ib $$1, dme $$2, cia $$3) {
+      if (!$$3.s(false)) {
+         return bml.d;
+      } else {
+         $$3.a(atz.U);
+         $$3.gf().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, dqr.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, dqr.f, $$1);
+         }
+
+         return bml.a;
+      }
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      eos $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eos b_(dlj $$0, cux $$1, hz $$2) {
-      return this.a($$0, $$1, $$2, eoe.a());
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      return $$1 == ie.b && !this.a($$0, $$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public float g(dlj $$0) {
-      return dmp.b($$0.c(b));
+   protected int a(dme $$0, cwe $$1, ib $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected boolean d_(dme $$0) {
+      return true;
    }
 
    @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b, c, f);
-   }
-
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dju($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return a($$2, diz.i, dkg::a);
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

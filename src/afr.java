@@ -1,29 +1,29 @@
-public class afr implements xx<aes> {
-   public static final xo<uq, afr> a = xx.a(afr::a, afr::new);
-   private final int b;
+public class afr implements xz<aev> {
+   public static final xq<us, afr> a = xz.a(afr::a, afr::new);
+   private final boolean b;
 
-   public afr(int $$0) {
+   public afr(boolean $$0) {
       this.b = $$0;
    }
 
-   private afr(uq $$0) {
-      this.b = $$0.n();
+   private afr(us $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<afr> a() {
-      return aeq.bD;
+   public yb<afr> a() {
+      return aet.by;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

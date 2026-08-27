@@ -1,93 +1,51 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
 public class ato {
-   protected final Set<aiy> a = Sets.newHashSet();
-   protected final Set<aiy> b = Sets.newHashSet();
-   private final atp c = new atp();
+   public static final Codec<ato> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajc.a.fieldOf("sound_id").forGetter(ato::a), Codec.FLOAT.optionalFieldOf("range").forGetter(ato::b)).apply($$0, ato::a)
+   );
+   public static final Codec<il<ato>> b = aiy.a(ki.af, a);
+   public static final xq<ByteBuf, ato> c = xq.a(ajc.b, ato::a, xo.f.a(xo::a), ato::b, ato::a);
+   public static final xq<vd, il<ato>> d = xo.a(ki.af, c);
+   private static final float e = 16.0F;
+   private final ajc f;
+   private final float g;
+   private final boolean h;
 
-   public void a(ato $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private static ato a(ajc $$0, Optional<Float> $$1) {
+      return $$1.<ato>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public void a(csh<?> $$0) {
-      if (!$$0.b().as_()) {
-         this.a($$0.a());
+   public static ato a(ajc $$0) {
+      return new ato($$0, 16.0F, false);
+   }
+
+   public static ato a(ajc $$0, float $$1) {
+      return new ato($$0, $$1, true);
+   }
+
+   private ato(ajc $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public ajc a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
       }
    }
 
-   protected void a(aiy $$0) {
-      this.a.add($$0);
-   }
-
-   public boolean b(@Nullable csh<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
-   }
-
-   public boolean b(aiy $$0) {
-      return this.a.contains($$0);
-   }
-
-   public void c(csh<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(aiy $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(csh<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(csh<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(csh<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(aiy $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(clt $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(clt $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(cls<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(clt $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(clt $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(atp $$0) {
-      this.c.a($$0);
-   }
-
-   public atp a() {
-      return this.c.a();
-   }
-
-   public void a(clt $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
    }
 }

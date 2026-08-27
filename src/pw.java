@@ -1,203 +1,202 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+
 public class pw {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final axi<Float> e = axi.a;
-   private static final axi<Float> f = axi.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final axi<Float> g = axi.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final axi<Float> h = axi.a($$0 -> $$0 * 2.0F);
+   private static final dsh.o a = a(czh.a);
+   private static final dsh.o b = a(czh.F);
+   private static final dsh.o c = a(czh.hj);
+   private static final dsh.o d = a(czh.hk);
+   private static final dsh.o e = a(czh.iA);
+   private static final dsh.o f = a(czh.K);
+   private static final dsh.o g = a(czh.jp);
+   private static final dsh.o h = a(czh.b);
+   private static final dsh.o i = a(czh.sJ);
+   private static final dsh.o j = a(czh.j);
+   private static final dsh.o k = a(czh.l);
+   private static final dsh.o l = a(czh.k);
+   private static final dsh.o m = a(czh.fl);
+   private static final dsh.o n = a(czh.i);
+   private static final dsh.o o = a(czh.qN);
+   private static final dsh.o p = a(czh.L);
+   private static final dsh.o q = a(czh.I);
+   private static final dsh.o r = a(czh.aV);
+   private static final dsh.o s = a(czh.iC);
+   private static final dsh.o t = a(czh.dP);
+   private static final dsh.o u = a(czh.sI);
+   private static final dsh.o v = a(czh.qP);
+   private static final dsh.o w = a(czh.dO);
+   private static final dsh.o x = a(czh.G);
+   private static final dsh.o y = a(czh.H);
+   private static final dsh.o z = a(czh.dV);
+   private static final dsh.o A = a(czh.dW);
+   private static final dsh.o B = a(czh.dX);
+   private static final dsh.o C = a(czh.dY);
+   private static final dsh.o D = a(czh.pr);
+   private static final dsh.o E = a(czh.op);
+   private static final dsh.o F = a(czh.on);
+   private static final dsh.o G = a(czh.kK);
+   private static final dsh.o H = a(czh.ow);
+   private static final dsh.o I = a(czh.fz);
 
-   public static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      axi<Float> $$4 = $$3 ? f : e;
-      avk<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      avk<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      avk<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      avk<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return avk.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
+   private static dsh.o a(czf $$0) {
+      return dsh.a($$0.o());
    }
 
-   public static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      axi<Float> $$5 = $$4 ? g : e;
-      return avk.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
+   public static dsh.o a() {
+      return a(true, false, true);
    }
 
-   public static <C, I extends axi<C>> avk<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      axi<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return avk.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
-      float $$8 = -0.5775F;
-      avk<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      avk<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return avk.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, float $$2, float $$3, axi<Float> $$4) {
-      float $$5 = drc.a(0.4F);
-      float $$6 = drc.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      avk.b<C, I> $$8 = avk.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
+   public static dsh.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dsh.f $$3 = dsh.a(dsk.a(97), 2);
+      dsh.f $$4 = dsh.a(dsk.a(256), 0);
+      dsh.f $$5 = dsh.b(dsk.a(63), -1);
+      dsh.f $$6 = dsh.b(dsk.a(74), 1);
+      dsh.f $$7 = dsh.a(dsk.a(60), 0);
+      dsh.f $$8 = dsh.a(dsk.a(62), 0);
+      dsh.f $$9 = dsh.a(dsk.a(63), 0);
+      dsh.f $$10 = dsh.a(-1, 0);
+      dsh.f $$11 = dsh.a(0, 0);
+      dsh.f $$12 = dsh.b(-6, -1);
+      dsh.f $$13 = dsh.b();
+      dsh.f $$14 = dsh.a(cxk.W, cxk.X);
+      dsh.f $$15 = dsh.a();
+      dsh.o $$16 = dsh.a(dsh.a($$11, n), j);
+      dsh.o $$17 = dsh.a(dsh.a(dsh.e, r), q);
+      dsh.o $$18 = dsh.a(dsh.a(dsh.e, h), p);
+      dsh.f $$19 = dsh.a(cxk.P, cxk.M, cxk.N);
+      dsh.f $$20 = dsh.a(cxk.f);
+      dsh.o $$21 = dsh.a(
+         dsh.a(dsh.a(cxk.J), dsh.a(dsh.a(dsh.a(drz.X, -0.0125, 0.0125), o), h)),
+         dsh.a(dsh.a(cxk.O), dsh.a(dsh.a(dsh.a(drz.Y, -0.05, 0.05), $$18), h)),
+         dsh.a(dsh.a(cxk.t), dsh.a(a(1.0), h)),
+         dsh.a($$19, $$17),
+         dsh.a($$20, $$17),
+         dsh.a(dsh.a(cxk.Z), h)
+      );
+      dsh.o $$22 = dsh.a(dsh.a(drz.Z, 0.45, 0.58), dsh.a($$11, v));
+      dsh.o $$23 = dsh.a(dsh.a(drz.Z, 0.35, 0.6), dsh.a($$11, v));
+      dsh.o $$24 = dsh.a(
+         dsh.a(dsh.a(cxk.H), dsh.a(dsh.a($$15, s), dsh.a(dsh.a(drz.aa, -0.5, 0.2), s), dsh.a(dsh.a(drz.ab, -0.0625, 0.025), w), dsh.a($$11, t))),
+         dsh.a(dsh.a(cxk.G), dsh.a(dsh.a($$15, h), $$22, dsh.a($$11, t))),
+         dsh.a(dsh.a(cxk.I), h),
+         dsh.a(dsh.a(cxk.F), dsh.a($$22, j)),
+         $$21,
+         dsh.a(dsh.a(cxk.w), dsh.a(a(1.75), h)),
+         dsh.a(dsh.a(cxk.u), dsh.a(dsh.a(a(2.0), $$18), dsh.a(a(1.0), h), dsh.a(a(-1.0), j), $$18)),
+         dsh.a(dsh.a(cxk.h), u),
+         j
+      );
+      dsh.o $$25 = dsh.a(
+         dsh.a(dsh.a(cxk.H), dsh.a(dsh.a($$15, s), dsh.a(dsh.a(drz.aa, 0.0, 0.2), s), dsh.a(dsh.a(drz.ab, 0.0, 0.025), w), dsh.a($$11, t))),
+         dsh.a(dsh.a(cxk.G), dsh.a(dsh.a($$15, h), $$23, dsh.a($$11, t))),
+         dsh.a(dsh.a(cxk.I), dsh.a(dsh.a($$15, h), dsh.a($$11, t))),
+         dsh.a(dsh.a(cxk.F), dsh.a($$23, dsh.a($$11, t))),
+         $$21,
+         dsh.a(dsh.a(cxk.w), dsh.a(dsh.a(a(1.75), h), dsh.a(a(-0.5), l))),
+         dsh.a(dsh.a(cxk.u), dsh.a(dsh.a(a(2.0), $$18), dsh.a(a(1.0), h), dsh.a(a(-1.0), $$16), $$18)),
+         dsh.a(dsh.a(cxk.n, cxk.o), dsh.a(dsh.a(a(1.75), l), dsh.a(a(-0.95), k))),
+         dsh.a(dsh.a(cxk.e), dsh.a($$11, t)),
+         dsh.a(dsh.a(cxk.h), u),
+         dsh.a(dsh.a(cxk.Y), m),
+         $$16
+      );
+      dsh.f $$26 = dsh.a(drz.N, -0.909, -0.5454);
+      dsh.f $$27 = dsh.a(drz.N, -0.1818, 0.1818);
+      dsh.f $$28 = dsh.a(drz.N, 0.5454, 0.909);
+      dsh.o $$29 = dsh.a(
+         dsh.a(
+            dsh.a,
+            dsh.a(
+               dsh.a(dsh.a(cxk.C), dsh.a($$3, dsh.a(dsh.a($$26, l), dsh.a($$27, l), dsh.a($$28, l), $$16))),
+               dsh.a(dsh.a(cxk.g), dsh.a($$8, dsh.a(dsh.a($$9), dsh.a(dsh.a(drz.W, 0.0), x)))),
+               dsh.a(dsh.a(cxk.h), dsh.a($$7, dsh.a(dsh.a($$9), dsh.a(dsh.a(drz.W, 0.0), x))))
+            )
+         ),
+         dsh.a(
+            dsh.a(cxk.A, cxk.B, cxk.C),
+            dsh.a(
+               dsh.a(
+                  dsh.a,
+                  dsh.a(
+                     dsh.a($$4, d),
+                     dsh.a($$6, dsh.a(dsh.a($$26, e), dsh.a($$27, e), dsh.a($$28, e), dsh.e())),
+                     dsh.a($$10, dsh.a(dsh.a(dsh.e, g), f)),
+                     dsh.a(dsh.a($$13), d),
+                     dsh.a($$12, c),
+                     $$18
+                  )
+               ),
+               dsh.a($$5, dsh.a(dsh.a($$9, dsh.a(dsh.a($$6), d)), dsh.e())),
+               dsh.a(dsh.b, dsh.a($$12, c))
+            )
+         ),
+         dsh.a(dsh.a, dsh.a($$10, dsh.a(dsh.a($$14, dsh.a($$13, dsh.a(dsh.a($$11, a), dsh.a(dsh.d(), w), x))), $$25))),
+         dsh.a($$12, dsh.a(dsh.a(dsh.a, dsh.a($$14, dsh.a($$13, x))), dsh.a(dsh.b, $$24), dsh.a($$19, dsh.a(dsh.c, r)), dsh.a($$20, dsh.a(dsh.d, r)))),
+         dsh.a(dsh.a, dsh.a(dsh.a(dsh.a(cxk.H, cxk.I), h), dsh.a(dsh.a(cxk.P, cxk.Q, cxk.R), $$17), $$18))
+      );
+      Builder<dsh.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dsh.a(dsh.a(dsh.a("bedrock_roof", dsk.c(5), dsk.b())), b));
       }
 
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
+      if ($$2) {
+         $$30.add(dsh.a(dsh.a("bedrock_floor", dsk.a(), dsk.b(5)), b));
       }
 
-      return $$8.a();
+      dsh.o $$31 = dsh.a(dsh.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dsh.a(dsh.a("deepslate", dsk.a(0), dsk.a(8)), i));
+      return dsh.a((dsh.o[])$$30.build().toArray(dsh.o[]::new));
    }
 
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, axi<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return avk.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   public static dsh.o b() {
+      dsh.f $$0 = dsh.a(dsk.a(31), 0);
+      dsh.f $$1 = dsh.a(dsk.a(32), 0);
+      dsh.f $$2 = dsh.b(dsk.a(30), 0);
+      dsh.f $$3 = dsh.a(dsh.b(dsk.a(35), 0));
+      dsh.f $$4 = dsh.a(dsk.c(5), 0);
+      dsh.f $$5 = dsh.b();
+      dsh.f $$6 = dsh.a(drz.ac, -0.012);
+      dsh.f $$7 = dsh.a(drz.ad, -0.012);
+      dsh.f $$8 = dsh.a(drz.ae, -0.012);
+      dsh.f $$9 = dsh.a(drz.af, 0.54);
+      dsh.f $$10 = dsh.a(drz.ag, 1.17);
+      dsh.f $$11 = dsh.a(drz.ah, 0.0);
+      dsh.o $$12 = dsh.a($$8, dsh.a($$2, dsh.a($$3, p)));
+      return dsh.a(
+         dsh.a(dsh.a("bedrock_floor", dsk.a(), dsk.b(5)), b),
+         dsh.a(dsh.a(dsh.a("bedrock_roof", dsk.c(5), dsk.b())), b),
+         dsh.a($$4, z),
+         dsh.a(dsh.a(cxk.ag), dsh.a(dsh.a(dsh.f, C), dsh.a(dsh.b, dsh.a($$12, dsh.a($$11, C), D)))),
+         dsh.a(dsh.a(cxk.af), dsh.a(dsh.a(dsh.f, dsh.a(dsh.a($$11, A), B)), dsh.a(dsh.b, dsh.a($$12, dsh.a($$11, A), B)))),
+         dsh.a(
+            dsh.a,
+            dsh.a(
+               dsh.a(dsh.a($$1), dsh.a($$5, y)),
+               dsh.a(dsh.a(cxk.ad), dsh.a(dsh.a($$9), dsh.a($$0, dsh.a(dsh.a($$10, E), F)))),
+               dsh.a(dsh.a(cxk.ae), dsh.a(dsh.a($$9), dsh.a($$0, dsh.a(dsh.a($$10, G), H))))
+            )
+         ),
+         dsh.a(
+            dsh.a(cxk.ac),
+            dsh.a(
+               dsh.a(dsh.b, dsh.a($$6, dsh.a(dsh.a(dsh.a($$5), dsh.a($$2, dsh.a($$3, A))), z))),
+               dsh.a(dsh.a, dsh.a($$0, dsh.a($$3, dsh.a($$7, dsh.a(dsh.a($$1, p), dsh.a(dsh.a($$5), p))))))
+            )
+         ),
+         z
+      );
    }
 
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, axi<Float> $$5) {
-      avk<C, I> $$6 = avk.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      avk.b<C, I> $$7 = avk.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, avk.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, avk.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         avk<C, I> $$8 = avk.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         avk<C, I> $$9 = avk.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         avk<C, I> $$10 = avk.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         avk<C, I> $$11 = avk.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
+   public static dsh.o c() {
+      return I;
    }
 
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
+   public static dsh.o d() {
+      return a;
    }
 
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, boolean $$2, axi<Float> $$3) {
-      avk.b<C, I> $$4 = avk.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, awi.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends axi<C>> avk<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, axi<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      avk<C, I> $$14 = a($$1, awi.i($$5, 0.6F, 1.5F), $$9, $$10);
-      avk<C, I> $$15 = a($$1, awi.i($$5, 0.6F, 1.0F), $$9, $$10);
-      avk<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      avk<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, awi.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avk<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avk<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avk<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avk<C, I> $$21 = avk.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      avk<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      avk.b<C, I> $$23 = avk.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return avk.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   private static dsh.f a(double $$0) {
+      return dsh.a(drz.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

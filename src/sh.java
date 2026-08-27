@@ -1,36 +1,29 @@
-import java.util.Optional;
+public record sh(int a, boolean b) {
+   private static final sh c = new sh(1, true);
 
-public class sh implements rv.c {
-   private static final int c = 5;
-   private static final int d = 6;
-   private final int e;
-   private int f;
-   private enu g;
-   private final hz.a h;
-   private final hz i;
-
-   public sh(hz $$0, int $$1) {
-      this.e = $$1;
-      this.h = $$0.j();
-      this.g = new enu(this.h);
-      this.i = $$0;
+   public static sh a() {
+      return c;
    }
 
-   @Override
-   public Optional<rs> spawnStructure(rs $$0) {
-      hz $$1 = new hz(this.h);
-      $$0.b($$1);
-      $$0.n();
-      enu $$2 = si.a($$0.e());
-      this.g = this.g.b($$2);
-      this.h.e((int)$$2.b() + 5, 0, 0);
-      if (++this.f >= this.e) {
-         this.f = 0;
-         this.h.e(0, 0, (int)this.g.d() + 6);
-         this.h.p(this.i.u());
-         this.g = new enu(this.h);
-      }
+   public boolean b() {
+      return this.a < 1;
+   }
 
-      return Optional.of($$0);
+   public boolean a(int $$0, int $$1) {
+      boolean $$2 = $$0 != $$1;
+      boolean $$3 = this.b() || $$0 < this.a;
+      return $$3 && (!$$2 || !this.b);
+   }
+
+   public boolean c() {
+      return this.a != 1;
+   }
+
+   public int d() {
+      return this.a;
+   }
+
+   public boolean e() {
+      return this.b;
    }
 }

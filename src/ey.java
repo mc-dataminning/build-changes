@@ -18,7 +18,7 @@ public class ey implements ArgumentType<ey.b> {
    public static final SuggestionProvider<du> a = ($$0, $$1) -> {
       StringReader $$2 = new StringReader($$1.getInput());
       $$2.setCursor($$1.getStart());
-      gh $$3 = new gh($$2);
+      gj $$3 = new gj($$2);
 
       try {
          $$3.t();
@@ -28,27 +28,27 @@ public class ey implements ArgumentType<ey.b> {
       return $$3.a($$1, $$1x -> dz.b(((du)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vs.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public ey(boolean $$0) {
       this.d = $$0;
    }
 
-   public static epc a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static epy a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<epc> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<epy> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<epc> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((du)$$0.getSource()).l().aJ()::e);
+   public static Collection<epy> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((du)$$0.getSource()).l().aK()::e);
    }
 
-   public static Collection<epc> a(CommandContext<du> $$0, String $$1, Supplier<Collection<epc>> $$2) throws CommandSyntaxException {
-      Collection<epc> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
+   public static Collection<epy> a(CommandContext<du> $$0, String $$1, Supplier<Collection<epy>> $$2) throws CommandSyntaxException {
+      Collection<epy> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw eh.d.create();
       } else {
@@ -66,8 +66,8 @@ public class ey implements ArgumentType<ey.b> {
 
    public ey.b a(StringReader $$0) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '@') {
-         gh $$1 = new gh($$0);
-         gg $$2 = $$1.t();
+         gj $$1 = new gj($$0);
+         gi $$2 = $$1.t();
          if (!this.d && $$2.a() > 1) {
             throw eh.a.create();
          } else {
@@ -83,7 +83,7 @@ public class ey implements ArgumentType<ey.b> {
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          if ($$4.equals("*")) {
             return ($$0x, $$1) -> {
-               Collection<epc> $$2 = $$1.get();
+               Collection<epy> $$2 = $$1.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -91,7 +91,7 @@ public class ey implements ArgumentType<ey.b> {
                }
             };
          } else {
-            List<epc> $$5 = List.of(epc.d($$4));
+            List<epy> $$5 = List.of(epy.d($$4));
             if ($$4.startsWith("#")) {
                return ($$1, $$2) -> $$5;
             } else {
@@ -99,11 +99,11 @@ public class ey implements ArgumentType<ey.b> {
                   UUID $$6 = UUID.fromString($$4);
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     epc $$5x = null;
-                     List<epc> $$6x = null;
+                     epy $$5x = null;
+                     List<epy> $$6x = null;
 
-                     for (aow $$7 : $$4x.J()) {
-                        bnq $$8 = $$7.a($$6);
+                     for (apa $$7 : $$4x.K()) {
+                        bof $$8 = $$7.a($$6);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -127,7 +127,7 @@ public class ey implements ArgumentType<ey.b> {
                } catch (IllegalArgumentException var6) {
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     aox $$5x = $$4x.ag().a($$4);
+                     apb $$5x = $$4x.ah().a($$4);
                      return $$5x != null ? List.of($$5x) : $$5;
                   };
                }
@@ -140,10 +140,10 @@ public class ey implements ArgumentType<ey.b> {
       return b;
    }
 
-   public static class a implements hl<ey, ey.a.a> {
+   public static class a implements hn<ey, ey.a.a> {
       private static final byte a = 1;
 
-      public void a(ey.a.a $$0, uq $$1) {
+      public void a(ey.a.a $$0, us $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -152,7 +152,7 @@ public class ey implements ArgumentType<ey.b> {
          $$1.k($$2);
       }
 
-      public ey.a.a a(uq $$0) {
+      public ey.a.a a(us $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new ey.a.a($$2);
@@ -166,7 +166,7 @@ public class ey implements ArgumentType<ey.b> {
          return new ey.a.a($$0.d);
       }
 
-      public final class a implements hl.a<ey> {
+      public final class a implements hn.a<ey> {
          final boolean b;
 
          a(boolean $$1) {
@@ -178,7 +178,7 @@ public class ey implements ArgumentType<ey.b> {
          }
 
          @Override
-         public hl<ey, ?> a() {
+         public hn<ey, ?> a() {
             return a.this;
          }
       }
@@ -186,19 +186,19 @@ public class ey implements ArgumentType<ey.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<epc> getNames(du var1, Supplier<Collection<epc>> var2) throws CommandSyntaxException;
+      Collection<epy> getNames(du var1, Supplier<Collection<epy>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements ey.b {
-      private final gg a;
+      private final gi a;
 
-      public c(gg $$0) {
+      public c(gi $$0) {
          this.a = $$0;
       }
 
       @Override
-      public Collection<epc> getNames(du $$0, Supplier<Collection<epc>> $$1) throws CommandSyntaxException {
-         List<? extends bnq> $$2 = this.a.b($$0);
+      public Collection<epy> getNames(du $$0, Supplier<Collection<epy>> $$1) throws CommandSyntaxException {
+         List<? extends bof> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eh.d.create();
          } else {

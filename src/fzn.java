@@ -1,45 +1,71 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class fzn implements fze.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final exo c;
-   private Collection<hz> d = Lists.newArrayList();
+class fzn {
+   private final Map<ib, djl> a;
+   @Nullable
+   private final List<dot<dme>> b;
+   private final boolean c;
+   private final dol d;
 
-   public fzn(exo $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<hz> $$0) {
+   fzn(dol $$0) {
       this.d = $$0;
-   }
+      this.c = $$0.F().ag();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof doh) {
+         this.b = null;
+      } else {
+         dom[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
-      hz $$5 = this.b().c();
-
-      for (hz $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+         for (dom $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
    }
 
-   private static void a(esh $$0, fvt $$1, hz $$2) {
-      fze.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   @Nullable
+   public djl a(ib $$0) {
+      return this.a.get($$0);
    }
 
-   private static void a(esh $$0, fvt $$1, String $$2, hz $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fze.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
+   public dme b(ib $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dme $$4 = null;
+         if ($$2 == 60) {
+            $$4 = czh.hW.o();
+         }
 
-   private ewz b() {
-      return this.c.j.m();
+         if ($$2 == 70) {
+            $$4 = drh.a($$1, $$3);
+         }
+
+         return $$4 == null ? czh.a.o() : $$4;
+      } else if (this.b == null) {
+         return czh.a.o();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dot<dme> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return czh.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
+         }
+      }
    }
 }

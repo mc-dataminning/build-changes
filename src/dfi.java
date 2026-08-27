@@ -1,84 +1,133 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-public class dfi extends dbc implements dfh {
-   public static final MapCodec<dfi> b = b(dfi::new);
+public class dfi extends cyv {
+   public static final MapCodec<dfi> c = b(dfi::new);
+   public static final dmv d = dmu.r;
+   private static final Map<cvk, List<dfi.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
    @Override
-   public MapCodec<dfi> a() {
-      return b;
+   public MapCodec<? extends dfi> a() {
+      return c;
    }
 
-   public dfi(dli.d $$0) {
-      super(bky.a(1), $$0);
+   protected dfi(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public int a(dfm.a $$0, cvs $$1, hz $$2, awp $$3, dfm $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         hz $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               hz $$10 = $$7.c();
-               dlj $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), atm.e, 1.0F, 1.0F);
-            }
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      for (ih $$5 : ih.values()) {
+         $$1.a($$2.a($$5), this);
+      }
+   }
 
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$4) {
+         for (ih $$5 : ih.values()) {
+            $$1.a($$2.a($$5), this);
          }
-      } else {
-         return $$6;
       }
    }
 
-   private static int a(dfm $$0, hz $$1, hz $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = awi.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = awi.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   @Override
+   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return $$0.c(d) && ih.b != $$3 ? 15 : 0;
    }
 
-   private dlj a(cvs $$0, hz $$1, awp $$2, boolean $$3) {
-      dlj $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = cyu.qV.o().a(dfl.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = cyu.qQ.o();
+   protected boolean a(cwe $$0, ib $$1, dme $$2) {
+      return $$0.b($$1.d(), ih.a);
+   }
+
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dfi.a> $$5 = h.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.X() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
       }
 
-      return $$4.b(dlz.C) && !$$0.b_($$1).c() ? $$4.a(dlz.C, Boolean.valueOf(true)) : $$4;
-   }
-
-   private static boolean a(cvs $$0, hz $$1) {
-      dlj $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(cyu.G) && $$2.u().b(egx.c)) {
-         int $$3 = 0;
-
-         for (hz $$4 : hz.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dlj $$5 = $$0.a_($$4);
-            if ($$5.a(cyu.qQ) || $$5.a(cyu.qV)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
             }
          }
-
-         return true;
-      } else {
-         return false;
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   public boolean d() {
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.N().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   protected int b(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return $$3 == ih.a ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean f_(dme $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(jv.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(cwe $$0, ib $$1, boolean $$2) {
+      List<dfi.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dfi.a($$1.i(), $$0.X()));
+      }
+
+      int $$4 = 0;
+
+      for (dfi.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
       return false;
+   }
+
+   public static class a {
+      final ib a;
+      final long b;
+
+      public a(ib $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

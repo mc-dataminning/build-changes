@@ -1,17 +1,29 @@
-public interface eoe {
-   static eoe a() {
-      return eoj.a;
+import net.minecraft.server.MinecraftServer;
+
+public class eoe implements eog<MinecraftServer> {
+   final ajc a;
+
+   public eoe(ajc $$0) {
+      this.a = $$0;
    }
 
-   static eoe a(bnq $$0) {
-      return new eoj($$0);
+   public void a(MinecraftServer $$0, eoi<MinecraftServer> $$1, long $$2) {
+      ajq $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   boolean b();
+   public static class a extends eog.a<MinecraftServer, eoe> {
+      public a() {
+         super(new ajc("function"), eoe.class);
+      }
 
-   boolean a(eos var1, hz var2, boolean var3);
+      public void a(sy $$0, eoe $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   boolean a(coy var1);
-
-   boolean a(egw var1, egw var2);
+      public eoe a(sy $$0) {
+         ajc $$1 = new ajc($$0.l("Name"));
+         return new eoe($$1);
+      }
+   }
 }

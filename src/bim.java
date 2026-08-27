@@ -1,32 +1,11 @@
-import java.nio.file.Path;
-import java.util.List;
-
 public interface bim {
-   char d = '\u001e';
-
-   List<bip> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
+   int c();
 
    int d();
 
-   default long g() {
-      return this.c() - this.a();
-   }
+   long a(int var1);
 
-   default int f() {
-      return this.d() - this.b();
-   }
+   long a(int var1, int var2);
 
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
-   }
+   void e();
 }

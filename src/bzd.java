@@ -1,33 +1,24 @@
-public class bzd {
-   public static boolean a(bok $$0) {
-      return $$0.N() instanceof bxs;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class bzd extends bzg<box> {
+   @Override
+   public Set<bya<?>> a() {
+      return ImmutableSet.of(bya.j, bya.k, bya.l);
    }
 
-   public static boolean a(boq $$0, int $$1) {
-      return $$0.fS() && $$0.fP().a($$0.dk(), (double)($$0.fQ() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(hz $$0, boq $$1) {
-      return $$0.v() < $$1.dM().J_() || $$0.v() > $$1.dM().ak();
-   }
-
-   public static boolean a(boolean $$0, boq $$1, hz $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bxt $$0, hz $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(boq $$0, hz $$1) {
-      return $$0.dM().b_($$1).a(auf.a);
-   }
-
-   public static boolean b(boq $$0, hz $$1) {
-      return $$0.a(ehq.a($$0.dM(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(boq $$0, hz $$1) {
-      return $$0.dM().a_($$1).e();
+   @Override
+   protected void a(apa $$0, box $$1) {
+      List<cia> $$2 = $$0.x().stream().filter(bok.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
+      bpy<?> $$3 = $$1.dM();
+      $$3.a(bya.j, $$2);
+      List<cia> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(bya.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cia> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(bya.l, $$5);
    }
 }

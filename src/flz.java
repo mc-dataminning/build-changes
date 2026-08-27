@@ -1,16 +1,29 @@
-public abstract class flz<E extends bnq> extends fle<E> {
-   private float a = 1.0F;
-   private float b = 1.0F;
-   private float f = 1.0F;
+import java.util.function.Function;
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = $$0;
+public abstract class flz<E extends bof> extends fnn<E> {
+   private final float a;
+   private final float b;
+
+   public flz(float $$0, float $$1) {
+      this($$0, $$1, fwy::e);
+   }
+
+   public flz(float $$0, float $$1, Function<ajc, fwy> $$2) {
+      super($$2);
       this.b = $$1;
-      this.f = $$2;
+      this.a = $$0;
    }
 
    @Override
-   public void a(esh $$0, esl $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
+   public void a(etd $$0, eth $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

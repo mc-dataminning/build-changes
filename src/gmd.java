@@ -1,165 +1,263 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record gmd<T>(String F, String G, Codec<T> H, gmd.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final gmd<String> a = b("user_id", "userId");
-   public static final gmd<String> b = b("client_id", "clientId");
-   public static final gmd<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final gmd<String> d = b("game_version", "buildDisplayName");
-   public static final gmd<String> e = b("operating_system", "buildPlatform");
-   public static final gmd<String> f = b("platform", "platform");
-   public static final gmd<Boolean> g = a("client_modded", "clientModded");
-   public static final gmd<String> h = b("launcher_name", "launcherName");
-   public static final gmd<UUID> i = e("world_session_id", "worldSessionId");
-   public static final gmd<Boolean> j = a("server_modded", "serverModded");
-   public static final gmd<gmd.c> k = a("server_type", "serverType", gmd.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final gmd<Boolean> l = a("opt_in", "isOptional");
-   public static final gmd<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", avq.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final gmd<gmd.b> n = a("game_mode", "playerGameMode", gmd.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final gmd<String> o = b("realms_map_content", "realmsMapContent");
-   public static final gmd<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final gmd<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final gmd<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final gmd<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final gmd<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final gmd<Integer> u = c("number_of_samples", "numSamples");
-   public static final gmd<Integer> v = c("render_distance", "renderDistance");
-   public static final gmd<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final gmd<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final gmd<Boolean> y = a("new_world", "newWorld");
-   public static final gmd<gmh.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final gmd<gmh.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final gmd<gmh.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final gmd<gmh.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final gmd<String> D = b("advancement_id", "advancementId");
-   public static final gmd<Long> E = d("advancement_game_time", "advancementGameTime");
+public class gmd extends MinecraftServer {
+   private static final Logger k = LogUtils.getLogger();
+   private static final int l = 2;
+   private final eyk m;
+   private boolean n = true;
+   private int o = -1;
+   @Nullable
+   private cwb p;
+   @Nullable
+   private gmg q;
+   @Nullable
+   private UUID r;
+   private int s = 0;
 
-   public static <T> gmd<T> a(String $$0, String $$1, Codec<T> $$2, gmd.a<T> $$3) {
-      return new gmd<>($$0, $$1, $$2, $$3);
-   }
-
-   public static gmd<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gmd<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gmd<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gmd<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gmd<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, jc.c, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static gmd<gmh.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gmh.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static gmd<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(gme $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
-      }
-   }
-
-   public we a() {
-      return vq.c("telemetry.property." + this.F + ".title");
+   public gmd(Thread $$0, eyk $$1, ejo.c $$2, arq $$3, ajy $$4, ajv $$5, apk $$6) {
+      super($$0, $$2, $$3, $$4, $$1.Y(), $$1.as(), $$5, $$6);
+      this.b($$1.X());
+      this.c($$1.J());
+      this.a(new gmc(this, this.be(), this.g));
+      this.m = $$1;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public boolean e() {
+      k.info("Starting integrated minecraft server version {}", aa.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.U();
+      this.u_();
+      GameProfile $$0 = this.S();
+      String $$1 = this.bc().e();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
    }
 
-   public String b() {
-      return this.F;
+   @Override
+   public boolean D() {
+      return this.n;
    }
 
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public gmd.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements axc {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<gmd.b> f = axc.a(gmd.b::values);
-      private final String g;
-      private final int h;
-
-      private b(String $$0, int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.n;
+      this.n = eyk.P().ah();
+      bjc $$2 = this.aU();
+      if (!$$1 && this.n) {
+         $$2.a("autoSave");
+         k.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
       }
 
-      public int a() {
-         return this.h;
-      }
+      boolean $$3 = eyk.P().K() != null;
+      if ($$3 && this.n) {
+         this.b();
+      } else {
+         if ($$1 && !this.n) {
+            this.F();
+         }
 
-      @Override
-      public String c() {
-         return this.g;
+         super.a($$0);
+         int $$4 = Math.max(2, this.m.m.e().c());
+         if ($$4 != this.ah().p()) {
+            k.info("Changing view distance to {}, from {}", $$4, this.ah().p());
+            this.ah().a($$4);
+         }
+
+         int $$5 = Math.max(2, this.m.m.f().c());
+         if ($$5 != this.s) {
+            k.info("Changing simulation distance to {}, from {}", $$5, this.s);
+            this.ah().b($$5);
+            this.s = $$5;
+         }
       }
    }
 
-   public static enum c implements axc {
-      a("realm"),
-      b("local"),
-      c("server");
+   protected bii a() {
+      return this.m.aO().l();
+   }
 
-      public static final Codec<gmd.c> d = axc.a(gmd.c::values);
-      private final String e;
+   @Override
+   public boolean g() {
+      return true;
+   }
 
-      private c(String $$0) {
-         this.e = $$0;
+   private void b() {
+      for (apb $$0 : this.ah().t()) {
+         $$0.a(atz.l);
       }
+   }
 
-      @Override
-      public String c() {
-         return this.e;
+   @Override
+   public boolean m() {
+      return true;
+   }
+
+   @Override
+   public boolean W_() {
+      return true;
+   }
+
+   @Override
+   public File C() {
+      return this.m.p;
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public void a(o $$0) {
+      this.m.b($$0);
+   }
+
+   @Override
+   public ab a(ab $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.P().b());
+      $$0.a("Launched Version", this.m::h);
+      return $$0;
+   }
+
+   @Override
+   public awl P() {
+      return eyk.e().a(super.P());
+   }
+
+   @Override
+   public boolean a(@Nullable cwb $$0, boolean $$1, int $$2) {
+      try {
+         this.m.aS();
+         this.m.v().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
+               frb $$1x = this.m.K();
+               if ($$1x != null) {
+                  $$1x.a($$0xx);
+               }
+            }), this.m);
+         this.ai().a(null, $$2);
+         k.info("Started serving on {}", $$2);
+         this.o = $$2;
+         this.q = new gmg(this.af(), $$2 + "");
+         this.q.start();
+         this.p = $$0;
+         this.ah().b($$1);
+         int $$3 = this.c(this.m.s.fU());
+         this.m.s.a($$3);
+
+         for (apb $$4 : this.ah().t()) {
+            this.aH().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
       }
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      if (this.q != null) {
+         this.q.interrupt();
+         this.q = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (apb $$1 : Lists.newArrayList(this.ah().t())) {
+            if (!$$1.ct().equals(this.r)) {
+               this.ah().c($$1);
+            }
+         }
+      });
+      super.a($$0);
+      if (this.q != null) {
+         this.q.interrupt();
+         this.q = null;
+      }
+   }
+
+   @Override
+   public boolean r() {
+      return this.o > -1;
+   }
+
+   @Override
+   public int R() {
+      return this.o;
+   }
+
+   @Override
+   public void a(cwb $$0) {
+      super.a($$0);
+      this.p = null;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public int k() {
+      return 2;
+   }
+
+   @Override
+   public int l() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.S() != null && $$0.getName().equalsIgnoreCase(this.S().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.m.m.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean ba() {
+      return this.m.m.af;
+   }
+
+   @Nullable
+   @Override
+   public cwb bf() {
+      return this.r() ? (cwb)MoreObjects.firstNonNull(this.p, this.j.k()) : null;
    }
 }

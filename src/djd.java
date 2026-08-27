@@ -1,156 +1,91 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class djd {
+   public static final ajb<djc> a = a("base");
+   public static final ajb<djc> b = a("square_bottom_left");
+   public static final ajb<djc> c = a("square_bottom_right");
+   public static final ajb<djc> d = a("square_top_left");
+   public static final ajb<djc> e = a("square_top_right");
+   public static final ajb<djc> f = a("stripe_bottom");
+   public static final ajb<djc> g = a("stripe_top");
+   public static final ajb<djc> h = a("stripe_left");
+   public static final ajb<djc> i = a("stripe_right");
+   public static final ajb<djc> j = a("stripe_center");
+   public static final ajb<djc> k = a("stripe_middle");
+   public static final ajb<djc> l = a("stripe_downright");
+   public static final ajb<djc> m = a("stripe_downleft");
+   public static final ajb<djc> n = a("small_stripes");
+   public static final ajb<djc> o = a("cross");
+   public static final ajb<djc> p = a("straight_cross");
+   public static final ajb<djc> q = a("triangle_bottom");
+   public static final ajb<djc> r = a("triangle_top");
+   public static final ajb<djc> s = a("triangles_bottom");
+   public static final ajb<djc> t = a("triangles_top");
+   public static final ajb<djc> u = a("diagonal_left");
+   public static final ajb<djc> v = a("diagonal_up_right");
+   public static final ajb<djc> w = a("diagonal_up_left");
+   public static final ajb<djc> x = a("diagonal_right");
+   public static final ajb<djc> y = a("circle");
+   public static final ajb<djc> z = a("rhombus");
+   public static final ajb<djc> A = a("half_vertical");
+   public static final ajb<djc> B = a("half_horizontal");
+   public static final ajb<djc> C = a("half_vertical_right");
+   public static final ajb<djc> D = a("half_horizontal_bottom");
+   public static final ajb<djc> E = a("border");
+   public static final ajb<djc> F = a("curly_border");
+   public static final ajb<djc> G = a("gradient");
+   public static final ajb<djc> H = a("gradient_up");
+   public static final ajb<djc> I = a("bricks");
+   public static final ajb<djc> J = a("globe");
+   public static final ajb<djc> K = a("creeper");
+   public static final ajb<djc> L = a("skull");
+   public static final ajb<djc> M = a("flower");
+   public static final ajb<djc> N = a("mojang");
+   public static final ajb<djc> O = a("piglin");
 
-public class djd extends dix implements bln {
-   private static final int a = 2;
-   private static final int b = 4;
-   private final is<cpd> c = is.a(4, cpd.h);
-   private final int[] d = new int[4];
-   private final int[] e = new int[4];
-   private final csi.a<blp, crt> f = csi.b(csk.e);
-
-   public djd(hz $$0, dlj $$1) {
-      super(diz.G, $$0, $$1);
+   private static ajb<djc> a(String $$0) {
+      return ajb.a(ki.d, new ajc($$0));
    }
 
-   public static void a(cvr $$0, hz $$1, dlj $$2, djd $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         cpd $$6 = $$3.c.get($$5);
-         if (!$$6.b()) {
-            $$4 = true;
-            $$3.d[$$5]++;
-            if ($$3.d[$$5] >= $$3.e[$$5]) {
-               blp $$7 = new bmf($$6);
-               cpd $$8 = $$3.f.a($$7, $$0).map($$2x -> ((crt)$$2x.b()).a($$7, $$0.I_())).orElse($$6);
-               if ($$8.a($$0.I())) {
-                  bls.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
-                  $$3.c.set($$5, cpd.h);
-                  $$0.a($$1, $$2, $$2, 3);
-                  $$0.a(dpw.c, $$1, dpw.a.a($$2));
-               }
-            }
-         }
-      }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void b(cvr $$0, hz $$1, dlj $$2, djd $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         if ($$3.d[$$5] > 0) {
-            $$4 = true;
-            $$3.d[$$5] = awi.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
-         }
-      }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void c(cvr $$0, hz $$1, dlj $$2, djd $$3) {
-      awp $$4 = $$0.z;
-      if ($$4.i() < 0.11F) {
-         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
-            czg.a($$0, $$1, $$2.c(czg.d), false);
-         }
-      }
-
-      int $$6 = $$2.c(czg.f).e();
-
-      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
-         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
-            ie $$8 = ie.b(Math.floorMod($$7 + $$6, 4));
-            float $$9 = 0.3125F;
-            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
-            double $$11 = (double)$$1.v() + 0.5;
-            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
-
-            for (int $$13 = 0; $$13 < 4; $$13++) {
-               $$0.a(jz.ab, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
-            }
-         }
-      }
-   }
-
-   public is<cpd> c() {
-      return this.c;
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.c.clear();
-      blq.b($$0, this.c);
-      if ($$0.b("CookingTimes", 11)) {
-         int[] $$1 = $$0.n("CookingTimes");
-         System.arraycopy($$1, 0, this.d, 0, Math.min(this.e.length, $$1.length));
-      }
-
-      if ($$0.b("CookingTotalTimes", 11)) {
-         int[] $$2 = $$0.n("CookingTotalTimes");
-         System.arraycopy($$2, 0, this.e, 0, Math.min(this.e.length, $$2.length));
-      }
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      blq.a($$0, this.c, true);
-      $$0.a("CookingTimes", this.d);
-      $$0.a("CookingTotalTimes", this.e);
-   }
-
-   public aan d() {
-      return aan.a(this);
-   }
-
-   @Override
-   public sw aA_() {
-      sw $$0 = new sw();
-      blq.a($$0, this.c, true);
-      return $$0;
-   }
-
-   public Optional<csh<crt>> a(cpd $$0) {
-      return this.c.stream().noneMatch(cpd::b) ? Optional.empty() : this.f.a(new bmf($$0), this.o);
-   }
-
-   public boolean a(@Nullable bnq $$0, cpd $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
-         cpd $$4 = this.c.get($$3);
-         if ($$4.b()) {
-            this.e[$$3] = $$2;
-            this.d[$$3] = 0;
-            this.c.set($$3, $$1.a(1));
-            this.o.a(dpw.c, this.aE_(), dpw.a.a($$0, this.r()));
-            this.g();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void g() {
-      this.e();
-      this.i().a(this.aE_(), this.r(), this.r(), 3);
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void f() {
-      if (this.o != null) {
-         this.g();
-      }
+   public static djc a(ix<djc> $$0) {
+      ix.a($$0, a, new djc("b"));
+      ix.a($$0, b, new djc("bl"));
+      ix.a($$0, c, new djc("br"));
+      ix.a($$0, d, new djc("tl"));
+      ix.a($$0, e, new djc("tr"));
+      ix.a($$0, f, new djc("bs"));
+      ix.a($$0, g, new djc("ts"));
+      ix.a($$0, h, new djc("ls"));
+      ix.a($$0, i, new djc("rs"));
+      ix.a($$0, j, new djc("cs"));
+      ix.a($$0, k, new djc("ms"));
+      ix.a($$0, l, new djc("drs"));
+      ix.a($$0, m, new djc("dls"));
+      ix.a($$0, n, new djc("ss"));
+      ix.a($$0, o, new djc("cr"));
+      ix.a($$0, p, new djc("sc"));
+      ix.a($$0, q, new djc("bt"));
+      ix.a($$0, r, new djc("tt"));
+      ix.a($$0, s, new djc("bts"));
+      ix.a($$0, t, new djc("tts"));
+      ix.a($$0, u, new djc("ld"));
+      ix.a($$0, v, new djc("rd"));
+      ix.a($$0, w, new djc("lud"));
+      ix.a($$0, x, new djc("rud"));
+      ix.a($$0, y, new djc("mc"));
+      ix.a($$0, z, new djc("mr"));
+      ix.a($$0, A, new djc("vh"));
+      ix.a($$0, B, new djc("hh"));
+      ix.a($$0, C, new djc("vhr"));
+      ix.a($$0, D, new djc("hhb"));
+      ix.a($$0, E, new djc("bo"));
+      ix.a($$0, F, new djc("cbo"));
+      ix.a($$0, G, new djc("gra"));
+      ix.a($$0, H, new djc("gru"));
+      ix.a($$0, I, new djc("bri"));
+      ix.a($$0, J, new djc("glb"));
+      ix.a($$0, K, new djc("cre"));
+      ix.a($$0, L, new djc("sku"));
+      ix.a($$0, M, new djc("flo"));
+      ix.a($$0, N, new djc("moj"));
+      return ix.a($$0, O, new djc("pig"));
    }
 }

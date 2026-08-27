@@ -1,88 +1,160 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class def extends cys {
-   private static final ie[] a = ie.values();
-   public static final dma b = dlz.L;
-   public static final dma c = dlz.M;
-   public static final dma d = dlz.N;
-   public static final dma e = dlz.O;
-   public static final dma f = dlz.J;
-   public static final dma g = dlz.K;
-   public static final Map<ie, dma> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ie.class), $$0 -> {
-      $$0.put(ie.c, b);
-      $$0.put(ie.f, c);
-      $$0.put(ie.d, d);
-      $$0.put(ie.e, e);
-      $$0.put(ie.b, f);
-      $$0.put(ie.a, g);
-   }));
-   protected final eos[] i;
+public class def {
+   public static final def.e[] a = new def.e[]{def.e.a, def.e.b, def.e.c};
+   private final def.b b;
 
-   protected def(float $$0, dli.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   public def(dee $$0) {
+      this(new def.a($$0));
    }
 
-   @Override
-   protected abstract MapCodec<? extends def> a();
+   public def(def.b $$0) {
+      this.b = $$0;
+   }
 
-   private eos[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      eos $$3 = cys.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      eos[] $$4 = new eos[a.length];
+   public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return ih.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   }
 
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         ie $$6 = a[$$5];
-         $$4[$$5] = eop.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
+   public Optional<def.c> a(dme $$0, cwf $$1, ib $$2, awt $$3) {
+      return ih.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-      eos[] $$7 = new eos[64];
+   public long a(dme $$0, cwf $$1, ib $$2, boolean $$3) {
+      return ih.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
 
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         eos $$9 = $$3;
+   public Optional<def.c> a(dme $$0, cwf $$1, ib $$2, ih $$3, awt $$4, boolean $$5) {
+      return ih.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
 
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = eop.a($$9, $$4[$$10]);
+   private long a(dme $$0, cwf $$1, ib $$2, ih $$3, boolean $$4) {
+      return ih.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<def.c> a(dme $$0, cwf $$1, ib $$2, ih $$3, ih $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<def.c> a(dme $$0, cvk $$1, ib $$2, ih $$3, ih $$4, def.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (def.e $$6 : this.b.a()) {
+            def.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         $$7[$$8] = $$9;
+         return Optional.empty();
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   public Optional<def.c> a(cwf $$0, def.c $$1, boolean $$2) {
+      dme $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
+
+   public static class a implements def.b {
+      protected dee a;
+
+      public a(dee $$0) {
+         this.a = $$0;
       }
 
-      return $$7;
+      @Nullable
+      @Override
+      public dme a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(cvk $$0, ib $$1, ib $$2, ih $$3, dme $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(czh.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(cvk $$0, ib $$1, def.c $$2) {
+         dme $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   @Override
-   protected boolean a_(dlj $$0, cux $$1, hz $$2) {
-      return false;
-   }
+   public interface b {
+      @Nullable
+      dme a(dme var1, cvk var2, ib var3, ih var4);
 
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return this.i[this.m($$0)];
-   }
+      boolean a(cvk var1, ib var2, def.c var3);
 
-   protected int m(dlj $$0) {
-      int $$1 = 0;
+      default def.e[] a() {
+         return def.a;
+      }
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+      default boolean a(dme $$0, ih $$1) {
+         return dee.a($$0, $$1);
+      }
+
+      default boolean a(dme $$0) {
+         return false;
+      }
+
+      default boolean b(dme $$0, ih $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(cwf $$0, def.c $$1, dme $$2, boolean $$3) {
+         dme $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
          }
       }
+   }
 
-      return $$1;
+   public static record c(ib a, ih b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(cvk var1, ib var2, def.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public def.c a(ib $$0, ih $$1, ih $$2) {
+            return new def.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public def.c a(ib $$0, ih $$1, ih $$2) {
+            return new def.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public def.c a(ib $$0, ih $$1, ih $$2) {
+            return new def.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract def.c a(ib var1, ih var2, ih var3);
    }
 }

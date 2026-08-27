@@ -1,20 +1,15 @@
-public class gix {
-   public static final giy a = new giy();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+public class gix extends gjb {
+   private static final ajc a = new ajc("back");
 
-   public gix(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gix(gia $$0) {
+      super($$0, new ajc("textures/atlas/paintings.png"), new ajc("paintings"));
    }
 
-   public boolean a() {
-      return this.d;
+   public ghz a(ceh $$0) {
+      return this.a(kh.l.b($$0));
    }
 
-   public boolean b() {
-      return this.e;
+   public ghz a() {
+      return this.a(a);
    }
 }

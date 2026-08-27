@@ -1,13 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public abstract class dzs {
-   private static final Codec<Either<drp, dzs>> a = Codec.either(drp.a, kf.N.q().dispatch(dzs::a, dzt::codec));
-   public static final Codec<dzs> c = a.xmap(
-      $$0 -> (dzs)$$0.map(dzr::a, $$0x -> $$0x), $$0 -> $$0.a() == dzt.a ? Either.left(((dzr)$$0).b()) : Either.right($$0)
-   );
+public class dzs extends dzq {
+   public static final Codec<dzs> a = Codec.unit(() -> dzs.b);
+   public static final dzs b = new dzs();
 
-   public abstract int a(awp var1, drs var2);
+   @Override
+   protected dzr<?> a() {
+      return dzr.a;
+   }
 
-   public abstract dzt<?> a();
+   @Override
+   public void a(dzq.a $$0) {
+      awt $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            ib $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dia.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ib $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dia.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ib $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dia.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            ib $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dia.c);
+            }
+         }
+      });
+   }
 }

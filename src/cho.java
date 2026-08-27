@@ -1,83 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
 
-public record cho(cho.a d) {
-   public static final vq a = vq.c("multiplayer.disconnect.expired_public_key");
-   private static final vq e = vq.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cho> c = cho.a.a.xmap(cho::new, cho::b);
+public class cho {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cho> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kh.y.q().fieldOf("type").orElseGet(() -> chs.c).forGetter($$0x -> $$0x.f),
+               kh.z.q().fieldOf("profession").orElseGet(() -> chq.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cho::new)
+   );
+   public static final xq<vd, cho> d = xq.a(xo.a(ki.aq), $$0 -> $$0.f, xo.a(ki.ap), $$0 -> $$0.g, xo.d, $$0 -> $$0.h, cho::new);
+   private final chs f;
+   private final chq g;
+   private final int h;
 
-   public static cho a(awu $$0, UUID $$1, cho.a $$2) throws cho.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cho.b(e);
-      } else {
-         return new cho($$2);
-      }
+   public cho(chs $$0, chq $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   public awu a() {
-      return awu.a(this.d.c, "SHA256withRSA");
+   public chs a() {
+      return this.f;
    }
 
-   public cho.a b() {
-      return this.d;
+   public chq b() {
+      return this.g;
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cho.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avq.m.fieldOf("expires_at").forGetter(cho.a::b), avg.f.fieldOf("key").forGetter(cho.a::c), avq.n.fieldOf("signature_v2").forGetter(cho.a::d)
-               )
-               .apply($$0, cho.a::new)
-      );
-
-      public a(uq $$0) {
-         this($$0.v(), $$0.w(), $$0.a(4096));
-      }
-
-      public void a(uq $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(awu $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cho.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
+   public int c() {
+      return this.h;
    }
 
-   public static class b extends wq {
-      public b(vq $$0) {
-         super($$0);
-      }
+   public cho a(chs $$0) {
+      return new cho($$0, this.g, this.h);
+   }
+
+   public cho a(chq $$0) {
+      return new cho(this.f, $$0, this.h);
+   }
+
+   public cho a(int $$0) {
+      return new cho(this.f, this.g, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

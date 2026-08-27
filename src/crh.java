@@ -1,35 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface crh {
+   crh.a a = new crh.a(false, false);
+   crh.a b = new crh.a(true, false);
 
-public record crh(aiy c, ij<coy> d, vq e, boolean f) {
-   public static final Codec<crh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aiy.a.fieldOf("asset_id").forGetter(crh::a),
-               aiv.a(kg.F).fieldOf("template_item").forGetter(crh::b),
-               vs.a.fieldOf("description").forGetter(crh::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(crh::d)
-            )
-            .apply($$0, crh::new)
-   );
-   public static final Codec<ij<crh>> b = aiu.a(kg.aJ, a);
+   boolean a();
 
-   public vq a(ij<crf> $$0) {
-      return this.e.f().c($$0.a().e().a());
-   }
+   boolean b();
 
-   public aiy a() {
-      return this.c;
-   }
+   public static record a(boolean c, boolean d) implements crh {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
 
-   public ij<coy> b() {
-      return this.d;
-   }
+      @Override
+      public boolean b() {
+         return this.d;
+      }
 
-   public vq c() {
-      return this.e;
-   }
+      public crh.a c() {
+         return new crh.a(this.c, true);
+      }
 
-   public boolean d() {
-      return this.f;
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

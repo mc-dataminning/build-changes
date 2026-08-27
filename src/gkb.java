@@ -1,65 +1,57 @@
-public abstract class gkb extends gjx {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final bzy n;
-   private boolean r;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gkb(bzy $$0, atk $$1, atm $$2) {
-      super($$1, $$2, gko.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dr());
-      this.g = (double)((float)$$0.dt());
-      this.h = (double)((float)$$0.dx());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class gkb implements gjz {
+   private final fxz a;
+   private final fxx b;
+   private final ghz c;
+   private final boolean d;
+
+   public gkb(fxz $$0, fxx $$1, ghz $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         exo.P().aj().a((gkp)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dH() && !this.r) {
-         this.f = (double)((float)this.n.dr());
-         this.g = (double)((float)this.n.dt());
-         this.h = (double)((float)this.n.dx());
-         float $$1 = (float)this.n.dp().h();
-         if ($$1 >= 0.01F) {
-            this.e = awi.i(awi.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = awi.i(awi.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
-      } else {
-         this.n();
-      }
-   }
-
-   private float u() {
-      return this.n.o_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.o_() ? 1.5F : 1.1F;
+   public List<fxn> a(@Nullable dme $$0, @Nullable ih $$1, awt $$2) {
+      return Collections.emptyList();
    }
 
    @Override
-   public boolean r() {
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
       return true;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aU();
+   public boolean c() {
+      return this.d;
    }
 
-   protected abstract gjx o();
+   @Override
+   public boolean d() {
+      return true;
+   }
 
-   protected abstract boolean p();
+   @Override
+   public ghz e() {
+      return this.c;
+   }
+
+   @Override
+   public fxz f() {
+      return this.a;
+   }
+
+   @Override
+   public fxx g() {
+      return this.b;
+   }
 }

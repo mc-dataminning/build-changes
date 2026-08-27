@@ -15,8 +15,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class fh implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("argument.time.tick_count_too_low", $$1, $$0));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("argument.time.invalid_unit"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vs.b("argument.time.tick_count_too_low", $$1, $$0));
    private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
    final int e;
 
@@ -71,12 +71,12 @@ public class fh implements ArgumentType<Integer> {
       d.put("", 1);
    }
 
-   public static class a implements hl<fh, fh.a.a> {
-      public void a(fh.a.a $$0, uq $$1) {
+   public static class a implements hn<fh, fh.a.a> {
+      public void a(fh.a.a $$0, us $$1) {
          $$1.p($$0.b);
       }
 
-      public fh.a.a a(uq $$0) {
+      public fh.a.a a(us $$0) {
          int $$1 = $$0.readInt();
          return new fh.a.a($$1);
       }
@@ -89,7 +89,7 @@ public class fh implements ArgumentType<Integer> {
          return new fh.a.a($$0.e);
       }
 
-      public final class a implements hl.a<fh> {
+      public final class a implements hn.a<fh> {
          final int b;
 
          a(int $$1) {
@@ -101,7 +101,7 @@ public class fh implements ArgumentType<Integer> {
          }
 
          @Override
-         public hl<fh, ?> a() {
+         public hn<fh, ?> a() {
             return a.this;
          }
       }

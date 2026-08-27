@@ -1,46 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bsy {
-   public static bqb<boq> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$3 -> $$3.group($$3.c(bxl.o), $$3.c(bxl.m), $$3.a(bxl.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dm()).a(auf.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           eoe $$8 = eoe.a($$6);
-                           hz $$9 = $$6.dm();
-                           hz.a $$10 = new hz.a();
+public class bsy<U> implements Iterable<U> {
+   protected final List<bsy.a<U>> a;
+   private final awt b = awt.a();
 
-                           label45:
-                           for (hz $$11 : hz.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ie.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ie $$12 : ie.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ie.a)).a(cyu.G)) {
-                                       $$5.a(new bqd($$11));
-                                       $$4.a(new bxo(new bqd($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public bsy() {
+      this.a = Lists.newArrayList();
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   private bsy(List<bsy.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<bsy<U>> a(Codec<U> $$0) {
+      return bsy.a.a($$0).listOf().xmap(bsy::new, $$0x -> $$0x.a);
+   }
+
+   public bsy<U> a(U $$0, int $$1) {
+      this.a.add(new bsy.a<>($$0, $$1));
+      return this;
+   }
+
+   public bsy<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bsy.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(bsy.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bsy.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bsy.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bsy.a<E>>() {
+            public <T> DataResult<Pair<bsy.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bsy.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bsy.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

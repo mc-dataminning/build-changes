@@ -1,49 +1,44 @@
-import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cqz {
+public class cqz extends cnl {
+   protected final czf d;
+   private final ih c;
+
+   public cqz(czf $$0, czf $$1, cpl.a $$2, ih $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.c = $$3;
+   }
+
+   protected boolean a(cwh $$0, dme $$1, ib $$2) {
+      return $$1.a($$0, $$2);
+   }
+
    @Nullable
-   private final String a;
-   private final List<bnd> b;
+   @Override
+   protected dme c(crx $$0) {
+      dme $$1 = this.d.a($$0);
+      dme $$2 = null;
+      cwh $$3 = $$0.q();
+      ib $$4 = $$0.a();
 
-   public static ij<cqz> a(String $$0) {
-      aiy $$1 = aiy.a($$0);
-      return $$1 == null ? crc.b : kf.i.c($$1).map(Function.identity()).orElse(crc.b);
-   }
-
-   public cqz(bnd... $$0) {
-      this(null, $$0);
-   }
-
-   public cqz(@Nullable String $$0, bnd... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public static String a(ij<cqz> $$0, String $$1) {
-      String $$2 = $$0.a().a;
-      if ($$2 != null) {
-         return $$1 + $$2;
-      } else {
-         aix<cqz> $$3 = $$0.e().orElse(crc.a);
-         return $$1 + $$3.a().a();
-      }
-   }
-
-   public List<bnd> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bnd $$0 : this.b) {
-            if ($$0.b().a().a()) {
-               return true;
+      for (ih $$5 : $$0.f()) {
+         if ($$5 != this.c.g()) {
+            dme $$6 = $$5 == this.c ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
             }
          }
       }
 
-      return false;
+      return $$2 != null && $$3.a($$2, $$4, epa.a()) ? $$2 : null;
+   }
+
+   @Override
+   public void a(Map<czf, cpl> $$0, cpl $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.d, $$1);
    }
 }

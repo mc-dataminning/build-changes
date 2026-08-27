@@ -1,18 +1,23 @@
-public class bml {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+public enum bml {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 2.0F + $$2 / 4.0F;
-      float $$4 = awi.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
-      return $$0 * (1.0F - $$4 / 25.0F);
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = awi.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   public boolean b() {
+      return this == a;
+   }
+
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static bml a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

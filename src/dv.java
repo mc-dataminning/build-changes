@@ -19,12 +19,13 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class dv {
-   private static final ThreadLocal<gq<du>> f = new ThreadLocal<>();
+   private static final ThreadLocal<gs<du>> f = new ThreadLocal<>();
    private static final Logger g = LogUtils.getLogger();
    public static final int a = 0;
    public static final int b = 1;
@@ -34,105 +35,105 @@ public class dv {
    private final CommandDispatcher<du> h = new CommandDispatcher();
 
    public dv(dv.a $$0, dq $$1) {
-      akd.a(this.h);
-      ake.a(this.h, $$1);
-      aky.a(this.h, $$1);
-      aki.a(this.h);
-      akk.a(this.h, $$1);
-      akl.a(this.h, $$1);
+      akh.a(this.h);
+      aki.a(this.h, $$1);
+      alc.a(this.h, $$1);
       akm.a(this.h, $$1);
-      ann.a(this.h);
-      akn.a(this.h);
-      akp.a(this.h);
+      ako.a(this.h, $$1);
+      akp.a(this.h, $$1);
+      akq.a(this.h, $$1);
+      anr.a(this.h);
+      akr.a(this.h);
       akt.a(this.h);
-      aku.a(this.h);
-      akv.a(this.h, $$1);
-      akw.a(this.h);
-      akx.a(this.h, $$1);
-      akz.a(this.h);
+      akx.a(this.h);
+      aky.a(this.h);
+      akz.a(this.h, $$1);
+      ala.a(this.h);
       alb.a(this.h, $$1);
-      ala.a(this.h, $$1);
-      alc.a(this.h);
       ald.a(this.h);
-      ale.a(this.h);
-      alf.a(this.h);
-      alg.a(this.h, $$1);
+      alf.a(this.h, $$1);
+      ale.a(this.h, $$1);
+      alg.a(this.h);
       alh.a(this.h);
-      ali.a(this.h, $$1);
-      alk.a(this.h);
+      ali.a(this.h);
+      alj.a(this.h);
+      alk.a(this.h, $$1);
       all.a(this.h);
-      alm.a(this.h);
-      aln.a(this.h, $$1);
-      alo.a(this.h, $$1);
+      alm.a(this.h, $$1);
+      alo.a(this.h);
       alp.a(this.h);
-      alt.a(this.h, $$1);
-      alv.a(this.h);
-      alw.a(this.h);
+      alq.a(this.h);
+      alr.a(this.h, $$1);
+      als.a(this.h, $$1);
+      alt.a(this.h);
+      alx.a(this.h, $$1);
       alz.a(this.h);
-      amb.a(this.h);
       ama.a(this.h);
       amd.a(this.h);
+      amf.a(this.h);
       ame.a(this.h);
+      amh.a(this.h);
       ami.a(this.h);
-      amj.a(this.h);
-      amk.a(this.h);
-      aml.a(this.h, $$0 != dv.a.c);
-      amn.a(this.h, $$1);
-      amp.a(this.h);
-      amq.a(this.h);
-      ams.a(this.h);
+      amm.a(this.h);
+      amn.a(this.h);
+      amo.a(this.h, $$1);
+      amp.a(this.h, $$0 != dv.a.c);
+      amr.a(this.h, $$1);
       amt.a(this.h);
-      amv.a(this.h);
-      amw.a(this.h, $$1);
+      amu.a(this.h);
+      amw.a(this.h);
       amx.a(this.h);
-      amy.a(this.h);
       amz.a(this.h);
-      ana.a(this.h);
+      ana.a(this.h, $$1);
       anb.a(this.h);
-      anc.a(this.h);
+      anc.a(this.h, $$1);
       and.a(this.h);
       ane.a(this.h);
+      anf.a(this.h, $$1);
       ang.a(this.h);
-      ani.a(this.h);
+      anh.a(this.h);
+      ani.a(this.h, $$1);
       ank.a(this.h);
-      if (bit.e.d()) {
-         alj.a(this.h);
+      anm.a(this.h);
+      ano.a(this.h);
+      if (bji.e.d()) {
+         aln.a(this.h);
       }
 
-      if (aa.aU) {
-         sk.a(this.h);
-         amc.a(this.h);
-         aly.a(this.h);
-         aks.a(this.h);
-         akr.a(this.h);
-         anh.a(this.h);
-         amr.a(this.h);
-         amm.a(this.h);
+      if (aa.aV) {
+         sm.a(this.h);
+         amg.a(this.h);
+         amc.a(this.h, $$1);
+         akw.a(this.h);
+         akv.a(this.h);
+         anl.a(this.h);
+         amv.a(this.h);
+         amq.a(this.h);
          if ($$0.e) {
-            akq.a(this.h);
+            aku.a(this.h);
          }
       }
 
       if ($$0.e) {
-         akf.a(this.h);
-         akg.a(this.h);
-         akh.a(this.h);
-         ako.a(this.h);
-         alq.a(this.h);
-         alr.a(this.h);
-         als.a(this.h);
+         akj.a(this.h);
+         akk.a(this.h);
+         akl.a(this.h);
+         aks.a(this.h);
          alu.a(this.h);
-         amf.a(this.h);
-         amg.a(this.h);
-         amh.a(this.h);
-         amo.a(this.h);
-         amu.a(this.h);
-         anf.a(this.h);
+         alv.a(this.h);
+         alw.a(this.h);
+         aly.a(this.h);
+         amj.a(this.h);
+         amk.a(this.h);
+         aml.a(this.h);
+         ams.a(this.h);
+         amy.a(this.h);
          anj.a(this.h);
+         ann.a(this.h);
       }
 
       if ($$0.d) {
-         alx.a(this.h);
+         amb.a(this.h);
       }
 
       this.h.setConsumer(dw.b_());
@@ -151,15 +152,15 @@ public class dv {
 
    public void a(ParseResults<du> $$0, String $$1) {
       du $$2 = (du)$$0.getContext().getSource();
-      $$2.l().aT().a(() -> "/" + $$1);
+      $$2.l().aU().a(() -> "/" + $$1);
       ContextChain<du> $$3 = a($$0, $$1, $$2);
 
       try {
          if ($$3 != null) {
-            a($$2, $$3x -> gq.a($$3x, $$1, $$3, $$2, dr.a));
+            a($$2, $$3x -> gs.a($$3x, $$1, $$3, $$2, dr.a));
          }
       } catch (Exception var12) {
-         we $$5 = vq.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         wg $$5 = vs.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -169,13 +170,13 @@ public class dv {
             }
          }
 
-         $$2.b(vq.c("command.failed").a($$1x -> $$1x.a(new vw(vw.a.a, $$5))));
-         if (aa.aU) {
-            $$2.b(vq.b(ac.c(var12)));
+         $$2.b(vs.c("command.failed").a($$1x -> $$1x.a(new vy(vy.a.a, $$5))));
+         if (aa.aV) {
+            $$2.b(vs.b(ac.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         $$2.l().aT().c();
+         $$2.l().aU().c();
       }
    }
 
@@ -186,21 +187,21 @@ public class dv {
          return (ContextChain<du>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(vt.a(var7.getRawMessage()));
+         $$2.b(vv.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            we $$5 = vq.i().a(n.h).a($$1x -> $$1x.a(new vo(vo.a.d, "/" + $$1)));
+            wg $$5 = vs.i().a(n.h).a($$1x -> $$1x.a(new vq(vq.a.d, "/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(vp.u);
+               $$5.b(vr.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               vq $$6 = vq.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               vs $$6 = vs.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(vq.c("command.context.here").a(n.m, n.u));
+            $$5.b(vs.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -208,15 +209,15 @@ public class dv {
       }
    }
 
-   public static void a(du $$0, Consumer<gq<du>> $$1) {
+   public static void a(du $$0, Consumer<gs<du>> $$1) {
       MinecraftServer $$2 = $$0.l();
-      gq<du> $$3 = f.get();
+      gs<du> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(cvn.x));
-         int $$6 = $$2.aM().c(cvn.y);
+         int $$5 = Math.max(1, $$2.aN().c(cwa.x));
+         int $$6 = $$2.aN().c(cwa.y);
 
-         try (gq<du> $$7 = new gq<>($$5, $$6, $$2.aT())) {
+         try (gs<du> $$7 = new gs<>($$5, $$6, $$2.aU())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -228,12 +229,12 @@ public class dv {
       }
    }
 
-   public void a(aox $$0) {
+   public void a(apb $$0) {
       Map<CommandNode<du>, CommandNode<dz>> $$1 = Maps.newHashMap();
       RootCommandNode<dz> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.dd(), $$1);
-      $$0.d.b(new aaz($$2));
+      this.a(this.h.getRoot(), $$2, $$0.da(), $$1);
+      $$0.d.b(new abb($$2));
    }
 
    private void a(CommandNode<du> $$0, CommandNode<dz> $$1, du $$2, Map<CommandNode<du>, CommandNode<dz>> $$3) {
@@ -248,7 +249,7 @@ public class dv {
             if ($$5 instanceof RequiredArgumentBuilder) {
                RequiredArgumentBuilder<dz, ?> $$6 = (RequiredArgumentBuilder<dz, ?>)$$5;
                if ($$6.getSuggestionsProvider() != null) {
-                  $$6.suggests(hp.b($$6.getSuggestionsProvider()));
+                  $$6.suggests(hr.b($$6.getSuggestionsProvider()));
                }
             }
 
@@ -309,21 +310,34 @@ public class dv {
       }
    }
 
-   public static dq a(final il.b $$0) {
+   public static dq a(final in.a $$0) {
       return new dq() {
          @Override
-         public <T> il<T> a(aix<? extends iv<T>> $$0x) {
-            final il.c<T> $$1 = $$0.b($$0);
-            return new il.a<T>($$1) {
+         public Stream<ajb<? extends ix<?>>> a() {
+            return $$0.a();
+         }
+
+         @Override
+         public <T> Optional<in.b<T>> a(ajb<? extends ix<? extends T>> $$0x) {
+            return $$0.a($$0).map(this::a);
+         }
+
+         private <T> in.b.a<T> a(final in.b<T> $$0x) {
+            return new in.b.a<T>() {
                @Override
-               public Optional<in.c<T>> a(aup<T> $$0x) {
+               protected in.b<T> a() {
+                  return $$0;
+               }
+
+               @Override
+               public Optional<ip.c<T>> a(aut<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public in.c<T> b(aup<T> $$0x) {
-                  Optional<in.c<T>> $$1 = $$1.a($$0);
-                  return $$1.orElseGet(() -> in.a($$1, $$0));
+               public ip.c<T> b(aut<T> $$0xx) {
+                  Optional<ip.c<T>> $$1 = this.a().a($$0);
+                  return $$1.orElseGet(() -> ip.a(this.a(), $$0));
                }
             };
          }
@@ -331,14 +345,14 @@ public class dv {
    }
 
    public static void b() {
-      dq $$0 = a(nr.a());
+      dq $$0 = a(nt.a());
       CommandDispatcher<du> $$1 = new dv(dv.a.a, $$0).a();
       RootCommandNode<du> $$2 = $$1.getRoot();
       $$1.findAmbiguities(
          ($$1x, $$2x, $$3x, $$4x) -> g.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
       );
-      Set<ArgumentType<?>> $$3 = hn.a($$2);
-      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !hm.a($$0x.getClass())).collect(Collectors.toSet());
+      Set<ArgumentType<?>> $$3 = hp.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !ho.a($$0x.getClass())).collect(Collectors.toSet());
       if (!$$4.isEmpty()) {
          g.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
          throw new IllegalStateException("Unregistered argument types");

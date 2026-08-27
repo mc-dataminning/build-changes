@@ -1,40 +1,67 @@
-public class fsd extends fuh {
-   fsd(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
+
+public record fsd(String a, @Nullable fsd.a b) {
+   public static fsd a() {
+      return a(null);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(hz.a(this.g, this.h, this.i)).a(auf.a)) {
-         this.k();
+   public static fsd a(String $$0) {
+      return a(new fsd.a.b($$0));
+   }
+
+   public static fsd a(euk $$0) {
+      return a(new fsd.a.a($$0));
+   }
+
+   public static fsd a(@Nullable fsd.a $$0) {
+      return new fsd(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fsd.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fsd.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w04a");
+      if (eyk.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   @Override
-   public ftl b() {
-      return ftl.b;
+   public String e() {
+      return this.a;
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   @Nullable
+   public fsd.a f() {
+      return this.b;
+   }
 
-      public a(fuc $$0) {
-         this.a = $$0;
+   public interface a {
+      public static record a(long a, int b) implements fsd.a {
+         public a(euk $$0) {
+            this($$0.a, $$0.n);
+         }
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsd $$8 = new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public static record b(String a) implements fsd.a {
       }
    }
 }

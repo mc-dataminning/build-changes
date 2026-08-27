@@ -1,71 +1,96 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dkq extends dix implements cwj, dkt.a {
-   private static final Logger a = LogUtils.getLogger();
-   private dkt b;
+public class dkq extends djl implements dqt.b<dkq.a> {
+   private final dkq.a a;
 
-   public dkq(hz $$0, dlj $$1) {
-      super(diz.Q, $$0, $$1);
-      dks $$2 = dks.a;
-      this.b = new dkt(this, $$2);
+   public dkq(ib $$0, dme $$1) {
+      super(djn.K, $$0, $$1);
+      this.a = new dkq.a($$1, new dqn($$0));
+   }
+
+   public static void a(cwe $$0, ib $$1, dme $$2, dkq $$3) {
+      $$3.a.d().a($$0, $$1, $$0.F_(), true);
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.b.a().parse(tk.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.o != null) {
-         this.g();
+   public void a(sy $$0, in.a $$1) {
+      this.a.b.a($$0);
+   }
+
+   @Override
+   protected void b(sy $$0, in.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
+   }
+
+   public dkq.a b() {
+      return this.a;
+   }
+
+   public static class a implements dqt {
+      public static final int a = 8;
+      final dfz b;
+      private final dme c;
+      private final dqv d;
+
+      public a(dme $$0, dqv $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dfz.a();
       }
-   }
 
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.b.a().encodeStart(tk.a, this.b).get().ifLeft($$1 -> $$0.a((sw)$$1)).ifRight($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
-   }
+      @Override
+      public dqv a() {
+         return this.d;
+      }
 
-   public aan c() {
-      return aan.a(this);
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   @Override
-   public sw aA_() {
-      return this.b.c().a(this.r().c(dhg.b));
-   }
+      @Override
+      public dqt.a c() {
+         return dqt.a.b;
+      }
 
-   @Override
-   public boolean u() {
-      return true;
-   }
+      @Override
+      public boolean a(apa $$0, il<dqr> $$1, dqr.a $$2, eov $$3) {
+         if ($$1.a(dqr.p) && $$2.a() instanceof box $$4) {
+            if (!$$4.eC()) {
+               int $$5 = $$4.ed();
+               if ($$4.eb() && $$5 > 0) {
+                  this.b.a(ib.a($$3.a(ih.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
 
-   @Override
-   public void a(bnw<?> $$0, awp $$1) {
-      this.b.c().a(this.b, $$1, $$0);
-      this.e();
-   }
+               $$4.eB();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, ib.a($$1x), this.c, $$0.F_()));
+            }
 
-   public dkt d() {
-      return this.b;
-   }
+            return true;
+         } else {
+            return false;
+         }
+      }
 
-   @Override
-   public dkw f() {
-      return !this.r().b(dlz.by) ? dkw.a : this.r().c(dlz.by);
-   }
+      @VisibleForTesting
+      public dfz d() {
+         return this.b;
+      }
 
-   @Override
-   public void a(cvr $$0, dkw $$1) {
-      this.e();
-      $$0.b(this.p, this.r().a(dlz.by, $$1));
-   }
+      private void a(apa $$0, ib $$1, dme $$2, awt $$3) {
+         $$0.a($$1, $$2.a(dfw.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(kb.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, atp.vt, atq.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
 
-   @Override
-   public void g() {
-      this.e();
-      if (this.o != null) {
-         this.o.a(this.p, this.r(), this.r(), 3);
+      private void a(cwe $$0, box $$1) {
+         if ($$1.eg() instanceof apb $$3) {
+            bne $$4 = $$1.ew() == null ? $$0.ah().a((cia)$$3) : $$1.ew();
+            am.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

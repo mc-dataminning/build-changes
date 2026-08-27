@@ -1,20 +1,19 @@
-public class cpw extends coy {
-   public cpw(coy.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cpw extends crc {
+   public cpw(cpl.a $$0) {
       super($$0);
    }
 
    @Override
-   public blw a(cpd $$0, chl $$1, boi $$2, blv $$3) {
-      if ($$2 instanceof box $$4 && $$2.bx() && !$$4.i() && $$4.g()) {
-         if (!$$1.dM().B) {
-            $$4.a(atm.g);
-            $$2.dM().a($$2, dpw.v, $$2.dk());
-            $$0.h(1);
-         }
+   public void a(cpq $$0, @Nullable cwe $$1, List<vs> $$2, crh $$3) {
+      cro.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   }
 
-         return blw.a($$1.dM().B);
-      }
-
-      return blw.d;
+   @Override
+   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
+      $$0.a(null, $$1.do(), $$1.dq(), $$1.du(), atp.nz, atq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

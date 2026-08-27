@@ -1,40 +1,25 @@
-import javax.annotation.Nullable;
+public record abj(long[] b, bij c) implements xz<aai> {
+   public static final xq<us, abj> a = xz.a(abj::a, abj::new);
 
-public class abj implements xx<aag> {
-   public static final xo<uq, abj> a = xx.a(abj::a, abj::new);
-   private final int b;
-   private final byte c;
-
-   public abj(bnq $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+   private abj(us $$0) {
+      this($$0.d(), $$0.b(bij.class));
    }
 
-   private abj(uq $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(uq $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public xz<abj> a() {
-      return aeq.C;
+   public yb<abj> a() {
+      return aet.A;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bnq a(cvr $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
+   public bij e() {
       return this.c;
    }
 }

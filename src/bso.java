@@ -4,23 +4,29 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bso {
-   public static bqb<boi> a(Function<boi, Optional<bro>> $$0, Predicate<boi> $$1, int $$2, int $$3, float $$4) {
-      return btn.a(
-         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$5 -> $$5.group($$5.a(bxl.n), $$5.a(bxl.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bro> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bro $$11 = $$10.get();
-                        if ($$8.dk().a((it)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bro $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new bxo($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
+   public static bqq<box> a(bpa $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
+   }
+
+   public static bsa<box> a(bol<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai()), $$1);
+   }
+
+   public static bsa<box> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bsa<box> a(Predicate<box> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$2x -> $$2x.group($$2x.c(bya.n), $$2x.b(bya.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<box> $$8 = $$2x.<byc>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bof)$$6) <= (double)$$2 && !$$6.w($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
+                     } else {
+                        $$3.a(new bra($$8.get(), true));
+                        return true;
                      }
                   }))
       );

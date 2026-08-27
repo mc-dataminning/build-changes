@@ -1,168 +1,169 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 
-public class dce extends dbm {
-   public static final MapCodec<dce> a = b(dce::new);
-   public static final eos b = cys.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
-   public static final eos c = cys.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
-   public static final eos d = cys.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
-   public static final eos e = cys.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
-   public static final eos f = eop.a(b, d);
-   public static final eos g = eop.a(c, e);
-   public static final eos h = eop.a(f, g);
-   public static final eos i = eop.a(h, cys.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
-   public static final eos j = cys.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
-   public static final eos k = cys.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
-   public static final eos l = cys.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
-   public static final eos m = cys.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
-   public static final eos n = eop.a(j, l);
-   public static final eos o = eop.a(k, m);
-   public static final eos F = eop.a(n, o);
-   public static final eos G = eop.a(F, cys.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
-   public static final eos H = cys.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
-   public static final eos I = cys.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
-   public static final eos J = cys.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
-   public static final eos L = cys.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
-   public static final eos M = eop.a(H, J);
-   public static final eos N = eop.a(I, L);
-   public static final eos O = eop.a(M, N);
-   public static final eos P = eop.a(O, cys.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
-   public static final eos Q = cys.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
-   public static final eos R = cys.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
-   public static final eos S = cys.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
-   public static final eos T = cys.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
-   public static final eos U = eop.a(Q, S);
-   public static final eos V = eop.a(R, T);
-   public static final eos W = eop.a(U, V);
-   public static final eos X = eop.a(W, cys.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
-   public static final eos Y = cys.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
-   public static final eos Z = cys.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
-   public static final eos aa = cys.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
-   public static final eos ab = cys.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
-   public static final eos ac = eop.a(Y, aa);
-   public static final eos ad = eop.a(Z, ab);
-   public static final eos ae = eop.a(ac, ad);
-   public static final eos af = eop.a(ae, cys.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
-   public static final eos ag = cys.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
-   public static final eos ah = cys.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
-   public static final eos ai = cys.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
-   public static final eos aj = cys.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
-   public static final eos ak = eop.a(ag, ai);
-   public static final eos al = eop.a(ah, aj);
-   public static final eos am = eop.a(ak, al);
-   public static final eos an = eop.a(am, cys.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
-   public static final eos ao = cys.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
-   public static final eos ap = cys.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
-   public static final eos aq = cys.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
-   public static final eos ar = cys.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
-   public static final eos as = eop.a(ao, aq);
-   public static final eos at = eop.a(ap, ar);
-   public static final eos au = eop.a(as, at);
-   public static final eos av = eop.a(au, cys.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
-   public static final eos aw = cys.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
-   public static final eos ax = cys.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
-   public static final eos ay = cys.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
-   public static final eos az = cys.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
-   public static final eos aA = eop.a(aw, ay);
-   public static final eos aB = eop.a(ax, az);
-   public static final eos aC = eop.a(aA, aB);
-   public static final eos aD = eop.a(aC, cys.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
-   private static final vq aR = vq.c("container.grindstone_title");
+public class dce extends dda {
+   public static final MapCodec<dce> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dnr.a.fieldOf("wood_type").forGetter($$0x -> $$0x.G), u()).apply($$0, dce::new)
+   );
+   public static final dmv b = dmu.u;
+   public static final dmv c = dmu.w;
+   public static final dmv d = dmu.q;
+   protected static final epo e = czf.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final epo f = czf.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+   protected static final epo g = czf.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
+   protected static final epo h = czf.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
+   protected static final epo i = czf.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final epo j = czf.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final epo k = czf.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final epo l = czf.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final epo m = epl.a(czf.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), czf.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
+   protected static final epo n = epl.a(czf.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), czf.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
+   protected static final epo o = epl.a(czf.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), czf.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
+   protected static final epo F = epl.a(czf.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), czf.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
+   private final dnr G;
 
    @Override
    public MapCodec<dce> a() {
       return a;
    }
 
-   protected dce(dli.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, ie.c).a(K, dlu.b));
+   public dce(dnr $$0, dmd.d $$1) {
+      super($$1.a($$0.d()));
+      this.G = $$0;
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
-   }
-
-   private eos n(dlj $$0) {
-      ie $$1 = $$0.c(aE);
-      switch ((dlu)$$0.c(K)) {
-         case a:
-            if ($$1 != ie.c && $$1 != ie.d) {
-               return G;
-            }
-
-            return i;
-         case b:
-            if ($$1 == ie.c) {
-               return X;
-            } else if ($$1 == ie.d) {
-               return P;
-            } else {
-               if ($$1 == ie.f) {
-                  return an;
-               }
-
-               return af;
-            }
-         case c:
-            if ($$1 != ie.c && $$1 != ie.d) {
-               return aD;
-            }
-
-            return av;
-         default:
-            return G;
-      }
-   }
-
-   @Override
-   protected eos b(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return this.n($$0);
-   }
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return this.n($$0);
-   }
-
-   @Override
-   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
-      return true;
-   }
-
-   @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      if ($$1.B) {
-         return blw.a;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ih.a.a ? h : g;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atv.aD);
-         return blw.b;
+         return $$0.c(aE).o() == ih.a.a ? f : e;
       }
    }
 
    @Override
-   protected bma b(dlj $$0, cvr $$1, hz $$2) {
-      return new bmg(($$2x, $$3, $$4) -> new cld($$2x, $$3, ckq.a($$1, $$2)), aR);
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      ih.a $$6 = $$1.o();
+      if ($$0.c(aE).h().o() != $$6) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         boolean $$7 = this.m($$2) || this.m($$3.a_($$4.a($$1.g())));
+         return $$0.a(d, Boolean.valueOf($$7));
+      }
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
+   protected epo b_(dme $$0, cvk $$1, ib $$2) {
+      if ($$0.c(b)) {
+         return epl.a();
+      } else {
+         return $$0.c(aE).o() == ih.a.c ? k : l;
+      }
    }
 
    @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      if ($$0.c(b)) {
+         return epl.a();
+      } else {
+         return $$0.c(aE).o() == ih.a.c ? i : j;
+      }
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(aE, K);
+   protected epo f(dme $$0, cvk $$1, ib $$2) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ih.a.a ? F : o;
+      } else {
+         return $$0.c(aE).o() == ih.a.a ? n : m;
+      }
    }
 
    @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
-      return false;
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return false;
+         case c:
+            return $$0.c(b);
+         default:
+            return false;
+      }
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      cwe $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      boolean $$3 = $$1.C($$2);
+      ih $$4 = $$0.g();
+      ih.a $$5 = $$4.o();
+      boolean $$6 = $$5 == ih.a.c && (this.m($$1.a_($$2.g())) || this.m($$1.a_($$2.h())))
+         || $$5 == ih.a.a && (this.m($$1.a_($$2.e())) || this.m($$1.a_($$2.f())));
+      return this.o().a(aE, $$4).a(b, Boolean.valueOf($$3)).a(c, Boolean.valueOf($$3)).a(d, Boolean.valueOf($$6));
+   }
+
+   private boolean m(dme $$0) {
+      return $$0.a(aue.L);
+   }
+
+   @Override
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$0.c(b)) {
+         $$0 = $$0.a(b, Boolean.valueOf(false));
+         $$1.a($$2, $$0, 10);
+      } else {
+         ih $$5 = $$3.cB();
+         if ($$0.c(aE) == $$5.g()) {
+            $$0 = $$0.a(aE, $$5);
+         }
+
+         $$0 = $$0.a(b, Boolean.valueOf(true));
+         $$1.a($$2, $$0, 10);
+      }
+
+      boolean $$6 = $$0.c(b);
+      $$1.a($$3, $$2, $$6 ? this.G.g() : this.G.f(), atq.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+      $$1.a($$3, $$6 ? dqr.h : dqr.d, $$2);
+      return bml.a($$1.B);
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, cvw $$3, BiConsumer<cpq, ib> $$4) {
+      if ($$3.j() == cvw.a.d && !$$1.y_() && !$$0.c(c)) {
+         boolean $$5 = $$0.c(b);
+         $$1.b($$2, $$0.a(b, Boolean.valueOf(!$$5)));
+         $$1.a(null, $$2, $$5 ? this.G.f() : this.G.g(), atq.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+         $$1.a($$5 ? dqr.d : dqr.h, $$2, dqr.a.a($$0));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$0.c(c) != $$6) {
+            $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)).a(b, Boolean.valueOf($$6)), 2);
+            if ($$0.c(b) != $$6) {
+               $$1.a(null, $$2, $$6 ? this.G.g() : this.G.f(), atq.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+               $$1.a(null, $$6 ? dqr.h : dqr.d, $$2);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(aE, b, c, d);
+   }
+
+   public static boolean a(dme $$0, ih $$1) {
+      return $$0.c(aE).o() == $$1.h().o();
    }
 }

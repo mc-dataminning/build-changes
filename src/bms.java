@@ -1,97 +1,171 @@
-public interface bms {
-   aix<bmr> a = aix.a(kg.r, new aiy("in_fire"));
-   aix<bmr> b = aix.a(kg.r, new aiy("lightning_bolt"));
-   aix<bmr> c = aix.a(kg.r, new aiy("on_fire"));
-   aix<bmr> d = aix.a(kg.r, new aiy("lava"));
-   aix<bmr> e = aix.a(kg.r, new aiy("hot_floor"));
-   aix<bmr> f = aix.a(kg.r, new aiy("in_wall"));
-   aix<bmr> g = aix.a(kg.r, new aiy("cramming"));
-   aix<bmr> h = aix.a(kg.r, new aiy("drown"));
-   aix<bmr> i = aix.a(kg.r, new aiy("starve"));
-   aix<bmr> j = aix.a(kg.r, new aiy("cactus"));
-   aix<bmr> k = aix.a(kg.r, new aiy("fall"));
-   aix<bmr> l = aix.a(kg.r, new aiy("fly_into_wall"));
-   aix<bmr> m = aix.a(kg.r, new aiy("out_of_world"));
-   aix<bmr> n = aix.a(kg.r, new aiy("generic"));
-   aix<bmr> o = aix.a(kg.r, new aiy("magic"));
-   aix<bmr> p = aix.a(kg.r, new aiy("wither"));
-   aix<bmr> q = aix.a(kg.r, new aiy("dragon_breath"));
-   aix<bmr> r = aix.a(kg.r, new aiy("dry_out"));
-   aix<bmr> s = aix.a(kg.r, new aiy("sweet_berry_bush"));
-   aix<bmr> t = aix.a(kg.r, new aiy("freeze"));
-   aix<bmr> u = aix.a(kg.r, new aiy("stalagmite"));
-   aix<bmr> v = aix.a(kg.r, new aiy("falling_block"));
-   aix<bmr> w = aix.a(kg.r, new aiy("falling_anvil"));
-   aix<bmr> x = aix.a(kg.r, new aiy("falling_stalactite"));
-   aix<bmr> y = aix.a(kg.r, new aiy("sting"));
-   aix<bmr> z = aix.a(kg.r, new aiy("mob_attack"));
-   aix<bmr> A = aix.a(kg.r, new aiy("mob_attack_no_aggro"));
-   aix<bmr> B = aix.a(kg.r, new aiy("player_attack"));
-   aix<bmr> C = aix.a(kg.r, new aiy("arrow"));
-   aix<bmr> D = aix.a(kg.r, new aiy("trident"));
-   aix<bmr> E = aix.a(kg.r, new aiy("mob_projectile"));
-   aix<bmr> F = aix.a(kg.r, new aiy("spit"));
-   aix<bmr> G = aix.a(kg.r, new aiy("wind_charge"));
-   aix<bmr> H = aix.a(kg.r, new aiy("fireworks"));
-   aix<bmr> I = aix.a(kg.r, new aiy("fireball"));
-   aix<bmr> J = aix.a(kg.r, new aiy("unattributed_fireball"));
-   aix<bmr> K = aix.a(kg.r, new aiy("wither_skull"));
-   aix<bmr> L = aix.a(kg.r, new aiy("thrown"));
-   aix<bmr> M = aix.a(kg.r, new aiy("indirect_magic"));
-   aix<bmr> N = aix.a(kg.r, new aiy("thorns"));
-   aix<bmr> O = aix.a(kg.r, new aiy("explosion"));
-   aix<bmr> P = aix.a(kg.r, new aiy("player_explosion"));
-   aix<bmr> Q = aix.a(kg.r, new aiy("sonic_boom"));
-   aix<bmr> R = aix.a(kg.r, new aiy("bad_respawn_point"));
-   aix<bmr> S = aix.a(kg.r, new aiy("outside_border"));
-   aix<bmr> T = aix.a(kg.r, new aiy("generic_kill"));
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-   static void a(ph<bmr> $$0) {
-      $$0.a(a, new bmr("inFire", 0.1F, bmn.d));
-      $$0.a(b, new bmr("lightningBolt", 0.1F));
-      $$0.a(c, new bmr("onFire", 0.0F, bmn.d));
-      $$0.a(d, new bmr("lava", 0.1F, bmn.d));
-      $$0.a(e, new bmr("hotFloor", 0.1F, bmn.d));
-      $$0.a(f, new bmr("inWall", 0.0F));
-      $$0.a(g, new bmr("cramming", 0.0F));
-      $$0.a(h, new bmr("drown", 0.0F, bmn.c));
-      $$0.a(i, new bmr("starve", 0.0F));
-      $$0.a(j, new bmr("cactus", 0.1F));
-      $$0.a(k, new bmr("fall", bmo.b, 0.0F, bmn.a, bmt.b));
-      $$0.a(l, new bmr("flyIntoWall", 0.0F));
-      $$0.a(m, new bmr("outOfWorld", 0.0F));
-      $$0.a(n, new bmr("generic", 0.0F));
-      $$0.a(o, new bmr("magic", 0.0F));
-      $$0.a(p, new bmr("wither", 0.0F));
-      $$0.a(q, new bmr("dragonBreath", 0.0F));
-      $$0.a(r, new bmr("dryout", 0.1F));
-      $$0.a(s, new bmr("sweetBerryBush", 0.1F, bmn.e));
-      $$0.a(t, new bmr("freeze", 0.0F, bmn.f));
-      $$0.a(u, new bmr("stalagmite", 0.0F));
-      $$0.a(v, new bmr("fallingBlock", 0.1F));
-      $$0.a(w, new bmr("anvil", 0.1F));
-      $$0.a(x, new bmr("fallingStalactite", 0.1F));
-      $$0.a(y, new bmr("sting", 0.1F));
-      $$0.a(z, new bmr("mob", 0.1F));
-      $$0.a(A, new bmr("mob", 0.1F));
-      $$0.a(B, new bmr("player", 0.1F));
-      $$0.a(C, new bmr("arrow", 0.1F));
-      $$0.a(D, new bmr("trident", 0.1F));
-      $$0.a(E, new bmr("mob", 0.1F));
-      $$0.a(F, new bmr("mob", 0.1F));
-      $$0.a(H, new bmr("fireworks", 0.1F));
-      $$0.a(J, new bmr("onFire", 0.1F, bmn.d));
-      $$0.a(I, new bmr("fireball", 0.1F, bmn.d));
-      $$0.a(K, new bmr("witherSkull", 0.1F));
-      $$0.a(L, new bmr("thrown", 0.1F));
-      $$0.a(M, new bmr("indirectMagic", 0.0F));
-      $$0.a(N, new bmr("thorns", 0.1F, bmn.b));
-      $$0.a(O, new bmr("explosion", bmo.c, 0.1F));
-      $$0.a(P, new bmr("explosion.player", bmo.c, 0.1F));
-      $$0.a(Q, new bmr("sonic_boom", bmo.c, 0.0F));
-      $$0.a(R, new bmr("badRespawnPoint", bmo.c, 0.1F, bmn.a, bmt.c));
-      $$0.a(S, new bmr("outsideBorder", 0.0F));
-      $$0.a(T, new bmr("genericKill", 0.0F));
-      $$0.a(G, new bmr("mob", 0.1F));
+public class bms extends eiw {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<ajc, bmr> f = new Object2ObjectOpenHashMap();
+
+   public static eiw.a<bms> a(long $$0) {
+      return new eiw.a<>(() -> new bms($$0), ($$1, $$2) -> a($$0, $$1), axs.m);
+   }
+
+   public bms(long $$0) {
+      this.b = $$0;
+   }
+
+   public awt a(ajc $$0) {
+      awt $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bms.a($$1);
+   }
+
+   private bmr c(ajc $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
+
+   private bmr b(ajc $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bmr($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
+
+   public void a(BiConsumer<ajc, bmr> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public sy a(sy $$0, in.a $$1) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      sy $$2 = new sy();
+      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (tv)bmr.a.encodeStart(tm.a, $$2x).result().orElseThrow()));
+      $$0.a("sequences", $$2);
+      return $$0;
+   }
+
+   private static boolean a(sy $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bms a(long $$0, sy $$1) {
+      bms $$2 = new bms($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      sy $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bmr $$6 = (bmr)((Pair)bmr.a.decode(tm.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(new ajc($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
+      }
+
+      return $$2;
+   }
+
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
+   }
+
+   public void b(ajc $$0) {
+      this.f.put($$0, this.c($$0));
+   }
+
+   public void a(ajc $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
+   }
+
+   class a implements awt {
+      private final awt c;
+
+      a(awt $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public awt d() {
+         bms.this.c();
+         return this.c.d();
+      }
+
+      @Override
+      public dsd e() {
+         bms.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bms.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bms.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bms.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bms.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bms.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bms.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bms.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bms.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return $$0 instanceof bms.a $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
    }
 }

@@ -1,51 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfv extends dci {
-   public static final MapCodec<dfv> a = b(dfv::new);
+public class dfv extends dbp implements dfu {
+   public static final MapCodec<dfv> b = b(dfv::new);
 
    @Override
    public MapCodec<dfv> a() {
-      return a;
+      return b;
    }
 
-   public dfv(dli.d $$0) {
-      super($$0);
+   public dfv(dmd.d $$0) {
+      super(bln.a(1), $$0);
    }
 
    @Override
-   public void a(cvr $$0, dlj $$1, hz $$2, bnq $$3, float $$4) {
-      if ($$3.bU()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
+   public int a(dfz.a $$0, cwf $$1, ib $$2, awt $$3, dfz $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         ib $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               ib $$10 = $$7.c();
+               dme $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), atq.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
       } else {
-         $$3.a($$4, 0.0F, $$0.ah().k());
+         return $$6;
       }
    }
 
-   @Override
-   public void a(cux $$0, bnq $$1) {
-      if ($$1.bU()) {
-         super.a($$0, $$1);
+   private static int a(dfz $$0, ib $$1, ib $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = awm.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = awm.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dme a(cwf $$0, ib $$1, awt $$2, boolean $$3) {
+      dme $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = czh.qV.o().a(dfy.d, Boolean.valueOf($$3));
       } else {
-         this.a($$1);
+         $$4 = czh.qQ.o();
       }
+
+      return $$4.b(dmu.C) && !$$0.b_($$1).c() ? $$4.a(dmu.C, Boolean.valueOf(true)) : $$4;
    }
 
-   private void a(bnq $$0) {
-      enz $$1 = $$0.dp();
-      if ($$1.d < 0.0) {
-         double $$2 = $$0 instanceof boi ? 1.0 : 0.8;
-         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+   private static boolean a(cwf $$0, ib $$1) {
+      dme $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(czh.G) && $$2.u().b(ehs.c)) {
+         int $$3 = 0;
+
+         for (ib $$4 : ib.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dme $$5 = $$0.a_($$4);
+            if ($$5.a(czh.qQ) || $$5.a(czh.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   public void a(cvr $$0, hz $$1, dlj $$2, bnq $$3) {
-      double $$4 = Math.abs($$3.dp().d);
-      if ($$4 < 0.1 && !$$3.bT()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.g($$3.dp().d($$5, 1.0, $$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public boolean d() {
+      return false;
    }
 }

@@ -1,84 +1,38 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class alu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.op.failed"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
+            ass $$2 = ((du)$$0x.getSource()).l().ah();
+            return dz.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fU())).map($$0xx -> $$0xx.fU().getName()), $$1);
+         }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aU()) {
-         throw c.create();
+   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      ass $$2 = $$0.l().ah();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> vs.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         Consumer<bim> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> vq.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aU()) {
-         throw b.create();
-      } else {
-         $$1.aW();
-         return 0;
-      }
-   }
-
-   private static void a(du $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.ba().e(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bkc.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(vq.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (avt $$7 = new avt(bkc.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> vq.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(du $$0, bim $$1) {
-      if ($$1 != bii.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)axh.a;
-         $$0.a(() -> vq.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$3;
       }
    }
 }

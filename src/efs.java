@@ -1,18 +1,19 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class efs implements eft {
-   public static final efs a = new efs();
-   public static final Codec<efs> b = Codec.unit(a);
+public class efs extends eft {
+   public static final Codec<efs> a = Codec.unit(() -> efs.b);
+   public static final efs b = new efs();
 
-   @Nullable
-   @Override
-   public sw a(awp $$0, @Nullable sw $$1) {
-      return $$1;
+   private efs() {
    }
 
    @Override
-   public efu<?> a() {
-      return efu.b;
+   public boolean a(ib $$0, ib $$1, ib $$2, awt $$3) {
+      return true;
+   }
+
+   @Override
+   protected efu<?> a() {
+      return efu.a;
    }
 }

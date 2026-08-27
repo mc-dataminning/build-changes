@@ -1,61 +1,84 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
+import java.util.EnumSet;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bvb extends bvf {
-   private static final int a = 200;
-   private final bzw b;
-   private int c;
-   private int d;
+public class bvb<T extends box> extends bvu {
+   protected final bpf a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eig d;
+   protected final byi e;
+   protected final Class<T> f;
+   protected final Predicate<box> g;
+   protected final Predicate<box> h;
+   private final bzn k;
 
-   public bvb(bzw $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
+   public bvb(bpf $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bok.e::test);
    }
 
-   protected int a(bzw $$0) {
-      return b(200 + $$0.eh().a(200) % 20);
+   public bvb(bpf $$0, Class<T> $$1, Predicate<box> $$2, float $$3, double $$4, double $$5, Predicate<box> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.N();
+      this.a(EnumSet.of(bvu.a.a));
+      this.k = bzn.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bvb(bpf $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<box> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (this.b.gm()) {
-         return false;
-      } else if (this.b.gj()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      this.b = this.a
+         .dJ()
+         .a(this.a.dJ().a(this.f, this.a.cE().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.do(), this.a.dq(), this.a.du());
+      if (this.b == null) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<bzw> $$0 = $$0x -> $$0x.gl() || !$$0x.gj();
-         List<? extends bzw> $$1 = this.b.dM().a((Class<? extends bzw>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
-         bzw $$2 = (bzw)DataFixUtils.orElse($$1.stream().filter(bzw::gl).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gj()));
-         return this.b.gj();
+         eov $$0 = bzr.a(this.a, 16, 7, this.b.dh());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.b.gj() && this.b.gn();
+      return !this.e.l();
    }
 
    @Override
    public void c() {
-      this.c = 0;
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void d() {
-      this.b.gk();
+      this.b = null;
    }
 
    @Override
    public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.go();
+      if (this.a.f((bof)this.b) < 49.0) {
+         this.a.N().a(this.j);
+      } else {
+         this.a.N().a(this.i);
       }
    }
 }

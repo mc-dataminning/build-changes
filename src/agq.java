@@ -1,26 +1,45 @@
-public enum agq {
-   a,
-   b,
-   c;
+public class agq implements xz<aev> {
+   public static final xq<us, agq> a = xz.a(agq::a, agq::new);
+   private final eor b;
+   private final bmk c;
+   private final int d;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static agq a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public agq(bmk $$0, eor $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private agq(us $$0) {
+      this.c = $$0.b(bmk.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
+   }
+
+   private void a(us $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public yb<agq> a() {
+      return aet.ca;
+   }
+
+   public void a(aev $$0) {
+      $$0.a(this);
+   }
+
+   public bmk b() {
+      return this.c;
+   }
+
+   public eor e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

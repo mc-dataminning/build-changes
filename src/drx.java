@@ -1,346 +1,327 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
 
 public class drx {
-   private static final drx a = new drx(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public drx.a a(int $$0, int $$1) {
-         return new drx.a(1.0, 0.0);
-      }
+   public static final float a = -0.50375F;
+   private static final float n = 0.08F;
+   private static final double o = 1.5;
+   private static final double p = 1.5;
+   private static final double q = 1.5625;
+   private static final double r = -0.703125;
+   public static final int b = 64;
+   public static final long c = 4096L;
+   private static final drj s = drk.a(10.0);
+   private static final drj t = drk.a();
+   private static final ajb<drj> u = a("zero");
+   private static final ajb<drj> v = a("y");
+   private static final ajb<drj> w = a("shift_x");
+   private static final ajb<drj> x = a("shift_z");
+   private static final ajb<drj> y = a("overworld/base_3d_noise");
+   private static final ajb<drj> z = a("nether/base_3d_noise");
+   private static final ajb<drj> A = a("end/base_3d_noise");
+   public static final ajb<drj> d = a("overworld/continents");
+   public static final ajb<drj> e = a("overworld/erosion");
+   public static final ajb<drj> f = a("overworld/ridges");
+   public static final ajb<drj> g = a("overworld/ridges_folded");
+   public static final ajb<drj> h = a("overworld/offset");
+   public static final ajb<drj> i = a("overworld/factor");
+   public static final ajb<drj> j = a("overworld/jaggedness");
+   public static final ajb<drj> k = a("overworld/depth");
+   private static final ajb<drj> B = a("overworld/sloped_cheese");
+   public static final ajb<drj> l = a("overworld_large_biomes/continents");
+   public static final ajb<drj> m = a("overworld_large_biomes/erosion");
+   private static final ajb<drj> C = a("overworld_large_biomes/offset");
+   private static final ajb<drj> D = a("overworld_large_biomes/factor");
+   private static final ajb<drj> E = a("overworld_large_biomes/jaggedness");
+   private static final ajb<drj> F = a("overworld_large_biomes/depth");
+   private static final ajb<drj> G = a("overworld_large_biomes/sloped_cheese");
+   private static final ajb<drj> H = a("overworld_amplified/offset");
+   private static final ajb<drj> I = a("overworld_amplified/factor");
+   private static final ajb<drj> J = a("overworld_amplified/jaggedness");
+   private static final ajb<drj> K = a("overworld_amplified/depth");
+   private static final ajb<drj> L = a("overworld_amplified/sloped_cheese");
+   private static final ajb<drj> M = a("end/sloped_cheese");
+   private static final ajb<drj> N = a("overworld/caves/spaghetti_roughness_function");
+   private static final ajb<drj> O = a("overworld/caves/entrances");
+   private static final ajb<drj> P = a("overworld/caves/noodle");
+   private static final ajb<drj> Q = a("overworld/caves/pillars");
+   private static final ajb<drj> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
+   private static final ajb<drj> S = a("overworld/caves/spaghetti_2d");
 
-      @Override
-      public double a(dqo.b $$0, double $$1) {
-         return $$1;
-      }
-
-      @Override
-      public cwt a(cwt $$0) {
-         return $$0;
-      }
-   };
-   private static final efz b = efz.b(new drw(42L), pl.a);
-   private static final int c = iu.d(7) - 1;
-   private static final int d = iu.e(c + 3);
-   private static final int e = 2;
-   private static final int f = iu.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<dry> h;
-   private final Long2ObjectOpenHashMap<dry> i;
-
-   public static drx a() {
-      return a;
+   private static ajb<drj> a(String $$0) {
+      return ajb.a(ki.ay, new ajc($$0));
    }
 
-   public static drx a(@Nullable apd $$0) {
-      if ($$0 == null) {
-         return a;
-      } else {
-         cuy $$1 = $$0.a();
-         if (!$$0.a($$1, d)) {
-            return a;
+   public static il<? extends drj> a(pj<drj> $$0) {
+      im<egu.a> $$1 = $$0.a(ki.aC);
+      im<drj> $$2 = $$0.a(ki.ay);
+      $$0.a(u, drk.a());
+      int $$3 = dpq.e * 2;
+      int $$4 = dpq.d * 2;
+      $$0.a(v, drk.a($$3, $$4, (double)$$3, (double)$$4));
+      drj $$5 = a($$0, w, drk.b(drk.c(drk.b($$1.b(drz.j)))));
+      drj $$6 = a($$0, x, drk.b(drk.c(drk.c($$1.b(drz.j)))));
+      $$0.a(y, egr.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, egr.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, egr.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      il<drj> $$7 = $$0.a(d, drk.b(drk.a($$5, $$6, 0.25, $$1.b(drz.c))));
+      il<drj> $$8 = $$0.a(e, drk.b(drk.a($$5, $$6, 0.25, $$1.b(drz.d))));
+      drj $$9 = a($$0, f, drk.b(drk.a($$5, $$6, 0.25, $$1.b(drz.i))));
+      $$0.a(g, a($$9));
+      drj $$10 = drk.b($$1.b(drz.M), 1500.0, 0.0);
+      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
+      il<drj> $$11 = $$0.a(l, drk.b(drk.a($$5, $$6, 0.25, $$1.b(drz.g))));
+      il<drj> $$12 = $$0.a(m, drk.b(drk.a($$5, $$6, 0.25, $$1.b(drz.h))));
+      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
+      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
+      $$0.a(M, drk.a(drk.a(0L), a($$2, A)));
+      $$0.a(N, b($$1));
+      $$0.a(R, drk.d(drk.a($$1.b(drz.u), 2.0, 1.0, -0.6, -1.3)));
+      $$0.a(S, f($$2, $$1));
+      $$0.a(O, d($$2, $$1));
+      $$0.a(P, e($$2, $$1));
+      return $$0.a(Q, c($$1));
+   }
+
+   private static void a(
+      pj<drj> $$0, im<drj> $$1, drj $$2, il<drj> $$3, il<drj> $$4, ajb<drj> $$5, ajb<drj> $$6, ajb<drj> $$7, ajb<drj> $$8, ajb<drj> $$9, boolean $$10
+   ) {
+      drk.w.a $$11 = new drk.w.a($$3);
+      drk.w.a $$12 = new drk.w.a($$4);
+      drk.w.a $$13 = new drk.w.a($$1.b(f));
+      drk.w.a $$14 = new drk.w.a($$1.b(g));
+      drj $$15 = a($$0, $$5, a(drk.a(drk.a(-0.50375F), drk.a(py.a($$11, $$12, $$14, $$10))), drk.c()));
+      drj $$16 = a($$0, $$6, a(drk.a(py.a($$11, $$12, $$13, $$14, $$10)), s));
+      drj $$17 = a($$0, $$8, drk.a(drk.a(-64, 320, 1.5, -1.5), $$15));
+      drj $$18 = a($$0, $$7, a(drk.a(py.b($$11, $$12, $$13, $$14, $$10)), t));
+      drj $$19 = drk.b($$18, $$2.g());
+      drj $$20 = b($$16, drk.a($$17, $$19));
+      $$0.a($$9, drk.a($$20, a($$1, y)));
+   }
+
+   private static drj a(pj<drj> $$0, ajb<drj> $$1, drj $$2) {
+      return new drk.j($$0.a($$1, $$2));
+   }
+
+   private static drj a(im<drj> $$0, ajb<drj> $$1) {
+      return new drk.j($$0.b($$1));
+   }
+
+   private static drj a(drj $$0) {
+      return drk.b(drk.a(drk.a($$0.d(), drk.a(-0.6666666666666666)).d(), drk.a(-0.3333333333333333)), drk.a(-3.0));
+   }
+
+   public static float a(float $$0) {
+      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
+   }
+
+   private static drj b(im<egu.a> $$0) {
+      drj $$1 = drk.a($$0.b(drz.z));
+      drj $$2 = drk.a($$0.b(drz.A), 0.0, -0.1);
+      return drk.d(drk.b($$2, drk.a($$1.d(), drk.a(-0.4))));
+   }
+
+   private static drj d(im<drj> $$0, im<egu.a> $$1) {
+      drj $$2 = drk.d(drk.b($$1.b(drz.x), 2.0, 1.0));
+      drj $$3 = drk.a($$1.b(drz.y), -0.065, -0.088);
+      drj $$4 = drk.a($$2, $$1.b(drz.v), drk.z.a.a);
+      drj $$5 = drk.a($$2, $$1.b(drz.w), drk.z.a.a);
+      drj $$6 = drk.a(drk.d($$4, $$5), $$3).a(-1.0, 1.0);
+      drj $$7 = a($$0, N);
+      drj $$8 = drk.b($$1.b(drz.B), 0.75, 0.5);
+      drj $$9 = drk.a(drk.a($$8, drk.a(0.37)), drk.a(-10, 30, 0.3, 0.0));
+      return drk.d(drk.c($$9, drk.a($$7, $$6)));
+   }
+
+   private static drj e(im<drj> $$0, im<egu.a> $$1) {
+      drj $$2 = a($$0, v);
+      int $$3 = -64;
+      int $$4 = -60;
+      int $$5 = 320;
+      drj $$6 = a($$2, drk.b($$1.b(drz.I), 1.0, 1.0), -60, 320, -1);
+      drj $$7 = a($$2, drk.a($$1.b(drz.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
+      double $$8 = 2.6666666666666665;
+      drj $$9 = a($$2, drk.b($$1.b(drz.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      drj $$10 = a($$2, drk.b($$1.b(drz.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      drj $$11 = drk.b(drk.a(1.5), drk.d($$9.d(), $$10.d()));
+      return drk.a($$6, -1000000.0, 0.0, drk.a(64.0), drk.a($$7, $$11));
+   }
+
+   private static drj c(im<egu.a> $$0) {
+      double $$1 = 25.0;
+      double $$2 = 0.3;
+      drj $$3 = drk.b($$0.b(drz.o), 25.0, 0.3);
+      drj $$4 = drk.a($$0.b(drz.p), 0.0, -2.0);
+      drj $$5 = drk.a($$0.b(drz.q), 0.0, 1.1);
+      drj $$6 = drk.a(drk.b($$3, drk.a(2.0)), $$4);
+      return drk.d(drk.b($$6, $$5.f()));
+   }
+
+   private static drj f(im<drj> $$0, im<egu.a> $$1) {
+      drj $$2 = drk.b($$1.b(drz.t), 2.0, 1.0);
+      drj $$3 = drk.a($$2, $$1.b(drz.r), drk.z.a.b);
+      drj $$4 = drk.a($$1.b(drz.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
+      drj $$5 = a($$0, R);
+      drj $$6 = drk.a($$4, drk.a(-64, 320, 8.0, -40.0)).d();
+      drj $$7 = drk.a($$6, $$5).f();
+      double $$8 = 0.083;
+      drj $$9 = drk.a($$3, drk.b(drk.a(0.083), $$5));
+      return drk.d($$9, $$7).a(-1.0, 1.0);
+   }
+
+   private static drj a(im<drj> $$0, im<egu.a> $$1, drj $$2) {
+      drj $$3 = a($$0, S);
+      drj $$4 = a($$0, N);
+      drj $$5 = drk.a($$1.b(drz.C), 8.0);
+      drj $$6 = drk.b(drk.a(4.0), $$5.e());
+      drj $$7 = drk.a($$1.b(drz.D), 0.6666666666666666);
+      drj $$8 = drk.a(drk.a(drk.a(0.27), $$7).a(-1.0, 1.0), drk.a(drk.a(1.5), drk.b(drk.a(-0.64), $$2)).a(0.0, 0.5));
+      drj $$9 = drk.a($$6, $$8);
+      drj $$10 = drk.c(drk.c($$9, a($$0, O)), drk.a($$3, $$4));
+      drj $$11 = a($$0, Q);
+      drj $$12 = drk.a($$11, -1000000.0, 0.03, drk.a(-1000000.0), $$11);
+      return drk.d($$10, $$12);
+   }
+
+   private static drj b(drj $$0) {
+      drj $$1 = drk.f($$0);
+      return drk.b(drk.a($$1), drk.a(0.64)).i();
+   }
+
+   protected static drw a(im<drj> $$0, im<egu.a> $$1, boolean $$2, boolean $$3) {
+      drj $$4 = drk.a($$1.b(drz.k), 0.5);
+      drj $$5 = drk.a($$1.b(drz.l), 0.67);
+      drj $$6 = drk.a($$1.b(drz.n), 0.7142857142857143);
+      drj $$7 = drk.a($$1.b(drz.m));
+      drj $$8 = a($$0, w);
+      drj $$9 = a($$0, x);
+      drj $$10 = drk.a($$8, $$9, 0.25, $$1.b($$2 ? drz.e : drz.a));
+      drj $$11 = drk.a($$8, $$9, 0.25, $$1.b($$2 ? drz.f : drz.b));
+      drj $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
+      drj $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
+      drj $$14 = b(drk.c($$12), $$13);
+      drj $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
+      drj $$16 = drk.c($$15, drk.b(drk.a(5.0), a($$0, O)));
+      drj $$17 = drk.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
+      drj $$18 = drk.c(b(a($$3, $$17)), a($$0, P));
+      drj $$19 = a($$0, v);
+      int $$20 = Stream.of(dsa.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-dpq.e * 2);
+      int $$21 = Stream.of(dsa.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-dpq.e * 2);
+      drj $$22 = a($$19, drk.b($$1.b(drz.E), 1.5, 1.5), $$20, $$21, 0);
+      float $$23 = 4.0F;
+      drj $$24 = a($$19, drk.b($$1.b(drz.F), 4.0, 4.0), $$20, $$21, 0).d();
+      drj $$25 = a($$19, drk.b($$1.b(drz.G), 4.0, 4.0), $$20, $$21, 0).d();
+      drj $$26 = drk.a(drk.a(-0.08F), drk.d($$24, $$25));
+      drj $$27 = drk.a($$1.b(drz.H));
+      return new drw(
+         $$4,
+         $$5,
+         $$6,
+         $$7,
+         $$10,
+         $$11,
+         a($$0, $$2 ? l : d),
+         a($$0, $$2 ? m : e),
+         $$13,
+         a($$0, f),
+         a($$3, drk.a($$14, drk.a(-0.703125)).a(-64.0, 64.0)),
+         $$18,
+         $$22,
+         $$26,
+         $$27
+      );
+   }
+
+   private static drw b(im<drj> $$0, im<egu.a> $$1, drj $$2) {
+      drj $$3 = a($$0, w);
+      drj $$4 = a($$0, x);
+      drj $$5 = drk.a($$3, $$4, 0.25, $$1.b(drz.a));
+      drj $$6 = drk.a($$3, $$4, 0.25, $$1.b(drz.b));
+      drj $$7 = b($$2);
+      return new drw(drk.a(), drk.a(), drk.a(), drk.a(), $$5, $$6, drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), $$7, drk.a(), drk.a(), drk.a());
+   }
+
+   private static drj a(boolean $$0, drj $$1) {
+      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
+   }
+
+   private static drj a(im<drj> $$0, int $$1, int $$2) {
+      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
+   }
+
+   private static drj a(drj $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
+   }
+
+   protected static drw a(im<drj> $$0, im<egu.a> $$1) {
+      return b($$0, $$1, a($$0, 0, 128));
+   }
+
+   protected static drw b(im<drj> $$0, im<egu.a> $$1) {
+      return b($$0, $$1, a($$0, -64, 192));
+   }
+
+   protected static drw c(im<drj> $$0, im<egu.a> $$1) {
+      return b($$0, $$1, a(a($$0, A), 0, 256));
+   }
+
+   private static drj c(drj $$0) {
+      return a($$0, 0, 128);
+   }
+
+   protected static drw a(im<drj> $$0) {
+      drj $$1 = drk.c(drk.a(0L));
+      drj $$2 = b(c(a($$0, M)));
+      return new drw(
+         drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), $$1, drk.a(), drk.a(), c(drk.a($$1, drk.a(-0.703125))), $$2, drk.a(), drk.a(), drk.a()
+      );
+   }
+
+   protected static drw a() {
+      return new drw(drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a(), drk.a());
+   }
+
+   private static drj a(drj $$0, drj $$1) {
+      drj $$2 = drk.a(drk.b(), $$1, $$0);
+      return drk.b(drk.c($$2));
+   }
+
+   private static drj b(drj $$0, drj $$1) {
+      drj $$2 = drk.b($$1, $$0);
+      return drk.b(drk.a(4.0), $$2.h());
+   }
+
+   private static drj a(drj $$0, drj $$1, int $$2, int $$3, int $$4) {
+      return drk.a(drk.a($$0, (double)$$2, (double)($$3 + 1), $$1, drk.a((double)$$4)));
+   }
+
+   private static drj a(drj $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
+      drj $$10 = drk.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
+      drj $$9 = drk.a($$10, $$5, $$0);
+      drj $$11 = drk.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
+      return drk.a($$11, $$8, $$9);
+   }
+
+   protected static final class a {
+      protected static double a(double $$0) {
+         if ($$0 < -0.75) {
+            return 0.5;
+         } else if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.5) {
+            return 1.0;
          } else {
-            Long2ObjectOpenHashMap<dry> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<dry> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = awi.h(d + 1);
-
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.e + $$5;
-                     int $$8 = $$1.f + $$6;
-                     dry $$9 = dry.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(cuy.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(cuy.c($$7, $$8), $$9);
-                        }
-                     }
-                  }
-               }
-            }
-
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new drx($$2, $$3);
+            return $$0 < 0.75 ? 2.0 : 3.0;
          }
       }
-   }
 
-   drx(Long2ObjectOpenHashMap<dry> $$0, Long2ObjectOpenHashMap<dry> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   public drx.a a(int $$0, int $$1) {
-      int $$2 = iu.a($$0);
-      int $$3 = iu.a($$1);
-      double $$4 = this.a($$2, 0, $$3, dry::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new drx.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(iu.d(cuy.a($$5x)), iu.d(cuy.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = awi.f((double)($$2 - $$5xx), (double)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
-
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new drx.a(1.0, 0.0);
+      protected static double b(double $$0) {
+         if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.0) {
+            return 1.0;
          } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = awi.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new drx.a($$9, a($$8));
+            return $$0 < 0.5 ? 1.5 : 2.0;
          }
       }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = awi.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(dqo.b $$0, double $$1) {
-      int $$2 = iu.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = iu.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, dry::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(iu.d(cuy.a($$6x)), iu.d(cuy.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = awi.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = awi.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return awi.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, drx.b $$3) {
-      int $$4 = iu.e($$0);
-      int $$5 = iu.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
-         }
-
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
-            }
-         }
-      }
-
-      return $$8;
-   }
-
-   private double a(drx.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      dry $$6 = (dry)this.h.get(cuy.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - iu.d($$1), $$4, $$5 - iu.d($$2)) : Double.MAX_VALUE;
-   }
-
-   public cwt a(cwt $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         ij<cwq> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
-      };
-   }
-
-   @Nullable
-   private ij<cwq> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<ij<cwq>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(iu.d(cuy.a($$5x)), $$1, iu.d(cuy.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = awi.f((double)($$0 - $$4xx), (double)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
-            }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = awi.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (ij)$$4.getValue();
-      }
-   }
-
-   public static void a(apd $$0, dnf $$1) {
-      cuy $$2 = $$1.f();
-      boolean $$3 = $$1.s();
-      hz.a $$4 = new hz.a();
-      hz $$5 = new hz($$2.d(), 0, $$2.e());
-      dry $$6 = $$1.t();
-      if ($$6 != null) {
-         int $$7 = $$6.a().J_();
-         int $$8 = $$6.a().ak() - 1;
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
-               }
-            }
-         }
-
-         for (ie $$11 : ie.c.a) {
-            if ($$0.a($$2.e + $$11.j(), $$2.f + $$11.l()).s() != $$3) {
-               int $$12 = $$11 == ie.f ? 15 : 0;
-               int $$13 = $$11 == ie.e ? 0 : 15;
-               int $$14 = $$11 == ie.d ? 15 : 0;
-               int $$15 = $$11 == ie.c ? 0 : 15;
-
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(dqv.a.e, $$16, $$17)) + 1;
-
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void a(dnf $$0, hz $$1) {
-      dlj $$2 = $$0.a_($$1);
-      if ($$2.a(aua.O)) {
-         $$0.e($$1);
-      }
-
-      egw $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
-      }
-   }
-
-   public static void a(cwm $$0, doa $$1) {
-      cuy $$2 = $$1.f();
-      Builder<ig, dry> $$3 = ImmutableMap.builder();
-
-      for (ig $$4 : ig.values()) {
-         int $$5 = $$2.e + $$4.b();
-         int $$6 = $$2.f + $$4.c();
-         dry $$7 = $$0.a($$5, $$6).t();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
-         }
-      }
-
-      ImmutableMap<ig, dry> $$8 = $$3.build();
-      if ($$1.s() || !$$8.isEmpty()) {
-         drx.c $$9 = a($$1.t(), $$8);
-         dne.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         Stream.of(dqr.a.values()).map($$1::b).forEach($$1x -> $$1x.a($$10));
-      }
-   }
-
-   public static drx.c a(@Nullable dry $$0, Map<ig, dry> $$1) {
-      List<drx.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
-      }
-
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
-
-         for (drx.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
-            }
-         }
-
-         return $$4;
-      };
-   }
-
-   private static drx.c a(@Nullable ig $$0, dry $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (ie $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
-      }
-
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.a().K_() / 2.0;
-      double $$8 = (double)$$1.a().J_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return awi.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(dry var1, int var2, int var3, int var4);
-   }
-
-   public interface c {
-      double getDistance(double var1, double var3, double var5);
    }
 }

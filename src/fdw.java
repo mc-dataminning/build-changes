@@ -1,103 +1,122 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fdw extends ffl {
-   private static final vq a = vq.c("accessibility.onboarding.screen.narrator");
-   private static final int b = 4;
-   private static final int c = 16;
-   private final fvv k = new fvv(ffq.b);
-   private final faf l;
-   private final exs m;
-   private final boolean n;
-   private boolean o;
-   private float p;
-   private final Runnable q;
-   @Nullable
-   private ezz r;
-   @Nullable
-   private ezm t;
+public class fdw implements fdx {
+   public static final int a = 36;
+   private static final int b = 30;
+   private final fdu c = new fdu();
+   private final fdu d = new fdu();
+   private final fdu e = new fdu();
+   private final fgh f;
+   private int g;
+   private int h;
 
-   public fdw(exs $$0, Runnable $$1) {
-      super(vq.c("accessibility.onboarding.screen.title"));
-      this.m = $$0;
-      this.q = $$1;
-      this.l = new faf(true);
-      this.n = exo.P().aX().a();
+   public fdw(fgh $$0) {
+      this($$0, 36);
+   }
+
+   public fdw(fgh $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public fdw(fgh $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   public void aQ_() {
-      int $$0 = this.o();
-      fcy $$1 = new fcy(this.g, this.h - $$0);
-      $$1.c().d().a(4);
-      fde $$2 = $$1.a(fde.d());
-      $$2.c().b().a(2);
-      this.r = new ezz(this.g - 16, this.e, this.i);
-      $$2.a(this.r, $$0x -> $$0x.e(16));
-      this.t = this.m.ap().a(this.m, 0, 0, 150);
-      this.t.j = this.n;
-      $$2.a(this.t);
-      $$2.a(ezs.b(150, $$0x -> this.a(new fdx(this, this.f.m)), false));
-      $$2.a(ezs.a(150, $$0x -> this.a(new feu(this, this.f.m, this.f.af())), false));
-      $$1.a(ezo.a(vp.j, $$0x -> this.d()).a(), $$1.b().f().a(8));
-      $$1.a();
-      fcy.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
-      $$1.a(this::c);
+   public void m(int $$0) {
    }
 
    @Override
-   protected void aH_() {
-      if (this.n && this.t != null) {
-         this.b(this.t);
-      } else {
-         super.aH_();
-      }
-   }
-
-   private int o() {
-      return 90;
+   public void n(int $$0) {
    }
 
    @Override
-   public void d() {
-      this.a(this.q);
-   }
-
-   private void a(ffl $$0) {
-      this.a(() -> this.f.a($$0));
-   }
-
-   private void a(Runnable $$0) {
-      this.m.ae = false;
-      this.m.as();
-      Narrator.getNarrator().clear();
-      $$0.run();
+   public int B() {
+      return 0;
    }
 
    @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.l.a($$0, this.g, 1.0F);
-      if (this.r != null) {
-         this.r.a($$0, $$1, $$2, $$3);
-      }
+   public int C() {
+      return 0;
    }
 
    @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      this.k.a(0.0F, 1.0F);
-      $$0.a(0, 0, this.g, this.h, -1877995504);
+   public int w() {
+      return this.f.g;
    }
 
-   private void E() {
-      if (!this.o && this.n) {
-         if (this.p < 40.0F) {
-            this.p++;
-         } else if (this.f.aB()) {
-            Narrator.getNarrator().say(a.getString(), true);
-            this.o = true;
-         }
-      }
+   @Override
+   public int u() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<fdy> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.u();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fdy> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fdy> T a(T $$0, Consumer<fdz> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends fdy> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fdy> T b(T $$0, Consumer<fdz> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fdy> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fdy> T c(T $$0, Consumer<fdz> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

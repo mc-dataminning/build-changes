@@ -1,24 +1,23 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gbq extends gau<ceu, fna<ceu>> {
+   private static final ajc a = new ajc("textures/entity/zombie/drowned.png");
 
-public final class gbq extends fzv<ccb, fmt<ccb>> {
-   private static final Map<cci, aiy> a = ac.a(Maps.newEnumMap(cci.class), $$0 -> {
-      $$0.put(cci.a, new aiy("textures/entity/horse/horse_white.png"));
-      $$0.put(cci.b, new aiy("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cci.c, new aiy("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cci.d, new aiy("textures/entity/horse/horse_brown.png"));
-      $$0.put(cci.e, new aiy("textures/entity/horse/horse_black.png"));
-      $$0.put(cci.f, new aiy("textures/entity/horse/horse_gray.png"));
-      $$0.put(cci.g, new aiy("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gbq(gba.a $$0) {
-      super($$0, new fmt<>($$0.a(fpi.al)), 1.1F);
-      this.a(new gfa(this));
-      this.a(new gez(this, $$0.f()));
+   public gbq(gby.a $$0) {
+      super($$0, new fna<>($$0.a(fqe.N)), new fna<>($$0.a(fqe.O)), new fna<>($$0.a(fqe.P)));
+      this.a(new gfr<>(this, $$0.f()));
    }
 
-   public aiy a(ccb $$0) {
-      return a.get($$0.w());
+   @Override
+   public ajc a(cfz $$0) {
+      return a;
+   }
+
+   protected void a(ceu $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.a($$4);
+      if ($$6 > 0.0F) {
+         float $$7 = -10.0F - $$0.dB();
+         float $$8 = awm.i($$6, 0.0F, $$7);
+         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.de() / 2.0F / $$5, 0.0F);
+      }
    }
 }

@@ -1,89 +1,111 @@
+import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class cxe {
-   public static final Codec<cxe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxe.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aiw.c(kg.at)).apply($$0, cxe::new)
+   private static final Logger c = LogUtils.getLogger();
+   public static final cxe a = new cxe(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<cxe> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(drm.a.c, dtt.c.promotePartial(ac.a("Carver: ", c::error)), axg.a(drm.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               ebk.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, cxe::new)
    );
-   public static final Codec<ij<cxe>> b = aiu.a(kg.aL, a);
-   private final cxe.a c;
-   private final cwz.c<ij<cwq>> d;
+   private final Map<drm.a, ip<dtt<?>>> d;
+   private final List<ip<ebk>> e;
+   private final Supplier<List<duh<?, ?>>> f;
+   private final Supplier<Set<ebk>> g;
 
-   public cxe(cxe.a $$0, ik<cwq> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
-   }
-
-   public cwz.c<ij<cwq>> a() {
-      return this.d;
-   }
-
-   public static Map<cxe.a, cwz.c<aix<cwq>>> b() {
-      return cxe.a.f.values().stream().collect(Collectors.toMap($$0 -> (cxe.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
-
-   public static record a(aiy d, cxe.a.a e) {
-      public static final cxe.a a = new cxe.a(
-         new aiy("nether"),
-         new cxe.a.a() {
-            @Override
-            public <T> cwz.c<T> apply(Function<aix<cwq>, T> $$0) {
-               return new cwz.c<>(
-                  List.of(
-                     Pair.of(cwz.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwx.ac)),
-                     Pair.of(cwz.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwx.af)),
-                     Pair.of(cwz.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwx.ae)),
-                     Pair.of(cwz.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cwx.ad)),
-                     Pair.of(cwz.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cwx.ag))
-                  )
-               );
-            }
-         }
+   cxe(Map<drm.a, ip<dtt<?>>> $$0, List<ip<ebk>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ip::a).map(il::a).flatMap(ebk::a).filter($$0xx -> $$0xx.b() == duu.g).collect(ImmutableList.toImmutableList())
       );
-      public static final cxe.a b = new cxe.a(new aiy("overworld"), new cxe.a.a() {
-         @Override
-         public <T> cwz.c<T> apply(Function<aix<cwq>, T> $$0) {
-            return cxe.a.a($$0);
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ip::a).map(il::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<il<dtt<?>>> a(drm.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   }
+
+   public List<duh<?, ?>> a() {
+      return this.f.get();
+   }
+
+   public List<ip<ebk>> b() {
+      return this.e;
+   }
+
+   public boolean a(ebk $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends cxe.b {
+      private final im<ebk> a;
+      private final im<dtt<?>> b;
+
+      public a(im<ebk> $$0, im<dtt<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public cxe.a a(drm.b $$0, ajb<ebk> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public cxe.a a(drm.a $$0, ajb<dtt<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final Map<drm.a, List<il<dtt<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<il<ebk>>> b = Lists.newArrayList();
+
+      public cxe.b a(drm.b $$0, il<ebk> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public cxe.b a(int $$0, il<ebk> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public cxe.b a(drm.a $$0, il<dtt<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
-      });
-      static final Map<aiy, cxe.a> f = Stream.of(a, b).collect(Collectors.toMap(cxe.a::b, $$0 -> (cxe.a)$$0));
-      public static final Codec<cxe.a> c = aiy.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
+      }
+
+      public cxe a() {
+         return new cxe(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ip.a((List)$$0.getValue()))),
+            this.b.stream().map(ip::a).collect(ImmutableList.toImmutableList())
          );
-
-      static <T> cwz.c<T> a(Function<aix<cwq>, T> $$0) {
-         Builder<Pair<cwz.d, T>> $$1 = ImmutableList.builder();
-         new cxg().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new cwz.c<>($$1.build());
-      }
-
-      public Stream<aix<cwq>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<aix<cwq>>map(Pair::getSecond).distinct();
-      }
-
-      public aiy b() {
-         return this.d;
-      }
-
-      public cxe.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> cwz.c<T> apply(Function<aix<cwq>, T> var1);
       }
    }
 }

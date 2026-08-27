@@ -1,63 +1,69 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import org.slf4j.Logger;
 
-public enum gjc implements gjj {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class gjc extends st {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   private static final int q = 360;
-   private static final Map<Integer, gjc> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gjc)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   private gjc(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private gjc(int $$0, int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   public static gjc a(asf $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               ajc $$7 = new ajc($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
       }
 
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
+      return new gjc(ImmutableMap.copyOf($$3), $$2);
+   }
 
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
+   private static void a(String $$0, List<asd> $$1, Map<String, String> $$2) {
+      for (asd $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            st.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
    @Override
-   public j b() {
-      return this.s;
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
-   public static gjc a(int $$0, int $$1) {
-      return r.get(b(awi.b($$0, 360), awi.b($$1, 360)));
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
    }
 
-   public h a() {
-      return this.t;
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public avy a(vx $$0) {
+      return gjd.a($$0, this.d);
    }
 }

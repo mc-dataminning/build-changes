@@ -1,19 +1,26 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.concurrent.Immutable;
 
-public enum bmo implements axc {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+@Immutable
+public class bmo {
+   public static final bmo a = new bmo("");
+   public static final String b = "Lock";
+   private final String c;
 
-   public static final Codec<bmo> d = axc.a(bmo::values);
-   private final String e;
-
-   private bmo(String $$0) {
-      this.e = $$0;
+   public bmo(String $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public boolean a(cpq $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.B() && this.c.equals($$0.z().getString());
+   }
+
+   public void a(sy $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
+
+   public static bmo b(sy $$0) {
+      return $$0.b("Lock", 8) ? new bmo($$0.l("Lock")) : a;
    }
 }

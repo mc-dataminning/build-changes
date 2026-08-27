@@ -1,11 +1,9 @@
 public interface awo {
-   void a(vq var1);
+   int a();
 
-   void b(vq var1);
+   String b();
 
-   void c(vq var1);
-
-   void a(int var1);
-
-   void a();
+   default vs d() {
+      return vs.c(this.b());
+   }
 }

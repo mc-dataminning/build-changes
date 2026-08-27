@@ -1,25 +1,25 @@
-public class ctu extends ctm {
-   protected ctu(ctm.a $$0, aup<coy> $$1, bnx... $$2) {
-      super($$0, $$1, $$2);
+public class ctu extends ctz {
+   public ctu(ctz.a $$0, bom... $$1) {
+      super($$0, aum.bp, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 4;
    }
 
    @Override
-   public boolean a(ctm $$0) {
-      return super.a($$0) && $$0 != ctp.v;
+   public boolean a(ctz $$0) {
+      return super.a($$0) && $$0 != cuc.I;
    }
 }

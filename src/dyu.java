@@ -1,59 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyu extends dyv {
-   public static final Codec<dyu> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dyu::new, $$0 -> $$0.b).codec();
-   private final float b;
+public record dyu(ip<czf> b, ip<czf> c, dyz d, int e, int f, float g) {
+   public static final Codec<dyu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iz.a(ki.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               iz.a(ki.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dyz.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dyu::new)
+   );
 
-   @Override
-   protected dyw<?> a() {
-      return dyw.b;
+   public ip<czf> a() {
+      return this.b;
    }
 
-   public dyu(float $$0) {
-      this.b = $$0;
+   public ip<czf> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(dyv.a $$0) {
-      awp $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            hz $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dhm.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hz $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dhm.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hz $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dhm.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hz $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dhm.c, $$0);
-            }
-         }
-      });
+   public dyz c() {
+      return this.d;
    }
 
-   private static void a(hz $$0, dma $$1, dyv.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   public int d() {
+      return this.e;
+   }
 
-      for (hz var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
-      }
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

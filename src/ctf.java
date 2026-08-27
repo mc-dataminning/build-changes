@@ -1,20 +1,29 @@
-public class ctf extends ctm {
-   public ctf(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bm, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class ctf<T extends csj> implements csw<T> {
+   private final ctf.a<T> x;
+   private final Codec<T> y;
+   private final xq<vd, T> z;
+
+   public ctf(ctf.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(csi.e.fieldOf("category").orElse(csi.d).forGetter(csj::d)).apply($$1, $$0::create));
+      this.z = xq.a(csi.g, csj::d, $$0::create);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public Codec<T> a() {
+      return this.y;
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public xq<vd, T> b() {
+      return this.z;
    }
 
-   @Override
-   public boolean a(ctm $$0) {
-      return $$0 instanceof ctv ? false : super.a($$0);
+   @FunctionalInterface
+   public interface a<T extends csj> {
+      T create(csi var1);
    }
 }

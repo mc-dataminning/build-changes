@@ -1,16 +1,11 @@
-public class gcr extends gcg<cap, fno<cap>> {
-   private static final aiy a = new aiy("textures/entity/bear/polarbear.png");
-
-   public gcr(gba.a $$0) {
-      super($$0, new fno<>($$0.a(fpi.aW)), 0.9F);
+public abstract class gcr<T extends ceo> extends gde<T, fns<T>> {
+   protected gcr(gby.a $$0, fns<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gfo<>(this, $$0.f(), $$0.d()));
    }
 
-   public aiy a(cap $$0) {
-      return a;
-   }
-
-   protected void a(cap $$0, esh $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   protected void a(T $$0, etd $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

@@ -1,31 +1,76 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dhb extends cyi {
-   protected static final MapCodec<kc> c = kf.j
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof kc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dhb> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dhb::new));
-   protected final kc e;
+public class dhb extends czf {
+   public static final MapCodec<dhb> a = b(dhb::new);
+   private static final vs d = vs.c("container.stonecutter");
+   public static final dmy b = dda.aE;
+   protected static final epo c = czf.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
-   public MapCodec<? extends dhb> a() {
-      return d;
+   public MapCodec<dhb> a() {
+      return a;
    }
 
-   protected dhb(kc $$0, dli.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dhb(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ih.c));
    }
 
    @Override
-   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(jz.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public dme a(crx $$0) {
+      return this.o().a(b, $$0.g().g());
+   }
+
+   @Override
+   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
+      if ($$1.B) {
+         return bml.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(atz.ay);
+         return bml.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bmp b(dme $$0, cwe $$1, ib $$2) {
+      return new bmv(($$2x, $$3, $$4) -> new cmt($$2x, $$3, clf.a($$1, $$2)), d);
+   }
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean g_(dme $$0) {
+      return true;
+   }
+
+   @Override
+   protected dfk b_(dme $$0) {
+      return dfk.c;
+   }
+
+   @Override
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

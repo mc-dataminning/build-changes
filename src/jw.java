@@ -1,12 +1,39 @@
-public class jw {
-   private final int b;
-   public static final jw a = new jw(1000);
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Locale;
+import org.joml.Vector3f;
 
-   public jw(int $$0) {
-      this.b = $$0;
+public abstract class jw implements jz {
+   public static final float f = 0.01F;
+   public static final float g = 4.0F;
+   protected final Vector3f h;
+   protected final float i;
+
+   public jw(Vector3f $$0, float $$1) {
+      this.h = $$0;
+      this.i = awm.a($$1, 0.01F, 4.0F);
    }
 
-   public int a() {
-      return this.b;
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
+   }
+
+   @Override
+   public String a(in.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", kh.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i);
+   }
+
+   public Vector3f d() {
+      return this.h;
+   }
+
+   public float e() {
+      return this.i;
    }
 }

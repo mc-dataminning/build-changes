@@ -1,54 +1,34 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class baf extends DataFix {
-   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
-
+public class baf extends baq {
    public baf(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityHorseSplitFix", $$0, $$1);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
-      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
-         int $$3;
-         if ($$0.get("Direction").asNumber().result().isPresent()) {
-            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
-            int[] $$4 = a[$$3];
-            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
-            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
-            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
-            $$0 = $$0.remove("Direction");
-            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
-               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
-            }
-         } else {
-            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
-            $$0 = $$0.remove("Dir");
-         }
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+      if (Objects.equals("EntityHorse", $$0)) {
+         int $$3 = $$2.get("Type").asInt(0);
 
-         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
+         String $$4 = switch ($$3) {
+            case 1 -> "Donkey";
+            case 2 -> "Mule";
+            case 3 -> "ZombieHorse";
+            case 4 -> "SkeletonHorse";
+            default -> "Horse";
+         };
+         $$2.remove("Type");
+         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bdt.y).types().get($$4);
+         return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x));
+      } else {
+         return Pair.of($$0, $$1);
       }
-
-      return $$0;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bdn.y, "Painting");
-      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bdn.y, "ItemFrame");
-      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
-      Type<?> $$4 = this.getInputSchema().getType(bdn.y);
-      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
-         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
-      );
-      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
-         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
-      );
-      return TypeRewriteRule.seq($$5, $$6);
    }
 }

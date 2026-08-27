@@ -1,38 +1,29 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import java.util.Objects;
 
 public class azk extends DataFix {
-   private final String a;
-   private final String b;
-   private final UnaryOperator<String> c;
-
-   public azk(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public azk(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bdn.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
+      Type<?> $$0 = this.getInputSchema().getType(bdt.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bdt.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            if (Objects.equals($$2x, "postprocessed")) {
+               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
+            }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         this.b,
-         $$0x -> $$0x.update(
-               "criteria",
-               $$0xx -> $$0xx.updateMapValues(
-                     $$0xxx -> $$0xxx.mapFirst(
-                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
-                        )
-                  )
-            )
-      );
+            return $$0xx.set(DSL.remainderFinder(), $$1xx);
+         }));
    }
 }

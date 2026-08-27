@@ -1,53 +1,34 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public interface btp<F extends K1, Value> {
-   bxl<Value> a();
+public class btp {
+   public static bqq<box> a(czf $$0) {
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$1 -> $$1.group($$1.c(bya.o), $$1.b(bya.m), $$1.b(bya.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.aZ() && $$3x.aC()) {
+                        ib $$5 = $$3x.dj().d();
 
-   bxm b();
+                        for (ih $$6 : ih.c.a) {
+                           ib $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ih.b).c() && $$2x.b_($$7).b(ehs.c)) {
+                              ib $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dme $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dqr.i, $$8, dqr.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, atp.jB, atq.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   @Nullable
-   bto<F, Value> a(bpj<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(bxl<Value> a) implements btp<Mu<Unit>, Value> {
-      @Override
-      public bxm b() {
-         return bxm.b;
-      }
-
-      @Override
-      public bto<Mu<Unit>, Value> a(bpj<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bto<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
-   }
-
-   public static record b<Value>(bxl<Value> a) implements btp<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public bxm b() {
-         return bxm.a;
-      }
-
-      @Override
-      public bto<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bpj<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bto<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(bxl<Value> a) implements btp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public bxm b() {
-         return bxm.c;
-      }
-
-      @Override
-      public bto<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bpj<?> $$0, Optional<Value> $$1) {
-         return new bto<>($$0, this.a, OptionalBox.create($$1));
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

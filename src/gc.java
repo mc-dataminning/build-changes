@@ -1,150 +1,40 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class gc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.item.tag.disallowed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("argument.item.id.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("arguments.item.tag.unknown", $$0));
-   private static final char d = '{';
-   private static final char e = '#';
-   private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
-   private final il<coy> g;
-   private final StringReader h;
-   private final boolean i;
-   private Either<ij<coy>, in<coy>> j;
-   @Nullable
-   private sw k;
-   private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
+   private final gf a;
 
-   private gc(il<coy> $$0, StringReader $$1, boolean $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public gc(in.a $$0) {
+      this.a = new gf($$0, false);
    }
 
-   public static gc.a a(il<coy> $$0, StringReader $$1) throws CommandSyntaxException {
-      int $$2 = $$1.getCursor();
+   public gc.a a(StringReader $$0) throws CommandSyntaxException {
+      final MutableObject<il<cpl>> $$1 = new MutableObject();
+      final MutableObject<sy> $$2 = new MutableObject();
+      this.a.a($$0, new gf.c() {
+         @Override
+         public void a(il<cpl> $$0) {
+            $$1.setValue($$0);
+         }
 
-      try {
-         gc $$3 = new gc($$0, $$1, false);
-         $$3.d();
-         ij<coy> $$4 = (ij<coy>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
-         return new gc.a($$4, $$3.k);
-      } catch (CommandSyntaxException var5) {
-         $$1.setCursor($$2);
-         throw var5;
-      }
+         @Override
+         public void a(sy $$0) {
+            $$2.setValue($$0);
+         }
+      });
+      return new gc.a(Objects.requireNonNull((il<cpl>)$$1.getValue(), "Parser gave no item"), (sy)$$2.getValue());
    }
 
-   public static Either<gc.a, gc.b> b(il<coy> $$0, StringReader $$1) throws CommandSyntaxException {
-      int $$2 = $$1.getCursor();
-
-      try {
-         gc $$3 = new gc($$0, $$1, true);
-         $$3.d();
-         return $$3.j.mapBoth($$1x -> new gc.a($$1x, $$3.k), $$1x -> new gc.b($$1x, $$3.k));
-      } catch (CommandSyntaxException var4) {
-         $$1.setCursor($$2);
-         throw var4;
-      }
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      return this.a.a($$0);
    }
 
-   public static CompletableFuture<Suggestions> a(il<coy> $$0, SuggestionsBuilder $$1, boolean $$2) {
-      StringReader $$3 = new StringReader($$1.getInput());
-      $$3.setCursor($$1.getStart());
-      gc $$4 = new gc($$0, $$3, $$2);
-
-      try {
-         $$4.d();
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return $$4.l.apply($$1.createOffset($$3.getCursor()));
-   }
-
-   private void a() throws CommandSyntaxException {
-      int $$0 = this.h.getCursor();
-      aiy $$1 = aiy.a(this.h);
-      Optional<? extends ij<coy>> $$2 = this.g.a(aix.a(kg.F, $$1));
-      this.j = Either.left($$2.orElseThrow(() -> {
-         this.h.setCursor($$0);
-         return b.createWithContext(this.h, $$1);
-      }));
-   }
-
-   private void b() throws CommandSyntaxException {
-      if (!this.i) {
-         throw a.createWithContext(this.h);
-      } else {
-         int $$0 = this.h.getCursor();
-         this.h.expect('#');
-         this.l = this::b;
-         aiy $$1 = aiy.a(this.h);
-         Optional<? extends in<coy>> $$2 = this.g.a(aup.a(kg.F, $$1));
-         this.j = Either.right($$2.orElseThrow(() -> {
-            this.h.setCursor($$0);
-            return c.createWithContext(this.h, $$1);
-         }));
-      }
-   }
-
-   private void c() throws CommandSyntaxException {
-      this.k = new tu(this.h).f();
-   }
-
-   private void d() throws CommandSyntaxException {
-      if (this.i) {
-         this.l = this::d;
-      } else {
-         this.l = this::c;
-      }
-
-      if (this.h.canRead() && this.h.peek() == '#') {
-         this.b();
-      } else {
-         this.a();
-      }
-
-      this.l = this::a;
-      if (this.h.canRead() && this.h.peek() == '{') {
-         this.l = f;
-         this.c();
-      }
-   }
-
-   private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      if ($$0.getRemaining().isEmpty()) {
-         $$0.suggest(String.valueOf('{'));
-      }
-
-      return $$0.buildFuture();
-   }
-
-   private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-      return dz.a(this.g.e().map(aup::b), $$0, String.valueOf('#'));
-   }
-
-   private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-      return dz.a(this.g.c().map(aix::a), $$0);
-   }
-
-   private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
-      this.b($$0);
-      return this.c($$0);
-   }
-
-   public static record a(ij<coy> a, @Nullable sw b) {
-   }
-
-   public static record b(in<coy> a, @Nullable sw b) {
+   public static record a(il<cpl> a, @Nullable sy b) {
    }
 }

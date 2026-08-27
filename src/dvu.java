@@ -1,53 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record dvu(List<dvu.a> b, ie c, dsc d, boolean e) implements dwd {
-   public static final Codec<dvu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvu.a.a.listOf().fieldOf("layers").forGetter(dvu::a),
-               ie.g.fieldOf("direction").forGetter(dvu::b),
-               dsc.b.fieldOf("allowed_placement").forGetter(dvu::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dvu::d)
-            )
-            .apply($$0, dvu::new)
-   );
-
-   public static dvu.a a(blb $$0, dye $$1) {
-      return new dvu.a($$0, $$1);
+public class dvu extends duu<dxn> {
+   public dvu(Codec<dxn> $$0) {
+      super($$0);
    }
 
-   public static dvu b(blb $$0, dye $$1) {
-      return new dvu(List.of(a($$0, $$1)), ie.b, dsc.c, false);
+   @Override
+   public boolean a(duw<dxn> $$0) {
+      dxn $$1 = $$0.f();
+      cwz $$2 = $$0.b();
+      awt $$3 = $$0.d();
+      czf $$4 = $$1.b.b();
+      ib $$5 = a($$2, $$0.e().j().a(ih.a.b, $$2.J_() + 1, $$2.ak() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (ib $$11 : ib.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dme $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
    }
 
-   public List<dvu.a> a() {
-      return this.b;
-   }
+   @Nullable
+   private static ib a(cwf $$0, ib.a $$1, czf $$2) {
+      while ($$1.v() > $$0.J_() + 1) {
+         dme $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
 
-   public ie b() {
-      return this.c;
-   }
-
-   public dsc c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(blb b, dye c) {
-      public static final Codec<dvu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(blb.d.fieldOf("height").forGetter(dvu.a::a), dye.a.fieldOf("provider").forGetter(dvu.a::b)).apply($$0, dvu.a::new)
-      );
-
-      public blb a() {
-         return this.b;
+         $$1.c(ih.a);
       }
 
-      public dye b() {
-         return this.c;
-      }
+      return null;
    }
 }

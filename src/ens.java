@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ens extends ejz {
+   float b(ejy var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ens {
+   default int a(ejy $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   enr b();
 }

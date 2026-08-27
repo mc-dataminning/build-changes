@@ -1,82 +1,151 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 
-public class dft extends cxo {
-   public static final MapCodec<dft> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dft.a.b.fieldOf("kind").forGetter(cxo::b), u()).apply($$0, dft::new));
-   public static final int d = dmp.a();
-   private static final int b = d + 1;
-   public static final dmj e = dlz.ba;
-   protected static final eos f = cys.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final eos g = cys.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-
-   @Override
-   public MapCodec<? extends dft> a() {
-      return c;
-   }
-
-   protected dft(dft.a $$0, dli.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
-   }
+public class dft extends czf implements dgf {
+   public static final MapCodec<dft> a = b(dft::new);
+   private static final int f = 1;
+   private static final epo g;
+   private static final epo h;
+   private static final epo i = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final epo j = epl.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final dne c = dmu.aW;
+   public static final dmv d = dmu.C;
+   public static final dmv e = dmu.b;
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return this.b() == dft.b.h ? g : f;
+   public MapCodec<dft> a() {
+      return a;
+   }
+
+   protected dft(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eos f(dlj $$0, cux $$1, hz $$2) {
-      return eop.a();
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   public dlj a(crk $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dmp.a($$0.i())));
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      if (!$$3.a($$0.b().l())) {
+         return $$0.c(e) ? h : g;
+      } else {
+         return epl.b();
+      }
    }
 
    @Override
-   protected dlj a(dlj $$0, dfe $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   protected epo a(dme $$0, cvk $$1, ib $$2) {
+      return epl.b();
    }
 
    @Override
-   protected dlj a(dlj $$0, ddo $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   protected boolean a(dme $$0, crx $$1) {
+      return $$1.n().a(this.l());
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      super.a($$0);
-      $$0.a(e);
+   public dme a(crx $$0) {
+      ib $$1 = $$0.a();
+      cwe $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == ehs.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
    }
 
-   public interface a extends axc {
-      Map<String, dft.a> a = new Object2ObjectArrayMap();
-      Codec<dft.a> b = avq.a(axc::c, a::get);
+   @Override
+   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
+      if (!$$1.B) {
+         $$1.a($$2, this, 1);
+      }
    }
 
-   public static enum b implements dft.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   @Override
+   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ehs.c, ehs.c.a($$3));
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      if (!$$3.y_()) {
+         $$3.a($$4, this, 1);
       }
+
+      return $$0;
+   }
+
+   @Override
+   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
+      int $$4 = a($$1, $$2);
+      dme $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            cek.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   protected boolean a(dme $$0, cwh $$1, ib $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      if ($$3.a(epl.b(), $$2, true) && !$$3.b()) {
+         return g;
+      } else {
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : epl.a();
+      }
+   }
+
+   @Override
+   protected ehr c_(dme $$0) {
+      return $$0.c(d) ? ehs.c.a(false) : super.c_($$0);
+   }
+
+   private boolean a(cvk $$0, ib $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
+   }
+
+   public static int a(cvk $$0, ib $$1) {
+      ib.a $$2 = $$1.j().c(ih.a);
+      dme $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(czh.nS)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.d($$0, $$2, ih.b)) {
+         return 0;
+      }
+
+      for (ih $$5 : ih.c.a) {
+         dme $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(czh.nS)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
+         }
+      }
+
+      return $$4;
+   }
+
+   static {
+      epo $$0 = czf.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      epo $$1 = czf.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      epo $$2 = czf.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      epo $$3 = czf.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      epo $$4 = czf.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = epl.a($$0, $$1, $$2, $$3, $$4);
+      epo $$5 = czf.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      epo $$6 = czf.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      epo $$7 = czf.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      epo $$8 = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = epl.a(dft.i, g, $$6, $$5, $$8, $$7);
    }
 }

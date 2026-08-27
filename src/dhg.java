@@ -1,48 +1,46 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class dhg extends cye {
-   public static final MapCodec<dhg> a = b(dhg::new);
-   public static final dmh<dkw> b = dlz.by;
+public interface dhg {
+   List<dhg.a> b();
 
-   @Override
-   public MapCodec<dhg> a() {
-      return a;
-   }
-
-   public dhg(dli.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dkw.a));
-   }
-
-   @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected dex b_(dlj $$0) {
-      return dex.c;
+   static List<dhg> c() {
+      return kh.h.s().map(dhg::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
    @Nullable
-   @Override
-   public dix a(hz $$0, dlj $$1) {
-      return new dkq($$0, $$1);
+   static dhg a(cwd $$0) {
+      if ($$0.l() instanceof cnl $$1) {
+         czf var6 = $$1.d();
+         if (var6 instanceof dhg) {
+            return (dhg)var6;
+         }
+      }
+
+      cpl $$2 = $$0.l();
+      return $$2 instanceof dhg ? (dhg)$$2 : null;
    }
 
-   @Nullable
-   @Override
-   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
-      return $$0 instanceof aow $$3
-         ? a($$2, diz.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.d().b($$3, $$2x))
-         : a($$2, diz.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.d().a($$0x, $$1x));
-   }
+   public static record a(il<bnq> c, int d) {
+      public static final Codec<dhg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(kh.d.r().fieldOf("id").forGetter(dhg.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dhg.a::c)).apply($$0, dhg.a::new)
+      );
+      public static final Codec<List<dhg.a>> b = a.listOf();
 
-   @Override
-   public void a(cpd $$0, @Nullable cux $$1, List<vq> $$2, cqu $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      cwj.a($$0, $$2, "spawn_data");
+      public bns a() {
+         return new bns(this.c, this.d);
+      }
+
+      public il<bnq> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

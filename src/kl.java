@@ -1,86 +1,196 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import org.slf4j.Logger;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class kl {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final ko c;
-   final Set<String> d = new HashSet<>();
-   final Map<String, km> e = new LinkedHashMap<>();
-   private final ad f;
-   private final boolean g;
+   private final czf a;
+   final Map<kl.b, czf> b = Maps.newHashMap();
+   boolean c = true;
+   boolean d = true;
+   @Nullable
+   String e;
+   @Nullable
+   String f;
 
-   public kl(Path $$0, ad $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = new ko(this.b);
-      this.f = $$1;
-      this.g = $$2;
+   kl(czf $$0) {
+      this.a = $$0;
    }
 
-   public void a() throws IOException {
-      kn $$0 = new kn(this.b, this.d, this.f);
-      Stopwatch $$1 = Stopwatch.createStarted();
-      Stopwatch $$2 = Stopwatch.createUnstarted();
-      this.e.forEach(($$2x, $$3) -> {
-         if (!this.g && !$$0.a($$2x)) {
-            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
-         } else {
-            a.info("Starting provider: {}", $$2x);
-            $$2.start();
-            $$0.a($$0.a($$2x, $$3::a).join());
-            $$2.stop();
-            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
-            $$2.reset();
-         }
-      });
-      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
-      $$0.a();
+   public czf a() {
+      return this.a;
    }
 
-   public kl.a a(boolean $$0) {
-      return new kl.a($$0, "vanilla", this.c);
+   public Map<kl.b, czf> b() {
+      return this.b;
    }
 
-   public kl.a a(boolean $$0, String $$1) {
-      Path $$2 = this.c.a(ko.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
-      return new kl.a($$0, $$1, new ko($$2));
+   public czf a(kl.b $$0) {
+      return this.b.get($$0);
    }
 
-   static {
-      aja.a();
+   public boolean c() {
+      return this.c;
    }
 
-   public class a {
-      private final boolean b;
-      private final String c;
-      private final ko d;
+   public boolean d() {
+      return this.d;
+   }
 
-      a(boolean $$1, String $$2, ko $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public Optional<String> e() {
+      return ac.b(this.e) ? Optional.empty() : Optional.of(this.e);
+   }
+
+   public Optional<String> f() {
+      return ac.b(this.f) ? Optional.empty() : Optional.of(this.f);
+   }
+
+   public static class a {
+      private final kl a;
+
+      public a(czf $$0) {
+         this.a = new kl($$0);
       }
 
-      public <T extends km> T a(km.a<T> $$0) {
-         T $$1 = $$0.create(this.d);
-         String $$2 = this.c + "/" + $$1.a();
-         if (!kl.this.d.add($$2)) {
-            throw new IllegalStateException("Duplicate provider: " + $$2);
-         } else {
-            if (this.b) {
-               kl.this.e.put($$2, $$1);
-            }
+      public kl a() {
+         return this.a;
+      }
 
-            return $$1;
-         }
+      public kl.a a(czf $$0) {
+         this.a.b.put(kl.b.a, $$0);
+         return this;
+      }
+
+      public kl.a b(czf $$0) {
+         this.a.b.put(kl.b.b, $$0);
+         return this;
+      }
+
+      public kl.a c(czf $$0) {
+         this.a.b.put(kl.b.j, $$0);
+         return this;
+      }
+
+      public kl.a d(czf $$0) {
+         this.a.b.put(kl.b.c, $$0);
+         return this;
+      }
+
+      public kl.a e(czf $$0) {
+         this.a.b.put(kl.b.d, $$0);
+         return this;
+      }
+
+      public kl.a f(czf $$0) {
+         this.a.b.put(kl.b.e, $$0);
+         return this;
+      }
+
+      public kl.a g(czf $$0) {
+         this.a.b.put(kl.b.f, $$0);
+         return this;
+      }
+
+      public kl.a h(czf $$0) {
+         this.a.b.put(kl.b.g, $$0);
+         return this;
+      }
+
+      public kl.a i(czf $$0) {
+         this.a.b.put(kl.b.h, $$0);
+         return this;
+      }
+
+      public kl.a j(czf $$0) {
+         this.a.b.put(kl.b.i, $$0);
+         return this;
+      }
+
+      public kl.a a(czf $$0, czf $$1) {
+         this.a.b.put(kl.b.k, $$0);
+         this.a.b.put(kl.b.r, $$1);
+         return this;
+      }
+
+      public kl.a k(czf $$0) {
+         this.a.b.put(kl.b.l, $$0);
+         return this;
+      }
+
+      public kl.a l(czf $$0) {
+         this.a.b.put(kl.b.m, $$0);
+         return this;
+      }
+
+      public kl.a m(czf $$0) {
+         this.a.b.put(kl.b.n, $$0);
+         return this;
+      }
+
+      public kl.a n(czf $$0) {
+         this.a.b.put(kl.b.o, $$0);
+         return this;
+      }
+
+      public kl.a o(czf $$0) {
+         this.a.b.put(kl.b.p, $$0);
+         return this;
+      }
+
+      public kl.a p(czf $$0) {
+         this.a.b.put(kl.b.q, $$0);
+         return this;
+      }
+
+      public kl.a b() {
+         this.a.c = false;
+         return this;
+      }
+
+      public kl.a c() {
+         this.a.d = false;
+         return this;
+      }
+
+      public kl.a a(String $$0) {
+         this.a.e = $$0;
+         return this;
+      }
+
+      public kl.a b(String $$0) {
+         this.a.f = $$0;
+         return this;
+      }
+   }
+
+   public static enum b {
+      a("button"),
+      b("chiseled"),
+      c("cracked"),
+      d("cut"),
+      e("door"),
+      f("fence"),
+      g("fence"),
+      h("fence_gate"),
+      i("fence_gate"),
+      j("mosaic"),
+      k("sign"),
+      l("slab"),
+      m("stairs"),
+      n("pressure_plate"),
+      o("polished"),
+      p("trapdoor"),
+      q("wall"),
+      r("wall_sign");
+
+      private final String s;
+
+      private b(String $$0) {
+         this.s = $$0;
+      }
+
+      public String a() {
+         return this.s;
       }
    }
 }

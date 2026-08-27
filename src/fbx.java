@@ -1,37 +1,17 @@
-public interface fbx {
-   Object b = new Object();
-   int c = 32;
-
-   fbx.a a(ezb var1, fby var2, long var3);
-
-   default Object e() {
-      return b;
+public record fbx(ajc a, ajc b, ajc c, ajc d) {
+   public fbx(ajc $$0, ajc $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   default int a() {
-      return 160;
+   public fbx(ajc $$0, ajc $$1, ajc $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   default int b() {
-      return 32;
-   }
-
-   default int f() {
-      return awi.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(atl.zR),
-      b(atl.zS);
-
-      private final atk c;
-
-      private a(atk $$0) {
-         this.c = $$0;
-      }
-
-      public void a(gls $$0) {
-         $$0.a(gkj.a(this.c, 1.0F, 1.0F));
+   public ajc a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
    }
 }

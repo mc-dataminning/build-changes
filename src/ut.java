@@ -1,18 +1,18 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import java.util.List;
-
-public class ut extends MessageToMessageEncoder<xx<?>> {
-   private final xw a;
-
-   public ut(xw $$0) {
-      this.a = $$0;
-   }
-
-   protected void a(ChannelHandlerContext $$0, xx<?> $$1, List<Object> $$2) throws Exception {
-      this.a.a($$1, $$2::add);
-      if ($$1.d()) {
-         $$0.pipeline().remove($$0.name());
-      }
-   }
+public class ut {
+   public static final String a = "decompress";
+   public static final String b = "compress";
+   public static final String c = "decoder";
+   public static final String d = "encoder";
+   public static final String e = "inbound_config";
+   public static final String f = "outbound_config";
+   public static final String g = "splitter";
+   public static final String h = "prepender";
+   public static final String i = "decrypt";
+   public static final String j = "encrypt";
+   public static final String k = "unbundler";
+   public static final String l = "bundler";
+   public static final String m = "packet_handler";
+   public static final String n = "timeout";
+   public static final String o = "legacy_query";
+   public static final String p = "latency";
 }

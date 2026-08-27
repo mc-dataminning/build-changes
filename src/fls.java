@@ -1,142 +1,112 @@
-public class fls<T extends cbm> extends fmr<T> {
-   private static final float a = 2.0F;
-   private static final float b = 2.5F;
-   private static final float f = 0.45F;
-   private static final float g = 29.35F;
-   private static final String h = "saddle";
-   private static final String i = "bridle";
-   private static final String j = "reins";
-   private final fpj k;
-   private final fpj l;
-   private final fpj[] m;
-   private final fpj[] n;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public fls(fpj $$0) {
-      this.k = $$0;
-      fpj $$1 = $$0.b("body");
-      this.l = $$1.b("head");
-      this.m = new fpj[]{$$1.b("saddle"), this.l.b("bridle")};
-      this.n = new fpj[]{this.l.b("reins")};
+public class fls implements fln, flo {
+   private static final ajc a = new ajc("spectator/teleport_to_team");
+   private static final vs b = vs.c("spectatorMenu.team_teleport");
+   private static final vs c = vs.c("spectatorMenu.team_teleport.prompt");
+   private final List<flo> d;
+
+   public fls() {
+      eyk $$0 = eyk.P();
+      this.d = a($$0, $$0.r.K());
    }
 
-   public static fpp b() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a();
-      fpn $$2 = new fpn(0.05F);
-      fps $$3 = $$1.a("body", fpo.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fpl.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", fpo.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fpl.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", fpo.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fpl.a(0.0F, -9.0F, 3.5F));
-      fps $$4 = $$3.a(
-         "head",
-         fpo.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         fpl.a(0.0F, -3.0F, -19.5F)
-      );
-      $$4.a("left_ear", fpo.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fpl.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", fpo.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fpl.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", fpo.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fpl.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", fpo.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fpl.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", fpo.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fpl.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", fpo.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fpl.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         fpo.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         fpl.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "reins",
-         fpo.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         fpl.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "bridle",
-         fpo.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         fpl.a(0.0F, 0.0F, 0.0F)
-      );
-      return fpp.a($$0, 128, 128);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fpj::c);
-      this.a($$0, $$4, $$5, $$3);
-      this.a($$0);
-      this.a(eyl.a, $$1, $$2, 2.0F, 2.5F);
-      this.a($$0.ca, eyl.b, $$3, 1.0F);
-      this.a($$0.cb, eyl.c, $$3, 1.0F);
-      this.a($$0.cc, eyl.d, $$3, 1.0F);
-      this.a($$0.cd, eyl.f, $$3, 1.0F);
-      this.a($$0.ce, eyl.e, $$3, 1.0F);
-   }
-
-   private void a(T $$0, float $$1, float $$2, float $$3) {
-      $$1 = awi.a($$1, -30.0F, 30.0F);
-      $$2 = awi.a($$2, -25.0F, 45.0F);
-      if ($$0.ad_() > 0) {
-         float $$4 = $$3 - (float)$$0.ag;
-         float $$5 = 45.0F * ((float)$$0.ad_() - $$4) / 55.0F;
-         $$2 = awi.a($$2 + $$5, -25.0F, 70.0F);
-      }
-
-      this.l.f = $$1 * (float) (Math.PI / 180.0);
-      this.l.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(T $$0) {
-      boolean $$1 = $$0.i();
-      boolean $$2 = $$0.bP();
-
-      for (fpj $$3 : this.m) {
-         $$3.k = $$1;
-      }
-
-      for (fpj $$4 : this.n) {
-         $$4.k = $$2 && $$1;
-      }
+   private static List<flo> a(eyk $$0, epz $$1) {
+      return $$1.g().stream().flatMap($$1x -> fls.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public void a(esh $$0, esl $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(0.45F, 0.45F, 0.45F);
-         $$0.a(0.0F, 1.834375F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public List<flo> a() {
+      return this.d;
    }
 
    @Override
-   public fpj a() {
-      return this.k;
+   public vs b() {
+      return c;
+   }
+
+   @Override
+   public void a(flm $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public vs aQ_() {
+      return b;
+   }
+
+   @Override
+   public void a(ezx $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aR_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements flo {
+      private final epu a;
+      private final Supplier<giy> b;
+      private final List<frk> c;
+
+      private a(epu $$0, List<frk> $$1, Supplier<giy> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<flo> a(eyk $$0, epu $$1) {
+         List<frk> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            frk $$4 = $$0.K().a($$3);
+            if ($$4 != null && $$4.e() != cwb.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(awt.a().a($$2.size())).a();
+            Supplier<giy> $$6 = $$0.am().a($$5);
+            return Optional.of(new fls.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(flm $$0) {
+         $$0.a(new flr(this.c));
+      }
+
+      @Override
+      public vs aQ_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(ezx $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, awm.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fbj.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aR_() {
+         return true;
+      }
    }
 }

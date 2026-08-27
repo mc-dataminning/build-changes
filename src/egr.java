@@ -1,213 +1,159 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.NoSuchElementException;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public class egr extends LongLinkedOpenHashSet {
-   private final egr.a a;
+public class egr implements drj.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<egr> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, egr::a)
+   );
+   public static final awg<egr> a = awg.a(f);
+   private final egv g;
+   private final egv h;
+   private final egv i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   public egr(int $$0, float $$1) {
-      super($$0, $$1);
-      this.a = new egr.a($$0 / 64, $$1);
+   public static egr a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new egr(new dsr(0L), $$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean add(long $$0) {
-      return this.a.c($$0);
+   private egr(egv $$0, egv $$1, egv $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
    }
 
-   public boolean rem(long $$0) {
-      return this.a.d($$0);
+   @VisibleForTesting
+   public egr(awt $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         egv.a($$0, IntStream.rangeClosed(-15, 0)),
+         egv.a($$0, IntStream.rangeClosed(-15, 0)),
+         egv.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
    }
 
-   public long removeFirstLong() {
-      return this.a.a();
+   public egr a(awt $$0) {
+      return new egr($$0, this.p, this.q, this.l, this.m, this.n);
    }
 
-   public int size() {
-      throw new UnsupportedOperationException();
+   @Override
+   public double a(drj.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
+
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         egs $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(egv.b($$4 * $$13), egv.b($$5 * $$13), egv.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
+         }
+
+         $$13 /= 2.0;
+      }
+
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
+
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = egv.b($$1 * $$13);
+         double $$21 = egv.b($$2 * $$13);
+         double $$22 = egv.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            egs $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         if (!$$18) {
+            egs $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         $$13 /= 2.0;
+      }
+
+      return awm.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   public boolean isEmpty() {
-      return this.a.isEmpty();
+   @Override
+   public double a() {
+      return -this.b();
    }
 
-   protected static class a extends Long2LongLinkedOpenHashMap {
-      private static final int a = awi.f(60000000);
-      private static final int b = awi.f(60000000);
-      private static final int c = 64 - a - b;
-      private static final int d = 0;
-      private static final int e = c;
-      private static final int g = c + b;
-      private static final long h = 3L << g | 3L | 3L << e;
-      private int i = -1;
-      private long j;
-      private final int k;
+   @Override
+   public double b() {
+      return this.o;
+   }
 
-      public a(int $$0, float $$1) {
-         super($$0, $$1);
-         this.k = $$0;
-      }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
 
-      static long a(long $$0) {
-         return $$0 & ~h;
-      }
-
-      static int b(long $$0) {
-         int $$1 = (int)($$0 >>> g & 3L);
-         int $$2 = (int)($$0 >>> 0 & 3L);
-         int $$3 = (int)($$0 >>> e & 3L);
-         return $$1 << 4 | $$3 << 2 | $$2;
-      }
-
-      static long a(long $$0, int $$1) {
-         $$0 |= (long)($$1 >>> 4 & 3) << g;
-         $$0 |= (long)($$1 >>> 2 & 3) << e;
-         return $$0 | (long)($$1 >>> 0 & 3) << 0;
-      }
-
-      public boolean c(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         int $$4;
-         if ($$1 == 0L) {
-            if (this.containsNullKey) {
-               return this.a(this.n, $$3);
-            }
-
-            this.containsNullKey = true;
-            $$4 = this.n;
-         } else {
-            if (this.i != -1 && $$1 == this.j) {
-               return this.a(this.i, $$3);
-            }
-
-            long[] $$5 = this.key;
-            $$4 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
-               if ($$7 == $$1) {
-                  this.i = $$4;
-                  this.j = $$1;
-                  return this.a($$4, $$3);
-               }
-
-               $$4 = $$4 + 1 & this.mask;
-            }
-         }
-
-         this.key[$$4] = $$1;
-         this.value[$$4] = $$3;
-         if (this.size == 0) {
-            this.first = this.last = $$4;
-            this.link[$$4] = -1L;
-         } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
-            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
-            this.last = $$4;
-         }
-
-         if (this.size++ >= this.maxFill) {
-            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
-         }
-
-         return false;
-      }
-
-      private boolean a(int $$0, long $$1) {
-         boolean $$2 = (this.value[$$0] & $$1) != 0L;
-         this.value[$$0] = this.value[$$0] | $$1;
-         return $$2;
-      }
-
-      public boolean d(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         if ($$1 == 0L) {
-            return this.containsNullKey ? this.e($$3) : false;
-         } else if (this.i != -1 && $$1 == this.j) {
-            return this.b(this.i, $$3);
-         } else {
-            long[] $$4 = this.key;
-            int $$5 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
-               if ($$1 == $$6) {
-                  this.i = $$5;
-                  this.j = $$1;
-                  return this.b($$5, $$3);
-               }
-
-               $$5 = $$5 + 1 & this.mask;
-            }
-
-            return false;
-         }
-      }
-
-      private boolean e(long $$0) {
-         if ((this.value[this.n] & $$0) == 0L) {
-            return false;
-         } else {
-            this.value[this.n] = this.value[this.n] & ~$$0;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
-         }
-      }
-
-      private boolean b(int $$0, long $$1) {
-         if ((this.value[$$0] & $$1) == 0L) {
-            return false;
-         } else {
-            this.value[$$0] = this.value[$$0] & ~$$1;
-            if (this.value[$$0] != 0L) {
-               return true;
-            } else {
-               this.i = -1;
-               this.size--;
-               this.fixPointers($$0);
-               this.shiftKeys($$0);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public long a() {
-         if (this.size == 0) {
-            throw new NoSuchElementException();
-         } else {
-            int $$0 = this.first;
-            long $$1 = this.key[$$0];
-            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
-            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
-            if (this.value[$$0] == 0L) {
-               this.removeFirstLong();
-               this.i = -1;
-            }
-
-            return a($$1, $$2);
-         }
-      }
-
-      protected void rehash(int $$0) {
-         if ($$0 > this.k) {
-            super.rehash($$0);
-         }
-      }
+   @Override
+   public awg<? extends drj> c() {
+      return a;
    }
 }

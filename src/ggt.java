@@ -1,39 +1,48 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+public class ggt extends ggj<cbm, fmw<cbm>> {
+   private static final ajc a = new ajc("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final ajc b = new ajc("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final ajc c = new ajc("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final ajc d = new ajc("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final ajc e = new ajc("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final ajc f = new ajc("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final ajc g = new ajc("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final ajc h = new ajc("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final ajc i = new ajc("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final ajc j = new ajc("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final ajc k = new ajc("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final ajc l = new ajc("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fpl<cbm> m;
+   private final fpm<cbm> n;
 
-public class ggt extends ggu {
-   @Nullable
-   private CompletableFuture<ggu.a> f;
-
-   public ggt(asb $$0, aiy $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> ggu.a.a($$0, $$1), $$2);
+   public ggt(gdt<cbm, fmw<cbm>> $$0, fqb $$1) {
+      super($$0);
+      this.m = new fpl<>($$1.a(fqe.bI));
+      this.n = new fpm<>($$1.a(fqe.bG));
    }
 
-   @Override
-   protected ggu.a b(asb $$0) {
-      if (this.f != null) {
-         ggu.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return ggu.a.a($$0, this.e);
-      }
-   }
+   public void a(etd $$0, fwq $$1, int $$2, cbm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cbm.b $$10 = $$3.gw();
 
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
-   }
+      fne<cbm> $$11 = (fne<cbm>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   @Override
-   public void a(ghc $$0, asb $$1, aiy $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> ggu.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+      ajc $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gv().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

@@ -1,195 +1,42 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
-import org.slf4j.Logger;
+public abstract class big implements bil {
+   protected final long[] a;
+   protected final long[] b;
 
-public class big implements bil {
-   private static final long a = Duration.ofMillis(100L).toNanos();
-   private static final Logger c = LogUtils.getLogger();
-   private final List<String> d = Lists.newArrayList();
-   private final LongList e = new LongArrayList();
-   private final Map<String, big.a> f = Maps.newHashMap();
-   private final IntSupplier g;
-   private final LongSupplier h;
-   private final long i;
-   private final int j;
-   private String k = "";
-   private boolean l;
-   @Nullable
-   private big.a m;
-   private final boolean n;
-   private final Set<Pair<String, bjq>> o = new ObjectArraySet();
-
-   public big(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
-      this.i = $$0.getAsLong();
-      this.h = $$0;
-      this.j = $$1.getAsInt();
-      this.g = $$1;
-      this.n = $$2;
-   }
-
-   @Override
-   public void a() {
-      if (this.l) {
-         c.error("Profiler tick already started - missing endTick()?");
+   protected big(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
       } else {
-         this.l = true;
-         this.k = "";
-         this.d.clear();
-         this.a("root");
+         this.b = new long[$$0];
+         this.a = $$1;
       }
    }
 
    @Override
-   public void b() {
-      if (!this.l) {
-         c.error("Profiler tick already ended - missing startTick()?");
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
       } else {
-         this.c();
-         this.l = false;
-         if (!this.k.isEmpty()) {
-            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bim.b(this.k)));
-         }
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
       }
    }
 
-   @Override
-   public void a(String $$0) {
-      if (!this.l) {
-         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
-      } else {
-         if (!this.k.isEmpty()) {
-            this.k = this.k + "\u001e";
-         }
+   protected abstract void a();
 
-         this.k = this.k + $$0;
-         this.d.add(this.k);
-         this.e.add(ac.c());
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-      this.a($$0.get());
-   }
-
-   @Override
-   public void a(bjq $$0) {
-      this.o.add(Pair.of(this.k, $$0));
-   }
-
-   @Override
-   public void c() {
-      if (!this.l) {
-         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
-      } else if (this.e.isEmpty()) {
-         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         long $$0 = ac.c();
-         long $$1 = this.e.removeLong(this.e.size() - 1);
-         this.d.remove(this.d.size() - 1);
-         long $$2 = $$0 - $$1;
-         big.a $$3 = this.f();
-         $$3.c += $$2;
-         $$3.d++;
-         $$3.a = Math.max($$3.a, $$2);
-         $$3.b = Math.min($$3.b, $$2);
-         if (this.n && $$2 > a) {
-            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bim.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
-         }
-
-         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void b(String $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   private big.a f() {
-      if (this.m == null) {
-         this.m = this.f.computeIfAbsent(this.k, $$0 -> new big.a());
-      }
-
-      return this.m;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-      this.f().e.addTo($$0, (long)$$1);
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-      this.f().e.addTo($$0.get(), (long)$$1);
-   }
-
-   @Override
-   public bim d() {
-      return new bij(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
-   }
-
-   @Nullable
-   @Override
-   public big.a c(String $$0) {
-      return this.f.get($$0);
-   }
-
-   @Override
-   public Set<Pair<String, bjq>> e() {
-      return this.o;
-   }
-
-   public static class a implements bio {
-      long a = Long.MIN_VALUE;
-      long b = Long.MAX_VALUE;
-      long c;
-      long d;
-      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
-
-      @Override
-      public long a() {
-         return this.c;
-      }
-
-      @Override
-      public long b() {
-         return this.a;
-      }
-
-      @Override
-      public long c() {
-         return this.d;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.unmodifiable(this.e);
-      }
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

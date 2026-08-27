@@ -1,54 +1,106 @@
-public class ckd {
-   public static final ckc a = new ckc.a().a(4).a(0.3F).d();
-   public static final ckc b = new ckc.a().a(5).a(0.6F).d();
-   public static final ckc c = new ckc.a().a(3).a(0.3F).a().d();
-   public static final ckc d = new ckc.a().a(1).a(0.6F).d();
-   public static final ckc e = a(6).d();
-   public static final ckc f = new ckc.a().a(5).a(0.6F).d();
-   public static final ckc g = new ckc.a().a(3).a(0.6F).d();
-   public static final ckc h = new ckc.a().a(2).a(0.3F).a(new bnd(bnf.q, 600, 0), 0.3F).a().d();
-   public static final ckc i = new ckc.a().a(4).a(0.3F).b().d();
-   public static final ckc j = new ckc.a().a(2).a(0.1F).d();
-   public static final ckc k = new ckc.a().a(8).a(0.8F).a().d();
-   public static final ckc l = new ckc.a().a(6).a(0.6F).a().d();
-   public static final ckc m = new ckc.a().a(5).a(0.6F).d();
-   public static final ckc n = new ckc.a().a(6).a(0.8F).a().d();
-   public static final ckc o = new ckc.a().a(8).a(0.8F).a().d();
-   public static final ckc p = new ckc.a().a(5).a(0.6F).a().d();
-   public static final ckc q = new ckc.a().a(6).a(0.8F).d();
-   public static final ckc r = new ckc.a().a(2).a(0.1F).d();
-   public static final ckc s = new ckc.a().a(1).a(0.3F).c().d();
-   public static final ckc t = new ckc.a()
-      .a(4)
-      .a(1.2F)
-      .a(new bnd(bnf.j, 400, 1), 1.0F)
-      .a(new bnd(bnf.k, 6000, 0), 1.0F)
-      .a(new bnd(bnf.l, 6000, 0), 1.0F)
-      .a(new bnd(bnf.v, 2400, 3), 1.0F)
-      .b()
-      .d();
-   public static final ckc u = new ckc.a().a(4).a(1.2F).a(new bnd(bnf.j, 100, 1), 1.0F).a(new bnd(bnf.v, 2400, 0), 1.0F).b().d();
-   public static final ckc v = new ckc.a().a(6).a(1.2F).d();
-   public static final ckc w = new ckc.a().a(6).a(0.1F).d();
-   public static final ckc x = new ckc.a().a(2).a(0.3F).d();
-   public static final ckc y = a(6).d();
-   public static final ckc z = new ckc.a().a(2).a(0.3F).a().d();
-   public static final ckc A = new ckc.a().a(2).a(0.3F).a(new bnd(bnf.s, 100, 0), 0.6F).d();
-   public static final ckc B = new ckc.a().a(3).a(0.3F).a().d();
-   public static final ckc C = new ckc.a().a(1).a(0.3F).d();
-   public static final ckc D = new ckc.a().a(1).a(0.1F).a(new bnd(bnf.s, 1200, 1), 1.0F).a(new bnd(bnf.q, 300, 2), 1.0F).a(new bnd(bnf.i, 300, 0), 1.0F).d();
-   public static final ckc E = new ckc.a().a(8).a(0.3F).d();
-   public static final ckc F = new ckc.a().a(3).a(0.3F).a().d();
-   public static final ckc G = a(10).d();
-   public static final ckc H = new ckc.a().a(4).a(0.1F).a(new bnd(bnf.q, 600, 0), 0.8F).a().d();
-   public static final ckc I = new ckc.a().a(2).a(0.1F).d();
-   public static final ckc J = new ckc.a().a(2).a(0.8F).a(new bnd(bnf.s, 100, 0), 1.0F).d();
-   public static final ckc K = a(6).b().d();
-   public static final ckc L = new ckc.a().a(2).a(0.1F).d();
-   public static final ckc M = new ckc.a().a(2).a(0.1F).d();
-   public static final ckc N = new ckc.a().a(1).a(0.1F).d();
+public class ckd extends cju implements dkj {
+   private boolean i = true;
 
-   private static ckc.a a(int $$0) {
-      return new ckc.a().a($$0).a(0.6F);
+   public ckd(bol<? extends ckd> $$0, cwe $$1) {
+      super($$0, $$1);
+   }
+
+   public ckd(cwe $$0, double $$1, double $$2, double $$3) {
+      super(bol.Z, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   public cjt.a w() {
+      return cjt.a.f;
+   }
+
+   @Override
+   public dme y() {
+      return czh.hc.o();
+   }
+
+   @Override
+   public int A() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.H()) {
+         this.p($$4);
+      }
+   }
+
+   public boolean H() {
+      return this.i;
+   }
+
+   public void p(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public double I() {
+      return this.do();
+   }
+
+   @Override
+   public double J() {
+      return this.dq() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return this.du();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dJ().B && this.bx() && this.H() && this.M()) {
+         this.e();
+      }
+   }
+
+   public boolean M() {
+      if (dkk.a(this.dJ(), this)) {
+         return true;
+      } else {
+         for (cel $$1 : this.dJ().a(cel.class, this.cE().c(0.25, 0.0, 0.25), bok.a)) {
+            if (dkk.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected cpl ai_() {
+      return cpt.nP;
+   }
+
+   @Override
+   protected void b(sy $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.i);
+   }
+
+   @Override
+   protected void a(sy $$0) {
+      super.a($$0);
+      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cku a(int $$0, chz $$1) {
+      return new clt($$0, $$1, this);
    }
 }

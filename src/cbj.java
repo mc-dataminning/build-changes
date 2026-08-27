@@ -1,22 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+public abstract class cbj extends bpt {
+   private static final int bY = 100;
+   private int bZ;
 
-public class cbj extends bqa<cbh> {
-   public cbj() {
-      super(ImmutableMap.of(bxl.N, bxm.a, bxl.y, bxm.a), 200);
+   protected cbj(bol<? extends cbj> $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aow $$0, cbh $$1) {
-      return $$1.bc();
+   public boolean b(apb $$0) {
+      sy $$1 = new sy();
+      $$1.a("id", this.bw());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.am();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   protected boolean a(aow $$0, cbh $$1, long $$2) {
-      return $$1.bc() && $$1.dO().a(bxl.N);
+   @Override
+   public void l() {
+      this.bZ++;
+      super.l();
    }
 
-   protected void b(aow $$0, cbh $$1, long $$2) {
-      bpj<cbh> $$3 = $$1.dO();
-      $$3.b(bxl.m);
-      $$3.b(bxl.n);
-      $$1.b(new bnd(bnf.j, 200, 0));
+   public boolean gu() {
+      return this.bZ > 100;
    }
 }

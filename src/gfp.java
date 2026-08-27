@@ -1,26 +1,28 @@
-public class gfp<T extends boi> extends gfl<T, fog<T>> {
-   private final fmi<T> a;
-
-   public gfp(gcv<T, fog<T>> $$0, fpf $$1) {
+public class gfp extends ggj<fvp, foj<fvp>> {
+   public gfp(gdt<fvp, foj<fvp>> $$0) {
       super($$0);
-      this.a = new fog<>($$1.a(fpi.bp));
    }
 
-   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      exo $$10 = exo.P();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         esl $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fwb.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fwb.i(this.a($$3)));
-         }
+   public void a(etd $$0, fwq $$1, int $$2, fvp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ad().getString()) && !$$3.cb()) {
+         eth $$10 = $$1.getBuffer(fwy.c($$3.b().a()));
+         int $$11 = gcz.c($$3, 0.0F);
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, gcb.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = awm.i($$6, $$3.M, $$3.dz()) - awm.i($$6, $$3.aW, $$3.aV);
+            float $$14 = awm.i($$6, $$3.N, $$3.dB());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
       }
    }
 }

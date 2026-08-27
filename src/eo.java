@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class eo implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vs.b("arguments.objective.readonly", $$0));
 
    public static eo a() {
       return new eo();
    }
 
-   public static eov a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static epr a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      epd $$3 = ((du)$$0.getSource()).l().aJ();
-      eov $$4 = $$3.a($$2);
+      epz $$3 = ((du)$$0.getSource()).l().aK();
+      epr $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class eo implements ArgumentType<String> {
       }
    }
 
-   public static eov b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      eov $$2 = a($$0, $$1);
+   public static epr b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      epr $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {
@@ -45,7 +45,7 @@ public class eo implements ArgumentType<String> {
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       S $$2 = (S)$$0.getSource();
       if ($$2 instanceof du $$3) {
-         return dz.b($$3.l().aJ().d(), $$1);
+         return dz.b($$3.l().aK().d(), $$1);
       } else {
          return $$2 instanceof dz $$4 ? $$4.a($$0) : Suggestions.empty();
       }

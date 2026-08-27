@@ -1,46 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-class eox {
-   private final Reference2ObjectOpenHashMap<eov, epa> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class eox extends epo {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   @Nullable
-   public epa a(eov $$0) {
-      return (epa)this.a.get($$0);
+   protected eox(epe $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   public epa a(eov $$0, Consumer<epa> $$1) {
-      return (epa)this.a.computeIfAbsent($$0, $$1x -> {
-         epa $$2 = new epa();
-         $$1.accept($$2);
-         return $$2;
-      });
+   eox(epe $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
    }
 
-   public boolean b(eov $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<eov> b() {
-      Object2IntMap<eov> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(eov $$0, epa $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<eov, epa> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   protected DoubleList a(ih.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

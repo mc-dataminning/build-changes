@@ -1,33 +1,162 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class eti extends eud {
-   private static final Logger b = LogUtils.getLogger();
-   public List<eth> a = Lists.newArrayList();
+public class eti {
+   private final ImmutableList<etj> a;
+   private final ImmutableMap<String, etj> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
+   @Nullable
+   private etg e;
 
-   public static eti a(String $$0) {
-      eti $$1 = new eti();
+   public eti(ImmutableMap<String, etj> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(eth.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+      while (var3.hasNext()) {
+         etj $$2 = (etj)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      return $$1;
+      this.d = $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   }
+
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<etj> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eti $$1 = (eti)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<etj> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<etj> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         etj $$2 = (etj)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public etg g() {
+      etg $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new etg(etg.a.b);
+      }
+
+      return $$0;
+   }
+
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static eti.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
+      }
    }
 }

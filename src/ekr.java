@@ -1,62 +1,66 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import java.util.function.Predicate;
 
-public class ekr {
-   public static final BiFunction<cpd, ejc, cpd> a = ($$0, $$1) -> $$0;
-   private static final Codec<ekp> D = kf.G.q().dispatch("function", ekp::b, ekq::a);
-   public static final Codec<ekp> b = avq.a((Supplier<Codec<ekp>>)(() -> avq.e(D, ekt.b)));
-   public static final ekq c = a("set_count", ela.a);
-   public static final ekq d = a("enchant_with_levels", eki.a);
-   public static final ekq e = a("enchant_randomly", ekh.a);
-   public static final ekq f = a("set_enchantments", eky.a);
-   public static final ekq g = a("set_nbt", ele.a);
-   public static final ekq h = a("furnace_smelt", elh.a);
-   public static final ekq i = a("looting_enchant", eks.b);
-   public static final ekq j = a("set_damage", elb.a);
-   public static final ekq k = a("set_attributes", eku.a);
-   public static final ekq l = a("set_name", eld.a);
-   public static final ekq m = a("exploration_map", ekj.f);
-   public static final ekq n = a("set_stew_effect", elg.a);
-   public static final ekq o = a("copy_name", ekf.a);
-   public static final ekq p = a("set_contents", ekw.a);
-   public static final ekq q = a("limit_count", ekn.a);
-   public static final ekq r = a("apply_bonus", ekc.a);
-   public static final ekq s = a("set_loot_table", ekx.a);
-   public static final ekq t = a("explosion_decay", ekd.a);
-   public static final ekq u = a("set_lore", elc.a);
-   public static final ekq v = a("fill_player_head", ekk.a);
-   public static final ekq w = a("copy_nbt", ekg.a);
-   public static final ekq x = a("copy_state", eke.a);
-   public static final ekq y = a("set_banner_pattern", ekv.a);
-   public static final ekq z = a("set_potion", elf.a);
-   public static final ekq A = a("set_instrument", ekz.a);
-   public static final ekq B = a("reference", ekl.a);
-   public static final ekq C = a("sequence", ekt.a);
+public abstract class ekr implements ekj {
+   protected final List<emx> e;
+   private final Predicate<ejy> a;
 
-   private static ekq a(String $$0, Codec<? extends ekp> $$1) {
-      return iv.a(kf.G, new aiy($$0), new ekq($$1));
+   protected ekr(List<emx> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   public static BiFunction<cpd, ejc, cpd> a(List<? extends BiFunction<cpd, ejc, cpd>> $$0) {
-      List<BiFunction<cpd, ejc, cpd>> $$1 = List.copyOf($$0);
+   protected static <T extends ekr> P1<Mu<T>, List<emx>> a(Instance<T> $$0) {
+      return $$0.group(avu.a(emz.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cpd, ejc, cpd> $$2 = $$1.get(0);
-            BiFunction<cpd, ejc, cpd> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cpd, ejc, cpd> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   public void a(ekh $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+   }
 
-         return $$1x;
-      };
-      };
+   protected final boolean a(ejy $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract eks a();
+
+   public abstract static class a<T extends ekr.a<T>> implements emq<T> {
+      private final Builder<emx> a = ImmutableList.builder();
+
+      protected abstract T aF_();
+
+      public T a(emx.a $$0) {
+         this.a.add($$0.build());
+         return this.aF_();
+      }
+
+      public final T e() {
+         return this.aF_();
+      }
+
+      protected List<emx> f() {
+         return this.a.build();
+      }
+
+      public eki.a a(ekr.a<?> $$0) {
+         return new eki.a(this, $$0);
+      }
+
+      public ekn.a b(ekr.a<?> $$0) {
+         return new ekn.a(this, $$0);
+      }
+
+      public ekv.a c(ekr.a<?> $$0) {
+         return new ekv.a(this, $$0);
+      }
+
+      public abstract ekr b();
    }
 }

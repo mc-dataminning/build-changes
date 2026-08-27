@@ -1,9 +1,8 @@
-public interface fks {
-   void a(fkq var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   vq aR_();
-
-   void a(ezb var1, float var2, int var3);
-
-   boolean aS_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fks {
 }

@@ -1,53 +1,43 @@
-public class ftt extends fuh {
-   protected final fuc a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
+public class ftt extends fve {
+   private final fuz a;
 
-   protected ftt(fqe $$0, double $$1, double $$2, double $$3, fuc $$4, float $$5) {
+   protected ftt(fra $$0, double $$1, double $$2, double $$3, fuz $$4) {
       super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
       this.a = $$4;
-   }
-
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
-   }
-
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public ftl b() {
-      return ftl.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
-         }
-      }
+   public fui b() {
+      return fui.d;
    }
 
    @Override
    public int a(float $$0) {
       return 15728880;
+   }
+
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements fuh<ke> {
+      private final fuz a;
+
+      public a(fuz $$0) {
+         this.a = $$0;
+      }
+
+      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftt($$1, $$2, $$3, $$4, this.a);
+      }
    }
 }

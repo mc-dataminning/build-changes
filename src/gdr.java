@@ -1,16 +1,31 @@
-public class gdr extends gcg<cay, foq<cay>> {
-   private static final aiy a = new aiy("textures/entity/turtle/big_sea_turtle.png");
+public class gdr extends gde<cbg, fop<cbg>> {
+   private static final ajc a = new ajc("textures/entity/rabbit/brown.png");
+   private static final ajc i = new ajc("textures/entity/rabbit/white.png");
+   private static final ajc j = new ajc("textures/entity/rabbit/black.png");
+   private static final ajc k = new ajc("textures/entity/rabbit/gold.png");
+   private static final ajc l = new ajc("textures/entity/rabbit/salt.png");
+   private static final ajc m = new ajc("textures/entity/rabbit/white_splotched.png");
+   private static final ajc n = new ajc("textures/entity/rabbit/toast.png");
+   private static final ajc o = new ajc("textures/entity/rabbit/caerbannog.png");
 
-   public gdr(gba.a $$0) {
-      super($$0, new foq<>($$0.a(fpi.bJ)), 0.7F);
+   public gdr(gby.a $$0) {
+      super($$0, new fop<>($$0.a(fqe.ba)), 0.3F);
    }
 
-   protected float a(cay $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.83F : $$1;
-   }
-
-   public aiy b(cay $$0) {
-      return a;
+   public ajc a(cbg $$0) {
+      String $$1 = n.a($$0.ad().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gl()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
+      }
    }
 }

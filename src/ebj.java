@@ -1,84 +1,37 @@
-public abstract class ebj extends ebp {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   protected ebj(ecc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ie $$7) {
-      super($$0, 0, ebp.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class ebj extends ebr {
+   public static final Codec<ebj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ebj::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
+
+   private ebj(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   protected ebj(ecc $$0, sw $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public static ebj a(double $$0, int $$1, int $$2) {
+      return new ebj($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(ecb $$0, sw $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   protected int a(awt $$0, ib $$1) {
+      double $$2 = cxd.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   protected boolean a(cvs $$0, ebd $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         hz.a $$5 = new hz.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dqv.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
-   }
-
-   protected boolean a(cvs $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.ak();
-         boolean $$3 = false;
-         hz.a $$4 = new hz.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dqv.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   @Override
+   public ebo<?> b() {
+      return ebo.h;
    }
 }

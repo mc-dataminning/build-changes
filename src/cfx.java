@@ -1,41 +1,86 @@
-public interface cfx {
-   int n_ = 10;
+import javax.annotation.Nullable;
 
-   int gg();
-
-   static boolean a(boi $$0, boi $$1) {
-      float $$2 = (float)$$0.g(bpp.c);
-      float $$3;
-      if (!$$0.o_() && (int)$$2 > 0) {
-         $$3 = $$2 / 2.0F + (float)$$0.dM().z.a((int)$$2);
-      } else {
-         $$3 = $$2;
-      }
-
-      boolean $$5 = $$1.a($$0.dN().b($$0), $$3);
-      if ($$5) {
-         $$0.a($$0, $$1);
-         if (!$$0.o_()) {
-            b($$0, $$1);
-         }
-      }
-
-      return $$5;
+public class cfx extends cep {
+   public cfx(bol<? extends cfx> $$0, cwe $$1) {
+      super($$0, $$1);
+      this.a(eic.i, 8.0F);
    }
 
-   static void b(boi $$0, boi $$1) {
-      double $$2 = $$0.g(bpp.d);
-      double $$3 = $$1.g(bpp.k);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dr() - $$0.dr();
-         double $$6 = $$1.dx() - $$0.dx();
-         float $$7 = (float)($$0.dM().z.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dM().z.i() * 0.5F + 0.2F);
-         enz $$9 = new enz($$5, 0.0, $$6).d().a($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dM().z.i() * 0.5;
-         $$1.j($$9.c, $$10, $$9.e);
-         $$1.S = true;
+   @Override
+   protected void B() {
+      this.bQ.a(3, new bxn<>(this, cgp.class, true));
+      super.B();
+   }
+
+   @Override
+   protected ato y() {
+      return atp.BT;
+   }
+
+   @Override
+   protected ato d(bne $$0) {
+      return atp.BV;
+   }
+
+   @Override
+   protected ato n_() {
+      return atp.BU;
+   }
+
+   @Override
+   ato w() {
+      return atp.BW;
+   }
+
+   @Override
+   protected void a(bne $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof ces $$4 && $$4.gm()) {
+         $$4.gn();
+         this.a((cwd)cpt.ui);
       }
+   }
+
+   @Override
+   protected void a(awt $$0, bmj $$1) {
+      this.a(bom.a, new cpq(cpt.oP));
+   }
+
+   @Override
+   protected void b(awt $$0, bmj $$1) {
+   }
+
+   @Nullable
+   @Override
+   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
+      bpp $$4 = super.a($$0, $$1, $$2, $$3);
+      this.f(bqe.c).a(4.0);
+      this.A();
+      return $$4;
+   }
+
+   @Override
+   public boolean B(bof $$0) {
+      if (!super.B($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof box) {
+            ((box)$$0).b(new bns(bnu.t, 200), this);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   protected cig b(cpq $$0, float $$1) {
+      cig $$2 = super.b($$0, $$1);
+      $$2.g(100);
+      return $$2;
+   }
+
+   @Override
+   public boolean c(bns $$0) {
+      return $$0.a(bnu.t) ? false : super.c($$0);
    }
 }

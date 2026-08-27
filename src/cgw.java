@@ -1,36 +1,19 @@
-public interface cgw {
-   String d_ = "Inventory";
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   bmf A();
-
-   static void a(bok $$0, cgw $$1, cdw $$2) {
-      cpd $$3 = $$2.q();
-      if ($$0.k($$3)) {
-         bmf $$4 = $$1.A();
-         boolean $$5 = $$4.b($$3);
-         if (!$$5) {
-            return;
-         }
-
-         $$0.a($$2);
-         int $$6 = $$3.M();
-         cpd $$7 = $$4.a($$3);
-         $$0.a($$2, $$6 - $$7.M());
-         if ($$7.b()) {
-            $$2.am();
-         } else {
-            $$3.f($$7.M());
-         }
-      }
-   }
-
-   default void c(sw $$0) {
-      if ($$0.b("Inventory", 9)) {
-         this.A().a($$0.c("Inventory", 10));
-      }
-   }
-
-   default void a_(sw $$0) {
-      $$0.a("Inventory", this.A().g());
+public class cgw {
+   public static bqq<box> a(int $$0) {
+      return buc.a(
+         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$1 -> $$1.group($$1.b(bya.L), $$1.c(bya.ad), $$1.c(bya.ag), $$1.c(bya.af))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cel $$7 = $$1.b($$2);
+                     if (!cgr.a($$7.q())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

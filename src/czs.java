@@ -1,67 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czs extends dfd implements dfs {
+public class czs extends dfx {
    public static final MapCodec<czs> a = b(czs::new);
-   public static final dma b = dlz.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final eos e = cys.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final eos f = cys.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final eos g = cys.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+   public static final dmy b = dmu.R;
 
    @Override
    public MapCodec<czs> a() {
       return a;
    }
 
-   public czs(dli.d $$0) {
+   public czs(dmd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ie.a.b));
-   }
-
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      switch ((ie.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
-      }
+      this.k(this.o().a(b, ih.c));
    }
 
    @Nullable
    @Override
-   public dlj a(crk $$0) {
-      egw $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == egx.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+   public djl a(ib $$0, dme $$1) {
+      return new djq($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
+      return !$$0.B ? a($$2, djn.J, ($$0x, $$1x, $$2x, $$3) -> dra.c.a($$0x, $$3.gn(), $$3.go())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dme a(crx $$0) {
+      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, egx.c, egx.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(b).a(i);
+   protected void a(dmf.a<czf, dme> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   protected egw c_(dlj $$0) {
-      return $$0.c(b) ? egx.c.a(false) : super.c_($$0);
+   public dme a(dme $$0, dfr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
-      return false;
+   public dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

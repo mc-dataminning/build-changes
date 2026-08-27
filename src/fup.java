@@ -1,26 +1,100 @@
-public class fup extends fsa {
-   private static final int a = 12235202;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   protected fup(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuc $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)avs.b.b(12235202) / 255.0F;
-      this.w = (float)avs.b.c(12235202) / 255.0F;
-      this.x = (float)avs.b.d(12235202) / 255.0F;
+public class fup extends fve {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
+
+   fup(fra $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   public static class a implements ftk<kc> {
-      private final fuc a;
+   @Override
+   public float b(float $$0) {
+      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
 
-      public a(fuc $$0) {
+   @Override
+   public void a(eth $$0, exv $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - awm.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
+   }
+
+   private void a(eth $$0, exv $$1, float $$2, Consumer<Quaternionf> $$3) {
+      eov $$4 = $$1.b();
+      float $$5 = (float)(awm.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(awm.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(awm.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
+      }
+
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+   }
+
+   private void a(eth $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fui b() {
+      return fui.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements fuh<kd> {
+      private final fuz a;
+
+      public a(fuz $$0) {
          this.a = $$0;
       }
 
-      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         awp $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fup($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fue a(kd $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fup $$8 = new fup($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

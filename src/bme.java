@@ -1,76 +1,83 @@
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public interface bme extends blp {
-   String c = "LootTable";
-   String d = "LootTableSeed";
+public interface bme extends bmc {
+   int o_ = 64;
+   float p_ = 4.0F;
 
-   @Nullable
-   aiy aC_();
+   int b();
 
-   void a(@Nullable aiy var1);
+   boolean aj_();
 
-   default void a(aiy $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   cpq a(int var1);
+
+   cpq a(int var1, int var2);
+
+   cpq b(int var1);
+
+   void a(int var1, cpq var2);
+
+   default int al_() {
+      return 64;
    }
 
-   long aD_();
+   void e();
 
-   void a(long var1);
+   boolean a(cia var1);
 
-   hz aE_();
+   default void d_(cia $$0) {
+   }
 
-   @Nullable
-   cvr i();
+   default void c(cia $$0) {
+   }
 
-   static void a(cux $$0, awp $$1, hz $$2, aiy $$3) {
-      if ($$0.c_($$2) instanceof bme $$5) {
-         $$5.a($$3, $$1.g());
+   default boolean b(int $$0, cpq $$1) {
+      return true;
+   }
+
+   default boolean a(bme $$0, int $$1, cpq $$2) {
+      return true;
+   }
+
+   default int a_(cpl $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cpq $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.M();
+         }
       }
+
+      return $$1;
    }
 
-   default boolean c_(sw $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(new aiy($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-         return true;
-      } else {
+   default boolean a(Set<cpl> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
+   }
+
+   default boolean a_(Predicate<cpq> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cpq $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(djl $$0, cia $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(djl $$0, cia $$1, float $$2) {
+      cwe $$3 = $$0.i();
+      ib $$4 = $$0.aD_();
+      if ($$3 == null) {
          return false;
-      }
-   }
-
-   default boolean d_(sw $$0) {
-      aiy $$1 = this.aC_();
-      if ($$1 == null) {
-         return false;
       } else {
-         $$0.a("LootTable", $$1.toString());
-         long $$2 = this.aD_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
-   }
-
-   default void e_(@Nullable chl $$0) {
-      cvr $$1 = this.i();
-      hz $$2 = this.aE_();
-      aiy $$3 = this.aC_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         ejk $$4 = $$1.o().aL().getLootTable($$3);
-         if ($$0 instanceof aox) {
-            am.Q.a((aox)$$0, $$3);
-         }
-
-         this.a(null);
-         eji.a $$5 = new eji.a((aow)$$1).a(eln.f, enz.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gp()).a(eln.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(elm.c), this.aD_());
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

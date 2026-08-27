@@ -1,24 +1,25 @@
-public class yn {
-   public static final xz<ye> a = a("custom_payload");
-   public static final xz<yf> b = a("disconnect");
-   public static final xz<yg> c = a("keep_alive");
-   public static final xz<yh> d = a("ping");
-   public static final xz<yi> e = a("resource_pack_pop");
-   public static final xz<yj> f = a("resource_pack_push");
-   public static final xz<yk> g = a("store_cookie");
-   public static final xz<yl> h = a("transfer");
-   public static final xz<ym> i = a("update_tags");
-   public static final xz<yp> j = b("client_information");
-   public static final xz<yq> k = b("custom_payload");
-   public static final xz<yr> l = b("keep_alive");
-   public static final xz<ys> m = b("pong");
-   public static final xz<yt> n = b("resource_pack");
+public record yn(String b, int c) implements xz<yf> {
+   public static final xq<us, yn> a = xz.a(yn::a, yn::new);
 
-   private static <T extends xx<yd>> xz<T> a(String $$0) {
-      return new xz<>(xy.b, new aiy($$0));
+   private yn(us $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private static <T extends xx<yo>> xz<T> b(String $$0) {
-      return new xz<>(xy.a, new aiy($$0));
+   private void a(us $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public yb<yn> a() {
+      return yp.h;
+   }
+
+   public void a(yf $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

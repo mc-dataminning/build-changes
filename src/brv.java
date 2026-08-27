@@ -1,21 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class brv {
-   public static bqb<boi> a() {
-      return btn.a((Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$0 -> $$0.a((btq<boi>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bpj<?> $$3 = $$1.dO();
-               ciu $$4 = $$0x.d($$1.dm());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(ciy.b);
-                  $$3.a($$0x.Y(), $$0x.X());
-               }
+public class brv extends bqp<boz> {
+   public brv(int $$0, int $$1) {
+      super(ImmutableMap.of(bya.n, byb.a), $$0, $$1);
+   }
 
-               return true;
-            }
-         }))));
+   protected boolean a(apa $$0, boz $$1, long $$2) {
+      return $$1.dM().c(bya.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
+
+   protected void b(apa $$0, boz $$1, long $$2) {
+      $$1.dM().b(bya.n);
+   }
+
+   protected void c(apa $$0, boz $$1, long $$2) {
+      $$1.dM().c(bya.n).ifPresent($$1x -> $$1.I().a($$1x.a()));
    }
 }

@@ -1,52 +1,44 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
 import java.util.List;
 
-public class adm implements xx<aag> {
-   public static final xo<vb, adm> a = xx.a(adm::a, adm::new);
-   private static final byte b = -128;
-   private final int c;
-   private final List<Pair<bnx, cpd>> d;
+public record adm(int c, List<ail.b<?>> d) implements xz<aai> {
+   public static final xq<vd, adm> a = xz.a(adm::b, adm::new);
+   public static final int b = 255;
 
-   public adm(int $$0, List<Pair<bnx, cpd>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private adm(vd $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private adm(vb $$0) {
-      this.c = $$0.n();
-      bnx[] $$1 = bnx.values();
-      this.d = Lists.newArrayList();
+   private static void a(List<ail.b<?>> $$0, vd $$1) {
+      for (ail.b<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
+   }
+
+   private static List<ail.b<?>> a(vd $$0) {
+      List<ail.b<?>> $$1 = new ArrayList<>();
 
       int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bnx $$3 = $$1[$$2 & 127];
-         cpd $$4 = cpd.f.decode($$0);
-         this.d.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(ail.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vb $$0) {
+   private void b(vd $$0) {
       $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bnx, cpd> $$3 = this.d.get($$2);
-         bnx $$4 = (bnx)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         cpd.f.encode($$0, (cpd)$$3.getSecond());
-      }
+      a(this.d, $$0);
    }
 
    @Override
-   public xz<adm> a() {
-      return aeq.aE;
+   public yb<adm> a() {
+      return aet.aC;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
@@ -54,7 +46,7 @@ public class adm implements xx<aag> {
       return this.c;
    }
 
-   public List<Pair<bnx, cpd>> e() {
+   public List<ail.b<?>> e() {
       return this.d;
    }
 }

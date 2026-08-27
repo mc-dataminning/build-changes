@@ -1,44 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class dvc extends dtz<dwl> {
-   private static final int a = 7;
-
-   dvc(Codec<dwl> $$0) {
+public class dvc extends dtx {
+   public dvc(Codec<dxa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dub<dwl> $$0) {
-      cwm $$1 = $$0.b();
-      awp $$2 = $$0.d();
-      dwl $$3 = $$0.f();
-      hz $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      hz.a $$6 = new hz.a();
+   protected void a(cwf $$0, awt $$1, ib $$2, int $$3, ib.a $$4, dxa $$5) {
+      int $$6 = $$5.d;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dlj $$8 = $$1.a_($$6);
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dme $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(ddb.e) && $$19.b(ddb.c) && $$19.b(ddb.b) && $$19.b(ddb.d)) {
+                     $$19 = $$19.a(ddb.e, Boolean.valueOf($$15))
+                        .a(ddb.c, Boolean.valueOf($$16))
+                        .a(ddb.b, Boolean.valueOf($$17))
+                        .a(ddb.d, Boolean.valueOf($$18));
+                  }
 
-         for (dwl.a $$9 : $$3.b) {
-            if (duu.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+                  this.a($$0, $$4, $$19);
+               }
             }
          }
       }
-
-      return true;
    }
 
-   private void a(hz.a $$0, awp $$1, hz $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(awp $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

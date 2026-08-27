@@ -1,55 +1,58 @@
-public class clm<T extends ckf> implements cjt {
-   public static final clm<ckm> a = a("generic_9x1", ckm::a);
-   public static final clm<ckm> b = a("generic_9x2", ckm::b);
-   public static final clm<ckm> c = a("generic_9x3", ckm::c);
-   public static final clm<ckm> d = a("generic_9x4", ckm::d);
-   public static final clm<ckm> e = a("generic_9x5", ckm::e);
-   public static final clm<ckm> f = a("generic_9x6", ckm::f);
-   public static final clm<cky> g = a("generic_3x3", cky::new);
-   public static final clm<ckt> h = a("crafter_3x3", ckt::new);
-   public static final clm<ckh> i = a("anvil", ckh::new);
-   public static final clm<cki> j = a("beacon", cki::new);
-   public static final clm<ckj> k = a("blast_furnace", ckj::new);
-   public static final clm<ckk> l = a("brewing_stand", ckk::new);
-   public static final clm<ckw> m = a("crafting", ckw::new);
-   public static final clm<ckz> n = a("enchantment", ckz::new);
-   public static final clm<clb> o = a("furnace", clb::new);
-   public static final clm<cld> p = a("grindstone", cld::new);
-   public static final clm<cle> q = a("hopper", cle::new);
-   public static final clm<clj> r = a("lectern", ($$0, $$1) -> new clj($$0));
-   public static final clm<clk> s = a("loom", clk::new);
-   public static final clm<clo> t = a("merchant", clo::new);
-   public static final clm<clx> u = a("shulker_box", clx::new);
-   public static final clm<cmb> v = a("smithing", cmb::new);
-   public static final clm<cmc> w = a("smoker", cmc::new);
-   public static final clm<ckl> x = a("cartography_table", ckl::new);
-   public static final clm<cme> y = a("stonecutter", cme::new);
-   private final cjw z;
-   private final clm.a<T> A;
+public abstract class clm {
+   private int a;
 
-   private static <T extends ckf> clm<T> a(String $$0, clm.a<T> $$1) {
-      return iv.a(kf.r, $$0, new clm<>($$1, cjy.g));
+   public static clm a(final cle $$0, final int $$1) {
+      return new clm() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   private static <T extends ckf> clm<T> a(String $$0, clm.a<T> $$1, cju... $$2) {
-      return iv.a(kf.r, $$0, new clm<>($$1, cjy.e.a($$2)));
+   public static clm a(final int[] $$0, final int $$1) {
+      return new clm() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
    }
 
-   private clm(clm.a<T> $$0, cjw $$1) {
-      this.A = $$0;
-      this.z = $$1;
+   public static clm a() {
+      return new clm() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
    }
 
-   public T a(int $$0, chk $$1) {
-      return this.A.create($$0, $$1);
-   }
+   public abstract int b();
 
-   @Override
-   public cjw m() {
-      return this.z;
-   }
+   public abstract void a(int var1);
 
-   interface a<T extends ckf> {
-      T create(int var1, chk var2);
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

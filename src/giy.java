@@ -1,14 +1,37 @@
-import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-public class giy implements arb<gix> {
-   public gix b(JsonObject $$0) {
-      boolean $$1 = avy.a($$0, "blur", false);
-      boolean $$2 = avy.a($$0, "clamp", false);
-      return new gix($$1, $$2);
-   }
+public record giy(ajc a, @Nullable String b, @Nullable ajc c, @Nullable ajc d, giy.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   @Override
-   public String a() {
-      return "texture";
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      public static giy.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

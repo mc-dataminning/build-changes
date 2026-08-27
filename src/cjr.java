@@ -1,87 +1,59 @@
-public abstract class cjr extends bnq {
-   protected static final aie<Integer> f = aih.a(cjr.class, aig.b);
-   protected static final aie<Integer> g = aih.a(cjr.class, aig.b);
-   protected static final aie<Float> h = aih.a(cjr.class, aig.d);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   public cjr(bnw<?> $$0, cvr $$1) {
-      super($$0, $$1);
+public class cjr {
+   private final List<cjo> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cjo> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   @Override
-   public boolean a(bmp $$0, float $$1) {
-      if (this.dM().B || this.dH()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
+   public cjr a(int $$0, float $$1) {
+      this.a.add(new cjo($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cjr a(Collection<cjo> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cjo> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         this.n(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dpw.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof chl && ((chl)$$0.d()).fU().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.am();
+         cjo $$1 = this.a.get(this.b);
+         cjo $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cjo $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
-         } else {
-            this.a($$0);
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         return true;
+         return $$5;
       }
    }
-
-   boolean d(bmp $$0) {
-      return false;
-   }
-
-   public void b(coy $$0) {
-      this.al();
-      if (this.dM().Z().b(cvn.i)) {
-         cpd $$1 = new cpd($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
-      }
-   }
-
-   @Override
-   protected void c_() {
-      this.am.a(f, 0);
-      this.am.a(g, 1);
-      this.am.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.am.b(f, $$0);
-   }
-
-   public void n(int $$0) {
-      this.am.b(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.am.b(h, $$0);
-   }
-
-   public float N() {
-      return this.am.b(h);
-   }
-
-   public int O() {
-      return this.am.b(f);
-   }
-
-   public int P() {
-      return this.am.b(g);
-   }
-
-   protected void a(bmp $$0) {
-      this.b(this.ai_());
-   }
-
-   abstract coy ai_();
 }

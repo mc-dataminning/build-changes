@@ -1,125 +1,67 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class fvu implements fvt {
-   private final fvt.a a;
-   private final fvt.a b = fvt.a(new esc(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public class fvu {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = chz.g();
+   public static final Codec<fvu> a = avu.<List>a(Codec.PASSTHROUGH.listOf(), (Function<List, DataResult<List>>)($$0 -> ac.a($$0, c)))
+      .xmap(fvu::new, $$0 -> $$0.f);
+   private static final DynamicOps<tv> d = tm.a;
+   private static final Dynamic<?> e = new Dynamic(d, (tv)ac.a(cpq.a.encodeStart(d, cpq.h), IllegalStateException::new));
+   private List<Dynamic<?>> f;
 
-   public fvu(fvt.a $$0) {
-      this.a = $$0;
+   private fvu(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public esl getBuffer(fwb $$0) {
-      if ($$0.K()) {
-         esl $$1 = this.b.getBuffer($$0);
-         return new fvu.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         esl $$2 = this.a.getBuffer($$0);
-         Optional<fwb> $$3 = $$0.J();
-         if ($$3.isPresent()) {
-            esl $$4 = this.b.getBuffer($$3.get());
-            fvu.a $$5 = new fvu.a($$4, this.c, this.d, this.e, this.f);
-            return eso.a($$5, $$2);
-         } else {
-            return $$2;
+   public fvu() {
+      this(Collections.nCopies(c, e));
+   }
+
+   public List<cpq> a(in.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cpq.a.parse(aja.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cpq.h))
+         .toList();
+   }
+
+   public void a(chz $$0, iy $$1) {
+      aja<tv> $$2 = aja.a(d, $$1);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cpq $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cpq.a
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
+
+      this.f = $$3.build();
+   }
+
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends esg {
-      private final esl f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(esl $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public esl a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public esl a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public esl a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public esl a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public esl b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public esl a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
-      }
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

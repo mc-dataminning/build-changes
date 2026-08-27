@@ -1,37 +1,29 @@
-public class adh implements xx<aag> {
-   public static final xo<uq, adh> a = xx.a(adh::a, adh::new);
-   private final hz b;
-   private final float c;
+public class adh implements xz<aai> {
+   public static final xq<us, adh> a = xz.a(adh::a, adh::new);
+   private final int b;
 
-   public adh(hz $$0, float $$1) {
+   public adh(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private adh(uq $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private adh(us $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(us $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public xz<adh> a() {
-      return aeq.az;
+   public yb<adh> a() {
+      return aet.ax;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public hz b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

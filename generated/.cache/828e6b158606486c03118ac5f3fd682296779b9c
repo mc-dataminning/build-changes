@@ -1,4 +1,4 @@
-// 24w04a	2026-08-28T01:29:13.7332744	vanilla/Loot Tables
+// 24w05a	2026-08-28T01:31:40.6280947	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -329,6 +329,7 @@ aa1a0d24ead8e6864513962d7dabd58a83afe9ae data\minecraft\loot_tables\blocks\honey
 609ae2c3def5c10b543d8878d254a38d76dad740 data\minecraft\loot_tables\entities\husk.json
 5123f74656be7ef14362439d0925106af83fb9dd data\minecraft\loot_tables\blocks\rooted_dirt.json
 397e0cb9115512fc3c7911e73dd9c117ca7031b1 data\minecraft\loot_tables\blocks\polished_blackstone_brick_slab.json
+c3a96598489b08d3c189e7d97bb9c0fd208a419f data\minecraft\loot_tables\blocks\vault.json
 e0f7f3fe1a9436bb501df23835d114122cfed569 data\minecraft\loot_tables\blocks\brown_carpet.json
 0d9631b381ed29efd6ed0ac6c15abc4f082ef810 data\minecraft\loot_tables\blocks\oxidized_copper_grate.json
 5e7814a47eb067d6d8bb6236bf33e6d6c97271da data\minecraft\loot_tables\blocks\trapped_chest.json

@@ -1,129 +1,112 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public class apt extends aps implements ve, zx {
-   private static final Logger e = LogUtils.getLogger();
-   private static final vq f = vq.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile g;
-   private final Queue<apm> h = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private apm i;
-   private aol j;
+public class apt extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final ajr b;
 
-   public apt(MinecraftServer $$0, uo $$1, apl $$2) {
-      super($$0, $$1, $$2);
-      this.g = $$2.a();
-      this.j = $$2.c();
+   public apt(ajr $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected GameProfile j() {
-      return this.g;
-   }
-
-   @Override
-   public void a(vq $$0) {
-      e.info("{} lost connection: {}", this.g, $$0.getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.i();
-   }
-
-   public void m() {
-      this.b(new ye(new yw(this.c.getServerModName())));
-      iq<ajh> $$0 = this.c.bc();
-      this.b(new zu(cjy.e.b(this.c.ba().K())));
-      DynamicOps<tt> $$1 = aiw.a(tk.a, $$0.a());
-      iz.a($$1, $$0.c(ajh.b), ($$0x, $$1x) -> this.b(new zt($$0x, $$1x)));
-      this.b(new ym(aus.a($$0)));
-      this.o();
-      this.h.add(new aqc());
-      this.p();
-   }
-
-   public void n() {
-      this.h.add(new aqc());
-      this.p();
-   }
-
-   private void o() {
-      this.c.W().ifPresent($$0 -> this.h.add(new aqd($$0)));
-   }
-
-   @Override
-   public void a(yp $$0) {
-      this.j = $$0.b();
-   }
-
-   @Override
-   public void a(yt $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(aqd.a);
-      }
-   }
-
-   @Override
-   public void a(zy $$0) {
-      ya.a($$0, this, this.c);
-      this.a(aqc.a);
-      this.d.a(aer.b.bind(vb.a(this.c.bb())));
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
 
       try {
-         aso $$1 = this.c.ag();
-         if ($$1.a(this.g.getId()) != null) {
-            this.b(aso.g);
-            return;
-         }
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
+            }
 
-         vq $$2 = $$1.a(this.d.d(), this.g);
-         if ($$2 != null) {
-            this.b($$2);
-            return;
-         }
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
 
-         aox $$3 = $$1.a(this.g, this.j);
-         $$1.a(this.d, $$3, this.a(this.j));
-      } catch (Exception var5) {
-         e.error("Couldn't place player in world", var5);
-         this.d.a(new yf(f));
-         this.d.a(f);
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
+         }
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
       }
    }
 
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   private void p() {
-      if (this.i != null) {
-         throw new IllegalStateException("Task " + this.i.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         apm $$0 = this.h.poll();
-         if ($$0 != null) {
-            this.i = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(apm.a $$0) {
-      apm.a $$1 = this.i != null ? this.i.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
       } else {
-         this.i = null;
-         this.p();
+         String $$2 = aps.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
+         } else {
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = aps.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
+         }
       }
+   }
+
+   private static String a(ajr $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.af(), $$0.M(), $$0.N());
+   }
+
+   private static String b(ajr $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.L(), $$0.af(), $$0.M(), $$0.N());
+   }
+
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   }
+
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      aps.a($$2, $$1);
+      return $$2;
    }
 }

@@ -6,23 +6,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List<bm> f, List<bm> g, Optional<ij<cqz>> h, Optional<co> i) {
-   private static final Codec<in<coy>> j = kf.h.r().listOf().xmap(in::a, $$0 -> $$0.a().toList());
+public record cc(Optional<aut<cpl>> b, Optional<ip<cpl>> c, cm.d d, cm.d e, List<bm> f, List<bm> g, Optional<il<crm>> h, Optional<co> i) {
+   private static final Codec<ip<cpl>> j = kh.h.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
    public static final Codec<cc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avq.a(aup.a(kg.F), "tag").forGetter(cc::a),
-               avq.a(j, "items").forGetter(cc::b),
-               avq.a(cm.d.d, "count", cm.d.c).forGetter(cc::c),
-               avq.a(cm.d.d, "durability", cm.d.c).forGetter(cc::d),
-               avq.a(bm.a.listOf(), "enchantments", List.of()).forGetter(cc::e),
-               avq.a(bm.a.listOf(), "stored_enchantments", List.of()).forGetter(cc::f),
-               avq.a(kf.i.r(), "potion").forGetter(cc::g),
-               avq.a(co.a, "nbt").forGetter(cc::h)
+               avu.a(aut.a(ki.F), "tag").forGetter(cc::a),
+               avu.a(j, "items").forGetter(cc::b),
+               avu.a(cm.d.d, "count", cm.d.c).forGetter(cc::c),
+               avu.a(cm.d.d, "durability", cm.d.c).forGetter(cc::d),
+               avu.a(bm.a.listOf(), "enchantments", List.of()).forGetter(cc::e),
+               avu.a(bm.a.listOf(), "stored_enchantments", List.of()).forGetter(cc::f),
+               avu.a(kh.i.r(), "potion").forGetter(cc::g),
+               avu.a(co.a, "nbt").forGetter(cc::h)
             )
             .apply($$0, cc::new)
    );
 
-   public boolean a(cpd $$0) {
+   public boolean a(cpq $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
@@ -37,7 +37,7 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
          return false;
       } else {
          if (!this.f.isEmpty()) {
-            Map<ctm, Integer> $$1 = ctn.a($$0.y());
+            Map<ctz, Integer> $$1 = cua.a($$0.y());
 
             for (bm $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -47,7 +47,7 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
          }
 
          if (!this.g.isEmpty()) {
-            Map<ctm, Integer> $$3 = ctn.a(cnz.d($$0));
+            Map<ctz, Integer> $$3 = cua.a(com.d($$0));
 
             for (bm $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -56,15 +56,15 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
             }
          }
 
-         return !this.h.isPresent() || this.h.get().equals(crb.d($$0));
+         return !this.h.isPresent() || this.h.get().equals(cro.d($$0));
       }
    }
 
-   public Optional<aup<coy>> a() {
+   public Optional<aut<cpl>> a() {
       return this.b;
    }
 
-   public Optional<in<coy>> b() {
+   public Optional<ip<cpl>> b() {
       return this.c;
    }
 
@@ -84,7 +84,7 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
       return this.g;
    }
 
-   public Optional<ij<cqz>> g() {
+   public Optional<il<crm>> g() {
       return this.h;
    }
 
@@ -95,11 +95,11 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
    public static class a {
       private final Builder<bm> a = ImmutableList.builder();
       private final Builder<bm> b = ImmutableList.builder();
-      private Optional<in<coy>> c = Optional.empty();
-      private Optional<aup<coy>> d = Optional.empty();
+      private Optional<ip<cpl>> c = Optional.empty();
+      private Optional<aut<cpl>> d = Optional.empty();
       private cm.d e = cm.d.c;
       private cm.d f = cm.d.c;
-      private Optional<ij<cqz>> g = Optional.empty();
+      private Optional<il<crm>> g = Optional.empty();
       private Optional<co> h = Optional.empty();
 
       private a() {
@@ -109,12 +109,12 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
          return new cc.a();
       }
 
-      public cc.a a(cvq... $$0) {
-         this.c = Optional.of(in.a($$0x -> $$0x.j().i(), $$0));
+      public cc.a a(cwd... $$0) {
+         this.c = Optional.of(ip.a($$0x -> $$0x.l().k(), $$0));
          return this;
       }
 
-      public cc.a a(aup<coy> $$0) {
+      public cc.a a(aut<cpl> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
@@ -129,12 +129,12 @@ public record cc(Optional<aup<coy>> b, Optional<in<coy>> c, cm.d d, cm.d e, List
          return this;
       }
 
-      public cc.a a(ij<cqz> $$0) {
+      public cc.a a(il<crm> $$0) {
          this.g = Optional.of($$0);
          return this;
       }
 
-      public cc.a a(sw $$0) {
+      public cc.a a(sy $$0) {
          this.h = Optional.of(new co($$0));
          return this;
       }

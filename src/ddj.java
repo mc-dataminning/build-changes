@@ -1,41 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ddj extends dcn {
-   public static final MapCodec<ddj> a = b(ddj::new);
-   private static final vq b = vq.c("container.loom");
+public class ddj extends dct implements ddv {
+   public static final MapCodec<ddj> c = b(ddj::new);
 
    @Override
    public MapCodec<ddj> a() {
-      return a;
+      return c;
    }
 
-   protected ddj(dli.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
-      if ($$1.B) {
-         return blw.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atv.ax);
-         return blw.b;
-      }
+   protected ddj(dmd.d $$0) {
+      super($$0, ih.b, epl.b(), true);
    }
 
    @Override
-   protected bma b(dlj $$0, cvr $$1, hz $$2) {
-      return new bmg(($$2x, $$3, $$4) -> new clk($$2x, $$3, ckq.a($$1, $$2)), b);
+   protected dcu c() {
+      return (dcu)czh.mc;
    }
 
    @Override
-   public dlj a(crk $$0) {
-      return this.o().a(aE, $$0.g().g());
+   protected ehr c_(dme $$0) {
+      return ehs.c.a(false);
    }
 
    @Override
-   protected void a(dlk.a<cys, dlj> $$0) {
-      $$0.a(aE);
+   protected boolean m(dme $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cia $$0, cvk $$1, ib $$2, dme $$3, ehq $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cwf $$0, ib $$1, dme $$2, ehr $$3) {
+      return false;
    }
 }

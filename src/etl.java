@@ -1,13 +1,36 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class etl extends eud implements etx {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
+public interface etl {
+   etl a = a(0.0F, 0.0F, 0.0F);
+   etl b = a((etl.a)($$0 -> -$$0.z()));
 
-   public etl(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   static etl a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
+
+   static etl a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
+
+   static etl a(etl.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

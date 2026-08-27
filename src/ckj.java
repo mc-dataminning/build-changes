@@ -1,9 +1,9 @@
-public class ckj extends ckg {
-   public ckj(int $$0, chk $$1) {
-      super(clm.k, csk.c, clt.c, $$0, $$1);
-   }
+public class ckj {
+   final ckm a;
+   final long b;
 
-   public ckj(int $$0, chk $$1, blp $$2, ckp $$3) {
-      super(clm.k, csk.c, clt.c, $$0, $$1, $$2, $$3);
+   ckj(ckm $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

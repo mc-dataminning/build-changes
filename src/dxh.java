@@ -1,39 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dxh extends dxe {
-   public static final Codec<dxh> d = RecordCodecBuilder.create(
+public class dxh implements dwy {
+   public static final Codec<dxh> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dxh::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public dxh(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public dxh(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   protected dxf<?> b() {
-      return dxf.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public dxh(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

@@ -1,23 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvx implements dwd {
-   public static final Codec<dvx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(blb.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), blb.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dvx::new)
-   );
-   private final blb b;
-   private final blb c;
+public class dvx extends duu<dxg> {
+   private static final int a = 7;
 
-   public dvx(blb $$0, blb $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   dvx(Codec<dxg> $$0) {
+      super($$0);
    }
 
-   public blb a() {
-      return this.b;
+   @Override
+   public boolean a(duw<dxg> $$0) {
+      cwz $$1 = $$0.b();
+      awt $$2 = $$0.d();
+      dxg $$3 = $$0.f();
+      ib $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ib.a $$6 = new ib.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dme $$8 = $$1.a_($$6);
+
+         for (dxg.a $$9 : $$3.b) {
+            if (dvp.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public blb b() {
-      return this.c;
+   private void a(ib.a $$0, awt $$1, ib $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(awt $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

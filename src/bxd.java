@@ -1,40 +1,40 @@
 import java.util.EnumSet;
 
-public class bxd extends bxf {
-   private final bpe a;
-   private boi b;
-   private int c;
+public class bxd extends bvu {
+   private final chi a;
 
-   public bxd(bpe $$0) {
-      super($$0, false);
+   public bxd(chi $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bvf.a.d));
+      this.a(EnumSet.of(bvu.a.c, bvu.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.u() && !this.a.gg()) {
-         boi $$0 = this.a.R_();
+      if (!this.a.bx()) {
+         return false;
+      } else if (this.a.aZ()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.S) {
+         return false;
+      } else {
+         cia $$0 = this.a.gl();
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.ek();
-            int $$1 = $$0.el();
-            return $$1 != this.c && this.a(this.b, byy.a) && this.a.a(this.b, $$0);
+            return this.a.f($$0) > 16.0 ? false : $$0.bX != null;
          }
-      } else {
-         return false;
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      boi $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.el();
-      }
+      this.a.N().n();
+   }
 
-      super.c();
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

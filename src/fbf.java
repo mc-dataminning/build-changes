@@ -1,43 +1,356 @@
-import java.util.Locale;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fbf extends fbd {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
+public class fbf {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final ezv c;
+   private final List<fbf.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public fbf(eyz $$0, bhx $$1) {
-      super($$0, $$1);
+   public fbf(ezv $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   @Override
-   protected void d(ezb $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(fwb.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = exo.P().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(fwb.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public int a() {
+      return this.i;
+   }
+
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
+      } else {
+         this.i = $$0;
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   public void a(Runnable $$0) {
+      this.l = $$0;
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(aa.a($$0, true));
+         fbf.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = awm.a(this.f + $$0, 0, this.e.length());
+      }
+
+      this.b("");
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fbf.a e() {
+      return new fbf.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fbf.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
+         }
+      }
+
+      return -1;
+   }
+
+   public fbf.a c(int $$0) {
+      return this.d.get(awm.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(fbw $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = awm.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fbf.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(fbw.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = awm.a($$0);
+      int $$3 = awm.a($$1 / 9.0);
+      fbf.a $$4 = this.d.get(awm.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(fbw.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fgh.v();
+      if (fgh.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fgh.e($$0)) {
+         eyk.P().o.a(this.j());
+         return true;
+      } else if (fgh.d($$0)) {
+         this.b(eyk.P().o.a());
+         return true;
+      } else if (fgh.c($$0)) {
+         eyk.P().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fgh.t()) {
+                  fbf.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
+               }
+
+               return true;
+            case 261:
+               if (fgh.t()) {
+                  fbf.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (fgh.t()) {
+                  fbf.a $$2 = this.l();
+                  this.a(fbw.a, $$2.a);
+               } else {
+                  this.a(fbw.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fgh.t()) {
+                  fbf.a $$1 = this.k();
+                  this.a(fbw.a, $$1.a);
+               } else {
+                  this.a(fbw.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fgh.t()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fgh.t()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(fbw.a, 0);
+               return true;
+            case 267:
+               this.a(fbw.c, 0);
+               return true;
+            case 268:
+               if (fgh.t()) {
+                  this.a(fbw.a, 0);
+               } else {
+                  this.a(fbw.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fgh.t()) {
+                  this.a(fbw.c, 0);
+               } else {
+                  this.a(fbw.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   public Iterable<fbf.a> h() {
+      return this.d;
+   }
+
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      fbf.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private fbf.a m() {
+      return this.f(0);
+   }
+
+   private fbf.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(awm.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public fbf.a k() {
+      if (this.e.isEmpty()) {
+         return fbf.a.c;
+      } else {
+         int $$0 = awm.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fbf.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fbf.a l() {
+      if (this.e.isEmpty()) {
+         return fbf.a.c;
+      } else {
+         int $$0 = awm.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fbf.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fbf.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, wp.a, false, ($$0, $$1, $$2) -> this.d.add(new fbf.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fbf.a(this.e.length(), this.e.length()));
+         }
+      }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? axh.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return axh.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fbf.a c = new fbf.a(0, 0);
    }
 }

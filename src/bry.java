@@ -1,65 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
+import javax.annotation.Nullable;
 
 public class bry {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
+   public static bsa<box> a(float $$0) {
+      return buc.a((Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$1 -> $$1.group($$1.c(bya.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dj())) {
+                  return false;
+               } else {
+                  Optional<eov> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new byd($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
 
-   public static bqb<boq> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return btn.a(
-         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$3 -> $$3.group($$3.c(bxl.m), $$3.c(bxl.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.X() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        bzl $$7 = $$4x.y();
-                        Optional<hz> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(bzp.n), $$5.dm(), 48, bzl.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dm()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.X() + (long)$$4x.F_().a(20));
-                           Predicate<hz> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<ij<bzo>, hz>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(bzp.n), $$10, $$5.dm(), 48, bzl.b.c).collect(Collectors.toSet());
-                           ehl $$12 = bpt.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              hz $$13 = $$12.l();
-                              Optional<ij<bzo>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new bxo($$13, $$0, 1));
-                                 aep.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
+   @Nullable
+   private static eov a(apa $$0, box $$1) {
+      awt $$2 = $$1.ef();
+      ib $$3 = $$1.dj();
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ib $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return eov.c($$5);
+         }
+      }
+
+      return null;
+   }
+
+   public static boolean a(apa $$0, box $$1, ib $$2) {
+      return $$0.h($$2) && (double)$$0.a(drq.a.e, $$2).v() <= $$1.dq();
    }
 }

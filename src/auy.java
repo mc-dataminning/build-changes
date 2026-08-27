@@ -1,21 +1,11 @@
-import java.util.function.IntConsumer;
+public class auy {
+   public static final aut<ebv> a = a("normal");
+   public static final aut<ebv> b = a("extended");
 
-public interface auy {
-   int a(int var1, int var2);
+   private auy() {
+   }
 
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   auy d();
+   private static aut<ebv> a(String $$0) {
+      return aut.a(ki.aL, new ajc($$0));
+   }
 }

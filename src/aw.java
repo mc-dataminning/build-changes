@@ -9,20 +9,20 @@ public class aw extends cx<aw.a> {
       return aw.a.a;
    }
 
-   public void a(aox $$0, bzx $$1, bzx $$2, @Nullable bnl $$3) {
-      ejc $$4 = br.b($$0, $$1);
-      ejc $$5 = br.b($$0, $$2);
-      ejc $$6 = $$3 != null ? br.b($$0, $$3) : null;
+   public void a(apb $$0, cam $$1, cam $$2, @Nullable boa $$3) {
+      ejy $$4 = br.b($$0, $$1);
+      ejy $$5 = br.b($$0, $$2);
+      ejy $$6 = $$3 != null ? br.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d, Optional<bc> e) implements cx.a {
       public static final Codec<aw.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avq.a(br.b, "player").forGetter(aw.a::a),
-                  avq.a(br.b, "parent").forGetter(aw.a::c),
-                  avq.a(br.b, "partner").forGetter(aw.a::d),
-                  avq.a(br.b, "child").forGetter(aw.a::e)
+                  avu.a(br.b, "player").forGetter(aw.a::a),
+                  avu.a(br.b, "parent").forGetter(aw.a::c),
+                  avu.a(br.b, "partner").forGetter(aw.a::d),
+                  avu.a(br.b, "child").forGetter(aw.a::e)
                )
                .apply($$0, aw.a::new)
       );
@@ -39,11 +39,11 @@ public class aw extends cx<aw.a> {
          return am.p.a(new aw.a(Optional.empty(), br.a($$0), br.a($$1), br.a($$2)));
       }
 
-      public boolean a(ejc $$0, ejc $$1, @Nullable ejc $$2) {
+      public boolean a(ejy $$0, ejy $$1, @Nullable ejy $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bc> $$0, ejc $$1) {
+      private static boolean a(Optional<bc> $$0, ejy $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

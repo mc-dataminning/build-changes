@@ -1,18 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class duw extends dtz<dwo> {
-   public duw(Codec<dwo> $$0) {
-      super($$0);
+public class duw<FC extends dwy> {
+   private final Optional<duh<?, ?>> a;
+   private final cwz b;
+   private final dob c;
+   private final awt d;
+   private final ib e;
+   private final FC f;
+
+   public duw(Optional<duh<?, ?>> $$0, cwz $$1, dob $$2, awt $$3, ib $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(dub<dwo> $$0) {
-      awp $$1 = $$0.d();
-      dwo $$2 = $$0.f();
-      cwm $$3 = $$0.b();
-      dng $$4 = $$0.c();
-      hz $$5 = $$0.e();
-      boolean $$6 = $$1.h();
-      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
+   public Optional<duh<?, ?>> a() {
+      return this.a;
+   }
+
+   public cwz b() {
+      return this.b;
+   }
+
+   public dob c() {
+      return this.c;
+   }
+
+   public awt d() {
+      return this.d;
+   }
+
+   public ib e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

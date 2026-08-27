@@ -5,7 +5,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ee implements ArgumentType<sw> {
+public class ee implements ArgumentType<sy> {
    private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
 
    private ee() {
@@ -15,12 +15,12 @@ public class ee implements ArgumentType<sw> {
       return new ee();
    }
 
-   public static <S> sw a(CommandContext<S> $$0, String $$1) {
-      return (sw)$$0.getArgument($$1, sw.class);
+   public static <S> sy a(CommandContext<S> $$0, String $$1) {
+      return (sy)$$0.getArgument($$1, sy.class);
    }
 
-   public sw a(StringReader $$0) throws CommandSyntaxException {
-      return new tu($$0).f();
+   public sy a(StringReader $$0) throws CommandSyntaxException {
+      return new tw($$0).f();
    }
 
    public Collection<String> getExamples() {

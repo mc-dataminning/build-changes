@@ -1,90 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class we implements vq {
-   private final vr c;
-   private final List<vq> d;
-   private wn e;
-   private avu f = avu.a;
-   @Nullable
-   private sr g;
+public record we(byte[] c) {
+   public static final Codec<we> a = avu.n.xmap(we::new, we::b);
+   public static final int b = 256;
 
-   we(vr $$0, List<vq> $$1, wn $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public we(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static we a(vr $$0) {
-      return new we($$0, Lists.newArrayList(), wn.a);
+   public static we a(us $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new we($$1);
    }
 
-   @Override
-   public vr b() {
-      return this.c;
+   public static void a(us $$0, we $$1) {
+      $$0.c($$1.c);
    }
 
-   @Override
-   public List<vq> c() {
-      return this.d;
+   public boolean a(awy $$0, awx $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public we b(wn $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public wn a() {
-      return this.e;
-   }
-
-   public we f(String $$0) {
-      return this.b(vq.b($$0));
-   }
-
-   public we b(vq $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public we a(UnaryOperator<wn> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public we c(wn $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public we a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public we a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public we b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public avu g() {
-      sr $$0 = sr.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -92,39 +38,67 @@ public class we implements vq {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof we $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         if ($$0 instanceof we $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   public we.a a(wf $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new we.a($$1) : new we.a(this);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public byte[] b() {
+      return this.c;
+   }
 
-         $$0.append(']');
+   public static record a(int b, @Nullable we c) {
+      public static final int a = -1;
+
+      public a(we $$0) {
+         this(-1, $$0);
       }
 
-      return $$0.toString();
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static we.a a(us $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new we.a(we.a($$0)) : new we.a($$1);
+      }
+
+      public static void a(us $$0, we.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            we.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<we> a(wf $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public we b() {
+         return this.c;
+      }
    }
 }

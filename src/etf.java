@@ -1,20 +1,43 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
 public class etf {
-   private final Gson a = new Gson();
-
-   public String a(etx $$0) {
-      return this.a.toJson($$0);
-   }
-
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
-
+   private static final int a = 786432;
+   private final esy b;
    @Nullable
-   public <T extends etx> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   private static etf c;
+
+   public static void a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new etf();
+      }
+   }
+
+   public static etf b() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
+   }
+
+   public etf(int $$0) {
+      this.b = new esy($$0);
+   }
+
+   public etf() {
+      this(786432);
+   }
+
+   public void c() {
+      esz.a(this.b.d());
+   }
+
+   public esy d() {
+      return this.b;
    }
 }

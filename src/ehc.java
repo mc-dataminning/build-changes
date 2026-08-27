@@ -1,117 +1,77 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public abstract class ehc extends egu {
-   @Override
-   public egv d() {
-      return egx.b;
+public abstract class ehc<M extends ehc<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dog[] d = new dog[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dog> a;
+
+   protected ehc(Long2ObjectOpenHashMap<dog> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   @Override
-   public egv e() {
-      return egx.c;
+   public abstract M b();
+
+   public dog a(long $$0) {
+      dog $$1 = ((dog)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   @Override
-   public coy a() {
-      return cpg.qy;
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   @Override
-   public void a(cvr $$0, hz $$1, egw $$2, awp $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, atl.Bh, atm.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   @Nullable
+   public dog c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(jz.ai, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+
+      dog $$2 = (dog)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
       }
    }
 
    @Nullable
-   @Override
-   public jx h() {
-      return jz.m;
+   public dog d(long $$0) {
+      return (dog)this.a.remove($$0);
    }
 
-   @Override
-   protected boolean a(cvr $$0) {
-      return $$0.Z().b(cvn.U);
+   public void a(long $$0, dog $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Override
-   protected void a(cvs $$0, hz $$1, dlj $$2) {
-      dix $$3 = $$2.t() ? $$0.c_($$1) : null;
-      cys.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(cvu $$0) {
-      return 4;
-   }
-
-   @Override
-   public dlj b(egw $$0) {
-      return cyu.G.o().a(ddh.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(egv $$0) {
-      return $$0 == egx.c || $$0 == egx.b;
-   }
-
-   @Override
-   public int c(cvu $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(cvu $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(egw $$0, cux $$1, hz $$2, egv $$3, ie $$4) {
-      return $$4 == ie.a && !$$3.a(auf.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<atk> j() {
-      return Optional.of(atl.da);
-   }
-
-   public static class a extends ehc {
-      @Override
-      protected void a(dlk.a<egv, egw> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(egw $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(egw $$0) {
-         return false;
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
    }
 
-   public static class b extends ehc {
-      @Override
-      public int d(egw $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(egw $$0) {
-         return true;
-      }
+   public void d() {
+      this.e = false;
    }
 }

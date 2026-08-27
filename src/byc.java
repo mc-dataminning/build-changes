@@ -1,22 +1,60 @@
-import java.util.ArrayList;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class byc extends byl {
-   public static final float a = 10.0F;
+public class byc {
+   private static final byc a = new byc();
+   private final List<box> b;
+   private final Predicate<box> c;
 
-   @Override
-   protected boolean a(boi $$0, boi $$1) {
-      return !$$0.dO().a(bxl.U) && byr.c($$0, $$1) && cbp.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   private byc() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   private boolean e(boi $$0, boi $$1) {
-      List<UUID> $$2 = $$0.dO().c(bxl.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cw());
+   public byc(box $$0, List<box> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<box> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<box> $$3 = $$1x -> bzg.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected bxl<boi> b() {
-      return bxl.B;
+   public static byc a() {
+      return a;
+   }
+
+   public Optional<box> a(Predicate<box> $$0) {
+      for (box $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public Iterable<box> b(Predicate<box> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<box> c(Predicate<box> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(box $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<box> $$0) {
+      for (box $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

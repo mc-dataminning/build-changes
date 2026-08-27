@@ -1,19 +1,19 @@
-import java.util.Optional;
+public interface cvh extends cvk {
+   float a(ih var1, boolean var2);
 
-public class cvh extends cvk {
-   private final bnq a;
+   ehg z_();
 
-   public cvh(bnq $$0) {
-      this.a = $$0;
+   int a(ib var1, cvp var2);
+
+   default int a(cwn $$0, ib $$1) {
+      return this.z_().a($$0).b($$1);
    }
 
-   @Override
-   public Optional<Float> a(cvj $$0, cux $$1, hz $$2, dlj $$3, egw $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default int b(ib $$0, int $$1) {
+      return this.z_().a($$0, $$1);
    }
 
-   @Override
-   public boolean a(cvj $$0, cux $$1, hz $$2, dlj $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   default boolean h(ib $$0) {
+      return this.a(cwn.a, $$0) >= this.O();
    }
 }

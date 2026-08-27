@@ -1,105 +1,76 @@
-import javax.annotation.Nullable;
-
-public class cir extends chs implements cia {
-   public static final cir.a e = new cir.a();
-
-   public cir(bnw<? extends cir> $$0, cvr $$1) {
+public class cir extends cis {
+   public cir(bol<? extends cir> $$0, cwe $$1) {
       super($$0, $$1);
    }
 
-   public cir(bnw<? extends cir> $$0, cfn $$1, cvr $$2) {
-      super($$0, $$1.dr(), $$1.gi(), $$1.dx(), $$2);
+   public cir(cwe $$0, ccr $$1) {
+      this(bol.am, $$0);
       this.b($$1);
-   }
-
-   @Override
-   protected enu aq() {
-      float $$0 = this.ai().n().a() / 2.0F;
-      float $$1 = this.ai().n().b();
-      float $$2 = 0.15F;
-      return new enu(
-         this.dk().c - (double)$$0,
-         this.dk().d - 0.15F,
-         this.dk().e - (double)$$0,
-         this.dk().c + (double)$$0,
-         this.dk().d - 0.15F + (double)$$1,
-         this.dk().e + (double)$$0
+      this.a_(
+         $$1.do() - (double)($$1.dd() + 1.0F) * 0.5 * (double)awm.a($$1.aV * (float) (Math.PI / 180.0)),
+         $$1.ds() - 0.1F,
+         $$1.du() + (double)($$1.dd() + 1.0F) * 0.5 * (double)awm.b($$1.aV * (float) (Math.PI / 180.0))
       );
    }
 
    @Override
-   public boolean h(bnq $$0) {
-      return $$0 instanceof cir ? false : super.h($$0);
-   }
+   public void l() {
+      super.l();
+      eov $$0 = this.dm();
+      eot $$1 = ciu.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.do() + $$0.c;
+      double $$3 = this.dq() + $$0.d;
+      double $$4 = this.du() + $$0.e;
+      this.J();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dJ().a(this.cE()).noneMatch(dmd.a::i)) {
+         this.am();
+      } else if (this.bc()) {
+         this.am();
+      } else {
+         this.g($$0.a(0.99F));
+         if (!this.aV()) {
+            this.g(this.dm().b(0.0, -0.06F, 0.0));
+         }
 
-   @Override
-   protected boolean a(bnq $$0) {
-      return $$0 instanceof cir ? false : super.a($$0);
-   }
-
-   @Override
-   protected void a(enw $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         $$0.a().a(this.dN().c(this, this.w() instanceof boi $$1 ? $$1 : null), 1.0F);
-         this.z();
+         this.a_($$2, $$3, $$4);
       }
    }
 
-   private void z() {
-      this.dM().a(this, null, e, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.af.j()), false, cvr.a.e, jz.y, jz.z, atl.Bu);
+   @Override
+   protected void a(eos $$0) {
+      super.a($$0);
+      if (this.w() instanceof box $$1) {
+         $$0.a().a(this.dK().b(this, $$1), 1.0F);
+      }
    }
 
    @Override
-   protected void a(env $$0) {
+   protected void a(eor $$0) {
       super.a($$0);
-      this.z();
-      this.am();
-   }
-
-   @Override
-   protected void a(enx $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
+      if (!this.dJ().B) {
          this.am();
       }
    }
 
    @Override
-   protected boolean s() {
-      return false;
+   protected void c_() {
    }
 
    @Override
-   public cpd q() {
-      return cpd.h;
-   }
+   public void a(aaj $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
 
-   @Override
-   protected float x() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float y() {
-      return this.x();
-   }
-
-   @Nullable
-   @Override
-   protected jx u() {
-      return null;
-   }
-
-   @Override
-   protected cva.a ah_() {
-      return cva.a.b;
-   }
-
-   public static final class a extends cvk {
-      @Override
-      public boolean a(cvj $$0, bnq $$1) {
-         return false;
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dJ().a(kb.ae, this.do(), this.dq(), this.du(), $$1 * $$5, $$2, $$3 * $$5);
       }
+
+      this.o($$1, $$2, $$3);
    }
 }

@@ -8,13 +8,13 @@ public class bq extends cx<bq.a> {
       return bq.a.a;
    }
 
-   public void a(aox $$0, bmp $$1, float $$2, float $$3, boolean $$4) {
+   public void a(apb $$0, bne $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
    public static record a(Optional<bc> b, Optional<bf> c) implements cx.a {
       public static final Codec<bq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(bq.a::a), avq.a(bf.a, "damage").forGetter(bq.a::c)).apply($$0, bq.a::new)
+         $$0 -> $$0.group(avu.a(br.b, "player").forGetter(bq.a::a), avu.a(bf.a, "damage").forGetter(bq.a::c)).apply($$0, bq.a::new)
       );
 
       public static an<bq.a> b() {
@@ -29,7 +29,7 @@ public class bq extends cx<bq.a> {
          return am.i.a(new bq.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(aox $$0, bmp $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(apb $$0, bne $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

@@ -1,58 +1,27 @@
-public interface dmy {
-   void a(dna var1, double var2);
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   void a(dna var1, double var2, double var4, long var6);
+public class dmy extends dnc<ih> {
+   protected dmy(String $$0, Collection<ih> $$1) {
+      super($$0, ih.class, $$1);
+   }
 
-   void a(dna var1, double var2, double var4);
+   public static dmy a(String $$0) {
+      return a($$0, $$0x -> true);
+   }
 
-   void a(dna var1, int var2);
+   public static dmy a(String $$0, Predicate<ih> $$1) {
+      return a($$0, Arrays.stream(ih.values()).filter($$1).collect(Collectors.toList()));
+   }
 
-   void b(dna var1, int var2);
+   public static dmy a(String $$0, ih... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
 
-   void b(dna var1, double var2);
-
-   void c(dna var1, double var2);
-
-   public static class a implements dmy {
-      private final dna a;
-
-      public a(dna $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dna $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dna $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dna $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dna $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dna $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dna $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dna $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public static dmy a(String $$0, Collection<ih> $$1) {
+      return new dmy($$0, $$1);
    }
 }

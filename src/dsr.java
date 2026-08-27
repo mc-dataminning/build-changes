@@ -1,52 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsr extends dst {
-   public static final Codec<dsr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dst.d.forGetter($$0x -> $$0x), bkz.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dsr.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dsr::new)
-   );
-   public final bkz b;
-   public final dsr.a c;
+public class dsr implements awt {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dsr> b = dsq.a.xmap($$0 -> new dsr($$0), $$0 -> $$0.e);
+   private dsq e;
+   private final drs f = new drs(this);
 
-   public dsr(float $$0, dzs $$1, bkz $$2, drp $$3, dsu $$4, in<cys> $$5, bkz $$6, dsr.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public dsr(long $$0) {
+      this.e = new dsq(dsf.c($$0));
    }
 
-   public dsr(dst $$0, bkz $$1, dsr.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   public dsr(dsf.a $$0) {
+      this.e = new dsq($$0);
    }
 
-   public static class a {
-      public static final Codec<dsr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bkz.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bkz.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  avq.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bkz.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dsr.a::new)
-      );
-      public final bkz b;
-      public final bkz c;
-      public final int d;
-      public final bkz e;
-      public final float f;
-      public final float g;
+   public dsr(long $$0, long $$1) {
+      this.e = new dsq($$0, $$1);
+   }
 
-      public a(bkz $$0, bkz $$1, int $$2, bkz $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+   private dsr(dsq $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public awt d() {
+      return new dsr(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public dsd e() {
+      return new dsr.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new dsq(dsf.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements dsd {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public awt a(int $$0, int $$1, int $$2) {
+         long $$3 = awm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dsr($$4, this.b);
+      }
+
+      @Override
+      public awt a(String $$0) {
+         dsf.a $$1 = dsf.a($$0);
+         return new dsr($$1.a(this.a, this.b));
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

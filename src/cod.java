@@ -1,25 +1,17 @@
-public class cod extends coy {
-   public cod(coy.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cod extends cpl {
+   public cod(cpl.a $$0) {
       super($$0);
    }
 
    @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atl.if, atm.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      $$1.go().a(this, 20);
-      if (!$$0.B) {
-         cin $$4 = new cin($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public void a(cpq $$0, @Nullable cwe $$1, List<vs> $$2, crh $$3) {
+      $$2.add(this.c().a(n.h));
+   }
 
-      $$1.b(atv.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
-
-      return blx.a($$3, $$0.y_());
+   public wg c() {
+      return vs.c(this.a() + ".desc");
    }
 }

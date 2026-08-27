@@ -1,83 +1,98 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public abstract class epf {
-   public boolean a(@Nullable epf $$0) {
-      return $$0 == null ? false : this == $$0;
+public class epf implements epa {
+   protected static final epa a = new epf(false, -Double.MAX_VALUE, cpq.h, $$0 -> false, null) {
+      @Override
+      public boolean a(epo $$0, ib $$1, boolean $$2) {
+         return $$2;
+      }
+   };
+   private final boolean b;
+   private final double c;
+   private final cpq d;
+   private final Predicate<ehr> e;
+   @Nullable
+   private final bof f;
+
+   protected epf(boolean $$0, double $$1, cpq $$2, Predicate<ehr> $$3, @Nullable bof $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public abstract String b();
-
-   public abstract we d(vq var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract epf.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract epf.b k();
-
-   public abstract epf.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, epf.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (epf.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static epf.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public vq a() {
-         return vq.c("team.collision." + this.e);
-      }
+   @Deprecated
+   protected epf(bof $$0) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual bof.bT ()Z
+      // 05: aload 1
+      // 06: invokevirtual bof.dq ()D
+      // 09: aload 1
+      // 0a: instanceof box
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast box
+      // 14: invokevirtual box.eR ()Lcpq;
+      // 17: goto 1d
+      // 1a: getstatic cpq.h Lcpq;
+      // 1d: aload 1
+      // 1e: instanceof box
+      // 21: ifeq 35
+      // 24: aload 1
+      // 25: checkcast box
+      // 28: dup
+      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 2c: pop
+      // 2d: invokedynamic test (Lbox;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, box.a (Lehr;)Z, (Lehr;)Z ]
+      // 32: goto 3a
+      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, epf.a (Lehr;)Z, (Lehr;)Z ]
+      // 3a: aload 1
+      // 3b: invokespecial epf.<init> (ZDLcpq;Ljava/util/function/Predicate;Lbof;)V
+      // 3e: return
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   @Override
+   public boolean a(cpl $$0) {
+      return this.d.a($$0);
+   }
 
-      private static final Map<String, epf.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (epf.b)$$0));
-      public final String e;
-      public final int f;
+   @Override
+   public boolean a(ehr $$0, ehr $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
+   @Override
+   public boolean b() {
+      return this.b;
+   }
 
-      @Nullable
-      public static epf.b a(String $$0) {
-         return g.get($$0);
-      }
+   @Override
+   public boolean a(epo $$0, ib $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(ih.a.b) - 1.0E-5F;
+   }
 
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public vq b() {
-         return vq.c("team.visibility." + this.e);
-      }
+   @Nullable
+   public bof c() {
+      return this.f;
    }
 }

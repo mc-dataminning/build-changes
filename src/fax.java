@@ -1,61 +1,66 @@
-public class fax extends ezm {
-   private static final fbb a = new fbb(
-      new aiy("widget/tab_selected"), new aiy("widget/tab"), new aiy("widget/tab_selected_highlighted"), new aiy("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fbr m;
-   private final fbq n;
+import javax.annotation.Nullable;
 
-   public fax(fbr $$0, fbq $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public abstract class fax extends fai {
+   fax(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, vr.a);
+   }
+
+   public static fax a(int $$0, int $$1, ajc $$2, int $$3, int $$4) {
+      return new fax.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static fax a(int $$0, int $$1, ajc $$2) {
+      return new fax.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   public void b(ezb $$0, int $$1, int $$2, float $$3) {
-      $$0.a(a.a(this.b(), this.z()), this.B(), this.C(), this.g, this.h);
-      eyz $$4 = exo.P().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.b($$0, $$4, $$5);
+   protected void a(fef $$0) {
+   }
+
+   @Override
+   public void a(gmq $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public ezu a(fel $$0) {
+      return null;
+   }
+
+   static class a extends fax {
+      private final ajc a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, ajc $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(ezx $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.B(), this.C(), this.w(), this.u());
       }
    }
 
-   public void a(ezb $$0, eyz $$1, int $$2) {
-      int $$3 = this.B() + 1;
-      int $$4 = this.C() + (this.b() ? 0 : 3);
-      int $$5 = this.B() + this.w() - 1;
-      int $$6 = this.C() + this.u();
-      a($$0, $$1, this.x(), $$3, $$4, $$5, $$6, $$2);
-   }
+   static class b extends fax {
+      private final ajc a;
+      private final int b;
+      private final int c;
 
-   private void b(ezb $$0, eyz $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.x()), this.w() - 4);
-      int $$4 = this.B() + (this.w() - $$3) / 2;
-      int $$5 = this.C() + this.u() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
+      public b(int $$0, int $$1, int $$2, int $$3, ajc $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
 
-   @Override
-   protected void a(fdj $$0) {
-      $$0.a(fdi.a, vq.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(gls $$0) {
-   }
-
-   public fbq a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+      @Override
+      protected void b(ezx $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.B(), this.C(), this.w(), this.u(), 0.0F, 0.0F, this.w(), this.u(), this.b, this.c);
+      }
    }
 }

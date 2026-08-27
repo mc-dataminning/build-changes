@@ -1,29 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eay extends ear {
-   public static final Codec<eay> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, eay::new)
-   );
-   private final int c;
+public class eay extends ebm {
+   private static final eay c = new eay();
+   public static Codec<eay> a = Codec.unit(() -> c);
 
-   private eay(int $$0) {
-      this.c = $$0;
+   private eay() {
    }
 
-   public static eay a(int $$0) {
-      return new eay($$0);
+   public static eay a() {
+      return c;
    }
 
    @Override
-   protected boolean a(eaq $$0, awp $$1, hz $$2) {
-      int $$3 = $$0.a(dqv.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dqv.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   protected boolean a(ebl $$0, awt $$1, ib $$2) {
+      ebk $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      il<cxd> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public eat<?> b() {
-      return eat.d;
+   public ebo<?> b() {
+      return ebo.e;
    }
 }

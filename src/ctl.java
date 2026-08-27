@@ -1,20 +1,15 @@
-public class ctl extends ctm {
-   protected ctl(ctm.a $$0, bnx... $$1) {
-      super($$0, aui.bh, $$1);
+public class ctl extends csb {
+   public ctl(String $$0, csh $$1, csp $$2, cpq $$3, float $$4, int $$5) {
+      super(csx.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+   public cpq g() {
+      return new cpq(czh.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public csw<?> as_() {
+      return csw.r;
    }
 }

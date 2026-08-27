@@ -1,44 +1,59 @@
 import com.mojang.serialization.MapCodec;
 
-public class cza extends cxq {
-   public static final MapCodec<cza> b = b(cza::new);
-   public static final int c = 5;
-   private static final ie[] d = ie.values();
+public class cza extends dba {
+   public static final MapCodec<cza> a = b(cza::new);
+   public static final int b = 3;
+   public static final dne c = dmu.as;
+   private static final epo[] g = new epo[]{
+      czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
+   };
 
    @Override
    public MapCodec<cza> a() {
-      return b;
+      return a;
    }
 
-   public cza(dli.d $$0) {
+   public cza(dmd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
-      if ($$3.a(5) == 0) {
-         ie $$4 = d[$$3.a(d.length)];
-         hz $$5 = $$2.a($$4);
-         dlj $$6 = $$1.a_($$5);
-         cys $$7 = null;
-         if (g($$6)) {
-            $$7 = cyu.qy;
-         } else if ($$6.a(cyu.qy) && $$6.c(cxr.d) == $$4) {
-            $$7 = cyu.qx;
-         } else if ($$6.a(cyu.qx) && $$6.c(cxr.d) == $$4) {
-            $$7 = cyu.qw;
-         } else if ($$6.a(cyu.qw) && $$6.c(cxr.d) == $$4) {
-            $$7 = cyu.qv;
-         }
+   protected dne b() {
+      return c;
+   }
 
-         if ($$7 != null) {
-            dlj $$8 = $$7.o().a(cxr.d, $$4).a(cxr.c, Boolean.valueOf($$6.u().a() == egx.c));
-            $$1.b($$5, $$8);
-         }
+   @Override
+   public int c() {
+      return 3;
+   }
+
+   @Override
+   protected cwd d() {
+      return cpt.vh;
+   }
+
+   @Override
+   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   public static boolean g(dlj $$0) {
-      return $$0.i() || $$0.a(cyu.G) && $$0.u().e() == 8;
+   @Override
+   protected int a(cwe $$0) {
+      return super.a($$0) / 3;
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return g[this.g($$0)];
    }
 }

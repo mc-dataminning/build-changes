@@ -1,39 +1,43 @@
-public class gcs extends gcg<caq, fmi<caq>> {
-   private static final aiy a = new aiy("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fmi<caq> j;
-   private final fmi<caq> k;
-   private final fmi<caq> l = this.a();
+public class gcs extends gcr<cfe> {
+   private static final ajc a = new ajc("textures/entity/illager/illusioner.png");
 
-   public gcs(gba.a $$0) {
-      super($$0, new fnp<>($$0.a(fpi.aX)), 0.2F);
-      this.k = new fnq<>($$0.a(fpi.aY));
-      this.j = new fnr<>($$0.a(fpi.aZ));
+   public gcs(gby.a $$0) {
+      super($$0, new fns<>($$0.a(fqe.aq)), 0.5F);
+      this.a(new ggc<cfe, fns<cfe>>(this, $$0.d()) {
+         public void a(etd $$0, fwq $$1, int $$2, cfe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gv() || $$3.gd()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
+      this.f.c().k = true;
    }
 
-   public aiy a(caq $$0) {
+   public ajc a(cfe $$0) {
       return a;
    }
 
-   public void a(caq $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
-      int $$6 = $$0.gi();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
-         }
-      }
+   public void a(cfe $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
+      if ($$0.cb()) {
+         eov[] $$6 = $$0.E($$2);
+         float $$7 = this.a($$0, $$2);
 
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)awm.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)awm.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)awm.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   protected void a(caq $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(0.0F, awi.b($$2 * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean b(cfe $$0) {
+      return true;
    }
 }

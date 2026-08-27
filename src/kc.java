@@ -1,35 +1,31 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public class kc extends jy<kc> implements jx {
-   private static final jx.a<kc> a = new jx.a<kc>() {
-      public kc a(jy<kc> $$0, StringReader $$1) {
-         return (kc)$$0;
+public record kc(float d) implements jz {
+   public static final Codec<kc> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.d)).apply($$0, kc::new));
+   public static final xq<vd, kc> b = xq.a(xo.f, $$0 -> $$0.d, kc::new);
+   public static final jz.a<kc> c = new jz.a<kc>() {
+      public kc a(ka<kc> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
+         $$1.expect(' ');
+         float $$3 = $$1.readFloat();
+         return new kc($$3);
       }
    };
-   private final Codec<kc> b = Codec.unit(this::g);
-   private final xo<vb, kc> c = xo.a(this);
 
-   protected kc(boolean $$0) {
-      super($$0, a);
-   }
-
-   public kc g() {
-      return this;
+   @Override
+   public ka<kc> a() {
+      return kb.H;
    }
 
    @Override
-   public Codec<kc> e() {
-      return this.b;
+   public String a(in.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f", kh.j.b(this.a()), this.d);
    }
 
-   @Override
-   public xo<vb, kc> f() {
-      return this.c;
-   }
-
-   @Override
-   public String a() {
-      return kf.j.b(this).toString();
+   public float b() {
+      return this.d;
    }
 }

@@ -1,21 +1,47 @@
-public enum dmv implements axc {
-   a("none"),
-   b("low"),
-   c("tall");
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
 
-   private final String d;
+public class dmv extends dnh<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   private dmv(String $$0) {
-      this.d = $$0;
+   protected dmv(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String toString() {
-      return this.c();
+   public Collection<Boolean> a() {
+      return this.a;
+   }
+
+   public static dmv a(String $$0) {
+      return new dmv($$0);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dmv $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

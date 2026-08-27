@@ -1,66 +1,60 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class eou {
+   public static final eou a = new eou(0.0F, 0.0F);
+   public static final eou b = new eou(1.0F, 1.0F);
+   public static final eou c = new eou(1.0F, 0.0F);
+   public static final eou d = new eou(-1.0F, 0.0F);
+   public static final eou e = new eou(0.0F, 1.0F);
+   public static final eou f = new eou(0.0F, -1.0F);
+   public static final eou g = new eou(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final eou h = new eou(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public enum eou implements axc {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final axc.a<eou> t = axc.a(eou::values);
-   public static final IntFunction<eou> u = ava.a(eou::a, values(), ava.a.a);
-   private final int v;
-   private final String w;
-
-   private eou(int $$0, String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+   public eou(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public int a() {
-      return this.v;
+   public eou a(float $$0) {
+      return new eou(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public String c() {
-      return this.w;
+   public float a(eou $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Nullable
-   public static eou a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public eou b(eou $$0) {
+      return new eou(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public eou b(float $$0) {
+      return new eou(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(eou $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public eou a() {
+      float $$0 = awm.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new eou(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return awm.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(eou $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public eou d() {
+      return new eou(-this.i, -this.j);
    }
 }

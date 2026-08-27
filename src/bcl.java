@@ -1,191 +1,90 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class bcl extends DataFix {
-   private static final Int2ObjectMap<String> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, "minecraft:speed");
-      $$0.put(2, "minecraft:slowness");
-      $$0.put(3, "minecraft:haste");
-      $$0.put(4, "minecraft:mining_fatigue");
-      $$0.put(5, "minecraft:strength");
-      $$0.put(6, "minecraft:instant_health");
-      $$0.put(7, "minecraft:instant_damage");
-      $$0.put(8, "minecraft:jump_boost");
-      $$0.put(9, "minecraft:nausea");
-      $$0.put(10, "minecraft:regeneration");
-      $$0.put(11, "minecraft:resistance");
-      $$0.put(12, "minecraft:fire_resistance");
-      $$0.put(13, "minecraft:water_breathing");
-      $$0.put(14, "minecraft:invisibility");
-      $$0.put(15, "minecraft:blindness");
-      $$0.put(16, "minecraft:night_vision");
-      $$0.put(17, "minecraft:hunger");
-      $$0.put(18, "minecraft:weakness");
-      $$0.put(19, "minecraft:poison");
-      $$0.put(20, "minecraft:wither");
-      $$0.put(21, "minecraft:health_boost");
-      $$0.put(22, "minecraft:absorption");
-      $$0.put(23, "minecraft:saturation");
-      $$0.put(24, "minecraft:glowing");
-      $$0.put(25, "minecraft:levitation");
-      $$0.put(26, "minecraft:luck");
-      $$0.put(27, "minecraft:unluck");
-      $$0.put(28, "minecraft:slow_falling");
-      $$0.put(29, "minecraft:conduit_power");
-      $$0.put(30, "minecraft:dolphins_grace");
-      $$0.put(31, "minecraft:bad_omen");
-      $$0.put(32, "minecraft:hero_of_the_village");
-      $$0.put(33, "minecraft:darkness");
-   });
-   private static final Set<String> b = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+   private static final String b = "generatorOptions";
+   @VisibleForTesting
+   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+   private static final Splitter c = Splitter.on(';').limit(5);
+   private static final Splitter d = Splitter.on(',');
+   private static final Splitter e = Splitter.on('x').limit(2);
+   private static final Splitter f = Splitter.on('*').limit(2);
+   private static final Splitter g = Splitter.on(':').limit(3);
 
-   public bcl(Schema $$0) {
-      super($$0, false);
+   public bcl(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Optional<Dynamic<T>> a(Dynamic<T> $$0, String $$1) {
-      return $$0.get($$1).asNumber().result().map($$0x -> (String)a.get($$0x.intValue())).map($$0::createString);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(bdt.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Optional<Dynamic<T>> $$2) {
-      return $$2.isEmpty() ? $$0 : $$0.set($$1, $$2.get());
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
+         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
+         : $$0;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Optional<Dynamic<T>> $$3) {
-      return a($$0.remove($$1), $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0.remove($$1), $$2, $$0.get($$1).result());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Dynamic<T> $$2, String $$3) {
-      Optional<Dynamic<T>> $$4 = a($$0, $$1);
-      return a($$2, $$1, $$3, $$4);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0, $$1, $$0, $$2);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = b($$0, "Id", "id");
-      $$0 = a($$0, "Ambient", "ambient");
-      $$0 = a($$0, "Amplifier", "amplifier");
-      $$0 = a($$0, "Duration", "duration");
-      $$0 = a($$0, "ShowParticles", "show_particles");
-      $$0 = a($$0, "ShowIcon", "show_icon");
-      Optional<Dynamic<T>> $$1 = $$0.get("HiddenEffect").result().map(bcl::a);
-      return a($$0, "HiddenEffect", "hidden_effect", $$1);
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0, String $$1, String $$2) {
-      Optional<Dynamic<T>> $$3 = $$0.get($$1).asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(bcl::a)));
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
-      $$1 = a($$0, "EffectId", $$1, "id");
-      Optional<Dynamic<T>> $$2 = $$0.get("EffectDuration").result();
-      return a($$1, "EffectDuration", "duration", $$2);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return a($$0, $$0);
-   }
-
-   private Typed<?> a(Typed<?> $$0, TypeReference $$1, String $$2, Function<Dynamic<?>, Dynamic<?>> $$3) {
-      Type<?> $$4 = this.getInputSchema().getChoiceType($$1, $$2);
-      Type<?> $$5 = this.getOutputSchema().getChoiceType($$1, $$2);
-      return $$0.updateTyped(DSL.namedChoice($$2, $$4), $$5, $$1x -> $$1x.update(DSL.remainderFinder(), $$3));
-   }
-
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(bdn.s);
-      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, bdn.s, "minecraft:beacon", $$0xx -> {
-            $$0xx = b($$0xx, "Primary", "primary_effect");
-            return b($$0xx, "Secondary", "secondary_effect");
-         }));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = $$0.emptyMap();
-      Dynamic<T> $$2 = a($$0, $$1);
-      if (!$$2.equals($$1)) {
-         $$0 = $$0.set("stew_effects", $$0.createList(Stream.of($$2)));
-      }
-
-      return $$0.remove("EffectId").remove("EffectDuration");
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      return c($$0, "CustomPotionEffects", "custom_potion_effects");
-   }
-
-   private static <T> Dynamic<T> e(Dynamic<T> $$0) {
-      return c($$0, "Effects", "effects");
-   }
-
-   private static Dynamic<?> f(Dynamic<?> $$0) {
-      return c($$0, "ActiveEffects", "active_effects");
-   }
-
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(bdn.y);
-      return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
-         $$0x = this.a($$0x, bdn.y, "minecraft:mooshroom", bcl::c);
-         $$0x = this.a($$0x, bdn.y, "minecraft:arrow", bcl::d);
-         $$0x = this.a($$0x, bdn.y, "minecraft:area_effect_cloud", bcl::e);
-         return $$0x.update(DSL.remainderFinder(), bcl::f);
-      });
-   }
-
-   private TypeRewriteRule c() {
-      Type<?> $$0 = this.getInputSchema().getType(bdn.b);
-      return this.fixTypeEverywhereTyped("PlayerMobEffectIdFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bcl::f));
-   }
-
-   private static <T> Dynamic<T> g(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Effects").asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(bcl::b)));
-      return a($$0, "Effects", "effects", $$1);
-   }
-
-   private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bdn.A.typeName(), bew.a()));
-      Type<?> $$1 = this.getInputSchema().getType(bdn.t);
-      OpticFinder<?> $$2 = $$1.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$0);
-         if ($$3.isPresent()) {
-            String $$4 = (String)$$3.get().getSecond();
-            if ($$4.equals("minecraft:suspicious_stew")) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bcl::g));
-            }
-
-            if (b.contains($$4)) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> c($$0xxx, "CustomPotionEffects", "custom_potion_effects")));
-            }
+   @VisibleForTesting
+   String a(String $$0) {
+      if ($$0.isEmpty()) {
+         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+      } else {
+         Iterator<String> $$1 = c.split($$0).iterator();
+         String $$2 = $$1.next();
+         int $$3;
+         String $$4;
+         if ($$1.hasNext()) {
+            $$3 = NumberUtils.toInt($$2, 0);
+            $$4 = $$1.next();
+         } else {
+            $$3 = 0;
+            $$4 = $$2;
          }
 
-         return $$2x;
-      });
-   }
+         if ($$3 >= 0 && $$3 <= 3) {
+            StringBuilder $$7 = new StringBuilder();
+            Splitter $$8 = $$3 < 3 ? e : f;
+            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
+               List<String> $$3x = $$8.splitToList($$2x);
+               int $$4x;
+               String $$5x;
+               if ($$3x.size() == 2) {
+                  $$4x = NumberUtils.toInt($$3x.get(0));
+                  $$5x = $$3x.get(1);
+               } else {
+                  $$4x = 1;
+                  $$5x = $$3x.get(0);
+               }
 
-   protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.a(), new TypeRewriteRule[]{this.b(), this.c(), this.d()});
+               List<String> $$8x = g.splitToList($$5x);
+               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
+               String $$10 = $$8x.get($$9);
+               int $$11 = $$3 == 3 ? azv.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
+               int $$12 = $$9 + 1;
+               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
+               return ($$4x == 1 ? "" : $$4x + "*") + ayv.b($$11 << 4 | $$13).get("Name").asString("");
+            }).collect(Collectors.joining(",")));
+
+            while ($$1.hasNext()) {
+               $$7.append(';').append($$1.next());
+            }
+
+            return $$7.toString();
+         } else {
+            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+         }
+      }
    }
 }

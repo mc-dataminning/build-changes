@@ -1,81 +1,44 @@
-import java.util.List;
-
-public interface cnv {
-   String q_ = "color";
-   String r_ = "display";
-   int s_ = 10511680;
-
-   default boolean a(cpd $$0) {
-      sw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+public class cnv extends cpl {
+   public cnv(cpl.a $$0) {
+      super($$0);
    }
 
-   default int e_(cpd $$0) {
-      sw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
-   }
+   @Override
+   public cpq a(cpq $$0, cwe $$1, box $$2) {
+      cpq $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.do() + ($$2.ef().j() - 0.5) * 16.0;
+            double $$6 = awm.a($$2.dq() + (double)($$2.ef().a(16) - 8), (double)$$1.J_(), (double)($$1.J_() + ((apa)$$1).k() - 1));
+            double $$7 = $$2.du() + ($$2.ef().j() - 0.5) * 16.0;
+            if ($$2.bL()) {
+               $$2.ac();
+            }
 
-   default void f_(cpd $$0) {
-      sw $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
-   }
+            eov $$8 = $$2.dh();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dqr.R, $$8, dqr.a.a($$2));
+               atq $$10;
+               ato $$9;
+               if ($$2 instanceof caw) {
+                  $$9 = atp.jb;
+                  $$10 = atq.g;
+               } else {
+                  $$9 = atp.eZ;
+                  $$10 = atq.h;
+               }
 
-   default void a(cpd $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static cpd a(cpd $$0, List<cns> $$1) {
-      cpd $$2 = cpd.h;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      cnv $$6 = null;
-      coy $$7 = $$0.d();
-      if ($$7 instanceof cnv) {
-         $$6 = (cnv)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
+               $$1.a(null, $$2.do(), $$2.dq(), $$2.du(), $$9, $$10);
+               $$2.n();
+               break;
+            }
          }
 
-         for (cns $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
+         if ($$2 instanceof cia $$13) {
+            $$13.gq().a(this, 20);
          }
       }
 
-      if ($$6 == null) {
-         return cpd.h;
-      } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
-      }
+      return $$3;
    }
 }

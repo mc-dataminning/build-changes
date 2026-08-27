@@ -1,40 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dbu extends czb implements dgt {
-   protected static final MapCodec<List<dgt.a>> a = dgt.a.b.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dbu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dbu::b), u()).apply($$0, dbu::new));
-   protected static final float c = 3.0F;
-   protected static final eos d = cys.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final List<dgt.a> e;
+public class dbu extends czf {
+   public static final MapCodec<dbu> a = b(dbu::new);
+   public static final dmy b = dda.aE;
+   public static final dmv c = dmu.h;
+   protected static final epo d = czf.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final epo e = czf.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final epo f = epl.a(d, e);
+   private static dmj g;
 
    @Override
-   public MapCodec<? extends dbu> a() {
-      return b;
+   public MapCodec<dbu> a() {
+      return a;
    }
 
-   public dbu(ij<bnb> $$0, int $$1, dli.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dbu(List<dgt.a> $$0, dli.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   protected static List<dgt.a> a(ij<bnb> $$0, int $$1) {
-      return List.of(new dgt.a($$0, $$1 * 20));
+   public dbu(dmd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ih.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      enz $$4 = $$0.n($$1, $$2);
-      return d.a($$4.c, $$4.d, $$4.e);
+   protected boolean g_(dme $$0) {
+      return true;
    }
 
    @Override
-   public List<dgt.a> b() {
-      return this.e;
+   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public dme a(crx $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean d_(dme $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dme $$0, cwe $$1, ib $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dme a(dme $$0, dfr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dme a(dme $$0, deb $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dmf.a<czf, dme> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dmj b() {
+      if (g == null) {
+         g = dmk.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dmi.a(dmn.a))
+            .a('^', dmi.a(dmn.a(czh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.d))))
+            .a('>', dmi.a(dmn.a(czh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.e))))
+            .a('v', dmi.a(dmn.a(czh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.c))))
+            .a('<', dmi.a(dmn.a(czh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.f))))
+            .b();
+      }
+
+      return g;
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
    }
 }

@@ -1,23 +1,14 @@
-import io.netty.buffer.ByteBuf;
-
-public class ahi implements xx<ahe> {
-   public static final ahi a = new ahi();
-   public static final xo<ByteBuf, ahi> b = xo.a(a);
-
-   private ahi() {
-   }
-
+public interface ahi extends aaf, aew {
    @Override
-   public xz<ahi> a() {
-      return ahc.i;
+   default ur b() {
+      return ur.d;
    }
 
-   public void a(ahe $$0) {
-      $$0.a(this);
-   }
+   void a(ahk var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(ahl var1);
+
+   void a(ahj var1);
+
+   void a(ahm var1);
 }

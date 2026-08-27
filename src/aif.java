@@ -1,20 +1,12 @@
-public interface aif<T> {
-   xo<? super vb, T> codec();
+public class aif {
+   public static final yb<aib> a = a("status_response");
+   public static final yb<aie> b = b("status_request");
 
-   default aie<T> a(int $$0) {
-      return new aie<>($$0, this);
+   private static <T extends xz<aia>> yb<T> a(String $$0) {
+      return new yb<>(ya.b, new ajc($$0));
    }
 
-   T copy(T var1);
-
-   static <T> aif<T> a(xo<? super vb, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends aif<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
+   private static <T extends xz<aid>> yb<T> b(String $$0) {
+      return new yb<>(ya.a, new ajc($$0));
    }
 }

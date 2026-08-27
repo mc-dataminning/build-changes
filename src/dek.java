@@ -1,34 +1,19 @@
-import com.mojang.serialization.MapCodec;
+public class dek {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dek extends dan {
-   public static final MapCodec<dek> a = b(dek::new);
-   private static final eos[] b = new eos[]{
-      cys.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cys.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<dek> a() {
-      return a;
+   public static boolean a(dme $$0) {
+      return $$0.i();
    }
 
-   public dek(dli.d $$0) {
-      super($$0);
-   }
+   public static int a(awt $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected cvq d() {
-      return cpg.uc;
-   }
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
 
-   @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return b[this.g($$0)];
+      return $$2;
    }
 }

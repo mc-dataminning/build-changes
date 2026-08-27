@@ -1,29 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class byk extends byi {
+   private boolean p;
 
-public class byk<T extends boi> extends byr<T> {
-   @Override
-   protected void a(aow $$0, T $$1) {
-      enu $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<boi> $$3 = $$0.a(boi.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bpj<?> $$4 = $$1.dO();
-      $$4.a(bxl.g, $$3);
-      $$4.a(bxl.h, new bxn($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public byk(boz $$0, cwe $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<bxl<?>> a() {
-      return ImmutableSet.of(bxl.g, bxl.h);
+   protected eii a(int $$0) {
+      this.p = this.a.ai() == bol.x;
+      this.o = new eij(this.p);
+      return new eii(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bd();
+   }
+
+   @Override
+   protected eov b() {
+      return new eov(this.a.do(), this.a.e(0.5), this.a.du());
+   }
+
+   @Override
+   protected double a(eov $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(eov $$0, eov $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ib $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

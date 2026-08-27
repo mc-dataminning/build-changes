@@ -1,61 +1,15 @@
-public class egt extends egv {
-   @Override
-   public coy a() {
-      return cpg.a;
+import java.util.Locale;
+
+public class egt {
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
    }
 
-   @Override
-   public boolean a(egw $$0, cux $$1, hz $$2, egv $$3, ie $$4) {
-      return true;
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 
-   @Override
-   public enz a(cux $$0, hz $$1, egw $$2) {
-      return enz.b;
-   }
-
-   @Override
-   public int a(cvu $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(egw $$0, cux $$1, hz $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(egw $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dlj b(egw $$0) {
-      return cyu.a.o();
-   }
-
-   @Override
-   public boolean c(egw $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(egw $$0) {
-      return 0;
-   }
-
-   @Override
-   public eos b(egw $$0, cux $$1, hz $$2) {
-      return eop.a();
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 }

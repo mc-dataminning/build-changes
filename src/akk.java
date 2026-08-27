@@ -1,66 +1,33 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
 
 public class akk {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("clear.failed.multiple", $$0));
-
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), $$0xx -> true, -1)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), $$0xx -> true, -1)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("item", gd.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), -1)))
-                        .then(
-                           dv.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     ass $$1 = ((du)$$0x.getSource()).l().ah();
+                     return a((du)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(dv.a("ips").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ah().g().d()))))
+            .then(dv.a("players").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ah().f().d())))
       );
    }
 
-   private static int a(du $$0, Collection<aox> $$1, Predicate<cpd> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (aox $$5 : $$1) {
-         $$4 += $$5.fT().a($$2, $$3, $$5.bV.q());
-         $$5.bW.d();
-         $$5.bV.a($$5.fT());
-      }
-
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ad());
-         } else {
-            throw b.create($$1.size());
-         }
+   private static int a(du $$0, Collection<? extends asn<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> vs.c("commands.banlist.none"), false);
       } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vq.a("commands.clear.test.single", $$6, $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vq.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> vq.a("commands.clear.success.single", $$6, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vq.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
+         $$0.a(() -> vs.a("commands.banlist.list", $$1.size()), false);
 
-         return $$4;
+         for (asn<?> $$2 : $$1) {
+            $$0.a(() -> vs.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         }
       }
+
+      return $$1.size();
    }
 }

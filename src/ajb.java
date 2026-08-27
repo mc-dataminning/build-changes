@@ -1,80 +1,60 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class ajb extends IOException {
-   private final List<ajb.a> a = Lists.newArrayList();
-   private final String b;
+public class ajb<T> {
+   private static final ConcurrentMap<ajb.a, ajb<?>> a = new MapMaker().weakValues().makeMap();
+   private final ajc b;
+   private final ajc c;
 
-   public ajb(String $$0) {
-      this.a.add(new ajb.a());
+   public static <T> Codec<ajb<T>> a(ajb<? extends ix<T>> $$0) {
+      return ajc.a.xmap($$1 -> a($$0, $$1), ajb::a);
+   }
+
+   public static <T> xq<ByteBuf, ajb<T>> b(ajb<? extends ix<T>> $$0) {
+      return ajc.b.a($$1 -> a($$0, $$1), ajb::a);
+   }
+
+   public static <T> ajb<T> a(ajb<? extends ix<T>> $$0, ajc $$1) {
+      return a($$0.c, $$1);
+   }
+
+   public static <T> ajb<ix<T>> a(ajc $$0) {
+      return a(ki.a, $$0);
+   }
+
+   private static <T> ajb<T> a(ajc $$0, ajc $$1) {
+      return (ajb<T>)a.computeIfAbsent(new ajb.a($$0, $$1), $$0x -> new ajb($$0x.a, $$0x.b));
+   }
+
+   private ajb(ajc $$0, ajc $$1) {
       this.b = $$0;
-   }
-
-   public ajb(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new ajb.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new ajb.a());
+      this.c = $$1;
    }
 
    @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   public static ajb a(Exception $$0) {
-      if ($$0 instanceof ajb) {
-         return (ajb)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new ajb($$1, $$0);
-      }
+   public boolean c(ajb<? extends ix<?>> $$0) {
+      return this.b.equals($$0.a());
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   public <E> Optional<ajb<E>> d(ajb<? extends ix<E>> $$0) {
+      return this.c($$0) ? Optional.of((ajb<E>)this) : Optional.empty();
+   }
 
-      a() {
-      }
+   public ajc a() {
+      return this.c;
+   }
 
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
+   public ajc b() {
+      return this.b;
+   }
 
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   static record a(ajc a, ajc b) {
    }
 }

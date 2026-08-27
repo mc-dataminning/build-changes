@@ -15,7 +15,7 @@ public record db(List<db.c> b) {
       );
    public static final Codec<db> a = c.xmap(db::new, db::a);
 
-   public <S extends dll<?, S>> boolean a(dlk<?, S> $$0, S $$1) {
+   public <S extends dmg<?, S>> boolean a(dmf<?, S> $$0, S $$1) {
       for (db.c $$2 : this.b) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -25,15 +25,15 @@ public record db(List<db.c> b) {
       return true;
    }
 
-   public boolean a(dlj $$0) {
+   public boolean a(dme $$0) {
       return this.a($$0.b().n(), $$0);
    }
 
-   public boolean a(egw $$0) {
+   public boolean a(ehr $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dlk<?, ?> $$0) {
+   public Optional<String> a(dmf<?, ?> $$0) {
       for (db.c $$1 : this.b) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -58,20 +58,20 @@ public record db(List<db.c> b) {
          return new db.a();
       }
 
-      public db.a a(dmm<?> $$0, String $$1) {
+      public db.a a(dnh<?> $$0, String $$1) {
          this.a.add(new db.c($$0.f(), new db.b($$1)));
          return this;
       }
 
-      public db.a a(dmm<Integer> $$0, int $$1) {
+      public db.a a(dnh<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public db.a a(dmm<Boolean> $$0, boolean $$1) {
+      public db.a a(dnh<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & axc> db.a a(dmm<T> $$0, T $$1) {
+      public <T extends Comparable<T> & axg> db.a a(dnh<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -84,7 +84,7 @@ public record db(List<db.c> b) {
       public static final Codec<db.b> a = Codec.STRING.xmap(db.b::new, db.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dll<?, ?> $$0, dmm<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dmg<?, ?> $$0, dnh<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.c);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -96,24 +96,24 @@ public record db(List<db.c> b) {
    }
 
    static record c(String a, db.e b) {
-      public <S extends dll<?, S>> boolean a(dlk<?, S> $$0, S $$1) {
-         dmm<?> $$2 = $$0.a(this.a);
+      public <S extends dmg<?, S>> boolean a(dmf<?, S> $$0, S $$1) {
+         dnh<?> $$2 = $$0.a(this.a);
          return $$2 != null && this.b.a($$1, $$2);
       }
 
-      public Optional<String> a(dlk<?, ?> $$0) {
-         dmm<?> $$1 = $$0.a(this.a);
+      public Optional<String> a(dmf<?, ?> $$0) {
+         dnh<?> $$1 = $$0.a(this.a);
          return $$1 != null ? Optional.empty() : Optional.of(this.a);
       }
    }
 
    static record d(Optional<String> c, Optional<String> d) implements db.e {
       public static final Codec<db.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avq.a(Codec.STRING, "min").forGetter(db.d::a), avq.a(Codec.STRING, "max").forGetter(db.d::b)).apply($$0, db.d::new)
+         $$0 -> $$0.group(avu.a(Codec.STRING, "min").forGetter(db.d::a), avu.a(Codec.STRING, "max").forGetter(db.d::b)).apply($$0, db.d::new)
       );
 
       @Override
-      public <T extends Comparable<T>> boolean a(dll<?, ?> $$0, dmm<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dmg<?, ?> $$0, dnh<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.c.isPresent()) {
             Optional<T> $$3 = $$1.b(this.c.get());
@@ -152,6 +152,6 @@ public record db(List<db.c> b) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dll<?, ?> var1, dmm<T> var2);
+      <T extends Comparable<T>> boolean a(dmg<?, ?> var1, dnh<T> var2);
    }
 }

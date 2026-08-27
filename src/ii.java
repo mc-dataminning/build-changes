@@ -1,27 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public record ii(aix<cvr> c, hz d) {
-   public static final Codec<ii> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvr.g.fieldOf("dimension").forGetter(ii::a), hz.a.fieldOf("pos").forGetter(ii::b)).apply($$0, ii::a)
-   );
-   public static final xo<ByteBuf, ii> b = xo.a(aix.b(kg.aM), ii::a, hz.b, ii::b, ii::a);
+public enum ii {
+   a(ih.c),
+   b(ih.c, ih.f),
+   c(ih.f),
+   d(ih.d, ih.f),
+   e(ih.d),
+   f(ih.d, ih.e),
+   g(ih.e),
+   h(ih.c, ih.e);
 
-   public static ii a(aix<cvr> $$0, hz $$1) {
-      return new ii($$0, $$1);
+   private final Set<ih> i;
+   private final jf j;
+
+   private ii(ih... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new jf(0, 0, 0);
+
+      for (ih $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
+      }
    }
 
-   @Override
-   public String toString() {
-      return this.c + " " + this.d;
+   public Set<ih> a() {
+      return this.i;
    }
 
-   public aix<cvr> a() {
-      return this.c;
+   public int b() {
+      return this.j.u();
    }
 
-   public hz b() {
-      return this.d;
+   public int c() {
+      return this.j.w();
    }
 }

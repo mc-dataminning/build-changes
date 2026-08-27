@@ -1,14 +1,29 @@
-public interface ahe extends aad, aet {
-   @Override
-   default up b() {
-      return up.d;
+public class ahe implements xz<aha> {
+   public static final xq<us, ahe> a = xz.a(ahe::a, ahe::new);
+   private final int b;
+
+   public ahe(int $$0) {
+      this.b = $$0;
    }
 
-   void a(ahg var1);
+   private ahe(us $$0) {
+      this.b = $$0.l();
+   }
 
-   void a(ahh var1);
+   private void a(us $$0) {
+      $$0.c(this.b);
+   }
 
-   void a(ahf var1);
+   @Override
+   public yb<ahe> a() {
+      return ahg.d;
+   }
 
-   void a(ahi var1);
+   public void a(aha $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
 }

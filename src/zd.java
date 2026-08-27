@@ -1,16 +1,17 @@
-public record zd() implements yy {
-   public static final xo<uq, zd> a = yy.a(zd::a, zd::new);
-   public static final yy.b<zd> b = yy.a("debug/game_test_clear");
-
-   private zd(uq $$0) {
-      this();
-   }
-
-   private void a(uq $$0) {
-   }
+public record zd(dqv c, int d) implements za {
+   public static final xq<vd, zd> a = xq.a(dqv.d, zd::b, xo.d, zd::c, zd::new);
+   public static final za.b<zd> b = za.a("debug/game_event_listeners");
 
    @Override
-   public yy.b<zd> a() {
+   public za.b<zd> a() {
       return b;
+   }
+
+   public dqv b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

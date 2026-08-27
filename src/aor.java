@@ -1,52 +1,85 @@
-import javax.annotation.Nullable;
+public class aor extends apc {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public class aor {
-   @Nullable
-   protected static hz a(aow $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.E_().h();
-      dnq $$4 = $$0.d(jb.a($$1), jb.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dqv.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.J_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(dqv.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dqv.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            hz.a $$7 = new hz.a();
+   public aor(apb $$0) {
+      super($$0);
+   }
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.J_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dlj $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.X();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.d.b(new abp(abp.g, 0.0F));
+      }
 
-               if (cys.a($$9.k($$0, $$7), ie.b)) {
-                  return $$7.c().i();
-               }
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.d.b(new abp(abp.g, 104.0F));
+            } else {
+               this.d.a(vs.c("demo.day." + $$1));
             }
-
-            return null;
          }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.d.b(new abp(abp.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.d.b(new abp(abp.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.d.b(new abp(abp.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(vs.c("demo.day.warning"));
       }
    }
 
-   @Nullable
-   public static hz a(aow $$0, cuy $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               hz $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(vs.c("demo.reminder"));
+         this.g = 0;
+      }
+   }
 
-         return null;
+   @Override
+   public void a(ib $$0, afy.a $$1, ih $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public bml a(apb $$0, cwe $$1, cpq $$2, bmk $$3) {
+      if (this.f) {
+         this.f();
+         return bml.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public bml a(apb $$0, cwe $$1, cpq $$2, bmk $$3, eor $$4) {
+      if (this.f) {
+         this.f();
+         return bml.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 }

@@ -1,46 +1,68 @@
 import javax.annotation.Nullable;
 
-public class aee implements xx<aag> {
-   public static final xo<uq, aee> a = xx.a(aee::a, aee::new);
-   private final int b;
+public class aee implements xz<aai> {
+   public static final xq<us, aee> a = xz.a(aee::a, aee::new);
+   private static final int b = 1;
+   private static final int c = 2;
    @Nullable
-   private final sw c;
+   private final ajc d;
+   @Nullable
+   private final atq e;
 
-   public aee(int $$0, @Nullable sw $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aee(@Nullable ajc $$0, @Nullable atq $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private aee(uq $$0) {
-      this.b = $$0.n();
-      this.c = $$0.q();
+   private aee(us $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(atq.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(uq $$0) {
-      $$0.c(this.b);
-      $$0.a((tt)this.c);
+   private void a(us $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public xz<aee> a() {
-      return aeq.aW;
+   public yb<aee> a() {
+      return aet.aU;
    }
 
-   public void a(aag $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public ajc b() {
+      return this.d;
    }
 
    @Nullable
-   public sw e() {
-      return this.c;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public atq e() {
+      return this.e;
    }
 }

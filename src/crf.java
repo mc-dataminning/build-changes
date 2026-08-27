@@ -1,41 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.function.Supplier;
 
-public record crf(String c, ij<coy> d, float e, Map<cmp, String> f, vq g) {
-   public static final Codec<crf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avq.x.fieldOf("asset_name").forGetter(crf::a),
-               aiv.a(kg.F).fieldOf("ingredient").forGetter(crf::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(crf::c),
-               Codec.unboundedMap(cmp.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(crf::d),
-               vs.a.fieldOf("description").forGetter(crf::e)
-            )
-            .apply($$0, crf::new)
-   );
-   public static final Codec<ij<crf>> b = aiu.a(kg.aI, a);
+public enum crf implements crd {
+   a(0, 59, 2.0F, 0.0F, 15, () -> csp.a(aum.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> csp.a(aum.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> csp.a(cpt.oD)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> csp.a(cpt.ox)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> csp.a(cpt.oH)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> csp.a(cpt.oI));
 
-   public static crf a(String $$0, coy $$1, float $$2, vq $$3, Map<cmp, String> $$4) {
-      return new crf($$0, kf.h.e($$1), $$2, $$4, $$3);
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final awh<csp> l;
+
+   private crf(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<csp> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new awh<>($$5);
    }
 
-   public String a() {
-      return this.c;
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   public ij<coy> b() {
-      return this.d;
+   @Override
+   public float b() {
+      return this.i;
    }
 
+   @Override
    public float c() {
-      return this.e;
+      return this.j;
    }
 
-   public Map<cmp, String> d() {
-      return this.f;
-   }
-
-   public vq e() {
+   @Override
+   public int d() {
       return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public csp f() {
+      return this.l.a();
    }
 }

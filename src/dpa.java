@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.CompletableFuture;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dpa {
+public interface dpa {
+   CompletableFuture<Void> a(cvl var1, ts var2);
 }

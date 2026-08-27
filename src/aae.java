@@ -1,28 +1,12 @@
-import javax.annotation.Nullable;
+public class aae {
+   public static final yb<aad> a = a("cookie_request");
+   public static final yb<aag> b = b("cookie_response");
 
-public record aae(aiy b, @Nullable byte[] c) implements xx<aad> {
-   public static final xo<uq, aae> a = xx.a(aae::a, aae::new);
-
-   private aae(uq $$0) {
-      this($$0.s(), $$0.c((xp<? super uq, byte[]>)($$0x -> $$0x.a(5120))));
+   private static <T extends xz<aac>> yb<T> a(String $$0) {
+      return new yb<>(ya.b, new ajc($$0));
    }
 
-   private void a(uq $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, uq::a);
-   }
-
-   @Override
-   public xz<aae> a() {
-      return aac.b;
-   }
-
-   public void a(aad $$0) {
-      $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
+   private static <T extends xz<aaf>> yb<T> b(String $$0) {
+      return new yb<>(ya.a, new ajc($$0));
    }
 }

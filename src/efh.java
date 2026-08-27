@@ -1,157 +1,92 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class efh {
-   private ddo a;
-   private dfe b;
-   private hz c;
-   private boolean d;
-   @Nullable
-   private ebd e;
-   private boolean f;
-   @Nullable
-   private awp g;
-   private int h;
-   private final List<efi> i;
-   private boolean j;
-   private boolean k;
+public class efh extends egd {
+   public static final Codec<efh> a = Codec.FLOAT.fieldOf("mossiness").xmap(efh::new, $$0 -> $$0.f).codec();
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dme[] e = new dme[]{czh.jD.o(), czh.jK.o()};
+   private final float f;
 
-   public efh() {
-      this.a = ddo.a;
-      this.b = dfe.a;
-      this.c = hz.c;
-      this.f = true;
-      this.i = Lists.newArrayList();
-   }
-
-   public efh a() {
-      efh $$0 = new efh();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
-   }
-
-   public efh a(ddo $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public efh a(dfe $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public efh a(hz $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public efh a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public efh a(ebd $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public efh a(@Nullable awp $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public efh b(boolean $$0) {
+   public efh(float $$0) {
       this.f = $$0;
-      return this;
-   }
-
-   public efh c(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public efh b() {
-      this.i.clear();
-      return this;
-   }
-
-   public efh a(efi $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public efh b(efi $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public ddo c() {
-      return this.a;
-   }
-
-   public dfe d() {
-      return this.b;
-   }
-
-   public hz e() {
-      return this.c;
-   }
-
-   public awp b(@Nullable hz $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? awp.a(ac.b()) : awp.a(awi.a($$0));
-      }
-   }
-
-   public boolean f() {
-      return this.d;
    }
 
    @Nullable
-   public ebd g() {
-      return this.e;
+   @Override
+   public egg.c a(cwh $$0, ib $$1, ib $$2, egg.c $$3, egg.c $$4, egc $$5) {
+      awt $$6 = $$5.b($$4.a());
+      dme $$7 = $$4.b();
+      ib $$8 = $$4.a();
+      dme $$9 = null;
+      if ($$7.a(czh.eH) || $$7.a(czh.b) || $$7.a(czh.eK)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(aue.J)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(aue.K)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(aue.L)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(czh.co)) {
+         $$9 = this.d($$6);
+      }
+
+      return $$9 != null ? new egg.c($$8, $$9, $$4.c()) : $$4;
    }
 
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<efi> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public efl.a a(List<efl.a> $$0, @Nullable hz $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
+   @Nullable
+   private dme a(awt $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
       } else {
-         return $$0.get(this.b($$1).a($$2));
+         dme[] $$1 = new dme[]{czh.eJ.o(), a($$0, czh.fj)};
+         dme[] $$2 = new dme[]{czh.eI.o(), a($$0, czh.ng)};
+         return this.a($$0, $$1, $$2);
       }
    }
 
-   public efh d(boolean $$0) {
-      this.k = $$0;
-      return this;
+   @Nullable
+   private dme a(awt $$0, dme $$1) {
+      ih $$2 = $$1.c(dgy.b);
+      dnd $$3 = $$1.c(dgy.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dme[] $$4 = new dme[]{czh.ng.o().a(dgy.b, $$2).a(dgy.c, $$3), czh.nu.o()};
+         return this.a($$0, e, $$4);
+      }
    }
 
-   public boolean k() {
-      return this.k;
+   @Nullable
+   private dme b(awt $$0) {
+      return $$0.i() < this.f ? czh.nu.o() : null;
+   }
+
+   @Nullable
+   private dme c(awt $$0) {
+      return $$0.i() < this.f ? czh.nI.o() : null;
+   }
+
+   @Nullable
+   private dme d(awt $$0) {
+      return $$0.i() < 0.15F ? czh.pk.o() : null;
+   }
+
+   private static dme a(awt $$0, czf $$1) {
+      return $$1.o().a(dgy.b, ih.c.a.a($$0)).a(dgy.c, ac.a(dnd.values(), $$0));
+   }
+
+   private dme a(awt $$0, dme[] $$1, dme[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dme a(awt $$0, dme[] $$1) {
+      return $$1[$$0.a($$1.length)];
+   }
+
+   @Override
+   protected egf<?> a() {
+      return egf.k;
    }
 }

@@ -1,72 +1,43 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-public class ajv {
-   private static final int a = 2;
+public record ajv(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aso d) {
+   private static final String e = "usercache.json";
 
-   private static ajv.b a(ae $$0, boolean $$1) {
-      Optional<ar> $$2 = $$0.c();
-      if ($$2.isEmpty()) {
-         return ajv.b.b;
-      } else if ($$1) {
-         return ajv.b.a;
-      } else {
-         return $$2.get().j() ? ajv.b.b : ajv.b.c;
-      }
+   public static ajv a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      aso $$4 = new aso($$3, new File($$1, "usercache.json"));
+      return new ajv($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   private static boolean a(Stack<ajv.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         ajv.b $$2 = (ajv.b)$$0.peek($$1);
-         if ($$2 == ajv.b.a) {
-            return true;
-         }
-
-         if ($$2 == ajv.b.b) {
-            return false;
-         }
-      }
-
-      return false;
+   @Nullable
+   public awy a() {
+      return awy.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   private static boolean a(ag $$0, Stack<ajv.b> $$1, Predicate<ag> $$2, ajv.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      ajv.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ag $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
-      }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
    }
 
-   public static void a(ag $$0, Predicate<ag> $$1, ajv.a $$2) {
-      ag $$3 = $$0.d();
-      Stack<ajv.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(ajv.b.c);
-      }
-
-      a($$3, $$4, $$1, $$2);
+   public MinecraftSessionService c() {
+      return this.a;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(ag var1, boolean var2);
+   public ServicesKeySet d() {
+      return this.b;
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   public GameProfileRepository e() {
+      return this.c;
+   }
+
+   public aso f() {
+      return this.d;
    }
 }

@@ -1,66 +1,180 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import com.mojang.datafixers.util.Either;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Spliterator;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class ip<T> implements io<T> {
-   private int b;
-   private final Reference2IntMap<T> c;
-   private final List<T> d;
+public interface ip<T> extends Iterable<il<T>> {
+   Stream<il<T>> a();
 
-   public ip() {
-      this(512);
+   int b();
+
+   Either<aut<T>, List<il<T>>> c();
+
+   Optional<il<T>> a(awt var1);
+
+   il<T> a(int var1);
+
+   boolean a(il<T> var1);
+
+   boolean a(io<T> var1);
+
+   Optional<aut<T>> d();
+
+   @Deprecated
+   @VisibleForTesting
+   static <T> ip.c<T> a(io<T> $$0, aut<T> $$1) {
+      return new ip.c<>($$0, $$1);
    }
 
-   public ip(int $$0) {
-      this.d = Lists.newArrayListWithExpectedSize($$0);
-      this.c = new Reference2IntOpenHashMap($$0);
-      this.c.defaultReturnValue(-1);
+   @SafeVarargs
+   static <T> ip.a<T> a(il<T>... $$0) {
+      return new ip.a<>(List.of($$0));
    }
 
-   public void a(T $$0, int $$1) {
-      this.c.put($$0, $$1);
+   static <T> ip.a<T> a(List<? extends il<T>> $$0) {
+      return new ip.a<>(List.copyOf($$0));
+   }
 
-      while (this.d.size() <= $$1) {
-         this.d.add(null);
+   @SafeVarargs
+   static <E, T> ip.a<T> a(Function<E, il<T>> $$0, E... $$1) {
+      return a(Stream.of($$1).map($$0).toList());
+   }
+
+   static <E, T> ip.a<T> a(Function<E, il<T>> $$0, Collection<E> $$1) {
+      return a($$1.stream().map($$0).toList());
+   }
+
+   public static class a<T> extends ip.b<T> {
+      private final List<il<T>> a;
+      @Nullable
+      private Set<il<T>> b;
+
+      a(List<il<T>> $$0) {
+         this.a = $$0;
       }
 
-      this.d.set($$1, $$0);
-      if (this.b <= $$1) {
-         this.b = $$1 + 1;
+      @Override
+      protected List<il<T>> e() {
+         return this.a;
+      }
+
+      @Override
+      public Either<aut<T>, List<il<T>>> c() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public Optional<aut<T>> d() {
+         return Optional.empty();
+      }
+
+      @Override
+      public boolean a(il<T> $$0) {
+         if (this.b == null) {
+            this.b = Set.copyOf(this.a);
+         }
+
+         return this.b.contains($$0);
+      }
+
+      @Override
+      public String toString() {
+         return "DirectSet[" + this.a + "]";
       }
    }
 
-   public void b(T $$0) {
-      this.a($$0, this.b);
+   public abstract static class b<T> implements ip<T> {
+      protected abstract List<il<T>> e();
+
+      @Override
+      public int b() {
+         return this.e().size();
+      }
+
+      @Override
+      public Spliterator<il<T>> spliterator() {
+         return this.e().spliterator();
+      }
+
+      @Override
+      public Iterator<il<T>> iterator() {
+         return this.e().iterator();
+      }
+
+      @Override
+      public Stream<il<T>> a() {
+         return this.e().stream();
+      }
+
+      @Override
+      public Optional<il<T>> a(awt $$0) {
+         return ac.b(this.e(), $$0);
+      }
+
+      @Override
+      public il<T> a(int $$0) {
+         return this.e().get($$0);
+      }
+
+      @Override
+      public boolean a(io<T> $$0) {
+         return true;
+      }
    }
 
-   @Override
-   public int a(T $$0) {
-      return this.c.getInt($$0);
-   }
+   public static class c<T> extends ip.b<T> {
+      private final io<T> a;
+      private final aut<T> b;
+      private List<il<T>> c = List.of();
 
-   @Nullable
-   @Override
-   public final T a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : null;
-   }
+      c(io<T> $$0, aut<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public Iterator<T> iterator() {
-      return Iterators.filter(this.d.iterator(), Objects::nonNull);
-   }
+      void b(List<il<T>> $$0) {
+         this.c = List.copyOf($$0);
+      }
 
-   public boolean c(int $$0) {
-      return this.a($$0) != null;
-   }
+      public aut<T> f() {
+         return this.b;
+      }
 
-   @Override
-   public int b() {
-      return this.c.size();
+      @Override
+      protected List<il<T>> e() {
+         return this.c;
+      }
+
+      @Override
+      public Either<aut<T>, List<il<T>>> c() {
+         return Either.left(this.b);
+      }
+
+      @Override
+      public Optional<aut<T>> d() {
+         return Optional.of(this.b);
+      }
+
+      @Override
+      public boolean a(il<T> $$0) {
+         return $$0.a(this.b);
+      }
+
+      @Override
+      public String toString() {
+         return "NamedSet(" + this.b + ")[" + this.c + "]";
+      }
+
+      @Override
+      public boolean a(io<T> $$0) {
+         return this.a.a($$0);
+      }
    }
 }

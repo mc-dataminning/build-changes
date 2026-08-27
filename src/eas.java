@@ -1,10 +1,23 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eas {
-   public static final Codec<eas> b = kf.U.q().dispatch(eas::b, eat::codec);
+public class eas extends ean {
+   public static final Codec<eas> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bkv.b(ean.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eas::new)
+   );
+   private final bkv<ean> b;
 
-   public abstract Stream<hz> a_(eaq var1, awp var2, hz var3);
+   public eas(bkv<ean> $$0) {
+      this.b = $$0;
+   }
 
-   public abstract eat<?> b();
+   @Override
+   public int a(awt $$0, dsn $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public eao<?> a() {
+      return eao.f;
+   }
 }

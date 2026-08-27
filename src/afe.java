@@ -1,23 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record afe(float b) implements xz<aev> {
+   public static final xq<us, afe> a = xz.a(afe::a, afe::new);
 
-public class afe implements xx<aes> {
-   public static final afe a = new afe();
-   public static final xo<ByteBuf, afe> b = xo.a(a);
+   private afe(us $$0) {
+      this($$0.readFloat());
+   }
 
-   private afe() {
+   private void a(us $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public xz<afe> a() {
-      return aeq.bn;
+   public yb<afe> a() {
+      return aet.bl;
    }
 
-   public void a(aes $$0) {
+   public void a(aev $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

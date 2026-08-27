@@ -1,21 +1,17 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public class dsn {
+   private final int a;
+   private final int b;
 
-public abstract class dsn implements dsc {
-   protected final jd f;
-
-   protected static <P extends dsn> P1<Mu<P>, jd> a(Instance<P> $$0) {
-      return $$0.group(jd.v(16).optionalFieldOf("offset", jd.g).forGetter($$0x -> $$0x.f));
+   public dsn(dob $$0, cwg $$1) {
+      this.a = Math.max($$1.J_(), $$0.f());
+      this.b = Math.min($$1.K_(), $$0.d());
    }
 
-   protected dsn(jd $$0) {
-      this.f = $$0;
+   public int a() {
+      return this.a;
    }
 
-   public final boolean a(cwm $$0, hz $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   public int b() {
+      return this.b;
    }
-
-   protected abstract boolean a(dlj var1);
 }

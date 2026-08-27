@@ -1,54 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ny extends om<dio> {
-   public ny(ko $$0, CompletableFuture<il.b> $$1) {
-      super($$0, kg.d, $$1);
-   }
+public class ny implements nx.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(il.b $$0) {
-      this.b(aty.a)
-         .a(
-            dip.b,
-            dip.c,
-            dip.d,
-            dip.e,
-            dip.f,
-            dip.g,
-            dip.h,
-            dip.i,
-            dip.j,
-            dip.k,
-            dip.l,
-            dip.m,
-            dip.n,
-            dip.o,
-            dip.p,
-            dip.q,
-            dip.r,
-            dip.s,
-            dip.t,
-            dip.u,
-            dip.v,
-            dip.w,
-            dip.x,
-            dip.y,
-            dip.z,
-            dip.A,
-            dip.B,
-            dip.C,
-            dip.D,
-            dip.E,
-            dip.F,
-            dip.G,
-            dip.H,
-            dip.I
-         );
-      this.b(aty.b).a(dip.M);
-      this.b(aty.c).a(dip.K);
-      this.b(aty.d).a(dip.L);
-      this.b(aty.e).a(dip.N);
-      this.b(aty.f).a(dip.J);
-      this.b(aty.g).a(dip.O);
+   public sy apply(String $$0, sy $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static sy a(String $$0, sy $$1) {
+      egg $$2 = new egg();
+      int $$3 = tn.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
+      }
+
+      sy $$5 = axs.f.a(axt.a(), $$1, $$3);
+      $$2.a(kh.e.p(), $$5);
+      return $$2.a(new sy());
    }
 }

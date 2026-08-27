@@ -3,26 +3,26 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class bc {
-   public static final Codec<bc> a = emd.a.listOf().xmap(bc::new, $$0 -> $$0.b);
-   private final List<emb> b;
-   private final Predicate<ejc> c;
+   public static final Codec<bc> a = emz.a.listOf().xmap(bc::new, $$0 -> $$0.b);
+   private final List<emx> b;
+   private final Predicate<ejy> c;
 
-   bc(List<emb> $$0) {
+   bc(List<emx> $$0) {
       this.b = $$0;
-      this.c = emd.a($$0);
+      this.c = ac.a($$0);
    }
 
-   public static bc a(emb... $$0) {
+   public static bc a(emx... $$0) {
       return new bc(List.of($$0));
    }
 
-   public boolean a(ejc $$0) {
+   public boolean a(ejy $$0) {
       return this.c.test($$0);
    }
 
-   public void a(ejl $$0) {
+   public void a(ekh $$0) {
       for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         emb $$2 = this.b.get($$1);
+         emx $$2 = this.b.get($$1);
          $$2.a($$0.a("[" + $$1 + "]"));
       }
    }

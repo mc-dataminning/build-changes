@@ -1,23 +1,34 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class eam extends eas {
-   private static final eam c = new eam();
-   public static final Codec<eam> a = Codec.unit(() -> c);
+public class eam extends ean {
+   public static final eam a = new eam(dsk.a(0));
+   public static final Codec<eam> b = avu.e(dsk.a, dsk.a.fieldOf("value").codec()).xmap(eam::new, eam::b);
+   private final dsk d;
 
-   public static eam a() {
-      return c;
+   public static eam a(dsk $$0) {
+      return new eam($$0);
+   }
+
+   private eam(dsk $$0) {
+      this.d = $$0;
+   }
+
+   public dsk b() {
+      return this.d;
    }
 
    @Override
-   public Stream<hz> a_(eaq $$0, awp $$1, hz $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new hz($$3, $$2.v(), $$4));
+   public int a(awt $$0, dsn $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public eat<?> b() {
-      return eat.m;
+   public eao<?> a() {
+      return eao.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

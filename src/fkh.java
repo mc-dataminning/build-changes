@@ -1,75 +1,71 @@
-import com.mojang.logging.LogUtils;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fkh extends ffl {
-   private static final Logger k = LogUtils.getLogger();
-   public static final drt a = new drt((long)"test1".hashCode(), true, false);
-   protected final ffl b;
-   private ezo l;
-   private ezo m;
-   private ezo n;
-   private ezo o;
-   protected ezx c;
-   private fkm p;
+public class fkh {
+   private final frs a;
+   private final fsa b;
+   private final Predicate<frv.a> c;
+   @Nullable
+   private wn d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private wi g;
 
-   public fkh(ffl $$0) {
-      super(vq.c("selectWorld.title"));
-      this.b = $$0;
+   public fkh(fsg $$0, Predicate<frv.a> $$1) {
+      this.a = $$0.b();
+      this.b = new fsa($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   @Override
-   protected void aQ_() {
-      this.c = new ezx(this.i, this.g / 2 - 100, 22, 200, 20, this.c, vq.c("selectWorld.search"));
-      this.c.b($$0 -> this.p.a($$0));
-      this.d(this.c);
-      this.p = this.c(new fkm(this, this.f, this.g, this.h - 112, 48, 36, this.c.a(), this.p));
-      this.m = this.c(ezo.a(eit.a, $$0 -> this.p.d().ifPresent(fkm.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
-      this.c(ezo.a(vq.c("selectWorld.create"), $$0 -> fkb.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
-      this.n = this.c(ezo.a(vq.c("selectWorld.edit"), $$0 -> this.p.d().ifPresent(fkm.c::f)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
-      this.l = this.c(ezo.a(vq.c("selectWorld.delete"), $$0 -> this.p.d().ifPresent(fkm.c::d)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
-      this.o = this.c(ezo.a(vq.c("selectWorld.recreate"), $$0 -> this.p.d().ifPresent(fkm.c::g)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
-      this.c(ezo.a(vp.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
-      this.a(null);
+   public void a(int $$0, fkh.a $$1) {
+      int $$2 = 0;
+
+      while ($$2 < $$0) {
+         fru $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
+
+         int $$4 = this.e--;
+         if ($$3 instanceof frv.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(vs.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
+
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
+         }
+      }
    }
 
-   @Override
-   protected void aH_() {
-      this.b(this.c);
-   }
+   private boolean a(fkh.a $$0, frv.a $$1) {
+      wi $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(vs.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+         }
 
-   @Override
-   public void d() {
-      this.f.a(this.b);
-   }
-
-   @Override
-   public void a(ezb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable eit $$0) {
-      if ($$0 == null) {
-         this.m.b(eit.a);
-         this.m.j = false;
-         this.n.j = false;
-         this.o.j = false;
-         this.l.j = false;
+         this.d = $$2.k();
+         return true;
       } else {
-         this.m.b($$0.t());
-         this.m.j = $$0.u();
-         this.n.j = $$0.w();
-         this.o.j = $$0.x();
-         this.l.j = $$0.y();
+         return $$3;
       }
    }
 
-   @Override
-   public void k() {
-      if (this.p != null) {
-         this.p.l().forEach(fkm.a::close);
-      }
+   public interface a {
+      void a(int var1, frv.a var2);
+
+      void a(vs var1);
    }
 }

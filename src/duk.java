@@ -1,53 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class duk extends dtc {
-   public duk(Codec<dwf> $$0) {
+public class duk extends duj {
+   public duk(Codec<dxf> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(cvs $$0, awp $$1, hz $$2, int $$3, hz.a $$4, dwf $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   protected boolean a(cwf $$0, awt $$1, ib $$2, dme $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      ib.a $$8 = $$2.j();
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).i($$0, $$4)) {
-                     dlj $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dco.e) && $$17.b(dco.c) && $$17.b(dco.b) && $$17.b(dco.d) && $$17.b(dco.f)) {
-                        $$17 = $$17.a(dco.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .a(dco.e, Boolean.valueOf($$9 < -$$8))
-                           .a(dco.c, Boolean.valueOf($$9 > $$8))
-                           .a(dco.b, Boolean.valueOf($$10 < -$$8))
-                           .a(dco.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ih.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
             }
          }
       }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
+      return true;
    }
 }

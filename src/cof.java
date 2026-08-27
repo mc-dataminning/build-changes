@@ -1,29 +1,14 @@
-public class cof extends coy {
-   public cof(coy.a $$0) {
-      super($$0);
+public class cof extends cnl {
+   public cof(czf $$0, cpl.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean i(cpd $$0) {
-      return true;
-   }
-
-   @Override
-   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
-      cpd $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atl.is, atm.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cio $$4 = new cio($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(atv.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
-
-      return blx.a($$3, $$0.y_());
+   protected boolean a(crx $$0, dme $$1) {
+      cwe $$2 = $$0.q();
+      ib $$3 = $$0.a().c();
+      dme $$4 = $$2.z($$3) ? czh.G.o() : czh.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

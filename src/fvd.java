@@ -1,125 +1,67 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fvd extends fve {
+   private final ib a;
+   private final float b;
+   private final float F;
 
-public class fvd {
-   private static final fvd a = new fvd("") {
-      @Override
-      public void a(exo $$0) {
-      }
-
-      @Override
-      public void a(fvd.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private fvd.b e;
-
-   fvd(String $$0) {
-      this.d = exo.P().p.toPath().resolve($$0);
+   public fvd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dme $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ib.a($$1, $$2, $$3));
    }
 
-   public static fvd a(@Nullable String $$0) {
-      return $$0 == null ? a : new fvd($$0);
+   public fvd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dme $$7, ib $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(eyk.P().ao().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(czh.i)) {
+         int $$9 = eyk.P().av().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   public void a(fvd.c $$0, String $$1, String $$2) {
-      this.e = new fvd.b($$0, $$1, $$2);
+   @Override
+   public fui b() {
+      return fui.a;
    }
 
-   public void a(exo $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.g().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            fvd.a $$2 = new fvd.a(this.e, Instant.now(), $$0.q.j());
-            Codec.list(fvd.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
-      }
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
-   static record a(fvd.b b, Instant c, cvo d) {
-      public static final Codec<fvd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fvd.b.a.forGetter(fvd.a::a), avq.m.fieldOf("lastPlayedTime").forGetter(fvd.a::b), cvo.f.fieldOf("gamemode").forGetter(fvd.a::c))
-               .apply($$0, fvd.a::new)
-      );
-
-      public fvd.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public cvo c() {
-         return this.d;
-      }
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
    }
 
-   static record b(fvd.c b, String c, String d) {
-      public static final MapCodec<fvd.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  fvd.c.d.fieldOf("type").forGetter(fvd.b::a), avq.o.fieldOf("id").forGetter(fvd.b::b), Codec.STRING.fieldOf("name").forGetter(fvd.b::c)
-               )
-               .apply($$0, fvd.b::new)
-      );
-
-      public fvd.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
    }
 
-   public static enum c implements axc {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
 
-      static final Codec<fvd.c> d = axc.a(fvd.c::values);
-      private final String e;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? fwo.a(this.c, this.a) : $$1;
+   }
 
-      private c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+   public static class a implements fuh<jt> {
+      public fue a(jt $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dme $$8 = $$0.b();
+         return !$$8.i() && !$$8.a(czh.bQ) && $$8.z() ? new fvd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

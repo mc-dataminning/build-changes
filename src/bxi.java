@@ -1,32 +1,99 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public enum bxi implements axc {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class bxi extends bvu {
+   private final bvu a;
+   private final int b;
+   private boolean c;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<bxi> n = axc.a(bxi::values);
+   public bxi(int $$0, bvu $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
 
-   private bxi(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public boolean a(bxi $$0) {
+      return this.S_() && $$0.i() < this.i();
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean S_() {
+      return this.a.S_();
+   }
+
+   @Override
+   public void c() {
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public boolean T_() {
+      return this.a.T_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<bvu.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<bvu.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public bvu k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bxi)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

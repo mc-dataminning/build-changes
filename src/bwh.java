@@ -1,125 +1,122 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bwh extends bvs {
-   private final cys g;
-   private final bok h;
-   private int i;
-   private static final int j = 20;
+public abstract class bwh extends bvu {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bpf a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected ib e = ib.c;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
 
-   public bwh(cys $$0, boq $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public bwh(bpf $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
+   }
+
+   public bwh(bpf $$0, double $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(bvu.a.a, bvu.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!this.h.dM().Z().b(cvn.c)) {
-         return false;
-      } else if (this.c > 0) {
+      if (this.c > 0) {
          this.c--;
          return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
       } else {
          this.c = this.a(this.a);
-         return false;
+         return this.n();
       }
    }
 
+   protected int a(bpf $$0) {
+      return b(200 + $$0.ef().a(200));
+   }
+
    @Override
-   public void d() {
-      super.d();
-      this.h.aa = 1.0F;
+   public boolean b() {
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dJ(), this.e);
    }
 
    @Override
    public void c() {
-      super.c();
-      this.i = 0;
+      this.h();
+      this.d = 0;
+      this.j = this.a.ef().a(this.a.ef().a(1200) + 1200) + 1200;
    }
 
-   public void a(cvs $$0, hz $$1) {
+   protected void h() {
+      this.a.N().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
    }
 
-   public void a(cvr $$0, hz $$1) {
+   public double i() {
+      return 1.0;
+   }
+
+   protected ib k() {
+      return this.e.c();
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      super.e();
-      cvr $$0 = this.h.dM();
-      hz $$1 = this.h.dm();
-      hz $$2 = this.a($$1, $$0);
-      awp $$3 = this.h.eh();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            enz $$4 = this.h.dp();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((aow)$$0)
-                  .a(
-                     new jv(jz.Q, new cpd(cpg.qQ)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
+      ib $$0 = this.k();
+      if (!$$0.a(this.a.dh(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.N().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
          }
-
-         if (this.i % 2 == 0) {
-            enz $$6 = this.h.dp();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((cvs)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((aow)$$0).a(jz.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
-      }
-   }
-
-   @Nullable
-   private hz a(hz $$0, cux $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
       } else {
-         hz[] $$2 = new hz[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
-
-         for (hz $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
-         }
-
-         return null;
+         this.k = true;
+         this.d--;
       }
    }
 
-   @Override
-   protected boolean a(cvu $$0, hz $$1) {
-      dnf $$2 = $$0.a(jb.a($$1.u()), jb.a($$1.w()), dnk.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
+   public boolean l() {
+      return this.d % 40 == 0;
    }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      ib $$2 = this.a.dj();
+      ib.a $$3 = new ib.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dJ(), $$3)) {
+                     this.e = $$3;
+                     return true;
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   protected abstract boolean a(cwh var1, ib var2);
 }

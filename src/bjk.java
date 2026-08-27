@@ -1,51 +1,58 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import jdk.jfr.consumer.RecordedEvent;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public final class bjk {
-   private final bjk.a a;
-   private final List<Pair<bjk.b, bjk.a>> b;
-   private final Duration c;
+public class bjk {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
 
-   public bjk(Duration $$0, List<Pair<bjk.b, bjk.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<bjk.a>map(Pair::getSecond).reduce(bjk.a::a).orElseGet(() -> new bjk.a(0L, 0L));
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bjk.a.c)).limit(10L).toList();
+   protected bjk(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
-   }
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
 
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
-   }
+         bjr $$1;
+         try {
+            $$1 = bjq.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
 
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<bjk.b, bjk.a>> e() {
-      return this.b;
-   }
-
-   public static record a(long a, long b) {
-      static final Comparator<bjk.a> c = Comparator.comparing(bjk.a::b).thenComparing(bjk.a::a).reversed();
-
-      bjk.a a(bjk.a $$0) {
-         return new bjk.a(this.a + $$0.a, this.b + $$0.b);
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
       }
    }
 
-   public static record b(String a, String b, String c) {
-      public static bjk.b a(RecordedEvent $$0) {
-         return new bjk.b($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         aje.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         aje.a($$0.get());
+         $$1.printStackTrace(aje.a);
       }
    }
 }

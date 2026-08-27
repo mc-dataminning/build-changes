@@ -1,33 +1,40 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class ded extends dhr {
-   public static final MapCodec<ded> b = b(ded::new);
-   private static final Map<ie, eos> e = Maps.immutableEnumMap(
-      Map.of(
-         ie.c,
-         cys.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ie.d,
-         cys.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ie.f,
-         cys.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ie.e,
-         cys.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class ded extends czf {
+   public static final MapCodec<ded> a = b(ded::new);
+   protected static final epo b = czf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<ded> a() {
-      return b;
+      return a;
    }
 
-   public ded(dli.d $$0) {
-      super(dft.b.h, $$0);
+   public ded(dmd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
-      return e.get($$0.c(d));
+   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return b;
+   }
+
+   @Override
+   protected epo b_(dme $$0, cvk $$1, ib $$2) {
+      return epl.b();
+   }
+
+   @Override
+   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
+      return epl.b();
+   }
+
+   @Override
+   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+      return false;
+   }
+
+   @Override
+   protected float d(dme $$0, cvk $$1, ib $$2) {
+      return 0.2F;
    }
 }

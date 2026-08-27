@@ -1,15 +1,23 @@
-import java.lang.Thread.UncaughtExceptionHandler;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eui implements UncaughtExceptionHandler {
-   private final Logger a;
+public class eui extends euz {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
-   public eui(Logger $$0) {
-      this.a = $$0;
-   }
+   public static eui a(String $$0) {
+      eui $$1 = new eui();
 
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = eww.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 }

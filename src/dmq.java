@@ -1,7 +1,7 @@
-public enum dmq implements axc {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dmq implements axg {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 

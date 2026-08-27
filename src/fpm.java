@@ -1,61 +1,37 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fpm<T extends bof> extends fmw<T> {
+   private final fqf a;
+   private final fqf b;
 
-public final class fpm {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fpn d;
-   private final boolean e;
-   private final fpt f;
-   private final fpt g;
-   private final Set<ie> h;
-
-   protected fpm(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fpn $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<ie> $$13
-   ) {
+   public fpm(fqf $$0) {
       this.a = $$0;
-      this.f = new fpt($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new fpt($$11, $$12);
-      this.h = $$13;
+      this.b = $$0.b("tail");
    }
 
-   public fpj.a a(int $$0, int $$1) {
-      return new fpj.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   public static fql a(fqj $$0) {
+      fqn $$1 = new fqn();
+      fqo $$2 = $$1.a();
+      int $$3 = 19;
+      $$2.a("body", fqk.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fqh.a(0.0F, 19.0F, 0.0F));
+      $$2.a("tail", fqk.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fqh.a(0.0F, 19.0F, 3.0F));
+      $$2.a("right_fin", fqk.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fqh.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fqk.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fqh.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fqk.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fqh.a(0.0F, 16.0F, -3.0F));
+      $$2.a("bottom_fin", fqk.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fqh.a(0.0F, 22.0F, -3.0F));
+      return fql.a($$1, 32, 32);
+   }
+
+   @Override
+   public fqf a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.5F;
+      }
+
+      this.b.f = -$$6 * 0.45F * awm.a(0.6F * $$3);
    }
 }

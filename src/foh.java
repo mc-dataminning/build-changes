@@ -1,70 +1,31 @@
-public class foh<T extends ccm> extends fld<T> {
-   private static final float a = 9.0F;
-   private static final float b = 100.0F;
-   private final fpj f;
-   private final fpj g;
+public class foh extends fpc {
+   private final fqf a;
+   private final fqf b;
+   private final fqf c;
 
-   public foh(fpj $$0) {
-      super(0.5F, 24.0F);
-      this.f = $$0.b("root");
-      this.g = this.f.b("bone").b("body").b("head");
+   public foh(fqf $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static fpp b() {
-      fpr $$0 = new fpr();
-      fps $$1 = $$0.a().a("root", fpo.c(), fpl.a(0.0F, 5.0F, 0.0F));
-      fps $$2 = $$1.a("bone", fpo.c(), fpl.a(0.0F, 0.0F, 0.0F));
-      fps $$3 = $$2.a(
-         "body",
-         fpo.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fpn(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fpn(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fpn(0.0F)),
-         fpl.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", fpo.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", fpo.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", fpo.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", fpo.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", fpo.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", fpo.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpn(0.0F)), fpl.a(7.5F, 10.0F, 15.0F));
-      fps $$4 = $$3.a(
-         "head",
-         fpo.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fpn(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fpn(0.0F)),
-         fpl.a(0.0F, 6.5F, -19.48F)
-      );
-      $$4.a("left_ear", fpo.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fpn(0.0F)), fpl.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", fpo.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fpn(0.0F)), fpl.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", fpo.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fpn(0.0F)), fpl.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", fpo.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fpn(0.0F)), fpl.a(0.0F, 2.5F, -12.5F));
-      return fpp.a($$0, 192, 192);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fpj::c);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.w()) {
-         this.a(eyn.e, $$1, $$2, 9.0F, 100.0F);
-      } else {
-         this.a(eyn.d, $$1, $$2, 9.0F, 100.0F);
-      }
-
-      this.a($$0.bX, eyn.f, $$3);
-      this.a($$0.bW, eyn.c, $$3);
-      this.a($$0.bY, eyn.g, $$3);
-      this.a($$0.bT, eyn.i, $$3);
-      this.a($$0.bU, eyn.b, $$3);
-      if (this.e) {
-         this.a(eyn.a);
-      }
+   public static fqn a() {
+      fqn $$0 = new fqn();
+      foi.a(fqj.a, $$0);
+      return $$0;
    }
 
    @Override
-   public fpj a() {
-      return this.f;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   }
+
+   @Override
+   public void a(etd $$0, eth $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

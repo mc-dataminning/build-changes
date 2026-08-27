@@ -1,29 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class css<T extends crw> implements csj<T> {
-   private final css.a<T> x;
-   private final Codec<T> y;
-   private final xo<vb, T> z;
+public interface css<C extends bme> {
+   Codec<css<?>> h = kh.t.q().dispatch(css::as_, csw::a);
+   xq<vd, css<?>> i = xo.a(ki.Y).b(css::as_, csw::b);
 
-   public css(css.a<T> $$0) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create($$1 -> $$1.group(crv.e.fieldOf("category").orElse(crv.d).forGetter(crw::d)).apply($$1, $$0::create));
-      this.z = xo.a(crv.g, crw::d, $$0::create);
+   boolean a(C var1, cwe var2);
+
+   cpq a(C var1, iy var2);
+
+   boolean a(int var1, int var2);
+
+   cpq a(iy var1);
+
+   default iu<cpq> a(C $$0) {
+      iu<cpq> $$1 = iu.a($$0.b(), cpq.h);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cpl $$3 = $$0.a($$2).d();
+         if ($$3.u()) {
+            $$1.set($$2, new cpq($$3.t()));
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public Codec<T> a() {
-      return this.y;
+   default iu<csp> a() {
+      return iu.a();
    }
 
-   @Override
-   public xo<vb, T> b() {
-      return this.z;
+   default boolean ar_() {
+      return false;
    }
 
-   @FunctionalInterface
-   public interface a<T extends crw> {
-      T create(crv var1);
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cpq g() {
+      return new cpq(czh.cA);
+   }
+
+   csw<?> as_();
+
+   csx<?> e();
+
+   default boolean i() {
+      iu<csp> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

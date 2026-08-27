@@ -1,25 +1,95 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-
-class dsb extends dse {
-   public static final Codec<dsb> a = a(dsb::new);
-
-   public dsb(List<dsc> $$0) {
-      super($$0);
-   }
-
-   public boolean a(cwm $$0, hz $$1) {
-      for (dsc $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
+public class dsb implements cvr {
+   private int a;
 
    @Override
-   public dsd<?> a() {
-      return dsd.i;
+   public int a(apa $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(cwa.K)) {
+         return 0;
+      } else {
+         awt $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Y() / 24000L;
+            if ($$4 < 5L || !$$0.P()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cia $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.P_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dj(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     ib.a $$9 = $$6.dj().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        il<cxd> $$11 = $$0.t($$9);
+                        if ($$11.a(aud.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(drq.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(apa $$0, ib $$1, awt $$2, boolean $$3) {
+      dme $$4 = $$0.a_($$1);
+      if (!cwp.a($$0, $$1, $$4, $$4.u(), bol.aA)) {
+         return false;
+      } else if (!cfh.b(bol.aA, $$0, bpb.p, $$1, $$2)) {
+         return false;
+      } else {
+         cfh $$5 = bol.aA.a((cwe)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gt();
+            }
+
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bpb.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

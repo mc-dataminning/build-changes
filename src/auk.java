@@ -1,12 +1,11 @@
 public class auk {
-   public static final aup<bzo> a = a("acquirable_job_site");
-   public static final aup<bzo> b = a("village");
-   public static final aup<bzo> c = a("bee_home");
+   public static final aut<dqr> a = a("vibrations");
+   public static final aut<dqr> b = a("warden_can_listen");
+   public static final aut<dqr> c = a("shrieker_can_listen");
+   public static final aut<dqr> d = a("ignore_vibrations_sneaking");
+   public static final aut<dqr> e = a("allay_can_listen");
 
-   private auk() {
-   }
-
-   private static aup<bzo> a(String $$0) {
-      return aup.a(kg.U, new aiy($$0));
+   private static aut<dqr> a(String $$0) {
+      return aut.a(ki.B, new ajc($$0));
    }
 }

@@ -1,119 +1,72 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 
-public class bvm extends bvf {
-   public final ccc a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class bvm extends bvu {
+   private static final int a = 40;
+   private static final Predicate<dme> b = dmn.a(czh.bt);
+   private final boz c;
+   private final cwe d;
+   private int e;
 
-   public bvm(ccc $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bvf.a.a));
+   public bvm(boz $$0) {
+      this.c = $$0;
+      this.d = $$0.dJ();
+      this.a(EnumSet.of(bvu.a.a, bvu.a.b, bvu.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.fU() && !this.a.gU()) {
-         List<bnq> $$0 = this.a.dM().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
-            bnw<?> $$1x = $$0x.ai();
-            return $$1x == bnw.al || $$1x == bnw.bc;
-         });
-         ccc $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bnq $$3 : $$0) {
-            ccc $$4 = (ccc)$$3;
-            if ($$4.gU() && !$$4.gT()) {
-               double $$5 = this.a.f($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (bnq $$6 : $$0) {
-               ccc $$7 = (ccc)$$6;
-               if ($$7.fU() && !$$7.gT()) {
-                  double $$8 = this.a.f($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fU() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
+      if (this.c.ef().a(this.c.o_() ? 50 : 1000) != 0) {
          return false;
+      } else {
+         ib $$0 = this.c.dj();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(czh.i);
       }
    }
 
    @Override
-   public boolean b() {
-      if (this.a.gU() && this.a.gV().bx() && this.a(this.a, 0)) {
-         double $$0 = this.a.f(this.a.gV());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public void c() {
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.N().n();
    }
 
    @Override
    public void d() {
-      this.a.gS();
-      this.b = 2.1;
+      this.e = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void e() {
-      if (this.a.gU()) {
-         if (!(this.a.fV() instanceof cdq)) {
-            ccc $$0 = this.a.gV();
-            double $$1 = (double)this.a.e($$0);
-            float $$2 = 2.0F;
-            enz $$3 = new enz($$0.dr() - this.a.dr(), $$0.dt() - this.a.dt(), $$0.dx() - this.a.dx()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.N().a(this.a.dr() + $$3.c, this.a.dt() + $$3.d, this.a.dx() + $$3.e, this.b);
-         }
-      }
-   }
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         ib $$0 = this.c.dj();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.Z().b(cwa.c)) {
+               this.d.b($$0, false);
+            }
 
-   private boolean a(ccc $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gU()) {
-         return $$0.gV().fU() ? true : this.a($$0.gV(), ++$$1);
-      } else {
-         return false;
+            this.c.P();
+         } else {
+            ib $$1 = $$0.d();
+            if (this.d.a_($$1).a(czh.i)) {
+               if (this.d.Z().b(cwa.c)) {
+                  this.d.c(2001, $$1, czf.i(czh.i.o()));
+                  this.d.a($$1, czh.j.o(), 2);
+               }
+
+               this.c.P();
+            }
+         }
       }
    }
 }

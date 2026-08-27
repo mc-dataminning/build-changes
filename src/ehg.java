@@ -1,145 +1,154 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class ehg {
-   private ehj[] a = new ehj[128];
-   private int b;
+public class ehg implements ehj {
+   public static final int b = 1;
+   protected final cwg c;
+   @Nullable
+   private final ehi<?, ?> a;
+   @Nullable
+   private final ehi<?, ?> d;
 
-   public ehj a(ehj $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            ehj[] $$1 = new ehj[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
+   public ehg(doo $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new egz($$0) : null;
+      this.d = $$2 ? new ehk($$0) : null;
+   }
 
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
+   @Override
+   public void a(ib $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
       }
    }
 
-   public void a() {
-      this.b = 0;
+   @Override
+   public boolean L_() {
+      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
    }
 
-   public ehj b() {
-      return this.a[0];
-   }
-
-   public ehj c() {
-      ehj $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
       }
 
-      $$0.d = -1;
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
       return $$0;
    }
 
-   public void b(ehj $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
+   @Override
+   public void a(jd $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
       }
 
-      $$0.d = -1;
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
-   public void a(ehj $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
+   @Override
+   public void a(cvl $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
       }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(cvl $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public ehe a(cwn $$0) {
+      if ($$0 == cwn.b) {
+         return (ehe)(this.a == null ? ehe.a.a : this.a);
+      } else {
+         return (ehe)(this.d == null ? ehe.a.a : this.d);
+      }
+   }
+
+   public String a(cwn $$0, jd $$1) {
+      if ($$0 == cwn.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public ehf.b b(cwn $$0, jd $$1) {
+      if ($$0 == cwn.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
+      }
+
+      return ehf.b.a;
+   }
+
+   public void a(cwn $$0, jd $$1, @Nullable dog $$2) {
+      if ($$0 == cwn.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(cvl $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(ib $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(jd $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.al() + 2;
    }
 
    public int d() {
-      return this.b;
+      return this.c.am() - 1;
    }
 
-   private void a(int $$0) {
-      ehj $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         ehj $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      ehj $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         ehj $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         ehj $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public ehj[] f() {
-      return Arrays.copyOf(this.a, this.b);
+   public int e() {
+      return this.d() + this.c();
    }
 }

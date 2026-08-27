@@ -1,21 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dsm extends dsn {
-   public static final Codec<dsm> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsm::new));
+public record dsm(dso b, dsl c) {
+   public static final Codec<dsm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dso.a.forGetter(dsm::a), dsl.a.forGetter(dsm::b)).apply($$0, $$0.stable(dsm::new))
+   );
 
-   public dsm(jd $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dso $$1, dsl $$2) {
+      return a.encodeStart($$0, new dsm($$1, $$2));
    }
 
-   @Override
-   protected boolean a(dlj $$0) {
-      return $$0.e();
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dso $$1, iy $$2) {
+      return a($$0, $$1, new dsl($$2.d(ki.aO)));
    }
 
-   @Override
-   public dsd<?> a() {
-      return dsd.e;
+   public dso a() {
+      return this.b;
+   }
+
+   public dsl b() {
+      return this.c;
    }
 }

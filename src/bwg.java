@@ -1,129 +1,130 @@
+import com.google.common.collect.Lists;
 import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class bwg<T extends cer & cev & cee> extends bvf {
-   public static final blh a = axh.a(1, 2);
-   private final T b;
-   private bwg.a c = bwg.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bwg extends bvu {
+   protected final bpf a;
+   private final double b;
+   @Nullable
+   private eig c;
+   private ib d;
+   private final boolean e;
+   private final List<ib> f = Lists.newArrayList();
+   private final int g;
+   private final BooleanSupplier h;
 
-   public bwg(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(bvf.a.a, bvf.a.b));
+   public bwg(bpf $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.e = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.a(EnumSet.of(bvu.a.a));
+      if (!bzs.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+      }
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
-   }
+      if (!bzs.a(this.a)) {
+         return false;
+      } else {
+         this.h();
+         if (this.e && this.a.dJ().P()) {
+            return false;
+         } else {
+            apa $$0 = (apa)this.a.dJ();
+            ib $$1 = this.a.dj();
+            if (!$$0.a($$1, 6)) {
+               return false;
+            } else {
+               eov $$2 = bzu.a(this.a, 15, 7, $$2x -> {
+                  if (!$$0.c($$2x)) {
+                     return Double.NEGATIVE_INFINITY;
+                  } else {
+                     Optional<ib> $$3x = $$0.y().d($$0xx -> $$0xx.a(auo.b), this::a, $$2x, 10, caa.b.b);
+                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
+                  }
+               });
+               if ($$2 == null) {
+                  return false;
+               } else {
+                  Optional<ib> $$3 = $$0.y().d($$0x -> $$0x.a(auo.b), this::a, ib.a($$2), 10, caa.b.b);
+                  if ($$3.isEmpty()) {
+                     return false;
+                  } else {
+                     this.d = $$3.get().i();
+                     byh $$4 = (byh)this.a.N();
+                     boolean $$5 = $$4.f();
+                     $$4.b(this.h.getAsBoolean());
+                     this.c = $$4.a(this.d, 0);
+                     $$4.b($$5);
+                     if (this.c == null) {
+                        eov $$6 = bzr.a(this.a, 10, 7, eov.c(this.d), (float) (Math.PI / 2));
+                        if ($$6 == null) {
+                           return false;
+                        }
 
-   private boolean h() {
-      return this.b.b(cpg.vP);
+                        $$4.b(this.h.getAsBoolean());
+                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
+                        $$4.b($$5);
+                        if (this.c == null) {
+                           return false;
+                        }
+                     }
+
+                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
+                        eie $$8 = this.c.a($$7);
+                        ib $$9 = new ib($$8.a, $$8.b + 1, $$8.c);
+                        if (dbl.a(this.a.dJ(), $$9)) {
+                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
+                           break;
+                        }
+                     }
+
+                     return this.c != null;
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.i() && (this.a() || !this.b.N().l()) && this.h();
+      return this.a.N().l() ? false : !this.d.a(this.a.dh(), (double)(this.a.dd() + (float)this.g));
    }
 
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bx();
+   @Override
+   public void c() {
+      this.a.N().a(this.c, this.b);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fn()) {
-         this.b.ft();
-         this.b.b(false);
-         cnl.a(this.b.fp(), false);
+      if (this.a.N().l() || this.d.a(this.a.dh(), (double)this.g)) {
+         this.f.add(this.d);
       }
    }
 
-   @Override
-   public boolean T_() {
+   private boolean a(ib $$0) {
+      for (ib $$1 : this.f) {
+         if (Objects.equals($$0, $$1)) {
+            return false;
+         }
+      }
+
       return true;
    }
 
-   @Override
-   public void e() {
-      boi $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.O().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
-
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.eh());
-            }
-         } else {
-            this.h = 0;
-            this.b.N().n();
-         }
-
-         this.b.I().a($$0, 30.0F, 30.0F);
-         if (this.c == bwg.a.a) {
-            if (!$$4) {
-               this.b.c(cif.a(this.b, cpg.vP));
-               this.c = bwg.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bwg.a.b) {
-            if (!this.b.fn()) {
-               this.c = bwg.a.a;
-            }
-
-            int $$5 = this.b.fr();
-            cpd $$6 = this.b.fp();
-            if ($$5 >= cnl.k($$6)) {
-               this.b.fs();
-               this.c = bwg.a.c;
-               this.g = 20 + this.b.eh().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bwg.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bwg.a.d;
-            }
-         } else if (this.c == bwg.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            cpd $$7 = this.b.b(cif.a(this.b, cpg.vP));
-            cnl.a($$7, false);
-            this.c = bwg.a.a;
-         }
+   private void h() {
+      if (this.f.size() > 15) {
+         this.f.remove(0);
       }
-   }
-
-   private boolean k() {
-      return this.c == bwg.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

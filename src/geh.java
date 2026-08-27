@@ -1,24 +1,28 @@
-public class geh<T extends boi, M extends fnn<T>> extends gfu<T, M> {
-   private final gay a;
+public class geh extends gde<cft, fpi<cft>> {
+   private static final ajc a = new ajc("textures/entity/strider/strider.png");
+   private static final ajc i = new ajc("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public geh(gba.a $$0, gcb<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public geh(gby.a $$0) {
+      super($$0, new fpi<>($$0.a(fqe.bz)), 0.5F);
+      this.a(new ggk<>(this, new fpi<>($$0.a(fqe.bA)), new ajc("textures/entity/strider/strider_saddle.png")));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eP();
+   public ajc a(cft $$0) {
+      return $$0.u() ? i : a;
    }
 
-   @Override
-   protected void a(esh $$0, fvt $$1, int $$2, bnq $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = awi.c($$4 * $$4 + $$6 * $$6);
-      cht $$9 = new cht($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cpd.h);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.M = $$9.dC();
-      $$9.N = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected float b(cft $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(cft $$0, etd $$1, float $$2) {
+      float $$3 = $$0.dX();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cft $$0) {
+      return super.a($$0) || $$0.u();
    }
 }
