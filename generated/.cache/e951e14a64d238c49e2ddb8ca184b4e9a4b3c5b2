@@ -1,4 +1,4 @@
-// 1.20.1 Release Candidate 1	2026-08-28T00:15:19.7134482	vanilla/Advancements
+// 1.20.1	2026-08-28T00:16:58.7919938	vanilla/Advancements
 3f0afe1c3fe524984489c884fd9bda1085fd2fc2 data\minecraft\advancements\husbandry\breed_an_animal.json
 a18c329ec54553c8b0d168d837541d583c3265dc data\minecraft\advancements\adventure\salvage_sherd.json
 331042a4245f4e2a09671d30cbea3166ddc2c045 data\minecraft\advancements\husbandry\plant_any_sniffer_seed.json
@@ -76,9 +76,9 @@ a0a61ca93ce4c7a7ba7cdd9b57016ffd8bc9ebae data\minecraft\advancements\nether\unea
 1ea39d110dddd329745f58224dc0633478f8d1f4 data\minecraft\advancements\adventure\adventuring_time.json
 d0406790324ae10790846d9b9383124c6c150972 data\minecraft\advancements\husbandry\ride_a_boat_with_a_goat.json
 8f0ffb054101a79dfde61976ab9212808bdd37cd data\minecraft\advancements\adventure\trim_with_any_armor_pattern.json
-3e534e53889219aa826645ea639257e3001897cf data\minecraft\advancements\adventure\spyglass_at_parrot.json
-2f0ef3d7f191d8b7aa7bb4a0012035d2d6a051b1 data\minecraft\advancements\adventure\lightning_rod_with_villager_no_fire.json
 f823f55de1ca4cc137b739d5c03505ca8bb72e56 data\minecraft\advancements\husbandry\wax_on.json
+2f0ef3d7f191d8b7aa7bb4a0012035d2d6a051b1 data\minecraft\advancements\adventure\lightning_rod_with_villager_no_fire.json
+3e534e53889219aa826645ea639257e3001897cf data\minecraft\advancements\adventure\spyglass_at_parrot.json
 1f4b21689a058b3bba48acd0f49a9198c315d5c7 data\minecraft\advancements\husbandry\fishy_business.json
 d9aa6100c6700cc818f0db9077c34906993b893e data\minecraft\advancements\story\smelt_iron.json
 c5a2128b2530e977268f4d531e3313b043615d8c data\minecraft\advancements\nether\distract_piglin.json

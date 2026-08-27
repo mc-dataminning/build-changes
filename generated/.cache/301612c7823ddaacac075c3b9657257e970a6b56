@@ -1,4 +1,4 @@
-// 1.20.1 Release Candidate 1	2026-08-28T00:15:19.7195983	vanilla/Model Definitions
+// 1.20.1	2026-08-28T00:16:58.7950136	vanilla/Model Definitions
 85eef47cc497a4ed9c6f57929bcaa6fbf0137caa assets\minecraft\models\block\cherry_trapdoor_open.json
 7f8c744a8192c2170705d5883fb064210e3d2c93 assets\minecraft\models\item\shulker_shell.json
 8c796e9df7e05371423917450a3dea834bdaa2fe assets\minecraft\models\block\light_07.json
@@ -397,8 +397,8 @@ a93d55d211e917094335ad93437659e986b73165 assets\minecraft\models\item\skull_bann
 6b25147098f68ab3720654d214a88e13fecaeff0 assets\minecraft\models\block\stripped_oak_log.json
 47d12c789398dded710e9586cac24eaf1862764b assets\minecraft\blockstates\pink_terracotta.json
 c37961e2bc206e805c7dc7f75b4aa1719700dd89 assets\minecraft\models\block\pink_candle_four_candles.json
-df6a1d6413b8adbd53282510b7a3dd72d6ec2f5a assets\minecraft\models\item\diamond_leggings_copper_trim.json
 01be06ff0669b00336d4db2e7c553300377adf53 assets\minecraft\blockstates\stripped_warped_stem.json
+df6a1d6413b8adbd53282510b7a3dd72d6ec2f5a assets\minecraft\models\item\diamond_leggings_copper_trim.json
 a8c4048147046eb8c2878706a0f67a547a4932bd assets\minecraft\models\block\crimson_slab_top.json
 7d9b9dd458a536627b1e22fe5ecb26ca9cfc8fb2 assets\minecraft\models\block\green_concrete_powder.json
 79d2c258c17cbbb278da477b2ca8132f16cbfca8 assets\minecraft\models\item\iron_boots_gold_trim.json
@@ -694,7 +694,7 @@ ed0bae0bbefebb4fc90bdcc3401ad47ce79eeca1 assets\minecraft\blockstates\bamboo_fen
 ac66b7fa859cb4bbb645bfc9b26d67ebca9d8a64 assets\minecraft\models\block\shroomlight.json
 d6d75dd2ef818a490d5ed038b4445831c28b1157 assets\minecraft\models\block\soul_soil.json
 8b0c7cf2ddc160f2c308e8d30bbaf34ca4311e1e assets\minecraft\models\block\quartz_slab_top.json
-359dacd11ea060578d9fcdd215a2769ff80bfe59 assets\minecraft\blockstates\chiseled_bookshelf.json
+849c6552f212454c012e918e62328bb12ce4eb85 assets\minecraft\blockstates\chiseled_bookshelf.json
 9d6404fc6563e65592e1f86cfa5c76e09b34b54c assets\minecraft\blockstates\flower_pot.json
 9a1b76b291dad794e154a56b35c561b5f4d6d3e1 assets\minecraft\blockstates\carved_pumpkin.json
 cbad9831263ea06ddd9bf265d8de944930115a74 assets\minecraft\models\item\netherite_shovel.json
@@ -2565,8 +2565,8 @@ f7b5c3d785b0a6a97f4f7b583a005679e45a4a79 assets\minecraft\models\block\orange_wo
 8bfaa6e621d2b991b42ad7decfb2b9a65fbee834 assets\minecraft\models\block\andesite_stairs_outer.json
 04a1830ef3458c5d93a25109312d2804b518f5e3 assets\minecraft\models\item\pink_tulip.json
 e614f46aaac225119a1c168893e9cb1fd72b82c1 assets\minecraft\models\block\blue_stained_glass_pane_side_alt.json
-cc8796d200ff428865546445694539103dc5c2e9 assets\minecraft\models\block\dark_oak_fence_side.json
 ff44c0a39b0191b946953575e23e6d3f72818c35 assets\minecraft\models\item\compass_04.json
+cc8796d200ff428865546445694539103dc5c2e9 assets\minecraft\models\block\dark_oak_fence_side.json
 619496a449cae3c2b6dfa4f9f4efaf88b50378e0 assets\minecraft\models\block\prismarine_stairs_outer.json
 9ddf44edc0068f455246e7b609bb8b84f0c5b8d0 assets\minecraft\models\item\white_dye.json
 0e38ba203a55ef66f52f8e957c0fd7c3417885ce assets\minecraft\models\block\potted_wither_rose.json

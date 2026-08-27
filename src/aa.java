@@ -8,13 +8,13 @@ import javax.annotation.Nullable;
 
 public class aa {
    @Deprecated
-   public static final boolean a = true;
+   public static final boolean a = false;
    @Deprecated
-   public static final int b = 3464;
+   public static final int b = 3465;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.1-rc1";
+   public static final String d = "1.20.1";
    @Deprecated
    public static final int e = 763;
    @Deprecated
@@ -176,7 +176,7 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741966;
+      return 763;
    }
 
    public static boolean a(clt $$0) {
