@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "9578fe329bdf486d5f99896749a5f85c94d93b6a",
-      "size": 38539097,
-      "url": "https://piston-data.mojang.com/v1/objects/9578fe329bdf486d5f99896749a5f85c94d93b6a/client.jar"
+      "sha1": "b2fc8a4c04fc5984fe408aba387e316a8784d79b",
+      "size": 38726312,
+      "url": "https://piston-data.mojang.com/v1/objects/b2fc8a4c04fc5984fe408aba387e316a8784d79b/client.jar"
     },
     "server": {
-      "sha1": "e6cefea7bf62cb0cc044794d7ebfe8ea5ee672a3",
-      "size": 60537470,
-      "url": "https://piston-data.mojang.com/v1/objects/e6cefea7bf62cb0cc044794d7ebfe8ea5ee672a3/server.jar"
+      "sha1": "5f2e44493daf3cd4ab757e59921313c9c8d95151",
+      "size": 60634816,
+      "url": "https://piston-data.mojang.com/v1/objects/5f2e44493daf3cd4ab757e59921313c9c8d95151/server.jar"
     }
   },
-  "id": "26.2-snapshot-2",
+  "id": "26.2-snapshot-3",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -503,13 +503,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/text2speech/1.18.11/text2speech-1.18.11.jar",
-          "sha1": "e853a12cdd6ba4f4836e8f4bf3b37844a13482b6",
-          "size": 13842,
-          "url": "https://libraries.minecraft.net/com/mojang/text2speech/1.18.11/text2speech-1.18.11.jar"
+          "path": "com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar",
+          "sha1": "2e517a75c79d34d32de2b5d68422150836c2133e",
+          "size": 14009,
+          "url": "https://libraries.minecraft.net/com/mojang/text2speech/1.19.12/text2speech-1.19.12.jar"
         }
       },
-      "name": "com.mojang:text2speech:1.18.11"
+      "name": "com.mojang:text2speech:1.19.12"
     },
     {
       "downloads": {
@@ -2312,7 +2312,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-04-09T12:26:35+00:00",
-  "time": "2026-04-09T12:26:35+00:00",
+  "releaseTime": "2026-04-14T11:30:34+00:00",
+  "time": "2026-04-14T11:30:34+00:00",
   "type": "snapshot"
 }
