@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "dfd8debabea6621ec0396ecb7bdcc0f868956792",
-      "size": 38113444,
-      "url": "https://piston-data.mojang.com/v1/objects/dfd8debabea6621ec0396ecb7bdcc0f868956792/client.jar"
+      "sha1": "1c6b01af4d8dccc576e9210f8a0d3cf13117e51c",
+      "size": 38113641,
+      "url": "https://piston-data.mojang.com/v1/objects/1c6b01af4d8dccc576e9210f8a0d3cf13117e51c/client.jar"
     },
     "server": {
-      "sha1": "f731aaf0a0f6be00b5aaba1fabbd75ce750e92e4",
-      "size": 60417568,
-      "url": "https://piston-data.mojang.com/v1/objects/f731aaf0a0f6be00b5aaba1fabbd75ce750e92e4/server.jar"
+      "sha1": "5f282bb1d2ca058ef0c31a42be5b9ad69bc9cea3",
+      "size": 60417601,
+      "url": "https://piston-data.mojang.com/v1/objects/5f282bb1d2ca058ef0c31a42be5b9ad69bc9cea3/server.jar"
     }
   },
-  "id": "26.1-pre-3",
+  "id": "26.1-rc-1",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -1888,7 +1888,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-03-17T13:37:33+00:00",
-  "time": "2026-03-17T13:37:33+00:00",
+  "releaseTime": "2026-03-19T14:48:47+00:00",
+  "time": "2026-03-19T14:48:47+00:00",
   "type": "snapshot"
 }
