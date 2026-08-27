@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "8187962186f213385952b4f14b4f0235f532a99b",
-      "size": 38795919,
-      "url": "https://piston-data.mojang.com/v1/objects/8187962186f213385952b4f14b4f0235f532a99b/client.jar"
+      "sha1": "7926cea1792ec1065f006056dbd29d842a58c827",
+      "size": 38861430,
+      "url": "https://piston-data.mojang.com/v1/objects/7926cea1792ec1065f006056dbd29d842a58c827/client.jar"
     },
     "server": {
-      "sha1": "dbcd57afe4cdba19be8c9e658d1e3a176d53a5db",
-      "size": 60662951,
-      "url": "https://piston-data.mojang.com/v1/objects/dbcd57afe4cdba19be8c9e658d1e3a176d53a5db/server.jar"
+      "sha1": "8bdae5a048cd361668da1df06e81c4e590a36064",
+      "size": 60730747,
+      "url": "https://piston-data.mojang.com/v1/objects/8bdae5a048cd361668da1df06e81c4e590a36064/server.jar"
     }
   },
-  "id": "26.2-snapshot-5",
+  "id": "26.2-snapshot-6",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -383,13 +383,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/datafixerupper/9.0.19/datafixerupper-9.0.19.jar",
-          "sha1": "4e91f9712fa1e83231d1501625381b0210a977da",
-          "size": 731440,
-          "url": "https://libraries.minecraft.net/com/mojang/datafixerupper/9.0.19/datafixerupper-9.0.19.jar"
+          "path": "com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar",
+          "sha1": "b6b2ae770c02e0c1eb90f9985b151e9085a38d0b",
+          "size": 753612,
+          "url": "https://libraries.minecraft.net/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar"
         }
       },
-      "name": "com.mojang:datafixerupper:9.0.19"
+      "name": "com.mojang:datafixerupper:10.0.21"
     },
     {
       "downloads": {
@@ -2312,7 +2312,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-04-28T12:41:41+00:00",
-  "time": "2026-04-28T12:41:41+00:00",
+  "releaseTime": "2026-05-05T12:50:56+00:00",
+  "time": "2026-05-05T12:50:56+00:00",
   "type": "snapshot"
 }
