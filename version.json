@@ -164,27 +164,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "fe914f4f60698ca4e494af61b24a94ed1b341a63",
-      "size": 29522539,
-      "url": "https://piston-data.mojang.com/v1/objects/fe914f4f60698ca4e494af61b24a94ed1b341a63/client.jar"
+      "sha1": "815969764933fcd1a8ccb80308f05d0c965d8f06",
+      "size": 29522966,
+      "url": "https://piston-data.mojang.com/v1/objects/815969764933fcd1a8ccb80308f05d0c965d8f06/client.jar"
     },
     "client_mappings": {
-      "sha1": "70ba85a83ea5c486f4228f4d5a9f641832988f85",
-      "size": 10988920,
-      "url": "https://piston-data.mojang.com/v1/objects/70ba85a83ea5c486f4228f4d5a9f641832988f85/client.txt"
+      "sha1": "499800e41153af52223a8d6d184f732e303c0fcd",
+      "size": 10988969,
+      "url": "https://piston-data.mojang.com/v1/objects/499800e41153af52223a8d6d184f732e303c0fcd/client.txt"
     },
     "server": {
-      "sha1": "72716f71dfbc3d026a8577854ebaa69c63eb4474",
-      "size": 57558406,
-      "url": "https://piston-data.mojang.com/v1/objects/72716f71dfbc3d026a8577854ebaa69c63eb4474/server.jar"
+      "sha1": "273c8ffdb3d05f4575376b43d8175716cab1a39f",
+      "size": 57556178,
+      "url": "https://piston-data.mojang.com/v1/objects/273c8ffdb3d05f4575376b43d8175716cab1a39f/server.jar"
     },
     "server_mappings": {
-      "sha1": "2173c09643bee716a2d9c65e67fc45c30a39f5f3",
+      "sha1": "a31b5e5235daad9023072d3478b6fa0f44065548",
       "size": 8186232,
-      "url": "https://piston-data.mojang.com/v1/objects/2173c09643bee716a2d9c65e67fc45c30a39f5f3/server.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/a31b5e5235daad9023072d3478b6fa0f44065548/server.txt"
     }
   },
-  "id": "1.21.7-rc1",
+  "id": "1.21.7-rc2",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -1880,7 +1880,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-06-25T12:41:59+00:00",
-  "time": "2025-06-25T12:41:59+00:00",
+  "releaseTime": "2025-06-26T13:59:20+00:00",
+  "time": "2025-06-26T13:59:20+00:00",
   "type": "snapshot"
 }
