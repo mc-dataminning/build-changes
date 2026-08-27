@@ -1,21 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class dry implements drn {
+public class dry implements drz {
    public static final Codec<dry> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvz.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), dvz.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dry::new)
+      $$0 -> $$0.group(ht.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dry::new)
    );
-   public final ib<dvz> b;
-   public final ib<dvz> c;
+   private final Optional<ht> b;
+   private final boolean c;
 
-   public dry(ib<dvz> $$0, ib<dvz> $$1) {
+   private dry(Optional<ht> $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   public Stream<dow<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public static dry a(ht $$0, boolean $$1) {
+      return new dry(Optional.of($$0), $$1);
+   }
+
+   public static dry a() {
+      return new dry(Optional.empty(), false);
+   }
+
+   public Optional<ht> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

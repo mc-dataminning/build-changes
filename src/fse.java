@@ -1,53 +1,85 @@
-public class fse implements fsh<den> {
-   private final fkb a;
-   private final fkb b;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public fse(fsi.a $$0) {
-      this.a = $$0.a(fka.i);
-      this.b = $$0.a(fka.h);
+public class fse implements geg {
+   private final List<fsf> a;
+
+   public fse(List<fsf> $$0) {
+      this.a = $$0;
    }
 
-   public static fkh b() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("main", fkg.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fkd.a);
-      $$1.a("left_leg", fkg.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fkd.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fkg.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fkd.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fkh.a($$0, 64, 64);
+   public List<fsf> a() {
+      return this.a;
    }
 
-   public static fkh c() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("main", fkg.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fkd.a);
-      $$1.a("left_leg", fkg.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fkd.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fkg.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fkd.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fkh.a($$0, 64, 64);
-   }
-
-   public void a(den $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      gdl $$6 = fqw.p[$$0.d().a()];
-      crs $$7 = $$0.k();
-      if ($$7 != null) {
-         dgw $$8 = $$0.q();
-         cwz.c<? extends den> $$9 = cwz.a(det.y, cum::h, cum::g, cvw.c, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fsk<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cum.b) == dhj.a ? this.a : this.b, $$8.c(cum.aE), $$6, $$10, $$5, false);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.a($$2, $$3, this.a, hx.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, hx.d, $$6, $$4, $$5, true);
+         return $$0 instanceof fse $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
-   private void a(enk $$0, fqh $$1, fkb $$2, hx $$3, gdl $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      eno $$8 = $$4.a($$1, fqp::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<agi> f() {
+      return this.a().stream().map(fsf::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<agi, geg> $$0) {
+      this.a().stream().map(fsf::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gdv a(gdz $$0, Function<gdy, gbu> $$1, ged $$2, agi $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         geh.a $$4 = new geh.a();
+
+         for (fsf $$5 : this.a()) {
+            gdv $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
+   }
+
+   public static class a implements JsonDeserializer<fse> {
+      public fse a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<fsf> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((fsf)$$2.deserialize($$5, fsf.class));
+            }
+         } else {
+            $$3.add((fsf)$$2.deserialize($$0, fsf.class));
+         }
+
+         return new fse($$3);
+      }
    }
 }

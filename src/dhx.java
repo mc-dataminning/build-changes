@@ -1,62 +1,95 @@
-public enum dhx implements aub {
-   a("harp", aqn.qt, dhx.a.a),
-   b("basedrum", aqn.qn, dhx.a.a),
-   c("snare", aqn.qw, dhx.a.a),
-   d("hat", aqn.qu, dhx.a.a),
-   e("bass", aqn.qo, dhx.a.a),
-   f("flute", aqn.qr, dhx.a.a),
-   g("bell", aqn.qp, dhx.a.a),
-   h("guitar", aqn.qs, dhx.a.a),
-   i("chime", aqn.qq, dhx.a.a),
-   j("xylophone", aqn.qx, dhx.a.a),
-   k("iron_xylophone", aqn.qy, dhx.a.a),
-   l("cow_bell", aqn.qz, dhx.a.a),
-   m("didgeridoo", aqn.qA, dhx.a.a),
-   n("bit", aqn.qB, dhx.a.a),
-   o("banjo", aqn.qC, dhx.a.a),
-   p("pling", aqn.qv, dhx.a.a),
-   q("zombie", aqn.qD, dhx.a.b),
-   r("skeleton", aqn.qE, dhx.a.b),
-   s("creeper", aqn.qF, dhx.a.b),
-   t("dragon", aqn.qG, dhx.a.b),
-   u("wither_skeleton", aqn.qH, dhx.a.b),
-   v("piglin", aqn.qI, dhx.a.b),
-   w("custom_head", aqn.yy, dhx.a.c);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-   private final String x;
-   private final ib<aqm> y;
-   private final dhx.a z;
+public record dhx(String r, boolean s, boolean t, dhx.a u, dcm v, aqq w, aqq x, aqq y, aqq z, aqq A, aqq B, aqq C, aqq D) {
+   private static final Map<String, dhx> E = new Object2ObjectArrayMap();
+   public static final Codec<dhx> a = asu.a(dhx::b, E::get);
+   public static final dhx b = a(new dhx("iron", false, false, dhx.a.a, dcm.g, aqr.me, aqr.mf, aqr.mm, aqr.mn, aqr.nx, aqr.ny, aqr.xM, aqr.xN));
+   public static final dhx c = a(new dhx("copper", true, false, dhx.a.a, dcm.g, aqr.fb, aqr.fc, aqr.fi, aqr.fj, aqr.nx, aqr.ny, aqr.xM, aqr.xN));
+   public static final dhx d = a(new dhx("gold", false, false, dhx.a.a, dcm.g, aqr.me, aqr.mf, aqr.mm, aqr.mn, aqr.nx, aqr.ny, aqr.xM, aqr.xN));
+   public static final dhx e = a(new dhx("stone", true, false, dhx.a.b, dcm.f, aqr.me, aqr.mf, aqr.mm, aqr.mn, aqr.xR, aqr.xS, aqr.xM, aqr.xN));
+   public static final dhx f = a(new dhx("polished_blackstone", true, false, dhx.a.b, dcm.f, aqr.me, aqr.mf, aqr.mm, aqr.mn, aqr.xR, aqr.xS, aqr.xM, aqr.xN));
+   public static final dhx g = a(new dhx("oak"));
+   public static final dhx h = a(new dhx("spruce"));
+   public static final dhx i = a(new dhx("birch"));
+   public static final dhx j = a(new dhx("acacia"));
+   public static final dhx k = a(new dhx("cherry", true, true, dhx.a.a, dcm.aU, aqr.dX, aqr.dY, aqr.dZ, aqr.ea, aqr.ed, aqr.ee, aqr.eb, aqr.ec));
+   public static final dhx l = a(new dhx("jungle"));
+   public static final dhx m = a(new dhx("dark_oak"));
+   public static final dhx n = a(new dhx("crimson", true, true, dhx.a.a, dcm.aT, aqr.pz, aqr.pA, aqr.pB, aqr.pC, aqr.pF, aqr.pG, aqr.pD, aqr.pE));
+   public static final dhx o = a(new dhx("warped", true, true, dhx.a.a, dcm.aT, aqr.pz, aqr.pA, aqr.pB, aqr.pC, aqr.pF, aqr.pG, aqr.pD, aqr.pE));
+   public static final dhx p = a(new dhx("mangrove"));
+   public static final dhx q = a(new dhx("bamboo", true, true, dhx.a.a, dcm.aS, aqr.aZ, aqr.ba, aqr.bb, aqr.bc, aqr.bf, aqr.bg, aqr.bd, aqr.be));
 
-   private dhx(String $$0, ib<aqm> $$1, dhx.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   public dhx(String $$0) {
+      this($$0, true, true, dhx.a.a, dcm.b, aqr.Bi, aqr.Bj, aqr.Bk, aqr.Bl, aqr.Bo, aqr.Bp, aqr.Bm, aqr.Bn);
    }
 
-   @Override
-   public String c() {
-      return this.x;
+   private static dhx a(dhx $$0) {
+      E.put($$0.r, $$0);
+      return $$0;
    }
 
-   public ib<aqm> a() {
-      return this.y;
+   public static Stream<dhx> a() {
+      return E.values().stream();
    }
 
-   public boolean b() {
-      return this.z == dhx.a.a;
+   public String b() {
+      return this.r;
+   }
+
+   public boolean c() {
+      return this.s;
    }
 
    public boolean d() {
-      return this.z == dhx.a.c;
+      return this.t;
    }
 
-   public boolean e() {
-      return this.z != dhx.a.a;
+   public dhx.a e() {
+      return this.u;
    }
 
-   static enum a {
+   public dcm f() {
+      return this.v;
+   }
+
+   public aqq g() {
+      return this.w;
+   }
+
+   public aqq h() {
+      return this.x;
+   }
+
+   public aqq i() {
+      return this.y;
+   }
+
+   public aqq j() {
+      return this.z;
+   }
+
+   public aqq k() {
+      return this.A;
+   }
+
+   public aqq l() {
+      return this.B;
+   }
+
+   public aqq m() {
+      return this.C;
+   }
+
+   public aqq n() {
+      return this.D;
+   }
+
+   public static enum a {
       a,
-      b,
-      c;
+      b;
    }
 }

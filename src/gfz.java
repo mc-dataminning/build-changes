@@ -1,33 +1,87 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gfz implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final beu<gfy> b;
-   private final bhj<Runnable> c;
+public class gfz {
+   private final Set<gfz.a> a = Sets.newIdentityHashSet();
+   final els b;
+   final Executor c;
 
-   public gfz(FileChannel $$0, Executor $$1) {
-      this.b = new beu<>(gfy.a, $$0);
-      this.c = bhj.a($$1, "telemetry-event-log");
+   public gfz(els $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public gga a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
+   public CompletableFuture<gfz.a> a(els.c $$0) {
+      CompletableFuture<gfz.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         elr $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gfz.a $$3 = new gfz.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<elr>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gfz.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gfz.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gfz.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      elr b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(elr $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<elr> $$0) {
+         gfz.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
             }
          });
-   }
+      }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+      public void b() {
+         this.c = true;
+         gfz.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

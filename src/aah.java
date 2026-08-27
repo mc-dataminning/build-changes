@@ -11,17 +11,17 @@ public class aah implements wk<yd> {
    private final EnumSet<aah.a> a;
    private final List<aah.b> b;
 
-   public aah(EnumSet<aah.a> $$0, Collection<amb> $$1) {
+   public aah(EnumSet<aah.a> $$0, Collection<amf> $$1) {
       this.a = $$0;
       this.b = $$1.stream().map(aah.b::new).toList();
    }
 
-   public aah(aah.a $$0, amb $$1) {
+   public aah(aah.a $$0, amf $$1) {
       this.a = EnumSet.of($$0);
       this.b = List.of(new aah.b($$1));
    }
 
-   public static aah a(Collection<amb> $$0) {
+   public static aah a(Collection<amf> $$0) {
       EnumSet<aah.a> $$1 = EnumSet.of(aah.a.a, aah.a.b, aah.a.c, aah.a.d, aah.a.e, aah.a.f);
       return new aah($$1, $$0);
    }
@@ -83,7 +83,7 @@ public class aah implements wk<yd> {
          $$0.a($$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(vi.a::a), ($$0, $$1) -> $$0.a($$1.g, vi.a::a)),
-      c(($$0, $$1) -> $$0.e = crp.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = crx.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.n(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = $$1.c(tu::m), ($$0, $$1) -> $$0.a($$1.f(), tu::a));
@@ -105,10 +105,10 @@ public class aah implements wk<yd> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, crp e, @Nullable ur f, @Nullable vi.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, crx e, @Nullable ur f, @Nullable vi.a g) {
 
-      b(amb $$0) {
-         this($$0.cv(), $$0.fR(), true, $$0.c.l(), $$0.e.b(), $$0.L(), x.a($$0.Z(), vi::a));
+      b(amf $$0) {
+         this($$0.cw(), $$0.fS(), true, $$0.c.l(), $$0.e.b(), $$0.N(), x.a($$0.ab(), vi::a));
       }
    }
 
@@ -118,14 +118,14 @@ public class aah implements wk<yd> {
       GameProfile b;
       boolean c;
       int d;
-      crp e;
+      crx e;
       @Nullable
       ur f;
       @Nullable
       vi.a g;
 
       c(UUID $$0) {
-         this.e = crp.e;
+         this.e = crx.e;
          this.a = $$0;
       }
 

@@ -1,24 +1,18 @@
-public class fyt extends fzs<caq, fha<caq>> {
-   private final frb a;
+public class fyt extends fxd<cdn, fka<cdn>> {
+   private static final agi a = new agi("textures/entity/wandering_trader.png");
 
-   public fyt(fxf<caq, fha<caq>> $$0, frb $$1) {
-      super($$0);
-      this.a = $$1;
+   public fyt(fvx.a $$0) {
+      super($$0, new fka<>($$0.a(fkn.bM)), 0.5F);
+      this.a(new fzk<>(this, $$0.f(), $$0.d()));
+      this.a(new fzj<>(this, $$0.d()));
    }
 
-   public void a(enk $$0, fqh $$1, int $$2, caq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dgw $$10 = $$3.ge();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gay.d);
-         $$0.b();
-      }
+   public agi a(cdn $$0) {
+      return a;
+   }
+
+   protected void a(cdn $$0, enw $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

@@ -60,12 +60,12 @@ public record uo(String b, List<uo.a> c, vo d) {
       return this.d;
    }
 
-   public static enum a implements aub {
+   public static enum a implements aug {
       a("sender", ($$0, $$1) -> $$1.b()),
       b("target", ($$0, $$1) -> $$1.c()),
       c("content", ($$0, $$1) -> $$0);
 
-      public static final Codec<uo.a> d = aub.a(uo.a::values);
+      public static final Codec<uo.a> d = aug.a(uo.a::values);
       private final String e;
       private final uo.a.a f;
 

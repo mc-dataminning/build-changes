@@ -1,60 +1,24 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-
-public class cmm extends cmp implements cmv {
-   private final float a;
-   private final Multimap<blz, bmc> b;
-
-   public cmm(cmo $$0, int $$1, float $$2, ckw.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<blz, bmc> $$4 = ImmutableMultimap.builder();
-      $$4.put(bme.c, new bmc(m, "Weapon modifier", (double)this.a, bmc.a.a));
-      $$4.put(bme.e, new bmc(n, "Weapon modifier", (double)$$2, bmc.a.a));
-      this.b = $$4.build();
-   }
-
-   public float h() {
-      return this.a;
+public class cmm extends cle {
+   public cmm(cle.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dgw $$0, crs $$1, ht $$2, cdm $$3) {
-      return !$$3.f();
-   }
-
-   @Override
-   public float a(clb $$0, dgw $$1) {
-      if ($$1.a(cuv.bs)) {
-         return 15.0F;
-      } else {
-         return $$1.a(arc.bD) ? 1.5F : 1.0F;
-      }
-   }
-
-   @Override
-   public boolean a(clb $$0, bky $$1, bky $$2) {
-      $$0.a(1, $$2, $$0x -> $$0x.d(bkn.a));
-      return true;
-   }
-
-   @Override
-   public boolean a(clb $$0, crs $$1, dgw $$2, ht $$3, bky $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, $$0x -> $$0x.d(bkn.a));
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      clj $$3 = $$1.b($$2);
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.xi, aqs.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ceq $$4 = new ceq($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return true;
-   }
+      $$1.b(arb.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public boolean a_(dgw $$0) {
-      return $$0.a(cuv.bs);
-   }
-
-   @Override
-   public Multimap<blz, bmc> a(bkn $$0) {
-      return $$0 == bkn.a ? this.b : super.a($$0);
+      return biy.a($$3, $$0.x_());
    }
 }

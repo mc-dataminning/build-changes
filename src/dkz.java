@@ -1,133 +1,24 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dkz<T extends dkn> {
-   static final Logger a = LogUtils.getLogger();
-   final dkv<T> b;
-   final dkp<T> c;
-   final dks<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final dkw<T> f;
+public interface dkz {
+   int aj();
 
-   public dkz(Class<T> $$0, dkv<T> $$1) {
-      this.c = new dkp<>();
-      this.d = new dks<>($$0, $$0x -> this.e.contains($$0x) ? dla.c : dla.b);
-      this.b = $$1;
-      this.f = new dkx<>(this.c, this.d);
-   }
+   UUID cw();
 
-   public void a(cqz $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dla $$1x = $$0x.a(dla.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::e);
-         }
-      });
-   }
+   ht dn();
 
-   public void b(cqz $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dla $$1x = $$0x.a(dla.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::d);
-         }
-      });
-   }
+   ejp cH();
 
-   public dkw<T> a() {
-      return this.f;
-   }
+   void a(dla var1);
 
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = iu.c($$0.dl());
-      dkr<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new dkz.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dK() || $$2.c().a()) {
-         this.b.e($$0);
-      }
-   }
+   Stream<? extends dkz> cS();
 
-   @auk
-   public int b() {
-      return this.c.b();
-   }
+   Stream<? extends dkz> cT();
 
-   void a(long $$0, dkr<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
+   void b(bkq.c var1);
 
-   @auk
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
+   boolean dL();
 
-   class a implements dko {
-      private final T c;
-      private long d;
-      private dkr<T> e;
-
-      a(T $$0, long $$1, dkr<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         ht $$0 = this.c.dl();
-         long $$1 = iu.c($$0);
-         if ($$1 != this.d) {
-            dla $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dkz.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, iu.a(this.d), $$1});
-            }
-
-            dkz.this.a(this.d, this.e);
-            dkr<T> $$3 = dkz.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            dkz.this.b.a(this.c);
-            if (!this.c.dK()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  dkz.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  dkz.this.b.e(this.c);
-               }
-            }
-         }
-      }
-
-      @Override
-      public void a(bki.c $$0) {
-         if (!this.e.b(this.c)) {
-            dkz.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, iu.a(this.d), $$0});
-         }
-
-         dla $$1 = this.e.c();
-         if ($$1.a() || this.c.dK()) {
-            dkz.this.b.d(this.c);
-         }
-
-         dkz.this.b.b(this.c);
-         dkz.this.b.f(this.c);
-         dkz.this.c.b(this.c);
-         this.c.a(a);
-         dkz.this.a(this.d, this.e);
-      }
-   }
+   boolean dM();
 }

@@ -1,15 +1,17 @@
-public class fvh extends fwq<car, fhb<car>> {
-   private static final agg a = new agg("textures/entity/endermite.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fvh(fvk.a $$0) {
-      super($$0, new fhb<>($$0.a(fka.S)), 0.3F);
+public class fvh<T extends byp> extends fuu<T, fhd<T>> {
+   private static final Map<bku<?>, agi> a = Maps.newHashMap(
+      ImmutableMap.of(bku.w, new agi("textures/entity/horse/donkey.png"), bku.ap, new agi("textures/entity/horse/mule.png"))
+   );
+
+   public fvh(fvx.a $$0, float $$1, fkm $$2) {
+      super($$0, new fhd<>($$0.a($$2)), $$1);
    }
 
-   protected float a(car $$0) {
-      return 180.0F;
-   }
-
-   public agg b(car $$0) {
-      return a;
+   public agi a(T $$0) {
+      return a.get($$0.ai());
    }
 }

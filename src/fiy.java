@@ -1,39 +1,35 @@
-public class fiy extends fiz {
-   private final fkb b;
-   protected final fkb a;
+public class fiy<T extends bkq> extends fhy<T> {
+   private final fko a;
+   private final fko b;
+   private final fko f;
 
-   public fiy(fkb $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fiy(fko $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fkj a() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("head", fkg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkd.a);
-      return $$0;
-   }
-
-   public static fkh b() {
-      fkj $$0 = a();
-      fkk $$1 = $$0.a();
-      $$1.a("head").a("hat", fkg.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fkf(0.25F)), fkd.a);
-      return fkh.a($$0, 64, 64);
-   }
-
-   public static fkh c() {
-      fkj $$0 = a();
-      return fkh.a($$0, 64, 32);
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fkt.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fkq.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fkt.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fkq.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fkt.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fkq.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fkt.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fkq.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fkt.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fkq.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fkt.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fkq.a(1.5F, 22.0F, -1.5F));
+      return fku.a($$0, 32, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public fko a() {
+      return this.a;
    }
 
    @Override
-   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * atm.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * atm.a($$3 * 0.2F);
    }
 }

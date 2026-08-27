@@ -1,12 +1,17 @@
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record gdb(Map<String, gco> d) {
-   public static final Codec<String> a = asq.b(1, 16);
-   public static final Codec<gdb> b = Codec.unboundedMap(a, gco.a).xmap(gdb::new, gdb::a);
-   public static final aoe<gdb> c = aoe.a("language", b);
+public record gdb(String b, String c, boolean d) {
+   public static final Codec<gdb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asu.v.fieldOf("region").forGetter(gdb::b),
+               asu.v.fieldOf("name").forGetter(gdb::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gdb::d)
+            )
+            .apply($$0, gdb::new)
+   );
 
-   public Map<String, gco> a() {
-      return this.d;
+   public ur a() {
+      return ur.b(this.c + " (" + this.b + ")");
    }
 }

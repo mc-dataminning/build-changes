@@ -1,10 +1,26 @@
+import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class dwb extends dwc {
-   @Override
-   public final Stream<ht> a_(dwa $$0, ato $$1, ht $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class dwb extends dwo {
+   public static final Codec<dwb> a = dmn.a.c.fieldOf("step").xmap(dwb::new, $$0 -> $$0.c).codec();
+   private final dmn.a c;
+
+   private dwb(dmn.a $$0) {
+      this.c = $$0;
    }
 
-   protected abstract boolean a(dwa var1, ato var2, ht var3);
+   public static dwb a(dmn.a $$0) {
+      return new dwb($$0);
+   }
+
+   @Override
+   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
+      crh $$3 = new crh($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public dwp<?> b() {
+      return dwp.o;
+   }
 }

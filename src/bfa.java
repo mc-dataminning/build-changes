@@ -1,195 +1,271 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.time.Duration;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.ListIterator;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 
-public class bfa implements bff {
-   private static final long a = Duration.ofMillis(100L).toNanos();
-   private static final Logger c = LogUtils.getLogger();
-   private final List<String> d = Lists.newArrayList();
-   private final LongList e = new LongArrayList();
-   private final Map<String, bfa.a> f = Maps.newHashMap();
-   private final IntSupplier g;
-   private final LongSupplier h;
-   private final long i;
-   private final int j;
-   private String k = "";
-   private boolean l;
-   @Nullable
-   private bfa.a m;
-   private final boolean n;
-   private final Set<Pair<String, bgk>> o = new ObjectArraySet();
+public class bfa {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final String c = ".gz";
+   private final Path d;
+   private final String e;
 
-   public bfa(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
-      this.i = $$0.getAsLong();
-      this.h = $$0;
-      this.j = $$1.getAsInt();
-      this.g = $$1;
-      this.n = $$2;
+   private bfa(Path $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public void a() {
-      if (this.l) {
-         c.error("Profiler tick already started - missing endTick()?");
-      } else {
-         this.l = true;
-         this.k = "";
-         this.d.clear();
-         this.a("root");
-      }
+   public static bfa a(Path $$0, String $$1) throws IOException {
+      Files.createDirectories($$0);
+      return new bfa($$0, $$1);
    }
 
-   @Override
-   public void b() {
-      if (!this.l) {
-         c.error("Profiler tick already ended - missing startTick()?");
-      } else {
-         this.c();
-         this.l = false;
-         if (!this.k.isEmpty()) {
-            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bfg.b(this.k)));
-         }
-      }
-   }
-
-   @Override
-   public void a(String $$0) {
-      if (!this.l) {
-         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
-      } else {
-         if (!this.k.isEmpty()) {
-            this.k = this.k + "\u001e";
-         }
-
-         this.k = this.k + $$0;
-         this.d.add(this.k);
-         this.e.add(ac.c());
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-      this.a($$0.get());
-   }
-
-   @Override
-   public void a(bgk $$0) {
-      this.o.add(Pair.of(this.k, $$0));
-   }
-
-   @Override
-   public void c() {
-      if (!this.l) {
-         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
-      } else if (this.e.isEmpty()) {
-         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         long $$0 = ac.c();
-         long $$1 = this.e.removeLong(this.e.size() - 1);
-         this.d.remove(this.d.size() - 1);
-         long $$2 = $$0 - $$1;
-         bfa.a $$3 = this.f();
-         $$3.c += $$2;
-         $$3.d++;
-         $$3.a = Math.max($$3.a, $$2);
-         $$3.b = Math.min($$3.b, $$2);
-         if (this.n && $$2 > a) {
-            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bfg.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
-         }
-
-         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void b(String $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   private bfa.a f() {
-      if (this.m == null) {
-         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bfa.a());
+   public bfa.d a() throws IOException {
+      bfa.d var2;
+      try (Stream<Path> $$0 = Files.list(this.d)) {
+         var2 = new bfa.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
       }
 
-      return this.m;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-      this.f().e.addTo($$0, (long)$$1);
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-      this.f().e.addTo($$0.get(), (long)$$1);
-   }
-
-   @Override
-   public bfg d() {
-      return new bfd(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
+      return var2;
    }
 
    @Nullable
-   @Override
-   public bfa.a c(String $$0) {
-      return this.f.get($$0);
+   private bfa.b a(Path $$0) {
+      String $$1 = $$0.getFileName().toString();
+      int $$2 = $$1.indexOf(46);
+      if ($$2 == -1) {
+         return null;
+      } else {
+         bfa.c $$3 = bfa.c.a($$1.substring(0, $$2));
+         if ($$3 != null) {
+            String $$4 = $$1.substring($$2);
+            if ($$4.equals(this.e)) {
+               return new bfa.e($$0, $$3);
+            }
+
+            if ($$4.equals(this.e + ".gz")) {
+               return new bfa.a($$0, $$3);
+            }
+         }
+
+         return null;
+      }
    }
 
-   @Override
-   public Set<Pair<String, bgk>> e() {
-      return this.o;
+   static void a(Path $$0, Path $$1) throws IOException {
+      if (Files.exists($$1)) {
+         throw new IOException("Compressed target file already exists: " + $$1);
+      } else {
+         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
+            FileLock $$3 = $$2.tryLock();
+            if ($$3 == null) {
+               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
+            }
+
+            a($$2, $$1);
+            $$2.truncate(0L);
+         }
+
+         Files.delete($$0);
+      }
    }
 
-   public static class a implements bfi {
-      long a = Long.MIN_VALUE;
-      long b = Long.MAX_VALUE;
-      long c;
-      long d;
-      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
+      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
+         byte[] $$3 = new byte[4096];
+         ByteBuffer $$4 = ByteBuffer.wrap($$3);
 
+         while ($$0.read($$4) >= 0) {
+            $$4.flip();
+            $$2.write($$3, 0, $$4.limit());
+            $$4.clear();
+         }
+      }
+   }
+
+   public bfa.e a(LocalDate $$0) throws IOException {
+      int $$1 = 1;
+      Set<bfa.c> $$2 = this.a().c();
+
+      bfa.c $$3;
+      do {
+         $$3 = new bfa.c($$0, $$1++);
+      } while ($$2.contains($$3));
+
+      bfa.e $$4 = new bfa.e(this.d.resolve($$3.b(this.e)), $$3);
+      Files.createFile($$4.c());
+      return $$4;
+   }
+
+   public static record a(Path a, bfa.c b) implements bfa.b {
+      @Nullable
       @Override
-      public long a() {
-         return this.c;
+      public Reader a() throws IOException {
+         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
       }
 
       @Override
-      public long b() {
+      public bfa.a b() {
+         return this;
+      }
+
+      @Override
+      public Path c() {
          return this.a;
       }
 
       @Override
-      public long c() {
-         return this.d;
+      public bfa.c d() {
+         return this.b;
+      }
+   }
+
+   public interface b {
+      Path c();
+
+      bfa.c d();
+
+      @Nullable
+      Reader a() throws IOException;
+
+      bfa.a b() throws IOException;
+   }
+
+   public static record c(LocalDate a, int b) {
+      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
+
+      @Nullable
+      public static bfa.c a(String $$0) {
+         int $$1 = $$0.indexOf("-");
+         if ($$1 == -1) {
+            return null;
+         } else {
+            String $$2 = $$0.substring(0, $$1);
+            String $$3 = $$0.substring($$1 + 1);
+
+            try {
+               return new bfa.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
+            } catch (DateTimeParseException | NumberFormatException var5) {
+               return null;
+            }
+         }
       }
 
       @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.unmodifiable(this.e);
+      public String toString() {
+         return c.format(this.a) + "-" + this.b;
+      }
+
+      public String b(String $$0) {
+         return this + $$0;
+      }
+   }
+
+   public static class d implements Iterable<bfa.b> {
+      private final List<bfa.b> a;
+
+      d(List<bfa.b> $$0) {
+         this.a = new ArrayList<>($$0);
+      }
+
+      public bfa.d a(LocalDate $$0, int $$1) {
+         this.a.removeIf($$2 -> {
+            bfa.c $$3 = $$2.d();
+            LocalDate $$4 = $$3.a().plusDays((long)$$1);
+            if (!$$0.isBefore($$4)) {
+               try {
+                  Files.delete($$2.c());
+                  return true;
+               } catch (IOException var6) {
+                  bfa.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
+               }
+            }
+
+            return false;
+         });
+         return this;
+      }
+
+      public bfa.d a() {
+         ListIterator<bfa.b> $$0 = this.a.listIterator();
+
+         while ($$0.hasNext()) {
+            bfa.b $$1 = $$0.next();
+
+            try {
+               $$0.set($$1.b());
+            } catch (IOException var4) {
+               bfa.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
+            }
+         }
+
+         return this;
+      }
+
+      @Override
+      public Iterator<bfa.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public Stream<bfa.b> b() {
+         return this.a.stream();
+      }
+
+      public Set<bfa.c> c() {
+         return this.a.stream().map(bfa.b::d).collect(Collectors.toSet());
+      }
+   }
+
+   public static record e(Path a, bfa.c b) implements bfa.b {
+      public FileChannel e() throws IOException {
+         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
+      }
+
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
+      }
+
+      @Override
+      public bfa.a b() throws IOException {
+         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
+         bfa.a(this.a, $$0);
+         return new bfa.a($$0, this.b);
+      }
+
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bfa.c d() {
+         return this.b;
       }
    }
 }

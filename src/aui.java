@@ -1,25 +1,28 @@
-public class aui<A, B> {
-   private A a;
-   private B b;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   public aui(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
+@FunctionalInterface
+public interface aui {
+   Logger a = LogUtils.getLogger();
+
+   static aui immediate(final Executor $$0) {
+      return new aui() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
+         }
+      };
    }
 
-   public A a() {
-      return this.a;
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
    }
 
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
-   }
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

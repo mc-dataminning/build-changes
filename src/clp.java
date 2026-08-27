@@ -1,35 +1,19 @@
-public class clp extends cmk {
-   public static final String c = "SkullOwner";
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public clp(cut $$0, cut $$1, ckw.a $$2) {
-      super($$0, $$1, $$2, hx.a);
+public class clp extends cmv {
+   public clp(cle.a $$0) {
+      super($$0);
    }
 
    @Override
-   public ur m(clb $$0) {
-      if ($$0.a(cle.tu) && $$0.u()) {
-         String $$1 = null;
-         rz $$2 = $$0.v();
-         if ($$2.b("SkullOwner", 8)) {
-            $$1 = $$2.l("SkullOwner");
-         } else if ($$2.b("SkullOwner", 10)) {
-            rz $$3 = $$2.p("SkullOwner");
-            if ($$3.b("Name", 8)) {
-               $$1 = $$3.l("Name");
-            }
-         }
-
-         if ($$1 != null) {
-            return ur.a(this.a() + ".named", $$1);
-         }
-      }
-
-      return super.m($$0);
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      cni.a($$0, $$2, 0.25F);
    }
 
    @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      dgc.e($$0);
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.mP, aqs.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

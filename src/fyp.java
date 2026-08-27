@@ -1,17 +1,17 @@
-public class fyp extends fwb<cbu, fju<cbu>> {
-   private static final agg a = new agg("textures/entity/zombie_villager/zombie_villager.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fyp(fvk.a $$0) {
-      super($$0, new fju<>($$0.a(fka.cc)), 0.5F);
-      this.a(new fzi<>(this, new fju($$0.a(fka.cd)), new fju($$0.a(fka.ce)), $$0.g()));
-      this.a(new gad<>(this, $$0.e(), "zombie_villager"));
+public class fyp extends fuu<byq, fia<byq>> {
+   private static final Map<bku<?>, agi> a = Maps.newHashMap(
+      ImmutableMap.of(bku.bq, new agi("textures/entity/horse/horse_zombie.png"), bku.aK, new agi("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public fyp(fvx.a $$0, fkm $$1) {
+      super($$0, new fia<>($$0.a($$1)), 1.0F);
    }
 
-   public agg a(cbu $$0) {
-      return a;
-   }
-
-   protected boolean b(cbu $$0) {
-      return super.a($$0) || $$0.go();
+   public agi a(byq $$0) {
+      return a.get($$0.ai());
    }
 }

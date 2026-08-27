@@ -1,41 +1,36 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dup extends duo {
-   public static final Codec<dup> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dup::new));
+public class dup extends dur {
+   public static final Codec<dup> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dup::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dup(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dup(float $$0) {
+      this.b = $$0;
    }
 
    @Override
    protected dus<?> a() {
-      return dus.d;
+      return dus.c;
    }
 
    @Override
-   public List<dsz.a> a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, int $$3, ht $$4, dsj $$5) {
-      List<dsz.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ati.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ati.a($$8) * (float)$$11);
-            ht $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new dsz.a($$4.b($$9, $$7, $$10), -2, false));
+   public void a(dur.a $$0) {
+      ats $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<ht> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (hx $$3x : hx.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  hx $$4 = $$3x.g();
+                  ht $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cvc.fC.o().a(cwh.c, Integer.valueOf($$1.a(3))).a(cwh.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
-
-      return $$6;
    }
 }

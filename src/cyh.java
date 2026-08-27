@@ -1,73 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class cyh extends cyg implements cuw {
-   protected cyh(dgv.d $$0, hx $$1, ekb $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cyh extends ctv {
+   public static final MapCodec<cyh> c = b(cyh::new);
+
+   @Override
+   public MapCodec<cyh> a() {
+      return c;
+   }
+
+   protected cyh(dhh.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends cyh> a();
+   public dfd a(ht $$0, dhi $$1) {
+      return new dfz($$0, $$1);
+   }
 
-   protected dgw a(dgw $$0, dgw $$1) {
-      return $$1;
+   @Nullable
+   @Override
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return a($$0, $$2, dff.a);
    }
 
    @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected void a(csa $$0, ht $$1, cdu $$2) {
+      dfd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dfz) {
+         $$2.a((bja)$$3);
+         $$2.a(arb.am);
       }
+   }
 
-      cyi $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, ech.c, ech.c.a($$3));
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aqr.jl, aqs.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         hx $$7 = $$0.c(a);
+         hx.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == hx.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == hx.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(js.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(js.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   public clb a(crv $$0, ht $$1, dgw $$2) {
-      return new clb(this.c());
-   }
-
-   @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      Optional<ht> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      Optional<ht> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dgw $$5 = $$0.a_($$4.get());
-         ((cyi)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<ht> a(cqy $$0, ht $$1, cut $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   public boolean a(dgw $$0, cnj $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
-   }
-
-   @Override
-   protected cut b() {
-      return this;
    }
 }

@@ -1,77 +1,116 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-public class fem extends fef<fma.a> {
-   private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final ur v = ur.c("gui.abuseReport.skin.title");
-   private final eya w = eya.d().a(8);
-   private eve x;
-   private eum y;
-   private eum z;
+public class fem {
+   private final ip a;
+   private final List<coq<?>> b;
+   private final boolean c;
+   private final Set<coq<?>> d = Sets.newHashSet();
+   private final Set<coq<?>> e = Sets.newHashSet();
+   private final Set<coq<?>> f = Sets.newHashSet();
 
-   private fem(fah $$0, flz $$1, fma.a $$2) {
-      super(v, $$0, $$1, $$2);
-   }
-
-   public fem(fah $$0, flz $$1, UUID $$2, Supplier<gch> $$3) {
-      this($$0, $$1, new fma.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fem(fah $$0, flz $$1, fma $$2) {
-      this($$0, $$1, new fma.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void aO_() {
-      this.w.c().b();
-      this.w.a(new evt(this.e, this.i));
-      eya $$0 = this.w.a(eya.e().a(8));
-      $$0.c().e();
-      $$0.a(new evm(85, 120, this.f.aO(), this.q.e().a()));
-      eya $$1 = $$0.a(eya.d().a(8));
-      this.z = eum.a(c, $$0x -> this.f.a(new fel(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.C();
-         }))).a(178).a();
-      $$1.a(exs.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.C();
-      });
-      $$1.a(exs.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      eya $$2 = this.w.a(eya.e().a(8));
-      $$2.a(eum.a(uq.k, $$0x -> this.aE_()).a(120).a());
-      this.y = $$2.a(eum.a(a, $$0x -> this.l()).a(120).a());
-      this.w.a($$1x -> {
-         euk var10000 = this.d($$1x);
-      });
-      this.c();
-      this.C();
-   }
-
-   @Override
-   protected void c() {
-      this.w.a();
-      exu.a(this.w, this.s());
-   }
-
-   private void C() {
-      flx $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
+   public fem(ip $$0, List<coq<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
       } else {
-         this.z.b(c);
+         this.c = a($$0, $$1);
+      }
+   }
+
+   private static boolean a(ip $$0, List<coq<?>> $$1) {
+      int $$2 = $$1.size();
+      clj $$3 = $$1.get(0).b().a($$0);
+
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         clj $$5 = $$1.get($$4).b().a($$0);
+         if (!clj.c($$3, $$5)) {
+            return false;
+         }
       }
 
-      flv.b $$1 = this.q.c();
-      this.y.i = $$1 == null;
-      this.y.a(x.a($$1, flv.b::a));
+      return true;
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+   public ip a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(aqu $$0) {
+      for (coq<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
+      }
+   }
+
+   public void a(cdy $$0, int $$1, int $$2, aqu $$3) {
+      for (coq<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(coq<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<coq<?>> e() {
+      return this.b;
+   }
+
+   public List<coq<?>> a(boolean $$0) {
+      List<coq<?>> $$1 = Lists.newArrayList();
+      Set<coq<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (coq<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
+      }
+
+      return $$1;
+   }
+
+   public List<coq<?>> b(boolean $$0) {
+      List<coq<?>> $$1 = Lists.newArrayList();
+
+      for (coq<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean f() {
+      return this.c;
    }
 }

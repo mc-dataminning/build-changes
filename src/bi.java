@@ -8,9 +8,9 @@ public class bi extends cw<bi.a> {
       return new bi.a($$1, $$3, $$4);
    }
 
-   public void a(amb $$0, eji $$1) {
-      eji $$2 = $$0.dj();
-      this.a($$0, $$3 -> $$3.a($$0.x(), $$1, $$2));
+   public void a(amf $$0, eju $$1) {
+      eju $$2 = $$0.dl();
+      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
    }
 
    public static class a extends at {
@@ -43,7 +43,7 @@ public class bi extends cw<bi.a> {
          return $$0;
       }
 
-      public boolean a(ama $$0, eji $$1, eji $$2) {
+      public boolean a(ame $$0, eju $$1, eju $$2) {
          return this.a.isPresent() && !this.a.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.b.isPresent() || this.b.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

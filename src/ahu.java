@@ -1,170 +1,66 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 public class ahu {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> ur.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<du> e = ($$0, $$1) -> dy.b(
-         ((du)$$0.getSource()).m().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<du> f = ($$0, $$1) -> {
-      aoo $$2 = ((du)$$0.getSource()).m().aB();
-      Collection<String> $$3 = $$2.d();
-      cfv $$4 = ((du)$$0.getSource()).w();
-      return dy.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(aol::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("clear.failed.multiple", $$0));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("enable")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
-                                                )
-                                          ))
-                                       .then(
-                                          dv.a("after")
-                                             .then(
-                                                dv.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       dv.a("before")
-                                          .then(
-                                             dv.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(dv.a("last").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(dv.a("first").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  dv.a("disable").then(dv.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", false))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).i()), $$0xx -> true, -1)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
-                     .then(dv.a("available").executes($$0x -> b((du)$$0x.getSource()))))
-                  .then(dv.a("enabled").executes($$0x -> c((du)$$0x.getSource())))
+               ((RequiredArgumentBuilder)dv.a("targets", eg.d()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), $$0xx -> true, -1)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("item", gb.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), gb.a($$0x, "item"), -1)))
+                        .then(
+                           dv.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), gb.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(du $$0, aol $$1, ahu.a $$2) throws CommandSyntaxException {
-      aoo $$3 = $$0.m().aB();
-      List<aol> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> ur.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      aji.a($$4.stream().map(aol::f).collect(Collectors.toList()), $$0);
-      return $$4.size();
-   }
+   private static int a(du $$0, Collection<amf> $$1, Predicate<clj> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-   private static int a(du $$0, aol $$1) {
-      aoo $$2 = $$0.m().aB();
-      List<aol> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> ur.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      aji.a($$3.stream().map(aol::f).collect(Collectors.toList()), $$0);
-      return $$3.size();
-   }
-
-   private static int a(du $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(du $$0) {
-      aoo $$1 = $$0.m().aB();
-      $$1.a();
-      Collection<aol> $$2 = $$1.f();
-      Collection<aol> $$3 = $$1.c();
-      cfv $$4 = $$0.w();
-      List<aol> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> ur.c("commands.datapack.list.available.none"), false);
-      } else {
-         $$0.a(() -> ur.a("commands.datapack.list.available.success", $$5.size(), uu.b($$5, $$0xx -> $$0xx.a(false))), false);
+      for (amf $$5 : $$1) {
+         $$4 += $$5.fT().a($$2, $$3, $$5.bR.q());
+         $$5.bS.d();
+         $$5.bR.a($$5.fT());
       }
 
-      return $$5.size();
-   }
-
-   private static int c(du $$0) {
-      aoo $$1 = $$0.m().aB();
-      $$1.a();
-      Collection<? extends aol> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> ur.c("commands.datapack.list.enabled.none"), false);
-      } else {
-         $$0.a(() -> ur.a("commands.datapack.list.enabled.success", $$2.size(), uu.b($$2, $$0xx -> $$0xx.a(true))), false);
-      }
-
-      return $$2.size();
-   }
-
-   private static aol a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      aoo $$4 = ((du)$$0.getSource()).m().aB();
-      aol $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ad());
          } else {
-            cfv $$7 = ((du)$$0.getSource()).w();
-            cfv $$8 = $$5.d();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, cfx.a($$7, $$8));
-            } else {
-               return $$5;
-            }
+            throw b.create($$1.size());
          }
-      }
-   }
+      } else {
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> ur.a("commands.clear.test.single", $$6, $$1.iterator().next().P_()), true);
+            } else {
+               $$0.a(() -> ur.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> ur.a("commands.clear.success.single", $$6, $$1.iterator().next().P_()), true);
+         } else {
+            $$0.a(() -> ur.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
 
-   interface a {
-      void apply(List<aol> var1, aol var2) throws CommandSyntaxException;
+         return $$4;
+      }
    }
 }

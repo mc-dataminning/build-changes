@@ -1,29 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bof extends bmp<bla> {
-   private final bhv c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public bof(bhv $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(btz.n, bua.b, btz.P, bua.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+public class bof {
+   public static boh<blg> a(float $$0) {
+      return bqj.a((Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$1 -> $$1.group($$1.c(buh.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.g($$3.dn())) {
+                  return false;
+               } else {
+                  Optional<eju> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new buk($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   protected void a(ama $$0, bla $$1, long $$2) {
-      ato $$3 = $$1.ef();
-      float $$4 = ati.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ati.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
-      eji $$6 = eji.a($$4, $$5);
-      $$1.dN().a(btz.n, new bms($$1.bp().e($$6)));
-      $$1.dN().a(btz.P, this.c.a($$3));
+   @Nullable
+   private static eju a(ame $$0, blg $$1) {
+      ats $$2 = $$1.eh();
+      ht $$3 = $$1.dn();
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ht $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return eju.c($$5);
+         }
+      }
+
+      return null;
+   }
+
+   public static boolean a(ame $$0, blg $$1, ht $$2) {
+      return $$0.g($$2) && (double)$$0.a(dmr.a.e, $$2).v() <= $$1.du();
    }
 }

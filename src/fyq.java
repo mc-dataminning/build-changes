@@ -1,24 +1,17 @@
-public class fyq<T extends bky, M extends fih<T>> extends gab<T, M> {
-   private final fvi a;
+public class fyq extends fxd<cbw, fjy> {
+   private static final agi a = new agi("textures/entity/illager/vex.png");
+   private static final agi i = new agi("textures/entity/illager/vex_charging.png");
 
-   public fyq(fvk.a $$0, fwl<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public fyq(fvx.a $$0) {
+      super($$0, new fjy($$0.a(fkn.bI)), 0.3F);
+      this.a(new fzy<>(this, $$0.d()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eN();
+   protected int a(cbw $$0, ht $$1) {
+      return 15;
    }
 
-   @Override
-   protected void a(enk $$0, fqh $$1, int $$2, bki $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = ati.c($$4 * $$4 + $$6 * $$6);
-      cdu $$9 = new cdu($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw());
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dB();
-      $$9.O = $$9.dD();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public agi a(cbw $$0) {
+      return $$0.gg() ? i : a;
    }
 }

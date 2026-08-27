@@ -1,11 +1,12 @@
-public class fxu extends fwq<byb, fjg<byb>> {
-   private static final agg a = new agg("textures/entity/tadpole/tadpole.png");
+public class fxu extends fxd<bxn, fjf<bxn>> {
+   private static final agi a = new agi("textures/entity/sheep/sheep.png");
 
-   public fxu(fvk.a $$0) {
-      super($$0, new fjg<>($$0.a(fka.bz)), 0.14F);
+   public fxu(fvx.a $$0) {
+      super($$0, new fjf<>($$0.a(fkn.bb)), 0.7F);
+      this.a(new gah(this, $$0.f()));
    }
 
-   public agg a(byb $$0) {
+   public agi a(bxn $$0) {
       return a;
    }
 }

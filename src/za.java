@@ -1,8 +1,8 @@
 public class za implements wk<yd> {
-   private final ckw a;
+   private final cle a;
    private final int b;
 
-   public za(ckw $$0, int $$1) {
+   public za(cle $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -22,7 +22,7 @@ public class za implements wk<yd> {
       $$0.a(this);
    }
 
-   public ckw a() {
+   public cle a() {
       return this.a;
    }
 

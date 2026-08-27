@@ -1,22 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dck extends cto implements cuk {
-   public static final MapCodec<dck> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cjp.q.fieldOf("color").forGetter(dck::b), t()).apply($$0, dck::new));
-   private final cjp b;
+public class dck extends cun {
+   public static final MapCodec<dck> c = b(dck::new);
 
    @Override
    public MapCodec<dck> a() {
-      return a;
+      return c;
    }
 
-   public dck(cjp $$0, dgv.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public dck(dhh.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public cjp b() {
-      return this.b;
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return this.a($$0, $$3, $$4) ? this.o() : cvc.a.o();
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return h($$1.a_($$2.d()));
+   }
+
+   public static boolean h(dhi $$0) {
+      return $$0.a(arg.aS);
+   }
+
+   @Override
+   protected boolean f(dhi $$0) {
+      return true;
    }
 }

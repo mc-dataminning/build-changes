@@ -1,47 +1,42 @@
-public class bsp extends brt {
-   private final byi a;
-   private int b;
+import java.util.EnumSet;
 
-   public bsp(byi $$0) {
+public class bsp extends bsb {
+   private final blp a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+
+   public bsp(blp $$0, double $$1) {
       this.a = $$0;
-      this.a($$0);
+      this.e = $$1;
+      this.a(EnumSet.of(bsb.a.a));
    }
 
    @Override
-   public void c() {
-      this.a.gJ();
-      this.h();
-   }
-
-   private void h() {
-      aqm $$0 = this.a.gI();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean a() {
+      if (this.a.fN()) {
+         return false;
+      } else {
+         eju $$0 = bvw.a(this.a, 16, 7, eju.c(this.a.fO()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return false;
+      return !this.a.N().l();
    }
 
    @Override
-   public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.ef().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.eX() && this.a.ef().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(byi $$0) {
-      this.b = -$$0.gP();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 }

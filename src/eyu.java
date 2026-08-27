@@ -1,47 +1,46 @@
-public class eyu extends fah {
-   private static final int a = 90;
-   private final ur b;
-   private evf c = evf.a;
-   private final Runnable k;
-   private final ur l;
-   private final boolean m;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-   public eyu(Runnable $$0, ur $$1, ur $$2) {
-      this($$0, $$1, $$2, uq.k, true);
+public class eyu<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final eyu<?> a = new eyu<>(auo.a, ($$0, $$1) -> {
+   });
+
+   private eyu(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public eyu(Runnable $$0, ur $$1, ur $$2, ur $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public static eyu<?> a(String $$0) {
+      return new eyu<>($$0, Consumer::accept);
    }
 
-   @Override
-   public ur h() {
-      return uq.a(super.h(), this.b);
+   public static eyu<?> a(ur $$0) {
+      return new eyu<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.c = evf.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = ati.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(eum.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   public static eyu<?> a(List<ur> $$0) {
+      return new eyu<>($$0, ($$1, $$2) -> $$0.stream().map(ur::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof eyu<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
    @Override
-   public boolean aD_() {
-      return this.m;
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

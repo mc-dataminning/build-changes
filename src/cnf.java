@@ -1,45 +1,148 @@
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cnf {
-   public static final agf<cne> a = a("quartz");
-   public static final agf<cne> b = a("iron");
-   public static final agf<cne> c = a("netherite");
-   public static final agf<cne> d = a("redstone");
-   public static final agf<cne> e = a("copper");
-   public static final agf<cne> f = a("gold");
-   public static final agf<cne> g = a("emerald");
-   public static final agf<cne> h = a("diamond");
-   public static final agf<cne> i = a("lapis");
-   public static final agf<cne> j = a("amethyst");
+public class cnf extends cle {
+   public static final int a = 16;
+   public static final int b = 32;
+   public static final int c = 1024;
+   public static final int d = 32767;
+   public static final int e = 100;
+   public static final int f = 2;
+   public static final String g = "title";
+   public static final String h = "filtered_title";
+   public static final String i = "author";
+   public static final String j = "pages";
+   public static final String k = "filtered_pages";
+   public static final String r = "generation";
+   public static final String s = "resolved";
 
-   public static void a(ou<cne> $$0) {
-      a($$0, a, cle.nN, vo.a.a(14931140), 0.1F);
-      a($$0, b, cle.nQ, vo.a.a(15527148), 0.2F, Map.of(cin.c, "iron_darker"));
-      a($$0, c, cle.nV, vo.a.a(6445145), 0.3F, Map.of(cin.g, "netherite_darker"));
-      a($$0, d, cle.ll, vo.a.a(9901575), 0.4F);
-      a($$0, e, cle.nS, vo.a.a(11823181), 0.5F);
-      a($$0, f, cle.nU, vo.a.a(14594349), 0.6F, Map.of(cin.d, "gold_darker"));
-      a($$0, g, cle.nL, vo.a.a(1155126), 0.7F);
-      a($$0, h, cle.nK, vo.a.a(7269586), 0.8F, Map.of(cin.e, "diamond_darker"));
-      a($$0, i, cle.nM, vo.a.a(4288151), 0.9F);
-      a($$0, j, cle.nO, vo.a.a(10116294), 1.0F);
+   public cnf(cle.a $$0) {
+      super($$0);
    }
 
-   public static Optional<ib.c<cne>> a(ip $$0, clb $$1) {
-      return $$0.d(jz.aF).h().filter($$1x -> $$1.a(((cne)$$1x.a()).b())).findFirst();
+   public static boolean a(@Nullable rz $$0) {
+      if (!cne.a($$0)) {
+         return false;
+      } else if (!$$0.b("title", 8)) {
+         return false;
+      } else {
+         String $$1 = $$0.l("title");
+         return $$1.length() > 32 ? false : $$0.b("author", 8);
+      }
    }
 
-   private static void a(ou<cne> $$0, agf<cne> $$1, ckw $$2, vo $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public static int d(clj $$0) {
+      return $$0.v().h("generation");
    }
 
-   private static void a(ou<cne> $$0, agf<cne> $$1, ckw $$2, vo $$3, float $$4, Map<cin, String> $$5) {
-      cne $$6 = cne.a($$1.a().a(), $$2, $$4, ur.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   public static int k(clj $$0) {
+      rz $$1 = $$0.v();
+      return $$1 != null ? $$1.c("pages", 8).size() : 0;
    }
 
-   private static agf<cne> a(String $$0) {
-      return agf.a(jz.aF, new agg($$0));
+   @Override
+   public ur m(clj $$0) {
+      rz $$1 = $$0.v();
+      if ($$1 != null) {
+         String $$2 = $$1.l("title");
+         if (!auh.b($$2)) {
+            return ur.b($$2);
+         }
+      }
+
+      return super.m($$0);
+   }
+
+   @Override
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      if ($$0.u()) {
+         rz $$4 = $$0.v();
+         String $$5 = $$4.l("author");
+         if (!auh.b($$5)) {
+            $$2.add(ur.a("book.byAuthor", $$5).a(n.h));
+         }
+
+         $$2.add(ur.c("book.generation." + $$4.h("generation")).a(n.h));
+      }
+   }
+
+   @Override
+   public bix a(cnt $$0) {
+      csa $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dhi $$3 = $$1.a_($$2);
+      if ($$3.a(cvc.oa)) {
+         return czk.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bix.a($$1.B) : bix.d;
+      } else {
+         return bix.d;
+      }
+   }
+
+   @Override
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      clj $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(arb.c.b(this));
+      return biy.a($$3, $$0.x_());
+   }
+
+   public static boolean a(clj $$0, @Nullable du $$1, @Nullable cdu $$2) {
+      rz $$3 = $$0.v();
+      if ($$3 != null && !$$3.q("resolved")) {
+         $$3.a("resolved", true);
+         if (!a($$3)) {
+            return false;
+         } else {
+            sf $$4 = $$3.c("pages", 8);
+            sf $$5 = new sf();
+
+            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+               String $$7 = a($$1, $$2, $$4.j($$6));
+               if ($$7.length() > 32767) {
+                  return false;
+               }
+
+               $$5.c($$6, su.a($$7));
+            }
+
+            if ($$3.b("filtered_pages", 10)) {
+               rz $$8 = $$3.p("filtered_pages");
+               rz $$9 = new rz();
+
+               for (String $$10 : $$8.e()) {
+                  String $$11 = a($$1, $$2, $$8.l($$10));
+                  if ($$11.length() > 32767) {
+                     return false;
+                  }
+
+                  $$9.a($$10, $$11);
+               }
+
+               $$3.a("filtered_pages", $$9);
+            }
+
+            $$3.a("pages", $$5);
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static String a(@Nullable du $$0, @Nullable cdu $$1, String $$2) {
+      ur $$5;
+      try {
+         $$5 = ur.a.b($$2);
+         $$5 = uu.a($$0, $$5, $$1, 0);
+      } catch (Exception var5) {
+         $$5 = ur.b($$2);
+      }
+
+      return ur.a.a($$5);
+   }
+
+   @Override
+   public boolean i(clj $$0) {
+      return true;
    }
 }

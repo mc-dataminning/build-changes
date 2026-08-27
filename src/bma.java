@@ -1,194 +1,128 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class bma {
-   private final blz a;
-   private final Map<bmc.a, Set<bmc>> b = Maps.newEnumMap(bmc.a.class);
-   private final Map<UUID, bmc> c = new Object2ObjectArrayMap();
-   private final Set<bmc> d = new ObjectArraySet();
-   private double e;
-   private boolean f = true;
-   private double g;
-   private final Consumer<bma> h;
+   private static final Map<bku<?>, bma.a> a = Maps.newHashMap();
 
-   public bma(blz $$0, Consumer<bma> $$1) {
-      this.a = $$0;
-      this.h = $$1;
-      this.e = $$0.a();
-   }
-
-   public blz a() {
-      return this.a;
-   }
-
-   public double b() {
-      return this.e;
-   }
-
-   public void a(double $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.d();
+   private static <T extends bli> void a(bku<T> $$0, bma.c $$1, dmr.a $$2, bma.b<T> $$3) {
+      bma.a $$4 = a.put($$0, new bma.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + jy.h.b($$0));
       }
    }
 
-   public Set<bmc> a(bmc.a $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   public static bma.c a(bku<?> $$0) {
+      bma.a $$1 = a.get($$0);
+      return $$1 == null ? bma.c.c : $$1.b;
    }
 
-   public Set<bmc> c() {
-      return ImmutableSet.copyOf(this.c.values());
+   public static dmr.a b(@Nullable bku<?> $$0) {
+      bma.a $$1 = a.get($$0);
+      return $$1 == null ? dmr.a.f : $$1.a;
    }
 
-   @Nullable
-   public bmc a(UUID $$0) {
-      return this.c.get($$0);
+   public static <T extends bkq> boolean a(bku<T> $$0, csp $$1, blk $$2, ht $$3, ats $$4) {
+      bma.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean a(bmc $$0) {
-      return this.c.get($$0.a()) != null;
+   static {
+      a(bku.f, bma.c.b, dmr.a.f, bxy::a);
+      a(bku.r, bma.c.b, dmr.a.f, bxt::c);
+      a(bku.v, bma.c.b, dmr.a.f, bxt::c);
+      a(bku.y, bma.c.b, dmr.a.f, caw::a);
+      a(bku.V, bma.c.b, dmr.a.f, cbe::b);
+      a(bku.aB, bma.c.b, dmr.a.f, bxt::c);
+      a(bku.aE, bma.c.b, dmr.a.f, bxt::c);
+      a(bku.aT, bma.c.b, dmr.a.f, bxt::c);
+      a(bku.bc, bma.c.b, dmr.a.f, bxr::b);
+      a(bku.g, bma.c.a, dmr.a.f, bwm::b);
+      a(bku.i, bma.c.a, dmr.a.f, cbi::c);
+      a(bku.n, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.q, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.t, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.u, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.w, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.E, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.F, bma.c.a, dmr.a.f, caz::b);
+      a(bku.C, bma.c.a, dmr.a.f, bli::a);
+      a(bku.O, bma.c.a, dmr.a.f, byg::c);
+      a(bku.Q, bma.c.a, dmr.a.f, cbc::b);
+      a(bku.R, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.T, bma.c.b, dmr.a.f, bky::a);
+      a(bku.U, bma.c.a, dmr.a.f, bym::c);
+      a(bku.Y, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.Z, bma.c.a, dmr.a.f, cbf::a);
+      a(bku.ac, bma.c.a, dmr.a.f, bli::a);
+      a(bku.aj, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.al, bma.c.a, dmr.a.f, cbh::b);
+      a(bku.ao, bma.c.a, dmr.a.f, bxe::c);
+      a(bku.ap, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.aq, bma.c.a, dmr.a.e, bxf::c);
+      a(bku.at, bma.c.a, dmr.a.e, bxh::c);
+      a(bku.av, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.W, bma.c.a, dmr.a.f, cce::c);
+      a(bku.aw, bma.c.a, dmr.a.f, cck::b);
+      a(bku.ay, bma.c.a, dmr.a.f, cbj::b);
+      a(bku.az, bma.c.a, dmr.a.f, bxj::c);
+      a(bku.aC, bma.c.a, dmr.a.f, bxl::c);
+      a(bku.aF, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.aI, bma.c.a, dmr.a.f, cbp::b);
+      a(bku.aJ, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.aK, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.aL, bma.c.a, dmr.a.f, cbr::c);
+      a(bku.aO, bma.c.a, dmr.a.f, bli::a);
+      a(bku.aS, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.aU, bma.c.a, dmr.a.f, cbu::a);
+      a(bku.aV, bma.c.d, dmr.a.f, cbv::c);
+      a(bku.bd, bma.c.a, dmr.a.f, bxs::c);
+      a(bku.bf, bma.c.a, dmr.a.f, bli::a);
+      a(bku.bj, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.bk, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.bl, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.bn, bma.c.a, dmr.a.f, bxu::c);
+      a(bku.bp, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.bq, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.bs, bma.c.a, dmr.a.f, ccd::b);
+      a(bku.br, bma.c.a, dmr.a.f, cbi::b);
+      a(bku.m, bma.c.a, dmr.a.f, bwr::b);
+      a(bku.A, bma.c.b, dmr.a.f, cbe::b);
+      a(bku.G, bma.c.c, dmr.a.f, cbi::b);
+      a(bku.N, bma.c.c, dmr.a.f, bxb::c);
+      a(bku.aa, bma.c.c, dmr.a.f, cbi::b);
+      a(bku.as, bma.c.c, dmr.a.f, bwr::b);
+      a(bku.au, bma.c.c, dmr.a.f, bli::a);
+      a(bku.aD, bma.c.c, dmr.a.f, cbi::b);
+      a(bku.aG, bma.c.c, dmr.a.f, bli::a);
+      a(bku.ba, bma.c.c, dmr.a.f, bwr::b);
+      a(bku.be, bma.c.c, dmr.a.f, cbi::b);
+      a(bku.bg, bma.c.c, dmr.a.f, cbi::b);
+      a(bku.bh, bma.c.c, dmr.a.f, bli::a);
+      a(bku.bi, bma.c.c, dmr.a.f, bli::a);
    }
 
-   private void d(bmc $$0) {
-      bmc $$1 = this.c.putIfAbsent($$0.a(), $$0);
-      if ($$1 != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      } else {
-         this.a($$0.b()).add($$0);
-         this.d();
+   static class a {
+      final dmr.a a;
+      final bma.c b;
+      final bma.b<?> c;
+
+      public a(dmr.a $$0, bma.c $$1, bma.b<?> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 
-   public void b(bmc $$0) {
-      this.d($$0);
+   @FunctionalInterface
+   public interface b<T extends bkq> {
+      boolean test(bku<T> var1, csp var2, blk var3, ht var4, ats var5);
    }
 
-   public void c(bmc $$0) {
-      this.d($$0);
-      this.d.add($$0);
-   }
-
-   protected void d() {
-      this.f = true;
-      this.h.accept(this);
-   }
-
-   private void e(bmc $$0) {
-      this.a($$0.b()).remove($$0);
-      this.c.remove($$0.a());
-      this.d.remove($$0);
-      this.d();
-   }
-
-   public void b(UUID $$0) {
-      bmc $$1 = this.a($$0);
-      if ($$1 != null) {
-         this.e($$1);
-      }
-   }
-
-   public boolean c(UUID $$0) {
-      bmc $$1 = this.a($$0);
-      if ($$1 != null && this.d.contains($$1)) {
-         this.e($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void e() {
-      for (bmc $$0 : this.c()) {
-         this.e($$0);
-      }
-   }
-
-   public double f() {
-      if (this.f) {
-         this.g = this.h();
-         this.f = false;
-      }
-
-      return this.g;
-   }
-
-   private double h() {
-      double $$0 = this.b();
-
-      for (bmc $$1 : this.b(bmc.a.a)) {
-         $$0 += $$1.c();
-      }
-
-      double $$2 = $$0;
-
-      for (bmc $$3 : this.b(bmc.a.b)) {
-         $$2 += $$0 * $$3.c();
-      }
-
-      for (bmc $$4 : this.b(bmc.a.c)) {
-         $$2 *= 1.0 + $$4.c();
-      }
-
-      return this.a.a($$2);
-   }
-
-   private Collection<bmc> b(bmc.a $$0) {
-      return this.b.getOrDefault($$0, Collections.emptySet());
-   }
-
-   public void a(bma $$0) {
-      this.e = $$0.e;
-      this.c.clear();
-      this.c.putAll($$0.c);
-      this.d.clear();
-      this.d.addAll($$0.d);
-      this.b.clear();
-      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
-      this.d();
-   }
-
-   public rz g() {
-      rz $$0 = new rz();
-      $$0.a("Name", jy.v.b(this.a).toString());
-      $$0.a("Base", this.e);
-      if (!this.d.isEmpty()) {
-         sf $$1 = new sf();
-
-         for (bmc $$2 : this.d) {
-            $$1.add($$2.d());
-         }
-
-         $$0.a("Modifiers", $$1);
-      }
-
-      return $$0;
-   }
-
-   public void a(rz $$0) {
-      this.e = $$0.k("Base");
-      if ($$0.b("Modifiers", 9)) {
-         sf $$1 = $$0.c("Modifiers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            bmc $$3 = bmc.a($$1.a($$2));
-            if ($$3 != null) {
-               this.c.put($$3.a(), $$3);
-               this.a($$3.b()).add($$3);
-               this.d.add($$3);
-            }
-         }
-      }
-
-      this.d();
+   public static enum c {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,49 +1,50 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class duc extends duf {
-   public static final Codec<duc> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(duc::new, $$0 -> $$0.d).codec();
-   private static final hx b = hx.d;
-   private static final hx[] c = hx.c.a.a().filter($$0 -> $$0 != b.g()).toArray(hx[]::new);
-   private final float d;
+public class duc extends due {
+   public static final Codec<duc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ate.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               ebv.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               asu.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, duc::new)
+   );
+   private final ate<Integer> i;
+   private final ebv.a j;
+   private final float k;
+   private final ebv l;
 
-   public duc(float $$0) {
-      this.d = $$0;
+   public duc(ate<Integer> $$0, ebv.a $$1, float $$2, long $$3, ebv.a $$4, float $$5, List<dhi> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = ebv.b(new dnq(new dms($$3)), $$1);
    }
 
    @Override
-   protected dug<?> a() {
-      return dug.d;
+   protected dub<?> a() {
+      return dub.e;
    }
 
    @Override
-   public void a(duf.a $$0) {
-      ato $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<ht> $$2 = $$0.d();
-         List<ht> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<ht> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<ht> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cuv.pe.o().a(cun.b, b));
-               $$0.a().a($$6.get(), det.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   public dhi a(ats $$0, ht $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)atm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dhi> $$4 = Lists.newArrayListWithCapacity($$3);
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     rz $$4x = new rz();
-                     $$4x.a("id", jy.h.b(bkm.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
-         }
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(ht $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

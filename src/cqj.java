@@ -1,20 +1,35 @@
-public class cqj extends cpm {
-   protected cqj(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.g, $$1);
+public class cqj extends cpu {
+   public cqj(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean a(cpm $$0) {
-      return super.a($$0) && $$0 != cpq.x;
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

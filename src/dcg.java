@@ -1,68 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dcg extends cuf {
-   public static final MapCodec<dcg> a = b(dcg::new);
+public class dcg extends ctv {
+   public static final MapCodec<dcg> c = b(dcg::new);
 
    @Override
    public MapCodec<dcg> a() {
-      return a;
+      return c;
    }
 
-   protected dcg(dgv.d $$0) {
+   protected dcg(dhh.d $$0) {
       super($$0);
    }
 
    @Override
-   public der a(ht $$0, dgw $$1) {
-      return new dge($$0, $$1);
+   public dfd a(ht $$0, dhi $$1) {
+      return new dgp($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
-      return a($$2, det.j, $$0.B ? dge::a : dge::b);
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return a($$0, $$2, dff.B);
    }
 
    @Override
-   public void a(dgw $$0, ama $$1, ht $$2, clb $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
+   protected void a(csa $$0, ht $$1, cdu $$2) {
+      dfd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dgp) {
+         $$2.a((bja)$$3);
+         $$2.a(arb.at);
       }
    }
 
    @Override
-   public day b_(dgw $$0) {
-      return day.c;
-   }
-
-   @Override
-   public void a(clb $$0, @Nullable cqy $$1, List<ur> $$2, cms $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<ur> $$4 = this.a($$0);
-      if ($$4.isPresent()) {
-         $$2.add($$4.get());
-      } else {
-         $$2.add(uq.a);
-         $$2.add(ur.c("block.minecraft.spawner.desc1").a(n.h));
-         $$2.add(uq.a().b(ur.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
-   }
-
-   private Optional<ur> a(clb $$0) {
-      rz $$1 = ciu.a($$0);
-      if ($$1 != null && $$1.b("SpawnData", 10)) {
-         String $$2 = $$1.p("SpawnData").p("entity").l("id");
-         agg $$3 = agg.a($$2);
-         if ($$3 != null) {
-            return jy.h.b($$3).map($$0x -> ur.c($$0x.g()).a(n.h));
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aqr.wS, aqs.e, 1.0F, 1.0F, false);
          }
-      }
 
-      return Optional.empty();
+         $$1.a(js.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

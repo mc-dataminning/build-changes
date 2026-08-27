@@ -94,7 +94,7 @@ public class vx implements us {
    }
 
    @Override
-   public vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+   public vf a(@Nullable du $$0, @Nullable bkq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

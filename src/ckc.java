@@ -1,44 +1,24 @@
-import javax.annotation.Nullable;
-
-public interface ckc extends cmv {
-   bkn g();
-
-   default aqm ar_() {
-      return aqn.af;
+public class ckc extends cle {
+   public ckc(cle.a $$0) {
+      super($$0);
    }
 
-   default bir<clb> a(ckw $$0, crs $$1, cdm $$2, bip $$3) {
-      clb $$4 = $$2.b($$3);
-      bkn $$5 = bla.h($$4);
-      clb $$6 = $$2.c($$5);
-      if ((!cpo.d($$6) || $$2.f()) && !clb.a($$4, $$6)) {
-         if (!$$1.x_()) {
-            $$2.b(aqx.c.b($$0));
-         }
-
-         clb $$7 = $$6.b() ? $$4 : $$6.c();
-         clb $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bir.a($$7, $$1.x_());
-      } else {
-         return bir.d($$4);
+   @Override
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      clj $$3 = $$1.b($$2);
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.ha, aqs.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ceu $$4 = new ceu($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Nullable
-   static ckc c_(clb $$0) {
-      ckw $$3 = $$0.d();
-      if ($$3 instanceof ckc) {
-         return (ckc)$$3;
-      } else {
-         if ($$0.d() instanceof ciu $$2) {
-            cut var6 = $$2.e();
-            if (var6 instanceof ckc) {
-               return (ckc)var6;
-            }
-         }
-
-         return null;
+      $$1.b(arb.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
       }
+
+      return biy.a($$3, $$0.x_());
    }
 }

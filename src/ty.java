@@ -40,7 +40,7 @@ public class ty extends MessageToByteEncoder<wk<?>> {
                   throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
                }
 
-               bfn.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
+               bfu.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
             } catch (Throwable var13) {
                a.error("Error receiving packet {}", $$5, var13);
                if ($$1.b()) {

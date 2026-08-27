@@ -1,25 +1,78 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public interface dwd<P extends dwc> {
-   dwd<dvo> a = a("block_predicate_filter", dvo.a);
-   dwd<dwf> b = a("rarity_filter", dwf.a);
-   dwd<dwh> c = a("surface_relative_threshold_filter", dwh.a);
-   dwd<dwi> d = a("surface_water_depth_filter", dwi.a);
-   dwd<dvn> e = a("biome", dvn.a);
-   dwd<dvs> f = a("count", dvs.a);
-   dwd<dvx> g = a("noise_based_count", dvx.a);
-   dwd<dvy> h = a("noise_threshold_count", dvy.a);
-   dwd<dvr> i = a("count_on_every_layer", dvr.a);
-   dwd<dvt> j = a("environment_scan", dvt.a);
-   dwd<dvv> k = a("heightmap", dvv.a);
-   dwd<dvu> l = a("height_range", dvu.a);
-   dwd<dvw> m = a("in_square", dvw.a);
-   dwd<dwe> n = a("random_offset", dwe.a);
-   dwd<dvp> o = a("carving_mask", dvp.a);
+@Deprecated
+public class dwd extends dwo {
+   public static final Codec<dwd> a = bic.b(0, 256).fieldOf("count").xmap(dwd::new, $$0 -> $$0.c).codec();
+   private final bic c;
 
-   Codec<P> codec();
+   private dwd(bic $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends dwc> dwd<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.V, $$0, () -> $$1);
+   public static dwd a(bic $$0) {
+      return new dwd($$0);
+   }
+
+   public static dwd a(int $$0) {
+      return a(bhz.a($$0));
+   }
+
+   @Override
+   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
+      Builder<ht> $$3 = Stream.builder();
+      int $$4 = 0;
+
+      boolean $$5;
+      do {
+         $$5 = false;
+
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(dmr.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new ht($$7, $$10, $$8));
+               $$5 = true;
+            }
+         }
+
+         $$4++;
+      } while ($$5);
+
+      return $$3.build();
+   }
+
+   @Override
+   public dwp<?> b() {
+      return dwp.i;
+   }
+
+   private static int a(dwm $$0, int $$1, int $$2, int $$3, int $$4) {
+      ht.a $$5 = new ht.a($$1, $$2, $$3);
+      int $$6 = 0;
+      dhi $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         dhi $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(cvc.F)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   private static boolean a(dhi $$0) {
+      return $$0.i() || $$0.a(cvc.G) || $$0.a(cvc.H);
    }
 }

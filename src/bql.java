@@ -1,21 +1,53 @@
-import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
 import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bql {
-   public static <E extends ccq> bmq<E> a(Function<E, Optional<? extends bky>> $$0) {
-      return bqb.a(
-         (Function<bqb.b<E>, ? extends App<bqb.c<E>, bqe<E>>>)($$1 -> $$1.group($$1.c(btz.ax), $$1.c(btz.o), $$1.a(btz.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bky> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::a).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public interface bql<F extends K1, Value> {
+   buh<Value> a();
+
+   bui b();
+
+   @Nullable
+   bqk<F, Value> a(bmg<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(buh<Value> a) implements bql<Mu<Unit>, Value> {
+      @Override
+      public bui b() {
+         return bui.b;
+      }
+
+      @Override
+      public bqk<Mu<Unit>, Value> a(bmg<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new bqk<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
+   }
+
+   public static record b<Value>(buh<Value> a) implements bql<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public bui b() {
+         return bui.a;
+      }
+
+      @Override
+      public bqk<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bmg<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new bqk<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(buh<Value> a) implements bql<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public bui b() {
+         return bui.c;
+      }
+
+      @Override
+      public bqk<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bmg<?> $$0, Optional<Value> $$1) {
+         return new bqk<>($$0, this.a, OptionalBox.create($$1));
+      }
    }
 }

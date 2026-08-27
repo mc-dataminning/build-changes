@@ -5,11 +5,11 @@ public class yf implements wk<yd> {
    private final double d;
    private final int e;
 
-   public yf(bko $$0) {
-      this.a = $$0.ah();
-      this.b = $$0.dq();
-      this.c = $$0.ds();
-      this.d = $$0.dw();
+   public yf(bkw $$0) {
+      this.a = $$0.aj();
+      this.b = $$0.ds();
+      this.c = $$0.du();
+      this.d = $$0.dy();
       this.e = $$0.q();
    }
 

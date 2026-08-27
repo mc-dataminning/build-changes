@@ -1,93 +1,42 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-public class enl extends enj {
-   private final eno f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class enl {
+   private static final Logger a = LogUtils.getLogger();
 
-   public enl(eno $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1).invert();
-      this.h = new Matrix3f($$2).invert();
-      this.i = $$3;
-      this.a();
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   public static void a(enm $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      hx $$1 = hx.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+      } else {
+         return $$0;
+      }
    }
 
-   @Override
-   public eno a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
-   }
-
-   @Override
-   public eno a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
-   }
-
-   @Override
-   public eno a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public eno a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
-
-   @Override
-   public eno b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
-
-   @Override
-   public eno a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public static void b(enm $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+      }
    }
 }

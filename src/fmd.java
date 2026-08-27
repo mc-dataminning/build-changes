@@ -1,77 +1,85 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class fmd implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<fmd.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
-
-   public void a(ht $$0, dgw $$1, fpj $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fmd.a(this.b, $$1, $$2.dj()));
+public interface fmd {
+   static fmd a(fmj $$0, UserApiService $$1) {
+      return new fmd.b($$0, $$1);
    }
 
-   public boolean a(ht $$0, dgw $$1) {
-      fmd.a $$2 = (fmd.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
+   CompletableFuture<Unit> a(UUID var1, fml var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends vr {
+      public a(ur $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   public void a(int $$0, fkw $$1) {
-      ObjectIterator<Entry<fmd.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+   public static record b(fmj a, UserApiService b) implements fmd {
+      private static final ur c = ur.c("gui.abuseReport.send.service_unavailable");
+      private static final ur d = ur.c("gui.abuseReport.send.http_error");
+      private static final ur e = ur.c("gui.abuseReport.send.json_error");
 
-      while ($$2.hasNext()) {
-         Entry<fmd.a> $$3 = (Entry<fmd.a>)$$2.next();
-         fmd.a $$4 = (fmd.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            ht $$5 = ht.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
-   }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fml $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-   public fmd a() {
-      this.b++;
-      this.c = true;
-      return this;
-   }
-
-   @Override
-   public void close() {
-      this.c = false;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final eji a;
-      int b;
-      dgw c;
-
-      a(int $$0, dgw $$1, eji $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               ur $$5 = this.a(var7);
+               throw new CompletionException(new fmd.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               ur $$7 = this.a(var8);
+               throw new CompletionException(new fmd.a($$7, var8));
+            }
+         }, ac.g());
       }
 
-      fmd.a a(int $$0) {
-         this.b = $$0;
-         return this;
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      void a(dgw $$0) {
-         this.c = $$0;
+      private ur a(MinecraftClientHttpException $$0) {
+         return ur.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private ur a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fmj c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

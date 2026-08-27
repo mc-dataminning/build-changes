@@ -1,21 +1,54 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class boj {
-   public static bmq<bky> a() {
-      return bqb.a((Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$0 -> $$0.a((bqe<bky>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bly<?> $$3 = $$1.dN();
-               cet $$4 = $$0x.c($$1.dl());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(cex.b);
-                  $$3.a($$0x.W(), $$0x.V());
-               }
+   public static bmy<cdh> a() {
+      return bqj.a(
+         (Function<bqj.b<cdh>, ? extends App<bqj.c<cdh>, bqm<cdh>>>)($$0 -> $$0.group($$0.b(buh.c), $$0.b(buh.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ia $$6 = $$0.b($$1);
+                        $$3.x()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<blg>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cdh && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cdh)$$0xxxx)
+                                    .filter(blg::bx)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, boj::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
+   }
 
-               return true;
-            }
-         }))));
+   private static cdh a(cdh $$0, cdh $$1) {
+      cdh $$2;
+      cdh $$3;
+      if ($$0.w() > $$1.w()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.dP().b(buh.c);
+      return $$2;
+   }
+
+   private static boolean a(ia $$0, ib<bwi> $$1, cdh $$2) {
+      Optional<ia> $$3 = $$2.dP().c(buh.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gq().b());
+   }
+
+   private static boolean a(ib<bwi> $$0, cdk $$1) {
+      return $$1.b().test($$0);
    }
 }

@@ -1,9 +1,9 @@
-public record jb(ama a, ht b, dgw c, dfj d) {
-   public eji a() {
+public record jb(ame a, ht b, dhi c, dfv d) {
+   public eju a() {
       return this.b.b();
    }
 
-   public ama b() {
+   public ame b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record jb(ama a, ht b, dgw c, dfj d) {
       return this.b;
    }
 
-   public dgw d() {
+   public dhi d() {
       return this.c;
    }
 
-   public dfj e() {
+   public dfv e() {
       return this.d;
    }
 }

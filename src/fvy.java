@@ -1,120 +1,179 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class fvy extends fwq<caw, fhj> {
-   private static final agg a = new agg("textures/entity/guardian.png");
-   private static final agg i = new agg("textures/entity/guardian_beam.png");
-   private static final fqp j = fqp.e(i);
+public class fvy {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bku<?>, fvx<?>> b = new Object2ObjectOpenHashMap();
+   private static final Map<gcu.a, fvx<fpt>> c = Map.of(gcu.a.b, $$0 -> new gax($$0, false), gcu.a.a, $$0 -> new gax($$0, true));
 
-   public fvy(fvk.a $$0) {
-      this($$0, 0.5F, fka.ag);
+   private static <T extends bkq> void a(bku<? extends T> $$0, fvx<T> $$1) {
+      b.put($$0, $$1);
    }
 
-   protected fvy(fvk.a $$0, float $$1, fjz $$2) {
-      super($$0, new fhj($$0.a($$2)), $$1);
-   }
-
-   public boolean a(caw $$0, ftj $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         if ($$0.gg()) {
-            bky $$5 = $$0.gh();
-            if ($$5 != null) {
-               eji $$6 = this.a($$5, (double)$$5.dg() * 0.5, 1.0F);
-               eji $$7 = this.a($$0, (double)$$0.cH(), 1.0F);
-               return $$1.a(new ejd($$7.c, $$7.d, $$7.e, $$6.c, $$6.d, $$6.e));
-            }
+   public static Map<bku<?>, fvw<?>> a(fvx.a $$0) {
+      Builder<bku<?>, fvw<?>> $$1 = ImmutableMap.builder();
+      b.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create model for " + jy.h.b((bku<?>)$$2), var5);
          }
-
-         return false;
-      }
+      });
+      return $$1.build();
    }
 
-   private eji a(bky $$0, double $$1, float $$2) {
-      double $$3 = ati.d((double)$$2, $$0.ac, $$0.dq());
-      double $$4 = ati.d((double)$$2, $$0.ad, $$0.ds()) + $$1;
-      double $$5 = ati.d((double)$$2, $$0.ae, $$0.dw());
-      return new eji($$3, $$4, $$5);
-   }
-
-   public void a(caw $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      bky $$6 = $$0.gh();
-      if ($$6 != null) {
-         float $$7 = $$0.G($$2);
-         float $$8 = $$0.gi() + $$2;
-         float $$9 = $$8 * 0.5F % 1.0F;
-         float $$10 = $$0.cH();
-         $$3.a();
-         $$3.a(0.0F, $$10, 0.0F);
-         eji $$11 = this.a($$6, (double)$$6.dg() * 0.5, $$2);
-         eji $$12 = this.a($$0, (double)$$10, $$2);
-         eji $$13 = $$11.d($$12);
-         float $$14 = (float)($$13.f() + 1.0);
-         $$13 = $$13.d();
-         float $$15 = (float)Math.acos($$13.d);
-         float $$16 = (float)Math.atan2($$13.e, $$13.c);
-         $$3.a(a.d.rotationDegrees(((float) (Math.PI / 2) - $$16) * (180.0F / (float)Math.PI)));
-         $$3.a(a.b.rotationDegrees($$15 * (180.0F / (float)Math.PI)));
-         int $$17 = 1;
-         float $$18 = $$8 * 0.05F * -1.5F;
-         float $$19 = $$7 * $$7;
-         int $$20 = 64 + (int)($$19 * 191.0F);
-         int $$21 = 32 + (int)($$19 * 191.0F);
-         int $$22 = 128 - (int)($$19 * 64.0F);
-         float $$23 = 0.2F;
-         float $$24 = 0.282F;
-         float $$25 = ati.b($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$26 = ati.a($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$27 = ati.b($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$28 = ati.a($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$29 = ati.b($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$30 = ati.a($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$31 = ati.b($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$32 = ati.a($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$33 = ati.b($$18 + (float) Math.PI) * 0.2F;
-         float $$34 = ati.a($$18 + (float) Math.PI) * 0.2F;
-         float $$35 = ati.b($$18 + 0.0F) * 0.2F;
-         float $$36 = ati.a($$18 + 0.0F) * 0.2F;
-         float $$37 = ati.b($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$38 = ati.a($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$39 = ati.b($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$40 = ati.a($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$42 = 0.0F;
-         float $$43 = 0.4999F;
-         float $$44 = -1.0F + $$9;
-         float $$45 = $$14 * 2.5F + $$44;
-         eno $$46 = $$4.getBuffer(j);
-         enk.a $$47 = $$3.c();
-         Matrix4f $$48 = $$47.a();
-         Matrix3f $$49 = $$47.b();
-         a($$46, $$48, $$49, $$33, $$14, $$34, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$48, $$49, $$33, 0.0F, $$34, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$48, $$49, $$35, 0.0F, $$36, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$48, $$49, $$35, $$14, $$36, $$20, $$21, $$22, 0.0F, $$45);
-         a($$46, $$48, $$49, $$37, $$14, $$38, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$48, $$49, $$37, 0.0F, $$38, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$48, $$49, $$39, 0.0F, $$40, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$48, $$49, $$39, $$14, $$40, $$20, $$21, $$22, 0.0F, $$45);
-         float $$50 = 0.0F;
-         if ($$0.ah % 2 == 0) {
-            $$50 = 0.5F;
+   public static Map<gcu.a, fvw<? extends cdu>> b(fvx.a $$0) {
+      Builder<gcu.a, fvw<? extends cdu>> $$1 = ImmutableMap.builder();
+      c.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
          }
+      });
+      return $$1.build();
+   }
 
-         a($$46, $$48, $$49, $$25, $$14, $$26, $$20, $$21, $$22, 0.5F, $$50 + 0.5F);
-         a($$46, $$48, $$49, $$27, $$14, $$28, $$20, $$21, $$22, 1.0F, $$50 + 0.5F);
-         a($$46, $$48, $$49, $$31, $$14, $$32, $$20, $$21, $$22, 1.0F, $$50);
-         a($$46, $$48, $$49, $$29, $$14, $$30, $$20, $$21, $$22, 0.5F, $$50);
-         $$3.b();
+   public static boolean a() {
+      boolean $$0 = true;
+
+      for (bku<?> $$1 : jy.h) {
+         if ($$1 != bku.bt && !b.containsKey($$1)) {
+            a.warn("No renderer registered for {}", jy.h.b($$1));
+            $$0 = false;
+         }
       }
+
+      return !$$0;
    }
 
-   private static void a(eno $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, float $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      $$0.a($$1, $$3, $$4, $$5).a($$6, $$7, $$8, 255).a($$9, $$10).c(gay.d).b(15728880).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public agg a(caw $$0) {
-      return a;
+   static {
+      a(bku.b, fuw::new);
+      a(bku.c, fxf::new);
+      a(bku.d, fux::new);
+      a(bku.e, fyk::new);
+      a(bku.f, fuz::new);
+      a(bku.g, fva::new);
+      a(bku.h, fvb::new);
+      a(bku.i, fvc::new);
+      a(bku.j, fvm.a::new);
+      a(bku.k, $$0 -> new fvd($$0, false));
+      a(bku.m, fvf::new);
+      a(bku.l, $$0 -> new fve($$0, fkn.p));
+      a(bku.n, fvg::new);
+      a(bku.o, $$0 -> new fvd($$0, true));
+      a(bku.p, $$0 -> new fxc<>($$0, fkn.s));
+      a(bku.q, fvi::new);
+      a(bku.r, fvj::new);
+      a(bku.s, $$0 -> new fxc<>($$0, fkn.v));
+      a(bku.t, fvk::new);
+      a(bku.u, fvl::new);
+      a(bku.v, fvn::new);
+      a(bku.w, $$0 -> new fvh<>($$0, 0.87F, fkn.H));
+      a(bku.x, fvo::new);
+      a(bku.y, fvp::new);
+      a(bku.z, fyi::new);
+      a(bku.A, fvq::new);
+      a(bku.E, fvt::new);
+      a(bku.F, fvu::new);
+      a(bku.C, fvs::new);
+      a(bku.D, fyi::new);
+      a(bku.B, fvr::new);
+      a(bku.G, fwa::new);
+      a(bku.H, fvz::new);
+      a(bku.I, fyi::new);
+      a(bku.J, fwb::new);
+      a(bku.K, $$0 -> new fyi<>($$0, 1.0F, true));
+      a(bku.L, fwc::new);
+      a(bku.ag, $$0 -> new fyi<>($$0, 3.0F, true));
+      a(bku.M, fwd::new);
+      a(bku.bu, fwe::new);
+      a(bku.N, fwf::new);
+      a(bku.O, fwg::new);
+      a(bku.P, $$0 -> new fxc<>($$0, fkn.Z));
+      a(bku.Q, fwh::new);
+      a(bku.R, $$0 -> new fwi($$0, 6.0F));
+      a(bku.S, fwu::new);
+      a(bku.T, $$0 -> new fwj($$0, new fjr<>($$0.a(fkn.ae))));
+      a(bku.U, fwk::new);
+      a(bku.V, fwl::new);
+      a(bku.W, fwm::new);
+      a(bku.X, $$0 -> new fxc<>($$0, fkn.ai));
+      a(bku.Y, fwn::new);
+      a(bku.Z, fwp::new);
+      a(bku.aa, fwr::new);
+      a(bku.ab, fxf::new);
+      a(bku.ac, fws::new);
+      a(bku.ad, fwt::new);
+      a(bku.ae, fvm.b::new);
+      a(bku.af, fwu::new);
+      a(bku.ah, fww::new);
+      a(bku.ai, fwx::new);
+      a(bku.aj, $$0 -> new fwz($$0, fkn.ar));
+      a(bku.ak, fxa::new);
+      a(bku.al, fxb::new);
+      a(bku.am, fxf::new);
+      a(bku.an, $$0 -> new fxc<>($$0, fkn.av));
+      a(bku.ao, fxe::new);
+      a(bku.ap, $$0 -> new fvh<>($$0, 0.92F, fkn.ax));
+      a(bku.aq, fxg::new);
+      a(bku.ar, fxh::new);
+      a(bku.as, fxi::new);
+      a(bku.at, fxj::new);
+      a(bku.au, fxk::new);
+      a(bku.av, fxl::new);
+      a(bku.aw, $$0 -> new fxm($$0, fkn.aD, fkn.aI, fkn.aJ, false));
+      a(bku.ax, $$0 -> new fxm($$0, fkn.aE, fkn.aF, fkn.aG, false));
+      a(bku.ay, fxn::new);
+      a(bku.az, fxo::new);
+      a(bku.aA, fyi::new);
+      a(bku.aB, fxp::new);
+      a(bku.aC, fxq::new);
+      a(bku.aD, fxr::new);
+      a(bku.aE, fxt::new);
+      a(bku.aF, fxu::new);
+      a(bku.aG, fxw::new);
+      a(bku.aH, fxv::new);
+      a(bku.aI, fxx::new);
+      a(bku.aJ, fxy::new);
+      a(bku.aK, $$0 -> new fyp($$0, fkn.bi));
+      a(bku.aL, fxz::new);
+      a(bku.aM, $$0 -> new fyi<>($$0, 0.75F, true));
+      a(bku.aN, fya::new);
+      a(bku.aP, fyi::new);
+      a(bku.aO, fyb::new);
+      a(bku.aQ, $$0 -> new fxc<>($$0, fkn.bq));
+      a(bku.aR, fyc::new);
+      a(bku.aS, fyd::new);
+      a(bku.aT, $$0 -> new fye<>($$0, new fjr<>($$0.a(fkn.bs))));
+      a(bku.aU, fyf::new);
+      a(bku.aV, fyg::new);
+      a(bku.aW, fyh::new);
+      a(bku.aX, fvm.c::new);
+      a(bku.aY, fym::new);
+      a(bku.aZ, fyl::new);
+      a(bku.ba, $$0 -> new fwz($$0, fkn.bB));
+      a(bku.bb, fyj::new);
+      a(bku.bc, fyn::new);
+      a(bku.bd, fyo::new);
+      a(bku.be, fyq::new);
+      a(bku.bf, fyr::new);
+      a(bku.bg, fys::new);
+      a(bku.bi, fyu::new);
+      a(bku.bh, fyt::new);
+      a(bku.bj, fyv::new);
+      a(bku.bk, fyw::new);
+      a(bku.bl, fyx::new);
+      a(bku.bm, fyy::new);
+      a(bku.bn, fyz::new);
+      a(bku.bo, fza::new);
+      a(bku.bp, fzb::new);
+      a(bku.bq, $$0 -> new fyp($$0, fkn.bZ));
+      a(bku.br, fzc::new);
+      a(bku.bs, $$0 -> new fxm($$0, fkn.cf, fkn.cg, fkn.ch, true));
    }
 }

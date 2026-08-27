@@ -51,13 +51,13 @@ public record vh(vm d, @Nullable vd e, vk f, @Nullable ur g, uv h) {
       return this.a($$0 ? this.h : uv.c);
    }
 
-   public static void a(ats.a $$0, vm $$1, vk $$2) throws SignatureException {
+   public static void a(atx.a $$0, vm $$1, vk $$2) throws SignatureException {
       $$0.update(Ints.toByteArray(1));
       $$1.a($$0);
       $$2.a($$0);
    }
 
-   public boolean a(att $$0) {
+   public boolean a(aty $$0) {
       return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
    }
 

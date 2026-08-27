@@ -1,76 +1,54 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class exf {
-   private final exd a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class exf implements exh {
+   private static final agi a = new agi("toast/recipe");
+   private static final long d = 5000L;
+   private static final ur e = ur.c("recipe.toast.title");
+   private static final ur f = ur.c("recipe.toast.description");
+   private final List<coq<?>> g = Lists.newArrayList();
+   private long h;
+   private boolean i;
 
-   public exf(exd $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public exf(coq<?> $$0) {
+      this.g.add($$0);
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eno $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      int $$10 = 3;
-      float $$11 = $$1 + this.f;
-      float $$12 = $$1 + this.g;
-      float $$13 = this.h - 3.0F;
-      float $$14 = this.i - 3.0F;
-      float $$15 = $$2 + $$13;
-      float $$16 = $$2 + $$14;
-      float $$17 = $$0 ? 1.0F - 0.25F * $$13 : 0.0F;
-      float $$18 = $$0 ? 1.0F - 0.25F * $$14 : 0.0F;
-      $$4.a($$3, $$11 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$11 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
+   @Override
+   public exh.a a(euo $$0, exi $$1, long $$2) {
+      if (this.i) {
+         this.h = $$2;
+         this.i = false;
+      }
+
+      if (this.g.isEmpty()) {
+         return exh.a.b;
+      } else {
+         $$0.a(a, 0, 0, this.a(), this.b());
+         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
+         coq<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
+         clj $$4 = $$3.b().g();
+         $$0.c().a();
+         $$0.c().b(0.6F, 0.6F, 1.0F);
+         $$0.b($$4, 3, 3);
+         $$0.c().b();
+         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
+         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? exh.a.b : exh.a.a;
+      }
    }
 
-   public void a(exf.a $$0, Matrix4f $$1, eno $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
+   private void a(coq<?> $$0) {
+      this.g.add($$0);
+      this.i = true;
    }
 
-   public fqp a(etz.a $$0) {
-      return this.a.a($$0);
-   }
-
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+   public static void a(exi $$0, coq<?> $$1) {
+      exf $$2 = $$0.a(exf.class, b);
+      if ($$2 == null) {
+         $$0.a(new exf($$1));
+      } else {
+         $$2.a($$1);
       }
    }
 }

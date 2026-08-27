@@ -1,98 +1,196 @@
-public class aqx {
-   public static final aqw<cut> a = a("mined", jy.f);
-   public static final aqw<ckw> b = a("crafted", jy.i);
-   public static final aqw<ckw> c = a("used", jy.i);
-   public static final aqw<ckw> d = a("broken", jy.i);
-   public static final aqw<ckw> e = a("picked_up", jy.i);
-   public static final aqw<ckw> f = a("dropped", jy.i);
-   public static final aqw<bkm<?>> g = a("killed", jy.h);
-   public static final aqw<bkm<?>> h = a("killed_by", jy.h);
-   public static final aqw<agg> i = a("custom", jy.n);
-   public static final agg j = a("leave_game", aqv.b);
-   public static final agg k = a("play_time", aqv.e);
-   public static final agg l = a("total_world_time", aqv.e);
-   public static final agg m = a("time_since_death", aqv.e);
-   public static final agg n = a("time_since_rest", aqv.e);
-   public static final agg o = a("sneak_time", aqv.e);
-   public static final agg p = a("walk_one_cm", aqv.d);
-   public static final agg q = a("crouch_one_cm", aqv.d);
-   public static final agg r = a("sprint_one_cm", aqv.d);
-   public static final agg s = a("walk_on_water_one_cm", aqv.d);
-   public static final agg t = a("fall_one_cm", aqv.d);
-   public static final agg u = a("climb_one_cm", aqv.d);
-   public static final agg v = a("fly_one_cm", aqv.d);
-   public static final agg w = a("walk_under_water_one_cm", aqv.d);
-   public static final agg x = a("minecart_one_cm", aqv.d);
-   public static final agg y = a("boat_one_cm", aqv.d);
-   public static final agg z = a("pig_one_cm", aqv.d);
-   public static final agg A = a("horse_one_cm", aqv.d);
-   public static final agg B = a("aviate_one_cm", aqv.d);
-   public static final agg C = a("swim_one_cm", aqv.d);
-   public static final agg D = a("strider_one_cm", aqv.d);
-   public static final agg E = a("jump", aqv.b);
-   public static final agg F = a("drop", aqv.b);
-   public static final agg G = a("damage_dealt", aqv.c);
-   public static final agg H = a("damage_dealt_absorbed", aqv.c);
-   public static final agg I = a("damage_dealt_resisted", aqv.c);
-   public static final agg J = a("damage_taken", aqv.c);
-   public static final agg K = a("damage_blocked_by_shield", aqv.c);
-   public static final agg L = a("damage_absorbed", aqv.c);
-   public static final agg M = a("damage_resisted", aqv.c);
-   public static final agg N = a("deaths", aqv.b);
-   public static final agg O = a("mob_kills", aqv.b);
-   public static final agg P = a("animals_bred", aqv.b);
-   public static final agg Q = a("player_kills", aqv.b);
-   public static final agg R = a("fish_caught", aqv.b);
-   public static final agg S = a("talked_to_villager", aqv.b);
-   public static final agg T = a("traded_with_villager", aqv.b);
-   public static final agg U = a("eat_cake_slice", aqv.b);
-   public static final agg V = a("fill_cauldron", aqv.b);
-   public static final agg W = a("use_cauldron", aqv.b);
-   public static final agg X = a("clean_armor", aqv.b);
-   public static final agg Y = a("clean_banner", aqv.b);
-   public static final agg Z = a("clean_shulker_box", aqv.b);
-   public static final agg aa = a("interact_with_brewingstand", aqv.b);
-   public static final agg ab = a("interact_with_beacon", aqv.b);
-   public static final agg ac = a("inspect_dropper", aqv.b);
-   public static final agg ad = a("inspect_hopper", aqv.b);
-   public static final agg ae = a("inspect_dispenser", aqv.b);
-   public static final agg af = a("play_noteblock", aqv.b);
-   public static final agg ag = a("tune_noteblock", aqv.b);
-   public static final agg ah = a("pot_flower", aqv.b);
-   public static final agg ai = a("trigger_trapped_chest", aqv.b);
-   public static final agg aj = a("open_enderchest", aqv.b);
-   public static final agg ak = a("enchant_item", aqv.b);
-   public static final agg al = a("play_record", aqv.b);
-   public static final agg am = a("interact_with_furnace", aqv.b);
-   public static final agg an = a("interact_with_crafting_table", aqv.b);
-   public static final agg ao = a("open_chest", aqv.b);
-   public static final agg ap = a("sleep_in_bed", aqv.b);
-   public static final agg aq = a("open_shulker_box", aqv.b);
-   public static final agg ar = a("open_barrel", aqv.b);
-   public static final agg as = a("interact_with_blast_furnace", aqv.b);
-   public static final agg at = a("interact_with_smoker", aqv.b);
-   public static final agg au = a("interact_with_lectern", aqv.b);
-   public static final agg av = a("interact_with_campfire", aqv.b);
-   public static final agg aw = a("interact_with_cartography_table", aqv.b);
-   public static final agg ax = a("interact_with_loom", aqv.b);
-   public static final agg ay = a("interact_with_stonecutter", aqv.b);
-   public static final agg az = a("bell_ring", aqv.b);
-   public static final agg aA = a("raid_trigger", aqv.b);
-   public static final agg aB = a("raid_win", aqv.b);
-   public static final agg aC = a("interact_with_anvil", aqv.b);
-   public static final agg aD = a("interact_with_grindstone", aqv.b);
-   public static final agg aE = a("target_hit", aqv.b);
-   public static final agg aF = a("interact_with_smithing_table", aqv.b);
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   private static agg a(String $$0, aqv $$1) {
-      agg $$2 = new agg($$0);
-      io.a(jy.n, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class aqx extends arc {
+   private static final Logger b = LogUtils.getLogger();
+   private final MinecraftServer c;
+   private final File d;
+   private final Set<aqy<?>> e = Sets.newHashSet();
+
+   public aqx(MinecraftServer $$0, File $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aA(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
    }
 
-   private static <T> aqw<T> a(String $$0, io<T> $$1) {
-      ur $$2 = ur.c("stat_type.minecraft." + $$0);
-      return io.a(jy.y, $$0, new aqw<>($$1, $$2));
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.d, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(cdu $$0, aqy<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e.add($$1);
+   }
+
+   private Set<aqy<?>> d() {
+      Set<aqy<?>> $$0 = Sets.newHashSet(this.e);
+      this.e.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label47: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  rz $$4 = a($$3.getAsJsonObject());
+                  $$4 = aus.g.a($$0, $$4, so.b($$4, 1343));
+                  if (!$$4.b("stats", 10)) {
+                     break label47;
+                  }
+
+                  rz $$5 = $$4.p("stats");
+                  Iterator var7 = $$5.e().iterator();
+
+                  while (true) {
+                     if (!var7.hasNext()) {
+                        break label47;
+                     }
+
+                     String $$6 = (String)var7.next();
+                     if ($$5.b($$6, 10)) {
+                        ac.a(
+                           jy.y.b(new agi($$6)),
+                           $$2x -> {
+                              rz $$3x = $$5.p($$6);
+
+                              for (String $$4x : $$3x.e()) {
+                                 if ($$3x.b($$4x, 99)) {
+                                    ac.a(
+                                       this.a($$2x, $$4x),
+                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
+                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
+                                    );
+                                 } else {
+                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
+                                 }
+                              }
+                           },
+                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
+                        );
+                     }
+                  }
+               }
+
+               b.error("Unable to parse Stat data from {}", this.d);
+            } catch (Throwable var10) {
+               try {
+                  $$2.close();
+               } catch (Throwable var9) {
+                  var10.addSuppressed(var9);
+               }
+
+               throw var10;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var11) {
+         b.error("Unable to parse Stat data from {}", this.d, var11);
+      }
+   }
+
+   private <T> Optional<aqy<T>> a(ara<T> $$0, String $$1) {
+      return Optional.ofNullable(agi.a($$1)).flatMap($$0.a()::b).map($$0::b);
+   }
+
+   private static rz a(JsonObject $$0) {
+      rz $$1 = new rz();
+
+      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
+         JsonElement $$3 = $$2.getValue();
+         if ($$3.isJsonObject()) {
+            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
+         } else if ($$3.isJsonPrimitive()) {
+            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
+            if ($$4.isNumber()) {
+               $$1.a($$2.getKey(), $$4.getAsInt());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   protected String b() {
+      Map<ara<?>, JsonObject> $$0 = Maps.newHashMap();
+      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
+
+      while ($$3.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<aqy<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<aqy<?>>)$$3.next();
+         aqy<?> $$2 = (aqy<?>)$$1.getKey();
+         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      }
+
+      JsonObject $$3x = new JsonObject();
+
+      for (Entry<ara<?>, JsonObject> $$4 : $$0.entrySet()) {
+         $$3x.add(jy.y.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
+      }
+
+      JsonObject $$5 = new JsonObject();
+      $$5.add("stats", $$3x);
+      $$5.addProperty("DataVersion", aa.b().d().c());
+      return $$5.toString();
+   }
+
+   private static <T> agi b(aqy<T> $$0) {
+      return $$0.a().a().b($$0.b());
+   }
+
+   public void c() {
+      this.e.addAll(this.a.keySet());
+   }
+
+   public void a(amf $$0) {
+      Object2IntMap<aqy<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (aqy<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.c.b(new yh($$1));
    }
 }

@@ -1,79 +1,123 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bmk extends bmp<blh> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<blh> g = $$0 -> $$0.eg() != null || $$0.dA() || $$0.bM();
-   private final float h;
-   private final Predicate<blh> i;
+public class bmk {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bmk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iv.a.fieldOf("UUID").forGetter(bmk::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bmk::c),
+               bmk.a.d.fieldOf("Operation").forGetter(bmk::b)
+            )
+            .apply($$0, bmk::new)
+   );
+   private final double c;
+   private final bmk.a d;
+   private final String e;
+   private final UUID f;
 
-   public bmk(float $$0) {
-      this($$0, g);
+   public bmk(String $$0, double $$1, bmk.a $$2) {
+      this(atm.a(ats.c()), $$0, $$1, $$2);
    }
 
-   public bmk(float $$0, Predicate<blh> $$1) {
-      super(ImmutableMap.of(btz.Y, bua.c, btz.x, bua.a), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public bmk(UUID $$0, String $$1, double $$2, bmk.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   protected boolean a(ama $$0, blh $$1) {
-      return this.i.test($$1);
+   public UUID a() {
+      return this.f;
    }
 
-   protected boolean a(ama $$0, blh $$1, long $$2) {
-      return true;
+   public bmk.a b() {
+      return this.d;
    }
 
-   protected void b(ama $$0, blh $$1, long $$2) {
-      $$1.dN().a(btz.Y, true);
-      $$1.dN().b(btz.m);
+   public double c() {
+      return this.c;
    }
 
-   protected void c(ama $$0, blh $$1, long $$2) {
-      bly<?> $$3 = $$1.dN();
-      $$3.b(btz.Y);
-   }
-
-   protected void d(ama $$0, blh $$1, long $$2) {
-      if ($$1.L().l()) {
-         eji $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dN().a(btz.m, new buc($$3, this.h, 0));
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bmk $$1 = (bmk)$$0;
+         return Objects.equals(this.f, $$1.f);
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
+   }
+
+   public rz d() {
+      rz $$0 = new rz();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
    }
 
    @Nullable
-   private eji a(blh $$0, ama $$1) {
-      if ($$0.bM()) {
-         Optional<eji> $$2 = this.a((cqy)$$1, (bki)$$0).map(eji::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
+   public static bmk a(rz $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bmk.a $$2 = bmk.a.a($$0.h("Operation"));
+         return new bmk($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
+      }
+   }
+
+   public static enum a implements aug {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      private static final bmk.a[] e = new bmk.a[]{a, b, c};
+      public static final Codec<bmk.a> d = aug.a(bmk.a::values);
+      private final String f;
+      private final int g;
+
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.g;
+      }
+
+      public static bmk.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
          }
       }
 
-      return bvr.a($$0, 5, 4);
-   }
-
-   private Optional<ht> a(cqy $$0, bki $$1) {
-      ht $$2 = $$1.dl();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<ht> $$3;
-         if (ati.f($$1.df()) == 2) {
-            $$3 = $$1x -> ht.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(arh.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(arh.a);
-         }
-
-         return ht.a($$2, 5, 1, $$3);
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

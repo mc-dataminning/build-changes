@@ -1,27 +1,32 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dzx extends eas {
-   public static final Codec<dzx> a = dgw.b.xmap(dgv.a::b, cut::o).listOf().fieldOf("blocks").xmap(dzx::new, $$0 -> $$0.e).codec();
-   public static final dzx b = new dzx(ImmutableList.of(cuv.pa));
-   public static final dzx c = new dzx(ImmutableList.of(cuv.a));
-   public static final dzx d = new dzx(ImmutableList.of(cuv.a, cuv.pa));
-   private final ImmutableList<cut> e;
+public class dzx extends dxh {
+   public static final Codec<dzx> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, dzx::new)
+   );
+   public final boolean e;
 
-   public dzx(List<cut> $$0) {
-      this.e = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public dzx(dxh.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected eau<?> a() {
-      return eau.e;
+   public Optional<dxh.b> a(dxh.a $$0) {
+      dmr.a $$1 = this.e ? dmr.a.a : dmr.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(dxz $$0, dxh.a $$1) {
+      dbm $$2 = dbm.a($$1.f());
+      ht $$3 = new ht($$1.h().d(), 90, $$1.h().e());
+      dzw.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+   }
+
+   @Override
+   public dxq<?> e() {
+      return dxq.m;
    }
 }

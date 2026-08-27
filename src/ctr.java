@@ -1,23 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ctr extends cut {
-   public static final MapCodec<ctr> a = b(ctr::new);
+public abstract class ctr extends cum {
+   private final cjx a;
 
-   @Override
-   public MapCodec<? extends ctr> a() {
-      return a;
-   }
-
-   public ctr(dgv.d $$0) {
-      super($$0);
+   protected ctr(cjx $$0, dhh.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public void a(crs $$0, dgw $$1, eje $$2, cee $$3) {
-      if (!$$0.B) {
-         ht $$4 = $$2.a();
-         $$0.a(null, $$4, aqn.G, aqo.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, aqn.E, aqo.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
+   protected abstract MapCodec<? extends ctr> a();
+
+   @Override
+   public boolean a(dhi $$0) {
+      return true;
+   }
+
+   @Override
+   public dfd a(ht $$0, dhi $$1) {
+      return new det($$0, $$1, this.a);
+   }
+
+   @Override
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      if ($$0.B) {
+         $$0.a($$1, dff.t).ifPresent($$1x -> $$1x.b($$4));
+      } else if ($$4.A()) {
+         $$0.a($$1, dff.t).ifPresent($$1x -> $$1x.a($$4.y()));
       }
+   }
+
+   @Override
+   public clj a(csd $$0, ht $$1, dhi $$2) {
+      dfd $$3 = $$0.c_($$1);
+      return $$3 instanceof det ? ((det)$$3).f() : super.a($$0, $$1, $$2);
+   }
+
+   public cjx b() {
+      return this.a;
    }
 }

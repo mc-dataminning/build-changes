@@ -1,91 +1,109 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public enum dkh {
-   a {
-      @Override
-      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
-         ht $$5 = new ht(0, 128, 0);
+public class dkh implements dlc<bkq> {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Entities";
+   private static final String d = "Position";
+   private final ame e;
+   private final dki f;
+   private final LongSet g = new LongOpenHashSet();
+   private final bhq<Runnable> h;
+   protected final DataFixer a;
 
-         for (byy $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public dkh(ame $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
+      this.e = $$0;
+      this.a = $$2;
+      this.h = bhq.a($$4, "entity-deserializer");
+      this.f = new dki($$1, $$3, "entities");
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new ht(0, 128, 0), 0);
-            }
+   @Override
+   public CompletableFuture<dkx<bkq>> a(crh $$0) {
+      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.g.add($$0.a());
+            return b($$0);
          } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dqt.a> $$8 = dqt.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dqt.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (byy $$11 : $$2) {
-                     $$11.a(new ht($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
-
-                  for (ht $$13 : ht.a(new ht($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ht($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, crs.a.b);
-                  dsh $$14 = new dsh(true, ImmutableList.of($$10), new ht(0, 128, 0));
-                  dpj.J.a($$14, $$0, $$0.k().g(), ato.a(), new ht($$10.a(), 45, $$10.b()));
+            try {
+               crh $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
                }
-            } else if ($$6) {
-               $$1.a(d);
+            } catch (Exception var6) {
+               b.warn("Failed to parse chunk {} position info", $$0, var6);
             }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
 
-            for (byy $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, crs.a.a);
-               $$5.ak();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new ht(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (byy $$6 : $$2) {
-               $$6.a(new ht(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new ht(0, 128, 0), 0);
+            rz $$4 = this.b($$1.get());
+            sf $$5 = $$4.c("Entities", 10);
+            List<bkq> $$6 = bku.a($$5, this.e).collect(ImmutableList.toImmutableList());
+            return new dkx<>($$0, $$6);
          }
-      }
-   },
-   e {
-      @Override
-      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
-      }
-   };
+      }, this.h::a);
+   }
 
-   public abstract void a(ama var1, dki var2, List<byy> var3, int var4, ht var5);
+   private static crh a(rz $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new crh($$1[0], $$1[1]);
+   }
+
+   private static void a(rz $$0, crh $$1) {
+      $$0.a("Position", new sd(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dkx<bkq> b(crh $$0) {
+      return new dkx<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dkx<bkq> $$0) {
+      crh $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.g.add($$1.a())) {
+            this.f.a($$1, null);
+         }
+      } else {
+         sf $$2 = new sf();
+         $$0.b().forEach($$1x -> {
+            rz $$2x = new rz();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         rz $$3 = so.g(new rz());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.f.a($$1, $$3).exceptionally($$1x -> {
+            b.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.g.remove($$1.a());
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.f.a($$0).join();
+      this.h.a();
+   }
+
+   private rz b(rz $$0) {
+      int $$1 = so.b($$0, -1);
+      return aus.s.a(this.a, $$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.f.close();
+   }
 }

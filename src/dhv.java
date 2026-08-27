@@ -1,6 +1,6 @@
-public enum dhv implements aub {
-   a("top"),
-   b("bottom");
+public enum dhv implements aug {
+   a("head"),
+   b("foot");
 
    private final String c;
 

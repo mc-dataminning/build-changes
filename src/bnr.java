@@ -1,48 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bnr<E extends bla> extends bns<E> {
-   private final arr<cut> m;
-   private final float n;
-   private final List<bns.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bnr(bib $$0, int $$1, int $$2, float $$3, Function<E, aqm> $$4, arr<cut> $$5, float $$6, BiPredicate<E, ht> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+public class bnr {
+   public static bmy<blg> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(ama $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ef().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bns.a> a(ama $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         ht.a $$1 = new ht.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bns.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bns.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), hx.a)).a(this.m)) {
-                  return $$2;
+   public static <E extends blg> bmy<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bqj.a((Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$4 -> {
+         bqj<E, ? extends bqk<? extends K1, buk>> $$5 = $$2 ? $$4.a(buh.m) : $$4.c(buh.m);
+         return $$4.group($$4.a(buh.n), $$5, $$4.b(buh.K), $$4.a(buh.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               can $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dN().C_().a($$11.dn())) {
+                  buk $$12 = new buk(new bni($$11, false), $$1, 0);
+                  $$4x.a(new bni($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
                }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+            });
+      }));
    }
 }

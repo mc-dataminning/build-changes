@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fy implements ArgumentType<fz> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final id<ckw> b;
+   private final id<cle> b;
 
    public fy(dp $$0) {
       this.b = $$0.a(jz.E);

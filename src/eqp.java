@@ -1,187 +1,274 @@
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eqp extends ghe {
-   static final Logger c = LogUtils.getLogger();
-   static final agg v = new agg("widget/slot_frame");
-   private static final ur w = ur.c("mco.selectServer.create");
-   private static final ur x = ur.c("mco.selectServer.create.subtitle");
-   private static final ur y = ur.c("mco.configure.world.switch.slot");
-   private static final ur z = ur.c("mco.configure.world.switch.slot.subtitle");
-   private static final ur A = ur.c("mco.reset.world.title");
-   private static final ur B = ur.c("mco.reset.world.warning");
-   public static final ur a = ur.c("mco.create.world.reset.title");
-   private static final ur C = ur.c("mco.reset.world.resetting.screen.title");
-   private static final ur D = ur.c("mco.reset.world.template");
-   private static final ur E = ur.c("mco.reset.world.adventure");
-   private static final ur F = ur.c("mco.reset.world.experience");
-   private static final ur G = ur.c("mco.reset.world.inspiration");
-   private final fah H;
-   private final eor I;
-   private final ur J;
-   private final int K;
-   private final ur L;
-   private static final agg M = new agg("textures/gui/realms/upload.png");
-   private static final agg N = new agg("textures/gui/realms/adventure.png");
-   private static final agg O = new agg("textures/gui/realms/survival_spawn.png");
-   private static final agg P = new agg("textures/gui/realms/new_world.png");
-   private static final agg Q = new agg("textures/gui/realms/experience.png");
-   private static final agg R = new agg("textures/gui/realms/inspiration.png");
-   epj S;
-   epj T;
-   epj U;
-   epj V;
-   public final int b;
+public class eqp extends ghr {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int v = 80;
+   private static final int w = 95;
+   private static final int x = 1;
+   private final fau y;
+   private final ept z;
+   private final ur A;
+   private final RateLimiter B;
+   private euz C;
+   private final String D;
+   private final eqp.a E;
    @Nullable
-   private final erz W;
-   private final Runnable X;
-   private final exw Y = new exw(this);
+   private volatile ur F;
+   private volatile ur G = ur.c("mco.download.preparing");
+   @Nullable
+   private volatile String H;
+   private volatile boolean I;
+   private volatile boolean J = true;
+   private volatile boolean K;
+   private volatile boolean L;
+   @Nullable
+   private Long M;
+   @Nullable
+   private Long N;
+   private long O;
+   private int P;
+   private static final String[] Q = new String[]{"", ".", ". .", ". . ."};
+   private int R;
+   private boolean S;
+   private final BooleanConsumer T;
 
-   private eqp(fah $$0, eor $$1, int $$2, ur $$3, ur $$4, int $$5, ur $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
-   }
-
-   public eqp(fah $$0, eor $$1, int $$2, ur $$3, ur $$4, int $$5, ur $$6, @Nullable erz $$7, Runnable $$8) {
-      super($$3);
-      this.H = $$0;
-      this.I = $$1;
-      this.b = $$2;
-      this.J = $$4;
-      this.K = $$5;
-      this.L = $$6;
-      this.W = $$7;
-      this.X = $$8;
-   }
-
-   public static eqp a(fah $$0, eor $$1, erz $$2, Runnable $$3) {
-      return new eqp($$0, $$1, $$1.n, w, x, -6250336, a, $$2, $$3);
-   }
-
-   public static eqp a(fah $$0, int $$1, eor $$2, Runnable $$3) {
-      return new eqp($$0, $$2, $$1, y, z, -6250336, a, $$3);
-   }
-
-   public static eqp a(fah $$0, eor $$1, Runnable $$2) {
-      return new eqp($$0, $$1, $$1.n, A, B, -65536, C, $$2);
+   public eqp(fau $$0, ept $$1, String $$2, BooleanConsumer $$3) {
+      super(esv.a);
+      this.T = $$3;
+      this.y = $$0;
+      this.D = $$2;
+      this.z = $$1;
+      this.E = new eqp.a();
+      this.A = ur.c("mco.download.title");
+      this.B = RateLimiter.create(0.1F);
    }
 
    @Override
-   public void aO_() {
-      eya $$0 = eya.d();
-      $$0.a(new evt(this.e, this.i), exz::b);
-      $$0.a(eyb.b(3));
-      $$0.a(new evt(this.J, this.i).i(this.K), exz::b);
-      this.Y.a($$0);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            eoa $$0 = eoa.a();
+   public void aP_() {
+      this.C = this.d(euz.a(uq.e, $$0 -> {
+         this.I = true;
+         this.E();
+      }).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
+      this.C();
+   }
 
+   private void C() {
+      if (!this.K) {
+         if (!this.S && this.a(this.z.a) >= 5368709120L) {
+            ur $$0 = ur.a("mco.download.confirmation.line1", eoi.b(5368709120L));
+            ur $$1 = ur.c("mco.download.confirmation.line2");
+            this.f.a(new eqs($$0x -> {
+               this.S = true;
+               this.f.a(this);
+               this.F();
+            }, eqs.a.a, $$0, $$1, false));
+         } else {
+            this.F();
+         }
+      }
+   }
+
+   private long a(String $$0) {
+      eoj $$1 = new eoj();
+      return $$1.a($$0);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.P++;
+      if (this.G != null && this.B.tryAcquire(1)) {
+         ur $$0 = this.D();
+         this.f.aU().c($$0);
+      }
+   }
+
+   private ur D() {
+      List<ur> $$0 = Lists.newArrayList();
+      $$0.add(this.A);
+      $$0.add(this.G);
+      if (this.H != null) {
+         $$0.add(ur.a("mco.download.percent", this.H));
+         $$0.add(ur.a("mco.download.speed.narration", eoi.b(this.O)));
+      }
+
+      if (this.F != null) {
+         $$0.add(this.F);
+      }
+
+      return uq.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.I = true;
+         this.E();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   private void E() {
+      if (this.K && this.T != null && this.F == null) {
+         this.T.accept(true);
+      }
+
+      this.f.a(this.y);
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.A, this.g / 2, 20, 16777215);
+      $$0.a(this.i, this.G, this.g / 2, 50, 16777215);
+      if (this.J) {
+         this.c($$0);
+      }
+
+      if (this.E.a != 0L && !this.I) {
+         this.d($$0);
+         this.e($$0);
+      }
+
+      if (this.F != null) {
+         $$0.a(this.i, this.F, this.g / 2, 110, 16711680);
+      }
+   }
+
+   private void c(euo $$0) {
+      int $$1 = this.i.a(this.G);
+      if (this.P % 10 == 0) {
+         this.R++;
+      }
+
+      $$0.a(this.i, Q[this.R % Q.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
+   }
+
+   private void d(euo $$0) {
+      double $$1 = Math.min((double)this.E.a / (double)this.E.b, 1.0);
+      this.H = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.g - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.i, ur.a("mco.download.percent", this.H), this.g / 2, 84, 16777215);
+   }
+
+   private void e(euo $$0) {
+      if (this.P % 20 == 0) {
+         if (this.M != null) {
+            long $$1 = ac.b() - this.N;
+            if ($$1 == 0L) {
+               $$1 = 1L;
+            }
+
+            this.O = 1000L * (this.E.a - this.M) / $$1;
+            this.a($$0, this.O);
+         }
+
+         this.M = this.E.a;
+         this.N = ac.b();
+      } else {
+         this.a($$0, this.O);
+      }
+   }
+
+   private void a(euo $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.i.b(this.H);
+         $$0.a(this.i, ur.a("mco.download.speed", eoi.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
+      }
+   }
+
+   private void F() {
+      new Thread(() -> {
+         try {
             try {
-               epj $$1 = $$0.a(1, 10, eor.d.a);
-               epj $$2 = $$0.a(1, 10, eor.d.c);
-               epj $$3 = $$0.a(1, 10, eor.d.d);
-               epj $$4 = $$0.a(1, 10, eor.d.e);
-               eqp.this.f.execute(() -> {
-                  eqp.this.S = $$1;
-                  eqp.this.T = $$2;
-                  eqp.this.U = $$3;
-                  eqp.this.V = $$4;
-               });
-            } catch (epn var6) {
-               eqp.c.error("Couldn't fetch templates in reset world", var6);
+               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                  this.G = ur.c("mco.download.failed");
+                  return;
+               }
+
+               if (this.I) {
+                  this.G();
+                  return;
+               }
+
+               this.G = ur.a("mco.download.downloading", this.D);
+               eoj $$0 = new eoj();
+               $$0.a(this.z.a);
+               $$0.a(this.z, this.D, this.E, this.f.l());
+
+               while (!$$0.b()) {
+                  if ($$0.c()) {
+                     $$0.a();
+                     this.F = ur.c("mco.download.failed");
+                     this.C.b(uq.d);
+                     return;
+                  }
+
+                  if ($$0.d()) {
+                     if (!this.L) {
+                        this.G = ur.c("mco.download.extracting");
+                     }
+
+                     this.L = true;
+                  }
+
+                  if (this.I) {
+                     $$0.a();
+                     this.G();
+                     return;
+                  }
+
+                  try {
+                     Thread.sleep(500L);
+                  } catch (InterruptedException var8) {
+                     a.error("Failed to check Realms backup download status");
+                  }
+               }
+
+               this.K = true;
+               this.G = ur.c("mco.download.done");
+               this.C.b(uq.d);
+               return;
+            } catch (InterruptedException var9) {
+               a.error("Could not acquire upload lock");
+            } catch (Exception var10) {
+               this.F = ur.c("mco.download.failed");
+               a.info("Exception while downloading world", var10);
+            }
+         } finally {
+            if (!b.isHeldByCurrentThread()) {
+               return;
+            } else {
+               b.unlock();
+               this.J = false;
+               this.K = true;
             }
          }
       }).start();
-      this.d(new eqp.a(this.a(1), h(0) + 10, eqo.a, P, $$0x -> this.f.a(new eqo(this::a, this.e))));
-      this.d(new eqp.a(this.a(2), h(0) + 10, eqq.a, M, $$0x -> this.f.a(new eqq(this.I.a, this.b, this))));
-      this.d(new eqp.a(this.a(3), h(0) + 10, D, O, $$0x -> this.f.a(new eqr(D, this::a, eor.d.a, this.S))));
-      this.d(new eqp.a(this.a(1), h(6) + 20, E, N, $$0x -> this.f.a(new eqr(E, this::a, eor.d.c, this.T))));
-      this.d(new eqp.a(this.a(2), h(6) + 20, F, Q, $$0x -> this.f.a(new eqr(F, this::a, eor.d.d, this.U))));
-      this.d(new eqp.a(this.a(3), h(6) + 20, G, R, $$0x -> this.f.a(new eqr(G, this::a, eor.d.e, this.V))));
-      this.Y.b(eum.a(uq.k, $$0x -> this.aE_()).a());
-      this.Y.a($$1 -> {
-         euk var10000 = this.d($$1);
-      });
-      this.Y.a();
    }
 
-   @Override
-   public ur h() {
-      return uq.a(this.m(), this.J);
+   private void G() {
+      this.G = ur.c("mco.download.cancelled");
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.H);
-   }
-
-   private int a(int $$0) {
-      return this.g / 2 - 130 + ($$0 - 1) * 100;
-   }
-
-   private void a(@Nullable epi $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.a((err)(new eru($$0, this.I.a, this.L, this.X)));
-      }
-   }
-
-   private void a(@Nullable erk $$0) {
-      this.f.a(this);
-      if ($$0 != null) {
-         this.a((err)(new ert($$0, this.I.a, this.L, this.X)));
-      }
-   }
-
-   private void a(err $$0) {
-      List<err> $$1 = new ArrayList<>();
-      if (this.W != null) {
-         $$1.add(this.W);
-      }
-
-      if (this.b != this.I.n) {
-         $$1.add(new ery(this.I.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.f.a(new eqh(this.H, $$1.toArray(new err[0])));
-   }
-
-   @Override
-   public void a(Runnable $$0) {
-      this.f.a(new eqh(this.H, new ery(this.I.a, this.b, () -> this.f.execute($$0))));
-   }
-
-   class a extends eum {
-      private static final int b = 60;
-      private static final int c = 72;
-      private static final int d = 56;
-      private final agg t;
-
-      a(int $$0, int $$1, ur $$2, agg $$3, eum.c $$4) {
-         super($$0, $$1, 60, 72, $$2, $$4, p);
-         this.t = $$3;
-      }
-
-      @Override
-      public void b(eub $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.n();
-         if ($$4) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         int $$5 = this.p();
-         int $$6 = this.r();
-         $$0.a(this.t, $$5 + 2, $$6 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
-         $$0.a(eqp.v, $$5, $$6 + 12, 60, 60);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         int $$7 = $$4 ? -6250336 : -1;
-         $$0.a(eqp.this.i, this.l(), $$5 + 30, $$6, $$7);
-      }
+   public static class a {
+      public volatile long a;
+      public volatile long b;
    }
 }

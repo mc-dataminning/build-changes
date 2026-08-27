@@ -1,82 +1,165 @@
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ezo extends fah {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class ezo extends fau {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger k = LogUtils.getLogger();
+   private static final long l = 2000L;
+   public static final ur a = ur.c("connect.aborted");
+   public static final ur b = ur.a("disconnect.genericReason", ur.c("disconnect.unknownHost"));
    @Nullable
-   private final ur k;
-   private final ur l;
-   private final Runnable m;
+   volatile ts m;
    @Nullable
-   private evf n;
-   private eum o;
-   private int p;
+   ChannelFuture n;
+   volatile boolean o;
+   final fau p;
+   private ur q = ur.c("connect.connecting");
+   private long r = -1L;
+   final ur t;
 
-   public static ezo a(ur $$0, ur $$1, Runnable $$2) {
-      return new ezo($$0, null, $$1, $$2, 0);
+   private ezo(fau $$0, ur $$1) {
+      super(esv.a);
+      this.p = $$0;
+      this.t = $$1;
    }
 
-   public static ezo a(ur $$0, ur $$1, ur $$2, Runnable $$3) {
-      return new ezo($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected ezo(ur $$0, @Nullable ur $$1, ur $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      if (this.k != null) {
-         this.n = evf.a(this.i, this.k, 360);
+   public static void a(fau $$0, etd $$1, fmv $$2, flu $$3, boolean $$4) {
+      if ($$1.y instanceof ezo) {
+         k.error("Attempt to connect while already connecting");
+      } else {
+         ezo $$5 = new ezo($$0, $$4 ? fqd.a : uq.q);
+         $$1.y();
+         $$1.aQ();
+         $$1.a(fmj.a($$3 != null ? $$3.b : $$2.a()));
+         $$1.aY().a(fqe.c.b, $$3.b, $$3.a);
+         $$1.a($$5);
+         $$5.a($$1, $$2, $$3);
       }
+   }
 
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(eum.a(this.l, $$0x -> this.aE_()).a((this.g - 150) / 2, $$4, 150, 20).a());
+   private void a(final etd $$0, final fmv $$1, @Nullable final flu $$2) {
+      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (ezo.this.o) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = fmx.a.a($$1).map(fmu::d);
+               if (ezo.this.o) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new ezw(ezo.this.p, ezo.this.t, ezo.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               ts $$2;
+               synchronized (ezo.this) {
+                  if (ezo.this.o) {
+                     return;
+                  }
+
+                  $$2 = new ts(wl.b);
+                  $$2.a($$0.aM().l());
+                  ezo.this.n = ts.a($$0, $$0.m.aw(), $$2);
+               }
+
+               ezo.this.n.syncUninterruptibly();
+               synchronized (ezo.this) {
+                  if (ezo.this.o) {
+                     $$2.a(ezo.a);
+                     return;
+                  }
+
+                  ezo.this.m = $$2;
+               }
+
+               ezo.this.m.a($$0.getHostName(), $$0.getPort(), new fli(ezo.this.m, $$0, $$2, ezo.this.p, false, null, ezo.this::a));
+               ezo.this.m.a(new aew($$0.U().c(), $$0.U().b()));
+            } catch (Exception var9) {
+               if (ezo.this.o) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               ezo.k.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new ezw(ezo.this.p, ezo.this.t, ur.a("disconnect.genericReason", $$8))));
+            }
+         }
+      };
+      $$3.setUncaughtExceptionHandler(new r(k));
+      $$3.start();
+   }
+
+   private void a(ur $$0) {
+      this.q = $$0;
    }
 
    @Override
    public void d() {
-      if (this.p > 0) {
-         this.p--;
+      if (this.m != null) {
+         if (this.m.k()) {
+            this.m.d();
+         } else {
+            this.m.p();
+         }
       }
-
-      this.o.i = this.p == 0;
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   public boolean aE_() {
+      return false;
+   }
+
+   @Override
+   protected void aP_() {
+      this.d(euz.a(uq.e, $$0 -> {
+         synchronized (this) {
+            this.o = true;
+            if (this.n != null) {
+               this.n.cancel(true);
+               this.n = null;
+            }
+
+            if (this.m != null) {
+               this.m.a(a);
+            }
+         }
+
+         this.f.a(this.p);
+      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = ezs.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
-      } else {
-         this.n.a($$0, this.g / 2, 120);
+      long $$4 = ac.b();
+      if ($$4 - this.r > 2000L) {
+         this.r = $$4;
+         this.f.aU().c(ur.c("narrator.joining"));
       }
-   }
 
-   @Override
-   public boolean aD_() {
-      return this.n != null && this.o.i;
-   }
-
-   @Override
-   public void aE_() {
-      this.m.run();
-   }
-
-   @Override
-   public ur h() {
-      return uq.a(this.e, this.k != null ? this.k : uq.a);
+      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
    }
 }

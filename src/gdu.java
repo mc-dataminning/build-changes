@@ -1,77 +1,70 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class gdu implements gdi {
-   private final int a;
-   private final List<bhc.b<gdi>> b;
-   private final gdi c;
+public class gdu implements AutoCloseable {
+   private final Map<agi, gdu.a> a;
 
-   public gdu(List<bhc.b<gdi>> $$0) {
-      this.b = $$0;
-      this.a = bhd.a($$0);
-      this.c = $$0.get(0).b();
+   public gdu(Map<agi, agi> $$0, gbv $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gbt $$2 = new gbt((agi)$$1x.getKey());
+         $$1.a((agi)$$1x.getKey(), $$2);
+         return new gdu.a($$2, (agi)$$1x.getValue());
+      }));
+   }
+
+   public gbt a(agi $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public List<fre> a(@Nullable dgw $$0, @Nullable hx $$1, ato $$2) {
-      return bhd.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public void close() {
+      this.a.values().forEach(gdu.a::close);
+      this.a.clear();
    }
 
-   @Override
-   public boolean a() {
-      return this.c.a();
+   public Map<agi, CompletableFuture<gdu.b>> a(aph $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gdu.a $$4 = $$3.getValue();
+         return gbp.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gdu.b($$4.a, $$1xx));
+      }));
    }
 
-   @Override
-   public boolean b() {
-      return this.c.b();
+   static record a(gbt a, agi b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
    }
 
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
+   public static class b {
+      private final gbt a;
+      private final gbp.a b;
 
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public gbh e() {
-      return this.c.e();
-   }
-
-   @Override
-   public frq f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fro g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bhc.b<gdi>> a = Lists.newArrayList();
-
-      public gdu.a a(@Nullable gdi $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bhc.a($$0, $$1));
-         }
-
-         return this;
+      public b(gbt $$0, gbp.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       @Nullable
-      public gdi a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gdi)(this.a.size() == 1 ? this.a.get(0).b() : new gdu(this.a));
-         }
+      public gbu a(agi $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public gbu a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
       }
    }
 }

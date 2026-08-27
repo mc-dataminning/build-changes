@@ -1,57 +1,76 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class ezx extends faj {
-   @Nullable
-   private final esu<Unit> l;
+public class ezx extends fau {
+   private static final ur a = ur.c("addServer.enterName");
+   private static final ur b = ur.c("addServer.enterIp");
+   private euz c;
+   private final BooleanConsumer k;
+   private final flu l;
+   private evi m;
+   private evi n;
+   private final fau o;
 
-   public static ezx a(esr $$0, fah $$1, esv $$2) {
-      List<esu<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.Q());
-      $$3.add($$2.R());
-      esu<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bin $$1x = $$0x.ai();
-            return new esu<>(
-               "options.difficulty.online",
-               esu.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new esu.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new ezx($$1, $$2, $$3.toArray(new esu[0]), $$4);
-   }
-
-   private ezx(fah $$0, esv $$1, esu<?>[] $$2, @Nullable esu<Unit> $$3) {
-      super($$0, $$1, ur.c("options.online.title"), $$2);
-      this.l = $$3;
+   public ezx(fau $$0, BooleanConsumer $$1, flu $$2) {
+      super(ur.c("addServer.title"));
+      this.o = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      if (this.l != null) {
-         euk $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.i = false;
-         }
-      }
+   protected void aP_() {
+      this.n = new evi(this.i, this.g / 2 - 100, 66, 200, 20, ur.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.C());
+      this.e(this.n);
+      this.m = new evi(this.i, this.g / 2 - 100, 106, 200, 20, ur.c("addServer.enterIp"));
+      this.m.l(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.C());
+      this.e(this.m);
+      this.d(
+         evg.a(flu.a::a)
+            .a(flu.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, ur.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.d(euz.a(ur.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(euz.a(uq.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c(this.n);
+      this.C();
+   }
 
-      euk $$1 = this.k.b(this.b.af());
-      if ($$1 != null) {
-         $$1.i = this.f.A();
-      }
+   @Override
+   public void a(etd $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
+   }
+
+   private void l() {
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
+   }
+
+   @Override
+   public void aF_() {
+      this.f.a(this.o);
+   }
+
+   private void C() {
+      this.c.i = fmv.b(this.m.a()) && !this.n.a().isEmpty();
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,29 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class esh {
-   private final List<uw> a = Lists.newArrayList();
+public abstract class esh extends esd {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final ur d;
+   private final Runnable e;
 
-   public void a(uw $$0) {
-      this.a.add($$0);
+   public esh(long $$0, ur $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Nullable
-   public uw a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : uw.a(this.a);
+   protected abstract void a(eom var1, long var2) throws epz;
+
+   @Override
+   public void run() {
+      eom $$0 = eom.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (eqa var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
       }
    }
 
-   public uw b() {
-      uw $$0 = this.a();
-      return $$0 != null ? $$0 : uw.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   public ur a() {
+      return this.d;
    }
 }

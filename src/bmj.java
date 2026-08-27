@@ -1,77 +1,133 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bmj extends bmp<bwj> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bkm<? extends bwj> f;
-   private final float g;
-   private long h;
+public class bmj {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<bmh, bmi> b = Maps.newHashMap();
+   private final Set<bmi> c = Sets.newHashSet();
+   private final bml d;
 
-   public bmj(bkm<? extends bwj> $$0, float $$1) {
-      super(ImmutableMap.of(btz.h, bua.a, btz.r, bua.b, btz.m, bua.c, btz.n, bua.c, btz.Y, bua.b), 110);
-      this.f = $$0;
-      this.g = $$1;
+   public bmj(bml $$0) {
+      this.d = $$0;
    }
 
-   protected boolean a(ama $$0, bwj $$1) {
-      return $$1.gi() && this.c($$1).isPresent();
-   }
-
-   protected void a(ama $$0, bwj $$1, long $$2) {
-      bwj $$3 = this.c($$1).get();
-      $$1.dN().a(btz.r, $$3);
-      $$3.dN().a(btz.r, $$1);
-      bmr.a($$1, $$3, this.g);
-      int $$4 = 60 + $$1.ef().a(50);
-      this.h = $$2 + (long)$$4;
-   }
-
-   protected boolean b(ama $$0, bwj $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         bwj $$3 = this.a($$1);
-         return $$3.bv() && $$1.a($$3) && bmr.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.gb() && !$$3.gb();
+   private void a(bmi $$0) {
+      if ($$0.a().b()) {
+         this.c.add($$0);
       }
    }
 
-   protected void c(ama $$0, bwj $$1, long $$2) {
-      bwj $$3 = this.a($$1);
-      bmr.a($$1, $$3, this.g);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.h) {
-            $$1.a($$0, $$3);
-            $$1.dN().b(btz.r);
-            $$3.dN().b(btz.r);
+   public Set<bmi> a() {
+      return this.c;
+   }
+
+   public Collection<bmi> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().b()).collect(Collectors.toList());
+   }
+
+   @Nullable
+   public bmi a(bmh $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   }
+
+   @Nullable
+   public bmi a(ib<bmh> $$0) {
+      return this.a($$0.a());
+   }
+
+   public boolean b(bmh $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
+   }
+
+   public boolean b(ib<bmh> $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean a(bmh $$0, UUID $$1) {
+      bmi $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
+
+   public boolean a(ib<bmh> $$0, UUID $$1) {
+      return this.a($$0.a(), $$1);
+   }
+
+   public double c(bmh $$0) {
+      bmi $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
+   }
+
+   public double d(bmh $$0) {
+      bmi $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(bmh $$0, UUID $$1) {
+      bmi $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
+   }
+
+   public double b(ib<bmh> $$0, UUID $$1) {
+      return this.b($$0.a(), $$1);
+   }
+
+   public void a(Multimap<bmh, bmk> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bmi $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.a()));
          }
+      });
+   }
+
+   public void b(Multimap<bmh, bmk> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bmi $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.a());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void a(bmj $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bmi $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public sf c() {
+      sf $$0 = new sf();
+
+      for (bmi $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
+
+      return $$0;
    }
 
-   protected void d(ama $$0, bwj $$1, long $$2) {
-      $$1.dN().b(btz.r);
-      $$1.dN().b(btz.m);
-      $$1.dN().b(btz.n);
-      this.h = 0L;
-   }
-
-   private bwj a(bwj $$0) {
-      return (bwj)$$0.dN().c(btz.r).get();
-   }
-
-   private boolean b(bwj $$0) {
-      bly<?> $$1 = $$0.dN();
-      return $$1.a(btz.r) && $$1.c(btz.r).get().ag() == this.f;
-   }
-
-   private Optional<? extends bwj> c(bwj $$0) {
-      return $$0.dN().c(btz.h).get().a($$1 -> {
-         if ($$1.ag() == this.f && $$1 instanceof bwj $$2 && $$0.a($$2) && !$$2.gb()) {
-            return true;
-         }
-
-         return false;
-      }).map(bwj.class::cast);
+   public void a(sf $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         rz $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         ac.a(jy.v.b(agi.a($$3)), $$1x -> {
+            bmi $$2x = this.a($$1x);
+            if ($$2x != null) {
+               $$2x.a($$2);
+            }
+         }, () -> a.warn("Ignoring unknown attribute '{}'", $$3));
+      }
    }
 }

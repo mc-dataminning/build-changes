@@ -1,48 +1,25 @@
-public class gac extends fzs<bxj, fgu<bxj>> {
-   private static final agg a = new agg("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final agg b = new agg("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final agg c = new agg("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final agg d = new agg("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final agg e = new agg("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final agg f = new agg("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final agg g = new agg("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final agg h = new agg("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final agg i = new agg("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final agg j = new agg("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final agg k = new agg("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final agg l = new agg("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fji<bxj> m;
-   private final fjj<bxj> n;
+public class gac<T extends cdu> extends gaf<T, fiu<T>> {
+   private final fip a;
 
-   public gac(fxf<bxj, fgu<bxj>> $$0, fjx $$1) {
+   public gac(fxs<T, fiu<T>> $$0, fkk $$1) {
       super($$0);
-      this.m = new fji<>($$1.a(fka.bG));
-      this.n = new fjj<>($$1.a(fka.bE));
+      this.a = new fip($$1.a(fkn.aA));
    }
 
-   public void a(enk $$0, fqh $$1, int $$2, bxj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      bxj.b $$10 = $$3.gp();
+   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
 
-      fhc<bxj> $$11 = (fhc<bxj>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
+   private void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      rz $$9 = $$8 ? $$3.gk() : $$3.gl();
+      bku.a($$9.l("id")).filter($$0x -> $$0x == bku.at).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         bxh.b $$11 = bxh.b.a($$9.h("Variant"));
+         eoa $$12 = $$1.getBuffer(this.a.a(fxj.a($$11)));
+         this.a.a($$0, $$12, $$2, gbl.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.b();
       });
-
-      agg $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.go().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

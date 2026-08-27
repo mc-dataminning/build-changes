@@ -1,41 +1,37 @@
-public class fhi<T extends bye> extends fim<T> {
-   public fhi(fkb $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+public class fhi<T extends bkq> extends fiz<T> {
+   public fhi(fko $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fkh c() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      fkk $$2 = $$1.a(
+   public static fku c() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
          "head",
-         fkg.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fkd.a(1.0F, 14.0F, 0.0F)
+         fkt.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fkq.a(0.0F, 4.0F, -8.0F)
       );
-      $$2.a("left_horn", fkg.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fkd.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fkg.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fkd.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fkg.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fkd.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fkg.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fkd.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fkg.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fkd.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fkg.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fkd.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fkg.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fkd.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fkg.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fkd.a(-3.0F, 14.0F, -6.0F));
-      return fkh.a($$0, 64, 64);
+      $$1.a(
+         "body",
+         fkt.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fkq.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      fkt $$3 = fkt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fkq.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fkq.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fkq.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fkq.a(4.0F, 12.0F, -6.0F));
+      return fku.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.ge();
-      this.a.b("right_horn").k = $$0.gk();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gp();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
-      }
+   public fko d() {
+      return this.a;
    }
 }

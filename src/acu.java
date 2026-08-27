@@ -1,29 +1,14 @@
-public class acu implements wk<acj> {
-   private final acu.a a;
-
-   public acu(acu.a $$0) {
-      this.a = $$0;
-   }
-
+public record acu(vi.a a) implements wk<acl> {
    public acu(tu $$0) {
-      this.a = $$0.b(acu.a.class);
+      this(vi.a.a($$0));
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.a(this.a);
+      vi.a.a($$0, this.a);
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
-   }
-
-   public acu.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

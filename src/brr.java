@@ -1,134 +1,85 @@
-import java.util.EnumSet;
+public class brr extends bsf {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final bwz b;
+   private final int c;
+   private boolean d;
 
-public class brr extends brt {
-   public static final int a = 12;
-   private static final int b = 2;
-   private static final int c = 3;
-   private static final int d = 1;
-   private final blt e;
-   private bky f;
-   private final crv g;
-   private final double h;
-   private final buh i;
-   private int j;
-   private final float k;
-   private final float l;
-   private float m;
-   private final boolean n;
-
-   public brr(blt $$0, double $$1, float $$2, float $$3, boolean $$4) {
-      this.e = $$0;
-      this.g = $$0.dL();
-      this.h = $$1;
-      this.i = $$0.L();
-      this.l = $$2;
-      this.k = $$3;
-      this.n = $$4;
-      this.a(EnumSet.of(brt.a.a, brt.a.b));
-      if (!($$0.L() instanceof bug) && !($$0.L() instanceof buf)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public brr(bwz $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean a() {
-      bky $$0 = this.e.P_();
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.N_()) {
-         return false;
-      } else if (this.h()) {
-         return false;
-      } else if (this.e.f($$0) < (double)(this.l * this.l)) {
+      if (this.b.eh().a(this.c) != 0) {
          return false;
       } else {
-         this.f = $$0;
+         hx $$0 = this.b.cF();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         ht $$3 = this.b.dn();
+
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
+         }
+
          return true;
       }
+   }
+
+   private boolean a(ht $$0, int $$1, int $$2, int $$3) {
+      ht $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dN().b_($$4).a(arl.a) && !this.b.dN().a_($$4).d();
+   }
+
+   private boolean b(ht $$0, int $$1, int $$2, int $$3) {
+      return this.b.dN().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dN().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean b() {
-      if (this.i.l()) {
-         return false;
-      } else {
-         return this.h() ? false : !(this.e.f(this.f) <= (double)(this.k * this.k));
-      }
+      double $$0 = this.b.dq().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dF() == 0.0F || !(Math.abs(this.b.dF()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
    }
 
-   private boolean h() {
-      return this.e.ge() || this.e.bN() || this.e.fS();
+   @Override
+   public boolean R_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.j = 0;
-      this.m = this.e.a(ecr.j);
-      this.e.a(ecr.j, 0.0F);
+      hx $$0 = this.b.cF();
+      this.b.g(this.b.dq().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.N().n();
    }
 
    @Override
    public void d() {
-      this.f = null;
-      this.i.n();
-      this.e.a(ecr.j, this.m);
+      this.b.s(0.0F);
    }
 
    @Override
    public void e() {
-      this.e.G().a(this.f, 10.0F, (float)this.e.Y());
-      if (--this.j <= 0) {
-         this.j = this.a(10);
-         if (this.e.f(this.f) >= 144.0) {
-            this.i();
-         } else {
-            this.i.a(this.f, this.h);
-         }
+      boolean $$0 = this.d;
+      if (!$$0) {
+         ecs $$1 = this.b.dN().b_(this.b.dn());
+         this.d = $$1.a(arl.a);
       }
-   }
 
-   private void i() {
-      ht $$0 = this.f.dl();
-
-      for (int $$1 = 0; $$1 < 10; $$1++) {
-         int $$2 = this.a(-3, 3);
-         int $$3 = this.a(-1, 1);
-         int $$4 = this.a(-3, 3);
-         boolean $$5 = this.a($$0.u() + $$2, $$0.v() + $$3, $$0.w() + $$4);
-         if ($$5) {
-            return;
-         }
+      if (this.d && !$$0) {
+         this.b.a(aqr.gp, 1.0F, 1.0F);
       }
-   }
 
-   private boolean a(int $$0, int $$1, int $$2) {
-      if (Math.abs((double)$$0 - this.f.dq()) < 2.0 && Math.abs((double)$$2 - this.f.dw()) < 2.0) {
-         return false;
-      } else if (!this.a(new ht($$0, $$1, $$2))) {
-         return false;
-      } else {
-         this.e.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.e.dB(), this.e.dD());
-         this.i.n();
-         return true;
+      eju $$2 = this.b.dq();
+      if ($$2.d * $$2.d < 0.03F && this.b.dF() != 0.0F) {
+         this.b.s(atm.j(0.2F, this.b.dF(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.s((float)$$4);
       }
-   }
-
-   private boolean a(ht $$0) {
-      ecr $$1 = eda.a(this.g, $$0.j());
-      if ($$1 != ecr.c) {
-         return false;
-      } else {
-         dgw $$2 = this.g.a_($$0.d());
-         if (!this.n && $$2.b() instanceof czc) {
-            return false;
-         } else {
-            ht $$3 = $$0.b(this.e.dl());
-            return this.g.a(this.e, this.e.cG().a($$3));
-         }
-      }
-   }
-
-   private int a(int $$0, int $$1) {
-      return this.e.ef().a($$1 - $$0 + 1) + $$0;
    }
 }

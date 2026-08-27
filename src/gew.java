@@ -1,35 +1,44 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class gew extends gel {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cdu p;
+   private final cfl q;
+   private final boolean r;
 
-public class gew<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public gew(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public gew(cdu $$0, cfl $$1, boolean $$2) {
+      super($$2 ? aqr.nA : aqr.nB, aqs.g, gfc.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gfc.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.q.aU();
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dI() || !this.p.bO() || this.p.da() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dq().h();
+         if ($$0 >= 0.01F) {
+            this.d = atm.b(0.0F, 0.75F, $$0);
          } else {
-            this.b.next();
+            this.d = 0.0F;
          }
       }
-
-      return (T)this.endOfData();
    }
 }

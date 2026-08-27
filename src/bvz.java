@@ -1,139 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
 public class bvz {
-   private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<bvy> b = new Short2ObjectOpenHashMap();
-   private final Map<ib<bwa>, Set<bvy>> c = Maps.newHashMap();
-   private final Runnable d;
-   private boolean e;
-
-   public static Codec<bvz> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     RecordCodecBuilder.point($$0),
-                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
-                     bvy.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
-                  )
-                  .apply($$1, bvz::new)
-         )
-         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new bvz($$0, false, ImmutableList.of()));
+   @Nullable
+   public static eju a(blp $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::h);
    }
 
-   public bvz(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
+   @Nullable
+   public static eju a(blp $$0, int $$1, int $$2, ToDoubleFunction<ht> $$3) {
+      boolean $$4 = bvx.a($$0, $$1);
+      return bwa.a(() -> {
+         ht $$4x = bwa.a($$0.eh(), $$1, $$2);
+         ht $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
-   private bvz(Runnable $$0, boolean $$1, List<bvy> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
+   @Nullable
+   public static eju a(blp $$0, int $$1, int $$2, eju $$3) {
+      eju $$4 = $$3.a($$0.ds(), $$0.du(), $$0.dy());
+      boolean $$5 = bvx.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public Stream<bvy> a(Predicate<ib<bwa>> $$0, bvx.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((ib<bwa>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   @Nullable
+   public static eju b(blp $$0, int $$1, int $$2, eju $$3) {
+      eju $$4 = $$0.dl().d($$3);
+      boolean $$5 = bvx.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public void a(ht $$0, ib<bwa> $$1) {
-      if (this.a(new bvy($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
-         this.d.run();
-      }
-   }
-
-   private boolean a(bvy $$0) {
-      ht $$1 = $$0.f();
-      ib<bwa> $$2 = $$0.g();
-      short $$3 = iu.b($$1);
-      bvy $$4 = (bvy)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.g())) {
-            return false;
+   @Nullable
+   private static eju a(blp $$0, int $$1, int $$2, eju $$3, boolean $$4) {
+      return bwa.a($$0, () -> {
+         ht $$5 = bwa.a($$0.eh(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            ht $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
-
-         ac.a("POI data mismatch: already registered at " + $$1);
-      }
-
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
+      });
    }
 
-   public void a(ht $$0) {
-      bvy $$1 = (bvy)this.b.remove(iu.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
-      } else {
-         this.c.get($$1.g()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
-         this.d.run();
-      }
+   @Nullable
+   public static ht a(blp $$0, ht $$1) {
+      $$1 = bwa.a($$1, $$0.dN().ak(), $$1x -> bvx.c($$0, $$1x));
+      return !bvx.a($$0, $$1) && !bvx.b($$0, $$1) ? $$1 : null;
    }
 
-   @Deprecated
-   @auk
-   public int b(ht $$0) {
-      return this.e($$0).map(bvy::a).orElse(0);
-   }
-
-   public boolean c(ht $$0) {
-      bvy $$1 = (bvy)this.b.get(iu.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
-      } else {
-         boolean $$2 = $$1.c();
-         this.d.run();
-         return $$2;
-      }
-   }
-
-   public boolean a(ht $$0, Predicate<ib<bwa>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
-
-   public Optional<ib<bwa>> d(ht $$0) {
-      return this.e($$0).map(bvy::g);
-   }
-
-   private Optional<bvy> e(ht $$0) {
-      return Optional.ofNullable((bvy)this.b.get(iu.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<ht, ib<bwa>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<bvy> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.b();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = iu.b($$1x);
-            bvy $$4 = (bvy)$$1.computeIfAbsent($$3, $$2x -> new bvy($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
-         this.d.run();
-      }
-   }
-
-   private void b() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   boolean a() {
-      return this.e;
+   @Nullable
+   public static ht a(blp $$0, int $$1, boolean $$2, ht $$3) {
+      ht $$4 = bwa.a($$0, $$1, $$0.eh(), $$3);
+      return !bvx.a($$4, $$0) && !bvx.a($$2, $$0, $$4) && !bvx.a($$0.N(), $$4) ? $$4 : null;
    }
 }

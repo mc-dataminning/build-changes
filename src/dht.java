@@ -1,23 +1,16 @@
-public enum dht implements aub {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum dht implements aug {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final String f;
+   private final String d;
 
    private dht(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

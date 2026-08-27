@@ -1,28 +1,60 @@
-public class fuy extends fwq<cam, fgw<cam>> {
-   private static final agg a = new agg("textures/entity/creeper/creeper.png");
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-   public fuy(fvk.a $$0) {
-      super($$0, new fgw<>($$0.a(fka.B)), 0.5F);
-      this.a(new fyv(this, $$0.f()));
+public abstract class fuy<T extends cea> extends fvw<T> {
+   public fuy(fvx.a $$0) {
+      super($$0);
    }
 
-   protected void a(cam $$0, enk $$1, float $$2) {
-      float $$3 = $$0.E($$2);
-      float $$4 = 1.0F + ati.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = ati.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
+   public void a(T $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(atm.i($$2, $$0.N, $$0.dD()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(atm.i($$2, $$0.O, $$0.dF())));
+      int $$6 = 0;
+      float $$7 = 0.0F;
+      float $$8 = 0.5F;
+      float $$9 = 0.0F;
+      float $$10 = 0.15625F;
+      float $$11 = 0.0F;
+      float $$12 = 0.15625F;
+      float $$13 = 0.15625F;
+      float $$14 = 0.3125F;
+      float $$15 = 0.05625F;
+      float $$16 = (float)$$0.e - $$2;
+      if ($$16 > 0.0F) {
+         float $$17 = -atm.a($$16 * 3.0F) * $$16;
+         $$3.a(a.f.rotationDegrees($$17));
+      }
+
+      $$3.a(a.b.rotationDegrees(45.0F));
+      $$3.b(0.05625F, 0.05625F, 0.05625F);
+      $$3.a(-4.0F, 0.0F, 0.0F);
+      eoa $$18 = $$4.getBuffer(frc.d(this.a($$0)));
+      enw.a $$19 = $$3.c();
+      Matrix4f $$20 = $$19.a();
+      Matrix3f $$21 = $$19.b();
+      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
+      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
+
+      for (int $$22 = 0; $$22 < 4; $$22++) {
+         $$3.a(a.b.rotationDegrees(90.0F));
+         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
+         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
+         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
+         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
+      }
+
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected float a(cam $$0, float $$1) {
-      float $$2 = $$0.E($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ati.a($$2, 0.5F, 1.0F);
-   }
-
-   public agg a(cam $$0) {
-      return a;
+   public void a(Matrix4f $$0, Matrix3f $$1, eoa $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
+      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(gbl.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
    }
 }

@@ -1,7 +1,245 @@
-public interface cuw {
-   boolean b(crv var1, ht var2, dgw var3);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   boolean a(crs var1, ato var2, ht var3, dgw var4);
+public class cuw extends cum {
+   public static final MapCodec<cuw> a = b(cuw::new);
+   public static final dic b = cyv.aE;
+   public static final dig<dhw> c = dhy.V;
+   public static final dhz d = dhy.w;
+   private static final ekn f = cva.a(0.0, 0.0, 4.0, 16.0, 16.0, 12.0);
+   private static final ekn g = cva.a(4.0, 0.0, 0.0, 12.0, 16.0, 16.0);
+   private static final ekn h = cva.a(5.0, 6.0, 5.0, 11.0, 13.0, 11.0);
+   private static final ekn i = cva.a(4.0, 4.0, 4.0, 12.0, 6.0, 12.0);
+   private static final ekn j = ekk.a(i, h);
+   private static final ekn k = ekk.a(j, cva.a(7.0, 13.0, 0.0, 9.0, 15.0, 16.0));
+   private static final ekn l = ekk.a(j, cva.a(0.0, 13.0, 7.0, 16.0, 15.0, 9.0));
+   private static final ekn m = ekk.a(j, cva.a(0.0, 13.0, 7.0, 13.0, 15.0, 9.0));
+   private static final ekn n = ekk.a(j, cva.a(3.0, 13.0, 7.0, 16.0, 15.0, 9.0));
+   private static final ekn o = ekk.a(j, cva.a(7.0, 13.0, 0.0, 9.0, 15.0, 13.0));
+   private static final ekn F = ekk.a(j, cva.a(7.0, 13.0, 3.0, 9.0, 15.0, 16.0));
+   private static final ekn G = ekk.a(j, cva.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0));
+   public static final int e = 1;
 
-   void a(ama var1, ato var2, ht var3, dgw var4);
+   @Override
+   public MapCodec<cuw> a() {
+      return a;
+   }
+
+   public cuw(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, hx.c).a(c, dhw.a).a(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
+      boolean $$6 = $$1.B($$2);
+      if ($$6 != $$0.c(d)) {
+         if ($$6) {
+            this.a($$1, $$2, null);
+         }
+
+         $$1.a($$2, $$0.a(d, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   @Override
+   public void a(csa $$0, dhi $$1, ejq $$2, cem $$3) {
+      bkq $$4 = $$3.w();
+      cdu $$5 = $$4 instanceof cdu ? (cdu)$$4 : null;
+      this.a($$0, $$1, $$2, $$5, true);
+   }
+
+   @Override
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      return this.a($$1, $$0, $$5, $$3, true) ? bix.a($$1.B) : bix.d;
+   }
+
+   public boolean a(csa $$0, dhi $$1, ejq $$2, @Nullable cdu $$3, boolean $$4) {
+      hx $$5 = $$2.b();
+      ht $$6 = $$2.a();
+      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.e().d - (double)$$6.v());
+      if ($$7) {
+         boolean $$8 = this.a($$3, $$0, $$6, $$5);
+         if ($$8 && $$3 != null) {
+            $$3.a(arb.az);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(dhi $$0, hx $$1, double $$2) {
+      if ($$1.o() != hx.a.b && !($$2 > 0.8124F)) {
+         hx $$3 = $$0.c(b);
+         dhw $$4 = $$0.c(c);
+         switch ($$4) {
+            case a:
+               return $$3.o() == $$1.o();
+            case c:
+            case d:
+               return $$3.o() != $$1.o();
+            case b:
+               return true;
+            default:
+               return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(csa $$0, ht $$1, @Nullable hx $$2) {
+      return this.a(null, $$0, $$1, $$2);
+   }
+
+   public boolean a(@Nullable bkq $$0, csa $$1, ht $$2, @Nullable hx $$3) {
+      dfd $$4 = $$1.c_($$2);
+      if (!$$1.B && $$4 instanceof dfb) {
+         if ($$3 == null) {
+            $$3 = $$1.a_($$2).c(b);
+         }
+
+         ((dfb)$$4).a($$3);
+         $$1.a(null, $$2, aqr.bK, aqs.e, 2.0F, 1.0F);
+         $$1.a($$0, dls.c, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private ekn h(dhi $$0) {
+      hx $$1 = $$0.c(b);
+      dhw $$2 = $$0.c(c);
+      if ($$2 == dhw.a) {
+         return $$1 != hx.c && $$1 != hx.d ? g : f;
+      } else if ($$2 == dhw.b) {
+         return G;
+      } else if ($$2 == dhw.d) {
+         return $$1 != hx.c && $$1 != hx.d ? l : k;
+      } else if ($$1 == hx.c) {
+         return o;
+      } else if ($$1 == hx.d) {
+         return F;
+      } else {
+         return $$1 == hx.f ? n : m;
+      }
+   }
+
+   @Override
+   public ekn b(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return this.h($$0);
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return this.h($$0);
+   }
+
+   @Override
+   public dbf b_(dhi $$0) {
+      return dbf.c;
+   }
+
+   @Nullable
+   @Override
+   public dhi a(cnr $$0) {
+      hx $$1 = $$0.k();
+      ht $$2 = $$0.a();
+      csa $$3 = $$0.q();
+      hx.a $$4 = $$1.o();
+      if ($$4 == hx.a.b) {
+         dhi $$5 = this.o().a(c, $$1 == hx.a ? dhw.b : dhw.a).a(b, $$0.g());
+         if ($$5.a((csd)$$0.q(), $$2)) {
+            return $$5;
+         }
+      } else {
+         boolean $$6 = $$4 == hx.a.a && $$3.a_($$2.g()).d($$3, $$2.g(), hx.f) && $$3.a_($$2.h()).d($$3, $$2.h(), hx.e)
+            || $$4 == hx.a.c && $$3.a_($$2.e()).d($$3, $$2.e(), hx.d) && $$3.a_($$2.f()).d($$3, $$2.f(), hx.c);
+         dhi $$7 = this.o().a(b, $$1.g()).a(c, $$6 ? dhw.d : dhw.c);
+         if ($$7.a((csd)$$0.q(), $$0.a())) {
+            return $$7;
+         }
+
+         boolean $$8 = $$3.a_($$2.d()).d($$3, $$2.d(), hx.b);
+         $$7 = $$7.a(c, $$8 ? dhw.a : dhw.b);
+         if ($$7.a((csd)$$0.q(), $$0.a())) {
+            return $$7;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      dhw $$6 = $$0.c(c);
+      hx $$7 = n($$0).g();
+      if ($$7 == $$1 && !$$0.a($$3, $$4) && $$6 != dhw.d) {
+         return cvc.a.o();
+      } else {
+         if ($$1.o() == $$0.c(b).o()) {
+            if ($$6 == dhw.d && !$$2.d($$3, $$5, $$1)) {
+               return $$0.a(c, dhw.c).a(b, $$1.g());
+            }
+
+            if ($$6 == dhw.c && $$7.g() == $$1 && $$2.d($$3, $$5, $$0.c(b))) {
+               return $$0.a(c, dhw.d);
+            }
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      hx $$3 = n($$0).g();
+      return $$3 == hx.b ? cva.a($$1, $$2.c(), hx.a) : cxu.b($$1, $$2, $$3);
+   }
+
+   private static hx n(dhi $$0) {
+      switch ((dhw)$$0.c(c)) {
+         case a:
+            return hx.b;
+         case b:
+            return hx.a;
+         default:
+            return $$0.c(b).g();
+      }
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Nullable
+   @Override
+   public dfd a(ht $$0, dhi $$1) {
+      return new dfb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return a($$2, dff.E, $$0.B ? dfb::a : dfb::b);
+   }
+
+   @Override
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      return false;
+   }
+
+   @Override
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
 }

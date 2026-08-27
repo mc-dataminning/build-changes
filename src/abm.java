@@ -23,15 +23,15 @@ public class abm implements wk<yd> {
       this.j = ImmutableList.copyOf($$3);
    }
 
-   public static abm a(ekf $$0, boolean $$1) {
+   public static abm a(ekr $$0, boolean $$1) {
       return new abm($$0.b(), $$1 ? 0 : 2, Optional.of(new abm.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static abm a(ekf $$0) {
+   public static abm a(ekr $$0) {
       return new abm($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static abm a(ekf $$0, String $$1, abm.a $$2) {
+   public static abm a(ekr $$0, String $$1, abm.a $$2) {
       return new abm($$0.b(), $$2 == abm.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -129,7 +129,7 @@ public class abm implements wk<yd> {
       private final n f;
       private final int g;
 
-      public b(ekf $$0) {
+      public b(ekr $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

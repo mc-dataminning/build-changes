@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface uw {
-   Optional<auj> a = Optional.of(auj.a);
+   Optional<auo> a = Optional.of(auo.a);
    uw b = new uw() {
       @Override
       public <T> Optional<T> a(uw.a<T> $$0) {

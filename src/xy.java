@@ -1,5 +1,5 @@
 public record xy(ip.b a) implements wk<xw> {
-   private static final age<sw> b = age.a(sn.a, ip.a(jy.ar));
+   private static final agg<sw> b = agg.a(sn.a, ip.a(jy.ar));
 
    public xy(tu $$0) {
       this($$0.<ip>a(b, is.a).c());

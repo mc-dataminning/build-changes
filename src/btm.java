@@ -1,64 +1,41 @@
-import java.util.EnumSet;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class btm<T extends bky> extends btt {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class btm<T extends bli> extends bsb {
+   private final T a;
+   private final clj b;
+   private final Predicate<? super T> c;
    @Nullable
-   protected bky c;
-   protected bvk d;
+   private final aqq d;
 
-   public btm(bla $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public btm(bla $$0, Class<T> $$1, boolean $$2, Predicate<bky> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public btm(bla $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public btm(bla $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bky> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(brt.a.d));
-      this.d = bvk.a().a(this.l()).a($$5);
+   public btm(T $$0, clj $$1, @Nullable aqq $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      if (this.b > 0 && this.e.ef().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.c.test(this.a);
    }
 
-   protected ejd a(double $$0) {
-      return this.e.cG().c($$0, 4.0, $$0);
-   }
-
-   protected void h() {
-      if (this.a != cdm.class && this.a != amb.class) {
-         this.c = this.e.dL().a(this.e.dL().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
-      } else {
-         this.c = this.e.dL().a(this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
-      }
+   @Override
+   public boolean b() {
+      return this.a.fo();
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
-      super.c();
+      this.a.a(bkv.a, this.b.p());
+      this.a.c(biw.a);
    }
 
-   public void a(@Nullable bky $$0) {
-      this.c = $$0;
+   @Override
+   public void d() {
+      this.a.a(bkv.a, clj.b);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.eh().i() * 0.2F + 0.9F);
+      }
    }
 }

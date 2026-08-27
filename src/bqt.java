@@ -1,51 +1,21 @@
-public class bqt extends bqw {
-   private final int l;
-   private final boolean m;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public bqt(bla $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-   }
-
-   @Override
-   public void a() {
-      if (this.k == bqw.a.b) {
-         this.k = bqw.a.a;
-         this.d.e(true);
-         double $$0 = this.e - this.d.dq();
-         double $$1 = this.f - this.d.ds();
-         double $$2 = this.g - this.d.dw();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.B(0.0F);
-            this.d.A(0.0F);
-            return;
-         }
-
-         float $$4 = (float)(ati.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dB(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aA()) {
-            $$5 = (float)(this.h * this.d.b(bme.m));
-         } else {
-            $$5 = (float)(this.h * this.d.b(bme.f));
-         }
-
-         this.d.w($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ati.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dD(), $$8, (float)this.l));
-            this.d.B($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.e(false);
-         }
-
-         this.d.B(0.0F);
-         this.d.A(0.0F);
-      }
+public class bqt {
+   public static <E extends ccy> bmy<E> a(Function<E, Optional<? extends blg>> $$0) {
+      return bqj.a(
+         (Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$1 -> $$1.group($$1.c(buh.ax), $$1.c(buh.o), $$1.a(buh.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends blg> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::a).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,30 +1,37 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import java.util.Locale;
 
-public class fmk {
-   public static final fmk a = new fmk(fmj.b, fml.createDnsSrvRedirectHandler(), fmg.a());
-   private final fmj b;
-   private final fml c;
-   private final fmg d;
+public enum fmk {
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
 
-   @VisibleForTesting
-   fmk(fmj $$0, fml $$1, fmg $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private final String k;
+   private final ur l;
+   private final ur m;
+
+   private fmk(String $$0) {
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = ur.c($$1);
+      this.m = ur.c($$1 + ".description");
    }
 
-   public Optional<fmh> a(fmi $$0) {
-      Optional<fmh> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<fmi> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public String a() {
+      return this.k;
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
-      }
+   public ur b() {
+      return this.l;
+   }
+
+   public ur c() {
+      return this.m;
    }
 }

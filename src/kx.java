@@ -9,265 +9,265 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public abstract class kx implements la {
-   protected static final ehk.a a = ehr.a(cb.a.a().a(new bl(cpq.v, cl.d.b(1))));
-   protected static final ehk.a b = a.invert();
-   protected static final ehk.a c = ehr.a(cb.a.a().a(cle.rh));
-   private static final ehk.a h = c.or(a);
-   private static final ehk.a i = h.invert();
-   protected final Set<ckw> d;
-   protected final cfv e;
-   protected final Map<agg, eet.a> f;
+   protected static final ehw.a a = eid.a(cb.a.a().a(new bl(cpy.v, cl.d.b(1))));
+   protected static final ehw.a b = a.invert();
+   protected static final ehw.a c = eid.a(cb.a.a().a(clm.rS));
+   private static final ehw.a h = c.or(a);
+   private static final ehw.a i = h.invert();
+   protected final Set<cle> d;
+   protected final cgd e;
+   protected final Map<agi, eff.a> f;
    protected static final float[] g = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
    private static final float[] j = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
-   protected kx(Set<ckw> $$0, cfv $$1) {
+   protected kx(Set<cle> $$0, cgd $$1) {
       this($$0, $$1, new HashMap<>());
    }
 
-   protected kx(Set<ckw> $$0, cfv $$1, Map<agg, eet.a> $$2) {
+   protected kx(Set<cle> $$0, cgd $$1, Map<agi, eff.a> $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
    }
 
-   protected <T extends efv<T>> T a(crr $$0, efv<T> $$1) {
-      return !this.d.contains($$0.k()) ? $$1.b(efm.c()) : $$1.c();
+   protected <T extends egh<T>> T a(crz $$0, egh<T> $$1) {
+      return !this.d.contains($$0.k()) ? $$1.b(efy.c()) : $$1.c();
    }
 
-   protected <T extends ehd<T>> T a(crr $$0, ehd<T> $$1) {
-      return !this.d.contains($$0.k()) ? $$1.b(ehg.c()) : $$1.d();
+   protected <T extends ehp<T>> T a(crz $$0, ehp<T> $$1) {
+      return !this.d.contains($$0.k()) ? $$1.b(ehs.c()) : $$1.d();
    }
 
-   public eet.a a(crr $$0) {
-      return eet.b().a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$0))));
+   public eff.a a(crz $$0) {
+      return eff.b().a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$0))));
    }
 
-   private static eet.a a(cut $$0, ehk.a $$1, efe.a<?> $$2) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a(efb.a($$0).a($$1).a($$2)));
+   private static eff.a a(cva $$0, ehw.a $$1, efq.a<?> $$2) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a(efn.a($$0).a($$1).a($$2)));
    }
 
-   protected static eet.a a(cut $$0, efe.a<?> $$1) {
+   protected static eff.a a(cva $$0, efq.a<?> $$1) {
       return a($$0, a, $$1);
    }
 
-   protected static eet.a b(cut $$0, efe.a<?> $$1) {
+   protected static eff.a b(cva $$0, efq.a<?> $$1) {
       return a($$0, c, $$1);
    }
 
-   protected static eet.a c(cut $$0, efe.a<?> $$1) {
+   protected static eff.a c(cva $$0, efq.a<?> $$1) {
       return a($$0, h, $$1);
    }
 
-   protected eet.a a(cut $$0, crr $$1) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a($$1)));
+   protected eff.a a(cva $$0, crz $$1) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a($$1)));
    }
 
-   protected eet.a a(crr $$0, eif $$1) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a((efe.a<?>)this.a($$0, efb.a($$0).a(egj.a($$1)))));
+   protected eff.a a(crz $$0, eir $$1) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a((efq.a<?>)this.a($$0, efn.a($$0).a(egv.a($$1)))));
    }
 
-   protected eet.a a(cut $$0, crr $$1, eif $$2) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a($$1).a(egj.a($$2))));
+   protected eff.a a(cva $$0, crz $$1, eir $$2) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a($$1).a(egv.a($$2))));
    }
 
-   private static eet.a c(crr $$0) {
-      return eet.b().a(ees.a().a(a).a(eid.a(1.0F)).a(efb.a($$0)));
+   private static eff.a c(crz $$0) {
+      return eff.b().a(efe.a().a(a).a(eip.a(1.0F)).a(efn.a($$0)));
    }
 
-   private eet.a d(crr $$0) {
-      return eet.b().a(this.a(cuv.fR, ees.a().a(eid.a(1.0F)).a(efb.a(cuv.fR)))).a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$0))));
+   private eff.a d(crz $$0) {
+      return eff.b().a(this.a(cvc.fR, efe.a().a(eip.a(1.0F)).a(efn.a(cvc.fR)))).a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$0))));
    }
 
-   protected eet.a a(cut $$0) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a((efe.a<?>)this.a((crr)$$0, efb.a($$0).a(egj.a(eid.a(2.0F)).a(ehj.a($$0).a(da.a.a().a(dbv.b, die.c)))))));
+   protected eff.a a(cva $$0) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a((efq.a<?>)this.a((crz)$$0, efn.a($$0).a(egv.a(eip.a(2.0F)).a(ehv.a($$0).a(da.a.a().a(dcc.b, diq.c)))))));
    }
 
-   protected <T extends Comparable<T> & aub> eet.a a(cut $$0, dhz<T> $$1, T $$2) {
-      return eet.b().a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$0).a(ehj.a($$0).a(da.a.a().a($$1, $$2))))));
+   protected <T extends Comparable<T> & aug> eff.a a(cva $$0, dil<T> $$1, T $$2) {
+      return eff.b().a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$0).a(ehv.a($$0).a(da.a.a().a($$1, $$2))))));
    }
 
-   protected eet.a b(cut $$0) {
-      return eet.b().a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$0).a(efo.a(efo.a.d)))));
+   protected eff.a b(cva $$0) {
+      return eff.b().a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$0).a(ega.a(ega.a.d)))));
    }
 
-   protected eet.a c(cut $$0) {
-      return eet.b()
+   protected eff.a c(cva $$0) {
+      return eff.b()
          .a(
             this.a(
                $$0,
-               ees.a()
-                  .a(eid.a(1.0F))
+               efe.a()
+                  .a(eip.a(1.0F))
                   .a(
-                     efb.a($$0)
-                        .a(efo.a(efo.a.d))
+                     efn.a($$0)
+                        .a(ega.a(ega.a.d))
                         .a(
-                           efp.a(ehw.a)
+                           egb.a(eii.a)
                               .a("Lock", "BlockEntityTag.Lock")
                               .a("LootTable", "BlockEntityTag.LootTable")
                               .a("LootTableSeed", "BlockEntityTag.LootTableSeed")
                         )
-                        .a(egf.a(det.x).a(eey.a(dbr.c)))
+                        .a(egr.a(dff.x).a(efk.a(dby.c)))
                   )
             )
          );
    }
 
-   protected eet.a d(cut $$0) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a(cle.nR).a(egj.a(eii.a(2.0F, 5.0F))).a(efl.a(cpq.x))));
+   protected eff.a d(cva $$0) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a(clm.oC).a(egv.a(eiu.a(2.0F, 5.0F))).a(efx.a(cpy.x))));
    }
 
-   protected eet.a e(cut $$0) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a(cle.nM).a(egj.a(eii.a(4.0F, 9.0F))).a(efl.a(cpq.x))));
+   protected eff.a e(cva $$0) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a(clm.ox).a(egv.a(eiu.a(4.0F, 9.0F))).a(efx.a(cpy.x))));
    }
 
-   protected eet.a f(cut $$0) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a(cle.ll).a(egj.a(eii.a(4.0F, 5.0F))).a(efl.b(cpq.x))));
+   protected eff.a f(cva $$0) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a(clm.lG).a(egv.a(eiu.a(4.0F, 5.0F))).a(efx.b(cpy.x))));
    }
 
-   protected eet.a g(cut $$0) {
-      return eet.b().a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$0).a(efo.a(efo.a.d)).a(efp.a(ehw.a).a("Patterns", "BlockEntityTag.Patterns")))));
+   protected eff.a g(cva $$0) {
+      return eff.b().a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$0).a(ega.a(ega.a.d)).a(egb.a(eii.a).a("Patterns", "BlockEntityTag.Patterns")))));
    }
 
-   protected static eet.a h(cut $$0) {
-      return eet.b().a(ees.a().a(a).a(eid.a(1.0F)).a(efb.a($$0).a(efp.a(ehw.a).a("Bees", "BlockEntityTag.Bees")).a(efn.a($$0).a(cun.c))));
+   protected static eff.a h(cva $$0) {
+      return eff.b().a(efe.a().a(a).a(eip.a(1.0F)).a(efn.a($$0).a(egb.a(eii.a).a("Bees", "BlockEntityTag.Bees")).a(efz.a($$0).a(cuu.c))));
    }
 
-   protected static eet.a i(cut $$0) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a(efb.a($$0).a(a).a(efp.a(ehw.a).a("Bees", "BlockEntityTag.Bees")).a(efn.a($$0).a(cun.c)).a(efb.a($$0))));
+   protected static eff.a i(cva $$0) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a(efn.a($$0).a(a).a(egb.a(eii.a).a("Bees", "BlockEntityTag.Bees")).a(efz.a($$0).a(cuu.c)).a(efn.a($$0))));
    }
 
-   protected static eet.a j(cut $$0) {
-      return eet.b().a(ees.a().a(efb.a(cle.vx)).a(ehj.a($$0).a(da.a.a().a(cvp.s_, true))));
+   protected static eff.a j(cva $$0) {
+      return eff.b().a(efe.a().a(efn.a(clm.wi)).a(ehv.a($$0).a(da.a.a().a(cvw.s_, true))));
    }
 
-   protected eet.a a(cut $$0, ckw $$1) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a($$1).a(efl.a(cpq.x))));
+   protected eff.a a(cva $$0, cle $$1) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a($$1).a(efx.a(cpy.x))));
    }
 
-   protected eet.a b(cut $$0, crr $$1) {
-      return a($$0, (efe.a<?>)this.a((crr)$$0, efb.a($$1).a(egj.a(eii.a(-6.0F, 2.0F))).a(efw.a(eek.b(0)))));
+   protected eff.a b(cva $$0, crz $$1) {
+      return a($$0, (efq.a<?>)this.a((crz)$$0, efn.a($$1).a(egv.a(eiu.a(-6.0F, 2.0F))).a(egi.a(eew.b(0)))));
    }
 
-   protected eet.a k(cut $$0) {
-      return b($$0, (efe.a<?>)this.a((crr)$$0, efb.a(cle.oH).a(ehp.a(0.125F)).a(efl.a(cpq.x, 2))));
+   protected eff.a k(cva $$0) {
+      return b($$0, (efq.a<?>)this.a((crz)$$0, efn.a(clm.ps).a(eib.a(0.125F)).a(efx.a(cpy.x, 2))));
    }
 
-   public eet.a b(cut $$0, ckw $$1) {
-      return eet.b()
+   public eff.a b(cva $$0, cle $$1) {
+      return eff.b()
          .a(
             this.a(
                $$0,
-               ees.a()
-                  .a(eid.a(1.0F))
-                  .a(efb.a($$1).a(dco.c.a(), $$1x -> egj.a(eic.a(3, (float)($$1x + 1) / 15.0F)).a(ehj.a($$0).a(da.a.a().a(dco.c, $$1x.intValue())))))
+               efe.a()
+                  .a(eip.a(1.0F))
+                  .a(efn.a($$1).a(dcv.c.a(), $$1x -> egv.a(eio.a(3, (float)($$1x + 1) / 15.0F)).a(ehv.a($$0).a(da.a.a().a(dcv.c, $$1x.intValue())))))
             )
          );
    }
 
-   public eet.a c(cut $$0, ckw $$1) {
-      return eet.b().a(this.a($$0, ees.a().a(eid.a(1.0F)).a(efb.a($$1).a(egj.a(eic.a(3, 0.53333336F))))));
+   public eff.a c(cva $$0, cle $$1) {
+      return eff.b().a(this.a($$0, efe.a().a(eip.a(1.0F)).a(efn.a($$1).a(egv.a(eio.a(3, 0.53333336F))))));
    }
 
-   protected static eet.a b(crr $$0) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a(c).a(efb.a($$0)));
+   protected static eff.a b(crz $$0) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a(c).a(efn.a($$0)));
    }
 
-   protected eet.a a(cut $$0, ehk.a $$1) {
-      return eet.b()
+   protected eff.a a(cva $$0, ehw.a $$1) {
+      return eff.b()
          .a(
-            ees.a()
+            efe.a()
                .a(
-                  (efe.a<?>)this.a(
-                     (crr)$$0,
-                     efb.a($$0)
+                  (efq.a<?>)this.a(
+                     (crz)$$0,
+                     efn.a($$0)
                         .a($$1)
-                        .a(hx.values(), $$1x -> egj.a(eid.a(1.0F), true).a(ehj.a($$0).a(da.a.a().a(czs.b($$1x), true))))
-                        .a(egj.a(eid.a(-1.0F), true))
+                        .a(hx.values(), $$1x -> egv.a(eip.a(1.0F), true).a(ehv.a($$0).a(da.a.a().a(czz.b($$1x), true))))
+                        .a(egv.a(eip.a(-1.0F), true))
                   )
                )
          );
    }
 
-   protected eet.a a(cut $$0, cut $$1, float... $$2) {
-      return c($$0, ((efg.a)this.a((crr)$$0, efb.a($$1))).a(eha.a(cpq.x, $$2)))
-         .a(ees.a().a(eid.a(1.0F)).a(i).a(((efg.a)this.a((crr)$$0, efb.a(cle.oB).a(egj.a(eii.a(1.0F, 2.0F))))).a(eha.a(cpq.x, j))));
+   protected eff.a a(cva $$0, cva $$1, float... $$2) {
+      return c($$0, ((efs.a)this.a((crz)$$0, efn.a($$1))).a(ehm.a(cpy.x, $$2)))
+         .a(efe.a().a(eip.a(1.0F)).a(i).a(((efs.a)this.a((crz)$$0, efn.a(clm.pm).a(egv.a(eiu.a(1.0F, 2.0F))))).a(ehm.a(cpy.x, j))));
    }
 
-   protected eet.a b(cut $$0, cut $$1, float... $$2) {
+   protected eff.a b(cva $$0, cva $$1, float... $$2) {
       return this.a($$0, $$1, $$2)
-         .a(ees.a().a(eid.a(1.0F)).a(i).a(((efg.a)this.a((crr)$$0, efb.a(cle.nF))).a(eha.a(cpq.x, 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
+         .a(efe.a().a(eip.a(1.0F)).a(i).a(((efs.a)this.a((crz)$$0, efn.a(clm.oq))).a(ehm.a(cpy.x, 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
    }
 
-   protected eet.a l(cut $$0) {
-      return c($$0, ((efg.a)this.a((crr)cuv.aL, efb.a(cle.oB).a(egj.a(eii.a(1.0F, 2.0F))))).a(eha.a(cpq.x, j)));
+   protected eff.a l(cva $$0) {
+      return c($$0, ((efs.a)this.a((crz)cvc.aL, efn.a(clm.pm).a(egv.a(eiu.a(1.0F, 2.0F))))).a(ehm.a(cpy.x, j)));
    }
 
-   protected eet.a a(cut $$0, ckw $$1, ckw $$2, ehk.a $$3) {
-      return this.a((crr)$$0, eet.b().a(ees.a().a(efb.a($$1).a($$3).a(efb.a($$2)))).a(ees.a().a($$3).a(efb.a($$2).a(efl.a(cpq.x, 0.5714286F, 3)))));
+   protected eff.a a(cva $$0, cle $$1, cle $$2, ehw.a $$3) {
+      return this.a((crz)$$0, eff.b().a(efe.a().a(efn.a($$1).a($$3).a(efn.a($$2)))).a(efe.a().a($$3).a(efn.a($$2).a(efx.a(cpy.x, 0.5714286F, 3)))));
    }
 
-   protected static eet.a m(cut $$0) {
-      return eet.b().a(ees.a().a(c).a(efb.a($$0).a(egj.a(eid.a(2.0F)))));
+   protected static eff.a m(cva $$0) {
+      return eff.b().a(efe.a().a(c).a(efn.a($$0).a(egv.a(eip.a(2.0F)))));
    }
 
-   protected eet.a a(cut $$0, cut $$1) {
-      efe.a<?> $$2 = efb.a($$1).a(egj.a(eid.a(2.0F))).a(c).a(((efg.a)this.a((crr)$$0, efb.a(cle.oH))).a(ehp.a(0.125F)));
-      return eet.b()
-         .a(ees.a().a($$2).a(ehj.a($$0).a(da.a.a().a(cxa.b, dhs.b))).a(ehi.a(cj.a.a().a(av.a.a().a($$0).a(da.a.a().a(cxa.b, dhs.a))), new ht(0, 1, 0))))
-         .a(ees.a().a($$2).a(ehj.a($$0).a(da.a.a().a(cxa.b, dhs.a))).a(ehi.a(cj.a.a().a(av.a.a().a($$0).a(da.a.a().a(cxa.b, dhs.b))), new ht(0, -1, 0))));
+   protected eff.a a(cva $$0, cva $$1) {
+      efq.a<?> $$2 = efn.a($$1).a(egv.a(eip.a(2.0F))).a(c).a(((efs.a)this.a((crz)$$0, efn.a(clm.ps))).a(eib.a(0.125F)));
+      return eff.b()
+         .a(efe.a().a($$2).a(ehv.a($$0).a(da.a.a().a(cxi.b, die.b))).a(ehu.a(cj.a.a().a(av.a.a().a($$0).a(da.a.a().a(cxi.b, die.a))), new ht(0, 1, 0))))
+         .a(efe.a().a($$2).a(ehv.a($$0).a(da.a.a().a(cxi.b, die.a))).a(ehu.a(cj.a.a().a(av.a.a().a($$0).a(da.a.a().a(cxi.b, die.b))), new ht(0, -1, 0))));
    }
 
-   protected eet.a n(cut $$0) {
-      return eet.b()
+   protected eff.a n(cva $$0) {
+      return eff.b()
          .a(
-            ees.a()
-               .a(eid.a(1.0F))
+            efe.a()
+               .a(eip.a(1.0F))
                .a(
-                  (efe.a<?>)this.a(
-                     $$0, efb.a($$0).a(List.of(2, 3, 4), $$1 -> egj.a(eid.a((float)$$1.intValue())).a(ehj.a($$0).a(da.a.a().a(cvi.f, $$1.intValue()))))
+                  (efq.a<?>)this.a(
+                     $$0, efn.a($$0).a(List.of(2, 3, 4), $$1 -> egv.a(eip.a((float)$$1.intValue())).a(ehv.a($$0).a(da.a.a().a(cvp.f, $$1.intValue()))))
                   )
                )
          );
    }
 
-   protected eet.a o(cut $$0) {
-      return eet.b()
+   protected eff.a o(cva $$0) {
+      return eff.b()
          .a(
-            ees.a()
-               .a(eid.a(1.0F))
+            efe.a()
+               .a(eip.a(1.0F))
                .a(
-                  (efe.a<?>)this.a(
+                  (efq.a<?>)this.a(
                      $$0,
-                     efb.a($$0)
+                     efn.a($$0)
                         .a(
                            IntStream.rangeClosed(1, 4).boxed().toList(),
-                           $$1 -> egj.a(eid.a((float)$$1.intValue())).a(ehj.a($$0).a(da.a.a().a(daf.e, $$1.intValue())))
+                           $$1 -> egv.a(eip.a((float)$$1.intValue())).a(ehv.a($$0).a(da.a.a().a(dam.e, $$1.intValue())))
                         )
                   )
                )
          );
    }
 
-   protected static eet.a p(cut $$0) {
-      return eet.b().a(ees.a().a(eid.a(1.0F)).a(efb.a($$0)));
+   protected static eff.a p(cva $$0) {
+      return eff.b().a(efe.a().a(eip.a(1.0F)).a(efn.a($$0)));
    }
 
-   public static eet.a a() {
-      return eet.b();
+   public static eff.a a() {
+      return eff.b();
    }
 
    protected abstract void b();
 
    @Override
-   public void generate(BiConsumer<agg, eet.a> $$0) {
+   public void generate(BiConsumer<agi, eff.a> $$0) {
       this.b();
-      Set<agg> $$1 = new HashSet<>();
+      Set<agi> $$1 = new HashSet<>();
 
-      for (cut $$2 : jy.f) {
+      for (cva $$2 : jy.f) {
          if ($$2.a(this.e)) {
-            agg $$3 = $$2.u();
-            if ($$3 != eej.a && $$1.add($$3)) {
-               eet.a $$4 = this.f.remove($$3);
+            agi $$3 = $$2.v();
+            if ($$3 != eev.a && $$1.add($$3)) {
+               eff.a $$4 = this.f.remove($$3);
                if ($$4 == null) {
                   throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$3, jy.f.b($$2)));
                }
@@ -282,41 +282,41 @@ public abstract class kx implements la {
       }
    }
 
-   protected void b(cut $$0, cut $$1) {
-      eet.a $$2 = c($$0, efb.a($$0).a(eha.a(cpq.x, 0.33F, 0.55F, 0.77F, 1.0F)));
+   protected void b(cva $$0, cva $$1) {
+      eff.a $$2 = c($$0, efn.a($$0).a(ehm.a(cpy.x, 0.33F, 0.55F, 0.77F, 1.0F)));
       this.a($$0, $$2);
       this.a($$1, $$2);
    }
 
-   protected eet.a q(cut $$0) {
-      return this.a($$0, cwy.f, dhs.b);
+   protected eff.a q(cva $$0) {
+      return this.a($$0, cxg.f, die.b);
    }
 
-   protected void r(cut $$0) {
-      this.a($$0, $$0x -> this.d((crr)((cxv)$$0x).b()));
+   protected void r(cva $$0) {
+      this.a($$0, $$0x -> this.d((crz)((cyd)$$0x).b()));
    }
 
-   protected void c(cut $$0, cut $$1) {
-      this.a($$0, c((crr)$$1));
+   protected void c(cva $$0, cva $$1) {
+      this.a($$0, c((crz)$$1));
    }
 
-   protected void c(cut $$0, crr $$1) {
+   protected void c(cva $$0, crz $$1) {
       this.a($$0, this.a($$1));
    }
 
-   protected void s(cut $$0) {
+   protected void s(cva $$0) {
       this.c($$0, $$0);
    }
 
-   protected void t(cut $$0) {
-      this.c($$0, (crr)$$0);
+   protected void t(cva $$0) {
+      this.c($$0, (crz)$$0);
    }
 
-   protected void a(cut $$0, Function<cut, eet.a> $$1) {
+   protected void a(cva $$0, Function<cva, eff.a> $$1) {
       this.a($$0, $$1.apply($$0));
    }
 
-   protected void a(cut $$0, eet.a $$1) {
-      this.f.put($$0.u(), $$1);
+   protected void a(cva $$0, eff.a $$1) {
+      this.f.put($$0.v(), $$1);
    }
 }

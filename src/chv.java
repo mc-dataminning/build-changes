@@ -1,75 +1,226 @@
-public class chv extends chz {
-   private final cgu a;
-   private final cdm b;
-   private int c;
+public class chv extends cgm {
+   protected static final int k = 0;
+   protected static final int l = 1;
+   protected static final int m = 2;
+   private static final int n = 3;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 39;
+   private static final int r = 136;
+   private static final int s = 162;
+   private static final int t = 220;
+   private static final int u = 37;
+   private final cqx v;
+   private final chu w;
+   private int x;
+   private boolean y;
+   private boolean z;
 
-   public chv(cdm $$0, cgu $$1, bij $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+   public chv(int $$0, cdt $$1) {
+      this($$0, $$1, new cde($$1.m));
+   }
+
+   public chv(int $$0, cdt $$1, cqx $$2) {
+      super(cht.t, $$0);
+      this.v = $$2;
+      this.w = new chu($$2);
+      this.a(new cih(this.w, 0, 136, 37));
+      this.a(new cih(this.w, 1, 162, 37));
+      this.a(new chw($$1.m, $$2, this.w, 2, 220, 37));
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cih($$1, $$4 + $$3 * 9 + 9, 108 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cih($$1, $$5, 108 + $$5 * 18, 142));
+      }
+   }
+
+   public void a(boolean $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public boolean a(clb $$0) {
+   public void a(biq $$0) {
+      this.w.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.w.c($$0);
+   }
+
+   @Override
+   public boolean a(cdu $$0) {
+      return this.v.gf() == $$0;
+   }
+
+   public int l() {
+      return this.v.w();
+   }
+
+   public int m() {
+      return this.w.h();
+   }
+
+   public void f(int $$0) {
+      this.v.t($$0);
+   }
+
+   public int n() {
+      return this.x;
+   }
+
+   public void g(int $$0) {
+      this.x = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.z = $$0;
+   }
+
+   public boolean o() {
+      return this.z;
+   }
+
+   @Override
+   public boolean a(clj $$0, cih $$1) {
       return false;
    }
 
    @Override
-   public clb a(int $$0) {
-      if (this.g()) {
-         this.c = this.c + Math.min($$0, this.f().L());
-      }
+   public clj a(cdu $$0, int $$1) {
+      clj $$2 = clj.b;
+      cih $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.g()) {
+         clj $$4 = $$3.f();
+         $$2 = $$4.p();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return clj.b;
+            }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(clb $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(clb $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dL(), this.b, this.c);
-      }
-
-      if (this.d instanceof cht $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cdm $$0, clb $$1) {
-      this.b_($$1);
-      il<clb> $$2 = $$0.dL().q().c(cok.a, this.a, $$0.dL());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         clb $$4 = this.a.a($$3);
-         clb $$5 = $$2.get($$3);
-         if (!$$4.b()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return clj.b;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return clj.b;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return clj.b;
          }
 
-         if (!$$5.b()) {
-            if ($$4.b()) {
-               this.a.a($$3, $$5);
-            } else if (clb.c($$4, $$5)) {
-               $$5.g($$4.L());
-               this.a.a($$3, $$5);
-            } else if (!this.b.fS().e($$5)) {
-               this.b.a($$5, false);
+         if ($$4.b()) {
+            $$3.e(clj.b);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return clj.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.v.gn()) {
+         bkq $$0 = (bkq)this.v;
+         $$0.dN().a($$0.ds(), $$0.du(), $$0.dy(), this.v.gj(), aqs.g, 1.0F, 1.0F, false);
+      }
+   }
+
+   @Override
+   public void b(cdu $$0) {
+      super.b($$0);
+      this.v.f(null);
+      if (!this.v.gn()) {
+         if (!$$0.bx() || $$0 instanceof amf && ((amf)$$0).v()) {
+            clj $$1 = this.w.b(0);
+            if (!$$1.b()) {
+               $$0.a($$1, false);
+            }
+
+            $$1 = this.w.b(1);
+            if (!$$1.b()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof amf) {
+            $$0.fT().f(this.w.b(0));
+            $$0.fT().f(this.w.b(1));
+         }
+      }
+   }
+
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         clj $$1 = this.w.a(0);
+         if (!$$1.b()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
+
+            this.w.a(0, $$1);
+         }
+
+         clj $$2 = this.w.a(1);
+         if (!$$2.b()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.w.a(1, $$2);
+         }
+
+         if (this.w.a(0).b() && this.w.a(1).b()) {
+            clj $$3 = this.p().get($$0).b();
+            this.c(0, $$3);
+            clj $$4 = this.p().get($$0).c();
+            this.c(1, $$4);
+         }
+      }
+   }
+
+   private void c(int $$0, clj $$1) {
+      if (!$$1.b()) {
+         for (int $$2 = 3; $$2 < 39; $$2++) {
+            clj $$3 = this.i.get($$2).f();
+            if (!$$3.b() && clj.c($$1, $$3)) {
+               clj $$4 = this.w.a($$0);
+               int $$5 = $$4.b() ? 0 : $$4.L();
+               int $$6 = Math.min($$1.g() - $$5, $$3.L());
+               clj $$7 = $$3.p();
+               int $$8 = $$5 + $$6;
+               $$3.h($$6);
+               $$7.f($$8);
+               this.w.a($$0, $$7);
+               if ($$8 >= $$1.g()) {
+                  break;
+               }
             }
          }
       }
+   }
+
+   public void a(cqz $$0) {
+      this.v.a($$0);
+   }
+
+   public cqz p() {
+      return this.v.gh();
+   }
+
+   public boolean q() {
+      return this.y;
    }
 }

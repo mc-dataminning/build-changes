@@ -1,22 +1,136 @@
-public class fqj {
-   private final esr a;
-   private final fpv b;
-   private float c;
-   private float d;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import javax.annotation.Nullable;
 
-   public fqj(fpv $$0) {
-      this.b = $$0;
-      this.a = esr.N();
+public abstract class fqj {
+   private static final Object2ObjectMap<agi, fqj> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fqj.c $$1 = new fqj.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dkp.e, $$1);
+      $$0.put(dkp.f, new fqj.b());
+      $$0.put(dkp.g, new fqj.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fqj.d e;
+   private final boolean f;
+   private final boolean g;
+
+   public fqj(float $$0, boolean $$1, fqj.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public void a(float $$0, float $$1) {
-      float $$2 = (float)((double)$$0 * this.a.m.q().c());
-      this.c = b(this.c + $$2 * 0.1F, 360.0F);
-      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
-      this.b.a(this.a, 10.0F, -this.c, $$1);
+   public static fqj a(dkr $$0) {
+      return (fqj)a.get($$0.r());
    }
 
-   private static float b(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Nullable
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = atm.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - atm.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
+      } else {
+         return null;
+      }
+   }
+
+   public float a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public abstract eju a(eju var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public fqj.d c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends fqj {
+      public a() {
+         super(Float.NaN, false, fqj.d.c, true, false);
+      }
+
+      @Override
+      public eju a(eju $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
+   }
+
+   public static class b extends fqj {
+      public b() {
+         super(Float.NaN, true, fqj.d.a, false, true);
+      }
+
+      @Override
+      public eju a(eju $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends fqj {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fqj.d.b, false, false);
+      }
+
+      @Override
+      public eju a(eju $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

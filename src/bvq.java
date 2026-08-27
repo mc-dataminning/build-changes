@@ -1,22 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bvq {
-   @Nullable
-   public static eji a(blh $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = bvp.a($$0, $$1);
-      return bvs.a($$0, () -> {
-         ht $$9 = bvs.a($$0.ef(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            ht $$10 = bvr.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = bvs.a($$10, $$0.ef().a($$6 - $$7 + 1) + $$7, $$0.dL().aj(), $$1xx -> bvp.c($$0, $$1xx));
-               return !bvp.a($$0, $$10) && !bvp.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class bvq extends bve<ccy> {
+   @Override
+   public Set<buh<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(buh.B)));
+   }
+
+   protected void a(ame $$0, ccy $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bku.bt)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bku.bt))
+         .ifPresentOrElse($$1x -> $$1.dP().a(buh.B, $$1x), () -> $$1.dP().b(buh.B));
+   }
+
+   private static Optional<blg> a(ccy $$0, Predicate<blg> $$1) {
+      return $$0.dP().c(buh.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

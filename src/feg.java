@@ -1,84 +1,86 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class feg extends fef<fls.a> {
-   private static final int r = 120;
-   private static final ur t = ur.c("gui.chatReport.title");
-   private static final ur u = ur.c("gui.chatReport.select_chat");
-   private final eya v = eya.d().a(8);
-   private eve w;
-   private eum x;
-   private eum y;
-   private eum z;
+public class feg {
+   @Nullable
+   private coq<?> a;
+   private final List<feg.a> b = Lists.newArrayList();
+   float c;
 
-   private feg(fah $$0, flz $$1, fls.a $$2) {
-      super(t, $$0, $$1, $$2);
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   public feg(fah $$0, flz $$1, UUID $$2) {
-      this($$0, $$1, new fls.a($$2, $$1.a().b()));
+   public void a(cok $$0, int $$1, int $$2) {
+      this.b.add(new feg.a($$0, $$1, $$2));
    }
 
-   public feg(fah $$0, flz $$1, fls $$2) {
-      this($$0, $$1, new fls.a($$2, $$1.a().b()));
+   public feg.a a(int $$0) {
+      return this.b.get($$0);
    }
 
-   @Override
-   protected void aO_() {
-      this.v.c().b();
-      this.v.a(new evt(this.e, this.i));
-      this.y = this.v.a(eum.a(u, $$0x -> this.f.a(new fei(this, this.p, this.q, $$0xx -> {
-            this.q = $$0xx;
-            this.C();
-         }))).a(280).a());
-      this.z = eum.a(c, $$0x -> this.f.a(new fel(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.C();
-         }))).a(280).a();
-      this.v.a(exs.a(this.i, this.z, b));
-      this.w = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.C();
-      });
-      this.v.a(exs.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
-      eya $$0 = this.v.a(eya.e().a(8));
-      $$0.a(eum.a(uq.k, $$0x -> this.aE_()).a(120).a());
-      this.x = $$0.a(eum.a(a, $$0x -> this.l()).a(120).a());
-      this.v.a($$1 -> {
-         euk var10000 = this.d($$1);
-      });
-      this.c();
-      this.C();
+   public int b() {
+      return this.b.size();
    }
 
-   @Override
-   protected void c() {
-      this.v.a();
-      exu.a(this.v, this.s());
+   @Nullable
+   public coq<?> c() {
+      return this.a;
    }
 
-   private void C() {
-      IntSet $$0 = this.q.a();
-      if ($$0.isEmpty()) {
-         this.y.b(u);
-      } else {
-         this.y.b(ur.a("gui.chatReport.selected_chat", $$0.size()));
+   public void a(coq<?> $$0) {
+      this.a = $$0;
+   }
+
+   public void a(euo $$0, etd $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!fau.p()) {
+         this.c += $$5;
       }
 
-      flx $$1 = this.q.h();
-      if ($$1 != null) {
-         this.z.b($$1.b());
-      } else {
-         this.z.b(c);
-      }
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         feg.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+         }
 
-      flv.b $$2 = this.q.c();
-      this.x.i = $$2 == null;
-      this.x.a(x.a($$2, flv.b::a));
+         clj $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(frc.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
+         }
+      }
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
+   public class a {
+      private final cok b;
+      private final int c;
+      private final int d;
+
+      public a(cok $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public clj c() {
+         clj[] $$0 = this.b.a();
+         return $$0.length == 0 ? clj.b : $$0[atm.d(feg.this.c / 30.0F) % $$0.length];
+      }
    }
 }

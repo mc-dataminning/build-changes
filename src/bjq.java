@@ -1,35 +1,51 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class bjq extends bjs {
-   private final boolean a;
+public record bjq(String b, bjn c, float d, bjm e, bjs f) {
+   public static final Codec<bjq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bjq::a),
+               bjn.d.fieldOf("scaling").forGetter(bjq::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bjq::c),
+               bjm.g.optionalFieldOf("effects", bjm.a).forGetter(bjq::d),
+               bjs.d.optionalFieldOf("death_message_type", bjs.a).forGetter(bjq::e)
+            )
+            .apply($$0, bjq::new)
+   );
 
-   public bjq(bju $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public bjq(String $$0, bjn $$1, float $$2) {
+      this($$0, $$1, $$2, bjm.a, bjs.a);
    }
 
-   @Override
-   public void a(bky $$0, int $$1) {
-      super.a($$0, $$1);
-      if (this.a == $$0.et()) {
-         $$0.b((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dM().o(), (float)(6 << $$1));
-      }
+   public bjq(String $$0, bjn $$1, float $$2, bjm $$3) {
+      this($$0, $$1, $$2, $$3, bjs.a);
    }
 
-   @Override
-   public void a(@Nullable bki $$0, @Nullable bki $$1, bky $$2, int $$3, double $$4) {
-      if (this.a == $$2.et()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.b((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dM().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dM().c($$0, $$1), (float)$$6);
-         }
-      }
+   public bjq(String $$0, float $$1, bjm $$2) {
+      this($$0, bjn.b, $$1, $$2);
+   }
+
+   public bjq(String $$0, float $$1) {
+      this($$0, bjn.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public bjn b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bjm d() {
+      return this.e;
+   }
+
+   public bjs e() {
+      return this.f;
    }
 }

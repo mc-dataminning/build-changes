@@ -9,7 +9,7 @@ public record ys(List<ys.a> a) implements wk<yd> {
       this($$0.a(ys.a::new));
    }
 
-   public static ys a(List<djd> $$0) {
+   public static ys a(List<djp> $$0) {
       return new ys($$0.stream().map(ys.a::new).toList());
    }
 
@@ -22,8 +22,8 @@ public record ys(List<ys.a> a) implements wk<yd> {
       $$0.a(this);
    }
 
-   public static record a(cqz a, byte[] b) {
-      public a(djd $$0) {
+   public static record a(crh a, byte[] b) {
+      public a(djp $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new tu(this.d()), $$0);
       }
@@ -32,10 +32,10 @@ public record ys(List<ys.a> a) implements wk<yd> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(djd $$0) {
+      private static int a(djp $$0) {
          int $$1 = 0;
 
-         for (dje $$2 : $$0.d()) {
+         for (djq $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -52,8 +52,8 @@ public record ys(List<ys.a> a) implements wk<yd> {
          return $$0;
       }
 
-      public static void a(tu $$0, djd $$1) {
-         for (dje $$2 : $$1.d()) {
+      public static void a(tu $$0, djp $$1) {
+         for (djq $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -63,7 +63,7 @@ public record ys(List<ys.a> a) implements wk<yd> {
          $$0.a(this.b);
       }
 
-      public cqz b() {
+      public crh b() {
          return this.a;
       }
 

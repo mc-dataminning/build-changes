@@ -1,19 +1,16 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class btn<T extends bky> extends btm<T> {
-   private boolean i = true;
-
-   public btn(ceu $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bky> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class btn extends bto {
+   public btn(blp $$0, double $$1) {
+      super($$0, $$1);
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
-   }
-
+   @Nullable
    @Override
-   public boolean a() {
-      return this.i && super.a();
+   protected eju h() {
+      eju $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      eju $$2 = bvy.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : bvu.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

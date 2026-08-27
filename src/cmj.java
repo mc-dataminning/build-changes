@@ -1,40 +1,21 @@
-public class cmj extends ckw {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cmj(ckw.a $$0) {
-      super($$0);
+public class cmj extends cms {
+   public cmj(cle.a $$0, cva $$1, cva $$2) {
+      super($$1, $$2, $$0, hx.a);
+   }
+
+   public cmj(cle.a $$0, cva $$1, cva $$2, hx $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public int b(clb $$0) {
-      return 1200;
-   }
+   protected boolean a(ht $$0, csa $$1, @Nullable cdu $$2, clj $$3, dhi $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dgm $$6 && $$1.a_($$0).b() instanceof dbz $$7) {
+         $$7.a($$2, $$6, true);
+      }
 
-   @Override
-   public cmu c(clb $$0) {
-      return cmu.h;
-   }
-
-   @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      $$1.a(aqn.xo, 1.0F, 1.0F);
-      $$1.b(aqx.c.b(this));
-      return cld.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public clb a(clb $$0, crs $$1, bky $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(clb $$0, crs $$1, bky $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bky $$0) {
-      $$0.a(aqn.xp, 1.0F, 1.0F);
+      return $$5;
    }
 }

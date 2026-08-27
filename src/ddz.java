@@ -1,20 +1,110 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ddz extends cyh {
-   public static final MapCodec<ddz> c = b(ddz::new);
-   public static final ekb e = cut.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class ddz extends ddj {
+   public static final MapCodec<ddz> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, ddz::new));
+   public static final dic g = cyv.aE;
+   protected static final float h = 2.5F;
+   private static final Map<hx, ekn> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cva.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         hx.d,
+         cva.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         hx.e,
+         cva.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         hx.f,
+         cva.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
+   );
 
    @Override
    public MapCodec<ddz> a() {
-      return c;
+      return f;
    }
 
-   public ddz(dgv.d $$0) {
-      super($$0, hx.a, e, false);
+   protected ddz(jv $$0, dhh.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, hx.c));
    }
 
    @Override
-   protected cyi c() {
-      return (cyi)cuv.oz;
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return h($$0);
+   }
+
+   public static ekn h(dhi $$0) {
+      return i.get($$0.c(g));
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      hx $$3 = $$0.c(g);
+      ht $$4 = $$2.a($$3.g());
+      dhi $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dhi a(cnr $$0) {
+      dhi $$1 = this.o();
+      csd $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      hx[] $$4 = $$0.f();
+
+      for (hx $$5 : $$4) {
+         if ($$5.o().d()) {
+            hx $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? cvc.a.o() : $$0;
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      hx $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      hx $$10 = $$4.g();
+      $$1.a(js.Z, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(g);
    }
 }

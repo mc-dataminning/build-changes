@@ -1,111 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class fsr implements fsu<dez> {
+   private final fko a;
+   private final fko b;
 
-public class fsr extends fsv {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final eji k = new eji(0.0, -0.32F, 0.073F);
-   private final Map<dij, fsr.a> l;
-
-   public fsr(fsi.a $$0) {
-      super($$0);
-      this.l = dij.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fsr.a($$0.a(fka.b($$1)))));
+   public fsr(fsv.a $$0) {
+      this.a = $$0.a(fkn.i);
+      this.b = $$0.a(fkn.h);
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("main", fkt.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fkq.a);
+      $$1.a("left_leg", fkt.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fkq.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fkt.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fkq.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fku.a($$0, 64, 64);
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
+   public static fku c() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("main", fkt.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fkq.a);
+      $$1.a("left_leg", fkt.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fkq.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fkt.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fkq.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fku.a($$0, 64, 64);
    }
 
-   @Override
-   public void a(dga $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      dgw $$6 = $$0.q();
-      dbs $$7 = (dbs)$$6.b();
-      dij $$8 = dbs.a($$7);
-      fsr.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(enk $$0, float $$1, dgw $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   void a(enk $$0, int $$1, int $$2, fhy $$3, eno $$4) {
-      fsr.a $$5 = (fsr.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   gdl a(dij $$0) {
-      return fqw.b($$0);
-   }
-
-   @Override
-   eji d() {
-      return k;
-   }
-
-   public static fkh e() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("board", fkg.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fkd.a);
-      $$1.a("plank", fkg.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fkd.a);
-      fkk $$2 = $$1.a("normalChains", fkg.c(), fkd.a);
-      $$2.a("chainL1", fkg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fkg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fkg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fkg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fkg.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fkd.a);
-      return fkh.a($$0, 64, 32);
-   }
-
-   public static final class a extends fhy {
-      public final fkb a;
-      public final fkb b;
-      public final fkb c;
-      public final fkb d;
-
-      public a(fkb $$0) {
-         super(fqp::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
+   public void a(dez $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
+      gdy $$6 = frj.p[$$0.d().a()];
+      csa $$7 = $$0.k();
+      if ($$7 != null) {
+         dhi $$8 = $$0.q();
+         cxh.c<? extends dez> $$9 = cxh.a(dff.y, cut::h, cut::g, cwd.c, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fsx<>()).get($$4);
+         this.a($$2, $$3, $$8.c(cut.b) == dhv.a ? this.a : this.b, $$8.c(cut.aE), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, hx.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, hx.d, $$6, $$4, $$5, true);
       }
+   }
 
-      public void a(dgw $$0) {
-         boolean $$1 = !($$0.b() instanceof cvs);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dhm.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
-         }
-      }
-
-      @Override
-      public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   private void a(enw $$0, fqu $$1, fko $$2, hx $$3, gdy $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      eoa $$8 = $$4.a($$1, frc::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

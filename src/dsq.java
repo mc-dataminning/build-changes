@@ -1,45 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dsq extends dso {
-   public static final Codec<dsq> d = RecordCodecBuilder.create(
+public record dsq(int b, int c, int d, int e, int f, bic g, float h) implements drz {
+   public static final Codec<dsq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dsq::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dsq::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dsq::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dsq::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dsq::f),
+               bic.c.fieldOf("extra_rare_growths").forGetter(dsq::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dsq::h)
             )
             .apply($$0, dsq::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
 
-   public dsq(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected dsp<?> b() {
-      return dsp.b;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

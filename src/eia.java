@@ -1,29 +1,29 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record eia(agg b) implements ehy {
-   public static final Codec<eia> a = RecordCodecBuilder.create($$0 -> $$0.group(agg.a.fieldOf("source").forGetter(eia::c)).apply($$0, eia::new));
+public class eia implements ehw {
+   private static final eia b = new eia();
+   public static final Codec<eia> a = Codec.unit(b);
 
-   @Override
-   public ehx a() {
-      return ehz.b;
-   }
-
-   @Nullable
-   @Override
-   public sw a(eel $$0) {
-      return $$0.d().n().aG().a(this.b);
+   private eia() {
    }
 
    @Override
-   public Set<egt<?>> b() {
-      return ImmutableSet.of();
+   public ehx b() {
+      return ehy.h;
    }
 
-   public agg c() {
-      return this.b;
+   @Override
+   public Set<ehf<?>> a() {
+      return ImmutableSet.of(ehi.b);
+   }
+
+   public boolean a(eex $$0) {
+      return $$0.a(ehi.b);
+   }
+
+   public static ehw.a c() {
+      return () -> b;
    }
 }

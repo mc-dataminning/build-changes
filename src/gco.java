@@ -1,17 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public record gco(String b, String c, boolean d) {
-   public static final Codec<gco> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asq.v.fieldOf("region").forGetter(gco::b),
-               asq.v.fieldOf("name").forGetter(gco::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gco::d)
-            )
-            .apply($$0, gco::new)
-   );
+public class gco extends apm<int[]> {
+   private static final agi a = new agi("textures/colormap/foliage.png");
 
-   public ur a() {
-      return ur.b(this.c + " (" + this.b + ")");
+   protected int[] a(aph $$0, bfo $$1) {
+      try {
+         return gcr.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, aph $$1, bfo $$2) {
+      cru.a($$0);
    }
 }

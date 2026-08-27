@@ -1,3 +1,3 @@
-public interface bja {
-   biz a(dgw var1, crt var2, ht var3);
+public interface bja extends chs {
+   ur P_();
 }

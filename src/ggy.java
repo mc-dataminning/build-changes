@@ -1,36 +1,22 @@
-import java.util.function.Function;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public enum ggy {
-   a("movement", ggt::new),
-   b("find_tree", ggs::new),
-   c("punch_tree", ggv::new),
-   d("open_inventory", ggu::new),
-   e("craft_planks", ggr::new),
-   f("none", ggq::new);
+public class ggy {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
 
-   private final String g;
-   private final Function<ggw, ? extends ggx> h;
-
-   private <T extends ggx> ggy(String $$0, Function<ggw, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public ggy(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public ggx a(ggw $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static ggy a(String $$0) {
-      for (ggy $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(ggo $$0) {
+      if (this.b != null) {
+         $$0.send(ggp.d, $$0x -> {
+            $$0x.a(ggr.x, (int)this.b.toMillis());
+            $$0x.a(ggr.y, this.a);
+         });
       }
-
-      return f;
    }
 }

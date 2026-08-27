@@ -1,124 +1,356 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class evu implements gfs {
-   private static final long a = 3000L;
-   private final esr b;
-   private final List<evu.a> c = Lists.newArrayList();
-   private boolean d;
+public class evu {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final eum c;
+   private final List<evu.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public evu(esr $$0) {
-      this.b = $$0;
+   public evu(eum $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   public void a(eub $$0) {
-      if (!this.d && this.b.m.T().c()) {
-         this.b.ah().a(this);
-         this.d = true;
-      } else if (this.d && !this.b.m.T().c()) {
-         this.b.ah().b(this);
-         this.d = false;
+   public int a() {
+      return this.i;
+   }
+
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
+      } else {
+         this.i = $$0;
+      }
+   }
+
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
+
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
+
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(aa.a($$0, true));
+         evu.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = atm.a(this.f + $$0, 0, this.e.length());
       }
 
-      if (this.d && !this.c.isEmpty()) {
-         eji $$1 = new eji(this.b.s.dq(), this.b.s.du(), this.b.s.dw());
-         eji $$2 = new eji(0.0, 0.0, -1.0).a(-this.b.s.dD() * (float) (Math.PI / 180.0)).b(-this.b.s.dB() * (float) (Math.PI / 180.0));
-         eji $$3 = new eji(0.0, 1.0, 0.0).a(-this.b.s.dD() * (float) (Math.PI / 180.0)).b(-this.b.s.dB() * (float) (Math.PI / 180.0));
-         eji $$4 = $$2.c($$3);
-         int $$5 = 0;
-         int $$6 = 0;
-         double $$7 = this.b.m.z().c();
-         Iterator<evu.a> $$8 = this.c.iterator();
+      this.b("");
+   }
 
-         while ($$8.hasNext()) {
-            evu.a $$9 = $$8.next();
-            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
-               $$8.remove();
-            } else {
-               $$6 = Math.max($$6, this.b.h.a($$9.a()));
-            }
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public evu.a e() {
+      return new evu.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         evu.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
          }
+      }
 
-         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+      return -1;
+   }
 
-         for (evu.a $$10 : this.c) {
-            int $$11 = 255;
-            ur $$12 = $$10.a();
-            eji $$13 = $$10.c().d($$1).d();
-            double $$14 = -$$4.b($$13);
-            double $$15 = -$$2.b($$13);
-            boolean $$16 = $$15 > 0.5;
-            int $$17 = $$6 / 2;
-            int $$18 = 9;
-            int $$19 = $$18 / 2;
-            float $$20 = 1.0F;
-            int $$21 = this.b.h.a($$12);
-            int $$22 = ati.d(ati.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
-            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
-            $$0.c().a();
-            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
-            $$0.c().b(1.0F, 1.0F, 1.0F);
-            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
-            int $$24 = $$23 + -16777216;
-            if (!$$16) {
-               if ($$14 > 0.0) {
-                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
-               } else if ($$14 < 0.0) {
-                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
+   public evu.a c(int $$0) {
+      return this.d.get(atm.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(ewl $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = atm.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         evu.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(ewl.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = atm.a($$0);
+      int $$3 = atm.a($$1 / 9.0);
+      evu.a $$4 = this.d.get(atm.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(ewl.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fau.q();
+      if (fau.g($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fau.f($$0)) {
+         etd.N().o.a(this.j());
+         return true;
+      } else if (fau.e($$0)) {
+         this.b(etd.N().o.a());
+         return true;
+      } else if (fau.d($$0)) {
+         etd.N().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fau.p()) {
+                  evu.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
                }
-            }
 
-            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
-            $$0.c().b();
-            $$5++;
-         }
-      }
-   }
-
-   @Override
-   public void a(gep $$0, gfu $$1) {
-      if ($$1.a() != null) {
-         ur $$2 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (evu.a $$3 : this.c) {
-               if ($$3.a().equals($$2)) {
-                  $$3.a(new eji($$0.h(), $$0.i(), $$0.j()));
-                  return;
+               return true;
+            case 261:
+               if (fau.p()) {
+                  evu.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
                }
-            }
-         }
 
-         this.c.add(new evu.a($$2, new eji($$0.h(), $$0.i(), $$0.j())));
+               return true;
+            case 262:
+               if (fau.p()) {
+                  evu.a $$2 = this.l();
+                  this.a(ewl.a, $$2.a);
+               } else {
+                  this.a(ewl.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fau.p()) {
+                  evu.a $$1 = this.k();
+                  this.a(ewl.a, $$1.a);
+               } else {
+                  this.a(ewl.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fau.p()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fau.p()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(ewl.a, 0);
+               return true;
+            case 267:
+               this.a(ewl.c, 0);
+               return true;
+            case 268:
+               if (fau.p()) {
+                  this.a(ewl.a, 0);
+               } else {
+                  this.a(ewl.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fau.p()) {
+                  this.a(ewl.c, 0);
+               } else {
+                  this.a(ewl.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
       }
    }
 
-   public static class a {
-      private final ur a;
-      private long b;
-      private eji c;
+   public Iterable<evu.a> h() {
+      return this.d;
+   }
 
-      public a(ur $$0, eji $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = ac.b();
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      evu.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private evu.a m() {
+      return this.f(0);
+   }
+
+   private evu.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(atm.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public evu.a k() {
+      if (this.e.isEmpty()) {
+         return evu.a.c;
+      } else {
+         int $$0 = atm.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new evu.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public evu.a l() {
+      if (this.e.isEmpty()) {
+         return evu.a.c;
+      } else {
+         int $$0 = atm.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new evu.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
       }
 
-      public ur a() {
-         return this.a;
-      }
+      return $$1;
+   }
 
-      public long b() {
-         return this.b;
-      }
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
 
-      public eji c() {
-         return this.c;
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(evu.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, vo.a, false, ($$0, $$1, $$2) -> this.d.add(new evu.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new evu.a(this.e.length(), this.e.length()));
+         }
       }
+   }
 
-      public void a(eji $$0) {
-         this.c = $$0;
-         this.b = ac.b();
+   private String c(String $$0) {
+      return this.b() ? auh.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return auh.a($$0, $$1, false);
+      } else {
+         return $$0;
       }
+   }
+
+   protected static record a(int a, int b) {
+      static final evu.a c = new evu.a(0, 0);
    }
 }

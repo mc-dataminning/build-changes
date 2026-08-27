@@ -10,24 +10,24 @@ public class jk implements jq {
       }
 
       public jk a(jr<jk> $$0, tu $$1) {
-         return new jk($$0, $$1.a(cut.q));
+         return new jk($$0, $$1.a(cva.q));
       }
    };
    private final jr<jk> b;
-   private final dgw c;
+   private final dhi c;
 
    public static Codec<jk> a(jr<jk> $$0) {
-      return dgw.b.xmap($$1 -> new jk($$0, $$1), $$0x -> $$0x.c);
+      return dhi.b.xmap($$1 -> new jk($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jk(jr<jk> $$0, dgw $$1) {
+   public jk(jr<jk> $$0, dhi $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.a(cut.q, this.c);
+      $$0.a(cva.q, this.c);
    }
 
    @Override
@@ -40,7 +40,7 @@ public class jk implements jq {
       return this.b;
    }
 
-   public dgw c() {
+   public dhi c() {
       return this.c;
    }
 }

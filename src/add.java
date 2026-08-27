@@ -1,161 +1,49 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class add implements wk<acj> {
-   private final int a;
-   private final add.a b;
-   private final boolean c;
-   static final add.a d = new add.a() {
-      @Override
-      public add.b a() {
-         return add.b.b;
-      }
+public class add implements wk<acl> {
+   public static final int a = 4;
+   private static final int b = 128;
+   private static final int c = 8192;
+   private static final int d = 200;
+   private final int e;
+   private final List<String> f;
+   private final Optional<String> g;
 
-      @Override
-      public void a(add.c $$0) {
-         $$0.a();
-      }
-
-      @Override
-      public void a(tu $$0) {
-      }
-   };
-
-   private add(int $$0, boolean $$1, add.a $$2) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-   }
-
-   public static add a(bki $$0, boolean $$1) {
-      return new add($$0.ah(), $$1, d);
-   }
-
-   public static add a(bki $$0, boolean $$1, bip $$2) {
-      return new add($$0.ah(), $$1, new add.d($$2));
-   }
-
-   public static add a(bki $$0, boolean $$1, bip $$2, eji $$3) {
-      return new add($$0.ah(), $$1, new add.e($$2, $$3));
+   public add(int $$0, List<String> $$1, Optional<String> $$2) {
+      this.e = $$0;
+      this.f = ImmutableList.copyOf($$1);
+      this.g = $$2;
    }
 
    public add(tu $$0) {
-      this.a = $$0.n();
-      add.b $$1 = $$0.b(add.b.class);
-      this.b = $$1.d.apply($$0);
-      this.c = $$0.readBoolean();
+      this.e = $$0.n();
+      this.f = $$0.a(tu.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
+      this.g = $$0.b((tu.a<String>)($$0x -> $$0x.d(128)));
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b.a());
-      this.b.a($$0);
-      $$0.a(this.c);
+      $$0.c(this.e);
+      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
+      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bki a(ama $$0) {
-      return $$0.b(this.a);
+   public List<String> a() {
+      return this.f;
    }
 
-   public boolean a() {
-      return this.c;
+   public Optional<String> d() {
+      return this.g;
    }
 
-   public void a(add.c $$0) {
-      this.b.a($$0);
-   }
-
-   interface a {
-      add.b a();
-
-      void a(add.c var1);
-
-      void a(tu var1);
-   }
-
-   static enum b {
-      a(add.d::new),
-      b($$0 -> add.d),
-      c(add.e::new);
-
-      final Function<tu, add.a> d;
-
-      private b(Function<tu, add.a> $$0) {
-         this.d = $$0;
-      }
-   }
-
-   public interface c {
-      void a(bip var1);
-
-      void a(bip var1, eji var2);
-
-      void a();
-   }
-
-   static class d implements add.a {
-      private final bip a;
-
-      d(bip $$0) {
-         this.a = $$0;
-      }
-
-      private d(tu $$0) {
-         this.a = $$0.b(bip.class);
-      }
-
-      @Override
-      public add.b a() {
-         return add.b.a;
-      }
-
-      @Override
-      public void a(add.c $$0) {
-         $$0.a(this.a);
-      }
-
-      @Override
-      public void a(tu $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class e implements add.a {
-      private final bip a;
-      private final eji b;
-
-      e(bip $$0, eji $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private e(tu $$0) {
-         this.b = new eji((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bip.class);
-      }
-
-      @Override
-      public add.b a() {
-         return add.b.c;
-      }
-
-      @Override
-      public void a(add.c $$0) {
-         $$0.a(this.a, this.b);
-      }
-
-      @Override
-      public void a(tu $$0) {
-         $$0.a((float)this.b.c);
-         $$0.a((float)this.b.d);
-         $$0.a((float)this.b.e);
-         $$0.a(this.a);
-      }
+   public int e() {
+      return this.e;
    }
 }

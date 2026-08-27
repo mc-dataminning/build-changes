@@ -1,166 +1,159 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.util.function.LongPredicate;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public abstract class ebs {
-   public static final long e = Long.MAX_VALUE;
-   private static final int a = 255;
-   protected final int f;
-   private final ebw b;
-   private final Long2ByteMap c;
-   private volatile boolean d;
+public class ebs implements dmk.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<ebs> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, ebs::a)
+   );
+   public static final atg<ebs> a = atg.a(f);
+   private final ebw g;
+   private final ebw h;
+   private final ebw i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   protected ebs(int $$0, int $$1, final int $$2) {
-      if ($$0 >= 254) {
-         throw new IllegalArgumentException("Level count must be < 254.");
-      } else {
-         this.f = $$0;
-         this.b = new ebw($$0, $$1);
-         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$2) {
-                  super.rehash($$0);
-               }
-            }
-         };
-         this.c.defaultReturnValue((byte)-1);
+   public static ebs a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new ebs(new dns(0L), $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private ebs(ebw $$0, ebw $$1, ebw $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
+   }
+
+   @VisibleForTesting
+   public ebs(ats $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         ebw.a($$0, IntStream.rangeClosed(-15, 0)),
+         ebw.a($$0, IntStream.rangeClosed(-15, 0)),
+         ebw.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
+   }
+
+   public ebs a(ats $$0) {
+      return new ebs($$0, this.p, this.q, this.l, this.m, this.n);
+   }
+
+   @Override
+   public double a(dmk.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
+
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         ebt $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(ebw.b($$4 * $$13), ebw.b($$5 * $$13), ebw.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
+         }
+
+         $$13 /= 2.0;
       }
-   }
 
-   protected void e(long $$0) {
-      int $$1 = this.c.remove($$0) & 255;
-      if ($$1 != 255) {
-         int $$2 = this.c($$0);
-         int $$3 = this.a($$2, $$1);
-         this.b.a($$0, $$3, this.f);
-         this.d = !this.b.b();
-      }
-   }
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
 
-   public void a(LongPredicate $$0) {
-      LongList $$1 = new LongArrayList();
-      this.c.keySet().forEach($$2 -> {
-         if ($$0.test($$2)) {
-            $$1.add($$2);
-         }
-      });
-      $$1.forEach(this::e);
-   }
-
-   private int a(int $$0, int $$1) {
-      return Math.min(Math.min($$0, $$1), this.f - 1);
-   }
-
-   protected void f(long $$0) {
-      this.a($$0, $$0, this.f - 1, false);
-   }
-
-   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
-      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
-      this.d = !this.b.b();
-   }
-
-   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if (!this.a($$1)) {
-         $$2 = ati.a($$2, 0, this.f - 1);
-         $$3 = ati.a($$3, 0, this.f - 1);
-         boolean $$6 = $$4 == 255;
-         if ($$6) {
-            $$4 = $$3;
-         }
-
-         int $$7;
-         if ($$5) {
-            $$7 = Math.min($$4, $$2);
-         } else {
-            $$7 = ati.a(this.a($$1, $$0, $$2), 0, this.f - 1);
-         }
-
-         int $$9 = this.a($$3, $$4);
-         if ($$3 != $$7) {
-            int $$10 = this.a($$3, $$7);
-            if ($$9 != $$10 && !$$6) {
-               this.b.a($$1, $$9, $$10);
-            }
-
-            this.b.a($$1, $$10);
-            this.c.put($$1, (byte)$$7);
-         } else if (!$$6) {
-            this.b.a($$1, $$9, this.f);
-            this.c.remove($$1);
-         }
-      }
-   }
-
-   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
-      int $$4 = this.c.get($$1) & 255;
-      int $$5 = ati.a(this.b($$0, $$1, $$2), 0, this.f - 1);
-      if ($$3) {
-         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
-      } else {
-         boolean $$6 = $$4 == 255;
-         int $$7;
-         if ($$6) {
-            $$7 = ati.a(this.c($$1), 0, this.f - 1);
-         } else {
-            $$7 = $$4;
-         }
-
-         if ($$5 == $$7) {
-            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
-         }
-      }
-   }
-
-   protected final boolean b() {
-      return this.d;
-   }
-
-   protected final int b(int $$0) {
-      if (this.b.b()) {
-         return $$0;
-      } else {
-         while (!this.b.b() && $$0 > 0) {
-            $$0--;
-            long $$1 = this.b.a();
-            int $$2 = ati.a(this.c($$1), 0, this.f - 1);
-            int $$3 = this.c.remove($$1) & 255;
-            if ($$3 < $$2) {
-               this.a($$1, $$3);
-               this.a($$1, $$3, true);
-            } else if ($$3 > $$2) {
-               this.a($$1, this.f - 1);
-               if ($$3 != this.f - 1) {
-                  this.b.a($$1, this.a(this.f - 1, $$3));
-                  this.c.put($$1, (byte)$$3);
-               }
-
-               this.a($$1, $$2, false);
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = ebw.b($$1 * $$13);
+         double $$21 = ebw.b($$2 * $$13);
+         double $$22 = ebw.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            ebt $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
 
-         this.d = !this.b.b();
-         return $$0;
+         if (!$$18) {
+            ebt $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         $$13 /= 2.0;
       }
+
+      return atm.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   public int c() {
-      return this.c.size();
+   @Override
+   public double a() {
+      return -this.b();
    }
 
-   protected boolean a(long $$0) {
-      return $$0 == Long.MAX_VALUE;
+   @Override
+   public double b() {
+      return this.o;
    }
 
-   protected abstract int a(long var1, long var3, int var5);
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
 
-   protected abstract void a(long var1, int var3, boolean var4);
-
-   protected abstract int c(long var1);
-
-   protected abstract void a(long var1, int var3);
-
-   protected abstract int b(long var1, long var3, int var5);
+   @Override
+   public atg<? extends dmk> c() {
+      return a;
+   }
 }

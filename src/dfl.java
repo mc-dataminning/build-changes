@@ -1,109 +1,23 @@
-import javax.annotation.Nullable;
+public class dfl {
+   private boolean a;
+   private float b;
+   private float c;
 
-public class dfl extends der implements biu {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final ato k = ato.a();
-   private ur l;
-
-   public dfl(ht $$0, dgw $$1) {
-      super(det.m, $$0, $$1);
-   }
-
-   @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      if (this.ac()) {
-         $$0.a("CustomName", ur.a.a(this.l));
+   public void a() {
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
       }
    }
 
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = ur.a.a($$0.l("CustomName"));
-      }
+   public float a(float $$0) {
+      return atm.i($$0, this.c, this.b);
    }
 
-   public static void a(crs $$0, ht $$1, dgw $$2, dfl $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cdm $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dq() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dw() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)ati.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
-         }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
-      }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = ati.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = ati.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
-   }
-
-   @Override
-   public ur ab() {
-      return (ur)(this.l != null ? this.l : ur.c("container.enchant"));
-   }
-
-   public void a(@Nullable ur $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ur ad() {
-      return this.l;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 }

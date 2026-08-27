@@ -1,13 +1,17 @@
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
-public abstract class api<T> implements aox {
+public interface api extends apb {
    @Override
-   public final CompletableFuture<Void> a(aox.a $$0, apd $$1, bfh $$2, bfh $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+   default CompletableFuture<Void> a(apb.a $$0, aph $$1, bfo $$2, bfo $$3, Executor $$4, Executor $$5) {
+      return $$0.a(auo.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   protected abstract T b(apd var1, bfh var2);
-
-   protected abstract void a(T var1, apd var2, bfh var3);
+   void a(aph var1);
 }

@@ -1,107 +1,133 @@
-public abstract class fbh<T extends cgf> extends fbg<T> implements feb {
-   public final fdr x;
-   private boolean y;
-   private final agg z;
-   private final agg A;
-   private final agg B;
+enum fbh {
+   a(
+      new fbh.a(
+         new agi("advancements/tab_above_left_selected"), new agi("advancements/tab_above_middle_selected"), new agi("advancements/tab_above_right_selected")
+      ),
+      new fbh.a(new agi("advancements/tab_above_left"), new agi("advancements/tab_above_middle"), new agi("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fbh.a(
+         new agi("advancements/tab_below_left_selected"), new agi("advancements/tab_below_middle_selected"), new agi("advancements/tab_below_right_selected")
+      ),
+      new fbh.a(new agi("advancements/tab_below_left"), new agi("advancements/tab_below_middle"), new agi("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fbh.a(
+         new agi("advancements/tab_left_top_selected"), new agi("advancements/tab_left_middle_selected"), new agi("advancements/tab_left_bottom_selected")
+      ),
+      new fbh.a(new agi("advancements/tab_left_top"), new agi("advancements/tab_left_middle"), new agi("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fbh.a(
+         new agi("advancements/tab_right_top_selected"), new agi("advancements/tab_right_middle_selected"), new agi("advancements/tab_right_bottom_selected")
+      ),
+      new fbh.a(new agi("advancements/tab_right_top"), new agi("advancements/tab_right_middle"), new agi("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fbh(T $$0, fdr $$1, cdl $$2, ur $$3, agg $$4, agg $$5, agg $$6) {
-      super($$0, $$2, $$3);
-      this.x = $$1;
-      this.z = $$4;
-      this.A = $$5;
-      this.B = $$6;
+   private final fbh.a e;
+   private final fbh.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fbh(fbh.a $$0, fbh.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   public void aO_() {
-      super.aO_();
-      this.y = this.g < 379;
-      this.x.a(this.g, this.h, this.f, this.y, this.p);
-      this.t = this.x.a(this.g, this.c);
-      this.d(new euy(this.t + 20, this.h / 2 - 49, 20, 18, fdv.a, $$0 -> {
-         this.x.f();
-         this.t = this.x.a(this.g, this.c);
-         $$0.b(this.t + 20, this.h / 2 - 49);
-      }));
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   public void C() {
-      super.C();
-      this.x.h();
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      if (this.x.g() && this.y) {
-         this.b($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
+   public void a(euo $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fbh.a $$5 = $$3 ? this.e : this.f;
+      agi $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, this.t, this.u, true, $$3);
+         $$6 = $$5.b();
       }
 
-      this.a($$0, $$1, $$2);
-      this.x.a($$0, this.t, this.u, $$1, $$2);
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void a(eub $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.p.s()) {
-         int $$6 = 14;
-         int $$7 = ati.f(this.p.r() * 13.0F) + 1;
-         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+   public void a(euo $$0, int $$1, int $$2, int $$3, clj $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
       }
 
-      int $$8 = 24;
-      int $$9 = ati.f(this.p.q() * 24.0F);
-      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+      $$0.b($$4, $$5, $$6);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   @Override
-   protected void a(chz $$0, int $$1, int $$2, cgn $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.x.a($$0);
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
    }
 
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void E() {
-      this.x.i();
-   }
-
-   @Override
-   public fdv F() {
-      return this.x;
+   static record a(agi a, agi b, agi c) {
    }
 }

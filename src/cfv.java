@@ -1,85 +1,81 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class cfv extends cfm implements dgb {
+   private boolean i = true;
 
-public final class cfv {
-   private static final cfv b = new cfv(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cfw c;
-   private final long d;
-
-   private cfv(@Nullable cfw $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public cfv(bku<? extends cfv> $$0, csa $$1) {
+      super($$0, $$1);
    }
 
-   static cfv a(cfw $$0, Collection<cft> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cfv($$0, $$2);
-      }
-   }
-
-   public static cfv a() {
-      return b;
-   }
-
-   public static cfv a(cft $$0) {
-      return new cfv($$0.a, $$0.b);
-   }
-
-   public static cfv a(cft $$0, cft... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cfv($$0.a, $$2);
-   }
-
-   private static long a(cfw $$0, long $$1, Iterable<cft> $$2) {
-      for (cft $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cft $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cfv $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cfv b(cfv $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cfv(this.c, this.d | $$0.d);
-      }
+   public cfv(csa $$0, double $$1, double $$2, double $$3) {
+      super(bku.X, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public cfl.a w() {
+      return cfl.a.f;
+   }
+
+   @Override
+   public dhi y() {
+      return cvc.hc.o();
+   }
+
+   @Override
+   public int A() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.H()) {
+         this.p($$4);
+      }
+   }
+
+   public boolean H() {
+      return this.i;
+   }
+
+   public void p(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public double I() {
+      return this.ds();
+   }
+
+   @Override
+   public double J() {
+      return this.du() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return this.dy();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dN().B && this.bx() && this.H() && this.M()) {
+         this.e();
+      }
+   }
+
+   public boolean M() {
+      if (dgc.a(this.dN(), this)) {
          return true;
       } else {
-         if ($$0 instanceof cfv $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
+         for (can $$1 : this.dN().a(can.class, this.cH().c(0.25, 0.0, 0.25), bkt.a)) {
+            if (dgc.a(this, $$1)) {
+               return true;
+            }
          }
 
          return false;
@@ -87,7 +83,24 @@ public final class cfv {
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected cle ag_() {
+      return clm.nP;
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.i);
+   }
+
+   @Override
+   protected void a(rz $$0) {
+      super.a($$0);
+      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cgm a(int $$0, cdt $$1) {
+      return new chl($$0, $$1, this);
    }
 }

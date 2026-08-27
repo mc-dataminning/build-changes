@@ -1,28 +1,26 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eaz implements ebd {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eaz> a = RecordCodecBuilder.create($$0 -> $$0.group(agg.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, eaz::new));
-   private final agg d;
+public class eaz extends ebb {
+   public static final Codec<eaz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhi.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, eaz::new)
+   );
+   private final dhi b;
+   private final float d;
 
-   public eaz(agg $$0) {
-      this.d = $$0;
+   public eaz(dhi $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public rz a(ato $$0, @Nullable rz $$1) {
-      rz $$2 = $$1 == null ? new rz() : $$1.h();
-      agg.a.encodeStart(sn.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public boolean a(dhi $$0, ats $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
    @Override
-   public ebe<?> a() {
-      return ebe.d;
+   protected ebc<?> a() {
+      return ebc.f;
    }
 }

@@ -1,31 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dps implements drn {
-   public static final Codec<dps> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dgw.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dgw.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dgw.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dgw.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dnm.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dps::new)
-   );
-   public final dgw b;
-   public final dgw c;
-   public final dgw d;
-   public final dgw e;
-   public final dnm f;
-   public final boolean g;
+public class dps extends dpv<dry> {
+   public dps(Codec<dry> $$0) {
+      super($$0);
+   }
 
-   public dps(dgw $$0, dgw $$1, dgw $$2, dgw $$3, dnm $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(dpx<dry> $$0) {
+      ht $$1 = $$0.e();
+      csu $$2 = $$0.b();
+      dry $$3 = $$0.f();
+
+      for (ht $$4 : ht.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ht $$9 = $$4.i();
+            this.a($$2, $$9, cvc.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dfd $$4x = $$2.c_($$9);
+               if ($$4x instanceof dgs $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, cvc.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, cvc.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, cvc.F.o());
+         } else {
+            this.a($$2, $$4, cvc.a.o());
+         }
+      }
+
+      return true;
    }
 }

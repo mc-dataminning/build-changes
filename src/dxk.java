@@ -1,78 +1,54 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record dxk(List<dwz> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final agg c = new agg("jigsaw");
-   private static final Map<agg, agg> d = ImmutableMap.builder()
-      .put(new agg("nvi"), c)
-      .put(new agg("pcp"), c)
-      .put(new agg("bastionremnant"), c)
-      .put(new agg("runtime"), c)
-      .build();
+public class dxk extends edx {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public dxk(List<dwz> a) {
-      this.a = List.copyOf(a);
+   public static edx.a<dxk> a() {
+      return new edx.a<>(dxk::new, dxk::b, aus.o);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   private dxk(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public boolean a(ht $$0) {
-      for (dwz $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public dxk() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   public sw a(dxl $$0) {
-      sf $$1 = new sf();
-
-      for (dwz $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
+   public static dxk b(rz $$0) {
+      return new dxk(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
-   public static dxk a(sf $$0, dxl $$1) {
-      List<dwz> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         rz $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         agg $$6 = new agg($$5);
-         agg $$7 = d.getOrDefault($$6, $$6);
-         dxm $$8 = jy.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dwz $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new dxk($$2);
+   @Override
+   public rz a(rz $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   public dwn b() {
-      return dwz.a(this.a.stream());
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   public List<dwz> c() {
-      return this.a;
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

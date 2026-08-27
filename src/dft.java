@@ -1,211 +1,160 @@
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dft extends der implements bih, bit {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bij e = new bij() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dft extends dfd implements ela {
+   public static final String c = "sherds";
+   public static final String d = "item";
+   public static final int e = 1;
+   public long f;
+   @Nullable
+   public dft.b g;
+   private dft.a h;
+   private clj i = clj.b;
 
-      @Override
-      public boolean ai_() {
-         return dft.this.g.b();
-      }
-
-      @Override
-      public clb a(int $$0) {
-         return $$0 == 0 ? dft.this.g : clb.b;
-      }
-
-      @Override
-      public clb a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            clb $$2 = dft.this.g.a($$1);
-            if (dft.this.g.b()) {
-               dft.this.j();
-            }
-
-            return $$2;
-         } else {
-            return clb.b;
-         }
-      }
-
-      @Override
-      public clb b(int $$0) {
-         if ($$0 == 0) {
-            clb $$1 = dft.this.g;
-            dft.this.g = clb.b;
-            dft.this.j();
-            return $$1;
-         } else {
-            return clb.b;
-         }
-      }
-
-      @Override
-      public void a(int $$0, clb $$1) {
-      }
-
-      @Override
-      public int aj_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dft.this.e();
-      }
-
-      @Override
-      public boolean a(cdm $$0) {
-         return bij.a(dft.this, $$0) && dft.this.f();
-      }
-
-      @Override
-      public boolean b(int $$0, clb $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cgo f = new cgo() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dft.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dft.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   clb g = clb.b;
-   int h;
-   private int i;
-
-   public dft(ht $$0, dgw $$1) {
-      super(det.D, $$0, $$1);
-   }
-
-   public clb c() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.g.a(cle.th) || this.g.a(cle.ti);
-   }
-
-   public void a(clb $$0) {
-      this.a($$0, null);
-   }
-
-   void j() {
-      this.h = 0;
-      this.i = 0;
-      czd.a(null, this.k(), this.p(), this.q(), false);
-   }
-
-   public void a(clb $$0, @Nullable cdm $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = cmx.k(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = ati.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         czd.a(this.k(), this.p(), this.q());
-      }
-   }
-
-   public int g() {
-      return this.h;
-   }
-
-   public int i() {
-      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
-      return ati.d($$0 * 14.0F) + (this.f() ? 1 : 0);
-   }
-
-   private clb b(clb $$0, @Nullable cdm $$1) {
-      if (this.o instanceof ama && $$0.a(cle.ti)) {
-         cmx.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
-   }
-
-   private du a(@Nullable cdm $$0) {
-      String $$1;
-      ur $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = ur.b("Lectern");
-      } else {
-         $$1 = $$0.ab().getString();
-         $$2 = $$0.O_();
-      }
-
-      eji $$5 = eji.b(this.p);
-      return new du(dt.a, $$5, ejh.a, (ama)this.o, 2, $$1, $$2, this.o.n(), $$0);
-   }
-
-   @Override
-   public boolean t() {
-      return true;
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(clb.a($$0.p("Book")), null);
-      } else {
-         this.g = clb.b;
-      }
-
-      this.i = cmx.k(this.g);
-      this.h = ati.a($$0.h("Page"), 0, this.i - 1);
+   public dft(ht $$0, dhi $$1) {
+      super(dff.O, $$0, $$1);
+      this.h = dft.a.a;
    }
 
    @Override
    protected void b(rz $$0) {
       super.b($$0);
-      if (!this.c().b()) {
-         $$0.a("Book", this.c().b(new rz()));
-         $$0.a("Page", this.h);
+      this.h.a($$0);
+      if (!this.i.b()) {
+         $$0.a("item", this.i.b(new rz()));
       }
    }
 
    @Override
-   public void a() {
-      this.a(clb.b);
+   public void a(rz $$0) {
+      super.a($$0);
+      this.h = dft.a.b($$0);
+      if ($$0.b("item", 10)) {
+         this.i = clj.a($$0.p("item"));
+      } else {
+         this.i = clj.b;
+      }
+   }
+
+   public yk f() {
+      return yk.a(this);
    }
 
    @Override
-   public cge createMenu(int $$0, cdl $$1, cdm $$2) {
-      return new chi($$0, this.e, this.f);
+   public rz aw_() {
+      return this.o();
+   }
+
+   public hx g() {
+      return this.q().c(dhy.R);
+   }
+
+   public dft.a i() {
+      return this.h;
+   }
+
+   public void a(clj $$0) {
+      this.h = dft.a.b(cjc.a($$0));
+   }
+
+   public clj j() {
+      return a(this.h);
+   }
+
+   public static clj a(dft.a $$0) {
+      clj $$1 = clm.eB.al_();
+      rz $$2 = $$0.a(new rz());
+      cjc.a($$1, dff.O, $$2);
+      return $$1;
    }
 
    @Override
-   public ur O_() {
-      return ur.c("container.lectern");
+   public clj v() {
+      return this.i;
+   }
+
+   @Override
+   public clj c(int $$0) {
+      clj $$1 = this.i.a($$0);
+      if (this.i.b()) {
+         this.i = clj.b;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(clj $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public dfd w() {
+      return this;
+   }
+
+   public void a(dft.b $$0) {
+      if (this.o != null && !this.o.x_()) {
+         this.o.a(this.p(), this.q().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dft.b.values().length) {
+         this.f = this.o.W();
+         this.g = dft.b.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static record a(cle b, cle c, cle d, cle e) {
+      public static final dft.a a = new dft.a(clm.qI, clm.qI, clm.qI, clm.qI);
+
+      public rz a(rz $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            sf $$1 = new sf();
+            this.a().forEach($$1x -> $$1.add(su.a(jy.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
+         }
+      }
+
+      public Stream<cle> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static dft.a b(@Nullable rz $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            sf $$1 = $$0.c("sherds", 8);
+            return new dft.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static cle a(sf $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return clm.qI;
+         } else {
+            sw $$2 = $$0.k($$1);
+            return jy.i.a(agi.a($$2.s_()));
+         }
+      }
+   }
+
+   public static enum b {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private b(int $$0) {
+         this.c = $$0;
+      }
    }
 }

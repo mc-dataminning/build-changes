@@ -1,26 +1,29 @@
-public class fxt extends fwq<cbn, fjf<cbn>> {
-   private static final agg a = new agg("textures/entity/strider/strider.png");
-   private static final agg i = new agg("textures/entity/strider/strider_cold.png");
+public class fxt extends fxd<bxm, fjd<bxm>> {
+   private static final agi a = new agi("textures/entity/fish/salmon.png");
 
-   public fxt(fvk.a $$0) {
-      super($$0, new fjf<>($$0.a(fka.bx)), 0.5F);
-      this.a(new fzt<>(this, new fjf<>($$0.a(fka.by)), new agg("textures/entity/strider/strider_saddle.png")));
+   public fxt(fvx.a $$0) {
+      super($$0, new fjd<>($$0.a(fkn.ba)), 0.4F);
    }
 
-   public agg a(cbn $$0) {
-      return $$0.s() ? i : a;
+   public agi a(bxm $$0) {
+      return a;
    }
 
-   protected void a(cbn $$0, enk $$1, float $$2) {
-      if ($$0.n_()) {
-         $$1.b(0.5F, 0.5F, 0.5F);
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
+   protected void a(bxm $$0, enw $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
       }
-   }
 
-   protected boolean b(cbn $$0) {
-      return super.a($$0) || $$0.s();
+      float $$7 = $$5 * 4.3F * atm.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

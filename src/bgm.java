@@ -1,79 +1,37 @@
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public class bgm {
-   public static final bgm a = new bgm();
-   private final WeakHashMap<bgo, Void> b = new WeakHashMap<>();
+public record bgm(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   private bgm() {
+   public static bgm a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bgm($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public void a(bgo $$0) {
-      this.b.put($$0, null);
-   }
-
-   public List<bgl> a() {
-      Map<String, List<bgl>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bk().stream()).collect(Collectors.groupingBy(bgl::d));
-      return a($$0);
-   }
-
-   private static List<bgl> a(Map<String, List<bgl>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bgl> $$2 = (List<bgl>)$$0x.getValue();
-         return (bgl)($$2.size() > 1 ? new bgm.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bgl {
-      private final List<bgl> b;
-
-      a(String $$0, List<bgl> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bgl.c a(List<bgl> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bgl> $$0) {
-         for (bgl $$1 : $$0) {
-            $$1.a();
+   public static bgm.a a(List<bgm> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bgm>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bgm $$3 = (bgm)$$2x.get(0);
+            bgm $$4 = (bgm)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
          }
-      }
+      });
+      return new bgm.a($$1);
+   }
 
-      private static double c(List<bgl> $$0) {
-         double $$1 = 0.0;
-
-         for (bgl $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bgm.a $$1 = (bgm.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
-      }
+   public static record a(Map<String, Double> a) {
    }
 }

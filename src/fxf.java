@@ -1,5 +1,10 @@
-public interface fxf<T extends bki, M extends fhc<T>> {
-   M a();
+public class fxf<T extends bkq> extends fvw<T> {
+   public fxf(fvx.a $$0) {
+      super($$0);
+   }
 
-   agg a(T var1);
+   @Override
+   public agi a(T $$0) {
+      return gbt.e;
+   }
 }

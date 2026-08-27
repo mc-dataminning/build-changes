@@ -1,13 +1,15 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public interface blo {
-   boolean g();
+   @Nullable
+   UUID d();
 
-   void a(@Nullable aqo var1);
+   crr e();
 
-   default aqm X_() {
-      return aqn.ls;
+   @Nullable
+   default blg Q_() {
+      UUID $$0 = this.d();
+      return $$0 == null ? null : this.e().b($$0);
    }
-
-   boolean i();
 }

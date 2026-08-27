@@ -1,120 +1,96 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fgi<T extends bwk> extends fga<T> {
-   private static final float a = 19.0F;
-   private static final String b = "bone";
-   private static final String f = "stinger";
-   private static final String g = "left_antenna";
-   private static final String h = "right_antenna";
-   private static final String i = "front_legs";
-   private static final String j = "middle_legs";
-   private static final String k = "back_legs";
-   private final fkb l;
-   private final fkb m;
-   private final fkb n;
-   private final fkb o;
-   private final fkb p;
-   private final fkb q;
-   private final fkb r;
-   private final fkb s;
-   private final fkb t;
-   private float u;
+public class fgi {
+   public final fgi.d a;
+   public final emn b;
+   public final fgi.a c;
+   public final fgi.b d;
+   public final fgi.c e;
 
-   public fgi(fkb $$0) {
-      super(false, 24.0F, 0.0F);
-      this.l = $$0.b("bone");
-      fkb $$1 = this.l.b("body");
-      this.r = $$1.b("stinger");
-      this.s = $$1.b("left_antenna");
-      this.t = $$1.b("right_antenna");
-      this.m = this.l.b("right_wing");
-      this.n = this.l.b("left_wing");
-      this.o = this.l.b("front_legs");
-      this.p = this.l.b("middle_legs");
-      this.q = this.l.b("back_legs");
+   public fgi(fgi.d $$0, emn $$1, fgi.a $$2, fgi.b $$3, fgi.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static fkh c() {
-      float $$0 = 19.0F;
-      fkj $$1 = new fkj();
-      fkk $$2 = $$1.a();
-      fkk $$3 = $$2.a("bone", fkg.c(), fkd.a(0.0F, 19.0F, 0.0F));
-      fkk $$4 = $$3.a("body", fkg.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), fkd.a);
-      $$4.a("stinger", fkg.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), fkd.a);
-      $$4.a("left_antenna", fkg.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), fkd.a(0.0F, -2.0F, -5.0F));
-      $$4.a("right_antenna", fkg.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), fkd.a(0.0F, -2.0F, -5.0F));
-      fkf $$5 = new fkf(0.001F);
-      $$3.a("right_wing", fkg.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$5), fkd.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$3.a("left_wing", fkg.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$5), fkd.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$3.a("front_legs", fkg.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), fkd.a(1.5F, 3.0F, -2.0F));
-      $$3.a("middle_legs", fkg.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), fkd.a(1.5F, 3.0F, 0.0F));
-      $$3.a("back_legs", fkg.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), fkd.a(1.5F, 3.0F, 2.0F));
-      return fkh.a($$1, 64, 64);
-   }
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.u = $$0.E($$3);
-      this.r.k = !$$0.gp();
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.m.e = 0.0F;
-      this.s.e = 0.0F;
-      this.t.e = 0.0F;
-      this.l.e = 0.0F;
-      boolean $$6 = $$0.aA() && $$0.do().g() < 1.0E-7;
-      if ($$6) {
-         this.m.f = -0.2618F;
-         this.m.g = 0.0F;
-         this.n.e = 0.0F;
-         this.n.f = 0.2618F;
-         this.n.g = 0.0F;
-         this.o.e = 0.0F;
-         this.p.e = 0.0F;
-         this.q.e = 0.0F;
-      } else {
-         float $$7 = $$3 * 120.32113F * (float) (Math.PI / 180.0);
-         this.m.f = 0.0F;
-         this.m.g = ati.b($$7) * (float) Math.PI * 0.15F;
-         this.n.e = this.m.e;
-         this.n.f = this.m.f;
-         this.n.g = -this.m.g;
-         this.o.e = (float) (Math.PI / 4);
-         this.p.e = (float) (Math.PI / 4);
-         this.q.e = (float) (Math.PI / 4);
-         this.l.e = 0.0F;
-         this.l.f = 0.0F;
-         this.l.g = 0.0F;
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      if (!$$0.Y_()) {
-         this.l.e = 0.0F;
-         this.l.f = 0.0F;
-         this.l.g = 0.0F;
-         if (!$$6) {
-            float $$8 = ati.b($$3 * 0.18F);
-            this.l.e = 0.1F + $$8 * (float) Math.PI * 0.025F;
-            this.s.e = $$8 * (float) Math.PI * 0.03F;
-            this.t.e = $$8 * (float) Math.PI * 0.03F;
-            this.o.e = -$$8 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-            this.q.e = -$$8 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-            this.l.c = 19.0F - ati.b($$3 * 0.18F) * 0.9F;
-         }
-      }
-
-      if (this.u > 0.0F) {
-         this.l.e = fhz.a(this.l.e, 3.0915928F, this.u);
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gcq.a(this.c.toPath(), this.d);
       }
    }
 
-   @Override
-   protected Iterable<fkb> a() {
-      return ImmutableList.of();
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 
-   @Override
-   protected Iterable<fkb> b() {
-      return ImmutableList.of(this.l);
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final ets a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(ets $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

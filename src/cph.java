@@ -1,25 +1,15 @@
-public class cph extends cpm {
-   public cph(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.m, $$1);
+public class cph extends cpb {
+   public cph(String $$0, cok $$1, clj $$2) {
+      super(cot.f, cos.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public boolean a(biq $$0, csa $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(cpm $$0) {
-      return super.a($$0) && $$0 != cpq.I;
+   public clj g() {
+      return new clj(cvc.oc);
    }
 }

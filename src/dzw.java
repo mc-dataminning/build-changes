@@ -1,92 +1,105 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dzw extends eas {
-   public static final Codec<dzw> a = Codec.FLOAT.fieldOf("mossiness").xmap(dzw::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dgw[] e = new dgw[]{cuv.jD.o(), cuv.jK.o()};
-   private final float f;
+public class dzw {
+   static final ht a = new ht(4, 0, 15);
+   private static final agi[] b = new agi[]{
+      new agi("shipwreck/with_mast"),
+      new agi("shipwreck/sideways_full"),
+      new agi("shipwreck/sideways_fronthalf"),
+      new agi("shipwreck/sideways_backhalf"),
+      new agi("shipwreck/rightsideup_full"),
+      new agi("shipwreck/rightsideup_fronthalf"),
+      new agi("shipwreck/rightsideup_backhalf"),
+      new agi("shipwreck/with_mast_degraded"),
+      new agi("shipwreck/rightsideup_full_degraded"),
+      new agi("shipwreck/rightsideup_fronthalf_degraded"),
+      new agi("shipwreck/rightsideup_backhalf_degraded")
+   };
+   private static final agi[] c = new agi[]{
+      new agi("shipwreck/with_mast"),
+      new agi("shipwreck/upsidedown_full"),
+      new agi("shipwreck/upsidedown_fronthalf"),
+      new agi("shipwreck/upsidedown_backhalf"),
+      new agi("shipwreck/sideways_full"),
+      new agi("shipwreck/sideways_fronthalf"),
+      new agi("shipwreck/sideways_backhalf"),
+      new agi("shipwreck/rightsideup_full"),
+      new agi("shipwreck/rightsideup_fronthalf"),
+      new agi("shipwreck/rightsideup_backhalf"),
+      new agi("shipwreck/with_mast_degraded"),
+      new agi("shipwreck/upsidedown_full_degraded"),
+      new agi("shipwreck/upsidedown_fronthalf_degraded"),
+      new agi("shipwreck/upsidedown_backhalf_degraded"),
+      new agi("shipwreck/sideways_full_degraded"),
+      new agi("shipwreck/sideways_fronthalf_degraded"),
+      new agi("shipwreck/sideways_backhalf_degraded"),
+      new agi("shipwreck/rightsideup_full_degraded"),
+      new agi("shipwreck/rightsideup_fronthalf_degraded"),
+      new agi("shipwreck/rightsideup_backhalf_degraded")
+   };
+   static final Map<String, agi> d = Map.of("map_chest", eev.H, "treasure_chest", eev.J, "supply_chest", eev.I);
 
-   public dzw(float $$0) {
-      this.f = $$0;
+   public static void a(ebi $$0, ht $$1, dbm $$2, dxm $$3, ats $$4, boolean $$5) {
+      agi $$6 = ac.a($$5 ? b : c, $$4);
+      $$3.a(new dzw.a($$0, $$6, $$1, $$2, $$5));
    }
 
-   @Nullable
-   @Override
-   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
-      ato $$6 = $$5.b($$4.a());
-      dgw $$7 = $$4.b();
-      ht $$8 = $$4.a();
-      dgw $$9 = null;
-      if ($$7.a(cuv.eH) || $$7.a(cuv.b) || $$7.a(cuv.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(arc.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(arc.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(arc.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(cuv.co)) {
-         $$9 = this.d($$6);
+   public static class a extends dxr {
+      private final boolean h;
+
+      public a(ebi $$0, agi $$1, ht $$2, dbm $$3, boolean $$4) {
+         super(dxy.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+         this.h = $$4;
       }
 
-      return $$9 != null ? new eav.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dgw a(ato $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dgw[] $$1 = new dgw[]{cuv.eJ.o(), a($$0, cuv.fj)};
-         dgw[] $$2 = new dgw[]{cuv.eI.o(), a($$0, cuv.ng)};
-         return this.a($$0, $$1, $$2);
+      public a(ebi $$0, rz $$1) {
+         super(dxy.ab, $$1, $$0, $$1x -> a(dbm.valueOf($$1.l("Rot"))));
+         this.h = $$1.q("isBeached");
       }
-   }
 
-   @Nullable
-   private dgw a(ato $$0, dgw $$1) {
-      hx $$2 = $$1.c(dcm.b);
-      dhv $$3 = $$1.c(dcm.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dgw[] $$4 = new dgw[]{cuv.ng.o().a(dcm.b, $$2).a(dcm.c, $$3), cuv.nu.o()};
-         return this.a($$0, e, $$4);
+      @Override
+      protected void a(dxx $$0, rz $$1) {
+         super.a($$0, $$1);
+         $$1.a("isBeached", this.h);
+         $$1.a("Rot", this.c.d().name());
       }
-   }
 
-   @Nullable
-   private dgw b(ato $$0) {
-      return $$0.i() < this.f ? cuv.nu.o() : null;
-   }
+      private static ebd a(dbm $$0) {
+         return new ebd().a($$0).a(czw.a).a(dzw.a).a(eaj.d);
+      }
 
-   @Nullable
-   private dgw c(ato $$0) {
-      return $$0.i() < this.f ? cuv.nI.o() : null;
-   }
+      @Override
+      protected void a(String $$0, ht $$1, csp $$2, ats $$3, dwz $$4) {
+         agi $$5 = dzw.d.get($$0);
+         if ($$5 != null) {
+            dgh.a($$2, $$3, $$1.d(), $$5);
+         }
+      }
 
-   @Nullable
-   private dgw d(ato $$0) {
-      return $$0.i() < 0.15F ? cuv.pk.o() : null;
-   }
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         int $$7 = $$0.ak();
+         int $$8 = 0;
+         iw $$9 = this.b.a();
+         dmr.a $$10 = this.h ? dmr.a.a : dmr.a.c;
+         int $$11 = $$9.u() * $$9.w();
+         if ($$11 == 0) {
+            $$8 = $$0.a($$10, this.d.u(), this.d.w());
+         } else {
+            ht $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
 
-   private static dgw a(ato $$0, cut $$1) {
-      return $$1.o().a(dcm.b, hx.c.a.a($$0)).a(dcm.c, ac.a(dhv.values(), $$0));
-   }
+            for (ht $$13 : ht.a(this.d, $$12)) {
+               int $$14 = $$0.a($$10, $$13.u(), $$13.w());
+               $$8 += $$14;
+               $$7 = Math.min($$7, $$14);
+            }
 
-   private dgw a(ato $$0, dgw[] $$1, dgw[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
+            $$8 /= $$11;
+         }
 
-   private static dgw a(ato $$0, dgw[] $$1) {
-      return $$1[$$0.a($$1.length)];
-   }
-
-   @Override
-   protected eau<?> a() {
-      return eau.k;
+         int $$15 = this.h ? $$7 - $$9.v() / 2 - $$3.a(3) : $$8;
+         this.d = new ht(this.d.u(), $$15, this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

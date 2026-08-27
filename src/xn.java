@@ -1,5 +1,5 @@
 public record xn(ht b, String c, int d) implements xd {
-   public static final agg a = new agg("debug/poi_added");
+   public static final agi a = new agi("debug/poi_added");
 
    public xn(tu $$0) {
       this($$0.e(), $$0.s(), $$0.readInt());
@@ -13,7 +13,7 @@ public record xn(ht b, String c, int d) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

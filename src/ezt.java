@@ -1,169 +1,147 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ezt extends fab {
-   static final agg c = new agg("textures/gui/title/mojangstudios.png");
-   private static final int d = ass.b.a(255, 239, 50, 61);
-   private static final int e = ass.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> esr.N().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final esr m;
-   private final aoz n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class ezt extends fau {
+   private static final agi a = new agi("icon/draft_report");
+   private int b;
+   private final ur c;
+   private final boolean k;
+   private ur l;
+   private final List<euz> m = Lists.newArrayList();
+   @Nullable
+   private euz n;
 
-   public ezt(esr $$0, aoz $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(esr $$0) {
-      $$0.X().a(c, new ezt.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public ezt(@Nullable ur $$0, boolean $$1) {
+      super(ur.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
+   protected void aP_() {
+      this.b = 0;
+      this.m.clear();
+      ur $$0 = this.k ? ur.c("deathScreen.spectate") : ur.c("deathScreen.respawn");
+      this.m.add(this.d(euz.a($$0, $$0x -> {
+         this.f.s.fR();
+         $$0x.i = false;
+      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
+      this.n = this.d(
+         euz.a(ur.c("deathScreen.titleScreen"), $$0x -> this.f.aW().a(this.f, this, this::l, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
+      );
+      this.m.add(this.n);
+      this.c(false);
+      this.l = ur.a("deathScreen.score.value", ur.b(Integer.toString(this.f.s.fO())).a(n.o));
+   }
 
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
+   @Override
+   public boolean aE_() {
+      return false;
+   }
 
-         int $$9 = ati.f((1.0F - ati.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(fqp.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - ati.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = ati.c(ati.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(fqp.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = ati.a($$8, 0.0F, 1.0F);
+   private void l() {
+      if (this.k) {
+         this.C();
       } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, esr.a);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = ati.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - ati.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
+         ezn $$0 = new ezt.a($$0x -> {
+            if ($$0x) {
+               this.C();
+            } else {
+               this.f.s.fR();
+               this.f.a(null);
+            }
+         }, ur.c("deathScreen.quit.confirm"), uq.a, ur.c("deathScreen.titleScreen"), ur.c("deathScreen.respawn"));
+         this.f.a($$0);
+         $$0.b(20);
       }
    }
 
-   private void a(eub $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = ati.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = ass.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   private void C() {
+      if (this.f.r != null) {
+         this.f.r.V();
+      }
+
+      this.f.b(new faa(ur.c("menu.savingLevel")));
+      this.f.a(new faz());
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   static class a extends gba {
-      public a() {
-         super(ezt.c);
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
       }
 
-      @Override
-      protected gba.a b(apd $$0) {
-         anu $$1 = esr.N().aa();
-         aov<InputStream> $$2 = $$1.a(ans.a, ezt.c);
-         if ($$2 == null) {
-            return new gba.a(new FileNotFoundException(ezt.c.toString()));
-         } else {
-            try {
-               gba.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gba.a(new gde(true, true), eml.a($$3));
-               }
+      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         vo $$4 = this.a($$1);
+         $$0.a(this.i, $$4, $$1, $$2);
+      }
 
-               return var5;
-            } catch (IOException var9) {
-               return new gba.a(var9);
-            }
+      if (this.n != null && this.f.aW().c()) {
+         $$0.a(a, this.n.p() + this.n.k() - 17, this.n.r() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private vo a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.f.h.a(this.c);
+         int $$2 = this.g / 2 - $$1 / 2;
+         int $$3 = this.g / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         vo $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == up.a.a) {
+            this.a($$3);
+            return false;
          }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (euz $$1 : this.m) {
+         $$1.i = $$0;
+      }
+   }
+
+   public static class a extends ezn {
+      public a(BooleanConsumer $$0, ur $$1, ur $$2, ur $$3, ur $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
       }
    }
 }

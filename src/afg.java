@@ -1,14 +1,8 @@
-public record afg(afh a) implements wk<afe> {
-   public afg(tu $$0) {
-      this($$0.a(afh.a));
-   }
-
+public interface afg extends to, tp {
    @Override
-   public void a(tu $$0) {
-      $$0.a(afh.a, this.a);
+   default tt b() {
+      return tt.c;
    }
 
-   public void a(afe $$0) {
-      $$0.a(this);
-   }
+   void a(afi var1);
 }

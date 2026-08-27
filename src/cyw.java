@@ -1,59 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class cyw extends cyi implements czj {
-   public static final MapCodec<cyw> c = b(cyw::new);
-   protected static final ekb g = cut.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class cyw extends cva {
+   public static final MapCodec<cyw> a = b(cyw::new);
+   public static final dhz b = dan.b;
+   public static final dhz c = dan.c;
+   public static final dhz d = dan.d;
+   public static final dhz e = dan.e;
+   public static final dhz f = dan.f;
+   public static final dhz g = dan.g;
+   private static final Map<hx, dhz> h = dan.h;
 
    @Override
    public MapCodec<cyw> a() {
-      return c;
+      return a;
    }
 
-   protected cyw(dgv.d $$0) {
-      super($$0, hx.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean g(dgw $$0) {
-      return $$0.a(cuv.G);
-   }
-
-   @Override
-   protected cut b() {
-      return cuv.md;
-   }
-
-   @Override
-   protected boolean h(dgw $$0) {
-      return !$$0.a(cuv.kJ);
+   public cyw(dhh.d $$0) {
+      super($$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   public boolean a(@Nullable cdm $$0, cqy $$1, ht $$2, dgw $$3, ecf $$4) {
-      return false;
+   public dhi a(cnr $$0) {
+      crg $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      return this.o()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   public boolean a(crt $$0, ht $$1, dgw $$2, ecg $$3) {
-      return false;
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(ato $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dgw a(cnj $$0) {
-      ecg $$1 = $$0.q().b_($$0.a());
-      return $$1.a(arh.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(h.get($$1.a(hx.c)), $$0.c(b))
+         .a(h.get($$1.a(hx.d)), $$0.c(d))
+         .a(h.get($$1.a(hx.f)), $$0.c(c))
+         .a(h.get($$1.a(hx.e)), $$0.c(e))
+         .a(h.get($$1.a(hx.b)), $$0.c(f))
+         .a(h.get($$1.a(hx.a)), $$0.c(g));
    }
 
    @Override
-   public ecg c_(dgw $$0) {
-      return ech.c.a(false);
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a(h.get($$1.b(hx.c)), $$0.c(b))
+         .a(h.get($$1.b(hx.d)), $$0.c(d))
+         .a(h.get($$1.b(hx.f)), $$0.c(c))
+         .a(h.get($$1.b(hx.e)), $$0.c(e))
+         .a(h.get($$1.b(hx.b)), $$0.c(f))
+         .a(h.get($$1.b(hx.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

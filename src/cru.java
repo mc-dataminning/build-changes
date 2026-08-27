@@ -1,55 +1,31 @@
-public interface cru {
-   int J_();
+public class cru {
+   private static int[] a = new int[65536];
 
-   int I_();
-
-   default int aj() {
-      return this.I_() + this.J_();
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default int ak() {
-      return this.am() - this.al();
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   default int al() {
-      return iu.a(this.I_());
+   public static int a() {
+      return 6396257;
    }
 
-   default int am() {
-      return iu.a(this.aj() - 1) + 1;
+   public static int b() {
+      return 8431445;
    }
 
-   default boolean r(ht $$0) {
-      return this.d($$0.v());
+   public static int c() {
+      return 4764952;
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.I_() || $$0 >= this.aj();
-   }
-
-   default int e(int $$0) {
-      return this.f(iu.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.al();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.al();
-   }
-
-   static cru e(final int $$0, final int $$1) {
-      return new cru() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
-
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public static int d() {
+      return 9619016;
    }
 }

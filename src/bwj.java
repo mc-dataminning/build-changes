@@ -1,218 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class bwj extends bkd {
-   protected static final int bV = 6000;
-   private int bT;
-   @Nullable
-   private UUID bU;
+public class bwj {
+   public static final agh<bwi> a = a("armorer");
+   public static final agh<bwi> b = a("butcher");
+   public static final agh<bwi> c = a("cartographer");
+   public static final agh<bwi> d = a("cleric");
+   public static final agh<bwi> e = a("farmer");
+   public static final agh<bwi> f = a("fisherman");
+   public static final agh<bwi> g = a("fletcher");
+   public static final agh<bwi> h = a("leatherworker");
+   public static final agh<bwi> i = a("librarian");
+   public static final agh<bwi> j = a("mason");
+   public static final agh<bwi> k = a("shepherd");
+   public static final agh<bwi> l = a("toolsmith");
+   public static final agh<bwi> m = a("weaponsmith");
+   public static final agh<bwi> n = a("home");
+   public static final agh<bwi> o = a("meeting");
+   public static final agh<bwi> p = a("beehive");
+   public static final agh<bwi> q = a("bee_nest");
+   public static final agh<bwi> r = a("nether_portal");
+   public static final agh<bwi> s = a("lodestone");
+   public static final agh<bwi> t = a("lightning_rod");
+   private static final Set<dhi> u = ImmutableList.of(
+         cvc.bn, cvc.bo, cvc.bk, cvc.bl, cvc.bi, cvc.bg, cvc.bm, cvc.bc, cvc.bh, cvc.be, cvc.bb, cvc.ba, new cva[]{cvc.bf, cvc.bj, cvc.aZ, cvc.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.n().a().stream())
+      .filter($$0 -> $$0.c(cut.b) == dhv.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dhi> v = ImmutableList.of(cvc.ft, cvc.fv, cvc.fu, cvc.fw)
+      .stream()
+      .flatMap($$0 -> $$0.n().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dhi, ib<bwi>> w = Maps.newHashMap();
 
-   protected bwj(bkm<? extends bwj> $$0, crs $$1) {
-      super($$0, $$1);
-      this.a(ecr.n, 16.0F);
-      this.a(ecr.o, -1.0F);
+   private static Set<dhi> a(cva $$0) {
+      return ImmutableSet.copyOf($$0.n().a());
    }
 
-   @Override
-   protected void X() {
-      if (this.h() != 0) {
-         this.bT = 0;
-      }
-
-      super.X();
+   private static agh<bwi> a(String $$0) {
+      return agh.a(jz.T, new agi($$0));
    }
 
-   @Override
-   public void c_() {
-      super.c_();
-      if (this.h() != 0) {
-         this.bT = 0;
-      }
+   private static bwi a(io<bwi> $$0, agh<bwi> $$1, Set<dhi> $$2, int $$3, int $$4) {
+      bwi $$5 = new bwi($$2, $$3, $$4);
+      io.a($$0, $$1, $$5);
+      a($$0.f($$1), $$2);
+      return $$5;
+   }
 
-      if (this.bT > 0) {
-         this.bT--;
-         if (this.bT % 10 == 0) {
-            double $$0 = this.ag.k() * 0.02;
-            double $$1 = this.ag.k() * 0.02;
-            double $$2 = this.ag.k() * 0.02;
-            this.dL().a(js.M, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$0, $$1, $$2);
+   private static void a(ib<bwi> $$0, Set<dhi> $$1) {
+      $$1.forEach($$1x -> {
+         ib<bwi> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-      }
-   }
-
-   @Override
-   public boolean a(bjg $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else {
-         this.bT = 0;
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public float a(ht $$0, crv $$1) {
-      return $$1.a_($$0.d()).a(cuv.i) ? 10.0F : $$1.v($$0);
-   }
-
-   @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bT);
-      if (this.bU != null) {
-         $$0.a("LoveCause", this.bU);
-      }
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      this.bT = $$0.h("InLove");
-      this.bU = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(bkm<? extends bwj> $$0, crt $$1, blc $$2, ht $$3, ato $$4) {
-      return $$1.a_($$3.d()).a(arc.bP) && a($$1, $$3);
-   }
-
-   protected static boolean a(cqv $$0, ht $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int O() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public int ed() {
-      return 1 + this.dL().z.a(3);
-   }
-
-   public boolean m(clb $$0) {
-      return $$0.a(cle.oI);
-   }
-
-   @Override
-   public biq b(cdm $$0, bip $$1) {
-      clb $$2 = $$0.b($$1);
-      if (this.m($$2)) {
-         int $$3 = this.h();
-         if (!this.dL().B && $$3 == 0 && this.gf()) {
-            this.a($$0, $$1, $$2);
-            this.g($$0);
-            return biq.a;
-         }
-
-         if (this.n_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            return biq.a(this.dL().B);
-         }
-
-         if (this.dL().B) {
-            return biq.b;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void a(cdm $$0, bip $$1, clb $$2) {
-      if (!$$0.fT().d) {
-         $$2.h(1);
-      }
-   }
-
-   public boolean gf() {
-      return this.bT <= 0;
-   }
-
-   public void g(@Nullable cdm $$0) {
-      this.bT = 600;
-      if ($$0 != null) {
-         this.bU = $$0.cv();
-      }
-
-      this.dL().a(this, (byte)18);
-   }
-
-   public void s(int $$0) {
-      this.bT = $$0;
-   }
-
-   public int gg() {
-      return this.bT;
-   }
-
-   @Nullable
-   public amb gh() {
-      if (this.bU == null) {
-         return null;
-      } else {
-         cdm $$0 = this.dL().b(this.bU);
-         return $$0 instanceof amb ? (amb)$$0 : null;
-      }
-   }
-
-   public boolean gi() {
-      return this.bT > 0;
-   }
-
-   public void gj() {
-      this.bT = 0;
-   }
-
-   public boolean a(bwj $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return $$0.getClass() != this.getClass() ? false : this.gi() && $$0.gi();
-      }
-   }
-
-   public void a(ama $$0, bwj $$1) {
-      bkd $$2 = this.a($$0, (bkd)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.dq(), this.ds(), this.dw(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
-   }
-
-   public void a(ama $$0, bwj $$1, @Nullable bkd $$2) {
-      Optional.ofNullable(this.gh()).or(() -> Optional.ofNullable($$1.gh())).ifPresent($$2x -> {
-         $$2x.a(aqx.P);
-         al.o.a($$2x, this, $$1, $$2);
       });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gj();
-      $$1.gj();
-      $$0.a(this, (byte)18);
-      if ($$0.X().b(cro.f)) {
-         $$0.b(new bko($$0, this.dq(), this.ds(), this.dw(), this.ef().a(7) + 1));
-      }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.ag.k() * 0.02;
-            double $$3 = this.ag.k() * 0.02;
-            double $$4 = this.ag.k() * 0.02;
-            this.dL().a(js.M, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$2, $$3, $$4);
-         }
-      } else {
-         super.b($$0);
-      }
+   public static Optional<ib<bwi>> a(dhi $$0) {
+      return Optional.ofNullable(w.get($$0));
+   }
+
+   public static boolean b(dhi $$0) {
+      return w.containsKey($$0);
+   }
+
+   public static bwi a(io<bwi> $$0) {
+      a($$0, a, a(cvc.nW), 1, 1);
+      a($$0, b, a(cvc.nV), 1, 1);
+      a($$0, c, a(cvc.nX), 1, 1);
+      a($$0, d, a(cvc.fs), 1, 1);
+      a($$0, e, a(cvc.pc), 1, 1);
+      a($$0, f, a(cvc.nU), 1, 1);
+      a($$0, g, a(cvc.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(cvc.oa), 1, 1);
+      a($$0, j, a(cvc.oc), 1, 1);
+      a($$0, k, a(cvc.nT), 1, 1);
+      a($$0, l, a(cvc.ob), 1, 1);
+      a($$0, m, a(cvc.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(cvc.od), 32, 6);
+      a($$0, p, a(cvc.pf), 0, 1);
+      a($$0, q, a(cvc.pe), 0, 1);
+      a($$0, r, a(cvc.ed), 0, 1);
+      a($$0, s, a(cvc.pq), 0, 1);
+      return a($$0, t, a(cvc.ss), 0, 1);
    }
 }

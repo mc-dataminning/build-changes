@@ -1,60 +1,72 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class ahf {
-   private final Map<agg, ahe> a = Maps.newHashMap();
+   private static final int a = 2;
 
-   @Nullable
-   public ahe a(agg $$0) {
-      return this.a.get($$0);
-   }
-
-   public ahe a(agg $$0, ur $$1) {
-      ahe $$2 = new ahe($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
-   }
-
-   public void a(ahe $$0) {
-      this.a.remove($$0.a());
-   }
-
-   public Collection<agg> a() {
-      return this.a.keySet();
-   }
-
-   public Collection<ahe> b() {
-      return this.a.values();
-   }
-
-   public rz c() {
-      rz $$0 = new rz();
-
-      for (ahe $$1 : this.a.values()) {
-         $$0.a($$1.a().toString(), $$1.f());
-      }
-
-      return $$0;
-   }
-
-   public void a(rz $$0) {
-      for (String $$1 : $$0.e()) {
-         agg $$2 = new agg($$1);
-         this.a.put($$2, ahe.a($$0.p($$1), $$2));
+   private static ahf.b a(ae $$0, boolean $$1) {
+      Optional<aq> $$2 = $$0.d();
+      if ($$2.isEmpty()) {
+         return ahf.b.b;
+      } else if ($$1) {
+         return ahf.b.a;
+      } else {
+         return $$2.get().j() ? ahf.b.b : ahf.b.c;
       }
    }
 
-   public void a(amb $$0) {
-      for (ahe $$1 : this.a.values()) {
-         $$1.c($$0);
+   private static boolean a(Stack<ahf.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         ahf.b $$2 = (ahf.b)$$0.peek($$1);
+         if ($$2 == ahf.b.a) {
+            return true;
+         }
+
+         if ($$2 == ahf.b.b) {
+            return false;
+         }
       }
+
+      return false;
    }
 
-   public void b(amb $$0) {
-      for (ahe $$1 : this.a.values()) {
-         $$1.d($$0);
+   private static boolean a(ag $$0, Stack<ahf.b> $$1, Predicate<ag> $$2, ahf.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      ahf.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
       }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, ahf.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<ahf.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(ahf.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

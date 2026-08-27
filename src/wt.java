@@ -1,14 +1,14 @@
 import java.util.Map;
 
 public class wt implements wk<wn> {
-   private final Map<agf<? extends io<?>>, aru.a> a;
+   private final Map<agh<? extends io<?>>, ary.a> a;
 
-   public wt(Map<agf<? extends io<?>>, aru.a> $$0) {
+   public wt(Map<agh<? extends io<?>>, ary.a> $$0) {
       this.a = $$0;
    }
 
    public wt(tu $$0) {
-      this.a = $$0.a(tu::u, aru.a::b);
+      this.a = $$0.a(tu::u, ary.a::b);
    }
 
    @Override
@@ -20,7 +20,7 @@ public class wt implements wk<wn> {
       $$0.a(this);
    }
 
-   public Map<agf<? extends io<?>>, aru.a> a() {
+   public Map<agh<? extends io<?>>, ary.a> a() {
       return this.a;
    }
 }

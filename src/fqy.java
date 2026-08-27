@@ -1,108 +1,88 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-public class fqy {
-   protected final fqf a;
-   protected final crs b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public ftf.b[] f;
+public class fqy implements AutoCloseable {
+   private final fqk c;
+   public final emi a;
+   public final emi b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
 
-   public fqy(ftf $$0, crs $$1, int $$2, fqf $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+   public fqy(aph $$0, String $$1, emi $$2, emi $$3) throws IOException {
+      this.c = new fqk($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   protected void a(ftf $$0) {
-      if (!esr.N().bl()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new ftf.b[$$1];
+   @Override
+   public void close() {
+      this.c.close();
+   }
 
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
-               }
-            }
+   public final String a() {
+      return this.c.h();
+   }
+
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
+
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+      }
+
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      etd $$4 = etd.N();
+      this.c.b("ScreenSize").a((float)$$4.aL().k(), (float)$$4.aL().l());
+      this.c.g();
+      this.b.b(etd.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      enr $$5 = eny.b().d();
+      $$5.a(eob.b.h, enu.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      ens.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
+
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof emi) {
+            ((emi)$$6).d();
          }
       }
    }
 
-   public void a() {
-      for (ftf.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.ak();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public cru c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = ati.c($$0);
-      int $$3 = ati.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.I_() + $$12 * 16;
-               ftf.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               ht $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.al(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      ftf.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
-   }
-
-   @Nullable
-   protected ftf.b a(ht $$0) {
-      int $$1 = ati.a($$0.v() - this.b.I_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = ati.b(ati.a($$0.u(), 16), this.d);
-         int $$3 = ati.b(ati.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
-      }
+   public fqk b() {
+      return this.c;
    }
 }

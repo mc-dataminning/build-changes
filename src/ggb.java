@@ -1,16 +1,62 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface ggb {
-   ggb a = ($$0, $$1) -> {
-   };
+public class ggb {
+   private static final int a = 100;
+   private final ats b = ats.a();
+   private final etd c;
+   @Nullable
+   private gfc d;
+   private int e = 100;
 
-   default ggb decorate(Consumer<ggf.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public ggb(etd $$0) {
+      this.c = $$0;
    }
 
-   void send(ggc var1, Consumer<ggf.a> var2);
+   public void a() {
+      aqo $$0 = this.c.ai();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ah().b(this.d);
+            this.e = atm.a(this.b, 0, $$0.b() / 2);
+         }
+
+         if (!this.c.ah().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, atm.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
+   }
+
+   public void a(aqo $$0) {
+      this.d = gex.a($$0.a().a());
+      if (this.d.b() != ggg.a) {
+         this.c.ah().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(aqo $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ah().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(aqo $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   }
 }

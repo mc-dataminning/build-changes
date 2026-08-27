@@ -1,31 +1,37 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class dys extends dwv {
-   public static final Codec<dys> d = a(dys::new);
+public interface dys {
+   Codec<dys> b = jy.ak.q().dispatch(dys::b, Function.identity());
 
-   public dys(dwv.c $$0) {
-      super($$0);
+   void a(ats var1, BiConsumer<agh<dyq>, agh<dyq>> var2);
+
+   Stream<agh<dyq>> a();
+
+   static dyr a(String $$0, String $$1) {
+      return a(pc.a($$0), pc.a($$1));
    }
 
-   @Override
-   public Optional<dwv.b> a(dwv.a $$0) {
-      dbf $$1 = dbf.a($$0.f());
-      ht $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dwv.b($$2, (Consumer<dxn>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   static dyr a(agh<dyq> $$0, agh<dyq> $$1) {
+      return new dyr($$0, $$1);
    }
 
-   private void a(dxn $$0, ht $$1, dbf $$2, dwv.a $$3) {
-      List<dwz> $$4 = Lists.newArrayList();
-      dyr.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   static dyv a(String $$0, bhh<String> $$1) {
+      bhh.a<agh<dyq>> $$2 = bhh.a();
+      $$1.e().forEach($$1x -> $$2.a(pc.a((String)$$1x.b()), $$1x.a().a()));
+      return a(pc.a($$0), $$2.a());
    }
 
-   @Override
-   public dxe<?> e() {
-      return dxe.c;
+   static dyv a(agh<dyq> $$0, bhh<agh<dyq>> $$1) {
+      return new dyv($$0, $$1);
    }
+
+   static dyw a(bhh<List<dys>> $$0) {
+      return new dyw($$0);
+   }
+
+   Codec<? extends dys> b();
 }

@@ -1,26 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class btg extends bsq {
-   public static final float i = 0.001F;
-   protected final float j;
+public class btg extends bsb {
+   private final bmb a;
 
-   public btg(blh $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public btg(bmb $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bsb.a.c, bsb.a.a));
    }
 
-   public btg(blh $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected eji h() {
-      if (this.b.ba()) {
-         eji $$0 = bvr.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean b() {
+      return this.a.gf();
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.u()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
       } else {
-         return this.b.ef().i() >= this.j ? bvr.a(this.b, 10, 7) : super.h();
+         blg $$0 = this.a.Q_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.f($$0) < 144.0 && $$0.ei() != null ? false : this.a.gf();
+         }
       }
+   }
+
+   @Override
+   public void c() {
+      this.a.N().n();
+      this.a.y(true);
+   }
+
+   @Override
+   public void d() {
+      this.a.y(false);
    }
 }

@@ -1,27 +1,101 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.function.Supplier;
 
-public class bfo {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public interface bfo {
+   String b = "root";
 
-   private bfo() {
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   void a(bgr var1);
+
+   default void d(String $$0) {
+      this.a($$0, 1);
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   void a(String var1, int var2);
+
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
+   void a(Supplier<String> var1, int var2);
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   static bfo a(final bfo $$0, final bfo $$1) {
+      if ($$0 == bfl.a) {
+         return $$1;
+      } else {
+         return $$1 == bfl.a ? $$0 : new bfo() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
+
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
+
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(bgr $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
+
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
+      }
    }
 }

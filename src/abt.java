@@ -1,23 +1,23 @@
 public class abt implements wk<yd> {
-   private final ib<aqm> a;
-   private final aqo b;
+   private final ib<aqq> a;
+   private final aqs b;
    private final int c;
    private final float d;
    private final float e;
    private final long f;
 
-   public abt(ib<aqm> $$0, aqo $$1, bki $$2, float $$3, float $$4, long $$5) {
+   public abt(ib<aqq> $$0, aqs $$1, bkq $$2, float $$3, float $$4, long $$5) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.ah();
+      this.c = $$2.aj();
       this.d = $$3;
       this.e = $$4;
       this.f = $$5;
    }
 
    public abt(tu $$0) {
-      this.a = $$0.a(jy.c.t(), aqm::b);
-      this.b = $$0.b(aqo.class);
+      this.a = $$0.a(jy.c.t(), aqq::b);
+      this.b = $$0.b(aqs.class);
       this.c = $$0.n();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -34,11 +34,11 @@ public class abt implements wk<yd> {
       $$0.b(this.f);
    }
 
-   public ib<aqm> a() {
+   public ib<aqq> a() {
       return this.a;
    }
 
-   public aqo d() {
+   public aqs d() {
       return this.b;
    }
 

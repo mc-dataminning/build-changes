@@ -1,22 +1,29 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class ggl {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+public record ggl(ggp b, ggs c) {
+   public static final Codec<ggl> a = ggp.a.dispatchStable(ggl::a, ggp::c);
 
-   public ggl(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public ggl(ggp b, ggs c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(ggb $$0) {
-      if (this.b != null) {
-         $$0.send(ggc.d, $$0x -> {
-            $$0x.a(gge.x, (int)this.b.toMillis());
-            $$0x.a(gge.y, this.a);
-         });
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public ggp a() {
+      return this.b;
+   }
+
+   public ggs b() {
+      return this.c;
    }
 }

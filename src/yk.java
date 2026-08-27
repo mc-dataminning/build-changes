@@ -3,19 +3,19 @@ import javax.annotation.Nullable;
 
 public class yk implements wk<yd> {
    private final ht a;
-   private final det<?> b;
+   private final dff<?> b;
    @Nullable
    private final rz c;
 
-   public static yk a(der $$0, Function<der, rz> $$1) {
+   public static yk a(dfd $$0, Function<dfd, rz> $$1) {
       return new yk($$0.p(), $$0.u(), $$1.apply($$0));
    }
 
-   public static yk a(der $$0) {
-      return a($$0, der::av_);
+   public static yk a(dfd $$0) {
+      return a($$0, dfd::aw_);
    }
 
-   private yk(ht $$0, det<?> $$1, rz $$2) {
+   private yk(ht $$0, dff<?> $$1, rz $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2.g() ? null : $$2;
@@ -42,7 +42,7 @@ public class yk implements wk<yd> {
       return this.a;
    }
 
-   public det<?> d() {
+   public dff<?> d() {
       return this.b;
    }
 

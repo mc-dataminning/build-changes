@@ -1,37 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bng {
-   public static bmq<ccz> a(float $$0, int $$1) {
-      return bqb.a((Function<bqb.b<ccz>, ? extends App<bqb.c<ccz>, bqe<ccz>>>)($$2 -> $$2.group($$2.c(btz.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.b($$4.dl())) {
+   public static <E extends blg> bmy<E> a(int $$0, BiPredicate<E, bkq> $$1) {
+      return bqj.a((Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$2 -> $$2.group($$2.a(buh.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bkq $$7 = $$5.da();
+               bkq $$8 = $$2.<bkq>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
                   return false;
                } else {
-                  bvx $$6 = $$3.w();
-                  int $$7 = $$6.a(iu.a($$4.dl()));
-                  eji $$8 = null;
-
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     eji $$10 = bvr.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(iu.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(iu.a(ht.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
-
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
+                  bkq $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.ac();
+                     $$3.b();
+                     return true;
                   }
-
-                  if ($$8 != null) {
-                     $$2x.a(new buc($$8, $$0, $$1));
-                  }
-
-                  return true;
                }
             })));
+   }
+
+   private static boolean a(blg $$0, bkq $$1, int $$2) {
+      return $$1.bx() && $$1.a($$0, (double)$$2) && $$1.dN() == $$0.dN();
    }
 }

@@ -1,9 +1,26 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public interface biz extends bij {
-   int[] a(hx var1);
+@Immutable
+public class biz {
+   public static final biz a = new biz("");
+   public static final String b = "Lock";
+   private final String c;
 
-   boolean a(int var1, clb var2, @Nullable hx var3);
+   public biz(String $$0) {
+      this.c = $$0;
+   }
 
-   boolean b(int var1, clb var2, hx var3);
+   public boolean a(clj $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   }
+
+   public void a(rz $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
+
+   public static biz b(rz $$0) {
+      return $$0.b("Lock", 8) ? new biz($$0.l("Lock")) : a;
+   }
 }

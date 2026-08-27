@@ -14,7 +14,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum hx implements aub {
+public enum hx implements aug {
    a(0, 1, -1, "down", hx.b.b, hx.a.b, new iw(0, -1, 0)),
    b(1, 0, -1, "up", hx.b.a, hx.a.b, new iw(0, 1, 0)),
    c(2, 3, 2, "north", hx.b.b, hx.a.c, new iw(0, 0, -1)),
@@ -22,8 +22,8 @@ public enum hx implements aub {
    e(4, 5, 1, "west", hx.b.b, hx.a.a, new iw(-1, 0, 0)),
    f(5, 4, 3, "east", hx.b.a, hx.a.a, new iw(1, 0, 0));
 
-   public static final aub.a<hx> g = aub.a(hx::values);
-   public static final Codec<hx> h = asq.a(g, hx::a);
+   public static final aug.a<hx> g = aug.a(hx::values);
+   public static final Codec<hx> h = asu.a(g, hx::a);
    private final int i;
    private final int j;
    private final int k;
@@ -45,13 +45,13 @@ public enum hx implements aub {
       this.o = $$6;
    }
 
-   public static hx[] a(bki $$0) {
+   public static hx[] a(bkq $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = ati.a($$1);
-      float $$4 = ati.b($$1);
-      float $$5 = ati.a($$2);
-      float $$6 = ati.b($$2);
+      float $$3 = atm.a($$1);
+      float $$4 = atm.b($$1);
+      float $$5 = atm.a($$2);
+      float $$6 = atm.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -86,7 +86,7 @@ public enum hx implements aub {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<hx> a(ato $$0) {
+   public static Collection<hx> a(ats $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -117,7 +117,7 @@ public enum hx implements aub {
       return this.n;
    }
 
-   public static hx a(bki $$0, hx.a $$1) {
+   public static hx a(bkq $$0, hx.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -235,11 +235,11 @@ public enum hx implements aub {
    }
 
    public static hx a(int $$0) {
-      return q[ati.a($$0 % q.length)];
+      return q[atm.a($$0 % q.length)];
    }
 
    public static hx b(int $$0) {
-      return r[ati.a($$0 % r.length)];
+      return r[atm.a($$0 % r.length)];
    }
 
    @Nullable
@@ -272,7 +272,7 @@ public enum hx implements aub {
    }
 
    public static hx a(double $$0) {
-      return b(ati.a($$0 / 90.0 + 0.5) & 3);
+      return b(atm.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static hx a(hx.a $$0, hx.b $$1) {
@@ -287,7 +287,7 @@ public enum hx implements aub {
       return (float)((this.k & 3) * 90);
    }
 
-   public static hx b(ato $$0) {
+   public static hx b(ats $$0) {
       return ac.a(p, $$0);
    }
 
@@ -340,12 +340,12 @@ public enum hx implements aub {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -ati.a($$1);
-      float $$3 = ati.b($$1);
+      float $$2 = -atm.a($$1);
+      float $$3 = atm.b($$1);
       return (float)this.o.u() * $$2 + (float)this.o.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements aub, Predicate<hx> {
+   public static enum a implements aug, Predicate<hx> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -381,7 +381,7 @@ public enum hx implements aub {
       };
 
       public static final hx.a[] d = values();
-      public static final aub.a<hx.a> e = aub.a(hx.a::values);
+      public static final aug.a<hx.a> e = aug.a(hx.a::values);
       private final String f;
 
       a(String $$0) {
@@ -410,7 +410,7 @@ public enum hx implements aub {
          return this.f;
       }
 
-      public static hx.a a(ato $$0) {
+      public static hx.a a(ats $$0) {
          return ac.a(d, $$0);
       }
 
@@ -477,11 +477,11 @@ public enum hx implements aub {
          this.d = $$1;
       }
 
-      public hx a(ato $$0) {
+      public hx a(ats $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public hx.a b(ato $$0) {
+      public hx.a b(ats $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -498,7 +498,7 @@ public enum hx implements aub {
          return Arrays.stream(this.c);
       }
 
-      public List<hx> c(ato $$0) {
+      public List<hx> c(ats $$0) {
          return ac.b(this.c, $$0);
       }
    }

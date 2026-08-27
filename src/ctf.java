@@ -1,14 +1,70 @@
-public class ctf {
-   public static final agf<cte> a = a("nether");
-   public static final agf<cte> b = a("overworld");
+public abstract class ctf {
+   public static final agh<csy> a = a("the_void");
+   public static final agh<csy> b = a("plains");
+   public static final agh<csy> c = a("sunflower_plains");
+   public static final agh<csy> d = a("snowy_plains");
+   public static final agh<csy> e = a("ice_spikes");
+   public static final agh<csy> f = a("desert");
+   public static final agh<csy> g = a("swamp");
+   public static final agh<csy> h = a("mangrove_swamp");
+   public static final agh<csy> i = a("forest");
+   public static final agh<csy> j = a("flower_forest");
+   public static final agh<csy> k = a("birch_forest");
+   public static final agh<csy> l = a("dark_forest");
+   public static final agh<csy> m = a("old_growth_birch_forest");
+   public static final agh<csy> n = a("old_growth_pine_taiga");
+   public static final agh<csy> o = a("old_growth_spruce_taiga");
+   public static final agh<csy> p = a("taiga");
+   public static final agh<csy> q = a("snowy_taiga");
+   public static final agh<csy> r = a("savanna");
+   public static final agh<csy> s = a("savanna_plateau");
+   public static final agh<csy> t = a("windswept_hills");
+   public static final agh<csy> u = a("windswept_gravelly_hills");
+   public static final agh<csy> v = a("windswept_forest");
+   public static final agh<csy> w = a("windswept_savanna");
+   public static final agh<csy> x = a("jungle");
+   public static final agh<csy> y = a("sparse_jungle");
+   public static final agh<csy> z = a("bamboo_jungle");
+   public static final agh<csy> A = a("badlands");
+   public static final agh<csy> B = a("eroded_badlands");
+   public static final agh<csy> C = a("wooded_badlands");
+   public static final agh<csy> D = a("meadow");
+   public static final agh<csy> E = a("cherry_grove");
+   public static final agh<csy> F = a("grove");
+   public static final agh<csy> G = a("snowy_slopes");
+   public static final agh<csy> H = a("frozen_peaks");
+   public static final agh<csy> I = a("jagged_peaks");
+   public static final agh<csy> J = a("stony_peaks");
+   public static final agh<csy> K = a("river");
+   public static final agh<csy> L = a("frozen_river");
+   public static final agh<csy> M = a("beach");
+   public static final agh<csy> N = a("snowy_beach");
+   public static final agh<csy> O = a("stony_shore");
+   public static final agh<csy> P = a("warm_ocean");
+   public static final agh<csy> Q = a("lukewarm_ocean");
+   public static final agh<csy> R = a("deep_lukewarm_ocean");
+   public static final agh<csy> S = a("ocean");
+   public static final agh<csy> T = a("deep_ocean");
+   public static final agh<csy> U = a("cold_ocean");
+   public static final agh<csy> V = a("deep_cold_ocean");
+   public static final agh<csy> W = a("frozen_ocean");
+   public static final agh<csy> X = a("deep_frozen_ocean");
+   public static final agh<csy> Y = a("mushroom_fields");
+   public static final agh<csy> Z = a("dripstone_caves");
+   public static final agh<csy> aa = a("lush_caves");
+   public static final agh<csy> ab = a("deep_dark");
+   public static final agh<csy> ac = a("nether_wastes");
+   public static final agh<csy> ad = a("warped_forest");
+   public static final agh<csy> ae = a("crimson_forest");
+   public static final agh<csy> af = a("soul_sand_valley");
+   public static final agh<csy> ag = a("basalt_deltas");
+   public static final agh<csy> ah = a("the_end");
+   public static final agh<csy> ai = a("end_highlands");
+   public static final agh<csy> aj = a("end_midlands");
+   public static final agh<csy> ak = a("small_end_islands");
+   public static final agh<csy> al = a("end_barrens");
 
-   public static void a(ou<cte> $$0) {
-      ic<csq> $$1 = $$0.a(jz.ar);
-      $$0.a(a, new cte(cte.a.a, $$1));
-      $$0.a(b, new cte(cte.a.b, $$1));
-   }
-
-   private static agf<cte> a(String $$0) {
-      return agf.a(jz.aI, new agg($$0));
+   private static agh<csy> a(String $$0) {
+      return agh.a(jz.ar, new agi($$0));
    }
 }

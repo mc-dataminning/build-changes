@@ -1,48 +1,79 @@
-public class fbo extends fbg<cgj> {
-   private static final agg x = new agg("container/brewing_stand/fuel_length");
-   private static final agg y = new agg("container/brewing_stand/brew_progress");
-   private static final agg z = new agg("container/brewing_stand/bubbles");
-   private static final agg A = new agg("textures/gui/container/brewing_stand.png");
-   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
+import javax.annotation.Nullable;
 
-   public fbo(cgj $$0, cdl $$1, ur $$2) {
-      super($$0, $$1, $$2);
+public class fbo extends fam {
+   @Nullable
+   public etb c;
+   public long k;
+   private fbn l;
+   private euz m;
+
+   public fbo(fau $$0, eth $$1) {
+      super($$0, $$1, ur.c("controls.keybinds.title"));
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aP_() {
+      this.l = new fbn(this, this.f);
+      this.e(this.l);
+      this.m = this.d(euz.a(ur.c("controls.resetAll"), $$0 -> {
+         for (etb $$1 : this.b.X) {
+            $$1.b($$1.i());
+         }
+
+         this.l.e();
+      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
+      this.d(euz.a(uq.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null) {
+         this.b.a(this.c, emr.b.c.a($$2));
+         this.c = null;
+         this.l.e();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.c != null) {
+         if ($$0 == 256) {
+            this.b.a(this.c, emr.bv);
+         } else {
+            this.b.a(this.c, emr.a($$0, $$1));
+         }
+
+         this.c = null;
+         this.k = ac.b();
+         this.l.e();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      this.l.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      boolean $$4 = false;
+
+      for (etb $$5 : this.b.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.m.i = $$4;
    }
 
    @Override
-   protected void a(eub $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
-      int $$6 = this.p.l();
-      int $$7 = ati.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.p.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
-
-         $$9 = B[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
-      }
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

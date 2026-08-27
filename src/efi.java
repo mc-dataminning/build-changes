@@ -1,64 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public class efi extends eex {
-   public static final Codec<efi> a = a(efi::new);
+@FunctionalInterface
+interface efi {
+   efi b = ($$0, $$1) -> false;
+   efi c = ($$0, $$1) -> true;
 
-   efi(List<efe> $$0, List<ehk> $$1) {
-      super($$0, $$1);
+   boolean expand(eex var1, Consumer<efp> var2);
+
+   default efi and(efi $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public eff a() {
-      return efc.h;
-   }
-
-   @Override
-   protected eew a(List<? extends eew> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eew)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eew $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
-   }
-
-   public static efi.a a(efe.a<?>... $$0) {
-      return new efi.a($$0);
-   }
-
-   public static class a extends efe.a<efi.a> {
-      private final Builder<efe> a = ImmutableList.builder();
-
-      public a(efe.a<?>... $$0) {
-         for (efe.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected efi.a a() {
-         return this;
-      }
-
-      @Override
-      public efi.a c(efe.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public efe b() {
-         return new efi(this.a.build(), this.f());
-      }
+   default efi or(efi $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

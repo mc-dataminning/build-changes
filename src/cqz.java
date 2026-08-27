@@ -1,205 +1,96 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.util.ArrayList;
 import javax.annotation.Nullable;
 
-public class cqz {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final cqz b = new cqz(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
-
-   public cqz(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class cqz extends ArrayList<cqy> {
+   public cqz() {
    }
 
-   public cqz(ht $$0) {
-      this.e = iu.a($$0.u());
-      this.f = iu.a($$0.w());
+   private cqz(int $$0) {
+      super($$0);
    }
 
-   public cqz(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
-   }
+   public cqz(rz $$0) {
+      sf $$1 = $$0.c("Recipes", 10);
 
-   public static cqz a(int $$0, int $$1) {
-      return new cqz($$0 << 5, $$1 << 5);
-   }
-
-   public static cqz b(int $$0, int $$1) {
-      return new cqz(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.e, this.f);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(ht $$0) {
-      return c(iu.a($$0.u()), iu.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cqz $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.add(new cqy($$1.a($$2)));
       }
    }
 
-   public int b() {
-      return this.a(8);
-   }
-
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return iu.c(this.e);
-   }
-
-   public int e() {
-      return iu.c(this.f);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public ht a(int $$0, int $$1, int $$2) {
-      return new ht(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return iu.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return iu.a(this.f, $$0);
-   }
-
-   public ht c(int $$0) {
-      return new ht(this.b(), $$0, this.c());
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
-   }
-
-   public ht l() {
-      return new ht(this.d(), 0, this.e());
-   }
-
-   public int a(cqz $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
-   }
-
-   public int b(cqz $$0) {
-      return this.e($$0.e, $$0.f);
-   }
-
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
-   }
-
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<cqz> a(cqz $$0, int $$1) {
-      return a(new cqz($$0.e - $$1, $$0.f - $$1), new cqz($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<cqz> a(final cqz $$0, final cqz $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<cqz>((long)($$2 * $$3), 64) {
-         @Nullable
-         private cqz e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super cqz> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
-
-                  this.e = new cqz($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new cqz($$1 + $$4, $$2);
-               }
+   @Nullable
+   public cqy a(clj $$0, clj $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         cqy $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            cqy $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
             }
-
-            $$0.accept(this.e);
-            return true;
          }
-      }, false);
+
+         return null;
+      }
+   }
+
+   public void a(tu $$0) {
+      $$0.a(this, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.d());
+         $$0x.a($$1.c());
+         $$0x.a($$1.p());
+         $$0x.p($$1.g());
+         $$0x.p($$1.i());
+         $$0x.p($$1.o());
+         $$0x.p($$1.m());
+         $$0x.a($$1.n());
+         $$0x.p($$1.k());
+      });
+   }
+
+   public static cqz b(tu $$0) {
+      return $$0.a(cqz::new, $$0x -> {
+         clj $$1 = $$0x.r();
+         clj $$2 = $$0x.r();
+         clj $$3 = $$0x.r();
+         boolean $$4 = $$0x.readBoolean();
+         int $$5 = $$0x.readInt();
+         int $$6 = $$0x.readInt();
+         int $$7 = $$0x.readInt();
+         int $$8 = $$0x.readInt();
+         float $$9 = $$0x.readFloat();
+         int $$10 = $$0x.readInt();
+         cqy $$11 = new cqy($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+         if ($$4) {
+            $$11.q();
+         }
+
+         $$11.b($$8);
+         return $$11;
+      });
+   }
+
+   public rz a() {
+      rz $$0 = new rz();
+      sf $$1 = new sf();
+
+      for (int $$2 = 0; $$2 < this.size(); $$2++) {
+         cqy $$3 = this.get($$2);
+         $$1.add($$3.t());
+      }
+
+      $$0.a("Recipes", $$1);
+      return $$0;
+   }
+
+   public cqz b() {
+      cqz $$0 = new cqz(this.size());
+
+      for (cqy $$1 : this) {
+         $$0.add($$1.u());
+      }
+
+      return $$0;
    }
 }

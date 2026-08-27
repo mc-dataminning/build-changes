@@ -1,5 +1,5 @@
 public record xo(ht b) implements xd {
-   public static final agg a = new agg("debug/poi_removed");
+   public static final agi a = new agi("debug/poi_removed");
 
    public xo(tu $$0) {
       this($$0.e());
@@ -11,7 +11,7 @@ public record xo(ht b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

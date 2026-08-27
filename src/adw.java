@@ -1,79 +1,34 @@
-public class adw implements wk<acj> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final ht d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final dfb.a i;
+import java.util.Optional;
 
-   public adw(ht $$0, String $$1, dfb.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+public class adw implements wk<acl> {
+   private final Optional<bkb> a;
+   private final Optional<bkb> b;
+
+   public adw(Optional<bkb> $$0, Optional<bkb> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    public adw(tu $$0) {
-      this.d = $$0.e();
-      this.e = $$0.s();
-      this.i = $$0.b(dfb.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+      this.a = $$0.b((tu.a<bkb>)($$0x -> $$0x.a(jy.e)));
+      this.b = $$0.b((tu.a<bkb>)($$0x -> $$0x.a(jy.e)));
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
-      }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jy.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jy.e, $$1));
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.d;
+   public Optional<bkb> a() {
+      return this.a;
    }
 
-   public String d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public dfb.a h() {
-      return this.i;
+   public Optional<bkb> d() {
+      return this.b;
    }
 }

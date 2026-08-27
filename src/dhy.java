@@ -1,20 +1,130 @@
-public enum dhy implements aub {
-   a("normal"),
-   b("sticky");
-
-   private final String c;
-
-   private dhy(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+public class dhy {
+   public static final dhz a = dhz.a("attached");
+   public static final dhz b = dhz.a("bottom");
+   public static final dhz c = dhz.a("conditional");
+   public static final dhz d = dhz.a("disarmed");
+   public static final dhz e = dhz.a("drag");
+   public static final dhz f = dhz.a("enabled");
+   public static final dhz g = dhz.a("extended");
+   public static final dhz h = dhz.a("eye");
+   public static final dhz i = dhz.a("falling");
+   public static final dhz j = dhz.a("hanging");
+   public static final dhz k = dhz.a("has_bottle_0");
+   public static final dhz l = dhz.a("has_bottle_1");
+   public static final dhz m = dhz.a("has_bottle_2");
+   public static final dhz n = dhz.a("has_record");
+   public static final dhz o = dhz.a("has_book");
+   public static final dhz p = dhz.a("inverted");
+   public static final dhz q = dhz.a("in_wall");
+   public static final dhz r = dhz.a("lit");
+   public static final dhz s = dhz.a("locked");
+   public static final dhz t = dhz.a("occupied");
+   public static final dhz u = dhz.a("open");
+   public static final dhz v = dhz.a("persistent");
+   public static final dhz w = dhz.a("powered");
+   public static final dhz x = dhz.a("short");
+   public static final dhz y = dhz.a("signal_fire");
+   public static final dhz z = dhz.a("snowy");
+   public static final dhz A = dhz.a("triggered");
+   public static final dhz B = dhz.a("unstable");
+   public static final dhz C = dhz.a("waterlogged");
+   public static final dhz D = dhz.a("berries");
+   public static final dhz E = dhz.a("bloom");
+   public static final dhz F = dhz.a("shrieking");
+   public static final dhz G = dhz.a("can_summon");
+   public static final dig<hx.a> H = dig.a("axis", hx.a.class, hx.a.a, hx.a.c);
+   public static final dig<hx.a> I = dig.a("axis", hx.a.class);
+   public static final dhz J = dhz.a("up");
+   public static final dhz K = dhz.a("down");
+   public static final dhz L = dhz.a("north");
+   public static final dhz M = dhz.a("east");
+   public static final dhz N = dhz.a("south");
+   public static final dhz O = dhz.a("west");
+   public static final dic P = dic.a("facing", hx.c, hx.f, hx.d, hx.e, hx.b, hx.a);
+   public static final dic Q = dic.a("facing", $$0 -> $$0 != hx.b);
+   public static final dic R = dic.a("facing", hx.c.a);
+   public static final dii S = dii.a("flower_amount", 1, 4);
+   public static final dig<hz> T = dig.a("orientation", hz.class);
+   public static final dig<dht> U = dig.a("face", dht.class);
+   public static final dig<dhw> V = dig.a("attachment", dhw.class);
+   public static final dig<diu> W = dig.a("east", diu.class);
+   public static final dig<diu> X = dig.a("north", diu.class);
+   public static final dig<diu> Y = dig.a("south", diu.class);
+   public static final dig<diu> Z = dig.a("west", diu.class);
+   public static final dig<din> aa = dig.a("east", din.class);
+   public static final dig<din> ab = dig.a("north", din.class);
+   public static final dig<din> ac = dig.a("south", din.class);
+   public static final dig<din> ad = dig.a("west", din.class);
+   public static final dig<die> ae = dig.a("half", die.class);
+   public static final dig<dih> af = dig.a("half", dih.class);
+   public static final dig<dim> ag = dig.a("shape", dim.class);
+   public static final dig<dim> ah = dig.a("shape", dim.class, $$0 -> $$0 != dim.j && $$0 != dim.i && $$0 != dim.g && $$0 != dim.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dii aq = dii.a("age", 0, 1);
+   public static final dii ar = dii.a("age", 0, 2);
+   public static final dii as = dii.a("age", 0, 3);
+   public static final dii at = dii.a("age", 0, 4);
+   public static final dii au = dii.a("age", 0, 5);
+   public static final dii av = dii.a("age", 0, 7);
+   public static final dii aw = dii.a("age", 0, 15);
+   public static final dii ax = dii.a("age", 0, 25);
+   public static final dii ay = dii.a("bites", 0, 6);
+   public static final dii az = dii.a("candles", 1, 4);
+   public static final dii aA = dii.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dii aC = dii.a("distance", 1, 7);
+   public static final dii aD = dii.a("eggs", 1, 4);
+   public static final dii aE = dii.a("hatch", 0, 2);
+   public static final dii aF = dii.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dii aK = dii.a("level", 1, 3);
+   public static final dii aL = dii.a("level", 0, 8);
+   public static final dii aM = dii.a("level", 1, 8);
+   public static final dii aN = dii.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dii aP = dii.a("level", 0, 15);
+   public static final dii aQ = dii.a("moisture", 0, 7);
+   public static final dii aR = dii.a("note", 0, 24);
+   public static final dii aS = dii.a("pickles", 1, 4);
+   public static final dii aT = dii.a("power", 0, 15);
+   public static final dii aU = dii.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dii aW = dii.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dii aZ = dii.a("charges", 0, 4);
+   public static final dii ba = dii.a("rotation", 0, dio.a());
+   public static final dig<dhv> bb = dig.a("part", dhv.class);
+   public static final dig<dia> bc = dig.a("type", dia.class);
+   public static final dig<dib> bd = dig.a("mode", dib.class);
+   public static final dig<did> be = dig.a("hinge", did.class);
+   public static final dig<dij> bf = dig.a("instrument", dij.class);
+   public static final dig<dik> bg = dig.a("type", dik.class);
+   public static final dig<diq> bh = dig.a("type", diq.class);
+   public static final dig<dir> bi = dig.a("shape", dir.class);
+   public static final dig<dis> bj = dig.a("mode", dis.class);
+   public static final dig<dhu> bk = dig.a("leaves", dhu.class);
+   public static final dig<dit> bl = dig.a("tilt", dit.class);
+   public static final dic bm = dic.a("vertical_direction", hx.b, hx.a);
+   public static final dig<dif> bn = dig.a("thickness", dif.class);
+   public static final dig<dip> bo = dig.a("sculk_sensor_phase", dip.class);
+   public static final dhz bp = dhz.a("slot_0_occupied");
+   public static final dhz bq = dhz.a("slot_1_occupied");
+   public static final dhz br = dhz.a("slot_2_occupied");
+   public static final dhz bs = dhz.a("slot_3_occupied");
+   public static final dhz bt = dhz.a("slot_4_occupied");
+   public static final dhz bu = dhz.a("slot_5_occupied");
+   public static final dii bv = dii.a("dusted", 0, 3);
+   public static final dhz bw = dhz.a("cracked");
+   public static final dhz bx = dhz.a("crafting");
 }

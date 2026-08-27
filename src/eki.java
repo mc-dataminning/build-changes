@@ -1,189 +1,53 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eki extends edl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final ekh c;
+public class eki extends AbstractDoubleList implements ekg {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   public eki(ekh $$0) {
-      this.c = $$0;
-   }
-
-   public eki b(rz $$0) {
-      this.b($$0.c("Objectives", 10));
-      this.c.a($$0.c("PlayerScores", 10));
-      if ($$0.b("DisplaySlots", 10)) {
-         this.c($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10));
-      }
-
-      return this;
-   }
-
-   private void a(sf $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         rz $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ekf $$4 = this.c.e($$3);
-         ur $$5 = ur.a.a($$2.l("DisplayName"));
-         if ($$5 != null) {
-            $$4.a($$5);
-         }
-
-         if ($$2.b("TeamColor", 8)) {
-            $$4.a(n.b($$2.l("TeamColor")));
-         }
-
-         if ($$2.b("AllowFriendlyFire", 99)) {
-            $$4.a($$2.q("AllowFriendlyFire"));
-         }
-
-         if ($$2.b("SeeFriendlyInvisibles", 99)) {
-            $$4.b($$2.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$2.b("MemberNamePrefix", 8)) {
-            ur $$6 = ur.a.a($$2.l("MemberNamePrefix"));
-            if ($$6 != null) {
-               $$4.b($$6);
-            }
-         }
-
-         if ($$2.b("MemberNameSuffix", 8)) {
-            ur $$7 = ur.a.a($$2.l("MemberNameSuffix"));
-            if ($$7 != null) {
-               $$4.c($$7);
-            }
-         }
-
-         if ($$2.b("NameTagVisibility", 8)) {
-            ekj.b $$8 = ekj.b.a($$2.l("NameTagVisibility"));
-            if ($$8 != null) {
-               $$4.a($$8);
-            }
-         }
-
-         if ($$2.b("DeathMessageVisibility", 8)) {
-            ekj.b $$9 = ekj.b.a($$2.l("DeathMessageVisibility"));
-            if ($$9 != null) {
-               $$4.b($$9);
-            }
-         }
-
-         if ($$2.b("CollisionRule", 8)) {
-            ekj.a $$10 = ekj.a.a($$2.l("CollisionRule"));
-            if ($$10 != null) {
-               $$4.a($$10);
-            }
-         }
-
-         this.a($$4, $$2.c("Players", 8));
-      }
-   }
-
-   private void a(ekf $$0, sf $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void c(rz $$0) {
-      for (String $$1 : $$0.e()) {
-         ekd $$2 = ekd.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            eke $$4 = this.c.b($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(sf $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         rz $$2 = $$0.a($$1);
-         String $$3 = $$2.l("CriteriaName");
-         ekk $$4 = ekk.a($$3).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, ekk.a.d());
-            return ekk.a;
-         });
-         String $$5 = $$2.l("Name");
-         ur $$6 = ur.a.a($$2.l("DisplayName"));
-         ekk.a $$7 = ekk.a.a($$2.l("RenderType"));
-         this.c.a($$5, $$4, $$6, $$7);
-      }
+   protected eki(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public rz a(rz $$0) {
-      $$0.a("Objectives", this.b());
-      $$0.a("PlayerScores", this.c.h());
-      $$0.a("Teams", this.a());
-      this.d($$0);
-      return $$0;
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   private sf a() {
-      sf $$0 = new sf();
-
-      for (ekf $$2 : this.c.g()) {
-         rz $$3 = new rz();
-         $$3.a("Name", $$2.b());
-         $$3.a("DisplayName", ur.a.a($$2.c()));
-         if ($$2.n().b() >= 0) {
-            $$3.a("TeamColor", $$2.n().g());
-         }
-
-         $$3.a("AllowFriendlyFire", $$2.h());
-         $$3.a("SeeFriendlyInvisibles", $$2.i());
-         $$3.a("MemberNamePrefix", ur.a.a($$2.e()));
-         $$3.a("MemberNameSuffix", ur.a.a($$2.f()));
-         $$3.a("NameTagVisibility", $$2.j().e);
-         $$3.a("DeathMessageVisibility", $$2.k().e);
-         $$3.a("CollisionRule", $$2.l().e);
-         sf $$4 = new sf();
-
-         for (String $$5 : $$2.g()) {
-            $$4.add(su.a($$5));
-         }
-
-         $$3.a("Players", $$4);
-         $$0.add($$3);
-      }
-
-      return $$0;
+   @Override
+   public boolean a(ekg.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   private void d(rz $$0) {
-      rz $$1 = new rz();
+   private boolean b(ekg.a $$0) {
+      int $$1 = this.a.size();
 
-      for (ekd $$2 : ekd.values()) {
-         eke $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
          }
       }
 
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   private sf b() {
-      sf $$0 = new sf();
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
 
-      for (eke $$2 : this.c.c()) {
-         rz $$3 = new rz();
-         $$3.a("Name", $$2.b());
-         $$3.a("CriteriaName", $$2.c().d());
-         $$3.a("DisplayName", ur.a.a($$2.d()));
-         $$3.a("RenderType", $$2.f().a());
-         $$0.add($$3);
-      }
-
-      return $$0;
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

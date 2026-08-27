@@ -1,88 +1,71 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public class apj<S> implements aoz {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<auj> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
-   final Set<aox> f;
-   private final int g;
-   private int h;
-   private int i;
-   private final AtomicInteger j = new AtomicInteger();
-   private final AtomicInteger k = new AtomicInteger();
+public interface apj {
+   apj a = new apj() {
+      @Override
+      public <T> Optional<T> a(aoh<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   aoz<apj> b = () -> a;
 
-   public static apj<Void> a(apd $$0, List<aox> $$1, Executor $$2, Executor $$3, CompletableFuture<auj> $$4) {
-      return new apj<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bfe.a, bfe.a, $$2, $$5), $$4);
-   }
-
-   protected apj(Executor $$0, final Executor $$1, apd $$2, List<aox> $$3, apj.a<S> $$4, CompletableFuture<auj> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
-
-      for (final aox $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new aox.a() {
+   static apj a(InputStream $$0) throws IOException {
+      apj var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = atc.a($$1);
+         var3 = new apj() {
             @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  apj.this.f.remove($$8);
-                  if (apj.this.f.isEmpty()) {
-                     apj.this.a.complete(auj.a);
-                  }
-               });
-               return apj.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
+            public <T> Optional<T> a(aoh<T> $$0) {
+               String $$1 = $$0.a();
+               return $$2.has($$1) ? Optional.of($$0.a(atc.u($$2, $$1))) : Optional.empty();
             }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
-         });
-         $$6.add($$10);
-         $$7 = $$10;
+         };
       }
 
-      this.b = ac.c($$6);
+      return var3;
    }
 
-   @Override
-   public CompletableFuture<?> a() {
-      return this.b;
+   <T> Optional<T> a(aoh<T> var1);
+
+   default apj a(Collection<aoh<?>> $$0) {
+      apj.a $$1 = new apj.a();
+
+      for (aoh<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
    }
 
-   @Override
-   public float b() {
-      int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
-      return $$1 / $$2;
+   private <T> void a(apj.a $$0, aoh<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
    }
 
-   public static aoz a(apd $$0, List<aox> $$1, Executor $$2, Executor $$3, CompletableFuture<auj> $$4, boolean $$5) {
-      return (aoz)($$5 ? new aoy($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
-   }
+   public static class a {
+      private final Builder<aoh<?>, Object> a = ImmutableMap.builder();
 
-   protected interface a<S> {
-      CompletableFuture<S> create(aox.a var1, apd var2, aox var3, Executor var4, Executor var5);
+      public <T> apj.a a(aoh<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public apj a() {
+         final ImmutableMap<aoh<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? apj.a : new apj() {
+            @Override
+            public <T> Optional<T> a(aoh<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
+      }
    }
 }

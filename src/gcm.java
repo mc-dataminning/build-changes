@@ -1,31 +1,41 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
 public class gcm {
-   public static asu a(uw $$0, boolean $$1) {
-      vp $$2 = vp.a($$0, UCharacter::getMirror, gcm::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<asu> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+   private static final gcu[] a = new gcu[]{
+      a("textures/entity/player/slim/alex.png", gcu.a.a),
+      a("textures/entity/player/slim/ari.png", gcu.a.a),
+      a("textures/entity/player/slim/efe.png", gcu.a.a),
+      a("textures/entity/player/slim/kai.png", gcu.a.a),
+      a("textures/entity/player/slim/makena.png", gcu.a.a),
+      a("textures/entity/player/slim/noor.png", gcu.a.a),
+      a("textures/entity/player/slim/steve.png", gcu.a.a),
+      a("textures/entity/player/slim/sunny.png", gcu.a.a),
+      a("textures/entity/player/slim/zuri.png", gcu.a.a),
+      a("textures/entity/player/wide/alex.png", gcu.a.b),
+      a("textures/entity/player/wide/ari.png", gcu.a.b),
+      a("textures/entity/player/wide/efe.png", gcu.a.b),
+      a("textures/entity/player/wide/kai.png", gcu.a.b),
+      a("textures/entity/player/wide/makena.png", gcu.a.b),
+      a("textures/entity/player/wide/noor.png", gcu.a.b),
+      a("textures/entity/player/wide/steve.png", gcu.a.b),
+      a("textures/entity/player/wide/sunny.png", gcu.a.b),
+      a("textures/entity/player/wide/zuri.png", gcu.a.b)
+   };
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
-      }
-
-      return asu.composite($$4);
+   public static agi a() {
+      return a[6].a();
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
-      }
+   public static gcu a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
+
+   public static gcu a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static gcu a(String $$0, gcu.a $$1) {
+      return new gcu(new agi($$0), null, null, null, $$1, true);
    }
 }

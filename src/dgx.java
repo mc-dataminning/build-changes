@@ -1,154 +1,151 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dgx<O, S extends dgy<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dhz<?>> c;
-   private final ImmutableList<S> d;
+public final class dgx {
+   private static final Map<String, dgx> k = new Object2ObjectArrayMap();
+   public static final Codec<dgx> a = asu.a((Function<dgx, String>)($$0 -> $$0.l), k::get);
+   public static final dgx b = new dgx(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(qa.g), Optional.of(qa.n), Optional.of(qa.C), Optional.of(qa.I)
+   );
+   public static final dgx c = new dgx(
+      "spruce", 0.5F, Optional.of(qa.q), Optional.of(qa.r), Optional.of(qa.k), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dgx d = new dgx(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(qa.x), Optional.of(qa.y), Optional.empty(), Optional.empty()
+   );
+   public static final dgx e = new dgx("azalea", Optional.empty(), Optional.of(qa.w), Optional.empty());
+   public static final dgx f = new dgx("birch", Optional.empty(), Optional.of(qa.i), Optional.of(qa.F));
+   public static final dgx g = new dgx("jungle", Optional.of(qa.p), Optional.of(qa.o), Optional.empty());
+   public static final dgx h = new dgx("acacia", Optional.empty(), Optional.of(qa.j), Optional.empty());
+   public static final dgx i = new dgx("cherry", Optional.empty(), Optional.of(qa.z), Optional.of(qa.K));
+   public static final dgx j = new dgx("dark_oak", Optional.of(qa.h), Optional.empty(), Optional.empty());
+   private final String l;
+   private final float m;
+   private final Optional<agh<dpi<?, ?>>> n;
+   private final Optional<agh<dpi<?, ?>>> o;
+   private final Optional<agh<dpi<?, ?>>> p;
+   private final Optional<agh<dpi<?, ?>>> q;
+   private final Optional<agh<dpi<?, ?>>> r;
+   private final Optional<agh<dpi<?, ?>>> s;
 
-   protected dgx(Function<O, S> $$0, O $$1, dgx.b<O, S> $$2, Map<String, dhz<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dhz<?>> $$6 = (Entry<String, dhz<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dhz<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dhz<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dhz<?> $$11 = (dhz<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dhz<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dhz<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   public dgx(String $$0, Optional<agh<dpi<?, ?>>> $$1, Optional<agh<dpi<?, ?>>> $$2, Optional<agh<dpi<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   private static <S extends dgy<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dhz<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dgy)((dgy)$$1x.getFirst()).a($$3, ((dhz.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dhz<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dhz::f).collect(Collectors.toList()))
-         .toString();
+   public dgx(
+      String $$0,
+      float $$1,
+      Optional<agh<dpi<?, ?>>> $$2,
+      Optional<agh<dpi<?, ?>>> $$3,
+      Optional<agh<dpi<?, ?>>> $$4,
+      Optional<agh<dpi<?, ?>>> $$5,
+      Optional<agh<dpi<?, ?>>> $$6,
+      Optional<agh<dpi<?, ?>>> $$7
+   ) {
+      this.l = $$0;
+      this.m = $$1;
+      this.n = $$2;
+      this.o = $$3;
+      this.p = $$4;
+      this.q = $$5;
+      this.r = $$6;
+      this.s = $$7;
+      k.put($$0, this);
    }
 
    @Nullable
-   public dhz<?> a(String $$0) {
-      return (dhz<?>)this.c.get($$0);
-   }
-
-   public static class a<O, S extends dgy<O, S>> {
-      private final O a;
-      private final Map<String, dhz<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dgx.a<O, S> a(dhz<?>... $$0) {
-         for (dhz<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
+   private agh<dpi<?, ?>> a(ats $$0, boolean $$1) {
+      if ($$0.i() < this.m) {
+         if ($$1 && this.s.isPresent()) {
+            return this.s.get();
          }
 
-         return this;
+         if (this.q.isPresent()) {
+            return this.q.get();
+         }
       }
 
-      private <T extends Comparable<T>> void a(dhz<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dgx.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dgx.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
+      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
+   }
 
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+   @Nullable
+   private agh<dpi<?, ?>> a(ats $$0) {
+      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   }
+
+   public boolean a(ame $$0, djf $$1, ht $$2, dhi $$3, ats $$4) {
+      agh<dpi<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         ib<dpi<?, ?>> $$6 = $$0.H_().d(jz.au).b($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     dpi<?, ?> $$9 = $$6.a();
+                     dhi $$10 = cvc.a.o();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
                }
             }
          }
       }
 
-      public dgx<O, S> a(Function<O, S> $$0, dgx.b<O, S> $$1) {
-         return new dgx<>($$0, this.a, $$1, this.b);
+      agh<dpi<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         ib<dpi<?, ?>> $$12 = $$0.H_().d(jz.au).b($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            dpi<?, ?> $$13 = $$12.a();
+            dhi $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
+         }
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dhz<?>, Comparable<?>> var2, MapCodec<S> var3);
+   private static boolean a(dhi $$0, crg $$1, ht $$2, int $$3, int $$4) {
+      cva $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   }
+
+   private boolean a(csb $$0, ht $$1) {
+      for (ht $$2 : ht.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
+         if ($$0.a_($$2).a(arg.U)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

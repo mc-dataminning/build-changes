@@ -1,44 +1,24 @@
-import javax.annotation.Nullable;
-
-public class adx implements wk<acj> {
+public class adx implements wk<acl> {
    private final int a;
-   private final String b;
-   private final boolean c;
 
-   public adx(int $$0, String $$1, boolean $$2) {
+   public adx(int $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
    public adx(tu $$0) {
-      this.a = $$0.n();
-      this.b = $$0.s();
-      this.c = $$0.readBoolean();
+      this.a = $$0.readShort();
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.l(this.a);
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public cqt a(crs $$0) {
-      bki $$1 = $$0.a(this.a);
-      return $$1 instanceof cfl ? ((cfl)$$1).B() : null;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
+   public int a() {
+      return this.a;
    }
 }

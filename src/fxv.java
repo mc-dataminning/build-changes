@@ -1,40 +1,38 @@
-public class fxv<T extends bki & ceb> extends fvj<T> {
-   private static final float a = 12.25F;
-   private final fwi f;
-   private final float g;
-   private final boolean h;
+public class fxv extends fvw<ceo> {
+   private static final agi a = new agi("textures/entity/shulker/spark.png");
+   private static final frc f = frc.i(a);
+   private final fjh<ceo> g;
 
-   public fxv(fvk.a $$0, float $$1, boolean $$2) {
+   public fxv(fvx.a $$0) {
       super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+      this.g = new fjh<>($$0.a(fkn.bf));
    }
 
-   public fxv(fvk.a $$0) {
-      this($$0, 1.0F, false);
+   protected int a(ceo $$0, ht $$1) {
+      return 15;
    }
 
-   @Override
-   protected int a(T $$0, ht $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public void a(ceo $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      $$3.a();
+      float $$6 = atm.j($$2, $$0.N, $$0.dD());
+      float $$7 = atm.i($$2, $$0.O, $$0.dF());
+      float $$8 = (float)$$0.ah + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(atm.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(atm.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(atm.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      eoa $$9 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$9, $$5, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      eoa $$10 = $$4.getBuffer(f);
+      this.g.a($$3, $$10, $$5, gbl.d, 1.0F, 1.0F, 1.0F, 0.15F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cky.h, $$5, gay.d, $$3, $$4, $$0.dL(), $$0.ah());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public agg a(bki $$0) {
-      return gbg.e;
+   public agi a(ceo $$0) {
+      return a;
    }
 }

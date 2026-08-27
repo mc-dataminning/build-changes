@@ -1,4 +1,18 @@
 import javax.annotation.Nullable;
 
-public record bjb(bjg a, float b, @Nullable bjl c, float d) {
+public interface bjb {
+   ur ad();
+
+   default boolean ae() {
+      return this.af() != null;
+   }
+
+   default ur P_() {
+      return this.ad();
+   }
+
+   @Nullable
+   default ur af() {
+      return null;
+   }
 }

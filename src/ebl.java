@@ -1,74 +1,28 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ebl {
-   private final ebm[] a;
-   private final double b;
-   private final double c;
+public class ebl implements ebp {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ebl> a = RecordCodecBuilder.create($$0 -> $$0.group(agi.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ebl::new));
+   private final agi d;
 
-   public ebl(ato $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   public ebl(agi $$0) {
+      this.d = $$0;
    }
 
-   private ebl(ato $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            ebm $$5 = new ebm($$0);
-            int $$6 = $$3;
-            this.a = new ebm[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
-
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new ebm($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               ato $$9 = new dne(new dmg($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new ebm($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
-         }
-      }
+   @Override
+   public rz a(ats $$0, @Nullable rz $$1) {
+      rz $$2 = $$1 == null ? new rz() : $$1.h();
+      agi.a.encodeStart(sn.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
-
-      for (ebm $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
-
-         $$4 /= 2.0;
-         $$5 *= 2.0;
-      }
-
-      return $$3;
+   @Override
+   public ebq<?> a() {
+      return ebq.d;
    }
 }

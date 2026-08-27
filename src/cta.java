@@ -1,108 +1,101 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.hash.Hashing;
 
 public class cta {
-   public static <T> List<cta.b> a(List<T> $$0, Function<T, List<ig<dvz>>> $$1, boolean $$2) {
-      Object2IntMap<dvz> $$3 = new Object2IntOpenHashMap();
-      MutableInt $$4 = new MutableInt(0);
+   public static final int a = in.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final cta.a e;
+   private final long f;
 
-      record a(int a, int b, dvz c) {
-      }
-
-      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
-      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
-      int $$7 = 0;
-
-      for (T $$8 : $$0) {
-         List<a> $$9 = Lists.newArrayList();
-         List<ig<dvz>> $$10 = $$1.apply($$8);
-         $$7 = Math.max($$7, $$10.size());
-
-         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (ib<dvz> $$12 : $$10.get($$11)) {
-               dvz $$13 = $$12.a();
-               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
-            }
-         }
-
-         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
-            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
-            if ($$14 < $$9.size() - 1) {
-               $$15.add($$9.get($$14 + 1));
-            }
-         }
-      }
-
-      Set<a> $$16 = new TreeSet<>($$5);
-      Set<a> $$17 = new TreeSet<>($$5);
-      List<a> $$18 = Lists.newArrayList();
-
-      for (a $$19 : $$6.keySet()) {
-         if (!$$17.isEmpty()) {
-            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-         }
-
-         if (!$$16.contains($$19) && asx.a($$6, $$16, $$17, $$18::add, $$19)) {
-            if (!$$2) {
-               throw new IllegalStateException("Feature order cycle found");
-            }
-
-            List<T> $$20 = new ArrayList<>($$0);
-
-            int $$21;
-            do {
-               $$21 = $$20.size();
-               ListIterator<T> $$22 = $$20.listIterator();
-
-               while ($$22.hasNext()) {
-                  T $$23 = $$22.next();
-                  $$22.remove();
-
-                  try {
-                     a($$20, $$1, false);
-                  } catch (IllegalStateException var18) {
-                     continue;
-                  }
-
-                  $$22.add($$23);
-               }
-            } while ($$21 != $$20.size());
-
-            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
-         }
-      }
-
-      Collections.reverse($$18);
-      Builder<cta.b> $$25 = ImmutableList.builder();
-
-      for (int $$26 = 0; $$26 < $$7; $$26++) {
-         int $$27 = $$26;
-         List<dvz> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
-         $$25.add(new cta.b($$28));
-      }
-
-      return $$25.build();
+   public cta(cta.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static record b(List<dvz> a, ToIntFunction<dvz> b) {
-      b(List<dvz> $$0) {
-         this($$0, ac.f($$0));
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public cta a(cta.a $$0) {
+      return new cta($$0, this.f);
+   }
+
+   public ib<csy> a(ht $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public ib<csy> a(double $$0, double $$1, double $$2) {
+      int $$3 = in.a(atm.a($$0));
+      int $$4 = in.a(atm.a($$1));
+      int $$5 = in.a(atm.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public ib<csy> b(ht $$0) {
+      int $$1 = in.a($$0.u());
+      int $$2 = in.a($$0.v());
+      int $$3 = in.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public ib<csy> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = ati.a($$0, (long)$$1);
+      $$7 = ati.a($$7, (long)$$2);
+      $$7 = ati.a($$7, (long)$$3);
+      $$7 = ati.a($$7, (long)$$1);
+      $$7 = ati.a($$7, (long)$$2);
+      $$7 = ati.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = ati.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = ati.a($$7, $$0);
+      double $$10 = b($$7);
+      return atm.k($$6 + $$10) + atm.k($$5 + $$9) + atm.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      ib<csy> getNoiseBiome(int var1, int var2, int var3);
    }
 }

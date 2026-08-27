@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class ut {
-   public static final Codec<ur> a = asq.a(ut::a);
-   public static final Codec<ur> b = asq.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+   public static final Codec<ur> a = asu.a(ut::a);
+   public static final Codec<ur> b = asu.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
    private static vf a(List<ur> $$0) {
       vf $$1 = $$0.get(0).f();
@@ -28,22 +28,22 @@ public class ut {
       return $$1;
    }
 
-   public static <T extends aub, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+   public static <T extends aug, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
       MapCodec<E> $$4 = new ut.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = aub.b((Supplier<T[]>)(() -> $$0));
+      Codec<T> $$5 = aug.b((Supplier<T[]>)(() -> $$0));
       MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
       MapCodec<E> $$7 = new ut.b($$3, $$6, $$4);
-      return asq.a($$7, $$6);
+      return asu.a($$7, $$6);
    }
 
    private static Codec<ur> a(Codec<ur> $$0) {
       us.a<?>[] $$1 = new us.a[]{vy.b, wc.c, vv.b, vz.c, wa.b, vx.b};
       MapCodec<us> $$2 = a($$1, us.a::a, us::a, "type");
       Codec<ur> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(ur::b), asq.a(asq.a($$0.listOf()), "extra", List.of()).forGetter(ur::c), vo.b.a.forGetter(ur::a))
+         $$2x -> $$2x.group($$2.forGetter(ur::b), asu.a(asu.a($$0.listOf()), "extra", List.of()).forGetter(ur::c), vo.b.a.forGetter(ur::a))
                .apply($$2x, vf::new)
       );
-      return Codec.either(Codec.either(Codec.STRING, asq.a($$0.listOf())), $$3)
+      return Codec.either(Codec.either(Codec.STRING, asu.a($$0.listOf())), $$3)
          .xmap($$0x -> (ur)$$0x.map($$0xx -> (ur)$$0xx.map(ur::b, ut::a), $$0xx -> $$0xx), $$0x -> {
             String $$1x = $$0x.d();
             return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);

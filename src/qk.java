@@ -1,95 +1,71 @@
 import java.util.List;
 
 public class qk {
-   public static final agf<dvz> a = qj.a("crimson_fungi");
-   public static final agf<dvz> b = qj.a("warped_fungi");
-   public static final agf<dvz> c = qj.a("oak_checked");
-   public static final agf<dvz> d = qj.a("dark_oak_checked");
-   public static final agf<dvz> e = qj.a("birch_checked");
-   public static final agf<dvz> f = qj.a("acacia_checked");
-   public static final agf<dvz> g = qj.a("spruce_checked");
-   public static final agf<dvz> h = qj.a("mangrove_checked");
-   public static final agf<dvz> i = qj.a("cherry_checked");
-   public static final agf<dvz> j = qj.a("pine_on_snow");
-   public static final agf<dvz> k = qj.a("spruce_on_snow");
-   public static final agf<dvz> l = qj.a("pine_checked");
-   public static final agf<dvz> m = qj.a("jungle_tree");
-   public static final agf<dvz> n = qj.a("fancy_oak_checked");
-   public static final agf<dvz> o = qj.a("mega_jungle_tree_checked");
-   public static final agf<dvz> p = qj.a("mega_spruce_checked");
-   public static final agf<dvz> q = qj.a("mega_pine_checked");
-   public static final agf<dvz> r = qj.a("tall_mangrove_checked");
-   public static final agf<dvz> s = qj.a("jungle_bush");
-   public static final agf<dvz> t = qj.a("super_birch_bees_0002");
-   public static final agf<dvz> u = qj.a("super_birch_bees");
-   public static final agf<dvz> v = qj.a("oak_bees_0002");
-   public static final agf<dvz> w = qj.a("oak_bees_002");
-   public static final agf<dvz> x = qj.a("birch_bees_0002");
-   public static final agf<dvz> y = qj.a("birch_bees_002");
-   public static final agf<dvz> z = qj.a("fancy_oak_bees_0002");
-   public static final agf<dvz> A = qj.a("fancy_oak_bees_002");
-   public static final agf<dvz> B = qj.a("fancy_oak_bees");
-   public static final agf<dvz> C = qj.a("cherry_bees_005");
+   public static final dwo a = dwh.a(dmr.a.e);
+   public static final dwo b = dwh.a(dmr.a.c);
+   public static final dwo c = dwh.a(dmr.a.a);
+   public static final dwo d = dwh.a(dmr.a.d);
+   public static final dwo e = dwg.a(dnl.a(), dnl.b());
+   public static final dwo f = dwg.a(dnl.b(10), dnl.c(10));
+   public static final dwo g = dwg.a(dnl.b(8), dnl.c(8));
+   public static final dwo h = dwg.a(dnl.b(4), dnl.c(4));
+   public static final dwo i = dwg.a(dnl.a(), dnl.a(256));
 
-   public static void a(ou<dvz> $$0) {
-      ic<dow<?, ?>> $$1 = $$0.a(jz.au);
-      ib<dow<?, ?>> $$2 = $$1.b(pz.a);
-      ib<dow<?, ?>> $$3 = $$1.b(pz.c);
-      ib<dow<?, ?>> $$4 = $$1.b(pz.g);
-      ib<dow<?, ?>> $$5 = $$1.b(pz.h);
-      ib<dow<?, ?>> $$6 = $$1.b(pz.i);
-      ib<dow<?, ?>> $$7 = $$1.b(pz.j);
-      ib<dow<?, ?>> $$8 = $$1.b(pz.k);
-      ib<dow<?, ?>> $$9 = $$1.b(pz.x);
-      ib<dow<?, ?>> $$10 = $$1.b(pz.z);
-      ib<dow<?, ?>> $$11 = $$1.b(pz.l);
-      ib<dow<?, ?>> $$12 = $$1.b(pz.m);
-      ib<dow<?, ?>> $$13 = $$1.b(pz.n);
-      ib<dow<?, ?>> $$14 = $$1.b(pz.p);
-      ib<dow<?, ?>> $$15 = $$1.b(pz.q);
-      ib<dow<?, ?>> $$16 = $$1.b(pz.r);
-      ib<dow<?, ?>> $$17 = $$1.b(pz.y);
-      ib<dow<?, ?>> $$18 = $$1.b(pz.v);
-      ib<dow<?, ?>> $$19 = $$1.b(pz.s);
-      ib<dow<?, ?>> $$20 = $$1.b(pz.t);
-      ib<dow<?, ?>> $$21 = $$1.b(pz.A);
-      ib<dow<?, ?>> $$22 = $$1.b(pz.B);
-      ib<dow<?, ?>> $$23 = $$1.b(pz.D);
-      ib<dow<?, ?>> $$24 = $$1.b(pz.E);
-      ib<dow<?, ?>> $$25 = $$1.b(pz.G);
-      ib<dow<?, ?>> $$26 = $$1.b(pz.H);
-      ib<dow<?, ?>> $$27 = $$1.b(pz.J);
-      ib<dow<?, ?>> $$28 = $$1.b(pz.K);
-      qj.a($$0, a, $$2, dvr.a(8), dvn.a());
-      qj.a($$0, b, $$3, dvr.a(8), dvn.a());
-      qj.a($$0, c, $$4, qj.a(cuv.x));
-      qj.a($$0, d, $$5, qj.a(cuv.D));
-      qj.a($$0, e, $$6, qj.a(cuv.z));
-      qj.a($$0, f, $$7, qj.a(cuv.B));
-      qj.a($$0, g, $$8, qj.a(cuv.y));
-      qj.a($$0, h, $$9, qj.a(cuv.E));
-      qj.a($$0, i, $$10, qj.a(cuv.C));
-      dnm $$29 = dnm.a(hx.a.q(), cuv.dP, cuv.qC);
-      List<dwc> $$30 = List.of(dvt.a(hx.b, dnm.a(dnm.a(cuv.qC)), 8), dvo.a($$29));
-      qj.a($$0, j, $$11, $$30);
-      qj.a($$0, k, $$8, $$30);
-      qj.a($$0, l, $$11, qj.a(cuv.y));
-      qj.a($$0, m, $$12, qj.a(cuv.A));
-      qj.a($$0, n, $$13, qj.a(cuv.x));
-      qj.a($$0, o, $$14, qj.a(cuv.A));
-      qj.a($$0, p, $$15, qj.a(cuv.y));
-      qj.a($$0, q, $$16, qj.a(cuv.y));
-      qj.a($$0, r, $$17, qj.a(cuv.E));
-      qj.a($$0, s, $$18, qj.a(cuv.x));
-      qj.a($$0, t, $$19, qj.a(cuv.z));
-      qj.a($$0, u, $$20, qj.a(cuv.z));
-      qj.a($$0, v, $$21, qj.a(cuv.x));
-      qj.a($$0, w, $$22, qj.a(cuv.x));
-      qj.a($$0, x, $$23, qj.a(cuv.z));
-      qj.a($$0, y, $$24, qj.a(cuv.z));
-      qj.a($$0, z, $$25, qj.a(cuv.x));
-      qj.a($$0, A, $$26, qj.a(cuv.x));
-      qj.a($$0, B, $$27, qj.a(cuv.x));
-      qj.a($$0, C, $$28, qj.a(cuv.C));
+   public static void a(ov<dwl> $$0) {
+      qe.a($$0);
+      qf.a($$0);
+      qg.a($$0);
+      qh.a($$0);
+      qi.a($$0);
+      qj.a($$0);
+      ql.a($$0);
+      qm.a($$0);
+      qn.a($$0);
+   }
+
+   public static agh<dwl> a(String $$0) {
+      return agh.a(jz.aA, new agi($$0));
+   }
+
+   public static void a(ov<dwl> $$0, agh<dwl> $$1, ib<dpi<?, ?>> $$2, List<dwo> $$3) {
+      $$0.a($$1, new dwl($$2, List.copyOf($$3)));
+   }
+
+   public static void a(ov<dwl> $$0, agh<dwl> $$1, ib<dpi<?, ?>> $$2, dwo... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static dwo a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bhh<bic> $$4 = bhh.<bic>a().a(bhz.a($$0), (int)$$3 - 1).a(bhz.a($$0 + $$2), 1).a();
+         return dwe.a(new bij($$4));
+      }
+   }
+
+   public static dwn a() {
+      return dwa.a(dny.c);
+   }
+
+   public static dwa a(cva $$0) {
+      return dwa.a(dny.a($$0.o(), ht.b));
+   }
+
+   public static ib<dwl> a(ib<dpi<?, ?>> $$0, dwo... $$1) {
+      return ib.a(new dwl($$0, List.of($$1)));
+   }
+
+   public static <FC extends drz, F extends dpv<FC>> ib<dwl> a(F $$0, FC $$1, dwo... $$2) {
+      return a(ib.a(new dpi($$0, $$1)), $$2);
+   }
+
+   public static <FC extends drz, F extends dpv<FC>> ib<dwl> a(F $$0, FC $$1) {
+      return a($$0, $$1, dny.c);
+   }
+
+   public static <FC extends drz, F extends dpv<FC>> ib<dwl> a(F $$0, FC $$1, dny $$2) {
+      return a($$0, $$1, dwa.a($$2));
    }
 }

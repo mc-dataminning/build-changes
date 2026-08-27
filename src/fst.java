@@ -1,50 +1,95 @@
-public class fst implements fsh<dgs> {
-   private final frb a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fst(fsi.a $$0) {
-      this.a = $$0.b();
+public class fst implements api {
+   private Map<dff<?>, fsu<?>> d = ImmutableMap.of();
+   private final eum e;
+   private final fkk f;
+   public csa a;
+   public eso b;
+   public ejs c;
+   private final Supplier<fro> g;
+   private final Supplier<fwv> h;
+   private final Supplier<fvv> i;
+
+   public fst(eum $$0, fkk $$1, Supplier<fro> $$2, Supplier<fwv> $$3, Supplier<fvv> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(dgs $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      crs $$6 = $$0.k();
-      if ($$6 != null) {
-         ht $$7 = $$0.p().a($$0.g().g());
-         dgw $$8 = $$0.i();
-         if (!$$8.i()) {
-            frd.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(cuv.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dgq.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.f() && !$$0.c()) {
-               dhy $$9 = $$8.a(cuv.br) ? dhy.b : dhy.a;
-               dgw $$10 = cuv.bz.o().a(dgq.c, $$9).a(dgq.a, $$8.c(dgp.a));
-               $$10 = $$10.a(dgq.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               ht $$11 = $$7.a($$0.g());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dgp.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   @Nullable
+   public <E extends dfd> fsu<E> a(E $$0) {
+      return (fsu<E>)this.d.get($$0.u());
+   }
 
-            $$2.b();
-            frd.b();
+   public void a(csa $$0, eso $$1, ejs $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dfd> void a(E $$0, float $$1, enw $$2, fqu $$3) {
+      fsu<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.u().a($$0.q())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
          }
       }
    }
 
-   private void a(ht $$0, dgw $$1, enk $$2, fqh $$3, crs $$4, boolean $$5, int $$6) {
-      fqp $$7 = fqc.b($$1);
-      eno $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, ato.a(), $$1.a($$0), $$6);
+   private static <T extends dfd> void a(fsu<T> $$0, T $$1, float $$2, enw $$3, fqu $$4) {
+      csa $$5 = $$1.k();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fqs.a($$5, $$1.p());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, gbl.d);
+   }
+
+   public <E extends dfd> boolean a(E $$0, enw $$1, fqu $$2, int $$3, int $$4) {
+      fsu<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dfd $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable csa $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
    }
 
    @Override
-   public int aR_() {
-      return 68;
+   public void a(aph $$0) {
+      fsv.a $$1 = new fsv.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fsw.a($$1);
    }
 }

@@ -1,76 +1,66 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
 public abstract class dur {
-   public static final Codec<dur> c = jy.Y.q().dispatch(dur::a, dus::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends dur> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
-
-   public dur(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   public static final Codec<dur> h = jy.aa.q().dispatch(dur::a, dus::a);
 
    protected abstract dus<?> a();
 
-   public abstract List<dsz.a> a(cry var1, BiConsumer<ht, dgw> var2, ato var3, int var4, ht var5, dsj var6);
+   public abstract void a(dur.a var1);
 
-   public int a(ato $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
+   public static final class a {
+      private final csg a;
+      private final BiConsumer<ht, dhi> b;
+      private final ats c;
+      private final ObjectArrayList<ht> d;
+      private final ObjectArrayList<ht> e;
+      private final ObjectArrayList<ht> f;
 
-   private static boolean c(cry $$0, ht $$1) {
-      return $$0.a($$1, $$0x -> dpj.b($$0x) && !$$0x.a(cuv.i) && !$$0x.a(cuv.fl));
-   }
-
-   protected static void a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, ht $$3, dsj $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      public a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, Set<ht> $$3, Set<ht> $$4, Set<ht> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(iw::v));
+         this.e.sort(Comparator.comparingInt(iw::v));
+         this.f.sort(Comparator.comparingInt(iw::v));
       }
-   }
 
-   protected boolean b(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, ht $$3, dsj $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, ht $$3, dsj $$4, Function<dgw, dgw> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      public void a(ht $$0, dhz $$1) {
+         this.a($$0, cvc.ff.o().a($$1, Boolean.valueOf(true)));
       }
-   }
 
-   protected void a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, ht.a $$3, dsj $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+      public void a(ht $$0, dhi $$1) {
+         this.b.accept($$0, $$1);
       }
-   }
 
-   protected boolean a(cry $$0, ht $$1) {
-      return dqv.c($$0, $$1);
-   }
+      public boolean a(ht $$0) {
+         return this.a.a($$0, dhh.a::i);
+      }
 
-   public boolean b(cry $$0, ht $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(arc.t));
+      public csg a() {
+         return this.a;
+      }
+
+      public ats b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ht> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ht> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ht> e() {
+         return this.f;
+      }
    }
 }

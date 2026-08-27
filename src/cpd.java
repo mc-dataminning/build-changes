@@ -1,20 +1,22 @@
-public class cpd extends cpm {
-   public cpd(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.k, $$1);
+public interface cpd extends coo<biq> {
+   @Override
+   default cot<?> e() {
+      return cot.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
+   default clj g() {
+      return new clj(cvc.ob);
    }
 
-   @Override
-   public int a() {
-      return 5;
-   }
+   boolean a(clj var1);
+
+   boolean b(clj var1);
+
+   boolean c(clj var1);
 }

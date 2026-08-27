@@ -1,30 +1,40 @@
-public class fng extends foh {
-   fng(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public class fng extends fpj {
+   fng(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a() {
+      super.a();
+      if (!this.o && !this.c.b_(ht.a(this.g, this.h, this.i)).a(arl.a)) {
+         this.k();
+      }
    }
 
-   public static class a implements fny<jv> {
-      private final foq a;
+   @Override
+   public fom b() {
+      return fom.b;
+   }
 
-      public a(foq $$0) {
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fng($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fng $$8 = new fng($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

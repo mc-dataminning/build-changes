@@ -1,20 +1,20 @@
-public class deq extends deg {
-   public deq(ht $$0, dgw $$1) {
-      super(det.C, $$0, $$1, cok.c);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class deq extends ddy {
+   public static final MapCodec<deq> b = b(deq::new);
+
+   @Override
+   public MapCodec<deq> a() {
+      return b;
+   }
+
+   protected deq(dhh.d $$0) {
+      super(dcb.b.d, $$0);
    }
 
    @Override
-   protected ur g() {
-      return ur.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int a(clb $$0) {
-      return super.a($$0) / 2;
-   }
-
-   @Override
-   protected cge a(int $$0, cdl $$1) {
-      return new cgi($$0, $$1, this, this.n);
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      cvc.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

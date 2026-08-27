@@ -1,63 +1,30 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class esn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final File c;
-   private final DataFixer d;
-   private final fpl[] e = new fpl[9];
-   private boolean f;
+public enum esn implements ato {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public esn(File $$0, DataFixer $$1) {
-      this.c = new File($$0, "hotbar.nbt");
-      this.d = $$1;
+   private static final IntFunction<esn> d = asf.a(esn::a, values(), asf.a.b);
+   private final int e;
+   private final String f;
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fpl();
-      }
+   private esn(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private void b() {
-      try {
-         rz $$0 = sm.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = so.b($$0, 1343);
-         $$0 = aun.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public void a() {
-      try {
-         rz $$0 = so.g(new rz());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
-
-         sm.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
-      }
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public fpl a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
-
-      return this.e[$$0];
+   public static esn a(int $$0) {
+      return d.apply($$0);
    }
 }

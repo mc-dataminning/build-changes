@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class efb extends efg {
-   public static final Codec<efb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jy.i.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, efb::new)
-   );
-   private final ib<ckw> j;
+@FunctionalInterface
+public interface efb {
+   @Nullable
+   <T> T getElement(eez<T> var1);
 
-   private efb(ib<ckw> $$0, int $$1, int $$2, List<ehk> $$3, List<efy> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   @Nullable
+   default <T> T getElement(efc<T> $$0, agi $$1) {
+      return this.getElement(new eez<>($$0, $$1));
    }
 
-   @Override
-   public eff a() {
-      return efc.c;
+   default <T> Optional<T> getElementOptional(eez<T> $$0) {
+      return Optional.ofNullable(this.getElement($$0));
    }
 
-   @Override
-   public void a(Consumer<clb> $$0, eel $$1) {
-      $$0.accept(new clb(this.j));
+   default <T> Optional<T> getElementOptional(efc<T> $$0, agi $$1) {
+      return this.getElementOptional(new eez<>($$0, $$1));
    }
 
-   public static efg.a<?> a(crr $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efb($$0.k().j(), $$1, $$2, $$3, $$4));
+   default eff getLootTable(agi $$0) {
+      return this.getElementOptional(efc.c, $$0).orElse(eff.a);
    }
 }

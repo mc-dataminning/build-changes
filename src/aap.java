@@ -6,13 +6,13 @@ public class aap implements wk<yd> {
    private static final int a = 12;
    private final iu b;
    private final short[] c;
-   private final dgw[] d;
+   private final dhi[] d;
 
-   public aap(iu $$0, ShortSet $$1, dje $$2) {
+   public aap(iu $$0, ShortSet $$1, djq $$2) {
       this.b = $$0;
       int $$3 = $$1.size();
       this.c = new short[$$3];
-      this.d = new dgw[$$3];
+      this.d = new dhi[$$3];
       int $$4 = 0;
 
       for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
@@ -26,12 +26,12 @@ public class aap implements wk<yd> {
       this.b = iu.a($$0.readLong());
       int $$1 = $$0.n();
       this.c = new short[$$1];
-      this.d = new dgw[$$1];
+      this.d = new dhi[$$1];
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          long $$3 = $$0.o();
          this.c[$$2] = (short)((int)($$3 & 4095L));
-         this.d[$$2] = cut.q.a((int)($$3 >>> 12));
+         this.d[$$2] = cva.q.a((int)($$3 >>> 12));
       }
    }
 
@@ -41,7 +41,7 @@ public class aap implements wk<yd> {
       $$0.c(this.c.length);
 
       for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         $$0.a((long)cut.i(this.d[$$1]) << 12 | (long)this.c[$$1]);
+         $$0.a((long)cva.i(this.d[$$1]) << 12 | (long)this.c[$$1]);
       }
    }
 
@@ -49,7 +49,7 @@ public class aap implements wk<yd> {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<ht, dgw> $$0) {
+   public void a(BiConsumer<ht, dhi> $$0) {
       ht.a $$1 = new ht.a();
 
       for (int $$2 = 0; $$2 < this.c.length; $$2++) {

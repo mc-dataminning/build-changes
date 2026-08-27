@@ -1,84 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcq extends cuf implements cya {
-   public static final MapCodec<dcq> a = b(dcq::new);
-   public static final dhu<dig> b = dhm.bj;
-
-   @Override
-   public MapCodec<dcq> a() {
-      return a;
-   }
-
-   protected dcq(dgv.d $$0) {
+public abstract class dcq extends dcj {
+   protected dcq(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dig.b));
    }
 
-   @Override
-   public der a(ht $$0, dgw $$1) {
-      return new dgf($$0, $$1);
-   }
-
-   @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      der $$6 = $$1.c_($$2);
-      if ($$6 instanceof dgf) {
-         return ((dgf)$$6).a($$3) ? biq.a($$1.B) : biq.d;
+   private static boolean b(dhi $$0, csd $$1, ht $$2) {
+      ht $$3 = $$2.c();
+      dhi $$4 = $$1.a_($$3);
+      if ($$4.a(cvc.dN) && $$4.c(dci.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
       } else {
-         return biq.d;
+         int $$5 = ecj.a($$1, $$0, $$2, $$4, $$3, hx.b, $$4.b($$1, $$3));
+         return $$5 < $$1.N();
       }
    }
 
    @Override
-   public void a(crs $$0, ht $$1, dgw $$2, @Nullable bky $$3, clb $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            der $$5 = $$0.c_($$1);
-            if ($$5 instanceof dgf) {
-               ((dgf)$$5).a($$3);
+   protected abstract MapCodec<? extends dcq> a();
+
+   private static boolean c(dhi $$0, csd $$1, ht $$2) {
+      ht $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(arl.a);
+   }
+
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cvc.j.o());
+      } else {
+         if ($$1.z($$2.c()) >= 9) {
+            dhi $$4 = this.o();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               ht $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(cvc.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cvc.dN))));
+               }
             }
          }
-      }
-   }
-
-   @Override
-   public day b_(dgw $$0) {
-      return day.c;
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, cut $$3, ht $$4, boolean $$5) {
-      if ($$1 instanceof ama) {
-         if ($$1.c_($$2) instanceof dgf $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.G();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((ama)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(ama $$0, dgf $$1) {
-      switch ($$1.y()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.a($$0, false);
-            break;
-         case c:
-            $$1.E();
-         case d:
       }
    }
 }

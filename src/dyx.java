@@ -1,14 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class dyx extends dwu {
-   public static final Codec<dyx> d = a(dyx::new);
-
-   public dyx(dwv.c $$0) {
-      super(dyw::new, 12, 15, $$0);
-   }
-
-   @Override
-   public dxe<?> e() {
-      return dxe.g;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dyx {
 }

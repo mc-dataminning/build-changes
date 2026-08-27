@@ -1,68 +1,62 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class egm extends efx {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<egm> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(asq.a(ut.a, "name").forGetter($$0x -> $$0x.c), asq.a(eel.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, egm::new)
-   );
-   private final Optional<ur> c;
-   private final Optional<eel.b> d;
+public class egm {
+   public static final BiFunction<clj, eex, clj> a = ($$0, $$1) -> $$0;
+   private static final Codec<egk> D = jy.H.q().dispatch("function", egk::b, egl::a);
+   public static final Codec<egk> b = asu.a((Supplier<Codec<egk>>)(() -> asu.e(D, ego.b)));
+   public static final egl c = a("set_count", egv.a);
+   public static final egl d = a("enchant_with_levels", egd.a);
+   public static final egl e = a("enchant_randomly", egc.a);
+   public static final egl f = a("set_enchantments", egt.a);
+   public static final egl g = a("set_nbt", egz.a);
+   public static final egl h = a("furnace_smelt", ehc.a);
+   public static final egl i = a("looting_enchant", egn.b);
+   public static final egl j = a("set_damage", egw.a);
+   public static final egl k = a("set_attributes", egp.a);
+   public static final egl l = a("set_name", egy.a);
+   public static final egl m = a("exploration_map", ege.f);
+   public static final egl n = a("set_stew_effect", ehb.a);
+   public static final egl o = a("copy_name", ega.a);
+   public static final egl p = a("set_contents", egr.a);
+   public static final egl q = a("limit_count", egi.a);
+   public static final egl r = a("apply_bonus", efx.a);
+   public static final egl s = a("set_loot_table", egs.a);
+   public static final egl t = a("explosion_decay", efy.a);
+   public static final egl u = a("set_lore", egx.a);
+   public static final egl v = a("fill_player_head", egf.a);
+   public static final egl w = a("copy_nbt", egb.a);
+   public static final egl x = a("copy_state", efz.a);
+   public static final egl y = a("set_banner_pattern", egq.a);
+   public static final egl z = a("set_potion", eha.a);
+   public static final egl A = a("set_instrument", egu.a);
+   public static final egl B = a("reference", egg.a);
+   public static final egl C = a("sequence", ego.a);
 
-   private egm(List<ehk> $$0, Optional<ur> $$1, Optional<eel.b> $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private static egl a(String $$0, Codec<? extends egk> $$1) {
+      return io.a(jy.H, new agi($$0), new egl($$1));
    }
 
-   @Override
-   public efz b() {
-      return ega.l;
-   }
+   public static BiFunction<clj, eex, clj> a(List<? extends BiFunction<clj, eex, clj>> $$0) {
+      List<BiFunction<clj, eex, clj>> $$1 = List.copyOf($$0);
 
-   @Override
-   public Set<egt<?>> a() {
-      return this.d.<Set<egt<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<ur> a(eel $$0, @Nullable eel.b $$1) {
-      if ($$1 != null) {
-         bki $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            du $$3 = $$2.dc().a(2);
-            return $$2x -> {
-               try {
-                  return uu.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<clj, eex, clj> $$2 = $$1.get(0);
+            BiFunction<clj, eex, clj> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
          }
-      }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<clj, eex, clj> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
+         }
 
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public clb a(clb $$0, eel $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
-
-   public static efx.a<?> a(ur $$0) {
-      return a($$1 -> new egm($$1, Optional.of($$0), Optional.empty()));
-   }
-
-   public static efx.a<?> a(ur $$0, eel.b $$1) {
-      return a($$2 -> new egm($$2, Optional.of($$0), Optional.of($$1)));
+         return $$1x;
+      };
+      };
    }
 }

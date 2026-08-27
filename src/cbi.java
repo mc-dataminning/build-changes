@@ -1,114 +1,114 @@
-public class cbi extends caj {
-   private static final int c = 300;
-   private static final afm<Boolean> d = afp.a(cbi.class, afo.k);
-   public static final String b = "StrayConversionTime";
-   private int e;
-   private int bT;
+import java.util.function.Predicate;
 
-   public cbi(bkm<? extends cbi> $$0, crs $$1) {
+public abstract class cbi extends blp implements cba {
+   protected cbi(bku<? extends cbi> $$0, csa $$1) {
       super($$0, $$1);
+      this.bJ = 5;
    }
 
    @Override
-   protected void b_() {
-      super.b_();
-      this.al().a(d, false);
-   }
-
-   public boolean gf() {
-      return this.al().b(d);
-   }
-
-   public void w(boolean $$0) {
-      this.an.b(d, $$0);
+   public aqs dc() {
+      return aqs.f;
    }
 
    @Override
-   public boolean ge() {
-      return this.gf();
+   public void c_() {
+      this.eR();
+      this.gk();
+      super.c_();
+   }
+
+   protected void gk() {
+      float $$0 = this.bo();
+      if ($$0 > 0.5F) {
+         this.bb += 2;
+      }
    }
 
    @Override
-   public void l() {
-      if (!this.dL().B && this.bv() && !this.fU()) {
-         if (this.aA) {
-            if (this.gf()) {
-               this.bT--;
-               if (this.bT < 0) {
-                  this.gg();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
-            }
+   protected boolean X() {
+      return true;
+   }
+
+   @Override
+   protected aqq aN() {
+      return aqr.lQ;
+   }
+
+   @Override
+   protected aqq aO() {
+      return aqr.lP;
+   }
+
+   @Override
+   protected aqq d(bjo $$0) {
+      return aqr.lN;
+   }
+
+   @Override
+   protected aqq m_() {
+      return aqr.lM;
+   }
+
+   @Override
+   public blg.a eH() {
+      return new blg.a(aqr.lO, aqr.lL);
+   }
+
+   @Override
+   public float a(ht $$0, csd $$1) {
+      return -$$1.v($$0);
+   }
+
+   public static boolean a(csp $$0, ht $$1, ats $$2) {
+      if ($$0.a(csj.a, $$1) > $$2.a(32)) {
+         return false;
+      } else {
+         dkr $$3 = $$0.D_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(csj.b, $$1) > $$4) {
+            return false;
          } else {
-            this.e = -1;
-            this.w(false);
+            int $$5 = $$0.D().Z() ? $$0.c($$1, 10) : $$0.z($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
+   }
 
-      super.l();
+   public static boolean b(bku<? extends cbi> $$0, csp $$1, blk $$2, ht $$3, ats $$4) {
+      return $$1.aj() != biu.a && a($$1, $$3, $$4) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bku<? extends cbi> $$0, csb $$1, blk $$2, ht $$3, ats $$4) {
+      return $$1.aj() != biu.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static bml.a gl() {
+      return bli.C().a(bmm.c);
    }
 
    @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gf() ? this.bT : -1);
+   public boolean ed() {
+      return true;
    }
 
    @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
-      }
+   protected boolean ee() {
+      return true;
    }
 
-   private void b(int $$0) {
-      this.bT = $$0;
-      this.w(true);
-   }
-
-   protected void gg() {
-      this.a(bkm.aU, true);
-      if (!this.aS()) {
-         this.dL().a(null, 1048, this.dl(), 0);
-      }
+   public boolean f(cdu $$0) {
+      return true;
    }
 
    @Override
-   public boolean dz() {
-      return false;
-   }
-
-   @Override
-   protected aqm w() {
-      return aqn.vs;
-   }
-
-   @Override
-   protected aqm d(bjg $$0) {
-      return aqn.vD;
-   }
-
-   @Override
-   protected aqm m_() {
-      return aqn.vu;
-   }
-
-   @Override
-   aqm t() {
-      return aqn.vF;
-   }
-
-   @Override
-   protected void a(bjg $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cam $$4 && $$4.gf()) {
-         $$4.gg();
-         this.a(cle.ts);
+   public clj g(clj $$0) {
+      if ($$0.d() instanceof clz) {
+         Predicate<clj> $$1 = ((clz)$$0.d()).e();
+         clj $$2 = clz.a(this, $$1);
+         return $$2.b() ? new clj(clm.os) : $$2;
+      } else {
+         return clj.b;
       }
    }
 }

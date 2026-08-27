@@ -1,83 +1,48 @@
-public class fmy extends fow {
-   fmy(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
-   }
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ati.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+@FunctionalInterface
+public interface fmy {
+   Logger a = LogUtils.getLogger();
+   fmy b = $$0 -> Optional.empty();
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
+   Optional<fmv> lookupRedirect(fmv var1);
 
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
-
-   public static class a implements fny<jv> {
-      private final foq a;
-
-      public a(foq $$0) {
-         this.a = $$0;
+   static fmy createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmy $$8 = new fmy($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fmv($$4x[3], fmv.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
 
-   public static class b implements fny<jv> {
-      private final foq a;
-
-      public b(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmy $$8 = new fmy($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements fny<jv> {
-      private final foq a;
-
-      public c(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmy $$8 = new fmy($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+         return Optional.empty();
+      };
    }
 }

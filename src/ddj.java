@@ -1,30 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddj extends cyi {
-   public static final MapCodec<ddj> c = b(ddj::new);
-   public static final ekb g = cut.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
-
-   @Override
-   public MapCodec<ddj> a() {
-      return c;
-   }
-
-   public ddj(dgv.d $$0) {
-      super($$0, hx.b, g, false, 0.1);
-   }
+public class ddj extends cuq {
+   protected static final MapCodec<jv> c = jy.k
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof jv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<ddj> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, ddj::new));
+   protected final jv e;
 
    @Override
-   protected int a(ato $$0) {
-      return czy.a($$0);
+   public MapCodec<? extends ddj> a() {
+      return d;
    }
 
-   @Override
-   protected cut b() {
-      return cuv.oC;
+   protected ddj(jv $$0, dhh.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean g(dgw $$0) {
-      return czy.a($$0);
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

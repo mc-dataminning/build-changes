@@ -1,12 +1,12 @@
 import java.util.UUID;
 
-public record vc(UUID a, cdo b) {
-   public static vc a(cdo $$0) {
+public record vc(UUID a, cdw b) {
+   public static vc a(cdw $$0) {
       return new vc(UUID.randomUUID(), $$0);
    }
 
    public vl.c a(UUID $$0) {
-      return new vl($$0, this.a).a(atu.a(this.b.b(), "SHA256withRSA"));
+      return new vl($$0, this.a).a(atz.a(this.b.b(), "SHA256withRSA"));
    }
 
    public vi a() {
@@ -17,7 +17,7 @@ public record vc(UUID a, cdo b) {
       return this.a;
    }
 
-   public cdo c() {
+   public cdw c() {
       return this.b;
    }
 }

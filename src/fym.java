@@ -1,34 +1,34 @@
-public class fym extends fwq<bxm, fjs<bxm>> {
-   private static final agg a = new agg("textures/entity/wolf/wolf.png");
-   private static final agg i = new agg("textures/entity/wolf/wolf_tame.png");
-   private static final agg j = new agg("textures/entity/wolf/wolf_angry.png");
+public class fym extends fvw<cao> {
+   private final fro a;
 
-   public fym(fvk.a $$0) {
-      super($$0, new fjs<>($$0.a(fka.bV)), 0.5F);
-      this.a(new gah(this));
+   public fym(fvx.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   protected float a(bxm $$0, float $$1) {
-      return $$0.gm();
-   }
-
-   public void a(bxm $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      if ($$0.gl()) {
-         float $$6 = $$0.E($$2);
-         this.f.a($$6, $$6, $$6);
+   public void a(cao $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = atm.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
 
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      fyl.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gl()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
    }
 
-   public agg a(bxm $$0) {
-      if ($$0.s()) {
-         return i;
-      } else {
-         return $$0.Y_() ? j : a;
-      }
+   public agi a(cao $$0) {
+      return gbt.e;
    }
 }

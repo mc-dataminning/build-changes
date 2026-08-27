@@ -1,27 +1,47 @@
-public abstract class bhk<R extends Runnable> extends bhg<R> {
-   private int b;
+import java.util.List;
+import java.util.Optional;
 
-   public bhk(String $$0) {
-      super($$0);
+public class bhk {
+   private bhk() {
    }
 
-   @Override
-   public boolean at() {
-      return this.br() || super.at();
-   }
+   public static int a(List<? extends bhj> $$0) {
+      long $$1 = 0L;
 
-   protected boolean br() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
+      for (bhj $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
       }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
+   }
+
+   public static <T extends bhj> Optional<T> a(ats $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
+   }
+
+   public static <T extends bhj> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public static <T extends bhj> Optional<T> a(ats $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

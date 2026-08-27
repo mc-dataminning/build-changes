@@ -67,7 +67,7 @@ public class ep implements ArgumentType<ep.a> {
                if ($$1 == 0) {
                   throw c.create();
                } else {
-                  return ati.a($$0x, $$1);
+                  return atm.a($$0x, $$1);
                }
             };
          case "%=":
@@ -75,7 +75,7 @@ public class ep implements ArgumentType<ep.a> {
                if ($$1 == 0) {
                   throw c.create();
                } else {
-                  return ati.b($$0x, $$1);
+                  return atm.b($$0x, $$1);
                }
             };
          case "<":
@@ -89,7 +89,7 @@ public class ep implements ArgumentType<ep.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(ekg var1, ekg var2) throws CommandSyntaxException;
+      void apply(eks var1, eks var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -97,7 +97,7 @@ public class ep implements ArgumentType<ep.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(ekg $$0, ekg $$1) throws CommandSyntaxException {
+      default void apply(eks $$0, eks $$1) throws CommandSyntaxException {
          $$0.b(this.apply($$0.b(), $$1.b()));
       }
    }

@@ -1,20 +1,38 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public interface gdi {
-   List<fre> a(@Nullable dgw var1, @Nullable hx var2, ato var3);
+public class gdi {
+   public static final gdj a = new gdj();
+   public static final String b = "villager";
+   private final gdi.a c;
 
-   boolean a();
+   public gdi(gdi.a $$0) {
+      this.c = $$0;
+   }
 
-   boolean b();
+   public gdi.a a() {
+      return this.c;
+   }
 
-   boolean c();
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   boolean d();
+      private static final Map<String, gdi.a> d = Arrays.stream(values()).collect(Collectors.toMap(gdi.a::a, $$0 -> (gdi.a)$$0));
+      private final String e;
 
-   gbh e();
+      private a(String $$0) {
+         this.e = $$0;
+      }
 
-   frq f();
+      public String a() {
+         return this.e;
+      }
 
-   fro g();
+      public static gdi.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
+   }
 }

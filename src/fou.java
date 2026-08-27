@@ -1,117 +1,99 @@
-public class fou extends fow {
-   fou(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public class fou extends fpj {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
+
+   fou(flj $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public fnz b() {
-      return fnz.b;
+   public float b(float $$0) {
+      return this.D * atm.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a(eoa $$0, eso $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - atm.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
+   }
+
+   private void a(eoa $$0, eso $$1, float $$2, Consumer<Quaternionf> $$3) {
+      eju $$4 = $$1.b();
+      float $$5 = (float)(atm.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(atm.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(atm.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
+      }
+
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+   }
+
+   private void a(eoa $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fom b() {
+      return fom.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+      if (this.G > 0) {
+         this.G--;
       } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
+         super.a();
       }
    }
 
-   public static class a implements fny<jv> {
-      private final foq a;
+   public static class a implements fol<ju> {
+      private final fpe a;
 
-      public a(foq $$0) {
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public foi a(ju $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fou $$8 = new fou($$1, $$2, $$3, $$4, $$0.c());
          $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.E_().a(5));
-         return $$8;
-      }
-   }
-
-   public static class b implements fny<jv> {
-      private final foq a;
-
-      public b(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.z.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements fny<jv> {
-      private final foq a;
-
-      public c(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements fny<jv> {
-      private final foq a;
-
-      public d(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements fny<jv> {
-      private final foq a;
-
-      public e(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
+         $$8.e(1.0F);
          return $$8;
       }
    }

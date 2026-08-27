@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fe extends fb<dbf> {
+public class fe extends fb<dbm> {
    private fe() {
-      super(dbf.e, dbf::values);
+      super(dbm.e, dbm::values);
    }
 
    public static fe a() {
       return new fe();
    }
 
-   public static dbf a(CommandContext<du> $$0, String $$1) {
-      return (dbf)$$0.getArgument($$1, dbf.class);
+   public static dbm a(CommandContext<du> $$0, String $$1) {
+      return (dbm)$$0.getArgument($$1, dbm.class);
    }
 }

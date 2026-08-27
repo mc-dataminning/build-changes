@@ -1,6 +1,8 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class cyl extends dbe {
+public class cyl extends dcq implements cvd {
    public static final MapCodec<cyl> a = b(cyl::new);
 
    @Override
@@ -8,13 +10,61 @@ public class cyl extends dbe {
       return a;
    }
 
-   public cyl(dgv.d $$0) {
+   public cyl(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, hx.a.b));
    }
 
    @Override
-   public void a(crs $$0, dgw $$1, ht $$2, bki $$3, float $$4) {
-      $$3.a($$4, 0.2F, $$0.ag().k());
+   public boolean b(csd $$0, ht $$1, dhi $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
+      ht $$4 = $$2.c();
+      dhi $$5 = cvc.bt.o();
+      Optional<ib.c<dwl>> $$6 = $$0.H_().d(jz.aA).b(qm.n);
+
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         ht $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
+         }
+
+         dhi $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cvd)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ib<dwl> $$12;
+            if ($$1.a(8) == 0) {
+               List<dpi<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dsm)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
+      }
    }
 }

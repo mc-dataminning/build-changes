@@ -5,13 +5,13 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class uv {
-   public static final Codec<uv> a = aub.a(uv.a::values).dispatch(uv::c, uv.a::a);
+   public static final Codec<uv> a = aug.a(uv.a::values).dispatch(uv::c, uv.a::a);
    public static final uv b = new uv(new BitSet(0), uv.a.b);
    public static final uv c = new uv(new BitSet(0), uv.a.a);
    public static final vo d = vo.a.a(n.i).a(new ux(ux.a.a, ur.c("chat.filtered")));
    static final Codec<uv> e = Codec.unit(c);
    static final Codec<uv> f = Codec.unit(b);
-   static final Codec<uv> g = asq.s.xmap(uv::new, uv::d);
+   static final Codec<uv> g = asu.s.xmap(uv::new, uv::d);
    private static final char h = '#';
    private final BitSet i;
    private final uv.a j;
@@ -134,7 +134,7 @@ public class uv {
       return 31 * $$0 + this.j.hashCode();
    }
 
-   static enum a implements aub {
+   static enum a implements aug {
       a("pass_through", () -> uv.e),
       b("fully_filtered", () -> uv.f),
       c("partially_filtered", () -> uv.g);

@@ -1,103 +1,61 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
 
-public class fkr {
-   private static final Logger a = LogUtils.getLogger();
-   private final esr b;
-   private final ggg c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
+public final class fkr {
    @Nullable
-   private fkr.a f;
-   @Nullable
-   private af g;
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fks d;
+   private final boolean e;
+   private final fky f;
+   private final fky g;
+   private final Set<hx> h;
 
-   public fkr(esr $$0, ggg $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   protected fkr(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fks $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<hx> $$13
+   ) {
+      this.a = $$0;
+      this.f = new fky($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fky($$11, $$12);
+      this.h = $$13;
    }
 
-   public void a(acc $$0) {
-      if ($$0.f()) {
-         this.d.a();
-         this.e.clear();
-      }
-
-      this.d.a($$0.d());
-      this.d.a($$0.a());
-
-      for (Entry<agg, ah> $$1 : $$0.e().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().g());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.f() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<aq> $$4 = $$2.a().d();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.ax().a(new ewr($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public void a(@Nullable af $$0, boolean $$1) {
-      fkx $$2 = this.b.I();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(ads.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
-   }
-
-   public void a(@Nullable fkr.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
-   }
-
-   @Nullable
-   public af a(agg $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   public fko.a a(int $$0, int $$1) {
+      return new fko.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

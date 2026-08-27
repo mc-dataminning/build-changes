@@ -1,7 +1,7 @@
 public class abu implements wk<yd> {
    public static final float a = 8.0F;
-   private final ib<aqm> b;
-   private final aqo c;
+   private final ib<aqq> b;
+   private final aqs c;
    private final int d;
    private final int e;
    private final int f;
@@ -9,7 +9,7 @@ public class abu implements wk<yd> {
    private final float h;
    private final long i;
 
-   public abu(ib<aqm> $$0, aqo $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public abu(ib<aqq> $$0, aqs $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = (int)($$2 * 8.0);
@@ -21,8 +21,8 @@ public class abu implements wk<yd> {
    }
 
    public abu(tu $$0) {
-      this.b = $$0.a(jy.c.t(), aqm::b);
-      this.c = $$0.b(aqo.class);
+      this.b = $$0.a(jy.c.t(), aqq::b);
+      this.c = $$0.b(aqs.class);
       this.d = $$0.readInt();
       this.e = $$0.readInt();
       this.f = $$0.readInt();
@@ -43,11 +43,11 @@ public class abu implements wk<yd> {
       $$0.b(this.i);
    }
 
-   public ib<aqm> a() {
+   public ib<aqq> a() {
       return this.b;
    }
 
-   public aqo d() {
+   public aqs d() {
       return this.c;
    }
 

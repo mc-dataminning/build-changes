@@ -1,59 +1,62 @@
-public class ado implements wk<acj> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private final float c;
-   private final float d;
-   private final boolean e;
-   private final boolean f;
+public class ado implements wk<acl> {
+   private final ht a;
+   private final hx b;
+   private final ado.a c;
+   private final int d;
 
-   public ado(float $$0, float $$1, boolean $$2, boolean $$3) {
+   public ado(ado.a $$0, ht $$1, hx $$2, int $$3) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
+   }
+
+   public ado(ado.a $$0, ht $$1, hx $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
    public ado(tu $$0) {
-      this.c = $$0.readFloat();
-      this.d = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) > 0;
-      this.f = ($$1 & 2) > 0;
+      this.c = $$0.b(ado.a.class);
+      this.a = $$0.e();
+      this.b = hx.a($$0.readUnsignedByte());
+      this.d = $$0.n();
    }
 
    @Override
    public void a(tu $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public ht a() {
+      return this.a;
+   }
+
+   public hx d() {
+      return this.b;
+   }
+
+   public ado.a e() {
       return this.c;
    }
 
-   public float d() {
+   public int f() {
       return this.d;
    }
 
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

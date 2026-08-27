@@ -1,23 +1,16 @@
-public class fwj extends fvj<bzz> {
-   private static final agg a = new agg("textures/entity/lead_knot.png");
-   private final fht<bzz> f;
+public class fwj extends fye<bky> {
+   private static final agi a = new agi("textures/entity/squid/glow_squid.png");
 
-   public fwj(fvk.a $$0) {
-      super($$0);
-      this.f = new fht<>($$0.a(fka.aq));
+   public fwj(fvx.a $$0, fjr<bky> $$1) {
+      super($$0, $$1);
    }
 
-   public void a(bzz $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      eno $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public agg a(bzz $$0) {
+   public agi a(bky $$0) {
       return a;
+   }
+
+   protected int a(bky $$0, ht $$1) {
+      int $$2 = (int)atm.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

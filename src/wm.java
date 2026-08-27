@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 public class wm {
    private static final Logger a = LogUtils.getLogger();
 
-   public static <T extends ua> void a(wk<T> $$0, T $$1, ama $$2) throws agr {
+   public static <T extends ua> void a(wk<T> $$0, T $$1, ame $$2) throws agt {
       a($$0, $$1, $$2.n());
    }
 
-   public static <T extends ua> void a(wk<T> $$0, T $$1, bhg<?> $$2) throws agr {
-      if (!$$2.bl()) {
+   public static <T extends ua> void a(wk<T> $$0, T $$1, bhn<?> $$2) throws agt {
+      if (!$$2.bq()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {
                try {
@@ -25,7 +25,7 @@ public class wm {
                a.debug("Ignoring packet due to disconnection: {}", $$0);
             }
          });
-         throw agr.a;
+         throw agt.a;
       }
    }
 }

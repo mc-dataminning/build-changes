@@ -1,4 +1,4 @@
-// 23w42a	2026-08-28T00:48:17.7202778	vanilla/Tags for minecraft:worldgen/biome
+// 23w43a	2026-08-28T00:50:38.3100865	vanilla/Tags for minecraft:worldgen/biome
 15343ca7e7931ca3b093f52c77b5d7fae920fed9 data\minecraft\tags\worldgen\biome\has_structure\nether_fossil.json
 ec7bbb0c9b5fc5378f8716f54862806404f04360 data\minecraft\tags\worldgen\biome\has_structure\ocean_monument.json
 068e9616fd14b1280352ffc9d66cc3846c00a5e4 data\minecraft\tags\worldgen\biome\is_ocean.json
@@ -6,8 +6,8 @@ ec7bbb0c9b5fc5378f8716f54862806404f04360 data\minecraft\tags\worldgen\biome\has_
 65aef629239b5fa923be6767bb43c837ebb35e8a data\minecraft\tags\worldgen\biome\required_ocean_monument_surrounding.json
 6525dda69924a36f16797ed873bffc083e1f4de5 data\minecraft\tags\worldgen\biome\has_closer_water_fog.json
 09eef8a5b31b2b922a1bf5e092e897bf6949121c data\minecraft\tags\worldgen\biome\is_end.json
-b020f6cdcd2d955793278b2f89a178a1d31e599a data\minecraft\tags\worldgen\biome\has_structure\stronghold.json
 45e2314b6fbf2e847bd70c163e678e0e756a1640 data\minecraft\tags\worldgen\biome\has_structure\ancient_city.json
+b020f6cdcd2d955793278b2f89a178a1d31e599a data\minecraft\tags\worldgen\biome\has_structure\stronghold.json
 92d2cbd84ddef8c77972b539dd8c7cffaa131aed data\minecraft\tags\worldgen\biome\reduce_water_ambient_spawns.json
 ff13fafcc6c847d2ce8a4262842bf1316dc580ea data\minecraft\tags\worldgen\biome\has_structure\buried_treasure.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_structure\desert_pyramid.json
@@ -50,8 +50,8 @@ c3d4e55bd4ed5d178abb10df76626eccdab7c209 data\minecraft\tags\worldgen\biome\has_
 de5384c32afb2e47687069231890d76a1c6681c4 data\minecraft\tags\worldgen\biome\stronghold_biased_to.json
 6525dda69924a36f16797ed873bffc083e1f4de5 data\minecraft\tags\worldgen\biome\allows_surface_slime_spawns.json
 3fa322f81d21600f5bd69c9cc2d314568a07b192 data\minecraft\tags\worldgen\biome\spawns_warm_variant_frogs.json
-f435c629c4e64303cb04329925903bda3d917ba9 data\minecraft\tags\worldgen\biome\is_hill.json
 47f02d647a88fb06b4299217e2a5e87c598bc56a data\minecraft\tags\worldgen\biome\is_forest.json
+f435c629c4e64303cb04329925903bda3d917ba9 data\minecraft\tags\worldgen\biome\is_hill.json
 eac36e45c24e9f2ff3c1f50ad2ea4fc921892916 data\minecraft\tags\worldgen\biome\has_structure\village_taiga.json
 d8269ffe956b3bf8819c11c41e405d3331434e8e data\minecraft\tags\worldgen\biome\has_structure\mineshaft.json
 f3ef2895c49e29111297e950661e5bc71a79989e data\minecraft\tags\worldgen\biome\has_structure\village_desert.json

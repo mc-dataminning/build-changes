@@ -1,31 +1,48 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bqh<E extends ccq> extends bmp<E> {
-   public bqh(int $$0) {
-      super(ImmutableMap.of(btz.o, bua.b, btz.m, bua.b), $$0);
+public class bqh extends bmx<cdh> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
+
+   public bqh() {
+      super(ImmutableMap.of(buh.c, bui.a, buh.n, bui.c));
    }
 
-   protected boolean a(ama $$0, E $$1, long $$2) {
-      return $$1.dH() == null;
-   }
-
-   protected boolean a(ama $$0, E $$1) {
-      return $$1.aA() || $$1.aX() || $$1.bl();
-   }
-
-   protected void b(ama $$0, E $$1, long $$2) {
-      if ($$1.aA()) {
-         $$1.b(blk.o);
-         $$1.a(aqn.zE, 5.0F, 1.0F);
+   protected boolean b(ame $$0, cdh $$1) {
+      if ($$0.W() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
       } else {
-         $$1.a(aqn.zz, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
+         this.e = $$0.W();
+         ia $$2 = $$1.dP().c(buh.c).get();
+         return $$2.a() == $$0.ad() && $$2.b().a($$1.dl(), 1.73);
       }
    }
 
-   protected void c(ama $$0, E $$1, long $$2) {
-      if ($$1.dH() == null) {
-         $$1.a(bki.c.b);
+   protected void a(ame $$0, cdh $$1, long $$2) {
+      bmg<cdh> $$3 = $$1.dP();
+      $$3.a(buh.I, $$2);
+      $$3.c(buh.c).ifPresent($$1x -> $$3.a(buh.n, new bna($$1x.b())));
+      $$1.gu();
+      this.a($$0, $$1);
+      if ($$1.gt()) {
+         $$1.gs();
+      }
+   }
+
+   protected void a(ame $$0, cdh $$1) {
+   }
+
+   protected boolean b(ame $$0, cdh $$1, long $$2) {
+      Optional<ia> $$3 = $$1.dP().c(buh.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ia $$4 = $$3.get();
+         return $$4.a() == $$0.ad() && $$4.b().a($$1.dl(), 1.73);
       }
    }
 }

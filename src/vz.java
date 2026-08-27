@@ -54,13 +54,13 @@ public class vz implements us {
 
    private String a(du $$0) throws CommandSyntaxException {
       if (this.f != null) {
-         List<? extends bki> $$1 = this.f.b($$0);
+         List<? extends bkq> $$1 = this.f.b($$0);
          if (!$$1.isEmpty()) {
             if ($$1.size() != 1) {
                throw eg.a.create();
             }
 
-            return $$1.get(0).cx();
+            return $$1.get(0).cy();
          }
       }
 
@@ -70,10 +70,10 @@ public class vz implements us {
    private String a(String $$0, du $$1) {
       MinecraftServer $$2 = $$1.m();
       if ($$2 != null) {
-         ekh $$3 = $$2.aF();
-         eke $$4 = $$3.b(this.g);
+         ekt $$3 = $$2.aH();
+         ekq $$4 = $$3.b(this.g);
          if ($$4 != null && $$3.b($$0, $$4)) {
-            ekg $$5 = $$3.c($$0, $$4);
+            eks $$5 = $$3.c($$0, $$4);
             return Integer.toString($$5.b());
          }
       }
@@ -82,12 +82,12 @@ public class vz implements us {
    }
 
    @Override
-   public vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+   public vf a(@Nullable du $$0, @Nullable bkq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return ur.i();
       } else {
          String $$3 = this.a($$0);
-         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
+         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cy() : $$3;
          return ur.b(this.a($$4, $$0));
       }
    }

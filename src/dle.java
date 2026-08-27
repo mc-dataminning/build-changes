@@ -1,71 +1,121 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class dle implements dlk {
-   public static final Codec<dle> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.a.fieldOf("source_entity").forGetter(dle::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
-            .apply($$0, ($$0x, $$1) -> new dle(Either.right(Either.left($$0x)), $$1))
-   );
-   private Either<bki, Either<UUID, Integer>> c;
-   final float d;
+public class dle<T extends dkz> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dlm> b;
+   private final Long2ObjectMap<dld<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dle(bki $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dle(Class<T> $$0, Long2ObjectFunction<dlm> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   dle(Either<bki, Either<UUID, Integer>> $$0, float $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public void a(ejp $$0, asb<dld<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = iu.a($$0.a - 2.0);
+      int $$4 = iu.a($$0.b - 4.0);
+      int $$5 = iu.a($$0.c - 2.0);
+      int $$6 = iu.a($$0.d + 2.0);
+      int $$7 = iu.a($$0.e + 0.0);
+      int $$8 = iu.a($$0.f + 2.0);
 
-   @Override
-   public Optional<eji> a(crs $$0) {
-      if (this.c.left().isEmpty()) {
-         this.b($$0);
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = iu.b($$9, 0, 0);
+         long $$11 = iu.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = iu.c($$13);
+            int $$15 = iu.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dld<T> $$16 = (dld<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
+            }
+         }
       }
-
-      return this.c.left().map($$0x -> $$0x.dj().b(0.0, (double)this.d, 0.0));
    }
 
-   private void b(crs $$0) {
-      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((bki)$$1.map($$1x -> $$0 instanceof ama $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.c = Either.left($$0x));
-   }
-
-   private UUID b() {
-      return (UUID)this.c.map(bki::cv, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   int c() {
-      return (Integer)this.c.map(bki::ah, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dll<?> a() {
-      return dll.b;
-   }
-
-   public static class a implements dll<dle> {
-      public dle a(tu $$0) {
-         return new dle(Either.right(Either.right($$0.n())), $$0.readFloat());
+   public LongStream a(long $$0) {
+      int $$1 = crh.a($$0);
+      int $$2 = crh.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
+   }
 
-      public void a(tu $$0, dle $$1) {
-         $$0.c($$1.c());
-         $$0.a($$1.d);
-      }
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = iu.b($$0, 0, $$1);
+      long $$3 = iu.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
+   }
 
-      @Override
-      public Codec<dle> a() {
-         return dle.a;
-      }
+   public Stream<dld<T>> b(long $$0) {
+      return this.a($$0).<dld<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return crh.c(iu.b($$0), iu.d($$0));
+   }
+
+   public dld<T> c(long $$0) {
+      return (dld<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dld<T> d(long $$0) {
+      return (dld<T>)this.c.get($$0);
+   }
+
+   private dld<T> g(long $$0) {
+      long $$1 = f($$0);
+      dlm $$2 = (dlm)this.b.get($$1);
+      this.d.add($$0);
+      return new dld<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(ejp $$0, asb<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dlg<T, U> $$0, ejp $$1, asb<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @aup
+   public int b() {
+      return this.d.size();
    }
 }

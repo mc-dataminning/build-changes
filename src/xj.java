@@ -1,7 +1,7 @@
 import java.util.List;
 
 public record xj(int b, ht c, List<xj.a> d) implements xd {
-   public static final agg a = new agg("debug/goal_selector");
+   public static final agi a = new agi("debug/goal_selector");
 
    public xj(tu $$0) {
       this($$0.readInt(), $$0.e(), $$0.a(xj.a::new));
@@ -15,7 +15,7 @@ public record xj(int b, ht c, List<xj.a> d) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 

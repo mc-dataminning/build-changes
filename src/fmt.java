@@ -1,40 +1,33 @@
-public class fmt extends fow {
-   fmt(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
-   }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(ht.a(this.g, this.h, this.i)).a(arh.a)) {
-         this.k();
-      }
-   }
+public interface fmt {
+   boolean a(fmu var1);
 
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
+   boolean a(fmv var1);
 
-   public static class a implements fny<jv> {
-      private final foq a;
+   static fmt a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fmt() {
+         @Override
+         public boolean a(fmu $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-      public a(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmt $$8 = new fmt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+         @Override
+         public boolean a(fmv $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

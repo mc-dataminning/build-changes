@@ -2,9 +2,9 @@ import javax.annotation.Nullable;
 
 public class aaq implements wk<yd> {
    @Nullable
-   private final agg a;
+   private final agi a;
 
-   public aaq(@Nullable agg $$0) {
+   public aaq(@Nullable agi $$0) {
       this.a = $$0;
    }
 
@@ -22,7 +22,7 @@ public class aaq implements wk<yd> {
    }
 
    @Nullable
-   public agg a() {
+   public agi a() {
       return this.a;
    }
 }

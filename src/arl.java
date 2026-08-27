@@ -1,10 +1,11 @@
-public class arl {
-   public static final arr<cab> a = a("placeable");
+public final class arl {
+   public static final arv<ecr> a = a("water");
+   public static final arv<ecr> b = a("lava");
 
    private arl() {
    }
 
-   private static arr<cab> a(String $$0) {
-      return arr.a(jz.Q, new agg($$0));
+   private static arv<ecr> a(String $$0) {
+      return arv.a(jz.x, new agi($$0));
    }
 }

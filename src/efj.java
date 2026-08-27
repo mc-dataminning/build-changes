@@ -3,58 +3,43 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class efj extends efg {
-   public static final Codec<efj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arr.a(jz.E).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, efj::new)
-   );
-   private final arr<ckw> j;
-   private final boolean k;
+public abstract class efj extends efq {
+   protected final List<efq> d;
+   private final efi a;
 
-   private efj(arr<ckw> $$0, boolean $$1, int $$2, int $$3, List<ehk> $$4, List<efy> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   protected efj(List<efq> $$0, List<ehw> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public eff a() {
-      return efc.f;
-   }
+   public void a(efg $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.a("Empty children list");
+      }
 
-   @Override
-   public void a(Consumer<clb> $$0, eel $$1) {
-      jy.i.c(this.j).forEach($$1x -> $$0.accept(new clb($$1x)));
-   }
-
-   private boolean a(eel $$0, Consumer<efd> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ib<ckw> $$2 : jy.i.c(this.j)) {
-            $$1.accept(new efg.c() {
-               @Override
-               public void a(Consumer<clb> $$0, eel $$1) {
-                  $$0.accept(new clb($$2));
-               }
-            });
-         }
-
-         return true;
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.b(".entry[" + $$1 + "]"));
       }
    }
 
+   protected abstract efi a(List<? extends efi> var1);
+
    @Override
-   public boolean expand(eel $$0, Consumer<efd> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public final boolean expand(eex $$0, Consumer<efp> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static efg.a<?> a(arr<ckw> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efj($$0, false, $$1, $$2, $$3, $$4));
+   public static <T extends efj> Codec<T> a(efj.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(asu.a(efo.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static efg.a<?> b(arr<ckw> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efj($$0, true, $$1, $$2, $$3, $$4));
+   @FunctionalInterface
+   public interface a<T extends efj> {
+      T create(List<efq> var1, List<ehw> var2);
    }
 }

@@ -25,7 +25,7 @@ public class sm {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new asr(new GZIPInputStream($$0)));
+      return new DataInputStream(new asv(new GZIPInputStream($$0)));
    }
 
    public static rz a(InputStream $$0, si $$1) throws IOException {

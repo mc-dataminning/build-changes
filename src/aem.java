@@ -1,16 +1,8 @@
-public interface aem extends tp {
+public interface aem extends acm {
    @Override
    default tt b() {
-      return tt.d;
+      return tt.a;
    }
 
-   void a(aep var1);
-
-   void a(aeo var1);
-
-   void a(aer var1);
-
-   void a(aeq var1);
-
-   void a(aen var1);
+   void a(ael var1);
 }

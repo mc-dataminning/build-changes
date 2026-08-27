@@ -1,61 +1,96 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class deb extends cut {
-   public static final MapCodec<deb> a = b(deb::new);
+public interface deb extends cwb<deb.a> {
+   Supplier<BiMap<cva, cva>> u_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(cvc.qZ, cvc.qY)
+            .put(cvc.qY, cvc.qX)
+            .put(cvc.qX, cvc.qW)
+            .put(cvc.rf, cvc.re)
+            .put(cvc.re, cvc.rd)
+            .put(cvc.rd, cvc.rc)
+            .put(cvc.rj, cvc.ri)
+            .put(cvc.ri, cvc.rh)
+            .put(cvc.rh, cvc.rg)
+            .put(cvc.rv, cvc.ru)
+            .put(cvc.ru, cvc.rt)
+            .put(cvc.rt, cvc.rs)
+            .put(cvc.rr, cvc.rq)
+            .put(cvc.rq, cvc.rp)
+            .put(cvc.rp, cvc.ro)
+            .put(cvc.rM, cvc.rN)
+            .put(cvc.rN, cvc.rP)
+            .put(cvc.rP, cvc.rO)
+            .put(cvc.rU, cvc.rV)
+            .put(cvc.rV, cvc.rX)
+            .put(cvc.rX, cvc.rW)
+            .put(cvc.sc, cvc.sd)
+            .put(cvc.sd, cvc.se)
+            .put(cvc.se, cvc.sf)
+            .put(cvc.sk, cvc.sl)
+            .put(cvc.sl, cvc.sm)
+            .put(cvc.sm, cvc.sn)
+            .build()
+   );
+   Supplier<BiMap<cva, cva>> v_ = Suppliers.memoize(() -> u_.get().inverse());
 
-   @Override
-   public MapCodec<deb> a() {
-      return a;
+   static Optional<cva> a(cva $$0) {
+      return Optional.ofNullable((cva)v_.get().get($$0));
    }
 
-   protected deb(dgv.d $$0) {
-      super($$0);
-   }
+   static cva b(cva $$0) {
+      cva $$1 = $$0;
 
-   @Override
-   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, cuv.aO.o(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, aqn.hR, aqo.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
+      for (cva $$2 = (cva)v_.get().get($$0); $$2 != null; $$2 = (cva)v_.get().get($$2)) {
+         $$1 = $$2;
       }
+
+      return $$1;
+   }
+
+   static Optional<dhi> b(dhi $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<cva> c(cva $$0) {
+      return Optional.ofNullable((cva)u_.get().get($$0));
+   }
+
+   static dhi c(dhi $$0) {
+      return b($$0.b()).l($$0);
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
-      hx $$4 = hx.b($$3);
-      if ($$4 != hx.b) {
-         ht $$5 = $$2.a($$4);
-         dgw $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == hx.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == hx.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == hx.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == hx.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   default Optional<dhi> i_(dhi $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
+   }
 
-            $$1.a(js.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
+   @Override
+   default float av_() {
+      return this.c() == deb.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements aug {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<deb.a> e = aug.a(deb.a::values);
+      private final String f;
+
+      private a(String $$0) {
+         this.f = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

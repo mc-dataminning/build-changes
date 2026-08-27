@@ -1,52 +1,44 @@
-public class ges {
-   public static class a extends gdy {
-      private final fpj n;
+public class ges extends gel {
+   public static final int n = 20;
+   private final fpw o;
+   private int p;
 
-      protected a(fpj $$0, aqm $$1) {
-         super($$1, aqo.i, gep.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dG() || !this.n.bc()) {
-            this.n();
-         }
-      }
+   public ges(fpw $$0) {
+      super(aqr.hj, aqs.h, gfc.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
-   public static class b extends gdy {
-      public static final int n = 40;
-      private final fpj o;
-      private int p;
-
-      public b(fpj $$0) {
-         super(aqn.z, aqo.i, gep.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dG() && this.p >= 0) {
-            if (this.o.bc()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+   @Override
+   public void q() {
+      this.p++;
+      if (!this.o.dI() && (this.p <= 20 || this.o.fx())) {
+         this.f = (double)((float)this.o.ds());
+         this.g = (double)((float)this.o.du());
+         this.h = (double)((float)this.o.dy());
+         float $$0 = (float)this.o.dq().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = atm.a($$0 / 4.0F, 0.0F, 1.0F);
          } else {
-            this.n();
+            this.d = 0.0F;
          }
+
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
       }
    }
 }

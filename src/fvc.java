@@ -1,23 +1,15 @@
-public class fvc extends fui<cao, fgy<cao>> {
-   private static final agg a = new agg("textures/entity/zombie/drowned.png");
+public class fvc extends fxd<cas, fgw<cas>> {
+   private static final agi a = new agi("textures/entity/blaze.png");
 
-   public fvc(fvk.a $$0) {
-      super($$0, new fgy<>($$0.a(fka.L)), new fgy<>($$0.a(fka.M)), new fgy<>($$0.a(fka.N)));
-      this.a(new fza<>(this, $$0.f()));
+   public fvc(fvx.a $$0) {
+      super($$0, new fgw<>($$0.a(fkn.l)), 0.5F);
    }
 
-   @Override
-   public agg a(cbt $$0) {
+   protected int a(cas $$0, ht $$1) {
+      return 15;
+   }
+
+   public agi a(cas $$0) {
       return a;
-   }
-
-   protected void a(cao $$0, enk $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.a($$4);
-      if ($$5 > 0.0F) {
-         float $$6 = -10.0F - $$0.dD();
-         float $$7 = ati.i($$5, 0.0F, $$6);
-         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
-      }
    }
 }

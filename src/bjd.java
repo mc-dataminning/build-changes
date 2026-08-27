@@ -1,142 +1,171 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class bjd {
-   public static final int a = 100;
-   public static final int b = 300;
-   private static final vo c = vo.a.a(new up(up.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new ux(ux.a.a, ur.b("MCPE-28723")));
-   private final List<bjb> d = Lists.newArrayList();
-   private final bky e;
-   private int f;
-   private int g;
-   private int h;
-   private boolean i;
-   private boolean j;
+public class bjd extends edx {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<agi, bjc> f = new Object2ObjectOpenHashMap();
 
-   public bjd(bky $$0) {
-      this.e = $$0;
+   public static edx.a<bjd> a(long $$0) {
+      return new edx.a<>(() -> new bjd($$0), $$1 -> a($$0, $$1), aus.m);
    }
 
-   public void a(bjg $$0, float $$1) {
-      this.c();
-      bjl $$2 = bjl.a(this.e);
-      bjb $$3 = new bjb($$0, $$1, $$2, this.e.ab);
-      this.d.add($$3);
-      this.f = this.e.ah;
-      this.j = true;
-      if (!this.i && this.e.bv() && a($$0)) {
-         this.i = true;
-         this.g = this.e.ah;
-         this.h = this.g;
-         this.e.f_();
+   public bjd(long $$0) {
+      this.b = $$0;
+   }
+
+   public ats a(agi $$0) {
+      ats $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bjd.a($$1);
+   }
+
+   private bjc c(agi $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
+
+   private bjc b(agi $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bjc($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
+
+   public void a(BiConsumer<agi, bjc> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public rz a(rz $$0) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      rz $$1 = new rz();
+      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (sw)bjc.a.encodeStart(sn.a, $$2).result().orElseThrow()));
+      $$0.a("sequences", $$1);
+      return $$0;
+   }
+
+   private static boolean a(rz $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bjd a(long $$0, rz $$1) {
+      bjd $$2 = new bjd($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      rz $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bjc $$6 = (bjc)((Pair)bjc.a.decode(sn.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(new agi($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
       }
+
+      return $$2;
    }
 
-   private static boolean a(bjg $$0) {
-      return $$0.d() instanceof bky;
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
    }
 
-   private ur a(bki $$0, ur $$1, String $$2, String $$3) {
-      clb $$5 = $$0 instanceof bky $$4 ? $$4.eS() : clb.b;
-      return !$$5.b() && $$5.A() ? ur.a($$2, this.e.O_(), $$1, $$5.J()) : ur.a($$3, this.e.O_(), $$1);
+   public void b(agi $$0) {
+      this.f.put($$0, this.c($$0));
    }
 
-   private ur a(bjb $$0, @Nullable bki $$1) {
-      bjg $$2 = $$0.a();
-      if (!$$2.a(are.m) && !$$2.a(are.s)) {
-         ur $$4 = a($$1);
-         bki $$5 = $$2.d();
-         ur $$6 = a($$5);
-         if ($$6 != null && !$$6.equals($$4)) {
-            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+   public void a(agi $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
+   }
+
+   class a implements ats {
+      private final ats c;
+
+      a(ats $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public ats d() {
+         bjd.this.c();
+         return this.c.d();
+      }
+
+      @Override
+      public dne e() {
+         bjd.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bjd.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bjd.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bjd.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bjd.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bjd.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bjd.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bjd.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bjd.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            return (ur)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : ur.a("death.fell.killer", this.e.O_()));
+            return $$0 instanceof bjd.a $$1 ? this.c.equals($$1.c) : false;
          }
-      } else {
-         bjl $$3 = Objects.requireNonNullElse($$0.c(), bjl.a);
-         return ur.a($$3.a(), this.e.O_());
-      }
-   }
-
-   @Nullable
-   private static ur a(@Nullable bki $$0) {
-      return $$0 == null ? null : $$0.O_();
-   }
-
-   public ur a() {
-      if (this.d.isEmpty()) {
-         return ur.a("death.attack.generic", this.e.O_());
-      } else {
-         bjb $$0 = this.d.get(this.d.size() - 1);
-         bjg $$1 = $$0.a();
-         bjb $$2 = this.d();
-         bjk $$3 = $$1.j().e();
-         if ($$3 == bjk.b && $$2 != null) {
-            return this.a($$2, $$1.d());
-         } else if ($$3 == bjk.c) {
-            String $$4 = "death.attack." + $$1.e();
-            ur $$5 = uu.a((ur)ur.c($$4 + ".link")).c(c);
-            return ur.a($$4 + ".message", this.e.O_(), $$5);
-         } else {
-            return $$1.a(this.e);
-         }
-      }
-   }
-
-   @Nullable
-   private bjb d() {
-      bjb $$0 = null;
-      bjb $$1 = null;
-      float $$2 = 0.0F;
-      float $$3 = 0.0F;
-
-      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
-         bjb $$5 = this.d.get($$4);
-         bjb $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
-         bjg $$7 = $$5.a();
-         boolean $$8 = $$7.a(are.s);
-         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
-         if (($$7.a(are.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
-            if ($$4 > 0) {
-               $$0 = $$6;
-            } else {
-               $$0 = $$5;
-            }
-
-            $$3 = $$9;
-         }
-
-         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
-            $$1 = $$5;
-            $$2 = $$5.b();
-         }
-      }
-
-      if ($$3 > 5.0F && $$0 != null) {
-         return $$0;
-      } else {
-         return $$2 > 5.0F && $$1 != null ? $$1 : null;
-      }
-   }
-
-   public int b() {
-      return this.i ? this.e.ah - this.g : this.h - this.g;
-   }
-
-   public void c() {
-      int $$0 = this.i ? 300 : 100;
-      if (this.j && (!this.e.bv() || this.e.ah - this.f > $$0)) {
-         boolean $$1 = this.i;
-         this.j = false;
-         this.i = false;
-         this.h = this.e.ah;
-         if ($$1) {
-            this.e.g_();
-         }
-
-         this.d.clear();
       }
    }
 }

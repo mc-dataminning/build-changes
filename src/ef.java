@@ -47,7 +47,7 @@ public class ef implements ArgumentType<ef.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new eji($$0.c, $$0.d + (double)$$1.cH(), $$0.e));
+      b("eyes", ($$0, $$1) -> new eju($$0.c, $$0.d + (double)$$1.cI(), $$0.e));
 
       static final Map<String, ef.a> c = ac.a(Maps.newHashMap(), $$0 -> {
          for (ef.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class ef implements ArgumentType<ef.a> {
          }
       });
       private final String d;
-      private final BiFunction<eji, bki, eji> e;
+      private final BiFunction<eju, bkq, eju> e;
 
-      private a(String $$0, BiFunction<eji, bki, eji> $$1) {
+      private a(String $$0, BiFunction<eju, bkq, eju> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class ef implements ArgumentType<ef.a> {
          return c.get($$0);
       }
 
-      public eji a(bki $$0) {
-         return this.e.apply($$0.dj(), $$0);
+      public eju a(bkq $$0) {
+         return this.e.apply($$0.dl(), $$0);
       }
 
-      public eji a(du $$0) {
-         bki $$1 = $$0.g();
+      public eju a(du $$0) {
+         bkq $$1 = $$0.g();
          return $$1 == null ? $$0.e() : this.e.apply($$0.e(), $$1);
       }
    }

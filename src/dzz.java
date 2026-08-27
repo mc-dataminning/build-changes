@@ -1,41 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class dzz extends eas {
-   public static final Codec<dzz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iq.a(jz.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dzz::new)
-   );
-   private final Optional<ig<cut>> b;
-   private final float c;
+public class dzz extends dxh {
+   public static final Codec<dzz> d = a(dzz::new);
 
-   public dzz(ig<cut> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public dzz(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private dzz(Optional<ig<cut>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
-      ato $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public dzz(dxh.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected eau<?> a() {
-      return eau.f;
+   public Optional<dxh.b> a(dxh.a $$0) {
+      return Optional.of(new dxh.b($$0.h().l(), (Consumer<dxz>)($$1 -> a($$1, $$0))));
+   }
+
+   private static void a(dxz $$0, dxh.a $$1) {
+      int $$2 = 0;
+
+      dzy.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         dzy.a();
+         $$3 = new dzy.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<dxl> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            dxl $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
+         }
+
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
+   }
+
+   @Override
+   public dxq<?> e() {
+      return dxq.n;
    }
 }

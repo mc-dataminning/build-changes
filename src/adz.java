@@ -1,64 +1,44 @@
-public class adz implements wk<acj> {
-   private final ht a;
-   private final agg b;
-   private final agg c;
-   private final agg d;
-   private final String e;
-   private final dfr.a f;
+import javax.annotation.Nullable;
 
-   public adz(ht $$0, agg $$1, agg $$2, agg $$3, String $$4, dfr.a $$5) {
+public class adz implements wk<acl> {
+   private final int a;
+   private final String b;
+   private final boolean c;
+
+   public adz(int $$0, String $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
    }
 
    public adz(tu $$0) {
-      this.a = $$0.e();
-      this.b = $$0.t();
-      this.c = $$0.t();
-      this.d = $$0.t();
-      this.e = $$0.s();
-      this.f = dfr.a.a($$0.s()).orElse(dfr.a.b);
+      this.a = $$0.n();
+      this.b = $$0.s();
+      this.c = $$0.readBoolean();
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.a(this.a);
+      $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f.c());
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.a;
+   @Nullable
+   public crb a(csa $$0) {
+      bkq $$1 = $$0.a(this.a);
+      return $$1 instanceof cft ? ((cft)$$1).C() : null;
    }
 
-   public agg d() {
+   public String a() {
       return this.b;
    }
 
-   public agg e() {
+   public boolean d() {
       return this.c;
-   }
-
-   public agg f() {
-      return this.d;
-   }
-
-   public String g() {
-      return this.e;
-   }
-
-   public dfr.a h() {
-      return this.f;
    }
 }

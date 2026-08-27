@@ -1,47 +1,63 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
-public final class avw {
-   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
-      .put("minecraft:badlands_plateau", "minecraft:badlands")
-      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
-      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
-      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
-      .put("minecraft:desert_hills", "minecraft:desert")
-      .put("minecraft:desert_lakes", "minecraft:desert")
-      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:jungle_hills", "minecraft:jungle")
-      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
-      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:modified_jungle", "minecraft:jungle")
-      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
-      .put("minecraft:mountains", "minecraft:windswept_hills")
-      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
-      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
-      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
-      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
-      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
-      .put("minecraft:stone_shore", "minecraft:stony_shore")
-      .put("minecraft:swamp_hills", "minecraft:swamp")
-      .put("minecraft:taiga_hills", "minecraft:taiga")
-      .put("minecraft:taiga_mountains", "minecraft:taiga")
-      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
-      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
-      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:wooded_hills", "minecraft:forest")
-      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
-      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
-      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
-      .build();
+public abstract class avw extends avv {
+   private final String a;
 
-   private avw() {
+   public avw(Schema $$0, String $$1) {
+      super($$0, $$1);
+      this.a = $$1;
+   }
+
+   @Override
+   public TypeRewriteRule makeRule() {
+      TypeReference $$0 = bat.s;
+      String $$1 = "minecraft:jigsaw";
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:jigsaw", this.getInputSchema().getChoiceType($$0, "minecraft:jigsaw"));
+      TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+         this.a + " for jigsaw state",
+         this.getInputSchema().getType($$0),
+         this.getOutputSchema().getType($$0),
+         $$2x -> $$2x.updateTyped(
+               $$2,
+               this.getOutputSchema().getChoiceType($$0, "minecraft:jigsaw"),
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update("final_state", $$1xx -> (Dynamic)DataFixUtils.orElse($$1xx.asString().result().map($$0xxxxx -> {
+                              int $$1xxx = $$0xxxxx.indexOf(91);
+                              int $$2xx = $$0xxxxx.indexOf(123);
+                              int $$3x = $$0xxxxx.length();
+                              if ($$1xxx > 0) {
+                                 $$3x = Math.min($$3x, $$1xxx);
+                              }
+
+                              if ($$2xx > 0) {
+                                 $$3x = Math.min($$3x, $$2xx);
+                              }
+
+                              String $$4 = $$0xxxxx.substring(0, $$3x);
+                              String $$5 = this.a($$4);
+                              return $$5 + $$0xxxxx.substring($$3x);
+                           }).map($$0xxx::createString), $$1xx))
+                  )
+            )
+      );
+      return TypeRewriteRule.seq(super.makeRule(), $$3);
+   }
+
+   public static DataFix b(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new avw($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

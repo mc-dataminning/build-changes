@@ -1,73 +1,75 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
+public class eqo extends ghr {
+   private static final ur a = ur.c("mco.selectServer.create");
+   private static final ur b = ur.c("mco.configure.world.name");
+   private static final ur c = ur.c("mco.configure.world.description");
+   private static final int v = 10;
+   private static final int w = 210;
+   private final eoh x;
+   private final eyj y = new eyj(this);
+   private evi z;
+   private evi A;
+   private final Runnable B;
 
-public class eqo extends ghe {
-   private static final ur b = ur.c("mco.reset.world.seed");
-   public static final ur a = ur.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int v = 210;
-   private final exw w = new exw(this);
-   private final Consumer<erk> x;
-   private euv y;
-   private ere z = ere.a;
-   private boolean A = true;
-   private final Set<String> B = new HashSet<>();
-   private final ur C;
-
-   public eqo(Consumer<erk> $$0, ur $$1) {
+   public eqo(eoh $$0, epd $$1) {
       super(a);
       this.x = $$0;
-      this.C = $$1;
+      this.B = () -> this.a($$1);
+   }
+
+   public eqo(eoh $$0, long $$1) {
+      super(a);
+      this.x = $$0;
+      this.B = () -> this.a($$1);
    }
 
    @Override
-   public void aO_() {
-      this.y = new euv(this.i, 210, 20, ur.c("mco.reset.world.seed"));
-      this.y.l(32);
-      this.c(this.y);
-      this.w.a(new evt(this.e, this.i));
-      eya $$0 = this.w.c(eya.d()).a(10);
-      $$0.a(exs.a(this.i, this.y, b));
-      $$0.a(eut.a(ere::a).a(ere.values()).a(this.z).a(0, 0, 210, 20, ur.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
-      $$0.a(eut.b(this.A).a(0, 0, 210, 20, ur.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
-      this.a($$0);
-      eya $$1 = this.w.b(eya.e().a(10));
-      $$1.a(eum.a(this.C, $$0x -> this.x.accept(this.C())).a());
-      $$1.a(eum.a(uq.k, $$0x -> this.aE_()).a());
-      this.w.a($$1x -> {
-         euk var10000 = this.d($$1x);
+   public void aP_() {
+      this.y.a(new ewg(this.e, this.i));
+      eyn $$0 = this.y.c(eyn.d()).a(10);
+      euz $$1 = euz.a(uq.j, $$0x -> this.B.run()).a();
+      $$1.i = false;
+      this.z = new evi(this.i, 210, 20, b);
+      this.z.b($$1x -> $$1.i = !ac.b($$1x));
+      this.A = new evi(this.i, 210, 20, c);
+      $$0.a(eyf.a(this.i, this.z, b));
+      $$0.a(eyf.a(this.i, this.A, c));
+      eyn $$2 = this.y.b(eyn.e().a(10));
+      $$2.a($$1);
+      $$2.a(euz.a(uq.k, $$0x -> this.aF_()).a());
+      this.y.a($$1x -> {
+         eux var10000 = this.d($$1x);
       });
       this.c();
-   }
-
-   private void a(eya $$0) {
-      aoo $$1 = aor.c();
-      $$1.a();
-      $$0.a(eum.a(ur.c("selectWorld.experiments"), $$1x -> this.f.a(new ffa(this, $$1, $$0xx -> {
-            this.B.clear();
-
-            for (aol $$1xx : $$0xx.f()) {
-               if ($$1xx.j() == aop.d) {
-                  this.B.add($$1xx.f());
-               }
-            }
-
-            this.f.a(this);
-         }))).a(210).a());
-   }
-
-   private erk C() {
-      return new erk(this.y.a(), this.z, this.A, this.B);
+      this.c(this.z);
    }
 
    @Override
    protected void c() {
-      this.w.a();
+      this.y.a();
+   }
+
+   private void a(epd $$0) {
+      esl $$1 = new esl($$0.a, this.z.a(), this.A.a());
+      erb $$2 = erb.a(this, $$0, $$1, () -> this.f.execute(() -> {
+            eoh.f();
+            this.f.a(this.x);
+         }));
+      this.f.a($$2);
+   }
+
+   private void a(long $$0) {
+      fau $$1 = new era($$1x -> {
+         if ($$1x == null) {
+            this.f.a(this);
+         } else {
+            this.f.a(new eqt(this, new esa(this.x, $$0, $$1x, this.z.a(), this.A.a())));
+         }
+      }, a);
+      this.f.a($$1);
    }
 
    @Override
-   public void aE_() {
-      this.x.accept(null);
+   public void aF_() {
+      this.f.a(this.x);
    }
 }

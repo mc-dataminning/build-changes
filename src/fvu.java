@@ -1,19 +1,15 @@
-public class fvu extends fwq<cau, fhg<cau>> {
-   private static final agg a = new agg("textures/entity/ghast/ghast.png");
-   private static final agg i = new agg("textures/entity/ghast/ghast_shooting.png");
+public class fvu extends fxd<caz, fho<caz>> {
+   private static final agi a = new agi("textures/entity/endermite.png");
 
-   public fvu(fvk.a $$0) {
-      super($$0, new fhg<>($$0.a(fka.aa)), 1.5F);
+   public fvu(fvx.a $$0) {
+      super($$0, new fho<>($$0.a(fkn.S)), 0.3F);
    }
 
-   public agg a(cau $$0) {
-      return $$0.s() ? i : a;
+   protected float a(caz $$0) {
+      return 180.0F;
    }
 
-   protected void a(cau $$0, enk $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public agi b(caz $$0) {
+      return a;
    }
 }

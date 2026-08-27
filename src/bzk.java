@@ -1,30 +1,20 @@
-public class bzk extends bzc {
-   private static final int b = 40;
-   private int c;
-
-   public bzk(byz $$0) {
+public abstract class bzk extends bzj {
+   public bzk(bzh $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dL().a(this.a.dq(), this.a.ds(), this.a.dw(), aqn.hb, this.a.da(), 2.5F, 0.8F + this.a.ef().i() * 0.3F, false);
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gb().a(bzp.f);
+   public float a(bjo $$0, float $$1) {
+      if ($$0.c() instanceof cea) {
+         $$0.c().g(1);
+         return 0.0F;
+      } else {
+         return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public bzp<bzk> i() {
-      return bzp.h;
    }
 }

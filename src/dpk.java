@@ -1,80 +1,52 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
 
-public class dpk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<ama, dpk.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<ama, dpk.b>() {
-         public dpk.b a(ama $$0) {
-            return new dpk.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public abstract class dpk extends dpv<dsg> {
+   public dpk(Codec<dsg> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dpx<dsg> $$0) {
+      ats $$1 = $$0.d();
+      csu $$2 = $$0.b();
+      ht $$3 = $$0.e();
+      Optional<cva> $$4 = jy.f.b(arg.ap).flatMap($$1x -> $$1x.a($$1)).map(ib::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
+
+   protected abstract boolean a(csb var1, ats var2, ht var3, dhi var4);
+
+   protected boolean b(csb $$0, ats $$1, ht $$2, dhi $$3) {
+      ht $$4 = $$2.c();
+      dhi $$5 = $$0.a_($$2);
+      if (($$5.a(cvc.G) || $$5.a(arg.as)) && $$0.a_($$4).a(cvc.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            jy.f.b(arg.as).flatMap($$1x -> $$1x.a($$1)).map(ib::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, cvc.mV.o().a(dbw.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      });
 
-   public static void a(ama $$0) {
-      try {
-         ((dpk.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
-   }
+         for (hx $$6 : hx.c.a) {
+            if ($$1.i() < 0.2F) {
+               ht $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(cvc.G)) {
+                  jy.f.b(arg.aq).flatMap($$1x -> $$1x.a($$1)).map(ib::a).ifPresent($$3x -> {
+                     dhi $$4x = $$3x.o();
+                     if ($$4x.b(cul.c)) {
+                        $$4x = $$4x.a(cul.c, $$6);
+                     }
 
-   public static void a(ama $$0, dow<?, ?> $$1, Optional<dvz> $$2) {
-      try {
-         ((dpk.b)b.get($$0)).a().computeInt(new dpk.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
-
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ac().a().toString();
-               boolean $$3 = $$0.n().v();
-               io<dvz> $$4 = $$0.H_().d(jz.aA);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<agg>map(agf::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
             }
-         );
-   }
+         }
 
-   static record a(dow<?, ?> a, Optional<dvz> b) {
-   }
-
-   static record b(Object2IntMap<dpk.a> a, MutableInt b) {
+         return true;
+      } else {
+         return false;
+      }
    }
 }

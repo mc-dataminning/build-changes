@@ -1,4 +1,4 @@
-// 23w42a	2026-08-28T00:48:17.7043852	vanilla/Tags for minecraft:item
+// 23w43a	2026-08-28T00:50:38.2978519	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\items\logs_that_burn.json
@@ -23,8 +23,8 @@ a99c319e7583b7c567fddf608bde6dff744103b2 data\minecraft\tags\items\walls.json
 1ae902776b0942fb7f6424ba52eb2150950f973c data\minecraft\tags\items\acacia_logs.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\items\stone_bricks.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\items\fences.json
-bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
 30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
+bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
 4b024c07991b0127a93c4927165b70cbc739df3f data\minecraft\tags\items\stairs.json
 002a1f0e0b109cd883572ac23180e47312fdd8bb data\minecraft\tags\items\tall_flowers.json
 002646611f726ba21cc4b5060d0258c405ae2291 data\minecraft\tags\items\lectern_books.json
@@ -59,8 +59,8 @@ d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\items\small_flowers
 b197c522c5d1bf863432ab04a9c9b18fa9e8ced7 data\minecraft\tags\items\axolotl_tempt_items.json
 4b5f3ef91668afe7be45b3949ecab5d666d7977f data\minecraft\tags\items\completes_find_tree_tutorial.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\items\wooden_fences.json
-b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 88dcd99364a64f164a26461c5d5b9da0cb960b10 data\minecraft\tags\items\trapdoors.json
+b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data\minecraft\tags\items\spruce_logs.json
 29bd5ab148d15d405e857a8e2cb900ae069b0655 data\minecraft\tags\items\axes.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\items\signs.json

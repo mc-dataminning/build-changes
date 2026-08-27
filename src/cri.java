@@ -1,19 +1,25 @@
-import java.util.Optional;
+import java.util.function.Predicate;
 
-public class cri extends crl {
-   private final bki a;
+public class cri {
+   private final eju a;
+   private final eju b;
+   private final Predicate<dhi> c;
 
-   public cri(bki $$0) {
+   public cri(eju $$0, eju $$1, Predicate<dhi> $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Optional<Float> a(crk $$0, cqy $$1, ht $$2, dgw $$3, ecg $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public eju a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(crk $$0, cqy $$1, ht $$2, dgw $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public eju b() {
+      return this.a;
+   }
+
+   public Predicate<dhi> c() {
+      return this.c;
    }
 }

@@ -1,11 +1,11 @@
-public class cqi extends cpm {
-   public cqi(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.i, $$1);
+public class cqi extends cpu {
+   public cqi(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
@@ -16,10 +16,5 @@ public class cqi extends cpm {
    @Override
    public int a() {
       return 3;
-   }
-
-   @Override
-   public boolean a(cpm $$0) {
-      return super.a($$0) && $$0 != cpq.E && $$0 != cpq.H;
    }
 }

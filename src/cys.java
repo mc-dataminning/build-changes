@@ -1,31 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cys extends cyr {
-   public static final MapCodec<cys> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jy.f.q().fieldOf("host").forGetter(cyr::b), t()).apply($$0, cys::new));
+public class cys extends dbl {
+   public static final MapCodec<cys> a = b(cys::new);
 
    @Override
    public MapCodec<cys> a() {
-      return b;
+      return a;
    }
 
-   public cys(cut $$0, dgv.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(dbe.i, hx.a.b));
-   }
-
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      return dbe.b($$0, $$1);
+   public cys(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(i, hx.a.b));
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(dbe.i);
-   }
-
-   @Override
-   public dgw a(cnj $$0) {
-      return this.o().a(dbe.i, $$0.k().o());
+   public void a(csa $$0, dhi $$1, ht $$2, bkq $$3, float $$4) {
+      $$3.a($$4, 0.2F, $$0.ah().k());
    }
 }

@@ -1,76 +1,167 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class eqv extends ghe {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ur b = ur.c("mco.terms.title");
-   private static final ur c = ur.c("mco.terms.sentence.1");
-   private static final ur v = uq.a().b(ur.c("mco.terms.sentence.2").c(vo.a.c(true)));
-   private final fah w;
-   private final eor x;
-   private boolean y;
+public class eqv extends ghr {
+   private static final agi a = new agi("icon/unseen_notification");
+   private static final agi b = new agi("icon/news");
+   private static final agi c = new agi("icon/invite");
+   private static final agi v = new agi("icon/trial_available");
+   private final CompletableFuture<Boolean> w = eog.a().thenApply($$0 -> $$0.a() == eog.b.a);
+   @Nullable
+   private erl.c x;
+   @Nullable
+   private eqv.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final eqv.a D = new eqv.a() {
+      @Override
+      public erl.c a(eqc $$0) {
+         erl.c $$1 = $$0.a.a();
+         eqv.this.a($$0, $$1);
+         eqv.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public eqv(fah $$0, eor $$1) {
-      super(b);
-      this.w = $$0;
-      this.x = $$1;
-   }
-
-   @Override
-   public void aO_() {
-      int $$0 = this.g / 4 - 2;
-      this.d(eum.a(ur.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.g / 4, h(12), $$0, 20).a());
-      this.d(eum.a(ur.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.w)).a(this.g / 2 + 4, h(12), $$0, 20).a());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.w);
+      @Override
+      public boolean a() {
          return true;
+      }
+   };
+   private final eqv.a E = new eqv.a() {
+      @Override
+      public erl.c a(eqc $$0) {
+         erl.c $$1 = $$0.a.a();
+         eqv.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public eqv() {
+      super(esv.a);
+   }
+
+   @Override
+   public void aP_() {
+      if (this.x != null) {
+         this.x.a();
+      }
+   }
+
+   @Override
+   public void aH_() {
+      super.aH_();
+      this.f.aX().b.a();
+   }
+
+   @Nullable
+   private eqv.a C() {
+      boolean $$0 = this.E() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void C() {
-      eoa $$0 = eoa.a();
-
-      try {
-         $$0.j();
-         this.f.a(new eqh(this.w, new erq(this.w, this.x)));
-      } catch (epn var3) {
-         a.error("Couldn't agree to TOS", var3);
+         return this.D() ? this.D : this.E;
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y) {
-         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.i().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void d() {
+      eqv.a $$0 = this.C();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.aX());
+         } else {
+            this.x = null;
+         }
+      }
+
+      if (this.x != null) {
+         this.x.b();
       }
    }
 
-   @Override
-   public ur h() {
-      return uq.a(super.h(), c).b(uq.u).b(v);
+   private boolean D() {
+      return this.f.m.Q().c();
+   }
+
+   private boolean E() {
+      return this.f.y instanceof faz;
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, c, this.g / 2 - 120, h(5), -1, false);
-      int $$4 = this.i.a(c);
-      int $$5 = this.g / 2 - 121 + $$4;
-      int $$6 = h(5);
-      int $$7 = $$5 + this.i.a(v) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.y = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.i, v, this.g / 2 - 120 + $$4, h(5), this.y ? 7107012 : 3368635, false);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(euo $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(eqc $$0, erl.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
+   }
+
+   void b(eqc $$0, erl.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
+
+         for (epc $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      erl.c a(eqc var1);
+
+      boolean a();
    }
 }

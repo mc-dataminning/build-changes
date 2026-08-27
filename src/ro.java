@@ -15,7 +15,7 @@ public class ro implements ArgumentType<String> {
 
    public String a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      if (rb.b($$1)) {
+      if (rc.b($$1)) {
          return $$1;
       } else {
          Message $$2 = ur.b("No such test class: " + $$1);
@@ -32,7 +32,7 @@ public class ro implements ArgumentType<String> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.b(rb.b().stream(), $$1);
+      return dy.b(rc.b().stream(), $$1);
    }
 
    public Collection<String> getExamples() {

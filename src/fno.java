@@ -1,29 +1,43 @@
-public class fno extends fnt {
-   private int a;
-   private final int b = 8;
+import org.joml.Vector3f;
 
-   fno(fkw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+public class fno extends fnq<jl> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fno(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jl $$7, fpe $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(js.x, $$1, $$2, $$3, (double)((float)this.a / (float)this.b), 0.0, 0.0);
-      }
-
-      this.a++;
-      if (this.a == this.b) {
-         this.k();
-      }
+   public void a(eoa $$0, eso $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements fny<jv> {
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fno($$1, $$2, $$3, $$4);
+   public static class a implements fol<jl> {
+      private final fpe a;
+
+      public a(fpe $$0) {
+         this.a = $$0;
+      }
+
+      public foi a(jl $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

@@ -8,38 +8,38 @@ import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class ls {
-   public static final agg a = new agg("trim_type");
+   public static final agi a = new agi("trim_type");
    private static final List<ls.a> b = List.of(
       new ls.a("quartz", 0.1F, Map.of()),
-      new ls.a("iron", 0.2F, Map.of(cin.c, "iron_darker")),
-      new ls.a("netherite", 0.3F, Map.of(cin.g, "netherite_darker")),
+      new ls.a("iron", 0.2F, Map.of(civ.c, "iron_darker")),
+      new ls.a("netherite", 0.3F, Map.of(civ.g, "netherite_darker")),
       new ls.a("redstone", 0.4F, Map.of()),
       new ls.a("copper", 0.5F, Map.of()),
-      new ls.a("gold", 0.6F, Map.of(cin.d, "gold_darker")),
+      new ls.a("gold", 0.6F, Map.of(civ.d, "gold_darker")),
       new ls.a("emerald", 0.7F, Map.of()),
-      new ls.a("diamond", 0.8F, Map.of(cin.e, "diamond_darker")),
+      new ls.a("diamond", 0.8F, Map.of(civ.e, "diamond_darker")),
       new ls.a("lapis", 0.9F, Map.of()),
       new ls.a("amethyst", 1.0F, Map.of())
    );
-   private final BiConsumer<agg, Supplier<JsonElement>> c;
+   private final BiConsumer<agi, Supplier<JsonElement>> c;
 
-   public ls(BiConsumer<agg, Supplier<JsonElement>> $$0) {
+   public ls(BiConsumer<agi, Supplier<JsonElement>> $$0) {
       this.c = $$0;
    }
 
-   private void a(ckw $$0, mg $$1) {
+   private void a(cle $$0, mg $$1) {
       $$1.a(mf.a($$0), mi.b($$0), this.c);
    }
 
-   private void a(ckw $$0, String $$1, mg $$2) {
+   private void a(cle $$0, String $$1, mg $$2) {
       $$2.a(mf.a($$0, $$1), mi.k(mi.a($$0, $$1)), this.c);
    }
 
-   private void a(ckw $$0, ckw $$1, mg $$2) {
+   private void a(cle $$0, cle $$1, mg $$2) {
       $$2.a(mf.a($$0), mi.b($$1), this.c);
    }
 
-   private void a(ckw $$0) {
+   private void a(cle $$0) {
       for (int $$1 = 0; $$1 < 32; $$1++) {
          if ($$1 != 16) {
             this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), mh.bv);
@@ -47,25 +47,25 @@ public class ls {
       }
    }
 
-   private void b(ckw $$0) {
+   private void b(cle $$0) {
       for (int $$1 = 1; $$1 < 64; $$1++) {
          this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), mh.bv);
       }
    }
 
-   private void a(agg $$0, agg $$1, agg $$2) {
+   private void a(agi $$0, agi $$1, agi $$2) {
       mh.bz.a($$0, mi.c($$1, $$2), this.c);
    }
 
-   private void a(agg $$0, agg $$1, agg $$2, agg $$3) {
+   private void a(agi $$0, agi $$1, agi $$2, agi $$3) {
       mh.bA.a($$0, mi.a($$1, $$2, $$3), this.c);
    }
 
-   private agg a(agg $$0, String $$1) {
+   private agi a(agi $$0, String $$1) {
       return $$0.e("_" + $$1 + "_trim");
    }
 
-   private JsonObject a(agg $$0, Map<mj, agg> $$1, cim $$2) {
+   private JsonObject a(agi $$0, Map<mj, agi> $$1, ciu $$2) {
       JsonObject $$3 = mh.bz.a($$0, $$1);
       JsonArray $$4 = new JsonArray();
 
@@ -82,11 +82,11 @@ public class ls {
       return $$3;
    }
 
-   private void a(cil $$0) {
-      agg $$1 = mf.a($$0);
-      agg $$2 = mi.c($$0);
-      agg $$3 = mi.a($$0, "_overlay");
-      if ($$0.d() == cin.a) {
+   private void a(cit $$0) {
+      agi $$1 = mf.a($$0);
+      agi $$2 = mi.c($$0);
+      agi $$3 = mi.a($$0, "_overlay");
+      if ($$0.d() == civ.a) {
          mh.bz.a($$1, mi.c($$2, $$3), this.c, ($$1x, $$2x) -> this.a($$1x, $$2x, $$0.d()));
       } else {
          mh.bv.a($$1, mi.k($$2), this.c, ($$1x, $$2x) -> this.a($$1x, $$2x, $$0.d()));
@@ -94,10 +94,10 @@ public class ls {
 
       for (ls.a $$4 : b) {
          String $$5 = $$4.a($$0.d());
-         agg $$6 = this.a($$1, $$5);
+         agi $$6 = this.a($$1, $$5);
          String $$7 = $$0.b().b() + "_trim_" + $$5;
-         agg $$8 = new agg($$7).d("trims/items/");
-         if ($$0.d() == cin.a) {
+         agi $$8 = new agi($$7).d("trims/items/");
+         if ($$0.d() == civ.a) {
             this.a($$6, $$2, $$3, $$8);
          } else {
             this.a($$6, $$2, $$8);
@@ -106,286 +106,286 @@ public class ls {
    }
 
    public void a() {
-      this.a(cle.nq, mh.bv);
-      this.a(cle.ns, mh.bv);
-      this.a(cle.nr, mh.bv);
-      this.a(cle.nt, mh.bv);
-      this.a(cle.nO, mh.bv);
-      this.a(cle.nF, mh.bv);
-      this.a(cle.tM, mh.bv);
-      this.a(cle.nH, mh.bv);
-      this.a(cle.to, mh.bv);
-      this.a(cle.dv, mh.bx);
-      this.a(cle.rm, mh.bv);
-      this.a(cle.ur, mh.bv);
-      this.a(cle.ut, mh.bv);
-      this.a(cle.nm, mh.bv);
-      this.a(cle.nn, mh.bv);
-      this.a(cle.qJ, mh.bv);
-      this.a(cle.rA, mh.bv);
-      this.a(cle.rs, mh.bx);
-      this.a(cle.qF, mh.bv);
-      this.a(cle.qK, mh.bv);
-      this.a(cle.qb, mh.bv);
-      this.a(cle.oC, mh.bv);
-      this.a(cle.oJ, mh.bv);
-      this.a(cle.pX, mh.bv);
-      this.a(cle.qG, mh.bv);
-      this.a(cle.pK, mh.bv);
-      this.a(cle.nf, mh.by);
-      this.a(cle.ng, mh.by);
-      this.a(cle.nJ, mh.bv);
-      this.a(cle.nb, mh.bv);
-      this.a(cle.ro, mh.bv);
-      this.a(cle.un, mh.bv);
-      this.a(cle.pY, mh.bv);
-      this.b(cle.qi);
-      this.a(cle.nI, mh.bv);
-      this.a(cle.pT, mh.bv);
-      this.a(cle.tT, mh.bv);
-      this.a(cle.qe);
-      this.a(cle.qf);
-      this.a(cle.rn, mh.bv);
-      this.a(cle.rp, mh.bv);
-      this.a(cle.qp, mh.bv);
-      this.a(cle.tV, mh.bv);
-      this.a(cle.pk, mh.bv);
-      this.a(cle.tI, mh.bv);
-      this.a(cle.qq, mh.bv);
-      this.a(cle.re, mh.bv);
-      this.a(cle.nR, mh.bv);
-      this.a(cle.nS, mh.bv);
-      this.a(cle.ve, mh.bv);
-      this.a(cle.qD, mh.bv);
-      this.a(cle.nu, mh.bv);
-      this.a(cle.nv, mh.bv);
-      this.a(cle.nK, mh.bv);
-      this.a(cle.ou, mh.bx);
-      this.a(cle.ov, mh.bx);
-      this.a(cle.tP, mh.bv);
-      this.a(cle.ot, mh.bx);
-      this.a(cle.os, mh.bx);
-      this.a(cle.or, mh.bx);
-      this.a(cle.uu, mh.bv);
-      this.a(cle.rj, mh.bv);
-      this.a(cle.qd, mh.bv);
-      this.a(cle.nL, mh.bv);
-      this.a(cle.tD, mh.bv);
-      this.a(cle.rE, mh.bv);
-      this.a(cle.rr, mh.bv);
-      this.a(cle.um, mh.bv);
-      this.a(cle.tf, mh.bv);
-      this.a(cle.rz, mh.bv);
-      this.a(cle.tB, mh.bv);
-      this.a(cle.tg, mh.bv);
-      this.a(cle.pi, mh.bv);
-      this.a(cle.nE, mh.bv);
-      this.a(cle.vd, mh.bv);
-      this.a(cle.nc, mh.bv);
-      this.a(cle.rt, mh.bv);
-      this.a(cle.rx, mh.bv);
-      this.a(cle.rF, mh.bv);
-      this.a(cle.vh, mh.bv);
-      this.a(cle.vx, mh.bv);
-      this.a(cle.qk, mh.bv);
-      this.a(cle.qs, mh.bv);
-      this.a(cle.tk, mh.bv);
-      this.a(cle.nT, mh.bv);
-      this.a(cle.pm, mh.bv);
-      this.a(cle.ok, mh.bx);
-      this.a(cle.tr, mh.bv);
-      this.a(cle.ol, mh.bx);
-      this.a(cle.tO, mh.bv);
-      this.a(cle.oj, mh.bx);
-      this.a(cle.oi, mh.bx);
-      this.a(cle.oh, mh.bx);
-      this.a(cle.nU, mh.bv);
-      this.a(cle.ru, mh.bv);
-      this.a(cle.qB, mh.bv);
-      this.a(cle.qH, mh.bv);
-      this.a(cle.oG, mh.bv);
-      this.a(cle.uZ, mh.bv);
-      this.a(cle.vB, mh.bv);
-      this.a(cle.vE, mh.bv);
-      this.a(cle.ne, mh.bv);
-      this.a(cle.qr, mh.bv);
-      this.a(cle.nP, mh.bv);
-      this.a(cle.op, mh.bx);
-      this.a(cle.oq, mh.bx);
-      this.a(cle.tN, mh.bv);
-      this.a(cle.nQ, mh.bv);
-      this.a(cle.uC, mh.bv);
-      this.a(cle.oo, mh.bx);
-      this.a(cle.on, mh.bx);
-      this.a(cle.om, mh.bx);
-      this.a(cle.tj, mh.bv);
-      this.a(cle.no, mh.bv);
-      this.a(cle.np, mh.bv);
-      this.a(cle.uD, mh.bv);
-      this.a(cle.nM, mh.bv);
-      this.a(cle.pM, mh.bv);
-      this.a(cle.pP, mh.bv);
-      this.a(cle.tQ, mh.bv);
-      this.a(cle.qx, mh.bv);
-      this.a(cle.qC, mh.bv);
-      this.a(cle.qz, mh.bv);
-      this.a(cle.qw, mh.bv);
-      this.a(cle.rB, mh.bv);
-      this.a(cle.nw, mh.bv);
-      this.a(cle.nx, mh.bv);
-      this.a(cle.ny, mh.bv);
-      this.a(cle.nz, mh.bv);
-      this.a(cle.tq, mh.bv);
-      this.a(cle.ri, mh.bv);
-      this.a(cle.pQ, mh.bv);
-      this.a(cle.na, mh.bv);
-      this.a(cle.vg, mh.bv);
-      this.a(cle.oD, mh.bv);
-      this.a(cle.uV, mh.bv);
-      this.a(cle.uP, mh.bw);
-      this.a(cle.uF, mh.bw);
-      this.a(cle.uH, mh.bw);
-      this.a(cle.uG, mh.bw);
-      this.a(cle.uI, mh.bw);
-      this.a(cle.uJ, mh.bw);
-      this.a(cle.uK, mh.bw);
-      this.a(cle.uL, mh.bw);
-      this.a(cle.uU, mh.bw);
-      this.a(cle.uM, mh.bw);
-      this.a(cle.uN, mh.bw);
-      this.a(cle.uQ, mh.bw);
-      this.a(cle.uO, mh.bw);
-      this.a(cle.uR, mh.bw);
-      this.a(cle.uS, mh.bw);
-      this.a(cle.uT, mh.bw);
-      this.a(cle.tU, mh.bv);
-      this.a(cle.tS, mh.bv);
-      this.a(cle.uY, mh.bv);
-      this.a(cle.oz, mh.bx);
-      this.a(cle.oA, mh.bx);
-      this.a(cle.nV, mh.bv);
-      this.a(cle.oy, mh.bx);
-      this.a(cle.nW, mh.bv);
-      this.a(cle.ox, mh.bx);
-      this.a(cle.ow, mh.bx);
-      this.a(cle.tE, mh.bv);
-      this.a(cle.tz, mh.bv);
-      this.a(cle.ni, mh.bv);
-      this.a(cle.nj, mh.bv);
-      this.a(cle.qv, mh.bv);
-      this.a(cle.pl, mh.bv);
-      this.a(cle.qa, mh.bv);
-      this.a(cle.uX, mh.bv);
-      this.a(cle.vi, mh.bv);
-      this.a(cle.qA, mh.bv);
-      this.a(cle.tp, mh.bv);
-      this.a(cle.uo, mh.bv);
-      this.a(cle.pj, mh.bv);
-      this.a(cle.pN, mh.bv);
-      this.a(cle.tG, mh.bv);
-      this.a(cle.tF, mh.bv);
-      this.a(cle.qo, mh.bv);
-      this.a(cle.pR, mh.bv);
-      this.a(cle.tA, mh.bv);
-      this.a(cle.qE, mh.bv);
-      this.a(cle.nN, mh.bv);
-      this.a(cle.tH, mh.bv);
-      this.a(cle.tK, mh.bv);
-      this.a(cle.tL, mh.bv);
-      this.a(cle.tJ, mh.bv);
-      this.a(cle.qI, mh.bv);
-      this.a(cle.rq, mh.bv);
-      this.a(cle.mZ, mh.bv);
-      this.a(cle.qm, mh.bv);
-      this.a(cle.pS, mh.bv);
-      this.a(cle.nD, mh.bv);
-      this.a(cle.rh, mh.bv);
-      this.a(cle.uB, mh.bv);
-      this.a(cle.vf, mh.bv);
-      this.a(cle.qc, mh.bv);
-      this.a(cle.pO, mh.bv);
-      this.a(cle.wv, mh.bv);
-      this.a(cle.uw, mh.bv);
-      this.a(cle.ry, mh.bv);
-      this.a(cle.nk, mh.bv);
-      this.a(cle.nl, mh.bv);
-      this.a(cle.qj, mh.bv);
-      this.a(cle.oB, mh.bx);
-      this.a(cle.of, mh.bx);
-      this.a(cle.og, mh.bx);
-      this.a(cle.oe, mh.bx);
-      this.a(cle.od, mh.bx);
-      this.a(cle.oc, mh.bx);
-      this.a(cle.qM, mh.bv);
-      this.a(cle.vb, mh.bv);
-      this.a(cle.nd, mh.bv);
-      this.a(cle.uA, mh.bv);
-      this.a(cle.uW, mh.bv);
-      this.a(cle.qn, mh.bv);
-      this.a(cle.pU, mh.bv);
-      this.a(cle.pV, mh.bv);
-      this.a(cle.pW, mh.bv);
-      this.a(cle.pL, mh.bv);
-      this.a(cle.oI, mh.bv);
-      this.a(cle.qu, mh.bv);
-      this.a(cle.oa, mh.bx);
-      this.a(cle.ob, mh.bx);
-      this.a(cle.nZ, mh.bx);
-      this.a(cle.nY, mh.bx);
-      this.a(cle.nX, mh.bx);
-      this.a(cle.th, mh.bv);
-      this.a(cle.ti, mh.bv);
-      this.a(cle.qy, mh.bv);
-      this.a(cle.wx, mh.bv);
-      this.a(cle.wy, mh.bv);
-      this.a(cle.wz, mh.bv);
-      this.a(cle.wA, mh.bv);
-      this.a(cle.wB, mh.bv);
-      this.a(cle.wC, mh.bv);
-      this.a(cle.wD, mh.bv);
-      this.a(cle.wE, mh.bv);
-      this.a(cle.wF, mh.bv);
-      this.a(cle.wG, mh.bv);
-      this.a(cle.wH, mh.bv);
-      this.a(cle.wI, mh.bv);
-      this.a(cle.wJ, mh.bv);
-      this.a(cle.wK, mh.bv);
-      this.a(cle.wL, mh.bv);
-      this.a(cle.wM, mh.bv);
-      this.a(cle.wN, mh.bv);
-      this.a(cle.uE, cle.oB, mh.bx);
-      this.a(cle.pn, cle.pm, mh.bv);
+      this.a(clm.ob, mh.bv);
+      this.a(clm.od, mh.bv);
+      this.a(clm.oc, mh.bv);
+      this.a(clm.oe, mh.bv);
+      this.a(clm.oz, mh.bv);
+      this.a(clm.oq, mh.bv);
+      this.a(clm.ux, mh.bv);
+      this.a(clm.os, mh.bv);
+      this.a(clm.tZ, mh.bv);
+      this.a(clm.dQ, mh.bx);
+      this.a(clm.rX, mh.bv);
+      this.a(clm.vc, mh.bv);
+      this.a(clm.ve, mh.bv);
+      this.a(clm.nX, mh.bv);
+      this.a(clm.nY, mh.bv);
+      this.a(clm.ru, mh.bv);
+      this.a(clm.sl, mh.bv);
+      this.a(clm.sd, mh.bx);
+      this.a(clm.rq, mh.bv);
+      this.a(clm.rv, mh.bv);
+      this.a(clm.qM, mh.bv);
+      this.a(clm.pn, mh.bv);
+      this.a(clm.pu, mh.bv);
+      this.a(clm.qI, mh.bv);
+      this.a(clm.rr, mh.bv);
+      this.a(clm.qv, mh.bv);
+      this.a(clm.nQ, mh.by);
+      this.a(clm.nR, mh.by);
+      this.a(clm.ou, mh.bv);
+      this.a(clm.nM, mh.bv);
+      this.a(clm.rZ, mh.bv);
+      this.a(clm.uY, mh.bv);
+      this.a(clm.qJ, mh.bv);
+      this.b(clm.qT);
+      this.a(clm.ot, mh.bv);
+      this.a(clm.qE, mh.bv);
+      this.a(clm.uE, mh.bv);
+      this.a(clm.qP);
+      this.a(clm.qQ);
+      this.a(clm.rY, mh.bv);
+      this.a(clm.sa, mh.bv);
+      this.a(clm.ra, mh.bv);
+      this.a(clm.uG, mh.bv);
+      this.a(clm.pV, mh.bv);
+      this.a(clm.ut, mh.bv);
+      this.a(clm.rb, mh.bv);
+      this.a(clm.rP, mh.bv);
+      this.a(clm.oC, mh.bv);
+      this.a(clm.oD, mh.bv);
+      this.a(clm.vP, mh.bv);
+      this.a(clm.ro, mh.bv);
+      this.a(clm.of, mh.bv);
+      this.a(clm.og, mh.bv);
+      this.a(clm.ov, mh.bv);
+      this.a(clm.pf, mh.bx);
+      this.a(clm.pg, mh.bx);
+      this.a(clm.uA, mh.bv);
+      this.a(clm.pe, mh.bx);
+      this.a(clm.pd, mh.bx);
+      this.a(clm.pc, mh.bx);
+      this.a(clm.vf, mh.bv);
+      this.a(clm.rU, mh.bv);
+      this.a(clm.qO, mh.bv);
+      this.a(clm.ow, mh.bv);
+      this.a(clm.uo, mh.bv);
+      this.a(clm.sp, mh.bv);
+      this.a(clm.sc, mh.bv);
+      this.a(clm.uX, mh.bv);
+      this.a(clm.tQ, mh.bv);
+      this.a(clm.sk, mh.bv);
+      this.a(clm.um, mh.bv);
+      this.a(clm.tR, mh.bv);
+      this.a(clm.pT, mh.bv);
+      this.a(clm.op, mh.bv);
+      this.a(clm.vO, mh.bv);
+      this.a(clm.nN, mh.bv);
+      this.a(clm.se, mh.bv);
+      this.a(clm.si, mh.bv);
+      this.a(clm.sq, mh.bv);
+      this.a(clm.vS, mh.bv);
+      this.a(clm.wi, mh.bv);
+      this.a(clm.qV, mh.bv);
+      this.a(clm.rd, mh.bv);
+      this.a(clm.tV, mh.bv);
+      this.a(clm.oE, mh.bv);
+      this.a(clm.pX, mh.bv);
+      this.a(clm.oV, mh.bx);
+      this.a(clm.uc, mh.bv);
+      this.a(clm.oW, mh.bx);
+      this.a(clm.uz, mh.bv);
+      this.a(clm.oU, mh.bx);
+      this.a(clm.oT, mh.bx);
+      this.a(clm.oS, mh.bx);
+      this.a(clm.oF, mh.bv);
+      this.a(clm.sf, mh.bv);
+      this.a(clm.rm, mh.bv);
+      this.a(clm.rs, mh.bv);
+      this.a(clm.pr, mh.bv);
+      this.a(clm.vK, mh.bv);
+      this.a(clm.wm, mh.bv);
+      this.a(clm.wp, mh.bv);
+      this.a(clm.nP, mh.bv);
+      this.a(clm.rc, mh.bv);
+      this.a(clm.oA, mh.bv);
+      this.a(clm.pa, mh.bx);
+      this.a(clm.pb, mh.bx);
+      this.a(clm.uy, mh.bv);
+      this.a(clm.oB, mh.bv);
+      this.a(clm.vn, mh.bv);
+      this.a(clm.oZ, mh.bx);
+      this.a(clm.oY, mh.bx);
+      this.a(clm.oX, mh.bx);
+      this.a(clm.tU, mh.bv);
+      this.a(clm.nZ, mh.bv);
+      this.a(clm.oa, mh.bv);
+      this.a(clm.vo, mh.bv);
+      this.a(clm.ox, mh.bv);
+      this.a(clm.qx, mh.bv);
+      this.a(clm.qA, mh.bv);
+      this.a(clm.uB, mh.bv);
+      this.a(clm.ri, mh.bv);
+      this.a(clm.rn, mh.bv);
+      this.a(clm.rk, mh.bv);
+      this.a(clm.rh, mh.bv);
+      this.a(clm.sm, mh.bv);
+      this.a(clm.oh, mh.bv);
+      this.a(clm.oi, mh.bv);
+      this.a(clm.oj, mh.bv);
+      this.a(clm.ok, mh.bv);
+      this.a(clm.ub, mh.bv);
+      this.a(clm.rT, mh.bv);
+      this.a(clm.qB, mh.bv);
+      this.a(clm.nL, mh.bv);
+      this.a(clm.vR, mh.bv);
+      this.a(clm.po, mh.bv);
+      this.a(clm.vG, mh.bv);
+      this.a(clm.vA, mh.bw);
+      this.a(clm.vq, mh.bw);
+      this.a(clm.vs, mh.bw);
+      this.a(clm.vr, mh.bw);
+      this.a(clm.vt, mh.bw);
+      this.a(clm.vu, mh.bw);
+      this.a(clm.vv, mh.bw);
+      this.a(clm.vw, mh.bw);
+      this.a(clm.vF, mh.bw);
+      this.a(clm.vx, mh.bw);
+      this.a(clm.vy, mh.bw);
+      this.a(clm.vB, mh.bw);
+      this.a(clm.vz, mh.bw);
+      this.a(clm.vC, mh.bw);
+      this.a(clm.vD, mh.bw);
+      this.a(clm.vE, mh.bw);
+      this.a(clm.uF, mh.bv);
+      this.a(clm.uD, mh.bv);
+      this.a(clm.vJ, mh.bv);
+      this.a(clm.pk, mh.bx);
+      this.a(clm.pl, mh.bx);
+      this.a(clm.oG, mh.bv);
+      this.a(clm.pj, mh.bx);
+      this.a(clm.oH, mh.bv);
+      this.a(clm.pi, mh.bx);
+      this.a(clm.ph, mh.bx);
+      this.a(clm.up, mh.bv);
+      this.a(clm.uk, mh.bv);
+      this.a(clm.nT, mh.bv);
+      this.a(clm.nU, mh.bv);
+      this.a(clm.rg, mh.bv);
+      this.a(clm.pW, mh.bv);
+      this.a(clm.qL, mh.bv);
+      this.a(clm.vI, mh.bv);
+      this.a(clm.vT, mh.bv);
+      this.a(clm.rl, mh.bv);
+      this.a(clm.ua, mh.bv);
+      this.a(clm.uZ, mh.bv);
+      this.a(clm.pU, mh.bv);
+      this.a(clm.qy, mh.bv);
+      this.a(clm.ur, mh.bv);
+      this.a(clm.uq, mh.bv);
+      this.a(clm.qZ, mh.bv);
+      this.a(clm.qC, mh.bv);
+      this.a(clm.ul, mh.bv);
+      this.a(clm.rp, mh.bv);
+      this.a(clm.oy, mh.bv);
+      this.a(clm.us, mh.bv);
+      this.a(clm.uv, mh.bv);
+      this.a(clm.uw, mh.bv);
+      this.a(clm.uu, mh.bv);
+      this.a(clm.rt, mh.bv);
+      this.a(clm.sb, mh.bv);
+      this.a(clm.nK, mh.bv);
+      this.a(clm.qX, mh.bv);
+      this.a(clm.qD, mh.bv);
+      this.a(clm.oo, mh.bv);
+      this.a(clm.rS, mh.bv);
+      this.a(clm.vm, mh.bv);
+      this.a(clm.vQ, mh.bv);
+      this.a(clm.qN, mh.bv);
+      this.a(clm.qz, mh.bv);
+      this.a(clm.xg, mh.bv);
+      this.a(clm.vh, mh.bv);
+      this.a(clm.sj, mh.bv);
+      this.a(clm.nV, mh.bv);
+      this.a(clm.nW, mh.bv);
+      this.a(clm.qU, mh.bv);
+      this.a(clm.pm, mh.bx);
+      this.a(clm.oQ, mh.bx);
+      this.a(clm.oR, mh.bx);
+      this.a(clm.oP, mh.bx);
+      this.a(clm.oO, mh.bx);
+      this.a(clm.oN, mh.bx);
+      this.a(clm.rx, mh.bv);
+      this.a(clm.vM, mh.bv);
+      this.a(clm.nO, mh.bv);
+      this.a(clm.vl, mh.bv);
+      this.a(clm.vH, mh.bv);
+      this.a(clm.qY, mh.bv);
+      this.a(clm.qF, mh.bv);
+      this.a(clm.qG, mh.bv);
+      this.a(clm.qH, mh.bv);
+      this.a(clm.qw, mh.bv);
+      this.a(clm.pt, mh.bv);
+      this.a(clm.rf, mh.bv);
+      this.a(clm.oL, mh.bx);
+      this.a(clm.oM, mh.bx);
+      this.a(clm.oK, mh.bx);
+      this.a(clm.oJ, mh.bx);
+      this.a(clm.oI, mh.bx);
+      this.a(clm.tS, mh.bv);
+      this.a(clm.tT, mh.bv);
+      this.a(clm.rj, mh.bv);
+      this.a(clm.xi, mh.bv);
+      this.a(clm.xj, mh.bv);
+      this.a(clm.xk, mh.bv);
+      this.a(clm.xl, mh.bv);
+      this.a(clm.xm, mh.bv);
+      this.a(clm.xn, mh.bv);
+      this.a(clm.xo, mh.bv);
+      this.a(clm.xp, mh.bv);
+      this.a(clm.xq, mh.bv);
+      this.a(clm.xr, mh.bv);
+      this.a(clm.xs, mh.bv);
+      this.a(clm.xt, mh.bv);
+      this.a(clm.xu, mh.bv);
+      this.a(clm.xv, mh.bv);
+      this.a(clm.xw, mh.bv);
+      this.a(clm.xx, mh.bv);
+      this.a(clm.xy, mh.bv);
+      this.a(clm.vp, clm.pm, mh.bx);
+      this.a(clm.pY, clm.pX, mh.bv);
 
-      for (ckw $$0 : jy.i) {
-         if ($$0 instanceof cil $$1) {
+      for (cle $$0 : jy.i) {
+         if ($$0 instanceof cit $$1) {
             this.a($$1);
          }
       }
 
-      this.a(cle.wO, mh.bv);
-      this.a(cle.wP, mh.bv);
-      this.a(cle.wQ, mh.bv);
-      this.a(cle.wR, mh.bv);
-      this.a(cle.wS, mh.bv);
-      this.a(cle.wT, mh.bv);
-      this.a(cle.wU, mh.bv);
-      this.a(cle.wV, mh.bv);
-      this.a(cle.wW, mh.bv);
-      this.a(cle.wX, mh.bv);
-      this.a(cle.wY, mh.bv);
-      this.a(cle.wZ, mh.bv);
-      this.a(cle.xa, mh.bv);
-      this.a(cle.xb, mh.bv);
-      this.a(cle.xc, mh.bv);
-      this.a(cle.xd, mh.bv);
-      this.a(cle.xe, mh.bv);
-      this.a(cle.xf, mh.bv);
-      this.a(cle.xg, mh.bv);
-      this.a(cle.xh, mh.bv);
+      this.a(clm.xz, mh.bv);
+      this.a(clm.xA, mh.bv);
+      this.a(clm.xB, mh.bv);
+      this.a(clm.xC, mh.bv);
+      this.a(clm.xD, mh.bv);
+      this.a(clm.xE, mh.bv);
+      this.a(clm.xF, mh.bv);
+      this.a(clm.xG, mh.bv);
+      this.a(clm.xH, mh.bv);
+      this.a(clm.xI, mh.bv);
+      this.a(clm.xJ, mh.bv);
+      this.a(clm.xK, mh.bv);
+      this.a(clm.xL, mh.bv);
+      this.a(clm.xM, mh.bv);
+      this.a(clm.xN, mh.bv);
+      this.a(clm.xO, mh.bv);
+      this.a(clm.xP, mh.bv);
+      this.a(clm.xQ, mh.bv);
+      this.a(clm.xR, mh.bv);
+      this.a(clm.xS, mh.bv);
    }
 
-   static record a(String a, float b, Map<cim, String> c) {
-      public String a(cim $$0) {
+   static record a(String a, float b, Map<ciu, String> c) {
+      public String a(ciu $$0) {
          return this.c.getOrDefault($$0, this.a);
       }
    }

@@ -119,7 +119,7 @@ public class yv implements wk<yd> {
             return null;
          } else {
             hf.a<?> $$6 = $$5.b($$0);
-            agg $$7 = ($$1 & 16) != 0 ? $$0.t() : null;
+            agi $$7 = ($$1 & 16) != 0 ? $$0.t() : null;
             return new yv.a($$3, $$6, $$7);
          }
       } else if ($$2 == 1) {
@@ -179,14 +179,14 @@ public class yv implements wk<yd> {
       private final String a;
       private final hf.a<?> b;
       @Nullable
-      private final agg c;
+      private final agi c;
 
       @Nullable
-      private static agg a(@Nullable SuggestionProvider<dy> $$0) {
+      private static agi a(@Nullable SuggestionProvider<dy> $$0) {
          return $$0 != null ? hj.a($$0) : null;
       }
 
-      a(String $$0, hf.a<?> $$1, @Nullable agg $$2) {
+      a(String $$0, hf.a<?> $$1, @Nullable agi $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

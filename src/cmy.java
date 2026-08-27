@@ -1,52 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class cmy {
-   @Nullable
-   private final String a;
-   private final ImmutableList<bjv> b;
-   private final ib.c<cmy> c = jy.j.f(this);
+public enum cmy implements cmw {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cok.a(aro.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cok.a(aro.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cok.a(clm.oB)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cok.a(clm.ov)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cok.a(clm.oF)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cok.a(clm.oG));
 
-   public static cmy a(String $$0) {
-      return jy.j.a(agg.a($$0));
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final ath<cok> l;
+
+   private cmy(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cok> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new ath<>($$5);
    }
 
-   public cmy(bjv... $$0) {
-      this(null, $$0);
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   public cmy(@Nullable String $$0, bjv... $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   public String b(String $$0) {
-      return $$0 + (this.a == null ? jy.j.b(this).a() : this.a);
+   @Override
+   public float c() {
+      return this.j;
    }
 
-   public List<bjv> a() {
-      return this.b;
+   @Override
+   public int d() {
+      return this.g;
    }
 
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         UnmodifiableIterator var1 = this.b.iterator();
-
-         while (var1.hasNext()) {
-            bjv $$0 = (bjv)var1.next();
-            if ($$0.c().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public int e() {
+      return this.k;
    }
 
-   @Deprecated
-   public ib.c<cmy> c() {
-      return this.c;
+   @Override
+   public cok f() {
+      return this.l.a();
    }
 }

@@ -1,177 +1,88 @@
-public class cgj extends cge {
-   private static final int k = 0;
-   private static final int l = 2;
-   private static final int m = 3;
-   private static final int n = 4;
-   private static final int o = 5;
-   private static final int p = 2;
-   private static final int q = 5;
-   private static final int r = 32;
-   private static final int s = 32;
-   private static final int t = 41;
-   private final bij u;
-   private final cgo v;
-   private final chz w;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public cgj(int $$0, cdl $$1) {
-      this($$0, $$1, new bix(5), new chy(2));
+public class cgj {
+   private final int a;
+   private final float b;
+   private final boolean c;
+   private final boolean d;
+   private final boolean e;
+   private final List<Pair<bkd, Float>> f;
+
+   cgj(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bkd, Float>> $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public cgj(int $$0, cdl $$1, bij $$2, cgo $$3) {
-      super(chl.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.u = $$2;
-      this.v = $$3;
-      this.a(new cgj.c($$2, 0, 56, 51));
-      this.a(new cgj.c($$2, 1, 79, 58));
-      this.a(new cgj.c($$2, 2, 102, 51));
-      this.w = this.a(new cgj.b($$2, 3, 79, 17));
-      this.a(new cgj.a($$2, 4, 17, 17));
-      this.a($$3);
-
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         for (int $$5 = 0; $$5 < 9; $$5++) {
-            this.a(new chz($$1, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
-         }
-      }
-
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a(new chz($$1, $$6, 8 + $$6 * 18, 142));
-      }
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(cdm $$0) {
-      return this.u.a($$0);
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public clb a(cdm $$0, int $$1) {
-      clb $$2 = clb.b;
-      chz $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.g()) {
-         clb $$4 = $$3.f();
-         $$2 = $$4.p();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (cgj.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.w.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return clb.b;
-               }
-            } else if (this.w.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return clb.b;
-               }
-            } else if (cgj.c.b($$2) && $$2.L() == 1) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return clb.b;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return clb.b;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return clb.b;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return clb.b;
-            }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return clb.b;
-            }
-
-            $$3.b($$4, $$2);
-         }
-
-         if ($$4.b()) {
-            $$3.e(clb.b);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return clb.b;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
+   public boolean c() {
+      return this.c;
    }
 
-   public int l() {
-      return this.v.a(1);
+   public boolean d() {
+      return this.d;
    }
 
-   public int m() {
-      return this.v.a(0);
+   public boolean e() {
+      return this.e;
    }
 
-   static class a extends chz {
-      public a(bij $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(clb $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(clb $$0) {
-         return $$0.a(cle.rA);
-      }
-
-      @Override
-      public int a() {
-         return 64;
-      }
+   public List<Pair<bkd, Float>> f() {
+      return this.f;
    }
 
-   static class b extends chz {
-      public b(bij $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private boolean d;
+      private boolean e;
+      private final List<Pair<bkd, Float>> f = Lists.newArrayList();
+
+      public cgj.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public boolean a(clb $$0) {
-         return cmz.a($$0);
+      public cgj.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      @Override
-      public int a() {
-         return 64;
-      }
-   }
-
-   static class c extends chz {
-      public c(bij $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
+      public cgj.a a() {
+         this.c = true;
+         return this;
       }
 
-      @Override
-      public boolean a(clb $$0) {
-         return b($$0);
+      public cgj.a b() {
+         this.d = true;
+         return this;
       }
 
-      @Override
-      public int a() {
-         return 1;
+      public cgj.a c() {
+         this.e = true;
+         return this;
       }
 
-      @Override
-      public void a(cdm $$0, clb $$1) {
-         cmy $$2 = cna.d($$1);
-         if ($$0 instanceof amb) {
-            al.k.a((amb)$$0, $$2);
-         }
-
-         super.a($$0, $$1);
+      public cgj.a a(bkd $$0, float $$1) {
+         this.f.add(Pair.of($$0, $$1));
+         return this;
       }
 
-      public static boolean b(clb $$0) {
-         return $$0.a(cle.rw) || $$0.a(cle.uv) || $$0.a(cle.uy) || $$0.a(cle.rx);
+      public cgj d() {
+         return new cgj(this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

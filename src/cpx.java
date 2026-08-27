@@ -1,20 +1,10 @@
-public class cpx extends cpm {
-   public cpx(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.m, $$1);
-   }
+public class cpx extends bhj.a {
+   public final cpu a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 20;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean a(cpm $$0) {
-      return super.a($$0) && $$0 != cpq.K;
+   public cpx(cpu $$0, int $$1) {
+      super($$0.d().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

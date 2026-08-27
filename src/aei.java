@@ -1,29 +1,51 @@
-public enum aei {
-   a,
-   b;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   private static final int c = 1;
-   private static final int d = 2;
+public class aei {
+   private static final double a = 4096.0;
+   private eju b;
 
-   public static aei a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public aei() {
+      this.b = eju.b;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   public tt b() {
-      return switch (this) {
-         case a -> tt.c;
-         case b -> tt.d;
-      };
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
+
+   public eju a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new eju($$3, $$4, $$5);
+      }
+   }
+
+   public long a(eju $$0) {
+      return a($$0.c) - a(this.b.c);
+   }
+
+   public long b(eju $$0) {
+      return a($$0.d) - a(this.b.d);
+   }
+
+   public long c(eju $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public eju d(eju $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(eju $$0) {
+      this.b = $$0;
    }
 }

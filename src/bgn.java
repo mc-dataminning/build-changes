@@ -1,6 +1,9 @@
-import java.util.Set;
-import java.util.function.Supplier;
+import java.time.Duration;
+import java.time.Instant;
+import jdk.jfr.consumer.RecordedEvent;
 
-public interface bgn {
-   Set<bgl> a(Supplier<bff> var1);
+public record bgn(Instant a, Duration b) {
+   public static bgn a(RecordedEvent $$0) {
+      return new bgn($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+   }
 }

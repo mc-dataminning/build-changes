@@ -1,7 +1,7 @@
 public interface rs {
-   void a(qz var1);
+   void a(ra var1);
 
-   void b(qz var1);
+   void b(ra var1);
 
    default void a() {
    }

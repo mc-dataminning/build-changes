@@ -1,40 +1,159 @@
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cfx {
-   public static final cft a;
-   public static final cft b;
-   public static final cft c;
-   public static final cft d;
-   public static final cfu e;
-   public static final Codec<cfv> f;
-   public static final cfv g;
-   public static final cfv h;
+public class cfx extends cfl {
+   private static final byte c = 10;
+   private int d = -1;
 
-   public static String a(cfv $$0, cfv $$1) {
-      return a(e, $$0, $$1);
+   public cfx(bku<? extends cfx> $$0, csa $$1) {
+      super($$0, $$1);
    }
 
-   public static String a(cfu $$0, cfv $$1, cfv $$2) {
-      Set<agg> $$3 = $$0.b($$2);
-      Set<agg> $$4 = $$0.b($$1);
-      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(agg::toString).collect(Collectors.joining(", "));
+   public cfx(csa $$0, double $$1, double $$2, double $$3) {
+      super(bku.aZ, $$0, $$1, $$2, $$3);
    }
 
-   public static boolean a(cfv $$0) {
-      return !$$0.a(g);
+   @Override
+   public cfl.a w() {
+      return cfl.a.d;
    }
 
-   static {
-      cfu.a $$0 = new cfu.a("main");
-      a = $$0.a("vanilla");
-      b = $$0.a("bundle");
-      d = $$0.a("trade_rebalance");
-      c = $$0.a("update_1_21");
-      e = $$0.a();
-      f = e.b();
-      g = cfv.a(a);
-      h = g;
+   @Override
+   public dhi y() {
+      return cvc.ck.o();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.d > 0) {
+         this.d--;
+         this.dN().a(js.Z, this.ds(), this.du() + 0.5, this.dy(), 0.0, 0.0, 0.0);
+      } else if (this.d == 0) {
+         this.h(this.dq().i());
+      }
+
+      if (this.P) {
+         double $$0 = this.dq().i();
+         if ($$0 >= 0.01F) {
+            this.h($$0);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(bjo $$0, float $$1) {
+      if ($$0.c() instanceof cea $$3 && $$3.bN()) {
+         bjo $$4 = this.dO().d(this, $$0.d());
+         this.a($$4, $$3.dq().g());
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(bjo $$0) {
+      double $$1 = this.dq().i();
+      if (!$$0.a(ari.i) && !$$0.a(ari.l) && !($$1 >= 0.01F)) {
+         this.b(this.ag_());
+      } else {
+         if (this.d < 0) {
+            this.C();
+            this.d = this.ag.a(20) + this.ag.a(20);
+         }
+      }
+   }
+
+   @Override
+   protected cle ag_() {
+      return clm.nO;
+   }
+
+   protected void h(double $$0) {
+      this.a(null, $$0);
+   }
+
+   protected void a(@Nullable bjo $$0, double $$1) {
+      if (!this.dN().B) {
+         double $$2 = Math.sqrt($$1);
+         if ($$2 > 5.0) {
+            $$2 = 5.0;
+         }
+
+         this.dN().a(this, $$0, null, this.ds(), this.du(), this.dy(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, csa.a.d);
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean a(float $$0, float $$1, bjo $$2) {
+      if ($$0 >= 3.0F) {
+         float $$3 = $$0 / 10.0F;
+         this.h((double)($$3 * $$3));
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.d < 0) {
+         this.C();
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.C();
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void C() {
+      this.d = 80;
+      if (!this.dN().B) {
+         this.dN().a(this, (byte)10);
+         if (!this.aU()) {
+            this.dN().a(null, this.ds(), this.du(), this.dy(), aqr.yg, aqs.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public int D() {
+      return this.d;
+   }
+
+   public boolean E() {
+      return this.d > -1;
+   }
+
+   @Override
+   public float a(crs $$0, crg $$1, ht $$2, dhi $$3, ecs $$4, float $$5) {
+      return !this.E() || !$$3.a(arg.N) && !$$1.a_($$2.c()).a(arg.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   }
+
+   @Override
+   public boolean a(crs $$0, crg $$1, ht $$2, dhi $$3, float $$4) {
+      return !this.E() || !$$3.a(arg.N) && !$$1.a_($$2.c()).a(arg.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("TNTFuse", 99)) {
+         this.d = $$0.h("TNTFuse");
+      }
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("TNTFuse", this.d);
+   }
+
+   @Override
+   boolean ah_() {
+      return true;
    }
 }

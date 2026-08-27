@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface blv {
-   @Nullable
-   bki v();
+   void a(bwc var1, bkq var2);
 }

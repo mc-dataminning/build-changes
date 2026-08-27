@@ -1,23 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvh extends dvc {
+public class dvh {
    public static final Codec<dvh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bha.b(dvc.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dvh::new)
+      $$0 -> $$0.group(Codec.intRange(0, dkr.c).fieldOf("height").forGetter(dvh::a), jy.f.q().fieldOf("block").orElse(cvc.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, dvh::new)
    );
-   private final bha<dvc> b;
+   private final cva b;
+   private final int c;
 
-   public dvh(bha<dvc> $$0) {
-      this.b = $$0;
+   public dvh(int $$0, cva $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public dhi b() {
+      return this.b.o();
    }
 
    @Override
-   public int a(ato $$0, dnc $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public dvd<?> a() {
-      return dvd.f;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + jy.f.b(this.b);
    }
 }

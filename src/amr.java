@@ -1,35 +1,70 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public record amr(String b, uv c) {
-   public static final amr a = a("");
+public class amr implements amn {
+   private final amp a;
+   private final Long2ObjectOpenHashMap<djj> b;
+   private crh c = new crh(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public static amr a(String $$0) {
-      return new amr($$0, uv.c);
+   public amr(int $$0) {
+      this.a = new amp($$0);
+      this.d = $$0 * 2 + 1;
+      this.e = $$0 + djj.b();
+      this.f = this.e * 2 + 1;
+      this.b = new Long2ObjectOpenHashMap();
    }
 
-   public static amr b(String $$0) {
-      return new amr($$0, uv.b);
+   @Override
+   public void a(crh $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
+      }
+   }
+
+   @Override
+   public void a(crh $$0, @Nullable djj $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
+         } else {
+            this.b.put($$0.a(), $$1);
+         }
+      }
+   }
+
+   @Override
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
+   }
+
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public int e() {
+      return this.a.c();
    }
 
    @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public uv e() {
-      return this.c;
+   public djj a(int $$0, int $$1) {
+      return (djj)this.b.get(crh.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

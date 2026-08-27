@@ -1,12 +1,12 @@
 import java.util.Optional;
 
-public record zc(int a, int b, int c, int d, Optional<eji> e) implements wk<yd> {
-   public zc(bki $$0, bjg $$1) {
-      this($$0.ah(), $$0.dL().H_().d(jz.q).a($$1.j()), $$1.d() != null ? $$1.d().ah() : -1, $$1.c() != null ? $$1.c().ah() : -1, Optional.ofNullable($$1.i()));
+public record zc(int a, int b, int c, int d, Optional<eju> e) implements wk<yd> {
+   public zc(bkq $$0, bjo $$1) {
+      this($$0.aj(), $$0.dN().H_().d(jz.q).a($$1.j()), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
    public zc(tu $$0) {
-      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((tu.a<eji>)($$0x -> new eji($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((tu.a<eju>)($$0x -> new eju($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
    }
 
    private static void a(tu $$0, int $$1) {
@@ -34,14 +34,14 @@ public record zc(int a, int b, int c, int d, Optional<eji> e) implements wk<yd> 
       $$0.a(this);
    }
 
-   public bjg a(crs $$0) {
-      ib<bji> $$1 = $$0.H_().d(jz.q).c(this.b).get();
+   public bjo a(csa $$0) {
+      ib<bjq> $$1 = $$0.H_().d(jz.q).c(this.b).get();
       if (this.e.isPresent()) {
-         return new bjg($$1, this.e.get());
+         return new bjo($$1, this.e.get());
       } else {
-         bki $$2 = $$0.a(this.c);
-         bki $$3 = $$0.a(this.d);
-         return new bjg($$1, $$3, $$2);
+         bkq $$2 = $$0.a(this.c);
+         bkq $$3 = $$0.a(this.d);
+         return new bjo($$1, $$3, $$2);
       }
    }
 
@@ -57,7 +57,7 @@ public record zc(int a, int b, int c, int d, Optional<eji> e) implements wk<yd> 
       return this.d;
    }
 
-   public Optional<eji> g() {
+   public Optional<eju> g() {
       return this.e;
    }
 }

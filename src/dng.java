@@ -1,132 +1,63 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dng implements ato {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dng> b = dnf.a.xmap($$0 -> new dng($$0), $$0 -> $$0.e);
-   private dnf e;
-   private final dmh f = new dmh(this);
+public final class dng {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   public dng(long $$0) {
-      this.e = new dnf(dmu.c($$0));
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   public dng(dmu.a $$0) {
-      this.e = new dnf($$0);
+   public static dng.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dng.a($$1, $$2);
    }
 
-   public dng(long $$0, long $$1) {
-      this.e = new dnf($$0, $$1);
+   public static dng.a c(long $$0) {
+      return b($$0).a();
    }
 
-   private dng(dnf $$0) {
-      this.e = $$0;
+   public static dng.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dng.a($$2, $$3);
    }
 
-   @Override
-   public ato d() {
-      return new dng(this.e.a(), this.e.a());
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
    }
 
-   @Override
-   public dms e() {
-      return new dng.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dnf(dmu.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
-   }
-
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dms {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static record a(long a, long b) {
+      public dng.a a(long $$0, long $$1) {
+         return new dng.a(this.a ^ $$0, this.b ^ $$1);
       }
 
-      @Override
-      public ato a(int $$0, int $$1, int $$2) {
-         long $$3 = ati.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dng($$4, this.b);
+      public dng.a a(dng.a $$0) {
+         return this.a($$0.a, $$0.b);
       }
 
-      @Override
-      public ato a(String $$0) {
-         dmu.a $$1 = dmu.a($$0);
-         return new dng($$1.a(this.a, this.b));
+      public dng.a a() {
+         return new dng.a(dng.a(this.a), dng.a(this.b));
       }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

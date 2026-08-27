@@ -1,141 +1,160 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cef extends bkq implements cej {
+   private static final afo<clj> b = afr.a(cef.class, afq.h);
+   private double c;
+   private double d;
+   private double e;
+   private int f;
+   private boolean g;
 
-public final class cef {
-   private static final float a = 0.3F;
-
-   public static ejg a(bki $$0, Predicate<bki> $$1) {
-      eji $$2 = $$0.do();
-      crs $$3 = $$0.dL();
-      eji $$4 = $$0.dj();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F);
+   public cef(bku<? extends cef> $$0, csa $$1) {
+      super($$0, $$1);
    }
 
-   public static ejg a(bki $$0, Predicate<bki> $$1, double $$2) {
-      eji $$3 = $$0.f(0.0F).a($$2);
-      crs $$4 = $$0.dL();
-      eji $$5 = $$0.bp();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F);
+   public cef(csa $$0, double $$1, double $$2, double $$3) {
+      this(bku.K, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
-   private static ejg a(eji $$0, bki $$1, Predicate<bki> $$2, eji $$3, crs $$4, float $$5) {
-      eji $$6 = $$0.e($$3);
-      ejg $$7 = $$4.a(new crb($$0, $$6, crb.a.a, crb.b.a, $$1));
-      if ($$7.c() != ejg.a.a) {
-         $$6 = $$7.e();
+   public void a(clj $$0) {
+      if (!$$0.a(clm.sp) || $$0.u()) {
+         this.an().b(b, $$0.c(1));
+      }
+   }
+
+   private clj s() {
+      return this.an().b(b);
+   }
+
+   @Override
+   public clj q() {
+      clj $$0 = this.s();
+      return $$0.b() ? new clj(clm.sp) : $$0;
+   }
+
+   @Override
+   protected void b_() {
+      this.an().a(b, clj.b);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
 
-      ejg $$8 = a($$4, $$1, $$0, $$6, $$1.cG().b($$3).g(1.0), $$2, $$5);
-      if ($$8 != null) {
-         $$7 = $$8;
-      }
-
-      return $$7;
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
-   @Nullable
-   public static ejf a(bki $$0, eji $$1, eji $$2, ejd $$3, Predicate<bki> $$4, double $$5) {
-      crs $$6 = $$0.dL();
-      double $$7 = $$5;
-      bki $$8 = null;
-      eji $$9 = null;
+   public void a(ht $$0) {
+      double $$1 = (double)$$0.u();
+      int $$2 = $$0.v();
+      double $$3 = (double)$$0.w();
+      double $$4 = $$1 - this.ds();
+      double $$5 = $$3 - this.dy();
+      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
+      if ($$6 > 12.0) {
+         this.c = this.ds() + $$4 / $$6 * 12.0;
+         this.e = this.dy() + $$5 / $$6 * 12.0;
+         this.d = this.du() + 8.0;
+      } else {
+         this.c = $$1;
+         this.d = (double)$$2;
+         this.e = $$3;
+      }
 
-      for (bki $$10 : $$6.a($$0, $$3, $$4)) {
-         ejd $$11 = $$10.cG().g((double)$$10.bD());
-         Optional<eji> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+      this.f = 0;
+      this.g = this.ag.a(5) > 0;
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.o($$0, $$1, $$2);
+      if (this.O == 0.0F && this.N == 0.0F) {
+         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         this.r((float)(atm.d($$0, $$2) * 180.0F / (float)Math.PI));
+         this.s((float)(atm.d($$1, $$3) * 180.0F / (float)Math.PI));
+         this.N = this.dD();
+         this.O = this.dF();
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      eju $$0 = this.dq();
+      double $$1 = this.ds() + $$0.c;
+      double $$2 = this.du() + $$0.d;
+      double $$3 = this.dy() + $$0.e;
+      double $$4 = $$0.h();
+      this.s(cem.d(this.O, (float)(atm.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
+      this.r(cem.d(this.N, (float)(atm.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
+      if (!this.dN().B) {
+         double $$5 = this.c - $$1;
+         double $$6 = this.e - $$3;
+         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
+         float $$8 = (float)atm.d($$6, $$5);
+         double $$9 = atm.d(0.0025, $$4, (double)$$7);
+         double $$10 = $$0.d;
+         if ($$7 < 1.0F) {
+            $$9 *= 0.8;
+            $$10 *= 0.8;
+         }
+
+         int $$11 = this.du() < this.d ? 1 : -1;
+         $$0 = new eju(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
+         this.g($$0);
+      }
+
+      float $$12 = 0.25F;
+      if (this.aZ()) {
+         for (int $$13 = 0; $$13 < 4; $$13++) {
+            this.dN().a(js.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
+         }
+      } else {
+         this.dN()
+            .a(js.X, $$1 - $$0.c * 0.25 + this.ag.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.ag.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
+      }
+
+      if (!this.dN().B) {
+         this.a_($$1, $$2, $$3);
+         this.f++;
+         if (this.f > 80 && !this.dN().B) {
+            this.a(aqr.hu, 1.0F, 1.0F);
+            this.am();
+            if (this.g) {
+               this.dN().b(new can(this.dN(), this.ds(), this.du(), this.dy(), this.q()));
+            } else {
+               this.dN().c(2003, this.dn(), 0);
             }
-         } else if ($$12.isPresent()) {
-            eji $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cV() == $$0.cV()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
-               }
-            }
          }
-      }
-
-      return $$8 == null ? null : new ejf($$8, $$9);
-   }
-
-   @Nullable
-   public static ejf a(crs $$0, bki $$1, eji $$2, eji $$3, ejd $$4, Predicate<bki> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
-
-   @Nullable
-   public static ejf a(crs $$0, bki $$1, eji $$2, eji $$3, ejd $$4, Predicate<bki> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bki $$8 = null;
-
-      for (bki $$9 : $$0.a($$1, $$4, $$5)) {
-         ejd $$10 = $$9.cG().g((double)$$6);
-         Optional<eji> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
-            }
-         }
-      }
-
-      return $$8 == null ? null : new ejf($$8);
-   }
-
-   public static void a(bki $$0, float $$1) {
-      eji $$2 = $$0.do();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(ati.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(ati.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dD() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dD() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         while ($$0.dB() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dB() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(ati.i($$1, $$0.O, $$0.dD()));
-         $$0.r(ati.i($$1, $$0.N, $$0.dB()));
+      } else {
+         this.p($$1, $$2, $$3);
       }
    }
 
-   public static bip a(bky $$0, ckw $$1) {
-      return $$0.eS().a($$1) ? bip.a : bip.b;
+   @Override
+   public void b(rz $$0) {
+      clj $$1 = this.s();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new rz()));
+      }
    }
 
-   public static cds a(bky $$0, clb $$1, float $$2) {
-      cip $$3 = (cip)($$1.d() instanceof cip ? $$1.d() : cle.nH);
-      cds $$4 = $$3.a($$0.dL(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cle.ux) && $$4 instanceof cdu) {
-         ((cdu)$$4).a($$1);
-      }
+   @Override
+   public void a(rz $$0) {
+      clj $$1 = clj.a($$0.p("Item"));
+      this.a($$1);
+   }
 
-      return $$4;
+   @Override
+   public float bo() {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean cq() {
+      return false;
    }
 }

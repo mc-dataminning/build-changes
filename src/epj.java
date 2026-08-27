@@ -1,56 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class epj extends epg {
-   private static final Logger e = LogUtils.getLogger();
-   public List<epi> a;
-   public int b;
-   public int c;
-   public int d;
+public class epj {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public epj() {
-   }
-
-   public epj(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
+   private epj(String $$0, @Nullable String[] $$1) {
       this.c = $$0;
-      this.d = -1;
+      this.d = $$1;
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   public ur a(ur $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
    }
 
-   public static epj a(String $$0) {
-      epj $$1 = new epj();
-      $$1.a = Lists.newArrayList();
+   @Nullable
+   public ur a() {
+      if (!gda.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? ur.c(this.c) : ur.a(this.c, this.d);
+      }
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+   public static epj a(JsonObject $$0) {
+      String $$1 = erp.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
 
-            while ($$4.hasNext()) {
-               $$1.a.add(epi.a($$4.next().getAsJsonObject()));
-            }
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
-
-         $$1.b = erd.a("page", $$3, 0);
-         $$1.c = erd.a("size", $$3, 0);
-         $$1.d = erd.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new epj($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

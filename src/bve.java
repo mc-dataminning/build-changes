@@ -1,40 +1,29 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class bve<U extends bvd<?>> {
-   public static final bve<buo> a = a("dummy", buo::new);
-   public static final bve<buv> b = a("nearest_items", buv::new);
-   public static final bve<buw<bky>> c = a("nearest_living_entities", buw::new);
-   public static final bve<bva> d = a("nearest_players", bva::new);
-   public static final bve<buu> e = a("nearest_bed", buu::new);
-   public static final bve<bus> f = a("hurt_by", bus::new);
-   public static final bve<bvh> g = a("villager_hostiles", bvh::new);
-   public static final bve<bvg> h = a("villager_babies", bvg::new);
-   public static final bve<bvb> i = a("secondary_pois", bvb::new);
-   public static final bve<buq> j = a("golem_detected", buq::new);
-   public static final bve<buz> k = a("piglin_specific_sensor", buz::new);
-   public static final bve<buy> l = a("piglin_brute_specific_sensor", buy::new);
-   public static final bve<bur> m = a("hoglin_specific_sensor", bur::new);
-   public static final bve<bum> n = a("nearest_adult", bum::new);
-   public static final bve<bun> o = a("axolotl_attackables", bun::new);
-   public static final bve<bvf> p = a("axolotl_temptations", () -> new bvf(bxr.a()));
-   public static final bve<bvf> q = a("goat_temptations", () -> new bvf(byf.a()));
-   public static final bve<bvf> r = a("frog_temptations", () -> new bvf(bxz.a()));
-   public static final bve<bvf> s = a("camel_temptations", () -> new bvf(bxw.b()));
-   public static final bve<bup> t = a("frog_attackables", bup::new);
-   public static final bve<but> u = a("is_in_water", but::new);
-   public static final bve<bvi> v = a("warden_entity_sensor", bvi::new);
-   public static final bve<bvf> w = a("sniffer_temptations", () -> new bvf(byw.a()));
-   private final Supplier<U> x;
-
-   private bve(Supplier<U> $$0) {
-      this.x = $$0;
+public class bve<T extends blg> extends bvl<T> {
+   @Override
+   protected void a(ame $$0, T $$1) {
+      ejp $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<blg> $$3 = $$0.a(blg.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bmg<?> $$4 = $$1.dP();
+      $$4.a(buh.g, $$3);
+      $$4.a(buh.h, new buj($$1, $$3));
    }
 
-   public U a() {
-      return this.x.get();
+   protected int b() {
+      return 16;
    }
 
-   private static <U extends bvd<?>> bve<U> a(String $$0, Supplier<U> $$1) {
-      return io.a(jy.D, new agg($$0), new bve<>($$1));
+   protected int c() {
+      return 16;
+   }
+
+   @Override
+   public Set<buh<?>> a() {
+      return ImmutableSet.of(buh.g, buh.h);
    }
 }

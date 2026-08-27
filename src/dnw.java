@@ -1,21 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@Deprecated
-public class dnw extends dnx {
-   public static final Codec<dnw> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dnw::new));
+class dnw extends doa {
+   public static final Codec<dnw> a = a(dnw::new);
 
-   public dnw(iw $$0) {
+   public dnw(List<dny> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(dgw $$0) {
-      return $$0.e();
+   public boolean a(csu $$0, ht $$1) {
+      for (dny $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public dnn<?> a() {
-      return dnn.e;
+   public dnz<?> a() {
+      return dnz.j;
    }
 }

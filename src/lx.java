@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class lx implements lu {
-   private final cut a;
+   private final cva a;
    private final List<ma> b;
-   private final Set<dhz<?>> c = Sets.newHashSet();
+   private final Set<dil<?>> c = Sets.newHashSet();
    private final List<ly> d = Lists.newArrayList();
 
-   private lx(cut $$0, List<ma> $$1) {
+   private lx(cva $$0, List<ma> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class lx implements lu {
    }
 
    @Override
-   public cut a() {
+   public cva a() {
       return this.a;
    }
 
-   public static lx a(cut $$0) {
+   public static lx a(cva $$0) {
       return new lx($$0, ImmutableList.of(ma.a()));
    }
 
-   public static lx a(cut $$0, ma $$1) {
+   public static lx a(cva $$0, ma $$1) {
       return new lx($$0, ImmutableList.of($$1));
    }
 
-   public static lx a(cut $$0, ma... $$1) {
+   public static lx a(cva $$0, ma... $$1) {
       return new lx($$0, ImmutableList.copyOf($$1));
    }
 }

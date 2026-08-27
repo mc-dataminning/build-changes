@@ -1,27 +1,20 @@
-public class dfc extends der {
-   private int a;
-
-   public dfc(ht $$0, dgw $$1) {
-      super(det.s, $$0, $$1);
+public class dfc extends des {
+   public dfc(ht $$0, dhi $$1) {
+      super(dff.C, $$0, $$1, cot.c);
    }
 
    @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      $$0.a("OutputSignal", this.a);
+   protected ur g() {
+      return ur.c("container.blast_furnace");
    }
 
    @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      this.a = $$0.h("OutputSignal");
+   protected int a(clj $$0) {
+      return super.a($$0) / 2;
    }
 
-   public int c() {
-      return this.a;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
+   @Override
+   protected cgm a(int $$0, cdt $$1) {
+      return new cgq($$0, $$1, this, this.n);
    }
 }

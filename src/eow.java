@@ -1,34 +1,28 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class eow extends epg {
-   private static final Logger b = LogUtils.getLogger();
-   public List<eov> a;
+public class eow extends eps {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static eow a(String $$0) {
+   public static eow a(JsonObject $$0) {
       eow $$1 = new eow();
-      $$1.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(eov.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+         $$1.a = erp.b("invitationId", $$0, "");
+         $$1.b = erp.b("worldName", $$0, "");
+         $$1.c = erp.b("worldOwnerName", $$0, "");
+         $$1.d = erp.a("worldOwnerUuid", $$0, ac.d);
+         $$1.e = erp.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

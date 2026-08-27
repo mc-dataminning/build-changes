@@ -34,7 +34,7 @@ public class yn implements wk<yd> {
       this.e = $$1.g.apply($$0);
    }
 
-   public static yn a(big $$0) {
+   public static yn a(bin $$0) {
       return new yn($$0.i(), new yn.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class yn implements wk<yd> {
       return new yn($$0, f);
    }
 
-   public static yn b(big $$0) {
+   public static yn b(bin $$0) {
       return new yn($$0.i(), new yn.f($$0.k()));
    }
 
-   public static yn c(big $$0) {
+   public static yn c(bin $$0) {
       return new yn($$0.i(), new yn.e($$0.j()));
    }
 
-   public static yn d(big $$0) {
+   public static yn d(bin $$0) {
       return new yn($$0.i(), new yn.h($$0.l(), $$0.m()));
    }
 
-   public static yn e(big $$0) {
+   public static yn e(bin $$0) {
       return new yn($$0.i(), new yn.g($$0.n(), $$0.o(), $$0.p()));
    }
 
@@ -93,13 +93,13 @@ public class yn implements wk<yd> {
    static class a implements yn.c {
       private final ur a;
       private final float b;
-      private final big.a c;
-      private final big.b d;
+      private final bin.a c;
+      private final bin.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(big $$0) {
+      a(bin $$0) {
          this.a = $$0.j();
          this.b = $$0.k();
          this.c = $$0.l();
@@ -112,8 +112,8 @@ public class yn implements wk<yd> {
       private a(tu $$0) {
          this.a = $$0.m();
          this.b = $$0.readFloat();
-         this.c = $$0.b(big.a.class);
-         this.d = $$0.b(big.b.class);
+         this.c = $$0.b(bin.a.class);
+         this.d = $$0.b(bin.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -141,7 +141,7 @@ public class yn implements wk<yd> {
    }
 
    public interface b {
-      default void a(UUID $$0, ur $$1, float $$2, big.a $$3, big.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, ur $$1, float $$2, bin.a $$3, bin.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -153,7 +153,7 @@ public class yn implements wk<yd> {
       default void a(UUID $$0, ur $$1) {
       }
 
-      default void a(UUID $$0, big.a $$1, big.b $$2) {
+      default void a(UUID $$0, bin.a $$1, bin.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class yn implements wk<yd> {
    }
 
    static class h implements yn.c {
-      private final big.a a;
-      private final big.b b;
+      private final bin.a a;
+      private final bin.b b;
 
-      h(big.a $$0, big.b $$1) {
+      h(bin.a $$0, bin.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(tu $$0) {
-         this.a = $$0.b(big.a.class);
-         this.b = $$0.b(big.b.class);
+         this.a = $$0.b(bin.a.class);
+         this.b = $$0.b(bin.b.class);
       }
 
       @Override

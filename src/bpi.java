@@ -1,24 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bpi extends bmp<bla> {
-   private final float c;
-
-   public bpi(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
+public class bpi {
+   public static <E extends bli> bmy<E> a(Function<E, Optional<? extends blg>> $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   protected boolean a(ama $$0, bla $$1) {
-      return $$1.aX() && $$1.b(arh.a) > $$1.de() || $$1.bl();
-   }
-
-   protected boolean a(ama $$0, bla $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ama $$0, bla $$1, long $$2) {
-      if ($$1.ef().i() < this.c) {
-         $$1.K().a();
-      }
+   public static <E extends bli> bmy<E> a(Predicate<E> $$0, Function<E, Optional<? extends blg>> $$1) {
+      return bqj.a(
+         (Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$2 -> $$2.group($$2.c(buh.o), $$2.a(buh.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends blg> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        blg $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
+                     }
+                  }
+               }))
+      );
    }
 }

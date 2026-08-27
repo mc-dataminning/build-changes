@@ -1,23 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
 
-public class apc {
-   private static final Codec<apc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(atp.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, apc::new)
-   );
-   public static final aoe<apc> a = aoe.a("filter", b);
-   private final List<atp> c;
+public class apc extends apn<apc.a> {
+   private static final Logger c = LogUtils.getLogger();
+   private final Stopwatch d = Stopwatch.createUnstarted();
 
-   public apc(List<atp> $$0) {
-      this.c = List.copyOf($$0);
+   public apc(aph $$0, List<apb> $$1, Executor $$2, Executor $$3, CompletableFuture<auo> $$4) {
+      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         bfh $$8 = new bfh(ac.b, () -> 0, false);
+         bfh $$9 = new bfh(ac.b, () -> 0, false);
+         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$6.addAndGet(ac.c() - $$2xxx);
+            }), $$2xx -> $$5.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$7.addAndGet(ac.c() - $$2xxx);
+            }));
+         return $$10.thenApplyAsync($$5x -> {
+            c.debug("Finished reloading " + $$3x.c());
+            return new apc.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
+         }, $$3);
+      }, $$4);
+      this.d.start();
+      this.b = this.b.thenApplyAsync(this::a, $$3);
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   private List<apc.a> a(List<apc.a> $$0) {
+      this.d.stop();
+      long $$1 = 0L;
+      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+
+      for (apc.a $$2 : $$0) {
+         bfn $$3 = $$2.b;
+         bfn $$4 = $$2.c;
+         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
+         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
+         long $$7 = $$5 + $$6;
+         String $$8 = $$2.a;
+         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
+         $$1 += $$6;
+      }
+
+      c.info("Total blocking time: {} ms", $$1);
+      return $$0;
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   public static class a {
+      final String a;
+      final bfn b;
+      final bfn c;
+      final AtomicLong d;
+      final AtomicLong e;
+
+      a(String $$0, bfn $$1, bfn $$2, AtomicLong $$3, AtomicLong $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 }

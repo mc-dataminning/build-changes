@@ -1,16 +1,39 @@
-public class ara {
-   public static final arr<dei> a = a("no_item_required");
-   public static final arr<dei> b = a("pattern_item/flower");
-   public static final arr<dei> c = a("pattern_item/creeper");
-   public static final arr<dei> d = a("pattern_item/skull");
-   public static final arr<dei> e = a("pattern_item/mojang");
-   public static final arr<dei> f = a("pattern_item/globe");
-   public static final arr<dei> g = a("pattern_item/piglin");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private ara() {
+public class ara<T> implements Iterable<aqy<T>> {
+   private final io<T> a;
+   private final Map<T, aqy<T>> b = new IdentityHashMap<>();
+   private final ur c;
+
+   public ara(io<T> $$0, ur $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static arr<dei> a(String $$0) {
-      return arr.a(jz.c, new agg($$0));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public aqy<T> a(T $$0, aqz $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new aqy<>(this, (T)$$1x, $$1));
+   }
+
+   public io<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<aqy<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public aqy<T> b(T $$0) {
+      return this.a($$0, aqz.b);
+   }
+
+   public ur b() {
+      return this.c;
    }
 }

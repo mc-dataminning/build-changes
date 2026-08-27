@@ -1,49 +1,64 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class frg {
-   public static final int a = -1;
-   public final hx b;
-   public final int c;
-   public final String d;
-   public final fri e;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 4;
+   private final Queue<frf> c;
+   private volatile int d;
 
-   public frg(@Nullable hx $$0, int $$1, String $$2, fri $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private frg(List<frf> $$0) {
+      this.c = Queues.newArrayDeque($$0);
+      this.d = this.c.size();
    }
 
-   protected static class a implements JsonDeserializer<frg> {
-      private static final int a = -1;
+   public static frg a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / frf.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<frf> $$3 = new ArrayList<>($$2);
 
-      public frg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         hx $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fri $$7 = (fri)$$2.deserialize($$3, fri.class);
-         return new frg($$4, $$5, $$6, $$7);
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new frf());
+         }
+      } catch (OutOfMemoryError var7) {
+         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
       }
 
-      protected int a(JsonObject $$0) {
-         return asy.a($$0, "tintindex", -1);
-      }
+      return new frg($$3);
+   }
 
-      private String b(JsonObject $$0) {
-         return asy.i($$0, "texture");
+   @Nullable
+   public frf a() {
+      frf $$0 = this.c.poll();
+      if ($$0 != null) {
+         this.d = this.c.size();
+         return $$0;
+      } else {
+         return null;
       }
+   }
 
-      @Nullable
-      private hx c(JsonObject $$0) {
-         String $$1 = asy.a($$0, "cullface", "");
-         return hx.a($$1);
-      }
+   public void a(frf $$0) {
+      this.c.add($$0);
+      this.d = this.c.size();
+   }
+
+   public boolean b() {
+      return this.c.isEmpty();
+   }
+
+   public int c() {
+      return this.d;
    }
 }

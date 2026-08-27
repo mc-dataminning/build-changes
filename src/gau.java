@@ -1,77 +1,14 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gau extends gaf<bxu, fkf<bxu>> {
+   private static final agi a = new agi("textures/entity/wolf/wolf_collar.png");
 
-public class gau extends gas implements gat {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private eml f;
-
-   public gau(eml $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
+   public gau(fxs<bxu, fkf<bxu>> $$0) {
+      super($$0);
    }
 
-   public gau(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new eml($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-   }
-
-   @Override
-   public void a(apd $$0) {
-   }
-
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public eml e() {
-      return this.f;
-   }
-
-   public void a(eml $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(agg $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
+   public void a(enw $$0, fqu $$1, int $$2, bxu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u() && !$$3.ce()) {
+         float[] $$10 = $$3.go().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

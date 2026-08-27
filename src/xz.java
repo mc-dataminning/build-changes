@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public record xz(Set<agg> a) implements wk<xw> {
+public record xz(Set<agi> a) implements wk<xw> {
    public xz(tu $$0) {
       this($$0.a(HashSet::new, tu::t));
    }

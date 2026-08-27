@@ -62,17 +62,17 @@ public class Main {
 
          o.h();
          if ($$17.has($$14)) {
-            bfn.e.a(bfl.b);
+            bfu.e.a(bfs.b);
          }
 
-         agi.a();
-         agi.c();
+         agk.a();
+         agk.c();
          ac.k();
          Path $$19 = Paths.get("server.properties");
-         akz $$20 = new akz($$19);
+         ald $$20 = new ald($$19);
          $$20.b();
          Path $$21 = Paths.get("eula.txt");
-         agm $$22 = new agm($$21);
+         ago $$22 = new ago($$21);
          if ($$17.has($$3)) {
             a.info("Initialized '{}' and '{}'", $$19.toAbsolutePath(), $$21.toAbsolutePath());
             return;
@@ -84,18 +84,18 @@ public class Main {
          }
 
          File $$23 = new File((String)$$17.valueOf($$10));
-         agy $$24 = agy.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
+         ahb $$24 = ahb.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
          String $$25 = (String)Optional.ofNullable((String)$$17.valueOf($$11)).orElse($$20.a().m);
-         eeb $$26 = eeb.b($$23.toPath());
-         eeb.c $$27 = $$26.d($$25);
+         een $$26 = een.b($$23.toPath());
+         een.c $$27 = $$26.d($$25);
          Dynamic<?> $$28;
          if ($$27.k()) {
-            eec $$29;
+            eeo $$29;
             try {
                $$28 = $$27.f();
                $$29 = $$27.a($$28);
             } catch (sk | sq | IOException var39) {
-               eeb.b $$31 = $$27.c();
+               een.b $$31 = $$27.c();
                a.warn("Failed to load world data from {}", $$31.b(), var39);
                a.info("Attempting to use fallback");
 
@@ -130,37 +130,37 @@ public class Main {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         aoo $$40 = aor.a($$27);
+         aos $$40 = aov.a($$27);
 
-         ahb $$42;
+         ahe $$42;
          try {
-            aha.c $$41 = a($$20.a(), $$38, $$39, $$40);
-            $$42 = ac.<ahb>c($$6x -> aha.a($$41, $$5xx -> {
-                  io<dkg> $$6xx = $$5xx.d().d(jz.aK);
+            ahd.c $$41 = a($$20.a(), $$38, $$39, $$40);
+            $$42 = ac.<ahe>c($$6x -> ahd.a($$41, $$5xx -> {
+                  io<dks> $$6xx = $$5xx.d().d(jz.aK);
                   if ($$38 != null) {
-                     edy $$7x = eeb.a($$38, $$5xx.b(), $$6xx, $$5xx.c());
-                     return new aha.b<>($$7x.a(), $$7x.b().b());
+                     eek $$7x = een.a($$38, $$5xx.b(), $$6xx, $$5xx.c());
+                     return new ahd.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     crw $$8x;
-                     dnd $$9x;
-                     dna $$10x;
+                     cse $$8x;
+                     dnp $$9x;
+                     dnm $$10x;
                      if ($$17.has($$4)) {
-                        $$8x = MinecraftServer.f;
-                        $$9x = dnd.b;
-                        $$10x = dwl.a($$5xx.c());
+                        $$8x = MinecraftServer.e;
+                        $$9x = dnp.b;
+                        $$10x = dwx.a($$5xx.c());
                      } else {
-                        aky $$11x = $$20.a();
-                        $$8x = new crw($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new cro(), $$5xx.b());
+                        alc $$11x = $$20.a();
+                        $$8x = new cse($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new crw(), $$5xx.b());
                         $$9x = $$17.has($$5) ? $$11x.Y.a(true) : $$11x.Y;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     dna.b $$15x = $$10x.a($$6xx);
+                     dnm.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().d());
-                     return new aha.b<>(new eef($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new ahd.b<>(new eer($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
-               }, ahb::new, ac.f(), $$6x)).get();
+               }, ahe::new, ac.f(), $$6x)).get();
          } catch (Exception var37) {
             a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var37);
             return;
@@ -168,19 +168,19 @@ public class Main {
 
          ip.b $$45 = $$42.c().a();
          if ($$17.has($$6)) {
-            a($$27, auo.a(), $$17.has($$7), () -> true, $$45.d(jz.aK));
+            a($$27, aut.a(), $$17.has($$7), () -> true, $$45.d(jz.aK));
          }
 
-         eeh $$46 = $$42.d();
+         eet $$46 = $$42.d();
          $$27.a($$45, $$46);
-         final akx $$47 = MinecraftServer.a((Function<Thread, akx>)($$11x -> {
-            akx $$12x = new akx($$11x, $$27, $$40, $$42, $$20, auo.a(), $$24, aml::new);
+         final alb $$47 = MinecraftServer.a((Function<Thread, alb>)($$11x -> {
+            alb $$12x = new alb($$11x, $$27, $$40, $$42, $$20, aut.a(), $$24, amp::new);
             $$12x.a((Integer)$$17.valueOf($$12));
             $$12x.c($$17.has($$4));
             $$12x.b((String)$$17.valueOf($$13));
             boolean $$13x = !$$17.has($$2) && !$$17.valuesOf($$16).contains("nogui");
             if ($$13x && !GraphicsEnvironment.isHeadless()) {
-               $$12x.bh();
+               $$12x.bm();
             }
 
             return $$12x;
@@ -207,25 +207,25 @@ public class Main {
       }
    }
 
-   private static aha.c a(aky $$0, @Nullable Dynamic<?> $$1, boolean $$2, aoo $$3) {
+   private static ahd.c a(alc $$0, @Nullable Dynamic<?> $$1, boolean $$2, aos $$3) {
       boolean $$5;
-      csl $$6;
+      cst $$6;
       if ($$1 != null) {
-         csl $$4 = eeb.a($$1);
+         cst $$4 = een.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new csl($$0.T, cfx.h);
+         $$6 = new cst($$0.T, cgf.h);
       }
 
-      aha.d $$9 = new aha.d($$3, $$6, $$2, $$5);
-      return new aha.c($$9, dv.a.b, $$0.B);
+      ahd.d $$9 = new ahd.d($$3, $$6, $$2, $$5);
+      return new ahd.c($$9, dv.a.b, $$0.B);
    }
 
-   private static void a(eeb.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, io<dkg> $$4) {
+   private static void a(een.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, io<dks> $$4) {
       a.info("Forcing world upgrade!");
-      bie $$5 = new bie($$0, $$1, $$4, $$2);
+      bil $$5 = new bil($$0, $$1, $$4, $$2);
       ur $$6 = null;
 
       while (!$$5.b()) {
@@ -238,7 +238,7 @@ public class Main {
          int $$8 = $$5.e();
          if ($$8 > 0) {
             int $$9 = $$5.f() + $$5.g();
-            a.info("{}% completed ({} / {} chunks)...", new Object[]{ati.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{atm.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
          }
 
          if (!$$3.getAsBoolean()) {

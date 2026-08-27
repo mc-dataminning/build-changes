@@ -1,108 +1,97 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ezc extends fah {
-   private static final ur a = ur.c("createWorld.customize.buffet.biome");
-   private final fah b;
-   private final Consumer<ib<csq>> c;
-   final io<csq> k;
-   private ezc.a l;
-   ib<csq> m;
-   private eum n;
+public record ezc(ezb a, int b, int c) {
+   private static final ezc d = new ezc(0, 0, 0, 0);
 
-   public ezc(fah $$0, fff $$1, Consumer<ib<csq>> $$2) {
-      super(ur.c("createWorld.customize.buffet.title"));
-      this.b = $$0;
-      this.c = $$2;
-      this.k = $$1.a().d(jz.ar);
-      ib<csq> $$3 = this.k.b(csx.b).or(() -> this.k.h().findAny()).orElseThrow();
-      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
+   public ezc(int $$0, int $$1, int $$2, int $$3) {
+      this(new ezb($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.b);
+   public static ezc a() {
+      return d;
    }
 
-   @Override
-   protected void aO_() {
-      this.l = new ezc.a();
-      this.e(this.l);
-      this.n = this.d(eum.a(uq.d, $$0 -> {
-         this.c.accept(this.m);
-         this.f.a(this.b);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(eum.a(uq.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
+   public static ezc a(eyz $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new ezc($$1, $$2, $$3, $$4);
+         case b -> new ezc($$2, $$1, $$4, $$3);
+      };
    }
 
-   void l() {
-      this.n.i = this.l.f() != null;
+   public ezc a(eza $$0) {
+      return new ezc(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, a, this.g / 2, 28, 10526880);
+   public int a(eyz $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public int b(eza $$0) {
+      eyz $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   class a extends evi<ezc.a.a> {
-      a() {
-         super(ezc.this.f, ezc.this.g, ezc.this.h, 40, ezc.this.h - 37, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         ezc.this.k.h().map($$0x -> new ezc.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
+   public ezc c(eza $$0) {
+      int $$1 = this.b($$0);
+      eyz $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
 
-      public void a(@Nullable ezc.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            ezc.this.m = $$0.b;
-         }
+   public boolean a(ezc $$0) {
+      return this.a($$0, eyz.a) && this.a($$0, eyz.b);
+   }
 
-         ezc.this.l();
-      }
+   public boolean a(ezc $$0, eyz $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
 
-      class a extends evi.a<ezc.a.a> {
-         final ib.c<csq> b;
-         final ur c;
+   public int b(eyz $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
 
-         public a(ib.c<csq> $$0) {
-            this.b = $$0;
-            agg $$1 = $$0.g().a();
-            String $$2 = $$1.f("biome");
-            if (ru.a().b($$2)) {
-               this.c = ur.c($$2);
-            } else {
-               this.c = ur.b($$1.toString());
-            }
-         }
+   @Nullable
+   public ezc b(ezc $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new ezc($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
 
-         @Override
-         public ur a() {
-            return ur.a("narrator.select", this.c);
-         }
+   public int b() {
+      return this.a.b();
+   }
 
-         @Override
-         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(ezc.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
+   public int c() {
+      return this.a.b() + this.c;
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-      }
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public ezb f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

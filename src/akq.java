@@ -1,13 +1,47 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public interface akq {
-   void a(rz var1) throws CommandSyntaxException;
+public class akq {
+   private static final int a = -1;
 
-   rz a() throws CommandSyntaxException;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), -1)))
+                        .then(dv.a("duration", ff.a(1)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dv.a("rain").executes($$0x -> b((du)$$0x.getSource(), -1)))
+                     .then(dv.a("duration", ff.a(1)).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)dv.a("thunder").executes($$0x -> c((du)$$0x.getSource(), -1)))
+                  .then(dv.a("duration", ff.a(1)).executes($$0x -> c((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
+   }
 
-   ur b();
+   private static int a(du $$0, int $$1, bic $$2) {
+      return $$1 == -1 ? $$2.a($$0.f().E_()) : $$1;
+   }
 
-   ur a(sw var1);
+   private static int a(du $$0, int $$1) {
+      $$0.f().a(a($$0, $$1, ame.b), 0, false, false);
+      $$0.a(() -> ur.c("commands.weather.set.clear"), true);
+      return $$1;
+   }
 
-   ur a(el.g var1, double var2, int var4);
+   private static int b(du $$0, int $$1) {
+      $$0.f().a(0, a($$0, $$1, ame.c), true, false);
+      $$0.a(() -> ur.c("commands.weather.set.rain"), true);
+      return $$1;
+   }
+
+   private static int c(du $$0, int $$1) {
+      $$0.f().a(0, a($$0, $$1, ame.d), true, true);
+      $$0.a(() -> ur.c("commands.weather.set.thunder"), true);
+      return $$1;
+   }
 }

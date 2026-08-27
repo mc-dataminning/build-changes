@@ -1,55 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class cvr extends cyh implements cuw, cvp {
-   public static final MapCodec<cvr> c = b(cvr::new);
+public class cvr extends cva {
+   public static final MapCodec<cvr> a = b(cvr::new);
+   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<cvr> a() {
-      return c;
+   public MapCodec<? extends cvr> a() {
+      return a;
    }
 
-   public cvr(dgv.d $$0) {
-      super($$0, hx.a, r_, false);
-      this.k(this.E.b().a(s_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected cyi c() {
-      return (cyi)cuv.ru;
+   public cvr(dhh.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dgw a(dgw $$0, dgw $$1) {
-      return $$1.a(s_, $$0.c(s_));
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
    }
 
    @Override
-   public clb a(crv $$0, ht $$1, dgw $$2) {
-      return new clb(cle.vx);
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      return cvp.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(s_);
-   }
-
-   @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      return !$$2.c(s_);
-   }
-
-   @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return !$$1.t($$2.d());
    }
 }

@@ -1,28 +1,24 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class dyu extends dwv {
-   public static final Codec<dyu> d = a(dyu::new);
+@FunctionalInterface
+public interface dyu {
+   dyu a = $$0 -> $$0;
 
-   public dyu(dwv.c $$0) {
-      super($$0);
-   }
+   agh<dyq> lookup(agh<dyq> var1);
 
-   @Override
-   public Optional<dwv.b> a(dwv.a $$0) {
-      return a($$0, dmf.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dxn $$0, dwv.a $$1) {
-      cqz $$2 = $$1.h();
-      dne $$3 = $$1.f();
-      ht $$4 = new ht($$2.d(), 90, $$2.e());
-      dbf $$5 = dbf.a($$3);
-      dyt.a($$1.e(), $$4, $$5, $$0, $$3);
-   }
-
-   @Override
-   public dxe<?> e() {
-      return dxe.e;
+   static dyu create(List<dys> $$0, ht $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         ats $$3 = ats.a($$2).e().a($$1);
+         Builder<agh<dyq>, agh<dyq>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<agh<dyq>, agh<dyq>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

@@ -1,34 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bon {
-   public static bmq<bky> a(blb $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
+public class bon extends bmx<bli> {
+   private final bic c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public bon(bic $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(buh.n, bui.b, buh.P, bui.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
    }
 
-   public static bnz<bky> a(bkm<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag()), $$1);
-   }
-
-   public static bnz<bky> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bnz<bky> a(Predicate<bky> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bqb.a(
-         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$2x -> $$2x.group($$2x.c(btz.n), $$2x.b(btz.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bky> $$8 = $$2x.<bub>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bki)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bna($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   protected void a(ame $$0, bli $$1, long $$2) {
+      ats $$3 = $$1.eh();
+      float $$4 = atm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = atm.g($$1.dD() + 2.0F * $$3.i() * this.d - this.d);
+      eju $$6 = eju.a($$4, $$5);
+      $$1.dP().a(buh.n, new bna($$1.br().e($$6)));
+      $$1.dP().a(buh.P, this.c.a($$3));
    }
 }

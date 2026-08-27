@@ -1,3 +1,2 @@
-public interface crf {
-   int a(ama var1, boolean var2, boolean var3);
+public record crf(ht a, cva b, int c, int d) {
 }

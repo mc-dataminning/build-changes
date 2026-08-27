@@ -1,63 +1,66 @@
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import org.apache.commons.lang3.Validate;
 
-public class gfb implements ape {
-   public static final gfb.a<clb> a = new gfb.a<>();
-   public static final gfb.a<clb> b = new gfb.a<>();
-   public static final gfb.a<fdz> c = new gfb.a<>();
-   private final Map<gfb.a<?>, gfb.c<?>> d = new HashMap<>();
+public class gfb implements JsonDeserializer<gfa> {
+   private static final bia a = bhy.a(1.0F);
 
-   @Override
-   public void a(apd $$0) {
-      for (gfb.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
+   public gfa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = atc.m($$0, "entry");
+      boolean $$4 = atc.a($$3, "replace", false);
+      String $$5 = atc.a($$3, "subtitle", null);
+      List<gez> $$6 = this.a($$3);
+      return new gfa($$6, $$4, $$5);
    }
 
-   public <T> void a(gfb.a<T> $$0, gfb.b<T> $$1) {
-      this.d.put($$0, new gfb.c<>($$1));
-   }
+   private List<gez> a(JsonObject $$0) {
+      List<gez> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = atc.v($$0, "sounds");
 
-   private <T> gfb.c<T> b(gfb.a<T> $$0) {
-      gfb.c<T> $$1 = (gfb.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
-      } else {
-         return $$1;
-      }
-   }
-
-   public <T> void a(gfb.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
-
-   public <T> gfc<T> a(gfb.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gez<T>> {
-   }
-
-   static class c<T> {
-      private final gfb.b<T> a;
-      gez<T> b = gez.b();
-
-      c(gfb.b<T> $$0) {
-         this.a = $$0;
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (atc.a($$4)) {
+               String $$5 = atc.a($$4, "sound");
+               $$1.add(new gez($$5, a, a, 1, gez.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(atc.m($$4, "sound")));
+            }
+         }
       }
 
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
+      return $$1;
+   }
+
+   private gez b(JsonObject $$0) {
+      String $$1 = atc.i($$0, "name");
+      gez.a $$2 = this.a($$0, gez.a.a);
+      float $$3 = atc.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = atc.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = atc.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = atc.a($$0, "preload", false);
+      boolean $$7 = atc.a($$0, "stream", false);
+      int $$8 = atc.a($$0, "attenuation_distance", 16);
+      return new gez($$1, bhy.a($$3), bhy.a($$4), $$5, $$2, $$7, $$6, $$8);
+   }
+
+   private gez.a a(JsonObject $$0, gez.a $$1) {
+      gez.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = gez.a.a(atc.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
       }
 
-      void a() {
-         this.b.a();
-      }
+      return $$2;
    }
 }

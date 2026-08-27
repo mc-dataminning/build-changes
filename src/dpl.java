@@ -1,43 +1,34 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class dpl<FC extends drn> {
-   private final Optional<dow<?, ?>> a;
-   private final csm b;
-   private final dit c;
-   private final ato d;
-   private final ht e;
-   private final FC f;
-
-   public dpl(Optional<dow<?, ?>> $$0, csm $$1, dit $$2, ato $$3, ht $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class dpl extends dpk {
+   public dpl(Codec<dsg> $$0) {
+      super($$0);
    }
 
-   public Optional<dow<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   protected boolean a(csb $$0, ats $$1, ht $$2, dhi $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      ht.a $$8 = $$2.j();
 
-   public csm b() {
-      return this.b;
-   }
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(hx.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
+            }
+         }
+      }
 
-   public dit c() {
-      return this.c;
-   }
-
-   public ato d() {
-      return this.d;
-   }
-
-   public ht e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+      return true;
    }
 }

@@ -1,13 +1,22 @@
-import java.util.List;
+public class fky {
+   private final float a;
+   private final float b;
 
-public enum fky {
-   a,
-   b;
+   public fky(float $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   private static final List<fky> c = List.of(values());
-   private static final ip.b d = ip.a(jy.ar);
+   public float a() {
+      return this.a;
+   }
 
-   public static ij<fky> a() {
-      return new ij<>(c).a(a, d);
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
    }
 }

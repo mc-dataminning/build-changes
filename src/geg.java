@@ -1,29 +1,12 @@
-public class geg extends gdy {
-   private final bki n;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public geg(aqm $$0, aqo $$1, float $$2, float $$3, bki $$4, long $$5) {
-      super($$0, $$1, ato.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dq());
-      this.g = (double)((float)this.n.ds());
-      this.h = (double)((float)this.n.dw());
-   }
+public interface geg {
+   Collection<agi> f();
 
-   @Override
-   public boolean s() {
-      return !this.n.aS();
-   }
+   void a(Function<agi, geg> var1);
 
-   @Override
-   public void q() {
-      if (this.n.dG()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.n.dq());
-         this.g = (double)((float)this.n.ds());
-         this.h = (double)((float)this.n.dw());
-      }
-   }
+   @Nullable
+   gdv a(gdz var1, Function<gdy, gbu> var2, ged var3, agi var4);
 }

@@ -37,8 +37,8 @@ public class ek implements ez<ek.a> {
 
    private static void a(Consumer<vh> $$0, du $$1, vh $$2) {
       MinecraftServer $$3 = $$1.m();
-      CompletableFuture<amr> $$4 = a($$1, $$2);
-      ur $$5 = $$3.bd().decorate($$1.j(), $$2.c());
+      CompletableFuture<amv> $$4 = a($$1, $$2);
+      ur $$5 = $$3.bi().decorate($$1.j(), $$2.c());
       $$1.p().append($$4, $$3x -> {
          vh $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
@@ -46,14 +46,14 @@ public class ek implements ez<ek.a> {
    }
 
    private static void b(Consumer<vh> $$0, du $$1, vh $$2) {
-      um $$3 = $$1.m().bd();
+      um $$3 = $$1.m().bi();
       ur $$4 = $$3.decorate($$1.j(), $$2.c());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<amr> a(du $$0, vh $$1) {
-      amb $$2 = $$0.j();
-      return $$2 != null && $$1.a($$2.cv()) ? $$2.V().a($$1.b()) : CompletableFuture.completedFuture(amr.a($$1.b()));
+   private static CompletableFuture<amv> a(du $$0, vh $$1) {
+      amf $$2 = $$0.j();
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.b()) : CompletableFuture.completedFuture(amv.a($$1.b()));
    }
 
    public ek.a a(StringReader $$0) throws CommandSyntaxException {

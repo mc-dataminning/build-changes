@@ -1,43 +1,34 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dap extends cuh {
-   public static final MapCodec<dap> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dhl.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, dap::new)
-   );
-   public static final dhn f = dhm.w;
+public class dap extends dcb {
+   public static final MapCodec<dap> b = b(dap::new);
 
    @Override
    public MapCodec<dap> a() {
-      return e;
+      return b;
    }
 
-   protected dap(dhl $$0, dgv.d $$1) {
-      super($$1, $$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int g(dgw $$0) {
-      return $$0.c(f) ? 15 : 0;
+   protected dap(dhh.d $$0) {
+      super(dcb.b.e, $$0);
    }
 
    @Override
-   protected dgw a(dgw $$0, int $$1) {
-      return $$0.a(f, Boolean.valueOf($$1 > 0));
-   }
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.c_($$1) instanceof dgo $$6) {
+         GameProfile $$7 = null;
+         if ($$4.u()) {
+            rz $$8 = $$4.v();
+            if ($$8.b("SkullOwner", 10)) {
+               $$7 = so.a($$8.p("SkullOwner"));
+            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
+               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
+            }
+         }
 
-   @Override
-   protected int b(crs $$0, ht $$1) {
-      Class<? extends bki> $$2 = switch (this.d.e()) {
-         case a -> bki.class;
-         case b -> bky.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(f);
+         $$6.a($$7);
+      }
    }
 }

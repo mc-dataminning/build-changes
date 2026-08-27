@@ -1,41 +1,75 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
 public class gbz {
-   private static final gch[] a = new gch[]{
-      a("textures/entity/player/slim/alex.png", gch.a.a),
-      a("textures/entity/player/slim/ari.png", gch.a.a),
-      a("textures/entity/player/slim/efe.png", gch.a.a),
-      a("textures/entity/player/slim/kai.png", gch.a.a),
-      a("textures/entity/player/slim/makena.png", gch.a.a),
-      a("textures/entity/player/slim/noor.png", gch.a.a),
-      a("textures/entity/player/slim/steve.png", gch.a.a),
-      a("textures/entity/player/slim/sunny.png", gch.a.a),
-      a("textures/entity/player/slim/zuri.png", gch.a.a),
-      a("textures/entity/player/wide/alex.png", gch.a.b),
-      a("textures/entity/player/wide/ari.png", gch.a.b),
-      a("textures/entity/player/wide/efe.png", gch.a.b),
-      a("textures/entity/player/wide/kai.png", gch.a.b),
-      a("textures/entity/player/wide/makena.png", gch.a.b),
-      a("textures/entity/player/wide/noor.png", gch.a.b),
-      a("textures/entity/player/wide/steve.png", gch.a.b),
-      a("textures/entity/player/wide/sunny.png", gch.a.b),
-      a("textures/entity/player/wide/zuri.png", gch.a.b)
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private static final agb b = new agb("atlases", ".json");
+   private final List<gby> c;
 
-   public static agg a() {
-      return a[6].a();
+   private gbz(List<gby> $$0) {
+      this.c = $$0;
    }
 
-   public static gch a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   public List<Function<gbx, gbo>> a(aph $$0) {
+      final Map<agi, gby.b> $$1 = new HashMap<>();
+      gby.a $$2 = new gby.a() {
+         @Override
+         public void a(agi $$0, gby.b $$1x) {
+            gby.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<agi> $$0) {
+            Iterator<Entry<agi, gby.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<agi, gby.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<gbx, gbo>> $$3 = ImmutableList.builder();
+      $$3.add((Function<gbx, gbo>)$$0x -> gbk.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   public static gch a(GameProfile $$0) {
-      return a($$0.getId());
-   }
+   public static gbz a(aph $$0, agi $$1) {
+      agi $$2 = b.a($$1);
+      List<gby> $$3 = new ArrayList<>();
 
-   private static gch a(String $$0, gch.a $$1) {
-      return new gch(new agg($$0), null, null, null, $$1, true);
+      for (apf $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gby>)gcb.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
+      }
+
+      return new gbz($$3);
    }
 }

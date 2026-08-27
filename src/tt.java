@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public enum tt {
-   a("handshake", b().a(wl.b, new tt.b()).a(wl.a, new tt.b<aek>().a(aej.class, aej::new))),
+   a("handshake", b().a(wl.b, new tt.b()).a(wl.a, new tt.b<aem>().a(ael.class, ael::new))),
    b(
       "play",
       b()
@@ -74,7 +74,7 @@ public enum tt {
                .a(zy.class, zy::new)
                .a(zz.class, zz::new)
                .a(wr.class, wr::new)
-               .a(aff.class, aff::new)
+               .a(afh.class, afh::new)
                .a(aaa.class, aaa::new)
                .a(aab.class, aab::new)
                .a(aac.class, aac::new)
@@ -134,13 +134,13 @@ public enum tt {
                .a(acd.class, acd::new)
                .a(ace.class, ace::new)
                .a(acf.class, acf::new)
+               .a(acg.class, acg::new)
+               .a(ach.class, ach::new)
                .a(wt.class, wt::new)
          )
          .a(
             wl.a,
-            new tt.b<acj>()
-               .a(acm.class, acm::new)
-               .a(acn.class, acn::new)
+            new tt.b<acl>()
                .a(aco.class, aco::new)
                .a(acp.class, acp::new)
                .a(acq.class, acq::new)
@@ -148,40 +148,40 @@ public enum tt {
                .a(acs.class, acs::new)
                .a(act.class, act::new)
                .a(acu.class, acu::new)
-               .a(wv.class, wv::new)
                .a(acv.class, acv::new)
                .a(acw.class, acw::new)
+               .a(wv.class, wv::new)
                .a(acx.class, acx::new)
                .a(acy.class, acy::new)
                .a(acz.class, acz::new)
                .a(ada.class, ada::new)
-               .a(ww.class, ww::new)
                .a(adb.class, adb::new)
                .a(adc.class, adc::new)
+               .a(ww.class, ww::new)
                .a(add.class, add::new)
                .a(ade.class, ade::new)
-               .a(wx.class, wx::new)
                .a(adf.class, adf::new)
-               .a(adg.a.class, adg.a::b)
-               .a(adg.b.class, adg.b::b)
-               .a(adg.c.class, adg.c::b)
-               .a(adg.d.class, adg.d::b)
+               .a(adg.class, adg::new)
+               .a(wx.class, wx::new)
                .a(adh.class, adh::new)
-               .a(adi.class, adi::new)
+               .a(adi.a.class, adi.a::b)
+               .a(adi.b.class, adi.b::b)
+               .a(adi.c.class, adi.c::b)
+               .a(adi.d.class, adi.d::b)
                .a(adj.class, adj::new)
-               .a(afj.class, afj::new)
                .a(adk.class, adk::new)
                .a(adl.class, adl::new)
+               .a(afl.class, afl::new)
                .a(adm.class, adm::new)
                .a(adn.class, adn::new)
                .a(ado.class, ado::new)
-               .a(wy.class, wy::new)
                .a(adp.class, adp::new)
                .a(adq.class, adq::new)
+               .a(wy.class, wy::new)
                .a(adr.class, adr::new)
-               .a(wz.class, wz::new)
                .a(ads.class, ads::new)
                .a(adt.class, adt::new)
+               .a(wz.class, wz::new)
                .a(adu.class, adu::new)
                .a(adv.class, adv::new)
                .a(adw.class, adw::new)
@@ -194,17 +194,19 @@ public enum tt {
                .a(aed.class, aed::new)
                .a(aee.class, aee::new)
                .a(aef.class, aef::new)
+               .a(aeg.class, aeg::new)
+               .a(aeh.class, aeh::new)
          )
    ),
    c(
       "status",
-      b().a(wl.a, new tt.b<afi>().a(afk.class, afk::new).a(afj.class, afj::new)).a(wl.b, new tt.b<afe>().a(afg.class, afg::new).a(aff.class, aff::new))
+      b().a(wl.a, new tt.b<afk>().a(afm.class, afm::new).a(afl.class, afl::new)).a(wl.b, new tt.b<afg>().a(afi.class, afi::new).a(afh.class, afh::new))
    ),
    d(
       "login",
       b()
-         .a(wl.b, new tt.b<aem>().a(aer.class, aer::new).a(aep.class, aep::new).a(aeo.class, aeo::new).a(aeq.class, aeq::new).a(aen.class, aen::new))
-         .a(wl.a, new tt.b<aes>().a(aeu.class, aeu::new).a(aev.class, aev::new).a(aet.class, aet::b).a(aew.class, aew::new))
+         .a(wl.b, new tt.b<aeo>().a(aet.class, aet::new).a(aer.class, aer::new).a(aeq.class, aeq::new).a(aes.class, aes::new).a(aep.class, aep::new))
+         .a(wl.a, new tt.b<aeu>().a(aew.class, aew::new).a(aex.class, aex::new).a(aev.class, aev::b).a(aey.class, aey::new))
    ),
    e(
       "configuration",
@@ -238,12 +240,12 @@ public enum tt {
       this.h = $$1.a(this);
    }
 
-   @auk
+   @aup
    public Int2ObjectMap<Class<? extends wk<?>>> a(wl $$0) {
       return this.h.get($$0).d();
    }
 
-   @auk
+   @aup
    public String a() {
       return this.g;
    }

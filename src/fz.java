@@ -3,27 +3,27 @@ import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fz implements Predicate<clb> {
+public class fz implements Predicate<clj> {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ur.b("arguments.item.overstacked", $$0, $$1));
-   private final ib<ckw> b;
+   private final ib<cle> b;
    @Nullable
    private final rz c;
 
-   public fz(ib<ckw> $$0, @Nullable rz $$1) {
+   public fz(ib<cle> $$0, @Nullable rz $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public ckw a() {
+   public cle a() {
       return this.b.a();
    }
 
-   public boolean a(clb $$0) {
+   public boolean a(clj $$0) {
       return $$0.a(this.b) && so.a(this.c, $$0.v(), true);
    }
 
-   public clb a(int $$0, boolean $$1) throws CommandSyntaxException {
-      clb $$2 = new clb(this.b, $$0);
+   public clj a(int $$0, boolean $$1) throws CommandSyntaxException {
+      clj $$2 = new clj(this.b, $$0);
       if (this.c != null) {
          $$2.c(this.c);
       }
@@ -45,6 +45,6 @@ public class fz implements Predicate<clb> {
    }
 
    private String c() {
-      return this.b.e().map(agf::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+      return this.b.e().map(agh::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

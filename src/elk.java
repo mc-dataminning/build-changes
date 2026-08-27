@@ -1,61 +1,29 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+public enum elk {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class elk {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+   private final int h;
 
-   public elk(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private elk(int $$0) {
+      this.h = $$0;
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = elj.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (elj.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (elj.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
-   }
-
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (elj.a("Deleting stream buffers")) {
-            return;
+   public static elk a(int $$0) {
+      for (elk $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
          }
       }
 
-      this.c = false;
+      return $$0 < a.h ? a : g;
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   public int a() {
+      return this.h;
    }
 }

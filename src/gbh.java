@@ -1,121 +1,77 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbh {
-   private final agg a;
-   private final gbb b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-
-   protected gbh(agg $$0, gbb $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public gbb e() {
-      return this.b;
-   }
-
+public class gbh extends gbf implements gbg {
+   private static final Logger e = LogUtils.getLogger();
    @Nullable
-   public gbh.a f() {
-      final gbd $$0 = this.b.e();
-      return $$0 != null ? new gbh.a() {
-         @Override
-         public void a() {
-            $$0.a(gbh.this.c, gbh.this.d);
-         }
+   private emx f;
 
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
+   public gbh(emx $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
    }
 
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public agg i() {
-      return this.a;
+   public gbh(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new emx($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(aph $$0) {
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
    }
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   @Nullable
+   public emx e() {
+      return this.f;
    }
 
-   public float k() {
-      return 4.0F / this.l();
+   public void a(emx $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
    }
 
-   public eno a(eno $$0) {
-      return new fqx($$0, this);
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
    }
 
-   public interface a extends AutoCloseable {
-      void a();
-
-      @Override
-      void close();
+   @Override
+   public void a(agi $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

@@ -1,66 +1,30 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class eeg {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public interface eeg extends eei {
-   @Override
-   String g();
-
-   void a(boolean var1);
-
-   int l();
-
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, cru $$1) {
-      eei.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   public eeg(int $$0) {
+      this($$0, a);
    }
 
-   int h();
+   public eeg(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   void a(int var1);
+   public boolean a() {
+      return !this.c.equals(a);
+   }
 
-   int v();
+   public String b() {
+      return this.c;
+   }
 
-   void g(int var1);
+   public int c() {
+      return this.b;
+   }
 
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   crp m();
-
-   void a(din.c var1);
-
-   din.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(crp var1);
-
-   eiv<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
+   public boolean a(eeg $$0) {
+      return this.b().equals($$0.b());
+   }
 }

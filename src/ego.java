@@ -1,28 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class ego extends efx {
-   public static final Codec<ego> a = RecordCodecBuilder.create($$0 -> a($$0).and(jy.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, ego::new));
-   private final ib<cmy> b;
+public class ego implements egk {
+   public static final Codec<ego> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egm.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ego::new)
+   );
+   public static final Codec<ego> b = egm.b.listOf().xmap(ego::new, $$0 -> $$0.c);
+   private final List<egk> c;
+   private final BiFunction<clj, eex, clj> d;
 
-   private ego(List<ehk> $$0, ib<cmy> $$1) {
-      super($$0);
-      this.b = $$1;
+   private ego(List<egk> $$0) {
+      this.c = $$0;
+      this.d = egm.a($$0);
+   }
+
+   public static ego a(List<egk> $$0) {
+      return new ego(List.copyOf($$0));
+   }
+
+   public clj a(clj $$0, eex $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public efz b() {
-      return ega.z;
+   public void a(efg $$0) {
+      egk.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public clb a(clb $$0, eel $$1) {
-      cna.a($$0, this.b.a());
-      return $$0;
-   }
-
-   public static efx.a<?> a(cmy $$0) {
-      return a($$1 -> new ego($$1, $$0.c()));
+   public egl b() {
+      return egm.C;
    }
 }

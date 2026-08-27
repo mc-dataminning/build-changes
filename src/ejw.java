@@ -1,53 +1,46 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public class ejw extends AbstractDoubleList implements eju {
-   private final DoubleList a;
+public class ejw extends ekn {
    private final DoubleList b;
-   private final boolean c;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   protected ejw(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected ejw(ekd $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(eju.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(eju.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
+   ejw(ekd $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
    @Override
-   public DoubleList a() {
-      return this;
+   protected DoubleList a(hx.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

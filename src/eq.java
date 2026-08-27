@@ -40,8 +40,8 @@ public class eq implements ArgumentType<jq> {
    }
 
    private static jr<?> b(StringReader $$0, id<jr<?>> $$1) throws CommandSyntaxException {
-      agg $$2 = agg.a($$0);
-      agf<jr<?>> $$3 = agf.a(jz.R, $$2);
+      agi $$2 = agi.a($$0);
+      agh<jr<?>> $$3 = agh.a(jz.R, $$2);
       return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
@@ -50,6 +50,6 @@ public class eq implements ArgumentType<jq> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.a(this.c.c().map(agf::a), $$1);
+      return dy.a(this.c.c().map(agh::a), $$1);
    }
 }

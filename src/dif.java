@@ -1,9 +1,9 @@
-public enum dif implements aub {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dif implements aug {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
    private final String f;
 

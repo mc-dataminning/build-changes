@@ -1,17 +1,22 @@
-public class cig implements cih {
-   private final il<clb> a;
-   private final int b;
+public class cig implements cgw {
+   private final int[] a;
 
-   public cig(il<clb> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public cig(int $$0) {
+      this.a = new int[$$0];
    }
 
-   public il<clb> a() {
-      return this.a;
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

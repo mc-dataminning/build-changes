@@ -1,17 +1,20 @@
-public class fyd extends fwq<cbo, fjl> {
-   private static final agg a = new agg("textures/entity/illager/vex.png");
-   private static final agg i = new agg("textures/entity/illager/vex_charging.png");
+public class fyd<T extends cbt> extends fxd<T, fjq<T>> {
+   private static final agi a = new agi("textures/entity/spider/spider.png");
 
-   public fyd(fvk.a $$0) {
-      super($$0, new fjl($$0.a(fka.bI)), 0.3F);
-      this.a(new fzl<>(this, $$0.d()));
+   public fyd(fvx.a $$0) {
+      this($$0, fkn.br);
    }
 
-   protected int a(cbo $$0, ht $$1) {
-      return 15;
+   public fyd(fvx.a $$0, fkm $$1) {
+      super($$0, new fjq<>($$0.a($$1)), 0.8F);
+      this.a(new gal<>(this));
    }
 
-   public agg a(cbo $$0) {
-      return $$0.ge() ? i : a;
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public agi a(T $$0) {
+      return a;
    }
 }

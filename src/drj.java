@@ -1,41 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class drj implements drn {
-   public static final Codec<drj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dgw.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dgw.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bhv.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bhv.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drj::new)
-   );
-   private final dgw b;
-   private final dgw c;
-   private final bhv d;
-   private final bhv e;
-
-   public drj(dgw $$0, dgw $$1, bhv $$2, bhv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class drj extends dpv<dsx> {
+   public drj(Codec<dsx> $$0) {
+      super($$0);
    }
 
-   public dgw a() {
-      return this.b;
+   @Override
+   public boolean a(dpx<dsx> $$0) {
+      csu $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      dsx $$3 = $$0.f();
+      ats $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ht $$6 = $$2.h($$5.getAsInt());
+         iw $$7 = new iw($$3.c, $$3.c, $$3.c);
+         dwz $$8 = dwz.a($$6.b($$7), $$6.a($$7));
+         return ht.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, cvc.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
+      }
    }
 
-   public dgw b() {
-      return this.c;
+   private static OptionalInt a(csu $$0, ht $$1, dsx $$2) {
+      Predicate<dhi> $$3 = $$0x -> $$0x.a(cvc.G);
+      Predicate<dhi> $$4 = $$0x -> !$$0x.a(cvc.G);
+      Optional<dmh> $$5 = dmh.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dmh::c).orElseGet(OptionalInt::empty);
    }
 
-   public bhv c() {
-      return this.d;
+   private boolean b(csu $$0, ht $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (hx $$2 : hx.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public bhv d() {
-      return this.e;
+   private boolean a(csb $$0, ht $$1) {
+      dhi $$2 = $$0.a_($$1);
+      return $$2.a(cvc.G) || $$2.i();
    }
 }

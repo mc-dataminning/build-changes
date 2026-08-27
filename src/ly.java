@@ -25,10 +25,10 @@ public abstract class ly {
    }
 
    private void c() {
-      List<dhz<?>> $$0 = this.b();
+      List<dil<?>> $$0 = this.b();
       Stream<lz> $$1 = Stream.of(lz.a());
 
-      for (dhz<?> $$2 : $$0) {
+      for (dil<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class ly {
       }
    }
 
-   abstract List<dhz<?>> b();
+   abstract List<dil<?>> b();
 
-   public static <T1 extends Comparable<T1>> ly.a<T1> a(dhz<T1> $$0) {
+   public static <T1 extends Comparable<T1>> ly.a<T1> a(dil<T1> $$0) {
       return new ly.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> ly.b<T1, T2> a(dhz<T1> $$0, dhz<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> ly.b<T1, T2> a(dil<T1> $$0, dil<T2> $$1) {
       return new ly.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> ly.c<T1, T2, T3> a(dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> ly.c<T1, T2, T3> a(dil<T1> $$0, dil<T2> $$1, dil<T3> $$2) {
       return new ly.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> ly.d<T1, T2, T3, T4> a(
-      dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2, dhz<T4> $$3
+      dil<T1> $$0, dil<T2> $$1, dil<T3> $$2, dil<T4> $$3
    ) {
       return new ly.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> ly.e<T1, T2, T3, T4, T5> a(
-      dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2, dhz<T4> $$3, dhz<T5> $$4
+      dil<T1> $$0, dil<T2> $$1, dil<T3> $$2, dil<T4> $$3, dil<T5> $$4
    ) {
       return new ly.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends ly {
-      private final dhz<T1> a;
+      private final dil<T1> a;
 
-      a(dhz<T1> $$0) {
+      a(dil<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<dhz<?>> b() {
+      public List<dil<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class ly {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends ly {
-      private final dhz<T1> a;
-      private final dhz<T2> b;
+      private final dil<T1> a;
+      private final dil<T2> b;
 
-      b(dhz<T1> $$0, dhz<T2> $$1) {
+      b(dil<T1> $$0, dil<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<dhz<?>> b() {
+      public List<dil<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class ly {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends ly {
-      private final dhz<T1> a;
-      private final dhz<T2> b;
-      private final dhz<T3> c;
+      private final dil<T1> a;
+      private final dil<T2> b;
+      private final dil<T3> c;
 
-      c(dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2) {
+      c(dil<T1> $$0, dil<T2> $$1, dil<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<dhz<?>> b() {
+      public List<dil<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class ly {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends ly {
-      private final dhz<T1> a;
-      private final dhz<T2> b;
-      private final dhz<T3> c;
-      private final dhz<T4> d;
+      private final dil<T1> a;
+      private final dil<T2> b;
+      private final dil<T3> c;
+      private final dil<T4> d;
 
-      d(dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2, dhz<T4> $$3) {
+      d(dil<T1> $$0, dil<T2> $$1, dil<T3> $$2, dil<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class ly {
       }
 
       @Override
-      public List<dhz<?>> b() {
+      public List<dil<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class ly {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends ly {
-      private final dhz<T1> a;
-      private final dhz<T2> b;
-      private final dhz<T3> c;
-      private final dhz<T4> d;
-      private final dhz<T5> e;
+      private final dil<T1> a;
+      private final dil<T2> b;
+      private final dil<T3> c;
+      private final dil<T4> d;
+      private final dil<T5> e;
 
-      e(dhz<T1> $$0, dhz<T2> $$1, dhz<T3> $$2, dhz<T4> $$3, dhz<T5> $$4) {
+      e(dil<T1> $$0, dil<T2> $$1, dil<T3> $$2, dil<T4> $$3, dil<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class ly {
       }
 
       @Override
-      public List<dhz<?>> b() {
+      public List<dil<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

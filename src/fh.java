@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fh implements Predicate<dha> {
-   private final dgw a;
-   private final Set<dhz<?>> b;
+public class fh implements Predicate<dhm> {
+   private final dhi a;
+   private final Set<dil<?>> b;
    @Nullable
    private final rz c;
 
-   public fh(dgw $$0, Set<dhz<?>> $$1, @Nullable rz $$2) {
+   public fh(dhi $$0, Set<dil<?>> $$1, @Nullable rz $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dgw a() {
+   public dhi a() {
       return this.a;
    }
 
-   public Set<dhz<?>> b() {
+   public Set<dil<?>> b() {
       return this.b;
    }
 
-   public boolean a(dha $$0) {
-      dgw $$1 = $$0.a();
+   public boolean a(dhm $$0) {
+      dhi $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dhz<?> $$2 : this.b) {
+         for (dil<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class fh implements Predicate<dha> {
          if (this.c == null) {
             return true;
          } else {
-            der $$3 = $$0.b();
+            dfd $$3 = $$0.b();
             return $$3 != null && so.a(this.c, $$3.m(), true);
          }
       }
    }
 
-   public boolean a(ama $$0, ht $$1) {
-      return this.a(new dha($$0, $$1, false));
+   public boolean a(ame $$0, ht $$1) {
+      return this.a(new dhm($$0, $$1, false));
    }
 
-   public boolean a(ama $$0, ht $$1, int $$2) {
-      dgw $$3 = cut.b(this.a, $$0, $$1);
+   public boolean a(ame $$0, ht $$1, int $$2) {
+      dhi $$3 = cva.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class fh implements Predicate<dha> {
          return false;
       } else {
          if (this.c != null) {
-            der $$4 = $$0.c_($$1);
+            dfd $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.a(this.c);
             }

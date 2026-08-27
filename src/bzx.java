@@ -1,254 +1,63 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public abstract class bzx extends bki {
-   private static final Logger e = LogUtils.getLogger();
-   protected static final Predicate<bki> b = $$0 -> $$0 instanceof bzx;
-   private int f;
-   protected ht c;
-   protected hx d;
+public class bzx<T extends bzr> {
+   private static bzx<?>[] l = new bzx[0];
+   public static final bzx<bzn> a = a(bzn.class, "HoldingPattern");
+   public static final bzx<bzv> b = a(bzv.class, "StrafePlayer");
+   public static final bzx<bzp> c = a(bzp.class, "LandingApproach");
+   public static final bzx<bzq> d = a(bzq.class, "Landing");
+   public static final bzx<bzw> e = a(bzw.class, "Takeoff");
+   public static final bzx<bzt> f = a(bzt.class, "SittingFlaming");
+   public static final bzx<bzu> g = a(bzu.class, "SittingScanning");
+   public static final bzx<bzs> h = a(bzs.class, "SittingAttacking");
+   public static final bzx<bzl> i = a(bzl.class, "ChargingPlayer");
+   public static final bzx<bzm> j = a(bzm.class, "Dying");
+   public static final bzx<bzo> k = a(bzo.class, "Hover");
+   private final Class<? extends bzr> m;
+   private final int n;
+   private final String o;
 
-   protected bzx(bkm<? extends bzx> $$0, crs $$1) {
-      super($$0, $$1);
-      this.d = hx.d;
+   private bzx(int $$0, Class<? extends bzr> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   protected bzx(bkm<? extends bzx> $$0, crs $$1, ht $$2) {
-      this($$0, $$1);
-      this.c = $$2;
-   }
-
-   @Override
-   protected void b_() {
-   }
-
-   protected void a(hx $$0) {
-      Validate.notNull($$0);
-      Validate.isTrue($$0.o().d());
-      this.d = $$0;
-      this.r((float)(this.d.e() * 90));
-      this.N = this.dB();
-      this.y();
-   }
-
-   protected void y() {
-      if (this.d != null) {
-         double $$0 = (double)this.c.u() + 0.5;
-         double $$1 = (double)this.c.v() + 0.5;
-         double $$2 = (double)this.c.w() + 0.5;
-         double $$3 = 0.46875;
-         double $$4 = this.b(this.A());
-         double $$5 = this.b(this.B());
-         $$0 -= (double)this.d.j() * 0.46875;
-         $$2 -= (double)this.d.l() * 0.46875;
-         $$1 += $$5;
-         hx $$6 = this.d.i();
-         $$0 += $$4 * (double)$$6.j();
-         $$2 += $$4 * (double)$$6.l();
-         this.p($$0, $$1, $$2);
-         double $$7 = (double)this.A();
-         double $$8 = (double)this.B();
-         double $$9 = (double)this.A();
-         if (this.d.o() == hx.a.c) {
-            $$9 = 1.0;
-         } else {
-            $$7 = 1.0;
-         }
-
-         $$7 /= 32.0;
-         $$8 /= 32.0;
-         $$9 /= 32.0;
-         this.a(new ejd($$0 - $$7, $$1 - $$8, $$2 - $$9, $$0 + $$7, $$1 + $$8, $$2 + $$9));
+   public bzr a(bzh $$0) {
+      try {
+         Constructor<? extends bzr> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   private double b(int $$0) {
-      return $$0 % 32 == 0 ? 0.5 : 0.0;
+   protected Constructor<? extends bzr> a() throws NoSuchMethodException {
+      return this.m.getConstructor(bzh.class);
+   }
+
+   public int b() {
+      return this.n;
    }
 
    @Override
-   public void l() {
-      if (!this.dL().B) {
-         this.ar();
-         if (this.f++ == 100) {
-            this.f = 0;
-            if (!this.dG() && !this.z()) {
-               this.ak();
-               this.a(null);
-            }
-         }
-      }
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
    }
 
-   public boolean z() {
-      if (!this.dL().g(this)) {
-         return false;
-      } else {
-         int $$0 = Math.max(1, this.A() / 16);
-         int $$1 = Math.max(1, this.B() / 16);
-         ht $$2 = this.c.a(this.d.g());
-         hx $$3 = this.d.i();
-         ht.a $$4 = new ht.a();
-
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               int $$7 = ($$0 - 1) / -2;
-               int $$8 = ($$1 - 1) / -2;
-               $$4.g($$2).c($$3, $$5 + $$7).c(hx.b, $$6 + $$8);
-               dgw $$9 = this.dL().a_($$4);
-               if (!$$9.e() && !cwu.h($$9)) {
-                  return false;
-               }
-            }
-         }
-
-         return this.dL().a(this, this.cG(), b).isEmpty();
-      }
+   public static bzx<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
    }
 
-   @Override
-   public boolean br() {
-      return true;
+   public static int c() {
+      return l.length;
    }
 
-   @Override
-   public boolean u(bki $$0) {
-      if ($$0 instanceof cdm $$1) {
-         return !this.dL().a($$1, this.c) ? true : this.a(this.dM().a($$1), 0.0F);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public hx cD() {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(bjg $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else {
-         if (!this.dG() && !this.dL().B) {
-            this.aj();
-            this.bo();
-            this.a($$0.d());
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void a(ble $$0, eji $$1) {
-      if (!this.dL().B && !this.dG() && $$1.g() > 0.0) {
-         this.aj();
-         this.a(null);
-      }
-   }
-
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-      if (!this.dL().B && !this.dG() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
-         this.aj();
-         this.a(null);
-      }
-   }
-
-   @Override
-   public void b(rz $$0) {
-      ht $$1 = this.E();
-      $$0.a("TileX", $$1.u());
-      $$0.a("TileY", $$1.v());
-      $$0.a("TileZ", $$1.w());
-   }
-
-   @Override
-   public void a(rz $$0) {
-      ht $$1 = new ht($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dl(), 16.0)) {
-         e.error("Hanging entity at invalid position: {}", $$1);
-      } else {
-         this.c = $$1;
-      }
-   }
-
-   public abstract int A();
-
-   public abstract int B();
-
-   public abstract void a(@Nullable bki var1);
-
-   public abstract void C();
-
-   @Override
-   public caf a(clb $$0, float $$1) {
-      caf $$2 = new caf(
-         this.dL(), this.dq() + (double)((float)this.d.j() * 0.15F), this.ds() + (double)$$1, this.dw() + (double)((float)this.d.l() * 0.15F), $$0
-      );
-      $$2.t();
-      this.dL().b($$2);
+   private static <T extends bzr> bzx<T> a(Class<T> $$0, String $$1) {
+      bzx<T> $$2 = new bzx<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
       return $$2;
-   }
-
-   @Override
-   protected boolean bt() {
-      return false;
-   }
-
-   @Override
-   public void e(double $$0, double $$1, double $$2) {
-      this.c = ht.a($$0, $$1, $$2);
-      this.y();
-      this.au = true;
-   }
-
-   public ht E() {
-      return this.c;
-   }
-
-   @Override
-   public float a(dbf $$0) {
-      if (this.d.o() != hx.a.b) {
-         switch ($$0) {
-            case c:
-               this.d = this.d.g();
-               break;
-            case d:
-               this.d = this.d.i();
-               break;
-            case b:
-               this.d = this.d.h();
-         }
-      }
-
-      float $$1 = ati.g(this.dB());
-      switch ($$0) {
-         case c:
-            return $$1 + 180.0F;
-         case d:
-            return $$1 + 90.0F;
-         case b:
-            return $$1 + 270.0F;
-         default:
-            return $$1;
-      }
-   }
-
-   @Override
-   public float a(czp $$0) {
-      return this.a($$0.a(this.d));
-   }
-
-   @Override
-   public void a(ama $$0, bkx $$1) {
-   }
-
-   @Override
-   public void j_() {
    }
 }

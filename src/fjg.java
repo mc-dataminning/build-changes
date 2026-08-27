@@ -1,38 +1,37 @@
-import com.google.common.collect.ImmutableList;
+public class fjg extends fil {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fko e;
+   private final fko f;
+   private final fko g;
 
-public class fjg<T extends byb> extends fga<T> {
-   private final fkb a;
-   private final fkb b;
-
-   public fjg(fkb $$0) {
-      super(true, 8.0F, 3.35F);
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fjg(fko $$0) {
+      super(frc::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fkh c() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      float $$2 = 0.0F;
-      float $$3 = 22.0F;
-      float $$4 = -3.0F;
-      $$1.a("body", fkg.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fkd.a(0.0F, 22.0F, -3.0F));
-      $$1.a("tail", fkg.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fkd.a(0.0F, 22.0F, 0.0F));
-      return fkh.a($$0, 16, 16);
+   public static fku a() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("plate", fkt.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fkq.a);
+      $$1.a("handle", fkt.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fkq.a);
+      return fku.a($$0, 64, 64);
+   }
+
+   public fko b() {
+      return this.f;
+   }
+
+   public fko c() {
+      return this.g;
    }
 
    @Override
-   protected Iterable<fkb> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fkb> b() {
-      return ImmutableList.of(this.b);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$0.aX() ? 1.0F : 1.5F;
-      this.b.f = -$$6 * 0.25F * ati.a(0.3F * $$3);
+   public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

@@ -1,44 +1,121 @@
-public class gef extends gdy {
-   public static final int n = 20;
-   private final fpj o;
-   private int p;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public gef(fpj $$0) {
-      super(aqn.gT, aqo.h, gep.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class gef implements gdv {
+   protected final List<frr> a;
+   protected final Map<hx, List<frr>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final gbu f;
+   protected final fsd g;
+   protected final fsb h;
+
+   public gef(List<frr> $$0, Map<hx, List<frr>> $$1, boolean $$2, boolean $$3, boolean $$4, gbu $$5, fsd $$6, fsb $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dG() && (this.p <= 20 || this.o.fw())) {
-         this.f = (double)((float)this.o.dq());
-         this.g = (double)((float)this.o.ds());
-         this.h = (double)((float)this.o.dw());
-         float $$0 = (float)this.o.do().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = ati.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public List<frr> a(@Nullable dhi $$0, @Nullable hx $$1, ats $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
+      return this.c;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gbu e() {
+      return this.f;
+   }
+
+   @Override
+   public fsd f() {
+      return this.g;
+   }
+
+   @Override
+   public fsb g() {
+      return this.h;
+   }
+
+   public static class a {
+      private final List<frr> a = Lists.newArrayList();
+      private final Map<hx, List<frr>> b = Maps.newEnumMap(hx.class);
+      private final fsb c;
+      private final boolean d;
+      private gbu e;
+      private final boolean f;
+      private final boolean g;
+      private final fsd h;
+
+      public a(frw $$0, fsb $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
+
+      private a(boolean $$0, boolean $$1, boolean $$2, fsd $$3, fsb $$4) {
+         for (hx $$5 : hx.values()) {
+            this.b.put($$5, Lists.newArrayList());
          }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
 
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
+      public gef.a a(hx $$0, frr $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public gef.a a(frr $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gef.a a(gbu $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gef.a a() {
+         return this;
+      }
+
+      public gdv b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
          } else {
-            this.e = 1.0F;
+            return new gef(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
          }
-      } else {
-         this.n();
       }
    }
 }

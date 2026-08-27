@@ -4,16 +4,16 @@ public class abg implements wk<yd> {
    private final int c;
    private final int d;
 
-   public abg(bki $$0) {
-      this($$0.ah(), $$0.do());
+   public abg(bkq $$0) {
+      this($$0.aj(), $$0.dq());
    }
 
-   public abg(int $$0, eji $$1) {
+   public abg(int $$0, eju $$1) {
       this.a = $$0;
       double $$2 = 3.9;
-      double $$3 = ati.a($$1.c, -3.9, 3.9);
-      double $$4 = ati.a($$1.d, -3.9, 3.9);
-      double $$5 = ati.a($$1.e, -3.9, 3.9);
+      double $$3 = atm.a($$1.c, -3.9, 3.9);
+      double $$4 = atm.a($$1.d, -3.9, 3.9);
+      double $$5 = atm.a($$1.e, -3.9, 3.9);
       this.b = (int)($$3 * 8000.0);
       this.c = (int)($$4 * 8000.0);
       this.d = (int)($$5 * 8000.0);

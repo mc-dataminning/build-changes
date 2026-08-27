@@ -1,30 +1,35 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
 public class auz extends DataFix {
-   public auz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private final String a;
+   private final boolean b;
+   private final String c;
+   private final TypeReference d;
+
+   public auz(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
+      super($$0, true);
+      this.b = $$3;
+      this.c = $$2;
+      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
+      this.d = $$1;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(ban.z.typeName(), bbv.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(ban.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
-         }
-
-         return $$1;
-      });
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.d);
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
+            )
+      );
    }
 }

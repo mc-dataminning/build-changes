@@ -1,33 +1,36 @@
-public class bvp {
-   public static boolean a(bla $$0) {
-      return $$0.L() instanceof bug;
+import com.google.common.collect.ImmutableMap;
+
+public class bvp extends bvf {
+   private static final ImmutableMap<bku<?>, Float> a = ImmutableMap.builder()
+      .put(bku.y, 8.0F)
+      .put(bku.G, 12.0F)
+      .put(bku.Z, 8.0F)
+      .put(bku.aa, 12.0F)
+      .put(bku.ay, 15.0F)
+      .put(bku.aD, 12.0F)
+      .put(bku.be, 8.0F)
+      .put(bku.bg, 10.0F)
+      .put(bku.bo, 10.0F)
+      .put(bku.bp, 8.0F)
+      .put(bku.br, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(blg $$0, blg $$1) {
+      return this.b($$1) && this.e($$0, $$1);
    }
 
-   public static boolean a(blh $$0, int $$1) {
-      return $$0.fQ() && $$0.fN().a($$0.dj(), (double)($$0.fO() + (float)$$1) + 1.0);
+   private boolean e(blg $$0, blg $$1) {
+      float $$2 = (Float)a.get($$1.ai());
+      return $$1.f((bkq)$$0) <= (double)($$2 * $$2);
    }
 
-   public static boolean a(ht $$0, blh $$1) {
-      return $$0.v() < $$1.dL().I_() || $$0.v() > $$1.dL().aj();
+   @Override
+   protected buh<blg> b() {
+      return buh.A;
    }
 
-   public static boolean a(boolean $$0, blh $$1, ht $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(buh $$0, ht $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(blh $$0, ht $$1) {
-      return $$0.dL().b_($$1).a(arh.a);
-   }
-
-   public static boolean b(blh $$0, ht $$1) {
-      return $$0.a(eda.a($$0.dL(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(blh $$0, ht $$1) {
-      return $$0.dL().a_($$1).e();
+   private boolean b(blg $$0) {
+      return a.containsKey($$0.ai());
    }
 }

@@ -1,58 +1,89 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class dka {
-   private static final Int2ObjectMap<dka> d = new Int2ObjectOpenHashMap();
-   public static final dka a = a(new dka(1, $$0 -> new asr(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dka b = a(new dka(2, $$0 -> new asr(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
-   public static final dka c = a(new dka(3, $$0 -> $$0, $$0 -> $$0));
-   private final int e;
-   private final dka.a<InputStream> f;
-   private final dka.a<OutputStream> g;
-
-   private dka(int $$0, dka.a<InputStream> $$1, dka.a<OutputStream> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private static dka a(dka $$0) {
-      d.put($$0.e, $$0);
-      return $$0;
-   }
-
+public class dka<T> implements djv<T> {
+   private final ih<T> a;
    @Nullable
-   public static dka a(int $$0) {
-      return (dka)d.get($$0);
+   private T b;
+   private final djw<T> c;
+
+   public dka(ih<T> $$0, djw<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   public static boolean b(int $$0) {
-      return d.containsKey($$0);
+   public static <A> djv<A> a(int $$0, ih<A> $$1, djw<A> $$2, List<A> $$3) {
+      return new dka<>($$1, $$2, $$3);
    }
 
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(tu $$0) {
+      this.b = this.a.b($$0.n());
+   }
+
+   @Override
+   public void b(tu $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
    public int a() {
-      return this.e;
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return ui.a(this.a.a(this.b));
+      }
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.g.wrap($$0);
+   @Override
+   public int b() {
+      return 1;
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.f.wrap($$0);
-   }
-
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   @Override
+   public djv<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

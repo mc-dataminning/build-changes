@@ -1,271 +1,485 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
 public class pd {
-   public static final agf<dye> a = pb.a("village/savanna/town_centers");
-   private static final agf<dye> b = pb.a("village/savanna/terminators");
-   private static final agf<dye> c = pb.a("village/savanna/zombie/terminators");
+   private static final agh<ebf> M = a("empty");
+   public static final agh<ebf> a = a("zombie_plains");
+   public static final agh<ebf> b = a("zombie_savanna");
+   public static final agh<ebf> c = a("zombie_snowy");
+   public static final agh<ebf> d = a("zombie_taiga");
+   public static final agh<ebf> e = a("zombie_desert");
+   public static final agh<ebf> f = a("mossify_10_percent");
+   public static final agh<ebf> g = a("mossify_20_percent");
+   public static final agh<ebf> h = a("mossify_70_percent");
+   public static final agh<ebf> i = a("street_plains");
+   public static final agh<ebf> j = a("street_savanna");
+   public static final agh<ebf> k = a("street_snowy_or_taiga");
+   public static final agh<ebf> l = a("farm_plains");
+   public static final agh<ebf> m = a("farm_savanna");
+   public static final agh<ebf> n = a("farm_snowy");
+   public static final agh<ebf> o = a("farm_taiga");
+   public static final agh<ebf> p = a("farm_desert");
+   public static final agh<ebf> q = a("outpost_rot");
+   public static final agh<ebf> r = a("bottom_rampart");
+   public static final agh<ebf> s = a("treasure_rooms");
+   public static final agh<ebf> t = a("housing");
+   public static final agh<ebf> u = a("side_wall_degradation");
+   public static final agh<ebf> v = a("stable_degradation");
+   public static final agh<ebf> w = a("bastion_generic_degradation");
+   public static final agh<ebf> x = a("rampart_degradation");
+   public static final agh<ebf> y = a("entrance_replacement");
+   public static final agh<ebf> z = a("bridge");
+   public static final agh<ebf> A = a("roof");
+   public static final agh<ebf> B = a("high_wall");
+   public static final agh<ebf> C = a("high_rampart");
+   public static final agh<ebf> D = a("fossil_rot");
+   public static final agh<ebf> E = a("fossil_coal");
+   public static final agh<ebf> F = a("fossil_diamonds");
+   public static final agh<ebf> G = a("ancient_city_start_degradation");
+   public static final agh<ebf> H = a("ancient_city_generic_degradation");
+   public static final agh<ebf> I = a("ancient_city_walls_degradation");
+   public static final agh<ebf> J = a("trail_ruins_houses_archaeology");
+   public static final agh<ebf> K = a("trail_ruins_roads_archaeology");
+   public static final agh<ebf> L = a("trail_ruins_tower_top_archaeology");
 
-   public static void a(ou<dye> $$0) {
-      ic<dvz> $$1 = $$0.a(jz.aA);
-      ib<dvz> $$2 = $$1.b(qm.g);
-      ib<dvz> $$3 = $$1.b(qm.a);
-      ib<dvz> $$4 = $$1.b(qm.b);
-      ic<eat> $$5 = $$0.a(jz.aC);
-      ib<eat> $$6 = $$5.b(pc.b);
-      ib<eat> $$7 = $$5.b(pc.j);
-      ib<eat> $$8 = $$5.b(pc.m);
-      ic<dye> $$9 = $$0.a(jz.aE);
-      ib<dye> $$10 = $$9.b(pb.a);
-      ib<dye> $$11 = $$9.b(b);
-      ib<dye> $$12 = $$9.b(c);
-      $$0.a(
+   private static agh<ebf> a(String $$0) {
+      return agh.a(jz.aC, new agi($$0));
+   }
+
+   private static void a(ov<ebf> $$0, agh<ebf> $$1, List<ebe> $$2) {
+      $$0.a($$1, new ebf($$2));
+   }
+
+   public static void a(ov<ebf> $$0) {
+      ic<cva> $$1 = $$0.a(jz.e);
+      eaw $$2 = new eaw(new eay(cvc.pr, 0.01F), eaf.b, cvc.pC.o());
+      eaw $$3 = new eaw(new eay(cvc.pC, 0.5F), eaf.b, cvc.pr.o());
+      a($$0, M, ImmutableList.of());
+      a(
+         $$0,
          a,
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
-               Pair.of(dyc.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
-               Pair.of(dyc.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
-               Pair.of(dyc.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
-               Pair.of(dyc.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
-               Pair.of(dyc.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
-               Pair.of(dyc.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
-            ),
-            dye.a.b
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.m, 0.8F), eaf.b, cvc.cn.o()),
+                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.m, 0.07F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.cn, 0.07F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.hj, 0.07F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.U, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.n, 0.1F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.cu, 0.1F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.al, 0.02F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
+                  new eaw[]{
+                     new eaw(
+                        new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
+                        eaf.b,
+                        cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
+                     ),
+                     new eaw(
+                        new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
+                        eaf.b,
+                        cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
+                     ),
+                     new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.gt.o()),
+                     new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
+                     new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.kD.o())
+                  }
+               )
+            )
          )
       );
-      pb.a(
+      a(
          $$0,
-         "village/savanna/streets",
-         new dye(
-            $$11,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/streets/corner_01", $$7), 2),
-               Pair.of(dyc.a("village/savanna/streets/corner_03", $$7), 2),
-               Pair.of(dyc.a("village/savanna/streets/straight_02", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/straight_04", $$7), 7),
-               Pair.of(dyc.a("village/savanna/streets/straight_05", $$7), 3),
-               Pair.of(dyc.a("village/savanna/streets/straight_06", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/straight_08", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/straight_09", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/straight_10", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/straight_11", $$7), 4),
-               Pair.of(dyc.a("village/savanna/streets/crossroad_02", $$7), 1),
-               Pair.of(dyc.a("village/savanna/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(dyc.a("village/savanna/streets/crossroad_04", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/crossroad_05", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/crossroad_06", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/crossroad_07", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/split_01", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/split_02", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/streets/turn_01", $$7), 3)
-               }
-            ),
-            dye.a.a
-         )
-      );
-      pb.a(
-         $$0,
-         "village/savanna/zombie/streets",
-         new dye(
-            $$12,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/zombie/streets/corner_01", $$7), 2),
-               Pair.of(dyc.a("village/savanna/zombie/streets/corner_03", $$7), 2),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_02", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_04", $$7), 7),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_05", $$7), 3),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_06", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_08", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_09", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_10", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/straight_11", $$7), 4),
-               Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
-               Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/split_01", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/split_02", $$7), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/streets/turn_01", $$7), 3)
-               }
-            ),
-            dye.a.a
-         )
-      );
-      pb.a(
-         $$0,
-         "village/savanna/houses",
-         new dye(
-            $$11,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_1"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_2"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_3"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_4"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_5"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_6"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_7"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_small_house_8"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_medium_house_1"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_medium_house_2"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
-               new Pair[]{
-                  Pair.of(dyc.a("village/savanna/houses/savanna_tool_smith_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_shepherd_1"), 7),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_armorer_1"), 1),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_tannery_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_cartographer_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_library_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_mason_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_temple_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_temple_2"), 3),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_small_farm", $$8), 4),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_animal_pen_1"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_animal_pen_2"), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_animal_pen_3"), 2),
-                  Pair.of(dyc.g(), 5)
-               }
-            ),
-            dye.a.b
-         )
-      );
-      pb.a(
-         $$0,
-         "village/savanna/zombie/houses",
-         new dye(
-            $$12,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
-               Pair.of(dyc.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
-               Pair.of(dyc.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
-               new Pair[]{
-                  Pair.of(dyc.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_library_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_mason_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_temple_1", $$6), 1),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_temple_2", $$6), 3),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
-                  Pair.of(dyc.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_small_farm", $$6), 4),
-                  Pair.of(dyc.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
-                  Pair.of(dyc.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
-                  Pair.of(dyc.g(), 5)
-               }
-            ),
-            dye.a.b
-         )
-      );
-      $$0.a(
          b,
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(dyc.a("village/savanna/terminators/terminator_05", $$7), 1)
-            ),
-            dye.a.a
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.r, 0.2F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.hP, 0.2F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.Y, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.as, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.hk, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.hn, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.hx, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
+                  new eaw(
+                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
+                     eaf.b,
+                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
+                  ),
+                  new eaw[]{
+                     new eaw(
+                        new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
+                        eaf.b,
+                        cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
+                     ),
+                     new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())
+                  }
+               )
+            )
          )
       );
-      $$0.a(
+      a(
+         $$0,
          c,
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(dyc.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(dyc.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
-            ),
-            dye.a.a
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.oe), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.o, 0.2F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.ju, 0.4F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.af, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.ax, 0.05F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
+                  new eaw(
+                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
+                     eaf.b,
+                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
+                  ),
+                  new eaw(
+                     new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
+                     eaf.b,
+                     cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
+                  ),
+                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.gt.o()),
+                  new eaw[]{new eaw(new eay(cvc.cB, 0.8F), eaf.b, cvc.gu.o())}
+               )
+            )
          )
       );
-      pb.a($$0, "village/savanna/trees", new dye($$10, ImmutableList.of(Pair.of(dyc.a($$2), 1)), dye.a.b));
-      pb.a(
+      a(
          $$0,
-         "village/savanna/decor",
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/savanna_lamp_post_01"), 4),
-               Pair.of(dyc.a($$2), 4),
-               Pair.of(dyc.a($$3), 4),
-               Pair.of(dyc.a($$4), 1),
-               Pair.of(dyc.g(), 4)
-            ),
-            dye.a.b
+         d,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.m, 0.8F), eaf.b, cvc.cn.o()),
+                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.og), eaf.b, cvc.og.o().a(cvo.c, Boolean.valueOf(false))),
+                  new eaw(new eay(cvc.m, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.V, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
+                  new eaw(
+                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
+                     eaf.b,
+                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
+                  ),
+                  new eaw(
+                     new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
+                     eaf.b,
+                     cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
+                  ),
+                  new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.fd.o()),
+                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
+                  new eaw[0]
+               )
+            )
          )
       );
-      pb.a(
+      a(
          $$0,
-         "village/savanna/zombie/decor",
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/savanna_lamp_post_01", $$6), 4),
-               Pair.of(dyc.a($$2), 4),
-               Pair.of(dyc.a($$3), 4),
-               Pair.of(dyc.a($$4), 1),
-               Pair.of(dyc.g(), 4)
-            ),
-            dye.a.b
+         e,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
+                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.jS, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.aX, 0.1F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.iA, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.nl, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.ny, 0.08F), eaf.b, cvc.bs.o()),
+                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.kD.o()),
+                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())
+               )
+            )
          )
       );
-      pb.a(
+      a($$0, f, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.1F), eaf.b, cvc.cn.o())))));
+      a($$0, g, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.2F), eaf.b, cvc.cn.o())))));
+      a($$0, h, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.7F), eaf.b, cvc.cn.o())))));
+      a(
          $$0,
-         "village/savanna/villagers",
-         new dye(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyc.a("village/savanna/villagers/nitwit"), 1),
-               Pair.of(dyc.a("village/savanna/villagers/baby"), 1),
-               Pair.of(dyc.a("village/savanna/villagers/unemployed"), 10)
-            ),
-            dye.a.b
+         i,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.n.o()),
+                  new eaw(new eay(cvc.kE, 0.1F), eaf.b, cvc.i.o()),
+                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
+                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
+               )
+            )
          )
       );
-      pb.a(
+      a(
          $$0,
-         "village/savanna/zombie/villagers",
-         new dye(
-            $$10,
-            ImmutableList.of(Pair.of(dyc.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(dyc.a("village/savanna/zombie/villagers/unemployed"), 10)),
-            dye.a.b
+         j,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.r.o()),
+                  new eaw(new eay(cvc.kE, 0.2F), eaf.b, cvc.i.o()),
+                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
+                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
+               )
+            )
          )
       );
+      a(
+         $$0,
+         k,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.o.o()),
+                  new eaw(new eak(cvc.kE), new eak(cvc.dO), cvc.o.o()),
+                  new eaw(new eay(cvc.kE, 0.2F), eaf.b, cvc.i.o()),
+                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
+                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         l,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.gt.o()),
+                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
+                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.kD.o())
+               )
+            )
+         )
+      );
+      a($$0, m, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())))));
+      a(
+         $$0,
+         n,
+         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.gt.o()), new eaw(new eay(cvc.cB, 0.8F), eaf.b, cvc.gu.o()))))
+      );
+      a(
+         $$0,
+         o,
+         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.fd.o()), new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()))))
+      );
+      a(
+         $$0,
+         p,
+         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.kD.o()), new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o()))))
+      );
+      a($$0, q, ImmutableList.of(new eal(0.05F)));
+      a(
+         $$0,
+         r,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.kJ, 0.75F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.px, 0.15F), eaf.b, cvc.pw.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         s,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.35F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.py, 0.1F), eaf.b, cvc.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         t,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         u,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.py, 0.5F), eaf.b, cvc.a.o()), new eaw(new eay(cvc.ch, 0.1F), eaf.b, cvc.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         v,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.1F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         w,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()),
+                  new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         x,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.pw, 0.4F), eaf.b, cvc.px.o()),
+                  new eaw(new eay(cvc.pr, 0.01F), eaf.b, cvc.px.o()),
+                  new eaw(new eay(cvc.pw, 1.0E-4F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         y,
+         ImmutableList.of(
+            new eba(ImmutableList.of(new eaw(new eay(cvc.py, 0.5F), eaf.b, cvc.a.o()), new eaw(new eay(cvc.ch, 0.6F), eaf.b, cvc.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         z,
+         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()))))
+      );
+      a(
+         $$0,
+         A,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()),
+                  new eaw(new eay(cvc.pw, 0.15F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.pr.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         B,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.pw, 0.01F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.pw, 0.5F), eaf.b, cvc.px.o()),
+                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.pr.o()),
+                  $$3
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         C,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()), new eaw(eaf.b, eaf.b, new eag(0.0F, 0.05F, 0, 100, hx.a.b), cvc.a.o()), $$3)
+            )
+         )
+      );
+      a($$0, D, ImmutableList.of(new eal(0.9F), new eax(arg.bH)));
+      a($$0, E, ImmutableList.of(new eal(0.1F), new eax(arg.bH)));
+      a($$0, F, ImmutableList.of(new eal(0.1F), new eba(ImmutableList.of(new eaw(new eak(cvc.R), eaf.b, cvc.cy.o()))), new eax(arg.bH)));
+      a(
+         $$0,
+         G,
+         ImmutableList.of(
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
+                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
+                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
+               )
+            ),
+            new eax(arg.bH)
+         )
+      );
+      a(
+         $$0,
+         H,
+         ImmutableList.of(
+            new eal($$1.b(arg.bN), 0.95F),
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
+                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
+                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
+               )
+            ),
+            new eax(arg.bH)
+         )
+      );
+      a(
+         $$0,
+         I,
+         ImmutableList.of(
+            new eal($$1.b(arg.bN), 0.95F),
+            new eba(
+               ImmutableList.of(
+                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
+                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
+                  new eaw(new eay(cvc.sU, 0.3F), eaf.b, cvc.a.o()),
+                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
+               )
+            ),
+            new eax(arg.bH)
+         )
+      );
+      a(
+         $$0,
+         J,
+         List.of(
+            new eba(
+               List.of(
+                  new eaw(new eay(cvc.L, 0.2F), eaf.b, cvc.j.o()),
+                  new eaw(new eay(cvc.L, 0.1F), eaf.b, cvc.k.o()),
+                  new eaw(new eay(cvc.eM, 0.1F), eaf.b, cvc.eL.o())
+               )
+            ),
+            a(eev.aE, 6),
+            a(eev.aF, 3)
+         )
+      );
+      a(
+         $$0,
+         K,
+         List.of(
+            new eba(
+               List.of(
+                  new eaw(new eay(cvc.L, 0.2F), eaf.b, cvc.j.o()),
+                  new eaw(new eay(cvc.L, 0.1F), eaf.b, cvc.k.o()),
+                  new eaw(new eay(cvc.eM, 0.1F), eaf.b, cvc.eL.o())
+               )
+            ),
+            a(eev.aE, 2)
+         )
+      );
+      a($$0, L, List.of(a(eev.aE, 2)));
+   }
+
+   private static ean a(agi $$0, int $$1) {
+      return new ean(new eba(List.of(new eaw(new ebj(arg.cl), eaf.b, eat.b, cvc.M.o(), new ebl($$0)))), bhz.a($$1));
    }
 }

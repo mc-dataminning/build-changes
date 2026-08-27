@@ -1,128 +1,106 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public final class dxd {
-   public static final String a = "INVALID";
-   public static final dxd b = new dxd(null, new cqz(0, 0), 0, new dxk(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final dwv d;
-   private final dxk e;
-   private final cqz f;
-   private int g;
-   @Nullable
-   private volatile dwn h;
+public class dxd extends dxl {
+   private static final Logger d = LogUtils.getLogger();
+   protected final dyo a;
+   protected ht b;
+   private final int h;
+   protected final dbm c;
+   private final List<dyj> i = Lists.newArrayList();
+   private final ebi j;
 
-   public dxd(dwv $$0, cqz $$1, int $$2, dxk $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public dxd(ebi $$0, dyo $$1, ht $$2, int $$3, dbm $$4, dwz $$5) {
+      super(dxy.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
    }
 
-   @Nullable
-   public static dxd a(dxl $$0, rz $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         io<dwv> $$4 = $$0.b().d(jz.aB);
-         dwv $$5 = $$4.a(new agg($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            cqz $$6 = new cqz($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            sf $$8 = $$1.c("Children", 10);
-
-            try {
-               dxk $$9 = dxk.a($$8, $$0);
-               if ($$5 instanceof dzf) {
-                  $$9 = dzf.a($$6, $$2, $$9);
-               }
-
-               return new dxd($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
-            }
-         }
-      }
+   public dxd(dxx $$0, rz $$1) {
+      super(dxy.ad, $$1);
+      this.j = $$0.c();
+      this.b = new ht($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<sw> $$2 = agg.a(sn.a, $$0.b());
+      this.a = (dyo)dyo.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dbm.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      sf $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(dyj.a(new Dynamic($$2, $$1x))));
    }
 
-   public dwn a() {
-      dwn $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
+   @Override
+   protected void a(dxx $$0, rz $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<sw> $$2 = agg.a(sn.a, $$0.b());
+      dyo.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      sf $$3 = new sf();
+
+      for (dyj $$4 : this.i) {
+         $$3.add((sw)$$4.a($$2).getValue());
       }
 
-      return $$0;
+      $$1.a("junctions", $$3);
    }
 
-   public void a(csm $$0, csk $$1, dit $$2, ato $$3, dwn $$4, cqz $$5) {
-      List<dwz> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         dwn $$7 = $$6.get(0).f;
-         ht $$8 = $$7.f();
-         ht $$9 = new ht($$8.u(), $$7.h(), $$8.w());
-
-         for (dwz $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
-
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
+   @Override
+   public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   public rz a(dxl $$0, cqz $$1) {
-      rz $$2 = new rz();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(jz.aB).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
+   public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, ht $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
    }
 
-   public boolean b() {
-      return !this.e.a();
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
    }
 
-   public cqz c() {
-      return this.f;
+   @Override
+   public dbm a() {
+      return this.c;
    }
 
-   public boolean d() {
-      return this.g < this.g();
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
    }
 
-   public void e() {
-      this.g++;
+   public dyo b() {
+      return this.a;
    }
 
-   public int f() {
-      return this.g;
+   public ht c() {
+      return this.b;
    }
 
-   protected int g() {
-      return 1;
+   public int d() {
+      return this.h;
    }
 
-   public dwv h() {
-      return this.d;
+   public void a(dyj $$0) {
+      this.i.add($$0);
    }
 
-   public List<dwz> i() {
-      return this.e.c();
+   public List<dyj> e() {
+      return this.i;
    }
 }

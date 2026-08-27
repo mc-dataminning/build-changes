@@ -1,77 +1,71 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
+import java.util.Set;
 
 public class dun extends dur {
-   public static final Codec<dun> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dun::new));
+   public static final Codec<dun> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               dua.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               asu.a(hx.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dun::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final dua e;
+   protected final int f;
+   protected final List<hx> g;
 
-   public dun(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dun(float $$0, int $$1, int $$2, dua $$3, int $$4, List<hx> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
+
+   @Override
+   public void a(dur.a $$0) {
+      Set<ht> $$1 = new HashSet<>();
+      ats $$2 = $$0.b();
+
+      for (ht $$3 : ac.a($$0.d(), $$2)) {
+         hx $$4 = ac.a(this.g, $$2);
+         ht $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            ht $$6 = $$5.b(-this.c, -this.d, -this.c);
+            ht $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (ht $$8 : ht.a($$6, $$7)) {
+               $$1.add($$8.i());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(dur.a $$0, ht $$1, hx $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         ht $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
    protected dus<?> a() {
-      return dus.b;
-   }
-
-   @Override
-   public List<dsz.a> a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, int $$3, ht $$4, dsj $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<dsz.a> $$6 = Lists.newArrayList();
-      hx $$7 = hx.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      ht.a $$10 = new ht.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new dsz.a(new ht($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      hx $$16 = hx.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new dsz.a(new ht($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+      return dus.f;
    }
 }

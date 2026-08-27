@@ -1,31 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcr extends cut {
-   public static final MapCodec<dcr> a = b(dcr::new);
-   private static final double b = 5.0;
-   private static final ekb c = cut.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dcr extends ddl implements cur {
+   public static final MapCodec<dcr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cjx.q.fieldOf("color").forGetter(dcr::b), u()).apply($$0, dcr::new));
+   private final cjx c;
 
    @Override
    public MapCodec<dcr> a() {
       return a;
    }
 
-   protected dcr(dgv.d $$0) {
-      super($$0);
+   public dcr(cjx $$0, dhh.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public day b_(dgw $$0) {
-      return day.a;
-   }
-
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return c;
-   }
-
-   @Override
-   public float b(dgw $$0, cqy $$1, ht $$2) {
-      return 1.0F;
+   public cjx b() {
+      return this.c;
    }
 }

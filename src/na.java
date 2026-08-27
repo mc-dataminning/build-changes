@@ -1,29 +1,29 @@
 import javax.annotation.Nullable;
 
 public class na extends mo {
-   final coj<?> a;
+   final cos<?> a;
 
-   public na(coj<?> $$0) {
+   public na(cos<?> $$0) {
       this.a = $$0;
    }
 
-   public static na a(coj<? extends cnv> $$0) {
+   public static na a(cos<? extends cod> $$0) {
       return new na($$0);
    }
 
    public void a(ms $$0, String $$1) {
-      this.a($$0, new agg($$1));
+      this.a($$0, new agi($$1));
    }
 
-   public void a(ms $$0, final agg $$1) {
-      $$0.a(new mo.a(cnu.d) {
+   public void a(ms $$0, final agi $$1) {
+      $$0.a(new mo.a(coc.d) {
          @Override
-         public coj<?> c() {
+         public cos<?> c() {
             return na.this.a;
          }
 
          @Override
-         public agg b() {
+         public agi b() {
             return $$1;
          }
 

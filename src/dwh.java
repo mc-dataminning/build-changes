@@ -1,39 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dwh extends dwb {
-   public static final Codec<dwh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dmf.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwh::new)
-   );
-   private final dmf.a c;
-   private final int d;
-   private final int e;
+public class dwh extends dwo {
+   public static final Codec<dwh> a = RecordCodecBuilder.create($$0 -> $$0.group(dmr.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dwh::new));
+   private final dmr.a c;
 
-   private dwh(dmf.a $$0, int $$1, int $$2) {
+   private dwh(dmr.a $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static dwh a(dmf.a $$0, int $$1, int $$2) {
-      return new dwh($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dwa $$0, ato $$1, ht $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public static dwh a(dmr.a $$0) {
+      return new dwh($$0);
    }
 
    @Override
-   public dwd<?> b() {
-      return dwd.c;
+   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new ht($$3, $$5, $$4)) : Stream.of();
+   }
+
+   @Override
+   public dwp<?> b() {
+      return dwp.k;
    }
 }

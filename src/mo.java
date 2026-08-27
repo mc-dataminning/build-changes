@@ -1,19 +1,19 @@
 import com.google.gson.JsonObject;
 
 public abstract class mo {
-   protected static cnu a(mr $$0) {
+   protected static coc a(mr $$0) {
       return switch ($$0) {
-         case a -> cnu.a;
-         case e, f -> cnu.c;
-         case c -> cnu.b;
-         default -> cnu.d;
+         case a -> coc.a;
+         case e, f -> coc.c;
+         case c -> coc.b;
+         default -> coc.d;
       };
    }
 
    protected abstract static class a implements mp {
-      private final cnu a;
+      private final coc a;
 
-      protected a(cnu $$0) {
+      protected a(coc $$0) {
          this.a = $$0;
       }
 

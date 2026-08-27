@@ -6,12 +6,12 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class jl extends jn {
-   public static final Vector3f a = eji.a(3790560).j();
+   public static final Vector3f a = eju.a(3790560).j();
    public static final jl b = new jl(a, jm.a, 1.0F);
    public static final Codec<jl> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asq.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               asq.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               asu.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               asu.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
                Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, jl::new)

@@ -18,9 +18,9 @@ public class fn implements ArgumentType<fo> {
       return new fn();
    }
 
-   public static alq a(CommandContext<du> $$0, String $$1) {
+   public static alu a(CommandContext<du> $$0, String $$1) {
       ht $$2 = ((fo)$$0.getArgument($$1, fo.class)).c((du)$$0.getSource());
-      return new alq($$2.u(), $$2.w());
+      return new alu($$2.u(), $$2.w());
    }
 
    public fo a(StringReader $$0) throws CommandSyntaxException {

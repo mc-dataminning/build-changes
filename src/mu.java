@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 
 public class mu extends mo implements mq {
    private final mr b;
-   private final ckw c;
+   private final cle c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, coc> f = Maps.newLinkedHashMap();
+   private final Map<Character, cok> f = Maps.newLinkedHashMap();
    private final Map<String, am<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public mu(mr $$0, crr $$1, int $$2) {
+   public mu(mr $$0, crz $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.k();
       this.d = $$2;
    }
 
-   public static mu a(mr $$0, crr $$1) {
+   public static mu a(mr $$0, crz $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static mu a(mr $$0, crr $$1, int $$2) {
+   public static mu a(mr $$0, crz $$1, int $$2) {
       return new mu($$0, $$1, $$2);
    }
 
-   public mu a(Character $$0, arr<ckw> $$1) {
-      return this.a($$0, coc.a($$1));
+   public mu a(Character $$0, arv<cle> $$1) {
+      return this.a($$0, cok.a($$1));
    }
 
-   public mu a(Character $$0, crr $$1) {
-      return this.a($$0, coc.a($$1));
+   public mu a(Character $$0, crz $$1) {
+      return this.a($$0, cok.a($$1));
    }
 
-   public mu a(Character $$0, coc $$1) {
+   public mu a(Character $$0, cok $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -79,19 +79,19 @@ public class mu extends mo implements mq {
    }
 
    @Override
-   public ckw a() {
+   public cle a() {
       return this.c;
    }
 
    @Override
-   public void a(ms $$0, agg $$1) {
+   public void a(ms $$0, agi $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.g.forEach($$2::a);
       $$0.a(new mu.a($$1, this.c, this.d, this.h == null ? "" : this.h, a(this.b), this.e, this.f, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.i));
    }
 
-   private void a(agg $$0) {
+   private void a(agi $$0) {
       if (this.e.isEmpty()) {
          throw new IllegalStateException("No pattern is defined for shaped recipe " + $$0 + "!");
       } else {
@@ -120,16 +120,16 @@ public class mu extends mo implements mq {
    }
 
    static class a extends mo.a {
-      private final agg a;
-      private final ckw b;
+      private final agi a;
+      private final cle b;
       private final int c;
       private final String d;
       private final List<String> e;
-      private final Map<Character, coc> f;
+      private final Map<Character, cok> f;
       private final af g;
       private final boolean h;
 
-      public a(agg $$0, ckw $$1, int $$2, String $$3, cnu $$4, List<String> $$5, Map<Character, coc> $$6, af $$7, boolean $$8) {
+      public a(agi $$0, cle $$1, int $$2, String $$3, coc $$4, List<String> $$5, Map<Character, cok> $$6, af $$7, boolean $$8) {
          super($$4);
          this.a = $$0;
          this.b = $$1;
@@ -157,7 +157,7 @@ public class mu extends mo implements mq {
          $$0.add("pattern", $$1);
          JsonObject $$3 = new JsonObject();
 
-         for (Entry<Character, coc> $$4 : this.f.entrySet()) {
+         for (Entry<Character, cok> $$4 : this.f.entrySet()) {
             $$3.add(String.valueOf($$4.getKey()), $$4.getValue().a(false));
          }
 
@@ -173,12 +173,12 @@ public class mu extends mo implements mq {
       }
 
       @Override
-      public coj<?> c() {
-         return coj.a;
+      public cos<?> c() {
+         return cos.a;
       }
 
       @Override
-      public agg b() {
+      public agi b() {
          return this.a;
       }
 

@@ -34,97 +34,103 @@ public class dv {
    private final CommandDispatcher<du> h = new CommandDispatcher();
 
    public dv(dv.a $$0, dp $$1) {
-      ahk.a(this.h);
-      ahl.a(this.h, $$1);
-      aif.a(this.h, $$1);
-      ahp.a(this.h);
-      ahr.a(this.h, $$1);
-      ahs.a(this.h, $$1);
-      aht.a(this.h, $$1);
-      akr.a(this.h);
-      ahu.a(this.h);
-      ahw.a(this.h);
-      aia.a(this.h);
-      aib.a(this.h);
-      aic.a(this.h, $$1);
-      aid.a(this.h);
-      aie.a(this.h, $$1);
-      aig.a(this.h);
+      ahn.a(this.h);
+      aho.a(this.h, $$1);
       aii.a(this.h, $$1);
+      ahs.a(this.h);
+      ahu.a(this.h, $$1);
+      ahv.a(this.h, $$1);
+      ahw.a(this.h, $$1);
+      akv.a(this.h);
+      ahx.a(this.h);
+      ahz.a(this.h);
+      aid.a(this.h);
+      aie.a(this.h);
+      aif.a(this.h, $$1);
+      aig.a(this.h);
       aih.a(this.h, $$1);
       aij.a(this.h);
-      aik.a(this.h);
-      ail.a(this.h);
+      ail.a(this.h, $$1);
+      aik.a(this.h, $$1);
       aim.a(this.h);
-      ain.a(this.h, $$1);
+      ain.a(this.h);
       aio.a(this.h);
-      aip.a(this.h, $$1);
+      aip.a(this.h);
+      aiq.a(this.h, $$1);
       air.a(this.h);
-      ais.a(this.h);
-      ait.a(this.h);
-      aiu.a(this.h, $$1);
-      aiv.a(this.h, $$1);
+      ais.a(this.h, $$1);
+      aiu.a(this.h);
+      aiv.a(this.h);
       aiw.a(this.h);
-      aja.a(this.h, $$1);
-      ajc.a(this.h);
-      ajd.a(this.h);
+      aix.a(this.h, $$1);
+      aiy.a(this.h, $$1);
+      aiz.a(this.h);
+      ajd.a(this.h, $$1);
+      ajf.a(this.h);
       ajg.a(this.h);
-      aji.a(this.h);
-      ajh.a(this.h);
-      ajk.a(this.h);
+      ajj.a(this.h);
       ajl.a(this.h);
-      ajp.a(this.h);
-      ajq.a(this.h);
-      ajr.a(this.h);
-      ajs.a(this.h, $$0 != dv.a.c);
-      ajt.a(this.h, $$1);
-      ajv.a(this.h);
-      ajw.a(this.h);
+      ajk.a(this.h);
+      ajn.a(this.h);
+      ajo.a(this.h);
+      ajs.a(this.h);
+      ajt.a(this.h);
+      aju.a(this.h);
+      ajv.a(this.h, $$0 != dv.a.c);
+      ajw.a(this.h, $$1);
       ajy.a(this.h);
       ajz.a(this.h);
       akb.a(this.h);
-      akc.a(this.h, $$1);
-      akd.a(this.h);
+      akc.a(this.h);
       ake.a(this.h);
-      akf.a(this.h);
+      akf.a(this.h, $$1);
       akg.a(this.h);
       akh.a(this.h);
       aki.a(this.h);
       akj.a(this.h);
       akk.a(this.h);
+      akl.a(this.h);
       akm.a(this.h);
+      akn.a(this.h);
       ako.a(this.h);
-      if (bfn.e.d()) {
-         aiq.a(this.h);
+      akq.a(this.h);
+      aks.a(this.h);
+      if (bfu.e.d()) {
+         ait.a(this.h);
       }
 
       if (aa.aT) {
          rp.a(this.h);
-         ajx.a(this.h);
+         ajm.a(this.h);
+         aji.a(this.h);
+         aic.a(this.h);
+         aib.a(this.h);
+         akp.a(this.h);
+         aka.a(this.h);
          if ($$0.e) {
-            ahx.a(this.h);
+            aia.a(this.h);
          }
       }
 
       if ($$0.e) {
-         ahm.a(this.h);
-         ahn.a(this.h);
-         aho.a(this.h);
-         ahv.a(this.h);
-         aix.a(this.h);
-         aiy.a(this.h);
-         aiz.a(this.h);
+         ahp.a(this.h);
+         ahq.a(this.h);
+         ahr.a(this.h);
+         ahy.a(this.h);
+         aja.a(this.h);
          ajb.a(this.h);
-         ajm.a(this.h);
-         ajn.a(this.h);
-         ajo.a(this.h);
-         aju.a(this.h);
-         aka.a(this.h);
-         akn.a(this.h);
+         ajc.a(this.h);
+         aje.a(this.h);
+         ajp.a(this.h);
+         ajq.a(this.h);
+         ajr.a(this.h);
+         ajx.a(this.h);
+         akd.a(this.h);
+         akr.a(this.h);
       }
 
       if ($$0.d) {
-         aje.a(this.h);
+         ajh.a(this.h);
       }
 
       this.h.setConsumer(dw.a_());
@@ -143,7 +149,7 @@ public class dv {
 
    public void a(ParseResults<du> $$0, String $$1) {
       du $$2 = (du)$$0.getContext().getSource();
-      $$2.m().aM().a(() -> "/" + $$1);
+      $$2.m().aR().a(() -> "/" + $$1);
       ContextChain<du> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -169,7 +175,7 @@ public class dv {
             g.error("'/{}' threw an exception", $$1, var14);
          }
       } finally {
-         $$2.m().aM().c();
+         $$2.m().aR().c();
       }
    }
 
@@ -207,10 +213,10 @@ public class dv {
       gn<du> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aI().c(cro.x));
-         int $$6 = $$2.aI().c(cro.y);
+         int $$5 = Math.max(1, $$2.aK().c(crw.x));
+         int $$6 = $$2.aK().c(crw.y);
 
-         try (gn<du> $$7 = new gn<>($$5, $$6, $$2.aM())) {
+         try (gn<du> $$7 = new gn<>($$5, $$6, $$2.aR())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -222,11 +228,11 @@ public class dv {
       }
    }
 
-   public void a(amb $$0) {
+   public void a(amf $$0) {
       Map<CommandNode<du>, CommandNode<dy>> $$1 = Maps.newHashMap();
       RootCommandNode<dy> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.dc(), $$1);
+      this.a(this.h.getRoot(), $$2, $$0.de(), $$1);
       $$0.c.b(new yv($$2));
    }
 
@@ -306,16 +312,16 @@ public class dv {
    public static dp a(final id.b $$0) {
       return new dp() {
          @Override
-         public <T> id<T> a(agf<? extends io<T>> $$0x) {
+         public <T> id<T> a(agh<? extends io<T>> $$0x) {
             final id.c<T> $$1 = $$0.b($$0);
             return new id.a<T>($$1) {
                @Override
-               public Optional<ig.c<T>> a(arr<T> $$0x) {
+               public Optional<ig.c<T>> a(arv<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public ig.c<T> b(arr<T> $$0x) {
+               public ig.c<T> b(arv<T> $$0x) {
                   Optional<ig.c<T>> $$1 = $$1.a($$0);
                   return $$1.orElseGet(() -> ig.a($$1, $$0));
                }
@@ -325,7 +331,7 @@ public class dv {
    }
 
    public static void b() {
-      dp $$0 = a(ni.a());
+      dp $$0 = a(nj.a());
       CommandDispatcher<du> $$1 = new dv(dv.a.a, $$0).a();
       RootCommandNode<du> $$2 = $$1.getRoot();
       $$1.findAmbiguities(

@@ -1,420 +1,104 @@
-import java.util.Arrays;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public interface dlr {
-   static dlr a(dmj $$0, cqz $$1, dml $$2, dms $$3, int $$4, int $$5, dlr.a $$6) {
-      return new dlr.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class dlr implements dlv {
+   private final List<dlu> b = Lists.newArrayList();
+   private final Set<dlu> c = Sets.newHashSet();
+   private final List<dlu> d = Lists.newArrayList();
+   private boolean e;
+   private final ame f;
+   private final int g;
+   private final dlr.a h;
+
+   public dlr(ame $$0, int $$1, dlr.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   static dlr a(final dlr.a $$0) {
-      return new dlr() {
-         @Nullable
-         @Override
-         public dgw a(dly.b $$0x, double $$1) {
-            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
-         }
-
-         @Override
-         public boolean a() {
-            return false;
-         }
-      };
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   @Nullable
-   dgw a(dly.b var1, double var2);
+   @Override
+   public void a(dlu $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
+      }
 
-   boolean a();
+      ack.a(this.f, $$0);
+   }
 
+   @Override
+   public void b(dlu $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
+   }
+
+   @Override
+   public boolean a(dls $$0, eju $$1, dls.a $$2, dlv.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<dlu> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dlu $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<eju> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
+      }
+
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<eju> a(ame $$0, eju $$1, dlu $$2) {
+      Optional<eju> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = ht.a($$3.get()).j(ht.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      }
+   }
+
+   @FunctionalInterface
    public interface a {
-      dlr.b computeFluid(int var1, int var2, int var3);
-   }
-
-   public static final class b {
-      final int a;
-      final dgw b;
-
-      public b(int $$0, dgw $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dgw a(int $$0) {
-         return $$0 < this.a ? this.b : cuv.a.o();
-      }
-   }
-
-   public static class c implements dlr {
-      private static final int a = 10;
-      private static final int b = 9;
-      private static final int c = 10;
-      private static final int d = 6;
-      private static final int e = 3;
-      private static final int f = 6;
-      private static final int g = 16;
-      private static final int h = 12;
-      private static final int i = 16;
-      private static final int j = 11;
-      private static final double k = a(ati.h(10), ati.h(12));
-      private final dmj l;
-      private final dly m;
-      private final dly n;
-      private final dly o;
-      private final dly p;
-      private final dms q;
-      private final dlr.b[] r;
-      private final long[] s;
-      private final dlr.a t;
-      private final dly u;
-      private final dly v;
-      private boolean w;
-      private final int x;
-      private final int y;
-      private final int z;
-      private final int A;
-      private final int B;
-      private static final int[][] C = new int[][]{
-         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
-      };
-
-      c(dmj $$0, cqz $$1, dml $$2, dms $$3, int $$4, int $$5, dlr.a $$6) {
-         this.l = $$0;
-         this.m = $$2.a();
-         this.n = $$2.b();
-         this.o = $$2.c();
-         this.p = $$2.d();
-         this.u = $$2.h();
-         this.v = $$2.i();
-         this.q = $$3;
-         this.x = this.a($$1.d()) - 1;
-         this.t = $$6;
-         int $$7 = this.a($$1.f()) + 1;
-         this.A = $$7 - this.x + 1;
-         this.y = this.b($$4) - 1;
-         int $$8 = this.b($$4 + $$5) + 1;
-         int $$9 = $$8 - this.y + 1;
-         this.z = this.c($$1.e()) - 1;
-         int $$10 = this.c($$1.g()) + 1;
-         this.B = $$10 - this.z + 1;
-         int $$11 = this.A * $$9 * this.B;
-         this.r = new dlr.b[$$11];
-         this.s = new long[$$11];
-         Arrays.fill(this.s, Long.MAX_VALUE);
-      }
-
-      private int a(int $$0, int $$1, int $$2) {
-         int $$3 = $$0 - this.x;
-         int $$4 = $$1 - this.y;
-         int $$5 = $$2 - this.z;
-         return ($$4 * this.B + $$5) * this.A + $$3;
-      }
-
-      @Nullable
-      @Override
-      public dgw a(dly.b $$0, double $$1) {
-         int $$2 = $$0.a();
-         int $$3 = $$0.b();
-         int $$4 = $$0.c();
-         if ($$1 > 0.0) {
-            this.w = false;
-            return null;
-         } else {
-            dlr.b $$5 = this.t.computeFluid($$2, $$3, $$4);
-            if ($$5.a($$3).a(cuv.H)) {
-               this.w = false;
-               return cuv.H.o();
-            } else {
-               int $$6 = Math.floorDiv($$2 - 5, 16);
-               int $$7 = Math.floorDiv($$3 + 1, 12);
-               int $$8 = Math.floorDiv($$4 - 5, 16);
-               int $$9 = Integer.MAX_VALUE;
-               int $$10 = Integer.MAX_VALUE;
-               int $$11 = Integer.MAX_VALUE;
-               long $$12 = 0L;
-               long $$13 = 0L;
-               long $$14 = 0L;
-
-               for (int $$15 = 0; $$15 <= 1; $$15++) {
-                  for (int $$16 = -1; $$16 <= 1; $$16++) {
-                     for (int $$17 = 0; $$17 <= 1; $$17++) {
-                        int $$18 = $$6 + $$15;
-                        int $$19 = $$7 + $$16;
-                        int $$20 = $$8 + $$17;
-                        int $$21 = this.a($$18, $$19, $$20);
-                        long $$22 = this.s[$$21];
-                        long $$23;
-                        if ($$22 != Long.MAX_VALUE) {
-                           $$23 = $$22;
-                        } else {
-                           ato $$24 = this.q.a($$18, $$19, $$20);
-                           $$23 = ht.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
-                           this.s[$$21] = $$23;
-                        }
-
-                        int $$26 = ht.a($$23) - $$2;
-                        int $$27 = ht.b($$23) - $$3;
-                        int $$28 = ht.c($$23) - $$4;
-                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
-                        if ($$9 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$12;
-                           $$12 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$9;
-                           $$9 = $$29;
-                        } else if ($$10 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$29;
-                        } else if ($$11 >= $$29) {
-                           $$14 = $$23;
-                           $$11 = $$29;
-                        }
-                     }
-                  }
-               }
-
-               dlr.b $$30 = this.a($$12);
-               double $$31 = a($$9, $$10);
-               dgw $$32 = $$30.a($$3);
-               if ($$31 <= 0.0) {
-                  this.w = $$31 >= k;
-                  return $$32;
-               } else if ($$32.a(cuv.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(cuv.H)) {
-                  this.w = true;
-                  return $$32;
-               } else {
-                  MutableDouble $$34 = new MutableDouble(Double.NaN);
-                  dlr.b $$35 = this.a($$13);
-                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
-                  if ($$1 + $$36 > 0.0) {
-                     this.w = false;
-                     return null;
-                  } else {
-                     dlr.b $$37 = this.a($$14);
-                     double $$38 = a($$9, $$11);
-                     if ($$38 > 0.0) {
-                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
-                        if ($$1 + $$39 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
-
-                     double $$40 = a($$10, $$11);
-                     if ($$40 > 0.0) {
-                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
-                        if ($$1 + $$41 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
-
-                     this.w = true;
-                     return $$32;
-                  }
-               }
-            }
-         }
-      }
-
-      @Override
-      public boolean a() {
-         return this.w;
-      }
-
-      private static double a(int $$0, int $$1) {
-         double $$2 = 25.0;
-         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
-      }
-
-      private double a(dly.b $$0, MutableDouble $$1, dlr.b $$2, dlr.b $$3) {
-         int $$4 = $$0.b();
-         dgw $$5 = $$2.a($$4);
-         dgw $$6 = $$3.a($$4);
-         if ((!$$5.a(cuv.H) || !$$6.a(cuv.G)) && (!$$5.a(cuv.G) || !$$6.a(cuv.H))) {
-            int $$7 = Math.abs($$2.a - $$3.a);
-            if ($$7 == 0) {
-               return 0.0;
-            } else {
-               double $$8 = 0.5 * (double)($$2.a + $$3.a);
-               double $$9 = (double)$$4 + 0.5 - $$8;
-               double $$10 = (double)$$7 / 2.0;
-               double $$11 = 0.0;
-               double $$12 = 2.5;
-               double $$13 = 1.5;
-               double $$14 = 3.0;
-               double $$15 = 10.0;
-               double $$16 = 3.0;
-               double $$17 = $$10 - Math.abs($$9);
-               double $$19;
-               if ($$9 > 0.0) {
-                  double $$18 = 0.0 + $$17;
-                  if ($$18 > 0.0) {
-                     $$19 = $$18 / 1.5;
-                  } else {
-                     $$19 = $$18 / 2.5;
-                  }
-               } else {
-                  double $$21 = 3.0 + $$17;
-                  if ($$21 > 0.0) {
-                     $$19 = $$21 / 3.0;
-                  } else {
-                     $$19 = $$21 / 10.0;
-                  }
-               }
-
-               double $$24 = 2.0;
-               double $$28;
-               if (!($$19 < -2.0) && !($$19 > 2.0)) {
-                  double $$26 = $$1.getValue();
-                  if (Double.isNaN($$26)) {
-                     double $$27 = this.m.a($$0);
-                     $$1.setValue($$27);
-                     $$28 = $$27;
-                  } else {
-                     $$28 = $$26;
-                  }
-               } else {
-                  $$28 = 0.0;
-               }
-
-               return 2.0 * ($$28 + $$19);
-            }
-         } else {
-            return 2.0;
-         }
-      }
-
-      private int a(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private int b(int $$0) {
-         return Math.floorDiv($$0, 12);
-      }
-
-      private int c(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private dlr.b a(long $$0) {
-         int $$1 = ht.a($$0);
-         int $$2 = ht.b($$0);
-         int $$3 = ht.c($$0);
-         int $$4 = this.a($$1);
-         int $$5 = this.b($$2);
-         int $$6 = this.c($$3);
-         int $$7 = this.a($$4, $$5, $$6);
-         dlr.b $$8 = this.r[$$7];
-         if ($$8 != null) {
-            return $$8;
-         } else {
-            dlr.b $$9 = this.b($$1, $$2, $$3);
-            this.r[$$7] = $$9;
-            return $$9;
-         }
-      }
-
-      private dlr.b b(int $$0, int $$1, int $$2) {
-         dlr.b $$3 = this.t.computeFluid($$0, $$1, $$2);
-         int $$4 = Integer.MAX_VALUE;
-         int $$5 = $$1 + 12;
-         int $$6 = $$1 - 12;
-         boolean $$7 = false;
-
-         for (int[] $$8 : C) {
-            int $$9 = $$0 + iu.c($$8[0]);
-            int $$10 = $$2 + iu.c($$8[1]);
-            int $$11 = this.l.a($$9, $$10);
-            int $$12 = $$11 + 8;
-            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
-            if ($$13 && $$6 > $$12) {
-               return $$3;
-            }
-
-            boolean $$14 = $$5 > $$12;
-            if ($$14 || $$13) {
-               dlr.b $$15 = this.t.computeFluid($$9, $$12, $$10);
-               if (!$$15.a($$12).i()) {
-                  if ($$13) {
-                     $$7 = true;
-                  }
-
-                  if ($$14) {
-                     return $$15;
-                  }
-               }
-            }
-
-            $$4 = Math.min($$4, $$11);
-         }
-
-         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
-         return new dlr.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
-      }
-
-      private int a(int $$0, int $$1, int $$2, dlr.b $$3, int $$4, boolean $$5) {
-         dly.e $$6 = new dly.e($$0, $$1, $$2);
-         double $$7;
-         double $$8;
-         if (ctg.a(this.u, this.v, $$6)) {
-            $$7 = -1.0;
-            $$8 = -1.0;
-         } else {
-            int $$9 = $$4 + 8 - $$1;
-            int $$10 = 64;
-            double $$11 = $$5 ? ati.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
-            double $$12 = ati.a(this.n.a($$6), -1.0, 1.0);
-            double $$13 = ati.b($$11, 1.0, 0.0, -0.3, 0.8);
-            double $$14 = ati.b($$11, 1.0, 0.0, -0.8, 0.4);
-            $$7 = $$12 - $$14;
-            $$8 = $$12 - $$13;
-         }
-
-         int $$17;
-         if ($$8 > 0.0) {
-            $$17 = $$3.a;
-         } else if ($$7 > 0.0) {
-            $$17 = this.a($$0, $$1, $$2, $$4);
-         } else {
-            $$17 = dkf.g;
-         }
-
-         return $$17;
-      }
-
-      private int a(int $$0, int $$1, int $$2, int $$3) {
-         int $$4 = 16;
-         int $$5 = 40;
-         int $$6 = Math.floorDiv($$0, 16);
-         int $$7 = Math.floorDiv($$1, 40);
-         int $$8 = Math.floorDiv($$2, 16);
-         int $$9 = $$7 * 40 + 20;
-         int $$10 = 10;
-         double $$11 = this.o.a(new dly.e($$6, $$7, $$8)) * 10.0;
-         int $$12 = ati.a($$11, 3);
-         int $$13 = $$9 + $$12;
-         return Math.min($$3, $$13);
-      }
-
-      private dgw a(int $$0, int $$1, int $$2, dlr.b $$3, int $$4) {
-         dgw $$5 = $$3.b;
-         if ($$4 <= -10 && $$4 != dkf.g && $$3.b != cuv.H.o()) {
-            int $$6 = 64;
-            int $$7 = 40;
-            int $$8 = Math.floorDiv($$0, 64);
-            int $$9 = Math.floorDiv($$1, 40);
-            int $$10 = Math.floorDiv($$2, 64);
-            double $$11 = this.p.a(new dly.e($$8, $$9, $$10));
-            if (Math.abs($$11) > 0.3) {
-               $$5 = cuv.H.o();
-            }
-         }
-
-         return $$5;
-      }
+      void apply(int var1);
    }
 }

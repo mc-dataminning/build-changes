@@ -1,136 +1,59 @@
-public class bug extends buh {
-   private boolean p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public bug(bla $$0, crs $$1) {
-      super($$0, $$1);
+public class bug<T> {
+   private final T a;
+   private long b;
+
+   public bug(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   protected ecx a(int $$0) {
-      this.o = new eda();
-      this.o.a(true);
-      return new ecx(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.a.aA() || this.a.bb() || this.a.bN();
-   }
-
-   @Override
-   protected eji b() {
-      return new eji(this.a.dq(), (double)this.s(), this.a.dw());
-   }
-
-   @Override
-   public ecv a(ht $$0, int $$1) {
-      djd $$2 = this.b.J().a(iu.a($$0.u()), iu.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).i()) {
-            ht $$3 = $$0.d();
-
-            while ($$3.v() > this.b.I_() && $$2.a_($$3).i()) {
-               $$3 = $$3.d();
-            }
-
-            if ($$3.v() > this.b.I_()) {
-               return super.a($$3.c(), $$1);
-            }
-
-            while ($$3.v() < this.b.aj() && $$2.a_($$3).i()) {
-               $$3 = $$3.c();
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            ht $$4 = $$0.c();
-
-            while ($$4.v() < this.b.aj() && $$2.a_($$4).e()) {
-               $$4 = $$4.c();
-            }
-
-            return super.a($$4, $$1);
-         }
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
    }
 
-   @Override
-   public ecv a(bki $$0, int $$1) {
-      return this.a($$0.dl(), $$1);
+   public static <T> bug<T> a(T $$0) {
+      return new bug<>($$0, Long.MAX_VALUE);
    }
 
-   private int s() {
-      if (this.a.aX() && this.p()) {
-         int $$0 = this.a.dr();
-         dgw $$1 = this.b.a_(ht.a(this.a.dq(), (double)$$0, this.a.dw()));
-         int $$2 = 0;
+   public static <T> bug<T> a(T $$0, long $$1) {
+      return new bug<>($$0, $$1);
+   }
 
-         while ($$1.a(cuv.G)) {
-            $$1 = this.b.a_(ht.a(this.a.dq(), (double)(++$$0), this.a.dw()));
-            if (++$$2 > 16) {
-               return this.a.dr();
-            }
-         }
+   public long b() {
+      return this.b;
+   }
 
-         return $$0;
-      } else {
-         return ati.a(this.a.ds() + 0.5);
-      }
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected void S_() {
-      super.S_();
-      if (this.p) {
-         if (this.b.g(ht.a(this.a.dq(), this.a.ds() + 0.5, this.a.dw()))) {
-            return;
-         }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            ect $$1 = this.c.a($$0);
-            if (this.b.g(new ht($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   protected boolean a(ecr $$0) {
-      if ($$0 == ecr.j) {
-         return false;
-      } else {
-         return $$0 == ecr.i ? false : $$0 != ecr.b;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
+   @aup
    public boolean e() {
-      return this.o.d();
+      return this.b != Long.MAX_VALUE;
    }
 
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean f() {
-      return this.o.d();
-   }
-
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   public static <T> Codec<bug<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bug<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

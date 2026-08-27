@@ -1,30 +1,23 @@
-public class fsx implements fsh<dge> {
-   private final fvi a;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public fsx(fsi.a $$0) {
-      this.a = $$0.c();
+public class fsx<S extends dfd> implements cxh.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = fqs.a($$0.k(), $$0.p());
+         int $$4 = fqs.a($$1.k(), $$1.p());
+         int $$5 = fqt.a($$3);
+         int $$6 = fqt.a($$4);
+         int $$7 = fqt.b($$3);
+         int $$8 = fqt.b($$4);
+         return fqt.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dge $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      cqu $$6 = $$0.d();
-      bki $$7 = $$6.a($$0.k(), $$0.k().E_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.df(), $$7.dg());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
-         }
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
 
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)ati.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
-      }
-
-      $$2.b();
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

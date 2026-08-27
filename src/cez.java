@@ -1,39 +1,110 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class cez extends ceb {
+   private static final afo<Boolean> e = afr.a(cez.class, afq.k);
 
-public class cez {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cez c = a("empty").a(0, cex.b).a();
-   public static final cez d = a("simple").a(5000, cex.c).a(11000, cex.e).a();
-   public static final cez e = a("villager_baby").a(10, cex.b).a(3000, cex.d).a(6000, cex.b).a(10000, cex.d).a(12000, cex.e).a();
-   public static final cez f = a("villager_default").a(10, cex.b).a(2000, cex.c).a(9000, cex.f).a(11000, cex.b).a(12000, cex.e).a();
-   private final Map<cex, cfb> g = Maps.newHashMap();
-
-   protected static cfa a(String $$0) {
-      cez $$1 = io.a(jy.E, $$0, new cez());
-      return new cfa($$1);
+   public cez(bku<? extends cez> $$0, csa $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cex $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cfb());
+   public cez(csa $$0, blg $$1, double $$2, double $$3, double $$4) {
+      super(bku.bm, $$1, $$2, $$3, $$4, $$0);
+   }
+
+   @Override
+   protected float u() {
+      return this.x() ? 0.73F : super.u();
+   }
+
+   @Override
+   public boolean bN() {
+      return false;
+   }
+
+   @Override
+   public float a(crs $$0, crg $$1, ht $$2, dhi $$3, ecs $$4, float $$5) {
+      return this.x() && cab.d($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(ejr $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         bkq $$1 = $$0.a();
+         boolean $$4;
+         if (this.w() instanceof blg $$3) {
+            $$4 = $$1.a(this.dO().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bx()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.b(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dO().o(), 5.0F);
+         }
+
+         if ($$4 && $$1 instanceof blg $$6) {
+            int $$7 = 0;
+            if (this.dN().aj() == biu.c) {
+               $$7 = 10;
+            } else if (this.dN().aj() == biu.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bkd(bkf.t, 20 * $$7, 1), this.I());
+            }
+         }
       }
    }
 
-   protected cfb b(cex $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(ejs $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         this.dN().a(this, this.ds(), this.du(), this.dy(), 1.0F, false, csa.a.c);
+         this.am();
+      }
    }
 
-   protected List<cfb> c(cex $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   public boolean bt() {
+      return false;
    }
 
-   public cex a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cex.b);
+   @Override
+   public boolean a(bjo $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void b_() {
+      this.an.a(e, false);
+   }
+
+   @Override
+   public boolean x() {
+      return this.an.b(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.b(e, $$0);
+   }
+
+   @Override
+   protected boolean af_() {
+      return false;
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.x());
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

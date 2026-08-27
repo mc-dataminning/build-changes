@@ -1,9 +1,4 @@
-import java.util.function.Predicate;
+import org.joml.Vector3f;
 
-@FunctionalInterface
-public interface fru {
-   fru b = $$0 -> $$0x -> true;
-   fru c = $$0 -> $$0x -> false;
-
-   Predicate<dgw> getPredicate(dgx<cut, dgw> var1);
+public record fru(Vector3f a, hx.a b, float c, boolean d) {
 }

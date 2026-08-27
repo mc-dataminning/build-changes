@@ -1,91 +1,87 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcz extends cut {
+public class dcz extends cva {
    public static final MapCodec<dcz> a = b(dcz::new);
-   private static final dhw b = dhm.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final dii b = dhy.aw;
+   protected static final float c = 6.0F;
+   protected static final ekn d = cva.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dcz> a() {
       return a;
    }
 
-   public dcz(dgv.d $$0) {
+   protected dcz(dhh.d $$0) {
       super($$0);
       this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(crs $$0, dgw $$1, eje $$2, cee $$3) {
-      int $$4 = a((crt)$$0, $$1, $$2, (bki)$$3);
-      if ($$3.v() instanceof amb $$6) {
-         $$6.a(aqx.aE);
-         al.L.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(crt $$0, dgw $$1, eje $$2, bki $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cds ? 20 : 8;
-      if (!$$0.L().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(eje $$0, eji $$1) {
-      hx $$2 = $$0.b();
-      double $$3 = Math.abs(ati.e($$1.c) - 0.5);
-      double $$4 = Math.abs(ati.e($$1.d) - 0.5);
-      double $$5 = Math.abs(ati.e($$1.e) - 0.5);
-      hx.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == hx.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == hx.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, ati.c(15.0 * ati.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(crt $$0, dgw $$1, int $$2, ht $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return d;
    }
 
    @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
+   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
-      return $$0.c(b);
-   }
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if ($$1.t($$2.c())) {
+         int $$4 = 1;
 
-   @Override
-   public boolean f_(dgw $$0) {
-      return true;
-   }
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
 
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.L().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.c(), this.o());
+               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
+            }
          }
       }
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      dhi $$3 = $$1.a_($$2.d());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(arg.af) || $$3.a(arg.H)) {
+            ht $$4 = $$2.d();
+
+            for (hx $$5 : hx.c.a) {
+               dhi $$6 = $$1.a_($$4.a($$5));
+               ecs $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(arl.a) || $$6.a(cvc.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b);
    }
 }

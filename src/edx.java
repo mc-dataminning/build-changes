@@ -1,34 +1,44 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public interface edx {
-   int a();
+public abstract class edx {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   int b();
+   public abstract rz a(rz var1);
 
-   int c();
+   public void c() {
+      this.a(true);
+   }
 
-   float d();
+   public void a(boolean $$0) {
+      this.b = $$0;
+   }
 
-   long e();
+   public boolean d() {
+      return this.b;
+   }
 
-   long f();
+   public void a(File $$0) {
+      if (this.d()) {
+         rz $$1 = new rz();
+         $$1.a("data", this.a(new rz()));
+         so.g($$1);
 
-   boolean i();
+         try {
+            sm.a($$1, $$0);
+         } catch (IOException var4) {
+            a.error("Could not save data {}", this, var4);
+         }
 
-   boolean k();
+         this.a(false);
+      }
+   }
 
-   void b(boolean var1);
-
-   boolean n();
-
-   cro q();
-
-   bin s();
-
-   boolean t();
-
-   default void a(p $$0, cru $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
+   public static record a<T extends edx>(Supplier<T> a, Function<rz, T> b, aus c) {
    }
 }

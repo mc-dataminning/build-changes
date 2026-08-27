@@ -1,88 +1,96 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fsc implements fsh<deh> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fkb g;
-   private final fkb h;
-   private final fkb i;
+public class fsc {
+   public static final fsc a = new fsc(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   public fsc(fsi.a $$0) {
-      fkb $$1 = $$0.a(fka.f);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+   public fsc(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public static fkh a() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("flag", fkg.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fkd.a);
-      $$1.a("pole", fkg.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fkd.a);
-      $$1.a("bar", fkg.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fkd.a);
-      return fkh.a($$0, 64, 64);
-   }
-
-   public void a(deh $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      List<Pair<ib<dei>, cjp>> $$6 = $$0.c();
-      float $$7 = 0.6666667F;
-      boolean $$8 = $$0.k() == null;
-      $$2.a();
-      long $$9;
-      if ($$8) {
-         $$9 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$9 = $$0.k().V();
-         dgw $$11 = $$0.q();
-         if ($$11.b() instanceof cty) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$12 = -dic.b($$11.c(cty.b));
-            $$2.a(a.d.rotationDegrees($$12));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$13 = -$$11.c(ddm.b).p();
-            $$2.a(a.d.rotationDegrees($$13));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+   public void a(boolean $$0, enw $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
          }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         fsc $$1 = (fsc)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<fsc> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public fsc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(atm.a($$5.x, -5.0F, 5.0F), atm.a($$5.y, -5.0F, 5.0F), atm.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(atm.a($$6.x, -4.0F, 4.0F), atm.a($$6.y, -4.0F, 4.0F), atm.a($$6.z, -4.0F, 4.0F));
+         return new fsc($$4, $$5, $$6);
       }
 
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      eno $$14 = gdn.f.a($$3, fqp::c);
-      this.h.a($$2, $$14, $$4, $$5);
-      this.i.a($$2, $$14, $$4, $$5);
-      ht $$15 = $$0.p();
-      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * ati.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, gdn.f, true, $$6);
-      $$2.b();
-      $$2.b();
-   }
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = atc.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
 
-   public static void a(enk $$0, fqh $$1, int $$2, int $$3, fkb $$4, gdl $$5, boolean $$6, List<Pair<ib<dei>, cjp>> $$7) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-   }
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = atc.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
 
-   public static void a(enk $$0, fqh $$1, int $$2, int $$3, fkb $$4, gdl $$5, boolean $$6, List<Pair<ib<dei>, cjp>> $$7, boolean $$8) {
-      $$4.a($$0, $$5.a($$1, fqp::c, $$8), $$2, $$3);
-
-      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
-         Pair<ib<dei>, cjp> $$10 = $$7.get($$9);
-         float[] $$11 = ((cjp)$$10.getSecond()).d();
-         ((ib)$$10.getFirst())
-            .e()
-            .map($$1x -> $$6 ? fqw.a($$1x) : fqw.b($$1x))
-            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, fqp::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
       }
    }
 }

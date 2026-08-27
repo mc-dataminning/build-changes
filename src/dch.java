@@ -1,73 +1,79 @@
 import com.mojang.serialization.MapCodec;
 
-public class dch extends cut {
+public class dch extends cva {
    public static final MapCodec<dch> a = b(dch::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final hx[] d = hx.values();
+   public static final int b = 2;
+   public static final dii c = dhy.aE;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final ekn g = cva.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dch> a() {
       return a;
    }
 
-   protected dch(dgv.d $$0) {
+   public dch(dhh.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return g;
+   }
+
+   public int h(dhi $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean n(dhi $$0) {
+      return this.h($$0) == 2;
+   }
+
+   @Override
+   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, aqr.xg, aqs.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(c, Integer.valueOf(this.h($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, aqr.xh, aqs.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         bzd $$4 = bku.aN.a((csa)$$1);
+         if ($$4 != null) {
+            eju $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), atm.g($$1.z.i() * 360.0F), 0.0F);
+            $$1.b($$4);
+         }
       }
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, cut $$3, ht $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(crs $$0, ht $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cuv.aP.o(), 2);
-         $$0.a(null, $$1, aqn.xn, aqo.e, 1.0F, 1.0F);
+   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.x_() && $$5) {
+         $$1.c(3009, $$2, 0);
       }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(dls.i, $$2, dls.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.z.a(300));
    }
 
-   private boolean b(crs $$0, ht $$1) {
-      return ht.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (hx $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dgw $$3 = $$0.a_($$2);
-            ecg $$4 = $$0.b_($$2);
-            if (!$$4.a(arh.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof cva $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
+   @Override
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      return false;
+   }
 
-               if ($$3.b() instanceof czi) {
-                  $$0.a($$2, cuv.a.o(), 3);
-               } else {
-                  if (!$$3.a(cuv.mc) && !$$3.a(cuv.md) && !$$3.a(cuv.bw) && !$$3.a(cuv.bx)) {
-                     return false;
-                  }
-
-                  der $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cuv.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   public static boolean a(crg $$0, ht $$1) {
+      return $$0.a_($$1.d()).a(arg.ck);
    }
 }

@@ -1,79 +1,83 @@
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bnf<E extends bky & ccx> extends bmp<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<bky, Optional<boc>> e;
-   private final float f;
+public class bnf<E extends bli & cav, T extends blg> extends bmx<E> {
+   private static final int c = 1200;
+   private int d;
+   private bnf.a e = bnf.a.a;
 
-   public bnf(Function<bky, Optional<boc>> $$0, float $$1, int $$2) {
-      super(Map.of(btz.n, bua.c, btz.m, bua.c, btz.aO, bua.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public bnf() {
+      super(ImmutableMap.of(buh.n, bui.c, buh.o, bui.a), 1200);
    }
 
-   @Override
-   protected boolean a(ama $$0, E $$1) {
-      return this.b($$1);
+   protected boolean a(ame $$0, E $$1) {
+      blg $$2 = b($$1);
+      return $$1.b(clm.vL) && bmz.b($$1, $$2) && bmz.a($$1, $$2, 0);
    }
 
-   @Override
-   protected boolean a(ama $$0, E $$1, long $$2) {
-      return this.b($$1);
+   protected boolean a(ame $$0, E $$1, long $$2) {
+      return $$1.dP().a(buh.o) && this.a($$0, $$1);
    }
 
-   @Override
-   protected void d(ama $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bmr.a($$1, $$1x, this.f, 3));
+   protected void b(ame $$0, E $$1, long $$2) {
+      blg $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   @Override
-   protected void c(ama $$0, E $$1, long $$2) {
-      Optional<boc> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         boc $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bp());
-         if ($$5 < 3.0) {
-            clb $$6 = $$1.y().a(0, 1);
-            if (!$$6.b()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof bxn $$7) {
-                  bxo.a((bky)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
+   protected void c(ame $$0, E $$1, long $$2) {
+      if ($$1.fo()) {
+         $$1.fu();
+      }
 
-               $$1.dN().a(btz.aO, 60);
-            }
+      if ($$1.b(clm.vL)) {
+         $$1.b(false);
+         cjr.a($$1.fq(), false);
+      }
+   }
+
+   private void a(E $$0, blg $$1) {
+      if (this.e == bnf.a.a) {
+         $$0.c(cen.a($$0, clm.vL));
+         this.e = bnf.a.b;
+         $$0.b(true);
+      } else if (this.e == bnf.a.b) {
+         if (!$$0.fo()) {
+            this.e = bnf.a.a;
          }
+
+         int $$2 = $$0.fs();
+         clj $$3 = $$0.fq();
+         if ($$2 >= cjr.k($$3)) {
+            $$0.ft();
+            this.e = bnf.a.c;
+            this.d = 20 + $$0.eh().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bnf.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bnf.a.d;
+         }
+      } else if (this.e == bnf.a.d) {
+         $$0.a($$1, 1.0F);
+         clj $$4 = $$0.b(cen.a($$0, clm.vL));
+         cjr.a($$4, false);
+         this.e = bnf.a.a;
       }
    }
 
-   private void a(boc $$0, clb $$1, amb $$2) {
-      ht $$3 = $$0.b().d();
-      al.X.a($$2, $$3, $$1);
+   private void b(bli $$0, blg $$1) {
+      $$0.dP().a(buh.n, new bni($$1, true));
    }
 
-   private boolean b(E $$0) {
-      if ($$0.y().ai_()) {
-         return false;
-      } else {
-         Optional<boc> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
+   private static blg b(blg $$0) {
+      return $$0.dP().c(buh.o).get();
    }
 
-   private static eji a(boc $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
-   }
-
-   public static void a(bky $$0, clb $$1, eji $$2) {
-      eji $$3 = new eji(0.2F, 0.3F, 0.2F);
-      bmr.a($$0, $$1, $$2, $$3, 0.2F);
-      crs $$4 = $$0.dL();
-      if ($$4.V() % 7L == 0L && $$4.z.j() < 0.9) {
-         float $$5 = ac.<Float>a(bxn.d, $$4.E_());
-         $$4.a(null, $$0, aqn.g, aqo.g, 1.0F, $$5);
-      }
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

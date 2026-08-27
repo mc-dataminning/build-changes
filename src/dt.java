@@ -15,7 +15,7 @@ public interface dt {
       }
 
       @Override
-      public boolean U_() {
+      public boolean V_() {
          return false;
       }
    };
@@ -26,7 +26,7 @@ public interface dt {
 
    boolean w_();
 
-   boolean U_();
+   boolean V_();
 
    default boolean l_() {
       return false;

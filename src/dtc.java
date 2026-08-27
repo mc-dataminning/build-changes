@@ -1,49 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dtc extends dsz {
-   public static final Codec<dtc> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bhv.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dtc::new)
+public class dtc extends dta {
+   public static final Codec<dtc> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, dtc::new)
    );
-   private final bhv b;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public dtc(bhv $$0, bhv $$1, bhv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dtc(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
    @Override
-   protected dta<?> a() {
-      return dta.h;
+   protected dtb<?> b() {
+      return dtb.b;
    }
 
    @Override
-   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
-      ht $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + ati.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new ht($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
       }
-   }
-
-   @Override
-   public int a(ato $$0, int $$1, dsj $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

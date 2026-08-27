@@ -1,73 +1,37 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+public interface exh {
+   Object b = new Object();
+   int c = 32;
 
-public enum exh implements elm {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+   exh.a a(euo var1, exi var2, long var3);
 
-   final eml c;
+   default Object d() {
+      return b;
+   }
 
-   private static eml a(int $$0, int $$1, exh.a $$2) {
-      eml $$3 = new eml(eml.a.a, $$0, $$1, false);
+   default int a() {
+      return 160;
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   default int b() {
+      return 32;
+   }
+
+   default int e() {
+      return atm.e(this.b(), 32);
+   }
+
+   public static enum a {
+      a(aqr.zg),
+      b(aqr.zh);
+
+      private final aqq c;
+
+      private a(aqq $$0) {
+         this.c = $$0;
       }
 
-      $$3.i();
-      return $$3;
-   }
-
-   private exh(Supplier<eml> $$0) {
-      this.c = $$0.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
-
-   @Override
-   public exf bake(Function<elo, exf> $$0) {
-      return $$0.apply(new elo() {
-         @Override
-         public int a() {
-            return exh.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return exh.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            exh.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      public void a(ggg $$0) {
+         $$0.a(gex.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

@@ -1,52 +1,85 @@
-import javax.annotation.Nullable;
+public class alv extends amg {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public class alv {
-   @Nullable
-   protected static ht a(ama $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.D_().h();
-      djd $$4 = $$0.d(iu.a($$1), iu.a($$2));
-      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dmf.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.I_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(dmf.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dmf.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            ht.a $$7 = new ht.a();
+   public alv(amf $$0) {
+      super($$0);
+   }
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dgw $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.W();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new zi(zi.f, 0.0F));
+      }
 
-               if (cut.a($$9.k($$0, $$7), hx.b)) {
-                  return $$7.c().i();
-               }
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new zi(zi.f, 104.0F));
+            } else {
+               this.d.a(ur.c("demo.day." + $$1));
             }
-
-            return null;
          }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new zi(zi.f, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new zi(zi.f, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new zi(zi.f, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(ur.c("demo.day.warning"));
       }
    }
 
-   @Nullable
-   public static ht a(ama $$0, cqz $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               ht $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(ur.c("demo.reminder"));
+         this.g = 0;
+      }
+   }
 
-         return null;
+   @Override
+   public void a(ht $$0, ado.a $$1, hx $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public bix a(amf $$0, csa $$1, clj $$2, biw $$3) {
+      if (this.f) {
+         this.f();
+         return bix.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public bix a(amf $$0, csa $$1, clj $$2, biw $$3, ejq $$4) {
+      if (this.f) {
+         this.f();
+         return bix.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 }

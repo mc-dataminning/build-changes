@@ -1,39 +1,87 @@
-public class fxc extends fwq<bxc, fhc<bxc>> {
-   private static final agg a = new agg("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fhc<bxc> j;
-   private final fhc<bxc> k;
-   private final fhc<bxc> l = this.a();
+public class fxc<T extends cfl> extends fvw<T> {
+   private static final agi f = new agi("textures/entity/minecart.png");
+   protected final fhp<T> a;
+   private final fro g;
 
-   public fxc(fvk.a $$0) {
-      super($$0, new fij<>($$0.a(fka.aV)), 0.2F);
-      this.k = new fik<>($$0.a(fka.aW));
-      this.j = new fil<>($$0.a(fka.aX));
+   public fxc(fvx.a $$0, fkm $$1) {
+      super($$0);
+      this.d = 0.7F;
+      this.a = new fik<>($$0.a($$1));
+      this.g = $$0.c();
    }
 
-   public agg a(bxc $$0) {
-      return a;
-   }
+   public void a(T $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      long $$6 = (long)$$0.aj() * 493286711L;
+      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
+      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$3.a($$7, $$8, $$9);
+      double $$10 = atm.d((double)$$2, $$0.ac, $$0.ds());
+      double $$11 = atm.d((double)$$2, $$0.ad, $$0.du());
+      double $$12 = atm.d((double)$$2, $$0.ae, $$0.dy());
+      double $$13 = 0.3F;
+      eju $$14 = $$0.q($$10, $$11, $$12);
+      float $$15 = atm.i($$2, $$0.O, $$0.dF());
+      if ($$14 != null) {
+         eju $$16 = $$0.a($$10, $$11, $$12, 0.3F);
+         eju $$17 = $$0.a($$10, $$11, $$12, -0.3F);
+         if ($$16 == null) {
+            $$16 = $$14;
+         }
 
-   public void a(bxc $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      int $$6 = $$0.gg();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
+         if ($$17 == null) {
+            $$17 = $$14;
+         }
+
+         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
+         eju $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
+         if ($$18.f() != 0.0) {
+            $$18 = $$18.d();
+            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
+            $$15 = (float)(Math.atan($$18.d) * 73.0);
          }
       }
 
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      $$3.a(a.f.rotationDegrees(-$$15));
+      float $$19 = (float)$$0.O() - $$2;
+      float $$20 = $$0.N() - $$2;
+      if ($$20 < 0.0F) {
+         $$20 = 0.0F;
+      }
+
+      if ($$19 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(atm.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
+      }
+
+      int $$21 = $$0.z();
+      dhi $$22 = $$0.x();
+      if ($$22.l() != dbf.a) {
+         $$3.a();
+         float $$23 = 0.75F;
+         $$3.b(0.75F, 0.75F, 0.75F);
+         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
+         $$3.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$2, $$22, $$3, $$4, $$5);
+         $$3.b();
+      }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eoa $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
+      this.a.a($$3, $$24, $$5, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   protected void a(bxc $$0, enk $$1, float $$2, float $$3, float $$4) {
-      $$1.a(0.0F, ati.b($$2 * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public agi a(T $$0) {
+      return f;
+   }
+
+   protected void a(T $$0, float $$1, dhi $$2, enw $$3, fqu $$4, int $$5) {
+      this.g.a($$2, $$3, $$4, $$5, gbl.d);
    }
 }

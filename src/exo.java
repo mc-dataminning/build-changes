@@ -1,79 +1,164 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.List;
-import org.lwjgl.stb.STBTTFontinfo;
-import org.lwjgl.stb.STBTruetype;
-import org.lwjgl.system.MemoryUtil;
+import java.util.Set;
 
-public record exo(agg c, float d, float e, exo.a f, String g) implements exl {
-   private static final Codec<String> h = asq.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               agg.a.fieldOf("file").forGetter(exo::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(exo::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(exo::e),
-               exo.a.b.optionalFieldOf("shift", exo.a.a).forGetter(exo::f),
-               h.optionalFieldOf("skip", "").forGetter(exo::g)
-            )
-            .apply($$0, exo::new)
-   );
+public class exo implements AutoCloseable {
+   private static final ats a = ats.a();
+   private static final float b = 32.0F;
+   private final gbv c;
+   private final agi d;
+   private exs e;
+   private exs f;
+   private final List<elz> g = Lists.newArrayList();
+   private final exm<exs> h = new exm<>(exs[]::new, exs[][]::new);
+   private final exm<exo.a> i = new exm<>(exo.a[]::new, exo.a[][]::new);
+   private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
+   private final List<exp> k = Lists.newArrayList();
 
-   @Override
-   public exm a() {
-      return exm.b;
+   public exo(gbv $$0, agi $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public void a(List<elz> $$0) {
+      this.b();
+      this.c();
+      this.h.a();
+      this.i.a();
+      this.j.clear();
+      this.e = exu.b.bake(this::a);
+      this.f = exu.a.bake(this::a);
+      IntSet $$1 = new IntOpenHashSet();
+
+      for (elz $$2 : $$0) {
+         $$1.addAll($$2.a());
+      }
+
+      Set<elz> $$3 = Sets.newHashSet();
+      $$1.forEach($$2x -> {
+         for (elz $$3x : $$0) {
+            ely $$4 = $$3x.a($$2x);
+            if ($$4 != null) {
+               $$3.add($$3x);
+               if ($$4 != exu.b) {
+                  ((IntList)this.j.computeIfAbsent(atm.f($$4.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      $$0.stream().filter($$3::contains).forEach(this.g::add);
    }
 
    @Override
-   public Either<exl.a, exl.b> b() {
-      return Either.left(this::a);
+   public void close() {
+      this.b();
+      this.c();
    }
 
-   private eln a(apd $$0) throws IOException {
-      STBTTFontinfo $$1 = null;
-      ByteBuffer $$2 = null;
+   private void b() {
+      for (elz $$0 : this.g) {
+         $$0.close();
+      }
 
-      try {
-         elq var5;
-         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
-            $$1 = STBTTFontinfo.malloc();
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            if (!STBTruetype.stbtt_InitFont($$1, $$2)) {
-               throw new IOException("Invalid ttf");
+      this.g.clear();
+   }
+
+   private void c() {
+      for (exp $$0 : this.k) {
+         $$0.close();
+      }
+
+      this.k.clear();
+   }
+
+   private static boolean b(ely $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
+      }
+   }
+
+   private exo.a b(int $$0) {
+      ely $$1 = null;
+
+      for (elz $$2 : this.g) {
+         ely $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
             }
 
-            var5 = new elq($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            if (!b($$3)) {
+               return new exo.a($$1, $$3);
+            }
          }
-
-         return var5;
-      } catch (Exception var9) {
-         if ($$1 != null) {
-            $$1.free();
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var9;
       }
+
+      return $$1 != null ? new exo.a($$1, exu.b) : exo.a.c;
    }
 
-   public static record a(float c, float d) {
-      public static final exo.a a = new exo.a(0.0F, 0.0F);
-      public static final Codec<exo.a> b = Codec.FLOAT
-         .listOf()
-         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new exo.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   public ely a(int $$0, boolean $$1) {
+      return this.i.a($$0, this::b).a($$1);
+   }
 
-      public float a() {
-         return this.c;
+   private exs c(int $$0) {
+      for (elz $$1 : this.g) {
+         ely $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
       }
 
-      public float b() {
-         return this.d;
+      return this.e;
+   }
+
+   public exs a(int $$0) {
+      return this.h.a($$0, this::c);
+   }
+
+   private exs a(ema $$0) {
+      for (exp $$1 : this.k) {
+         exs $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      agi $$3 = this.d.e("/" + this.k.size());
+      boolean $$4 = $$0.c();
+      exq $$5 = $$4 ? exq.b($$3) : exq.a($$3);
+      exp $$6 = new exp($$5, $$4);
+      this.k.add($$6);
+      this.c.a($$3, $$6);
+      exs $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public exs a(ely $$0) {
+      IntList $$1 = (IntList)this.j.get(atm.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public exs a() {
+      return this.f;
+   }
+
+   static record a(ely a, ely b) {
+      static final exo.a c = new exo.a(exu.b, exu.b);
+
+      ely a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

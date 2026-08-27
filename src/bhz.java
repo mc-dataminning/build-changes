@@ -1,68 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public class bhz extends bht {
-   public static final Codec<bhz> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, bhz::new)
-      )
-      .comapFlatMap(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         },
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
+public class bhz extends bic {
+   public static final bhz a = new bhz(0);
+   public static final Codec<bhz> b = asu.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bhz::new, bhz::d);
+   private final int f;
 
-   public static bhz a(float $$0, float $$1, float $$2) {
-      return new bhz($$0, $$1, $$2);
+   public static bhz a(int $$0) {
+      return $$0 == 0 ? a : new bhz($$0);
    }
 
-   private bhz(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private bhz(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(ato $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   public int a(ats $$0) {
+      return this.f;
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.f;
    }
 
    @Override
-   public bhu<?> c() {
-      return bhu.d;
+   public bid<?> c() {
+      return bid.a;
    }
 
    @Override
    public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      return Integer.toString(this.f);
    }
 }

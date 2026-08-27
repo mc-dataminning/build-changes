@@ -1,36 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class egz extends ehb {
-   public static final Codec<egz> a = a(egz::new);
+public class egz extends egj {
+   public static final Codec<egz> a = RecordCodecBuilder.create($$0 -> a($$0).and(sx.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, egz::new));
+   private final rz b;
 
-   egz(List<ehk> $$0) {
-      super($$0, ehm.b($$0));
+   private egz(List<ehw> $$0, rz $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ehl b() {
-      return ehm.c;
+   public egl b() {
+      return egm.g;
    }
 
-   public static egz.a a(ehk.a... $$0) {
-      return new egz.a($$0);
+   @Override
+   public clj a(clj $$0, eex $$1) {
+      $$0.w().a(this.b);
+      return $$0;
    }
 
-   public static class a extends ehb.a {
-      public a(ehk.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public egz.a or(ehk.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ehk a(List<ehk> $$0) {
-         return new egz($$0);
-      }
+   @Deprecated
+   public static egj.a<?> a(rz $$0) {
+      return a($$1 -> new egz($$1, $$0));
    }
 }

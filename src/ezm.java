@@ -1,74 +1,69 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class ezm implements AutoCloseable {
-   private static final agg a = new agg("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gbi d;
-   private final agg e;
-   @Nullable
-   private gau f;
-   private boolean g;
+public class ezm extends ezn {
+   private static final ur k = ur.c("chat.copy");
+   private static final ur l = ur.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
 
-   private ezm(gbi $$0, agg $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ezm(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), ur.b($$1), $$1, $$2 ? uq.e : uq.g, $$2);
    }
 
-   public static ezm a(gbi $$0, String $$1) {
-      return new ezm($$0, new agg("minecraft", "worlds/" + ac.a($$1, agg::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public ezm(BooleanConsumer $$0, ur $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? uq.e : uq.g, $$3);
    }
 
-   public static ezm b(gbi $$0, String $$1) {
-      return new ezm($$0, new agg("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public ezm(BooleanConsumer $$0, ur $$1, ur $$2, String $$3, ur $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (ur)($$5 ? ur.c("chat.link.open") : uq.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
    }
 
-   public void a(eml $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gau($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
+   protected static vf a(boolean $$0, String $$1) {
+      return c($$0).b(uq.u).b(ur.b($$1));
    }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public agg b() {
-      return this.f != null ? this.e : a;
+   protected static vf c(boolean $$0) {
+      return ur.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void a(int $$0) {
+      this.d(euz.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(euz.a(k, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(euz.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
+   public void k() {
+      this.f.o.a(this.m);
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
       }
+   }
+
+   public static void a(fau $$0, String $$1) {
+      etd $$2 = etd.N();
+      $$2.a(new ezm($$3 -> {
+         if ($$3) {
+            ac.i().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
+   }
+
+   public static euz.c b(fau $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

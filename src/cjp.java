@@ -1,99 +1,285 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cjp implements aub {
-   a(0, "white", 16383998, eck.i, 15790320, 16777215),
-   b(1, "orange", 16351261, eck.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, eck.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, eck.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, eck.s, 14602026, 16776960),
-   f(5, "lime", 8439583, eck.t, 4312372, 12582656),
-   g(6, "pink", 15961002, eck.u, 14188952, 16738740),
-   h(7, "gray", 4673362, eck.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, eck.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, eck.x, 2651799, 65535),
-   k(10, "purple", 8991416, eck.y, 8073150, 10494192),
-   l(11, "blue", 3949738, eck.z, 2437522, 255),
-   m(12, "brown", 8606770, eck.A, 5320730, 9127187),
-   n(13, "green", 6192150, eck.B, 3887386, 65280),
-   o(14, "red", 11546150, eck.C, 11743532, 16711680),
-   p(15, "black", 1908001, eck.D, 1973019, 0);
+public class cjp {
+   private final ur a;
+   String b = "items.png";
+   boolean c = true;
+   boolean d = true;
+   boolean e = false;
+   private final cjp.f f;
+   private final int g;
+   private final cjp.h h;
+   @Nullable
+   private clj i;
+   private Collection<clj> j = clk.a();
+   private Set<clj> k = clk.a();
+   @Nullable
+   private Consumer<List<clj>> l;
+   private final Supplier<clj> m;
+   private final cjp.b n;
 
-   private static final IntFunction<cjp> r = asb.a(cjp::a, values(), asb.a.a);
-   private static final Int2ObjectOpenHashMap<cjp> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cjp)$$0))
-   );
-   public static final aub.a<cjp> q = aub.a(cjp::values);
-   private final int t;
-   private final String u;
-   private final eck v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cjp(int $$0, String $$1, int $$2, eck $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
+   cjp(cjp.f $$0, int $$1, cjp.h $$2, ur $$3, Supplier<clj> $$4, cjp.b $$5) {
+      this.f = $$0;
+      this.g = $$1;
+      this.a = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.h = $$2;
    }
 
-   public int a() {
-      return this.t;
+   public static cjp.a a(cjp.f $$0, int $$1) {
+      return new cjp.a($$0, $$1);
    }
 
-   public String b() {
-      return this.u;
+   public ur a() {
+      return this.a;
    }
 
-   public float[] d() {
-      return this.w;
+   public clj b() {
+      if (this.i == null) {
+         this.i = this.m.get();
+      }
+
+      return this.i;
    }
 
-   public eck e() {
-      return this.v;
+   public String c() {
+      return this.b;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 
    public int f() {
-      return this.x;
+      return this.g;
    }
 
-   public int g() {
-      return this.y;
+   public cjp.f g() {
+      return this.f;
    }
 
-   public static cjp a(int $$0) {
-      return r.apply($$0);
+   public boolean h() {
+      return !this.j.isEmpty();
    }
 
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cjp a(String $$0, @Nullable cjp $$1) {
-      cjp $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   public boolean i() {
+      return this.h != cjp.h.a || this.h();
    }
 
-   @Nullable
-   public static cjp b(int $$0) {
-      return (cjp)s.get($$0);
+   public boolean j() {
+      return this.e;
    }
 
-   @Override
-   public String toString() {
-      return this.u;
+   public cjp.h k() {
+      return this.h;
    }
 
-   @Override
-   public String c() {
-      return this.u;
+   public void a(cjp.d $$0) {
+      cjp.c $$1 = new cjp.c(this, $$0.a);
+      agh<cjp> $$2 = jy.aq.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.j = $$1.a;
+      this.k = $$1.b;
+      this.n();
+   }
+
+   public Collection<clj> l() {
+      return this.j;
+   }
+
+   public Collection<clj> m() {
+      return this.k;
+   }
+
+   public boolean a(clj $$0) {
+      return this.k.contains($$0);
+   }
+
+   public void a(Consumer<List<clj>> $$0) {
+      this.l = $$0;
+   }
+
+   public void n() {
+      if (this.l != null) {
+         this.l.accept(Lists.newArrayList(this.k));
+      }
+   }
+
+   public static class a {
+      private static final cjp.b a = ($$0, $$1) -> {
+      };
+      private final cjp.f b;
+      private final int c;
+      private ur d = ur.i();
+      private Supplier<clj> e = () -> clj.b;
+      private cjp.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cjp.h j = cjp.h.a;
+      private String k = "items.png";
+
+      public a(cjp.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cjp.a a(ur $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cjp.a a(Supplier<clj> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cjp.a a(cjp.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cjp.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cjp.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cjp.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cjp.a a(cjp.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cjp.a a(String $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cjp d() {
+         if ((this.j == cjp.h.c || this.j == cjp.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
+         } else {
+            cjp $$0 = new cjp(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.e = this.i;
+            $$0.d = this.h;
+            $$0.c = this.g;
+            $$0.b = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(cjp.d var1, cjp.e var2);
+   }
+
+   static class c implements cjp.e {
+      public final Collection<clj> a = clk.a();
+      public final Set<clj> b = clk.a();
+      private final cjp c;
+      private final cgd d;
+
+      public c(cjp $$0, cgd $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(clj $$0, cjp.g $$1) {
+         if ($$0.L() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cjp.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.d().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static record d(cgd a, boolean b, id.b c) {
+
+      public boolean a(cgd $$0, boolean $$1, id.b $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+      }
+   }
+
+   public interface e {
+      void a(clj var1, cjp.g var2);
+
+      default void a(clj $$0) {
+         this.a($$0, cjp.g.a);
+      }
+
+      default void a(crz $$0, cjp.g $$1) {
+         this.a(new clj($$0), $$1);
+      }
+
+      default void a(crz $$0) {
+         this.a(new clj($$0), cjp.g.a);
+      }
+
+      default void a(Collection<clj> $$0, cjp.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<clj> $$0) {
+         this.a($$0, cjp.g.a);
+      }
+   }
+
+   public static enum f {
+      a,
+      b;
+   }
+
+   protected static enum g {
+      a,
+      b,
+      c;
+   }
+
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

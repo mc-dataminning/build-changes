@@ -1,36 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class erz extends esd {
+   private static final ur b = ur.c("mco.connect.connecting");
+   private final gho c;
+   private final epd d;
+   private final epe e;
 
-public class erz extends err {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ur c = ur.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-
-   public erz(long $$0, String $$1, String $$2) {
-      this.f = $$0;
+   public erz(fau $$0, epd $$1, epe $$2) {
       this.d = $$1;
       this.e = $$2;
+      this.c = new gho($$0);
    }
 
    @Override
    public void run() {
-      eoa $$0 = eoa.a();
+      this.c.a(this.d, fmv.a(this.e.a));
+   }
 
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (epn var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      etd.N().ab().a();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
    }
 
    @Override
    public ur a() {
-      return c;
+      return b;
    }
 }

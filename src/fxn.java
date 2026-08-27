@@ -1,11 +1,12 @@
-public class fxn extends fwq<byv, fjb<byv>> {
-   private static final agg a = new agg("textures/entity/sniffer/sniffer.png");
+public class fxn extends fwq<cbl> {
+   private static final agi a = new agi("textures/entity/illager/pillager.png");
 
-   public fxn(fvk.a $$0) {
-      super($$0, new fjb<>($$0.a(fka.bo)), 1.1F);
+   public fxn(fvx.a $$0) {
+      super($$0, new fid<>($$0.a(fkn.aL)), 0.5F);
+      this.a(new fzy<>(this, $$0.d()));
    }
 
-   public agg a(byv $$0) {
+   public agi a(cbl $$0) {
       return a;
    }
 }

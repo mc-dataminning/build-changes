@@ -1,17 +1,28 @@
-public class fyw<T extends bky, M extends fhc<T>> extends fzs<T, M> {
-   private final fqd a;
+public class fyw extends fxd<cab, fke<cab>> {
+   private static final agi a = new agi("textures/entity/wither/wither_invulnerable.png");
+   private static final agi i = new agi("textures/entity/wither/wither.png");
 
-   public fyw(fxf<T, M> $$0, fqd $$1) {
-      super($$0);
-      this.a = $$1;
+   public fyw(fvx.a $$0) {
+      super($$0, new fke<>($$0.a(fkn.bO)), 1.0F);
+      this.a(new gat(this, $$0.f()));
    }
 
-   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      clb $$10 = $$3.c(bkn.a);
-      this.a.a($$3, $$10, cky.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected int a(cab $$0, ht $$1) {
+      return 15;
+   }
+
+   public agi a(cab $$0) {
+      int $$1 = $$0.A();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cab $$0, enw $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.A();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

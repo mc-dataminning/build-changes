@@ -1,7 +1,6 @@
-public enum ble {
-   a,
-   b,
-   c,
-   d,
-   e;
+import java.util.Map;
+import org.joml.Vector3f;
+
+public interface ble {
+   Map<String, Vector3f> a();
 }

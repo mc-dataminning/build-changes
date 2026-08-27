@@ -1,65 +1,92 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class ajt {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.setblock.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> dy.b(((du)$$0.getSource()).m().aY().K().u().a(), $$1);
 
-   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setblock").requires($$0x -> $$0x.c(2)))
-            .then(
-               dv.a("pos", fm.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("block", fj.a($$1))
-                                 .executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajt.b.a, null)))
-                              .then(dv.a("destroy").executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajt.b.b, null))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("function")
+                     .then(
+                        dv.a("function", fx.a())
+                           .suggests(ain.b)
                            .then(
-                              dv.a("keep")
-                                 .executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajt.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
-                           ))
-                        .then(dv.a("replace").executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajt.b.a, null)))
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", ff.a())
+                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       dv.a("append")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("replace")
+                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               dv.a("clear")
+                  .then(
+                     dv.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
                   )
             )
       );
    }
 
-   private static int a(du $$0, ht $$1, fh $$2, ajt.b $$3, @Nullable Predicate<dha> $$4) throws CommandSyntaxException {
-      ama $$5 = $$0.f();
-      if ($$4 != null && !$$4.test(new dha($$5, $$1, true))) {
+   private static int a(du $$0, Pair<agi, Either<gx<du>, Collection<gx<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
          throw a.create();
       } else {
-         boolean $$6;
-         if ($$3 == ajt.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            der $$7 = $$5.c_($$1);
-            bih.a_($$7);
-            $$6 = true;
-         }
+         long $$4 = $$0.f().W() + (long)$$2;
+         agi $$5 = (agi)$$1.getFirst();
+         ejh<MinecraftServer> $$6 = $$0.m().aY().K().u();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> ur.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+            $$6.a($$7, $$4, new ejd($$5));
+            $$0.a(() -> ur.a("commands.schedule.created.function", ur.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new eje($$5));
+            $$0.a(() -> ur.a("commands.schedule.created.tag", ur.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
    }
 
-   public interface a {
-      @Nullable
-      fh filter(dwn var1, ht var2, fh var3, ama var4);
-   }
-
-   public static enum b {
-      a,
-      b;
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.m().aY().K().u().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
+      } else {
+         $$0.a(() -> ur.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
+      }
    }
 }

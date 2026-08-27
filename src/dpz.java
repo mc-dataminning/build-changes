@@ -1,195 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dpz extends dpj<drq> {
-   public dpz(Codec<drq> $$0) {
+public class dpz extends dpv<dqa> {
+   public dpz(Codec<dqa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<drq> $$0) {
-      csm $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      drq $$3 = $$0.f();
-      ato $$4 = $$0.d();
-      if (!dpf.a($$1, $$2)) {
+   public boolean a(dpx<dqa> $$0) {
+      ats $$1 = $$0.d();
+      csu $$2 = $$0.b();
+      ht $$3 = $$0.e();
+      dbm $$4 = dbm.a($$1);
+      dqa $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      ebi $$7 = $$2.D().n().aX();
+      ebh $$8 = $$7.a($$5.b.get($$6));
+      ebh $$9 = $$7.a($$5.c.get($$6));
+      crh $$10 = new crh($$3);
+      dwz $$11 = new dwz($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
+      ebd $$12 = new ebd().a($$4).a($$11).a($$1);
+      iw $$13 = $$8.a($$4);
+      ht $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(dmr.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
+      ht $$19 = $$8.a($$14.h($$18), czw.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
          return false;
       } else {
-         Optional<dlv> $$5 = dlv.a($$1, $$2, $$3.b, dpf::c, dpf::a);
-         if (!$$5.isEmpty() && $$5.get() instanceof dlv.b) {
-            dlv.b $$6 = (dlv.b)$$5.get();
-            if ($$6.g() < 4) {
-               return false;
-            } else {
-               int $$7 = (int)((float)$$6.g() * $$3.e);
-               int $$8 = ati.a($$7, $$3.c.a(), $$3.c.b());
-               int $$9 = ati.b($$4, $$3.c.a(), $$8);
-               dpz.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
-               dpz.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
-               dpz.b $$12;
-               if ($$10.a($$3) && $$11.a($$3)) {
-                  $$12 = new dpz.b($$2.v(), $$4, $$3.h);
-               } else {
-                  $$12 = dpz.b.a();
-               }
-
-               boolean $$14 = $$10.a($$1, $$12);
-               boolean $$15 = $$11.a($$1, $$12);
-               if ($$14) {
-                  $$10.a($$1, $$4, $$12);
-               }
-
-               if ($$15) {
-                  $$11.a($$1, $$4, $$12);
-               }
-
-               return true;
-            }
-         } else {
-            return false;
-         }
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
       }
    }
 
-   private static dpz.a a(ht $$0, boolean $$1, ato $$2, int $$3, bht $$4, bht $$5) {
-      return new dpz.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
-   }
-
-   private void a(csm $$0, ht $$1, dlv.b $$2, dpz.b $$3) {
-      $$0.a($$3.a($$1.h($$2.e() - 1)), cuv.cz.o(), 2);
-      $$0.a($$3.a($$1.h($$2.f() + 1)), cuv.ch.o(), 2);
-
-      for (ht.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(hx.b)) {
-         ht $$5 = $$3.a($$4);
-         if (dpf.a($$0, $$5) || $$0.a_($$5).a(cuv.rt)) {
-            $$0.a($$5, cuv.gM.o(), 2);
+   private static int a(csu $$0, dwz $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dhi $$3 = $$0.a_($$2x);
+         if ($$3.i() || $$3.a(cvc.H) || $$3.a(cvc.G)) {
+            $$2.add(1);
          }
-      }
-   }
-
-   static final class a {
-      private ht a;
-      private final boolean b;
-      private int c;
-      private final double d;
-      private final double e;
-
-      a(ht $$0, boolean $$1, int $$2, double $$3, double $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      private int a() {
-         return this.a(0.0F);
-      }
-
-      private int b() {
-         return this.b ? this.a.v() : this.a.v() - this.a();
-      }
-
-      private int c() {
-         return !this.b ? this.a.v() : this.a.v() + this.a();
-      }
-
-      boolean a(csm $$0, dpz.b $$1) {
-         while (this.c > 1) {
-            ht.a $$2 = this.a.j();
-            int $$3 = Math.min(10, this.a());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               if ($$0.a_($$2).a(cuv.H)) {
-                  return false;
-               }
-
-               if (dpf.a($$0, $$1.a($$2), this.c)) {
-                  this.a = $$2;
-                  return true;
-               }
-
-               $$2.c(this.b ? hx.a : hx.b);
-            }
-
-            this.c /= 2;
-         }
-
-         return false;
-      }
-
-      private int a(float $$0) {
-         return (int)dpf.a((double)$$0, (double)this.c, this.e, this.d);
-      }
-
-      void a(csm $$0, ato $$1, dpz.b $$2) {
-         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
-            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
-               float $$5 = ati.c((float)($$3 * $$3 + $$4 * $$4));
-               if (!($$5 > (float)this.c)) {
-                  int $$6 = this.a($$5);
-                  if ($$6 > 0) {
-                     if ((double)$$1.i() < 0.2) {
-                        $$6 = (int)((float)$$6 * ati.b($$1, 0.8F, 1.0F));
-                     }
-
-                     ht.a $$7 = this.a.b($$3, 0, $$4).j();
-                     boolean $$8 = false;
-                     int $$9 = this.b ? $$0.a(dmf.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
-
-                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
-                        ht $$11 = $$2.a($$7);
-                        if (dpf.b($$0, $$11)) {
-                           $$8 = true;
-                           cut $$12 = cuv.rt;
-                           $$0.a($$11, $$12.o(), 2);
-                        } else if ($$8 && $$0.a_($$11).a(arc.bd)) {
-                           break;
-                        }
-
-                        $$7.c(this.b ? hx.b : hx.a);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      boolean a(drq $$0) {
-         return this.c >= $$0.i && this.d >= (double)$$0.j;
-      }
-   }
-
-   static final class b {
-      private final int a;
-      @Nullable
-      private final eji b;
-
-      b(int $$0, ato $$1, bht $$2) {
-         this.a = $$0;
-         float $$3 = $$2.a($$1);
-         float $$4 = ati.b($$1, 0.0F, (float) Math.PI);
-         this.b = new eji((double)(ati.b($$4) * $$3), 0.0, (double)(ati.a($$4) * $$3));
-      }
-
-      private b() {
-         this.a = 0;
-         this.b = null;
-      }
-
-      static dpz.b a() {
-         return new dpz.b();
-      }
-
-      ht a(ht $$0) {
-         if (this.b == null) {
-            return $$0;
-         } else {
-            int $$1 = this.a - $$0.v();
-            eji $$2 = this.b.a((double)$$1);
-            return $$0.b(ati.a($$2.c), 0, ati.a($$2.e));
-         }
-      }
+      });
+      return $$2.getValue();
    }
 }

@@ -2,17 +2,17 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record bx(Optional<arr<ecf>> b, Optional<ib<ecf>> c, Optional<da> d) {
+public record bx(Optional<arv<ecr>> b, Optional<ib<ecr>> c, Optional<da> d) {
    public static final Codec<bx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asq.a(arr.a(jz.x), "tag").forGetter(bx::a), asq.a(jy.d.r(), "fluid").forGetter(bx::b), asq.a(da.a, "state").forGetter(bx::c))
+      $$0 -> $$0.group(asu.a(arv.a(jz.x), "tag").forGetter(bx::a), asu.a(jy.d.r(), "fluid").forGetter(bx::b), asu.a(da.a, "state").forGetter(bx::c))
             .apply($$0, bx::new)
    );
 
-   public boolean a(ama $$0, ht $$1) {
+   public boolean a(ame $$0, ht $$1) {
       if (!$$0.o($$1)) {
          return false;
       } else {
-         ecg $$2 = $$0.b_($$1);
+         ecs $$2 = $$0.b_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else {
@@ -21,11 +21,11 @@ public record bx(Optional<arr<ecf>> b, Optional<ib<ecf>> c, Optional<da> d) {
       }
    }
 
-   public Optional<arr<ecf>> a() {
+   public Optional<arv<ecr>> a() {
       return this.b;
    }
 
-   public Optional<ib<ecf>> b() {
+   public Optional<ib<ecr>> b() {
       return this.c;
    }
 
@@ -34,8 +34,8 @@ public record bx(Optional<arr<ecf>> b, Optional<ib<ecf>> c, Optional<da> d) {
    }
 
    public static class a {
-      private Optional<ib<ecf>> a = Optional.empty();
-      private Optional<arr<ecf>> b = Optional.empty();
+      private Optional<ib<ecr>> a = Optional.empty();
+      private Optional<arv<ecr>> b = Optional.empty();
       private Optional<da> c = Optional.empty();
 
       private a() {
@@ -45,12 +45,12 @@ public record bx(Optional<arr<ecf>> b, Optional<ib<ecf>> c, Optional<da> d) {
          return new bx.a();
       }
 
-      public bx.a a(ecf $$0) {
+      public bx.a a(ecr $$0) {
          this.a = Optional.of($$0.k());
          return this;
       }
 
-      public bx.a a(arr<ecf> $$0) {
+      public bx.a a(arv<ecr> $$0) {
          this.b = Optional.of($$0);
          return this;
       }

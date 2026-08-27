@@ -1,15 +1,52 @@
-public class cqm extends cpm {
-   public cqm(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.e, $$1);
+import java.util.Map.Entry;
+
+public class cqm extends cpu {
+   private static final float a = 0.15F;
+
+   public cqm(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.d, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1;
+      return 10 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 40;
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(clj $$0) {
+      return $$0.d() instanceof cit ? true : super.a($$0);
+   }
+
+   @Override
+   public void b(blg $$0, bkq $$1, int $$2) {
+      ats $$3 = $$0.eh();
+      Entry<bkv, clj> $$4 = cpw.b(cpy.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dO().d($$0), (float)b($$2, $$3));
+         }
+
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$1x -> $$1x.d($$4.getKey()));
+         }
+      }
+   }
+
+   public static boolean a(int $$0, ats $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
+   }
+
+   public static int b(int $$0, ats $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

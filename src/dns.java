@@ -1,22 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dns extends dnx {
-   private final ig<cut> e;
-   public static final Codec<dns> a = RecordCodecBuilder.create($$0 -> a($$0).and(iq.a(jz.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dns::new));
+public class dns implements ats {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dns> b = dnr.a.xmap($$0 -> new dns($$0), $$0 -> $$0.e);
+   private dnr e;
+   private final dmt f = new dmt(this);
 
-   public dns(iw $$0, ig<cut> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dns(long $$0) {
+      this.e = new dnr(dng.c($$0));
+   }
+
+   public dns(dng.a $$0) {
+      this.e = new dnr($$0);
+   }
+
+   public dns(long $$0, long $$1) {
+      this.e = new dnr($$0, $$1);
+   }
+
+   private dns(dnr $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected boolean a(dgw $$0) {
-      return $$0.a(this.e);
+   public ats d() {
+      return new dns(this.e.a(), this.e.a());
    }
 
    @Override
-   public dnn<?> a() {
-      return dnn.a;
+   public dne e() {
+      return new dns.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new dnr(dng.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements dne {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public ats a(int $$0, int $$1, int $$2) {
+         long $$3 = atm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dns($$4, this.b);
+      }
+
+      @Override
+      public ats a(String $$0) {
+         dng.a $$1 = dng.a($$0);
+         return new dns($$1.a(this.a, this.b));
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

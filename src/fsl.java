@@ -1,58 +1,82 @@
-public class fsl implements fsh<dev> {
-   private final fwi a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public fsl(fsi.a $$0) {
-      this.a = $$0.d();
+public class fsl {
+   private final fsh a;
+   private final fse b;
+
+   public fsl(fsh $$0, fse $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public void a(dev $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      if ($$0.k() != null) {
-         int $$6 = $$0.q().c(dhm.bv);
-         if ($$6 > 0) {
-            hx $$7 = $$0.f();
-            if ($$7 != null) {
-               clb $$8 = $$0.g();
-               if (!$$8.b()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == hx.f || $$7 == hx.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = fqf.a($$0.k(), $$0.q(), $$0.p().a($$7));
-                  this.a.a($$8, cky.i, $$11, gay.d, $$2, $$3, $$0.k(), 0);
-                  $$2.b();
-               }
+   public fse a() {
+      return this.b;
+   }
+
+   public Predicate<dhi> a(dhj<cva, dhi> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fsl> {
+      public fsl a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fsl(this.b($$3), (fse)$$2.deserialize($$3.get("apply"), fse.class));
+      }
+
+      private fsh b(JsonObject $$0) {
+         return $$0.has("when") ? a(atc.u($$0, "when")) : fsh.b;
+      }
+
+      @VisibleForTesting
+      static fsh a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fsh> $$2 = Streams.stream(atc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fsk($$2);
+            } else if ($$0.has("AND")) {
+               List<fsh> $$3 = Streams.stream(atc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fsg($$3);
+            } else {
+               return a($$1.iterator().next());
             }
+         } else {
+            return new fsg($$1.stream().map(fsl.a::a).collect(Collectors.toList()));
          }
       }
-   }
 
-   private float[] a(hx $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+      private static fsh a(Entry<String, JsonElement> $$0) {
+         return new fsi($$0.getKey(), $$0.getValue().getAsString());
       }
-
-      return $$2;
    }
 }

@@ -1,52 +1,47 @@
-import java.util.function.Consumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bke {
-   private static final long a = Long.MAX_VALUE;
-   private long b = Long.MAX_VALUE;
-   private long c;
-
-   public void a(int $$0) {
-      this.b = (long)$$0 * 1000L / 20L;
-      this.c = 0L;
-   }
-
-   public void b(int $$0) {
-      if (!this.c()) {
-         this.a($$0);
-      }
-   }
-
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
+public final class bke {
+   public static ur a(bkd $$0, float $$1) {
+      if ($$0.b()) {
+         return ur.c("effect.duration.infinite");
       } else {
-         this.a();
+         int $$2 = atm.d((float)$$0.d() * $$1);
+         return ur.b(auh.a($$2));
       }
    }
 
-   public void a() {
-      this.b = Long.MAX_VALUE;
+   public static boolean a(blg $$0) {
+      return $$0.a(bkf.c) || $$0.a(bkf.C);
    }
 
-   public void a(Consumer<bke> $$0) {
-      if (this.c()) {
-         $$0.accept(this);
+   public static int b(blg $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      if ($$0.a(bkf.c)) {
+         $$1 = $$0.b(bkf.c).e();
       }
-   }
 
-   public void a(float $$0, float $$1) {
-      if (this.c()) {
-         long $$2 = ati.b((double)($$0 * 1000.0F / 20.0F));
-         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
-         this.b = $$2;
+      if ($$0.a(bkf.C)) {
+         $$2 = $$0.b(bkf.C).e();
       }
+
+      return Math.max($$1, $$2);
    }
 
-   public long b() {
-      return this.c;
+   public static boolean c(blg $$0) {
+      return $$0.a(bkf.m) || $$0.a(bkf.C);
    }
 
-   public boolean c() {
-      return this.b != Long.MAX_VALUE;
+   public static List<amf> a(ame $$0, @Nullable bkq $$1, eju $$2, double $$3, bkd $$4, int $$5) {
+      bkb $$6 = $$4.c();
+      List<amf> $$7 = $$0.a(
+         $$6x -> $$6x.e.d()
+               && ($$1 == null || !$$1.s($$6x))
+               && $$2.a((im)$$6x.dl(), $$3)
+               && (!$$6x.a($$6) || $$6x.b($$6).e() < $$4.e() || $$6x.b($$6).a($$5 - 1))
+      );
+      $$7.forEach($$2x -> $$2x.b(new bkd($$4), $$1));
+      return $$7;
    }
 }

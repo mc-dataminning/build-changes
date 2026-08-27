@@ -1,54 +1,49 @@
-public abstract class cek extends cel implements ceb {
-   private static final afm<clb> b = afp.a(cek.class, afo.h);
+public class cek extends ceg {
+   private int e = 1;
 
-   public cek(bkm<? extends cek> $$0, crs $$1) {
+   public cek(bku<? extends cek> $$0, csa $$1) {
       super($$0, $$1);
    }
 
-   public cek(bkm<? extends cek> $$0, double $$1, double $$2, double $$3, crs $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public cek(csa $$0, blg $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(bku.ag, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
-   public cek(bkm<? extends cek> $$0, bky $$1, crs $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(clb $$0) {
-      if (!$$0.a(this.s()) || $$0.u()) {
-         this.al().b(b, $$0.c(1));
+   @Override
+   protected void a(ejs $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         boolean $$1 = this.dN().Y().b(crw.c);
+         this.dN().a(this, this.ds(), this.du(), this.dy(), (float)this.e, $$1, csa.a.c);
+         this.am();
       }
    }
 
-   protected abstract ckw s();
-
-   protected clb t() {
-      return this.al().b(b);
-   }
-
    @Override
-   public clb q() {
-      clb $$0 = this.t();
-      return $$0.b() ? new clb(this.s()) : $$0;
-   }
-
-   @Override
-   protected void b_() {
-      this.al().a(b, clb.b);
+   protected void a(ejr $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         bkq $$1 = $$0.a();
+         bkq $$2 = this.w();
+         $$1.a(this.dO().a((ceg)this, $$2), 6.0F);
+         if ($$2 instanceof blg) {
+            this.a((blg)$$2, $$1);
+         }
+      }
    }
 
    @Override
    public void b(rz $$0) {
       super.b($$0);
-      clb $$1 = this.t();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new rz()));
-      }
+      $$0.a("ExplosionPower", (byte)this.e);
    }
 
    @Override
    public void a(rz $$0) {
       super.a($$0);
-      clb $$1 = clb.a($$0.p("Item"));
-      this.a($$1);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

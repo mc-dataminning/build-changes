@@ -1,151 +1,76 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ftr implements ftq.a {
-   private final esr a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<ftr.a> d = Lists.newArrayList();
-   private final List<ftr.b> e = Lists.newArrayList();
+public class ftr {
+   private final Long2ObjectMap<ftr.a> a = new Long2ObjectOpenHashMap();
 
-   public ftr(esr $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   public ftq a(csa $$0, ht $$1, ht $$2, int $$3) {
+      int $$4 = iu.a($$1.u() - $$3);
+      int $$5 = iu.a($$1.w() - $$3);
+      int $$6 = iu.a($$2.u() + $$3);
+      int $$7 = iu.a($$2.w() + $$3);
+      ftr.a[][] $$8 = new ftr.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   @Override
-   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
-      crs $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (ftr.a)this.a.computeIfAbsent(crh.c($$9, $$10), $$1x -> new ftr.a($$0.d(crh.a($$1x), crh.b($$1x))));
+         }
+      }
+
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
       } else {
-         eji $$6 = new eji($$2, 0.0, $$4);
-         this.d.removeIf(ftr.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eno $$7 = $$1.getBuffer(fqp.w());
+         ftp[][] $$11 = new ftp[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-         for (ftr.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               fqf.a($$0, $$7, ejy.a(new ejd($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
          }
 
-         eno $$9 = $$1.getBuffer(fqp.y());
+         return new ftq($$0, $$4, $$5, $$11);
+      }
+   }
 
-         for (ftr.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> fqf.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
+   private static boolean a(ht $$0, ht $$1, int $$2, int $$3, ftr.a[][] $$4) {
+      int $$5 = iu.a($$0.u());
+      int $$6 = iu.a($$0.w());
+      int $$7 = iu.a($$1.u());
+      int $$8 = iu.a($$1.w());
 
-         for (ftr.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               ftq.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               ftq.a($$0, $$1, ht.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (ftr.a $$12 : this.d) {
-            eji $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new ejd($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            ftq.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            djp $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
          }
       }
+
+      return true;
    }
 
-   private static void a(enk $$0, fqh $$1, ejd $$2, float $$3, float $$4, float $$5, float $$6) {
-      esc $$7 = esr.N().j.m();
-      if ($$7.h()) {
-         eji $$8 = $$7.b().e();
-         ftq.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
-   }
+   static final class a {
+      private final djp a;
+      @Nullable
+      private ftp b;
 
-   public void a(agf<dlg> $$0, eji $$1) {
-      this.d.add(new ftr.a(ac.b(), $$0, $$1));
-   }
-
-   public void a(dlk $$0, int $$1) {
-      this.e.add(new ftr.b($$0, $$1));
-   }
-
-   static record a(long a, agf<dlg> b, eji c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public agf<dlg> c() {
-         return this.b;
-      }
-
-      public eji d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dli {
-      public final dlk a;
-      public final int b;
-
-      public b(dlk $$0, int $$1) {
+      a(djp $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public boolean a(crs $$0, eji $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<eji> a(crs $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dlk a() {
+      public djp a() {
          return this.a;
       }
 
-      @Override
-      public int b() {
-         return this.b;
-      }
+      public ftp b() {
+         if (this.b == null) {
+            this.b = new ftp(this.a);
+         }
 
-      @Override
-      public boolean a(ama $$0, dlg $$1, dlg.a $$2, eji $$3) {
-         return false;
+         return this.b;
       }
    }
 }

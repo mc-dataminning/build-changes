@@ -1,21 +1,11 @@
-import java.util.function.IntConsumer;
+public class arz {
+   public static final arv<dww> a = a("normal");
+   public static final arv<dww> b = a("extended");
 
-public interface arz {
-   int a(int var1, int var2);
+   private arz() {
+   }
 
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   arz d();
+   private static arv<dww> a(String $$0) {
+      return arv.a(jz.aH, new agi($$0));
+   }
 }

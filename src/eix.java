@@ -1,25 +1,33 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eix extends Exception {
-   private final Path a;
-   private final List<eiz> b;
+public record eix(String b) implements eiz {
+   public static final Codec<eix> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eix::c)).apply($$0, eix::new));
 
-   public eix(Path $$0, List<eiz> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static eiz a(String $$0) {
+      return new eix($$0);
    }
 
    @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public eiy a() {
+      return eja.b;
    }
 
-   public static String a(Path $$0, List<eiz> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   @Nullable
+   @Override
+   public String a(eex $$0) {
+      return this.b;
+   }
+
+   @Override
+   public Set<ehf<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

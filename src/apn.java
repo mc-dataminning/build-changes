@@ -1,43 +1,88 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class apn extends apv<String, apo> {
-   public apn(File $$0) {
-      super($$0);
+public class apn<S> implements apd {
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final int e = 1;
+   protected final CompletableFuture<auo> a = new CompletableFuture<>();
+   protected CompletableFuture<List<S>> b;
+   final Set<apb> f;
+   private final int g;
+   private int h;
+   private int i;
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
+
+   public static apn<Void> a(aph $$0, List<apb> $$1, Executor $$2, Executor $$3, CompletableFuture<auo> $$4) {
+      return new apn<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bfl.a, bfl.a, $$2, $$5), $$4);
+   }
+
+   protected apn(Executor $$0, final Executor $$1, aph $$2, List<apb> $$3, apn.a<S> $$4, CompletableFuture<auo> $$5) {
+      this.g = $$3.size();
+      this.j.incrementAndGet();
+      $$5.thenRun(this.k::incrementAndGet);
+      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
+      CompletableFuture<?> $$7 = $$5;
+      this.f = Sets.newHashSet($$3);
+
+      for (final apb $$8 : $$3) {
+         final CompletableFuture<?> $$9 = $$7;
+         CompletableFuture<S> $$10 = $$4.create(new apb.a() {
+            @Override
+            public <T> CompletableFuture<T> a(T $$0) {
+               $$1.execute(() -> {
+                  apn.this.f.remove($$8);
+                  if (apn.this.f.isEmpty()) {
+                     apn.this.a.complete(auo.a);
+                  }
+               });
+               return apn.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
+            }
+         }, $$2, $$8, $$1x -> {
+            this.j.incrementAndGet();
+            $$0.execute(() -> {
+               $$1x.run();
+               this.k.incrementAndGet();
+            });
+         }, $$1x -> {
+            this.h++;
+            $$1.execute(() -> {
+               $$1x.run();
+               this.i++;
+            });
+         });
+         $$6.add($$10);
+         $$7 = $$10;
+      }
+
+      this.b = ac.c($$6);
    }
 
    @Override
-   protected apu<String> a(JsonObject $$0) {
-      return new apo($$0);
+   public CompletableFuture<?> a() {
+      return this.b;
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
+   @Override
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
+      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      return $$1 / $$2;
    }
 
-   public boolean a(String $$0) {
-      return this.d($$0);
+   public static apd a(aph $$0, List<apb> $$1, Executor $$2, Executor $$3, CompletableFuture<auo> $$4, boolean $$5) {
+      return (apd)($$5 ? new apc($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
    }
 
-   @Nullable
-   public apo b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
-      }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
+   protected interface a<S> {
+      CompletableFuture<S> create(apb.a var1, aph var2, apb var3, Executor var4, Executor var5);
    }
 }

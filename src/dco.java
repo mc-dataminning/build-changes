@@ -1,112 +1,73 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dco extends cvc implements cuw {
-   public static final MapCodec<dco> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               agf.a(jz.e).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               agf.a(jz.e).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               agf.a(jz.E).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, dco::new)
-   );
-   public static final int b = 7;
-   public static final dhw c = dhm.av;
-   protected static final float d = 1.0F;
-   protected static final ekb[] e = new ekb[]{
-      cut.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      cut.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final agf<cut> f;
-   private final agf<cut> g;
-   private final agf<ckw> h;
+public class dco extends cva {
+   public static final MapCodec<dco> a = b(dco::new);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final hx[] d = hx.values();
 
    @Override
    public MapCodec<dco> a() {
       return a;
    }
 
-   protected dco(agf<cut> $$0, agf<cut> $$1, agf<ckw> $$2, dgv.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dco(dhh.d $$0) {
+      super($$0);
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return e[$$0.c(c)];
+   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   protected boolean d(dgw $$0, cqy $$1, ht $$2) {
-      return $$0.a(cuv.cC);
+   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = cwn.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
+   protected void a(csa $$0, ht $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, cvc.aP.o(), 2);
+         $$0.a(null, $$1, aqr.xE, aqs.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(csa $$0, ht $$1) {
+      return ht.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (hx $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dhi $$3 = $$0.a_($$2);
+            ecs $$4 = $$0.b_($$2);
+            if (!$$4.a(arl.a)) {
+               return false;
             } else {
-               hx $$6 = hx.c.a.a($$3);
-               ht $$7 = $$2.a($$6);
-               dgw $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(cuv.cC) || $$8.a(arc.af))) {
-                  io<cut> $$9 = $$1.H_().d(jz.e);
-                  Optional<cut> $$10 = $$9.d(this.f);
-                  Optional<cut> $$11 = $$9.d(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(cyo.aE, $$6));
-                  }
+               if ($$3.b() instanceof cvh $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
+                  return true;
                }
+
+               if ($$3.b() instanceof czp) {
+                  $$0.a($$2, cvc.a.o(), 3);
+               } else {
+                  if (!$$3.a(cvc.mc) && !$$3.a(cvc.md) && !$$3.a(cvc.bw) && !$$3.a(cvc.bx)) {
+                     return false;
+                  }
+
+                  dfd $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, cvc.a.o(), 3);
+               }
+
+               return true;
             }
          }
-      }
-   }
-
-   @Override
-   public clb a(crv $$0, ht $$1, dgw $$2) {
-      return new clb((crr)DataFixUtils.orElse($$0.H_().d(jz.E).d(this.h), this));
-   }
-
-   @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + ati.a($$0.z, 2, 5));
-      dgw $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
-      }
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(c);
+      }) > 1;
    }
 }

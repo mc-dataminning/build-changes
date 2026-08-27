@@ -1,102 +1,229 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ffb extends fah {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<agf<crs>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(crs.h, -13408734);
-      $$0.put(crs.i, -10075085);
-      $$0.put(crs.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bie k;
-
+public class ffb extends evf.a<ffb> {
+   private static final agi f = new agi("icon/draft_report");
+   private static final int g = 10;
+   private static final ewm h = new ewm(
+      new agi("social_interactions/report_button"),
+      new agi("social_interactions/report_button_disabled"),
+      new agi("social_interactions/report_button_highlighted")
+   );
+   private static final ewm i = new ewm(new agi("social_interactions/mute_button"), new agi("social_interactions/mute_button_highlighted"));
+   private static final ewm j = new ewm(new agi("social_interactions/unmute_button"), new agi("social_interactions/unmute_button_highlighted"));
+   private final etd k;
+   private final List<eux> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<gcu> o;
+   private boolean p;
+   private boolean q;
+   private final boolean r;
+   private final boolean t;
+   private final boolean u;
    @Nullable
-   public static ffb a(esr $$0, BooleanConsumer $$1, DataFixer $$2, eeb.c $$3, boolean $$4) {
-      try {
-         ffh $$5 = $$0.w();
-         aoo $$6 = aor.a($$3);
+   private euz v;
+   @Nullable
+   private euz w;
+   @Nullable
+   private euz x;
+   private float y;
+   private static final ur z = ur.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final ur A = ur.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final ur B = ur.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final ur C = ur.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final ur D = ur.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final ur E = ur.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final ur F = ur.c("gui.socialInteractions.tooltip.hide");
+   private static final ur G = ur.c("gui.socialInteractions.tooltip.show");
+   private static final ur H = ur.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = asw.b.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = asw.b.a(255, 74, 74, 74);
+   public static final int c = asw.b.a(255, 48, 48, 48);
+   public static final int d = asw.b.a(255, 255, 255, 255);
+   public static final int e = asw.b.a(140, 255, 255, 255);
 
-         ffb var10;
-         try (ahb $$7 = $$5.a($$3.f(), false, $$6)) {
-            eeh $$8 = $$7.d();
-            ip.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new ffb($$1, $$2, $$3, $$8.L(), $$4, $$9.d(jz.aK));
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
+   public ffb(etd $$0, ffe $$1, UUID $$2, String $$3, Supplier<gcu> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      fmm $$6 = $$0.aW();
+      this.r = $$6.a().a();
+      this.u = $$5;
+      this.t = $$6.a($$2);
+      ur $$7 = ur.a("gui.socialInteractions.narration.hide", $$3);
+      ur $$8 = ur.a("gui.socialInteractions.narration.show", $$3);
+      ffc $$9 = $$0.aJ();
+      boolean $$10 = $$0.G().a($$0.Q());
+      boolean $$11 = !$$0.s.cw().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new evl(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fex($$1, $$6, this)), false), ur.c("gui.socialInteractions.report")) {
+            @Override
+            protected vf aM_() {
+               return ffb.this.a(super.aM_());
+            }
+         };
+         this.x.i = this.r;
+         this.x.a(this.k());
+         this.x.b(10);
+         this.v = new evl(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, ur.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, ur.c("gui.socialInteractions.hide")) {
+            @Override
+            protected vf aM_() {
+               return ffb.this.a(super.aM_());
+            }
+         };
+         this.v.a(ewk.a(F, $$7));
+         this.v.b(10);
+         this.w = new evl(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, ur.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, ur.c("gui.socialInteractions.show")) {
+            @Override
+            protected vf aM_() {
+               return ffb.this.a(super.aM_());
+            }
+         };
+         this.w.a(ewk.a(G, $$8));
+         this.w.b(10);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
+      } else {
+         this.l = ImmutableList.of();
       }
    }
 
-   private ffb(BooleanConsumer $$0, DataFixer $$1, eeb.c $$2, crw $$3, boolean $$4, io<dkg> $$5) {
-      super(ur.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bie($$2, $$1, $$5, $$4);
+   private ewk k() {
+      return !this.r ? ewk.a(E) : ewk.a(H, ur.a("gui.socialInteractions.narration.report", this.n));
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.d(eum.a(uq.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
+   public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      ur $$13 = this.l();
+      int $$14;
+      if ($$13 == uq.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
+      }
 
-   @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
+      evy.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      }
+
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.f($$3 + ($$4 - this.v.k() - 4) - 20 - 4);
+         this.v.g($$2 + ($$5 - this.v.i()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.f($$3 + ($$4 - this.w.k() - 4) - 20 - 4);
+         this.w.g($$2 + ($$5 - this.w.i()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.f($$3 + ($$4 - this.w.k() - 4));
+         this.x.g($$2 + ($$5 - this.w.i()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
+         }
+      }
+
+      if (this.t && this.x != null) {
+         $$0.a(f, this.x.p() + 5, this.x.r() + 1, 15, 15);
       }
    }
 
    @Override
-   public void aE_() {
-      this.c.accept(false);
+   public List<? extends ewu> i() {
+      return this.l;
    }
 
    @Override
-   public void aF_() {
-      this.k.a();
+   public List<? extends eyq> b() {
+      return this.l;
    }
 
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, ur.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, ur.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, ur.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   public String c() {
+      return this.n;
+   }
 
-         for (agf<crs> $$9 : this.k.c()) {
-            int $$10 = ati.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
+   public UUID e() {
+      return this.m;
+   }
 
-         int $$11 = this.k.f() + this.k.g();
-         ur $$12 = ur.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         ur $$13 = ur.a("optimizeWorld.progress.percentage", ati.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+   public Supplier<gcu> f() {
+      return this.o;
+   }
+
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public boolean g() {
+      return this.p;
+   }
+
+   public void d(boolean $$0) {
+      this.q = $$0;
+   }
+
+   public boolean h() {
+      return this.q;
+   }
+
+   public boolean j() {
+      return this.u;
+   }
+
+   private void a(boolean $$0, ur $$1) {
+      this.e($$0);
+      this.k.l.d().a($$1);
+      this.k.aU().c($$1);
+   }
+
+   private void e(boolean $$0) {
+      this.w.j = $$0;
+      this.v.j = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
+
+   vf a(vf $$0) {
+      ur $$1 = this.l();
+      return $$1 == uq.a ? ur.b(this.n).f(", ").b($$0) : ur.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
+
+   private ur l() {
+      boolean $$0 = this.k.aJ().d(this.m);
+      boolean $$1 = this.k.aJ().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : uq.a;
       }
    }
 }

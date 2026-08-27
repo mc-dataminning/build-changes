@@ -1,117 +1,38 @@
-public class fbj extends fch<cgg> {
-   private static final agg x = new agg("container/anvil/text_field");
-   private static final agg y = new agg("container/anvil/text_field_disabled");
-   private static final agg z = new agg("container/anvil/error");
-   private static final agg A = new agg("textures/gui/container/anvil.png");
-   private static final ur B = ur.c("container.repair.expensive");
-   private euv C;
-   private final cdm D;
+public enum fbj {
+   a(
+      new agi("advancements/box_obtained"),
+      new agi("advancements/task_frame_obtained"),
+      new agi("advancements/challenge_frame_obtained"),
+      new agi("advancements/goal_frame_obtained")
+   ),
+   b(
+      new agi("advancements/box_unobtained"),
+      new agi("advancements/task_frame_unobtained"),
+      new agi("advancements/challenge_frame_unobtained"),
+      new agi("advancements/goal_frame_unobtained")
+   );
 
-   public fbj(cgg $$0, cdl $$1, ur $$2) {
-      super($$0, $$1, $$2, A);
-      this.D = $$1.m;
-      this.l = 60;
+   private final agi c;
+   private final agi d;
+   private final agi e;
+   private final agi f;
+
+   private fbj(agi $$0, agi $$1, agi $$2, agi $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected void E() {
-      int $$0 = (this.g - this.c) / 2;
-      int $$1 = (this.h - this.k) / 2;
-      this.C = new euv(this.i, $$0 + 62, $$1 + 24, 103, 12, ur.c("container.repair"));
-      this.C.f(false);
-      this.C.m(-1);
-      this.C.n(-1);
-      this.C.d(false);
-      this.C.l(50);
-      this.C.b(this::a);
-      this.C.a("");
-      this.e(this.C);
-      this.c(this.C);
-      this.C.e(this.p.b(0).g());
+   public agi a() {
+      return this.c;
    }
 
-   @Override
-   public void a(esr $$0, int $$1, int $$2) {
-      String $$3 = this.C.a();
-      this.b($$0, $$1, $$2);
-      this.C.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.s.q();
-      }
-
-      return !this.C.a($$0, $$1, $$2) && !this.C.e() ? super.a($$0, $$1, $$2) : true;
-   }
-
-   private void a(String $$0) {
-      chz $$1 = this.p.b(0);
-      if ($$1.g()) {
-         String $$2 = $$0;
-         if (!$$1.f().A() && $$0.equals($$1.f().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.p.a($$2)) {
-            this.f.s.cn.b(new adr($$2));
-         }
-      }
-   }
-
-   @Override
-   protected void b(eub $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.p.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         ur $$5;
-         if ($$3 >= 40 && !this.f.s.fT().d) {
-            $$5 = B;
-            $$4 = 16736352;
-         } else if (!this.p.b(2).g()) {
-            $$5 = null;
-         } else {
-            $$5 = ur.a("container.repair.cost", $$3);
-            if (!this.p.b(2).a(this.D)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.i.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.i, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(eub $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p.b(0).g() ? x : y, this.t + 59, this.u + 20, 110, 16);
-   }
-
-   @Override
-   public void d(eub $$0, int $$1, int $$2, float $$3) {
-      this.C.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(eub $$0, int $$1, int $$2) {
-      if ((this.p.b(0).g() || this.p.b(1).g()) && !this.p.b(this.p.o()).g()) {
-         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
-      }
-   }
-
-   @Override
-   public void a(cge $$0, int $$1, clb $$2) {
-      if ($$1 == 0) {
-         this.C.a($$2.b() ? "" : $$2.y().getString());
-         this.C.e(!$$2.b());
-         this.a(this.C);
-      }
+   public agi a(ar $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

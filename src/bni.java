@@ -1,28 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bni {
-   private static ht a(bla $$0, ht $$1) {
-      ato $$2 = $$0.dL().z;
-      return $$1.b(a($$2), 0, a($$2));
+public class bni implements bok {
+   private final bkq a;
+   private final boolean b;
+
+   public bni(bkq $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static int a(ato $$0) {
-      return $$0.a(3) - 1;
+   @Override
+   public eju a() {
+      return this.b ? this.a.dl().b(0.0, (double)this.a.cI(), 0.0) : this.a.dl();
    }
 
-   public static <E extends bla> bnz<E> a(btz<ht> $$0, int $$1, float $$2) {
-      return bqb.a(
-         (Function<bqb.b<E>, ? extends App<bqb.c<E>, bqe<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(btz.o), $$3.c(btz.m), $$3.a(btz.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     ht $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
-                     if (!$$8) {
-                        bmr.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   @Override
+   public ht b() {
+      return this.a.dn();
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   public boolean a(blg $$0) {
+      if (this.a instanceof blg $$1) {
+         if (!$$1.bx()) {
+            return false;
+         } else {
+            Optional<buj> $$3 = $$0.dP().c(buh.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bkq c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

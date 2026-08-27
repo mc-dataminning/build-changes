@@ -1,86 +1,50 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bro extends brt {
-   private int a;
-   private final blh b;
-   @Nullable
-   private cdm c;
-   private brc d;
+public class bro extends bso {
+   private final bwu g;
 
-   public bro(blh $$0) {
-      this.b = $$0;
+   public bro(bwu $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bsb.a.c, bsb.a.a));
    }
 
    @Override
    public boolean a() {
-      List<cff> $$0 = this.b.dL().a(cff.class, this.b.cG().g(5.0));
-      boolean $$1 = false;
-
-      for (cff $$2 : $$0) {
-         bki $$3 = $$2.cN();
-         if ($$3 instanceof cdm && (ati.e(((cdm)$$3).bk) > 0.0F || ati.e(((cdm)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return this.c != null && (ati.e(this.c.bk) > 0.0F || ati.e(this.c.bm) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c != null && this.c.bN() && (ati.e(this.c.bk) > 0.0F || ati.e(this.c.bm) > 0.0F);
+      return this.g.u() && !this.g.gf() && !this.g.gn() && super.a();
    }
 
    @Override
    public void c() {
-      for (cff $$1 : this.b.dL().a(cff.class, this.b.cG().g(5.0))) {
-         if ($$1.cN() instanceof cdm $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
+      super.c();
+      this.g.y(false);
+   }
 
-      this.a = 0;
-      this.d = brc.a;
+   @Override
+   protected int a(blp $$0) {
+      return 40;
    }
 
    @Override
    public void d() {
-      this.c = null;
+      super.d();
+      this.g.A(false);
    }
 
    @Override
    public void e() {
-      boolean $$0 = ati.e(this.c.bk) > 0.0F || ati.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == brc.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new eji((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(ble.a, this.b.do());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == brc.a) {
-            ht $$2 = this.c.dl().a(this.c.cD().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.e((bki)this.c) < 4.0F) {
-               this.a = 0;
-               this.d = brc.b;
-            }
-         } else if (this.d == brc.b) {
-            hx $$3 = this.c.cE();
-            ht $$4 = this.c.dl().a($$3, 10);
-            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.e((bki)this.c) > 12.0F) {
-               this.a = 0;
-               this.d = brc.a;
-            }
-         }
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gn()) {
+         this.g.A(true);
       }
+   }
+
+   @Override
+   protected boolean a(csd $$0, ht $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(arg.R);
    }
 }

@@ -10,7 +10,7 @@ public class aab implements wk<yd> {
    private final float i;
    private final float j;
 
-   public aab(cdj $$0) {
+   public aab(cdr $$0) {
       this.e = $$0.a;
       this.f = $$0.b;
       this.g = $$0.c;

@@ -28,7 +28,7 @@ public record vu(String d, @Nullable ge e) implements vt {
    @Override
    public Stream<rz> a(du $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bki> $$1 = this.e.b($$0);
+         List<? extends bkq> $$1 = this.e.b($$0);
          return $$1.stream().map(cn::b);
       } else {
          return Stream.empty();

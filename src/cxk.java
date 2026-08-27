@@ -1,16 +1,27 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface cxk {
-   @Nullable
-   der a(ht var1, dgw var2);
+public class cxk extends cva {
+   public static final MapCodec<cxk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bic.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, cxk::new)
+   );
+   private final bic b;
 
-   @Nullable
-   default <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<? extends cxk> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends der> dli a(ama $$0, T $$1) {
-      return $$1 instanceof dli.b<?> $$2 ? $$2.d() : null;
+   public cxk(bic $$0, dhh.d $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(dhi $$0, ame $$1, ht $$2, clj $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
+      }
    }
 }

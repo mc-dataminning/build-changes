@@ -1,22 +1,9 @@
-public class cgz extends chz {
-   private final cgf a;
+public interface cgz {
+   void a(cgm var1, il<clj> var2, clj var3, int[] var4);
 
-   public cgz(cgf $$0, bij $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
-   }
+   void a(cgm var1, int var2, clj var3);
 
-   @Override
-   public boolean a(clb $$0) {
-      return this.a.d($$0) || c($$0);
-   }
+   void a(cgm var1, clj var2);
 
-   @Override
-   public int a_(clb $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(clb $$0) {
-      return $$0.a(cle.pK);
-   }
+   void a(cgm var1, int var2, int var3);
 }

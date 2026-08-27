@@ -1,7 +1,49 @@
-import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record amp(GameProfile a, int b, alp c) {
-   public static amp a(GameProfile $$0) {
-      return new amp($$0, 0, alp.a());
+public class amp implements amn {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
+
+   public amp(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.b = $$1 * $$1;
+   }
+
+   @Override
+   public void a(crh $$0) {
+      this.e = ac.b();
+      this.d = this.e;
+   }
+
+   @Override
+   public void a(crh $$0, @Nullable djj $$1) {
+      if ($$1 == djj.n) {
+         this.c++;
+      }
+
+      int $$2 = this.c();
+      if (ac.b() > this.e) {
+         this.e += 500L;
+         a.info(ur.a("menu.preparingSpawn", atm.a($$2, 0, 100)).getString());
+      }
+   }
+
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ac.b() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int c() {
+      return atm.d((float)this.c * 100.0F / (float)this.b);
    }
 }

@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 public class aq {
    private final ur a;
    private final ur b;
-   private final clb c;
+   private final clj c;
    @Nullable
-   private final agg d;
+   private final agi d;
    private final ar e;
    private final boolean f;
    private final boolean g;
@@ -18,7 +18,7 @@ public class aq {
    private float i;
    private float j;
 
-   public aq(clb $$0, ur $$1, ur $$2, @Nullable agg $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public aq(clj $$0, ur $$1, ur $$2, @Nullable agi $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$0;
@@ -42,12 +42,12 @@ public class aq {
       return this.b;
    }
 
-   public clb c() {
+   public clj c() {
       return this.c;
    }
 
    @Nullable
-   public agg d() {
+   public agi d() {
       return this.d;
    }
 
@@ -79,30 +79,30 @@ public class aq {
       ur $$1 = ur.a.a($$0.get("title"));
       ur $$2 = ur.a.a($$0.get("description"));
       if ($$1 != null && $$2 != null) {
-         clb $$3 = b(asy.u($$0, "icon"));
-         agg $$4 = $$0.has("background") ? new agg(asy.i($$0, "background")) : null;
-         ar $$5 = $$0.has("frame") ? ar.a(asy.i($$0, "frame")) : ar.a;
-         boolean $$6 = asy.a($$0, "show_toast", true);
-         boolean $$7 = asy.a($$0, "announce_to_chat", true);
-         boolean $$8 = asy.a($$0, "hidden", false);
+         clj $$3 = b(atc.u($$0, "icon"));
+         agi $$4 = $$0.has("background") ? new agi(atc.i($$0, "background")) : null;
+         ar $$5 = $$0.has("frame") ? ar.a(atc.i($$0, "frame")) : ar.a;
+         boolean $$6 = atc.a($$0, "show_toast", true);
+         boolean $$7 = atc.a($$0, "announce_to_chat", true);
+         boolean $$8 = atc.a($$0, "hidden", false);
          return new aq($$3, $$1, $$2, $$4, $$5, $$6, $$7, $$8);
       } else {
          throw new JsonSyntaxException("Both title and description must be set");
       }
    }
 
-   private static clb b(JsonObject $$0) {
+   private static clj b(JsonObject $$0) {
       if (!$$0.has("item")) {
          throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
       } else {
-         ib<ckw> $$1 = asy.j($$0, "item");
+         ib<cle> $$1 = atc.j($$0, "item");
          if ($$0.has("data")) {
             throw new JsonParseException("Disallowed data tag found");
          } else {
-            clb $$2 = new clb($$1);
+            clj $$2 = new clj($$1);
             if ($$0.has("nbt")) {
                try {
-                  rz $$3 = sx.a(asy.a($$0.get("nbt"), "nbt"));
+                  rz $$3 = sx.a(atc.a($$0.get("nbt"), "nbt"));
                   $$2.c($$3);
                } catch (CommandSyntaxException var4) {
                   throw new JsonSyntaxException("Invalid nbt tag: " + var4.getMessage());
@@ -144,10 +144,10 @@ public class aq {
    public static aq b(tu $$0) {
       ur $$1 = $$0.m();
       ur $$2 = $$0.m();
-      clb $$3 = $$0.r();
+      clj $$3 = $$0.r();
       ar $$4 = $$0.b(ar.class);
       int $$5 = $$0.readInt();
-      agg $$6 = ($$5 & 1) != 0 ? $$0.t() : null;
+      agi $$6 = ($$5 & 1) != 0 ? $$0.t() : null;
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       aq $$9 = new aq($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

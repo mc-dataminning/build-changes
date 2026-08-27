@@ -1,32 +1,48 @@
-public class bti extends bsd {
-   private final cbt b;
-   private int c;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bti(cbt $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class bti extends bsb {
+   private final cau a;
+   @Nullable
+   private blg b;
+
+   public bti(cau $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bsb.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      blg $$0 = this.a.q();
+      return this.a.w() > 0 || $$0 != null && this.a.f((bkq)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.a.N().n();
+      this.b = this.a.q();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
+      this.b = null;
+   }
+
+   @Override
+   public boolean S_() {
+      return true;
    }
 
    @Override
    public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((bkq)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
       } else {
-         this.b.v(false);
+         this.a.b(1);
       }
    }
 }

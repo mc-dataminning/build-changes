@@ -1,60 +1,31 @@
-public class cpa extends cnx {
-   public cpa(cnu $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(cgu $$0, crs $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+public class cpa<T extends cod> implements cos<T> {
+   private final cpa.a<T> x;
+   private final Codec<T> y;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         clb $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(cuv.cf.k()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(cuv.cg.k()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(ark.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(cle.oC) || $$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            }
-         }
-      }
-
-      return $$2 && $$4 && $$3 && $$5;
-   }
-
-   public clb a(cgu $$0, ip $$1) {
-      clb $$2 = new clb(cle.vb, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         clb $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            dcu $$5 = dcu.a($$4.d());
-            if ($$5 != null) {
-               cml.a($$2, $$5.b());
-               break;
-            }
-         }
-      }
-
-      return $$2;
+   public cpa(cpa.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(coc.e.fieldOf("category").orElse(coc.d).forGetter(cod::d)).apply($$1, $$0::create));
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public coj<?> aq_() {
-      return coj.n;
+   public T b(tu $$0) {
+      coc $$1 = $$0.b(coc.class);
+      return this.x.create($$1);
+   }
+
+   public void a(tu $$0, T $$1) {
+      $$0.a($$1.d());
+   }
+
+   @FunctionalInterface
+   public interface a<T extends cod> {
+      T create(coc var1);
    }
 }

@@ -1,162 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class enp {
-   private final ImmutableList<enq> a;
-   private final ImmutableMap<String, enq> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private enn e;
+   private int a;
 
-   public enp(ImmutableMap<String, enq> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         enq $$2 = (enq)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
+   public static Optional<enp> a() {
+      return enp.b.a;
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
-   }
-
-   public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<enq> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         enp $$1 = (enp)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
       } else {
-         return false;
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
+   public enp.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
       } else {
-         this.h();
+         GL32C.glEndQuery(35007);
+         enp.a $$0 = new enp.a(this.a);
+         this.a = 0;
+         return $$0;
       }
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<enq> $$1 = this.c();
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<enq> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         enq $$2 = (enq)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public enn g() {
-      enn $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new enn(enn.a.b);
-      }
-
-      return $$0;
-   }
-
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
+      a(int $$0) {
          this.c = $$0;
-         this.d = $$1;
       }
 
-      public static enp.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
       }
    }
 
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+   static class b {
+      static final Optional<enp> a = Optional.ofNullable(a());
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+      private b() {
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
+      @Nullable
+      private static enp a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new enp();
       }
    }
 }

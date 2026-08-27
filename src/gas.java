@@ -1,72 +1,23 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
-
-public abstract class gas implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
-
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
-   }
-
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
-      }
-   }
-
-   public abstract void a(apd var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
-      }
-   }
-
-   public void a(gbi $$0, apd $$1, agg $$2, Executor $$3) {
-      $$0.a($$2, this);
+public class gas<T extends blg> extends fzj<T, fkd<T>> {
+   public gas(fxs<T, fkd<T>> $$0, fqq $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void close() {
+   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      clj $$10 = $$3.eU();
+      $$0.a();
+      if ($$10.a(clm.sh)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

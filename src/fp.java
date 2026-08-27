@@ -15,27 +15,27 @@ public class fp implements fo {
    }
 
    @Override
-   public eji a(du $$0) {
-      ejh $$1 = $$0.l();
-      eji $$2 = $$0.n().a($$0);
-      float $$3 = ati.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = ati.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = ati.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = ati.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = ati.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = ati.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      eji $$9 = new eji((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      eji $$10 = new eji((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      eji $$11 = $$9.c($$10).a(-1.0);
+   public eju a(du $$0) {
+      ejt $$1 = $$0.l();
+      eju $$2 = $$0.n().a($$0);
+      float $$3 = atm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = atm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = atm.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = atm.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = atm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = atm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      eju $$9 = new eju((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      eju $$10 = new eju((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      eju $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new eji($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new eju($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ejh b(du $$0) {
-      return ejh.a;
+   public ejt b(du $$0) {
+      return ejt.a;
    }
 
    @Override

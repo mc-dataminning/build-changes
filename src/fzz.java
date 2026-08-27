@@ -1,35 +1,46 @@
-public class fzz<T extends bky> extends fzs<T, fih<T>> {
-   public static final agg a = new agg("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fkb c;
+public class fzz extends gaf<byt, fii<byt>> {
+   private static final agi[] a = new agi[]{
+      new agi("textures/entity/llama/decor/white.png"),
+      new agi("textures/entity/llama/decor/orange.png"),
+      new agi("textures/entity/llama/decor/magenta.png"),
+      new agi("textures/entity/llama/decor/light_blue.png"),
+      new agi("textures/entity/llama/decor/yellow.png"),
+      new agi("textures/entity/llama/decor/lime.png"),
+      new agi("textures/entity/llama/decor/pink.png"),
+      new agi("textures/entity/llama/decor/gray.png"),
+      new agi("textures/entity/llama/decor/light_gray.png"),
+      new agi("textures/entity/llama/decor/cyan.png"),
+      new agi("textures/entity/llama/decor/purple.png"),
+      new agi("textures/entity/llama/decor/blue.png"),
+      new agi("textures/entity/llama/decor/brown.png"),
+      new agi("textures/entity/llama/decor/green.png"),
+      new agi("textures/entity/llama/decor/red.png"),
+      new agi("textures/entity/llama/decor/black.png")
+   };
+   private static final agi b = new agi("textures/entity/llama/decor/trader_llama.png");
+   private final fii<byt> c;
 
-   public fzz(fxf<T, fih<T>> $$0, fjx $$1) {
+   public fzz(fxs<byt, fii<byt>> $$0, fkk $$1) {
       super($$0);
-      fkb $$2 = $$1.a(fka.aT);
-      this.c = $$2.b("box");
+      this.c = new fii<>($$1.a(fkn.as));
    }
 
-   public static fkh a() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("box", fkg.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fkd.a);
-      return fkh.a($$0, 64, 64);
-   }
-
-   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fj()) {
-         eno $$10 = $$1.getBuffer(fqp.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, gay.d);
-            $$0.b();
+   public void a(enw $$0, fqu $$1, int $$2, byt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cjx $$10 = $$3.gs();
+      agi $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.go()) {
+            return;
          }
+
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      eoa $$14 = $$1.getBuffer(frc.e($$11));
+      this.c.a($$0, $$14, $$2, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

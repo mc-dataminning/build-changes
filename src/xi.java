@@ -1,5 +1,5 @@
 public record xi() implements xd {
-   public static final agg a = new agg("debug/game_test_clear");
+   public static final agi a = new agi("debug/game_test_clear");
 
    public xi(tu $$0) {
       this();
@@ -10,7 +10,7 @@ public record xi() implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

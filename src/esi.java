@@ -1,38 +1,67 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class esi {
-   private final fkx a;
-   private int b = -1;
-   @Nullable
-   private Consumer<rz> c;
+public class esi extends esd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ur c = ur.c("mco.backup.restoring");
+   private final eos d;
+   private final long e;
+   private final eqm f;
 
-   public esi(fkx $$0) {
-      this.a = $$0;
+   public esi(eos $$0, long $$1, eqm $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean a(int $$0, @Nullable rz $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      eom $$0 = eom.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (eqa var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (epz var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new eqq(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   private int a(Consumer<rz> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<rz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new adc($$2, $$0));
-   }
-
-   public void a(ht $$0, Consumer<rz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new acn($$2, $$0));
+   @Override
+   public ur a() {
+      return c;
    }
 }

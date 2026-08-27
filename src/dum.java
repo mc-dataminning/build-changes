@@ -1,165 +1,75 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
 
 public class dum extends dur {
-   public static final Codec<dum> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dum::new));
-   private static final double b = 0.618;
-   private static final double h = 1.382;
-   private static final double i = 0.381;
-   private static final double j = 0.328;
+   public static final Codec<dum> a = dua.a.fieldOf("provider").xmap(dum::new, $$0 -> $$0.b).codec();
+   private final dua b;
 
-   public dum(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dum(dua $$0) {
+      this.b = $$0;
    }
 
    @Override
    protected dus<?> a() {
-      return dus.f;
+      return dus.e;
    }
 
    @Override
-   public List<dsz.a> a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, int $$3, ht $$4, dsj $$5) {
-      int $$6 = 5;
-      int $$7 = $$3 + 2;
-      int $$8 = ati.a((double)$$7 * 0.618);
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      double $$9 = 1.0;
-      int $$10 = Math.min(1, ati.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
-      int $$11 = $$4.v() + $$8;
-      int $$12 = $$7 - 5;
-      List<dum.a> $$13 = Lists.newArrayList();
-      $$13.add(new dum.a($$4.b($$12), $$11));
+   public void a(dur.a $$0) {
+      List<ht> $$1 = Lists.newArrayList();
+      List<ht> $$2 = $$0.e();
+      List<ht> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
 
-      for (; $$12 >= 0; $$12--) {
-         float $$14 = b($$7, $$12);
-         if (!($$14 < 0.0F)) {
-            for (int $$15 = 0; $$15 < $$10; $$15++) {
-               double $$16 = 1.0;
-               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
-               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
-               double $$19 = $$17 * Math.sin($$18) + 0.5;
-               double $$20 = $$17 * Math.cos($$18) + 0.5;
-               ht $$21 = $$4.b(ati.a($$19), $$12 - 1, ati.a($$20));
-               ht $$22 = $$21.b(5);
-               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
-                  int $$23 = $$4.u() - $$21.u();
-                  int $$24 = $$4.w() - $$21.w();
-                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
-                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
-                  ht $$27 = new ht($$4.u(), $$26, $$4.w());
-                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
-                     $$13.add(new dum.a($$21, $$27.v()));
-                  }
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
                }
             }
-         }
+         });
       }
-
-      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
-      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
-      List<dsz.a> $$28 = Lists.newArrayList();
-
-      for (dum.a $$29 : $$13) {
-         if (this.a($$7, $$29.a() - $$4.v())) {
-            $$28.add($$29.a);
-         }
-      }
-
-      return $$28;
    }
 
-   private boolean a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, ht $$3, ht $$4, boolean $$5, dsj $$6) {
-      if (!$$5 && Objects.equals($$3, $$4)) {
-         return true;
-      } else {
-         ht $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
-         int $$8 = this.a($$7);
-         float $$9 = (float)$$7.u() / (float)$$8;
-         float $$10 = (float)$$7.v() / (float)$$8;
-         float $$11 = (float)$$7.w() / (float)$$8;
-
-         for (int $$12 = 0; $$12 <= $$8; $$12++) {
-            ht $$13 = $$3.b(ati.d(0.5F + (float)$$12 * $$9), ati.d(0.5F + (float)$$12 * $$10), ati.d(0.5F + (float)$$12 * $$11));
-            if ($$5) {
-               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(dbe.i, this.a($$3, $$13)));
-            } else if (!this.b($$0, $$13)) {
-               return false;
+   private void a(dur.a $$0, ht $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
             }
          }
-
-         return true;
       }
    }
 
-   private int a(ht $$0) {
-      int $$1 = ati.a($$0.u());
-      int $$2 = ati.a($$0.v());
-      int $$3 = ati.a($$0.w());
-      return Math.max($$1, Math.max($$2, $$3));
-   }
-
-   private hx.a a(ht $$0, ht $$1) {
-      hx.a $$2 = hx.a.b;
-      int $$3 = Math.abs($$1.u() - $$0.u());
-      int $$4 = Math.abs($$1.w() - $$0.w());
-      int $$5 = Math.max($$3, $$4);
-      if ($$5 > 0) {
-         if ($$3 == $$5) {
-            $$2 = hx.a.a;
-         } else {
-            $$2 = hx.a.c;
-         }
-      }
-
-      return $$2;
-   }
-
-   private boolean a(int $$0, int $$1) {
-      return (double)$$1 >= (double)$$0 * 0.2;
-   }
-
-   private void a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, int $$3, ht $$4, List<dum.a> $$5, dsj $$6) {
-      for (dum.a $$7 : $$5) {
-         int $$8 = $$7.a();
-         ht $$9 = new ht($$4.u(), $$8, $$4.w());
-         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
-            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
-         }
-      }
-   }
-
-   private static float b(int $$0, int $$1) {
-      if ((float)$$1 < (float)$$0 * 0.3F) {
-         return -1.0F;
-      } else {
-         float $$2 = (float)$$0 / 2.0F;
-         float $$3 = $$2 - (float)$$1;
-         float $$4 = ati.c($$2 * $$2 - $$3 * $$3);
-         if ($$3 == 0.0F) {
-            $$4 = $$2;
-         } else if (Math.abs($$3) >= $$2) {
-            return 0.0F;
+   private void b(dur.a $$0, ht $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         ht $$3 = $$1.b($$2);
+         if (dpv.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
          }
 
-         return $$4 * 0.5F;
-      }
-   }
-
-   static class a {
-      final dsz.a a;
-      private final int b;
-
-      public a(ht $$0, int $$1) {
-         this.a = new dsz.a($$0, 0, false);
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.b;
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

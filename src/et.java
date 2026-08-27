@@ -11,51 +11,51 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class et<T> implements ArgumentType<agf<T>> {
+public class et<T> implements ArgumentType<agh<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("commands.place.feature.invalid", $$0));
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("commands.place.structure.invalid", $$0));
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> ur.b("commands.place.jigsaw.invalid", $$0));
-   final agf<? extends io<T>> e;
+   final agh<? extends io<T>> e;
 
-   public et(agf<? extends io<T>> $$0) {
+   public et(agh<? extends io<T>> $$0) {
       this.e = $$0;
    }
 
-   public static <T> et<T> a(agf<? extends io<T>> $$0) {
+   public static <T> et<T> a(agh<? extends io<T>> $$0) {
       return new et<>($$0);
    }
 
-   private static <T> agf<T> a(CommandContext<du> $$0, String $$1, agf<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      agf<?> $$4 = (agf<?>)$$0.getArgument($$1, agf.class);
-      Optional<agf<T>> $$5 = $$4.c($$2);
+   private static <T> agh<T> a(CommandContext<du> $$0, String $$1, agh<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      agh<?> $$4 = (agh<?>)$$0.getArgument($$1, agh.class);
+      Optional<agh<T>> $$5 = $$4.c($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   private static <T> io<T> a(CommandContext<du> $$0, agf<? extends io<T>> $$1) {
-      return ((du)$$0.getSource()).m().aU().d($$1);
+   private static <T> io<T> a(CommandContext<du> $$0, agh<? extends io<T>> $$1) {
+      return ((du)$$0.getSource()).m().aZ().d($$1);
    }
 
-   private static <T> ib.c<T> b(CommandContext<du> $$0, String $$1, agf<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      agf<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> ib.c<T> b(CommandContext<du> $$0, String $$1, agh<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      agh<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ib.c<dow<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ib.c<dpi<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jz.au, b);
    }
 
-   public static ib.c<dwv> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ib.c<dxh> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jz.aB, c);
    }
 
-   public static ib.c<dye> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ib.c<dyq> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jz.aE, d);
    }
 
-   public agf<T> a(StringReader $$0) throws CommandSyntaxException {
-      agg $$1 = agg.a($$0);
-      return agf.a(this.e, $$1);
+   public agh<T> a(StringReader $$0) throws CommandSyntaxException {
+      agi $$1 = agi.a($$0);
+      return agh.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -84,9 +84,9 @@ public class et<T> implements ArgumentType<agf<T>> {
       }
 
       public final class a implements hf.a<et<T>> {
-         final agf<? extends io<T>> b;
+         final agh<? extends io<T>> b;
 
-         a(agf<? extends io<T>> $$1) {
+         a(agh<? extends io<T>> $$1) {
             this.b = $$1;
          }
 

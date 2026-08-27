@@ -1,45 +1,85 @@
-public class fmv extends fow {
-   private final foq a;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   fmv(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public final class fmv {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fmv c = new fmv(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fmv(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   private fmv(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fmv a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fmv($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
    }
 
    @Override
-   public fnz b() {
-      return fnz.b;
+   public String toString() {
+      return this.b.toString();
    }
 
-   public static class a implements fny<jv> {
-      private final foq a;
-
-      public a(foq $$0) {
-         this.a = $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fmv ? this.b.equals(((fmv)$$0).b) : false;
       }
+   }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

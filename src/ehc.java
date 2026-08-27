@@ -1,58 +1,42 @@
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public record ehc(agg b) implements ehk {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ehc> a = RecordCodecBuilder.create($$0 -> $$0.group(agg.a.fieldOf("name").forGetter(ehc::c)).apply($$0, ehc::new));
+public class ehc extends egj {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ehc> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ehc::new));
 
-   @Override
-   public ehl b() {
-      return ehm.q;
+   private ehc(List<ehw> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(eeu $$0) {
-      een<ehk> $$1 = new een<>(eeq.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.a("Condition " + this.b + " is recursively called");
-      } else {
-         ehk.super.a($$0);
-         $$0.b()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown condition table called " + this.b));
-      }
+   public egl b() {
+      return egm.h;
    }
 
-   public boolean a(eel $$0) {
-      ehk $$1 = $$0.a().getElement(eeq.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
+   @Override
+   public clj a(clj $$0, eex $$1) {
+      if ($$0.b()) {
+         return $$0;
       } else {
-         eel.c<?> $$2 = eel.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
+         Optional<coq<cpc>> $$2 = $$1.d().q().a(cot.b, new bje($$0), $$1.d());
+         if ($$2.isPresent()) {
+            clj $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.b()) {
+               return $$3.c($$0.L());
             }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
          }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
    }
 
-   public static ehk.a a(agg $$0) {
-      return () -> new ehc($$0);
-   }
-
-   public agg c() {
-      return this.b;
+   public static egj.a<?> c() {
+      return a(ehc::new);
    }
 }

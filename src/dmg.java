@@ -1,77 +1,55 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+public interface dmg extends ats {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class dmg implements dlu {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dmh i = new dmh(this);
+   int c(int var1);
 
-   public dmg(long $$0) {
-      this.b($$0);
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
    @Override
-   public ato d() {
-      return new dmg(this.g());
-   }
-
-   @Override
-   public dms e() {
-      return new dmg.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw aue.a("LegacyRandomSource", null);
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
       } else {
-         this.i.a();
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
       }
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw aue.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
    @Override
-   public double k() {
-      return this.i.b();
+   default boolean h() {
+      return this.c(1) != 0;
    }
 
-   public static class a implements dms {
-      private final long a;
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
 
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public ato a(int $$0, int $$1, int $$2) {
-         long $$3 = ati.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dmg($$4);
-      }
-
-      @Override
-      public ato a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dmg((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

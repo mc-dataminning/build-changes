@@ -1,101 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bno extends bmp<bla> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private ht h;
-   private int i;
-   private int j;
-   private int k;
+public class bno {
+   public static bmy<cdh> a(float $$0, int $$1) {
+      return bqj.a((Function<bqj.b<cdh>, ? extends App<bqj.c<cdh>, bqm<cdh>>>)($$2 -> $$2.group($$2.c(buh.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.b($$4.dn())) {
+                  return false;
+               } else {
+                  bwf $$6 = $$3.x();
+                  int $$7 = $$6.a(iu.a($$4.dn()));
+                  eju $$8 = null;
 
-   public bno(float $$0) {
-      super(ImmutableMap.of(btz.w, bua.a, btz.m, bua.b));
-      this.g = $$0;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     eju $$10 = bvz.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(iu.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(iu.a(ht.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(ama $$0, bla $$1) {
-      return $$1.n_() && this.b($$0, $$1);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected void a(ama $$0, bla $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new buk($$8, $$0, $$1));
+                  }
 
-   protected void b(ama $$0, bla $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(ama $$0, bla $$1, long $$2) {
-      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(ama $$0, bla $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.K().a();
-            this.j--;
-            this.k = 5;
-         }
-      }
-   }
-
-   private void a(bla $$0, ht $$1) {
-      $$0.dN().a(btz.m, new buc($$1, this.g, 0));
-   }
-
-   private boolean b(ama $$0, bla $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
-   }
-
-   private boolean c(ama $$0, bla $$1) {
-      ht $$2 = $$1.dl();
-      ht $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
-   }
-
-   private boolean d(ama $$0, bla $$1) {
-      return this.a($$0, $$1.dl());
-   }
-
-   private boolean a(ama $$0, ht $$1) {
-      return $$0.a_($$1).a(arc.R);
-   }
-
-   private Optional<ht> a(bla $$0) {
-      return $$0.dN().c(btz.w);
-   }
-
-   private boolean e(ama $$0, bla $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(ama $$0, bla $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+                  return true;
+               }
+            })));
    }
 }

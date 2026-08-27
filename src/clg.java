@@ -1,51 +1,37 @@
-public class clg extends ckw {
-   public clg(ckw.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum clg implements aug {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<clg> j = aug.a(clg::values);
+   public static final IntFunction<clg> k = asf.a(clg::a, values(), asf.a.a);
+   private final byte l;
+   private final String m;
+
+   private clg(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public biq a(cnl $$0) {
-      crs $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      dgw $$3 = $$1.a_($$2);
-      if ($$3.a(arc.S)) {
-         cdm $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return biq.a($$1.B);
-      } else {
-         return biq.d;
-      }
+   public String c() {
+      return this.m;
    }
 
-   public static biq a(cdm $$0, crs $$1, ht $$2) {
-      bzz $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
+   public byte a() {
+      return this.l;
+   }
 
-      for (bla $$10 : $$1.a(
-         bla.class, new ejd((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fT() == $$0) {
-            if ($$3 == null) {
-               $$3 = bzz.b($$1, $$2);
-               $$3.C();
-            }
-
-            $$10.b($$3, true);
-            $$4 = true;
-         }
-      }
-
-      if ($$4) {
-         $$1.a(dlg.b, $$2, dlg.a.a($$0));
-      }
-
-      return $$4 ? biq.a : biq.d;
+   public boolean b() {
+      return this == d || this == e;
    }
 }

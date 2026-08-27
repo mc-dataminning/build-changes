@@ -1,61 +1,79 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryUtil;
 
-public class eyb implements exy {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public record eyb(agi c, float d, float e, eyb.a f, String g) implements exy {
+   private static final Codec<String> h = asu.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               agi.a.fieldOf("file").forGetter(eyb::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(eyb::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(eyb::e),
+               eyb.a.b.optionalFieldOf("shift", eyb.a.a).forGetter(eyb::f),
+               h.optionalFieldOf("skip", "").forGetter(eyb::g)
+            )
+            .apply($$0, eyb::new)
+   );
 
-   public eyb(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public eyb(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static eyb a(int $$0) {
-      return new eyb($$0, 0);
-   }
-
-   public static eyb b(int $$0) {
-      return new eyb(0, $$0);
+   @Override
+   public exz a() {
+      return exz.b;
    }
 
    @Override
-   public void f(int $$0) {
-      this.a = $$0;
+   public Either<exy.a, exy.b> b() {
+      return Either.left(this::a);
    }
 
-   @Override
-   public void g(int $$0) {
-      this.b = $$0;
+   private elz a(aph $$0) throws IOException {
+      STBTTFontinfo $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         emc var5;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$1 = STBTTFontinfo.malloc();
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            if (!STBTruetype.stbtt_InitFont($$1, $$2)) {
+               throw new IOException("Invalid ttf");
+            }
+
+            var5 = new emc($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+         }
+
+         return var5;
+      } catch (Exception var9) {
+         if ($$1 != null) {
+            $$1.free();
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var9;
+      }
    }
 
-   @Override
-   public int p() {
-      return this.a;
-   }
+   public static record a(float c, float d) {
+      public static final eyb.a a = new eyb.a(0.0F, 0.0F);
+      public static final Codec<eyb.a> b = Codec.FLOAT
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new eyb.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   @Override
-   public int r() {
-      return this.b;
-   }
+      public float a() {
+         return this.c;
+      }
 
-   @Override
-   public int k() {
-      return this.c;
-   }
-
-   @Override
-   public int i() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<euk> $$0) {
+      public float b() {
+         return this.d;
+      }
    }
 }

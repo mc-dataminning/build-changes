@@ -1,65 +1,58 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public class ckx extends cle {
+   private static final int a = 40;
 
-public class ckx {
-   private final Map<ckw, ckx.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(ckw $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public ckx(cle.a $$0) {
+      super($$0);
    }
 
-   public float a(ckw $$0, float $$1) {
-      ckx.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return ati.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
+   @Override
+   public clj a(clj $$0, csa $$1, blg $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof amf $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(arb.c.b(this));
       }
-   }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ckw, ckx.a>> $$0 = this.a.entrySet().iterator();
+      if (!$$1.B) {
+         $$2.d(bkf.s);
+      }
 
-         while ($$0.hasNext()) {
-            Entry<ckw, ckx.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
+      if ($$0.b()) {
+         return new clj(clm.si);
+      } else {
+         if ($$2 instanceof cdu $$4 && !$$4.fU().d) {
+            clj $$5 = new clj(clm.si);
+            if (!$$4.fT().e($$5)) {
+               $$4.a($$5, false);
             }
          }
+
+         return $$0;
       }
    }
 
-   public void a(ckw $$0, int $$1) {
-      this.a.put($$0, new ckx.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   @Override
+   public int b(clj $$0) {
+      return 40;
    }
 
-   public void b(ckw $$0) {
-      this.a.remove($$0);
-      this.c($$0);
+   @Override
+   public cnc c(clj $$0) {
+      return cnc.c;
    }
 
-   protected void b(ckw $$0, int $$1) {
+   @Override
+   public aqq am_() {
+      return aqr.lv;
    }
 
-   protected void c(ckw $$0) {
+   @Override
+   public aqq an_() {
+      return aqr.lv;
    }
 
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      return cll.a($$0, $$1, $$2);
    }
 }

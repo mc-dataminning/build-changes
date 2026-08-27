@@ -1,18 +1,41 @@
-public class evk extends eum {
-   private final etz a;
-   private final ur b;
-   private final ur c;
+public class evk extends evt {
+   private static final int a = 1426063360;
+   private static final int b = 4;
+   private final boolean c;
 
-   public evk(int $$0, int $$1, int $$2, int $$3, ur $$4, eum.c $$5, etz $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, p);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = uu.a($$4.f(), vo.a.c(true));
+   public evk(int $$0, ur $$1, eum $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public evk(int $$0, ur $$1, eum $$2, boolean $$3) {
+      super($$1, $$2);
+      this.j($$0);
+      this.b(true);
+      this.i = true;
+      this.c = $$3;
    }
 
    @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      ur $$4 = this.n() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.p(), this.r(), 16777215 | ati.f(this.k * 255.0F) << 24);
+   protected void a(eys $$0) {
+      $$0.a(eyr.a, this.l());
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.aJ_() || this.c) {
+         int $$4 = this.p() - 4;
+         int $$5 = this.r() - 4;
+         int $$6 = this.k() + 8;
+         int $$7 = this.i() + 8;
+         int $$8 = this.c ? (this.aJ_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(ggg $$0) {
    }
 }

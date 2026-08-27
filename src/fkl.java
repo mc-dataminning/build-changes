@@ -1,22 +1,224 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class fkl {
-   private final float a;
-   private final float b;
+   private static final fks a = new fks(0.008F);
+   private static final fks b = new fks(1.0F);
+   private static final fks c = new fks(0.5F);
 
-   public fkl(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static Map<fkm, fku> a() {
+      Builder<fkm, fku> $$0 = ImmutableMap.builder();
+      fku $$1 = fku.a(fic.a(fks.a, 0.0F), 64, 64);
+      fku $$2 = fku.a(fib.a(b), 64, 32);
+      fku $$3 = fku.a(fib.a(new fks(1.02F)), 64, 32);
+      fku $$4 = fku.a(fib.a(c), 64, 32);
+      fku $$5 = fik.b();
+      fku $$6 = fjl.c();
+      fku $$7 = fku.a(fia.a(fks.a), 64, 64);
+      fku $$8 = fid.b();
+      fku $$9 = fhi.c();
+      fku $$10 = fku.a(fin.a(fks.a), 64, 32);
+      fku $$11 = fku.a(fit.a(fks.a), 64, 64);
+      fku $$12 = fku.a(fis.a(), 64, 64);
+      fku $$13 = fjl.b();
+      fku $$14 = fii.a(fks.a);
+      fku $$15 = fjs.b();
+      fku $$16 = fhz.c();
+      fku $$17 = fjk.c();
+      fku $$18 = fku.a(fka.b(), 64, 64);
+      fku $$19 = fjq.b();
+      $$0.put(fkn.a, fgo.b());
+      $$0.put(fkn.b, fgs.c());
+      $$0.put(fkn.c, fgr.a(c));
+      $$0.put(fkn.d, fgr.a(b));
+      $$0.put(fkn.e, fgt.c());
+      $$0.put(fkn.f, fsp.a());
+      $$0.put(fkn.g, fgu.b());
+      $$0.put(fkn.h, fsr.c());
+      $$0.put(fkn.i, fsr.b());
+      $$0.put(fkn.j, fgv.c());
+      $$0.put(fkn.k, fss.b());
+      $$0.put(fkn.l, fgw.b());
+      $$0.put(fkn.m, fgy.a());
+      $$0.put(fkn.n, $$10);
+      $$0.put(fkn.o, fku.a(fin.a(new fks(0.01F)), 64, 32));
+      $$0.put(fkn.p, fgz.b());
+      $$0.put(fkn.q, $$19);
+      $$0.put(fkn.r, fta.b());
+      $$0.put(fkn.s, $$5);
+      $$0.put(fkn.t, fhe.c());
+      $$0.put(fkn.u, fhf.b());
+      $$0.put(fkn.v, $$5);
+      $$0.put(fkn.x, ftb.b());
+      $$0.put(fkn.z, ftb.c());
+      $$0.put(fkn.y, ftb.d());
+      $$0.put(fkn.w, ftb.e());
+      $$0.put(fkn.A, $$9);
+      $$0.put(fkn.B, fhj.a(fks.a));
+      $$0.put(fkn.C, fhj.a(new fks(2.0F)));
+      $$0.put(fkn.D, $$6);
+      $$0.put(fkn.E, ftc.b());
+      $$0.put(fkn.F, ftc.c());
+      $$0.put(fkn.G, fhk.b());
+      $$0.put(fkn.H, fhd.c());
+      $$0.put(fkn.I, fta.d());
+      $$0.put(fkn.J, fta.c());
+      $$0.put(fkn.K, fki.a());
+      $$0.put(fkn.L, fhl.a(fks.a));
+      $$0.put(fkn.M, $$4);
+      $$0.put(fkn.N, $$4);
+      $$0.put(fkn.O, fhl.a(new fks(0.25F)));
+      $$0.put(fkn.P, fhw.b());
+      $$0.put(fkn.Q, fhm.c());
+      $$0.put(fkn.R, fhn.c());
+      $$0.put(fkn.S, fho.b());
+      $$0.put(fkn.T, fvs.a());
+      $$0.put(fkn.U, fvr.a());
+      $$0.put(fkn.V, $$8);
+      $$0.put(fkn.W, fhq.b());
+      $$0.put(fkn.X, fhr.c());
+      $$0.put(fkn.Y, fhs.b());
+      $$0.put(fkn.Z, $$5);
+      $$0.put(fkn.aa, fht.b());
+      $$0.put(fkn.ab, $$1);
+      $$0.put(fkn.ac, $$4);
+      $$0.put(fkn.ad, $$2);
+      $$0.put(fkn.ae, fjr.b());
+      $$0.put(fkn.af, fhv.c());
+      $$0.put(fkn.ag, fhw.b());
+      $$0.put(fkn.ah, $$16);
+      $$0.put(fkn.ai, $$5);
+      $$0.put(fkn.aj, $$7);
+      $$0.put(fkn.ak, fku.a(fia.a(new fks(0.1F)), 64, 64));
+      $$0.put(fkn.al, $$1);
+      $$0.put(fkn.am, $$4);
+      $$0.put(fkn.an, $$2);
+      $$0.put(fkn.ao, $$8);
+      $$0.put(fkn.ap, fie.b());
+      $$0.put(fkn.aq, fig.b());
+      $$0.put(fkn.ar, $$14);
+      $$0.put(fkn.as, fii.a(new fks(0.5F)));
+      $$0.put(fkn.at, fij.b());
+      $$0.put(fkn.au, fif.b());
+      $$0.put(fkn.av, $$5);
+      $$0.put(fkn.aw, $$9);
+      $$0.put(fkn.ax, fhd.c());
+      $$0.put(fkn.ay, $$10);
+      $$0.put(fkn.az, fio.c());
+      $$0.put(fkn.aA, fip.b());
+      $$0.put(fkn.aB, fiq.b());
+      $$0.put(fkn.aC, fir.a(fks.a));
+      $$0.put(fkn.aK, fir.a(new fks(0.5F)));
+      $$0.put(fkn.aD, $$11);
+      $$0.put(fkn.aI, $$4);
+      $$0.put(fkn.aJ, $$3);
+      $$0.put(fkn.aE, $$11);
+      $$0.put(fkn.aF, $$4);
+      $$0.put(fkn.aG, $$3);
+      $$0.put(fkn.aH, $$12);
+      $$0.put(fkn.aL, $$8);
+      $$0.put(fkn.aM, fku.a(fiu.a(fks.a, false), 64, 64));
+      $$0.put(fkn.aN, $$13);
+      $$0.put(fkn.aO, $$4);
+      $$0.put(fkn.aP, $$2);
+      $$0.put(fkn.aQ, fku.a(fiu.a(fks.a, true), 64, 64));
+      $$0.put(fkn.aR, $$4);
+      $$0.put(fkn.aS, $$2);
+      $$0.put(fkn.aT, gam.a());
+      $$0.put(fkn.aU, fiv.c());
+      $$0.put(fkn.aV, fiw.b());
+      $$0.put(fkn.aW, fix.b());
+      $$0.put(fkn.aX, fiy.b());
+      $$0.put(fkn.aY, fja.a());
+      $$0.put(fkn.aZ, fjc.b());
+      $$0.put(fkn.ba, fjd.b());
+      $$0.put(fkn.bb, fjf.c());
+      $$0.put(fkn.bc, fje.c());
+      $$0.put(fkn.bd, fjg.a());
+      $$0.put(fkn.be, fji.a());
+      $$0.put(fkn.bf, fjh.b());
+      $$0.put(fkn.bg, fjj.b());
+      $$0.put(fkn.bh, $$17);
+      $$0.put(fkn.bj, $$4);
+      $$0.put(fkn.bk, $$2);
+      $$0.put(fkn.bi, $$7);
+      $$0.put(fkn.bl, $$6);
+      $$0.put(fkn.bm, fjn.c());
+      $$0.put(fkn.bn, fjn.b());
+      $$0.put(fkn.bo, fjo.b());
+      $$0.put(fkn.bp, fjp.b());
+      $$0.put(fkn.bq, $$5);
+      $$0.put(fkn.br, $$19);
+      $$0.put(fkn.bs, fjr.b());
+      $$0.put(fkn.bt, $$17);
+      $$0.put(fkn.bu, $$4);
+      $$0.put(fkn.bv, $$2);
+      $$0.put(fkn.bw, fku.a(fic.a(new fks(0.25F), 0.0F), 64, 32));
+      $$0.put(fkn.bx, $$15);
+      $$0.put(fkn.by, $$15);
+      $$0.put(fkn.bz, fjt.c());
+      $$0.put(fkn.bA, $$5);
+      $$0.put(fkn.bB, $$14);
+      $$0.put(fkn.bC, fju.a());
+      $$0.put(fkn.bD, fjw.a(fks.a));
+      $$0.put(fkn.bE, fjw.a(a));
+      $$0.put(fkn.bF, fjv.a(fks.a));
+      $$0.put(fkn.bG, fjv.a(a));
+      $$0.put(fkn.bH, fjx.c());
+      $$0.put(fkn.bI, fjy.b());
+      $$0.put(fkn.bJ, $$18);
+      $$0.put(fkn.bK, $$8);
+      $$0.put(fkn.bL, fkb.b());
+      $$0.put(fkn.bM, $$18);
+      $$0.put(fkn.bN, fkd.c());
+      $$0.put(fkn.bO, fke.a(fks.a));
+      $$0.put(fkn.bP, fke.a(c));
+      $$0.put(fkn.bU, fyy.a());
+      $$0.put(fkn.bQ, $$17);
+      $$0.put(fkn.bR, $$4);
+      $$0.put(fkn.bS, $$2);
+      $$0.put(fkn.bT, $$6);
+      $$0.put(fkn.bV, fkf.c());
+      $$0.put(fkn.bW, $$16);
+      $$0.put(fkn.bX, $$1);
+      $$0.put(fkn.ca, $$4);
+      $$0.put(fkn.cb, $$2);
+      $$0.put(fkn.bY, $$13);
+      $$0.put(fkn.bZ, $$7);
+      $$0.put(fkn.cc, fkh.c());
+      $$0.put(fkn.cd, fkh.a(c));
+      $$0.put(fkn.ce, fkh.a(b));
+      $$0.put(fkn.cf, $$11);
+      $$0.put(fkn.cg, $$4);
+      $$0.put(fkn.ch, $$3);
+      fku $$20 = fgx.a();
+      fku $$21 = fhb.e();
+      fku $$22 = fjb.b();
+      fku $$23 = fhc.a();
 
-   public float a() {
-      return this.a;
-   }
+      for (cfn.b $$24 : cfn.b.values()) {
+         if ($$24 == cfn.b.i) {
+            $$0.put(fkn.c($$24), $$22);
+            $$0.put(fkn.d($$24), $$23);
+         } else {
+            $$0.put(fkn.c($$24), $$20);
+            $$0.put(fkn.d($$24), $$21);
+         }
+      }
 
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+      fku $$25 = fti.f();
+      div.a().forEach($$2x -> $$0.put(fkn.a($$2x), $$25));
+      fku $$26 = fte.e();
+      div.a().forEach($$2x -> $$0.put(fkn.b($$2x), $$26));
+      ImmutableMap<fkm, fku> $$27 = $$0.build();
+      List<fkm> $$28 = fkn.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
+      }
    }
 }

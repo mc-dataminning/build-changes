@@ -1,38 +1,42 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
+public class fpl extends fog {
+   private final bkq a;
+   private int b;
+   private final int D;
+   private final jq E;
 
-public class fpl extends ForwardingList<clb> {
-   private final il<clb> a = il.a(cdl.g(), clb.b);
-
-   protected List<clb> delegate() {
-      return this.a;
+   public fpl(flj $$0, bkq $$1, jq $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public sf a() {
-      sf $$0 = new sf();
-
-      for (clb $$1 : this.delegate()) {
-         $$0.add($$1.b(new rz()));
-      }
-
-      return $$0;
+   public fpl(flj $$0, bkq $$1, jq $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dq());
    }
 
-   public void a(sf $$0) {
-      List<clb> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, clb.a($$0.a($$2)));
-      }
+   private fpl(flj $$0, bkq $$1, jq $$2, int $$3, eju $$4) {
+      super($$0, $$1.ds(), $$1.e(0.5), $$1.dy(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
-   public boolean isEmpty() {
-      for (clb $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
       }
 
-      return true;
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

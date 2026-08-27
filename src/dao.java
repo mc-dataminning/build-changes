@@ -1,253 +1,171 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dao extends cui {
-   public static final MapCodec<dao> d = b(dao::new);
-   public static final dhu<dia> e = dhm.ah;
-   public static final dhn f = dhm.w;
+public class dao extends cxi implements cvd {
+   public static final MapCodec<dao> c = b(dao::new);
+   public static final dii d = dhy.at;
+   public static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 1;
+   private static final ekn h = cva.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
+   private static final ekn i = cva.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
+   private static final ekn j = cva.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
+   private static final ekn k = cva.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
+   private static final ekn[] l = new ekn[]{cva.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
+   private static final ekn[] m = new ekn[]{j, cva.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
 
    @Override
    public MapCodec<dao> a() {
-      return d;
+      return c;
    }
 
-   protected dao(dgv.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, dia.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   public dao(dhh.d $$0) {
+      super($$0);
    }
 
-   protected boolean a(crs $$0, ht $$1, dgw $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
+   @Nullable
+   @Override
+   public dhi a(cnr $$0) {
+      return this.o();
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return $$0.c(b) == die.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
+   }
+
+   @Override
+   public ekn b(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      if ($$0.c(d) == 0) {
+         return j;
       } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         dia $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = dia.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
-
-               $$9 = dia.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = dia.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = dia.a;
-         }
-
-         return this.a($$0, new ht($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new ht($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+         return $$0.c(b) == die.b ? k : super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   protected boolean a(crs $$0, ht $$1, boolean $$2, int $$3, dia $$4) {
-      dgw $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
-         return false;
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if (b($$0.c(d))) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         dia $$6 = $$5.c(e);
-         if ($$4 != dia.b || $$6 != dia.a && $$6 != dia.e && $$6 != dia.f) {
-            if ($$4 != dia.a || $$6 != dia.b && $$6 != dia.c && $$6 != dia.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.B($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
-            }
-         } else {
-            return false;
+         return $$0.a($$3, $$4) ? $$0 : cvc.a.o();
+      }
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return h($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean b(dhi $$0, crg $$1, ht $$2) {
+      return $$0.a(cvc.cC);
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(d);
+      super.a($$0);
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, bkq $$3) {
+      if ($$3 instanceof cbn && $$1.Y().b(crw.c)) {
+         $$1.a($$2, true, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(dhi $$0, cnr $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(csa $$0, ht $$1, dhi $$2, blg $$3, clj $$4) {
+   }
+
+   @Override
+   public boolean e_(dhi $$0) {
+      return $$0.c(b) == die.b && !this.n($$0);
+   }
+
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      float $$4 = cwv.a(this, $$1, $$2);
+      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
+      if ($$5) {
+         this.a($$1, $$0, $$2, 1);
+      }
+   }
+
+   private void a(ame $$0, dhi $$1, ht $$2, int $$3) {
+      int $$4 = Math.min($$1.c(d) + $$3, 4);
+      if (this.a($$0, $$2, $$1, $$4)) {
+         dhi $$5 = $$1.a(d, Integer.valueOf($$4));
+         $$0.a($$2, $$5, 2);
+         if (b($$4)) {
+            $$0.a($$2.c(), $$5.a(b, die.a), 3);
          }
       }
    }
 
-   @Override
-   protected void a(dgw $$0, crs $$1, ht $$2, cut $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.B($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.d(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.c(), this);
-         }
+   private static boolean a(csd $$0, ht $$1) {
+      dhi $$2 = $$0.a_($$1);
+      return $$2.i() || $$2.a(cvc.kB);
+   }
+
+   private static boolean b(csd $$0, ht $$1) {
+      return cwv.a($$0, $$1);
+   }
+
+   private static boolean h(dhi $$0) {
+      return $$0.a(cvc.kB) && $$0.c(b) == die.b;
+   }
+
+   private static boolean b(int $$0) {
+      return $$0 >= 3;
+   }
+
+   private boolean a(csd $$0, ht $$1, dhi $$2, int $$3) {
+      return !this.n($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.c()));
+   }
+
+   private boolean n(dhi $$0) {
+      return $$0.c(d) >= 4;
+   }
+
+   @Nullable
+   private dao.a d(csd $$0, ht $$1, dhi $$2) {
+      if (h($$2)) {
+         return new dao.a($$1, $$2);
+      } else {
+         ht $$3 = $$1.d();
+         dhi $$4 = $$0.a_($$3);
+         return h($$4) ? new dao.a($$3, $$4) : null;
       }
    }
 
    @Override
-   public dhz<dia> c() {
-      return e;
+   public boolean b(csd $$0, ht $$1, dhi $$2) {
+      dao.a $$3 = this.d($$0, $$1, $$2);
+      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
    }
 
    @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dia)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dia.d);
-               case d:
-                  return $$0.a(e, dia.c);
-               case e:
-                  return $$0.a(e, dia.f);
-               case f:
-                  return $$0.a(e, dia.e);
-               case g:
-                  return $$0.a(e, dia.i);
-               case h:
-                  return $$0.a(e, dia.j);
-               case i:
-                  return $$0.a(e, dia.g);
-               case j:
-                  return $$0.a(e, dia.h);
-            }
-         case d:
-            switch ((dia)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dia.b);
-               case b:
-                  return $$0.a(e, dia.a);
-               case c:
-                  return $$0.a(e, dia.e);
-               case d:
-                  return $$0.a(e, dia.f);
-               case e:
-                  return $$0.a(e, dia.d);
-               case f:
-                  return $$0.a(e, dia.c);
-               case g:
-                  return $$0.a(e, dia.j);
-               case h:
-                  return $$0.a(e, dia.g);
-               case i:
-                  return $$0.a(e, dia.h);
-               case j:
-                  return $$0.a(e, dia.i);
-            }
-         case b:
-            switch ((dia)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dia.b);
-               case b:
-                  return $$0.a(e, dia.a);
-               case c:
-                  return $$0.a(e, dia.f);
-               case d:
-                  return $$0.a(e, dia.e);
-               case e:
-                  return $$0.a(e, dia.c);
-               case f:
-                  return $$0.a(e, dia.d);
-               case g:
-                  return $$0.a(e, dia.h);
-               case h:
-                  return $$0.a(e, dia.i);
-               case i:
-                  return $$0.a(e, dia.j);
-               case j:
-                  return $$0.a(e, dia.g);
-            }
-         default:
-            return $$0;
+   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
+      dao.a $$4 = this.d($$0, $$2, $$3);
+      if ($$4 != null) {
+         this.a($$0, $$4.b, $$4.a, 1);
       }
    }
 
-   @Override
-   public dgw a(dgw $$0, czp $$1) {
-      dia $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dia.f);
-               case f:
-                  return $$0.a(e, dia.e);
-               case g:
-                  return $$0.a(e, dia.j);
-               case h:
-                  return $$0.a(e, dia.i);
-               case i:
-                  return $$0.a(e, dia.h);
-               case j:
-                  return $$0.a(e, dia.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dia.d);
-               case d:
-                  return $$0.a(e, dia.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dia.h);
-               case h:
-                  return $$0.a(e, dia.g);
-               case i:
-                  return $$0.a(e, dia.j);
-               case j:
-                  return $$0.a(e, dia.i);
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(e, f, c);
+   static record a(ht a, dhi b) {
    }
 }

@@ -1,66 +1,59 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class eqg extends ghe {
-   static final ur b = ur.c("mco.warning");
-   static final ur c = ur.c("mco.info");
-   private final eqg.a v;
-   private final ur w;
-   private final ur x;
-   protected final BooleanConsumer a;
-   private final boolean y;
+public abstract class eqg {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public eqg(BooleanConsumer $$0, eqg.a $$1, ur $$2, ur $$3, boolean $$4) {
-      super(esj.a);
+   public eqg(int $$0, int $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$3;
-      this.y = $$4;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aO_() {
-      if (this.y) {
-         this.d(eum.a(uq.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(eum.a(uq.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(eum.a(uq.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
+   public void a(euo $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(euo var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(euo $$0, List<eqg> $$1, ghq<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (eqg $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
       }
    }
 
-   @Override
-   public ur h() {
-      return uq.b(this.v.d, this.w, this.x);
-   }
+   public static void a(ghq<?> $$0, evv.a<?> $$1, List<eqg> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.i().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.o();
+         int $$8 = $$0.h($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.v.d, this.g / 2, h(2), this.v.c);
-      $$0.a(this.i, this.w, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.x, this.g / 2, h(6), -1);
-   }
-
-   public static enum a {
-      a(eqg.b, -65536),
-      b(eqg.c, 8226750);
-
-      public final int c;
-      public final ur d;
-
-      private a(ur $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+         for (eqg $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
       }
    }
 }

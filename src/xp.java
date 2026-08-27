@@ -1,5 +1,5 @@
 public record xp(ht b, int c) implements xd {
-   public static final agg a = new agg("debug/poi_ticket_count");
+   public static final agi a = new agi("debug/poi_ticket_count");
 
    public xp(tu $$0) {
       this($$0.e(), $$0.readInt());
@@ -12,7 +12,7 @@ public record xp(ht b, int c) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

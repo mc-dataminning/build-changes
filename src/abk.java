@@ -4,10 +4,10 @@ public class abk implements wk<yd> {
    public static final int c = 2;
    private final String d;
    private final ur e;
-   private final ekk.a f;
+   private final ekw.a f;
    private final int g;
 
-   public abk(eke $$0, int $$1) {
+   public abk(ekq $$0, int $$1) {
       this.d = $$0.b();
       this.e = $$0.d();
       this.f = $$0.f();
@@ -19,10 +19,10 @@ public class abk implements wk<yd> {
       this.g = $$0.readByte();
       if (this.g != 0 && this.g != 2) {
          this.e = uq.a;
-         this.f = ekk.a.a;
+         this.f = ekw.a.a;
       } else {
          this.e = $$0.m();
-         this.f = $$0.b(ekk.a.class);
+         this.f = $$0.b(ekw.a.class);
       }
    }
 
@@ -52,7 +52,7 @@ public class abk implements wk<yd> {
       return this.g;
    }
 
-   public ekk.a f() {
+   public ekw.a f() {
       return this.f;
    }
 }

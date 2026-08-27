@@ -1,47 +1,100 @@
-public class fcf extends fbg<che> {
-   private static final agg x = new agg("container/horse/chest_slots");
-   private static final agg y = new agg("container/horse/saddle_slot");
-   private static final agg z = new agg("container/horse/llama_armor_slot");
-   private static final agg A = new agg("container/horse/armor_slot");
-   private static final agg B = new agg("textures/gui/container/horse.png");
-   private final byi C;
-   private float D;
-   private float E;
+public class fcf extends fbt<cha> {
+   private static final agi x = new agi("container/crafter/disabled_slot");
+   private static final agi y = new agi("container/crafter/powered_redstone");
+   private static final agi z = new agi("container/crafter/unpowered_redstone");
+   private static final agi A = new agi("textures/gui/container/crafter.png");
+   private static final ur B = ur.c("gui.togglable_slot");
+   private final cdu C;
 
-   public fcf(che $$0, cdl $$1, byi $$2) {
-      super($$0, $$1, $$2.O_());
-      this.C = $$2;
+   public fcf(cha $$0, cdt $$1, ur $$2) {
+      super($$0, $$1, $$2);
+      this.C = $$1.m;
    }
 
    @Override
-   protected void a(eub $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.C instanceof byh $$6 && $$6.t()) {
-         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gm() * 18, 54);
-      }
+   protected void aP_() {
+      super.aP_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
 
-      if (this.C.g()) {
-         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
-      }
-
-      if (this.C.gN()) {
-         if (this.C instanceof byl) {
-            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+   @Override
+   protected void a(cih $$0, int $$1, int $$2, cgv $$3) {
+      if ($$0 instanceof chb && !$$0.g() && !this.C.O_()) {
+         switch ($$3) {
+            case a:
+               if (this.p.e($$1)) {
+                  this.a($$1);
+               } else if (this.p.g().b()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               clj $$4 = this.C.fT().a($$2);
+               if (this.p.e($$1) && !$$4.b()) {
+                  this.a($$1);
+               }
          }
       }
 
-      fcg.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.p.a($$0, $$1);
+      super.a($$0, this.p.j, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.C.a(aqr.yZ.a(), 0.4F, $$2);
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      this.D = (float)$$1;
-      this.E = (float)$$2;
+   public void a(euo $$0, cih $$1) {
+      if ($$1 instanceof chb $$2 && this.p.e($$1.e)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(euo $$0, chb $$1) {
+      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
       this.a($$0, $$1, $$2);
+      if (this.r instanceof chb && !this.p.e(this.r.e) && this.p.g().b() && !this.r.g()) {
+         $$0.a(this.i, B, $$1, $$2);
+      }
+   }
+
+   private void c(euo $$0) {
+      int $$1 = this.g / 2 + 9;
+      int $$2 = this.h / 2 - 48;
+      agi $$3;
+      if (this.p.l()) {
+         $$3 = y;
+      } else {
+         $$3 = z;
+      }
+
+      $$0.a($$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(euo $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

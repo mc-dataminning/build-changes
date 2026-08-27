@@ -1,57 +1,40 @@
-public class fix<T extends bla & cbe> extends fhp<T> {
-   public fix(fkb $$0) {
-      super($$0);
+public class fix<T extends bkq> extends fhy<T> {
+   private final fko a;
+   private final fko b;
+   private final fko f;
+
+   public fix(fko $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fkh c() {
-      fkj $$0 = fhp.a(fkf.a, 0.0F);
-      fkk $$1 = $$0.a();
-      $$1.a("right_arm", fkg.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fkg.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fkg.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fkg.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(2.0F, 12.0F, 0.0F));
-      return fkh.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fhp.a.a;
-      this.r = fhp.a.a;
-      clb $$4 = $$0.b(bip.a);
-      if ($$4.a(cle.nG) && $$0.fW()) {
-         if ($$0.fm() == bks.b) {
-            this.s = fhp.a.d;
-         } else {
-            this.r = fhp.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      clb $$6 = $$0.eS();
-      if ($$0.fW() && ($$6.b() || !$$6.a(cle.nG))) {
-         float $$7 = ati.a(this.c * (float) Math.PI);
-         float $$8 = ati.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fgc.a(this.n, this.o, $$3);
-      }
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fkt.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fkq.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fkt.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(-2.5F, 17.0F, -1.5F));
+      $$1.a("left_blue_fin", fkt.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(2.5F, 17.0F, -1.5F));
+      $$1.a("top_front_fin", fkt.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", fkt.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fkt.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", fkt.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fkt.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fkt.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", fkt.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fkq.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", fkt.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return fku.a($$0, 32, 32);
    }
 
    @Override
-   public void a(bks $$0, enk $$1) {
-      float $$2 = $$0 == bks.b ? 1.0F : -1.0F;
-      fkb $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fko a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * atm.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * atm.a($$3 * 0.2F);
    }
 }

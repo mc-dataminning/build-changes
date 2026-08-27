@@ -1,4 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record erk(String a, ere b, boolean c, Set<String> d) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface erk {
 }

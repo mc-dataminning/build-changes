@@ -1,23 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record ehp(float b) implements ehk {
-   public static final Codec<ehp> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(ehp::c)).apply($$0, ehp::new));
+public interface ehp<T extends ehp<T>> {
+   T b(ehw.a var1);
 
-   @Override
-   public ehl b() {
-      return ehm.e;
+   default <E> T a_(Iterable<E> $$0, Function<E, ehw.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   public boolean a(eel $$0) {
-      return $$0.b().i() < this.b;
-   }
-
-   public static ehk.a a(float $$0) {
-      return () -> new ehp($$0);
-   }
-
-   public float c() {
-      return this.b;
-   }
+   T d();
 }

@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record vi(UUID a, cdp b) {
+public record vi(UUID a, cdx b) {
    public vn a(Duration $$0) {
       return new vn.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record vi(UUID a, cdp b) {
       return this.a;
    }
 
-   public cdp d() {
+   public cdx d() {
       return this.b;
    }
 
-   public static record a(UUID a, cdp.a b) {
+   public static record a(UUID a, cdx.a b) {
       public static vi.a a(tu $$0) {
-         return new vi.a($$0.p(), new cdp.a($$0));
+         return new vi.a($$0.p(), new cdx.a($$0));
       }
 
       public static void a(tu $$0, vi.a $$1) {
@@ -37,8 +37,8 @@ public record vi(UUID a, cdp b) {
          $$1.b.a($$0);
       }
 
-      public vi a(GameProfile $$0, att $$1) throws cdp.b {
-         return new vi(this.a, cdp.a($$1, $$0.getId(), this.b));
+      public vi a(GameProfile $$0, aty $$1) throws cdx.b {
+         return new vi(this.a, cdx.a($$1, $$0.getId(), this.b));
       }
    }
 }

@@ -1,22 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.LongStream;
 
-public class dnr extends dnx {
-   final arr<cut> a;
-   public static final Codec<dnr> e = RecordCodecBuilder.create($$0 -> a($$0).and(arr.a(jz.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dnr::new));
+public class dnr {
+   private long b;
+   private long c;
+   public static final Codec<dnr> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dnr($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   protected dnr(iw $$0, arr<cut> $$1) {
-      super($$0);
-      this.a = $$1;
+   public dnr(dng.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   @Override
-   protected boolean a(dgw $$0) {
-      return $$0.a(this.a);
+   public dnr(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public dnn<?> a() {
-      return dnn.b;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

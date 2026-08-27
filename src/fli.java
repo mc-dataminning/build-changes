@@ -1,164 +1,177 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.List;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fli {
+public class fli implements aeo {
    private static final Logger a = LogUtils.getLogger();
-   private static final bhj<Runnable> b = bhj.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final esr d;
-   private final List<flh> e = Lists.newArrayList();
-   private final List<flh> f = Lists.newArrayList();
-
-   public fli(esr $$0) {
-      this.d = $$0;
-   }
-
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         rz $$0 = sm.a(new File(this.d.p, "servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         sf $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            rz $$3 = $$1.a($$2);
-            flh $$4 = flh.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
-   }
-
-   public void b() {
-      try {
-         sf $$0 = new sf();
-
-         for (flh $$1 : this.e) {
-            rz $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (flh $$3 : this.f) {
-            rz $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         rz $$5 = new rz();
-         $$5.a("servers", $$0);
-         File $$6 = File.createTempFile("servers", ".dat", this.d.p);
-         sm.b($$5, $$6);
-         File $$7 = new File(this.d.p, "servers.dat_old");
-         File $$8 = new File(this.d.p, "servers.dat");
-         ac.a($$8, $$6, $$7);
-      } catch (Exception var6) {
-         a.error("Couldn't save server list", var6);
-      }
-   }
-
-   public flh a(int $$0) {
-      return this.e.get($$0);
-   }
-
+   private final etd b;
    @Nullable
-   public flh a(String $$0) {
-      for (flh $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (flh $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
+   private final flu c;
    @Nullable
-   public flh b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         flh $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
+   private final fau d;
+   private final Consumer<ur> e;
+   private final ts f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final AtomicReference<fli.a> j = new AtomicReference<>(fli.a.a);
+
+   public fli(ts $$0, etd $$1, @Nullable flu $$2, @Nullable fau $$3, boolean $$4, @Nullable Duration $$5, Consumer<ur> $$6) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+   }
+
+   private void a(fli.a $$0) {
+      fli.a $$1 = this.j.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
          }
-      }
-
-      return null;
-   }
-
-   public void a(flh $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(flh $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      flh $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, flh $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(flh $$0, List<flh> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         flh $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(flh $$0) {
-      b.a(() -> {
-         fli $$1 = new fli(esr.N());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
       });
+      this.e.accept($$1.e);
+   }
+
+   @Override
+   public void a(aer $$0) {
+      this.a(fli.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      aex $$7;
+      try {
+         SecretKey $$1 = asl.a();
+         PublicKey $$2 = $$0.d();
+         $$3 = new BigInteger(asl.a($$0.a(), $$2, $$1)).toString(16);
+         $$4 = asl.a(2, $$1);
+         $$5 = asl.a(1, $$1);
+         byte[] $$6 = $$0.e();
+         $$7 = new aex($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      atd.a.submit(() -> {
+         ur $$4x = this.b($$3);
+         if ($$4x != null) {
+            if (this.c == null || !this.c.d()) {
+               this.f.a($$4x);
+               return;
+            }
+
+            a.warn($$4x.getString());
+         }
+
+         this.a(fli.a.c);
+         this.f.a($$7, ub.a(() -> this.f.a($$4, $$5)));
+      });
+   }
+
+   @Nullable
+   private ur b(String $$0) {
+      try {
+         this.e().joinServer(this.b.U().b(), this.b.U().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return ur.a("disconnect.loginFailedInfo", var7.getMessage());
+      }
+   }
+
+   private MinecraftSessionService e() {
+      return this.b.aj();
+   }
+
+   @Override
+   public void a(aeq $$0) {
+      this.a(fli.a.d);
+      GameProfile $$1 = $$0.a();
+      this.f.a(new aey());
+      this.f.a(new flh(this.b, this.f, new fln($$1, this.b.t().a(this.g, this.h, this.i), fll.a().a(), cgf.h, null, this.c, this.d)));
+      this.f.a(new ww(new xc(ClientBrandRetriever.getClientModName())));
+      this.f.a(new wv(this.b.m.at()));
+   }
+
+   @Override
+   public void a(ur $$0) {
+      if (this.c != null && this.c.e()) {
+         this.b.a(new ghn(this.d, uq.q, $$0));
+      } else {
+         this.b.a(new ezw(this.d, uq.q, $$0));
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return this.f.k();
+   }
+
+   @Override
+   public void a(aet $$0) {
+      this.f.a($$0.a());
+   }
+
+   @Override
+   public void a(aes $$0) {
+      if (!this.f.g()) {
+         this.f.a($$0.a(), false);
+      }
+   }
+
+   @Override
+   public void a(aep $$0) {
+      this.e.accept(ur.c("connect.negotiating"));
+      this.f.a(new aev($$0.a(), null));
+   }
+
+   public void a(String $$0) {
+      this.i = $$0;
+   }
+
+   static enum a {
+      a(ur.c("connect.connecting"), Set.of()),
+      b(ur.c("connect.authorizing"), Set.of(a)),
+      c(ur.c("connect.encrypting"), Set.of(b)),
+      d(ur.c("connect.joining"), Set.of(c, a));
+
+      final ur e;
+      final Set<fli.a> f;
+
+      private a(ur $$0, Set<fli.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
    }
 }

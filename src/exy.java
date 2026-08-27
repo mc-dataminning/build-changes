@@ -1,26 +1,18 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
 
 public interface exy {
-   void f(int var1);
+   Codec<exy> b = exz.f.dispatch(exy::a, $$0 -> $$0.a().codec());
 
-   void g(int var1);
+   exz a();
 
-   int p();
+   Either<exy.a, exy.b> b();
 
-   int r();
-
-   int k();
-
-   int i();
-
-   default eyp s() {
-      return new eyp(this.p(), this.r(), this.k(), this.i());
+   public interface a {
+      elz load(aph var1) throws IOException;
    }
 
-   default void b(int $$0, int $$1) {
-      this.f($$0);
-      this.g($$1);
+   public static record b(agi a) {
    }
-
-   void a(Consumer<euk> var1);
 }

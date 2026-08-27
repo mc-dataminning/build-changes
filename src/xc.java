@@ -1,5 +1,5 @@
 public record xc(String b) implements xd {
-   public static final agg a = new agg("brand");
+   public static final agi a = new agi("brand");
 
    public xc(tu $$0) {
       this($$0.s());
@@ -11,7 +11,7 @@ public record xc(String b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

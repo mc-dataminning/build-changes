@@ -1,9 +1,20 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import javax.annotation.Nullable;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface qx {
+class qx {
+   @Nullable
+   public final Long a;
+   public final Runnable b;
+
+   private qx(@Nullable Long $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   static qx a(Runnable $$0) {
+      return new qx(null, $$0);
+   }
+
+   static qx a(long $$0, Runnable $$1) {
+      return new qx($$0, $$1);
+   }
 }

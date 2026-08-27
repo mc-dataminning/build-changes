@@ -47,7 +47,7 @@ public class up {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements aub {
+   public static enum a implements aug {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,8 +55,8 @@ public class up {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<up.a> g = aub.a(up.a::values).fieldOf("action");
-      public static final MapCodec<up.a> h = asq.a(g, up.a::a);
+      public static final MapCodec<up.a> g = aug.a(up.a::values).fieldOf("action");
+      public static final MapCodec<up.a> h = asu.a(g, up.a::a);
       private final boolean i;
       private final String j;
 

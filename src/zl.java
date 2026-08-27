@@ -19,7 +19,7 @@ public class zl implements wk<yd> {
       this.h = $$0.n();
    }
 
-   public zl(din $$0) {
+   public zl(diz $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
       this.c = $$0.i();

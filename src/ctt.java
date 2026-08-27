@@ -1,110 +1,77 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ctt extends cxo {
-   public static final MapCodec<ctt> a = b(ctt::new);
-   public static final dhq b = cyo.aE;
-   private static final ekb c = cut.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final ekb d = cut.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final ekb e = cut.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final ekb f = cut.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final ekb g = cut.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final ekb h = cut.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final ekb i = cut.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final ekb j = ejy.a(c, d, e, f);
-   private static final ekb k = ejy.a(c, g, h, i);
-   private static final ur l = ur.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public abstract class ctt extends cva {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final ekn h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ekn b = ekk.a(
+      ekk.b(), ekk.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ejy.e
+   );
+   protected final iy.a c;
 
    @Override
-   public MapCodec<ctt> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends ctt> a();
 
-   public ctt(dgv.d $$0) {
+   public ctt(dhh.d $$0, iy.a $$1) {
       super($$0);
-      this.k(this.E.b().a(b, hx.c));
+      this.c = $$1;
+   }
+
+   protected double b(dhi $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dhi $$0, ht $$1, bkq $$2) {
+      return $$2.du() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      return this.o().a(b, $$0.g().h());
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      clj $$6 = $$3.b($$4);
+      iy $$7 = this.c.b().get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
    }
 
    @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      if ($$1.B) {
-         return biq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aqx.aC);
-         return biq.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   public bit b(dgw $$0, crs $$1, ht $$2) {
-      return new biy(($$2x, $$3, $$4) -> new cgg($$2x, $$3, cgp.a($$1, $$2)), l);
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      hx $$4 = $$0.c(b);
-      return $$4.o() == hx.a.a ? j : k;
+   public ekn a(dhi $$0, crg $$1, ht $$2) {
+      return h;
    }
 
    @Override
-   protected void a(cae $$0) {
-      $$0.b(2.0F, 40);
+   public boolean d_(dhi $$0) {
+      return true;
    }
 
    @Override
-   public void a(crs $$0, ht $$1, dgw $$2, dgw $$3, cae $$4) {
-      if (!$$4.aS()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(crs $$0, ht $$1, cae $$2) {
-      if (!$$2.aS()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bjg a(bki $$0) {
-      return $$0.dM().b($$0);
-   }
-
-   @Nullable
-   public static dgw e(dgw $$0) {
-      if ($$0.a(cuv.gS)) {
-         return cuv.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(cuv.gT) ? cuv.gU.o().a(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
       return false;
    }
 
+   public abstract boolean d(dhi var1);
+
    @Override
-   public int d(dgw $$0, cqy $$1, ht $$2) {
-      return $$0.d($$1, $$2).ak;
+   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      ht $$4 = dar.a((csa)$$1, $$2);
+      if ($$4 != null) {
+         ecr $$5 = dar.a($$1, $$4);
+         if ($$5 != ect.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
+   }
+
+   protected boolean a(ecr $$0) {
+      return false;
+   }
+
+   protected void a(dhi $$0, csa $$1, ht $$2, ecr $$3) {
    }
 }

@@ -1,49 +1,108 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public record dtw(dto b, List<dtw.a> c) {
-   public static final Codec<dtw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dto.a.fieldOf("fallback").forGetter(dtw::a), dtw.a.a.listOf().fieldOf("rules").forGetter(dtw::b)).apply($$0, dtw::new)
+public class dtw extends dtx {
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final Codec<dtw> c = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(dtv.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, dtw::new)
    );
+   private final dtv h;
 
-   public static dtw a(dto $$0) {
-      return new dtw($$0, List.of());
+   public dtw(bic $$0, dua $$1, Optional<dtu> $$2, dtv $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   public static dtw a(cut $$0) {
-      return a(dto.a($$0));
-   }
+   @Override
+   public boolean a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, ht $$4, dsv $$5) {
+      List<ht> $$6 = Lists.newArrayList();
+      ht.a $$7 = $$3.j();
 
-   public dgw a(csm $$0, ato $$1, ht $$2) {
-      for (dtw.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
          }
+
+         $$7.c(hx.b);
       }
 
-      return this.b.a($$1, $$2);
-   }
+      $$6.add($$4.d());
 
-   public dto a() {
-      return this.b;
-   }
+      for (hx $$8 : hx.c.a) {
+         ht $$9 = $$4.a($$8);
+         List<ht> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
 
-   public List<dtw.a> b() {
-      return this.c;
-   }
-
-   public static record a(dnm b, dto c) {
-      public static final Codec<dtw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dnm.b.fieldOf("if_true").forGetter(dtw.a::a), dto.a.fieldOf("then").forGetter(dtw.a::b)).apply($$0, dtw.a::new)
-      );
-
-      public dnm a() {
-         return this.b;
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
       }
 
-      public dto b() {
-         return this.c;
+      for (ht $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
       }
+
+      return true;
+   }
+
+   private boolean a(csg $$0, ats $$1, ht $$2, hx $$3, ht $$4, List<ht> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (ht $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected List<ht> a(ht $$0, hx $$1, ats $$2, ht $$3) {
+      ht $$4 = $$0.d();
+      ht $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
+      }
+   }
+
+   @Override
+   protected boolean a(csg $$0, ht $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   }
+
+   @Override
+   protected void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, dsv $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         dhi $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected dty<?> a() {
+      return dty.a;
    }
 }

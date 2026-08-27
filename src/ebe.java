@@ -1,14 +1,15 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface ebe<P extends ebd> {
-   ebe<ebb> a = a("clear", ebb.a);
-   ebe<ebc> b = a("passthrough", ebc.b);
-   ebe<eba> c = a("append_static", eba.a);
-   ebe<eaz> d = a("append_loot", eaz.a);
+public abstract class ebe {
+   @Nullable
+   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
+      return $$4;
+   }
 
-   Codec<P> codec();
+   protected abstract ebg<?> a();
 
-   private static <P extends ebd> ebe<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.q, $$0, () -> $$1);
+   public List<ebh.c> a(csp $$0, ht $$1, ht $$2, List<ebh.c> $$3, List<ebh.c> $$4, ebd $$5) {
+      return $$4;
    }
 }

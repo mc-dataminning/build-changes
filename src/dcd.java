@@ -1,33 +1,51 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcd extends cug {
-   public static final MapCodec<dcd> c = b(dcd::new);
+public class dcd extends cyq {
+   public static final MapCodec<dcd> a = b(dcd::new);
 
    @Override
    public MapCodec<dcd> a() {
-      return c;
+      return a;
    }
 
-   public dcd(dgv.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : cuv.a.o();
+   public dcd(dhh.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(dgw $$0) {
-      return $$0.a(arc.aS);
+   public void a(csa $$0, dhi $$1, ht $$2, bkq $$3, float $$4) {
+      if ($$3.bU()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.ah().k());
+      }
    }
 
    @Override
-   protected boolean f(dgw $$0) {
-      return true;
+   public void a(crg $$0, bkq $$1) {
+      if ($$1.bU()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bkq $$0) {
+      eju $$1 = $$0.dq();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof blg ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+      }
+   }
+
+   @Override
+   public void a(csa $$0, ht $$1, dhi $$2, bkq $$3) {
+      double $$4 = Math.abs($$3.dq().d);
+      if ($$4 < 0.1 && !$$3.bT()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.g($$3.dq().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

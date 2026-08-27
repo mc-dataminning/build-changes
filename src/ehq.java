@@ -1,42 +1,33 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record ehq(float b, float c) implements ehk {
-   public static final Codec<ehq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(ehq::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(ehq::d)).apply($$0, ehq::new)
-   );
+public record ehq(Optional<bf> b) implements ehw {
+   public static final Codec<ehq> a = RecordCodecBuilder.create($$0 -> $$0.group(asu.a(bf.a, "predicate").forGetter(ehq::c)).apply($$0, ehq::new));
 
    @Override
-   public ehl b() {
-      return ehm.f;
+   public ehx b() {
+      return ehy.n;
    }
 
    @Override
-   public Set<egt<?>> a() {
-      return ImmutableSet.of(egw.d);
+   public Set<ehf<?>> a() {
+      return ImmutableSet.of(ehi.f, ehi.c);
    }
 
-   public boolean a(eel $$0) {
-      bki $$1 = $$0.c(egw.d);
-      int $$2 = 0;
-      if ($$1 instanceof bky) {
-         $$2 = cpo.h((bky)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   public boolean a(eex $$0) {
+      bjo $$1 = $$0.c(ehi.c);
+      eju $$2 = $$0.c(ehi.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static ehk.a a(float $$0, float $$1) {
-      return () -> new ehq($$0, $$1);
+   public static ehw.a a(bf.a $$0) {
+      return () -> new ehq(Optional.of($$0.b()));
    }
 
-   public float c() {
+   public Optional<bf> c() {
       return this.b;
-   }
-
-   public float d() {
-      return this.c;
    }
 }

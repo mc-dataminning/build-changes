@@ -1,50 +1,52 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import org.slf4j.Logger;
 
-public interface bhi<Msg> extends AutoCloseable {
-   String bn();
+public class bhi {
+   public static final Codec<bhi> a = Codec.INT.xmap(bhi::a, bhi::a);
+   private static final bhi b = new bhi(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   void a(Msg var1);
+   private bhi(int $$0) {
+      this.d = $$0;
+   }
+
+   public static bhi a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bhi($$0);
+      }
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aT) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
+   }
 
    @Override
-   default void close() {
+   public String toString() {
+      return Integer.toString(this.d);
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bhi<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super bhi<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
-   }
-
-   static <Msg> bhi<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bhi<Msg>() {
-         @Override
-         public String bn() {
-            return $$0;
-         }
-
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bhi && this.d == ((bhi)$$0).d;
    }
 }

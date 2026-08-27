@@ -1,47 +1,32 @@
-public class eje extends ejg {
-   private final hx b;
-   private final ht c;
-   private final boolean d;
-   private final boolean e;
+import net.minecraft.server.MinecraftServer;
 
-   public static eje a(eji $$0, hx $$1, ht $$2) {
-      return new eje(true, $$0, $$1, $$2, false);
+public class eje implements ejf<MinecraftServer> {
+   final agi a;
+
+   public eje(agi $$0) {
+      this.a = $$0;
    }
 
-   public eje(eji $$0, hx $$1, ht $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
+   public void a(MinecraftServer $$0, ejh<MinecraftServer> $$1, long $$2) {
+      agw $$3 = $$0.aC();
+
+      for (gx<du> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   private eje(boolean $$0, eji $$1, hx $$2, ht $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-   }
+   public static class a extends ejf.a<MinecraftServer, eje> {
+      public a() {
+         super(new agi("function_tag"), eje.class);
+      }
 
-   public eje a(hx $$0) {
-      return new eje(this.d, this.a, $$0, this.c, this.e);
-   }
+      public void a(rz $$0, eje $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public eje a(ht $$0) {
-      return new eje(this.d, this.a, this.b, $$0, this.e);
-   }
-
-   public ht a() {
-      return this.c;
-   }
-
-   public hx b() {
-      return this.b;
-   }
-
-   @Override
-   public ejg.a c() {
-      return this.d ? ejg.a.a : ejg.a.b;
-   }
-
-   public boolean d() {
-      return this.e;
+      public eje a(rz $$0) {
+         agi $$1 = new agi($$0.l("Name"));
+         return new eje($$1);
+      }
    }
 }

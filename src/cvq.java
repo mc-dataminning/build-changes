@@ -1,72 +1,106 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cvq extends cyi implements cuw, cvp {
-   public static final MapCodec<cvq> c = b(cvq::new);
-   private static final float g = 0.11F;
+public class cvq extends cts {
+   public static final MapCodec<cvq> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jy.f.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, cvq::new)
+   );
+   public static final dhz d = cts.b;
+   protected static final float e = 1.0F;
+   protected static final ekn f = cva.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final ekn g = cva.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final ekn h = ekk.a(f, g);
+   private static final Map<cva, cvq> i = Maps.newHashMap();
+   private static final Iterable<eju> j = ImmutableList.of(new eju(0.5, 1.0, 0.5));
+   private final cva k;
 
    @Override
    public MapCodec<cvq> a() {
       return c;
    }
 
-   public cvq(dgv.d $$0) {
-      super($$0, hx.a, r_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(s_, Boolean.valueOf(false)));
+   protected cvq(cva $$0, dhh.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      i.put($$0, this);
+      this.k = $$0;
    }
 
    @Override
-   protected int a(ato $$0) {
-      return 1;
+   protected Iterable<eju> b(dhi $$0) {
+      return j;
    }
 
    @Override
-   protected boolean g(dgw $$0) {
-      return $$0.i();
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return h;
    }
 
    @Override
-   protected cut b() {
-      return cuv.rv;
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      clj $$6 = $$3.b($$4);
+      if ($$6.a(clm.op) || $$6.a(clm.tR)) {
+         return bix.d;
+      } else if (a($$5) && $$3.b($$4).b() && $$0.c(d)) {
+         a($$3, $$0, $$1, $$2);
+         return bix.a($$1.B);
+      } else {
+         bix $$7 = cvm.a($$1, $$2, cvc.eg.o(), $$3);
+         if ($$7.a()) {
+            c($$0, $$1, $$2);
+         }
+
+         return $$7;
+      }
+   }
+
+   private static boolean a(ejq $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   protected dgw a(dgw $$0, dgw $$1) {
-      return $$1.a(s_, $$0.c(s_));
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected dgw a(dgw $$0, ato $$1) {
-      return super.a($$0, $$1).a(s_, Boolean.valueOf($$1.i() < 0.11F));
+   public clj a(csd $$0, ht $$1, dhi $$2) {
+      return new clj(cvc.eg);
    }
 
    @Override
-   public clb a(crv $$0, ht $$1, dgw $$2) {
-      return new clb(cle.vx);
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return $$1 == hx.a && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      return cvp.a($$3, $$0, $$1, $$2);
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      super.a($$0);
-      $$0.a(s_);
+   public int a(dhi $$0, csa $$1, ht $$2) {
+      return cvm.d;
    }
 
    @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      return !$$2.c(s_);
-   }
-
-   @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
+   public boolean d_(dhi $$0) {
       return true;
    }
 
    @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      return false;
+   }
+
+   public static dhi a(cva $$0) {
+      return i.get($$0).o();
+   }
+
+   public static boolean g(dhi $$0) {
+      return $$0.a(arg.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

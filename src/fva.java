@@ -1,12 +1,11 @@
-public class fva extends fwq<bwr, fgx<bwr>> {
-   private static final agg a = new agg("textures/entity/dolphin.png");
+public class fva extends fxd<bwm, fgu> {
+   private static final agi a = new agi("textures/entity/bat.png");
 
-   public fva(fvk.a $$0) {
-      super($$0, new fgx<>($$0.a(fka.G)), 0.7F);
-      this.a(new fyz(this, $$0.d()));
+   public fva(fvx.a $$0) {
+      super($$0, new fgu($$0.a(fkn.g)), 0.25F);
    }
 
-   public agg a(bwr $$0) {
+   public agi a(bwm $$0) {
       return a;
    }
 }

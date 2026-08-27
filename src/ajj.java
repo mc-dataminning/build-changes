@@ -1,136 +1,158 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class ajj {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("commands.random.error.range_too_small"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), 0, true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("random").then(a("value", false))).then(a("roll", true)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reset").requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ((LiteralArgumentBuilder)dv.a("*").executes($$0x -> a((du)$$0x.getSource())))
+                           .then(
+                              ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
                   .then(
-                     dv.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                     ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(ajj::a).executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (du)$$0x.getSource(),
+                                                eu.e($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eu.e($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(du $$0, int $$1, boolean $$2) {
-      ama $$3 = $$0.f();
-      aly $$4 = $$3.k();
-      $$4.a.d();
-      eji $$5 = $$0.e();
-      cqz $$6 = new cqz(ht.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
-
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            cqz $$13 = new cqz($$12, $$11);
-            djd $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (ht $$15 : ht.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.aj() - 1, $$13.g())) {
-                  $$3.a($$15, cuv.a.o(), 16);
-               }
-            }
-         }
-      }
-
-      bhj<Runnable> $$16 = bhj.a(ac.f(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(dix.f, dix.g, dix.h, dix.i, dix.j, dix.k).iterator();
-
-      while (var33.hasNext()) {
-         dix $$19 = (dix)var33.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-
-         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
-            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               cqz $$24 = new cqz($$23, $$22);
-               djd $$25 = $$4.a($$23, $$22, false);
-               if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<dis> $$26 = Lists.newArrayList();
-                  int $$27 = Math.max(1, $$19.e());
-
-                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
-                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        dis $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        dis $$31;
-                        if ($$30 instanceof djc) {
-                           $$31 = new djc(((djc)$$30).C(), true);
-                        } else if ($$30 instanceof djd) {
-                           $$31 = new djc((djd)$$30, true);
-                        } else {
-                           $$31 = $$30;
-                        }
-
-                        $$26.add($$31);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$26).thenApply($$1xx -> {
-                        if ($$19 == dix.g) {
-                           $$1xx.left().ifPresent($$0xxx -> dmf.a($$0xxx, dix.b));
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
-         }
-
-         $$0.m().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
-
-      long $$34 = System.currentTimeMillis();
-
-      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
-         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            cqz $$37 = new cqz($$36, $$35);
-            djd $$38 = $$4.a($$36, $$35, false);
-            if ($$38 != null && (!$$2 || !$$38.s())) {
-               for (ht $$39 : ht.b($$37.d(), $$3.I_(), $$37.e(), $$37.f(), $$3.aj() - 1, $$37.g())) {
-                  $$4.a($$39);
-               }
-            }
-         }
-      }
-
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
-      long $$40 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> ur.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+   private static LiteralArgumentBuilder<du> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<du>)dv.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)dv.a("range", er.a()).executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(ajj::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), eu.e($$1x, "sequence"), $$1))
                )
-            ),
-         true
-      );
+         );
+   }
+
+   private static CompletableFuture<Suggestions> a(CommandContext<du> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((du)$$0.getSource()).f().I().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return dy.b($$2, $$1);
+   }
+
+   private static int a(du $$0, cl.d $$1, @Nullable agi $$2, boolean $$3) throws CommandSyntaxException {
+      ats $$4;
+      if ($$2 != null) {
+         $$4 = $$0.f().a($$2);
+      } else {
+         $$4 = $$0.f().E_();
+      }
+
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
+         throw a.create();
+      } else {
+         int $$9 = atm.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.m().ae().a(ur.a("commands.random.roll", $$0.c(), $$9, $$6, $$7), false);
+         } else {
+            $$0.a(() -> ur.a("commands.random.sample.success", $$9), false);
+         }
+
+         return $$9;
+      }
+   }
+
+   private static int a(du $$0, agi $$1) throws CommandSyntaxException {
+      $$0.f().I().b($$1);
+      $$0.a(() -> ur.a("commands.random.reset.success", ur.a($$1)), false);
       return 1;
+   }
+
+   private static int a(du $$0, agi $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.f().I().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> ur.a("commands.random.reset.success", ur.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(du $$0) {
+      int $$1 = $$0.f().I().a();
+      $$0.a(() -> ur.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
+
+   private static int a(du $$0, int $$1, boolean $$2, boolean $$3) {
+      bjd $$4 = $$0.f().I();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> ur.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

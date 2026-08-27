@@ -1,33 +1,15 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bop {
-   private static final int a = 300;
+   public static bmy<blg> a() {
+      return bqj.a((Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$0 -> $$0.group($$0.b(buh.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cfb $$3 = $$0xx.c($$1.dn());
+               if ($$3 == null) {
+                  $$1.dP().a(cff.j);
+               }
 
-   public static bmq<bky> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return bqb.a(
-         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$3x -> $$3x.group($$3x.b(btz.C), $$3x.b(btz.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        ht $$11 = $$3x.<ia>b($$4).b();
-                        if ($$11.a($$7.dl(), (double)$$1)) {
-                           $$3.increment();
-                        }
-
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dN().a($$6.W(), $$6.V());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+               return true;
+            })));
    }
 }

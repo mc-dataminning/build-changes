@@ -7,15 +7,15 @@ public class acb implements wk<yd> {
    private final byte f;
    private final boolean g;
 
-   public acb(bki $$0) {
-      this.a = $$0.ah();
-      eji $$1 = $$0.dk();
+   public acb(bkq $$0) {
+      this.a = $$0.aj();
+      eju $$1 = $$0.dm();
       this.b = $$1.c;
       this.c = $$1.d;
       this.d = $$1.e;
-      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
-      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
-      this.g = $$0.aA();
+      this.e = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = $$0.aC();
    }
 
    public acb(tu $$0) {

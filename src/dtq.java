@@ -1,50 +1,49 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dtq extends dts {
-   public static final Codec<dtq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ata.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ebj.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               asq.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+public class dtq extends dtl {
+   public static final Codec<dtq> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bic.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
-            .and(b($$0))
             .apply($$0, dtq::new)
    );
-   private final ata<Integer> i;
-   private final ebj.a j;
-   private final float k;
-   private final ebj l;
+   private final bic b;
+   private final int c;
 
-   public dtq(ata<Integer> $$0, ebj.a $$1, float $$2, long $$3, ebj.a $$4, float $$5, List<dgw> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ebj.b(new dne(new dmg($$3)), $$1);
+   public dtq(bic $$0, bic $$1, bic $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected dtp<?> a() {
-      return dtp.e;
+   protected dtm<?> a() {
+      return dtm.j;
    }
 
    @Override
-   public dgw a(ato $$0, ht $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)ati.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dgw> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(csg $$0, dtl.b $$1, ats $$2, dsv $$3, int $$4, dtl.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a();
+      ht.a $$10 = $$9.j();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(ht $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(ats $$0, int $$1, dsv $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ats $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

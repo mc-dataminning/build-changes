@@ -1,5 +1,5 @@
-public record afa(agg a) implements aey {
-   @Override
-   public void a(tu $$0) {
-   }
+public interface afa {
+   agi a();
+
+   void a(tu var1);
 }

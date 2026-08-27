@@ -21,11 +21,11 @@ public class fm implements ArgumentType<fo> {
    }
 
    public static ht a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ama $$2 = ((du)$$0.getSource()).f();
+      ame $$2 = ((du)$$0.getSource()).f();
       return a($$0, $$2, $$1);
    }
 
-   public static ht a(CommandContext<du> $$0, ama $$1, String $$2) throws CommandSyntaxException {
+   public static ht a(CommandContext<du> $$0, ame $$1, String $$2) throws CommandSyntaxException {
       ht $$3 = b($$0, $$2);
       if (!$$1.A($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class fm implements ArgumentType<fo> {
 
    public static ht c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ht $$2 = b($$0, $$1);
-      if (!crs.k($$2)) {
+      if (!csa.k($$2)) {
          throw c.create();
       } else {
          return $$2;

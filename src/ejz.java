@@ -1,24 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class ejz extends ekb {
-   private final ekb b;
-   private final hx.a c;
-   private static final DoubleList d = new ejo(1);
-
-   public ejz(ekb $$0, hx.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+public interface ejz {
+   static ejz a() {
+      return eke.a;
    }
 
-   private static ejr a(ejr $$0, hx.a $$1, int $$2) {
-      return new eka(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   static ejz a(bkq $$0) {
+      return new eke($$0);
    }
 
-   @Override
-   protected DoubleList a(hx.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
-   }
+   boolean b();
+
+   boolean a(ekn var1, ht var2, boolean var3);
+
+   boolean a(cle var1);
+
+   boolean a(ecs var1, ecs var2);
 }

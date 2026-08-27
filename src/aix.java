@@ -1,38 +1,107 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.base.Stopwatch;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class aix {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.op.failed"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("commands.locate.structure.not_found", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("commands.locate.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> ur.b("commands.locate.biome.not_found", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> ur.b("commands.locate.poi.not_found", $$0));
+   private static final int f = 100;
+   private static final int g = 6400;
+   private static final int h = 32;
+   private static final int i = 64;
+   private static final int j = 256;
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ei.a()).suggests(($$0x, $$1) -> {
-            apq $$2 = ((du)$$0x.getSource()).m().ac();
-            return dy.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
-         }).executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("locate").requires($$0x -> $$0x.c(2)))
+                  .then(dv.a("structure").then(dv.a("structure", ew.a(jz.aB)).executes($$0x -> a((du)$$0x.getSource(), ew.a($$0x, "structure", jz.aB, c))))))
+               .then(dv.a("biome").then(dv.a("biome", ev.a($$1, jz.ar)).executes($$0x -> a((du)$$0x.getSource(), ev.a($$0x, "biome", jz.ar))))))
+            .then(dv.a("poi").then(dv.a("poi", ev.a($$1, jz.T)).executes($$0x -> b((du)$$0x.getSource(), ev.a($$0x, "poi", jz.T)))))
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      apq $$2 = $$0.m().ac();
-      int $$3 = 0;
+   private static Optional<? extends ig.b<dxh>> a(ew.c<dxh> $$0, io<dxh> $$1) {
+      return (Optional<? extends ig.b<dxh>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> ig.a($$0xx)), $$1::b);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> ur.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
+   private static int a(du $$0, ew.c<dxh> $$1) throws CommandSyntaxException {
+      io<dxh> $$2 = $$0.f().H_().d(jz.aB);
+      ig<dxh> $$3 = (ig<dxh>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+      ht $$4 = ht.a($$0.e());
+      ame $$5 = $$0.f();
+      Stopwatch $$6 = Stopwatch.createStarted(ac.c);
+      Pair<ht, ib<dxh>> $$7 = $$5.k().g().a($$5, $$3, $$4, 100, false);
+      $$6.stop();
+      if ($$7 == null) {
+         throw b.create($$1.b());
       } else {
-         return $$3;
+         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
       }
+   }
+
+   private static int a(du $$0, ev.c<csy> $$1) throws CommandSyntaxException {
+      ht $$2 = ht.a($$0.e());
+      Stopwatch $$3 = Stopwatch.createStarted(ac.c);
+      Pair<ht, ib<csy>> $$4 = $$0.f().a($$1, $$2, 6400, 32, 64);
+      $$3.stop();
+      if ($$4 == null) {
+         throw d.create($$1.b());
+      } else {
+         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+      }
+   }
+
+   private static int b(du $$0, ev.c<bwi> $$1) throws CommandSyntaxException {
+      ht $$2 = ht.a($$0.e());
+      ame $$3 = $$0.f();
+      Stopwatch $$4 = Stopwatch.createStarted(ac.c);
+      Optional<Pair<ib<bwi>, ht>> $$5 = $$3.x().e($$1, $$2, 256, bwf.b.c);
+      $$4.stop();
+      if ($$5.isEmpty()) {
+         throw e.create($$1.b());
+      } else {
+         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
+      }
+   }
+
+   private static String a(Pair<ht, ? extends ib<?>> $$0) {
+      return ((ib)$$0.getSecond()).e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]");
+   }
+
+   public static int a(du $$0, ev.c<?> $$1, ht $$2, Pair<ht, ? extends ib<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + a($$3) + ")");
+      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   }
+
+   public static int a(du $$0, ew.c<?> $$1, ht $$2, Pair<ht, ? extends ib<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + a($$3) + ")");
+      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   }
+
+   private static int a(du $$0, ht $$1, Pair<ht, ? extends ib<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
+      ht $$7 = (ht)$$2.getFirst();
+      int $$8 = $$4 ? atm.d(atm.c((float)$$1.j($$7))) : atm.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
+      ur $$10 = uu.a((ur)ur.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
+         .a($$2x -> $$2x.a(n.k).a(new up(up.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new ux(ux.a.a, ur.c("chat.coordinates.tooltip"))));
+      $$0.a(() -> ur.a($$3, $$5, $$10, $$8), false);
+      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
+      return $$8;
+   }
+
+   private static float a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 - $$0;
+      int $$5 = $$3 - $$1;
+      return atm.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

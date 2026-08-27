@@ -1,15 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bmo extends bmh {
+   private final double b;
+   private final double c;
 
-public class bmo {
-   public static bmq<bky> a(btz<?> $$0, int $$1) {
-      return bqb.a(
-         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$2 -> $$2.group($$2.a(btz.o), $$2.c(btz.aw), $$2.b($$0))
-               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
-                     $$2x.a(true, (long)$$1);
-                     $$1xx.b();
-                     return true;
-                  })))
-      );
+   public bmo(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : atm.a($$0, this.b, this.c);
    }
 }

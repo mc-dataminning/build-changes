@@ -1,24 +1,24 @@
-public class aco implements wk<acj> {
-   private final bin a;
+public class aco implements wk<acl> {
+   private final int a;
 
-   public aco(bin $$0) {
+   public aco(int $$0) {
       this.a = $$0;
    }
 
-   public void a(acj $$0) {
-      $$0.a(this);
-   }
-
    public aco(tu $$0) {
-      this.a = bin.a($$0.readUnsignedByte());
+      this.a = $$0.n();
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.k(this.a.a());
+      $$0.c(this.a);
    }
 
-   public bin a() {
+   public void a(acl $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 }

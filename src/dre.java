@@ -1,53 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dre(List<dre.a> b, hx c, dnm d, boolean e) implements drn {
-   public static final Codec<dre> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dre.a.a.listOf().fieldOf("layers").forGetter(dre::a),
-               hx.g.fieldOf("direction").forGetter(dre::b),
-               dnm.b.fieldOf("allowed_placement").forGetter(dre::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dre::d)
-            )
-            .apply($$0, dre::new)
-   );
-
-   public static dre.a a(bhv $$0, dto $$1) {
-      return new dre.a($$0, $$1);
+public class dre extends dpv<dsg> {
+   public dre(Codec<dsg> $$0) {
+      super($$0);
    }
 
-   public static dre b(bhv $$0, dto $$1) {
-      return new dre(List.of(a($$0, $$1)), hx.b, dnm.c, false);
-   }
+   @Override
+   public boolean a(dpx<dsg> $$0) {
+      csu $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ht.a $$3 = new ht.a();
+      ht.a $$4 = new ht.a();
 
-   public List<dre.a> a() {
-      return this.b;
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dmr.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(hx.a, 1);
+            csy $$10 = $$1.s($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, cvc.dO.o(), 2);
+            }
 
-   public hx b() {
-      return this.c;
-   }
-
-   public dnm c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bhv b, dto c) {
-      public static final Codec<dre.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bhv.d.fieldOf("height").forGetter(dre.a::a), dto.a.fieldOf("provider").forGetter(dre.a::b)).apply($$0, dre.a::new)
-      );
-
-      public bhv a() {
-         return this.b;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, cvc.dN.o(), 2);
+               dhi $$11 = $$1.a_($$4);
+               if ($$11.b(dcj.c)) {
+                  $$1.a($$4, $$11.a(dcj.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
       }
 
-      public dto b() {
-         return this.c;
-      }
+      return true;
    }
 }

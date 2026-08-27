@@ -1,49 +1,47 @@
-public class ezh extends fah {
-   private static final agg a = new agg("textures/gui/demo_background.png");
-   private evf b = evf.a;
-   private evf c = evf.a;
+public class ezh extends fau {
+   private static final int a = 90;
+   private final ur b;
+   private evs c = evs.a;
+   private final Runnable k;
+   private final ur l;
+   private final boolean m;
 
-   public ezh() {
-      super(ur.c("demo.help.title"));
+   public ezh(Runnable $$0, ur $$1, ur $$2) {
+      this($$0, $$1, $$2, uq.k, true);
+   }
+
+   public ezh(Runnable $$0, ur $$1, ur $$2, ur $$3, boolean $$4) {
+      super($$1);
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void aO_() {
-      int $$0 = -16;
-      this.d(eum.a(ur.c("demo.help.buy"), $$0x -> {
-         $$0x.i = false;
-         ac.i().a("https://aka.ms/BuyMinecraftJava");
-      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
-      this.d(eum.a(ur.c("demo.help.later"), $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
-      esv $$1 = this.f.m;
-      this.b = evf.a(
-         this.i,
-         ur.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
-         ur.c("demo.help.movementMouse"),
-         ur.a("demo.help.jump", $$1.B.k()),
-         ur.a("demo.help.inventory", $$1.E.k())
-      );
-      this.c = evf.a(this.i, ur.c("demo.help.fullWrapped"), 218);
+   public ur h() {
+      return uq.a(super.h(), this.b);
    }
 
    @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 248) / 2;
-      int $$5 = (this.h - 166) / 2;
-      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   protected void aP_() {
+      super.aP_();
+      this.c = evs.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = atm.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(euz.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 248) / 2 + 10;
-      int $$5 = (this.h - 166) / 2 + 8;
-      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
-      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
+   }
+
+   @Override
+   public boolean aE_() {
+      return this.m;
    }
 }

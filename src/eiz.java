@@ -1,4 +1,11 @@
-import java.nio.file.Path;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eiz(Path a, Path b) {
+public interface eiz {
+   @Nullable
+   String a(eex var1);
+
+   eiy a();
+
+   Set<ehf<?>> b();
 }

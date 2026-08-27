@@ -1,88 +1,29 @@
-import com.mojang.authlib.GameProfile;
-
-public class fpk extends fpg {
-   private eji cm = eji.b;
-   private int cn;
-
-   public fpk(fkw $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.t(1.0F);
-      this.af = true;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cG().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cz();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(bjg $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void c_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
-      }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cn > 0) {
-         this.g(new eji((this.cm.c - this.do().c) / (double)this.cn, (this.cm.d - this.do().d) / (double)this.cn, (this.cm.e - this.do().e) / (double)this.cn));
-         this.cn--;
-      }
-
-      this.bV = this.bW;
-      this.eP();
-      float $$1;
-      if (this.aA() && !this.ev()) {
-         $$1 = (float)Math.min(0.1, this.do().h());
+public class fpk extends fov {
+   fpk(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
       } else {
-         $$1 = 0.0F;
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
+   }
+
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
+         this.a = $$0;
       }
 
-      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-      this.dL().ad().a("push");
-      this.fi();
-      this.dL().ad().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.cm = new eji($$0, $$1, $$2);
-      this.cn = this.ag().p() + 1;
-   }
-
-   @Override
-   protected void fM() {
-   }
-
-   @Override
-   public void a(ur $$0) {
-      esr $$1 = esr.N();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(ye $$0) {
-      super.a($$0);
-      this.bn();
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

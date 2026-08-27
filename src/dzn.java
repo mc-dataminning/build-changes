@@ -3,43 +3,40 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class dzn extends dwv {
-   public static final Codec<dzn> d = a(dzn::new);
+public class dzn extends dxh {
+   public static final bhl<ctk.c> d = bhl.a(
+      new ctk.c(bku.i, 10, 2, 3), new ctk.c(bku.bs, 5, 4, 4), new ctk.c(bku.bl, 8, 5, 5), new ctk.c(bku.aJ, 2, 5, 5), new ctk.c(bku.al, 3, 4, 4)
+   );
+   public static final Codec<dzn> e = a(dzn::new);
 
-   public dzn(dwv.c $$0) {
+   public dzn(dxh.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<dwv.b> a(dwv.a $$0) {
-      return Optional.of(new dwv.b($$0.h().l(), (Consumer<dxn>)($$1 -> a($$1, $$0))));
+   public Optional<dxh.b> a(dxh.a $$0) {
+      crh $$1 = $$0.h();
+      ht $$2 = new ht($$1.d(), 64, $$1.e());
+      return Optional.of(new dxh.b($$2, (Consumer<dxz>)($$1x -> a($$1x, $$0))));
    }
 
-   private static void a(dxn $$0, dwv.a $$1) {
-      int $$2 = 0;
+   private static void a(dxz $$0, dxh.a $$1) {
+      dzm.q $$2 = new dzm.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<dxl> $$3 = $$2.d;
 
-      dzm.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         dzm.a();
-         $$3 = new dzm.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<dwz> $$4 = $$3.c;
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         dxl $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
+      }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            dwz $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
-
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public dxe<?> e() {
-      return dxe.n;
+   public dxq<?> e() {
+      return dxq.d;
    }
 }

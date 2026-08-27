@@ -12,7 +12,7 @@ public class gn<T> implements AutoCloseable {
    private static final Logger b = LogUtils.getLogger();
    private final int c;
    private final int d;
-   private final bfh e;
+   private final bfo e;
    @Nullable
    private gp f;
    private int g;
@@ -20,7 +20,7 @@ public class gn<T> implements AutoCloseable {
    private final Deque<gj<T>> i = Queues.newArrayDeque();
    private final List<gj<T>> j = Lists.newArrayList();
 
-   public gn(int $$0, int $$1, bfh $$2) {
+   public gn(int $$0, int $$1, bfo $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -88,7 +88,7 @@ public class gn<T> implements AutoCloseable {
       return this.f;
    }
 
-   public bfh c() {
+   public bfo c() {
       return this.e;
    }
 

@@ -1,12 +1,15 @@
-public class fxx extends ful<cdu> {
-   public static final agg a = new agg("textures/entity/projectiles/arrow.png");
-   public static final agg f = new agg("textures/entity/projectiles/tipped_arrow.png");
+public class fxx extends fxd<cbp, fjj<cbp>> {
+   private static final agi a = new agi("textures/entity/silverfish.png");
 
-   public fxx(fvk.a $$0) {
-      super($$0);
+   public fxx(fvx.a $$0) {
+      super($$0, new fjj<>($$0.a(fkn.bg)), 0.3F);
    }
 
-   public agg a(cdu $$0) {
-      return $$0.F() > 0 ? f : a;
+   protected float a(cbp $$0) {
+      return 180.0F;
+   }
+
+   public agi b(cbp $$0) {
+      return a;
    }
 }

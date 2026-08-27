@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum hz implements aub {
+public enum hz implements aug {
    a("down_east", hx.a, hx.f),
    b("down_north", hx.a, hx.c),
    c("down_south", hx.a, hx.d),

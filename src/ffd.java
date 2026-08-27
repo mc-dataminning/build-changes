@@ -1,83 +1,160 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ffd extends fah {
-   private static final Logger k = LogUtils.getLogger();
-   public static final dnd a = new dnd((long)"test1".hashCode(), true, false);
-   protected final fah b;
-   private eum l;
-   private eum m;
-   private eum n;
-   private eum o;
-   protected euv c;
-   private ffi p;
+public class ffd extends evf<ffb> {
+   private final ffe a;
+   private final List<ffb> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public ffd(fah $$0) {
-      super(ur.c("selectWorld.title"));
-      this.b = $$0;
+   public ffd(ffe $$0, etd $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$0;
+      this.a(false);
    }
 
    @Override
-   protected void aO_() {
-      this.c = new euv(this.i, this.g / 2 - 100, 22, 200, 20, this.c, ur.c("selectWorld.search"));
-      this.c.b($$0 -> this.p.a($$0));
-      this.p = new ffi(this, this.f, this.g, this.h, 48, this.h - 64, 36, this.c.a(), this.p);
-      this.e(this.c);
-      this.e(this.p);
-      this.m = this.d(eum.a(eec.a, $$0 -> this.p.e().ifPresent(ffi.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
-      this.d(eum.a(ur.c("selectWorld.create"), $$0 -> fex.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
-      this.n = this.d(eum.a(ur.c("selectWorld.edit"), $$0 -> this.p.e().ifPresent(ffi.c::g)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
-      this.l = this.d(eum.a(ur.c("selectWorld.delete"), $$0 -> this.p.e().ifPresent(ffi.c::e)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
-      this.o = this.d(eum.a(ur.c("selectWorld.recreate"), $$0 -> this.p.e().ifPresent(ffi.c::h)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
-      this.d(eum.a(uq.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
-      this.a(null);
-      this.c(this.c);
+   protected void a(euo $$0) {
+      $$0.c(this.j, this.g + 4, this.i, this.h);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return super.a($$0, $$1, $$2) ? true : this.c.a($$0, $$1, $$2);
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, ffb> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.b);
-   }
+   private void a(Collection<UUID> $$0, Map<UUID, ffb> $$1) {
+      flk $$2 = this.c.s.cn;
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.p.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable eec $$0) {
-      if ($$0 == null) {
-         this.m.b(eec.a);
-         this.m.i = false;
-         this.n.i = false;
-         this.o.i = false;
-         this.l.i = false;
-      } else {
-         this.m.b($$0.t());
-         this.m.i = $$0.u();
-         this.n.i = $$0.v();
-         this.o.i = $$0.w();
-         this.l.i = $$0.x();
+      for (UUID $$3 : $$0) {
+         fls $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new ffb(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
       }
    }
 
-   @Override
-   public void aF_() {
-      if (this.p != null) {
-         this.p.i().forEach(ffi.a::close);
+   private void a(Map<UUID, ffb> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aW().b())) {
+         ffb $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               ffb $$2 = new ffb(this.c, this.a, $$3.getId(), $$3.getName(), this.c.ak().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fly $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fma $$3 = $$0.b($$2);
+         if ($$3 instanceof fmb.a) {
+            fmb.a $$4 = (fmb.a)$$3;
+            if ($$4.g().h()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void v() {
+      this.m.sort(Comparator.<ffb, Integer>comparing($$0 -> {
+         if (this.c.b($$0.e())) {
+            return 0;
+         } else if (this.c.aW().a($$0.e())) {
+            return 1;
+         } else if ($$0.e().version() == 2) {
+            return 4;
+         } else {
+            return $$0.h() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(ffb::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<ffb> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.v();
+      this.w();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void w() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean e() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fls $$0, ffe.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (ffb $$3 : this.m) {
+         if ($$3.e().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == ffe.a.a || this.c.aJ().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         ffb $$5 = new ffb(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (ffb $$1 : this.m) {
+         if ($$1.e().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

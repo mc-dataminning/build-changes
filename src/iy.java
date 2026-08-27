@@ -6,220 +6,220 @@ import java.util.function.Predicate;
 
 public interface iy {
    Map<String, iy.a> a = new Object2ObjectArrayMap();
-   Codec<iy.a> b = asq.a(iy.a::a, a::get);
+   Codec<iy.a> b = asu.a(iy.a::a, a::get);
    iy.a c = a("empty");
    iy.a d = a("water");
    iy.a e = a("lava");
    iy.a f = a("powder_snow");
-   iy g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cuv.fu.o().a(czb.g, Integer.valueOf(3)), aqn.cv);
-   iy h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cuv.fv.o(), aqn.cy);
-   iy i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cuv.fw.o().a(czb.g, Integer.valueOf(3)), aqn.cz);
+   iy g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fu.o().a(czi.g, Integer.valueOf(3)), aqr.cv);
+   iy h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fv.o(), aqr.cy);
+   iy i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fw.o().a(czi.g, Integer.valueOf(3)), aqr.cz);
    iy j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      cut $$6 = cut.a($$5.d());
-      if (!($$6 instanceof dbr)) {
-         return biq.d;
+      cva $$6 = cva.a($$5.d());
+      if (!($$6 instanceof dby)) {
+         return bix.d;
       } else {
          if (!$$1.B) {
-            clb $$7 = new clb(cuv.kP);
+            clj $$7 = new clj(cvc.kP);
             if ($$5.u()) {
                $$7.c($$5.v().h());
             }
 
             $$3.a($$4, $$7);
-            $$3.a(aqx.Z);
-            czb.d($$0, $$1, $$2);
+            $$3.a(arb.Z);
+            czi.d($$0, $$1, $$2);
          }
 
-         return biq.a($$1.B);
+         return bix.a($$1.B);
       }
    };
    iy k = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (deh.c($$5) <= 0) {
-         return biq.d;
+      if (det.c($$5) <= 0) {
+         return bix.d;
       } else {
          if (!$$1.B) {
-            clb $$6 = $$5.c(1);
-            deh.d($$6);
-            if (!$$3.fT().d) {
+            clj $$6 = $$5.c(1);
+            det.d($$6);
+            if (!$$3.fU().d) {
                $$5.h(1);
             }
 
             if ($$5.b()) {
                $$3.a($$4, $$6);
-            } else if ($$3.fS().e($$6)) {
+            } else if ($$3.fT().e($$6)) {
                $$3.bR.b();
             } else {
                $$3.a($$6, false);
             }
 
-            $$3.a(aqx.Y);
-            czb.d($$0, $$1, $$2);
+            $$3.a(arb.Y);
+            czi.d($$0, $$1, $$2);
          }
 
-         return biq.a($$1.B);
+         return bix.a($$1.B);
       }
    };
    iy l = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!($$5.d() instanceof cjt $$7)) {
-         return biq.d;
+      if (!($$5.d() instanceof ckb $$7)) {
+         return bix.d;
       } else if (!$$7.a($$5)) {
-         return biq.d;
+         return bix.d;
       } else {
          if (!$$1.B) {
             $$7.f_($$5);
-            $$3.a(aqx.X);
-            czb.d($$0, $$1, $$2);
+            $$3.a(arb.X);
+            czi.d($$0, $$1, $$2);
          }
 
-         return biq.a($$1.B);
+         return bix.a($$1.B);
       }
    };
 
    static iy.a a(String $$0) {
-      Object2ObjectOpenHashMap<ckw, iy> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((iy)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> biq.d);
+      Object2ObjectOpenHashMap<cle, iy> $$1 = new Object2ObjectOpenHashMap();
+      $$1.defaultReturnValue((iy)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bix.d);
       iy.a $$2 = new iy.a($$0, $$1);
       a.put($$0, $$2);
       return $$2;
    }
 
-   biq interact(dgw var1, crs var2, ht var3, cdm var4, bip var5, clb var6);
+   bix interact(dhi var1, csa var2, ht var3, cdu var4, biw var5, clj var6);
 
    static void a() {
-      Map<ckw, iy> $$0 = c.b();
+      Map<cle, iy> $$0 = c.b();
       a($$0);
-      $$0.put(cle.rw, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (cna.d($$5) != cnb.c) {
-            return biq.d;
+      $$0.put(clm.sh, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         if (cni.d($$5) != cnj.c) {
+            return bix.d;
          } else {
             if (!$$1x.B) {
-               ckw $$6 = $$5.d();
-               $$3x.a($$4, cld.a($$5, $$3x, new clb(cle.rx)));
-               $$3x.a(aqx.W);
-               $$3x.b(aqx.c.b($$6));
-               $$1x.b($$2x, cuv.fu.o());
-               $$1x.a(null, $$2x, aqn.ch, aqo.e, 1.0F, 1.0F);
-               $$1x.a(null, dlg.z, $$2x);
+               cle $$6 = $$5.d();
+               $$3x.a($$4, cll.a($$5, $$3x, new clj(clm.si)));
+               $$3x.a(arb.W);
+               $$3x.b(arb.c.b($$6));
+               $$1x.b($$2x, cvc.fu.o());
+               $$1x.a(null, $$2x, aqr.ch, aqs.e, 1.0F, 1.0F);
+               $$1x.a(null, dls.z, $$2x);
             }
 
-            return biq.a($$1x.B);
+            return bix.a($$1x.B);
          }
       });
-      Map<ckw, iy> $$1 = d.b();
+      Map<cle, iy> $$1 = d.b();
       a($$1);
-      $$1.put(cle.pK, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clb(cle.pL), $$0xx -> $$0xx.c(czb.g) == 3, aqn.cB));
-      $$1.put(cle.rx, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+      $$1.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qw), $$0xx -> $$0xx.c(czi.g) == 3, aqr.cB));
+      $$1.put(clm.si, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
          if (!$$1x.B) {
-            ckw $$6 = $$5.d();
-            $$3x.a($$4, cld.a($$5, $$3x, cna.a(new clb(cle.rw), cnb.c)));
-            $$3x.a(aqx.W);
-            $$3x.b(aqx.c.b($$6));
-            czb.d($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, aqn.ci, aqo.e, 1.0F, 1.0F);
-            $$1x.a(null, dlg.y, $$2x);
+            cle $$6 = $$5.d();
+            $$3x.a($$4, cll.a($$5, $$3x, cni.a(new clj(clm.sh), cnj.c)));
+            $$3x.a(arb.W);
+            $$3x.b(arb.c.b($$6));
+            czi.d($$0x, $$1x, $$2x);
+            $$1x.a(null, $$2x, aqr.ci, aqs.e, 1.0F, 1.0F);
+            $$1x.a(null, dls.y, $$2x);
          }
 
-         return biq.a($$1x.B);
+         return bix.a($$1x.B);
       });
-      $$1.put(cle.rw, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(czb.g) != 3 && cna.d($$5) == cnb.c) {
+      $$1.put(clm.sh, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         if ($$0x.c(czi.g) != 3 && cni.d($$5) == cnj.c) {
             if (!$$1x.B) {
-               $$3x.a($$4, cld.a($$5, $$3x, new clb(cle.rx)));
-               $$3x.a(aqx.W);
-               $$3x.b(aqx.c.b($$5.d()));
-               $$1x.b($$2x, $$0x.a(czb.g));
-               $$1x.a(null, $$2x, aqn.ch, aqo.e, 1.0F, 1.0F);
-               $$1x.a(null, dlg.z, $$2x);
+               $$3x.a($$4, cll.a($$5, $$3x, new clj(clm.si)));
+               $$3x.a(arb.W);
+               $$3x.b(arb.c.b($$5.d()));
+               $$1x.b($$2x, $$0x.a(czi.g));
+               $$1x.a(null, $$2x, aqr.ch, aqs.e, 1.0F, 1.0F);
+               $$1x.a(null, dls.z, $$2x);
             }
 
-            return biq.a($$1x.B);
+            return bix.a($$1x.B);
          } else {
-            return biq.d;
+            return bix.d;
          }
       });
-      $$1.put(cle.oN, l);
-      $$1.put(cle.oM, l);
-      $$1.put(cle.oL, l);
-      $$1.put(cle.oK, l);
-      $$1.put(cle.tQ, l);
-      $$1.put(cle.tW, k);
-      $$1.put(cle.ud, k);
-      $$1.put(cle.ul, k);
-      $$1.put(cle.uh, k);
-      $$1.put(cle.ui, k);
-      $$1.put(cle.uf, k);
-      $$1.put(cle.uj, k);
-      $$1.put(cle.tZ, k);
-      $$1.put(cle.ue, k);
-      $$1.put(cle.ub, k);
-      $$1.put(cle.tY, k);
-      $$1.put(cle.tX, k);
-      $$1.put(cle.uc, k);
-      $$1.put(cle.ug, k);
-      $$1.put(cle.uk, k);
-      $$1.put(cle.ua, k);
-      $$1.put(cle.iH, j);
-      $$1.put(cle.iO, j);
-      $$1.put(cle.iW, j);
-      $$1.put(cle.iS, j);
-      $$1.put(cle.iT, j);
-      $$1.put(cle.iQ, j);
-      $$1.put(cle.iU, j);
-      $$1.put(cle.iK, j);
-      $$1.put(cle.iP, j);
-      $$1.put(cle.iM, j);
-      $$1.put(cle.iJ, j);
-      $$1.put(cle.iI, j);
-      $$1.put(cle.iN, j);
-      $$1.put(cle.iR, j);
-      $$1.put(cle.iV, j);
-      $$1.put(cle.iL, j);
-      Map<ckw, iy> $$2 = e.b();
-      $$2.put(cle.pK, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clb(cle.pM), $$0xx -> true, aqn.cE));
+      $$1.put(clm.py, l);
+      $$1.put(clm.px, l);
+      $$1.put(clm.pw, l);
+      $$1.put(clm.pv, l);
+      $$1.put(clm.uB, l);
+      $$1.put(clm.uH, k);
+      $$1.put(clm.uO, k);
+      $$1.put(clm.uW, k);
+      $$1.put(clm.uS, k);
+      $$1.put(clm.uT, k);
+      $$1.put(clm.uQ, k);
+      $$1.put(clm.uU, k);
+      $$1.put(clm.uK, k);
+      $$1.put(clm.uP, k);
+      $$1.put(clm.uM, k);
+      $$1.put(clm.uJ, k);
+      $$1.put(clm.uI, k);
+      $$1.put(clm.uN, k);
+      $$1.put(clm.uR, k);
+      $$1.put(clm.uV, k);
+      $$1.put(clm.uL, k);
+      $$1.put(clm.jc, j);
+      $$1.put(clm.jj, j);
+      $$1.put(clm.jr, j);
+      $$1.put(clm.jn, j);
+      $$1.put(clm.jo, j);
+      $$1.put(clm.jl, j);
+      $$1.put(clm.jp, j);
+      $$1.put(clm.jf, j);
+      $$1.put(clm.jk, j);
+      $$1.put(clm.jh, j);
+      $$1.put(clm.je, j);
+      $$1.put(clm.jd, j);
+      $$1.put(clm.ji, j);
+      $$1.put(clm.jm, j);
+      $$1.put(clm.jq, j);
+      $$1.put(clm.jg, j);
+      Map<cle, iy> $$2 = e.b();
+      $$2.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qx), $$0xx -> true, aqr.cE));
       a($$2);
-      Map<ckw, iy> $$3 = f.b();
-      $$3.put(cle.pK, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clb(cle.pN), $$0xx -> $$0xx.c(czb.g) == 3, aqn.cF));
+      Map<cle, iy> $$3 = f.b();
+      $$3.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qy), $$0xx -> $$0xx.c(czi.g) == 3, aqr.cF));
       a($$3);
    }
 
-   static void a(Map<ckw, iy> $$0) {
-      $$0.put(cle.pM, h);
-      $$0.put(cle.pL, g);
-      $$0.put(cle.pN, i);
+   static void a(Map<cle, iy> $$0) {
+      $$0.put(clm.qx, h);
+      $$0.put(clm.qw, g);
+      $$0.put(clm.qy, i);
    }
 
-   static biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, clb $$5, clb $$6, Predicate<dgw> $$7, aqm $$8) {
+   static bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, clj $$5, clj $$6, Predicate<dhi> $$7, aqq $$8) {
       if (!$$7.test($$0)) {
-         return biq.d;
+         return bix.d;
       } else {
          if (!$$1.B) {
-            ckw $$9 = $$5.d();
-            $$3.a($$4, cld.a($$5, $$3, $$6));
-            $$3.a(aqx.W);
-            $$3.b(aqx.c.b($$9));
-            $$1.b($$2, cuv.ft.o());
-            $$1.a(null, $$2, $$8, aqo.e, 1.0F, 1.0F);
-            $$1.a(null, dlg.y, $$2);
+            cle $$9 = $$5.d();
+            $$3.a($$4, cll.a($$5, $$3, $$6));
+            $$3.a(arb.W);
+            $$3.b(arb.c.b($$9));
+            $$1.b($$2, cvc.ft.o());
+            $$1.a(null, $$2, $$8, aqs.e, 1.0F, 1.0F);
+            $$1.a(null, dls.y, $$2);
          }
 
-         return biq.a($$1.B);
+         return bix.a($$1.B);
       }
    }
 
-   static biq a(crs $$0, ht $$1, cdm $$2, bip $$3, clb $$4, dgw $$5, aqm $$6) {
+   static bix a(csa $$0, ht $$1, cdu $$2, biw $$3, clj $$4, dhi $$5, aqq $$6) {
       if (!$$0.B) {
-         ckw $$7 = $$4.d();
-         $$2.a($$3, cld.a($$4, $$2, new clb(cle.pK)));
-         $$2.a(aqx.V);
-         $$2.b(aqx.c.b($$7));
+         cle $$7 = $$4.d();
+         $$2.a($$3, cll.a($$4, $$2, new clj(clm.qv)));
+         $$2.a(arb.V);
+         $$2.b(arb.c.b($$7));
          $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, aqo.e, 1.0F, 1.0F);
-         $$0.a(null, dlg.z, $$1);
+         $$0.a(null, $$1, $$6, aqs.e, 1.0F, 1.0F);
+         $$0.a(null, dls.z, $$1);
       }
 
-      return biq.a($$0.B);
+      return bix.a($$0.B);
    }
 
-   public static record a(String a, Map<ckw, iy> b) {
+   public static record a(String a, Map<cle, iy> b) {
    }
 }

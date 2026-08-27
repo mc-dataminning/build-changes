@@ -1,114 +1,78 @@
-public class fon extends fow {
-   private static final ato a = ato.a();
-   private final foq b;
+public class fon extends fpj {
+   private final fpe a;
 
-   fon(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+   fon(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
       this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
       this.n = false;
       this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
    }
 
    @Override
-   public fnz b() {
-      return fnz.c;
+   public fom b() {
+      return fom.c;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * atm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
-      } else {
-         this.e(ati.i(0.05F, this.y, 1.0F));
+      if (!this.o) {
+         this.b(this.a);
+         cdu $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.du();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dq().d - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
+         }
       }
    }
 
-   private boolean g() {
-      esr $$0 = esr.N();
-      fpj $$1 = $$0.s;
-      return $$1 != null && $$1.bp().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
-   }
+   public static class a implements fol<jv> {
+      private final fpe a;
 
-   public static class a implements fny<jv> {
-      private final foq a;
-
-      public a(foq $$0) {
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnv $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class b implements fny<jv> {
-      private final foq a;
-
-      public b(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 
-   public static class c implements fny<jv> {
-      private final foq a;
+   public static class b implements fol<jv> {
+      private final fpe a;
 
-      public c(foq $$0) {
+      public b(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnv $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements fny<jv> {
-      private final foq a;
-
-      public d(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements fny<jv> {
-      private final foq a;
-
-      public e(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fon $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foi $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
          return $$8;
       }
    }

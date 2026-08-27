@@ -1,28 +1,23 @@
-public class fyj extends fwq<bzt, fjr<bzt>> {
-   private static final agg a = new agg("textures/entity/wither/wither_invulnerable.png");
-   private static final agg i = new agg("textures/entity/wither/wither.png");
+public class fyj extends fvw<cey> {
+   public static final agi a = new agi("textures/entity/trident.png");
+   private final fju f;
 
-   public fyj(fvk.a $$0) {
-      super($$0, new fjr<>($$0.a(fka.bO)), 1.0F);
-      this.a(new gag(this, $$0.f()));
+   public fyj(fvx.a $$0) {
+      super($$0);
+      this.f = new fju($$0.a(fkn.bC));
    }
 
-   protected int a(bzt $$0, ht $$1) {
-      return 15;
+   public void a(cey $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(atm.i($$2, $$0.N, $$0.dD()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(atm.i($$2, $$0.O, $$0.dF()) + 90.0F));
+      eoa $$6 = fwv.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public agg a(bzt $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(bzt $$0, enk $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   public agi a(cey $$0) {
+      return a;
    }
 }

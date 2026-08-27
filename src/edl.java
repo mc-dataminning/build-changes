@@ -1,44 +1,38 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+public class edl extends edf {
+   private float m = Float.MAX_VALUE;
+   private edf n;
+   private boolean o;
 
-public abstract class edl {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-
-   public abstract rz a(rz var1);
-
-   public void c() {
-      this.a(true);
+   public edl(edf $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   public void a(boolean $$0) {
-      this.b = $$0;
+   public edl(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean d() {
-      return this.b;
-   }
-
-   public void a(File $$0) {
-      if (this.d()) {
-         rz $$1 = new rz();
-         $$1.a("data", this.a(new rz()));
-         so.g($$1);
-
-         try {
-            sm.a($$1, $$0);
-         } catch (IOException var4) {
-            a.error("Could not save data {}", this, var4);
-         }
-
-         this.a(false);
+   public void a(float $$0, edf $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
    }
 
-   public static record a<T extends edl>(Supplier<T> a, Function<rz, T> b, aun c) {
+   public edf d() {
+      return this.n;
+   }
+
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static edl c(tu $$0) {
+      edl $$1 = new edl($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

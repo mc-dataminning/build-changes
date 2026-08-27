@@ -1,27 +1,39 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class ayd extends DataFix {
+public class ayd extends azt {
+   private static final int a = 6;
+   private static final ats b = ats.a();
+
    public ayd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bat.x, "Zombie");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ban.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(ban.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(ayd::a));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(b.a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
       }
+
+      return $$0;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

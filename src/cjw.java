@@ -1,30 +1,14 @@
-public class cjw extends cjg {
-   public cjw(ckw.a $$0) {
-      super($$0);
+public class cjw extends cjc {
+   public cjw(cva $$0, cle.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bir.a($$3);
-      } else {
-         if (!$$1.fT().d) {
-            $$3.h(1);
-         }
-
-         $$1.b(aqx.c.b(this));
-         $$1.dL().a(null, $$1, aqn.yB, $$1.da(), 1.0F, 1.0F);
-         clb $$4 = cli.a($$0, $$1.dp(), $$1.dv(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bir.b($$4);
-         } else {
-            if (!$$1.fS().e($$4.p())) {
-               $$1.a($$4, false);
-            }
-
-            return bir.b($$3);
-         }
-      }
+   protected boolean a(cnr $$0, dhi $$1) {
+      csa $$2 = $$0.q();
+      ht $$3 = $$0.a().c();
+      dhi $$4 = $$2.y($$3) ? cvc.G.o() : cvc.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

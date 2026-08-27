@@ -1,118 +1,218 @@
-import java.util.Objects;
-import java.util.UUID;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface blf {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
+public class blf extends bkq {
+   private static final int c = 2;
+   private static final double d = 3.0;
+   private static final double e = 15.0;
+   private int f;
+   public long b;
+   private int g;
+   private boolean h;
+   @Nullable
+   private amf i;
+   private final Set<bkq> j = Sets.newHashSet();
+   private int k;
 
-   int a();
+   public blf(bku<? extends blf> $$0, csa $$1) {
+      super($$0, $$1);
+      this.at = true;
+      this.f = 2;
+      this.b = this.ag.g();
+      this.g = this.ag.a(3) + 1;
+   }
 
-   void a(int var1);
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   @Override
+   public aqs dc() {
+      return aqs.d;
+   }
 
    @Nullable
-   UUID b();
+   public amf q() {
+      return this.i;
+   }
 
-   void a(@Nullable UUID var1);
+   public void b(@Nullable amf $$0) {
+      this.i = $$0;
+   }
 
-   void c();
-
-   default void c(rz $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
+   private void w() {
+      ht $$0 = this.x();
+      dhi $$1 = this.dN().a_($$0);
+      if ($$1.a(cvc.ss)) {
+         ((czo)$$1.b()).d($$1, this.dN(), $$0);
       }
    }
 
-   default void a(crs $$0, rz $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof ama) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
+   @Override
+   public void l() {
+      super.l();
+      if (this.f == 2) {
+         if (this.dN().x_()) {
+            this.dN().a(this.ds(), this.du(), this.dy(), aqr.mO, aqs.d, 10000.0F, 0.8F + this.ag.i() * 0.2F, false);
+            this.dN().a(this.ds(), this.du(), this.dy(), aqr.mN, aqs.d, 2.0F, 0.5F + this.ag.i() * 0.2F, false);
          } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bki $$3 = ((ama)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof bla) {
-                  this.a((bla)$$3);
-               }
+            biu $$0 = this.dN().aj();
+            if ($$0 == biu.c || $$0 == biu.d) {
+               this.b(4);
+            }
 
-               if ($$3.ag() == bkm.bt) {
-                  this.c((cdm)$$3);
+            this.w();
+            b(this.dN(), this.x());
+            this.a(dls.G);
+         }
+      }
+
+      this.f--;
+      if (this.f < 0) {
+         if (this.g == 0) {
+            if (this.dN() instanceof ame) {
+               List<bkq> $$1 = this.dN()
+                  .a(
+                     this,
+                     new ejp(this.ds() - 15.0, this.du() - 15.0, this.dy() - 15.0, this.ds() + 15.0, this.du() + 6.0 + 15.0, this.dy() + 15.0),
+                     $$0 -> $$0.bx() && !this.j.contains($$0)
+                  );
+
+               for (amf $$2 : ((ame)this.dN()).a($$0 -> $$0.e(this) < 256.0F)) {
+                  al.S.a($$2, this, $$1);
                }
+            }
+
+            this.am();
+         } else if (this.f < -this.ag.a(10)) {
+            this.g--;
+            this.f = 1;
+            this.b = this.ag.g();
+            this.b(0);
+         }
+      }
+
+      if (this.f >= 0) {
+         if (!(this.dN() instanceof ame)) {
+            this.dN().c(2);
+         } else if (!this.h) {
+            List<bkq> $$3 = this.dN()
+               .a(this, new ejp(this.ds() - 3.0, this.du() - 3.0, this.dy() - 3.0, this.ds() + 3.0, this.du() + 6.0 + 3.0, this.dy() + 3.0), bkq::bx);
+
+            for (bkq $$4 : $$3) {
+               $$4.a((ame)this.dN(), this);
+            }
+
+            this.j.addAll($$3);
+            if (this.i != null) {
+               al.E.a(this.i, $$3);
             }
          }
       }
    }
 
-   default void a(ama $$0, boolean $$1) {
-      bky $$2 = this.q();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.ev()) && $$3 != null && $$0.a($$3) instanceof bla) {
-         this.V_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
-            this.a($$2.cv());
-            this.c();
+   private ht x() {
+      eju $$0 = this.dl();
+      return ht.a($$0.c, $$0.d - 1.0E-6, $$0.e);
+   }
+
+   private void b(int $$0) {
+      if (!this.h && !this.dN().B && this.dN().Y().b(crw.b)) {
+         ht $$1 = this.dn();
+         dhi $$2 = cun.a(this.dN(), $$1);
+         if (this.dN().a_($$1).i() && $$2.a((csd)this.dN(), $$1)) {
+            this.dN().b($$1, $$2);
+            this.k++;
          }
 
-         if (this.a() > 0 && ($$2 == null || $$2.ag() != bkm.bt || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.V_();
+         for (int $$3 = 0; $$3 < $$0; $$3++) {
+            ht $$4 = $$1.b(this.ag.a(3) - 1, this.ag.a(3) - 1, this.ag.a(3) - 1);
+            $$2 = cun.a(this.dN(), $$4);
+            if (this.dN().a_($$4).i() && $$2.a((csd)this.dN(), $$4)) {
+               this.dN().b($$4, $$2);
+               this.k++;
             }
          }
       }
    }
 
-   default boolean a_(bky $$0) {
-      if (!this.c($$0)) {
-         return false;
+   private static void b(csa $$0, ht $$1) {
+      dhi $$2 = $$0.a_($$1);
+      ht $$3;
+      dhi $$4;
+      if ($$2.a(cvc.ss)) {
+         $$3 = $$1.a($$2.c(czo.a).g());
+         $$4 = $$0.a_($$3);
       } else {
-         return $$0.ag() == bkm.bt && this.a_($$0.dL()) ? true : $$0.cv().equals(this.b());
+         $$3 = $$1;
+         $$4 = $$2;
       }
-   }
 
-   default boolean a_(crs $$0) {
-      return $$0.X().b(cro.O) && this.Y_() && this.b() == null;
-   }
+      if ($$4.b() instanceof deb) {
+         $$0.b($$3, deb.c($$0.a_($$3)));
+         ht.a $$7 = $$1.j();
+         int $$8 = $$0.z.a(3) + 3;
 
-   default boolean Y_() {
-      return this.a() > 0;
-   }
-
-   default void a_(cdm $$0) {
-      if ($$0.dL().X().b(cro.N)) {
-         if ($$0.cv().equals(this.b())) {
-            this.V_();
+         for (int $$9 = 0; $$9 < $$8; $$9++) {
+            int $$10 = $$0.z.a(8) + 1;
+            a($$0, $$3, $$7, $$10);
          }
       }
    }
 
-   default void Z_() {
-      this.V_();
-      this.c();
+   private static void a(csa $$0, ht $$1, ht.a $$2, int $$3) {
+      $$2.g($$1);
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         Optional<ht> $$5 = c($$0, $$2);
+         if ($$5.isEmpty()) {
+            break;
+         }
+
+         $$2.g($$5.get());
+      }
    }
 
-   default void V_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
+   private static Optional<ht> c(csa $$0, ht $$1) {
+      for (ht $$2 : ht.a($$0.z, 10, $$1, 1)) {
+         dhi $$3 = $$0.a_($$2);
+         if ($$3.b() instanceof deb) {
+            deb.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
+            $$0.c(3002, $$2, -1);
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Nullable
-   bky eg();
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = 64.0 * cA();
+      return $$0 < $$1 * $$1;
+   }
 
-   void a(@Nullable bky var1);
+   @Override
+   protected void b_() {
+   }
 
-   void c(@Nullable cdm var1);
+   @Override
+   protected void a(rz $$0) {
+   }
 
-   void h(@Nullable bky var1);
+   @Override
+   protected void b(rz $$0) {
+   }
 
-   boolean c(bky var1);
+   public int s() {
+      return this.k;
+   }
 
-   @Nullable
-   bky q();
+   public Stream<bkq> u() {
+      return this.j.stream().filter(bkq::bx);
+   }
 }

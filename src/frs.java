@@ -1,109 +1,173 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class frs implements gdq {
-   private final agg a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class frs {
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<hx, frt> c;
+   public final fru d;
+   public final boolean e;
 
-   public frs(agg $$0, j $$1, boolean $$2, int $$3) {
+   public frs(Vector3f $$0, Vector3f $$1, Map<hx, frt> $$2, @Nullable fru $$3, boolean $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   public agg a() {
-      return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof frs $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+   private void a() {
+      for (Entry<hx, frt> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+   private float[] a(hx $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+      }
    }
 
-   public static class a implements JsonDeserializer<frs> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
+   protected static class a implements JsonDeserializer<frs> {
+      private static final boolean a = true;
 
       public frs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         agg $$4 = this.b($$3);
-         gdj $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new frs($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return asy.a($$0, "uvlock", false);
-      }
-
-      protected gdj a(JsonObject $$0) {
-         int $$1 = asy.a($$0, "x", 0);
-         int $$2 = asy.a($$0, "y", 0);
-         gdj $$3 = gdj.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         fru $$6 = this.a($$3);
+         Map<hx, frt> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !atc.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
          } else {
-            return $$3;
+            boolean $$8 = atc.a($$3, "shade", true);
+            return new frs($$4, $$5, $$7, $$6, $$8);
          }
       }
 
-      protected agg b(JsonObject $$0) {
-         return new agg(asy.i($$0, "model"));
+      @Nullable
+      private fru a(JsonObject $$0) {
+         fru $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = atc.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            hx.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = atc.a($$2, "rescale", false);
+            $$1 = new fru($$3, $$4, $$5, $$6);
+         }
+
+         return $$1;
       }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = asy.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+      private float b(JsonObject $$0) {
+         float $$1 = atc.m($$0, "angle");
+         if ($$1 != 0.0F && atm.e($$1) != 22.5F && atm.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
          } else {
             return $$1;
+         }
+      }
+
+      private hx.a c(JsonObject $$0) {
+         String $$1 = atc.i($$0, "axis");
+         hx.a $$2 = hx.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hx, frt> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hx, frt> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<hx, frt> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<hx, frt> $$2 = Maps.newEnumMap(hx.class);
+         JsonObject $$3 = atc.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            hx $$5 = this.a($$4.getKey());
+            $$2.put($$5, (frt)$$0.deserialize($$4.getValue(), frt.class));
+         }
+
+         return $$2;
+      }
+
+      private hx a(String $$0) {
+         hx $$1 = hx.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = atc.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = atc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
          }
       }
    }

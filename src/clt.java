@@ -1,71 +1,62 @@
-import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class clt extends ckw {
-   private static final Map<aqm, clt> a = Maps.newHashMap();
-   private final int b;
-   private final aqm c;
-   private final int d;
+public class clt extends cjk {
+   private final bku<?> a;
+   private final aqq b;
 
-   protected clt(int $$0, aqm $$1, ckw.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3 * 20;
-      a.put(this.c, this);
+   public clt(bku<?> $$0, ecr $$1, aqq $$2, cle.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public biq a(cnl $$0) {
-      crs $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      dgw $$3 = $$1.a_($$2);
-      if ($$3.a(cuv.dT) && !$$3.c(cyv.b)) {
-         clb $$4 = $$0.n();
-         if (!$$1.B) {
-            cdm $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dfs $$6) {
-               $$6.b($$4.p());
-               $$1.a(dlg.c, $$2, dlg.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(aqx.al);
-            }
-         }
-
-         return biq.a($$1.B);
-      } else {
-         return biq.d;
+   public void a(@Nullable cdu $$0, csa $$1, clj $$2, ht $$3) {
+      if ($$1 instanceof ame) {
+         this.a((ame)$$1, $$2, $$3);
+         $$1.a($$0, dls.t, $$3);
       }
    }
 
-   public int h() {
-      return this.b;
+   @Override
+   protected void a(@Nullable cdu $$0, csb $$1, ht $$2) {
+      $$1.a($$0, $$2, this.b, aqs.g, 1.0F, 1.0F);
+   }
+
+   private void a(ame $$0, clj $$1, ht $$2) {
+      if (this.a.a($$0, $$1, null, $$2, blk.l, true, false) instanceof bwt $$4) {
+         $$4.c($$1.w());
+         $$4.w(true);
+      }
    }
 
    @Override
-   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
-      $$2.add(this.i().a(n.h));
-   }
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      if (this.a == bku.bc) {
+         rz $$4 = $$0.v();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + bxr.s($$5);
+            String $$8 = "color.minecraft." + bxr.t($$5);
 
-   public vf i() {
-      return ur.c(this.a() + ".desc");
-   }
+            for (int $$9 = 0; $$9 < bxr.c.size(); $$9++) {
+               if ($$5 == bxr.c.get($$9).a()) {
+                  $$2.add(ur.c(bxr.c($$9)).a($$6));
+                  return;
+               }
+            }
 
-   @Nullable
-   public static clt a(aqm $$0) {
-      return a.get($$0);
-   }
+            $$2.add(bxr.u($$5).d().e().a($$6));
+            vf $$10 = ur.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(ur.c($$8));
+            }
 
-   public aqm x() {
-      return this.c;
-   }
-
-   public int y() {
-      return this.d;
+            $$10.a($$6);
+            $$2.add($$10);
+         }
+      }
    }
 }

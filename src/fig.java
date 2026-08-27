@@ -1,109 +1,28 @@
-public class fig<T extends bla> extends fih<T> {
-   public final fkb a = this.k.b("right_ear");
-   private final fkb A = this.k.b("left_ear");
-   private final fkd B = this.m.a();
-   private final fkd C = this.k.a();
-   private final fkd D = this.o.a();
-   private final fkd E = this.n.a();
+public class fig<T extends bkq> extends fhy<T> {
+   private static final String a = "knot";
+   private final fko b;
+   private final fko f;
 
-   public fig(fkb $$0) {
-      super($$0, false);
+   public fig(fko $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public static fkj a(fkf $$0) {
-      fkj $$1 = fih.a($$0, false);
-      fkk $$2 = $$1.a();
-      $$2.a("body", fkg.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fkd.a);
-      a($$0, $$1);
-      $$2.a("hat", fkg.c(), fkd.a);
-      return $$1;
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("knot", fkt.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fkq.a);
+      return fku.a($$0, 32, 32);
    }
 
-   public static void a(fkf $$0, fkj $$1) {
-      fkk $$2 = $$1.a();
-      fkk $$3 = $$2.a(
-         "head",
-         fkg.c()
-            .a(0, 0)
-            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
-            .a(31, 1)
-            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
-            .a(2, 4)
-            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
-            .a(2, 0)
-            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
-         fkd.a
-      );
-      $$3.a("left_ear", fkg.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fkd.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
-      $$3.a("right_ear", fkg.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fkd.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+   @Override
+   public fko a() {
+      return this.b;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.m.b(this.B);
-      this.k.b(this.C);
-      this.o.b(this.D);
-      this.n.b(this.E);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = (float) (Math.PI / 6);
-      float $$7 = $$3 * 0.1F + $$1 * 0.5F;
-      float $$8 = 0.08F + $$2 * 0.4F;
-      this.A.g = (float) (-Math.PI / 6) - ati.b($$7 * 1.2F) * $$8;
-      this.a.g = (float) (Math.PI / 6) + ati.b($$7) * $$8;
-      if ($$0 instanceof ccb $$9) {
-         cce $$10 = $$9.gg();
-         if ($$10 == cce.e) {
-            float $$11 = $$3 / 60.0F;
-            this.a.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * ati.a($$11 * 30.0F) * 10.0F;
-            this.A.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * ati.b($$11 * 30.0F) * 10.0F;
-            this.k.b = ati.a($$11 * 10.0F);
-            this.k.c = ati.a($$11 * 40.0F) + 0.4F;
-            this.n.g = (float) (Math.PI / 180.0) * (70.0F + ati.b($$11 * 40.0F) * 10.0F);
-            this.o.g = this.n.g * -1.0F;
-            this.n.c = ati.a($$11 * 40.0F) * 0.5F + 1.5F;
-            this.o.c = ati.a($$11 * 40.0F) * 0.5F + 1.5F;
-            this.m.c = ati.a($$11 * 40.0F) * 0.35F;
-         } else if ($$10 == cce.a && this.c == 0.0F) {
-            this.a($$0);
-         } else if ($$10 == cce.b) {
-            fgc.a(this.n, this.o, this.k, !$$0.fV());
-         } else if ($$10 == cce.c) {
-            fgc.a(this.n, this.o, $$0, !$$0.fV());
-         } else if ($$10 == cce.d) {
-            this.k.e = 0.5F;
-            this.k.f = 0.0F;
-            if ($$0.fV()) {
-               this.n.f = -0.5F;
-               this.n.e = -0.9F;
-            } else {
-               this.o.f = 0.5F;
-               this.o.e = -0.9F;
-            }
-         }
-      } else if ($$0.ag() == bkm.bs) {
-         fgc.a(this.o, this.n, $$0.fW(), this.c, $$3);
-      }
-
-      this.x.a(this.q);
-      this.y.a(this.p);
-      this.b.a(this.o);
-      this.w.a(this.n);
-      this.z.a(this.m);
-      this.l.a(this.k);
-   }
-
-   protected void a(T $$0, float $$1) {
-      if (this.c > 0.0F && $$0 instanceof ccc && ((ccc)$$0).gg() == cce.a) {
-         fgc.a(this.n, this.o, $$0, this.c, $$1);
-      } else {
-         super.a($$0, $$1);
-      }
-   }
-
-   private void a(T $$0) {
-      if ($$0.fV()) {
-         this.o.e = -1.8F;
-      } else {
-         this.n.e = -1.8F;
-      }
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

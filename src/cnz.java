@@ -1,78 +1,91 @@
-public class cnz extends cnx {
-   private static final coc a = coc.a(cle.qa);
-   private static final coc b = coc.a(cle.oG);
-   private static final coc c = coc.a(cle.tC);
-
-   public cnz(cnu $$0) {
+public class cnz extends cof {
+   public cnz(coc $$0) {
       super($$0);
    }
 
-   public boolean a(cgu $$0, crs $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
+   public boolean a(chc $$0, csa $$1) {
+      int $$2 = 0;
+      clj $$3 = clj.b;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clb $$5 = $$0.a($$4);
+         clj $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
+            if ($$5.a(clm.tT)) {
+               if (!$$3.b()) {
                   return false;
                }
 
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(clm.tS)) {
                   return false;
                }
-            } else if (!c.a($$5)) {
-               return false;
+
+               $$2++;
             }
          }
       }
 
-      return $$2 && $$3 >= 1;
+      return !$$3.b() && $$3.u() && $$2 > 0;
    }
 
-   public clb a(cgu $$0, ip $$1) {
-      clb $$2 = new clb(cle.tB, 3);
-      rz $$3 = $$2.a("Fireworks");
-      sf $$4 = new sf();
-      int $$5 = 0;
+   public clj a(chc $$0, ip $$1) {
+      int $$2 = 0;
+      clj $$3 = clj.b;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         clb $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               rz $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(clm.tT)) {
+               if (!$$3.b()) {
+                  return clj.b;
                }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(clm.tS)) {
+                  return clj.b;
+               }
+
+               $$2++;
             }
          }
       }
 
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
+      if (!$$3.b() && $$3.u() && $$2 >= 1 && cnf.d($$3) < 2) {
+         clj $$6 = new clj(clm.tT, $$2);
+         rz $$7 = $$3.v().h();
+         $$7.a("generation", cnf.d($$3) + 1);
+         $$6.c($$7);
+         return $$6;
+      } else {
+         return clj.b;
+      }
+   }
+
+   public il<clj> a(chc $$0) {
+      il<clj> $$1 = il.a($$0.b(), clj.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         clj $$3 = $$0.a($$2);
+         if ($$3.d().t()) {
+            $$1.set($$2, new clj($$3.d().s()));
+         } else if ($$3.d() instanceof cnf) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
       }
 
-      return $$2;
+      return $$1;
+   }
+
+   @Override
+   public cos<?> aq_() {
+      return cos.d;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public clb a(ip $$0) {
-      return new clb(cle.tB);
-   }
-
-   @Override
-   public coj<?> aq_() {
-      return coj.g;
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

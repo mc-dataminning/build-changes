@@ -1,39 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class aiw {
    public static void a(CommandDispatcher<du> $$0) {
-      LiteralCommandNode<du> $$1 = $$0.register(
-         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eg.d()).then(dv.a("message", ek.a()).executes($$0x -> {
-            Collection<amb> $$1x = eg.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               ek.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
-            }
-
-            return $$1x.size();
-         })))
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
+            .then(dv.a("uuids").executes($$0x -> b((du)$$0x.getSource())))
       );
-      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static void a(du $$0, Collection<amb> $$1, vh $$2) {
-      un.a $$3 = un.a(un.e, $$0);
-      vg $$4 = vg.a($$2);
-      boolean $$5 = false;
+   private static int a(du $$0) {
+      return a($$0, cdu::P_);
+   }
 
-      for (amb $$6 : $$1) {
-         un.a $$7 = un.a(un.f, $$0).c($$6.O_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.i();
-      }
+   private static int b(du $$0) {
+      return a($$0, $$0x -> ur.a("commands.list.nameAndId", $$0x.ad(), ur.a($$0x.fS().getId())));
+   }
 
-      if ($$5) {
-         $$0.a(apq.f);
-      }
+   private static int a(du $$0, Function<amf, ur> $$1) {
+      apu $$2 = $$0.m().ae();
+      List<amf> $$3 = $$2.t();
+      ur $$4 = uu.b($$3, $$1);
+      $$0.a(() -> ur.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

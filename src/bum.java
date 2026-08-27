@@ -1,19 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bum extends bup {
+   public bum(bli $$0, csa $$1) {
+      super($$0, $$1);
+   }
 
-public class bum extends bvd<bkd> {
    @Override
-   public Set<btz<?>> a() {
-      return ImmutableSet.of(btz.J, btz.h);
+   protected edj a(int $$0) {
+      this.o = new edb(false);
+      this.o.a(true);
+      return new edj(this.o, $$0);
    }
 
-   protected void a(ama $$0, bkd $$1) {
-      $$1.dN().c(btz.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return true;
    }
 
-   private void a(bkd $$0, bub $$1) {
-      Optional<bkd> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.n_()).map(bkd.class::cast);
-      $$0.dN().a(btz.J, $$2);
+   @Override
+   protected eju b() {
+      return new eju(this.a.ds(), this.a.e(0.5), this.a.dy());
+   }
+
+   @Override
+   protected double a(eju $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(eju $$0, eju $$1) {
+      return this.a.bd() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(ht $$0) {
+      return !this.b.a_($$0.d()).i();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

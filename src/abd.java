@@ -2,10 +2,10 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class abd implements wk<yd> {
-   private final ekd a;
+   private final ekp a;
    private final String b;
 
-   public abd(ekd $$0, @Nullable eke $$1) {
+   public abd(ekp $$0, @Nullable ekq $$1) {
       this.a = $$0;
       if ($$1 == null) {
          this.b = "";
@@ -15,13 +15,13 @@ public class abd implements wk<yd> {
    }
 
    public abd(tu $$0) {
-      this.a = $$0.a(ekd.u);
+      this.a = $$0.a(ekp.u);
       this.b = $$0.s();
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.a(ekd::a, this.a);
+      $$0.a(ekp::a, this.a);
       $$0.a(this.b);
    }
 
@@ -29,7 +29,7 @@ public class abd implements wk<yd> {
       $$0.a(this);
    }
 
-   public ekd a() {
+   public ekp a() {
       return this.a;
    }
 

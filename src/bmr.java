@@ -1,134 +1,77 @@
-import java.util.Comparator;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bmr {
-   private bmr() {
+public class bmr extends bmx<bwr> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bku<? extends bwr> f;
+   private final float g;
+   private long h;
+
+   public bmr(bku<? extends bwr> $$0, float $$1) {
+      super(ImmutableMap.of(buh.h, bui.a, buh.r, bui.b, buh.m, bui.c, buh.n, bui.c, buh.Y, bui.b), 110);
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public static void a(bky $$0, bky $$1, float $$2) {
-      c($$0, $$1);
-      b($$0, $$1, $$2);
+   protected boolean a(ame $$0, bwr $$1) {
+      return $$1.gj() && this.c($$1).isPresent();
    }
 
-   public static boolean a(bly<?> $$0, bky $$1) {
-      Optional<bub> $$2 = $$0.c(btz.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   protected void a(ame $$0, bwr $$1, long $$2) {
+      bwr $$3 = this.c($$1).get();
+      $$1.dP().a(buh.r, $$3);
+      $$3.dP().a(buh.r, $$1);
+      bmz.a($$1, $$3, this.g);
+      int $$4 = 60 + $$1.eh().a(50);
+      this.h = $$2 + (long)$$4;
    }
 
-   public static boolean a(bly<?> $$0, btz<? extends bky> $$1, bkm<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ag() == $$2);
-   }
-
-   private static boolean a(bly<?> $$0, btz<? extends bky> $$1, Predicate<bky> $$2) {
-      return $$0.c($$1).filter($$2).filter(bky::bv).filter($$1x -> a($$0, $$1x)).isPresent();
-   }
-
-   private static void c(bky $$0, bky $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bky $$0, bky $$1) {
-      $$0.dN().a(btz.n, new bna($$1, true));
-   }
-
-   private static void b(bky $$0, bky $$1, float $$2) {
-      int $$3 = 2;
-      a($$0, $$1, $$2, 2);
-      a($$1, $$0, $$2, 2);
-   }
-
-   public static void a(bky $$0, bki $$1, float $$2, int $$3) {
-      a($$0, new bna($$1, true), $$2, $$3);
-   }
-
-   public static void a(bky $$0, ht $$1, float $$2, int $$3) {
-      a($$0, new bms($$1), $$2, $$3);
-   }
-
-   public static void a(bky $$0, boc $$1, float $$2, int $$3) {
-      buc $$4 = new buc($$1, $$2, $$3);
-      $$0.dN().a(btz.n, $$1);
-      $$0.dN().a(btz.m, $$4);
-   }
-
-   public static void a(bky $$0, clb $$1, eji $$2) {
-      eji $$3 = new eji(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bky $$0, clb $$1, eji $$2, eji $$3, float $$4) {
-      double $$5 = $$0.du() - (double)$$4;
-      caf $$6 = new caf($$0.dL(), $$0.dq(), $$5, $$0.dw(), $$1);
-      $$6.a($$0);
-      eji $$7 = $$2.d($$0.dj());
-      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
-      $$6.f($$7);
-      $$6.t();
-      $$0.dL().b($$6);
-   }
-
-   public static iu a(ama $$0, iu $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return iu.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bla $$0, bky $$1, int $$2) {
-      if ($$0.eS().d() instanceof clr $$3 && $$0.a($$3)) {
-         int $$4 = $$3.d() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(bky $$0, bky $$1, double $$2) {
-      Optional<bky> $$3 = $$0.dN().c(btz.o);
-      if ($$3.isEmpty()) {
+   protected boolean b(ame $$0, bwr $$1, long $$2) {
+      if (!this.b($$1)) {
          return false;
       } else {
-         double $$4 = $$0.e($$3.get().dj());
-         double $$5 = $$0.e($$1.dj());
-         return $$5 > $$4 + $$2 * $$2;
+         bwr $$3 = this.a($$1);
+         return $$3.bx() && $$1.a($$3) && bmz.a($$1.dP(), $$3) && $$2 <= this.h && !$$1.gc() && !$$3.gc();
       }
    }
 
-   public static boolean b(bky $$0, bky $$1) {
-      bly<?> $$2 = $$0.dN();
-      return !$$2.a(btz.h) ? false : $$2.c(btz.h).get().a($$1);
-   }
-
-   public static bky a(bky $$0, Optional<bky> $$1, bky $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
-   }
-
-   public static bky a(bky $$0, bky $$1, bky $$2) {
-      eji $$3 = $$1.dj();
-      eji $$4 = $$2.dj();
-      return $$0.e($$3) < $$0.e($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<bky> a(bky $$0, btz<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.dN().c($$1);
-      return $$2.<bki>map($$1x -> ((ama)$$0.dL()).a($$1x)).map($$0x -> $$0x instanceof bky $$1x ? $$1x : null);
-   }
-
-   @Nullable
-   public static eji a(blh $$0, int $$1, int $$2) {
-      eji $$3 = bvo.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dL().a_(ht.a($$3)).a($$0.dL(), ht.a($$3), ecw.b) && $$4++ < 10) {
-         $$3 = bvo.a($$0, $$1, $$2);
+   protected void c(ame $$0, bwr $$1, long $$2) {
+      bwr $$3 = this.a($$1);
+      bmz.a($$1, $$3, this.g);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.h) {
+            $$1.a($$0, $$3);
+            $$1.dP().b(buh.r);
+            $$3.dP().b(buh.r);
+         }
       }
-
-      return $$3;
    }
 
-   public static boolean a(bky $$0) {
-      return $$0.dN().a(btz.r);
+   protected void d(ame $$0, bwr $$1, long $$2) {
+      $$1.dP().b(buh.r);
+      $$1.dP().b(buh.m);
+      $$1.dP().b(buh.n);
+      this.h = 0L;
+   }
+
+   private bwr a(bwr $$0) {
+      return (bwr)$$0.dP().c(buh.r).get();
+   }
+
+   private boolean b(bwr $$0) {
+      bmg<?> $$1 = $$0.dP();
+      return $$1.a(buh.r) && $$1.c(buh.r).get().ai() == this.f;
+   }
+
+   private Optional<? extends bwr> c(bwr $$0) {
+      return $$0.dP().c(buh.h).get().a($$1 -> {
+         if ($$1.ai() == this.f && $$1 instanceof bwr $$2 && $$0.a($$2) && !$$2.gc()) {
+            return true;
+         }
+
+         return false;
+      }).map(bwr.class::cast);
    }
 }

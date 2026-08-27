@@ -1,153 +1,229 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class ewt implements ewu {
-   private static final agg a = new agg("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final ewt.a g;
-   private ur h;
-   private List<asu> i;
-   private long j;
-   private boolean k;
-   private final int l;
+public interface ewt extends ewu {
+   List<? extends ewu> i();
 
-   public ewt(ewt.a $$0, ur $$1, @Nullable ur $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(esr.N().h.a($$1), $$2 == null ? 0 : esr.N().h.a($$2))));
-   }
-
-   public static ewt a(esr $$0, ewt.a $$1, ur $$2, ur $$3) {
-      etz $$4 = $$0.h;
-      List<asu> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new ewt($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private ewt(ewt.a $$0, ur $$1, List<asu> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<asu> a(@Nullable ur $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int a() {
-      return this.l;
-   }
-
-   @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   @Override
-   public ewu.a a(eub $$0, ewv $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
-      }
-
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.i == null) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+   default Optional<ewu> d(double $$0, double $$1) {
+      for (ewu $$2 : this.i()) {
+         if ($$2.a_($$0, $$1)) {
+            return Optional.of($$2);
          }
       }
 
-      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? ewu.a.a : ewu.a.b;
+      return Optional.empty();
    }
 
-   private void a(eub $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      agg $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+   @Override
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (ewu $$3 : this.i()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
 
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+            return true;
+         }
       }
 
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+      return false;
    }
 
-   public void a(ur $$0, @Nullable ur $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      this.b(false);
+      return this.d($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
    }
 
-   public ewt.a c() {
-      return this.g;
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.t() != null && this.aI_() && $$2 == 0 ? this.t().a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
-   public static void a(ewv $$0, ewt.a $$1, ur $$2, @Nullable ur $$3) {
-      $$0.a(new ewt($$1, $$2, $$3));
+   boolean aI_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.d($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
    }
 
-   public static void b(ewv $$0, ewt.a $$1, ur $$2, @Nullable ur $$3) {
-      ewt $$4 = $$0.a(ewt.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.t() != null && this.t().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean b(int $$0, int $$1, int $$2) {
+      return this.t() != null && this.t().b($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.t() != null && this.t().a($$0, $$1);
+   }
+
+   @Nullable
+   ewu t();
+
+   void a(@Nullable ewu var1);
+
+   @Override
+   default void b_(boolean $$0) {
+   }
+
+   @Override
+   default boolean aJ_() {
+      return this.t() != null;
+   }
+
+   @Nullable
+   @Override
+   default eul aN_() {
+      ewu $$0 = this.t();
+      return $$0 != null ? eul.a(this, $$0.aN_()) : null;
+   }
+
+   default void b(@Nullable ewu $$0) {
+      this.a($$0);
+   }
+
+   @Nullable
+   @Override
+   default eul a(eyy $$0) {
+      ewu $$1 = this.t();
+      if ($$1 != null) {
+         eul $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return eul.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof eyy.c $$3) {
+         return this.a($$3);
       } else {
-         $$4.a($$2, $$3);
+         return $$0 instanceof eyy.a $$4 ? this.a($$4) : null;
       }
    }
 
-   public static void a(esr $$0, String $$1) {
-      a($$0.ax(), ewt.a.e, ur.c("selectWorld.access_failure"), ur.b($$1));
-   }
-
-   public static void b(esr $$0, String $$1) {
-      a($$0.ax(), ewt.a.e, ur.c("selectWorld.delete_failure"), ur.b($$1));
-   }
-
-   public static void c(esr $$0, String $$1) {
-      a($$0.ax(), ewt.a.f, ur.c("pack.copyFailure"), ur.b($$1));
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h(10000L);
-
-      final long i;
-
-      private a(long $$0) {
-         this.i = $$0;
+   @Nullable
+   private eul a(eyy.c $$0) {
+      boolean $$1 = $$0.b();
+      ewu $$2 = this.t();
+      List<? extends ewu> $$3 = new ArrayList<>(this.i());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.aK_()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
       }
 
-      private a() {
-         this(5000L);
+      ListIterator<? extends ewu> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends ewu> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         ewu $$11 = $$10.get();
+         eul $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return eul.a(this, $$12);
+         }
       }
+
+      return null;
+   }
+
+   @Nullable
+   private eul a(eyy.a $$0) {
+      ewu $$1 = this.t();
+      if ($$1 == null) {
+         eza $$2 = $$0.b();
+         ezc $$3 = this.s().c($$2.b());
+         return eul.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         ezc $$4 = $$1.s();
+         return eul.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private eul a(ezc $$0, eza $$1, @Nullable ewu $$2, eyy $$3) {
+      eyz $$4 = $$1.a();
+      eyz $$5 = $$4.a();
+      eza $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<ewu> $$8 = new ArrayList<>();
+
+      for (ewu $$9 : this.i()) {
+         if ($$9 != $$2) {
+            ezc $$10 = $$9.s();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<ewu> $$12 = Comparator.comparing($$1x -> $$1x.s().b($$1.b()), $$1.d());
+      Comparator<ewu> $$13 = Comparator.comparing($$1x -> $$1x.s().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (ewu $$14 : $$8) {
+         eul $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private eul b(ezc $$0, eza $$1, @Nullable ewu $$2, eyy $$3) {
+      eyz $$4 = $$1.a();
+      eyz $$5 = $$4.a();
+      List<Pair<ewu, Long>> $$6 = new ArrayList<>();
+      ezb $$7 = ezb.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (ewu $$8 : this.i()) {
+         if ($$8 != $$2) {
+            ezc $$9 = $$8.s();
+            ezb $$10 = ezb.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<ewu, Long> $$12 : $$6) {
+         eul $$13 = ((ewu)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

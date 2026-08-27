@@ -1,43 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dra extends dpj<dru> {
-   private static final ht a = new ht(8, 3, 8);
-   private static final cqz b = new cqz(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
+public class dra extends dpv<dru> {
    public dra(Codec<dru> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(dpl<dru> $$0) {
-      csm $$1 = $$0.b();
-      cqz $$2 = new cqz($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         ht $$3 = a.h($$0.e().v() + a.v());
-         ht.a $$4 = new ht.a();
+   public boolean a(dpx<dru> $$0) {
+      int $$1 = 0;
+      ats $$2 = $$0.d();
+      csu $$3 = $$0.b();
+      ht $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cuv.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cuv.b.o(), 2);
-                  }
-               }
-            }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dmr.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ht $$10 = new ht($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dhi $$11 = cvc.mV.o().a(dbw.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(cvc.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         return true;
       }
+
+      return $$1 > 0;
    }
 }

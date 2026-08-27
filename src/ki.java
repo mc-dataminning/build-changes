@@ -20,7 +20,7 @@ public class ki implements kf {
    @Override
    public CompletableFuture<?> a(kd $$0) {
       return this.f.thenCompose($$1 -> {
-         Set<agg> $$2 = new HashSet<>();
+         Set<agi> $$2 = new HashSet<>();
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
          Consumer<af> $$4 = $$3x -> {
             if (!$$2.add($$3x.a())) {

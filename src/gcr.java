@@ -1,22 +1,17 @@
+import java.io.IOException;
+import java.io.InputStream;
+
 public class gcr {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+   @Deprecated
+   public static int[] a(aph $$0, agi $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         emx $$3 = emx.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
 
-   public gcr(int $$0) {
-      this($$0, -1);
-   }
-
-   public gcr(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+      return var4;
    }
 }

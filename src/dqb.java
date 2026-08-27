@@ -1,73 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class dqb extends dpj<drs> {
-   public dqb(Codec<drs> $$0) {
+public class dqb extends dpv<dsa> {
+   private static final hx[] a = hx.values();
+
+   public dqb(Codec<dsa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<drs> $$0) {
-      csm $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      ato $$3 = $$0.d();
-      drs $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<hx> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ht.a $$6 = $$2.j();
+   public boolean a(dpx<dsa> $$0) {
+      dsa $$1 = $$0.f();
+      ats $$2 = $$0.d();
+      ht $$3 = $$0.e();
+      csu $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<ht, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      dnq $$9 = new dnq(new dms($$4.B()));
+      ebv $$10 = ebv.a($$9, -4, 1.0);
+      List<ht> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      dmq $$13 = $$1.d;
+      dmo $$14 = $$1.c;
+      dmp $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
 
-            for (hx $$7 : $$5) {
-               $$6.g($$2);
-               List<hx> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dgw $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(csm $$0, ht $$1, dgw $$2, drs $$3, ato $$4, List<hx> $$5) {
-      ht.a $$6 = $$1.j();
-
-      for (hx $$7 : $$5) {
-         dgw $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dgw $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         ht $$27 = $$3.b($$24, $$25, $$26);
+         dhi $$28 = $$4.a_($$27);
+         if ($$28.i() || $$28.a(arg.bJ)) {
+            if (++$$22 > $$1.p) {
                return false;
             }
+         }
 
-            $$0.a($$1, $$9, 3);
-            $$0.x($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+      }
 
-            return true;
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
+         } else {
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
          }
       }
 
-      return false;
-   }
+      List<ht> $$31 = Lists.newArrayList();
+      Predicate<dhi> $$32 = a($$1.c.g);
 
-   private static boolean c(dgw $$0) {
-      return $$0.i() || $$0.a(cuv.G);
+      for (ht $$33 : ht.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
+
+         for (Pair<ht, Integer> $$37 : $$7) {
+            $$35 += atm.f($$33.j((iw)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+         }
+
+         for (ht $$38 : $$11) {
+            $$36 += atm.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
+
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, cvc.a.o(), $$32);
+
+               for (hx $$39 : a) {
+                  ht $$40 = $$33.a($$39);
+                  ecs $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
+                  }
+               }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.i());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            }
+         }
+      }
+
+      List<dhi> $$43 = $$14.f;
+
+      for (ht $$44 : $$31) {
+         dhi $$45 = ac.a($$43, $$2);
+
+         for (hx $$46 : a) {
+            if ($$45.b(dhy.P)) {
+               $$45 = $$45.a(dhy.P, $$46);
+            }
+
+            ht $$47 = $$44.a($$46);
+            dhi $$48 = $$4.a_($$47);
+            if ($$45.b(dhy.C)) {
+               $$45 = $$45.a(dhy.C, Boolean.valueOf($$48.u().b()));
+            }
+
+            if (cvi.g($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 }

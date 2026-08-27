@@ -1,64 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class ccw implements cqp {
-   private final cdm a;
-   private cqr b = new cqr();
-   private int c;
+public enum ccw {
+   a(0, aqr.Ab, aqr.Aj),
+   b(40, aqr.Aa, aqr.Ak),
+   c(80, aqr.Ac, aqr.Ak);
 
-   public ccw(cdm $$0) {
-      this.a = $$0;
+   private static final ccw[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final aqq f;
+   private final aqq g;
+
+   private ccw(int $$0, aqq $$1, aqq $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public cdm ge() {
-      return this.a;
+   public int a() {
+      return this.e;
    }
 
-   @Override
-   public void f(@Nullable cdm $$0) {
+   public aqq b() {
+      return this.f;
    }
 
-   @Override
-   public cqr gg() {
-      return this.b;
+   public aqq c() {
+      return this.g;
    }
 
-   @Override
-   public void a(cqr $$0) {
-      this.b = $$0;
+   public static ccw a(int $$0) {
+      for (ccw $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
+         }
+      }
+
+      return a;
    }
 
-   @Override
-   public void a(cqq $$0) {
-      $$0.j();
-   }
-
-   @Override
-   public void l(clb $$0) {
-   }
-
-   @Override
-   public boolean gm() {
-      return this.a.dL().B;
-   }
-
-   @Override
-   public int t() {
-      return this.c;
-   }
-
-   @Override
-   public void t(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gh() {
-      return true;
-   }
-
-   @Override
-   public aqm gi() {
-      return aqn.yR;
+   public boolean d() {
+      return this == c;
    }
 }

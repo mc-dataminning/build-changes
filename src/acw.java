@@ -1,18 +1,29 @@
-public record acw() implements wk<acj> {
+public class acw implements wk<acl> {
+   private final acw.a a;
+
+   public acw(acw.a $$0) {
+      this.a = $$0;
+   }
+
    public acw(tu $$0) {
-      this();
+      this.a = $$0.b(acw.a.class);
    }
 
    @Override
    public void a(tu $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public tt c() {
-      return tt.e;
+   public acw.a a() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

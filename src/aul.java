@@ -1,63 +1,12 @@
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
+import java.util.concurrent.TimeUnit;
 
-public class aul implements arz {
-   public static final long[] a = new long[0];
-   private final int b;
+public class aul {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
 
-   public aul(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-      return 0;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-   }
-
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      return 0;
-   }
-
-   @Override
-   public long[] a() {
-      return a;
-   }
-
-   @Override
-   public int b() {
-      return this.b;
-   }
-
-   @Override
-   public int c() {
-      return 0;
-   }
-
-   @Override
-   public void a(IntConsumer $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         $$0.accept(0);
-      }
-   }
-
-   @Override
-   public void a(int[] $$0) {
-      Arrays.fill($$0, 0, this.b, 0);
-   }
-
-   @Override
-   public arz d() {
-      return this;
+   public static bii a(int $$0, int $$1) {
+      return bii.a($$0 * 20, $$1 * 20);
    }
 }

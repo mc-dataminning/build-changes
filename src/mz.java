@@ -4,13 +4,13 @@ import java.util.Map;
 
 public class mz {
    private final mr a;
-   private final coc b;
-   private final coc c;
-   private final coc d;
+   private final cok b;
+   private final cok c;
+   private final cok d;
    private final Map<String, am<?>> e = new LinkedHashMap<>();
-   private final coj<?> f;
+   private final cos<?> f;
 
-   public mz(coj<?> $$0, mr $$1, coc $$2, coc $$3, coc $$4) {
+   public mz(cos<?> $$0, mr $$1, cok $$2, cok $$3, cok $$4) {
       this.a = $$1;
       this.f = $$0;
       this.b = $$2;
@@ -18,8 +18,8 @@ public class mz {
       this.d = $$4;
    }
 
-   public static mz a(coc $$0, coc $$1, coc $$2, mr $$3) {
-      return new mz(coj.v, $$3, $$0, $$1, $$2);
+   public static mz a(cok $$0, cok $$1, cok $$2, mr $$3) {
+      return new mz(cos.v, $$3, $$0, $$1, $$2);
    }
 
    public mz a(String $$0, am<?> $$1) {
@@ -27,20 +27,20 @@ public class mz {
       return this;
    }
 
-   public void a(ms $$0, agg $$1) {
+   public void a(ms $$0, agi $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.e.forEach($$2::a);
       $$0.a(new mz.a($$1, this.f, this.b, this.c, this.d, $$2.b($$1.d("recipes/" + this.a.a() + "/"))));
    }
 
-   private void a(agg $$0) {
+   private void a(agi $$0) {
       if (this.e.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(agg a, coj<?> b, coc c, coc d, coc e, af f) implements mp {
+   public static record a(agi a, cos<?> b, cok c, cok d, cok e, af f) implements mp {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.a(true));
@@ -49,24 +49,24 @@ public class mz {
       }
 
       @Override
-      public agg b() {
+      public agi b() {
          return this.a;
       }
 
       @Override
-      public coj<?> c() {
+      public cos<?> c() {
          return this.b;
       }
 
-      public coc e() {
+      public cok e() {
          return this.c;
       }
 
-      public coc f() {
+      public cok f() {
          return this.d;
       }
 
-      public coc g() {
+      public cok g() {
          return this.e;
       }
 

@@ -1,6 +1,6 @@
-public record wv(alp a) implements wk<wu> {
+public record wv(alt a) implements wk<wu> {
    public wv(tu $$0) {
-      this(new alp($$0));
+      this(new alt($$0));
    }
 
    @Override

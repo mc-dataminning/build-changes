@@ -1,69 +1,120 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-public class civ extends ckw {
-   private static final Predicate<bki> a = bkl.f.and(bki::br);
-   private final cff.b b;
-   private final boolean c;
+public enum civ implements aug, ciu {
+   a("leather", 5, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 1);
+      $$0.put(cit.a.c, 2);
+      $$0.put(cit.a.b, 3);
+      $$0.put(cit.a.a, 1);
+   }), 15, aqr.ai, 0.0F, 0.0F, () -> cok.a(clm.qA)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 1);
+      $$0.put(cit.a.c, 4);
+      $$0.put(cit.a.b, 5);
+      $$0.put(cit.a.a, 2);
+   }), 12, aqr.ac, 0.0F, 0.0F, () -> cok.a(clm.oB)),
+   c("iron", 15, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 2);
+      $$0.put(cit.a.c, 5);
+      $$0.put(cit.a.b, 6);
+      $$0.put(cit.a.a, 2);
+   }), 9, aqr.ah, 0.0F, 0.0F, () -> cok.a(clm.oB)),
+   d("gold", 7, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 1);
+      $$0.put(cit.a.c, 3);
+      $$0.put(cit.a.b, 5);
+      $$0.put(cit.a.a, 2);
+   }), 25, aqr.ag, 0.0F, 0.0F, () -> cok.a(clm.oF)),
+   e("diamond", 33, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 3);
+      $$0.put(cit.a.c, 6);
+      $$0.put(cit.a.b, 8);
+      $$0.put(cit.a.a, 3);
+   }), 10, aqr.ad, 2.0F, 0.0F, () -> cok.a(clm.ov)),
+   f("turtle", 25, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 2);
+      $$0.put(cit.a.c, 5);
+      $$0.put(cit.a.b, 6);
+      $$0.put(cit.a.a, 2);
+   }), 9, aqr.ak, 0.0F, 0.0F, () -> cok.a(clm.oo)),
+   g("netherite", 37, ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 3);
+      $$0.put(cit.a.c, 6);
+      $$0.put(cit.a.b, 8);
+      $$0.put(cit.a.a, 3);
+   }), 15, aqr.aj, 3.0F, 0.1F, () -> cok.a(clm.oG));
 
-   public civ(boolean $$0, cff.b $$1, ckw.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
+   public static final Codec<civ> h = aug.a(civ::values);
+   private static final EnumMap<cit.a, Integer> i = ac.a(new EnumMap<>(cit.a.class), $$0 -> {
+      $$0.put(cit.a.d, 13);
+      $$0.put(cit.a.c, 15);
+      $$0.put(cit.a.b, 16);
+      $$0.put(cit.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cit.a, Integer> l;
+   private final int m;
+   private final aqq n;
+   private final float o;
+   private final float p;
+   private final ath<cok> q;
+
+   private civ(String $$0, int $$1, EnumMap<cit.a, Integer> $$2, int $$3, aqq $$4, float $$5, float $$6, Supplier<cok> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new ath<>($$7);
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      ejg $$4 = a($$0, $$1, crb.b.c);
-      if ($$4.c() == ejg.a.a) {
-         return bir.c($$3);
-      } else {
-         eji $$5 = $$1.f(1.0F);
-         double $$6 = 5.0;
-         List<bki> $$7 = $$0.a($$1, $$1.cG().b($$5.a(5.0)).g(1.0), a);
-         if (!$$7.isEmpty()) {
-            eji $$8 = $$1.bp();
-
-            for (bki $$9 : $$7) {
-               ejd $$10 = $$9.cG().g((double)$$9.bD());
-               if ($$10.d($$8)) {
-                  return bir.c($$3);
-               }
-            }
-         }
-
-         if ($$4.c() == ejg.a.b) {
-            cff $$11 = this.a($$0, $$4, $$3, $$1);
-            $$11.a(this.b);
-            $$11.r($$1.dB());
-            if (!$$0.a($$11, $$11.cG())) {
-               return bir.d($$3);
-            } else {
-               if (!$$0.B) {
-                  $$0.b($$11);
-                  $$0.a($$1, dlg.t, $$4.e());
-                  if (!$$1.fT().d) {
-                     $$3.h(1);
-                  }
-               }
-
-               $$1.b(aqx.c.b(this));
-               return bir.a($$3, $$0.x_());
-            }
-         } else {
-            return bir.c($$3);
-         }
-      }
+   public int a(cit.a $$0) {
+      return i.get($$0) * this.k;
    }
 
-   private cff a(crs $$0, ejg $$1, clb $$2, cdm $$3) {
-      eji $$4 = $$1.e();
-      cff $$5 = (cff)(this.c ? new cfg($$0, $$4.c, $$4.d, $$4.e) : new cff($$0, $$4.c, $$4.d, $$4.e));
-      if ($$0 instanceof ama $$6) {
-         bkm.<cff>a($$6, $$2, $$3).accept($$5);
-      }
+   @Override
+   public int b(cit.a $$0) {
+      return this.l.get($$0);
+   }
 
-      return $$5;
+   @Override
+   public int a() {
+      return this.m;
+   }
+
+   @Override
+   public aqq b() {
+      return this.n;
+   }
+
+   @Override
+   public cok d() {
+      return this.q.a();
+   }
+
+   @Override
+   public String e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.o;
+   }
+
+   @Override
+   public float g() {
+      return this.p;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
    }
 }

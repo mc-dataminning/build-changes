@@ -1,29 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class dso {
-   public static final Codec<dso> a = jy.ab.q().dispatch(dso::b, dsp::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class dso implements drz {
+   public static final Codec<dso> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dhi.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dhi.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bic.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dso::new)
+   );
+   public final dhi b;
+   public final dhi c;
+   private final bic d;
 
-   protected static <S extends dso> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public dso(dhi $$0, dhi $$1, bic $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public dso(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract dsp<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   public bic a() {
+      return this.d;
    }
 }

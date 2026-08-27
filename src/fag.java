@@ -1,132 +1,169 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fag extends fah {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final ur c = ur.c("recover_world.title").a(n.r);
-   private static final ur k = ur.c("recover_world.bug_tracker");
-   private static final ur l = ur.c("recover_world.restore");
-   private static final ur m = ur.c("recover_world.no_fallback");
-   private static final ur n = ur.c("recover_world.done.title");
-   private static final ur o = ur.c("recover_world.done.success");
-   private static final ur p = ur.c("recover_world.done.failed");
-   private static final ur q = ur.c("recover_world.issue.none").a(n.k);
-   private static final ur r = ur.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer t;
-   private final eya u = eya.d().a(10);
-   private final ur v;
-   private final evg w;
-   private final evg x;
-   private final eeb.c y;
+public class fag extends fao {
+   static final agi c = new agi("textures/gui/title/mojangstudios.png");
+   private static final int d = asw.b.a(255, 239, 50, 61);
+   private static final int e = asw.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> etd.N().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final etd m;
+   private final apd n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fag(esr $$0, BooleanConsumer $$1, eeb.c $$2) {
-      super(c);
-      this.t = $$1;
-      this.v = ur.a("recover_world.message", ur.b($$2.d()).a(n.h));
-      this.w = new evg(this.v, $$0.h);
-      this.y = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      ur $$5 = ur.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.x = new evg($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.u.c().b();
-      this.u.a(new evt(this.e, $$0.h));
-      this.u.a(this.w.b(true));
-      this.u.a(this.x);
-      eya $$7 = eya.e().a(5);
-      $$7.a(eum.a(k, eyz.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
-      $$7.a(eum.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : evx.a(m)).a()).i = $$6;
-      this.u.a($$7);
-      this.u.a(eum.a(uq.k, $$0x -> this.aE_()).b(120, 20).a());
-      this.u.a(this::d);
+   public fag(etd $$0, apd $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   private void a(esr $$0) {
-      Exception $$1 = this.a(this.y, false);
-      Exception $$2 = this.a(this.y, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new ezn(ur.c("recover_world.restoring")));
-         fez.a(this.y);
-         if (this.y.l()) {
-            $$0.a(new eza(this.t, n, o, uq.j, uq.k));
-         } else {
-            $$0.a(new eyu(() -> this.t.accept(false), n, p));
+   public static void a(etd $$0) {
+      $$0.X().a(c, new fag.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
          }
+
+         int $$9 = atm.f((1.0F - atm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(frc.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - atm.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = atm.c(atm.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(frc.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = atm.a($$8, 0.0F, 1.0F);
       } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new eyu(() -> this.t.accept(false), n, p));
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, etd.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = atm.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - atm.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
       }
    }
 
-   private ur a(eeb.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return ur.i();
-      } else {
-         vf $$3 = ur.i();
-         Instant $$4 = $$0.a($$1);
-         vf $$5 = $$4 != null ? ur.b(ffi.a.format($$4)) : ur.c("recover_world.state_entry.unknown");
-         $$3.b(ur.a("recover_world.state_entry", $$5.a(n.h)));
+   private void a(euo $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = atm.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = asw.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gbn {
+      public a() {
+         super(fag.c);
+      }
+
+      @Override
+      protected gbn.a b(aph $$0) {
+         any $$1 = etd.N().aa();
+         aoz<InputStream> $$2 = $$1.a(anw.a, fag.c);
          if ($$2 == null) {
-            $$3.b(q);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(r);
-         } else if ($$2 instanceof sq) {
-            $$3.b(ur.b($$2.getCause().toString()).a(n.m));
+            return new gbn.a(new FileNotFoundException(fag.c.toString()));
          } else {
-            $$3.b(ur.b($$2.toString()).a(n.m));
+            try {
+               gbn.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gbn.a(new gdr(true, true), emx.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new gbn.a(var9);
+            }
          }
-
-         return $$3;
       }
-   }
-
-   @Nullable
-   private Exception a(eeb.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.f());
-         } else {
-            $$0.a($$0.g());
-         }
-
-         return null;
-      } catch (sk | sq | IOException var4) {
-         return var4;
-      }
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.x.j(this.g - 50);
-      this.w.j(this.g - 50);
-      this.u.a();
-      exu.a(this.u, this.s());
-   }
-
-   @Override
-   public ur h() {
-      return uq.a(super.h(), this.v);
-   }
-
-   @Override
-   public void aE_() {
-      this.t.accept(false);
    }
 }

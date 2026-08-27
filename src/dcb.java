@@ -1,124 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dcb extends cut {
-   public static final MapCodec<dcb> a = b(dcb::new);
-   public static final int b = 8;
-   public static final dhw c = dhm.aF;
-   protected static final ekb[] d = new ekb[]{
-      ejy.a(),
-      cut.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      cut.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+public class dcb extends ctw {
+   public static final MapCodec<dcb> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dcb.a.b.fieldOf("kind").forGetter(ctw::b), u()).apply($$0, dcb::new));
+   public static final int d = dio.a();
+   private static final int b = d + 1;
+   public static final dii e = dhy.ba;
+   protected static final ekn f = cva.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ekn g = cva.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dcb> a() {
-      return a;
+   public MapCodec<? extends dcb> a() {
+      return c;
    }
 
-   protected dcb(dgv.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+   protected dcb(dcb.a $$0, dhh.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return this.b() == dcb.b.h ? g : f;
+   }
+
+   @Override
+   public ekn f(dhi $$0, crg $$1, ht $$2) {
+      return ekk.a();
+   }
+
+   @Override
+   public dhi a(cnr $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dio.a($$0.i())));
+   }
+
+   @Override
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends aug {
+      Map<String, dcb.a> a = new Object2ObjectArrayMap();
+      Codec<dcb.a> b = asu.a(aug::c, a::get);
+   }
+
+   public static enum b implements dcb.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public ekb c(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   public ekb b_(dgw $$0, cqy $$1, ht $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public ekb b(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public boolean g_(dgw $$0) {
-      return true;
-   }
-
-   @Override
-   public float b(dgw $$0, cqy $$1, ht $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      dgw $$3 = $$1.a_($$2.d());
-      if ($$3.a(arc.cg)) {
-         return false;
-      } else {
-         return $$3.a(arc.ch) ? true : cut.a($$3.k($$1, $$2.d()), hx.b) || $$3.a(this) && $$3.c(c) == 8;
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      return !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if ($$1.a(csb.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   public boolean a(dgw $$0, cnj $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.k()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == hx.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dgw a(cnj $$0) {
-      dgw $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(c);
    }
 }

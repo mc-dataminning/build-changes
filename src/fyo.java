@@ -1,9 +1,19 @@
-public class fyo extends fui<cbt, fjt<cbt>> {
-   public fyo(fvk.a $$0) {
-      this($$0, fka.bX, fka.ca, fka.cb);
+public class fyo extends fxd<bxs, fjx<bxs>> {
+   private static final agi a = new agi("textures/entity/turtle/big_sea_turtle.png");
+
+   public fyo(fvx.a $$0) {
+      super($$0, new fjx<>($$0.a(fkn.bH)), 0.7F);
    }
 
-   public fyo(fvk.a $$0, fjz $$1, fjz $$2, fjz $$3) {
-      super($$0, new fjt<>($$0.a($$1)), new fjt<>($$0.a($$2)), new fjt<>($$0.a($$3)));
+   public void a(bxs $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
+      if ($$0.n_()) {
+         this.d *= 0.5F;
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public agi a(bxs $$0) {
+      return a;
    }
 }

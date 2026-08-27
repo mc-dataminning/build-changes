@@ -10,8 +10,8 @@ public class bw extends cw<bw.a> {
       return new bw.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(amb $$0, clb $$1, cea $$2, Collection<clb> $$3) {
-      eel $$4 = bq.b($$0, (bki)($$2.t() != null ? $$2.t() : $$2));
+   public void a(amf $$0, clj $$1, cei $$2, Collection<clj> $$3) {
+      eex $$4 = bq.b($$0, (bkq)($$2.u() != null ? $$2.u() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
@@ -31,7 +31,7 @@ public class bw extends cw<bw.a> {
          return al.D.a(new bw.a(Optional.empty(), $$0, bq.a($$1), $$2));
       }
 
-      public boolean a(clb $$0, eel $$1, Collection<clb> $$2) {
+      public boolean a(clj $$0, eex $$1, Collection<clj> $$2) {
          if (this.a.isPresent() && !this.a.get().a($$0)) {
             return false;
          } else if (this.b.isPresent() && !this.b.get().a($$1)) {
@@ -39,12 +39,12 @@ public class bw extends cw<bw.a> {
          } else {
             if (this.c.isPresent()) {
                boolean $$3 = false;
-               bki $$4 = $$1.c(egw.a);
-               if ($$4 instanceof caf $$5 && this.c.get().a($$5.q())) {
+               bkq $$4 = $$1.c(ehi.a);
+               if ($$4 instanceof can $$5 && this.c.get().a($$5.q())) {
                   $$3 = true;
                }
 
-               for (clb $$6 : $$2) {
+               for (clj $$6 : $$2) {
                   if (this.c.get().a($$6)) {
                      $$3 = true;
                      break;

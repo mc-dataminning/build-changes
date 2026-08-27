@@ -1,33 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+public class gev extends gel {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cfl s;
+   private float t = 0.0F;
 
-public class gev<T> implements gez<T> {
-   protected final Comparator<T> a;
-   protected final gfa<T> b;
-
-   public gev(Function<T, Stream<agg>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.e($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gfa.a($$1, $$0);
+   public gev(cfl $$0) {
+      super(aqr.nC, aqs.g, gfc.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.ds());
+      this.g = (double)((float)$$0.du());
+      this.h = (double)((float)$$0.dy());
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public boolean s() {
+      return !this.s.aU();
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gew<T>($$2.iterator(), $$3.iterator(), this.a));
+   @Override
+   public void q() {
+      if (this.s.dI()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.ds());
+         this.g = (double)((float)this.s.du());
+         this.h = (double)((float)this.s.dy());
+         float $$0 = (float)this.s.dq().h();
+         if ($$0 >= 0.01F && this.s.dN().r().i()) {
+            this.t = atm.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = atm.i(atm.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

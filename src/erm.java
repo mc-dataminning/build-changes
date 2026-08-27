@@ -1,53 +1,41 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class erm extends err {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ur c = ur.c("mco.configure.world.closing");
-   private final eor d;
-   private final eqa e;
-
-   public erm(eor $$0, eqa $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void run() {
-      eoa $$0 = eoa.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.e();
-               this.d.e = eor.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (epo var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+public interface erm {
+   erm a = new erm() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   @Override
-   public ur a() {
-      return c;
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static erm a(final int $$0) {
+      return new erm() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ewj {
+public interface ewj {
+   default int aK_() {
+      return 0;
+   }
 }

@@ -1,70 +1,23 @@
-public abstract class csx {
-   public static final agf<csq> a = a("the_void");
-   public static final agf<csq> b = a("plains");
-   public static final agf<csq> c = a("sunflower_plains");
-   public static final agf<csq> d = a("snowy_plains");
-   public static final agf<csq> e = a("ice_spikes");
-   public static final agf<csq> f = a("desert");
-   public static final agf<csq> g = a("swamp");
-   public static final agf<csq> h = a("mangrove_swamp");
-   public static final agf<csq> i = a("forest");
-   public static final agf<csq> j = a("flower_forest");
-   public static final agf<csq> k = a("birch_forest");
-   public static final agf<csq> l = a("dark_forest");
-   public static final agf<csq> m = a("old_growth_birch_forest");
-   public static final agf<csq> n = a("old_growth_pine_taiga");
-   public static final agf<csq> o = a("old_growth_spruce_taiga");
-   public static final agf<csq> p = a("taiga");
-   public static final agf<csq> q = a("snowy_taiga");
-   public static final agf<csq> r = a("savanna");
-   public static final agf<csq> s = a("savanna_plateau");
-   public static final agf<csq> t = a("windswept_hills");
-   public static final agf<csq> u = a("windswept_gravelly_hills");
-   public static final agf<csq> v = a("windswept_forest");
-   public static final agf<csq> w = a("windswept_savanna");
-   public static final agf<csq> x = a("jungle");
-   public static final agf<csq> y = a("sparse_jungle");
-   public static final agf<csq> z = a("bamboo_jungle");
-   public static final agf<csq> A = a("badlands");
-   public static final agf<csq> B = a("eroded_badlands");
-   public static final agf<csq> C = a("wooded_badlands");
-   public static final agf<csq> D = a("meadow");
-   public static final agf<csq> E = a("cherry_grove");
-   public static final agf<csq> F = a("grove");
-   public static final agf<csq> G = a("snowy_slopes");
-   public static final agf<csq> H = a("frozen_peaks");
-   public static final agf<csq> I = a("jagged_peaks");
-   public static final agf<csq> J = a("stony_peaks");
-   public static final agf<csq> K = a("river");
-   public static final agf<csq> L = a("frozen_river");
-   public static final agf<csq> M = a("beach");
-   public static final agf<csq> N = a("snowy_beach");
-   public static final agf<csq> O = a("stony_shore");
-   public static final agf<csq> P = a("warm_ocean");
-   public static final agf<csq> Q = a("lukewarm_ocean");
-   public static final agf<csq> R = a("deep_lukewarm_ocean");
-   public static final agf<csq> S = a("ocean");
-   public static final agf<csq> T = a("deep_ocean");
-   public static final agf<csq> U = a("cold_ocean");
-   public static final agf<csq> V = a("deep_cold_ocean");
-   public static final agf<csq> W = a("frozen_ocean");
-   public static final agf<csq> X = a("deep_frozen_ocean");
-   public static final agf<csq> Y = a("mushroom_fields");
-   public static final agf<csq> Z = a("dripstone_caves");
-   public static final agf<csq> aa = a("lush_caves");
-   public static final agf<csq> ab = a("deep_dark");
-   public static final agf<csq> ac = a("nether_wastes");
-   public static final agf<csq> ad = a("warped_forest");
-   public static final agf<csq> ae = a("crimson_forest");
-   public static final agf<csq> af = a("soul_sand_valley");
-   public static final agf<csq> ag = a("basalt_deltas");
-   public static final agf<csq> ah = a("the_end");
-   public static final agf<csq> ai = a("end_highlands");
-   public static final agf<csq> aj = a("end_midlands");
-   public static final agf<csq> ak = a("small_end_islands");
-   public static final agf<csq> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static agf<csq> a(String $$0) {
-      return agf.a(jz.ar, new agg($$0));
+public class csx {
+   public static final Codec<csx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(js.aT.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, csx::new)
+   );
+   private final jq b;
+   private final float c;
+
+   public csx(jq $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public jq a() {
+      return this.b;
+   }
+
+   public boolean a(ats $$0) {
+      return $$0.i() <= this.c;
    }
 }

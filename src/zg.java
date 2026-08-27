@@ -12,7 +12,7 @@ public class zg implements wk<yd> {
    private final float g;
    private final float h;
 
-   public zg(double $$0, double $$1, double $$2, float $$3, List<ht> $$4, @Nullable eji $$5) {
+   public zg(double $$0, double $$1, double $$2, float $$3, List<ht> $$4, @Nullable eju $$5) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -34,9 +34,9 @@ public class zg implements wk<yd> {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readFloat();
-      int $$1 = ati.a(this.a);
-      int $$2 = ati.a(this.b);
-      int $$3 = ati.a(this.c);
+      int $$1 = atm.a(this.a);
+      int $$2 = atm.a(this.b);
+      int $$3 = atm.a(this.c);
       this.e = $$0.a((tu.a<ht>)($$3x -> {
          int $$4 = $$3x.readByte() + $$1;
          int $$5 = $$3x.readByte() + $$2;
@@ -54,9 +54,9 @@ public class zg implements wk<yd> {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      int $$1 = ati.a(this.a);
-      int $$2 = ati.a(this.b);
-      int $$3 = ati.a(this.c);
+      int $$1 = atm.a(this.a);
+      int $$2 = atm.a(this.b);
+      int $$3 = atm.a(this.c);
       $$0.a(this.e, ($$3x, $$4) -> {
          int $$5 = $$4.u() - $$1;
          int $$6 = $$4.v() - $$2;

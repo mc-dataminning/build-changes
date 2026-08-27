@@ -1,44 +1,27 @@
-import java.util.stream.Stream;
+public interface cld {
+   int a = 256;
+   int b = 140;
+   agh<clb> c = a("ponder_goat_horn");
+   agh<clb> d = a("sing_goat_horn");
+   agh<clb> e = a("seek_goat_horn");
+   agh<clb> f = a("feel_goat_horn");
+   agh<clb> g = a("admire_goat_horn");
+   agh<clb> h = a("call_goat_horn");
+   agh<clb> i = a("yearn_goat_horn");
+   agh<clb> j = a("dream_goat_horn");
 
-public class cld {
-   public static bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      $$1.c($$2);
-      return bir.b($$1.b($$2));
+   private static agh<clb> a(String $$0) {
+      return agh.a(jz.C, new agi($$0));
    }
 
-   public static clb a(clb $$0, cdm $$1, clb $$2, boolean $$3) {
-      boolean $$4 = $$1.fT().d;
-      if ($$3 && $$4) {
-         if (!$$1.fS().h($$2)) {
-            $$1.fS().e($$2);
-         }
-
-         return $$0;
-      } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
-
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fS().e($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
-   }
-
-   public static clb a(clb $$0, cdm $$1, clb $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(caf $$0, Stream<clb> $$1) {
-      crs $$2 = $$0.dL();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new caf($$2, $$0.dq(), $$0.ds(), $$0.dw(), $$2x)));
-      }
+   static clb a(io<clb> $$0) {
+      io.a($$0, c, new clb((ib<aqq>)aqr.lx.get(0), 140, 256.0F));
+      io.a($$0, d, new clb((ib<aqq>)aqr.lx.get(1), 140, 256.0F));
+      io.a($$0, e, new clb((ib<aqq>)aqr.lx.get(2), 140, 256.0F));
+      io.a($$0, f, new clb((ib<aqq>)aqr.lx.get(3), 140, 256.0F));
+      io.a($$0, g, new clb((ib<aqq>)aqr.lx.get(4), 140, 256.0F));
+      io.a($$0, h, new clb((ib<aqq>)aqr.lx.get(5), 140, 256.0F));
+      io.a($$0, i, new clb((ib<aqq>)aqr.lx.get(6), 140, 256.0F));
+      return io.a($$0, j, new clb((ib<aqq>)aqr.lx.get(7), 140, 256.0F));
    }
 }

@@ -1,75 +1,33 @@
-public class eqc extends ghe {
-   private static final ur a = ur.c("mco.selectServer.create");
-   private static final ur b = ur.c("mco.configure.world.name");
-   private static final ur c = ur.c("mco.configure.world.description");
-   private static final int v = 10;
-   private static final int w = 210;
-   private final env x;
-   private final exw y = new exw(this);
-   private euv z;
-   private euv A;
-   private final Runnable B;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-   public eqc(env $$0, eor $$1) {
-      super(a);
-      this.x = $$0;
-      this.B = () -> this.a($$1);
+public class eqc {
+   public final erl a = new erl(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<erl.e<?>> h;
+   public final erl.e<List<epc>> b;
+   public final erl.e<eqc.a> c;
+   public final erl.e<Integer> d;
+   public final erl.e<Boolean> e;
+   public final erl.e<epb> f;
+   public final eqd g = new eqd(new err());
+
+   public eqc(eom $$0) {
+      this.c = this.a.a("server list", () -> {
+         epf $$1 = $$0.b();
+         return eoh.b() ? new eqc.a($$1.a, $$0.c()) : new eqc.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), erm.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), erm.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), erm.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), erm.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), erm.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   public eqc(env $$0, long $$1) {
-      super(a);
-      this.x = $$0;
-      this.B = () -> this.a($$1);
+   public List<erl.e<?>> a() {
+      return this.h;
    }
 
-   @Override
-   public void aO_() {
-      this.y.a(new evt(this.e, this.i));
-      eya $$0 = this.y.c(eya.d()).a(10);
-      eum $$1 = eum.a(uq.j, $$0x -> this.B.run()).a();
-      $$1.i = false;
-      this.z = new euv(this.i, 210, 20, b);
-      this.z.b($$1x -> $$1.i = !ac.b($$1x));
-      this.A = new euv(this.i, 210, 20, c);
-      $$0.a(exs.a(this.i, this.z, b));
-      $$0.a(exs.a(this.i, this.A, c));
-      eya $$2 = this.y.b(eya.e().a(10));
-      $$2.a($$1);
-      $$2.a(eum.a(uq.k, $$0x -> this.aE_()).a());
-      this.y.a($$1x -> {
-         euk var10000 = this.d($$1x);
-      });
-      this.c();
-      this.c(this.z);
-   }
-
-   @Override
-   protected void c() {
-      this.y.a();
-   }
-
-   private void a(eor $$0) {
-      erz $$1 = new erz($$0.a, this.z.a(), this.A.a());
-      eqp $$2 = eqp.a(this, $$0, $$1, () -> this.f.execute(() -> {
-            env.f();
-            this.f.a(this.x);
-         }));
-      this.f.a($$2);
-   }
-
-   private void a(long $$0) {
-      fah $$1 = new eqo($$1x -> {
-         if ($$1x == null) {
-            this.f.a(this);
-         } else {
-            this.f.a(new eqh(this, new ero(this.x, $$0, $$1x, this.z.a(), this.A.a())));
-         }
-      }, a);
-      this.f.a($$1);
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.x);
+   public static record a(List<epd> a, List<epd> b) {
    }
 }

@@ -1,33 +1,18 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record eil(String b) implements ein {
-   public static final Codec<eil> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eil::c)).apply($$0, eil::new));
+public class eil {
+   private static final Codec<eik> d = jy.K.q().dispatch(eik::a, eij::a);
+   public static final Codec<eik> a = asu.a(
+      (Supplier<Codec<eik>>)(() -> Codec.either(eii.c, d)
+            .xmap($$0 -> (eik)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eii $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final eij b = a("storage", eim.a);
+   public static final eij c = a("context", eii.b);
 
-   public static ein a(String $$0) {
-      return new eil($$0);
-   }
-
-   @Override
-   public eim a() {
-      return eio.b;
-   }
-
-   @Nullable
-   @Override
-   public String a(eel $$0) {
-      return this.b;
-   }
-
-   @Override
-   public Set<egt<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   private static eij a(String $$0, Codec<? extends eik> $$1) {
+      return io.a(jy.K, new agi($$0), new eij($$1));
    }
 }

@@ -1,4 +1,4 @@
-public class adv implements wk<acj> {
+public class adv implements wk<acl> {
    private final int a;
 
    public adv(int $$0) {
@@ -6,15 +6,15 @@ public class adv implements wk<acj> {
    }
 
    public adv(tu $$0) {
-      this.a = $$0.readShort();
+      this.a = $$0.n();
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.l(this.a);
+      $$0.c(this.a);
    }
 
-   public void a(acj $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
    }
 

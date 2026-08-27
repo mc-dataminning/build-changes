@@ -1,18 +1,47 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ehz {
-   private static final Codec<ehy> d = jy.K.q().dispatch(ehy::a, ehx::a);
-   public static final Codec<ehy> a = asq.a(
-      (Supplier<Codec<ehy>>)(() -> Codec.either(ehw.c, d)
-            .xmap($$0 -> (ehy)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ehw $$1 ? Either.left($$1) : Either.right($$0)))
+public record ehz(Optional<bq> b, eex.b c) implements ehw {
+   public static final Codec<ehz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asu.a(bq.a, "predicate").forGetter(ehz::c), eex.b.e.fieldOf("entity").forGetter(ehz::d)).apply($$0, ehz::new)
    );
-   public static final ehx b = a("storage", eia.a);
-   public static final ehx c = a("context", ehw.b);
 
-   private static ehx a(String $$0, Codec<? extends ehy> $$1) {
-      return io.a(jy.K, new agg($$0), new ehx($$1));
+   @Override
+   public ehx b() {
+      return ehy.g;
+   }
+
+   @Override
+   public Set<ehf<?>> a() {
+      return ImmutableSet.of(ehi.f, this.c.a());
+   }
+
+   public boolean a(eex $$0) {
+      bkq $$1 = $$0.c(this.c.a());
+      eju $$2 = $$0.c(ehi.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   }
+
+   public static ehw.a a(eex.b $$0) {
+      return a($$0, bq.a.a());
+   }
+
+   public static ehw.a a(eex.b $$0, bq.a $$1) {
+      return () -> new ehz(Optional.of($$1.b()), $$0);
+   }
+
+   public static ehw.a a(eex.b $$0, bq $$1) {
+      return () -> new ehz(Optional.of($$1), $$0);
+   }
+
+   public Optional<bq> c() {
+      return this.b;
+   }
+
+   public eex.b d() {
+      return this.c;
    }
 }

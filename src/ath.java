@@ -1,49 +1,15 @@
+import com.google.common.base.Suppliers;
 import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
 
-public record ath(ath.a a, String b) {
-   public static ath a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new ath(ath.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new ath(ath.a.b, $$2 + " jar signature invalidated")
-            : new ath(ath.a.a, $$2 + " jar signature and brand is untouched");
-      }
+@Deprecated
+public class ath<T> {
+   private final Supplier<T> a;
+
+   public ath(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
    }
 
-   public boolean a() {
-      return this.a.e;
-   }
-
-   public ath a(ath $$0) {
-      return new ath((ath.a)ObjectUtils.max(new ath.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
-   }
-
-   public String b() {
-      return this.a.d + " " + this.b;
-   }
-
-   public ath.a c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(String $$0, boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public T a() {
+      return this.a.get();
    }
 }

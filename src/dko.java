@@ -1,15 +1,8 @@
-public interface dko {
-   dko a = new dko() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bki.c $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bki.c var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dko {
 }

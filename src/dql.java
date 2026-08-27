@@ -1,108 +1,194 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dql extends dpj<dsd> {
-   public dql(Codec<dsd> $$0) {
+public class dql extends dpv<dsc> {
+   public dql(Codec<dsc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<dsd> $$0) {
-      csm $$1 = $$0.b();
+   public boolean a(dpx<dsc> $$0) {
+      csu $$1 = $$0.b();
       ht $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
+      dsc $$3 = $$0.f();
+      ats $$4 = $$0.d();
+      if (!dpr.a($$1, $$2)) {
          return false;
       } else {
-         ato $$3 = $$0.d();
-         ht $$4 = $$0.e();
-         dsd $$5 = $$0.f();
-         ht.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         Optional<dmh> $$5 = dmh.a($$1, $$2, $$3.b, dpr::c, dpr::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dmh.b) {
+            dmh.b $$6 = (dmh.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = atm.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = atm.b($$4, $$3.c.a(), $$8);
+               dql.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dql.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dql.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dql.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dql.b.a();
+               }
 
-         return true;
-      }
-   }
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
 
-   private static boolean a(csm $$0, dsd $$1, ht $$2) {
-      ht.a $$3 = $$2.j();
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
 
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(hx.b);
-         dgw $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
+               return true;
+            }
+         } else {
             return false;
          }
       }
-
-      return true;
    }
 
-   private static boolean a(dgw $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(arh.a);
+   private static dql.a a(ht $$0, boolean $$1, ats $$2, int $$3, bia $$4, bia $$5) {
+      return new dql.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(csu $$0, ht $$1, dmh.b $$2, dql.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), cvc.cz.o(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), cvc.ch.o(), 2);
+
+      for (ht.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(hx.b)) {
+         ht $$5 = $$3.a($$4);
+         if (dpr.a($$0, $$5) || $$0.a_($$5).a(cvc.su)) {
+            $$0.a($$5, cvc.gM.o(), 2);
+         }
       }
    }
 
-   private static boolean a(csm $$0, dit $$1, dsd $$2, ato $$3, ht.a $$4, ht $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(hx.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            ht $$7 = $$4.d();
-            if ($$0.b_($$7).a(arh.b) || !$$0.a_($$7).e()) {
-               return false;
+   static final class a {
+      private ht a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(ht $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(csu $$0, dql.b $$1) {
+         while (this.c > 1) {
+            ht.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(cvc.H)) {
+                  return false;
+               }
+
+               if (dpr.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? hx.a : hx.b);
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dpr.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(csu $$0, ats $$1, dql.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = atm.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * atm.b($$1, 0.8F, 1.0F));
+                     }
+
+                     ht.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dmr.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        ht $$11 = $$2.a($$7);
+                        if (dpr.b($$0, $$11)) {
+                           $$8 = true;
+                           cva $$12 = cvc.su;
+                           $$0.a($$11, $$12.o(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(arg.bd)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? hx.b : hx.a);
+                     }
+                  }
+               }
             }
          }
       }
 
-      return false;
-   }
-
-   private static void a(ht $$0, int $$1, csm $$2, dsd $$3, ato $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      ht.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      boolean a(dsc $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
       }
    }
 
-   private static void a(csm $$0, dsd $$1, ato $$2, int $$3, int $$4, ht.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dgw> $$7 = $$1x -> $$1x.a($$1.e);
+   static final class b {
+      private final int a;
+      @Nullable
+      private final eju b;
 
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
+      b(int $$0, ats $$1, bia $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = atm.b($$1, 0.0F, (float) Math.PI);
+         this.b = new eju((double)(atm.b($$4) * $$3), 0.0, (double)(atm.a($$4) * $$3));
       }
-   }
 
-   private static void a(csm $$0, dsd $$1, ato $$2, ht $$3, ht.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
 
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.t($$4)) {
-            dgw $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, hx.a)) {
-               $$0.a($$4, $$8, 2);
-            }
+      static dql.b a() {
+         return new dql.b();
+      }
+
+      ht a(ht $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            eju $$2 = this.b.a((double)$$1);
+            return $$0.b(atm.a($$2.c), 0, atm.a($$2.e));
          }
       }
    }

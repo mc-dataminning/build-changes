@@ -1,55 +1,14 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class apb {
-   private final anr a;
-   private final aov<InputStream> b;
-   private final aov<apf> c;
-   @Nullable
-   private apf d;
+public interface apb {
+   CompletableFuture<Void> a(apb.a var1, aph var2, bfo var3, bfo var4, Executor var5, Executor var6);
 
-   public apb(anr $$0, aov<InputStream> $$1, aov<apf> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   public apb(anr $$0, aov<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = apf.b;
-      this.d = apf.a;
-   }
-
-   public anr a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.a.a();
-   }
-
-   public boolean c() {
-      return this.a.b();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public apf f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
 }

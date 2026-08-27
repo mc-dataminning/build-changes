@@ -22,13 +22,13 @@ public interface vn {
    boolean updateAndValidate(vh var1);
 
    public static class a implements vn {
-      private final att d;
+      private final aty d;
       private final BooleanSupplier e;
       @Nullable
       private vh f;
       private boolean g = true;
 
-      public a(att $$0, BooleanSupplier $$1) {
+      public a(aty $$0, BooleanSupplier $$1) {
          this.d = $$0;
          this.e = $$1;
       }

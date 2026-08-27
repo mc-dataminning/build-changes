@@ -65,7 +65,7 @@ public interface ur extends Message, uw {
       return new vf(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   asu g();
+   asy g();
 
    @Override
    default <T> Optional<T> a(uw.b<T> $$0, vo $$1) {
@@ -195,11 +195,11 @@ public interface ur extends Message, uw {
       return b($$0.toString());
    }
 
-   static ur a(agg $$0) {
+   static ur a(agi $$0) {
       return b($$0.toString());
    }
 
-   static ur a(cqz $$0) {
+   static ur a(crh $$0) {
       return b($$0.toString());
    }
 

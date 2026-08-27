@@ -1,31 +1,40 @@
-import java.util.function.Predicate;
+public class clr extends cle {
+   private static final int a = 32;
 
-public abstract class clr extends ckw {
-   public static final Predicate<clb> c = $$0 -> $$0.a(ark.at);
-   public static final Predicate<clb> d = c.or($$0 -> $$0.a(cle.tB));
-
-   public clr(ckw.a $$0) {
+   public clr(cle.a $$0) {
       super($$0);
    }
 
-   public Predicate<clb> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<clb> b();
-
-   public static clb a(bky $$0, Predicate<clb> $$1) {
-      if ($$1.test($$0.b(bip.b))) {
-         return $$0.b(bip.b);
-      } else {
-         return $$1.test($$0.b(bip.a)) ? $$0.b(bip.a) : clb.b;
+   @Override
+   public clj a(clj $$0, csa $$1, blg $$2) {
+      if ($$2 instanceof amf $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(arb.c.b(this));
       }
+
+      if ($$2 instanceof cdu && !((cdu)$$2).fU().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.es();
+      }
+
+      return $$0.b() ? new clj(clm.qv) : $$0;
    }
 
    @Override
-   public int c() {
-      return 1;
+   public int b(clj $$0) {
+      return 32;
    }
 
-   public abstract int d();
+   @Override
+   public cnc c(clj $$0) {
+      return cnc.c;
+   }
+
+   @Override
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      return cll.a($$0, $$1, $$2);
+   }
 }

@@ -1,12 +1,23 @@
-public class epn extends Exception {
-   public final eoc a;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-   public epn(eoc $$0) {
+public class epn extends eps implements epm {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
+
+   public epn(String $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.b;
    }
 
    @Override
-   public String getMessage() {
-      return this.a.c();
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

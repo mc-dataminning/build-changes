@@ -13,5 +13,6 @@ public enum blk {
    l,
    m,
    n,
-   o;
+   o,
+   p;
 }

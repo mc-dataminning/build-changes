@@ -1,13 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bvn {
-   @Nullable
-   public static eji a(blh $$0, int $$1, int $$2, int $$3, eji $$4, double $$5) {
-      eji $$6 = $$4.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$7 = bvp.a($$0, $$1);
-      return bvs.a($$0, () -> {
-         ht $$7x = bvm.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bvp.a($$0, $$7x) ? $$7x : null;
-      });
+public class bvn extends bvl<blp> {
+   public static final int a = 10;
+   private static final bvs c = bvs.b().a(10.0).d();
+   private final cok d;
+
+   public bvn(cok $$0) {
+      this.d = $$0;
+   }
+
+   protected void a(ame $$0, blp $$1) {
+      bmg<?> $$2 = $$1.dP();
+      List<cdu> $$3 = $$0.w()
+         .stream()
+         .filter(bkt.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::f))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cdu $$4 = $$3.get(0);
+         $$2.a(buh.N, $$4);
+      } else {
+         $$2.b(buh.N);
+      }
+   }
+
+   private boolean a(cdu $$0) {
+      return this.a($$0.eU()) || this.a($$0.eV());
+   }
+
+   private boolean a(clj $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public Set<buh<?>> a() {
+      return ImmutableSet.of(buh.N);
    }
 }

@@ -1,26 +1,37 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class etf extends esp {
-   private final BooleanSupplier h;
+public enum etf {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public etf(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, emf.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<etf> e = asf.a(etf::a, values(), asf.a.b);
+   private final int f;
+   private final ur g;
+
+   private etf(int $$0, String $$1) {
+      this.f = $$0;
+      this.g = ur.c($$1);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int a() {
+      return this.f;
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   public ur b() {
+      return this.g;
+   }
+
+   public static etf a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

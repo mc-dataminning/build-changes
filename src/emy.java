@@ -1,101 +1,105 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
 public class emy {
-   private static final int a = 32768;
-   private final emy.a b;
-   private final String c;
-   private int d;
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<emv> b = new Long2ObjectOpenHashMap();
+   private final emw c;
 
-   protected emy(emy.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-   }
-
-   public void a(ena $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
-      }
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public static emy a(emy.a $$0, String $$1, InputStream $$2, String $$3, emr $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      emy $$6 = new emy($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
-   }
-
-   protected static int b(emy.a $$0, String $$1, InputStream $$2, String $$3, emr $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
+   public emy(emw $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
          }
       }
    }
 
-   protected int c() {
-      return this.d;
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+      }
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
+   @Nullable
+   public emv a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (emv)this.b.get($$0);
+   }
 
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, emy> f = Maps.newHashMap();
+   @Nullable
+   public emv a(ena $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
+      } else {
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         emv $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
 
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+         while (var12.hasNext()) {
+            emv $$9 = (emv)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
+            }
+         }
+
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
       }
+   }
 
-      public String a() {
-         return this.c;
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
       }
+   }
 
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, emy> c() {
-         return this.f;
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
       }
    }
 }

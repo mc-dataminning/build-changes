@@ -1,60 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dqn extends dpj<dse> {
+public class dqn extends dpv<dse> {
    public dqn(Codec<dse> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<dse> $$0) {
-      csm $$1 = $$0.b();
+   public boolean a(dpx<dse> $$0) {
+      csu $$1 = $$0.b();
       ht $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+      ats $$3 = $$0.d();
+      dse $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         dse $$3 = $$0.f();
-         ato $$4 = $$0.d();
-         dbn $$5 = dbn.b();
-         int $$6 = $$3.f() + $$3.d();
+         List<hx> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            ht.a $$6 = $$2.j();
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+            for (hx $$7 : $$5) {
+               $$6.g($$2);
+               List<hx> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dhi $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+            return false;
          }
-
-         ht $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, cuv.qH.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ht $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), hx.b)) {
-               $$1.a($$14, cuv.qI.o().a(dbm.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
       }
    }
 
-   private boolean a(crt $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dbi) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(cuv.G) || !$$2.u().b()) ? false : hx.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+   public static boolean a(csu $$0, ht $$1, dhi $$2, dse $$3, ats $$4, List<hx> $$5) {
+      ht.a $$6 = $$1.j();
+
+      for (hx $$7 : $$5) {
+         dhi $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dhi $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.x($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   private static boolean c(dhi $$0) {
+      return $$0.i() || $$0.a(cvc.G);
    }
 }

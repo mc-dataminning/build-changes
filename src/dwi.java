@@ -1,29 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dwi extends dwb {
-   public static final Codec<dwi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dwi::new)
-   );
-   private final int c;
+public class dwi extends dwo {
+   private static final dwi c = new dwi();
+   public static final Codec<dwi> a = Codec.unit(() -> c);
 
-   private dwi(int $$0) {
-      this.c = $$0;
-   }
-
-   public static dwi a(int $$0) {
-      return new dwi($$0);
+   public static dwi a() {
+      return c;
    }
 
    @Override
-   protected boolean a(dwa $$0, ato $$1, ht $$2) {
-      int $$3 = $$0.a(dmf.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dmf.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new ht($$3, $$2.v(), $$4));
    }
 
    @Override
-   public dwd<?> b() {
-      return dwd.d;
+   public dwp<?> b() {
+      return dwp.m;
    }
 }

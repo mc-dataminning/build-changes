@@ -8,8 +8,8 @@ public class de extends cw<de.a> {
       return new de.a($$1, $$3, $$4);
    }
 
-   public void a(amb $$0, bki $$1, eji $$2, int $$3) {
-      eel $$4 = bq.b($$0, $$1);
+   public void a(amf $$0, bkq $$1, eju $$2, int $$3) {
+      eex $$4 = bq.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -35,7 +35,7 @@ public class de extends cw<de.a> {
          return $$0;
       }
 
-      public boolean a(eel $$0, eji $$1, int $$2) {
+      public boolean a(eex $$0, eju $$1, int $$2) {
          return !this.a.d($$2) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }

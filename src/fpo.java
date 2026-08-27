@@ -1,36 +1,56 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class fpo extends fpj {
+   private float a;
 
-public class fpo implements bgn {
-   private final fqf a;
-   private final Set<bgl> b = new ObjectOpenHashSet();
-   private final bgt c = new bgt();
-
-   public fpo(LongSupplier $$0, fqf $$1) {
-      this.a = $$1;
-      this.b.add(bgu.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bgu.a());
-      this.b.add(bgl.a("totalChunks", bgk.f, this.a, fqf::i));
-      this.b.add(bgl.a("renderedChunks", bgk.f, this.a, fqf::k));
-      this.b.add(bgl.a("lastViewDistance", bgk.f, this.a, fqf::j));
-      ftf $$0 = this.a.h();
-      this.b.add(bgl.a("toUpload", bgk.g, $$0, ftf::c));
-      this.b.add(bgl.a("freeBufferCount", bgk.g, $$0, ftf::d));
-      this.b.add(bgl.a("toBatchCount", bgk.g, $$0, ftf::b));
-      if (end.a().isPresent()) {
-         this.b.add(bgl.a("gpuUtilization", bgk.i, esr.N(), esr::u));
-      }
+   fpo(flj $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public Set<bgl> a(Supplier<bff> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public fom b() {
+      return fom.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * atm.b(this.a));
+         this.l = this.l + (double)(0.6F * atm.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(ht.a(this.g, this.h, this.i)).a(arl.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
+         this.a = $$0;
+      }
+
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpo $$8 = new fpo($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

@@ -1,93 +1,70 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public interface dmz {
-   Codec<dmz> a = asq.a(dmz.b.d, asq.a(dmz.a.d, dmz.c.d)).xmap(dmz::a, dmz::a);
-   dmz b = b(0);
-   dmz c = c(0);
+public record dmz(int g, int h, int i, int j) {
+   public static final Codec<dmz> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dkr.e, dkr.d).fieldOf("min_y").forGetter(dmz::c),
+                  Codec.intRange(0, dkr.c).fieldOf("height").forGetter(dmz::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dmz::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dmz::f)
+               )
+               .apply($$0, dmz::new)
+      )
+      .comapFlatMap(dmz::a, Function.identity());
+   protected static final dmz b = a(-64, 384, 1, 2);
+   protected static final dmz c = a(0, 128, 1, 2);
+   protected static final dmz d = a(0, 128, 2, 1);
+   protected static final dmz e = a(-64, 192, 1, 2);
+   protected static final dmz f = a(0, 256, 2, 1);
 
-   static dmz a(int $$0) {
-      return new dmz.b($$0);
-   }
-
-   static dmz b(int $$0) {
-      return new dmz.a($$0);
-   }
-
-   static dmz c(int $$0) {
-      return new dmz.c($$0);
-   }
-
-   static dmz a() {
-      return b;
-   }
-
-   static dmz b() {
-      return c;
-   }
-
-   private static dmz a(Either<dmz.b, Either<dmz.a, dmz.c>> $$0) {
-      return (dmz)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
-   }
-
-   private static Either<dmz.b, Either<dmz.a, dmz.c>> a(dmz $$0) {
-      return $$0 instanceof dmz.b ? Either.left((dmz.b)$$0) : Either.right($$0 instanceof dmz.a ? Either.left((dmz.a)$$0) : Either.right((dmz.c)$$0));
-   }
-
-   int a(dnc var1);
-
-   public static record a(int e) implements dmz {
-      public static final Codec<dmz.a> d = Codec.intRange(dkf.e, dkf.d).fieldOf("above_bottom").xmap(dmz.a::new, dmz.a::c).codec();
-
-      @Override
-      public int a(dnc $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
+   private static DataResult<dmz> a(dmz $$0) {
+      if ($$0.c() + $$0.d() > dkr.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dkr.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
    }
 
-   public static record b(int e) implements dmz {
-      public static final Codec<dmz.b> d = Codec.intRange(dkf.e, dkf.d).fieldOf("absolute").xmap(dmz.b::new, dmz.b::c).codec();
-
-      @Override
-      public int a(dnc $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   public static dmz a(int $$0, int $$1, int $$2, int $$3) {
+      dmz $$4 = new dmz($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   public static record c(int e) implements dmz {
-      public static final Codec<dmz.c> d = Codec.intRange(dkf.e, dkf.d).fieldOf("below_top").xmap(dmz.c::new, dmz.c::c).codec();
+   public int a() {
+      return in.c(this.f());
+   }
 
-      @Override
-      public int a(dnc $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
+   public int b() {
+      return in.c(this.e());
+   }
 
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
+   public dmz a(csc $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.ak()) - $$1;
+      return new dmz($$1, $$2, this.i, this.j);
+   }
 
-      public int c() {
-         return this.e;
-      }
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

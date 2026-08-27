@@ -1,53 +1,40 @@
-public class foh extends fow {
-   protected final foq a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
-
-   protected foh(fkw $$0, double $$1, double $$2, double $$3, foq $$4, float $$5) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
-      this.a = $$4;
-   }
-
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
-   }
-
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
+public class foh extends fpj {
+   foh(flj $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, atm.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, atm.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, atm.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
    @Override
-   public fnz b() {
-      return fnz.c;
+   public fom b() {
+      return fom.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
-         }
+   public float b(float $$0) {
+      return this.D * atm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foh $$8 = new foh($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

@@ -1,24 +1,17 @@
-public class cju extends ckw {
-   public cju(ckw.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cju extends cle {
+   public cju(cle.a $$0) {
       super($$0);
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.gK, aqo.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cem $$4 = new cem($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      $$2.add(this.d().a(n.h));
+   }
 
-      $$1.b(aqx.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
-
-      return bir.a($$3, $$0.x_());
+   public vf d() {
+      return ur.c(this.a() + ".desc");
    }
 }

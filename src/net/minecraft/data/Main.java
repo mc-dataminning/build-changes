@@ -49,8 +49,8 @@ public class Main {
    public static ke a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
       ke $$9 = new ke($$0, $$7, $$8);
       ke.a $$10 = $$9.a($$2 || $$3);
-      $$10.a($$1x -> new nm($$1x, $$1).a(new nn()));
-      CompletableFuture<id.b> $$11 = CompletableFuture.supplyAsync(ni::a, ac.f());
+      $$10.a($$1x -> new nn($$1x, $$1).a(new no()));
+      CompletableFuture<id.b> $$11 = CompletableFuture.supplyAsync(nj::a, ac.f());
       ke.a $$12 = $$9.a($$2);
       $$12.a(lt::new);
       ke.a $$13 = $$9.a($$3);
@@ -58,9 +58,8 @@ public class Main {
       $$13.a(a(kl::a, $$11));
       $$13.a(lm::a);
       $$13.a(ne::new);
-      od<cut> $$14 = $$13.a(a(oh::new, $$11));
-      od<ckw> $$15 = $$13.a($$2x -> new oi($$2x, $$11, $$14.c()));
-      $$13.a(a(np::new, $$11));
+      oe<cva> $$14 = $$13.a(a(oi::new, $$11));
+      oe<cle> $$15 = $$13.a($$2x -> new oj($$2x, $$11, $$14.c()));
       $$13.a(a(nq::new, $$11));
       $$13.a(a(nr::new, $$11));
       $$13.a(a(ns::new, $$11));
@@ -69,12 +68,13 @@ public class Main {
       $$13.a(a(nv::new, $$11));
       $$13.a(a(nw::new, $$11));
       $$13.a(a(nx::new, $$11));
-      $$13.a(a(oa::new, $$11));
+      $$13.a(a(ny::new, $$11));
       $$13.a(a(ob::new, $$11));
       $$13.a(a(oc::new, $$11));
-      $$13.a(a(oj::new, $$11));
+      $$13.a(a(od::new, $$11));
+      $$13.a(a(ok::new, $$11));
       $$13 = $$9.a($$4);
-      $$13.a($$1x -> new nk($$1x, $$1));
+      $$13.a($$1x -> new nl($$1x, $$1));
       $$13 = $$9.a($$5);
       $$13.a(a(ks::new, $$11));
       $$13.a(kt::new);
@@ -82,19 +82,19 @@ public class Main {
       $$13.a(kv::new);
       $$13 = $$9.a($$3, "bundle");
       $$13.a(nc::new);
-      $$13.a($$0x -> lp.a($$0x, ur.c("dataPack.bundle.description"), cfv.a(cfx.b)));
+      $$13.a($$0x -> lp.a($$0x, ur.c("dataPack.bundle.description"), cgd.a(cgf.b)));
       $$13 = $$9.a($$3, "trade_rebalance");
-      $$13.a($$0x -> lp.a($$0x, ur.c("dataPack.trade_rebalance.description"), cfv.a(cfx.d)));
+      $$13.a($$0x -> lp.a($$0x, ur.c("dataPack.trade_rebalance.description"), cgd.a(cgf.d)));
       $$13.a(ld::a);
-      $$13.a(a(oe::new, $$11));
-      CompletableFuture<id.b> $$20 = nh.a($$11);
+      $$13.a(a(of::new, $$11));
+      CompletableFuture<id.b> $$20 = ni.a($$11);
       ke.a $$21 = $$9.a($$3, "update_1_21");
       $$21.a(nd::new);
-      od<cut> $$22 = $$21.a($$2x -> new of($$2x, $$20, $$14.c()));
-      $$21.a($$3x -> new og($$3x, $$20, $$15.c(), $$22.c()));
+      oe<cva> $$22 = $$21.a($$2x -> new og($$2x, $$20, $$14.c()));
+      $$21.a($$3x -> new oh($$3x, $$20, $$15.c(), $$22.c()));
       $$21.a(lf::a);
       $$21.a(a(ng::new, $$20));
-      $$21.a($$0x -> lp.a($$0x, ur.c("dataPack.update_1_21.description"), cfv.a(cfx.c)));
+      $$21.a($$0x -> lp.a($$0x, ur.c("dataPack.update_1_21.description"), cgd.a(cgf.c)));
       return $$9;
    }
 }

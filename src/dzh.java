@@ -1,62 +1,80 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class dzh extends dwv {
-   public static final Codec<dzh> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a($$0),
-               dzh.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzh::new)
-   );
-   public final dzh.a e;
-   public final float f;
-   public final float g;
+public final class dzh extends dxh {
+   public static final int d = 128;
+   public static final Codec<dzh> e = asu.<dzh>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     a($$0),
+                     dyq.b.fieldOf("start_pool").forGetter($$0x -> $$0x.f),
+                     agi.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.g),
+                     Codec.intRange(0, 7).fieldOf("size").forGetter($$0x -> $$0x.h),
+                     dvo.c.fieldOf("start_height").forGetter($$0x -> $$0x.i),
+                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.j),
+                     dmr.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.k),
+                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.l),
+                     Codec.list(dys.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.m)
+                  )
+                  .apply($$0, dzh::new)
+         ),
+         dzh::a
+      )
+      .codec();
+   private final ib<dyq> f;
+   private final Optional<agi> g;
+   private final int h;
+   private final dvo i;
+   private final boolean j;
+   private final Optional<dmr.a> k;
+   private final int l;
+   private final List<dys> m;
 
-   public dzh(dwv.c $$0, dzh.a $$1, float $$2, float $$3) {
+   private static DataResult<dzh> a(dzh $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d -> 12;
+      };
+      return $$0.l + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   }
+
+   public dzh(dxh.c $$0, ib<dyq> $$1, Optional<agi> $$2, int $$3, dvo $$4, boolean $$5, Optional<dmr.a> $$6, int $$7, List<dys> $$8) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+      this.m = $$8;
+   }
+
+   public dzh(dxh.c $$0, ib<dyq> $$1, int $$2, dvo $$3, boolean $$4, dmr.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of());
+   }
+
+   public dzh(dxh.c $$0, ib<dyq> $$1, int $$2, dvo $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of());
    }
 
    @Override
-   public Optional<dwv.b> a(dwv.a $$0) {
-      return a($$0, dmf.a.c, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dxn $$0, dwv.a $$1) {
-      ht $$2 = new ht($$1.h().d(), 90, $$1.h().e());
-      dbf $$3 = dbf.a($$1.f());
-      dzg.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   public Optional<dxh.b> a(dxh.a $$0) {
+      crh $$1 = $$0.h();
+      int $$2 = this.i.a($$0.f(), new dno($$0.b(), $$0.i()));
+      ht $$3 = new ht($$1.d(), $$2, $$1.e());
+      return dyk.a($$0, this.f, this.g, this.h, $$3, this.j, this.k, this.l, dyu.create(this.m, $$3, $$0.g()));
    }
 
    @Override
-   public dxe<?> e() {
-      return dxe.k;
+   public dxq<?> e() {
+      return dxq.f;
    }
 
-   public static enum a implements aub {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<dzh.a> c = aub.a(dzh.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public List<dys> f() {
+      return this.m;
    }
 }

@@ -21,13 +21,13 @@ public class ng implements kf {
    @Override
    public CompletableFuture<?> a(kd $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = age.a(JsonOps.INSTANCE, $$1);
-         return CompletableFuture.allOf(agb.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (agb.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         DynamicOps<JsonElement> $$2 = agg.a(JsonOps.INSTANCE, $$1);
+         return CompletableFuture.allOf(agd.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (agd.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(kd $$0, id.b $$1, DynamicOps<JsonElement> $$2, agb.b<T> $$3) {
-      agf<? extends io<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(kd $$0, id.b $$1, DynamicOps<JsonElement> $$2, agd.b<T> $$3) {
+      agh<? extends io<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          kh.a $$5 = this.e.a(kh.b.a, $$4.a().a());
          return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.g().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

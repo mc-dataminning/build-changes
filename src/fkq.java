@@ -1,25 +1,30 @@
 public class fkq {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ac.c();
+   public static final fkq a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   public void a() {
-      this.e = ac.c();
+   private fkq(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ac.c() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = ati.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
+   public static fkq a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public static fkq b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static fkq a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fkq($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

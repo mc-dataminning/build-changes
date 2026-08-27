@@ -1,89 +1,164 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class flv {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
+public class flv {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bhq<Runnable> b = bhq.a(ac.f(), "server-list-io");
+   private static final int c = 16;
+   private final etd d;
+   private final List<flu> e = Lists.newArrayList();
+   private final List<flu> f = Lists.newArrayList();
+
+   public flv(etd $$0) {
+      this.d = $$0;
+   }
+
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         rz $$0 = sm.a(new File(this.d.p, "servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         sf $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            rz $$3 = $$1.a($$2);
+            flu $$4 = flu.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
+   }
+
+   public void b() {
+      try {
+         sf $$0 = new sf();
+
+         for (flu $$1 : this.e) {
+            rz $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (flu $$3 : this.f) {
+            rz $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         rz $$5 = new rz();
+         $$5.a("servers", $$0);
+         File $$6 = File.createTempFile("servers", ".dat", this.d.p);
+         sm.b($$5, $$6);
+         File $$7 = new File(this.d.p, "servers.dat_old");
+         File $$8 = new File(this.d.p, "servers.dat");
+         ac.a($$8, $$6, $$7);
+      } catch (Exception var6) {
+         a.error("Couldn't save server list", var6);
+      }
+   }
+
+   public flu a(int $$0) {
+      return this.e.get($$0);
+   }
+
    @Nullable
-   protected flx e;
+   public flu a(String $$0) {
+      for (flu $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
 
-   public flv(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      for (flu $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   @Nullable
+   public flu b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         flu $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   public abstract flv b();
-
-   public abstract fah a(fah var1, flz var2);
-
-   public abstract static class a<R extends flv> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public flx h() {
-         return this.a.e;
-      }
-
-      public void a(flx $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract flv.b c();
-
-      public abstract Either<flv.c, flv.b> a(flz var1);
-   }
-
-   public static record b(ur e) {
-      public static final flv.b a = new flv.b(ur.c("gui.abuseReport.send.no_reason"));
-      public static final flv.b b = new flv.b(ur.c("gui.chatReport.send.no_reported_messages"));
-      public static final flv.b c = new flv.b(ur.c("gui.chatReport.send.too_many_messages"));
-      public static final flv.b d = new flv.b(ur.c("gui.abuseReport.send.comment_too_long"));
-
-      public evx a() {
-         return evx.a(this.e);
-      }
-
-      public ur b() {
-         return this.e;
+   public void a(flu $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
       }
    }
 
-   public static record c(UUID a, fly b, AbuseReport c) {
+   public void a(flu $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      flu $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, flu $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(flu $$0, List<flu> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         flu $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(flu $$0) {
+      b.a(() -> {
+         flv $$1 = new flv(etd.N());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

@@ -1,55 +1,66 @@
-public class chl<T extends cge> implements cfs {
-   public static final chl<cgl> a = a("generic_9x1", cgl::a);
-   public static final chl<cgl> b = a("generic_9x2", cgl::b);
-   public static final chl<cgl> c = a("generic_9x3", cgl::c);
-   public static final chl<cgl> d = a("generic_9x4", cgl::d);
-   public static final chl<cgl> e = a("generic_9x5", cgl::e);
-   public static final chl<cgl> f = a("generic_9x6", cgl::f);
-   public static final chl<cgx> g = a("generic_3x3", cgx::new);
-   public static final chl<cgs> h = a("crafter_3x3", cgs::new);
-   public static final chl<cgg> i = a("anvil", cgg::new);
-   public static final chl<cgh> j = a("beacon", cgh::new);
-   public static final chl<cgi> k = a("blast_furnace", cgi::new);
-   public static final chl<cgj> l = a("brewing_stand", cgj::new);
-   public static final chl<cgv> m = a("crafting", cgv::new);
-   public static final chl<cgy> n = a("enchantment", cgy::new);
-   public static final chl<cha> o = a("furnace", cha::new);
-   public static final chl<chc> p = a("grindstone", chc::new);
-   public static final chl<chd> q = a("hopper", chd::new);
-   public static final chl<chi> r = a("lectern", ($$0, $$1) -> new chi($$0));
-   public static final chl<chj> s = a("loom", chj::new);
-   public static final chl<chn> t = a("merchant", chn::new);
-   public static final chl<chw> u = a("shulker_box", chw::new);
-   public static final chl<cia> v = a("smithing", cia::new);
-   public static final chl<cib> w = a("smoker", cib::new);
-   public static final chl<cgk> x = a("cartography_table", cgk::new);
-   public static final chl<cid> y = a("stonecutter", cid::new);
-   private final cfv z;
-   private final chl.a<T> A;
+public class chl extends cgm {
+   public static final int k = 5;
+   private final biq l;
 
-   private static <T extends cge> chl<T> a(String $$0, chl.a<T> $$1) {
-      return io.a(jy.s, $$0, new chl<>($$1, cfx.g));
+   public chl(int $$0, cdt $$1) {
+      this($$0, $$1, new bje(5));
    }
 
-   private static <T extends cge> chl<T> a(String $$0, chl.a<T> $$1, cft... $$2) {
-      return io.a(jy.s, $$0, new chl<>($$1, cfx.e.a($$2)));
-   }
+   public chl(int $$0, cdt $$1, biq $$2) {
+      super(cht.q, $$0);
+      this.l = $$2;
+      a($$2, 5);
+      $$2.d_($$1.m);
+      int $$3 = 51;
 
-   private chl(chl.a<T> $$0, cfv $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         this.a(new cih($$2, $$4, 44 + $$4 * 18, 20));
+      }
 
-   public T a(int $$0, cdl $$1) {
-      return this.A.create($$0, $$1);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cih($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cih($$1, $$7, 8 + $$7 * 18, 109));
+      }
    }
 
    @Override
-   public cfv m() {
-      return this.z;
+   public boolean a(cdu $$0) {
+      return this.l.a($$0);
    }
 
-   interface a<T extends cge> {
-      T create(int var1, cdl var2);
+   @Override
+   public clj a(cdu $$0, int $$1) {
+      clj $$2 = clj.b;
+      cih $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.g()) {
+         clj $$4 = $$3.f();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return clj.b;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return clj.b;
+         }
+
+         if ($$4.b()) {
+            $$3.e(clj.b);
+         } else {
+            $$3.b();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cdu $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

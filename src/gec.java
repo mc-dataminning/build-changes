@@ -1,65 +1,57 @@
-public abstract class gec extends gdy {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final bwk n;
-   private boolean r;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public gec(bwk $$0, aqm $$1, aqo $$2) {
-      super($$1, $$2, gep.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dq());
-      this.g = (double)((float)$$0.ds());
-      this.h = (double)((float)$$0.dw());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class gec extends agi {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
+
+   private gec(String $$0, String $$1, String $$2, @Nullable agi.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public gec(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public gec(agi $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gec c(String $$0, String $$1) {
+      return new gec("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         esr.N().ah().a((geq)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dG() && !this.r) {
-         this.f = (double)((float)this.n.dq());
-         this.g = (double)((float)this.n.ds());
-         this.h = (double)((float)this.n.dw());
-         float $$1 = (float)this.n.do().h();
-         if ($$1 >= 0.01F) {
-            this.e = ati.i(ati.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ati.i(ati.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gec && super.equals($$0)) {
+         gec $$1 = (gec)$$0;
+         return this.f.equals($$1.f);
       } else {
-         this.n();
+         return false;
       }
    }
 
-   private float u() {
-      return this.n.n_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.n_() ? 1.5F : 1.1F;
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
-
-   @Override
-   public boolean s() {
-      return !this.n.aS();
-   }
-
-   protected abstract gdy o();
-
-   protected abstract boolean p();
 }

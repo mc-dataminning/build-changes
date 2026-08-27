@@ -1,23 +1,40 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cmr extends cle {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cmr extends cip {
-   public cmr(ckw.a $$0) {
+   public cmr(cle.a $$0) {
       super($$0);
    }
 
    @Override
-   public clb al_() {
-      return cna.a(super.al_(), cnb.E);
+   public int b(clj $$0) {
+      return 1200;
    }
 
    @Override
-   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
-      cna.a($$0, $$2, 0.125F);
+   public cnc c(clj $$0) {
+      return cnc.h;
    }
 
    @Override
-   public String j(clb $$0) {
-      return cna.d($$0).b(this.a() + ".effect.");
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      $$1.a(aqr.xF, 1.0F, 1.0F);
+      $$1.b(arb.c.b(this));
+      return cll.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public clj a(clj $$0, csa $$1, blg $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(clj $$0, csa $$1, blg $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(blg $$0) {
+      $$0.a(aqr.xG, 1.0F, 1.0F);
    }
 }

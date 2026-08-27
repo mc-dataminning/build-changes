@@ -1,45 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class duh extends duf {
-   public static final Codec<duh> a = Codec.unit(() -> duh.b);
-   public static final duh b = new duh();
+public class duh extends dua {
+   public static final Codec<duh> b = dhi.b.fieldOf("state").xmap(dhh.a::b, cva::o).xmap(duh::new, $$0 -> $$0.c).codec();
+   private final cva c;
 
-   @Override
-   protected dug<?> a() {
-      return dug.a;
+   public duh(cva $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public void a(duf.a $$0) {
-      ato $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ht $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, ddl.d);
-            }
-         }
+   protected dub<?> a() {
+      return dub.f;
+   }
 
-         if ($$1.a(3) > 0) {
-            ht $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, ddl.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ht $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, ddl.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ht $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, ddl.c);
-            }
-         }
-      });
+   @Override
+   public dhi a(ats $$0, ht $$1) {
+      hx.a $$2 = hx.a.a($$0);
+      return this.c.o().a(dbl.i, $$2);
    }
 }

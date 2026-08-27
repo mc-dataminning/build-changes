@@ -27,7 +27,7 @@ public class tx extends ByteToMessageDecoder implements uc {
          if ($$8 == null) {
             throw new IOException("Bad packet id " + $$7);
          } else {
-            bfn.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            bfu.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
             if ($$6.readableBytes() > 0) {
                throw new IOException(
                   "Packet "

@@ -1,132 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cxj extends ctm<dfm> implements dbt {
-   public static final MapCodec<cxj> b = b(cxj::new);
-   public static final dhq c = cyo.aE;
-   public static final dhn d = dhm.C;
-   protected static final ekb e = cut.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final ur f = ur.c("container.enderchest");
+public class cxj extends cxw {
+   public static final MapCodec<cxj> a = b(cxj::new);
+   protected static final ekn b = cva.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cxj> a() {
+      return a;
+   }
+
+   public cxj(dhh.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
       return b;
    }
 
-   protected cxj(dgv.d $$0) {
-      super($$0, () -> det.d);
-      this.k(this.E.b().a(c, hx.c).a(d, Boolean.valueOf(false)));
+   @Override
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      this.d($$0, $$1, $$2);
+      return bix.a($$1.B);
    }
 
    @Override
-   public cwz.c<? extends dey> a(dgw $$0, crs $$1, ht $$2, boolean $$3) {
-      return cwz.b::b;
+   public void a(dhi $$0, csa $$1, ht $$2, cdu $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return e;
-   }
+   private void d(dhi $$0, csa $$1, ht $$2) {
+      diz $$3 = $$1.C_();
 
-   @Override
-   public day b_(dgw $$0) {
-      return day.b;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ht $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = atm.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = atm.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = atm.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(js.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   public dgw a(cnj $$0) {
-      ecg $$1 = $$0.q().b_($$0.a());
-      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == ech.c));
-   }
-
-   @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      chq $$6 = $$3.gf();
-      der $$7 = $$1.c_($$2);
-      if ($$6 != null && $$7 instanceof dfm) {
-         ht $$8 = $$2.c();
-         if ($$1.a_($$8).g($$1, $$8)) {
-            return biq.a($$1.B);
-         } else if ($$1.B) {
-            return biq.a;
-         } else {
-            dfm $$9 = (dfm)$$7;
-            $$6.a($$9);
-            $$3.a(new biy(($$1x, $$2x, $$3x) -> cgl.a($$1x, $$2x, $$6), f));
-            $$3.a(aqx.aj);
-            ccd.a($$3, true);
-            return biq.b;
+            return;
          }
-      } else {
-         return biq.a($$1.B);
       }
    }
 
    @Override
-   public der a(ht $$0, dgw $$1) {
-      return new dfm($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
-      return $$0.B ? a($$2, det.d, dfm::a) : null;
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(js.X, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
-
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dgw a(dgw $$0, czp $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public ecg c_(dgw $$0) {
-      return $$0.c(d) ? ech.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ech.c, ech.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
       return false;
-   }
-
-   @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      der $$4 = $$1.c_($$2);
-      if ($$4 instanceof dfm) {
-         ((dfm)$$4).c();
-      }
    }
 }

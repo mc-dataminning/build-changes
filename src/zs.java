@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record zs(int a, boolean b, Set<agf<crs>> c, int d, int e, int f, boolean g, boolean h, boolean i, acg j) implements wk<yd> {
+public record zs(int a, boolean b, Set<agh<csa>> c, int d, int e, int f, boolean g, boolean h, boolean i, aci j) implements wk<yd> {
    public zs(tu $$0) {
       this(
          $$0.readInt(),
@@ -13,7 +13,7 @@ public record zs(int a, boolean b, Set<agf<crs>> c, int d, int e, int f, boolean
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.readBoolean(),
-         new acg($$0)
+         new aci($$0)
       );
    }
 
@@ -39,7 +39,7 @@ public record zs(int a, boolean b, Set<agf<crs>> c, int d, int e, int f, boolean
       return this.b;
    }
 
-   public Set<agf<crs>> e() {
+   public Set<agh<csa>> e() {
       return this.c;
    }
 
@@ -67,7 +67,7 @@ public record zs(int a, boolean b, Set<agf<crs>> c, int d, int e, int f, boolean
       return this.i;
    }
 
-   public acg l() {
+   public aci l() {
       return this.j;
    }
 }

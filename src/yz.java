@@ -4,9 +4,9 @@ public class yz implements wk<yd> {
    private final int c;
    private final int d;
    private final int e;
-   private final clb f;
+   private final clj f;
 
-   public yz(int $$0, int $$1, int $$2, clb $$3) {
+   public yz(int $$0, int $$1, int $$2, clj $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -40,7 +40,7 @@ public class yz implements wk<yd> {
       return this.e;
    }
 
-   public clb e() {
+   public clj e() {
       return this.f;
    }
 

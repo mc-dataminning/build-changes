@@ -1,37 +1,26 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bto<T extends bky> extends btm<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class bto extends bsy {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public bto(ceu $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bky> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public bto(blp $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   public int i() {
-      return this.j;
+   public bto(blp $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
-   public void k() {
-      this.j--;
-   }
-
+   @Nullable
    @Override
-   public boolean a() {
-      if (this.j > 0 || !this.e.ef().h()) {
-         return false;
-      } else if (!((ceu)this.e).gt()) {
-         return false;
+   protected eju h() {
+      if (this.b.bc()) {
+         eju $$0 = bvz.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         this.h();
-         return this.c != null;
+         return this.b.eh().i() >= this.j ? bvz.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public void c() {
-      this.j = b(200);
-      super.c();
    }
 }

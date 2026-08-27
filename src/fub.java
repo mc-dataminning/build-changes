@@ -1,107 +1,104 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fub implements ftq.a {
-   private final esr a;
-   private final Map<agf<crs>, Map<String, dwn>> b = Maps.newIdentityHashMap();
-   private final Map<agf<crs>, Map<String, xr.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class fub implements fud.a {
+   final etd a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private fub.a d;
 
-   public fub(esr $$0) {
+   public fub(etd $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
-      esc $$5 = this.a.j.m();
-      agf<crs> $$6 = this.a.r.ac();
-      ht $$7 = ht.a($$5.b().c, 0.0, $$5.b().e);
-      eno $$8 = $$1.getBuffer(fqp.w());
-      if (this.b.containsKey($$6)) {
-         for (dwn $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.f(), 500.0)) {
-               fqf.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.g() - $$2,
-                  (double)$$9.h() - $$3,
-                  (double)$$9.i() - $$4,
-                  (double)($$9.j() + 1) - $$2,
-                  (double)($$9.k() + 1) - $$3,
-                  (double)($$9.l() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
+   public void a(enw $$0, fqu $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gft $$6 = this.a.S();
+         if ($$6 != null) {
+            this.d = new fub.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
          }
       }
 
-      Map<String, xr.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (xr.a $$11 : $$10.values()) {
-            dwn $$12 = $$11.a();
-            if ($$7.a($$12.f(), 500.0)) {
-               if ($$11.b()) {
-                  fqf.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
+      if (this.d != null) {
+         Map<crh, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
+
+         for (Entry<crh, String> $$9 : this.d.b.entrySet()) {
+            crh $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               fud.a($$0, $$1, $$14, (double)iu.a($$10.e, 8), $$8 + (double)$$13, (double)iu.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
+      }
+   }
+
+   final class a {
+      final Map<crh, String> b;
+      final CompletableFuture<Map<crh, String>> c;
+
+      a(gft $$0, double $$1, double $$2) {
+         flj $$3 = fub.this.a.r;
+         agh<csa> $$4 = $$3.ad();
+         int $$5 = iu.a($$1);
+         int $$6 = iu.a($$2);
+         Builder<crh, String> $$7 = ImmutableMap.builder();
+         flf $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               crh $$11 = new crh($$9, $$10);
+               String $$12 = "";
+               djp $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
                } else {
-                  fqf.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
                }
+
+               $$7.put($$11, $$12);
             }
          }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            ame $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<crh, String> $$5x = ImmutableMap.builder();
+               amc $$6x = $$4x.k();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     crh $$9x = new crh($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
-   }
-
-   public void a(dwn $$0, List<xr.a> $$1, agf<crs> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, xr.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (xr.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

@@ -1,120 +1,117 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ecy extends ecu {
-   private final boolean k;
-   private final Long2ObjectMap<ecr> l = new Long2ObjectOpenHashMap();
-
-   public ecy(boolean $$0) {
-      this.k = $$0;
+public abstract class ecy extends ecq {
+   @Override
+   public ecr d() {
+      return ect.b;
    }
 
    @Override
-   public void a(csf $$0, bla $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public ecr e() {
+      return ect.c;
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.l.clear();
+   public cle a() {
+      return clm.qw;
    }
 
    @Override
-   public ect a() {
-      return this.b(ati.a(this.b.cG().a), ati.a(this.b.cG().b + 0.5), ati.a(this.b.cG().c));
-   }
-
-   @Override
-   public ecz a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(ati.a($$0), ati.a($$1), ati.a($$2)));
-   }
-
-   @Override
-   public int a(ect[] $$0, ect $$1) {
-      int $$2 = 0;
-      Map<hx, ect> $$3 = Maps.newEnumMap(hx.class);
-
-      for (hx $$4 : hx.values()) {
-         ect $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.b($$5)) {
-            $$0[$$2++] = $$5;
+   public void a(csa $$0, ht $$1, ecs $$2, ats $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqr.Aw, aqs.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(js.ag, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-
-      for (hx $$6 : hx.c.a) {
-         hx $$7 = $$6.h();
-         ect $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
-            $$0[$$2++] = $$8;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(@Nullable ect $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   protected boolean a(@Nullable ect $$0, @Nullable ect $$1, @Nullable ect $$2) {
-      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
    }
 
    @Nullable
-   protected ect a(int $$0, int $$1, int $$2) {
-      ect $$3 = null;
-      ecr $$4 = this.c($$0, $$1, $$2);
-      if (this.k && $$4 == ecr.u || $$4 == ecr.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.b($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.b_(new ht($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   protected ecr c(int $$0, int $$1, int $$2) {
-      return (ecr)this.l.computeIfAbsent(ht.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   @Override
+   public jq h() {
+      return js.m;
    }
 
    @Override
-   public ecr a(cqy $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   protected boolean a(csa $$0) {
+      return $$0.Y().b(crw.U);
    }
 
    @Override
-   public ecr a(cqy $$0, int $$1, int $$2, int $$3, bla $$4) {
-      ht.a $$5 = new ht.a();
+   protected void a(csb $$0, ht $$1, dhi $$2) {
+      dfd $$3 = $$2.t() ? $$0.c_($$1) : null;
+      cva.a($$2, $$0, $$1, $$3);
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               ecg $$9 = $$0.b_($$5.d($$6, $$7, $$8));
-               dgw $$10 = $$0.a_($$5.d($$6, $$7, $$8));
-               if ($$9.c() && $$10.a($$0, $$5.d(), ecw.b) && $$10.i()) {
-                  return ecr.u;
-               }
+   @Override
+   public int b(csd $$0) {
+      return 4;
+   }
 
-               if (!$$9.a(arh.a)) {
-                  return ecr.a;
-               }
-            }
-         }
+   @Override
+   public dhi b(ecs $$0) {
+      return cvc.G.o().a(czp.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ecr $$0) {
+      return $$0 == ect.c || $$0 == ect.b;
+   }
+
+   @Override
+   public int c(csd $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(csd $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(ecs $$0, crg $$1, ht $$2, ecr $$3, hx $$4) {
+      return $$4 == hx.a && !$$3.a(arl.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<aqq> j() {
+      return Optional.of(aqr.cB);
+   }
+
+   public static class a extends ecy {
+      @Override
+      protected void a(dhj.a<ecr, ecs> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      dgw $$11 = $$0.a_($$5);
-      return $$11.a($$0, $$5, ecw.b) ? ecr.j : ecr.a;
+      @Override
+      public int d(ecs $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(ecs $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ecy {
+      @Override
+      public int d(ecs $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(ecs $$0) {
+         return true;
+      }
    }
 }

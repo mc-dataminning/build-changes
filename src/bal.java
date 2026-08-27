@@ -1,13 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
 
-public class bal {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class bal extends auy {
+   public bal(Schema $$0) {
+      super($$0, bat.b);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "PlayerUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> {
+            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
+            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
+               .update(DSL.remainderFinder(), $$0x -> axz.c(axz.b($$0x)));
+         }
+      );
+   }
 }

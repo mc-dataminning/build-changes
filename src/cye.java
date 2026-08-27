@@ -1,70 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
 
-public class cye extends dcj implements cuw {
+public class cye extends cva {
    public static final MapCodec<cye> a = b(cye::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
    public MapCodec<cye> a() {
       return a;
    }
 
-   public cye(dgv.d $$0) {
+   public cye(dhh.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      return $$0.a_($$1.c()).i();
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return true;
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return a($$1, $$2.d());
    }
 
    @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      ht $$4 = $$2.c();
-      dgw $$5 = cuv.bt.o();
-      Optional<ib.c<dvz>> $$6 = $$0.H_().d(jz.aA).b(ql.n);
+   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.E_()));
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ht $$8 = $$4;
+   private static int a(ats $$0) {
+      return $$0.b(g, h);
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return !this.a($$0, $$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         dgw $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((cuw)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
+   @Override
+   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((csa)$$1, $$2);
+      } else {
+         this.a($$1, $$2, $$3);
+      }
+   }
 
-         if ($$10.i()) {
-            ib<dvz> $$12;
-            if ($$1.a(8) == 0) {
-               List<dow<?, ?>> $$11 = $$0.s($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, bkq $$3) {
+      if ($$3.ai().equals(bku.L)) {
+         this.a($$1, $$2);
+      }
+   }
 
-               $$12 = ((dsa)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
+   private static boolean a(crg $$0, ht $$1) {
+      ecs $$2 = $$0.b_($$1);
+      ecs $$3 = $$0.b_($$1.c());
+      return $$2.a() == ect.c && $$3.a() == ect.a;
+   }
 
-               $$12 = $$6.get();
-            }
+   private void a(ame $$0, ht $$1, ats $$2) {
+      this.a((csa)$$0, $$1);
+      $$0.a(null, $$1, aqr.iV, aqs.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
 
-            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+   private void a(csa $$0, ht $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(ame $$0, ht $$1, ats $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         byj $$5 = bku.aW.a((csa)$$0);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.fK();
+            $$0.b($$5);
          }
       }
+   }
+
+   private double b(ats $$0) {
+      double $$1 = (double)(byj.c / 2.0F);
+      return atm.a($$0.j(), $$1, 1.0 - $$1);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

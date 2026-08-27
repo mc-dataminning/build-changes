@@ -1,14 +1,14 @@
 public class yp implements wk<yd> {
-   private final bin a;
+   private final biu a;
    private final boolean b;
 
-   public yp(bin $$0, boolean $$1) {
+   public yp(biu $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public yp(tu $$0) {
-      this.a = bin.a($$0.readUnsignedByte());
+      this.a = biu.a($$0.readUnsignedByte());
       this.b = $$0.readBoolean();
    }
 
@@ -26,7 +26,7 @@ public class yp implements wk<yd> {
       return this.b;
    }
 
-   public bin d() {
+   public biu d() {
       return this.a;
    }
 }

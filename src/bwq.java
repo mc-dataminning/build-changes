@@ -1,77 +1,110 @@
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class bwq extends bwj {
-   public bwq(bkm<? extends bwq> $$0, crs $$1) {
+public abstract class bwq extends bwo {
+   @Nullable
+   private bwq b;
+   private int c = 1;
+
+   public bwq(bku<? extends bwq> $$0, csa $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void z() {
-      this.bO.a(0, new brn(this));
-      this.bO.a(1, new bsm(this, 2.0));
-      this.bO.a(2, new brf(this, 1.0));
-      this.bO.a(3, new btb(this, 1.25, coc.a(cle.oI), false));
-      this.bO.a(4, new brs(this, 1.25));
-      this.bO.a(5, new btg(this, 1.0));
-      this.bO.a(6, new bsb(this, cdm.class, 6.0F));
-      this.bO.a(7, new bso(this));
-   }
-
-   public static bmd.a s() {
-      return bla.A().a(bme.l, 10.0).a(bme.m, 0.2F);
+   protected void B() {
+      super.B();
+      this.bO.a(5, new brx(this));
    }
 
    @Override
-   protected aqm w() {
-      return aqn.eZ;
+   public int fJ() {
+      return this.gh();
+   }
+
+   public int gh() {
+      return super.fJ();
    }
 
    @Override
-   protected aqm d(bjg $$0) {
-      return aqn.fb;
+   protected boolean gf() {
+      return !this.gi();
+   }
+
+   public boolean gi() {
+      return this.b != null && this.b.bx();
+   }
+
+   public bwq a(bwq $$0) {
+      this.b = $$0;
+      $$0.go();
+      return $$0;
+   }
+
+   public void gj() {
+      this.b.gp();
+      this.b = null;
+   }
+
+   private void go() {
+      this.c++;
+   }
+
+   private void gp() {
+      this.c--;
+   }
+
+   public boolean gk() {
+      return this.gl() && this.c < this.gh();
    }
 
    @Override
-   protected aqm m_() {
-      return aqn.fa;
-   }
-
-   @Override
-   protected void b(ht $$0, dgw $$1) {
-      this.a(aqn.fd, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eV() {
-      return 0.4F;
-   }
-
-   @Override
-   public biq b(cdm $$0, bip $$1) {
-      clb $$2 = $$0.b($$1);
-      if ($$2.a(cle.pK) && !this.n_()) {
-         $$0.a(aqn.fc, 1.0F, 1.0F);
-         clb $$3 = cld.a($$2, $$0, cle.pQ.al_());
-         $$0.a($$1, $$3);
-         return biq.a(this.dL().B);
-      } else {
-         return super.b($$0, $$1);
+   public void l() {
+      super.l();
+      if (this.gl() && this.dN().z.a(200) == 1) {
+         List<? extends bwo> $$0 = this.dN().a((Class<? extends bwo>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
       }
    }
 
+   public boolean gl() {
+      return this.c > 1;
+   }
+
+   public boolean gm() {
+      return this.f(this.b) <= 121.0;
+   }
+
+   public void gn() {
+      if (this.gi()) {
+         this.N().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends bwq> $$0) {
+      $$0.limit((long)(this.gh() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
    @Nullable
-   public bwq b(ama $$0, bkd $$1) {
-      return bkm.t.a((crs)$$0);
+   @Override
+   public blz a(csp $$0, biv $$1, blk $$2, @Nullable blz $$3, @Nullable rz $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 == null) {
+         $$3 = new bwq.a(this);
+      } else {
+         this.a(((bwq.a)$$3).a);
+      }
+
+      return $$3;
    }
 
-   @Override
-   protected float b(blk $$0, bkj $$1) {
-      return this.n_() ? $$1.b * 0.95F : 1.3F;
-   }
+   public static class a implements blz {
+      public final bwq a;
 
-   @Override
-   protected Vector3f a(bki $$0, bkj $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
+      public a(bwq $$0) {
+         this.a = $$0;
+      }
    }
 }

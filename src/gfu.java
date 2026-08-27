@@ -1,58 +1,23 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gfu {
+   private final String a;
+   private final String b;
+   private long c;
 
-public class gfu implements gfv<gem> {
-   private final List<gfv<gem>> a = Lists.newArrayList();
-   @Nullable
-   private final ur b;
-
-   public gfu(agg $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : ur.c($$1);
+   public gfu(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ac.b();
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (gfv<gem> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
+   public String a() {
+      return this.a;
    }
 
-   public gem a(ato $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (gfv<gem> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return gft.a;
-      } else {
-         return gft.a;
-      }
-   }
-
-   public void a(gfv<gem> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public ur a() {
+   public String b() {
       return this.b;
    }
 
-   @Override
-   public void a(gfq $$0) {
-      for (gfv<gem> $$1 : this.a) {
-         $$1.a($$0);
-      }
+   public void c() {
+      this.c = ac.b();
    }
 }

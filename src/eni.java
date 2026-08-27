@@ -1,30 +1,40 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class eni {
-   public static final enq a = new enq(0, enq.a.a, enq.b.a, 3);
-   public static final enq b = new enq(0, enq.a.b, enq.b.c, 4);
-   public static final enq c = new enq(0, enq.a.a, enq.b.d, 2);
-   public static final enq d = new enq(1, enq.a.e, enq.b.d, 2);
-   public static final enq e = new enq(2, enq.a.e, enq.b.d, 2);
-   public static final enq f = new enq(0, enq.a.c, enq.b.b, 3);
-   public static final enq g = new enq(0, enq.a.c, enq.b.e, 1);
-   public static final enq h = c;
-   public static final enp i = new enp(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final enp j = new enp(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final enp k = new enp(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final enp l = new enp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final enp m = new enp(ImmutableMap.builder().put("Position", a).build());
-   public static final enp n = new enp(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final enp o = new enp(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final enp p = new enp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final enp q = new enp(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final enp r = new enp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final enp s = new enp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final enp t = new enp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final enp u = new enp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final enp v = new enp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+public class eni extends enk {
+   private static final end a = new end() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
+      }
+   };
+   private int b;
+
+   private eni(enk.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(enh $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
+   }
+
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
+      }
+   }
+
+   public static eni a(enk.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      eni $$5 = new eni($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
+   }
 }

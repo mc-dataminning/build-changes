@@ -15,7 +15,7 @@ public class t implements ad {
    private final String c;
    private final String d;
    private final boolean e;
-   private final edu f;
+   private final eeg f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,25 +23,25 @@ public class t implements ad {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "23w42a";
+      this.d = "23w43a";
       this.e = false;
-      this.f = new edu(3684, "main");
+      this.f = new eeg(3686, "main");
       this.g = aa.c();
-      this.h = 19;
-      this.i = 21;
+      this.h = 20;
+      this.i = 22;
       this.j = new Date();
    }
 
    private t(JsonObject $$0) {
-      this.c = asy.i($$0, "id");
-      this.d = asy.i($$0, "name");
-      this.e = asy.k($$0, "stable");
-      this.f = new edu(asy.o($$0, "world_version"), asy.a($$0, "series_id", edu.a));
-      this.g = asy.o($$0, "protocol_version");
-      JsonObject $$1 = asy.u($$0, "pack_version");
-      this.h = asy.o($$1, "resource");
-      this.i = asy.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(asy.i($$0, "build_time")).toInstant());
+      this.c = atc.i($$0, "id");
+      this.d = atc.i($$0, "name");
+      this.e = atc.k($$0, "stable");
+      this.f = new eeg(atc.o($$0, "world_version"), atc.a($$0, "series_id", eeg.a));
+      this.g = atc.o($$0, "protocol_version");
+      JsonObject $$1 = atc.u($$0, "pack_version");
+      this.h = atc.o($$1, "resource");
+      this.i = atc.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(atc.i($$0, "build_time")).toInstant());
    }
 
    public static ad a() {
@@ -54,7 +54,7 @@ public class t implements ad {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new t(asy.a($$1));
+               var2 = new t(atc.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class t implements ad {
    }
 
    @Override
-   public edu d() {
+   public eeg d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements ad {
    }
 
    @Override
-   public int a(ans $$0) {
-      return $$0 == ans.b ? this.i : this.h;
+   public int a(anw $$0) {
+      return $$0 == anw.b ? this.i : this.h;
    }
 
    @Override

@@ -1,16 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+public class dno {
+   private final int a;
+   private final int b;
 
-abstract class dno implements dnm {
-   protected final List<dnm> e;
-
-   protected dno(List<dnm> $$0) {
-      this.e = $$0;
+   public dno(djf $$0, csc $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   public static <T extends dno> Codec<T> a(Function<List<dnm>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(dnm.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
    }
 }

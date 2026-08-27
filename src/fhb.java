@@ -1,52 +1,30 @@
-public class fhb<T extends bki> extends fhl<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fkb g;
-   private final fkb[] h;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fhb(fkb $$0) {
-      this.g = $$0;
-      this.h = new fkb[4];
+public class fhb extends fgx {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
-   }
-
-   private static String a(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fkh b() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fkg.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fkd.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fkh.a($$0, 64, 32);
+   public fhb(fko $$0) {
+      super($$0);
    }
 
    @Override
-   public fkb a() {
-      return this.g;
+   protected Builder<fko> a(fko $$0) {
+      Builder<fko> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = ati.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = ati.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
-      }
+   public static fku e() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      fgx.a($$1);
+      $$1.a("chest_bottom", fkt.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fkq.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fkt.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fkq.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fkt.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fkq.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fku.a($$0, 128, 128);
    }
 }

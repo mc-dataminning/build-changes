@@ -1,23 +1,25 @@
-public class dez {
-   private boolean a;
-   private float b;
-   private float c;
+public class dez extends dfd {
+   private cjx a;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+   public dez(ht $$0, dhi $$1) {
+      super(dff.y, $$0, $$1);
+      this.a = ((cut)$$1.b()).b();
    }
 
-   public float a(float $$0) {
-      return ati.i($$0, this.c, this.b);
+   public dez(ht $$0, dhi $$1, cjx $$2) {
+      super(dff.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   public void a(boolean $$0) {
+   public yk c() {
+      return yk.a(this);
+   }
+
+   public cjx d() {
+      return this.a;
+   }
+
+   public void a(cjx $$0) {
       this.a = $$0;
    }
 }

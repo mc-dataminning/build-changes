@@ -1,55 +1,118 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bbm extends DataFix {
-   private static final Set<String> a = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
-      }
-   );
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final short c = 12;
 
    public bbm(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(ban.u), $$0 -> $$0.update(DSL.remainderFinder(), bbm::a));
+      Type<?> $$0 = this.getOutputSchema().getType(bat.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
+         throw new IllegalStateException("Tile entity type is not a list type.");
+      } else {
+         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
+         Type<?> $$5 = this.getInputSchema().getType(bat.c);
+         OpticFinder<?> $$6 = $$5.findField("Level");
+         OpticFinder<?> $$7 = $$6.type().findField("Sections");
+         Type<?> $$8 = $$7.type();
+         if (!($$8 instanceof ListType)) {
+            throw new IllegalStateException("Expecting sections to be a list.");
+         } else {
+            Type<?> $$9 = ((ListType)$$8).getElement();
+            OpticFinder<?> $$10 = DSL.typeFinder($$9);
+            return TypeRewriteRule.seq(
+               new ava(this.getOutputSchema(), "AddTrappedChestFix", bat.s).makeRule(),
+               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
+                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
+                     if ($$4xx.isEmpty()) {
+                        return $$3xx;
+                     } else {
+                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
+                        IntSet $$6x = new IntOpenHashSet();
+
+                        for (Typed<?> $$7x : $$5x) {
+                           bbm.a $$8x = new bbm.a($$7x, this.getInputSchema());
+                           if (!$$8x.b()) {
+                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
+                                 int $$10x = $$8x.c($$9x);
+                                 if ($$8x.a($$10x)) {
+                                    $$6x.add($$8x.c() << 12 | $$9x);
+                                 }
+                              }
+                           }
+                        }
+
+                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+                        int $$12 = $$11.get("xPos").asInt(0);
+                        int $$13 = $$11.get("zPos").asInt(0);
+                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(bat.s);
+                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
+                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
+                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
+                              int $$7xx = $$5xx.get("y").asInt(0);
+                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
+                              return $$6x.contains(azi.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
+                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
+                                       a.warn("Block Entity was expected to be a chest");
+                                    }
+
+                                    return "minecraft:trapped_chest";
+                                 })) : $$4xxxx;
+                           }));
+                     }
+                  }))
+            );
+         }
+      }
    }
 
-   private static String a(String $$0) {
-      return "true".equals($$0) ? "low" : "none";
-   }
+   public static final class a extends azi.b {
+      @Nullable
+      private IntSet h;
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bbm::a).map($$0x::createString), $$0x));
-   }
+      public a(Typed<?> $$0, Schema $$1) {
+         super($$0, $$1);
+      }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
-      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
-         Dynamic<?> $$1x = a($$0x, "east");
-         $$1x = a((Dynamic<T>)$$1x, "west");
-         $$1x = a((Dynamic<T>)$$1x, "north");
-         return a((Dynamic<T>)$$1x, "south");
-      });
+      @Override
+      protected boolean a() {
+         this.h = new IntOpenHashSet();
+
+         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
+            Dynamic<?> $$1 = this.e.get($$0);
+            String $$2 = $$1.get("Name").asString("");
+            if (Objects.equals($$2, "minecraft:trapped_chest")) {
+               this.h.add($$0);
+            }
+         }
+
+         return this.h.isEmpty();
+      }
+
+      public boolean a(int $$0) {
+         return this.h.contains($$0);
+      }
    }
 }

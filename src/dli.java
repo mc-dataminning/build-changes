@@ -1,20 +1,19 @@
-public interface dli {
-   dlk a();
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   int b();
+public interface dli<T extends dkz> {
+   @Nullable
+   T a(int var1);
 
-   boolean a(ama var1, dlg var2, dlg.a var3, eji var4);
+   @Nullable
+   T a(UUID var1);
 
-   default dli.a c() {
-      return dli.a.a;
-   }
+   Iterable<T> a();
 
-   public static enum a {
-      a,
-      b;
-   }
+   <U extends T> void a(dlg<T, U> var1, asb<U> var2);
 
-   public interface b<T extends dli> {
-      T d();
-   }
+   void a(ejp var1, Consumer<T> var2);
+
+   <U extends T> void a(dlg<T, U> var1, ejp var2, asb<U> var3);
 }

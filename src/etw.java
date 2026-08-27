@@ -1,65 +1,49 @@
+import java.util.List;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
+
 public class etw {
-   private static final int a = -1;
-   private final ii<etv> b = new ii<>(32);
+   public static void a(fhy<?> $$0, etu $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
 
-   public static etw a(ets $$0) {
-      etw $$1 = new etw();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : ((cjt)$$0x.d()).e_($$0x), cle.oK, cle.oL, cle.oM, cle.oN, cle.tQ);
-      $$1.a(($$0x, $$1x) -> crq.a(0.5, 1.0), cuv.iH, cuv.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            rz $$2x = $$0x.b("Explosion");
-            int[] $$3 = $$2x != null && $$2x.b("Colors", 11) ? $$2x.n("Colors") : null;
-            if ($$3 != null && $$3.length != 0) {
-               if ($$3.length == 1) {
-                  return $$3[0];
+      for (Entry<String, List<ett>> $$6 : $$1.c().entrySet()) {
+         Optional<fko> $$7 = $$0.a($$6.getKey());
+         List<ett> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               etv[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, atm.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               etv $$8x = $$5x[$$6x];
+               etv $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = atm.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
                } else {
-                  int $$4 = 0;
-                  int $$5 = 0;
-                  int $$6 = 0;
-
-                  for (int $$7 : $$3) {
-                     $$4 += ($$7 & 0xFF0000) >> 16;
-                     $$5 += ($$7 & 0xFF00) >> 8;
-                     $$6 += ($$7 & 0xFF) >> 0;
-                  }
-
-                  $$4 /= $$3.length;
-                  $$5 /= $$3.length;
-                  $$6 /= $$3.length;
-                  return $$4 << 16 | $$5 << 8 | $$6;
+                  $$11 = 0.0F;
                }
-            } else {
-               return 9079434;
-            }
-         }
-      }, cle.tC);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cna.c($$0x), cle.rw, cle.uv, cle.uy);
 
-      for (cmg $$2 : cmg.h()) {
-         $$1.a(($$1x, $$2x) -> $$2.a($$2x), $$2);
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
       }
-
-      $$1.a(($$1x, $$2x) -> {
-         dgw $$3 = ((ciu)$$1x.d()).e().o();
-         return $$0.a($$3, null, null, $$2x);
-      }, cuv.i, cuv.bt, cuv.bu, cuv.ff, cuv.aE, cuv.aF, cuv.aG, cuv.aH, cuv.aI, cuv.aK, cuv.fm);
-      $$1.a(($$0x, $$1x) -> crm.d(), cuv.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? cna.c($$0x) : -1, cle.ux);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : cli.o($$0x), cle.rg);
-      return $$1;
    }
 
-   public int a(clb $$0, int $$1) {
-      etv $$2 = this.b.a(jy.i.a($$0.d()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   private static float a(etu $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
    }
 
-   public void a(etv $$0, crr... $$1) {
-      for (crr $$2 : $$1) {
-         this.b.a($$0, ckw.a($$2.k()));
-      }
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
+   }
+
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   }
+
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
    }
 }

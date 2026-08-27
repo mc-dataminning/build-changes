@@ -1,140 +1,113 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
 
-public class eca extends ebu<eca.a> {
-   protected eca(djg $$0) {
-      super(csb.a, $$0, new eca.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public final class eca extends ecj<ecb.a, ecb> {
+   private final ht.a g = new ht.a();
+
+   public eca(djs $$0) {
+      this($$0, new ecb($$0));
+   }
+
+   @VisibleForTesting
+   public eca(djs $$0, ecb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   protected void a(long $$0) {
+      long $$1 = iu.e($$0);
+      if (this.f.b($$1)) {
+         dhi $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, ecj.a.a($$4));
+         } else {
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, ecj.a.a($$3, a($$2)));
+         }
+      }
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = iu.e($$0);
-      int $$3 = iu.c($$2);
-      eca.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(iu.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         diy $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = ht.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dhi $$3 = null;
+
+      for (hx $$4 : d) {
+         if (ecj.a.a($$1, $$4)) {
+            long $$5 = ht.a($$0, $$4);
+            if (this.f.b(iu.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dhi $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = ecj.a.b($$1) ? cvc.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, ecj.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
                }
-
-               $$2 = iu.a($$2, hx.b);
             }
          }
-
-         return $$6.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
    @Override
-   protected void h(long $$0) {
-      int $$1 = iu.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
+   protected void a(long $$0, long $$1) {
+      int $$2 = ecj.a.a($$1);
 
-      long $$2 = iu.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
+      for (hx $$3 : d) {
+         if (ecj.a.a($$1, $$3)) {
+            long $$4 = ht.a($$0, $$3);
+            if (this.f.b(iu.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dhi $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, ecj.a.a($$5, $$3.g()));
+                     }
 
-   @Override
-   protected void i(long $$0) {
-      long $$1 = iu.f($$0);
-      int $$2 = iu.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iu.a($$3, hx.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
+                     if ($$7 > 0) {
+                        this.c($$4, ecj.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, ecj.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
          }
       }
    }
 
+   private int a(long $$0, dhi $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(iu.e($$0)) ? $$2 : 0;
+   }
+
    @Override
-   protected diy g(long $$0) {
-      diy $$1 = (diy)this.g.get($$0);
+   public void b(crh $$0) {
+      this.a($$0, true);
+      djr $$1 = this.e.c($$0.e, $$0.f);
       if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(iu.f($$0));
-         if ($$2 != this.d.b && iu.c($$0) < $$2) {
-            long $$3 = iu.a($$0, hx.b);
-
-            diy $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = iu.a($$3, hx.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new diy(15) : new diy();
-         }
-      }
-   }
-
-   private static diy a(diy $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new diy($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean l(long $$0) {
-      long $$1 = iu.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || iu.c($$0) >= $$2;
-   }
-
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends ebr<eca.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<diy> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public eca.a a() {
-         return new eca.a(this.a.clone(), this.c.clone(), this.b);
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), ecj.a.a($$2, a($$1x)));
+         });
       }
    }
 }

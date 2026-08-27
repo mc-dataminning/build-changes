@@ -1,63 +1,85 @@
 import javax.annotation.Nullable;
 
-public class byx extends bki {
-   public final byz b;
-   public final String c;
-   private final bkj d;
+public class byx extends bsb {
+   private final byw a;
 
-   public byx(byz $$0, String $$1, float $$2, float $$3) {
-      super($$0.ag(), $$0.dL());
-      this.d = bkj.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+   public byx(byw $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void b_() {
+   public boolean a() {
+      return this.a.dN().a(this.a.ds(), this.a.du(), this.a.dy(), 10.0);
    }
 
    @Override
-   protected void a(rz $$0) {
-   }
+   public void e() {
+      ame $$0 = (ame)this.a.dN();
+      biv $$1 = $$0.d_(this.a.dn());
+      this.a.w(false);
+      this.a.x(true);
+      this.a.c_(0);
+      blf $$2 = bku.ai.a((csa)$$0);
+      if ($$2 != null) {
+         $$2.e(this.a.ds(), this.a.du(), this.a.dy());
+         $$2.a(true);
+         $$0.b($$2);
+         cbq $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-   @Override
-   protected void b(rz $$0) {
-   }
-
-   @Override
-   public boolean br() {
-      return true;
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               byq $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cbq $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.eh().a(0.0, 1.1485), 0.0, this.a.eh().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public clb dy() {
-      return this.b.dy();
+   private byq a(biv $$0) {
+      byw $$1 = bku.aK.a(this.a.dN());
+      if ($$1 != null) {
+         $$1.a((ame)this.a.dN(), $$0, blk.k, null, null);
+         $$1.a_(this.a.ds(), this.a.du(), this.a.dy());
+         $$1.al = 60;
+         $$1.fK();
+         $$1.x(true);
+         $$1.c_(0);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public boolean a(bjg $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   @Nullable
+   private cbq a(biv $$0, byq $$1) {
+      cbq $$2 = bku.aJ.a($$1.dN());
+      if ($$2 != null) {
+         $$2.a((ame)$$1.dN(), $$0, blk.k, null, null);
+         $$2.a_($$1.ds(), $$1.du(), $$1.dy());
+         $$2.al = 60;
+         $$2.fK();
+         if ($$2.c(bkv.f).b()) {
+            $$2.a(bkv.f, new clj(clm.pD));
+         }
+
+         $$2.a(bkv.a, cpw.a($$2.eh(), this.a($$2.eU()), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
+         $$2.a(bkv.f, cpw.a($$2.eh(), this.a($$2.c(bkv.f)), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public boolean t(bki $$0) {
-      return this == $$0 || this.b == $$0;
-   }
-
-   @Override
-   public wk<yd> di() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bkj a(blk $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dJ() {
-      return false;
+   private clj a(clj $$0) {
+      $$0.c("Enchantments");
+      return $$0;
    }
 }

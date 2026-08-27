@@ -1,130 +1,49 @@
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class dhm {
-   public static final dhn a = dhn.a("attached");
-   public static final dhn b = dhn.a("bottom");
-   public static final dhn c = dhn.a("conditional");
-   public static final dhn d = dhn.a("disarmed");
-   public static final dhn e = dhn.a("drag");
-   public static final dhn f = dhn.a("enabled");
-   public static final dhn g = dhn.a("extended");
-   public static final dhn h = dhn.a("eye");
-   public static final dhn i = dhn.a("falling");
-   public static final dhn j = dhn.a("hanging");
-   public static final dhn k = dhn.a("has_bottle_0");
-   public static final dhn l = dhn.a("has_bottle_1");
-   public static final dhn m = dhn.a("has_bottle_2");
-   public static final dhn n = dhn.a("has_record");
-   public static final dhn o = dhn.a("has_book");
-   public static final dhn p = dhn.a("inverted");
-   public static final dhn q = dhn.a("in_wall");
-   public static final dhn r = dhn.a("lit");
-   public static final dhn s = dhn.a("locked");
-   public static final dhn t = dhn.a("occupied");
-   public static final dhn u = dhn.a("open");
-   public static final dhn v = dhn.a("persistent");
-   public static final dhn w = dhn.a("powered");
-   public static final dhn x = dhn.a("short");
-   public static final dhn y = dhn.a("signal_fire");
-   public static final dhn z = dhn.a("snowy");
-   public static final dhn A = dhn.a("triggered");
-   public static final dhn B = dhn.a("unstable");
-   public static final dhn C = dhn.a("waterlogged");
-   public static final dhn D = dhn.a("berries");
-   public static final dhn E = dhn.a("bloom");
-   public static final dhn F = dhn.a("shrieking");
-   public static final dhn G = dhn.a("can_summon");
-   public static final dhu<hx.a> H = dhu.a("axis", hx.a.class, hx.a.a, hx.a.c);
-   public static final dhu<hx.a> I = dhu.a("axis", hx.a.class);
-   public static final dhn J = dhn.a("up");
-   public static final dhn K = dhn.a("down");
-   public static final dhn L = dhn.a("north");
-   public static final dhn M = dhn.a("east");
-   public static final dhn N = dhn.a("south");
-   public static final dhn O = dhn.a("west");
-   public static final dhq P = dhq.a("facing", hx.c, hx.f, hx.d, hx.e, hx.b, hx.a);
-   public static final dhq Q = dhq.a("facing", $$0 -> $$0 != hx.b);
-   public static final dhq R = dhq.a("facing", hx.c.a);
-   public static final dhw S = dhw.a("flower_amount", 1, 4);
-   public static final dhu<hz> T = dhu.a("orientation", hz.class);
-   public static final dhu<dhh> U = dhu.a("face", dhh.class);
-   public static final dhu<dhk> V = dhu.a("attachment", dhk.class);
-   public static final dhu<dii> W = dhu.a("east", dii.class);
-   public static final dhu<dii> X = dhu.a("north", dii.class);
-   public static final dhu<dii> Y = dhu.a("south", dii.class);
-   public static final dhu<dii> Z = dhu.a("west", dii.class);
-   public static final dhu<dib> aa = dhu.a("east", dib.class);
-   public static final dhu<dib> ab = dhu.a("north", dib.class);
-   public static final dhu<dib> ac = dhu.a("south", dib.class);
-   public static final dhu<dib> ad = dhu.a("west", dib.class);
-   public static final dhu<dhs> ae = dhu.a("half", dhs.class);
-   public static final dhu<dhv> af = dhu.a("half", dhv.class);
-   public static final dhu<dia> ag = dhu.a("shape", dia.class);
-   public static final dhu<dia> ah = dhu.a("shape", dia.class, $$0 -> $$0 != dia.j && $$0 != dia.i && $$0 != dia.g && $$0 != dia.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dhw aq = dhw.a("age", 0, 1);
-   public static final dhw ar = dhw.a("age", 0, 2);
-   public static final dhw as = dhw.a("age", 0, 3);
-   public static final dhw at = dhw.a("age", 0, 4);
-   public static final dhw au = dhw.a("age", 0, 5);
-   public static final dhw av = dhw.a("age", 0, 7);
-   public static final dhw aw = dhw.a("age", 0, 15);
-   public static final dhw ax = dhw.a("age", 0, 25);
-   public static final dhw ay = dhw.a("bites", 0, 6);
-   public static final dhw az = dhw.a("candles", 1, 4);
-   public static final dhw aA = dhw.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dhw aC = dhw.a("distance", 1, 7);
-   public static final dhw aD = dhw.a("eggs", 1, 4);
-   public static final dhw aE = dhw.a("hatch", 0, 2);
-   public static final dhw aF = dhw.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dhw aK = dhw.a("level", 1, 3);
-   public static final dhw aL = dhw.a("level", 0, 8);
-   public static final dhw aM = dhw.a("level", 1, 8);
-   public static final dhw aN = dhw.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dhw aP = dhw.a("level", 0, 15);
-   public static final dhw aQ = dhw.a("moisture", 0, 7);
-   public static final dhw aR = dhw.a("note", 0, 24);
-   public static final dhw aS = dhw.a("pickles", 1, 4);
-   public static final dhw aT = dhw.a("power", 0, 15);
-   public static final dhw aU = dhw.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dhw aW = dhw.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dhw aZ = dhw.a("charges", 0, 4);
-   public static final dhw ba = dhw.a("rotation", 0, dic.a());
-   public static final dhu<dhj> bb = dhu.a("part", dhj.class);
-   public static final dhu<dho> bc = dhu.a("type", dho.class);
-   public static final dhu<dhp> bd = dhu.a("mode", dhp.class);
-   public static final dhu<dhr> be = dhu.a("hinge", dhr.class);
-   public static final dhu<dhx> bf = dhu.a("instrument", dhx.class);
-   public static final dhu<dhy> bg = dhu.a("type", dhy.class);
-   public static final dhu<die> bh = dhu.a("type", die.class);
-   public static final dhu<dif> bi = dhu.a("shape", dif.class);
-   public static final dhu<dig> bj = dhu.a("mode", dig.class);
-   public static final dhu<dhi> bk = dhu.a("leaves", dhi.class);
-   public static final dhu<dih> bl = dhu.a("tilt", dih.class);
-   public static final dhq bm = dhq.a("vertical_direction", hx.b, hx.a);
-   public static final dhu<dht> bn = dhu.a("thickness", dht.class);
-   public static final dhu<did> bo = dhu.a("sculk_sensor_phase", did.class);
-   public static final dhn bp = dhn.a("slot_0_occupied");
-   public static final dhn bq = dhn.a("slot_1_occupied");
-   public static final dhn br = dhn.a("slot_2_occupied");
-   public static final dhn bs = dhn.a("slot_3_occupied");
-   public static final dhn bt = dhn.a("slot_4_occupied");
-   public static final dhn bu = dhn.a("slot_5_occupied");
-   public static final dhw bv = dhw.a("dusted", 0, 3);
-   public static final dhn bw = dhn.a("cracked");
-   public static final dhn bx = dhn.a("crafting");
+   private final csd a;
+   private final ht b;
+   private final boolean c;
+   @Nullable
+   private dhi d;
+   @Nullable
+   private dfd e;
+   private boolean f;
+
+   public dhm(csd $$0, ht $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+   }
+
+   public dhi a() {
+      if (this.d == null && (this.c || this.a.A(this.b))) {
+         this.d = this.a.a_(this.b);
+      }
+
+      return this.d;
+   }
+
+   @Nullable
+   public dfd b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
+      }
+
+      return this.e;
+   }
+
+   public csd c() {
+      return this.a;
+   }
+
+   public ht d() {
+      return this.b;
+   }
+
+   public static Predicate<dhm> a(Predicate<dhi> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
+   }
 }

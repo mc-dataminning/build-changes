@@ -1,62 +1,63 @@
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public class gfo {
-   private static final int a = 100;
-   private final ato b = ato.a();
-   private final esr c;
-   @Nullable
-   private gep d;
-   private int e = 100;
+public class gfo implements api {
+   public static final gfo.a<clj> a = new gfo.a<>();
+   public static final gfo.a<clj> b = new gfo.a<>();
+   public static final gfo.a<fem> c = new gfo.a<>();
+   private final Map<gfo.a<?>, gfo.c<?>> d = new HashMap<>();
 
-   public gfo(esr $$0) {
-      this.c = $$0;
-   }
-
-   public void a() {
-      aqk $$0 = this.c.ai();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ah().b(this.d);
-            this.e = ati.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ah().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, ati.a(this.b, $$0.b(), $$0.c()));
-         }
-      }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
+   @Override
+   public void a(aph $$0) {
+      for (gfo.c<?> $$1 : this.d.values()) {
+         $$1.a();
       }
    }
 
-   public void a(aqk $$0) {
-      this.d = gek.a($$0.a().a());
-      if (this.d.b() != gft.a) {
-         this.c.ah().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
+   public <T> void a(gfo.a<T> $$0, gfo.b<T> $$1) {
+      this.d.put($$0, new gfo.c<>($$1));
    }
 
-   public void b(aqk $$0) {
-      if (this.c($$0)) {
-         this.b();
+   private <T> gfo.c<T> b(gfo.a<T> $$0) {
+      gfo.c<T> $$1 = (gfo.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.ah().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
+   public <T> void a(gfo.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
    }
 
-   public boolean c(aqk $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   public <T> gfp<T> a(gfo.a<T> $$0) {
+      return this.b($$0).b;
+   }
+
+   public static class a<T> {
+   }
+
+   public interface b<T> extends Function<List<T>, gfm<T>> {
+   }
+
+   static class c<T> {
+      private final gfo.b<T> a;
+      gfm<T> b = gfm.b();
+
+      c(gfo.b<T> $$0) {
+         this.a = $$0;
+      }
+
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
+      }
+
+      void a() {
+         this.b.a();
+      }
    }
 }

@@ -1,36 +1,66 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public interface ens {
-   ens a = a(0.0F, 0.0F, 0.0F);
-   ens b = a((ens.a)($$0 -> -$$0.z()));
+public class ens {
+   @Nullable
+   private static enz a;
 
-   static ens a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   public static void a() {
+      if (a != null) {
+         b();
+         enz.b();
+      }
    }
 
-   static ens a(Vector3f $$0) {
-      return a($$0::distanceSquared);
+   public static void b() {
+      a = null;
    }
 
-   static ens a(ens.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
-         }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+   public static void a(enr.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
    }
 
-   int[] sort(Vector3f[] var1);
+   private static void c(enr.b $$0) {
+      enz $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
 
-   public interface a {
-      float apply(Vector3f var1);
+   public static void b(enr.b $$0) {
+      enz $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static enz d(enr.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         enz $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static enz a(eob $$0) {
+      enz $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(enz $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

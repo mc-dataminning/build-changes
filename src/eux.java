@@ -1,41 +1,294 @@
-public class eux extends evg {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public eux(int $$0, ur $$1, etz $$2) {
-      this($$0, $$1, $$2, true);
-   }
+public abstract class eux implements ewc, ewu, eyl, eyq {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int f;
+   protected int g;
+   private int c;
+   private int d;
+   private ur e;
+   protected boolean h;
+   public boolean i = true;
+   public boolean j = true;
+   protected float k = 1.0F;
+   private int l;
+   private boolean m;
+   @Nullable
+   private ewk n;
 
-   public eux(int $$0, ur $$1, etz $$2, boolean $$3) {
-      super($$1, $$2);
-      this.j($$0);
-      this.b(true);
-      this.i = true;
-      this.c = $$3;
+   public eux(int $$0, int $$1, int $$2, int $$3, ur $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.e = $$4;
    }
 
    @Override
-   protected void a(eyf $$0) {
-      $$0.a(eye.a, this.l());
+   public int i() {
+      return this.g;
    }
 
    @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      if (this.aI_() || this.c) {
-         int $$4 = this.p() - 4;
-         int $$5 = this.r() - 4;
-         int $$6 = this.k() + 8;
-         int $$7 = this.i() + 8;
-         int $$8 = this.c ? (this.aI_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         this.h = $$1 >= this.p() && $$2 >= this.r() && $$1 < this.p() + this.f && $$2 < this.r() + this.g;
+         this.b($$0, $$1, $$2, $$3);
+         if (this.n != null) {
+            this.n.a(this.m(), this.aJ_(), this.s());
+         }
       }
+   }
 
-      super.b($$0, $$1, $$2, $$3);
+   public void a(@Nullable ewk $$0) {
+      this.n = $$0;
+   }
+
+   @Nullable
+   public ewk j() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      if (this.n != null) {
+         this.n.a($$0);
+      }
+   }
+
+   protected vf aM_() {
+      return a(this.l());
+   }
+
+   public static vf a(ur $$0) {
+      return ur.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(euo var1, int var2, int var3, float var4);
+
+   protected static void a(euo $$0, eum $$1, ur $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(euo $$0, eum $$1, ur $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ac.b() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = atm.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.f();
+      } else {
+         int $$17 = atm.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
+      }
+   }
+
+   protected void a(euo $$0, eum $$1, int $$2, int $$3) {
+      int $$4 = this.p() + $$2;
+      int $$5 = this.p() + this.k() - $$2;
+      a($$0, $$1, this.l(), $$4, this.r(), $$5, this.r() + this.i(), $$3);
+   }
+
+   public void a(double $$0, double $$1) {
+   }
+
+   public void c(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
    }
 
    @Override
-   public void a(gft $$0) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.i && this.j) {
+         if (this.c($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(etd.N().ah());
+               this.a($$0, $$1);
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.c($$2)) {
+         this.c($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean c(int $$0) {
+      return $$0 == 0;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.c($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean d(double $$0, double $$1) {
+      return this.i
+         && this.j
+         && $$0 >= (double)this.p()
+         && $$1 >= (double)this.r()
+         && $$0 < (double)(this.p() + this.k())
+         && $$1 < (double)(this.r() + this.i());
+   }
+
+   @Nullable
+   @Override
+   public eul a(eyy $$0) {
+      if (!this.i || !this.j) {
+         return null;
+      } else {
+         return !this.aJ_() ? eul.a(this) : null;
+      }
+   }
+
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.i && this.j && $$0 >= (double)this.p() && $$1 >= (double)this.r() && $$0 < (double)(this.p() + this.f) && $$1 < (double)(this.r() + this.g);
+   }
+
+   public void a(ggg $$0) {
+      $$0.a(gex.a(aqr.yZ, 1.0F));
+   }
+
+   @Override
+   public int k() {
+      return this.f;
+   }
+
+   public void d(int $$0) {
+      this.f = $$0;
+   }
+
+   public void e(int $$0) {
+      this.g = $$0;
+   }
+
+   public void a(float $$0) {
+      this.k = $$0;
+   }
+
+   public void b(ur $$0) {
+      this.e = $$0;
+   }
+
+   public ur l() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aJ_() {
+      return this.m;
+   }
+
+   public boolean m() {
+      return this.h;
+   }
+
+   public boolean n() {
+      return this.m() || this.aJ_();
+   }
+
+   @Override
+   public boolean aL_() {
+      return this.j && this.i;
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public eyq.a q() {
+      if (this.aJ_()) {
+         return eyq.a.c;
+      } else {
+         return this.h ? eyq.a.b : eyq.a.a;
+      }
+   }
+
+   @Override
+   public final void b(eys $$0) {
+      this.a($$0);
+      if (this.n != null) {
+         this.n.b($$0);
+      }
+   }
+
+   protected abstract void a(eys var1);
+
+   protected void c(eys $$0) {
+      $$0.a(eyr.a, this.aM_());
+      if (this.i) {
+         if (this.aJ_()) {
+            $$0.a(eyr.d, ur.c("narration.button.usage.focused"));
+         } else {
+            $$0.a(eyr.d, ur.c("narration.button.usage.hovered"));
+         }
+      }
+   }
+
+   @Override
+   public int p() {
+      return this.c;
+   }
+
+   @Override
+   public void f(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public int r() {
+      return this.d;
+   }
+
+   @Override
+   public void g(int $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public void a(Consumer<eux> $$0) {
+      $$0.accept(this);
+   }
+
+   @Override
+   public ezc s() {
+      return eyl.super.s();
+   }
+
+   @Override
+   public int aK_() {
+      return this.l;
+   }
+
+   public void h(int $$0) {
+      this.l = $$0;
    }
 }

@@ -1,25 +1,24 @@
-public class fwn extends fvj<ced> {
-   private static final agg a = new agg("textures/entity/llama/spit.png");
-   private final fhw<ced> f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fwn(fvk.a $$0) {
-      super($$0);
-      this.f = new fhw<>($$0.a(fka.at));
+public final class fwn extends fuu<bys, fia<bys>> {
+   private static final Map<byz, agi> a = ac.a(Maps.newEnumMap(byz.class), $$0 -> {
+      $$0.put(byz.a, new agi("textures/entity/horse/horse_white.png"));
+      $$0.put(byz.b, new agi("textures/entity/horse/horse_creamy.png"));
+      $$0.put(byz.c, new agi("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(byz.d, new agi("textures/entity/horse/horse_brown.png"));
+      $$0.put(byz.e, new agi("textures/entity/horse/horse_black.png"));
+      $$0.put(byz.f, new agi("textures/entity/horse/horse_gray.png"));
+      $$0.put(byz.g, new agi("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public fwn(fvx.a $$0) {
+      super($$0, new fia<>($$0.a(fkn.aj)), 1.1F);
+      this.a(new fzu(this));
+      this.a(new fzt(this, $$0.f()));
    }
 
-   public void a(ced $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(ati.i($$2, $$0.N, $$0.dB()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ati.i($$2, $$0.O, $$0.dD())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eno $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public agg a(ced $$0) {
-      return a;
+   public agi a(bys $$0) {
+      return a.get($$0.w());
    }
 }

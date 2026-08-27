@@ -1,510 +1,210 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class edq extends edl {
-   private static final Logger i = LogUtils.getLogger();
-   private static final int j = 128;
-   private static final int k = 64;
-   public static final int a = 4;
-   public static final int b = 256;
-   public final int c;
-   public final int d;
-   public final agf<crs> e;
-   private final boolean l;
-   private final boolean m;
-   public final byte f;
-   public byte[] g = new byte[16384];
-   public final boolean h;
-   private final List<edq.a> n = Lists.newArrayList();
-   private final Map<cdm, edq.a> o = Maps.newHashMap();
-   private final Map<String, edm> p = Maps.newHashMap();
-   final Map<String, edn> q = Maps.newLinkedHashMap();
-   private final Map<String, edo> r = Maps.newHashMap();
-   private int s;
+public class edq {
+   private static final int c = 2;
+   public static final int a = 21;
+   private static final int d = 3;
+   public static final int b = 21;
+   private static final dhh.f e = ($$0, $$1, $$2) -> $$0.a(cvc.co);
+   private static final float f = 4.0F;
+   private static final double g = 1.0;
+   private final csb h;
+   private final hx.a i;
+   private final hx j;
+   private int k;
+   @Nullable
+   private ht l;
+   private int m;
+   private final int n;
 
-   public static edl.a<edq> a() {
-      return new edl.a<>(() -> {
-         throw new IllegalStateException("Should never create an empty map saved data");
-      }, edq::b, aun.j);
+   public static Optional<edq> a(csb $$0, ht $$1, hx.a $$2) {
+      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
    }
 
-   private edq(int $$0, int $$1, byte $$2, boolean $$3, boolean $$4, boolean $$5, agf<crs> $$6) {
-      this.f = $$2;
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$6;
-      this.l = $$3;
-      this.m = $$4;
-      this.h = $$5;
-      this.c();
-   }
-
-   public static edq a(double $$0, double $$1, byte $$2, boolean $$3, boolean $$4, agf<crs> $$5) {
-      int $$6 = 128 * (1 << $$2);
-      int $$7 = ati.a(($$0 + 64.0) / (double)$$6);
-      int $$8 = ati.a(($$1 + 64.0) / (double)$$6);
-      int $$9 = $$7 * $$6 + $$6 / 2 - 64;
-      int $$10 = $$8 * $$6 + $$6 / 2 - 64;
-      return new edq($$9, $$10, $$2, $$3, $$4, false, $$5);
-   }
-
-   public static edq a(byte $$0, boolean $$1, agf<crs> $$2) {
-      return new edq(0, 0, $$0, false, false, $$1, $$2);
-   }
-
-   public static edq b(rz $$0) {
-      agf<crs> $$1 = (agf<crs>)dkf.a(new Dynamic(sn.a, $$0.c("dimension")))
-         .resultOrPartial(i::error)
-         .orElseThrow(() -> new IllegalArgumentException("Invalid map dimension: " + $$0.c("dimension")));
-      int $$2 = $$0.h("xCenter");
-      int $$3 = $$0.h("zCenter");
-      byte $$4 = (byte)ati.a($$0.f("scale"), 0, 4);
-      boolean $$5 = !$$0.b("trackingPosition", 1) || $$0.q("trackingPosition");
-      boolean $$6 = $$0.q("unlimitedTracking");
-      boolean $$7 = $$0.q("locked");
-      edq $$8 = new edq($$2, $$3, $$4, $$5, $$6, $$7, $$1);
-      byte[] $$9 = $$0.m("colors");
-      if ($$9.length == 16384) {
-         $$8.g = $$9;
-      }
-
-      sf $$10 = $$0.c("banners", 10);
-
-      for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-         edm $$12 = edm.a($$10.a($$11));
-         $$8.p.put($$12.f(), $$12);
-         $$8.a($$12.c(), null, $$12.f(), (double)$$12.a().u(), (double)$$12.a().w(), 180.0, $$12.d());
-      }
-
-      sf $$13 = $$0.c("frames", 10);
-
-      for (int $$14 = 0; $$14 < $$13.size(); $$14++) {
-         edo $$15 = edo.a($$13.a($$14));
-         $$8.r.put($$15.e(), $$15);
-         $$8.a(edn.a.b, null, "frame-" + $$15.d(), (double)$$15.b().u(), (double)$$15.b().w(), (double)$$15.c(), null);
-      }
-
-      return $$8;
-   }
-
-   @Override
-   public rz a(rz $$0) {
-      agg.a.encodeStart(sn.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
-      $$0.a("xCenter", this.c);
-      $$0.a("zCenter", this.d);
-      $$0.a("scale", this.f);
-      $$0.a("colors", this.g);
-      $$0.a("trackingPosition", this.l);
-      $$0.a("unlimitedTracking", this.m);
-      $$0.a("locked", this.h);
-      sf $$1 = new sf();
-
-      for (edm $$2 : this.p.values()) {
-         $$1.add($$2.e());
-      }
-
-      $$0.a("banners", $$1);
-      sf $$3 = new sf();
-
-      for (edo $$4 : this.r.values()) {
-         $$3.add($$4.a());
-      }
-
-      $$0.a("frames", $$3);
-      return $$0;
-   }
-
-   public edq b() {
-      edq $$0 = new edq(this.c, this.d, this.f, this.l, this.m, true, this.e);
-      $$0.p.putAll(this.p);
-      $$0.q.putAll(this.q);
-      $$0.s = this.s;
-      System.arraycopy(this.g, 0, $$0.g, 0, this.g.length);
-      $$0.c();
-      return $$0;
-   }
-
-   public edq a(int $$0) {
-      return a((double)this.c, (double)this.d, (byte)ati.a(this.f + $$0, 0, 4), this.l, this.m, this.e);
-   }
-
-   public void a(cdm $$0, clb $$1) {
-      if (!this.o.containsKey($$0)) {
-         edq.a $$2 = new edq.a($$0);
-         this.o.put($$0, $$2);
-         this.n.add($$2);
-      }
-
-      if (!$$0.fS().h($$1)) {
-         this.a($$0.ab().getString());
-      }
-
-      for (int $$3 = 0; $$3 < this.n.size(); $$3++) {
-         edq.a $$4 = this.n.get($$3);
-         String $$5 = $$4.a.ab().getString();
-         if (!$$4.a.dG() && ($$4.a.fS().h($$1) || $$1.F())) {
-            if (!$$1.F() && $$4.a.dL().ac() == this.e && this.l) {
-               this.a(edn.a.a, $$4.a.dL(), $$5, $$4.a.dq(), $$4.a.dw(), (double)$$4.a.dB(), null);
-            }
-         } else {
-            this.o.remove($$4.a);
-            this.n.remove($$4);
-            this.a($$5);
-         }
-      }
-
-      if ($$1.F() && this.l) {
-         bzy $$6 = $$1.G();
-         ht $$7 = $$6.E();
-         edo $$8 = this.r.get(edo.a($$7));
-         if ($$8 != null && $$6.ah() != $$8.d() && this.r.containsKey($$8.e())) {
-            this.a("frame-" + $$8.d());
-         }
-
-         edo $$9 = new edo($$7, $$6.cD().e() * 90, $$6.ah());
-         this.a(edn.a.b, $$0.dL(), "frame-" + $$6.ah(), (double)$$7.u(), (double)$$7.w(), (double)($$6.cD().e() * 90), null);
-         this.r.put($$9.e(), $$9);
-      }
-
-      rz $$10 = $$1.v();
-      if ($$10 != null && $$10.b("Decorations", 9)) {
-         sf $$11 = $$10.c("Decorations", 10);
-
-         for (int $$12 = 0; $$12 < $$11.size(); $$12++) {
-            rz $$13 = $$11.a($$12);
-            if (!this.q.containsKey($$13.l("id"))) {
-               this.a(edn.a.a($$13.f("type")), $$0.dL(), $$13.l("id"), $$13.k("x"), $$13.k("z"), $$13.k("rot"), null);
-            }
-         }
-      }
-   }
-
-   private void a(String $$0) {
-      edn $$1 = this.q.remove($$0);
-      if ($$1 != null && $$1.c().g()) {
-         this.s--;
-      }
-
-      this.h();
-   }
-
-   public static void a(clb $$0, ht $$1, String $$2, edn.a $$3) {
-      sf $$4;
-      if ($$0.u() && $$0.v().b("Decorations", 9)) {
-         $$4 = $$0.v().c("Decorations", 10);
+   public static Optional<edq> a(csb $$0, ht $$1, Predicate<edq> $$2, hx.a $$3) {
+      Optional<edq> $$4 = Optional.of(new edq($$0, $$1, $$3)).filter($$2);
+      if ($$4.isPresent()) {
+         return $$4;
       } else {
-         $$4 = new sf();
-         $$0.a("Decorations", $$4);
-      }
-
-      rz $$6 = new rz();
-      $$6.a("type", $$3.a());
-      $$6.a("id", $$2);
-      $$6.a("x", (double)$$1.u());
-      $$6.a("z", (double)$$1.w());
-      $$6.a("rot", 180.0);
-      $$4.add($$6);
-      if ($$3.e()) {
-         rz $$7 = $$0.a("display");
-         $$7.a("MapColor", $$3.f());
+         hx.a $$5 = $$3 == hx.a.a ? hx.a.c : hx.a.a;
+         return Optional.of(new edq($$0, $$1, $$5)).filter($$2);
       }
    }
 
-   private void a(edn.a $$0, @Nullable crt $$1, String $$2, double $$3, double $$4, double $$5, @Nullable ur $$6) {
-      int $$7 = 1 << this.f;
-      float $$8 = (float)($$3 - (double)this.c) / (float)$$7;
-      float $$9 = (float)($$4 - (double)this.d) / (float)$$7;
-      byte $$10 = (byte)((int)((double)($$8 * 2.0F) + 0.5));
-      byte $$11 = (byte)((int)((double)($$9 * 2.0F) + 0.5));
-      int $$12 = 63;
-      byte $$13;
-      if ($$8 >= -63.0F && $$9 >= -63.0F && $$8 <= 63.0F && $$9 <= 63.0F) {
-         $$5 += $$5 < 0.0 ? -8.0 : 8.0;
-         $$13 = (byte)((int)($$5 * 16.0 / 360.0));
-         if (this.e == crs.i && $$1 != null) {
-            int $$14 = (int)($$1.A_().f() / 10L);
-            $$13 = (byte)($$14 * $$14 * 34187121 + $$14 * 121 >> 15 & 15);
-         }
+   public edq(csb $$0, ht $$1, hx.a $$2) {
+      this.h = $$0;
+      this.i = $$2;
+      this.j = $$2 == hx.a.a ? hx.e : hx.d;
+      this.l = this.a($$1);
+      if (this.l == null) {
+         this.l = $$1;
+         this.n = 1;
+         this.m = 1;
       } else {
-         if ($$0 != edn.a.a) {
-            this.a($$2);
-            return;
+         this.n = this.d();
+         if (this.n > 0) {
+            this.m = this.e();
          }
-
-         int $$15 = 320;
-         if (Math.abs($$8) < 320.0F && Math.abs($$9) < 320.0F) {
-            $$0 = edn.a.g;
-         } else {
-            if (!this.m) {
-               this.a($$2);
-               return;
-            }
-
-            $$0 = edn.a.h;
-         }
-
-         $$13 = 0;
-         if ($$8 <= -63.0F) {
-            $$10 = -128;
-         }
-
-         if ($$9 <= -63.0F) {
-            $$11 = -128;
-         }
-
-         if ($$8 >= 63.0F) {
-            $$10 = 127;
-         }
-
-         if ($$9 >= 63.0F) {
-            $$11 = 127;
-         }
-      }
-
-      edn $$18 = new edn($$0, $$10, $$11, $$13, $$6);
-      edn $$19 = this.q.put($$2, $$18);
-      if (!$$18.equals($$19)) {
-         if ($$19 != null && $$19.c().g()) {
-            this.s--;
-         }
-
-         if ($$0.g()) {
-            this.s++;
-         }
-
-         this.h();
       }
    }
 
    @Nullable
-   public wk<?> a(int $$0, cdm $$1) {
-      edq.a $$2 = this.o.get($$1);
-      return $$2 == null ? null : $$2.a($$0);
-   }
+   private ht a(ht $$0) {
+      int $$1 = Math.max(this.h.I_(), $$0.v() - 21);
 
-   private void a(int $$0, int $$1) {
-      this.c();
-
-      for (edq.a $$2 : this.n) {
-         $$2.a($$0, $$1);
-      }
-   }
-
-   private void h() {
-      this.c();
-      this.n.forEach(edq.a::b);
-   }
-
-   public edq.a a(cdm $$0) {
-      edq.a $$1 = this.o.get($$0);
-      if ($$1 == null) {
-         $$1 = new edq.a($$0);
-         this.o.put($$0, $$1);
-         this.n.add($$1);
+      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
+         $$0 = $$0.d();
       }
 
-      return $$1;
+      hx $$2 = this.j.g();
+      int $$3 = this.a($$0, $$2) - 1;
+      return $$3 < 0 ? null : $$0.a($$2, $$3);
    }
 
-   public boolean a(crt $$0, ht $$1) {
-      double $$2 = (double)$$1.u() + 0.5;
-      double $$3 = (double)$$1.w() + 0.5;
-      int $$4 = 1 << this.f;
-      double $$5 = ($$2 - (double)this.c) / (double)$$4;
-      double $$6 = ($$3 - (double)this.d) / (double)$$4;
-      int $$7 = 63;
-      if ($$5 >= -63.0 && $$6 >= -63.0 && $$5 <= 63.0 && $$6 <= 63.0) {
-         edm $$8 = edm.a($$0, $$1);
-         if ($$8 == null) {
+   private int d() {
+      int $$0 = this.a(this.l, this.j);
+      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
+   }
+
+   private int a(ht $$0, hx $$1) {
+      ht.a $$2 = new ht.a();
+
+      for (int $$3 = 0; $$3 <= 21; $$3++) {
+         $$2.g($$0).c($$1, $$3);
+         dhi $$4 = this.h.a_($$2);
+         if (!a($$4)) {
+            if (e.test($$4, this.h, $$2)) {
+               return $$3;
+            }
+            break;
+         }
+
+         dhi $$5 = this.h.a_($$2.c(hx.a));
+         if (!e.test($$5, this.h, $$2)) {
+            break;
+         }
+      }
+
+      return 0;
+   }
+
+   private int e() {
+      ht.a $$0 = new ht.a();
+      int $$1 = this.a($$0);
+      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   }
+
+   private boolean a(ht.a $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.n; $$2++) {
+         ht.a $$3 = $$0.g(this.l).c(hx.b, $$1).c(this.j, $$2);
+         if (!e.test(this.h.a_($$3), this.h, $$3)) {
             return false;
          }
-
-         if (this.p.remove($$8.f(), $$8)) {
-            this.a($$8.f());
-            return true;
-         }
-
-         if (!this.b(256)) {
-            this.p.put($$8.f(), $$8);
-            this.a($$8.c(), $$0, $$8.f(), $$2, $$3, 180.0, $$8.d());
-            return true;
-         }
       }
 
-      return false;
+      return true;
    }
 
-   public void a(cqy $$0, int $$1, int $$2) {
-      Iterator<edm> $$3 = this.p.values().iterator();
+   private int a(ht.a $$0) {
+      for (int $$1 = 0; $$1 < 21; $$1++) {
+         $$0.g(this.l).c(hx.b, $$1).c(this.j, -1);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
 
-      while ($$3.hasNext()) {
-         edm $$4 = $$3.next();
-         if ($$4.a().u() == $$1 && $$4.a().w() == $$2) {
-            edm $$5 = edm.a($$0, $$4.a());
-            if (!$$4.equals($$5)) {
-               $$3.remove();
-               this.a($$4.f());
+         $$0.g(this.l).c(hx.b, $$1).c(this.j, this.n);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
+
+         for (int $$2 = 0; $$2 < this.n; $$2++) {
+            $$0.g(this.l).c(hx.b, $$1).c(this.j, $$2);
+            dhi $$3 = this.h.a_($$0);
+            if (!a($$3)) {
+               return $$1;
+            }
+
+            if ($$3.a(cvc.ed)) {
+               this.k++;
             }
          }
       }
+
+      return 21;
    }
 
-   public Collection<edm> e() {
-      return this.p.values();
+   private static boolean a(dhi $$0) {
+      return $$0.i() || $$0.a(arg.aJ) || $$0.a(cvc.ed);
    }
 
-   public void a(ht $$0, int $$1) {
-      this.a("frame-" + $$1);
-      this.r.remove(edo.a($$0));
+   public boolean a() {
+      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
    }
 
-   public boolean a(int $$0, int $$1, byte $$2) {
-      byte $$3 = this.g[$$0 + $$1 * 128];
-      if ($$3 != $$2) {
-         this.b($$0, $$1, $$2);
-         return true;
+   public void b() {
+      dhi $$0 = cvc.ed.o().a(dad.b, this.i);
+      ht.a(this.l, this.l.a(hx.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
+   }
+
+   public boolean c() {
+      return this.a() && this.k == this.n * this.m;
+   }
+
+   public static eju a(l.a $$0, hx.a $$1, eju $$2, bkr $$3) {
+      double $$4 = (double)$$0.b - (double)$$3.a;
+      double $$5 = (double)$$0.c - (double)$$3.b;
+      ht $$6 = $$0.a;
+      double $$8;
+      if ($$4 > 0.0) {
+         double $$7 = (double)$$6.a($$1) + (double)$$3.a / 2.0;
+         $$8 = atm.a(atm.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
       } else {
-         return false;
+         $$8 = 0.5;
       }
+
+      double $$11;
+      if ($$5 > 0.0) {
+         hx.a $$10 = hx.a.b;
+         $$11 = atm.a(atm.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
+      } else {
+         $$11 = 0.0;
+      }
+
+      hx.a $$13 = $$1 == hx.a.a ? hx.a.c : hx.a.a;
+      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
+      return new eju($$8, $$11, $$14);
    }
 
-   public void b(int $$0, int $$1, byte $$2) {
-      this.g[$$0 + $$1 * 128] = $$2;
-      this.a($$0, $$1);
+   public static edp a(ame $$0, l.a $$1, hx.a $$2, eju $$3, bkq $$4, eju $$5, float $$6, float $$7) {
+      ht $$8 = $$1.a;
+      dhi $$9 = $$0.a_($$8);
+      hx.a $$10 = $$9.d(dhy.H).orElse(hx.a.a);
+      double $$11 = (double)$$1.b;
+      double $$12 = (double)$$1.c;
+      bkr $$13 = $$4.a($$4.ap());
+      int $$14 = $$2 == $$10 ? 0 : 90;
+      eju $$15 = $$2 == $$10 ? $$5 : new eju($$5.e, $$5.d, -$$5.c);
+      double $$16 = (double)$$13.a / 2.0 + ($$11 - (double)$$13.a) * $$3.a();
+      double $$17 = ($$12 - (double)$$13.b) * $$3.b();
+      double $$18 = 0.5 + $$3.c();
+      boolean $$19 = $$10 == hx.a.a;
+      eju $$20 = new eju((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
+      eju $$21 = a($$20, $$0, $$4, $$13);
+      return new edp($$21, $$15, $$6 + (float)$$14, $$7);
    }
 
-   public boolean f() {
-      for (edn $$0 : this.q.values()) {
-         if ($$0.c().b()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void a(List<edn> $$0) {
-      this.q.clear();
-      this.s = 0;
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         edn $$2 = $$0.get($$1);
-         this.q.put("icon-" + $$1, $$2);
-         if ($$2.c().g()) {
-            this.s++;
-         }
-      }
-   }
-
-   public Iterable<edn> g() {
-      return this.q.values();
-   }
-
-   public boolean b(int $$0) {
-      return this.s >= $$0;
-   }
-
-   public class a {
-      public final cdm a;
-      private boolean d = true;
-      private int e;
-      private int f;
-      private int g = 127;
-      private int h = 127;
-      private boolean i = true;
-      private int j;
-      public int b;
-
-      a(cdm $$1) {
-         this.a = $$1;
-      }
-
-      private edq.b a() {
-         int $$0 = this.e;
-         int $$1 = this.f;
-         int $$2 = this.g + 1 - this.e;
-         int $$3 = this.h + 1 - this.f;
-         byte[] $$4 = new byte[$$2 * $$3];
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$3; $$6++) {
-               $$4[$$5 + $$6 * $$2] = edq.this.g[$$0 + $$5 + ($$1 + $$6) * 128];
-            }
-         }
-
-         return new edq.b($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Nullable
-      wk<?> a(int $$0) {
-         edq.b $$1;
-         if (this.d) {
-            this.d = false;
-            $$1 = this.a();
-         } else {
-            $$1 = null;
-         }
-
-         Collection<edn> $$3;
-         if (this.i && this.j++ % 5 == 0) {
-            this.i = false;
-            $$3 = edq.this.q.values();
-         } else {
-            $$3 = null;
-         }
-
-         return $$3 == null && $$1 == null ? null : new zt($$0, edq.this.f, edq.this.h, $$3, $$1);
-      }
-
-      void a(int $$0, int $$1) {
-         if (this.d) {
-            this.e = Math.min(this.e, $$0);
-            this.f = Math.min(this.f, $$1);
-            this.g = Math.max(this.g, $$0);
-            this.h = Math.max(this.h, $$1);
-         } else {
-            this.d = true;
-            this.e = $$0;
-            this.f = $$1;
-            this.g = $$0;
-            this.h = $$1;
-         }
-      }
-
-      private void b() {
-         this.i = true;
-      }
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-      public final int d;
-      public final byte[] e;
-
-      public b(int $$0, int $$1, int $$2, int $$3, byte[] $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      public void a(edq $$0) {
-         for (int $$1 = 0; $$1 < this.c; $$1++) {
-            for (int $$2 = 0; $$2 < this.d; $$2++) {
-               $$0.b(this.a + $$1, this.b + $$2, this.e[$$1 + $$2 * this.c]);
-            }
-         }
+   private static eju a(eju $$0, ame $$1, bkq $$2, bkr $$3) {
+      if (!($$3.a > 4.0F) && !($$3.b > 4.0F)) {
+         double $$4 = (double)$$3.b / 2.0;
+         eju $$5 = $$0.b(0.0, $$4, 0.0);
+         ekn $$6 = ekk.a(ejp.a($$5, (double)$$3.a, 0.0, (double)$$3.a).b(0.0, 1.0, 0.0).g(1.0E-6));
+         Optional<eju> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a, (double)$$3.b, (double)$$3.a);
+         Optional<eju> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
+         return $$8.orElse($$0);
+      } else {
+         return $$0;
       }
    }
 }

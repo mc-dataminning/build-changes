@@ -1,15 +1,65 @@
-public class coy extends cnn {
-   public coy(String $$0, cnt $$1, coc $$2, clb $$3, float $$4, int $$5) {
-      super(cok.d, $$0, $$1, $$2, $$3, $$4, $$5);
+public class coy extends cof {
+   public coy(coc $$0) {
+      super($$0);
+   }
+
+   public boolean a(chc $$0, csa $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (cva.a($$5.d()) instanceof dby) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof cjy)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
+   }
+
+   public clj a(chc $$0, ip $$1) {
+      clj $$2 = clj.b;
+      cjy $$3 = (cjy)clm.rf;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cle $$6 = $$5.d();
+            if (cva.a($$6) instanceof dby) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cjy) {
+               $$3 = (cjy)$$6;
+            }
+         }
+      }
+
+      clj $$7 = dby.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
    }
 
    @Override
-   public clb g() {
-      return new clb(cuv.nV);
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public coj<?> aq_() {
-      return coj.r;
+   public cos<?> aq_() {
+      return cos.m;
    }
 }

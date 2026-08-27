@@ -1,229 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eet {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eet a = new eet(egv.b, Optional.empty(), List.of(), List.of());
-   public static final egu b = egv.n;
-   public static final Codec<eet> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egv.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
-               asq.a(agg.a, "random_sequence").forGetter($$0x -> $$0x.f),
-               asq.a(ees.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
-               asq.a(ega.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eet::new)
-   );
-   private final egu e;
-   private final Optional<agg> f;
-   private final List<ees> g;
-   private final List<efy> h;
-   private final BiFunction<clb, eel, clb> i;
+public interface eet {
+   int d = 19133;
+   int e = 19132;
 
-   eet(egu $$0, Optional<agg> $$1, List<ees> $$2, List<efy> $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = ega.a($$3);
+   cst F();
+
+   void a(cst var1);
+
+   boolean H();
+
+   Set<String> I();
+
+   Set<String> J();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.I()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.z();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
+      });
    }
 
-   public static Consumer<clb> a(ama $$0, Consumer<clb> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.G())) {
-            if ($$2.L() < $$2.g()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.L();
-
-               while ($$3 > 0) {
-                  clb $$4 = $$2.c(Math.min($$2.g(), $$3));
-                  $$3 -= $$4.L();
-                  $$1.accept($$4);
-               }
-            }
-         }
-      };
-   }
-
-   public void a(eer $$0, Consumer<clb> $$1) {
-      this.a(new eel.a($$0).a(this.f), $$1);
-   }
-
-   public void a(eel $$0, Consumer<clb> $$1) {
-      eel.c<?> $$2 = eel.a(this);
-      if ($$0.b($$2)) {
-         Consumer<clb> $$3 = efy.a(this.i, $$1, $$0);
-
-         for (ees $$4 : this.g) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         d.warn("Detected infinite loop in loot tables");
+   default String i(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   public void a(eer $$0, long $$1, Consumer<clb> $$2) {
-      this.a(new eel.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
-   }
+   @Nullable
+   rz G();
 
-   public void b(eer $$0, Consumer<clb> $$1) {
-      this.a($$0, a($$0.a(), $$1));
-   }
+   void a(@Nullable rz var1);
 
-   public void b(eel $$0, Consumer<clb> $$1) {
-      this.a($$0, a($$0.d(), $$1));
-   }
+   ees K();
 
-   public ObjectArrayList<clb> a(eer $$0, long $$1) {
-      return this.a(new eel.a($$0).a($$1).a(this.f));
-   }
+   cse L();
 
-   public ObjectArrayList<clb> a(eer $$0) {
-      return this.a(new eel.a($$0).a(this.f));
-   }
+   rz a(ip var1, @Nullable rz var2);
 
-   private ObjectArrayList<clb> a(eel $$0) {
-      ObjectArrayList<clb> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
+   boolean n();
 
-   public egu a() {
-      return this.e;
-   }
+   int z();
 
-   public void a(eeu $$0) {
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.b(".pools[" + $$1 + "]"));
-      }
+   String g();
 
-      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
-         this.h.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
-   }
+   crx m();
 
-   public void a(bij $$0, eer $$1, long $$2) {
-      eel $$3 = new eel.a($$1).a($$2).a(this.f);
-      ObjectArrayList<clb> $$4 = this.a($$3);
-      ato $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
+   void a(crx var1);
 
-      while (var9.hasNext()) {
-         clb $$7 = (clb)var9.next();
-         if ($$6.isEmpty()) {
-            d.warn("Tried to over-fill a container");
-            return;
-         }
+   boolean o();
 
-         if ($$7.b()) {
-            $$0.a($$6.remove($$6.size() - 1), clb.b);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
-   }
+   biu s();
 
-   private void a(ObjectArrayList<clb> $$0, int $$1, ato $$2) {
-      List<clb> $$3 = Lists.newArrayList();
-      Iterator<clb> $$4 = $$0.iterator();
+   void a(biu var1);
 
-      while ($$4.hasNext()) {
-         clb $$5 = $$4.next();
-         if ($$5.b()) {
-            $$4.remove();
-         } else if ($$5.L() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
+   boolean t();
 
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         clb $$6 = $$3.remove(ati.a($$2, 0, $$3.size() - 1));
-         int $$7 = ati.a($$2, 1, $$6.L() / 2);
-         clb $$8 = $$6.a($$7);
-         if ($$6.L() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
+   void d(boolean var1);
 
-         if ($$8.L() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
+   crw q();
 
-      $$0.addAll($$3);
-      ac.b($$0, $$2);
-   }
+   @Nullable
+   rz y();
 
-   private List<Integer> a(bij $$0, ato $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
+   dku.a E();
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).b()) {
-            $$2.add($$3);
-         }
-      }
+   void a(dku.a var1);
 
-      ac.b($$2, $$1);
-      return $$2;
-   }
+   dnp A();
 
-   public static eet.a b() {
-      return new eet.a();
-   }
+   boolean B();
 
-   public static class a implements efv<eet.a> {
-      private final Builder<ees> a = ImmutableList.builder();
-      private final Builder<efy> b = ImmutableList.builder();
-      private egu c = eet.b;
-      private Optional<agg> d = Optional.empty();
+   boolean C();
 
-      public eet.a a(ees.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   Lifecycle D();
 
-      public eet.a a(egu $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eet.a a(agg $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public eet.a a(efy.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public eet.a a() {
-         return this;
-      }
-
-      public eet b() {
-         return new eet(this.c, this.d, this.a.build(), this.b.build());
-      }
+   default cgd M() {
+      return this.F().b();
    }
 }

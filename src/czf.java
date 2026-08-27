@@ -1,139 +1,109 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class czf extends cxm {
+public class czf extends cva implements dca {
    public static final MapCodec<czf> a = b(czf::new);
-   public static final dhn b = dhm.w;
-   protected static final int c = 6;
-   protected static final int d = 6;
-   protected static final int e = 8;
-   protected static final ekb f = cut.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
-   protected static final ekb g = cut.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
-   protected static final ekb h = cut.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-   protected static final ekb i = cut.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
-   protected static final ekb j = cut.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
-   protected static final ekb k = cut.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
-   protected static final ekb l = cut.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
-   protected static final ekb m = cut.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
+   public static final dic b = cyv.aE;
+   public static final dhz c = dhy.C;
+   protected static final float d = 3.0F;
+   protected static final ekn e = cva.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final ekn f = cva.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ekn g = cva.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final ekn h = cva.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<czf> a() {
       return a;
    }
 
-   protected czf(dgv.d $$0) {
+   protected czf(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, hx.c).a(b, Boolean.valueOf(false)).a(K, dhh.b));
+      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      switch ((dhh)$$0.c(K)) {
-         case a:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return k;
-               case c:
-               default:
-                  return j;
-            }
-         case b:
-            switch ((hx)$$0.c(aE)) {
-               case f:
-                  return i;
-               case e:
-                  return h;
-               case d:
-                  return g;
-               case c:
-               default:
-                  return f;
-            }
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      switch ((hx)$$0.c(b)) {
          case c:
+            return h;
+         case d:
+            return g;
+         case e:
+            return f;
+         case f:
          default:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return m;
-               case c:
-               default:
-                  return l;
-            }
+            return e;
       }
    }
 
-   @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      if ($$1.B) {
-         dgw $$6 = $$0.a(b);
-         if ($$6.c(b)) {
-            a($$6, $$1, $$2, 1.0F);
-         }
+   private boolean a(crg $$0, ht $$1, hx $$2) {
+      dhi $$3 = $$0.a_($$1);
+      return $$3.d($$0, $$1, $$2);
+   }
 
-         return biq.a;
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      hx $$3 = $$0.c(b);
+      return this.a($$1, $$2.a($$3.g()), $$3);
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
+         return cvc.a.o();
       } else {
-         dgw $$7 = this.d($$0, $$1, $$2);
-         float $$8 = $$7.c(b) ? 0.6F : 0.5F;
-         $$1.a(null, $$2, aqn.mw, aqo.e, 0.3F, $$8);
-         $$1.a($$3, $$7.c(b) ? dlg.a : dlg.e, $$2);
-         return biq.b;
-      }
-   }
-
-   public dgw d(dgw $$0, crs $$1, ht $$2) {
-      $$0 = $$0.a(b);
-      $$1.a($$2, $$0, 3);
-      this.e($$0, $$1, $$2);
-      return $$0;
-   }
-
-   private static void a(dgw $$0, crt $$1, ht $$2, float $$3) {
-      hx $$4 = $$0.c(aE).g();
-      hx $$5 = h($$0).g();
-      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
-      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
-      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
-      $$1.a(new jm(jm.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
-      if ($$0.c(b) && $$3.i() < 0.25F) {
-         a($$0, $$1, $$2, 0.5F);
-      }
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.e($$0, $$1, $$2);
+         if ($$0.c(c)) {
+            $$3.a($$4, ect.c, ect.c.a($$3));
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
+   @Nullable
    @Override
-   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
-      return $$0.c(b) ? 15 : 0;
+   public dhi a(cnr $$0) {
+      if (!$$0.c()) {
+         dhi $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
+         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
+            return null;
+         }
+      }
+
+      dhi $$2 = this.o();
+      csd $$3 = $$0.q();
+      ht $$4 = $$0.a();
+      ecs $$5 = $$0.q().b_($$0.a());
+
+      for (hx $$6 : $$0.f()) {
+         if ($$6.o().d()) {
+            $$2 = $$2.a(b, $$6.g());
+            if ($$2.a($$3, $$4)) {
+               return $$2.a(c, Boolean.valueOf($$5.a() == ect.c));
+            }
+         }
+      }
+
+      return null;
    }
 
    @Override
-   public int b(dgw $$0, cqy $$1, ht $$2, hx $$3) {
-      return $$0.c(b) && h($$0) == $$3 ? 15 : 0;
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean f_(dgw $$0) {
-      return true;
-   }
-
-   private void e(dgw $$0, crs $$1, ht $$2) {
-      $$1.a($$2, this);
-      $$1.a($$2.a(h($$0).g()), this);
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(K, aE, b);
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public ecs c_(dhi $$0) {
+      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
    }
 }

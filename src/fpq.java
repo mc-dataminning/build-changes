@@ -1,72 +1,26 @@
-public class fpq {
-   public static final ur a = ur.c("quickplay.error.title");
-   private static final ur b = ur.c("quickplay.error.invalid_identifier");
-   private static final ur c = ur.c("quickplay.error.realm_connect");
-   private static final ur d = ur.c("quickplay.error.realm_permission");
-   private static final ur e = ur.c("gui.toTitle");
-   private static final ur f = ur.c("gui.toWorld");
-   private static final ur g = ur.c("gui.toRealms");
+public class fpq extends fnd {
+   private static final int a = 12235202;
 
-   public static void a(esr $$0, ffv.c $$1, eoa $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
-      }
+   protected fpq(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fpe $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)asw.b.b(12235202) / 255.0F;
+      this.w = (float)asw.b.c(12235202) / 255.0F;
+      this.x = (float)asw.b.d(12235202) / 255.0F;
    }
 
-   private static void a(esr $$0, String $$1) {
-      if (!$$0.l().b($$1)) {
-         fah $$2 = new ffd(new fam());
-         $$0.a(new ezj($$2, a, b, f));
-      } else {
-         $$0.w().a($$1, () -> $$0.a(new fam()));
-      }
-   }
+   public static class a implements fol<jv> {
+      private final fpe a;
 
-   private static void b(esr $$0, String $$1) {
-      fli $$2 = new fli($$0);
-      $$2.a();
-      flh $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new flh(gcn.a("selectServer.defaultName"), $$1, flh.b.c);
-         $$2.a($$3, true);
-         $$2.b();
+      public a(fpe $$0) {
+         this.a = $$0;
       }
 
-      fmi $$4 = fmi.a($$1);
-      ezb.a(new fdf(new fam()), $$0, $$4, $$3, true);
-   }
-
-   private static void a(esr $$0, eoa $$1, String $$2) {
-      long $$3;
-      eot $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fah $$6 = new env(new fam());
-         $$0.a(new ezj($$6, a, b, g));
-         return;
-      } catch (epn var10) {
-         fah $$8 = new fam();
-         $$0.a(new ezj($$8, a, c, e));
-         return;
-      }
-
-      eor $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fah $$12 = new env(new fam());
-         $$0.a(new ezj($$12, a, d, g));
-      } else {
-         fam $$13 = new fam();
-         erq $$14 = new erq($$13, $$11);
-         $$0.a(new eqh($$13, $$14));
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ats $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fpq($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

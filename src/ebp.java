@@ -1,24 +1,11 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ebp extends ebu<ebp.a> {
-   protected ebp(djg $$0) {
-      super(csb.b, $$0, new ebp.a(new Long2ObjectOpenHashMap()));
-   }
+public interface ebp {
+   Codec<ebp> c = jy.q.q().dispatch(ebp::a, ebq::codec);
 
-   @Override
-   protected int a(long $$0) {
-      long $$1 = iu.e($$0);
-      diy $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
-   }
+   @Nullable
+   rz a(ats var1, @Nullable rz var2);
 
-   protected static final class a extends ebr<ebp.a> {
-      public a(Long2ObjectOpenHashMap<diy> $$0) {
-         super($$0);
-      }
-
-      public ebp.a a() {
-         return new ebp.a(this.a.clone());
-      }
-   }
+   ebq<?> a();
 }

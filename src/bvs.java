@@ -1,119 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class bvs {
-   private static final int a = 10;
-
-   public static ht a(ato $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new ht($$3, $$4, $$5);
-   }
-
+   public static final bvs a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   public static ht a(ato $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = ati.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)ati.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return ht.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
+   private Predicate<blg> g;
+
+   private bvs(boolean $$0) {
+      this.c = $$0;
    }
 
-   @VisibleForTesting
-   public static ht a(ht $$0, int $$1, Predicate<ht> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         ht $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
+   public static bvs a() {
+      return new bvs(true);
    }
 
-   @VisibleForTesting
-   public static ht a(ht $$0, int $$1, int $$2, Predicate<ht> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
+   public static bvs b() {
+      return new bvs(false);
+   }
+
+   public bvs c() {
+      bvs $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public bvs a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public bvs d() {
+      this.e = false;
+      return this;
+   }
+
+   public bvs e() {
+      this.f = false;
+      return this;
+   }
+
+   public bvs a(@Nullable Predicate<blg> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable blg $$0, blg $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.eq()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
       } else {
-         ht $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         ht $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            ht $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
+         if ($$0 == null) {
+            if (this.c && (!$$1.ep() || $$1.dN().aj() == biu.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.s($$1))) {
+               return false;
             }
 
-            $$5 = $$6;
-         }
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.B($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.ds(), $$1.du(), $$1.dy());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
 
-         return $$5;
-      }
-   }
-
-   @Nullable
-   public static eji a(blh $$0, Supplier<ht> $$1) {
-      return a($$1, $$0::h);
-   }
-
-   @Nullable
-   public static eji a(Supplier<ht> $$0, ToDoubleFunction<ht> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      ht $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ht $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
+            if (this.e && $$0 instanceof bli $$5 && !$$5.O().a($$1)) {
+               return false;
             }
          }
+
+         return true;
       }
-
-      return $$3 != null ? eji.c($$3) : null;
-   }
-
-   public static ht a(blh $$0, int $$1, ato $$2, ht $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fQ() && $$1 > 1) {
-         ht $$6 = $$0.fN();
-         if ($$0.dq() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dw() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return ht.a((double)$$4 + $$0.dq(), (double)$$3.v() + $$0.ds(), (double)$$5 + $$0.dw());
    }
 }

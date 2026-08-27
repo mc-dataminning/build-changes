@@ -1,171 +1,164 @@
-public abstract class eug extends euk implements evp, ewh {
-   private static final evz a = new evz(new agg("widget/text_field"), new agg("widget/text_field_highlighted"));
-   private static final agg b = new agg("widget/scroller");
-   private static final int c = 4;
-   private static final int d = 8;
-   private double e;
-   private boolean l;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-   public eug(int $$0, int $$1, int $$2, int $$3, ur $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class eug {
+   private static final int a = 256;
+   private final ThreadLocal<eug.b> b = ThreadLocal.withInitial(eug.b::new);
+   private final Long2ObjectLinkedOpenHashMap<eug.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<ht> e;
+
+   public eug(ToIntFunction<ht> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (!this.j) {
-         return false;
+   public int a(ht $$0) {
+      int $$1 = iu.a($$0.u());
+      int $$2 = iu.a($$0.w());
+      eug.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
+
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
       } else {
-         boolean $$3 = this.c($$0, $$1);
-         boolean $$4 = this.e()
-            && $$0 >= (double)(this.p() + this.f)
-            && $$0 <= (double)(this.p() + this.f + 8)
-            && $$1 >= (double)this.r()
-            && $$1 < (double)(this.r() + this.g);
-         if ($$4 && $$2 == 0) {
-            this.l = true;
-            return true;
-         } else {
-            return $$3 || $$4;
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
+   }
+
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = crh.c($$0 + $$2, $$1 + $$3);
+               eug.a $$5 = (eug.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
          }
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         this.l = false;
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(eug.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
       }
-
-      return super.b($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.j && this.aI_() && this.l) {
-         if ($$1 < (double)this.r()) {
-            this.a(0.0);
-         } else if ($$1 > (double)(this.r() + this.g)) {
-            this.a((double)this.d());
-         } else {
-            int $$5 = this.v();
-            double $$6 = (double)Math.max(1, this.d() / (this.g - $$5));
-            this.a(this.e + $$4 * $$6);
+   private eug.a b(int $$0, int $$1) {
+      long $$2 = crh.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         eug.a $$3 = (eug.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      eug.a $$5;
+      try {
+         eug.a $$4 = (eug.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new eug.a();
+            if (this.c.size() >= 256) {
+               eug.a $$6 = (eug.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
          }
 
-         return true;
-      } else {
-         return false;
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
       }
+
+      return $$5;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.j) {
-         return false;
-      } else {
-         this.a(this.e - $$3 * this.h());
-         return true;
-      }
-   }
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = atm.h(16);
+      private volatile boolean d;
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.e;
-         this.a(this.e + (double)($$3 ? -1 : 1) * this.h());
-         if ($$5 != this.e) {
-            return true;
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
          }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
       }
 
-      return super.a($$0, $$1, $$2);
-   }
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
 
-   @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      if (this.j) {
-         this.b($$0);
-         $$0.c(this.p() + 1, this.r() + 1, this.p() + this.f - 1, this.r() + this.g - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.e, 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.f();
-         this.a($$0);
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
       }
    }
 
-   private int v() {
-      return ati.a((int)((float)(this.g * this.g) / (float)this.w()), 32, this.g);
-   }
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      eug.a c;
 
-   protected void a(eub $$0) {
-      if (this.e()) {
-         this.c($$0);
+      private b() {
       }
    }
-
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   protected double c() {
-      return this.e;
-   }
-
-   protected void a(double $$0) {
-      this.e = ati.a($$0, 0.0, (double)this.d());
-   }
-
-   protected int d() {
-      return Math.max(0, this.w() - (this.g - 4));
-   }
-
-   private int w() {
-      return this.g() + 4;
-   }
-
-   protected void b(eub $$0) {
-      this.a($$0, this.p(), this.r(), this.k(), this.i());
-   }
-
-   protected void a(eub $$0, int $$1, int $$2, int $$3, int $$4) {
-      agg $$5 = a.a(this.aK_(), this.aI_());
-      $$0.a($$5, $$1, $$2, $$3, $$4);
-   }
-
-   private void c(eub $$0) {
-      int $$1 = this.v();
-      int $$2 = this.p() + this.f;
-      int $$3 = Math.max(this.r(), (int)this.e * (this.g - $$1) / this.d() + this.r());
-      $$0.a(b, $$2, $$3, 8, $$1);
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.e >= (double)this.r() && (double)$$0 - this.e <= (double)(this.r() + this.g);
-   }
-
-   protected boolean c(double $$0, double $$1) {
-      return $$0 >= (double)this.p() && $$0 < (double)(this.p() + this.f) && $$1 >= (double)this.r() && $$1 < (double)(this.r() + this.g);
-   }
-
-   protected boolean e() {
-      return this.g() > this.i();
-   }
-
-   public int f() {
-      return 8;
-   }
-
-   protected abstract int g();
-
-   protected abstract double h();
-
-   protected abstract void c(eub var1, int var2, int var3, float var4);
 }

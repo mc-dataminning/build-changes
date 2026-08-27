@@ -1,29 +1,17 @@
-public class fox extends foh {
-   fox(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
+public class fox extends fnd {
+   protected fox(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fpe $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public static class a implements fny<jv> {
-      private final foq a;
+   public static class a implements fol<jv> {
+      private final fpe a;
 
-      public a(foq $$0) {
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fox($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fox($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

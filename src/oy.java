@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class oy {
-   @Deprecated
-   public static final ebj.a a = new ebj.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(ou<ebj.a> $$0) {
-      a($$0, 0, dmo.a, dmo.b, dmo.c, dmo.d);
-      a($$0, -2, dmo.e, dmo.f, dmo.g, dmo.h);
-      a($$0, dmo.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dmo.j, a);
-      a($$0, dmo.k, -3, 1.0);
-      a($$0, dmo.l, -7, 1.0);
-      a($$0, dmo.m, -1, 1.0);
-      a($$0, dmo.n, -5, 1.0);
-      a($$0, dmo.o, -7, 1.0, 1.0);
-      a($$0, dmo.p, -8, 1.0);
-      a($$0, dmo.q, -8, 1.0);
-      a($$0, dmo.r, -7, 1.0);
-      a($$0, dmo.s, -8, 1.0);
-      a($$0, dmo.t, -11, 1.0);
-      a($$0, dmo.u, -11, 1.0);
-      a($$0, dmo.v, -7, 1.0);
-      a($$0, dmo.w, -7, 1.0);
-      a($$0, dmo.x, -11, 1.0);
-      a($$0, dmo.y, -8, 1.0);
-      a($$0, dmo.z, -5, 1.0);
-      a($$0, dmo.A, -8, 1.0);
-      a($$0, dmo.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dmo.C, -8, 1.0);
-      a($$0, dmo.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dmo.E, -8, 1.0);
-      a($$0, dmo.F, -7, 1.0);
-      a($$0, dmo.G, -7, 1.0);
-      a($$0, dmo.H, -5, 1.0);
-      a($$0, dmo.I, -8, 1.0);
-      a($$0, dmo.J, -8, 1.0);
-      a($$0, dmo.K, -7, 1.0);
-      a($$0, dmo.L, -7, 1.0);
-      a($$0, dmo.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dmo.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dmo.P, -8, 1.0);
-      a($$0, dmo.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.R, -8, 1.0);
-      a($$0, dmo.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dmo.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.U, -3, 1.0);
-      a($$0, dmo.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dmo.W, -2, 1.0);
-      a($$0, dmo.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dmo.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dmo.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dmo.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dmo.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dmo.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dmo.ah, -4, 1.0);
-   }
-
-   private static void a(ou<ebj.a> $$0, int $$1, agf<ebj.a> $$2, agf<ebj.a> $$3, agf<ebj.a> $$4, agf<ebj.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(ou<ebj.a> $$0, agf<ebj.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new ebj.a($$2, $$3, $$4));
+   public static void a(ov<dkr> $$0) {
+      $$0.a(
+         dkp.a,
+         new dkr(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, arg.ba, dkp.e, 0.0F, new dkr.a(false, true, bii.a(0, 7), 0))
+      );
+      $$0.a(
+         dkp.b,
+         new dkr(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, arg.bb, dkp.f, 0.1F, new dkr.a(true, false, bhz.a(7), 15))
+      );
+      $$0.a(
+         dkp.c,
+         new dkr(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, arg.bc, dkp.g, 0.0F, new dkr.a(false, true, bii.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dkp.d,
+         new dkr(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, arg.ba, dkp.e, 0.0F, new dkr.a(false, true, bii.a(0, 7), 0))
+      );
    }
 }

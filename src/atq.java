@@ -1,41 +1,29 @@
-public class atq {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
+public record atq(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
+
+   public static atq a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
       } else {
-         this.c = this.b(this.c + 1);
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new atq($$2, $$3);
       }
    }
 
-   public int a() {
-      return this.b.length;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
-      }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   public void c() {
-      this.c = 0;
-      this.d = 0;
+   public static atq a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
    }
 }

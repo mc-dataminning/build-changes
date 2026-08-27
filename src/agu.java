@@ -1,88 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class agu {
-   private static final agg a = new agg("tick");
-   private static final agg b = new agg("load");
-   private final MinecraftServer c;
-   private List<gx<du>> d = ImmutableList.of();
-   private boolean e;
-   private agt f;
+public class agu extends apl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<agi, af> c = Map.of();
+   private ak d = new ak();
+   private final efa e;
 
-   public agu(MinecraftServer $$0, agt $$1) {
-      this.c = $$0;
-      this.f = $$1;
-      this.b($$1);
+   public agu(efa $$0) {
+      super(b, "advancements");
+      this.e = $$0;
    }
 
-   public CommandDispatcher<du> a() {
-      return this.c.aC().a();
-   }
+   protected void a(Map<agi, JsonElement> $$0, aph $$1, bfo $$2) {
+      Builder<agi, af> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         try {
+            JsonObject $$3x = atc.m($$2x, "advancement");
+            ae $$4x = ae.a($$3x, new bg($$1x, this.e));
+            $$3.put($$1x, new af($$1x, $$4x));
+         } catch (Exception var6) {
+            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
+         }
+      });
+      this.c = $$3.buildOrThrow();
+      ak $$4 = new ak();
+      $$4.a(this.c.values());
 
-   public void b() {
-      if (this.e) {
-         this.e = false;
-         Collection<gx<du>> $$0 = this.f.b(b);
-         this.a($$0, b);
+      for (ag $$5 : $$4.b()) {
+         if ($$5.b().b().d().isPresent()) {
+            as.a($$5);
+         }
       }
 
-      this.a(this.d, a);
+      this.d = $$4;
    }
 
-   private void a(Collection<gx<du>> $$0, agg $$1) {
-      this.c.aM().a($$1::toString);
-
-      for (gx<du> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.c.aM().c();
+   @Nullable
+   public af a(agi $$0) {
+      return this.c.get($$0);
    }
 
-   public void a(gx<du> $$0, du $$1) {
-      bfh $$2 = this.c.aM();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         gz<du> $$3 = $$0.a(null, this.a(), $$1);
-         dv.a($$1, $$2x -> $$2x.a($$3, $$1));
-      } catch (dx var8) {
-      } finally {
-         $$2.c();
-      }
+   public ak a() {
+      return this.d;
    }
 
-   public void a(agt $$0) {
-      this.f = $$0;
-      this.b($$0);
-   }
-
-   private void b(agt $$0) {
-      this.d = ImmutableList.copyOf($$0.b(a));
-      this.e = true;
-   }
-
-   public du c() {
-      return this.c.aD().a(2).b();
-   }
-
-   public Optional<gx<du>> a(agg $$0) {
-      return this.f.a($$0);
-   }
-
-   public Collection<gx<du>> b(agg $$0) {
-      return this.f.b($$0);
-   }
-
-   public Iterable<agg> d() {
-      return this.f.a().keySet();
-   }
-
-   public Iterable<agg> e() {
-      return this.f.b();
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

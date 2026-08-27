@@ -1,61 +1,77 @@
-public class ecd extends ecf {
-   @Override
-   public ckw a() {
-      return cle.a;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
+
+public abstract class ecd<M extends ecd<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final djk[] d = new djk[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<djk> a;
+
+   protected ecd(Long2ObjectOpenHashMap<djk> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   @Override
-   public boolean a(ecg $$0, cqy $$1, ht $$2, ecf $$3, hx $$4) {
-      return true;
+   public abstract M b();
+
+   public djk a(long $$0) {
+      djk $$1 = ((djk)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   @Override
-   public eji a(cqy $$0, ht $$1, ecg $$2) {
-      return eji.b;
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   @Override
-   public int a(crv $$0) {
-      return 0;
+   @Nullable
+   public djk c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
+
+      djk $$2 = (djk)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
    }
 
-   @Override
-   protected boolean b() {
-      return true;
+   @Nullable
+   public djk d(long $$0) {
+      return (djk)this.a.remove($$0);
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   public void a(long $$0, djk $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Override
-   public float a(ecg $$0, cqy $$1, ht $$2) {
-      return 0.0F;
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
    }
 
-   @Override
-   public float a(ecg $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dgw b(ecg $$0) {
-      return cuv.a.o();
-   }
-
-   @Override
-   public boolean c(ecg $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(ecg $$0) {
-      return 0;
-   }
-
-   @Override
-   public ekb b(ecg $$0, cqy $$1, ht $$2) {
-      return ejy.a();
+   public void d() {
+      this.e = false;
    }
 }

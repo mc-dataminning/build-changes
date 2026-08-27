@@ -1,24 +1,21 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record doi<WC extends dod>(dok<WC> d, WC e) {
-   public static final Codec<doi<?>> a = jy.Q.q().dispatch($$0 -> $$0.d, dok::c);
-   public static final Codec<ib<doi<?>>> b = agc.a(jz.at, a);
-   public static final Codec<ig<doi<?>>> c = iq.a(jz.at, a);
+@Deprecated
+public class doi extends doj {
+   public static final Codec<doi> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, doi::new));
 
-   public boolean a(ato $$0) {
-      return this.d.a(this.e, $$0);
+   public doi(iw $$0) {
+      super($$0);
    }
 
-   public boolean a(dof $$0, dis $$1, Function<ht, ib<csq>> $$2, ato $$3, dlr $$4, cqz $$5, dir $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   protected boolean a(dhi $$0) {
+      return $$0.e();
    }
 
-   public dok<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   @Override
+   public dnz<?> a() {
+      return dnz.e;
    }
 }

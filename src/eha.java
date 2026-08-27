@@ -1,47 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record eha(ib<cpm> b, List<Float> c) implements ehk {
-   public static final Codec<eha> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jy.g.r().fieldOf("enchantment").forGetter(eha::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eha::d)).apply($$0, eha::new)
-   );
+public class eha extends egj {
+   public static final Codec<eha> a = RecordCodecBuilder.create($$0 -> a($$0).and(jy.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eha::new));
+   private final ib<cng> b;
 
-   @Override
-   public ehl b() {
-      return ehm.l;
+   private eha(List<ehw> $$0, ib<cng> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<egt<?>> a() {
-      return ImmutableSet.of(egw.i);
+   public egl b() {
+      return egm.z;
    }
 
-   public boolean a(eel $$0) {
-      clb $$1 = $$0.c(egw.i);
-      int $$2 = $$1 != null ? cpo.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   public clj a(clj $$0, eex $$1) {
+      cni.a($$0, this.b.a());
+      return $$0;
    }
 
-   public static ehk.a a(cpm $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new eha($$0.j(), $$2);
-   }
-
-   public ib<cpm> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   public static egj.a<?> a(cng $$0) {
+      return a($$1 -> new eha($$1, $$0.c()));
    }
 }

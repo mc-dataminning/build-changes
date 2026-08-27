@@ -1,117 +1,109 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dfx extends der implements dli.b<dlp.b>, dlp {
-   private static final Logger b = LogUtils.getLogger();
-   private dlp.a c;
-   private final dlp.b d;
-   private final dlp.d e = this.c();
-   private int g;
+public class dfx extends dfd implements bjb {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final ats k = ats.a();
+   private ur l;
 
-   protected dfx(det<?> $$0, ht $$1, dgw $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dlp.a();
-      this.d = new dlp.b(this);
-   }
-
-   public dfx(ht $$0, dgw $$1) {
-      this(det.I, $$0, $$1);
-   }
-
-   public dlp.d c() {
-      return new dfx.a(this.p());
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dlp.a.a.parse(new Dynamic(sn.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+   public dfx(ht $$0, dhi $$1) {
+      super(dff.m, $$0, $$1);
    }
 
    @Override
    protected void b(rz $$0) {
       super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      dlp.a.a.encodeStart(sn.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+      if (this.ae()) {
+         $$0.a("CustomName", ur.a.a(this.l));
+      }
    }
 
    @Override
-   public dlp.a gg() {
-      return this.c;
+   public void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.l = ur.a.a($$0.l("CustomName"));
+      }
    }
 
-   @Override
-   public dlp.d gh() {
-      return this.e;
-   }
+   public static void a(csa $$0, ht $$1, dhi $$2, dfx $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cdu $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.ds() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dy() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)atm.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-   public int f() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public dlp.b g() {
-      return this.d;
-   }
-
-   protected class a implements dlp.d {
-      public static final int b = 8;
-      protected final ht c;
-      private final dlk a;
-
-      public a(ht $$1) {
-         this.c = $$1;
-         this.a = new dlc($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public dlk b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ama $$0, ht $$1, dlg $$2, @Nullable dlg.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dlg.f && $$2 != dlg.i ? dbl.n(dfx.this.q()) : false;
-      }
-
-      @Override
-      public void a(ama $$0, ht $$1, dlg $$2, @Nullable bki $$3, @Nullable bki $$4, float $$5) {
-         dgw $$6 = dfx.this.q();
-         if (dbl.n($$6)) {
-            dfx.this.a(dlp.a_($$2));
-            int $$7 = dlp.a_($$5, this.a());
-            if ($$6.b() instanceof dbl $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dfx.this.f());
-            }
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
 
-      @Override
-      public void e() {
-         dfx.this.e();
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = atm.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = atm.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public ur ad() {
+      return (ur)(this.l != null ? this.l : ur.c("container.enchant"));
+   }
+
+   public void a(@Nullable ur $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ur af() {
+      return this.l;
    }
 }

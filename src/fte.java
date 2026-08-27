@@ -1,76 +1,111 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class fte {
-   private final Long2ObjectMap<fte.a> a = new Long2ObjectOpenHashMap();
+public class fte extends fti {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final eju k = new eju(0.0, -0.32F, 0.073F);
+   private final Map<div, fte.a> l;
 
-   @Nullable
-   public ftd a(crs $$0, ht $$1, ht $$2, int $$3) {
-      int $$4 = iu.a($$1.u() - $$3);
-      int $$5 = iu.a($$1.w() - $$3);
-      int $$6 = iu.a($$2.u() + $$3);
-      int $$7 = iu.a($$2.w() + $$3);
-      fte.a[][] $$8 = new fte.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (fte.a)this.a.computeIfAbsent(cqz.c($$9, $$10), $$1x -> new fte.a($$0.d(cqz.a($$1x), cqz.b($$1x))));
-         }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         ftc[][] $$11 = new ftc[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new ftd($$0, $$4, $$5, $$11);
-      }
+   public fte(fsv.a $$0) {
+      super($$0);
+      this.l = div.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fte.a($$0.a(fkn.b($$1)))));
    }
 
-   private static boolean a(ht $$0, ht $$1, int $$2, int $$3, fte.a[][] $$4) {
-      int $$5 = iu.a($$0.u());
-      int $$6 = iu.a($$0.w());
-      int $$7 = iu.a($$1.u());
-      int $$8 = iu.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            djd $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   @Override
+   public float b() {
+      return 1.0F;
    }
 
-   static final class a {
-      private final djd a;
-      @Nullable
-      private ftc b;
+   @Override
+   public float c() {
+      return 0.9F;
+   }
 
-      a(djd $$0) {
+   @Override
+   public void a(dgm $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
+      dhi $$6 = $$0.q();
+      dbz $$7 = (dbz)$$6.b();
+      div $$8 = dbz.a($$7);
+      fte.a $$9 = this.l.get($$8);
+      $$9.a($$6);
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   }
+
+   @Override
+   void a(enw $$0, float $$1, dhi $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
+
+   @Override
+   void a(enw $$0, int $$1, int $$2, fil $$3, eoa $$4) {
+      fte.a $$5 = (fte.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
+   }
+
+   @Override
+   gdy a(div $$0) {
+      return frj.b($$0);
+   }
+
+   @Override
+   eju d() {
+      return k;
+   }
+
+   public static fku e() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("board", fkt.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fkq.a);
+      $$1.a("plank", fkt.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fkq.a);
+      fkx $$2 = $$1.a("normalChains", fkt.c(), fkq.a);
+      $$2.a("chainL1", fkt.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", fkt.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", fkt.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", fkt.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", fkt.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fkq.a);
+      return fku.a($$0, 64, 32);
+   }
+
+   public static final class a extends fil {
+      public final fko a;
+      public final fko b;
+      public final fko c;
+      public final fko d;
+
+      public a(fko $$0) {
+         super(frc::e);
          this.a = $$0;
+         this.b = $$0.b("plank");
+         this.d = $$0.b("normalChains");
+         this.c = $$0.b("vChains");
       }
 
-      public djd a() {
-         return this.a;
-      }
-
-      public ftc b() {
-         if (this.b == null) {
-            this.b = new ftc(this.a);
+      public void a(dhi $$0) {
+         boolean $$1 = !($$0.b() instanceof cvz);
+         this.b.k = $$1;
+         this.c.k = false;
+         this.d.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dhy.a);
+            this.d.k = !$$2;
+            this.c.k = $$2;
          }
+      }
 
-         return this.b;
+      @Override
+      public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

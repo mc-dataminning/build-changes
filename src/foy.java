@@ -1,42 +1,44 @@
-public class foy extends fnt {
-   private final bki a;
-   private int b;
-   private final int D;
-   private final jq E;
+public class foy extends fpj {
+   private final fpe a;
 
-   public foy(fkw $$0, bki $$1, jq $$2) {
-      this($$0, $$1, $$2, 3);
+   protected foy(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public foy(fkw $$0, bki $$1, jq $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.do());
-   }
-
-   private foy(fkw $$0, bki $$1, jq $$2, int $$3, eji $$4) {
-      super($$0, $$1.dq(), $$1.e(0.5), $$1.dw(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public fom b() {
+      return fom.b;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
+
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foy $$8 = new foy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
    }
 }

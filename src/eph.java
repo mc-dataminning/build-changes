@@ -1,27 +1,54 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class eph extends epg {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class eph extends eps {
+   private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
-   public static eph a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      eph $$3 = new eph();
+   public static eph a(JsonObject $$0) {
+      eph $$1 = new eph();
 
       try {
-         $$3.a = erd.b("downloadLink", $$2, "");
-         $$3.b = erd.b("resourcePackUrl", $$2, "");
-         $$3.c = erd.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         $$1.a = erp.a("serverId", $$0, -1L);
+         String $$2 = erp.b("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
+         }
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
 
-      return $$3;
+      return $$1;
+   }
+
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
+
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = erp.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 }

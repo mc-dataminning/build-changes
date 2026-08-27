@@ -1,28 +1,57 @@
-public class fak extends ezz {
-   public fak(fah $$0, esv $$1) {
-      super($$0, $$1, ur.c("options.skinCustomisation.title"));
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.compress.utils.Lists;
+
+public class fak extends faw {
+   @Nullable
+   private final etg<Unit> l;
+
+   public static fak a(etd $$0, fau $$1, eth $$2) {
+      List<etg<?>> $$3 = Lists.newArrayList();
+      $$3.add($$2.Q());
+      $$3.add($$2.R());
+      etg<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            biu $$1x = $$0x.aj();
+            return new etg<>(
+               "options.difficulty.online",
+               etg.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new etg.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
+      }
+
+      return new fak($$1, $$2, $$3.toArray(new etg[0]), $$4);
+   }
+
+   private fak(fau $$0, eth $$1, etg<?>[] $$2, @Nullable etg<Unit> $$3) {
+      super($$0, $$1, ur.c("options.online.title"), $$2);
+      this.l = $$3;
    }
 
    @Override
-   protected void aO_() {
-      int $$0 = 0;
-
-      for (cdn $$1 : cdn.values()) {
-         this.d(eut.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
-         $$0++;
+   protected void aP_() {
+      super.aP_();
+      if (this.l != null) {
+         eux $$0 = this.k.b(this.l);
+         if ($$0 != null) {
+            $$0.i = false;
+         }
       }
 
-      this.d(this.b.t().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
-      if (++$$0 % 2 == 1) {
-         $$0++;
+      eux $$1 = this.k.b(this.b.af());
+      if ($$1 != null) {
+         $$1.i = this.f.A();
       }
-
-      this.d(eum.a(uq.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 }

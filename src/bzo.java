@@ -1,80 +1,43 @@
 import javax.annotation.Nullable;
 
-public class bzo extends bzb {
-   private boolean b;
+public class bzo extends bzj {
    @Nullable
-   private ecv c;
-   @Nullable
-   private eji d;
+   private eju b;
 
-   public bzo(byz $$0) {
+   public bzo(bzh $$0) {
       super($$0);
    }
 
    @Override
    public void c() {
-      if (!this.b && this.c != null) {
-         ht $$0 = this.a.dL().a(dmf.a.f, dpi.a(this.a.s()));
-         if (!$$0.a(this.a.dj(), 10.0)) {
-            this.a.gb().a(bzp.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
+      if (this.b == null) {
+         this.b = this.a.dl();
       }
+   }
+
+   @Override
+   public boolean a() {
+      return true;
    }
 
    @Override
    public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
+      this.b = null;
    }
 
-   private void j() {
-      int $$0 = this.a.y();
-      eji $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gc() != null && this.a.gc().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            iw $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new eji((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
+   @Override
+   public float f() {
+      return 1.0F;
    }
 
    @Nullable
    @Override
-   public eji g() {
-      return this.d;
+   public eju g() {
+      return this.b;
    }
 
    @Override
-   public bzp<bzo> i() {
-      return bzp.e;
+   public bzx<bzo> i() {
+      return bzx.k;
    }
 }

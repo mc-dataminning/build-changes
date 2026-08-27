@@ -1,58 +1,8 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class dja<T> implements djj<T> {
-   private final ih<T> a;
-
-   public dja(ih<T> $$0) {
-      this.a = $$0;
-   }
-
-   public static <A> djj<A> a(int $$0, ih<A> $$1, djk<A> $$2, List<A> $$3) {
-      return new dja<>($$1);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dji($$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(tu $$0) {
-   }
-
-   @Override
-   public void b(tu $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public djj<T> c() {
-      return this;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dja {
 }

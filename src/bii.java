@@ -1,86 +1,53 @@
-public class bii implements bij {
-   private final bij c;
-   private final bij d;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   public bii(bij $$0, bij $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class bii extends bic {
+   public static final Codec<bii> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bii::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
+
+   private bii(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
+   }
+
+   public static bii a(int $$0, int $$1) {
+      return new bii($$0, $$1);
+   }
+
+   @Override
+   public int a(ats $$0) {
+      return atm.b($$0, this.b, this.f);
+   }
+
+   @Override
+   public int a() {
+      return this.b;
    }
 
    @Override
    public int b() {
-      return this.c.b() + this.d.b();
+      return this.f;
    }
 
    @Override
-   public boolean ai_() {
-      return this.c.ai_() && this.d.ai_();
-   }
-
-   public boolean a(bij $$0) {
-      return this.c == $$0 || this.d == $$0;
+   public bid<?> c() {
+      return bid.b;
    }
 
    @Override
-   public clb a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public clb a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public clb b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, clb $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public int aj_() {
-      return this.c.aj_();
-   }
-
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(cdm $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(cdm $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(cdm $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, clb $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

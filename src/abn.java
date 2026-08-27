@@ -6,10 +6,10 @@ public class abn implements wk<yd> {
    @Nullable
    private final String b;
    private final int c;
-   private final agx.a d;
+   private final agz.a d;
 
-   public abn(agx.a $$0, @Nullable String $$1, String $$2, int $$3) {
-      if ($$0 != agx.a.b && $$1 == null) {
+   public abn(agz.a $$0, @Nullable String $$1, String $$2, int $$3) {
+      if ($$0 != agz.a.b && $$1 == null) {
          throw new IllegalArgumentException("Need an objective name");
       } else {
          this.a = $$2;
@@ -21,10 +21,10 @@ public class abn implements wk<yd> {
 
    public abn(tu $$0) {
       this.a = $$0.s();
-      this.d = $$0.b(agx.a.class);
+      this.d = $$0.b(agz.a.class);
       String $$1 = $$0.s();
       this.b = Objects.equals($$1, "") ? null : $$1;
-      if (this.d != agx.a.b) {
+      if (this.d != agz.a.b) {
          this.c = $$0.n();
       } else {
          this.c = 0;
@@ -36,7 +36,7 @@ public class abn implements wk<yd> {
       $$0.a(this.a);
       $$0.a(this.d);
       $$0.a(this.b == null ? "" : this.b);
-      if (this.d != agx.a.b) {
+      if (this.d != agz.a.b) {
          $$0.c(this.c);
       }
    }
@@ -58,7 +58,7 @@ public class abn implements wk<yd> {
       return this.c;
    }
 
-   public agx.a f() {
+   public agz.a f() {
       return this.d;
    }
 }

@@ -1,119 +1,247 @@
-import java.util.Arrays;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dfr extends der {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "name";
-   public static final String e = "final_state";
-   private agg f = new agg("empty");
-   private agg g = new agg("empty");
-   private agf<dye> h = agf.a(jz.aE, new agg("empty"));
-   private dfr.a i = dfr.a.a;
-   private String j = "minecraft:air";
+public class dfr extends dgh implements chc {
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 9;
+   public static final int f = 1;
+   public static final int g = 0;
+   public static final int h = 9;
+   public static final int i = 10;
+   private il<clj> r = il.a(9, clj.b);
+   private int s = 0;
+   protected final cgw j = new cgw() {
+      private final int[] b = new int[9];
+      private int c = 0;
 
-   public dfr(ht $$0, dgw $$1) {
-      super(det.F, $$0, $$1);
-   }
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.c : this.b[$$0];
+      }
 
-   public agg c() {
-      return this.f;
-   }
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.c = $$1;
+         } else {
+            this.b[$$0] = $$1;
+         }
+      }
 
-   public agg d() {
-      return this.g;
-   }
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
 
-   public agf<dye> f() {
-      return this.h;
-   }
-
-   public String g() {
-      return this.j;
-   }
-
-   public dfr.a i() {
-      return this.i;
-   }
-
-   public void a(agg $$0) {
-      this.f = $$0;
-   }
-
-   public void b(agg $$0) {
-      this.g = $$0;
-   }
-
-   public void a(agf<dye> $$0) {
-      this.h = $$0;
-   }
-
-   public void a(String $$0) {
-      this.j = $$0;
-   }
-
-   public void a(dfr.a $$0) {
-      this.i = $$0;
+   public dfr(ht $$0, dhi $$1) {
+      super(dff.P, $$0, $$1);
    }
 
    @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      $$0.a("name", this.f.toString());
-      $$0.a("target", this.g.toString());
-      $$0.a("pool", this.h.a().toString());
-      $$0.a("final_state", this.j);
-      $$0.a("joint", this.i.c());
+   protected ur g() {
+      return ur.c("container.crafter");
+   }
+
+   @Override
+   protected cgm a(int $$0, cdt $$1) {
+      return new cha($$0, $$1, this, this.j);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.j.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.j.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, clj $$1) {
+      if (this.j.a($$0) == 1) {
+         return false;
+      } else {
+         clj $$2 = this.r.get($$0);
+         int $$3 = $$2.L();
+         if ($$3 >= $$2.g()) {
+            return false;
+         } else {
+            return $$2.b() ? true : !this.a($$3, $$2, $$0);
+         }
+      }
+   }
+
+   private boolean a(int $$0, clj $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            clj $$4 = this.a($$3);
+            if ($$4.b() || $$4.L() < $$0 && clj.c($$4, $$1)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
    @Override
    public void a(rz $$0) {
       super.a($$0);
-      this.f = new agg($$0.l("name"));
-      this.g = new agg($$0.l("target"));
-      this.h = agf.a(jz.aE, new agg($$0.l("pool")));
-      this.j = $$0.l("final_state");
-      this.i = dfr.a.a($$0.l("joint")).orElseGet(() -> cyu.h(this.q()).o().d() ? dfr.a.b : dfr.a.a);
-   }
+      this.s = $$0.h("crafting_ticks_remaining");
+      this.r = il.a(this.b(), clj.b);
+      if (!this.d($$0)) {
+         bir.b($$0, this.r);
+      }
 
-   public yk j() {
-      return yk.a(this);
+      int[] $$1 = $$0.n("disabled_slots");
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.j.a($$2, 0);
+      }
+
+      for (int $$3 : $$1) {
+         if (this.e($$3)) {
+            this.j.a($$3, 1);
+         }
+      }
+
+      this.j.a(9, $$0.h("triggered"));
    }
 
    @Override
-   public rz av_() {
-      return this.o();
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("crafting_ticks_remaining", this.s);
+      if (!this.e($$0)) {
+         bir.a($$0, this.r);
+      }
+
+      this.f($$0);
+      this.g($$0);
    }
 
-   public void a(ama $$0, int $$1, boolean $$2) {
-      ht $$3 = this.p().a(this.q().c(cyu.b).a());
-      io<dye> $$4 = $$0.H_().d(jz.aE);
-      ib<dye> $$5 = $$4.f(this.h);
-      dxy.a($$0, $$5, this.g, $$1, $$3, $$2);
+   @Override
+   public int b() {
+      return 9;
    }
 
-   public static enum a implements aub {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
+   @Override
+   public boolean ai_() {
+      for (clj $$0 : this.r) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      return true;
+   }
+
+   @Override
+   public clj a(int $$0) {
+      return this.r.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, clj $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
       }
 
-      public static Optional<dfr.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(cdu $$0) {
+      return this.o != null && this.o.c_(this.p) == this
+         ? !($$0.i((double)this.p.u() + 0.5, (double)this.p.v() + 0.5, (double)this.p.w() + 0.5) > 64.0)
+         : false;
+   }
+
+   @Override
+   public il<clj> f() {
+      return this.r;
+   }
+
+   @Override
+   protected void a(il<clj> $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int ay_() {
+      return 3;
+   }
+
+   @Override
+   public int az_() {
+      return 3;
+   }
+
+   @Override
+   public void a(cdy $$0) {
+      for (clj $$1 : this.r) {
+         $$0.a($$1);
+      }
+   }
+
+   private void f(rz $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
       }
 
-      public ur a() {
-         return ur.c("jigsaw_block.joint." + this.c);
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void g(rz $$0) {
+      $$0.a("triggered", this.j.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.j.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean i() {
+      return this.j.a(9) == 1;
+   }
+
+   public static void a(csa $$0, ht $$1, dhi $$2, dfr $$3) {
+      int $$4 = $$3.s - 1;
+      if ($$4 >= 0) {
+         $$3.s = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.a(cwt.b, Boolean.valueOf(false)), 3);
+         }
       }
+   }
+
+   public void d(int $$0) {
+      this.s = $$0;
+   }
+
+   public int j() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         clj $$2 = this.a($$1);
+         if (!$$2.b() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.r.get($$0).b();
    }
 }

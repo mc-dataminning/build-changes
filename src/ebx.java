@@ -1,313 +1,74 @@
-import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import java.util.Arrays;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public abstract class ebx<M extends ebr<M>, S extends ebu<M>> implements ebt {
-   public static final int a = 15;
-   protected static final int b = 1;
-   protected static final long c = ebx.a.a(1);
-   private static final int g = 512;
-   protected static final hx[] d = hx.values();
-   protected final djg e;
-   protected final S f;
-   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
-   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
-   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
-   private final ht.a k = new ht.a();
-   private static final int l = 2;
-   private final long[] m = new long[2];
-   private final djf[] n = new djf[2];
+public class ebx {
+   private final eby[] a;
+   private final double b;
+   private final double c;
 
-   protected ebx(djg $$0, S $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c();
+   public ebx(ats $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   public static boolean a(cqy $$0, ht $$1, dgw $$2, dgw $$3) {
-      return $$3 == $$2 ? false : $$3.b($$0, $$1) != $$2.b($$0, $$1) || $$3.h() != $$2.h() || $$3.g() || $$2.g();
-   }
-
-   public static int a(cqy $$0, dgw $$1, ht $$2, dgw $$3, ht $$4, hx $$5, int $$6) {
-      boolean $$7 = a($$1);
-      boolean $$8 = a($$3);
-      if ($$7 && $$8) {
-         return $$6;
+   private ebx(ats $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         ekb $$9 = $$7 ? ejy.a() : $$1.c($$0, $$2);
-         ekb $$10 = $$8 ? ejy.a() : $$3.c($$0, $$4);
-         return ejy.b($$9, $$10, $$5) ? 16 : $$6;
-      }
-   }
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            eby $$5 = new eby($$0);
+            int $$6 = $$3;
+            this.a = new eby[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
 
-   public static ekb a(cqy $$0, ht $$1, dgw $$2, hx $$3) {
-      return a($$2) ? ejy.a() : $$2.a($$0, $$1, $$3);
-   }
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new eby($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
 
-   protected static boolean a(dgw $$0) {
-      return !$$0.p() || !$$0.g();
-   }
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               ats $$9 = new dnq(new dms($$8));
 
-   protected dgw c(ht $$0) {
-      int $$1 = iu.a($$0.u());
-      int $$2 = iu.a($$0.w());
-      djf $$3 = this.a($$1, $$2);
-      return $$3 == null ? cuv.F.o() : $$3.a_($$0);
-   }
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new eby($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
 
-   protected int a(dgw $$0, ht $$1) {
-      return Math.max(1, $$0.b(this.e.q(), $$1));
-   }
-
-   protected boolean a(long $$0, dgw $$1, long $$2, dgw $$3, hx $$4) {
-      ekb $$5 = this.a($$1, $$0, $$4);
-      ekb $$6 = this.a($$3, $$2, $$4.g());
-      return ejy.b($$5, $$6);
-   }
-
-   protected ekb a(dgw $$0, long $$1, hx $$2) {
-      return a(this.e.q(), this.k.f($$1), $$0, $$2);
-   }
-
-   @Nullable
-   protected djf a(int $$0, int $$1) {
-      long $$2 = cqz.c($$0, $$1);
-
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         if ($$2 == this.m[$$3]) {
-            return this.n[$$3];
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
-
-      djf $$4 = this.e.c($$0, $$1);
-
-      for (int $$5 = 1; $$5 > 0; $$5--) {
-         this.m[$$5] = this.m[$$5 - 1];
-         this.n[$$5] = this.n[$$5 - 1];
-      }
-
-      this.m[0] = $$2;
-      this.n[0] = $$4;
-      return $$4;
    }
 
-   private void c() {
-      Arrays.fill(this.m, cqz.a);
-      Arrays.fill(this.n, null);
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   @Override
-   public void a(ht $$0) {
-      this.h.add($$0.a());
-   }
-
-   public void a(long $$0, @Nullable diy $$1) {
-      this.f.a($$0, $$1);
-   }
-
-   public void b(cqz $$0, boolean $$1) {
-      this.f.c(iu.b($$0.e, $$0.f), $$1);
-   }
-
-   @Override
-   public void a(iu $$0, boolean $$1) {
-      this.f.d($$0.s(), $$1);
-   }
-
-   @Override
-   public void a(cqz $$0, boolean $$1) {
-      this.f.b(iu.b($$0.e, $$0.f), $$1);
-   }
-
-   @Override
-   public int a() {
-      LongIterator $$0 = this.h.iterator();
-
-      while ($$0.hasNext()) {
-         this.a($$0.nextLong());
-      }
-
-      this.h.clear();
-      this.h.trim(512);
-      int $$1 = 0;
-      $$1 += this.e();
-      $$1 += this.d();
-      this.c();
-      this.f.a(this);
-      this.f.b();
-      return $$1;
-   }
-
-   private int d() {
-      int $$0;
-      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
-         long $$1 = this.j.dequeueLong();
-         long $$2 = this.j.dequeueLong();
-         int $$3 = this.f.e($$1);
-         int $$4 = ebx.a.a($$2);
-         if (ebx.a.c($$2) && $$3 < $$4) {
-            this.f.a($$1, $$4);
-            $$3 = $$4;
+      for (eby $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
          }
 
-         if ($$3 == $$4) {
-            this.a($$1, $$2, $$3);
-         }
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
 
-      return $$0;
-   }
-
-   private int e() {
-      int $$0;
-      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
-         long $$1 = this.i.dequeueLong();
-         long $$2 = this.i.dequeueLong();
-         this.a($$1, $$2);
-      }
-
-      return $$0;
-   }
-
-   protected void b(long $$0, long $$1) {
-      this.i.enqueue($$0);
-      this.i.enqueue($$1);
-   }
-
-   protected void c(long $$0, long $$1) {
-      this.j.enqueue($$0);
-      this.j.enqueue($$1);
-   }
-
-   @Override
-   public boolean K_() {
-      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
-   }
-
-   @Nullable
-   @Override
-   public diy a(iu $$0) {
-      return this.f.d($$0.s());
-   }
-
-   @Override
-   public int b(ht $$0) {
-      return this.f.a($$0.a());
-   }
-
-   public String b(long $$0) {
-      return this.c($$0).a();
-   }
-
-   public ebu.b c(long $$0) {
-      return this.f.k($$0);
-   }
-
-   protected abstract void a(long var1);
-
-   protected abstract void a(long var1, long var3, int var5);
-
-   protected abstract void a(long var1, long var3);
-
-   public static class a {
-      private static final int a = 4;
-      private static final int b = 6;
-      private static final long c = 15L;
-      private static final long d = 1008L;
-      private static final long e = 1024L;
-      private static final long f = 2048L;
-
-      public static long a(int $$0, hx $$1) {
-         long $$2 = c(1008L, $$1);
-         return a($$2, $$0);
-      }
-
-      public static long a(int $$0) {
-         return a(1008L, $$0);
-      }
-
-      public static long a(int $$0, boolean $$1) {
-         long $$2 = 1008L;
-         $$2 |= 2048L;
-         if ($$1) {
-            $$2 |= 1024L;
-         }
-
-         return a($$2, $$0);
-      }
-
-      public static long a(int $$0, boolean $$1, hx $$2) {
-         long $$3 = c(1008L, $$2);
-         if ($$1) {
-            $$3 |= 1024L;
-         }
-
-         return a($$3, $$0);
-      }
-
-      public static long b(int $$0, boolean $$1, hx $$2) {
-         long $$3 = 0L;
-         if ($$1) {
-            $$3 |= 1024L;
-         }
-
-         $$3 = b($$3, $$2);
-         return a($$3, $$0);
-      }
-
-      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
-         long $$5 = a(0L, 15);
-         if ($$0) {
-            $$5 = b($$5, hx.a);
-         }
-
-         if ($$1) {
-            $$5 = b($$5, hx.c);
-         }
-
-         if ($$2) {
-            $$5 = b($$5, hx.d);
-         }
-
-         if ($$3) {
-            $$5 = b($$5, hx.e);
-         }
-
-         if ($$4) {
-            $$5 = b($$5, hx.f);
-         }
-
-         return $$5;
-      }
-
-      public static int a(long $$0) {
-         return (int)($$0 & 15L);
-      }
-
-      public static boolean b(long $$0) {
-         return ($$0 & 1024L) != 0L;
-      }
-
-      public static boolean c(long $$0) {
-         return ($$0 & 2048L) != 0L;
-      }
-
-      public static boolean a(long $$0, hx $$1) {
-         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
-      }
-
-      private static long a(long $$0, int $$1) {
-         return $$0 & -16L | (long)$$1 & 15L;
-      }
-
-      private static long b(long $$0, hx $$1) {
-         return $$0 | 1L << $$1.ordinal() + 4;
-      }
-
-      private static long c(long $$0, hx $$1) {
-         return $$0 & ~(1L << $$1.ordinal() + 4);
-      }
+      return $$3;
    }
 }

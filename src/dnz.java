@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnz implements dnm {
-   public static final Codec<dnz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.e), dgw.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dnz::new)
-   );
-   private final iw e;
-   private final dgw f;
+public interface dnz<P extends dny> {
+   dnz<doe> a = a("matching_blocks", doe.a);
+   dnz<dod> b = a("matching_block_tag", dod.e);
+   dnz<dof> c = a("matching_fluids", dof.a);
+   dnz<dob> d = a("has_sturdy_face", dob.a);
+   dnz<doi> e = a("solid", doi.a);
+   dnz<doh> f = a("replaceable", doh.a);
+   dnz<dol> g = a("would_survive", dol.a);
+   dnz<doc> h = a("inside_world_bounds", doc.a);
+   dnz<dnx> i = a("any_of", dnx.a);
+   dnz<dnw> j = a("all_of", dnw.a);
+   dnz<dog> k = a("not", dog.a);
+   dnz<dok> l = a("true", dok.e);
 
-   protected dnz(iw $$0, dgw $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   Codec<P> codec();
 
-   public boolean a(csm $$0, ht $$1) {
-      return this.f.a($$0, $$1.a(this.e));
-   }
-
-   @Override
-   public dnn<?> a() {
-      return dnn.g;
+   private static <P extends dny> dnz<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.P, $$0, () -> $$1);
    }
 }

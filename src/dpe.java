@@ -1,32 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public class dpe extends dpj<drl> {
-   public dpe(Codec<drl> $$0) {
+public class dpe extends dpv<drr> {
+   public dpe(Codec<drr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<drl> $$0) {
-      csm $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      drl $$3 = $$0.f();
-      ato $$4 = $$0.d();
-      if (!dpf.a($$1, $$2)) {
+   public boolean a(dpx<drr> $$0) {
+      ht $$1 = $$0.e();
+      csu $$2 = $$0.b();
+      ats $$3 = $$0.d();
+      drr $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
          return false;
       } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               ht $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+         for (ht $$7 : ht.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
@@ -34,140 +31,15 @@ public class dpe extends dpj<drl> {
       }
    }
 
-   private void a(csm $$0, ato $$1, ht $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, drl $$9) {
-      Optional<dlv> $$10 = dlv.a($$0, $$2, $$9.b, dpf::c, dpf::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            dlv $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), cuv.G.o(), 2);
-            } else {
-               $$15 = $$10.get();
-            }
+   private boolean a(csb $$0, ht $$1, ats $$2) {
+      ht $$3 = $$1.d();
+      dhi $$4 = $$0.a_($$3);
+      return $$4.a(cvc.kE) ? $$2.h() : $$4.d($$0, $$3, hx.b);
+   }
 
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((crv)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, hx.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
-               } else {
-                  $$20 = $$7;
-               }
-
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
-
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((crv)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, hx.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + ati.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = ati.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               dpf.a($$0, $$2.h($$11.getAsInt() - 1), hx.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               dpf.a($$0, $$2.h($$17.getAsInt() + 1), hx.b, $$36, $$39);
-            }
-         }
+   private void a(csb $$0, ht $$1, ats $$2, drr $$3) {
+      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
-   }
-
-   private boolean a(crv $$0, ht $$1) {
-      return $$0.a_($$1).a(cuv.H);
-   }
-
-   private int a(ato $$0, int $$1, int $$2, float $$3, int $$4, drl $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)ati.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
-      }
-   }
-
-   private boolean b(csm $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      if (!$$2.a(cuv.G) && !$$2.a(cuv.rt) && !$$2.a(cuv.rs)) {
-         if ($$0.a_($$1.c()).u().a(arh.a)) {
-            return false;
-         } else {
-            for (hx $$3 : hx.c.a) {
-               if (!this.a((crt)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((crt)$$0, $$1.d());
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(crt $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      return $$2.a(arc.bd) || $$2.u().a(arh.a);
-   }
-
-   private void a(csm $$0, ht $$1, int $$2, hx $$3) {
-      ht.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!dpf.c($$0, $$4)) {
-            return;
-         }
-
-         $$4.c($$3);
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, int $$3, drl $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)ati.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
-   }
-
-   private static float a(ato $$0, float $$1, float $$2, float $$3, float $$4) {
-      return bhp.a($$0, $$3, $$4, $$1, $$2);
    }
 }

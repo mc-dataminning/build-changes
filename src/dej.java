@@ -1,91 +1,19 @@
-public class dej {
-   public static final agf<dei> a = a("base");
-   public static final agf<dei> b = a("square_bottom_left");
-   public static final agf<dei> c = a("square_bottom_right");
-   public static final agf<dei> d = a("square_top_left");
-   public static final agf<dei> e = a("square_top_right");
-   public static final agf<dei> f = a("stripe_bottom");
-   public static final agf<dei> g = a("stripe_top");
-   public static final agf<dei> h = a("stripe_left");
-   public static final agf<dei> i = a("stripe_right");
-   public static final agf<dei> j = a("stripe_center");
-   public static final agf<dei> k = a("stripe_middle");
-   public static final agf<dei> l = a("stripe_downright");
-   public static final agf<dei> m = a("stripe_downleft");
-   public static final agf<dei> n = a("small_stripes");
-   public static final agf<dei> o = a("cross");
-   public static final agf<dei> p = a("straight_cross");
-   public static final agf<dei> q = a("triangle_bottom");
-   public static final agf<dei> r = a("triangle_top");
-   public static final agf<dei> s = a("triangles_bottom");
-   public static final agf<dei> t = a("triangles_top");
-   public static final agf<dei> u = a("diagonal_left");
-   public static final agf<dei> v = a("diagonal_up_right");
-   public static final agf<dei> w = a("diagonal_up_left");
-   public static final agf<dei> x = a("diagonal_right");
-   public static final agf<dei> y = a("circle");
-   public static final agf<dei> z = a("rhombus");
-   public static final agf<dei> A = a("half_vertical");
-   public static final agf<dei> B = a("half_horizontal");
-   public static final agf<dei> C = a("half_vertical_right");
-   public static final agf<dei> D = a("half_horizontal_bottom");
-   public static final agf<dei> E = a("border");
-   public static final agf<dei> F = a("curly_border");
-   public static final agf<dei> G = a("gradient");
-   public static final agf<dei> H = a("gradient_up");
-   public static final agf<dei> I = a("bricks");
-   public static final agf<dei> J = a("globe");
-   public static final agf<dei> K = a("creeper");
-   public static final agf<dei> L = a("skull");
-   public static final agf<dei> M = a("flower");
-   public static final agf<dei> N = a("mojang");
-   public static final agf<dei> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static agf<dei> a(String $$0) {
-      return agf.a(jz.c, new agg($$0));
+public class dej extends cva {
+   public static final MapCodec<dej> a = b(dej::new);
+
+   @Override
+   public MapCodec<dej> a() {
+      return a;
    }
 
-   public static dei a(io<dei> $$0) {
-      io.a($$0, a, new dei("b"));
-      io.a($$0, b, new dei("bl"));
-      io.a($$0, c, new dei("br"));
-      io.a($$0, d, new dei("tl"));
-      io.a($$0, e, new dei("tr"));
-      io.a($$0, f, new dei("bs"));
-      io.a($$0, g, new dei("ts"));
-      io.a($$0, h, new dei("ls"));
-      io.a($$0, i, new dei("rs"));
-      io.a($$0, j, new dei("cs"));
-      io.a($$0, k, new dei("ms"));
-      io.a($$0, l, new dei("drs"));
-      io.a($$0, m, new dei("dls"));
-      io.a($$0, n, new dei("ss"));
-      io.a($$0, o, new dei("cr"));
-      io.a($$0, p, new dei("sc"));
-      io.a($$0, q, new dei("bt"));
-      io.a($$0, r, new dei("tt"));
-      io.a($$0, s, new dei("bts"));
-      io.a($$0, t, new dei("tts"));
-      io.a($$0, u, new dei("ld"));
-      io.a($$0, v, new dei("rd"));
-      io.a($$0, w, new dei("lud"));
-      io.a($$0, x, new dei("rud"));
-      io.a($$0, y, new dei("mc"));
-      io.a($$0, z, new dei("mr"));
-      io.a($$0, A, new dei("vh"));
-      io.a($$0, B, new dei("hh"));
-      io.a($$0, C, new dei("vhr"));
-      io.a($$0, D, new dei("hhb"));
-      io.a($$0, E, new dei("bo"));
-      io.a($$0, F, new dei("cbo"));
-      io.a($$0, G, new dei("gra"));
-      io.a($$0, H, new dei("gru"));
-      io.a($$0, I, new dei("bri"));
-      io.a($$0, J, new dei("glb"));
-      io.a($$0, K, new dei("cre"));
-      io.a($$0, L, new dei("sku"));
-      io.a($$0, M, new dei("flo"));
-      io.a($$0, N, new dei("moj"));
-      return io.a($$0, O, new dei("pig"));
+   public dej(dhh.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, bkq $$3) {
+      $$3.a($$0, new eju(0.25, 0.05F, 0.25));
    }
 }

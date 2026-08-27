@@ -1,31 +1,22 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dof extends dnc {
-   private final ip a;
-   private final dmj b;
-   private final dmt c;
-   private final dmw.o d;
+class dof extends doj {
+   private final ig<ecr> e;
+   public static final Codec<dof> a = RecordCodecBuilder.create($$0 -> a($$0).and(iq.a(jz.x).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dof::new));
 
-   public dof(dmi $$0, ip $$1, cru $$2, dmj $$3, dmt $$4, dmw.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dof(iw $$0, ig<ecr> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   @Deprecated
-   public Optional<dgw> a(Function<ht, ib<csq>> $$0, dis $$1, ht $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   @Override
+   protected boolean a(dhi $$0) {
+      return $$0.u().a(this.e);
    }
 
-   @Deprecated
-   public ip c() {
-      return this.a;
-   }
-
-   public dmt d() {
-      return this.c;
+   @Override
+   public dnz<?> a() {
+      return dnz.c;
    }
 }

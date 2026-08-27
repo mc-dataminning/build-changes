@@ -1,85 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class fpg extends cdm {
-   @Nullable
-   private flf cm;
-   protected eji b;
-   public float c;
-   public float d;
-   public float e;
-   public final fkw f;
+public class fpg extends fpj {
+   fpg(flj $$0, fpe $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
 
-   public fpg(fkw $$0, GameProfile $$1) {
-      super($$0, $$0.R(), $$0.S(), $$1);
-      this.b = eji.b;
-      this.f = $$0;
+   fpg(flj $$0, fpe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public boolean N_() {
-      flf $$0 = this.a();
-      return $$0 != null && $$0.e() == crp.d;
+   public fom b() {
+      return fom.b;
    }
 
-   @Override
-   public boolean f() {
-      flf $$0 = this.a();
-      return $$0 != null && $$0.e() == crp.b;
-   }
+   public static class a implements fol<jv> {
+      private final fpe a;
 
-   @Nullable
-   protected flf a() {
-      if (this.cm == null) {
-         this.cm = esr.N().I().a(this.cv());
+      public a(fpe $$0) {
+         this.a = $$0;
       }
 
-      return this.cm;
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ats $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         fpg $$12 = new fpg($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
    }
 
-   @Override
-   public void l() {
-      this.b = this.do();
-      super.l();
-   }
+   public static class b implements fol<jv> {
+      private final fpe a;
 
-   public eji C(float $$0) {
-      return this.b.a(this.do(), (double)$$0);
-   }
-
-   public gch b() {
-      flf $$0 = this.a();
-      return $$0 == null ? gbz.a(this.cv()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fT().b) {
-         $$0 *= 1.1F;
+      public b(fpe $$0) {
+         this.a = $$0;
       }
 
-      $$0 *= ((float)this.b(bme.m) / this.fT().b() + 1.0F) / 2.0F;
-      if (this.fT().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      clb $$1 = this.fp();
-      if (this.fn()) {
-         if ($$1.a(cle.nG)) {
-            int $$2 = this.fr();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpg $$8 = new fpg($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<jp> o() {
+               return Optional.of(jp.a);
             }
+         };
+         $$8.t = atm.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
 
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (esr.N().m.ax().a() && this.gq()) {
-            return 0.1F;
-         }
+   public static class c implements fol<jv> {
+      private final fpe a;
+
+      public c(fpe $$0) {
+         this.a = $$0;
       }
 
-      return ati.i(esr.N().m.ah().c().floatValue(), 1.0F, $$0);
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpg $$8 = new fpg($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fol<jv> {
+      private final fpe a;
+
+      public d(fpe $$0) {
+         this.a = $$0;
+      }
+
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         fpg $$9 = new fpg($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
+      }
    }
 }

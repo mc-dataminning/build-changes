@@ -1,10 +1,10 @@
-public record aan(acg d, byte e) implements wk<yd> {
+public record aan(aci d, byte e) implements wk<yd> {
    public static final byte a = 1;
    public static final byte b = 2;
    public static final byte c = 3;
 
    public aan(tu $$0) {
-      this(new acg($$0), $$0.readByte());
+      this(new aci($$0), $$0.readByte());
    }
 
    @Override
@@ -21,7 +21,7 @@ public record aan(acg d, byte e) implements wk<yd> {
       return (this.e & $$0) != 0;
    }
 
-   public acg a() {
+   public aci a() {
       return this.d;
    }
 

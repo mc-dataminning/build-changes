@@ -1,47 +1,59 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record ehn(Optional<bq> b, eel.b c) implements ehk {
-   public static final Codec<ehn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asq.a(bq.a, "predicate").forGetter(ehn::c), eel.b.e.fieldOf("entity").forGetter(ehn::d)).apply($$0, ehn::new)
-   );
+public abstract class ehn implements ehw {
+   protected final List<ehw> c;
+   private final Predicate<eex> a;
 
-   @Override
-   public ehl b() {
-      return ehm.g;
+   protected ehn(List<ehw> $$0, Predicate<eex> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends ehn> Codec<T> a(Function<List<ehw>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(ehy.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends ehn> Codec<T> b(Function<List<ehw>, T> $$0) {
+      return ehy.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eex $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public Set<egt<?>> a() {
-      return ImmutableSet.of(egw.f, this.c.a());
+   public void a(efg $$0) {
+      ehw.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(eel $$0) {
-      bki $$1 = $$0.c(this.c.a());
-      eji $$2 = $$0.c(egw.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
-   }
+   public abstract static class a implements ehw.a {
+      private final Builder<ehw> a = ImmutableList.builder();
 
-   public static ehk.a a(eel.b $$0) {
-      return a($$0, bq.a.a());
-   }
+      protected a(ehw.a... $$0) {
+         for (ehw.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public static ehk.a a(eel.b $$0, bq.a $$1) {
-      return () -> new ehn(Optional.of($$1.b()), $$0);
-   }
+      public void a(ehw.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public static ehk.a a(eel.b $$0, bq $$1) {
-      return () -> new ehn(Optional.of($$1), $$0);
-   }
+      @Override
+      public ehw build() {
+         return this.a(this.a.build());
+      }
 
-   public Optional<bq> c() {
-      return this.b;
-   }
-
-   public eel.b d() {
-      return this.c;
+      protected abstract ehw a(List<ehw> var1);
    }
 }

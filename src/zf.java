@@ -4,8 +4,8 @@ public class zf implements wk<yd> {
    private final int a;
    private final byte b;
 
-   public zf(bki $$0, byte $$1) {
-      this.a = $$0.ah();
+   public zf(bkq $$0, byte $$1) {
+      this.a = $$0.aj();
       this.b = $$1;
    }
 
@@ -25,7 +25,7 @@ public class zf implements wk<yd> {
    }
 
    @Nullable
-   public bki a(crs $$0) {
+   public bkq a(csa $$0) {
       return $$0.a(this.a);
    }
 

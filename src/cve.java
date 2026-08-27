@@ -1,98 +1,98 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cve extends cut {
+public class cve extends cum {
    public static final MapCodec<cve> a = b(cve::new);
-   public static final dhw b = dhm.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final ekb e = cut.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final ekb f = cut.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   public static final dhz[] b = new dhz[]{dhy.k, dhy.l, dhy.m};
+   protected static final ekn c = ekk.a(cva.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), cva.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<cve> a() {
       return a;
    }
 
-   protected cve(dgv.d $$0) {
+   public cve(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public dbf b_(dhi $$0) {
+      return dbf.c;
    }
 
    @Override
-   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      ht $$4 = $$2.c();
-      if ($$1.t($$4)) {
-         int $$5 = 1;
+   public dfd a(ht $$0, dhi $$1) {
+      return new dfg($$0, $$1);
+   }
 
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
+   @Nullable
+   @Override
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return $$0.B ? null : a($$2, dff.l, dfg::a);
+   }
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return c;
+   }
+
+   @Override
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      if ($$1.B) {
+         return bix.a;
+      } else {
+         dfd $$6 = $$1.c_($$2);
+         if ($$6 instanceof dfg) {
+            $$3.a((dfg)$$6);
+            $$3.a(arb.aa);
          }
 
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.o());
-               dgw $$7 = $$0.a(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, $$2, false);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
-            }
+         return bix.b;
+      }
+   }
+
+   @Override
+   public void a(csa $$0, ht $$1, dhi $$2, blg $$3, clj $$4) {
+      if ($$4.A()) {
+         dfd $$5 = $$0.c_($$1);
+         if ($$5 instanceof dfg) {
+            ((dfg)$$5).a($$4.y());
          }
       }
    }
 
    @Override
-   public ekb c(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return e;
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return f;
+   public void a(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      bit.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean d_(dhi $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      for (hx $$3 : hx.c.a) {
-         dgw $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(arh.b)) {
-            return false;
-         }
-      }
-
-      dgw $$5 = $$1.a_($$2.d());
-      return ($$5.a(cuv.dQ) || $$5.a(arc.H)) && !$$1.a_($$2.c()).k();
+   public int a(dhi $$0, csa $$1, ht $$2) {
+      return cgm.a($$1.c_($$2));
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, bki $$3) {
-      $$3.a($$1.ag().j(), 1.0F);
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b[0], b[1], b[2]);
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
       return false;
    }
 }

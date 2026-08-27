@@ -1,17 +1,49 @@
-public class fnc extends fnd<jm> {
-   protected fnc(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jm $$7, foq $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+public class fnc extends fpj {
+   private final fpe a;
+
+   fnc(flj $$0, double $$1, double $$2, double $$3, double $$4, fpe $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
-   public static class a implements fny<jm> {
-      private final foq a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-      public a(foq $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public fom b() {
+      return fom.d;
+   }
+
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jm $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnc($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fnc($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,91 +1,77 @@
-public class cnr extends cnx {
-   public cnr(cnu $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cnr extends cnt {
+   private final ht b;
+   protected boolean a = true;
+
+   public cnr(cdu $$0, biw $$1, clj $$2, ejq $$3) {
+      this($$0.dN(), $$0, $$1, $$2, $$3);
    }
 
-   public boolean a(cgu $$0, crs $$1) {
-      int $$2 = 0;
-      clb $$3 = clb.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clb $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cle.ti)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cle.th)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.u() && $$2 > 0;
+   public cnr(cnt $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   public clb a(cgu $$0, ip $$1) {
-      int $$2 = 0;
-      clb $$3 = clb.b;
+   protected cnr(csa $$0, @Nullable cdu $$1, biw $$2, clj $$3, ejq $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clb $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cle.ti)) {
-               if (!$$3.b()) {
-                  return clb.b;
-               }
+   public static cnr a(cnr $$0, ht $$1, hx $$2) {
+      return new cnr(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ejq(
+            new eju((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
+   }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cle.th)) {
-                  return clb.b;
-               }
+   @Override
+   public ht a() {
+      return this.a ? super.a() : this.b;
+   }
 
-               $$2++;
-            }
-         }
-      }
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
 
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && cmx.d($$3) < 2) {
-         clb $$6 = new clb(cle.ti, $$2);
-         rz $$7 = $$3.v().h();
-         $$7.a("generation", cmx.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
+   public boolean c() {
+      return this.a;
+   }
+
+   public hx d() {
+      return hx.a(this.o())[0];
+   }
+
+   public hx e() {
+      return hx.a(this.o(), hx.a.b);
+   }
+
+   public hx[] f() {
+      hx[] $$0 = hx.a(this.o());
+      if (this.a) {
+         return $$0;
       } else {
-         return clb.b;
-      }
-   }
+         hx $$1 = this.k();
+         int $$2 = 0;
 
-   public il<clb> a(cgu $$0) {
-      il<clb> $$1 = il.a($$0.b(), clb.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         clb $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new clb($$3.d().s()));
-         } else if ($$3.d() instanceof cmx) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-
-      return $$1;
-   }
-
-   @Override
-   public coj<?> aq_() {
-      return coj.d;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
    }
 }

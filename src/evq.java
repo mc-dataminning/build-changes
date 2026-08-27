@@ -1,23 +1,35 @@
 public class evq {
-   public static final evq a = new evq("Merry X-mas!");
-   public static final evq b = new evq("Happy new year!");
-   public static final evq c = new evq("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+   public static final agi a = new agi("textures/gui/title/minecraft.png");
+   public static final agi b = new agi("textures/gui/title/minceraft.png");
+   public static final agi c = new agi("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)ats.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public evq(String $$0) {
-      this.f = $$0;
+   public evq(boolean $$0) {
+      this.o = $$0;
    }
 
-   public void a(eub $$0, int $$1, etz $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - ati.e(ati.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public void a(euo $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
+   }
+
+   public void a(euo $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

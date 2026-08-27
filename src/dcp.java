@@ -1,76 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcp extends cut {
+public class dcp extends cva {
    public static final MapCodec<dcp> a = b(dcp::new);
-   private static final ur d = ur.c("container.stonecutter");
-   public static final dhq b = cyo.aE;
-   protected static final ekb c = cut.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final ekn b = cva.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<dcp> a() {
       return a;
    }
 
-   public dcp(dgv.d $$0) {
+   public dcp(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, hx.c));
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      return this.o().a(b, $$0.g().g());
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return cva.a($$1, $$2.c(), hx.a) && !$$1.y($$2);
    }
 
    @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      if ($$1.B) {
-         return biq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aqx.ay);
-         return biq.b;
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return $$1 == hx.b && !this.a($$0, $$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(js.au, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      ht.a $$10 = new ht.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + atm.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + atm.a($$3, -10, 10));
+         dhi $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(js.ay, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
-   @Nullable
    @Override
-   public bit b(dgw $$0, crs $$1, ht $$2) {
-      return new biy(($$2x, $$3, $$4) -> new cid($$2x, $$3, cgp.a($$1, $$2)), d);
-   }
-
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean g_(dgw $$0) {
-      return true;
-   }
-
-   @Override
-   public day b_(dgw $$0) {
-      return day.c;
-   }
-
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dgw a(dgw $$0, czp $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
-      return false;
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
    }
 }

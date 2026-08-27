@@ -1,110 +1,38 @@
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class ciz extends clr implements cmv {
-   public static final int a = 20;
-   public static final int b = 15;
+public class ciz extends cms {
+   private static final String c = "block.minecraft.banner.";
 
-   public ciz(ckw.a $$0) {
-      super($$0);
+   public ciz(cva $$0, cva $$1, cle.a $$2) {
+      super($$0, $$1, $$2, hx.a);
+      Validate.isInstanceOf(ctr.class, $$0);
+      Validate.isInstanceOf(ctr.class, $$1);
    }
 
-   @Override
-   public void a(clb $$0, crs $$1, bky $$2, int $$3) {
-      if ($$2 instanceof cdm $$4) {
-         boolean $$5 = $$4.fT().d || cpo.a(cpq.B, $$0) > 0;
-         clb $$6 = $$4.g($$0);
-         if (!$$6.b() || $$5) {
-            if ($$6.b()) {
-               $$6 = new clb(cle.nH);
-            }
+   public static void a(clj $$0, List<ur> $$1) {
+      rz $$2 = cjc.a($$0);
+      if ($$2 != null && $$2.e("Patterns")) {
+         sf $$3 = $$2.c("Patterns", 10);
 
-            int $$7 = this.b($$0) - $$3;
-            float $$8 = a($$7);
-            if (!((double)$$8 < 0.1)) {
-               boolean $$9 = $$5 && $$6.a(cle.nH);
-               if (!$$1.B) {
-                  cip $$10 = (cip)($$6.d() instanceof cip ? $$6.d() : cle.nH);
-                  cds $$11 = $$10.a($$1, $$6, $$4);
-                  $$11.a($$4, $$4.dD(), $$4.dB(), 0.0F, $$8 * 3.0F, 1.0F);
-                  if ($$8 == 1.0F) {
-                     $$11.a(true);
-                  }
-
-                  int $$12 = cpo.a(cpq.y, $$0);
-                  if ($$12 > 0) {
-                     $$11.h($$11.x() + (double)$$12 * 0.5 + 0.5);
-                  }
-
-                  int $$13 = cpo.a(cpq.z, $$0);
-                  if ($$13 > 0) {
-                     $$11.b($$13);
-                  }
-
-                  if (cpo.a(cpq.A, $$0) > 0) {
-                     $$11.g(100);
-                  }
-
-                  $$0.a(1, $$4, $$1x -> $$1x.d($$4.fo()));
-                  if ($$9 || $$4.fT().d && ($$6.a(cle.uw) || $$6.a(cle.ux))) {
-                     $$11.d = cds.a.c;
-                  }
-
-                  $$1.b($$11);
-               }
-
-               $$1.a(null, $$4.dq(), $$4.ds(), $$4.dw(), aqn.ar, aqo.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
-               if (!$$9 && !$$4.fT().d) {
-                  $$6.h(1);
-                  if ($$6.b()) {
-                     $$4.fS().g($$6);
-                  }
-               }
-
-               $$4.b(aqx.c.b(this));
+         for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
+            rz $$5 = $$3.a($$4);
+            cjx $$6 = cjx.a($$5.h("Color"));
+            ib<deu> $$7 = deu.a($$5.l("Pattern"));
+            if ($$7 != null) {
+               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(ur.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
             }
          }
       }
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
+   public cjx b() {
+      return ((ctr)this.e()).b();
    }
 
    @Override
-   public int b(clb $$0) {
-      return 72000;
-   }
-
-   @Override
-   public cmu c(clb $$0) {
-      return cmu.e;
-   }
-
-   @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).b();
-      if (!$$1.fT().d && !$$4) {
-         return bir.d($$3);
-      } else {
-         $$1.c($$2);
-         return bir.b($$3);
-      }
-   }
-
-   @Override
-   public Predicate<clb> b() {
-      return c;
-   }
-
-   @Override
-   public int d() {
-      return 15;
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      a($$0, $$2);
    }
 }

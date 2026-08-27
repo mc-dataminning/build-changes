@@ -1,59 +1,96 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class ehb implements ehk {
-   protected final List<ehk> c;
-   private final Predicate<eel> a;
+public class ehb extends egj {
+   private static final Codec<List<ehb.b>> b = asu.a(ehb.b.a.listOf(), (Function<List<ehb.b>, DataResult<List<ehb.b>>>)($$0 -> {
+      Set<ib<bkb>> $$1 = new ObjectOpenHashSet();
 
-   protected ehb(List<ehk> $$0, Predicate<eel> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ehb> Codec<T> a(Function<List<ehk>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(ehm.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ehb> Codec<T> b(Function<List<ehk>, T> $$0) {
-      return ehm.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eel $$0) {
-      return this.a.test($$0);
-   }
-
-   @Override
-   public void a(eeu $$0) {
-      ehk.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
-      }
-   }
-
-   public abstract static class a implements ehk.a {
-      private final Builder<ehk> a = ImmutableList.builder();
-
-      protected a(ehk.a... $$0) {
-         for (ehk.a $$1 : $$0) {
-            this.a.add($$1.build());
+      for (ehb.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
          }
       }
 
-      public void a(ehk.a $$0) {
-         this.a.add($$0.build());
+      return DataResult.success($$0);
+   }));
+   public static final Codec<ehb> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(asu.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ehb::new)
+   );
+   private final List<ehb.b> c;
+
+   ehb(List<ehw> $$0, List<ehb.b> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   @Override
+   public egl b() {
+      return egm.n;
+   }
+
+   @Override
+   public Set<ehf<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public clj a(clj $$0, eex $$1) {
+      if ($$0.a(clm.vM) && !this.c.isEmpty()) {
+         ehb.b $$2 = ac.a(this.c, $$1.b());
+         bkb $$3 = $$2.a().a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a()) {
+            $$4 *= 20;
+         }
+
+         cmt.b($$0, List.of(new ddb.a($$3, $$4)));
+         return $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public static ehb.a c() {
+      return new ehb.a();
+   }
+
+   public static class a extends egj.a<ehb.a> {
+      private final Builder<ehb.b> a = ImmutableList.builder();
+
+      protected ehb.a a() {
+         return this;
+      }
+
+      public ehb.a a(bkb $$0, eir $$1) {
+         this.a.add(new ehb.b($$0.j(), $$1));
+         return this;
       }
 
       @Override
-      public ehk build() {
-         return this.a(this.a.build());
+      public egk b() {
+         return new ehb(this.g(), this.a.build());
+      }
+   }
+
+   static record b(ib<bkb> b, eir c) {
+      public static final Codec<ehb.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jy.e.r().fieldOf("type").forGetter(ehb.b::a), eis.a.fieldOf("duration").forGetter(ehb.b::b)).apply($$0, ehb.b::new)
+      );
+
+      public ib<bkb> a() {
+         return this.b;
       }
 
-      protected abstract ehk a(List<ehk> var1);
+      public eir b() {
+         return this.c;
+      }
    }
 }

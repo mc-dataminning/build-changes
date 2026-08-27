@@ -1,88 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class dag extends cut {
-   private static final hx[] a = hx.values();
-   public static final dhn b = dhm.L;
-   public static final dhn c = dhm.M;
-   public static final dhn d = dhm.N;
-   public static final dhn e = dhm.O;
-   public static final dhn f = dhm.J;
-   public static final dhn g = dhm.K;
-   public static final Map<hx, dhn> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(hx.class), $$0 -> {
-      $$0.put(hx.c, b);
-      $$0.put(hx.f, c);
-      $$0.put(hx.d, d);
-      $$0.put(hx.e, e);
-      $$0.put(hx.b, f);
-      $$0.put(hx.a, g);
-   }));
-   protected final ekb[] i;
+public class dag extends cvj {
+   public static final MapCodec<dag> a = b(dag::new);
+   public static final int b = 3;
+   public static final dii c = dhy.as;
+   private static final ekn[] d = new ekn[]{
+      cva.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
-   protected dag(float $$0, dgv.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dag> a() {
+      return a;
+   }
+
+   protected dag(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dag> a();
-
-   private ekb[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ekb $$3 = cut.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ekb[] $$4 = new ekb[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         hx $$6 = a[$$5];
-         $$4[$$5] = ejy.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      ekb[] $$7 = new ekb[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ekb $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ejy.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public boolean c(dgw $$0, cqy $$1, ht $$2) {
-      return false;
+   protected boolean b(dhi $$0, crg $$1, ht $$2) {
+      return $$0.a(cvc.dW);
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return this.i[this.h($$0)];
+   public boolean e_(dhi $$0) {
+      return $$0.c(c) < 3;
    }
 
-   protected int h(dgw $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
+   }
 
-      return $$1;
+   @Override
+   public clj a(csd $$0, ht $$1, dhi $$2) {
+      return new clj(clm.sg);
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(c);
    }
 }

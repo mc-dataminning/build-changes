@@ -1,18 +1,19 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class eat {
-   private final List<eas> a;
+public class eat extends eau {
+   public static final Codec<eat> a = Codec.unit(() -> eat.b);
+   public static final eat b = new eat();
 
-   public eat(List<eas> $$0) {
-      this.a = $$0;
-   }
-
-   public List<eas> a() {
-      return this.a;
+   private eat() {
    }
 
    @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public boolean a(ht $$0, ht $$1, ht $$2, ats $$3) {
+      return true;
+   }
+
+   @Override
+   protected eav<?> a() {
+      return eav.a;
    }
 }

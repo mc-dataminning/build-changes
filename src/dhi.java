@@ -1,21 +1,16 @@
-public enum dhi implements aub {
-   a("none"),
-   b("small"),
-   c("large");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   private final String d;
+public class dhi extends dhh.a {
+   public static final Codec<dhi> b = a(jy.f.q(), cva::o).stable();
 
-   private dhi(String $$0) {
-      this.d = $$0;
+   public dhi(cva $$0, ImmutableMap<dil<?>, Comparable<?>> $$1, MapCodec<dhi> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return this.d;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
+   protected dhi x() {
+      return this;
    }
 }

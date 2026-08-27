@@ -1,21 +1,26 @@
-public class ejf extends ejg {
-   private final bki b;
+@FunctionalInterface
+public interface ejf<T> {
+   void handle(T var1, ejh<T> var2, long var3);
 
-   public ejf(bki $$0) {
-      this($$0, $$0.dj());
-   }
+   public abstract static class a<T, C extends ejf<T>> {
+      private final agi a;
+      private final Class<?> b;
 
-   public ejf(bki $$0, eji $$1) {
-      super($$1);
-      this.b = $$0;
-   }
+      public a(agi $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public bki a() {
-      return this.b;
-   }
+      public agi a() {
+         return this.a;
+      }
 
-   @Override
-   public ejg.a c() {
-      return ejg.a.c;
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(rz var1, C var2);
+
+      public abstract C b(rz var1);
    }
 }

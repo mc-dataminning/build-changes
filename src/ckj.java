@@ -1,33 +1,25 @@
-public class ckj<T extends bki & bkv> extends ckw {
-   private final bkm<T> a;
-   private final int b;
-
-   public ckj(ckw.a $$0, bkm<T> $$1, int $$2) {
+public class ckj extends cle {
+   public ckj(cle.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bir.c($$3);
-      } else {
-         bki $$4 = $$1.cZ();
-         if ($$1.bN() && $$4 instanceof bkv $$5 && $$4.ag() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               clb $$6 = new clb(cle.qh);
-               $$6.c($$3.v());
-               return bir.a($$6);
-            }
-
-            return bir.a($$3);
-         }
-
-         $$1.b(aqx.c.b(this));
-         return bir.c($$3);
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      clj $$3 = $$1.b($$2);
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.hG, aqs.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      $$1.go().a(this, 20);
+      if (!$$0.B) {
+         cev $$4 = new cev($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(arb.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
+      }
+
+      return biy.a($$3, $$0.x_());
    }
 }

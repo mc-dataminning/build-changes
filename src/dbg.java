@@ -1,63 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbg extends cvc implements cuw {
-   public static final MapCodec<dbg> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgl.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dbg::new)
-   );
-   public static final dhw f = dhm.aU;
-   protected static final float g = 6.0F;
-   protected static final ekb h = cut.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dgl i;
+public class dbg extends cxc {
+   public static final MapCodec<dbg> a = b(dbg::new);
+   public static final dhz b = dhy.s;
+   public static final dii e = dhy.aA;
 
    @Override
-   public MapCodec<? extends dbg> a() {
-      return e;
+   public MapCodec<dbg> a() {
+      return a;
    }
 
-   protected dbg(dgl $$0, dgv.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
+   protected dbg(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, hx.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return h;
-   }
-
-   @Override
-   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if ($$1.z($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(ama $$0, ht $$1, dgw $$2, ato $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      if (!$$3.fU().e) {
+         return bix.d;
       } else {
-         this.i.a($$0, $$0.k().g(), $$1, $$2, $$3);
+         $$1.a($$2, $$0.a(e), 3);
+         return bix.a($$1.B);
       }
    }
 
    @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
+   protected int g(dhi $$0) {
+      return $$0.c(e) * 2;
+   }
+
+   @Override
+   public dhi a(cnr $$0) {
+      dhi $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if ($$1 == hx.a && !this.b($$3, $$5, $$2)) {
+         return cvc.a.o();
+      } else {
+         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean c(csd $$0, ht $$1, dhi $$2) {
+      return this.a((csq)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
       return true;
    }
 
    @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return (double)$$0.z.i() < 0.45;
+   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
+      if ($$0.c(d)) {
+         hx $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(jm.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(f);
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

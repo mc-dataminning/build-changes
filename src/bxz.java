@@ -2,137 +2,107 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
 
 public class bxz {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 1.0F;
-   private static final float e = 0.75F;
-   private static final bib f = bib.a(100, 140);
-   private static final int g = 2;
-   private static final int h = 4;
-   private static final float i = 1.5F;
-   private static final float j = 1.25F;
+   private static final bii a = bii.a(5, 16);
+   private static final float b = 0.2F;
+   private static final float c = 0.15F;
+   private static final float d = 0.5F;
+   private static final float e = 0.6F;
+   private static final float f = 0.6F;
 
-   protected static void a(bxy $$0, ato $$1) {
-      $$0.dN().a(btz.R, f.a($$1));
-   }
-
-   protected static bly<?> a(bly<bxy> $$0) {
-      b($$0);
-      c($$0);
+   protected static bmg<?> a(bmg<bxy> $$0) {
       d($$0);
       e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cex.a));
-      $$0.b(cex.b);
+      c($$0);
+      b($$0);
+      $$0.a(ImmutableSet.of(cff.a));
+      $$0.b(cff.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bly<bxy> $$0) {
-      $$0.a(cex.a, 0, ImmutableList.of(new bmk(2.0F), new bnu(45, 90), new bny(), new bmv(btz.O), new bmv(btz.R)));
+   private static void b(bmg<bxy> $$0) {
+      $$0.a(cff.p, ImmutableList.of(Pair.of(0, new bya()), Pair.of(1, bnj.a(bmz::a, buh.M))), ImmutableSet.of(Pair.of(buh.M, bui.a)), ImmutableSet.of(buh.M));
    }
 
-   private static void c(bly<bxy> $$0) {
+   private static void c(bmg<bxy> $$0) {
+      $$0.a(cff.k, 0, ImmutableList.of(bpl.a(bxy::a), bpb.a(bxz::b), bod.a(20), bnj.a(bmz::a, buh.o)), buh.o);
+   }
+
+   private static void d(bmg<bxy> $$0) {
+      $$0.a(cff.a, 0, ImmutableList.of(new boc(45, 90), new bog(), byb.a(), new bnd(buh.O)));
+   }
+
+   private static void e(bmg<bxy> $$0) {
       $$0.a(
-         cex.b,
+         cff.b,
          ImmutableList.of(
-            Pair.of(0, boo.a(bkm.bt, 6.0F, bib.a(30, 60))),
-            Pair.of(0, new bmj(bkm.O, 1.0F)),
-            Pair.of(1, new bnc($$0x -> 1.25F)),
-            Pair.of(2, bpa.a(bxz::b, $$0x -> $$0x.dN().c(btz.B))),
-            Pair.of(3, bpl.a(6, 1.0F)),
+            Pair.of(0, bow.a(bku.bt, 6.0F, bii.a(30, 60))),
+            Pair.of(1, new bmr(bku.f, 0.2F)),
+            Pair.of(2, new bot(ImmutableList.of(Pair.of(new bnk(bxz::d), 1), Pair.of(bmu.a(a, bxz::c), 1)))),
+            Pair.of(3, bpi.a(bxz::b)),
+            Pair.of(3, bpv.a(6, 0.15F)),
             Pair.of(
                4,
-               new bol(
-                  ImmutableMap.of(btz.m, bua.b),
-                  ImmutableList.of(Pair.of(bog.a(1.0F), 1), Pair.of(bov.a(1.0F, 3), 1), Pair.of(new bmw(), 3), Pair.of(bqb.a(bki::aA), 2))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(btz.S, bua.b), Pair.of(btz.W, bua.b))
-      );
-   }
-
-   private static void d(bly<bxy> $$0) {
-      $$0.a(
-         cex.t,
-         ImmutableList.of(
-            Pair.of(0, boo.a(bkm.bt, 6.0F, bib.a(30, 60))),
-            Pair.of(1, new bnc($$0x -> 1.25F)),
-            Pair.of(2, bpa.a(bxz::b, $$0x -> $$0x.dN().c(btz.B))),
-            Pair.of(3, bpl.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bnd(
-                  ImmutableMap.of(btz.m, bua.b),
+               new bnl(
+                  ImmutableMap.of(buh.m, bui.b),
                   ImmutableSet.of(),
-                  bnd.a.a,
-                  bnd.b.b,
-                  ImmutableList.of(Pair.of(bog.c(0.75F), 1), Pair.of(bog.a(1.0F, true), 1), Pair.of(bov.a(1.0F, 3), 1), Pair.of(bqb.a(bki::ba), 5))
+                  bnl.a.a,
+                  bnl.b.b,
+                  ImmutableList.of(
+                     Pair.of(boo.c(0.5F), 2),
+                     Pair.of(boo.a(0.15F, false), 2),
+                     Pair.of(bpd.a(bxz::a, bxz::d, 3), 3),
+                     Pair.of(bqj.a(bkq::bc), 5),
+                     Pair.of(bqj.a(bkq::aC), 5)
+                  )
                )
             )
-         ),
-         ImmutableSet.of(Pair.of(btz.S, bua.b), Pair.of(btz.W, bua.a))
+         )
       );
    }
 
-   private static void e(bly<bxy> $$0) {
-      $$0.a(
-         cex.u,
-         ImmutableList.of(
-            Pair.of(0, boo.a(bkm.bt, 6.0F, bib.a(30, 60))),
-            Pair.of(1, bpa.a(bxz::b, $$0x -> $$0x.dN().c(btz.B))),
-            Pair.of(2, bpm.a(8, 1.0F)),
-            Pair.of(3, bpo.a(cuv.sm)),
-            Pair.of(4, new bol(ImmutableList.of(Pair.of(bog.a(1.0F), 2), Pair.of(bov.a(1.0F, 3), 1), Pair.of(new bmw(), 2), Pair.of(bqb.a(bki::aA), 1))))
-         ),
-         ImmutableSet.of(Pair.of(btz.S, bua.b), Pair.of(btz.X, bua.a))
-      );
-   }
-
-   private static void f(bly<bxy> $$0) {
-      $$0.a(
-         cex.q,
-         ImmutableList.of(Pair.of(0, new bnq(f, aqn.iO)), Pair.of(1, new bnr<>(f, 2, 4, 1.5F, $$0x -> aqn.iN, arc.bK, 0.5F, bxz::a))),
-         ImmutableSet.of(Pair.of(btz.N, bua.b), Pair.of(btz.r, bua.b), Pair.of(btz.R, bua.b), Pair.of(btz.W, bua.b))
-      );
-   }
-
-   private static void g(bly<bxy> $$0) {
-      $$0.a(cex.s, 0, ImmutableList.of(bpd.a(), new bya(aqn.iP, aqn.iK)), btz.o);
-   }
-
-   private static <E extends bla> boolean a(E $$0, ht $$1) {
-      crs $$2 = $$0.dL();
-      ht $$3 = $$1.d();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
-         dgw $$4 = $$2.a_($$1);
-         dgw $$5 = $$2.a_($$3);
-         if (!$$4.a(arc.bK) && !$$5.a(arc.bK)) {
-            ecr $$6 = eda.a($$2, $$1.j());
-            ecr $$7 = eda.a($$2, $$3.j());
-            return $$6 != ecr.e && (!$$4.i() || $$7 != ecr.e) ? bns.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
+   private static boolean a(blg $$0) {
+      csa $$1 = $$0.dN();
+      Optional<bok> $$2 = $$0.dP().c(buh.n);
+      if ($$2.isPresent()) {
+         ht $$3 = $$2.get().b();
+         return $$1.y($$3) == $$0.bc();
       } else {
          return false;
       }
    }
 
-   private static boolean b(bxy $$0) {
-      return !bmr.a($$0);
-   }
-
    public static void a(bxy $$0) {
-      $$0.dN().a(ImmutableList.of(cex.s, cex.u, cex.q, cex.t, cex.b));
+      bmg<bxy> $$1 = $$0.dP();
+      cff $$2 = $$1.g().orElse(null);
+      if ($$2 != cff.p) {
+         $$1.a(ImmutableList.of(cff.p, cff.k, cff.b));
+         if ($$2 == cff.k && $$1.g().orElse(null) != cff.k) {
+            $$1.a(buh.T, true, 2400L);
+         }
+      }
    }
 
-   public static coc a() {
-      return bxy.bT;
+   private static float b(blg $$0) {
+      return $$0.bc() ? 0.6F : 0.15F;
+   }
+
+   private static float c(blg $$0) {
+      return $$0.bc() ? 0.6F : 0.15F;
+   }
+
+   private static float d(blg $$0) {
+      return $$0.bc() ? 0.5F : 0.15F;
+   }
+
+   private static Optional<? extends blg> b(bxy $$0) {
+      return bmz.a($$0) ? Optional.empty() : $$0.dP().c(buh.B);
+   }
+
+   public static cok a() {
+      return cok.a(aro.aA);
    }
 }

@@ -1,21 +1,14 @@
-public abstract class enj implements eno {
-   protected boolean a;
-   protected int b = 255;
-   protected int c = 255;
-   protected int d = 255;
-   protected int e = 255;
+public enum enj {
+   a(0),
+   b(1);
 
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.a = true;
+   private final int c;
+
+   private enj(int $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void l() {
-      this.a = false;
+   public int a() {
+      return this.c;
    }
 }

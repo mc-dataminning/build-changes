@@ -2,9 +2,9 @@ import javax.annotation.Nullable;
 
 public class aam implements wk<yd> {
    private final int a;
-   private final bjt b;
+   private final bkb b;
 
-   public aam(int $$0, bjt $$1) {
+   public aam(int $$0, bkb $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -25,12 +25,12 @@ public class aam implements wk<yd> {
    }
 
    @Nullable
-   public bki a(crs $$0) {
+   public bkq a(csa $$0) {
       return $$0.a(this.a);
    }
 
    @Nullable
-   public bjt a() {
+   public bkb a() {
       return this.b;
    }
 }

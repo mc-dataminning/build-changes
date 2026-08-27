@@ -1,36 +1,104 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class ewe extends ewa {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 50;
+public abstract class ewe extends euz {
+   protected final agi a;
+   protected final int b;
+   protected final int c;
 
-   public ewe(etz $$0, atq $$1) {
-      super($$0, $$1);
+   ewe(int $$0, int $$1, ur $$2, int $$3, int $$4, agi $$5, euz.c $$6) {
+      super(0, 0, $$0, $$1, $$2, $$6, p);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   @Override
-   protected void a(eub $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "20 TPS", $$1 + 1, $$3 - 60 + 1);
+   public static ewe.a a(ur $$0, euz.c $$1, boolean $$2) {
+      return new ewe.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public static class a {
+      private final ur a;
+      private final euz.c b;
+      private final boolean c;
+      private int d = 150;
+      private int e = 20;
+      @Nullable
+      private agi f;
+      private int g;
+      private int h;
+
+      public a(ur $$0, euz.c $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public ewe.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ewe.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public ewe.a a(agi $$0, int $$1, int $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
+         return this;
+      }
+
+      public ewe a() {
+         if (this.f == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (ewe)(this.c
+               ? new ewe.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
+               : new ewe.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+         }
+      }
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 50.0);
+   public static class b extends ewe {
+      protected b(int $$0, int $$1, ur $$2, int $$3, int $$4, agi $$5, euz.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void b(euo $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.p() + this.k() / 2 - this.b / 2;
+         int $$5 = this.r() + this.i() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(euo $$0, eum $$1, int $$2) {
+      }
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 25.0, -256, 50.0, -65536);
-   }
+   public static class c extends ewe {
+      protected c(int $$0, int $$1, ur $$2, int $$3, int $$4, agi $$5, euz.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+      @Override
+      public void b(euo $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.p() + this.k() - this.b - 2;
+         int $$5 = this.r() + this.i() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(euo $$0, eum $$1, int $$2) {
+         int $$3 = this.p() + 2;
+         int $$4 = this.p() + this.k() - this.b - 4;
+         int $$5 = this.p() + this.k() / 2;
+         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
+      }
    }
 }

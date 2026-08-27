@@ -1,56 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public abstract class err implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class err {
+   private static final String a = "realms_persistence.json";
+   private static final eou b = new eou();
+   private static final Logger c = LogUtils.getLogger();
 
-   protected static void a(long $$0) {
+   public err.a a() {
+      return b();
+   }
+
+   public void a(err.a $$0) {
+      b($$0);
+   }
+
+   public static err.a b() {
+      Path $$0 = c();
+
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         err.a $$2 = b.a($$1, err.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new err.a();
+   }
+
+   public static void b(err.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static void a(fah $$0) {
-      esr $$1 = esr.N();
-      $$1.execute(() -> $$1.a($$0));
+   private static Path c() {
+      return etd.N().p.toPath().resolve("realms_persistence.json");
    }
 
-   protected void a(ur $$0) {
-      this.b();
-      esr $$1 = esr.N();
-      $$1.execute(() -> $$1.a(new eqe($$0, new env(new fam()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof epn $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(ur.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(epn $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract ur a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public static class a implements epm {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

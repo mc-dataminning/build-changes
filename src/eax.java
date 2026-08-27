@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class eax extends eap {
-   public static final Codec<eax> a = arr.a(jz.e).fieldOf("tag").xmap(eax::new, $$0 -> $$0.b).codec();
-   private final arr<cut> b;
+public class eax extends ebe {
+   public final arv<cva> a;
+   public static final Codec<eax> b = arv.b(jz.e).xmap(eax::new, $$0 -> $$0.a);
 
-   public eax(arr<cut> $$0) {
-      this.b = $$0;
+   public eax(arv<cva> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
+      return dpv.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public boolean a(dgw $$0, ato $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected eaq<?> a() {
-      return eaq.d;
+   protected ebg<?> a() {
+      return ebg.n;
    }
 }

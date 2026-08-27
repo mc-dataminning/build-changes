@@ -97,17 +97,17 @@ public class sa extends sp {
 
    @Override
    public int g() {
-      return ati.a(this.w);
+      return atm.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ati.a(this.w) & 65535);
+      return (short)(atm.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ati.a(this.w) & 0xFF);
+      return (byte)(atm.a(this.w) & 0xFF);
    }
 
    @Override

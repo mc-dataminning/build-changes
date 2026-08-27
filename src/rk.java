@@ -1,109 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class rk {
-   private static final char a = ' ';
-   private static final char b = '_';
-   private static final char c = '+';
-   private static final char d = 'x';
-   private static final char e = 'X';
-   private final Collection<qz> f = Lists.newArrayList();
-   @Nullable
-   private final Collection<ra> g = Lists.newArrayList();
+public class rk implements rs {
+   private static final Logger a = LogUtils.getLogger();
 
-   public rk() {
-   }
-
-   public rk(Collection<qz> $$0) {
-      this.f.addAll($$0);
-   }
-
-   public void a(qz $$0) {
-      this.f.add($$0);
-      this.g.forEach($$0::a);
-   }
-
+   @Override
    public void a(ra $$0) {
-      this.g.add($$0);
-      this.f.forEach($$1 -> $$1.a($$0));
-   }
-
-   public void a(final Consumer<qz> $$0) {
-      this.a(new ra() {
-         @Override
-         public void a(qz $$0x) {
-         }
-
-         @Override
-         public void b(qz $$0x) {
-         }
-
-         @Override
-         public void c(qz $$0x) {
-            $$0.accept($$0);
-         }
-      });
-   }
-
-   public int a() {
-      return (int)this.f.stream().filter(qz::i).filter(qz::r).count();
-   }
-
-   public int b() {
-      return (int)this.f.stream().filter(qz::i).filter(qz::s).count();
-   }
-
-   public int c() {
-      return (int)this.f.stream().filter(qz::k).count();
-   }
-
-   public boolean d() {
-      return this.a() > 0;
-   }
-
-   public boolean e() {
-      return this.b() > 0;
-   }
-
-   public Collection<qz> f() {
-      return this.f.stream().filter(qz::i).filter(qz::r).collect(Collectors.toList());
-   }
-
-   public Collection<qz> g() {
-      return this.f.stream().filter(qz::i).filter(qz::s).collect(Collectors.toList());
-   }
-
-   public int h() {
-      return this.f.size();
-   }
-
-   public boolean i() {
-      return this.c() == this.h();
-   }
-
-   public String j() {
-      StringBuffer $$0 = new StringBuffer();
-      $$0.append('[');
-      this.f.forEach($$1 -> {
-         if (!$$1.j()) {
-            $$0.append(' ');
-         } else if ($$1.h()) {
-            $$0.append('+');
-         } else if ($$1.i()) {
-            $$0.append((char)($$1.r() ? 'X' : 'x'));
-         } else {
-            $$0.append('_');
-         }
-      });
-      $$0.append(']');
-      return $$0.toString();
+      String $$1 = $$0.d().x();
+      if ($$0.s()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
+      } else {
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
+      }
    }
 
    @Override
-   public String toString() {
-      return this.j();
+   public void b(ra $$0) {
    }
 }

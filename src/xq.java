@@ -1,7 +1,7 @@
 import java.util.List;
 
 public record xq(List<ht> b) implements xd {
-   public static final agg a = new agg("debug/raids");
+   public static final agi a = new agi("debug/raids");
 
    public xq(tu $$0) {
       this($$0.a(tu::e));
@@ -13,7 +13,7 @@ public record xq(List<ht> b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

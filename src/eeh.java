@@ -1,94 +1,210 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public interface eeh {
-   int d = 19133;
-   int e = 19132;
+public class eeh implements ees {
+   private final eet a;
+   private final ees b;
 
-   csl F();
-
-   void a(csl var1);
-
-   boolean H();
-
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
+   public eeh(eet $$0, ees $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   @Override
+   public int a() {
+      return this.b.a();
    }
 
-   @Nullable
-   rz G();
+   @Override
+   public int b() {
+      return this.b.b();
+   }
 
-   void a(@Nullable rz var1);
+   @Override
+   public int c() {
+      return this.b.c();
+   }
 
-   eeg K();
+   @Override
+   public float d() {
+      return this.b.d();
+   }
 
-   crw L();
+   @Override
+   public long e() {
+      return this.b.e();
+   }
 
-   rz a(ip var1, @Nullable rz var2);
+   @Override
+   public long f() {
+      return this.b.f();
+   }
 
-   boolean n();
+   @Override
+   public String g() {
+      return this.a.g();
+   }
 
-   int z();
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-   String g();
+   @Override
+   public void a(int $$0) {
+   }
 
-   crp m();
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
 
-   void a(crp var1);
+   @Override
+   public int j() {
+      return this.b.j();
+   }
 
-   boolean o();
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
 
-   bin s();
+   @Override
+   public int l() {
+      return this.b.l();
+   }
 
-   void a(bin var1);
+   @Override
+   public crx m() {
+      return this.a.m();
+   }
 
-   boolean t();
+   @Override
+   public void b(int $$0) {
+   }
 
-   void d(boolean var1);
+   @Override
+   public void c(int $$0) {
+   }
 
-   cro q();
+   @Override
+   public void d(int $$0) {
+   }
 
-   @Nullable
-   rz y();
+   @Override
+   public void a(float $$0) {
+   }
 
-   dki.a E();
+   @Override
+   public void a(long $$0) {
+   }
 
-   void a(dki.a var1);
+   @Override
+   public void b(long $$0) {
+   }
 
-   dnd A();
+   @Override
+   public void a(ht $$0, float $$1) {
+   }
 
-   boolean B();
+   @Override
+   public void a(boolean $$0) {
+   }
 
-   boolean C();
+   @Override
+   public void e(int $$0) {
+   }
 
-   Lifecycle D();
+   @Override
+   public void b(boolean $$0) {
+   }
 
-   default cfv M() {
-      return this.F().b();
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(crx $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public crw q() {
+      return this.a.q();
+   }
+
+   @Override
+   public diz.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(diz.c $$0) {
+   }
+
+   @Override
+   public biu s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public ejh<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, csc $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

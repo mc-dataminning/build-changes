@@ -4,15 +4,29 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bed extends bbv {
+public class bed extends bcb {
    public bed(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("shards", DSL.list(ban.z.in($$0)), "item", ban.t.in($$0)));
-      $$0.register($$1, "minecraft:suspicious_sand", () -> DSL.optionalFields("item", ban.t.in($$0)));
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register(
+         $$1,
+         $$2,
+         () -> DSL.optionalFields(
+               "ArmorItems",
+               DSL.list(bat.t.in($$0)),
+               "HandItems",
+               DSL.list(bat.t.in($$0)),
+               "listener",
+               DSL.optionalFields("event", DSL.optionalFields("game_event", bat.A.in($$0)))
+            )
+      );
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:allay");
       return $$1;
    }
 }

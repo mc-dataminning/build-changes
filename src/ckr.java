@@ -1,19 +1,33 @@
-public class ckr extends ckw {
-   private static final String a = "textures/entity/horse/";
+public class ckr<T extends bkq & bld> extends cle {
+   private final bku<T> a;
    private final int b;
-   private final String c;
 
-   public ckr(int $$0, String $$1, ckw.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+   public ckr(cle.a $$0, bku<T> $$1, int $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public agg h() {
-      return new agg(this.c);
-   }
+   @Override
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      clj $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return biy.c($$3);
+      } else {
+         bkq $$4 = $$1.db();
+         if ($$1.bO() && $$4 instanceof bld $$5 && $$4.ai() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
+            if ($$3.b()) {
+               clj $$6 = new clj(clm.qS);
+               $$6.c($$3.v());
+               return biy.a($$6);
+            }
 
-   public int i() {
-      return this.b;
+            return biy.a($$3);
+         }
+
+         $$1.b(arb.c.b(this));
+         return biy.c($$3);
+      }
    }
 }

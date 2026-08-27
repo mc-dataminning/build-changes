@@ -1,83 +1,101 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bmx<E extends bla & can, T extends bky> extends bmp<E> {
-   private static final int c = 1200;
-   private int d;
-   private bmx.a e = bmx.a.a;
+public abstract class bmx<E extends blg> implements bmy<E> {
+   public static final int a = 60;
+   protected final Map<buh<?>, bui> b;
+   private bmx.a c = bmx.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bmx() {
-      super(ImmutableMap.of(btz.n, bua.c, btz.o, bua.a), 1200);
+   public bmx(Map<buh<?>, bui> $$0) {
+      this($$0, 60);
    }
 
-   protected boolean a(ama $$0, E $$1) {
-      bky $$2 = b($$1);
-      return $$1.b(cle.va) && bmr.b($$1, $$2) && bmr.a($$1, $$2, 0);
+   public bmx(Map<buh<?>, bui> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   protected boolean a(ama $$0, E $$1, long $$2) {
-      return $$1.dN().a(btz.o) && this.a($$0, $$1);
+   public bmx(Map<buh<?>, bui> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
-   protected void b(ama $$0, E $$1, long $$2) {
-      bky $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
+   @Override
+   public bmx.a a() {
+      return this.c;
    }
 
-   protected void c(ama $$0, E $$1, long $$2) {
-      if ($$1.fn()) {
-         $$1.ft();
-      }
-
-      if ($$1.b(cle.va)) {
-         $$1.b(false);
-         cjj.a($$1.fp(), false);
-      }
-   }
-
-   private void a(E $$0, bky $$1) {
-      if (this.e == bmx.a.a) {
-         $$0.c(cef.a($$0, cle.va));
-         this.e = bmx.a.b;
-         $$0.b(true);
-      } else if (this.e == bmx.a.b) {
-         if (!$$0.fn()) {
-            this.e = bmx.a.a;
-         }
-
-         int $$2 = $$0.fr();
-         clb $$3 = $$0.fp();
-         if ($$2 >= cjj.k($$3)) {
-            $$0.fs();
-            this.e = bmx.a.c;
-            this.d = 20 + $$0.ef().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bmx.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bmx.a.d;
-         }
-      } else if (this.e == bmx.a.d) {
-         $$0.a($$1, 1.0F);
-         clb $$4 = $$0.b(cef.a($$0, cle.va));
-         cjj.a($$4, false);
-         this.e = bmx.a.a;
+   @Override
+   public final boolean e(ame $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bmx.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void b(bla $$0, bky $$1) {
-      $$0.dN().a(btz.n, new bna($$1, true));
+   protected void d(ame $$0, E $$1, long $$2) {
    }
 
-   private static bky b(bky $$0) {
-      return $$0.dN().c(btz.o).get();
+   @Override
+   public final void f(ame $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   static enum a {
+   protected void c(ame $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(ame $$0, E $$1, long $$2) {
+      this.c = bmx.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(ame $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(ame $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(ame $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<buh<?>, bui> $$1 : this.b.entrySet()) {
+         buh<?> $$2 = $$1.getKey();
+         bui $$3 = $$1.getValue();
+         if (!$$0.dP().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
       a,
-      b,
-      c,
-      d;
+      b;
    }
 }

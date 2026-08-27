@@ -1,5 +1,5 @@
 public record xt(ht b, float c, float d, float e, float f, float g) implements xd {
-   public static final agg a = new agg("debug/worldgen_attempt");
+   public static final agi a = new agi("debug/worldgen_attempt");
 
    public xt(tu $$0) {
       this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
@@ -16,7 +16,7 @@ public record xt(ht b, float c, float d, float e, float f, float g) implements x
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

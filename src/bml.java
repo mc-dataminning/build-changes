@@ -1,38 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bml {
-   public static bmq<ccz> a() {
-      return bqb.a(
-         (Function<bqb.b<ccz>, ? extends App<bqb.c<ccz>, bqe<ccz>>>)($$0 -> $$0.group($$0.b(btz.d), $$0.a(btz.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ia $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dj(), 2.0) && !$$4.go()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gp().b() != cdc.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.n();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
-                                 .flatMap($$0xxx -> jy.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gp().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   private final Map<bmh, bmi> a;
+
+   public bml(Map<bmh, bmi> $$0) {
+      this.a = ImmutableMap.copyOf($$0);
+   }
+
+   private bmi d(bmh $$0) {
+      bmi $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + jy.v.b($$0));
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(bmh $$0) {
+      return this.d($$0).f();
+   }
+
+   public double b(bmh $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(bmh $$0, UUID $$1) {
+      bmk $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + jy.v.b($$0));
+      } else {
+         return $$2.c();
+      }
+   }
+
+   @Nullable
+   public bmi a(Consumer<bmi> $$0, bmh $$1) {
+      bmi $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bmi $$3 = new bmi($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static bml.a a() {
+      return new bml.a();
+   }
+
+   public boolean c(bmh $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(bmh $$0, UUID $$1) {
+      bmi $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Map<bmh, bmi> a = Maps.newHashMap();
+      private boolean b;
+
+      private bmi b(bmh $$0) {
+         bmi $$1 = new bmi($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + jy.v.b($$0));
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bml.a a(bmh $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bml.a a(bmh $$0, double $$1) {
+         bmi $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bml a() {
+         this.b = true;
+         return new bml(this.a);
+      }
    }
 }

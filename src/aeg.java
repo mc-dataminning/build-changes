@@ -1,51 +1,40 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aeg implements wk<acl> {
+   private final ejq a;
+   private final biw b;
+   private final int c;
 
-public class aeg {
-   private static final double a = 4096.0;
-   private eji b;
-
-   public aeg() {
-      this.b = eji.b;
-   }
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public eji a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new eji($$3, $$4, $$5);
-      }
-   }
-
-   public long a(eji $$0) {
-      return a($$0.c) - a(this.b.c);
-   }
-
-   public long b(eji $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long c(eji $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public eji d(eji $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(eji $$0) {
+   public aeg(biw $$0, ejq $$1, int $$2) {
       this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
+   }
+
+   public aeg(tu $$0) {
+      this.b = $$0.b(biw.class);
+      this.a = $$0.y();
+      this.c = $$0.n();
+   }
+
+   @Override
+   public void a(tu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.a);
+      $$0.c(this.c);
+   }
+
+   public void a(acl $$0) {
+      $$0.a(this);
+   }
+
+   public biw a() {
+      return this.b;
+   }
+
+   public ejq d() {
+      return this.a;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

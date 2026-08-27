@@ -1,53 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dci extends cut {
+public class dci extends cva {
    public static final MapCodec<dci> a = b(dci::new);
-   private static final ekb b = cut.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 8;
+   public static final dii c = dhy.aF;
+   protected static final ekn[] d = new ekn[]{
+      ekk.a(),
+      cva.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      cva.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dci> a() {
       return a;
    }
 
-   public dci(dgv.d $$0) {
+   protected dci(dhh.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      return cut.a($$1, $$2.c(), hx.a) && !$$1.y($$2);
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      return $$1 == hx.b && !this.a($$0, $$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(js.au, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ht.a $$10 = new ht.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ati.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ati.a($$3, -10, 10));
-         dgw $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(js.ay, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return b;
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public ekn b(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   public ekn b_(dhi $$0, crg $$1, ht $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public ekn c(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public boolean g_(dhi $$0) {
+      return true;
+   }
+
+   @Override
+   public float d(dhi $$0, crg $$1, ht $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      dhi $$3 = $$1.a_($$2.d());
+      if ($$3.a(arg.cg)) {
+         return false;
+      } else {
+         return $$3.a(arg.ch) ? true : cva.a($$3.k($$1, $$2.d()), hx.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      return !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if ($$1.a(csj.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   public boolean a(dhi $$0, cnr $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.k()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == hx.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dhi a(cnr $$0) {
+      dhi $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(c);
    }
 }

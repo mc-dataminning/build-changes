@@ -1,99 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dpc extends dpj<dru> {
-   private static final dhf a = dhf.a(cuv.I);
-   private final dgw b = cuv.I.o();
-   private final dgw c = cuv.jF.o();
-   private final dgw d = cuv.aV.o();
-   private final dgw an = cuv.G.o();
-
-   public dpc(Codec<dru> $$0) {
+public class dpc extends dpv<drs> {
+   public dpc(Codec<drs> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<dru> $$0) {
-      csm $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      $$2 = $$2.c();
+   public boolean a(dpx<drs> $$0) {
+      ht $$1 = $$0.e();
+      csu $$2 = $$0.b();
+      ats $$3 = $$0.d();
 
-      while ($$1.t($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.d();
+      drs $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
+         if (!$$2.t($$1.d())) {
+            dhi $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
       }
 
-      if (!a.a($$1.a_($$2))) {
+      if ($$1.v() <= $$2.I_() + 3) {
          return false;
       } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
-                  return false;
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (ht $$11 : ht.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
                }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (hx $$8 : hx.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         ht $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (hx $$10 : hx.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<ht> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         ato $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
-   }
-
-   private static void b(csm $$0, ht $$1) {
-      $$0.a($$1, cuv.J.o(), 3);
-      $$0.a($$1, det.N).ifPresent($$1x -> $$1x.a(eej.aC, $$1.a()));
    }
 }

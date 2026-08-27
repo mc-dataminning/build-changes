@@ -1,4 +1,3 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
@@ -6,99 +5,57 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.Optional;
 
 public class bbq extends DataFix {
-   private static final String b = "WorldGenSettingsHeightAndBiomeFix";
-   public static final String a = "has_increased_height_already";
+   private static final int a = 2;
+   private static final int[] b = new int[]{0, 10, 50, 100, 150};
 
-   public bbq(Schema $$0) {
-      super($$0, true);
+   public static int a(int $$0) {
+      return b[atm.a($$0 - 1, 0, b.length - 1)];
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ban.I);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      Type<?> $$2 = this.getOutputSchema().getType(ban.I);
-      Type<?> $$3 = $$2.findFieldType("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsHeightAndBiomeFix",
-         $$0,
-         $$2,
-         $$2x -> {
-            OptionalDynamic<?> $$3x = ((Dynamic)$$2x.get(DSL.remainderFinder())).get("has_increased_height_already");
-            boolean $$4 = $$3x.result().isEmpty();
-            boolean $$5 = $$3x.asBoolean(true);
-            return $$2x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("has_increased_height_already"))
-               .updateTyped(
-                  $$1,
-                  $$3,
-                  $$3xx -> {
-                     Dynamic<?> $$4x = (Dynamic<?>)$$3xx.write().result().orElseThrow(() -> new IllegalStateException("Malformed WorldGenSettings.dimensions"));
-                     $$4x = $$4x.update(
-                        "minecraft:overworld",
-                        $$2xxx -> $$2xxx.update(
-                              "generator",
-                              $$2xxxx -> {
-                                 String $$3xxx = $$2xxxx.get("type").asString("");
-                                 if ("minecraft:noise".equals($$3xxx)) {
-                                    MutableBoolean $$4xx = new MutableBoolean();
-                                    $$2xxxx = $$2xxxx.update(
-                                       "biome_source",
-                                       $$2xxxxx -> {
-                                          String $$3xxxx = $$2xxxxx.get("type").asString("");
-                                          if ("minecraft:vanilla_layered".equals($$3xxxx) || $$4 && "minecraft:multi_noise".equals($$3xxxx)) {
-                                             if ($$2xxxxx.get("large_biomes").asBoolean(false)) {
-                                                $$4xx.setTrue();
-                                             }
-
-                                             return $$2xxxxx.createMap(
-                                                ImmutableMap.of(
-                                                   $$2xxxxx.createString("preset"),
-                                                   $$2xxxxx.createString("minecraft:overworld"),
-                                                   $$2xxxxx.createString("type"),
-                                                   $$2xxxxx.createString("minecraft:multi_noise")
-                                                )
-                                             );
-                                          } else {
-                                             return $$2xxxxx;
-                                          }
-                                       }
-                                    );
-                                    return $$4xx.booleanValue()
-                                       ? $$2xxxx.update(
-                                          "settings",
-                                          $$0xxxxx -> "minecraft:overworld".equals($$0xxxxx.asString(""))
-                                                ? $$0xxxxx.createString("minecraft:large_biomes")
-                                                : $$0xxxxx
-                                       )
-                                       : $$2xxxx;
-                                 } else if ("minecraft:flat".equals($$3xxx)) {
-                                    return $$5 ? $$2xxxx : $$2xxxx.update("settings", $$0xxxxx -> $$0xxxxx.update("layers", bbq::a));
-                                 } else {
-                                    return $$2xxxx;
-                                 }
-                              }
-                           )
-                     );
-                     return (Typed)((Pair)$$3.readTyped($$4x)
-                           .result()
-                           .orElseThrow(() -> new IllegalStateException("WorldGenSettingsHeightAndBiomeFix failed.")))
-                        .getFirst();
-                  }
-               );
-         }
-      );
+   public bbq(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.createMap(
-         ImmutableMap.of($$0.createString("height"), $$0.createInt(64), $$0.createString("block"), $$0.createString("minecraft:air"))
-      );
-      return $$0.createList(Stream.concat(Stream.of($$1), $$0.asStream()));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bat.x, "minecraft:villager");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
+      OpticFinder<?> $$2 = $$0.findField("Offers");
+      Type<?> $$3 = $$2.type();
+      OpticFinder<?> $$4 = $$3.findField("Recipes");
+      ListType<?> $$5 = (ListType<?>)$$4.type();
+      OpticFinder<?> $$6 = $$5.getElement().finder();
+      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bat.x), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
+            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
+            Typed<?> $$6x = $$3xx;
+            if ($$5xx == 0 || $$5xx == 1) {
+               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
+               $$5xx = atm.a($$7 / 2, 1, 5);
+               if ($$5xx > 1) {
+                  $$6x = a($$3xx, $$5xx);
+               }
+            }
+
+            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
+            if ($$8.isEmpty()) {
+               $$6x = b($$6x, $$5xx);
+            }
+
+            return $$6x;
+         }));
+   }
+
+   private static Typed<?> a(Typed<?> $$0, int $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
+   }
+
+   private static Typed<?> b(Typed<?> $$0, int $$1) {
+      int $$2 = a($$1);
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
    }
 }

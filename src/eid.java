@@ -1,35 +1,32 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record eid(float c) implements eif {
-   public static final Codec<eid> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eid::c)).apply($$0, eid::new));
-   public static final Codec<eid> b = Codec.FLOAT.xmap(eid::new, eid::c);
+public record eid(Optional<cb> b) implements ehw {
+   public static final Codec<eid> a = RecordCodecBuilder.create($$0 -> $$0.group(asu.a(cb.a, "predicate").forGetter(eid::c)).apply($$0, eid::new));
 
    @Override
-   public eie b() {
-      return eig.b;
+   public ehx b() {
+      return ehy.k;
    }
 
    @Override
-   public float b(eel $$0) {
-      return this.c;
+   public Set<ehf<?>> a() {
+      return ImmutableSet.of(ehi.i);
    }
 
-   public static eid a(float $$0) {
-      return new eid($$0);
+   public boolean a(eex $$0) {
+      clj $$1 = $$0.c(ehi.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eid)$$0).c, this.c) == 0 : false;
-      }
+   public static ehw.a a(cb.a $$0) {
+      return () -> new eid(Optional.of($$0.b()));
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public Optional<cb> c() {
+      return this.b;
    }
 }

@@ -7,7 +7,7 @@ public class dh extends cw<dh.a> {
       return new dh.a($$1, $$3);
    }
 
-   public void a(amb $$0, clb $$1) {
+   public void a(amf $$0, clj $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -23,11 +23,11 @@ public class dh extends cw<dh.a> {
          return al.B.a(new dh.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public static am<dh.a> a(crr $$0) {
+      public static am<dh.a> a(crz $$0) {
          return al.B.a(new dh.a(Optional.empty(), Optional.of(cb.a.a().a($$0).b())));
       }
 
-      public boolean a(clb $$0) {
+      public boolean a(clj $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

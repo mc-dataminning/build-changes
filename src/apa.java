@@ -1,70 +1,119 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.TreeMap;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class apa implements apd, AutoCloseable {
+public class apa implements aox {
    private static final Logger a = LogUtils.getLogger();
-   private aot b;
-   private final List<aox> c = Lists.newArrayList();
-   private final ans d;
+   private final Map<String, aoy> b;
+   private final List<anv> c;
 
-   public apa(ans $$0) {
-      this.d = $$0;
-      this.b = new aow($$0, List.of());
+   public apa(anw $$0, List<anv> $$1) {
+      this.c = List.copyOf($$1);
+      Map<String, aoy> $$2 = new HashMap<>();
+      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+
+      for (anv $$4 : $$1) {
+         apg $$5 = this.a($$4);
+         Set<String> $$6 = $$4.a($$0);
+         Predicate<agi> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+
+         for (String $$8 : $$3) {
+            boolean $$9 = $$6.contains($$8);
+            boolean $$10 = $$5 != null && $$5.a($$8);
+            if ($$9 || $$10) {
+               aoy $$11 = $$2.get($$8);
+               if ($$11 == null) {
+                  $$11 = new aoy($$0, $$8);
+                  $$2.put($$8, $$11);
+               }
+
+               if ($$9 && $$10) {
+                  $$11.a($$4, $$7);
+               } else if ($$9) {
+                  $$11.a($$4);
+               } else {
+                  $$11.a($$4.a(), $$7);
+               }
+            }
+         }
+      }
+
+      this.b = $$2;
    }
 
-   @Override
-   public void close() {
-      this.b.close();
-   }
-
-   public void a(aox $$0) {
-      this.c.add($$0);
-   }
-
-   public aoz a(Executor $$0, Executor $$1, CompletableFuture<auj> $$2, List<anr> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(anr::a).collect(Collectors.joining(", "))));
-      this.b.close();
-      this.b = new aow(this.d, $$3);
-      return apj.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
-   }
-
-   @Override
-   public Optional<apb> getResource(agg $$0) {
-      return this.b.getResource($$0);
+   @Nullable
+   private apg a(anv $$0) {
+      try {
+         return $$0.a(apg.a);
+      } catch (IOException var3) {
+         a.error("Failed to get filter section from pack {}", $$0.a());
+         return null;
+      }
    }
 
    @Override
    public Set<String> a() {
-      return this.b.a();
+      return this.b.keySet();
    }
 
    @Override
-   public List<apb> a(agg $$0) {
-      return this.b.a($$0);
+   public Optional<apf> getResource(agi $$0) {
+      aph $$1 = this.b.get($$0.b());
+      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
    }
 
    @Override
-   public Map<agg, apb> b(String $$0, Predicate<agg> $$1) {
-      return this.b.b($$0, $$1);
+   public List<apf> a(agi $$0) {
+      aph $$1 = this.b.get($$0.b());
+      return $$1 != null ? $$1.a($$0) : List.of();
    }
 
    @Override
-   public Map<agg, List<apb>> c(String $$0, Predicate<agg> $$1) {
-      return this.b.c($$0, $$1);
+   public Map<agi, apf> b(String $$0, Predicate<agi> $$1) {
+      a($$0);
+      Map<agi, apf> $$2 = new TreeMap<>();
+
+      for (aoy $$3 : this.b.values()) {
+         $$2.putAll($$3.b($$0, $$1));
+      }
+
+      return $$2;
    }
 
    @Override
-   public Stream<anr> b() {
-      return this.b.b();
+   public Map<agi, List<apf>> c(String $$0, Predicate<agi> $$1) {
+      a($$0);
+      Map<agi, List<apf>> $$2 = new TreeMap<>();
+
+      for (aoy $$3 : this.b.values()) {
+         $$2.putAll($$3.c($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   private static void a(String $$0) {
+      if ($$0.endsWith("/")) {
+         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      }
+   }
+
+   @Override
+   public Stream<anv> b() {
+      return this.c.stream();
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(anv::close);
    }
 }

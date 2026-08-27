@@ -1,45 +1,44 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-public class bfc implements bfg {
-   public static final bfc a = new bfc();
+public interface bfc<T> extends Closeable {
+   static <T> bfc<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bfc<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   private bfc() {
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   @Override
-   public List<bfj> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
-   }
+   @Nullable
+   T a() throws IOException;
 }

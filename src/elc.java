@@ -1,9 +1,3 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
-
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface elc {
+public interface elc<T> extends eli<T> {
+   boolean b(ht var1, T var2);
 }

@@ -1,50 +1,45 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ehu(Optional<Boolean> b, Optional<Boolean> c) implements ehk {
+public record ehu(Optional<cj> b, ht c) implements ehw {
+   private static final MapCodec<ht> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               asu.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(iw::u),
+               asu.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(iw::v),
+               asu.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(iw::w)
+            )
+            .apply($$0, ht::new)
+   );
    public static final Codec<ehu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asq.a(Codec.BOOL, "raining").forGetter(ehu::d), asq.a(Codec.BOOL, "thundering").forGetter(ehu::e)).apply($$0, ehu::new)
+      $$0 -> $$0.group(asu.a(cj.a, "predicate").forGetter(ehu::c), d.forGetter(ehu::d)).apply($$0, ehu::new)
    );
 
    @Override
-   public ehl b() {
-      return ehm.p;
+   public ehx b() {
+      return ehy.o;
    }
 
-   public boolean a(eel $$0) {
-      ama $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
+   public boolean a(eex $$0) {
+      eju $$1 = $$0.c(ehi.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public static ehu.a c() {
-      return new ehu.a();
+   public static ehw.a a(cj.a $$0) {
+      return () -> new ehu(Optional.of($$0.b()), ht.b);
    }
 
-   public Optional<Boolean> d() {
+   public static ehw.a a(cj.a $$0, ht $$1) {
+      return () -> new ehu(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<cj> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public ht d() {
       return this.c;
-   }
-
-   public static class a implements ehk.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public ehu.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ehu.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public ehu a() {
-         return new ehu(this.a, this.b);
-      }
    }
 }

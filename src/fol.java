@@ -1,20 +1,11 @@
-public class fol extends fnn {
-   protected fol(fkw $$0, double $$1, double $$2, double $$3, double $$4, foq $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
-   }
+import javax.annotation.Nullable;
 
-   public static class a implements fny<jv> {
-      private final foq a;
+public interface fol<T extends jq> {
+   @Nullable
+   foi createParticle(T var1, flj var2, double var3, double var5, double var7, double var9, double var11, double var13);
 
-      public a(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fol($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   public interface a<T extends jq> {
+      @Nullable
+      fpj createParticle(T var1, flj var2, double var3, double var5, double var7, double var9, double var11, double var13);
    }
 }

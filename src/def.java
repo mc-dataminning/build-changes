@@ -1,21 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class def extends cvk {
-   public static final MapCodec<def> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cjp.q.fieldOf("color").forGetter(def::b), t()).apply($$0, def::new));
-   private final cjp d;
+public class def extends ddl implements deb {
+   public static final MapCodec<def> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(deb.a.e.fieldOf("weathering_state").forGetter(def::g), u()).apply($$0, def::new)
+   );
+   private final deb.a f;
 
    @Override
-   public MapCodec<def> a() {
-      return c;
+   protected MapCodec<def> a() {
+      return e;
    }
 
-   protected def(cjp $$0, dgv.d $$1) {
+   protected def(deb.a $$0, dhh.d $$1) {
       super($$1);
-      this.d = $$0;
+      this.f = $$0;
    }
 
-   public cjp b() {
-      return this.d;
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dhi $$0) {
+      return deb.c($$0.b()).isPresent();
+   }
+
+   public deb.a g() {
+      return this.f;
    }
 }

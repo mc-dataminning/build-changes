@@ -2,10 +2,10 @@ import javax.annotation.Nullable;
 
 public class zy implements wk<yd> {
    private final int a;
-   private final chl<?> b;
+   private final cht<?> b;
    private final ur c;
 
-   public zy(int $$0, chl<?> $$1, ur $$2) {
+   public zy(int $$0, cht<?> $$1, ur $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -33,7 +33,7 @@ public class zy implements wk<yd> {
    }
 
    @Nullable
-   public chl<?> d() {
+   public cht<?> d() {
       return this.b;
    }
 

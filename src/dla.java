@@ -1,29 +1,15 @@
-public enum dla {
-   a(false, false),
-   b(true, false),
-   c(true, true);
-
-   private final boolean d;
-   private final boolean e;
-
-   private dla(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public static dla a(alt $$0) {
-      if ($$0.a(alt.d)) {
-         return c;
-      } else {
-         return $$0.a(alt.b) ? b : a;
+public interface dla {
+   dla a = new dla() {
+      @Override
+      public void a() {
       }
-   }
+
+      @Override
+      public void a(bkq.c $$0) {
+      }
+   };
+
+   void a();
+
+   void a(bkq.c var1);
 }

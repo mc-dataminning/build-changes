@@ -28,11 +28,11 @@ public class kh {
          this.b = $$2;
       }
 
-      public Path a(agg $$0, String $$1) {
+      public Path a(agi $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(agg $$0) {
+      public Path a(agi $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
    }

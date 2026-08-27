@@ -1,97 +1,101 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class enk {
-   private final Deque<enk.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new enk.a($$1, $$2));
-   });
+   private static final int a = 32768;
+   private final enk.a b;
+   private final String c;
+   private int d;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   protected enk(enk.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      enk.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      enk.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
-         }
-
-         $$3.b.scale(-1.0F);
-      }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = ati.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
-   }
-
-   public void a(Quaternionf $$0) {
-      enk.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      enk.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   public void a(enm $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
    }
 
    public void a() {
-      enk.a $$0 = this.a.getLast();
-      this.a.addLast(new enk.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
+      }
    }
 
-   public void b() {
-      this.a.removeLast();
+   public String b() {
+      return this.c;
    }
 
-   public enk.a c() {
-      return this.a.getLast();
+   public static enk a(enk.a $$0, String $$1, InputStream $$2, String $$3, end $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      enk $$6 = new enk($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
    }
 
-   public boolean d() {
-      return this.a.size() == 1;
+   protected static int b(enk.a $$0, String $$1, InputStream $$2, String $$3, end $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
+         }
+      }
    }
 
-   public void e() {
-      enk.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
+   protected int c() {
+      return this.d;
    }
 
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
 
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, enk> f = Maps.newHashMap();
 
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      public Matrix4f a() {
-         return this.a;
+      public String a() {
+         return this.c;
       }
 
-      public Matrix3f b() {
-         return this.b;
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, enk> c() {
+         return this.f;
       }
    }
 }

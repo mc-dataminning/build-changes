@@ -1,51 +1,94 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class emh {
-   private static final int a = 8;
-   private static final int b = 16384;
+   private final List<ConcurrentLinkedQueue<emg>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public static void a(long $$0) {
-      c($$0).filter(emh::a).ifPresent(emh::c);
+   public emh() {
+      this.c = this.e = this.f + 1;
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
-   }
-
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
-   }
-
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
-   }
-
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void a(aov<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   public void a(emg $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<emg> $$1 = this.i();
+         $$1.add($$0);
+      }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<emg> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<emg> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<emg> j() {
+      return this.a.get(this.e);
    }
 }

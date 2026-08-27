@@ -1,54 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bob {
-   public static bmq<ccz> a() {
-      return bqb.a(
-         (Function<bqb.b<ccz>, ? extends App<bqb.c<ccz>, bqe<ccz>>>)($$0 -> $$0.group($$0.b(btz.c), $$0.b(btz.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ia $$6 = $$0.b($$1);
-                        $$3.w()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bky>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof ccz && $$1xxx != $$4)
-                                    .map($$0xxxx -> (ccz)$$0xxxx)
-                                    .filter(bky::bv)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bob::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class bob extends bmx<cdh> {
+   private final float c;
+
+   public bob(float $$0) {
+      super(ImmutableMap.of(buh.m, bui.c, buh.n, bui.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   private static ccz a(ccz $$0, ccz $$1) {
-      ccz $$2;
-      ccz $$3;
-      if ($$0.t() > $$1.t()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.dN().b(btz.c);
-      return $$2;
+   protected boolean a(ame $$0, cdh $$1) {
+      cdu $$2 = $$1.gf();
+      return $$1.bx() && $$2 != null && !$$1.aZ() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
    }
 
-   private static boolean a(ia $$0, ib<bwa> $$1, ccz $$2) {
-      Optional<ia> $$3 = $$2.dN().c(btz.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gp().b());
+   protected boolean a(ame $$0, cdh $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   private static boolean a(ib<bwa> $$0, cdc $$1) {
-      return $$1.b().test($$0);
+   protected void b(ame $$0, cdh $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(ame $$0, cdh $$1, long $$2) {
+      bmg<?> $$3 = $$1.dP();
+      $$3.b(buh.m);
+      $$3.b(buh.n);
+   }
+
+   protected void d(ame $$0, cdh $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cdh $$0) {
+      bmg<?> $$1 = $$0.dP();
+      $$1.a(buh.m, new buk(new bni($$0.gf(), false), this.c, 2));
+      $$1.a(buh.n, new bni($$0.gf(), true));
    }
 }

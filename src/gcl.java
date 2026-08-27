@@ -1,69 +1,69 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gcl extends ru {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class gcl extends aon {
+   private static final aoj c = new aoj(ur.c("resourcePack.vanilla.description"), aa.b().a(anw.a), Optional.empty());
+   private static final anq d = anq.a(aoj.b, c);
+   private static final ur e = ur.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, ur> f = Map.of(
+      "programmer_art", ur.c("resourcePack.programmer_art.name"), "high_contrast", ur.c("resourcePack.high_contrast.name")
+   );
+   private static final agi g = new agi("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   private gcl(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gcl(Path $$0, ejk $$1) {
+      super(anw.a, b($$0), g, $$1);
+      this.h = this.a($$0);
    }
 
-   public static gcl a(apd $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               agg $$7 = new agg($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aT && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
       }
 
-      return new gcl(ImmutableMap.copyOf($$3), $$2);
+      return null;
    }
 
-   private static void a(String $$0, List<apb> $$1, Map<String, String> $$2) {
-      for (apb $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            ru.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
+   private static any b(Path $$0) {
+      anz $$1 = new anz().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(anw.a, $$0).c();
+   }
+
+   @Override
+   protected ur a(String $$0) {
+      ur $$1 = f.get($$0);
+      return (ur)($$1 != null ? $$1 : ur.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected aop a(anv $$0) {
+      return aop.a("vanilla", e, true, b($$0), anw.a, aop.b.b, aot.c);
+   }
+
+   @Nullable
+   @Override
+   protected aop a(String $$0, aop.c $$1, ur $$2) {
+      return aop.a($$0, $$2, false, $$1, anw.a, aop.b.a, aot.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, aop>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
       }
-   }
-
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public asu a(uw $$0) {
-      return gcm.a($$0, this.d);
    }
 }

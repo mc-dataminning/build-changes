@@ -1,23 +1,27 @@
-public class dfo extends dga {
-   private static final int a = 60;
-   private static final int b = 9;
+public class dfo extends dfd {
+   private int a;
 
-   public dfo(ht $$0, dgw $$1) {
-      super(det.i, $$0, $$1);
+   public dfo(ht $$0, dhi $$1) {
+      super(dff.s, $$0, $$1);
    }
 
    @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("OutputSignal", this.a);
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.a = $$0.h("OutputSignal");
+   }
+
    public int c() {
-      return 9;
+      return this.a;
    }
 
-   @Override
-   public int d() {
-      return 60;
-   }
-
-   @Override
-   public aqm f() {
-      return aqn.zT;
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

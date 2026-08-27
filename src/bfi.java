@@ -1,11 +1,33 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface bfi {
-   long a();
+public class bfi {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bfm c = bfl.a;
 
-   long b();
+   public bfi(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   long c();
+   public boolean a() {
+      return this.c != bfl.a;
+   }
 
-   Object2LongMap<String> d();
+   public void b() {
+      this.c = bfl.a;
+   }
+
+   public void c() {
+      this.c = new bfh(this.a, this.b, true);
+   }
+
+   public bfo d() {
+      return this.c;
+   }
+
+   public bfn e() {
+      return this.c.d();
+   }
 }

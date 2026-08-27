@@ -17,27 +17,27 @@ public class ga {
    private static final char d = '{';
    private static final char e = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
-   private final id<ckw> g;
+   private final id<cle> g;
    private final StringReader h;
    private final boolean i;
-   private Either<ib<ckw>, ig<ckw>> j;
+   private Either<ib<cle>, ig<cle>> j;
    @Nullable
    private rz k;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
-   private ga(id<ckw> $$0, StringReader $$1, boolean $$2) {
+   private ga(id<cle> $$0, StringReader $$1, boolean $$2) {
       this.g = $$0;
       this.h = $$1;
       this.i = $$2;
    }
 
-   public static ga.a a(id<ckw> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static ga.a a(id<cle> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
          ga $$3 = new ga($$0, $$1, false);
          $$3.d();
-         ib<ckw> $$4 = (ib<ckw>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
+         ib<cle> $$4 = (ib<cle>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
          return new ga.a($$4, $$3.k);
       } catch (CommandSyntaxException var5) {
          $$1.setCursor($$2);
@@ -45,7 +45,7 @@ public class ga {
       }
    }
 
-   public static Either<ga.a, ga.b> b(id<ckw> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static Either<ga.a, ga.b> b(id<cle> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
@@ -58,7 +58,7 @@ public class ga {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(id<ckw> $$0, SuggestionsBuilder $$1, boolean $$2) {
+   public static CompletableFuture<Suggestions> a(id<cle> $$0, SuggestionsBuilder $$1, boolean $$2) {
       StringReader $$3 = new StringReader($$1.getInput());
       $$3.setCursor($$1.getStart());
       ga $$4 = new ga($$0, $$3, $$2);
@@ -73,8 +73,8 @@ public class ga {
 
    private void a() throws CommandSyntaxException {
       int $$0 = this.h.getCursor();
-      agg $$1 = agg.a(this.h);
-      Optional<? extends ib<ckw>> $$2 = this.g.a(agf.a(jz.E, $$1));
+      agi $$1 = agi.a(this.h);
+      Optional<? extends ib<cle>> $$2 = this.g.a(agh.a(jz.E, $$1));
       this.j = Either.left($$2.orElseThrow(() -> {
          this.h.setCursor($$0);
          return b.createWithContext(this.h, $$1);
@@ -88,8 +88,8 @@ public class ga {
          int $$0 = this.h.getCursor();
          this.h.expect('#');
          this.l = this::b;
-         agg $$1 = agg.a(this.h);
-         Optional<? extends ig<ckw>> $$2 = this.g.a(arr.a(jz.E, $$1));
+         agi $$1 = agi.a(this.h);
+         Optional<? extends ig<cle>> $$2 = this.g.a(arv.a(jz.E, $$1));
          this.j = Either.right($$2.orElseThrow(() -> {
             this.h.setCursor($$0);
             return c.createWithContext(this.h, $$1);
@@ -130,11 +130,11 @@ public class ga {
    }
 
    private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-      return dy.a(this.g.e().map(arr::b), $$0, String.valueOf('#'));
+      return dy.a(this.g.e().map(arv::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-      return dy.a(this.g.c().map(agf::a), $$0);
+      return dy.a(this.g.c().map(agh::a), $$0);
    }
 
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
@@ -142,9 +142,9 @@ public class ga {
       return this.c($$0);
    }
 
-   public static record a(ib<ckw> a, @Nullable rz b) {
+   public static record a(ib<cle> a, @Nullable rz b) {
    }
 
-   public static record b(ig<ckw> a, @Nullable rz b) {
+   public static record b(ig<cle> a, @Nullable rz b) {
    }
 }

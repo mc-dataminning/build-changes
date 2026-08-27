@@ -1,110 +1,65 @@
-public class ggt implements ggx {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final ur f = ur.a("tutorial.move.title", ggw.a("forward"), ggw.a("left"), ggw.a("back"), ggw.a("right"));
-   private static final ur g = ur.a("tutorial.move.description", ggw.a("jump"));
-   private static final ur h = ur.c("tutorial.look.title");
-   private static final ur i = ur.c("tutorial.look.description");
-   private final ggw j;
-   private eww k;
-   private eww l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import java.time.Duration;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ggt(ggw $$0) {
-      this.j = $$0;
+public class ggt {
+   private final UUID a = UUID.randomUUID();
+   private final ggo b;
+   private final ggx c;
+   private final ggz d = new ggz();
+   private final ggw e;
+   private final ggy f;
+
+   public ggt(ggo $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new ggx($$3);
+      this.e = new ggw();
+      this.f = new ggy($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(ggr.i, this.a);
+      });
    }
 
-   @Override
    public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(ggy.b);
-         } else {
-            this.j.a(ggy.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new eww(eww.a.a, f, g, true);
-            this.j.e().ax().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new eww(eww.a.b, h, i, true);
-            this.j.e().ax().a(this.l);
-         }
-      }
+      this.e.a(this.b);
    }
 
-   @Override
+   public void a(crx $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
    public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   @Override
-   public void a(fph $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public void a(csa $$0, af $$1) {
+      agi $$2 = $$1.a();
+      if ($$1.b().h() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.W();
+         this.b.send(ggp.f, $$2x -> {
+            $$2x.a(ggr.D, $$2.toString());
+            $$2x.a(ggr.E, $$3);
+         });
       }
    }
 }

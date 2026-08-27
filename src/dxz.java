@@ -1,29 +1,70 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dxz extends dyb {
-   public static final Codec<dxz> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dxz::new));
-
-   protected dxz(Either<agg, eav> $$0, ib<eat> $$1, dye.a $$2) {
-      super($$0, $$1, $$2);
-   }
+public class dxz implements dxm {
+   private final List<dxl> a = Lists.newArrayList();
 
    @Override
-   protected ear a(dbf $$0, dwn $$1, boolean $$2) {
-      ear $$3 = super.a($$0, $$1, $$2);
-      $$3.b(dzx.b);
-      $$3.a(dzx.d);
-      return $$3;
+   public void a(dxl $$0) {
+      this.a.add($$0);
    }
 
+   @Nullable
    @Override
-   public dyd<?> a() {
-      return dyd.e;
+   public dxl a(dwz $$0) {
+      return dxl.a(this.a, $$0);
    }
 
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   @Deprecated
+   public void a(int $$0) {
+      for (dxl $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, ats $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      dwz $$5 = this.d();
+      int $$6 = $$5.d() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.k();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(ats $$0, int $$1, int $$2) {
+      dwz $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.d();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.h();
+      this.a($$7);
+   }
+
+   public dxw a() {
+      return new dxw(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public dwz d() {
+      return dxl.a(this.a.stream());
    }
 }

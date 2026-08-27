@@ -1,30 +1,8 @@
-public class cjv extends ckw implements ckc {
-   public cjv(ckw.a $$0) {
-      super($$0);
-      cwx.a(this, cil.a);
+import javax.annotation.Nullable;
+
+public interface cjv {
+   default void a(@Nullable cdu $$0, csa $$1, clj $$2, ht $$3) {
    }
 
-   public static boolean d(clb $$0) {
-      return $$0.k() < $$0.l() - 1;
-   }
-
-   @Override
-   public boolean a(clb $$0, clb $$1) {
-      return $$1.a(cle.uX);
-   }
-
-   @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public aqm ar_() {
-      return aqn.ae;
-   }
-
-   @Override
-   public bkn g() {
-      return bkn.e;
-   }
+   boolean a(@Nullable cdu var1, csa var2, ht var3, @Nullable ejq var4);
 }

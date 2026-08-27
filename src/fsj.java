@@ -1,49 +1,100 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fsj {
-   private static final Map<det<?>, fsi<?>> a = Maps.newHashMap();
+public class fsj implements geg {
+   private final dhj<cva, dhi> a;
+   private final List<fsl> b;
 
-   private static <T extends der> void a(det<? extends T> $$0, fsi<T> $$1) {
-      a.put($$0, $$1);
+   public fsj(dhj<cva, dhi> $$0, List<fsl> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static Map<det<?>, fsh<?>> a(fsi.a $$0) {
-      Builder<det<?>, fsh<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + jy.l.b((det<?>)$$2), var5);
+   public List<fsl> a() {
+      return this.b;
+   }
+
+   public Set<fse> b() {
+      Set<fse> $$0 = Sets.newHashSet();
+
+      for (fsl $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fsj $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<agi> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<agi, geg> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gdv a(gdz $$0, Function<gdy, gbu> $$1, ged $$2, agi $$3) {
+      gee.a $$4 = new gee.a();
+
+      for (fsl $$5 : this.a()) {
+         gdv $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
          }
-      });
-      return $$1.build();
+      }
+
+      return $$4.a();
    }
 
-   static {
-      a(det.h, fsv::new);
-      a(det.i, fsr::new);
-      a(det.j, fsx::new);
-      a(det.k, fst::new);
-      a(det.b, fsn::new);
-      a(det.d, fsn::new);
-      a(det.c, fsn::new);
-      a(det.m, fsq::new);
-      a(det.D, fss::new);
-      a(det.n, fta::new);
-      a(det.v, fsz::new);
-      a(det.o, fsd::new);
-      a(det.p, fsw::new);
-      a(det.t, fsc::new);
-      a(det.u, fsy::new);
-      a(det.x, fsu::new);
-      a(det.y, fse::new);
-      a(det.z, fso::new);
-      a(det.E, fsf::new);
-      a(det.G, fsm::new);
-      a(det.N, fsl::new);
-      a(det.O, fsp::new);
+   public static class a implements JsonDeserializer<fsj> {
+      private final frx.a a;
+
+      public a(frx.a $$0) {
+         this.a = $$0;
+      }
+
+      public fsj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fsj(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fsl> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fsl> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fsl)$$0.deserialize($$3, fsl.class));
+         }
+
+         return $$2;
+      }
    }
 }

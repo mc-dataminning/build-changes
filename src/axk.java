@@ -1,17 +1,27 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class axk extends bax {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+public class axk extends azt {
+   public axk(Schema $$0) {
+      super($$0, false, "EntityPaintingFieldsRenameFix", bat.x, "minecraft:painting");
+   }
 
-   public axk(Schema $$0, boolean $$1) {
-      super("EntityRavagerRenameFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return this.a(this.a($$0, "Motive", "variant"), "Facing", "facing");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

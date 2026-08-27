@@ -1,4 +1,4 @@
-public interface wu extends ack {
+public interface wu extends acm {
    void a(wx var1);
 
    void a(wy var1);

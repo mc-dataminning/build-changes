@@ -1,315 +1,54 @@
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import org.lwjgl.glfw.GLFWDropCallback;
+import java.util.Collection;
+import org.slf4j.Logger;
 
 public class ess {
-   private final esr a;
-   private boolean b;
-   private boolean c;
-   private boolean d;
-   private double e;
-   private double f;
-   private int g;
-   private int h = -1;
-   private boolean i = true;
-   private int j;
-   private double k;
-   private final atx l = new atx();
-   private final atx m = new atx();
-   private double n;
-   private double o;
-   private double p;
-   private double q;
-   private double r = Double.MIN_VALUE;
-   private boolean s;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final asc<String> e = new asc<>(50);
 
-   public ess(esr $$0) {
-      this.a = $$0;
-   }
-
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.a.aL().i()) {
-         if (this.a.y != null) {
-            this.a.a(eso.b);
-         }
-
-         boolean $$4 = $$2 == 1;
-         if (esr.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.g++;
-               }
-            } else if (this.g > 0) {
-               $$1 = 1;
-               this.g--;
-            }
-         }
-
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.a.m.W().c() && this.j++ > 0) {
-               return;
-            }
-
-            this.h = $$5;
-            this.k = elb.b();
-         } else if (this.h != -1) {
-            if (this.a.m.W().c() && --this.j > 0) {
-               return;
-            }
-
-            this.h = -1;
-         }
-
-         boolean[] $$6 = new boolean[]{false};
-         if (this.a.aI() == null) {
-            if (this.a.y == null) {
-               if (!this.s && $$4) {
-                  this.i();
-               }
-            } else {
-               double $$7 = this.e * (double)this.a.aL().o() / (double)this.a.aL().m();
-               double $$8 = this.f * (double)this.a.aL().p() / (double)this.a.aL().n();
-               fah $$9 = this.a.y;
-               if ($$4) {
-                  $$9.w();
-                  fah.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
-               } else {
-                  fah.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.a.y == null && this.a.aI() == null) {
-            if ($$5 == 0) {
-               this.b = $$4;
-            } else if ($$5 == 2) {
-               this.c = $$4;
-            } else if ($$5 == 1) {
-               this.d = $$4;
-            }
-
-            esp.a(emf.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.a.s.N_() && $$5 == 2) {
-                  this.a.l.g().b();
-               } else {
-                  esp.a(emf.b.c.a($$5));
-               }
-            }
+   public ess(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
          }
       }
    }
 
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == esr.N().aL().i()) {
-         boolean $$3 = this.a.m.P().c();
-         double $$4 = this.a.m.D().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.a.aI() == null) {
-            if (this.a.y != null) {
-               double $$7 = this.e * (double)this.a.aL().o() / (double)this.a.aL().m();
-               double $$8 = this.f * (double)this.a.aL().p() / (double)this.a.aL().n();
-               this.a.y.a($$7, $$8, $$5, $$6);
-               this.a.y.w();
-            } else if (this.a.s != null) {
-               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
-                  this.p = 0.0;
-               }
-
-               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
-                  this.q = 0.0;
-               }
-
-               this.p += $$5;
-               this.q += $$6;
-               int $$9 = (int)this.p;
-               int $$10 = (int)this.q;
-               if ($$9 == 0 && $$10 == 0) {
-                  return;
-               }
-
-               this.p -= (double)$$9;
-               this.q -= (double)$$10;
-               int $$11 = $$10 == 0 ? -$$9 : $$10;
-               if (this.a.s.N_()) {
-                  if (this.a.l.g().a()) {
-                     this.a.l.g().b(-$$11);
-                  } else {
-                     float $$12 = ati.a(this.a.s.fT().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
-                     this.a.s.fT().a($$12);
-                  }
-               } else {
-                  this.a.s.fS().a((double)$$11);
-               }
-            }
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
          }
+
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   private void a(long $$0, List<Path> $$1) {
-      if (this.a.y != null) {
-         this.a.y.a($$1);
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
    }
 
-   public void a(long $$0) {
-      emf.a(
-         $$0,
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            Path[] $$3 = new Path[$$1];
-
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
-            }
-
-            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
-         }
-      );
-   }
-
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == esr.N().aL().i()) {
-         if (this.i) {
-            this.e = $$1;
-            this.f = $$2;
-            this.i = false;
-         }
-
-         fah $$3 = this.a.y;
-         if ($$3 != null && this.a.aI() == null) {
-            double $$4 = $$1 * (double)this.a.aL().o() / (double)this.a.aL().m();
-            double $$5 = $$2 * (double)this.a.aL().p() / (double)this.a.aL().n();
-            fah.a(() -> $$3.e($$4, $$5), "mouseMoved event handler", $$3.getClass().getCanonicalName());
-            if (this.h != -1 && this.k > 0.0) {
-               double $$6 = ($$1 - this.e) * (double)this.a.aL().o() / (double)this.a.aL().m();
-               double $$7 = ($$2 - this.f) * (double)this.a.aL().p() / (double)this.a.aL().n();
-               fah.a(() -> $$3.a($$4, $$5, this.h, $$6, $$7), "mouseDragged event handler", $$3.getClass().getCanonicalName());
-            }
-
-            $$3.v();
-         }
-
-         this.a.aF().a("mouse");
-         if (this.h() && this.a.az()) {
-            this.n = this.n + ($$1 - this.e);
-            this.o = this.o + ($$2 - this.f);
-         }
-
-         this.a();
-         this.e = $$1;
-         this.f = $$2;
-         this.a.aF().c();
-      }
-   }
-
-   public void a() {
-      double $$0 = elb.b();
-      double $$1 = $$0 - this.r;
-      this.r = $$0;
-      if (this.h() && this.a.az()) {
-         double $$2 = this.a.m.d().c() * 0.6F + 0.2F;
-         double $$3 = $$2 * $$2 * $$2;
-         double $$4 = $$3 * 8.0;
-         double $$7;
-         double $$8;
-         if (this.a.m.ab) {
-            double $$5 = this.l.a(this.n * $$4, $$1 * $$4);
-            double $$6 = this.m.a(this.o * $$4, $$1 * $$4);
-            $$7 = $$5;
-            $$8 = $$6;
-         } else if (this.a.m.ax().a() && this.a.s.gq()) {
-            this.l.a();
-            this.m.a();
-            $$7 = this.n * $$3;
-            $$8 = this.o * $$3;
-         } else {
-            this.l.a();
-            this.m.a();
-            $$7 = this.n * $$4;
-            $$8 = this.o * $$4;
-         }
-
-         this.n = 0.0;
-         this.o = 0.0;
-         int $$13 = 1;
-         if (this.a.m.O().c()) {
-            $$13 = -1;
-         }
-
-         this.a.ay().a($$7, $$8);
-         if (this.a.s != null) {
-            this.a.s.b($$7, $$8 * (double)$$13);
-         }
-      } else {
-         this.n = 0.0;
-         this.o = 0.0;
-      }
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public double e() {
+   public Collection<String> a() {
       return this.e;
-   }
-
-   public double f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.i = true;
-   }
-
-   public boolean h() {
-      return this.s;
-   }
-
-   public void i() {
-      if (this.a.az()) {
-         if (!this.s) {
-            if (!esr.a) {
-               esp.a();
-            }
-
-            this.s = true;
-            this.e = (double)(this.a.aL().m() / 2);
-            this.f = (double)(this.a.aL().n() / 2);
-            emf.a(this.a.aL().i(), 212995, this.e, this.f);
-            this.a.a(null);
-            this.a.w = 10000;
-            this.i = true;
-         }
-      }
-   }
-
-   public void j() {
-      if (this.s) {
-         this.s = false;
-         this.e = (double)(this.a.aL().m() / 2);
-         this.f = (double)(this.a.aL().n() / 2);
-         emf.a(this.a.aL().i(), 212993, this.e, this.f);
-      }
-   }
-
-   public void k() {
-      this.i = true;
    }
 }

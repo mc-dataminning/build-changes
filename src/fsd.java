@@ -1,136 +1,90 @@
-import java.util.List;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class fsd implements fsh<dem> {
-   public static final agg a = new agg("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class fsd {
+   public static final fsd a = new fsd();
+   public final fsc b;
+   public final fsc c;
+   public final fsc d;
+   public final fsc e;
+   public final fsc f;
+   public final fsc g;
+   public final fsc h;
+   public final fsc i;
 
-   public fsd(fsi.a $$0) {
+   private fsd() {
+      this(fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a);
    }
 
-   public void a(dem $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      long $$6 = $$0.k().V();
-      List<dem.a> $$7 = $$0.c();
-      int $$8 = 0;
+   public fsd(fsd $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dem.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public fsd(fsc $$0, fsc $$1, fsc $$2, fsc $$3, fsc $$4, fsc $$5, fsc $$6, fsc $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fsc a(clg $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fsc.a;
+      };
+   }
+
+   public boolean b(clg $$0) {
+      return this.a($$0) != fsc.a;
+   }
+
+   protected static class a implements JsonDeserializer<fsd> {
+      public fsd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fsc $$4 = this.a($$2, $$3, clg.c);
+         fsc $$5 = this.a($$2, $$3, clg.b);
+         if ($$5 == fsc.a) {
+            $$5 = $$4;
+         }
+
+         fsc $$6 = this.a($$2, $$3, clg.e);
+         fsc $$7 = this.a($$2, $$3, clg.d);
+         if ($$7 == fsc.a) {
+            $$7 = $$6;
+         }
+
+         fsc $$8 = this.a($$2, $$3, clg.f);
+         fsc $$9 = this.a($$2, $$3, clg.g);
+         fsc $$10 = this.a($$2, $$3, clg.h);
+         fsc $$11 = this.a($$2, $$3, clg.i);
+         return new fsd($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
-   }
 
-   private static void a(enk $$0, fqh $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(enk $$0, fqh $$1, agg $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ati.h($$13 * 0.2F - (float)ati.d($$13 * 0.1F));
-      float $$15 = $$8[0];
-      float $$16 = $$8[1];
-      float $$17 = $$8[2];
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$18 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 0.0F;
-      float $$25 = -$$9;
-      float $$26 = 0.0F;
-      float $$27 = 1.0F;
-      float $$28 = -1.0F + $$14;
-      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
-      a($$0, $$1.getBuffer(fqp.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-      $$18 = -$$10;
-      float $$31 = -$$10;
-      $$21 = -$$10;
-      $$22 = -$$10;
-      $$26 = 0.0F;
-      $$27 = 1.0F;
-      $$28 = -1.0F + $$14;
-      $$29 = (float)$$7 * $$4 + $$28;
-      a($$0, $$1.getBuffer(fqp.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-   }
-
-   private static void a(
-      enk $$0,
-      eno $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16,
-      float $$17,
-      float $$18,
-      float $$19
-   ) {
-      enk.a $$20 = $$0.c();
-      Matrix4f $$21 = $$20.a();
-      Matrix3f $$22 = $$20.b();
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
-   }
-
-   private static void a(
-      Matrix4f $$0,
-      Matrix3f $$1,
-      eno $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$10, $$14, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$9, $$10, $$14, $$16);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$11, $$12, $$13, $$16);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$11, $$12, $$13, $$15);
-   }
-
-   private static void a(Matrix4f $$0, Matrix3f $$1, eno $$2, float $$3, float $$4, float $$5, float $$6, int $$7, float $$8, float $$9, float $$10, float $$11) {
-      $$2.a($$0, $$8, (float)$$7, $$9).a($$3, $$4, $$5, $$6).a($$10, $$11).c(gay.d).b(15728880).a($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public boolean a(dem $$0) {
-      return true;
-   }
-
-   @Override
-   public int aR_() {
-      return 256;
-   }
-
-   public boolean a(dem $$0, eji $$1) {
-      return eji.b($$0.p()).d(1.0, 0.0, 1.0).a((im)$$1.d(1.0, 0.0, 1.0), (double)this.aR_());
+      private fsc a(JsonDeserializationContext $$0, JsonObject $$1, clg $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fsc)$$0.deserialize($$1.get($$3), fsc.class) : fsc.a;
+      }
    }
 }

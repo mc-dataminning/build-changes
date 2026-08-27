@@ -1,129 +1,79 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bsu<T extends cba & cbe & can> extends brt {
-   public static final bib a = aug.a(1, 2);
-   private final T b;
-   private bsu.a c = bsu.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bsu extends bsb {
+   public static final int a = 1;
+   protected final blp b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
 
-   public bsu(T $$0, double $$1, float $$2) {
+   public bsu(blp $$0, double $$1) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(brt.a.a, brt.a.b));
+      this.c = $$1;
+      this.a(EnumSet.of(bsb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.b.bN()) {
+            ht $$0 = this.a(this.b.dN(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
    }
 
-   private boolean h() {
-      return this.b.b(cle.va);
+   protected boolean h() {
+      return this.b.ei() != null || this.b.dC() || this.b.bN();
+   }
+
+   protected boolean i() {
+      eju $$0 = bvw.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
-   public boolean b() {
-      return this.i() && (this.a() || !this.b.L().l()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bv();
+   public void c() {
+      this.b.N().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fn()) {
-         this.b.ft();
-         this.b.b(false);
-         cjj.a(this.b.fp(), false);
-      }
+      this.g = false;
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public boolean b() {
+      return !this.b.N().l();
    }
 
-   @Override
-   public void e() {
-      bky $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.M().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
-
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.L().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.ef());
-            }
-         } else {
-            this.h = 0;
-            this.b.L().n();
-         }
-
-         this.b.G().a($$0, 30.0F, 30.0F);
-         if (this.c == bsu.a.a) {
-            if (!$$4) {
-               this.b.c(cef.a(this.b, cle.va));
-               this.c = bsu.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bsu.a.b) {
-            if (!this.b.fn()) {
-               this.c = bsu.a.a;
-            }
-
-            int $$5 = this.b.fr();
-            clb $$6 = this.b.fp();
-            if ($$5 >= cjj.k($$6)) {
-               this.b.fs();
-               this.c = bsu.a.c;
-               this.g = 20 + this.b.ef().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bsu.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bsu.a.d;
-            }
-         } else if (this.c == bsu.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            clb $$7 = this.b.b(cef.a(this.b, cle.va));
-            cjj.a($$7, false);
-            this.c = bsu.a.a;
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.c == bsu.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Nullable
+   protected ht a(crg $$0, bkq $$1, int $$2) {
+      ht $$3 = $$1.dn();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : ht.a($$1.dn(), $$2, 1, $$1x -> $$0.b_($$1x).a(arl.a)).orElse(null);
    }
 }

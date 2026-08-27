@@ -1,65 +1,46 @@
-public class qe {
-   public static final agf<dvz> a = qj.a("monster_room");
-   public static final agf<dvz> b = qj.a("monster_room_deep");
-   public static final agf<dvz> c = qj.a("fossil_upper");
-   public static final agf<dvz> d = qj.a("fossil_lower");
-   public static final agf<dvz> e = qj.a("dripstone_cluster");
-   public static final agf<dvz> f = qj.a("large_dripstone");
-   public static final agf<dvz> g = qj.a("pointed_dripstone");
-   public static final agf<dvz> h = qj.a("underwater_magma");
-   public static final agf<dvz> i = qj.a("glow_lichen");
-   public static final agf<dvz> j = qj.a("rooted_azalea_tree");
-   public static final agf<dvz> k = qj.a("cave_vines");
-   public static final agf<dvz> l = qj.a("lush_caves_vegetation");
-   public static final agf<dvz> m = qj.a("lush_caves_clay");
-   public static final agf<dvz> n = qj.a("lush_caves_ceiling_vegetation");
-   public static final agf<dvz> o = qj.a("spore_blossom");
-   public static final agf<dvz> p = qj.a("classic_vines_cave_feature");
-   public static final agf<dvz> q = qj.a("amethyst_geode");
-   public static final agf<dvz> r = qj.a("sculk_patch_deep_dark");
-   public static final agf<dvz> s = qj.a("sculk_patch_ancient_city");
-   public static final agf<dvz> t = qj.a("sculk_vein");
+import java.util.List;
 
-   public static void a(ou<dvz> $$0) {
-      ic<dow<?, ?>> $$1 = $$0.a(jz.au);
-      ib<dow<?, ?>> $$2 = $$1.b(ps.a);
-      ib<dow<?, ?>> $$3 = $$1.b(ps.b);
-      ib<dow<?, ?>> $$4 = $$1.b(ps.c);
-      ib<dow<?, ?>> $$5 = $$1.b(ps.d);
-      ib<dow<?, ?>> $$6 = $$1.b(ps.e);
-      ib<dow<?, ?>> $$7 = $$1.b(ps.f);
-      ib<dow<?, ?>> $$8 = $$1.b(ps.g);
-      ib<dow<?, ?>> $$9 = $$1.b(ps.h);
-      ib<dow<?, ?>> $$10 = $$1.b(ps.i);
-      ib<dow<?, ?>> $$11 = $$1.b(ps.j);
-      ib<dow<?, ?>> $$12 = $$1.b(ps.m);
-      ib<dow<?, ?>> $$13 = $$1.b(ps.r);
-      ib<dow<?, ?>> $$14 = $$1.b(ps.s);
-      ib<dow<?, ?>> $$15 = $$1.b(ps.t);
-      ib<dow<?, ?>> $$16 = $$1.b(qa.c);
-      ib<dow<?, ?>> $$17 = $$1.b(ps.u);
-      ib<dow<?, ?>> $$18 = $$1.b(ps.v);
-      ib<dow<?, ?>> $$19 = $$1.b(ps.w);
-      ib<dow<?, ?>> $$20 = $$1.b(ps.x);
-      qj.a($$0, a, $$2, dvs.a(10), dvw.a(), dvu.a(dmz.a(0), dmz.b()), dvn.a());
-      qj.a($$0, b, $$2, dvs.a(4), dvw.a(), dvu.a(dmz.b(6), dmz.a(-1)), dvn.a());
-      qj.a($$0, c, $$3, dwf.a(64), dvw.a(), dvu.a(dmz.a(0), dmz.b()), dvn.a());
-      qj.a($$0, d, $$4, dwf.a(64), dvw.a(), dvu.a(dmz.a(), dmz.a(-8)), dvn.a());
-      qj.a($$0, e, $$5, dvs.a(bib.a(48, 96)), dvw.a(), qj.i, dvn.a());
-      qj.a($$0, f, $$6, dvs.a(bib.a(10, 48)), dvw.a(), qj.i, dvn.a());
-      qj.a($$0, g, $$7, dvs.a(bib.a(192, 256)), dvw.a(), qj.i, dvs.a(bib.a(1, 5)), dwe.a(bhq.a(0.0F, 3.0F, -10, 10), bhq.a(0.0F, 0.6F, -2, 2)), dvn.a());
-      qj.a($$0, h, $$8, dvs.a(bib.a(44, 52)), dvw.a(), qj.i, dwh.a(dmf.a.c, Integer.MIN_VALUE, -2), dvn.a());
-      qj.a($$0, i, $$9, dvs.a(bib.a(104, 157)), qj.i, dvw.a(), dwh.a(dmf.a.c, Integer.MIN_VALUE, -13), dvn.a());
-      qj.a($$0, j, $$10, dvs.a(bib.a(1, 2)), dvw.a(), qj.i, dvt.a(hx.b, dnm.c(), dnm.c, 12), dwe.a(bhs.a(-1)), dvn.a());
-      qj.a($$0, k, $$11, dvs.a(188), dvw.a(), qj.i, dvt.a(hx.b, dnm.a(hx.a), dnm.c, 12), dwe.a(bhs.a(-1)), dvn.a());
-      qj.a($$0, l, $$12, dvs.a(125), dvw.a(), qj.i, dvt.a(hx.a, dnm.c(), dnm.c, 12), dwe.a(bhs.a(1)), dvn.a());
-      qj.a($$0, m, $$13, dvs.a(62), dvw.a(), qj.i, dvt.a(hx.a, dnm.c(), dnm.c, 12), dwe.a(bhs.a(1)), dvn.a());
-      qj.a($$0, n, $$14, dvs.a(125), dvw.a(), qj.i, dvt.a(hx.b, dnm.c(), dnm.c, 12), dwe.a(bhs.a(-1)), dvn.a());
-      qj.a($$0, o, $$15, dvs.a(25), dvw.a(), qj.i, dvt.a(hx.b, dnm.c(), dnm.c, 12), dwe.a(bhs.a(-1)), dvn.a());
-      qj.a($$0, p, $$16, dvs.a(256), dvw.a(), qj.i, dvn.a());
-      qj.a($$0, q, $$17, dwf.a(24), dvw.a(), dvu.a(dmz.b(6), dmz.a(30)), dvn.a());
-      qj.a($$0, r, $$18, dvs.a(bhs.a(256)), dvw.a(), qj.i, dvn.a());
-      qj.a($$0, s, $$19);
-      qj.a($$0, t, $$20, dvs.a(bib.a(204, 250)), dvw.a(), qj.i, dvn.a());
+public class qe {
+   public static final agh<dwl> a = qk.a("seagrass_warm");
+   public static final agh<dwl> b = qk.a("seagrass_normal");
+   public static final agh<dwl> c = qk.a("seagrass_cold");
+   public static final agh<dwl> d = qk.a("seagrass_river");
+   public static final agh<dwl> e = qk.a("seagrass_swamp");
+   public static final agh<dwl> f = qk.a("seagrass_deep_warm");
+   public static final agh<dwl> g = qk.a("seagrass_deep");
+   public static final agh<dwl> h = qk.a("seagrass_deep_cold");
+   public static final agh<dwl> i = qk.a("seagrass_simple");
+   public static final agh<dwl> j = qk.a("sea_pickle");
+   public static final agh<dwl> k = qk.a("kelp_cold");
+   public static final agh<dwl> l = qk.a("kelp_warm");
+   public static final agh<dwl> m = qk.a("warm_ocean_vegetation");
+
+   private static List<dwo> a(int $$0) {
+      return List.of(dwi.a(), qk.b, dwe.a($$0), dvz.a());
+   }
+
+   public static void a(ov<dwl> $$0) {
+      ic<dpi<?, ?>> $$1 = $$0.a(jz.au);
+      ib.c<dpi<?, ?>> $$2 = $$1.b(ps.a);
+      ib.c<dpi<?, ?>> $$3 = $$1.b(ps.b);
+      ib.c<dpi<?, ?>> $$4 = $$1.b(ps.c);
+      ib.c<dpi<?, ?>> $$5 = $$1.b(ps.d);
+      ib.c<dpi<?, ?>> $$6 = $$1.b(ps.f);
+      ib.c<dpi<?, ?>> $$7 = $$1.b(ps.e);
+      ib.c<dpi<?, ?>> $$8 = $$1.b(ps.g);
+      ib.c<dpi<?, ?>> $$9 = $$1.b(ps.h);
+      qk.a($$0, a, $$2, a(80));
+      qk.a($$0, b, $$2, a(48));
+      qk.a($$0, c, $$2, a(32));
+      qk.a($$0, d, $$3, a(48));
+      qk.a($$0, e, $$4, a(64));
+      qk.a($$0, f, $$5, a(80));
+      qk.a($$0, g, $$5, a(48));
+      qk.a($$0, h, $$5, a(40));
+      qk.a($$0, i, $$6, dwb.a(dmn.a.b), dwr.a(10), dwa.a(dny.a(dny.a(hx.a.q(), cvc.b), dny.a(ht.b, cvc.G), dny.a(hx.b.q(), cvc.G))), dvz.a());
+      qk.a($$0, j, $$7, dwr.a(16), dwi.a(), qk.b, dvz.a());
+      qk.a($$0, k, $$8, dwj.a(120, 80.0, 0.0), dwi.a(), qk.b, dvz.a());
+      qk.a($$0, l, $$8, dwj.a(80, 80.0, 0.0), dwi.a(), qk.b, dvz.a());
+      qk.a($$0, m, $$9, dwj.a(20, 400.0, 0.0), dwi.a(), qk.b, dvz.a());
    }
 }

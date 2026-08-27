@@ -1,59 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class don extends dpj<drx> {
-   private static final dgw a = cuv.mZ.o().a(ctx.h, Integer.valueOf(1)).a(ctx.i, dhi.a).a(ctx.j, Integer.valueOf(0));
-   private static final dgw b = a.a(ctx.i, dhi.c).a(ctx.j, Integer.valueOf(1));
-   private static final dgw c = a.a(ctx.i, dhi.c);
-   private static final dgw d = a.a(ctx.i, dhi.b);
+public class don extends dop {
+   public static final Codec<don> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dop.d.forGetter($$0x -> $$0x), bia.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), don.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, don::new)
+   );
+   public final bia b;
+   public final don.a c;
 
-   public don(Codec<drx> $$0) {
-      super($$0);
+   public don(float $$0, dvo $$1, bia $$2, dnl $$3, doq $$4, ig<cva> $$5, bia $$6, don.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(dpl<drx> $$0) {
-      int $$1 = 0;
-      ht $$2 = $$0.e();
-      csm $$3 = $$0.b();
-      ato $$4 = $$0.d();
-      drx $$5 = $$0.f();
-      ht.a $$6 = $$2.j();
-      ht.a $$7 = $$2.j();
-      if ($$3.t($$6)) {
-         if (cuv.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public don(dop $$0, bia $$1, don.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dmf.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, cuv.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public static class a {
+      public static final Codec<don.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bia.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bia.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  asu.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bia.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, don.a::new)
+      );
+      public final bia b;
+      public final bia c;
+      public final int d;
+      public final bia e;
+      public final float f;
+      public final float g;
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(hx.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(hx.a, 1), c, 2);
-               $$3.a($$6.c(hx.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
+      public a(bia $$0, bia $$1, int $$2, bia $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
-
-      return $$1 > 0;
    }
 }

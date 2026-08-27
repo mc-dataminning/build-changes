@@ -20,17 +20,17 @@ public class ha<T extends dw<T>> implements gx<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, gz<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final agg e;
+   private final agi e;
    private final List<ha.a<T>> f;
 
-   public ha(agg $$0, List<ha.a<T>> $$1, List<String> $$2) {
+   public ha(agi $$0, List<ha.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return this.e;
    }
 
@@ -98,7 +98,7 @@ public class ha<T extends dw<T>> implements gx<T> {
    interface a<T> {
       IntList a();
 
-      gq<T> a(List<String> var1, CommandDispatcher<T> var2, T var3, agg var4) throws dx;
+      gq<T> a(List<String> var1, CommandDispatcher<T> var2, T var3, agi var4) throws dx;
    }
 
    static class b<T extends dw<T>> implements ha.a<T> {
@@ -115,7 +115,7 @@ public class ha<T extends dw<T>> implements gx<T> {
          return this.b;
       }
 
-      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agg $$3) throws dx {
+      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agi $$3) throws dx {
          String $$4 = this.a.a($$0);
 
          try {
@@ -139,7 +139,7 @@ public class ha<T extends dw<T>> implements gx<T> {
       }
 
       @Override
-      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agg $$3) {
+      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agi $$3) {
          return this.a;
       }
    }

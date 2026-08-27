@@ -120,9 +120,13 @@ public interface yd extends to, wn {
 
    void a(acb var1);
 
+   void a(acc var1);
+
    void a(acd var1);
 
-   void a(ace var1);
+   void a(acf var1);
+
+   void a(acg var1);
 
    void a(aad var1);
 
@@ -154,7 +158,7 @@ public interface yd extends to, wn {
 
    void a(zw var1);
 
-   void a(acc var1);
+   void a(ace var1);
 
    void a(aaq var1);
 
@@ -166,7 +170,7 @@ public interface yd extends to, wn {
 
    void a(yu var1);
 
-   void a(acf var1);
+   void a(ach var1);
 
    void a(aai var1);
 

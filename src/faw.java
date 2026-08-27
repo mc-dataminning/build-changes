@@ -1,38 +1,45 @@
-public enum faw {
-   a(
-      new agg("advancements/box_obtained"),
-      new agg("advancements/task_frame_obtained"),
-      new agg("advancements/challenge_frame_obtained"),
-      new agg("advancements/goal_frame_obtained")
-   ),
-   b(
-      new agg("advancements/box_unobtained"),
-      new agg("advancements/task_frame_unobtained"),
-      new agg("advancements/challenge_frame_unobtained"),
-      new agg("advancements/goal_frame_unobtained")
-   );
+import javax.annotation.Nullable;
 
-   private final agg c;
-   private final agg d;
-   private final agg e;
-   private final agg f;
+public abstract class faw extends fam {
+   protected final etg<?>[] c;
+   @Nullable
+   private eux l;
+   protected evw k;
 
-   private faw(agg $$0, agg $$1, agg $$2, agg $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public faw(fau $$0, eth $$1, ur $$2, etg<?>[] $$3) {
+      super($$0, $$1, $$2);
+      this.c = $$3;
    }
 
-   public agg a() {
-      return this.c;
+   @Override
+   protected void aP_() {
+      this.k = new evw(this.f, this.g, this.h, 32, this.h - 32, 25);
+      this.k.a(this.c);
+      this.e(this.k);
+      this.f();
+      this.l = this.k.b(this.b.ap());
+      if (this.l != null) {
+         this.l.i = this.f.aU().a();
+      }
    }
 
-   public agg a(ar $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   protected void f() {
+      this.d(euz.a(uq.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.k, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   public void l() {
+      if (this.l instanceof evg) {
+         ((evg)this.l).a(this.b.ap().c());
+      }
    }
 }

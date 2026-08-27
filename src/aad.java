@@ -1,7 +1,7 @@
 public class aad implements wk<yd> {
    private final int a;
 
-   public aad(bjd $$0) {
+   public aad(bjl $$0) {
       this($$0.b());
    }
 

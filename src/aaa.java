@@ -1,8 +1,8 @@
 public class aaa implements wk<yd> {
    private final int a;
-   private final agg b;
+   private final agi b;
 
-   public aaa(int $$0, coh<?> $$1) {
+   public aaa(int $$0, coq<?> $$1) {
       this.a = $$0;
       this.b = $$1.a();
    }
@@ -22,7 +22,7 @@ public class aaa implements wk<yd> {
       $$0.a(this);
    }
 
-   public agg a() {
+   public agi a() {
       return this.b;
    }
 

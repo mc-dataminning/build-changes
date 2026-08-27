@@ -1,8 +1,69 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface esa {
+public class esa extends esd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ur c = ur.c("mco.snapshot.creating");
+   private final long d;
+   private final erw e;
+   private final String f;
+   private final String g;
+   private final eoh h;
+   @Nullable
+   private esl i;
+   @Nullable
+   private esf j;
+
+   public esa(eoh $$0, long $$1, erw $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
+   }
+
+   @Override
+   public void run() {
+      eom $$0 = eom.a();
+
+      try {
+         epd $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new esl($$1.a, this.f, this.g);
+         this.j = new esf(this.e, $$1.a, erb.a, () -> etd.N().execute(() -> eoh.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
+         }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (epz var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
+      }
+   }
+
+   @Override
+   public ur a() {
+      return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
+   }
 }

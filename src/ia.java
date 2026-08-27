@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public final class ia {
    public static final Codec<ia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(crs.g.fieldOf("dimension").forGetter(ia::a), ht.a.fieldOf("pos").forGetter(ia::b)).apply($$0, ia::a)
+      $$0 -> $$0.group(csa.g.fieldOf("dimension").forGetter(ia::a), ht.a.fieldOf("pos").forGetter(ia::b)).apply($$0, ia::a)
    );
-   private final agf<crs> b;
+   private final agh<csa> b;
    private final ht c;
 
-   private ia(agf<crs> $$0, ht $$1) {
+   private ia(agh<csa> $$0, ht $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static ia a(agf<crs> $$0, ht $$1) {
+   public static ia a(agh<csa> $$0, ht $$1) {
       return new ia($$0, $$1);
    }
 
-   public agf<crs> a() {
+   public agh<csa> a() {
       return this.b;
    }
 

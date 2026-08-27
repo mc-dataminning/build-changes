@@ -1,16 +1,20 @@
-public class fyu extends fzs<bwm, fgn<bwm>> {
-   private static final agg a = new agg("textures/entity/cat/cat_collar.png");
-   private final fgn<bwm> b;
+public class fyu extends fxd<ccy, fkb<ccy>> {
+   private static final agi a = new agi("textures/entity/warden/warden.png");
+   private static final agi i = new agi("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final agi j = new agi("textures/entity/warden/warden_heart.png");
+   private static final agi k = new agi("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final agi l = new agi("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public fyu(fxf<bwm, fgn<bwm>> $$0, fjx $$1) {
-      super($$0);
-      this.b = new fgn<>($$1.a(fka.o));
+   public fyu(fvx.a $$0) {
+      super($$0, new fkb<>($$0.a(fkn.bL)), 0.9F);
+      this.a(new gar<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fkb::e));
+      this.a(new gar<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, atm.b($$2 * 0.045F) * 0.25F), fkb::f));
+      this.a(new gar<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, atm.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fkb::f));
+      this.a(new gar<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fkb::c));
+      this.a(new gar<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fkb::d));
    }
 
-   public void a(enk $$0, fqh $$1, int $$2, bwm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.go().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public agi a(ccy $$0) {
+      return a;
    }
 }

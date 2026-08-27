@@ -1,118 +1,104 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class doo extends dpj<drh> {
-   private static final ImmutableList<cut> a = ImmutableList.of(cuv.H, cuv.F, cuv.kJ, cuv.dW, cuv.fn, cuv.fo, cuv.fp, cuv.fq, cuv.cv, cuv.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
-
-   public doo(Codec<drh> $$0) {
+public class doo extends dow<don> {
+   public doo(Codec<don> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dpl<drh> $$0) {
-      int $$1 = $$0.c().e();
-      ht $$2 = $$0.e();
-      csm $$3 = $$0.b();
-      ato $$4 = $$0.d();
-      drh $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+   public boolean a(don $$0, ats $$1) {
+      return $$1.i() <= $$0.l;
+   }
 
-         for (ht $$11 : ht.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+   public boolean a(dor $$0, don $$1, dje $$2, Function<ht, ib<csy>> $$3, ats $$4, dmd $$5, crh $$6, djd $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
+   }
+
+   private void a(
+      dor $$0,
+      don $$1,
+      dje $$2,
+      Function<ht, ib<csy>> $$3,
+      long $$4,
+      dmd $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      djd $$15
+   ) {
+      ats $$16 = ats.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
+
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(atm.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = atm.b($$11);
+         float $$24 = atm.a($$11);
+         $$6 += (double)(atm.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(atm.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
             }
-         }
 
-         return $$10;
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
+         }
       }
    }
 
-   private boolean a(crt $$0, int $$1, ht $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   private float[] a(dor $$0, don $$1, ats $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
 
-      for (ht $$6 : ht.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         ht $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (ht.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (ht)$$10)) {
-                  this.a($$0, $$10, cuv.dY.o());
-                  $$10.c(hx.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(cuv.dY)) {
-                     break;
-                  }
-
-                  $$10.c(hx.b);
-               }
-            }
-         }
-      }
-
-      return $$5;
-   }
-
-   @Nullable
-   private static ht a(crt $$0, int $$1, ht.a $$2, int $$3) {
-      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
          }
 
-         $$2.c(hx.a);
+         $$4[$$6] = $$5 * $$5;
       }
 
-      return null;
+      return $$4;
    }
 
-   private static boolean a(crt $$0, int $$1, ht.a $$2) {
-      if (!a($$0, $$1, (ht)$$2)) {
-         return false;
-      } else {
-         dgw $$3 = $$0.a_($$2.c(hx.a));
-         $$2.c(hx.b);
-         return !$$3.i() && !a.contains($$3.b());
-      }
+   private double a(don $$0, ats $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - atm.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)atm.b($$1, 0.75F, 1.0F);
    }
 
-   @Nullable
-   private static ht a(crt $$0, ht.a $$1, int $$2) {
-      while ($$1.v() < $$0.aj() && $$2 > 0) {
-         $$2--;
-         dgw $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(hx.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(crt $$0, int $$1, ht $$2) {
-      dgw $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(cuv.H) && $$2.v() <= $$1;
+   private boolean a(dor $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

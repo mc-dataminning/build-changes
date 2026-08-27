@@ -1,255 +1,156 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fey extends fah {
-   private final Consumer<Optional<cro>> a;
-   private fey.g b;
-   private final Set<fey.f> c = Sets.newHashSet();
-   private eum k;
+public class fey extends fau {
+   private static final ur a = ur.c("gui.abuseReport.reason.title");
+   private static final ur b = ur.c("gui.abuseReport.reason.description");
+   private static final ur c = ur.c("gui.abuseReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
    @Nullable
-   private List<asu> l;
-   private final cro m;
+   private final fau p;
+   @Nullable
+   private fey.a q;
+   @Nullable
+   fmk r;
+   private final Consumer<fmk> t;
 
-   public fey(cro $$0, Consumer<Optional<cro>> $$1) {
-      super(ur.c("editGamerule.title"));
-      this.m = $$0;
-      this.a = $$1;
+   public fey(@Nullable fau $$0, @Nullable fmk $$1, Consumer<fmk> $$2) {
+      super(a);
+      this.p = $$0;
+      this.r = $$1;
+      this.t = $$2;
    }
 
    @Override
-   protected void aO_() {
-      this.b = new fey.g(this.m);
-      this.e(this.b);
-      exv.b $$0 = new exv().a(10).d(2);
-      this.k = $$0.a(eum.a(uq.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(eum.a(uq.e, $$0x -> this.a.accept(Optional.empty())).a());
-      $$0.a().a($$1 -> {
-         euk var10000 = this.d($$1);
-      });
-      $$0.a().b(this.g / 2 - 155, this.h - 28);
-      $$0.a().a();
+   protected void aP_() {
+      this.q = new fey.a(this.f);
+      this.e(this.q);
+      fey.a.a $$0 = x.a(this.r, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(euz.a(c, ezm.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.l(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(euz.a(uq.d, $$0x -> {
+         fey.a.a $$1x = this.q.f();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
+         }
+
+         this.f.a(this.p);
+      }).a($$2, this.l(), 150, 20).a());
+      super.aP_();
    }
 
    @Override
-   public void aE_() {
-      this.a.accept(Optional.empty());
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.l = null;
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
-
-   private void l() {
-      this.k.i = this.c.isEmpty();
-   }
-
-   void a(fey.f $$0) {
-      this.c.add($$0);
-      this.l();
-   }
-
-   void b(fey.f $$0) {
-      this.c.remove($$0);
-      this.l();
-   }
-
-   public class a extends fey.d {
-      private final eut<Boolean> d;
-
-      public a(ur $$1, List<asu> $$2, String $$3, cro.a $$4) {
-         super($$2, $$1);
-         this.d = eut.b($$4.a()).a().a($$1x -> $$1x.e().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
+      this.q.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
+      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
+      fey.a.a $$4 = this.q.f();
+      if ($$4 != null) {
+         int $$5 = this.C() + 4 + 16;
+         int $$6 = this.D() - 4;
+         int $$7 = this.E() + 4 + 9 + 2;
+         int $$8 = this.F() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
       }
    }
 
-   public class b extends fey.f {
-      final ur b;
-
-      public b(ur $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fey.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
-      }
-
-      @Override
-      public List<? extends ewh> i() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends eyd> b() {
-         return ImmutableList.of(new eyd() {
-            @Override
-            public eyd.a q() {
-               return eyd.a.b;
-            }
-
-            @Override
-            public void b(eyf $$0) {
-               $$0.a(eye.a, b.this.b);
-            }
-         });
-      }
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
-   @FunctionalInterface
-   interface c<T extends cro.g<T>> {
-      fey.f create(ur var1, List<asu> var2, String var3, T var4);
+   private int l() {
+      return this.h - 20 - 4;
    }
 
-   public abstract class d extends fey.f {
-      private final List<asu> a;
-      protected final List<euk> b = Lists.newArrayList();
+   private int C() {
+      return (this.g - 320) / 2;
+   }
 
-      public d(@Nullable List<asu> $$1, ur $$2) {
-         super($$1);
-         this.a = fey.this.f.h.c($$2, 175);
-      }
+   private int D() {
+      return (this.g + 320) / 2;
+   }
 
-      @Override
-      public List<? extends ewh> i() {
-         return this.b;
-      }
+   private int E() {
+      return this.h - 95 + 4;
+   }
 
-      @Override
-      public List<? extends eyd> b() {
-         return this.b;
-      }
+   private int F() {
+      return this.l() - 4;
+   }
 
-      protected void a(eub $$0, int $$1, int $$2) {
-         if (this.a.size() == 1) {
-            $$0.a(fey.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
-         } else if (this.a.size() >= 2) {
-            $$0.a(fey.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
-            $$0.a(fey.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+   @Override
+   public void aF_() {
+      this.f.a(this.p);
+   }
+
+   public class a extends evv<fey.a.a> {
+      public a(etd $$1) {
+         super($$1, fey.this.g, fey.this.h, 40, fey.this.h - 95, 18);
+
+         for (fmk $$2 : fmk.values()) {
+            this.b(new fey.a.a($$2));
          }
       }
-   }
 
-   public class e extends fey.d {
-      private final euv d;
-
-      public e(ur $$1, List<asu> $$2, String $$3, cro.d $$4) {
-         super($$2, $$1);
-         this.d = new euv(fey.this.f.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.m(14737632);
-               fey.this.b(this);
-            } else {
-               this.d.m(16711680);
-               fey.this.a(this);
-            }
-         });
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public abstract static class f extends eus.a<fey.f> {
       @Nullable
-      final List<asu> a;
-
-      public f(@Nullable List<asu> $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public class g extends eus<fey.f> {
-      public g(final cro $$1) {
-         super(fey.this.f, fey.this.g, fey.this.h, 43, fey.this.h - 32, 24);
-         final Map<cro.b, Map<cro.e<?>, fey.f>> $$2 = Maps.newHashMap();
-         cro.a(new cro.c() {
-            @Override
-            public void b(cro.e<cro.a> $$0, cro.f<cro.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fey.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(cro.e<cro.d> $$0, cro.f<cro.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fey.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends cro.g<T>> void a(cro.e<T> $$0, fey.c<T> $$1x) {
-               ur $$2 = ur.c($$0.b());
-               ur $$3 = ur.b($$0.a()).a(n.o);
-               T $$4 = $$1.a($$0);
-               String $$5 = $$4.b();
-               ur $$6 = ur.a("editGamerule.default", ur.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<asu> $$10;
-               String $$11;
-               if (gcn.a($$7)) {
-                  Builder<asu> $$8 = ImmutableList.builder().add($$3.g());
-                  ur $$9 = ur.c($$7);
-                  fey.this.i.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
-               }
-
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(fey.this.new b(ur.c(((cro.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(cro.e::a)))
-                     .forEach($$0xx -> this.b((fey.f)$$0xx.getValue()));
-               }
-            );
+      public fey.a.a a(fmk $$0) {
+         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
 
       @Override
-      public void a(eub $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         fey.f $$4 = this.r();
-         if ($$4 != null && $$4.a != null) {
-            fey.this.b($$4.a);
+      public int b() {
+         return 320;
+      }
+
+      @Override
+      protected int c() {
+         return this.p() - 2;
+      }
+
+      public void a(@Nullable fey.a.a $$0) {
+         super.a($$0);
+         fey.this.r = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends evv.a<fey.a.a> {
+         final fmk b;
+
+         public a(fmk $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fey.this.i, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         public fmk b() {
+            return this.b;
          }
       }
    }

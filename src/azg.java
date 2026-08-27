@@ -1,36 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
 
-public class azg extends DataFix {
-   private static final String a = "WorldGenSettings";
-   private static final List<String> b = List.of(
-      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-   );
-
-   public azg(Schema $$0) {
-      super($$0, false);
+public class azg extends azt {
+   public azg(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", bat.s, "minecraft:jigsaw");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(ban.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
+   }
 
-               for (String $$2 : b) {
-                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
-                  if ($$3.isPresent()) {
-                     $$0x = $$0x.remove($$2);
-                     $$1 = $$1.set($$2, $$3.get());
-                  }
-               }
-
-               return $$0x.set("WorldGenSettings", $$1);
-            })
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), azg::a);
    }
 }

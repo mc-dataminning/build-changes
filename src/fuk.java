@@ -1,45 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fuk extends fwl<bzv, fge> {
-   public static final agg a = new agg("textures/entity/armorstand/wood.png");
+public class fuk implements fud.a {
+   private final etd a;
+   private final Map<Long, Map<ht, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public fuk(fvk.a $$0) {
-      super($$0, new fgf($$0.a(fka.b)), 0.0F);
-      this.a(new fzi<>(this, new fge($$0.a(fka.c)), new fge($$0.a(fka.d)), $$0.g()));
-      this.a(new fzl<>(this, $$0.d()));
-      this.a(new fzb<>(this, $$0.f()));
-      this.a(new fyx<>(this, $$0.f(), $$0.d()));
+   fuk(etd $$0) {
+      this.a = $$0;
    }
 
-   public agg a(bzv $$0) {
-      return a;
+   public void a(long $$0, ht $$1) {
+      Map<ht, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   protected void a(bzv $$0, enk $$1, float $$2, float $$3, float $$4) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$5 = (float)($$0.dL().V() - $$0.bJ) + $$4;
-      if ($$5 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(ati.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
+   @Override
+   public void a(enw $$0, fqu $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.W();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<ht> $$8 = Sets.newHashSet();
+      Map<ht, Integer> $$9 = Maps.newHashMap();
+      eoa $$10 = $$1.getBuffer(frc.w());
+      Iterator<Entry<Long, Map<ht, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   protected boolean b(bzv $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bW() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
-   }
-
-   @Nullable
-   protected fqp a(bzv $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.y()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         agg $$4 = this.a($$0);
-         if ($$2) {
-            return fqp.c($$4, false);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<ht, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<ht, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
          } else {
-            return $$1 ? fqp.a($$4, false) : null;
+            for (Entry<ht, Integer> $$16 : $$14.entrySet()) {
+               ht $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ejp $$19 = new ejp(ht.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fqs.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
          }
+      }
+
+      for (Entry<ht, Integer> $$20 : $$9.entrySet()) {
+         ht $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         fud.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
    }
 }

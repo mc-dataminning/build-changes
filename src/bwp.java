@@ -1,30 +1,35 @@
-public class bwp extends bwi {
-   public bwp(bkm<? extends bwp> $$0, crs $$1) {
+import javax.annotation.Nullable;
+
+public abstract class bwp extends blp {
+   protected bwp(bku<? extends bwp> $$0, csa $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public clb b() {
-      return new clb(cle.pT);
+   protected aqq y() {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aqq d(bjo $$0) {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aqq m_() {
+      return null;
    }
 
    @Override
-   protected aqm w() {
-      return aqn.eB;
+   public int Q() {
+      return 120;
    }
 
    @Override
-   protected aqm m_() {
-      return aqn.eC;
-   }
-
-   @Override
-   protected aqm d(bjg $$0) {
-      return aqn.eE;
-   }
-
-   @Override
-   protected aqm gf() {
-      return aqn.eD;
+   public boolean h(double $$0) {
+      return false;
    }
 }

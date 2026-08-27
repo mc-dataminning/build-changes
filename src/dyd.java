@@ -1,15 +1,25 @@
 import com.mojang.serialization.Codec;
 
-public interface dyd<P extends dyc> {
-   dyd<dyb> a = a("single_pool_element", dyb.b);
-   dyd<dya> b = a("list_pool_element", dya.a);
-   dyd<dxw> c = a("feature_pool_element", dxw.a);
-   dyd<dxv> d = a("empty_pool_element", dxv.a);
-   dyd<dxz> e = a("legacy_single_pool_element", dxz.a);
+public enum dyd implements aug {
+   a("linear"),
+   b("triangular");
 
-   Codec<P> codec();
+   public static final Codec<dyd> c = aug.a(dyd::values);
+   private final String d;
 
-   static <P extends dyc> dyd<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.aj, $$0, () -> $$1);
+   private dyd(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(ats $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

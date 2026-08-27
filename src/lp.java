@@ -14,7 +14,7 @@ public class lp implements kf {
       this.d = $$0;
    }
 
-   public <T> lp a(aoe<T> $$0, T $$1) {
+   public <T> lp a(aoi<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class lp implements kf {
    }
 
    public static lp a(kh $$0, ur $$1) {
-      return new lp($$0).a(aof.b, new aof($$1, t.a.a(ans.b), Optional.empty()));
+      return new lp($$0).a(aoj.b, new aoj($$1, t.a.a(anw.b), Optional.empty()));
    }
 
-   public static lp a(kh $$0, ur $$1, cfv $$2) {
-      return a($$0, $$1).a(ano.a, new ano($$2));
+   public static lp a(kh $$0, ur $$1, cgd $$2) {
+      return a($$0, $$1).a(ans.a, new ans($$2));
    }
 }

@@ -1,27 +1,18 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dhq extends dhu<hx> {
-   protected dhq(String $$0, Collection<hx> $$1) {
-      super($$0, hx.class, $$1);
+public class dhq implements Predicate<dhi> {
+   private final cva a;
+
+   public dhq(cva $$0) {
+      this.a = $$0;
    }
 
-   public static dhq a(String $$0) {
-      return a($$0, $$0x -> true);
+   public static dhq a(cva $$0) {
+      return new dhq($$0);
    }
 
-   public static dhq a(String $$0, Predicate<hx> $$1) {
-      return a($$0, Arrays.stream(hx.values()).filter($$1).collect(Collectors.toList()));
-   }
-
-   public static dhq a(String $$0, hx... $$1) {
-      return a($$0, Lists.newArrayList($$1));
-   }
-
-   public static dhq a(String $$0, Collection<hx> $$1) {
-      return new dhq($$0, $$1);
+   public boolean a(@Nullable dhi $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 public class aay implements wk<yd> {
    private final int a;
 
-   public aay(bki $$0) {
-      this.a = $$0.ah();
+   public aay(bkq $$0) {
+      this.a = $$0.aj();
    }
 
    public aay(tu $$0) {
@@ -21,7 +21,7 @@ public class aay implements wk<yd> {
    }
 
    @Nullable
-   public bki a(crs $$0) {
+   public bkq a(csa $$0) {
       return $$0.a(this.a);
    }
 }

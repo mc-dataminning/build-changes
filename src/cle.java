@@ -1,1296 +1,391 @@
-public class cle {
-   public static final ckw a = a(cuv.a, new cik(cuv.a, new ckw.a()));
-   public static final ckw b = a(cuv.b);
-   public static final ckw c = a(cuv.c);
-   public static final ckw d = a(cuv.d);
-   public static final ckw e = a(cuv.e);
-   public static final ckw f = a(cuv.f);
-   public static final ckw g = a(cuv.g);
-   public static final ckw h = a(cuv.h);
-   public static final ckw i = a(cuv.rI);
-   public static final ckw j = a(cuv.rJ);
-   public static final ckw k = a(cuv.rN);
-   public static final ckw l = a(cuv.qA);
-   public static final ckw m = a(cuv.qz);
-   public static final ckw n = a(cuv.rt);
-   public static final ckw o = a(cuv.i);
-   public static final ckw p = a(cuv.j);
-   public static final ckw q = a(cuv.k);
-   public static final ckw r = a(cuv.l);
-   public static final ckw s = a(cuv.rG);
-   public static final ckw t = a(cuv.rH);
-   public static final ckw u = a(cuv.ow);
-   public static final ckw v = a(cuv.on);
-   public static final ckw w = a(cuv.m);
-   public static final ckw x = a(cuv.n);
-   public static final ckw y = a(cuv.o);
-   public static final ckw z = a(cuv.p);
-   public static final ckw A = a(cuv.q);
-   public static final ckw B = a(cuv.r);
-   public static final ckw C = a(cuv.s);
-   public static final ckw D = a(cuv.t);
-   public static final ckw E = a(cuv.u);
-   public static final ckw F = a(cuv.v);
-   public static final ckw G = a(cuv.oE);
-   public static final ckw H = a(cuv.oF);
-   public static final ckw I = a(cuv.w);
-   public static final ckw J = a(cuv.x);
-   public static final ckw K = a(cuv.y);
-   public static final ckw L = a(cuv.z);
-   public static final ckw M = a(cuv.A);
-   public static final ckw N = a(cuv.B);
-   public static final ckw O = a(cuv.C);
-   public static final ckw P = a(cuv.D);
-   public static final ckw Q = a(cuv.E);
-   public static final ckw R = a(cuv.F);
-   public static final ckw S = a(cuv.I);
-   public static final ckw T = a(new ciu(cuv.J, new ckw.a()));
-   public static final ckw U = a(new ciu(cuv.M, new ckw.a()));
-   public static final ckw V = a(cuv.K);
-   public static final ckw W = a(cuv.L);
-   public static final ckw X = a(cuv.R);
-   public static final ckw Y = a(cuv.S);
-   public static final ckw Z = a(cuv.P);
-   public static final ckw aa = a(cuv.Q);
-   public static final ckw ab = a(cuv.qN);
-   public static final ckw ac = a(cuv.qO);
-   public static final ckw ad = a(cuv.N);
-   public static final ckw ae = a(cuv.O);
-   public static final ckw af = a(cuv.dI);
-   public static final ckw ag = a(cuv.dJ);
-   public static final ckw ah = a(cuv.fE);
-   public static final ckw ai = a(cuv.fF);
-   public static final ckw aj = a(cuv.aR);
-   public static final ckw ak = a(cuv.aS);
-   public static final ckw al = a(cuv.cx);
-   public static final ckw am = a(cuv.cy);
-   public static final ckw an = a(cuv.T);
-   public static final ckw ao = a(cuv.hb);
-   public static final ckw ap = a(new ciu(cuv.pj, new ckw.a().a()));
-   public static final ckw aq = a(cuv.iB);
-   public static final ckw ar = a(cuv.se);
-   public static final ckw as = a(cuv.sf);
-   public static final ckw at = a(cuv.sg);
-   public static final ckw au = a(cuv.qt);
-   public static final ckw av = a(cuv.qu);
-   public static final ckw aw = a(cuv.ci);
-   public static final ckw ax = a(cuv.qM);
-   public static final ckw ay = a(cuv.ch);
-   public static final ckw az = a(cuv.cz);
-   public static final ckw aA = a(new ciu(cuv.pi, new ckw.a().a()));
-   public static final ckw aB = a(cuv.qL);
-   public static final ckw aC = a(cuv.qK);
-   public static final ckw aD = a(cuv.qJ);
-   public static final ckw aE = a(cuv.qS);
-   public static final ckw aF = a(cuv.qR);
-   public static final ckw aG = a(cuv.qQ);
-   public static final ckw aH = a(cuv.qP);
-   public static final ckw aI = a(cuv.qW);
-   public static final ckw aJ = a(cuv.qV);
-   public static final ckw aK = a(cuv.qU);
-   public static final ckw aL = a(cuv.qT);
-   public static final ckw aM = a(cuv.ra);
-   public static final ckw aN = a(cuv.qZ);
-   public static final ckw aO = a(cuv.qY);
-   public static final ckw aP = a(cuv.qX);
-   public static final ckw aQ = a(cuv.rb);
-   public static final ckw aR = a(cuv.rd);
-   public static final ckw aS = a(cuv.rc);
-   public static final ckw aT = a(cuv.re);
-   public static final ckw aU = a(cuv.ri);
-   public static final ckw aV = a(cuv.rh);
-   public static final ckw aW = a(cuv.rg);
-   public static final ckw aX = a(cuv.rf);
-   public static final ckw aY = a(cuv.rm);
-   public static final ckw aZ = a(cuv.rl);
-   public static final ckw ba = a(cuv.rk);
-   public static final ckw bb = a(cuv.rj);
-   public static final ckw bc = a(cuv.rq);
-   public static final ckw bd = a(cuv.rp);
-   public static final ckw be = a(cuv.ro);
-   public static final ckw bf = a(cuv.rn);
-   public static final ckw bg = a(cuv.U);
-   public static final ckw bh = a(cuv.V);
-   public static final ckw bi = a(cuv.W);
-   public static final ckw bj = a(cuv.X);
-   public static final ckw bk = a(cuv.Y);
-   public static final ckw bl = a(cuv.Z);
-   public static final ckw bm = a(cuv.aa);
-   public static final ckw bn = a(cuv.ab);
-   public static final ckw bo = a(cuv.ac);
-   public static final ckw bp = a(cuv.ad);
-   public static final ckw bq = a(cuv.os);
-   public static final ckw br = a(cuv.oj);
-   public static final ckw bs = a(cuv.ae);
-   public static final ckw bt = a(cuv.al);
-   public static final ckw bu = a(cuv.af);
-   public static final ckw bv = a(cuv.ag);
-   public static final ckw bw = a(cuv.ah);
-   public static final ckw bx = a(cuv.ai);
-   public static final ckw by = a(cuv.aj);
-   public static final ckw bz = a(cuv.ak);
-   public static final ckw bA = a(cuv.am);
-   public static final ckw bB = a(cuv.ot);
-   public static final ckw bC = a(cuv.ok);
-   public static final ckw bD = a(cuv.aw);
-   public static final ckw bE = a(cuv.ax);
-   public static final ckw bF = a(cuv.ay);
-   public static final ckw bG = a(cuv.az);
-   public static final ckw bH = a(cuv.aA);
-   public static final ckw bI = a(cuv.aB);
-   public static final ckw bJ = a(cuv.aC);
-   public static final ckw bK = a(cuv.aD);
-   public static final ckw bL = a(cuv.ov);
-   public static final ckw bM = a(cuv.om);
-   public static final ckw bN = a(cuv.an);
-   public static final ckw bO = a(cuv.ao);
-   public static final ckw bP = a(cuv.ap);
-   public static final ckw bQ = a(cuv.aq);
-   public static final ckw bR = a(cuv.ar);
-   public static final ckw bS = a(cuv.as);
-   public static final ckw bT = a(cuv.at);
-   public static final ckw bU = a(cuv.au);
-   public static final ckw bV = a(cuv.av);
-   public static final ckw bW = a(cuv.ou);
-   public static final ckw bX = a(cuv.ol);
-   public static final ckw bY = a(cuv.aE);
-   public static final ckw bZ = a(cuv.aF);
-   public static final ckw ca = a(cuv.aG);
-   public static final ckw cb = a(cuv.aH);
-   public static final ckw cc = a(cuv.aI);
-   public static final ckw cd = a(cuv.aJ);
-   public static final ckw ce = a(cuv.aK);
-   public static final ckw cf = a(cuv.aL);
-   public static final ckw cg = a(cuv.aM);
-   public static final ckw ch = a(cuv.aN);
-   public static final ckw ci = a(cuv.aO);
-   public static final ckw cj = a(cuv.aP);
-   public static final ckw ck = a(cuv.aQ);
-   public static final ckw cl = a(cuv.qB);
-   public static final ckw cm = a(cuv.aT);
-   public static final ckw cn = a(cuv.aV);
-   public static final ckw co = a(cuv.aW);
-   public static final ckw cp = a(cuv.aX);
-   public static final ckw cq = a(cuv.bs);
-   public static final ckw cr = a(cuv.bt);
-   public static final ckw cs = a(cuv.bu);
-   public static final ckw ct = a(cuv.rx);
-   public static final ckw cu = a(cuv.ry);
-   public static final ckw cv = a(cuv.bv);
-   public static final ckw cw = a(cuv.bw);
-   public static final ckw cx = a(cuv.mV);
-   public static final ckw cy = a(cuv.bA);
-   public static final ckw cz = a(cuv.bB);
-   public static final ckw cA = a(cuv.bC);
-   public static final ckw cB = a(cuv.bD);
-   public static final ckw cC = a(cuv.bE);
-   public static final ckw cD = a(cuv.bF);
-   public static final ckw cE = a(cuv.bG);
-   public static final ckw cF = a(cuv.bH);
-   public static final ckw cG = a(cuv.bI);
-   public static final ckw cH = a(cuv.bJ);
-   public static final ckw cI = a(cuv.bK);
-   public static final ckw cJ = a(cuv.bL);
-   public static final ckw cK = a(cuv.bM);
-   public static final ckw cL = a(cuv.bN);
-   public static final ckw cM = a(cuv.bO);
-   public static final ckw cN = a(cuv.bP);
-   public static final ckw cO = a(cuv.bR);
-   public static final ckw cP = a(cuv.bT);
-   public static final ckw cQ = a(cuv.bU);
-   public static final ckw cR = a(cuv.bV);
-   public static final ckw cS = a(cuv.bW);
-   public static final ckw cT = a(cuv.bX);
-   public static final ckw cU = a(cuv.bY);
-   public static final ckw cV = a(cuv.bZ);
-   public static final ckw cW = a(cuv.ca);
-   public static final ckw cX = a(cuv.cb);
-   public static final ckw cY = a(cuv.cc);
-   public static final ckw cZ = a(cuv.ce);
-   public static final ckw da = a(cuv.cd);
-   public static final ckw db = a(cuv.bS);
-   public static final ckw dc = a(cuv.kC);
-   public static final ckw dd = a(cuv.rw);
-   public static final ckw de = a(cuv.cf);
-   public static final ckw df = a(cuv.cg);
-   public static final ckw dg = a(cuv.ox);
-   public static final ckw dh = a(cuv.oo);
-   public static final ckw di = a(cuv.oD);
-   public static final ckw dj = a(cuv.oq);
-   public static final ckw dk = a(cuv.or);
-   public static final ckw dl = a(cuv.oz);
-   public static final ckw dm = a(cuv.oB);
-   public static final ckw dn = a(cuv.dS);
-   public static final ckw do = a(cuv.mc);
-   public static final ckw dp = a(cuv.rz);
-   public static final ckw dq = a(cuv.rA);
-   public static final ckw dr = a(cuv.rB);
-   public static final ckw ds = a(cuv.rF);
-   public static final ckw dt = a(cuv.rC, cuv.rD);
-   public static final ckw du = a(new cjo(cuv.rE, new ckw.a()));
-   public static final ckw dv = a(cuv.mZ);
-   public static final ckw dw = a(cuv.jt);
-   public static final ckw dx = a(cuv.ju);
-   public static final ckw dy = a(cuv.jv);
-   public static final ckw dz = a(cuv.jw);
-   public static final ckw dA = a(cuv.jx);
-   public static final ckw dB = a(cuv.jy);
-   public static final ckw dC = a(cuv.jz);
-   public static final ckw dD = a(cuv.jA);
-   public static final ckw dE = a(cuv.jB);
-   public static final ckw dF = a(cuv.jC);
-   public static final ckw dG = a(cuv.oG);
-   public static final ckw dH = a(cuv.oH);
-   public static final ckw dI = a(cuv.jD);
-   public static final ckw dJ = a(cuv.jE);
-   public static final ckw dK = a(cuv.jF);
-   public static final ckw dL = a(cuv.jG);
-   public static final ckw dM = a(cuv.jH);
-   public static final ckw dN = a(cuv.jI);
-   public static final ckw dO = a(cuv.jJ);
-   public static final ckw dP = a(cuv.jK);
-   public static final ckw dQ = a(cuv.jL);
-   public static final ckw dR = a(cuv.jM);
-   public static final ckw dS = a(cuv.jN);
-   public static final ckw dT = a(cuv.jO);
-   public static final ckw dU = a(cuv.jP);
-   public static final ckw dV = a(cuv.jQ);
-   public static final ckw dW = a(cuv.if);
-   public static final ckw dX = a(cuv.ig);
-   public static final ckw dY = a(cuv.ih);
-   public static final ckw dZ = a(cuv.jT);
-   public static final ckw ea = a(cuv.jU);
-   public static final ckw eb = a(cuv.jS);
-   public static final ckw ec = a(cuv.jR);
-   public static final ckw ed = a(cuv.cj);
-   public static final ckw ee = a(cuv.cl);
-   public static final ckw ef = a(cuv.cm);
-   public static final ckw eg = a(cuv.so);
-   public static final ckw eh = a(cuv.cn);
-   public static final ckw ei = a(cuv.co);
-   public static final ckw ej = a(new cmk(cuv.cp, cuv.cq, new ckw.a(), hx.a));
-   public static final ckw ek = a(cuv.kt);
-   public static final ckw el = a(cuv.ku);
-   public static final ckw em = a(cuv.kv);
-   public static final ckw en = a(cuv.kw);
-   public static final ckw eo = a(cuv.kx);
-   public static final ckw ep = a(cuv.ky);
-   public static final ckw eq = a(cuv.ct);
-   public static final ckw er = a(cuv.cv);
-   public static final ckw es = a(cuv.cA);
-   public static final ckw et = a(cuv.cC);
-   public static final ckw eu = a(cuv.cD);
-   public static final ckw ev = a(cuv.cO);
-   public static final ckw ew = a(cuv.cQ);
-   public static final ckw ex = a(cuv.dN);
-   public static final ckw ey = a(cuv.dO);
-   public static final ckw ez = a(cuv.dP);
-   public static final ckw eA = a(cuv.dQ);
-   public static final ckw eB = a(cuv.dR);
-   public static final ckw eC = a(cuv.dT);
-   public static final ckw eD = a(cuv.dU);
-   public static final ckw eE = a(cuv.kd);
-   public static final ckw eF = a(cuv.ke);
-   public static final ckw eG = a(cuv.kf);
-   public static final ckw eH = a(cuv.kg);
-   public static final ckw eI = a(cuv.kh);
-   public static final ckw eJ = a(cuv.ki);
-   public static final ckw eK = a(cuv.kj);
-   public static final ckw eL = a(cuv.kk);
-   public static final ckw eM = a(cuv.oK);
-   public static final ckw eN = a(cuv.oL);
-   public static final ckw eO = a(cuv.eZ);
-   public static final ckw eP = a(cuv.ee);
-   public static final ckw eQ = a(cuv.ef);
-   public static final ckw eR = a(cuv.dV);
-   public static final ckw eS = a(cuv.dW);
-   public static final ckw eT = a(cuv.dX);
-   public static final ckw eU = a(cuv.dY);
-   public static final ckw eV = a(cuv.dZ);
-   public static final ckw eW = a(cuv.sd);
-   public static final ckw eX = a(new cmk(cuv.ea, cuv.eb, new ckw.a(), hx.a));
-   public static final ckw eY = a(cuv.ec);
-   public static final ckw eZ = a(cuv.eN);
-   public static final ckw fa = a(cuv.eO);
-   public static final ckw fb = a(cuv.eP);
-   public static final ckw fc = a(cuv.eQ);
-   public static final ckw fd = a(cuv.eR);
-   public static final ckw fe = a(cuv.eS);
-   public static final ckw ff = a(cuv.sc);
-   public static final ckw fg = a(cuv.eH);
-   public static final ckw fh = a(cuv.eI);
-   public static final ckw fi = a(cuv.eJ);
-   public static final ckw fj = a(cuv.eK);
-   public static final ckw fk = a(cuv.eL);
-   public static final ckw fl = a(cuv.eM);
-   public static final ckw fm = a(cuv.rV);
-   public static final ckw fn = a(cuv.sa);
-   public static final ckw fo = a(cuv.rR);
-   public static final ckw fp = a(cuv.sb);
-   public static final ckw fq = a(cuv.rZ);
-   public static final ckw fr = a(cuv.sn);
-   public static final ckw fs = a(cuv.eT);
-   public static final ckw ft = a(cuv.eU);
-   public static final ckw fu = a(cuv.eV);
-   public static final ckw fv = a(cuv.eW);
-   public static final ckw fw = a(cuv.eX);
-   public static final ckw fx = a(cuv.eY);
-   public static final ckw fy = a(cuv.fa);
-   public static final ckw fz = a(cuv.ff);
-   public static final ckw fA = a(cuv.fg);
-   public static final ckw fB = a(cuv.fi);
-   public static final ckw fC = a(cuv.fj);
-   public static final ckw fD = a(cuv.fk);
-   public static final ckw fE = a(cuv.fl);
-   public static final ckw fF = a(new clo(cuv.fm, new ckw.a()));
-   public static final ckw fG = a(cuv.fn);
-   public static final ckw fH = a(cuv.pJ);
-   public static final ckw fI = a(cuv.pI);
-   public static final ckw fJ = a(cuv.fo);
-   public static final ckw fK = a(cuv.fp);
-   public static final ckw fL = a(cuv.qF);
-   public static final ckw fM = a(cuv.qG);
-   public static final ckw fN = a(cuv.qH);
-   public static final ckw fO = a(cuv.qI);
-   public static final ckw fP = a(cuv.fr);
-   public static final ckw fQ = a(cuv.fy);
-   public static final ckw fR = a(cuv.fz);
-   public static final ckw fS = a(cuv.kz);
-   public static final ckw fT = a(new ciu(cuv.fA, new ckw.a().a(cls.d)));
-   public static final ckw fU = a(cuv.fD);
-   public static final ckw fV = a(cuv.fG);
-   public static final ckw fW = a(cuv.fJ);
-   public static final ckw fX = a(cuv.cu);
-   public static final ckw fY = a(cuv.fK);
-   public static final ckw fZ = a(cuv.fL);
-   public static final ckw ga = a(cuv.fM);
-   public static final ckw gb = a(cuv.hP);
-   public static final ckw gc = a(cuv.hQ);
-   public static final ckw gd = a(cuv.hR);
-   public static final ckw ge = a(cuv.hS);
-   public static final ckw gf = a(cuv.hT);
-   public static final ckw gg = a(cuv.hU);
-   public static final ckw gh = a(cuv.oQ);
-   public static final ckw gi = a(cuv.oR);
-   public static final ckw gj = a(new ckk(cuv.fN, new ckw.a().a(cls.d)));
-   public static final ckw gk = a(new ciu(cuv.fO, new ckw.a().a(cls.c)));
-   public static final ckw gl = a(cuv.fP);
-   public static final ckw gm = a(cuv.fQ);
-   public static final ckw gn = a(cuv.nF);
-   public static final ckw go = a(cuv.nG);
-   public static final ckw gp = a(cuv.nH);
-   public static final ckw gq = a(cuv.nI);
-   public static final ckw gr = a(cuv.nJ);
-   public static final ckw gs = a(cuv.nK);
-   public static final ckw gt = a(cuv.nL);
-   public static final ckw gu = a(cuv.nM);
-   public static final ckw gv = a(cuv.nN);
-   public static final ckw gw = a(cuv.nO);
-   public static final ckw gx = a(cuv.nP);
-   public static final ckw gy = a(cuv.nQ);
-   public static final ckw gz = a(cuv.nR);
-   public static final ckw gA = a(cuv.pt);
-   public static final ckw gB = a(cuv.pH);
-   public static final ckw gC = a(cuv.pB);
-   public static final ckw gD = a(cuv.rM);
-   public static final ckw gE = a(cuv.rQ);
-   public static final ckw gF = a(cuv.rY);
-   public static final ckw gG = a(cuv.rU);
-   public static final ckw gH = a(cuv.gS);
-   public static final ckw gI = a(cuv.gT);
-   public static final ckw gJ = a(cuv.gU);
-   public static final ckw gK = a(cuv.he);
-   public static final ckw gL = a(cuv.hd);
-   public static final ckw gM = a(cuv.pK);
-   public static final ckw gN = a(cuv.hf);
-   public static final ckw gO = a(cuv.hg);
-   public static final ckw gP = a(cuv.hj);
-   public static final ckw gQ = a(cuv.hk);
-   public static final ckw gR = a(cuv.hl);
-   public static final ckw gS = a(cuv.hm);
-   public static final ckw gT = a(cuv.hn);
-   public static final ckw gU = a(cuv.ho);
-   public static final ckw gV = a(cuv.hp);
-   public static final ckw gW = a(cuv.hq);
-   public static final ckw gX = a(cuv.hr);
-   public static final ckw gY = a(cuv.hs);
-   public static final ckw gZ = a(cuv.ht);
-   public static final ckw ha = a(cuv.hu);
-   public static final ckw hb = a(cuv.hv);
-   public static final ckw hc = a(cuv.hw);
-   public static final ckw hd = a(cuv.hx);
-   public static final ckw he = a(cuv.hy);
-   public static final ckw hf = a(new ciu(cuv.hW, new ckw.a().a(cls.d)));
-   public static final ckw hg = a(new ciu(cuv.hX, new ckw.a().a(cls.d)));
-   public static final ckw hh = a(cuv.ij);
-   public static final ckw hi = a(cuv.ik);
-   public static final ckw hj = a(cuv.il);
-   public static final ckw hk = a(cuv.im);
-   public static final ckw hl = a(cuv.in);
-   public static final ckw hm = a(cuv.io);
-   public static final ckw hn = a(cuv.ip);
-   public static final ckw ho = a(cuv.iq);
-   public static final ckw hp = a(cuv.ir);
-   public static final ckw hq = a(cuv.is);
-   public static final ckw hr = a(cuv.it);
-   public static final ckw hs = a(cuv.iu);
-   public static final ckw ht = a(cuv.iv);
-   public static final ckw hu = a(cuv.iw);
-   public static final ckw hv = a(cuv.ix);
-   public static final ckw hw = a(cuv.iy);
-   public static final ckw hx = a(cuv.iz);
-   public static final ckw hy = a(cuv.iA);
-   public static final ckw hz = a(cuv.iC);
-   public static final ckw hA = a(cuv.kE);
-   public static final ckw hB = a(new cjo(cuv.iD, new ckw.a()));
-   public static final ckw hC = a(new cjo(cuv.iE, new ckw.a()));
-   public static final ckw hD = a(new cjo(cuv.iF, new ckw.a()));
-   public static final ckw hE = a(new cjo(cuv.iG, new ckw.a()));
-   public static final ckw hF = a(new cjo(cuv.iH, new ckw.a()));
-   public static final ckw hG = a(new cjo(cuv.iI, new ckw.a()));
-   public static final ckw hH = a(cuv.ei);
-   public static final ckw hI = a(cuv.ej);
-   public static final ckw hJ = a(cuv.ek);
-   public static final ckw hK = a(cuv.el);
-   public static final ckw hL = a(cuv.em);
-   public static final ckw hM = a(cuv.en);
-   public static final ckw hN = a(cuv.eo);
-   public static final ckw hO = a(cuv.ep);
-   public static final ckw hP = a(cuv.eq);
-   public static final ckw hQ = a(cuv.er);
-   public static final ckw hR = a(cuv.es);
-   public static final ckw hS = a(cuv.et);
-   public static final ckw hT = a(cuv.eu);
-   public static final ckw hU = a(cuv.ev);
-   public static final ckw hV = a(cuv.ew);
-   public static final ckw hW = a(cuv.ex);
-   public static final ckw hX = a(cuv.hz);
-   public static final ckw hY = a(cuv.hA);
-   public static final ckw hZ = a(cuv.hB);
-   public static final ckw ia = a(cuv.hC);
-   public static final ckw ib = a(cuv.hD);
-   public static final ckw ic = a(cuv.hE);
-   public static final ckw id = a(cuv.hF);
-   public static final ckw ie = a(cuv.hG);
-   public static final ckw if = a(cuv.hH);
-   public static final ckw ig = a(cuv.hI);
-   public static final ckw ih = a(cuv.hJ);
-   public static final ckw ii = a(cuv.hK);
-   public static final ckw ij = a(cuv.hL);
-   public static final ckw ik = a(cuv.hM);
-   public static final ckw il = a(cuv.hN);
-   public static final ckw im = a(cuv.hO);
-   public static final ckw in = a(cuv.hZ);
-   public static final ckw io = a(cuv.ia);
-   public static final ckw ip = a(cuv.ib);
-   public static final ckw iq = a(cuv.ic);
-   public static final ckw ir = a(cuv.id);
-   public static final ckw is = a(cuv.ie);
-   public static final ckw it = a(cuv.ii);
-   public static final ckw iu = a(cuv.jp);
-   public static final ckw iv = a(cuv.jq);
-   public static final ckw iw = a(cuv.jr);
-   public static final ckw ix = a(cuv.js);
-   public static final ckw iy = a(new ckk(cuv.kG, new ckw.a().a(cls.d)));
-   public static final ckw iz = a(new ckk(cuv.kH, new ckw.a().a(cls.d)));
-   public static final ckw iA = a(cuv.kJ);
-   public static final ckw iB = a(cuv.kK);
-   public static final ckw iC = a(cuv.op);
-   public static final ckw iD = a(cuv.kL);
-   public static final ckw iE = a(cuv.kM);
-   public static final ckw iF = a(new ciu(cuv.kN, new ckw.a().a(cls.d)));
-   public static final ckw iG = a(new ciu(cuv.kP, new ckw.a().a(1)));
-   public static final ckw iH = a(new ciu(cuv.kQ, new ckw.a().a(1)));
-   public static final ckw iI = a(new ciu(cuv.kR, new ckw.a().a(1)));
-   public static final ckw iJ = a(new ciu(cuv.kS, new ckw.a().a(1)));
-   public static final ckw iK = a(new ciu(cuv.kT, new ckw.a().a(1)));
-   public static final ckw iL = a(new ciu(cuv.kU, new ckw.a().a(1)));
-   public static final ckw iM = a(new ciu(cuv.kV, new ckw.a().a(1)));
-   public static final ckw iN = a(new ciu(cuv.kW, new ckw.a().a(1)));
-   public static final ckw iO = a(new ciu(cuv.kX, new ckw.a().a(1)));
-   public static final ckw iP = a(new ciu(cuv.kY, new ckw.a().a(1)));
-   public static final ckw iQ = a(new ciu(cuv.kZ, new ckw.a().a(1)));
-   public static final ckw iR = a(new ciu(cuv.la, new ckw.a().a(1)));
-   public static final ckw iS = a(new ciu(cuv.lb, new ckw.a().a(1)));
-   public static final ckw iT = a(new ciu(cuv.lc, new ckw.a().a(1)));
-   public static final ckw iU = a(new ciu(cuv.ld, new ckw.a().a(1)));
-   public static final ckw iV = a(new ciu(cuv.le, new ckw.a().a(1)));
-   public static final ckw iW = a(new ciu(cuv.lf, new ckw.a().a(1)));
-   public static final ckw iX = a(cuv.lg);
-   public static final ckw iY = a(cuv.lh);
-   public static final ckw iZ = a(cuv.li);
-   public static final ckw ja = a(cuv.lj);
-   public static final ckw jb = a(cuv.lk);
-   public static final ckw jc = a(cuv.ll);
-   public static final ckw jd = a(cuv.lm);
-   public static final ckw je = a(cuv.ln);
-   public static final ckw jf = a(cuv.lo);
-   public static final ckw jg = a(cuv.lp);
-   public static final ckw jh = a(cuv.lq);
-   public static final ckw ji = a(cuv.lr);
-   public static final ckw jj = a(cuv.ls);
-   public static final ckw jk = a(cuv.lt);
-   public static final ckw jl = a(cuv.lu);
-   public static final ckw jm = a(cuv.lv);
-   public static final ckw jn = a(cuv.lw);
-   public static final ckw jo = a(cuv.lx);
-   public static final ckw jp = a(cuv.ly);
-   public static final ckw jq = a(cuv.lz);
-   public static final ckw jr = a(cuv.lA);
-   public static final ckw js = a(cuv.lB);
-   public static final ckw jt = a(cuv.lC);
-   public static final ckw ju = a(cuv.lD);
-   public static final ckw jv = a(cuv.lE);
-   public static final ckw jw = a(cuv.lF);
-   public static final ckw jx = a(cuv.lG);
-   public static final ckw jy = a(cuv.lH);
-   public static final ckw jz = a(cuv.lI);
-   public static final ckw jA = a(cuv.lJ);
-   public static final ckw jB = a(cuv.lK);
-   public static final ckw jC = a(cuv.lL);
-   public static final ckw jD = a(cuv.lM);
-   public static final ckw jE = a(cuv.lN);
-   public static final ckw jF = a(cuv.lO);
-   public static final ckw jG = a(cuv.lP);
-   public static final ckw jH = a(cuv.lQ);
-   public static final ckw jI = a(cuv.lR);
-   public static final ckw jJ = a(cuv.lS);
-   public static final ckw jK = a(cuv.lT);
-   public static final ckw jL = a(cuv.lU);
-   public static final ckw jM = a(cuv.lV);
-   public static final ckw jN = a(cuv.lW);
-   public static final ckw jO = a(cuv.lX);
-   public static final ckw jP = a(cuv.lY);
-   public static final ckw jQ = a(cuv.lZ);
-   public static final ckw jR = a(cuv.ma);
-   public static final ckw jS = a(cuv.mb);
-   public static final ckw jT = a(cuv.mf);
-   public static final ckw jU = a(cuv.mg);
-   public static final ckw jV = a(cuv.mh);
-   public static final ckw jW = a(cuv.mi);
-   public static final ckw jX = a(cuv.mj);
-   public static final ckw jY = a(cuv.mk);
-   public static final ckw jZ = a(cuv.ml);
-   public static final ckw ka = a(cuv.mm);
-   public static final ckw kb = a(cuv.mn);
-   public static final ckw kc = a(cuv.mo);
-   public static final ckw kd = a(cuv.mp);
-   public static final ckw ke = a(cuv.mq);
-   public static final ckw kf = a(cuv.mw);
-   public static final ckw kg = a(cuv.mx);
-   public static final ckw kh = a(cuv.my);
-   public static final ckw ki = a(cuv.mz);
-   public static final ckw kj = a(cuv.mA);
-   public static final ckw kk = a(cuv.ms);
-   public static final ckw kl = a(cuv.mt);
-   public static final ckw km = a(cuv.mu);
-   public static final ckw kn = a(cuv.mv);
-   public static final ckw ko = a(cuv.mr);
-   public static final ckw kp = a(new cmk(cuv.mG, cuv.mQ, new ckw.a(), hx.a));
-   public static final ckw kq = a(new cmk(cuv.mH, cuv.mR, new ckw.a(), hx.a));
-   public static final ckw kr = a(new cmk(cuv.mI, cuv.mS, new ckw.a(), hx.a));
-   public static final ckw ks = a(new cmk(cuv.mJ, cuv.mT, new ckw.a(), hx.a));
-   public static final ckw kt = a(new cmk(cuv.mK, cuv.mU, new ckw.a(), hx.a));
-   public static final ckw ku = a(new cmk(cuv.mB, cuv.mL, new ckw.a(), hx.a));
-   public static final ckw kv = a(new cmk(cuv.mC, cuv.mM, new ckw.a(), hx.a));
-   public static final ckw kw = a(new cmk(cuv.mD, cuv.mN, new ckw.a(), hx.a));
-   public static final ckw kx = a(new cmk(cuv.mE, cuv.mO, new ckw.a(), hx.a));
-   public static final ckw ky = a(new cmk(cuv.mF, cuv.mP, new ckw.a(), hx.a));
-   public static final ckw kz = a(cuv.mW);
-   public static final ckw kA = a(new ciu(cuv.mX, new ckw.a().a(cls.c)));
-   public static final ckw kB = a(cuv.ne);
-   public static final ckw kC = a(cuv.nf);
-   public static final ckw kD = a(cuv.ng);
-   public static final ckw kE = a(cuv.nh);
-   public static final ckw kF = a(cuv.ni);
-   public static final ckw kG = a(cuv.nj);
-   public static final ckw kH = a(cuv.nk);
-   public static final ckw kI = a(cuv.nl);
-   public static final ckw kJ = a(cuv.nm);
-   public static final ckw kK = a(cuv.nn);
-   public static final ckw kL = a(cuv.no);
-   public static final ckw kM = a(cuv.np);
-   public static final ckw kN = a(cuv.nq);
-   public static final ckw kO = a(cuv.nr);
-   public static final ckw kP = a(cuv.rK);
-   public static final ckw kQ = a(cuv.rO);
-   public static final ckw kR = a(cuv.rW);
-   public static final ckw kS = a(cuv.rS);
-   public static final ckw kT = a(cuv.ns);
-   public static final ckw kU = a(cuv.nt);
-   public static final ckw kV = a(cuv.nu);
-   public static final ckw kW = a(cuv.nv);
-   public static final ckw kX = a(cuv.nw);
-   public static final ckw kY = a(cuv.nx);
-   public static final ckw kZ = a(cuv.ny);
-   public static final ckw la = a(cuv.nz);
-   public static final ckw lb = a(cuv.nA);
-   public static final ckw lc = a(cuv.nB);
-   public static final ckw ld = a(cuv.nC);
-   public static final ckw le = a(cuv.nD);
-   public static final ckw lf = a(cuv.nE);
-   public static final ckw lg = a(cuv.rL);
-   public static final ckw lh = a(cuv.rP);
-   public static final ckw li = a(cuv.rX);
-   public static final ckw lj = a(cuv.rT);
-   public static final ckw lk = a(new clv(cuv.nS, new ckw.a()));
-   public static final ckw ll = a("redstone", new cla(cuv.cw, new ckw.a()));
-   public static final ckw lm = a(new cmk(cuv.dK, cuv.dL, new ckw.a(), hx.a));
-   public static final ckw ln = a(cuv.ha);
-   public static final ckw lo = a(cuv.eh);
-   public static final ckw lp = a(cuv.gY);
-   public static final ckw lq = a(cuv.by);
-   public static final ckw lr = a(cuv.br);
-   public static final ckw ls = a(cuv.hV);
-   public static final ckw lt = a(cuv.pg);
-   public static final ckw lu = a(cuv.kO);
-   public static final ckw lv = a(cuv.hc);
-   public static final ckw lw = a(cuv.aU);
-   public static final ckw lx = a(cuv.hi);
-   public static final ckw ly = a(cuv.oa);
-   public static final ckw lz = a(cuv.pd);
-   public static final ckw lA = a(cuv.dw);
-   public static final ckw lB = a(cuv.rr);
-   public static final ckw lC = a(cuv.gZ);
-   public static final ckw lD = a(cuv.qD);
-   public static final ckw lE = a(cuv.qE);
-   public static final ckw lF = a(cuv.fH);
-   public static final ckw lG = a(cuv.gV);
-   public static final ckw lH = a(cuv.ck);
-   public static final ckw lI = a(cuv.fB);
-   public static final ckw lJ = a(cuv.aY);
-   public static final ckw lK = a(cuv.dM);
-   public static final ckw lL = a(cuv.pG);
-   public static final ckw lM = a(cuv.gv);
-   public static final ckw lN = a(cuv.gw);
-   public static final ckw lO = a(cuv.gx);
-   public static final ckw lP = a(cuv.gy);
-   public static final ckw lQ = a(cuv.gz);
-   public static final ckw lR = a(cuv.gA);
-   public static final ckw lS = a(cuv.gB);
-   public static final ckw lT = a(cuv.gC);
-   public static final ckw lU = a(cuv.gD);
-   public static final ckw lV = a(cuv.oS);
-   public static final ckw lW = a(cuv.oT);
-   public static final ckw lX = a(cuv.dx);
-   public static final ckw lY = a(cuv.pF);
-   public static final ckw lZ = a(cuv.gW);
-   public static final ckw ma = a(cuv.gX);
-   public static final ckw mb = a(cuv.dz);
-   public static final ckw mc = a(cuv.dA);
-   public static final ckw md = a(cuv.dB);
-   public static final ckw me = a(cuv.dC);
-   public static final ckw mf = a(cuv.dD);
-   public static final ckw mg = a(cuv.dE);
-   public static final ckw mh = a(cuv.dF);
-   public static final ckw mi = a(cuv.dG);
-   public static final ckw mj = a(cuv.dH);
-   public static final ckw mk = a(cuv.oI);
-   public static final ckw ml = a(cuv.oJ);
-   public static final ckw mm = a(new cjo(cuv.dy, new ckw.a()));
-   public static final ckw mn = a(new cjo(cuv.cN, new ckw.a()));
-   public static final ckw mo = a(new cjo(cuv.kl, new ckw.a()));
-   public static final ckw mp = a(new cjo(cuv.km, new ckw.a()));
-   public static final ckw mq = a(new cjo(cuv.kn, new ckw.a()));
-   public static final ckw mr = a(new cjo(cuv.ko, new ckw.a()));
-   public static final ckw ms = a(new cjo(cuv.kp, new ckw.a()));
-   public static final ckw mt = a(new cjo(cuv.kq, new ckw.a()));
-   public static final ckw mu = a(new cjo(cuv.kr, new ckw.a()));
-   public static final ckw mv = a(new cjo(cuv.ks, new ckw.a()));
-   public static final ckw mw = a(new cjo(cuv.oU, new ckw.a()));
-   public static final ckw mx = a(new cjo(cuv.oV, new ckw.a()));
-   public static final ckw my = a(cuv.hY);
-   public static final ckw mz = a(cuv.ey);
-   public static final ckw mA = a(cuv.ez);
-   public static final ckw mB = a(cuv.eA);
-   public static final ckw mC = a(cuv.eB);
-   public static final ckw mD = a(cuv.eC);
-   public static final ckw mE = a(cuv.eD);
-   public static final ckw mF = a(cuv.eE);
-   public static final ckw mG = a(cuv.eF);
-   public static final ckw mH = a(cuv.eG);
-   public static final ckw mI = a(cuv.oM);
-   public static final ckw mJ = a(cuv.oN);
-   public static final ckw mK = a(cuv.fh);
-   public static final ckw mL = a(cuv.jV);
-   public static final ckw mM = a(cuv.jW);
-   public static final ckw mN = a(cuv.jX);
-   public static final ckw mO = a(cuv.jY);
-   public static final ckw mP = a(cuv.jZ);
-   public static final ckw mQ = a(cuv.ka);
-   public static final ckw mR = a(cuv.kb);
-   public static final ckw mS = a(cuv.kc);
-   public static final ckw mT = a(cuv.oO);
-   public static final ckw mU = a(cuv.oP);
-   public static final ckw mV = a(cuv.bp);
-   public static final ckw mW = a(cuv.bq);
-   public static final ckw mX = a(cuv.cP);
-   public static final ckw mY = a(cuv.hh);
-   public static final ckw mZ = a("saddle", new clu(new ckw.a().a(1)));
-   public static final ckw na = a("minecart", new clk(cfd.a.a, new ckw.a().a(1)));
-   public static final ckw nb = a("chest_minecart", new clk(cfd.a.b, new ckw.a().a(1)));
-   public static final ckw nc = a("furnace_minecart", new clk(cfd.a.c, new ckw.a().a(1)));
-   public static final ckw nd = a("tnt_minecart", new clk(cfd.a.d, new ckw.a().a(1)));
-   public static final ckw ne = a("hopper_minecart", new clk(cfd.a.f, new ckw.a().a(1)));
-   public static final ckw nf = a("carrot_on_a_stick", new ckj<>(new ckw.a().c(25), bkm.av, 7));
-   public static final ckw ng = a("warped_fungus_on_a_stick", new ckj<>(new ckw.a().c(100), bkm.aV, 1));
-   public static final ckw nh = a("elytra", new cjv(new ckw.a().c(432).a(cls.b)));
-   public static final ckw ni = a("oak_boat", new civ(false, cff.b.a, new ckw.a().a(1)));
-   public static final ckw nj = a("oak_chest_boat", new civ(true, cff.b.a, new ckw.a().a(1)));
-   public static final ckw nk = a("spruce_boat", new civ(false, cff.b.b, new ckw.a().a(1)));
-   public static final ckw nl = a("spruce_chest_boat", new civ(true, cff.b.b, new ckw.a().a(1)));
-   public static final ckw nm = a("birch_boat", new civ(false, cff.b.c, new ckw.a().a(1)));
-   public static final ckw nn = a("birch_chest_boat", new civ(true, cff.b.c, new ckw.a().a(1)));
-   public static final ckw no = a("jungle_boat", new civ(false, cff.b.d, new ckw.a().a(1)));
-   public static final ckw np = a("jungle_chest_boat", new civ(true, cff.b.d, new ckw.a().a(1)));
-   public static final ckw nq = a("acacia_boat", new civ(false, cff.b.e, new ckw.a().a(1)));
-   public static final ckw nr = a("acacia_chest_boat", new civ(true, cff.b.e, new ckw.a().a(1)));
-   public static final ckw ns = a("cherry_boat", new civ(false, cff.b.f, new ckw.a().a(1)));
-   public static final ckw nt = a("cherry_chest_boat", new civ(true, cff.b.f, new ckw.a().a(1)));
-   public static final ckw nu = a("dark_oak_boat", new civ(false, cff.b.g, new ckw.a().a(1)));
-   public static final ckw nv = a("dark_oak_chest_boat", new civ(true, cff.b.g, new ckw.a().a(1)));
-   public static final ckw nw = a("mangrove_boat", new civ(false, cff.b.h, new ckw.a().a(1)));
-   public static final ckw nx = a("mangrove_chest_boat", new civ(true, cff.b.h, new ckw.a().a(1)));
-   public static final ckw ny = a("bamboo_raft", new civ(false, cff.b.i, new ckw.a().a(1)));
-   public static final ckw nz = a("bamboo_chest_raft", new civ(true, cff.b.i, new ckw.a().a(1)));
-   public static final ckw nA = a(new ckk(cuv.pa, new ckw.a().a(cls.d)));
-   public static final ckw nB = a(new ckk(cuv.pb, new ckw.a().a(cls.d)));
-   public static final ckw nC = a("turtle_helmet", new cil(cin.f, cil.a.a, new ckw.a()));
-   public static final ckw nD = a("scute", new ckw(new ckw.a()));
-   public static final ckw nE = a("flint_and_steel", new cki(new ckw.a().c(64)));
-   public static final ckw nF = a("apple", new ckw(new ckw.a().a(cgc.a)));
-   public static final ckw nG = a("bow", new ciz(new ckw.a().c(384)));
-   public static final ckw nH = a("arrow", new cip(new ckw.a()));
-   public static final ckw nI = a("coal", new ckw(new ckw.a()));
-   public static final ckw nJ = a("charcoal", new ckw(new ckw.a()));
-   public static final ckw nK = a("diamond", new ckw(new ckw.a()));
-   public static final ckw nL = a("emerald", new ckw(new ckw.a()));
-   public static final ckw nM = a("lapis_lazuli", new ckw(new ckw.a()));
-   public static final ckw nN = a("quartz", new ckw(new ckw.a()));
-   public static final ckw nO = a("amethyst_shard", new ckw(new ckw.a()));
-   public static final ckw nP = a("raw_iron", new ckw(new ckw.a()));
-   public static final ckw nQ = a("iron_ingot", new ckw(new ckw.a()));
-   public static final ckw nR = a("raw_copper", new ckw(new ckw.a()));
-   public static final ckw nS = a("copper_ingot", new ckw(new ckw.a()));
-   public static final ckw nT = a("raw_gold", new ckw(new ckw.a()));
-   public static final ckw nU = a("gold_ingot", new ckw(new ckw.a()));
-   public static final ckw nV = a("netherite_ingot", new ckw(new ckw.a().a()));
-   public static final ckw nW = a("netherite_scrap", new ckw(new ckw.a().a()));
-   public static final ckw nX = a("wooden_sword", new cmm(cmq.a, 3, -2.4F, new ckw.a()));
-   public static final ckw nY = a("wooden_shovel", new clz(cmq.a, 1.5F, -3.0F, new ckw.a()));
-   public static final ckw nZ = a("wooden_pickaxe", new cln(cmq.a, 1, -2.8F, new ckw.a()));
-   public static final ckw oa = a("wooden_axe", new ciq(cmq.a, 6.0F, -3.2F, new ckw.a()));
-   public static final ckw ob = a("wooden_hoe", new cko(cmq.a, 0, -3.0F, new ckw.a()));
-   public static final ckw oc = a("stone_sword", new cmm(cmq.b, 3, -2.4F, new ckw.a()));
-   public static final ckw od = a("stone_shovel", new clz(cmq.b, 1.5F, -3.0F, new ckw.a()));
-   public static final ckw oe = a("stone_pickaxe", new cln(cmq.b, 1, -2.8F, new ckw.a()));
-   public static final ckw of = a("stone_axe", new ciq(cmq.b, 7.0F, -3.2F, new ckw.a()));
-   public static final ckw og = a("stone_hoe", new cko(cmq.b, -1, -2.0F, new ckw.a()));
-   public static final ckw oh = a("golden_sword", new cmm(cmq.e, 3, -2.4F, new ckw.a()));
-   public static final ckw oi = a("golden_shovel", new clz(cmq.e, 1.5F, -3.0F, new ckw.a()));
-   public static final ckw oj = a("golden_pickaxe", new cln(cmq.e, 1, -2.8F, new ckw.a()));
-   public static final ckw ok = a("golden_axe", new ciq(cmq.e, 6.0F, -3.0F, new ckw.a()));
-   public static final ckw ol = a("golden_hoe", new cko(cmq.e, 0, -3.0F, new ckw.a()));
-   public static final ckw om = a("iron_sword", new cmm(cmq.c, 3, -2.4F, new ckw.a()));
-   public static final ckw on = a("iron_shovel", new clz(cmq.c, 1.5F, -3.0F, new ckw.a()));
-   public static final ckw oo = a("iron_pickaxe", new cln(cmq.c, 1, -2.8F, new ckw.a()));
-   public static final ckw op = a("iron_axe", new ciq(cmq.c, 6.0F, -3.1F, new ckw.a()));
-   public static final ckw oq = a("iron_hoe", new cko(cmq.c, -2, -1.0F, new ckw.a()));
-   public static final ckw or = a("diamond_sword", new cmm(cmq.d, 3, -2.4F, new ckw.a()));
-   public static final ckw os = a("diamond_shovel", new clz(cmq.d, 1.5F, -3.0F, new ckw.a()));
-   public static final ckw ot = a("diamond_pickaxe", new cln(cmq.d, 1, -2.8F, new ckw.a()));
-   public static final ckw ou = a("diamond_axe", new ciq(cmq.d, 5.0F, -3.0F, new ckw.a()));
-   public static final ckw ov = a("diamond_hoe", new cko(cmq.d, -3, 0.0F, new ckw.a()));
-   public static final ckw ow = a("netherite_sword", new cmm(cmq.f, 3, -2.4F, new ckw.a().a()));
-   public static final ckw ox = a("netherite_shovel", new clz(cmq.f, 1.5F, -3.0F, new ckw.a().a()));
-   public static final ckw oy = a("netherite_pickaxe", new cln(cmq.f, 1, -2.8F, new ckw.a().a()));
-   public static final ckw oz = a("netherite_axe", new ciq(cmq.f, 5.0F, -3.0F, new ckw.a().a()));
-   public static final ckw oA = a("netherite_hoe", new cko(cmq.f, -4, 0.0F, new ckw.a().a()));
-   public static final ckw oB = a("stick", new ckw(new ckw.a()));
-   public static final ckw oC = a("bowl", new ckw(new ckw.a()));
-   public static final ckw oD = a("mushroom_stew", new cja(new ckw.a().a(1).a(cgc.y)));
-   public static final ckw oE = a("string", new cla(cuv.fI, new ckw.a()));
-   public static final ckw oF = a("feather", new ckw(new ckw.a()));
-   public static final ckw oG = a("gunpowder", new ckw(new ckw.a()));
-   public static final ckw oH = a("wheat_seeds", new cla(cuv.cB, new ckw.a()));
-   public static final ckw oI = a("wheat", new ckw(new ckw.a()));
-   public static final ckw oJ = a("bread", new ckw(new ckw.a().a(cgc.f)));
-   public static final ckw oK = a("leather_helmet", new cjr(cin.a, cil.a.a, new ckw.a()));
-   public static final ckw oL = a("leather_chestplate", new cjr(cin.a, cil.a.b, new ckw.a()));
-   public static final ckw oM = a("leather_leggings", new cjr(cin.a, cil.a.c, new ckw.a()));
-   public static final ckw oN = a("leather_boots", new cjr(cin.a, cil.a.d, new ckw.a()));
-   public static final ckw oO = a("chainmail_helmet", new cil(cin.b, cil.a.a, new ckw.a()));
-   public static final ckw oP = a("chainmail_chestplate", new cil(cin.b, cil.a.b, new ckw.a()));
-   public static final ckw oQ = a("chainmail_leggings", new cil(cin.b, cil.a.c, new ckw.a()));
-   public static final ckw oR = a("chainmail_boots", new cil(cin.b, cil.a.d, new ckw.a()));
-   public static final ckw oS = a("iron_helmet", new cil(cin.c, cil.a.a, new ckw.a()));
-   public static final ckw oT = a("iron_chestplate", new cil(cin.c, cil.a.b, new ckw.a()));
-   public static final ckw oU = a("iron_leggings", new cil(cin.c, cil.a.c, new ckw.a()));
-   public static final ckw oV = a("iron_boots", new cil(cin.c, cil.a.d, new ckw.a()));
-   public static final ckw oW = a("diamond_helmet", new cil(cin.e, cil.a.a, new ckw.a()));
-   public static final ckw oX = a("diamond_chestplate", new cil(cin.e, cil.a.b, new ckw.a()));
-   public static final ckw oY = a("diamond_leggings", new cil(cin.e, cil.a.c, new ckw.a()));
-   public static final ckw oZ = a("diamond_boots", new cil(cin.e, cil.a.d, new ckw.a()));
-   public static final ckw pa = a("golden_helmet", new cil(cin.d, cil.a.a, new ckw.a()));
-   public static final ckw pb = a("golden_chestplate", new cil(cin.d, cil.a.b, new ckw.a()));
-   public static final ckw pc = a("golden_leggings", new cil(cin.d, cil.a.c, new ckw.a()));
-   public static final ckw pd = a("golden_boots", new cil(cin.d, cil.a.d, new ckw.a()));
-   public static final ckw pe = a("netherite_helmet", new cil(cin.g, cil.a.a, new ckw.a().a()));
-   public static final ckw pf = a("netherite_chestplate", new cil(cin.g, cil.a.b, new ckw.a().a()));
-   public static final ckw pg = a("netherite_leggings", new cil(cin.g, cil.a.c, new ckw.a().a()));
-   public static final ckw ph = a("netherite_boots", new cil(cin.g, cil.a.d, new ckw.a().a()));
-   public static final ckw pi = a("flint", new ckw(new ckw.a()));
-   public static final ckw pj = a("porkchop", new ckw(new ckw.a().a(cgc.B)));
-   public static final ckw pk = a("cooked_porkchop", new ckw(new ckw.a().a(cgc.o)));
-   public static final ckw pl = a("painting", new ckm(bkm.ar, new ckw.a()));
-   public static final ckw pm = a("golden_apple", new ckw(new ckw.a().a(cls.c).a(cgc.u)));
-   public static final ckw pn = a("enchanted_golden_apple", new cjy(new ckw.a().a(cls.d).a(cgc.t)));
-   public static final ckw po = a("oak_sign", new cmb(new ckw.a().a(16), cuv.cE, cuv.cR));
-   public static final ckw pp = a("spruce_sign", new cmb(new ckw.a().a(16), cuv.cF, cuv.cS));
-   public static final ckw pq = a("birch_sign", new cmb(new ckw.a().a(16), cuv.cG, cuv.cT));
-   public static final ckw pr = a("jungle_sign", new cmb(new ckw.a().a(16), cuv.cJ, cuv.cW));
-   public static final ckw ps = a("acacia_sign", new cmb(new ckw.a().a(16), cuv.cH, cuv.cU));
-   public static final ckw pt = a("cherry_sign", new cmb(new ckw.a().a(16), cuv.cI, cuv.cV));
-   public static final ckw pu = a("dark_oak_sign", new cmb(new ckw.a().a(16), cuv.cK, cuv.cX));
-   public static final ckw pv = a("mangrove_sign", new cmb(new ckw.a().a(16), cuv.cL, cuv.cY));
-   public static final ckw pw = a("bamboo_sign", new cmb(new ckw.a().a(16), cuv.cM, cuv.cZ));
-   public static final ckw px = a("crimson_sign", new cmb(new ckw.a().a(16), cuv.oW, cuv.oY));
-   public static final ckw py = a("warped_sign", new cmb(new ckw.a().a(16), cuv.oX, cuv.oZ));
-   public static final ckw pz = a("oak_hanging_sign", new ckn(cuv.da, cuv.dl, new ckw.a().a(16)));
-   public static final ckw pA = a("spruce_hanging_sign", new ckn(cuv.db, cuv.dm, new ckw.a().a(16)));
-   public static final ckw pB = a("birch_hanging_sign", new ckn(cuv.dc, cuv.dn, new ckw.a().a(16)));
-   public static final ckw pC = a("jungle_hanging_sign", new ckn(cuv.df, cuv.dq, new ckw.a().a(16)));
-   public static final ckw pD = a("acacia_hanging_sign", new ckn(cuv.dd, cuv.do, new ckw.a().a(16)));
-   public static final ckw pE = a("cherry_hanging_sign", new ckn(cuv.de, cuv.dp, new ckw.a().a(16)));
-   public static final ckw pF = a("dark_oak_hanging_sign", new ckn(cuv.dg, cuv.dr, new ckw.a().a(16)));
-   public static final ckw pG = a("mangrove_hanging_sign", new ckn(cuv.dj, cuv.ds, new ckw.a().a(16)));
-   public static final ckw pH = a("bamboo_hanging_sign", new ckn(cuv.dk, cuv.dv, new ckw.a().a(16)));
-   public static final ckw pI = a("crimson_hanging_sign", new ckn(cuv.dh, cuv.dt, new ckw.a().a(16)));
-   public static final ckw pJ = a("warped_hanging_sign", new ckn(cuv.di, cuv.du, new ckw.a().a(16)));
-   public static final ckw pK = a("bucket", new cjc(ech.a, new ckw.a().a(16)));
-   public static final ckw pL = a("water_bucket", new cjc(ech.c, new ckw.a().a(pK).a(1)));
-   public static final ckw pM = a("lava_bucket", new cjc(ech.e, new ckw.a().a(pK).a(1)));
-   public static final ckw pN = a("powder_snow_bucket", new cmf(cuv.qC, aqn.cz, new ckw.a().a(1)));
-   public static final ckw pO = a("snowball", new cme(new ckw.a().a(16)));
-   public static final ckw pP = a("leather", new ckw(new ckw.a()));
-   public static final ckw pQ = a("milk_bucket", new clj(new ckw.a().a(pK).a(1)));
-   public static final ckw pR = a("pufferfish_bucket", new cll(bkm.aB, ech.c, aqn.cx, new ckw.a().a(1)));
-   public static final ckw pS = a("salmon_bucket", new cll(bkm.aE, ech.c, aqn.cx, new ckw.a().a(1)));
-   public static final ckw pT = a("cod_bucket", new cll(bkm.r, ech.c, aqn.cx, new ckw.a().a(1)));
-   public static final ckw pU = a("tropical_fish_bucket", new cll(bkm.bc, ech.c, aqn.cx, new ckw.a().a(1)));
-   public static final ckw pV = a("axolotl_bucket", new cll(bkm.f, ech.c, aqn.cw, new ckw.a().a(1)));
-   public static final ckw pW = a("tadpole_bucket", new cll(bkm.aW, ech.c, aqn.cA, new ckw.a().a(1)));
-   public static final ckw pX = a("brick", new ckw(new ckw.a()));
-   public static final ckw pY = a("clay_ball", new ckw(new ckw.a()));
-   public static final ckw pZ = a(cuv.me);
-   public static final ckw qa = a("paper", new ckw(new ckw.a()));
-   public static final ckw qb = a("book", new cix(new ckw.a()));
-   public static final ckw qc = a("slime_ball", new ckw(new ckw.a()));
-   public static final ckw qd = a("egg", new cju(new ckw.a().a(16)));
-   public static final ckw qe = a("compass", new cjf(new ckw.a()));
-   public static final ckw qf = a("recovery_compass", new ckw(new ckw.a()));
-   public static final ckw qg = a("bundle", new cjd(new ckw.a().a(1)));
-   public static final ckw qh = a("fishing_rod", new ckh(new ckw.a().c(64)));
-   public static final ckw qi = a("clock", new ckw(new ckw.a()));
-   public static final ckw qj = a("spyglass", new cmj(new ckw.a().a(1)));
-   public static final ckw qk = a("glowstone_dust", new ckw(new ckw.a()));
-   public static final ckw ql = a("cod", new ckw(new ckw.a().a(cgc.j)));
-   public static final ckw qm = a("salmon", new ckw(new ckw.a().a(cgc.I)));
-   public static final ckw qn = a("tropical_fish", new ckw(new ckw.a().a(cgc.N)));
-   public static final ckw qo = a("pufferfish", new ckw(new ckw.a().a(cgc.D)));
-   public static final ckw qp = a("cooked_cod", new ckw(new ckw.a().a(cgc.m)));
-   public static final ckw qq = a("cooked_salmon", new ckw(new ckw.a().a(cgc.q)));
-   public static final ckw qr = a("ink_sac", new cks(new ckw.a()));
-   public static final ckw qs = a("glow_ink_sac", new ckl(new ckw.a()));
-   public static final ckw qt = a("cocoa_beans", new cla(cuv.fC, new ckw.a()));
-   public static final ckw qu = a("white_dye", new cjq(cjp.a, new ckw.a()));
-   public static final ckw qv = a("orange_dye", new cjq(cjp.b, new ckw.a()));
-   public static final ckw qw = a("magenta_dye", new cjq(cjp.c, new ckw.a()));
-   public static final ckw qx = a("light_blue_dye", new cjq(cjp.d, new ckw.a()));
-   public static final ckw qy = a("yellow_dye", new cjq(cjp.e, new ckw.a()));
-   public static final ckw qz = a("lime_dye", new cjq(cjp.f, new ckw.a()));
-   public static final ckw qA = a("pink_dye", new cjq(cjp.g, new ckw.a()));
-   public static final ckw qB = a("gray_dye", new cjq(cjp.h, new ckw.a()));
-   public static final ckw qC = a("light_gray_dye", new cjq(cjp.i, new ckw.a()));
-   public static final ckw qD = a("cyan_dye", new cjq(cjp.j, new ckw.a()));
-   public static final ckw qE = a("purple_dye", new cjq(cjp.k, new ckw.a()));
-   public static final ckw qF = a("blue_dye", new cjq(cjp.l, new ckw.a()));
-   public static final ckw qG = a("brown_dye", new cjq(cjp.m, new ckw.a()));
-   public static final ckw qH = a("green_dye", new cjq(cjp.n, new ckw.a()));
-   public static final ckw qI = a("red_dye", new cjq(cjp.o, new ckw.a()));
-   public static final ckw qJ = a("black_dye", new cjq(cjp.p, new ckw.a()));
-   public static final ckw qK = a("bone_meal", new ciw(new ckw.a()));
-   public static final ckw qL = a("bone", new ckw(new ckw.a()));
-   public static final ckw qM = a("sugar", new ckw(new ckw.a()));
-   public static final ckw qN = a(new ciu(cuv.eg, new ckw.a().a(1)));
-   public static final ckw qO = a(new cit(cuv.aZ, new ckw.a().a(1)));
-   public static final ckw qP = a(new cit(cuv.ba, new ckw.a().a(1)));
-   public static final ckw qQ = a(new cit(cuv.bb, new ckw.a().a(1)));
-   public static final ckw qR = a(new cit(cuv.bc, new ckw.a().a(1)));
-   public static final ckw qS = a(new cit(cuv.bd, new ckw.a().a(1)));
-   public static final ckw qT = a(new cit(cuv.be, new ckw.a().a(1)));
-   public static final ckw qU = a(new cit(cuv.bf, new ckw.a().a(1)));
-   public static final ckw qV = a(new cit(cuv.bg, new ckw.a().a(1)));
-   public static final ckw qW = a(new cit(cuv.bh, new ckw.a().a(1)));
-   public static final ckw qX = a(new cit(cuv.bi, new ckw.a().a(1)));
-   public static final ckw qY = a(new cit(cuv.bj, new ckw.a().a(1)));
-   public static final ckw qZ = a(new cit(cuv.bk, new ckw.a().a(1)));
-   public static final ckw ra = a(new cit(cuv.bl, new ckw.a().a(1)));
-   public static final ckw rb = a(new cit(cuv.bm, new ckw.a().a(1)));
-   public static final ckw rc = a(new cit(cuv.bn, new ckw.a().a(1)));
-   public static final ckw rd = a(new cit(cuv.bo, new ckw.a().a(1)));
-   public static final ckw re = a("cookie", new ckw(new ckw.a().a(cgc.r)));
-   public static final ckw rf = a(new ciu(cuv.sp, new ckw.a()));
-   public static final ckw rg = a("filled_map", new cli(new ckw.a()));
-   public static final ckw rh = a("shears", new clx(new ckw.a().c(238)));
-   public static final ckw ri = a("melon_slice", new ckw(new ckw.a().a(cgc.x)));
-   public static final ckw rj = a("dried_kelp", new ckw(new ckw.a().a(cgc.s)));
-   public static final ckw rk = a(afx.a, new cla(cuv.fd, new ckw.a()));
-   public static final ckw rl = a(afx.b, new cla(cuv.fe, new ckw.a()));
-   public static final ckw rm = a("beef", new ckw(new ckw.a().a(cgc.c)));
-   public static final ckw rn = a("cooked_beef", new ckw(new ckw.a().a(cgc.k)));
-   public static final ckw ro = a("chicken", new ckw(new ckw.a().a(cgc.h)));
-   public static final ckw rp = a("cooked_chicken", new ckw(new ckw.a().a(cgc.l)));
-   public static final ckw rq = a("rotten_flesh", new ckw(new ckw.a().a(cgc.H)));
-   public static final ckw rr = a("ender_pearl", new ckb(new ckw.a().a(16)));
-   public static final ckw rs = a("blaze_rod", new ckw(new ckw.a()));
-   public static final ckw rt = a("ghast_tear", new ckw(new ckw.a()));
-   public static final ckw ru = a("gold_nugget", new ckw(new ckw.a()));
-   public static final ckw rv = a("nether_wart", new cla(cuv.fq, new ckw.a()));
-   public static final ckw rw = a("potion", new clq(new ckw.a().a(1)));
-   public static final ckw rx = a("glass_bottle", new ciy(new ckw.a()));
-   public static final ckw ry = a("spider_eye", new ckw(new ckw.a().a(cgc.J)));
-   public static final ckw rz = a("fermented_spider_eye", new ckw(new ckw.a()));
-   public static final ckw rA = a("blaze_powder", new ckw(new ckw.a()));
-   public static final ckw rB = a("magma_cream", new ckw(new ckw.a()));
-   public static final ckw rC = a(cuv.fs);
-   public static final ckw rD = a(cuv.ft, cuv.fu, cuv.fv, cuv.fw);
-   public static final ckw rE = a("ender_eye", new cka(new ckw.a()));
-   public static final ckw rF = a("glistering_melon_slice", new ckw(new ckw.a()));
-   public static final ckw rG = a("allay_spawn_egg", new cmg(bkm.b, 56063, 44543, new ckw.a()));
-   public static final ckw rH = a("axolotl_spawn_egg", new cmg(bkm.f, 16499171, 10890612, new ckw.a()));
-   public static final ckw rI = a("bat_spawn_egg", new cmg(bkm.g, 4996656, 986895, new ckw.a()));
-   public static final ckw rJ = a("bee_spawn_egg", new cmg(bkm.h, 15582019, 4400155, new ckw.a()));
-   public static final ckw rK = a("blaze_spawn_egg", new cmg(bkm.i, 16167425, 16775294, new ckw.a()));
-   public static final ckw rL = a("cat_spawn_egg", new cmg(bkm.m, 15714446, 9794134, new ckw.a()));
-   public static final ckw rM = a("camel_spawn_egg", new cmg(bkm.l, 16565097, 13341495, new ckw.a()));
-   public static final ckw rN = a("cave_spider_spawn_egg", new cmg(bkm.n, 803406, 11013646, new ckw.a()));
-   public static final ckw rO = a("chicken_spawn_egg", new cmg(bkm.q, 10592673, 16711680, new ckw.a()));
-   public static final ckw rP = a("cod_spawn_egg", new cmg(bkm.r, 12691306, 15058059, new ckw.a()));
-   public static final ckw rQ = a("cow_spawn_egg", new cmg(bkm.t, 4470310, 10592673, new ckw.a()));
-   public static final ckw rR = a("creeper_spawn_egg", new cmg(bkm.u, 894731, 0, new ckw.a()));
-   public static final ckw rS = a("dolphin_spawn_egg", new cmg(bkm.v, 2243405, 16382457, new ckw.a()));
-   public static final ckw rT = a("donkey_spawn_egg", new cmg(bkm.w, 5457209, 8811878, new ckw.a()));
-   public static final ckw rU = a("drowned_spawn_egg", new cmg(bkm.y, 9433559, 7969893, new ckw.a()));
-   public static final ckw rV = a("elder_guardian_spawn_egg", new cmg(bkm.A, 13552826, 7632531, new ckw.a()));
-   public static final ckw rW = a("ender_dragon_spawn_egg", new cmg(bkm.C, 1842204, 14711290, new ckw.a()));
-   public static final ckw rX = a("enderman_spawn_egg", new cmg(bkm.E, 1447446, 0, new ckw.a()));
-   public static final ckw rY = a("endermite_spawn_egg", new cmg(bkm.F, 1447446, 7237230, new ckw.a()));
-   public static final ckw rZ = a("evoker_spawn_egg", new cmg(bkm.G, 9804699, 1973274, new ckw.a()));
-   public static final ckw sa = a("fox_spawn_egg", new cmg(bkm.N, 14005919, 13396256, new ckw.a()));
-   public static final ckw sb = a("frog_spawn_egg", new cmg(bkm.O, 13661252, 16762748, new ckw.a()));
-   public static final ckw sc = a("ghast_spawn_egg", new cmg(bkm.Q, 16382457, 12369084, new ckw.a()));
-   public static final ckw sd = a("glow_squid_spawn_egg", new cmg(bkm.T, 611926, 8778172, new ckw.a()));
-   public static final ckw se = a("goat_spawn_egg", new cmg(bkm.U, 10851452, 5589310, new ckw.a()));
-   public static final ckw sf = a("guardian_spawn_egg", new cmg(bkm.V, 5931634, 15826224, new ckw.a()));
-   public static final ckw sg = a("hoglin_spawn_egg", new cmg(bkm.W, 13004373, 6251620, new ckw.a()));
-   public static final ckw sh = a("horse_spawn_egg", new cmg(bkm.Y, 12623485, 15656192, new ckw.a()));
-   public static final ckw si = a("husk_spawn_egg", new cmg(bkm.Z, 7958625, 15125652, new ckw.a()));
-   public static final ckw sj = a("iron_golem_spawn_egg", new cmg(bkm.ac, 14405058, 7643954, new ckw.a()));
-   public static final ckw sk = a("llama_spawn_egg", new cmg(bkm.aj, 12623485, 10051392, new ckw.a()));
-   public static final ckw sl = a("magma_cube_spawn_egg", new cmg(bkm.al, 3407872, 16579584, new ckw.a()));
-   public static final ckw sm = a("mooshroom_spawn_egg", new cmg(bkm.ao, 10489616, 12040119, new ckw.a()));
-   public static final ckw sn = a("mule_spawn_egg", new cmg(bkm.ap, 1769984, 5321501, new ckw.a()));
-   public static final ckw so = a("ocelot_spawn_egg", new cmg(bkm.aq, 15720061, 5653556, new ckw.a()));
-   public static final ckw sp = a("panda_spawn_egg", new cmg(bkm.as, 15198183, 1776418, new ckw.a()));
-   public static final ckw sq = a("parrot_spawn_egg", new cmg(bkm.at, 894731, 16711680, new ckw.a()));
-   public static final ckw sr = a("phantom_spawn_egg", new cmg(bkm.au, 4411786, 8978176, new ckw.a()));
-   public static final ckw ss = a("pig_spawn_egg", new cmg(bkm.av, 15771042, 14377823, new ckw.a()));
-   public static final ckw st = a("piglin_spawn_egg", new cmg(bkm.aw, 10051392, 16380836, new ckw.a()));
-   public static final ckw su = a("piglin_brute_spawn_egg", new cmg(bkm.ax, 5843472, 16380836, new ckw.a()));
-   public static final ckw sv = a("pillager_spawn_egg", new cmg(bkm.ay, 5451574, 9804699, new ckw.a()));
-   public static final ckw sw = a("polar_bear_spawn_egg", new cmg(bkm.az, 15658718, 14014157, new ckw.a()));
-   public static final ckw sx = a("pufferfish_spawn_egg", new cmg(bkm.aB, 16167425, 3654642, new ckw.a()));
-   public static final ckw sy = a("rabbit_spawn_egg", new cmg(bkm.aC, 10051392, 7555121, new ckw.a()));
-   public static final ckw sz = a("ravager_spawn_egg", new cmg(bkm.aD, 7697520, 5984329, new ckw.a()));
-   public static final ckw sA = a("salmon_spawn_egg", new cmg(bkm.aE, 10489616, 951412, new ckw.a()));
-   public static final ckw sB = a("sheep_spawn_egg", new cmg(bkm.aF, 15198183, 16758197, new ckw.a()));
-   public static final ckw sC = a("shulker_spawn_egg", new cmg(bkm.aG, 9725844, 5060690, new ckw.a()));
-   public static final ckw sD = a("silverfish_spawn_egg", new cmg(bkm.aI, 7237230, 3158064, new ckw.a()));
-   public static final ckw sE = a("skeleton_spawn_egg", new cmg(bkm.aJ, 12698049, 4802889, new ckw.a()));
-   public static final ckw sF = a("skeleton_horse_spawn_egg", new cmg(bkm.aK, 6842447, 15066584, new ckw.a()));
-   public static final ckw sG = a("slime_spawn_egg", new cmg(bkm.aL, 5349438, 8306542, new ckw.a()));
-   public static final ckw sH = a("sniffer_spawn_egg", new cmg(bkm.aN, 8855049, 2468720, new ckw.a()));
-   public static final ckw sI = a("snow_golem_spawn_egg", new cmg(bkm.aO, 14283506, 8496292, new ckw.a()));
-   public static final ckw sJ = a("spider_spawn_egg", new cmg(bkm.aS, 3419431, 11013646, new ckw.a()));
-   public static final ckw sK = a("squid_spawn_egg", new cmg(bkm.aT, 2243405, 7375001, new ckw.a()));
-   public static final ckw sL = a("stray_spawn_egg", new cmg(bkm.aU, 6387319, 14543594, new ckw.a()));
-   public static final ckw sM = a("strider_spawn_egg", new cmg(bkm.aV, 10236982, 5065037, new ckw.a()));
-   public static final ckw sN = a("tadpole_spawn_egg", new cmg(bkm.aW, 7164733, 1444352, new ckw.a()));
-   public static final ckw sO = a("trader_llama_spawn_egg", new cmg(bkm.ba, 15377456, 4547222, new ckw.a()));
-   public static final ckw sP = a("tropical_fish_spawn_egg", new cmg(bkm.bc, 15690005, 16775663, new ckw.a()));
-   public static final ckw sQ = a("turtle_spawn_egg", new cmg(bkm.bd, 15198183, 44975, new ckw.a()));
-   public static final ckw sR = a("vex_spawn_egg", new cmg(bkm.be, 8032420, 15265265, new ckw.a()));
-   public static final ckw sS = a("villager_spawn_egg", new cmg(bkm.bf, 5651507, 12422002, new ckw.a()));
-   public static final ckw sT = a("vindicator_spawn_egg", new cmg(bkm.bg, 9804699, 2580065, new ckw.a()));
-   public static final ckw sU = a("wandering_trader_spawn_egg", new cmg(bkm.bh, 4547222, 15377456, new ckw.a()));
-   public static final ckw sV = a("warden_spawn_egg", new cmg(bkm.bi, 1001033, 3790560, new ckw.a()));
-   public static final ckw sW = a("witch_spawn_egg", new cmg(bkm.bj, 3407872, 5349438, new ckw.a()));
-   public static final ckw sX = a("wither_spawn_egg", new cmg(bkm.bk, 1315860, 5075616, new ckw.a()));
-   public static final ckw sY = a("wither_skeleton_spawn_egg", new cmg(bkm.bl, 1315860, 4672845, new ckw.a()));
-   public static final ckw sZ = a("wolf_spawn_egg", new cmg(bkm.bn, 14144467, 13545366, new ckw.a()));
-   public static final ckw ta = a("zoglin_spawn_egg", new cmg(bkm.bo, 13004373, 15132390, new ckw.a()));
-   public static final ckw tb = a("zombie_spawn_egg", new cmg(bkm.bp, 44975, 7969893, new ckw.a()));
-   public static final ckw tc = a("zombie_horse_spawn_egg", new cmg(bkm.bq, 3232308, 9945732, new ckw.a()));
-   public static final ckw td = a("zombie_villager_spawn_egg", new cmg(bkm.br, 5651507, 7969893, new ckw.a()));
-   public static final ckw te = a("zombified_piglin_spawn_egg", new cmg(bkm.bs, 15373203, 5009705, new ckw.a()));
-   public static final ckw tf = a("experience_bottle", new ckd(new ckw.a().a(cls.b)));
-   public static final ckw tg = a("fire_charge", new cke(new ckw.a()));
-   public static final ckw th = a("writable_book", new cmw(new ckw.a().a(1)));
-   public static final ckw ti = a("written_book", new cmx(new ckw.a().a(16)));
-   public static final ckw tj = a("item_frame", new ckz(bkm.af, new ckw.a()));
-   public static final ckw tk = a("glow_item_frame", new ckz(bkm.S, new ckw.a()));
-   public static final ckw tl = a(cuv.fR);
-   public static final ckw tm = a("carrot", new cla(cuv.gt, new ckw.a().a(cgc.g)));
-   public static final ckw tn = a("potato", new cla(cuv.gu, new ckw.a().a(cgc.C)));
-   public static final ckw to = a("baked_potato", new ckw(new ckw.a().a(cgc.b)));
-   public static final ckw tp = a("poisonous_potato", new ckw(new ckw.a().a(cgc.A)));
-   public static final ckw tq = a("map", new cjw(new ckw.a()));
-   public static final ckw tr = a("golden_carrot", new ckw(new ckw.a().a(cgc.v)));
-   public static final ckw ts = a(new cmk(cuv.gE, cuv.gF, new ckw.a().a(cls.b), hx.a));
-   public static final ckw tt = a(new cmk(cuv.gG, cuv.gH, new ckw.a().a(cls.b), hx.a));
-   public static final ckw tu = a(new clp(cuv.gK, cuv.gL, new ckw.a().a(cls.b)));
-   public static final ckw tv = a(new cmk(cuv.gI, cuv.gJ, new ckw.a().a(cls.b), hx.a));
-   public static final ckw tw = a(new cmk(cuv.gM, cuv.gN, new ckw.a().a(cls.b), hx.a));
-   public static final ckw tx = a(new cmk(cuv.gO, cuv.gP, new ckw.a().a(cls.b), hx.a));
-   public static final ckw ty = a(new cmk(cuv.gQ, cuv.gR, new ckw.a().a(cls.b), hx.a));
-   public static final ckw tz = a("nether_star", new cmc(new ckw.a().a(cls.b)));
-   public static final ckw tA = a("pumpkin_pie", new ckw(new ckw.a().a(cgc.E)));
-   public static final ckw tB = a("firework_rocket", new ckf(new ckw.a()));
-   public static final ckw tC = a("firework_star", new ckg(new ckw.a()));
-   public static final ckw tD = a("enchanted_book", new cjx(new ckw.a().a(1).a(cls.b)));
-   public static final ckw tE = a("nether_brick", new ckw(new ckw.a()));
-   public static final ckw tF = a("prismarine_shard", new ckw(new ckw.a()));
-   public static final ckw tG = a("prismarine_crystals", new ckw(new ckw.a()));
-   public static final ckw tH = a("rabbit", new ckw(new ckw.a().a(cgc.F)));
-   public static final ckw tI = a("cooked_rabbit", new ckw(new ckw.a().a(cgc.p)));
-   public static final ckw tJ = a("rabbit_stew", new cja(new ckw.a().a(1).a(cgc.G)));
-   public static final ckw tK = a("rabbit_foot", new ckw(new ckw.a()));
-   public static final ckw tL = a("rabbit_hide", new ckw(new ckw.a()));
-   public static final ckw tM = a("armor_stand", new cio(new ckw.a().a(16)));
-   public static final ckw tN = a("iron_horse_armor", new ckr(5, "iron", new ckw.a().a(1)));
-   public static final ckw tO = a("golden_horse_armor", new ckr(7, "gold", new ckw.a().a(1)));
-   public static final ckw tP = a("diamond_horse_armor", new ckr(11, "diamond", new ckw.a().a(1)));
-   public static final ckw tQ = a("leather_horse_armor", new cjs(3, "leather", new ckw.a().a(1)));
-   public static final ckw tR = a("lead", new clg(new ckw.a()));
-   public static final ckw tS = a("name_tag", new clm(new ckw.a()));
-   public static final ckw tT = a("command_block_minecart", new clk(cfd.a.g, new ckw.a().a(1).a(cls.d)));
-   public static final ckw tU = a("mutton", new ckw(new ckw.a().a(cgc.z)));
-   public static final ckw tV = a("cooked_mutton", new ckw(new ckw.a().a(cgc.n)));
-   public static final ckw tW = a("white_banner", new cir(cuv.iJ, cuv.iZ, new ckw.a().a(16)));
-   public static final ckw tX = a("orange_banner", new cir(cuv.iK, cuv.ja, new ckw.a().a(16)));
-   public static final ckw tY = a("magenta_banner", new cir(cuv.iL, cuv.jb, new ckw.a().a(16)));
-   public static final ckw tZ = a("light_blue_banner", new cir(cuv.iM, cuv.jc, new ckw.a().a(16)));
-   public static final ckw ua = a("yellow_banner", new cir(cuv.iN, cuv.jd, new ckw.a().a(16)));
-   public static final ckw ub = a("lime_banner", new cir(cuv.iO, cuv.je, new ckw.a().a(16)));
-   public static final ckw uc = a("pink_banner", new cir(cuv.iP, cuv.jf, new ckw.a().a(16)));
-   public static final ckw ud = a("gray_banner", new cir(cuv.iQ, cuv.jg, new ckw.a().a(16)));
-   public static final ckw ue = a("light_gray_banner", new cir(cuv.iR, cuv.jh, new ckw.a().a(16)));
-   public static final ckw uf = a("cyan_banner", new cir(cuv.iS, cuv.ji, new ckw.a().a(16)));
-   public static final ckw ug = a("purple_banner", new cir(cuv.iT, cuv.jj, new ckw.a().a(16)));
-   public static final ckw uh = a("blue_banner", new cir(cuv.iU, cuv.jk, new ckw.a().a(16)));
-   public static final ckw ui = a("brown_banner", new cir(cuv.iV, cuv.jl, new ckw.a().a(16)));
-   public static final ckw uj = a("green_banner", new cir(cuv.iW, cuv.jm, new ckw.a().a(16)));
-   public static final ckw uk = a("red_banner", new cir(cuv.iX, cuv.jn, new ckw.a().a(16)));
-   public static final ckw ul = a("black_banner", new cir(cuv.iY, cuv.jo, new ckw.a().a(16)));
-   public static final ckw um = a("end_crystal", new cjz(new ckw.a().a(cls.c)));
-   public static final ckw un = a("chorus_fruit", new cje(new ckw.a().a(cgc.i)));
-   public static final ckw uo = a("popped_chorus_fruit", new ckw(new ckw.a()));
-   public static final ckw up = a("torchflower_seeds", new cla(cuv.kA, new ckw.a()));
-   public static final ckw uq = a("pitcher_pod", new cla(cuv.kB, new ckw.a()));
-   public static final ckw ur = a("beetroot", new ckw(new ckw.a().a(cgc.d)));
-   public static final ckw us = a("beetroot_seeds", new cla(cuv.kD, new ckw.a()));
-   public static final ckw ut = a("beetroot_soup", new cja(new ckw.a().a(1).a(cgc.e)));
-   public static final ckw uu = a("dragon_breath", new ckw(new ckw.a().a(rx).a(cls.b)));
-   public static final ckw uv = a("splash_potion", new cmi(new ckw.a().a(1)));
-   public static final ckw uw = a("spectral_arrow", new cmh(new ckw.a()));
-   public static final ckw ux = a("tipped_arrow", new cmr(new ckw.a()));
-   public static final ckw uy = a("lingering_potion", new clh(new ckw.a().a(1)));
-   public static final ckw uz = a("shield", new cly(new ckw.a().c(336)));
-   public static final ckw uA = a("totem_of_undying", new ckw(new ckw.a().a(1).a(cls.b)));
-   public static final ckw uB = a("shulker_shell", new ckw(new ckw.a()));
-   public static final ckw uC = a("iron_nugget", new ckw(new ckw.a()));
-   public static final ckw uD = a("knowledge_book", new clf(new ckw.a().a(1).a(cls.d)));
-   public static final ckw uE = a("debug_stick", new cjk(new ckw.a().a(1).a(cls.d)));
-   public static final ckw uF = a("music_disc_13", new clt(1, aqn.og, new ckw.a().a(1).a(cls.c), 178));
-   public static final ckw uG = a("music_disc_cat", new clt(2, aqn.oi, new ckw.a().a(1).a(cls.c), 185));
-   public static final ckw uH = a("music_disc_blocks", new clt(3, aqn.oh, new ckw.a().a(1).a(cls.c), 345));
-   public static final ckw uI = a("music_disc_chirp", new clt(4, aqn.oj, new ckw.a().a(1).a(cls.c), 185));
-   public static final ckw uJ = a("music_disc_far", new clt(5, aqn.ok, new ckw.a().a(1).a(cls.c), 174));
-   public static final ckw uK = a("music_disc_mall", new clt(6, aqn.ol, new ckw.a().a(1).a(cls.c), 197));
-   public static final ckw uL = a("music_disc_mellohi", new clt(7, aqn.om, new ckw.a().a(1).a(cls.c), 96));
-   public static final ckw uM = a("music_disc_stal", new clt(8, aqn.oo, new ckw.a().a(1).a(cls.c), 150));
-   public static final ckw uN = a("music_disc_strad", new clt(9, aqn.op, new ckw.a().a(1).a(cls.c), 188));
-   public static final ckw uO = a("music_disc_ward", new clt(10, aqn.or, new ckw.a().a(1).a(cls.c), 251));
-   public static final ckw uP = a("music_disc_11", new clt(11, aqn.of, new ckw.a().a(1).a(cls.c), 71));
-   public static final ckw uQ = a("music_disc_wait", new clt(12, aqn.oq, new ckw.a().a(1).a(cls.c), 238));
-   public static final ckw uR = a("music_disc_otherside", new clt(14, aqn.os, new ckw.a().a(1).a(cls.c), 195));
-   public static final ckw uS = a("music_disc_relic", new clt(14, aqn.ot, new ckw.a().a(1).a(cls.c), 218));
-   public static final ckw uT = a("music_disc_5", new clt(15, aqn.oe, new ckw.a().a(1).a(cls.c), 178));
-   public static final ckw uU = a("music_disc_pigstep", new clt(13, aqn.on, new ckw.a().a(1).a(cls.c), 149));
-   public static final ckw uV = a("disc_fragment_5", new cjm(new ckw.a()));
-   public static final ckw uW = a("trident", new cmt(new ckw.a().c(250)));
-   public static final ckw uX = a("phantom_membrane", new ckw(new ckw.a()));
-   public static final ckw uY = a("nautilus_shell", new ckw(new ckw.a()));
-   public static final ckw uZ = a("heart_of_the_sea", new ckw(new ckw.a().a(cls.b)));
-   public static final ckw va = a("crossbow", new cjj(new ckw.a().a(1).c(465)));
-   public static final ckw vb = a("suspicious_stew", new cml(new ckw.a().a(1).a(cgc.K)));
-   public static final ckw vc = a(cuv.nT);
-   public static final ckw vd = a("flower_banner_pattern", new cis(ara.b, new ckw.a().a(1)));
-   public static final ckw ve = a("creeper_banner_pattern", new cis(ara.c, new ckw.a().a(1).a(cls.b)));
-   public static final ckw vf = a("skull_banner_pattern", new cis(ara.d, new ckw.a().a(1).a(cls.b)));
-   public static final ckw vg = a("mojang_banner_pattern", new cis(ara.e, new ckw.a().a(1).a(cls.d)));
-   public static final ckw vh = a("globe_banner_pattern", new cis(ara.f, new ckw.a().a(1)));
-   public static final ckw vi = a("piglin_banner_pattern", new cis(ara.g, new ckw.a().a(1)));
-   public static final ckw vj = a("goat_horn", new cku(new ckw.a().a(1), arj.c));
-   public static final ckw vk = a(cuv.pc);
-   public static final ckw vl = a(cuv.nU);
-   public static final ckw vm = a(cuv.nV);
-   public static final ckw vn = a(cuv.nW);
-   public static final ckw vo = a(cuv.nX);
-   public static final ckw vp = a(cuv.nY);
-   public static final ckw vq = a(cuv.nZ);
-   public static final ckw vr = a(cuv.ob);
-   public static final ckw vs = a(cuv.oc);
-   public static final ckw vt = a(cuv.od);
-   public static final ckw vu = a(cuv.oe);
-   public static final ckw vv = a(cuv.of);
-   public static final ckw vw = a("sweet_berries", new cla(cuv.oi, new ckw.a().a(cgc.L)));
-   public static final ckw vx = a("glow_berries", new cla(cuv.ru, new ckw.a().a(cgc.M)));
-   public static final ckw vy = a(cuv.og);
-   public static final ckw vz = a(cuv.oh);
-   public static final ckw vA = a(cuv.oy);
-   public static final ckw vB = a("honeycomb", new ckq(new ckw.a()));
-   public static final ckw vC = a(cuv.pe);
-   public static final ckw vD = a(cuv.pf);
-   public static final ckw vE = a("honey_bottle", new ckp(new ckw.a().a(rx).a(cgc.w).a(16)));
-   public static final ckw vF = a(cuv.ph);
-   public static final ckw vG = a(cuv.pq);
-   public static final ckw vH = a(cuv.pk);
-   public static final ckw vI = a(cuv.pr);
-   public static final ckw vJ = a(cuv.pu);
-   public static final ckw vK = a(cuv.ps);
-   public static final ckw vL = a(cuv.pC);
-   public static final ckw vM = a(cuv.pv);
-   public static final ckw vN = a(cuv.pE);
-   public static final ckw vO = a(cuv.pD);
-   public static final ckw vP = a(cuv.py);
-   public static final ckw vQ = a(cuv.pw);
-   public static final ckw vR = a(cuv.pz);
-   public static final ckw vS = a(cuv.pA);
-   public static final ckw vT = a(cuv.px);
-   public static final ckw vU = a(cuv.pl);
-   public static final ckw vV = a(cuv.pL);
-   public static final ckw vW = a(cuv.pM);
-   public static final ckw vX = a(cuv.pN);
-   public static final ckw vY = a(cuv.pO);
-   public static final ckw vZ = a(cuv.pP);
-   public static final ckw wa = a(cuv.pQ);
-   public static final ckw wb = a(cuv.pR);
-   public static final ckw wc = a(cuv.pS);
-   public static final ckw wd = a(cuv.pT);
-   public static final ckw we = a(cuv.pU);
-   public static final ckw wf = a(cuv.pV);
-   public static final ckw wg = a(cuv.pW);
-   public static final ckw wh = a(cuv.pX);
-   public static final ckw wi = a(cuv.pY);
-   public static final ckw wj = a(cuv.pZ);
-   public static final ckw wk = a(cuv.qa);
-   public static final ckw wl = a(cuv.qb);
-   public static final ckw wm = a(cuv.qy);
-   public static final ckw wn = a(cuv.qx);
-   public static final ckw wo = a(cuv.qw);
-   public static final ckw wp = a(cuv.qv);
-   public static final ckw wq = a(cuv.rs);
-   public static final ckw wr = a(cuv.sj);
-   public static final ckw ws = a(cuv.sk);
-   public static final ckw wt = a(cuv.sl);
-   public static final ckw wu = a(new clo(cuv.sm, new ckw.a()));
-   public static final ckw wv = a("echo_shard", new ckw(new ckw.a()));
-   public static final ckw ww = a("brush", new cjb(new ckw.a().c(64)));
-   public static final ckw wx = a("netherite_upgrade_smithing_template", cmd.h());
-   public static final ckw wy = a("sentry_armor_trim_smithing_template", cmd.a(cnh.a));
-   public static final ckw wz = a("dune_armor_trim_smithing_template", cmd.a(cnh.b));
-   public static final ckw wA = a("coast_armor_trim_smithing_template", cmd.a(cnh.c));
-   public static final ckw wB = a("wild_armor_trim_smithing_template", cmd.a(cnh.d));
-   public static final ckw wC = a("ward_armor_trim_smithing_template", cmd.a(cnh.e));
-   public static final ckw wD = a("eye_armor_trim_smithing_template", cmd.a(cnh.f));
-   public static final ckw wE = a("vex_armor_trim_smithing_template", cmd.a(cnh.g));
-   public static final ckw wF = a("tide_armor_trim_smithing_template", cmd.a(cnh.h));
-   public static final ckw wG = a("snout_armor_trim_smithing_template", cmd.a(cnh.i));
-   public static final ckw wH = a("rib_armor_trim_smithing_template", cmd.a(cnh.j));
-   public static final ckw wI = a("spire_armor_trim_smithing_template", cmd.a(cnh.k));
-   public static final ckw wJ = a("wayfinder_armor_trim_smithing_template", cmd.a(cnh.l));
-   public static final ckw wK = a("shaper_armor_trim_smithing_template", cmd.a(cnh.m));
-   public static final ckw wL = a("silence_armor_trim_smithing_template", cmd.a(cnh.n));
-   public static final ckw wM = a("raiser_armor_trim_smithing_template", cmd.a(cnh.o));
-   public static final ckw wN = a("host_armor_trim_smithing_template", cmd.a(cnh.p));
-   public static final ckw wO = a("angler_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wP = a("archer_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wQ = a("arms_up_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wR = a("blade_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wS = a("brewer_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wT = a("burn_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wU = a("danger_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wV = a("explorer_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wW = a("friend_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wX = a("heart_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wY = a("heartbreak_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw wZ = a("howl_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xa = a("miner_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xb = a("mourner_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xc = a("plenty_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xd = a("prize_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xe = a("sheaf_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xf = a("shelter_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xg = a("skull_pottery_sherd", new ckw(new ckw.a()));
-   public static final ckw xh = a("snort_pottery_sherd", new ckw(new ckw.a()));
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static ckw a(cut $$0) {
-      return a(new ciu($$0, new ckw.a()));
+public class cle implements cga, crz {
+   private static final Logger a = LogUtils.getLogger();
+   public static final Map<cva, cle> l = Maps.newHashMap();
+   protected static final UUID m = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+   protected static final UUID n = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
+   public static final int o = 64;
+   public static final int p = 32;
+   public static final int q = 13;
+   private final ib.c<cle> b = jy.i.f(this);
+   private final cma c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   @Nullable
+   private final cle g;
+   @Nullable
+   private String h;
+   @Nullable
+   private final cgj i;
+   private final cgd j;
+
+   public static int a(cle $$0) {
+      return $$0 == null ? 0 : jy.i.a($$0);
    }
 
-   public static ckw a(cut $$0, cut... $$1) {
-      ciu $$2 = new ciu($$0, new ckw.a());
+   public static cle b(int $$0) {
+      return jy.i.a($$0);
+   }
 
-      for (cut $$3 : $$1) {
-         ckw.l.put($$3, $$2);
+   @Deprecated
+   public static cle a(cva $$0) {
+      return l.getOrDefault($$0, clm.a);
+   }
+
+   public cle(cle.a $$0) {
+      this.c = $$0.d;
+      this.g = $$0.c;
+      this.e = $$0.b;
+      this.d = $$0.a;
+      this.i = $$0.e;
+      this.f = $$0.f;
+      this.j = $$0.g;
+      if (aa.aT) {
+         String $$1 = this.getClass().getSimpleName();
+         if (!$$1.endsWith("Item")) {
+            a.error("Item classes should end with Item and {} doesn't.", $$1);
+         }
+      }
+   }
+
+   @Deprecated
+   public ib.c<cle> j() {
+      return this.b;
+   }
+
+   public void a(csa $$0, blg $$1, clj $$2, int $$3) {
+   }
+
+   public void a(can $$0) {
+   }
+
+   public void b(rz $$0) {
+   }
+
+   public boolean a(dhi $$0, csa $$1, ht $$2, cdu $$3) {
+      return true;
+   }
+
+   @Override
+   public cle k() {
+      return this;
+   }
+
+   public bix a(cnt $$0) {
+      return bix.d;
+   }
+
+   public float a(clj $$0, dhi $$1) {
+      return 1.0F;
+   }
+
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      if (this.u()) {
+         clj $$3 = $$1.b($$2);
+         if ($$1.t(this.v().d())) {
+            $$1.c($$2);
+            return biy.b($$3);
+         } else {
+            return biy.d($$3);
+         }
+      } else {
+         return biy.c($$1.b($$2));
+      }
+   }
+
+   public clj a(clj $$0, csa $$1, blg $$2) {
+      return this.u() ? $$2.a($$1, $$0) : $$0;
+   }
+
+   public final int l() {
+      return this.d;
+   }
+
+   public final int n() {
+      return this.e;
+   }
+
+   public boolean o() {
+      return this.e > 0;
+   }
+
+   public boolean e(clj $$0) {
+      return $$0.j();
+   }
+
+   public int f(clj $$0) {
+      return Math.round(13.0F - (float)$$0.k() * 13.0F / (float)this.e);
+   }
+
+   public int g(clj $$0) {
+      float $$1 = Math.max(0.0F, ((float)this.e - (float)$$0.k()) / (float)this.e);
+      return atm.h($$1 / 3.0F, 1.0F, 1.0F);
+   }
+
+   public boolean a(clj $$0, cih $$1, cgu $$2, cdu $$3) {
+      return false;
+   }
+
+   public boolean a(clj $$0, clj $$1, cih $$2, cgu $$3, cdu $$4, bly $$5) {
+      return false;
+   }
+
+   public boolean a(clj $$0, blg $$1, blg $$2) {
+      return false;
+   }
+
+   public boolean a(clj $$0, csa $$1, dhi $$2, ht $$3, blg $$4) {
+      return false;
+   }
+
+   public boolean a_(dhi $$0) {
+      return false;
+   }
+
+   public bix a(clj $$0, cdu $$1, blg $$2, biw $$3) {
+      return bix.d;
+   }
+
+   public ur p() {
+      return ur.c(this.a());
+   }
+
+   @Override
+   public String toString() {
+      return jy.i.b(this).a();
+   }
+
+   protected String q() {
+      if (this.h == null) {
+         this.h = ac.a("item", jy.i.b(this));
       }
 
-      return a($$2);
+      return this.h;
    }
 
-   public static ckw a(ciu $$0) {
-      return a($$0.e(), $$0);
+   public String a() {
+      return this.q();
    }
 
-   public static ckw a(cut $$0, ckw $$1) {
-      return a(jy.f.b($$0), $$1);
+   public String j(clj $$0) {
+      return this.a();
    }
 
-   public static ckw a(String $$0, ckw $$1) {
-      return a(new agg($$0), $$1);
+   public boolean r() {
+      return true;
    }
 
-   public static ckw a(agg $$0, ckw $$1) {
-      return a(agf.a(jy.i.c(), $$0), $$1);
+   @Nullable
+   public final cle s() {
+      return this.g;
    }
 
-   public static ckw a(agf<ckw> $$0, ckw $$1) {
-      if ($$1 instanceof ciu) {
-         ((ciu)$$1).a(ckw.l, $$1);
+   public boolean t() {
+      return this.g != null;
+   }
+
+   public void a(clj $$0, csa $$1, bkq $$2, int $$3, boolean $$4) {
+   }
+
+   public void b(clj $$0, csa $$1, cdu $$2) {
+      this.a($$0, $$1);
+   }
+
+   public void a(clj $$0, csa $$1) {
+   }
+
+   public boolean ak_() {
+      return false;
+   }
+
+   public cnc c(clj $$0) {
+      return $$0.d().u() ? cnc.b : cnc.a;
+   }
+
+   public int b(clj $$0) {
+      if ($$0.d().u()) {
+         return this.v().e() ? 16 : 32;
+      } else {
+         return 0;
+      }
+   }
+
+   public void a(clj $$0, csa $$1, blg $$2, int $$3) {
+   }
+
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+   }
+
+   public Optional<cip> h(clj $$0) {
+      return Optional.empty();
+   }
+
+   public ur m(clj $$0) {
+      return ur.c(this.j($$0));
+   }
+
+   public boolean i(clj $$0) {
+      return $$0.E();
+   }
+
+   public cma n(clj $$0) {
+      if (!$$0.E()) {
+         return this.c;
+      } else {
+         switch (this.c) {
+            case a:
+            case b:
+               return cma.c;
+            case c:
+               return cma.d;
+            case d:
+            default:
+               return this.c;
+         }
+      }
+   }
+
+   public boolean d_(clj $$0) {
+      return this.l() == 1 && this.o();
+   }
+
+   protected static ejq a(csa $$0, cdu $$1, crj.b $$2) {
+      float $$3 = $$1.dF();
+      float $$4 = $$1.dD();
+      eju $$5 = $$1.br();
+      float $$6 = atm.b(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$7 = atm.a(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$8 = -atm.b(-$$3 * (float) (Math.PI / 180.0));
+      float $$9 = atm.a(-$$3 * (float) (Math.PI / 180.0));
+      float $$10 = $$7 * $$8;
+      float $$12 = $$6 * $$8;
+      double $$13 = 5.0;
+      eju $$14 = $$5.b((double)$$10 * 5.0, (double)$$9 * 5.0, (double)$$12 * 5.0);
+      return $$0.a(new crj($$5, $$14, crj.a.b, $$2, $$1));
+   }
+
+   public int c() {
+      return 0;
+   }
+
+   public boolean a(clj $$0, clj $$1) {
+      return false;
+   }
+
+   public Multimap<bmh, bmk> a(bkv $$0) {
+      return ImmutableMultimap.of();
+   }
+
+   public boolean l(clj $$0) {
+      return false;
+   }
+
+   public clj al_() {
+      return new clj(this);
+   }
+
+   public boolean u() {
+      return this.i != null;
+   }
+
+   @Nullable
+   public cgj v() {
+      return this.i;
+   }
+
+   public aqq am_() {
+      return aqr.jp;
+   }
+
+   public aqq an_() {
+      return aqr.jq;
+   }
+
+   public boolean w() {
+      return this.f;
+   }
+
+   public boolean a(bjo $$0) {
+      return !this.f || !$$0.a(ari.i);
+   }
+
+   public boolean ao_() {
+      return true;
+   }
+
+   @Override
+   public cgd m() {
+      return this.j;
+   }
+
+   public static class a {
+      int a = 64;
+      int b;
+      @Nullable
+      cle c;
+      cma d = cma.a;
+      @Nullable
+      cgj e;
+      boolean f;
+      cgd g;
+
+      public a() {
+         this.g = cgf.g;
       }
 
-      return io.a(jy.i, $$0, $$1);
+      public cle.a a(cgj $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cle.a a(int $$0) {
+         if (this.b > 0) {
+            throw new RuntimeException("Unable to have damage AND stack.");
+         } else {
+            this.a = $$0;
+            return this;
+         }
+      }
+
+      public cle.a b(int $$0) {
+         return this.b == 0 ? this.c($$0) : this;
+      }
+
+      public cle.a c(int $$0) {
+         this.b = $$0;
+         this.a = 1;
+         return this;
+      }
+
+      public cle.a a(cle $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cle.a a(cma $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cle.a a() {
+         this.f = true;
+         return this;
+      }
+
+      public cle.a a(cgb... $$0) {
+         this.g = cgf.e.a($$0);
+         return this;
+      }
    }
 }

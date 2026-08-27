@@ -1,83 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dop extends dpj<dru> {
-   public dop(Codec<dru> $$0) {
+public class dop extends dsj {
+   public static final MapCodec<dop> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               dvo.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bia.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dnl.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               doq.b.optionalFieldOf("debug_settings", doq.a).forGetter($$0x -> $$0x.h),
+               iq.a(jz.e).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dop::new)
+   );
+   public final dvo e;
+   public final bia f;
+   public final dnl g;
+   public final doq h;
+   public final ig<cva> i;
+
+   public dop(float $$0, dvo $$1, bia $$2, dnl $$3, doq $$4, ig<cva> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(dpl<dru> $$0) {
-      ht $$1 = $$0.e();
-      csm $$2 = $$0.b();
-      ato $$3 = $$0.d();
-      if ($$2.t($$1) && !$$2.t($$1.c())) {
-         ht.a $$4 = $$1.j();
-         ht.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.t($$4)) {
-            if ($$2.r($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, cuv.dY.o(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, hx.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, hx.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, hx.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, hx.f));
-            $$4.c(hx.a);
-         }
-
-         $$4.c(hx.b);
-         this.a($$2, $$3, $$5.a($$4, hx.c));
-         this.a($$2, $$3, $$5.a($$4, hx.d));
-         this.a($$2, $$3, $$5.a($$4, hx.e));
-         this.a($$2, $$3, $$5.a($$4, hx.f));
-         $$4.c(hx.a);
-         ht.a $$10 = new ht.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = ati.a($$11) * ati.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.t($$5.a($$10, hx.a))) {
-                     $$10.c(hx.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.t($$5.a($$10, hx.a))) {
-                     $$2.a($$10, cuv.dY.o(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(crt $$0, ato $$1, ht $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, cuv.dY.o(), 2);
-      }
-   }
-
-   private boolean b(crt $$0, ato $$1, ht $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, cuv.dY.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

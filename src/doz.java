@@ -1,34 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class doz extends doy {
-   public doz(Codec<dru> $$0) {
+public class doz extends dpv<dsj> {
+   private static final dhi a = cvc.mZ.o().a(cue.h, Integer.valueOf(1)).a(cue.i, dhu.a).a(cue.j, Integer.valueOf(0));
+   private static final dhi b = a.a(cue.i, dhu.c).a(cue.j, Integer.valueOf(1));
+   private static final dhi c = a.a(cue.i, dhu.c);
+   private static final dhi d = a.a(cue.i, dhu.b);
+
+   public doz(Codec<dsj> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(crt $$0, ato $$1, ht $$2, dgw $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      ht.a $$8 = $$2.j();
+   public boolean a(dpx<dsj> $$0) {
+      int $$1 = 0;
+      ht $$2 = $$0.e();
+      csu $$3 = $$0.b();
+      ats $$4 = $$0.d();
+      dsj $$5 = $$0.f();
+      ht.a $$6 = $$2.j();
+      ht.a $$7 = $$2.j();
+      if ($$3.t($$6)) {
+         if (cvc.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(hx.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dmr.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, cvc.l.o(), 2);
+                        }
+                     }
+                  }
                }
             }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(hx.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(hx.a, 1), c, 2);
+               $$3.a($$6.c(hx.a, 1), d, 2);
+            }
          }
+
+         $$1++;
       }
 
-      return true;
+      return $$1 > 0;
    }
 }

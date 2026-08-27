@@ -1,7 +1,7 @@
 public interface fo {
-   eji a(du var1);
+   eju a(du var1);
 
-   ejh b(du var1);
+   ejt b(du var1);
 
    default ht c(du $$0) {
       return ht.a(this.a($$0));

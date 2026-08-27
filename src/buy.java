@@ -1,30 +1,41 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class buy extends bvd<bky> {
-   @Override
-   public Set<btz<?>> a() {
-      return ImmutableSet.of(btz.h, btz.L, btz.am);
+public class buy extends bvl<blg> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public buy() {
+      this(200);
+   }
+
+   public buy(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(ama $$0, bky $$1) {
-      bly<?> $$2 = $$1.dN();
-      List<ccb> $$3 = Lists.newArrayList();
-      bub $$4 = $$2.c(btz.h).orElse(bub.a());
-      Optional<bla> $$5 = $$4.a($$0x -> $$0x instanceof cbr || $$0x instanceof bzt).map(bla.class::cast);
+   protected void a(ame $$0, blg $$1) {
+      a($$1);
+   }
 
-      for (bky $$7 : $$2.c(btz.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof ccb && ((ccb)$$7).gf()) {
-            $$3.add((ccb)$$7);
+   @Override
+   public Set<buh<?>> a() {
+      return ImmutableSet.of(buh.g);
+   }
+
+   public static void a(blg $$0) {
+      Optional<List<blg>> $$1 = $$0.dP().c(buh.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bku.ac));
+         if ($$2) {
+            b($$0);
          }
       }
+   }
 
-      $$2.a(btz.L, $$5);
-      $$2.a(btz.am, $$3);
+   public static void b(blg $$0) {
+      $$0.dP().a(buh.F, true, 599L);
    }
 }

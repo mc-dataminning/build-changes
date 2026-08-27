@@ -1,31 +1,16 @@
-import com.mojang.authlib.GameProfile;
-
-public class aeo implements wk<aem> {
-   private final GameProfile a;
-
-   public aeo(GameProfile $$0) {
-      this.a = $$0;
-   }
-
-   public aeo(tu $$0) {
-      this.a = $$0.A();
-   }
-
+public interface aeo extends tp {
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
+   default tt b() {
+      return tt.d;
    }
 
-   public void a(aem $$0) {
-      $$0.a(this);
-   }
+   void a(aer var1);
 
-   public GameProfile a() {
-      return this.a;
-   }
+   void a(aeq var1);
 
-   @Override
-   public tt c() {
-      return tt.e;
-   }
+   void a(aet var1);
+
+   void a(aes var1);
+
+   void a(aep var1);
 }

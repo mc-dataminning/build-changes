@@ -1,31 +1,58 @@
-import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.stream.LongStream;
 
-public interface djm<T> {
-   T a(int var1, int var2, int var3);
+public class djm<T> implements djv<T> {
+   private final ih<T> a;
 
-   void a(Consumer<T> var1);
-
-   void b(tu var1);
-
-   int c();
-
-   boolean a(Predicate<T> var1);
-
-   void a(djl.b<T> var1);
-
-   djl<T> e();
-
-   djm.a<T> a(ih<T> var1, djl.d var2);
-
-   public static record a<T>(List<T> a, Optional<LongStream> b) {
+   public djm(ih<T> $$0) {
+      this.a = $$0;
    }
 
-   public interface b<T, C extends djm<T>> {
-      DataResult<C> read(ih<T> var1, djl.d var2, djm.a<T> var3);
+   public static <A> djv<A> a(int $$0, ih<A> $$1, djw<A> $$2, List<A> $$3) {
+      return new djm<>($$1);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return true;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new dju($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(tu $$0) {
+   }
+
+   @Override
+   public void b(tu $$0) {
+   }
+
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int b() {
+      return this.a.b();
+   }
+
+   @Override
+   public djv<T> c() {
+      return this;
    }
 }

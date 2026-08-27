@@ -1,120 +1,67 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class dyb extends dyc {
-   private static final Codec<Either<agg, eav>> a = Codec.of(dyb::a, agg.a.map(Either::left));
-   public static final Codec<dyb> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dyb::new));
-   protected final Either<agg, eav> c;
-   protected final ib<eat> d;
+public class dyb extends dye {
+   public static final Codec<dyb> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dyb::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final ig<csy> f;
 
-   private static <T> DataResult<T> a(Either<agg, eav> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<agg> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : agg.a.encode($$3.get(), $$1, $$2);
+   private static P9<Mu<dyb>, iw, dye.c, Float, Integer, Optional<dye.a>, Integer, Integer, Integer, ig<csy>> b(Instance<dyb> $$0) {
+      P5<Mu<dyb>, iw, dye.c, Float, Integer, Optional<dye.a>> $$1 = a($$0);
+      P4<Mu<dyb>, Integer, Integer, Integer, ig<csy>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(dyb::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(dyb::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(dyb::c),
+         iq.a(jz.ar).fieldOf("preferred_biomes").forGetter(dyb::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   protected static <E extends dyb> RecordCodecBuilder<E, ib<eat>> b() {
-      return eau.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public dyb(iw $$0, dye.c $$1, float $$2, int $$3, Optional<dye.a> $$4, int $$5, int $$6, int $$7, ig<csy> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
    }
 
-   protected static <E extends dyb> RecordCodecBuilder<E, Either<agg, eav>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
+   public dyb(int $$0, int $$1, int $$2, ig<csy> $$3) {
+      this(iw.g, dye.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
    }
 
-   protected dyb(Either<agg, eav> $$0, ib<eat> $$1, dye.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public iw a(eaw $$0, dbf $$1) {
-      eav $$2 = this.a($$0);
-      return $$2.a($$1);
+   public int b() {
+      return this.d;
    }
 
-   private eav a(eaw $$0) {
-      return (eav)this.c.map($$0::a, Function.identity());
+   public int c() {
+      return this.e;
    }
 
-   public List<eav.c> a(eaw $$0, ht $$1, dbf $$2, boolean $$3) {
-      eav $$4 = this.a($$0);
-      List<eav.c> $$5 = $$4.a($$1, new ear().a($$2), cuv.pa, $$3);
-      List<eav.c> $$6 = Lists.newArrayList();
-
-      for (eav.c $$7 : $$5) {
-         rz $$8 = $$7.c();
-         if ($$8 != null) {
-            dig $$9 = dig.valueOf($$8.l("mode"));
-            if ($$9 == dig.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
+   public ig<csy> d() {
+      return this.f;
    }
 
    @Override
-   public List<eav.c> a(eaw $$0, ht $$1, dbf $$2, ato $$3) {
-      eav $$4 = this.a($$0);
-      ObjectArrayList<eav.c> $$5 = $$4.a($$1, new ear().a($$2), cuv.pb, true);
-      ac.b($$5, $$3);
-      return $$5;
+   protected boolean a(djg $$0, int $$1, int $$2) {
+      List<crh> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new crh($$1, $$2));
    }
 
    @Override
-   public dwn a(eaw $$0, ht $$1, dbf $$2) {
-      eav $$3 = this.a($$0);
-      return $$3.b(new ear().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(eaw $$0, csm $$1, csk $$2, dit $$3, ht $$4, ht $$5, dbf $$6, dwn $$7, ato $$8, boolean $$9) {
-      eav $$10 = this.a($$0);
-      ear $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (eav.c $$13 : eav.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected ear a(dbf $$0, dwn $$1, boolean $$2) {
-      ear $$3 = new ear();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(dzx.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(ead.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
-   }
-
-   @Override
-   public dyd<?> a() {
-      return dyd.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   public dyf<?> e() {
+      return dyf.b;
    }
 }

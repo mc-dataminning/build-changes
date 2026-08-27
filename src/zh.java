@@ -1,4 +1,4 @@
-public record zh(cqz a) implements wk<yd> {
+public record zh(crh a) implements wk<yd> {
    public zh(tu $$0) {
       this($$0.f());
    }

@@ -1,41 +1,30 @@
-public class fsz extends fta<dgg> {
-   private static final agg c = new agg("textures/entity/end_gateway_beam.png");
+public class fsz implements fsu<dfj> {
+   private static final float a = 0.375F;
+   private final fwv b;
 
-   public fsz(fsi.a $$0) {
-      super($$0);
+   public fsz(fsv.a $$0) {
+      this.b = $$0.d();
    }
 
-   public void a(dgg $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
-         $$6 = ati.a($$6 * (float) Math.PI);
-         int $$8 = ati.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? cjp.c.d() : cjp.k.d();
-         long $$10 = $$0.k().V();
-         fsd.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dfj $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
+      hx $$6 = $$0.q().c(cvo.f);
+      il<clj> $$7 = $$0.c();
+      int $$8 = (int)$$0.p().a();
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         clj $$10 = $$7.get($$9);
+         if ($$10 != clj.b) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            hx $$11 = hx.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, clg.i, $$4, $$5, $$2, $$3, $$0.k(), $$8 + $$9);
+            $$2.b();
+         }
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fqp d() {
-      return fqp.v();
-   }
-
-   @Override
-   public int aR_() {
-      return 256;
    }
 }

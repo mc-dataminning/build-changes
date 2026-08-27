@@ -1,276 +1,53 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.List;
 
-public class exe {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public class exe implements exh {
+   private static final agi d = new agi("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public exe(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+   public exe(af $$0) {
+      this.e = $$0;
    }
 
-   public static Supplier<String> a(esr $$0) {
-      return () -> b($$0);
-   }
-
-   public static String b(esr $$0) {
-      return n.a($$0.o.a().replaceAll("\\r", ""));
-   }
-
-   public static Consumer<String> c(esr $$0) {
-      return $$1 -> a($$0, $$1);
-   }
-
-   public static void a(esr $$0, String $$1) {
-      $$0.o.a($$1);
-   }
-
-   public boolean a(char $$0) {
-      if (aa.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
-      }
-
-      return true;
-   }
-
-   public boolean a(int $$0) {
-      if (fah.g($$0)) {
-         this.d();
-         return true;
-      } else if (fah.f($$0)) {
-         this.c();
-         return true;
-      } else if (fah.e($$0)) {
-         this.b();
-         return true;
-      } else if (fah.d($$0)) {
-         this.a();
-         return true;
-      } else {
-         exe.a $$1 = fah.p() ? exe.a.b : exe.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
+   @Override
+   public exh.a a(euo $$0, exi $$1, long $$2) {
+      aq $$3 = this.e.b().d().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<asy> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == ar.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().c(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
          } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = atm.d(atm.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().c(), 30, 11, $$5 | $$8, false);
             } else {
-               if ($$0 == 263) {
-                  this.a(-1, fah.q(), $$1);
-                  return true;
+               int $$9 = atm.d(atm.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+
+               for (asy $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
                }
-
-               if ($$0 == 262) {
-                  this.a(1, fah.q(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(fah.q());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(fah.q());
-                  return true;
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   private int h(int $$0) {
-      return ati.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = ati.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, exe.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ac.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = etd.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, exe.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = etd.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = ac.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
             }
          }
 
-         this.b.accept($$2);
-      }
-   }
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == ar.b) {
+               $$1.b().ah().a(gex.a(aqr.zf, 1.0F, 1.0F));
+            }
+         }
 
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? exh.a.b : exh.a.a;
       } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
+         return exh.a.b;
       }
-   }
-
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
-      this.b(false);
-   }
-
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public void f(int $$0) {
-      this.c($$0, true);
-   }
-
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public void g(int $$0) {
-      this.g = this.h($$0);
-   }
-
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = ati.a($$0, 0, $$2);
-      this.g = ati.a($$1, 0, $$2);
-   }
-
-   public boolean i() {
-      return this.f != this.g;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

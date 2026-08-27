@@ -2,9 +2,9 @@ public class yl implements wk<yd> {
    private final ht a;
    private final int b;
    private final int c;
-   private final cut d;
+   private final cva d;
 
-   public yl(ht $$0, cut $$1, int $$2, int $$3) {
+   public yl(ht $$0, cva $$1, int $$2, int $$3) {
       this.a = $$0;
       this.d = $$1;
       this.b = $$2;
@@ -42,7 +42,7 @@ public class yl implements wk<yd> {
       return this.c;
    }
 
-   public cut f() {
+   public cva f() {
       return this.d;
    }
 }

@@ -1,59 +1,89 @@
-public class fek extends fah {
-   private static final ur a = ur.c("gui.abuseReport.title");
-   private static final ur b = ur.c("gui.abuseReport.message");
-   private static final ur c = ur.c("gui.abuseReport.type.chat");
-   private static final ur k = ur.c("gui.abuseReport.type.skin");
-   private static final ur l = ur.c("gui.abuseReport.type.name");
-   private static final int m = 6;
-   private final fah n;
-   private final flz o;
-   private final feo p;
-   private final eya q = eya.d().a(6);
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-   public fek(fah $$0, flz $$1, feo $$2) {
-      super(a);
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+public class fek extends ewf {
+   private static final ewm c = new ewm(new agi("recipe_book/tab"), new agi("recipe_book/tab_selected"));
+   private final etm d;
+   private static final float e = 15.0F;
+   private float l;
+
+   public fek(etm $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
+   }
+
+   public void a(etd $$0) {
+      esq $$1 = $$0.s.m();
+      List<fem> $$2 = $$1.a(this.d);
+      if ($$0.s.bS instanceof chz) {
+         for (fem $$3 : $$2) {
+            for (coq<?> $$4 : $$3.a($$1.a((chz<?>)$$0.s.bS))) {
+               if ($$1.d($$4)) {
+                  this.l = 15.0F;
+                  return;
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public ur h() {
-      return uq.a(super.h(), b);
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.l > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
+         }
+
+         etd $$5 = etd.N();
+         RenderSystem.disableDepthTest();
+         agi $$6 = this.a.a(true, this.b);
+         int $$7 = this.p();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.ap());
+         if (this.l > 0.0F) {
+            $$0.c().b();
+            this.l -= $$3;
+         }
+      }
    }
 
-   @Override
-   protected void aO_() {
-      this.q.c().b();
-      this.q.a(new evt(this.e, this.i), this.q.b().e(6));
-      this.q.a(new evg(b, this.i).b(true), this.q.b().e(6));
-      eum $$0 = this.q.a(eum.a(c, $$0x -> this.f.a(new feg(this.n, this.o, this.p.e()))).a());
-      if (!this.p.j()) {
-         $$0.i = false;
-         $$0.a(evx.a(ur.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.p.h()) {
-         $$0.i = false;
-         $$0.a(evx.a(ur.a("gui.socialInteractions.tooltip.report.no_messages", this.p.c())));
+   private void a(euo $$0, fwv $$1) {
+      List<clj> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.p() + 9 + $$3, this.r() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.p() + 3 + $$3, this.r() + 5);
+         $$0.b($$2.get(1), this.p() + 14 + $$3, this.r() + 5);
+      }
+   }
+
+   public etm b() {
+      return this.d;
+   }
+
+   public boolean a(esq $$0) {
+      List<fem> $$1 = $$0.a(this.d);
+      this.j = false;
+      if ($$1 != null) {
+         for (fem $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.j = true;
+               break;
+            }
+         }
       }
 
-      this.q.a(eum.a(k, $$0x -> this.f.a(new fem(this.n, this.o, this.p.e(), this.p.f()))).a());
-      this.q.a(eum.a(l, $$0x -> this.f.a(new fej(this.n, this.o, this.p.e(), this.p.c()))).a());
-      this.q.a(eyb.b(20));
-      this.q.a(eum.a(uq.e, $$0x -> this.aE_()).a());
-      this.q.a($$1 -> {
-         euk var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.q.a();
-      exu.a(this.q, this.s());
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.n);
+      return this.j;
    }
 }

@@ -34,7 +34,7 @@ public interface cl<T extends Number> {
 
    static <T extends Number, R extends cl<T>> Codec<R> a(Codec<T> $$0, cl.a<T, R> $$1) {
       Codec<R> $$2 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(asq.a($$0, "min").forGetter(cl::a), asq.a($$0, "max").forGetter(cl::b)).apply($$2x, $$1::create)
+         $$2x -> $$2x.group(asu.a($$0, "min").forGetter(cl::a), asu.a($$0, "max").forGetter(cl::b)).apply($$2x, $$1::create)
       );
       return Codec.either($$2, $$0).xmap($$1x -> (cl)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
          Optional<T> $$1x = $$0x.d();

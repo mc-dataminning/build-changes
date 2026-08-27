@@ -3,7 +3,7 @@ import java.util.Map;
 
 public record wo(xd a) implements wk<wn> {
    private static final int b = 1048576;
-   private static final Map<agg, tu.a<? extends xd>> c = ImmutableMap.builder()
+   private static final Map<agi, tu.a<? extends xd>> c = ImmutableMap.builder()
       .put(xc.a, xc::new)
       .put(xa.a, xa::new)
       .put(xb.a, xb::new)
@@ -28,12 +28,12 @@ public record wo(xd a) implements wk<wn> {
       this(a($$0.t(), $$0));
    }
 
-   private static xd a(agg $$0, tu $$1) {
+   private static xd a(agi $$0, tu $$1) {
       tu.a<? extends xd> $$2 = c.get($$0);
       return (xd)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
    }
 
-   private static xe b(agg $$0, tu $$1) {
+   private static xe b(agi $$0, tu $$1) {
       int $$2 = $$1.readableBytes();
       if ($$2 >= 0 && $$2 <= 1048576) {
          $$1.j($$2);

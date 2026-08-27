@@ -1,5 +1,5 @@
-import java.util.List;
+import java.time.Duration;
 
 public interface bgo {
-   List<bgl> bk();
+   Duration a();
 }

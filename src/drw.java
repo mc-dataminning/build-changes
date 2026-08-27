@@ -1,25 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drw implements drn {
+public record drw(dui b, dny c, bic d, int e) implements drz {
    public static final Codec<drw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+               dui.a.fieldOf("state_provider").forGetter(drw::a),
+               dny.b.fieldOf("target").forGetter(drw::b),
+               bic.b(0, 8).fieldOf("radius").forGetter(drw::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(drw::d)
             )
             .apply($$0, drw::new)
    );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
 
-   public drw(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public dui a() {
+      return this.b;
+   }
+
+   public dny b() {
+      return this.c;
+   }
+
+   public bic c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

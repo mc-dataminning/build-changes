@@ -1,15 +1,21 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-public interface eln extends AutoCloseable {
-   @Override
-   default void close() {
+public class eln {
+   public static void a(emh $$0, float $$1) {
+      ConcurrentLinkedQueue<emg> $$2 = $$0.i();
    }
 
-   @Nullable
-   default elm a(int $$0) {
-      return null;
+   public static void b(emh $$0, float $$1) {
+      ConcurrentLinkedQueue<emg> $$2 = $$0.j();
    }
 
-   IntSet a();
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
+   }
+
+   public static double b() {
+      return GLFW.glfwGetTime();
+   }
 }

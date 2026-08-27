@@ -1,39 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtb extends dsz {
-   public static final Codec<dtb> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dtb::new)
-   );
-   protected final int b;
+public class dtb<P extends dta> {
+   public static final dtb<dtd> a = a("two_layers_feature_size", dtd.d);
+   public static final dtb<dtc> b = a("three_layers_feature_size", dtc.d);
+   private final Codec<P> c;
 
-   public dtb(bhv $$0, bhv $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends dta> dtb<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.ab, $$0, new dtb<>($$1));
    }
 
-   @Override
-   protected dta<?> a() {
-      return dta.g;
+   private dtb(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ato $$0, int $$1, dsj $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public Codec<P> a() {
+      return this.c;
    }
 }

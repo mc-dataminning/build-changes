@@ -1,33 +1,102 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public interface fmg {
-   boolean a(fmh var1);
+public class fmg {
+   final int a;
+   private final List<fmg.a> b = new ArrayList<>();
 
-   boolean a(fmi var1);
+   public fmg(int $$0) {
+      this.a = $$0;
+   }
 
-   static fmg a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new fmg() {
-         @Override
-         public boolean a(fmh $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+   public void a(fly $$0, IntCollection $$1, fmg.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
+
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fma $$6 = $$0.b($$4);
+         if ($$6 instanceof fmb.a) {
+            fmb.a $$5 = (fmb.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
          }
+      }
+   }
 
-         @Override
-         public boolean a(fmi $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+   public void a(vh $$0) {
+      this.b.add(new fmg.a($$0));
+   }
+
+   public boolean b(vh $$0) {
+      boolean $$1 = false;
+      Iterator<fmg.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fmg.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
          }
-      };
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<vd> b;
+      private vh c;
+      private boolean d = true;
+      private int e;
+
+      a(vh $$0) {
+         this.b = new ObjectOpenHashSet($$0.l().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(vh $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.k());
+            if (this.d && this.c.f().equals($$0.f())) {
+               if (this.c.j().a($$0.j())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fmg.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, fmb.a var2);
    }
 }

@@ -4,15 +4,15 @@ import javax.annotation.Nullable;
 public class dn {
    public static final dn a = new dn(null);
    @Nullable
-   private final agg b;
+   private final agi b;
    private boolean c;
    private Optional<gx<du>> d = Optional.empty();
 
-   public dn(@Nullable agg $$0) {
+   public dn(@Nullable agi $$0) {
       this.b = $$0;
    }
 
-   public Optional<gx<du>> a(agu $$0) {
+   public Optional<gx<du>> a(agw $$0) {
       if (!this.c) {
          if (this.b != null) {
             this.d = $$0.a(this.b);
@@ -25,7 +25,7 @@ public class dn {
    }
 
    @Nullable
-   public agg a() {
-      return this.d.<agg>map(gx::a).orElse(this.b);
+   public agi a() {
+      return this.d.<agi>map(gx::a).orElse(this.b);
    }
 }

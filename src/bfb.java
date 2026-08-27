@@ -1,33 +1,83 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bfb {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bff c = bfe.a;
+public class bfb<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
 
-   public bfb(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bfb(Codec<T> $$0, FileChannel $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean a() {
-      return this.c != bfe.a;
+   public static <T> bfb<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bfb<>($$0, $$2);
    }
 
-   public void b() {
-      this.c = bfe.a;
+   public void a(T $$0) throws IOException, JsonIOException {
+      JsonElement $$1 = ac.a(this.b.encodeStart(JsonOps.INSTANCE, $$0), IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, $$2);
+      $$2.write(10);
+      $$2.flush();
    }
 
-   public void c() {
-      this.c = new bfa(this.a, this.b, true);
+   public bfc<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
+      } else {
+         this.d.incrementAndGet();
+         final bfc<T> $$0 = bfc.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bfc<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bfb.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bfb.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bfb.this.b();
+            }
+         };
+      }
    }
 
-   public bfh d() {
-      return this.c;
+   @Override
+   public void close() throws IOException {
+      this.b();
    }
 
-   public bfg e() {
-      return this.c.d();
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
+      }
    }
 }

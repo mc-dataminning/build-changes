@@ -6,7 +6,7 @@ public class zq implements wk<yd> {
    private final int b;
    private final zr c;
 
-   public zq(cqz $$0, ebv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public zq(crh $$0, ech $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.a = $$0.e;
       this.b = $$0.f;
       this.c = new zr($$0, $$1, $$2, $$3);

@@ -1,97 +1,53 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class asr extends InputStream {
-   private static final int a = 8192;
-   private final InputStream b;
-   private final byte[] c;
-   private int d;
-   private int e;
+public class asr<K, V extends asr.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-   public asr(InputStream $$0) {
-      this($$0, 8192);
+   public asr<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   public asr(InputStream $$0, int $$1) {
-      this.b = $$0;
-      this.c = new byte[$$1];
-   }
-
-   @Override
-   public int read() throws IOException {
-      if (this.e >= this.d) {
-         this.b();
-         if (this.e >= this.d) {
-            return -1;
-         }
-      }
-
-      return Byte.toUnsignedInt(this.c[this.e++]);
-   }
-
-   @Override
-   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
-      int $$3 = this.a();
-      if ($$3 <= 0) {
-         if ($$2 >= this.c.length) {
-            return this.b.read($$0, $$1, $$2);
-         }
-
-         this.b();
-         $$3 = this.a();
-         if ($$3 <= 0) {
-            return -1;
-         }
-      }
-
-      if ($$2 > $$3) {
-         $$2 = $$3;
-      }
-
-      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
-      this.e += $$2;
-      return $$2;
-   }
-
-   @Override
-   public long skip(long $$0) throws IOException {
-      if ($$0 <= 0L) {
-         return 0L;
-      } else {
-         long $$1 = (long)this.a();
-         if ($$1 <= 0L) {
-            return this.b.skip($$0);
-         } else {
-            if ($$0 > $$1) {
-               $$0 = $$1;
-            }
-
-            this.e = (int)((long)this.e + $$0);
-            return $$0;
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
          }
       }
    }
 
-   @Override
-   public int available() throws IOException {
-      return this.a() + this.b.available();
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-   }
-
-   private int a() {
-      return this.d - this.e;
-   }
-
-   private void b() throws IOException {
-      this.d = 0;
-      this.e = 0;
-      int $$0 = this.b.read(this.c, 0, this.c.length);
-      if ($$0 > 0) {
-         this.d = $$0;
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
       }
+   }
+
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
+
+   public interface a<K> {
+      void a(Consumer<K> var1);
+
+      void b(Consumer<K> var1);
    }
 }

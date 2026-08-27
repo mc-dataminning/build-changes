@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dgu {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dgu {
+   boolean b();
+
+   ht c();
+
+   String d();
 }

@@ -1,24 +1,42 @@
-public class bsw extends brt {
-   private final blh a;
+import java.util.EnumSet;
 
-   public bsw(blh $$0) {
+public class bsw extends bsb {
+   private final bli a;
+   private double b;
+   private double c;
+   private int d;
+
+   public bsw(bli $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bsb.a.a, bsb.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.dL().N() && this.a.c(bkn.f).b() && bvp.a(this.a);
+      return this.a.eh().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      ((bug)this.a.L()).d(true);
+      double $$0 = (Math.PI * 2) * this.a.eh().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.eh().a(20);
    }
 
    @Override
-   public void d() {
-      if (bvp.a(this.a)) {
-         ((bug)this.a.L()).d(false);
-      }
+   public boolean S_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.I().a(this.a.ds() + this.b, this.a.dw(), this.a.dy() + this.c);
    }
 }

@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class lw implements lu {
-   private final cut a;
+   private final cva a;
    private final List<lw.b> b = Lists.newArrayList();
 
-   private lw(cut $$0) {
+   private lw(cva $$0) {
       this.a = $$0;
    }
 
    @Override
-   public cut a() {
+   public cva a() {
       return this.a;
    }
 
-   public static lw a(cut $$0) {
+   public static lw a(cva $$0) {
       return new lw($$0);
    }
 
@@ -46,7 +46,7 @@ public class lw implements lu {
    }
 
    public JsonElement b() {
-      dgx<cut, dgw> $$0 = this.a.n();
+      dhj<cva, dhi> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(lw.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class lw implements lu {
       }
 
       @Override
-      public void a(dgx<?, ?> $$0) {
+      public void a(dhj<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class lw implements lu {
          this.a = $$0;
       }
 
-      public void a(dgx<?, ?> $$0) {
+      public void a(dhj<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

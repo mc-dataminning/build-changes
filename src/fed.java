@@ -1,15 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fed extends fdr {
-   private static final ur i = ur.c("gui.recipebook.toggleRecipes.smokable");
-
-   @Override
-   protected ur c() {
-      return i;
-   }
-
-   @Override
-   protected Set<ckw> b() {
-      return deg.f().keySet();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fed {
 }

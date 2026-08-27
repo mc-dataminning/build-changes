@@ -1,48 +1,62 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class ewo {
-   private final Consumer<euk> a;
-   private final Consumer<euk> b;
-   @Nullable
-   private ewn c;
-   @Nullable
-   private eyp d;
+public class ewo extends ewn {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public ewo(Consumer<euk> $$0, Consumer<euk> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ewo(eum $$0, atu $$1) {
+      super($$0, $$1);
    }
 
-   public void a(eyp $$0) {
-      this.d = $$0;
-      ewn $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
+   @Override
+   protected void a(euo $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   }
+
+   private void a(euo $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   }
+
+   private void a(euo $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(frc.C(), $$1, $$1 + $$2 - 1, $$3, -1);
+   }
+
+   @Override
+   protected String a(double $$0) {
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+      } else {
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", atm.a($$0));
       }
    }
 
-   public void a(ewn $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            esr.N().ah().a(gek.a(aqn.yy, 1.0F));
-         }
-      }
+   @Override
+   protected int b(double $$0) {
+      return d(e($$0));
    }
 
-   @Nullable
-   public ewn a() {
-      return this.c;
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   }
+
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

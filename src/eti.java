@@ -1,34 +1,30 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import java.util.function.IntFunction;
 
-public record eti(float a, boolean b, Map<String, List<eth>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<eth>> b = Maps.newHashMap();
-      private boolean c;
+public enum eti implements ato {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-      public static eti.a a(float $$0) {
-         return new eti.a($$0);
-      }
+   private static final IntFunction<eti> d = asf.a(eti::a, values(), asf.a.b);
+   private final int e;
+   private final String f;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private eti(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-      public eti.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public String b() {
+      return this.f;
+   }
 
-      public eti.a a(String $$0, eth $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
+   @Override
+   public int a() {
+      return this.e;
+   }
 
-      public eti b() {
-         return new eti(this.a, this.c, this.b);
-      }
+   public static eti a(int $$0) {
+      return d.apply($$0);
    }
 }

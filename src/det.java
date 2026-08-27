@@ -1,217 +1,162 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class det<T extends der> {
-   private static final Logger Q = LogUtils.getLogger();
-   public static final det<dfn> a = a("furnace", det.b.a(dfn::new, cuv.cD));
-   public static final det<dey> b = a("chest", det.b.a(dey::new, cuv.cv));
-   public static final det<dgj> c = a("trapped_chest", det.b.a(dgj::new, cuv.gV));
-   public static final det<dfm> d = a("ender_chest", det.b.a(dfm::new, cuv.fG));
-   public static final det<dfs> e = a("jukebox", det.b.a(dfs::new, cuv.dT));
-   public static final det<dfj> f = a("dispenser", det.b.a(dfj::new, cuv.aU));
-   public static final det<dfk> g = a("dropper", det.b.a(dfk::new, cuv.hi));
-   public static final det<dga> h = a(
-      "sign",
-      det.b.a(
-         dga::new,
-         cuv.cE,
-         cuv.cF,
-         cuv.cG,
-         cuv.cH,
-         cuv.cI,
-         cuv.cJ,
-         cuv.cK,
-         cuv.cR,
-         cuv.cS,
-         cuv.cT,
-         cuv.cU,
-         cuv.cV,
-         cuv.cW,
-         cuv.cX,
-         cuv.oW,
-         cuv.oY,
-         cuv.oX,
-         cuv.oZ,
-         cuv.cL,
-         cuv.cY,
-         cuv.cM,
-         cuv.cZ
-      )
-   );
-   public static final det<dfo> i = a(
-      "hanging_sign",
-      det.b.a(
-         dfo::new,
-         cuv.da,
-         cuv.db,
-         cuv.dc,
-         cuv.dd,
-         cuv.de,
-         cuv.df,
-         cuv.dg,
-         cuv.dh,
-         cuv.di,
-         cuv.dj,
-         cuv.dk,
-         cuv.dl,
-         cuv.dm,
-         cuv.dn,
-         cuv.do,
-         cuv.dp,
-         cuv.dq,
-         cuv.dr,
-         cuv.dt,
-         cuv.du,
-         cuv.ds,
-         cuv.dv
-      )
-   );
-   public static final det<dge> j = a("mob_spawner", det.b.a(dge::new, cuv.ct));
-   public static final det<dgs> k = a("piston", det.b.a(dgs::new, cuv.bQ));
-   public static final det<deu> l = a("brewing_stand", det.b.a(deu::new, cuv.fs));
-   public static final det<dfl> m = a("enchanting_table", det.b.a(dfl::new, cuv.fr));
-   public static final det<dgh> n = a("end_portal", det.b.a(dgh::new, cuv.fx));
-   public static final det<dem> o = a("beacon", det.b.a(dem::new, cuv.fO));
-   public static final det<dgc> p = a(
-      "skull", det.b.a(dgc::new, cuv.gE, cuv.gF, cuv.gM, cuv.gN, cuv.gO, cuv.gP, cuv.gI, cuv.gJ, cuv.gG, cuv.gH, cuv.gK, cuv.gL, cuv.gQ, cuv.gR)
-   );
-   public static final det<dfg> q = a("daylight_detector", det.b.a(dfg::new, cuv.gZ));
-   public static final det<dfq> r = a("hopper", det.b.a(dfq::new, cuv.hc));
-   public static final det<dfc> s = a("comparator", det.b.a(dfc::new, cuv.gY));
-   public static final det<deh> t = a(
-      "banner",
-      det.b.a(
-         deh::new,
-         cuv.iJ,
-         cuv.iK,
-         cuv.iL,
-         cuv.iM,
-         cuv.iN,
-         cuv.iO,
-         cuv.iP,
-         cuv.iQ,
-         cuv.iR,
-         cuv.iS,
-         cuv.iT,
-         cuv.iU,
-         cuv.iV,
-         cuv.iW,
-         cuv.iX,
-         cuv.iY,
-         cuv.iZ,
-         cuv.ja,
-         cuv.jb,
-         cuv.jc,
-         cuv.jd,
-         cuv.je,
-         cuv.jf,
-         cuv.jg,
-         cuv.jh,
-         cuv.ji,
-         cuv.jj,
-         cuv.jk,
-         cuv.jl,
-         cuv.jm,
-         cuv.jn,
-         cuv.jo
-      )
-   );
-   public static final det<dgf> u = a("structure_block", det.b.a(dgf::new, cuv.pa));
-   public static final det<dgg> v = a("end_gateway", det.b.a(dgg::new, cuv.kF));
-   public static final det<dfb> w = a("command_block", det.b.a(dfb::new, cuv.fN, cuv.kH, cuv.kG));
-   public static final det<dfz> x = a(
-      "shulker_box",
-      det.b.a(dfz::new, cuv.kP, cuv.lf, cuv.lb, cuv.lc, cuv.kZ, cuv.kX, cuv.ld, cuv.kT, cuv.kY, cuv.kV, cuv.kS, cuv.kR, cuv.kW, cuv.la, cuv.le, cuv.kQ, cuv.kU)
-   );
-   public static final det<den> y = a(
-      "bed", det.b.a(den::new, cuv.bn, cuv.bo, cuv.bk, cuv.bl, cuv.bi, cuv.bg, cuv.bm, cuv.bc, cuv.bh, cuv.be, cuv.bb, cuv.ba, cuv.bf, cuv.bj, cuv.aZ, cuv.bd)
-   );
-   public static final det<dfd> z = a("conduit", det.b.a(dfd::new, cuv.mX));
-   public static final det<dek> A = a("barrel", det.b.a(dek::new, cuv.nU));
-   public static final det<dgd> B = a("smoker", det.b.a(dgd::new, cuv.nV));
-   public static final det<deq> C = a("blast_furnace", det.b.a(deq::new, cuv.nW));
-   public static final det<dft> D = a("lectern", det.b.a(dft::new, cuv.oa));
-   public static final det<dep> E = a("bell", det.b.a(dep::new, cuv.od));
-   public static final det<dfr> F = a("jigsaw", det.b.a(dfr::new, cuv.pb));
-   public static final det<dex> G = a("campfire", det.b.a(dex::new, cuv.og, cuv.oh));
-   public static final det<deo> H = a("beehive", det.b.a(deo::new, cuv.pe, cuv.pf));
-   public static final det<dfx> I = a("sculk_sensor", det.b.a(dfx::new, cuv.qD));
-   public static final det<dew> J = a("calibrated_sculk_sensor", det.b.a(dew::new, cuv.qE));
-   public static final det<dfw> K = a("sculk_catalyst", det.b.a(dfw::new, cuv.qH));
-   public static final det<dfy> L = a("sculk_shrieker", det.b.a(dfy::new, cuv.qI));
-   public static final det<dfa> M = a("chiseled_bookshelf", det.b.a(dfa::new, cuv.cm));
-   public static final det<dev> N = a("brushable_block", det.b.a(dev::new, cuv.J, cuv.M));
-   public static final det<dfh> O = a("decorated_pot", det.b.a(dfh::new, cuv.so));
-   public static final det<dff> P = a("crafter", det.b.a(dff::new, cuv.sp));
-   private final det.a<? extends T> R;
-   private final Set<cut> S;
-   private final Type<?> T;
-   private final ib.c<det<?>> U = jy.l.f(this);
-
+public class det extends dfd implements bjb {
+   public static final int a = 6;
+   public static final String b = "Patterns";
+   public static final String c = "Pattern";
+   public static final String d = "Color";
    @Nullable
-   public static agg a(det<?> $$0) {
-      return jy.l.b($$0);
+   private ur e;
+   private cjx f;
+   @Nullable
+   private sf g;
+   @Nullable
+   private List<Pair<ib<deu>, cjx>> h;
+
+   public det(ht $$0, dhi $$1) {
+      super(dff.t, $$0, $$1);
+      this.f = ((ctr)$$1.b()).b();
    }
 
-   private static <T extends der> det<T> a(String $$0, det.b<T> $$1) {
-      if ($$1.b.isEmpty()) {
-         Q.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
-      }
-
-      Type<?> $$2 = ac.a(ban.s, $$0);
-      return io.a(jy.l, $$0, $$1.a($$2));
-   }
-
-   public det(det.a<? extends T> $$0, Set<cut> $$1, Type<?> $$2) {
-      this.R = $$0;
-      this.S = $$1;
-      this.T = $$2;
+   public det(ht $$0, dhi $$1, cjx $$2) {
+      this($$0, $$1);
+      this.f = $$2;
    }
 
    @Nullable
-   public T a(ht $$0, dgw $$1) {
-      return (T)this.R.create($$0, $$1);
+   public static sf a(clj $$0) {
+      sf $$1 = null;
+      rz $$2 = cjc.a($$0);
+      if ($$2 != null && $$2.b("Patterns", 9)) {
+         $$1 = $$2.c("Patterns", 10).e();
+      }
+
+      return $$1;
    }
 
-   public boolean a(dgw $$0) {
-      return this.S.contains($$0.b());
+   public void a(clj $$0, cjx $$1) {
+      this.f = $$1;
+      this.b($$0);
+   }
+
+   public void b(clj $$0) {
+      this.g = a($$0);
+      this.h = null;
+      this.e = $$0.A() ? $$0.y() : null;
+   }
+
+   @Override
+   public ur ad() {
+      return (ur)(this.e != null ? this.e : ur.c("block.minecraft.banner"));
    }
 
    @Nullable
-   public ib.c<det<?>> a() {
-      return this.U;
+   @Override
+   public ur af() {
+      return this.e;
    }
 
-   @Nullable
-   public T a(cqy $$0, ht $$1) {
-      der $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.u() == this ? $$2 : null);
+   public void a(ur $$0) {
+      this.e = $$0;
    }
 
-   @FunctionalInterface
-   interface a<T extends der> {
-      T create(ht var1, dgw var2);
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      if (this.g != null) {
+         $$0.a("Patterns", this.g);
+      }
+
+      if (this.e != null) {
+         $$0.a("CustomName", ur.a.a(this.e));
+      }
    }
 
-   public static final class b<T extends der> {
-      private final det.a<? extends T> a;
-      final Set<cut> b;
-
-      private b(det.a<? extends T> $$0, Set<cut> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = ur.a.a($$0.l("CustomName"));
       }
 
-      public static <T extends der> det.b<T> a(det.a<? extends T> $$0, cut... $$1) {
-         return new det.b<>($$0, ImmutableSet.copyOf($$1));
+      this.g = $$0.c("Patterns", 10);
+      this.h = null;
+   }
+
+   public yk a() {
+      return yk.a(this);
+   }
+
+   @Override
+   public rz aw_() {
+      return this.o();
+   }
+
+   public static int c(clj $$0) {
+      rz $$1 = cjc.a($$0);
+      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
+   }
+
+   public List<Pair<ib<deu>, cjx>> c() {
+      if (this.h == null) {
+         this.h = a(this.f, this.g);
       }
 
-      public det<T> a(Type<?> $$0) {
-         return new det<>(this.a, this.b, $$0);
+      return this.h;
+   }
+
+   public static List<Pair<ib<deu>, cjx>> a(cjx $$0, @Nullable sf $$1) {
+      List<Pair<ib<deu>, cjx>> $$2 = Lists.newArrayList();
+      $$2.add(Pair.of(jy.an.f(dev.a), $$0));
+      if ($$1 != null) {
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            rz $$4 = $$1.a($$3);
+            ib<deu> $$5 = deu.a($$4.l("Pattern"));
+            if ($$5 != null) {
+               int $$6 = $$4.h("Color");
+               $$2.add(Pair.of($$5, cjx.a($$6)));
+            }
+         }
       }
+
+      return $$2;
+   }
+
+   public static void d(clj $$0) {
+      rz $$1 = cjc.a($$0);
+      if ($$1 != null && $$1.b("Patterns", 9)) {
+         sf $$2 = $$1.c("Patterns", 10);
+         if (!$$2.isEmpty()) {
+            $$2.c($$2.size() - 1);
+            if ($$2.isEmpty()) {
+               $$1.r("Patterns");
+            }
+         }
+
+         $$1.r("id");
+         cjc.a($$0, dff.t, $$1);
+      }
+   }
+
+   public clj f() {
+      clj $$0 = new clj(cuf.a(this.f));
+      if (this.g != null && !this.g.isEmpty()) {
+         rz $$1 = new rz();
+         $$1.a("Patterns", this.g.e());
+         cjc.a($$0, this.u(), $$1);
+      }
+
+      if (this.e != null) {
+         $$0.a(this.e);
+      }
+
+      return $$0;
+   }
+
+   public cjx g() {
+      return this.f;
    }
 }

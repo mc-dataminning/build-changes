@@ -1,53 +1,42 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eic(eif b, eif c) implements eif {
+public record eic(float b, float c) implements ehw {
    public static final Codec<eic> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eig.a.fieldOf("n").forGetter(eic::c), eig.a.fieldOf("p").forGetter(eic::d)).apply($$0, eic::new)
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eic::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(eic::d)).apply($$0, eic::new)
    );
 
    @Override
-   public eie b() {
-      return eig.d;
+   public ehx b() {
+      return ehy.f;
    }
 
    @Override
-   public int a(eel $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ato $$3 = $$0.b();
-      int $$4 = 0;
+   public Set<ehf<?>> a() {
+      return ImmutableSet.of(ehi.d);
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public boolean a(eex $$0) {
+      bkq $$1 = $$0.c(ehi.d);
+      int $$2 = 0;
+      if ($$1 instanceof blg) {
+         $$2 = cpw.h((blg)$$1);
       }
 
-      return $$4;
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   @Override
-   public float b(eel $$0) {
-      return (float)this.a($$0);
+   public static ehw.a a(float $$0, float $$1) {
+      return () -> new eic($$0, $$1);
    }
 
-   public static eic a(int $$0, float $$1) {
-      return new eic(eid.a((float)$$0), eid.a($$1));
-   }
-
-   @Override
-   public Set<egt<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eif c() {
+   public float c() {
       return this.b;
    }
 
-   public eif d() {
+   public float d() {
       return this.c;
    }
 }

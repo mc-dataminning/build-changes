@@ -5,12 +5,12 @@ public class zw implements wk<yd> {
    private final float d;
    private final float e;
 
-   public zw(bki $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+   public zw(bkq $$0) {
+      this.a = $$0.ds();
+      this.b = $$0.du();
+      this.c = $$0.dy();
+      this.d = $$0.dD();
+      this.e = $$0.dF();
    }
 
    public zw(tu $$0) {

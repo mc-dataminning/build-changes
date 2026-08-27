@@ -1,12 +1,12 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+public class eem extends RuntimeException {
+   private final ur a;
 
-public interface eem {
-   default Set<egt<?>> a() {
-      return ImmutableSet.of();
+   public eem(ur $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   default void a(eeu $$0) {
-      $$0.a(this);
+   public ur a() {
+      return this.a;
    }
 }

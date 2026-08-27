@@ -1,36 +1,49 @@
-public class ckh extends ckw implements cmv {
-   public ckh(ckw.a $$0) {
+import java.util.List;
+
+public class ckh extends cle {
+   public ckh(cle.a $$0) {
       super($$0);
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
-         }
-
-         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.hT, aqo.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         $$1.a(dlg.C);
+   public bix a(cnt $$0) {
+      csa $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dhi $$3 = $$1.a_($$2);
+      if (!$$3.a(cvc.co) && !$$3.a(cvc.F)) {
+         return bix.e;
       } else {
-         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.hV, aqo.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cpo.c($$3);
-            int $$6 = cpo.b($$3);
-            $$0.b(new cea($$1, $$0, $$6, $$5));
+         ht $$4 = $$2.c();
+         if (!$$1.t($$4)) {
+            return bix.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bkq> $$8 = $$1.a_(null, new ejp($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bix.e;
+            } else {
+               if ($$1 instanceof ame) {
+                  bzg $$9 = new bzg($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dls.t, $$4);
+                  dku $$10 = ((ame)$$1).C();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bix.a($$1.B);
+            }
          }
-
-         $$1.b(aqx.c.b(this));
-         $$1.a(dlg.D);
       }
-
-      return bir.a($$3, $$0.x_());
    }
 
    @Override
-   public int c() {
-      return 1;
+   public boolean i(clj $$0) {
+      return true;
    }
 }

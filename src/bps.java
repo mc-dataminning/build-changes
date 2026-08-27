@@ -1,33 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class bps {
-   private static final int a = 10;
-   private static final int b = 7;
-
-   public static bnz<blh> a(float $$0) {
-      return a($$0, 10, 7);
+   public static <E extends blg> boh<E> a(List<Pair<? extends bqm<? super E>, Integer>> $$0) {
+      return a($$0, bnl.a.b, bnl.b.a);
    }
 
-   public static bnz<blh> a(float $$0, int $$1, int $$2) {
-      return bqb.a((Function<bqb.b<blh>, ? extends App<bqb.c<blh>, bqe<blh>>>)($$3 -> $$3.group($$3.c(btz.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               ht $$7 = $$5.dl();
-               eji $$8;
-               if ($$4.b($$7)) {
-                  $$8 = bvr.a($$5, $$1, $$2);
-               } else {
-                  iu $$9 = iu.a($$7);
-                  iu $$10 = bmr.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = bvo.a($$5, $$1, $$2, eji.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = bvr.a($$5, $$1, $$2);
-                  }
-               }
+   public static <E extends blg> boh<E> a(List<Pair<? extends bqm<? super E>, Integer>> $$0, bnl.a $$1, bnl.b $$2) {
+      bpf<bqm<? super E>> $$3 = new bpf<>();
+      $$0.forEach($$1x -> $$3.a((bqm<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return bqj.a((Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$3x -> $$3x.a((bqm<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bnl.a.b) {
+               $$3.a();
+            }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new buc($$1xxxx, $$0, 0)));
-               return true;
-            })));
+            for (bqm<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bnl.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

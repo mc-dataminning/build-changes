@@ -1,37 +1,49 @@
-public class fge extends fhp<bzv> {
-   public fge(fkb $$0) {
-      super($$0);
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+
+public class fge implements fga, fgb {
+   private static final agi a = new agi("spectator/teleport_to_player");
+   private static final Comparator<fls> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final ur c = ur.c("spectatorMenu.teleport");
+   private static final ur d = ur.c("spectatorMenu.teleport.prompt");
+   private final List<fgb> e;
+
+   public fge() {
+      this(etd.N().I().n());
    }
 
-   public static fkh a(fkf $$0) {
-      fkj $$1 = fhp.a($$0, 0.0F);
-      fkk $$2 = $$1.a();
-      $$2.a("head", fkg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fkd.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fkg.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fkd.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fkg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fkd.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fkg.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fkd.a(1.9F, 11.0F, 0.0F));
-      return fkh.a($$1, 64, 32);
+   public fge(Collection<fls> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != crx.d).sorted(b).map($$0x -> new ffx($$0x.a())).toList();
    }
 
-   public void a(bzv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.z().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.z().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.z().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.F().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.F().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.F().d();
-      this.l.a(this.k);
+   @Override
+   public List<fgb> a() {
+      return this.e;
+   }
+
+   @Override
+   public ur b() {
+      return d;
+   }
+
+   @Override
+   public void a(ffz $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ur aQ_() {
+      return c;
+   }
+
+   @Override
+   public void a(euo $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aR_() {
+      return !this.e.isEmpty();
    }
 }

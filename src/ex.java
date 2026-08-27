@@ -42,7 +42,7 @@ public class ex implements ArgumentType<ex.b> {
    }
 
    public static Collection<String> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((du)$$0.getSource()).m().aF()::e);
+      return a($$0, $$1, ((du)$$0.getSource()).m().aH()::e);
    }
 
    public static Collection<String> a(CommandContext<du> $$0, String $$1, Supplier<Collection<String>> $$2) throws CommandSyntaxException {
@@ -157,14 +157,14 @@ public class ex implements ArgumentType<ex.b> {
 
       @Override
       public Collection<String> getNames(du $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
-         List<? extends bki> $$2 = this.a.b($$0);
+         List<? extends bkq> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eg.d.create();
          } else {
             List<String> $$3 = Lists.newArrayList();
 
-            for (bki $$4 : $$2) {
-               $$3.add($$4.cx());
+            for (bkq $$4 : $$2) {
+               $$3.add($$4.cy());
             }
 
             return $$3;

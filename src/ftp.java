@@ -1,29 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ftp implements ftq.a {
-   private final esr a;
-   private double b = Double.MIN_VALUE;
-   private List<ekb> c = Collections.emptyList();
+class ftp {
+   private final Map<ht, dfd> a;
+   @Nullable
+   private final List<djx<dhi>> b;
+   private final boolean c;
+   private final djp d;
 
-   public ftp(esr $$0) {
-      this.a = $$0;
+   ftp(djp $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ag();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof djl) {
+         this.b = null;
+      } else {
+         djq[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (djq $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
-   @Override
-   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bki $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cG().g(6.0)));
-      }
+   @Nullable
+   public dfd a(ht $$0) {
+      return this.a.get($$0);
+   }
 
-      eno $$7 = $$1.getBuffer(fqp.w());
+   public dhi b(ht $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dhi $$4 = null;
+         if ($$2 == 60) {
+            $$4 = cvc.hW.o();
+         }
 
-      for (ekb $$8 : this.c) {
-         fqf.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+         if ($$2 == 70) {
+            $$4 = dmi.a($$1, $$3);
+         }
+
+         return $$4 == null ? cvc.a.o() : $$4;
+      } else if (this.b == null) {
+         return cvc.a.o();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               djx<dhi> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return cvc.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
+         }
       }
    }
 }

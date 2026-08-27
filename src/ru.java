@@ -47,8 +47,8 @@ public abstract class ru {
          }
 
          @Override
-         public asu a(uw $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> aua.c($$2xxx, $$1x, $$1) ? Optional.empty() : uw.a, vo.a).isPresent();
+         public asy a(uw $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> auf.c($$2xxx, $$1x, $$1) ? Optional.empty() : uw.a, vo.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class ru {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(asy.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(atc.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class ru {
 
    public abstract boolean b();
 
-   public abstract asu a(uw var1);
+   public abstract asy a(uw var1);
 
-   public List<asu> a(List<uw> $$0) {
+   public List<asy> a(List<uw> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

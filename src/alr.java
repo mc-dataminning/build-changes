@@ -1,85 +1,69 @@
-public class alr extends amc {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
-
-   public alr(amb $$0) {
-      super($$0);
+public abstract class alr extends ece {
+   protected alr(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.V();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.c.b(new zi(zi.f, 0.0F));
-      }
+   protected boolean a(long $$0) {
+      return $$0 == crh.a;
+   }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         crh $$3 = new crh($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.c.b(new zi(zi.f, 104.0F));
-            } else {
-               this.d.a(ur.c("demo.day." + $$1));
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = crh.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
             }
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.c.b(new zi(zi.f, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.c.b(new zi(zi.f, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.c.b(new zi(zi.f, 103.0F));
+      }
+   }
+
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      crh $$4 = new crh($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = crh.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = crh.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
          }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(ur.c("demo.day.warning"));
       }
-   }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(ur.c("demo.reminder"));
-         this.g = 0;
-      }
+      return $$3;
    }
 
    @Override
-   public void a(ht $$0, adm.a $$1, hx $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == crh.a ? this.b($$1) : $$2 + 1;
    }
 
-   @Override
-   public biq a(amb $$0, crs $$1, clb $$2, bip $$3) {
-      if (this.f) {
-         this.f();
-         return biq.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
+   protected abstract int b(long var1);
 
-   @Override
-   public biq a(amb $$0, crs $$1, clb $$2, bip $$3, eje $$4) {
-      if (this.f) {
-         this.f();
-         return biq.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(crh.a, $$0, $$1, $$2);
    }
 }

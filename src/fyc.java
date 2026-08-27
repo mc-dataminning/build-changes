@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fyc extends fuy<cer> {
+   public static final agi a = new agi("textures/entity/projectiles/spectral_arrow.png");
 
-public class fyc extends fuh<byi, fhn<byi>> {
-   private static final Map<bkm<?>, agg> a = Maps.newHashMap(
-      ImmutableMap.of(bkm.bq, new agg("textures/entity/horse/horse_zombie.png"), bkm.aK, new agg("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public fyc(fvk.a $$0, fjz $$1) {
-      super($$0, new fhn<>($$0.a($$1)), 1.0F);
+   public fyc(fvx.a $$0) {
+      super($$0);
    }
 
-   public agg a(byi $$0) {
-      return a.get($$0.ag());
+   public agi a(cer $$0) {
+      return a;
    }
 }

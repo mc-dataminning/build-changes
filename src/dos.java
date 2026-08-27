@@ -1,45 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dos extends dpj<drf> {
-   public dos(Codec<drf> $$0) {
-      super($$0);
+public class dos extends dop {
+   public static final Codec<dos> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dop.d.forGetter($$0x -> $$0x),
+               bia.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bia.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bia.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dos::new)
+   );
+   public final bia b;
+   public final bia c;
+   final bia j;
+
+   public dos(float $$0, dvo $$1, bia $$2, dnl $$3, doq $$4, ig<cva> $$5, bia $$6, bia $$7, bia $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dpl<drf> $$0) {
-      ht $$1 = $$0.e();
-      csm $$2 = $$0.b();
-      ato $$3 = $$0.d();
-      drf $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (ht $$7 : ht.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
+   public dos(float $$0, dvo $$1, bia $$2, dnl $$3, ig<cva> $$4, bia $$5, bia $$6, bia $$7) {
+      this($$0, $$1, $$2, $$3, doq.a, $$4, $$5, $$6, $$7);
    }
 
-   private boolean a(crt $$0, ht $$1, ato $$2) {
-      ht $$3 = $$1.d();
-      dgw $$4 = $$0.a_($$3);
-      return $$4.a(cuv.kE) ? $$2.h() : $$4.d($$0, $$3, hx.b);
-   }
-
-   private void a(crt $$0, ht $$1, ato $$2, drf $$3) {
-      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+   public dos(dop $$0, bia $$1, bia $$2, bia $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

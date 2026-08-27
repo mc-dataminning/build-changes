@@ -1,32 +1,31 @@
-public class ger implements gdz {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fpj e;
-   private final gft f;
-   private int g = 0;
+public class ger implements gem {
+   private final fpw a;
+   private boolean b;
+   private boolean c = true;
 
-   public ger(fpj $$0, gft $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ger(fpw $$0) {
+      this.a = $$0;
    }
 
    @Override
    public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bc()) {
-         float $$0 = this.e.dL().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gep)(new ges.a(this.e, aqn.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gep)(new ges.a(this.e, aqn.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gep)(new ges.a(this.e, aqn.A)));
+      csa $$0 = this.a.dN();
+      dhi $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(cvc.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(cvc.nd) && !this.a.O_()) {
+            boolean $$2 = $$1.c(cvg.b);
+            if ($$2) {
+               this.a.a(aqr.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(aqr.cs, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

@@ -1,71 +1,244 @@
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class feh {
-   private final fll a;
-   private final flt b;
-   private final Predicate<flo.a> c;
+public class feh implements ewc, ewu {
+   private static final agi b = new agi("recipe_book/overlay_recipe");
+   static final agi c = new agi("recipe_book/furnace_overlay_highlighted");
+   static final agi d = new agi("recipe_book/furnace_overlay");
+   static final agi e = new agi("recipe_book/crafting_overlay_highlighted");
+   static final agi f = new agi("recipe_book/crafting_overlay");
+   static final agi g = new agi("recipe_book/furnace_overlay_disabled_highlighted");
+   static final agi h = new agi("recipe_book/furnace_overlay_disabled");
+   static final agi i = new agi("recipe_book/crafting_overlay_disabled_highlighted");
+   static final agi j = new agi("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<feh.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private etd r;
+   private fem t;
    @Nullable
-   private vm d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private vh g;
+   private coq<?> u;
+   float v;
+   boolean w;
 
-   public feh(flz $$0, Predicate<flo.a> $$1) {
-      this.a = $$0.b();
-      this.b = new flt($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public void a(etd $$0, fem $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.t = $$1;
+      if ($$0.s.bS instanceof cgn) {
+         this.w = true;
+      }
+
+      boolean $$7 = $$0.s.m().a((chz<?>)$$0.s.bS);
+      List<coq<?>> $$8 = $$1.b(true);
+      List<coq<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
+
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)atm.f(($$16 - $$17) / $$6));
+      }
+
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)atm.f(($$18 - $$19) / $$6));
+      }
+
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         coq<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new feh.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new feh.a($$23, $$24, $$22, $$21));
+         }
+      }
+
+      this.u = null;
    }
 
-   public void a(int $$0, feh.a $$1) {
-      int $$2 = 0;
+   public fem a() {
+      return this.t;
+   }
 
-      while ($$2 < $$0) {
-         fln $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
+   @Nullable
+   public coq<?> b() {
+      return this.u;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (feh.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
+            }
          }
 
-         int $$4 = this.e--;
-         if ($$3 instanceof flo.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(ur.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
+         return false;
+      }
+   }
 
-               $$1.a($$4, $$5);
-               $$2++;
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = atm.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (feh.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
+      return this.o;
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+   }
+
+   @Override
+   public boolean aJ_() {
+      return false;
+   }
+
+   class a extends eux implements afv<cok> {
+      final coq<?> c;
+      private final boolean d;
+      protected final List<feh.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, coq<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, uq.a);
+         this.f = 24;
+         this.g = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(coq<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
+
+      @Override
+      public void a(eys $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void a(Iterator<cok> $$0, int $$1, int $$2, int $$3, int $$4) {
+         clj[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new feh.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
+         }
+      }
+
+      @Override
+      public void b(euo $$0, int $$1, int $$2, float $$3) {
+         agi $$4;
+         if (this.d) {
+            if (feh.this.w) {
+               $$4 = this.n() ? feh.c : feh.d;
             } else {
-               this.f++;
+               $$4 = this.n() ? feh.e : feh.f;
+            }
+         } else if (feh.this.w) {
+            $$4 = this.n() ? feh.g : feh.h;
+         } else {
+            $$4 = this.n() ? feh.i : feh.j;
+         }
+
+         $$0.a($$4, this.p(), this.r(), this.f, this.g);
+         $$0.c().a();
+         $$0.c().a((double)(this.p() + 2), (double)(this.r() + 2), 150.0);
+
+         for (feh.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[atm.d(feh.this.v / 30.0F) % $$8.a.length], 0, 0);
             }
 
-            this.g = $$5.g();
+            $$0.c().b();
+         }
+
+         $$0.c().b();
+      }
+
+      protected class a {
+         public final clj[] a;
+         public final int b;
+         public final int c;
+
+         public a(int $$1, int $$2, clj[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
          }
       }
    }
 
-   private boolean a(feh.a $$0, flo.a $$1) {
-      vh $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.j())) {
-            $$0.a(ur.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.j();
-         return true;
-      } else {
-         return $$3;
+   class b extends feh.a {
+      public b(int $$0, int $$1, coq<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
       }
-   }
 
-   public interface a {
-      void a(int var1, flo.a var2);
-
-      void a(ur var1);
+      @Override
+      protected void a(coq<?> $$0) {
+         cok $$1 = $$0.b().a().get(0);
+         clj[] $$2 = $$1.a();
+         this.a.add(new feh.a.a(10, 10, $$2));
+      }
    }
 }

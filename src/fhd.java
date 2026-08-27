@@ -1,47 +1,33 @@
-public class fhd<T extends bki> extends fhl<T> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String f = "lower_jaw";
-   private final fkb g;
-   private final fkb h;
-   private final fkb i;
-   private final fkb j;
+public class fhd<T extends byp> extends fia<T> {
+   private final fko g = this.b.b("left_chest");
+   private final fko h = this.b.b("right_chest");
 
-   public fhd(fkb $$0) {
-      this.g = $$0;
-      this.h = $$0.b("base");
-      this.i = $$0.b("upper_jaw");
-      this.j = $$0.b("lower_jaw");
+   public fhd(fko $$0) {
+      super($$0);
    }
 
-   public static fkh b() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      $$1.a("base", fkg.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fkd.a(-5.0F, 24.0F, -5.0F));
-      fkg $$2 = fkg.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$1.a("upper_jaw", $$2, fkd.a(1.5F, 24.0F, -4.0F));
-      $$1.a("lower_jaw", $$2, fkd.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
-      return fkh.a($$0, 64, 32);
+   public static fku c() {
+      fkw $$0 = fia.a(fks.a);
+      fkx $$1 = $$0.a();
+      fkx $$2 = $$1.a("body");
+      fkt $$3 = fkt.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$2.a("left_chest", $$3, fkq.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$2.a("right_chest", $$3, fkq.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      fkx $$4 = $$1.a("head_parts").a("head");
+      fkt $$5 = fkt.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$4.a("left_ear", $$5, fkq.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$4.a("right_ear", $$5, fkq.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+      return fku.a($$0, 64, 64);
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$1 * 2.0F;
-      if ($$6 > 1.0F) {
-         $$6 = 1.0F;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.w()) {
+         this.g.k = true;
+         this.h.k = true;
+      } else {
+         this.g.k = false;
+         this.h.k = false;
       }
-
-      $$6 = 1.0F - $$6 * $$6 * $$6;
-      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
-      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
-      float $$7 = ($$1 + ati.a($$1 * 2.7F)) * 0.6F * 12.0F;
-      this.i.c = 24.0F - $$7;
-      this.j.c = this.i.c;
-      this.h.c = this.i.c;
-   }
-
-   @Override
-   public fkb a() {
-      return this.g;
    }
 }

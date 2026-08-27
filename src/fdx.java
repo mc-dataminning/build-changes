@@ -1,89 +1,59 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fdx extends evs {
-   private static final evz c = new evz(new agg("recipe_book/tab"), new agg("recipe_book/tab_selected"));
-   private final eta d;
-   private static final float e = 15.0F;
-   private float l;
+public abstract class fdx extends fau {
+   private final ur b;
+   @Nullable
+   private final ur c;
+   private final ur k;
+   @Nullable
+   protected evb a;
+   private evs l = evs.a;
 
-   public fdx(eta $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   protected fdx(ur $$0, ur $$1, ur $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public void a(esr $$0) {
-      ese $$1 = $$0.s.m();
-      List<fdz> $$2 = $$1.a(this.d);
-      if ($$0.s.bS instanceof chr) {
-         for (fdz $$3 : $$2) {
-            for (coh<?> $$4 : $$3.a($$1.a((chr<?>)$$0.s.bS))) {
-               if ($$1.d($$4)) {
-                  this.l = 15.0F;
-                  return;
-               }
-            }
-         }
+   protected fdx(ur $$0, ur $$1, @Nullable ur $$2, ur $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.k = $$3;
+   }
+
+   protected abstract void a(int var1);
+
+   @Override
+   protected void aP_() {
+      super.aP_();
+      this.l = evs.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.l();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = evb.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
+         this.d(this.a);
       }
+
+      this.a($$0);
    }
 
    @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.l > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
-         }
-
-         esr $$5 = esr.N();
-         RenderSystem.disableDepthTest();
-         agg $$6 = this.a.a(true, this.b);
-         int $$7 = this.p();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.r(), this.f, this.g);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.ap());
-         if (this.l > 0.0F) {
-            $$0.c().b();
-            this.l -= $$3;
-         }
-      }
+   public ur h() {
+      return this.k;
    }
 
-   private void a(eub $$0, fwi $$1) {
-      List<clb> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.p() + 9 + $$3, this.r() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.p() + 3 + $$3, this.r() + 5);
-         $$0.b($$2.get(1), this.p() + 14 + $$3, this.r() + 5);
-      }
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.l(), 16777215);
    }
 
-   public eta b() {
-      return this.d;
+   protected void c(euo $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
    }
 
-   public boolean a(ese $$0) {
-      List<fdz> $$1 = $$0.a(this.d);
-      this.j = false;
-      if ($$1 != null) {
-         for (fdz $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.j = true;
-               break;
-            }
-         }
-      }
-
-      return this.j;
+   protected int l() {
+      return 9 * 2;
    }
 }

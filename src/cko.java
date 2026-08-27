@@ -1,73 +1,55 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cko extends cjl {
-   protected static final Map<cut, Pair<Predicate<cnl>, Consumer<cnl>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         cuv.i,
-         Pair.of(cko::b, b(cuv.cC.o())),
-         cuv.kE,
-         Pair.of(cko::b, b(cuv.cC.o())),
-         cuv.j,
-         Pair.of(cko::b, b(cuv.cC.o())),
-         cuv.k,
-         Pair.of(cko::b, b(cuv.j.o())),
-         cuv.rG,
-         Pair.of((Predicate<cnl>)$$0 -> true, a(cuv.j.o(), cle.ds))
-      )
-   );
-
-   protected cko(cmo $$0, int $$1, float $$2, ckw.a $$3) {
-      super((float)$$1, $$2, $$0, arc.bA, $$3);
+public class cko extends cle {
+   public cko(cle.a $$0) {
+      super($$0);
    }
 
    @Override
-   public biq a(cnl $$0) {
-      crs $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      Pair<Predicate<cnl>, Consumer<cnl>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return biq.d;
-      } else {
-         Predicate<cnl> $$4 = (Predicate<cnl>)$$3.getFirst();
-         Consumer<cnl> $$5 = (Consumer<cnl>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cdm $$6 = $$0.o();
-            $$1.a($$6, $$2, aqn.kP, aqo.e, 1.0F, 1.0F);
-            if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
-               }
-            }
-
-            return biq.a($$1.B);
-         } else {
-            return biq.d;
-         }
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      rz $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
    }
 
-   public static Consumer<cnl> b(dgw $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(dlg.c, $$1.a(), dlg.a.a($$1.o(), $$0));
-      };
+   public static void a(rz $$0, List<ur> $$1) {
+      ckn.a $$2 = ckn.a.a($$0.f("Type"));
+      $$1.add(ur.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(ur.i().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(ur.c("item.minecraft.firework_star.fade_to").b(uq.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(ur.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(ur.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
    }
 
-   public static Consumer<cnl> a(dgw $$0, crr $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(dlg.c, $$2.a(), dlg.a.a($$2.o(), $$0));
-         cut.a($$2.q(), $$2.a(), $$2.k(), new clb($$1));
-      };
+   private static ur a(vf $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
    }
 
-   public static boolean b(cnl $$0) {
-      return $$0.k() != hx.a && $$0.q().a_($$0.a().c()).i();
+   private static ur a(int $$0) {
+      cjx $$1 = cjx.b($$0);
+      return $$1 == null ? ur.c("item.minecraft.firework_star.custom_color") : ur.c("item.minecraft.firework_star." + $$1.b());
    }
 }

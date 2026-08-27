@@ -1,57 +1,88 @@
-public class eyv extends fah {
-   private final Runnable c;
-   protected final eyv.a a;
-   private final ur k;
-   private final boolean l;
-   private evf m = evf.a;
-   protected int b;
-   private euo n;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public eyv(Runnable $$0, eyv.a $$1, ur $$2, ur $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+public class eyv {
+   int a;
+   final Map<eyv.a, eyv.b> b = Maps.newTreeMap(Comparator.<eyv.a, eyr>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<eys> $$0) {
+      this.a++;
+      $$0.accept(new eyv.c(0));
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.m = evf.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(eum.a(ur.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(eum.a(ur.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(eum.a(uq.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = new euo(this.g / 2 - 155 + 80, 76 + $$0, 150, 20, ur.c("selectWorld.backupEraseCache"), false);
-      if (this.l) {
-         this.d(this.n);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
+   }
+
+   static class a {
+      final eyr a;
+      final int b;
+
+      a(eyr $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-   }
+   static class b {
+      eyu<?> a;
+      int b;
+      boolean c;
 
-   @Override
-   public boolean aD_() {
-      return false;
-   }
+      b() {
+         this.a = eyu.a;
+         this.b = -1;
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      public eyv.b a(int $$0, eyu<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   class c implements eys {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(eyr $$0, eyu<?> $$1) {
+         eyv.this.b.computeIfAbsent(new eyv.a($$0, this.b), $$0x -> new eyv.b()).a(eyv.this.a, $$1);
+      }
+
+      @Override
+      public eys a() {
+         return eyv.this.new c(this.b + 1);
+      }
    }
 }

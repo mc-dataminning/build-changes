@@ -1,34 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dst extends dsz {
-   public static final Codec<dst> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dst::new));
+public class dst implements drz {
+   public static final Codec<dst> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               drf.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ht.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, dst::new)
+   );
+   private final boolean b;
+   private final List<drf.a> c;
+   @Nullable
+   private final ht d;
 
-   public dst(bhv $$0, bhv $$1) {
-      super($$0, $$1);
+   public dst(boolean $$0, List<drf.a> $$1, @Nullable ht $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected dta<?> a() {
-      return dta.d;
+   private dst(boolean $$0, List<drf.a> $$1, Optional<ht> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ht $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(ato $$0, int $$1, dsj $$2) {
-      return 0;
+   public List<drf.a> b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   @Nullable
+   public ht c() {
+      return this.d;
    }
 }

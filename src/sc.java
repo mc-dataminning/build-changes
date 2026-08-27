@@ -96,17 +96,17 @@ public class sc extends sp {
 
    @Override
    public int g() {
-      return ati.d(this.w);
+      return atm.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ati.d(this.w) & 65535);
+      return (short)(atm.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ati.d(this.w) & 0xFF);
+      return (byte)(atm.d(this.w) & 0xFF);
    }
 
    @Override

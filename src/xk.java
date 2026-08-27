@@ -1,5 +1,5 @@
 public record xk(xk.a b) implements xd {
-   public static final agg a = new agg("debug/hive");
+   public static final agi a = new agi("debug/hive");
 
    public xk(tu $$0) {
       this(new xk.a($$0));
@@ -11,7 +11,7 @@ public record xk(xk.a b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 

@@ -1,43 +1,25 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+public interface arr {
+   arv<dxh> a = a("eye_of_ender_located");
+   arv<dxh> b = a("dolphin_located");
+   arv<dxh> c = a("on_woodland_explorer_maps");
+   arv<dxh> d = a("on_ocean_explorer_maps");
+   arv<dxh> e = a("on_savanna_village_maps");
+   arv<dxh> f = a("on_desert_village_maps");
+   arv<dxh> g = a("on_plains_village_maps");
+   arv<dxh> h = a("on_taiga_village_maps");
+   arv<dxh> i = a("on_snowy_village_maps");
+   arv<dxh> j = a("on_jungle_explorer_maps");
+   arv<dxh> k = a("on_swamp_explorer_maps");
+   arv<dxh> l = a("on_treasure_maps");
+   arv<dxh> m = a("cats_spawn_in");
+   arv<dxh> n = a("cats_spawn_as_black");
+   arv<dxh> o = a("village");
+   arv<dxh> p = a("mineshaft");
+   arv<dxh> q = a("shipwreck");
+   arv<dxh> r = a("ruined_portal");
+   arv<dxh> s = a("ocean_ruin");
 
-public record arr<T>(agf<? extends io<T>> a, agg b) {
-   private static final Interner<arr<?>> c = Interners.newWeakInterner();
-
-   @Deprecated
-   public arr(agf<? extends io<T>> a, agg b) {
-      this.a = a;
-      this.b = b;
-   }
-
-   public static <T> Codec<arr<T>> a(agf<? extends io<T>> $$0) {
-      return agg.a.xmap($$1 -> a($$0, $$1), arr::b);
-   }
-
-   public static <T> Codec<arr<T>> b(agf<? extends io<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? agg.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
-   }
-
-   public static <T> arr<T> a(agf<? extends io<T>> $$0, agg $$1) {
-      return (arr<T>)c.intern(new arr<>($$0, $$1));
-   }
-
-   public boolean c(agf<? extends io<?>> $$0) {
-      return this.a == $$0;
-   }
-
-   public <E> Optional<arr<E>> d(agf<? extends io<E>> $$0) {
-      return this.c($$0) ? Optional.of((arr<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   private static arv<dxh> a(String $$0) {
+      return arv.a(jz.aB, new agi($$0));
    }
 }

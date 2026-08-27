@@ -1,276 +1,259 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
+import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class gft extends api<gft.a> {
-   public static final gem a = new gem("minecraft:empty", bhr.a(1.0F), bhr.a(1.0F), 1, gem.a.a, false, false, 16);
-   public static final agg b = new agg("minecraft", "intentionally_empty");
-   public static final gfu c = new gfu(b, null);
-   public static final gem d = new gem(b.toString(), bhr.a(1.0F), bhr.a(1.0F), 1, gem.a.a, false, false, 16);
-   static final Logger e = LogUtils.getLogger();
-   private static final String f = "sounds.json";
-   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(ur.class, new ur.b()).registerTypeAdapter(gen.class, new geo()).create();
-   private static final TypeToken<Map<String, gen>> h = new TypeToken<Map<String, gen>>() {
-   };
-   private final Map<agg, gfu> i = Maps.newHashMap();
-   private final gfq j;
-   private final Map<agg, apb> k = new HashMap<>();
+public class gft extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 2;
+   private final etd n;
+   private boolean o = true;
+   private int p = -1;
+   @Nullable
+   private crx q;
+   @Nullable
+   private gfw r;
+   @Nullable
+   private UUID s;
+   private int t = 0;
 
-   public gft(esv $$0) {
-      this.j = new gfq(this, $$0, apg.fromMap(this.k));
+   public gft(Thread $$0, etd $$1, een.c $$2, aos $$3, ahe $$4, ahb $$5, amo $$6) {
+      super($$0, $$2, $$3, $$4, $$1.W(), $$1.aq(), $$5, $$6);
+      this.b($$1.V());
+      this.c($$1.H());
+      this.a(new gfs(this, this.ba(), this.h));
+      this.n = $$1;
    }
 
-   protected gft.a a(apd $$0, bfh $$1) {
-      gft.a $$2 = new gft.a();
-      $$1.a();
-      $$1.a("list");
-      $$2.a($$0);
-      $$1.c();
+   @Override
+   public boolean e() {
+      l.info("Starting integrated minecraft server version {}", aa.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.R();
+      this.t_();
+      GameProfile $$0 = this.P();
+      String $$1 = this.aY().g();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
+   }
 
-      for (String $$3 : $$0.a()) {
-         $$1.a($$3);
+   @Override
+   public boolean A() {
+      return this.o;
+   }
 
-         try {
-            for (apb $$5 : $$0.a(new agg($$3, "sounds.json"))) {
-               $$1.a($$5.b());
-
-               try (Reader $$6 = $$5.e()) {
-                  $$1.a("parse");
-                  Map<String, gen> $$7 = asy.a(g, $$6, h);
-                  $$1.b("register");
-
-                  for (Entry<String, gen> $$8 : $$7.entrySet()) {
-                     $$2.a(new agg($$3, $$8.getKey()), $$8.getValue());
-                  }
-
-                  $$1.c();
-               } catch (RuntimeException var15) {
-                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
-               }
-
-               $$1.c();
-            }
-         } catch (IOException var16) {
-         }
-
-         $$1.c();
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.o;
+      this.o = etd.N().af();
+      bfo $$2 = this.aR();
+      if (!$$1 && this.o) {
+         $$2.a("autoSave");
+         l.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
       }
 
-      $$1.b();
-      return $$2;
-   }
-
-   protected void a(gft.a $$0, apd $$1, bfh $$2) {
-      $$0.a(this.i, this.k, this.j);
-      if (aa.aT) {
-         for (agg $$3 : this.i.keySet()) {
-            gfu $$4 = this.i.get($$3);
-            if (!uu.b($$4.a()) && jy.c.c($$3)) {
-               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
-            }
-         }
-      }
-
-      if (e.isDebugEnabled()) {
-         for (agg $$5 : this.i.keySet()) {
-            if (!jy.c.c($$5)) {
-               e.debug("Not having sound event for: {}", $$5);
-            }
-         }
-      }
-
-      this.j.a();
-   }
-
-   public List<String> a() {
-      return this.j.h();
-   }
-
-   static boolean a(gem $$0, agg $$1, apg $$2) {
-      agg $$3 = $$0.b();
-      if ($$2.getResource($$3).isEmpty()) {
-         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
-         return false;
+      boolean $$3 = etd.N().I() != null;
+      if ($$3 && this.o) {
+         this.a();
       } else {
-         return true;
+         if ($$1 && !this.o) {
+            this.C();
+         }
+
+         super.a($$0);
+         int $$4 = Math.max(2, this.n.m.e().c());
+         if ($$4 != this.ae().p()) {
+            l.info("Changing view distance to {}, from {}", $$4, this.ae().p());
+            this.ae().a($$4);
+         }
+
+         int $$5 = Math.max(2, this.n.m.f().c());
+         if ($$5 != this.t) {
+            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
+            this.ae().b($$5);
+            this.t = $$5;
+         }
       }
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.n.aM().b($$0);
+   }
+
+   private void a() {
+      for (amf $$0 : this.ae().t()) {
+         $$0.a(arb.l);
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return true;
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public File z() {
+      return this.n.p;
+   }
+
+   @Override
+   public boolean l() {
+      return false;
+   }
+
+   @Override
+   public int m() {
+      return 0;
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public void a(o $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public ab a(ab $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.M().b());
+      $$0.a("Launched Version", this.n::h);
+      return $$0;
+   }
+
+   @Override
+   public atl M() {
+      return etd.e().a(super.M());
+   }
+
+   @Override
+   public boolean a(@Nullable crx $$0, boolean $$1, int $$2) {
+      try {
+         this.n.aQ();
+         this.n.v().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
+               flk $$1x = this.n.I();
+               if ($$1x != null) {
+                  $$1x.a($$0xx);
+               }
+            }), this.n);
+         this.af().a(null, $$2);
+         l.info("Started serving on {}", $$2);
+         this.p = $$2;
+         this.r = new gfw(this.ac(), $$2 + "");
+         this.r.start();
+         this.q = $$0;
+         this.ae().b($$1);
+         int $$3 = this.c(this.n.s.fS());
+         this.n.s.a($$3);
+
+         for (amf $$4 : this.ae().t()) {
+            this.aE().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
+      }
+   }
+
+   @Override
+   public void t() {
+      super.t();
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (amf $$1 : Lists.newArrayList(this.ae().t())) {
+            if (!$$1.cw().equals(this.s)) {
+               this.ae().c($$1);
+            }
+         }
+      });
+      super.a($$0);
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public boolean p() {
+      return this.p > -1;
+   }
+
+   @Override
+   public int O() {
+      return this.p;
+   }
+
+   @Override
+   public void a(crx $$0) {
+      super.a($$0);
+      this.q = null;
+   }
+
+   @Override
+   public boolean o() {
+      return true;
+   }
+
+   @Override
+   public int i() {
+      return 2;
+   }
+
+   @Override
+   public int j() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.P() != null && $$0.getName().equalsIgnoreCase(this.P().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.n.m.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean aW() {
+      return this.n.m.af;
    }
 
    @Nullable
-   public gfu a(agg $$0) {
-      return this.i.get($$0);
-   }
-
-   public Collection<agg> b() {
-      return this.i.keySet();
-   }
-
-   public void a(geq $$0) {
-      this.j.a($$0);
-   }
-
-   public void a(gep $$0) {
-      this.j.c($$0);
-   }
-
-   public void a(gep $$0, int $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public void a(esc $$0) {
-      this.j.a($$0);
-   }
-
-   public void d() {
-      this.j.e();
-   }
-
-   public void e() {
-      this.j.d();
-   }
-
-   public void f() {
-      this.j.b();
-   }
-
-   public void g() {
-      this.j.c();
-   }
-
-   public void a(boolean $$0) {
-      this.j.a($$0);
-   }
-
-   public void h() {
-      this.j.f();
-   }
-
-   public void a(aqo $$0, float $$1) {
-      if ($$0 == aqo.a && $$1 <= 0.0F) {
-         this.e();
-      }
-
-      this.j.a($$0, $$1);
-   }
-
-   public void b(gep $$0) {
-      this.j.a($$0);
-   }
-
-   public boolean c(gep $$0) {
-      return this.j.b($$0);
-   }
-
-   public void a(gfs $$0) {
-      this.j.a($$0);
-   }
-
-   public void b(gfs $$0) {
-      this.j.b($$0);
-   }
-
-   public void a(@Nullable agg $$0, @Nullable aqo $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public String i() {
-      return this.j.g();
-   }
-
-   public void j() {
-      this.j.a();
-   }
-
-   protected static class a {
-      final Map<agg, gfu> a = Maps.newHashMap();
-      private Map<agg, apb> b = Map.of();
-
-      void a(apd $$0) {
-         this.b = gem.a.a($$0);
-      }
-
-      void a(agg $$0, gen $$1) {
-         gfu $$2 = this.a.get($$0);
-         boolean $$3 = $$2 == null;
-         if ($$3 || $$1.b()) {
-            if (!$$3) {
-               gft.e.debug("Replaced sound event location {}", $$0);
-            }
-
-            $$2 = new gfu($$0, $$1.c());
-            this.a.put($$0, $$2);
-         }
-
-         apg $$4 = apg.fromMap(this.b);
-
-         for (final gem $$5 : $$1.a()) {
-            final agg $$6 = $$5.a();
-            gfv<gem> $$8;
-            switch ($$5.f()) {
-               case a:
-                  if (!gft.a($$5, $$0, $$4)) {
-                     continue;
-                  }
-
-                  $$8 = $$5;
-                  break;
-               case b:
-                  $$8 = new gfv<gem>() {
-                     @Override
-                     public int e() {
-                        gfu $$0 = a.this.a.get($$6);
-                        return $$0 == null ? 0 : $$0.e();
-                     }
-
-                     public gem a(ato $$0) {
-                        gfu $$1 = a.this.a.get($$6);
-                        if ($$1 == null) {
-                           return gft.a;
-                        } else {
-                           gem $$2 = $$1.a($$0);
-                           return new gem(
-                              $$2.a().toString(), new bhx($$2.c(), $$5.c()), new bhx($$2.d(), $$5.d()), $$5.e(), gem.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
-                           );
-                        }
-                     }
-
-                     @Override
-                     public void a(gfq $$0) {
-                        gfu $$1 = a.this.a.get($$6);
-                        if ($$1 != null) {
-                           $$1.a($$0);
-                        }
-                     }
-                  };
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
-            }
-
-            $$2.a($$8);
-         }
-      }
-
-      public void a(Map<agg, gfu> $$0, Map<agg, apb> $$1, gfq $$2) {
-         $$0.clear();
-         $$1.clear();
-         $$1.putAll(this.b);
-
-         for (Entry<agg, gfu> $$3 : this.a.entrySet()) {
-            $$0.put($$3.getKey(), $$3.getValue());
-            $$3.getValue().a($$2);
-         }
-      }
+   @Override
+   public crx bb() {
+      return this.p() ? (crx)MoreObjects.firstNonNull(this.q, this.k.m()) : null;
    }
 }

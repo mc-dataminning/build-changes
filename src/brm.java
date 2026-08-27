@@ -1,70 +1,62 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class brm extends brt {
-   protected final blh a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final crs f;
+public class brm extends bsb {
+   private final blp a;
 
-   public brm(blh $$0, double $$1) {
+   public brm(blp $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dL();
-      this.a(EnumSet.of(brt.a.a));
+      this.a(EnumSet.of(bsb.a.a, bsb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.N()) {
-         return false;
-      } else if (!this.a.bM()) {
-         return false;
-      } else if (!this.f.g(this.a.dl())) {
-         return false;
-      } else {
-         return !this.a.c(bkn.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      eji $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
+      return this.a.ci() < 140;
    }
 
    @Override
    public boolean b() {
-      return !this.a.L().l();
+      return this.a();
+   }
+
+   @Override
+   public boolean R_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
+      this.h();
    }
 
-   @Nullable
-   protected eji i() {
-      ato $$0 = this.a.ef();
-      ht $$1 = this.a.dl();
+   private void h() {
+      Iterable<ht> $$0 = ht.b(
+         atm.a(this.a.ds() - 1.0), this.a.dt(), atm.a(this.a.dy() - 1.0), atm.a(this.a.ds() + 1.0), atm.a(this.a.du() + 8.0), atm.a(this.a.dy() + 1.0)
+      );
+      ht $$1 = null;
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ht $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
-            return eji.c($$3);
+      for (ht $$2 : $$0) {
+         if (this.a(this.a.dN(), $$2)) {
+            $$1 = $$2;
+            break;
          }
       }
 
-      return null;
+      if ($$1 == null) {
+         $$1 = ht.a(this.a.ds(), this.a.du() + 8.0, this.a.dy());
+      }
+
+      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   }
+
+   @Override
+   public void e() {
+      this.h();
+      this.a.a(0.02F, new eju((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(blm.a, this.a.dq());
+   }
+
+   private boolean a(csd $$0, ht $$1) {
+      dhi $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(cvc.nd)) && $$2.a($$0, $$1, edi.a);
    }
 }

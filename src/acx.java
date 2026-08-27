@@ -1,32 +1,32 @@
-public class acx implements wk<acj> {
+public class acx implements wk<acl> {
    private final int a;
-   private final int b;
+   private final String b;
 
-   public acx(int $$0, int $$1) {
+   public acx(int $$0, String $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a(acj $$0) {
-      $$0.a(this);
-   }
-
    public acx(tu $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+      this.a = $$0.n();
+      this.b = $$0.d(32500);
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+      $$0.c(this.a);
+      $$0.a(this.b, 32500);
+   }
+
+   public void a(acl $$0) {
+      $$0.a(this);
    }
 
    public int a() {
       return this.a;
    }
 
-   public int d() {
+   public String d() {
       return this.b;
    }
 }

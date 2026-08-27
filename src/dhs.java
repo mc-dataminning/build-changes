@@ -1,14 +1,8 @@
-public enum dhs implements aub {
-   a,
-   b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dhs {
 }

@@ -1,125 +1,115 @@
-import java.util.Optional;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
 
-public class fqi implements fqh {
-   private final fqh.a a;
-   private final fqh.a b = fqh.a(new enf(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public class fqi {
+   private static final int a = 6;
+   private final agi[] b = new agi[6];
 
-   public fqi(fqh.a $$0) {
-      this.a = $$0;
+   public fqi(agi $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
+      }
    }
 
-   @Override
-   public eno getBuffer(fqp $$0) {
-      if ($$0.K()) {
-         eno $$1 = this.b.getBuffer($$0);
-         return new fqi.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         eno $$2 = this.a.getBuffer($$0);
-         Optional<fqp> $$3 = $$0.J();
-         if ($$3.isPresent()) {
-            eno $$4 = this.b.getBuffer($$3.get());
-            fqi.a $$5 = new fqi.a($$4, this.c, this.d, this.e, this.f);
-            return enr.a($$5, $$2);
-         } else {
-            return $$2;
+   public void a(etd $$0, float $$1, float $$2, float $$3) {
+      eny $$4 = eny.b();
+      enr $$5 = $$4.d();
+      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aL().k() / (float)$$0.aL().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$6, eoe.a);
+      enw $$7 = RenderSystem.getModelViewStack();
+      $$7.a();
+      $$7.e();
+      $$7.a(a.b.rotationDegrees(180.0F));
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.setShader(fqn::t);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$8 = 2;
+
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         $$7.a();
+         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$12 = 0.0F;
+         $$7.a($$10, $$11, 0.0F);
+         $$7.a(a.b.rotationDegrees($$1));
+         $$7.a(a.d.rotationDegrees($$2));
+         RenderSystem.applyModelViewMatrix();
+
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            RenderSystem.setShaderTexture(0, this.b[$$13]);
+            $$5.a(eob.b.h, enu.s);
+            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
+            if ($$13 == 0) {
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 1) {
+               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 2) {
+               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 3) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 4) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 5) {
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            $$4.c();
          }
+
+         $$7.b();
+         RenderSystem.applyModelViewMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$7.b();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   public CompletableFuture<Void> a(gbv $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends enj {
-      private final eno f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(eno $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public eno a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public eno a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public eno a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public eno a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eno b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eno a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
-      }
+      return CompletableFuture.allOf($$2);
    }
 }

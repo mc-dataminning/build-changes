@@ -1,80 +1,60 @@
-public class fgn<T extends bwm> extends fia<T> {
-   private float q;
-   private float r;
-   private float s;
+import java.util.function.Function;
 
-   public fgn(fkb $$0) {
+public abstract class fgn<E extends bkq> extends fhp<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fgn(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   }
+
+   protected fgn(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(frc::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected fgn(Function<agi, frc> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.E($$3);
-      this.r = $$0.F($$3);
-      this.s = $$0.G($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
+   protected fgn() {
+      this(false, 5.0F, 2.0F);
+   }
 
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.y()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
+   @Override
+   public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fhz.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fhz.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fhz.a(this.l.e, 0.8F, this.r);
-         this.m.e = fhz.a(this.m.e, -0.4F, this.r);
-      }
+   protected abstract Iterable<fko> a();
 
-      if (this.s > 0.0F) {
-         this.n.e = fhz.a(this.n.e, -0.58177644F, this.s);
-      }
-   }
+   protected abstract Iterable<fko> b();
 }

@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bgz {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bgz {
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bfo f();
+
+   void d();
 }

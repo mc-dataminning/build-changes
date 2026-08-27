@@ -1,88 +1,51 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+public enum fql {
+   a(new fql.b(fql.a.f, fql.a.e, fql.a.a), new fql.b(fql.a.f, fql.a.e, fql.a.d), new fql.b(fql.a.c, fql.a.e, fql.a.d), new fql.b(fql.a.c, fql.a.e, fql.a.a)),
+   b(new fql.b(fql.a.f, fql.a.b, fql.a.d), new fql.b(fql.a.f, fql.a.b, fql.a.a), new fql.b(fql.a.c, fql.a.b, fql.a.a), new fql.b(fql.a.c, fql.a.b, fql.a.d)),
+   c(new fql.b(fql.a.c, fql.a.b, fql.a.d), new fql.b(fql.a.c, fql.a.e, fql.a.d), new fql.b(fql.a.f, fql.a.e, fql.a.d), new fql.b(fql.a.f, fql.a.b, fql.a.d)),
+   d(new fql.b(fql.a.f, fql.a.b, fql.a.a), new fql.b(fql.a.f, fql.a.e, fql.a.a), new fql.b(fql.a.c, fql.a.e, fql.a.a), new fql.b(fql.a.c, fql.a.b, fql.a.a)),
+   e(new fql.b(fql.a.f, fql.a.b, fql.a.d), new fql.b(fql.a.f, fql.a.e, fql.a.d), new fql.b(fql.a.f, fql.a.e, fql.a.a), new fql.b(fql.a.f, fql.a.b, fql.a.a)),
+   f(new fql.b(fql.a.c, fql.a.b, fql.a.a), new fql.b(fql.a.c, fql.a.e, fql.a.a), new fql.b(fql.a.c, fql.a.e, fql.a.d), new fql.b(fql.a.c, fql.a.b, fql.a.d));
 
-public class fql implements AutoCloseable {
-   private final fpx c;
-   public final elw a;
-   public final elw b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
+   private static final fql[] g = ac.a(new fql[6], $$0 -> {
+      $$0[fql.a.e] = a;
+      $$0[fql.a.b] = b;
+      $$0[fql.a.d] = c;
+      $$0[fql.a.a] = d;
+      $$0[fql.a.f] = e;
+      $$0[fql.a.c] = f;
+   });
+   private final fql.b[] h;
 
-   public fql(apd $$0, String $$1, elw $$2, elw $$3) throws IOException {
-      this.c = new fpx($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public static fql a(hx $$0) {
+      return g[$$0.d()];
    }
 
-   @Override
-   public void close() {
-      this.c.close();
-   }
-
-   public final String a() {
-      return this.c.h();
-   }
-
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
-
-   public void a(Matrix4f $$0) {
+   private fql(fql.b... $$0) {
       this.h = $$0;
    }
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      esr $$4 = esr.N();
-      this.c.b("ScreenSize").a((float)$$4.aL().k(), (float)$$4.aL().l());
-      this.c.g();
-      this.b.b(esr.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      enf $$5 = enm.b().d();
-      $$5.a(enp.b.h, eni.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      eng.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof elw) {
-            ((elw)$$6).d();
-         }
-      }
+   public fql.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   public fpx b() {
-      return this.c;
+   public static final class a {
+      public static final int a = hx.d.d();
+      public static final int b = hx.b.d();
+      public static final int c = hx.f.d();
+      public static final int d = hx.c.d();
+      public static final int e = hx.a.d();
+      public static final int f = hx.e.d();
+   }
+
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

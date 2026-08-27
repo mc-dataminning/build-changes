@@ -1,17 +1,8 @@
-public interface eyd extends evw, eyg {
-   eyd.a q();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default boolean aK_() {
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eyd {
 }

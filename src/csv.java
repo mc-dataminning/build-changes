@@ -1,10 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class csv {
-   public static Codec<? extends csu> a(io<Codec<? extends csu>> $$0) {
-      io.a($$0, "fixed", ctb.b);
-      io.a($$0, "multi_noise", ctd.c);
-      io.a($$0, "checkerboard", csy.b);
-      return io.a($$0, "the_end", cth.b);
+   public static final Codec<csv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqq.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, csv::new)
+   );
+   private final ib<aqq> b;
+   private final double c;
+
+   public csv(ib<aqq> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public ib<aqq> a() {
+      return this.b;
+   }
+
+   public double b() {
+      return this.c;
    }
 }

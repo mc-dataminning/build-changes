@@ -1,115 +1,35 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dqa extends dpj<dru> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bkm<?>[] b = new bkm[]{bkm.aJ, bkm.bp, bkm.bp, bkm.aS};
-   private static final dgw c = cuv.nc.o();
+public class dqa implements drz {
+   public static final Codec<dqa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               agi.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               agi.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ebg.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ebg.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dqa::new)
+   );
+   public final List<agi> b;
+   public final List<agi> c;
+   public final ib<ebf> d;
+   public final ib<ebf> e;
+   public final int f;
 
-   public dqa(Codec<dru> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dpl<dru> $$0) {
-      Predicate<dgw> $$1 = dpj.a(arc.bH);
-      ht $$2 = $$0.e();
-      ato $$3 = $$0.d();
-      csm $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
-
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               ht $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.t($$18) && $$4.t($$18.c())) {
-                  $$14++;
-               }
-            }
-         }
-      }
-
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  ht $$23 = $$2.b($$20, $$21, $$22);
-                  dgw $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(cuv.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, cuv.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, cuv.m.o(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(cuv.cv) && !$$24.a(cuv.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               ht $$30 = new ht($$27, $$28, $$29);
-               if ($$4.t($$30)) {
-                  int $$31 = 0;
-
-                  for (hx $$32 : hx.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, dwz.a($$4, $$30, cuv.cv.o()), $$1);
-                     dfv.a($$4, $$3, $$30, eej.d);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.a($$4, $$2, cuv.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof dge $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
-         }
-
-         return true;
+   public dqa(List<agi> $$0, List<agi> $$1, ib<ebf> $$2, ib<ebf> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         return false;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-   }
-
-   private bkm<?> a(ato $$0) {
-      return ac.a(b, $$0);
    }
 }

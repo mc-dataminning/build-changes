@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class eu implements ArgumentType<agg> {
+public class eu implements ArgumentType<agi> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("advancement.advancementNotFound", $$0));
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("recipe.notFound", $$0));
@@ -18,8 +18,8 @@ public class eu implements ArgumentType<agg> {
    }
 
    public static af a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      agg $$2 = e($$0, $$1);
-      af $$3 = ((du)$$0.getSource()).m().az().a($$2);
+      agi $$2 = e($$0, $$1);
+      af $$3 = ((du)$$0.getSource()).m().aB().a($$2);
       if ($$3 == null) {
          throw b.create($$2);
       } else {
@@ -27,16 +27,16 @@ public class eu implements ArgumentType<agg> {
       }
    }
 
-   public static coh<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      coi $$2 = ((du)$$0.getSource()).m().aE();
-      agg $$3 = e($$0, $$1);
+   public static coq<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      cor $$2 = ((du)$$0.getSource()).m().aG();
+      agi $$3 = e($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static ehk c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      agg $$2 = e($$0, $$1);
-      eeo $$3 = ((du)$$0.getSource()).m().aH();
-      ehk $$4 = $$3.getElement(eeq.a, $$2);
+   public static ehw c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      agi $$2 = e($$0, $$1);
+      efa $$3 = ((du)$$0.getSource()).m().aJ();
+      ehw $$4 = $$3.getElement(efc.a, $$2);
       if ($$4 == null) {
          throw d.create($$2);
       } else {
@@ -44,10 +44,10 @@ public class eu implements ArgumentType<agg> {
       }
    }
 
-   public static efy d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      agg $$2 = e($$0, $$1);
-      eeo $$3 = ((du)$$0.getSource()).m().aH();
-      efy $$4 = $$3.getElement(eeq.b, $$2);
+   public static egk d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      agi $$2 = e($$0, $$1);
+      efa $$3 = ((du)$$0.getSource()).m().aJ();
+      egk $$4 = $$3.getElement(efc.b, $$2);
       if ($$4 == null) {
          throw e.create($$2);
       } else {
@@ -55,12 +55,12 @@ public class eu implements ArgumentType<agg> {
       }
    }
 
-   public static agg e(CommandContext<du> $$0, String $$1) {
-      return (agg)$$0.getArgument($$1, agg.class);
+   public static agi e(CommandContext<du> $$0, String $$1) {
+      return (agi)$$0.getArgument($$1, agi.class);
    }
 
-   public agg a(StringReader $$0) throws CommandSyntaxException {
-      return agg.a($$0);
+   public agi a(StringReader $$0) throws CommandSyntaxException {
+      return agi.a($$0);
    }
 
    public Collection<String> getExamples() {

@@ -1,7 +1,7 @@
 public class aaw implements wk<yd> {
    private final int a;
 
-   public aaw(din $$0) {
+   public aaw(diz $$0) {
       this.a = $$0.q();
    }
 

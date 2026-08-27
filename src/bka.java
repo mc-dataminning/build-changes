@@ -1,13 +1,15 @@
-class bka extends bjs {
-   protected bka(bju $$0, int $$1) {
+public class bka extends bkb {
+   public bka(bkc $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public void a(bky $$0, int $$1) {
-      super.a($$0, $$1);
-      if (!$$0.dL().B && $$0 instanceof cdm $$2) {
-         $$2.gc().a($$1 + 1, 1.0F);
-      }
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 1;
    }
 }

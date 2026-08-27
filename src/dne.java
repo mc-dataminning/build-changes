@@ -1,84 +1,18 @@
-import java.util.function.LongFunction;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dne extends dmg {
-   private final ato d;
-   private int e;
-
-   public dne(ato $$0) {
-      super(0L);
-      this.d = $$0;
+public interface dne {
+   default ats a(ht $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public int l() {
-      return this.e;
+   default ats a(agi $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public ato d() {
-      return this.d.d();
-   }
+   ats a(String var1);
 
-   @Override
-   public dms e() {
-      return this.d.e();
-   }
+   ats a(int var1, int var2, int var3);
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dmg $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ato a(int $$0, int $$1, long $$2, long $$3) {
-      return ato.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dmg::new),
-      b(dng::new);
-
-      private final LongFunction<ato> c;
-
-      private a(LongFunction<ato> $$0) {
-         this.c = $$0;
-      }
-
-      public ato a(long $$0) {
-         return this.c.apply($$0);
-      }
-   }
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

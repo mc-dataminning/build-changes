@@ -1,46 +1,63 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
+import java.io.File;
 import org.slf4j.Logger;
 
 public class esz {
-   private static final Logger a = LogUtils.getLogger();
-   private final esr b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final File c;
+   private final DataFixer d;
+   private final fpy[] e = new fpy[9];
+   private boolean f;
 
-   public esz(esr $$0) {
-      this.b = $$0;
-   }
+   public esz(File $$0, DataFixer $$1) {
+      this.c = new File($$0, "hotbar.nbt");
+      this.d = $$1;
 
-   public void a(fah $$0) {
-      if (!this.b.ae() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fdg($$0));
-         this.d = true;
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new fpy();
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
+   private void b() {
       try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
+         rz $$0 = sm.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = so.b($$0, 1343);
+         $$0 = aus.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
       }
    }
 
-   private boolean b() {
+   public void a() {
       try {
-         return eoa.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (epn var2) {
-         return false;
+         rz $$0 = so.g(new rz());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            $$0.a(String.valueOf($$1), this.a($$1).a());
+         }
+
+         sm.b($$0, this.c);
+      } catch (Exception var3) {
+         b.error("Failed to save creative mode options", var3);
       }
+   }
+
+   public fpy a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

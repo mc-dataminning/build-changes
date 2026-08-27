@@ -1,95 +1,50 @@
-public class fcj extends fbn implements fcl<chi> {
-   private final chi q;
-   private final cgq r = new cgq() {
-      @Override
-      public void a(cge $$0, int $$1, clb $$2) {
-         fcj.this.I();
+import java.util.List;
+
+public class fcj {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<agi> e = List.of();
+   private int f;
+   private int g;
+
+   public fcj(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(List<agi> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
       }
 
-      @Override
-      public void a(cge $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fcj.this.J();
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
+   }
+
+   public void a(cgm $$0, euo $$1, float $$2, int $$3, int $$4) {
+      cih $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.g()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
          }
-      }
-   };
 
-   public fcj(chi $$0, cdl $$1, ur $$2) {
-      this.q = $$0;
-   }
-
-   public chi H() {
-      return this.q;
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.q.a(this.r);
-   }
-
-   @Override
-   public void aE_() {
-      this.f.s.q();
-      super.aE_();
-   }
-
-   @Override
-   public void aF_() {
-      super.aF_();
-      this.q.b(this.r);
-   }
-
-   @Override
-   protected void l() {
-      if (this.f.s.ge()) {
-         this.d(eum.a(uq.d, $$0 -> this.aE_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(eum.a(ur.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
       }
    }
 
-   @Override
-   protected void E() {
-      this.c(1);
+   private void a(cih $$0, agi $$1, float $$2, euo $$3, int $$4, int $$5) {
+      gbu $$6 = etd.N().a(gbt.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 
-   @Override
-   protected void F() {
-      this.c(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   void I() {
-      clb $$0 = this.q.l();
-      this.a(fbn.a.a($$0));
-   }
-
-   void J() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void G() {
-      this.f.s.q();
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

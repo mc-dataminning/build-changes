@@ -2,7 +2,7 @@ public class aat implements wk<yd> {
    private final double a;
    private final double b;
 
-   public aat(din $$0) {
+   public aat(diz $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
    }

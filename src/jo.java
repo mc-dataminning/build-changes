@@ -7,7 +7,7 @@ public class jo implements jq {
       public jo a(jr<jo> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
          ga.a $$2 = ga.a(jy.i.p(), $$1);
-         clb $$3 = new fz($$2.a(), $$2.b()).a(1, false);
+         clj $$3 = new fz($$2.a(), $$2.b()).a(1, false);
          return new jo($$0, $$3);
       }
 
@@ -16,13 +16,13 @@ public class jo implements jq {
       }
    };
    private final jr<jo> b;
-   private final clb c;
+   private final clj c;
 
    public static Codec<jo> a(jr<jo> $$0) {
-      return clb.a.xmap($$1 -> new jo($$0, $$1), $$0x -> $$0x.c);
+      return clj.a.xmap($$1 -> new jo($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jo(jr<jo> $$0, clb $$1) {
+   public jo(jr<jo> $$0, clj $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -42,7 +42,7 @@ public class jo implements jq {
       return this.b;
    }
 
-   public clb c() {
+   public clj c() {
       return this.c;
    }
 }

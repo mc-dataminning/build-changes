@@ -1,70 +1,70 @@
-public class fjb<T extends byv> extends ffz<T> {
-   private static final float a = 9.0F;
-   private static final float b = 100.0F;
-   private final fkb f;
-   private final fkb g;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fjb(fkb $$0) {
-      super(0.5F, 24.0F);
-      this.f = $$0.b("root");
-      this.g = this.f.b("bone").b("body").b("head");
+public class fjb extends fih<cfn> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fko g;
+   private final fko h;
+   private final ImmutableList<fko> i;
+
+   public fjb(fko $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fkh b() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a().a("root", fkg.c(), fkd.a(0.0F, 5.0F, 0.0F));
-      fkk $$2 = $$1.a("bone", fkg.c(), fkd.a(0.0F, 0.0F, 0.0F));
-      fkk $$3 = $$2.a(
-         "body",
-         fkg.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fkf(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fkf(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fkf(0.0F)),
-         fkd.a(0.0F, 0.0F, 0.0F)
+   protected Builder<fko> a(fko $$0) {
+      Builder<fko> $$1 = new Builder();
+      $$1.add(new fko[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
+   }
+
+   public static void a(fkx $$0) {
+      $$0.a(
+         "bottom",
+         fkt.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fkq.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
       );
-      $$2.a("right_front_leg", fkg.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", fkg.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", fkg.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", fkg.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", fkg.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", fkg.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, 15.0F));
-      fkk $$4 = $$3.a(
-         "head",
-         fkg.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fkf(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fkf(0.0F)),
-         fkd.a(0.0F, 6.5F, -19.48F)
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fkt.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fkq.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
       );
-      $$4.a("left_ear", fkg.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fkf(0.0F)), fkd.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", fkg.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fkf(0.0F)), fkd.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", fkg.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fkf(0.0F)), fkd.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", fkg.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fkf(0.0F)), fkd.a(0.0F, 2.5F, -12.5F));
-      return fkh.a($$0, 192, 192);
+      $$0.a(
+         "right_paddle",
+         fkt.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fkq.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fkb::c);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.t()) {
-         this.a(etn.e, $$1, $$2, 9.0F, 100.0F);
-      } else {
-         this.a(etn.d, $$1, $$2, 9.0F, 100.0F);
-      }
-
-      this.a($$0.bX, etn.f, $$3);
-      this.a($$0.bW, etn.c, $$3);
-      this.a($$0.bY, etn.g, $$3);
-      this.a($$0.bT, etn.i, $$3);
-      this.a($$0.bU, etn.b, $$3);
-      if (this.e) {
-         this.a(etn.a);
-      }
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      a($$1);
+      return fku.a($$0, 128, 64);
    }
 
-   @Override
-   public fkb a() {
-      return this.f;
+   public void a(cfn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fko> c() {
+      return this.i;
+   }
+
+   private static void a(cfn $$0, int $$1, fko $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = atm.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (atm.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = atm.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (atm.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

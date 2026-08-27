@@ -1,27 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public record abe(int b, List<afp.b<?>> c) implements wk<yd> {
+public record abe(int b, List<afr.b<?>> c) implements wk<yd> {
    public static final int a = 255;
 
    public abe(tu $$0) {
       this($$0.n(), b($$0));
    }
 
-   private static void a(List<afp.b<?>> $$0, tu $$1) {
-      for (afp.b<?> $$2 : $$0) {
+   private static void a(List<afr.b<?>> $$0, tu $$1) {
+      for (afr.b<?> $$2 : $$0) {
          $$2.a($$1);
       }
 
       $$1.k(255);
    }
 
-   private static List<afp.b<?>> b(tu $$0) {
-      List<afp.b<?>> $$1 = new ArrayList<>();
+   private static List<afr.b<?>> b(tu $$0) {
+      List<afr.b<?>> $$1 = new ArrayList<>();
 
       int $$2;
       while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(afp.b.a($$0, $$2));
+         $$1.add(afr.b.a($$0, $$2));
       }
 
       return $$1;
@@ -41,7 +41,7 @@ public record abe(int b, List<afp.b<?>> c) implements wk<yd> {
       return this.b;
    }
 
-   public List<afp.b<?>> d() {
+   public List<afr.b<?>> d() {
       return this.c;
    }
 }

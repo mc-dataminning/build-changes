@@ -1,68 +1,30 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.ImmutableSet;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public abstract class dhz<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dhz.a<T>> e = this.d.xmap(this::b, dhz.a::b);
+public class dhz extends dil<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   protected dhz(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   protected dhz(String $$0) {
+      super($$0, Boolean.class);
    }
 
-   public dhz.a<T> b(T $$0) {
-      return new dhz.a<>(this, $$0);
-   }
-
-   public dhz.a<T> a(dgy<?, ?> $$0) {
-      return new dhz.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dhz.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dhz.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
+   @Override
+   public Collection<Boolean> a() {
       return this.a;
    }
 
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
+   public static dhz a(String $$0) {
+      return new dhz($$0);
+   }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
    @Override
@@ -70,41 +32,16 @@ public abstract class dhz<T extends Comparable<T>> {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof dhz<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+         if ($$0 instanceof dhz $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
       }
    }
 
    @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
    public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dgy<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dhz<T> a, T b) {
-      public a(dhz<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
-
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
-      }
+      return 31 * super.b() + this.a.hashCode();
    }
 }

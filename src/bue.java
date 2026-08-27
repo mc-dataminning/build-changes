@@ -1,41 +1,32 @@
-public class bue extends buh {
-   public bue(bla $$0, crs $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bue implements aug {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<bue> n = aug.a(bue::values);
+
+   private bue(String $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected ecx a(int $$0) {
-      this.o = new ecp(false);
-      this.o.a(true);
-      return new ecx(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected eji b() {
-      return new eji(this.a.dq(), this.a.e(0.5), this.a.dw());
-   }
-
-   @Override
-   protected double a(eji $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(eji $$0, eji $$1) {
-      return this.a.bb() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(ht $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public String c() {
+      return this.i;
    }
 }

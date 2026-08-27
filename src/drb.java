@@ -1,52 +1,40 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class drb extends dqy {
-   public drb(Codec<dsm> $$0) {
+public class drb extends dpv<dsj> {
+   public drb(Codec<dsj> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<ht> a(csm $$0, dsm $$1, ato $$2, ht $$3, Predicate<dgw> $$4, int $$5, int $$6) {
-      Set<ht> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<ht> $$8 = new HashSet<>();
-      ht.a $$9 = new ht.a();
+   public boolean a(dpx<dsj> $$0) {
+      boolean $$1 = false;
+      ats $$2 = $$0.d();
+      csu $$3 = $$0.b();
+      ht $$4 = $$0.e();
+      dsj $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dmr.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      ht $$9 = new ht($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(cvc.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dhi $$11 = $$10 ? cvc.bx.o() : cvc.bw.o();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dhi $$12 = $$11.a(ddf.d, die.a);
+               ht $$13 = $$9.c();
+               if ($$3.a_($$13).a(cvc.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-      for (ht $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+            $$1 = true;
          }
       }
 
-      for (ht $$11 : $$8) {
-         $$0.a($$11, cuv.G.o(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(csm $$0, Set<ht> $$1, ht $$2, ht.a $$3) {
-      return a($$0, $$2, $$3, hx.c) || a($$0, $$2, $$3, hx.f) || a($$0, $$2, $$3, hx.d) || a($$0, $$2, $$3, hx.e) || a($$0, $$2, $$3, hx.a);
-   }
-
-   private static boolean a(csm $$0, ht $$1, ht.a $$2, hx $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(csm $$0, dsm $$1, dit $$2, ato $$3, ht $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dgw $$5 = $$0.a_($$4);
-         if ($$5.b(dhm.C) && !$$5.c(dhm.C)) {
-            $$0.a($$4, $$5.a(dhm.C, Boolean.valueOf(true)), 2);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+      return $$1;
    }
 }

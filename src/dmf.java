@@ -1,171 +1,97 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class dmf {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dgw> b = $$0 -> !$$0.i();
-   static final Predicate<dgw> c = dgv.a::d;
-   private final arz d;
-   private final Predicate<dgw> e;
-   private final dis f;
-
-   public dmf(dis $$0, dmf.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = ati.e($$0.J_() + 1);
-      this.d = new atv($$2, 256);
-   }
-
-   public static void a(dis $$0, Set<dmf.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dmf> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dmf> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      ht.a $$6 = new ht.a();
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dmf.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
-
-            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dgw $$11 = $$0.a_($$6);
-               if (!$$11.a(cuv.a)) {
-                  while ($$4.hasNext()) {
-                     dmf $$12 = (dmf)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
-
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
-
-                  $$4.back($$2);
-               }
-            }
-         }
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, dgw $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            ht.a $$5 = new ht.a();
-
-            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.I_());
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.I_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.I_());
-   }
-
-   public void a(dis $$0, dmf.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements aub {
-      a("WORLD_SURFACE_WG", dmf.b.a, dmf.b),
-      b("WORLD_SURFACE", dmf.b.c, dmf.b),
-      c("OCEAN_FLOOR_WG", dmf.b.a, dmf.c),
-      d("OCEAN_FLOOR", dmf.b.b, dmf.c),
-      e("MOTION_BLOCKING", dmf.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dmf.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof czc));
-
-      public static final Codec<dmf.a> g = aub.a(dmf.a::values);
-      private final String h;
-      private final dmf.b i;
-      private final Predicate<dgw> j;
-
-      private a(String $$0, dmf.b $$1, Predicate<dgw> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dmf.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dmf.b.a;
-      }
-
-      public Predicate<dgw> e() {
-         return this.j;
+public final class dmf {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<djj> e = jy.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == djj.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dmf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dmf::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dmf::new)
+   );
+   private static final Set<agh<csy>> f = Set.of(ctf.aa, ctf.Z, ctf.ab);
+   public static final csc b = new csc() {
+      @Override
+      public int J_() {
+         return 64;
       }
 
       @Override
-      public String c() {
-         return this.h;
+      public int I_() {
+         return -64;
+      }
+   };
+   private final djj g;
+   private final BitSet h;
+
+   private dmf(djj $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
+
+   @Nullable
+   public static dmf a(rz $$0) {
+      djj $$1 = djj.a($$0.l("target_status"));
+      return $$1 == djj.c ? null : new dmf($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(djz $$0) {
+      int $$1 = 4;
+      ht.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(cvc.F)) {
+            $$0.a($$1x, cvc.sJ.o(), false);
+         }
+      });
+   }
+
+   public void b(djz $$0) {
+      csc $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.ak() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ht.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cvc.a.o(), false));
+            }
+         }
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   public djj a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static ctb a(ctb $$0, dje $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<agh<csy>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ib<csy> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
+      }
    }
 }

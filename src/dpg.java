@@ -1,42 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dpg extends dpj<drm> {
-   public dpg(Codec<drm> $$0) {
+public class dpg extends dpv<dsg> {
+   public dpg(Codec<dsg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<drm> $$0) {
-      ht $$1 = $$0.e();
-      csm $$2 = $$0.b();
-      drm $$3 = $$0.f();
+   public boolean a(dpx<dsg> $$0) {
+      ats $$1 = $$0.d();
+      csu $$2 = $$0.b();
+      crh $$3 = new crh($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ht.a $$6 = new ht.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (ht $$4 : ht.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            ht $$9 = $$4.i();
-            this.a($$2, $$9, cuv.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               der $$4x = $$2.c_($$9);
-               if ($$4x instanceof dgg $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ht $$9 = $$2.a(dmr.a.f, $$6);
+            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, cvc.cv.o(), 2);
+               dgh.a($$2, $$1, $$9, eev.b);
+               dhi $$10 = cvc.cp.o();
+
+               for (hx $$11 : hx.c.a) {
+                  ht $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, cuv.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, cuv.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, cuv.F.o());
-         } else {
-            this.a($$2, $$4, cuv.a.o());
+
+               return true;
+            }
          }
       }
 
-      return true;
+      return false;
    }
 }

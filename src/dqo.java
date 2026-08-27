@@ -1,30 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class dqo extends dpj<dri> {
-   public dqo(Codec<dri> $$0) {
+public class dqo extends dpv<dsf> {
+   public dqo(Codec<dsf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<dri> $$0) {
-      int $$1 = 0;
-      ato $$2 = $$0.d();
-      csm $$3 = $$0.b();
-      ht $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dpx<dsf> $$0) {
+      csu $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      dhi $$3 = $$1.a_($$2.d());
+      dsf $$4 = $$0.f();
+      ats $$5 = $$0.d();
+      if (!$$3.a(arg.aK)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.ak()) {
+            int $$7 = 0;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dmf.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ht $$10 = new ht($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dgw $$11 = cuv.mV.o().a(dbp.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(cuv.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               ht $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dhi $$10 = $$4.b.a($$5, $$9);
+               if ($$1.t($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
-
-      return $$1 > 0;
    }
 }

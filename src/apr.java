@@ -1,29 +1,43 @@
 import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
 import java.io.File;
-import java.util.Objects;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public class apr extends apv<GameProfile, aps> {
+public class apr extends apz<String, aps> {
    public apr(File $$0) {
       super($$0);
    }
 
    @Override
-   protected apu<GameProfile> a(JsonObject $$0) {
+   protected apy<String> a(JsonObject $$0) {
       return new aps($$0);
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(apu::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
    }
 
-   public boolean a(GameProfile $$0) {
-      aps $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
+   public boolean a(String $$0) {
+      return this.d($$0);
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   @Nullable
+   public aps b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
+   }
+
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
+      }
+
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
+      }
+
+      return $$1;
    }
 }

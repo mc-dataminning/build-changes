@@ -39,14 +39,14 @@ public class it {
    }
 
    public float e() {
-      return ati.g(this.a);
+      return atm.g(this.a);
    }
 
    public float f() {
-      return ati.g(this.b);
+      return atm.g(this.b);
    }
 
    public float g() {
-      return ati.g(this.c);
+      return atm.g(this.c);
    }
 }

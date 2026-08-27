@@ -1,112 +1,147 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.Products.P5;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 
-public class dye {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<ib<dye>>> d = new MutableObject();
-   public static final Codec<dye> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asq.a(d::getValue).fieldOf("fallback").forGetter(dye::a),
-               Codec.mapPair(dyc.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dye::new)
-   );
-   public static final Codec<ib<dye>> b = ac.a(agc.a(jz.aE, a), d::setValue);
-   private final List<Pair<dyc, Integer>> e;
-   private final ObjectArrayList<dyc> f;
-   private final ib<dye> g;
-   private int h = Integer.MIN_VALUE;
+public abstract class dye {
+   public static final Codec<dye> b = jy.S.q().dispatch(dye::e, dyf::codec);
+   private static final int a = 10387320;
+   private final iw c;
+   private final dye.c d;
+   private final float e;
+   private final int f;
+   private final Optional<dye.a> g;
 
-   public dye(ib<dye> $$0, List<Pair<dyc, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<dyc, Integer> $$2 : $$1) {
-         dyc $$3 = (dyc)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   protected static <S extends dye> P5<Mu<S>, iw, dye.c, Float, Integer, Optional<dye.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         iw.v(16).optionalFieldOf("locate_offset", iw.g).forGetter(dye::f),
+         dye.c.e.optionalFieldOf("frequency_reduction_method", dye.c.a).forGetter(dye::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(dye::h),
+         asu.i.fieldOf("salt").forGetter(dye::i),
+         dye.a.a.optionalFieldOf("exclusion_zone").forGetter(dye::j)
+      );
    }
 
-   public dye(ib<dye> $$0, List<Pair<Function<dye.a, ? extends dyc>, Integer>> $$1, dye.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<dye.a, ? extends dyc>, Integer> $$3 : $$1) {
-         dyc $$4 = (dyc)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   protected dye(iw $$0, dye.c $$1, float $$2, int $$3, Optional<dye.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public int a(eaw $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != dxv.b).mapToInt($$1 -> $$1.a($$0, ht.b, dbf.a).d()).max().orElse(0);
-      }
-
-      return this.h;
+   protected iw f() {
+      return this.c;
    }
 
-   public ib<dye> a() {
+   protected dye.c g() {
+      return this.d;
+   }
+
+   protected float h() {
+      return this.e;
+   }
+
+   protected int i() {
+      return this.f;
+   }
+
+   protected Optional<dye.a> j() {
       return this.g;
    }
 
-   public dyc a(ato $$0) {
-      return (dyc)this.f.get($$0.a(this.f.size()));
+   public boolean b(djg $$0, int $$1, int $$2) {
+      if (!this.a($$0, $$1, $$2)) {
+         return false;
+      } else {
+         return this.e < 1.0F && !this.d.a($$0.d(), this.f, $$1, $$2, this.e) ? false : !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+      }
    }
 
-   public List<dyc> b(ato $$0) {
-      return ac.a(this.f, $$0);
+   protected abstract boolean a(djg var1, int var2, int var3);
+
+   public ht a(crh $$0) {
+      return new ht($$0.d(), 0, $$0.e()).a(this.f());
    }
 
-   public int b() {
-      return this.f.size();
+   public abstract dyf<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dnq $$5 = new dnq(new dms(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
    }
 
-   public static enum a implements aub {
-      a("terrain_matching", ImmutableList.of(new eac(dmf.a.a, -1))),
-      b("rigid", ImmutableList.of());
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dnq $$5 = new dnq(new dms(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
 
-      public static final aub.a<dye.a> c = aub.a(dye.a::values);
-      private final String d;
-      private final ImmutableList<eas> e;
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dnq $$5 = new dnq(new dms(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
 
-      private a(String $$0, ImmutableList<eas> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      dnq $$7 = new dnq(new dms(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(ib<dxn> b, int c) {
+      public static final Codec<dye.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(age.a(jz.aD, dxn.a, false).fieldOf("other_set").forGetter(dye.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(dye.a::b))
+               .apply($$0, dye.a::new)
+      );
+
+      boolean a(djg $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
       }
 
-      public String a() {
-         return this.d;
+      public ib<dxn> a() {
+         return this.b;
       }
 
-      public static dye.a a(String $$0) {
-         return c.a($$0);
+      public int b() {
+         return this.c;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements aug {
+      a("default", dye::a),
+      b("legacy_type_1", dye::d),
+      c("legacy_type_2", dye::c),
+      d("legacy_type_3", dye::b);
+
+      public static final Codec<dye.c> e = aug.a(dye.c::values);
+      private final String f;
+      private final dye.b g;
+
+      private c(String $$0, dye.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public ImmutableList<eas> b() {
-         return this.e;
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
       public String c() {
-         return this.d;
+         return this.f;
       }
    }
 }

@@ -1,70 +1,67 @@
+import java.util.List;
 import org.joml.Vector3f;
 
-public class cax extends cbt {
-   public cax(bkm<? extends cax> $$0, crs $$1) {
+public class cax extends cbe {
+   public static final float b = bku.A.k() / bku.V.k();
+   private static final int e = 1200;
+   private static final int bT = 50;
+   private static final int bU = 6000;
+   private static final int bV = 2;
+   private static final int bW = 1200;
+
+   public cax(bku<? extends cax> $$0, csa $$1) {
       super($$0, $$1);
+      this.fK();
+      if (this.d != null) {
+         this.d.c(400);
+      }
    }
 
-   public static boolean a(bkm<cax> $$0, csh $$1, blc $$2, ht $$3, ato $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == blc.c || $$1.g($$3));
-   }
-
-   @Override
-   protected boolean ac_() {
-      return false;
-   }
-
-   @Override
-   protected aqm w() {
-      return aqn.lB;
+   public static bml.a u() {
+      return cbe.gf().a(bmm.m, 0.3F).a(bmm.c, 8.0).a(bmm.l, 80.0);
    }
 
    @Override
-   protected aqm d(bjg $$0) {
-      return aqn.lE;
+   public int w() {
+      return 60;
    }
 
    @Override
-   protected aqm m_() {
-      return aqn.lD;
+   protected aqq y() {
+      return this.bc() ? aqr.hb : aqr.hc;
    }
 
    @Override
-   protected aqm y() {
-      return aqn.lF;
+   protected aqq d(bjo $$0) {
+      return this.bc() ? aqr.hh : aqr.hi;
    }
 
    @Override
-   public boolean C(bki $$0) {
-      boolean $$1 = super.C($$0);
-      if ($$1 && this.eS().b() && $$0 instanceof bky) {
-         float $$2 = this.dL().d_(this.dl()).b();
-         ((bky)$$0).b(new bjv(bjx.q, 140 * (int)$$2), this);
+   protected aqq m_() {
+      return this.bc() ? aqr.he : aqr.hf;
+   }
+
+   @Override
+   protected aqq A() {
+      return aqr.hg;
+   }
+
+   @Override
+   protected void Z() {
+      super.Z();
+      if ((this.ah + this.aj()) % 1200 == 0) {
+         bkd $$0 = new bkd(bkf.d, 6000, 2);
+         List<amf> $$1 = bke.a((ame)this.dN(), this, this.dl(), 50.0, $$0, 1200);
+         $$1.forEach($$0x -> $$0x.c.b(new zi(zi.k, this.aU() ? 0.0F : 1.0F)));
       }
 
-      return $$1;
-   }
-
-   @Override
-   protected boolean gf() {
-      return true;
-   }
-
-   @Override
-   protected void gh() {
-      this.b(bkm.bp);
-      if (!this.aS()) {
-         this.dL().a(null, 1041, this.dl(), 0);
+      if (!this.fR()) {
+         this.a(this.dn(), 16);
       }
    }
 
    @Override
-   protected clb ge() {
-      return clb.b;
-   }
-
-   @Override
-   protected Vector3f a(bki $$0, bkj $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
+   protected Vector3f a(bkq $$0, bkr $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.353125F * $$2, 0.0F);
    }
 }

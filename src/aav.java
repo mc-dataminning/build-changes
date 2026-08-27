@@ -1,7 +1,7 @@
 public class aav implements wk<yd> {
    private final double a;
 
-   public aav(din $$0) {
+   public aav(diz $$0) {
       this.a = $$0.k();
    }
 

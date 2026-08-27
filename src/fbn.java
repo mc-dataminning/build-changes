@@ -1,333 +1,184 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fbn extends fah {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fbn.a k = new fbn.a() {
+public class fbn extends evf<fbn.b> {
+   final fbo a;
+   int m;
+
+   public fbn(fbo $$0, etd $$1) {
+      super($$1, $$0.g + 45, $$0.h, 20, $$0.h - 32, 20);
+      this.a = $$0;
+      etb[] $$2 = (etb[])ArrayUtils.clone($$1.m.X);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (etb $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new fbn.a(ur.c($$5)));
+         }
+
+         ur $$6 = ur.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.m) {
+            this.m = $$7;
+         }
+
+         this.b(new fbn.c($$4, $$6));
+      }
+   }
+
+   public void e() {
+      etb.d();
+      this.v();
+   }
+
+   public void v() {
+      this.i().forEach(fbn.b::c);
+   }
+
+   @Override
+   protected int c() {
+      return super.c() + 15;
+   }
+
+   @Override
+   public int b() {
+      return super.b() + 32;
+   }
+
+   public class a extends fbn.b {
+      final ur b;
+      private final int c;
+
+      public a(ur $$1) {
+         this.b = $$1;
+         this.c = fbn.this.c.h.a(this.b);
+      }
+
       @Override
-      public int a() {
-         return 0;
+      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fbn.this.c.h, this.b, fbn.this.c.y.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, 16777215, false);
       }
 
+      @Nullable
       @Override
-      public uw a(int $$0) {
-         return uw.b;
-      }
-   };
-   public static final agg l = new agg("textures/gui/book.png");
-   protected static final int m = 114;
-   protected static final int n = 128;
-   protected static final int o = 192;
-   protected static final int p = 192;
-   private fbn.a q;
-   private int r;
-   private List<asu> t = Collections.emptyList();
-   private int u = -1;
-   private ur v = uq.a;
-   private fco w;
-   private fco x;
-   private final boolean y;
-
-   public fbn(fbn.a $$0) {
-      this($$0, true);
-   }
-
-   public fbn() {
-      this(k, false);
-   }
-
-   private fbn(fbn.a $$0, boolean $$1) {
-      super(esj.a);
-      this.q = $$0;
-      this.y = $$1;
-   }
-
-   public void a(fbn.a $$0) {
-      this.q = $$0;
-      this.r = ati.a(this.r, 0, $$0.a());
-      this.H();
-      this.u = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = ati.a($$0, 0, this.q.a() - 1);
-      if ($$1 != this.r) {
-         this.r = $$1;
-         this.H();
-         this.u = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
-   }
-
-   @Override
-   protected void aO_() {
-      this.l();
-      this.C();
-   }
-
-   protected void l() {
-      this.d(eum.a(uq.d, $$0 -> this.aE_()).a(this.g / 2 - 100, 196, 200, 20).a());
-   }
-
-   @Override
-   protected void C() {
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.w = this.d(new fco($$0 + 116, 159, true, $$0x -> this.F(), this.y));
-      this.x = this.d(new fco($$0 + 43, 159, false, $$0x -> this.E(), this.y));
-      this.H();
-   }
-
-   private int D() {
-      return this.q.a();
-   }
-
-   protected void E() {
-      if (this.r > 0) {
-         this.r--;
-      }
-
-      this.H();
-   }
-
-   protected void F() {
-      if (this.r < this.D() - 1) {
-         this.r++;
-      }
-
-      this.H();
-   }
-
-   private void H() {
-      this.w.j = this.r < this.D() - 1;
-      this.x.j = this.r > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.x.b();
-               return true;
-            case 267:
-               this.w.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.u != this.r) {
-         uw $$6 = this.q.b(this.r);
-         this.t = this.i.c($$6, 114);
-         this.v = ur.a("book.pageIndicator", this.r + 1, Math.max(this.D(), 1));
-      }
-
-      this.u = this.r;
-      int $$7 = this.i.a(this.v);
-      $$0.a(this.i, this.v, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.t.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         asu $$10 = this.t.get($$9);
-         $$0.a(this.i, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      vo $$11 = this.a((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.i, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         vo $$3 = this.a($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(vo $$0) {
-      up $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == up.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == up.a.c) {
-            this.G();
-         }
-
-         return $$4;
-      }
-   }
-
-   protected void G() {
-      this.f.a(null);
-   }
-
-   @Nullable
-   public vo a(double $$0, double $$1) {
-      if (this.t.isEmpty()) {
+      public eul a(eyy $$0) {
          return null;
-      } else {
-         int $$2 = ati.a($$0 - (double)((this.g - 192) / 2) - 36.0);
-         int $$3 = ati.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.t.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.t.size()) {
-                  asu $$6 = this.t.get($$5);
-                  return this.f.h.b().a($$6, $$2);
-               } else {
-                  return null;
+      }
+
+      @Override
+      public List<? extends ewu> i() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends eyq> b() {
+         return ImmutableList.of(new eyq() {
+            @Override
+            public eyq.a q() {
+               return eyq.a.b;
+            }
+
+            @Override
+            public void b(eys $$0) {
+               $$0.a(eyr.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
+   }
+
+   public abstract static class b extends evf.a<fbn.b> {
+      abstract void c();
+   }
+
+   public class c extends fbn.b {
+      private final etb b;
+      private final ur c;
+      private final euz d;
+      private final euz e;
+      private boolean f = false;
+
+      c(etb $$1, ur $$2) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = euz.a($$2, $$1x -> {
+            fbn.this.a.c = $$1;
+            fbn.this.e();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? ur.a("narrator.controls.unbound", $$2) : ur.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.e = euz.a(ur.c("controls.reset"), $$1x -> {
+            fbn.this.c.m.a($$1, $$1.i());
+            fbn.this.e();
+         }).a(0, 0, 50, 20).a($$1x -> ur.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int var10003 = $$3 + 90 - fbn.this.m;
+         $$0.a(fbn.this.c.h, this.c, var10003, $$2 + $$5 / 2 - 9 / 2, 16777215, false);
+         this.e.f($$3 + 190);
+         this.e.g($$2);
+         this.e.a($$0, $$6, $$7, $$9);
+         this.d.f($$3 + 105);
+         this.d.g($$2);
+         if (this.f) {
+            int $$10 = 3;
+            int $$11 = this.d.p() - 6;
+            $$0.a($$11, $$2 + 2, $$11 + 3, $$2 + $$5 + 2, n.m.f() | 0xFF000000);
+         }
+
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends ewu> i() {
+         return ImmutableList.of(this.d, this.e);
+      }
+
+      @Override
+      public List<? extends eyq> b() {
+         return ImmutableList.of(this.d, this.e);
+      }
+
+      @Override
+      protected void c() {
+         this.d.b(this.b.k());
+         this.e.i = !this.b.l();
+         this.f = false;
+         vf $$0 = ur.i();
+         if (!this.b.j()) {
+            for (etb $$1 : fbn.this.c.m.X) {
+               if ($$1 != this.b && this.b.b($$1)) {
+                  if (this.f) {
+                     $$0.f(", ");
+                  }
+
+                  this.f = true;
+                  $$0.b(ur.c($$1.h()));
                }
-            } else {
-               return null;
             }
+         }
+
+         if (this.f) {
+            this.d.b(ur.b("[ ").b(this.d.l().f().a(n.p)).f(" ]").a(n.m));
+            this.d.a(ewk.a(ur.a("controls.keybinds.duplicateKeybinds", $$0)));
          } else {
-            return null;
-         }
-      }
-   }
-
-   static List<String> a(rz $$0) {
-      Builder<String> $$1 = ImmutableList.builder();
-      a($$0, $$1::add);
-      return $$1.build();
-   }
-
-   public static void a(rz $$0, Consumer<String> $$1) {
-      sf $$2 = $$0.c("pages", 8).e();
-      IntFunction<String> $$4;
-      if (esr.N().aP() && $$0.b("filtered_pages", 10)) {
-         rz $$3 = $$0.p("filtered_pages");
-         $$4 = $$2x -> {
-            String $$3x = String.valueOf($$2x);
-            return $$3.e($$3x) ? $$3.l($$3x) : $$2.j($$2x);
-         };
-      } else {
-         $$4 = $$2::j;
-      }
-
-      for (int $$6 = 0; $$6 < $$2.size(); $$6++) {
-         $$1.accept($$4.apply($$6));
-      }
-   }
-
-   public interface a {
-      int a();
-
-      uw a(int var1);
-
-      default uw b(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a($$0) : uw.b;
-      }
-
-      static fbn.a a(clb $$0) {
-         if ($$0.a(cle.ti)) {
-            return new fbn.c($$0);
-         } else {
-            return (fbn.a)($$0.a(cle.th) ? new fbn.b($$0) : fbn.k);
-         }
-      }
-   }
-
-   public static class b implements fbn.a {
-      private final List<String> a;
-
-      public b(clb $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(clb $$0) {
-         rz $$1 = $$0.v();
-         return (List<String>)($$1 != null ? fbn.a($$1) : ImmutableList.of());
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public uw a(int $$0) {
-         return uw.e(this.a.get($$0));
-      }
-   }
-
-   public static class c implements fbn.a {
-      private final List<String> a;
-
-      public c(clb $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(clb $$0) {
-         rz $$1 = $$0.v();
-         return (List<String>)($$1 != null && cmx.a($$1) ? fbn.a($$1) : ImmutableList.of(ur.a.a(ur.c("book.invalid.tag").a(n.e))));
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public uw a(int $$0) {
-         String $$1 = this.a.get($$0);
-
-         try {
-            uw $$2 = ur.a.a($$1);
-            if ($$2 != null) {
-               return $$2;
-            }
-         } catch (Exception var4) {
+            this.d.a(null);
          }
 
-         return uw.e($$1);
+         if (fbn.this.a.c == this.b) {
+            this.d.b(ur.b("> ").b(this.d.l().f().a(n.p, n.t)).f(" <").a(n.o));
+         }
       }
    }
 }

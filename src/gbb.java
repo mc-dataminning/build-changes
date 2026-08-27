@@ -1,316 +1,159 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gbb implements gbe.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final agg b;
-   final int c;
-   final int d;
-   private final eml e;
-   eml[] f;
-   @Nullable
-   private final gbb.a g;
-   private final apf h;
+public class gbb {
+   private static final Map<agi, gbc> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final agi c = new agi("damaged");
+   private static final agi d = new agi("damage");
+   private static final gaz e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
+   private static final gaz f = ($$0x, $$1, $$2, $$3) -> atm.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
+   private static final Map<cle, Map<agi, gbc>> g = Maps.newHashMap();
 
-   public gbb(agg $$0, gcu $$1, eml $$2, apf $$3) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      gcs $$4 = $$3.a(gcs.a).orElse(gcs.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new eml[]{this.e};
+   private static gaz a(agi $$0, gaz $$1) {
+      a.put($$0, $$1);
+      return $$1;
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = gaw.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
+   private static void a(gbc $$0) {
+      a.put(new agi("custom_model_data"), $$0);
+   }
 
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new y($$2);
+   private static void a(cle $$0, agi $$1, gaz $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   }
+
+   @Nullable
+   public static gbc a(cle $$0, agi $$1) {
+      if ($$0.n() > 0) {
+         if (d.equals($$1)) {
+            return f;
+         }
+
+         if (c.equals($$1)) {
+            return e;
+         }
+      }
+
+      gbc $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         Map<agi, gbc> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
       }
    }
 
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
-   }
-
-   @Nullable
-   private gbb.a a(gcu $$0, int $$1, int $$2, gcs $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<gbb.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new gbb.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new gbb.b($$8, $$3.a()));
+   static {
+      a(new agi("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() != bla.b ? 1.0F : 0.0F);
+      a(new agi("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cdu ? ((cdu)$$2).go().a($$0x.d(), 0.0F) : 0.0F);
+      gaz $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(aro.aH)) {
+            return Float.NEGATIVE_INFINITY;
+         } else {
+            return $$1 == null ? 0.0F : cnl.a($$1.H_(), $$0x, true).map(cnl::b).map(ib::a).map(cnm::c).orElse(0.0F);
          }
-      } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
+      };
+      a(ls.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
+      a(clm.or, new agi("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fq() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fr()) / 20.0F;
+         }
+      });
+      a(clm.xh, new agi("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fq() == $$0x ? (float)($$2.fr() % 10) / 10.0F : 0.0F);
+      a(clm.or, new agi("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fo() && $$2.fq() == $$0x ? 1.0F : 0.0F);
+      a(clm.qR, new agi("filled"), ($$0x, $$1, $$2, $$3) -> cjl.d($$0x));
+      a(clm.qT, new agi("time"), new gaz() {
+         private double a;
+         private double b;
+         private long c;
 
-         for (Iterator<gbb.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            gbb.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
+         @Override
+         public float unclampedCall(clj $$0, @Nullable flj $$1, @Nullable blg $$2, int $$3) {
+            bkq $$4 = (bkq)($$2 != null ? $$2 : $$0.H());
+            if ($$4 == null) {
+               return 0.0F;
             } else {
-               $$11.remove();
-            }
-         }
+               if ($$1 == null && $$4.dN() instanceof flj) {
+                  $$1 = (flj)$$4.dN();
+               }
 
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
-      }
-
-      return $$7.size() <= 1 ? null : new gbb.a(ImmutableList.copyOf($$7), $$4, $$3.b());
-   }
-
-   void a(int $$0, int $$1, int $$2, int $$3, eml[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
-   }
-
-   @Override
-   public int a() {
-      return this.c;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public agg c() {
-      return this.b;
-   }
-
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public gbd e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public apf f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (eml $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f);
-      }
-   }
-
-   class a {
-      final List<gbb.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(List<gbb.b> $$0, int $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * gbb.this.c;
-         int $$4 = this.b($$2) * gbb.this.d;
-         gbb.this.a($$0, $$1, $$3, $$4, gbb.this.f);
-      }
-
-      public gbd a() {
-         return gbb.this.new d(this, this.d ? gbb.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
-   }
-
-   static class b {
-      final int a;
-      final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   final class c implements AutoCloseable {
-      private final eml[] b = new eml[gbb.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = gbb.this.c >> $$0;
-            int $$2 = gbb.this.d >> $$0;
-            this.b[$$0] = new eml($$1, $$2, false);
-         }
-      }
-
-      void a(int $$0, int $$1, gbb.d $$2) {
-         gbb.a $$3 = $$2.d;
-         List<gbb.b> $$4 = $$3.b;
-         gbb.b $$5 = $$4.get($$2.b);
-         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = gbb.this.c >> $$9;
-               int $$11 = gbb.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
-                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
-                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
-                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.D_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
                   }
+
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
                }
             }
-
-            gbb.this.a($$0, $$1, 0, 0, this.b);
          }
-      }
 
-      private int a(gbb.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return gbb.this.f[$$2].a($$3 + ($$0.a($$1) * gbb.this.c >> $$2), $$4 + ($$0.b($$1) * gbb.this.d >> $$2));
-      }
-
-      private int a(double $$0, int $$1, int $$2) {
-         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
-      }
-
-      @Override
-      public void close() {
-         for (eml $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements gbd {
-      int b;
-      int c;
-      final gbb.a d;
-      @Nullable
-      private final gbb.c e;
-
-      d(gbb.a $$0, @Nullable gbb.c $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         this.c++;
-         gbb.b $$2 = this.d.b.get(this.b);
-         if (this.c >= $$2.b) {
-            int $$3 = $$2.a;
-            this.b = (this.b + 1) % this.d.b.size();
-            this.c = 0;
-            int $$4 = this.d.b.get(this.b).a;
-            if ($$3 != $$4) {
-               this.d.a($$0, $$1, $$4);
+         private double a(csa $$0, double $$1) {
+            if ($$0.W() != this.c) {
+               this.c = $$0.W();
+               double $$2 = $$1 - this.a;
+               $$2 = atm.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = atm.c(this.a + this.b, 1.0);
             }
-         } else if (this.e != null) {
-            if (!RenderSystem.isOnRenderThread()) {
-               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
-            } else {
-               this.e.a($$0, $$1, this);
-            }
-         }
-      }
 
-      @Override
-      public void close() {
-         if (this.e != null) {
-            this.e.close();
+            return this.a;
          }
-      }
+      });
+      a(clm.qP, new agi("angle"), new gba(($$0x, $$1, $$2) -> cjn.d($$1) ? cjn.a($$1.w()) : cjn.a($$0x)));
+      a(clm.qQ, new agi("angle"), new gba(($$0x, $$1, $$2) -> $$2 instanceof cdu $$3 ? $$3.gs().orElse(null) : null));
+      a(clm.vL, new agi("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return cjr.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fr()) / (float)cjr.k($$0x);
+         }
+      });
+      a(clm.vL, new agi("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fo() && $$2.fq() == $$0x && !cjr.d($$0x) ? 1.0F : 0.0F);
+      a(clm.vL, new agi("charged"), ($$0x, $$1, $$2, $$3) -> cjr.d($$0x) ? 1.0F : 0.0F);
+      a(clm.vL, new agi("firework"), ($$0x, $$1, $$2, $$3) -> cjr.d($$0x) && cjr.a($$0x, clm.um) ? 1.0F : 0.0F);
+      a(clm.nS, new agi("broken"), ($$0x, $$1, $$2, $$3) -> ckd.d($$0x) ? 0.0F : 1.0F);
+      a(clm.qS, new agi("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eU() == $$0x;
+            boolean $$5 = $$2.eV() == $$0x;
+            if ($$2.eU().d() instanceof ckp) {
+               $$5 = false;
+            }
+
+            return ($$4 || $$5) && $$2 instanceof cdu && ((cdu)$$2).ck != null ? 1.0F : 0.0F;
+         }
+      });
+      a(clm.vk, new agi("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fo() && $$2.fq() == $$0x ? 1.0F : 0.0F);
+      a(clm.vH, new agi("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fo() && $$2.fq() == $$0x ? 1.0F : 0.0F);
+      a(clm.hB, new agi("level"), ($$0x, $$1, $$2, $$3) -> {
+         rz $$4 = $$0x.b("BlockStateTag");
+
+         try {
+            if ($$4 != null) {
+               sw $$5 = $$4.c(czn.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.s_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
+
+         return 1.0F;
+      });
+      a(clm.vU, new agi("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fo() && $$2.fq() == $$0x ? 1.0F : 0.0F);
    }
 }

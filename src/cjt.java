@@ -1,81 +1,62 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public interface cjt {
-   String o_ = "color";
-   String p_ = "display";
-   int q_ = 10511680;
+public class cjt extends cmx implements cnd {
+   private final arv<cva> a;
+   protected final float b;
+   private final float c;
+   private final Multimap<bmh, bmk> d;
 
-   default boolean a(clb $$0) {
-      rz $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+   protected cjt(float $$0, float $$1, cmw $$2, arv<cva> $$3, cle.a $$4) {
+      super($$2, $$4);
+      this.a = $$3;
+      this.b = $$2.b();
+      this.c = $$0 + $$2.c();
+      Builder<bmh, bmk> $$5 = ImmutableMultimap.builder();
+      $$5.put(bmm.c, new bmk(m, "Tool modifier", (double)this.c, bmk.a.a));
+      $$5.put(bmm.e, new bmk(n, "Tool modifier", (double)$$1, bmk.a.a));
+      this.d = $$5.build();
    }
 
-   default int e_(clb $$0) {
-      rz $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   @Override
+   public float a(clj $$0, dhi $$1) {
+      return $$1.a(this.a) ? this.b : 1.0F;
    }
 
-   default void f_(clb $$0) {
-      rz $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
+   @Override
+   public boolean a(clj $$0, blg $$1, blg $$2) {
+      $$0.a(2, $$2, $$0x -> $$0x.d(bkv.a));
+      return true;
    }
 
-   default void a(clb $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static clb a(clb $$0, List<cjq> $$1) {
-      clb $$2 = clb.b;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      cjt $$6 = null;
-      ckw $$7 = $$0.d();
-      if ($$7 instanceof cjt) {
-         $$6 = (cjt)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
-
-         for (cjq $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
-         }
+   @Override
+   public boolean a(clj $$0, csa $$1, dhi $$2, ht $$3, blg $$4) {
+      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bkv.a));
       }
 
-      if ($$6 == null) {
-         return clb.b;
+      return true;
+   }
+
+   @Override
+   public Multimap<bmh, bmk> a(bkv $$0) {
+      return $$0 == bkv.a ? this.d : super.a($$0);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a_(dhi $$0) {
+      int $$1 = this.i().d();
+      if ($$1 < 3 && $$0.a(arg.bE)) {
+         return false;
+      } else if ($$1 < 2 && $$0.a(arg.bF)) {
+         return false;
       } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
+         return $$1 < 1 && $$0.a(arg.bG) ? false : $$0.a(this.a);
       }
    }
 }

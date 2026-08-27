@@ -1,19 +1,40 @@
-public class czy {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dgw $$0) {
-      return $$0.i();
+public class czy extends cva {
+   public static final MapCodec<czy> a = b(czy::new);
+   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+
+   @Override
+   public MapCodec<czy> a() {
+      return a;
    }
 
-   public static int a(ato $$0) {
-      double $$1 = 1.0;
+   public czy(dhh.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   public ekn b(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   public ekn b_(dhi $$0, crg $$1, ht $$2) {
+      return ekk.b();
+   }
+
+   @Override
+   public ekn c(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return ekk.b();
+   }
+
+   @Override
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      return false;
+   }
+
+   @Override
+   public float d(dhi $$0, crg $$1, ht $$2) {
+      return 0.2F;
    }
 }

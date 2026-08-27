@@ -1,95 +1,51 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class emt {
-   public void a(float $$0) {
+   private static final int a = 8;
+   private static final int b = 16384;
+
+   public static void a(long $$0) {
+      c($$0).filter(emt::a).ifPresent(emt::c);
    }
 
-   public void a(float $$0, float $$1) {
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public void a(float $$0, float $$1, float $$2) {
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public void b(float $$0, float $$1, float $$2, float $$3) {
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   public void a(int $$0) {
-   }
-
-   public void a(int $$0, int $$1) {
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(float[] $$0) {
-   }
-
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void c(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
-
-   public void a(Matrix3f $$0) {
+   public static void a(aoz<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+      }
    }
 }

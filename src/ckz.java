@@ -1,10 +1,19 @@
-public class ckz extends ckm {
-   public ckz(bkm<? extends bzx> $$0, ckw.a $$1) {
-      super($$0, $$1);
+public class ckz extends cle {
+   private static final String a = "textures/entity/horse/";
+   private final int b;
+   private final String c;
+
+   public ckz(int $$0, String $$1, cle.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
    }
 
-   @Override
-   protected boolean a(cdm $$0, hx $$1, clb $$2, ht $$3) {
-      return !$$0.dL().r($$3) && $$0.a($$3, $$1, $$2);
+   public agi h() {
+      return new agi(this.c);
+   }
+
+   public int i() {
+      return this.b;
    }
 }

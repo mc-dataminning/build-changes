@@ -1,25 +1,81 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dyo extends dwv {
-   public static final Codec<dyo> d = a(dyo::new);
+public abstract class dyo {
+   public static final Codec<dyo> e = jy.aj.q().dispatch("element_type", dyo::a, dyp::codec);
+   private static final ib<ebf> a = ib.a(new ebf(List.of()));
+   @Nullable
+   private volatile dyq.a b;
 
-   public dyo(dwv.c $$0) {
-      super($$0);
+   protected static <E extends dyo> RecordCodecBuilder<E, dyq.a> d() {
+      return dyq.a.c.fieldOf("projection").forGetter(dyo::e);
    }
 
-   @Override
-   public Optional<dwv.b> a(dwv.a $$0) {
-      return a($$0, dmf.a.c, $$1 -> a($$1, $$0));
+   protected dyo(dyq.a $$0) {
+      this.b = $$0;
    }
 
-   private static void a(dxn $$0, dwv.a $$1) {
-      ht $$2 = new ht($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new dyn.a($$2));
+   public abstract iw a(ebi var1, dbm var2);
+
+   public abstract List<ebh.c> a(ebi var1, ht var2, dbm var3, ats var4);
+
+   public abstract dwz a(ebi var1, ht var2, dbm var3);
+
+   public abstract boolean a(ebi var1, csu var2, css var3, djf var4, ht var5, ht var6, dbm var7, dwz var8, ats var9, boolean var10);
+
+   public abstract dyp<?> a();
+
+   public void a(csb $$0, ebh.c $$1, ht $$2, dbm $$3, ats $$4, dwz $$5) {
    }
 
-   @Override
-   public dxe<?> e() {
-      return dxe.a;
+   public dyo a(dyq.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public dyq.a e() {
+      dyq.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
+   }
+
+   public int f() {
+      return 1;
+   }
+
+   public static Function<dyq.a, dyh> g() {
+      return $$0 -> dyh.b;
+   }
+
+   public static Function<dyq.a, dyl> a(String $$0) {
+      return $$1 -> new dyl(Either.left(new agi($$0)), a, $$1);
+   }
+
+   public static Function<dyq.a, dyl> a(String $$0, ib<ebf> $$1) {
+      return $$2 -> new dyl(Either.left(new agi($$0)), $$1, $$2);
+   }
+
+   public static Function<dyq.a, dyn> b(String $$0) {
+      return $$1 -> new dyn(Either.left(new agi($$0)), a, $$1);
+   }
+
+   public static Function<dyq.a, dyn> b(String $$0, ib<ebf> $$1) {
+      return $$2 -> new dyn(Either.left(new agi($$0)), $$1, $$2);
+   }
+
+   public static Function<dyq.a, dyi> a(ib<dwl> $$0) {
+      return $$1 -> new dyi($$0, $$1);
+   }
+
+   public static Function<dyq.a, dym> b(List<Function<dyq.a, ? extends dyo>> $$0) {
+      return $$1 -> new dym($$0.stream().map($$1x -> (dyo)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

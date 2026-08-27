@@ -10,24 +10,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cm(Map<ib<bjt>, cm.b> b) {
+public record cm(Map<ib<bkb>, cm.b> b) {
    public static final Codec<cm> a = Codec.unboundedMap(jy.e.r(), cm.b.a).xmap(cm::new, cm::b);
 
-   public boolean a(bki $$0) {
-      if ($$0 instanceof bky $$1 && this.a($$1.es())) {
+   public boolean a(bkq $$0) {
+      if ($$0 instanceof blg $$1 && this.a($$1.eu())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bky $$0) {
-      return this.a($$0.es());
+   public boolean a(blg $$0) {
+      return this.a($$0.eu());
    }
 
-   public boolean a(Map<bjt, bjv> $$0) {
-      for (Entry<ib<bjt>, cm.b> $$1 : this.b.entrySet()) {
-         bjv $$2 = $$0.get($$1.getKey().a());
+   public boolean a(Map<bkb, bkd> $$0) {
+      for (Entry<ib<bkb>, cm.b> $$1 : this.b.entrySet()) {
+         bkd $$2 = $$0.get($$1.getKey().a());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -45,18 +45,18 @@ public record cm(Map<ib<bjt>, cm.b> b) {
    }
 
    public static class a {
-      private final Builder<ib<bjt>, cm.b> a = ImmutableMap.builder();
+      private final Builder<ib<bkb>, cm.b> a = ImmutableMap.builder();
 
       public static cm.a a() {
          return new cm.a();
       }
 
-      public cm.a a(bjt $$0) {
+      public cm.a a(bkb $$0) {
          this.a.put($$0.j(), new cm.b());
          return this;
       }
 
-      public cm.a a(bjt $$0, cm.b $$1) {
+      public cm.a a(bkb $$0, cm.b $$1) {
          this.a.put($$0.j(), $$1);
          return this;
       }
@@ -69,10 +69,10 @@ public record cm(Map<ib<bjt>, cm.b> b) {
    public static record b(cl.d b, cl.d c, Optional<Boolean> d, Optional<Boolean> e) {
       public static final Codec<cm.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  asq.a(cl.d.d, "amplifier", cl.d.c).forGetter(cm.b::a),
-                  asq.a(cl.d.d, "duration", cl.d.c).forGetter(cm.b::b),
-                  asq.a(Codec.BOOL, "ambient").forGetter(cm.b::c),
-                  asq.a(Codec.BOOL, "visible").forGetter(cm.b::d)
+                  asu.a(cl.d.d, "amplifier", cl.d.c).forGetter(cm.b::a),
+                  asu.a(cl.d.d, "duration", cl.d.c).forGetter(cm.b::b),
+                  asu.a(Codec.BOOL, "ambient").forGetter(cm.b::c),
+                  asu.a(Codec.BOOL, "visible").forGetter(cm.b::d)
                )
                .apply($$0, cm.b::new)
       );
@@ -81,7 +81,7 @@ public record cm(Map<ib<bjt>, cm.b> b) {
          this(cl.d.c, cl.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bjv $$0) {
+      public boolean a(@Nullable bkd $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

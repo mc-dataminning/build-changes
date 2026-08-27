@@ -1,127 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dab extends cut {
-   public static final MapCodec<dab> a = b(dab::new);
-   public static final dhu<dhx> b = dhm.bf;
-   public static final dhn c = dhm.w;
-   public static final dhw d = dhm.aR;
-   public static final int e = 3;
+public class dab extends cvj implements cvd {
+   public static final MapCodec<dab> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(agh.a(jz.au).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dab::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final ekn c = cva.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final agh<dpi<?, ?>> d;
 
    @Override
    public MapCodec<dab> a() {
       return a;
    }
 
-   public dab(dgv.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dhx.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
-   }
-
-   private dgw b(crt $$0, ht $$1, dgw $$2) {
-      dhx $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(b, $$3);
-      } else {
-         dhx $$4 = $$0.a_($$1.d()).A();
-         dhx $$5 = $$4.e() ? dhx.a : $$4;
-         return $$2.a(b, $$5);
-      }
+   public dab(agh<dpi<?, ?>> $$0, dhh.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      return this.b($$0.q(), $$0.a(), this.o());
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return c;
    }
 
    @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      boolean $$6 = $$1.o() == hx.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, cut $$3, ht $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+         for (ht $$6 : ht.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
          }
 
-         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
-      }
-   }
+         ht $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
 
-   private void a(@Nullable bki $$0, dgw $$1, crs $$2, ht $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dlg.H, $$3);
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      clb $$6 = $$3.b($$4);
-      if ($$6.a(ark.aG) && $$5.b() == hx.b) {
-         return biq.d;
-      } else if ($$1.B) {
-         return biq.a;
+   protected boolean b(dhi $$0, crg $$1, ht $$2) {
+      return $$0.i($$1, $$2);
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      ht $$3 = $$2.d();
+      dhi $$4 = $$1.a_($$3);
+      return $$4.a(arg.aZ) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(ame $$0, ht $$1, dhi $$2, ats $$3) {
+      Optional<? extends ib<dpi<?, ?>>> $$4 = $$0.H_().d(jz.au).b(this.d);
+      if ($$4.isEmpty()) {
+         return false;
       } else {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(aqx.ag);
-         return biq.b;
-      }
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, cdm $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(aqx.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   public boolean a(dgw $$0, crs $$1, ht $$2, int $$3, int $$4) {
-      dhx $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(js.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      ib<aqm> $$10;
-      if ($$5.d()) {
-         agg $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
             return false;
          }
-
-         $$10 = ib.a(aqm.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
+   }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, aqo.c, 3.0F, $$7, $$1.z.g());
+   @Override
+   public boolean b(csd $$0, ht $$1, dhi $$2) {
       return true;
    }
 
-   @Nullable
-   private agg a(crs $$0, ht $$1) {
-      return $$0.c_($$1.c()) instanceof dgc $$2 ? $$2.f() : null;
+   @Override
+   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b, c, d);
+   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

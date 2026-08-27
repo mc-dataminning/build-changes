@@ -1,104 +1,213 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public abstract class evr extends eum {
-   protected final agg a;
-   protected final int b;
-   protected final int c;
+public class evr extends eut {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int l = 300;
+   private final eum m;
+   private final ur n;
+   private final evu o;
+   private long p = ac.b();
 
-   evr(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
-      super(0, 0, $$0, $$1, $$2, $$6, p);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public evr(eum $$0, int $$1, int $$2, int $$3, int $$4, ur $$5, ur $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new evu($$0, $$3 - this.b());
+      this.o.a(this::v);
    }
 
-   public static evr.a a(ur $$0, eum.c $$1, boolean $$2) {
-      return new evr.a($$0, $$1, $$2);
+   public void a(int $$0) {
+      this.o.a($$0);
    }
 
-   public static class a {
-      private final ur a;
-      private final eum.c b;
-      private final boolean c;
-      private int d = 150;
-      private int e = 20;
-      @Nullable
-      private agg f;
-      private int g;
-      private int h;
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
+   }
 
-      public a(ur $$0, eum.c $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public void a(String $$0) {
+      this.o.a($$0);
+   }
+
+   public String u() {
+      return this.o.c();
+   }
+
+   @Override
+   public void a(eys $$0) {
+      $$0.a(eyr.a, ur.a("gui.narrate.editBox", this.l(), this.u()));
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(fau.q());
+         this.f($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
+   }
 
-      public evr.a a(int $$0) {
-         this.d = $$0;
-         return this;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.f($$0, $$1);
+         this.o.a(fau.q());
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public evr.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.j && this.aJ_() && aa.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public evr.a a(agg $$0, int $$1, int $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-         return this;
-      }
+   @Override
+   protected void c(euo $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aJ_()) {
+         $$0.a(this.m, this.n, this.p() + this.a(), this.r() + this.a(), this.f - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aJ_() && (ac.b() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.r() + this.a();
 
-      public evr a() {
-         if (this.f == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (evr)(this.c
-               ? new evr.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
-               : new evr.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+         for (evu.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.p() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.p() + this.a(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
+            }
+
+            $$10 += 9;
+         }
+
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
+
+         if (this.o.i()) {
+            evu.a $$13 = this.o.e();
+            int $$14 = this.p() + this.a();
+            $$10 = this.r() + this.a();
+
+            for (evu.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.f - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
+               }
+            }
          }
       }
    }
 
-   public static class b extends evr {
-      protected b(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-
-      @Override
-      public void b(eub $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() / 2 - this.b / 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(eub $$0, etz $$1, int $$2) {
+   @Override
+   protected void a(euo $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         ur $$2 = ur.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.p() + this.f - this.m.a($$2), this.r() + this.g + 4, 10526880);
       }
    }
 
-   public static class c extends evr {
-      protected c(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   public int g() {
+      return 9 * this.o.f();
+   }
+
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.w();
+   }
+
+   @Override
+   protected double h() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(euo $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(frc.D(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void v() {
+      double $$0 = this.c();
+      evu.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         evu.a $$2 = this.o.c((int)(($$0 + (double)this.g) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.g + 9 + this.b());
+         }
       }
 
-      @Override
-      public void b(eub $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() - this.b - 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
+      this.a($$0);
+   }
 
-      @Override
-      public void a(eub $$0, etz $$1, int $$2) {
-         int $$3 = this.p() + 2;
-         int $$4 = this.p() + this.k() - this.b - 4;
-         int $$5 = this.p() + this.k() / 2;
-         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
+   private double w() {
+      return (double)(this.g - this.b()) / 9.0;
+   }
+
+   private void f(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.p() - (double)this.a();
+      double $$3 = $$1 - (double)this.r() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+      super.b_($$0);
+      if ($$0) {
+         this.p = ac.b();
       }
    }
 }

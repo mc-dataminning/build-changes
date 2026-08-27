@@ -11,9 +11,9 @@ public interface mp {
       return $$0;
    }
 
-   agg b();
+   agi b();
 
-   coj<?> c();
+   cos<?> c();
 
    @Nullable
    af d();

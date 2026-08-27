@@ -1,47 +1,47 @@
-public class fdd {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public static void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+public class fdd extends fbv {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private fti.a l;
+
+   public fdd(dgm $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   @Override
+   protected void aP_() {
+      super.aP_();
+      this.l = fti.a(this.f.aO(), this.a);
    }
 
-   private static void b(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   protected void b(euo $$0, dhi $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dcu;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
    }
 
-   private static void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   @Override
+   protected void a(euo $$0, dhi $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof dcu;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gdy $$3 = frj.a(this.a);
+         eoa $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, gbl.d);
+      }
    }
 
-   private static void c(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
-   }
-
-   private static void b(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   @Override
+   protected Vector3f l() {
+      return k;
    }
 }

@@ -1,41 +1,12 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class csg {
-   private final List<csg.a> a = Lists.newArrayList();
+public interface csg {
+   boolean a(ht var1, Predicate<dhi> var2);
 
-   public void a(ht $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new csg.a($$0, $$1));
-      }
-   }
+   boolean b(ht var1, Predicate<ecs> var2);
 
-   public double b(ht $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
+   <T extends dfd> Optional<T> a(ht var1, dff<T> var2);
 
-         for (csg.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
-   }
-
-   static class a {
-      private final ht a;
-      private final double b;
-
-      public a(ht $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(ht $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
-   }
+   ht a(dmr.a var1, ht var2);
 }

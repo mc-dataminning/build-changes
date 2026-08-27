@@ -1,15 +1,14 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class eas {
-   @Nullable
-   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
-      return $$4;
+public class eas extends ebe {
+   public static final Codec<eas> a = Codec.unit(() -> eas.b);
+   public static final eas b = new eas();
+
+   private eas() {
    }
 
-   protected abstract eau<?> a();
-
-   public List<eav.c> a(csh $$0, ht $$1, ht $$2, List<eav.c> $$3, List<eav.c> $$4, ear $$5) {
-      return $$4;
+   @Override
+   protected ebg<?> a() {
+      return ebg.j;
    }
 }

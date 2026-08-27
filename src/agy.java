@@ -1,39 +1,17 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+public interface agy extends agx {
+   alc a();
 
-public record agy(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, apm d) {
-   private static final String e = "usercache.json";
+   String b();
 
-   public static agy a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      apm $$4 = new apm($$3, new File($$1, "usercache.json"));
-      return new agy($$2, $$0.getServicesKeySet(), $$3, $$4);
-   }
+   int d();
 
-   @Nullable
-   public att a() {
-      return att.a(this.b, ServicesKeyType.PROFILE_KEY);
-   }
+   String f();
 
-   public MinecraftSessionService b() {
-      return this.a;
-   }
+   String[] L();
 
-   public ServicesKeySet c() {
-      return this.b;
-   }
+   String q();
 
-   public GameProfileRepository d() {
-      return this.c;
-   }
+   String s();
 
-   public apm e() {
-      return this.d;
-   }
+   String a(String var1);
 }

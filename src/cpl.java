@@ -1,25 +1,20 @@
-public class cpl extends cpm {
-   protected cpl(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.g, $$1);
+public class cpl extends cpu {
+   public cpl(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override
    public int a() {
       return 5;
-   }
-
-   @Override
-   public boolean a(clb $$0) {
-      return $$0.a(cle.rh) ? true : super.a($$0);
    }
 }

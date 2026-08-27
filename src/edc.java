@@ -1,162 +1,145 @@
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.Arrays;
 
 public class edc {
-   private static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final ama n;
+   private edf[] a = new edf[128];
+   private int b;
 
-   public edc(ama $$0) {
-      this.n = $$0;
+   public edf a(edf $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            edf[] $$1 = new edf[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
-   public Optional<l.a> a(ht $$0, boolean $$1, din $$2) {
-      bvx $$3 = this.n.w();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      Optional<bvy> $$5 = $$3.b($$0x -> $$0x.a(bwb.r), $$0, $$4, bvx.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<bvy>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(dhm.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         ht $$1x = $$0x.f();
-         this.n.k().a(amf.f, new cqz($$1x), 3, $$1x);
-         dgw $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(dhm.H), 21, hx.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
+   public void a() {
+      this.b = 0;
    }
 
-   public Optional<l.a> a(ht $$0, hx.a $$1) {
-      hx $$2 = hx.a(hx.b.a, $$1);
-      double $$3 = -1.0;
-      ht $$4 = null;
-      double $$5 = -1.0;
-      ht $$6 = null;
-      din $$7 = this.n.C_();
-      int $$8 = Math.min(this.n.aj(), this.n.I_() + this.n.j()) - 1;
-      ht.a $$9 = $$0.j();
-
-      for (ht.a $$10 : ht.a($$0, 16, hx.f, hx.d)) {
-         int $$11 = Math.min($$8, this.n.a(dmf.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
-
-            for (int $$13 = $$11; $$13 >= this.n.I_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.I_() && this.a($$10.c(hx.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.I_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new ht($$0.u(), ati.a($$0.v(), $$17, $$18), $$0.w()).i();
-         hx $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
-         }
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dgw $$23 = $$22 < 0 ? cuv.co.o() : cuv.a.o();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, cuv.co.o(), 3);
-            }
-         }
-      }
-
-      dgw $$26 = cuv.ed.o().a(czw.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
+   public edf b() {
+      return this.a[0];
    }
 
-   private boolean a(ht.a $$0) {
-      dgw $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   public edf c() {
+      edf $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
    }
 
-   private boolean a(ht $$0, ht.a $$1, hx $$2, int $$3) {
-      hx $$4 = $$2.h();
-
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
-
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
+   public void b(edf $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
          }
       }
 
-      return true;
+      $$0.d = -1;
+   }
+
+   public void a(edf $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      edf $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         edf $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      edf $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         edf $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         edf $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public edf[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

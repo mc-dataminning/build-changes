@@ -1,32 +1,19 @@
-public class bqx extends bqv {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bqx(bla $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
+public class bqx {
+   private static final bic a = bii.a(100, 200);
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dD(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.L().l()) {
-            this.a.s(this.a(this.a.dD(), 0.0F, 5.0F));
-         }
-
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
-
-      float $$0 = ati.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
-      }
+   public static bmy<blg> a() {
+      return bqj.a(
+         (Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$0 -> $$0.group($$0.a(buh.aA), $$0.a(buh.m), $$0.c(buh.aF), $$0.b(buh.B), $$0.c(buh.ay))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(auo.a);
+                     $$2.a(auo.a, (long)a.a($$3x.E_()));
+                     $$1.b();
+                     $$4x.b(bls.m);
+                     return true;
+                  }))
+      );
    }
 }

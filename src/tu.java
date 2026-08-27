@@ -81,7 +81,7 @@ public class tu extends ByteBuf {
    }
 
    public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = asy.a(h, this.s(), JsonElement.class);
+      JsonElement $$1 = atc.a(h, this.s(), JsonElement.class);
       DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
       return ac.a($$2, $$0x -> new DecoderException("Failed to decode json: " + $$0x));
    }
@@ -378,11 +378,11 @@ public class tu extends ByteBuf {
       return this;
    }
 
-   public cqz f() {
-      return new cqz(this.readLong());
+   public crh f() {
+      return new crh(this.readLong());
    }
 
-   public tu a(cqz $$0) {
+   public tu a(crh $$0) {
       this.b($$0.a());
       return this;
    }
@@ -397,7 +397,7 @@ public class tu extends ByteBuf {
    }
 
    public ia h() {
-      agf<crs> $$0 = this.a(jz.aJ);
+      agh<csa> $$0 = this.a(jz.aJ);
       ht $$1 = this.e();
       return ia.a($$0, $$1);
    }
@@ -428,11 +428,11 @@ public class tu extends ByteBuf {
       this.a($$0.w);
    }
 
-   public eji k() {
-      return new eji(this.readDouble(), this.readDouble(), this.readDouble());
+   public eju k() {
+      return new eju(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(eji $$0) {
+   public void a(eju $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -529,12 +529,12 @@ public class tu extends ByteBuf {
       }
    }
 
-   public tu a(clb $$0) {
+   public tu a(clj $$0) {
       if ($$0.b()) {
          this.a(false);
       } else {
          this.a(true);
-         ckw $$1 = $$0.d();
+         cle $$1 = $$0.d();
          this.a(jy.i, $$1);
          this.k($$0.L());
          rz $$2 = null;
@@ -548,13 +548,13 @@ public class tu extends ByteBuf {
       return this;
    }
 
-   public clb r() {
+   public clj r() {
       if (!this.readBoolean()) {
-         return clb.b;
+         return clj.b;
       } else {
-         ckw $$0 = this.a(jy.i);
+         cle $$0 = this.a(jy.i);
          int $$1 = this.readByte();
-         clb $$2 = new clb($$0, $$1);
+         clj $$2 = new clj($$0, $$1);
          $$2.c(this.q());
          return $$2;
       }
@@ -577,27 +577,27 @@ public class tu extends ByteBuf {
       return this;
    }
 
-   public agg t() {
-      return new agg(this.d(32767));
+   public agi t() {
+      return new agi(this.d(32767));
    }
 
-   public tu a(agg $$0) {
+   public tu a(agi $$0) {
       this.a($$0.toString());
       return this;
    }
 
-   public <T> agf<T> a(agf<? extends io<T>> $$0) {
-      agg $$1 = this.t();
-      return agf.a($$0, $$1);
+   public <T> agh<T> a(agh<? extends io<T>> $$0) {
+      agi $$1 = this.t();
+      return agh.a($$0, $$1);
    }
 
-   public void b(agf<?> $$0) {
+   public void b(agh<?> $$0) {
       this.a($$0.a());
    }
 
-   public <T> agf<? extends io<T>> u() {
-      agg $$0 = this.t();
-      return agf.a($$0);
+   public <T> agh<? extends io<T>> u() {
+      agi $$0 = this.t();
+      return agh.a($$0);
    }
 
    public Date v() {
@@ -619,8 +619,8 @@ public class tu extends ByteBuf {
 
    public PublicKey x() {
       try {
-         return ash.a(this.a(512));
-      } catch (asi var2) {
+         return asl.a(this.a(512));
+      } catch (asm var2) {
          throw new DecoderException("Malformed public key bytes", var2);
       }
    }
@@ -630,21 +630,21 @@ public class tu extends ByteBuf {
       return this;
    }
 
-   public eje y() {
+   public ejq y() {
       ht $$0 = this.e();
       hx $$1 = this.b(hx.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new eje(new eji((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new ejq(new eju((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(eje $$0) {
+   public void a(ejq $$0) {
       ht $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      eji $$2 = $$0.e();
+      eju $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));
@@ -660,7 +660,7 @@ public class tu extends ByteBuf {
    }
 
    public BitSet e(int $$0) {
-      byte[] $$1 = new byte[ati.e($$0, 8)];
+      byte[] $$1 = new byte[atm.e($$0, 8)];
       this.b($$1);
       return BitSet.valueOf($$1);
    }
@@ -670,7 +670,7 @@ public class tu extends ByteBuf {
          throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
       } else {
          byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, ati.e($$1, 8)));
+         this.c(Arrays.copyOf($$2, atm.e($$1, 8)));
       }
    }
 

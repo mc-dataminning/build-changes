@@ -1,13 +1,5 @@
-public class fxs extends fxl {
-   private static final agg a = new agg("textures/entity/skeleton/stray.png");
+public interface fxs<T extends bkq, M extends fhp<T>> {
+   M a();
 
-   public fxs(fvk.a $$0) {
-      super($$0, fka.bt, fka.bu, fka.bv);
-      this.a(new gaa<>(this, $$0.f()));
-   }
-
-   @Override
-   public agg a(caj $$0) {
-      return a;
-   }
+   agi a(T var1);
 }

@@ -1,67 +1,58 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class ctp extends cuf implements ckc {
-   public static final dhn a = dhm.w;
-   private final dbu.a b;
+public class ctp extends ctc {
+   public static final Codec<ctp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agg.d(ctf.ah), agg.d(ctf.ai), agg.d(ctf.aj), agg.d(ctf.ak), agg.d(ctf.al)).apply($$0, $$0.stable(ctp::new))
+   );
+   private final ib<csy> c;
+   private final ib<csy> d;
+   private final ib<csy> e;
+   private final ib<csy> f;
+   private final ib<csy> g;
 
-   public ctp(dbu.a $$0, dgv.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+   public static ctp a(ic<csy> $$0) {
+      return new ctp($$0.b(ctf.ah), $$0.b(ctf.ai), $$0.b(ctf.aj), $$0.b(ctf.ak), $$0.b(ctf.al));
+   }
+
+   private ctp(ib<csy> $$0, ib<csy> $$1, ib<csy> $$2, ib<csy> $$3, ib<csy> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends ctp> a();
-
-   @Override
-   public der a(ht $$0, dgw $$1) {
-      return new dgc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(cuv.gO) || $$1.a(cuv.gP) || $$1.a(cuv.gQ) || $$1.a(cuv.gR);
-         if ($$3) {
-            return a($$2, det.p, dgc::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dbu.a b() {
-      return this.b;
+   protected Stream<ib<csy>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
-      return false;
+   protected Codec<? extends ctc> a() {
+      return b;
    }
 
    @Override
-   public bkn g() {
-      return bkn.f;
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dgw a(cnj $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().B($$0.a())));
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, cut $$3, ht $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.B($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+   public ib<csy> getNoiseBiome(int $$0, int $$1, int $$2, cth.f $$3) {
+      int $$4 = in.c($$0);
+      int $$5 = in.c($$1);
+      int $$6 = in.c($$2);
+      int $$7 = iu.a($$4);
+      int $$8 = iu.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (iu.a($$4) * 2 + 1) * 8;
+         int $$10 = (iu.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dmk.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
    }

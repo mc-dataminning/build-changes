@@ -1,94 +1,91 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
 public class elv {
-   private final List<ConcurrentLinkedQueue<elu>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+   private static final Logger a = LogUtils.getLogger();
 
-   public elv() {
-      this.c = this.e = this.f + 1;
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
-   }
-
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
          return true;
       } else {
          return false;
       }
    }
 
-   public void a(elu $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<elu> $$1 = this.i();
-         $$1.add($$0);
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
    }
 
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
-   }
-
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
          return true;
       } else {
          return false;
       }
    }
 
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
+
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
+            }
+         }
       }
-   }
 
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<elu> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<elu> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<elu> j() {
-      return this.a.get(this.e);
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

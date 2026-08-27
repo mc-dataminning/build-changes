@@ -1,125 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public class bsv extends bsg {
-   private final cut g;
-   private final bla h;
-   private int i;
-   private static final int j = 20;
+public class bsv<T extends cfc> extends bsb {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public bsv(cut $$0, blh $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public bsv(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bsb.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.h.dL().X().b(cro.c)) {
-         return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
-      } else {
-         this.c = this.a(this.a);
-         return false;
-      }
+      return this.c.q() == null && !this.c.cP() && this.c.gu() && !this.c.gt().a() && !((ame)this.c.dN()).b(this.c.dn());
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.h.ab = 1.0F;
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.i = 0;
-   }
-
-   public void a(crt $$0, ht $$1) {
-   }
-
-   public void a(crs $$0, ht $$1) {
+   public boolean b() {
+      return this.c.gu() && !this.c.gt().a() && this.c.dN() instanceof ame && !((ame)this.c.dN()).b(this.c.dn());
    }
 
    @Override
    public void e() {
-      super.e();
-      crs $$0 = this.h.dL();
-      ht $$1 = this.h.dl();
-      ht $$2 = this.a($$1, $$0);
-      ato $$3 = this.h.ef();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            eji $$4 = this.h.do();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((ama)$$0)
-                  .a(
-                     new jo(js.O, new clb(cle.qd)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
+      if (this.c.gu()) {
+         cfb $$0 = this.c.gt();
+         if (this.c.ah > this.d) {
+            this.d = this.c.ah + 20;
+            this.a($$0);
          }
 
-         if (this.i % 2 == 0) {
-            eji $$6 = this.h.do();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((crt)$$0, this.e);
+         if (!this.c.gb()) {
+            eju $$1 = bvw.a(this.c, 15, 4, eju.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.N().a($$1.c, $$1.d, $$1.e, 1.0);
             }
          }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((ama)$$0).a(js.W, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
       }
    }
 
-   @Nullable
-   private ht a(ht $$0, cqy $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         ht[] $$2 = new ht[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+   private void a(cfb $$0) {
+      if ($$0.v()) {
+         Set<cfc> $$1 = Sets.newHashSet();
+         List<cfc> $$2 = this.c.dN().a(cfc.class, this.c.cH().g(16.0), $$1x -> !$$1x.gu() && cfd.a($$1x, $$0));
+         $$1.addAll($$2);
 
-         for (ht $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
+         for (cfc $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
          }
-
-         return null;
       }
-   }
-
-   @Override
-   protected boolean a(crv $$0, ht $$1) {
-      dis $$2 = $$0.a(iu.a($$1.u()), iu.a($$1.w()), dix.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

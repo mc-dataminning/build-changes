@@ -1,1021 +1,1816 @@
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
 public class dzq {
-   public static void a(eaw $$0, ht $$1, dbf $$2, List<dzq.i> $$3, ato $$4) {
-      dzq.c $$5 = new dzq.c($$4);
-      dzq.d $$6 = new dzq.d($$0, $$4);
-      $$6.a($$1, $$2, $$3, $$5);
+   private dzq() {
    }
 
-   static class a extends dzq.b {
+   static class a implements dzq.i {
       @Override
-      public String a(ato $$0) {
-         return "1x1_a" + ($$0.a(5) + 1);
+      public boolean a(dzq.v $$0) {
+         return $$0.c[hx.f.d()] && !$$0.b[hx.f.d()].d;
       }
 
       @Override
-      public String b(ato $$0) {
-         return "1x1_as" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String a(ato $$0, boolean $$1) {
-         return "1x2_a" + ($$0.a(9) + 1);
-      }
-
-      @Override
-      public String b(ato $$0, boolean $$1) {
-         return "1x2_b" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String c(ato $$0) {
-         return "1x2_s" + ($$0.a(2) + 1);
-      }
-
-      @Override
-      public String d(ato $$0) {
-         return "2x2_a" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String e(ato $$0) {
-         return "2x2_s1";
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         $$1.b[hx.f.d()].d = true;
+         return new dzq.k($$0, $$1);
       }
    }
 
-   abstract static class b {
-      public abstract String a(ato var1);
+   static class b implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         if ($$0.c[hx.f.d()] && !$$0.b[hx.f.d()].d && $$0.c[hx.b.d()] && !$$0.b[hx.b.d()].d) {
+            dzq.v $$1 = $$0.b[hx.f.d()];
+            return $$1.c[hx.b.d()] && !$$1.b[hx.b.d()].d;
+         } else {
+            return false;
+         }
+      }
 
-      public abstract String b(ato var1);
-
-      public abstract String a(ato var1, boolean var2);
-
-      public abstract String b(ato var1, boolean var2);
-
-      public abstract String c(ato var1);
-
-      public abstract String d(ato var1);
-
-      public abstract String e(ato var1);
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         $$1.b[hx.f.d()].d = true;
+         $$1.b[hx.b.d()].d = true;
+         $$1.b[hx.f.d()].b[hx.b.d()].d = true;
+         return new dzq.l($$0, $$1);
+      }
    }
 
-   static class c {
-      private static final int a = 11;
-      private static final int b = 0;
-      private static final int c = 1;
-      private static final int d = 2;
-      private static final int e = 3;
-      private static final int f = 4;
-      private static final int g = 5;
-      private static final int h = 65536;
-      private static final int i = 131072;
-      private static final int j = 262144;
-      private static final int k = 1048576;
-      private static final int l = 2097152;
-      private static final int m = 4194304;
-      private static final int n = 8388608;
-      private static final int o = 983040;
-      private static final int p = 65535;
-      private final ato q;
-      final dzq.g r;
-      final dzq.g s;
-      final dzq.g[] t;
-      final int u;
-      final int v;
+   static class c implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         return $$0.c[hx.b.d()] && !$$0.b[hx.b.d()].d;
+      }
 
-      public c(ato $$0) {
-         this.q = $$0;
-         int $$1 = 11;
-         this.u = 7;
-         this.v = 4;
-         this.r = new dzq.g(11, 11, 5);
-         this.r.a(this.u, this.v, this.u + 1, this.v + 1, 3);
-         this.r.a(this.u - 1, this.v, this.u - 1, this.v + 1, 2);
-         this.r.a(this.u + 2, this.v - 2, this.u + 3, this.v + 3, 5);
-         this.r.a(this.u + 1, this.v - 2, this.u + 1, this.v - 1, 1);
-         this.r.a(this.u + 1, this.v + 2, this.u + 1, this.v + 3, 1);
-         this.r.a(this.u - 1, this.v - 1, 1);
-         this.r.a(this.u - 1, this.v + 2, 1);
-         this.r.a(0, 0, 11, 1, 5);
-         this.r.a(0, 9, 11, 11, 5);
-         this.a(this.r, this.u, this.v - 2, hx.e, 6);
-         this.a(this.r, this.u, this.v + 3, hx.e, 6);
-         this.a(this.r, this.u - 2, this.v - 1, hx.e, 3);
-         this.a(this.r, this.u - 2, this.v + 2, hx.e, 3);
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         $$1.b[hx.b.d()].d = true;
+         return new dzq.m($$0, $$1);
+      }
+   }
 
-         while (this.a(this.r)) {
+   static class d implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         if ($$0.c[hx.c.d()] && !$$0.b[hx.c.d()].d && $$0.c[hx.b.d()] && !$$0.b[hx.b.d()].d) {
+            dzq.v $$1 = $$0.b[hx.c.d()];
+            return $$1.c[hx.b.d()] && !$$1.b[hx.b.d()].d;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         $$1.b[hx.c.d()].d = true;
+         $$1.b[hx.b.d()].d = true;
+         $$1.b[hx.c.d()].b[hx.b.d()].d = true;
+         return new dzq.n($$0, $$1);
+      }
+   }
+
+   static class e implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         return $$0.c[hx.c.d()] && !$$0.b[hx.c.d()].d;
+      }
+
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         dzq.v $$3 = $$1;
+         if (!$$1.c[hx.c.d()] || $$1.b[hx.c.d()].d) {
+            $$3 = $$1.b[hx.d.d()];
          }
 
-         this.t = new dzq.g[3];
-         this.t[0] = new dzq.g(11, 11, 5);
-         this.t[1] = new dzq.g(11, 11, 5);
-         this.t[2] = new dzq.g(11, 11, 5);
-         this.a(this.r, this.t[0]);
-         this.a(this.r, this.t[1]);
-         this.t[0].a(this.u + 1, this.v, this.u + 1, this.v + 1, 8388608);
-         this.t[1].a(this.u + 1, this.v, this.u + 1, this.v + 1, 8388608);
-         this.s = new dzq.g(this.r.b, this.r.c, 5);
-         this.a();
-         this.a(this.s, this.t[2]);
+         $$3.d = true;
+         $$3.b[hx.c.d()].d = true;
+         return new dzq.o($$0, $$3);
+      }
+   }
+
+   static class f implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         return true;
       }
 
-      public static boolean a(dzq.g $$0, int $$1, int $$2) {
-         int $$3 = $$0.a($$1, $$2);
-         return $$3 == 1 || $$3 == 2 || $$3 == 3 || $$3 == 4;
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         return new dzq.s($$0, $$1, $$2);
+      }
+   }
+
+   static class g implements dzq.i {
+      @Override
+      public boolean a(dzq.v $$0) {
+         return !$$0.c[hx.e.d()] && !$$0.c[hx.f.d()] && !$$0.c[hx.c.d()] && !$$0.c[hx.d.d()] && !$$0.c[hx.b.d()];
       }
 
-      public boolean a(dzq.g $$0, int $$1, int $$2, int $$3, int $$4) {
-         return (this.t[$$3].a($$1, $$2) & 65535) == $$4;
+      @Override
+      public dzq.r a(hx $$0, dzq.v $$1, ats $$2) {
+         $$1.d = true;
+         return new dzq.t($$0, $$1);
       }
+   }
 
-      @Nullable
-      public hx b(dzq.g $$0, int $$1, int $$2, int $$3, int $$4) {
-         for (hx $$5 : hx.c.a) {
-            if (this.a($$0, $$1 + $$5.j(), $$2 + $$5.l(), $$3, $$4)) {
-               return $$5;
-            }
-         }
+   public static class h extends dzq.r {
+      private static final int C = 58;
+      private static final int D = 22;
+      private static final int E = 58;
+      public static final int a = 29;
+      private static final int F = 61;
+      private dzq.v G;
+      private dzq.v H;
+      private final List<dzq.r> I = Lists.newArrayList();
 
-         return null;
-      }
+      public h(ats $$0, int $$1, int $$2, hx $$3) {
+         super(dxy.M, $$3, 0, a($$1, 39, $$2, $$3, 58, 23, 58));
+         this.a($$3);
+         List<dzq.v> $$4 = this.b($$0);
+         this.G.d = true;
+         this.I.add(new dzq.p($$3, this.G));
+         this.I.add(new dzq.j($$3, this.H));
+         List<dzq.i> $$5 = Lists.newArrayList();
+         $$5.add(new dzq.b());
+         $$5.add(new dzq.d());
+         $$5.add(new dzq.e());
+         $$5.add(new dzq.a());
+         $$5.add(new dzq.c());
+         $$5.add(new dzq.g());
+         $$5.add(new dzq.f());
 
-      private void a(dzq.g $$0, int $$1, int $$2, hx $$3, int $$4) {
-         if ($$4 > 0) {
-            $$0.a($$1, $$2, 1);
-            $$0.a($$1 + $$3.j(), $$2 + $$3.l(), 0, 1);
-
-            for (int $$5 = 0; $$5 < 8; $$5++) {
-               hx $$6 = hx.b(this.q.a(4));
-               if ($$6 != $$3.g() && ($$6 != hx.f || !this.q.h())) {
-                  int $$7 = $$1 + $$3.j();
-                  int $$8 = $$2 + $$3.l();
-                  if ($$0.a($$7 + $$6.j(), $$8 + $$6.l()) == 0 && $$0.a($$7 + $$6.j() * 2, $$8 + $$6.l() * 2) == 0) {
-                     this.a($$0, $$1 + $$3.j() + $$6.j(), $$2 + $$3.l() + $$6.l(), $$6, $$4 - 1);
+         for (dzq.v $$6 : $$4) {
+            if (!$$6.d && !$$6.b()) {
+               for (dzq.i $$7 : $$5) {
+                  if ($$7.a($$6)) {
+                     this.I.add($$7.a($$3, $$6, $$0));
                      break;
                   }
                }
             }
-
-            hx $$9 = $$3.h();
-            hx $$10 = $$3.i();
-            $$0.a($$1 + $$9.j(), $$2 + $$9.l(), 0, 2);
-            $$0.a($$1 + $$10.j(), $$2 + $$10.l(), 0, 2);
-            $$0.a($$1 + $$3.j() + $$9.j(), $$2 + $$3.l() + $$9.l(), 0, 2);
-            $$0.a($$1 + $$3.j() + $$10.j(), $$2 + $$3.l() + $$10.l(), 0, 2);
-            $$0.a($$1 + $$3.j() * 2, $$2 + $$3.l() * 2, 0, 2);
-            $$0.a($$1 + $$9.j() * 2, $$2 + $$9.l() * 2, 0, 2);
-            $$0.a($$1 + $$10.j() * 2, $$2 + $$10.l() * 2, 0, 2);
          }
+
+         ht $$8 = this.b(9, 0, 22);
+
+         for (dzq.r $$9 : this.I) {
+            $$9.f().a((iw)$$8);
+         }
+
+         dwz $$10 = dwz.a(this.b(1, 1, 1), this.b(23, 8, 21));
+         dwz $$11 = dwz.a(this.b(34, 1, 1), this.b(56, 8, 21));
+         dwz $$12 = dwz.a(this.b(22, 13, 22), this.b(35, 17, 35));
+         int $$13 = $$0.f();
+         this.I.add(new dzq.u($$3, $$10, $$13++));
+         this.I.add(new dzq.u($$3, $$11, $$13++));
+         this.I.add(new dzq.q($$3, $$12));
       }
 
-      private boolean a(dzq.g $$0) {
-         boolean $$1 = false;
-
-         for (int $$2 = 0; $$2 < $$0.c; $$2++) {
-            for (int $$3 = 0; $$3 < $$0.b; $$3++) {
-               if ($$0.a($$3, $$2) == 0) {
-                  int $$4 = 0;
-                  $$4 += a($$0, $$3 + 1, $$2) ? 1 : 0;
-                  $$4 += a($$0, $$3 - 1, $$2) ? 1 : 0;
-                  $$4 += a($$0, $$3, $$2 + 1) ? 1 : 0;
-                  $$4 += a($$0, $$3, $$2 - 1) ? 1 : 0;
-                  if ($$4 >= 3) {
-                     $$0.a($$3, $$2, 2);
-                     $$1 = true;
-                  } else if ($$4 == 2) {
-                     int $$5 = 0;
-                     $$5 += a($$0, $$3 + 1, $$2 + 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 - 1, $$2 + 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 + 1, $$2 - 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 - 1, $$2 - 1) ? 1 : 0;
-                     if ($$5 <= 1) {
-                        $$0.a($$3, $$2, 2);
-                        $$1 = true;
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$1;
+      public h(rz $$0) {
+         super(dxy.M, $$0);
       }
 
-      private void a() {
-         List<aui<Integer, Integer>> $$0 = Lists.newArrayList();
-         dzq.g $$1 = this.t[1];
+      private List<dzq.v> b(ats $$0) {
+         dzq.v[] $$1 = new dzq.v[75];
 
-         for (int $$2 = 0; $$2 < this.s.c; $$2++) {
-            for (int $$3 = 0; $$3 < this.s.b; $$3++) {
-               int $$4 = $$1.a($$3, $$2);
-               int $$5 = $$4 & 983040;
-               if ($$5 == 131072 && ($$4 & 2097152) == 2097152) {
-                  $$0.add(new aui<>($$3, $$2));
-               }
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               int $$4 = 0;
+               int $$5 = c($$2, 0, $$3);
+               $$1[$$5] = new dzq.v($$5);
             }
          }
 
-         if ($$0.isEmpty()) {
-            this.s.a(0, 0, this.s.b, this.s.c, 5);
-         } else {
-            aui<Integer, Integer> $$6 = $$0.get(this.q.a($$0.size()));
-            int $$7 = $$1.a($$6.a(), $$6.b());
-            $$1.a($$6.a(), $$6.b(), $$7 | 4194304);
-            hx $$8 = this.b(this.r, $$6.a(), $$6.b(), 1, $$7 & 65535);
-            int $$9 = $$6.a() + $$8.j();
-            int $$10 = $$6.b() + $$8.l();
-
-            for (int $$11 = 0; $$11 < this.s.c; $$11++) {
-               for (int $$12 = 0; $$12 < this.s.b; $$12++) {
-                  if (!a(this.r, $$12, $$11)) {
-                     this.s.a($$12, $$11, 5);
-                  } else if ($$12 == $$6.a() && $$11 == $$6.b()) {
-                     this.s.a($$12, $$11, 3);
-                  } else if ($$12 == $$9 && $$11 == $$10) {
-                     this.s.a($$12, $$11, 3);
-                     this.t[2].a($$12, $$11, 8388608);
-                  }
-               }
-            }
-
-            List<hx> $$13 = Lists.newArrayList();
-
-            for (hx $$14 : hx.c.a) {
-               if (this.s.a($$9 + $$14.j(), $$10 + $$14.l()) == 0) {
-                  $$13.add($$14);
-               }
-            }
-
-            if ($$13.isEmpty()) {
-               this.s.a(0, 0, this.s.b, this.s.c, 5);
-               $$1.a($$6.a(), $$6.b(), $$7);
-            } else {
-               hx $$15 = $$13.get(this.q.a($$13.size()));
-               this.a(this.s, $$9 + $$15.j(), $$10 + $$15.l(), $$15, 4);
-
-               while (this.a(this.s)) {
-               }
-            }
-         }
-      }
-
-      private void a(dzq.g $$0, dzq.g $$1) {
-         ObjectArrayList<aui<Integer, Integer>> $$2 = new ObjectArrayList();
-
-         for (int $$3 = 0; $$3 < $$0.c; $$3++) {
-            for (int $$4 = 0; $$4 < $$0.b; $$4++) {
-               if ($$0.a($$4, $$3) == 2) {
-                  $$2.add(new aui<>($$4, $$3));
-               }
+         for (int $$6 = 0; $$6 < 5; $$6++) {
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               int $$8 = 1;
+               int $$9 = c($$6, 1, $$7);
+               $$1[$$9] = new dzq.v($$9);
             }
          }
 
-         ac.b($$2, this.q);
-         int $$5 = 10;
-         ObjectListIterator var20 = $$2.iterator();
-
-         while (var20.hasNext()) {
-            aui<Integer, Integer> $$6 = (aui<Integer, Integer>)var20.next();
-            int $$7 = $$6.a();
-            int $$8 = $$6.b();
-            if ($$1.a($$7, $$8) == 0) {
-               int $$9 = $$7;
-               int $$10 = $$7;
-               int $$11 = $$8;
-               int $$12 = $$8;
-               int $$13 = 65536;
-               if ($$1.a($$7 + 1, $$8) == 0
-                  && $$1.a($$7, $$8 + 1) == 0
-                  && $$1.a($$7 + 1, $$8 + 1) == 0
-                  && $$0.a($$7 + 1, $$8) == 2
-                  && $$0.a($$7, $$8 + 1) == 2
-                  && $$0.a($$7 + 1, $$8 + 1) == 2) {
-                  $$10 = $$7 + 1;
-                  $$12 = $$8 + 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 - 1, $$8) == 0
-                  && $$1.a($$7, $$8 + 1) == 0
-                  && $$1.a($$7 - 1, $$8 + 1) == 0
-                  && $$0.a($$7 - 1, $$8) == 2
-                  && $$0.a($$7, $$8 + 1) == 2
-                  && $$0.a($$7 - 1, $$8 + 1) == 2) {
-                  $$9 = $$7 - 1;
-                  $$12 = $$8 + 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 - 1, $$8) == 0
-                  && $$1.a($$7, $$8 - 1) == 0
-                  && $$1.a($$7 - 1, $$8 - 1) == 0
-                  && $$0.a($$7 - 1, $$8) == 2
-                  && $$0.a($$7, $$8 - 1) == 2
-                  && $$0.a($$7 - 1, $$8 - 1) == 2) {
-                  $$9 = $$7 - 1;
-                  $$11 = $$8 - 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 + 1, $$8) == 0 && $$0.a($$7 + 1, $$8) == 2) {
-                  $$10 = $$7 + 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7, $$8 + 1) == 0 && $$0.a($$7, $$8 + 1) == 2) {
-                  $$12 = $$8 + 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7 - 1, $$8) == 0 && $$0.a($$7 - 1, $$8) == 2) {
-                  $$9 = $$7 - 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7, $$8 - 1) == 0 && $$0.a($$7, $$8 - 1) == 2) {
-                  $$11 = $$8 - 1;
-                  $$13 = 131072;
-               }
-
-               int $$14 = this.q.h() ? $$9 : $$10;
-               int $$15 = this.q.h() ? $$11 : $$12;
-               int $$16 = 2097152;
-               if (!$$0.b($$14, $$15, 1)) {
-                  $$14 = $$14 == $$9 ? $$10 : $$9;
-                  $$15 = $$15 == $$11 ? $$12 : $$11;
-                  if (!$$0.b($$14, $$15, 1)) {
-                     $$15 = $$15 == $$11 ? $$12 : $$11;
-                     if (!$$0.b($$14, $$15, 1)) {
-                        $$14 = $$14 == $$9 ? $$10 : $$9;
-                        $$15 = $$15 == $$11 ? $$12 : $$11;
-                        if (!$$0.b($$14, $$15, 1)) {
-                           $$16 = 0;
-                           $$14 = $$9;
-                           $$15 = $$11;
-                        }
-                     }
-                  }
-               }
-
-               for (int $$17 = $$11; $$17 <= $$12; $$17++) {
-                  for (int $$18 = $$9; $$18 <= $$10; $$18++) {
-                     if ($$18 == $$14 && $$17 == $$15) {
-                        $$1.a($$18, $$17, 1048576 | $$16 | $$13 | $$5);
-                     } else {
-                        $$1.a($$18, $$17, $$13 | $$5);
-                     }
-                  }
-               }
-
-               $$5++;
-            }
-         }
-      }
-   }
-
-   static class d {
-      private final eaw a;
-      private final ato b;
-      private int c;
-      private int d;
-
-      public d(eaw $$0, ato $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(ht $$0, dbf $$1, List<dzq.i> $$2, dzq.c $$3) {
-         dzq.e $$4 = new dzq.e();
-         $$4.b = $$0;
-         $$4.a = $$1;
-         $$4.c = "wall_flat";
-         dzq.e $$5 = new dzq.e();
-         this.a($$2, $$4);
-         $$5.b = $$4.b.b(8);
-         $$5.a = $$4.a;
-         $$5.c = "wall_window";
-         if (!$$2.isEmpty()) {
-         }
-
-         dzq.g $$6 = $$3.r;
-         dzq.g $$7 = $$3.s;
-         this.c = $$3.u + 1;
-         this.d = $$3.v + 1;
-         int $$8 = $$3.u + 1;
-         int $$9 = $$3.v;
-         this.a($$2, $$4, $$6, hx.d, this.c, this.d, $$8, $$9);
-         this.a($$2, $$5, $$6, hx.d, this.c, this.d, $$8, $$9);
-         dzq.e $$10 = new dzq.e();
-         $$10.b = $$4.b.b(19);
-         $$10.a = $$4.a;
-         $$10.c = "wall_window";
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$7.c && !$$11; $$12++) {
-            for (int $$13 = $$7.b - 1; $$13 >= 0 && !$$11; $$13--) {
-               if (dzq.c.a($$7, $$13, $$12)) {
-                  $$10.b = $$10.b.a($$1.a(hx.d), 8 + ($$12 - this.d) * 8);
-                  $$10.b = $$10.b.a($$1.a(hx.f), ($$13 - this.c) * 8);
-                  this.b($$2, $$10);
-                  this.a($$2, $$10, $$7, hx.d, $$13, $$12, $$13, $$12);
-                  $$11 = true;
-               }
+         for (int $$10 = 1; $$10 < 4; $$10++) {
+            for (int $$11 = 0; $$11 < 2; $$11++) {
+               int $$12 = 2;
+               int $$13 = c($$10, 2, $$11);
+               $$1[$$13] = new dzq.v($$13);
             }
          }
 
-         this.a($$2, $$0.b(16), $$1, $$6, $$7);
-         this.a($$2, $$0.b(27), $$1, $$7, null);
-         if (!$$2.isEmpty()) {
-         }
+         this.G = $$1[u];
 
-         dzq.b[] $$14 = new dzq.b[]{new dzq.a(), new dzq.f(), new dzq.h()};
-
-         for (int $$15 = 0; $$15 < 3; $$15++) {
-            ht $$16 = $$0.b(8 * $$15 + ($$15 == 2 ? 3 : 0));
-            dzq.g $$17 = $$3.t[$$15];
-            dzq.g $$18 = $$15 == 2 ? $$7 : $$6;
-            String $$19 = $$15 == 0 ? "carpet_south_1" : "carpet_south_2";
-            String $$20 = $$15 == 0 ? "carpet_west_1" : "carpet_west_2";
-
-            for (int $$21 = 0; $$21 < $$18.c; $$21++) {
-               for (int $$22 = 0; $$22 < $$18.b; $$22++) {
-                  if ($$18.a($$22, $$21) == 1) {
-                     ht $$23 = $$16.a($$1.a(hx.d), 8 + ($$21 - this.d) * 8);
-                     $$23 = $$23.a($$1.a(hx.f), ($$22 - this.c) * 8);
-                     $$2.add(new dzq.i(this.a, "corridor_floor", $$23, $$1));
-                     if ($$18.a($$22, $$21 - 1) == 1 || ($$17.a($$22, $$21 - 1) & 8388608) == 8388608) {
-                        $$2.add(new dzq.i(this.a, "carpet_north", $$23.a($$1.a(hx.f), 1).c(), $$1));
-                     }
-
-                     if ($$18.a($$22 + 1, $$21) == 1 || ($$17.a($$22 + 1, $$21) & 8388608) == 8388608) {
-                        $$2.add(new dzq.i(this.a, "carpet_east", $$23.a($$1.a(hx.d), 1).a($$1.a(hx.f), 5).c(), $$1));
-                     }
-
-                     if ($$18.a($$22, $$21 + 1) == 1 || ($$17.a($$22, $$21 + 1) & 8388608) == 8388608) {
-                        $$2.add(new dzq.i(this.a, $$19, $$23.a($$1.a(hx.d), 5).a($$1.a(hx.e), 1), $$1));
-                     }
-
-                     if ($$18.a($$22 - 1, $$21) == 1 || ($$17.a($$22 - 1, $$21) & 8388608) == 8388608) {
-                        $$2.add(new dzq.i(this.a, $$20, $$23.a($$1.a(hx.e), 1).a($$1.a(hx.c), 1), $$1));
-                     }
-                  }
-               }
-            }
-
-            String $$24 = $$15 == 0 ? "indoors_wall_1" : "indoors_wall_2";
-            String $$25 = $$15 == 0 ? "indoors_door_1" : "indoors_door_2";
-            List<hx> $$26 = Lists.newArrayList();
-
-            for (int $$27 = 0; $$27 < $$18.c; $$27++) {
-               for (int $$28 = 0; $$28 < $$18.b; $$28++) {
-                  boolean $$29 = $$15 == 2 && $$18.a($$28, $$27) == 3;
-                  if ($$18.a($$28, $$27) == 2 || $$29) {
-                     int $$30 = $$17.a($$28, $$27);
-                     int $$31 = $$30 & 983040;
-                     int $$32 = $$30 & 65535;
-                     $$29 = $$29 && ($$30 & 8388608) == 8388608;
-                     $$26.clear();
-                     if (($$30 & 2097152) == 2097152) {
-                        for (hx $$33 : hx.c.a) {
-                           if ($$18.a($$28 + $$33.j(), $$27 + $$33.l()) == 1) {
-                              $$26.add($$33);
+         for (int $$14 = 0; $$14 < 5; $$14++) {
+            for (int $$15 = 0; $$15 < 5; $$15++) {
+               for (int $$16 = 0; $$16 < 3; $$16++) {
+                  int $$17 = c($$14, $$16, $$15);
+                  if ($$1[$$17] != null) {
+                     for (hx $$18 : hx.values()) {
+                        int $$19 = $$14 + $$18.j();
+                        int $$20 = $$16 + $$18.k();
+                        int $$21 = $$15 + $$18.l();
+                        if ($$19 >= 0 && $$19 < 5 && $$21 >= 0 && $$21 < 5 && $$20 >= 0 && $$20 < 3) {
+                           int $$22 = c($$19, $$20, $$21);
+                           if ($$1[$$22] != null) {
+                              if ($$21 == $$15) {
+                                 $$1[$$17].a($$18, $$1[$$22]);
+                              } else {
+                                 $$1[$$17].a($$18.g(), $$1[$$22]);
+                              }
                            }
                         }
                      }
-
-                     hx $$34 = null;
-                     if (!$$26.isEmpty()) {
-                        $$34 = $$26.get(this.b.a($$26.size()));
-                     } else if (($$30 & 1048576) == 1048576) {
-                        $$34 = hx.b;
-                     }
-
-                     ht $$35 = $$16.a($$1.a(hx.d), 8 + ($$27 - this.d) * 8);
-                     $$35 = $$35.a($$1.a(hx.f), -1 + ($$28 - this.c) * 8);
-                     if (dzq.c.a($$18, $$28 - 1, $$27) && !$$3.a($$18, $$28 - 1, $$27, $$15, $$32)) {
-                        $$2.add(new dzq.i(this.a, $$34 == hx.e ? $$25 : $$24, $$35, $$1));
-                     }
-
-                     if ($$18.a($$28 + 1, $$27) == 1 && !$$29) {
-                        ht $$36 = $$35.a($$1.a(hx.f), 8);
-                        $$2.add(new dzq.i(this.a, $$34 == hx.f ? $$25 : $$24, $$36, $$1));
-                     }
-
-                     if (dzq.c.a($$18, $$28, $$27 + 1) && !$$3.a($$18, $$28, $$27 + 1, $$15, $$32)) {
-                        ht $$37 = $$35.a($$1.a(hx.d), 7);
-                        $$37 = $$37.a($$1.a(hx.f), 7);
-                        $$2.add(new dzq.i(this.a, $$34 == hx.d ? $$25 : $$24, $$37, $$1.a(dbf.b)));
-                     }
-
-                     if ($$18.a($$28, $$27 - 1) == 1 && !$$29) {
-                        ht $$38 = $$35.a($$1.a(hx.c), 1);
-                        $$38 = $$38.a($$1.a(hx.f), 7);
-                        $$2.add(new dzq.i(this.a, $$34 == hx.c ? $$25 : $$24, $$38, $$1.a(dbf.b)));
-                     }
-
-                     if ($$31 == 65536) {
-                        this.a($$2, $$35, $$1, $$34, $$14[$$15]);
-                     } else if ($$31 == 131072 && $$34 != null) {
-                        hx $$39 = $$3.b($$18, $$28, $$27, $$15, $$32);
-                        boolean $$40 = ($$30 & 4194304) == 4194304;
-                        this.a($$2, $$35, $$1, $$39, $$34, $$14[$$15], $$40);
-                     } else if ($$31 == 262144 && $$34 != null && $$34 != hx.b) {
-                        hx $$41 = $$34.h();
-                        if (!$$3.a($$18, $$28 + $$41.j(), $$27 + $$41.l(), $$15, $$32)) {
-                           $$41 = $$41.g();
-                        }
-
-                        this.a($$2, $$35, $$1, $$41, $$34, $$14[$$15]);
-                     } else if ($$31 == 262144 && $$34 == hx.b) {
-                        this.a($$2, $$35, $$1, $$14[$$15]);
-                     }
                   }
                }
             }
          }
+
+         dzq.v $$23 = new dzq.v(1003);
+         dzq.v $$24 = new dzq.v(1001);
+         dzq.v $$25 = new dzq.v(1002);
+         $$1[v].a(hx.b, $$23);
+         $$1[w].a(hx.d, $$24);
+         $$1[x].a(hx.d, $$25);
+         $$23.d = true;
+         $$24.d = true;
+         $$25.d = true;
+         this.G.e = true;
+         this.H = $$1[c($$0.a(4), 0, 2)];
+         this.H.d = true;
+         this.H.b[hx.f.d()].d = true;
+         this.H.b[hx.c.d()].d = true;
+         this.H.b[hx.f.d()].b[hx.c.d()].d = true;
+         this.H.b[hx.b.d()].d = true;
+         this.H.b[hx.f.d()].b[hx.b.d()].d = true;
+         this.H.b[hx.c.d()].b[hx.b.d()].d = true;
+         this.H.b[hx.f.d()].b[hx.c.d()].b[hx.b.d()].d = true;
+         ObjectArrayList<dzq.v> $$26 = new ObjectArrayList();
+
+         for (dzq.v $$27 : $$1) {
+            if ($$27 != null) {
+               $$27.a();
+               $$26.add($$27);
+            }
+         }
+
+         $$23.a();
+         ac.c($$26, $$0);
+         int $$28 = 1;
+         ObjectListIterator var34 = $$26.iterator();
+
+         while (var34.hasNext()) {
+            dzq.v $$29 = (dzq.v)var34.next();
+            int $$30 = 0;
+            int $$31 = 0;
+
+            while ($$30 < 2 && $$31 < 5) {
+               $$31++;
+               int $$32 = $$0.a(6);
+               if ($$29.c[$$32]) {
+                  int $$33 = hx.a($$32).g().d();
+                  $$29.c[$$32] = false;
+                  $$29.b[$$32].c[$$33] = false;
+                  if ($$29.a($$28++) && $$29.b[$$32].a($$28++)) {
+                     $$30++;
+                  } else {
+                     $$29.c[$$32] = true;
+                     $$29.b[$$32].c[$$33] = true;
+                  }
+               }
+            }
+         }
+
+         $$26.add($$23);
+         $$26.add($$24);
+         $$26.add($$25);
+         return $$26;
       }
 
-      private void a(List<dzq.i> $$0, dzq.e $$1, dzq.g $$2, hx $$3, int $$4, int $$5, int $$6, int $$7) {
-         int $$8 = $$4;
-         int $$9 = $$5;
-         hx $$10 = $$3;
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         int $$7 = Math.max($$0.z_(), 64) - this.f.h();
+         this.b($$0, $$4, 0, 0, 0, 58, $$7, 58);
+         this.a(false, 0, $$0, $$3, $$4);
+         this.a(true, 33, $$0, $$3, $$4);
+         this.a($$0, $$3, $$4);
+         this.b($$0, $$3, $$4);
+         this.c($$0, $$3, $$4);
+         this.d($$0, $$3, $$4);
+         this.e($$0, $$3, $$4);
+         this.f($$0, $$3, $$4);
 
-         do {
-            if (!dzq.c.a($$2, $$8 + $$3.j(), $$9 + $$3.l())) {
-               this.c($$0, $$1);
-               $$3 = $$3.h();
-               if ($$8 != $$6 || $$9 != $$7 || $$10 != $$3) {
-                  this.b($$0, $$1);
+         for (int $$8 = 0; $$8 < 7; $$8++) {
+            int $$9 = 0;
+
+            while ($$9 < 7) {
+               if ($$9 == 0 && $$8 == 3) {
+                  $$9 = 6;
                }
-            } else if (dzq.c.a($$2, $$8 + $$3.j(), $$9 + $$3.l()) && dzq.c.a($$2, $$8 + $$3.j() + $$3.i().j(), $$9 + $$3.l() + $$3.i().l())) {
-               this.d($$0, $$1);
-               $$8 += $$3.j();
-               $$9 += $$3.l();
-               $$3 = $$3.i();
+
+               int $$10 = $$8 * 9;
+               int $$11 = $$9 * 9;
+
+               for (int $$12 = 0; $$12 < 4; $$12++) {
+                  for (int $$13 = 0; $$13 < 4; $$13++) {
+                     this.a($$0, c, $$10 + $$12, 0, $$11 + $$13, $$4);
+                     this.b($$0, c, $$10 + $$12, -1, $$11 + $$13, $$4);
+                  }
+               }
+
+               if ($$8 != 0 && $$8 != 6) {
+                  $$9 += 6;
+               } else {
+                  $$9++;
+               }
+            }
+         }
+
+         for (int $$14 = 0; $$14 < 5; $$14++) {
+            this.b($$0, $$4, -1 - $$14, 0 + $$14 * 2, -1 - $$14, -1 - $$14, 23, 58 + $$14);
+            this.b($$0, $$4, 58 + $$14, 0 + $$14 * 2, -1 - $$14, 58 + $$14, 23, 58 + $$14);
+            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, -1 - $$14, 57 + $$14, 23, -1 - $$14);
+            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, 58 + $$14, 57 + $$14, 23, 58 + $$14);
+         }
+
+         for (dzq.r $$15 : this.I) {
+            if ($$15.f().a($$4)) {
+               $$15.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            }
+         }
+      }
+
+      private void a(boolean $$0, int $$1, csu $$2, ats $$3, dwz $$4) {
+         int $$5 = 24;
+         if (this.a($$4, $$1, 0, $$1 + 23, 20)) {
+            this.a($$2, $$4, $$1 + 0, 0, 0, $$1 + 24, 0, 20, b, b, false);
+            this.b($$2, $$4, $$1 + 0, 1, 0, $$1 + 24, 10, 20);
+
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               this.a($$2, $$4, $$1 + $$6, $$6 + 1, $$6, $$1 + $$6, $$6 + 1, 20, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 7, $$6 + 5, $$6 + 7, $$1 + $$6 + 7, $$6 + 5, 20, c, c, false);
+               this.a($$2, $$4, $$1 + 17 - $$6, $$6 + 5, $$6 + 7, $$1 + 17 - $$6, $$6 + 5, 20, c, c, false);
+               this.a($$2, $$4, $$1 + 24 - $$6, $$6 + 1, $$6, $$1 + 24 - $$6, $$6 + 1, 20, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 1, $$6 + 1, $$6, $$1 + 23 - $$6, $$6 + 1, $$6, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 8, $$6 + 5, $$6 + 7, $$1 + 16 - $$6, $$6 + 5, $$6 + 7, c, c, false);
+            }
+
+            this.a($$2, $$4, $$1 + 4, 4, 4, $$1 + 6, 4, 20, b, b, false);
+            this.a($$2, $$4, $$1 + 7, 4, 4, $$1 + 17, 4, 6, b, b, false);
+            this.a($$2, $$4, $$1 + 18, 4, 4, $$1 + 20, 4, 20, b, b, false);
+            this.a($$2, $$4, $$1 + 11, 8, 11, $$1 + 13, 8, 20, b, b, false);
+            this.a($$2, h, $$1 + 12, 9, 12, $$4);
+            this.a($$2, h, $$1 + 12, 9, 15, $$4);
+            this.a($$2, h, $$1 + 12, 9, 18, $$4);
+            int $$7 = $$1 + ($$0 ? 19 : 5);
+            int $$8 = $$1 + ($$0 ? 5 : 19);
+
+            for (int $$9 = 20; $$9 >= 5; $$9 -= 3) {
+               this.a($$2, h, $$7, 5, $$9, $$4);
+            }
+
+            for (int $$10 = 19; $$10 >= 7; $$10 -= 3) {
+               this.a($$2, h, $$8, 5, $$10, $$4);
+            }
+
+            for (int $$11 = 0; $$11 < 4; $$11++) {
+               int $$12 = $$0 ? $$1 + 24 - (17 - $$11 * 3) : $$1 + 17 - $$11 * 3;
+               this.a($$2, h, $$12, 5, 5, $$4);
+            }
+
+            this.a($$2, h, $$8, 5, 5, $$4);
+            this.a($$2, $$4, $$1 + 11, 1, 12, $$1 + 13, 7, 12, b, b, false);
+            this.a($$2, $$4, $$1 + 12, 1, 11, $$1 + 12, 7, 13, b, b, false);
+         }
+      }
+
+      private void a(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 22, 5, 35, 17)) {
+            this.b($$0, $$2, 25, 0, 0, 32, 8, 20);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, 24, 2, 5 + $$3 * 4, 24, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, $$2, 22, 4, 5 + $$3 * 4, 23, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, c, 25, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, c, 26, 6, 5 + $$3 * 4, $$2);
+               this.a($$0, i, 26, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, $$2, 33, 2, 5 + $$3 * 4, 33, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, $$2, 34, 4, 5 + $$3 * 4, 35, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, c, 32, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, c, 31, 6, 5 + $$3 * 4, $$2);
+               this.a($$0, i, 31, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, $$2, 27, 6, 5 + $$3 * 4, 30, 6, 5 + $$3 * 4, b, b, false);
+            }
+         }
+      }
+
+      private void b(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 15, 20, 42, 21)) {
+            this.a($$0, $$2, 15, 0, 21, 42, 0, 21, b, b, false);
+            this.b($$0, $$2, 26, 1, 21, 31, 3, 21);
+            this.a($$0, $$2, 21, 12, 21, 36, 12, 21, b, b, false);
+            this.a($$0, $$2, 17, 11, 21, 40, 11, 21, b, b, false);
+            this.a($$0, $$2, 16, 10, 21, 41, 10, 21, b, b, false);
+            this.a($$0, $$2, 15, 7, 21, 42, 9, 21, b, b, false);
+            this.a($$0, $$2, 16, 6, 21, 41, 6, 21, b, b, false);
+            this.a($$0, $$2, 17, 5, 21, 40, 5, 21, b, b, false);
+            this.a($$0, $$2, 21, 4, 21, 36, 4, 21, b, b, false);
+            this.a($$0, $$2, 22, 3, 21, 26, 3, 21, b, b, false);
+            this.a($$0, $$2, 31, 3, 21, 35, 3, 21, b, b, false);
+            this.a($$0, $$2, 23, 2, 21, 25, 2, 21, b, b, false);
+            this.a($$0, $$2, 32, 2, 21, 34, 2, 21, b, b, false);
+            this.a($$0, $$2, 28, 4, 20, 29, 4, 21, c, c, false);
+            this.a($$0, c, 27, 3, 21, $$2);
+            this.a($$0, c, 30, 3, 21, $$2);
+            this.a($$0, c, 26, 2, 21, $$2);
+            this.a($$0, c, 31, 2, 21, $$2);
+            this.a($$0, c, 25, 1, 21, $$2);
+            this.a($$0, c, 32, 1, 21, $$2);
+
+            for (int $$3 = 0; $$3 < 7; $$3++) {
+               this.a($$0, d, 28 - $$3, 6 + $$3, 21, $$2);
+               this.a($$0, d, 29 + $$3, 6 + $$3, 21, $$2);
+            }
+
+            for (int $$4 = 0; $$4 < 4; $$4++) {
+               this.a($$0, d, 28 - $$4, 9 + $$4, 21, $$2);
+               this.a($$0, d, 29 + $$4, 9 + $$4, 21, $$2);
+            }
+
+            this.a($$0, d, 28, 12, 21, $$2);
+            this.a($$0, d, 29, 12, 21, $$2);
+
+            for (int $$5 = 0; $$5 < 3; $$5++) {
+               this.a($$0, d, 22 - $$5 * 2, 8, 21, $$2);
+               this.a($$0, d, 22 - $$5 * 2, 9, 21, $$2);
+               this.a($$0, d, 35 + $$5 * 2, 8, 21, $$2);
+               this.a($$0, d, 35 + $$5 * 2, 9, 21, $$2);
+            }
+
+            this.b($$0, $$2, 15, 13, 21, 42, 15, 21);
+            this.b($$0, $$2, 15, 1, 21, 15, 6, 21);
+            this.b($$0, $$2, 16, 1, 21, 16, 5, 21);
+            this.b($$0, $$2, 17, 1, 21, 20, 4, 21);
+            this.b($$0, $$2, 21, 1, 21, 21, 3, 21);
+            this.b($$0, $$2, 22, 1, 21, 22, 2, 21);
+            this.b($$0, $$2, 23, 1, 21, 24, 1, 21);
+            this.b($$0, $$2, 42, 1, 21, 42, 6, 21);
+            this.b($$0, $$2, 41, 1, 21, 41, 5, 21);
+            this.b($$0, $$2, 37, 1, 21, 40, 4, 21);
+            this.b($$0, $$2, 36, 1, 21, 36, 3, 21);
+            this.b($$0, $$2, 33, 1, 21, 34, 1, 21);
+            this.b($$0, $$2, 35, 1, 21, 35, 2, 21);
+         }
+      }
+
+      private void c(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 21, 21, 36, 36)) {
+            this.a($$0, $$2, 21, 0, 22, 36, 0, 36, b, b, false);
+            this.b($$0, $$2, 21, 1, 22, 36, 23, 36);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 21 + $$3, 36 - $$3, 13 + $$3, 21 + $$3, c, c, false);
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 36 - $$3, 36 - $$3, 13 + $$3, 36 - $$3, c, c, false);
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 22 + $$3, 21 + $$3, 13 + $$3, 35 - $$3, c, c, false);
+               this.a($$0, $$2, 36 - $$3, 13 + $$3, 22 + $$3, 36 - $$3, 13 + $$3, 35 - $$3, c, c, false);
+            }
+
+            this.a($$0, $$2, 25, 16, 25, 32, 16, 32, b, b, false);
+            this.a($$0, $$2, 25, 17, 25, 25, 19, 25, c, c, false);
+            this.a($$0, $$2, 32, 17, 25, 32, 19, 25, c, c, false);
+            this.a($$0, $$2, 25, 17, 32, 25, 19, 32, c, c, false);
+            this.a($$0, $$2, 32, 17, 32, 32, 19, 32, c, c, false);
+            this.a($$0, c, 26, 20, 26, $$2);
+            this.a($$0, c, 27, 21, 27, $$2);
+            this.a($$0, i, 27, 20, 27, $$2);
+            this.a($$0, c, 26, 20, 31, $$2);
+            this.a($$0, c, 27, 21, 30, $$2);
+            this.a($$0, i, 27, 20, 30, $$2);
+            this.a($$0, c, 31, 20, 31, $$2);
+            this.a($$0, c, 30, 21, 30, $$2);
+            this.a($$0, i, 30, 20, 30, $$2);
+            this.a($$0, c, 31, 20, 26, $$2);
+            this.a($$0, c, 30, 21, 27, $$2);
+            this.a($$0, i, 30, 20, 27, $$2);
+            this.a($$0, $$2, 28, 21, 27, 29, 21, 27, b, b, false);
+            this.a($$0, $$2, 27, 21, 28, 27, 21, 29, b, b, false);
+            this.a($$0, $$2, 28, 21, 30, 29, 21, 30, b, b, false);
+            this.a($$0, $$2, 30, 21, 28, 30, 21, 29, b, b, false);
+         }
+      }
+
+      private void d(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 0, 21, 6, 58)) {
+            this.a($$0, $$2, 0, 0, 21, 6, 0, 57, b, b, false);
+            this.b($$0, $$2, 0, 1, 21, 6, 7, 57);
+            this.a($$0, $$2, 4, 4, 21, 6, 4, 53, b, b, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3, $$3 + 1, 21, $$3, $$3 + 1, 57 - $$3, c, c, false);
+            }
+
+            for (int $$4 = 23; $$4 < 53; $$4 += 3) {
+               this.a($$0, h, 5, 5, $$4, $$2);
+            }
+
+            this.a($$0, h, 5, 5, 52, $$2);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, $$5, $$5 + 1, 21, $$5, $$5 + 1, 57 - $$5, c, c, false);
+            }
+
+            this.a($$0, $$2, 4, 1, 52, 6, 3, 52, b, b, false);
+            this.a($$0, $$2, 5, 1, 51, 5, 3, 53, b, b, false);
+         }
+
+         if (this.a($$2, 51, 21, 58, 58)) {
+            this.a($$0, $$2, 51, 0, 21, 57, 0, 57, b, b, false);
+            this.b($$0, $$2, 51, 1, 21, 57, 7, 57);
+            this.a($$0, $$2, 51, 4, 21, 53, 4, 53, b, b, false);
+
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               this.a($$0, $$2, 57 - $$6, $$6 + 1, 21, 57 - $$6, $$6 + 1, 57 - $$6, c, c, false);
+            }
+
+            for (int $$7 = 23; $$7 < 53; $$7 += 3) {
+               this.a($$0, h, 52, 5, $$7, $$2);
+            }
+
+            this.a($$0, h, 52, 5, 52, $$2);
+            this.a($$0, $$2, 51, 1, 52, 53, 3, 52, b, b, false);
+            this.a($$0, $$2, 52, 1, 51, 52, 3, 53, b, b, false);
+         }
+
+         if (this.a($$2, 0, 51, 57, 57)) {
+            this.a($$0, $$2, 7, 0, 51, 50, 0, 57, b, b, false);
+            this.b($$0, $$2, 7, 1, 51, 50, 10, 57);
+
+            for (int $$8 = 0; $$8 < 4; $$8++) {
+               this.a($$0, $$2, $$8 + 1, $$8 + 1, 57 - $$8, 56 - $$8, $$8 + 1, 57 - $$8, c, c, false);
+            }
+         }
+      }
+
+      private void e(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 7, 21, 13, 50)) {
+            this.a($$0, $$2, 7, 0, 21, 13, 0, 50, b, b, false);
+            this.b($$0, $$2, 7, 1, 21, 13, 10, 50);
+            this.a($$0, $$2, 11, 8, 21, 13, 8, 53, b, b, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3 + 7, $$3 + 5, 21, $$3 + 7, $$3 + 5, 54, c, c, false);
+            }
+
+            for (int $$4 = 21; $$4 <= 45; $$4 += 3) {
+               this.a($$0, h, 12, 9, $$4, $$2);
+            }
+         }
+
+         if (this.a($$2, 44, 21, 50, 54)) {
+            this.a($$0, $$2, 44, 0, 21, 50, 0, 50, b, b, false);
+            this.b($$0, $$2, 44, 1, 21, 50, 10, 50);
+            this.a($$0, $$2, 44, 8, 21, 46, 8, 53, b, b, false);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, 50 - $$5, $$5 + 5, 21, 50 - $$5, $$5 + 5, 54, c, c, false);
+            }
+
+            for (int $$6 = 21; $$6 <= 45; $$6 += 3) {
+               this.a($$0, h, 45, 9, $$6, $$2);
+            }
+         }
+
+         if (this.a($$2, 8, 44, 49, 54)) {
+            this.a($$0, $$2, 14, 0, 44, 43, 0, 50, b, b, false);
+            this.b($$0, $$2, 14, 1, 44, 43, 10, 50);
+
+            for (int $$7 = 12; $$7 <= 45; $$7 += 3) {
+               this.a($$0, h, $$7, 9, 45, $$2);
+               this.a($$0, h, $$7, 9, 52, $$2);
+               if ($$7 == 12 || $$7 == 18 || $$7 == 24 || $$7 == 33 || $$7 == 39 || $$7 == 45) {
+                  this.a($$0, h, $$7, 9, 47, $$2);
+                  this.a($$0, h, $$7, 9, 50, $$2);
+                  this.a($$0, h, $$7, 10, 45, $$2);
+                  this.a($$0, h, $$7, 10, 46, $$2);
+                  this.a($$0, h, $$7, 10, 51, $$2);
+                  this.a($$0, h, $$7, 10, 52, $$2);
+                  this.a($$0, h, $$7, 11, 47, $$2);
+                  this.a($$0, h, $$7, 11, 50, $$2);
+                  this.a($$0, h, $$7, 12, 48, $$2);
+                  this.a($$0, h, $$7, 12, 49, $$2);
+               }
+            }
+
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               this.a($$0, $$2, 8 + $$8, 5 + $$8, 54, 49 - $$8, 5 + $$8, 54, b, b, false);
+            }
+
+            this.a($$0, $$2, 11, 8, 54, 46, 8, 54, c, c, false);
+            this.a($$0, $$2, 14, 8, 44, 43, 8, 53, b, b, false);
+         }
+      }
+
+      private void f(csu $$0, ats $$1, dwz $$2) {
+         if (this.a($$2, 14, 21, 20, 43)) {
+            this.a($$0, $$2, 14, 0, 21, 20, 0, 43, b, b, false);
+            this.b($$0, $$2, 14, 1, 22, 20, 14, 43);
+            this.a($$0, $$2, 18, 12, 22, 20, 12, 39, b, b, false);
+            this.a($$0, $$2, 18, 12, 21, 20, 12, 21, c, c, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3 + 14, $$3 + 9, 21, $$3 + 14, $$3 + 9, 43 - $$3, c, c, false);
+            }
+
+            for (int $$4 = 23; $$4 <= 39; $$4 += 3) {
+               this.a($$0, h, 19, 13, $$4, $$2);
+            }
+         }
+
+         if (this.a($$2, 37, 21, 43, 43)) {
+            this.a($$0, $$2, 37, 0, 21, 43, 0, 43, b, b, false);
+            this.b($$0, $$2, 37, 1, 22, 43, 14, 43);
+            this.a($$0, $$2, 37, 12, 22, 39, 12, 39, b, b, false);
+            this.a($$0, $$2, 37, 12, 21, 39, 12, 21, c, c, false);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, 43 - $$5, $$5 + 9, 21, 43 - $$5, $$5 + 9, 43 - $$5, c, c, false);
+            }
+
+            for (int $$6 = 23; $$6 <= 39; $$6 += 3) {
+               this.a($$0, h, 38, 13, $$6, $$2);
+            }
+         }
+
+         if (this.a($$2, 15, 37, 42, 43)) {
+            this.a($$0, $$2, 21, 0, 37, 36, 0, 43, b, b, false);
+            this.b($$0, $$2, 21, 1, 37, 36, 14, 43);
+            this.a($$0, $$2, 21, 12, 37, 36, 12, 39, b, b, false);
+
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               this.a($$0, $$2, 15 + $$7, $$7 + 9, 43 - $$7, 42 - $$7, $$7 + 9, 43 - $$7, c, c, false);
+            }
+
+            for (int $$8 = 21; $$8 <= 36; $$8 += 3) {
+               this.a($$0, h, $$8, 13, 38, $$2);
+            }
+         }
+      }
+   }
+
+   interface i {
+      boolean a(dzq.v var1);
+
+      dzq.r a(hx var1, dzq.v var2, ats var3);
+   }
+
+   public static class j extends dzq.r {
+      public j(hx $$0, dzq.v $$1) {
+         super(dxy.N, 1, $$0, $$1, 2, 2, 2);
+      }
+
+      public j(rz $$0) {
+         super(dxy.N, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         this.a($$0, $$4, 1, 8, 0, 14, 8, 14, b);
+         int $$7 = 7;
+         dhi $$8 = c;
+         this.a($$0, $$4, 0, 7, 0, 0, 7, 15, $$8, $$8, false);
+         this.a($$0, $$4, 15, 7, 0, 15, 7, 15, $$8, $$8, false);
+         this.a($$0, $$4, 1, 7, 0, 15, 7, 0, $$8, $$8, false);
+         this.a($$0, $$4, 1, 7, 15, 14, 7, 15, $$8, $$8, false);
+
+         for (int $$9 = 1; $$9 <= 6; $$9++) {
+            $$8 = c;
+            if ($$9 == 2 || $$9 == 6) {
+               $$8 = b;
+            }
+
+            for (int $$11 = 0; $$11 <= 15; $$11 += 15) {
+               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9, 1, $$8, $$8, false);
+               this.a($$0, $$4, $$11, $$9, 6, $$11, $$9, 9, $$8, $$8, false);
+               this.a($$0, $$4, $$11, $$9, 14, $$11, $$9, 15, $$8, $$8, false);
+            }
+
+            this.a($$0, $$4, 1, $$9, 0, 1, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 6, $$9, 0, 9, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 14, $$9, 0, 14, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 1, $$9, 15, 14, $$9, 15, $$8, $$8, false);
+         }
+
+         this.a($$0, $$4, 6, 3, 6, 9, 6, 9, d, d, false);
+         this.a($$0, $$4, 7, 4, 7, 8, 5, 8, cvc.ch.o(), cvc.ch.o(), false);
+
+         for (int $$12 = 3; $$12 <= 6; $$12 += 3) {
+            for (int $$13 = 6; $$13 <= 9; $$13 += 3) {
+               this.a($$0, i, $$13, $$12, 6, $$4);
+               this.a($$0, i, $$13, $$12, 9, $$4);
+            }
+         }
+
+         this.a($$0, $$4, 5, 1, 6, 5, 2, 6, c, c, false);
+         this.a($$0, $$4, 5, 1, 9, 5, 2, 9, c, c, false);
+         this.a($$0, $$4, 10, 1, 6, 10, 2, 6, c, c, false);
+         this.a($$0, $$4, 10, 1, 9, 10, 2, 9, c, c, false);
+         this.a($$0, $$4, 6, 1, 5, 6, 2, 5, c, c, false);
+         this.a($$0, $$4, 9, 1, 5, 9, 2, 5, c, c, false);
+         this.a($$0, $$4, 6, 1, 10, 6, 2, 10, c, c, false);
+         this.a($$0, $$4, 9, 1, 10, 9, 2, 10, c, c, false);
+         this.a($$0, $$4, 5, 2, 5, 5, 6, 5, c, c, false);
+         this.a($$0, $$4, 5, 2, 10, 5, 6, 10, c, c, false);
+         this.a($$0, $$4, 10, 2, 5, 10, 6, 5, c, c, false);
+         this.a($$0, $$4, 10, 2, 10, 10, 6, 10, c, c, false);
+         this.a($$0, $$4, 5, 7, 1, 5, 7, 6, c, c, false);
+         this.a($$0, $$4, 10, 7, 1, 10, 7, 6, c, c, false);
+         this.a($$0, $$4, 5, 7, 9, 5, 7, 14, c, c, false);
+         this.a($$0, $$4, 10, 7, 9, 10, 7, 14, c, c, false);
+         this.a($$0, $$4, 1, 7, 5, 6, 7, 5, c, c, false);
+         this.a($$0, $$4, 1, 7, 10, 6, 7, 10, c, c, false);
+         this.a($$0, $$4, 9, 7, 5, 14, 7, 5, c, c, false);
+         this.a($$0, $$4, 9, 7, 10, 14, 7, 10, c, c, false);
+         this.a($$0, $$4, 2, 1, 2, 2, 1, 3, c, c, false);
+         this.a($$0, $$4, 3, 1, 2, 3, 1, 2, c, c, false);
+         this.a($$0, $$4, 13, 1, 2, 13, 1, 3, c, c, false);
+         this.a($$0, $$4, 12, 1, 2, 12, 1, 2, c, c, false);
+         this.a($$0, $$4, 2, 1, 12, 2, 1, 13, c, c, false);
+         this.a($$0, $$4, 3, 1, 13, 3, 1, 13, c, c, false);
+         this.a($$0, $$4, 13, 1, 12, 13, 1, 13, c, c, false);
+         this.a($$0, $$4, 12, 1, 13, 12, 1, 13, c, c, false);
+      }
+   }
+
+   public static class k extends dzq.r {
+      public k(hx $$0, dzq.v $$1) {
+         super(dxy.O, 1, $$0, $$1, 2, 1, 1);
+      }
+
+      public k(rz $$0) {
+         super(dxy.O, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         dzq.v $$7 = this.B.b[hx.f.d()];
+         dzq.v $$8 = this.B;
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 8, 0, $$7.c[hx.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[hx.a.d()]);
+         }
+
+         if ($$8.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 7, 4, 6, b);
+         }
+
+         if ($$7.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 8, 4, 1, 14, 4, 6, b);
+         }
+
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+         this.a($$0, $$4, 15, 3, 0, 15, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 15, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 7, 14, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, b, b, false);
+         this.a($$0, $$4, 15, 2, 0, 15, 2, 7, b, b, false);
+         this.a($$0, $$4, 1, 2, 0, 15, 2, 0, b, b, false);
+         this.a($$0, $$4, 1, 2, 7, 14, 2, 7, b, b, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 15, 1, 0, 15, 1, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 15, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 7, 14, 1, 7, c, c, false);
+         this.a($$0, $$4, 5, 1, 0, 10, 1, 4, c, c, false);
+         this.a($$0, $$4, 6, 2, 0, 9, 2, 3, b, b, false);
+         this.a($$0, $$4, 5, 3, 0, 10, 3, 4, c, c, false);
+         this.a($$0, i, 6, 2, 3, $$4);
+         this.a($$0, i, 9, 2, 3, $$4);
+         if ($$8.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if ($$8.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[hx.d.d()]) {
+            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
+         }
+
+         if ($$7.c[hx.c.d()]) {
+            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
+         }
+
+         if ($$7.c[hx.f.d()]) {
+            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
+         }
+      }
+   }
+
+   public static class l extends dzq.r {
+      public l(hx $$0, dzq.v $$1) {
+         super(dxy.P, 1, $$0, $$1, 2, 2, 1);
+      }
+
+      public l(rz $$0) {
+         super(dxy.P, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         dzq.v $$7 = this.B.b[hx.f.d()];
+         dzq.v $$8 = this.B;
+         dzq.v $$9 = $$8.b[hx.b.d()];
+         dzq.v $$10 = $$7.b[hx.b.d()];
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 8, 0, $$7.c[hx.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[hx.a.d()]);
+         }
+
+         if ($$9.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 7, 8, 6, b);
+         }
+
+         if ($$10.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 8, 8, 1, 14, 8, 6, b);
+         }
+
+         for (int $$11 = 1; $$11 <= 7; $$11++) {
+            dhi $$12 = c;
+            if ($$11 == 2 || $$11 == 6) {
+               $$12 = b;
+            }
+
+            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 7, $$12, $$12, false);
+            this.a($$0, $$4, 15, $$11, 0, 15, $$11, 7, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 0, 15, $$11, 0, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 7, 14, $$11, 7, $$12, $$12, false);
+         }
+
+         this.a($$0, $$4, 2, 1, 3, 2, 7, 4, c, c, false);
+         this.a($$0, $$4, 3, 1, 2, 4, 7, 2, c, c, false);
+         this.a($$0, $$4, 3, 1, 5, 4, 7, 5, c, c, false);
+         this.a($$0, $$4, 13, 1, 3, 13, 7, 4, c, c, false);
+         this.a($$0, $$4, 11, 1, 2, 12, 7, 2, c, c, false);
+         this.a($$0, $$4, 11, 1, 5, 12, 7, 5, c, c, false);
+         this.a($$0, $$4, 5, 1, 3, 5, 3, 4, c, c, false);
+         this.a($$0, $$4, 10, 1, 3, 10, 3, 4, c, c, false);
+         this.a($$0, $$4, 5, 7, 2, 10, 7, 5, c, c, false);
+         this.a($$0, $$4, 5, 5, 2, 5, 7, 2, c, c, false);
+         this.a($$0, $$4, 10, 5, 2, 10, 7, 2, c, c, false);
+         this.a($$0, $$4, 5, 5, 5, 5, 7, 5, c, c, false);
+         this.a($$0, $$4, 10, 5, 5, 10, 7, 5, c, c, false);
+         this.a($$0, c, 6, 6, 2, $$4);
+         this.a($$0, c, 9, 6, 2, $$4);
+         this.a($$0, c, 6, 6, 5, $$4);
+         this.a($$0, c, 9, 6, 5, $$4);
+         this.a($$0, $$4, 5, 4, 3, 6, 4, 4, c, c, false);
+         this.a($$0, $$4, 9, 4, 3, 10, 4, 4, c, c, false);
+         this.a($$0, i, 5, 4, 2, $$4);
+         this.a($$0, i, 5, 4, 5, $$4);
+         this.a($$0, i, 10, 4, 2, $$4);
+         this.a($$0, i, 10, 4, 5, $$4);
+         if ($$8.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if ($$8.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[hx.d.d()]) {
+            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
+         }
+
+         if ($$7.c[hx.c.d()]) {
+            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
+         }
+
+         if ($$7.c[hx.f.d()]) {
+            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
+         }
+
+         if ($$9.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
+         }
+
+         if ($$9.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 5, 7, 4, 6, 7);
+         }
+
+         if ($$9.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
+         }
+
+         if ($$10.c[hx.d.d()]) {
+            this.b($$0, $$4, 11, 5, 0, 12, 6, 0);
+         }
+
+         if ($$10.c[hx.c.d()]) {
+            this.b($$0, $$4, 11, 5, 7, 12, 6, 7);
+         }
+
+         if ($$10.c[hx.f.d()]) {
+            this.b($$0, $$4, 15, 5, 3, 15, 6, 4);
+         }
+      }
+   }
+
+   public static class m extends dzq.r {
+      public m(hx $$0, dzq.v $$1) {
+         super(dxy.Q, 1, $$0, $$1, 1, 2, 1);
+      }
+
+      public m(rz $$0) {
+         super(dxy.Q, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[hx.a.d()]);
+         }
+
+         dzq.v $$7 = this.B.b[hx.b.d()];
+         if ($$7.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 6, 8, 6, b);
+         }
+
+         this.a($$0, $$4, 0, 4, 0, 0, 4, 7, c, c, false);
+         this.a($$0, $$4, 7, 4, 0, 7, 4, 7, c, c, false);
+         this.a($$0, $$4, 1, 4, 0, 6, 4, 0, c, c, false);
+         this.a($$0, $$4, 1, 4, 7, 6, 4, 7, c, c, false);
+         this.a($$0, $$4, 2, 4, 1, 2, 4, 2, c, c, false);
+         this.a($$0, $$4, 1, 4, 2, 1, 4, 2, c, c, false);
+         this.a($$0, $$4, 5, 4, 1, 5, 4, 2, c, c, false);
+         this.a($$0, $$4, 6, 4, 2, 6, 4, 2, c, c, false);
+         this.a($$0, $$4, 2, 4, 5, 2, 4, 6, c, c, false);
+         this.a($$0, $$4, 1, 4, 5, 1, 4, 5, c, c, false);
+         this.a($$0, $$4, 5, 4, 5, 5, 4, 6, c, c, false);
+         this.a($$0, $$4, 6, 4, 5, 6, 4, 5, c, c, false);
+         dzq.v $$8 = this.B;
+
+         for (int $$9 = 1; $$9 <= 5; $$9 += 4) {
+            int $$10 = 0;
+            if ($$8.c[hx.d.d()]) {
+               this.a($$0, $$4, 2, $$9, $$10, 2, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 5, $$9, $$10, 5, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 3, $$9 + 2, $$10, 4, $$9 + 2, $$10, c, c, false);
             } else {
-               $$8 += $$3.j();
-               $$9 += $$3.l();
-               if ($$8 != $$6 || $$9 != $$7 || $$10 != $$3) {
-                  this.b($$0, $$1);
-               }
+               this.a($$0, $$4, 0, $$9, $$10, 7, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 0, $$9 + 1, $$10, 7, $$9 + 1, $$10, b, b, false);
             }
-         } while ($$8 != $$6 || $$9 != $$7 || $$10 != $$3);
-      }
 
-      private void a(List<dzq.i> $$0, ht $$1, dbf $$2, dzq.g $$3, @Nullable dzq.g $$4) {
-         for (int $$5 = 0; $$5 < $$3.c; $$5++) {
-            for (int $$6 = 0; $$6 < $$3.b; $$6++) {
-               ht $$27 = $$1.a($$2.a(hx.d), 8 + ($$5 - this.d) * 8);
-               $$27 = $$27.a($$2.a(hx.f), ($$6 - this.c) * 8);
-               boolean $$8 = $$4 != null && dzq.c.a($$4, $$6, $$5);
-               if (dzq.c.a($$3, $$6, $$5) && !$$8) {
-                  $$0.add(new dzq.i(this.a, "roof", $$27.b(3), $$2));
-                  if (!dzq.c.a($$3, $$6 + 1, $$5)) {
-                     ht $$9 = $$27.a($$2.a(hx.f), 6);
-                     $$0.add(new dzq.i(this.a, "roof_front", $$9, $$2));
-                  }
-
-                  if (!dzq.c.a($$3, $$6 - 1, $$5)) {
-                     ht $$10 = $$27.a($$2.a(hx.f), 0);
-                     $$10 = $$10.a($$2.a(hx.d), 7);
-                     $$0.add(new dzq.i(this.a, "roof_front", $$10, $$2.a(dbf.c)));
-                  }
-
-                  if (!dzq.c.a($$3, $$6, $$5 - 1)) {
-                     ht $$11 = $$27.a($$2.a(hx.e), 1);
-                     $$0.add(new dzq.i(this.a, "roof_front", $$11, $$2.a(dbf.d)));
-                  }
-
-                  if (!dzq.c.a($$3, $$6, $$5 + 1)) {
-                     ht $$12 = $$27.a($$2.a(hx.f), 6);
-                     $$12 = $$12.a($$2.a(hx.d), 6);
-                     $$0.add(new dzq.i(this.a, "roof_front", $$12, $$2.a(dbf.b)));
-                  }
-               }
-            }
-         }
-
-         if ($$4 != null) {
-            for (int $$13 = 0; $$13 < $$3.c; $$13++) {
-               for (int $$14 = 0; $$14 < $$3.b; $$14++) {
-                  ht var17 = $$1.a($$2.a(hx.d), 8 + ($$13 - this.d) * 8);
-                  var17 = var17.a($$2.a(hx.f), ($$14 - this.c) * 8);
-                  boolean $$16 = dzq.c.a($$4, $$14, $$13);
-                  if (dzq.c.a($$3, $$14, $$13) && $$16) {
-                     if (!dzq.c.a($$3, $$14 + 1, $$13)) {
-                        ht $$17 = var17.a($$2.a(hx.f), 7);
-                        $$0.add(new dzq.i(this.a, "small_wall", $$17, $$2));
-                     }
-
-                     if (!dzq.c.a($$3, $$14 - 1, $$13)) {
-                        ht $$18 = var17.a($$2.a(hx.e), 1);
-                        $$18 = $$18.a($$2.a(hx.d), 6);
-                        $$0.add(new dzq.i(this.a, "small_wall", $$18, $$2.a(dbf.c)));
-                     }
-
-                     if (!dzq.c.a($$3, $$14, $$13 - 1)) {
-                        ht $$19 = var17.a($$2.a(hx.e), 0);
-                        $$19 = $$19.a($$2.a(hx.c), 1);
-                        $$0.add(new dzq.i(this.a, "small_wall", $$19, $$2.a(dbf.d)));
-                     }
-
-                     if (!dzq.c.a($$3, $$14, $$13 + 1)) {
-                        ht $$20 = var17.a($$2.a(hx.f), 6);
-                        $$20 = $$20.a($$2.a(hx.d), 7);
-                        $$0.add(new dzq.i(this.a, "small_wall", $$20, $$2.a(dbf.b)));
-                     }
-
-                     if (!dzq.c.a($$3, $$14 + 1, $$13)) {
-                        if (!dzq.c.a($$3, $$14, $$13 - 1)) {
-                           ht $$21 = var17.a($$2.a(hx.f), 7);
-                           $$21 = $$21.a($$2.a(hx.c), 2);
-                           $$0.add(new dzq.i(this.a, "small_wall_corner", $$21, $$2));
-                        }
-
-                        if (!dzq.c.a($$3, $$14, $$13 + 1)) {
-                           ht $$22 = var17.a($$2.a(hx.f), 8);
-                           $$22 = $$22.a($$2.a(hx.d), 7);
-                           $$0.add(new dzq.i(this.a, "small_wall_corner", $$22, $$2.a(dbf.b)));
-                        }
-                     }
-
-                     if (!dzq.c.a($$3, $$14 - 1, $$13)) {
-                        if (!dzq.c.a($$3, $$14, $$13 - 1)) {
-                           ht $$23 = var17.a($$2.a(hx.e), 2);
-                           $$23 = $$23.a($$2.a(hx.c), 1);
-                           $$0.add(new dzq.i(this.a, "small_wall_corner", $$23, $$2.a(dbf.d)));
-                        }
-
-                        if (!dzq.c.a($$3, $$14, $$13 + 1)) {
-                           ht $$24 = var17.a($$2.a(hx.e), 1);
-                           $$24 = $$24.a($$2.a(hx.d), 8);
-                           $$0.add(new dzq.i(this.a, "small_wall_corner", $$24, $$2.a(dbf.c)));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < $$3.c; $$25++) {
-            for (int $$26 = 0; $$26 < $$3.b; $$26++) {
-               ht var19 = $$1.a($$2.a(hx.d), 8 + ($$25 - this.d) * 8);
-               var19 = var19.a($$2.a(hx.f), ($$26 - this.c) * 8);
-               boolean $$28 = $$4 != null && dzq.c.a($$4, $$26, $$25);
-               if (dzq.c.a($$3, $$26, $$25) && !$$28) {
-                  if (!dzq.c.a($$3, $$26 + 1, $$25)) {
-                     ht $$29 = var19.a($$2.a(hx.f), 6);
-                     if (!dzq.c.a($$3, $$26, $$25 + 1)) {
-                        ht $$30 = $$29.a($$2.a(hx.d), 6);
-                        $$0.add(new dzq.i(this.a, "roof_corner", $$30, $$2));
-                     } else if (dzq.c.a($$3, $$26 + 1, $$25 + 1)) {
-                        ht $$31 = $$29.a($$2.a(hx.d), 5);
-                        $$0.add(new dzq.i(this.a, "roof_inner_corner", $$31, $$2));
-                     }
-
-                     if (!dzq.c.a($$3, $$26, $$25 - 1)) {
-                        $$0.add(new dzq.i(this.a, "roof_corner", $$29, $$2.a(dbf.d)));
-                     } else if (dzq.c.a($$3, $$26 + 1, $$25 - 1)) {
-                        ht $$32 = var19.a($$2.a(hx.f), 9);
-                        $$32 = $$32.a($$2.a(hx.c), 2);
-                        $$0.add(new dzq.i(this.a, "roof_inner_corner", $$32, $$2.a(dbf.b)));
-                     }
-                  }
-
-                  if (!dzq.c.a($$3, $$26 - 1, $$25)) {
-                     ht $$33 = var19.a($$2.a(hx.f), 0);
-                     $$33 = $$33.a($$2.a(hx.d), 0);
-                     if (!dzq.c.a($$3, $$26, $$25 + 1)) {
-                        ht $$34 = $$33.a($$2.a(hx.d), 6);
-                        $$0.add(new dzq.i(this.a, "roof_corner", $$34, $$2.a(dbf.b)));
-                     } else if (dzq.c.a($$3, $$26 - 1, $$25 + 1)) {
-                        ht $$35 = $$33.a($$2.a(hx.d), 8);
-                        $$35 = $$35.a($$2.a(hx.e), 3);
-                        $$0.add(new dzq.i(this.a, "roof_inner_corner", $$35, $$2.a(dbf.d)));
-                     }
-
-                     if (!dzq.c.a($$3, $$26, $$25 - 1)) {
-                        $$0.add(new dzq.i(this.a, "roof_corner", $$33, $$2.a(dbf.c)));
-                     } else if (dzq.c.a($$3, $$26 - 1, $$25 - 1)) {
-                        ht $$36 = $$33.a($$2.a(hx.d), 1);
-                        $$0.add(new dzq.i(this.a, "roof_inner_corner", $$36, $$2.a(dbf.c)));
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      private void a(List<dzq.i> $$0, dzq.e $$1) {
-         hx $$2 = $$1.a.a(hx.e);
-         $$0.add(new dzq.i(this.a, "entrance", $$1.b.a($$2, 9), $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(hx.d), 16);
-      }
-
-      private void b(List<dzq.i> $$0, dzq.e $$1) {
-         $$0.add(new dzq.i(this.a, $$1.c, $$1.b.a($$1.a.a(hx.f), 7), $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(hx.d), 8);
-      }
-
-      private void c(List<dzq.i> $$0, dzq.e $$1) {
-         $$1.b = $$1.b.a($$1.a.a(hx.d), -1);
-         $$0.add(new dzq.i(this.a, "wall_corner", $$1.b, $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(hx.d), -7);
-         $$1.b = $$1.b.a($$1.a.a(hx.e), -6);
-         $$1.a = $$1.a.a(dbf.b);
-      }
-
-      private void d(List<dzq.i> $$0, dzq.e $$1) {
-         $$1.b = $$1.b.a($$1.a.a(hx.d), 6);
-         $$1.b = $$1.b.a($$1.a.a(hx.f), 8);
-         $$1.a = $$1.a.a(dbf.d);
-      }
-
-      private void a(List<dzq.i> $$0, ht $$1, dbf $$2, hx $$3, dzq.b $$4) {
-         dbf $$5 = dbf.a;
-         String $$6 = $$4.a(this.b);
-         if ($$3 != hx.f) {
-            if ($$3 == hx.c) {
-               $$5 = $$5.a(dbf.d);
-            } else if ($$3 == hx.e) {
-               $$5 = $$5.a(dbf.c);
-            } else if ($$3 == hx.d) {
-               $$5 = $$5.a(dbf.b);
+            int var13 = 7;
+            if ($$8.c[hx.c.d()]) {
+               this.a($$0, $$4, 2, $$9, var13, 2, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 5, $$9, var13, 5, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 3, $$9 + 2, var13, 4, $$9 + 2, var13, c, c, false);
             } else {
-               $$6 = $$4.b(this.b);
-            }
-         }
-
-         ht $$7 = eav.a(new ht(1, 0, 0), czp.a, $$5, 7, 7);
-         $$5 = $$5.a($$2);
-         $$7 = $$7.a($$2);
-         ht $$8 = $$1.b($$7.u(), 0, $$7.w());
-         $$0.add(new dzq.i(this.a, $$6, $$8, $$5));
-      }
-
-      private void a(List<dzq.i> $$0, ht $$1, dbf $$2, hx $$3, hx $$4, dzq.b $$5, boolean $$6) {
-         if ($$4 == hx.f && $$3 == hx.d) {
-            ht $$7 = $$1.a($$2.a(hx.f), 1);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$7, $$2));
-         } else if ($$4 == hx.f && $$3 == hx.c) {
-            ht $$8 = $$1.a($$2.a(hx.f), 1);
-            $$8 = $$8.a($$2.a(hx.d), 6);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$8, $$2, czp.b));
-         } else if ($$4 == hx.e && $$3 == hx.c) {
-            ht $$9 = $$1.a($$2.a(hx.f), 7);
-            $$9 = $$9.a($$2.a(hx.d), 6);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$9, $$2.a(dbf.c)));
-         } else if ($$4 == hx.e && $$3 == hx.d) {
-            ht $$10 = $$1.a($$2.a(hx.f), 7);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$10, $$2, czp.c));
-         } else if ($$4 == hx.d && $$3 == hx.f) {
-            ht $$11 = $$1.a($$2.a(hx.f), 1);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$11, $$2.a(dbf.b), czp.b));
-         } else if ($$4 == hx.d && $$3 == hx.e) {
-            ht $$12 = $$1.a($$2.a(hx.f), 7);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$12, $$2.a(dbf.b)));
-         } else if ($$4 == hx.c && $$3 == hx.e) {
-            ht $$13 = $$1.a($$2.a(hx.f), 7);
-            $$13 = $$13.a($$2.a(hx.d), 6);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$13, $$2.a(dbf.b), czp.c));
-         } else if ($$4 == hx.c && $$3 == hx.f) {
-            ht $$14 = $$1.a($$2.a(hx.f), 1);
-            $$14 = $$14.a($$2.a(hx.d), 6);
-            $$0.add(new dzq.i(this.a, $$5.a(this.b, $$6), $$14, $$2.a(dbf.d)));
-         } else if ($$4 == hx.d && $$3 == hx.c) {
-            ht $$15 = $$1.a($$2.a(hx.f), 1);
-            $$15 = $$15.a($$2.a(hx.c), 8);
-            $$0.add(new dzq.i(this.a, $$5.b(this.b, $$6), $$15, $$2));
-         } else if ($$4 == hx.c && $$3 == hx.d) {
-            ht $$16 = $$1.a($$2.a(hx.f), 7);
-            $$16 = $$16.a($$2.a(hx.d), 14);
-            $$0.add(new dzq.i(this.a, $$5.b(this.b, $$6), $$16, $$2.a(dbf.c)));
-         } else if ($$4 == hx.e && $$3 == hx.f) {
-            ht $$17 = $$1.a($$2.a(hx.f), 15);
-            $$0.add(new dzq.i(this.a, $$5.b(this.b, $$6), $$17, $$2.a(dbf.b)));
-         } else if ($$4 == hx.f && $$3 == hx.e) {
-            ht $$18 = $$1.a($$2.a(hx.e), 7);
-            $$18 = $$18.a($$2.a(hx.d), 6);
-            $$0.add(new dzq.i(this.a, $$5.b(this.b, $$6), $$18, $$2.a(dbf.d)));
-         } else if ($$4 == hx.b && $$3 == hx.f) {
-            ht $$19 = $$1.a($$2.a(hx.f), 15);
-            $$0.add(new dzq.i(this.a, $$5.c(this.b), $$19, $$2.a(dbf.b)));
-         } else if ($$4 == hx.b && $$3 == hx.d) {
-            ht $$20 = $$1.a($$2.a(hx.f), 1);
-            $$20 = $$20.a($$2.a(hx.c), 0);
-            $$0.add(new dzq.i(this.a, $$5.c(this.b), $$20, $$2));
-         }
-      }
-
-      private void a(List<dzq.i> $$0, ht $$1, dbf $$2, hx $$3, hx $$4, dzq.b $$5) {
-         int $$6 = 0;
-         int $$7 = 0;
-         dbf $$8 = $$2;
-         czp $$9 = czp.a;
-         if ($$4 == hx.f && $$3 == hx.d) {
-            $$6 = -7;
-         } else if ($$4 == hx.f && $$3 == hx.c) {
-            $$6 = -7;
-            $$7 = 6;
-            $$9 = czp.b;
-         } else if ($$4 == hx.c && $$3 == hx.f) {
-            $$6 = 1;
-            $$7 = 14;
-            $$8 = $$2.a(dbf.d);
-         } else if ($$4 == hx.c && $$3 == hx.e) {
-            $$6 = 7;
-            $$7 = 14;
-            $$8 = $$2.a(dbf.d);
-            $$9 = czp.b;
-         } else if ($$4 == hx.d && $$3 == hx.e) {
-            $$6 = 7;
-            $$7 = -8;
-            $$8 = $$2.a(dbf.b);
-         } else if ($$4 == hx.d && $$3 == hx.f) {
-            $$6 = 1;
-            $$7 = -8;
-            $$8 = $$2.a(dbf.b);
-            $$9 = czp.b;
-         } else if ($$4 == hx.e && $$3 == hx.c) {
-            $$6 = 15;
-            $$7 = 6;
-            $$8 = $$2.a(dbf.c);
-         } else if ($$4 == hx.e && $$3 == hx.d) {
-            $$6 = 15;
-            $$9 = czp.c;
-         }
-
-         ht $$10 = $$1.a($$2.a(hx.f), $$6);
-         $$10 = $$10.a($$2.a(hx.d), $$7);
-         $$0.add(new dzq.i(this.a, $$5.d(this.b), $$10, $$8, $$9));
-      }
-
-      private void a(List<dzq.i> $$0, ht $$1, dbf $$2, dzq.b $$3) {
-         ht $$4 = $$1.a($$2.a(hx.f), 1);
-         $$0.add(new dzq.i(this.a, $$3.e(this.b), $$4, $$2, czp.a));
-      }
-   }
-
-   static class e {
-      public dbf a;
-      public ht b;
-      public String c;
-   }
-
-   static class f extends dzq.b {
-      @Override
-      public String a(ato $$0) {
-         return "1x1_b" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String b(ato $$0) {
-         return "1x1_as" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String a(ato $$0, boolean $$1) {
-         return $$1 ? "1x2_c_stairs" : "1x2_c" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String b(ato $$0, boolean $$1) {
-         return $$1 ? "1x2_d_stairs" : "1x2_d" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String c(ato $$0) {
-         return "1x2_se" + ($$0.a(1) + 1);
-      }
-
-      @Override
-      public String d(ato $$0) {
-         return "2x2_b" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String e(ato $$0) {
-         return "2x2_s1";
-      }
-   }
-
-   static class g {
-      private final int[][] a;
-      final int b;
-      final int c;
-      private final int d;
-
-      public g(int $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.a = new int[$$0][$$1];
-      }
-
-      public void a(int $$0, int $$1, int $$2) {
-         if ($$0 >= 0 && $$0 < this.b && $$1 >= 0 && $$1 < this.c) {
-            this.a[$$0][$$1] = $$2;
-         }
-      }
-
-      public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-         for (int $$5 = $$1; $$5 <= $$3; $$5++) {
-            for (int $$6 = $$0; $$6 <= $$2; $$6++) {
-               this.a($$6, $$5, $$4);
-            }
-         }
-      }
-
-      public int a(int $$0, int $$1) {
-         return $$0 >= 0 && $$0 < this.b && $$1 >= 0 && $$1 < this.c ? this.a[$$0][$$1] : this.d;
-      }
-
-      public void a(int $$0, int $$1, int $$2, int $$3) {
-         if (this.a($$0, $$1) == $$2) {
-            this.a($$0, $$1, $$3);
-         }
-      }
-
-      public boolean b(int $$0, int $$1, int $$2) {
-         return this.a($$0 - 1, $$1) == $$2 || this.a($$0 + 1, $$1) == $$2 || this.a($$0, $$1 + 1) == $$2 || this.a($$0, $$1 - 1) == $$2;
-      }
-   }
-
-   static class h extends dzq.f {
-   }
-
-   public static class i extends dxf {
-      public i(eaw $$0, String $$1, ht $$2, dbf $$3) {
-         this($$0, $$1, $$2, $$3, czp.a);
-      }
-
-      public i(eaw $$0, String $$1, ht $$2, dbf $$3, czp $$4) {
-         super(dxm.Z, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
-      }
-
-      public i(eaw $$0, rz $$1) {
-         super(dxm.Z, $$1, $$0, $$1x -> a(czp.valueOf($$1.l("Mi")), dbf.valueOf($$1.l("Rot"))));
-      }
-
-      @Override
-      protected agg b() {
-         return a(this.a);
-      }
-
-      private static agg a(String $$0) {
-         return new agg("woodland_mansion/" + $$0);
-      }
-
-      private static ear a(czp $$0, dbf $$1) {
-         return new ear().a(true).a($$1).a($$0).a(dzx.b);
-      }
-
-      @Override
-      protected void a(dxl $$0, rz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-         $$1.a("Mi", this.c.c().name());
-      }
-
-      @Override
-      protected void a(String $$0, ht $$1, csh $$2, ato $$3, dwn $$4) {
-         if ($$0.startsWith("Chest")) {
-            dbf $$5 = this.c.d();
-            dgw $$6 = cuv.cv.o();
-            if ("ChestWest".equals($$0)) {
-               $$6 = $$6.a(cvw.c, $$5.a(hx.e));
-            } else if ("ChestEast".equals($$0)) {
-               $$6 = $$6.a(cvw.c, $$5.a(hx.f));
-            } else if ("ChestSouth".equals($$0)) {
-               $$6 = $$6.a(cvw.c, $$5.a(hx.d));
-            } else if ("ChestNorth".equals($$0)) {
-               $$6 = $$6.a(cvw.c, $$5.a(hx.c));
+               this.a($$0, $$4, 0, $$9, var13, 7, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 0, $$9 + 1, var13, 7, $$9 + 1, var13, b, b, false);
             }
 
-            this.a($$2, $$4, $$3, $$1, eej.D, $$6);
+            int $$11 = 0;
+            if ($$8.c[hx.e.d()]) {
+               this.a($$0, $$4, $$11, $$9, 2, $$11, $$9 + 2, 2, c, c, false);
+               this.a($$0, $$4, $$11, $$9, 5, $$11, $$9 + 2, 5, c, c, false);
+               this.a($$0, $$4, $$11, $$9 + 2, 3, $$11, $$9 + 2, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9 + 2, 7, c, c, false);
+               this.a($$0, $$4, $$11, $$9 + 1, 0, $$11, $$9 + 1, 7, b, b, false);
+            }
+
+            int var14 = 7;
+            if ($$8.c[hx.f.d()]) {
+               this.a($$0, $$4, var14, $$9, 2, var14, $$9 + 2, 2, c, c, false);
+               this.a($$0, $$4, var14, $$9, 5, var14, $$9 + 2, 5, c, c, false);
+               this.a($$0, $$4, var14, $$9 + 2, 3, var14, $$9 + 2, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, var14, $$9, 0, var14, $$9 + 2, 7, c, c, false);
+               this.a($$0, $$4, var14, $$9 + 1, 0, var14, $$9 + 1, 7, b, b, false);
+            }
+
+            $$8 = $$7;
+         }
+      }
+   }
+
+   public static class n extends dzq.r {
+      public n(hx $$0, dzq.v $$1) {
+         super(dxy.R, 1, $$0, $$1, 1, 2, 2);
+      }
+
+      public n(rz $$0) {
+         super(dxy.R, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         dzq.v $$7 = this.B.b[hx.c.d()];
+         dzq.v $$8 = this.B;
+         dzq.v $$9 = $$7.b[hx.b.d()];
+         dzq.v $$10 = $$8.b[hx.b.d()];
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 8, $$7.c[hx.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[hx.a.d()]);
+         }
+
+         if ($$10.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 6, 8, 7, b);
+         }
+
+         if ($$9.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 8, 6, 8, 14, b);
+         }
+
+         for (int $$11 = 1; $$11 <= 7; $$11++) {
+            dhi $$12 = c;
+            if ($$11 == 2 || $$11 == 6) {
+               $$12 = b;
+            }
+
+            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 15, $$12, $$12, false);
+            this.a($$0, $$4, 7, $$11, 0, 7, $$11, 15, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 0, 6, $$11, 0, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 15, 6, $$11, 15, $$12, $$12, false);
+         }
+
+         for (int $$13 = 1; $$13 <= 7; $$13++) {
+            dhi $$14 = d;
+            if ($$13 == 2 || $$13 == 6) {
+               $$14 = i;
+            }
+
+            this.a($$0, $$4, 3, $$13, 7, 4, $$13, 8, $$14, $$14, false);
+         }
+
+         if ($$8.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+         }
+
+         if ($$8.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
+         }
+
+         if ($$7.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
+         }
+
+         if ($$7.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
+         }
+
+         if ($$10.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
+         }
+
+         if ($$10.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 5, 3, 7, 6, 4);
+            this.a($$0, $$4, 5, 4, 2, 6, 4, 5, c, c, false);
+            this.a($$0, $$4, 6, 1, 2, 6, 3, 2, c, c, false);
+            this.a($$0, $$4, 6, 1, 5, 6, 3, 5, c, c, false);
+         }
+
+         if ($$10.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
+            this.a($$0, $$4, 1, 4, 2, 2, 4, 5, c, c, false);
+            this.a($$0, $$4, 1, 1, 2, 1, 3, 2, c, c, false);
+            this.a($$0, $$4, 1, 1, 5, 1, 3, 5, c, c, false);
+         }
+
+         if ($$9.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 5, 15, 4, 6, 15);
+         }
+
+         if ($$9.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 5, 11, 0, 6, 12);
+            this.a($$0, $$4, 1, 4, 10, 2, 4, 13, c, c, false);
+            this.a($$0, $$4, 1, 1, 10, 1, 3, 10, c, c, false);
+            this.a($$0, $$4, 1, 1, 13, 1, 3, 13, c, c, false);
+         }
+
+         if ($$9.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 5, 11, 7, 6, 12);
+            this.a($$0, $$4, 5, 4, 10, 6, 4, 13, c, c, false);
+            this.a($$0, $$4, 6, 1, 10, 6, 3, 10, c, c, false);
+            this.a($$0, $$4, 6, 1, 13, 6, 3, 13, c, c, false);
+         }
+      }
+   }
+
+   public static class o extends dzq.r {
+      public o(hx $$0, dzq.v $$1) {
+         super(dxy.S, 1, $$0, $$1, 1, 1, 2);
+      }
+
+      public o(rz $$0) {
+         super(dxy.S, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         dzq.v $$7 = this.B.b[hx.c.d()];
+         dzq.v $$8 = this.B;
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 8, $$7.c[hx.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[hx.a.d()]);
+         }
+
+         if ($$8.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 7, b);
+         }
+
+         if ($$7.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 8, 6, 4, 14, b);
+         }
+
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 15, c, c, false);
+         this.a($$0, $$4, 7, 3, 0, 7, 3, 15, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 7, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 15, 6, 3, 15, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 15, b, b, false);
+         this.a($$0, $$4, 7, 2, 0, 7, 2, 15, b, b, false);
+         this.a($$0, $$4, 1, 2, 0, 7, 2, 0, b, b, false);
+         this.a($$0, $$4, 1, 2, 15, 6, 2, 15, b, b, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 15, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 15, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 7, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 15, 6, 1, 15, c, c, false);
+         this.a($$0, $$4, 1, 1, 1, 1, 1, 2, c, c, false);
+         this.a($$0, $$4, 6, 1, 1, 6, 1, 2, c, c, false);
+         this.a($$0, $$4, 1, 3, 1, 1, 3, 2, c, c, false);
+         this.a($$0, $$4, 6, 3, 1, 6, 3, 2, c, c, false);
+         this.a($$0, $$4, 1, 1, 13, 1, 1, 14, c, c, false);
+         this.a($$0, $$4, 6, 1, 13, 6, 1, 14, c, c, false);
+         this.a($$0, $$4, 1, 3, 13, 1, 3, 14, c, c, false);
+         this.a($$0, $$4, 6, 3, 13, 6, 3, 14, c, c, false);
+         this.a($$0, $$4, 2, 1, 6, 2, 3, 6, c, c, false);
+         this.a($$0, $$4, 5, 1, 6, 5, 3, 6, c, c, false);
+         this.a($$0, $$4, 2, 1, 9, 2, 3, 9, c, c, false);
+         this.a($$0, $$4, 5, 1, 9, 5, 3, 9, c, c, false);
+         this.a($$0, $$4, 3, 2, 6, 4, 2, 6, c, c, false);
+         this.a($$0, $$4, 3, 2, 9, 4, 2, 9, c, c, false);
+         this.a($$0, $$4, 2, 2, 7, 2, 2, 8, c, c, false);
+         this.a($$0, $$4, 5, 2, 7, 5, 2, 8, c, c, false);
+         this.a($$0, i, 2, 2, 5, $$4);
+         this.a($$0, i, 5, 2, 5, $$4);
+         this.a($$0, i, 2, 2, 10, $$4);
+         this.a($$0, i, 5, 2, 10, $$4);
+         this.a($$0, c, 2, 3, 5, $$4);
+         this.a($$0, c, 5, 3, 5, $$4);
+         this.a($$0, c, 2, 3, 10, $$4);
+         this.a($$0, c, 5, 3, 10, $$4);
+         if ($$8.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+         }
+
+         if ($$8.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
+         }
+
+         if ($$7.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
+         }
+
+         if ($$7.c[hx.f.d()]) {
+            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
+         }
+      }
+   }
+
+   public static class p extends dzq.r {
+      public p(hx $$0, dzq.v $$1) {
+         super(dxy.T, 1, $$0, $$1, 1, 1, 1);
+      }
+
+      public p(rz $$0) {
+         super(dxy.T, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         this.a($$0, $$4, 0, 3, 0, 2, 3, 7, c, c, false);
+         this.a($$0, $$4, 5, 3, 0, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 1, 2, 7, c, c, false);
+         this.a($$0, $$4, 6, 2, 0, 7, 2, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 7, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 2, 3, 0, c, c, false);
+         this.a($$0, $$4, 5, 1, 0, 6, 3, 0, c, c, false);
+         if (this.B.c[hx.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if (this.B.c[hx.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 1, 2, 4);
+         }
+
+         if (this.B.c[hx.f.d()]) {
+            this.b($$0, $$4, 6, 1, 3, 7, 2, 4);
+         }
+      }
+   }
+
+   public static class q extends dzq.r {
+      public q(hx $$0, dwz $$1) {
+         super(dxy.U, $$0, 1, $$1);
+      }
+
+      public q(rz $$0) {
+         super(dxy.U, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         this.a($$0, $$4, 2, -1, 2, 11, -1, 11, c, c, false);
+         this.a($$0, $$4, 0, -1, 0, 1, -1, 11, b, b, false);
+         this.a($$0, $$4, 12, -1, 0, 13, -1, 11, b, b, false);
+         this.a($$0, $$4, 2, -1, 0, 11, -1, 1, b, b, false);
+         this.a($$0, $$4, 2, -1, 12, 11, -1, 13, b, b, false);
+         this.a($$0, $$4, 0, 0, 0, 0, 0, 13, c, c, false);
+         this.a($$0, $$4, 13, 0, 0, 13, 0, 13, c, c, false);
+         this.a($$0, $$4, 1, 0, 0, 12, 0, 0, c, c, false);
+         this.a($$0, $$4, 1, 0, 13, 12, 0, 13, c, c, false);
+
+         for (int $$7 = 2; $$7 <= 11; $$7 += 3) {
+            this.a($$0, i, 0, 0, $$7, $$4);
+            this.a($$0, i, 13, 0, $$7, $$4);
+            this.a($$0, i, $$7, 0, 0, $$4);
+         }
+
+         this.a($$0, $$4, 2, 0, 3, 4, 0, 9, c, c, false);
+         this.a($$0, $$4, 9, 0, 3, 11, 0, 9, c, c, false);
+         this.a($$0, $$4, 4, 0, 9, 9, 0, 11, c, c, false);
+         this.a($$0, c, 5, 0, 8, $$4);
+         this.a($$0, c, 8, 0, 8, $$4);
+         this.a($$0, c, 10, 0, 10, $$4);
+         this.a($$0, c, 3, 0, 10, $$4);
+         this.a($$0, $$4, 3, 0, 3, 3, 0, 7, d, d, false);
+         this.a($$0, $$4, 10, 0, 3, 10, 0, 7, d, d, false);
+         this.a($$0, $$4, 6, 0, 10, 7, 0, 10, d, d, false);
+         int $$8 = 3;
+
+         for (int $$9 = 0; $$9 < 2; $$9++) {
+            for (int $$10 = 2; $$10 <= 8; $$10 += 3) {
+               this.a($$0, $$4, $$8, 0, $$10, $$8, 2, $$10, c, c, false);
+            }
+
+            $$8 = 10;
+         }
+
+         this.a($$0, $$4, 5, 0, 10, 5, 2, 10, c, c, false);
+         this.a($$0, $$4, 8, 0, 10, 8, 2, 10, c, c, false);
+         this.a($$0, $$4, 6, -1, 7, 7, -1, 8, d, d, false);
+         this.b($$0, $$4, 6, -1, 3, 7, -1, 4);
+         this.a($$0, $$4, 6, 1, 6);
+      }
+   }
+
+   protected abstract static class r extends dxl {
+      protected static final dhi b = cvc.hZ.o();
+      protected static final dhi c = cvc.ia.o();
+      protected static final dhi d = cvc.ib.o();
+      protected static final dhi h = c;
+      protected static final dhi i = cvc.ii.o();
+      protected static final boolean j = true;
+      protected static final dhi k = cvc.G.o();
+      protected static final Set<cva> l = ImmutableSet.builder().add(cvc.dO).add(cvc.iC).add(cvc.mW).add(k.b()).build();
+      protected static final int m = 8;
+      protected static final int n = 8;
+      protected static final int o = 4;
+      protected static final int p = 5;
+      protected static final int q = 5;
+      protected static final int r = 3;
+      protected static final int s = 25;
+      protected static final int t = 75;
+      protected static final int u = c(2, 0, 0);
+      protected static final int v = c(2, 2, 0);
+      protected static final int w = c(0, 1, 0);
+      protected static final int x = c(4, 1, 0);
+      protected static final int y = 1001;
+      protected static final int z = 1002;
+      protected static final int A = 1003;
+      protected dzq.v B;
+
+      protected static int c(int $$0, int $$1, int $$2) {
+         return $$1 * 25 + $$2 * 5 + $$0;
+      }
+
+      public r(dxy $$0, hx $$1, int $$2, dwz $$3) {
+         super($$0, $$2, $$3);
+         this.a($$1);
+      }
+
+      protected r(dxy $$0, int $$1, hx $$2, dzq.v $$3, int $$4, int $$5, int $$6) {
+         super($$0, $$1, a($$2, $$3, $$4, $$5, $$6));
+         this.a($$2);
+         this.B = $$3;
+      }
+
+      private static dwz a(hx $$0, dzq.v $$1, int $$2, int $$3, int $$4) {
+         int $$5 = $$1.a;
+         int $$6 = $$5 % 5;
+         int $$7 = $$5 / 5 % 5;
+         int $$8 = $$5 / 25;
+         dwz $$9 = a(0, 0, 0, $$0, $$2 * 8, $$3 * 4, $$4 * 8);
+         switch ($$0) {
+            case c:
+               $$9.a($$6 * 8, $$8 * 4, -($$7 + $$4) * 8 + 1);
+               break;
+            case d:
+               $$9.a($$6 * 8, $$8 * 4, $$7 * 8);
+               break;
+            case e:
+               $$9.a(-($$7 + $$4) * 8 + 1, $$8 * 4, $$6 * 8);
+               break;
+            case f:
+            default:
+               $$9.a($$7 * 8, $$8 * 4, $$6 * 8);
+         }
+
+         return $$9;
+      }
+
+      public r(dxy $$0, rz $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void a(dxx $$0, rz $$1) {
+      }
+
+      protected void b(csu $$0, dwz $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+         for (int $$8 = $$3; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
+               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
+                  dhi $$11 = this.a($$0, $$9, $$8, $$10, $$1);
+                  if (!l.contains($$11.b())) {
+                     if (this.b($$8) >= $$0.z_() && $$11 != k) {
+                        this.a($$0, cvc.a.o(), $$9, $$8, $$10, $$1);
+                     } else {
+                        this.a($$0, k, $$9, $$8, $$10, $$1);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      protected void a(csu $$0, dwz $$1, int $$2, int $$3, boolean $$4) {
+         if ($$4) {
+            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 2, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 5, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 0, $$2 + 4, 0, $$3 + 2, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 2, $$2 + 4, 0, $$3 + 2, c, c, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 5, c, c, false);
+            this.a($$0, $$1, $$2 + 2, 0, $$3 + 3, $$2 + 2, 0, $$3 + 4, c, c, false);
+            this.a($$0, $$1, $$2 + 5, 0, $$3 + 3, $$2 + 5, 0, $$3 + 4, c, c, false);
          } else {
-            List<bla> $$7 = new ArrayList<>();
-            switch ($$0) {
-               case "Mage":
-                  $$7.add(bkm.G.a((crs)$$2.C()));
-                  break;
-               case "Warrior":
-                  $$7.add(bkm.bg.a((crs)$$2.C()));
-                  break;
-               case "Group of Allays":
-                  int $$8 = $$2.E_().a(3) + 1;
+            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
+         }
+      }
 
-                  for (int $$9 = 0; $$9 < $$8; $$9++) {
-                     $$7.add(bkm.b.a((crs)$$2.C()));
+      protected void a(csu $$0, dwz $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dhi $$8) {
+         for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+            for (int $$10 = $$2; $$10 <= $$5; $$10++) {
+               for (int $$11 = $$4; $$11 <= $$7; $$11++) {
+                  if (this.a($$0, $$10, $$9, $$11, $$1) == k) {
+                     this.a($$0, $$8, $$10, $$9, $$11, $$1);
                   }
-                  break;
-               default:
-                  return;
-            }
-
-            for (bla $$10 : $$7) {
-               if ($$10 != null) {
-                  $$10.fJ();
-                  $$10.a($$1, 0.0F, 0.0F);
-                  $$10.a($$2, $$2.d_($$10.dl()), blc.d, null, null);
-                  $$2.a_($$10);
-                  $$2.a($$1, cuv.a.o(), 2);
                }
             }
          }
+      }
+
+      protected boolean a(dwz $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5 = this.a($$1, $$2);
+         int $$6 = this.b($$1, $$2);
+         int $$7 = this.a($$3, $$4);
+         int $$8 = this.b($$3, $$4);
+         return $$0.a(Math.min($$5, $$7), Math.min($$6, $$8), Math.max($$5, $$7), Math.max($$6, $$8));
+      }
+
+      protected void a(csu $$0, dwz $$1, int $$2, int $$3, int $$4) {
+         ht $$5 = this.b($$2, $$3, $$4);
+         if ($$1.b($$5)) {
+            cax $$6 = bku.A.a((csa)$$0.D());
+            if ($$6 != null) {
+               $$6.b($$6.eN());
+               $$6.b((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5, 0.0F, 0.0F);
+               $$6.a($$0, $$0.d_($$6.dn()), blk.d, null, null);
+               $$0.a_($$6);
+            }
+         }
+      }
+   }
+
+   public static class s extends dzq.r {
+      private int a;
+
+      public s(hx $$0, dzq.v $$1, ats $$2) {
+         super(dxy.V, 1, $$0, $$1, 1, 1, 1);
+         this.a = $$2.a(3);
+      }
+
+      public s(rz $$0) {
+         super(dxy.V, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[hx.a.d()]);
+         }
+
+         if (this.B.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
+         }
+
+         boolean $$7 = this.a != 0 && $$3.h() && !this.B.c[hx.a.d()] && !this.B.c[hx.b.d()] && this.B.c() > 1;
+         if (this.a == 0) {
+            this.a($$0, $$4, 0, 1, 0, 2, 1, 2, c, c, false);
+            this.a($$0, $$4, 0, 3, 0, 2, 3, 2, c, c, false);
+            this.a($$0, $$4, 0, 2, 0, 0, 2, 2, b, b, false);
+            this.a($$0, $$4, 1, 2, 0, 2, 2, 0, b, b, false);
+            this.a($$0, i, 1, 2, 1, $$4);
+            this.a($$0, $$4, 5, 1, 0, 7, 1, 2, c, c, false);
+            this.a($$0, $$4, 5, 3, 0, 7, 3, 2, c, c, false);
+            this.a($$0, $$4, 7, 2, 0, 7, 2, 2, b, b, false);
+            this.a($$0, $$4, 5, 2, 0, 6, 2, 0, b, b, false);
+            this.a($$0, i, 6, 2, 1, $$4);
+            this.a($$0, $$4, 0, 1, 5, 2, 1, 7, c, c, false);
+            this.a($$0, $$4, 0, 3, 5, 2, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 2, 5, 0, 2, 7, b, b, false);
+            this.a($$0, $$4, 1, 2, 7, 2, 2, 7, b, b, false);
+            this.a($$0, i, 1, 2, 6, $$4);
+            this.a($$0, $$4, 5, 1, 5, 7, 1, 7, c, c, false);
+            this.a($$0, $$4, 5, 3, 5, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 2, 5, 7, 2, 7, b, b, false);
+            this.a($$0, $$4, 5, 2, 7, 6, 2, 7, b, b, false);
+            this.a($$0, i, 6, 2, 6, $$4);
+            if (this.B.c[hx.d.d()]) {
+               this.a($$0, $$4, 3, 3, 0, 4, 3, 0, c, c, false);
+            } else {
+               this.a($$0, $$4, 3, 3, 0, 4, 3, 1, c, c, false);
+               this.a($$0, $$4, 3, 2, 0, 4, 2, 0, b, b, false);
+               this.a($$0, $$4, 3, 1, 0, 4, 1, 1, c, c, false);
+            }
+
+            if (this.B.c[hx.c.d()]) {
+               this.a($$0, $$4, 3, 3, 7, 4, 3, 7, c, c, false);
+            } else {
+               this.a($$0, $$4, 3, 3, 6, 4, 3, 7, c, c, false);
+               this.a($$0, $$4, 3, 2, 7, 4, 2, 7, b, b, false);
+               this.a($$0, $$4, 3, 1, 6, 4, 1, 7, c, c, false);
+            }
+
+            if (this.B.c[hx.e.d()]) {
+               this.a($$0, $$4, 0, 3, 3, 0, 3, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, 0, 3, 3, 1, 3, 4, c, c, false);
+               this.a($$0, $$4, 0, 2, 3, 0, 2, 4, b, b, false);
+               this.a($$0, $$4, 0, 1, 3, 1, 1, 4, c, c, false);
+            }
+
+            if (this.B.c[hx.f.d()]) {
+               this.a($$0, $$4, 7, 3, 3, 7, 3, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, 6, 3, 3, 7, 3, 4, c, c, false);
+               this.a($$0, $$4, 7, 2, 3, 7, 2, 4, b, b, false);
+               this.a($$0, $$4, 6, 1, 3, 7, 1, 4, c, c, false);
+            }
+         } else if (this.a == 1) {
+            this.a($$0, $$4, 2, 1, 2, 2, 3, 2, c, c, false);
+            this.a($$0, $$4, 2, 1, 5, 2, 3, 5, c, c, false);
+            this.a($$0, $$4, 5, 1, 5, 5, 3, 5, c, c, false);
+            this.a($$0, $$4, 5, 1, 2, 5, 3, 2, c, c, false);
+            this.a($$0, i, 2, 2, 2, $$4);
+            this.a($$0, i, 2, 2, 5, $$4);
+            this.a($$0, i, 5, 2, 5, $$4);
+            this.a($$0, i, 5, 2, 2, $$4);
+            this.a($$0, $$4, 0, 1, 0, 1, 3, 0, c, c, false);
+            this.a($$0, $$4, 0, 1, 1, 0, 3, 1, c, c, false);
+            this.a($$0, $$4, 0, 1, 7, 1, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 1, 6, 0, 3, 6, c, c, false);
+            this.a($$0, $$4, 6, 1, 7, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 1, 6, 7, 3, 6, c, c, false);
+            this.a($$0, $$4, 6, 1, 0, 7, 3, 0, c, c, false);
+            this.a($$0, $$4, 7, 1, 1, 7, 3, 1, c, c, false);
+            this.a($$0, b, 1, 2, 0, $$4);
+            this.a($$0, b, 0, 2, 1, $$4);
+            this.a($$0, b, 1, 2, 7, $$4);
+            this.a($$0, b, 0, 2, 6, $$4);
+            this.a($$0, b, 6, 2, 7, $$4);
+            this.a($$0, b, 7, 2, 6, $$4);
+            this.a($$0, b, 6, 2, 0, $$4);
+            this.a($$0, b, 7, 2, 1, $$4);
+            if (!this.B.c[hx.d.d()]) {
+               this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+               this.a($$0, $$4, 1, 2, 0, 6, 2, 0, b, b, false);
+               this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+            }
+
+            if (!this.B.c[hx.c.d()]) {
+               this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+               this.a($$0, $$4, 1, 2, 7, 6, 2, 7, b, b, false);
+               this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+            }
+
+            if (!this.B.c[hx.e.d()]) {
+               this.a($$0, $$4, 0, 3, 1, 0, 3, 6, c, c, false);
+               this.a($$0, $$4, 0, 2, 1, 0, 2, 6, b, b, false);
+               this.a($$0, $$4, 0, 1, 1, 0, 1, 6, c, c, false);
+            }
+
+            if (!this.B.c[hx.f.d()]) {
+               this.a($$0, $$4, 7, 3, 1, 7, 3, 6, c, c, false);
+               this.a($$0, $$4, 7, 2, 1, 7, 2, 6, b, b, false);
+               this.a($$0, $$4, 7, 1, 1, 7, 1, 6, c, c, false);
+            }
+         } else if (this.a == 2) {
+            this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+            this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+            this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+            this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+            this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
+            this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
+            this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
+            this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
+            this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+            this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
+            this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
+            this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
+            this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
+            if (this.B.c[hx.d.d()]) {
+               this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+            }
+
+            if (this.B.c[hx.c.d()]) {
+               this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+            }
+
+            if (this.B.c[hx.e.d()]) {
+               this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+            }
+
+            if (this.B.c[hx.f.d()]) {
+               this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+            }
+         }
+
+         if ($$7) {
+            this.a($$0, $$4, 3, 1, 3, 4, 1, 4, c, c, false);
+            this.a($$0, $$4, 3, 2, 3, 4, 2, 4, b, b, false);
+            this.a($$0, $$4, 3, 3, 3, 4, 3, 4, c, c, false);
+         }
+      }
+   }
+
+   public static class t extends dzq.r {
+      public t(hx $$0, dzq.v $$1) {
+         super(dxy.W, 1, $$0, $$1, 1, 1, 1);
+      }
+
+      public t(rz $$0) {
+         super(dxy.W, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[hx.a.d()]);
+         }
+
+         if (this.B.b[hx.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
+         }
+
+         for (int $$7 = 1; $$7 <= 6; $$7++) {
+            for (int $$8 = 1; $$8 <= 6; $$8++) {
+               if ($$3.a(3) != 0) {
+                  int $$9 = 2 + ($$3.a(4) == 0 ? 0 : 1);
+                  dhi $$10 = cvc.aP.o();
+                  this.a($$0, $$4, $$7, $$9, $$8, $$7, 3, $$8, $$10, $$10, false);
+               }
+            }
+         }
+
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
+         this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
+         this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
+         this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+         this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
+         this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
+         this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
+         this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
+         if (this.B.c[hx.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+      }
+   }
+
+   public static class u extends dzq.r {
+      private int a;
+
+      public u(hx $$0, dwz $$1, int $$2) {
+         super(dxy.X, $$0, 1, $$1);
+         this.a = $$2 & 1;
+      }
+
+      public u(rz $$0) {
+         super(dxy.X, $$0);
+      }
+
+      @Override
+      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
+         if (this.a == 0) {
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               this.a($$0, $$4, 10 - $$7, 3 - $$7, 20 - $$7, 12 + $$7, 3 - $$7, 20, c, c, false);
+            }
+
+            this.a($$0, $$4, 7, 0, 6, 15, 0, 16, c, c, false);
+            this.a($$0, $$4, 6, 0, 6, 6, 3, 20, c, c, false);
+            this.a($$0, $$4, 16, 0, 6, 16, 3, 20, c, c, false);
+            this.a($$0, $$4, 7, 1, 7, 7, 1, 20, c, c, false);
+            this.a($$0, $$4, 15, 1, 7, 15, 1, 20, c, c, false);
+            this.a($$0, $$4, 7, 1, 6, 9, 3, 6, c, c, false);
+            this.a($$0, $$4, 13, 1, 6, 15, 3, 6, c, c, false);
+            this.a($$0, $$4, 8, 1, 7, 9, 1, 7, c, c, false);
+            this.a($$0, $$4, 13, 1, 7, 14, 1, 7, c, c, false);
+            this.a($$0, $$4, 9, 0, 5, 13, 0, 5, c, c, false);
+            this.a($$0, $$4, 10, 0, 7, 12, 0, 7, d, d, false);
+            this.a($$0, $$4, 8, 0, 10, 8, 0, 12, d, d, false);
+            this.a($$0, $$4, 14, 0, 10, 14, 0, 12, d, d, false);
+
+            for (int $$8 = 18; $$8 >= 7; $$8 -= 3) {
+               this.a($$0, i, 6, 3, $$8, $$4);
+               this.a($$0, i, 16, 3, $$8, $$4);
+            }
+
+            this.a($$0, i, 10, 0, 10, $$4);
+            this.a($$0, i, 12, 0, 10, $$4);
+            this.a($$0, i, 10, 0, 12, $$4);
+            this.a($$0, i, 12, 0, 12, $$4);
+            this.a($$0, i, 8, 3, 6, $$4);
+            this.a($$0, i, 14, 3, 6, $$4);
+            this.a($$0, c, 4, 2, 4, $$4);
+            this.a($$0, i, 4, 1, 4, $$4);
+            this.a($$0, c, 4, 0, 4, $$4);
+            this.a($$0, c, 18, 2, 4, $$4);
+            this.a($$0, i, 18, 1, 4, $$4);
+            this.a($$0, c, 18, 0, 4, $$4);
+            this.a($$0, c, 4, 2, 18, $$4);
+            this.a($$0, i, 4, 1, 18, $$4);
+            this.a($$0, c, 4, 0, 18, $$4);
+            this.a($$0, c, 18, 2, 18, $$4);
+            this.a($$0, i, 18, 1, 18, $$4);
+            this.a($$0, c, 18, 0, 18, $$4);
+            this.a($$0, c, 9, 7, 20, $$4);
+            this.a($$0, c, 13, 7, 20, $$4);
+            this.a($$0, $$4, 6, 0, 21, 7, 4, 21, c, c, false);
+            this.a($$0, $$4, 15, 0, 21, 16, 4, 21, c, c, false);
+            this.a($$0, $$4, 11, 2, 16);
+         } else if (this.a == 1) {
+            this.a($$0, $$4, 9, 3, 18, 13, 3, 20, c, c, false);
+            this.a($$0, $$4, 9, 0, 18, 9, 2, 18, c, c, false);
+            this.a($$0, $$4, 13, 0, 18, 13, 2, 18, c, c, false);
+            int $$9 = 9;
+            int $$10 = 20;
+            int $$11 = 5;
+
+            for (int $$12 = 0; $$12 < 2; $$12++) {
+               this.a($$0, c, $$9, 6, 20, $$4);
+               this.a($$0, i, $$9, 5, 20, $$4);
+               this.a($$0, c, $$9, 4, 20, $$4);
+               $$9 = 13;
+            }
+
+            this.a($$0, $$4, 7, 3, 7, 15, 3, 14, c, c, false);
+            int var14 = 10;
+
+            for (int $$13 = 0; $$13 < 2; $$13++) {
+               this.a($$0, $$4, var14, 0, 10, var14, 6, 10, c, c, false);
+               this.a($$0, $$4, var14, 0, 12, var14, 6, 12, c, c, false);
+               this.a($$0, i, var14, 0, 10, $$4);
+               this.a($$0, i, var14, 0, 12, $$4);
+               this.a($$0, i, var14, 4, 10, $$4);
+               this.a($$0, i, var14, 4, 12, $$4);
+               var14 = 12;
+            }
+
+            var14 = 8;
+
+            for (int $$14 = 0; $$14 < 2; $$14++) {
+               this.a($$0, $$4, var14, 0, 7, var14, 2, 7, c, c, false);
+               this.a($$0, $$4, var14, 0, 14, var14, 2, 14, c, c, false);
+               var14 = 14;
+            }
+
+            this.a($$0, $$4, 8, 3, 8, 8, 3, 13, d, d, false);
+            this.a($$0, $$4, 14, 3, 8, 14, 3, 13, d, d, false);
+            this.a($$0, $$4, 11, 5, 13);
+         }
+      }
+   }
+
+   static class v {
+      final int a;
+      final dzq.v[] b = new dzq.v[6];
+      final boolean[] c = new boolean[6];
+      boolean d;
+      boolean e;
+      private int f;
+
+      public v(int $$0) {
+         this.a = $$0;
+      }
+
+      public void a(hx $$0, dzq.v $$1) {
+         this.b[$$0.d()] = $$1;
+         $$1.b[$$0.g().d()] = this;
+      }
+
+      public void a() {
+         for (int $$0 = 0; $$0 < 6; $$0++) {
+            this.c[$$0] = this.b[$$0] != null;
+         }
+      }
+
+      public boolean a(int $$0) {
+         if (this.e) {
+            return true;
+         } else {
+            this.f = $$0;
+
+            for (int $$1 = 0; $$1 < 6; $$1++) {
+               if (this.b[$$1] != null && this.c[$$1] && this.b[$$1].f != $$0 && this.b[$$1].a($$0)) {
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
+
+      public boolean b() {
+         return this.a >= 75;
+      }
+
+      public int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 6; $$1++) {
+            if (this.c[$$1]) {
+               $$0++;
+            }
+         }
+
+         return $$0;
       }
    }
 }

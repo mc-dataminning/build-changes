@@ -1,47 +1,112 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class bhd {
-   private bhd() {
+   public static final Path a = Paths.get("debug/profiling");
+   public static final String b = "metrics";
+   public static final String c = "deviations";
+   public static final String d = "profiling.txt";
+   private static final Logger e = LogUtils.getLogger();
+   private final String f;
+
+   public bhd(String $$0) {
+      this.f = $$0;
    }
 
-   public static int a(List<? extends bhc> $$0) {
-      long $$1 = 0L;
-
-      for (bhc $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+   public Path a(Set<bgs> $$0, Map<bgs, List<bhe>> $$1, bfn $$2) {
+      try {
+         Files.createDirectories(a);
+      } catch (IOException var8) {
+         throw new UncheckedIOException(var8);
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
-
-   public static <T extends bhc> Optional<T> a(ato $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends bhc> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
+      try {
+         Path $$4 = Files.createTempDirectory("minecraft-profiling");
+         $$4.toFile().deleteOnExit();
+         Files.createDirectories(a);
+         Path $$5 = $$4.resolve(this.f);
+         Path $$6 = $$5.resolve("metrics");
+         this.a($$0, $$6);
+         if (!$$1.isEmpty()) {
+            this.a($$1, $$5.resolve("deviations"));
          }
-      }
 
-      return Optional.empty();
+         this.a($$2, $$5);
+         return $$4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
    }
 
-   public static <T extends bhc> Optional<T> a(ato $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   private void a(Set<bgs> $$0, Path $$1) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Expected at least one sampler to persist");
+      } else {
+         Map<bgr, List<bgs>> $$2 = $$0.stream().collect(Collectors.groupingBy(bgs::e));
+         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
+      }
+   }
+
+   private void a(bgr $$0, List<bgs> $$1, Path $$2) {
+      Path $$3 = $$2.resolve(ac.a($$0.a(), agi::b) + ".csv");
+      Writer $$4 = null;
+
+      try {
+         Files.createDirectories($$3.getParent());
+         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
+         asn.a $$5 = asn.a();
+         $$5.a("@tick");
+
+         for (bgs $$6 : $$1) {
+            $$5.a($$6.d());
+         }
+
+         asn $$7 = $$5.a($$4);
+         List<bgs.b> $$8 = $$1.stream().map(bgs::f).collect(Collectors.toList());
+         int $$9 = $$8.stream().mapToInt(bgs.b::a).summaryStatistics().getMin();
+         int $$10 = $$8.stream().mapToInt(bgs.b::b).summaryStatistics().getMax();
+
+         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
+            int $$12 = $$11;
+            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
+            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
+            $$7.a($$14);
+         }
+
+         e.info("Flushed metrics to {}", $$3);
+      } catch (Exception var18) {
+         e.error("Could not save profiler results to {}", $$3, var18);
+      } finally {
+         IOUtils.closeQuietly($$4);
+      }
+   }
+
+   private void a(Map<bgs, List<bhe>> $$0, Path $$1) {
+      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
+      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
+            String $$4 = $$2.format($$3x.a);
+            Path $$5 = $$1.resolve(ac.a($$2x.d(), agi::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
+            $$3x.c.a($$5);
+         }));
+   }
+
+   private void a(bfn $$0, Path $$1) {
+      $$0.a($$1.resolve("profiling.txt"));
    }
 }

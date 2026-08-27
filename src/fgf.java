@@ -1,75 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class fgf extends fge {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String w = "shoulder_stick";
-   private static final String x = "base_plate";
-   private final fkb y;
-   private final fkb z;
-   private final fkb A;
-   private final fkb B;
+public class fgf implements fga, fgb {
+   private static final agi a = new agi("spectator/teleport_to_team");
+   private static final ur b = ur.c("spectatorMenu.team_teleport");
+   private static final ur c = ur.c("spectatorMenu.team_teleport.prompt");
+   private final List<fgb> d;
 
-   public fgf(fkb $$0) {
-      super($$0);
-      this.y = $$0.b("right_body_stick");
-      this.z = $$0.b("left_body_stick");
-      this.A = $$0.b("shoulder_stick");
-      this.B = $$0.b("base_plate");
-      this.l.k = false;
+   public fgf() {
+      etd $$0 = etd.N();
+      this.d = a($$0, $$0.r.J());
    }
 
-   public static fkh c() {
-      fkj $$0 = fhp.a(fkf.a, 0.0F);
-      fkk $$1 = $$0.a();
-      $$1.a("head", fkg.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fkd.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", fkg.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fkd.a);
-      $$1.a("right_arm", fkg.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fkg.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fkg.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fkd.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", fkg.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fkd.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", fkg.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fkd.a);
-      $$1.a("left_body_stick", fkg.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fkd.a);
-      $$1.a("shoulder_stick", fkg.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fkd.a);
-      $$1.a("base_plate", fkg.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fkd.a(0.0F, 12.0F, 0.0F));
-      return fkh.a($$0, 64, 64);
-   }
-
-   public void a(bzv $$0, float $$1, float $$2, float $$3) {
-      this.B.e = 0.0F;
-      this.B.f = (float) (Math.PI / 180.0) * -ati.j($$3, $$0.N, $$0.dB());
-      this.B.g = 0.0F;
+   private static List<fgb> a(etd $$0, ekt $$1) {
+      return $$1.g().stream().flatMap($$1x -> fgf.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public void a(bzv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.o.k = $$0.t();
-      this.n.k = $$0.t();
-      this.B.k = !$$0.w();
-      this.y.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.y.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.y.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.z.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.z.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.z.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.A.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.A.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.A.g = (float) (Math.PI / 180.0) * $$0.A().d();
+   public List<fgb> a() {
+      return this.d;
    }
 
    @Override
-   protected Iterable<fkb> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
+   public ur b() {
+      return c;
    }
 
    @Override
-   public void a(bks $$0, enk $$1) {
-      fkb $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public void a(ffz $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ur aQ_() {
+      return b;
+   }
+
+   @Override
+   public void a(euo $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aR_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fgb {
+      private final ekr a;
+      private final Supplier<gcu> b;
+      private final List<fls> c;
+
+      private a(ekr $$0, List<fls> $$1, Supplier<gcu> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<fgb> a(etd $$0, ekr $$1) {
+         List<fls> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fls $$4 = $$0.I().a($$3);
+            if ($$4 != null && $$4.e() != crx.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ats.a().a($$2.size())).a();
+            Supplier<gcu> $$6 = $$0.ak().a($$5);
+            return Optional.of(new fgf.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(ffz $$0) {
+         $$0.a(new fge(this.c));
+      }
+
+      @Override
+      public ur aQ_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(euo $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, atm.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         evy.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aR_() {
+         return true;
+      }
    }
 }

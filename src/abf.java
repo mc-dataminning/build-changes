@@ -4,9 +4,9 @@ public class abf implements wk<yd> {
    private final int a;
    private final int b;
 
-   public abf(bki $$0, @Nullable bki $$1) {
-      this.a = $$0.ah();
-      this.b = $$1 != null ? $$1.ah() : 0;
+   public abf(bkq $$0, @Nullable bkq $$1) {
+      this.a = $$0.aj();
+      this.b = $$1 != null ? $$1.aj() : 0;
    }
 
    public abf(tu $$0) {

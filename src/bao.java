@@ -1,34 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.UnaryOperator;
 
-public class bao extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public bao(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bao extends azu {
+   public bao(Schema $$0) {
+      super($$0, true, "PrimedTnt BlockState fixer", bat.x, "minecraft:tnt");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(ban.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
+      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bbv::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
+   }
+
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b(c($$0));
    }
 }

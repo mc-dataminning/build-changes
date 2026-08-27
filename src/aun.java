@@ -1,76 +1,25 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+public class aun<A, B> {
+   private A a;
+   private B b;
 
-public enum aun {
-   a(ban.a),
-   b(ban.b),
-   c(ban.c),
-   d(ban.d),
-   e(ban.e),
-   f(ban.f),
-   g(ban.g),
-   h(ban.h),
-   i(ban.i),
-   j(ban.j),
-   k(ban.k),
-   l(ban.l),
-   m(ban.m),
-   n(ban.o),
-   o(ban.n),
-   p(ban.p),
-   q(ban.q),
-   r(ban.I),
-   s(ban.r);
-
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private aun(TypeReference $$0) {
-      this.u = $$0;
+   public aun(A $$0, B $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static int a() {
-      return aa.b().d().c();
+   public A a() {
+      return this.a;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(aun.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = aun.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+   public void a(A $$0) {
+      this.a = $$0;
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   public B b() {
+      return this.b;
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public rz a(DataFixer $$0, rz $$1, int $$2, int $$3) {
-      return (rz)this.a($$0, new Dynamic(sn.a, $$1), $$2, $$3).getValue();
-   }
-
-   public rz a(DataFixer $$0, rz $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   public void b(B $$0) {
+      this.b = $$0;
    }
 }

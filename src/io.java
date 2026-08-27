@@ -17,35 +17,35 @@ import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
 public interface io<T> extends Keyable, ih<T> {
-   agf<? extends io<T>> c();
+   agh<? extends io<T>> c();
 
    default Codec<T> q() {
-      Codec<T> $$0 = agg.a
+      Codec<T> $$0 = agi.a
          .flatXmap(
             $$0x -> Optional.ofNullable(this.a($$0x))
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> this.c((T)$$0x)
-                  .map(agf::a)
+                  .map(agh::a)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      Codec<T> $$1 = asq.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return asq.a(asq.b($$0, $$1), this::e, this::e);
+      Codec<T> $$1 = asu.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return asu.a(asu.b($$0, $$1), this::e, this::e);
    }
 
    default Codec<ib<T>> r() {
-      Codec<ib<T>> $$0 = agg.a
+      Codec<ib<T>> $$0 = agi.a
          .flatXmap(
-            $$0x -> this.b(agf.a(this.c(), $$0x))
+            $$0x -> this.b(agh.a(this.c(), $$0x))
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> $$0x.e()
-                  .map(agf::a)
+                  .map(agh::a)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      return asq.a($$0, (Function<ib<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
+      return asu.a($$0, (Function<ib<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
    }
 
    default <U> Stream<U> keys(DynamicOps<U> $$0) {
@@ -53,32 +53,32 @@ public interface io<T> extends Keyable, ih<T> {
    }
 
    @Nullable
-   agg b(T var1);
+   agi b(T var1);
 
-   Optional<agf<T>> c(T var1);
+   Optional<agh<T>> c(T var1);
 
    @Override
    int a(@Nullable T var1);
 
    @Nullable
-   T a(@Nullable agf<T> var1);
+   T a(@Nullable agh<T> var1);
 
    @Nullable
-   T a(@Nullable agg var1);
+   T a(@Nullable agi var1);
 
    Lifecycle e(T var1);
 
    Lifecycle d();
 
-   default Optional<T> b(@Nullable agg $$0) {
+   default Optional<T> b(@Nullable agi $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default Optional<T> d(@Nullable agf<T> $$0) {
+   default Optional<T> d(@Nullable agh<T> $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default T e(agf<T> $$0) {
+   default T e(agh<T> $$0) {
       T $$1 = this.a($$0);
       if ($$1 == null) {
          throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
@@ -87,41 +87,41 @@ public interface io<T> extends Keyable, ih<T> {
       }
    }
 
-   Set<agg> e();
+   Set<agi> e();
 
-   Set<Entry<agf<T>, T>> g();
+   Set<Entry<agh<T>, T>> g();
 
-   Set<agf<T>> f();
+   Set<agh<T>> f();
 
-   Optional<ib.c<T>> a(ato var1);
+   Optional<ib.c<T>> a(ats var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
    }
 
-   boolean c(agg var1);
+   boolean c(agi var1);
 
-   boolean c(agf<T> var1);
+   boolean c(agh<T> var1);
 
    static <T> T a(io<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new agg($$1), $$2);
+      return a($$0, new agi($$1), $$2);
    }
 
-   static <V, T extends V> T a(io<V> $$0, agg $$1, T $$2) {
-      return a($$0, agf.a($$0.c(), $$1), $$2);
+   static <V, T extends V> T a(io<V> $$0, agi $$1, T $$2) {
+      return a($$0, agh.a($$0.c(), $$1), $$2);
    }
 
-   static <V, T extends V> T a(io<V> $$0, agf<V> $$1, T $$2) {
+   static <V, T extends V> T a(io<V> $$0, agh<V> $$1, T $$2) {
       ((ix)$$0).a($$1, (V)$$2, Lifecycle.stable());
       return $$2;
    }
 
-   static <T> ib.c<T> b(io<T> $$0, agf<T> $$1, T $$2) {
+   static <T> ib.c<T> b(io<T> $$0, agh<T> $$1, T $$2) {
       return ((ix)$$0).a($$1, $$2, Lifecycle.stable());
    }
 
-   static <T> ib.c<T> b(io<T> $$0, agg $$1, T $$2) {
-      return b($$0, agf.a($$0.c(), $$1), $$2);
+   static <T> ib.c<T> b(io<T> $$0, agi $$1, T $$2) {
+      return b($$0, agh.a($$0.c(), $$1), $$2);
    }
 
    io<T> l();
@@ -130,31 +130,31 @@ public interface io<T> extends Keyable, ih<T> {
 
    Optional<ib.c<T>> c(int var1);
 
-   Optional<ib.c<T>> b(agf<T> var1);
+   Optional<ib.c<T>> b(agh<T> var1);
 
    ib<T> d(T var1);
 
-   default ib.c<T> f(agf<T> $$0) {
+   default ib.c<T> f(agh<T> $$0) {
       return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
    }
 
    Stream<ib.c<T>> h();
 
-   Optional<ig.c<T>> b(arr<T> var1);
+   Optional<ig.c<T>> b(arv<T> var1);
 
-   default Iterable<ib<T>> c(arr<T> $$0) {
+   default Iterable<ib<T>> c(arv<T> $$0) {
       return (Iterable<ib<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   ig.c<T> a(arr<T> var1);
+   ig.c<T> a(arv<T> var1);
 
-   Stream<Pair<arr<T>, ig.c<T>>> i();
+   Stream<Pair<arv<T>, ig.c<T>>> i();
 
-   Stream<arr<T>> j();
+   Stream<arv<T>> j();
 
    void m();
 
-   void a(Map<arr<T>, List<ib<T>>> var1);
+   void a(Map<arv<T>, List<ib<T>>> var1);
 
    default ih<ib<T>> t() {
       return new ih<ib<T>>() {
@@ -191,12 +191,12 @@ public interface io<T> extends Keyable, ih<T> {
          }
 
          @Override
-         public Optional<ig.c<T>> a(arr<T> $$0) {
+         public Optional<ig.c<T>> a(arv<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public ig.c<T> b(arr<T> $$0) {
+         public ig.c<T> b(arv<T> $$0) {
             return io.this.a($$0);
          }
       };

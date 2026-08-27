@@ -1,15 +1,11 @@
-public class cix extends ckw {
-   public cix(ckw.a $$0) {
+public class cix extends cle {
+   public cix(cle.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean d_(clb $$0) {
-      return $$0.L() == 1;
-   }
-
-   @Override
-   public int c() {
-      return 1;
+   public cea a(csa $$0, clj $$1, blg $$2) {
+      cec $$3 = new cec($$0, $$2, $$1.c(1));
+      $$3.a($$1);
+      return $$3;
    }
 }

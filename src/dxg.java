@@ -1,20 +1,29 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public enum dxg implements aub {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box");
+public abstract class dxg extends dxh {
+   private final dxg.a d;
+   private final int e;
+   private final int f;
 
-   public static final Codec<dxg> e = aub.a(dxg::values);
-   private final String f;
-
-   private dxg(String $$0) {
-      this.f = $$0;
+   protected dxg(dxg.a $$0, int $$1, int $$2, dxh.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Optional<dxh.b> a(dxh.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dmr.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(dxz $$0, dxh.a $$1) {
+      crh $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      dxl construct(dnq var1, int var2, int var3);
    }
 }

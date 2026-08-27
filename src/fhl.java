@@ -1,45 +1,51 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
-
-public abstract class fhl<E extends bki> extends fhc<E> {
-   private static final Vector3f a = new Vector3f();
-
-   public fhl() {
-      this(fqp::e);
-   }
-
-   public fhl(Function<agg, fqp> $$0) {
+public class fhl<T extends ccb> extends fkg<T> {
+   public fhl(fko $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static fku a(fks $$0) {
+      fkw $$1 = fic.a($$0, 0.0F);
+      fkx $$2 = $$1.a();
+      $$2.a("left_arm", fkt.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkq.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fkt.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkq.a(1.9F, 12.0F, 0.0F));
+      return fku.a($$1, 64, 64);
    }
 
-   public abstract fkb a();
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fic.a.a;
+      this.r = fic.a.a;
+      clj $$4 = $$0.b(biw.a);
+      if ($$4.a(clm.vH) && $$0.fX()) {
+         if ($$0.fn() == bla.b) {
+            this.s = fic.a.e;
+         } else {
+            this.r = fic.a.e;
+         }
+      }
 
-   public Optional<fkb> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(bke $$0, eti $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.r == fic.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
+      }
 
-   protected void a(eti $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      etk.a(this, $$0, $$5, $$6, a);
-   }
+      if (this.s == fic.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
 
-   protected void a(bke $$0, eti $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> etk.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(eti $$0) {
-      etk.a(this, $$0, 0L, 1.0F, a);
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * atm.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * atm.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * atm.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * atm.a(0.1F * $$3);
+         this.k.e = 0.0F;
+      }
    }
 }

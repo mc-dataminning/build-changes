@@ -1,5 +1,11 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public interface djs {
-   CompletableFuture<Void> a(cqz var1, st var2);
+   @Nullable
+   djr c(int var1, int var2);
+
+   default void a(csj $$0, iu $$1) {
+   }
+
+   crg q();
 }

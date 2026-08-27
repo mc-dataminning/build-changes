@@ -1,124 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bow extends bmp<ccz> {
-   private static final int c = 900;
-   private static final int d = 40;
-   @Nullable
-   private clb e;
-   private final List<clb> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
-
-   public bow(int $$0, int $$1) {
-      super(ImmutableMap.of(btz.q, bua.a), $$0, $$1);
+@Deprecated
+public class bow {
+   public static bmy<blg> a(float $$0, bii $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public boolean a(ama $$0, ccz $$1) {
-      bly<?> $$2 = $$1.dN();
-      if ($$2.c(btz.q).isEmpty()) {
-         return false;
-      } else {
-         bky $$3 = $$2.c(btz.q).get();
-         return $$3.ag() == bkm.bt && $$1.bv() && $$3.bv() && !$$1.n_() && $$1.f($$3) <= 17.0;
-      }
+   public static bmy<blg> a(bku<?> $$0, float $$1, bii $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
    }
 
-   public boolean a(ama $$0, ccz $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.dN().c(btz.q).isPresent();
+   private static bmy<blg> a(float $$0, bii $$1, Predicate<blg> $$2) {
+      float $$3 = $$0 * $$0;
+      bow.a $$4 = new bow.a($$1);
+      return bqj.a(
+         (Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$3x -> $$3x.group($$3x.c(buh.n), $$3x.b(buh.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<blg> $$9 = $$3x.<buj>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((bkq)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bni($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 
-   public void b(ama $$0, ccz $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
-   }
+   public static final class a {
+      private final bii a;
+      private int b;
 
-   public void c(ama $$0, ccz $$1, long $$2) {
-      bky $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
-   }
-
-   public void d(ama $$0, ccz $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.dN().b(btz.q);
-      c($$1);
-      this.e = null;
-   }
-
-   private void a(bky $$0, ccz $$1) {
-      boolean $$2 = false;
-      clb $$3 = $$0.eS();
-      if (this.e == null || !clb.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
-      }
-
-      if ($$2 && !this.e.b()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
+      public a(bii $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
          }
       }
-   }
 
-   private void a(ccz $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(ccz $$0) {
-      for (cqq $$1 : $$0.gg()) {
-         if (!$$1.p() && this.a($$1)) {
-            this.f.add($$1.f());
+      public boolean a(ats $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
          }
-      }
-   }
-
-   private boolean a(cqq $$0) {
-      return clb.b(this.e, $$0.b()) || clb.b(this.e, $$0.c());
-   }
-
-   private static void c(ccz $$0) {
-      $$0.a(bkn.a, clb.b);
-      $$0.a(bkn.a, 0.085F);
-   }
-
-   private static void a(ccz $$0, clb $$1) {
-      $$0.a(bkn.a, $$1);
-      $$0.a(bkn.a, 0.0F);
-   }
-
-   private bky d(ccz $$0) {
-      bly<?> $$1 = $$0.dN();
-      bky $$2 = $$1.c(btz.q).get();
-      $$1.a(btz.n, new bna($$2, true));
-      return $$2;
-   }
-
-   private void e(ccz $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
       }
    }
 }

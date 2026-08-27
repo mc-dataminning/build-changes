@@ -1,1242 +1,1032 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Ordering;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-
 public class eua {
-   private static final agg b = new agg("hud/crosshair");
-   private static final agg c = new agg("hud/crosshair_attack_indicator_full");
-   private static final agg d = new agg("hud/crosshair_attack_indicator_background");
-   private static final agg e = new agg("hud/crosshair_attack_indicator_progress");
-   private static final agg f = new agg("hud/effect_background_ambient");
-   private static final agg g = new agg("hud/effect_background");
-   private static final agg h = new agg("hud/hotbar");
-   private static final agg i = new agg("hud/hotbar_selection");
-   private static final agg j = new agg("hud/hotbar_offhand_left");
-   private static final agg k = new agg("hud/hotbar_offhand_right");
-   private static final agg l = new agg("hud/hotbar_attack_indicator_background");
-   private static final agg m = new agg("hud/hotbar_attack_indicator_progress");
-   private static final agg n = new agg("hud/jump_bar_background");
-   private static final agg o = new agg("hud/jump_bar_cooldown");
-   private static final agg p = new agg("hud/jump_bar_progress");
-   private static final agg q = new agg("hud/experience_bar_background");
-   private static final agg r = new agg("hud/experience_bar_progress");
-   private static final agg s = new agg("hud/armor_empty");
-   private static final agg t = new agg("hud/armor_half");
-   private static final agg u = new agg("hud/armor_full");
-   private static final agg v = new agg("hud/food_empty_hunger");
-   private static final agg w = new agg("hud/food_half_hunger");
-   private static final agg x = new agg("hud/food_full_hunger");
-   private static final agg y = new agg("hud/food_empty");
-   private static final agg z = new agg("hud/food_half");
-   private static final agg A = new agg("hud/food_full");
-   private static final agg B = new agg("hud/air");
-   private static final agg C = new agg("hud/air_bursting");
-   private static final agg D = new agg("hud/heart/vehicle_container");
-   private static final agg E = new agg("hud/heart/vehicle_full");
-   private static final agg F = new agg("hud/heart/vehicle_half");
-   private static final agg G = new agg("textures/misc/vignette.png");
-   private static final agg H = new agg("textures/misc/pumpkinblur.png");
-   private static final agg I = new agg("textures/misc/spyglass_scope.png");
-   private static final agg J = new agg("textures/misc/powder_snow_outline.png");
-   private static final ur K = ur.c("demo.demoExpired");
-   private static final ur L = ur.c("menu.savingLevel");
-   private static final int M = 16777215;
-   private static final float N = 5.0F;
-   private static final int O = 10;
-   private static final int P = 10;
-   private static final String Q = ": ";
-   private static final float R = 0.2F;
-   private static final int S = 9;
-   private static final int T = 8;
-   private static final float U = 0.2F;
-   private final ato V = ato.a();
-   private final esr W;
-   private final fwi X;
-   private final eun Y;
-   private int Z;
-   @Nullable
-   private ur aa;
-   private int ab;
-   private boolean ac;
-   private boolean ad;
-   public float a = 1.0F;
-   private int ae;
-   private clb af = clb.b;
-   private final euu ag;
-   private final evu ah;
-   private final ewk ai;
-   private final evn aj;
-   private final eul ak;
-   private int al;
-   @Nullable
-   private ur am;
-   @Nullable
-   private ur an;
-   private int ao;
-   private int ap;
-   private int aq;
-   private int ar;
-   private int as;
-   private long at;
-   private long au;
-   private int av;
-   private int aw;
-   private float ax;
-   private float ay;
-   private float az;
-
-   public eua(esr $$0, fwi $$1) {
-      this.W = $$0;
-      this.X = $$1;
-      this.ag = new euu($$0);
-      this.ai = new ewk($$0);
-      this.Y = new eun($$0);
-      this.aj = new evn($$0, this);
-      this.ak = new eul($$0);
-      this.ah = new evu($$0);
-      this.a();
-   }
-
-   public void a() {
-      this.ao = 10;
-      this.ap = 70;
-      this.aq = 20;
-   }
-
-   public void a(eub $$0, float $$1) {
-      emo $$2 = this.W.aL();
-      this.av = $$0.a();
-      this.aw = $$0.b();
-      etz $$3 = this.f();
-      RenderSystem.enableBlend();
-      if (esr.K()) {
-         this.a($$0, this.W.al());
-      } else {
-         RenderSystem.enableDepthTest();
-      }
-
-      float $$4 = this.W.as();
-      this.az = ati.i(0.5F * $$4, this.az, 1.125F);
-      if (this.W.m.ax().a()) {
-         if (this.W.s.gq()) {
-            this.b($$0, this.az);
-         } else {
-            this.az = 0.5F;
-            clb $$5 = this.W.s.fS().e(3);
-            if ($$5.a(cuv.ee.k())) {
-               this.a($$0, H, 1.0F);
-            }
-         }
-      }
-
-      if (this.W.s.ci() > 0) {
-         this.a($$0, J, this.W.s.cj());
-      }
-
-      float $$6 = ati.i($$1, this.W.s.cw, this.W.s.cv);
-      if ($$6 > 0.0F && !this.W.s.a(bjx.i)) {
-         this.c($$0, $$6);
-      }
-
-      if (this.W.q.l() == crp.d) {
-         this.ai.a($$0);
-      } else if (!this.W.m.Z) {
-         this.a($$1, $$0);
-      }
-
-      if (!this.W.m.Z) {
-         RenderSystem.enableBlend();
-         this.d($$0);
-         this.W.aF().a("bossHealth");
-         this.ak.a($$0);
-         this.W.aF().c();
-         if (this.W.q.a()) {
-            this.e($$0);
-         }
-
-         this.f($$0);
-         RenderSystem.disableBlend();
-         int $$7 = this.av / 2 - 91;
-         blj $$8 = this.W.s.s();
-         if ($$8 != null) {
-            this.a($$8, $$0, $$7);
-         } else if (this.W.q.e()) {
-            this.a($$0, $$7);
-         }
-
-         if (this.W.q.l() != crp.d) {
-            this.b($$0);
-         } else if (this.W.s.N_()) {
-            this.ai.b($$0);
-         }
-      }
-
-      if (this.W.s.fW() > 0) {
-         this.W.aF().a("sleep");
-         float $$9 = (float)this.W.s.fW();
-         float $$10 = $$9 / 100.0F;
-         if ($$10 > 1.0F) {
-            $$10 = 1.0F - ($$9 - 100.0F) / 10.0F;
-         }
-
-         int $$11 = (int)(220.0F * $$10) << 24 | 1052704;
-         $$0.a(fqp.C(), 0, 0, this.av, this.aw, $$11);
-         this.W.aF().c();
-      }
-
-      if (this.W.H()) {
-         this.c($$0);
-      }
-
-      this.a($$0);
-      if (this.ag.d()) {
-         this.ag.a($$0);
-      }
-
-      if (!this.W.m.Z) {
-         if (this.aa != null && this.ab > 0) {
-            this.W.aF().a("overlayMessage");
-            float $$12 = (float)this.ab - $$1;
-            int $$13 = (int)($$12 * 255.0F / 20.0F);
-            if ($$13 > 255) {
-               $$13 = 255;
-            }
-
-            if ($$13 > 8) {
-               $$0.c().a();
-               $$0.c().a((float)(this.av / 2), (float)(this.aw - 68), 0.0F);
-               int $$14 = 16777215;
-               if (this.ac) {
-                  $$14 = ati.h($$12 / 50.0F, 0.7F, 0.6F) & 16777215;
-               }
-
-               int $$15 = $$13 << 24 & 0xFF000000;
-               int $$16 = $$3.a(this.aa);
-               this.a($$0, $$3, -4, $$16, 16777215 | $$15);
-               $$0.b($$3, this.aa, -$$16 / 2, -4, $$14 | $$15);
-               $$0.c().b();
-            }
-
-            this.W.aF().c();
-         }
-
-         if (this.am != null && this.al > 0) {
-            this.W.aF().a("titleAndSubtitle");
-            float $$17 = (float)this.al - $$1;
-            int $$18 = 255;
-            if (this.al > this.aq + this.ap) {
-               float $$19 = (float)(this.ao + this.ap + this.aq) - $$17;
-               $$18 = (int)($$19 * 255.0F / (float)this.ao);
-            }
-
-            if (this.al <= this.aq) {
-               $$18 = (int)($$17 * 255.0F / (float)this.aq);
-            }
-
-            $$18 = ati.a($$18, 0, 255);
-            if ($$18 > 8) {
-               $$0.c().a();
-               $$0.c().a((float)(this.av / 2), (float)(this.aw / 2), 0.0F);
-               RenderSystem.enableBlend();
-               $$0.c().a();
-               $$0.c().b(4.0F, 4.0F, 4.0F);
-               int $$20 = $$18 << 24 & 0xFF000000;
-               int $$21 = $$3.a(this.am);
-               this.a($$0, $$3, -10, $$21, 16777215 | $$20);
-               $$0.b($$3, this.am, -$$21 / 2, -10, 16777215 | $$20);
-               $$0.c().b();
-               if (this.an != null) {
-                  $$0.c().a();
-                  $$0.c().b(2.0F, 2.0F, 2.0F);
-                  int $$22 = $$3.a(this.an);
-                  this.a($$0, $$3, 5, $$22, 16777215 | $$20);
-                  $$0.b($$3, this.an, -$$22 / 2, 5, 16777215 | $$20);
-                  $$0.c().b();
-               }
-
-               RenderSystem.disableBlend();
-               $$0.c().b();
-            }
-
-            this.W.aF().c();
-         }
-
-         this.ah.a($$0);
-         ekh $$23 = this.W.r.I();
-         eke $$24 = null;
-         ekf $$25 = $$23.g(this.W.s.cx());
-         if ($$25 != null) {
-            ekd $$26 = ekd.a($$25.n());
-            if ($$26 != null) {
-               $$24 = $$23.a($$26);
-            }
-         }
-
-         eke $$27 = $$24 != null ? $$24 : $$23.a(ekd.b);
-         if ($$27 != null) {
-            this.a($$0, $$27);
-         }
-
-         RenderSystem.enableBlend();
-         int $$28 = ati.a(this.W.n.e() * (double)$$2.o() / (double)$$2.m());
-         int $$29 = ati.a(this.W.n.f() * (double)$$2.p() / (double)$$2.n());
-         this.W.aF().a("chat");
-         this.Y.a($$0, this.Z, $$28, $$29);
-         this.W.aF().c();
-         $$27 = $$23.a(ekd.a);
-         if (!this.W.m.L.e() || this.W.Q() && this.W.s.cn.n().size() <= 1 && $$27 == null) {
-            this.aj.a(false);
-         } else {
-            this.aj.a(true);
-            this.aj.a($$0, this.av, $$23, $$27);
-         }
-
-         this.g($$0);
-      }
-   }
-
-   private void a(eub $$0, etz $$1, int $$2, int $$3, int $$4) {
-      int $$5 = this.W.m.b(0.0F);
-      if ($$5 != 0) {
-         int $$6 = -$$3 / 2;
-         $$0.a($$6 - 2, $$2 - 2, $$6 + $$3 + 2, $$2 + 9 + 2, ass.b.a($$5, $$4));
-      }
-   }
-
-   private void d(eub $$0) {
-      esv $$1 = this.W.m;
-      if ($$1.ax().a()) {
-         if (this.W.q.l() != crp.d || this.a(this.W.v)) {
-            if (this.ag.d() && !this.W.s.gi() && !$$1.S().c()) {
-               esc $$2 = this.W.j.m();
-               enk $$3 = RenderSystem.getModelViewStack();
-               $$3.a();
-               $$3.a($$0.c().c().a());
-               $$3.a((float)(this.av / 2), (float)(this.aw / 2), 0.0F);
-               $$3.a(a.a.rotationDegrees($$2.d()));
-               $$3.a(a.d.rotationDegrees($$2.e()));
-               $$3.b(-1.0F, -1.0F, -1.0F);
-               RenderSystem.applyModelViewMatrix();
-               RenderSystem.renderCrosshair(10);
-               $$3.b();
-               RenderSystem.applyModelViewMatrix();
-            } else {
-               RenderSystem.blendFuncSeparate(
-                  GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
-                  GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
-                  GlStateManager.SourceFactor.ONE,
-                  GlStateManager.DestFactor.ZERO
-               );
-               int $$4 = 15;
-               $$0.a(b, (this.av - 15) / 2, (this.aw - 15) / 2, 15, 15);
-               if (this.W.m.B().c() == esb.b) {
-                  float $$5 = this.W.s.B(0.0F);
-                  boolean $$6 = false;
-                  if (this.W.u != null && this.W.u instanceof bky && $$5 >= 1.0F) {
-                     $$6 = this.W.s.gl() > 5.0F;
-                     $$6 &= this.W.u.bv();
-                  }
-
-                  int $$7 = this.aw / 2 - 7 + 16;
-                  int $$8 = this.av / 2 - 8;
-                  if ($$6) {
-                     $$0.a(c, $$8, $$7, 16, 16);
-                  } else if ($$5 < 1.0F) {
-                     int $$9 = (int)($$5 * 17.0F);
-                     $$0.a(d, $$8, $$7, 16, 4);
-                     $$0.a(e, 16, 4, 0, 0, $$8, $$7, $$9, 4);
-                  }
-               }
-
-               RenderSystem.defaultBlendFunc();
-            }
-         }
-      }
-   }
-
-   private boolean a(ejg $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.c() == ejg.a.c) {
-         return ((ejf)$$0).a() instanceof bit;
-      } else if ($$0.c() == ejg.a.b) {
-         ht $$1 = ((eje)$$0).a();
-         crs $$2 = this.W.r;
-         return $$2.a_($$1).b($$2, $$1) != null;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(eub $$0) {
-      Collection<bjv> $$1 = this.W.s.er();
-      if (!$$1.isEmpty()) {
-         if (this.W.y instanceof fby $$2 && $$2.G()) {
-            return;
-         }
-
-         RenderSystem.enableBlend();
-         int $$3 = 0;
-         int $$4 = 0;
-         gcf $$5 = this.W.aD();
-         List<Runnable> $$6 = Lists.newArrayListWithExpectedSize($$1.size());
-
-         for (bjv $$7 : Ordering.natural().reverse().sortedCopy($$1)) {
-            bjt $$8 = $$7.c();
-            if ($$7.h()) {
-               int $$9 = this.av;
-               int $$10 = 1;
-               if (this.W.H()) {
-                  $$10 += 15;
-               }
-
-               if ($$8.i()) {
-                  $$3++;
-                  $$9 -= 25 * $$3;
-               } else {
-                  $$4++;
-                  $$9 -= 25 * $$4;
-                  $$10 += 26;
-               }
-
-               float $$11 = 1.0F;
-               if ($$7.f()) {
-                  $$0.a(f, $$9, $$10, 24, 24);
-               } else {
-                  $$0.a(g, $$9, $$10, 24, 24);
-                  if ($$7.a(200)) {
-                     int $$12 = $$7.d();
-                     int $$13 = 10 - $$12 / 20;
-                     $$11 = ati.a((float)$$12 / 10.0F / 5.0F * 0.5F, 0.0F, 0.5F)
-                        + ati.b((float)$$12 * (float) Math.PI / 5.0F) * ati.a((float)$$13 / 10.0F * 0.25F, 0.0F, 0.25F);
-                  }
-               }
-
-               gbh $$14 = $$5.a($$8);
-               int $$15 = $$9;
-               int $$16 = $$10;
-               float $$17 = $$11;
-               $$6.add(() -> {
-                  $$0.a(1.0F, 1.0F, 1.0F, $$17);
-                  $$0.a($$15 + 3, $$16 + 3, 0, 18, 18, $$14);
-                  $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-               });
-            }
-         }
-
-         $$6.forEach(Runnable::run);
-      }
-   }
-
-   private void a(float $$0, eub $$1) {
-      cdm $$2 = this.m();
-      if ($$2 != null) {
-         clb $$3 = $$2.eT();
-         bks $$4 = $$2.fm().e();
-         int $$5 = this.av / 2;
-         int $$6 = 182;
-         int $$7 = 91;
-         $$1.c().a();
-         $$1.c().a(0.0F, 0.0F, -90.0F);
-         $$1.a(h, $$5 - 91, this.aw - 22, 182, 22);
-         $$1.a(i, $$5 - 91 - 1 + $$2.fS().l * 20, this.aw - 22 - 1, 24, 23);
-         if (!$$3.b()) {
-            if ($$4 == bks.a) {
-               $$1.a(j, $$5 - 91 - 29, this.aw - 23, 29, 24);
-            } else {
-               $$1.a(k, $$5 + 91, this.aw - 23, 29, 24);
-            }
-         }
-
-         $$1.c().b();
-         int $$8 = 1;
-
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            int $$10 = $$5 - 90 + $$9 * 20 + 2;
-            int $$11 = this.aw - 16 - 3;
-            this.a($$1, $$10, $$11, $$0, $$2, $$2.fS().i.get($$9), $$8++);
-         }
-
-         if (!$$3.b()) {
-            int $$12 = this.aw - 16 - 3;
-            if ($$4 == bks.a) {
-               this.a($$1, $$5 - 91 - 26, $$12, $$0, $$2, $$3, $$8++);
-            } else {
-               this.a($$1, $$5 + 91 + 10, $$12, $$0, $$2, $$3, $$8++);
-            }
-         }
-
-         RenderSystem.enableBlend();
-         if (this.W.m.B().c() == esb.c) {
-            float $$13 = this.W.s.B(0.0F);
-            if ($$13 < 1.0F) {
-               int $$14 = this.aw - 20;
-               int $$15 = $$5 + 91 + 6;
-               if ($$4 == bks.b) {
-                  $$15 = $$5 - 91 - 22;
-               }
-
-               int $$16 = (int)($$13 * 19.0F);
-               $$1.a(l, $$15, $$14, 18, 18);
-               $$1.a(m, 18, 18, 0, 18 - $$16, $$15, $$14 + 18 - $$16, 18, $$16);
-            }
-         }
-
-         RenderSystem.disableBlend();
-      }
-   }
-
-   public void a(blj $$0, eub $$1, int $$2) {
-      this.W.aF().a("jumpBar");
-      float $$3 = this.W.s.t();
-      int $$4 = 182;
-      int $$5 = (int)($$3 * 183.0F);
-      int $$6 = this.aw - 32 + 3;
-      $$1.a(n, $$2, $$6, 182, 5);
-      if ($$0.ab_() > 0) {
-         $$1.a(o, $$2, $$6, 182, 5);
-      } else if ($$5 > 0) {
-         $$1.a(p, 182, 5, 0, 0, $$2, $$6, $$5, 5);
-      }
-
-      this.W.aF().c();
-   }
-
-   public void a(eub $$0, int $$1) {
-      this.W.aF().a("expBar");
-      int $$2 = this.W.s.gb();
-      if ($$2 > 0) {
-         int $$3 = 182;
-         int $$4 = (int)(this.W.s.ch * 183.0F);
-         int $$5 = this.aw - 32 + 3;
-         $$0.a(q, $$1, $$5, 182, 5);
-         if ($$4 > 0) {
-            $$0.a(r, 182, 5, 0, 0, $$1, $$5, $$4, 5);
-         }
-      }
-
-      this.W.aF().c();
-      if (this.W.s.cf > 0) {
-         this.W.aF().a("expLevel");
-         String $$6 = this.W.s.cf + "";
-         int $$7 = (this.av - this.f().b($$6)) / 2;
-         int $$8 = this.aw - 31 - 4;
-         $$0.a(this.f(), $$6, $$7 + 1, $$8, 0, false);
-         $$0.a(this.f(), $$6, $$7 - 1, $$8, 0, false);
-         $$0.a(this.f(), $$6, $$7, $$8 + 1, 0, false);
-         $$0.a(this.f(), $$6, $$7, $$8 - 1, 0, false);
-         $$0.a(this.f(), $$6, $$7, $$8, 8453920, false);
-         this.W.aF().c();
-      }
-   }
-
-   public void b(eub $$0) {
-      this.W.aF().a("selectedItemName");
-      if (this.ae > 0 && !this.af.b()) {
-         vf $$1 = ur.i().b(this.af.y()).a(this.af.C().e);
-         if (this.af.A()) {
-            $$1.a(n.u);
-         }
-
-         int $$2 = this.f().a($$1);
-         int $$3 = (this.av - $$2) / 2;
-         int $$4 = this.aw - 59;
-         if (!this.W.q.a()) {
-            $$4 += 14;
-         }
-
-         int $$5 = (int)((float)this.ae * 256.0F / 10.0F);
-         if ($$5 > 255) {
-            $$5 = 255;
-         }
-
-         if ($$5 > 0) {
-            $$0.a($$3 - 2, $$4 - 2, $$3 + $$2 + 2, $$4 + 9 + 2, this.W.m.a(0));
-            $$0.b(this.f(), $$1, $$3, $$4, 16777215 + ($$5 << 24));
-         }
-      }
-
-      this.W.aF().c();
-   }
-
-   public void c(eub $$0) {
-      this.W.aF().a("demo");
-      ur $$1;
-      if (this.W.r.V() >= 120500L) {
-         $$1 = K;
-      } else {
-         $$1 = ur.a("demo.remainingTime", auc.a((int)(120500L - this.W.r.V())));
-      }
-
-      int $$3 = this.f().a($$1);
-      $$0.b(this.f(), $$1, this.av - $$3 - 10, 5, 16777215);
-      this.W.aF().c();
-   }
-
-   private void a(eub $$0, eke $$1) {
-      ekh $$2 = $$1.a();
-      Collection<ekg> $$3 = $$2.i($$1);
-      List<ekg> $$4 = $$3.stream().filter($$0x -> $$0x.e() != null && !$$0x.e().startsWith("#")).collect(Collectors.toList());
-      if ($$4.size() > 15) {
-         $$3 = Lists.newArrayList(Iterables.skip($$4, $$3.size() - 15));
-      } else {
-         $$3 = $$4;
-      }
-
-      List<Pair<ekg, ur>> $$5 = Lists.newArrayListWithCapacity($$3.size());
-      ur $$6 = $$1.d();
-      int $$7 = this.f().a($$6);
-      int $$8 = $$7;
-      int $$9 = this.f().b(": ");
-
-      for (ekg $$10 : $$3) {
-         ekf $$11 = $$2.g($$10.e());
-         ur $$12 = ekf.a($$11, ur.b($$10.e()));
-         $$5.add(Pair.of($$10, $$12));
-         $$8 = Math.max($$8, this.f().a($$12) + $$9 + this.f().b(Integer.toString($$10.b())));
-      }
-
-      int $$13 = $$3.size() * 9;
-      int $$14 = this.aw / 2 + $$13 / 3;
-      int $$15 = 3;
-      int $$16 = this.av - $$8 - 3;
-      int $$17 = 0;
-      int $$18 = this.W.m.b(0.3F);
-      int $$19 = this.W.m.b(0.4F);
-
-      for (Pair<ekg, ur> $$20 : $$5) {
-         $$17++;
-         ekg $$21 = (ekg)$$20.getFirst();
-         ur $$22 = (ur)$$20.getSecond();
-         String $$23 = "" + n.m + $$21.b();
-         int $$25 = $$14 - $$17 * 9;
-         int $$26 = this.av - 3 + 2;
-         $$0.a($$16 - 2, $$25, $$26, $$25 + 9, $$18);
-         $$0.a(this.f(), $$22, $$16, $$25, -1, false);
-         $$0.a(this.f(), $$23, $$26 - this.f().b($$23), $$25, -1, false);
-         if ($$17 == $$3.size()) {
-            $$0.a($$16 - 2, $$25 - 9 - 1, $$26, $$25 - 1, $$19);
-            $$0.a($$16 - 2, $$25 - 1, $$26, $$25, $$18);
-            $$0.a(this.f(), $$6, $$16 + $$8 / 2 - $$7 / 2, $$25 - 9, -1, false);
-         }
-      }
-   }
-
-   private cdm m() {
-      return !(this.W.al() instanceof cdm) ? null : (cdm)this.W.al();
-   }
-
-   private bky n() {
-      cdm $$0 = this.m();
-      if ($$0 != null) {
-         bki $$1 = $$0.cY();
-         if ($$1 == null) {
-            return null;
-         }
-
-         if ($$1 instanceof bky) {
-            return (bky)$$1;
-         }
-      }
-
-      return null;
-   }
-
-   private int a(bky $$0) {
-      if ($$0 != null && $$0.bz()) {
-         float $$1 = $$0.eL();
-         int $$2 = (int)($$1 + 0.5F) / 2;
-         if ($$2 > 30) {
-            $$2 = 30;
-         }
-
-         return $$2;
-      } else {
-         return 0;
-      }
-   }
-
-   private int a(int $$0) {
-      return (int)Math.ceil((double)$$0 / 10.0);
-   }
-
-   private void e(eub $$0) {
-      cdm $$1 = this.m();
-      if ($$1 != null) {
-         int $$2 = ati.f($$1.eu());
-         boolean $$3 = this.au > (long)this.Z && (this.au - (long)this.Z) / 3L % 2L == 1L;
-         long $$4 = ac.b();
-         if ($$2 < this.ar && $$1.al > 0) {
-            this.at = $$4;
-            this.au = (long)(this.Z + 20);
-         } else if ($$2 > this.ar && $$1.al > 0) {
-            this.at = $$4;
-            this.au = (long)(this.Z + 10);
-         }
-
-         if ($$4 - this.at > 1000L) {
-            this.ar = $$2;
-            this.as = $$2;
-            this.at = $$4;
-         }
-
-         this.ar = $$2;
-         int $$5 = this.as;
-         this.V.b((long)(this.Z * 312871));
-         cga $$6 = $$1.gc();
-         int $$7 = $$6.a();
-         int $$8 = this.av / 2 - 91;
-         int $$9 = this.av / 2 + 91;
-         int $$10 = this.aw - 39;
-         float $$11 = Math.max((float)$$1.b(bme.l), (float)Math.max($$5, $$2));
-         int $$12 = ati.f($$1.fk());
-         int $$13 = ati.f(($$11 + (float)$$12) / 2.0F / 10.0F);
-         int $$14 = Math.max(10 - ($$13 - 2), 3);
-         int $$15 = $$10 - ($$13 - 1) * $$14 - 10;
-         int $$16 = $$10 - 10;
-         int $$17 = $$1.eI();
-         int $$18 = -1;
-         if ($$1.a(bjx.j)) {
-            $$18 = this.Z % ati.f($$11 + 5.0F);
-         }
-
-         this.W.aF().a("armor");
-
-         for (int $$19 = 0; $$19 < 10; $$19++) {
-            if ($$17 > 0) {
-               int $$20 = $$8 + $$19 * 8;
-               if ($$19 * 2 + 1 < $$17) {
-                  $$0.a(u, $$20, $$15, 9, 9);
-               }
-
-               if ($$19 * 2 + 1 == $$17) {
-                  $$0.a(t, $$20, $$15, 9, 9);
-               }
-
-               if ($$19 * 2 + 1 > $$17) {
-                  $$0.a(s, $$20, $$15, 9, 9);
-               }
-            }
-         }
-
-         this.W.aF().b("health");
-         this.a($$0, $$1, $$8, $$10, $$14, $$18, $$11, $$2, $$5, $$12, $$3);
-         bky $$21 = this.n();
-         int $$22 = this.a($$21);
-         if ($$22 == 0) {
-            this.W.aF().b("food");
-
-            for (int $$23 = 0; $$23 < 10; $$23++) {
-               int $$24 = $$10;
-               agg $$25;
-               agg $$26;
-               agg $$27;
-               if ($$1.a(bjx.q)) {
-                  $$25 = v;
-                  $$26 = w;
-                  $$27 = x;
-               } else {
-                  $$25 = y;
-                  $$26 = z;
-                  $$27 = A;
-               }
-
-               if ($$1.gc().e() <= 0.0F && this.Z % ($$7 * 3 + 1) == 0) {
-                  $$24 = $$10 + (this.V.a(3) - 1);
-               }
-
-               int $$31 = $$9 - $$23 * 8 - 9;
-               $$0.a($$25, $$31, $$24, 9, 9);
-               if ($$23 * 2 + 1 < $$7) {
-                  $$0.a($$27, $$31, $$24, 9, 9);
-               }
-
-               if ($$23 * 2 + 1 == $$7) {
-                  $$0.a($$26, $$31, $$24, 9, 9);
-               }
-            }
-
-            $$16 -= 10;
-         }
-
-         this.W.aF().b("air");
-         int $$32 = $$1.cg();
-         int $$33 = Math.min($$1.ch(), $$32);
-         if ($$1.a(arh.a) || $$33 < $$32) {
-            int $$34 = this.a($$22) - 1;
-            $$16 -= $$34 * 10;
-            int $$35 = ati.c((double)($$33 - 2) * 10.0 / (double)$$32);
-            int $$36 = ati.c((double)$$33 * 10.0 / (double)$$32) - $$35;
-
-            for (int $$37 = 0; $$37 < $$35 + $$36; $$37++) {
-               if ($$37 < $$35) {
-                  $$0.a(B, $$9 - $$37 * 8 - 9, $$16, 9, 9);
-               } else {
-                  $$0.a(C, $$9 - $$37 * 8 - 9, $$16, 9, 9);
-               }
-            }
-         }
-
-         this.W.aF().c();
-      }
-   }
-
-   private void a(eub $$0, cdm $$1, int $$2, int $$3, int $$4, int $$5, float $$6, int $$7, int $$8, int $$9, boolean $$10) {
-      eua.a $$11 = eua.a.a($$1);
-      boolean $$12 = $$1.dL().A_().n();
-      int $$13 = ati.c((double)$$6 / 2.0);
-      int $$14 = ati.c((double)$$9 / 2.0);
-      int $$15 = $$13 * 2;
-
-      for (int $$16 = $$13 + $$14 - 1; $$16 >= 0; $$16--) {
-         int $$17 = $$16 / 10;
-         int $$18 = $$16 % 10;
-         int $$19 = $$2 + $$18 * 8;
-         int $$20 = $$3 - $$17 * $$4;
-         if ($$7 + $$9 <= 4) {
-            $$20 += this.V.a(2);
-         }
-
-         if ($$16 < $$13 && $$16 == $$5) {
-            $$20 -= 2;
-         }
-
-         this.a($$0, eua.a.a, $$19, $$20, $$12, $$10, false);
-         int $$21 = $$16 * 2;
-         boolean $$22 = $$16 >= $$13;
-         if ($$22) {
-            int $$23 = $$21 - $$15;
-            if ($$23 < $$9) {
-               boolean $$24 = $$23 + 1 == $$9;
-               this.a($$0, $$11 == eua.a.d ? $$11 : eua.a.e, $$19, $$20, $$12, false, $$24);
-            }
-         }
-
-         if ($$10 && $$21 < $$8) {
-            boolean $$25 = $$21 + 1 == $$8;
-            this.a($$0, $$11, $$19, $$20, $$12, true, $$25);
-         }
-
-         if ($$21 < $$7) {
-            boolean $$26 = $$21 + 1 == $$7;
-            this.a($$0, $$11, $$19, $$20, $$12, false, $$26);
-         }
-      }
-   }
-
-   private void a(eub $$0, eua.a $$1, int $$2, int $$3, boolean $$4, boolean $$5, boolean $$6) {
-      $$0.a($$1.a($$4, $$6, $$5), $$2, $$3, 9, 9);
-   }
-
-   private void f(eub $$0) {
-      bky $$1 = this.n();
-      if ($$1 != null) {
-         int $$2 = this.a($$1);
-         if ($$2 != 0) {
-            int $$3 = (int)Math.ceil((double)$$1.eu());
-            this.W.aF().b("mountHealth");
-            int $$4 = this.aw - 39;
-            int $$5 = this.av / 2 + 91;
-            int $$6 = $$4;
-
-            for (int $$7 = 0; $$2 > 0; $$7 += 20) {
-               int $$8 = Math.min($$2, 10);
-               $$2 -= $$8;
-
-               for (int $$9 = 0; $$9 < $$8; $$9++) {
-                  int $$10 = $$5 - $$9 * 8 - 9;
-                  $$0.a(D, $$10, $$6, 9, 9);
-                  if ($$9 * 2 + 1 + $$7 < $$3) {
-                     $$0.a(E, $$10, $$6, 9, 9);
-                  }
-
-                  if ($$9 * 2 + 1 + $$7 == $$3) {
-                     $$0.a(F, $$10, $$6, 9, 9);
-                  }
-               }
-
-               $$6 -= 10;
-            }
-         }
-      }
-   }
-
-   private void a(eub $$0, agg $$1, float $$2) {
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      $$0.a(1.0F, 1.0F, 1.0F, $$2);
-      $$0.a($$1, 0, 0, -90, 0.0F, 0.0F, this.av, this.aw, this.av, this.aw);
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void b(eub $$0, float $$1) {
-      float $$2 = (float)Math.min(this.av, this.aw);
-      float $$4 = Math.min((float)this.av / $$2, (float)this.aw / $$2) * $$1;
-      int $$5 = ati.d($$2 * $$4);
-      int $$6 = ati.d($$2 * $$4);
-      int $$7 = (this.av - $$5) / 2;
-      int $$8 = (this.aw - $$6) / 2;
-      int $$9 = $$7 + $$5;
-      int $$10 = $$8 + $$6;
-      $$0.a(I, $$7, $$8, -90, 0.0F, 0.0F, $$5, $$6, $$5, $$6);
-      $$0.a(fqp.C(), 0, $$10, this.av, this.aw, -90, -16777216);
-      $$0.a(fqp.C(), 0, 0, this.av, $$8, -90, -16777216);
-      $$0.a(fqp.C(), 0, $$8, $$7, $$10, -90, -16777216);
-      $$0.a(fqp.C(), $$9, $$8, this.av, $$10, -90, -16777216);
-   }
-
-   private void a(bki $$0) {
-      if ($$0 != null) {
-         ht $$1 = ht.a($$0.dq(), $$0.du(), $$0.dw());
-         float $$2 = fqg.a($$0.dL().D_(), $$0.dL().z($$1));
-         float $$3 = ati.a(1.0F - $$2, 0.0F, 1.0F);
-         this.a = this.a + ($$3 - this.a) * 0.01F;
-      }
-   }
-
-   private void a(eub $$0, bki $$1) {
-      din $$2 = this.W.r.C_();
-      float $$3 = (float)$$2.a($$1);
-      double $$4 = Math.min($$2.p() * (double)$$2.q() * 1000.0, Math.abs($$2.k() - $$2.i()));
-      double $$5 = Math.max((double)$$2.r(), $$4);
-      if ((double)$$3 < $$5) {
-         $$3 = 1.0F - (float)((double)$$3 / $$5);
-      } else {
-         $$3 = 0.0F;
-      }
-
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.blendFuncSeparate(
-         GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-      );
-      if ($$3 > 0.0F) {
-         $$3 = ati.a($$3, 0.0F, 1.0F);
-         $$0.a(0.0F, $$3, $$3, 1.0F);
-      } else {
-         float $$6 = this.a;
-         $$6 = ati.a($$6, 0.0F, 1.0F);
-         $$0.a($$6, $$6, $$6, 1.0F);
-      }
-
-      $$0.a(G, 0, 0, -90, 0.0F, 0.0F, this.av, this.aw, this.av, this.aw);
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-   }
-
-   private void c(eub $$0, float $$1) {
-      if ($$1 < 1.0F) {
-         $$1 *= $$1;
-         $$1 *= $$1;
-         $$1 = $$1 * 0.8F + 0.2F;
-      }
-
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      gbh $$2 = this.W.am().a().a(cuv.ed.o());
-      $$0.a(0, 0, -90, this.av, this.aw, $$2);
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void a(eub $$0, int $$1, int $$2, float $$3, cdm $$4, clb $$5, int $$6) {
-      if (!$$5.b()) {
-         float $$7 = (float)$$5.K() - $$3;
-         if ($$7 > 0.0F) {
-            float $$8 = 1.0F + $$7 / 5.0F;
-            $$0.c().a();
-            $$0.c().a((float)($$1 + 8), (float)($$2 + 12), 0.0F);
-            $$0.c().b(1.0F / $$8, ($$8 + 1.0F) / 2.0F, 1.0F);
-            $$0.c().a((float)(-($$1 + 8)), (float)(-($$2 + 12)), 0.0F);
-         }
-
-         $$0.a($$4, $$5, $$1, $$2, $$6);
-         if ($$7 > 0.0F) {
-            $$0.c().b();
-         }
-
-         $$0.a(this.W.h, $$5, $$1, $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.p();
-      if (!$$0) {
-         this.o();
-      }
-   }
-
-   private void o() {
-      if (this.ab > 0) {
-         this.ab--;
-      }
-
-      if (this.al > 0) {
-         this.al--;
-         if (this.al <= 0) {
-            this.am = null;
-            this.an = null;
-         }
-      }
-
-      this.Z++;
-      bki $$0 = this.W.al();
-      if ($$0 != null) {
-         this.a($$0);
-      }
-
-      if (this.W.s != null) {
-         clb $$1 = this.W.s.fS().f();
-         if ($$1.b()) {
-            this.ae = 0;
-         } else if (this.af.b() || !$$1.a(this.af.d()) || !$$1.y().equals(this.af.y())) {
-            this.ae = (int)(40.0 * this.W.m.z().c());
-         } else if (this.ae > 0) {
-            this.ae--;
-         }
-
-         this.af = $$1;
-      }
-
-      this.Y.a();
-   }
-
-   private void p() {
-      MinecraftServer $$0 = this.W.S();
-      boolean $$1 = $$0 != null && $$0.aY();
-      this.ay = this.ax;
-      this.ax = ati.i(0.2F, this.ax, $$1 ? 1.0F : 0.0F);
-   }
-
-   public void a(ur $$0) {
-      ur $$1 = ur.a("record.nowPlaying", $$0);
-      this.a($$1, true);
-      this.W.aU().c($$1);
-   }
-
-   public void a(ur $$0, boolean $$1) {
-      this.b(false);
-      this.aa = $$0;
-      this.ab = 60;
-      this.ac = $$1;
-   }
-
-   public void b(boolean $$0) {
-      this.ad = $$0;
-   }
-
-   public boolean b() {
-      return this.ad && this.ab > 0;
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0) {
-         this.ao = $$0;
-      }
-
-      if ($$1 >= 0) {
-         this.ap = $$1;
-      }
-
-      if ($$2 >= 0) {
-         this.aq = $$2;
-      }
-
-      if (this.al > 0) {
-         this.al = this.ao + this.ap + this.aq;
-      }
-   }
-
-   public void b(ur $$0) {
-      this.an = $$0;
-   }
-
-   public void c(ur $$0) {
-      this.am = $$0;
-      this.al = this.ao + this.ap + this.aq;
-   }
-
-   public void c() {
-      this.am = null;
-      this.an = null;
-      this.al = 0;
-   }
-
-   public eun d() {
-      return this.Y;
-   }
-
-   public int e() {
-      return this.Z;
-   }
-
-   public etz f() {
-      return this.W.h;
-   }
-
-   public ewk g() {
-      return this.ai;
-   }
-
-   public evn h() {
-      return this.aj;
-   }
-
-   public void i() {
-      this.aj.a();
-      this.ak.a();
-      this.W.ax().a();
-      this.ag.m();
-      this.Y.a(true);
-   }
-
-   public eul j() {
-      return this.ak;
-   }
-
-   public euu k() {
-      return this.ag;
-   }
-
-   public void l() {
-      this.ag.a();
-   }
-
-   private void g(eub $$0) {
-      if (this.W.m.ac().c() && (this.ax > 0.0F || this.ay > 0.0F)) {
-         int $$1 = ati.d(255.0F * ati.a(ati.i(this.W.ar(), this.ay, this.ax), 0.0F, 1.0F));
-         if ($$1 > 8) {
-            etz $$2 = this.f();
-            int $$3 = $$2.a(L);
-            int $$4 = 16777215 | $$1 << 24 & 0xFF000000;
-            $$0.b($$2, L, this.av - $$3 - 10, this.aw - 15, $$4);
-         }
-      }
-   }
-
-   static enum a {
-      a(
-         new agg("hud/heart/container"),
-         new agg("hud/heart/container_blinking"),
-         new agg("hud/heart/container"),
-         new agg("hud/heart/container_blinking"),
-         new agg("hud/heart/container_hardcore"),
-         new agg("hud/heart/container_hardcore_blinking"),
-         new agg("hud/heart/container_hardcore"),
-         new agg("hud/heart/container_hardcore_blinking")
-      ),
-      b(
-         new agg("hud/heart/full"),
-         new agg("hud/heart/full_blinking"),
-         new agg("hud/heart/half"),
-         new agg("hud/heart/half_blinking"),
-         new agg("hud/heart/hardcore_full"),
-         new agg("hud/heart/hardcore_full_blinking"),
-         new agg("hud/heart/hardcore_half"),
-         new agg("hud/heart/hardcore_half_blinking")
-      ),
-      c(
-         new agg("hud/heart/poisoned_full"),
-         new agg("hud/heart/poisoned_full_blinking"),
-         new agg("hud/heart/poisoned_half"),
-         new agg("hud/heart/poisoned_half_blinking"),
-         new agg("hud/heart/poisoned_hardcore_full"),
-         new agg("hud/heart/poisoned_hardcore_full_blinking"),
-         new agg("hud/heart/poisoned_hardcore_half"),
-         new agg("hud/heart/poisoned_hardcore_half_blinking")
-      ),
-      d(
-         new agg("hud/heart/withered_full"),
-         new agg("hud/heart/withered_full_blinking"),
-         new agg("hud/heart/withered_half"),
-         new agg("hud/heart/withered_half_blinking"),
-         new agg("hud/heart/withered_hardcore_full"),
-         new agg("hud/heart/withered_hardcore_full_blinking"),
-         new agg("hud/heart/withered_hardcore_half"),
-         new agg("hud/heart/withered_hardcore_half_blinking")
-      ),
-      e(
-         new agg("hud/heart/absorbing_full"),
-         new agg("hud/heart/absorbing_full_blinking"),
-         new agg("hud/heart/absorbing_half"),
-         new agg("hud/heart/absorbing_half_blinking"),
-         new agg("hud/heart/absorbing_hardcore_full"),
-         new agg("hud/heart/absorbing_hardcore_full_blinking"),
-         new agg("hud/heart/absorbing_hardcore_half"),
-         new agg("hud/heart/absorbing_hardcore_half_blinking")
-      ),
-      f(
-         new agg("hud/heart/frozen_full"),
-         new agg("hud/heart/frozen_full_blinking"),
-         new agg("hud/heart/frozen_half"),
-         new agg("hud/heart/frozen_half_blinking"),
-         new agg("hud/heart/frozen_hardcore_full"),
-         new agg("hud/heart/frozen_hardcore_full_blinking"),
-         new agg("hud/heart/frozen_hardcore_half"),
-         new agg("hud/heart/frozen_hardcore_half_blinking")
-      );
-
-      private final agg g;
-      private final agg h;
-      private final agg i;
-      private final agg j;
-      private final agg k;
-      private final agg l;
-      private final agg m;
-      private final agg n;
-
-      private a(agg $$0, agg $$1, agg $$2, agg $$3, agg $$4, agg $$5, agg $$6, agg $$7) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         this.j = $$3;
-         this.k = $$4;
-         this.l = $$5;
-         this.m = $$6;
-         this.n = $$7;
-      }
-
-      public agg a(boolean $$0, boolean $$1, boolean $$2) {
-         if (!$$0) {
-            if ($$1) {
-               return $$2 ? this.j : this.i;
-            } else {
-               return $$2 ? this.h : this.g;
-            }
-         } else if ($$1) {
-            return $$2 ? this.n : this.m;
-         } else {
-            return $$2 ? this.l : this.k;
-         }
-      }
-
-      static eua.a a(cdm $$0) {
-         eua.a $$1;
-         if ($$0.a(bjx.s)) {
-            $$1 = c;
-         } else if ($$0.a(bjx.t)) {
-            $$1 = d;
-         } else if ($$0.ck()) {
-            $$1 = f;
-         } else {
-            $$1 = b;
-         }
-
-         return $$1;
-      }
-   }
+   public static final etu a = etu.a.a(0.0F)
+      .a("head", new ett(ett.d.c, new etv(0.0F, etw.a(1.2F, 1.2F, 1.2F), ett.b.a)))
+      .a("head", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, 1.0F, 1.0F), ett.b.a)))
+      .b();
+   public static final etu b = etu.a.a(8.0F)
+      .a()
+      .a(
+         "nose",
+         new ett(
+            ett.d.c,
+            new etv(0.0F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(0.5417F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(0.5833F, etw.a(1.0, 0.5, 1.0), ett.b.b),
+            new etv(0.6667F, etw.a(1.0, 2.5, 1.0), ett.b.b),
+            new etv(0.7917F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.9167F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.0F, etw.a(1.0, 3.0, 1.0), ett.b.b),
+            new etv(1.125F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(2.0F, etw.a(1.0, 1.0, 1.0), ett.b.a)
+         )
+      )
+      .b();
+   public static final etu c = etu.a.a(1.0F)
+      .a(
+         "nose",
+         new ett(
+            ett.d.c,
+            new etv(0.0F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.0833F, etw.a(1.0, 0.7F, 1.0), ett.b.b),
+            new etv(0.125F, etw.a(1.0, 3.0, 1.0), ett.b.b),
+            new etv(0.25F, etw.a(1.0, 3.0, 1.0), ett.b.b),
+            new etv(0.7083F, etw.a(1.0, 4.0, 1.0), ett.b.b),
+            new etv(0.8333F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.0F, etw.a(1.0, 1.0, 1.0), ett.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.125F, etw.b(-5.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.875F, etw.b(-20.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .b();
+   public static final etu d = etu.a.a(2.0F)
+      .a()
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(0.75F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(-7.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-7.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 2.67F, -0.67F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.3333F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(1.9167F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 2.67F, -0.67F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, -1.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(1.75F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(0.9167F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a),
+            new etv(0.3333F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a),
+            new etv(1.5833F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(1.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(0.5F, etw.b(-1.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(1.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(1.5F, etw.b(-1.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(1.0F, 0.0F, -2.5F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.2083F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.375F, etw.a(0.0F, -1.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2083F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.a(0.0F, -1.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(7.5F, 0.0F, 0.0F), ett.b.b),
+            new etv(0.1667F, etw.b(9.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(0.875F, etw.b(-1.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.25F, etw.b(7.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.75F, etw.b(5.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.0F, etw.b(7.5F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.b),
+            new etv(0.5F, etw.b(0.0F, 0.0F, -7.5F), ett.b.b),
+            new etv(1.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.b),
+            new etv(1.5F, etw.b(0.0F, 0.0F, -7.5F), ett.b.b),
+            new etv(2.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.b),
+            new etv(0.5F, etw.b(0.0F, 0.0F, 7.5F), ett.b.b),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.b),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 7.5F), ett.b.b),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.b)
+         )
+      )
+      .b();
+   public static final etu e = etu.a.a(2.0F)
+      .a()
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(0.75F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(-7.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-7.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 2.67F, -0.67F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.3333F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(1.9167F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 2.67F, -0.67F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, -1.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(1.75F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.1667F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(0.1667F, etw.a(0.0F, 0.0F, 3.0F), ett.b.a),
+            new etv(0.9167F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(1.1667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.1667F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5833F, etw.b(-35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(25.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a),
+            new etv(0.3333F, etw.a(0.0F, 4.0F, -1.0F), ett.b.a),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.a(0.0F, 0.0F, -2.0F), ett.b.a),
+            new etv(1.0F, etw.a(0.0F, 0.0F, -0.5F), ett.b.a),
+            new etv(1.5833F, etw.a(0.0F, 0.0F, 2.0F), ett.b.a),
+            new etv(2.0F, etw.a(0.0F, 2.22F, 0.78F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5F, etw.b(1.25F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.125F, etw.b(33.61503F, 11.46526F, 9.803F), ett.b.a),
+            new etv(0.875F, etw.b(34.71128F, 17.67415F, 14.15251F), ett.b.a),
+            new etv(1.125F, etw.b(37.21128F, -17.67415F, -14.15251F), ett.b.a),
+            new etv(1.875F, etw.b(38.30529F, -21.62827F, -17.40292F), ett.b.a),
+            new etv(2.0F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("head", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, -2.0F, 0.0F), ett.b.a), new etv(2.0F, etw.a(0.0F, -2.0F, 0.0F), ett.b.a)))
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(0.25F, etw.b(0.0F, 0.0F, -15.0F), ett.b.a),
+            new etv(0.5F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(0.75F, etw.b(0.0F, 0.0F, -15.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, -15.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(1.75F, etw.b(0.0F, 0.0F, -15.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(0.25F, etw.b(0.0F, 0.0F, 15.0F), ett.b.a),
+            new etv(0.5F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(0.75F, etw.b(0.0F, 0.0F, 15.0F), ett.b.a),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 15.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(1.75F, etw.b(0.0F, 0.0F, 15.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a)
+         )
+      )
+      .a(
+         "nose",
+         new ett(
+            ett.d.c,
+            new etv(0.0F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.0833F, etw.a(1.0, 1.5, 1.0), ett.b.b),
+            new etv(0.2083F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.375F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.4583F, etw.a(1.0, 2.5, 1.0), ett.b.b),
+            new etv(0.625F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.8333F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(0.9167F, etw.a(1.0, 2.5, 1.0), ett.b.b),
+            new etv(1.0833F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.2917F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.3333F, etw.a(1.0, 2.5, 1.0), ett.b.b),
+            new etv(1.5F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.625F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(1.6667F, etw.a(1.0, 3.5, 1.0), ett.b.b),
+            new etv(1.8333F, etw.a(1.0, 1.0, 1.0), ett.b.b),
+            new etv(2.0F, etw.a(1.0, 1.0, 1.0), ett.b.b)
+         )
+      )
+      .b();
+   public static final etu f = etu.a.a(8.0F)
+      .a(
+         "body",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5F, etw.b(1.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.b(-5.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.5F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.5F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(4.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(4.5F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(5.6667F, etw.b(5.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(5.8333F, etw.b(-2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(6.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.a(0.0F, -7.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.c,
+            new etv(0.0F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(1.5F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(1.5417F, etw.a(1.04F, 0.98F, 1.02F), ett.b.a),
+            new etv(1.5833F, etw.a(1.0, 1.0, 1.0), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.1667F, etw.b(10.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.4167F, etw.b(-10.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.875F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.0833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.5F, etw.b(47.5F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.6667F, etw.b(38.44F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.875F, etw.b(10.95951F, 13.57454F, -14.93501F), ett.b.b),
+            new etv(3.2083F, etw.b(47.5F, 0.0F, 0.0F), ett.b.b),
+            new etv(3.5833F, etw.b(55.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(3.7917F, etw.b(4.2932F, -16.187F, 10.90042F), ett.b.b),
+            new etv(4.125F, etw.b(47.5F, 0.0F, 0.0F), ett.b.b),
+            new etv(4.4167F, etw.b(54.71135F, 7.98009F, -5.56662F), ett.b.b),
+            new etv(4.5F, etw.b(55.72895F, -6.77684F, 4.46197F), ett.b.b),
+            new etv(4.5833F, etw.b(54.71135F, 7.98009F, -5.56662F), ett.b.b),
+            new etv(4.6667F, etw.b(55.72895F, -6.77684F, 4.46197F), ett.b.b),
+            new etv(4.75F, etw.b(54.71135F, 7.98009F, -5.56662F), ett.b.b),
+            new etv(4.8333F, etw.b(55.72895F, -6.77684F, 4.46197F), ett.b.b),
+            new etv(5.0F, etw.b(65.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(5.75F, etw.b(65.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(5.9167F, etw.b(-32.5F, 0.0F, 0.0F), ett.b.b),
+            new etv(6.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.625F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(1.5833F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(1.875F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(2.0833F, etw.a(0.0F, 3.0F, 0.0F), ett.b.a),
+            new etv(2.2917F, etw.a(0.0F, 6.0F, 0.0F), ett.b.a),
+            new etv(2.6667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.2083F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a),
+            new etv(3.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(4.125F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a),
+            new etv(5.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(5.75F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
+            new etv(6.0F, etw.a(0.0F, 1.5F, 0.0F), ett.b.a),
+            new etv(6.25F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, -2.5F), ett.b.a),
+            new etv(1.4167F, etw.b(0.0F, 0.0F, -50.0F), ett.b.a),
+            new etv(1.5833F, etw.b(0.0F, 0.0F, -30.0F), ett.b.a),
+            new etv(5.9167F, etw.b(0.0F, 0.0F, -30.0F), ett.b.a),
+            new etv(6.0833F, etw.b(0.0F, 0.0F, -65.0F), ett.b.a),
+            new etv(6.3333F, etw.b(0.0F, 0.0F, -30.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 2.5F), ett.b.a),
+            new etv(1.4167F, etw.b(0.0F, 0.0F, 50.0F), ett.b.a),
+            new etv(1.5833F, etw.b(0.0F, 0.0F, 30.0F), ett.b.a),
+            new etv(5.9167F, etw.b(0.0F, 0.0F, 30.0F), ett.b.a),
+            new etv(6.0833F, etw.b(0.0F, 0.0F, 65.0F), ett.b.a),
+            new etv(6.3333F, etw.b(0.0F, 0.0F, 30.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2083F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.b(0.0F, 0.0F, 90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2083F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2917F, etw.a(-2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.b(0.0F, 0.0F, 90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(-2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.a(-2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2083F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.b(0.0F, 0.0F, -90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2083F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2917F, etw.a(2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.a(4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.b(0.0F, 0.0F, -90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.a(4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, -90.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.3333F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.4167F, etw.a(2.0F, -0.75F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.a(4.0F, -5.5F, 0.0F), ett.b.a)
+         )
+      )
+      .b();
+   public static final etu g = etu.a.a(3.0F)
+      .a(
+         "body",
+         new ett(
+            ett.d.b,
+            new etv(0.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.b(2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(-2.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.7083F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.a,
+            new etv(0.25F, etw.a(0.0F, -7.0F, 0.0F), ett.b.a),
+            new etv(0.75F, etw.a(0.0F, -7.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.7083F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.3333F, etw.b(-5.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.7083F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.0F, etw.b(10.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("head", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a), new etv(1.375F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a)))
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, -30.0F), ett.b.a),
+            new etv(0.9167F, etw.b(0.0F, 0.0F, -30.0F), ett.b.a),
+            new etv(1.2083F, etw.b(0.0F, 0.0F, -5.0F), ett.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 30.0F), ett.b.a),
+            new etv(0.9167F, etw.b(0.0F, 0.0F, 30.0F), ett.b.a),
+            new etv(1.2083F, etw.b(0.0F, 0.0F, 5.0F), ett.b.a)
+         )
+      )
+      .a("right_front_leg", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, 0.0F, 90.0F), ett.b.b), new etv(0.4583F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.2083F, etw.a(6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.4583F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a("right_mid_leg", new ett(ett.d.b, new etv(0.0833F, etw.b(0.0F, 0.0F, 90.0F), ett.b.b), new etv(0.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0833F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.3333F, etw.a(6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a("right_hind_leg", new ett(ett.d.b, new etv(0.1667F, etw.b(0.0F, 0.0F, 90.0F), ett.b.b), new etv(0.6667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.1667F, etw.a(-4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.4167F, etw.a(6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.6667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a("left_front_leg", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, 0.0F, -90.0F), ett.b.b), new etv(0.4583F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0F, etw.a(4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.2083F, etw.a(-6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.4583F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a("left_mid_leg", new ett(ett.d.b, new etv(0.0833F, etw.b(0.0F, 0.0F, -90.0F), ett.b.b), new etv(0.5833F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.0833F, etw.a(4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.3333F, etw.a(-6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.5833F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a("left_hind_leg", new ett(ett.d.b, new etv(0.1667F, etw.b(0.0F, 0.0F, -90.0F), ett.b.b), new etv(0.6667F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)))
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.a,
+            new etv(0.1667F, etw.a(4.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.4167F, etw.a(-6.0F, -5.5F, 0.0F), ett.b.b),
+            new etv(0.6667F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .b();
+   public static final etu h = etu.a.a(4.0F)
+      .a(
+         "bone",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(-90.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.5F, etw.b(-98.91F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.9583F, etw.b(-90.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.7083F, etw.b(-68.28F, 0.0F, 0.0F), ett.b.b),
+            new etv(2.9583F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a(
+         "bone",
+         new ett(
+            ett.d.a,
+            new etv(1.0F, etw.a(0.0F, 20.0F, 17.0F), ett.b.b),
+            new etv(1.5F, etw.a(0.0F, 25.19F, 20.37F), ett.b.b),
+            new etv(1.9583F, etw.a(0.0F, 20.0F, 17.0F), ett.b.b),
+            new etv(2.7083F, etw.a(0.0F, 17.06F, 11.25F), ett.b.b),
+            new etv(2.8333F, etw.a(0.0F, 9.85F, 2.2F), ett.b.b),
+            new etv(2.9583F, etw.a(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a(
+         "body",
+         new ett(
+            ett.d.c,
+            new etv(1.0F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(1.9583F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(2.9167F, etw.a(1.0, 1.0, 1.0), ett.b.a),
+            new etv(3.0F, etw.a(1.05F, 0.95F, 1.05F), ett.b.a),
+            new etv(3.0833F, etw.a(1.0, 1.0, 1.0), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.2917F, etw.b(17.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.9583F, etw.b(-10.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.75F, etw.b(35.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.9167F, etw.b(-30.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0417F, etw.b(7.5F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.125F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ett(
+            ett.d.a,
+            new etv(1.0F, etw.a(0.0F, 7.0F, 19.0F), ett.b.a),
+            new etv(1.5F, etw.a(0.0F, 7.0F, 0.0F), ett.b.a),
+            new etv(1.9583F, etw.a(0.0F, 7.0F, 0.0F), ett.b.a),
+            new etv(2.75F, etw.a(0.0F, 7.0F, 0.0F), ett.b.a),
+            new etv(2.9583F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, -5.0F), ett.b.a),
+            new etv(1.9583F, etw.b(0.0F, 0.0F, -5.0F), ett.b.a),
+            new etv(2.7083F, etw.b(0.0F, 0.0F, -5.0F), ett.b.a),
+            new etv(2.9167F, etw.b(0.0F, 0.0F, -90.0F), ett.b.b),
+            new etv(3.125F, etw.b(0.0F, 0.0F, -5.0F), ett.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 5.0F), ett.b.a),
+            new etv(1.9583F, etw.b(0.0F, 0.0F, 5.0F), ett.b.a),
+            new etv(2.7083F, etw.b(0.0F, 0.0F, 5.0F), ett.b.a),
+            new etv(2.9167F, etw.b(0.0F, 0.0F, 90.0F), ett.b.b),
+            new etv(3.125F, etw.b(0.0F, 0.0F, 5.0F), ett.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.25F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.5F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.75F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("right_front_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .a(
+         "right_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.625F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.875F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.125F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.375F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.625F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("right_mid_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .a(
+         "right_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.25F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.5F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("right_hind_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .a(
+         "left_front_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.25F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.5F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.75F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("left_front_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .a(
+         "left_mid_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.375F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.625F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.875F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.125F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.375F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.625F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("left_mid_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .a(
+         "left_hind_leg",
+         new ett(
+            ett.d.b,
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.25F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.5F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(1.75F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.0F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.25F, etw.b(-15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(2.5F, etw.b(15.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(3.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
+         )
+      )
+      .a("left_hind_leg", new ett(ett.d.a, new etv(1.0F, etw.a(0.0F, 4.0F, 0.0F), ett.b.a), new etv(1.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)))
+      .b();
+   public static final etu i = etu.a.a(2.0F)
+      .a()
+      .a(
+         "head",
+         new ett(
+            ett.d.b,
+            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
+            new etv(0.5F, etw.b(-32.00206F, 19.3546F, -11.70092F), ett.b.b),
+            new etv(1.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.5F, etw.b(-32.00206F, -19.3546F, 11.70092F), ett.b.b),
+            new etv(2.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(0.75F, etw.b(0.0F, 0.0F, -67.5F), ett.b.b),
+            new etv(0.9583F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.125F, etw.b(0.0F, 0.0F, -67.5F), ett.b.b),
+            new etv(1.2917F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ett(
+            ett.d.b,
+            new etv(0.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(0.75F, etw.b(0.0F, 0.0F, 67.5F), ett.b.b),
+            new etv(0.9583F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b),
+            new etv(1.125F, etw.b(0.0F, 0.0F, 67.5F), ett.b.b),
+            new etv(1.2917F, etw.b(0.0F, 0.0F, 0.0F), ett.b.b)
+         )
+      )
+      .b();
 }

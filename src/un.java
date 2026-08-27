@@ -8,19 +8,19 @@ public record un(uo j, uo k) {
       $$0 -> $$0.group(uo.a.fieldOf("chat").forGetter(un::a), uo.a.fieldOf("narration").forGetter(un::b)).apply($$0, un::new)
    );
    public static final uo b = uo.a("chat.type.text");
-   public static final agf<un> c = a("chat");
-   public static final agf<un> d = a("say_command");
-   public static final agf<un> e = a("msg_command_incoming");
-   public static final agf<un> f = a("msg_command_outgoing");
-   public static final agf<un> g = a("team_msg_command_incoming");
-   public static final agf<un> h = a("team_msg_command_outgoing");
-   public static final agf<un> i = a("emote_command");
+   public static final agh<un> c = a("chat");
+   public static final agh<un> d = a("say_command");
+   public static final agh<un> e = a("msg_command_incoming");
+   public static final agh<un> f = a("msg_command_outgoing");
+   public static final agh<un> g = a("team_msg_command_incoming");
+   public static final agh<un> h = a("team_msg_command_outgoing");
+   public static final agh<un> i = a("emote_command");
 
-   private static agf<un> a(String $$0) {
-      return agf.a(jz.as, new agg($$0));
+   private static agh<un> a(String $$0) {
+      return agh.a(jz.as, new agi($$0));
    }
 
-   public static void a(ou<un> $$0) {
+   public static void a(ov<un> $$0) {
       $$0.a(c, new un(b, uo.a("chat.type.text.narrate")));
       $$0.a(d, new un(uo.a("chat.type.announcement"), uo.a("chat.type.text.narrate")));
       $$0.a(e, new un(uo.b("commands.message.display.incoming"), uo.a("chat.type.text.narrate")));
@@ -30,15 +30,15 @@ public record un(uo j, uo k) {
       $$0.a(i, new un(uo.a("chat.type.emote"), uo.a("chat.type.emote")));
    }
 
-   public static un.a a(agf<un> $$0, bki $$1) {
-      return a($$0, $$1.dL().H_(), $$1.O_());
+   public static un.a a(agh<un> $$0, bkq $$1) {
+      return a($$0, $$1.dN().H_(), $$1.P_());
    }
 
-   public static un.a a(agf<un> $$0, du $$1) {
+   public static un.a a(agh<un> $$0, du $$1) {
       return a($$0, $$1.v(), $$1.c());
    }
 
-   public static un.a a(agf<un> $$0, ip $$1, ur $$2) {
+   public static un.a a(agh<un> $$0, ip $$1, ur $$2) {
       io<un> $$3 = $$1.d(jz.as);
       return $$3.e($$0).a($$2);
    }

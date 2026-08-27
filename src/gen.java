@@ -1,28 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class gen {
-   private final List<gem> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gen(List<gem> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class gen extends gep {
+   public gen(bws $$0) {
+      super($$0, aqr.bB, aqs.g);
+      this.j = 0;
    }
 
-   public List<gem> a() {
-      return this.a;
+   @Override
+   protected gel o() {
+      return new geo(this.n);
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   protected boolean p() {
+      return !this.n.Z_();
    }
 }

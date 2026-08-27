@@ -1,29 +1,21 @@
-public class bgr implements bgs {
-   public static final bgs a = new bgr();
+public enum bgr {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-   @Override
-   public void a() {
+   private final String j;
+
+   private bgr(String $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bfh f() {
-      return bfe.a;
-   }
-
-   @Override
-   public void d() {
+   public String a() {
+      return this.j;
    }
 }

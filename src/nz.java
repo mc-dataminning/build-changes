@@ -1,35 +1,47 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class nz extends ny<ckw> {
-   private final CompletableFuture<od.c<cut>> d;
-   private final Map<arr<cut>, arr<ckw>> g = new HashMap<>();
+public abstract class nz<T> extends oe<T> {
+   private final Function<T, agh<T>> d;
 
-   public nz(kh $$0, CompletableFuture<id.b> $$1, CompletableFuture<od.c<cut>> $$2) {
-      super($$0, jz.E, $$1, $$0x -> $$0x.j().g());
-      this.d = $$2;
-   }
-
-   public nz(kh $$0, CompletableFuture<id.b> $$1, CompletableFuture<od.c<ckw>> $$2, CompletableFuture<od.c<cut>> $$3) {
-      super($$0, jz.E, $$1, $$2, $$0x -> $$0x.j().g());
+   public nz(kh $$0, agh<? extends io<T>> $$1, CompletableFuture<id.b> $$2, Function<T, agh<T>> $$3) {
+      super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   protected void a(arr<cut> $$0, arr<ckw> $$1) {
-      this.g.put($$0, $$1);
+   public nz(kh $$0, agh<? extends io<T>> $$1, CompletableFuture<id.b> $$2, CompletableFuture<oe.c<T>> $$3, Function<T, agh<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
    }
 
-   @Override
-   protected CompletableFuture<id.b> b() {
-      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            aro $$3 = this.c((arr<ckw>)$$2);
-            Optional<aro> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (id.b)$$0;
-      });
+   protected nz.a<T> a(arv<T> $$0) {
+      ars $$1 = this.c($$0);
+      return new nz.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends oe.b<T> {
+      private final Function<T, agh<T>> a;
+
+      a(ars $$0, Function<T, agh<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public nz.a<T> a(arv<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final nz.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final nz.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

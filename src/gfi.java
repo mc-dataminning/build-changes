@@ -1,101 +1,33 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class gfi {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class gfi<T> implements gfm<T> {
+   protected final Comparator<T> a;
+   protected final gfn<T> b;
 
-   public static class a extends Thread {
-      private final gfi.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(gfi.b $$0) throws IOException {
-         super("LanServerDetector #" + gfi.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(gfi.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               gfi.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            gfi.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public gfi(Function<T, Stream<agi>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ac.e($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = gfn.a($$1, $$0);
    }
 
-   public static class b {
-      private final List<gfh> a = Lists.newArrayList();
-      private boolean b;
+   @Override
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   }
 
-      @Nullable
-      public synchronized List<gfh> a() {
-         if (this.b) {
-            List<gfh> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
-      }
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
+   }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = gfj.a($$0);
-         String $$3 = gfj.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (gfh $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new gfh($$2, $$3));
-               this.b = true;
-            }
-         }
-      }
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new gfj<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

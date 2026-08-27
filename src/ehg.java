@@ -1,36 +1,70 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public class ehg implements ehk {
-   private static final ehg b = new ehg();
-   public static final Codec<ehg> a = Codec.unit(b);
+public class ehg {
+   private final Set<ehf<?>> a;
+   private final Set<ehf<?>> b;
 
-   private ehg() {
+   ehg(Set<ehf<?>> $$0, Set<ehf<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   }
+
+   public boolean a(ehf<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<ehf<?>> a() {
+      return this.a;
+   }
+
+   public Set<ehf<?>> b() {
+      return this.b;
    }
 
    @Override
-   public ehl b() {
-      return ehm.m;
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   @Override
-   public Set<egt<?>> a() {
-      return ImmutableSet.of(egw.j);
-   }
-
-   public boolean a(eel $$0) {
-      Float $$1 = $$0.c(egw.j);
-      if ($$1 != null) {
-         ato $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+   public void a(efg $$0, eey $$1) {
+      Set<ehf<?>> $$2 = $$1.a();
+      Set<ehf<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.a("Parameters " + $$3 + " are not provided in this context");
       }
    }
 
-   public static ehk.a c() {
-      return () -> b;
+   public static ehg.a c() {
+      return new ehg.a();
+   }
+
+   public static class a {
+      private final Set<ehf<?>> a = Sets.newIdentityHashSet();
+      private final Set<ehf<?>> b = Sets.newIdentityHashSet();
+
+      public ehg.a a(ehf<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public ehg.a b(ehf<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public ehg a() {
+         return new ehg(this.a, this.b);
+      }
    }
 }

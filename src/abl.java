@@ -4,13 +4,13 @@ public class abl implements wk<yd> {
    private final int a;
    private final int[] b;
 
-   public abl(bki $$0) {
-      this.a = $$0.ah();
-      List<bki> $$1 = $$0.cP();
+   public abl(bkq $$0) {
+      this.a = $$0.aj();
+      List<bkq> $$1 = $$0.cQ();
       this.b = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).ah();
+         this.b[$$2] = $$1.get($$2).aj();
       }
    }
 

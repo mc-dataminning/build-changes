@@ -1,85 +1,89 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public final class fmi {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fmi c = new fmi(HostAndPort.fromParts("server.invalid", 25565));
+public abstract class fmi {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected fmk e;
 
-   public fmi(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public fmi(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private fmi(HostAndPort $$0) {
-      this.b = $$0;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public abstract fmi b();
+
+   public abstract fau a(fau var1, fmm var2);
+
+   public abstract static class a<R extends fmi> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public fmk h() {
+         return this.a.e;
+      }
+
+      public void a(fmk $$0) {
+         this.a.e = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract fmi.b c();
+
+      public abstract Either<fmi.c, fmi.b> a(fmm var1);
+   }
+
+   public static record b(ur e) {
+      public static final fmi.b a = new fmi.b(ur.c("gui.abuseReport.send.no_reason"));
+      public static final fmi.b b = new fmi.b(ur.c("gui.chatReport.send.no_reported_messages"));
+      public static final fmi.b c = new fmi.b(ur.c("gui.chatReport.send.too_many_messages"));
+      public static final fmi.b d = new fmi.b(ur.c("gui.abuseReport.send.comment_too_long"));
+
+      public ewk a() {
+         return ewk.a(this.e);
+      }
+
+      public ur b() {
+         return this.e;
       }
    }
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fmi a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fmi($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
-   }
-
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fmi ? this.b.equals(((fmi)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public static record c(UUID a, fml b, AbuseReport c) {
    }
 }

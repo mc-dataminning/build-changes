@@ -1,66 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public record ata<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<ata<Integer>> a = a(Codec.INT);
+public class ata implements aui, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   public ata(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
-      }
-   }
-
-   public ata(T $$0) {
-      this($$0, $$0);
-   }
-
-   public static <T extends Comparable<T>> Codec<ata<T>> a(Codec<T> $$0) {
-      return asq.a($$0, "min_inclusive", "max_inclusive", ata::a, ata::a, ata::b);
-   }
-
-   public static <T extends Comparable<T>> Codec<ata<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return asq.a(
-         a($$0),
-         (Function<ata<T>, DataResult<ata<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
-   }
-
-   public static <T extends Comparable<T>> DataResult<ata<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new ata($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(ata<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   public ata(Executor $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
+   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
+      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
+         if (!this.e) {
+            $$1.accept((T)$$1x);
+         }
+      }, this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1x) {
+            $$0x = $$1x.getCause();
+         }
+
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
    }
 
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

@@ -1,86 +1,49 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ezu extends fau {
+   private static final agi a = new agi("textures/gui/demo_background.png");
+   private evs b = evs.a;
+   private evs c = evs.a;
 
-public class ezu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<chl<?>, ezu.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends cge> void a(@Nullable chl<T> $$0, esr $$1, int $$2, ur $$3) {
-      if ($$0 == null) {
-         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
-      } else {
-         ezu.a<T, ?> $$4 = a($$0);
-         if ($$4 == null) {
-            a.warn("Failed to create screen for menu type: {}", jy.s.b($$0));
-         } else {
-            $$4.a($$3, $$0, $$1, $$2);
-         }
-      }
+   public ezu() {
+      super(ur.c("demo.help.title"));
    }
 
-   @Nullable
-   private static <T extends cge> ezu.a<T, ?> a(chl<T> $$0) {
-      return (ezu.a<T, ?>)b.get($$0);
+   @Override
+   protected void aP_() {
+      int $$0 = -16;
+      this.d(euz.a(ur.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(euz.a(ur.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      eth $$1 = this.f.m;
+      this.b = evs.a(
+         this.i,
+         ur.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         ur.c("demo.help.movementMouse"),
+         ur.a("demo.help.jump", $$1.B.k()),
+         ur.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = evs.a(this.i, ur.c("demo.help.fullWrapped"), 218);
    }
 
-   private static <M extends cge, U extends fah & fcl<M>> void a(chl<? extends M> $$0, ezu.a<M, U> $$1) {
-      ezu.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + jy.s.b($$0));
-      }
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (chl<?> $$1 : jy.s) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", jy.s.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(chl.a, fbr::new);
-      a(chl.b, fbr::new);
-      a(chl.c, fbr::new);
-      a(chl.d, fbr::new);
-      a(chl.e, fbr::new);
-      a(chl.f, fbr::new);
-      a(chl.g, fbx::new);
-      a(chl.h, fbs::new);
-      a(chl.i, fbj::new);
-      a(chl.j, fbk::new);
-      a(chl.k, fbl::new);
-      a(chl.l, fbo::new);
-      a(chl.m, fbt::new);
-      a(chl.n, fca::new);
-      a(chl.o, fcb::new);
-      a(chl.p, fcc::new);
-      a(chl.q, fce::new);
-      a(chl.r, fcj::new);
-      a(chl.s, fck::new);
-      a(chl.t, fcm::new);
-      a(chl.u, fcp::new);
-      a(chl.v, fcr::new);
-      a(chl.w, fcs::new);
-      a(chl.x, fbp::new);
-      a(chl.y, fct::new);
-   }
-
-   interface a<T extends cge, U extends fah & fcl<T>> {
-      default void a(ur $$0, chl<T> $$1, esr $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.fS()), $$2.s.fS(), $$0);
-         $$2.s.bS = $$4.D();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cdl var2, ur var3);
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

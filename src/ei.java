@@ -44,7 +44,7 @@ public class ei implements ArgumentType<ei.a> {
 
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.m().ap().a($$4);
+            Optional<GameProfile> $$2 = $$1.m().ar().a($$4);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -85,14 +85,14 @@ public class ei implements ArgumentType<ei.a> {
 
       @Override
       public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
-         List<amb> $$1 = this.a.d($$0);
+         List<amf> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw eg.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (amb $$3 : $$1) {
-               $$2.add($$3.fR());
+            for (amf $$3 : $$1) {
+               $$2.add($$3.fS());
             }
 
             return $$2;

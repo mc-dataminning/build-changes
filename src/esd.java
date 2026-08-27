@@ -1,26 +1,56 @@
-public enum esd {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final esd[] d = values();
-   private final boolean e;
-   private final boolean f;
+public abstract class esd implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   private esd(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   public boolean a() {
-      return this.e;
+   public static void a(fau $$0) {
+      etd $$1 = etd.N();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   public boolean b() {
-      return this.f;
+   protected void a(ur $$0) {
+      this.b();
+      etd $$1 = etd.N();
+      $$1.execute(() -> $$1.a(new eqq($$0, new eoh(new faz()))));
    }
 
-   public esd c() {
-      return d[(this.ordinal() + 1) % d.length];
+   protected void a(Exception $$0) {
+      if ($$0 instanceof epz $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(ur.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(epz $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract ur a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

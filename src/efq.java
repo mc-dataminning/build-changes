@@ -1,78 +1,66 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
 
-public class efq extends efx {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<ig<cpm>> c = jy.g.r().listOf().xmap(ig::a, $$0 -> $$0.a().toList());
-   public static final Codec<efq> a = RecordCodecBuilder.create($$0 -> a($$0).and(asq.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, efq::new));
-   private final Optional<ig<cpm>> d;
+public abstract class efq implements efi {
+   protected final List<ehw> e;
+   private final Predicate<eex> a;
 
-   efq(List<ehk> $$0, Optional<ig<cpm>> $$1) {
-      super($$0);
-      this.d = $$1;
+   protected efq(List<ehw> $$0) {
+      this.e = $$0;
+      this.a = ehy.a($$0);
    }
 
-   @Override
-   public efz b() {
-      return ega.e;
+   protected static <T extends efq> P1<Mu<T>, List<ehw>> a(Instance<T> $$0) {
+      return $$0.group(asu.a(ehy.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public clb a(clb $$0, eel $$1) {
-      ato $$2 = $$1.b();
-      Optional<ib<cpm>> $$3 = this.d.<ib<cpm>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(cle.qb);
-         List<ib.c<cpm>> $$3x = jy.g.h().filter($$0xx -> ((cpm)$$0xx.a()).i()).filter($$2xx -> $$2x || ((cpm)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
+   public void a(efg $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
       }
    }
 
-   private static clb a(clb $$0, cpm $$1, ato $$2) {
-      int $$3 = ati.a($$2, $$1.e(), $$1.a());
-      if ($$0.a(cle.qb)) {
-         $$0 = new clb(cle.tD);
-         cjx.a($$0, new cpp($$1, $$3));
-      } else {
-         $$0.a($$1, $$3);
-      }
-
-      return $$0;
+   protected final boolean a(eex $$0) {
+      return this.a.test($$0);
    }
 
-   public static efq.a c() {
-      return new efq.a();
-   }
+   public abstract efr a();
 
-   public static efx.a<?> d() {
-      return a($$0 -> new efq($$0, Optional.empty()));
-   }
+   public abstract static class a<T extends efq.a<T>> implements ehp<T> {
+      private final Builder<ehw> a = ImmutableList.builder();
 
-   public static class a extends efx.a<efq.a> {
-      private final List<ib<cpm>> a = new ArrayList<>();
+      protected abstract T aD_();
 
-      protected efq.a a() {
-         return this;
+      public T a(ehw.a $$0) {
+         this.a.add($$0.build());
+         return this.aD_();
       }
 
-      public efq.a a(cpm $$0) {
-         this.a.add($$0.j());
-         return this;
+      public final T e() {
+         return this.aD_();
       }
 
-      @Override
-      public efy b() {
-         return new efq(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ig.a(this.a)));
+      protected List<ehw> f() {
+         return this.a.build();
       }
+
+      public efh.a a(efq.a<?> $$0) {
+         return new efh.a(this, $$0);
+      }
+
+      public efm.a b(efq.a<?> $$0) {
+         return new efm.a(this, $$0);
+      }
+
+      public efu.a c(efq.a<?> $$0) {
+         return new efu.a(this, $$0);
+      }
+
+      public abstract efq b();
    }
 }

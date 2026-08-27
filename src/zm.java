@@ -12,10 +12,10 @@ public class zm {
    private final byte[] c;
    private final List<zm.a> d;
 
-   public zm(djd $$0) {
+   public zm(djp $$0) {
       this.b = new rz();
 
-      for (Entry<dmf.a, dmf> $$1 : $$0.e()) {
+      for (Entry<dmr.a, dmr> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new sg($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class zm {
       a(new tu(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<ht, der> $$2 : $$0.G().entrySet()) {
+      for (Entry<ht, dfd> $$2 : $$0.G().entrySet()) {
          this.d.add(zm.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class zm {
       $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   private static int a(djd $$0) {
+   private static int a(djp $$0) {
       int $$1 = 0;
 
-      for (dje $$2 : $$0.d()) {
+      for (djq $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class zm {
       return $$0;
    }
 
-   public static void a(tu $$0, djd $$1) {
-      for (dje $$2 : $$1.d()) {
+   public static void a(tu $$0, djp $$1) {
+      for (djq $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -103,11 +103,11 @@ public class zm {
    static class a {
       final int a;
       final int b;
-      final det<?> c;
+      final dff<?> c;
       @Nullable
       final rz d;
 
-      private a(int $$0, int $$1, det<?> $$2, @Nullable rz $$3) {
+      private a(int $$0, int $$1, dff<?> $$2, @Nullable rz $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -128,8 +128,8 @@ public class zm {
          $$0.a((sw)this.d);
       }
 
-      static zm.a a(der $$0) {
-         rz $$1 = $$0.av_();
+      static zm.a a(dfd $$0) {
+         rz $$1 = $$0.aw_();
          ht $$2 = $$0.p();
          int $$3 = iu.b($$2.u()) << 4 | iu.b($$2.w());
          return new zm.a($$3, $$2.v(), $$0.u(), $$1.g() ? null : $$1);
@@ -138,6 +138,6 @@ public class zm {
 
    @FunctionalInterface
    public interface b {
-      void accept(ht var1, det<?> var2, @Nullable rz var3);
+      void accept(ht var1, dff<?> var2, @Nullable rz var3);
    }
 }

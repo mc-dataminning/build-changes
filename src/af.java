@@ -1,4 +1,4 @@
-public record af(agg a, ae b) {
+public record af(agi a, ae b) {
    public void a(tu $$0) {
       $$0.a(this.a);
       this.b.a($$0);

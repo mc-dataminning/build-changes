@@ -11,7 +11,7 @@ public class zr {
    private final List<byte[]> e;
    private final List<byte[]> f;
 
-   public zr(cqz $$0, ebv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public zr(crh $$0, ech $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.a = new BitSet();
       this.b = new BitSet();
       this.c = new BitSet();
@@ -21,11 +21,11 @@ public class zr {
 
       for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
          if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, csb.a, $$4, this.a, this.c, this.e);
+            this.a($$0, $$1, csj.a, $$4, this.a, this.c, this.e);
          }
 
          if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, csb.b, $$4, this.b, this.d, this.f);
+            this.a($$0, $$1, csj.b, $$4, this.b, this.d, this.f);
          }
       }
    }
@@ -48,8 +48,8 @@ public class zr {
       $$0.a(this.f, tu::a);
    }
 
-   private void a(cqz $$0, ebv $$1, csb $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      diy $$7 = $$1.a($$2).a(iu.a($$0, $$1.d() + $$3));
+   private void a(crh $$0, ech $$1, csj $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      djk $$7 = $$1.a($$2).a(iu.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {
             $$5.set($$3);

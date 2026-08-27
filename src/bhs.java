@@ -1,44 +1,111 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bhs extends bhv {
-   public static final bhs a = new bhs(0);
-   public static final Codec<bhs> b = asq.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bhs::new, bhs::d);
-   private final int f;
+public interface bhs<T, F> {
+   @Nullable
+   F a();
 
-   public static bhs a(int $$0) {
-      return $$0 == 0 ? a : new bhs($$0);
+   boolean a(T var1);
+
+   boolean b();
+
+   int c();
+
+   public static final class a implements bhs<bhs.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
+      }
+
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bhs.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   private bhs(int $$0) {
-      this.f = $$0;
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
+
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
    }
 
-   public int d() {
-      return this.f;
-   }
+   public static final class c<T> implements bhs<T, T> {
+      private final Queue<T> a;
 
-   @Override
-   public int a(ato $$0) {
-      return this.f;
-   }
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public int a() {
-      return this.f;
-   }
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
 
-   @Override
-   public bhw<?> c() {
-      return bhw.a;
-   }
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 }

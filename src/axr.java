@@ -1,33 +1,47 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DynamicOps;
+import java.util.Locale;
 
-public class axr extends DataFix {
-   public axr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class axr extends DataFix {
+   protected final String a;
+
+   public axr(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(ban.x),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bat.x);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bat.x);
+      return this.fixTypeEverywhere(
+         this.a,
+         $$0,
+         $$1,
+         $$2 -> $$3 -> {
+               String $$4 = (String)$$3.getFirst();
+               Type<?> $$5 = (Type<?>)$$0.types().get($$4);
+               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2, $$5));
+               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
+               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
+                  throw new IllegalStateException(
+                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
+                  );
+               } else {
+                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
                }
-            )
+            }
       );
    }
+
+   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
+      return new Typed($$2, $$1, $$0);
+   }
+
+   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

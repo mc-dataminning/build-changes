@@ -1,55 +1,93 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public abstract class aon<T> {
-   private final eiy a;
+public abstract class aon implements aou {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "vanilla";
+   private final anw c;
+   private final any d;
+   private final agi e;
+   private final ejk f;
 
-   protected aon(eiy $$0) {
-      this.a = $$0;
+   public aon(anw $$0, any $$1, agi $$2, ejk $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   @Override
+   public void a(Consumer<aop> $$0) {
+      aop $$1 = this.a(this.d);
+      if ($$1 != null) {
+         $$0.accept($$1);
+      }
+
+      this.b($$0);
    }
 
    @Nullable
-   public T a(Path $$0, List<eiz> $$1) throws IOException {
-      Path $$2 = $$0;
+   protected abstract aop a(anv var1);
 
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
-      }
+   protected abstract ur a(String var1);
 
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
+   public any a() {
+      return this.d;
+   }
+
+   private void b(Consumer<aop> $$0) {
+      Map<String, Function<String, aop>> $$1 = new HashMap<>();
+      this.a($$1::put);
+      $$1.forEach(($$1x, $$2) -> {
+         aop $$3 = $$2.apply($$1x);
+         if ($$3 != null) {
+            $$0.accept($$3);
          }
+      });
+   }
 
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
+   protected void a(BiConsumer<String, Function<String, aop>> $$0) {
+      this.d.a(this.c, this.e, $$1 -> this.a($$1, $$0));
+   }
 
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, aop>> $$1) {
+      if ($$0 != null && Files.isDirectory($$0)) {
+         try {
+            aoo.a($$0, this.f, true, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
+         } catch (IOException var4) {
+            b.warn("Failed to discover packs in {}", $$0, var4);
          }
-      } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
       }
    }
 
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
+   private static String a(Path $$0) {
+      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   }
 
    @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   protected abstract aop a(String var1, aop.c var2, ur var3);
+
+   protected static aop.c b(final anv $$0) {
+      return new aop.c() {
+         @Override
+         public anv a(String $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public anv a(String $$0x, aop.a $$1) {
+            return $$0;
+         }
+      };
+   }
 }

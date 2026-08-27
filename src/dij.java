@@ -1,57 +1,62 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+public enum dij implements aug {
+   a("harp", aqr.qJ, dij.a.a),
+   b("basedrum", aqr.qD, dij.a.a),
+   c("snare", aqr.qM, dij.a.a),
+   d("hat", aqr.qK, dij.a.a),
+   e("bass", aqr.qE, dij.a.a),
+   f("flute", aqr.qH, dij.a.a),
+   g("bell", aqr.qF, dij.a.a),
+   h("guitar", aqr.qI, dij.a.a),
+   i("chime", aqr.qG, dij.a.a),
+   j("xylophone", aqr.qN, dij.a.a),
+   k("iron_xylophone", aqr.qO, dij.a.a),
+   l("cow_bell", aqr.qP, dij.a.a),
+   m("didgeridoo", aqr.qQ, dij.a.a),
+   n("bit", aqr.qR, dij.a.a),
+   o("banjo", aqr.qS, dij.a.a),
+   p("pling", aqr.qL, dij.a.a),
+   q("zombie", aqr.qT, dij.a.b),
+   r("skeleton", aqr.qU, dij.a.b),
+   s("creeper", aqr.qV, dij.a.b),
+   t("dragon", aqr.qW, dij.a.b),
+   u("wither_skeleton", aqr.qX, dij.a.b),
+   v("piglin", aqr.qY, dij.a.b),
+   w("custom_head", aqr.yZ, dij.a.c);
 
-public record dij(String m, dhl n, dcf o, dcf p, aqm q, aqm r) {
-   private static final Map<String, dij> s = new Object2ObjectArrayMap();
-   public static final Codec<dij> a = asq.a(dij::b, s::get);
-   public static final dij b = a(new dij("oak", dhl.f));
-   public static final dij c = a(new dij("spruce", dhl.g));
-   public static final dij d = a(new dij("birch", dhl.h));
-   public static final dij e = a(new dij("acacia", dhl.i));
-   public static final dij f = a(new dij("cherry", dhl.j, dcf.aQ, dcf.aT, aqn.ef, aqn.eg));
-   public static final dij g = a(new dij("jungle", dhl.k));
-   public static final dij h = a(new dij("dark_oak", dhl.l));
-   public static final dij i = a(new dij("crimson", dhl.m, dcf.aP, dcf.aM, aqn.pr, aqn.ps));
-   public static final dij j = a(new dij("warped", dhl.n, dcf.aP, dcf.aM, aqn.pr, aqn.ps));
-   public static final dij k = a(new dij("mangrove", dhl.o));
-   public static final dij l = a(new dij("bamboo", dhl.p, dcf.aO, dcf.aN, aqn.bh, aqn.bi));
+   private final String x;
+   private final ib<aqq> y;
+   private final dij.a z;
 
-   public dij(String $$0, dhl $$1) {
-      this($$0, $$1, dcf.b, dcf.aL, aqn.hF, aqn.hG);
+   private dij(String $$0, ib<aqq> $$1, dij.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   private static dij a(dij $$0) {
-      s.put($$0.b(), $$0);
-      return $$0;
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   public static Stream<dij> a() {
-      return s.values().stream();
+   public ib<aqq> a() {
+      return this.y;
    }
 
-   public String b() {
-      return this.m;
+   public boolean b() {
+      return this.z == dij.a.a;
    }
 
-   public dhl c() {
-      return this.n;
+   public boolean d() {
+      return this.z == dij.a.c;
    }
 
-   public dcf d() {
-      return this.o;
+   public boolean e() {
+      return this.z != dij.a.a;
    }
 
-   public dcf e() {
-      return this.p;
-   }
-
-   public aqm f() {
-      return this.q;
-   }
-
-   public aqm g() {
-      return this.r;
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,68 +1,51 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class brb extends bre {
+   private final int l;
+   private final boolean m;
 
-public class brb extends brt {
-   private final bxm a;
-   @Nullable
-   private cdm b;
-   private final crs c;
-   private final float d;
-   private int e;
-   private final bvk f;
-
-   public brb(bxm $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dL();
-      this.d = $$1;
-      this.f = bvk.b().a((double)$$1);
-      this.a(EnumSet.of(brt.a.b));
+   public brb(bli $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
+   public void a() {
+      if (this.k == bre.a.b) {
+         this.k = bre.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.ds();
+         double $$1 = this.f - this.d.du();
+         double $$2 = this.g - this.d.dy();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
+            this.d.A(0.0F);
+            return;
+         }
 
-   @Override
-   public boolean b() {
-      if (!this.b.bv()) {
-         return false;
+         float $$4 = (float)(atm.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dD(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aC()) {
+            $$5 = (float)(this.h * this.d.b(bmm.m));
+         } else {
+            $$5 = (float)(this.h * this.d.b(bmm.f));
+         }
+
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(atm.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dF(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
+         }
       } else {
-         return this.a.f((bki)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.ef().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.a.A(false);
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Y());
-      this.e--;
-   }
-
-   private boolean a(cdm $$0) {
-      for (bip $$1 : bip.values()) {
-         clb $$2 = $$0.b($$1);
-         if (this.a.s() && $$2.a(cle.qL)) {
-            return true;
+         if (!this.m) {
+            this.d.e(false);
          }
 
-         if (this.a.m($$2)) {
-            return true;
-         }
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
-
-      return false;
    }
 }

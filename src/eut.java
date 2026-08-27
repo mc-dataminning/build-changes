@@ -1,274 +1,171 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public abstract class eut extends eux implements ewc, ewu {
+   private static final ewm a = new ewm(new agi("widget/text_field"), new agi("widget/text_field_highlighted"));
+   private static final agi b = new agi("widget/scroller");
+   private static final int c = 4;
+   private static final int d = 8;
+   private double e;
+   private boolean l;
 
-public class eut<T> extends eue {
-   public static final BooleanSupplier a = fah::r;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final ur c;
-   private int d;
-   private T l;
-   private final eut.c<T> m;
-   private final Function<T, ur> n;
-   private final Function<eut<T>, vf> o;
-   private final eut.b<T> p;
-   private final boolean q;
-   private final esu.l<T> r;
-
-   eut(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      ur $$4,
-      ur $$5,
-      int $$6,
-      T $$7,
-      eut.c<T> $$8,
-      Function<T, ur> $$9,
-      Function<eut<T>, vf> $$10,
-      eut.b<T> $$11,
-      esu.l<T> $$12,
-      boolean $$13
-   ) {
+   public eut(int $$0, int $$1, int $$2, int $$3, ur $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.g();
-   }
-
-   private void g() {
-      this.a(this.r.apply(this.l));
    }
 
    @Override
-   public void b() {
-      if (fah.q()) {
-         this.a(-1);
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (!this.j) {
+         return false;
       } else {
-         this.a(1);
+         boolean $$3 = this.b($$0, $$1);
+         boolean $$4 = this.e()
+            && $$0 >= (double)(this.p() + this.f)
+            && $$0 <= (double)(this.p() + this.f + 8)
+            && $$1 >= (double)this.r()
+            && $$1 < (double)(this.r() + this.g);
+         if ($$4 && $$2 == 0) {
+            this.l = true;
+            return true;
+         } else {
+            return $$3 || $$4;
+         }
       }
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = ati.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         this.l = false;
+      }
+
+      return super.b($$0, $$1, $$2);
    }
 
-   private T i(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(ati.b(this.d + $$0, $$1.size()));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.j && this.aJ_() && this.l) {
+         if ($$1 < (double)this.r()) {
+            this.a(0.0);
+         } else if ($$1 > (double)(this.r() + this.g)) {
+            this.a((double)this.d());
+         } else {
+            int $$5 = this.v();
+            double $$6 = (double)Math.max(1, this.d() / (this.g - $$5));
+            this.a(this.e + $$4 * $$6);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
+      if (!this.j) {
+         return false;
+      } else {
+         this.a(this.e - $$3 * this.h());
+         return true;
       }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      ur $$1 = this.c($$0);
-      this.b($$1);
-      this.l = $$0;
-      this.g();
-   }
-
-   private ur c(T $$0) {
-      return (ur)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private vf d(T $$0) {
-      return uq.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.l;
    }
 
    @Override
-   protected vf aL_() {
-      return this.o.apply(this);
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.e;
+         this.a(this.e + (double)($$3 ? -1 : 1) * this.h());
+         if ($$5 != this.e) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(eyf $$0) {
-      $$0.a(eye.a, this.aL_());
-      if (this.i) {
-         T $$1 = this.i(1);
-         ur $$2 = this.c($$1);
-         if (this.aI_()) {
-            $$0.a(eye.d, ur.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(eye.d, ur.a("narration.cycle_button.usage.hovered", $$2));
-         }
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         this.b($$0);
+         $$0.c(this.p() + 1, this.r() + 1, this.p() + this.f - 1, this.r() + this.g - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.e, 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.f();
+         this.a($$0);
       }
    }
 
-   public vf e() {
-      return a((ur)(this.q ? this.d(this.l) : this.l()));
+   private int v() {
+      return atm.a((int)((float)(this.g * this.g) / (float)this.w()), 32, this.g);
    }
 
-   public static <T> eut.a<T> a(Function<T, ur> $$0) {
-      return new eut.a<>($$0);
-   }
-
-   public static eut.a<Boolean> a(ur $$0, ur $$1) {
-      return new eut.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
-   }
-
-   public static eut.a<Boolean> f() {
-      return new eut.a<Boolean>($$0 -> $$0 ? uq.b : uq.c).a(b);
-   }
-
-   public static eut.a<Boolean> b(boolean $$0) {
-      return f().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
-      @Nullable
-      private T b;
-      private final Function<T, ur> c;
-      private esu.l<T> d = $$0x -> null;
-      private Function<eut<T>, vf> e = eut::e;
-      private eut.c<T> f = eut.c.a(ImmutableList.of());
-      private boolean g;
-
-      public a(Function<T, ur> $$0) {
-         this.c = $$0;
-      }
-
-      public eut.a<T> a(Collection<T> $$0) {
-         return this.a(eut.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final eut.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public eut.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(eut.c.a(eut.a, $$0, $$1));
-      }
-
-      public eut.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(eut.c.a($$0, $$1, $$2));
-      }
-
-      public eut.a<T> a(eut.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eut.a<T> a(esu.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eut.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
-         }
-
-         return this;
-      }
-
-      public eut.a<T> a(Function<eut<T>, vf> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eut.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public eut<T> a(int $$0, int $$1, int $$2, int $$3, ur $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public eut<T> a(int $$0, int $$1, int $$2, int $$3, ur $$4, eut.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            ur $$8 = this.c.apply($$7);
-            ur $$9 = (ur)(this.g ? $$8 : uq.a($$4, $$8));
-            return new eut<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
-         }
+   protected void a(euo $$0) {
+      if (this.e()) {
+         this.c($$0);
       }
    }
 
-   public interface b<T> {
-      void onValueChange(eut<T> var1, T var2);
+   protected int a() {
+      return 4;
    }
 
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> eut.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new eut.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
-      }
-
-      static <T> eut.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new eut.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
-      }
+   protected int b() {
+      return this.a() * 2;
    }
+
+   protected double c() {
+      return this.e;
+   }
+
+   protected void a(double $$0) {
+      this.e = atm.a($$0, 0.0, (double)this.d());
+   }
+
+   protected int d() {
+      return Math.max(0, this.w() - (this.g - 4));
+   }
+
+   private int w() {
+      return this.g() + 4;
+   }
+
+   protected void b(euo $$0) {
+      this.a($$0, this.p(), this.r(), this.k(), this.i());
+   }
+
+   protected void a(euo $$0, int $$1, int $$2, int $$3, int $$4) {
+      agi $$5 = a.a(this.aL_(), this.aJ_());
+      $$0.a($$5, $$1, $$2, $$3, $$4);
+   }
+
+   private void c(euo $$0) {
+      int $$1 = this.v();
+      int $$2 = this.p() + this.f;
+      int $$3 = Math.max(this.r(), (int)this.e * (this.g - $$1) / this.d() + this.r());
+      $$0.a(b, $$2, $$3, 8, $$1);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.e >= (double)this.r() && (double)$$0 - this.e <= (double)(this.r() + this.g);
+   }
+
+   protected boolean b(double $$0, double $$1) {
+      return $$0 >= (double)this.p() && $$0 < (double)(this.p() + this.f) && $$1 >= (double)this.r() && $$1 < (double)(this.r() + this.g);
+   }
+
+   protected boolean e() {
+      return this.g() > this.i();
+   }
+
+   public int f() {
+      return 8;
+   }
+
+   protected abstract int g();
+
+   protected abstract double h();
+
+   protected abstract void c(euo var1, int var2, int var3, float var4);
 }

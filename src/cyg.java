@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class cyg extends cut {
-   protected final hx a;
-   protected final boolean b;
-   protected final ekb d;
+public class cyg extends cvj implements cvd {
+   public static final MapCodec<cyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(agh.a(jz.au).fieldOf("feature").forGetter($$0x -> $$0x.e), jy.f.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, cyg::new)
+   );
+   protected static final ekn b = cva.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cva d;
+   private final agh<dpi<?, ?>> e;
 
-   protected cyg(dgv.d $$0, hx $$1, ekb $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<cyg> a() {
+      return a;
+   }
+
+   protected cyg(agh<dpi<?, ?>> $$0, cva $$1, dhh.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends cyg> a();
-
-   @Nullable
-   @Override
-   public dgw a(cnj $$0) {
-      dgw $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
-   }
-
-   public dgw a(crt $$0) {
-      return this.o();
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      ht $$3 = $$2.a(this.a.g());
-      dgw $$4 = $$1.a_($$3);
-      return !this.h($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   protected boolean b(dhi $$0, crg $$1, ht $$2) {
+      return $$0.a(arg.aK) || $$0.a(cvc.fl) || $$0.a(cvc.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends ib<dpi<?, ?>>> a(csd $$0) {
+      return $$0.H_().d(jz.au).b(this.e);
    }
 
    @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean h(dgw $$0) {
-      return true;
+   public boolean b(csd $$0, ht $$1, dhi $$2) {
+      dhi $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return this.d;
+   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
-   protected abstract cyi c();
-
-   protected abstract cut b();
+   @Override
+   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
+      this.a($$0).ifPresent($$3x -> ((dpi)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
+   }
 }

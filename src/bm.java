@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 public class bm extends cw<bm.a> {
    public bm.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cut $$3 = a($$0);
+      cva $$3 = a($$0);
       Optional<da> $$4 = da.a($$0.get("state"));
       if ($$3 != null) {
          $$4.ifPresent($$1x -> $$1x.a($$3.n(), $$1xx -> {
@@ -17,31 +17,31 @@ public class bm extends cw<bm.a> {
    }
 
    @Nullable
-   private static cut a(JsonObject $$0) {
+   private static cva a(JsonObject $$0) {
       if ($$0.has("block")) {
-         agg $$1 = new agg(asy.i($$0, "block"));
+         agi $$1 = new agi(atc.i($$0, "block"));
          return jy.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
       } else {
          return null;
       }
    }
 
-   public void a(amb $$0, dgw $$1) {
+   public void a(amf $$0, dhi $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends at {
       @Nullable
-      private final cut a;
+      private final cva a;
       private final Optional<da> b;
 
-      public a(Optional<bc> $$0, @Nullable cut $$1, Optional<da> $$2) {
+      public a(Optional<bc> $$0, @Nullable cva $$1, Optional<da> $$2) {
          super($$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static am<bm.a> a(cut $$0) {
+      public static am<bm.a> a(cva $$0) {
          return al.d.a(new bm.a(Optional.empty(), $$0, Optional.empty()));
       }
 
@@ -56,7 +56,7 @@ public class bm extends cw<bm.a> {
          return $$0;
       }
 
-      public boolean a(dgw $$0) {
+      public boolean a(dhi $$0) {
          return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }

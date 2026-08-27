@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface djr {
+public interface djr extends crg {
+   void a(BiConsumer<ht, dhi> var1);
+
+   ecc B();
 }

@@ -1,14 +1,24 @@
-public interface aes extends ack {
-   @Override
-   default tt b() {
-      return tt.d;
+public class aes implements wk<aeo> {
+   private final int a;
+
+   public aes(int $$0) {
+      this.a = $$0;
    }
 
-   void a(aeu var1);
+   public aes(tu $$0) {
+      this.a = $$0.n();
+   }
 
-   void a(aev var1);
+   @Override
+   public void a(tu $$0) {
+      $$0.c(this.a);
+   }
 
-   void a(aet var1);
+   public void a(aeo $$0) {
+      $$0.a(this);
+   }
 
-   void a(aew var1);
+   public int a() {
+      return this.a;
+   }
 }

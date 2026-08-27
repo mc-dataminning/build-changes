@@ -1,7 +1,7 @@
-// 23w42a	2026-08-28T00:48:17.7328387	vanilla/Tags for minecraft:entity_type
+// 23w43a	2026-08-28T00:50:38.3330484	vanilla/Tags for minecraft:entity_type
 4c073b476785113705dfd3c6b286a337ddbd56b0 data\minecraft\tags\entity_types\beehive_inhabitors.json
-7682a23a9a2c2cf40a063a7d8e005275500409ea data\minecraft\tags\entity_types\powder_snow_walkable_mobs.json
 5decf1729450d88915af4860ad75ac73b3e07f06 data\minecraft\tags\entity_types\freeze_immune_entity_types.json
+7682a23a9a2c2cf40a063a7d8e005275500409ea data\minecraft\tags\entity_types\powder_snow_walkable_mobs.json
 c8eec608e1e980b0d32a9b90deaed39fc52e2611 data\minecraft\tags\entity_types\non_controlling_rider.json
 f91cbde94cdeade285561d65ea83bbcd815c7e82 data\minecraft\tags\entity_types\raiders.json
 9aa54cd5ec37fff24dfc4f679df3862f04ce6340 data\minecraft\tags\entity_types\axolotl_hunt_targets.json

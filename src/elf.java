@@ -1,166 +1,90 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
 
-public class elf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
-   @Nullable
-   private gfl g;
-
-   @Nullable
-   static elf a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return elj.a("Allocate new source") ? null : new elf($$0[0]);
-   }
-
-   private elf(int $$0) {
-      this.d = $$0;
-   }
-
-   public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         elj.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
-
-            this.l();
-            this.g = null;
-         }
-
-         AL10.alDeleteSources(new int[]{this.d});
-         elj.a("Cleanup");
+public record elf<T>(T b, ht c, int d, elk e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<elf<?>> a = new Strategy<elf<?>>() {
+      public int a(elf<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
-   }
 
-   public void c() {
-      AL10.alSourcePlay(this.d);
-   }
-
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
-   }
-
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
-   }
-
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
-   }
-
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         elj.a("Stop");
-      }
-   }
-
-   public boolean g() {
-      return this.k() == 4114;
-   }
-
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(eji $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(elk $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(gfl $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
-         try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new elk($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
-               }
-            }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
+      public boolean a(@Nullable elf<?> $$0, @Nullable elf<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
-   }
+   };
 
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
+   public static <T> void a(sf $$0, Function<String, Optional<T>> $$1, crh $$2, Consumer<elf<T>> $$3) {
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         rz $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (crh.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
       }
    }
 
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         elj.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         elj.a("Remove processed buffers");
-      }
+   public static <T> Optional<elf<T>> a(rz $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         ht $$2 = new ht($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new elf<>((T)$$1x, $$2, $$0.h("t"), elk.a($$0.h("p")));
+      });
+   }
 
-      return $$0;
+   private static rz a(String $$0, ht $$1, int $$2, elk $$3) {
+      rz $$4 = new rz();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public static <T> rz a(elg<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
+
+   public rz a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public elg<T> a(long $$0, long $$1) {
+      return new elg<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   }
+
+   public static <T> elf<T> a(T $$0, ht $$1) {
+      return new elf<>($$0, $$1, 0, elk.d);
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public ht b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public elk d() {
+      return this.e;
    }
 }

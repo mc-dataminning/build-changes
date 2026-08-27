@@ -1,3 +1,3 @@
 public interface to extends ua {
-   void a(aff var1);
+   void a(afh var1);
 }

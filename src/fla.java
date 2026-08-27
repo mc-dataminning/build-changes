@@ -1,5 +1,8 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fla(GameProfile a, ggg b, ip.b c, cfv d, @Nullable String e, @Nullable flh f, @Nullable fah g) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fla {
 }

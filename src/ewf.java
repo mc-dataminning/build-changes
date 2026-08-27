@@ -1,36 +1,39 @@
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public abstract class ewf implements ewg {
+public class ewf extends eux {
    @Nullable
-   private ewh a;
-   private boolean b;
+   protected ewm a;
+   protected boolean b;
 
-   @Override
-   public final boolean aH_() {
+   public ewf(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, uq.a);
+      this.b = $$4;
+   }
+
+   public void a(ewm $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
       return this.b;
    }
 
    @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ewh t() {
-      return this.a;
+   public void a(eys $$0) {
+      this.c($$0);
    }
 
    @Override
-   public void a(@Nullable ewh $$0) {
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
       if (this.a != null) {
-         this.a.b_(false);
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.n()), this.p(), this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
       }
-
-      if ($$0 != null) {
-         $$0.b_(true);
-      }
-
-      this.a = $$0;
    }
 }

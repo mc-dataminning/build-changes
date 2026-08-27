@@ -1,57 +1,30 @@
-public class fnr extends fow {
-   fnr(fkw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-   }
+public class fnr extends fnd {
+   private static final int a = 12235202;
 
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   protected fnr(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fpe $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)asw.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)asw.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)asw.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
       super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(js.Z, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
    }
 
-   public static class a implements fny<jv> {
-      private final foq a;
+   public static class a implements fol<jv> {
+      private final fpe a;
 
-      public a(foq $$0) {
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnr $$8 = new fnr($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fnr($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,7 +1,12 @@
-public interface cma {
-   boolean a(crs var1, dga var2, boolean var3, cdm var4);
+public enum cma {
+   a(n.p),
+   b(n.o),
+   c(n.l),
+   d(n.n);
 
-   default boolean a(dgb $$0, cdm $$1) {
-      return $$0.a($$1);
+   public final n e;
+
+   private cma(n $$0) {
+      this.e = $$0;
    }
 }

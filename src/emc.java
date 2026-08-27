@@ -1,179 +1,220 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
 
-public class emc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final Queue<emc.a> c = EvictingQueue.create(10);
+public class emc implements elz {
    @Nullable
-   private static volatile emc.a d;
-   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
-   private static boolean g;
+   private ByteBuffer a;
+   @Nullable
+   private STBTTFontinfo b;
+   final float c;
+   private final IntSet d = new IntArraySet();
+   final float e;
+   final float f;
+   final float g;
+   final float h;
 
-   private static String d(int $$0) {
-      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
-   }
+   public emc(ByteBuffer $$0, STBTTFontinfo $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$3;
+      $$6.codePoints().forEach(this.d::add);
+      this.e = $$4 * $$3;
+      this.f = $$5 * $$3;
+      this.g = STBTruetype.stbtt_ScaleForPixelHeight($$1, $$2 * $$3);
+      MemoryStack $$7 = MemoryStack.stackPush();
 
-   public static String a(int $$0) {
-      switch ($$0) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return d($$0);
-      }
-   }
-
-   public static String b(int $$0) {
-      switch ($$0) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return d($$0);
-      }
-   }
-
-   public static String c(int $$0) {
-      switch ($$0) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return d($$0);
-      }
-   }
-
-   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
-      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
-      emc.a $$8;
-      synchronized (c) {
-         $$8 = d;
-         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
-            $$8.f++;
-         } else {
-            $$8 = new emc.a($$0, $$1, $$2, $$3, $$7);
-            c.add($$8);
-            d = $$8;
-         }
-      }
-
-      a.info("OpenGL debug message: {}", $$8);
-   }
-
-   public static List<String> a() {
-      synchronized (c) {
-         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
-
-         for (emc.a $$1 : c) {
-            $$0.add($$1 + " x " + $$1.f);
+      try {
+         IntBuffer $$8 = $$7.mallocInt(1);
+         IntBuffer $$9 = $$7.mallocInt(1);
+         IntBuffer $$10 = $$7.mallocInt(1);
+         STBTruetype.stbtt_GetFontVMetrics($$1, $$8, $$9, $$10);
+         this.h = (float)$$8.get(0) * this.g;
+      } catch (Throwable var13) {
+         if ($$7 != null) {
+            try {
+               $$7.close();
+            } catch (Throwable var12) {
+               var13.addSuppressed(var12);
+            }
          }
 
-         return $$0;
+         throw var13;
+      }
+
+      if ($$7 != null) {
+         $$7.close();
       }
    }
 
-   public static boolean b() {
-      return g;
-   }
+   @Nullable
+   @Override
+   public ely a(int $$0) {
+      STBTTFontinfo $$1 = this.b();
+      if (this.d.contains($$0)) {
+         return null;
+      } else {
+         MemoryStack $$2 = MemoryStack.stackPush();
 
-   public static void a(int $$0, boolean $$1) {
-      RenderSystem.assertInInitPhase();
-      if ($$0 > 0) {
-         GLCapabilities $$2 = GL.getCapabilities();
-         if ($$2.GL_KHR_debug) {
-            g = true;
-            GL11.glEnable(37600);
-            if ($$1) {
-               GL11.glEnable(33346);
+         Object var17;
+         label61: {
+            ely var18;
+            label62: {
+               try {
+                  int $$3 = STBTruetype.stbtt_FindGlyphIndex($$1, $$0);
+                  if ($$3 == 0) {
+                     var17 = null;
+                     break label61;
+                  }
+
+                  IntBuffer $$4 = $$2.mallocInt(1);
+                  IntBuffer $$5 = $$2.mallocInt(1);
+                  IntBuffer $$6 = $$2.mallocInt(1);
+                  IntBuffer $$7 = $$2.mallocInt(1);
+                  IntBuffer $$8 = $$2.mallocInt(1);
+                  IntBuffer $$9 = $$2.mallocInt(1);
+                  STBTruetype.stbtt_GetGlyphHMetrics($$1, $$3, $$8, $$9);
+                  STBTruetype.stbtt_GetGlyphBitmapBoxSubpixel($$1, $$3, this.g, this.g, this.e, this.f, $$4, $$5, $$6, $$7);
+                  float $$10 = (float)$$8.get(0) * this.g;
+                  int $$11 = $$6.get(0) - $$4.get(0);
+                  int $$12 = $$7.get(0) - $$5.get(0);
+                  if ($$11 > 0 && $$12 > 0) {
+                     var18 = new emc.a($$4.get(0), $$6.get(0), -$$5.get(0), -$$7.get(0), $$10, (float)$$9.get(0) * this.g, $$3);
+                     break label62;
+                  }
+
+                  var18 = () -> $$10 / this.c;
+               } catch (Throwable var16) {
+                  if ($$2 != null) {
+                     try {
+                        $$2.close();
+                     } catch (Throwable var15) {
+                        var16.addSuppressed(var15);
+                     }
+                  }
+
+                  throw var16;
+               }
+
+               if ($$2 != null) {
+                  $$2.close();
+               }
+
+               return var18;
             }
 
-            for (int $$3 = 0; $$3 < e.size(); $$3++) {
-               boolean $$4 = $$3 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            if ($$2 != null) {
+               $$2.close();
             }
 
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(emc::a), ema::a), 0L);
-         } else if ($$2.GL_ARB_debug_output) {
-            g = true;
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$5 = 0; $$5 < f.size(); $$5++) {
-               boolean $$6 = $$5 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(emc::a), ema::a), 0L);
+            return var18;
          }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+
+         return (ely)var17;
       }
    }
 
-   static class a {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final String e;
-      int f = 1;
+   STBTTFontinfo b() {
+      if (this.a != null && this.b != null) {
+         return this.b;
+      } else {
+         throw new IllegalArgumentException("Provider already closed");
+      }
+   }
 
-      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         this.a = $$2;
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$3;
-         this.e = $$4;
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.free();
+         this.b = null;
       }
 
-      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      MemoryUtil.memFree(this.a);
+      this.a = null;
+   }
+
+   @Override
+   public IntSet a() {
+      return IntStream.range(0, 65535).filter($$0 -> !this.d.contains($$0)).collect(IntOpenHashSet::new, IntCollection::add, IntCollection::addAll);
+   }
+
+   class a implements ely {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5, int $$6) {
+         this.b = $$1 - $$0;
+         this.c = $$2 - $$3;
+         this.f = $$4 / emc.this.c;
+         this.d = ($$5 + (float)$$0 + emc.this.e) / emc.this.c;
+         this.e = (emc.this.h - (float)$$2 + emc.this.f) / emc.this.c;
+         this.g = $$6;
       }
 
       @Override
-      public String toString() {
-         return "id=" + this.a + ", source=" + emc.a(this.b) + ", type=" + emc.b(this.c) + ", severity=" + emc.c(this.d) + ", message='" + this.e + "'";
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public exs bake(Function<ema, exs> $$0) {
+         return $$0.apply(new ema() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return emc.this.c;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               STBTTFontinfo $$2 = emc.this.b();
+               emx $$3 = new emx(emx.a.d, a.this.b, a.this.c, false);
+               $$3.a($$2, a.this.g, a.this.b, a.this.c, emc.this.g, emc.this.g, emc.this.e, emc.this.f, 0, 0);
+               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
       }
    }
 }

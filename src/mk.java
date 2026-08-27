@@ -51,31 +51,31 @@ public class mk {
       return this;
    }
 
-   public agg a(cut $$0, BiConsumer<agg, Supplier<JsonElement>> $$1) {
+   public agi a(cva $$0, BiConsumer<agi, Supplier<JsonElement>> $$1) {
       return this.A.a($$0, this.z, $$1);
    }
 
-   public agg a(cut $$0, String $$1, BiConsumer<agg, Supplier<JsonElement>> $$2) {
+   public agi a(cva $$0, String $$1, BiConsumer<agi, Supplier<JsonElement>> $$2) {
       return this.A.a($$0, $$1, this.z, $$2);
    }
 
-   private static mk.a a(Function<cut, mi> $$0, mg $$1) {
+   private static mk.a a(Function<cva, mi> $$0, mg $$1) {
       return $$2 -> new mk($$0.apply($$2), $$1);
    }
 
-   public static mk a(agg $$0) {
+   public static mk a(agi $$0) {
       return new mk(mi.b($$0), mh.c);
    }
 
    @FunctionalInterface
    public interface a {
-      mk get(cut var1);
+      mk get(cva var1);
 
-      default agg create(cut $$0, BiConsumer<agg, Supplier<JsonElement>> $$1) {
+      default agi create(cva $$0, BiConsumer<agi, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default agg createWithSuffix(cut $$0, String $$1, BiConsumer<agg, Supplier<JsonElement>> $$2) {
+      default agi createWithSuffix(cva $$0, String $$1, BiConsumer<agi, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

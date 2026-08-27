@@ -1,55 +1,66 @@
-import com.google.gson.JsonElement;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.io.File;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eeq<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eeq<ehk> a = new eeq<>(ehm.a, "predicates", c());
-   public static final eeq<efy> b = new eeq<>(ega.b, "item_modifiers", c());
-   public static final eeq<eet> c = new eeq<>(eet.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final eeq.a<T> g;
+public class eeq {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   private eeq(Codec<T> $$0, String $$1, eeq.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public eeq(een.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eel.c).toFile();
+      this.c.mkdirs();
    }
 
-   public String a() {
-      return this.f;
+   public void a(cdu $$0) {
+      try {
+         rz $$1 = $$0.f(new rz());
+         File $$2 = File.createTempFile($$0.cx() + "-", ".dat", this.c);
+         sm.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cx() + ".dat");
+         File $$4 = new File(this.c, $$0.cx() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ad().getString());
+      }
    }
 
-   public void a(eeu $$0, een<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   @Nullable
+   public rz b(cdu $$0) {
+      rz $$1 = null;
+
+      try {
+         File $$2 = new File(this.c, $$0.cx() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = sm.a($$2, si.a());
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ad().getString());
+      }
+
+      if ($$1 != null) {
+         int $$4 = so.b($$1, -1);
+         $$0.g(aus.b.a(this.a, $$1, $$4));
+      }
+
+      return $$1;
    }
 
-   public Optional<T> a(agg $$0, JsonElement $$1) {
-      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
-      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$2.result();
-   }
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
 
-   public static Stream<eeq<?>> b() {
-      return Stream.of(a, b, c);
-   }
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
 
-   private static <T extends eem> eeq.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
-
-   private static eeq.a<eet> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(eeu var1, een<T> var2, T var3);
+      return $$0;
    }
 }

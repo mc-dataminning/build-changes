@@ -7,20 +7,20 @@ public class rq {
    private final boolean d;
    private final int e;
    private final int f;
-   private final Consumer<qy> g;
+   private final Consumer<qz> g;
    private final int h;
    private final long i;
-   private final dbf j;
+   private final dbm j;
 
-   public rq(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<qy> $$6) {
-      this($$0, $$1, $$2, dbf.a, $$3, $$4, $$5, 1, 1, $$6);
+   public rq(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<qz> $$6) {
+      this($$0, $$1, $$2, dbm.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public rq(String $$0, String $$1, String $$2, dbf $$3, int $$4, long $$5, boolean $$6, Consumer<qy> $$7) {
+   public rq(String $$0, String $$1, String $$2, dbm $$3, int $$4, long $$5, boolean $$6, Consumer<qz> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public rq(String $$0, String $$1, String $$2, dbf $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<qy> $$9) {
+   public rq(String $$0, String $$1, String $$2, dbm $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<qz> $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -33,7 +33,7 @@ public class rq {
       this.i = $$5;
    }
 
-   public void a(qy $$0) {
+   public void a(qz $$0) {
       this.g.accept($$0);
    }
 
@@ -66,7 +66,7 @@ public class rq {
       return this.i;
    }
 
-   public dbf g() {
+   public dbm g() {
       return this.j;
    }
 

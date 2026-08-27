@@ -1,57 +1,39 @@
-import java.util.BitSet;
-import java.util.Set;
+public class fth implements fsu<dgl> {
+   private final fji<?> a;
 
-public class fth {
-   private static final int a = hx.values().length;
-   private final BitSet b = new BitSet(a * a);
+   public fth(fsv.a $$0) {
+      this.a = new fji($$0.a(fkn.be));
+   }
 
-   public void a(Set<hx> $$0) {
-      for (hx $$1 : $$0) {
-         for (hx $$2 : $$0) {
-            this.a($$1, $$2, true);
+   public void a(dgl $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
+      hx $$6 = hx.b;
+      if ($$0.l()) {
+         dhi $$7 = $$0.k().a_($$0.p());
+         if ($$7.b() instanceof dby) {
+            $$6 = $$7.c(dby.b);
          }
       }
-   }
 
-   public void a(hx $$0, hx $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(hx $$0, hx $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (hx $$1 : hx.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+      cjx $$8 = $$0.j();
+      gdy $$9;
+      if ($$8 == null) {
+         $$9 = frj.i;
+      } else {
+         $$9 = frj.j.get($$8.a());
       }
 
-      $$0.append('\n');
-
-      for (hx $$2 : hx.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (hx $$3 : hx.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
-
-         $$0.append('\n');
-      }
-
-      return $$0.toString();
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fko $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eoa $$13 = $$9.a($$3, frc::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

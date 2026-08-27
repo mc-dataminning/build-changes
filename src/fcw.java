@@ -1,26 +1,95 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fcw extends fca implements fcy<chq> {
+   private final chq q;
+   private final cgy r = new cgy() {
+      @Override
+      public void a(cgm $$0, int $$1, clj $$2) {
+         fcw.this.I();
+      }
 
-public class fcw implements fda {
-   private final eyp a;
+      @Override
+      public void a(cgm $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            fcw.this.J();
+         }
+      }
+   };
 
-   public fcw(eyp $$0) {
-      this.a = $$0;
+   public fcw(chq $$0, cdt $$1, ur $$2) {
+      this.q = $$0;
+   }
+
+   public chq H() {
+      return this.q;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   protected void aP_() {
+      super.aP_();
+      this.q.a(this.r);
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+   @Override
+   public void aF_() {
+      this.f.s.r();
+      super.aF_();
+   }
 
-      return $$6;
+   @Override
+   public void aG_() {
+      super.aG_();
+      this.q.b(this.r);
+   }
+
+   @Override
+   protected void l() {
+      if (this.f.s.gf()) {
+         this.d(euz.a(uq.d, $$0 -> this.aF_()).a(this.g / 2 - 100, 196, 98, 20).a());
+         this.d(euz.a(ur.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.l();
+      }
+   }
+
+   @Override
+   protected void E() {
+      this.c(1);
+   }
+
+   @Override
+   protected void F() {
+      this.c(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.q.m()) {
+         this.c(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void c(int $$0) {
+      this.f.q.a(this.q.j, $$0);
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   void I() {
+      clj $$0 = this.q.l();
+      this.a(fca.a.a($$0));
+   }
+
+   void J() {
+      this.a(this.q.m());
+   }
+
+   @Override
+   protected void G() {
+      this.f.s.r();
    }
 }

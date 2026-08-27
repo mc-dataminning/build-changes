@@ -1,12 +1,16 @@
-public class fxo extends fwq<bxh, fjc<bxh>> {
-   private static final agg a = new agg("textures/entity/snow_golem.png");
+public class fxo extends fxd<bxj, fiv<bxj>> {
+   private static final agi a = new agi("textures/entity/bear/polarbear.png");
 
-   public fxo(fvk.a $$0) {
-      super($$0, new fjc<>($$0.a(fka.bp)), 0.5F);
-      this.a(new fzx(this, $$0.c(), $$0.b()));
+   public fxo(fvx.a $$0) {
+      super($$0, new fiv<>($$0.a(fkn.aU)), 0.9F);
    }
 
-   public agg a(bxh $$0) {
+   public agi a(bxj $$0) {
       return a;
+   }
+
+   protected void a(bxj $$0, enw $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

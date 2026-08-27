@@ -1,98 +1,118 @@
-public class caz extends cbj {
-   public caz(bkm<? extends caz> $$0, crs $$1) {
+import org.joml.Vector3f;
+
+public class caz extends cbi {
+   private static final int b = 2400;
+   private int c;
+
+   public caz(bku<? extends caz> $$0, csa $$1) {
       super($$0, $$1);
-   }
-
-   public static bmd.a s() {
-      return cba.gk().a(bme.m, 0.2F);
-   }
-
-   public static boolean b(bkm<caz> $$0, crt $$1, blc $$2, ht $$3, ato $$4) {
-      return $$1.ai() != bin.a;
+      this.bJ = 3;
    }
 
    @Override
-   public boolean a(crv $$0) {
-      return $$0.f(this) && !$$0.d(this.cG());
+   protected void B() {
+      this.bO.a(1, new brv(this));
+      this.bO.a(1, new brq(this, this.dN()));
+      this.bO.a(2, new bsl(this, 1.0, false));
+      this.bO.a(3, new bto(this, 1.0));
+      this.bO.a(7, new bsj(this, cdu.class, 8.0F));
+      this.bO.a(8, new bsw(this));
+      this.bP.a(1, new btt(this).a());
+      this.bP.a(2, new btu<>(this, cdu.class, true));
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.a(bme.a).a((double)($$0 * 3));
+   protected float b(bls $$0, bkr $$1) {
+      return 0.13F;
+   }
+
+   public static bml.a u() {
+      return cbi.gl().a(bmm.l, 8.0).a(bmm.m, 0.25).a(bmm.c, 2.0);
    }
 
    @Override
-   public float bm() {
-      return 1.0F;
+   protected bkq.b aW() {
+      return bkq.b.c;
    }
 
    @Override
-   protected jq t() {
-      return js.C;
+   protected aqq y() {
+      return aqr.hC;
    }
 
    @Override
-   public boolean bM() {
-      return false;
+   protected aqq d(bjo $$0) {
+      return aqr.hE;
    }
 
    @Override
-   protected int y() {
-      return super.y() * 4;
+   protected aqq m_() {
+      return aqr.hD;
    }
 
    @Override
-   protected void ga() {
-      this.d *= 0.9F;
+   protected void b(ht $$0, dhi $$1) {
+      this.a(aqr.hF, 0.15F, 1.0F);
    }
 
    @Override
-   protected void fa() {
-      eji $$0 = this.do();
-      float $$1 = (float)this.gf() * 0.1F;
-      this.o($$0.c, (double)(this.eY() + $$1), $$0.e);
-      this.au = true;
+   public void a(rz $$0) {
+      super.a($$0);
+      this.c = $$0.h("Lifetime");
    }
 
    @Override
-   protected void c(arr<ecf> $$0) {
-      if ($$0 == arh.b) {
-         eji $$1 = this.do();
-         this.o($$1.c, (double)(0.22F + (float)this.gf() * 0.05F), $$1.e);
-         this.au = true;
+   public void b(rz $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.c);
+   }
+
+   @Override
+   public void l() {
+      this.aU = this.dD();
+      super.l();
+   }
+
+   @Override
+   public void o(float $$0) {
+      this.r($$0);
+      super.o($$0);
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      if (this.dN().B) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dN().a(js.X, this.d(0.5), this.dv(), this.g(0.5), (this.ag.j() - 0.5) * 2.0, -this.ag.j(), (this.ag.j() - 0.5) * 2.0);
+         }
       } else {
-         super.c($$0);
+         if (!this.fM()) {
+            this.c++;
+         }
+
+         if (this.c >= 2400) {
+            this.am();
+         }
+      }
+   }
+
+   public static boolean b(bku<caz> $$0, csb $$1, blk $$2, ht $$3, ats $$4) {
+      if (c($$0, $$1, $$2, $$3, $$4)) {
+         cdu $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected boolean gb() {
-      return this.cX();
+   public bll eT() {
+      return bll.c;
    }
 
    @Override
-   protected float gc() {
-      return super.gc() + 2.0F;
-   }
-
-   @Override
-   protected aqm d(bjg $$0) {
-      return this.gg() ? aqn.mS : aqn.mR;
-   }
-
-   @Override
-   protected aqm m_() {
-      return this.gg() ? aqn.mJ : aqn.mQ;
-   }
-
-   @Override
-   protected aqm gd() {
-      return this.gg() ? aqn.mV : aqn.mU;
-   }
-
-   @Override
-   protected aqm ge() {
-      return aqn.mT;
+   protected Vector3f a(bkq $$0, bkr $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - 0.0625F * $$2, 0.0F);
    }
 }

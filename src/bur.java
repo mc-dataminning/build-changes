@@ -1,43 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class bur extends bup {
+   private boolean p;
 
-public class bur extends bvd<cbw> {
+   public bur(bli $$0, csa $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<btz<?>> a() {
-      return ImmutableSet.of(btz.h, btz.av, btz.ap, btz.ao, btz.ar, btz.as, new btz[0]);
+   protected edj a(int $$0) {
+      this.p = this.a.ai() == bku.v;
+      this.o = new edk(this.p);
+      return new edj(this.o, $$0);
    }
 
-   protected void a(ama $$0, cbw $$1) {
-      bly<?> $$2 = $$1.dN();
-      $$2.a(btz.av, this.b($$0, $$1));
-      Optional<ccc> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cbw> $$5 = Lists.newArrayList();
-      bub $$6 = $$2.c(btz.h).orElse(bub.a());
-
-      for (bky $$7 : $$6.b($$0x -> !$$0x.n_() && ($$0x instanceof ccc || $$0x instanceof cbw))) {
-         if ($$7 instanceof ccc $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof cbw $$9) {
-            $$5.add($$9);
-         }
-      }
-
-      $$2.a(btz.ap, $$3);
-      $$2.a(btz.ao, $$5);
-      $$2.a(btz.ar, $$4);
-      $$2.a(btz.as, $$5.size());
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bd();
    }
 
-   private Optional<ht> b(ama $$0, cbw $$1) {
-      return ht.a($$1.dl(), 8, 4, $$1x -> $$0.a_($$1x).a(arc.aR));
+   @Override
+   protected eju b() {
+      return new eju(this.a.ds(), this.a.e(0.5), this.a.dy());
+   }
+
+   @Override
+   protected double a(eju $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(eju $$0, eju $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ht $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

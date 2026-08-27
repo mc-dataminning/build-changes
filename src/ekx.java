@@ -1,2 +1,8 @@
-public interface ekx<T> extends ekw<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ekx {
 }

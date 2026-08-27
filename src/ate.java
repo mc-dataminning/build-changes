@@ -1,9 +1,66 @@
-public class ate {
-   private static final long a = 6364136223846793005L;
-   private static final long b = 1442695040888963407L;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-   public static long a(long $$0, long $$1) {
-      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
-      return $$0 + $$1;
+public record ate<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<ate<Integer>> a = a(Codec.INT);
+
+   public ate(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
+      }
+   }
+
+   public ate(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<ate<T>> a(Codec<T> $$0) {
+      return asu.a($$0, "min_inclusive", "max_inclusive", ate::a, ate::a, ate::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<ate<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return asu.a(
+         a($$0),
+         (Function<ate<T>, DataResult<ate<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
+   }
+
+   public static <T extends Comparable<T>> DataResult<ate<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new ate($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(ate<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

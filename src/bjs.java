@@ -1,15 +1,19 @@
-public class bjs extends bjt {
-   public bjs(bju $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bjs implements aug {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bjs> d = aug.a(bjs::values);
+   private final String e;
+
+   private bjs(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
+   public String c() {
+      return this.e;
    }
 }

@@ -5,7 +5,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public record xb(xb.a b) implements xd {
-   public static final agg a = new agg("debug/brain");
+   public static final agi a = new agi("debug/brain");
 
    public xb(tu $$0) {
       this(new xb.a($$0));
@@ -17,7 +17,7 @@ public record xb(xb.a b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 
@@ -29,9 +29,9 @@ public record xb(xb.a b) implements xd {
       int e,
       float f,
       float g,
-      eji h,
+      eju h,
       String i,
-      @Nullable ecv j,
+      @Nullable edh j,
       boolean k,
       int l,
       List<String> m,
@@ -52,7 +52,7 @@ public record xb(xb.a b) implements xd {
             $$0.readFloat(),
             $$0.k(),
             $$0.s(),
-            $$0.c(ecv::b),
+            $$0.c(edh::b),
             $$0.readBoolean(),
             $$0.readInt(),
             $$0.a(tu::s),

@@ -1,124 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class czc extends cut implements dbt {
-   public static final MapCodec<czc> b = b(czc::new);
-   public static final int c = 7;
-   public static final dhw d = dhm.aC;
-   public static final dhn e = dhm.v;
-   public static final dhn f = dhm.C;
-   private static final int a = 1;
+public class czc extends cum {
+   public static final MapCodec<czc> a = b(czc::new);
+   public static final dhz b = dhy.n;
 
    @Override
-   public MapCodec<? extends czc> a() {
-      return b;
+   public MapCodec<czc> a() {
+      return a;
    }
 
-   public czc(dgv.d $$0) {
+   protected czc(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public ekb b_(dgw $$0, cqy $$1, ht $$2) {
-      return ejy.a();
-   }
-
-   @Override
-   public boolean e_(dgw $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
-   }
-
-   @Override
-   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      rz $$5 = cjc.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   protected boolean h(dgw $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
-
    @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(dgw $$0, cqy $$1, ht $$2) {
-      return 1;
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ech.c, ech.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dgw a(dgw $$0, crt $$1, ht $$2) {
-      int $$3 = 7;
-      ht.a $$4 = new ht.a();
-
-      for (hx $$5 : hx.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(dgw $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dgw $$0) {
-      if ($$0.a(arc.t)) {
-         return OptionalInt.of(0);
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dge $$6) {
+         $$6.i();
+         return bix.a($$1.B);
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+         return bix.d;
       }
    }
 
    @Override
-   public ecg c_(dgw $$0) {
-      return $$0.c(f) ? ech.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
-      if ($$1.q($$2.c())) {
-         if ($$3.a(15) == 1) {
-            ht $$4 = $$2.d();
-            dgw $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, hx.b)) {
-               atl.a($$1, $$2, $$3, js.m);
-            }
+   public void a(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dge $$5) {
+            $$5.i();
          }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(d, e, f);
+   public dfd a(ht $$0, dhi $$1) {
+      return new dge($$0, $$1);
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      ecg $$1 = $$0.q().b_($$0.a());
-      dgw $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ech.c));
-      return a($$2, $$0.q(), $$0.a());
+   public boolean f_(dhi $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dhi $$0, crg $$1, ht $$2, hx $$3) {
+      if ($$1.c_($$2) instanceof dge $$4 && $$4.f()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   public boolean d_(dhi $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dhi $$0, csa $$1, ht $$2) {
+      if ($$1.c_($$2) instanceof dge $$3 && $$3.v().d() instanceof cmb $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   public dbf b_(dhi $$0) {
+      return dbf.c;
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return $$1.c(b) ? a($$2, dff.e, dge::a) : null;
    }
 }

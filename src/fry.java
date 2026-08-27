@@ -1,82 +1,261 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class fry {
-   private final fru a;
-   private final frr b;
+   public static final int a = 8;
+   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
+   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
+   public static final int b = 4;
+   private static final int f = 3;
+   public static final int c = 4;
 
-   public fry(fru $$0, frr $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
+   public frr a(Vector3f $$0, Vector3f $$1, frt $$2, gbu $$3, hx $$4, ged $$5, @Nullable fru $$6, boolean $$7, agi $$8) {
+      frv $$9 = $$2.e;
+      if ($$5.c()) {
+         $$9 = a($$2.e, $$4, $$5.b(), $$8);
+      }
+
+      float[] $$10 = new float[$$9.a.length];
+      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
+      float $$11 = $$3.k();
+      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
+      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
+      $$9.a[0] = atm.i($$11, $$9.a[0], $$12);
+      $$9.a[2] = atm.i($$11, $$9.a[2], $$12);
+      $$9.a[1] = atm.i($$11, $$9.a[1], $$13);
+      $$9.a[3] = atm.i($$11, $$9.a[3], $$13);
+      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
+      hx $$15 = a($$14);
+      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
+      if ($$6 == null) {
+         this.a($$14, $$15);
+      }
+
+      return new frr($$14, $$2.c, $$15, $$3, $$7);
+   }
+
+   public static frv a(frv $$0, hx $$1, j $$2, agi $$3) {
+      Matrix4f $$4 = hs.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
+      float $$5 = $$0.a($$0.c(0));
+      float $$6 = $$0.b($$0.c(0));
+      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
+      float $$8 = 16.0F * $$7.x();
+      float $$9 = 16.0F * $$7.y();
+      float $$10 = $$0.a($$0.c(2));
+      float $$11 = $$0.b($$0.c(2));
+      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
+      float $$13 = 16.0F * $$12.x();
+      float $$14 = 16.0F * $$12.y();
+      float $$15;
+      float $$16;
+      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
+         $$15 = $$8;
+         $$16 = $$13;
       } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public frr a() {
-      return this.b;
-   }
-
-   public Predicate<dgw> a(dgx<cut, dgw> $$0) {
-      return this.a.getPredicate($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
-   }
-
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
-
-   public static class a implements JsonDeserializer<fry> {
-      public fry a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new fry(this.b($$3), (frr)$$2.deserialize($$3.get("apply"), frr.class));
+         $$15 = $$13;
+         $$16 = $$8;
       }
 
-      private fru b(JsonObject $$0) {
-         return $$0.has("when") ? a(asy.u($$0, "when")) : fru.b;
+      float $$19;
+      float $$20;
+      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
+         $$19 = $$9;
+         $$20 = $$14;
+      } else {
+         $$19 = $$14;
+         $$20 = $$9;
       }
 
-      @VisibleForTesting
-      static fru a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fru> $$2 = Streams.stream(asy.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new frx($$2);
-            } else if ($$0.has("AND")) {
-               List<fru> $$3 = Streams.stream(asy.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new frt($$3);
+      float $$23 = (float)Math.toRadians((double)$$0.b);
+      Matrix3f $$24 = new Matrix3f($$4);
+      Vector3f $$25 = $$24.transform(new Vector3f(atm.b($$23), atm.a($$23), 0.0F));
+      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
+      return new frv(new float[]{$$15, $$19, $$16, $$20}, $$26);
+   }
+
+   private int[] a(frv $$0, gbu $$1, hx $$2, float[] $$3, j $$4, @Nullable fru $$5, boolean $$6) {
+      int[] $$7 = new int[32];
+
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
+      }
+
+      return $$7;
+   }
+
+   private float[] a(Vector3f $$0, Vector3f $$1) {
+      float[] $$2 = new float[hx.values().length];
+      $$2[fql.a.f] = $$0.x() / 16.0F;
+      $$2[fql.a.e] = $$0.y() / 16.0F;
+      $$2[fql.a.d] = $$0.z() / 16.0F;
+      $$2[fql.a.c] = $$1.x() / 16.0F;
+      $$2[fql.a.b] = $$1.y() / 16.0F;
+      $$2[fql.a.a] = $$1.z() / 16.0F;
+      return $$2;
+   }
+
+   private void a(int[] $$0, int $$1, hx $$2, frv $$3, float[] $$4, gbu $$5, j $$6, @Nullable fru $$7, boolean $$8) {
+      fql.b $$9 = fql.a($$2).a($$1);
+      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
+      this.a($$10, $$7);
+      this.a($$10, $$6);
+      this.a($$0, $$1, $$10, $$5, $$3);
+   }
+
+   private void a(int[] $$0, int $$1, Vector3f $$2, gbu $$3, frv $$4) {
+      int $$5 = $$1 * 8;
+      $$0[$$5] = Float.floatToRawIntBits($$2.x());
+      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
+      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
+      $$0[$$5 + 3] = -1;
+      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
+      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
+   }
+
+   private void a(Vector3f $$0, @Nullable fru $$1) {
+      if ($$1 != null) {
+         Vector3f $$2;
+         Vector3f $$3;
+         switch ($$1.b()) {
+            case a:
+               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
+               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
+               break;
+            case b:
+               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
+               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
+               break;
+            case c:
+               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
+               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
+               break;
+            default:
+               throw new IllegalArgumentException("There are only 3 axes");
+         }
+
+         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
+         if ($$1.d()) {
+            if (Math.abs($$1.c()) == 22.5F) {
+               $$3.mul(d);
             } else {
-               return a($$1.iterator().next());
+               $$3.mul(e);
             }
+
+            $$3.add(1.0F, 1.0F, 1.0F);
          } else {
-            return new frt($$1.stream().map(fry.a::a).collect(Collectors.toList()));
+            $$3.set(1.0F, 1.0F, 1.0F);
+         }
+
+         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
+      }
+   }
+
+   public void a(Vector3f $$0, j $$1) {
+      if ($$1 != j.a()) {
+         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+      }
+   }
+
+   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
+      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
+      $$4.mul(new Vector4f($$3, 1.0F));
+      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
+   }
+
+   public static hx a(int[] $$0) {
+      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
+      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
+      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
+      Vector3f $$4 = new Vector3f($$1).sub($$2);
+      Vector3f $$5 = new Vector3f($$3).sub($$2);
+      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
+      if (!$$6.isFinite()) {
+         return hx.b;
+      } else {
+         hx $$7 = null;
+         float $$8 = 0.0F;
+
+         for (hx $$9 : hx.values()) {
+            iw $$10 = $$9.q();
+            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
+            float $$12 = $$6.dot($$11);
+            if ($$12 >= 0.0F && $$12 > $$8) {
+               $$8 = $$12;
+               $$7 = $$9;
+            }
+         }
+
+         return $$7 == null ? hx.b : $$7;
+      }
+   }
+
+   private void a(int[] $$0, hx $$1) {
+      int[] $$2 = new int[$$0.length];
+      System.arraycopy($$0, 0, $$2, 0, $$0.length);
+      float[] $$3 = new float[hx.values().length];
+      $$3[fql.a.f] = 999.0F;
+      $$3[fql.a.e] = 999.0F;
+      $$3[fql.a.d] = 999.0F;
+      $$3[fql.a.c] = -999.0F;
+      $$3[fql.a.b] = -999.0F;
+      $$3[fql.a.a] = -999.0F;
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         int $$5 = 8 * $$4;
+         float $$6 = Float.intBitsToFloat($$2[$$5]);
+         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
+         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
+         if ($$6 < $$3[fql.a.f]) {
+            $$3[fql.a.f] = $$6;
+         }
+
+         if ($$7 < $$3[fql.a.e]) {
+            $$3[fql.a.e] = $$7;
+         }
+
+         if ($$8 < $$3[fql.a.d]) {
+            $$3[fql.a.d] = $$8;
+         }
+
+         if ($$6 > $$3[fql.a.c]) {
+            $$3[fql.a.c] = $$6;
+         }
+
+         if ($$7 > $$3[fql.a.b]) {
+            $$3[fql.a.b] = $$7;
+         }
+
+         if ($$8 > $$3[fql.a.a]) {
+            $$3[fql.a.a] = $$8;
          }
       }
 
-      private static fru a(Entry<String, JsonElement> $$0) {
-         return new frv($$0.getKey(), $$0.getValue().getAsString());
+      fql $$9 = fql.a($$1);
+
+      for (int $$10 = 0; $$10 < 4; $$10++) {
+         int $$11 = 8 * $$10;
+         fql.b $$12 = $$9.a($$10);
+         float $$13 = $$3[$$12.a];
+         float $$14 = $$3[$$12.b];
+         float $$15 = $$3[$$12.c];
+         $$0[$$11] = Float.floatToRawIntBits($$13);
+         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
+         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+
+         for (int $$16 = 0; $$16 < 4; $$16++) {
+            int $$17 = 8 * $$16;
+            float $$18 = Float.intBitsToFloat($$2[$$17]);
+            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
+            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
+            if (atm.a($$13, $$18) && atm.a($$14, $$19) && atm.a($$15, $$20)) {
+               $$0[$$11 + 4] = $$2[$$17 + 4];
+               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+            }
+         }
       }
    }
 }

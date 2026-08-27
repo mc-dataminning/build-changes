@@ -47,7 +47,7 @@ public class dz implements ArgumentType<dz.a> {
       }
 
       public float a(du $$0) {
-         return ati.g(this.b ? this.a + $$0.l().j : this.a);
+         return atm.g(this.b ? this.a + $$0.l().j : this.a);
       }
    }
 }

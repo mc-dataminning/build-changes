@@ -1,99 +1,67 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bth extends brt {
-   private final brt a;
-   private final int b;
-   private boolean c;
+public class bth extends bsb {
+   private static final int a = 10;
+   private final blp b;
+   private final int c;
+   @Nullable
+   private ht d;
 
-   public bth(int $$0, brt $$1) {
+   public bth(blp $$0, int $$1) {
       this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(bth $$0) {
-      return this.Q_() && $$0.i() < this.i();
+      this.c = b($$1);
+      this.a(EnumSet.of(bsb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
+      if (this.b.cP()) {
+         return false;
+      } else if (this.b.dN().O()) {
+         return false;
+      } else if (this.b.eh().a(this.c) != 0) {
+         return false;
+      } else {
+         ame $$0 = (ame)this.b.dN();
+         ht $$1 = this.b.dn();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            eju $$2 = bvz.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(iu.a($$1x))));
+            this.d = $$2 == null ? null : ht.a($$2);
+            return this.d != null;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
-   }
-
-   @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean R_() {
-      return this.a.R_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+      return this.d != null && !this.b.N().l() && this.b.N().h().equals(this.d);
    }
 
    @Override
    public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<brt.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<brt.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public brt k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bth)$$0).a) : false;
+      if (this.d != null) {
+         bup $$0 = this.b.N();
+         if ($$0.l() && !this.d.a(this.b.dl(), 10.0)) {
+            eju $$1 = eju.c(this.d);
+            eju $$2 = this.b.dl();
+            eju $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            eju $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            ht $$5 = ht.a($$4);
+            $$5 = this.b.dN().a(dmr.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   private void h() {
+      ats $$0 = this.b.eh();
+      ht $$1 = this.b.dN().a(dmr.a.f, this.b.dn().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

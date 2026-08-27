@@ -1,29 +1,10 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record gfy(ggc b, ggf c) {
-   public static final Codec<gfy> a = ggc.a.dispatchStable(gfy::a, ggc::c);
+public interface gfy extends Closeable {
+   AudioFormat a();
 
-   public gfy(ggc b, ggf c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public ggc a() {
-      return this.b;
-   }
-
-   public ggf b() {
-      return this.c;
-   }
+   ByteBuffer a(int var1) throws IOException;
 }

@@ -1,61 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cul extends cuf implements cuk {
-   public static final MapCodec<cul> a = b(cul::new);
+public class cul extends cui {
+   public static final MapCodec<cul> b = b(cul::new);
+   public static final dic c = cyv.aE;
+   private static final Map<hx, ekn> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cva.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         hx.d,
+         cva.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         hx.e,
+         cva.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         hx.f,
+         cva.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
    @Override
-   public MapCodec<cul> a() {
-      return a;
+   public MapCodec<? extends cul> a() {
+      return b;
    }
 
-   public cul(dgv.d $$0) {
+   protected cul(dhh.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, hx.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public cjp b() {
-      return cjp.a;
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public der a(ht $$0, dgw $$1) {
-      return new dem($$0, $$1);
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ect.c, ect.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cvc.a.o() : $$0;
+   }
+
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      hx $$3 = $$0.c(c);
+      ht $$4 = $$2.a($$3.g());
+      dhi $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
-      return a($$2, det.o, dem::a);
-   }
+   public dhi a(cnr $$0) {
+      dhi $$1 = super.a($$0);
+      csd $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      hx[] $$4 = $$0.f();
 
-   @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      if ($$1.B) {
-         return biq.a;
-      } else {
-         der $$6 = $$1.c_($$2);
-         if ($$6 instanceof dem) {
-            $$3.a((dem)$$6);
-            $$3.a(aqx.ab);
-         }
-
-         return biq.b;
-      }
-   }
-
-   @Override
-   public day b_(dgw $$0) {
-      return day.c;
-   }
-
-   @Override
-   public void a(crs $$0, ht $$1, dgw $$2, bky $$3, clb $$4) {
-      if ($$4.A()) {
-         der $$5 = $$0.c_($$1);
-         if ($$5 instanceof dem) {
-            ((dem)$$5).a($$4.y());
+      for (hx $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
+
+      return null;
    }
 }

@@ -1,18 +1,16 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-public interface exl {
-   Codec<exl> b = exm.f.dispatch(exl::a, $$0 -> $$0.a().codec());
-
-   exm a();
-
-   Either<exl.a, exl.b> b();
-
-   public interface a {
-      eln load(apd var1) throws IOException;
+public class exl implements elz {
+   @Nullable
+   @Override
+   public ely a(int $$0) {
+      return exu.b;
    }
 
-   public static record b(agg a) {
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

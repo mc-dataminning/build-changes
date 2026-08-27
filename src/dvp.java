@@ -1,26 +1,16 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class dvp extends dwc {
-   public static final Codec<dvp> a = dmb.a.c.fieldOf("step").xmap(dvp::new, $$0 -> $$0.c).codec();
-   private final dmb.a c;
+public interface dvp<P extends dvo> {
+   dvp<dvn> a = a("constant", dvn.b);
+   dvp<dvr> b = a("uniform", dvr.a);
+   dvp<dvm> c = a("biased_to_bottom", dvm.a);
+   dvp<dvs> d = a("very_biased_to_bottom", dvs.a);
+   dvp<dvq> e = a("trapezoid", dvq.a);
+   dvp<dvt> f = a("weighted_list", dvt.a);
 
-   private dvp(dmb.a $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   public static dvp a(dmb.a $$0) {
-      return new dvp($$0);
-   }
-
-   @Override
-   public Stream<ht> a_(dwa $$0, ato $$1, ht $$2) {
-      cqz $$3 = new cqz($$2);
-      return $$0.a($$3, this.c).a($$3);
-   }
-
-   @Override
-   public dwd<?> b() {
-      return dwd.o;
+   private static <P extends dvo> dvp<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.O, $$0, () -> $$1);
    }
 }

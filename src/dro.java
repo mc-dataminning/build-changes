@@ -1,53 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dro implements drn {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<dro> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dmc.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dme.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dmd.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bhv.b(1, 20).fieldOf("outer_wall_distance").orElse(bib.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bhv.b(1, 20).fieldOf("distribution_points").orElse(bib.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bhv.b(0, 10).fieldOf("point_offset").orElse(bib.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, dro::new)
-   );
-   public final dmc c;
-   public final dme d;
-   public final dmd e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bhv i;
-   public final bhv j;
-   public final bhv k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class dro extends dpv<dsg> {
+   private static final hx[] a = hx.values();
 
-   public dro(dmc $$0, dme $$1, dmd $$2, double $$3, double $$4, boolean $$5, bhv $$6, bhv $$7, bhv $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public dro(Codec<dsg> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dpx<dsg> $$0) {
+      csu $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ats $$3 = $$0.d();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         dhi $$4 = $$1.a_($$2.c());
+         if (!$$4.a(cvc.dV) && !$$4.a(cvc.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(csb $$0, ats $$1, ht $$2) {
+      $$0.a($$2, cvc.kK.o(), 2);
+      ht.a $$3 = new ht.a();
+      ht.a $$4 = new ht.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.t($$3)) {
+            int $$6 = 0;
+
+            for (hx $$7 : a) {
+               dhi $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(cvc.dV) || $$8.a(cvc.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, cvc.kK.o(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(csb $$0, ats $$1, ht $$2) {
+      ht.a $$3 = new ht.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.t($$3)) {
+            dhi $$5 = $$0.a_($$3.c());
+            if ($$5.a(cvc.dV) || $$5.a(cvc.kK)) {
+               int $$6 = atm.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(csb $$0, ats $$1, ht.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.t($$2)) {
+            if ($$6 == $$3 || !$$0.t($$2.d())) {
+               $$0.a($$2, cvc.oz.o().a(cyp.e, Integer.valueOf(atm.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, cvc.oA.o(), 2);
+         }
+
+         $$2.c(hx.a);
+      }
    }
 }

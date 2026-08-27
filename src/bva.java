@@ -1,24 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class bva extends bvd<bky> {
+public class bva extends bvl<blg> {
    @Override
-   public Set<btz<?>> a() {
-      return ImmutableSet.of(btz.j, btz.k, btz.l);
+   public Set<buh<?>> a() {
+      return ImmutableSet.of(buh.x, buh.y);
    }
 
    @Override
-   protected void a(ama $$0, bky $$1) {
-      List<cdm> $$2 = $$0.v().stream().filter(bkl.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
-      bly<?> $$3 = $$1.dN();
-      $$3.a(btz.j, $$2);
-      List<cdm> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(btz.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cdm> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(btz.l, $$5);
+   protected void a(ame $$0, blg $$1) {
+      bmg<?> $$2 = $$1.dP();
+      bjo $$3 = $$1.ey();
+      if ($$3 != null) {
+         $$2.a(buh.x, $$1.ey());
+         bkq $$4 = $$3.d();
+         if ($$4 instanceof blg) {
+            $$2.a(buh.y, (blg)$$4);
+         }
+      } else {
+         $$2.b(buh.x);
+      }
+
+      $$2.c(buh.y).ifPresent($$2x -> {
+         if (!$$2x.bx() || $$2x.dN() != $$0) {
+            $$2.b(buh.y);
+         }
+      });
    }
 }

@@ -1,76 +1,67 @@
-public class ced extends cee {
-   public ced(bkm<? extends ced> $$0, crs $$1) {
+import java.util.List;
+
+public class ced extends ceb {
+   public static final float e = 4.0F;
+
+   public ced(bku<? extends ced> $$0, csa $$1) {
       super($$0, $$1);
    }
 
-   public ced(crs $$0, byl $$1) {
-      this(bkm.ak, $$0);
-      this.b($$1);
-      this.e(
-         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)ati.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.du() - 0.1F,
-         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)ati.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+   public ced(csa $$0, blg $$1, double $$2, double $$3, double $$4) {
+      super(bku.x, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      eji $$0 = this.do();
-      ejg $$1 = cef.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dq() + $$0.c;
-      double $$3 = this.ds() + $$0.d;
-      double $$4 = this.dw() + $$0.e;
-      this.H();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dL().a(this.cG()).noneMatch(dgv.a::i)) {
-         this.ak();
-      } else if (this.ba()) {
-         this.ak();
-      } else {
-         this.f($$0.a(0.99F));
-         if (!this.aT()) {
-            this.f(this.do().b(0.0, -0.06F, 0.0));
+   protected void a(ejs $$0) {
+      super.a($$0);
+      if ($$0.c() != ejs.a.c || !this.d(((ejr)$$0).a())) {
+         if (!this.dN().B) {
+            List<blg> $$1 = this.dN().a(blg.class, this.cH().c(4.0, 2.0, 4.0));
+            bkn $$2 = new bkn(this.dN(), this.ds(), this.du(), this.dy());
+            bkq $$3 = this.w();
+            if ($$3 instanceof blg) {
+               $$2.a((blg)$$3);
+            }
+
+            $$2.a(js.i);
+            $$2.a(3.0F);
+            $$2.b(600);
+            $$2.c((7.0F - $$2.h()) / (float)$$2.m());
+            $$2.a(new bkd(bkf.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (blg $$4 : $$1) {
+                  double $$5 = this.f($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.ds(), $$4.du(), $$4.dy());
+                     break;
+                  }
+               }
+            }
+
+            this.dN().c(2006, this.dn(), this.aU() ? -1 : 1);
+            this.dN().b($$2);
+            this.am();
          }
-
-         this.e($$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void a(ejf $$0) {
-      super.a($$0);
-      if (this.v() instanceof bky $$1) {
-         $$0.a().a(this.dM().a(this, $$1), 1.0F);
-      }
+   public boolean bt() {
+      return false;
    }
 
    @Override
-   protected void a(eje $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.ak();
-      }
+   public boolean a(bjo $$0, float $$1) {
+      return false;
    }
 
    @Override
-   protected void b_() {
+   protected jq s() {
+      return js.i;
    }
 
    @Override
-   public void a(ye $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dL().a(js.ac, this.dq(), this.ds(), this.dw(), $$1 * $$5, $$2, $$3 * $$5);
-      }
-
-      this.o($$1, $$2, $$3);
+   protected boolean af_() {
+      return false;
    }
 }

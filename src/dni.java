@@ -1,359 +1,824 @@
-import com.google.common.primitives.Doubles;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.DoubleStream;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class dni {
-   private static final double f = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double g = 1.0;
-   private static final double h = -1.0;
-   private static final int i = 2;
-   private static final int j = in.a(16);
-   private static final int k = j - 1;
-   private static final int l = j;
-   private static final int m = 2 * k + 1;
-   private static final int n = 2 * l + 1;
-   private static final int o = m + n;
-   private final cru p;
-   private static final List<cut> q = List.of(cuv.l, cuv.L, cuv.i, cuv.b, cuv.k, cuv.I, cuv.K, cuv.fl, cuv.dP, cuv.iA, cuv.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean r;
-   private final double[] s;
-   private final List<List<ib<csq>>> t;
-   private final transient double[][] u;
-   private static final Codec<double[]> v = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-   public static final Codec<dni> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("min_section").forGetter($$0x -> $$0x.p.al()),
-                  Codec.INT.fieldOf("max_section").forGetter($$0x -> $$0x.p.am()),
-                  v.optionalFieldOf("heights")
-                     .forGetter($$0x -> DoubleStream.of($$0x.s).anyMatch($$0xx -> $$0xx != Double.MAX_VALUE) ? Optional.of($$0x.s) : Optional.empty())
-               )
-               .apply($$0, dni::new)
-      )
-      .comapFlatMap(dni::a, Function.identity());
+   public static final dni.f a = a(0, false, dwc.b);
+   public static final dni.f b = a(0, true, dwc.b);
+   public static final dni.f c = a(0, true, 6, dwc.b);
+   public static final dni.f d = a(0, true, 30, dwc.b);
+   public static final dni.f e = a(0, false, dwc.a);
+   public static final dni.f f = a(0, true, dwc.a);
 
-   private static DataResult<dni> a(dni $$0) {
-      return $$0.s.length != o ? DataResult.error(() -> "heights has to be of length " + o) : DataResult.success($$0);
+   public static dni.f a(int $$0, boolean $$1, dwc $$2) {
+      return new dni.t($$0, $$1, 0, $$2);
    }
 
-   private dni(int $$0, int $$1, Optional<double[]> $$2) {
-      this.s = $$2.orElse(ac.a(new double[o], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.u = new double[o][];
-      ObjectArrayList<List<ib<csq>>> $$3 = new ObjectArrayList(o);
-      $$3.size(o);
-      this.t = $$3;
-      int $$4 = iu.c($$0);
-      int $$5 = iu.c($$1) - $$4;
-      this.p = cru.e($$4, $$5);
+   public static dni.f a(int $$0, boolean $$1, int $$2, dwc $$3) {
+      return new dni.t($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   public static dni a(amh $$0, int $$1, int $$2) {
-      dis $$3 = $$0.a($$1, $$2);
-      dni $$4 = $$3.t();
-      if ($$4 != null && $$3.k().b(dix.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
+   public static dni.f a(dni.f $$0) {
+      return new dni.n($$0);
+   }
+
+   public static dni.f a(dnl $$0, int $$1) {
+      return new dni.aa($$0, $$1, false);
+   }
+
+   public static dni.f b(dnl $$0, int $$1) {
+      return new dni.aa($$0, $$1, true);
+   }
+
+   public static dni.f a(int $$0, int $$1) {
+      return new dni.z($$0, $$1, false);
+   }
+
+   public static dni.f b(int $$0, int $$1) {
+      return new dni.z($$0, $$1, true);
+   }
+
+   @SafeVarargs
+   public static dni.f a(agh<csy>... $$0) {
+      return a(List.of($$0));
+   }
+
+   private static dni.c a(List<agh<csy>> $$0) {
+      return new dni.c($$0);
+   }
+
+   public static dni.f a(agh<ebv.a> $$0, double $$1) {
+      return a($$0, $$1, Double.MAX_VALUE);
+   }
+
+   public static dni.f a(agh<ebv.a> $$0, double $$1, double $$2) {
+      return new dni.l($$0, $$1, $$2);
+   }
+
+   public static dni.f a(String $$0, dnl $$1, dnl $$2) {
+      return new dni.y(new agi($$0), $$1, $$2);
+   }
+
+   public static dni.f a() {
+      return dni.s.a;
+   }
+
+   public static dni.f b() {
+      return dni.h.a;
+   }
+
+   public static dni.f c() {
+      return dni.a.a;
+   }
+
+   public static dni.f d() {
+      return dni.v.a;
+   }
+
+   public static dni.o a(dni.f $$0, dni.o $$1) {
+      return new dni.x($$0, $$1);
+   }
+
+   public static dni.o a(dni.o... $$0) {
+      if ($$0.length == 0) {
+         throw new IllegalArgumentException("Need at least 1 rule for a sequence");
       } else {
+         return new dni.q(Arrays.asList($$0));
+      }
+   }
+
+   public static dni.o a(dhi $$0) {
+      return new dni.d($$0);
+   }
+
+   public static dni.o e() {
+      return dni.b.a;
+   }
+
+   static <A> Codec<? extends A> a(io<Codec<? extends A>> $$0, String $$1, atg<? extends A> $$2) {
+      return io.a($$0, $$1, $$2.a());
+   }
+
+   static enum a implements dni.f {
+      a;
+
+      static final atg<dni.a> c = atg.a(MapCodec.unit(a));
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return c;
+      }
+
+      public dni.e a(dni.g $$0) {
+         return $$0.i;
+      }
+   }
+
+   static record aa(dnl a, int c, boolean d) implements dni.f {
+      static final atg<dni.aa> e = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     dnl.a.fieldOf("anchor").forGetter(dni.aa::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(dni.aa::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(dni.aa::d)
+                  )
+                  .apply($$0, dni.aa::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return e;
+      }
+
+      public dni.e a(final dni.g $$0) {
+         class a extends dni.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.B + (aa.this.d ? this.c.E : 0) >= aa.this.a.a(this.c.n) + this.c.t * aa.this.c;
+            }
+         }
+
+         return new a();
+      }
+
+      public dnl b() {
+         return this.a;
+      }
+   }
+
+   static enum b implements dni.o {
+      a;
+
+      static final atg<dni.b> c = atg.a(MapCodec.unit(a));
+
+      @Override
+      public atg<? extends dni.o> a() {
+         return c;
+      }
+
+      public dni.u a(dni.g $$0) {
+         return $$0.e::a;
+      }
+   }
+
+   static final class c implements dni.f {
+      static final atg<dni.c> a = atg.a(agh.a(jz.ar).listOf().fieldOf("biome_is").xmap(dni::a, $$0 -> $$0.c));
+      private final List<agh<csy>> c;
+      final Predicate<agh<csy>> d;
+
+      c(List<agh<csy>> $$0) {
+         this.c = $$0;
+         this.d = Set.copyOf($$0)::contains;
+      }
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return a;
+      }
+
+      public dni.e a(final dni.g $$0) {
+         class a extends dni.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.A.get().a(c.this.d);
+            }
+         }
+
+         return new a();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return $$0 instanceof dni.c $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.c.hashCode();
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeConditionSource[biomes=" + this.c + "]";
+      }
+   }
+
+   static record d(dhi a, dni.r c) implements dni.o {
+      static final atg<dni.d> d = atg.a(dhi.b.xmap(dni.d::new, dni.d::b).fieldOf("result_state"));
+
+      d(dhi $$0) {
+         this($$0, new dni.r($$0));
+      }
+
+      @Override
+      public atg<? extends dni.o> a() {
+         return d;
+      }
+
+      public dni.u a(dni.g $$0) {
+         return this.c;
+      }
+
+      public dhi b() {
+         return this.a;
+      }
+   }
+
+   interface e {
+      boolean b();
+   }
+
+   public interface f extends Function<dni.g, dni.e> {
+      Codec<dni.f> b = jy.ae.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static Codec<? extends dni.f> a(io<Codec<? extends dni.f>> $$0) {
+         dni.a($$0, "biome", dni.c.a);
+         dni.a($$0, "noise_threshold", dni.l.e);
+         dni.a($$0, "vertical_gradient", dni.y.e);
+         dni.a($$0, "y_above", dni.aa.e);
+         dni.a($$0, "water", dni.z.e);
+         dni.a($$0, "temperature", dni.v.c);
+         dni.a($$0, "steep", dni.s.c);
+         dni.a($$0, "not", dni.n.c);
+         dni.a($$0, "hole", dni.h.c);
+         dni.a($$0, "above_preliminary_surface", dni.a.c);
+         return dni.a($$0, "stone_depth", dni.t.f);
+      }
+
+      atg<? extends dni.f> a();
+   }
+
+   protected static final class g {
+      private static final int a = 8;
+      private static final int b = 4;
+      private static final int c = 16;
+      private static final int d = 15;
+      final dnj e;
+      final dni.e f = new dni.g.d(this);
+      final dni.e g = new dni.g.c(this);
+      final dni.e h = new dni.g.b(this);
+      final dni.e i = new dni.g.a();
+      final dnf j;
+      final dje k;
+      private final dmv l;
+      private final Function<ht, ib<csy>> m;
+      final dno n;
+      private long o = Long.MAX_VALUE;
+      private final int[] p = new int[4];
+      long q = -9223372036854775807L;
+      int r;
+      int s;
+      int t;
+      private long u = this.q - 1L;
+      private double v;
+      private long w = this.q - 1L;
+      private int x;
+      long y = -9223372036854775807L;
+      final ht.a z = new ht.a();
+      Supplier<ib<csy>> A;
+      int B;
+      int C;
+      int D;
+      int E;
+
+      protected g(dnj $$0, dnf $$1, dje $$2, dmv $$3, Function<ht, ib<csy>> $$4, io<csy> $$5, dno $$6) {
+         this.e = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+         this.m = $$4;
+         this.n = $$6;
+      }
+
+      protected void a(int $$0, int $$1) {
+         this.q++;
+         this.y++;
+         this.r = $$0;
+         this.s = $$1;
+         this.t = this.e.a($$0, $$1);
+      }
+
+      protected void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+         this.y++;
+         this.A = Suppliers.memoize(() -> this.m.apply(this.z.d($$3, $$4, $$5)));
+         this.B = $$4;
+         this.C = $$2;
+         this.D = $$1;
+         this.E = $$0;
+      }
+
+      protected double a() {
+         if (this.u != this.q) {
+            this.u = this.q;
+            this.v = this.e.b(this.r, this.s);
+         }
+
+         return this.v;
+      }
+
+      private static int a(int $$0) {
+         return $$0 >> 4;
+      }
+
+      private static int b(int $$0) {
+         return $$0 << 4;
+      }
+
+      protected int b() {
+         if (this.w != this.q) {
+            this.w = this.q;
+            int $$0 = a(this.r);
+            int $$1 = a(this.s);
+            long $$2 = crh.c($$0, $$1);
+            if (this.o != $$2) {
+               this.o = $$2;
+               this.p[0] = this.l.a(b($$0), b($$1));
+               this.p[1] = this.l.a(b($$0 + 1), b($$1));
+               this.p[2] = this.l.a(b($$0), b($$1 + 1));
+               this.p[3] = this.l.a(b($$0 + 1), b($$1 + 1));
+            }
+
+            int $$3 = atm.a(
+               atm.a(
+                  (double)((float)(this.r & 15) / 16.0F),
+                  (double)((float)(this.s & 15) / 16.0F),
+                  (double)this.p[0],
+                  (double)this.p[1],
+                  (double)this.p[2],
+                  (double)this.p[3]
+               )
+            );
+            this.x = $$3 + this.t - 8;
+         }
+
+         return this.x;
+      }
+
+      final class a implements dni.e {
+         @Override
+         public boolean b() {
+            return g.this.B >= g.this.b();
+         }
+      }
+
+      static final class b extends dni.j {
+         b(dni.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.t <= 0;
+         }
+      }
+
+      static class c extends dni.j {
+         c(dni.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            int $$0 = this.c.r & 15;
+            int $$1 = this.c.s & 15;
+            int $$2 = Math.max($$1 - 1, 0);
+            int $$3 = Math.min($$1 + 1, 15);
+            dje $$4 = this.c.k;
+            int $$5 = $$4.a(dmr.a.a, $$0, $$2);
+            int $$6 = $$4.a(dmr.a.a, $$0, $$3);
+            if ($$6 >= $$5 + 4) {
+               return true;
+            } else {
+               int $$7 = Math.max($$0 - 1, 0);
+               int $$8 = Math.min($$0 + 1, 15);
+               int $$9 = $$4.a(dmr.a.a, $$7, $$1);
+               int $$10 = $$4.a(dmr.a.a, $$8, $$1);
+               return $$9 >= $$10 + 4;
+            }
+         }
+      }
+
+      static class d extends dni.k {
+         d(dni.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.A.get().a().b(this.c.z.d(this.c.r, this.c.B, this.c.s));
+         }
+      }
+   }
+
+   static enum h implements dni.f {
+      a;
+
+      static final atg<dni.h> c = atg.a(MapCodec.unit(a));
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return c;
+      }
+
+      public dni.e a(dni.g $$0) {
+         return $$0.h;
+      }
+   }
+
+   abstract static class i implements dni.e {
+      protected final dni.g c;
+      private long a;
+      @Nullable
+      Boolean d;
+
+      protected i(dni.g $$0) {
+         this.c = $$0;
+         this.a = this.c() - 1L;
+      }
+
+      @Override
+      public boolean b() {
+         long $$0 = this.c();
+         if ($$0 == this.a) {
+            if (this.d == null) {
+               throw new IllegalStateException("Update triggered but the result is null");
+            } else {
+               return this.d;
+            }
+         } else {
+            this.a = $$0;
+            this.d = this.a();
+            return this.d;
+         }
+      }
+
+      protected abstract long c();
+
+      protected abstract boolean a();
+   }
+
+   abstract static class j extends dni.i {
+      protected j(dni.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.q;
+      }
+   }
+
+   abstract static class k extends dni.i {
+      protected k(dni.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.y;
+      }
+   }
+
+   static record l(agh<ebv.a> a, double c, double d) implements dni.f {
+      static final atg<dni.l> e = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     agh.a(jz.az).fieldOf("noise").forGetter(dni.l::b),
+                     Codec.DOUBLE.fieldOf("min_threshold").forGetter(dni.l::c),
+                     Codec.DOUBLE.fieldOf("max_threshold").forGetter(dni.l::d)
+                  )
+                  .apply($$0, dni.l::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return e;
+      }
+
+      public dni.e a(final dni.g $$0) {
+         final ebv $$1 = $$0.j.a(this.a);
+
+         class a extends dni.j {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               double $$0 = $$1.a((double)this.c.r, 0.0, (double)this.c.s);
+               return $$0 >= l.this.c && $$0 <= l.this.d;
+            }
+         }
+
+         return new a();
+      }
+
+      public agh<ebv.a> b() {
+         return this.a;
+      }
+   }
+
+   static record m(dni.e a) implements dni.e {
+      @Override
+      public boolean b() {
+         return !this.a.b();
+      }
+   }
+
+   static record n(dni.f a) implements dni.f {
+      static final atg<dni.n> c = atg.a(dni.f.b.xmap(dni.n::new, dni.n::b).fieldOf("invert"));
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return c;
+      }
+
+      public dni.e a(dni.g $$0) {
+         return new dni.m(this.a.apply($$0));
+      }
+
+      public dni.f b() {
+         return this.a;
+      }
+   }
+
+   public interface o extends Function<dni.g, dni.u> {
+      Codec<dni.o> b = jy.af.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static Codec<? extends dni.o> a(io<Codec<? extends dni.o>> $$0) {
+         dni.a($$0, "bandlands", dni.b.c);
+         dni.a($$0, "block", dni.d.d);
+         dni.a($$0, "sequence", dni.q.c);
+         return dni.a($$0, "condition", dni.x.d);
+      }
+
+      atg<? extends dni.o> a();
+   }
+
+   static record p(List<dni.u> a) implements dni.u {
+      @Nullable
+      @Override
+      public dhi tryApply(int $$0, int $$1, int $$2) {
+         for (dni.u $$3 : this.a) {
+            dhi $$4 = $$3.tryApply($$0, $$1, $$2);
+            if ($$4 != null) {
+               return $$4;
+            }
+         }
+
          return null;
       }
    }
 
-   public static Set<hy> a(csm $$0, int $$1, int $$2, boolean $$3) {
-      Set<hy> $$4 = EnumSet.noneOf(hy.class);
+   static record q(List<dni.o> a) implements dni.o {
+      static final atg<dni.q> c = atg.a(dni.o.b.listOf().xmap(dni.q::new, dni.q::b).fieldOf("sequence"));
 
-      for (hy $$5 : hy.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).s() == $$3) {
-            $$4.add($$5);
+      @Override
+      public atg<? extends dni.o> a() {
+         return c;
+      }
+
+      public dni.u a(dni.g $$0) {
+         if (this.a.size() == 1) {
+            return this.a.get(0).apply($$0);
+         } else {
+            Builder<dni.u> $$1 = ImmutableList.builder();
+
+            for (dni.o $$2 : this.a) {
+               $$1.add($$2.apply($$0));
+            }
+
+            return new dni.p($$1.build());
          }
       }
 
-      return $$4;
+      public List<dni.o> b() {
+         return this.a;
+      }
    }
 
-   private void a(dis $$0, Set<hy> $$1) {
-      if (!this.r) {
-         if ($$1.contains(hy.a) || $$1.contains(hy.g) || $$1.contains(hy.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
-         }
+   static record r(dhi a) implements dni.u {
+      @Override
+      public dhi tryApply(int $$0, int $$1, int $$2) {
+         return this.a;
+      }
+   }
 
-         if ($$1.contains(hy.a)) {
-            for (int $$2 = 1; $$2 < j; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
+   static enum s implements dni.f {
+      a;
+
+      static final atg<dni.s> c = atg.a(MapCodec.unit(a));
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return c;
+      }
+
+      public dni.e a(dni.g $$0) {
+         return $$0.g;
+      }
+   }
+
+   static record t(int a, boolean c, int d, dwc e) implements dni.f {
+      static final atg<dni.t> f = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(dni.t::b),
+                     Codec.BOOL.fieldOf("add_surface_depth").forGetter(dni.t::c),
+                     Codec.INT.fieldOf("secondary_depth_range").forGetter(dni.t::d),
+                     dwc.c.fieldOf("surface_type").forGetter(dni.t::e)
+                  )
+                  .apply($$0, dni.t::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return f;
+      }
+
+      public dni.e a(final dni.g $$0) {
+         final boolean $$1 = this.e == dwc.a;
+
+         class a extends dni.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = $$1 ? this.c.D : this.c.E;
+               int $$1 = t.this.c ? this.c.t : 0;
+               int $$2 = t.this.d == 0 ? 0 : (int)atm.b(this.c.a(), -1.0, 1.0, 0.0, (double)t.this.d);
+               return $$0 <= 1 + t.this.a + $$1 + $$2;
             }
          }
 
-         if ($$1.contains(hy.g)) {
-            for (int $$3 = 1; $$3 < j; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
+   }
+
+   protected interface u {
+      @Nullable
+      dhi tryApply(int var1, int var2, int var3);
+   }
+
+   static enum v implements dni.f {
+      a;
+
+      static final atg<dni.v> c = atg.a(MapCodec.unit(a));
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return c;
+      }
+
+      public dni.e a(dni.g $$0) {
+         return $$0.f;
+      }
+   }
+
+   static record w(dni.e a, dni.u b) implements dni.u {
+      @Nullable
+      @Override
+      public dhi tryApply(int $$0, int $$1, int $$2) {
+         return !this.a.b() ? null : this.b.tryApply($$0, $$1, $$2);
+      }
+   }
+
+   static record x(dni.f a, dni.o c) implements dni.o {
+      static final atg<dni.x> d = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(dni.f.b.fieldOf("if_true").forGetter(dni.x::b), dni.o.b.fieldOf("then_run").forGetter(dni.x::c)).apply($$0, dni.x::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.o> a() {
+         return d;
+      }
+
+      public dni.u a(dni.g $$0) {
+         return new dni.w(this.a.apply($$0), this.c.apply($$0));
+      }
+
+      public dni.f b() {
+         return this.a;
+      }
+   }
+
+   static record y(agi a, dnl c, dnl d) implements dni.f {
+      static final atg<dni.y> e = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     agi.a.fieldOf("random_name").forGetter(dni.y::b),
+                     dnl.a.fieldOf("true_at_and_below").forGetter(dni.y::c),
+                     dnl.a.fieldOf("false_at_and_above").forGetter(dni.y::d)
+                  )
+                  .apply($$0, dni.y::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return e;
+      }
+
+      public dni.e a(final dni.g $$0) {
+         final int $$1 = this.c().a($$0.n);
+         final int $$2 = this.d().a($$0.n);
+         final dne $$3 = $$0.j.a(this.b());
+
+         class a extends dni.k {
+            a() {
+               super($$0);
             }
-         }
 
-         if ($$1.contains(hy.c)) {
-            for (int $$4 = 1; $$4 < j; $$4++) {
-               this.a(b(l, $$4), $$0, 15, 4 * $$4);
-            }
-         }
-
-         if ($$1.contains(hy.e)) {
-            for (int $$5 = 0; $$5 < j; $$5++) {
-               this.a(b($$5, l), $$0, 4 * $$5, 15);
-            }
-         }
-
-         if ($$1.contains(hy.c) && $$1.contains(hy.b)) {
-            this.a(b(l, 0), $$0, 15, 0);
-         }
-
-         if ($$1.contains(hy.c) && $$1.contains(hy.e) && $$1.contains(hy.d)) {
-            this.a(b(l, l), $$0, 15, 15);
-         }
-
-         this.r = true;
-      }
-   }
-
-   private void a(int $$0, dis $$1, int $$2, int $$3) {
-      if (this.s[$$0] == Double.MAX_VALUE) {
-         this.s[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.u[$$0] = this.a($$1, $$2, $$3, ati.a(this.s[$$0]));
-      this.t.set($$0, this.b($$1, $$2, $$3));
-   }
-
-   private int a(dis $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(dmf.a.a)) {
-         $$3 = Math.min($$0.a(dmf.a.a, $$1, $$2) + 1, this.p.aj());
-      } else {
-         $$3 = this.p.aj();
-      }
-
-      int $$5 = this.p.I_();
-      ht.a $$6 = new ht.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         $$6.c(hx.a);
-         if (q.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-      }
-
-      return $$5;
-   }
-
-   private static double a(dis $$0, ht.a $$1) {
-      return a($$0, (ht)$$1.c(hx.a)) ? 1.0 : -1.0;
-   }
-
-   private static double b(dis $$0, ht.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   private double[] a(dis $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.b()];
-      Arrays.fill($$4, -1.0);
-      ht.a $$5 = new ht.a($$1, this.p.aj(), $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(ati.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
-   }
-
-   private List<ib<csq>> b(dis $$0, int $$1, int $$2) {
-      ObjectArrayList<ib<csq>> $$3 = new ObjectArrayList(this.c());
-      $$3.size(this.c());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + in.a(this.p.I_());
-         $$3.set($$4, $$0.getNoiseBiome(in.a($$1), $$5, in.a($$2)));
-      }
-
-      return $$3;
-   }
-
-   private static boolean a(dis $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      if ($$2.i()) {
-         return false;
-      } else if ($$2.a(arc.O)) {
-         return false;
-      } else if ($$2.a(arc.t)) {
-         return false;
-      } else {
-         return $$2.a(cuv.eT) || $$2.a(cuv.eU) ? false : !$$2.k($$0, $$1).c();
-      }
-   }
-
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == l || $$2 == l) {
-         return this.s[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.s[a($$0, $$2)];
-      }
-   }
-
-   private double a(@Nullable double[] $$0, int $$1) {
-      if ($$0 == null) {
-         return Double.MAX_VALUE;
-      } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
-      }
-   }
-
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.e()) {
-         return 0.1;
-      } else if ($$0 == l || $$2 == l) {
-         return this.a(this.u[b($$0, $$2)], $$1);
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.u[a($$0, $$2)], $$1);
-      }
-   }
-
-   protected void a(int $$0, int $$1, int $$2, dni.a $$3) {
-      if ($$1 >= in.a(this.p.I_()) && $$1 < in.a(this.p.aj())) {
-         int $$4 = $$1 - in.a(this.p.I_());
-
-         for (int $$5 = 0; $$5 < this.t.size(); $$5++) {
-            if (this.t.get($$5) != null) {
-               ib<csq> $$6 = this.t.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
+            @Override
+            protected boolean a() {
+               int $$0 = this.c.B;
+               if ($$0 <= $$1) {
+                  return true;
+               } else if ($$0 >= $$2) {
+                  return false;
+               } else {
+                  double $$1 = atm.b((double)$$0, (double)$$1, (double)$$2, 1.0, 0.0);
+                  ats $$2 = $$3.a(this.c.r, $$0, this.c.s);
+                  return (double)$$2.i() < $$1;
                }
             }
          }
+
+         return new a();
+      }
+
+      public agi b() {
+         return this.a;
       }
    }
 
-   protected void a(int $$0, int $$1, dni.c $$2) {
-      for (int $$3 = 0; $$3 < this.s.length; $$3++) {
-         double $$4 = this.s[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
-         }
+   static record z(int a, int c, boolean d) implements dni.f {
+      static final atg<dni.z> e = atg.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(dni.z::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(dni.z::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(dni.z::d)
+                  )
+                  .apply($$0, dni.z::new)
+         )
+      );
+
+      @Override
+      public atg<? extends dni.f> a() {
+         return e;
       }
-   }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, dni.b $$4) {
-      int $$5 = this.d();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.b(), $$3 - $$5);
+      public dni.e a(final dni.g $$0) {
+         class a extends dni.k {
+            a() {
+               super($$0);
+            }
 
-      for (int $$8 = 0; $$8 < this.u.length; $$8++) {
-         double[] $$9 = this.u[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
-
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
+            @Override
+            protected boolean a() {
+               return this.c.C == Integer.MIN_VALUE || this.c.B + (z.this.d ? this.c.E : 0) >= this.c.C + z.this.a + this.c.t * z.this.c;
             }
          }
+
+         return new a();
       }
-   }
 
-   private int b() {
-      return this.p.ak() * 2;
-   }
-
-   private int c() {
-      return in.d(this.p.ak());
-   }
-
-   private int d() {
-      return this.e() + 1;
-   }
-
-   private int e() {
-      return this.p.al() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.d();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return k - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return m + $$0 + l - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < m) {
-         return d(k - $$0);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d(l - $$1);
+      public int b() {
+         return this.a;
       }
-   }
-
-   private static int c(int $$0) {
-      if ($$0 < m) {
-         return d($$0 - k);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d($$1 - l);
-      }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public cru a() {
-      return this.p;
-   }
-
-   protected interface a {
-      void consume(int var1, int var2, ib<csq> var3);
-   }
-
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
    }
 }

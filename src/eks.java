@@ -1,54 +1,74 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Comparator;
 
-public class eks<T> implements ekv<T>, ekx<T> {
-   private final List<ekt<T>> a = Lists.newArrayList();
-   private final Set<ekt<?>> b = new ObjectOpenCustomHashSet(ekt.a);
+public class eks {
+   public static final Comparator<eks> a = ($$0, $$1) -> {
+      if ($$0.b() > $$1.b()) {
+         return 1;
+      } else {
+         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
+      }
+   };
+   private final ekt b;
+   private final ekq c;
+   private final String d;
+   private int e;
+   private boolean f;
+   private boolean g;
 
-   @Override
-   public void a(eku<T> $$0) {
-      ekt<T> $$1 = new ekt<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public eks(ekt $$0, ekq $$1, String $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = true;
+      this.g = true;
    }
 
-   private void a(ekt<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public void a(int $$0) {
+      if (this.c.c().e()) {
+         throw new IllegalStateException("Cannot modify read-only score");
+      } else {
+         this.b(this.b() + $$0);
       }
    }
 
-   @Override
-   public boolean a(ht $$0, T $$1) {
-      return this.b.contains(ekt.a($$1, $$0));
+   public void a() {
+      this.a(1);
    }
 
-   @Override
-   public int a() {
-      return this.a.size();
+   public int b() {
+      return this.e;
    }
 
-   @Override
-   public sw b(long $$0, Function<T, String> $$1) {
-      sf $$2 = new sf();
+   public void c() {
+      this.b(0);
+   }
 
-      for (ekt<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+   public void b(int $$0) {
+      int $$1 = this.e;
+      this.e = $$0;
+      if ($$1 != $$0 || this.g) {
+         this.g = false;
+         this.f().a(this);
       }
-
-      return $$2;
    }
 
-   public List<ekt<T>> b() {
-      return List.copyOf(this.a);
+   public ekq d() {
+      return this.c;
    }
 
-   public static <T> eks<T> a(sf $$0, Function<String, Optional<T>> $$1, cqz $$2) {
-      eks<T> $$3 = new eks<>();
-      ekt.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   public String e() {
+      return this.d;
+   }
+
+   public ekt f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
    }
 }

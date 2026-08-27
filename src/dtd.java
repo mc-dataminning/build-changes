@@ -1,48 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dtd extends dsz {
-   public static final Codec<dtd> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bhv.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dtd::new)
+public class dtd extends dta {
+   public static final Codec<dtd> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, dtd::new)
    );
-   private final bhv b;
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public dtd(bhv $$0, bhv $$1, bhv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dtd(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public dtd(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dta<?> a() {
-      return dta.c;
+   protected dtb<?> b() {
+      return dtb.a;
    }
 
    @Override
-   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
-   }
-
-   @Override
-   public int a(ato $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(ato $$0, int $$1, dsj $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

@@ -12,13 +12,13 @@ public interface us {
       return Optional.empty();
    }
 
-   default vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+   default vf a(@Nullable du $$0, @Nullable bkq $$1, int $$2) throws CommandSyntaxException {
       return vf.a(this);
    }
 
    us.a<?> a();
 
-   public static record a<T extends us>(MapCodec<T> a, String b) implements aub {
+   public static record a<T extends us>(MapCodec<T> a, String b) implements aug {
       @Override
       public String c() {
          return this.b;

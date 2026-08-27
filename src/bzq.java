@@ -1,45 +1,69 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bzq {
-   private static final Logger a = LogUtils.getLogger();
-   private final byz b;
-   private final bzj[] c = new bzj[bzp.c()];
+public class bzq extends bzj {
    @Nullable
-   private bzj d;
+   private eju b;
 
-   public bzq(byz $$0) {
-      this.b = $$0;
-      this.a(bzp.k);
+   public bzq(bzh $$0) {
+      super($$0);
    }
 
-   public void a(bzp<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
+   @Override
+   public void b() {
+      eju $$0 = this.a.D(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.ds();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dy();
 
-         this.d = this.b((bzp<bzj>)$$0);
-         if (!this.b.dL().B) {
-            this.b.al().b(byz.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dL().B ? "client" : "server");
-         this.d.d();
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         ats $$5 = this.a.eh();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         eju $$9 = this.a.dq();
+         this.a.dN().a(js.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
-   public bzj a() {
-      return this.d;
-   }
-
-   public <T extends bzj> T b(bzp<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = eju.c(this.a.dN().a(dmr.a.f, dpu.a(this.a.u())));
       }
 
-      return (T)this.c[$$1];
+      if (this.b.c(this.a.ds(), this.a.du(), this.a.dy()) < 1.0) {
+         this.a.gc().b(bzx.f).j();
+         this.a.gc().a(bzx.g);
+      }
+   }
+
+   @Override
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dq().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public eju g() {
+      return this.b;
+   }
+
+   @Override
+   public bzx<bzq> i() {
+      return bzx.d;
    }
 }

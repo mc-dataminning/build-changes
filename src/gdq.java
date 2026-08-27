@@ -1,9 +1,8 @@
-public interface gdq {
-   default j b() {
-      return j.a();
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default boolean c() {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gdq {
 }

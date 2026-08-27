@@ -1,17 +1,16 @@
-public class fuv extends fwq<bwo, fgr<bwo>> {
-   private static final agg a = new agg("textures/entity/chicken.png");
+public abstract class fuv<T extends ccb, M extends fkg<T>> extends fwo<T, M> {
+   private static final agi a = new agi("textures/entity/zombie/zombie.png");
 
-   public fuv(fvk.a $$0) {
-      super($$0, new fgr<>($$0.a(fka.t)), 0.3F);
+   protected fuv(fvx.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new fzv<>(this, $$2, $$3, $$0.g()));
    }
 
-   public agg a(bwo $$0) {
+   public agi a(ccb $$0) {
       return a;
    }
 
-   protected float a(bwo $$0, float $$1) {
-      float $$2 = ati.i($$1, $$0.bX, $$0.bT);
-      float $$3 = ati.i($$1, $$0.bW, $$0.bU);
-      return (ati.a($$2) + 1.0F) * $$3;
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gm();
    }
 }

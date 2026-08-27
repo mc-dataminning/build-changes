@@ -1,5 +1,5 @@
-public record xf(agf<dlg> b, eji c) implements xd {
-   public static final agg a = new agg("debug/game_event");
+public record xf(agh<dls> b, eju c) implements xd {
+   public static final agi a = new agi("debug/game_event");
 
    public xf(tu $$0) {
       this($$0.a(jz.A), $$0.k());
@@ -12,7 +12,7 @@ public record xf(agf<dlg> b, eji c) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

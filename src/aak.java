@@ -4,11 +4,11 @@ import java.util.List;
 
 public class aak implements wk<yd> {
    private final aak.a a;
-   private final List<agg> b;
-   private final List<agg> c;
-   private final aqr d;
+   private final List<agi> b;
+   private final List<agi> c;
+   private final aqv d;
 
-   public aak(aak.a $$0, Collection<agg> $$1, Collection<agg> $$2, aqr $$3) {
+   public aak(aak.a $$0, Collection<agi> $$1, Collection<agi> $$2, aqv $$3) {
       this.a = $$0;
       this.b = ImmutableList.copyOf($$1);
       this.c = ImmutableList.copyOf($$2);
@@ -17,7 +17,7 @@ public class aak implements wk<yd> {
 
    public aak(tu $$0) {
       this.a = $$0.b(aak.a.class);
-      this.d = aqr.a($$0);
+      this.d = aqv.a($$0);
       this.b = $$0.a(tu::t);
       if (this.a == aak.a.a) {
          this.c = $$0.a(tu::t);
@@ -40,15 +40,15 @@ public class aak implements wk<yd> {
       $$0.a(this);
    }
 
-   public List<agg> a() {
+   public List<agi> a() {
       return this.b;
    }
 
-   public List<agg> d() {
+   public List<agi> d() {
       return this.c;
    }
 
-   public aqr e() {
+   public aqv e() {
       return this.d;
    }
 

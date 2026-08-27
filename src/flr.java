@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+public class flr {
+   private final flk a;
+   private final atu b;
 
-public enum flr {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final ur n;
-
-   private flr(String $$0) {
-      this.n = ur.c("gui.banned.reason." + $$0);
+   public flr(flk $$0, atu $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ur a() {
-      return this.n;
+   public void a() {
+      this.a.b(new afl(ac.b()));
    }
 
-   @Nullable
-   public static flr a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   public void a(afh $$0) {
+      this.b.a(ac.b() - $$0.a());
    }
 }

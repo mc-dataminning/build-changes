@@ -1,59 +1,78 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dxw extends dyc {
-   public static final Codec<dxw> a = RecordCodecBuilder.create($$0 -> $$0.group(dvz.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dxw::new));
-   private final ib<dvz> b;
-   private final rz c;
+public record dxw(List<dxl> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final agi c = new agi("jigsaw");
+   private static final Map<agi, agi> d = ImmutableMap.builder()
+      .put(new agi("nvi"), c)
+      .put(new agi("pcp"), c)
+      .put(new agi("bastionremnant"), c)
+      .put(new agi("runtime"), c)
+      .build();
 
-   protected dxw(ib<dvz> $$0, dye.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   public dxw(List<dxl> a) {
+      this.a = List.copyOf(a);
    }
 
-   private rz b() {
-      rz $$0 = new rz();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dfr.a.a.c());
-      return $$0;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   @Override
-   public iw a(eaw $$0, dbf $$1) {
-      return iw.g;
+   public boolean a(ht $$0) {
+      for (dxl $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public List<eav.c> a(eaw $$0, ht $$1, dbf $$2, ato $$3) {
-      List<eav.c> $$4 = Lists.newArrayList();
-      $$4.add(new eav.c($$1, cuv.pb.o().a(cyu.b, hz.a(hx.a, hx.d)), this.c));
-      return $$4;
+   public sw a(dxx $$0) {
+      sf $$1 = new sf();
+
+      for (dxl $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   @Override
-   public dwn a(eaw $$0, ht $$1, dbf $$2) {
-      iw $$3 = this.a($$0, $$2);
-      return new dwn($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public static dxw a(sf $$0, dxx $$1) {
+      List<dxl> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         rz $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         agi $$6 = new agi($$5);
+         agi $$7 = d.getOrDefault($$6, $$6);
+         dxy $$8 = jy.T.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dxl $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dxw($$2);
    }
 
-   @Override
-   public boolean a(eaw $$0, csm $$1, csk $$2, dit $$3, ht $$4, ht $$5, dbf $$6, dwn $$7, ato $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   public dwz b() {
+      return dxl.a(this.a.stream());
    }
 
-   @Override
-   public dyd<?> a() {
-      return dyd.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public List<dxl> c() {
+      return this.a;
    }
 }

@@ -1,113 +1,325 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class amg extends aln {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<aty<ame<?>>> d = new Long2ObjectOpenHashMap();
+public class amg {
+   private static final Logger a = LogUtils.getLogger();
+   protected ame c;
+   protected final amf d;
+   private crx b;
+   @Nullable
+   private crx e;
+   private boolean f;
+   private int g;
+   private ht h;
+   private int i;
+   private boolean j;
+   private ht k;
+   private int l;
+   private int m;
 
-   public amg() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public amg(amf $$0) {
+      this.b = crx.e;
+      this.h = ht.b;
+      this.k = ht.b;
+      this.m = -1;
+      this.d = $$0;
+      this.c = $$0.z();
    }
 
-   private aty<ame<?>> g(long $$0) {
-      return (aty<ame<?>>)this.d.computeIfAbsent($$0, $$0x -> aty.a(4));
-   }
-
-   private int a(aty<ame<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, ame<?> $$1) {
-      aty<ame<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, ame<?> $$1) {
-      aty<ame<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(amf<T> $$0, cqz $$1, int $$2, T $$3) {
-      this.a($$1.a(), new ame<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(amf<T> $$0, cqz $$1, int $$2, T $$3) {
-      ame<T> $$4 = new ame<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<ame<cqz>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<aty<ame<?>>> $$2 = (Entry<aty<ame<?>>>)var3.next();
-
-         for (ame<?> $$3 : (aty)$$2.getValue()) {
-            if ($$3.a() == amf.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<ame<cqz>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         ame<cqz> $$6 = (ame<cqz>)$$4.getFirst();
-         this.b($$5, $$6);
-         cqz $$7 = new cqz($$5);
-         amf<cqz> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      aty<ame<?>> $$1 = (aty<ame<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(cqz $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
+   public boolean a(crx $$0) {
+      if ($$0 == this.b) {
+         return false;
       } else {
-         this.b.put($$0, (byte)$$1);
+         this.a($$0, this.e);
+         this.d.y();
+         this.d.d.ae().a(new aah(aah.a.c, this.d));
+         this.c.e();
+         return true;
       }
+   }
+
+   protected void a(crx $$0, @Nullable crx $$1) {
+      this.e = $$1;
+      this.b = $$0;
+      $$0.a(this.d.fU());
+   }
+
+   public crx b() {
+      return this.b;
+   }
+
+   @Nullable
+   public crx c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.b.h();
+   }
+
+   public boolean e() {
+      return this.b.g();
    }
 
    public void a() {
-      this.b(Integer.MAX_VALUE);
+      this.i++;
+      if (this.j) {
+         dhi $$0 = this.c.a_(this.k);
+         if ($$0.i()) {
+            this.j = false;
+         } else {
+            float $$1 = this.a($$0, this.k, this.l);
+            if ($$1 >= 1.0F) {
+               this.j = false;
+               this.a(this.k);
+            }
+         }
+      } else if (this.f) {
+         dhi $$2 = this.c.a_(this.h);
+         if ($$2.i()) {
+            this.c.a(this.d.aj(), this.h, -1);
+            this.m = -1;
+            this.f = false;
+         } else {
+            this.a($$2, this.h, this.g);
+         }
+      }
    }
 
-   public String d(long $$0) {
-      aty<ame<?>> $$1 = (aty<ame<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   private float a(dhi $$0, ht $$1, int $$2) {
+      int $$3 = this.i - $$2;
+      float $$4 = $$0.a(this.d, this.d.dN(), $$1) * (float)($$3 + 1);
+      int $$5 = (int)($$4 * 10.0F);
+      if ($$5 != this.m) {
+         this.c.a(this.d.aj(), $$1, $$5);
+         this.m = $$5;
+      }
+
+      return $$4;
+   }
+
+   private void a(ht $$0, boolean $$1, int $$2, String $$3) {
+   }
+
+   public void a(ht $$0, ado.a $$1, hx $$2, int $$3, int $$4) {
+      if (this.d.br().g(eju.b($$0)) > and.d) {
+         this.a($$0, false, $$4, "too far");
+      } else if ($$0.v() >= $$3) {
+         this.d.c.b(new ym($$0, this.c.a_($$0)));
+         this.a($$0, false, $$4, "too high");
+      } else {
+         if ($$1 == ado.a.a) {
+            if (!this.c.a(this.d, $$0)) {
+               this.d.c.b(new ym($$0, this.c.a_($$0)));
+               this.a($$0, false, $$4, "may not interact");
+               return;
+            }
+
+            if (this.e()) {
+               this.a($$0, $$4, "creative destroy");
+               return;
+            }
+
+            if (this.d.a(this.c, $$0, this.b)) {
+               this.d.c.b(new ym($$0, this.c.a_($$0)));
+               this.a($$0, false, $$4, "block action restricted");
+               return;
+            }
+
+            this.g = this.i;
+            float $$5 = 1.0F;
+            dhi $$6 = this.c.a_($$0);
+            if (!$$6.i()) {
+               $$6.a(this.c, $$0, this.d);
+               $$5 = $$6.a(this.d, this.d.dN(), $$0);
+            }
+
+            if (!$$6.i() && $$5 >= 1.0F) {
+               this.a($$0, $$4, "insta mine");
+            } else {
+               if (this.f) {
+                  this.d.c.b(new ym(this.h, this.c.a_(this.h)));
+                  this.a($$0, false, $$4, "abort destroying since another started (client insta mine, server disagreed)");
+               }
+
+               this.f = true;
+               this.h = $$0.i();
+               int $$7 = (int)($$5 * 10.0F);
+               this.c.a(this.d.aj(), $$0, $$7);
+               this.a($$0, true, $$4, "actual start of destroying");
+               this.m = $$7;
+            }
+         } else if ($$1 == ado.a.c) {
+            if ($$0.equals(this.h)) {
+               int $$8 = this.i - this.g;
+               dhi $$9 = this.c.a_($$0);
+               if (!$$9.i()) {
+                  float $$10 = $$9.a(this.d, this.d.dN(), $$0) * (float)($$8 + 1);
+                  if ($$10 >= 0.7F) {
+                     this.f = false;
+                     this.c.a(this.d.aj(), $$0, -1);
+                     this.a($$0, $$4, "destroyed");
+                     return;
+                  }
+
+                  if (!this.j) {
+                     this.f = false;
+                     this.j = true;
+                     this.k = $$0;
+                     this.l = this.g;
+                  }
+               }
+            }
+
+            this.a($$0, true, $$4, "stopped destroying");
+         } else if ($$1 == ado.a.b) {
+            this.f = false;
+            if (!Objects.equals(this.h, $$0)) {
+               a.warn("Mismatch in destroy block pos: {} {}", this.h, $$0);
+               this.c.a(this.d.aj(), this.h, -1);
+               this.a($$0, true, $$4, "aborted mismatched destroying");
+            }
+
+            this.c.a(this.d.aj(), $$0, -1);
+            this.a($$0, true, $$4, "aborted destroying");
+         }
+      }
+   }
+
+   public void a(ht $$0, int $$1, String $$2) {
+      if (this.a($$0)) {
+         this.a($$0, true, $$1, $$2);
+      } else {
+         this.d.c.b(new ym($$0, this.c.a_($$0)));
+         this.a($$0, false, $$1, $$2);
+      }
+   }
+
+   public boolean a(ht $$0) {
+      dhi $$1 = this.c.a_($$0);
+      if (!this.d.eU().d().a($$1, this.c, $$0, this.d)) {
+         return false;
+      } else {
+         dfd $$2 = this.c.c_($$0);
+         cva $$3 = $$1.b();
+         if ($$3 instanceof cyi && !this.d.gq()) {
+            this.c.a($$0, $$1, $$1, 3);
+            return false;
+         } else if (this.d.a(this.c, $$0, this.b)) {
+            return false;
+         } else {
+            dhi $$4 = $$3.a(this.c, $$0, $$1, (cdu)this.d);
+            boolean $$5 = this.c.a($$0, false);
+            if ($$5) {
+               $$3.a((csb)this.c, $$0, $$4);
+            }
+
+            if (this.e()) {
+               return true;
+            } else {
+               clj $$6 = this.d.eU();
+               clj $$7 = $$6.p();
+               boolean $$8 = this.d.e($$4);
+               $$6.a(this.c, $$4, $$0, this.d);
+               if ($$5 && $$8) {
+                  $$3.a(this.c, this.d, $$0, $$4, $$2, $$7);
+               }
+
+               return true;
+            }
+         }
+      }
+   }
+
+   public bix a(amf $$0, csa $$1, clj $$2, biw $$3) {
+      if (this.b == crx.d) {
+         return bix.d;
+      } else if ($$0.go().a($$2.d())) {
+         return bix.d;
+      } else {
+         int $$4 = $$2.L();
+         int $$5 = $$2.k();
+         biy<clj> $$6 = $$2.a($$1, $$0, $$3);
+         clj $$7 = $$6.b();
+         if ($$7 == $$2 && $$7.L() == $$4 && $$7.r() <= 0 && $$7.k() == $$5) {
+            return $$6.a();
+         } else if ($$6.a() == bix.e && $$7.r() > 0 && !$$0.fo()) {
+            return $$6.a();
+         } else {
+            if ($$2 != $$7) {
+               $$0.a($$3, $$7);
+            }
+
+            if (this.e() && $$7 != clj.b) {
+               $$7.f($$4);
+               if ($$7.i() && $$7.k() != $$5) {
+                  $$7.b($$5);
+               }
+            }
+
+            if ($$7.b()) {
+               $$0.a($$3, clj.b);
+            }
+
+            if (!$$0.fo()) {
+               $$0.bR.b();
+            }
+
+            return $$6.a();
+         }
+      }
+   }
+
+   public bix a(amf $$0, csa $$1, clj $$2, biw $$3, ejq $$4) {
+      ht $$5 = $$4.a();
+      dhi $$6 = $$1.a_($$5);
+      if (!$$6.b().a($$1.H())) {
+         return bix.e;
+      } else if (this.b == crx.d) {
+         bja $$7 = $$6.b($$1, $$5);
+         if ($$7 != null) {
+            $$0.a($$7);
+            return bix.a;
+         } else {
+            return bix.d;
+         }
+      } else {
+         boolean $$8 = !$$0.eU().b() || !$$0.eV().b();
+         boolean $$9 = $$0.fJ() && $$8;
+         clj $$10 = $$2.p();
+         if (!$$9) {
+            bix $$11 = $$6.a($$1, $$0, $$3, $$4);
+            if ($$11.a()) {
+               al.M.a($$0, $$5, $$10);
+               return $$11;
+            }
+         }
+
+         if (!$$2.b() && !$$0.go().a($$2.d())) {
+            cnt $$12 = new cnt($$0, $$3, $$4);
+            bix $$14;
+            if (this.e()) {
+               int $$13 = $$2.L();
+               $$14 = $$2.a($$12);
+               $$2.f($$13);
+            } else {
+               $$14 = $$2.a($$12);
+            }
+
+            if ($$14.a()) {
+               al.M.a($$0, $$5, $$10);
+            }
+
+            return $$14;
+         } else {
+            return bix.d;
+         }
+      }
+   }
+
+   public void a(ame $$0) {
+      this.c = $$0;
    }
 }

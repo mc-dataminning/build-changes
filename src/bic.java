@@ -1,49 +1,40 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class bic extends bhv {
-   public static final Codec<bic> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bha.b(bhv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bic::new)
+public abstract class bic {
+   private static final Codec<Either<Integer, bic>> a = Codec.either(Codec.INT, jy.N.q().dispatch(bic::c, bid::codec));
+   public static final Codec<bic> c = a.xmap(
+      $$0 -> (bic)$$0.map(bhz::a, $$0x -> $$0x), $$0 -> $$0.c() == bid.a ? Either.left(((bhz)$$0).d()) : Either.right($$0)
    );
-   private final bha<bhv> b;
-   private final int f;
-   private final int g;
+   public static final Codec<bic> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bic> e = b(1, Integer.MAX_VALUE);
 
-   public bic(bha<bhv> $$0) {
-      this.b = $$0;
-      List<bhc.b<bhv>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
-
-      for (bhc.b<bhv> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
+   public static Codec<bic> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   @Override
-   public int a(ato $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public static <T extends bic> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return asu.a(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
    }
 
-   @Override
-   public int a() {
-      return this.f;
-   }
+   public abstract int a(ats var1);
 
-   @Override
-   public int b() {
-      return this.g;
-   }
+   public abstract int a();
 
-   @Override
-   public bhw<?> c() {
-      return bhw.e;
-   }
+   public abstract int b();
+
+   public abstract bid<?> c();
 }

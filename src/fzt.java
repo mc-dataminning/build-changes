@@ -1,21 +1,34 @@
-public class fzt<T extends bki & blo, M extends fhc<T>> extends fzs<T, M> {
-   private final agg a;
-   private final M b;
+public class fzt extends gaf<bys, fia<bys>> {
+   private final fia<bys> a;
 
-   public fzt(fxf<T, M> $$0, M $$1, agg $$2) {
+   public fzt(fxs<bys, fia<bys>> $$0, fkk $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = new fia<>($$1.a(fkn.ak));
    }
 
-   @Override
-   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eno $$10 = $$1.getBuffer(fqp.e(this.a));
-         this.b.a($$0, $$10, $$2, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(enw $$0, fqu $$1, int $$2, bys $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      clj $$10 = $$3.u();
+      if ($$10.d() instanceof ckz) {
+         ckz $$11 = (ckz)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof cka) {
+            int $$12 = ((cka)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+         }
+
+         eoa $$19 = $$1.getBuffer(frc.e($$11.h()));
+         this.a.a($$0, $$19, $$2, gbl.d, $$13, $$14, $$15, 1.0F);
       }
    }
 }

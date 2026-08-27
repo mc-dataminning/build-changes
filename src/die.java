@@ -1,21 +1,28 @@
-public enum die implements aub {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum die implements aug {
+   a(hx.a),
+   b(hx.b);
 
-   private final String d;
+   private final hx c;
 
-   private die(String $$0) {
-      this.d = $$0;
+   private die(hx $$0) {
+      this.c = $$0;
+   }
+
+   public hx a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
+   }
+
+   public die b() {
+      return this == a ? b : a;
    }
 }

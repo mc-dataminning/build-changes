@@ -1,42 +1,25 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwa extends dnc {
-   private final csm a;
-   private final dit b;
-   private final Optional<dvz> c;
+public class dwa extends dwn {
+   public static final Codec<dwa> a = RecordCodecBuilder.create($$0 -> $$0.group(dny.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dwa::new));
+   private final dny c;
 
-   public dwa(csm $$0, dit $$1, Optional<dvz> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private dwa(dny $$0) {
+      this.c = $$0;
    }
 
-   public int a(dmf.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static dwa a(dny $$0) {
+      return new dwa($$0);
    }
 
-   public dir a(cqz $$0, dmb.a $$1) {
-      return ((djn)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   protected boolean a(dwm $$0, ats $$1, ht $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
-   public dgw a(ht $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public csm d() {
-      return this.a;
-   }
-
-   public Optional<dvz> e() {
-      return this.c;
-   }
-
-   public dit f() {
-      return this.b;
+   @Override
+   public dwp<?> b() {
+      return dwp.a;
    }
 }

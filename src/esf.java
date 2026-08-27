@@ -1,33 +1,13 @@
-import com.mojang.serialization.Codec;
+public class esf extends esh {
+   private final erw b;
 
-public enum esf implements atk, aub {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<esf> d = aub.a(esf::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private esf(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public esf(erw $$0, long $$1, ur $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.g;
+   protected void a(eom $$0, long $$1) throws epz {
+      $$0.a($$1, this.b);
    }
 }

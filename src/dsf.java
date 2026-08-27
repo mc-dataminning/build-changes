@@ -1,10 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dsf(dto b) implements drn {
-   public static final Codec<dsf> a = RecordCodecBuilder.create($$0 -> $$0.group(dto.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, dsf::new));
+public class dsf extends drr {
+   public static final Codec<dsf> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dua.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               asu.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               asu.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dsf::new)
+   );
+   public final int d;
+   public final int e;
 
-   public dto a() {
-      return this.b;
+   public dsf(dua $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

@@ -1,86 +1,24 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fdt extends fdx {
+   private static final ur b = ur.c("title.32bit.deprecation.realms.header").a(n.r);
+   private static final ur c = ur.c("title.32bit.deprecation.realms");
+   private static final ur k = ur.c("title.32bit.deprecation.realms.check");
+   private static final ur l = b.f().f("\n").b(c);
+   private final fau m;
 
-public class fdt {
-   @Nullable
-   private coh<?> a;
-   private final List<fdt.a> b = Lists.newArrayList();
-   float c;
-
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fdt(fau $$0) {
+      super(b, c, k, l);
+      this.m = $$0;
    }
 
-   public void a(coc $$0, int $$1, int $$2) {
-      this.b.add(new fdt.a($$0, $$1, $$2));
-   }
-
-   public fdt.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
-   @Nullable
-   public coh<?> c() {
-      return this.a;
-   }
-
-   public void a(coh<?> $$0) {
-      this.a = $$0;
-   }
-
-   public void a(eub $$0, esr $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fah.p()) {
-         this.c += $$5;
-      }
-
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fdt.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+   @Override
+   protected void a(int $$0) {
+      this.d(euz.a(uq.d, $$0x -> {
+         if (this.a.a()) {
+            this.f.m.w = true;
+            this.f.m.as();
          }
 
-         clb $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(fqp.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
-      }
-   }
-
-   public class a {
-      private final coc b;
-      private final int c;
-      private final int d;
-
-      public a(coc $$1, int $$2, int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public clb c() {
-         clb[] $$0 = this.b.a();
-         return $$0.length == 0 ? clb.b : $$0[ati.d(fdt.this.c / 30.0F) % $$0.length];
-      }
+         this.f.a(this.m);
+      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
    }
 }

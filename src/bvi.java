@@ -1,35 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class bvi extends buw<ccq> {
+public class bvi extends bvl<blg> {
    @Override
-   public Set<btz<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(btz.B)));
-   }
-
-   protected void a(ama $$0, ccq $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ag() == bkm.bt)
-         .or(() -> a($$1, $$0xx -> $$0xx.ag() != bkm.bt))
-         .ifPresentOrElse($$1x -> $$1.dN().a(btz.B, $$1x), () -> $$1.dN().b(btz.B));
-   }
-
-   private static Optional<bky> a(ccq $$0, Predicate<bky> $$1) {
-      return $$0.dN().c(btz.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   public Set<buh<?>> a() {
+      return ImmutableSet.of(buh.j, buh.k, buh.l);
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   protected void a(ame $$0, blg $$1) {
+      List<cdu> $$2 = $$0.w().stream().filter(bkt.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
+      bmg<?> $$3 = $$1.dP();
+      $$3.a(buh.j, $$2);
+      List<cdu> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(buh.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cdu> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(buh.l, $$5);
    }
 }

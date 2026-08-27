@@ -1,45 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doq extends dpj<drg> {
-   public doq(Codec<drg> $$0) {
-      super($$0);
+public class doq {
+   public static final doq a = new doq(false, cvc.gz.o(), cvc.pL.o(), cvc.ej.o(), cvc.aQ.o());
+   public static final Codec<doq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(doq::a),
+               dhi.b.optionalFieldOf("air_state", a.b()).forGetter(doq::b),
+               dhi.b.optionalFieldOf("water_state", a.b()).forGetter(doq::c),
+               dhi.b.optionalFieldOf("lava_state", a.b()).forGetter(doq::d),
+               dhi.b.optionalFieldOf("barrier_state", a.b()).forGetter(doq::e)
+            )
+            .apply($$0, doq::new)
+   );
+   private final boolean c;
+   private final dhi d;
+   private final dhi e;
+   private final dhi f;
+   private final dhi g;
+
+   public static doq a(boolean $$0, dhi $$1, dhi $$2, dhi $$3, dhi $$4) {
+      return new doq($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dpl<drg> $$0) {
-      ht $$1 = $$0.e();
-      csm $$2 = $$0.b();
-      ato $$3 = $$0.d();
+   public static doq a(dhi $$0, dhi $$1, dhi $$2, dhi $$3) {
+      return new doq(false, $$0, $$1, $$2, $$3);
+   }
 
-      drg $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
-         if (!$$2.t($$1.d())) {
-            dgw $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   public static doq a(boolean $$0, dhi $$1) {
+      return new doq($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+   private doq(boolean $$0, dhi $$1, dhi $$2, dhi $$3, dhi $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-            for (ht $$11 : ht.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
+   public boolean a() {
+      return this.c;
+   }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
+   public dhi b() {
+      return this.d;
+   }
 
-         return true;
-      }
+   public dhi c() {
+      return this.e;
+   }
+
+   public dhi d() {
+      return this.f;
+   }
+
+   public dhi e() {
+      return this.g;
    }
 }

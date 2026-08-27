@@ -1,46 +1,111 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class eyh<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final eyh<?> a = new eyh<>(auj.a, ($$0, $$1) -> {
-   });
+public class eyh extends eye {
+   private final List<eyh.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final eym f = eym.i().a(0.5F, 0.5F);
 
-   private eyh(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eyh() {
+      this(0, 0, 0, 0);
    }
 
-   public static eyh<?> a(String $$0) {
-      return new eyh<>($$0, Consumer::accept);
+   public eyh(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static eyh<?> a(ur $$0) {
-      return new eyh<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   public eyh(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   public static eyh<?> a(List<ur> $$0) {
-      return new eyh<>($$0, ($$1, $$2) -> $$0.stream().map(ur::getString).forEach($$1));
+   public eyh a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
+   public eyh a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public eyh b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public eym b() {
+      return this.f.g();
+   }
+
+   public eym c() {
+      return this.f;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof eyh<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (eyh.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
+
+      for (eyh.a $$3 : this.c) {
+         $$3.a(this.p(), $$0);
+         $$3.b(this.r(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public <T extends eyl> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends eyl> T a(T $$0, eym $$1) {
+      this.c.add(new eyh.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends eyl> T a(T $$0, Consumer<eym> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public void b(Consumer<eyl> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public static void a(eyl $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
+
+   public static void a(eyl $$0, ezc $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
+
+   public static void a(eyl $$0, ezc $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(eyl $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.k(), $$0::f, $$5);
+      a($$2, $$4, $$0.i(), $$0::g, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)atm.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends eye.a {
+      protected a(eyl $$0, eym $$1) {
+         super($$0, $$1);
+      }
    }
 }

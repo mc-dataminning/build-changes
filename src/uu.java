@@ -26,11 +26,11 @@ public class uu {
       }
    }
 
-   public static Optional<vf> a(@Nullable du $$0, Optional<ur> $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<vf> a(@Nullable du $$0, Optional<ur> $$1, @Nullable bkq $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static vf a(@Nullable du $$0, ur $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+   public static vf a(@Nullable du $$0, ur $$1, @Nullable bkq $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class uu {
       }
    }
 
-   private static vo a(@Nullable du $$0, vo $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+   private static vo a(@Nullable du $$0, vo $$1, @Nullable bkq $$2, int $$3) throws CommandSyntaxException {
       ux $$4 = $$1.i();
       if ($$4 != null) {
          ur $$5 = $$4.a(ux.a.a);

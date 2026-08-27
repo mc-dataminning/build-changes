@@ -1,24 +1,28 @@
-import com.mojang.serialization.MapCodec;
+public enum dda {
+   a {
+      @Override
+      public boolean a(dhi $$0, crg $$1, ht $$2, hx $$3) {
+         return cva.a($$0.l($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final int d = 1;
+      private final ekn e = cva.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-public class dda extends cto {
-   public static final MapCodec<dda> a = b(dda::new);
+      @Override
+      public boolean a(dhi $$0, crg $$1, ht $$2, hx $$3) {
+         return !ekk.c($$0.l($$1, $$2).a($$3), this.e, ejy.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final ekn e = ekk.a(ekk.b(), cva.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), ejy.e);
 
-   @Override
-   public MapCodec<dda> a() {
-      return a;
-   }
+      @Override
+      public boolean a(dhi $$0, crg $$1, ht $$2, hx $$3) {
+         return !ekk.c($$0.l($$1, $$2).a($$3), this.e, ejy.c);
+      }
+   };
 
-   public dda(dgv.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean c(dgw $$0, cqy $$1, ht $$2) {
-      return false;
-   }
-
-   @Override
-   public int g(dgw $$0, cqy $$1, ht $$2) {
-      return $$1.M();
-   }
+   public abstract boolean a(dhi var1, crg var2, ht var3, hx var4);
 }

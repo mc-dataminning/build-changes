@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public record xs(Set<iu> b, Set<iu> c) implements xd {
-   public static final agg a = new agg("debug/village_sections");
+   public static final agi a = new agi("debug/village_sections");
 
    public xs(tu $$0) {
       this($$0.a(HashSet::new, tu::g), $$0.a(HashSet::new, tu::g));
@@ -15,7 +15,7 @@ public record xs(Set<iu> b, Set<iu> c) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

@@ -1,10 +1,15 @@
-public class cla extends ciu {
-   public cla(cut $$0, ckw.a $$1) {
-      super($$0, $$1);
+public class cla extends cle implements cmi {
+   public cla(cle.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String a() {
-      return this.q();
+   public boolean a(csa $$0, dgm $$1, boolean $$2, cdu $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.p(), aqr.md, aqs.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

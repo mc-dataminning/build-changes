@@ -1,97 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public final class dlt {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dix> e = jy.o
-      .q()
-      .comapFlatMap($$0 -> $$0 == dix.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dlt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dlt::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dlt::new)
-   );
-   private static final Set<agf<csq>> f = Set.of(csx.aa, csx.Z, csx.ab);
-   public static final cru b = new cru() {
-      @Override
-      public int J_() {
-         return 64;
-      }
+public class dlt {
+   private final ame a;
 
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dix g;
-   private final BitSet h;
-
-   private dlt(dix $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   public dlt(ame $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   public static dlt a(rz $$0) {
-      dix $$1 = dix.a($$0.l("target_status"));
-      return $$1 == dix.c ? null : new dlt($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(djn $$0) {
-      int $$1 = 4;
-      ht.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(cuv.F)) {
-            $$0.a($$1x, cuv.rI.o(), false);
+   public void a(dls $$0, eju $$1, dls.a $$2) {
+      int $$3 = $$0.a();
+      ht $$4 = ht.a($$1);
+      int $$5 = iu.a($$4.u() - $$3);
+      int $$6 = iu.a($$4.v() - $$3);
+      int $$7 = iu.a($$4.w() - $$3);
+      int $$8 = iu.a($$4.u() + $$3);
+      int $$9 = iu.a($$4.v() + $$3);
+      int $$10 = iu.a($$4.w() + $$3);
+      List<dls.b> $$11 = new ArrayList<>();
+      dlv.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == dlu.a.b) {
+            $$11.add(new dls.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
          }
-      });
-   }
+      };
+      boolean $$13 = false;
 
-   public void b(djn $$0) {
-      cru $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.aj() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               ht.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cuv.a.o(), false));
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dje $$16 = this.a.k().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
             }
          }
       }
+
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
+
+      if ($$13) {
+         ack.a(this.a, $$0, $$1);
+      }
    }
 
-   public dix a() {
-      return this.g;
-   }
+   private void a(List<dls.b> $$0) {
+      Collections.sort($$0);
 
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static cst a(cst $$0, dis $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<agf<csq>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            ib<csq> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+      for (dls.b $$1 : $$0) {
+         dlu $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
    }
 }

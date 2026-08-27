@@ -1,37 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record gch(agg a, @Nullable String b, @Nullable agg c, @Nullable agg d, gch.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class gch implements gby {
+   public static final Codec<gch> b = RecordCodecBuilder.create($$0 -> $$0.group(att.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gch::new));
+   private final att c;
 
-      private final String c;
+   public gch(att $$0) {
+      this.c = $$0;
+   }
 
-      private a(String $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public void a(aph $$0, gby.a $$1) {
+      $$1.a(this.c.c());
+   }
 
-      public static gch.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   @Override
+   public gca a() {
+      return gcb.c;
    }
 }

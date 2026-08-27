@@ -94,7 +94,7 @@ public record ai(String[][] b) {
       Set<String> $$3 = new ObjectOpenHashSet();
 
       for (int $$4 = 0; $$4 < $$0.size(); $$4++) {
-         JsonArray $$5 = asy.n($$0.get($$4), "requirements[" + $$4 + "]");
+         JsonArray $$5 = atc.n($$0.get($$4), "requirements[" + $$4 + "]");
          if ($$5.isEmpty() && $$1.isEmpty()) {
             throw new JsonSyntaxException("Requirement entry cannot be empty");
          }
@@ -102,7 +102,7 @@ public record ai(String[][] b) {
          $$2[$$4] = new String[$$5.size()];
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            String $$7 = asy.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
+            String $$7 = atc.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
             $$2[$$4][$$6] = $$7;
             $$3.add($$7);
          }

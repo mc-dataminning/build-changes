@@ -10,16 +10,16 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ee implements ArgumentType<agg> {
-   private static final Collection<String> a = Stream.of(crs.h, crs.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+public class ee implements ArgumentType<agi> {
+   private static final Collection<String> a = Stream.of(csa.h, csa.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("argument.dimension.invalid", $$0));
 
-   public agg a(StringReader $$0) throws CommandSyntaxException {
-      return agg.a($$0);
+   public agi a(StringReader $$0) throws CommandSyntaxException {
+      return agi.a($$0);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dy ? dy.a(((dy)$$0.getSource()).u().stream().map(agf::a), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof dy ? dy.a(((dy)$$0.getSource()).u().stream().map(agh::a), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -30,10 +30,10 @@ public class ee implements ArgumentType<agg> {
       return new ee();
    }
 
-   public static ama a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      agg $$2 = (agg)$$0.getArgument($$1, agg.class);
-      agf<crs> $$3 = agf.a(jz.aJ, $$2);
-      ama $$4 = ((du)$$0.getSource()).m().a($$3);
+   public static ame a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      agi $$2 = (agi)$$0.getArgument($$1, agi.class);
+      agh<csa> $$3 = agh.a(jz.aJ, $$2);
+      ame $$4 = ((du)$$0.getSource()).m().a($$3);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

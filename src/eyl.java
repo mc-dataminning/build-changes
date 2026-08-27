@@ -1,32 +1,26 @@
+import java.util.function.Consumer;
+
 public interface eyl {
-   eyn a();
+   void f(int var1);
 
-   public static record a(eyn a) implements eyl {
-      @Override
-      public eyn a() {
-         return this.a.a() == eym.b ? this.a : eyn.b;
-      }
+   void g(int var1);
 
-      public eyn b() {
-         return this.a;
-      }
+   int p();
+
+   int r();
+
+   int k();
+
+   int i();
+
+   default ezc s() {
+      return new ezc(this.p(), this.r(), this.k(), this.i());
    }
 
-   public static class b implements eyl {
-      @Override
-      public eyn a() {
-         return eyn.b;
-      }
+   default void b(int $$0, int $$1) {
+      this.f($$0);
+      this.g($$1);
    }
 
-   public static record c(boolean a) implements eyl {
-      @Override
-      public eyn a() {
-         return this.a ? eyn.b : eyn.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
-   }
+   void a(Consumer<eux> var1);
 }

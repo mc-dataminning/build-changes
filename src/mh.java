@@ -149,14 +149,14 @@ public class mh {
    }
 
    private static mg a(String $$0, mj... $$1) {
-      return new mg(Optional.of(new agg("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+      return new mg(Optional.of(new agi("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
    private static mg b(String $$0, mj... $$1) {
-      return new mg(Optional.of(new agg("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+      return new mg(Optional.of(new agi("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
    private static mg a(String $$0, String $$1, mj... $$2) {
-      return new mg(Optional.of(new agg("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+      return new mg(Optional.of(new agi("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

@@ -1,133 +1,193 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bmb {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<blz, bma> b = Maps.newHashMap();
-   private final Set<bma> c = Sets.newHashSet();
-   private final bmd d;
+public abstract class bmb extends bwr implements blo {
+   protected static final afo<Byte> bT = afr.a(bmb.class, afq.a);
+   protected static final afo<Optional<UUID>> bU = afr.a(bmb.class, afq.q);
+   private boolean bW;
 
-   public bmb(bmd $$0) {
-      this.d = $$0;
+   protected bmb(bku<? extends bmb> $$0, csa $$1) {
+      super($$0, $$1);
+      this.w();
    }
 
-   private void a(bma $$0) {
-      if ($$0.a().b()) {
-         this.c.add($$0);
+   @Override
+   protected void b_() {
+      super.b_();
+      this.an.a(bT, (byte)0);
+      this.an.a(bU, Optional.empty());
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.bW);
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = apt.a(this.cL(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.x(true);
+         } catch (Throwable var4) {
+            this.x(false);
+         }
+      }
+
+      this.bW = $$0.q("Sitting");
+      this.y(this.bW);
+   }
+
+   @Override
+   public boolean a(cdu $$0) {
+      return !this.fT();
+   }
+
+   protected void w(boolean $$0) {
+      jq $$1 = js.M;
+      if (!$$0) {
+         $$1 = js.Z;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dN().a($$1, this.d(1.0), this.dv() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
-   public Set<bma> a() {
-      return this.c;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
+      }
    }
 
-   public Collection<bma> b() {
-      return this.b.values().stream().filter($$0 -> $$0.a().b()).collect(Collectors.toList());
+   @Override
+   public boolean u() {
+      return (this.an.b(bT) & 4) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 4));
+      } else {
+         this.an.b(bT, (byte)($$1 & -5));
+      }
+
+      this.w();
+   }
+
+   protected void w() {
+   }
+
+   public boolean A() {
+      return (this.an.b(bT) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 1));
+      } else {
+         this.an.b(bT, (byte)($$1 & -2));
+      }
    }
 
    @Nullable
-   public bma a(blz $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   @Override
+   public UUID d() {
+      return this.an.b(bU).orElse(null);
    }
 
-   @Nullable
-   public bma a(ib<blz> $$0) {
-      return this.a($$0.a());
+   public void b(@Nullable UUID $$0) {
+      this.an.b(bU, Optional.ofNullable($$0));
    }
 
-   public boolean b(blz $$0) {
-      return this.b.get($$0) != null || this.d.c($$0);
+   public void f(cdu $$0) {
+      this.x(true);
+      this.b($$0.cw());
+      if ($$0 instanceof amf) {
+         al.x.a((amf)$$0, this);
+      }
    }
 
-   public boolean b(ib<blz> $$0) {
-      return this.b($$0.a());
+   @Override
+   public boolean c(blg $$0) {
+      return this.j($$0) ? false : super.c($$0);
    }
 
-   public boolean a(blz $$0, UUID $$1) {
-      bma $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   public boolean j(blg $$0) {
+      return $$0 == this.Q_();
    }
 
-   public boolean a(ib<blz> $$0, UUID $$1) {
-      return this.a($$0.a(), $$1);
+   public boolean a(blg $$0, blg $$1) {
+      return true;
    }
 
-   public double c(blz $$0) {
-      bma $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.f() : this.d.a($$0);
-   }
-
-   public double d(blz $$0) {
-      bma $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.d.b($$0);
-   }
-
-   public double b(blz $$0, UUID $$1) {
-      bma $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
-   }
-
-   public double b(ib<blz> $$0, UUID $$1) {
-      return this.b($$0.a(), $$1);
-   }
-
-   public void a(Multimap<blz, bmc> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bma $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.b($$1x.a()));
+   @Override
+   public ekr cg() {
+      if (this.u()) {
+         blg $$0 = this.Q_();
+         if ($$0 != null) {
+            return $$0.cg();
          }
-      });
+      }
+
+      return super.cg();
    }
 
-   public void b(Multimap<blz, bmc> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bma $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.b($$1.a());
-            $$2.b($$1);
+   @Override
+   public boolean s(bkq $$0) {
+      if (this.u()) {
+         blg $$1 = this.Q_();
+         if ($$0 == $$1) {
+            return true;
          }
-      });
-   }
 
-   public void a(bmb $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bma $$1 = this.a($$0x.a());
          if ($$1 != null) {
-            $$1.a($$0x);
+            return $$1.s($$0);
          }
-      });
-   }
-
-   public sf c() {
-      sf $$0 = new sf();
-
-      for (bma $$1 : this.b.values()) {
-         $$0.add($$1.g());
       }
 
-      return $$0;
+      return super.s($$0);
    }
 
-   public void a(sf $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         rz $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ac.a(jy.v.b(agg.a($$3)), $$1x -> {
-            bma $$2x = this.a($$1x);
-            if ($$2x != null) {
-               $$2x.a($$2);
-            }
-         }, () -> a.warn("Ignoring unknown attribute '{}'", $$3));
+   @Override
+   public void a(bjo $$0) {
+      if (!this.dN().B && this.dN().Y().b(crw.n) && this.Q_() instanceof amf) {
+         this.Q_().a(this.eL().a());
       }
+
+      super.a($$0);
+   }
+
+   public boolean gf() {
+      return this.bW;
+   }
+
+   public void z(boolean $$0) {
+      this.bW = $$0;
    }
 }

@@ -1,90 +1,164 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eqf extends ghe {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ur b = ur.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final ur c = ur.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final ur v = ur.c("mco.configure.world.players.error").b(-65536);
-   private euv w;
-   private eum x;
-   private final eor y;
-   private final eqa z;
-   private final fah A;
+public class eqf extends euz {
+   private static final agi t = new agi("widget/slot_frame");
+   private static final agi u = new agi("icon/checkmark");
+   public static final agi a = new agi("textures/gui/realms/empty_frame.png");
+   public static final agi b = new agi("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final agi c = new agi("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final agi d = new agi("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final ur v = ur.c("mco.configure.world.slot.tooltip.active");
+   private static final ur w = ur.c("mco.configure.world.slot.tooltip.minigame");
+   private static final ur x = ur.c("mco.configure.world.slot.tooltip");
+   static final ur y = ur.c("mco.worldSlot.minigame");
+   private final int z;
    @Nullable
-   private ur B;
+   private eqf.b A;
+   @Nullable
+   private ewk B;
 
-   public eqf(eqa $$0, fah $$1, eor $$2) {
-      super(esj.a);
-      this.z = $$0;
-      this.A = $$1;
-      this.y = $$2;
+   public eqf(int $$0, int $$1, int $$2, int $$3, int $$4, euz.c $$5) {
+      super($$0, $$1, $$2, $$3, uq.a, $$5, p);
+      this.z = $$4;
    }
 
-   @Override
-   public void aO_() {
-      this.w = new euv(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, ur.c("mco.configure.world.invite.profile.name"));
-      this.e(this.w);
-      this.c(this.w);
-      this.x = this.d(eum.a(ur.c("mco.configure.world.buttons.invite"), $$0 -> this.C()).a(this.g / 2 - 100, h(10), 200, 20).a());
-      this.d(eum.a(uq.e, $$0 -> this.f.a(this.A)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   @Nullable
+   public eqf.b a() {
+      return this.A;
    }
 
-   private void C() {
-      if (ac.b(this.w.a())) {
-         this.a(v);
+   public void a(epd $$0) {
+      this.A = new eqf.b($$0, this.z);
+      this.a(this.A, $$0.o);
+   }
+
+   private void a(eqf.b $$0, String $$1) {
+      ur $$2 = switch ($$0.c) {
+         case c -> v;
+         case b -> $$0.b ? w : x;
+         default -> null;
+      };
+      if ($$2 == null) {
+         this.b(ur.b($$0.e));
       } else {
-         long $$0 = this.y.a;
-         String $$1 = this.w.a().trim();
-         this.x.i = false;
-         this.w.e(false);
-         this.a(c);
-         CompletableFuture.<eor>supplyAsync(() -> {
-            try {
-               return eoa.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ac.g()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.y.h = $$0x.h;
-               this.f.a(new eqm(this.z, this.y));
-            } else {
-               this.a(v);
+         this.B = ewk.a($$2);
+         if ($$0.a) {
+            this.b($$2);
+         } else {
+            vf $$3 = $$2.f().b(uq.a()).b(ur.b($$0.e));
+            if ($$0.b) {
+               $$3 = $$3.b(uq.u).f($$1);
             }
 
-            this.w.e(true);
-            this.x.i = true;
-         }, this.j);
+            this.b($$3);
+         }
       }
    }
 
-   private void a(ur $$0) {
-      this.B = $$0;
-      this.f.aU().c($$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.A);
-         return true;
+   static eqf.a a(epd $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != epd.c.c) {
+         return eqf.a.c;
       } else {
-         return super.a($$0, $$1, $$2);
+         return $$1 || $$2 && $$0.j ? eqf.a.a : eqf.a.b;
       }
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, b, this.g / 2 - 100, h(1), -1, false);
-      if (this.B != null) {
-         $$0.a(this.i, this.B, this.g / 2, h(5), -1);
-      }
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      if (this.A != null) {
+         int $$4 = this.p();
+         int $$5 = this.r();
+         boolean $$6 = this.n();
+         if (this.B != null) {
+            this.B.a(this.m(), this.aJ_(), this.s());
+         }
 
-      this.w.a($$0, $$1, $$2, $$3);
+         agi $$7;
+         if (this.A.b) {
+            $$7 = ers.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.A.a) {
+            $$7 = a;
+         } else if (this.A.i != null && this.A.h != -1L) {
+            $$7 = ers.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.z == 1) {
+            $$7 = b;
+         } else if (this.z == 2) {
+            $$7 = c;
+         } else if (this.z == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         if (this.A.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.A.c != eqf.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.A.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(t, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.A.d) {
+            RenderSystem.enableBlend();
+            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         eum $$15 = etd.N().h;
+         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, eoh.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final epd.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final eqf.a c;
+
+      public b(epd $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == epd.d.b;
+            this.e = eqf.y.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = epd.a.a;
+         } else {
+            epk $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != epd.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = eqf.a($$0, this.d, this.b);
+      }
    }
 }

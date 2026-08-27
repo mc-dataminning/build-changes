@@ -1,41 +1,110 @@
-public class fsf implements fsh<dep> {
-   public static final gdl a = new gdl(gbg.e, new agg("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fkb c;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-   public fsf(fsi.a $$0) {
-      fkb $$1 = $$0.a(fka.k);
-      this.c = $$1.b("bell_body");
+public class fsf implements ged {
+   private final agi a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public fsf(agi $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fkh b() {
-      fkj $$0 = new fkj();
-      fkk $$1 = $$0.a();
-      fkk $$2 = $$1.a("bell_body", fkg.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fkd.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fkg.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fkd.a(-8.0F, -12.0F, -8.0F));
-      return fkh.a($$0, 32, 32);
+   public agi a() {
+      return this.a;
    }
 
-   public void a(dep $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = ati.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == hx.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == hx.d) {
-            $$7 = $$9;
-         } else if ($$0.c == hx.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == hx.e) {
-            $$8 = $$9;
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fsf $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<fsf> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public fsf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         agi $$4 = this.b($$3);
+         gdw $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new fsf($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return atc.a($$0, "uvlock", false);
+      }
+
+      protected gdw a(JsonObject $$0) {
+         int $$1 = atc.a($$0, "x", 0);
+         int $$2 = atc.a($$0, "y", 0);
+         gdw $$3 = gdw.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
       }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      eno $$10 = a.a($$3, fqp::c);
-      this.c.a($$2, $$10, $$4, $$5);
+      protected agi b(JsonObject $$0) {
+         return new agi(atc.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = atc.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

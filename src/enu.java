@@ -1,70 +1,30 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
 
 public class enu {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<enu.a> b;
-
-   public static CompletableFuture<enu.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
-   }
-
-   private static boolean a(CompletableFuture<enu.a> $$0) {
-      enu.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
-
-   private static CompletableFuture<enu.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         eoa $$0 = eoa.a();
-
-         try {
-            if ($$0.g() != eoa.a.a) {
-               return new enu.a(enu.b.b);
-            } else {
-               return !$$0.f() ? new enu.a(enu.b.c) : new enu.a(enu.b.a);
-            }
-         } catch (epn var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new enu.a(enu.b.d) : new enu.a(var2);
-         }
-      }, ac.g());
-   }
-
-   public static record a(enu.b a, @Nullable epn b) {
-      public a(enu.b $$0) {
-         this($$0, null);
-      }
-
-      public a(epn $$0) {
-         this(enu.b.e, $$0);
-      }
-
-      @Nullable
-      public fah a(fah $$0) {
-         return (fah)(switch (this.a) {
-            case a -> null;
-            case b -> new epz($$0);
-            case c -> new eqk($$0);
-            case d -> new eqe(ur.c("mco.error.invalid.session.title"), ur.c("mco.error.invalid.session.message"), $$0);
-            case e -> new eqe(Objects.requireNonNull(this.b), $$0);
-         });
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
+   public static final eoc a = new eoc(0, eoc.a.a, eoc.b.a, 3);
+   public static final eoc b = new eoc(0, eoc.a.b, eoc.b.c, 4);
+   public static final eoc c = new eoc(0, eoc.a.a, eoc.b.d, 2);
+   public static final eoc d = new eoc(1, eoc.a.e, eoc.b.d, 2);
+   public static final eoc e = new eoc(2, eoc.a.e, eoc.b.d, 2);
+   public static final eoc f = new eoc(0, eoc.a.c, eoc.b.b, 3);
+   public static final eoc g = new eoc(0, eoc.a.c, eoc.b.e, 1);
+   public static final eoc h = c;
+   public static final eob i = new eob(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final eob j = new eob(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final eob k = new eob(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final eob l = new eob(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final eob m = new eob(ImmutableMap.builder().put("Position", a).build());
+   public static final eob n = new eob(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final eob o = new eob(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final eob p = new eob(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final eob q = new eob(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final eob r = new eob(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final eob s = new eob(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final eob t = new eob(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final eob u = new eob(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final eob v = new eob(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

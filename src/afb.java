@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record afb() implements aez {
+   public static final afb a = new afb();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afb {
+   @Override
+   public void a(tu $$0) {
+   }
 }

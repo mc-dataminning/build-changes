@@ -1,20 +1,22 @@
 public class gde {
-   public static final gdf a = new gdf();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-   public gde(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gde(int $$0) {
+      this($$0, -1);
    }
 
-   public boolean a() {
-      return this.d;
+   public gde(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean b() {
-      return this.e;
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
+
+   public int a() {
+      return this.b;
    }
 }

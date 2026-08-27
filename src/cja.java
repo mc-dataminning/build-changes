@@ -1,11 +1,24 @@
-public class cja extends ckw {
-   public cja(ckw.a $$0) {
-      super($$0);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cja extends cle {
+   private final arv<deu> a;
+
+   public cja(arv<deu> $$0, cle.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public arv<deu> b() {
+      return this.a;
    }
 
    @Override
-   public clb a(clb $$0, crs $$1, bky $$2) {
-      clb $$3 = super.a($$0, $$1, $$2);
-      return $$2 instanceof cdm && ((cdm)$$2).fT().d ? $$3 : new clb(cle.oC);
+   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
+      $$2.add(this.d().a(n.h));
+   }
+
+   public vf d() {
+      return ur.c(this.a() + ".desc");
    }
 }

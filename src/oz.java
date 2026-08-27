@@ -1,42 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class oz {
-   public static final agf<dye> a = pb.a("pillager_outpost/base_plates");
+   @Deprecated
+   public static final ebv.a a = new ebv.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(ou<dye> $$0) {
-      ic<eat> $$1 = $$0.a(jz.aC);
-      ib<eat> $$2 = $$1.b(pc.q);
-      ic<dye> $$3 = $$0.a(jz.aE);
-      ib<dye> $$4 = $$3.b(pb.a);
-      $$0.a(a, new dye($$4, ImmutableList.of(Pair.of(dyc.a("pillager_outpost/base_plate"), 1)), dye.a.b));
-      pb.a(
-         $$0,
-         "pillager_outpost/towers",
-         new dye(
-            $$4,
-            ImmutableList.of(Pair.of(dyc.a(ImmutableList.of(dyc.a("pillager_outpost/watchtower"), dyc.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            dye.a.b
-         )
-      );
-      pb.a($$0, "pillager_outpost/feature_plates", new dye($$4, ImmutableList.of(Pair.of(dyc.a("pillager_outpost/feature_plate"), 1)), dye.a.a));
-      pb.a(
-         $$0,
-         "pillager_outpost/features",
-         new dye(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dyc.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(dyc.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(dyc.g(), 6)
-            ),
-            dye.a.b
-         )
-      );
+   public static void a(ov<ebv.a> $$0) {
+      a($$0, 0, dna.a, dna.b, dna.c, dna.d);
+      a($$0, -2, dna.e, dna.f, dna.g, dna.h);
+      a($$0, dna.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dna.j, a);
+      a($$0, dna.k, -3, 1.0);
+      a($$0, dna.l, -7, 1.0);
+      a($$0, dna.m, -1, 1.0);
+      a($$0, dna.n, -5, 1.0);
+      a($$0, dna.o, -7, 1.0, 1.0);
+      a($$0, dna.p, -8, 1.0);
+      a($$0, dna.q, -8, 1.0);
+      a($$0, dna.r, -7, 1.0);
+      a($$0, dna.s, -8, 1.0);
+      a($$0, dna.t, -11, 1.0);
+      a($$0, dna.u, -11, 1.0);
+      a($$0, dna.v, -7, 1.0);
+      a($$0, dna.w, -7, 1.0);
+      a($$0, dna.x, -11, 1.0);
+      a($$0, dna.y, -8, 1.0);
+      a($$0, dna.z, -5, 1.0);
+      a($$0, dna.A, -8, 1.0);
+      a($$0, dna.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dna.C, -8, 1.0);
+      a($$0, dna.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dna.E, -8, 1.0);
+      a($$0, dna.F, -7, 1.0);
+      a($$0, dna.G, -7, 1.0);
+      a($$0, dna.H, -5, 1.0);
+      a($$0, dna.I, -8, 1.0);
+      a($$0, dna.J, -8, 1.0);
+      a($$0, dna.K, -7, 1.0);
+      a($$0, dna.L, -7, 1.0);
+      a($$0, dna.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dna.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dna.P, -8, 1.0);
+      a($$0, dna.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.R, -8, 1.0);
+      a($$0, dna.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dna.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.U, -3, 1.0);
+      a($$0, dna.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dna.W, -2, 1.0);
+      a($$0, dna.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dna.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dna.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dna.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dna.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dna.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dna.ah, -4, 1.0);
+   }
+
+   private static void a(ov<ebv.a> $$0, int $$1, agh<ebv.a> $$2, agh<ebv.a> $$3, agh<ebv.a> $$4, agh<ebv.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(ov<ebv.a> $$0, agh<ebv.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new ebv.a($$2, $$3, $$4));
    }
 }

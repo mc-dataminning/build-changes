@@ -1,58 +1,107 @@
-public class gek extends gdx {
-   public gek(aqm $$0, aqo $$1, float $$2, float $$3, ato $$4, ht $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public abstract class gek implements gfc {
+   protected gez a;
+   protected final aqs b;
+   protected final agi c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gfc.a k = gfc.a.b;
+   protected boolean l;
+   protected ats m;
+
+   protected gek(aqq $$0, aqs $$1, ats $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public static gek a(aqm $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   protected gek(agi $$0, aqs $$1, ats $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
-   public static gek a(ib<aqm> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public agi a() {
+      return this.c;
    }
 
-   public static gek a(aqm $$0, float $$1, float $$2) {
-      return new gek($$0.a(), aqo.a, $$2, $$1, gep.t(), false, 0, gep.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public ggh a(ggg $$0) {
+      if (this.c.equals(ggg.b)) {
+         this.a = ggg.d;
+         return ggg.c;
+      } else {
+         ggh $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = ggg.a;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
+      }
    }
 
-   public static gek a(aqm $$0) {
-      return new gek($$0.a(), aqo.b, 1.0F, 1.0F, gep.t(), false, 0, gep.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public gez b() {
+      return this.a;
    }
 
-   public static gek a(aqm $$0, eji $$1) {
-      return new gek($$0, aqo.c, 4.0F, 1.0F, gep.t(), false, 0, gep.a.b, $$1.c, $$1.d, $$1.e);
+   @Override
+   public aqs c() {
+      return this.b;
    }
 
-   public static gek b(aqm $$0, float $$1, float $$2) {
-      return new gek($$0.a(), aqo.i, $$2, $$1, gep.t(), false, 0, gep.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public boolean d() {
+      return this.i;
    }
 
-   public static gek b(aqm $$0) {
-      return b($$0, 1.0F, 1.0F);
+   @Override
+   public int e() {
+      return this.j;
    }
 
-   public static gek a(aqm $$0, ato $$1, double $$2, double $$3, double $$4) {
-      return new gek($$0, aqo.i, 1.0F, 1.0F, $$1, false, 0, gep.a.b, $$2, $$3, $$4);
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
    }
 
-   public gek(aqm $$0, aqo $$1, float $$2, float $$3, ato $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gep.a.b, $$5, $$6, $$7);
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
    }
 
-   private gek(aqm $$0, aqo $$1, float $$2, float $$3, ato $$4, boolean $$5, int $$6, gep.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   @Override
+   public double h() {
+      return this.f;
    }
 
-   public gek(agg $$0, aqo $$1, float $$2, float $$3, ato $$4, boolean $$5, int $$6, gep.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gfc.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

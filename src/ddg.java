@@ -1,183 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
 
-public class ddg extends cut {
-   public static final MapCodec<ddg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jy.f.q().fieldOf("hook").forGetter($$0x -> $$0x.m), t()).apply($$0, ddg::new)
-   );
-   public static final dhn b = dhm.w;
-   public static final dhn c = dhm.a;
-   public static final dhn d = dhm.d;
-   public static final dhn e = dag.b;
-   public static final dhn f = dag.c;
-   public static final dhn g = dag.d;
-   public static final dhn h = dag.e;
-   private static final Map<hx, dhn> k = cwo.f;
-   protected static final ekb i = cut.a(0.0, 1.0, 0.0, 16.0, 2.5, 16.0);
-   protected static final ekb j = cut.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   private static final int l = 10;
-   private final cut m;
+public class ddg extends cva {
+   public static final MapCodec<ddg> a = b(ddg::new);
+   private static final dii b = dhy.aT;
+   private static final int c = 20;
+   private static final int d = 8;
 
    @Override
    public MapCodec<ddg> a() {
       return a;
    }
 
-   public ddg(cut $$0, dgv.d $$1) {
-      super($$1);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-            .a(h, Boolean.valueOf(false))
-      );
-      this.m = $$0;
+   public ddg(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return $$0.c(c) ? i : j;
+   public void a(csa $$0, dhi $$1, ejq $$2, cem $$3) {
+      int $$4 = a((csb)$$0, $$1, $$2, (bkq)$$3);
+      if ($$3.w() instanceof amf $$6) {
+         $$6.a(arb.aE);
+         al.L.a($$6, $$3, $$2.e(), $$4);
+      }
+   }
+
+   private static int a(csb $$0, dhi $$1, ejq $$2, bkq $$3) {
+      int $$4 = a($$2, $$2.e());
+      int $$5 = $$3 instanceof cea ? 20 : 8;
+      if (!$$0.M().a($$2.a(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.a(), $$5);
+      }
+
+      return $$4;
+   }
+
+   private static int a(ejq $$0, eju $$1) {
+      hx $$2 = $$0.b();
+      double $$3 = Math.abs(atm.e($$1.c) - 0.5);
+      double $$4 = Math.abs(atm.e($$1.d) - 0.5);
+      double $$5 = Math.abs(atm.e($$1.e) - 0.5);
+      hx.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == hx.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == hx.a.c) {
+         $$7 = Math.max($$3, $$4);
+      } else {
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, atm.c(15.0 * atm.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(csb $$0, dhi $$1, int $$2, ht $$3, int $$4) {
+      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      cqy $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      return this.o()
-         .a(e, Boolean.valueOf(this.a($$1.a_($$2.e()), hx.c)))
-         .a(f, Boolean.valueOf(this.a($$1.a_($$2.h()), hx.f)))
-         .a(g, Boolean.valueOf(this.a($$1.a_($$2.f()), hx.d)))
-         .a(h, Boolean.valueOf(this.a($$1.a_($$2.g()), hx.e)));
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      return $$1.o().d() ? $$0.a(k.get($$1), Boolean.valueOf(this.a($$2, $$1))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
+   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
       }
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         this.a($$1, $$2, $$0.a(b, Boolean.valueOf(true)));
-      }
+   public int a(dhi $$0, crg $$1, ht $$2, hx $$3) {
+      return $$0.c(b);
    }
 
    @Override
-   public dgw a(crs $$0, ht $$1, dgw $$2, cdm $$3) {
-      if (!$$0.B && !$$3.eS().b() && $$3.eS().a(cle.rh)) {
-         $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 4);
-         $$0.a($$3, dlg.M, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   public boolean f_(dhi $$0) {
+      return true;
    }
 
-   private void a(crs $$0, ht $$1, dgw $$2) {
-      for (hx $$3 : new hx[]{hx.d, hx.e}) {
-         for (int $$4 = 1; $$4 < 42; $$4++) {
-            ht $$5 = $$1.a($$3, $$4);
-            dgw $$6 = $$0.a_($$5);
-            if ($$6.a(this.m)) {
-               if ($$6.c(ddh.b) == $$3.g()) {
-                  ddh.a($$0, $$5, $$6, false, true, $$4, $$2);
-               }
-               break;
-            }
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b);
+   }
 
-            if (!$$6.a(this)) {
-               break;
-            }
+   @Override
+   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
+      if (!$$1.x_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.M().a($$2, this)) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
          }
       }
-   }
-
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, bki $$3) {
-      if (!$$1.B) {
-         if (!$$0.c(b)) {
-            this.a($$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
-      if ($$1.a_($$2).c(b)) {
-         this.a($$1, $$2);
-      }
-   }
-
-   private void a(crs $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      boolean $$3 = $$2.c(b);
-      boolean $$4 = false;
-      List<? extends bki> $$5 = $$0.a_(null, $$2.j($$0, $$1).a().a($$1));
-      if (!$$5.isEmpty()) {
-         for (bki $$6 : $$5) {
-            if (!$$6.q_()) {
-               $$4 = true;
-               break;
-            }
-         }
-      }
-
-      if ($$4 != $$3) {
-         $$2 = $$2.a(b, Boolean.valueOf($$4));
-         $$0.a($$1, $$2, 3);
-         this.a($$0, $$1, $$2);
-      }
-
-      if ($$4) {
-         $$0.a(new ht($$1), this, 10);
-      }
-   }
-
-   public boolean a(dgw $$0, hx $$1) {
-      return $$0.a(this.m) ? $$0.c(ddh.b) == $$1.g() : $$0.a(this);
-   }
-
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(e, $$0.c(g)).a(f, $$0.c(h)).a(g, $$0.c(e)).a(h, $$0.c(f));
-         case d:
-            return $$0.a(e, $$0.c(f)).a(f, $$0.c(g)).a(g, $$0.c(h)).a(h, $$0.c(e));
-         case b:
-            return $$0.a(e, $$0.c(h)).a(f, $$0.c(e)).a(g, $$0.c(f)).a(h, $$0.c(g));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   public dgw a(dgw $$0, czp $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(e, $$0.c(g)).a(g, $$0.c(e));
-         case c:
-            return $$0.a(f, $$0.c(h)).a(h, $$0.c(f));
-         default:
-            return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b, c, d, e, f, h, g);
    }
 }

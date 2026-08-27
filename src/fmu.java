@@ -1,49 +1,35 @@
-public class fmu extends fow {
-   fmu(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-   }
+import java.net.InetSocketAddress;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ht.a(this.g, this.h, this.i)).a(arh.a)) {
-            this.k();
+public interface fmu {
+   String a();
+
+   String b();
+
+   int c();
+
+   InetSocketAddress d();
+
+   static fmu a(final InetSocketAddress $$0) {
+      return new fmu() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
          }
-      }
-   }
 
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
 
-   public static class a implements fny<jv> {
-      private final foq a;
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
 
-      public a(foq $$0) {
-         this.a = $$0;
-      }
-
-      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmu $$8 = new fmu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

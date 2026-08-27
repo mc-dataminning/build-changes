@@ -1,16 +1,18 @@
-public class evt extends euj {
-   private float a = 0.5F;
+import java.util.OptionalInt;
 
-   public evt(ur $$0, etz $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public class evt extends euw {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final aub<evt.a, evs> c;
+   private boolean d = false;
+
+   public evt(ur $$0, eum $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public evt(int $$0, int $$1, ur $$2, etz $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public evt(int $$0, int $$1, int $$2, int $$3, ur $$4, etz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public evt(int $$0, int $$1, ur $$2, eum $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? evs.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : evs.a($$3, $$1x.a, $$1x.b));
       this.i = false;
    }
 
@@ -19,38 +21,49 @@ public class evt extends euj {
       return this;
    }
 
-   private evt b(float $$0) {
-      this.a = $$0;
+   public evt j(int $$0) {
+      this.a = OptionalInt.of($$0);
       return this;
    }
 
-   public evt e() {
-      return this.b(0.0F);
+   public evt k(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
    }
 
-   public evt f() {
-      return this.b(0.5F);
-   }
-
-   public evt g() {
-      return this.b(1.0F);
+   public evt b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   public void b(eub $$0, int $$1, int $$2, float $$3) {
-      ur $$4 = this.l();
-      etz $$5 = this.a();
-      int $$6 = this.k();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.p() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.r() + (this.i() - 9) / 2;
-      asu $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public int k() {
+      return this.c.a(this.e()).b();
    }
 
-   private asu a(ur $$0, int $$1) {
-      etz $$2 = this.a();
-      uw $$3 = $$2.a($$0, $$1 - $$2.a(uq.t));
-      return ru.a().a(uw.a($$3, uq.t));
+   @Override
+   public int i() {
+      return this.c.a(this.e()).a() * 9;
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      evs $$4 = this.c.a(this.e());
+      int $$5 = this.p();
+      int $$6 = this.r();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.k() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
+      }
+   }
+
+   private evt.a e() {
+      return new evt.a(this.l(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(ur a, int b, OptionalInt c) {
    }
 }

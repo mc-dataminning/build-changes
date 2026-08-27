@@ -1,37 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class geu extends gel {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cbe r;
 
-public class geu<T> extends gev<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gey<T> e = gey.a();
-
-   public geu(Function<T, Stream<String>> $$0, Function<T, Stream<agg>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public geu(cbe $$0) {
+      super(aqr.kF, aqs.f, gfc.t());
+      this.r = $$0;
+      this.k = gfc.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = gey.a(this.c, this.d);
+   public boolean s() {
+      return !this.r.aU();
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
-   }
-
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new gex<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gew<T>($$2.iterator(), $$5, this.a));
+   public void q() {
+      if (!this.r.dI() && this.r.q() == null) {
+         this.f = (double)((float)this.r.ds());
+         this.g = (double)((float)this.r.du());
+         this.h = (double)((float)this.r.dy());
+         float $$0 = this.r.G(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

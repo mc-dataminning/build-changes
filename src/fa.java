@@ -39,13 +39,13 @@ public class fa implements ArgumentType<Integer> {
          $$0.put("horse." + $$6, 500 + $$6);
       }
 
-      $$0.put("weapon", bkn.a.a(98));
-      $$0.put("weapon.mainhand", bkn.a.a(98));
-      $$0.put("weapon.offhand", bkn.b.a(98));
-      $$0.put("armor.head", bkn.f.a(100));
-      $$0.put("armor.chest", bkn.e.a(100));
-      $$0.put("armor.legs", bkn.d.a(100));
-      $$0.put("armor.feet", bkn.c.a(100));
+      $$0.put("weapon", bkv.a.a(98));
+      $$0.put("weapon.mainhand", bkv.a.a(98));
+      $$0.put("weapon.offhand", bkv.b.a(98));
+      $$0.put("armor.head", bkv.f.a(100));
+      $$0.put("armor.chest", bkv.e.a(100));
+      $$0.put("armor.legs", bkv.d.a(100));
+      $$0.put("armor.feet", bkv.c.a(100));
       $$0.put("horse.saddle", 400);
       $$0.put("horse.armor", 401);
       $$0.put("horse.chest", 499);

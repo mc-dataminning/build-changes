@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum esw implements atk {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum esw implements ato {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   private static final IntFunction<esw> d = asb.a(esw::a, values(), asb.a.b);
+   private static final IntFunction<esw> d = asf.a(esw::a, values(), asf.a.b);
    private final int e;
    private final String f;
 
@@ -15,13 +15,22 @@ public enum esw implements atk {
    }
 
    @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
    public String b() {
       return this.f;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
    public static esw a(int $$0) {

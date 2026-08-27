@@ -1,56 +1,109 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.function.Predicate;
 
-public class dqx extends dpj<dsl> {
-   public dqx(Codec<dsl> $$0) {
+public class dqx extends dpv<dsp> {
+   public dqx(Codec<dsp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpl<dsl> $$0) {
-      csm $$1 = $$0.b();
+   public boolean a(dpx<dsp> $$0) {
+      csu $$1 = $$0.b();
       ht $$2 = $$0.e();
-      dsl $$3 = $$0.f();
-      ato $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (!$$1.a_($$2).i()) {
          return false;
       } else {
-         ht $$6 = $$2.h($$5.getAsInt());
-         iw $$7 = new iw($$3.c, $$3.c, $$3.c);
-         ejd $$8 = new ejd($$6.b($$7), $$6.a($$7));
-         return ht.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, cuv.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
-
-   private static OptionalInt a(csm $$0, ht $$1, dsl $$2) {
-      Predicate<dgw> $$3 = $$0x -> $$0x.a(cuv.G);
-      Predicate<dgw> $$4 = $$0x -> !$$0x.a(cuv.G);
-      Optional<dlv> $$5 = dlv.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dlv::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(csm $$0, ht $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (hx $$2 : hx.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
-            }
+         ats $$3 = $$0.d();
+         ht $$4 = $$0.e();
+         dsp $$5 = $$0.f();
+         ht.a $$6 = $$4.j();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   private boolean a(crt $$0, ht $$1) {
-      dgw $$2 = $$0.a_($$1);
-      return $$2.a(cuv.G) || $$2.i();
+   private static boolean a(csu $$0, dsp $$1, ht $$2) {
+      ht.a $$3 = $$2.j();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(hx.b);
+         dhi $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dhi $$0, int $$1, int $$2) {
+      if ($$0.i()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.u().a(arl.a);
+      }
+   }
+
+   private static boolean a(csu $$0, djf $$1, dsp $$2, ats $$3, ht.a $$4, ht $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(hx.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            ht $$7 = $$4.d();
+            if ($$0.b_($$7).a(arl.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(ht $$0, int $$1, csu $$2, dsp $$3, ats $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      ht.a $$7 = $$0.j();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(csu $$0, dsp $$1, ats $$2, int $$3, int $$4, ht.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dhi> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(csu $$0, dsp $$1, ats $$2, ht $$3, ht.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.t($$4)) {
+            dhi $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, hx.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
+      }
    }
 }

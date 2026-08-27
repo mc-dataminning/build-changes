@@ -19,11 +19,11 @@ public class aai implements wk<yd> {
       this.f = null;
    }
 
-   public aai(ef.a $$0, bki $$1, ef.a $$2) {
+   public aai(ef.a $$0, bkq $$1, ef.a $$2) {
       this.e = $$0;
-      this.d = $$1.ah();
+      this.d = $$1.aj();
       this.f = $$2;
-      eji $$3 = $$2.a($$1);
+      eju $$3 = $$2.a($$1);
       this.a = $$3.c;
       this.b = $$3.d;
       this.c = $$3.e;
@@ -67,12 +67,12 @@ public class aai implements wk<yd> {
    }
 
    @Nullable
-   public eji a(crs $$0) {
+   public eju a(csa $$0) {
       if (this.g) {
-         bki $$1 = $$0.a(this.d);
-         return $$1 == null ? new eji(this.a, this.b, this.c) : this.f.a($$1);
+         bkq $$1 = $$0.a(this.d);
+         return $$1 == null ? new eju(this.a, this.b, this.c) : this.f.a($$1);
       } else {
-         return new eji(this.a, this.b, this.c);
+         return new eju(this.a, this.b, this.c);
       }
    }
 }

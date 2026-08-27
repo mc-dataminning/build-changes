@@ -1,78 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-@Deprecated
-public class dvr extends dwc {
-   public static final Codec<dvr> a = bhv.b(0, 256).fieldOf("count").xmap(dvr::new, $$0 -> $$0.c).codec();
-   private final bhv c;
+public class dvr extends dvo {
+   public static final Codec<dvr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dnl.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dnl.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dvr::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dnl d;
+   private final dnl e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private dvr(bhv $$0) {
-      this.c = $$0;
+   private dvr(dnl $$0, dnl $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static dvr a(bhv $$0) {
-      return new dvr($$0);
-   }
-
-   public static dvr a(int $$0) {
-      return a(bhs.a($$0));
-   }
-
-   @Override
-   public Stream<ht> a_(dwa $$0, ato $$1, ht $$2) {
-      Builder<ht> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dmf.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new ht($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public static dvr a(dnl $$0, dnl $$1) {
+      return new dvr($$0, $$1);
    }
 
    @Override
-   public dwd<?> b() {
-      return dwd.i;
-   }
-
-   private static int a(dwa $$0, int $$1, int $$2, int $$3, int $$4) {
-      ht.a $$5 = new ht.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dgw $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dgw $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(cuv.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
+   public int a(ats $$0, dno $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
          }
 
-         $$7 = $$9;
+         return $$2;
+      } else {
+         return atm.b($$0, $$2, $$3);
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   private static boolean a(dgw $$0) {
-      return $$0.i() || $$0.a(cuv.G) || $$0.a(cuv.H);
+   @Override
+   public dvp<?> a() {
+      return dvp.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

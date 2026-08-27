@@ -1,46 +1,21 @@
-public final class eka extends ejr {
-   private final ejr d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-   protected eka(ejr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class eka extends AbstractDoubleList {
+   private final int a;
+
+   eka(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(hx.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(hx.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(hx.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return ati.a($$1, $$2, $$3) - $$2;
+   public int size() {
+      return this.a + 1;
    }
 }

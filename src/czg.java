@@ -1,84 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class czg extends cut implements dbt {
+public class czg extends cva implements dca {
    public static final MapCodec<czg> a = b(czg::new);
-   public static final int b = 15;
-   public static final dhw c = dhm.aP;
-   public static final dhn d = dhm.C;
-   public static final ToIntFunction<dgw> e = $$0 -> $$0.c(c);
+   public static final dhz b = dhy.j;
+   public static final dhz c = dhy.C;
+   protected static final ekn d = ekk.a(cva.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cva.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final ekn e = ekk.a(cva.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cva.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
    @Override
    public MapCodec<czg> a() {
       return a;
    }
 
-   public czg(dgv.d $$0) {
+   public czg(dhh.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(c, d);
-   }
+   public dhi a(cnr $$0) {
+      ecs $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
-      if (!$$1.B && $$3.gp()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return biq.a;
-      } else {
-         return biq.b;
-      }
-   }
-
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return $$3.a(cle.hg) ? ejy.b() : ejy.a();
-   }
-
-   @Override
-   public boolean c(dgw $$0, cqy $$1, ht $$2) {
-      return true;
-   }
-
-   @Override
-   public day b_(dgw $$0) {
-      return day.a;
-   }
-
-   @Override
-   public float b(dgw $$0, cqy $$1, ht $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ech.c, ech.c.a($$3));
+      for (hx $$2 : $$0.f()) {
+         if ($$2.o() == hx.a.b) {
+            dhi $$3 = this.o().a(b, Boolean.valueOf($$2 == hx.b));
+            if ($$3.a((csd)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == ect.c));
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
    }
 
    @Override
-   public ecg c_(dgw $$0) {
-      return $$0.c(d) ? ech.c.a(false) : super.c_($$0);
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      return $$0.c(b) ? e : d;
    }
 
    @Override
-   public clb a(crv $$0, ht $$1, dgw $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b, c);
    }
 
-   public static clb a(clb $$0, int $$1) {
-      if ($$1 != 15) {
-         rz $$2 = new rz();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
+   @Override
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      hx $$3 = h($$0).g();
+      return cva.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static hx h(dhi $$0) {
+      return $$0.c(b) ? hx.a : hx.b;
+   }
+
+   @Override
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ect.c, ect.c.a($$3));
       }
 
-      return $$0;
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecs c_(dhi $$0) {
+      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
+      return false;
    }
 }

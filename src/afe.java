@@ -1,8 +1,8 @@
-public interface afe extends to, tp {
-   @Override
-   default tt b() {
-      return tt.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(afg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afe {
 }

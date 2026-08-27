@@ -1,111 +1,84 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class fro implements api {
+   private final frn a;
+   private final frq b;
+   private final fqh c;
+   private final frp d;
+   private final ats e = ats.a();
+   private final euf f;
 
-public class fro {
-   public static final fro a = new fro();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fro.a[] c;
-   private final agg[] d;
-
-   private fro() {
-      this.c = new fro.a[0];
-      this.d = new agg[0];
+   public fro(frn $$0, fqh $$1, euf $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new frq(this.f);
+      this.d = new frp();
    }
 
-   public fro(gdm $$0, frj $$1, List<frn> $$2) {
-      this.d = $$2.stream().flatMap(frn::b).map(frn.b::a).distinct().toArray(agg[]::new);
-      Object2IntMap<agg> $$3 = new Object2IntOpenHashMap();
+   public frn a() {
+      return this.a;
+   }
 
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   public void a(dhi $$0, ht $$1, crd $$2, enw $$3, eoa $$4) {
+      if ($$0.l() == dbf.c) {
+         gdv $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gbl.d);
       }
-
-      List<fro.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         frn $$7 = $$2.get($$6);
-         gdi $$8 = this.a($$0, $$1, $$7);
-         fro.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fro.b($$2x, $$1x.b());
-         }).toArray(fro.b[]::new);
-         $$5.add(new fro.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new fro.a[0]);
    }
 
-   @Nullable
-   private gdi a(gdm $$0, frj $$1, frn $$2) {
-      gdt $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gdj.a);
-   }
-
-   @Nullable
-   public gdi a(gdi $$0, clb $$1, @Nullable fkw $$2, @Nullable bky $$3, int $$4) {
-      if (this.c.length != 0) {
-         ckw $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            agg $$9 = this.d[$$8];
-            gap $$10 = gao.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
+   public void a(dhi $$0, ht $$1, crd $$2, enw $$3, eoa $$4, boolean $$5, ats $$6) {
+      try {
+         dbf $$7 = $$0.l();
+         if ($$7 == dbf.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), gbl.d);
          }
-
-         for (fro.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               gdi $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   static class a {
-      private final fro.b[] a;
-      @Nullable
-      final gdi b;
-
-      a(fro.b[] $$0, @Nullable gdi $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (fro.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
       }
    }
 
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public void a(ht $$0, crd $$1, eoa $$2, dhi $$3, ecs $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
       }
+   }
+
+   public frq b() {
+      return this.b;
+   }
+
+   public gdv a(dhi $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dhi $$0, enw $$1, fqu $$2, int $$3, int $$4) {
+      dbf $$5 = $$0.l();
+      if ($$5 != dbf.a) {
+         switch ($$5) {
+            case c:
+               gdv $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(fqp.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new clj($$0.b()), clg.a, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public void a(aph $$0) {
+      this.d.a();
    }
 }

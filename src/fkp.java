@@ -1,138 +1,76 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class fkp implements flg {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cdo>> g;
-   private Instant h = Instant.EPOCH;
-
-   public fkp(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
-      this.g = CompletableFuture.<Optional<cdo>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
-   }
-
-   @Override
-   public CompletableFuture<Optional<cdo>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cdo::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<cdo>> a(Optional<cdo> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!aa.aT) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               cdo $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.of($$1);
-            } catch (asi | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ac.f());
-   }
-
-   private Optional<cdo> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cdo.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable cdo $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (aa.aT) {
-            cdo.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
-   }
-
-   private cdo a(UserApiService $$0) throws asi, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cdp.a $$2 = a($$1);
-         return new cdo(ash.a($$1.keyPair().privateKey()), new cdp($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         throw new IOException("Could not retrieve profile key pair");
-      }
-   }
-
-   private static cdp.a a(KeyPairResponse $$0) throws asi {
-      KeyPair $$1 = $$0.keyPair();
-      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = ash.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cdp.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new asi(var5);
-         }
-      } else {
-         throw new asi(new MissingException("Missing public key"));
-      }
-   }
+public class fkp {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "feet";
+   public static final String E = "left_hind_leg_tip";
+   public static final String F = "right_hind_leg_tip";
+   public static final String G = "left_front_leg_tip";
+   public static final String H = "right_front_leg_tip";
+   public static final String I = "left_lid";
+   public static final String J = "right_lid";
+   public static final String K = "left_chest";
+   public static final String L = "right_chest";
+   public static final String M = "left_horn";
+   public static final String N = "right_horn";
+   public static final String O = "left_eye";
+   public static final String P = "right_eye";
+   public static final String Q = "jaw";
+   public static final String R = "nose";
+   public static final String S = "arms";
+   public static final String T = "tail";
+   public static final String U = "cube";
+   public static final String V = "beak";
+   public static final String W = "back_fin";
+   public static final String X = "mane";
+   public static final String Y = "neck";
+   public static final String Z = "mouth";
+   public static final String aa = "head";
+   public static final String ab = "hat";
+   public static final String ac = "body";
+   public static final String ad = "hat_rim";
+   public static final String ae = "jacket";
+   public static final String af = "top_gills";
+   public static final String ag = "left_gills";
+   public static final String ah = "right_gills";
+   public static final String ai = "root";
+   public static final String aj = "croaking_body";
+   public static final String ak = "tongue";
+   public static final String al = "tongue_r1";
+   public static final String am = "left_hand";
+   public static final String an = "right_hand";
+   public static final String ao = "left_foot";
+   public static final String ap = "right_foot";
+   public static final String aq = "eyes";
+   public static final String ar = "right_tendril";
+   public static final String as = "left_tendril";
+   public static final String at = "right_ribcage";
+   public static final String au = "left_ribcage";
+   public static final String av = "bone";
 }

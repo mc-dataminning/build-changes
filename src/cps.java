@@ -1,11 +1,11 @@
-public class cps extends cpm {
-   protected cps(cpm.a $$0, cpn $$1, bkn... $$2) {
-      super($$0, $$1, $$2);
+public class cps extends cpu {
+   protected cps(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.j, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 5 + ($$0 - 1) * 8;
    }
 
    @Override
@@ -16,5 +16,14 @@ public class cps extends cpm {
    @Override
    public int a() {
       return 3;
+   }
+
+   @Override
+   public boolean a(clj $$0) {
+      return $$0.i() ? true : super.a($$0);
+   }
+
+   public static boolean a(clj $$0, int $$1, ats $$2) {
+      return $$0.d() instanceof cit && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
    }
 }

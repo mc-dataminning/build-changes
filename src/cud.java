@@ -1,72 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class cud extends cut implements dbt {
-   public static final dhn d = dhm.C;
-   private static final ekb a = cut.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected cud(dgv.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
+public class cud extends cva implements cvd {
+   public static final MapCodec<cud> a = b(cud::new);
+   protected static final float b = 4.0F;
+   protected static final ekn c = cva.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
-   protected abstract MapCodec<? extends cud> a();
-
-   protected void a(dgw $$0, crt $$1, ht $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
-      }
-   }
-
-   protected static boolean e(dgw $$0, cqy $$1, ht $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (hx $$3 : hx.values()) {
-            if ($$1.b_($$2.a($$3)).a(arh.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dgw a(cnj $$0) {
-      ecg $$1 = $$0.q().b_($$0.a());
-      return this.o().a(d, Boolean.valueOf($$1.a(arh.a) && $$1.e() == 8));
-   }
-
-   @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+   public MapCodec<cud> a() {
       return a;
    }
 
+   public cud(dhh.d $$0) {
+      super($$0);
+   }
+
    @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ech.c, ech.c.a($$3));
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      eju $$4 = $$0.n($$1, $$2);
+      return c.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return $$1 == hx.a && !this.a($$0, (crv)$$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      ht $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, hx.b);
+   public boolean a(dhi $$0, csd $$1, ht $$2) {
+      return $$1.a_($$2.d()).a(arg.at);
    }
 
    @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(d);
+   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return cvc.a.o();
+      } else {
+         if ($$1 == hx.b && $$2.a(cvc.mZ)) {
+            $$3.a($$4, cvc.mZ.o(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public ecg c_(dgw $$0) {
-      return $$0.c(d) ? ech.c.a(false) : super.c_($$0);
+   public clj a(csd $$0, ht $$1, dhi $$2) {
+      return new clj(clm.dQ);
+   }
+
+   @Override
+   public boolean b(csd $$0, ht $$1, dhi $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   public float a(dhi $$0, cdu $$1, crg $$2, ht $$3) {
+      return $$1.eU().d() instanceof cmu ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(csa $$0, ht $$1) {
+      $$0.a($$1.c(), cvc.mZ.o().a(cue.i, dhu.b), 3);
    }
 }

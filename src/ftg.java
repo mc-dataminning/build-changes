@@ -1,155 +1,50 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+public class ftg implements fsu<dhe> {
+   private final fro a;
 
-public class ftg {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final hx[] l = hx.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   public ftg(fsv.a $$0) {
+      this.a = $$0.b();
+   }
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
+   public void a(dhe $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
+      csa $$6 = $$0.k();
+      if ($$6 != null) {
+         ht $$7 = $$0.p().a($$0.g().g());
+         dhi $$8 = $$0.i();
+         if (!$$8.i()) {
+            frq.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(cvc.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dhc.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dik $$9 = $$8.a(cvc.br) ? dik.b : dik.a;
+               dhi $$10 = cvc.bz.o().a(dhc.c, $$9).a(dhc.a, $$8.c(dhb.a));
+               $$10 = $$10.a(dhc.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               ht $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(dhb.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
+
+            $$2.b();
+            frq.b();
          }
       }
-   });
-   private int o = 4096;
-
-   public void a(ht $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
    }
 
-   private static int b(ht $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   private void a(ht $$0, dhi $$1, enw $$2, fqu $$3, csa $$4, boolean $$5, int $$6) {
+      frc $$7 = fqp.b($$1);
+      eoa $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, ats.a(), $$1.a($$0), $$6);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public fth a() {
-      fth $$0 = new fth();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private Set<hx> a(int $$0) {
-      Set<hx> $$1 = EnumSet.noneOf(hx.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (hx $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<hx> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(hx.e);
-      } else if ($$2 == 15) {
-         $$1.add(hx.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(hx.a);
-      } else if ($$3 == 15) {
-         $$1.add(hx.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(hx.c);
-      } else if ($$4 == 15) {
-         $$1.add(hx.d);
-      }
-   }
-
-   private int a(int $$0, hx $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+   @Override
+   public int aS_() {
+      return 68;
    }
 }

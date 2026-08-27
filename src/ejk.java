@@ -1,46 +1,79 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ejk extends ekb {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public class ejk {
+   private final PathMatcher a;
 
-   protected ejk(ejr $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   public ejk(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   ejk(ejr $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public void a(Path $$0, List<ejl> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new ejl($$0, $$2));
+      }
+   }
+
+   public List<ejl> a(Path $$0) throws IOException {
+      List<ejl> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   public List<ejl> a(Path $$0, boolean $$1) throws IOException {
+      List<ejl> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
+      }
+
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
       } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
       }
    }
 
-   @Override
-   protected DoubleList a(hx.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public void b(Path $$0, final List<ejl> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               ejk.this.a($$0, $$1);
+            }
+         }
+
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
+
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

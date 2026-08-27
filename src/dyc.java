@@ -1,81 +1,74 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class dyc {
-   public static final Codec<dyc> e = jy.aj.q().dispatch("element_type", dyc::a, dyd::codec);
-   private static final ib<eat> a = ib.a(new eat(List.of()));
-   @Nullable
-   private volatile dye.a b;
+public class dyc extends dye {
+   public static final Codec<dyc> a = asu.<dyc>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dyc::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dyc::b),
+                        dyd.c.optionalFieldOf("spread_type", dyd.a).forGetter(dyc::c)
+                     )
+                  )
+                  .apply($$0, dyc::new)
+         ),
+         dyc::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final dyd e;
 
-   protected static <E extends dyc> RecordCodecBuilder<E, dye.a> d() {
-      return dye.a.c.fieldOf("projection").forGetter(dyc::e);
+   private static DataResult<dyc> a(dyc $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   protected dyc(dye.a $$0) {
-      this.b = $$0;
+   public dyc(iw $$0, dye.c $$1, float $$2, int $$3, Optional<dye.a> $$4, int $$5, int $$6, dyd $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   public abstract iw a(eaw var1, dbf var2);
-
-   public abstract List<eav.c> a(eaw var1, ht var2, dbf var3, ato var4);
-
-   public abstract dwn a(eaw var1, ht var2, dbf var3);
-
-   public abstract boolean a(eaw var1, csm var2, csk var3, dit var4, ht var5, ht var6, dbf var7, dwn var8, ato var9, boolean var10);
-
-   public abstract dyd<?> a();
-
-   public void a(crt $$0, eav.c $$1, ht $$2, dbf $$3, ato $$4, dwn $$5) {
+   public dyc(int $$0, int $$1, dyd $$2, int $$3) {
+      this(iw.g, dye.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
    }
 
-   public dyc a(dye.a $$0) {
-      this.b = $$0;
-      return this;
+   public int a() {
+      return this.c;
    }
 
-   public dye.a e() {
-      dye.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
+   public int b() {
+      return this.d;
    }
 
-   public int f() {
-      return 1;
+   public dyd c() {
+      return this.e;
    }
 
-   public static Function<dye.a, dxv> g() {
-      return $$0 -> dxv.b;
+   public crh a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dnq $$5 = new dnq(new dms(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new crh($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
-   public static Function<dye.a, dxz> a(String $$0) {
-      return $$1 -> new dxz(Either.left(new agg($$0)), a, $$1);
+   @Override
+   protected boolean a(djg $$0, int $$1, int $$2) {
+      crh $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
-   public static Function<dye.a, dxz> a(String $$0, ib<eat> $$1) {
-      return $$2 -> new dxz(Either.left(new agg($$0)), $$1, $$2);
-   }
-
-   public static Function<dye.a, dyb> b(String $$0) {
-      return $$1 -> new dyb(Either.left(new agg($$0)), a, $$1);
-   }
-
-   public static Function<dye.a, dyb> b(String $$0, ib<eat> $$1) {
-      return $$2 -> new dyb(Either.left(new agg($$0)), $$1, $$2);
-   }
-
-   public static Function<dye.a, dxw> a(ib<dvz> $$0) {
-      return $$1 -> new dxw($$0, $$1);
-   }
-
-   public static Function<dye.a, dya> a(List<Function<dye.a, ? extends dyc>> $$0) {
-      return $$1 -> new dya($$0.stream().map($$1x -> (dyc)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public dyf<?> e() {
+      return dyf.a;
    }
 }

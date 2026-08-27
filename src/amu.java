@@ -1,30 +1,14 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Consumer;
 
-public class amu implements aek {
-   private final MinecraftServer a;
-   private final ts b;
+public interface amu {
+   void a(Consumer<wk<?>> var1);
 
-   public amu(MinecraftServer $$0, ts $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   amu.a a();
 
-   @Override
-   public void a(aej $$0) {
-      if ($$0.f() != aei.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(aei.b);
-         this.b.a(new anb(this.a, this.b));
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
       }
-   }
-
-   @Override
-   public void a(ur $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.k();
    }
 }

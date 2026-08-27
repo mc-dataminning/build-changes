@@ -21,25 +21,25 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
       ($$0, $$1, $$2) -> ur.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final id<T> d;
-   final agf<? extends io<T>> e;
+   final agh<? extends io<T>> e;
 
-   public ev(dp $$0, agf<? extends io<T>> $$1) {
+   public ev(dp $$0, agh<? extends io<T>> $$1) {
       this.e = $$1;
       this.d = $$0.a($$1);
    }
 
-   public static <T> ev<T> a(dp $$0, agf<? extends io<T>> $$1) {
+   public static <T> ev<T> a(dp $$0, agh<? extends io<T>> $$1) {
       return new ev<>($$0, $$1);
    }
 
-   public static <T> ev.c<T> a(CommandContext<du> $$0, String $$1, agf<io<T>> $$2) throws CommandSyntaxException {
+   public static <T> ev.c<T> a(CommandContext<du> $$0, String $$1, agh<io<T>> $$2) throws CommandSyntaxException {
       ev.c<?> $$3 = (ev.c<?>)$$0.getArgument($$1, ev.c.class);
       Optional<ev.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            agf<?> $$2x = $$1xx.g();
+            agh<?> $$2x = $$1xx.g();
             return es.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            arr<?> $$2x = $$1xx.f();
+            arv<?> $$2x = $$1xx.f();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,8 +50,8 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
 
          try {
             $$0.skip();
-            agg $$2 = agg.a($$0);
-            arr<T> $$3 = arr.a(this.e, $$2);
+            agi $$2 = agi.a($$0);
+            arv<T> $$3 = arv.a(this.e, $$2);
             ig.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
             return new ev.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -59,16 +59,16 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
             throw var6;
          }
       } else {
-         agg $$6 = agg.a($$0);
-         agf<T> $$7 = agf.a(this.e, $$6);
+         agi $$6 = agi.a($$0);
+         agh<T> $$7 = agh.a(this.e, $$6);
          ib.c<T> $$8 = this.d.a($$7).orElseThrow(() -> es.a.create($$6, this.e.a()));
          return new ev.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dy.a(this.d.e().map(arr::b), $$1, "#");
-      return dy.a(this.d.c().map(agf::a), $$1);
+      dy.a(this.d.e().map(arv::b), $$1, "#");
+      return dy.a(this.d.c().map(agh::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
       }
 
       public final class a implements hf.a<ev<T>> {
-         final agf<? extends io<T>> b;
+         final agh<? extends io<T>> b;
 
-         a(agf<? extends io<T>> $$1) {
+         a(agh<? extends io<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
       }
 
       @Override
-      public <E> Optional<ev.c<E>> a(agf<? extends io<E>> $$0) {
+      public <E> Optional<ev.c<E>> a(agh<? extends io<E>> $$0) {
          return this.a.g().b($$0) ? Optional.of((ev.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
    public interface c<T> extends Predicate<ib<T>> {
       Either<ib.c<T>, ig.c<T>> a();
 
-      <E> Optional<ev.c<E>> a(agf<? extends io<E>> var1);
+      <E> Optional<ev.c<E>> a(agh<? extends io<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class ev<T> implements ArgumentType<ev.c<T>> {
       }
 
       @Override
-      public <E> Optional<ev.c<E>> a(agf<? extends io<E>> $$0) {
+      public <E> Optional<ev.c<E>> a(agh<? extends io<E>> $$0) {
          return this.a.f().c($$0) ? Optional.of((ev.c<E>)this) : Optional.empty();
       }
 

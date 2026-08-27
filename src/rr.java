@@ -17,7 +17,7 @@ public class rr implements ArgumentType<rq> {
 
    public rq a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      Optional<rq> $$2 = rb.e($$1);
+      Optional<rq> $$2 = rc.e($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
@@ -35,7 +35,7 @@ public class rr implements ArgumentType<rq> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = rb.a().stream().map(rq::a);
+      Stream<String> $$2 = rc.a().stream().map(rq::a);
       return dy.b($$2, $$1);
    }
 

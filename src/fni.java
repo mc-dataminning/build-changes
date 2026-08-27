@@ -1,32 +1,15 @@
-import javax.annotation.Nullable;
+public class fni extends fpj {
+   private final fpe a;
 
-public class fni extends fow {
-   private final float a;
-   private final foq b;
-
-   fni(fkw $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, foq $$7) {
+   fni(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
       super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
       this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
-
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ati.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -37,43 +20,26 @@ public class fni extends fow {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+         this.b(this.a);
       }
    }
 
-   public static class a implements fny<jk> {
-      private final foq a;
+   @Override
+   public fom b() {
+      return fom.b;
+   }
 
-      public a(foq $$0) {
+   public static class a implements fol<jv> {
+      private final fpe a;
+
+      public a(fpe $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public fnv a(jk $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dgw $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == day.a) {
-            return null;
-         } else {
-            ht $$9 = ht.a($$2, $$3, $$4);
-            int $$10 = esr.N().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof cxo) {
-               $$10 = ((cxo)$$8.b()).d($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fni($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fni($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

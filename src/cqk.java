@@ -1,25 +1,24 @@
-public class cqk extends cpm {
-   public cqk(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.n, $$1);
+public class cqk extends cpu {
+   public cqk(cpu.a $$0, bkv... $$1) {
+      super($$0, cpv.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 3;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

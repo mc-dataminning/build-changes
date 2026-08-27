@@ -8,8 +8,8 @@ public class df extends cw<df.a> {
       return new df.a($$1, $$3, $$4);
    }
 
-   public void a(amb $$0, ccu $$1, clb $$2) {
-      eel $$3 = bq.b($$0, $$1);
+   public void a(amf $$0, cdc $$1, clj $$2) {
+      eex $$3 = bq.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class df extends cw<df.a> {
          return al.s.a(new df.a(Optional.of(bq.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eel $$0, clb $$1) {
+      public boolean a(eex $$0, clj $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 

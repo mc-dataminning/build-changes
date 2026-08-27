@@ -7,27 +7,27 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record cj(
-   Optional<cj.b> b, Optional<agf<csq>> c, Optional<agf<dwv>> d, Optional<agf<crs>> e, Optional<Boolean> f, Optional<cg> g, Optional<av> h, Optional<bx> i
+   Optional<cj.b> b, Optional<agh<csy>> c, Optional<agh<dxh>> d, Optional<agh<csa>> e, Optional<Boolean> f, Optional<cg> g, Optional<av> h, Optional<bx> i
 ) {
    public static final Codec<cj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asq.a(cj.b.a, "position").forGetter(cj::b),
-               asq.a(agf.a(jz.ar), "biome").forGetter(cj::c),
-               asq.a(agf.a(jz.aB), "structure").forGetter(cj::d),
-               asq.a(agf.a(jz.aJ), "dimension").forGetter(cj::e),
-               asq.a(Codec.BOOL, "smokey").forGetter(cj::f),
-               asq.a(cg.a, "light").forGetter(cj::g),
-               asq.a(av.a, "block").forGetter(cj::h),
-               asq.a(bx.a, "fluid").forGetter(cj::i)
+               asu.a(cj.b.a, "position").forGetter(cj::b),
+               asu.a(agh.a(jz.ar), "biome").forGetter(cj::c),
+               asu.a(agh.a(jz.aB), "structure").forGetter(cj::d),
+               asu.a(agh.a(jz.aJ), "dimension").forGetter(cj::e),
+               asu.a(Codec.BOOL, "smokey").forGetter(cj::f),
+               asu.a(cg.a, "light").forGetter(cj::g),
+               asu.a(av.a, "block").forGetter(cj::h),
+               asu.a(bx.a, "fluid").forGetter(cj::i)
             )
             .apply($$0, cj::new)
    );
 
    private static Optional<cj> a(
       Optional<cj.b> $$0,
-      Optional<agf<csq>> $$1,
-      Optional<agf<dwv>> $$2,
-      Optional<agf<crs>> $$3,
+      Optional<agh<csy>> $$1,
+      Optional<agh<dxh>> $$2,
+      Optional<agh<csa>> $$3,
       Optional<Boolean> $$4,
       Optional<cg> $$5,
       Optional<av> $$6,
@@ -38,17 +38,17 @@ public record cj(
          : Optional.of(new cj($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public boolean a(ama $$0, double $$1, double $$2, double $$3) {
+   public boolean a(ame $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ac()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ad()) {
          return false;
       } else {
          ht $$4 = ht.a($$1, $$2, $$3);
          boolean $$5 = $$0.o($$4);
          if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == cvh.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == cvo.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -78,9 +78,9 @@ public record cj(
       private cl.c a;
       private cl.c b;
       private cl.c c;
-      private Optional<agf<csq>> d;
-      private Optional<agf<dwv>> e;
-      private Optional<agf<crs>> f;
+      private Optional<agh<csy>> d;
+      private Optional<agh<dxh>> e;
+      private Optional<agh<csa>> f;
       private Optional<Boolean> g;
       private Optional<cg> h;
       private Optional<av> i;
@@ -103,15 +103,15 @@ public record cj(
          return new cj.a();
       }
 
-      public static cj.a a(agf<csq> $$0) {
+      public static cj.a a(agh<csy> $$0) {
          return a().d($$0);
       }
 
-      public static cj.a b(agf<crs> $$0) {
+      public static cj.a b(agh<csa> $$0) {
          return a().f($$0);
       }
 
-      public static cj.a c(agf<dwv> $$0) {
+      public static cj.a c(agh<dxh> $$0) {
          return a().e($$0);
       }
 
@@ -134,17 +134,17 @@ public record cj(
          return this;
       }
 
-      public cj.a d(agf<csq> $$0) {
+      public cj.a d(agh<csy> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public cj.a e(agf<dwv> $$0) {
+      public cj.a e(agh<dxh> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public cj.a f(agf<crs> $$0) {
+      public cj.a f(agh<csa> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -178,7 +178,7 @@ public record cj(
    static record b(cl.c b, cl.c c, cl.c d) {
       public static final Codec<cj.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  asq.a(cl.c.d, "x", cl.c.c).forGetter(cj.b::a), asq.a(cl.c.d, "y", cl.c.c).forGetter(cj.b::b), asq.a(cl.c.d, "z", cl.c.c).forGetter(cj.b::c)
+                  asu.a(cl.c.d, "x", cl.c.c).forGetter(cj.b::a), asu.a(cl.c.d, "y", cl.c.c).forGetter(cj.b::b), asu.a(cl.c.d, "z", cl.c.c).forGetter(cj.b::c)
                )
                .apply($$0, cj.b::new)
       );

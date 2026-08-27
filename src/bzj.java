@@ -1,26 +1,57 @@
 import javax.annotation.Nullable;
 
-public interface bzj {
-   boolean a();
+public abstract class bzj implements bzr {
+   protected final bzh a;
 
-   void b();
+   public bzj(bzh $$0) {
+      this.a = $$0;
+   }
 
-   void c();
+   @Override
+   public boolean a() {
+      return false;
+   }
 
-   void a(byy var1, ht var2, bjg var3, @Nullable cdm var4);
+   @Override
+   public void b() {
+   }
 
-   void d();
+   @Override
+   public void c() {
+   }
 
-   void e();
+   @Override
+   public void a(bzg $$0, ht $$1, bjo $$2, @Nullable cdu $$3) {
+   }
 
-   float f();
+   @Override
+   public void d() {
+   }
 
-   float h();
+   @Override
+   public void e() {
+   }
 
-   bzp<? extends bzj> i();
+   @Override
+   public float f() {
+      return 0.6F;
+   }
 
    @Nullable
-   eji g();
+   @Override
+   public eju g() {
+      return null;
+   }
 
-   float a(bjg var1, float var2);
+   @Override
+   public float a(bjo $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dq().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
+   }
 }

@@ -1,6 +1,6 @@
 public record zk(int a, float b) implements wk<yd> {
-   public zk(bky $$0) {
-      this($$0.ah(), $$0.eD());
+   public zk(blg $$0) {
+      this($$0.aj(), $$0.eF());
    }
 
    public zk(tu $$0) {

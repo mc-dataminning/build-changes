@@ -1,5 +1,21 @@
-public interface dip {
-   dgw a(int var1);
+public enum dip implements aug {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   void a(int var1, dgw var2);
+   private final String d;
+
+   private dip(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

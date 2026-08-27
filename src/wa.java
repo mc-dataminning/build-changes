@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 public class wa implements us {
    private static final Logger d = LogUtils.getLogger();
    public static final MapCodec<wa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wa::b), asq.a(ut.a, "separator").forGetter(wa::d)).apply($$0, wa::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wa::b), asu.a(ut.a, "separator").forGetter(wa::d)).apply($$0, wa::new)
    );
    public static final us.a<wa> b = new us.a<>(a, "selector");
    private final String e;
@@ -58,10 +58,10 @@ public class wa implements us {
    }
 
    @Override
-   public vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+   public vf a(@Nullable du $$0, @Nullable bkq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends ur> $$3 = uu.a($$0, this.c, $$1, $$2);
-         return uu.a(this.f.b($$0), $$3, bki::O_);
+         return uu.a(this.f.b($$0), $$3, bkq::P_);
       } else {
          return ur.i();
       }

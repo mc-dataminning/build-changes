@@ -1,36 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eao extends eas {
-   public static final Codec<eao> a = eak.b.listOf().fieldOf("rules").xmap(eao::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<eak> b;
+public class eao extends ebe {
+   public static final Codec<eao> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dmr.a.g.fieldOf("heightmap").orElse(dmr.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, eao::new)
+   );
+   private final dmr.a b;
+   private final int c;
 
-   public eao(List<? extends eak> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public eao(dmr.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
-      ato $$6 = ato.a(ati.a($$4.a()));
-      dgw $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         eak $$8 = (eak)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new eav.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
+      dmr.a $$6;
+      if ($$0 instanceof ame) {
+         if (this.b == dmr.a.a) {
+            $$6 = dmr.a.b;
+         } else if (this.b == dmr.a.c) {
+            $$6 = dmr.a.d;
+         } else {
+            $$6 = this.b;
          }
+      } else {
+         $$6 = this.b;
       }
 
-      return $$4;
+      ht $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ebh.c(new ht($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected eau<?> a() {
-      return eau.i;
+   protected ebg<?> a() {
+      return ebg.g;
    }
 }

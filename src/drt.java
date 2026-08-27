@@ -1,21 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drt extends drf {
-   public static final Codec<drt> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dto.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               asq.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               asq.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drt::new)
+public class drt implements drz {
+   public static final Codec<drt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bic.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bic.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, drt::new)
    );
-   public final int d;
-   public final int e;
+   private final bic b;
+   private final bic c;
 
-   public drt(dto $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public drt(bic $$0, bic $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bic a() {
+      return this.b;
+   }
+
+   public bic b() {
+      return this.c;
    }
 }

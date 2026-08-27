@@ -1,125 +1,194 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bmi {
-   public static final int a = 48;
+   private final bmh a;
+   private final Map<bmk.a, Set<bmk>> b = Maps.newEnumMap(bmk.a.class);
+   private final Map<UUID, bmk> c = new Object2ObjectArrayMap();
+   private final Set<bmk> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bmi> h;
 
-   public static bmq<blh> a(Predicate<ib<bwa>> $$0, btz<ia> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public bmi(bmh $$0, Consumer<bmi> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a();
    }
 
-   public static bmq<blh> a(Predicate<ib<bwa>> $$0, btz<ia> $$1, btz<ia> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bmi.a> $$8 = new Long2ObjectOpenHashMap();
-      bnz<blh> $$9 = bqb.a(
-         (Function<bqb.b<blh>, ? extends App<bqb.c<blh>, bqe<blh>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.n_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.V() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.V() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
-                     bvx $$9x = $$6xx.w();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bmi.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<ht> $$10 = $$2xxxx -> {
-                        bmi.a $$3xxxx = (bmi.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ib<bwa>, ht>> $$11 = $$9x.c($$0, $$10, $$7x.dl(), 48, bvx.b.a).limit(5L).collect(Collectors.toSet());
-                     ecv $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        ht $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ia.a($$6xx.ac(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           aci.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ib<bwa>, ht> $$14 : $$11) {
-                           $$8.computeIfAbsent(((ht)$$14.getSecond()).a(), $$2xxxx -> new bmi.a($$6xx.z, $$8x));
-                        }
-                     }
+   public bmh a() {
+      return this.a;
+   }
 
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : bqb.a((Function<bqb.b<blh>, ? extends App<bqb.c<blh>, bqe<blh>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public double b() {
+      return this.e;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
+      }
+   }
+
+   public Set<bmk> a(bmk.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   }
+
+   public Set<bmk> c() {
+      return ImmutableSet.copyOf(this.c.values());
    }
 
    @Nullable
-   public static ecv a(bla $$0, Set<Pair<ib<bwa>, ht>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
+   public bmk a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public boolean a(bmk $$0) {
+      return this.c.get($$0.a()) != null;
+   }
+
+   private void d(bmk $$0) {
+      bmk $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
       } else {
-         Set<ht> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ib<bwa>, ht> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bwa)((ib)$$4.getFirst()).a()).c());
-            $$2.add((ht)$$4.getSecond());
-         }
-
-         return $$0.L().a($$2, $$3);
+         this.a($$0.b()).add($$0);
+         this.d();
       }
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final ato d;
-      private long e;
-      private long f;
-      private int g;
+   public void b(bmk $$0) {
+      this.d($$0);
+   }
 
-      a(ato $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
+   public void c(bmk $$0) {
+      this.d($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   private void e(bmk $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bmk $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bmk $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void e() {
+      for (bmk $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
       }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (bmk $$1 : this.b(bmk.a.a)) {
+         $$0 += $$1.c();
       }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
+      double $$2 = $$0;
+
+      for (bmk $$3 : this.b(bmk.a.b)) {
+         $$2 += $$0 * $$3.c();
       }
 
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
+      for (bmk $$4 : this.b(bmk.a.c)) {
+         $$2 *= 1.0 + $$4.c();
       }
 
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      return this.a.a($$2);
+   }
+
+   private Collection<bmk> b(bmk.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
+   }
+
+   public void a(bmi $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
+   }
+
+   public rz g() {
+      rz $$0 = new rz();
+      $$0.a("Name", jy.v.b(this.a).toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         sf $$1 = new sf();
+
+         for (bmk $$2 : this.d) {
+            $$1.add($$2.d());
+         }
+
+         $$0.a("Modifiers", $$1);
       }
+
+      return $$0;
+   }
+
+   public void a(rz $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         sf $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bmk $$3 = bmk.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
+         }
+      }
+
+      this.d();
    }
 }

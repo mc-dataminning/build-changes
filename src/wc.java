@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 public class wc implements us {
    public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = asq.a(asq.b, wc::b);
+   private static final Codec<Object> d = asu.a(asu.b, wc::b);
    private static final Codec<Object> e = Codec.either(d, ut.a)
       .xmap(
          $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof ur $$1 ? Either.right($$1) : Either.left($$0)
@@ -26,7 +26,7 @@ public class wc implements us {
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
                Codec.STRING.optionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-               asq.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
+               asu.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
             )
             .apply($$0, wc::a)
    );
@@ -180,7 +180,7 @@ public class wc implements us {
    }
 
    @Override
-   public vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+   public vf a(@Nullable du $$0, @Nullable bkq $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

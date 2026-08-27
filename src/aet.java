@@ -1,39 +1,24 @@
-import javax.annotation.Nullable;
+public class aet implements wk<aeo> {
+   private final ur a;
 
-public record aet(int a, @Nullable aex b) implements wk<aes> {
-   private static final int c = 1048576;
-
-   public static aet b(tu $$0) {
-      int $$1 = $$0.n();
-      return new aet($$1, a($$1, $$0));
+   public aet(ur $$0) {
+      this.a = $$0;
    }
 
-   private static aex a(int $$0, tu $$1) {
-      return c($$1);
-   }
-
-   private static aex c(tu $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return aez.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public aet(tu $$0) {
+      this.a = ur.a.b($$0.d(262144));
    }
 
    @Override
    public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(ur.a.a(this.a));
    }
 
-   public void a(aes $$0) {
+   public void a(aeo $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aex d() {
-      return this.b;
+   public ur a() {
+      return this.a;
    }
 }

@@ -1,14 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Objects;
+import java.util.Optional;
 
-public class avl extends azn {
+public class avl extends DataFix {
    public avl(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityShulkerBoxColorFix", ban.s, "minecraft:shulker_box");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("Color"));
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bcb.a());
+      return this.fixTypeEverywhereTyped(
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bat.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : axa.a($$2);
+            })
+      );
    }
 }

@@ -1,19 +1,37 @@
-public final class biy implements bit {
-   private final ur a;
-   private final chk b;
+public class biy<T> {
+   private final bix a;
+   private final T b;
 
-   public biy(chk $$0, ur $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public biy(bix $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public ur O_() {
+   public bix a() {
       return this.a;
    }
 
-   @Override
-   public cge createMenu(int $$0, cdl $$1, cdm $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public T b() {
+      return this.b;
+   }
+
+   public static <T> biy<T> a(T $$0) {
+      return new biy<>(bix.a, $$0);
+   }
+
+   public static <T> biy<T> b(T $$0) {
+      return new biy<>(bix.b, $$0);
+   }
+
+   public static <T> biy<T> c(T $$0) {
+      return new biy<>(bix.d, $$0);
+   }
+
+   public static <T> biy<T> d(T $$0) {
+      return new biy<>(bix.e, $$0);
+   }
+
+   public static <T> biy<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

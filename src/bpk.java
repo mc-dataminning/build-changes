@@ -1,28 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bpk {
-   public static <E extends bky> bnz<E> a(List<Pair<? extends bqe<? super E>, Integer>> $$0) {
-      return a($$0, bnd.a.b, bnd.b.a);
-   }
-
-   public static <E extends bky> bnz<E> a(List<Pair<? extends bqe<? super E>, Integer>> $$0, bnd.a $$1, bnd.b $$2) {
-      box<bqe<? super E>> $$3 = new box<>();
-      $$0.forEach($$1x -> $$3.a((bqe<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bqb.a((Function<bqb.b<E>, ? extends App<bqb.c<E>, bqe<E>>>)($$3x -> $$3x.a((bqe<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bnd.a.b) {
-               $$3.a();
-            }
-
-            for (bqe<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bnd.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bmy<blg> a(Function<blg, Optional<bok>> $$0, Predicate<blg> $$1, int $$2, int $$3, float $$4) {
+      return bqj.a(
+         (Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$5 -> $$5.group($$5.a(buh.n), $$5.a(buh.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bok> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bok $$11 = $$10.get();
+                        if ($$8.dl().a((im)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bok $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new buk($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

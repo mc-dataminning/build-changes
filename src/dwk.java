@@ -1,42 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class dwk {
-   public static final Codec<dwk> a = asq.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(agf.a(jz.aK), dkg.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, dwk::new)),
-      dwk::a
+public class dwk extends dws {
+   public static final Codec<dwk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dwk::new)
    );
-   public static final Codec<ib<dwk>> b = agc.a(jz.aH, a);
-   private final Map<agf<dkg>, dkg> c;
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public dwk(Map<agf<dkg>, dkg> $$0) {
+   private dwk(double $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private io<dkg> c() {
-      ix<dkg> $$0 = new ik<>(jz.aK, Lifecycle.experimental());
-      dna.a(this.c.keySet().stream()).forEach($$1 -> {
-         dkg $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.a((agf<dkg>)$$1, $$2, Lifecycle.stable());
-         }
-      });
-      return $$0.l();
+   public static dwk a(double $$0, int $$1, int $$2) {
+      return new dwk($$0, $$1, $$2);
    }
 
-   public dna a() {
-      return new dna(this.c());
+   @Override
+   protected int a(ats $$0, ht $$1) {
+      double $$2 = csy.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public Optional<dkg> b() {
-      return Optional.ofNullable(this.c.get(dkg.b));
-   }
-
-   private static DataResult<dwk> a(dwk $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public dwp<?> b() {
+      return dwp.h;
    }
 }

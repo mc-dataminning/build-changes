@@ -1,95 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class czb extends ctl {
-   public static final MapCodec<czb> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(csq.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), iy.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, czb::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dhw g = dhm.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final csq.c j;
+public class czb extends cva implements cxs, cyi {
+   public static final MapCodec<czb> a = b(czb::new);
+   public static final dig<hz> b = dhy.T;
 
    @Override
    public MapCodec<czb> a() {
-      return d;
+      return a;
    }
 
-   public czb(csq.c $$0, iy.a $$1, dgv.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dgw $$0) {
-      return $$0.c(g) == 3;
+   protected czb(dhh.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, hz.k));
    }
 
    @Override
-   protected boolean a(ecf $$0) {
-      return $$0 == ech.c && this.j == csq.c.b;
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected double b(dgw $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   public void a(dgw $$0, crs $$1, ht $$2, bki $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
-      }
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
-   private void e(dgw $$0, crs $$1, ht $$2) {
-      if (this.j == csq.c.c) {
-         d(cuv.fu.o().a(g, $$0.c(g)), $$1, $$2);
+   @Override
+   public dhi a(cnr $$0) {
+      hx $$1 = $$0.k();
+      hx $$2;
+      if ($$1.o() == hx.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         d($$0, $$1, $$2);
+         $$2 = hx.b;
+      }
+
+      return this.o().a(b, hz.a($$1, $$2));
+   }
+
+   @Override
+   public dfd a(ht $$0, dhi $$1) {
+      return new dgd($$0, $$1);
+   }
+
+   @Override
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      dfd $$6 = $$1.c_($$2);
+      if ($$6 instanceof dgd && $$3.gq()) {
+         $$3.a((dgd)$$6);
+         return bix.a($$1.B);
+      } else {
+         return bix.d;
       }
    }
 
-   public static void d(dgw $$0, crs $$1, ht $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dgw $$4 = $$3 == 0 ? cuv.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dlg.c, $$2, dlg.a.a($$4));
+   public static boolean a(ebh.c $$0, ebh.c $$1) {
+      hx $$2 = h($$0.b());
+      hx $$3 = h($$1.b());
+      hx $$4 = n($$0.b());
+      hx $$5 = n($$1.b());
+      dgd.a $$6 = dgd.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dgd.a.b : dgd.a.a);
+      boolean $$7 = $$6 == dgd.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public void a(dgw $$0, crs $$1, ht $$2, csq.c $$3) {
-      if (cvo.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dgw $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dlg.c, $$2, dlg.a.a($$4));
-      }
+   public static hx h(dhi $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   public int a(dgw $$0, crs $$1, ht $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dgw $$0, crs $$1, ht $$2, ecf $$3) {
-      if (!this.d($$0)) {
-         dgw $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dlg.c, $$2, dlg.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public static hx n(dhi $$0) {
+      return $$0.c(b).b();
    }
 }

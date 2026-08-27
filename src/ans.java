@@ -1,14 +1,11 @@
-public enum ans {
-   a("assets"),
-   b("data");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final String c;
+public record ans(cgd b) {
+   private static final Codec<ans> c = RecordCodecBuilder.create($$0 -> $$0.group(cgf.f.fieldOf("enabled").forGetter(ans::a)).apply($$0, ans::new));
+   public static final aoi<ans> a = aoi.a("features", c);
 
-   private ans(String $$0) {
-      this.c = $$0;
-   }
-
-   public String a() {
-      return this.c;
+   public cgd a() {
+      return this.b;
    }
 }

@@ -1,39 +1,25 @@
-public interface dwp {
-   agf<dwv> a = a("pillager_outpost");
-   agf<dwv> b = a("mineshaft");
-   agf<dwv> c = a("mineshaft_mesa");
-   agf<dwv> d = a("mansion");
-   agf<dwv> e = a("jungle_pyramid");
-   agf<dwv> f = a("desert_pyramid");
-   agf<dwv> g = a("igloo");
-   agf<dwv> h = a("shipwreck");
-   agf<dwv> i = a("shipwreck_beached");
-   agf<dwv> j = a("swamp_hut");
-   agf<dwv> k = a("stronghold");
-   agf<dwv> l = a("monument");
-   agf<dwv> m = a("ocean_ruin_cold");
-   agf<dwv> n = a("ocean_ruin_warm");
-   agf<dwv> o = a("fortress");
-   agf<dwv> p = a("nether_fossil");
-   agf<dwv> q = a("end_city");
-   agf<dwv> r = a("buried_treasure");
-   agf<dwv> s = a("bastion_remnant");
-   agf<dwv> t = a("village_plains");
-   agf<dwv> u = a("village_desert");
-   agf<dwv> v = a("village_savanna");
-   agf<dwv> w = a("village_snowy");
-   agf<dwv> x = a("village_taiga");
-   agf<dwv> y = a("ruined_portal");
-   agf<dwv> z = a("ruined_portal_desert");
-   agf<dwv> A = a("ruined_portal_jungle");
-   agf<dwv> B = a("ruined_portal_swamp");
-   agf<dwv> C = a("ruined_portal_mountain");
-   agf<dwv> D = a("ruined_portal_ocean");
-   agf<dwv> E = a("ruined_portal_nether");
-   agf<dwv> F = a("ancient_city");
-   agf<dwv> G = a("trail_ruins");
+import com.mojang.serialization.Codec;
 
-   private static agf<dwv> a(String $$0) {
-      return agf.a(jz.aB, new agg($$0));
+public interface dwp<P extends dwo> {
+   dwp<dwa> a = a("block_predicate_filter", dwa.a);
+   dwp<dwr> b = a("rarity_filter", dwr.a);
+   dwp<dwt> c = a("surface_relative_threshold_filter", dwt.a);
+   dwp<dwu> d = a("surface_water_depth_filter", dwu.a);
+   dwp<dvz> e = a("biome", dvz.a);
+   dwp<dwe> f = a("count", dwe.a);
+   dwp<dwj> g = a("noise_based_count", dwj.a);
+   dwp<dwk> h = a("noise_threshold_count", dwk.a);
+   dwp<dwd> i = a("count_on_every_layer", dwd.a);
+   dwp<dwf> j = a("environment_scan", dwf.a);
+   dwp<dwh> k = a("heightmap", dwh.a);
+   dwp<dwg> l = a("height_range", dwg.a);
+   dwp<dwi> m = a("in_square", dwi.a);
+   dwp<dwq> n = a("random_offset", dwq.a);
+   dwp<dwb> o = a("carving_mask", dwb.a);
+
+   Codec<P> codec();
+
+   private static <P extends dwo> dwp<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.V, $$0, () -> $$1);
    }
 }

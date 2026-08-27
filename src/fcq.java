@@ -1,47 +1,30 @@
-import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class fcq extends fbi {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fsv.a l;
+public class fcq extends fbv {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int k = 16;
+   private static final int l = 16;
+   private final agi m = new agi("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-   public fcq(dga $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public fcq(dgm $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, ur.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.l = fsv.a(this.f.aO(), this.a);
+   protected void b(euo $$0, dhi $$1) {
+      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void b(eub $$0, dgw $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dcn;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
-   }
-
-   @Override
-   protected void a(eub $$0, dgw $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof dcn;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gdl $$3 = fqw.a(this.a);
-         eno $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, gay.d);
-      }
+   protected void a(euo $$0, dhi $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
    protected Vector3f l() {
-      return k;
+      return c;
    }
 }

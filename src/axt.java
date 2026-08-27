@@ -1,13 +1,19 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class axt extends bax {
+public class axt extends azt {
    public axt(Schema $$0, boolean $$1) {
-      super("EntityTippedArrowFix", $$0, $$1);
+      super($$0, $$1, "EntityShulkerColorFix", bat.x, "minecraft:shulker");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

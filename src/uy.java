@@ -11,7 +11,7 @@ public record uy(List<vd> d) {
    public static uy b = new uy(List.of());
    public static final int c = 20;
 
-   public void a(ats.a $$0) throws SignatureException {
+   public void a(atx.a $$0) throws SignatureException {
       $$0.update(Ints.toByteArray(this.d.size()));
 
       for (vd $$1 : this.d) {

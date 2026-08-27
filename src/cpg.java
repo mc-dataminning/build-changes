@@ -1,20 +1,15 @@
-public class cpg extends cpm {
-   public cpg(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.k, $$1);
+public class cpg extends cnv {
+   public cpg(String $$0, cob $$1, cok $$2, clj $$3, float $$4, int $$5) {
+      super(cot.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+   public clj g() {
+      return new clj(cvc.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 25;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cos<?> aq_() {
+      return cos.r;
    }
 }

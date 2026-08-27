@@ -1,79 +1,71 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class age<T> extends afy<T> {
-   private final age.b b;
+public final class age<E> implements Codec<ib<E>> {
+   private final agh<? extends io<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   private static age.b a(final age.b $$0) {
-      return new age.b() {
-         private final Map<agf<? extends io<?>>, Optional<? extends age.a<?>>> b = new HashMap<>();
-
-         @Override
-         public <T> Optional<age.a<T>> a(agf<? extends io<? extends T>> $$0x) {
-            return (Optional<age.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
-         }
-      };
+   public static <E> age<E> a(agh<? extends io<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <T> age<T> a(DynamicOps<T> $$0, final id.b $$1) {
-      return a($$0, a(new age.b() {
-         @Override
-         public <E> Optional<age.a<E>> a(agf<? extends io<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (age.a<E>)(new age.a<>($$0x, $$0x, $$0x.g())));
-         }
-      }));
+   public static <E> age<E> a(agh<? extends io<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new age<>($$0, $$1, $$2);
    }
 
-   public static <T> age<T> a(DynamicOps<T> $$0, age.b $$1) {
-      return new age<>($$0, $$1);
-   }
-
-   private age(DynamicOps<T> $$0, age.b $$1) {
-      super($$0);
+   private age(agh<? extends io<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public <E> Optional<ie<E>> a(agf<? extends io<? extends E>> $$0) {
-      return this.b.a($$0).map(age.a::a);
+   public <T> DataResult<T> a(ib<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof agg<?> $$3) {
+         Optional<ie<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> agi.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   public <E> Optional<ic<E>> b(agf<? extends io<? extends E>> $$0) {
-      return this.b.a($$0).map(age.a::b);
+   public <T> DataResult<Pair<ib<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof agg<?> $$2) {
+         Optional<ic<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            ic<E> $$4 = $$3.get();
+            DataResult<Pair<agi, T>> $$5 = agi.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(ib::a));
+            } else {
+               Pair<agi, T> $$6 = (Pair<agi, T>)$$5.result().get();
+               agh<E> $$7 = agh.a(this.a, (agi)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(ib::a));
+      }
    }
 
-   public static <E, O> RecordCodecBuilder<O, ic<E>> c(agf<? extends io<? extends E>> $$0) {
-      return asq.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof age<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, ib.c<E>> d(agf<E> $$0) {
-      agf<? extends io<E>> $$1 = agf.a($$0.b());
-      return asq.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof age<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(ie<T> a, ic<T> b, Lifecycle c) {
-   }
-
-   public interface b {
-      <T> Optional<age.a<T>> a(agf<? extends io<? extends T>> var1);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

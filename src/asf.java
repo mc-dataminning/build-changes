@@ -1,33 +1,83 @@
-import com.mojang.util.UndashedUuid;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.IntFunction;
+import java.util.function.ToIntFunction;
 
 public class asf {
-   public static final String a = "https://aka.ms/MinecraftGDPR";
-   public static final String b = "https://aka.ms/MinecraftEULA";
-   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
-   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
-   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
-   public static final String f = "https://aka.ms/BuyMinecraftJava";
-   public static final String g = "https://aka.ms/JavaAccountSettings";
-   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
-   public static final String i = "https://aka.ms/javafeedback?ref=game";
-   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
-   public static final String k = "https://aka.ms/Minecraft-Support";
-   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
-   public static final String m = "https://aka.ms/aboutjavareporting";
-   public static final String n = "https://aka.ms/mcjavamoderation";
-   public static final String o = "https://aka.ms/javablocking";
-   public static final String p = "https://aka.ms/MinecraftSymLinks";
-   public static final String q = "https://aka.ms/startjavarealmstrial";
-   public static final String r = "https://aka.ms/BuyJavaRealms";
-   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
-   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
+   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+         for (T $$3 : $$1) {
+            int $$4 = $$0.applyAsInt($$3);
+            T $$5 = (T)$$2.put($$4, $$3);
+            if ($$5 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+            }
+         }
+
+         return $$2;
+      }
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
+      IntFunction<T> $$3 = a($$0, $$1);
+      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
+   }
+
+   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
+      int $$2 = $$1.length;
+      if ($$2 == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         T[] $$3 = (T[])$$1.clone();
+         Arrays.fill($$3, null);
+
+         for (T $$4 : $$1) {
+            int $$5 = $$0.applyAsInt($$4);
+            if ($$5 < 0 || $$5 >= $$2) {
+               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
+            }
+
+            T $$6 = $$3[$$5];
+            if ($$6 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
+            }
+
+            $$3[$$5] = $$4;
+         }
+
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            if ($$3[$$7] == null) {
+               throw new IllegalArgumentException("Missing value at index: " + $$7);
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, asf.a $$2) {
+      T[] $$3 = b($$0, $$1);
+      int $$4 = $$3.length;
+
+      return switch ($$2) {
+         case a -> {
+            T $$5 = $$3[0];
+            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
+         }
+         case b -> $$2x -> $$3[atm.b($$2x, $$4)];
+         case c -> $$2x -> $$3[atm.a($$2x, 0, $$4 - 1)];
+      };
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

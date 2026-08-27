@@ -1,39 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcx extends cvc implements cuw {
+public class dcx extends cum implements cyi {
    public static final MapCodec<dcx> a = b(dcx::new);
-   protected static final float b = 6.0F;
-   protected static final ekb c = cut.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   public static final dig<dis> b = dhy.bj;
 
    @Override
    public MapCodec<dcx> a() {
       return a;
    }
 
-   protected dcx(dgv.d $$0) {
+   protected dcx(dhh.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, dis.b));
    }
 
    @Override
-   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
-      return c;
+   public dfd a(ht $$0, dhi $$1) {
+      return new dgr($$0, $$1);
    }
 
    @Override
-   public boolean b(crv $$0, ht $$1, dgw $$2) {
-      return true;
+   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
+      dfd $$6 = $$1.c_($$2);
+      if ($$6 instanceof dgr) {
+         return ((dgr)$$6).a($$3) ? bix.a($$1.B) : bix.d;
+      } else {
+         return bix.d;
+      }
    }
 
    @Override
-   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
-      return true;
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dfd $$5 = $$0.c_($$1);
+            if ($$5 instanceof dgr) {
+               ((dgr)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
-      cxa $$4 = (cxa)($$3.a(cuv.bu) ? cuv.iI : cuv.iH);
-      if ($$4.o().a($$0, $$2) && $$0.t($$2.c())) {
-         cxa.a($$0, $$4.o(), $$2, 2);
+   public dbf b_(dhi $$0) {
+      return dbf.c;
+   }
+
+   @Override
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
+      if ($$1 instanceof ame) {
+         if ($$1.c_($$2) instanceof dgr $$7) {
+            boolean $$8 = $$1.B($$2);
+            boolean $$9 = $$7.G();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((ame)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
+   }
+
+   private void a(ame $$0, dgr $$1) {
+      switch ($$1.y()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.a($$0, false);
+            break;
+         case c:
+            $$1.E();
+         case d:
       }
    }
 }

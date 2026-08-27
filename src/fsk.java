@@ -1,23 +1,19 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class fsk<S extends der> implements cwz.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = fqf.a($$0.k(), $$0.p());
-         int $$4 = fqf.a($$1.k(), $$1.p());
-         int $$5 = fqg.a($$3);
-         int $$6 = fqg.a($$4);
-         int $$7 = fqg.b($$3);
-         int $$8 = fqg.b($$4);
-         return fqg.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class fsk implements fsh {
+   public static final String a = "OR";
+   private final Iterable<? extends fsh> d;
+
+   public fsk(Iterable<? extends fsh> $$0) {
+      this.d = $$0;
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
-
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   @Override
+   public Predicate<dhi> getPredicate(dhj<cva, dhi> $$0) {
+      List<Predicate<dhi>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
    }
 }

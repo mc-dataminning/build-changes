@@ -4,11 +4,11 @@ public class abw implements wk<yd> {
    private static final int a = 1;
    private static final int b = 2;
    @Nullable
-   private final agg c;
+   private final agi c;
    @Nullable
-   private final aqo d;
+   private final aqs d;
 
-   public abw(@Nullable agg $$0, @Nullable aqo $$1) {
+   public abw(@Nullable agi $$0, @Nullable aqs $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -16,7 +16,7 @@ public class abw implements wk<yd> {
    public abw(tu $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.d = $$0.b(aqo.class);
+         this.d = $$0.b(aqs.class);
       } else {
          this.d = null;
       }
@@ -48,12 +48,12 @@ public class abw implements wk<yd> {
    }
 
    @Nullable
-   public agg a() {
+   public agi a() {
       return this.c;
    }
 
    @Nullable
-   public aqo d() {
+   public aqs d() {
       return this.d;
    }
 

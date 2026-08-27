@@ -1,51 +1,38 @@
-public enum fpy {
-   a(new fpy.b(fpy.a.f, fpy.a.e, fpy.a.a), new fpy.b(fpy.a.f, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.a)),
-   b(new fpy.b(fpy.a.f, fpy.a.b, fpy.a.d), new fpy.b(fpy.a.f, fpy.a.b, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.b, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.b, fpy.a.d)),
-   c(new fpy.b(fpy.a.c, fpy.a.b, fpy.a.d), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.f, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.f, fpy.a.b, fpy.a.d)),
-   d(new fpy.b(fpy.a.f, fpy.a.b, fpy.a.a), new fpy.b(fpy.a.f, fpy.a.e, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.b, fpy.a.a)),
-   e(new fpy.b(fpy.a.f, fpy.a.b, fpy.a.d), new fpy.b(fpy.a.f, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.f, fpy.a.e, fpy.a.a), new fpy.b(fpy.a.f, fpy.a.b, fpy.a.a)),
-   f(new fpy.b(fpy.a.c, fpy.a.b, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.a), new fpy.b(fpy.a.c, fpy.a.e, fpy.a.d), new fpy.b(fpy.a.c, fpy.a.b, fpy.a.d));
+import com.google.common.collect.ForwardingList;
+import java.util.List;
 
-   private static final fpy[] g = ac.a(new fpy[6], $$0 -> {
-      $$0[fpy.a.e] = a;
-      $$0[fpy.a.b] = b;
-      $$0[fpy.a.d] = c;
-      $$0[fpy.a.a] = d;
-      $$0[fpy.a.f] = e;
-      $$0[fpy.a.c] = f;
-   });
-   private final fpy.b[] h;
+public class fpy extends ForwardingList<clj> {
+   private final il<clj> a = il.a(cdt.g(), clj.b);
 
-   public static fpy a(hx $$0) {
-      return g[$$0.d()];
+   protected List<clj> delegate() {
+      return this.a;
    }
 
-   private fpy(fpy.b... $$0) {
-      this.h = $$0;
-   }
+   public sf a() {
+      sf $$0 = new sf();
 
-   public fpy.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = hx.d.d();
-      public static final int b = hx.b.d();
-      public static final int c = hx.f.d();
-      public static final int d = hx.c.d();
-      public static final int e = hx.a.d();
-      public static final int f = hx.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      for (clj $$1 : this.delegate()) {
+         $$0.add($$1.b(new rz()));
       }
+
+      return $$0;
+   }
+
+   public void a(sf $$0) {
+      List<clj> $$1 = this.delegate();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, clj.a($$0.a($$2)));
+      }
+   }
+
+   public boolean isEmpty() {
+      for (clj $$0 : this.delegate()) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

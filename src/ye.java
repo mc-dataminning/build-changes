@@ -5,7 +5,7 @@ public class ye implements wk<yd> {
    private static final double b = 3.9;
    private final int c;
    private final UUID d;
-   private final bkm<?> e;
+   private final bku<?> e;
    private final double f;
    private final double g;
    private final double h;
@@ -17,32 +17,32 @@ public class ye implements wk<yd> {
    private final byte n;
    private final int o;
 
-   public ye(bki $$0) {
+   public ye(bkq $$0) {
       this($$0, 0);
    }
 
-   public ye(bki $$0, int $$1) {
-      this($$0.ah(), $$0.cv(), $$0.dq(), $$0.ds(), $$0.dw(), $$0.dD(), $$0.dB(), $$0.ag(), $$1, $$0.do(), (double)$$0.co());
+   public ye(bkq $$0, int $$1) {
+      this($$0.aj(), $$0.cw(), $$0.ds(), $$0.du(), $$0.dy(), $$0.dF(), $$0.dD(), $$0.ai(), $$1, $$0.dq(), (double)$$0.cp());
    }
 
-   public ye(bki $$0, int $$1, ht $$2) {
-      this($$0.ah(), $$0.cv(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dD(), $$0.dB(), $$0.ag(), $$1, $$0.do(), (double)$$0.co());
+   public ye(bkq $$0, int $$1, ht $$2) {
+      this($$0.aj(), $$0.cw(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dF(), $$0.dD(), $$0.ai(), $$1, $$0.dq(), (double)$$0.cp());
    }
 
-   public ye(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bkm<?> $$7, int $$8, eji $$9, double $$10) {
+   public ye(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bku<?> $$7, int $$8, eju $$9, double $$10) {
       this.c = $$0;
       this.d = $$1;
       this.f = $$2;
       this.g = $$3;
       this.h = $$4;
-      this.l = (byte)ati.d($$5 * 256.0F / 360.0F);
-      this.m = (byte)ati.d($$6 * 256.0F / 360.0F);
-      this.n = (byte)ati.a($$10 * 256.0 / 360.0);
+      this.l = (byte)atm.d($$5 * 256.0F / 360.0F);
+      this.m = (byte)atm.d($$6 * 256.0F / 360.0F);
+      this.n = (byte)atm.a($$10 * 256.0 / 360.0);
       this.e = $$7;
       this.o = $$8;
-      this.i = (int)(ati.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.j = (int)(ati.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.k = (int)(ati.a($$9.e, -3.9, 3.9) * 8000.0);
+      this.i = (int)(atm.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.j = (int)(atm.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.k = (int)(atm.a($$9.e, -3.9, 3.9) * 8000.0);
    }
 
    public ye(tu $$0) {
@@ -90,7 +90,7 @@ public class ye implements wk<yd> {
       return this.d;
    }
 
-   public bkm<?> e() {
+   public bku<?> e() {
       return this.e;
    }
 

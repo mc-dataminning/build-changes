@@ -6,7 +6,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public record xa(xa.a b) implements xd {
-   public static final agg a = new agg("debug/bee");
+   public static final agi a = new agi("debug/bee");
 
    public xa(tu $$0) {
       this(new xa.a($$0));
@@ -18,13 +18,13 @@ public record xa(xa.a b) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 
-   public static record a(UUID a, int b, eji c, @Nullable ecv d, @Nullable ht e, @Nullable ht f, int g, Set<String> h, List<ht> i) {
+   public static record a(UUID a, int b, eju c, @Nullable edh d, @Nullable ht e, @Nullable ht f, int g, Set<String> h, List<ht> i) {
       public a(tu $$0) {
-         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(ecv::b), $$0.c(tu::e), $$0.c(tu::e), $$0.readInt(), $$0.a(HashSet::new, tu::s), $$0.a(tu::e));
+         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(edh::b), $$0.c(tu::e), $$0.c(tu::e), $$0.readInt(), $$0.a(HashSet::new, tu::s), $$0.a(tu::e));
       }
 
       public void a(tu $$0) {
@@ -44,7 +44,7 @@ public record xa(xa.a b) implements xd {
       }
 
       public String a() {
-         return ach.a(this.a);
+         return acj.a(this.a);
       }
 
       @Override
@@ -60,12 +60,12 @@ public record xa(xa.a b) implements xd {
          return this.b;
       }
 
-      public eji d() {
+      public eju d() {
          return this.c;
       }
 
       @Nullable
-      public ecv e() {
+      public edh e() {
          return this.d;
       }
 

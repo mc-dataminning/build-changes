@@ -1,34 +1,45 @@
-public interface dlj {
-   dlj a = new dlj() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-      @Override
-      public void a(dli $$0) {
-      }
+public class dlj<T extends dkz> implements dli<T> {
+   private final dlb<T> a;
+   private final dle<T> b;
 
-      @Override
-      public void b(dli $$0) {
-      }
+   public dlj(dlb<T> $$0, dle<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      @Override
-      public boolean a(dlg $$0, eji $$1, dlg.a $$2, dlj.a $$3) {
-         return false;
-      }
-   };
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
 
-   boolean a();
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
+   }
 
-   void a(dli var1);
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
+   }
 
-   void b(dli var1);
+   @Override
+   public <U extends T> void a(dlg<T, U> $$0, asb<U> $$1) {
+      this.a.a($$0, $$1);
+   }
 
-   boolean a(dlg var1, eji var2, dlg.a var3, dlj.a var4);
+   @Override
+   public void a(ejp $$0, Consumer<T> $$1) {
+      this.b.b($$0, asb.forConsumer($$1));
+   }
 
-   @FunctionalInterface
-   public interface a {
-      void visit(dli var1, eji var2);
+   @Override
+   public <U extends T> void a(dlg<T, U> $$0, ejp $$1, asb<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

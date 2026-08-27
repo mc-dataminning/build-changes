@@ -1,147 +1,75 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dep extends der {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public hx c;
-   private List<bky> m;
-   private boolean n;
-   private int r;
+public class dep extends dcb {
+   public static final MapCodec<dep> b = b(dep::new);
+   @Nullable
+   private static dhn h;
+   @Nullable
+   private static dhn i;
 
-   public dep(ht $$0, dgw $$1) {
-      super(det.E, $$0, $$1);
+   @Override
+   public MapCodec<dep> a() {
+      return b;
+   }
+
+   protected dep(dhh.d $$0) {
+      super(dcb.b.d, $$0);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.c();
-         this.r = 0;
-         this.c = hx.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dfd $$5 = $$0.c_($$1);
+      if ($$5 instanceof dgo) {
+         a($$0, $$1, (dgo)$$5);
       }
    }
 
-   private static void a(crs $$0, ht $$1, dgw $$2, dep $$3, dep.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
+   public static void a(csa $$0, ht $$1, dgo $$2) {
+      if (!$$0.B) {
+         dhi $$3 = $$2.q();
+         boolean $$4 = $$3.a(cvc.gG) || $$3.a(cvc.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.aj() != biu.a) {
+            dhn.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cab $$6 = bku.bk.a($$0);
+               if ($$6 != null) {
+                  cvu.a($$0, $$5);
+                  ht $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == hx.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == hx.a.a ? 0.0F : 90.0F;
+                  $$6.u();
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
+                  for (amf $$8 : $$0.a(amf.class, $$6.cH().g(50.0))) {
+                     al.n.a($$8, $$6);
+                  }
 
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, aqn.bL, aqo.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
-      }
-   }
-
-   public static void a(crs $$0, ht $$1, dgw $$2, dep $$3) {
-      a($$0, $$1, $$2, $$3, dep::b);
-   }
-
-   public static void b(crs $$0, ht $$1, dgw $$2, dep $$3) {
-      a($$0, $$1, $$2, $$3, dep::a);
-   }
-
-   public void a(hx $$0) {
-      ht $$1 = this.p();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.q().b(), 1, $$0.d());
-   }
-
-   private void c() {
-      ht $$0 = this.p();
-      if (this.o.V() > this.l + 60L || this.m == null) {
-         this.l = this.o.V();
-         ejd $$1 = new ejd($$0).g(48.0);
-         this.m = this.o.a(bky.class, $$1);
-      }
-
-      if (!this.o.B) {
-         for (bky $$2 : this.m) {
-            if ($$2.bv() && !$$2.dG() && $$0.a($$2.dj(), 32.0)) {
-               $$2.dN().a(btz.D, this.o.V());
+                  $$0.b($$6);
+                  cvu.b($$0, $$5);
+               }
             }
          }
       }
    }
 
-   private static boolean a(ht $$0, List<bky> $$1) {
-      for (bky $$2 : $$1) {
-         if ($$2.bv() && !$$2.dG() && $$0.a($$2.dj(), 32.0) && $$2.ag().a(arf.c)) {
-            return true;
-         }
+   public static boolean b(csa $$0, ht $$1, clj $$2) {
+      return $$2.a(clm.ue) && $$1.v() >= $$0.I_() + 2 && $$0.aj() != biu.a && !$$0.B ? y().a($$0, $$1) != null : false;
+   }
+
+   private static dhn s() {
+      if (h == null) {
+         h = dho.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(arg.aE)).a('^', dhm.a(dhr.a(cvc.gG).or(dhr.a(cvc.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      return false;
+      return h;
    }
 
-   private static void a(crs $$0, ht $$1, List<bky> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dep::a);
-   }
+   private static dhn y() {
+      if (i == null) {
+         i = dho.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(arg.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
 
-   private static void b(crs $$0, ht $$1, List<bky> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dj(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dq() - (double)$$1.u()) * ($$4x.dq() - (double)$$1.u()) + ($$4x.dw() - (double)$$1.w()) * ($$4x.dw() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dq() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dw() - (double)$$1.w());
-         int $$9 = ati.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)ass.b.b($$11) / 255.0;
-            double $$13 = (double)ass.b.c($$11) / 255.0;
-            double $$14 = (double)ass.b.d($$11) / 255.0;
-            $$0.a(js.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
-   }
-
-   private static boolean a(ht $$0, bky $$1) {
-      return $$1.bv() && !$$1.dG() && $$0.a($$1.dj(), 48.0) && $$1.ag().a(arf.c);
-   }
-
-   private static void a(bky $$0) {
-      $$0.b(new bjv(bjx.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(crs var1, ht var2, List<bky> var3);
+      return i;
    }
 }

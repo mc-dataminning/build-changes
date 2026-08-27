@@ -1,3 +1,8 @@
-public interface emk {
-   emj createMonitor(long var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@elq
+@elp
+interface emk {
 }

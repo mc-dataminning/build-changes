@@ -1,99 +1,166 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public class etb {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private etb.c b;
-   private int c;
+public class etb implements Comparable<etb> {
+   private static final Map<String, etb> h = Maps.newHashMap();
+   private static final Map<emr.a, etb> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final emr.a m;
+   private final String n;
+   private emr.a o;
+   private boolean p;
+   private int q;
 
-   public void a(etb.b $$0, List<anr> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
-
-      this.b = new etb.c($$0, $$1.stream().map(anr::a).collect(ImmutableList.toImmutableList()));
-   }
-
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new etb.c(etb.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new etb.a($$0);
-   }
-
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
-   }
-
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
+   public static void a(emr.a $$0) {
+      etb $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
       }
    }
 
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
+   public static void a(emr.a $$0, boolean $$1) {
+      etb $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
       }
    }
 
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final etb.b a;
-      private final List<String> b;
-      @Nullable
-      etb.a c;
-      boolean d;
-
-      c(etb.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
+   public static void a() {
+      for (etb $$0 : h.values()) {
+         if ($$0.o.a() == emr.b.a && $$0.o.b() != emr.bv.b()) {
+            $$0.a(emr.a(etd.N().aL().i(), $$0.o.b()));
          }
       }
+   }
+
+   public static void b() {
+      for (etb $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (etb $$0 : h.values()) {
+         if ($$0 instanceof etr $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (etb $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public etb(String $$0, int $$1, String $$2) {
+      this($$0, emr.b.a, $$1, $$2);
+   }
+
+   public etb(String $$0, emr.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public emr.a i() {
+      return this.m;
+   }
+
+   public void b(emr.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(etb $$0) {
+      return this.n.equals($$0.n) ? gda.a(this.l).compareTo(gda.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<ur> a(String $$0) {
+      etb $$1 = h.get($$0);
+      return $$1 == null ? () -> ur.c($$0) : $$1::k;
+   }
+
+   public boolean b(etb $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(emr.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == emr.bv.b() ? this.o.a() == emr.b.b && this.o.b() == $$1 : this.o.a() == emr.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == emr.b.c && this.o.b() == $$0;
+   }
+
+   public ur k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
 }

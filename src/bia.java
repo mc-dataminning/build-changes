@@ -1,57 +1,27 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public class bia extends bht {
-   public static final Codec<bia> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bia::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+public abstract class bia implements bif {
+   private static final Codec<Either<Float, bia>> a = Codec.either(Codec.FLOAT, jy.M.q().dispatch(bia::c, bib::codec));
+   public static final Codec<bia> c = a.xmap(
+      $$0 -> (bia)$$0.map(bhy::a, $$0x -> $$0x), $$0 -> $$0.c() == bib.a ? Either.left(((bhy)$$0).d()) : Either.right($$0)
+   );
 
-   private bia(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public static Codec<bia> a(float $$0, float $$1) {
+      return asu.a(c, (Function<bia, DataResult<bia>>)($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      }));
    }
 
-   public static bia b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bia($$0, $$1);
-      }
-   }
+   public abstract float a();
 
-   @Override
-   public float a(ato $$0) {
-      return ati.b($$0, this.b, this.d);
-   }
+   public abstract float b();
 
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bhu<?> c() {
-      return bhu.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
-   }
+   public abstract bib<?> c();
 }

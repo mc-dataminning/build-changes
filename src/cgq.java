@@ -1,5 +1,9 @@
-public interface cgq {
-   void a(cge var1, int var2, clb var3);
+public class cgq extends cgn {
+   public cgq(int $$0, cdt $$1) {
+      super(cht.k, cot.c, cia.c, $$0, $$1);
+   }
 
-   void a(cge var1, int var2, int var3);
+   public cgq(int $$0, cdt $$1, biq $$2, cgw $$3) {
+      super(cht.k, cot.c, cia.c, $$0, $$1, $$2, $$3);
+   }
 }

@@ -1,183 +1,165 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.function.BiConsumer;
 
-public class duy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<duy> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  iq.a(jz.aD).optionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  duv.a.listOf().fieldOf("layers").forGetter(duy::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  csq.c.optionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  age.d(csx.b),
-                  age.d(qg.g),
-                  age.d(qg.h)
-               )
-               .apply($$0, duy::new)
-      )
-      .comapFlatMap(duy::a, Function.identity())
-      .stable();
-   private final Optional<ig<dxb>> c;
-   private final List<duv> d = Lists.newArrayList();
-   private final ib<csq> e;
-   private final List<dgw> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<ib<dvz>> j;
+public class duy extends dvd {
+   public static final Codec<duy> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, duy::new));
+   private static final double b = 0.618;
+   private static final double h = 1.382;
+   private static final double i = 0.381;
+   private static final double j = 0.328;
 
-   private static DataResult<duy> a(duy $$0) {
-      int $$1 = $$0.d.stream().mapToInt(duv::a).sum();
-      return $$1 > dkf.c ? DataResult.error(() -> "Sum of layer heights is > " + dkf.c, $$0) : DataResult.success($$0);
+   public duy(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private duy(Optional<ig<dxb>> $$0, List<duv> $$1, boolean $$2, boolean $$3, Optional<ib<csq>> $$4, ib.c<csq> $$5, ib<dvz> $$6, ib<dvz> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
-      }
-
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
+   @Override
+   protected dve<?> a() {
+      return dve.f;
    }
 
-   private static ib<csq> a(Optional<? extends ib<csq>> $$0, ib<csq> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (ib<csq>)$$0.get();
-      }
-   }
+   @Override
+   public List<dtl.a> a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, int $$3, ht $$4, dsv $$5) {
+      int $$6 = 5;
+      int $$7 = $$3 + 2;
+      int $$8 = atm.a((double)$$7 * 0.618);
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      double $$9 = 1.0;
+      int $$10 = Math.min(1, atm.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
+      int $$11 = $$4.v() + $$8;
+      int $$12 = $$7 - 5;
+      List<duy.a> $$13 = Lists.newArrayList();
+      $$13.add(new duy.a($$4.b($$12), $$11));
 
-   public duy(Optional<ig<dxb>> $$0, ib<csq> $$1, List<ib<dvz>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public duy a(List<duv> $$0, Optional<ig<dxb>> $$1, ib<csq> $$2) {
-      duy $$3 = new duy($$1, $$2, this.j);
-
-      for (duv $$4 : $$0) {
-         $$3.d.add(new duv($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public csr a(ib<csq> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         csr $$1 = this.d().a().d();
-         csr.b $$2 = new csr.b();
-         if (this.i) {
-            for (ib<dvz> $$3 : this.j) {
-               $$2.a(dmb.b.b, $$3);
-            }
-         }
-
-         boolean $$4 = (!this.g || $$0.a(csx.a)) && this.h;
-         if ($$4) {
-            List<ig<dvz>> $$5 = $$1.b();
-
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != dmb.b.d.ordinal() && $$6 != dmb.b.e.ordinal() && (!this.i || $$6 != dmb.b.b.ordinal())) {
-                  for (ib<dvz> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
+      for (; $$12 >= 0; $$12--) {
+         float $$14 = b($$7, $$12);
+         if (!($$14 < 0.0F)) {
+            for (int $$15 = 0; $$15 < $$10; $$15++) {
+               double $$16 = 1.0;
+               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
+               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
+               double $$19 = $$17 * Math.sin($$18) + 0.5;
+               double $$20 = $$17 * Math.cos($$18) + 0.5;
+               ht $$21 = $$4.b(atm.a($$19), $$12 - 1, atm.a($$20));
+               ht $$22 = $$21.b(5);
+               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
+                  int $$23 = $$4.u() - $$21.u();
+                  int $$24 = $$4.w() - $$21.w();
+                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
+                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
+                  ht $$27 = new ht($$4.u(), $$26, $$4.w());
+                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
+                     $$13.add(new duy.a($$21, $$27.v()));
                   }
                }
             }
          }
+      }
 
-         List<dgw> $$9 = this.f();
+      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
+      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
+      List<dtl.a> $$28 = Lists.newArrayList();
 
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            dgw $$11 = $$9.get($$10);
-            if (!dmf.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(dmb.b.k, qj.a(dpj.ab, new drr($$10, $$11)));
+      for (duy.a $$29 : $$13) {
+         if (this.a($$7, $$29.a() - $$4.v())) {
+            $$28.add($$29.a);
+         }
+      }
+
+      return $$28;
+   }
+
+   private boolean a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, ht $$4, boolean $$5, dsv $$6) {
+      if (!$$5 && Objects.equals($$3, $$4)) {
+         return true;
+      } else {
+         ht $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
+         int $$8 = this.a($$7);
+         float $$9 = (float)$$7.u() / (float)$$8;
+         float $$10 = (float)$$7.v() / (float)$$8;
+         float $$11 = (float)$$7.w() / (float)$$8;
+
+         for (int $$12 = 0; $$12 <= $$8; $$12++) {
+            ht $$13 = $$3.b(atm.d(0.5F + (float)$$12 * $$9), atm.d(0.5F + (float)$$12 * $$10), atm.d(0.5F + (float)$$12 * $$11));
+            if ($$5) {
+               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(dbl.i, this.a($$3, $$13)));
+            } else if (!this.b($$0, $$13)) {
+               return false;
             }
          }
 
-         return $$2.a();
+         return true;
       }
    }
 
-   public Optional<ig<dxb>> c() {
-      return this.c;
+   private int a(ht $$0) {
+      int $$1 = atm.a($$0.u());
+      int $$2 = atm.a($$0.v());
+      int $$3 = atm.a($$0.w());
+      return Math.max($$1, Math.max($$2, $$3));
    }
 
-   public ib<csq> d() {
-      return this.e;
-   }
-
-   public List<duv> e() {
-      return this.d;
-   }
-
-   public List<dgw> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (duv $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
+   private hx.a a(ht $$0, ht $$1) {
+      hx.a $$2 = hx.a.b;
+      int $$3 = Math.abs($$1.u() - $$0.u());
+      int $$4 = Math.abs($$1.w() - $$0.w());
+      int $$5 = Math.max($$3, $$4);
+      if ($$5 > 0) {
+         if ($$3 == $$5) {
+            $$2 = hx.a.a;
+         } else {
+            $$2 = hx.a.c;
          }
       }
 
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(cuv.a));
+      return $$2;
    }
 
-   public static duy a(ic<csq> $$0, ic<dxb> $$1, ic<dvz> $$2) {
-      ig<dxb> $$3 = ig.a($$1.b(dwo.r), $$1.b(dwo.a));
-      duy $$4 = new duy(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new duv(1, cuv.F));
-      $$4.e().add(new duv(2, cuv.j));
-      $$4.e().add(new duv(1, cuv.i));
-      $$4.g();
-      return $$4;
+   private boolean a(int $$0, int $$1) {
+      return (double)$$1 >= (double)$$0 * 0.2;
    }
 
-   public static ib<csq> a(ic<csq> $$0) {
-      return $$0.b(csx.b);
+   private void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, int $$3, ht $$4, List<duy.a> $$5, dsv $$6) {
+      for (duy.a $$7 : $$5) {
+         int $$8 = $$7.a();
+         ht $$9 = new ht($$4.u(), $$8, $$4.w());
+         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
+            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
+         }
+      }
    }
 
-   public static List<ib<dvz>> b(ic<dvz> $$0) {
-      return List.of($$0.b(qg.g), $$0.b(qg.h));
+   private static float b(int $$0, int $$1) {
+      if ((float)$$1 < (float)$$0 * 0.3F) {
+         return -1.0F;
+      } else {
+         float $$2 = (float)$$0 / 2.0F;
+         float $$3 = $$2 - (float)$$1;
+         float $$4 = atm.c($$2 * $$2 - $$3 * $$3);
+         if ($$3 == 0.0F) {
+            $$4 = $$2;
+         } else if (Math.abs($$3) >= $$2) {
+            return 0.0F;
+         }
+
+         return $$4 * 0.5F;
+      }
+   }
+
+   static class a {
+      final dtl.a a;
+      private final int b;
+
+      public a(ht $$0, int $$1) {
+         this.a = new dtl.a($$0, 0, false);
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.b;
+      }
    }
 }

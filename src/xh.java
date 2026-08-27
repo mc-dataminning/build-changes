@@ -1,5 +1,5 @@
 public record xh(ht b, int c, String d, int e) implements xd {
-   public static final agg a = new agg("debug/game_test_add_marker");
+   public static final agi a = new agi("debug/game_test_add_marker");
 
    public xh(tu $$0) {
       this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
@@ -14,7 +14,7 @@ public record xh(ht b, int c, String d, int e) implements xd {
    }
 
    @Override
-   public agg a() {
+   public agi a() {
       return a;
    }
 }

@@ -4,5 +4,5 @@ import javax.annotation.Nullable;
 public interface um {
    um a = ($$0, $$1) -> $$1;
 
-   ur decorate(@Nullable amb var1, ur var2);
+   ur decorate(@Nullable amf var1, ur var2);
 }

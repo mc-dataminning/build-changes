@@ -1,90 +1,52 @@
-public class cnp extends cnx {
-   public cnp(cnu $$0) {
-      super($$0);
+import java.util.Optional;
+
+public class cnp {
+   public static final agh<cno> a = a("sentry");
+   public static final agh<cno> b = a("dune");
+   public static final agh<cno> c = a("coast");
+   public static final agh<cno> d = a("wild");
+   public static final agh<cno> e = a("ward");
+   public static final agh<cno> f = a("eye");
+   public static final agh<cno> g = a("vex");
+   public static final agh<cno> h = a("tide");
+   public static final agh<cno> i = a("snout");
+   public static final agh<cno> j = a("rib");
+   public static final agh<cno> k = a("spire");
+   public static final agh<cno> l = a("wayfinder");
+   public static final agh<cno> m = a("shaper");
+   public static final agh<cno> n = a("silence");
+   public static final agh<cno> o = a("raiser");
+   public static final agh<cno> p = a("host");
+
+   public static void a(ov<cno> $$0) {
+      a($$0, clm.xj, a);
+      a($$0, clm.xk, b);
+      a($$0, clm.xl, c);
+      a($$0, clm.xm, d);
+      a($$0, clm.xn, e);
+      a($$0, clm.xo, f);
+      a($$0, clm.xp, g);
+      a($$0, clm.xq, h);
+      a($$0, clm.xr, i);
+      a($$0, clm.xs, j);
+      a($$0, clm.xt, k);
+      a($$0, clm.xu, l);
+      a($$0, clm.xv, m);
+      a($$0, clm.xw, n);
+      a($$0, clm.xx, o);
+      a($$0, clm.xy, p);
    }
 
-   public boolean a(cgu $$0, crs $$1) {
-      cjp $$2 = null;
-      clb $$3 = null;
-      clb $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         clb $$6 = $$0.a($$5);
-         if (!$$6.b()) {
-            ckw $$7 = $$6.d();
-            if (!($$7 instanceof cir)) {
-               return false;
-            }
-
-            cir $$8 = (cir)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = deh.c($$6);
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   public static Optional<ib.c<cno>> a(ip $$0, clj $$1) {
+      return $$0.d(jz.aG).h().filter($$1x -> $$1.a(((cno)$$1x.a()).b())).findFirst();
    }
 
-   public clb a(cgu $$0, ip $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         clb $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            int $$4 = deh.c($$3);
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return clb.b;
+   private static void a(ov<cno> $$0, cle $$1, agh<cno> $$2) {
+      cno $$3 = new cno($$2.a(), jy.i.d($$1), ur.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   public il<clb> a(cgu $$0) {
-      il<clb> $$1 = il.a($$0.b(), clb.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         clb $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            if ($$3.d().t()) {
-               $$1.set($$2, new clb($$3.d().s()));
-            } else if ($$3.u() && deh.c($$3) > 0) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public coj<?> aq_() {
-      return coj.k;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   private static agh<cno> a(String $$0) {
+      return agh.a(jz.aG, new agi($$0));
    }
 }

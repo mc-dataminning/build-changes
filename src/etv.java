@@ -1,3 +1,4 @@
-public interface etv {
-   int getColor(clb var1, int var2);
+import org.joml.Vector3f;
+
+public record etv(float a, Vector3f b, ett.a c) {
 }

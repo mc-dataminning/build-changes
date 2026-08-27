@@ -1,46 +1,94 @@
-public class fgw<T extends bki> extends fhl<T> {
-   private final fkb a;
-   private final fkb b;
-   private final fkb f;
-   private final fkb g;
-   private final fkb h;
-   private final fkb i;
-   private static final int j = 6;
+import java.util.Arrays;
 
-   public fgw(fkb $$0) {
+public class fgw<T extends bkq> extends fhy<T> {
+   private final fko a;
+   private final fko[] b;
+   private final fko f;
+
+   public fgw(fko $$0) {
       this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+      this.f = $$0.b("head");
+      this.b = new fko[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fkh a(fkf $$0) {
-      fkj $$1 = new fkj();
-      fkk $$2 = $$1.a();
-      $$2.a("head", fkg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fkd.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fkg.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fkd.a(0.0F, 6.0F, 0.0F));
-      fkg $$3 = fkg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fkd.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fkd.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fkd.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fkd.a(2.0F, 18.0F, -4.0F));
-      return fkh.a($$1, 64, 32);
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      $$1.a("head", fkt.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkq.a);
+      float $$2 = 0.0F;
+      fkt $$3 = fkt.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = atm.b($$2) * 9.0F;
+         float $$6 = -2.0F + atm.b((float)($$4 * 2) * 0.25F);
+         float $$7 = atm.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fkq.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = atm.b($$2) * 7.0F;
+         float $$10 = 2.0F + atm.b((float)($$8 * 2) * 0.25F);
+         float $$11 = atm.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fkq.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = atm.b($$2) * 5.0F;
+         float $$14 = 11.0F + atm.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = atm.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fkq.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fku.a($$0, 64, 32);
    }
 
    @Override
-   public fkb a() {
+   public fko a() {
       return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = ati.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ati.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ati.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ati.b($$1 * 0.6662F) * 1.4F * $$2;
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + atm.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = atm.b($$6) * 9.0F;
+         this.b[$$7].d = atm.a($$6) * 9.0F;
+         $$6++;
+      }
+
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + atm.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = atm.b($$6) * 7.0F;
+         this.b[$$8].d = atm.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + atm.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = atm.b($$6) * 5.0F;
+         this.b[$$9].d = atm.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

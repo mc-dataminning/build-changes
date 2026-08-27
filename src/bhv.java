@@ -1,40 +1,54 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public abstract class bhv {
-   private static final Codec<Either<Integer, bhv>> a = Codec.either(Codec.INT, jy.N.q().dispatch(bhv::c, bhw::codec));
-   public static final Codec<bhv> c = a.xmap(
-      $$0 -> (bhv)$$0.map(bhs::a, $$0x -> $$0x), $$0 -> $$0.c() == bhw.a ? Either.left(((bhs)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bhv> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bhv> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bhv> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
-   }
-
-   public static <T extends bhv> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return asq.a(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
+public class bhv extends bic {
+   public static final Codec<bhv> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bic.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bhv::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0),
+         Function.identity()
       );
+   private final bic b;
+   private final int f;
+   private final int g;
+
+   public static bhv a(bic $$0, int $$1, int $$2) {
+      return new bhv($$0, $$1, $$2);
    }
 
-   public abstract int a(ato var1);
+   public bhv(bic $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-   public abstract int a();
+   @Override
+   public int a(ats $$0) {
+      return atm.a(this.b.a($$0), this.f, this.g);
+   }
 
-   public abstract int b();
+   @Override
+   public int a() {
+      return Math.max(this.f, this.b.a());
+   }
 
-   public abstract bhw<?> c();
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
+   }
+
+   @Override
+   public bid<?> c() {
+      return bid.d;
+   }
 }

@@ -1,353 +1,147 @@
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.stream.Stream;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
-public final class fkb {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<fkb.a> m;
-   private final Map<String, fkb> n;
-   private fkd o = fkd.a;
+public class fkb<T extends ccy> extends fhy<T> {
+   private static final float o = 13.0F;
+   private static final float p = 1.0F;
+   private final fko q;
+   protected final fko a;
+   protected final fko b;
+   protected final fko f;
+   protected final fko g;
+   protected final fko h;
+   protected final fko i;
+   protected final fko j;
+   protected final fko k;
+   protected final fko l;
+   protected final fko m;
+   protected final fko n;
+   private final List<fko> r;
+   private final List<fko> s;
+   private final List<fko> t;
+   private final List<fko> u;
 
-   public fkb(List<fkb.a> $$0, Map<String, fkb> $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   public fkb(fko $$0) {
+      super(frc::e);
+      this.q = $$0;
+      this.a = $$0.b("bone");
+      this.b = this.a.b("body");
+      this.f = this.b.b("head");
+      this.m = this.a.b("right_leg");
+      this.i = this.a.b("left_leg");
+      this.l = this.b.b("right_arm");
+      this.j = this.b.b("left_arm");
+      this.g = this.f.b("right_tendril");
+      this.h = this.f.b("left_tendril");
+      this.n = this.b.b("right_ribcage");
+      this.k = this.b.b("left_ribcage");
+      this.r = ImmutableList.of(this.h, this.g);
+      this.s = ImmutableList.of(this.b);
+      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
+      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
    }
 
-   public fkd a() {
-      return fkd.a(this.b, this.c, this.d, this.e, this.f, this.g);
+   public static fku b() {
+      fkw $$0 = new fkw();
+      fkx $$1 = $$0.a();
+      fkx $$2 = $$1.a("bone", fkt.c(), fkq.a(0.0F, 24.0F, 0.0F));
+      fkx $$3 = $$2.a("body", fkt.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), fkq.a(0.0F, -21.0F, 0.0F));
+      $$3.a("right_ribcage", fkt.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), fkq.a(-7.0F, -2.0F, -4.0F));
+      $$3.a("left_ribcage", fkt.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), fkq.a(7.0F, -2.0F, -4.0F));
+      fkx $$4 = $$3.a("head", fkt.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), fkq.a(0.0F, -13.0F, 0.0F));
+      $$4.a("right_tendril", fkt.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fkq.a(-8.0F, -12.0F, 0.0F));
+      $$4.a("left_tendril", fkt.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fkq.a(8.0F, -12.0F, 0.0F));
+      $$3.a("right_arm", fkt.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fkq.a(-13.0F, -13.0F, 1.0F));
+      $$3.a("left_arm", fkt.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fkq.a(13.0F, -13.0F, 1.0F));
+      $$2.a("right_leg", fkt.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fkq.a(-5.9F, -13.0F, 0.0F));
+      $$2.a("left_leg", fkt.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fkq.a(5.9F, -13.0F, 0.0F));
+      return fku.a($$0, 128, 128);
    }
 
-   public fkd b() {
-      return this.o;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fko::c);
+      float $$6 = $$3 - (float)$$0.ah;
+      this.a($$4, $$5);
+      this.b($$1, $$2);
+      this.a($$3);
+      this.a($$0, $$3, $$6);
+      this.a($$0.bT, eub.e, $$3);
+      this.a($$0.bU, eub.f, $$3);
+      this.a($$0.e, eub.b, $$3);
+      this.a($$0.d, eub.a, $$3);
+      this.a($$0.b, eub.c, $$3);
+      this.a($$0.c, eub.d, $$3);
    }
 
-   public void a(fkd $$0) {
-      this.o = $$0;
+   private void a(float $$0, float $$1) {
+      this.f.e = $$1 * (float) (Math.PI / 180.0);
+      this.f.f = $$0 * (float) (Math.PI / 180.0);
    }
 
-   public void c() {
-      this.b(this.o);
+   private void a(float $$0) {
+      float $$1 = $$0 * 0.1F;
+      float $$2 = atm.b($$1);
+      float $$3 = atm.a($$1);
+      this.f.g += 0.06F * $$2;
+      this.f.e += 0.06F * $$3;
+      this.b.g += 0.025F * $$3;
+      this.b.e += 0.025F * $$2;
    }
 
-   public void b(fkd $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = 1.0F;
-      this.i = 1.0F;
-      this.j = 1.0F;
+   private void b(float $$0, float $$1) {
+      float $$2 = Math.min(0.5F, 3.0F * $$1);
+      float $$3 = $$0 * 0.8662F;
+      float $$4 = atm.b($$3);
+      float $$5 = atm.a($$3);
+      float $$6 = Math.min(0.35F, $$2);
+      this.f.g += 0.3F * $$5 * $$2;
+      this.f.e = this.f.e + 1.2F * atm.b($$3 + (float) (Math.PI / 2)) * $$6;
+      this.b.g = 0.1F * $$5 * $$2;
+      this.b.e = 1.0F * $$4 * $$6;
+      this.i.e = 1.0F * $$4 * $$2;
+      this.m.e = 1.0F * atm.b($$3 + (float) Math.PI) * $$2;
+      this.j.e = -(0.8F * $$4 * $$2);
+      this.j.g = 0.0F;
+      this.l.e = -(0.8F * $$5 * $$2);
+      this.l.g = 0.0F;
+      this.g();
    }
 
-   public void a(fkb $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
+   private void g() {
+      this.j.f = 0.0F;
+      this.j.d = 1.0F;
+      this.j.b = 13.0F;
+      this.j.c = -13.0F;
+      this.l.f = 0.0F;
+      this.l.d = 1.0F;
+      this.l.b = -13.0F;
+      this.l.c = -13.0F;
    }
 
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
+   private void a(T $$0, float $$1, float $$2) {
+      float $$3 = $$0.E($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
+      this.h.e = $$3;
+      this.g.e = -$$3;
    }
 
-   public fkb b(String $$0) {
-      fkb $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
-      } else {
-         return $$1;
-      }
+   @Override
+   public fko a() {
+      return this.q;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public List<fko> c() {
+      return this.r;
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public List<fko> d() {
+      return this.s;
    }
 
-   public void a(enk $$0, eno $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
+   public List<fko> e() {
+      return this.t;
    }
 
-   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            for (fkb $$8 : this.n.values()) {
-               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            $$0.b();
-         }
-      }
-   }
-
-   public void a(enk $$0, fkb.d $$1) {
-      this.a($$0, $$1, "");
-   }
-
-   private void a(enk $$0, fkb.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         enk.a $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
-      }
-   }
-
-   public void a(enk $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
-   }
-
-   private void a(enk.a $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      for (fkb.a $$8 : this.m) {
-         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   public fkb.a a(ato $$0) {
-      return this.m.get($$0.a(this.m.size()));
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<fkb> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(fkb::e));
-   }
-
-   public static class a {
-      private final fkb.b[] g;
-      public final float a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<hx> $$14
-      ) {
-         this.a = $$2;
-         this.b = $$3;
-         this.c = $$4;
-         this.d = $$2 + $$5;
-         this.e = $$3 + $$6;
-         this.f = $$4 + $$7;
-         this.g = new fkb.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         fkb.c $$19 = new fkb.c($$2, $$3, $$4, 0.0F, 0.0F);
-         fkb.c $$20 = new fkb.c($$15, $$3, $$4, 0.0F, 8.0F);
-         fkb.c $$21 = new fkb.c($$15, $$16, $$4, 8.0F, 8.0F);
-         fkb.c $$22 = new fkb.c($$2, $$16, $$4, 8.0F, 0.0F);
-         fkb.c $$23 = new fkb.c($$2, $$3, $$17, 0.0F, 0.0F);
-         fkb.c $$24 = new fkb.c($$15, $$3, $$17, 0.0F, 8.0F);
-         fkb.c $$25 = new fkb.c($$15, $$16, $$17, 8.0F, 8.0F);
-         fkb.c $$26 = new fkb.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(hx.a)) {
-            this.g[$$36++] = new fkb.b(new fkb.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, hx.a);
-         }
-
-         if ($$14.contains(hx.b)) {
-            this.g[$$36++] = new fkb.b(new fkb.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, hx.b);
-         }
-
-         if ($$14.contains(hx.e)) {
-            this.g[$$36++] = new fkb.b(new fkb.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, hx.e);
-         }
-
-         if ($$14.contains(hx.c)) {
-            this.g[$$36++] = new fkb.b(new fkb.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, hx.c);
-         }
-
-         if ($$14.contains(hx.f)) {
-            this.g[$$36++] = new fkb.b(new fkb.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, hx.f);
-         }
-
-         if ($$14.contains(hx.d)) {
-            this.g[$$36] = new fkb.b(new fkb.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, hx.d);
-         }
-      }
-
-      public void a(enk.a $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         Matrix4f $$8 = $$0.a();
-         Matrix3f $$9 = $$0.b();
-
-         for (fkb.b $$10 : this.g) {
-            Vector3f $$11 = $$9.transform(new Vector3f($$10.b));
-            float $$12 = $$11.x();
-            float $$13 = $$11.y();
-            float $$14 = $$11.z();
-
-            for (fkb.c $$15 : $$10.a) {
-               float $$16 = $$15.a.x() / 16.0F;
-               float $$17 = $$15.a.y() / 16.0F;
-               float $$18 = $$15.a.z() / 16.0F;
-               Vector4f $$19 = $$8.transform(new Vector4f($$16, $$17, $$18, 1.0F));
-               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
-            }
-         }
-      }
-   }
-
-   static class b {
-      public final fkb.c[] a;
-      public final Vector3f b;
-
-      public b(fkb.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, hx $$8) {
-         this.a = $$0;
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               fkb.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         this.b = $$8.m();
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   static class c {
-      public final Vector3f a;
-      public final float b;
-      public final float c;
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public fkb.c a(float $$0, float $$1) {
-         return new fkb.c(this.a, $$0, $$1);
-      }
-
-      public c(Vector3f $$0, float $$1, float $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(enk.a var1, String var2, int var3, fkb.a var4);
+   public List<fko> f() {
+      return this.u;
    }
 }

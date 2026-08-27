@@ -1,45 +1,24 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dkx<T extends dkn> implements dkw<T> {
-   private final dkp<T> a;
-   private final dks<T> b;
+public class dkx<T> {
+   private final crh a;
+   private final List<T> b;
 
-   public dkx(dkp<T> $$0, dks<T> $$1) {
+   public dkx(crh $$0, List<T> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   public crh a() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public <U extends T> void a(dku<T, U> $$0, arx<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(ejd $$0, Consumer<T> $$1) {
-      this.b.b($$0, arx.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(dku<T, U> $$0, ejd $$1, arx<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

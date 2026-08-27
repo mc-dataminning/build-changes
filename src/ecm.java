@@ -1,117 +1,140 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public abstract class ecm extends ece {
-   @Override
-   public ecf d() {
-      return ech.b;
+public class ecm extends ecg<ecm.a> {
+   protected ecm(djs $$0) {
+      super(csj.a, $$0, new ecm.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public ecf e() {
-      return ech.c;
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   @Override
-   public ckw a() {
-      return cle.pL;
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = iu.e($$0);
+      int $$3 = iu.c($$2);
+      ecm.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(iu.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         djk $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = ht.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   @Override
-   public void a(crs $$0, ht $$1, ecg $$2, ato $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqn.zV, aqo.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+               $$2 = iu.a($$2, hx.b);
+            }
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(js.ag, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+
+         return $$6.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
-   @Nullable
    @Override
-   public jq h() {
-      return js.m;
-   }
-
-   @Override
-   protected boolean a(crs $$0) {
-      return $$0.X().b(cro.U);
-   }
-
-   @Override
-   protected void a(crt $$0, ht $$1, dgw $$2) {
-      der $$3 = $$2.t() ? $$0.c_($$1) : null;
-      cut.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(crv $$0) {
-      return 4;
-   }
-
-   @Override
-   public dgw b(ecg $$0) {
-      return cuv.G.o().a(czi.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(ecf $$0) {
-      return $$0 == ech.c || $$0 == ech.b;
-   }
-
-   @Override
-   public int c(crv $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(crv $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(ecg $$0, cqy $$1, ht $$2, ecf $$3, hx $$4) {
-      return $$4 == hx.a && !$$3.a(arh.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<aqm> j() {
-      return Optional.of(aqn.cB);
-   }
-
-   public static class a extends ecm {
-      @Override
-      protected void a(dgx.a<ecf, ecg> $$0) {
-         super.a($$0);
-         $$0.a(b);
+   protected void h(long $$0) {
+      int $$1 = iu.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      @Override
-      public int d(ecg $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ecg $$0) {
-         return false;
+      long $$2 = iu.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
       }
    }
 
-   public static class b extends ecm {
-      @Override
-      public int d(ecg $$0) {
-         return 8;
+   @Override
+   protected void i(long $$0) {
+      long $$1 = iu.f($$0);
+      int $$2 = iu.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iu.a($$3, hx.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected djk g(long $$0) {
+      djk $$1 = (djk)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(iu.f($$0));
+         if ($$2 != this.d.b && iu.c($$0) < $$2) {
+            long $$3 = iu.a($$0, hx.b);
+
+            djk $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = iu.a($$3, hx.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new djk(15) : new djk();
+         }
+      }
+   }
+
+   private static djk a(djk $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new djk($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = iu.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || iu.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends ecd<ecm.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<djk> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      @Override
-      public boolean c(ecg $$0) {
-         return true;
+      public ecm.a a() {
+         return new ecm.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

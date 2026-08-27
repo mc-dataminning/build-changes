@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class tk {
    private final AtomicInteger a = new AtomicInteger();
-   private final atq b;
+   private final atu b;
 
-   public tk(atq $$0) {
+   public tk(atu $$0) {
       this.b = $$0;
    }
 

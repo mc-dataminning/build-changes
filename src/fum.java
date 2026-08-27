@@ -1,19 +1,45 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class fum extends fwq<bxq, fgg<bxq>> {
-   private static final Map<bxq.d, agg> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (bxq.d $$1 : bxq.d.values()) {
-         $$0.put($$1, new agg(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class fum implements fud.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final etd c;
+   private Collection<ht> d = Lists.newArrayList();
 
-   public fum(fvk.a $$0) {
-      super($$0, new fgg<>($$0.a(fka.e)), 0.5F);
+   public fum(etd $$0) {
+      this.c = $$0;
    }
 
-   public agg a(bxq $$0) {
-      return a.get($$0.ge());
+   public void a(Collection<ht> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public void a(enw $$0, fqu $$1, double $$2, double $$3, double $$4) {
+      ht $$5 = this.b().c();
+
+      for (ht $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+   }
+
+   private static void a(enw $$0, fqu $$1, ht $$2) {
+      fud.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(enw $$0, fqu $$1, String $$2, ht $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      fud.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private eso b() {
+      return this.c.j.m();
    }
 }

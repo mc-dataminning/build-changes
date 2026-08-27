@@ -28,7 +28,7 @@ public class ft implements ArgumentType<fo> {
       return new ft($$0);
    }
 
-   public static eji a(CommandContext<du> $$0, String $$1) {
+   public static eju a(CommandContext<du> $$0, String $$1) {
       return ((fo)$$0.getArgument($$1, fo.class)).a((du)$$0.getSource());
    }
 

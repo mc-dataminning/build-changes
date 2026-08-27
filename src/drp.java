@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drp implements drn {
+public class drp {
    public static final Codec<drp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dto.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               dto.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
+      $$0 -> $$0.group(dwl.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, drp::new)
    );
-   public final dto b;
-   public final dto c;
-   public final int d;
+   public final ib<dwl> b;
+   public final float c;
 
-   public drp(dto $$0, dto $$1, int $$2) {
+   public drp(ib<dwl> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public boolean a(csu $$0, djf $$1, ats $$2, ht $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

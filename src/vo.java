@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public class vo {
    public static final vo a = new vo(null, null, null, null, null, null, null, null, null, null);
-   public static final agg b = new agg("minecraft", "default");
+   public static final agi b = new agi("minecraft", "default");
    @Nullable
    final vq c;
    @Nullable
@@ -27,7 +27,7 @@ public class vo {
    @Nullable
    final String k;
    @Nullable
-   final agg l;
+   final agi l;
 
    private static vo a(
       Optional<vq> $$0,
@@ -39,7 +39,7 @@ public class vo {
       Optional<up> $$6,
       Optional<ux> $$7,
       Optional<String> $$8,
-      Optional<agg> $$9
+      Optional<agi> $$9
    ) {
       vo $$10 = new vo(
          $$0.orElse(null),
@@ -66,7 +66,7 @@ public class vo {
       @Nullable up $$6,
       @Nullable ux $$7,
       @Nullable String $$8,
-      @Nullable agg $$9
+      @Nullable agi $$9
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -124,7 +124,7 @@ public class vo {
       return this.k;
    }
 
-   public agg k() {
+   public agi k() {
       return this.l != null ? this.l : b;
    }
 
@@ -176,7 +176,7 @@ public class vo {
       return Objects.equals(this.k, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, $$0, this.l), this.k, $$0);
    }
 
-   public vo a(@Nullable agg $$0) {
+   public vo a(@Nullable agi $$0) {
       return Objects.equals(this.l, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, $$0), this.l, $$0);
    }
 
@@ -384,16 +384,16 @@ public class vo {
    public static class b {
       public static final MapCodec<vo> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  asq.a(vq.a, "color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-                  asq.a(Codec.BOOL, "bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
-                  asq.a(Codec.BOOL, "italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-                  asq.a(Codec.BOOL, "underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
-                  asq.a(Codec.BOOL, "strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-                  asq.a(Codec.BOOL, "obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
-                  asq.a(up.a, "clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-                  asq.a(ux.a, "hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
-                  asq.a(Codec.STRING, "insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
-                  asq.a(agg.a, "font").forGetter($$0x -> Optional.ofNullable($$0x.l))
+                  asu.a(vq.a, "color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  asu.a(Codec.BOOL, "bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+                  asu.a(Codec.BOOL, "italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+                  asu.a(Codec.BOOL, "underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
+                  asu.a(Codec.BOOL, "strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+                  asu.a(Codec.BOOL, "obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
+                  asu.a(up.a, "clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
+                  asu.a(ux.a, "hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
+                  asu.a(Codec.STRING, "insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
+                  asu.a(agi.a, "font").forGetter($$0x -> Optional.ofNullable($$0x.l))
                )
                .apply($$0, vo::a)
       );

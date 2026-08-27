@@ -1,20 +1,15 @@
-public class fwm extends fwq<byl, fhv<byl>> {
-   private static final agg a = new agg("textures/entity/llama/creamy.png");
-   private static final agg i = new agg("textures/entity/llama/white.png");
-   private static final agg j = new agg("textures/entity/llama/brown.png");
-   private static final agg k = new agg("textures/entity/llama/gray.png");
+public class fwm extends fxd<cce, fhz<cce>> {
+   private static final agi a = new agi("textures/entity/hoglin/hoglin.png");
 
-   public fwm(fvk.a $$0, fjz $$1) {
-      super($$0, new fhv<>($$0.a($$1)), 0.7F);
-      this.a(new fzm(this, $$0.f()));
+   public fwm(fvx.a $$0) {
+      super($$0, new fhz<>($$0.a(fkn.ah)), 0.7F);
    }
 
-   public agg a(byl $$0) {
-      return switch ($$0.gq()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public agi a(cce $$0) {
+      return a;
+   }
+
+   protected boolean b(cce $$0) {
+      return super.a($$0) || $$0.A();
    }
 }

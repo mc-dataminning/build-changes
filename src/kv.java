@@ -21,7 +21,7 @@ public class kv implements kf {
    private static <T> JsonElement a(io<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof hw) {
-         agg $$2 = ((hw)$$0).a();
+         agi $$2 = ((hw)$$0).a();
          $$1.addProperty("default", $$2.toString());
       }
 

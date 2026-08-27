@@ -1,181 +1,28 @@
-public final class arc {
-   public static final arr<cut> a = a("wool");
-   public static final arr<cut> b = a("planks");
-   public static final arr<cut> c = a("stone_bricks");
-   public static final arr<cut> d = a("wooden_buttons");
-   public static final arr<cut> e = a("stone_buttons");
-   public static final arr<cut> f = a("buttons");
-   public static final arr<cut> g = a("wool_carpets");
-   public static final arr<cut> h = a("wooden_doors");
-   public static final arr<cut> i = a("wooden_stairs");
-   public static final arr<cut> j = a("wooden_slabs");
-   public static final arr<cut> k = a("wooden_fences");
-   public static final arr<cut> l = a("pressure_plates");
-   public static final arr<cut> m = a("wooden_pressure_plates");
-   public static final arr<cut> n = a("stone_pressure_plates");
-   public static final arr<cut> o = a("wooden_trapdoors");
-   public static final arr<cut> p = a("doors");
-   public static final arr<cut> q = a("saplings");
-   public static final arr<cut> r = a("logs_that_burn");
-   public static final arr<cut> s = a("overworld_natural_logs");
-   public static final arr<cut> t = a("logs");
-   public static final arr<cut> u = a("dark_oak_logs");
-   public static final arr<cut> v = a("oak_logs");
-   public static final arr<cut> w = a("birch_logs");
-   public static final arr<cut> x = a("acacia_logs");
-   public static final arr<cut> y = a("cherry_logs");
-   public static final arr<cut> z = a("jungle_logs");
-   public static final arr<cut> A = a("spruce_logs");
-   public static final arr<cut> B = a("mangrove_logs");
-   public static final arr<cut> C = a("crimson_stems");
-   public static final arr<cut> D = a("warped_stems");
-   public static final arr<cut> E = a("bamboo_blocks");
-   public static final arr<cut> F = a("wart_blocks");
-   public static final arr<cut> G = a("banners");
-   public static final arr<cut> H = a("sand");
-   public static final arr<cut> I = a("smelts_to_glass");
-   public static final arr<cut> J = a("stairs");
-   public static final arr<cut> K = a("slabs");
-   public static final arr<cut> L = a("walls");
-   public static final arr<cut> M = a("anvil");
-   public static final arr<cut> N = a("rails");
-   public static final arr<cut> O = a("leaves");
-   public static final arr<cut> P = a("trapdoors");
-   public static final arr<cut> Q = a("small_flowers");
-   public static final arr<cut> R = a("beds");
-   public static final arr<cut> S = a("fences");
-   public static final arr<cut> T = a("tall_flowers");
-   public static final arr<cut> U = a("flowers");
-   public static final arr<cut> V = a("piglin_repellents");
-   public static final arr<cut> W = a("gold_ores");
-   public static final arr<cut> X = a("iron_ores");
-   public static final arr<cut> Y = a("diamond_ores");
-   public static final arr<cut> Z = a("redstone_ores");
-   public static final arr<cut> aa = a("lapis_ores");
-   public static final arr<cut> ab = a("coal_ores");
-   public static final arr<cut> ac = a("emerald_ores");
-   public static final arr<cut> ad = a("copper_ores");
-   public static final arr<cut> ae = a("candles");
-   public static final arr<cut> af = a("dirt");
-   public static final arr<cut> ag = a("terracotta");
-   public static final arr<cut> ah = a("concrete_powder");
-   public static final arr<cut> ai = a("completes_find_tree_tutorial");
-   public static final arr<cut> aj = a("flower_pots");
-   public static final arr<cut> ak = a("enderman_holdable");
-   public static final arr<cut> al = a("ice");
-   public static final arr<cut> am = a("valid_spawn");
-   public static final arr<cut> an = a("impermeable");
-   public static final arr<cut> ao = a("underwater_bonemeals");
-   public static final arr<cut> ap = a("coral_blocks");
-   public static final arr<cut> aq = a("wall_corals");
-   public static final arr<cut> ar = a("coral_plants");
-   public static final arr<cut> as = a("corals");
-   public static final arr<cut> at = a("bamboo_plantable_on");
-   public static final arr<cut> au = a("standing_signs");
-   public static final arr<cut> av = a("wall_signs");
-   public static final arr<cut> aw = a("signs");
-   public static final arr<cut> ax = a("ceiling_hanging_signs");
-   public static final arr<cut> ay = a("wall_hanging_signs");
-   public static final arr<cut> az = a("all_hanging_signs");
-   public static final arr<cut> aA = a("all_signs");
-   public static final arr<cut> aB = a("dragon_immune");
-   public static final arr<cut> aC = a("dragon_transparent");
-   public static final arr<cut> aD = a("wither_immune");
-   public static final arr<cut> aE = a("wither_summon_base_blocks");
-   public static final arr<cut> aF = a("beehives");
-   public static final arr<cut> aG = a("crops");
-   public static final arr<cut> aH = a("bee_growables");
-   public static final arr<cut> aI = a("portals");
-   public static final arr<cut> aJ = a("fire");
-   public static final arr<cut> aK = a("nylium");
-   public static final arr<cut> aL = a("beacon_base_blocks");
-   public static final arr<cut> aM = a("soul_speed_blocks");
-   public static final arr<cut> aN = a("wall_post_override");
-   public static final arr<cut> aO = a("climbable");
-   public static final arr<cut> aP = a("fall_damage_resetting");
-   public static final arr<cut> aQ = a("shulker_boxes");
-   public static final arr<cut> aR = a("hoglin_repellents");
-   public static final arr<cut> aS = a("soul_fire_base_blocks");
-   public static final arr<cut> aT = a("strider_warm_blocks");
-   public static final arr<cut> aU = a("campfires");
-   public static final arr<cut> aV = a("guarded_by_piglins");
-   public static final arr<cut> aW = a("prevent_mob_spawning_inside");
-   public static final arr<cut> aX = a("fence_gates");
-   public static final arr<cut> aY = a("unstable_bottom_center");
-   public static final arr<cut> aZ = a("mushroom_grow_block");
-   public static final arr<cut> ba = a("infiniburn_overworld");
-   public static final arr<cut> bb = a("infiniburn_nether");
-   public static final arr<cut> bc = a("infiniburn_end");
-   public static final arr<cut> bd = a("base_stone_overworld");
-   public static final arr<cut> be = a("stone_ore_replaceables");
-   public static final arr<cut> bf = a("deepslate_ore_replaceables");
-   public static final arr<cut> bg = a("base_stone_nether");
-   public static final arr<cut> bh = a("overworld_carver_replaceables");
-   public static final arr<cut> bi = a("nether_carver_replaceables");
-   public static final arr<cut> bj = a("candle_cakes");
-   public static final arr<cut> bk = a("cauldrons");
-   public static final arr<cut> bl = a("crystal_sound_blocks");
-   public static final arr<cut> bm = a("inside_step_sound_blocks");
-   public static final arr<cut> bn = a("combination_step_sound_blocks");
-   public static final arr<cut> bo = a("camel_sand_step_sound_blocks");
-   public static final arr<cut> bp = a("occludes_vibration_signals");
-   public static final arr<cut> bq = a("dampens_vibrations");
-   public static final arr<cut> br = a("dripstone_replaceable_blocks");
-   public static final arr<cut> bs = a("cave_vines");
-   public static final arr<cut> bt = a("moss_replaceable");
-   public static final arr<cut> bu = a("lush_ground_replaceable");
-   public static final arr<cut> bv = a("azalea_root_replaceable");
-   public static final arr<cut> bw = a("small_dripleaf_placeable");
-   public static final arr<cut> bx = a("big_dripleaf_placeable");
-   public static final arr<cut> by = a("snow");
-   public static final arr<cut> bz = a("mineable/axe");
-   public static final arr<cut> bA = a("mineable/hoe");
-   public static final arr<cut> bB = a("mineable/pickaxe");
-   public static final arr<cut> bC = a("mineable/shovel");
-   public static final arr<cut> bD = a("sword_efficient");
-   public static final arr<cut> bE = a("needs_diamond_tool");
-   public static final arr<cut> bF = a("needs_iron_tool");
-   public static final arr<cut> bG = a("needs_stone_tool");
-   public static final arr<cut> bH = a("features_cannot_replace");
-   public static final arr<cut> bI = a("lava_pool_stone_cannot_replace");
-   public static final arr<cut> bJ = a("geode_invalid_blocks");
-   public static final arr<cut> bK = a("frog_prefer_jump_to");
-   public static final arr<cut> bL = a("sculk_replaceable");
-   public static final arr<cut> bM = a("sculk_replaceable_world_gen");
-   public static final arr<cut> bN = a("ancient_city_replaceable");
-   public static final arr<cut> bO = a("vibration_resonators");
-   public static final arr<cut> bP = a("animals_spawnable_on");
-   public static final arr<cut> bQ = a("axolotls_spawnable_on");
-   public static final arr<cut> bR = a("goats_spawnable_on");
-   public static final arr<cut> bS = a("mooshrooms_spawnable_on");
-   public static final arr<cut> bT = a("parrots_spawnable_on");
-   public static final arr<cut> bU = a("polar_bears_spawnable_on_alternate");
-   public static final arr<cut> bV = a("rabbits_spawnable_on");
-   public static final arr<cut> bW = a("foxes_spawnable_on");
-   public static final arr<cut> bX = a("wolves_spawnable_on");
-   public static final arr<cut> bY = a("frogs_spawnable_on");
-   public static final arr<cut> bZ = a("azalea_grows_on");
-   public static final arr<cut> ca = a("convertable_to_mud");
-   public static final arr<cut> cb = a("mangrove_logs_can_grow_through");
-   public static final arr<cut> cc = a("mangrove_roots_can_grow_through");
-   public static final arr<cut> cd = a("dead_bush_may_place_on");
-   public static final arr<cut> ce = a("snaps_goat_horn");
-   public static final arr<cut> cf = a("replaceable_by_trees");
-   public static final arr<cut> cg = a("snow_layer_cannot_survive_on");
-   public static final arr<cut> ch = a("snow_layer_can_survive_on");
-   public static final arr<cut> ci = a("invalid_spawn_inside");
-   public static final arr<cut> cj = a("sniffer_diggable_block");
-   public static final arr<cut> ck = a("sniffer_egg_hatch_boost");
-   public static final arr<cut> cl = a("trail_ruins_replaceable");
-   public static final arr<cut> cm = a("replaceable");
-   public static final arr<cut> cn = a("enchantment_power_provider");
-   public static final arr<cut> co = a("enchantment_power_transmitter");
-   public static final arr<cut> cp = a("maintains_farmland");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private arc() {
+public class arc {
+   protected final Object2IntMap<aqy<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public arc() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static arr<cut> a(String $$0) {
-      return arr.a(jz.e, new agg($$0));
+   public void b(cdu $$0, aqy<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cdu $$0, aqy<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(ara<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(aqy<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

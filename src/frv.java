@@ -1,61 +1,90 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-public class frv implements fru {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public class frv {
+   public float[] a;
+   public final int b;
 
-   public frv(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public frv(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public Predicate<dgw> getPredicate(dgx<cut, dgw> $$0) {
-      dhz<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
+   }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<frv> {
+      private static final int a = 0;
+
+      public frv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new frv($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = atc.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            Predicate<dgw> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<dgw>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-            }
-
-            return $$3 ? $$5.negate() : $$5;
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
-   }
 
-   private Predicate<dgw> a(dgx<cut, dgw> $$0, dhz<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = atc.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = atc.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

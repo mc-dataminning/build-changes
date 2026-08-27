@@ -1,5 +1,6 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -7,112 +8,123 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ajd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.playsound.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      RequiredArgumentBuilder<du, agg> $$1 = dv.a("sound", eu.a()).suggests(hj.c);
-
-      for (aqo $$2 : aqo.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
-   }
-
-   private static LiteralArgumentBuilder<du> a(aqo $$0) {
-      return (LiteralArgumentBuilder<du>)dv.a($$0.a())
-         .then(
-            ((RequiredArgumentBuilder)dv.a("targets", eg.d())
-                  .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ((du)$$1.getSource()).e(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)dv.a("pos", ft.a())
-                        .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ft.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
-                     .then(
-                        ((RequiredArgumentBuilder)dv.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (du)$$1.getSource(),
-                                       eg.f($$1, "targets"),
-                                       eu.e($$1, "sound"),
-                                       $$0,
-                                       ft.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
-                                    )
-                              ))
-                           .then(
-                              ((RequiredArgumentBuilder)dv.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (du)$$1.getSource(),
-                                             eg.f($$1, "targets"),
-                                             eu.e($$1, "sound"),
-                                             $$0,
-                                             ft.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          $$1 -> a(
-                                                (du)$$1.getSource(),
-                                                eg.f($$1, "targets"),
-                                                eu.e($$1, "sound"),
-                                                $$0,
-                                                ft.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
-                                       )
-                                 )
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("particle").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("name", eq.a($$1))
+                     .executes(
+                        $$0x -> a(
+                              (du)$$0x.getSource(), eq.a($$0x, "name"), ((du)$$0x.getSource()).e(), eju.b, 0.0F, 0, false, ((du)$$0x.getSource()).m().ae().t()
                            )
-                     )
-               )
-         );
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", ft.a())
+                           .executes(
+                              $$0x -> a((du)$$0x.getSource(), eq.a($$0x, "name"), ft.a($$0x, "pos"), eju.b, 0.0F, 0, false, ((du)$$0x.getSource()).m().ae().t())
+                           ))
+                        .then(
+                           dv.a("delta", ft.a(false))
+                              .then(
+                                 dv.a("speed", FloatArgumentType.floatArg(0.0F))
+                                    .then(
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("count", IntegerArgumentType.integer(0))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (du)$$0x.getSource(),
+                                                         eq.a($$0x, "name"),
+                                                         ft.a($$0x, "pos"),
+                                                         ft.a($$0x, "delta"),
+                                                         FloatArgumentType.getFloat($$0x, "speed"),
+                                                         IntegerArgumentType.getInteger($$0x, "count"),
+                                                         false,
+                                                         ((du)$$0x.getSource()).m().ae().t()
+                                                      )
+                                                ))
+                                             .then(
+                                                ((LiteralArgumentBuilder)dv.a("force")
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eq.a($$0x, "name"),
+                                                               ft.a($$0x, "pos"),
+                                                               ft.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               true,
+                                                               ((du)$$0x.getSource()).m().ae().t()
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      dv.a("viewers", eg.d())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (du)$$0x.getSource(),
+                                                                  eq.a($$0x, "name"),
+                                                                  ft.a($$0x, "pos"),
+                                                                  ft.a($$0x, "delta"),
+                                                                  FloatArgumentType.getFloat($$0x, "speed"),
+                                                                  IntegerArgumentType.getInteger($$0x, "count"),
+                                                                  true,
+                                                                  eg.f($$0x, "viewers")
+                                                               )
+                                                         )
+                                                   )
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)dv.a("normal")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            eq.a($$0x, "name"),
+                                                            ft.a($$0x, "pos"),
+                                                            ft.a($$0x, "delta"),
+                                                            FloatArgumentType.getFloat($$0x, "speed"),
+                                                            IntegerArgumentType.getInteger($$0x, "count"),
+                                                            false,
+                                                            ((du)$$0x.getSource()).m().ae().t()
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dv.a("viewers", eg.d())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eq.a($$0x, "name"),
+                                                               ft.a($$0x, "pos"),
+                                                               ft.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               false,
+                                                               eg.f($$0x, "viewers")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static int a(du $$0, Collection<amb> $$1, agg $$2, aqo $$3, eji $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      ib<aqm> $$8 = ib.a(aqm.a($$2));
-      double $$9 = (double)ati.k($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.f().E_().g();
+   private static int a(du $$0, jq $$1, eju $$2, eju $$3, float $$4, int $$5, boolean $$6, Collection<amf> $$7) throws CommandSyntaxException {
+      int $$8 = 0;
 
-      for (amb $$12 : $$1) {
-         double $$13 = $$4.c - $$12.dq();
-         double $$14 = $$4.d - $$12.ds();
-         double $$15 = $$4.e - $$12.dw();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         eji $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
-            }
-
-            double $$19 = Math.sqrt($$16);
-            $$17 = new eji($$12.dq() + $$13 / $$19 * 2.0, $$12.ds() + $$14 / $$19 * 2.0, $$12.dw() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
+      for (amf $$9 : $$7) {
+         if ($$0.f().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
+            $$8++;
          }
-
-         $$12.c.b(new abu($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
       }
 
-      if ($$10 == 0) {
+      if ($$8 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> ur.a("commands.playsound.success.single", ur.a($$2), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> ur.a("commands.playsound.success.multiple", ur.a($$2), $$1.size()), true);
-         }
-
-         return $$10;
+         $$0.a(() -> ur.a("commands.particle.success", jy.k.b($$1.b()).toString()), true);
+         return $$8;
       }
    }
 }

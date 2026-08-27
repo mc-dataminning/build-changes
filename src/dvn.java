@@ -1,26 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class dvn extends dwb {
-   private static final dvn c = new dvn();
-   public static Codec<dvn> a = Codec.unit(() -> c);
+public class dvn extends dvo {
+   public static final dvn a = new dvn(dnl.a(0));
+   public static final Codec<dvn> b = asu.e(dnl.a, dnl.a.fieldOf("value").codec()).xmap(dvn::new, dvn::b);
+   private final dnl d;
 
-   private dvn() {
+   public static dvn a(dnl $$0) {
+      return new dvn($$0);
    }
 
-   public static dvn a() {
-      return c;
+   private dvn(dnl $$0) {
+      this.d = $$0;
+   }
+
+   public dnl b() {
+      return this.d;
    }
 
    @Override
-   protected boolean a(dwa $$0, ato $$1, ht $$2) {
-      dvz $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ib<csq> $$4 = $$0.d().s($$2);
-      return $$0.f().a($$4).a($$3);
+   public int a(ats $$0, dno $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public dwd<?> b() {
-      return dwd.e;
+   public dvp<?> a() {
+      return dvp.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

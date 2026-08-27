@@ -1,29 +1,30 @@
-public class ckd extends ckw {
-   public ckd(ckw.a $$0) {
+public class ckd extends cle implements ckk {
+   public ckd(cle.a $$0) {
       super($$0);
+      cxf.a(this, cit.a);
+   }
+
+   public static boolean d(clj $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public boolean i(clb $$0) {
-      return true;
+   public boolean a(clj $$0, clj $$1) {
+      return $$1.a(clm.vI);
    }
 
    @Override
-   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
-      clb $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.hD, aqo.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ceo $$4 = new ceo($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
+   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
 
-      $$1.b(aqx.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
+   @Override
+   public aqq ar_() {
+      return aqr.ae;
+   }
 
-      return bir.a($$3, $$0.x_());
+   @Override
+   public bkv g() {
+      return bkv.e;
    }
 }

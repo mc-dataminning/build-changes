@@ -1,195 +1,71 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bkt extends bki implements bkg, blu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final afm<Float> c = afp.a(bkt.class, afo.d);
-   private static final afm<Float> d = afp.a(bkt.class, afo.d);
-   private static final afm<Boolean> e = afp.a(bkt.class, afo.k);
-   private static final String f = "width";
-   private static final String g = "height";
-   private static final String h = "attack";
-   private static final String i = "interaction";
-   private static final String j = "response";
-   @Nullable
-   private bkt.a k;
-   @Nullable
-   private bkt.a l;
+public final class bkt {
+   public static final Predicate<bkq> a = bkq::bx;
+   public static final Predicate<bkq> b = $$0 -> $$0.bx() && $$0 instanceof blg;
+   public static final Predicate<bkq> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<bkq> d = $$0 -> $$0 instanceof biq && $$0.bx();
+   public static final Predicate<bkq> e = $$0 -> !($$0 instanceof cdu) || !$$0.O_() && !((cdu)$$0).f();
+   public static final Predicate<bkq> f = $$0 -> !$$0.O_();
+   public static final Predicate<bkq> g = f.and(bkq::bz);
 
-   public bkt(bkm<?> $$0, crs $$1) {
-      super($$0, $$1);
-      this.af = true;
+   private bkt() {
    }
 
-   @Override
-   protected void b_() {
-      this.an.a(c, 1.0F);
-      this.an.a(d, 1.0F);
-      this.an.a(e, false);
+   public static Predicate<bkq> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   protected void a(rz $$0) {
-      if ($$0.b("width", 99)) {
-         this.a($$0.j("width"));
-      }
-
-      if ($$0.b("height", 99)) {
-         this.b($$0.j("height"));
-      }
-
-      if ($$0.e("attack")) {
-         bkt.a.a.decode(sn.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bkt.a)$$0x.getFirst());
-      } else {
-         this.k = null;
-      }
-
-      if ($$0.e("interaction")) {
-         bkt.a.a.decode(sn.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bkt.a)$$0x.getFirst());
-      } else {
-         this.l = null;
-      }
-
-      this.a($$0.q("response"));
-      this.a(this.ao());
+   public static Predicate<bkq> a(bkq $$0) {
+      ekv $$1 = $$0.cg();
+      ekv.a $$2 = $$1 == null ? ekv.a.a : $$1.l();
+      return (Predicate<bkq>)($$2 == ekv.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bu()) {
+            return false;
+         } else if (!$$0.dN().B || $$3 instanceof cdu && ((cdu)$$3).g()) {
+            ekv $$4 = $$3.cg();
+            ekv.a $$5 = $$4 == null ? ekv.a.a : $$4.l();
+            if ($$5 == ekv.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == ekv.a.d || $$5 == ekv.a.d) && $$6 ? false : $$2 != ekv.a.c && $$5 != ekv.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   @Override
-   protected void b(rz $$0) {
-      $$0.a("width", this.s());
-      $$0.a("height", this.t());
-      if (this.k != null) {
-         bkt.a.a.encodeStart(sn.a, this.k).result().ifPresent($$1 -> $$0.a("attack", $$1));
-      }
-
-      if (this.l != null) {
-         bkt.a.a.encodeStart(sn.a, this.l).result().ifPresent($$1 -> $$0.a("interaction", $$1));
-      }
-
-      $$0.a("response", this.v());
-   }
-
-   @Override
-   public void a(afm<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0) || c.equals($$0)) {
-         this.a(this.ao());
-      }
-   }
-
-   @Override
-   public boolean bq() {
-      return false;
-   }
-
-   @Override
-   public boolean br() {
-      return true;
-   }
-
-   @Override
-   public ecl r_() {
-      return ecl.d;
-   }
-
-   @Override
-   public boolean q_() {
-      return true;
-   }
-
-   @Override
-   public boolean u(bki $$0) {
-      if ($$0 instanceof cdm $$1) {
-         this.k = new bkt.a($$1.cv(), this.dL().V());
-         if ($$1 instanceof amb $$2) {
-            al.g.a($$2, this, $$1.dM().n(), 1.0F, 1.0F, false);
+   public static Predicate<bkq> b(bkq $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.da();
+            if ($$1 == $$0) {
+               return false;
+            }
          }
 
-         return !this.v();
-      } else {
-         return false;
-      }
+         return true;
+      };
    }
 
-   @Override
-   public biq a(cdm $$0, bip $$1) {
-      if (this.dL().B) {
-         return this.v() ? biq.a : biq.b;
-      } else {
-         this.l = new bkt.a($$0.cv(), this.dL().V());
-         return biq.b;
-      }
-   }
+   public static class a implements Predicate<bkq> {
+      private final clj a;
 
-   @Override
-   public void l() {
-   }
-
-   @Nullable
-   @Override
-   public bky T_() {
-      return this.k != null ? this.dL().b(this.k.a()) : null;
-   }
-
-   @Nullable
-   @Override
-   public bky q() {
-      return this.l != null ? this.dL().b(this.l.a()) : null;
-   }
-
-   private void a(float $$0) {
-      this.an.b(c, $$0);
-   }
-
-   private float s() {
-      return this.an.b(c);
-   }
-
-   private void b(float $$0) {
-      this.an.b(d, $$0);
-   }
-
-   private float t() {
-      return this.an.b(d);
-   }
-
-   private void a(boolean $$0) {
-      this.an.b(e, $$0);
-   }
-
-   private boolean v() {
-      return this.an.b(e);
-   }
-
-   private bkj w() {
-      return bkj.b(this.s(), this.t());
-   }
-
-   @Override
-   public bkj a(blk $$0) {
-      return this.w();
-   }
-
-   @Override
-   protected ejd ao() {
-      return this.w().a(this.dj());
-   }
-
-   static record a(UUID b, long c) {
-      public static final Codec<bkt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(iv.a.fieldOf("player").forGetter(bkt.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bkt.a::b)).apply($$0, bkt.a::new)
-      );
-
-      public UUID a() {
-         return this.b;
+      public a(clj $$0) {
+         this.a = $$0;
       }
 
-      public long b() {
-         return this.c;
+      public boolean a(@Nullable bkq $$0) {
+         if (!$$0.bx()) {
+            return false;
+         } else {
+            return !($$0 instanceof blg $$1) ? false : $$1.f(this.a);
+         }
       }
    }
 }

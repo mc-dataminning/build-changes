@@ -1,33 +1,20 @@
-public class fxy extends fwp<cfp> {
-   private final frb f;
+public class fxy extends fwo<car, fjk<car>> {
+   private static final agi a = new agi("textures/entity/skeleton/skeleton.png");
 
-   public fxy(fvk.a $$0) {
-      super($$0, fka.bA);
-      this.f = $$0.c();
+   public fxy(fvx.a $$0) {
+      this($$0, fkn.bh, fkn.bj, fkn.bk);
    }
 
-   protected void a(cfp $$0, float $$1, dgw $$2, enk $$3, fqh $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ati.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public fxy(fvx.a $$0, fkm $$1, fkm $$2, fkm $$3) {
+      super($$0, new fjk<>($$0.a($$1)), 0.5F);
+      this.a(new fzv<>(this, new fjk($$0.a($$2)), new fjk($$0.a($$3)), $$0.g()));
    }
 
-   public static void a(frb $$0, dgw $$1, enk $$2, fqh $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gay.a(gay.a(1.0F), 10);
-      } else {
-         $$6 = gay.d;
-      }
+   public agi a(car $$0) {
+      return a;
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean b(car $$0) {
+      return $$0.gf();
    }
 }

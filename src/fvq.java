@@ -1,27 +1,16 @@
-public class fvq extends fvj<cdz> {
-   private final fwi a;
+public class fvq extends fwl {
+   public static final agi a = new agi("textures/entity/guardian_elder.png");
 
-   public fvq(fvk.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public fvq(fvx.a $$0) {
+      super($$0, 1.2F, fkn.P);
    }
 
-   public void a(cdz $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.s()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.q(), cky.h, $$5, gay.d, $$3, $$4, $$0.dL(), $$0.ah());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(cbe $$0, enw $$1, float $$2) {
+      $$1.b(cax.b, cax.b, cax.b);
    }
 
-   public agg a(cdz $$0) {
-      return gbg.e;
+   @Override
+   public agi a(cbe $$0) {
+      return a;
    }
 }

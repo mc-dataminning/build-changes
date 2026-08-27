@@ -1,151 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bhj<T> implements bgo, bhi<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bhl<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public interface bhj {
+   bhi a();
 
-   public static bhj<Runnable> a(Executor $$0, String $$1) {
-      return new bhj<>(new bhl.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   static <T> bhj.b<T> a(T $$0, int $$1) {
+      return new bhj.b<>($$0, bhi.a($$1));
    }
 
-   public bhj(bhl<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bgm.a.a(this);
-   }
+   public static class a implements bhj {
+      private final bhi a;
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
+      public a(int $$0) {
+         this.a = bhi.a($$0);
+      }
 
-      return true;
-   }
+      public a(bhi $$0) {
+         this.a = $$0;
+      }
 
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
-   }
-
-   @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
-      } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
-         }
+      @Override
+      public bhi a() {
+         return this.a;
       }
    }
 
-   @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
+   public static class b<T> implements bhj {
+      private final T a;
+      private final bhi b;
 
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
-         }
-      }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
+      b(T $$0, bhi $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1;
-   }
+      public T b() {
+         return this.a;
+      }
 
-   public int b() {
-      return this.e.c();
-   }
+      @Override
+      public bhi a() {
+         return this.b;
+      }
 
-   public boolean c() {
-      return this.g() && !this.e.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String bn() {
-      return this.g;
-   }
-
-   @Override
-   public List<bgl> bk() {
-      return ImmutableList.of(bgl.a(this.g + "-queue-size", bgk.c, this::b));
+      public static <E> Codec<bhj.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bhj.b::b), bhi.a.fieldOf("weight").forGetter(bhj.b::a)).apply($$1, bhj.b::new)
+         );
+      }
    }
 }

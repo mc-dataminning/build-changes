@@ -2,25 +2,45 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class avv extends DataFix {
-   public avv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class avv extends DataFix {
+   private final String a;
+
+   public avv(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bat.y);
+      Type<Pair<String, String>> $$1 = DSL.named(bat.y.typeName(), bcb.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
       } else {
-         return $$0;
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bat.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
+                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
+               })
+         );
+         return TypeRewriteRule.seq($$2, $$3);
       }
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(ban.u), $$0 -> $$0.update(DSL.remainderFinder(), avv::a));
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new avv($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

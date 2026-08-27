@@ -1,62 +1,30 @@
-public class fmx extends fow {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   protected fmx(fkw $$0, double $$1, double $$2, double $$3, foq $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+public class fmx {
+   public static final fmx a = new fmx(fmw.b, fmy.createDnsSrvRedirectHandler(), fmt.a());
+   private final fmw b;
+   private final fmy c;
+   private final fmt d;
+
+   @VisibleForTesting
+   fmx(fmw $$0, fmy $$1, fmt $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public fnz b() {
-      return fnz.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      }
-
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
+   public Optional<fmu> a(fmv $$0) {
+      Optional<fmu> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fmv> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
          }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

@@ -1,21 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtv extends dto {
-   public static final Codec<dtv> b = dgw.b.fieldOf("state").xmap(dgv.a::b, cut::o).xmap(dtv::new, $$0 -> $$0.c).codec();
-   private final cut c;
+public record dtv(ig<cva> b, ig<cva> c, dua d, int e, int f, float g) {
+   public static final Codec<dtv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iq.a(jz.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               iq.a(jz.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dua.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dtv::new)
+   );
 
-   public dtv(cut $$0) {
-      this.c = $$0;
+   public ig<cva> a() {
+      return this.b;
    }
 
-   @Override
-   protected dtp<?> a() {
-      return dtp.f;
+   public ig<cva> b() {
+      return this.c;
    }
 
-   @Override
-   public dgw a(ato $$0, ht $$1) {
-      hx.a $$2 = hx.a.a($$0);
-      return this.c.o().a(dbe.i, $$2);
+   public dua c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

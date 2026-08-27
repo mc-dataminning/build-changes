@@ -3,313 +3,396 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
 import java.io.Reader;
 import java.util.List;
 import java.util.Map;
+import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public class fqk implements AutoCloseable {
-   private static final String a = "minecraft:main";
-   private final elw b;
-   private final apd c;
-   private final String d;
-   private final List<fql> e = Lists.newArrayList();
-   private final Map<String, elw> f = Maps.newHashMap();
-   private final List<elw> g = Lists.newArrayList();
-   private Matrix4f h;
-   private int i;
-   private int j;
-   private float k;
-   private float l;
+public class fqk implements enh, AutoCloseable {
+   private static final String a = "shaders/program/";
+   private static final Logger b = LogUtils.getLogger();
+   private static final enf c = new enf();
+   private static final boolean d = true;
+   private static fqk e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<enn> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, enn> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final eng p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final eni s;
+   private final eni t;
 
-   public fqk(gbi $$0, apd $$1, elw $$2, agg $$3) throws IOException, JsonSyntaxException {
-      this.c = $$1;
-      this.b = $$2;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.i = $$2.e;
-      this.j = $$2.f;
-      this.d = $$3.toString();
+   public fqk(aph $$0, String $$1) throws IOException {
+      agi $$2 = new agi("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      apf $$3 = $$0.getResourceOrThrow($$2);
+
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = atc.a($$4);
+         String $$6 = atc.i($$5, "vertex");
+         String $$7 = atc.i($$5, "fragment");
+         JsonArray $$8 = atc.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  agl $$12 = agl.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = atc.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(atc.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  agl $$17 = agl.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = atc.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  agl $$22 = agl.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(atc.a($$5, "blend", null));
+         this.s = a($$0, enk.a.a, $$6);
+         this.t = a($$0, enk.a.b, $$7);
+         this.m = enl.a();
+         enl.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = enn.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         agl $$26 = agl.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
+      }
+
       this.b();
-      this.a($$0, $$3);
    }
 
-   private void a(gbi $$0, agg $$1) throws IOException, JsonSyntaxException {
-      apb $$2 = this.c.getResourceOrThrow($$1);
+   public static eni a(aph $$0, enk.a $$1, String $$2) throws IOException {
+      enk $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof eni)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
+      } else {
+         eni $$7;
+         if ($$3 == null) {
+            agi $$4 = new agi("shaders/program/" + $$2 + $$1.b());
+            apf $$5 = $$0.getResourceOrThrow($$4);
 
-      try {
-         try (Reader $$3 = $$2.e()) {
-            JsonObject $$4 = asy.a($$3);
-            if (asy.d($$4, "targets")) {
-               JsonArray $$5 = $$4.getAsJsonArray("targets");
-               int $$6 = 0;
-
-               for (JsonElement $$7 : $$5) {
-                  try {
-                     this.a($$7);
-                  } catch (Exception var14) {
-                     agj $$9 = agj.a(var14);
-                     $$9.a("targets[" + $$6 + "]");
-                     throw $$9;
-                  }
-
-                  $$6++;
-               }
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = eni.a($$1, $$2, $$6, $$5.b());
             }
-
-            if (asy.d($$4, "passes")) {
-               JsonArray $$10 = $$4.getAsJsonArray("passes");
-               int $$11 = 0;
-
-               for (JsonElement $$12 : $$10) {
-                  try {
-                     this.a($$0, $$12);
-                  } catch (Exception var13) {
-                     agj $$14 = agj.a(var13);
-                     $$14.a("passes[" + $$11 + "]");
-                     throw $$14;
-                  }
-
-                  $$11++;
-               }
-            }
+         } else {
+            $$7 = (eni)$$3;
          }
-      } catch (Exception var16) {
-         agj $$16 = agj.a(var16);
-         $$16.b($$1.a() + " (" + $$2.b() + ")");
-         throw $$16;
+
+         return $$7;
       }
    }
 
-   private void a(JsonElement $$0) throws agj {
-      if (asy.a($$0)) {
-         this.a($$0.getAsString(), this.i, this.j);
+   public static eng a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new eng();
       } else {
-         JsonObject $$1 = asy.m($$0, "target");
-         String $$2 = asy.i($$1, "name");
-         int $$3 = asy.a($$1, "width", this.i);
-         int $$4 = asy.a($$1, "height", this.j);
-         if (this.f.containsKey($$2)) {
-            throw new agj($$2 + " is already defined");
-         }
-
-         this.a($$2, $$3, $$4);
-      }
-   }
-
-   private void a(gbi $$0, JsonElement $$1) throws IOException {
-      JsonObject $$2 = asy.m($$1, "pass");
-      String $$3 = asy.i($$2, "name");
-      String $$4 = asy.i($$2, "intarget");
-      String $$5 = asy.i($$2, "outtarget");
-      elw $$6 = this.b($$4);
-      elw $$7 = this.b($$5);
-      if ($$6 == null) {
-         throw new agj("Input target '" + $$4 + "' does not exist");
-      } else if ($$7 == null) {
-         throw new agj("Output target '" + $$5 + "' does not exist");
-      } else {
-         fql $$8 = this.a($$3, $$6, $$7);
-         JsonArray $$9 = asy.a($$2, "auxtargets", null);
-         if ($$9 != null) {
-            int $$10 = 0;
-
-            for (JsonElement $$11 : $$9) {
-               try {
-                  JsonObject $$12 = asy.m($$11, "auxtarget");
-                  String $$13 = asy.i($$12, "name");
-                  String $$14 = asy.i($$12, "id");
-                  boolean $$15;
-                  String $$16;
-                  if ($$14.endsWith(":depth")) {
-                     $$15 = true;
-                     $$16 = $$14.substring(0, $$14.lastIndexOf(58));
-                  } else {
-                     $$15 = false;
-                     $$16 = $$14;
-                  }
-
-                  elw $$19 = this.b($$16);
-                  if ($$19 == null) {
-                     if ($$15) {
-                        throw new agj("Render target '" + $$16 + "' can't be used as depth buffer");
-                     }
-
-                     agg $$20 = new agg("textures/effect/" + $$16 + ".png");
-                     this.c.getResource($$20).orElseThrow(() -> new agj("Render target or texture '" + $$16 + "' does not exist"));
-                     RenderSystem.setShaderTexture(0, $$20);
-                     $$0.a($$20);
-                     gas $$21 = $$0.b($$20);
-                     int $$22 = asy.o($$12, "width");
-                     int $$23 = asy.o($$12, "height");
-                     boolean $$24 = asy.k($$12, "bilinear");
-                     if ($$24) {
-                        RenderSystem.texParameter(3553, 10241, 9729);
-                        RenderSystem.texParameter(3553, 10240, 9729);
-                     } else {
-                        RenderSystem.texParameter(3553, 10241, 9728);
-                        RenderSystem.texParameter(3553, 10240, 9728);
-                     }
-
-                     $$8.a($$13, $$21::a, $$22, $$23);
-                  } else if ($$15) {
-                     $$8.a($$13, $$19::g, $$19.c, $$19.d);
-                  } else {
-                     $$8.a($$13, $$19::f, $$19.c, $$19.d);
-                  }
-               } catch (Exception var26) {
-                  agj $$26 = agj.a(var26);
-                  $$26.a("auxtargets[" + $$10 + "]");
-                  throw $$26;
-               }
-
-               $$10++;
-            }
-         }
-
-         JsonArray $$27 = asy.a($$2, "uniforms", null);
-         if ($$27 != null) {
-            int $$28 = 0;
-
-            for (JsonElement $$29 : $$27) {
-               try {
-                  this.b($$29);
-               } catch (Exception var25) {
-                  agj $$31 = agj.a(var25);
-                  $$31.a("uniforms[" + $$28 + "]");
-                  throw $$31;
-               }
-
-               $$28++;
-            }
-         }
-      }
-   }
-
-   private void b(JsonElement $$0) throws agj {
-      JsonObject $$1 = asy.m($$0, "uniform");
-      String $$2 = asy.i($$1, "name");
-      enb $$3 = this.e.get(this.e.size() - 1).b().a($$2);
-      if ($$3 == null) {
-         throw new agj("Uniform '" + $$2 + "' does not exist");
-      } else {
-         float[] $$4 = new float[4];
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
          int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (atc.a($$0, "func")) {
+            $$1 = eng.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
 
-         for (JsonElement $$7 : asy.v($$1, "values")) {
-            try {
-               $$4[$$5] = asy.e($$7, "value");
-            } catch (Exception var12) {
-               agj $$9 = agj.a(var12);
-               $$9.a("values[" + $$5 + "]");
-               throw $$9;
+         if (atc.a($$0, "srcrgb")) {
+            $$2 = eng.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (atc.a($$0, "dstrgb")) {
+            $$3 = eng.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (atc.a($$0, "srcalpha")) {
+            $$4 = eng.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
             }
 
-            $$5++;
+            $$7 = true;
          }
 
-         switch ($$5) {
-            case 0:
-            default:
-               break;
-            case 1:
-               $$3.a($$4[0]);
-               break;
-            case 2:
-               $$3.a($$4[0], $$4[1]);
-               break;
-            case 3:
-               $$3.a($$4[0], $$4[1], $$4[2]);
-               break;
-            case 4:
-               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         if (atc.a($$0, "dstalpha")) {
+            $$5 = eng.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
          }
-      }
-   }
 
-   public elw a(String $$0) {
-      return this.f.get($$0);
-   }
-
-   public void a(String $$0, int $$1, int $$2) {
-      elw $$3 = new elx($$1, $$2, true, esr.a);
-      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
-      this.f.put($$0, $$3);
-      if ($$1 == this.i && $$2 == this.j) {
-         this.g.add($$3);
+         if ($$6) {
+            return new eng();
+         } else {
+            return $$7 ? new eng($$2, $$3, $$4, $$5, $$1) : new eng($$2, $$3, $$1);
+         }
       }
    }
 
    @Override
    public void close() {
-      for (elw $$0 : this.f.values()) {
-         $$0.a();
+      for (enn $$0 : this.j) {
+         $$0.close();
       }
 
-      for (fql $$1 : this.e) {
-         $$1.close();
-      }
-
-      this.e.clear();
+      enl.a(this);
    }
 
-   public fql a(String $$0, elw $$1, elw $$2) throws IOException {
-      fql $$3 = new fql(this.c, $$0, $$1, $$2);
-      this.e.add(this.e.size(), $$3);
-      return $$3;
-   }
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      enl.a(0);
+      f = -1;
+      e = null;
 
-   private void b() {
-      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
-   }
-
-   public void a(int $$0, int $$1) {
-      this.i = this.b.c;
-      this.j = this.b.d;
-      this.b();
-
-      for (fql $$2 : this.e) {
-         $$2.a(this.h);
-      }
-
-      for (elw $$3 : this.g) {
-         $$3.a($$0, $$1, esr.a);
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
+         }
       }
    }
 
-   public void a(float $$0) {
-      if ($$0 < this.l) {
-         this.k = this.k + (1.0F - this.l);
-         this.k += $$0;
-      } else {
-         this.k = this.k + ($$0 - this.l);
+   public void g() {
+      RenderSystem.assertOnGameThread();
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         enl.a(this.m);
+         f = this.m;
       }
 
-      this.l = $$0;
-
-      while (this.k > 20.0F) {
-         this.k -= 20.0F;
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               enn.b(this.i.get($$0), $$0);
+            }
+         }
       }
 
-      for (fql $$1 : this.e) {
-         $$1.a(this.k / 20.0F);
+      for (enn $$4 : this.j) {
+         $$4.b();
       }
    }
 
-   public final String a() {
-      return this.d;
+   @Override
+   public void b() {
+      this.o = true;
    }
 
    @Nullable
-   private elw b(@Nullable String $$0) {
-      if ($$0 == null) {
-         return null;
-      } else {
-         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
+   public enn a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public enf b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      enn $$1 = this.a($$0);
+      return (enf)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = enn.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.i.add($$3);
+         }
       }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
+      }
+
+      for (enn $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = enn.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
+         }
+      }
+   }
+
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = atc.m($$0, "sampler");
+      String $$2 = atc.i($$1, "name");
+      if (!atc.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
+      }
+   }
+
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws agl {
+      JsonObject $$1 = atc.m($$0, "uniform");
+      String $$2 = atc.i($$1, "name");
+      int $$3 = enn.a(atc.i($$1, "type"));
+      int $$4 = atc.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = atc.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new agl("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = atc.e($$8, "value");
+            } catch (Exception var13) {
+               agl $$10 = agl.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         enn $$12 = new enn($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
+      }
+   }
+
+   @Override
+   public enk c() {
+      return this.s;
+   }
+
+   @Override
+   public enk d() {
+      return this.t;
+   }
+
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
+
+   public String h() {
+      return this.n;
+   }
+
+   @Override
+   public int a() {
+      return this.m;
    }
 }

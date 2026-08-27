@@ -1,473 +1,216 @@
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.Arrays;
+import it.unimi.dsi.fastutil.Swapper;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntComparator;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
 import org.slf4j.Logger;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 
-public class gfq {
-   private static final Marker d = MarkerFactory.getMarker("SOUNDS");
-   private static final Logger e = LogUtils.getLogger();
-   private static final float f = 0.5F;
-   private static final float g = 2.0F;
-   private static final float h = 0.0F;
-   private static final float i = 1.0F;
-   private static final int j = 20;
-   private static final Set<agg> k = Sets.newHashSet();
-   private static final long l = 1000L;
-   public static final String a = "FOR THE DEBUG!";
-   public static final String b = "OpenAL Soft on ";
-   public static final int c = "OpenAL Soft on ".length();
-   private final gft m;
-   private final esv n;
-   private boolean o;
-   private final elg p = new elg();
-   private final elh q = this.p.e();
-   private final gfp r;
-   private final gfr s = new gfr();
-   private final gfm t = new gfm(this.p, this.s);
-   private int u;
-   private long v;
-   private final AtomicReference<gfq.a> w = new AtomicReference<>(gfq.a.c);
-   private final Map<gep, gfm.a> x = Maps.newHashMap();
-   private final Multimap<aqo, gep> y = HashMultimap.create();
-   private final List<geq> z = Lists.newArrayList();
-   private final Map<gep, Integer> A = Maps.newHashMap();
-   private final Map<gep, Integer> B = Maps.newHashMap();
-   private final List<gfs> C = Lists.newArrayList();
-   private final List<geq> D = Lists.newArrayList();
-   private final List<gem> E = Lists.newArrayList();
+public class gfq<T> {
+   private static final boolean b = Boolean.parseBoolean(System.getProperty("SuffixArray.printComparisons", "false"));
+   private static final boolean c = Boolean.parseBoolean(System.getProperty("SuffixArray.printArray", "false"));
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = -1;
+   private static final int f = -2;
+   protected final List<T> a = Lists.newArrayList();
+   private final IntList g = new IntArrayList();
+   private final IntList h = new IntArrayList();
+   private IntList i = new IntArrayList();
+   private IntList j = new IntArrayList();
+   private int k;
 
-   public gfq(gft $$0, esv $$1, apg $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.r = new gfp($$2);
+   public void a(T $$0, String $$1) {
+      this.k = Math.max(this.k, $$1.length());
+      int $$2 = this.a.size();
+      this.a.add($$0);
+      this.h.add(this.g.size());
+
+      for (int $$3 = 0; $$3 < $$1.length(); $$3++) {
+         this.i.add($$2);
+         this.j.add($$3);
+         this.g.add($$1.charAt($$3));
+      }
+
+      this.i.add($$2);
+      this.j.add($$1.length());
+      this.g.add(-1);
    }
 
    public void a() {
-      k.clear();
-
-      for (aqm $$0 : jy.c) {
-         if ($$0 != aqn.pt) {
-            agg $$1 = $$0.a();
-            if (this.m.a($$1) == null) {
-               e.warn("Missing sound for event: {}", jy.c.b($$0));
-               k.add($$1);
-            }
+      int $$0 = this.g.size();
+      int[] $$1 = new int[$$0];
+      int[] $$2 = new int[$$0];
+      int[] $$3 = new int[$$0];
+      int[] $$4 = new int[$$0];
+      IntComparator $$5 = ($$2x, $$3x) -> $$2[$$2x] == $$2[$$3x] ? Integer.compare($$3[$$2x], $$3[$$3x]) : Integer.compare($$2[$$2x], $$2[$$3x]);
+      Swapper $$6 = ($$3x, $$4x) -> {
+         if ($$3x != $$4x) {
+            int $$5x = $$2[$$3x];
+            $$2[$$3x] = $$2[$$4x];
+            $$2[$$4x] = $$5x;
+            $$5x = $$3[$$3x];
+            $$3[$$3x] = $$3[$$4x];
+            $$3[$$4x] = $$5x;
+            $$5x = $$4[$$3x];
+            $$4[$$3x] = $$4[$$4x];
+            $$4[$$4x] = $$5x;
          }
+      };
+
+      for (int $$7 = 0; $$7 < $$0; $$7++) {
+         $$1[$$7] = this.g.getInt($$7);
       }
 
-      this.b();
-      this.i();
-   }
+      int $$8 = 1;
 
-   private synchronized void i() {
-      if (!this.o) {
-         try {
-            String $$0 = this.n.aq().c();
-            this.p.a("".equals($$0) ? null : $$0, this.n.U().c());
-            this.q.c();
-            this.q.a(this.n.a(aqo.a));
-            this.r.a(this.E).thenRun(this.E::clear);
-            this.o = true;
-            e.info(d, "Sound engine started");
-         } catch (RuntimeException var2) {
-            e.error(d, "Error starting SoundSystem. Turning off sounds & music", var2);
-         }
-      }
-   }
-
-   private float a(@Nullable aqo $$0) {
-      return $$0 != null && $$0 != aqo.a ? this.n.a($$0) : 1.0F;
-   }
-
-   public void a(aqo $$0, float $$1) {
-      if (this.o) {
-         if ($$0 == aqo.a) {
-            this.q.a($$1);
-         } else {
-            this.x.forEach(($$0x, $$1x) -> {
-               float $$2 = this.h($$0x);
-               $$1x.a($$1xx -> {
-                  if ($$2 <= 0.0F) {
-                     $$1xx.f();
-                  } else {
-                     $$1xx.b($$2);
-                  }
-               });
-            });
-         }
-      }
-   }
-
-   public void b() {
-      if (this.o) {
-         this.d();
-         this.r.a();
-         this.p.d();
-         this.o = false;
-      }
-   }
-
-   public void c() {
-      if (this.o) {
-         this.p.d();
-      }
-   }
-
-   public void a(gep $$0) {
-      if (this.o) {
-         gfm.a $$1 = this.x.get($$0);
-         if ($$1 != null) {
-            $$1.a(elf::f);
-         }
-      }
-   }
-
-   public void d() {
-      if (this.o) {
-         this.s.a();
-         this.x.values().forEach($$0 -> $$0.a(elf::f));
-         this.x.clear();
-         this.t.b();
-         this.A.clear();
-         this.z.clear();
-         this.y.clear();
-         this.B.clear();
-         this.D.clear();
-      }
-   }
-
-   public void a(gfs $$0) {
-      this.C.add($$0);
-   }
-
-   public void b(gfs $$0) {
-      this.C.remove($$0);
-   }
-
-   private boolean j() {
-      if (this.p.h()) {
-         e.info("Audio device was lost!");
-         return true;
-      } else {
-         long $$0 = ac.b();
-         boolean $$1 = $$0 - this.v >= 1000L;
-         if ($$1) {
-            this.v = $$0;
-            if (this.w.compareAndSet(gfq.a.c, gfq.a.a)) {
-               String $$2 = this.n.aq().c();
-               ac.g().execute(() -> {
-                  if ("".equals($$2)) {
-                     if (this.p.c()) {
-                        e.info("System default audio device has changed!");
-                        this.w.compareAndSet(gfq.a.a, gfq.a.b);
-                     }
-                  } else if (!this.p.b().equals($$2) && this.p.g().contains($$2)) {
-                     e.info("Preferred audio device has become available!");
-                     this.w.compareAndSet(gfq.a.a, gfq.a.b);
-                  }
-
-                  this.w.compareAndSet(gfq.a.a, gfq.a.c);
-               });
-            }
+      for (int $$9 = Math.min($$0, this.k); $$8 * 2 < $$9; $$8 *= 2) {
+         for (int $$10 = 0; $$10 < $$0; $$4[$$10] = $$10++) {
+            $$2[$$10] = $$1[$$10];
+            $$3[$$10] = $$10 + $$8 < $$0 ? $$1[$$10 + $$8] : -2;
          }
 
-         return this.w.compareAndSet(gfq.a.b, gfq.a.c);
-      }
-   }
+         Arrays.quickSort(0, $$0, $$5, $$6);
 
-   public void a(boolean $$0) {
-      if (this.j()) {
-         this.a();
-      }
-
-      if (!$$0) {
-         this.k();
-      }
-
-      this.t.a();
-   }
-
-   private void k() {
-      this.u++;
-      this.D.stream().filter(gep::s).forEach(this::c);
-      this.D.clear();
-
-      for (geq $$0 : this.z) {
-         if (!$$0.s()) {
-            this.a((gep)$$0);
-         }
-
-         $$0.q();
-         if ($$0.m()) {
-            this.a((gep)$$0);
-         } else {
-            float $$1 = this.h($$0);
-            float $$2 = this.g($$0);
-            eji $$3 = new eji($$0.h(), $$0.i(), $$0.j());
-            gfm.a $$4 = this.x.get($$0);
-            if ($$4 != null) {
-               $$4.a($$3x -> {
-                  $$3x.b($$1);
-                  $$3x.a($$2);
-                  $$3x.a($$3);
-               });
-            }
-         }
-      }
-
-      Iterator<Entry<gep, gfm.a>> $$5 = this.x.entrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<gep, gfm.a> $$6 = $$5.next();
-         gfm.a $$7 = $$6.getValue();
-         gep $$8 = $$6.getKey();
-         float $$9 = this.n.a($$8.c());
-         if ($$9 <= 0.0F) {
-            $$7.a(elf::f);
-            $$5.remove();
-         } else if ($$7.a()) {
-            int $$10 = this.B.get($$8);
-            if ($$10 <= this.u) {
-               if (e($$8)) {
-                  this.A.put($$8, this.u + $$8.e());
-               }
-
-               $$5.remove();
-               e.debug(d, "Removed channel {} because it's not playing anymore", $$7);
-               this.B.remove($$8);
-
-               try {
-                  this.y.remove($$8.c(), $$8);
-               } catch (RuntimeException var8) {
-               }
-
-               if ($$8 instanceof geq) {
-                  this.z.remove($$8);
-               }
-            }
-         }
-      }
-
-      Iterator<Entry<gep, Integer>> $$11 = this.A.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<gep, Integer> $$12 = $$11.next();
-         if (this.u >= $$12.getValue()) {
-            gep $$13 = $$12.getKey();
-            if ($$13 instanceof geq) {
-               ((geq)$$13).q();
-            }
-
-            this.c($$13);
-            $$11.remove();
-         }
-      }
-   }
-
-   private static boolean d(gep $$0) {
-      return $$0.e() > 0;
-   }
-
-   private static boolean e(gep $$0) {
-      return $$0.d() && d($$0);
-   }
-
-   private static boolean f(gep $$0) {
-      return $$0.d() && !d($$0);
-   }
-
-   public boolean b(gep $$0) {
-      if (!this.o) {
-         return false;
-      } else {
-         return this.B.containsKey($$0) && this.B.get($$0) <= this.u ? true : this.x.containsKey($$0);
-      }
-   }
-
-   public void c(gep $$0) {
-      if (this.o) {
-         if ($$0.s()) {
-            gfu $$1 = $$0.a(this.m);
-            agg $$2 = $$0.a();
-            if ($$1 == null) {
-               if (k.add($$2)) {
-                  e.warn(d, "Unable to play unknown soundEvent: {}", $$2);
-               }
+         for (int $$11 = 0; $$11 < $$0; $$11++) {
+            if ($$11 > 0 && $$2[$$11] == $$2[$$11 - 1] && $$3[$$11] == $$3[$$11 - 1]) {
+               $$1[$$4[$$11]] = $$1[$$4[$$11 - 1]];
             } else {
-               gem $$3 = $$0.b();
-               if ($$3 != gft.d) {
-                  if ($$3 == gft.a) {
-                     if (k.add($$2)) {
-                        e.warn(d, "Unable to play empty soundEvent: {}", $$2);
-                     }
-                  } else {
-                     float $$4 = $$0.f();
-                     float $$5 = Math.max($$4, 1.0F) * (float)$$3.i();
-                     aqo $$6 = $$0.c();
-                     float $$7 = this.a($$4, $$6);
-                     float $$8 = this.g($$0);
-                     gep.a $$9 = $$0.k();
-                     boolean $$10 = $$0.l();
-                     if ($$7 == 0.0F && !$$0.r()) {
-                        e.debug(d, "Skipped playing sound {}, volume was zero.", $$3.a());
-                     } else {
-                        eji $$11 = new eji($$0.h(), $$0.i(), $$0.j());
-                        if (!this.C.isEmpty()) {
-                           boolean $$12 = $$10 || $$9 == gep.a.a || this.q.a().g($$11) < (double)($$5 * $$5);
-                           if ($$12) {
-                              for (gfs $$13 : this.C) {
-                                 $$13.a($$0, $$1);
-                              }
-                           } else {
-                              e.debug(d, "Did not notify listeners of soundEvent: {}, it is too far away to hear", $$2);
-                           }
-                        }
-
-                        if (this.q.b() <= 0.0F) {
-                           e.debug(d, "Skipped playing soundEvent: {}, master volume was zero", $$2);
-                        } else {
-                           boolean $$14 = f($$0);
-                           boolean $$15 = $$3.g();
-                           CompletableFuture<gfm.a> $$16 = this.t.a($$3.g() ? elg.c.b : elg.c.a);
-                           gfm.a $$17 = $$16.join();
-                           if ($$17 == null) {
-                              if (aa.aT) {
-                                 e.warn("Failed to create new sound handle");
-                              }
-                           } else {
-                              e.debug(d, "Playing sound {} for event {}", $$3.a(), $$2);
-                              this.B.put($$0, this.u + 20);
-                              this.x.put($$0, $$17);
-                              this.y.put($$6, $$0);
-                              $$17.a($$8x -> {
-                                 $$8x.a($$8);
-                                 $$8x.b($$7);
-                                 if ($$9 == gep.a.b) {
-                                    $$8x.c($$5);
-                                 } else {
-                                    $$8x.i();
-                                 }
-
-                                 $$8x.a($$14 && !$$15);
-                                 $$8x.a($$11);
-                                 $$8x.b($$10);
-                              });
-                              if (!$$15) {
-                                 this.r.a($$3.b()).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              } else {
-                                 this.r.a($$3.b(), $$14).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              }
-
-                              if ($$0 instanceof geq) {
-                                 this.z.add((geq)$$0);
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+               $$1[$$4[$$11]] = $$11;
             }
          }
       }
-   }
 
-   public void a(geq $$0) {
-      this.D.add($$0);
-   }
+      IntList $$12 = this.i;
+      IntList $$13 = this.j;
+      this.i = new IntArrayList($$12.size());
+      this.j = new IntArrayList($$13.size());
 
-   public void a(gem $$0) {
-      this.E.add($$0);
-   }
+      for (int $$14 = 0; $$14 < $$0; $$14++) {
+         int $$15 = $$4[$$14];
+         this.i.add($$12.getInt($$15));
+         this.j.add($$13.getInt($$15));
+      }
 
-   private float g(gep $$0) {
-      return ati.a($$0.g(), 0.5F, 2.0F);
-   }
-
-   private float h(gep $$0) {
-      return this.a($$0.f(), $$0.c());
-   }
-
-   private float a(float $$0, aqo $$1) {
-      return ati.a($$0 * this.a($$1), 0.0F, 1.0F);
-   }
-
-   public void e() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(elf::d));
+      if (c) {
+         this.b();
       }
    }
 
-   public void f() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(elf::e));
+   private void b() {
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         d.debug("{} {}", $$0, this.a($$0));
       }
+
+      d.debug("");
    }
 
-   public void a(gep $$0, int $$1) {
-      this.A.put($$0, this.u + $$1);
-   }
+   private String a(int $$0) {
+      int $$1 = this.j.getInt($$0);
+      int $$2 = this.h.getInt(this.i.getInt($$0));
+      StringBuilder $$3 = new StringBuilder();
 
-   public void a(esc $$0) {
-      if (this.o && $$0.h()) {
-         eji $$1 = $$0.b();
-         Vector3f $$2 = $$0.l();
-         Vector3f $$3 = $$0.m();
-         this.s.execute(() -> {
-            this.q.a($$1);
-            this.q.a($$2, $$3);
-         });
+      for (int $$4 = 0; $$2 + $$4 < this.g.size(); $$4++) {
+         if ($$4 == $$1) {
+            $$3.append('^');
+         }
+
+         int $$5 = this.g.getInt($$2 + $$4);
+         if ($$5 == -1) {
+            break;
+         }
+
+         $$3.append((char)$$5);
       }
+
+      return $$3.toString();
    }
 
-   public void a(@Nullable agg $$0, @Nullable aqo $$1) {
-      if ($$1 != null) {
-         for (gep $$2 : this.y.get($$1)) {
-            if ($$0 == null || $$2.a().equals($$0)) {
-               this.a($$2);
+   private int a(String $$0, int $$1) {
+      int $$2 = this.h.getInt(this.i.getInt($$1));
+      int $$3 = this.j.getInt($$1);
+
+      for (int $$4 = 0; $$4 < $$0.length(); $$4++) {
+         int $$5 = this.g.getInt($$2 + $$3 + $$4);
+         if ($$5 == -1) {
+            return 1;
+         }
+
+         char $$6 = $$0.charAt($$4);
+         char $$7 = (char)$$5;
+         if ($$6 < $$7) {
+            return -1;
+         }
+
+         if ($$6 > $$7) {
+            return 1;
+         }
+      }
+
+      return 0;
+   }
+
+   public List<T> a(String $$0) {
+      int $$1 = this.i.size();
+      int $$2 = 0;
+      int $$3 = $$1;
+
+      while ($$2 < $$3) {
+         int $$4 = $$2 + ($$3 - $$2) / 2;
+         int $$5 = this.a($$0, $$4);
+         if (b) {
+            d.debug("comparing lower \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$4, this.a($$4), $$5});
+         }
+
+         if ($$5 > 0) {
+            $$2 = $$4 + 1;
+         } else {
+            $$3 = $$4;
+         }
+      }
+
+      if ($$2 >= 0 && $$2 < $$1) {
+         int $$6 = $$2;
+         $$3 = $$1;
+
+         while ($$2 < $$3) {
+            int $$7 = $$2 + ($$3 - $$2) / 2;
+            int $$8 = this.a($$0, $$7);
+            if (b) {
+               d.debug("comparing upper \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$7, this.a($$7), $$8});
+            }
+
+            if ($$8 >= 0) {
+               $$2 = $$7 + 1;
+            } else {
+               $$3 = $$7;
             }
          }
-      } else if ($$0 == null) {
-         this.d();
+
+         int $$9 = $$2;
+         IntSet $$10 = new IntOpenHashSet();
+
+         for (int $$11 = $$6; $$11 < $$9; $$11++) {
+            $$10.add(this.i.getInt($$11));
+         }
+
+         int[] $$12 = $$10.toIntArray();
+         java.util.Arrays.sort($$12);
+         Set<T> $$13 = Sets.newLinkedHashSet();
+
+         for (int $$14 : $$12) {
+            $$13.add(this.a.get($$14));
+         }
+
+         return Lists.newArrayList($$13);
       } else {
-         for (gep $$3 : this.x.keySet()) {
-            if ($$3.a().equals($$0)) {
-               this.a($$3);
-            }
-         }
+         return Collections.emptyList();
       }
-   }
-
-   public String g() {
-      return this.p.f();
-   }
-
-   public List<String> h() {
-      return this.p.g();
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
    }
 }

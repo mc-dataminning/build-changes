@@ -1,52 +1,44 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dbi {
-   dbi t_ = new dbi() {
-      @Override
-      public boolean a(crt $$0, ht $$1, dgw $$2, @Nullable Collection<hx> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dbo)cuv.qG).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(ech.c) ? false : dbo.a($$0, $$1, $$2, $$3);
-         } else {
-            return dbi.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public abstract class dbi extends cxd {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ekn h = cva.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ekn i = cva.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ekn j = cva.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-      @Override
-      public int a(dbn.a $$0, crt $$1, ht $$2, ato $$3, dbn $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   protected dbi(dhh.d $$0) {
+      super($$0);
    }
 
-   default void a(crt $$0, dgw $$1, ht $$2, ato $$3) {
+   @Override
+   protected abstract MapCodec<? extends dbi> a();
+
+   @Override
+   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
-   default boolean a(crt $$0, ht $$1, ato $$2) {
+   @Override
+   public dhi a(dhi $$0, dbm $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dhi a(dhi $$0, czw $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
       return false;
    }
-
-   default boolean a(crt $$0, ht $$1, dgw $$2, @Nullable Collection<hx> $$3, boolean $$4) {
-      return ((czs)cuv.qG).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int i_(int $$0) {
-      return 1;
-   }
-
-   int a(dbn.a var1, crt var2, ht var3, ato var4, dbn var5, boolean var6);
 }

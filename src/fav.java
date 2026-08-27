@@ -1,257 +1,91 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fav {
-   private static final agg a = new agg("advancements/title_box");
-   private static final int b = 26;
-   private static final int c = 0;
-   private static final int d = 200;
-   private static final int e = 26;
-   private static final int f = 8;
-   private static final int g = 5;
-   private static final int h = 26;
-   private static final int i = 3;
-   private static final int j = 5;
-   private static final int k = 32;
-   private static final int l = 9;
-   private static final int m = 163;
-   private static final int[] n = new int[]{0, 10, -10, 25, -25};
-   private final fat o;
-   private final ag p;
-   private final aq q;
-   private final asu r;
-   private final int s;
-   private final List<asu> t;
-   private final esr u;
+public class fav extends fau {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final ur c = ur.c("selectWorld.allowCommands");
+   private static final ur k = ur.c("selectWorld.gameMode");
+   private static final ur l = ur.c("lanServer.otherPlayers");
+   private static final ur m = ur.c("lanServer.port");
+   private static final ur n = ur.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final ur o = ur.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int p = 16733525;
+   private final fau q;
+   private crx r = crx.a;
+   private boolean t;
+   private int u = atd.a();
    @Nullable
-   private fav v;
-   private final List<fav> w = Lists.newArrayList();
-   @Nullable
-   private ah x;
-   private final int y;
-   private final int z;
+   private evi v;
 
-   public fav(fat $$0, esr $$1, ag $$2, aq $$3) {
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$3;
-      this.u = $$1;
-      this.r = ru.a().a($$1.h.a($$3.a(), 163));
-      this.y = ati.d($$3.f() * 28.0F);
-      this.z = ati.d($$3.g() * 27.0F);
-      int $$4 = $$2.a().g().a();
-      int $$5 = String.valueOf($$4).length();
-      int $$6 = $$4 > 1 ? $$1.h.b("  ") + $$1.h.b("0") * $$5 * 2 + $$1.h.b("/") : 0;
-      int $$7 = 29 + $$1.h.a(this.r) + $$6;
-      this.t = ru.a().a(this.a(uu.a($$3.b().f(), vo.a.a($$3.e().b())), $$7));
-
-      for (asu $$8 : this.t) {
-         $$7 = Math.max($$7, $$1.h.a($$8));
-      }
-
-      this.s = $$7 + 3 + 5;
+   public fav(fau $$0) {
+      super(ur.c("lanServer.title"));
+      this.q = $$0;
    }
 
-   private static float a(etd $$0, List<uw> $$1) {
-      return (float)$$1.stream().mapToDouble($$0::a).max().orElse(0.0);
-   }
-
-   private List<uw> a(ur $$0, int $$1) {
-      etd $$2 = this.u.h.b();
-      List<uw> $$3 = null;
-      float $$4 = Float.MAX_VALUE;
-
-      for (int $$5 : n) {
-         List<uw> $$6 = $$2.b($$0, $$1 - $$5, vo.a);
-         float $$7 = Math.abs(a($$2, $$6) - (float)$$1);
-         if ($$7 <= 10.0F) {
-            return $$6;
+   @Override
+   protected void aP_() {
+      gft $$0 = this.f.S();
+      this.r = $$0.u_();
+      this.t = $$0.aY().o();
+      this.d(evg.a(crx::e).a(crx.a, crx.d, crx.b, crx.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
+      this.d(evg.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
+      euz $$1 = euz.a(ur.c("lanServer.start"), $$1x -> {
+         this.f.a(null);
+         ur $$2;
+         if ($$0.a(this.r, this.t, this.u)) {
+            $$2 = ajh.a(this.u);
+         } else {
+            $$2 = ur.c("commands.publish.failed");
          }
 
-         if ($$7 < $$4) {
-            $$4 = $$7;
-            $$3 = $$6;
+         this.f.l.d().a($$2);
+         this.f.d();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
+      this.v = new evi(this.i, this.g / 2 - 75, 160, 150, 20, ur.c("lanServer.port"));
+      this.v.b($$1x -> {
+         ur $$2 = this.a($$1x);
+         this.v.c(ur.b(this.u + "").a(n.i));
+         if ($$2 == null) {
+            this.v.m(14737632);
+            this.v.a(null);
+            $$1.i = true;
+         } else {
+            this.v.m(16733525);
+            this.v.a(ewk.a($$2));
+            $$1.i = false;
          }
-      }
-
-      return $$3;
+      });
+      this.v.c(ur.b(this.u + "").a(n.i));
+      this.d(this.v);
+      this.d($$1);
+      this.d(euz.a(uq.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
    }
 
    @Nullable
-   private fav a(ag $$0) {
-      do {
-         $$0 = $$0.c();
-      } while ($$0 != null && $$0.a().d().isEmpty());
-
-      return $$0 != null && !$$0.a().d().isEmpty() ? this.o.a($$0.b()) : null;
-   }
-
-   public void a(eub $$0, int $$1, int $$2, boolean $$3) {
-      if (this.v != null) {
-         int $$4 = $$1 + this.v.y + 13;
-         int $$5 = $$1 + this.v.y + 26 + 4;
-         int $$6 = $$2 + this.v.z + 13;
-         int $$7 = $$1 + this.y + 13;
-         int $$8 = $$2 + this.z + 13;
-         int $$9 = $$3 ? -16777216 : -1;
-         if ($$3) {
-            $$0.a($$5, $$4, $$6 - 1, $$9);
-            $$0.a($$5 + 1, $$4, $$6, $$9);
-            $$0.a($$5, $$4, $$6 + 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8 - 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8, $$9);
-            $$0.a($$7, $$5 - 1, $$8 + 1, $$9);
-            $$0.b($$5 - 1, $$8, $$6, $$9);
-            $$0.b($$5 + 1, $$8, $$6, $$9);
-         } else {
-            $$0.a($$5, $$4, $$6, $$9);
-            $$0.a($$7, $$5, $$8, $$9);
-            $$0.b($$5, $$8, $$6, $$9);
-         }
-      }
-
-      for (fav $$10 : this.w) {
-         $$10.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a(eub $$0, int $$1, int $$2) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         float $$3 = this.x == null ? 0.0F : this.x.c();
-         faw $$4;
-         if ($$3 >= 1.0F) {
-            $$4 = faw.a;
-         } else {
-            $$4 = faw.b;
-         }
-
-         $$0.a($$4.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-         $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
-      }
-
-      for (fav $$6 : this.w) {
-         $$6.a($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.s;
-   }
-
-   public void a(ah $$0) {
-      this.x = $$0;
-   }
-
-   public void a(fav $$0) {
-      this.w.add($$0);
-   }
-
-   public void a(eub $$0, int $$1, int $$2, float $$3, int $$4, int $$5) {
-      boolean $$6 = $$4 + $$1 + this.y + this.s + 26 >= this.o.f().g;
-      ur $$7 = this.x == null ? null : this.x.d();
-      int $$8 = $$7 == null ? 0 : this.u.h.a($$7);
-      boolean $$9 = 113 - $$2 - this.z - 26 <= 6 + this.t.size() * 9;
-      float $$10 = this.x == null ? 0.0F : this.x.c();
-      int $$11 = ati.d($$10 * (float)this.s);
-      faw $$12;
-      faw $$13;
-      faw $$14;
-      if ($$10 >= 1.0F) {
-         $$11 = this.s / 2;
-         $$12 = faw.a;
-         $$13 = faw.a;
-         $$14 = faw.a;
-      } else if ($$11 < 2) {
-         $$11 = this.s / 2;
-         $$12 = faw.b;
-         $$13 = faw.b;
-         $$14 = faw.b;
-      } else if ($$11 > this.s - 2) {
-         $$11 = this.s / 2;
-         $$12 = faw.a;
-         $$13 = faw.a;
-         $$14 = faw.b;
+   private ur a(String $$0) {
+      if ($$0.isBlank()) {
+         this.u = atd.a();
+         return null;
       } else {
-         $$12 = faw.a;
-         $$13 = faw.b;
-         $$14 = faw.b;
-      }
-
-      int $$24 = this.s - $$11;
-      RenderSystem.enableBlend();
-      int $$25 = $$2 + this.z;
-      int $$26;
-      if ($$6) {
-         $$26 = $$1 + this.y - this.s + 26 + 6;
-      } else {
-         $$26 = $$1 + this.y;
-      }
-
-      int $$28 = 32 + this.t.size() * 9;
-      if (!this.t.isEmpty()) {
-         if ($$9) {
-            $$0.a(a, $$26, $$25 + 26 - $$28, this.s, $$28);
-         } else {
-            $$0.a(a, $$26, $$25, this.s, $$28);
-         }
-      }
-
-      $$0.a($$12.a(), 200, 26, 0, 0, $$26, $$25, $$11, 26);
-      $$0.a($$13.a(), 200, 26, 200 - $$24, 0, $$26 + $$11, $$25, $$24, 26);
-      $$0.a($$14.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-      if ($$6) {
-         $$0.b(this.u.h, this.r, $$26 + 5, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y - $$8, $$2 + this.z + 9, -1);
-         }
-      } else {
-         $$0.b(this.u.h, this.r, $$1 + this.y + 32, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y + this.s - $$8 - 5, $$2 + this.z + 9, -1);
-         }
-      }
-
-      if ($$9) {
-         for (int $$29 = 0; $$29 < this.t.size(); $$29++) {
-            $$0.a(this.u.h, this.t.get($$29), $$26 + 5, $$25 + 26 - $$28 + 7 + $$29 * 9, -5592406, false);
-         }
-      } else {
-         for (int $$30 = 0; $$30 < this.t.size(); $$30++) {
-            $$0.a(this.u.h, this.t.get($$30), $$26 + 5, $$2 + this.z + 9 + 17 + $$30 * 9, -5592406, false);
-         }
-      }
-
-      $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         int $$4 = $$0 + this.y;
-         int $$5 = $$4 + 26;
-         int $$6 = $$1 + this.z;
-         int $$7 = $$6 + 26;
-         return $$2 >= $$4 && $$2 <= $$5 && $$3 >= $$6 && $$3 <= $$7;
-      } else {
-         return false;
-      }
-   }
-
-   public void b() {
-      if (this.v == null && this.p.c() != null) {
-         this.v = this.a(this.p);
-         if (this.v != null) {
-            this.v.a(this);
+         try {
+            this.u = Integer.parseInt($$0);
+            if (this.u < 1024 || this.u > 65535) {
+               return o;
+            } else {
+               return !atd.a(this.u) ? n : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.u = atd.a();
+            return o;
          }
       }
    }
 
-   public int c() {
-      return this.z;
-   }
-
-   public int d() {
-      return this.y;
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      $$0.a(this.i, l, this.g / 2, 82, 16777215);
+      $$0.a(this.i, m, this.g / 2, 142, 16777215);
    }
 }

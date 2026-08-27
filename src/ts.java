@@ -120,7 +120,7 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
                   k.debug("Failed to sent packet", $$1);
                   if (this.i() == wl.b) {
                      tt $$4 = ((tt.a)this.n.attr(f).get()).a();
-                     wk<?> $$5 = (wk<?>)($$4 == tt.d ? new aer($$3) : new wp($$3));
+                     wk<?> $$5 = (wk<?>)($$4 == tt.d ? new aet($$3) : new wp($$3));
                      this.a($$5, ub.a(() -> this.a($$3)));
                   } else {
                      this.a($$3);
@@ -145,7 +145,7 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
             if ($$2.a($$1)) {
                try {
                   a($$1, $$2);
-               } catch (agr var5) {
+               } catch (agt var5) {
                } catch (RejectedExecutionException var6) {
                   this.a(ur.c("multiplayer.disconnect.server_shutdown"));
                } catch (ClassCastException var7) {
@@ -198,24 +198,24 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
       }
    }
 
-   public void a(String $$0, int $$1, afe $$2) {
-      this.a($$0, $$1, $$2, aei.a);
+   public void a(String $$0, int $$1, afg $$2) {
+      this.a($$0, $$1, $$2, aek.a);
    }
 
-   public void a(String $$0, int $$1, aem $$2) {
-      this.a($$0, $$1, $$2, aei.b);
+   public void a(String $$0, int $$1, aeo $$2) {
+      this.a($$0, $$1, $$2, aek.b);
    }
 
-   private void a(String $$0, int $$1, ua $$2, aei $$3) {
+   private void a(String $$0, int $$1, ua $$2, aek $$3) {
       this.p = $$2;
       this.a((Consumer<ts>)($$4 -> {
          $$4.a($$3);
          this.a($$2);
-         $$4.b(new aej(aa.b().e(), $$0, $$1, $$3), null, true);
+         $$4.b(new ael(aa.b().e(), $$0, $$1, $$3), null, true);
       }));
    }
 
-   public void a(aei $$0) {
+   public void a(aek $$0) {
       this.n.attr(f).set($$0.b().b(wl.b));
    }
 
@@ -331,8 +331,8 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
    }
 
    protected void e() {
-      this.x = ati.i(0.75F, (float)this.v, this.x);
-      this.w = ati.i(0.75F, (float)this.u, this.w);
+      this.x = atm.i(0.75F, (float)this.v, this.x);
+      this.w = atm.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -372,7 +372,7 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
       return this.l.a();
    }
 
-   public static ts a(InetSocketAddress $$0, boolean $$1, @Nullable atq $$2) {
+   public static ts a(InetSocketAddress $$0, boolean $$1, @Nullable atu $$2) {
       ts $$3 = new ts(wl.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -532,7 +532,7 @@ public class ts extends SimpleChannelInboundHandler<wk<?>> {
       return this.x;
    }
 
-   public void a(atq $$0) {
+   public void a(atu $$0) {
       this.B = new tk($$0);
    }
 }

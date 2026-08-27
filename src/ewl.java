@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ewl {
+public enum ewl {
+   a,
+   b,
+   c;
 }

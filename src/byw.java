@@ -1,264 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class byw {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<bve<? extends bvd<? super byv>>> a = ImmutableList.of(bve.c, bve.f, bve.d, bve.w);
-   static final List<btz<?>> b = ImmutableList.of(
-      btz.n, btz.m, btz.E, btz.t, btz.Y, btz.aQ, btz.aR, btz.aS, btz.aF, btz.aP, btz.h, btz.r, new btz[]{btz.N, btz.O, btz.Q}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+public class byw extends byq {
+   private final byx bT = new byx(this);
+   private static final int bU = 18000;
+   private boolean bW;
+   private int bX;
 
-   public static coc a() {
-      return coc.a(cle.up);
+   public byw(bku<? extends byw> $$0, csa $$1) {
+      super($$0, $$1);
    }
 
-   protected static bly<?> a(bly<byv> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(cex.a));
-      $$0.b(cex.b);
-      $$0.f();
-      return $$0;
+   public static bml.a u() {
+      return gF().a(bmm.l, 15.0).a(bmm.m, 0.2F);
    }
 
-   static byv b(byv $$0) {
-      $$0.dN().b(btz.aR);
-      $$0.dN().b(btz.aQ);
-      return $$0.a(byv.a.a);
+   @Override
+   protected void a(ats $$0) {
+      this.a(bmm.h).a(a($$0::j));
    }
 
-   private static void b(bly<byv> $$0) {
-      $$0.a(cex.a, 0, ImmutableList.of(new bpi(0.8F), new bmk(2.0F) {
-         @Override
-         protected void b(ama $$0, blh $$1, long $$2) {
-            byw.b((byv)$$1);
-            super.b($$0, $$1, $$2);
+   @Override
+   protected void gv() {
+   }
+
+   @Override
+   protected aqq y() {
+      return this.a(arl.a) ? aqr.vQ : aqr.vM;
+   }
+
+   @Override
+   protected aqq m_() {
+      return aqr.vN;
+   }
+
+   @Override
+   protected aqq d(bjo $$0) {
+      return aqr.vO;
+   }
+
+   @Override
+   protected aqq aN() {
+      if (this.aC()) {
+         if (!this.bP()) {
+            return aqr.vT;
          }
-      }, new bny(500, 700), new bmv(btz.O)));
-   }
 
-   private static void c(bly<byv> $$0) {
-      $$0.a(cex.v, ImmutableList.of(Pair.of(0, new byw.e())), Set.of(Pair.of(btz.Y, bua.b), Pair.of(btz.aQ, bua.a), Pair.of(btz.m, bua.a)));
-   }
+         this.cu++;
+         if (this.cu > 5 && this.cu % 3 == 0) {
+            return aqr.vR;
+         }
 
-   private static void d(bly<byv> $$0) {
-      $$0.a(
-         cex.z,
-         ImmutableList.of(Pair.of(0, new byw.a(160, 180)), Pair.of(0, new byw.c(40))),
-         Set.of(Pair.of(btz.Y, bua.b), Pair.of(btz.m, bua.b), Pair.of(btz.aR, bua.a))
-      );
-   }
-
-   private static void e(bly<byv> $$0) {
-      $$0.a(
-         cex.b,
-         ImmutableList.of(
-            Pair.of(0, new bmj(bkm.aN, 1.0F) {
-               @Override
-               protected void a(ama $$0, bwj $$1, long $$2) {
-                  byw.b((byv)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new bnc($$0x -> 1.25F, $$0x -> $$0x.n_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(ama $$0, blh $$1, long $$2) {
-                  byw.b((byv)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new bnu(45, 90)),
-            Pair.of(3, new byw.b(40, 100)),
-            Pair.of(
-               4,
-               new bol(
-                  ImmutableList.of(
-                     Pair.of(bov.a(1.0F, 3), 2),
-                     Pair.of(new byw.d(40, 80), 1),
-                     Pair.of(new byw.f(40, 80), 1),
-                     Pair.of(bon.a(bkm.bt, 6.0F), 1),
-                     Pair.of(bog.a(1.0F), 1),
-                     Pair.of(new bmz(5, 20), 2)
-                  )
-               )
-            )
-         ),
-         Set.of(Pair.of(btz.aR, bua.b))
-      );
-   }
-
-   static void a(byv $$0) {
-      $$0.dN().a(ImmutableList.of(cex.z, cex.v, cex.b));
-   }
-
-   static class a extends bmp<byv> {
-      a(int $$0, int $$1) {
-         super(Map.of(btz.Y, bua.b, btz.m, bua.b, btz.aR, bua.a, btz.aF, bua.b), $$0, $$1);
+         if (this.cu <= 5) {
+            return aqr.vT;
+         }
       }
 
-      protected boolean a(ama $$0, byv $$1) {
-         return $$1.ge();
-      }
+      return aqr.vP;
+   }
 
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         return $$1.dN().c(btz.aR).isPresent() && $$1.gm() && !$$1.gi();
+   @Override
+   protected void e(float $$0) {
+      if (this.aC()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
+   }
 
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.f);
+   @Override
+   protected void gM() {
+      if (this.aZ()) {
+         this.a(aqr.vS, 0.4F, 1.0F);
+      } else {
+         super.gM();
       }
+   }
 
-      protected void c(ama $$0, byv $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.dN().a(btz.aF, auj.a, 9600L);
+   @Override
+   public bll eT() {
+      return bll.b;
+   }
+
+   @Override
+   protected Vector3f a(bkq $$0, bkr $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - (this.n_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      if (this.w() && this.bX++ >= 18000) {
+         this.am();
+      }
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.w());
+      $$0.a("SkeletonTrapTime", this.bX);
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.bX = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fe() {
+      return 0.96F;
+   }
+
+   public boolean w() {
+      return this.bW;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.bW) {
+         this.bW = $$0;
+         if ($$0) {
+            this.bO.a(1, this.bT);
          } else {
-            byw.b($$1);
+            this.bO.a(this.bT);
          }
       }
    }
 
-   static class b extends bmp<byv> {
-      b(int $$0, int $$1) {
-         super(Map.of(btz.aS, bua.a), $$0, $$1);
-      }
-
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.b);
-      }
-
-      protected void c(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.a);
-         $$1.dN().b(btz.aS);
-      }
+   @Nullable
+   @Override
+   public bkl a(ame $$0, bkl $$1) {
+      return bku.aK.a((csa)$$0);
    }
 
-   static class c extends bmp<byv> {
-      c(int $$0) {
-         super(Map.of(btz.Y, bua.b, btz.m, bua.b, btz.aR, bua.a, btz.aF, bua.a), $$0, $$0);
-      }
-
-      protected boolean a(ama $$0, byv $$1) {
-         return true;
-      }
-
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         return $$1.dN().c(btz.aR).isPresent();
-      }
-
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.g);
-      }
-
-      protected void c(ama $$0, byv $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(byv.a.a).w($$3);
-         $$1.dN().b(btz.aR);
-         $$1.dN().a(btz.aS, true);
-      }
-   }
-
-   static class d extends bmp<byv> {
-      d(int $$0, int $$1) {
-         super(Map.of(btz.Y, bua.b, btz.aR, bua.b, btz.aQ, bua.b, btz.aS, bua.b, btz.r, bua.b), $$0, $$1);
-      }
-
-      protected boolean a(ama $$0, byv $$1) {
-         return !$$1.y();
-      }
-
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.c);
-      }
-
-      protected void c(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.a);
-      }
-   }
-
-   static class e extends bmp<byv> {
-      e() {
-         super(Map.of(btz.m, bua.a, btz.Y, bua.b, btz.aQ, bua.a), 600);
-      }
-
-      protected boolean a(ama $$0, byv $$1) {
-         return $$1.ge();
-      }
-
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         if (!$$1.ge()) {
-            $$1.a(byv.a.a);
-            return false;
-         } else {
-            Optional<ht> $$3 = $$1.dN().c(btz.m).map(buc::a).map(boc::b);
-            Optional<ht> $$4 = $$1.dN().c(btz.aQ);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
-         }
-      }
-
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.e);
-      }
-
-      protected void c(ama $$0, byv $$1, long $$2) {
-         if ($$1.gm() && $$1.ge()) {
-            $$1.dN().a(btz.aR, true);
-         }
-
-         $$1.dN().b(btz.m);
-         $$1.dN().b(btz.aQ);
-      }
-   }
-
-   static class f extends bmp<byv> {
-      f(int $$0, int $$1) {
-         super(Map.of(btz.m, bua.b, btz.aQ, bua.b, btz.aF, bua.b), $$0, $$1);
-      }
-
-      protected boolean a(ama $$0, byv $$1) {
-         return !$$1.n_() && $$1.ge();
-      }
-
-      protected boolean a(ama $$0, byv $$1, long $$2) {
-         return $$1.ge();
-      }
-
-      protected void b(ama $$0, byv $$1, long $$2) {
-         $$1.a(byv.a.d);
-      }
-
-      protected void c(ama $$0, byv $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(byv.a.a);
-         if ($$3) {
-            $$1.gl().ifPresent($$1x -> {
-               $$1.dN().a(btz.aQ, $$1x);
-               $$1.dN().a(btz.m, new buc($$1x, 1.25F, 0));
-            });
-         }
-      }
+   @Override
+   public bix b(cdu $$0, biw $$1) {
+      return !this.gu() ? bix.d : super.b($$0, $$1);
    }
 }

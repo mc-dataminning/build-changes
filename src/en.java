@@ -18,10 +18,10 @@ public class en implements ArgumentType<String> {
       return new en();
    }
 
-   public static eke a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ekq a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ekh $$3 = ((du)$$0.getSource()).m().aF();
-      eke $$4 = $$3.b($$2);
+      ekt $$3 = ((du)$$0.getSource()).m().aH();
+      ekq $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class en implements ArgumentType<String> {
       }
    }
 
-   public static eke b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      eke $$2 = a($$0, $$1);
+   public static ekq b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      ekq $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {
@@ -45,7 +45,7 @@ public class en implements ArgumentType<String> {
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       S $$2 = (S)$$0.getSource();
       if ($$2 instanceof du $$3) {
-         return dy.b($$3.m().aF().d(), $$1);
+         return dy.b($$3.m().aH().d(), $$1);
       } else {
          return $$2 instanceof dy $$4 ? $$4.a($$0) : Suggestions.empty();
       }

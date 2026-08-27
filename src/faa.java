@@ -1,27 +1,26 @@
-public class faa extends fah {
-   private evf a;
-
-   public faa() {
-      super(ur.c("outOfMemory.title"));
-      this.a = evf.a;
+public class faa extends fau {
+   public faa(ur $$0) {
+      super($$0);
    }
 
    @Override
-   protected void aO_() {
-      this.d(eum.a(uq.l, $$0 -> this.f.a(new fam())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(eum.a(ur.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = evf.a(this.i, ur.c("outOfMemory.message"), 295);
-   }
-
-   @Override
-   public boolean aD_() {
+   public boolean aE_() {
       return false;
    }
 
    @Override
-   public void a(eub $$0, int $$1, int $$2, float $$3) {
+   protected boolean aO_() {
+      return false;
+   }
+
+   @Override
+   public void a(euo $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+   }
+
+   @Override
+   public void b(euo $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

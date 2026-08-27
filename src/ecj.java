@@ -1,213 +1,313 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public abstract class ecj extends ece {
-   public static final float e = 0.44444445F;
+public abstract class ecj<M extends ecd<M>, S extends ecg<M>> implements ecf {
+   public static final int a = 15;
+   protected static final int b = 1;
+   protected static final long c = ecj.a.a(1);
+   private static final int g = 512;
+   protected static final hx[] d = hx.values();
+   protected final djs e;
+   protected final S f;
+   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
+   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
+   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
+   private final ht.a k = new ht.a();
+   private static final int l = 2;
+   private final long[] m = new long[2];
+   private final djr[] n = new djr[2];
 
-   @Override
-   public ecf d() {
-      return ech.d;
+   protected ecj(djs $$0, S $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c();
    }
 
-   @Override
-   public ecf e() {
-      return ech.e;
+   public static boolean a(crg $$0, ht $$1, dhi $$2, dhi $$3) {
+      return $$3 == $$2 ? false : $$3.b($$0, $$1) != $$2.b($$0, $$1) || $$3.h() != $$2.h() || $$3.g() || $$2.g();
    }
 
-   @Override
-   public ckw a() {
-      return cle.pM;
-   }
-
-   @Override
-   public void a(crs $$0, ht $$1, ecg $$2, ato $$3) {
-      ht $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(js.T, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, aqn.mt, aqo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), aqn.mr, aqo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+   public static int a(crg $$0, dhi $$1, ht $$2, dhi $$3, ht $$4, hx $$5, int $$6) {
+      boolean $$7 = a($$1);
+      boolean $$8 = a($$3);
+      if ($$7 && $$8) {
+         return $$6;
+      } else {
+         ekn $$9 = $$7 ? ekk.a() : $$1.c($$0, $$2);
+         ekn $$10 = $$8 ? ekk.a() : $$3.c($$0, $$4);
+         return ekk.b($$9, $$10, $$5) ? 16 : $$6;
       }
    }
 
+   public static ekn a(crg $$0, ht $$1, dhi $$2, hx $$3) {
+      return a($$2) ? ekk.a() : $$2.a($$0, $$1, $$3);
+   }
+
+   protected static boolean a(dhi $$0) {
+      return !$$0.p() || !$$0.g();
+   }
+
+   protected dhi c(ht $$0) {
+      int $$1 = iu.a($$0.u());
+      int $$2 = iu.a($$0.w());
+      djr $$3 = this.a($$1, $$2);
+      return $$3 == null ? cvc.F.o() : $$3.a_($$0);
+   }
+
+   protected int a(dhi $$0, ht $$1) {
+      return Math.max(1, $$0.b(this.e.q(), $$1));
+   }
+
+   protected boolean a(long $$0, dhi $$1, long $$2, dhi $$3, hx $$4) {
+      ekn $$5 = this.a($$1, $$0, $$4);
+      ekn $$6 = this.a($$3, $$2, $$4.g());
+      return ekk.b($$5, $$6);
+   }
+
+   protected ekn a(dhi $$0, long $$1, hx $$2) {
+      return a(this.e.q(), this.k.f($$1), $$0, $$2);
+   }
+
+   @Nullable
+   protected djr a(int $$0, int $$1) {
+      long $$2 = crh.c($$0, $$1);
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         if ($$2 == this.m[$$3]) {
+            return this.n[$$3];
+         }
+      }
+
+      djr $$4 = this.e.c($$0, $$1);
+
+      for (int $$5 = 1; $$5 > 0; $$5--) {
+         this.m[$$5] = this.m[$$5 - 1];
+         this.n[$$5] = this.n[$$5 - 1];
+      }
+
+      this.m[0] = $$2;
+      this.n[0] = $$4;
+      return $$4;
+   }
+
+   private void c() {
+      Arrays.fill(this.m, crh.a);
+      Arrays.fill(this.n, null);
+   }
+
    @Override
-   public void b(crs $$0, ht $$1, ecg $$2, ato $$3) {
-      if ($$0.X().b(cro.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            ht $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.o($$5)) {
-                  return;
-               }
-
-               dgw $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((crv)$$0, $$5)) {
-                     $$0.b($$5, cug.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
-         } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               ht $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.o($$9)) {
-                  return;
-               }
-
-               if ($$0.t($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), cug.a($$0, $$9));
-               }
-            }
-         }
-      }
+   public void a(ht $$0) {
+      this.h.add($$0.a());
    }
 
-   private boolean a(crv $$0, ht $$1) {
-      for (hx $$2 : hx.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
+   public void a(long $$0, @Nullable djk $$1) {
+      this.f.a($$0, $$1);
+   }
+
+   public void b(crh $$0, boolean $$1) {
+      this.f.c(iu.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public void a(iu $$0, boolean $$1) {
+      this.f.d($$0.s(), $$1);
+   }
+
+   @Override
+   public void a(crh $$0, boolean $$1) {
+      this.f.b(iu.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public int a() {
+      LongIterator $$0 = this.h.iterator();
+
+      while ($$0.hasNext()) {
+         this.a($$0.nextLong());
+      }
+
+      this.h.clear();
+      this.h.trim(512);
+      int $$1 = 0;
+      $$1 += this.e();
+      $$1 += this.d();
+      this.c();
+      this.f.a(this);
+      this.f.b();
+      return $$1;
+   }
+
+   private int d() {
+      int $$0;
+      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
+         long $$1 = this.j.dequeueLong();
+         long $$2 = this.j.dequeueLong();
+         int $$3 = this.f.e($$1);
+         int $$4 = ecj.a.a($$2);
+         if (ecj.a.c($$2) && $$3 < $$4) {
+            this.f.a($$1, $$4);
+            $$3 = $$4;
+         }
+
+         if ($$3 == $$4) {
+            this.a($$1, $$2, $$3);
          }
       }
 
-      return false;
+      return $$0;
    }
 
-   private boolean b(crv $$0, ht $$1) {
-      return $$1.v() >= $$0.I_() && $$1.v() < $$0.aj() && !$$0.A($$1) ? false : $$0.a_($$1).j();
+   private int e() {
+      int $$0;
+      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
+         long $$1 = this.i.dequeueLong();
+         long $$2 = this.i.dequeueLong();
+         this.a($$1, $$2);
+      }
+
+      return $$0;
+   }
+
+   protected void b(long $$0, long $$1) {
+      this.i.enqueue($$0);
+      this.i.enqueue($$1);
+   }
+
+   protected void c(long $$0, long $$1) {
+      this.j.enqueue($$0);
+      this.j.enqueue($$1);
+   }
+
+   @Override
+   public boolean K_() {
+      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
    }
 
    @Nullable
    @Override
-   public jq h() {
-      return js.j;
+   public djk a(iu $$0) {
+      return this.f.d($$0.s());
    }
 
    @Override
-   protected void a(crt $$0, ht $$1, dgw $$2) {
-      this.a($$0, $$1);
+   public int b(ht $$0) {
+      return this.f.a($$0.a());
    }
 
-   @Override
-   public int b(crv $$0) {
-      return $$0.D_().i() ? 4 : 2;
+   public String b(long $$0) {
+      return this.c($$0).a();
    }
 
-   @Override
-   public dgw b(ecg $$0) {
-      return cuv.H.o().a(czi.b, Integer.valueOf(e($$0)));
+   public ecg.b c(long $$0) {
+      return this.f.k($$0);
    }
 
-   @Override
-   public boolean a(ecf $$0) {
-      return $$0 == ech.e || $$0 == ech.d;
-   }
+   protected abstract void a(long var1);
 
-   @Override
-   public int c(crv $$0) {
-      return $$0.D_().i() ? 1 : 2;
-   }
+   protected abstract void a(long var1, long var3, int var5);
 
-   @Override
-   public boolean a(ecg $$0, cqy $$1, ht $$2, ecf $$3, hx $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(arh.a);
-   }
+   protected abstract void a(long var1, long var3);
 
-   @Override
-   public int a(crv $$0) {
-      return $$0.D_().i() ? 10 : 30;
-   }
+   public static class a {
+      private static final int a = 4;
+      private static final int b = 6;
+      private static final long c = 15L;
+      private static final long d = 1008L;
+      private static final long e = 1024L;
+      private static final long f = 2048L;
 
-   @Override
-   public int a(crs $$0, ht $$1, ecg $$2, ecg $$3) {
-      int $$4 = this.a((crv)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cqy)$$0, $$1) > $$2.a((cqy)$$0, $$1) && $$0.E_().a(4) != 0) {
-         $$4 *= 4;
+      public static long a(int $$0, hx $$1) {
+         long $$2 = c(1008L, $$1);
+         return a($$2, $$0);
       }
 
-      return $$4;
-   }
+      public static long a(int $$0) {
+         return a(1008L, $$0);
+      }
 
-   private void a(crt $$0, ht $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(crs $$0) {
-      return $$0.X().b(cro.V);
-   }
-
-   @Override
-   protected void a(crt $$0, ht $$1, dgw $$2, hx $$3, ecg $$4) {
-      if ($$3 == hx.a) {
-         ecg $$5 = $$0.b_($$1);
-         if (this.a(arh.b) && $$5.a(arh.a)) {
-            if ($$2.b() instanceof czi) {
-               $$0.a($$1, cuv.b.o(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
+      public static long a(int $$0, boolean $$1) {
+         long $$2 = 1008L;
+         $$2 |= 2048L;
+         if ($$1) {
+            $$2 |= 1024L;
          }
+
+         return a($$2, $$0);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
+      public static long a(int $$0, boolean $$1, hx $$2) {
+         long $$3 = c(1008L, $$2);
+         if ($$1) {
+            $$3 |= 1024L;
+         }
 
-   @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<aqm> j() {
-      return Optional.of(aqn.cE);
-   }
-
-   public static class a extends ecj {
-      @Override
-      protected void a(dgx.a<ecf, ecg> $$0) {
-         super.a($$0);
-         $$0.a(b);
+         return a($$3, $$0);
       }
 
-      @Override
-      public int d(ecg $$0) {
-         return $$0.c(b);
+      public static long b(int $$0, boolean $$1, hx $$2) {
+         long $$3 = 0L;
+         if ($$1) {
+            $$3 |= 1024L;
+         }
+
+         $$3 = b($$3, $$2);
+         return a($$3, $$0);
       }
 
-      @Override
-      public boolean c(ecg $$0) {
-         return false;
-      }
-   }
+      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
+         long $$5 = a(0L, 15);
+         if ($$0) {
+            $$5 = b($$5, hx.a);
+         }
 
-   public static class b extends ecj {
-      @Override
-      public int d(ecg $$0) {
-         return 8;
+         if ($$1) {
+            $$5 = b($$5, hx.c);
+         }
+
+         if ($$2) {
+            $$5 = b($$5, hx.d);
+         }
+
+         if ($$3) {
+            $$5 = b($$5, hx.e);
+         }
+
+         if ($$4) {
+            $$5 = b($$5, hx.f);
+         }
+
+         return $$5;
       }
 
-      @Override
-      public boolean c(ecg $$0) {
-         return true;
+      public static int a(long $$0) {
+         return (int)($$0 & 15L);
+      }
+
+      public static boolean b(long $$0) {
+         return ($$0 & 1024L) != 0L;
+      }
+
+      public static boolean c(long $$0) {
+         return ($$0 & 2048L) != 0L;
+      }
+
+      public static boolean a(long $$0, hx $$1) {
+         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
+      }
+
+      private static long a(long $$0, int $$1) {
+         return $$0 & -16L | (long)$$1 & 15L;
+      }
+
+      private static long b(long $$0, hx $$1) {
+         return $$0 | 1L << $$1.ordinal() + 4;
+      }
+
+      private static long c(long $$0, hx $$1) {
+         return $$0 & ~(1L << $$1.ordinal() + 4);
       }
    }
 }

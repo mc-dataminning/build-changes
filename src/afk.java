@@ -1,15 +1,8 @@
-public class afk implements wk<afi> {
-   public afk() {
-   }
-
-   public afk(tu $$0) {
-   }
-
+public interface afk extends acm, acn {
    @Override
-   public void a(tu $$0) {
+   default tt b() {
+      return tt.c;
    }
 
-   public void a(afi $$0) {
-      $$0.a(this);
-   }
+   void a(afm var1);
 }

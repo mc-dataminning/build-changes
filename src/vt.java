@@ -9,7 +9,7 @@ public interface vt {
 
    vt.a<?> a();
 
-   public static record a<T extends vt>(MapCodec<T> a, String b) implements aub {
+   public static record a<T extends vt>(MapCodec<T> a, String b) implements aug {
       @Override
       public String c() {
          return this.b;

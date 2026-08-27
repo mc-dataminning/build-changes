@@ -3,7 +3,7 @@ public class aau implements wk<yd> {
    private final double b;
    private final long c;
 
-   public aau(din $$0) {
+   public aau(diz $$0) {
       this.a = $$0.i();
       this.b = $$0.k();
       this.c = $$0.j();

@@ -7,8 +7,8 @@ public class yg implements wk<yd> {
    private final int f;
    private final int g;
 
-   public yg(bki $$0, int $$1) {
-      this.f = $$0.ah();
+   public yg(bkq $$0, int $$1) {
+      this.f = $$0.aj();
       this.g = $$1;
    }
 

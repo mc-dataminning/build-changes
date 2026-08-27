@@ -1,53 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcn extends dbs {
-   public static final MapCodec<dcn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dij.a.fieldOf("wood_type").forGetter(dbs::d), t()).apply($$0, dcn::new));
-   public static final dhw b = dhm.ba;
+public class dcn extends cum {
+   public static final MapCodec<dcn> a = b(dcn::new);
 
    @Override
    public MapCodec<dcn> a() {
       return a;
    }
 
-   public dcn(dij $$0, dgv.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   protected dcn(dhh.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dgw $$0, crv $$1, ht $$2) {
-      return $$1.a_($$2.d()).e();
+   public dfd a(ht $$0, dhi $$1) {
+      return new dgq($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+      return a($$2, dff.j, $$0.B ? dgq::a : dgq::b);
    }
 
    @Override
-   public dgw a(cnj $$0) {
-      ecg $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dic.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == ech.c));
+   public void a(dhi $$0, ame $$1, ht $$2, clj $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
-      return $$1 == hx.a && !this.a($$0, $$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dbf b_(dhi $$0) {
+      return dbf.c;
    }
 
    @Override
-   public float g(dgw $$0) {
-      return dic.b($$0.c(b));
+   public void a(clj $$0, @Nullable crg $$1, List<ur> $$2, cna $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Optional<ur> $$4 = this.a($$0);
+      if ($$4.isPresent()) {
+         $$2.add($$4.get());
+      } else {
+         $$2.add(uq.a);
+         $$2.add(ur.c("block.minecraft.spawner.desc1").a(n.h));
+         $$2.add(uq.a().b(ur.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   @Override
-   public dgw a(dgw $$0, dbf $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
+   private Optional<ur> a(clj $$0) {
+      rz $$1 = cjc.a($$0);
+      if ($$1 != null && $$1.b("SpawnData", 10)) {
+         String $$2 = $$1.p("SpawnData").p("entity").l("id");
+         agi $$3 = agi.a($$2);
+         if ($$3 != null) {
+            return jy.h.b($$3).map($$0x -> ur.c($$0x.g()).a(n.h));
+         }
+      }
 
-   @Override
-   public dgw a(dgw $$0, czp $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dgx.a<cut, dgw> $$0) {
-      $$0.a(b, f);
+      return Optional.empty();
    }
 }

@@ -1,25 +1,46 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class eur {
-   private static final asu a = asu.codepoint(32, vo.a);
+public abstract class eur extends eux {
+   protected static final int e = 2;
+   private static final ewm a = new ewm(new agi("widget/button"), new agi("widget/button_disabled"), new agi("widget/button_highlighted"));
 
-   private static String a(String $$0) {
-      return esr.N().m.I().c() ? $$0 : n.a($$0);
+   public eur(int $$0, int $$1, int $$2, int $$3, ur $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static List<asu> a(uw $$0, int $$1, etz $$2) {
-      esh $$3 = new esh();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(uw.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, vo.a);
-      List<asu> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, vo.a, ($$1x, $$2x) -> {
-         asu $$3x = ru.a().a($$1x);
-         $$4.add($$2x ? asu.composite(a, $$3x) : $$3x);
-      });
-      return (List<asu>)($$4.isEmpty() ? Lists.newArrayList(new asu[]{asu.a}) : $$4);
+   public abstract void b();
+
+   @Override
+   protected void b(euo $$0, int $$1, int $$2, float $$3) {
+      etd $$4 = etd.N();
+      $$0.a(1.0F, 1.0F, 1.0F, this.k);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.i, this.n()), this.p(), this.r(), this.k(), this.i());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.i ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | atm.f(this.k * 255.0F) << 24);
+   }
+
+   public void a(euo $$0, eum $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      this.b();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.i || !this.j) {
+         return false;
+      } else if (eyx.a($$0)) {
+         this.a(etd.N().ah());
+         this.b();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

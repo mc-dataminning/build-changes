@@ -1,7 +1,7 @@
 public class aax implements wk<yd> {
    private final int a;
 
-   public aax(din $$0) {
+   public aax(diz $$0) {
       this.a = $$0.r();
    }
 

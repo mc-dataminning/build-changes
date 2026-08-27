@@ -1,37 +1,33 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class ggm {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public class ggm implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bfb<ggl> b;
+   private final bhq<Runnable> c;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   public ggm(FileChannel $$0, Executor $$1) {
+      this.b = new bfb<>(ggl.a, $$0);
+      this.c = bhq.a($$1, "telemetry-event-log");
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   public ggn a() {
+      return $$0 -> this.c.a(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(ggb $$0) {
-      this.b.ifPresent($$1 -> $$0.send(ggc.e, $$1x -> {
-            $$1x.a(gge.p, this.a($$1));
-            $$1x.a(gge.q, (int)this.c);
-         }));
+   @Override
+   public void close() {
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

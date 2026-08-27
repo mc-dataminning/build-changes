@@ -54,12 +54,12 @@ public class ux {
       return this.b.hashCode();
    }
 
-   public static class a<T> implements aub {
+   public static class a<T> implements aug {
       public static final ux.a<ur> a = new ux.a<>("show_text", true, ut.a, DataResult::success);
       public static final ux.a<ux.c> b = new ux.a<>("show_item", true, ux.c.b, ux.c::a);
       public static final ux.a<ux.b> c = new ux.a<>("show_entity", true, ux.b.a, ux.b::a);
-      public static final Codec<ux.a<?>> d = aub.b(() -> new ux.a[]{a, b, c});
-      public static final Codec<ux.a<?>> e = asq.a(d, ux.a::a);
+      public static final Codec<ux.a<?>> d = aug.b(() -> new ux.a[]{a, b, c});
+      public static final Codec<ux.a<?>> e = asu.a(d, ux.a::a);
       private final String f;
       private final boolean g;
       final Codec<ux.d<T>> h;
@@ -104,21 +104,21 @@ public class ux {
          $$0 -> $$0.group(
                   jy.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
                   iv.d.fieldOf("id").forGetter($$0x -> $$0x.c),
-                  asq.a(ut.a, "name").forGetter($$0x -> $$0x.d)
+                  asu.a(ut.a, "name").forGetter($$0x -> $$0x.d)
                )
                .apply($$0, ux.b::new)
       );
-      public final bkm<?> b;
+      public final bku<?> b;
       public final UUID c;
       public final Optional<ur> d;
       @Nullable
       private List<ur> e;
 
-      public b(bkm<?> $$0, UUID $$1, @Nullable ur $$2) {
+      public b(bku<?> $$0, UUID $$1, @Nullable ur $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bkm<?> $$0, UUID $$1, Optional<ur> $$2) {
+      public b(bku<?> $$0, UUID $$1, Optional<ur> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -128,7 +128,7 @@ public class ux {
          try {
             rz $$1 = sx.a($$0.getString());
             ur $$2 = ur.a.a($$1.l("name"));
-            bkm<?> $$3 = jy.h.a(new agg($$1.l("type")));
+            bku<?> $$3 = jy.h.a(new agi($$1.l("type")));
             UUID $$4 = UUID.fromString($$1.l("id"));
             return DataResult.success(new ux.b($$3, $$4, $$2));
          } catch (Exception var5) {
@@ -171,30 +171,30 @@ public class ux {
       public static final Codec<ux.c> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   jy.i.q().fieldOf("id").forGetter($$0x -> $$0x.c),
-                  asq.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
-                  asq.a(sx.i, "tag").forGetter($$0x -> $$0x.e)
+                  asu.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
+                  asu.a(sx.i, "tag").forGetter($$0x -> $$0x.e)
                )
                .apply($$0, ux.c::new)
       );
       public static final Codec<ux.c> b = Codec.either(jy.i.q(), a)
          .xmap($$0 -> (ux.c)$$0.map($$0x -> new ux.c($$0x, 1, Optional.empty()), $$0x -> $$0x), Either::right);
-      private final ckw c;
+      private final cle c;
       private final int d;
       private final Optional<rz> e;
       @Nullable
-      private clb f;
+      private clj f;
 
-      c(ckw $$0, int $$1, @Nullable rz $$2) {
+      c(cle $$0, int $$1, @Nullable rz $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      c(ckw $$0, int $$1, Optional<rz> $$2) {
+      c(cle $$0, int $$1, Optional<rz> $$2) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
       }
 
-      public c(clb $$0) {
+      public c(clj $$0) {
          this($$0.d(), $$0.L(), $$0.v() != null ? Optional.of($$0.v().h()) : Optional.empty());
       }
 
@@ -217,9 +217,9 @@ public class ux {
          return 31 * $$0 + this.e.hashCode();
       }
 
-      public clb a() {
+      public clj a() {
          if (this.f == null) {
-            this.f = new clb(this.c, this.d);
+            this.f = new clj(this.c, this.d);
             this.e.ifPresent(this.f::c);
          }
 
@@ -229,7 +229,7 @@ public class ux {
       private static DataResult<ux.c> a(ur $$0) {
          try {
             rz $$1 = sx.a($$0.getString());
-            return DataResult.success(new ux.c(clb.a($$1)));
+            return DataResult.success(new ux.c(clj.a($$1)));
          } catch (CommandSyntaxException var2) {
             return DataResult.error(() -> "Failed to parse item tag: " + var2.getMessage());
          }

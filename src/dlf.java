@@ -1,104 +1,63 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dlf implements dlj {
-   private final List<dli> b = Lists.newArrayList();
-   private final Set<dli> c = Sets.newHashSet();
-   private final List<dli> d = Lists.newArrayList();
-   private boolean e;
-   private final ama f;
-   private final int g;
-   private final dlf.a h;
+public class dlf {
+   private Int2ObjectMap<bkq> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bkq> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bkq> c;
 
-   public dlf(ama $$0, int $$1, dlf.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   @Override
-   public void a(dli $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
-
-      aci.a(this.f, $$0);
-   }
-
-   @Override
-   public void b(dli $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
-
-   @Override
-   public boolean a(dlg $$0, eji $$1, dlg.a $$2, dlj.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<dli> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            dli $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<eji> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
+         while ($$1.hasNext()) {
+            Entry<bkq> $$0 = (Entry<bkq>)$$1.next();
+            this.b.put($$0.getIntKey(), (bkq)$$0.getValue());
          }
-      } finally {
-         this.e = false;
-      }
 
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
+         Int2ObjectMap<bkq> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
    }
 
-   private static Optional<eji> a(ama $$0, eji $$1, dli $$2) {
-      Optional<eji> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
+   public void a(bkq $$0) {
+      this.a();
+      this.a.put($$0.aj(), $$0);
+   }
+
+   public void b(bkq $$0) {
+      this.a();
+      this.a.remove($$0.aj());
+   }
+
+   public boolean c(bkq $$0) {
+      return this.a.containsKey($$0.aj());
+   }
+
+   public void a(Consumer<bkq> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
       } else {
-         double $$4 = ht.a($$3.get()).j(ht.a($$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
+         this.c = this.a;
 
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bkq $$1 = (bkq)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
+      }
    }
 }

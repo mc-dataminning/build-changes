@@ -1,123 +1,208 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class gbv implements gbl {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gbv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               agg.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               asq.a(gbv.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gbv::new)
-   );
-   private final agg d;
-   private final List<gbv.a> e;
-   private final double f;
-   private final double g;
+public class gbv implements apb, gbw, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final agi a = new agi("");
+   private final Map<agi, gbf> c = Maps.newHashMap();
+   private final Set<gbw> d = Sets.newHashSet();
+   private final Map<String, Integer> e = Maps.newHashMap();
+   private final aph f;
 
-   public gbv(agg $$0, List<gbv.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gbv(aph $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public void a(apd $$0, gbl.a $$1) {
-      agg $$2 = a.a(this.d);
-      Optional<apb> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gbr $$4 = new gbr($$2, $$3.get(), this.e.size());
-
-         for (gbv.a $$5 : this.e) {
-            $$1.a($$5.b, new gbv.b($$4, $$5, this.f, this.g));
-         }
+   public void a(agi $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0));
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         this.d($$0);
+      }
+   }
+
+   private void d(agi $$0) {
+      gbf $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gbn($$0);
+         this.a($$0, $$1);
+      }
+
+      $$1.c();
+   }
+
+   public void a(agi $$0, gbf $$1) {
+      $$1 = this.d($$0, $$1);
+      gbf $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null && $$2 != gbk.c()) {
+            this.c($$0, $$2);
+         }
+
+         if ($$1 instanceof gbw) {
+            this.d.add((gbw)$$1);
+         }
+      }
+   }
+
+   private void c(agi $$0, gbf $$1) {
+      if ($$1 != gbk.c()) {
+         this.d.remove($$1);
+
+         try {
+            $$1.close();
+         } catch (Exception var4) {
+            b.warn("Failed to close texture {}", $$0, var4);
+         }
+      }
+
+      $$1.b();
+   }
+
+   private gbf d(agi $$0, gbf $$1) {
+      try {
+         $$1.a(this.f);
+         return $$1;
+      } catch (IOException var6) {
+         if ($$0 != a) {
+            b.warn("Failed to load texture: {}", $$0, var6);
+         }
+
+         return gbk.c();
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Registering texture");
+         p $$5 = $$4.a("Resource location being registered");
+         $$5.a("Resource location", $$0);
+         $$5.a("Texture object class", () -> $$1.getClass().getName());
+         throw new y($$4);
+      }
+   }
+
+   public gbf b(agi $$0) {
+      gbf $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gbn($$0);
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   public gbf b(agi $$0, gbf $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   public agi a(String $$0, gbh $$1) {
+      Integer $$2 = this.e.get($$0);
+      if ($$2 == null) {
+         $$2 = 1;
+      } else {
+         $$2 = $$2 + 1;
+      }
+
+      this.e.put($$0, $$2);
+      agi $$3 = new agi(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
+      this.a($$3, $$1);
+      return $$3;
+   }
+
+   public CompletableFuture<Void> a(agi $$0, Executor $$1) {
+      if (!this.c.containsKey($$0)) {
+         gbm $$2 = new gbm(this.f, $$0, $$1);
+         this.c.put($$0, $$2);
+         return $$2.d().thenRunAsync(() -> this.a($$0, (gbf)$$2), gbv::a);
+      } else {
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   private static void a(Runnable $$0) {
+      etd.N().execute(() -> RenderSystem.recordRenderCall($$0::run));
+   }
+
+   @Override
+   public void e() {
+      for (gbw $$0 : this.d) {
+         $$0.e();
+      }
+   }
+
+   public void c(agi $$0) {
+      gbf $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.c($$0, $$1);
       }
    }
 
    @Override
-   public gbn a() {
-      return gbo.d;
+   public void close() {
+      this.c.forEach(this::c);
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
    }
 
-   static record a(agg b, double c, double d, double e, double f) {
-      public static final Codec<gbv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  agg.a.fieldOf("sprite").forGetter(gbv.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gbv.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gbv.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gbv.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gbv.a::e)
-               )
-               .apply($$0, gbv.a::new)
-      );
+   @Override
+   public CompletableFuture<Void> a(apb.a $$0, aph $$1, bfo $$2, bfo $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Void> $$6 = new CompletableFuture<>();
+      faz.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
+         gbk.c();
+         eqz.a(this.f);
+         Iterator<Entry<agi, gbf>> $$4x = this.c.entrySet().iterator();
 
-      public agg a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gbl.b {
-      private final gbr a;
-      private final gbv.a b;
-      private final double c;
-      private final double d;
-
-      b(gbr $$0, gbv.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gbb a(gbk $$0) {
-         try {
-            eml $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = ati.a(this.b.c * $$2);
-            int $$5 = ati.a(this.b.d * $$3);
-            int $$6 = ati.a(this.b.e * $$2);
-            int $$7 = ati.a(this.b.f * $$3);
-            eml $$8 = new eml(eml.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gbb(this.b.b, new gcu($$6, $$7), $$8, apf.a);
-         } catch (Exception var16) {
-            gbv.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+         while ($$4x.hasNext()) {
+            Entry<agi, gbf> $$5x = $$4x.next();
+            agi $$6x = $$5x.getKey();
+            gbf $$7 = $$5x.getValue();
+            if ($$7 == gbk.c() && !$$6x.equals(gbk.b())) {
+               $$4x.remove();
+            } else {
+               $$7.a(this, $$1, $$6x, $$5);
+            }
          }
 
-         return gax.a();
+         etd.N().i(() -> $$6.complete(null));
+      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
+      return $$6;
+   }
+
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
       }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof gbg $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
+         }
+      });
    }
 }

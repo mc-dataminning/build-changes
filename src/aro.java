@@ -1,35 +1,108 @@
-import java.util.ArrayList;
-import java.util.List;
+public final class aro {
+   public static final arv<cle> a = a("wool");
+   public static final arv<cle> b = a("planks");
+   public static final arv<cle> c = a("stone_bricks");
+   public static final arv<cle> d = a("wooden_buttons");
+   public static final arv<cle> e = a("stone_buttons");
+   public static final arv<cle> f = a("buttons");
+   public static final arv<cle> g = a("wool_carpets");
+   public static final arv<cle> h = a("wooden_doors");
+   public static final arv<cle> i = a("wooden_stairs");
+   public static final arv<cle> j = a("wooden_slabs");
+   public static final arv<cle> k = a("wooden_fences");
+   public static final arv<cle> l = a("fence_gates");
+   public static final arv<cle> m = a("wooden_pressure_plates");
+   public static final arv<cle> n = a("wooden_trapdoors");
+   public static final arv<cle> o = a("doors");
+   public static final arv<cle> p = a("saplings");
+   public static final arv<cle> q = a("logs_that_burn");
+   public static final arv<cle> r = a("logs");
+   public static final arv<cle> s = a("dark_oak_logs");
+   public static final arv<cle> t = a("oak_logs");
+   public static final arv<cle> u = a("birch_logs");
+   public static final arv<cle> v = a("acacia_logs");
+   public static final arv<cle> w = a("cherry_logs");
+   public static final arv<cle> x = a("jungle_logs");
+   public static final arv<cle> y = a("spruce_logs");
+   public static final arv<cle> z = a("mangrove_logs");
+   public static final arv<cle> A = a("crimson_stems");
+   public static final arv<cle> B = a("warped_stems");
+   public static final arv<cle> C = a("bamboo_blocks");
+   public static final arv<cle> D = a("wart_blocks");
+   public static final arv<cle> E = a("banners");
+   public static final arv<cle> F = a("sand");
+   public static final arv<cle> G = a("smelts_to_glass");
+   public static final arv<cle> H = a("stairs");
+   public static final arv<cle> I = a("slabs");
+   public static final arv<cle> J = a("walls");
+   public static final arv<cle> K = a("anvil");
+   public static final arv<cle> L = a("rails");
+   public static final arv<cle> M = a("leaves");
+   public static final arv<cle> N = a("trapdoors");
+   public static final arv<cle> O = a("small_flowers");
+   public static final arv<cle> P = a("beds");
+   public static final arv<cle> Q = a("fences");
+   public static final arv<cle> R = a("tall_flowers");
+   public static final arv<cle> S = a("flowers");
+   public static final arv<cle> T = a("piglin_repellents");
+   public static final arv<cle> U = a("piglin_loved");
+   public static final arv<cle> V = a("ignored_by_piglin_babies");
+   public static final arv<cle> W = a("piglin_food");
+   public static final arv<cle> X = a("fox_food");
+   public static final arv<cle> Y = a("gold_ores");
+   public static final arv<cle> Z = a("iron_ores");
+   public static final arv<cle> aa = a("diamond_ores");
+   public static final arv<cle> ab = a("redstone_ores");
+   public static final arv<cle> ac = a("lapis_ores");
+   public static final arv<cle> ad = a("coal_ores");
+   public static final arv<cle> ae = a("emerald_ores");
+   public static final arv<cle> af = a("copper_ores");
+   public static final arv<cle> ag = a("non_flammable_wood");
+   public static final arv<cle> ah = a("soul_fire_base_blocks");
+   public static final arv<cle> ai = a("candles");
+   public static final arv<cle> aj = a("dirt");
+   public static final arv<cle> ak = a("terracotta");
+   public static final arv<cle> al = a("completes_find_tree_tutorial");
+   public static final arv<cle> am = a("boats");
+   public static final arv<cle> an = a("chest_boats");
+   public static final arv<cle> ao = a("fishes");
+   public static final arv<cle> ap = a("signs");
+   public static final arv<cle> aq = a("music_discs");
+   public static final arv<cle> ar = a("creeper_drop_music_discs");
+   public static final arv<cle> as = a("coals");
+   public static final arv<cle> at = a("arrows");
+   public static final arv<cle> au = a("lectern_books");
+   public static final arv<cle> av = a("bookshelf_books");
+   public static final arv<cle> aw = a("beacon_payment_items");
+   public static final arv<cle> ax = a("stone_tool_materials");
+   public static final arv<cle> ay = a("stone_crafting_materials");
+   public static final arv<cle> az = a("freeze_immune_wearables");
+   public static final arv<cle> aA = a("axolotl_tempt_items");
+   public static final arv<cle> aB = a("dampens_vibrations");
+   public static final arv<cle> aC = a("cluster_max_harvestables");
+   public static final arv<cle> aD = a("compasses");
+   public static final arv<cle> aE = a("hanging_signs");
+   public static final arv<cle> aF = a("creeper_igniters");
+   public static final arv<cle> aG = a("noteblock_top_instruments");
+   public static final arv<cle> aH = a("trimmable_armor");
+   public static final arv<cle> aI = a("trim_materials");
+   public static final arv<cle> aJ = a("trim_templates");
+   public static final arv<cle> aK = a("sniffer_food");
+   public static final arv<cle> aL = a("decorated_pot_sherds");
+   public static final arv<cle> aM = a("decorated_pot_ingredients");
+   public static final arv<cle> aN = a("swords");
+   public static final arv<cle> aO = a("axes");
+   public static final arv<cle> aP = a("hoes");
+   public static final arv<cle> aQ = a("pickaxes");
+   public static final arv<cle> aR = a("shovels");
+   public static final arv<cle> aS = a("tools");
+   public static final arv<cle> aT = a("breaks_decorated_pots");
+   public static final arv<cle> aU = a("villager_plantable_seeds");
 
-public class aro {
-   private final List<arp> a = new ArrayList<>();
-
-   public static aro a() {
-      return new aro();
+   private aro() {
    }
 
-   public List<arp> b() {
-      return List.copyOf(this.a);
-   }
-
-   public aro a(arp $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public aro a(agg $$0) {
-      return this.a(arp.a($$0));
-   }
-
-   public aro b(agg $$0) {
-      return this.a(arp.b($$0));
-   }
-
-   public aro c(agg $$0) {
-      return this.a(arp.c($$0));
-   }
-
-   public aro d(agg $$0) {
-      return this.a(arp.d($$0));
+   private static arv<cle> a(String $$0) {
+      return arv.a(jz.E, new agi($$0));
    }
 }

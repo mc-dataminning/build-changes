@@ -2,14 +2,10 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bpx {
-   public static bmq<bky> a() {
-      return bqb.a((Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$0 -> $$0.a((bqe<bky>)(($$0x, $$1, $$2) -> {
-            if (!$$1.dN().c(cex.e) && $$1.fD()) {
-               $$1.fE();
-               return true;
-            } else {
-               return false;
-            }
+   public static bmy<blg> a() {
+      return bqj.a((Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$0 -> $$0.a((bqm<blg>)(($$0x, $$1, $$2) -> {
+            $$1.dP().a($$0x.X(), $$0x.W());
+            return true;
          }))));
    }
 }

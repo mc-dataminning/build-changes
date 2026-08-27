@@ -1,68 +1,214 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import javax.annotation.Nullable;
 
-public record cdc(String q, Predicate<ib<bwa>> r, Predicate<ib<bwa>> s, ImmutableSet<ckw> t, ImmutableSet<cut> u, @Nullable aqm v) {
-   public static final Predicate<ib<bwa>> a = $$0 -> $$0.a(arm.a);
-   public static final cdc b = a("none", bwa.a, a, null);
-   public static final cdc c = a("armorer", bwb.a, aqn.yS);
-   public static final cdc d = a("butcher", bwb.b, aqn.yT);
-   public static final cdc e = a("cartographer", bwb.c, aqn.yU);
-   public static final cdc f = a("cleric", bwb.d, aqn.yV);
-   public static final cdc g = a("farmer", bwb.e, ImmutableSet.of(cle.oI, cle.oH, cle.us, cle.qK), ImmutableSet.of(cuv.cC), aqn.yW);
-   public static final cdc h = a("fisherman", bwb.f, aqn.yX);
-   public static final cdc i = a("fletcher", bwb.g, aqn.yY);
-   public static final cdc j = a("leatherworker", bwb.h, aqn.yZ);
-   public static final cdc k = a("librarian", bwb.i, aqn.za);
-   public static final cdc l = a("mason", bwb.j, aqn.zb);
-   public static final cdc m = a("nitwit", bwa.a, bwa.a, null);
-   public static final cdc n = a("shepherd", bwb.k, aqn.zc);
-   public static final cdc o = a("toolsmith", bwb.l, aqn.zd);
-   public static final cdc p = a("weaponsmith", bwb.m, aqn.ze);
+public abstract class cdc extends bkl implements cdf, cdg, cqx {
+   private static final afo<Integer> bV = afr.a(cdc.class, afq.b);
+   public static final int bT = 300;
+   private static final int bW = 8;
+   @Nullable
+   private cdu bX;
+   @Nullable
+   protected cqz bU;
+   private final bje bY = new bje(8);
+
+   public cdc(bku<? extends cdc> $$0, csa $$1) {
+      super($$0, $$1);
+      this.a(edd.n, 16.0F);
+      this.a(edd.o, -1.0F);
+   }
 
    @Override
-   public String toString() {
-      return this.q;
+   public blz a(csp $$0, biv $$1, blk $$2, @Nullable blz $$3, @Nullable rz $$4) {
+      if ($$3 == null) {
+         $$3 = new bkl.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private static cdc a(String $$0, agf<bwa> $$1, @Nullable aqm $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public int u() {
+      return this.an.b(bV);
    }
 
-   private static cdc a(String $$0, Predicate<ib<bwa>> $$1, Predicate<ib<bwa>> $$2, @Nullable aqm $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public void s(int $$0) {
+      this.an.b(bV, $$0);
    }
 
-   private static cdc a(String $$0, agf<bwa> $$1, ImmutableSet<ckw> $$2, ImmutableSet<cut> $$3, @Nullable aqm $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   @Override
+   public int w() {
+      return 0;
    }
 
-   private static cdc a(String $$0, Predicate<ib<bwa>> $$1, Predicate<ib<bwa>> $$2, ImmutableSet<ckw> $$3, ImmutableSet<cut> $$4, @Nullable aqm $$5) {
-      return io.a(jy.A, new agg($$0), new cdc($$0, $$1, $$2, $$3, $$4, $$5));
+   @Override
+   protected float b(bls $$0, bkr $$1) {
+      return this.n_() ? 0.81F : 1.62F;
    }
 
-   public String a() {
-      return this.q;
+   @Override
+   protected void b_() {
+      super.b_();
+      this.an.a(bV, 0);
    }
 
-   public Predicate<ib<bwa>> b() {
-      return this.r;
-   }
-
-   public Predicate<ib<bwa>> c() {
-      return this.s;
-   }
-
-   public ImmutableSet<ckw> d() {
-      return this.t;
-   }
-
-   public ImmutableSet<cut> e() {
-      return this.u;
+   @Override
+   public void f(@Nullable cdu $$0) {
+      this.bX = $$0;
    }
 
    @Nullable
-   public aqm f() {
-      return this.v;
+   @Override
+   public cdu gf() {
+      return this.bX;
+   }
+
+   public boolean gg() {
+      return this.bX != null;
+   }
+
+   @Override
+   public cqz gh() {
+      if (this.bU == null) {
+         this.bU = new cqz();
+         this.gm();
+      }
+
+      return this.bU;
+   }
+
+   @Override
+   public void a(@Nullable cqz $$0) {
+   }
+
+   @Override
+   public void t(int $$0) {
+   }
+
+   @Override
+   public void a(cqy $$0) {
+      $$0.j();
+      this.bI = -this.Q();
+      this.b($$0);
+      if (this.bX instanceof amf) {
+         al.s.a((amf)this.bX, this, $$0.d());
+      }
+   }
+
+   protected abstract void b(cqy var1);
+
+   @Override
+   public boolean gi() {
+      return true;
+   }
+
+   @Override
+   public void l(clj $$0) {
+      if (!this.dN().B && this.bI > -this.Q() + 20) {
+         this.bI = -this.Q();
+         this.a(this.w(!$$0.b()), this.eX(), this.eY());
+      }
+   }
+
+   @Override
+   public aqq gj() {
+      return aqr.zs;
+   }
+
+   protected aqq w(boolean $$0) {
+      return $$0 ? aqr.zs : aqr.zq;
+   }
+
+   public void gk() {
+      this.a(aqr.zn, this.eX(), this.eY());
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      cqz $$1 = this.gh();
+      if (!$$1.isEmpty()) {
+         $$0.a("Offers", $$1.a());
+      }
+
+      this.a_($$0);
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("Offers", 10)) {
+         this.bU = new cqz($$0.p("Offers"));
+      }
+
+      this.c($$0);
+   }
+
+   @Nullable
+   @Override
+   public bkq b(ame $$0) {
+      this.gl();
+      return super.b($$0);
+   }
+
+   protected void gl() {
+      this.f(null);
+   }
+
+   @Override
+   public void a(bjo $$0) {
+      super.a($$0);
+      this.gl();
+   }
+
+   protected void a(jq $$0) {
+      for (int $$1 = 0; $$1 < 5; $$1++) {
+         double $$2 = this.ag.k() * 0.02;
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         this.dN().a($$0, this.d(1.0), this.dv() + 1.0, this.g(1.0), $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean a(cdu $$0) {
+      return false;
+   }
+
+   @Override
+   public bje A() {
+      return this.bY;
+   }
+
+   @Override
+   public bly a_(int $$0) {
+      int $$1 = $$0 - 300;
+      return $$1 >= 0 && $$1 < this.bY.b() ? bly.a(this.bY, $$1) : super.a_($$0);
+   }
+
+   protected abstract void gm();
+
+   protected void a(cqz $$0, cdl.g[] $$1, int $$2) {
+      ArrayList<cdl.g> $$3 = Lists.newArrayList($$1);
+      int $$4 = 0;
+
+      while ($$4 < $$2 && !$$3.isEmpty()) {
+         cqy $$5 = $$3.remove(this.ag.a($$3.size())).a(this, this.ag);
+         if ($$5 != null) {
+            $$0.add($$5);
+            $$4++;
+         }
+      }
+   }
+
+   @Override
+   public eju q(float $$0) {
+      float $$1 = atm.i($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
+      eju $$2 = new eju(0.0, this.cH().c() - 1.0, 0.2);
+      return this.l($$0).e($$2.b(-$$1));
+   }
+
+   @Override
+   public boolean gn() {
+      return this.dN().B;
    }
 }

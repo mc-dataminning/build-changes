@@ -1,16 +1,16 @@
-public class cqa extends cpm {
-   public cqa(cpm.a $$0, bkn... $$1) {
-      super($$0, cpn.m, $$1);
+public class cqa extends cpu {
+   protected cqa(cpu.a $$0, cpv $$1, bkv... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override

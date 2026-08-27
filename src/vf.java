@@ -8,7 +8,7 @@ public class vf implements ur {
    private final us c;
    private final List<ur> d;
    private vo e;
-   private asu f = asu.a;
+   private asy f = asy.a;
    @Nullable
    private ru g;
 
@@ -77,7 +77,7 @@ public class vf implements ur {
    }
 
    @Override
-   public asu g() {
+   public asy g() {
       ru $$0 = ru.a();
       if (this.g != $$0) {
          this.f = $$0.a(this);

@@ -1,12 +1,12 @@
 public class zx implements wk<yd> {
-   private final bip a;
+   private final biw a;
 
-   public zx(bip $$0) {
+   public zx(biw $$0) {
       this.a = $$0;
    }
 
    public zx(tu $$0) {
-      this.a = $$0.b(bip.class);
+      this.a = $$0.b(biw.class);
    }
 
    @Override
@@ -18,7 +18,7 @@ public class zx implements wk<yd> {
       $$0.a(this);
    }
 
-   public bip a() {
+   public biw a() {
       return this.a;
    }
 }

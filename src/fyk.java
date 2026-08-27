@@ -1,16 +1,12 @@
-public class fyk extends fxl {
-   private static final agg a = new agg("textures/entity/skeleton/wither_skeleton.png");
+public class fyk extends fuy<cec> {
+   public static final agi a = new agi("textures/entity/projectiles/arrow.png");
+   public static final agi f = new agi("textures/entity/projectiles/tipped_arrow.png");
 
-   public fyk(fvk.a $$0) {
-      super($$0, fka.bQ, fka.bR, fka.bS);
+   public fyk(fvx.a $$0) {
+      super($$0);
    }
 
-   @Override
-   public agg a(caj $$0) {
-      return a;
-   }
-
-   protected void a(caj $$0, enk $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public agi a(cec $$0) {
+      return $$0.H() > 0 ? f : a;
    }
 }

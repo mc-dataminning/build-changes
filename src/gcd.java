@@ -1,45 +1,29 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gcd {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class gcd implements gby {
+   public static final Codec<gcd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gcd::new)
+   );
+   private final String c;
+   private final String d;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      aoa.a $$3 = aoa.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public gcd(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = asy.a($$5);
-         JsonObject $$7 = asy.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = asy.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
-      }
+   @Override
+   public void a(aph $$0, gby.a $$1) {
+      agb $$2 = new agb("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         agi $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
 
-      return $$3.a("index-" + $$1).getPath("/");
+   @Override
+   public gca a() {
+      return gcb.b;
    }
 }

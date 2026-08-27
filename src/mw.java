@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 
 public class mw implements mq {
    private final mr b;
-   private final cnt c;
-   private final ckw d;
-   private final coc e;
+   private final cob c;
+   private final cle d;
+   private final cok e;
    private final float f;
    private final int g;
    private final Map<String, am<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
-   private final coj<? extends cnn> j;
+   private final cos<? extends cnv> j;
 
-   private mw(mr $$0, cnt $$1, crr $$2, coc $$3, float $$4, int $$5, coj<? extends cnn> $$6) {
+   private mw(mr $$0, cob $$1, crz $$2, cok $$3, float $$4, int $$5, cos<? extends cnv> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.k();
@@ -25,24 +25,24 @@ public class mw implements mq {
       this.j = $$6;
    }
 
-   public static mw a(coc $$0, mr $$1, crr $$2, float $$3, int $$4, coj<? extends cnn> $$5) {
+   public static mw a(cok $$0, mr $$1, crz $$2, float $$3, int $$4, cos<? extends cnv> $$5) {
       return new mw($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$5);
    }
 
-   public static mw a(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
-      return new mw($$1, cnt.a, $$2, $$0, $$3, $$4, coj.s);
+   public static mw a(cok $$0, mr $$1, crz $$2, float $$3, int $$4) {
+      return new mw($$1, cob.a, $$2, $$0, $$3, $$4, cos.s);
    }
 
-   public static mw b(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
-      return new mw($$1, c($$2), $$2, $$0, $$3, $$4, coj.q);
+   public static mw b(cok $$0, mr $$1, crz $$2, float $$3, int $$4) {
+      return new mw($$1, c($$2), $$2, $$0, $$3, $$4, cos.q);
    }
 
-   public static mw c(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
-      return new mw($$1, b($$2), $$2, $$0, $$3, $$4, coj.p);
+   public static mw c(cok $$0, mr $$1, crz $$2, float $$3, int $$4) {
+      return new mw($$1, b($$2), $$2, $$0, $$3, $$4, cos.p);
    }
 
-   public static mw d(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
-      return new mw($$1, cnt.a, $$2, $$0, $$3, $$4, coj.r);
+   public static mw d(cok $$0, mr $$1, crz $$2, float $$3, int $$4) {
+      return new mw($$1, cob.a, $$2, $$0, $$3, $$4, cos.r);
    }
 
    public mw b(String $$0, am<?> $$1) {
@@ -56,49 +56,49 @@ public class mw implements mq {
    }
 
    @Override
-   public ckw a() {
+   public cle a() {
       return this.d;
    }
 
    @Override
-   public void a(ms $$0, agg $$1) {
+   public void a(ms $$0, agi $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.h.forEach($$2::a);
       $$0.a(new mw.a($$1, this.i == null ? "" : this.i, this.c, this.e, this.d, this.f, this.g, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.j));
    }
 
-   private static cnt b(crr $$0) {
+   private static cob b(crz $$0) {
       if ($$0.k().u()) {
-         return cnt.a;
+         return cob.a;
       } else {
-         return $$0.k() instanceof ciu ? cnt.b : cnt.c;
+         return $$0.k() instanceof cjc ? cob.b : cob.c;
       }
    }
 
-   private static cnt c(crr $$0) {
-      return $$0.k() instanceof ciu ? cnt.b : cnt.c;
+   private static cob c(crz $$0) {
+      return $$0.k() instanceof cjc ? cob.b : cob.c;
    }
 
-   private static cnt a(coj<? extends cnn> $$0, crr $$1) {
-      if ($$0 == coj.p) {
+   private static cob a(cos<? extends cnv> $$0, crz $$1) {
+      if ($$0 == cos.p) {
          return b($$1);
-      } else if ($$0 == coj.q) {
+      } else if ($$0 == cos.q) {
          return c($$1);
-      } else if ($$0 != coj.r && $$0 != coj.s) {
+      } else if ($$0 != cos.r && $$0 != cos.s) {
          throw new IllegalStateException("Unknown cooking recipe type");
       } else {
-         return cnt.a;
+         return cob.a;
       }
    }
 
-   private void a(agg $$0) {
+   private void a(agi $$0) {
       if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   static record a(agg a, String b, cnt c, coc d, ckw e, float f, int g, af h, coj<? extends cnn> i) implements mp {
+   static record a(agi a, String b, cob c, cok d, cle e, float f, int g, af h, cos<? extends cnv> i) implements mp {
       @Override
       public void a(JsonObject $$0) {
          if (!this.b.isEmpty()) {
@@ -113,7 +113,7 @@ public class mw implements mq {
       }
 
       @Override
-      public agg b() {
+      public agi b() {
          return this.a;
       }
 
@@ -121,15 +121,15 @@ public class mw implements mq {
          return this.b;
       }
 
-      public cnt f() {
+      public cob f() {
          return this.c;
       }
 
-      public coc g() {
+      public cok g() {
          return this.d;
       }
 
-      public ckw h() {
+      public cle h() {
          return this.e;
       }
 
@@ -147,7 +147,7 @@ public class mw implements mq {
       }
 
       @Override
-      public coj<? extends cnn> c() {
+      public cos<? extends cnv> c() {
          return this.i;
       }
    }

@@ -1,7 +1,11 @@
-@FunctionalInterface
-public interface dws {
-   dws a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-   void afterPlace(csm var1, csk var2, dit var3, ato var4, dwn var5, cqz var6, dxk var7);
+public abstract class dws extends dwo {
+   protected abstract int a(ats var1, ht var2);
+
+   @Override
+   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   }
 }

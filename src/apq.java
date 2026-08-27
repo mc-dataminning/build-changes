@@ -1,767 +1,294 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.ProfileLookupCallback;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
 import java.io.File;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.EnumSet;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class apq {
-   public static final File b = new File("banned-players.json");
-   public static final File c = new File("banned-ips.json");
-   public static final File d = new File("ops.json");
-   public static final File e = new File("whitelist.json");
-   public static final ur f = ur.c("chat.filtered_full");
-   public static final ur g = ur.c("multiplayer.disconnect.duplicate_login");
+public class apq {
    private static final Logger a = LogUtils.getLogger();
-   private static final int i = 600;
-   private static final SimpleDateFormat j = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-   private final MinecraftServer k;
-   private final List<amb> l = Lists.newArrayList();
-   private final Map<UUID, amb> m = Maps.newHashMap();
-   private final apw n = new apw(b);
-   private final apn o = new apn(c);
-   private final apr p = new apr(d);
-   private final apy q = new apy(e);
-   private final Map<UUID, aqt> r = Maps.newHashMap();
-   private final Map<UUID, ago> s = Maps.newHashMap();
-   private final eee t;
-   private boolean u;
-   private final ij<agp> v;
-   protected final int h;
-   private int w;
-   private int x;
-   private boolean y;
-   private static final boolean z = false;
-   private int A;
-
-   public apq(MinecraftServer $$0, ij<agp> $$1, eee $$2, int $$3) {
-      this.k = $$0;
-      this.v = $$1;
-      this.h = $$3;
-      this.t = $$2;
-   }
-
-   public void a(ts $$0, amb $$1, amp $$2) {
-      GameProfile $$3 = $$1.fR();
-      apm $$4 = this.k.ap();
-      String $$6;
-      if ($$4 != null) {
-         Optional<GameProfile> $$5 = $$4.a($$3.getId());
-         $$6 = $$5.<String>map(GameProfile::getName).orElse($$3.getName());
-         $$4.a($$3);
-      } else {
-         $$6 = $$3.getName();
-      }
-
-      rz $$8 = this.a($$1);
-      agf<crs> $$9 = $$8 != null ? dkf.a(new Dynamic(sn.a, $$8.c("Dimension"))).resultOrPartial(a::error).orElse(crs.h) : crs.h;
-      ama $$10 = this.k.a($$9);
-      ama $$11;
-      if ($$10 == null) {
-         a.warn("Unknown respawn dimension {}, defaulting to overworld", $$9);
-         $$11 = this.k.D();
-      } else {
-         $$11 = $$10;
-      }
-
-      $$1.c($$11);
-      String $$13 = $$0.a(this.k.be());
-      a.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ab().getString(), $$13, $$1.ah(), $$1.dq(), $$1.ds(), $$1.dw()});
-      edx $$14 = $$11.A_();
-      $$1.c($$8);
-      amz $$15 = new amz(this.k, $$0, $$1, $$2);
-      cro $$16 = $$11.X();
-      boolean $$17 = $$16.b(cro.D);
-      boolean $$18 = $$16.b(cro.q);
-      boolean $$19 = $$16.b(cro.w);
-      $$15.b(new zs($$1.ah(), $$14.n(), this.k.E(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.d($$11)));
-      $$15.b(new yp($$14.s(), $$14.t()));
-      $$15.b(new aab($$1.fT()));
-      $$15.b(new aaz($$1.fS().l));
-      $$15.b(new acf(this.k.aE().b()));
-      this.d($$1);
-      $$1.F().c();
-      $$1.G().a($$1);
-      this.a($$11.f(), $$1);
-      this.k.ar();
-      vf $$20;
-      if ($$1.fR().getName().equalsIgnoreCase($$6)) {
-         $$20 = ur.a("multiplayer.player.joined", $$1.O_());
-      } else {
-         $$20 = ur.a("multiplayer.player.joined.renamed", $$1.O_(), $$6);
-      }
-
-      this.a($$20.a(n.o), false);
-      $$15.a($$1.dq(), $$1.ds(), $$1.dw(), $$1.dB(), $$1.dD());
-      afh $$22 = this.k.aq();
-      if ($$22 != null) {
-         $$1.a($$22);
-      }
-
-      $$1.c.b(aah.a(this.l));
-      this.l.add($$1);
-      this.m.put($$1.cv(), $$1);
-      this.a(aah.a(List.of($$1)));
-      this.a($$1, $$11);
-      $$11.c($$1);
-      this.k.aJ().a($$1);
-
-      for (bjv $$23 : $$1.er()) {
-         $$15.b(new ace($$1.ah(), $$23));
-      }
-
-      if ($$8 != null && $$8.b("RootVehicle", 10)) {
-         rz $$24 = $$8.p("RootVehicle");
-         bki $$25 = bkm.a($$24.p("Entity"), $$11, $$1x -> !$$11.c($$1x) ? null : $$1x);
-         if ($$25 != null) {
-            UUID $$26;
-            if ($$24.b("Attach")) {
-               $$26 = $$24.a("Attach");
-            } else {
-               $$26 = null;
-            }
-
-            if ($$25.cv().equals($$26)) {
-               $$1.a($$25, true);
-            } else {
-               for (bki $$28 : $$25.cT()) {
-                  if ($$28.cv().equals($$26)) {
-                     $$1.a($$28, true);
-                     break;
-                  }
-               }
-            }
-
-            if (!$$1.bN()) {
-               a.warn("Couldn't reattach entity to player");
-               $$25.ak();
-
-               for (bki $$29 : $$25.cT()) {
-                  $$29.ak();
-               }
-            }
-         }
-      }
-
-      $$1.h();
-   }
-
-   protected void a(agx $$0, amb $$1) {
-      Set<eke> $$2 = Sets.newHashSet();
-
-      for (ekf $$3 : $$0.g()) {
-         $$1.c.b(abm.a($$3, true));
-      }
-
-      for (ekd $$4 : ekd.values()) {
-         eke $$5 = $$0.a($$4);
-         if ($$5 != null && !$$2.contains($$5)) {
-            for (wk<?> $$7 : $$0.d($$5)) {
-               $$1.c.b($$7);
-            }
-
-            $$2.add($$5);
-         }
-      }
-   }
-
-   public void a(ama $$0) {
-      $$0.C_().a(new dil() {
-         @Override
-         public void a(din $$0, double $$1) {
-            apq.this.a(new aav($$0));
-         }
-
-         @Override
-         public void a(din $$0, double $$1, double $$2, long $$3) {
-            apq.this.a(new aau($$0));
-         }
-
-         @Override
-         public void a(din $$0, double $$1, double $$2) {
-            apq.this.a(new aat($$0));
-         }
-
-         @Override
-         public void a(din $$0, int $$1) {
-            apq.this.a(new aaw($$0));
-         }
-
-         @Override
-         public void b(din $$0, int $$1) {
-            apq.this.a(new aax($$0));
-         }
-
-         @Override
-         public void b(din $$0, double $$1) {
-         }
-
-         @Override
-         public void c(din $$0, double $$1) {
-         }
-      });
-   }
-
+   private static final int b = 1000;
+   private static final int c = 1;
+   private static boolean d;
+   private final Map<String, apq.a> e = Maps.newConcurrentMap();
+   private final Map<UUID, apq.a> f = Maps.newConcurrentMap();
+   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
+   private final GameProfileRepository h;
+   private final Gson i = new GsonBuilder().create();
+   private final File j;
+   private final AtomicLong k = new AtomicLong();
    @Nullable
-   public rz a(amb $$0) {
-      rz $$1 = this.k.aT().y();
-      rz $$2;
-      if (this.k.a($$0.fR()) && $$1 != null) {
-         $$2 = $$1;
-         $$0.g($$1);
-         a.debug("loading single player");
-      } else {
-         $$2 = this.t.b($$0);
-      }
+   private Executor l;
 
-      return $$2;
+   public apq(GameProfileRepository $$0, File $$1) {
+      this.h = $$0;
+      this.j = $$1;
+      Lists.reverse(this.b()).forEach(this::a);
    }
 
-   protected void b(amb $$0) {
-      this.t.a($$0);
-      aqt $$1 = this.r.get($$0.cv());
-      if ($$1 != null) {
-         $$1.a();
+   private void a(apq.a $$0) {
+      GameProfile $$1 = $$0.a();
+      $$0.a(this.e());
+      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
+      this.f.put($$1.getId(), $$0);
+   }
+
+   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
+      if (!cdu.c($$1)) {
+         return c($$1);
+      } else {
+         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
+         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
+            public void onProfileLookupSucceeded(GameProfile $$0) {
+               $$2.set($$0);
+            }
+
+            public void onProfileLookupFailed(String $$0, Exception $$1) {
+               $$2.set(null);
+            }
+         };
+         $$0.findProfilesByNames(new String[]{$$1}, $$3);
+         GameProfile $$4 = $$2.get();
+         return $$4 != null ? Optional.of($$4) : c($$1);
+      }
+   }
+
+   private static Optional<GameProfile> c(String $$0) {
+      return d() ? Optional.empty() : Optional.of(iv.b($$0));
+   }
+
+   public static void a(boolean $$0) {
+      d = $$0;
+   }
+
+   private static boolean d() {
+      return d;
+   }
+
+   public void a(GameProfile $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      $$1.setTime(new Date());
+      $$1.add(2, 1);
+      Date $$2 = $$1.getTime();
+      apq.a $$3 = new apq.a($$0, $$2);
+      this.a($$3);
+      this.c();
+   }
+
+   private long e() {
+      return this.k.incrementAndGet();
+   }
+
+   public Optional<GameProfile> a(String $$0) {
+      String $$1 = $$0.toLowerCase(Locale.ROOT);
+      apq.a $$2 = this.e.get($$1);
+      boolean $$3 = false;
+      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
+         this.f.remove($$2.a().getId());
+         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
+         $$3 = true;
+         $$2 = null;
       }
 
-      ago $$2 = this.s.get($$0.cv());
+      Optional<GameProfile> $$4;
       if ($$2 != null) {
-         $$2.b();
-      }
-   }
-
-   public void c(amb $$0) {
-      ama $$1 = $$0.x();
-      $$0.a(aqx.j);
-      this.b($$0);
-      if ($$0.bN()) {
-         bki $$2 = $$0.cV();
-         if ($$2.cU()) {
-            a.debug("Removing player mount");
-            $$0.aa();
-            $$2.cS().forEach($$0x -> $$0x.b(bki.c.d));
-         }
-      }
-
-      $$0.ae();
-      $$1.a($$0, bki.c.d);
-      $$0.O().a();
-      this.l.remove($$0);
-      this.k.aJ().b($$0);
-      UUID $$3 = $$0.cv();
-      amb $$4 = this.m.get($$3);
-      if ($$4 == $$0) {
-         this.m.remove($$3);
-         this.r.remove($$3);
-         this.s.remove($$3);
-      }
-
-      this.a(new aag(List.of($$0.cv())));
-   }
-
-   @Nullable
-   public ur a(SocketAddress $$0, GameProfile $$1) {
-      if (this.n.a($$1)) {
-         apx $$2 = this.n.b($$1);
-         vf $$3 = ur.a("multiplayer.disconnect.banned.reason", $$2.d());
-         if ($$2.c() != null) {
-            $$3.b(ur.a("multiplayer.disconnect.banned.expiration", j.format($$2.c())));
-         }
-
-         return $$3;
-      } else if (!this.c($$1)) {
-         return ur.c("multiplayer.disconnect.not_whitelisted");
-      } else if (this.o.a($$0)) {
-         apo $$4 = this.o.b($$0);
-         vf $$5 = ur.a("multiplayer.disconnect.banned_ip.reason", $$4.d());
-         if ($$4.c() != null) {
-            $$5.b(ur.a("multiplayer.disconnect.banned_ip.expiration", j.format($$4.c())));
-         }
-
-         return $$5;
+         $$2.a(this.e());
+         $$4 = Optional.of($$2.a());
       } else {
-         return this.l.size() >= this.h && !this.d($$1) ? ur.c("multiplayer.disconnect.server_full") : null;
-      }
-   }
-
-   public amb a(GameProfile $$0, alp $$1) {
-      return new amb(this.k, this.k.D(), $$0, $$1);
-   }
-
-   public boolean e(GameProfile $$0) {
-      UUID $$1 = $$0.getId();
-      Set<amb> $$2 = Sets.newIdentityHashSet();
-
-      for (amb $$3 : this.l) {
-         if ($$3.cv().equals($$1)) {
-            $$2.add($$3);
+         $$4 = a(this.h, $$1);
+         if ($$4.isPresent()) {
+            this.a($$4.get());
+            $$3 = false;
          }
       }
 
-      amb $$4 = this.m.get($$0.getId());
-      if ($$4 != null) {
-         $$2.add($$4);
+      if ($$3) {
+         this.c();
       }
 
-      for (amb $$5 : $$2) {
-         $$5.c.b(g);
-      }
-
-      return !$$2.isEmpty();
+      return $$4;
    }
 
-   public amb a(amb $$0, boolean $$1) {
-      this.l.remove($$0);
-      $$0.x().a($$0, bki.c.b);
-      ht $$2 = $$0.P();
-      float $$3 = $$0.Q();
-      boolean $$4 = $$0.S();
-      ama $$5 = this.k.a($$0.R());
-      Optional<eji> $$6;
-      if ($$5 != null && $$2 != null) {
-         $$6 = cdm.a($$5, $$2, $$3, $$4, $$1);
+   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
+      if (this.l == null) {
+         throw new IllegalStateException("No executor");
       } else {
-         $$6 = Optional.empty();
-      }
-
-      ama $$8 = $$5 != null && $$6.isPresent() ? $$5 : this.k.D();
-      amb $$9 = new amb(this.k, $$8, $$0.fR(), $$0.z());
-      $$9.c = $$0.c;
-      $$9.a($$0, $$1);
-      $$9.e($$0.ah());
-      $$9.a($$0.fm());
-
-      for (String $$10 : $$0.ai()) {
-         $$9.a($$10);
-      }
-
-      boolean $$11 = false;
-      if ($$6.isPresent()) {
-         dgw $$12 = $$8.a_($$2);
-         boolean $$13 = $$12.a(cuv.pl);
-         eji $$14 = $$6.get();
-         float $$17;
-         if (!$$12.a(arc.R) && !$$13) {
-            $$17 = $$3;
+         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            eji $$15 = eji.c($$2).d($$14).d();
-            $$17 = (float)ati.d(ati.d($$15.e, $$15.c) * 180.0F / (float)Math.PI - 90.0);
-         }
-
-         $$9.b($$14.c, $$14.d, $$14.e, $$17, 0.0F);
-         $$9.a($$8.ac(), $$2, $$3, $$4, false);
-         $$11 = !$$1 && $$13;
-      } else if ($$2 != null) {
-         $$9.c.b(new zi(zi.a, 0.0F));
-      }
-
-      while (!$$8.g($$9) && $$9.ds() < (double)$$8.aj()) {
-         $$9.e($$9.dq(), $$9.ds() + 1.0, $$9.dw());
-      }
-
-      byte $$18 = (byte)($$1 ? 1 : 0);
-      ama $$19 = $$9.x();
-      edx $$20 = $$19.A_();
-      $$9.c.b(new aan($$9.d($$19), $$18));
-      $$9.c.a($$9.dq(), $$9.ds(), $$9.dw(), $$9.dB(), $$9.dD());
-      $$9.c.b(new abc($$8.R(), $$8.S()));
-      $$9.c.b(new yp($$20.s(), $$20.t()));
-      $$9.c.b(new abi($$9.ch, $$9.cg, $$9.cf));
-      this.a($$9, $$8);
-      this.d($$9);
-      $$8.d($$9);
-      this.l.add($$9);
-      this.m.put($$9.cv(), $$9);
-      $$9.h();
-      $$9.c($$9.eu());
-      if ($$11) {
-         $$9.c.b(new abu(aqn.tP, aqo.e, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0F, 1.0F, $$8.E_().g()));
-      }
-
-      return $$9;
-   }
-
-   public void d(amb $$0) {
-      GameProfile $$1 = $$0.fR();
-      int $$2 = this.k.c($$1);
-      this.a($$0, $$2);
-   }
-
-   public void d() {
-      if (++this.A > 600) {
-         this.a(new aah(EnumSet.of(aah.a.e), this.l));
-         this.A = 0;
-      }
-   }
-
-   public void a(wk<?> $$0) {
-      for (amb $$1 : this.l) {
-         $$1.c.b($$0);
-      }
-   }
-
-   public void a(wk<?> $$0, agf<crs> $$1) {
-      for (amb $$2 : this.l) {
-         if ($$2.dL().ac() == $$1) {
-            $$2.c.b($$0);
+            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ac.f())
+               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
+            this.g.put($$0, $$2);
+            return $$2;
          }
       }
    }
 
-   public void a(cdm $$0, ur $$1) {
-      ekj $$2 = $$0.cf();
-      if ($$2 != null) {
-         for (String $$4 : $$2.g()) {
-            amb $$5 = this.a($$4);
-            if ($$5 != null && $$5 != $$0) {
-               $$5.a($$1);
-            }
-         }
-      }
-   }
-
-   public void b(cdm $$0, ur $$1) {
-      ekj $$2 = $$0.cf();
-      if ($$2 == null) {
-         this.a($$1, false);
+   public Optional<GameProfile> a(UUID $$0) {
+      apq.a $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         return Optional.empty();
       } else {
-         for (int $$3 = 0; $$3 < this.l.size(); $$3++) {
-            amb $$4 = this.l.get($$3);
-            if ($$4.cf() != $$2) {
-               $$4.a($$1);
-            }
-         }
+         $$1.a(this.e());
+         return Optional.of($$1.a());
       }
    }
 
-   public String[] e() {
-      String[] $$0 = new String[this.l.size()];
+   public void a(Executor $$0) {
+      this.l = $$0;
+   }
 
-      for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
-         $$0[$$1] = this.l.get($$1).fR().getName();
+   public void a() {
+      this.l = null;
+   }
+
+   private static DateFormat f() {
+      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   }
+
+   public List<apq.a> b() {
+      List<apq.a> $$0 = Lists.newArrayList();
+
+      try {
+         Object var9;
+         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
+            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
+            if ($$2 != null) {
+               DateFormat $$3 = f();
+               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
+               return $$0;
+            }
+
+            var9 = $$0;
+         }
+
+         return (List<apq.a>)var9;
+      } catch (FileNotFoundException var7) {
+      } catch (JsonParseException | IOException var8) {
+         a.warn("Failed to load profile cache {}", this.j, var8);
       }
 
       return $$0;
    }
 
-   public apw f() {
-      return this.n;
-   }
+   public void c() {
+      JsonArray $$0 = new JsonArray();
+      DateFormat $$1 = f();
+      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
+      String $$2 = this.i.toJson($$0);
 
-   public apn g() {
-      return this.o;
-   }
-
-   public void a(GameProfile $$0) {
-      this.p.a(new aps($$0, this.k.i(), this.p.a($$0)));
-      amb $$1 = this.a($$0.getId());
-      if ($$1 != null) {
-         this.d($$1);
+      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
+         $$3.write($$2);
+      } catch (IOException var9) {
       }
    }
 
-   public void b(GameProfile $$0) {
-      this.p.c($$0);
-      amb $$1 = this.a($$0.getId());
-      if ($$1 != null) {
-         this.d($$1);
-      }
+   private Stream<apq.a> a(int $$0) {
+      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(apq.a::c).reversed()).limit((long)$$0);
    }
 
-   private void a(amb $$0, int $$1) {
-      if ($$0.c != null) {
-         byte $$2;
-         if ($$1 <= 0) {
-            $$2 = 24;
-         } else if ($$1 >= 4) {
-            $$2 = 28;
+   private static JsonElement a(apq.a $$0, DateFormat $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("name", $$0.a().getName());
+      $$2.addProperty("uuid", $$0.a().getId().toString());
+      $$2.addProperty("expiresOn", $$1.format($$0.b()));
+      return $$2;
+   }
+
+   private static Optional<apq.a> a(JsonElement $$0, DateFormat $$1) {
+      if ($$0.isJsonObject()) {
+         JsonObject $$2 = $$0.getAsJsonObject();
+         JsonElement $$3 = $$2.get("name");
+         JsonElement $$4 = $$2.get("uuid");
+         JsonElement $$5 = $$2.get("expiresOn");
+         if ($$3 != null && $$4 != null) {
+            String $$6 = $$4.getAsString();
+            String $$7 = $$3.getAsString();
+            Date $$8 = null;
+            if ($$5 != null) {
+               try {
+                  $$8 = $$1.parse($$5.getAsString());
+               } catch (ParseException var12) {
+               }
+            }
+
+            if ($$7 != null && $$6 != null && $$8 != null) {
+               UUID $$9;
+               try {
+                  $$9 = UUID.fromString($$6);
+               } catch (Throwable var11) {
+                  return Optional.empty();
+               }
+
+               return Optional.of(new apq.a(new GameProfile($$9, $$7), $$8));
+            } else {
+               return Optional.empty();
+            }
          } else {
-            $$2 = (byte)(24 + $$1);
+            return Optional.empty();
          }
-
-         $$0.c.b(new zf($$0, $$2));
-      }
-
-      this.k.aC().a($$0);
-   }
-
-   public boolean c(GameProfile $$0) {
-      return !this.u || this.p.d($$0) || this.q.d($$0);
-   }
-
-   public boolean f(GameProfile $$0) {
-      return this.p.d($$0) || this.k.a($$0) && this.k.aT().o() || this.y;
-   }
-
-   @Nullable
-   public amb a(String $$0) {
-      for (amb $$1 : this.l) {
-         if ($$1.fR().getName().equalsIgnoreCase($$0)) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(@Nullable cdm $$0, double $$1, double $$2, double $$3, double $$4, agf<crs> $$5, wk<?> $$6) {
-      for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
-         amb $$8 = this.l.get($$7);
-         if ($$8 != $$0 && $$8.dL().ac() == $$5) {
-            double $$9 = $$1 - $$8.dq();
-            double $$10 = $$2 - $$8.ds();
-            double $$11 = $$3 - $$8.dw();
-            if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
-               $$8.c.b($$6);
-            }
-         }
+      } else {
+         return Optional.empty();
       }
    }
 
-   public void h() {
-      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
-         this.b(this.l.get($$0));
-      }
-   }
+   static class a {
+      private final GameProfile a;
+      final Date b;
+      private volatile long c;
 
-   public apy i() {
-      return this.q;
-   }
-
-   public String[] j() {
-      return this.q.a();
-   }
-
-   public apr k() {
-      return this.p;
-   }
-
-   public String[] l() {
-      return this.p.a();
-   }
-
-   public void a() {
-   }
-
-   public void a(amb $$0, ama $$1) {
-      din $$2 = this.k.D().C_();
-      $$0.c.b(new zl($$2));
-      $$0.c.b(new abq($$1.V(), $$1.W(), $$1.X().b(cro.l)));
-      $$0.c.b(new abc($$1.R(), $$1.S()));
-      if ($$1.Z()) {
-         $$0.c.b(new zi(zi.b, 0.0F));
-         $$0.c.b(new zi(zi.h, $$1.d(1.0F)));
-         $$0.c.b(new zi(zi.i, $$1.b(1.0F)));
+      a(GameProfile $$0, Date $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      $$0.c.b(new zi(zi.n, 0.0F));
-   }
-
-   public void e(amb $$0) {
-      $$0.bR.b();
-      $$0.u();
-      $$0.c.b(new aaz($$0.fS().l));
-   }
-
-   public int m() {
-      return this.l.size();
-   }
-
-   public int n() {
-      return this.h;
-   }
-
-   public boolean o() {
-      return this.u;
-   }
-
-   public void a(boolean $$0) {
-      this.u = $$0;
-   }
-
-   public List<amb> b(String $$0) {
-      List<amb> $$1 = Lists.newArrayList();
-
-      for (amb $$2 : this.l) {
-         if ($$2.y().equals($$0)) {
-            $$1.add($$2);
-         }
+      public GameProfile a() {
+         return this.a;
       }
 
-      return $$1;
-   }
-
-   public int p() {
-      return this.w;
-   }
-
-   public int q() {
-      return this.x;
-   }
-
-   public MinecraftServer c() {
-      return this.k;
-   }
-
-   @Nullable
-   public rz r() {
-      return null;
-   }
-
-   public void b(boolean $$0) {
-      this.y = $$0;
-   }
-
-   public void s() {
-      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
-         this.l.get($$0).c.b(ur.c("multiplayer.disconnect.server_shutdown"));
-      }
-   }
-
-   public void a(ur $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$0, $$1);
-   }
-
-   public void a(ur $$0, Function<amb, ur> $$1, boolean $$2) {
-      this.k.a($$0);
-
-      for (amb $$3 : this.l) {
-         ur $$4 = $$1.apply($$3);
-         if ($$4 != null) {
-            $$3.b($$4, $$2);
-         }
-      }
-   }
-
-   public void a(vh $$0, du $$1, un.a $$2) {
-      this.a($$0, $$1::a, $$1.j(), $$2);
-   }
-
-   public void a(vh $$0, amb $$1, un.a $$2) {
-      this.a($$0, $$1::b, $$1, $$2);
-   }
-
-   private void a(vh $$0, Predicate<amb> $$1, @Nullable amb $$2, un.a $$3) {
-      boolean $$4 = this.a($$0);
-      this.k.a($$0.c(), $$3, $$4 ? null : "Not Secure");
-      vg $$5 = vg.a($$0);
-      boolean $$6 = false;
-
-      for (amb $$7 : this.l) {
-         boolean $$8 = $$1.test($$7);
-         $$7.a($$5, $$8, $$3);
-         $$6 |= $$8 && $$0.i();
+      public Date b() {
+         return this.b;
       }
 
-      if ($$6 && $$2 != null) {
-         $$2.a(f);
-      }
-   }
-
-   private boolean a(vh $$0) {
-      return $$0.h() && !$$0.a(Instant.now());
-   }
-
-   public aqt a(cdm $$0) {
-      UUID $$1 = $$0.cv();
-      aqt $$2 = this.r.get($$1);
-      if ($$2 == null) {
-         File $$3 = this.k.a(edz.b).toFile();
-         File $$4 = new File($$3, $$1 + ".json");
-         if (!$$4.exists()) {
-            File $$5 = new File($$3, $$0.ab().getString() + ".json");
-            Path $$6 = $$5.toPath();
-            if (v.a($$6) && v.b($$6) && $$6.startsWith($$3.getPath()) && $$5.isFile()) {
-               $$5.renameTo($$4);
-            }
-         }
-
-         $$2 = new aqt(this.k, $$4);
-         this.r.put($$1, $$2);
+      public void a(long $$0) {
+         this.c = $$0;
       }
 
-      return $$2;
-   }
-
-   public ago f(amb $$0) {
-      UUID $$1 = $$0.cv();
-      ago $$2 = this.s.get($$1);
-      if ($$2 == null) {
-         Path $$3 = this.k.a(edz.a).resolve($$1 + ".json");
-         $$2 = new ago(this.k.ay(), this, this.k.az(), $$3, $$0);
-         this.s.put($$1, $$2);
+      public long c() {
+         return this.c;
       }
-
-      $$2.a($$0);
-      return $$2;
-   }
-
-   public void a(int $$0) {
-      this.w = $$0;
-      this.a(new abb($$0));
-
-      for (ama $$1 : this.k.F()) {
-         if ($$1 != null) {
-            $$1.k().a($$0);
-         }
-      }
-   }
-
-   public void b(int $$0) {
-      this.x = $$0;
-      this.a(new abo($$0));
-
-      for (ama $$1 : this.k.F()) {
-         if ($$1 != null) {
-            $$1.k().b($$0);
-         }
-      }
-   }
-
-   public List<amb> t() {
-      return this.l;
-   }
-
-   @Nullable
-   public amb a(UUID $$0) {
-      return this.m.get($$0);
-   }
-
-   public boolean d(GameProfile $$0) {
-      return false;
-   }
-
-   public void u() {
-      for (ago $$0 : this.s.values()) {
-         $$0.a(this.k.az());
-      }
-
-      this.a(new wt(aru.a(this.v)));
-      acf $$1 = new acf(this.k.aE().b());
-
-      for (amb $$2 : this.l) {
-         $$2.c.b($$1);
-         $$2.G().a($$2);
-      }
-   }
-
-   public boolean v() {
-      return this.y;
    }
 }

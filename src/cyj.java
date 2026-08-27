@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class cyj extends cut {
-   public static final MapCodec<cyj> d = b(cyj::new);
+public class cyj extends cyv {
+   public static final MapCodec<cyj> a = b(cyj::new);
 
    @Override
-   protected MapCodec<? extends cyj> a() {
-      return d;
+   public MapCodec<cyj> a() {
+      return a;
    }
 
-   protected cyj(dgv.d $$0) {
+   public cyj(dhh.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dgw $$0, dgw $$1, hx $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   protected void a(dhj.a<cva, dhi> $$0) {
+      $$0.a(aE);
+   }
+
+   @Override
+   public dhi a(cnr $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 }

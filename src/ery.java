@@ -1,34 +1,35 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ery extends err {
+public class ery extends esd {
    private static final Logger b = LogUtils.getLogger();
-   private static final ur c = ur.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final ur c = ur.c("mco.configure.world.closing");
+   private final epd d;
+   private final eqm e;
 
-   public ery(long $$0, int $$1, Runnable $$2) {
+   public ery(epd $$0, eqm $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
    }
 
    @Override
    public void run() {
-      eoa $$0 = eoa.a();
+      eom $$0 = eom.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+         if (this.d()) {
+            return;
+         }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = epd.c.a;
+               a(this.e);
                break;
             }
-         } catch (epo var4) {
+         } catch (eqa var4) {
             if (this.d()) {
                return;
             }
@@ -39,7 +40,7 @@ public class ery extends err {
                return;
             }
 
-            b.error("Couldn't switch world!");
+            b.error("Failed to close server", var5);
             this.a(var5);
          }
       }

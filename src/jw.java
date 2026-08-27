@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class jw implements jq {
    public static final Codec<jw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dlk.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(dlw.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
             .apply($$0, jw::new)
    );
    public static final jq.a<jw> b = new jq.a<jw>() {
@@ -20,32 +20,32 @@ public class jw implements jq {
          $$1.expect(' ');
          int $$5 = $$1.readInt();
          ht $$6 = ht.a((double)$$2, (double)$$3, (double)$$4);
-         return new jw(new dlc($$6), $$5);
+         return new jw(new dlo($$6), $$5);
       }
 
       public jw a(jr<jw> $$0, tu $$1) {
-         dlk $$2 = dll.c($$1);
+         dlw $$2 = dlx.c($$1);
          int $$3 = $$1.n();
          return new jw($$2, $$3);
       }
    };
-   private final dlk c;
+   private final dlw c;
    private final int d;
 
-   public jw(dlk $$0, int $$1) {
+   public jw(dlw $$0, int $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(tu $$0) {
-      dll.a(this.c, $$0);
+      dlx.a(this.c, $$0);
       $$0.c(this.d);
    }
 
    @Override
    public String a() {
-      eji $$0 = this.c.a(null).get();
+      eju $$0 = this.c.a(null).get();
       double $$1 = $$0.a();
       double $$2 = $$0.b();
       double $$3 = $$0.c();
@@ -57,7 +57,7 @@ public class jw implements jq {
       return js.P;
    }
 
-   public dlk c() {
+   public dlw c() {
       return this.c;
    }
 
